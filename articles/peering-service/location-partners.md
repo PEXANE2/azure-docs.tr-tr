@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 09/24/2020
 ms.author: derekol
-ms.openlocfilehash: 4b034c2657cd1bddd696b40738d51c8a3e6c9798
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: d6318fc4fc0dc9ded093bdf9d19b9079208556de
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355261"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939945"
 ---
 # <a name="peering-service-partners"></a>Eşleme hizmeti iş ortakları
 
@@ -38,7 +38,7 @@ Bu makaledeki tabloda, eşleme hizmeti bağlantı ortakları ve bunlarla ilişki
 | [IıJ](https://www.iij.ad.jp/en/) | Japonya |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|Avrupa  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |Okyanusya  |
-| [Liquid Telecom](https://liquidcloud.africa/365-direct) | Afrika  |
+| [Liquid Telecom](https://liquidcloud.africa/) | Afrika  |
 | [NTT Communications](https://www.ntt.com/en/services/network/software-defined-network.html) | Japonya |
 | [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |Asya |
 | [Matel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |Asya |

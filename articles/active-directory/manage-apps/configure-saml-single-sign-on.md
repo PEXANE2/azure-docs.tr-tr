@@ -12,10 +12,10 @@ ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597903"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>SAML tabanlı çoklu oturum açmayı anlama
@@ -81,7 +81,7 @@ Azure AD, uygulamanın gönderdiği SAML belirteçlerini imzalamak için bir ser
 > [!IMPORTANT]
 > Birçok uygulama zaten önceden yapılandırılmış ve uygulama galerisinde, sertifikalara ek olarak ihtiyacınız yoktur. [Hızlı başlangıç serisi](add-application-portal.md) , uygulama ekleme ve yapılandırma konusunda size yol gösterir.
 
-Azure AD 'den, etkin Sertifikayı Base64 veya ham biçimde doğrudan, **SAML Ile çoklu oturum açma 'yı kullanarak** yükleyebilirsiniz sayfasından indirebilirsiniz. Ayrıca, uygulama meta verileri XML dosyasını indirerek ya da uygulama Federasyon meta verileri URL 'sini kullanarak etkin sertifikayı edinebilirsiniz. Sertifikalarınızı görüntülemek, oluşturmak veya indirmek (etkin veya devre dışı) için aşağıdaki adımları izleyin.
+Azure AD 'den, etkin Sertifikayı Base64 veya ham biçimde doğrudan bir **SAML Ile tek Sign-On BIR SAML** sayfasından indirebilirsiniz. Ayrıca, uygulama meta verileri XML dosyasını indirerek ya da uygulama Federasyon meta verileri URL 'sini kullanarak etkin sertifikayı edinebilirsiniz. Sertifikalarınızı görüntülemek, oluşturmak veya indirmek (etkin veya devre dışı) için aşağıdaki adımları izleyin.
 
 Bir sertifikayı doğrulamak için denetlenecek bazı yaygın şeyler şunlardır: 
    - *Doğru sona erme tarihi.* Son kullanma tarihini üç yıla kadar gelecek şekilde yapılandırabilirsiniz.
@@ -133,4 +133,4 @@ Daha fazla bilgi için bkz. [Azure Active Directory içindeki uygulamalarda SAML
 - [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)
 - [Uygulamaya Kullanıcı veya Grup atama](methods-for-assigning-users-and-groups.md)
 - [Otomatik Kullanıcı hesabı sağlamayı yapılandırma](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-- [Çoklu oturum açma SAML Protokolü](../develop/single-sign-on-saml-protocol.md)
+- [Tek Sign-On SAML Protokolü](../develop/single-sign-on-saml-protocol.md)

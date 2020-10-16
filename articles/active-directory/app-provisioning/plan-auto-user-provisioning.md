@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235715"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070376"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -75,7 +75,7 @@ Bu makale aşağıdaki terimleri kullanır:
 | Öğreticiler| [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticilerin listesine](../saas-apps/tutorial-list.md)bakın. |
 | SSS| Otomatik Kullanıcı sağlama hakkında [sık sorulan sorular](../app-provisioning/user-provisioning.md) |
 
-### <a name="solution-architectures"></a>Çözüm Mimarileri
+### <a name="solution-architectures"></a>Çözüm mimarileri
 
 Azure AD sağlama hizmeti, her bir uygulama satıcısı tarafından sağlanan kullanıcı yönetimi API uç noktalarına bağlanarak kullanıcıları ve diğer sistemleri SaaS uygulamaları sağlar. Bu Kullanıcı yönetimi API uç noktaları, Azure AD 'nin Kullanıcı aracılığıyla kullanıcıları oluşturmasına, güncelleştirmesine ve kaldırmasına izin verir.
 
@@ -129,7 +129,7 @@ Ortamınızda Kullanıcı sağlamayı dağıtmaya yönelik stratejiyi öğrenmek
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle oluşur. Bu girişlerin oluşmasını önlemek için, [doğru paydaşları](https://aka.ms/deploymentplans) ve proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle oluşur. Bu girişlerin oluşmasını önlemek için, [doğru paydaşları](../fundamentals/active-directory-deployment-plans.md) ve proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
 
 ### <a name="plan-communications"></a>İletişimi planlama
 
@@ -207,7 +207,7 @@ Otomatik Kullanıcı sağlamayı uygulamak için, uygulama için gereken kullan�
 
 Azure AD, doğrudan öznitelik eşleme, sabit değerler sağlama veya [öznitelik eşlemeleri için ifadeler yazma](../app-provisioning/functions-for-customizing-application-data.md)tarafından desteklenir. Bu esneklik, hedeflenen sistemin özniteliğinde doldurulacak nelerin üzerinde ince denetim elde etmenizi sağlar. Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için [MICROSOFT Graph API](../app-provisioning/export-import-provisioning-configuration.md) ve Graf Gezginini kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure Active Directory Içindeki SaaS uygulamaları Için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](../app-provisioning/customize-application-attributes.md).
+Daha fazla bilgi için bkz. [Azure Active Directory SaaS uygulamaları Için Kullanıcı hazırlama Attribute-Mappings özelleştirme](../app-provisioning/customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Kullanıcı sağlamaya yönelik özel konular
 
@@ -264,7 +264,7 @@ Sağlama Hizmeti, başlangıç döngüsünden sonra her iki sistemin durumunu de
 
 Otomatik Kullanıcı hesabı sağlamayı ve bunu destekleyen uygulamalar için ön sağlamayı yönetmek üzere [Azure Portal](https://portal.azure.com/) kullanın. [Bir uygulamaya otomatik sağlamayı ayarlama nasıl yaparım?](../app-provisioning/user-provisioning.md) içindeki adımları izleyin.
 
-Azure AD Kullanıcı sağlama hizmeti, [Microsoft Graph API 'si](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)kullanılarak da yapılandırılabilir ve yönetilebilir.
+Azure AD Kullanıcı sağlama hizmeti, [Microsoft Graph API 'si](/graph/api/resources/synchronization-overview)kullanılarak da yapılandırılabilir ve yönetilebilir.
 
 ## <a name="manage-automatic-user-provisioning"></a>Otomatik Kullanıcı sağlamayı yönetme
 
@@ -274,7 +274,7 @@ Artık dağıtıldıktan sonra çözümü yönetmeniz gerekir.
 
 Başarılı bir [Başlangıç döngüsünden](../app-provisioning/user-provisioning.md)sonra, Azure AD sağlama hizmeti, aşağıdaki olaylardan biri gerçekleşene kadar her bir uygulamaya özgü aralıklarla Artımlı güncelleştirmeleri süresiz olarak çalıştırır:
 
-* Hizmet el ile durdurulur ve [Azure Portal](https://portal.azure.com/)kullanılarak veya uygun [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) komutu kullanılarak yeni bir başlangıç çevrimi tetiklenir.
+* Hizmet el ile durdurulur ve [Azure Portal](https://portal.azure.com/)kullanılarak veya uygun [Microsoft Graph API](/graph/api/resources/synchronization-overview) komutu kullanılarak yeni bir başlangıç çevrimi tetiklenir.
 
 * Yeni bir başlangıç çevrimi, öznitelik eşlemelerinde veya kapsam filtrelerinde değişiklik tarafından tetiklenir.
 
@@ -310,7 +310,7 @@ Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki bağla
 
 * [Öznitelik eşlemeleri için ifadeler yazma](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Azure AD eşitleme API 'sine genel bakış](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Azure AD eşitleme API 'sine genel bakış](/graph/api/resources/synchronization-overview)
 
 * [Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın](skip-out-of-scope-deletions.md)
 

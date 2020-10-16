@@ -10,10 +10,10 @@ ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91729024"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot VM 'Ler 
@@ -49,7 +49,7 @@ Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile A
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Ölçek kümelerinde spot VM 'Leri dağıtma
 
 Ölçek kümeleri üzerinde spot VM 'Leri dağıtmak için yeni *Öncelik* bayrağını *nokta*olarak ayarlayabilirsiniz. Ölçek kümesindeki tüm sanal makineler, spot olarak ayarlanacak. Spot VM 'Ler içeren bir ölçek kümesi oluşturmak için aşağıdaki yöntemlerden birini kullanın:
-- [Azure Portal](#portal)
+- [Azure portalındaki](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager şablonları](#resource-manager-templates)
@@ -173,11 +173,11 @@ Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
 
 | Azure kanalları               | Azure spot VM kullanılabilirliği       |
 |------------------------------|-----------------------------------|
-| Kurumsal Anlaşma         | Yes                               |
-| Kullandıkça Öde                | Yes                               |
+| Kurumsal Anlaşma         | Evet                               |
+| Kullandıkça Öde                | Evet                               |
 | Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](/partner-center/azure-plan-get-started) |
 | Yararları                     | Kullanılamaz                     |
-| Sponsorlu                    | Yes                               |
+| Sponsorlu                    | Evet                               |
 | Ücretsiz Deneme                   | Kullanılamaz                     |
 
 

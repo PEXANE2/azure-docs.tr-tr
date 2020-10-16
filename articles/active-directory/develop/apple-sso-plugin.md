@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530706"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple cihazları için Microsoft Enterprise SSO eklentisi (Önizleme)
@@ -35,7 +35,7 @@ Bu genel önizleme sürümünde, Enterprise SSO eklentisi yalnızca iOS cihazlar
 
 Apple cihazları için Microsoft Enterprise SSO eklentisi aşağıdaki avantajları sunar:
 
-- Apple 'ın Kurumsal Çoklu oturum açma özelliğini destekleyen tüm uygulamalarda Azure AD hesapları için SSO sağlar.
+- Apple 'ın Kurumsal tek Sign-On özelliğini destekleyen tüm uygulamalarda Azure AD hesapları için SSO sağlar.
 - Microsoft Authenticator otomatik olarak teslim edilebilir ve herhangi bir mobil cihaz yönetimi (MDM) çözümü tarafından etkinleştirilebilir.
 
 ## <a name="requirements"></a>Gereksinimler
@@ -125,7 +125,7 @@ Frontline çalışan senaryoları için bir uygulama oluşturuyorsanız, özelli
 
 ## <a name="how-the-sso-plug-in-works"></a>SSO eklentisinin nasıl çalıştığı
 
-Microsoft Enterprise SSO eklentisi [Apple 'ın Kurumsal Çoklu oturum açma çerçevesini](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc)kullanır. Çerçeveye eklenen kimlik sağlayıcıları, etki alanları için ağ trafiğini yakalayabilir ve bu isteklerin işlenme biçimini artırabilir veya değiştirebilir. Örneğin, SSO eklentisi Son Kullanıcı kimlik bilgilerini güvenli bir şekilde toplamak, MFA istemek veya uygulamaya sessizce belirteç sağlamak için ek kullanıcı arabirimi gösterebilir.
+Microsoft Enterprise SSO eklentisi [Apple 'ın Kurumsal tek Sign-On çerçevesini](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc)kullanır. Çerçeveye eklenen kimlik sağlayıcıları, etki alanları için ağ trafiğini yakalayabilir ve bu isteklerin işlenme biçimini artırabilir veya değiştirebilir. Örneğin, SSO eklentisi Son Kullanıcı kimlik bilgilerini güvenli bir şekilde toplamak, MFA istemek veya uygulamaya sessizce belirteç sağlamak için ek kullanıcı arabirimi gösterebilir.
 
 Yerel uygulamalar aynı zamanda özel işlemler uygulayabilir ve doğrudan SSO eklentisine konuşabilir.
 [Apple 'dan bu 2019 WWDC videosunda](https://developer.apple.com/videos/play/tech-talks/301/) çoklu oturum açma çerçevesi hakkında bilgi edinebilirsiniz

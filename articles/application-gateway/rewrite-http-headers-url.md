@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
 ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281200"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP üstbilgilerini ve URL 'YI Application Gateway yeniden yazın
 
- Application Gateway, istek ve yanıtların seçili içeriğini yeniden yazmanız için izin verir. Bu özellikle, URL 'Leri, sorgu dizesi parametrelerini ve değişiklik isteği ve yanıt üst bilgilerini çevirebilirsiniz. Ayrıca, URL veya belirtilen üstbilgilerin yalnızca belirli koşullar karşılandığında yeniden yazılabilir olmasını sağlamak için koşullar eklemenize de olanak tanır. Bu koşullar istek ve yanıt bilgilerini temel alır.
+ Application Gateway, istek ve yanıtların seçili içeriğini yeniden yazmanız için izin verir. Bu özellikle, URL 'Leri, sorgu dizesi parametrelerini ve değişiklik isteği ve yanıt üst bilgilerini çevirebilirsiniz. Ayrıca, URL veya belirtilen üstbilgilerin yalnızca belirli koşullar karşılandığında yeniden yazılabilir olmasını sağlamak için koşullar eklemenize de olanak tanır. Bu koşullar istek ve yanıt bilgilerine dayanır.
 
 >[!NOTE]
 >HTTP üstbilgisi ve URL yeniden yazma özellikleri yalnızca [Application Gateway v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md) için kullanılabilir
@@ -113,21 +113,21 @@ Application Gateway aşağıdaki sunucu değişkenlerini destekler:
 | client_port               | İstemci bağlantı noktası.                                             |
 | client_tcp_rtt            | İstemci TCP bağlantısıyla ilgili bilgiler. TCP_INFO yuva seçeneğini destekleyen sistemlerde kullanılabilir. |
 | client_user               | HTTP kimlik doğrulaması kullanıldığında, kimlik doğrulaması için sağlanan Kullanıcı adı. |
-| konak                      | Öncelik sırasına göre: istek satırından ana bilgisayar adı, konak istek üst bilgisi alanından ana bilgisayar adı veya bir istekle eşleşen sunucu adı. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ana bilgisayar değeri şu şekilde olacaktır:`contoso.com` |
+| konak                      | Öncelik sırasına göre: istek satırından ana bilgisayar adı, konak istek üst bilgisi alanından ana bilgisayar adı veya bir istekle eşleşen sunucu adı. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ana bilgisayar değeri şu şekilde olacaktır: `contoso.com` |
 | cookie_*adı*             | *Ad* tanımlama bilgisi.                                           |
 | http_method               | URL isteğini yapmak için kullanılan yöntem. Örneğin, GET veya POST. |
 | http_status               | Oturum durumu. Örneğin, 200, 400 veya 403.           |
 | http_version              | İstek Protokolü. Genellikle HTTP/1.0, HTTP/1.1 veya HTTP/2.0. |
-| query_string              | İstenen URL 'de "?" öğesini izleyen değişken/değer çiftleri listesi. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` query_string değer olacaktır`id=123&title=fabrikam` |
+| query_string              | İstenen URL 'de "?" öğesini izleyen değişken/değer çiftleri listesi. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` query_string değer olacaktır `id=123&title=fabrikam` |
 | received_bytes            | İsteğin uzunluğu (istek satırı, üst bilgi ve istek gövdesi dahil). |
 | request_query             | İstek satırındaki bağımsız değişkenler.                           |
 | request_scheme            | İstek düzeni: http veya https.                           |
-| request_uri               | Tüm özgün istek URI 'SI (bağımsız değişkenlerle). Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` request_uri değer olacaktır`/article.aspx?id=123&title=fabrikam` |
+| request_uri               | Tüm özgün istek URI 'SI (bağımsız değişkenlerle). Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` request_uri değer olacaktır `/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | Bir istemciye gönderilen bayt sayısı.                        |
 | server_port               | Bir isteği kabul eden sunucunun bağlantı noktası.              |
 | ssl_connection_protocol   | Kurulan bir TLS bağlantısının protokolü.               |
 | ssl_enabled               | Bağlantı, TLS modunda çalışıyorsa "açık". Aksi takdirde, boş bir dize. |
-| uri_path                  | Web istemcisinin erişmek istediği konaktaki belirli kaynağı tanımlar. Bu, istek URI 'sinin bağımsız değişkenler olmadan bölümüdür. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path değer olacaktır`/article.aspx` |
+| uri_path                  | Web istemcisinin erişmek istediği konaktaki belirli kaynağı tanımlar. Bu, istek URI 'sinin bağımsız değişkenler olmadan bölümüdür. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path değer olacaktır `/article.aspx` |
 
  
 
@@ -211,17 +211,17 @@ Arka uç havuzunu bir üstbilginin değerine, URL 'nin bir bölümüne veya iste
 
 * Üçüncü kural, *category = aksesuarları* için *query_string* değişkenini denetleyen ve URL yolunu/*listing3* 'e yeniden veren ve **yol haritasını yeniden değerlendiren** bir eyleme sahip olan bir koşula sahiptir
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL yeniden yazma senaryosu 1-2.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
 
  
 
 **2. adım (b):** Bu yeniden yazma kümesini yukarıdaki yol tabanlı kuralın varsayılan yoluyla ilişkilendirin
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL yeniden yazma senaryosu 1-3.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
 
 Artık Kullanıcı *contoso.com/Listing?category=any*isterse, yol haritadaki yol desenlerinden hiçbiri (/listing1,/listing2,/listing3) eşleşmesinden bu yana varsayılan yol ile eşleştirilir. Yukarıdaki yeniden yazma kümesini bu yol ile ilişkilendirdikten sonra, bu yeniden yazma kümesi değerlendirilecek. Sorgu dizesi bu yeniden yazma kümesindeki 3 yeniden yazma kuralındaki koşulla eşleşmediğinden, yeniden yazma eylemi gerçekleşmeyecek ve bu nedenle, istek varsayılan yol ( *GenericList*) ile ilişkili arka uca değişmeden yönlendirilir.
 
- Kullanıcı *contoso.com/Listing?category=Shoes isterse,* varsayılan yol eşleştirilir. Ancak, bu durumda, ilk kuraldaki koşul eşleşmeyecektir ve bu nedenle, koşulla ilişkili eylem, URL yolunu/*listing1* olarak yeniden yazıp yol eşlemesini yeniden değerlendilecektir. Path-Map yeniden değerlendirildiğinde, istek artık, */listing1* düzeniyle ilişkili yol ile eşleşir ve Istek, Showeslistbackendpool olan bu Düzenle ilişkili olan arka uca yönlendirilir
+ Kullanıcı *contoso.com/Listing?category=Shoes isterse,* varsayılan yol eşleştirilir. Ancak, bu durumda, ilk kuraldaki koşul eşleşmeyecektir ve bu nedenle, koşulla ilişkili eylem, URL yolunu/*listing1*  olarak yeniden yazıp yol eşlemesini yeniden değerlendilecektir. Path-Map yeniden değerlendirildiğinde, istek artık, */listing1* düzeniyle ilişkili yol ile eşleşir ve Istek, Showeslistbackendpool olan bu Düzenle ilişkili olan arka uca yönlendirilir
 
 >[!NOTE]
 >Bu senaryo, tanımlı koşula bağlı olarak herhangi bir üst bilgi veya tanımlama bilgisi değeri, URL yolu, sorgu dizesi veya sunucu değişkenine genişletilebilir ve temelde istekleri bu koşullara göre yönlendirmenizi sağlar.
@@ -232,13 +232,13 @@ Kullanıcı görünür bağlantısının basit ve okunabilir olması gereken bir
 
 Bu durumda Application Gateway URL 'den parametreleri yakalayabilir ve URL 'lerden sorgu dizesi anahtar-değer çiftleri ekleyebilir. Örneğin, kullanıcının için yeniden yazmak istediğini varsayalım, `https://www.contoso.com/fashion/shirts` `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` Bu, aşağıdaki URL yeniden yazma yapılandırması aracılığıyla elde edilebilir.
 
-**Koşul** -sunucu değişkeni `uri_path` , modele eşitse`/(.+)/(.+)`
+**Koşul** -sunucu değişkeni `uri_path` , modele eşitse `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL yeniden yazma senaryosu 2-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
 
-**Eylem** -URL yolunu `buy.aspx` ve sorgu dizesini ayarla`category={var_uri_path_1}&product={var_uri_path_2}`
+**Eylem** -URL yolunu `buy.aspx` ve sorgu dizesini ayarla `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL yeniden yazma senaryosu 2-2.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
 
 Yukarıda açıklanan senaryoya ulaşmak için adım adım kılavuz için bkz. [Azure Portal kullanarak URL 'yi Application Gateway yeniden yazma](rewrite-url-portal.md)
 
@@ -248,11 +248,11 @@ URL yeniden yazma durumunda, istek arka uca gönderilmeden önce URL 'YI yeniden
 
 URL yeniden yönlendirme durumunda, Application Gateway istemciye yeni URL ile yeniden yönlendirme yanıtı gönderir. Bu durumda, istemcinin isteğini yeniden yönlendirmeye sunulan yeni URL 'ye yeniden göndermesi gerekir. Kullanıcının tarayıcıda gördüğü URL yeni URL 'ye güncelleştirilecek
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Vs yeniden yönlendirmeyi yeniden yazın.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Bir yanıtta aynı ada sahip birden fazla üst bilgi varsa, bu üst bilgilerden birinin değerini yeniden yazmak yanıttaki diğer üstbilgilerin bırakılmasına neden olur. Bu, genellikle bir yanıtta birden fazla set-Cookie üst bilgisine sahip olabileceğinizden, set-Cookie üst bilgisinde meydana gelebilir. Bu tür bir senaryo, uygulama ağ geçidi ile uygulama hizmeti kullanırken ve uygulama ağ geçidinde tanımlama bilgisi tabanlı oturum benzeşimi yapılandırmış olduğunuz bir senaryodur. Bu durumda, yanıt iki set-Cookie üst bilgisi içerir: bir App Service tarafından kullanılan, örneğin: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` ve uygulama ağ geçidi benzeşimi için bir diğeri (örneğin,) `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Bu senaryodaki set-Cookie başlıklarından birini yeniden yazmak, diğer set-Cookie üst bilgisinin yanıttan kaldırılmasına neden olabilir.
+- Bir yanıtta aynı ada sahip birden fazla üst bilgi varsa, bu üst bilgilerden birinin değerini yeniden yazmak yanıttaki diğer üstbilgilerin bırakılmasına neden olur. Yanıt içinde birden fazla Set-Cookie üst bilgisine sahip olabileceğinizden bu durum genellikle Set-Cookie üst bilgisinde meydana gelebilir. Bu tür bir senaryo, uygulama ağ geçidi ile uygulama hizmeti kullanırken ve uygulama ağ geçidinde tanımlama bilgisi tabanlı oturum benzeşimi yapılandırmış olduğunuz bir senaryodur. Bu durumda, yanıt iki Set-Cookie üst bilgi içerir: App Service tarafından kullanılan, örneğin: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` ve uygulama ağ geçidi benzeşimi için bir diğeri (örneğin,) `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Bu senaryodaki Set-Cookie başlıklarından birini yeniden yazmak, diğer Set-Cookie üstbilgisinin yanıttan kaldırılmasına neden olabilir.
 - Uygulama ağ geçidi istekleri yeniden yönlendirmek veya özel bir hata sayfası göstermek üzere yapılandırıldığında, yeniden yazar desteklenmez.
 - Üst bilgi adları, [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)' de tanımlanan alfasayısal karakterleri ve belirli sembolleri içerebilir. Şu anda üstbilgi adlarında alt çizgi (_) özel karakterini desteklemiyoruz.
 - Bağlantı ve yükseltme üstbilgileri yeniden yazılamıyor

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120584"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
@@ -229,7 +229,7 @@ Azure, Azure kaynaklarınızı, uygulamalarınızı ve projelerinizi hem program
 
 Azure, uygulamalarınızı ve hizmetlerinizi komut satırından yönetmenin iki yolunu sağlar. Bash, Terminal, komut istemi veya tercih ettiğiniz komut satırı aracınız gibi araçları kullanabilirsiniz. Genellikle, sanal makineleri, sanal ağları, Web uygulamalarını ve diğer hizmetleri oluşturma ve yapılandırma gibi Azure portal, komut satırından aynı görevleri gerçekleştirebilirsiniz.
 
--   [Azure komut satırı arabirimi (CLI)](../../xplat-cli-install.md): Azure aboneliğine bağlanmanızı ve komut satırından Azure kaynaklarına karşı çeşitli görevleri programlamanızı sağlar.
+-   [Azure Command-Line arabirimi (CLI)](../../xplat-cli-install.md): Azure aboneliğine bağlanmanızı ve komut satırından Azure kaynaklarına yönelik çeşitli görevleri programlamanızı sağlar.
 
 -   [Azure PowerShell](../../powershell-install-configure.md): Windows PowerShell kullanarak Azure kaynaklarını yönetmenizi sağlayan cmdlet 'ler içeren bir modül kümesi sağlar.
 

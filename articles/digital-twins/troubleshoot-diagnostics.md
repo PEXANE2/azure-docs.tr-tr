@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723937"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047684"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure dijital TWINS sorunlarını giderme: tanılama günlüğü
 
@@ -49,7 +49,7 @@ Azure dijital TWINS örneğiniz için tanılama ayarlarının nasıl etkinleşti
     
 4. Yeni ayarları kaydedin. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Kullanıcının bir tanılama ayarı adı doldurduğu ve kategori ayrıntıları ve hedef ayrıntıları için bazı onay kutusu seçimleri yaptığı tanılama ayarı sayfasını gösteren ekran görüntüsü. Kaydet düğmesi vurgulanır.":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
 
 Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, olay, örneğiniz için **Tanılama ayarları** sayfasında yapılandırılan hedefte geri görüntülenir. 
 
@@ -73,7 +73,7 @@ Her günlük kategorisi yazma, okuma, silme ve eylem işlemlerinden oluşur.  Bu
 | Sil | DELETE |
 | Eylem | POST |
 
-Her kategoride günlüğe kaydedilen işlemlerin ve karşılık gelen [Azure dijital TWINS REST API çağrılarının](https://docs.microsoft.com/rest/api/azure-digitaltwins/) kapsamlı bir listesi aşağıda verilmiştir. 
+Her kategoride günlüğe kaydedilen işlemlerin ve karşılık gelen [Azure dijital TWINS REST API çağrılarının](/rest/api/azure-digitaltwins/) kapsamlı bir listesi aşağıda verilmiştir. 
 
 >[!NOTE]
 > Her günlük kategorisi birkaç işlem/REST API çağrısı içerir. Aşağıdaki tabloda, her günlük kategorisi, sonraki günlük kategorisi listelenene kadar tüm işlemler/REST API çağrılarıyla eşlenir. 

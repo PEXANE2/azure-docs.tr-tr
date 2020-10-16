@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715440"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074966"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
@@ -45,11 +45,11 @@ Evet. Uygulama yapılandırması, tuttuğu tüm anahtar değerlerini şifreler v
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>Uygulama yapılandırmasında depolanan veriler nerede bulunur? 
 
-Uygulama yapılandırmasında depolanan müşteri verileri, müşterinin uygulama yapılandırma deposunun oluşturulduğu bölgede bulunur. Uygulama yapılandırması veri dayanıklılığı için verileri [eşleştirilmiş bölgelere](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) çoğaltabilir, ancak müşteri verilerini [Azure 'da veri](https://azure.microsoft.com/global-infrastructure/data-residency/)yerleşimi tarafından tanımlanan coğrafi bölge dışında çoğaltamaz veya taşımaz. Müşteriler ve son kullanıcılar, müşteri verilerini küresel olarak herhangi bir konumdan taşıyabilir, kopyalayabilir veya bunlara erişebilir.
+Uygulama yapılandırmasında depolanan müşteri verileri, müşterinin uygulama yapılandırma deposunun oluşturulduğu bölgede bulunur. Uygulama yapılandırması veri dayanıklılığı için verileri [eşleştirilmiş bölgelere](../best-practices-availability-paired-regions.md) çoğaltabilir, ancak müşteri verilerini [Azure 'da veri](https://azure.microsoft.com/global-infrastructure/data-residency/)yerleşimi tarafından tanımlanan coğrafi bölge dışında çoğaltamaz veya taşımaz. Müşteriler ve son kullanıcılar, müşteri verilerini küresel olarak herhangi bir konumdan taşıyabilir, kopyalayabilir veya bunlara erişebilir.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Uygulama yapılandırması Azure App Service ayarlarından farklı midir?
 
-Azure App Service, her bir App Service örneği için uygulama ayarlarını tanımlamanızı sağlar. Bu ayarlar, uygulama koduna ortam değişkenleri olarak geçirilir. İsterseniz bir ayarı belirli bir dağıtım yuvası ile ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [uygulama ayarlarını yapılandırma](/azure/app-service/configure-common#configure-app-settings).
+Azure App Service, her bir App Service örneği için uygulama ayarlarını tanımlamanızı sağlar. Bu ayarlar, uygulama koduna ortam değişkenleri olarak geçirilir. İsterseniz bir ayarı belirli bir dağıtım yuvası ile ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [uygulama ayarlarını yapılandırma](../app-service/configure-common.md#configure-app-settings).
 
 Buna karşılık, Azure Uygulama yapılandırması, birden çok uygulama arasında paylaşılabilen ayarları tanımlamanızı sağlar. Bu, App Service çalıştıran uygulamaları ve diğer platformları da içerir. Uygulama kodunuz, bu ayarlara .NET ve Java için yapılandırma sağlayıcıları aracılığıyla, Azure SDK aracılığıyla veya doğrudan REST API 'Leri aracılığıyla erişir.
 
@@ -111,7 +111,7 @@ Bir depo sınıra ulaştığında, zaman aralığı sona erene kadar yapılan t�
 
 Uygulamanız düzenli olarak HTTP durum kodu 429 yanıtlarını yaşıyorsa, yapılan istek sayısını azaltmak için yeniden tasarlamayı düşünün. Daha fazla bilgi için bkz. [uygulama yapılandırmasına yapılan Istekleri azaltma](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden mi?
 
 Şu koşullarda bir HTTP durum kodu 429 yanıtı alacaksınız:
 

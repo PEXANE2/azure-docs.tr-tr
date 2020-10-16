@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.openlocfilehash: 2a01943036e1cff225364892c199ac94fe86a4e3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88524685"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartkargo"></a>Öğretici: SmartKargo ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory

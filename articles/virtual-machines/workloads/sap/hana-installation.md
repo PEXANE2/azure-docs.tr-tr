@@ -14,10 +14,10 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91529839"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
@@ -58,18 +58,18 @@ Bu nedenle, tam Linux sürümü için SAP HANA ilgili SAP notlarını okumak iç
 
 Özellikle, aşağıdaki parametreleri kontrol edin ve şu şekilde ayarlayın:
 
-- net. Core. rmem_max = 16777216
-- net. Core. wmem_max = 16777216
-- net. Core. rmem_default = 16777216
-- net. Core. wmem_default = 16777216
-- net. Core. optmem_max = 16777216
-- net. IPv4. tcp_rmem = 65536 16777216 16777216
-- net. IPv4. tcp_wmem = 65536 16777216 16777216
+- net.core.rmem_max = 16777216
+- net.core.wmem_max = 16777216
+- net.core.rmem_default = 16777216
+- net.core.wmem_default = 16777216
+- net.core.optmem_max = 16777216
+- net.ipv4.tcp_rmem = 65536 16777216 16777216
+- net.ipv4.tcp_wmem = 65536 16777216 16777216
 
 SLES12 SP1 ve RHEL 7,2 ile başlayarak, bu parametrelerin/etc/sysctl.exe dizinindeki bir yapılandırma dosyasında ayarlanması gerekir. Örneğin, 91-NetApp-HANA. conf adına sahip bir yapılandırma dosyası oluşturulmalıdır. Daha eski SLES ve RHEL yayınları için bu parametrelerin ayarlandığı/vs/sysctl. conf olması gerekir.
 
 RHEL 6,3 ile başlayan tüm RHEL yayınları için şunları göz önünde bulundurun: 
-- Sunrpc. tcp_slot_table_entries = 128 parametresi,/vs/modaraştırması. d/sunrpc-Local. conf içinde ayarlanmalıdır. Dosya yoksa, önce girdiyi ekleyerek oluşturmanız gerekir: 
+- Sunrpc.tcp_slot_table_entries = 128 parametresi,/vs/modaraştırması. d/sunrpc-Local. conf içinde ayarlanmalıdır. Dosya yoksa, önce girdiyi ekleyerek oluşturmanız gerekir: 
     - Seçenekler sunrpc tcp_max_slot_table_entries = 128
 
 **Beşinci adım** , Hana büyük örnek biriminizdeki sistem saatini denetünündir. Örnekler bir sistem saat dilimiyle dağıtılır. Bu saat dilimi, HANA büyük örnek damgasının bulunduğu Azure bölgesinin konumunu temsil eder. Sahip olduğunuz örneklerin sistem saatini veya saat dilimini değiştirebilirsiniz. 

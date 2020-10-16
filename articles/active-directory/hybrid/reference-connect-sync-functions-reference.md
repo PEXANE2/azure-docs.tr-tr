@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279780"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Işlevler başvurusu
@@ -98,7 +98,7 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
   * [DNComponent](#dncomponent)
   * [DNComponentRev](#dncomponentrev)
   * [Çıkar Edncomponent](#escapedncomponent)
-* **Değerlendirmesinin**
+* **Değerlendirme**
   * [IsBitSet](#isbitset)
   * [IsDate](#isdate)
   * [IsEmpty](#isempty)
@@ -509,7 +509,7 @@ Bu işlevin çıkış biçimi Azure Active Directory tarafından, DN öznitelik 
 48656C6C6F20776F726C6421 döndürür
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Sayı
 **Açıklama:**  
 Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
 
@@ -1224,7 +1224,7 @@ RTrim işlevi bir dizeden sondaki boşlukları kaldırır.
 "Test" döndürür.
 
 ---
-### <a name="select"></a>Şunu seçin:
+### <a name="select"></a>Seç
 **Açıklama:**  
 Belirtilen işleve bağlı olarak, birden çok değerli bir öznitelik (veya bir ifadenin çıktısı) içindeki tüm değerleri işleyin.
 

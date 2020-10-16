@@ -10,10 +10,10 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.openlocfilehash: 148a3deb23219036f2fd9d8fe4dad93e9fb96b9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91348772"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Öğretici 3: Kredi risk modelini dağıtma-Azure Machine Learning Studio (klasik)
@@ -180,7 +180,7 @@ Klasik bir Web hizmetini **Machine Learning Studio (klasik)** veya **Azure Machi
 Yeni bir Web hizmetini yalnızca **Machine Learning Web Hizmetleri** portalında test edebilirsiniz.
 
 > [!TIP]
-> Azure Machine Learning Web Hizmetleri portalında test edilirken, portalın Istek-yanıt hizmetini test etmek için kullanabileceğiniz örnek veriler oluşturmasını sağlayabilirsiniz. **Yapılandırma** sayfasında, **örnek veriler etkin**olarak "Evet" i seçin. **Test** sayfasındaki Istek-yanıt sekmesini açtığınızda, Portal orijinal kredi riski veri kümesinden alınan örnek verileri doldurur.
+> Azure Machine Learning Web Hizmetleri portalında test edilirken, portalın Request-Response hizmetini test etmek için kullanabileceğiniz örnek veriler oluşturmasını sağlayabilirsiniz. **Yapılandırma** sayfasında, **örnek veriler etkin**olarak "Evet" i seçin. **Test** sayfasındaki Request-Response sekmesini açtığınızda, Portal orijinal kredi riski veri kümesinden alınan örnek verileri doldurur.
 
 ### <a name="test-a-classic-web-service"></a>Klasik Web hizmetini test etme
 

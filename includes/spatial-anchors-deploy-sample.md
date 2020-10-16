@@ -4,11 +4,15 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e86edb9de075a87be2fe000d1164f3d5f81ace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d553d8bea7e5dd18fd5ca0c10ef067c7f82c529f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261932"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971466"
 ---
-Uygulamayı cihazınıza dağıtın. Uygulama başladıktan sonra, **bir demo Seç** iletişim kutusunda, **localshare** seçeneğini belirlemek için sol veya sağ ok tuşlarını kullanın ve **Git!**' e dokunun. Uygulamadaki yönergeleri izleyin. **Oluşturma & paylaşım bağlantısı** ' nı veya **paylaşılan bağlayıcıyı bul**' u seçebilirsiniz.
+Uygulamayı cihazınıza dağıtın. 
+
+Uygulama başladıktan sonra, **bir demo seçin** bölmesinde, **localshare** seçeneğini belirlemek için sol ve sağ okları kullanın. Sonra **Git!**' e dokunun. 
+
+Uygulamadaki yönergeleri izleyin. **Oluşturma & paylaşım bağlantısı** ' nı veya **paylaşılan bağlayıcıyı bul**' u seçebilirsiniz.

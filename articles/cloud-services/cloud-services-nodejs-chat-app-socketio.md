@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-js
-ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327536"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077227"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure bulut hizmetinde Socket.IO ile Node.js sohbet uygulaması oluşturma
 
@@ -124,7 +124,7 @@ Değişiklikleri **server.js**kaydettikten sonra, gerekli modülleri yüklemek i
     ```
 
    > [!NOTE]
-   > Başlatma öykünücüsü ile ilgili sorunlarla karşılaşırsanız, örn.: Start-AzureEmulator: beklenmeyen bir hata oluştu.  Ayrıntılar: beklenmeyen bir hatayla karşılaşıldı çünkü System. ServiceModel. Channels. ServiceChannel iletişim nesnesi, hatalı durumda olduğundan iletişim için kullanılamaz.
+   > Öykünücü başlatma ile ilgili sorunlarla karşılaşırsanız, örn.: Start-AzureEmulator: beklenmeyen bir hata oluştu.  Ayrıntılar: beklenmeyen bir hatayla karşılaşıldı çünkü System. ServiceModel. Channels. ServiceChannel iletişim nesnesi, hatalı durumda olduğundan iletişim için kullanılamaz.
    >
    > AzureAuthoringTools v 2.7.1 ve AzureComputeEmulator v 2,7 ' i yeniden yükleyin-sürümün eşleştiğinden emin olun.
 
@@ -139,7 +139,7 @@ Değişiklikleri **server.js**kaydettikten sonra, gerekli modülleri yüklemek i
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Uygulamayı Azure 'a dağıtmak için **Publish-AzureServiceProject** cmdlet 'ini kullanın. Örneğin:
+5. Uygulamayı Azure 'a dağıtmak için **Publish-AzureServiceProject** cmdlet 'ini kullanın. Örnek:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
@@ -169,9 +169,9 @@ Uygulamanız artık Azure 'da çalışıyor ve Socket.IO kullanarak farklı iste
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, bir Azure bulut hizmetinde barındırılan temel bir sohbet uygulaması oluşturmayı öğrendiniz. Bu uygulamayı bir Azure Web sitesinde nasıl barındıralabileceğinizi öğrenmek için bkz. [Azure Web sitesinde Socket.IO ile Node.js sohbet uygulaması oluşturma][chatwebsite].
 
-Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi](https://docs.microsoft.com/azure/developer/javascript/).
+Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi](/azure/developer/javascript/).
 
-[chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
+[chatwebsite]: ./cloud-services-nodejs-develop-deploy-app.md
 
 [Azure SLA]: https://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -191,8 +191,3 @@ Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi](https://docs.microsof
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
-
-
-
-
-

@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 83170f4090909e3edcc163312383773d088d8c57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212131"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te iş yükü önem derecesini yapılandırma
@@ -24,7 +24,7 @@ Azure için SYNAPSE SQL SYNAPSE ' deki önem derecesi, sorguların zamanlamasın
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Önem derecesine sahip bir Iş yükü Sınıflandırıcısı oluşturun
 
-Genellikle bir veri ambarı senaryosunda, kullanıcıların, sorgularını hızlı bir şekilde çalıştırması gereken, meşgul bir sistemde kullanıcıları vardır.  Kullanıcı, raporları çalıştırması gereken şirketin Yöneticiler olabilir veya Kullanıcı geçici sorgu çalıştıran bir analist olabilir. Önem derecesi atamak için bir iş yükü Sınıflandırıcısı oluşturun ve bir sorguya önem verilir.  Aşağıdaki örneklerde iki sınıflandırıcı oluşturmak için [iş yükü sınıflandırıcı sözdizimi oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanılır. `Membername`tek bir kullanıcı veya grup olabilir.  Mevcut veri ambarı kullanıcılarını bulmak için şunu çalıştırın:
+Genellikle bir veri ambarı senaryosunda, kullanıcıların, sorgularını hızlı bir şekilde çalıştırması gereken, meşgul bir sistemde kullanıcıları vardır.  Kullanıcı, raporları çalıştırması gereken şirketin Yöneticiler olabilir veya Kullanıcı geçici sorgu çalıştıran bir analist olabilir. Önem derecesi atamak için bir iş yükü Sınıflandırıcısı oluşturun ve bir sorguya önem verilir.  Aşağıdaki örneklerde iki sınıflandırıcı oluşturmak için  [iş yükü sınıflandırıcı sözdizimi oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanılır. `Membername` tek bir kullanıcı veya grup olabilir.  Mevcut veri ambarı kullanıcılarını bulmak için şunu çalıştırın:
 
 ```sql
 Select name from sys.sysusers

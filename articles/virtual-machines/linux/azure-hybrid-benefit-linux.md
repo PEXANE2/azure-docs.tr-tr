@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279782"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962403"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Önizleme: Azure Hibrit Avantajı – Linux Sanal Makineleri için nasıl uygulanır?
 
@@ -116,7 +116,7 @@ Bir VM 'nin AHB durumunu üç şekilde görüntüleyebilirsiniz: portalda, Azure
 
 VM 'niz için, AHB 'nin etkin olup olmadığını görmek için yapılandırma dikey penceresini görüntüleyin ve lisanslama durumunu denetleyin.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 `az vm get-instance-view`Bu amaçla komut kullanılıyor olabilir. Yanıtta bir licenseType alanı bulun. LicenseType alanı varsa ve değer ' RHEL_BYOS ' veya ' SLES_BYOS ' ise, sanal makinenizin avantajı etkin olur.
 
@@ -126,7 +126,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-VM 'nin içinden, sanal makinenin licenseType öğesini tespit etmek için ıTıD Atsınanan meta verileri sorgulayabilirsiniz. ' RHEL_BYOS ' veya ' SLES_BYOS ' için licenseType değeri, sanal makinenizin avantajın etkin olduğunu gösterir. Atsınanan meta veriler hakkında [buradan](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#attested-data) daha fazla bilgi edinin
+VM 'nin içinden, sanal makinenin licenseType öğesini tespit etmek için ıTıD Atsınanan meta verileri sorgulayabilirsiniz. ' RHEL_BYOS ' veya ' SLES_BYOS ' için licenseType değeri, sanal makinenizin avantajın etkin olduğunu gösterir. Atsınanan meta veriler hakkında [buradan](./instance-metadata-service.md#attested-data) daha fazla bilgi edinin
 
 ## <a name="compliance"></a>Uyumluluk
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 03989e37ac05228dade2fdcda43856e8a5240865
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717175"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964919"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanım & öngörüleri (Önizleme)
 
@@ -65,7 +65,7 @@ Sağ üst köşedeki denetimi kullanarak, kayıtlarda gösterilen denetim verile
 
 Kayıt ayrıntıları raporu, her kullanıcı için aşağıdaki bilgileri gösterir:
 
-- Ad
+- Name
 - Kullanıcı adı
 - Kayıt durumu (tümü, kayıtlı, kayıtlı değil)
 - Etkin durum (tümü, etkin, etkin değil)
@@ -80,7 +80,7 @@ Kayıt veya sıfırlama grafiklerini tıklatmak sizi sıfırlama ayrıntıların
 
 Ayrıntıları Sıfırla raporu, son 30 günden aşağıdakiler dahil olmak üzere kayıt ve sıfırlama olaylarını gösterir:
 
-- Ad
+- Name
 - Kullanıcı adı
 - Özellik (tümü, kayıt, sıfırlama)
 - Kimlik doğrulama yöntemi (uygulama bildirimi, uygulama kodu, telefon görüşmesi, Office çağrısı, SMS, e-posta, güvenlik soruları)

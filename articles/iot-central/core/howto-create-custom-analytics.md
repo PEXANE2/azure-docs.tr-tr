@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660134"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
@@ -27,7 +27,7 @@ Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 * *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
 * Cihaz telemetrisini analiz etmek ve çizmek için bir Azure Databricks ortamı oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
@@ -45,7 +45,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 | URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
 | Dizin | Azure Active Directory kiracınız |
 | Azure aboneliği | Azure aboneliğiniz |
-| Bölge | En yakın bölgeniz |
+| Region | En yakın bölgeniz |
 
 Bu makaledeki örnekler ve ekran görüntüleri **Birleşik Devletler** bölgesini kullanır. Size yakın bir konum seçin ve tüm kaynaklarınızı aynı bölgede oluşturduğunuzdan emin olun.
 
@@ -61,7 +61,7 @@ Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal]
 
 | Ayar | Değer |
 | ------- | ----- |
-| Adı    | Ad alanı adınızı seçin |
+| Ad    | Ad alanı adınızı seçin |
 | Fiyatlandırma katmanı | Temel |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | IoTCentralAnalysis |
@@ -91,7 +91,7 @@ Bir IoT Central uygulamasını bir olay hub 'ına sürekli olarak telemetri dı�
 1. Azure portal, Event Hubs ad alanına gidin ve **+ Event hub ' ı**seçin.
 1. Olay Hub 'ınızı **centralexport**olarak adlandırın ve **Oluştur**' u seçin.
 1. Ad uzayındaki Olay Hub 'ları listesinde **centralexport**' yi seçin. Ardından **paylaşılan erişim ilkeleri**' ni seçin.
-1. **+ Ekle** öğesini seçin. **Dinleme** talebini **dinle** adlı bir ilke oluşturun.
+1. **+ Ekle**'yi seçin. **Dinleme** talebini **dinle** adlı bir ilke oluşturun.
 1. İlke hazır olduğunda, listeden seçin ve ardından **bağlantı dizesinin birincil anahtar** değerini kopyalayın.
 1. Bu bağlantı dizesini not alın, daha sonra Databricks not defterinizi Olay Hub 'ından okumak üzere yapılandırdığınızda bu bağlantıyı kullanın.
 
@@ -172,7 +172,7 @@ IoT Central telemetrinizi analiz etmek ve görselleştirmek için Python kodunu 
 
 1. Databricks ortamınızdaki **çalışma alanı** sayfasına gidin. Hesap adınızın yanındaki açılan menüyü seçin ve ardından **Içeri aktar**' ı seçin.
 
-1. Bir URL 'den içeri aktarmayı seçin ve şu adresi girin:[https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. Bir URL 'den içeri aktarmayı seçin ve şu adresi girin: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
 1. Not defterini içeri aktarmak için **Içeri aktar**' ı seçin.
 

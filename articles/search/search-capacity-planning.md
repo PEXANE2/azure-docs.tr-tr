@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660317"
 ---
 # <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmetinin kapasitesini ayarlama
@@ -36,7 +36,7 @@ Kapasite, esnek yapılandırmaların desteklenmesi için temel bir *parça* meka
 
 Aşağıdaki diyagramda çoğaltmalar, bölümler, parçalar ve arama birimleri arasındaki ilişki gösterilmektedir. İki çoğaltma ve iki bölümden oluşan bir hizmette, tek bir dizinin dört arama birimi arasında nasıl yayıldığından bir örnek gösterir. Dört arama biriminin her biri, dizinin parçaları yalnızca yarısını depolar. Sol sütundaki arama birimleri ilk bölümden oluşan ilk parçayı depolarken, sağ sütundaki parçaların ikinci yarısını depolarken ikinci bölümden oluşan bir şekilde depolar. İki çoğaltma olduğundan, her bir dizin parçanın iki kopyası vardır. En üstteki satırdaki arama birimleri, ilk yinelemeyi kapsayan, alt satırdaki diğer bir kopyayı ikinci çoğaltmadan oluşan başka bir kopya depolarken bir kopya depolar.
 
-:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Arama dizinleri bölümler arasında parçalı olarak bulunur.":::
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Arama dizinleri bölümler arasında parçalı olarak bulunur.&quot;:::
 
 Yukarıdaki diyagramda yalnızca bir örnek vardır. Birçok bölüm ve çoğaltma kombinasyonu, en fazla 36 toplam arama birimine kadar mümkündür.
 
@@ -44,7 +44,7 @@ Bilişsel Arama, parça yönetimi bir uygulama ayrıntısı ve yapılandırılam
 
 + Sıralama bozukluileri: arama puanları önce parça düzeyinde hesaplanır ve sonra tek bir sonuç kümesine toplanır. Parça içeriğinin özelliklerine bağlı olarak, bir parçadaki eşleşmeler, başka bir parçadaki eşleşmelerle daha yüksek bir şekilde derecelendirilir. Arama sonuçlarında sezgisel olmayan bir derecelendirmeden fark ederseniz büyük olasılıkla, özellikle dizinler küçük olduğunda, parçalı olarak oluşan etkileri yüksektir. [Puanları tüm dizinde küresel olarak hesaplama](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)seçeneğini belirleyerek bu derecelendirme bozuklukilerini önleyebilirsiniz, ancak bunu yapmak bir performans cezası olur.
 
-+ Otomatik tamamlama bozuklukları: kısmi olarak girilen bir terimin ilk birkaç karakterinin üzerinde eşleşme yapıldığında otomatik tamamlama sorguları, yazım içinde küçük sapmalar sağlayan benzer bir parametre kabul eder. Otomatik tamamlama için, belirsiz eşleştirme, geçerli parça içindeki koşullara göre kısıtlanmıştır. Örneğin, bir parça "Microsoft" ve kısmi "micor" terimi girilmişse, arama altyapısı bu parça içinde "Microsoft" ile eşleşir, ancak dizinin kalan bölümlerini tutan diğer parçalar üzerinde değildir.
++ Otomatik tamamlama bozuklukları: kısmi olarak girilen bir terimin ilk birkaç karakterinin üzerinde eşleşme yapıldığında otomatik tamamlama sorguları, yazım içinde küçük sapmalar sağlayan benzer bir parametre kabul eder. Otomatik tamamlama için, belirsiz eşleştirme, geçerli parça içindeki koşullara göre kısıtlanmıştır. Örneğin, bir parça &quot;Microsoft&quot; ve kısmi &quot;micor&quot; terimi girilmişse, arama altyapısı bu parça içinde &quot;Microsoft" ile eşleşir, ancak dizinin kalan bölümlerini tutan diğer parçalar üzerinde değildir.
 
 ## <a name="when-to-add-nodes"></a>Düğüm ekleme
 

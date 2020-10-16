@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: juliako
 ms.openlocfilehash: 6ebdb22f50efbefc695f9752c6e6fc333571828c
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530955"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Video Indexer var olan Azure bölgeleri
@@ -25,7 +25,7 @@ Video Indexer API 'Leri, çağrının yönlendirileceği Azure bölgesine ayarla
 
 `location`Parametreye, değeri olarak Azure bölge kodu adı verilmelidir. Önizleme modunda Video Indexer kullanıyorsanız, `"trial"` değeri olarak koymanız gerekir. `trial` , parametresi için varsayılan değerdir `location` . Aksi takdirde, hesabınızın bulunduğu Azure bölgesinin kod adını almak ve çağrının yönlendirilmek zorunda olması için Azure portal kullanabilir veya bir [Azure CLI](/cli/azure) komutu çalıştırabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
 1. Sayfanın sağ üst köşesinden **Kullanıcı hesapları** ' nı seçin.

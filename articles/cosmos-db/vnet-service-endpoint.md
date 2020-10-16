@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 10f2b44d00361885778a523109a8fcb05dabe9dd
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574356"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) Azure Cosmos DB'ye erişme
@@ -40,7 +40,7 @@ Azure Cosmos hesabına erişimi bir alt ağdan sınırlamak için gereken iki ad
 
 IP güvenlik duvarı veya sanal ağ erişim kuralları eklendiğinde, yalnızca izin verilen kaynaklardan gelen istekler geçerli yanıtlar alır. Diğer istekler 403 (yasak) ile reddedilir. Azure Cosmos hesabının güvenlik duvarını bir bağlantı düzeyi güvenlik duvarıyla ayırt etmek önemlidir. Kaynak hizmete hala bağlanabilir ve bağlantılar reddedilmez.
 
-### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Hizmet uç noktasını, alt ağda Azure Cosmos DB için etkinleştirdiğimde, isteklerim engellendi almaya başladı. Neler oldu?
+### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Hizmet uç noktasını, alt ağda Azure Cosmos DB için etkinleştirdiğimde, isteklerim engellendi almaya başladı. Ne oldu?
 
 Bir alt ağda Azure Cosmos DB için hizmet uç noktası etkinleştirildikten sonra, hesap anahtarlarına genel IP 'den sanal ağa ve alt ağa ulaşan trafik kaynağıdır. Azure Cosmos hesabınızda yalnızca IP tabanlı güvenlik duvarı varsa, hizmet etkin alt ağdan gelen trafik artık IP güvenlik duvarı kurallarıyla eşleşmez ve bu nedenle reddedilir. IP tabanlı güvenlik duvarından sanal ağ tabanlı erişim denetimine sorunsuz bir şekilde geçiş yapmak için adımlara gidin.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289420"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Özel Komutlar kullanarak ses yardımcısı oluşturma
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, konuşma Studio 'Yu kullanarak temel bir özel komut 
 * Kuzey Avrupa
 * West Europe
 * Orta Batı ABD
-* Central India
+* Orta Hindistan
 * Doğu Asya
 * Güneydoğu Asya
 
@@ -66,7 +66,7 @@ Bu hızlı başlangıçta, konuşma Studio 'Yu kullanarak temel bir özel komut 
     > [!div class="mx-imgBorder"]
     > ![Proje oluşturma](media/custom-commands/import-project.png)
 
-1.  **Lusıs yazma kaynak** listesinde bir yazma kaynağı seçin. Geçerli bir yazma kaynağı yoksa, **yenı lusıs Authoring Resource oluştur**' u seçerek bir tane oluşturun.
+1.  **Lusıs yazma kaynak** listesinde bir yazma kaynağı seçin. Geçerli bir yazma kaynağı yoksa,  **yenı lusıs Authoring Resource oluştur**' u seçerek bir tane oluşturun.
 
     > [!div class="mx-imgBorder"]
     > ![Kaynak oluşturma](media/custom-commands/create-new-luis-resource.png)
@@ -101,9 +101,9 @@ Bu uygulamaya, konuşma Studio 'Nun dışından erişebilmek için, uygulamayı 
 ### <a name="update-prediction-luis-resource"></a>Tahmin LUSıS kaynağını güncelleştir
 
 
-1. Sol bölmedeki **Ayarlar** ' ı seçin ve orta bölmedeki **lusıs kaynakları** ' nı seçin.
+1. Sol bölmedeki **Ayarlar** ' ı seçin ve orta bölmedeki  **lusıs kaynakları** ' nı seçin.
 1. Bir tahmin kaynağı seçin veya **Yeni kaynak oluştur**' u seçerek bir tane oluşturun.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
     
     > [!div class="mx-imgBorder"]
     > ![LUSıS kaynaklarını ayarlama](media/custom-commands/set-luis-resources.png)
@@ -113,7 +113,7 @@ Bu uygulamaya, konuşma Studio 'Nun dışından erişebilmek için, uygulamayı 
 
 ### <a name="publish-the-application"></a>Uygulamayı yayımlama
 
-Sağ bölmenin en üstünde **Yayımla** ' yı seçin. Yayımlama tamamlandığında yeni bir pencere görüntülenir. **Uygulama kimliği** ve **konuşma kaynak anahtarı** değerini buradan aklınızda edin. Bu iki değere sahip olmanız gerekir ve bu iki değer, uygulamaya konuşma Studio dışından erişebilir.
+Sağ bölmenin en üstünde  **Yayımla** ' yı seçin. Yayımlama tamamlandığında yeni bir pencere görüntülenir. **Uygulama kimliği** ve **konuşma kaynak anahtarı** değerini buradan aklınızda edin. Bu iki değere sahip olmanız gerekir ve bu iki değer, uygulamaya konuşma Studio dışından erişebilir.
 
 Alternatif olarak, **Ayarlar**  >  **genel** bölümünü seçerek de bu değerleri alabilirsiniz.
 

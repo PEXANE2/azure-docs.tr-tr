@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660537"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory ile Azure Data Lake Storage 2. verileri yükleme
@@ -34,7 +34,7 @@ Bu makalede _Amazon Web Services S3 hizmetinden_ _Azure Data Lake Storage 2._'a 
 >[!TIP]
 >Azure Data Lake Storage 1. verileri Gen2 'e kopyalamak için [Bu özel izlenecek yolu](load-azure-data-lake-storage-gen2-from-gen1.md)inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Data Lake Storage 2. etkin Azure depolama hesabı: depolama hesabınız yoksa [bir hesap oluşturun](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
@@ -51,10 +51,10 @@ Bu makalede _Amazon Web Services S3 hizmetinden_ _Azure Data Lake Storage 2._'a 
     * **Ad**: Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name *Yourdatafactoryname* kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**ADFTutorialDataFactory**adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
     * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
     * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-    * **Sürüm**: **v2**'yi seçin.
+    * **Sürüm**: **V2**'yi seçin.
     * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. 
 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz: 
    
@@ -97,7 +97,7 @@ Bu makalede _Amazon Web Services S3 hizmetinden_ _Azure Data Lake Storage 2._'a 
 8. **Yeni bağlı hizmet (Azure Data Lake Storage 2.)** sayfasında, aşağıdaki adımları uygulayın:
 
    1. "Depolama hesabı adı" açılan listesinden Data Lake Storage 2. Nesil özellikli hesabınızı seçin.
-   2. Bağlantıyı oluşturmak için **Oluştur** ' u seçin. Ardından **İleri**' yi seçin.   
+   2. Bağlantıyı oluşturmak için **Oluştur** ' u seçin. Ardından **İleri**’yi seçin.   
 
         ![Azure Data Lake Storage 2. hesabı belirtin](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
 

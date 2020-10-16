@@ -13,10 +13,10 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195979"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Kopyalama etkinliğini kullanarak verileri taşıma
@@ -96,7 +96,7 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 |:--- |:--- |:--- |
 | Birleşik Devletler | Doğu ABD | Doğu ABD |
 | &nbsp; | Doğu ABD 2 | Doğu ABD 2 |
-| &nbsp; | Orta ABD | Orta ABD |
+| &nbsp; | Central US | Central US |
 | &nbsp; | Orta Kuzey ABD | Orta Kuzey ABD |
 | &nbsp; | Orta Güney ABD | Orta Güney ABD |
 | &nbsp; | Orta Batı ABD | Orta Batı ABD |
@@ -104,15 +104,15 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 | &nbsp; | Batı ABD 2 | Batı ABD 2 |
 | Kanada | Doğu Kanada | Orta Kanada |
 | &nbsp; | Orta Kanada | Orta Kanada |
-| Brezilya | Güney Brezilya | Güney Brezilya |
+| Brezilya | Brezilya Güney | Brezilya Güney |
 | Avrupa | Kuzey Avrupa | Kuzey Avrupa |
-| &nbsp; | Batı Avrupa | Batı Avrupa |
+| &nbsp; | West Europe | West Europe |
 | Birleşik Krallık | Batı Birleşik Krallık | Güney Birleşik Krallık |
 | &nbsp; | Güney Birleşik Krallık | Güney Birleşik Krallık |
 | Asya Pasifik | Güneydoğu Asya | Güneydoğu Asya |
 | &nbsp; | Doğu Asya | Güneydoğu Asya |
 | Avustralya | Doğu Avustralya | Doğu Avustralya |
-| &nbsp; | Güneydoğu Avustralya | Güneydoğu Avustralya |
+| &nbsp; | Güneydoğu Avustralya | Avustralya Güneydoğu |
 | Hindistan | Orta Hindistan | Orta Hindistan |
 | &nbsp; | Batı Hindistan | Orta Hindistan |
 | &nbsp; | Güney Hindistan | Orta Hindistan |
@@ -196,7 +196,7 @@ Azure Data Factory içindeki veri taşıma (kopyalama etkinliği) performansın�
 ## <a name="fault-tolerance"></a>Hataya dayanıklılık
 Varsayılan olarak, kopyalama etkinliği veri kopyalamayı durdurur ve kaynak ve havuz arasında uyumsuz verilerle karşılaşmanız durumunda başarısız olur; uyumsuz satırları atlayıp günlüğe kaydetmek ve yalnızca bu uyumlu verileri kopyalamak için açıkça yapılandırabilmeniz gerekir. Daha fazla ayrıntı için [kopyalama etkinliği hata toleransını](data-factory-copy-activity-fault-tolerance.md) inceleyin.
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 Verilerinizin güvenliğini sağlamak için Azure Data Factory veri taşıma hizmetlerinin kullandığı güvenlik altyapısını açıklayan [güvenlik konularını](data-factory-data-movement-security-considerations.md)inceleyin.
 
 ## <a name="scheduling-and-sequential-copy"></a>Zamanlama ve sıralı kopya

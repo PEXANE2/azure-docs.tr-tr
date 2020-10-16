@@ -9,10 +9,10 @@ ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328879"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
@@ -142,7 +142,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
   -DiagnosticsConfigurationPath "DiagnosticsConfiguration.json"
 ```
 
-Özel ayarlar [Privateconfig öğesinde](diagnostics-extension-schema-windows.md#privateconfig-element)tanımlanır, ancak genel ayarlar yapılandırma şemasının [ortak öğesinde](diagnostics-extension-schema-windows.md#publicconfig-element) tanımlanmıştır. Depolama hesabının ayrıntılarını özel ayarlara dahil etmek yerine set-Azvmdiagnosticsextenma cmdlet 'inin parametreleri olarak belirtmeyi de tercih edebilirsiniz.
+Özel ayarlar [Privateconfig öğesinde](diagnostics-extension-schema-windows.md#privateconfig-element)tanımlanır, ancak genel ayarlar yapılandırma şemasının [ortak öğesinde](diagnostics-extension-schema-windows.md#publicconfig-element) tanımlanmıştır. Ayrıca, depolama hesabının ayrıntılarını özel ayarlara dahil etmek yerine Set-AzVMDiagnosticsExtension cmdlet 'inin parametreleri olarak belirtmeyi de tercih edebilirsiniz.
 
 Aşağıda, tanılama altyapısı günlüklerinin, tek bir performans sayacının ve tek bir olay günlüğünün toplanmasını sağlayan bir yapılandırma dosyasının en az bir örneği verilmiştir. Özel ve genel ayarların tüm ayrıntıları için bkz. [örnek yapılandırma](diagnostics-extension-schema-windows.md#publicconfig-element) . 
 
@@ -192,7 +192,7 @@ Ayrıca bkz. [Windows çalıştıran bir sanal makinede Azure tanılama etkinle�
 Aşağıdaki tabloda, tanılama uzantısından toplanan farklı veri türleri ve bunların bir tablo ya da blob olarak saklanıp saklanmayacağı listelenmiştir. Tablolarda depolanan veriler ayrıca, ortak yapılandırmanızda [StorageType ayarına](diagnostics-extension-schema-windows.md#publicconfig-element) bağlı olarak bloblarda depolanabilir.
 
 
-| Veriler | Depolama türü | Description |
+| Veriler | Depolama türü | Açıklama |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tablo | Tanılama İzleyicisi ve yapılandırma değişiklikleri. |
 | WADDirectoriesTable | Tablo | Tanılama izleyicisinin izlediği dizinler.  Buna IIS günlükleri, IIS başarısız istek günlükleri ve özel dizinler dahildir.  Blob günlük dosyasının konumu kapsayıcı alanında belirtilir ve BLOB adı RelativePath alanında bulunur.  AbsolutePath alanı, Azure sanal makinesinde var olan dosyanın konumunu ve adını gösterir. |

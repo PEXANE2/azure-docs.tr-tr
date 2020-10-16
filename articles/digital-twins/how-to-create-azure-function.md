@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: d81d26c4cf975a20f31b4b4546c1477ed1a630e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614074"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048330"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
 
@@ -38,15 +38,15 @@ Visual Studio 2019 ' de _dosya > yeni > proje_ ' yi seçin ve _Azure işlevleri_
 
 İşlev uygulaması için bir ad belirtin ve _Oluştur_' u seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: yeni proje yapılandırma":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 *Event Grid tetikleyicisi* işlev türünü seçin ve _Oluştur_' u seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: Azure işlevi proje tetikleyicisi iletişim kutusu":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 İşlev uygulamanız oluşturulduktan sonra Visual Studio, proje klasörünüzdeki **function.cs** dosyasında otomatik olarak doldurulan kod örneğine sahip olur. Bu kısa Azure işlevi olayları günlüğe kaydetmek için kullanılır.
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: örnek kodlu Proje penceresi":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Event Grid tetikleyicisiyle bir Azure işlevi yazma
 
@@ -160,19 +160,19 @@ namespace adtIngestFunctionSample
 > [!IMPORTANT] 
 > Azure işlevi yayımlandığında, aboneliğiniz üzerinde Azure dijital TWINS 'ten bağımsız olarak ek ücretler uygulanır.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: yayımlama Azure işlevi ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 Yayımlama hedefi olarak **Azure** ' u seçin ve **İleri ' yi**seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: Azure işlev yayımlama iletişim kutusu, Azure 'u seçin ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: Publish işlevi iletişim kutusunda makinenize göre Azure İşlev Uygulaması (Windows) veya (Linux) seçeneğini belirleyin":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: Publish işlevi iletişim kutusu, yeni bir Azure Işlevi oluşturma":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: Publish işlevi iletişim kutusu, alanları doldurup oluştur ' u seçin.":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: Publish işlevi iletişim kutusu, listeden işlev uygulamanızı seçin ve son":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 Aşağıdaki sayfada, yeni işlev uygulaması, bir kaynak grubu ve diğer ayrıntılar için istenen adı girin.
 Işlevler uygulamanızın Azure dijital TWINS 'e erişebilmesi için sistem tarafından yönetilen bir kimliğe sahip olması ve Azure dijital TWINS örneğinize erişmek için gereken izinlere sahip olması gerekir.
@@ -200,7 +200,7 @@ az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(fu
 ```azurecli 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
-Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Ortam değişkenlerini ayarlama hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables). 
+Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Ortam değişkenlerini ayarlama hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](/sandbox/functions-recipes/environment-variables). 
 
 > [!TIP]
 > Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının*başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -214,48 +214,48 @@ Bir sistem tarafından atanmış yönetilen kimlik, Azure kaynaklarının kimlik
 
 [Azure Portal](https://portal.azure.com/), arama çubuğunda _işlev uygulaması_ ' nı daha önce oluşturduğunuz işlev uygulaması adı ile arayın. Listeden *işlev uygulaması* seçin. 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure portal: işlev uygulamasını ara":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 İşlev uygulaması penceresinde, yönetilen kimliği etkinleştirmek için sol taraftaki Gezinti çubuğundan _kimlik_ ' i seçin.
 _Sistem atandı_ sekmesinde _durumu_ açık olarak değiştirin ve _kaydedin_ . _Sistem tarafından atanan yönetilen kimliği etkinleştirmek_için bir açılır pencere görürsünüz.
 _Evet_ düğmesini seçin. 
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure portal: sistem tarafından yönetilen kimliği etkinleştir":::
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 İşlevinizin Azure Active Directory başarıyla kaydedildiğini bildirimleri doğrulayabilirsiniz.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure portal: bildirimler":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 Ayrıca, _kimlik_ sayfasında GÖSTERILEN **nesne kimliğini** bir sonraki bölümde kullanılacak şekilde aklınızda bulabilirsiniz.
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Gelecekte kullanmak üzere nesne KIMLIĞINI kopyalama":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Azure portal kullanarak erişim rolleri atama
 
-Azure _rol atamaları ' nı seçin,_ Azure rol atamaları sayfasına kadar açılır. Ardından _+ rol ataması Ekle (Önizleme)_ seçeneğini belirleyin.
+Azure *rol atamaları sayfasını açmak* için _Azure rol atamaları_ düğmesini seçin. Ardından _+ rol ataması Ekle (Önizleme)_ seçeneğini belirleyin.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure portal: rol ataması Ekle":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-Açılan _rol ataması Ekle (Önizleme)_ penceresinde, şunu seçin
+Açılan _rol ataması Ekle (Önizleme)_ sayfasında şunları seçin:
 
 * _Kapsam_: Kaynak grubu
 * _Abonelik_: Azure aboneliğinizi seçin
 * _Kaynak grubu_: açılan listeden kaynak grubunuzu seçin
 * _Rol_: açılan listeden _Azure dijital TWINS sahibini (Önizleme)_ seçin
 
-_Kaydet_ düğmesini seçerek ayrıntılarınızı kaydedin.
+Sonra, _Kaydet_ düğmesine basarak ayrıntılarınızı kaydedin.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure portal: rol ataması Ekle (Önizleme) ":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Azure portal kullanarak uygulama ayarlarını yapılandırma
 
-Bir ortam değişkeni ayarlayarak, Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Bunun hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables). Uygulama ayarları, dijital TWINS örneğine erişmek için ortam değişkenleri olarak sunulur. 
+Bir ortam değişkeni ayarlayarak, Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Bunun hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](/sandbox/functions-recipes/environment-variables). Uygulama ayarları, dijital TWINS örneğine erişmek için ortam değişkenleri olarak sunulur. 
 
 Uygulama ayarı oluşturmak için ADT_INSTANCE_URL gerekir.
 
 Örnek ana bilgisayar adına **_https://_** ekleyerek ADT_INSTANCE_URL alabilirsiniz. Azure portal, arama çubuğunda örneğinizi arayarak dijital TWINS örnek ana bilgisayar adınızı bulabilirsiniz. Ardından, _ana bilgisayar adını_görüntülemek için sol gezinti çubuğundaki _genel bakış_ ' ı seçin. Bir uygulama ayarı oluşturmak için bu değeri kopyalayın.
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure portal: genel bakış-> _Value_ alanında kullanılacak ana bilgisayar adını kopyalayın.":::
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 Artık aşağıdaki adımları izleyerek bir uygulama ayarı oluşturabilirsiniz:
 
@@ -263,9 +263,9 @@ Artık aşağıdaki adımları izleyerek bir uygulama ayarı oluşturabilirsiniz
 * Yeni uygulama ayarı oluşturmak için sol taraftaki Gezinti çubuğunda _yapılandırma_ ' yı seçin.
 * _Uygulama ayarları_ sekmesinde _+ Yeni uygulama ayarı_ ' nı seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure portal: mevcut Azure işlevi için arama":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure portal: uygulama ayarlarını yapılandırma":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 Açılan pencerede, bir uygulama ayarı oluşturmak için yukarıdan kopyalanmış değeri kullanın. \
 _Ad_  : ADT_SERVICE_URL \
@@ -273,19 +273,19 @@ _Değer_ : https://{-Azure-dijital-TWINS-hostname}
 
 Bir uygulama ayarı oluşturmak için _Tamam ' ı_ seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure portal: uygulama ayarlarını ekleyin.":::
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 Uygulama ayarlarınızı _ad_ alanı altında uygulama adı ile görüntüleyebilirsiniz. Sonra, _Kaydet_ düğmesini seçerek uygulama ayarlarınızı kaydedin.
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure portal: oluşturulan uygulamayı görüntüleyin ve uygulamayı yeniden başlatın":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 Uygulama ayarlarındaki değişikliklerin uygulamanın yeniden başlatılması gerekir. Uygulamanızı yeniden başlatmak için _devam_ ' ı seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure portal: uygulama ayarlarını kaydet":::
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 _Bildirimler_ simgesini seçerek uygulama ayarlarının güncelleştirildiğini görebilirsiniz. Uygulama ayarınız oluşturulmadıysa, yukarıdaki işlemi izleyerek bir uygulama ayarı eklemeyi yeniden deneyebilirsiniz.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure portal: uygulama ayarlarını güncelleştirme bildirimleri":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

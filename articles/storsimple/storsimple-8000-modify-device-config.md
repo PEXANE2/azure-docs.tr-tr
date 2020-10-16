@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514677"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962896"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz yapılandırmanızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -44,7 +44,7 @@ Azure portal kullanarak cihaz adını değiştirebilir ve seçtiğiniz benzersiz
 
 StorSimple Aygıt Yöneticisi hizmetine bağlı bir StorSimple cihazına varsayılan ad atanır. Varsayılan ad genellikle cihazın seri numarasını yansıtır. Örneğin, 8600-SHX0991003G44HT gibi 15 karakter uzunluğunda varsayılan bir cihaz adı şunları gösterir:
 
-* **8600** – cihaz modelini gösterir.
+* **8600**  – cihaz modelini gösterir.
 * **SHX** : üretim sitesini belirtir.
 * **0991003** -belirli bir ürünü gösterir.
 * **G44HT**-son 5 basamak, benzersiz seri numaraları oluşturmak için artırılır. Bu sıralı bir küme olmayabilir.
@@ -61,7 +61,7 @@ Bir cihaz açıklaması genellikle cihazın sahibini ve fiziksel konumunu belirl
 
 Cihazınızın, bulut depolama hizmeti sağlayıcınızda kimlik doğrulaması için zaman eşitlemesini gerekir. Cihaz saati ayarlarını değiştirmek için cihazınızdaki **Genel ayarlar** dikey penceresini kullanın.
 
-![Genel ayarlarda cihaz açıklaması](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Genel ayarlar 'da cihaz açıklaması 2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  Aşağı açılan listeden saat diliminizi seçin. En fazla iki ağ zaman Protokolü (NTP) sunucusu belirtebilirsiniz:
 

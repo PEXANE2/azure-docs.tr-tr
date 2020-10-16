@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627774"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Öğretici: API 'nizi dönüştürme ve koruma
@@ -83,7 +83,7 @@ Görebileceğiniz gibi, yanıt **x-ASPNET-Version**ve **x-destekli** üst bilgil
 
    :::image type="content" source="media/transform-api/set-policy.png" alt-text="Portaldaki ilkeler":::
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>API yanıt gövdesindeki özgün URL’leri, APIM ağ geçidi URL’leri ile değiştirme
 
@@ -107,7 +107,7 @@ Bu bölümde, API 'nin HTTP yanıtının gövdesinde görüntülenen özgün URL
 1.  **Giden işleme** bölümünde, kod Düzenleyicisi ( **</>** ) simgesini seçin.
 1.  İmleci ** &lt; giden &gt; ** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
 1.  Sağ taraftaki pencerede, **dönüştürme ilkeleri**altında, **Içerikte maske URL 'leri**' ni seçin. 
-1.  **Kaydet**'i seçin.
+1.  **Kaydet**’i seçin.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Hız sınırı ilkesi ekleyerek (azaltma) bir API’yi koruma
 

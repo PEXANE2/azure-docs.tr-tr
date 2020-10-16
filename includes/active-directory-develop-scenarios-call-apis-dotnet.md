@@ -15,10 +15,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76308899"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>MSAL.NET içinde AuthenticationResult özellikleri
@@ -27,10 +27,10 @@ Belirteçleri alma yöntemleri döndürülür `AuthenticationResult` . Zaman uyu
 
 MSAL.NET ' de şunları `AuthenticationResult` gösterir:
 
-- `AccessToken`Web API 'sinin kaynaklara erişmesi için. Bu parametre genellikle bir Base-64 kodlu JWT dizesidir. İstemci hiçbir şekilde erişim belirtecinin içinde görünmemelidir. Biçim kararlı olmaya garanti edilmez ve kaynak için şifrelenebilir. İstemci üzerindeki erişim belirteci içeriğine bağlı olan kod yazmak, hata ve istemci mantıksal sonlarının en büyük kaynaklarından biridir. Daha fazla bilgi için bkz. [erişim belirteçleri](../articles/active-directory/develop/access-tokens.md).
-- `IdToken`Kullanıcı için. Bu parametre kodlanmış bir JWT. Daha fazla bilgi için bkz. [Kimlik belirteçleri](../articles/active-directory/develop/id-tokens.md).
-- `ExpiresOn`belirtecin süresinin dolacağı tarih ve saate bildirir.
-- `TenantId`kullanıcının bulunduğu kiracıyı içerir. Azure Active Directory (Azure AD) B2B senaryolarında Konuk kullanıcılar için kiracı KIMLIĞI, benzersiz kiracı değil Konuk kiracıya ait değildir.
+- `AccessToken` Web API 'sinin kaynaklara erişmesi için. Bu parametre genellikle bir Base-64 kodlu JWT dizesidir. İstemci hiçbir şekilde erişim belirtecinin içinde görünmemelidir. Biçim kararlı olmaya garanti edilmez ve kaynak için şifrelenebilir. İstemci üzerindeki erişim belirteci içeriğine bağlı olan kod yazmak, hata ve istemci mantıksal sonlarının en büyük kaynaklarından biridir. Daha fazla bilgi için bkz. [erişim belirteçleri](../articles/active-directory/develop/access-tokens.md).
+- `IdToken` Kullanıcı için. Bu parametre kodlanmış bir JWT. Daha fazla bilgi için bkz. [Kimlik belirteçleri](../articles/active-directory/develop/id-tokens.md).
+- `ExpiresOn` belirtecin süresinin dolacağı tarih ve saate bildirir.
+- `TenantId` kullanıcının bulunduğu kiracıyı içerir. Azure Active Directory (Azure AD) B2B senaryolarında Konuk kullanıcılar için kiracı KIMLIĞI, benzersiz kiracı değil Konuk kiracıya ait değildir.
 Belirteç bir kullanıcı için teslim edildiğinde, `AuthenticationResult` bu kullanıcı hakkındaki bilgileri de içerir. Uygulama için hiçbir Kullanıcı olmadan belirteçlerin istendiği gizli istemci akışları için bu kullanıcı bilgileri null olur.
 - `Scopes`Belirtecinin verildiği.
 - Kullanıcının benzersiz KIMLIĞI.
@@ -48,7 +48,7 @@ Aşağıdaki diyagramda arabirimin yapısı gösterilmektedir `IAccount` .
 |----------|-------------|
 | `TenantId` | Bir GUID için, hesabın bulunduğu kiracının KIMLIĞI olan bir dize temsili. |
 | `ObjectId` | Kiracıdaki hesaba sahip olan kullanıcının KIMLIĞI olan GUID için bir dize temsili. |
-| `Identifier` | Hesap için benzersiz tanımlayıcı. `Identifier`, öğesinin bitiştirilmesi `ObjectId` ve `TenantId` virgülle ayrılması. Bunlar temel 64 kodlandı değildir. |
+| `Identifier` | Hesap için benzersiz tanımlayıcı. `Identifier` , öğesinin bitiştirilmesi `ObjectId` ve `TenantId` virgülle ayrılması. Bunlar temel 64 kodlandı değildir. |
 
 `IAccount`Arabirim, tek bir hesapla ilgili bilgileri temsil eder. Aynı kullanıcı farklı kiracılarda bulunabilir. Bu, bir kullanıcının birden fazla hesabı olabileceği anlamına gelir. Üyeleri aşağıdaki tabloda gösterilmiştir.
 

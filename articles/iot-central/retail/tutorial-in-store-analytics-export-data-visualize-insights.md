@@ -12,10 +12,10 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651454"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Bir olay hub 'ından Power BI akış veri kümesine veri göndermek için Logic Apps kullanın.
 > * Akış veri kümesindeki verileri görselleştirmek için Power BI panosu oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -42,7 +42,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Olay Hub 'ınızı ve mantıksal uygulamanızı oluşturmadan önce, bunları yönetmek için bir kaynak grubu oluşturmanız gerekir. Kaynak grubu, **Mağaza Analytics-checkout** IoT Central uygulaması ile aynı konumda olmalıdır. Kaynak grubu oluşturmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Sol gezinti bölmesinde **kaynak grupları**' nı seçin. Ardından **Ekle**'yi seçin.
 1. **Abonelik**için, IoT Central uygulamanızı oluşturmak Için kullandığınız Azure aboneliğinin adını seçin.
 1. **Kaynak grubu** adı için _Retail-Store-Analysis_* yazın.

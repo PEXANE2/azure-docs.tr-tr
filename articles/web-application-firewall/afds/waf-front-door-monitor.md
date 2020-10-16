@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808946"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web uygulaması güvenlik duvarı izleme ve günlüğe kaydetme
@@ -24,7 +24,7 @@ Frontkapısı günlüğü olan WAF, [Azure izleyici](../../azure-monitor/overvie
 
 Azure portal, ön kapı kaynak türü ' ne gidin. Soldaki **izleme** / **ölçümleri** sekmesinden, WAF kurallarıyla eşleşen isteklerin sayısını izlemek için **webapplicationfirewallrequestcount** ekleyebilirsiniz. Özel filtreler, eylem türleri ve kural adlarına göre oluşturulabilir.
 
-:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="Wafmetrik":::
+:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="Wafmetrik ":::
 
 ## <a name="logs-and-diagnostics"></a>Günlükler ve Tanılamalar
 

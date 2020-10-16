@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
 ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449321"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
@@ -81,7 +81,7 @@ Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak men
 
    - Etkinlik günlüğü için, **Azure izleyici** menüsünde **etkinlik günlüğü** ' ne ve ardından **Tanılama ayarları**' na tıklayın. Etkinlik günlüğü için eski tüm yapılandırmaları devre dışı bıraktığınızdan emin olun. Ayrıntılar için bkz. [var olan ayarları devre dışı bırakma](./activity-log.md#legacy-collection-methods) .
 
-        ![Etkinlik günlüğü seçiliyken Azure Izleyici menüsünün ekran görüntüsü ve Izleme-etkinlik günlüğü menü çubuğunda vurgulanan Tanılama ayarları.](media/diagnostic-settings/menu-activity-log.png)
+        ![Etkinlik günlüğü seçiliyken Azure Izleyici menüsünün ekran görüntüsü ve Monitor-Activity günlük menü çubuğunda Tanılama ayarları vurgulanır.](media/diagnostic-settings/menu-activity-log.png)
 
 2. Seçtiğiniz kaynakta hiçbir ayar yoksa, bir ayar oluşturmanız istenir. **Tanılama ayarı Ekle**' ye tıklayın.
 

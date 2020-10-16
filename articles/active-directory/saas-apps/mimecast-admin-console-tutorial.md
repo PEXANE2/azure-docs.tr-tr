@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f3029acd791e7c45eb5943d298189430ac308e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9599c20905168b425675d0b028545143c7d19f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528480"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>Öğretici: Mimecast Yönetici Konsolu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -155,23 +155,23 @@ Bu bölümde, Mimecast Yönetici konsoluna erişim vererek Azure çoklu oturum a
 
 1. **Yönetim**  >  **Hizmetleri**  >  **uygulamalarına**gidin.
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/services.png)
+    ![Ekran görüntüsü, seçili uygulamaların bulunduğu Mimecast penceresini gösterir.](./media/mimecast-admin-console-tutorial/services.png)
 
 1. **Kimlik doğrulama profilleri** sekmesi ' ne tıklayın.
     
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
+    ![Ekran görüntüsü, kimlik doğrulama profillerinin seçili olduğu uygulama sekmesini gösterir.](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
 
 1. **Yeni kimlik doğrulama profili** sekmesi ' ne tıklayın.
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
+    ![Ekran görüntüsü yeni kimlik doğrulama profili seçili olduğunu gösterir.](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
 
 1. **Açıklama** metin kutusuna geçerli bir açıklama girin ve **YÖNETIM konsolu Için SAML kimlik doğrulamasını zorla** onay kutusunu seçin.
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
+    ![Ekran görüntüsünde, Yönetim Konsolu için SAML kimlik doğrulamasının zorla ' nın nasıl oluşturulacağı gösterilir.](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
 
 1. **Yönetim Konsolu Için SAML yapılandırması** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/sso-settings.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Yönetim Konsolu için SAML Yapılandırması sayfasını gösterir.](./media/mimecast-admin-console-tutorial/sso-settings.png)
 
     a. **Sağlayıcı**Için, açılan listeden **Azure Active Directory** seçin.
 
@@ -189,19 +189,19 @@ Bu bölümde, Mimecast Yönetici konsoluna erişim vererek Azure çoklu oturum a
 
 1. **Yönetim**  >  **dizinleri**  >  **iç dizinleri**' ne gidin.
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/internal-directories.png)
+    ![Ekran görüntüsü, Iç dizinlerin seçili olduğu Mimecast penceresini gösterir.](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
 1. Etki alanı aşağıda bahsedildiğinde, etki alanınızı seçin, aksi takdirde lütfen **yeni etki alanına**tıklayarak yeni bir etki alanı oluşturun.
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/domain-name.png)
+    ![Ekran görüntüsü seçili etki alanını gösterir.](./media/mimecast-admin-console-tutorial/domain-name.png)
 
 1. **Yeni adres** sekmesi ' ne tıklayın.
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/new-address.png)
+    ![Ekran görüntüsü yeni adresin seçili olduğunu gösterir.](./media/mimecast-admin-console-tutorial/new-address.png)
 
 1. Aşağıdaki sayfada gerekli Kullanıcı bilgilerini sağlayın:
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/user-information.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz sayfayı gösterir.](./media/mimecast-admin-console-tutorial/user-information.png)
 
     a. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini girin `B.Simon@yourdomainname.com` .
 
@@ -215,7 +215,7 @@ Bu bölümde, Mimecast Yönetici konsoluna erişim vererek Azure çoklu oturum a
 
     f. Kullanıcılara roller atamak için **rol Düzenle** ' ye tıklayın ve gerekli rolü, kuruluşunuzun gereksinimlerine göre kullanıcıya atayın.
 
-    ![Mimecast Yönetici Konsolu yapılandırması](./media/mimecast-admin-console-tutorial/assign-role.png)
+    ![Ekran görüntüsü, rol düzenleme seçebileceğiniz adres ayarlarını gösterir.](./media/mimecast-admin-console-tutorial/assign-role.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

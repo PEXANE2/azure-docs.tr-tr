@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976249"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Senaryo: trafiği bir NVA üzerinden yönlendirme
@@ -99,7 +99,7 @@ Artık NVA sanal ağları, NVA olmayan VNET 'ler ve dallar tüm NVA 'ya nasıl u
 
 **Şekil 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Şekil 2" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Şekil 1" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Senaryo iş akışı
 
@@ -117,7 +117,7 @@ Sanal WAN, Vnettir 5, 6 sanal hub 'a bağlanıp VNet 2 NVA IP aracılığıyla i
 
 2. Vnetme 2, 5, 6 ' dan hub 1 ' in varsayılan yol tablosuna toplanan bir statik yol girişi ekleyin.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Örnek":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Şekil 1":::
 
 3. VNet 2 ' in sanal ağ bağlantısı içinde Vnetme 5, 6 için statik bir yol yapılandırın. Bir sanal ağ bağlantısı için yönlendirme yapılandırmasını ayarlamak için bkz. [sanal hub yönlendirme](how-to-virtual-hub-routing.md#routing-configuration).
 
@@ -129,7 +129,7 @@ Bu, aşağıdaki **Şekil 3**' te gösterildiği gibi yönlendirme yapılandırm
 
 **Şekil 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Şekil 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Şekil 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

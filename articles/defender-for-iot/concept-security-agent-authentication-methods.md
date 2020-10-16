@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941707"
 ---
 # <a name="security-agent-authentication-methods"></a>Güvenlik Aracısı kimlik doğrulama yöntemleri
@@ -48,7 +48,7 @@ Güvenlik aracısının mevcut bir cihaz kimlik doğrulama yöntemini (otomatik 
 ## <a name="authentication-methods-known-limitations"></a>Kimlik doğrulama yöntemleri bilinen sınırlamalar
 
 - **Securitymodule** kimlik doğrulama modu yalnızca simetrik anahtar kimlik doğrulamasını destekler.
-- CA Imzalı sertifika, **cihaz** kimlik doğrulama modu tarafından desteklenmiyor.
+- CA-Signed sertifikası **cihaz** kimlik doğrulama modu tarafından desteklenmiyor.
 
 ## <a name="security-agent-installation-parameters"></a>Güvenlik Aracısı yükleme parametreleri
 

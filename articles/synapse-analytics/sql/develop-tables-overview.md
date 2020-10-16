@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: d4ab3bccf281928be2b55eb5a36ae20a0aa8a08a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288724"
 ---
 # <a name="design-tables-using-synapse-sql"></a>SYNAPSE SQL kullanarak tabloları tasarlama
@@ -27,27 +27,27 @@ Aşağıdaki tabloda SQL havuzu ile ilgili konular ve isteğe bağlı SQL karş�
 
 | Konu                                                        | SQL havuzu | İsteğe bağlı SQL |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
-| [Tablo kategorisini belirleme](#determine-table-category)        | Yes                | Hayır                      |
-| [Şema adları](#schema-names)                                | Yes                | Yes                     |
-| [Tablo adları](#table-names)                                  | Yes                | Hayır                      |
-| [Tablo kalıcılığı](#table-persistence)                      | Yes                | Hayır                      |
-| [Normal tablo](#regular-table)                              | Yes                | Hayır                      |
-| [Geçici tablo](#temporary-table)                          | Yes                | Yes                     |
-| [Dış tablo](#external-table)                            | Yes                | Yes                     |
-| [Veri türleri](#data-types)                                    | Yes                | Yes                     |
-| [Dağıtılmış tablolar](#distributed-tables)                    | Yes                | Hayır                      |
-| [Karma dağıtılmış tablolar](#hash-distributed-tables)          | Yes                | Hayır                      |
-| [Çoğaltılmış tablolar](#replicated-tables)                      | Yes                | Hayır                      |
-| [Hepsini bir kez deneme tabloları](#round-robin-tables)                    | Yes                | Hayır                      |
-| [Tablolar için ortak dağıtım yöntemleri](#common-distribution-methods-for-tables) | Yes                | Hayır                      |
-| [Bölümler](#partitions)                                    | Yes                | Yes                     |
-| [Columnstore dizinleri](#columnstore-indexes)                  | Yes                | Hayır                      |
-| [İstatistikler](#statistics)                                    | Yes                | Yes                     |
-| [Birincil anahtar ve benzersiz anahtar](#primary-key-and-unique-key)    | Yes                | Hayır                      |
-| [Tablo oluşturma komutları](#commands-for-creating-tables) | Yes                | Hayır                      |
-| [Veri ambarıyla kaynak verileri hizalama](#align-source-data-with-the-data-warehouse) | Yes                | Hayır                      |
-| [Desteklenmeyen tablo özellikleri](#unsupported-table-features)    | Yes                | Hayır                      |
-| [Tablo boyutu sorguları](#table-size-queries)                    | Yes                | Hayır                      |
+| [Tablo kategorisini belirleme](#determine-table-category)        | Evet                | Hayır                      |
+| [Şema adları](#schema-names)                                | Evet                | Evet                     |
+| [Tablo adları](#table-names)                                  | Evet                | Hayır                      |
+| [Tablo kalıcılığı](#table-persistence)                      | Evet                | Hayır                      |
+| [Normal tablo](#regular-table)                              | Evet                | Hayır                      |
+| [Geçici tablo](#temporary-table)                          | Evet                | Evet                     |
+| [Dış tablo](#external-table)                            | Evet                | Evet                     |
+| [Veri türleri](#data-types)                                    | Evet                | Evet                     |
+| [Dağıtılmış tablolar](#distributed-tables)                    | Evet                | Hayır                      |
+| [Karma dağıtılmış tablolar](#hash-distributed-tables)          | Evet                | Hayır                      |
+| [Çoğaltılmış tablolar](#replicated-tables)                      | Evet                | Hayır                      |
+| [Hepsini bir kez deneme tabloları](#round-robin-tables)                    | Evet                | Hayır                      |
+| [Tablolar için ortak dağıtım yöntemleri](#common-distribution-methods-for-tables) | Evet                | Hayır                      |
+| [Bölümler](#partitions)                                    | Evet                | Evet                     |
+| [Columnstore dizinleri](#columnstore-indexes)                  | Evet                | Hayır                      |
+| [İstatistikler](#statistics)                                    | Evet                | Evet                     |
+| [Birincil anahtar ve benzersiz anahtar](#primary-key-and-unique-key)    | Evet                | Hayır                      |
+| [Tablo oluşturma komutları](#commands-for-creating-tables) | Evet                | Hayır                      |
+| [Veri ambarıyla kaynak verileri hizalama](#align-source-data-with-the-data-warehouse) | Evet                | Hayır                      |
+| [Desteklenmeyen tablo özellikleri](#unsupported-table-features)    | Evet                | Hayır                      |
+| [Tablo boyutu sorguları](#table-size-queries)                    | Evet                | Hayır                      |
 
 ## <a name="determine-table-category"></a>Tablo kategorisini belirleme
 
@@ -207,7 +207,7 @@ BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve zorunlu KıLıNMAYAN her ikisi de k
 
 Yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesinin sonuçlarıyla bir tablo oluşturup doldurabilirsiniz. Aşağıda tablo oluşturmak için T-SQL komutları verilmiştir.
 
-| T-SQL ekstresi | Description |
+| T-SQL ekstresi | Açıklama |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
 | [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Dış tablo oluşturur. Tablonun tanımı SQL havuzunda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Storage depolanır. |

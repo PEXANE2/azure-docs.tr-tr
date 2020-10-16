@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710915"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939877"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
 
@@ -29,10 +29,9 @@ Aşağıdaki tabloda tipik bir senaryoda RTO ve RPO karşılaştırılır:
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
 | Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmez | RTO-değişecek <br/>RPO < 1 h | RTO-değişecek <br/>RPO < 1 h |
-| Okuma amaçlı çoğaltmalar | RTO-dakika <br/>RPO < 5 dk | RTO-dakika <br/>RPO < 5 dk| RTO-dakika <br/>RPO < 5 dk|
+| Okuma amaçlı çoğaltmalar | RTO-dakika <br/>RPO < 5 dk * | RTO-dakika <br/>RPO < 5 dk *| RTO-dakika <br/>RPO < 5 dk *|
 
-> [!IMPORTANT]
-> Burada bahsedilen RTO ve RPO, yalnızca başvuru amaçlıdır. Bu ölçümler için SLA 'Lar sunulmaz.
+\* RPO, birincil veritabanı iş yükü ve bölgeler arasındaki gecikme süresi dahil çeşitli faktörlere bağlı olarak bazı durumlarda daha yüksek olabilir. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Bir kullanıcı veya uygulama hatasından sonra bir sunucuyu kurtarma
 

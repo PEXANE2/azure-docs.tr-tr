@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 94f3fd9f9c66082beace47d675539e9f73c21e83
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824202"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075544"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -23,7 +23,7 @@ Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özelli
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
+* Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](/java/azure/jdk) .
 * [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3,0 veya üzeri.
 
 ## <a name="create-an-app-configuration-instance"></a>Uygulama yapılandırma örneği oluşturma
@@ -304,7 +304,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir Spring Boot Web uygulamasındaki özellikleri yönetmek için kullandınız.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)aracılığıyla bir Spring Boot Web uygulamasındaki özellikleri yönetmek için kullandınız.
 
 * [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
 * [Özellik bayraklarını yönetin](./manage-feature-flags.md).

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: ee35385b88bf4fbd5f899fde032b11b99a20d050
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87130044"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL veritabanı projesi kullanarak Azure Data Lake için bir U-SQL veritabanı geliştirin
@@ -50,7 +50,7 @@ Bir derleme nesnesi için araç, derlemeyi kaydetmenize ve DLL dosyalarını ve 
 
 3.  **Yönetilen bağımlılıklar** ve varsa **ek dosyalar** ekleyin. Ek dosyalar eklediğinizde araç, derlemeleri hem yerel makinenizde hem de derleme makinesinde daha sonra bulamediğinden emin olmak için göreli yolu kullanır. 
 
-@_DeployTempDirectory, Aracı yapı çıkış klasörüne işaret eden önceden tanımlanmış bir değişkendir. Yapı çıktı klasörü altında, her derlemenin derleme adıyla adlı bir alt klasörü vardır. Tüm dll 'Ler ve ek dosyalar bu alt klasörde bulunur. 
+@_DeployTempDirectory , Aracı yapı çıkış klasörüne işaret eden önceden tanımlanmış bir değişkendir. Yapı çıktı klasörü altında, her derlemenin derleme adıyla adlı bir alt klasörü vardır. Tüm dll 'Ler ve ek dosyalar bu alt klasörde bulunur. 
  
 ## <a name="build-a-u-sql-database-project"></a>U-SQL veritabanı projesi oluşturma
 
@@ -91,7 +91,7 @@ Visual Studio 'da bir U-SQL veritabanı projesi veya. ustodbpack paketi aracıl�
   
 ### <a name="deploy-u-sql-database-by-using-the-sdk"></a>SDK kullanarak U-SQL veritabanı dağıtma
 
-`PackageDeploymentTool.exe`U-SQL veritabanlarını dağıtmaya yardımcı olan programlama ve komut satırı arabirimlerini sağlar. SDK, konumunda bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir `build/runtime/PackageDeploymentTool.exe` .
+`PackageDeploymentTool.exe` U-SQL veritabanlarını dağıtmaya yardımcı olan programlama ve komut satırı arabirimlerini sağlar. SDK, konumunda bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir `build/runtime/PackageDeploymentTool.exe` .
 
 [SDK ve U-SQL veritabanı dağıtımı IÇIN CI/CD işlem hattı ayarlama hakkında daha fazla bilgi edinin](data-lake-analytics-cicd-overview.md).
 

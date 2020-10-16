@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90024154"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875045"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Notification Hub 'ı oluşturma
 
@@ -32,17 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. Yüklü olan sürümü ve bağımlı kitaplıkları bulmak için `az --version` kodunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
-
-## <a name="install-the-azure-cli-extension"></a>Azure CLı uzantısını yükler
-
-Azure CLI için uzantı başvurularıyla çalışırken önce uzantıyı yüklemeniz gerekir. Azure CLı uzantıları, çekirdek CLı 'nin bir parçası olarak gönderilmeyen deneysel ve yayın öncesi komutlara erişmenizi sağlar. Güncelleştirme ve kaldırma da dahil olmak üzere uzantılar hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
-
-Notification Hubs için Azure CLı uzantısını yükler.
-
-```azurecli
-az extension add --name notification-hub
-```
+> Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. Yüklenen sürümü ve bağımlı kitaplıkları bulmak için [az Version](/cli/azure/reference-index?#az_version) ' i çalıştırın. En son sürüme yükseltmek için [az Upgrade](/cli/azure/reference-index?#az_upgrade)' i çalıştırın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 

@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 07/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87004656"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
@@ -47,7 +47,7 @@ Azure Otomasyonu 'nda bir kaynağı sildiğinizde, kalıcı kaldırma işleminde
 
 Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 
-| Veri | İlke |
+| Veriler | İlke |
 |:--- |:--- |
 | Hesaplar |Bir hesap, bir kullanıcı tarafından silindikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 | Varlıklar |Bir varlık, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı varlığı tutan bir hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. Varlıklar arasında değişkenler, zamanlamalar, kimlik bilgileri, sertifikalar, Python 2 paketleri ve bağlantılar bulunur. |

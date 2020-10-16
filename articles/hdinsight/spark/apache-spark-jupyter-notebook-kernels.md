@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084724"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümelerinde Jupyter Not defteri için kernels
@@ -70,7 +70,7 @@ HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'
 
     Aşağıdaki tabloda kernels aracılığıyla kullanılabilen farklı mıknatıler listelenmiştir.
 
-   | Magic | Örnek | Description |
+   | Magic | Örnek | Açıklama |
    | --- | --- | --- |
    | Yardım |`%%help` |Örnek ve açıklama ile tüm kullanılabilir mıknatıc 'nin bir tablosunu oluşturur |
    | bilgiler |`%%info` |Geçerli Livy uç noktası için oturum bilgilerini çıkışlar |
@@ -90,7 +90,7 @@ HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'
 
 `%%sql`Magic, sorguları çalıştırdığınızda aldığınız çıkışın türünü denetlemek için kullanabileceğiniz farklı parametreleri destekler. Aşağıdaki tabloda çıkış listelenmiştir.
 
-| Parametre | Örnek | Description |
+| Parametre | Örnek | Açıklama |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Sorgunun sonucunu%% yerel Python bağlamında [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcı hale getirmek için bu parametreyi kullanın. Dataframe değişkeninin adı belirttiğiniz değişken adıdır. |
 | -q |`-q` |Hücrenin görselleştirmeleri devre dışı bırakmak için bu parametreyi kullanın. Bir hücrenin içeriğini görselleştirmeyi ve yalnızca bir veri çerçevesi olarak yakalamak istemiyorsanız, öğesini kullanın `-q -o <VARIABLE>` . Sonuçları yakalamadan görselleştirmeleri devre dışı bırakmak istiyorsanız (örneğin, bir SQL sorgusunu bir ifade gibi çalıştırmak için `CREATE TABLE` ), `-q` bir `-o` bağımsız değişken belirtmeden kullanın. |
@@ -125,7 +125,7 @@ Kümeniz varsayılan depolama hesabı olarak Azure Storage kullanıyorsa, jupi N
 
 Not defterlerini depolama hesabına kaydetme yöntemi [Apache Hadoop](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)Le uyumludur. Kümeye SSH oluşturursanız dosya yönetimi komutlarını kullanabilirsiniz:
 
-| Komut | Description |
+| Komut | Açıklama |
 |---------|-------------|
 | `hdfs dfs -ls /HdiNotebooks` | # Kök dizindeki her şeyi listeleyin: Bu dizindeki her şey giriş sayfasından jupi 'ye görünür |
 | `hdfs dfs –copyToLocal /HdiNotebooks` | # HdiNotebooks klasörünün içeriğini indirin|

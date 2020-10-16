@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331021"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Arc etkin PostgreSQL hiper ölçek sunucu grubu için bağlantı uç noktaları ve form bağlantı dizeleri alın
@@ -62,7 +62,7 @@ azdata arc postgres endpoint list -n <server group name>
 ```
 Bu uç noktaları şu şekilde kullanın:
 - Bağlantı dizelerinizi biçimlendirmek ve istemci araçlarınızla veya uygulamalarınızla bağlantı kurmak
-- Grafana ve kibana panolarına tarayıcınızdan erişin
+- Tarayıcınızdan Grafana ve Kibana panolarına erişin
 
 Örneğin, _PostgreSQL örneği_ adlı bitiş noktasını, psql ile sunucu grubunuza bağlamak için kullanabilirsiniz. Örneğin:
 ```console

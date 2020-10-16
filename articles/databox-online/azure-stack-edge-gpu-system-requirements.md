@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320736"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996414"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro için sistem gereksinimleri 
 
@@ -32,21 +32,29 @@ Azure Stack Edge Pro için sistem gereksinimleri şunlardır:
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/azure-stack-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
+## <a name="supported-azure-storage-accounts"></a>Desteklenen Azure depolama hesapları
 
 [!INCLUDE [Supported storage accounts](../../includes/azure-stack-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-tiered-storage-accounts"></a>Desteklenen katmanlı depolama hesapları
+## <a name="supported-edge-storage-accounts"></a>Desteklenen Edge depolama hesapları
 
-Azure Stack yönetildiğinde, SMB/NFS/REST arabirimleriyle aşağıdaki katmanlı depolama hesapları desteklenir.
+Aşağıdaki uç depolama hesapları, cihazın REST arabirimiyle desteklenir. Uç depolama hesapları cihazda oluşturulur. Daha fazla bilgi için bkz. [Edge depolama hesapları](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts).
 
 |Tür  |Depolama hesabı  |Yorumlar  |
 |---------|---------|---------|
 |Standart     |GPv1: Blok Blobu         |         |
-|    |  BLOB depolama: Blok Blobu       | Yalnızca NAS için desteklenir     |
 
-* Sayfa Blobları ve Azure dosyaları şu anda Azure Stack desteklenmez.
-* * Sık ve soğuk katman Azure Stack yok. Veriler karşıya yüklendikten sonra verileri arşiv katmanına taşımak için Azure PowerShell kullanın. Adım adım yönergeler için, [BLOB katmanını ayarlamak üzere Azure PowerShell kullanma]() bölümüne gidin
+* Sayfa Blobları ve Azure dosyaları şu anda desteklenmiyor.
+
+## <a name="supported-local-azure-resource-manager-storage-accounts"></a>Desteklenen yerel Azure Resource Manager depolama hesapları
+
+Bu depolama hesapları, yerel Azure Resource Manager bağlanırken cihaz yerel API 'Leri aracılığıyla oluşturulur. Aşağıdaki depolama hesapları desteklenir:
+
+|Tür  |Depolama hesabı  |Yorumlar  |
+|---------|---------|---------|
+|Standart     |GPv1: Blok Blobu, Sayfa Blobu        | SKU türü Standard_LRS       |
+|Premium     |GPv1: Blok Blobu, Sayfa Blobu        | SKU türü Premium_LRS        |
+
 
 ## <a name="supported-storage-types"></a>Desteklenen depolama türleri
 

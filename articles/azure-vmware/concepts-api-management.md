@@ -4,10 +4,10 @@ description: API Management Azure VMware Çözüm sanal makinelerinde (VM) çal�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 346d0f795c3d19b115ced771991263cce2104217
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262986"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>Azure VMware Çözüm tabanlı VM 'lerde çalışan API 'Leri yayımlamak ve korumak için API Management
@@ -56,4 +56,4 @@ Aşağıdaki dağıtım diyagramı, iç veya dış olabilecek tüketicileri gös
 * Dış trafik, API Management için dış koruma katmanını kullanan Application Gateway üzerinden Azure 'u girer.
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="İç dağıtım-Azure VMware çözümü için API Management":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Dış dağıtım-Azure VMware çözümü için API Management":::

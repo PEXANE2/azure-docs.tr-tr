@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266396"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977434"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Azure portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama
 
@@ -45,8 +45,8 @@ Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza 
     - **Bölge**: Kullanıcı tarafından atanan yönetilen kimliği dağıtmak için bir bölge seçin, örneğin **Batı ABD**.
     - **Ad**: Kullanıcı tarafından atanan yönetilen kimliğinizin adı, örneğin UAI1.
     ![Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
-4. Değişiklikleri gözden geçirmek için **gözden geçir + erişebilmeniz** ' e tıklayın.
-5. **Oluştur**’a tıklayın.
+4. Değişiklikleri gözden geçirmek için **gözden geçir + oluştur** ' a tıklayın.
+5. **Oluştur**'a tıklayın.
 
 ## <a name="list-user-assigned-managed-identities"></a>Kullanıcı tarafından atanan yönetilen kimlikleri listeleme
 

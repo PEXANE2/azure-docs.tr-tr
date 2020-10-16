@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430783"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092894"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Şablonları kullanarak Azure API Management Geliştirici Portalını Özelleştirme
 
@@ -41,7 +41,7 @@ Azure API Management'ta geliştirici portalını özelleştirmek için kullanıl
 
 Geliştirici portalı şablonlarına erişmek için sol taraftaki Özelleştir simgesine tıklayarak özelleştirme menüsünü görüntüleyin ve **Şablonlar**' a tıklayın.
 
-![Geliştirici portalı şablonları][api-management-customize-menu]
+![Özelleştirme menüsünü göstermek için Özelleştir simgesini vurgulayan ekran görüntüsü.][api-management-customize-menu]
 
 Şablonlar listesi, geliştirici portalındaki farklı sayfaları kapsayan birkaç şablon kategorisini görüntüler. Her şablon farklıdır, ancak bunları düzenleme ve değişiklikleri yayımlama adımları aynıdır. Bir şablonu düzenlemek için şablonun adına tıklayın.
 
@@ -103,7 +103,7 @@ Her geliştirici portalı şablonunun Düzenleyicisi, sayfanın alt kısmında i
 }
 ```
 
-**Ürün listesi** şablonundaki biçimlendirme, bilgileri ve her bir ürüne yönelik bir bağlantıyı göstermek üzere ürünlerin toplanması yoluyla istenen çıktıyı sağlamak üzere verileri işler. `<search-control>` `<page-control>` İşaretlemede ve öğelerini aklınızda yapın. Bu denetim sayfada arama ve sayfalama denetimleri görüntülenir. `ProductsStrings|PageTitleProducts`, sayfanın üst bilgi metnini içeren yerelleştirilmiş bir dize başvurusudur `h2` . Geliştirici portalı şablonlarında kullanılabilecek dize kaynakları, sayfa denetimleri ve simgelerin bir listesi için, bkz. [API Management geliştirici portalı şablonları başvurusu](api-management-developer-portal-templates-reference.md).
+**Ürün listesi** şablonundaki biçimlendirme, bilgileri ve her bir ürüne yönelik bir bağlantıyı göstermek üzere ürünlerin toplanması yoluyla istenen çıktıyı sağlamak üzere verileri işler. `<search-control>` `<page-control>` İşaretlemede ve öğelerini aklınızda yapın. Bu denetim sayfada arama ve sayfalama denetimleri görüntülenir. `ProductsStrings|PageTitleProducts` , sayfanın üst bilgi metnini içeren yerelleştirilmiş bir dize başvurusudur `h2` . Geliştirici portalı şablonlarında kullanılabilecek dize kaynakları, sayfa denetimleri ve simgelerin bir listesi için, bkz. [API Management geliştirici portalı şablonları başvurusu](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>
@@ -145,7 +145,7 @@ Kaydedilmiş şablonlar tek tek veya hepsi birlikte yayımlanabilir. Tek bir şa
 
 Onaylamak için **Evet** ' e tıklayın ve şablonu Geliştirici Portalında canlı hale getirin.
 
-![Yayımlamayı Onayla][api-management-publish-template-confirm]
+![Şablonu canlı hale getirmek için Evet ' i seçtiğiniz yeri gösteren ekran görüntüsü.][api-management-publish-template-confirm]
 
 Kaldırılmış olan tüm şablon sürümlerini yayımlamak için şablonlar listesinde **Yayımla** ' ya tıklayın. Yayımdan kaldırılan şablonlar, şablon adından sonra bir yıldız işaretiyle atanır. Bu örnekte, **ürün listesi** ve **ürün** şablonları yayımlanıyor.
 
@@ -160,11 +160,11 @@ Yeni yayınlanan şablonlar, Geliştirici Portalında hemen etkili olur.
 ## <a name="to-revert-a-template-to-the-previous-version"></a>Bir şablonu önceki sürüme geri dönüştürmek için
 Bir şablonu önceki yayımlanmış sürüme geri dönüştürmek için şablon düzenleyicisinde geri çevir ' e tıklayın.
 
-![Şablonu tekrar çevir][api-management-revert-template]
+![Bir şablonu döndürmemek için kullandığınız simgeyi vurgulayan ekran görüntüsü.][api-management-revert-template]
 
 Onaylamak için **Evet**’e tıklayın.
 
-![Confirm][api-management-revert-template-confirm]
+![Değişiklikleri onaylamak için Evet ' i seçtiğiniz yeri gösteren ekran görüntüsü.][api-management-revert-template-confirm]
 
 Bir şablonun daha önce yayımlanmış olan sürümü, bir önceki olarak, iade işlemi tamamlandıktan sonra Geliştirici Portalında canlı olur.
 

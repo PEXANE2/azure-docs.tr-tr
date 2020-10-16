@@ -4,12 +4,12 @@ description: Azure Batch hizmet kaynaklarını yönetmek üzere Azure CLI’daki
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531686"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055520"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch kaynaklarını Azure CLI ile yönetme
 
@@ -28,7 +28,7 @@ En son Azure CLI sürümünü [Azure Cloud Shell](../cloud-shell/overview.md)'de
 
 ## <a name="command-help"></a>Komut yardımı
 
-Komuttan sonra `-h` ekleyerek Azure CLI'daki her komut için yardım metni görüntüleyebilirsiniz. Diğer seçenekleri atın. Örneğin:
+Komuttan sonra `-h` ekleyerek Azure CLI'daki her komut için yardım metni görüntüleyebilirsiniz. Diğer seçenekleri atın. Örnek:
 
 * `az` komutuyla ilgili yardım almak için şunu girin: `az -h`
 * CLI’daki tüm Batch komutlarının listesini almak için şunu kullanın: `az batch -h`
@@ -107,11 +107,11 @@ Azure Batch CLI uzantısını yükleyerek, Azure CLI'yı Batch işlerini kod yaz
 
 ## <a name="script-examples"></a>Betik örnekleri
 
-Ortak görevleri gerçekleştirmek üzere Batch için [CLI betik örneklerini](cli-samples.md) görüntüleyin. Bu örnekler, Batch için Azure CLI’da hesapları, havuzları, işleri ve görevleri oluşturup yönetmeye yönelik kullanılabilir komutların birçoğunu kapsar. 
+Ortak görevleri gerçekleştirmek üzere Batch için [CLI betik örneklerini](./scripts/batch-cli-sample-create-account.md) görüntüleyin. Bu örnekler, Batch için Azure CLI’da hesapları, havuzları, işleri ve görevleri oluşturup yönetmeye yönelik kullanılabilir komutların birçoğunu kapsar.
 
 ## <a name="json-files-for-resource-creation"></a>Kaynak oluşturmak için JSON dosyaları
 
-Havuzlar ve işler gib Batch kaynakları oluşturduğunuzda parametrelerini komut satırı seçenekleri olarak geçirmek yerine yeni kaynağın yapılandırmasını içeren bir JSON dosyası belirtebilirsiniz. Örneğin:
+Havuzlar ve işler gib Batch kaynakları oluşturduğunuzda parametrelerini komut satırı seçenekleri olarak geçirmek yerine yeni kaynağın yapılandırmasını içeren bir JSON dosyası belirtebilirsiniz. Örnek:
 
 ```azurecli
 az batch pool create my_batch_pool.json

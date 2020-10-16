@@ -10,7 +10,7 @@ ms.openlocfilehash: 8d0ffb008258c586a5965b0741b848f1cef319f7
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91857066"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. ile HDInsight kümeleri oluşturma
@@ -45,7 +45,7 @@ Bu bölümde, varsayılan veya ek depolama alanı olarak Data Lake Storage 1. bi
 
 Varsayılan depolama hesabı olarak Data Lake Storage 1. bir HDInsight kümesi oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. HDInsight kümeleri oluşturma hakkında genel bilgi için [küme oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) ' yı izleyin.
 3. **Depolama** dikey penceresinde, **birincil depolama türü**' nün altında **Azure Data Lake Storage 1.**' yi seçin ve ardından aşağıdaki bilgileri girin:
 
@@ -64,7 +64,7 @@ Aşağıdaki yönergeler varsayılan depolama alanı olarak bir Azure Blob depol
 
 Ek depolama hesabı olarak Data Lake Storage 1. bir HDInsight kümesi oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. HDInsight kümeleri oluşturma hakkında genel bilgi için [küme oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) ' yı izleyin.
 3. **Depolama** dikey penceresinde, **birincil depolama türü**altında **Azure Storage**' ı seçin ve ardından aşağıdaki bilgileri girin:
 

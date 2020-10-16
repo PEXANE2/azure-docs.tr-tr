@@ -4,6 +4,8 @@
   items:
     - name: Microsoft kimlik platformu nedir?
       href: v2-overview.md
+    - name: Docs’taki yenilikler?
+      href: whats-new-docs.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

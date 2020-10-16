@@ -4,10 +4,10 @@ description: Azure portal veya PowerShell kullanarak Azure DevTest Labs sahipler
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 40173589c4798a8b00d940bca2a71f4d61f2c199
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533334"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs sahip ve Kullanıcı ekleme
@@ -30,19 +30,19 @@ Aşağıdaki tabloda, bu rollerin her birinde kullanıcılar tarafından gerçek
 | --- | --- | --- | --- |
 | **Laboratuvar görevleri** | | | |
 | Laboratuvara Kullanıcı ekleme |Hayır |Evet |Hayır |
-| Maliyet ayarlarını Güncelleştir |Hayır |Yes |Yes |
+| Maliyet ayarlarını Güncelleştir |Hayır |Evet |Evet |
 | **VM temel görevleri** | | | |
-| Özel görüntüler ekleme ve kaldırma |Hayır |Yes |Yes |
-| Formüller ekleme, güncelleştirme ve silme |Yes |Yes |Yes |
-| Azure Marketi görüntülerini beyaz listeye ekleme |Hayır |Yes |Yes |
+| Özel görüntüler ekleme ve kaldırma |Hayır |Evet |Evet |
+| Formüller ekleme, güncelleştirme ve silme |Evet |Evet |Evet |
+| Azure Marketi görüntülerini beyaz listeye ekleme |Hayır |Evet |Evet |
 | **VM görevleri** | | | |
-| VM oluşturma |Yes |Yes |Yes |
-| VM 'Leri başlatma, durdurma ve silme |Yalnızca Kullanıcı tarafından oluşturulan VM 'Ler |Yes |Yes |
-| VM ilkelerini güncelleştirme |Hayır |Yes |Yes |
-| VM 'lere/sanal makinelere veri diskleri Ekle/Kaldır |Yalnızca Kullanıcı tarafından oluşturulan VM 'Ler |Yes |Yes |
+| VM oluşturma |Evet |Evet |Evet |
+| VM 'Leri başlatma, durdurma ve silme |Yalnızca Kullanıcı tarafından oluşturulan VM 'Ler |Evet |Evet |
+| VM ilkelerini güncelleştirme |Hayır |Evet |Evet |
+| VM 'lere/sanal makinelere veri diskleri Ekle/Kaldır |Yalnızca Kullanıcı tarafından oluşturulan VM 'Ler |Evet |Evet |
 | **Yapıt görevleri** | | | |
-| Yapıt depoları ekleme ve kaldırma |Hayır |Yes |Yes |
-| Yapıtları Uygula |Yes |Yes |Yes |
+| Yapıt depoları ekleme ve kaldırma |Hayır |Evet |Evet |
+| Yapıtları Uygula |Evet |Evet |Evet |
 
 > [!NOTE]
 > Bir Kullanıcı bir VM oluşturduğunda, bu kullanıcı otomatik olarak oluşturulan VM 'nin **sahip** rolüne atanır.
@@ -53,7 +53,7 @@ Aşağıdaki tabloda, bu rollerin her birinde kullanıcılar tarafından gerçek
 Sahipler ve kullanıcılar, Azure portal aracılığıyla laboratuvar düzeyine eklenebilir. Kullanıcı, geçerli bir [Microsoft hesabı (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)sahip bir dış Kullanıcı olabilir.
 Aşağıdaki adımlar Azure DevTest Labs içindeki bir laboratuvara sahip veya Kullanıcı ekleme işleminde size rehberlik sağlar:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.
 4. Laboratuvarın dikey penceresinde **yapılandırma ve ilkeler**' i seçin. 
@@ -62,7 +62,7 @@ Aşağıdaki adımlar Azure DevTest Labs içindeki bir laboratuvara sahip veya K
 1. **Izin Ekle** penceresinde, aşağıdaki işlemleri yapın: 
     1. Bir rol seçin (örneğin: DevTest Labs kullanıcısı). [Her rolde gerçekleştirilebilecek bölüm eylemleri](#actions-that-can-be-performed-in-each-role) , sahip, DevTest kullanıcısı ve katkıda bulunan rollerinde kullanıcılar tarafından gerçekleştirilebilecek çeşitli eylemleri listeler.
     2. Role eklenecek kullanıcıyı seçin. 
-    3. **Kaydet**'i seçin. 
+    3. **Kaydet**’i seçin. 
 11. **Kullanıcılar** dikey penceresine geri döndüğünüzde kullanıcı eklenmiştir.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>PowerShell kullanarak bir laboratuvara dış Kullanıcı ekleme
@@ -110,7 +110,7 @@ Laboratuvara [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)lab
 
 Bir Azure aboneliğine sahip eklemek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **abonelikler** ' i seçin.
 3. İstediğiniz aboneliği seçin.
 4. **Erişim** simgesini seçin. 

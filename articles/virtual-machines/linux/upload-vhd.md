@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289761"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Azure CLı ile özel diskten bir Linux VM oluşturma
@@ -69,7 +69,7 @@ Azure çeşitli Linux dağıtımlarını destekler (bkz. [onaylı dağıtımlar]
 Ayrıca, Linux görüntülerini Azure için hazırlama hakkında daha genel ipuçları için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 
 > [!NOTE]
-> [Azure platformu SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/) yalnızca, [Azure tarafından onaylanan dağıtımlarda Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)'ta "Desteklenen sürümler" altında belirtilen yapılandırma ayrıntıları ile belirlenen dağıtımlardan biri kullanıldığında Linux çalıştıran VM 'ler için geçerlidir.
+> [Azure platformu SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/) yalnızca, bir onaylama dağıtımlarından biri, [Azure-Endorsed dağıtımlarında Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)'ta "Desteklenen sürümler" altında belirtildiği gibi yapılandırma ayrıntıları Ile kullanıldığında Linux çalıştıran VM 'ler için geçerlidir.
 > 
 > 
 

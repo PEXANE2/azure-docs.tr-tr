@@ -304,7 +304,7 @@
             - name: Sanal makine örneği boyut esnekliği
               href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Ayrılmış konaklar
-      href: dedicated-hosts.md
+      href: ../dedicated-hosts.md
     - name: Bakım ve güncelleştirmeler
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Disk depolama
@@ -555,6 +555,8 @@
           href: client-images.md
         - name: Mevcut bir diski indirme
           href: download-vhd.md
+        - name: Görüntü sürümünden yönetilen disk
+          href: ../managed-disk-from-image-version.md
     - name: VM’leri koruma
       items:
         - name: Öneriler
@@ -1055,7 +1057,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

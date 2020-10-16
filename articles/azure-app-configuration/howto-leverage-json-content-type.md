@@ -1,5 +1,5 @@
 ---
-title: Anahtar değerleri için JSON Content-Type kullanın
+title: Anahtar değerleri için JSON içerik türü kullanma
 titleSuffix: Azure App Configuration
 description: Anahtar değerler için JSON içerik türünü nasıl kullanacağınızı öğrenin
 services: azure-app-configuration
@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
 ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88122103"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Uygulama yapılandırmasındaki JSON anahtar değerlerini depolamak için içerik türünden yararlanın

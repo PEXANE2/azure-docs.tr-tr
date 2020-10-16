@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140743"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümü için düğüm sağlama
@@ -25,7 +25,7 @@ Azure portal düğümleri sağlayın. Daha sonra, CloudSimple özel bulut ortam�
 
 ## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>CloudSimple özel buluta bir düğüm ekleyin
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple düğümleri**için arama yapın.
 
    ![CloudSimple düğümlerinde arama yapın](media/create-cloudsimple-node-search.png)

@@ -1,10 +1,11 @@
-- name: Sanal WAN Belgeleri
+- name: Sanal WAN belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: Sanal WAN nedir?
       href: virtual-wan-about.md
 - name: Öğreticiler
+  expanded: true
   items:
     - name: Siteden siteye bağlantı oluşturma
       href: virtual-wan-site-to-site-portal.md

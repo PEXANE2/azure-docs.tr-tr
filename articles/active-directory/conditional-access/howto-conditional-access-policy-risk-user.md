@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049086"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Koşullu erişim: Kullanıcı risk tabanlı koşullu erişim
@@ -33,7 +33,7 @@ Bu ilkenin atanabileceği iki konum vardır. Kuruluşlar, güvenli parola deği�
 1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin.
 1. **Koşullar**  >  **Kullanıcı riski**altında **Yapılandır** ' ı **Evet**olarak ayarlayın. **İlkenin zorlanmak için gereken Kullanıcı risk düzeylerini yapılandırma** altında **yüksek**' i seçin ve **bitti**' yi seçin.
 1. **Erişim denetimleri**  >  **izni**' nın altında, **erişim ver**' i seçin, **parola değişikliği gerektir**' i seçin ve **Seç**
@@ -48,7 +48,7 @@ Bu ilkenin atanabileceği iki konum vardır. Kuruluşlar, güvenli parola deği�
 1. **Atamalar**altında **Kullanıcılar**' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında hariç **tutulan kullanıcıları seç**' i seçin, kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin ve **Seç**' i seçin.
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Koşullar**' ın altında, **Kullanıcı riski**' nı seçin ve **yüksek**' ı seçin
    1. **Seç**' i ve sonra **bitti**' yi seçin.
 1. **Denetimler**  >  **erişimi**altında, erişime **izin ver**' i seçin ve ardından **parola değişikliği gerektir**' i seçin.

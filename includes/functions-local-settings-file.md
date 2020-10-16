@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
 ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377240"
 ---
 ## <a name="local-settings-file"></a>Yerel ayarlar dosyası
@@ -40,7 +40,7 @@ Projeleri yerel olarak çalıştırdığınızda bu ayarlar desteklenir:
 
 | Ayar      | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Bu ayar olarak ayarlandığında `true` , tüm değerler yerel makine anahtarıyla şifrelenir. Komutlarıyla birlikte kullanılır `func settings` . Varsayılan değer `false` . Yerel bilgisayarınızdaki local.settings.js, hizmet bağlantı dizeleri gibi gizli dizileri içerdiğinde şifrelemek isteyebilirsiniz. Ana bilgisayar, çalışırken ayarların şifresini otomatik olarak çözer. `func settings decrypt`Yerel olarak şifrelenen ayarları okumayı denemeden önce komutunu kullanın. |
+| **`IsEncrypted`** | Bu ayar olarak ayarlandığında `true` , tüm değerler yerel makine anahtarıyla şifrelenir. Komutlarıyla birlikte kullanılır `func settings` . Varsayılan değer `false` olarak belirlenmiştir. Yerel bilgisayarınızdaki local.settings.js, hizmet bağlantı dizeleri gibi gizli dizileri içerdiğinde şifrelemek isteyebilirsiniz. Ana bilgisayar, çalışırken ayarların şifresini otomatik olarak çözer. `func settings decrypt`Yerel olarak şifrelenen ayarları okumayı denemeden önce komutunu kullanın. |
 | **`Values`** | Bir proje yerel olarak çalışırken kullanılan uygulama ayarları ve bağlantı dizeleri dizisi. Bu anahtar-değer (dize-dize) çiftleri, gibi Azure 'daki işlev uygulamanızda uygulama ayarlarına karşılık gelir [`AzureWebJobsStorage`] . Birçok tetikleyici ve bağlamanın, `Connection` [BLOB depolama tetikleyicisi](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)gibi bir bağlantı dizesi uygulama ayarına başvuran bir özelliği vardır. Bu özellikler için dizide tanımlanmış bir uygulama ayarı gereklidir `Values` . Yaygın olarak kullanılan ayarların listesi için sonraki tabloya bakın. <br/>Değerler dize olmalıdır ve JSON nesneleri veya dizileri olmamalıdır. Ayar adları iki nokta ( `:` ) veya çift alt çizgi () içeremez `__` . Çift alt çizgi karakterleri çalışma zamanı tarafından ayrılmıştır ve iki nokta üst üste [bağımlılık ekleme](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings)desteği için ayrılmıştır. |
 | **`Host`** | Bu bölümdeki ayarlar, projeleri yerel olarak çalıştırdığınızda Işlevler ana bilgisayar işlemini özelleştirir. Bu ayarlar, Azure 'da projeleri çalıştırdığınızda da uygulanan ayarları host.jsfarklıdır. |
 | **`LocalHttpPort`** | Yerel Işlevler Konağı (ve) çalıştırılırken kullanılan varsayılan bağlantı noktasını ayarlar `func host start` `func run` . `--port`Komut satırı seçeneği bu ayarın üzerine gelir. |

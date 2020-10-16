@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 899fddf08a817126ce775733da38ffd10ab3ab23
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447677"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952123"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Güvenlik Merkezi 'ne genel bakış sayfası
 
@@ -40,7 +40,7 @@ Sayfanın merkezinde, her biri özel bir panoya her biri daha ayrıntılı bilgi
 - **Güvenli puan** -Güvenlik Merkezi, güvenlik sorunları için kaynaklarınızı, aboneliklerinizi ve kuruluşunuzu sürekli olarak değerlendirir. Daha sonra her türlü bulguları tek bir puanın içinde toplar, böylece bir bakışta geçerli güvenlik durumunuza göre daha yüksek puan, belirtilen risk düzeyini azaltır. [Daha fazla bilgi edinin](secure-score-security-controls.md).
 - **Uyumluluk** -Güvenlik Merkezi, Azure ortamınızın sürekli değerlendirmelerine bağlı olarak uyumluluk gönderinize yönelik öngörüler sağlar. Güvenlik Merkezi, karma bulut ortamınızdaki risk faktörlerini en iyi güvenlik uygulamalarına göre analiz eder. Bu değerlendirmeler, desteklenen bir standartlar kümesinden uyumluluk denetimleriyle eşlenir. [Daha fazla bilgi edinin](security-center-compliance-dashboard.md).
 - **Azure Defender** -bu bulut iş yükü koruma platformudur (cwpp), Azure ve hibrit iş yüklerinizin gelişmiş, akıllı ve koruma Için Güvenlik Merkezi kapsamında tümleşiktir. Kutucuk, bağlı kaynaklarınızın kapsamını (Şu anda seçili abonelikler için) ve en son uyarıları (önem derecesine göre renk kodlu) gösterir. [Daha fazla bilgi edinin](azure-defender.md).
-- **Envanter** -kutucuk, izlenmeyen VM 'lerin sayısını ve Güvenlik Merkezi ben tarafından izlenen kaynaklarınızın basit bir barbir örneğini gösterir. [Daha fazla bilgi edinin](asset-inventory.md).
+- **Envanter** -kutucuk, izlenmeyen VM 'lerin sayısını ve Güvenlik Merkezi tarafından izlenen kaynaklarınızın basit bir barbir örneğini gösterir. [Daha fazla bilgi edinin](asset-inventory.md).
 
 
 **Öngörüler** bölmesi, ortamınız için aşağıdakiler de dahil olmak üzere özelleştirilmiş öğeler sunar:

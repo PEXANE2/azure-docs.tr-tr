@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321757"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Öğretici: Azure Maps kullanarak farklı seyahat modları için yolları bulma ve görüntüleme
@@ -27,7 +27,7 @@ Bu öğreticide, kargo türü ile hem özel araçlar hem de ticari araçlar (str
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. [Azure haritalar hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -121,7 +121,7 @@ Aşağıdaki adımlarda, harita denetiminin bir Web sayfasında nasıl oluşturu
 
 2. **MapTruckRoute.html** dosyasını kaydedin ve tarayıcınızın sayfasını yenileyin. Los Angeles gibi herhangi bir şehirde yakınlaştırırsanız, Streets 'in geçerli trafik akışı verileriyle birlikte göründüğünü görürsünüz.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Bir haritadaki trafiği görüntüleme":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
 
 <a id="queryroutes"></a>
 
@@ -197,7 +197,7 @@ Bu öğreticide iki rota hesaplanacak ve haritada işlenecektir. İlk yol özel 
 
 3. **TruckRoute.html** 'yi kaydedin ve tarayıcınızı yenileyin. Eşleme artık Seattle üzerinden ortalanır. Teardrop mavi pin başlangıç noktasını işaretler. Yuvarlak mavi pin bitiş noktasını işaretler.
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Başlangıç ve bitiş noktaları ile haritayı görüntüleme":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
 
 <a id="multipleroutes"></a>
 
@@ -277,7 +277,7 @@ Bu bölümde, taşıma modınızdan yola çıkarak bir noktadan diğerine yönle
 
 4. **TruckRoute.html** dosyasını kaydedin ve Web tarayıcınızı yenileyin. Harita Şimdi kamyon ve araba yollarını görüntülemelidir.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Azure Yönlendirme Hizmeti bir haritadaki özel ve ticari araç rotaları":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
 
     Kamyonun yolu, kalın mavi bir çizgi kullanılarak görüntülenir. Araba yolu ince mor bir çizgi kullanılarak görüntülenir. Araba rotası, u-90 ile Gölü, yöresel alanlarının altındaki tünellerden geçen bir noktadan geçer. Tüneller yöresel alanlara yakın olduğu için, tehlikeli çöp kargo kısıtlı olur. Kargo türünü belirten kamyon rotası, `USHazmatClass2` farklı bir Highway kullanımına yönlendirilir.
 

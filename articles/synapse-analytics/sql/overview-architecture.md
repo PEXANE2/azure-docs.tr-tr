@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87046866"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure SYNAPSE SQL mimarisi 
@@ -59,7 +59,7 @@ SQL isteğe bağlı, Veri Gölü dosyaları salt okuma biçiminde sorgulamanız�
 
 ## <a name="control-node"></a>Denetim düğümü
 
-Denetim düğümü, mimarinin beyinidir. Tüm uygulamalarla ve bağlantılarla etkileşim kuran ön uçtur. 
+Denetim düğümü mimarinin beynidir. Tüm uygulamalarla ve bağlantılarla etkileşim kuran ön uçtur. 
 
 SQL havuzunda, MPP altyapısı Paralel sorguları iyileştirmek ve koordine etmek için denetim düğümünde çalışır. SQL havuzuna bir T-SQL sorgusu gönderdiğinizde denetim düğümü, her bir dağıtıma karşı paralel olarak çalışan sorgulara dönüştürür.
 
@@ -69,7 +69,7 @@ SQL havuzunda, MPP altyapısı Paralel sorguları iyileştirmek ve koordine etme
 
 İşlem düğümleri, hesaplama gücü sağlar. 
 
-SQL havuzunda dağıtımlar, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, havuz dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve SQL havuzu için hizmet düzeyi tarafından belirlenir. Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys. pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [MPP sistem görünümleri](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+SQL havuzunda dağıtımlar, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, havuz dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve SQL havuzu için hizmet düzeyi tarafından belirlenir. Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [MPP sistem görünümleri](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
 İsteğe bağlı SQL 'de, her Işlem düğümüne görevi yürütmek için görev ve dosya kümesi atanır. Görev, aslında sorgu kullanıcısının gönderildiği bir parçası olan sorgu yürütme birimidir. Otomatik ölçeklendirme, Kullanıcı sorgusunu yürütmek için yeterli Işlem düğümlerinin kullanıldığını sağlamak üzere etkin olur.
 

@@ -14,10 +14,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 1455259bc42aea9d506a9a2a19d725cac3d643f8
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87562778"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Azure Notification Hub 'ları ad alanının fiyatlandırma katmanını değiştirme
@@ -40,7 +40,7 @@ Azure portal kullanırken, ad alanı sayfasındaki veya hub sayfasındaki bir ad
 
 Aşağıdaki yordamda, ad alanı sayfasında bir ad alanı için fiyatlandırma katmanının nasıl değiştirileceği gösterilmektedir. Bir ad alanı için katmanı değiştirdiğinizde, bu ad alanındaki tüm Hub 'lara uygulanır.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin.
 3. **Nesnelerin interneti** bölümünde **Notification Hub ad alanları** ' nı seçin. Metnin yanındaki yıldız işaretini ( `*` ) seçerseniz, **Sık Kullanılanlar**altındaki sol gezinti çubuğuna eklenir. Bu, bir sonraki sefer ad alanı sayfasına daha hızlı erişmenizi sağlar. **Sık kullanılanlara**ekledikten sonra **Bildirim Hub 'ı ad alanları**' nı seçin.
 
@@ -64,7 +64,7 @@ Aşağıdaki yordamda, ad alanı sayfasında bir ad alanı için fiyatlandırma 
 
 Hub sayfasındaki bir ad alanının fiyatlandırma katmanını değiştirmek için bu adımları izleyin. Bu adımları Hub sayfasından başlayarak yapmış olsanız da, ad alanı için fiyatlandırma katmanını ve ad alanındaki tüm Hub 'ları değiştirirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin.
 3. **Nesnelerin interneti** bölümünde **Notification Hubs** ' yi seçin.
 4. Bildirim **hub**'ınızı seçin.

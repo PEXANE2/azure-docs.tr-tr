@@ -4,16 +4,16 @@ description: İş ortağı kimliğini, müşterinin kaynaklarını yönetmek iç
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371839"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772728"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
 
@@ -43,7 +43,7 @@ Müşterinin kaynaklarına erişiminiz olduğunda, Microsoft İş Ortağı Ağı
 
 2. Azure Portal’da oturum açın.
 
-3. Microsoft iş ortağı kimliğini girin. İş ortağı kimliği, kuruluşunuzun [Microsoft İş Ortağı Ağı](https://partner.microsoft.com/) kimliğidir.
+3. Microsoft iş ortağı kimliğini girin. İş ortağı kimliği, kuruluşunuzun [Microsoft İş Ortağı Ağı](https://partner.microsoft.com/) kimliğidir. İş ortağı profilinizde gösterilen **İlişkili MPN kimliğini** kullandığınızdan emin olun.
 
    ![İş ortağı kimliğine bağlantıyı gösteren ekran görüntüsü](./media/link-partner-id/link-partner-id01.png)
 
@@ -61,7 +61,8 @@ Müşterinin kaynaklarına erişiminiz olduğunda, Microsoft İş Ortağı Ağı
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Yeni iş ortağı kimliğine bağlantı oluşturun. İş ortağı kimliği, kuruluşunuzun [Microsoft İş Ortağı Ağı](https://partner.microsoft.com/) kimliğidir.
+3. Yeni iş ortağı kimliğine bağlantı oluşturun. İş ortağı kimliği, kuruluşunuzun [Microsoft İş Ortağı Ağı](https://partner.microsoft.com/) kimliğidir. İş ortağı profilinizde gösterilen **İlişkili MPN kimliğini** kullandığınızdan emin olun.
+
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
@@ -141,7 +142,7 @@ Bağlantı, kullanıcı hesabı düzeyinde ilişkilendirilir. Yalnızca siz iş 
 
 **Şirketimin birden çok MPN kimliği varsa hangisini kullanmalıyım?**
 
-İş ortağı kimliğini bağlamak için İş Ortağı Konumu Hesapları ve ilişkili MPN kimlikleri kullanılmalıdır.  [İş Ortağı Hesapları](https://docs.microsoft.com/partner-center/account-structure) hakkında daha fazla bilgi edinin
+İş ortağı profilinizde gösterilen **İlişkili MPN kimliğini** kullandığınızdan emin olun.
 
 **Bağlı iş ortağı kimliği için etkilenen gelir raporlamasını nereden bulabilirim?**
 

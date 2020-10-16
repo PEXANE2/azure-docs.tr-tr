@@ -12,10 +12,10 @@ ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
 ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443801"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC dosyasına aktarma-Azure SQL veritabanı ve Azure SQL yönetilen örneği
@@ -44,7 +44,7 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 [Azure SQL yönetilen örneğinden](../managed-instance/sql-managed-instance-paas-overview.md) bir veritabanının bacpac 'sini Azure Portal kullanarak dışarı aktarma işlemi şu anda desteklenmiyor. Bunun yerine SQL Server Management Studio veya SQLPackage kullanın.
 
 > [!NOTE]
-> Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve veri katmanı uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata vererek başarısız olabilir `There is not enough space on the disk` . Bu durumda, geçici çözüm yeterli yerel disk alanına sahip bir makinede sqlpackage.exe çalıştırmak olur. Bu sorundan kaçınmak için, [SQL paketini](#sqlpackage-utility) 150gb 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
+> Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve Data-Tier uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata vererek başarısız olabilir `There is not enough space on the disk` . Bu durumda, geçici çözüm yeterli yerel disk alanına sahip bir makinede sqlpackage.exe çalıştırmak olur. Bu sorundan kaçınmak için, [SQL paketini](#sqlpackage-utility) 150gb 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir veritabanını dışarı aktarmak için veritabanınızın sayfasını açın ve araç çubuğunda **dışarı aktar** ' a tıklayın.
 

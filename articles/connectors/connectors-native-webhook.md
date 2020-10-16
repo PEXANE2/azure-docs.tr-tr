@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
 ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89227908"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps 'de HTTP Web kancalarını kullanarak otomatik olay tabanlı iş akışları oluşturun ve çalıştırın
@@ -74,12 +74,12 @@ Bu yerleşik tetikleyici, hedef hizmette Subscribe uç noktasını çağırır v
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Subscription-yöntemi** | Yes | Hedef uç noktaya abone olurken kullanılacak yöntem |
-   | **Abone ol-URI** | Yes | Hedef uç noktaya abone olmak için kullanılacak URL |
-   | **Abone ol-gövde** | No | Abonelik isteğine dahil edilecek herhangi bir ileti gövdesi. Bu örnek, mantıksal uygulamanızın `@listCallbackUrl()` geri arama URL 'sini almak için ifadesini kullanarak mantıksal uygulamanız olan aboneyi benzersiz bir şekilde tanımlayan geri çağırma URL 'sini içerir. |
-   | **Abonelik kaldırma yöntemi** | No | Hedef uç noktadan abone olunurken kullanılacak yöntem |
-   | **Abonelik kaldırma-URI** | No | Hedef uç noktadan abone olunurken kullanılacak URL |
-   | **Abonelik kaldırma-gövde** | No | Abonelik kaldırma isteğine eklenecek isteğe bağlı bir ileti gövdesi <p><p>**Note**: Bu özellik, işlevinin kullanımını desteklemiyor `listCallbackUrl()` . Ancak, tetikleyici otomatik olarak, `x-ms-client-tracking-id` ve `x-ms-workflow-operation-name` hedef hizmetin aboneyi benzersiz olarak tanımlamak için kullanabileceği üst bilgileri ekler ve gönderir. |
+   | **Subscription-yöntemi** | Evet | Hedef uç noktaya abone olurken kullanılacak yöntem |
+   | **Abone ol-URI** | Evet | Hedef uç noktaya abone olmak için kullanılacak URL |
+   | **Abone ol-gövde** | Hayır | Abonelik isteğine dahil edilecek herhangi bir ileti gövdesi. Bu örnek, mantıksal uygulamanızın `@listCallbackUrl()` geri arama URL 'sini almak için ifadesini kullanarak mantıksal uygulamanız olan aboneyi benzersiz bir şekilde tanımlayan geri çağırma URL 'sini içerir. |
+   | **Abonelik kaldırma yöntemi** | Hayır | Hedef uç noktadan abone olunurken kullanılacak yöntem |
+   | **Abonelik kaldırma-URI** | Hayır | Hedef uç noktadan abone olunurken kullanılacak URL |
+   | **Abonelik kaldırma-gövde** | Hayır | Abonelik kaldırma isteğine eklenecek isteğe bağlı bir ileti gövdesi <p><p>**Note**: Bu özellik, işlevinin kullanımını desteklemiyor `listCallbackUrl()` . Ancak, tetikleyici otomatik olarak, `x-ms-client-tracking-id` ve `x-ms-workflow-operation-name` hedef hizmetin aboneyi benzersiz olarak tanımlamak için kullanabileceği üst bilgileri ekler ve gönderir. |
    ||||
 
 1. Başka tetikleyici özellikleri eklemek için **yeni parametre Ekle** listesini açın.
@@ -120,12 +120,12 @@ Bu yerleşik eylem, hedef hizmette abone ol uç noktasını çağırır ve hedef
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Subscription-yöntemi** | Yes | Hedef uç noktaya abone olurken kullanılacak yöntem |
-   | **Abone ol-URI** | Yes | Hedef uç noktaya abone olmak için kullanılacak URL |
-   | **Abone ol-gövde** | No | Abonelik isteğine dahil edilecek herhangi bir ileti gövdesi. Bu örnek, mantıksal uygulamanızın `@listCallbackUrl()` geri arama URL 'sini almak için ifadesini kullanarak mantıksal uygulamanız olan aboneyi benzersiz bir şekilde tanımlayan geri çağırma URL 'sini içerir. |
-   | **Abonelik kaldırma yöntemi** | No | Hedef uç noktadan abone olunurken kullanılacak yöntem |
-   | **Abonelik kaldırma-URI** | No | Hedef uç noktadan abone olunurken kullanılacak URL |
-   | **Abonelik kaldırma-gövde** | No | Abonelik kaldırma isteğine eklenecek isteğe bağlı bir ileti gövdesi <p><p>**Note**: Bu özellik, işlevinin kullanımını desteklemiyor `listCallbackUrl()` . Ancak, eylem otomatik olarak, `x-ms-client-tracking-id` ve `x-ms-workflow-operation-name` hedef hizmetin aboneyi benzersiz bir şekilde tanımlamak için kullanabileceği üst bilgileri ekler ve gönderir. |
+   | **Subscription-yöntemi** | Evet | Hedef uç noktaya abone olurken kullanılacak yöntem |
+   | **Abone ol-URI** | Evet | Hedef uç noktaya abone olmak için kullanılacak URL |
+   | **Abone ol-gövde** | Hayır | Abonelik isteğine dahil edilecek herhangi bir ileti gövdesi. Bu örnek, mantıksal uygulamanızın `@listCallbackUrl()` geri arama URL 'sini almak için ifadesini kullanarak mantıksal uygulamanız olan aboneyi benzersiz bir şekilde tanımlayan geri çağırma URL 'sini içerir. |
+   | **Abonelik kaldırma yöntemi** | Hayır | Hedef uç noktadan abone olunurken kullanılacak yöntem |
+   | **Abonelik kaldırma-URI** | Hayır | Hedef uç noktadan abone olunurken kullanılacak URL |
+   | **Abonelik kaldırma-gövde** | Hayır | Abonelik kaldırma isteğine eklenecek isteğe bağlı bir ileti gövdesi <p><p>**Note**: Bu özellik, işlevinin kullanımını desteklemiyor `listCallbackUrl()` . Ancak, eylem otomatik olarak, `x-ms-client-tracking-id` ve `x-ms-workflow-operation-name` hedef hizmetin aboneyi benzersiz bir şekilde tanımlamak için kullanabileceği üst bilgileri ekler ve gönderir. |
    ||||
 
 1. Başka eylem özellikleri eklemek için **yeni parametre Ekle** listesini açın.
@@ -142,7 +142,7 @@ Bu yerleşik eylem, hedef hizmette abone ol uç noktasını çağırır ve hedef
 
 Bu bilgileri döndüren bir HTTP Web kancası tetikleyicisinden veya eyleminden alınan çıktılar hakkında daha fazla bilgi bulabilirsiniz:
 
-| Özellik adı | Tür | Description |
+| Özellik adı | Tür | Açıklama |
 |---------------|------|-------------|
 | bilgisinde | object | İstekten gelen üstbilgiler |
 | body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |

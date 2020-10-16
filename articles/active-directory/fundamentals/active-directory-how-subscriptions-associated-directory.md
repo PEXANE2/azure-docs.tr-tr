@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666441"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme
@@ -46,7 +46,7 @@ Aboneliğinizi ilişkilendirebilmeniz veya ekleyebilmek için önce aşağıdaki
 - Aboneliğinizi ilişkilendirdikten veya ekledikten sonra gerçekleşecek ve nasıl etkilenebileceğiniz aşağıdaki değişiklikler listesini gözden geçirin:
 
   - Azure RBAC kullanılarak roller atanmış olan kullanıcılar, erişimini kaybeder
-  - Hizmet Yöneticisi ve ortak yöneticiler erişimi kaybedecektir
+  - Hizmet Yöneticisi ve Co-Administrators erişimi kaybedecektir
   - Herhangi bir Anahtar Kasası varsa, bunlar erişilemez olur ve ilişkilendirmeden sonra bunları çözmeniz gerekir
   - Sanal makineler veya Logic Apps gibi kaynaklar için yönetilen kimlikleriniz varsa, ilişkilendirmeden sonra yeniden etkinleştirmeniz veya yeniden oluşturmanız gerekir
   - Kayıtlı bir Azure Stack varsa ilişkilendirmeden sonra yeniden kaydetmeniz gerekir

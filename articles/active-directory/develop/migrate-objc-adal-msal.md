@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119938"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>İOS ve macOS için uygulamaları MSAL 'e geçirme
@@ -53,7 +53,7 @@ MSAL public API 'SI, Azure AD v 1.0 ile Microsoft Identity platformu arasındaki
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>ADAuthenticationContext yerine MSALPublicClientApplication
 
-`ADAuthenticationContext`, ADAL uygulamasının oluşturduğu ilk nesnedir. ADAL örneğini temsil eder. Uygulamalar `ADAuthenticationContext` her bir Azure Active Directory bulut ve kiracı (yetkili) birleşimi için yeni bir örneğini oluşturur. Aynı, `ADAuthenticationContext` birden çok ortak istemci uygulaması için belirteçleri almak üzere kullanılabilir.
+`ADAuthenticationContext` , ADAL uygulamasının oluşturduğu ilk nesnedir. ADAL örneğini temsil eder. Uygulamalar `ADAuthenticationContext` her bir Azure Active Directory bulut ve kiracı (yetkili) birleşimi için yeni bir örneğini oluşturur. Aynı, `ADAuthenticationContext` birden çok ortak istemci uygulaması için belirteçleri almak üzere kullanılabilir.
 
 MSAL ' de, ana etkileşim, `MSALPublicClientApplication` [OAuth 2,0 genel istemcisinden](https://tools.ietf.org/html/rfc6749#section-2.1)sonra Modellenen bir nesne üzerinden yapılır. Bir örneği, `MSALPublicClientApplication` her bir yetkili için yeni bir örnek oluşturmaya gerek kalmadan birden çok AAD bulutları ve kiracılar ile etkileşim kurmak için kullanılabilir. Çoğu uygulama için, bir `MSALPublicClientApplication` örnek yeterlidir.
 
@@ -65,7 +65,7 @@ MSAL ' de, tek bir kaynak tanımlayıcısı yerine, uygulamalar istek başına b
 
 MSAL içinde kapsam sağlamanın iki yolu vardır:
 
-* Uygulamalarınızın ihtiyaç duyacağı tüm izinlerin bir listesini sağlayın. Örnek: 
+* Uygulamalarınızın ihtiyaç duyacağı tüm izinlerin bir listesini sağlayın. Örneğin: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -83,7 +83,7 @@ Kapsamı kullanmak için `/.default` `/.default` kaynak tanımlayıcısına ekle
 
 ADAL yalnızca iOS için UIWebView/WKWebView ve macOS için WebView destekler. İOS için MSAL, bir yetkilendirme kodu isteğinde bulunduğunda ve artık desteklerken Web içeriğini görüntülemeye yönelik daha fazla seçeneği destekler `UIWebView` ; Bu da Kullanıcı deneyimini ve güvenliğini iyileştirebilir.
 
-Varsayılan olarak, iOS üzerinde MSAL, iOS 12 + cihazlarında kimlik doğrulaması için önerilen Web bileşeni olan [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)kullanır. Uygulamalar ve Safari tarayıcısı arasında tanımlama bilgisi paylaşımı aracılığıyla çoklu oturum açma (SSO) avantajları sağlar.
+Varsayılan olarak, iOS üzerinde MSAL, iOS 12 + cihazlarında kimlik doğrulaması için önerilen Web bileşeni olan [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)kullanır. Uygulamalar ve Safari tarayıcısı arasında tanımlama bilgisi paylaşımı aracılığıyla tek Sign-On (SSO) avantajları sağlar.
 
 Uygulama gereksinimlerine ve istediğiniz son kullanıcı deneyimine bağlı olarak farklı bir Web bileşeni kullanmayı tercih edebilirsiniz. Daha fazla seçenek için [desteklenen Web görünümü türleri](customize-webviews.md) bölümüne bakın.
 
@@ -146,7 +146,7 @@ Uygulamanız için aracıyı etkinleştirmek üzere:
 
 1. Uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth` . `<app.bundle.id>`Uygulamanızın paket kimliğiyle değiştirin. ADAL 'dan geçiş yapıyorsanız ve uygulamanız zaten Broker özellikli ise, yapmanız gereken ek bir şey yoktur. Önceki yeniden yönlendirme URI 'SI MSAL ile tamamen uyumludur, bu sayede adım 3 ' e atlayabilirsiniz.
 
-2. Uygulamanızın yeniden yönlendirme URI düzenini Info. plist dosyanıza ekleyin. Varsayılan MSAL yeniden yönlendirme URI 'SI için biçim olur `msauth.<app.bundle.id>` . Örnek:
+2. Uygulamanızın yeniden yönlendirme URI düzenini Info. plist dosyanıza ekleyin. Varsayılan MSAL yeniden yönlendirme URI 'SI için biçim olur `msauth.<app.bundle.id>` . Örneğin:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -322,7 +322,7 @@ Varsayılan olarak, MSAL, uygulamanızın belirteçlerini iOS veya macOS anahtar
 Belirteç önbelleğe almayı etkinleştirmek için:
 1. Uygulamanızın düzgün şekilde imzalandığından emin olun
 2. Xcode proje ayarlarınıza gidin > **Yetenekler sekmesi**  >  **Anahtarlık paylaşımını etkinleştir**
-3. Öğesine tıklayın **+** ve aşağıdaki **Anahtarlık grupları** girişini girin: 3. a IOS Için, `com.microsoft.adalcache` MacOS için 3. b girin`com.microsoft.identity.universalstorage`
+3. Öğesine tıklayın **+** ve aşağıdaki **Anahtarlık grupları** girişini girin: 3. a IOS Için, `com.microsoft.adalcache` MacOS için 3. b girin `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>MSALPublicClientApplication oluşturma ve acquireToken ve acquireTokeSilent çağrılarına geçiş yapma
 

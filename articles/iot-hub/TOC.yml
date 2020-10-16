@@ -9,7 +9,7 @@
   items:
     - name: Telemetri gönderme
       items:
-        - name: başlarken
+        - name: Kullanmaya başlayın
           href: quickstart-send-telemetry-cli.md
         - name: C
           href: quickstart-send-telemetry-c.md
@@ -220,6 +220,8 @@
               href: iot-hub-reliability-features-in-sdks.md
             - name: Android Things platformu için geliştirme
               href: iot-hub-how-to-android-things.md
+        - name: Azure IoT SDK’sı olmadan geliştirme
+          href: iot-hub-devguide-no-sdk.md
         - name: Hub yolundan Avro verilerini sorgulama
           href: iot-hub-query-avro-data.md
         - name: Event Grid’den cihaz bağlantı durumu olaylarını isteme
@@ -420,7 +422,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2a931b1a3c3f88af1abec4fd1810aae09c849c48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90942167"
 ---
 # <a name="create-an-azure-sql-managed-instance-on-azure-arc"></a>Azure Arc üzerinde Azure SQL yönetilen örneği oluşturma
@@ -62,7 +62,7 @@ azdata arc sql mi create -n sqldemo --storage-class-data managed-premium --stora
 >
 >  Bellek ayırmayı ve sanal çekirdek ayırmayı belirtirken, oluşturma işleminin başarılı olduğundan emin olmak için bu formülü kullanın-her 1 sanal çekirdek için, SQL yönetilen örneği Pod 'un çalışacağı Kubernetes düğümünde en az 4 GB kapasiteye ihtiyacınız vardır.
 >
->  Bir SQL örneği oluşturulduğunda, Azure 'da sağlandıysanız adda büyük harf kullanmayın
+>  Azure'da sağlıyorsanız SQL örneği oluştururken adda büyük harf kullanmayın
 >
 >  Kubernetes küme çalıştırurdaki kullanılabilir depolama sınıflarını listelemek için `kubectl get storageclass` 
 

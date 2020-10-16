@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140726"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple özel buluta genel bakış
@@ -30,7 +30,7 @@ CloudSimple sayesinde, toplam sahip olma maliyetinizi alçaltan bir bulut tüket
 CloudSimple, ile tamamen uyumludur:
 
 * Mevcut araçlar
-* Becerilere
+* Beceriler
 * İşlemler
 
 Bu uyumluluk, takımlarınızın Azure bulutundaki iş yüklerini şu ilke türlerini kesintiye uğratmadan yönetmesine olanak sağlar:
@@ -46,7 +46,7 @@ CloudSimple, altyapıyı ve tüm gerekli ağ ve yönetim hizmetlerini yönetir. 
 * Uygulama sağlama
 * İş sürekliliği
 * Destek
-* İlke zorlamaİlke zorlama
+* İlke zorlama
 
 ## <a name="private-cloud-environment-overview"></a>Özel bulut ortamına genel bakış
 

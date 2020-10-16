@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 5caed64beb43cbb1e884a3dde6bc0052c617f83e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378789"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda güvenlik
@@ -38,7 +38,7 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresini temel alarak su
 Sanal ağ hizmeti uç noktaları, sanal ağ bağlantınızı Azure omurgası üzerinden genişletmelidir. Sanal ağ kurallarını kullanarak, MySQL için Azure veritabanı sunucunuzu, bir sanal ağdaki seçili alt ağlardan gelen bağlantılara izin verecek şekilde etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktasına genel bakış](concepts-data-access-and-security-vnet.md).
 
 ### <a name="private-ip"></a>Özel IP
-Özel bağlantı, Azure 'da MySQL için Azure veritabanı 'na özel bir uç nokta aracılığıyla bağlanmanızı sağlar. Azure özel bağlantısı temel olarak Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. PaaS kaynaklarına, sanal ağ üzerindeki diğer kaynaklar gibi özel IP adresi kullanılarak erişilebilir. Daha fazla bilgi için bkz. [özel bağlantıya genel bakış](concepts-data-access-security-private-link.md)
+Özel bağlantı, Azure 'da MySQL için Azure veritabanı 'na özel bir uç nokta aracılığıyla bağlanmanızı sağlar. Azure Özel Bağlantı, Azure hizmetlerini özel sanal ağınıza (VNet) getirir. Sanal ağdaki diğer kaynaklar gibi PaaS kaynaklarına da özel IP adresini kullanarak erişebilirsiniz. Daha fazla bilgi için bkz. [özel bağlantıya genel bakış](concepts-data-access-security-private-link.md)
 
 ## <a name="access-management"></a>Erişim yönetimi
 

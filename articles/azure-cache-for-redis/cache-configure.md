@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840260"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089732"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -33,7 +33,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 * [Genel Bakış](#overview)
 * [Etkinlik günlüğü](#activity-log)
 * [Erişim denetimi (IAM)](#access-control-iam)
-* [Lerimi](#tags)
+* [Etiketler](#tags)
 * [Sorunları tanılama ve çözme](#diagnose-and-solve-problems)
 * [Ayarlar](#settings)
     * [Erişim tuşları](#access-keys)
@@ -72,7 +72,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 ### <a name="access-control-iam"></a>Erişim denetimi (IAM)
 
-**Erişim denetimi (IAM)** bölümü Azure Portal rol tabanlı erişim denetımı (RBAC) için destek sağlar. Bu yapılandırma, kuruluşların erişim yönetimi gereksinimlerini yalnızca ve tam olarak karşıladığından yardımcı olur. Daha fazla bilgi için [Azure Portal rol tabanlı erişim denetimi](../role-based-access-control/role-assignments-portal.md)bölümüne bakın.
+**Erişim denetimi (IAM)** bölümü Azure Portal Azure rol tabanlı erişim denetimi (Azure RBAC) için destek sağlar. Bu yapılandırma, kuruluşların erişim yönetimi gereksinimlerini yalnızca ve tam olarak karşıladığından yardımcı olur. Daha fazla bilgi için [Azure Portal Azure rol tabanlı erişim denetimi](../role-based-access-control/role-assignments-portal.md)bölümüne bakın.
 
 ### <a name="tags"></a>Etiketler
 
@@ -214,7 +214,7 @@ Küme boyutunu değiştirmek için kaydırıcıyı kullanın veya parça **sayı
 
 
 ### <a name="redis-data-persistence"></a>Redis veri kalıcılığı
-Premium önbelleğiniz için veri kalıcılığını etkinleştirmek, devre dışı bırakmak veya yapılandırmak için **veri kalıcılığı** ' ne tıklayın. Redsıs için Azure önbelleği, [RDB kalıcılığı](cache-how-to-premium-persistence.md#configure-rdb-persistence) veya [AOF kalıcılığı](cache-how-to-premium-persistence.md#configure-aof-persistence)kullanarak redsıs kalıcılığı sağlar.
+Premium önbelleğiniz için veri kalıcılığını etkinleştirmek, devre dışı bırakmak veya yapılandırmak için **veri kalıcılığı** ' ne tıklayın. Redsıs için Azure önbelleği, RDB kalıcılığı veya AOF kalıcılığı kullanarak Redsıs kalıcılığı sağlar.
 
 Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md).
 
@@ -386,7 +386,7 @@ Redsıs örnekleri için yeni Azure önbelleği, aşağıdaki varsayılan Redsı
 >
 >
 
-| Ayar | Varsayılan değer | Açıklama |
+| Ayar | Varsayılan değer | Description |
 | --- | --- | --- |
 | `databases` |16 |Varsayılan veritabanı sayısı 16 ' dır, ancak fiyatlandırma katmanını temel alarak farklı bir sayı yapılandırabilirsiniz. <sup>1</sup> varsayılan veritabanı DB 0 ' dır, `connection.GetDatabase(dbid)` `dbid` ve arasında bir sayı olan ' i kullanarak bağlantı başına temelinde farklı bir tane seçebilirsiniz `0` `databases - 1` . |
 | `maxclients` |Fiyatlandırma katmanına bağlıdır<sup>2</sup> |Bu değer, aynı anda izin verilen en fazla bağlı istemci sayısıdır. Sınıra ulaşıldıktan sonra, ' en fazla istemci sayısına ulaşıldı ' hatası döndüren tüm yeni bağlantıları kapatır. |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900046"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)
@@ -37,14 +37,14 @@ Y **:** Daha önce, geçitli önizleme kapsayıcıları `containerpreview.azurec
 
 Y **:** Daha fazla bilişsel Hizmetleri kapsayıcı teklifleri olarak kullanılabilir hale getirmek istiyoruz. Yeni kapsayıcı yayınlarına ve diğer bilişsel hizmetler bildirilerinde güncelleştirmeler almak için yerel Microsoft hesabı yöneticinize başvurun.
 
-**S: bilişsel hizmetler kapsayıcıları için hizmet düzeyi sözleşmesi (SLA) ne olacak?**
+**S: bilişsel hizmetler kapsayıcıları için Service-Level Sözleşmesi (SLA) ne olacak?**
 
 Y **:** Bilişsel hizmetler kapsayıcılarının SLA 'sı yoktur.
 
 Kaynakların bilişsel hizmetler kapsayıcı konfigürasyonları müşteriler tarafından denetlenir, bu nedenle Microsoft genel kullanılabilirlik (GA) için SLA sunmaz. Müşteriler şirket içinde kapsayıcı dağıtmak için ücretsizdir, bu nedenle konak ortamlarını tanımlar.
 
 > [!IMPORTANT]
-> Bilişsel hizmetler hizmet düzeyi sözleşmeleri hakkında daha fazla bilgi edinmek için [SLA sayfamızı ziyaret edin](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
+> Bilişsel hizmetler Service-Level anlaşmaları hakkında daha fazla bilgi edinmek için [SLA sayfamızı ziyaret edin](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
 
 **S: Bu kapsayıcılar bağımsız bulutlarda kullanılabilir mi?**
 

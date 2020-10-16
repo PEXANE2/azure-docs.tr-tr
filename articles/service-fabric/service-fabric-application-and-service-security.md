@@ -4,10 +4,10 @@ description: Service Fabric 'da mikro hizmet uygulamalarının güvenli bir şek
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256586"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Uygulama ve hizmet güvenliği Service Fabric
@@ -20,7 +20,7 @@ Bu makale, mikro hizmetler güvenliğine yönelik bir kılavuz değildir, çevri
 ## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 Genellikle, bir hizmet tarafından sunulan kaynakların ve API 'Lerin belirli Güvenilen Kullanıcı veya istemcilerle sınırlı olması gerekir. Kimlik doğrulaması, bir kullanıcının kimliğini güvenilir bir şekilde belirlememe işlemidir.  Yetkilendirme, API 'Leri veya hizmetleri bazı kimliği doğrulanmış kullanıcılar için kullanılabilir hale getiren işlemdir, ancak diğerleri için kullanılamaz.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 API düzeyi güven kararlarını yapmanın ilk adımı kimlik doğrulamadır. Kimlik doğrulaması, bir kullanıcının kimliğini güvenilir bir şekilde belirlememe işlemidir.  Mikro hizmet senaryolarında, kimlik doğrulaması genellikle merkezi olarak işlenir. Bir API ağ geçidi kullanıyorsanız, kimlik doğrulamasını ağ geçidine [devreedebilirsiniz](/azure/architecture/patterns/gateway-offloading) . Bu yaklaşımı kullanırsanız, ağ geçidinden gelen veya olmayan iletilerin kimliğini doğrulamak için ek güvenlik yoksa, tek tek hizmetlere doğrudan ulaşılamadığından emin olun (API ağ geçidi olmadan).
 
 Hizmetlere doğrudan erişilemiyorsa, kullanıcıların kimliğini doğrulamak için Azure Active Directory gibi bir kimlik doğrulama hizmeti veya güvenlik belirteci hizmeti (STS) görevi gören ayrılmış bir kimlik doğrulama mikro hizmeti kullanılabilir. Güven kararları, güvenlik belirteçleri veya tanımlama bilgileriyle hizmetler arasında paylaşılır. 

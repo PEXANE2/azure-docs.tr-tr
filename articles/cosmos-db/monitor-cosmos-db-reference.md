@@ -9,10 +9,10 @@ ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.openlocfilehash: 21e1d93e206751b5a55b0b3549e8bd566612ddbe
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080462"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB veri izleme başvurusu
@@ -28,7 +28,7 @@ Aşağıdaki tabloda Azure Cosmos DB içindeki kaynak günlüklerinin özellikle
 | **ışınızda** | **TimeGenerated** | İşlem gerçekleştiği tarih ve saat (UTC). |
 | **RESOURCEID** | **Kaynak** | Günlüklerin etkinleştirildiği Azure Cosmos DB hesabı.|
 | **alan** | **Kategori** | Azure Cosmos DB, **Dataplanerequests**, **mongorequests**, **QueryRuntimeStatistics**, **partitionkeystatıstıcs**, **partitionkeyrutüketim**, **controlplanerequests** , kullanılabilir günlük türlerdir. |
-| **operationName** | **OperationName** | İşlemin adı. İşlem adı,,,,,,,, `Create` `Update` `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` , `JSQuery` ,, veya olabilir `Head` `HeadFeed` `Upsert` .   |
+| **operationName** | **OperationName** | İşlemin adı. İşlem adı,,,,,,,,  `Create` `Update` `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` , `JSQuery` ,, veya olabilir `Head` `HeadFeed` `Upsert` .   |
 | **özelliklerinin** | yok | Bu alanın içeriği, izleyen satırlarda açıklanmıştır. |
 | **Etkinlik kimliği** | **activityId_g** | Günlüğe kaydedilen işlem için benzersiz GUID. |
 | **Kullanıcı** | **userAgent_s** | İsteğin gönderildiği istemci Kullanıcı aracısını belirten bir dize. Kullanıcı aracısının biçimi `{user agent name}/{version}` .|

@@ -7,10 +7,10 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87048659"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Azure Service Bus ile Azure Logic Apps sıralı bir konvoy kullanarak ilgili iletileri sırayla gönderin
@@ -47,7 +47,7 @@ Daha fazla bilgi için bkz. [sıralı konvoy deseni-Azure mimarisi bulut tasarı
 
 Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olup olmadığından emin değilseniz, bu izinleri onaylayın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Service Bus *ad*alanınızı bulun ve seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Service Bus *ad*alanınızı bulun ve seçin.
 
 1. Ad alanı menüsünde, **Ayarlar**altında, **paylaşılan erişim ilkeleri**' ni seçin. **Talepler**altında, bu ad alanı Için izinleri **yönetme** izinlerine sahip olup olmadığınızı kontrol edin.
 
@@ -195,11 +195,11 @@ Ayrıntılar daraltıldığında kapsam eyleminde en üst düzey akış aşağı
 
   | Özellik | Bu senaryo için gerekli | Değer | Açıklama |
   |----------|----------------------------|-------|-------------|
-  | **Kuyruk adı** | Yes | <*sıra-adı*> | Daha önce oluşturduğunuz Service Bus kuyruğunun adı. Bu örnekte "Fabrikam-Service-Bus-Queue" kullanılmaktadır. |
-  | **Sıra türü** | Yes | **Ana** | Birincil Service Bus kuyruğunuz |
-  | **Oturum kimliği** | Yes | **Sonraki kullanılabilir** | Bu seçenek, Service Bus sırasındaki iletiden oturum KIMLIĞI temel alınarak her tetikleyici çalıştırması için bir oturum alır. Oturum, başka bir mantıksal uygulama veya başka bir istemcinin bu oturumla ilgili iletileri işleyebilmesi için de kilitlenir. İş akışının sonraki eylemleri, bu makalenin ilerleyen kısımlarında açıklandığı gibi, bu oturumla ilişkili tüm iletileri işler. <p><p>Diğer **oturum kimliği** seçenekleri hakkında daha fazla bilgi aşağıda verilmiştir: <p>- **Hiçbiri**: hiçbir oturum yok ve sıralı konvoy deseninin uygulanması için kullanılamayan varsayılan seçenektir. <p>- **Özel değer girin**: kullanmak ISTEDIĞINIZ oturum kimliğini bildiğiniz ve her zaman bu oturum kimliği için tetikleyiciyi çalıştırmak istediğiniz zaman bu seçeneği kullanın. <p>**Note**: Service Bus bağlayıcısı, Azure Service Bus ile bağlayıcı önbelleğine sınırlı sayıda benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Daha fazla bilgi için bkz. [Azure Logic Apps ile buluttaki Exchange iletileri ve Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
-  | **Aralık** | Yes | <*Aralık sayısı*> | Bir iletiyi denetlemeden önce Yinelenmeler arasındaki zaman birimi sayısı. |
-  | **Sıklık** | Yes | **İkinci**, **dakika**, **saat**, **gün**, **hafta**veya **ay** | Bir ileti denetlenirken yinelenme için zaman birimi. <p>**İpucu**: bir **saat dilimi** veya **Başlangıç saati**eklemek için **yeni parametre Ekle** listesinden bu özellikleri seçin. |
+  | **Kuyruk adı** | Evet | <*sıra-adı*> | Daha önce oluşturduğunuz Service Bus kuyruğunun adı. Bu örnekte "Fabrikam-Service-Bus-Queue" kullanılmaktadır. |
+  | **Sıra türü** | Evet | **Ana** | Birincil Service Bus kuyruğunuz |
+  | **Oturum kimliği** | Evet | **Sonraki kullanılabilir** | Bu seçenek, Service Bus sırasındaki iletiden oturum KIMLIĞI temel alınarak her tetikleyici çalıştırması için bir oturum alır. Oturum, başka bir mantıksal uygulama veya başka bir istemcinin bu oturumla ilgili iletileri işleyebilmesi için de kilitlenir. İş akışının sonraki eylemleri, bu makalenin ilerleyen kısımlarında açıklandığı gibi, bu oturumla ilişkili tüm iletileri işler. <p><p>Diğer **oturum kimliği** seçenekleri hakkında daha fazla bilgi aşağıda verilmiştir: <p>- **Hiçbiri**: hiçbir oturum yok ve sıralı konvoy deseninin uygulanması için kullanılamayan varsayılan seçenektir. <p>- **Özel değer girin**: kullanmak ISTEDIĞINIZ oturum kimliğini bildiğiniz ve her zaman bu oturum kimliği için tetikleyiciyi çalıştırmak istediğiniz zaman bu seçeneği kullanın. <p>**Note**: Service Bus bağlayıcısı, Azure Service Bus ile bağlayıcı önbelleğine sınırlı sayıda benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Daha fazla bilgi için bkz. [Azure Logic Apps ile buluttaki Exchange iletileri ve Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
+  | **Aralık** | Evet | <*Aralık sayısı*> | Bir iletiyi denetlemeden önce Yinelenmeler arasındaki zaman birimi sayısı. |
+  | **Sıklık** | Evet | **İkinci**, **dakika**, **saat**, **gün**, **hafta**veya **ay** | Bir ileti denetlenirken yinelenme için zaman birimi. <p>**İpucu**: bir **saat dilimi** veya **Başlangıç saati**eklemek için **yeni parametre Ekle** listesinden bu özellikleri seçin. |
   |||||
 
   Daha fazla tetikleyici bilgisi için bkz. [Service Bus-bir kuyrukta ileti alındığında (Peek-kilit)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Tetikleyici bir [Servicebusmessage](/connectors/servicebus/#servicebusmessage)çıkışı verir.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d24d0b71ce537b81ee729109b398042c3b60c5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554473"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940967"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Öğretici: hesaba göre yeni relik ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile yeni bir relik hesabını
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -134,7 +134,7 @@ Bu bölümde, yeni hesaba göre yeni relik erişimine izin vererek Azure çoklu 
 
 2. Üstteki menüde **Hesap ayarları**' na tıklayın.
    
-    ![Hesap ayarları](./media/new-relic-tutorial/ic797036.png "Hesap ayarları")
+    ![Ekran görüntüsü, hesap ayarları seçili olan karşılama sayfasını gösterir.](./media/new-relic-tutorial/ic797036.png "Hesap ayarları")
 
 3. **Güvenlik ve kimlik doğrulama** sekmesine tıklayın ve ardından **Çoklu oturum açma** sekmesine tıklayın.
    
@@ -158,11 +158,11 @@ Bu bölümde, yeni hesaba göre yeni relik erişimine izin vererek Azure çoklu 
 
 2. Üstteki menüde **Hesap ayarları**' na tıklayın.
    
-    ![Hesap ayarları](./media/new-relic-tutorial/ic797040.png "Hesap ayarları")
+    ![Ekran görüntüsü, hoş geldiniz sayfasından seçilen hesap ayarlarını gösterir.](./media/new-relic-tutorial/ic797040.png "Hesap ayarları")
 
 3. Sol taraftaki **Hesap** bölmesinde, **Özet**' e ve ardından **Kullanıcı Ekle**' ye tıklayın.
    
-    ![Hesap ayarları](./media/new-relic-tutorial/ic797041.png "Hesap ayarları")
+    ![Ekran görüntüsü, Kullanıcı Ekle ' yi seçebileceğiniz Özet bölmesini gösterir.](./media/new-relic-tutorial/ic797041.png "Hesap ayarları")
 
 4. **Etkin kullanıcılar** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    

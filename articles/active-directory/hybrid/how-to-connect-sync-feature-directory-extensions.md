@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662492"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Eşitleme Azure AD Connect: Dizin uzantıları
@@ -87,7 +87,7 @@ Daha kullanışlı senaryolarından biri, bu özniteliklerin dinamik güvenlik v
 
    ![Yeni özniteliklerin Kullanıcı arabiriminde gösterdiği ekran görüntüsü](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   Gereksinimlerinize uyacak şekilde ifadeyi doldurun. Örneğimizde kural **(User. extension_9d98ed114c4840d298fad781915f27e4_division-EQ "Sales ve Marketing")** olarak ayarlanmıştır.
+   Gereksinimlerinize uyacak şekilde ifadeyi doldurun. Örneğimizde, kural **(User.extension_9d98ed114c4840d298fad781915f27e4_division-EQ "Sales ve Marketing")** olarak ayarlanır.
 
 4. Grup oluşturulduktan sonra, üyelerin doldurulması için Azure AD 'ye bir süre verin ve ardından üyeleri gözden geçirin.
 

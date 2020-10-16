@@ -3,15 +3,15 @@ title: PowerShell-Azure ile RDP özelliklerini özelleştirme
 description: PowerShell cmdlet 'leriyle Windows sanal masaüstü için RDP özelliklerini özelleştirme.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462233"
+ms.locfileid: "91930705"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirme
 
@@ -28,8 +28,8 @@ RDP dosyaları varsayılan olarak aşağıdaki özelliklere sahiptir:
 
 |RDP özelliği|Masaüstünde|RemoteApp olarak|
 |---|---|---|
-|Çoklu monitör modu|Etkin|Yok|
-|Sürücü yeniden yönlendirmeleri etkin|Sürücüler, pano, yazıcılar, COM bağlantı noktaları, USB cihazları ve akıllı kartlar|Sürücüler, pano ve Yazıcılar|
+|Çoklu monitör modu|Devre dışı|Etkin|
+|Sürücü yeniden yönlendirmeleri etkin|Sürücüler, pano, yazıcılar, COM bağlantı noktaları ve akıllı kartlar|Sürücüler, pano ve Yazıcılar|
 |Uzak ses modu|Yerel olarak oynat|Yerel olarak oynat|
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -45,8 +45,9 @@ Azure portal RDP özelliklerini yapılandırmak için:
 3. Hizmetler altında **Windows sanal masaüstü**' nü seçin.
 4. Windows sanal masaüstü sayfasında, ekranın sol tarafındaki menüden **konak havuzları** ' nı seçin.
 5. Güncelleştirmek istediğiniz **konak havuzunun adını** seçin.
-6. Ekranın sol tarafındaki menüden **Özellikler** ' i seçin.
-7. **Özellikler** sekmesinde, RDP özelliklerini düzenlemeyle başlamak için **RDP ayarları** ' na gidin. Özellikler, PowerShell örnekleri gibi noktalı virgülle ayrılmış bir biçimde olmalıdır.
+6. Ekranın sol tarafındaki menüde **RDP özellikleri** ' ni seçin.
+7. İstediğiniz özelliği ayarlayın.
+   - Alternatif olarak, **Gelişmiş** sekmesini AÇABILIR ve RDP özelliklerinizi aşağıdaki bölümlerdeki PowerShell örnekleri gibi noktalı virgülle ayrılmış bir biçimde ekleyebilirsiniz.
 8. İşiniz bittiğinde, değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 
 Sonraki bölümlerde, PowerShell 'de özel RDP özelliklerinin el ile nasıl düzenleneceği açıklanır.

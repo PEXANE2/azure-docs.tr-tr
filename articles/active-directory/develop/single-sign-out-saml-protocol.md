@@ -1,6 +1,6 @@
 ---
 title: Azure çoklu oturum kapatma SAML Protokolü
-description: Bu makalede Azure Active Directory içindeki çoklu oturum kapatma SAML Protokolü açıklanmaktadır
+description: Bu makalede, Azure Active Directory içindeki tek Sign-Out SAML Protokolü açıklanmaktadır
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,13 +13,13 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118272"
 ---
-# <a name="single-sign-out-saml-protocol"></a>Çoklu oturum kapatma SAML Protokolü
+# <a name="single-sign-out-saml-protocol"></a>Tek Sign-Out SAML Protokolü
 
 Azure Active Directory (Azure AD), SAML 2,0 Web tarayıcısı çoklu oturum açma profilini destekler. Çoklu oturum açma 'nın düzgün çalışması için uygulama kaydı sırasında uygulamanın **LogoutURL 'Sinin** Azure AD 'ye açık olarak kaydedilmesi gerekir. Azure AD, oturumu kapattıktan sonra kullanıcıları yeniden yönlendirmek için LogoutURL 'yi kullanır.
 
@@ -40,9 +40,9 @@ Bulut hizmeti, `LogoutRequest` bir oturumun sonlandırıldığını göstermek I
 ### <a name="logoutrequest"></a>LogoutRequest
 `LogoutRequest`Azure AD 'ye gönderilen öğe aşağıdaki öznitelikleri gerektirir:
 
-* `ID`-Bu, oturum kapatma isteğini tanımlar. Değeri `ID` bir sayıyla başlamamalıdır. Tipik uygulama, bir GUID 'nin dize gösterimine **ID** eklemek için kullanılır.
-* `Version`-Bu öğenin değerini **2,0**olarak ayarlayın. Bu değer gereklidir.
-* `IssueInstant`-Bu, `DateTime` koordinat evrensel saat (UTC) değeri ve [gidiş dönüş biçimi ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)içeren bir dizedir. Azure AD bu türden bir değer bekler, ancak bunu zorlamaz.
+* `ID` -Bu, oturum kapatma isteğini tanımlar. Değeri `ID` bir sayıyla başlamamalıdır. Tipik uygulama, bir GUID 'nin dize gösterimine **ID** eklemek için kullanılır.
+* `Version` -Bu öğenin değerini **2,0**olarak ayarlayın. Bu değer gereklidir.
+* `IssueInstant` -Bu, `DateTime` koordinat evrensel saat (UTC) değeri ve [gidiş dönüş biçimi ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)içeren bir dizedir. Azure AD bu türden bir değer bekler, ancak bunu zorlamaz.
 
 ### <a name="issuer"></a>Veren
 `Issuer`İçindeki öğesi, `LogoutRequest` Azure AD 'deki bulut hizmetindeki **ServicePrincipalNames adlarından** biriyle tam olarak eşleşmelidir. Genellikle, bu, uygulama kaydı sırasında belirtilen **uygulama KIMLIĞI URI** 'sine ayarlanır.

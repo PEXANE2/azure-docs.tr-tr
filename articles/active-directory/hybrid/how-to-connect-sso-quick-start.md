@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: sorunsuz çoklu oturum açma hızlı başlangıç | Microsoft Docs'
-description: Bu makalede Azure Active Directory sorunsuz çoklu oturum açma ile çalışmaya başlama açıklanmaktadır
+title: 'Azure AD Connect: kesintisiz tek Sign-On-hızlı başlangıç | Microsoft Docs'
+description: Bu makalede Azure Active Directory kesintisiz tek Sign-On kullanmaya nasıl başlacağınız açıklanmaktadır
 services: active-directory
 keywords: Azure AD Connect nedir, yükler Active Directory, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
 documentationcenter: ''
@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295045"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
-## <a name="deploy-seamless-single-sign-on"></a>Kesintisiz çoklu oturum açma dağıtın
+## <a name="deploy-seamless-single-sign-on"></a>Kesintisiz tek Sign-On dağıtma
 
-Azure Active Directory (Azure AD) sorunsuz çoklu oturum açma (sorunsuz SSO), şirket ağınıza bağlı olan kurumsal masaüstlerinde olduklarında kullanıcılar tarafından otomatik olarak oturum açar. Sorunsuz SSO, kullanıcılarınıza ek şirket içi bileşenlere gerek duymadan bulut tabanlı uygulamalarınıza kolay erişim sağlar.
+Azure Active Directory (Azure AD) sorunsuz tek Sign-On (sorunsuz SSO), kullanıcılar şirket ağınıza bağlı olan kurumsal masaüstlerinde olduklarında otomatik olarak oturum açar. Sorunsuz SSO, kullanıcılarınıza ek şirket içi bileşenlere gerek duymadan bulut tabanlı uygulamalarınıza kolay erişim sağlar.
 
 Sorunsuz SSO dağıtmak için aşağıdaki adımları izleyin.
 
@@ -236,7 +236,7 @@ Anahtarların nasıl alınacağı hakkında yönergeler için bkz. [Azure Active
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Teknik derinlemesine](how-to-connect-sso-how-it-works.md)bakış: sorunsuz çoklu oturum açma özelliğinin nasıl çalıştığını anlayın.
+- [Teknik derinlemesine](how-to-connect-sso-how-it-works.md)bakış: sorunsuz tek Sign-On özelliğinin nasıl çalıştığını anlayın.
 - [Sık sorulan sorular](how-to-connect-sso-faq.md): sorunsuz çoklu oturum açma hakkında sık sorulan soruların yanıtlarını alın.
-- [Sorun giderme](tshoot-connect-sso.md): sorunsuz çoklu oturum açma özelliğiyle yaygın sorunları çözmeyi öğrenin.
+- [Sorun giderme](tshoot-connect-sso.md): sorunsuz tek Sign-On özelliğiyle yaygın sorunları çözmeyi öğrenin.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): yeni özellik isteklerini dosya olarak yüklemek Için Azure Active Directory forumunu kullanın.

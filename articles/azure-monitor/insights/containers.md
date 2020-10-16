@@ -7,10 +7,10 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
 ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326911"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Izleyici 'de kapsayıcı Izleme çözümü
@@ -45,7 +45,7 @@ Başlamadan önce, önkoşulları karşıladığınızdan emin olmak için aşa�
 
 Aşağıdaki tabloda, Azure Izleyici ile kapsayıcı envanteri, performansı ve günlükleri için Docker düzenleme ve işletim sistemi izleme desteği özetlenmektedir.   
 
-|Docker düzenleme | ACS | Linux | Windows | Kapsayıcı<br>Envanter | Görüntü<br>Envanter | Düğüm<br>Envanter | Kapsayıcı<br>Performans | Kapsayıcı<br>Olay | Olay<br>Log | Kapsayıcı<br>Log |
+|Docker düzenleme | ACS | Linux | Windows | Kapsayıcı<br>Envanter | Görüntü<br>Envanter | Node<br>Envanter | Kapsayıcı<br>Performans | Kapsayıcı<br>Olay | Olay<br>Günlük | Kapsayıcı<br>Günlük |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -360,7 +360,7 @@ Gizli dizileri olan veya olmayan omsagent DaemonSets oluşturmayı seçebilirsin
         KEY:    88 bytes
         ```
 
-    5. Omsagent cini oluşturma-çalıştırarak ayarlama```sudo kubectl create -f omsagent-ds-secrets.yaml```
+    5. Omsagent cini oluşturma-çalıştırarak ayarlama ```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
 2. Log Analytics Agent DaemonSet 'ın çalıştığını ve aşağıdakine benzer şekilde çalıştığını doğrulayın:
 
@@ -404,7 +404,7 @@ Windows Kubernetes için, Log Analytics aracısını yüklemek üzere çalışma
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. Omsagent cini oluşturma-çalıştırarak ayarlama```kubectl create -f omsagentsecret.yaml```
+    3. Omsagent cini oluşturma-çalıştırarak ayarlama ```kubectl create -f omsagentsecret.yaml```
     4. Denetlemek için aşağıdakileri çalıştırın:
 
         ```
@@ -431,7 +431,7 @@ Windows Kubernetes için, Log Analytics aracısını yüklemek üzere çalışma
         KEY:    88 bytes
         ```
 
-    5. Omsagent cini oluşturma-çalıştırarak ayarlama```kubectl create -f ws-omsagent-de-secrets.yaml```
+    5. Omsagent cini oluşturma-çalıştırarak ayarlama ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
 2. Log Analytics Agent DaemonSet 'ın çalıştığını ve aşağıdakine benzer şekilde çalıştığını doğrulayın:
 
@@ -447,7 +447,7 @@ Windows Kubernetes için, Log Analytics aracısını yüklemek üzere çalışma
 
 Linux Kubernetes ortamınızda Log Analytics Aracısı dağıtmak üzere Held 'yi kullanmak için aşağıdaki adımları gerçekleştirin.
 
-1. Omsagent cini oluşturma-çalıştırarak ayarlama```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
+1. Omsagent cini oluşturma-çalıştırarak ayarlama ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. Sonuçlar şuna benzer olacaktır:
 
     ```
@@ -602,7 +602,7 @@ Log Analytics sıfır olmayan bir çıkış kodu ile çıkış yaptıysanız kap
    ![başarısız kapsayıcılar](./media/containers/containers-state-failed-select.png)  
 1. Sorguyu çalıştırın ve ardından sonuçlarda bir satırı genişleterek görüntü KIMLIĞINI görüntüleyin.  
    ![başarısız kapsayıcılar](./media/containers/containers-state-failed.png)  
-1. Günlük sorgusuna aşağıdakini yazın. `ContainerImageInventory | where ImageID == <ImageID>`görüntü boyutu ve durdurulma ve başarısız görüntü sayısı gibi görüntüyle ilgili ayrıntıları görmek için.  
+1. Günlük sorgusuna aşağıdakini yazın. `ContainerImageInventory | where ImageID == <ImageID>` görüntü boyutu ve durdurulma ve başarısız görüntü sayısı gibi görüntüyle ilgili ayrıntıları görmek için.  
    ![başarısız kapsayıcılar](./media/containers/containers-failed04.png)
 
 ## <a name="query-logs-for-container-data"></a>Kapsayıcı verileri için sorgu günlükleri
@@ -620,7 +620,7 @@ Belirli bir hatayla ilgili sorunları giderirken, ortamınızda nerede oluştuğ
 
 ### <a name="to-query-logs-for-container-data"></a>Kapsayıcı verileri için günlükleri sorgulamak için
 
-* Kısa süre önce başarısız olduğunu bildiğiniz bir görüntü seçin ve bunun için hata günlüklerini bulun. Bir **Containerınventory** aramayla bu görüntüyü çalıştıran bir kapsayıcı adı bularak başlayın. Örneğin, şunu arayın`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
+* Kısa süre önce başarısız olduğunu bildiğiniz bir görüntü seçin ve bunun için hata günlüklerini bulun. Bir **Containerınventory** aramayla bu görüntüyü çalıştıran bir kapsayıcı adı bularak başlayın. Örneğin, şunu arayın `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Ubuntu kapsayıcıları arama](./media/containers/search-ubuntu.png)
 
   Sonuçlardan herhangi bir satırı genişleterek ilgili kapsayıcının ayrıntılarını görüntüleyin.

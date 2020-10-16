@@ -8,29 +8,28 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086411"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874603"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
 
 Azure haritalar 'daki yol yönleri ve yol Matrisi API 'Leri [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) , istenen her bir rota için tahmini varış zamanlarını (Etas) hesaplamak üzere kullanılabilir. Yönlendirme API 'Leri, gerçek zamanlı trafik bilgileri ve geçmiş trafik verileri gibi faktörleri, haftanın istenen günü ve günün saati için tipik yol hızları gibi düşünün. API 'Ler, zaman veya mesafeden başlayarak, tek seferde birden çok hedefe veya en iyi duruma getirilmiş sıraya göre sunulan en kısa veya en hızlı yolları döndürür. Kullanıcılar ayrıca, waltlar, bıyıva ve kamyonlar gibi ticari araçlar için özel yollar ve Ayrıntılar isteyebilir. Bu makalede, Azure haritalar [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route)çağırmak için en iyi yöntemleri paylaşacağız ve nasıl yapılacağını öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Yol yönleri API 'Leri ve matris yönlendirme API 'SI arasında seçim yapın
-> * Gerçek zamanlı ve geçmiş trafik verilerine göre geçmiş ve tahmin edilen seyahat sürelerini isteyin
-> * Yolun tamamı ve yolun her bir BAI için zaman ve uzaklık gibi yol ayrıntılarını iste
-> * Kamyon gibi ticari bir araç için istek rotası
-> * Trafik bilgilerini, sıkışıklıklarının ve ücretli bilgiler gibi bir yol üzerinde isteyin
-> * Bir veya daha fazla durdurulduğunda (waypoints) oluşan bir rota isteyin
-> * Her bir durdurmayı (Waypoint) ziyaret etmek için en iyi sırayı elde etmek üzere bir veya daha fazla durak yolunu en iyi hale getirin
-> * Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
-> * Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
+ * Yol yönleri API 'Leri ve matris yönlendirme API 'SI arasında seçim yapın
+ * Gerçek zamanlı ve geçmiş trafik verileri temelinde geçmişe ait ve tahmin edilebilir seyahat zamanları isteme
+ * Yolun tamamı ve yolun her bir BAI için zaman ve uzaklık gibi yol ayrıntılarını iste
+ * Kamyon gibi ticari bir araç için istek rotası
+ * Trafik bilgilerini, sıkışıklıklarının ve ücretli bilgiler gibi bir yol üzerinde isteyin
+ * Bir veya daha fazla durdurulduğunda (waypoints) oluşan bir rota isteyin
+ * Her bir durdurmayı (Waypoint) ziyaret etmek için en iyi sırayı elde etmek üzere bir veya daha fazla durak yolunu en iyi hale getirin
+ * Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
+ * Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -205,7 +204,7 @@ Bu seçenek, aşağıdaki görüntüde olduğu gibi, Haritayı işlerken bölüm
 
 ![Haritada işlenen renkli bölümler](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
-## <a name="calculate-and-optimize-a-multi-stop-route"></a>Çoklu durduran bir yolu hesapla ve iyileştirme
+## <a name="calculate-and-optimize-a-multi-stop-route"></a>Çok duraklı bir yolu hesaplama ve iyileştirme
 
 Azure haritalar şu anda iki yol iyileştirmesi sağlar:
 
@@ -282,7 +281,7 @@ Azure Haritalar Web SDK 'Sı bir [hizmet modülü](https://docs.microsoft.com/ja
 Daha fazla bilgi için lütfen bkz.
 
 > [!div class="nextstepaction"]
-> [Azure haritalar yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure Haritalar Yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
 > [Hizmet modülünü kullanma](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)

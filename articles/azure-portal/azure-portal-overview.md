@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24b249d1098788e518f5eda2d1b0d421d4e5e6bb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84763933"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072399"
 ---
 # <a name="azure-portal-overview"></a>Azure portalına genel bakış
 
@@ -54,7 +54,7 @@ Panolar, aboneliğinizdeki kaynakların sizin için en iyi şekilde bir görün�
 
 ## <a name="getting-around-the-portal"></a>Portalı dolaşma
 
-Temel Portal mizanpajını ve bununla nasıl etkileşim kuracağınızı anlamanız yararlı olur. Burada, Kullanıcı arabiriminin bileşenlerini ve yönergeler sağlamak için kullandığımız bazı terminolojiyi inceleyeceğiz. Portalın daha ayrıntılı bir turu için bkz. ders dersi [portala gitme](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal).
+Temel Portal mizanpajını ve bununla nasıl etkileşim kuracağınızı anlamanız yararlı olur. Burada, Kullanıcı arabiriminin bileşenlerini ve yönergeler sağlamak için kullandığımız bazı terminolojiyi inceleyeceğiz. Portalın daha ayrıntılı bir turu için bkz. ders dersi [portala gitme](/learn/modules/tour-azure-portal/3-navigate-the-portal).
 
 Azure portal menü ve sayfa üstbilgisi her zaman bulunan genel öğelerdir. Bu kalıcı özellikler, her bir hizmet veya özellikle ilişkili kullanıcı arabirimine yönelik "kabuktur" ve üst bilgi genel denetimlere erişim sağlar. Bir kaynağın yapılandırma sayfasında (bazen "dikey pencere" olarak da adlandırılır) özellikler arasında geçiş yapmanıza yardımcı olması için bir kaynak menüsü de olabilir.
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
 ms.openlocfilehash: 3455503570d09daedc5e34cba0bf36d71ddcdcbc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988106"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
@@ -183,7 +183,7 @@ Etkin bölgeler:
 - Orta Avustralya
 - Brezilya Güney
 - Orta Kanada
-- Orta ABD
+- Central US
 - Çin Doğu 2
 - Çin Kuzey 2
 - Doğu Asya
@@ -220,13 +220,13 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 
 | Sorun | Açıklama |
 | :---- | :--------- |
-| Bir sunucunun Yedeklemeleri Yönet bölmesi, hiper ölçekli veritabanlarını göstermez. Bunlar görünümden filtrelenecektir.  | Hiper ölçek, yedeklemeleri yönetmek için ayrı bir yönteme sahiptir, bu nedenle uzun süreli saklama ve zaman içinde yedekleme bekletme ayarları uygulanmaz. Buna uygun olarak, hiper ölçekli veritabanları yedekleme bölmesini yönetme bölmesinde görünmez.<br><br>Diğer Azure SQL veritabanı hizmet katmanlarından hiper ölçeğe geçirilmiş veritabanları için, geçiş öncesi yedeklemeler kaynak veritabanının [yedekleme bekletme](automated-backups-overview.md#backup-retention) süresi boyunca tutulur. Bu yedeklemeler, kaynak veritabanını geçişten önceki bir zaman noktasına [geri yüklemek](recovery-using-backups.md#programmatic-recovery-using-automated-backups) için kullanılabilir.|
+| Bir sunucunun Yedeklemeleri Yönet bölmesi, hiper ölçekli veritabanlarını göstermez. Bunlar görünümden filtrelenecektir.  | Hiper ölçek, yedeklemeleri yönetmek için ayrı bir yönteme sahiptir, bu nedenle Long-Term bekletme ve zaman içinde yedekleme bekletme ayarları uygulanmaz. Buna uygun olarak, hiper ölçekli veritabanları yedekleme bölmesini yönetme bölmesinde görünmez.<br><br>Diğer Azure SQL veritabanı hizmet katmanlarından hiper ölçeğe geçirilmiş veritabanları için, geçiş öncesi yedeklemeler kaynak veritabanının [yedekleme bekletme](automated-backups-overview.md#backup-retention) süresi boyunca tutulur. Bu yedeklemeler, kaynak veritabanını geçişten önceki bir zaman noktasına [geri yüklemek](recovery-using-backups.md#programmatic-recovery-using-automated-backups) için kullanılabilir.|
 | Belirli bir noktaya geri yükleme | Hiper olmayan bir veritabanı hiper ölçekli bir veritabanı olarak geri yüklenemez ve hiper ölçek veritabanı hiper olmayan bir veritabanı olarak geri yüklenemez. Hizmet katmanını değiştirerek hiper ölçeğe geçirilmiş hiper olmayan bir veritabanı için, geçiş işleminden önce ve veritabanının yedekleme saklama süresi içinde bir zaman noktasına geri [yükleyin.](recovery-using-backups.md#programmatic-recovery-using-automated-backups) Geri yüklenen veritabanı hiper olmayan ölçek olacaktır. |
 | Bir veritabanında 1 TB 'den büyük bir veya daha fazla veri dosyası varsa, geçiş başarısız olur | Bazı durumlarda, büyük dosyaları 1 TB 'tan küçük olacak şekilde küçülterek Bu soruna geçici bir çözüm uygulanabilir. Geçiş işlemi sırasında kullanılan bir veritabanını geçiriyorsanız, hiçbir dosyanın 1 TB 'den büyük olmadığından emin olun. Veritabanı dosyalarının boyutunu anlamak için aşağıdaki sorguyu kullanın. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Yönetilen Örnek | Azure SQL yönetilen örneği şu anda hiper ölçekli veritabanları ile desteklenmiyor. |
 | Esnek Havuzlar |  Esnek havuzlar Şu anda Hyperscale ile desteklenmemektedir.|
 | Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu bacpac dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur. [Yeni-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) veya [New-Azsqldatabaseımport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)kullanılarak PowerShell 'den, [az SQL DB Export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) ve [az SQL db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)kullanarak Azure CLI 'dan ve [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) desteklenmeyen bacpac dışarı aktarma/Azure Portal içeri aktarma. Daha küçük hiper ölçekli veritabanları için bacpac içeri/dışarı aktarma (200 GB 'a kadar) SSMS ve [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) sürüm 18,4 ve üzeri kullanılarak desteklenir. Daha büyük veritabanları için bacpac dışarı aktarma/içeri aktarma uzun sürebilir ve çeşitli nedenlerle başarısız olabilir.|
-| Bellek içi OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek, bellek için iyileştirilmiş tablo türleri, tablo değişkenleri ve yerel koda derlenmiş modüller dahil olmak üzere bellek Içi OLTP nesnelerinin bir alt kümesini destekler. Ancak, geçirilmekte olan veritabanında herhangi bir tür bellek Içi OLTP nesnesi varsa, Premium ve İş Açısından Kritik hizmet katmanlarından hiper ölçeğe geçiş desteklenmez. Bu tür bir veritabanını hiper ölçeğe geçirmek için, tüm bellek Içi OLTP nesneleri ve bunların bağımlılıkları bırakılmalıdır. Veritabanı geçirildikten sonra, bu nesneler yeniden oluşturulabilir. Dayanıklı ve dayanıklı olmayan bellek için iyileştirilmiş tablolar, şu anda hiper ölçekte desteklenmez ve disk tabloları olarak yeniden oluşturulmalıdır.|
+| In-Memory OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek, bellek için iyileştirilmiş tablo türleri, tablo değişkenleri ve yerel koda derlenmiş modüller dahil In-Memory OLTP nesnelerinin bir alt kümesini destekler. Ancak, geçirilmekte olan veritabanında herhangi bir In-Memory OLTP nesneleri varsa, Premium ve İş Açısından Kritik hizmet katmanlarından hiper ölçeğe geçiş desteklenmez. Bu tür bir veritabanını hiper ölçeğe geçirmek için, tüm In-Memory OLTP nesnelerinin ve bağımlılıklarının bırakılması gerekir. Veritabanı geçirildikten sonra, bu nesneler yeniden oluşturulabilir. Dayanıklı ve dayanıklı olmayan bellek için iyileştirilmiş tablolar, şu anda hiper ölçekte desteklenmez ve disk tabloları olarak yeniden oluşturulmalıdır.|
 | Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
 | Veritabanı kopyalama | Hiperscale üzerinde veritabanı kopyalama işlemi artık genel önizlemeye sunuldu. |
 | TDE/AKV tümleştirmesi | Azure Key Vault kullanılarak Saydam veritabanı şifrelemesi (genellikle kendi anahtarını getir veya BYOK olarak adlandırılır) Şu anda önizleme aşamasındadır. |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7581dd52cb9affa3295bfbc00c14535ee72de5be
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553972"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Öğretici: Perception Birleşik Devletler Azure Active Directory tümleştirme (UltiPro olmayan)
 
@@ -133,7 +133,7 @@ Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (UltiPro) ile bi
 
 2. Ana araç çubuğunda **Hesap ayarları**' na tıklayın.
 
-    ![Perception Birleşik Devletler (UltiPro olmayan) Kullanıcı](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![Ana araç çubuğundan "hesap ayarları" nın seçili olduğunu gösteren ekran görüntüsü.](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
 3. **Hesap ayarları** sayfasında, aşağıdaki adımları uygulayın:
 
@@ -185,7 +185,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

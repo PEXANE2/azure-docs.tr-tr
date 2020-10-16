@@ -7,19 +7,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 08/09/2020
-ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.openlocfilehash: c1d43da3a0be65b2351a4b6dbeeb2772062356bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442369"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974643"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
 ## <a name="summary"></a>Özet
 
 Azure HDInsight, Azure üzerinde açık kaynaklı Apache Hadoop ve Apache Spark analizlere yönelik kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
+
+## <a name="release-date-09282020"></a>Yayın tarihi: 09/28/2020
+
+Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
+
+### <a name="new-features"></a>Yeni özellikler
+#### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>HDInsight 4,0 ile etkileşimli sorgu için otomatik ölçeklendirme artık genel kullanıma sunuldu
+Etkileşimli sorgu kümesi türü için otomatik ölçeklendirme, HDInsight 4,0 için genel kullanıma sunulmuştur (GA). 27 Ağustos 2020 ' den sonra oluşturulan tüm etkileşimli sorgu 4,0 kümelerinin otomatik ölçeklendirme için GA desteği olacaktır.
+
+#### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase kümesi Premium ADLS 2. destekler
+HDInsight artık, HDInsight HBase 3,6 ve 4,0 kümelerinin birincil depolama hesabı olarak Premium ADLS 2. desteklemektedir. [Hızlandırılmış yazma işlemleri](./hbase/apache-hbase-accelerated-writes.md)Ile birlikte HBase kümeleriniz için daha iyi performans sağlayabilirsiniz.
+
+#### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Azure hata etki alanlarında Kafka bölüm dağıtımı
+Hata etki alanı, bir Azure veri merkezinde temel donanımlardan oluşan mantıksal bir gruplandırmadır. Her hata etki alanı ortak bir güç kaynağı ve ağ anahtarına sahiptir. HDInsight Kafka önce tüm bölüm çoğaltmalarını aynı hata etki alanına depolayabileceği. Bu sürümden itibaren, HDInsight artık Azure hata etki alanlarına göre Kafka bölümlerinin otomatik olarak dağıtılmasını desteklemektedir. 
+
+#### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
+Müşteriler, platform tarafından yönetilen anahtarlarla IPSec şifrelemesini kullanarak küme düğümleri arasında geçiş şifrelemesini etkinleştirebilir. Bu seçenek, küme oluşturma sırasında etkinleştirilebilir. [İletimde şifrelemeyi etkinleştirme](./domain-joined/encryption-in-transit.md)hakkında daha fazla ayrıntı için bkz..
+
+#### <a name="encryption-at-host"></a>Konakta şifreleme
+Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, REST ve depolama hizmetine şifrelenen akışlara şifrelenir. Bu sürümden, kümeyi oluştururken **geçici veri diskinde konakta şifrelemeyi etkinleştirebilirsiniz** . Konaktaki şifreleme yalnızca [sınırlı bölgelerdeki belırlı VM SKU 'larında](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal)desteklenir. HDInsight [aşağıdaki düğüm yapılandırmalarını ve SKU 'larını](./hdinsight-supported-node-configuration.md)destekler. [Konakta şifrelemeyi etkinleştirme](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys)hakkında daha fazla ayrıntı için bkz..
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
+
+### <a name="deprecation"></a>Kullanımdan kaldırma
+Bu yayın için kullanımdan kaldırma yok.
+
+### <a name="behavior-changes"></a>Davranış değişiklikleri
+Bu yayın için davranış değişikliği yok.
+
+### <a name="upcoming-changes"></a>Yaklaşan değişiklikler
+Gelecek sürümlerde aşağıdaki değişiklikler olur.
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Spark, Hadoop ve ML Hizmetleri için farklı Zookeeper SKU seçme özelliği
+HDInsight, Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper SKU 'sunu değiştirmeyi desteklememektedir. Zookeeper düğümleri için A2_v2/a2 SKU kullanır ve müşteriler bu kullanıcılara ücretlendirilmez. Gelecek sürümde, müşteriler Spark, Hadoop ve ML Hizmetleri için Zookeeper SKU 'sunu gerektiği şekilde değiştirebilir. A2_v2/a2 dışındaki SKU 'ya sahip Zookeeper düğümleri ücretlendirilecektir. Varsayılan SKU, A2_V2/a2 ve ücretsiz olmaya devam edecektir.
+
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
+
+### <a name="component-version-change"></a>Bileşen sürümü değişikliği
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
 
 ## <a name="release-date-08092020"></a>Yayın tarihi: 08/09/2020
 
@@ -304,7 +345,7 @@ HDInsight Identity broker (HIB), kullanıcıların Multi-Factor Authentication (
 
 #### <a name="kafka-rest-api-proxy-preview"></a>Kafka REST API proxy (Önizleme)
 
-Kafka REST API proxy, güvenli AAD yetkilendirmesi ve OAuth protokolü aracılığıyla Kafka kümesi ile yüksek oranda kullanılabilir REST proxy 'nin tek tıklamayla dağıtımını sağlar. 
+Kafka REST API proxy, güvenli Azure AD yetkilendirmesi ve OAuth protokolü aracılığıyla Kafka kümesi ile yüksek oranda kullanılabilir REST proxy 'nin tek tıklamayla dağıtımını sağlar. 
 
 #### <a name="auto-scale"></a>Otomatik ölçeklendirme
 
@@ -751,7 +792,7 @@ Bu sürüm, aşağıdaki düzeltme eklerine ek olarak Hive 1.2.1 ve Hive 2.1.0 s
 
 -   [*Hive-18189*](https://issues.apache.org/jira/browse/HIVE-18189): Hive. GroupBy. OrderBy. Position. Alias değeri true olarak ayarlandığında Hive sorgusu hatalı sonuçlar döndürüyor.
 
--   [*HIVE-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektörleştirme: yinelenen sütunlar Ile MERGEPARTIAL tarafından, azaltma-tarafı grubu kopuk.
+-   [*HIVE-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektörleştirme: yinelenen sütunlar Ile MERGEPARTIAL tarafından Reduce-Side Group bozuk.
 
 -   [*Hive-18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive, Hivemetasisini çalıştıran kimliğe sahip olmayan bir klasörde yer alan tabloları sıkıştıramıyor.
 
@@ -859,7 +900,7 @@ Bu sürüm, aşağıdaki düzeltme eklerine ek olarak Hive 1.2.1 ve Hive 2.1.0 s
 
 -   [*HIVE-18189*](https://issues.apache.org/jira/browse/HIVE-18189): CBO devre dışı bırakıldığında order by konuma göre sıralama çalışmaz.
 
--   [*HIVE-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektörleştirme: yinelenen sütunlar Ile MERGEPARTIAL tarafından, azaltma-tarafı grubu kopuk.
+-   [*HIVE-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektörleştirme: yinelenen sütunlar Ile MERGEPARTIAL tarafından Reduce-Side Group bozuk.
 
 -   [*HIVE-18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: yavaş işleme işlem hattı ile hızlı LLAP GÇ OOM 'ye yol açabilir.
 
@@ -981,7 +1022,7 @@ HDP-2.3. x ve 2,4. x içinde, Mahout 'ın belirli bir Apache sürümünü teslim
 
 HDP 2.3. x ve 2,4. x içinde Mahout için seçilen düzeltme noktası, Apache Mahout 'ın "Mahout-0.10. x" dalından (19 Aralık 2014, düzeltme 0f037cb03e77c096 ' dan itibaren GitHub 'da).
 
-HDP-2.5. x ve 2.6. x içinde, "Commons-HttpClient" kitaplığını Mahout 'dan kaldırdık. Bu, olası güvenlik sorunları içeren eski bir kitaplık olarak görünümliyoruz ve Mahout 'daki Hadoop-Client 'ı HDP-2,5 ' de kullanılan sürüm 2.7.3 sürümüne yükselttik. Sonuç olarak:
+HDP-2.5. x ve 2.6. x içinde, "Commons-HttpClient" kitaplığını Mahout 'dan kaldırdık çünkü bunu olası güvenlik sorunları olan eski bir kitaplık olarak güncelleştirdik ve Mahout 'daki Hadoop-Client, HDP-2,5 ' de kullanılan sürüm 2.7.3 sürümüne yükseltiyoruz. Sonuç olarak:
 
 -   Önceden derlenen Mahout işlerinin, HDP-2,5 veya 2,6 ortamında yeniden derlenmesi gerekir.
 
@@ -1139,7 +1180,7 @@ Bu sürüm Spark 2.3.0 ve aşağıdaki Apache yamaları sağlar:
 
 -   [Spark-23598](https://issues.apache.org/jira/browse/SPARK-23598): bir büyük sorgu için çalışma zamanı hatasından kaçınmak üzere BufferedRowIterator ortak içindeki yöntemleri yapın.
 
--   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): sözde rastgele SAYıLARDAN bir UUID Oluşturucu ekleyin.
+-   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): Pseudo-Random numaralardan bir UUID Oluşturucu ekleyin.
 
 -   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): UUID Ifadesinde Randomuuıdgenerator kullanın.
 
@@ -1221,7 +1262,7 @@ Bu sürüm Spark 2.3.0 ve aşağıdaki Apache yamaları sağlar:
 
 Bu sürüm, ek Apache düzeltme ekleri olmadan Sqoop 1.4.6 sağlar.
 
-#### <a name="storm"></a>Storm
+#### <a name="storm"></a>Fırtına
 
 Bu sürüm, fırtınası 1.1.1 ve aşağıdaki Apache yamaları sağlar:
 
@@ -1358,7 +1399,7 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 | HATA-92957              | [HIVE-11266](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | Count ( \* ) dış tablolara ait tablo istatistiklerine göre yanlış sonuç                                                   |
 | HATA-93097              | [RANGER-1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | Yönetici denetimi için eylem filtresi çalışmıyor                                                                           |
 | HATA-93335              | [HIVE-12315](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | vektörleştirme \_ kısa \_ Regress. q, bir çift hesaplama için yanlış bir sonuç sorunu içeriyor                                      |
-| HATA-93415              | [Hive-18258](https://issues.apache.org/jira/browse/HIVE-18258), [Hive-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektörleştirme: yinelenen sütunlar ile MERGEPARTIAL tarafından bir yandan azaltma grubu kopuk                                      |
+| HATA-93415              | [Hive-18258](https://issues.apache.org/jira/browse/HIVE-18258), [Hive-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektörleştirme: yinelenen sütunlar ile MERGEPARTIAL tarafından Reduce-Side gruplandırma bozuk                                      |
 | HATA-93939              | [ATLAS-2294](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Bir tür oluşturulurken ek parametre "Description" eklendi                                                               |
 | HATA-94007              | [Phoenix-1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [Phoenix-3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | Phoenix sorguları HBase kısmi satırları nedeniyle null değerler döndürüyor                                                          |
 | HATA-94266              | [HIVE-12505](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | Aynı şifrelenmiş bölgedeki üzerine yazma ekleme işlemi sessizce mevcut bazı dosyaları kaldıramıyor                                   |
@@ -1751,7 +1792,7 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 |**Kafka 1,0**|**YOK**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |EKLEME ÜZERINE yazma için gereken ek Ranger Hive ilkeleri |**Senaryo:** **Ekleme ÜZERINE yazma** için gereken ek Ranger Hive ilkeleri<br /><br />**Önceki davranış:** Hive **ekleme ÜZERINE yazma** sorguları her zamanki gibi başarılı olur.<br /><br />**Yeni davranış:** VP-2.6. x sürümüne yükselttikten sonra Hive **ekleme ÜZERINE yazma** sorguları hata vererek beklenmedik şekilde başarısız oluyor:<br /><br />Bildiri derlenirken hata: başarısız oldu: HiveAccessControlException Izni reddedildi: Kullanıcı jtikan,/tmp/ \* (State = 42000, Code = 40000) ÜZERINDE yazma ayrıcalığına sahip değil<br /><br />HDP-2.6.0 itibariyle, Hive **ekleme üzerine** yazma sorguları, kullanıcının,, bir kullanıcı adına, bu, bir kullanıcı adına, bu da bir SAYGER ilkesi aracılığıyla verilen yazma ayrıcalığına sahip olsa bile,<br /><br />**Geçici çözüm/beklenen müşteri eylemi:**<br /><br />1. Hive deposu altında yeni bir ilke oluşturun.<br />2. veritabanını gördüğünüz açılan menüde URI 'yi seçin.<br />3. yolu güncelleştirin (örnek:/tmp/*)<br />4. kullanıcıları ve grubu ekleyin ve kaydedin.<br />5. ekleme sorgusunu yeniden deneyin.|
 |**HDFS**|**YOK** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
-|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Zamanlayıcıyı devre dışı bırakma seçeneği |**Etkilenen bileşen:** Zeppelin-sunucu<br /><br />**Önceki davranış:** Zeppelin önceki sürümlerinde, Scheduler 'ı devre dışı bırakma seçeneği yoktu.<br /><br />**Yeni davranış:** Varsayılan olarak, varsayılan olarak devre dışı bırakıldığı için kullanıcılar artık Zamanlayıcı 'yı görmez.<br /><br />**Geçici çözüm/beklenen müşteri eylemi:** Zamanlayıcı 'yı etkinleştirmek istiyorsanız,, ambarı 'ndan Zeppelin ayarlarındaki özel Zeppelin sitesi altında, azeppelin. Not defteri. cron. Enable değerini true değeriyle eklemeniz gerekir.|
+|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Zamanlayıcıyı devre dışı bırakma seçeneği |**Etkilenen bileşen:** Zeppelin-Server<br /><br />**Önceki davranış:** Zeppelin önceki sürümlerinde, Scheduler 'ı devre dışı bırakma seçeneği yoktu.<br /><br />**Yeni davranış:** Varsayılan olarak, varsayılan olarak devre dışı bırakıldığı için kullanıcılar artık Zamanlayıcı 'yı görmez.<br /><br />**Geçici çözüm/beklenen müşteri eylemi:** Zamanlayıcı 'yı etkinleştirmek istiyorsanız,, ambarı 'ndan Zeppelin ayarlarındaki özel Zeppelin sitesi altında, azeppelin. Not defteri. cron. Enable değerini true değeriyle eklemeniz gerekir.|
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 

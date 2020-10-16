@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
 ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400186"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
@@ -112,7 +112,7 @@ Hayır, Traffic Manager bir DNS sorgusunun kaynak IP adresinden çıkardığım�
 
 ###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Bir uç noktanın coğrafi yönlendirme için yapılandırılmış ile aynı bölgede fiziksel olarak bulunması gerekir mi?
 
-Hayır, uç noktanın konumu, hangi bölgelere eşleştirilebileceği konusunda hiçbir kısıtlama vermez. Örneğin, ABD-Orta Azure bölgesindeki bir uç noktanın, Hindistan 'a yönlendiren tüm kullanıcılara sahip olması olabilir.
+Hayır, uç noktanın konumu, hangi bölgelere eşleştirilebileceği konusunda hiçbir kısıtlama vermez. Örneğin, US-Central Azure bölgesindeki bir uç nokta, Hindistan 'a yönlendiren tüm kullanıcılara sahip olabilir.
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Coğrafi yönlendirme yapmak üzere yapılandırılmamış bir profildeki uç noktalara coğrafi bölgeler atayabilir miyim?
 

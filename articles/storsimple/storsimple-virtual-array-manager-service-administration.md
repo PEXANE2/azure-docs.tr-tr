@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515439"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple Sanal dizinizi yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
@@ -63,7 +63,7 @@ Her iş akışı hakkında daha fazla bilgi için, tabloda ilgili yordama tıkla
 | Depolama hesapları hakkında</br>Depolama hesabı ekleme</br>Depolama hesabını düzenleme</br>Bir depolama hesabını silme |[StorSimple Sanal dizisi için depolama hesaplarını yönetme](storsimple-virtual-array-manage-storage-accounts.md) |
 | Erişim denetimi kayıtları hakkında</br>Erişim denetimi kaydı ekleme veya değiştirme </br>Erişim denetimi kaydını silme |[StorSimple Sanal dizisi için erişim denetim kayıtlarını yönetme](storsimple-virtual-array-manage-acrs.md) |
 | İş ayrıntılarını görüntüleme |[StorSimple Sanal dizisi işlerini yönetin](storsimple-virtual-array-manage-jobs.md) |
-| Uyarı ayarlarını yapılandırma</br>Uyarı bildirimleri alma</br>Uyarıları yönetme</br>Uyarıları gözden geçirin |[StorSimple Sanal dizisi için uyarıları görüntüleyin ve yönetin](storsimple-virtual-array-manage-alerts.md) |
+| Uyarı ayarlarını yapılandırma</br>Uyarı bildirimleri alma</br>Uyarıları yönetme</br>Uyarıları gözden geçirme |[StorSimple Sanal dizisi için uyarıları görüntüleyin ve yönetin](storsimple-virtual-array-manage-alerts.md) |
 | Cihaz yönetici parolasını değiştirme |[StorSimple Sanal dizisi cihaz yönetici parolasını değiştirme](storsimple-virtual-array-change-device-admin-password.md) |
 | Yazılım güncelleştirmelerini yükler |[Sanal dizinizi güncelleştirme](storsimple-virtual-array-install-update.md) |
 

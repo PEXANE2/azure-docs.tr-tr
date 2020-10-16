@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
 ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604691"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükleme
@@ -29,7 +29,7 @@ Bu makalede bir Linux ana hedefinin nasıl yükleneceğine ilişkin yönergeler 
 
 Bu makalenin sonunda veya [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](/answers/topics/azure-site-recovery.html)yorum veya soru gönderin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Ana hedefin dağıtılacağı Konağı seçmek için, yeniden çalışma 'nin mevcut bir şirket içi sanal makineye mı yoksa yeni bir sanal makinede mı olacağını belirleyin. 
     * Mevcut bir sanal makine için, ana hedefin konağın sanal makinenin veri depolarına erişimi olmalıdır.

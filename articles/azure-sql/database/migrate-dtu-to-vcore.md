@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 05/28/2020
 ms.openlocfilehash: b8c7671e655594456621e4489cb06191d820b134
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333163"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU tabanlı modelden Azure SQL veritabanı 'nı sanal çekirdek tabanlı modele geçirme
@@ -94,7 +94,7 @@ FROM dtu_vcore_map;
 Sanal çekirdekler (mantıksal CPU 'Lar) ve donanım oluşturma sayısının yanı sıra, diğer birçok etken de sanal çekirdek hizmeti hedefi seçimini etkileyebilir:
 
 - Eşleme T-SQL sorgusu, DTU ve sanal çekirdek hizmet hedeflerini CPU kapasitesi bakımından eşleştirir, bu nedenle sonuçlar CPU ile bağlantılı iş yükleri için daha doğru olacaktır.
-- Aynı donanım oluşturma ve sanal çekirdek veritabanları için aynı sayıda sanal çekirdek, ıOPS ve işlem günlüğü verimlilik kaynak sınırları, DTU veritabanlarının genellikle daha yüksektir. GÇ bağlantılı iş yükleri için, sanal çekirdek modelindeki sanal çekirdek sayısını, aynı performans düzeyine ulaşmak için düşürmek mümkün olabilir. Mutlak değerlerde DTU ve sanal çekirdek veritabanlarının kaynak sınırları, [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünde kullanıma sunulur. Bu değerleri geçirilecek DTU veritabanı ile, yaklaşık olarak eşleşen bir hizmet hedefi kullanan bir vCore veritabanı arasında karşılaştırmak, sanal çekirdek hizmeti hedefini daha kesin bir şekilde seçmenize yardımcı olur.
+- Aynı donanım oluşturma ve sanal çekirdek veritabanları için aynı sayıda sanal çekirdek, ıOPS ve işlem günlüğü verimlilik kaynak sınırları, DTU veritabanlarının genellikle daha yüksektir. GÇ bağlantılı iş yükleri için, sanal çekirdek modelindeki sanal çekirdek sayısını, aynı performans düzeyine ulaşmak için düşürmek mümkün olabilir. Mutlak değerlerde DTU ve sanal çekirdek veritabanlarının kaynak sınırları [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünde gösterilir. Bu değerleri geçirilecek DTU veritabanı ile, yaklaşık olarak eşleşen bir hizmet hedefi kullanan bir vCore veritabanı arasında karşılaştırmak, sanal çekirdek hizmeti hedefini daha kesin bir şekilde seçmenize yardımcı olur.
 - Eşleme sorgusu Ayrıca, geçirilecek DTU veritabanı veya elastik havuz için çekirdek başına bellek miktarını ve sanal çekirdek modelindeki her donanım oluşturma için de döndürür. Sanal çekirdeğe geçiş sonrasında, büyük bir bellek veri önbelleğinin veya sorgu işleme için büyük bellek izni gerektiren iş yüklerine ihtiyaç duymasını gerektiren iş yükleri için, vCore 'a geçişten sonra benzer veya daha yüksek toplam bellek sağlamak önemlidir. Gerçek performansa bağlı olarak, bu tür iş yükleri için, yeterli miktarda bellek almak üzere sanal çekirdek sayısını artırmak gerekebilir.
 - DTU veritabanının [Geçmiş kaynak kullanımı](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , sanal çekirdek hizmeti hedefi seçerken göz önünde bulundurulmalıdır. Sürekli olarak kullanılan CPU kaynaklarıyla DTU veritabanlarının, eşleme sorgusunun döndürdüğü sayıdan daha az sayıda sanal çekirdeğe ihtiyacı olabilir. Buna karşılık, tutarlı olarak yüksek CPU kullanımının yetersiz iş yükü performansına neden olduğu DTU veritabanları, sorgu tarafından döndürülenden daha fazla sanal çekirdek gerektirebilir.
 - Veritabanlarını aralıklı veya öngörülemeyen kullanım desenleriyle geçiriyorsanız [sunucusuz](serverless-tier-overview.md) işlem katmanının kullanımını göz önünde bulundurun.  Sunucusuz 'ta en fazla eş zamanlı çalışan sayısı (istek), yapılandırılan en fazla sayıda sanal çekirdek için sağlanan işlem sınırının %75 olduğunu unutmayın.  Ayrıca, sunucusuz 'ta bulunan en fazla bellek, yapılandırılan maksimum sanal çekirdek sayısına 3 GB olur; Örneğin, en fazla 40 maksimum sanal çekirdek yapılandırıldığında maksimum bellek 120 GB 'dir.   

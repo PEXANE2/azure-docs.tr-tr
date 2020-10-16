@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -9,10 +9,10 @@ ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512631"
 ---
 | Kaynak | Temel | Standart | Premium |
@@ -28,13 +28,13 @@ ms.locfileid: "86512631"
 | Coğrafi çoğaltma | Yok | Yok | [Desteklenir][geo-replication] |
 | İçerik güveni | Yok | Yok | [Desteklenir][content-trust] |
 | Özel uç noktalarla özel bağlantı | Yok | Yok | [Desteklenir][plink] |
-| &bull;Özel uç noktalar | Yok | Yok | 10 |
+| &bull; Özel uç noktalar | Yok | Yok | 10 |
 | Hizmet uç noktası VNet erişimi | Yok | Yok | [Önizleme][vnet] |
 | Müşteri tarafından yönetilen anahtarlar | Yok | Yok | [Desteklenir][cmk] |
 | Depo kapsamlı izinler | Yok | Yok | [Önizleme][token]|
-| &bull;Simgelerini | Yok | Yok | 20.000 |
-| &bull;Kapsam eşlemeleri | Yok | Yok | 20.000 |
-| &bull;Kapsam başına depo eşleme | Yok | Yok | 500 |
+| &bull; Simgelerini | Yok | Yok | 20.000 |
+| &bull; Kapsam eşlemeleri | Yok | Yok | 20.000 |
+| &bull; Kapsam başına depo eşleme | Yok | Yok | 500 |
 
 
 <sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama için, depolama sınırına kadar, GiB başına ek bir günlük ücret ödersiniz. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].

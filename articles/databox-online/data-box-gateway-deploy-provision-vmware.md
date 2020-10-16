@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743956"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Öğretici: VMware 'de Azure Data Box Gateway sağlama
@@ -155,7 +155,7 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
     ![VMware ESXi Server 6,7 çalıştırıyorsa ayarları özelleştirme sayfası](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
-18. **Ready to Complete** (Tamamlanmak İçin Hazır) sayfasında yeni sanal makineyle ilgili tüm ayarları gözden geçirin. CPU için 4, bellek için 8192 MB, ağ arabirimi için 1 ve Sabit disk 2 için IDE denetleyicisi 0 değerlerinin seçili olduğunu doğrulayın. **Son**'a tıklayın.
+18. **Ready to Complete** (Tamamlanmak İçin Hazır) sayfasında yeni sanal makineyle ilgili tüm ayarları gözden geçirin. CPU için 4, bellek için 8192 MB, ağ arabirimi için 1 ve Sabit disk 2 için IDE denetleyicisi 0 değerlerinin seçili olduğunu doğrulayın. **Finish (Son)** düğmesine tıklayın.
    
     ![Sayfa 2 ' nin tamamlanmasını hazırlama sayfası tamamlanana kadar hazırlanıyor ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
      ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)

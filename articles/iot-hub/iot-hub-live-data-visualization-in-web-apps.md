@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327574"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini bir Web uygulamasında görselleştirin
@@ -254,7 +254,7 @@ Bu örnekle ilgili herhangi bir sorun yaşıyorsanız, aşağıdaki bölümlerde
 
 * Azure portal, Web uygulamanıza gidin. Sol bölmedeki **izleme** altında **App Service Günlükler**' i seçin. **Uygulama günlüğünü (dosya sistemi)** açın, **düzeyi** hata olarak ayarlayın ve ardından **Kaydet**' i seçin. Ardından **günlük akışı** ' nı açın ( **izleme**altında).
 
-* Web uygulamanızdan Azure portal, **geliştirme araçları** altında **konsol** ' ı seçin ve ve NPM sürümlerini ve ile doğrulayın `node -v` `npm -v` .
+* Web uygulamanızdan Azure portal, **geliştirme araçları**  altında  **konsol** ' ı seçin ve ve NPM sürümlerini ve ile doğrulayın `node -v` `npm -v` .
 
 * Bir paket bulmayla ilgili bir hata görürseniz, adımları sıra dışı olarak çalıştırmanız gerekebilir. Site dağıtıldığında (ile `git push` ) App Service çalışır ve `npm install` Bu, yapılandırılan düğümün geçerli sürümüne göre çalışır. Bu yapılandırmada daha sonra değiştirilirse kodda daha az bir değişiklik yapmanız ve yeniden göndermeniz gerekir.
 

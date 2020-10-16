@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069165"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975680"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure'da Linux VM'ye bağlanmayla ilgili ayrıntılı SSH sorun giderme adımları
 SSH istemcisinin VM 'deki SSH hizmetine erişememesinin pek çok nedeni olabilir. Daha [Genel SSH sorun giderme adımlarına](troubleshoot-ssh-connection.md)uyuldıysanız, bağlantı sorununu gidermeye devam etmeniz gerekir. Bu makale, SSH bağlantısının başarısız olduğunu ve nasıl çözümleneceğini belirlemede ayrıntılı sorun giderme adımları boyunca size rehberlik eder.
@@ -39,7 +39,7 @@ Aşağıdaki adımlar, hatanın kaynağını yalıtmanıza ve çözümlerin veya
 
 2. Uç noktaları, IP adresleri, ağ güvenlik grupları ve diğer ayarları incelemek için **ayarları** seçin.
 
-   VM, **uç noktalar** veya **[ağ güvenlik grubu](../../virtual-network/security-overview.md)** içinde görüntüleyebileceğiniz SSH trafiği için tanımlanmış bir uç noktaya sahip olmalıdır. Kaynak Yöneticisi kullanılarak oluşturulan VM 'lerdeki uç noktalar bir ağ güvenlik grubunda depolanır. Kuralların ağ güvenlik grubuna uygulandığını ve alt ağda başvurulduğunu doğrulayın.
+   VM, **uç noktalar** veya **[ağ güvenlik grubu](../../virtual-network/network-security-groups-overview.md)** içinde görüntüleyebileceğiniz SSH trafiği için tanımlanmış bir uç noktaya sahip olmalıdır. Kaynak Yöneticisi kullanılarak oluşturulan VM 'lerdeki uç noktalar bir ağ güvenlik grubunda depolanır. Kuralların ağ güvenlik grubuna uygulandığını ve alt ağda başvurulduğunu doğrulayın.
 
 Ağ bağlantısını doğrulamak için, yapılandırılmış uç noktaları denetleyin ve VM 'ye HTTP veya başka bir hizmet gibi başka bir protokol aracılığıyla bağlanıp bağlanamadığınıza bakın.
 
@@ -114,7 +114,7 @@ Uç noktayı sorunun bir kaynağı olarak ortadan kaldırmak için, geçerli uç
 
 ## <a name="source-4-network-security-groups"></a>Kaynak 4: ağ güvenlik grupları
 Ağ güvenlik grupları izin verilen gelen ve giden trafik üzerinde daha ayrıntılı denetim sahibi olmasını sağlar. Bir Azure sanal ağında alt ağları ve bulut hizmetlerini kapsayan kurallar oluşturabilirsiniz. Internet 'ten gelen ve giden SSH trafiğine izin verildiğinden emin olmak için ağ güvenlik grubu kurallarınızı denetleyin.
-Daha fazla bilgi için bkz. [ağ güvenlik grupları hakkında](../../virtual-network/security-overview.md).
+Daha fazla bilgi için bkz. [ağ güvenlik grupları hakkında](../../virtual-network/network-security-groups-overview.md).
 
 NSG yapılandırmasını doğrulamak için IP doğrulamasını da kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure ağ izlemeye genel bakış](../../network-watcher/network-watcher-monitoring-overview.md). 
 

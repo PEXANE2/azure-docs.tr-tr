@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
-ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744977"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978114"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux üzerinde SAP HANA genişleme sisteminin yüksek kullanılabilirliği 
 
@@ -80,14 +80,14 @@ Başlamadan önce, aşağıdaki SAP notları ve incelemeleri inceleyin:
 * [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
 * [SAP HANA ağ gereksinimleri](https://www.sap.com/documents/2016/08/1cd2c2fb-807c-0010-82c7-eda71af511fa.html)
 * Genel RHEL belgeleri
-  * [Yüksek kullanılabilirlik eklentisi genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Yüksek kullanılabilirlik eklentisi Yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Yüksek kullanılabilirlik eklentisi başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Yüksek kullanılabilirlik Add-On genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Yüksek kullanılabilirlik Add-On yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Yüksek kullanılabilirlik Add-On başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Red Hat Enterprise Linux Ağ Kılavuzu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
-  * [NFS paylaşımlarında HANA dosya sistemleriyle bir Paceoluşturucu kümesinde SAP HANA genişleme sistem çoğaltmasını yapılandırma Nasıl yaparım?](https://access.redhat.com/solutions/5423971)
+  * [NFS paylaşımlarında HANA dosya sistemleriyle bir pacemaker kümesinde SAP HANA Scale-Out sistem çoğaltmasını yapılandırma Nasıl yaparım?](https://access.redhat.com/solutions/5423971)
 * Azure 'a özgü RHEL belgeleri:
   * [Microsoft Azure kullanım için Red Hat Enterprise Linux SAP HANA yüklemesi](https://access.redhat.com/public-cloud/microsoft-azure)
-  * [SAP HANA genişleme ve sistem çoğaltma için Red Hat Enterprise Linux çözümü](https://access.redhat.com/solutions/4386601)
+  * [SAP HANA Scale-Out ve sistem çoğaltması için Red Hat Enterprise Linux çözümü](https://access.redhat.com/solutions/4386601)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
 * [Azure NetApp Files belgeleri][anf-azure-doc] 
 
@@ -100,7 +100,7 @@ Sunulan yapılandırma her sitede üç HANA düğümü, ayrıca bölünmüş bey
 Sunulan mimarideki HANA paylaşılan dosya sistemi `/hana/shared` [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md)tarafından sağlanır. Aynı HANA sistem çoğaltma sitesindeki her bir HANA düğümüne NFSv 4.1 aracılığıyla bağlanır. Dosya sistemleri `/hana/data` ve `/hana/log` yerel dosya SISTEMLERIDIR ve Hana DB düğümleri arasında paylaşılmaz. SAP HANA, paylaşılmayan modda yüklenecek. 
 
 > [!TIP]
-> Önerilen SAP HANA depolama yapılandırması için bkz. [Azure VM depolama yapılandırmalarının SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).   
+> Önerilen SAP HANA depolama yapılandırması için bkz. [Azure VM depolama yapılandırmalarının SAP HANA](./hana-vm-operations-storage.md).   
 
 [![SAP HANA, HSR ve Paceyapıcısı kümesiyle genişleme](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel.png)](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel-detail.png#lightbox)
 
@@ -128,7 +128,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
   
    Bu VM SAP HANA kaynaklarından hiçbirini çalıştırmazsa, çoğunluk Oluşturucu düğümü için küçük bir VM dağıtabilirsiniz. Çoğunluk Oluşturucu VM, küme yapılandırmasında bir bölünmüş beyinli senaryoda tek sayıda küme düğümü elde etmek için kullanılır. Çoğunluk Oluşturucu VM 'nin `client` Bu örnekteki alt ağda yalnızca bir sanal ağ arabirimine ihtiyacı vardır.        
 
-   Ve için yerel yönetilen diskler `/hana/data` dağıtın `/hana/log` . Ve için önerilen en düşük depolama yapılandırması, `/hana/data` `/hana/log` [Azure VM 'leri depolama yapılandırmalarında SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)açıklanmıştır.
+   Ve için yerel yönetilen diskler `/hana/data` dağıtın `/hana/log` . Ve için önerilen en düşük depolama yapılandırması, `/hana/data` `/hana/log` [Azure VM 'leri depolama yapılandırmalarında SAP HANA](./hana-vm-operations-storage.md)açıklanmıştır.
 
    Sanal ağ alt ağındaki her VM için birincil ağ arabirimini dağıtın `client` .  
    VM Azure portal aracılığıyla dağıtıldığında, ağ arabirimi adı otomatik olarak oluşturulur. Basitlikle ilgili Bu yönergelerde, `client` Azure sanal ağ alt ağına **Hana-S1-DB1-Client**, **Hana-S1-DB2-Client**, **Hana-S1-DB3-Client**gibi bir şekilde eklenmiş olan otomatik olarak oluşturulan, birincil ağ arabirimlerine başvuracağız.  
@@ -152,7 +152,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
 
     d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `inter` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hsr` .  
     
-    e. **Kaydet**’i seçin. 
+    e. **Kaydet**'i seçin. 
  
     f. Kalan sanal makineler için b ile e arasındaki adımları yineleyin (bizim örneğimizde,  **Hana-S1-DB2**, **Hana-S1-DB3**, **Hana-S2-DB1**, **Hana-S2-DB2** ve **Hana-S2-DB3**).
  
@@ -229,7 +229,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files altyapısını dağıtma 
 
-Dosya sistemi için ANF birimlerini dağıtın `/hana/shared` . `/hana/shared`Her BIR Hana sistem çoğaltma sitesi için ayrı bir birime ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [Azure NetApp Files altyapısını ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel#set-up-the-azure-netapp-files-infrastructure).
+Dosya sistemi için ANF birimlerini dağıtın `/hana/shared` . `/hana/shared`Her BIR Hana sistem çoğaltma sitesi için ayrı bir birime ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [Azure NetApp Files altyapısını ayarlama](./sap-hana-scale-out-standby-netapp-files-rhel.md#set-up-the-azure-netapp-files-infrastructure).
 
 Bu örnekte, aşağıdaki Azure NetApp Files birimleri kullanılmıştır: 
 
@@ -836,7 +836,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
     ```
 
    > [!TIP]
-   > Yapılandırmanız,/, NFS 'nin bağlı olduğu diğer dosya sistemlerini de içeriyorsa, `hana/shared` `sequential=false` dosya sistemleri arasında bir sıralama bağımlılığı olmaması için seçeneği dahil edin. Tüm NFS bağlı dosya sistemleri, karşılık gelen öznitelik kaynağıyla önce başlamalı, ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla bilgi için bkz. [Hana dosya SISTEMLERI NFS paylaşımları olduğunda bir paceoluşturucu kümesinde SAP HANA genişleme HSR nasıl yaparım? yapılandırma](https://access.redhat.com/solutions/5423971).  
+   > Yapılandırmanız,/, NFS 'nin bağlı olduğu diğer dosya sistemlerini de içeriyorsa, `hana/shared` `sequential=false` dosya sistemleri arasında bir sıralama bağımlılığı olmaması için seçeneği dahil edin. Tüm NFS bağlı dosya sistemleri, karşılık gelen öznitelik kaynağıyla önce başlamalı, ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla bilgi için [, Hana dosya SISTEMLERI NFS paylaşımları olduğunda bir paceoluşturucu kümesinde Nasıl yaparım? SAP HANA Scale-Out HSR yapılandırma](https://access.redhat.com/solutions/5423971)konusuna bakın.  
 
 8. **[1]** Hana küme kaynaklarının oluşturulmasına yönelik hazırlık bölümünde paceyapıcısı bakım moduna yerleştirirken.  
     ```
@@ -1160,7 +1160,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
       ```
 
 
-SAP HANA küme yapılandırmasını kapsamlı olarak test etmenizi öneririz. Ayrıca, [RHEL üzerindeki Azure VM 'lerinde SAP HANA Için ha](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)'da belgelenen testleri gerçekleştirerek.
+SAP HANA küme yapılandırmasını kapsamlı olarak test etmenizi öneririz. Ayrıca, [RHEL üzerindeki Azure VM 'lerinde SAP HANA Için ha](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)'da belgelenen testleri gerçekleştirerek.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

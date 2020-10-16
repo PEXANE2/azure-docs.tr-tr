@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84015511"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014860"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services’ı yönetme
 Azure 'da bir Analysis Services sunucusu oluşturduktan sonra, hemen gerçekleştirmeniz gereken bazı yönetim ve yönetim görevleri olabilir. Örneğin, işleme verilerini yenileme, sunucunuzdaki modellere kimlerin erişebileceğini denetleme veya sunucunuzun sistem durumunu izleme gibi işlemler gerçekleştirin. Bazı yönetim görevleri yalnızca Azure portal, diğer SQL Server Management Studio (SSMS) ve bazı görevlerde gerçekleştirilebilir.
@@ -30,7 +30,7 @@ Azure 'da sunucunuza bağlanmak tıpkı kendi kuruluşunuzdaki bir sunucu örne�
 ### <a name="download-and-install-ssms"></a>SSMS’yi indirme ve yükleme
 En son özellikleri ve Azure Analysis Services sunucunuza bağlanırken en iyi deneyimi almak için SSMS 'nin en son sürümünü kullandığınızdan emin olun. 
 
-[SQL Server Management Studio indirin](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+[SQL Server Management Studio indirin](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 ### <a name="to-connect-with-ssms"></a>SSMS ile bağlantı kurmak için
@@ -66,4 +66,3 @@ SSMS kullanarak bağlanırken sorunlarla karşılaşırsanız, oturum açma önb
 Yeni sunucunuza henüz tablolu bir model dağıtmadıysanız, artık iyi bir zamandır. Daha fazla bilgi için bkz. [Azure Analysis Services’a Dağıtma](analysis-services-deploy.md).
 
 Sunucunuza bir model dağıttıysanız, bir istemci veya tarayıcı kullanarak buna bağlanmaya hazırsınız demektir. Daha fazla bilgi edinmek için bkz. [Azure Analysis Services sunucusundan veri alma](analysis-services-connect.md).
-

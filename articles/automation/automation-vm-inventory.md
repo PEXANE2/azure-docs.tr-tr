@@ -7,10 +7,10 @@ keywords: stok, otomasyon, değişiklik, izleme
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185730"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>VM’lerden stok koleksiyonunu yönetme
@@ -30,7 +30,7 @@ Bu makalede, Değişiklik İzleme ve envanteriyle etkinleştirilecek bir sanal m
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>VM kaynak sayfasından envanter toplamayı etkinleştir
 

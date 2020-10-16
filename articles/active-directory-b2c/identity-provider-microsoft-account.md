@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ad4b08a12e63b4ae3eed0eb09e295d9730de97bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388009"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Microsoft hesabı Azure Active Directory B2C kullanarak kaydolma ve oturum açma ayarlama
@@ -24,7 +24,7 @@ ms.locfileid: "85388009"
 
 Bir Microsoft hesabı Azure Active Directory B2C (Azure AD B2C) ' de bir [kimlik sağlayıcısı](openid-connect.md) olarak kullanmak IÇIN Azure AD kiracısında bir uygulama oluşturmanız gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir. Zaten bir Microsoft hesabı yoksa bir tane edinebilirsiniz [https://www.live.com/](https://www.live.com/) .
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -49,4 +49,4 @@ Bir Microsoft hesabı Azure Active Directory B2C (Azure AD B2C) ' de bir [kimlik
 1. Bir **ad**girin. Örneğin, *MSA*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Azure AD uygulamasının uygulama (ISTEMCI) kimliğini girin.
 1. **İstemci parolası**için, kaydettiğiniz istemci gizli anahtarını girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.

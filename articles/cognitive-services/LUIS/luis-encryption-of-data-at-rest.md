@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078138"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Bekleyen verilerin hizmet şifrelemesini Language Understanding
@@ -32,11 +32,11 @@ Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme ana
 
 Ayrıca kendi anahtarlarınız ile aboneliğinizi yönetme seçeneği de vardır. Kendi anahtarını getir (BYOK) olarak da bilinen müşteri tarafından yönetilen anahtarlar (CMK), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
-Müşteri tarafından yönetilen anahtarlarınızın depolanması için Azure Key Vault kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Bilişsel hizmetler kaynağı ve Anahtar Kasası aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault’u kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Bilişsel hizmetler kaynağı ve Anahtar Kasası aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>Language Understanding için müşteri tarafından yönetilen anahtarlar
 
-Müşteri tarafından yönetilen anahtarları kullanma yeteneği istemek için, [Lusıs hizmeti müşteri tarafından yönetilen anahtar Isteği formunu](https://aka.ms/cogsvc-cmk)doldurun ve iletin. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. LUSıS ile CMK kullanmaya onaylandıktan sonra, Azure portal yeni bir Language Understanding kaynak oluşturmanız ve fiyatlandırma katmanı olarak E0 ' ı seçmeniz gerekir. Yeni SKU, CMK hariç zaten kullanılabilir olan F0 SKU 'SU ile aynı işlevi görür. Kullanıcılar F0 'den yeni E0 SKU 'suna yükseltemez.
+Müşteri tarafından yönetilen anahtarları kullanma yeteneği istemek için, [Lusıs hizmeti Customer-Managed anahtar Isteği formunu](https://aka.ms/cogsvc-cmk)doldurun ve gönderebilirsiniz. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. LUSıS ile CMK kullanmaya onaylandıktan sonra, Azure portal yeni bir Language Understanding kaynak oluşturmanız ve fiyatlandırma katmanı olarak E0 ' ı seçmeniz gerekir. Yeni SKU, CMK hariç zaten kullanılabilir olan F0 SKU 'SU ile aynı işlevi görür. Kullanıcılar F0 'den yeni E0 SKU 'suna yükseltemez.
 
 ![LUSıS abonelik görüntüsü](../media/cognitive-services-encryption/luis-subscription.png)
 
@@ -85,5 +85,5 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [LUSıS hizmeti müşteri tarafından yönetilen anahtar Isteği formu](https://aka.ms/cogsvc-cmk)
+* [LUSıS hizmeti Customer-Managed anahtar Isteği formu](https://aka.ms/cogsvc-cmk)
 * [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

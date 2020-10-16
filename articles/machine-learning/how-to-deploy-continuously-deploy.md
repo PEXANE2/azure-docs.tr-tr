@@ -9,23 +9,24 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 08/03/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: c95e1012decf1e3ae4ee3fbab8aae1a4c1a71be9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.reviewer: larryfr
+ms.custom: how-to, tracking-python, deploy
+ms.openlocfilehash: ab4551f64919dad711967b33f85962a5c607d1c5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544662"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999144"
 ---
-# <a name="continuously-deploy-models"></a>Modelleri sürekli dağıt
+# <a name="continuously-deploy-models"></a>Modelleri sürekli dağıtma
 
 Bu makalede, kayıtlı modellerin yeni sürümlerini otomatik olarak denetlemek ve bu yeni modelleri üretime göndermek için Azure DevOps 'ta sürekli dağıtımın nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, Azure Machine Learning çalışma alanınızda zaten bir model kaydetmiş olduğunuz varsayılmaktadır. Eğitim ve bir scikit-öğrenme modeli kaydetme örneği için [Bu öğreticiye](how-to-train-scikit-learn.md) bakın.
 
-## <a name="continuously-deploy-models"></a>Modelleri sürekli dağıt
+## <a name="continuously-deploy-models"></a>Modelleri sürekli dağıtma
 
 [Azure DevOps](https://azure.microsoft.com/services/devops/)için Machine Learning uzantısını kullanarak, modelleri sürekli olarak dağıtabilirsiniz. Yeni bir makine öğrenimi modeli bir Azure Machine Learning çalışma alanına kaydedildiğinde bir dağıtım işlem hattı tetiklemek için Azure DevOps Machine Learning uzantısını kullanabilirsiniz.
 

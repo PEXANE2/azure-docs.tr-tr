@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764987"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Jeo uzamsal verileri Azure Cosmos DB sorgulama
@@ -49,7 +49,7 @@ Uzamsal işlevler, uzamsal verilere karşı yakınlık sorguları gerçekleştir
 
 Dizin oluşturma ilkenize uzamsal dizin oluşturma eklerseniz, "uzaklık sorguları" Dizin aracılığıyla verimli bir şekilde sunulacaktır. Uzamsal dizin oluşturma hakkında daha fazla bilgi için bkz. [Jeo uzamsal dizin oluşturma](sql-query-geospatial-index.md). Belirtilen yollar için bir uzamsal dizininiz yoksa, sorgu kapsayıcının taramasını yapılır.
 
-`ST_WITHIN`bir noktanın bir çokgen içinde olup olmadığını denetlemek için kullanılabilir. Genellikle çokgenler, ZIP kodları, durum sınırları veya doğal biçimlendirme gibi sınırları temsil etmek için kullanılır. Dizin oluşturma ilkenize uzamsal dizin oluşturma eklerseniz, "içindeki" sorgular dizin aracılığıyla verimli bir şekilde sunulacaktır.
+`ST_WITHIN` bir noktanın bir çokgen içinde olup olmadığını denetlemek için kullanılabilir. Genellikle çokgenler, ZIP kodları, durum sınırları veya doğal biçimlendirme gibi sınırları temsil etmek için kullanılır. Dizin oluşturma ilkenize uzamsal dizin oluşturma eklerseniz, "içindeki" sorgular dizin aracılığıyla verimli bir şekilde sunulacaktır.
 
 İçindeki Çokgen bağımsız değişkenleri `ST_WITHIN` yalnızca tek bir halka içerebilir, diğer bir deyişle, çokgenlerin içerdikleri delikleri içermemesi gerekir.
 
@@ -99,7 +99,7 @@ Azure Cosmos DB ayrıca ters sorgular gerçekleştirmeyi destekler, diğer bir d
     }]
 ```
 
-`ST_ISVALID`ve, `ST_ISVALIDDETAILED` bir uzamsal nesnenin geçerli olup olmadığını denetlemek için kullanılabilir. Örneğin, aşağıdaki sorgu Aralık dışı bir enlem değeri (-132,8) ile bir noktanın geçerliliğini denetler. `ST_ISVALID`yalnızca bir Boole değeri döndürür ve `ST_ISVALIDDETAILED` Boolean ve neden geçersiz olarak kabul edildiği nedenini içeren bir dize döndürür.
+`ST_ISVALID` ve, `ST_ISVALIDDETAILED` bir uzamsal nesnenin geçerli olup olmadığını denetlemek için kullanılabilir. Örneğin, aşağıdaki sorgu Aralık dışı bir enlem değeri (-132,8) ile bir noktanın geçerliliğini denetler. `ST_ISVALID` yalnızca bir Boole değeri döndürür ve `ST_ISVALIDDETAILED` Boolean ve neden geçersiz olarak kabul edildiği nedenini içeren bir dize döndürür.
 
 **Sorgu**
 

@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318101"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering hesabı oluşturma
@@ -52,7 +52,7 @@ Hesabın hesap oluşturma zamanı sırasında belirtilen konum, hesap kaynağın
 
 **`arrAccountId`** Ve değerlerini **`arrAccountKey`** Aşağıdaki adımlarda açıklandığı gibi portalda bulabilirsiniz:
 
-* [Azure Portal](https://www.portal.azure.com) git
+* [Azure portal](https://www.portal.azure.com)'a gidin
 * **"Uzaktan Işleme hesabınızı"** bulun; **"en son kaynaklar"** listesinde olması gerekir. Ayrıca, üstteki arama çubuğunda da arama yapabilirsiniz. Bu durumda, kullanmak istediğiniz aboneliğin varsayılan abonelik filtresi (arama çubuğu ' nun yanında bulunan filtre simgesi) seçildiğinden emin olun:
 
 ![Abonelik filtresi](./media/azure-subscription-filter.png)

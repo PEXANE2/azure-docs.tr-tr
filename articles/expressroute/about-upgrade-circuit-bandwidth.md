@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: duau
 ms.openlocfilehash: 7831e7944321e074c312853e1534c47970ebdfdb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397959"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>ExpressRoute devre bant genişliğini yükseltme hakkında
@@ -24,7 +24,7 @@ Devre bant genişliğini yükseltmek için, ExpressRoute Direct veya ExpressRout
 
 Kapasite varsa, aşağıdaki yöntemleri kullanarak devreyi yükseltebilirsiniz:
 
-* [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md#modify)
+* [Azure portalındaki](expressroute-howto-circuit-portal-resource-manager.md#modify)
 * [PowerShell](expressroute-howto-circuit-arm.md#modify)
 * [Azure CLI](howto-circuit-cli.md#modify)
 

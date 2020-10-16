@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
 ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448475"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender 'dan uyarıları gösterme
@@ -26,7 +26,7 @@ Bu sayfada, Azure Defender 'daki hatalı pozitif durumları veya diğer istenmey
 |Yayın durumu:|Önizleme|
 |Fiyat|Ücretsiz<br>(Çoğu güvenlik uyarısı yalnızca Azure Defender ile kullanılabilir)|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** ve **sahibi** kuralları oluşturabilir/silebilir.<br>**Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7fb3841958ac80431f7cb3d97ddb01bd3661a7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553999"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995248"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Öğretici: PerformanceCentre ile tümleştirme Azure Active Directory
 
@@ -128,19 +128,19 @@ Azure AD çoklu oturum açmayı PerformanceCentre ile yapılandırmak için aşa
 
 2. Sol taraftaki sekmede, **Yapılandır**' a tıklayın.
    
-    ![Azure AD tek Sign-On][10]
+    !["Yapılandır" seçiliyken "performanslı Cecenter" menüsünü gösteren ekran görüntüsü.][10]
 
 3. Sol taraftaki sekmede, **çeşitli**' a ve ardından **Çoklu oturum açma**' ya tıklayın.
    
-    ![Azure AD tek Sign-On][11]
+    !["Çeşitli" menüsünden "çoklu oturum açma" seçiliyken "Yapılandır" sekmesini gösteren ekran görüntüsü.][11]
 
 4. **Protokol**olarak **SAML**' yi seçin.
    
-    ![Azure AD tek Sign-On][12]
+    !["Protokol" menüsünden "S A M L" seçiliyken "tek Sign-On yapılandırma" bölümünü gösteren ekran görüntüsü.][12]
 
 5. İndirilen meta veri dosyanızı Not defteri 'nde açın, içeriği kopyalayın, **kimlik sağlayıcısı meta verileri** metin kutusuna yapıştırın ve **Kaydet**' e tıklayın.
    
-    ![Azure AD tek Sign-On][13]
+    !["Kimlik sağlayıcısı meta verileri" metin kutusunu gösteren ekran görüntüsü.][13]
 
 6. **Varlık temel URL 'si** ve **varlık kimliği URL 'si** değerlerinin doğru olduğundan emin olun.
     
@@ -169,7 +169,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -207,7 +207,7 @@ Bu bölümün amacı, PerformanceCentre ' de Britta Simon adlı bir Kullanıcı 
 
 2. Soldaki menüde, **bağlantılı**' a ve ardından **katılımcı oluştur**' a tıklayın.
    
-    ![Kullanıcı Oluştur][400]
+    !["Katılımcı oluştur" düğmesinin seçili olduğu "performanslı Cecenter" Şirket sitesini "birbirine bağlı katılımcılar" sayfasını gösteren ekran görüntüsü.][400]
 
 3. **Ilişki oluşturma-Katılımcı oluştur** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371465"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978960"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Başarısız olan, hata veren veya reddedilen Azure Linux VM SSH bağlantılarıyla ilgili sorunları giderme
 Bu makale, bir Linux sanal makinesine (VM) bağlanmaya çalıştığınızda Secure Shell (SSH) hatalarından, SSH bağlantı hatalarından veya SSH 'nin reddetmesi nedeniyle oluşan sorunları bulmanıza ve düzeltmenize yardımcı olur. Bağlantı sorunlarını gidermek ve çözmek için Linux için Azure portal, Azure CLı veya VM erişim uzantısı 'nı kullanabilirsiniz.
@@ -46,13 +46,13 @@ Daha ayrıntılı sorun giderme adımları ve açıklamaları için okumaya deva
 Aşağıdaki yöntemlerden birini kullanarak kimlik bilgilerini veya SSH yapılandırmasını sıfırlayabilirsiniz:
 
 * [Azure Portal](#use-the-azure-portal) -SSH YAPıLANDıRMASıNı veya SSH anahtarını hızlıca sıfırlamanız gerekiyorsa ve Azure Araçları yüklü değilse harika.
-* [Azure VM seri konsolu](https://aka.ms/serialconsolelinux) -VM seri konsolu, SSH yapılandırmasına bakılmaksızın çalışır ve sanal makinenize etkileşimli bir konsol sağlar. Aslında, "SSH olamaz" durumları özellikle, seri konsolunun çözmeye yardımcı olmak üzere tasarlanma biçiminde değildir. Aşağıda daha fazla ayrıntı bulabilirsiniz.
+* [Azure VM seri konsolu](./serial-console-linux.md) -VM seri konsolu, SSH yapılandırmasına bakılmaksızın çalışır ve sanal makinenize etkileşimli bir konsol sağlar. Aslında, "SSH olamaz" durumları özellikle, seri konsolunun çözmeye yardımcı olmak üzere tasarlanma biçiminde değildir. Aşağıda daha fazla ayrıntı bulabilirsiniz.
 * [Azure CLI](#use-the-azure-cli) -zaten komut SATıRLARALıYORSA, SSH yapılandırmasını veya kimlik bilgilerini hızlıca sıfırlayın. Klasik bir VM ile çalışıyorsanız, [Klasik Azure CLI](#use-the-azure-classic-cli)'yi kullanabilirsiniz.
 * [Azure VMAccessForLinux uzantısı](#use-the-vmaccess-extension) -SSH yapılandırmasını veya Kullanıcı kimlik bilgilerini sıfırlamak için JSON tanım dosyalarını oluşturun ve yeniden kullanın.
 
 Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı deneyin. Hala bağlanamıyorsanız, bir sonraki adımı deneyin.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 Azure portal, yerel bilgisayarınıza herhangi bir araç yüklemeden SSH yapılandırmasını veya Kullanıcı kimlik bilgilerini sıfırlamanın hızlı bir yolunu sağlar.
 
 Başlamak için Azure portal VM 'nizi seçin. Aşağıdaki örnekte, **destek + sorun giderme** bölümüne gidin ve **Parolayı Sıfırla** ' yı seçin:
@@ -101,7 +101,7 @@ sudo grep Port /etc/ssh/sshd_config
 Port 22
 ```
 
-## <a name="use-the-azure-cli"></a>Azure CLI kullanma
+## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
 Henüz yapmadıysanız, en son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın.
 
 Özel bir Linux disk görüntüsü oluşturup karşıya yüklüyorsanız, [Microsoft Azure Linux Aracısı](../extensions/agent-linux.md) sürümü 2.0.5 veya sonraki bir sürümün yüklü olduğundan emin olun. Galeri görüntüleri kullanılarak oluşturulan VM 'Ler için, bu erişim uzantısı zaten yüklenmiş ve sizin için yapılandırılmış.
@@ -214,7 +214,7 @@ Azure portal kullanarak bir VM 'yi yeniden başlatmak için VM 'nizi seçin ve a
 
 ![Azure portal VM 'yi yeniden başlatma](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 Aşağıdaki örnek, adlı kaynak grubunda adlı VM 'yi yeniden başlatmak için [az VM restart](/cli/azure/vm) kullanır `myVM` `myResourceGroup` . Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
@@ -244,7 +244,7 @@ Azure portal kullanarak bir VM 'yi yeniden dağıtmak için VM 'nizi seçin ve *
 
 ![Azure portal bir VM 'yi yeniden dağıtma](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 Aşağıdaki örnek, adlı kaynak grubunda adlı VM 'yi yeniden dağıtmak için [az VM yeniden dağıtma](/cli/azure/vm) kullanır `myVM` `myResourceGroup` . Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli

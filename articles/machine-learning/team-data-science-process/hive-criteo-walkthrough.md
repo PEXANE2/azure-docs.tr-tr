@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336658"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Ekip veri bilimi Işlemi, 1 TB 'lik bir veri kümesinde Azure HDInsight Hadoop kümesi kullanılarak yapılır.
@@ -607,12 +607,12 @@ Artık bu dönüştürülmüş veri kümelerini kullanarak bir Azure Machine Lea
 #### <a name="choice-of-learner"></a>Öğrenimi seçimi
 İlk olarak, bir öğrenici seçmeniz gerekir. Learner 'imiz olarak iki sınıf bir önceden maliyetli karar ağacı kullanın. Bu öğrenner için varsayılan seçenekler şunlardır:
 
-![İki sınıf önceden artırılmış karar ağacı parametreleri](./media/hive-criteo-walkthrough/bH3ST2z.png)
+![Two-Class artırılmış karar ağacı parametreleri](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
 Deneme için varsayılan değerleri seçin. Varsayılanlar anlamlı ve performans üzerinde hızlı taban çizgileri almanın iyi bir yoludur. Taban çizgisini bir kez daha seçerseniz, performans ile performansı artırabilirsiniz.
 
 #### <a name="train-the-model"></a>Modeli eğitme
-Eğitim için yalnızca bir **eğitme modeli** modülü çağırın. Bu iki sınıf girişi, Iki sınıflı bir karar ağacı öğrenici ve tren veri kümidir. Bu, burada gösterilmektedir:
+Eğitim için yalnızca bir **eğitme modeli** modülü çağırın. Bu iki giriş Two-Class, artırılmış karar ağacı öğrenici ve tren veri kümidir. Bu, burada gösterilmektedir:
 
 ![Model modülünü eğitme](./media/hive-criteo-walkthrough/2bZDZTy.png)
 

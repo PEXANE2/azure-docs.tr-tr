@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335560"
 ---
 # <a name="how-to-use-image-templates"></a>Görüntü şablonlarını kullanma
@@ -119,7 +119,7 @@ Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremap
 
 Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü şablonları ekleyen bir modül oluşturuyorsanız, bu simgeleri Azure Maps web SDK 'sına kolayca ekleyebilir ve alabilirsiniz. Ad alanı üzerinde aşağıdaki statik işlevleri kullanın `atlas` .
 
-| Name | Dönüş Türü | Description | 
+| Adı | Dönüş Türü | Açıklama | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Atlas ad alanına özel bir SVG resim şablonu ekler. |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | Bir SVG şablonunu ada göre alır. |
@@ -127,7 +127,7 @@ Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü �
 
 SVG resim şablonları aşağıdaki yer tutucu değerlerini destekler:
 
-| Yer tutucu | Description |
+| Yer tutucu | Açıklama |
 |-|-|
 | `{color}` | Birincil renk. | 
 | `{secondaryColor}` | İkincil renk. | 

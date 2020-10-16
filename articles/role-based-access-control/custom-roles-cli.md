@@ -15,10 +15,10 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984180"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Azure CLı kullanarak Azure özel rolleri oluşturma veya güncelleştirme
@@ -32,7 +32,7 @@ ms.locfileid: "84984180"
 
 Özel rol oluşturma hakkında adım adım bir öğretici için bkz. [öğretici: Azure CLI kullanarak Azure özel rolü oluşturma](tutorial-custom-role-cli.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Özel Roller oluşturmak için şunlar gerekir:
 
@@ -243,5 +243,5 @@ az role definition delete --name "Virtual Machine Operator"
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Öğretici: Azure CLı kullanarak Azure özel rolü oluşturma](tutorial-custom-role-cli.md)
-- [Azure özel rolleri](custom-roles.md)
+- [Özel Azure rolleri](custom-roles.md)
 - [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

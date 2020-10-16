@@ -5,37 +5,46 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/06/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f443cd5603e6ca0f60dc0e69b734bfa46138d476
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ab7749c93f39d0c7b630b63e0b0e68589b61ede2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018952"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090956"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET ile blob kapsayıcılarını listeleme
 
-Kodlarınızdan bir Azure depolama hesabındaki kapsayıcıları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)kullanılarak kapsayıcıların nasıl listeyapılacağı gösterilmektedir.  
+Kodlarınızdan bir Azure depolama hesabındaki kapsayıcıları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage)kullanılarak kapsayıcıların nasıl listeyapılacağı gösterilmektedir.  
 
 ## <a name="understand-container-listing-options"></a>Kapsayıcı listesi seçeneklerini anlama
 
 Depolama hesabınızdaki kapsayıcıları listelemek için aşağıdaki yöntemlerden birini çağırın:
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+- [GetBlobContainers](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainers)
+- [GetBlobContainersAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainersasync)
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 - [Listcontainerskesimli](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
 - [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
+
+---
 
 Bu yöntemlerin aşırı yüklemeleri, kapsayıcıların listeleme işlemi tarafından nasıl döndürüleceğini yönetmek için ek seçenekler sağlar. Bu seçenekler aşağıdaki bölümlerde açıklanmıştır.
 
 ### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürüldüğünü yönetin
 
-Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, `maxresults` **Listcontainerkesimli** metotlardan birini çağırırken parametresi için sıfır dışında bir değer sağlayın.
+Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, döndürülecek sonuç sayfasının boyutu için sıfır dışında bir değer sağlayın.
 
-Depolama hesabınızda 5000 ' den fazla kapsayıcı varsa veya `maxresults` liste işlemi depolama hesabındaki kapsayıcıların bir alt kümesini döndürdüğünde bu şekilde bir değer belirttiyseniz, Azure Storage kapsayıcı listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
+Depolama hesabınızda 5000 ' den fazla kapsayıcı varsa veya listeleme işleminin depolama hesabındaki kapsayıcıların bir alt kümesini döndürdüğü şekilde bir sayfa boyutu belirttiyseniz, Azure Storage kapsayıcı listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
 
-Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devam belirteci null olana kadar, sonraki sonuç kümesini almak için **Listcontainerskesimli** veya **ListContainersSegmentedAsync** yeniden çağırın.
+Kodunuzda, boş olup olmadığını (.NET V12 için) veya null olduğunu (.NET v11 ve önceki sürümler için) öğrenmek için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devamlılık belirteci null olana kadar, sonraki sonuç kümesini almak için devamlılık belirtecini geçirerek listeleme yöntemini yeniden çağırın.
 
 ### <a name="filter-results-with-a-prefix"></a>Sonuçları bir ön eke göre filtrele
 
@@ -43,31 +52,39 @@ Kapsayıcılar listesini filtrelemek için, parametre için bir dize belirtin `p
 
 ### <a name="return-metadata"></a>Meta veri döndür
 
-Sonuçlarla kapsayıcı meta verileri döndürmek için [Containerlistingdetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her kapsayıcı tarafından döndürülen meta verileri içerir, bu nedenle kapsayıcı meta verilerini almak için **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
+Sonuçlarla kapsayıcı meta verileri döndürmek için [Blobcontainernitelikler](/dotnet/api/azure.storage.blobs.models.blobcontainertraits) numaralandırması (.net V12 için) veya [Containerlistingdetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) enum (.net v11 ve öncesi Için) için **meta veri** değerini belirtin. Azure depolama, her kapsayıcı tarafından döndürülen meta verileri içerir, bu nedenle kapsayıcı meta verilerini de almanız gerekmez.
 
 ## <a name="example-list-containers"></a>Örnek: liste kapsayıcıları
 
-Aşağıdaki örnek, belirtilen bir önek ile başlayan bir depolama hesabındaki kapsayıcıları zaman uyumsuz olarak listeler. Örnek, kapsayıcıları tek seferde 5 sonuçtan oluşan artışlarla listeler ve sonraki sonuç segmentini almak için devamlılık belirtecini kullanır. Örnek ayrıca, sonuçlarla birlikte kapsayıcı meta verileri döndürür.
+Aşağıdaki örnek, belirtilen bir önek ile başlayan bir depolama hesabındaki kapsayıcıları zaman uyumsuz olarak listeler. Örnek, belirtilen önekle başlayan kapsayıcıları listeler ve listeleme işlemine çağrı başına belirtilen sonuç sayısını döndürür. Daha sonra sonuçların sonraki segmentini almak için devamlılık belirtecini kullanır. Örnek ayrıca, sonuçlarla birlikte kapsayıcı meta verileri döndürür.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="ListContainers":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
-                                                        string prefix)
+                                                        string prefix,
+                                                        int? segmentSize)
 {
-    Console.WriteLine("List all containers beginning with prefix {0}, plus container metadata:", prefix);
+    Console.WriteLine("List containers beginning with prefix {0}, plus container metadata:", prefix);
+
+    BlobContinuationToken continuationToken = null;
+    ContainerResultSegment resultSegment;
 
     try
     {
-        ContainerResultSegment resultSegment = null;
-        BlobContinuationToken continuationToken = null;
-
         do
         {
-            // List containers beginning with the specified prefix, returning segments of 5 results each.
-            // Passing null for the maxResults parameter returns the max number of results (up to 5000).
-            // Requesting the container's metadata with the listing operation populates the metadata,
-            // so it's not necessary to also call FetchAttributes() to read the metadata.
+            // List containers beginning with the specified prefix,
+            // returning segments of 5 results each.
+            // Passing in null for the maxResults parameter returns the maximum number of results (up to 5000).
+            // Requesting the container's metadata as part of the listing operation populates the metadata,
+            // so it's not necessary to call FetchAttributes() to read the metadata.
             resultSegment = await blobClient.ListContainersSegmentedAsync(
-                prefix, ContainerListingDetails.Metadata, 5, continuationToken, null, null);
+                prefix, ContainerListingDetails.Metadata, segmentSize, continuationToken, null, null);
 
             // Enumerate the containers returned.
             foreach (var container in resultSegment.Results)
@@ -82,24 +99,27 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
                 }
             }
 
-            // Get the continuation token. If not null, get the next segment.
+            // Get the continuation token.
             continuationToken = resultSegment.ContinuationToken;
 
         } while (continuationToken != null);
+
+        Console.WriteLine();
     }
     catch (StorageException e)
     {
-        Console.WriteLine("HTTP error code {0} : {1}",
-                            e.RequestInformation.HttpStatusCode,
-                            e.RequestInformation.ErrorCode);
         Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
     }
 }
 ```
+
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Kapsayıcıları Listele](/rest/api/storageservices/list-containers2) 
- [BLOB kaynaklarını numaralandırma](/rest/api/storageservices/enumerating-blob-resources)
+- [Kapsayıcıları Listele](/rest/api/storageservices/list-containers2)
+- [Blob kaynaklarını numaralandırma](/rest/api/storageservices/enumerating-blob-resources)

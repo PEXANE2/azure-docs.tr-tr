@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021638"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus mesajlaşma aracılığıyla dağıtılmış izleme ve bağıntı
@@ -23,8 +23,8 @@ Protokol, [http bağıntı protokolünü](https://github.com/dotnet/runtime/blob
 
 | Özellik Adı        | Açıklama                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Tanılama kimliği       | Bir üreticinin bir dış çağrısının sıraya özgü tanıtıcısı. [Http protokolündeki Istek kimliği](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) , dikkat edilecek noktalar ve biçim için bkz. |
-|  Bağıntı bağlamı | İşlem işleme dahil olmak üzere tüm hizmetlere yayılan işlem bağlamı. Daha fazla bilgi için bkz. [http protokolünde bağıntı bağlamı](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
+|  Diagnostic-Id       | Bir üreticinin bir dış çağrısının sıraya özgü tanıtıcısı. [Http protokolündeki Istek kimliği](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) , dikkat edilecek noktalar ve biçim için bkz. |
+|  Correlation-Context | İşlem işleme dahil olmak üzere tüm hizmetlere yayılan işlem bağlamı. Daha fazla bilgi için bkz. [http protokolünde bağıntı bağlamı](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
 
 ## <a name="service-bus-net-client-autotracing"></a>Service Bus .NET Client 'ı oto izleme
 

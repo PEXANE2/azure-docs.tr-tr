@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852477"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977757"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure 'da sanal makinelerde ilkeleri güvenli hale getirme ve kullanma
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure'daki sanal makinelerde ilkeleri güvenli hale getirme ve kullanma
 
 Çalıştırdığınız uygulamalar için sanal makinenizin (VM) güvenli tutulması önemlidir. Sanal makinelerinizin güvenliğini sağlamak, sanal makinelerinize güvenli erişimi kapsayan bir veya daha fazla Azure hizmetini ve özelliğini ve verilerinizin güvenli şekilde depolanmasını içerebilir. Bu makalede, sanal makinenizin ve uygulamalarınızın güvenliğini sağlamanıza olanak tanıyan bilgiler sağlanmaktadır.
 
@@ -25,7 +25,7 @@ Bulut ortamları için modern tehdit yatay, uyumluluk ve güvenlik gereksinimler
 
 ## <a name="azure-security-center"></a>Azure Güvenlik Merkezi
 
-[Azure Güvenlik Merkezi](../security-center/security-center-intro.md) , sanal makinelerinizdeki tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Güvenlik Merkezi, Azure aboneliklerinizde tümleşik güvenlik izleme ve ilke yönetimi sağlar, aksi takdirde fark edilmemiş tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş bir ekosistemiyle birlikte çalışabilir.
+[Azure Güvenlik Merkezi](../security-center/security-center-introduction.md) , sanal makinelerinizdeki tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Güvenlik Merkezi, Azure aboneliklerinizde tümleşik güvenlik izleme ve ilke yönetimi sağlar, aksi takdirde fark edilmemiş tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş bir ekosistemiyle birlikte çalışabilir.
 
 Güvenlik Merkezi 'nin tam zamanında erişimi, sanal makinelerinize gelen trafiği kilitlemek ve gerektiğinde sanal makinelere bağlanmak için kolay erişim sağlarken saldırılara maruz kalma olasılığını azaltmak için VM dağıtımınız genelinde uygulanabilir. Tam zamanında etkin olduğunda ve bir Kullanıcı bir VM 'ye erişim istediğinde, güvenlik merkezi kullanıcının VM 'ye yönelik hangi izinlere sahip olduğunu denetler. Doğru izinlere sahip olmaları durumunda istek onaylanır ve Güvenlik Merkezi, ağ güvenlik gruplarını (NSG 'ler), seçilen bağlantı noktalarına sınırlı bir süre boyunca gelen trafiğe izin verecek şekilde otomatik olarak yapılandırır. Sürenin süresi dolduktan sonra, güvenlik merkezi NSG 'leri önceki durumlarına geri yükler. 
 
@@ -69,9 +69,8 @@ Azure Active Directory (Azure AD) hizmetindeki Azure kaynakları yönetilen hizm
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)kullanarak, ekiplerinizi takımınızın içinde ayırabilirsiniz ve yalnızca VM 'nizin işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. [Azure CLI](https://docs.microsoft.com/cli/azure/role)veya[Azure POWERSHELL](../role-based-access-control/role-assignments-powershell.md)kullanarak [Azure Portal](../role-based-access-control/role-assignments-portal.md)VM için erişim denetimi yapılandırabilirsiniz.
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)kullanarak, ekiplerinizi takımınızın içinde ayırabilirsiniz ve yalnızca VM 'nizin işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. [Azure CLI](/cli/azure/role)veya[Azure POWERSHELL](../role-based-access-control/role-assignments-powershell.md)kullanarak [Azure Portal](../role-based-access-control/role-assignments-portal.md)VM için erişim denetimi yapılandırabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Linux](../security/fundamentals/overview.md) veya [Windows](windows/tutorial-azure-security.md)için Azure Güvenlik Merkezi 'ni kullanarak sanal makine güvenliğini izleme adımlarını adım adım inceleyin.
-

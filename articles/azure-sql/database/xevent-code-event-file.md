@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
 ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620197"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar için olay dosyası hedef kodu
@@ -34,7 +34,7 @@ Bu konuda, iki aşamalı bir kod örneği sunulmaktadır:
   - Azure depolama kapsayıcısını bir olay dosyası hedefine atamak için.
   - Olay oturumu oluşturmak ve başlatmak için ve bu şekilde devam edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -449,7 +449,7 @@ ALTER EVENT SESSION ... STATE = START;
 GO
 ```
 
-## <a name="output"></a>Çıkış
+## <a name="output"></a>Çıktı
 
 Transact-SQL betiği tamamlandığında, **event_data_XML** sütun üst bilgisinin altındaki bir hücreye tıklayın. Tek bir **\<event>** Update ifadesini gösteren bir öğe görüntülenir.
 
@@ -496,7 +496,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Yukarıdaki Transact-SQL betiği, event_file okumak için aşağıdaki sistem işlevini kullandı:
 
-- [sys. fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 Genişletilmiş olaylardan verilerin görüntülenmesine yönelik gelişmiş seçeneklerin açıklaması şurada bulunabilir:
 

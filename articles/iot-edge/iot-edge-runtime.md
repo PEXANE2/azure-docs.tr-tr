@@ -4,17 +4,17 @@ description: IoT Edge çalışma zamanının, cihazlarınızda modüller, güven
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4e4895b227bfc699e94155515e829d0bf33aaf9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016963"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043060"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge çalışma zamanını ve mimarisini anlayın
 
@@ -71,7 +71,7 @@ Bir ileti almak için, belirli bir girişte gelen iletileri işleyen bir geri ç
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-Moduleclient sınıfı ve iletişim yöntemleri hakkında daha fazla bilgi için bkz. tercih ettiğiniz SDK dili için API başvurusu: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)veya [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Moduleclient sınıfı ve iletişim yöntemleri hakkında daha fazla bilgi için bkz. tercih ettiğiniz SDK dili için API başvurusu: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)veya [Node.js](/javascript/api/azure-iot-device/moduleclient).
 
 Çözüm geliştiricisi, IoT Edge hub 'ının iletileri modüller arasında nasıl geçireceğini belirleyen kuralları belirtmekten sorumludur. Yönlendirme kuralları bulutta tanımlanmıştır ve modülünde IoT Edge hub 'ına dağıtılır ikizi. IoT Hub yollar için aynı söz dizimi, Azure IoT Edge modüller arasındaki yolları tanımlamak için kullanılır. Daha fazla bilgi için bkz. [IoT Edge modül dağıtmayı ve yollar oluşturmayı öğrenin](module-composition.md).
 
@@ -124,6 +124,22 @@ IoT Edge Aracısı bir IoT Edge cihazının güvenliğine kritik bir rol oynar. 
 
 Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](iot-edge-security-manager.md)hakkında makalesini okuyun.
 
+## <a name="runtime-quality-telemetry"></a>Çalışma zamanı kalite telemetrisi
+
+IoT Edge, ürün kalitesini geliştirmek için konak çalışma zamanı ve sistem modülleriyle adsız telemetri toplar. Bu bilgilere çalışma zamanı kalite telemetrisi adı verilir. Toplanan telemetri, IoT Edge aracısından IoT Hub için düzenli olarak cihazdan buluta iletiler olarak gönderilir. Bu iletiler müşterinin normal telemetrisinde görünmez ve herhangi bir ileti kotasını tüketmez.
+
+IoT Edge Aracısı ve hub, cihaz performansını anlamak için toplayabileceğinizi ölçümlerle üretir. Bu ölçümlerin bir alt kümesi, IoT Edge Aracısı tarafından çalışma zamanı kalite telemetrinin bir parçası olarak toplanır. Çalışma zamanı kalite telemetrisi için toplanan ölçümler etiketiyle etiketlidir `ms_telemetry` . Tüm kullanılabilir ölçümler hakkında daha fazla bilgi için bkz. [yerleşik ölçümlere erişme](how-to-access-built-in-metrics.md).
+
+Çalışma zamanı kalite telemetrisine yönelik anonim doğası sağlamak için, cihaz ve modül adları gibi tüm kişisel veya kuruluş tanımlanabilir bilgiler karşıya yüklenmeden önce kaldırılır.
+
+IoT Edge Aracısı her saat telemetri toplar ve her 24 saatte bir IoT Hub bir ileti gönderir.
+
+Cihazlarınızdan çalışma zamanı telemetrisi göndermeyi devre dışı bırakmak istiyorsanız, bunu iki şekilde yapabilirsiniz:
+
+* `SendRuntimeQualityTelemetry` `false` **Edgeagent**için ortam değişkenini olarak ayarlayın veya
+* Dağıtım sırasında Azure portal seçeneğinin işaretini kaldırın.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure IoT Edge modüllerini anlama](iot-edge-modules.md)
+* [Azure IoT Edge modüllerini anlama](iot-edge-modules.md)
+* [IoT Edge çalışma zamanı ölçümleri hakkında bilgi edinin](how-to-access-built-in-metrics.md)

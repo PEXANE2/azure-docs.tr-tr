@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f4eb90cc0e8867230c7fb1a2a169b5ba0126e46a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205888"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071328"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API Management örneği kapasitesi
 
@@ -107,4 +107,4 @@ Düşük **kapasiteli ölçüm** , API Management örneğinizin herhangi bir sor
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure API Management hizmet örneğini ölçeklendirme veya yükseltme](upgrade-and-scale.md)
-- [Bulut harcamalarınızı iyileştirin ve kaydedin](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Bulut harcamalarınızı iyileştirin ve kaydedin](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

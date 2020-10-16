@@ -7,10 +7,10 @@ ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613753"
 ---
 # <a name="sky-reflections"></a>Gökyüzü yansımaları
@@ -119,7 +119,7 @@ Bir 2B dokusunu ortam haritası olarak kullanırken, görüntünün [küresel ko
 
 Azure uzaktan Işleme, her zaman kullanılabilir olan birkaç yerleşik ortam haritası sağlar. Tüm yerleşik ortam haritaları cubemaps.
 
-|Tanımlayıcı                         | Description                                              | Göstermektedir                                                      |
+|Tanımlayıcı                         | Açıklama                                              | Göstermektedir                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
 |builtin://Autoshop                 | Çeşitli Stripe ışıkları, parlak kapılı taban aydınlatma    | ![Bir nesneyi aydınlatmak için kullanılan Oto Shop ufuk kutusu](media/autoshop.png)
 |builtin://BoilerRoom               | Parlak kapılı ışık ayarı, birden çok pencere ışıkları      | ![BoilerRoom ufuk kutusu, bir nesneyi aydınlatmak için kullanılır](media/boiler-room.png)

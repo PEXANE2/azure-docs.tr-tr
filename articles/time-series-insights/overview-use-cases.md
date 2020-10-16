@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: b5b6233c0978f15aad94b7f66f8935c2d6f6f1c1
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666968"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 kullanım örnekleri
@@ -30,7 +30,7 @@ Bu makalede Azure Time Series Insights Gen2 için bazı yaygın kullanım duruml
 
 Bu kullanım senaryolarına genel bir bakış aşağıdaki bölümlerde açıklanmıştır.
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Azure Time Series Insights Gen2, uçtan uca, bir hizmet olarak platform sunumudur. Yüksek düzeyde tanımlı, zaman serisi iyileştirilmiş IoT ölçeğinde verileri toplamak, işlemek, depolamak, çözümlemek ve sorgulamak için kullanılır. Geçici veri araştırması ve işletimsel analizler için idealdir. Azure Time Series Insights Gen2, endüstriyel IoT dağıtımlarının geniş ihtiyaçlarını karşılayan benzersiz şekilde genişletilebilir, özelleştirilmiş bir hizmet sunumudur.
 

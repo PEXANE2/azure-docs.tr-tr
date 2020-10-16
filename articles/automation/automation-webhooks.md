@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015111"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073538"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Web kancasından runbook başlatma
 
@@ -66,7 +66,7 @@ Web kancası dışında bir mekanizma kullanarak tanımlayan bir runbook 'u baş
 Sonraki runbook örneğinde, için aşağıdaki özellikleri tanımlayalim `WebhookData` :
 
 * **Web kancası adı**: MyWeb kancası
-* **Istek gövdesi**:`*[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*`
+* **Istek gövdesi**: `*[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*`
 
 Şimdi parametresi için Kullanıcı arabiriminde aşağıdaki JSON nesnesini geçiyoruz `WebhookData` . Bu örnek, satır başı ve yeni satır karakterleri ile bir Web kancasından geçirilen biçimle eşleşir.
 
@@ -89,7 +89,7 @@ Aşağıdaki stratejileri göz önünde bulundurun:
 
 * Runbook 'un bir Web kancası isteği aldığında dış koşul doğrulaması gerçekleştirmesini sağlama. Örneğin bir GitHub deposuna yeni bir kayıt olduğunda GitHub tarafından çağrılan bir runbook 'u göz önünde bulundurun. Runbook, devam etmeden önce yeni bir işleme gerçekleştiğini doğrulamak için GitHub 'a bağlanabilir.
 
-* Azure Otomasyonu, Azure sanal ağ hizmeti etiketlerini, özellikle de [Gustandhybridmanagement](../virtual-network/service-tags-overview.md)'ı destekler. [Ağ güvenlik grupları](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik Duvarı](../firewall/service-tags.md) üzerindeki ağ erişim denetimlerini tanımlamak ve sanal ağınızın içinden Web kancalarını tetikleyebilmeniz için hizmet etiketlerini kullanabilirsiniz. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı **Guestandhybridmanagement** ' i belirterek, Otomasyon Hizmeti için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Bu hizmet etiketi, IP aralıklarını belirli bir bölgeyle kısıtlayarak daha ayrıntılı denetim yapılmasına izin vermeyi desteklemez.
+* Azure Otomasyonu, Azure sanal ağ hizmeti etiketlerini, özellikle de [Gustandhybridmanagement](../virtual-network/service-tags-overview.md)'ı destekler. [Ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md#security-rules) veya [Azure Güvenlik Duvarı](../firewall/service-tags.md) üzerindeki ağ erişim denetimlerini tanımlamak ve sanal ağınızın içinden Web kancalarını tetikleyebilmeniz için hizmet etiketlerini kullanabilirsiniz. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı **Guestandhybridmanagement**  ' i belirterek, Otomasyon Hizmeti için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Bu hizmet etiketi, IP aralıklarını belirli bir bölgeyle kısıtlayarak daha ayrıntılı denetim yapılmasına izin vermeyi desteklemez.
 
 ## <a name="create-a-webhook"></a>Web kancası oluşturma
 
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 İstemci, istekten aşağıdaki dönüş kodlarından birini alır `POST` .
 
-| Kod | Metin | Açıklama |
+| Kod | Metin | Description |
 |:--- |:--- |:--- |
 | 202 |Kabul edildi |İstek kabul edildi ve Runbook başarıyla kuyruğa alındı. |
 | 400 |Hatalı İstek |İstek aşağıdaki nedenlerden biri için kabul edilmedi: <ul> <li>Web kancası süresi doldu.</li> <li>Web kancası devre dışı bırakıldı.</li> <li>URL 'deki belirteç geçersiz.</li>  </ul> |

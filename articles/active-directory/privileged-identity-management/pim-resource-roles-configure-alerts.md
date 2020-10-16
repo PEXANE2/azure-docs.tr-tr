@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84743771"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için güvenlik uyarılarını yapılandırma
@@ -28,7 +28,7 @@ Privileged Identity Management (PıM), Azure Active Directory (Azure AD) kurulu�
 
 ![Azure kaynakları-uyarılar sayfası listeleme uyarısı, risk düzeyi ve sayı](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
-## <a name="review-alerts"></a>Uyarıları gözden geçirin
+## <a name="review-alerts"></a>Uyarıları gözden geçirme
 
 Uyarıyı tetikleyen Kullanıcı veya rolleri, düzeltme kılavuzlarıyla birlikte listeleyen bir rapor görmek için bir uyarı seçin.
 
@@ -36,13 +36,13 @@ Uyarıyı tetikleyen Kullanıcı veya rolleri, düzeltme kılavuzlarıyla birlik
 
 ## <a name="alerts"></a>Uyarılar
 
-| Uyarı | Severity | Tetikleyici | Öneri |
+| Uyarı | Önem Derecesi | Tetikleyici | Öneri |
 | --- | --- | --- | --- |
 | **Bir kaynağa çok fazla sahip atandı** |Orta |Çok fazla kullanıcı sahip rolüne sahip. |Listedeki kullanıcıları gözden geçirin ve bazılarını daha az ayrıcalıklı rollere yeniden atayın. |
 | **Bir kaynağa çok fazla sayıda kalıcı sahip atandı** |Orta |Rol için çok fazla sayıda kullanıcı kalıcı olarak atandı. |Listedeki kullanıcıları gözden geçirin ve rol kullanımı için etkinleştirmeyi gerektirmek üzere bazılarını yeniden atayın. |
 | **Yinelenen rol oluşturuldu** |Orta |Birden çok rol aynı ölçütlere sahiptir. |Bu rollerden yalnızca birini kullanın. |
 
-### <a name="severity"></a>Severity
+### <a name="severity"></a>Önem Derecesi
 
 - **Yüksek**: bir ilke ihlali nedeniyle hemen eyleme gerek duyar. 
 - **Orta**: anında eyleme gerek yoktur, ancak olası bir ilke ihlaline işaret eder.

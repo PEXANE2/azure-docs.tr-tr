@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
 ms.openlocfilehash: 79062ae45f04b290f6e4120906b98590ce95dbe1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833275"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Sanal ağ eşlemesi oluşturma-Kaynak Yöneticisi, farklı abonelikler ve Azure Active Directory kiracılar
@@ -284,7 +284,7 @@ Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik i�
 6. **Isteğe bağlı**: Bu öğreticide sanal makineler oluşturmak, her bir sanal ağ için bir sanal makine oluşturabilir ve bağlantıyı doğrulamak için bir sanal makineden diğerine bağlanabilirsiniz.
 7. **Isteğe bağlı**: Bu öğreticide oluşturduğunuz kaynakları silmek için Azure Portal, PowerShell veya Azure CLI kullanarak bu makalenin [kaynakları silme](#delete) bölümünde yer alan adımları uygulayın.
 
-## <a name="delete-resources"></a><a name="delete"></a>Kaynakları Sil
+## <a name="delete-resources"></a><a name="delete"></a>Kaynakları silme
 Bu öğreticiyi tamamladığınızda, öğreticide oluşturduğunuz kaynakları silmek isteyebilirsiniz, bu sayede kullanım ücretlerine tabi kalmazsınız. Kaynak grubunun silinmesi, kaynak grubundaki tüm kaynakları da siler.
 
 ### <a name="azure-portal"></a><a name="delete-portal"></a>Azure portal
@@ -305,7 +305,7 @@ Bu öğreticiyi tamamladığınızda, öğreticide oluşturduğunuz kaynakları 
    ```
 
 2. Azure oturumunu UserA olarak kapatıp UserB olarak oturum açın.
-3. Aşağıdaki komutu yürütün:
+3. Şu kodu yürütün:
 
    ```azurecli-interactive
    az group delete --name myResourceGroupB --yes
@@ -320,7 +320,7 @@ Bu öğreticiyi tamamladığınızda, öğreticide oluşturduğunuz kaynakları 
    ```
 
 2. Azure oturumunu UserA olarak kapatıp UserB olarak oturum açın.
-3. Aşağıdaki komutu yürütün:
+3. Şu kodu yürütün:
 
    ```powershell
    Remove-AzResourceGroup -Name myResourceGroupB -force

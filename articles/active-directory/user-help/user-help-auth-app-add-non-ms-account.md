@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015979"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına Microsoft dışı hesapları ekleme
@@ -186,12 +186,12 @@ Facebook, Google, GitHub ve Amazon hesaplarınız için bu işlemi burada sunuyo
 
 10. Bilgisayarınızda **bir yedekleme doğrulama yöntemi ekleme** sayfasında, Amazon hesabınız için yedekleme doğrulama yönteminiz tarafından belirtilen altı basamaklı doğrulama kodunu yazın ve ardından **kodu doğrula ve devam et**' i seçin.
 
-11. **Neredeyse bitti** sayfasında, bilgisayarınızı güvenilir bir cihaz yapıp yapmayacağınıza karar verin ve ardından alındı ' ı seçin **. Iki aşamalı doğrulamayı açın**.
+11. **Neredeyse bitti** sayfasında, bilgisayarınızı güvenilir bir cihaz yapıp yapmayacağınıza karar verin ve ardından alındı ' ı seçin **. Two-Step doğrulaması 'nı açın**.
 
     Güncelleştirilmiş iki öğeli doğrulama ayrıntılarınızın gösterildiği **Gelişmiş güvenlik ayarları** sayfası görüntülenir.
 
     >[!NOTE]
-    >İki öğeli doğrulama ve Amazon hesabınız hakkında daha fazla bilgi için bkz. iki adımlı doğrulama hakkında ve [Iki adımlı doğrulamayla oturum açma](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440) [hakkında](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) .
+    >İki öğeli doğrulama ve Amazon hesabınız hakkında daha fazla bilgi için bkz. [Two-Step doğrulaması hakkında](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) ve [Two-Step doğrulaması ile oturum açma](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

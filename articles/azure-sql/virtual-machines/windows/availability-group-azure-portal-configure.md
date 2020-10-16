@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89482809"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırma (Azure portal-Önizleme)
@@ -67,18 +67,11 @@ Zaten mevcut bir kümeniz yoksa, aşağıdaki adımlarla Azure portal kullanarak
 
 1. Kümenizi adlandırın ve bulut tanığı olarak kullanılacak bir depolama hesabı sağlayın. Mevcut bir depolama hesabını kullanın veya yeni bir depolama hesabı oluşturmak için **Yeni oluştur** ' u seçin. Depolama hesabı adı 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Küme için ad, depolama hesabı ve kimlik bilgilerini sağlayın":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 1. SQL Server hizmet hesabının [kimlik bilgilerini](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) ve SQL Server hizmeti için kullanılan hesaptan farklı olmaları durumunda küme işlecini ve önyükleme hesaplarını sağlamak Için **Windows Server yük devretme kümesi kimlik bilgilerini** genişletin. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="SQL hizmeti hesabı, küme operatörü hesabı ve küme önyükleme hesabı için kimlik bilgilerini belirtin":::
-
-1. Kümeye eklemek istediğiniz SQL Server VM 'Leri seçin. Yeniden başlatma gerekip gerekmediğini ve dikkatli ilerlemeniz gerektiğini not edin. Yalnızca SQL VM kaynak sağlayıcısı ile tam yönetilebilirlik modunda kayıtlı olan ve birincil SQL Server VM aynı konumda, etki alanında ve aynı sanal ağda yer alan VM 'Ler görünür olur. 
-1. Kümeyi oluşturmak için **Uygula** ' yı seçin. Üst gezinti çubuğundaki zil simgesinden erişilebilen **etkinlik günlüğünde** dağıtımınızın durumunu kontrol edebilirsiniz. 
-1. Bir yük devretme kümesinin Microsoft tarafından desteklenmesi için, küme doğrulamasını geçmesi gerekir. Tercih ettiğiniz yöntemi (Uzak Masaüstü Protokolü (RDP)) kullanarak VM 'ye bağlanın ve daha sonra devam etmeden önce kümenizin doğrulamayı geçirdiğini doğrulayın. Bunun başarısız olması, kümenizi desteklenmeyen bir durumda bırakır. Yük Devretme Kümesi Yöneticisi (FCM) kullanarak kümeyi veya aşağıdaki PowerShell komutunu kullanabilirsiniz:
-
-    ```powershell
-    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur"
     ```
     
 
@@ -94,7 +87,7 @@ Bunu yapmak için şu adımları uygulayın:
 1. **Ayarlar**altında **yüksek kullanılabilirlik** ' i seçin. 
 1. **Mevcut Windows Server yük devretme kümesini** ekleme ' yi seçerek **Windows Server yük devretme kümesi** ekleme sayfasını açın. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="SQL sanal makineler kaynağınızın yüksek kullanılabilirlik sayfasından var olan bir kümeyi ekleme":::
+   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 1. Kümenizin ayarlarını gözden geçirin. 
 1. Kümenizi eklemek için **Uygula** ' yı seçin ve sonra devam etmek Için sorulduğunda **Evet** ' i seçin.
@@ -111,21 +104,21 @@ Kümeniz oluşturulduktan veya eklendi olduktan sonra, Azure portal kullanarak k
 1. **Ayarlar**altında **yüksek kullanılabilirlik** ' i seçin. 
 1. **Kullanılabilirlik grubu oluştur** sayfasını açmak Için **+ Yeni Always on kullanılabilirlik grubu '** nu seçin.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Kullanılabilirlik grubu oluştur sayfasını açmak için yeni Always on kullanılabilirlik grubu ' nu seçin.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 1. Kullanılabilirlik grubu için bir ad girin. 
 1. **Kullanılabilirlik grubu dinleyicisini Yapılandır** sayfasını açmak Için **dinleyiciyi Yapılandır** ' ı seçin. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="Kullanılabilirlik grubu için bir ad girin ve bir dinleyici yapılandırın":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 1. Değerleri doldurun ve mevcut yük dengeleyiciyi kullanın veya yeni bir yük dengeleyici oluşturmak için **Yeni oluştur** ' u seçin.  Ayarlarınızı kaydetmek ve dinleyicinizi ve yük dengeleyiciyi oluşturmak için **Uygula** ' yı seçin. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="Yeni dinleyicinizi ve yük dengeleyiciyi oluşturmak için formdaki değerleri doldurun":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 1. **Kullanılabilirlik Grubu çoğaltmalarını Yapılandır** sayfasını açmak için **+ çoğaltmayı Seç ' i** seçin.
 1. Kullanılabilirlik grubuna eklemek istediğiniz sanal makineleri seçin ve iş ihtiyaçlarınıza en uygun kullanılabilirlik grubu ayarlarını seçin. Ayarlarınızı kaydetmek için **Uygula** ' yı seçin. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="Kullanılabilirlik grubunuza eklemek ve işletmenize uygun ayarları yapılandırmak için VM 'Leri seçin":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 1. Kullanılabilirlik grubu ayarlarınızı doğrulayın ve sonra kullanılabilirlik grubunuzu oluşturmak için **Uygula** ' yı seçin. 
 
@@ -147,7 +140,7 @@ SQL Server Management Studio kullanarak kullanılabilirlik grubunuza veritabanla
 1. **Nesne Gezgini**' de **her zaman yüksek kullanılabilirlik '** i genişletin.
 1. **Kullanılabilirlik grupları**' nı genişletin, kullanılabilirlik grubunuza sağ tıklayıp **veritabanı eklemeyi seçin...**.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Nesne Gezgini 'nde kullanılabilirlik grubuna sağ tıklayın ve veritabanı Ekle ' yi seçin":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 1. Kullanılabilirlik grubunuza eklemek istediğiniz veritabanlarını seçmek için istemleri izleyin. 
 1. Ayarlarınızı kaydetmek ve veritabanınızı kullanılabilirlik grubuna eklemek için **Tamam** ' ı seçin. 
@@ -155,7 +148,7 @@ SQL Server Management Studio kullanarak kullanılabilirlik grubunuza veritabanla
 
 Veritabanları eklendikten sonra, Azure portal kullanılabilirlik grubunuzun durumunu kontrol edebilirsiniz: 
 
-:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="Veritabanları eşitlendikten sonra Azure portal yüksek kullanılabilirlik sayfasından kullanılabilirlik grubunuzun durumunu kontrol edin":::
+:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 ## <a name="add-more-vms"></a>Daha fazla VM ekleyin
 
@@ -166,7 +159,7 @@ Kümeye daha fazla SQL Server VM eklemek için şu adımları izleyin:
 1. **Ayarlar**altında **yüksek kullanılabilirlik** ' i seçin. 
 1. Windows Server yük devretme kümesini **Yapılandır** sayfasını açmak Için **Windows Server yük devretme kümesini Yapılandır** ' ı seçin. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Kümenize VM 'Ler eklemek için Windows Server yük devretme kümesini Yapılandır ' ı seçin.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 1. **Windows Server yük devretme kümesi kimlik bilgilerini** genişletin ve SQL Server hizmeti, küme operatörü ve küme önyükleme hesapları için kullanılan hesaplara girin. 
 1. Kümeye eklemek istediğiniz SQL Server VM 'Leri seçin. 
@@ -180,7 +173,7 @@ Kümeye daha fazla SQL Server VM eklemek için şu adımları izleyin:
 
 Kullanılabilirlik grubuna **daha fazla çoğaltma ekleyebilir** , **dinleyiciyi yapılandırabilir**veya kullanılabilirlik grubunuzun yanındaki üç nokta (...) simgesini seçerek Azure Portal **yüksek kullanılabilirlik** sayfasından **dinleyiciyi silebilirsiniz** : 
 
-:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Kullanılabilirlik grubunun yanındaki üç noktayı seçin ve ardından kullanılabilirlik grubuna daha fazla çoğaltmalar eklemek için çoğaltma Ekle ' yi seçin.":::
+:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
 ## <a name="remove-cluster"></a>Kümeyi kaldır
 
@@ -255,7 +248,7 @@ Dağıtımın günlüklerini görüntülemek ve dağıtım geçmişini denetleme
 1. Dağıtım hakkında daha fazla bilgi edinmek için ilgilendiğiniz dağıtımı seçin. 
 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="Hakkında daha fazla bilgi edinmek için ilgilendiğiniz dağıtımı seçin." :::
+   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur" :::
 
 ### <a name="common-errors"></a>Sık karşılaşılan hatalar
 

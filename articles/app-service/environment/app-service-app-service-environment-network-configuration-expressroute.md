@@ -8,10 +8,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961831"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute ile PowerApps için App Service Ortamı ağ yapılandırması ayrıntıları
@@ -85,7 +85,7 @@ Kullanıcı tanımlı yollar oluşturma ve yapılandırma hakkında bilgi edinme
 
 Bu bölümde App Service Ortamı için bir örnek UDR yapılandırması gösterilmektedir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * [Azure İndirmeleri sayfasından][AzureDownloads]Azure PowerShell ' i yükler. Haziran 2015 veya üzeri bir tarih içeren bir indirme seçin. **Command-line tools**  >  En son PowerShell cmdlet 'lerini yüklemek için komut satırı araçları**Windows PowerShell**altında, **yüklemek** ' ı seçin.
 

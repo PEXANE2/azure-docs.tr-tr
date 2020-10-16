@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356035"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Bir MQTT sunucusuna ileti gönderme
@@ -33,7 +33,7 @@ Bu projede şunları öğrenirsiniz:
 
 [Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) şu şekilde sona erdirin:
 
-* DevKit 'in Wi-Fi ' e bağlanmasını sağlama
+* DevKit 'in Wi-Fi bağlı olmasını sağlama
 * Geliştirme ortamını hazırlama
 
 ## <a name="open-the-project-folder"></a>Proje klasörünü açın

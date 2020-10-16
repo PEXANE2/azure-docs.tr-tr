@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 19b9259b55332d9f31fdefd166f0509e5443628d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279712"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965820"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux aracısını anlama ve kullanma
 
@@ -93,7 +93,7 @@ Linux Aracısı düzgün çalışması için bazı sistem paketlerine bağımlı
 * Ağ araçları: IP-yol
 * UDF FILESYSTEMS 'ı bağlamak için çekirdek desteği.
 
-VM 'nizin 168.63.129.16 IP adresine erişimi olduğundan emin olun. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+VM 'nizin 168.63.129.16 IP adresine erişimi olduğundan emin olun. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 
 ## <a name="installation"></a>Yükleme
@@ -101,7 +101,7 @@ Dağıtım paketi deposundaki bir RPM veya bir DEB paketini kullanarak yükleme,
 
 Kaynaktan veya özel konumlara veya öneklere yükleme gibi gelişmiş yükleme seçenekleri için [GitHub 'Daki Azure Linux Aracısı](https://github.com/Azure/WALinuxAgent) depolarındaki belgelere bakın.
 
-## <a name="command-line-options"></a>Komut satırı seçenekleri
+## <a name="command-line-options"></a>Command-Line seçenekleri
 ### <a name="flags"></a>Bayraklar
 * verbose: belirtilen komutun ayrıntı düzeyini artır
 * zorla: Bazı komutların etkileşimli onayını atlayın

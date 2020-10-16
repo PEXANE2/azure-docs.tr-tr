@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256900"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073742"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Yayımcı doğrulaması ile ilgili sorunları giderme
 Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
@@ -58,7 +58,7 @@ Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verifi
     Uygulama kayıtlarınız, bu kiracıda farklı bir kullanıcı hesabı, kişisel/tüketici hesabı veya farklı bir kiracıda oluşturulmuş olabilir. Uygulama kayıtlarınızın oluşturulduğu kiracıda doğru hesapla oturum açtığınızdan emin olun.
 
 - **Multi-Factor Authentication ile ilgili bir hata alıyorum. Ne yapmam gerekir?** 
-    Lütfen [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) 'ın etkinleştirildiğinden ve bu senaryoya yönelik olarak oturum açmak için gerekli olduğundan emin olun. Örneğin, MFA şu şekilde olabilir:
+    Lütfen [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) 'ın etkinleştirildiğinden ve bu senaryoya yönelik olarak oturum açmak için **gerekli** olduğundan emin olun. Örneğin, MFA şu şekilde olabilir:
     - Oturum açarken kullandığınız kullanıcı için her zaman gereklidir
     - [Azure yönetimi Için gereklidir](../conditional-access/howto-conditional-access-policy-azure-management.md).
     - Oturum açarken kullandığınız [yönetici türü Için gereklidir](../conditional-access/howto-conditional-access-policy-admin-mfa.md) .
@@ -226,7 +226,9 @@ Bu özellik Microsoft tüketici hesaplarında desteklenmez. Yalnızca Azure AD k
 
 ### <a name="interactionrequired"></a>Interactionrequired
 
-Uygulamaya doğrulanmış bir yayımcı eklenmeye çalışmadan önce çok faktörlü kimlik doğrulaması gerçekleştirilmediğinde gerçekleşir. Daha fazla bilgi için bkz. [yaygın sorunlar](#common-issues) .
+Uygulamaya doğrulanmış bir yayımcı eklenmeye çalışmadan önce çok faktörlü kimlik doğrulaması gerçekleştirilmediğinde gerçekleşir. Daha fazla bilgi için bkz. [yaygın sorunlar](#common-issues) . Note: bir doğrulanmış yayımcı eklenmeye çalışılırken MFA aynı oturumda gerçekleştirilmelidir. MFA etkin ancak oturumda gerçekleştirilmesi gerekmiyorsa, istek başarısız olur.   
+
+Görüntülenecek hata iletisi: "yöneticiniz tarafından gerçekleştirilen bir yapılandırma değişikliği nedeniyle veya yeni bir konuma taşıdığınız için çok faktörlü kimlik doğrulaması kullanmanız gerekir."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

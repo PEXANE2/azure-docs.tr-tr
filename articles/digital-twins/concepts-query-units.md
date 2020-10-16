@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89067714"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044386"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure dijital TWINS 'de sorgu birimleri 
 
-Azure dijital TWINS **sorgu birimi (QU)** , [sorgu API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)'Sini kullanarak [Azure dijital TWINS sorgularınızı](how-to-query-graph.md) yürütmek için kullanılan isteğe bağlı bir hesaplama birimidir. 
+Azure dijital TWINS **sorgu birimi (QU)** , [sorgu API](/rest/api/digital-twins/dataplane/query)'Sini kullanarak [Azure dijital TWINS sorgularınızı](how-to-query-graph.md) yürütmek için kullanılan isteğe bağlı bir hesaplama birimidir. 
 
 Azure dijital TWINS tarafından desteklenen sorgu işlemlerini gerçekleştirmek için gereken CPU, ıOPS ve bellek gibi sistem kaynaklarını soyutlayıp bunun yerine sorgu birimlerindeki kullanımı izlemenize olanak sağlar.
 
@@ -28,7 +28,7 @@ Bu makalede sorgu birimlerinin nasıl anlaşılması ve sorgu birimi tüketimini
 
 ## <a name="find-the-query-unit-consumption-in-azure-digital-twins"></a>Azure dijital TWINS 'te sorgu birimi tüketimini bulma 
 
-Azure Digital TWINS [sorgu API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)'sini kullanarak bir sorgu çalıştırdığınızda, sorgunun tükettiği Qus sayısını izlemek için yanıt üst bilgisini inceleyebilirsiniz. Azure dijital TWINS 'den geri gönderilen yanıtta "sorgu ücreti" ni arayın. 
+Azure Digital TWINS [sorgu API](/rest/api/digital-twins/dataplane/query)'sini kullanarak bir sorgu çalıştırdığınızda, sorgunun tükettiği Qus sayısını izlemek için yanıt üst bilgisini inceleyebilirsiniz. Azure dijital TWINS 'den geri gönderilen yanıtta "sorgu ücreti" ni arayın. 
 
 Azure dijital TWINS [SDK 'ları](how-to-use-apis-sdks.md) , disk belleğine alınabilen yanıttan sorgu ücreti üst bilgisini ayıklamanızı sağlar. Bu bölümde, dijital TWINS sorgusunun nasıl sorgulanacağını ve sorgu ücreti üst bilgisini ayıklamak için disk belleğine alınabilen yanıtın nasıl yinelendirilecek gösterilmektedir. 
 
@@ -68,6 +68,6 @@ await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
 Azure dijital TWINS sorgulama hakkında daha fazla bilgi edinmek için şu adresi ziyaret edin:
 * [*Kavramlar: sorgu dili*](concepts-query-language.md)
 * [*Nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md)
-* [Sorgu API 'SI başvuru belgeleri](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query/querytwins)
+* [Sorgu API 'SI başvuru belgeleri](/rest/api/digital-twins/dataplane/query/querytwins)
 
 {1 & gt; Azure & lt; 1} sorgu ile ilgili sınırları [*genel önizlemede*](reference-service-limits.md)bulabilirsiniz.

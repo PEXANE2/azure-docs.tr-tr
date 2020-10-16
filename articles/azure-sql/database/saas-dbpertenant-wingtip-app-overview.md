@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: d291adcf53469825f32b664cb7f4ffdb0bbf244b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441026"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı bir SaaS uygulamasına giriş
@@ -40,7 +40,7 @@ Wingtip SaaS uygulaması, kiracı başına veritabanı modelini kullanır. Verim
 Uygulamayı dağıttıktan sonra, ilk dağıtımda derleme yapan aşağıdaki öğreticilere göz atın. Bu öğreticiler, SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) ve diğer Azure hizmetleri 'nin yerleşik özelliklerinden faydalanan yaygın SaaS düzenlerini keşfedebilir. Öğreticiler, ayrıntılı açıklamalar içeren PowerShell betikleri içerir. Açıklamalar, uygulamalarınızda aynı SaaS yönetimi desenlerinin anlaşılmasına ve uygulanmasını basitleştirir.
 
 
-| Öğretici | Description |
+| Öğretici | Açıklama |
 |:--|:--|
 | [SQL Database çok kiracılı SaaS uygulaması örneği için rehberlik ve ipuçları](saas-tenancy-wingtip-app-guidance-tips.md) | Uygulamanın bölümlerini hazırlamak için PowerShell betiklerini indirip çalıştırın. |
 |[Wingtip SaaS uygulamasını dağıtma ve araştırma](../../sql-database/saas-dbpertenant-get-started-deploy.md)|  Azure aboneliğiniz ile Wingtip SaaS uygulamasını dağıtın ve araştırın. |

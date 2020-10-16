@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
 ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115994"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Hesaplar ve kiracı profilleri (Android)
@@ -48,7 +48,7 @@ Microsoft Identity platformunda bir hesap aşağıdakilerden oluşur:
 - Bir hesap bir veya daha fazla kiracıda mevcut olabileceğinden, hesap birden fazla profile sahip olabilir.
 
 > [!NOTE]
-> MSAL, Microsoft hesabı sistemine (canlı, MSA) Microsoft Identity platform içinde başka bir kiracı olarak davranır. Microsoft hesabı kiracının Kiracı kimliği:`9188040d-6c67-4c5b-b112-36a304b66dad`
+> MSAL, Microsoft hesabı sistemine (canlı, MSA) Microsoft Identity platform içinde başka bir kiracı olarak davranır. Microsoft hesabı kiracının Kiracı kimliği: `9188040d-6c67-4c5b-b112-36a304b66dad`
 
 ## <a name="account-overview-diagram"></a>Hesaba genel bakış Diyagramı
 
@@ -58,12 +58,12 @@ Yukarıdaki diyagramda:
 
 - Hesap, Şirket `bob@contoso.com` Içi Windows Server Active Directory (kaynak şirket içi kayıt sisteminde) oluşturulur.
 - Hesap `tom@live.com` Microsoft hesabı kiracısında oluşturulur.
-- `bob@contoso.com`, aşağıdaki Azure Active Directory kiracılarda en az bir kaynağa erişebilir:
+- `bob@contoso.com` , aşağıdaki Azure Active Directory kiracılarda en az bir kaynağa erişebilir:
   - contoso.com (kaydın bulut sistemi-şirket içi kayıt sistemine bağlı)
   - fabrikam.com
   - woodgrovebank.com
   - `bob@contoso.com`Bu kiracıların her birinde için bir kiracı profili bulunur.
-- `tom@live.com`, aşağıdaki Microsoft kiracılarındaki kaynaklara erişebilir:
+- `tom@live.com` , aşağıdaki Microsoft kiracılarındaki kaynaklara erişebilir:
   - contoso.com
   - fabrikam.com
   - `tom@live.com`Bu kiracıların her birinde için bir kiracı profili bulunur.
@@ -99,13 +99,13 @@ Bir erişim belirteci istemenin yanı sıra, MSAL her bir kiracıdan bir KIMLIK 
 - OpenID
 - profil
 
-KIMLIK belirteci, taleplerin bir listesini içerir. `Claims`hesap hakkında ad/değer çiftleridir ve isteği yapmak için kullanılır.
+KIMLIK belirteci, taleplerin bir listesini içerir. `Claims` hesap hakkında ad/değer çiftleridir ve isteği yapmak için kullanılır.
 
 Daha önce belirtildiği gibi, bir hesabın mevcut olduğu her kiracı, hesap hakkında: iş unvanı, ofis konumu vb. dahil olmak üzere farklı bilgileri depolayabileceği, ancak bunlarla sınırlı olmamak üzere.
 
 Bir hesap birden fazla kuruluşta üye veya Konuk olabileceğinden, MSAL, hesabın üyesi olduğu kiracıların bir listesini almak üzere bir hizmeti sorgulayamaz. Bunun yerine, MSAL, yapılmış olan belirteç isteklerinin bir sonucu olarak hesabın bulunduğu kiracıların bir listesini oluşturur.
 
-Hesap nesnesi üzerinde sunulan talepler her zaman bir hesap için ' ana kiracı '/{Authority} ' deki taleplerdir. Bu hesap, ana kiracının bir belirtecini istemek için kullanılmıyorsa, MSAL hesap nesnesi aracılığıyla talep sağlayamaz.  Örnek:
+Hesap nesnesi üzerinde sunulan talepler her zaman bir hesap için ' ana kiracı '/{Authority} ' deki taleplerdir. Bu hesap, ana kiracının bir belirtecini istemek için kullanılmıyorsa, MSAL hesap nesnesi aracılığıyla talep sağlayamaz.  Örneğin:
 
 ```java
 // Psuedo Code
@@ -125,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Kiracı profili taleplerine erişin
 
-Başka kiracılarda göründüğü gibi bir hesap hakkındaki taleplere erişmek için, önce hesap nesnesini ' e atamalısınız `IMultiTenantAccount` . Tüm hesaplar çok kiracılı olabilir, ancak MSAL aracılığıyla kullanılabilir kiracı profillerinin sayısı, geçerli hesabı kullanarak belirteçleri istediğiniz kiracılara göre belirlenir.  Örnek:
+Başka kiracılarda göründüğü gibi bir hesap hakkındaki taleplere erişmek için, önce hesap nesnesini ' e atamalısınız `IMultiTenantAccount` . Tüm hesaplar çok kiracılı olabilir, ancak MSAL aracılığıyla kullanılabilir kiracı profillerinin sayısı, geçerli hesabı kullanarak belirteçleri istediğiniz kiracılara göre belirlenir.  Örneğin:
 
 ```java
 // Psuedo Code

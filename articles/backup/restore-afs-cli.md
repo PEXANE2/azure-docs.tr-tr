@@ -4,10 +4,10 @@ description: Azure CLı kullanarak kurtarma hizmetleri kasasındaki yedeklenen A
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: be744fdb79f442eaf0ef632952d9c0b9e709d908
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325020"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure CLı ile Azure dosya paylaşımlarını geri yükleme
@@ -27,11 +27,11 @@ Bu makalenin sonuna kadar, Azure CLı ile aşağıdaki işlemleri gerçekleştir
 
 CLI'yı yerel ortamda yüklemek ve kullanmak için Azure CLI sürüm 2.0.18 veya üzeri çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, zaten Azure Backup tarafından yedeklenen bir Azure dosya paylaşımınız olduğu varsayılır. Bir tane yoksa, dosya paylaşımınızla ilgili yedeklemeyi yapılandırmak için bkz. [CLI Ile Azure dosya paylaşımlarını](backup-afs-cli.md) yedekleme. Bu makalede aşağıdaki kaynakları kullanırsınız:
 
-| Dosya paylaşımı  | Depolama hesabı | Region | Ayrıntılar                                                      |
+| Dosya paylaşımı  | Depolama hesabı | Bölge | Ayrıntılar                                                      |
 | ----------- | --------------- | ------ | ------------------------------------------------------------ |
 | *azurefiles*  | *afsaccount*      | EastUS | Azure Backup kullanılarak Yedeklenen özgün kaynak                 |
 | *azurefiles1* | *afaccount1*      | EastUS | Alternatif konum kurtarma için kullanılan hedef kaynak |

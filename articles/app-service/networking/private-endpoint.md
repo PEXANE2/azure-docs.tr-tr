@@ -4,19 +4,22 @@ description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel 
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/07/2020
+ms.date: 10/09/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857274"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873107"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web App için özel uç noktaları kullanma
+
+> [!IMPORTANT]
+> Özel uç nokta bu App Service planlarında barındırılan, Kapsayıcılı veya olmayan Windows ve Linux Web uygulaması için kullanılabilir: **yalıtılmış**, **PremiumV2**, **PremiumV3**, **işlevler Premium** (bazen elastik Premium plan olarak adlandırılır). 
 
 Özel ağınızda bulunan istemcilerin uygulamaya özel bağlantı üzerinden güvenli bir şekilde erişmesini sağlamak için, Azure Web uygulamanız için özel uç nokta kullanabilirsiniz. Özel uç nokta, Azure VNet adres alanınızda bir IP adresi kullanır. Özel ağınızdaki bir istemci ile Web uygulaması arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel Internet 'ten etkilenme olasılığını ortadan kaldırır.
 
@@ -91,7 +94,7 @@ Oluşturmanız gereken DNS bölgesi: **Privatelink.azurewebsites.net**. Web uygu
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<--bu girişi, Özel uç nokta IP adresinizi işaret etmek üzere DNS sisteminizde yönetirsiniz|
 
-Bu DNS yapılandırmasından sonra, Web uygulamanıza mywebappname.azurewebsites.net varsayılan adıyla özel olarak ulaşabilirsiniz.
+Bu DNS yapılandırmasından sonra, Web uygulamanıza mywebappname.azurewebsites.net varsayılan adıyla özel olarak ulaşabilirsiniz. Varsayılan sertifika *. azurewebsites.net için verildiği için bu adı kullanmanız gerekir.
 
 
 Özel bir DNS adı kullanmanız gerekiyorsa, Web uygulamanıza özel adı eklemeniz gerekir. Özel ad, genel DNS çözümlemesi kullanılarak herhangi bir özel ad gibi doğrulanması gerekir. Daha fazla bilgi için bkz. [özel DNS doğrulaması][dnsvalidation].
@@ -115,9 +118,9 @@ Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda
 
 Belirli bir Web uygulamasına en fazla 100 özel uç nokta bağlayabilirsiniz.
 
-Web uygulaması için özel uç nokta etkinleştirildiğinde uzaktan hata ayıklama işlevselliği kullanılamaz. Bu öneri, kodu bir yuvaya dağıtmaktır ve burada uzaktan hata ayıklayın.
+Yuvalar özel uç nokta kullanamaz.
 
-Özel uç nokta PremiumV2, PremiumV3, Windows ve Linux Web uygulaması, Kapsayıcılı veya olmayan ve Azure Işlevleri Premium planı (bazen elastik Premium plan olarak adlandırılır) için kullanılabilir. 
+Web uygulaması için özel uç nokta etkinleştirildiğinde uzaktan hata ayıklama işlevselliği kullanılamaz. Bu öneri, kodu bir yuvaya dağıtmaktır ve burada uzaktan hata ayıklayın.
 
 Özel bağlantı özelliğini ve özel uç noktayı düzenli olarak geliştirdik, sınırlamalar hakkında güncel bilgiler için [Bu makaleye][pllimitations] bakın.
 

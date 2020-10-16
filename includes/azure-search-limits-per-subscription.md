@@ -8,10 +8,10 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80272960"
 ---
 Bir abonelik içinde birden çok hizmet oluşturabilirsiniz. Her biri, belirli bir katmanda sağlanabilir. Yalnızca her katmanda izin verilen hizmet sayısıyla sınırlı olursunuz. Örneğin, temel katmanda 12 ' ye kadar hizmet ve aynı abonelik içindeki S1 katmanında başka bir 12 hizmet oluşturabilirsiniz. Katmanlar hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için BIR SKU veya katman seçme](../articles/search/search-sku-tier.md).
@@ -21,7 +21,7 @@ Bir abonelik içinde birden çok hizmet oluşturabilirsiniz. Her biri, belirli b
 | Kaynak            | Ücretsiz<sup>1</sup> | Temel | S1  | S2 | S3 | S3 &nbsp; HD | L1 | L2 |
 | ------------------- | ---- | ----- | --- | -- | -- | ----- | -- | -- |
 | En yüksek hizmet    |1     | 16    | 16  | 8  | 6  | 6     | 6  | 6  |
-| Arama birimlerinde maksimum ölçek (SU)<sup>2</sup> |YOK |3 SU |36 SU |36 SU |36 SU |36 SU |36 SU |36 SU |
+| Arama birimlerinde maksimum ölçek (SU)<sup>2</sup> |Yok |3 SU |36 SU |36 SU |36 SU |36 SU |36 SU |36 SU |
 
 <sup>1</sup> boş, paylaşılan, adanmış olmayan kaynaklara dayalıdır. Paylaşılan kaynaklarda ölçek artırma desteklenmez.
 

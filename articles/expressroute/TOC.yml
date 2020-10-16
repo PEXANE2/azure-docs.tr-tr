@@ -4,7 +4,7 @@
   items:
     - name: ExpressRoute nedir?
       href: expressroute-introduction.md
-- name: Hızlı Başlangıç
+- name: Hızlı Başlangıçlar
   items:
     - name: ExpressRoute bağlantı hattı oluşturma - Portal
       href: expressroute-howto-circuit-portal-resource-manager.md

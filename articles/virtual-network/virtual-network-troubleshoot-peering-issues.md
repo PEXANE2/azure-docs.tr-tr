@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83587740"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Sanal ağ eşleme sorunlarını giderme
@@ -127,7 +127,7 @@ Bu sorunu gidermek için:
    1. Hedef VM 'de bir ağ izlemesi başlatın. Windows için **netsh**' i kullanabilirsiniz. Linux için **TCPDump**kullanın.
    2. Kaynaktan hedef IP 'ye **Tcing veya Psping** çalıştırın. **TcpPing**
 
-      Bu, bir **tcma** komutunun örneğidir:`tcping64.exe -t <destination VM address> 3389`
+      Bu, bir **tcma** komutunun örneğidir: `tcping64.exe -t <destination VM address> 3389`
 
    3. **Tcme** işlemi tamamlandıktan sonra, hedefteki ağ izlemesini durdurun.
    4. Paketler kaynaktan ulaştığında, ağ sorunu yoktur. Yapılandırma sorununun yerini bulmak için hem VM Güvenlik duvarını hem de bu bağlantı noktasını dinleyen uygulamayı inceleyin.
@@ -216,9 +216,9 @@ Bu sorunu gidermek için:
 1. Web uygulamasında **ağ**' ı seçin ve ardından **VNET tümleştirmesi**' ni seçin.
 1. Uzak sanal ağı görüp görmeyeceğinizi denetleyin. Uzak sanal ağ adres alanını el ile girin (**ağa eşitleyin** ve **yollar ekleyin**).
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Uygulamanızı bir Azure sanal ağıyla tümleştirin](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+* [Uygulamanızı bir Azure sanal ağı ile tümleştirme](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Noktadan Siteye VPN yönlendirme hakkında](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Sanal ağ eşleme yapılandırmasında sorun giderme hata iletisi 

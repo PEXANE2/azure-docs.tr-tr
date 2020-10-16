@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91265291"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996541"
 ---
 # <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
 
@@ -91,8 +91,8 @@ Kimlik koruması, kullanıcıların erişebilmeleri için bir güvenlik okuyucus
 | --- | --- | --- |
 | Genel yönetici | Kimlik korumasına tam erişim |   |
 | Güvenlik yöneticisi | Kimlik korumasına tam erişim | Kullanıcı parolasını sıfırlama |
-| Güvenlik operatörü | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin <br><br> Kullanıcı riskini kapatın, güvenli oturum açma 'yı onaylayın, güvenliği tehlikeye atabilir | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarı yapılandırma |
-| Güvenlik okuyucusu | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarı yapılandırma <br><br> Algılamalar hakkında geri bildirimde bulunun |
+| Güvenlik operatörü | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin <br><br> Kullanıcı riskini kapatın, güvenli oturum açma 'yı onaylayın, güvenliği tehlikeye atabilir | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarıları yapılandırma |
+| Güvenlik okuyucusu | Tüm kimlik koruması raporlarını ve genel bakış dikey penceresini görüntüleyin | İlkeleri yapılandırma veya değiştirme <br><br> Kullanıcı parolasını sıfırlama <br><br> Uyarıları yapılandırma <br><br> Algılamalar hakkında geri bildirimde bulunun |
 
 Şu anda güvenlik operatörü rolü riskli oturum açma işlemleri raporuna erişemez.
 
@@ -112,7 +112,9 @@ Koşullu erişim yöneticileri, bir koşul olarak oturum açma riskini gösteren
 | Güvenlik raporları | Risk algılamaları   | Hayır | Sınırlı bilgi| Tam erişim|
 | Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti  | Hayır | Hayır |Yes |
 | Bildirimler | Haftalık Özet| Hayır | Hayır | Yes | 
-| | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Hayır | Hayır | Evet |
+| | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Hayır | Hayır | Yes |
+
+Bu zengin raporlarla ilgili daha fazla bilgiyi makalesinde bulabilirsiniz [: riski araştırma](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

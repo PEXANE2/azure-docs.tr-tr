@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: surmb
 ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723325"
 ---
 # <a name="application-gateway-components"></a>Application Gateway bileşenleri
@@ -77,7 +77,7 @@ Daha fazla bilgi için bkz. [Application Gateway Için özel hata sayfaları](cu
 
 Bir dinleyici oluşturduktan sonra, bunu bir istek yönlendirme kuralıyla ilişkilendirirsiniz. Bu kural, dinleyicide alınan isteğin arka uca yönlendirilme şeklini belirler. İstek yönlendirme kuralı, yönlendirilmek üzere arka uç havuzunu ve arka uç bağlantı noktası, protokol, vb. olarak bahsedilen HTTP ayarını da içerir.
 
-## <a name="request-routing-rules"></a>İstek yönlendirme kuralları
+## <a name="request-routing-rules"></a>Yönlendirme kuralı isteme
 
 İstek yönlendirme kuralı, bir uygulama ağ geçidinin anahtar bileşenidir ve bu, trafiğin dinleyicide nasıl yönlendirileceğini belirler. Kural dinleyiciyi, arka uç sunucu havuzunu ve arka uç HTTP ayarlarını bağlar.
 

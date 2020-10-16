@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335509"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932643"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API içeri aktarma kısıtlamaları ve bilinen sorunlar
 
@@ -42,6 +42,7 @@ Openapı belgenizi içeri aktarırken hata alıyorsanız, önceden doğruladığ
 -   Güvenlik tanımları yok sayılır.
 -   API işlemleri için satır içi şema tanımları desteklenmez. Şema tanımları API kapsamında tanımlanır ve API işlemleri isteği veya Yanıt kapsamları içinde başvurulabilir.
 -   Tanımlı URL parametresinin URL şablonunun bir parçası olması gerekir.
+-   `server` nesne, API işlem düzeyinde desteklenmiyor.
 -   `Produces` bir API tarafından döndürülen MIME türlerini açıklayan anahtar sözcük desteklenmez. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>Openapı sürüm 2

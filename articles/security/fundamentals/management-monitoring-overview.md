@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395779"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure Güvenlik yönetimi ve izlemeye genel bakış
@@ -27,7 +27,7 @@ Bu makalede, Azure 'un Azure Cloud Services ve sanal makinelerin yönetimine ve 
 
 ## <a name="role-based-access-control"></a>Rol Tabanlı Access Control
 
-Rol tabanlı Access Control (RBAC), Azure kaynakları için ayrıntılı erişim yönetimi sağlar. RBAC kullanarak, kullanıcılara yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları erişim miktarını verebilirsiniz. RBAC Ayrıca kişilerin kuruluştan ayrıldıklarında, buluttaki kaynaklara erişiminin kaybedildiğinden emin olmanıza da yardımcı olabilir.
+Role-Based Access Control (RBAC), Azure kaynakları için ayrıntılı erişim yönetimi sağlar. RBAC kullanarak, kullanıcılara yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları erişim miktarını verebilirsiniz. RBAC Ayrıca kişilerin kuruluştan ayrıldıklarında, buluttaki kaynaklara erişiminin kaybedildiğinden emin olmanıza da yardımcı olabilir.
 
 Daha fazla bilgi edinin:
 

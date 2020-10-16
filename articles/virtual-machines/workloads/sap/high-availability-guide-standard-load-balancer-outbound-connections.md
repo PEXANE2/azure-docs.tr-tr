@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9d3ecae17ae14effe48f5a7a0ee3f73d3054a220
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836131"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961485"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -67,12 +67,12 @@ SAP dağıtımınız ortak uç noktalara giden bağlantı gerektirmiyorsa, ek ya
   * [Azure Güvenlik duvarına genel bakış](../../../firewall/overview.md)-Azure Güvenlik Duvarı 'na genel bakış
   * [Öğretici: Azure Güvenlik Duvarı 'Nı dağıtma ve yapılandırma](../../../firewall/tutorial-firewall-deploy-portal.md) -Azure güvenlik duvarını Azure Portal aracılığıyla yapılandırma yönergeleri
 * [Sanal ağlar-Kullanıcı tanımlı kurallar](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) -Azure yönlendirme kavramları ve kuralları  
-* [Güvenlik grupları hizmet etiketleri](../../../virtual-network/security-overview.md#service-tags) -hizmet etiketleriyle ağ güvenlik gruplarınızı ve güvenlik duvarı yapılandırmanızı basitleştirme
+* [Güvenlik grupları hizmet etiketleri](../../../virtual-network/network-security-groups-overview.md#service-tags) -hizmet etiketleriyle ağ güvenlik gruplarınızı ve güvenlik duvarı yapılandırmanızı basitleştirme
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>İnternet 'e giden bağlantılar için ek dış Azure Standart Load Balancer
 
 Ortak uç noktalara giden bağlantılara izin vermeden, genel uç noktalarına giden bağlantı sağlamak için bir seçenek, genel IP adresine sahip ikinci bir yük dengeleyici oluşturmak, VM 'Leri ikinci yük dengeleyicinin arka uç havuzuna eklemek ve yalnızca [giden kuralları](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)tanımlamak.  
-VM 'den giden çağrılar için erişilebilen genel uç noktalarını denetlemek için [ağ güvenlik grupları](../../../virtual-network/security-overview.md) 'nı kullanın.  
+VM 'den giden çağrılar için erişilebilen genel uç noktalarını denetlemek için [ağ güvenlik grupları](../../../virtual-network/network-security-groups-overview.md) 'nı kullanın.  
 Daha fazla bilgi için belge [giden bağlantılarında](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)Senaryo 2 ' ye bakın.  
 Yapılandırma şöyle görünür:  
 
@@ -81,11 +81,11 @@ Yapılandırma şöyle görünür:
 ### <a name="important-considerations"></a>Önemli noktalar
 
 - Ortak uç noktasına giden bağlantı sağlamak ve maliyeti iyileştirmek için aynı alt ağda birden fazla VM için ek bir genel Load Balancer kullanabilirsiniz  
-- VM 'lerden hangi ortak uç noktaların erişilebilir olduğunu denetlemek için [ağ güvenlik gruplarını](../../../virtual-network/security-overview.md) kullanın. Ağ güvenlik grubunu alt ağa ya da her bir VM 'ye atayabilirsiniz. Mümkün olduğunda, güvenlik kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/security-overview.md#service-tags) kullanın.  
+- VM 'lerden hangi ortak uç noktaların erişilebilir olduğunu denetlemek için [ağ güvenlik gruplarını](../../../virtual-network/network-security-groups-overview.md) kullanın. Ağ güvenlik grubunu alt ağa ya da her bir VM 'ye atayabilirsiniz. Mümkün olduğunda, güvenlik kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/network-security-groups-overview.md#service-tags) kullanın.  
 - Genel IP adresi ve giden kuralları olan Azure Standart yük dengeleyici, genel uç noktasına doğrudan erişim sağlar. Tüm giden trafiğin, denetim ve günlüğe kaydetme için merkezi kurumsal çözümle geçişini sağlamak üzere kurumsal güvenlik gereksinimleriniz varsa, bu senaryoya gereksinimi karşılamayabilir.  
 
 >[!TIP]
->Mümkün olduğunda, ağ güvenlik grubunun karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/security-overview.md#service-tags) kullanın. 
+>Mümkün olduğunda, ağ güvenlik grubunun karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/network-security-groups-overview.md#service-tags) kullanın. 
 
 ### <a name="deployment-steps"></a>Dağıtım adımları
 
@@ -117,7 +117,7 @@ Yapılandırma şöyle görünür:
 
    ![Genel IP ile Ikinci Load Balancer giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Azure ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [güvenlik grupları ](../../../virtual-network/security-overview.md). 
+   Azure ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [güvenlik grupları ](../../../virtual-network/network-security-groups-overview.md). 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>İnternet 'e giden bağlantılar için Azure Güvenlik Duvarı
 
@@ -137,7 +137,7 @@ Mimari şöyle görünür:
 - Şirket güvenlik duvarı çözümü Azure Güvenlik Duvarı değilse ve tüm giden trafiğin Merkezi şirket çözümüne geçmesine yönelik güvenlik gereksinimleriniz varsa, bu çözüm pratik olmayabilir.  
 
 >[!TIP]
->Mümkün olduğunda, Azure Güvenlik Duvarı kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/security-overview.md#service-tags) kullanın.  
+>Mümkün olduğunda, Azure Güvenlik Duvarı kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/network-security-groups-overview.md#service-tags) kullanın.  
 
 ### <a name="deployment-steps"></a>Dağıtım adımları
 
@@ -165,7 +165,7 @@ Mimari şöyle görünür:
    Güvenlik duvarı kuralı şöyle görünebilir: ![ Azure Güvenlik Duvarı ile giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM 'nizin alt ağından, **Myazurefirewall**özel IP 'Sinden Kullanıcı tanımlı yol oluşturun.
-   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Add (Ekle) seçeneğini belirleyin. 
+   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle’yi seçin. 
    1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0**. Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4**.  
    1. Kaydet
 
@@ -176,7 +176,7 @@ Azure Yönetim API 'SI genel uç noktasına pacemaker çağrılarına izin verme
 ### <a name="important-considerations"></a>Önemli noktalar
 
   - Zaten şirket proxy 'si varsa, giden çağrıları ortak uç noktalarına yönlendirebilir. Genel uç noktalarına giden çağrılar, kurumsal denetim noktası üzerinden yapılır.  
-  - Proxy yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve`https://login.microsoftonline.com`  
+  - Proxy yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve `https://login.microsoftonline.com`  
   - VM 'lerden ara sunucuya bir yol olduğundan emin olun  
   - Proxy yalnızca HTTP/HTTPS çağrılarını işleymeyecektir. Genel uç noktasına giden çağrıları farklı protokoller üzerinden (RFC gibi) yapmak için ek bir gereksinim varsa, alternatif çözüm gerekecektir  
   - Pacemaker kümesinde kararsızlığa engel olmak için ara sunucu çözümü yüksek oranda kullanılabilir olmalıdır  
@@ -224,7 +224,7 @@ Pacemaker 'ın Azure Yönetim API 'siyle iletişim kurmasına izin vermek için 
 
 Giden trafik üçüncü taraf güvenlik duvarı aracılığıyla yönlendirilmemişse:
 
-- Azure sınır Aracısı 'nı kullanıyorsanız, Güvenlik Duvarı yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve`https://login.microsoftonline.com`   
+- Azure sınır Aracısı 'nı kullanıyorsanız, Güvenlik Duvarı yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve `https://login.microsoftonline.com`   
 - SUSE 'un güncelleştirmeleri ve düzeltme eklerini uygulamak için Azure genel bulut güncelleştirme altyapısını kullanıyorsanız bkz. [Azure genel bulut güncelleştirme altyapısı 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>Sonraki adımlar

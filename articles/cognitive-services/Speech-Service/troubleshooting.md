@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74815422"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Konuşma SDK’sı sorunlarını giderme
@@ -29,7 +29,7 @@ Ayrıca, abonelik anahtarınız veya yetkilendirme belirtecinizle ilgili bir sor
 
 ## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Hata: HTTP 403 yasaklanmış veya HTTP 401 Yetkisiz
 
-Bu hata genellikle kimlik doğrulama sorunlarından kaynaklanır. Geçerli `Ocp-Apim-Subscription-Key` veya `Authorization` üst bilgi içermeyen bağlantı istekleri, 403 veya 401 durumuyla reddedilir.
+Bu hata genellikle kimlik doğrulama sorunlarından kaynaklanır. Geçerli `Ocp-Apim-Subscription-Key` veya üst bilgi içermeyen bağlantı istekleri `Authorization` , 403 veya 401 durumuyla reddedilir.
 
 * Kimlik doğrulaması için bir abonelik anahtarı kullanıyorsanız şu hata nedeniyle hatayı görebilirsiniz:
 
@@ -46,7 +46,7 @@ Bu hata genellikle kimlik doğrulama sorunlarından kaynaklanır. Geçerli `Ocp-
 Aşağıdaki komutlardan birini çalıştırarak geçerli bir abonelik anahtarınız olduğunu doğrulayabilirsiniz.
 
 > [!NOTE]
-> Ve `YOUR_SUBSCRIPTION_KEY` ' `YOUR_REGION` i kendi abonelik anahtarınızı ve ilişkili bölge ile değiştirin.
+> `YOUR_SUBSCRIPTION_KEY`Ve ' i `YOUR_REGION` kendi abonelik anahtarınızı ve ilişkili bölge ile değiştirin.
 
 * PowerShell
 
@@ -73,7 +73,7 @@ Geçerli bir abonelik anahtarı girdiyseniz, komut bir yetkilendirme belirteci d
 Kimlik doğrulaması için bir yetkilendirme belirteci kullanıyorsanız, yetkilendirme belirtecinin hala geçerli olduğunu doğrulamak için aşağıdaki komutlardan birini çalıştırın. Belirteçler 10 dakika için geçerlidir.
 
 > [!NOTE]
-> Önceden `YOUR_AUDIO_FILE` kaydedilmiş ses dosyasının yoluyla değiştirin. Önceki `YOUR_ACCESS_TOKEN` adımda döndürülen yetkilendirme belirteciyle değiştirin. Doğru `YOUR_REGION` bölge ile değiştirin.
+> Önceden `YOUR_AUDIO_FILE` kaydedilmiş ses dosyasının yoluyla değiştirin. `YOUR_ACCESS_TOKEN`Önceki adımda döndürülen yetkilendirme belirteciyle değiştirin. `YOUR_REGION`Doğru bölge ile değiştirin.
 
 * PowerShell
 
@@ -109,7 +109,7 @@ Geçerli bir yetkilendirme belirteci girdiyseniz, komut ses dosyanız için dök
 
 ## <a name="error-http-400-bad-request"></a>Hata: HTTP 400 Hatalı Istek
 
-Bu hata genellikle istek gövdesi geçersiz ses verileri içerdiğinde oluşur. Yalnızca WAV biçimi desteklenir. Ayrıca, ve `Content-Type` `Content-Length`için uygun değerleri belirttiğinizden emin olmak için isteğin üst bilgilerini denetleyin.
+Bu hata genellikle istek gövdesi geçersiz ses verileri içerdiğinde oluşur. Yalnızca WAV biçimi desteklenir. Ayrıca, ve için uygun değerleri belirttiğinizden emin olmak için isteğin üst bilgilerini denetleyin `Content-Type` `Content-Length` .
 
 ## <a name="error-http-408-request-timeout"></a>Hata: HTTP 408 Istek zaman aşımı
 
@@ -119,7 +119,7 @@ Büyük olasılıkla hata, hizmete hiçbir ses verisi gönderilmediğinden meyda
 
 Bu sorun genellikle ses verilerinden kaynaklanır. Şu hata nedeniyle karşılaşabilirsiniz:
 
-* Sesin başlangıcında sessizlik uzun bir şekilde uzatılacağınızdır. Bu durumda, hizmet birkaç saniye sonra tanımayı sonlandırır ve döndürür `InitialSilenceTimeout`.
+* Sesin başlangıcında sessizlik uzun bir şekilde uzatılacağınızdır. Bu durumda, hizmet birkaç saniye sonra tanımayı sonlandırır ve döndürür `InitialSilenceTimeout` .
 
 * Ses, ses verilerinin sessizlik olarak işlenmesine neden olan desteklenmeyen bir codec biçimi kullanır.
 

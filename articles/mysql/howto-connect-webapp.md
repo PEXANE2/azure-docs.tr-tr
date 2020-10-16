@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905844"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Mevcut bir Azure App Service MySQL sunucusu için Azure veritabanı 'na bağlama
 Bu konu, mevcut bir Azure App Service MySQL Server için Azure veritabanınıza nasıl bağlayabileceğinizi açıklamaktadır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-[Azure Portal](https://portal.azure.com) oturum açın. MySQL için Azure veritabanı sunucusu oluşturun. Ayrıntılar için [Portal 'Dan MySQL Için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md) veya [CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-cli.md)bölümüne bakın.
+[Azure portalında](https://portal.azure.com) oturum açın. MySQL için Azure veritabanı sunucusu oluşturun. Ayrıntılar için [Portal 'Dan MySQL Için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md) veya [CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-cli.md)bölümüne bakın.
 
 Şu anda bir Azure App Service erişimi bir MySQL için Azure veritabanı 'na etkinleştirmeye yönelik iki çözüm vardır. Her iki çözüm de sunucu düzeyinde güvenlik duvarı kurallarını ayarlamayı içerir.
 
@@ -29,18 +29,18 @@ MySQL için Azure veritabanı, verilerinizi korumak için bir güvenlik duvarı 
    :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure portal-bağlantı güvenliği ' ne tıklayın":::
 
 2. **Azure hizmetlerine erişime Izin ver**' in **üzerinde** seçim yapın, sonra **kaydedin**.
-   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure portal-Azure erişimine Izin ver":::
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure portal-bağlantı güvenliği ' ne tıklayın":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>Çözüm 2-giden IP 'Lere açıkça izin vermek için bir güvenlik duvarı kuralı oluşturma
 Azure App Service giden tüm IP 'lerini açık olarak ekleyebilirsiniz.
 
 1. App Service Özellikler dikey penceresinde **gıden IP adresinizi**görüntüleyin.
 
-   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure portal-giden IP 'Leri görüntüleme":::
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure portal-bağlantı güvenliği ' ne tıklayın":::
 
 2. MySQL bağlantısı güvenliği dikey penceresinde, giden IP 'Leri tek tek ekleyin.
 
-   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure portal-açık IP 'Leri ekleme":::
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure portal-bağlantı güvenliği ' ne tıklayın":::
 
 3. Güvenlik Duvarı kurallarınızı **kaydetmeyi** unutmayın.
 

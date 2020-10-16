@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306574"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
@@ -246,7 +246,7 @@ Bir erişim gözden geçirme ilkesi oluşturmak için aşağıdaki bilgilere sah
 | **Gözden geçirilecek kaynaklar**| Microsoft Dynamics 'e erişim |
 | **İnceleme sıklığı**| Aylık olarak |
 | **Kim tarafından incelenmektedir**| Dynamics iş grubu program yöneticileri |
-| **Bildirim**| Diğer ad Dynamics-PMS gözden geçirmesinden önce 24 saat e-posta<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
+| **Bildirim**| Diğer ada gözden geçirmesinden önce 24 saat e-posta Dynamics-Pms<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
 | **Zaman çizelgesi**| bildirimden 48 saat |
 |**Otomatik eylemler**| Kullanıcıları güvenlik grubundan Dynamics-Access ' ten kaldırarak 90 gün içinde etkileşimli oturum açma olmayan herhangi bir hesaptan erişimi kaldırın. <p>*Zaman çizelgesi içinde incelenmeyen eylemler gerçekleştirin.* |
 | **El ile gerçekleştirilen eylemler**| Gözden geçirenler, istenirse otomatik eylem öncesinde kaldırma onayı gerçekleştirebilir. |
@@ -361,7 +361,7 @@ Erişim gözden geçirmeleri, şirket içinde [Azure AD Connect](../hybrid/whati
 
 * Tamamlanan erişim Incelemelerdeki sonuçlara ve kararlara programlı bir şekilde erişmek için Microsoft Graph kullanma.
 
-Örneğin, Windows AD ile yönetilen bir grup için sonuçlara erişmek üzere bu [PowerShell örnek betiğini](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises)kullanın. Komut dosyası gerekli grafik çağrılarını özetler ve değişiklikleri yürütmek için Windows AD-PowerShell komutlarını dışarı aktarır.
+Örneğin, Windows AD ile yönetilen bir grup için sonuçlara erişmek üzere bu [PowerShell örnek betiğini](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises)kullanın. Betik, gerekli grafik çağrılarını özetler ve değişiklikleri yürütmek için Windows AD-PowerShell komutlarını dışarı aktarır.
 
 ## <a name="plan-access-reviews-for-applications"></a>Uygulamalar için erişim İncelemeleri planlayın 
 
@@ -419,7 +419,7 @@ Bir strateji ve Azure AD ile tümleştirilmiş kaynaklara erişimi gözden geçi
 
 Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin atamaları olan kullanıcıların düzenli olarak incelemelerine olanak sağlayabilir. Aşağıdaki bağlantıdaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Description |
+| Nasıl yapılır makaleleri| Açıklama |
 | - | - |
 | [Erişim Incelemeleri oluşturma](entitlement-management-access-reviews-create.md)| Erişim paketi incelemelerini etkinleştirin. |
 | [Erişim gözden geçirmeleri gerçekleştirin](entitlement-management-access-reviews-review-access.md)| Erişim paketine atanan diğer kullanıcılar için erişim gözden geçirmeleri gerçekleştirin. |
@@ -433,7 +433,7 @@ Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin ata
 
 Çalışanlar ve konuklar için gruplara ve uygulamalara erişim ihtiyacı büyük olasılıkla zaman içinde değişir. Yöneticiler, eski erişim atamalarıyla ilişkili riski azaltmak için Grup üyeleri veya uygulama erişimi için erişim İncelemeleri oluşturabilir. Aşağıdaki bağlantıdaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Description |
+| Nasıl yapılır makaleleri| Açıklama |
 | - | - |
 | [Erişim Incelemeleri oluşturma](create-access-review.md)| Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturun. |
 | [Erişim gözden geçirmeleri gerçekleştirin](perform-access-review.md)| Bir grubun veya bir uygulamaya erişimi olan kullanıcıların üyeleri için erişim gözden geçirmesi gerçekleştirin. |
@@ -450,7 +450,7 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure AD r
 
 Aşağıdaki bağlantılardaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri | Description |
+| Nasıl yapılır makaleleri | Açıklama |
 | - | - |
  [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure AD rolleri için erişim incelemeleri oluşturma |
 | [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
@@ -465,7 +465,7 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure Kayn
 
 Aşağıdaki bağlantılardaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Description |
+| Nasıl yapılır makaleleri| Açıklama |
 | - | -|
 | [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure Kaynak rolleri için erişim gözden geçirmeleri oluşturma |
 | [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |

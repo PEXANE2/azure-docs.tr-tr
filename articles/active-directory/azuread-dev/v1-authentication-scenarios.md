@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154738"
 ---
 # <a name="what-is-authentication"></a>Kimlik doğrulaması nedir?
@@ -119,7 +119,7 @@ Herhangi bir güvenlik belirtecindeki talepler belirteç türüne, kullanıcın�
 
 Aşağıdaki tabloda Azure AD tarafından düzenlenen talep türleri hakkında kısa açıklamalara yer verilmiştir. Daha ayrıntılı bilgi için bkz. Azure AD tarafından verilen [erişim belirteçleri](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) ve [Kimlik belirteçleri](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .
 
-| İste | Description |
+| İste | Açıklama |
 | --- | --- |
 | Uygulama Kimliği | Belirteci kullanan uygulamayı tanımlar. |
 | Hedef kitle | Belirtecin gönderileceği alıcı kaynağını tanımlar. |
@@ -136,7 +136,7 @@ Aşağıdaki tabloda Azure AD tarafından düzenlenen talep türleri hakkında k
 | Nesne Kimliği | Öznenin Azure AD'deki değişmez ve benzersiz tanıtıcısını içerir. |
 | Roller | Kullanıcıya verilmiş olan Azure AD Uygulama Rollerinin kolay adlarını içerir. |
 | Kapsam | İstemci uygulamasına verilmiş olan izinleri belirtir. |
-| Özne | Belirtecin bilgi verdiği sorumluyu belirtir. |
+| Konu | Belirtecin bilgi verdiği sorumluyu belirtir. |
 | Kiracı Kimliği | Belirteci düzenleyen dizin kiracısının değişmez ve benzersiz tanıtıcısını içerir. |
 | Belirteç Ömrü | Belirtecin geçerli olduğu zaman aralığını tanımlar. |
 | Kullanıcı Asıl Adı | Öznenin kullanıcı asıl adını içerir. |

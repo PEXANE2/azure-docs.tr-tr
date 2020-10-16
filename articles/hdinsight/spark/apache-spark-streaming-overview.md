@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086203"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark akışa genel bakış
@@ -71,7 +71,7 @@ StreamingContext örneği ile giriş kaynağınız için bir giriş DStream olu�
 val lines = ssc.textFileStream("/uploads/Test/")
 ```
 
-#### <a name="apply-transformations"></a>Dönüşümleri Uygula
+#### <a name="apply-transformations"></a>Dönüştürmeleri uygulama
 
 DStream 'e dönüşümler uygulayarak işlemi uygulayabilirsiniz. Bu uygulama, dosyadaki bir seferde bir metin satırı alır, her satırı sözcüklere böler. Ve sonra, her sözcüğün kaç kez göründüğünü saymak için bir eşlem azaltma örüntüsünün kullanımını kullanır.
 
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 Elde edilen çıktı aşağıdaki çıktı gibi görünür:
 
-| değer | time |
+| değer | saat |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -222,7 +222,7 @@ ssc.start()
 
 İlk dakika sonra, pencerede toplanan iki toplu işlem için altı giriş olan 12 girdi vardır.
 
-| değer | time |
+| değer | saat |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158

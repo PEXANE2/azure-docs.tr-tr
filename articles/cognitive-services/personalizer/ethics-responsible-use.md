@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132730"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Kişiselleştirici sorumlu uygulamasına ilişkin yönergeler
@@ -127,7 +127,7 @@ Aşağıda AI 'nin sorumlu uygulamalarına ilişkin tasarımın alanları verilm
 * Kişiselleştirici 'ın nasıl kullanıldığı, ne amaçla ve hangi verileri içeren kullanıcılarınız için net bir şekilde iletişim kurun.
 * Kişiselleştirici tarafından sonuçları yeniden oluşturmak için kullanılan modeller, öğrenme ilkeleri ve diğer veriler gibi arşiv bilgileri ve varlıklar.
 
-### <a name="transparency"></a>Saydamlık
+### <a name="transparency"></a>Şeffaflık
 *AI sistemleri*anlaşılabilir olmalıdır. Kişiselleştirici ile:
 
 * *Kullanıcılara içeriğin nasıl kişiselleştirilme hakkında bilgi verin.* Örneğin, kullanıcılarınıza `Why These Suggestions?` Kullanıcı ve eylemlerin, kişiselleştirici sonuçlarında bir rol oynadığı en iyi özellikleri gösteren bir düğme gösterebilirsiniz.
@@ -160,7 +160,7 @@ Aşağıda AI 'nin sorumlu uygulamalarına ilişkin tasarımın alanları verilm
 
 Bazı durumlarda, bunlar yasal olarak gerekli olabilir. Yeniden eğitim modellerindeki avantajları, silinen verilerin izlemelerini içermediğinden düzenli aralıklarla değerlendirin.
 
-### <a name="inclusiveness"></a>Her ikisi de
+### <a name="inclusiveness"></a>Kapsayıcılık
 *Çok çeşitli insan ihtiyaçlarını ve deneyimlerini ele*edin.
 * *Erişilebilirlik etkin arabirimler için kişiselleştirilmiş deneyimler sağlar.* Etkileşimlerde efor, taşıma ve gereksiz tekrarların miktarını azaltmak için iyi kişiselleştirmeden gelen verimlilik, özellikle Engelli kişiler için yararlı olabilir.
 * *Uygulama davranışını bağlam olarak ayarlayın*. Bir sohbet bot içindeki amaçlar arasında belirsizliği ortadan kaldırmak için kişiselleştirici kullanabilirsiniz; Örneğin, doğru yorum bağlamsal olabilir ve bir boyut tümüne uygun olmayabilir.
@@ -186,7 +186,7 @@ Uygulama yaşam döngüsünde, Kullanıcı deneyimi, güvenlik veya DevOps ile i
 
 ## <a name="questions-and-feedback"></a>Sorular ve geri bildirim
 
-Microsoft, bu sorumluluklar üzerinde işlem yapmanıza yardımcı olmak için sürekli olarak araçlara ve belgelere çaba yerleştiriliyor. Takımınız, ek araçlara, ürün özelliklerine ve belgelere, kişiselleştirici kullanımı için bu yönergeleri uygulamanıza yardımcı olduğunu düşünüyorsanız, [Microsoft 'a geri bildirim sağlamak](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) için sizi davet eder.
+Microsoft, bu sorumluluklar üzerinde işlem yapmanıza yardımcı olmak için sürekli olarak araçlara ve belgelere çaba yerleştiriliyor. Takımınız, ek araçlara, ürün özelliklerine ve belgelere, kişiselleştirici kullanımı için bu yönergeleri uygulamanıza yardımcı olduğunu düşünüyorsanız, [Microsoft 'a geri bildirim sağlamak](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D)  için sizi davet eder.
 
 ## <a name="recommended-reading"></a>Önerilen okuma
 

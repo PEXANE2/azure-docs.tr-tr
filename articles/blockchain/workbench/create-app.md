@@ -5,10 +5,10 @@ ms.date: 08/24/2020
 ms.topic: tutorial
 ms.reviewer: ravastra
 ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88784037"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Öğretici: Azure blok zinciri için blok zinciri uygulaması oluşturma çalışma ekranı
@@ -208,7 +208,7 @@ Yapılandırma dosyasının başlangıcında uygulama adı ve açıklaması dahi
 
 Uygulama rolleri bölümü, blok zinciri uygulamasına davranabilir veya katılabilen kullanıcı rollerini tanımlar. İşlevlere göre ayrı roller kümesi tanımlarsınız. İstek-yanıt senaryosunda, bir istek sahibinin işlevselliği, yanıtları üreten bir varlık olarak istek ve Yanıtlayıcı veren bir varlık olarak bir farklılık vardır.
 
-### <a name="workflows"></a>İş Akışları
+### <a name="workflows"></a>İş akışları
 
 İş akışları, sözleşmenin bir veya daha fazla aşamasını ve eylemini tanımlar. İstek-yanıt senaryosunda, iş akışının ilk aşaması (durum) bir istek sahibi (rol) istek (işlev) göndermek için bir eylem (geçiş) alır. Sonraki aşama (durum) bir yanıtlayanın (rol) yanıt göndermek için bir eylem (geçiş) alır (işlev). Bir uygulamanın iş akışı, bir sözleşmenin akışını betimleyen özellikleri, işlevleri ve durumları içerebilir.
 

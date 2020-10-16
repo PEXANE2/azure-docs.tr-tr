@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039050"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Azure Stream Analytics 'de yapılandırılabilir eşik tabanlı kuralları işleme
@@ -137,7 +137,7 @@ Bu örnek JSON verileri, yukarıdaki akış sorgusunda kullanılan **ölçüm** 
 - Üç örnek olay, 1 dakikalık TimeSpan değeri içinde listelenir `T14:50` . 
 - Üçü de aynı değere sahiptir `deviceId` `978648` .
 - CPU ölçüm değerleri, sırasıyla her olayda değişir `98` `95` `80` . Yalnızca ilk iki olay, kuralda belirlenen CPU uyarısı kuralını aşıyor.
-- Uyarı kuralındaki ıncludedim alanı 2 numaralı önemli sayıdır. Örnek olaylardaki karşılık gelen anahtar 2 alanı adı `NodeName` . Üç örnek olay, `N024` `N024` , ve sırasıyla değerleri vardır `N014` . Çıktıda yalnızca düğümü, `N024` yüksek CPU için uyarı ölçütleriyle eşleşen tek veri olarak görürsünüz. `N014`yüksek CPU eşiğini karşılamıyor.
+- Uyarı kuralındaki ıncludedim alanı 2 numaralı önemli sayıdır. Örnek olaylardaki karşılık gelen anahtar 2 alanı adı `NodeName` . Üç örnek olay, `N024` `N024` , ve sırasıyla değerleri vardır `N014` . Çıktıda yalnızca düğümü, `N024` yüksek CPU için uyarı ölçütleriyle eşleşen tek veri olarak görürsünüz. `N014` yüksek CPU eşiğini karşılamıyor.
 - Uyarı kuralı `filter` yalnızca, `cluster` örnek olaylardaki alana karşılık gelen anahtar numarası 2 ile yapılandırılır. Üç örnek olay hepsi değere sahiptir `C1` ve filtre ölçütlerine göre eşleşir.
 
 ```json

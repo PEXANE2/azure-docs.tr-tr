@@ -1,5 +1,6 @@
 ---
 title: Android için ADAL MSAL geçiş kılavuzu | Mavisi
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) Android uygulamanızı Microsoft kimlik doğrulama kitaplığı 'na (MSAL) geçirmeyi öğrenin.
 services: active-directory
 author: mmacy
@@ -9,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
-ms.date: 09/6/2019
+ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77084061"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074677"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android için ADAL MSAL geçiş kılavuzu
 
@@ -31,7 +32,7 @@ ADAL Azure Active Directory v 1.0 uç noktasıyla birlikte çalışmaktadır. Mi
 Desteklememektedir
   - Kuruluş kimliği (Azure Active Directory)
   - Outlook.com, Xbox Live ve benzeri kurumsal olmayan kimlikler
-  - (Yalnızca B2C) Google, Facebook, Twitter ve Amazon ile Federasyon oturum açma
+  - (Yalnızca Azure AD B2C) Google, Facebook, Twitter ve Amazon ile Federasyon oturum açma
 
 - , İle uyumlu standartlara sahiptir:
   - OAuth v 2.0
@@ -67,7 +68,7 @@ Portalda uygulamanızın kaydında bir **API izinleri** sekmesi görürsünüz. 
 
 ### <a name="user-consent"></a>Kullanıcı onayı
 
-ADAL ve AAD v1 uç noktası ile, kendilerine ait oldukları kaynaklara yönelik kullanıcı onayı ilk kullanım için verilir. MSAL ve Microsoft Identity platformu ile, izin artımlı olarak istenebilir. Artımlı onay, bir kullanıcının yüksek ayrıcalığa göz önünde bulundurabilecek izinler için yararlıdır veya iznin neden gerekli olduğuna ilişkin açık bir açıklama ile sağlanmayan durumlarda soru alabilir. ADAL 'da, bu izinler kullanıcının uygulamanızda oturum açmasını terk ediyor olabilir.
+ADAL ve Azure AD v1 uç noktası ile, kendilerine ait oldukları kaynaklara yönelik kullanıcı onayı ilk kullanım için verilir. MSAL ve Microsoft Identity platformu ile, izin artımlı olarak istenebilir. Artımlı onay, bir kullanıcının yüksek ayrıcalığa göz önünde bulundurabilecek izinler için yararlıdır veya iznin neden gerekli olduğuna ilişkin açık bir açıklama ile sağlanmayan durumlarda soru alabilir. ADAL 'da, bu izinler kullanıcının uygulamanızda oturum açmasını terk ediyor olabilir.
 
 > [!TIP]
 > Uygulamanıza izin gereksinimi hakkında daha fazla bağlam sağlamanız gereken senaryolarda artımlı izin kullanımını öneririz.
@@ -146,7 +147,7 @@ Bir banka hesabı değerlendirin. Birden fazla mali kurum üzerinde birden fazla
 
 Benzerleme vurguladı tarafından finansal bir kurumdaki hesaplar gibi, Microsoft Identity platformunda hesaplara kimlik bilgileri kullanılarak erişilir. Bu kimlik bilgileri, Microsoft tarafından kaydedilir veya tarafından verilir. Ya da bir kuruluş adına Microsoft tarafından.
 
-Microsoft Identity platformunun bir mali kuruluştan farklı olduğu durumlarda, bu benzerleme vurguladı Microsoft Identity platformunun, bir kullanıcının birden çok kişiye ve kuruluşa ait kaynaklara erişmek için bir hesap ve ilgili kimlik bilgilerini kullanmasına izin veren bir çerçeve sunmasına olanak tanır. Bu, henüz başka bir mali kurumda bir banka tarafından verilen kartı kullanabiliyor gibidir. Bu, söz konusu tüm kuruluşların, bir hesabın birden çok kuruluşta kullanılmasına izin veren Microsoft Identity platformunu kullandığından, bu işe yarar. Aşağıda bir örnek verilmiştir:
+Microsoft Identity platformunun bir mali kuruluştan farklı olduğu durumlarda, bu benzerleme vurguladı Microsoft Identity platformunun, bir kullanıcının birden çok kişiye ve kuruluşa ait kaynaklara erişmek için bir hesap ve ilgili kimlik bilgilerini kullanmasına izin veren bir çerçeve sunmasına olanak tanır. Bu, henüz başka bir mali kurumda bir banka tarafından verilen kartı kullanabiliyor gibidir. Bu, söz konusu tüm kuruluşların, bir hesabın birden çok kuruluşta kullanılmasına izin veren Microsoft Identity platformunu kullandığından, bu işe yarar. İşte bir örnek:
 
 Sam, Contoso.com için geçerlidir ancak Fabrikam.com 'e ait olan Azure sanal makinelerini yönetir. Sam 'nin fabrikam 'ın sanal makinelerini yönetmesi için onlara erişim yetkisi olması gerekir. Bu erişim, Sam hesabı Fabrikam.com 'ye eklenerek ve hesabına sanal makinelerle çalışmasına izin veren bir rol verilerek verilebilir. Bu işlem Azure portal yapılır.
 
@@ -229,8 +230,6 @@ public interface SilentAuthenticationCallback {
      */
     void onError(final MsalException exception);
 }
-
-
 ```
 
 ## <a name="migrate-to-the-new-exceptions"></a>Yeni özel durumlara geçiş yap
@@ -238,21 +237,29 @@ public interface SilentAuthenticationCallback {
 ADAL içinde, `AuthenticationException` sabit listesi değerini alma yöntemi içeren bir tür özel durum vardır `ADALError` .
 MSAL ' de, özel durumların bir hiyerarşisi vardır ve her biri kendi ilişkili özel hata kodları kümesine sahiptir.
 
-MSAL özel durumlarının listesi
+| Özel durum                                        | Description                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `MsalArgumentException`                          | Bir veya daha fazla giriş bağımsız değişkeni geçersiz ise oluşturulur.                 |
+| `MsalClientException`                            | Hata istemci tarafı ise oluşturulur.                                 |
+| `MsalDeclinedScopeException`                     | Bir veya daha fazla istenen kapsam sunucu tarafından reddedildiyse oluşturulur. |
+| `MsalException`                                  | MSAL tarafından oluşturulan varsayılan özel durum.                           |
+| `MsalIntuneAppProtectionPolicyRequiredException` | Kaynakta MAMCA koruma ilkesi etkinse oluşturulur.         |
+| `MsalServiceException`                           | Hata sunucu tarafında ise oluşturulur.                                 |
+| `MsalUiRequiredException`                        | Belirteç sessizce yenilenmezse oluşturulur.                    |
+| `MsalUserCancelException`                        | Kullanıcı kimlik doğrulama akışını iptal edildiyse oluşturulur.                |
 
-|Özel durum  | Açıklama  |
-|---------|---------|
-| `MsalException`     | MSAL tarafından oluşturulan varsayılan özel durum.  |
-| `MsalClientException`     | Hata istemci tarafı ise oluşturulur. |
-| `MsalArgumentException`     | Bir veya daha fazla giriş bağımsız değişkeni geçersiz ise oluşturulur. |
-| `MsalClientException`     | Hata istemci tarafı ise oluşturulur. |
-| `MsalServiceException`     | Hata sunucu tarafında ise oluşturulur. |
-| `MsalUserCancelException`     | Kullanıcı kimlik doğrulama akışını iptal edildiyse oluşturulur.  |
-| `MsalUiRequiredException`     | Belirteç sessizce yenilenmezse oluşturulur.  |
-| `MsalDeclinedScopeException`     | Bir veya daha fazla istenen kapsam sunucu tarafından reddedildiyse oluşturulur.  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | Kaynakta MAMCA koruma ilkesi etkinse oluşturulur. |
+### <a name="adalerror-to-msalexception-translation"></a>MsalException çevirisine ADALError hatası
 
-### <a name="adalerror-to-msalexception-errorcode"></a>MsalException hata kodu ile ADALError
+| Bu hataları ADAL içinde yakalamak istiyorsanız...  | ... Bu MSAL özel durumlarını yakala:                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| *Denk bir ADALError yok* | `MsalArgumentException`                          |
+| <ul><li>`ADALError.ANDROIDKEYSTORE_FAILED`<li>`ADALError.AUTH_FAILED_USER_MISMATCH`<li>`ADALError.DECRYPTION_FAILED`<li>`ADALError.DEVELOPER_AUTHORITY_CAN_NOT_BE_VALIDED`<li>`ADALError.EVELOPER_AUTHORITY_IS_NOT_VALID_INSTANCE`<li>`ADALError.DEVELOPER_AUTHORITY_IS_NOT_VALID_URL`<li>`ADALError.DEVICE_CONNECTION_IS_NOT_AVAILABLE`<li>`ADALError.DEVICE_NO_SUCH_ALGORITHM`<li>`ADALError.ENCODING_IS_NOT_SUPPORTED`<li>`ADALError.ENCRYPTION_ERROR`<li>`ADALError.IO_EXCEPTION`<li>`ADALError.JSON_PARSE_ERROR`<li>`ADALError.NO_NETWORK_CONNECTION_POWER_OPTIMIZATION`<li>`ADALError.SOCKET_TIMEOUT_EXCEPTION`</ul> | `MsalClientException`                            |
+| *Denk bir ADALError yok* | `MsalDeclinedScopeException`                     |
+| <ul><li>`ADALError.APP_PACKAGE_NAME_NOT_FOUND`<li>`ADALError.BROKER_APP_VERIFICATION_FAILED`<li>`ADALError.PACKAGE_NAME_NOT_FOUND`</ul> | `MsalException`                                  |
+| *Denk bir ADALError yok* | `MsalIntuneAppProtectionPolicyRequiredException` |
+| <ul><li>`ADALError.SERVER_ERROR`<li>`ADALError.SERVER_INVALID_REQUEST`</ul> | `MsalServiceException`                           |
+| <ul><li>`ADALError.AUTH_REFRESH_FAILED_PROMPT_NOT_ALLOWED` | `MsalUiRequiredException`</ul>                        |
+| *Denk bir ADALError yok* | `MsalUserCancelException`                        |
 
 ### <a name="adal-logging-to-msal-logging"></a>ADAL günlüğü MSAL günlüğe kaydediliyor
 

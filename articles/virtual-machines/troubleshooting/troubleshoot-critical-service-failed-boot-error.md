@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129864"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekranda "KRITIK HIZMET başarısız oldu" olarak gösterilir
@@ -117,7 +117,7 @@ Döküm günlüklerini kendiniz çözümlemek için aşağıdaki adımları izle
 3. **Kayıt defteri Düzenleyicisi 'ni** (regedit.exe) başlatın.
 4. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüde **Dosya**  >  **yükleme Hive**' yi seçin.
 5. Eklediğiniz işletim sistemi diskinde **\Windows\system32\config\system** klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir.
-6. **\ Brokensystem\controlset00x\control\crashcontrol HKEY_LOCAL_MACHINE** göz atın ve aşağıdaki değişiklikleri yapın:
+6. **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** gidin ve aşağıdaki değişiklikleri yapın:
 
     Oto yeniden başlatma = 0
 

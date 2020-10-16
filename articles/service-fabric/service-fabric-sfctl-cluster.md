@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259974"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -42,7 +42,7 @@ Service Fabric kümesinde sağlanan doku kodu sürümlerinin bir listesini alır
 
 Kümede sağlanan yapı kodu sürümleri hakkındaki bilgilerin listesini alır. CodeVersion parametresi, isteğe bağlı olarak çıktıyı yalnızca belirli bir sürüme filtrelemek için kullanılabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -64,7 +64,7 @@ Service Fabric kümesinde sağlanan yapı yapılandırma sürümlerinin bir list
 
 Kümede sağlanan Fabric yapılandırma sürümleri hakkındaki bilgilerin listesini alır. ConfigVersion parametresi, çıktıyı isteğe bağlı olarak yalnızca belirli bir sürüme filtrelemek için kullanılabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -86,7 +86,7 @@ Service Fabric kümesinin sistem durumunu alır.
 
 Kümede bildirilen sistem durumu olaylarının toplanmasını sistem durumuna göre filtrelemek için EventsHealthStateFilter ' i kullanın. Benzer şekilde, toplanan sistem durumlarına göre döndürülen düğümlerin ve uygulamaların koleksiyonunu filtrelemek için NodesHealthStateFilter ve ApplicationsHealthStateFilter ' ı kullanın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -112,7 +112,7 @@ Service Fabric küme bildirimini alın.
 
 Service Fabric küme bildirimini alın. Küme bildirimi, küme üzerinde farklı düğüm türleri, güvenlik yapılandırması, hata ve yükseltme etki alanı topolojileri vb. dahil olmak üzere kümenin özelliklerini içerir. Bu özellikler, tek başına bir küme dağıtıldığında dosyanın ClusterConfig.JSbir parçası olarak belirtilir. Ancak, küme bildirimindeki bilgilerin çoğu, diğer dağıtım senaryolarında (örn. Azure portal kullanılırken) küme dağıtımı sırasında Service Fabric tarafından dahili olarak oluşturulur. Küme bildiriminin içeriği yalnızca bilgilendirme amaçlıdır ve kullanıcıların dosya içerikleri veya yorumu için bir bağımlılığı olması beklenmez.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -131,9 +131,9 @@ Service Fabric küme bildirimini alın. Küme bildirimi, küme üzerinde farklı
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl küme işlemi-iptal
 Kullanıcı tarafından alınmış bir hata işlemini iptal eder.
 
-Aşağıdaki API 'Ler CancelOperation \: startdataloss, Startquorumkaybetme, StartPartitionRestart, StartNodeTransition kullanılarak iptal edilmiş olabilecek hata işlemlerini başlatır. Zorla false ise, belirtilen kullanıcı tarafından alınmış işlem düzgün şekilde durdurulur ve temizlenir.  Zorla true ise, komut iptal edilir ve bazı iç durum arka planda kalabilir.  Doğru olarak zorla belirtilmesi, dikkatli kullanılmalıdır. Bu API, zorla değeri false olarak ayarlanmış olan aynı test komutunda zaten çağrılmadıkça veya test komutunun OperationState. RollingBack öğesinin OperationState 'i zaten mevcut değilse, bu API 'yi true olarak ayarla özelliği true olarak ayarlanmalıdır. Açıklama \: operationstate. RollingBack, sistemin, komut yürütülerek oluşan iç sistem durumunu temizleyebileceği anlamına gelir.  Sınama komutu veri kaybına neden olduysa, verileri geri yükleme işlemi olmayacaktır.  Örneğin, StartDataLoss 'yi çağırırsanız bu API 'yi çağırırsanız, sistem yalnızca komutu çalıştırmadan iç durumu temizler. Komut, veri kaybına neden olacak kadar ilerlemedi, hedef bölümün verilerini geri yükler. Önemli Note \: Bu API zorla = = true ile çağrılırsa iç durum arkasında kalabilir.
+Aşağıdaki API 'Ler CancelOperation \: startdataloss, Startquorumkaybetme, StartPartitionRestart, StartNodeTransition kullanılarak iptal edilmiş olabilecek hata işlemlerini başlatır. Zorla false ise, belirtilen kullanıcı tarafından alınmış işlem düzgün şekilde durdurulur ve temizlenir.  Zorla true ise, komut iptal edilir ve bazı iç durum arka planda kalabilir.  Doğru olarak zorla belirtilmesi, dikkatli kullanılmalıdır. Bu API, zorla değeri false olarak ayarlanmış olan aynı test komutunda zaten çağrılmadıkça veya test komutunun OperationState. RollingBack öğesinin OperationState 'i zaten mevcut değilse, bu API 'yi true olarak ayarla özelliği true olarak ayarlanmalıdır. Açıklama \: operationstate. RollingBack, sistemin, komut yürütülerek oluşan iç sistem durumunu temizleyebileceği anlamına gelir.  Sınama komutu veri kaybına neden olduysa, verileri geri yükleme işlemi olmayacaktır.  Örneğin, StartDataLoss 'yi çağırırsanız bu API 'yi çağırırsanız, sistem yalnızca komutu çalıştırmadan iç durumu temizler. Komut, veri kaybına neden olacak kadar ilerlemedi, hedef bölümün verilerini geri yükler. Önemli Note \:  Bu API zorla = = true ile çağrılırsa iç durum arkasında kalabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -156,7 +156,7 @@ Belirtilen girişe göre filtrelenmiş Kullanıcı tarafından gerçekleştirile
 
 Belirtilen girişe göre filtrelenmiş Kullanıcı tarafından gerçekleştirilen hata işlemlerinin listesini alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -179,7 +179,7 @@ Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlayın.
 
 Service Fabric kümesinin kodunu veya yapılandırma paketlerini doğrulayın ve sağlayın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -202,7 +202,7 @@ Service Fabric kümesine, şu anda yetersayı kaybından takılı olan sistem hi
 
 Service Fabric kümesine, şu anda yetersayı kaybından takılı olan sistem hizmetlerini kurtarmaya çalışılması gerektiğini gösterir. Bu işlem yalnızca, alt kopyaların kurtarılamamış olduğu biliniyorsa gerçekleştirilmelidir. Bu API 'nin yanlış kullanımı olası veri kaybına neden olabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -223,7 +223,7 @@ Service Fabric kümesinde bir sistem durumu raporu gönderir.
 
 Service Fabric kümesinde bir sistem durumu raporu gönderir. Rapor, sistem durumu raporunun ve rapor alındığı özelliğin kaynağı hakkında bilgi içermelidir. Rapor, sistem durumu deposuna ileten bir Service Fabric ağ geçidi düğümüne gönderilir. Rapor, ağ geçidi tarafından kabul edilebilir, ancak ek doğrulamadan sonra sistem durumu deposu tarafından reddedildi. Örneğin, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle sistem durumu deposu raporu reddedebilir. Raporun sistem durumu deposuna uygulanıp uygulanmadığını görmek için GetClusterHealth ' ı çalıştırın ve raporun HealthEvents bölümünde görünüp görüntülenmediğini denetleyin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -252,7 +252,7 @@ Service Fabric küme uç noktasına bağlanır.
 
 Güvenli kümeye bağlanıyorsanız, bir sertifika (. CRT) ve anahtar dosyası (. Key) için mutlak bir yol veya hem (. ped) ile tek bir dosya belirtin. Her ikisini de belirtmeyin. İsteğe bağlı olarak, güvenli bir kümeye bağlanıyorsanız, CA paket dosyası veya güvenilir CA sertifikaları dizini için mutlak bir yol da belirtin.  Localhost bağlantısı da dahil olmak üzere, önce bu komutu çalıştırmadan bir kümeye bağlantı yoktur. Ancak, yerel bir kümeye bağlanmak için açık uç nokta gerekmez.  Otomatik olarak imzalanan bir sertifika veya iyi bilinen bir CA tarafından imzalanmamış diğer bir sertifika kullanılıyorsa, doğrulamanın başarılı olmasını sağlamak için--CA parametresini geçirin. Bir üretim kümesinde yoksa, istemci tarafı doğrulamayı atlamak için (kendinden imzalı veya iyi bilinen CA imzalı için yararlıdır),--No-Verify seçeneğini kullanın. Mümkün olsa da, üretim kümeleri için önerilmez. Sertifika doğrulama hatası, aksi takdirde oluşabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -292,7 +292,7 @@ Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlamayı kal
 
 Kod ve yapılandırmanın ayrı ayrı sağlanması desteklenir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -315,7 +315,7 @@ Service Fabric kümesinin kodunu veya yapılandırma sürümünü yükseltmeye b
 
 Sağlanan yükseltme parametrelerini doğrulayın ve parametreler geçerliyse Service Fabric kümesinin kodunu veya yapılandırma sürümünü yükseltmeye başlayın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -355,7 +355,7 @@ Küme yükseltmesini bir sonraki yükseltme etki alanına geçiş yapın.
 
 Uygunsa, küme kodunu veya yapılandırma yükseltmesini bir sonraki yükseltme etki alanına taşımayı unutmayın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -377,7 +377,7 @@ Service Fabric kümesinin yükseltmesini geri alma.
 
 Service Fabric kümesinin kodunu veya yapılandırma yükseltmesini geri alın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -398,7 +398,7 @@ Geçerli küme yükseltmesinin ilerlemesini alır.
 
 Devam eden küme yükseltmesinin geçerli ilerlemesini alır. Şu anda devam eden bir yükseltme yoksa, önceki küme yükseltmesinin son durumunu alın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -417,7 +417,7 @@ Devam eden küme yükseltmesinin geçerli ilerlemesini alır. Şu anda devam ede
 ## <a name="sfctl-cluster-upgrade-update"></a>sfctl küme yükseltmesi-güncelleştirme
 Service Fabric küme yükseltmesinin yükseltme parametrelerini güncelleştirin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

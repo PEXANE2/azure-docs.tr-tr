@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360795"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için yedekleme ve geri yükleme
@@ -31,7 +31,7 @@ Bu makalenin ilk bölümü, kullanılabilir yedekleme ve geri yükleme seçenekl
 
 Aşağıdaki tabloda, Azure VM 'lerinde SQL Server yönelik çeşitli yedekleme ve geri yükleme seçenekleri hakkında bilgi verilmektedir:
 
-| Strateji | SQL sürümleri | Description |
+| Strateji | SQL sürümleri | Açıklama |
 |---|---|---|
 | [Otomatik Yedekleme](#automated) | 2014<br/> 2016<br/> 2017 | Otomatik yedekleme, bir SQL Server VM tüm veritabanları için düzenli yedeklemeler zamanlamanıza olanak sağlar. Yedeklemeler, 30 güne kadar Azure Storage 'da depolanır. SQL Server 2016 ' den başlayarak otomatik yedekleme v2, el ile zamanlamayı yapılandırma ve tam ve günlük yedeklemeleri sıklığı gibi ek seçenekler sunar. |
 | [SQL VM'leri için Azure Backup](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup, Azure VM 'lerinde SQL Server için kurumsal sınıf yedekleme yeteneği sağlar. Bu hizmetle, birden çok sunucu ve binlerce veritabanı için yedeklemeleri merkezi olarak yönetebilirsiniz. Veritabanları portalda belirli bir zaman noktasına geri yüklenebilir. Yıllarca yedeklemeleri koruyasağlayan özelleştirilebilir bir bekletme ilkesi sunar. |
@@ -104,7 +104,7 @@ SQL Server 2012 SP1 CU2 UYGULAMAZSANıZ ' den başlayarak, URL 'ye yedekleme ola
 | 2016 geliştirmesi | Ayrıntılar |
 | --- | --- |
 | **Erit** |Microsoft Azure Blob depolama alanına yedeklerken, SQL Server 2016, büyük veritabanlarının yedeklenmesini etkinleştirmek için en fazla 12,8 TB 'a kadar birden çok blob 'a yedeklemeyi destekler. |
-| **Anlık görüntü yedeklemesi** |SQL Server dosya-anlık görüntü yedeklemesi Azure anlık görüntülerini kullanarak Azure Blob Storage hizmeti kullanılarak depolanan veritabanı dosyaları için neredeyse anlık yedeklemeler ve hızlı geri yüklemeler sağlar. Bu özellik, yedekleme ve geri yükleme ilkelerinizi basitleştirmenizi sağlar. Dosya anlık görüntüsü yedeklemesi, zaman içinde geri yükleme noktasını da destekler. Daha fazla bilgi için bkz. [Azure 'Da veritabanı dosyaları Için anlık görüntü yedeklemeleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure). |
+| **Anlık görüntü yedeklemesi** |Azure anlık görüntülerinin kullanımı ile SQL Server File-Snapshot yedekleme, Azure Blob depolama hizmeti kullanılarak depolanan veritabanı dosyaları için neredeyse anlık yedeklemeler ve hızlı geri yüklemeler sağlar. Bu özellik, yedekleme ve geri yükleme ilkelerinizi basitleştirmenizi sağlar. Dosya anlık görüntüsü yedeklemesi, zaman içinde geri yükleme noktasını da destekler. Daha fazla bilgi için bkz. [Azure 'Da veritabanı dosyaları Için anlık görüntü yedeklemeleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure). |
 
 Daha fazla bilgi için, SQL Server sürümünüze bağlı olarak aşağıdaki makalelerden birine bakın:
 

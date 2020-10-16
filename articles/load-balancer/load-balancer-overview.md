@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a397a67c0e40de8be1d42ee56618357cf36c55f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299210"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017735"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -80,10 +80,8 @@ Temel Load Balancer ücretsiz olarak sunulur.
 RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) sayfasında en son Azure Load Balancer Özellik güncelleştirmelerini görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Temel Load Balancer Standart Load Balancer sürümüne yükseltmek için bkz. [temel Load Balancer yükseltme](upgrade-basic-standard.md) .
 
-Load Balancer kullanmaya başlamak için bkz. [genel standart Load Balancer oluşturma](quickstart-load-balancer-standard-public-portal.md) .
+Yük dengeleyici kullanmaya başlamak için bkz. [Genel Standart yük dengeleyici oluşturma](quickstart-load-balancer-standard-public-portal.md) .
 
 Azure Load Balancer sınırlamaları ve bileşenleri hakkında daha fazla bilgi için bkz. [Azure Load Balancer bileşenler](./components.md) ve [Azure Load Balancer kavramları](./concepts.md)
 
-Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).

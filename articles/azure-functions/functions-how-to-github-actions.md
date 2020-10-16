@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 48482658fdabc3e826b6855c500829a16c166749
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: 3f35a8130c834112961f4542883704c2b8dbd08f
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91851127"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999249"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -32,6 +32,18 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 > [!NOTE]
 > Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
 
+## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>Yayımlama profilini dağıtım kimlik bilgileri olarak indirme ve kullanma (önerilir)
+
+İşlev uygulamanızın yayımlama profilini indirmek için:
+
+1. İşlev uygulamasının **genel bakış** sayfasını seçin ve ardından **Yayımlama profili al**' ı seçin.
+
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Yayımlama profilini indir":::
+
+1. Yayımlama ayarları dosyasının içeriğini kaydedin ve kopyalayın.
+
+## <a name="create-a-service-principal-deprecated"></a>Hizmet sorumlusu oluşturma (kullanım dışı)
+=======
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
@@ -44,7 +56,8 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 
 GitHub eylemleri için Azure Işlevleri ile kimlik doğrulaması yapmak için önerilen yol, bir yayımlama profilidir. Hizmet sorumlusu ile de kimlik doğrulaması yapabilirsiniz ancak işlem daha fazla adım gerektirir. 
 
-Yayımlama profili kimlik bilgilerinizi veya hizmet sorumlunuzu Azure ile kimlik doğrulamak için [GitHub gizli anahtarı](https://docs.github.com/en/actions/reference/encrypted-secrets) olarak kaydedin. Gizli anahtar, iş akışınız dahilinde. 
+## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
+= = = = = = = Yayımlama profili kimlik bilgilerinizi veya hizmet sorumlunuzu Azure ile kimlik doğrulamak için [GitHub gizli anahtarı](https://docs.github.com/en/actions/reference/encrypted-secrets) olarak kaydedin. Gizli anahtar, iş akışınız dahilinde. 
 
 # <a name="publish-profile"></a>[Profili Yayımla](#tab/publish-profile)
 

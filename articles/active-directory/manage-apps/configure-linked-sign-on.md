@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597838"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073980"
 ---
 # <a name="understand-linked-sign-on"></a>Bağlantılı oturum açmayı anlama
 
@@ -35,7 +35,7 @@ Bağlantı seçeneğinin değerli olduğu bazı yaygın senaryolar şunlardır:
 
 Bilgi almak için uygulama yönetiminde [hızlı başlangıç serisini](view-applications-portal.md) gözden geçirebilirsiniz. Çoklu oturum açmayı yapılandırdığınız hızlı başlangıçta **bağlantılı** seçeneği de bulacaksınız. 
 
-**Bağlantılı** seçenek, Azure AD aracılığıyla oturum açma işlevleri sağlamaz. Bu seçenek yalnızca kullanıcıların [uygulamamda](https://myapps.microsoft.com/) Microsoft 365 veya uygulama başlatıcısında uygulamayı seçerken gönderileceği konumu ayarlar.
+**Bağlantılı** seçenek, Azure AD aracılığıyla oturum açma işlevleri sağlamaz. Bu seçenek yalnızca kullanıcıların [uygulamamda](https://myapps.microsoft.com/) Microsoft 365 veya uygulama başlatıcısında uygulamayı seçerken gönderileceği konumu ayarlar.  Oturum açma işlemi Azure AD aracılığıyla oturum açma işlevselliği sağlamadığından, bağlantılı çoklu oturum açma ile yapılandırılan uygulamalar için koşullu erişim kullanılamaz.
 
 > [!IMPORTANT] 
 > **Çoklu oturum açma** seçeneğinin **Kurumsal uygulamalarda**bir uygulama için gezinmede olmadığı bazı senaryolar vardır. 

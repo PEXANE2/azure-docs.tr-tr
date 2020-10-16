@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854507"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 için destek yaşam döngüsü
@@ -108,7 +108,7 @@ Portalda veya Azure CLı ile bir Azure Red Hat OpenShift kümesi dağıttığın
 
 **Bir Kullanıcı bir OpenShift kümesini desteklenmeyen bir ikincil sürümle yükselttiğinde ne olur?**
 
-N-2 veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-2 sürümünden N-1 ' e yükseltme başarılı olursa, destek ilkilerimize geri dönebilirsiniz. Örnek:
+N-2 veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-2 sürümünden N-1 ' e yükseltme başarılı olursa, destek ilkilerimize geri dönebilirsiniz. Örneğin:
 * Desteklenen en eski Azure Red Hat OpenShift sürümü 4.4. z ise ve 4.3. z veya daha eski bir sürümdaysanız, destek dışında olursunuz.
 * 4.3. z 'den 4.4. z 'ye veya daha yüksek bir sürüme yükseltme başarılı olduğunda, destek ilkilerimize geri dönebilirsiniz.
 

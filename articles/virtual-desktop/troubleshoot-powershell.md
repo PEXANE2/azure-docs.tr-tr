@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002273"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Sanal Masaüstü PowerShell
@@ -62,7 +62,7 @@ Neden: Windows sanal masaüstü, belirli konumlarda hizmet meta verilerini depol
 
 Çözüm: hata iletisinde, desteklenen bölgelerin bir listesi yayımlanacak. Bunun yerine desteklenen bölgelerden birini kullanın.
 
-### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>Hata: New-AzWvdApplicationGroup, konak havuzuyla aynı konumda olmalıdır
+### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>Hata: New-AzWvdApplicationGroup konak havuzuyla aynı konumda olmalıdır
 
 ```powershell
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool

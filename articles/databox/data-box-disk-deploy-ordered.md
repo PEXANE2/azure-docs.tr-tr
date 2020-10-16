@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b24d3aa9b5071a69e3e3fb866dc5ba2ac3e57b19
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84266534"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950950"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Öğretici: Azure Data Box Disk sıralama
 
@@ -57,7 +57,7 @@ Data Box Disk sıralamak için aşağıdaki adımları uygulayın.
 
    ![Azure Data Box arama 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. **Oluştur**’a tıklayın.
+2. **Oluştur**'a tıklayın.
 
 3. Data Box'ın bölgenizde kullanılabilir olup olmadığını kontrol edin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula**'ya tıklayın.
 
@@ -72,7 +72,7 @@ Data Box Disk sıralamak için aşağıdaki adımları uygulayın.
   
 4. **Data Box Disk**'i seçin. Çözümün 5 disklik tek bir sipariş için maksimum kapasitesi 35 TB olarak belirlenmiştir. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
-     ![Data Box Disk seçeneğini belirleyin](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
+     ![Data Box Disk seçenek 2 ' yi seçin](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
 5. **Sipariş** bölümünde **Sipariş ayrıntıları**'nı belirtin. Aşağıdaki bilgileri girin veya seçin.
 

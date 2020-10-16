@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85963249"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Izleyici 'de Linux uygulamaları için performans sayaçlarını toplama 
@@ -44,8 +44,8 @@ Kimlik doğrulama dosyasındaki girişler aşağıdaki tabloda açıklanmıştı
 | Özellik | Açıklama |
 |:--|:--|
 | Bağlantı noktası | MySQL örneğinin dinlediği geçerli bağlantı noktasını temsil eder. Bağlantı noktası 0, aşağıdaki özelliklerin varsayılan örnek için kullanıldığını belirtir. |
-| Bağlama adresi| Geçerli MySQL bağlama adresi. |
-| kullanıcı adı| MySQL Server örneğini izlemek için kullanılan MySQL kullanıcısı. |
+| Bind-Address| Geçerli MySQL bağlama adresi. |
+| username| MySQL Server örneğini izlemek için kullanılan MySQL kullanıcısı. |
 | Base64 kodlamalı parola| Base64 Ile kodlanmış MySQL izleme kullanıcısının parolası. |
 | Otomatik| MySQL OMı sağlayıcısı yükseltildiğinde, My. cnf dosyasındaki değişiklikler için yeniden tarama yapılıp yapılmayacağını ve MySQL OMı kimlik doğrulama dosyasının üzerine yazılmasına izin verilip verilmeyeceğini belirtir. |
 
@@ -54,7 +54,7 @@ MySQL OMı kimlik doğrulama dosyası, bir Linux ana bilgisayarında birden çok
 
 Aşağıdaki tabloda örnek örnek ayarları vardır 
 
-| Açıklama | Dosya |
+| Açıklama | File |
 |:--|:--|
 | 3308 numaralı bağlantı noktasına sahip varsayılan örnek ve örnek. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 3308 bağlantı noktası ve farklı Kullanıcı adı ve parolasıyla varsayılan örnek ve örnek. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -70,7 +70,7 @@ MySQL OMı sağlayıcısı 'nın yüklenmesiyle birlikte, MySQL OMI kimlik doğr
 
 Aşağıdaki tabloda, mycimprovauth kullanımı için sözdizimi hakkında ayrıntılı bilgi verilmektedir.
 
-| Çalışma | Örnek | Açıklama
+| İşlem | Örnek | Açıklama
 |:--|:--|:--|
 | *yanlış veya doğru* otomatik güncelleştirme | mycimprovauth otomatik güncelleştirme yanlış | Kimlik doğrulama dosyasının yeniden başlatma veya güncelleştirme sırasında otomatik olarak güncelleştirilip güncelleştirimeyeceğini ayarlar. |
 | Varsayılan *bağlama adresi Kullanıcı adı parolası* | mycimprovauth varsayılan 127.0.0.1 kök PWD | MySQL OMı kimlik doğrulama dosyasındaki varsayılan örneği ayarlar.<br>Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 olarak kodlanır. |
@@ -113,7 +113,7 @@ GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
 
 Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şekilde yapılandırdıktan sonra, toplanacak performans sayaçlarını yapılandırmanız gerekir.  Aşağıdaki tablodaki sayaçlarla birlikte [Azure izleyici 'de Windows ve Linux performans verileri kaynakları](data-sources-performance-counters.md) yordamını kullanın.
 
-| Nesne adı | Sayaç adı |
+| Nesne adı | Sayaç Adı |
 |:--|:--|
 | MySQL Veritabanı | Bayt cinsinden disk alanı |
 | MySQL Veritabanı | Tablolar |
@@ -151,7 +151,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şekilde yapılandırdıktan sonra, toplanacak performans sayaçlarını yapılandırmanız gerekir.  Aşağıdaki tablodaki sayaçlarla birlikte [Azure izleyici 'de Windows ve Linux performans verileri kaynakları](data-sources-performance-counters.md) yordamını kullanın.
 
-| Nesne adı | Sayaç adı |
+| Nesne adı | Sayaç Adı |
 |:--|:--|
 | Apache HTTP sunucusu | Meşgul çalışanlar |
 | Apache HTTP sunucusu | Boştaki çalışanlar |

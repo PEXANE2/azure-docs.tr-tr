@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404750"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945796"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory için ORC biçimi
 
@@ -59,7 +59,7 @@ Azure Blob depolamada ORC veri kümesinin bir örneği aşağıda verilmiştir:
 
 Aşağıdaki noktalara dikkat edin:
 
-* Karmaşık veri türleri desteklenmez (STRUCT, MAP, LIST, UNION).
+* Karmaşık veri türleri (örn. MAP, LIST, STRUCT) Şu anda yalnızca veri akışlarında desteklenir, kopyalama etkinliğinde desteklenmez. Veri akışlarında karmaşık türleri kullanmak için, şema veri kümesinde boş bırakarak dosya şemasını veri kümesinde içeri aktarmayın. Ardından, kaynak dönüşümünde projeksiyonu içeri aktarın.
 * Sütun adında boşluk desteklenmiyor.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri

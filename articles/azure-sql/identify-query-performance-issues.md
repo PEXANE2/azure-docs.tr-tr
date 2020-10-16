@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
 ms.openlocfilehash: afc142ec9de0e275d505276d959cfac3e652c55d
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619772"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Veritabanı'nda algılanabilir sorgu performansı sorunu türleri
@@ -153,8 +153,8 @@ Yavaş sorgu performansı, alt ve olmayan sorgu planlarıyla ilgili değildir ve
 - [Akıllı içgörüler](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) kullanarak kaynak sınırlarını algılama
 - [DMVs](database/monitoring-with-dmvs.md)kullanarak kaynak sorunlarını algılama:
 
-  - [Sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV, VERITABANı için CPU, g/ç ve bellek tüketimini döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyelik Aralık için bir satır vardır. Geçmiş verileri bir saat boyunca tutulur.
-  - [Sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV, Azure SQL VERITABANı için CPU kullanımı ve depolama verileri döndürür. Veriler, beş dakikalık aralıklarla toplanır ve toplanır.
+  - [Sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV, VERITABANı için CPU, g/ç ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyelik Aralık için bir satır vardır. Geçmiş verileri bir saat boyunca tutulur.
+  - [Sys.resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV, Azure SQL VERITABANı için CPU kullanımı ve depolama verileri döndürür. Veriler, beş dakikalık aralıklarla toplanır ve toplanır.
   - [Yüksek CPU kullanan çok sayıda tekil sorgu](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
 Sorunu yetersiz kaynak olarak belirlerseniz, CPU gereksinimlerini artışlarını devralarak için veritabanınızın kapasitesini artırmak üzere kaynakları yükseltebilirsiniz. Daha fazla bilgi için bkz. Azure SQL [veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme](database/single-database-scale.md) ve [Azure SQL veritabanı 'nda elastik havuz kaynaklarını ölçeklendirme](database/elastic-pool-scale.md). Yönetilen bir örneği ölçeklendirme hakkında daha fazla bilgi için bkz. [hizmet katmanı kaynak sınırları](managed-instance/resource-limits.md#service-tier-characteristics)
@@ -203,16 +203,16 @@ Bir alt plan planını ve yürütme sorunlarıyla ilgili *bekleme* sorunlarını
 Bu yöntemler genellikle bekleme türlerinin en üstteki kategorilerini göstermek için kullanılır:
 
 - [Daha fazla bekleme](database/intelligent-insights-troubleshoot-performance.md#increased-wait-statistic) nedeniyle performans düşüşüne sahip sorguları tanımlamak için akıllı içgörüler kullanın
-- Zaman içinde her bir sorgunun bekleme istatistiklerini bulmak için [sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) ' nu kullanın. Sorgu deposunda, bekleme türleri bekleme kategorilerine birleştirilir. Wait kategorilerinin, [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)içindeki bekleme türlerine eşlemesini bulabilirsiniz.
-- Bir sorgu işlemi sırasında yürütülen iş parçacıklarının karşılaştığı tüm bekler hakkında bilgi döndürmek için [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) kullanın. Azure SQL veritabanı ve ayrıca belirli sorgular ve toplu işlerle ilgili performans sorunlarını tanılamak için bu toplanmış görünümü kullanabilirsiniz. Sorgular, kaynakların, kuyruğun beklediği veya dış bekleme için bekleniyor.
-- Bazı kaynakları bekleyen görev kuyruğu hakkında bilgi döndürmek için [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) kullanın.
+- Zaman içinde her bir sorgunun bekleme istatistiklerini bulmak için [sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) ' nu kullanın. Sorgu deposunda, bekleme türleri bekleme kategorilerine birleştirilir. Bekleme kategorilerinin [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)bekleyen türlere eşlemesini bulabilirsiniz.
+- Bir sorgu işlemi sırasında yürütülen iş parçacıklarının karşılaştığı tüm bekleme bilgileri hakkında bilgi döndürmek için [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) kullanın. Azure SQL veritabanı ve ayrıca belirli sorgular ve toplu işlerle ilgili performans sorunlarını tanılamak için bu toplanmış görünümü kullanabilirsiniz. Sorgular, kaynakların, kuyruğun beklediği veya dış bekleme için bekleniyor.
+- Bazı kaynakları bekleyen görev kuyruğu hakkında bilgi döndürmek için [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) kullanın.
 
 Yüksek CPU senaryolarında sorgu deposu ve bekleme istatistikleri şu durumlarda CPU kullanımını yansıtmayabilir:
 
 - Yüksek CPU kullanan sorgular hala yürütülüyor.
 - Yük devretme sırasında yüksek CPU kullanan sorgular çalışıyor.
 
-Dmv sorgu deposunu ve bekleme istatistiklerini izleyen yalnızca başarıyla tamamlanan ve zaman aşımına uğrayan sorgular için sonuçları gösterir. Deyimler tamamlanana kadar Şu anda yürütülmekte olan deyimler için veri göstermez. Şu anda yürütülmekte olan sorguları ve ilişkili çalışan saatini izlemek için, dinamik yönetim görünümü [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) kullanın.
+Dmv sorgu deposunu ve bekleme istatistiklerini izleyen yalnızca başarıyla tamamlanan ve zaman aşımına uğrayan sorgular için sonuçları gösterir. Deyimler tamamlanana kadar Şu anda yürütülmekte olan deyimler için veri göstermez. Şu anda yürütülmekte olan sorguları ve ilişkili çalışan saatini izlemek için dinamik yönetim görünümünü [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) kullanın.
 
 > [!TIP]
 > Ek araçlar:

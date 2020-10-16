@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541501"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure Dosya Eşitleme sunucusu uç noktası Ekle/Kaldır
@@ -21,7 +21,7 @@ Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı
 
 Azure Dosya Eşitleme uçtan uca dağıtma hakkında bilgi için bkz. [Azure dosya eşitleme dağıtma](storage-sync-files-deployment-guide.md) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Sunucu uç noktası oluşturmak için öncelikle aşağıdaki ölçütlerin karşılandığından emin olmanız gerekir: 
 - Sunucuda Azure Dosya Eşitleme Aracısı yüklü ve kayıtlı. Azure Dosya Eşitleme aracısını yüklemeye yönelik yönergeler [Azure dosya eşitleme ile sunucu kaydetme/kaydını kaldırma](storage-sync-files-server-registration.md) makalesinde bulunabilir. 
 - Depolama eşitleme hizmeti 'nin dağıtıldığından emin olun. Depolama eşitleme hizmeti dağıtma hakkında ayrıntılı bilgi için bkz. [nasıl dağıtılır Azure dosya eşitleme](storage-sync-files-deployment-guide.md) . 
@@ -73,5 +73,5 @@ Sunucu uç noktasını kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Dosya Eşitleme ile sunucu kaydetme/kaydını silme](storage-sync-files-server-registration.md)
-- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
 - [Azure Dosya Eşitleme’yi izleme](storage-sync-files-monitoring.md)

@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79275106"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871907"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows ve Linux için Log Analytics aracısını yönetme ve bakımını yapma
 
@@ -32,7 +32,7 @@ Bir Windows VM 'deki aracıyı Log Analytics VM uzantısı kullanılarak yüklen
 
 Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızdan Windows aracısının en son sürümünü indirebilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
@@ -284,11 +284,11 @@ Linux için Log Analytics aracısını bir System Center Operations Manager yön
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. Dosyayı Düzenle`/etc/opt/omi/conf/omiserver.conf`
+1. Dosyayı Düzenle `/etc/opt/omi/conf/omiserver.conf`
 
-2. İle başlayan satırın `httpsport=` 1270 numaralı bağlantı noktasını tanımladığından emin olun. Örneğin:`httpsport=1270`
+2. İle başlayan satırın `httpsport=` 1270 numaralı bağlantı noktasını tanımladığından emin olun. Örneğin: `httpsport=1270`
 
-3. OMı sunucusunu yeniden başlatın:`sudo /opt/omi/bin/service_control restart`
+3. OMı sunucusunu yeniden başlatın: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893782"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Bir kural hiyerarşisi tanımlamak için Azure Güvenlik Duvarı ilkesini kullanma
@@ -48,7 +48,7 @@ Uygulama takımlarının her biri için ilkeler oluşturun:
 - Bir veritabanı güvenlik duvarı ilkesi. Veritabanı güvenlik duvarı ilkesi temel güvenlik duvarı ilkesini devralır.
 - Mühendislik güvenlik duvarı ilkesi. Mühendislik güvenlik duvarı ilkesi de temel güvenlik duvarı ilkesini devralır.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="İlke hiyerarşisi" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Takımlar ve gereksinimler" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Kural koleksiyonu gruplarına erişmek için özel roller oluşturma 
 
@@ -59,10 +59,10 @@ Uygulama takımlarının her biri için ilkeler oluşturun:
 1. Aboneliği al:
 
    `Select-AzSubscription -SubscriptionId xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx`
-2. Aşağıdaki komutu çalıştırın:
+2. Şu komutu çalıştırın:
 
    `Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize`
-3. Reader rolünü JSON biçiminde çıkarmak için Get-AzRoleDefinition komutunu kullanın. 
+3. Okuyucu rolünü JSON biçiminde çıkarmak için Get-AzRoleDefinition komutunu kullanın. 
 
    `Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json`
 4. Dosyada ReaderSupportRole.jsbir düzenleyicide açın.
@@ -122,7 +122,7 @@ JSON dosyanız aşağıdaki örneğe benzer şekilde görünmelidir:
                              "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx"] 
 } 
 ```
-9. Yeni özel rolü oluşturmak için New-AzRoleDefinition komutunu kullanın ve JSON rol tanımı dosyasını belirtin. 
+9. Yeni özel rolü oluşturmak için, New-AzRoleDefinition komutunu kullanın ve JSON rol tanımı dosyasını belirtin. 
 
    `New-AzRoleDefinition -InputFile "C:\CustomRoles\RuleCollectionGroupRole.json`
 
@@ -134,9 +134,9 @@ Tüm özel rolleri listelemek için Get-AzRoleDefinition komutunu kullanabilirsi
 
 Ayrıca, Azure portal özel rolleri de görebilirsiniz. Aboneliğinize gidin, **erişim denetimi (IAM)**, **Roller**' i seçin.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Takımlar ve gereksinimler":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy okuma izni":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Takımlar ve gereksinimler":::
 
 Daha fazla bilgi için bkz. [öğretici: Azure PowerShell kullanarak Azure özel rolü oluşturma](../role-based-access-control/tutorial-custom-role-powershell.md).
 

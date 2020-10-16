@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: b19bac439035da85d542d62f33e813822edc38d9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d2961bbf65fe1cf3ddf59c648f506cee85e248a5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904588"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951630"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro ile veri dönüştürme
+# <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro ile verileri dönüştürme
 
 Bu öğreticide, Azure Stack Edge Pro cihazınızda bir işlem rolünün nasıl yapılandırılacağı açıklanmaktadır. İşlem rolünü yapılandırdıktan sonra Azure Stack Edge Pro, verileri Azure 'a göndermeden önce dönüştürebilir.
 
 Bu yordamın tamamlanması yaklaşık 10 ila 15 dakika sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İşlem yapılandırma
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Veri dönüştürme işlemini doğrulama ve verileri aktarma
 
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -53,13 +53,13 @@ Azure Stack Edge Pro ortamınızda işlem yapılandırmak için bir IoT Hub kayn
     |Alan  |Değer  |
     |---------|---------|
     |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Ad     |IoT Hub kaynağınız için bir ad girin.         |
+    |Name     |IoT Hub kaynağınız için bir ad girin.         |
 
-    ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
+    ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
 4. **Oluştur**’u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, işlem yapılandırmasını göstermek için işlem kutucuğunu **Yapılandır** ' ı güncelleştirir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda işlemi **görüntüle** ' yi seçin.
     
-    ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
+    ![İşlem 3 ' ü kullanmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
     > [!NOTE]
     > IoT Hub Azure Stack Edge Pro cihazı ile ilişkilendirilmeden önce **Işlem Yapılandır** iletişim kutusu kapatılırsa IoT Hub oluşturulur ancak işlem yapılandırmasında gösterilmez. 
@@ -111,7 +111,7 @@ Bu bölümde, [Azure Stack Edge Pro Için C# modülü geliştirme](azure-stack-e
     
     |Alan  |Değer  |
     |---------|---------|
-    |Ad     | Modül için benzersiz bir ad. Bu modül, Azure Stack Edge Pro ile ilişkili IoT Edge cihazına dağıtabileceğiniz bir Docker kapsayıcısıdır.        |
+    |Adı     | Modül için benzersiz bir ad. Bu modül, Azure Stack Edge Pro ile ilişkili IoT Edge cihazına dağıtabileceğiniz bir Docker kapsayıcısıdır.        |
     |Görüntü URI 'SI     | Modülün karşılık gelen kapsayıcı görüntüsü için görüntü URI 'SI.        |
     |Kimlik bilgileri gerekli     | İşaretliyse, Kullanıcı adı ve parola, eşleşen bir URL ile modülleri almak için kullanılır.        |
     |Giriş paylaşma     | Bir giriş paylaşma seçin. Edge Yerel paylaşma, bu durumda giriş paylaşımıdır. Burada kullanılan modül, dosyaları uç yerel paylaşımından buluta yüklendikleri bir kenar paylaşımıyla taşıırlar.        |
@@ -138,19 +138,19 @@ Modülün çalıştığını doğrulamak için aşağıdakileri yapın:
  
 1. Dosya Gezgini 'nde, daha önce oluşturduğunuz uç yerel ve kenar paylaşımlarına bağlanın.
 
-    ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
+    ![Veri dönüştürmeyi doğrulama 2](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
 1. Yerel paylaşıma veri ekleyin.
 
-    ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
+    ![Veri dönüştürmeyi doğrulama 3](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  
     Veriler bulut paylaşımına taşınır.
 
-    ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
+    ![Veri dönüştürmeyi doğrulama 4](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
 
     Veriler daha sonra bulut paylaşımından depolama hesabına gönderilir. Verileri görüntülemek için Depolama Gezgini gidin.
 
-    ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
+    ![Veri dönüştürme 5 ' i doğrulayın](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
  
 Doğrulama işlemini tamamladınız.
 

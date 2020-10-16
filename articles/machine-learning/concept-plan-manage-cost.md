@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704737"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
@@ -109,11 +109,11 @@ Bazı durumlarda, eğitim çalıştırmalarını süreleri sınırlamak veya erk
 
 ## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Düşük öncelikli VM 'Ler kullanma
 
-Azure, sanal makine ölçek kümeleri, toplu Iş ve Machine Learning hizmeti arasında düşük öncelikli VM 'Ler olarak fazla unutilized kapasitesini kullanmanıza olanak tanır. Bu ayırmalar ön azaltıldı, ancak adanmış VM 'Lerle karşılaştırıldığında daha düşük bir fiyata gelir. Genel olarak, toplu iş yükleri için düşük öncelikli VM 'Ler kullanmanızı öneririz. Ayrıca, kesintileri resubmits aracılığıyla kurtarılabilir (toplu Iş için geçiş için) veya yeniden başlatmalar aracılığıyla (checksize ile derin öğrenme eğitimi için) de kullanmanız gerekir.
+Azure, sanal makine ölçek kümeleri, toplu Iş ve Machine Learning hizmeti arasında Low-Priority VM 'Ler olarak fazla unutilized kapasitesini kullanmanıza olanak tanır. Bu ayırmalar ön azaltıldı, ancak adanmış VM 'Lerle karşılaştırıldığında daha düşük bir fiyata gelir. Genel olarak, Batch iş yükleri için Low-Priority VM 'Leri kullanmanızı öneririz. Ayrıca, kesintileri resubmits aracılığıyla kurtarılabilir (toplu Iş için geçiş için) veya yeniden başlatmalar aracılığıyla (checksize ile derin öğrenme eğitimi için) de kullanmanız gerekir.
 
-Düşük öncelikli VM 'Ler, VM ailesi ile olan ayrılmış kota değerinden ayrı tek bir kotaya sahiptir. [AmlCompute kotaları hakkında daha fazla](how-to-manage-quotas.md)bilgi edinin.
+Low-Priority VM 'Ler, VM ailesi ile olan ayrılmış kota değerinden ayrı tek bir kota içermelidir. [AmlCompute kotaları hakkında daha fazla](how-to-manage-quotas.md)bilgi edinin.
 
- Düşük öncelikli VM 'Ler, etkileşimli not defteri deneyimlerini desteklemesi gerektiğinden, işlem örnekleri için çalışmaz.
+ Low-Priority VM 'Ler, etkileşimli not defteri deneyimlerini desteklemesi gerektiğinden işlem örnekleri için çalışmaz.
 
 ## <a name="use-reserved-instances"></a>Ayrılmış örnekleri kullanma
 

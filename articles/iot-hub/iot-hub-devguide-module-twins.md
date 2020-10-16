@@ -1,21 +1,21 @@
 ---
 title: Azure IoT Hub modül TWINS 'i anlayın | Microsoft Docs
 description: Geliştirici Kılavuzu-IoT Hub ve cihazlarınız arasında durum ve yapılandırma verilerini eşzamanlı hale getirmek için modül TWINS kullanın
-author: ash2017
+author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.author: asrastog
+ms.date: 09/29/2020
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323018"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996459"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub modül TWINS 'i anlayın ve kullanın
 
@@ -179,7 +179,7 @@ Kök nesnede modül kimliği özellikleri ve `tags` hem de hem de özellikleri i
 
   - Özellikler
 
-    | Ad | Değer |
+    | Name | Değer |
     | --- | --- |
     $content türü | uygulama/json |
     $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -241,7 +241,7 @@ Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve a
 
 * **Anahtarlar**: JSON nesnelerindeki tüm anahtarlar UTF-8 kodlamalı, büyük/küçük harfe duyarlıdır ve uzunluğu 1 KB 'tır. İzin verilen karakterler UNICODE denetim karakterlerini (C0 ve C1 kesimleri),, `.` ve SP 'yi hariç tutar `$` .
 
-* **Değerler**: JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Dizilere izin verilmiyor.
+* **Değerler**: JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Diziler de desteklenir.
 
     * Tamsayılar en az-4503599627370496 ve en yüksek değer olan 4503599627370495 değerine sahip olabilir.
 

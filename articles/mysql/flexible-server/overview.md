@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759654"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993741"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -117,8 +117,19 @@ Hizmet MySQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumlul
 - **Dökümünü al ve geri yükle** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, döküm ve geri yükleme işlemleri, mysqldump/mydumper gibi topluluk araçlarını kullanarak geçirmek için en hızlı yolu sağlayabilir. Ayrıntılar için bkz. döküm kullanarak geçiş ve geri yükleme. 
 - **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle tek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için [Azure veritabanı geçiş hizmeti](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) yararlanılabilir olabilir. 
 
+## <a name="azure-regions"></a>Azure bölgeleri
+
+Azure 'da iş yükünüzü çalıştırmanın avantajlarından biri küresel erişime sahip. MySQL için Azure veritabanı esnek sunucusu şu Azure bölgelerinde bugün kullanılabilir:
+
+- Kuzey Avrupa
+- Güneydoğu Asya
+- Doğu ABD 2
+- Batı ABD 2
+
+Yakında yeni sunucular eklemeye çalışıyoruz.
+
 ## <a name="contacts"></a>Kişiler
-MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine bir e-posta gönderin ([ @Ask MySQL IÇIN Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)). Bu e-posta adresi bir teknik destek diğer adı değil.
+MySQL için Azure veritabanı esnek sunucusu 'nda olabilecek herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine ([ @Ask MySQL IÇIN Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)) bir e-posta gönderin. Bu e-posta adresi bir teknik destek diğer adı değil.
 
 Buna ek olarak, aşağıdaki iletişim noktalarını uygun şekilde göz önünde bulundurun:
 

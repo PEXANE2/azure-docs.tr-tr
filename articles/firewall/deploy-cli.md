@@ -8,10 +8,10 @@ ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89075435"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLı kullanarak Azure Güvenlik Duvarı dağıtma ve yapılandırma
@@ -48,7 +48,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -105,7 +105,7 @@ az network vnet subnet create \
 Şimdi atlama ve iş yükü sanal makinelerini oluşturup uygun alt ağlara yerleştirin.
 İstendiğinde, sanal makine için bir parola yazın.
 
-SRV-atma sanal makinesini oluşturun.
+Srv-Jump sanal makinesini oluşturun.
 
 ```azurecli-interactive
 az vm create \
@@ -121,7 +121,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-Belirli DNS sunucusu IP adresleriyle ve test edilecek genel IP adresiyle çalışan, SRV için bir NIC oluşturun.
+Belirli DNS sunucusu IP adreslerine sahip Srv-Work için bir NIC oluşturun ve ile sınanacak genel IP adresi yok.
 
 ```azurecli-interactive
 az network nic create \

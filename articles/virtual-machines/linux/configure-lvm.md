@@ -8,10 +8,10 @@ ms.date: 09/27/2018
 ms.author: guybo
 ms.subservice: disks
 ms.openlocfilehash: 9a3498939ddf57e2520a140ff693a30de913fae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84658286"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'de LVM 'yi yapılandırma
@@ -134,7 +134,7 @@ Bu kılavuzda, ve olarak adlandırdığımız üç veri diskine sahip olduğunuz
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. Seçim ' De Failsafe önyükleme parametreleri`/etc/fstab`
+5. Seçim ' De Failsafe önyükleme parametreleri `/etc/fstab`
    
     Birçok dağıtım, `nobootwait` `nofail` dosyaya eklenebilen veya bağlama parametrelerini içerir `/etc/fstab` . Bu parametreler, belirli bir dosya sistemini bağladığınızda ve Linux sisteminin, RAID dosya sistemini düzgün bir şekilde bağlamasa bile önyüklemeye devam etmesine izin veren hatalara izin verir. Bu parametrelerle ilgili daha fazla bilgi için, dağıtım belgelerine bakın.
    

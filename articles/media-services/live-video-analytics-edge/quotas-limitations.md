@@ -4,10 +4,10 @@ description: Bu makalede, IoT Edge kotaları ve sınırlamaları hakkında canl�
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90529239"
 ---
 # <a name="quotas-and-limitations"></a>Kotalar ve sınırlamalar
@@ -72,4 +72,4 @@ Ayrıca, bu kameraları H. lenebilir video ve AAC ses kullanmak için yapıland�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](overview.md)
+[Genel Bakış](overview.md)

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2b2b2c444bb492fa6c6b945a82090e91963fb1a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245869"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
@@ -19,7 +19,7 @@ Kafes ağ kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| silme | Ağ kaynağını siler. |
+| delete | Ağ kaynağını siler. |
 | list | Tüm ağ kaynaklarını listeler. |
 | göster | Verilen ada sahip ağ kaynağını alır. |
 
@@ -28,7 +28,7 @@ Ağ kaynağını siler.
 
 Ad tarafından tanımlanan ağ kaynağını siler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -64,7 +64,7 @@ Verilen ada sahip ağ kaynağını alır.
 
 Verilen ada sahip ağ kaynağıyla ilgili bilgileri alır. Bilgiler, ağın açıklamasını ve diğer özelliklerini içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

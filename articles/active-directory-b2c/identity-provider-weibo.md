@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 08aa7e4af6dc5d5e5bff470bc4c5d023e25b3014
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387890"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
@@ -28,11 +28,11 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak
 
 1. [Weibo Geliştirici Portalında](https://open.weibo.com/) Weibo hesabı kimlik bilgilerinizle oturum açın.
 1. Oturum açtıktan sonra sağ üst köşedeki görünen adınızı seçin.
-1. Açılan menüde**编辑开发者信息**(geliştirici bilgilerini düzenle) öğesini seçin.
-1. Gerekli bilgileri girin ve**提交**(Gönder) seçeneğini belirleyin.
+1. Açılan menüde **编辑开发者信息** (geliştirici bilgilerini düzenle) öğesini seçin.
+1. Gerekli bilgileri girin ve **提交** (Gönder) seçeneğini belirleyin.
 1. E-posta doğrulama sürecini doldurun.
 1. [Kimlik doğrulama sayfasına](https://open.weibo.com/developers/identity/edit)gidin.
-1. Gerekli bilgileri girin ve**提交**(Gönder) seçeneğini belirleyin.
+1. Gerekli bilgileri girin ve **提交** (Gönder) seçeneğini belirleyin.
 
 ### <a name="register-a-weibo-application"></a>Bir Weibo uygulamasını kaydetme
 
@@ -56,4 +56,4 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak
 1. Bir **ad**girin. Örneğin, *Weibo*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Weibo uygulamasının uygulama anahtarını girin.
 1. **İstemci parolası**için, kaydettiğiniz uygulama gizli anahtarını girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.

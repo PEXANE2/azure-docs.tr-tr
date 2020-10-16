@@ -2,7 +2,7 @@
 title: Windows VM 'yi Azure 'a katmak için şablon kullanma AD DS | Microsoft Docs
 description: Yeni veya mevcut bir Windows Server VM 'sini Azure Active Directory Domain Services yönetilen bir etki alanına katmak için Azure Resource Manager şablonlarını nasıl kullanacağınızı öğrenin.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: fdef11fec93d4ba6254957ad14e0612e2fd05580
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: joflore
+ms.openlocfilehash: 988f009527f26a9f2be965b635d57f0bc38913c2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221366"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960703"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -24,7 +24,7 @@ Azure sanal makinelerinin (VM 'Ler) dağıtımını ve yapılandırmasını otom
 
 Bu makalede, bir Windows Server VM 'sini Kaynak Yöneticisi şablonları kullanarak Azure AD DS yönetilen bir etki alanına nasıl oluşturacağınız ve katılalacağı gösterilmektedir. Ayrıca, mevcut bir Windows Server VM 'sini Azure AD DS etki alanına nasıl katılacağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -88,7 +88,7 @@ Bir Windows Server sanal makinesi oluşturmak ve ardından onu yönetilen bir et
     |---------------------------|-------|
     | Abonelik              | Azure AD Domain Services etkinleştirdiğiniz Azure aboneliğini seçin. |
     | Kaynak grubu            | VM 'niz için kaynak grubunu seçin. |
-    | Location                  | SANAL makinenizin konumunu seçin. |
+    | Konum                  | SANAL makinenizin konumunu seçin. |
     | Mevcut VNET adı        | VM 'nin bağlanacağı, *Myvnet*gibi mevcut sanal ağın adı. |
     | Mevcut alt ağ adı      | Var olan sanal ağ alt ağının adı (örneğin, *Iş yükleri*). |
     | DNS etiketi öneki          | VM için kullanmak üzere *myvm*gıbı bir DNS adı girin. |
@@ -121,7 +121,7 @@ Mevcut bir Windows Server sanal makinesini yönetilen bir etki alanına katmak i
     |---------------------------|-------|
     | Abonelik              | Azure AD Domain Services etkinleştirdiğiniz Azure aboneliğini seçin. |
     | Kaynak grubu            | Mevcut VM 'niz ile kaynak grubunu seçin. |
-    | Location                  | Var olan sanal makinenizin konumunu seçin. |
+    | Konum                  | Var olan sanal makinenizin konumunu seçin. |
     | VM listesi                   | Yönetilen etki alanına katılacak mevcut VM 'leri ( *myVM1, myVM2*gibi) virgülle ayrılmış bir liste girin. |
     | Etki alanına katılması Kullanıcı adı     | Yönetilen etki alanındaki, VM 'yi yönetilen etki alanına (gibi) katmak için kullanılması gereken kullanıcı hesabı `contosoadmin@aaddscontoso.com` . Bu hesap, yönetilen etki alanının bir parçası olmalıdır. |
     | Etki alanına katılması Kullanıcı parolası | Önceki ayarda belirtilen kullanıcı hesabının parolası. |

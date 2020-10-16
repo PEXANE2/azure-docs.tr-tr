@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892544"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089987"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Öğretici: uyarıları ve eylem gruplarını kullanarak yay bulut kaynaklarını izleme
 
@@ -113,7 +113,7 @@ Yeni bir **eylem grubu**başlatma yordamına başlamak için **+ eylem grubu Ekl
 Bu öğreticide, bir Azure yay bulutu uygulaması için uyarıları ve eylem gruplarını ayarlamayı öğrendiniz. Eylem grupları hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure portalında eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Azure portalında eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [Eylem gruplarında SMS uyarı davranışı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [Eylem gruplarında SMS uyarı davranışı](../azure-monitor/platform/alerts-sms-behavior.md)

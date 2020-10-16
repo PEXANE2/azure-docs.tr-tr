@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294147"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
@@ -25,7 +25,7 @@ Günlük uyarıları, [Azure uyarıları](./alerts-overview.md)'nda desteklenen 
 > [!NOTE]
 > Şu anda API sürümü `2020-05-01-preview` ve kaynak merkezli günlük uyarıları için ek ücret alınmaz.  Önizlemede olan özellikler için fiyatlandırma, gelecekte duyurulacak ve faturalandırma başlamadan önce bir bildirim sunulacaktır. Bildirim döneminden sonra yeni API sürümü ve kaynak merkezli günlük uyarılarını kullanmaya devam etmeyi tercih etmeniz gerekir, ilgili ücret üzerinden faturalandırılırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Günlük uyarıları Log Analytics verilerde sorgu çalıştırır. İlk olarak, [günlük verilerini toplamaya](resource-logs.md) başlamanız ve günlük verilerini sorun için sorgulamanızı gerekir. [Kendi sorgunuzu yazmaya](../log-query/get-started-portal.md)ne bulabileceğinizi veya başladığınızı anlamak için Log Analytics [Uyarı sorgu örnekleri konusunu](../log-query/saved-queries.md) kullanabilirsiniz.
 

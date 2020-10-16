@@ -13,10 +13,10 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084299"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Oracle 'a veya şirket içi verileri kopyalama
@@ -41,7 +41,7 @@ Aşağıdaki veri depolarından verileri *bir Oracle veritabanına*kopyalayabili
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Data Factory, Veri Yönetimi ağ geçidini kullanarak şirket içi Oracle kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidi hakkında daha fazla bilgi için bkz. [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) . Verileri taşımak için bir veri ardışık düzeninde ağ geçidini ayarlama hakkında adım adım yönergeler için bkz. [Şirket içinden buluta veri taşıma](data-factory-move-data-between-onprem-and-cloud.md).
 

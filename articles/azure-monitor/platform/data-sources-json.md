@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111941"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Izleyici 'de Linux için Log Analytics Aracısı ile özel JSON veri kaynakları toplama
@@ -58,7 +58,7 @@ Altına eklenen yapılandırma dosyası, `/etc/opt/microsoft/omsagent/<workspace
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Çıkış eklentisini yapılandırma 
-' Deki ana yapılandırmaya `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` veya içindeki ayrı bir yapılandırma dosyasına yerleştirilmiş olarak aşağıdaki çıkış eklentisi yapılandırmasını ekleyin`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+' Deki ana yapılandırmaya `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` veya içindeki ayrı bir yapılandırma dosyasına yerleştirilmiş olarak aşağıdaki çıkış eklentisi yapılandırmasını ekleyin `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```xml
 <match oms.api.**>

@@ -14,10 +14,10 @@ ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
 ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336539"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
@@ -55,7 +55,7 @@ Bir bölge başarısız olursa, trafik sonraki en iyi sağlıklı bölgesel yük
 
 Çapraz bölge yük dengeleyicinin sistem durumu araştırması, her 20 saniyede bir kullanılabilirlik hakkında bilgi toplar. Bir bölgesel yük dengeleyici, kullanılabilirliğini 0 olarak bırakmazsa, çapraz bölge yük dengeleyici hatayı algılar. Bölgesel yük dengeleyici daha sonra dönüşten sonra alınır. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Genel bölge trafiği görünümü diyagramı." border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Bölgeler arası yük dengeleyici diyagramı." border="true":::
 
 ### <a name="ultra-low-latency"></a>Ultra düşük gecikme süresi
 
@@ -101,7 +101,7 @@ Yüksek oranda kullanılabilir ve çapraz bölge dağıtımı için mevcut yük 
 * Batı ABD
 * West Europe
 * Güneydoğu Asya
-* Orta ABD
+* Central US
 * Kuzey Avrupa
 * Doğu Asya
 

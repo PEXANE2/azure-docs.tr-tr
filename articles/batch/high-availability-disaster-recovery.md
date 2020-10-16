@@ -3,12 +3,12 @@ title: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 description: Toplu uygulamanızı bölgesel bir kesinti için nasıl tasarlayacağınızı öğrenin.
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c77e6fa672d26545af47b262a982a7d0d7303eec
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725746"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058021"
 ---
 # <a name="design-your-application-for-high-availability"></a>Uygulamanızı yüksek kullanılabilirlik için tasarlama
 
@@ -39,5 +39,5 @@ Yük devredebileceğiniz bir çözüm tasarlarken aşağıdaki noktaları göz �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal](batch-account-create-portal.md), [Azure CLI](cli-samples.md), [PowerShell](batch-powershell-cmdlets-get-started.md)veya [Batch yönetim API 'si](batch-management-dotnet.md)ile Batch hesapları oluşturma hakkında daha fazla bilgi edinin.
+- [Azure Portal](batch-account-create-portal.md), [Azure CLI](./scripts/batch-cli-sample-create-account.md), [PowerShell](batch-powershell-cmdlets-get-started.md)veya [Batch yönetim API 'si](batch-management-dotnet.md)ile Batch hesapları oluşturma hakkında daha fazla bilgi edinin.
 - Varsayılan kotalar bir Batch hesabıyla ilişkilendirilir; [Bu makale](batch-quota-limit.md) , varsayılan kota değerlerini ayrıntılandırmakta ve kotaların nasıl arttırılabileceğinizi anlatmaktadır.

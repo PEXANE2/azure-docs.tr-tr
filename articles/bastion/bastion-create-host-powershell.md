@@ -1,30 +1,30 @@
 ---
-title: Azure PowerShell kullanarak bir savunma Konağı oluşturma | Microsoft Docs
+title: Azure PowerShell kullanarak bir savunma ana bilgisayarı oluşturun | Microsoft Docs
 description: Bu makalede, Azure savunma Konağı oluşturmayı öğrenin
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba2716613a0e950cbae5c65add410ac8a8b38955
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744264"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077737"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure savunma ana bilgisayarı oluşturma
 
 Bu makalede, PowerShell kullanarak bir Azure savunma ana bilgisayarı oluşturma işlemi gösterilmektedir. Sanal ağınızda Azure savunma hizmetini sağladığınızda, sorunsuz RDP/SSH deneyimi aynı sanal ağdaki tüm VM 'Ler tarafından kullanılabilir. Azure savunma dağıtımı, abonelik/hesap veya sanal makine başına değil, sanal ağ başına değildir.
 
-İsteğe bağlı olarak, [Azure Portal](bastion-create-host-portal.md)kullanarak bir Azure savunma ana bilgisayarı oluşturabilirsiniz.
+İsteğe bağlı olarak, [Azure Portal](./tutorial-create-host-portal.md)kullanarak bir Azure savunma ana bilgisayarı oluşturabilirsiniz.
 
-## <a name="before-you-begin"></a>Başlamadan önce
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Savunma Konağı oluşturma
 
@@ -53,5 +53,4 @@ Bu bölüm Azure PowerShell kullanarak yeni bir Azure savunma kaynağı oluştur
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Ek bilgi için savunma [hakkında SSS](bastion-faq.md) makalesini okuyun.
-
 * Azure savunma alt ağıyla ağ güvenlik gruplarını kullanmak için bkz. [NSG Ile çalışma](bastion-nsg.md).

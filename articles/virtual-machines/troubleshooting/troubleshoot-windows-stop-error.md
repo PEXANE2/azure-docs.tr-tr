@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005914"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows durma hatası - Durum Bellek Yok
@@ -143,7 +143,7 @@ Herhangi bir adımı gerçekleştirmeden önce, iyi durumda bir diskte **\Window
    1. **HKEY_LOCAL_MACHINE >> BROKENSYSTEM >> Seç**' e gidin.
    1. Listelenen anahtarlar ' da, geçerli öğesinin veri değerini aklınızda yapın. Örneğin, bu değer **1** veya **0x00000001 (1)** Ise, denetim kümesi ControlSet001 olur.
 1. Disk belleği oluşturma 'nın yapılandırıldığı Konumu kontrol edin.
-   1. HKEY_LOCAL_MACHINE \BROKENSYSTEM sırasında, **ControlSet001**gibi 4. adımda tanımladığınız CONTROLSET numarasıyla eşleşen dizini genişletin.
+   1. HKEY_LOCAL_MACHINE\BROKENSYSTEM sırasında, **ControlSet001**gibi 4. adımda tanımladığınız CONTROLSET numarasıyla eşleşen dizini genişletin.
    1. **Denetim >> oturum yöneticisi >> bellek yönetimi** ' ne gidin ve **existingpagefiles** anahtarının konumunu aklınızda edin.
    1. Bu anahtar, geçici sürücünün varsayılan Azure konumunda olmalıdır. Bu yoksa ve veri diski sürücüsü ya da işletim sistemi sürücüsü gibi başka bir konumdaki VHD 'de yer alıyorsa, silinmesi gerekecektir.
    1. Dosya Gezgini 'nde bu konuma gidin ve **pagefile.sys** dosyayı silin.

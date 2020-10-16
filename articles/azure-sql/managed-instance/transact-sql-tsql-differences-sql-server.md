@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617885"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973318"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -103,7 +103,7 @@ Daha fazla bilgi için bkz.
 
 - [SUNUCU DENETIMI OLUŞTUR](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [SUNUCU DENETIMINI DEĞIŞTIR](/sql/t-sql/statements/alter-server-audit-transact-sql)
-- [Girdilerini](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+- [Denetim](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>Sertifikalar
 
@@ -165,7 +165,7 @@ SQL yönetilen örneği dosyalara erişemez, bu nedenle şifreleme sağlayıcıl
     - SQL yönetilen örneğinden bir veritabanını dışarı aktarın ve aynı Azure AD etki alanı içindeki SQL veritabanı 'na içeri aktarın. 
     - SQL veritabanından bir veritabanını dışarı aktarın ve aynı Azure AD etki alanı içinde SQL yönetilen örneği 'ne aktarın.
     - SQL yönetilen örneğinden bir veritabanını dışarı aktarın ve SQL Server (sürüm 2012 veya üzeri) içeri aktarın.
-      - Bu yapılandırmada tüm Azure AD kullanıcıları, oturum açma bilgileri olmayan SQL Server veritabanı sorumluları (kullanıcılar) olarak oluşturulur. Kullanıcı türü olarak listelenir `SQL` ve `SQL_USER` sys. database_principals) olarak görünür. İzinleri ve rolleri SQL Server veritabanı meta verilerinde kalır ve kimliğe bürünme için kullanılabilir. Ancak, kimlik bilgilerini kullanarak SQL Server erişmek ve oturum açmak için kullanılamaz.
+      - Bu yapılandırmada tüm Azure AD kullanıcıları, oturum açma bilgileri olmayan SQL Server veritabanı sorumluları (kullanıcılar) olarak oluşturulur. Kullanıcı türü olarak listelenir `SQL` ve `SQL_USER` sys.database_principals) olarak görünür. İzinleri ve rolleri SQL Server veritabanı meta verilerinde kalır ve kimliğe bürünme için kullanılabilir. Ancak, kimlik bilgilerini kullanarak SQL Server erişmek ve oturum açmak için kullanılamaz.
 
 - Yalnızca SQL yönetilen örnek sağlama işlemi tarafından oluşturulan sunucu düzeyi asıl oturum açma, veya gibi sunucu rollerinin üyeleri veya `securityadmin` `sysadmin` sunucu düzeyinde herhangi bir oturum açma iznini Değiştir ile diğer oturumlar, SQL yönetilen örneği için ana VERITABANıNDA Azure ad sunucu sorumlularını (oturum açma) oluşturabilir.
 - Oturum açma bir SQL sorumlusu ise, yalnızca rolün parçası olan oturum açma işlemleri `sysadmin` bir Azure AD hesabı için oturum açma bilgileri oluşturmak üzere Oluştur komutunu kullanabilir.
@@ -174,11 +174,11 @@ SQL yönetilen örneği dosyalara erişemez, bu nedenle şifreleme sağlayıcıl
 - Azure AD yönetici hesabıyla çakışan Azure AD Server sorumlularına (oturum açmalar) izin verilir. Sorumluyu çözümlediğinizde ve SQL yönetilen örneği için izinleri uyguladığınızda Azure AD Server sorumluları (oturum açmalar) Azure AD yöneticisi 'nden önceliklidir.
 - Kimlik doğrulama sırasında, kimliği doğrulanan sorumluyu çözümlemek için aşağıdaki sıra uygulanır:
 
-    1. Azure AD hesabı, sys. server_principals ' de bulunan Azure AD Server sorumlusu (oturum açma) ile doğrudan eşlenmiş olarak mevcutsa, Azure AD Server sorumlusu (oturum açma) için erişim izni verin ve izinleri uygulayın.
-    2. Azure AD hesabı, server_principals sys 'de bulunan Azure AD Server sorumlusu (oturum açma) ile eşlenmiş bir Azure AD grubunun üyesiyse, "X" türü olarak erişim izni verin ve Azure AD grubu oturum açma izinlerini uygulayın.
+    1. Azure AD hesabı, Azure AD Server sorumlusu (oturum açma) ile doğrudan eşlenmiş olarak mevcutsa sys.server_principals, Azure AD sunucu sorumlusu (oturum açma) için erişim izni verin ve izinleri uygulayın.
+    2. Azure AD hesabı, "X" türü olarak sys.server_principals mevcut olan Azure ad sunucusu sorumlusu (oturum açma) ile eşlenmiş bir Azure AD grubunun üyesiyse, erişim izni verin ve Azure AD grubu oturum açma izinlerini uygulayın.
     3. Azure AD hesabı, SQL yönetilen örnek sistemi görünümlerinde mevcut olmayan SQL yönetilen örneği için özel bir portal tarafından yapılandırılmış Azure AD yöneticisi ise, SQL yönetilen örneği (eski mod) için Azure AD yöneticisi 'nin özel sabit izinlerini uygulayın.
-    4. Azure AD hesabı bir veritabanında bulunan bir Azure AD kullanıcısına doğrudan eşlenmiş olarak varsa ("E" türü olarak, Azure AD veritabanı kullanıcısına erişim izni verin ve izinleri uygulayın. database_principals.
-    5. Azure AD hesabı, sys. database_principals "X" türü olarak bir veritabanında bulunan bir Azure AD kullanıcısına eşlenmiş bir Azure AD grubunun üyesiyse, erişim izni verin ve Azure AD grubu oturum açma izinlerini uygulayın.
+    4. Azure AD hesabı, bir veritabanında bulunan bir Azure AD kullanıcısına doğrudan eşlenmişse, "E" türü olarak sys.database_principals, Azure AD veritabanı kullanıcısına erişim izni verin ve izinleri uygulayın.
+    5. Azure AD hesabı, bir veritabanında bulunan bir Azure AD kullanıcısına eşlenmiş bir Azure AD grubunun üyesiyse, "X" türü olarak sys.database_principals, Azure AD grubu oturum açma izinlerine erişim ve uygulama izinleri verin.
     6. Kimlik doğrulaması yapan kullanıcıya çözümlenen bir Azure AD kullanıcı hesabıyla veya bir Azure AD grup hesabıyla eşlenmiş bir Azure AD oturum açma bilgileri varsa, bu Azure AD oturum açma bilgilerini tüm izinler uygulanır.
 
 ### <a name="service-key-and-service-master-key"></a>Hizmet anahtarı ve hizmet ana anahtarı
@@ -353,7 +353,11 @@ SQL Server ' de etkinleştirilen DBCC deyimleri SQL yönetilen örneği 'nde des
 
 ### <a name="distributed-transactions"></a>Dağıtılmış işlemler
 
-MSDTC ve [elastik işlemler](../database/elastic-transactions-overview.md) Şu anda SQL yönetilen örneği 'nde desteklenmiyor.
+[Dağıtılmış işlemler](../database/elastic-transactions-overview.md) için kısmi destek şu anda genel önizlemededir. Desteklenen senaryolar şunlardır:
+* Katılımcıların yalnızca [sunucu güven grubunun](https://aka.ms/mitrusted-groups)parçası olan Azure SQL yönetilen örnekleri olduğu işlemler.
+* .NET (TransactionScope sınıfı) ve Transact-SQL ' den başlatılan işlemler.
+
+Azure SQL yönetilen örneği şu anda MSDTC şirket içi veya Azure sanal makinelerinde düzenli olarak desteklenen diğer senaryoları desteklemez.
 
 ### <a name="extended-events"></a>Genişletilmiş Olaylar
 
@@ -433,7 +437,7 @@ SQL yönetilen örneğindeki bağlantılı sunucular, sınırlı sayıda hedefi 
   - `FROM DISK`/`TAPE`/Backup cihazı desteklenmiyor.
   - Yedekleme kümeleri desteklenmez.
 - `WITH` Seçenekler desteklenmez. ,, `WITH` Vb. gibi geri yükleme girişimleri `DIFFERENTIAL` `STATS` `REPLACE` başarısız olur.
-- `ASYNC RESTORE`: Geri yükleme, istemci bağlantısı kesilse bile devam eder. Bağlantınız atıldıysanız, `sys.dm_operation_status` geri yükleme işleminin durumunun görünümünü ve bır oluşturma ve bırakma veritabanı için görünümü kontrol edebilirsiniz. Bkz. [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: Geri yükleme, istemci bağlantısı kesilse bile devam eder. Bağlantınız atıldıysanız, `sys.dm_operation_status` geri yükleme işleminin durumunun görünümünü ve bır oluşturma ve bırakma veritabanı için görünümü kontrol edebilirsiniz. Bkz. [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve daha sonra değiştirilemez: 
 

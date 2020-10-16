@@ -12,10 +12,10 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67ea7324419d86fa5b5c23a2f0aa5f8c057495d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385986"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleme
@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C), Azure AD B2C için sunulan izleme ana
 
 Application Insights, bir Kullanıcı oturumu kaydetmek için bir bağıntı KIMLIĞI kullanarak olayları birleştirebilirsiniz. Application Insights, olay ve oturumu Saniyeler içinde kullanılabilir hale getirir ve birçok görselleştirme, dışarı aktarma ve analitik araç sunar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 
@@ -43,14 +43,14 @@ Application Insights, bir Kullanıcı oturumu kaydetmek için bir bağıntı KIM
 
 Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak oluşturur ve izleme anahtarını alır. Bilgi için bkz. [Application Insights kaynak oluşturma](../azure-monitor/app/create-new-resource.md)
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
 3. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights**arayıp seçin.
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 5. Kaynak için bir **ad** girin.
 6. **Uygulama türü**için **ASP.NET Web uygulaması**' nı seçin.
 7. **Kaynak grubu**için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’a tıklayın.
 4. Application Insights kaynağını oluşturduktan sonra açın, **temel**bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
 
 ![Application Insights genel bakış ve Izleme anahtarı](./media/analytics-with-application-insights/app-insights.png)
@@ -106,10 +106,10 @@ Teknik profiller, Azure AD B2C kimlik deneyimi çerçevesinde işlevler olarak k
 
 | Teknik profil | Görev |
 | ----------------- | -----|
-| Appınsights-ortak | Tüm Azure Insights teknik profillerine dahil edilecek ortak parametre kümesi. |
-| Appınsights-Signınrequest | Bir `SignInRequest` oturum açma isteği alındığında bir talep kümesiyle olay kaydeder. |
-| Appınsights-UserSignUp | `UserSignUp`Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma seçeneğini tetiklediğinde bir olayı kaydeder. |
-| Appınsights-Signcomplete | `SignInComplete`Bağlı olan taraf uygulamasına bir belirteç gönderildiğinde bir kimlik doğrulamasının başarıyla tamamlanmasında bir olay kaydeder. |
+| AppInsights-Common | Tüm Azure Insights teknik profillerine dahil edilecek ortak parametre kümesi. |
+| AppInsights-SignInRequest | Bir `SignInRequest` oturum açma isteği alındığında bir talep kümesiyle olay kaydeder. |
+| AppInsights-UserSignUp | `UserSignUp`Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma seçeneğini tetiklediğinde bir olayı kaydeder. |
+| AppInsights-SignInComplete | `SignInComplete`Bağlı olan taraf uygulamasına bir belirteç gönderildiğinde bir kimlik doğrulamasının başarıyla tamamlanmasında bir olay kaydeder. |
 
 Profilleri başlangıç paketinden *TrustFrameworkExtensions.xml* dosyasına ekleyin. Bu öğeleri **Claimsproviders** öğesine ekleyin:
 
@@ -223,11 +223,11 @@ Profilleri başlangıç paketinden *TrustFrameworkExtensions.xml* dosyasına ekl
 2. **Kullanım**  >  **olaylarını**seçin.
 3. **Son saate** **ve** **3 dakikaya** **kadar ayarlayın.**  Sonuçları görüntülemek için **Yenile** ' yi seçmeniz gerekebilir.
 
-![Application Insights kullanımı-etkinlik öncesi](./media/analytics-with-application-insights/app-ins-graphic.png)
+![Application Insights USAGE-Events Blağı](./media/analytics-with-application-insights/app-ins-graphic.png)
 
 ## <a name="optional-collect-more-data"></a>Seçim Daha fazla veri toplayın
 
-Gereksinimlerinize uyacak şekilde Kullanıcı yolculuğuna talep türleri ve olaylar ekleyin. [Talep çözümleyicilerine](claim-resolver-overview.md) veya herhangi bir dize talep türüne, Application Insights olayına bir **giriş talep** öğesi ekleyerek veya appınsights-Common Technical profile ' i kullanarak talepler ekleyebilirsiniz.
+Gereksinimlerinize uyacak şekilde Kullanıcı yolculuğuna talep türleri ve olaylar ekleyin. [Talep çözücüler](claim-resolver-overview.md) veya herhangi bir dize talep türü kullanabilirsiniz, Application Insights olayına veya AppInsights-Common teknik profiline bir **giriş talebi** öğesi ekleyerek talepleri ekleyebilirsiniz.
 
 - **ClaimTypeReferenceId** , bir talep türüne başvurudur.
 - **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. Öğesinin sözdizimini kullanın; `{property:NAME}` burada, `NAME` olaya bir özellik eklenir.

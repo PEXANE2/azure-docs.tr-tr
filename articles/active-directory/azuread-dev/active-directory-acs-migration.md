@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706260"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055384"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service geçirme
 
@@ -26,7 +26,7 @@ ms.locfileid: "90706260"
 
 Microsoft Azure Access Control Service (ACS), bir Azure Active Directory (Azure AD) hizmeti 7 Kasım 2018 tarihinde kullanımdan kaldırılacaktır. Şu anda Access Control kullanan uygulamalar ve hizmetler, daha sonra farklı bir kimlik doğrulama mekanizmasına tamamen geçirilmesi gerekir. Bu makalede, Access Control kullanımını kullanımdan kaldırmayı planladığınız için geçerli müşterilere yönelik öneriler açıklanır. Şu anda Access Control kullanmıyorsanız, herhangi bir işlem yapmanız gerekmez.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Access Control, Web uygulamalarınıza ve hizmetlerinize erişim için kullanıcıların kimliğini doğrulamak ve yetkilendirmek için kolay bir yol sunan bir bulut kimlik doğrulama hizmetidir. Kimlik doğrulaması ve yetkilendirmenin pek çok özelliğinin kodunuzla bir şekilde oluşturulmasına izin verir. Access Control, öncelikle Microsoft .NET istemcilerinin, ASP.NET Web uygulamalarının ve Windows Communication Foundation (WCF) Web hizmetlerinin geliştiriciler ve mimarları tarafından kullanılır.
 
@@ -148,7 +148,7 @@ Access Control tarafından verilen belirteçleri kabul eden her bir Microsoft bu
 
 SharePoint 2013, 2016 ve SharePoint Online müşterileri, bulutta, şirket içinde ve hibrit senaryolarında kimlik doğrulama amacıyla ACS 'yi uzun süredir kullandı. Bazı SharePoint özellikleri ve kullanım durumları, ACS kullanımdan kaldırılırken etkilenir, diğerleri bu durumdan etkilenmez. Aşağıdaki tabloda, ACS 'den yararlanan en popüler SharePoint özelliklerinden bazıları için geçiş kılavuzu özetlenmektedir:
 
-| Öne çıkan özelliği | Rehber |
+| Özellik | Rehber |
 | ------- | -------- |
 | Azure AD 'de kullanıcıların kimliğini doğrulama | Daha önce Azure AD, kimlik doğrulaması için SharePoint için gereken SAML 1,1 belirteçlerini desteklemediğinden ACS, SharePoint 'in Azure AD belirteç biçimleriyle uyumlu hale getirilen bir aracı olarak kullanılmıştı. Artık [SharePoint 'i şirket içi uygulama Azure AD uygulaması Galeri kullanarak doğrudan Azure AD 'ye bağlayabilirsiniz](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Şirket içi SharePoint 'te sunucudan sunucuya kimlik doğrulaması & uygulama kimlik doğrulaması](/SharePoint/security-for-sharepoint-server/authentication-overview) | ACS emekliliğinizi etkilemez; değişiklik gerekmiyor. | 
@@ -214,7 +214,7 @@ Aşağıdaki tabloda, Azure AD 'de bulunan özelliklerle Web uygulamalarıyla il
 
 Azure AD 'nin Uygulamalarınız ve hizmetleriniz için en iyi geçiş yolu olduğuna karar verirseniz, uygulamanızı Azure AD ile tümleştirmenin iki yolunu bilmelisiniz.
 
-WS-Federation veya WıF 'yi Azure AD ile tümleştirmede kullanmak için, [Galeri dışı bir uygulama için Federasyon çoklu oturum açmayı yapılandırma](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)bölümünde açıklanan yaklaşımı takip etmenizi öneririz. Bu makale, Azure AD 'yi SAML tabanlı çoklu oturum açma için yapılandırma ve ayrıca WS-Federation yapılandırması için de kullanılır. Bu yaklaşımın ardından Azure AD Premium lisansı gerekir. Bu yaklaşımın iki avantajı vardır:
+WS-Federation veya WıF 'yi Azure AD ile tümleştirmede kullanmak için, [Galeri dışı bir uygulama için Federasyon çoklu oturum açmayı yapılandırma](../manage-apps/configure-saml-single-sign-on.md)bölümünde açıklanan yaklaşımı takip etmenizi öneririz. Bu makale, Azure AD 'yi SAML tabanlı çoklu oturum açma için yapılandırma ve ayrıca WS-Federation yapılandırması için de kullanılır. Bu yaklaşımın ardından Azure AD Premium lisansı gerekir. Bu yaklaşımın iki avantajı vardır:
 
 - Azure AD belirteç özelleştirmesi 'nın tam esnekliğini elde edersiniz. Azure AD tarafından verilen talepleri, Access Control tarafından verilen taleplerle eşleşecek şekilde özelleştirebilirsiniz. Bu özellikle Kullanıcı KIMLIĞI veya ad tanımlayıcı talebi içerir. Teknolojileri değiştirdikten sonra kullanıcılarınız için tutarlı kullanıcı tanımlayıcıları almaya devam etmek için Azure AD tarafından verilen kullanıcı kimliklerinin Access Control tarafından verilen olanlarla eşleştiğinden emin olun.
 - Uygulamanıza özel bir belirteç imzalama sertifikası ve denetlediğiniz bir yaşam süresi yapılandırabilirsiniz.
@@ -226,7 +226,7 @@ Alternatif bir yaklaşım, WS-Federation kurulumu için biraz farklı yönergele
 
 Bu yaklaşımı seçerseniz, [Azure AD 'de imzalama anahtarı geçişi](../develop/active-directory-signing-key-rollover.md)' ni anlamanız gerekir. Bu yaklaşım, belirteçleri vermek için Azure AD Genel imzalama anahtarını kullanır. Varsayılan olarak, WıF imzalama anahtarlarını otomatik olarak yenilemez. Azure AD, genel imza anahtarlarını döndürdüğünde, değişiklikleri kabul etmek için WıF uygulamanızın hazırlanması gerekir. Daha fazla bilgi için bkz. [Azure AD 'de anahtar geçişi imzalama hakkında önemli bilgiler](/previous-versions/azure/dn641920(v=azure.100)).
 
-OpenID Connect veya OAuth protokolleri aracılığıyla Azure AD ile tümleştirilebilir, bunu yapmanızı öneririz. Azure AD [Geliştirici kılavuzumuzdan](https://aka.ms/aaddev)Azure AD 'yi Web uygulamanızla tümleştirme hakkında kapsamlı belge ve yönergeler sunuyoruz.
+OpenID Connect veya OAuth protokolleri aracılığıyla Azure AD ile tümleştirilebilir, bunu yapmanızı öneririz. Azure AD [Geliştirici kılavuzumuzdan](../develop/index.yml)Azure AD 'yi Web uygulamanızla tümleştirme hakkında kapsamlı belge ve yönergeler sunuyoruz.
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Azure Active Directory B2C geçir
 
@@ -266,7 +266,7 @@ Aşağıdaki tabloda, Web uygulamalarıyla ilgili Access Control özellikleri, A
 Azure AD B2C, uygulamalarınız ve hizmetleriniz için en iyi geçiş yolu olduğuna karar verirseniz, aşağıdaki kaynaklarla başlayın:
 
 - [Azure AD B2C belgeleri](../../active-directory-b2c/overview.md)
-- [Özel ilke Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
+- [Azure AD B2C özel ilkeleri](../../active-directory-b2c/custom-policy-overview.md)
 - [Azure AD B2C fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Ping kimliğine veya Auth0 geçiş
@@ -332,7 +332,7 @@ Ayrıca, Azure AD 'yi, OAuth istemci kimlik bilgileri verme 'nin Azure AD uygula
 
 Sunucudan sunucuya senaryolar uygulama hakkında rehberlik için aşağıdaki kaynaklara bakın:
 
-- [Azure AD Geliştirici Kılavuzu](https://aka.ms/aaddev) 'Nun hizmetten hizmete bölümü
+- [Azure AD Geliştirici Kılavuzu](../develop/index.yml) 'Nun hizmetten hizmete bölümü
 - [Basit parola istemci kimlik bilgilerini kullanarak Daemon kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [Sertifika istemci kimlik bilgilerini kullanarak Daemon kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 

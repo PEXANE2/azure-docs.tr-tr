@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336214"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM’leri ve fiziksel sunucular için çoğaltma sorunlarını giderme
@@ -146,7 +146,7 @@ En yaygın sorunlardan bazıları aşağıda listelenmiştir
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Neden 3: SQL Server 2016 ve 2017 ' de bilinen sorun
 **Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) başvurun
 
-#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Neden 4: uygulama tutarlılığı Linux sunucularında etkinleştirilmemiş
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Neden 4: App-Consistency Linux sunucularında etkinleştirilmemiş
 **Nasıl düzeltilir** : Linux işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve gönderi seçenekleriyle özel betik, uygulama tutarlılığı için Azure Site Recovery Mobility Aracısı tarafından kullanılır. Etkinleştirme adımları [aşağıda](./site-recovery-faq.md#replication) verilmiştir.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS ile ilgili sorunlardan kaynaklanan nedenler:

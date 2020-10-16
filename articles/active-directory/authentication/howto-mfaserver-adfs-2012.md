@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a57f42400468d69970c7c0b5d05d99a21b2d6b9
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 85e8cb63cd06027754628dcf61aad0ac72b8233b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949567"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967027"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication Sunucusunu Windows Server’da AD FS ile çalışacak şekilde yapılandırma
 
@@ -156,7 +156,7 @@ Bulut kaynağınızın güvenliğini sağlamak için, kullanıcı iki adımlı d
 
     ![Dönüşüm Talep Kuralı Ekleme Sihirbazı](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 
-9. **Son**'a tıklayın. AD FS Yönetim Konsolu'nu kapatın.
+9. **Finish (Son)** düğmesine tıklayın. AD FS Yönetim Konsolu'nu kapatın.
 
 ## <a name="troubleshooting-logs"></a>Sorun giderme günlükleri
 

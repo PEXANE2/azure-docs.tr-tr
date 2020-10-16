@@ -8,10 +8,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
 ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563701"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
@@ -277,7 +277,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="ad-aad-smb-files"></a>
 **AD 'de depolama hesabımı temsil etmek üzere bir bilgisayar hesabı veya hizmet oturum açma hesabı oluşturmak için herhangi bir farklılık var mı?**
 
-    [Bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya [hizmet oturum açma hesabının](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) oluşturulması, kimlik doğrulamasının Azure dosyaları ile nasıl çalıştığı konusunda farklılık içermez. Bir depolama hesabını AD ortamınızda kimlik olarak temsil etmek için kendi seçiminizi yapabilirsiniz. JOIN-AzStorageAccountForAuth cmdlet 'inde varsayılan DomainAccountType kümesi bilgisayar hesabıdır. Ancak, AD ortamınızda yapılandırılan parola süre sonu yaşı bilgisayar veya hizmet oturum açma hesabı için farklı olabilir ve [ad 'de depolama hesabı Kimliğinizin parolasını güncelleştirme](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)konusunda dikkate almanız gerekir.
+    [Bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya [hizmet oturum açma hesabının](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) oluşturulması, kimlik doğrulamasının Azure dosyaları ile nasıl çalıştığı konusunda farklılık içermez. Bir depolama hesabını AD ortamınızda kimlik olarak temsil etmek için kendi seçiminizi yapabilirsiniz. Join-AzStorageAccountForAuth cmdlet 'inde varsayılan DomainAccountType kümesi bilgisayar hesabıdır. Ancak, AD ortamınızda yapılandırılan parola süre sonu yaşı bilgisayar veya hizmet oturum açma hesabı için farklı olabilir ve [ad 'de depolama hesabı Kimliğinizin parolasını güncelleştirme](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)konusunda dikkate almanız gerekir.
  
 * <a id="ad-support-rest-apis"></a>
 **Dizin/dosya Windows ACL 'Lerini al/ayarla/Kopyala desteği için REST API 'Ler var mı?**

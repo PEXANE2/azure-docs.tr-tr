@@ -9,10 +9,10 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278643"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
@@ -71,7 +71,7 @@ Uç nokta olarak genel bir IP adresi kullanıyorsanız, IP ve DNS bilgilerini ge
 
 V2 SKU 'SU için genel IP kaynağını açın ve **yapılandırma**' yı seçin. DNS ad **etiketi (isteğe bağlı)** alanı DNS adını yapılandırmak için kullanılabilir.
 
-### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Etkin tutma zaman aşımı ve TCP boşta kalma zaman aşımı ayarları nelerdir?
+### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Keep-Alive zaman aşımı ve TCP boşta kalma zaman aşımı ayarları nelerdir?
 
 *Canlı tutma zaman aşımı* , Application Gateway bir istemcinin yeniden kullanmadan veya kapatmadan önce kalıcı bir bağlantıda başka bir http isteği göndermesini ne kadar bekleyeceğini yönetir. *TCP boşta kalma zaman aşımı* , bir TCP bağlantısının bir etkinlik olmaması durumunda açık tutulacağı süreyi yönetir. 
 

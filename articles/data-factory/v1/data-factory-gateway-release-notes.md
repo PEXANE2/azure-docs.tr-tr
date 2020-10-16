@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89490097"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi için sürüm notları
@@ -128,7 +128,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
     *  [Kod içermeyen kopyalama aracını](data-factory-copy-data-wizard-tutorial.md)kullanarak bir depolamadan veri kopyalayabilirsiniz. Bu özellik hakkında genel bilgi için bkz. [aşamalı kopya](data-factory-copy-activity-performance.md#staged-copy) .
 *  Veri Yönetimi ağ geçidini, verileri doğrudan bir SQL Server veritabanından Azure Machine Learning içine almak için kullanabilirsiniz.
 
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 
     * Kod içermeyen kopyalama aracında SQL Server göre şemayı/önizlemeyi görüntüleme performansını artırabilirsiniz.
 
@@ -144,7 +144,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 *  Otomatik güncelleştirme başarısız olursa, ağ geçidi yükleyicisi en yüksek üç kez otomatik güncellemeyi yeniden dener.
 
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 
     * Kod içermeyen kopyalama senaryosunda şirket içi sunucudan büyük tabloları yükleme performansını geliştirir.
 
@@ -152,7 +152,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 ## <a name="11058921"></a>1.10.5892.1
 
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 
 *  Hata düzeltmeleri
 
@@ -164,34 +164,34 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 *  Güncelleştirme zamanlama süresini ayarlama yeteneği
 *  Otomatik güncelleştirmeyi değiştirme/kapatma için PowerShell betiği
 *  JSON biçimi desteği  
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  Sorun giderme deneyimini geliştirme
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1757951"></a>1.7.5795.1
 
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1757641"></a>1.7.5764.1
 
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  Şirket içi bir kaynak/havuz desteği
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656961"></a>1.6.5696.1
 
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656761"></a>1.6.5676.1
@@ -208,7 +208,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 ### <a name="1656721"></a>1.6.5672.1
 
 *  Azure Data Factory için ODBC veri kaynağı destek tablosu adı
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656581"></a>1.6.5658.1
@@ -229,13 +229,13 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 *  Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata ve Sybase) için beş ilişkisel veritabanını destekleme
 *  Sıkıştırma desteği (gzip ve söndür)
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  Azure Data Factory için Oracle veri kaynağı desteği ekle
-*  Performans geliştirmeleri
+*  Performans iyileştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1454921"></a>1.4.5492.1

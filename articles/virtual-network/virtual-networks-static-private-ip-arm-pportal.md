@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707863"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Azure portal kullanarak bir VM için özel IP adresi yapılandırma
@@ -32,7 +32,7 @@ Aşağıdaki örnek adımlarda basit bir ortamın zaten oluşturulması beklenir
 
 | Ayar | Değer |
 | ------- | ----- |
-| Adı | *TestVNet* |
+| Ad | *TestVNet* |
 | Adres alanı | *192.168.0.0/16* |
 | Kaynak grubu | **Testrg** (gerekiyorsa, oluşturmak Için **Yeni oluştur** ' u seçin) |
 | Alt ağ adı | *FrontEnd* |
@@ -56,10 +56,10 @@ Kaynak Yöneticisi dağıtım modunda bir VM oluşturduğunuzda, Azure portal ku
     | **Abonelik** | Geçerli aboneliğiniz |
     | **Kaynak grubu** | **Testrg** (açılan listeden seç) |
     | **Sanal makine adı** | *DNS01* |
-    | **Geli** | **ABD Doğu ABD** |
+    | **Bölge** | **(ABD) Doğu ABD** |
     | **Görüntü** | **Windows Server 2019 Datacenter** |
     | **Boyut** | **B1ls**'In **sanal makine boyutu** , **Standart** **sunumu** |
-    | **Nitelen** | Yönetici hesabınızın Kullanıcı adı |
+    | **Kullanıcı adı** | Yönetici hesabınızın Kullanıcı adı |
     | **Parola** | Yönetici hesabınızın Kullanıcı adı için parola |
     | **Parolayı onayla** | Parolayı yeniden |
 

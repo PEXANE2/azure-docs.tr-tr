@@ -8,17 +8,17 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: a9cf6088201ffeaed76d99a9b211e5bcd1ea139a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322589"
 ---
 # <a name="configure-event-grid-api-protocols"></a>Event Grid API protokollerini yapılandırma
 
 Bu kılavuzda, bir Event Grid modülünün olası protokol yapılandırmalarının örnekleri verilmiştir. Event Grid modülü, yönetim ve çalışma zamanı işlemleri için API 'YI kullanıma sunar. Aşağıdaki tablo, protokolleri ve bağlantı noktalarını yakalar.
 
-| Protokol | Bağlantı noktası | Description |
+| Protokol | Bağlantı noktası | Açıklama |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | Varsayılan olarak kapalıdır. Yalnızca sınama sırasında yararlı olur. Üretim iş yükleri için uygun değildir.
 | HTTPS | 4438 | Varsayılan

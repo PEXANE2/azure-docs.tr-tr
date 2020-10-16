@@ -1,20 +1,20 @@
 ---
 title: Azure Izleyici çalışma kitaplarını Azure AD Domain Services ile kullanma | Microsoft Docs
 description: Güvenlik denetimlerini gözden geçirmek ve Azure Active Directory Domain Services yönetilen bir etki alanındaki sorunları anlamak için Azure Izleyici çalışma kitaplarını nasıl kullanacağınızı öğrenin.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 280b7e051c4c9d87c504c1abf6aca0b04bfa1b29
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.author: joflore
+ms.openlocfilehash: 02c4679016ea80a4ac8bb53b502292945cbe9d7b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91704608"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967078"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitaplarını kullanarak Azure Active Directory Domain Services güvenlik denetim olaylarını gözden geçirme
 

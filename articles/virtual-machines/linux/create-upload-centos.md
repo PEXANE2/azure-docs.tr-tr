@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
 ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533067"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure'da CentOS tabanlı bir sanal makine hazırlama
@@ -21,7 +21,7 @@ CentOS tabanlı bir Linux işletim sistemi içeren bir Azure sanal sabit diski (
 * [Azure için CentOS 7.0 + sanal makinesi hazırlama](#centos-70)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işletim sistemini zaten yüklemiş olduğunuz varsayılmaktadır. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
@@ -231,7 +231,7 @@ Azure için bir CentOS 7 sanal makinesinin hazırlanması, CentOS 6 ' ya çok be
 * GRUB2 artık varsayılan önyükleme yükleyicisi olarak kullanıldığından, çekirdek parametrelerini düzenlemeyle ilgili yordam değişmiştir (aşağıya bakın).
 * XFS artık varsayılan dosya sistemidir. İsterseniz ext4 dosya sistemi hala kullanılabilir.
 
-**Yapılandırma adımları**
+**Yapılandırma Adımları**
 
 1. Hyper-V Yöneticisi 'nde sanal makineyi seçin.
 

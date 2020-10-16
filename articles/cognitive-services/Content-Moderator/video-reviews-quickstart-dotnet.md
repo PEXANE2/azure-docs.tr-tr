@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919327"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET kullanarak video incelemeleri oluşturma
@@ -28,7 +28,7 @@ Bu makalede, [C# ile Content moderator SDK](https://www.nuget.org/packages/Micro
 - İnceleme durumunu ve ayrıntılarını alın
 - İncelemeyi Yayımla
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 - Bu makalede [, videoyu (bkz. hızlı başlangıç)](video-moderation-api.md) dağıttığınız ve yanıt verilerinin bulunduğu varsayılmaktadır. Bu, insan moderatör için çerçeve tabanlı incelemeler oluşturmak için gereklidir.

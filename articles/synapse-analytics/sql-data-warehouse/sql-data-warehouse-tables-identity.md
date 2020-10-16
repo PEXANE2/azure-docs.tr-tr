@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121332"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876014"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda vekil anahtarlar oluşturmak için KIMLIK kullanma
 
@@ -26,7 +26,8 @@ Bu makalede, SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak iç
 
 Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. Veri ambarı modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz.
 > [!NOTE]
-> Kullanıcı açıkça "SET IDENTITY_INSERT ON" veya reseeds KIMLIĞIYLE yinelenen bir değer eklediğinde, SYNAPSE SQL 'teki KIMLIK değerinin benzersiz olması garanti edilmez. Ayrıntılar için bkz. [Create Table (Transact-SQL) Identity (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+> Azure SYNAPSE Analytics 'te, KIMLIK değeri her dağıtımda kendi kendine artar ve diğer dağıtımların KIMLIK değerleriyle çakışmaz.  Kullanıcı açıkça "SET IDENTITY_INSERT ON" veya reseeds KIMLIĞIYLE yinelenen bir değer eklediğinde, SYNAPSE içindeki KIMLIK değerinin benzersiz olması garanti edilmez. Ayrıntılar için bkz. [Create Table (Transact-SQL) Identity (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>KIMLIK sütunuyla tablo oluşturma
 
@@ -163,13 +164,13 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > `CREATE TABLE AS SELECT`Kimlik sütunu olan bir tabloya veri yüklerken şu anda kullanılamaz.
 >
 
-Verileri yükleme hakkında daha fazla bilgi için bkz. [SYNAPSE SQL havuzu Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
+Verileri yükleme hakkında daha fazla bilgi için bkz. [SYNAPSE SQL havuzu Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve  [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Sistem görünümleri
 
-IDENTITY özelliği olan bir sütunu belirlemek için [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) katalog görünümünü kullanabilirsiniz.
+IDENTITY özelliği olan bir sütunu belirlemek için [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) katalog görünümünü kullanabilirsiniz.
 
-Veritabanı şemasını daha iyi anlamanıza yardımcı olmak için bu örnek, sys. identity_column ' nin diğer sistem Kataloğu görünümleriyle nasıl tümleştirileceğini gösterir:
+Veritabanı şemasını daha iyi anlamanıza yardımcı olmak için bu örnek sys.identity_column ' öğesini diğer sistem Kataloğu görünümleriyle nasıl tümleştirileceğini gösterir:
 
 ```sql
 SELECT  sm.name

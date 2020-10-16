@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84628047"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
@@ -46,16 +46,16 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | YOK |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-1000 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1000 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
 > [!TIP]
 > Hızlı bir şekilde başlamak için örnek verileri kullanmayı göz önünde bulundurun. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Örnek özel konuşma tanıma verileri <span class="docon docon-navigate-external x-hidden-focus"></span> </a> için bu GitHub deposuna bakın
 
-## <a name="upload-data"></a>Karşıya veri yükleme
+## <a name="upload-data"></a>Verileri karşıya yükleme
 
 Verilerinizi karşıya yüklemek için <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"></span> </a>gidin. Portalda **verileri karşıya yükle** ' ye tıklayarak Sihirbazı başlatın ve ilk veri kümenizi oluşturun. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
 
@@ -80,7 +80,7 @@ Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimle
 | Örnekleme hızı              | 8.000 Hz veya 16.000 Hz |
 | Kanallar                 | 1 (mono)              |
 | Ses başına maksimum uzunluk | 2 saat               |
-| Örnek biçim            | PCM, 16 bit           |
+| Örnek biçimi            | PCM, 16 bit           |
 | Arşiv biçimi           | .zip                  |
 | Maksimum Arşiv boyutu     | 2 GB                  |
 
@@ -108,7 +108,7 @@ Ses dosyaları, kaydın başlangıcında ve sonunda sessizlik alabilir. Mümkün
 | Örnekleme hızı              | 8.000 Hz veya 16.000 Hz               |
 | Kanallar                 | 1 (mono)                            |
 | Ses başına maksimum uzunluk | 2 saat (test)/60 s (eğitim) |
-| Örnek biçim            | PCM, 16 bit                         |
+| Örnek biçimi            | PCM, 16 bit                         |
 | Arşiv biçimi           | .zip                                |
 | En büyük ZIP boyutu         | 2 GB                                |
 
@@ -119,7 +119,7 @@ Ses dosyaları, kaydın başlangıcında ve sonunda sessizlik alabilir. Mümkün
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 1.000 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-  Örnek:
+  Örneğin:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place

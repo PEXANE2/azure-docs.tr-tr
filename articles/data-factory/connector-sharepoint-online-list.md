@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83871927"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SharePoint Online listesinden veri kopyalama
@@ -37,7 +37,7 @@ SharePoint Online listesinden, desteklenen herhangi bir havuz veri deposuna veri
 > [!TIP]
 > Bu bağlayıcı, SharePoint Online **listesinden** veri kopyalamayı destekler, ancak dosya değil. Dosyayı [SharePoint Online 'Dan kopyalama](#copy-file-from-sharepoint-online) dosyasından kopyalama hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SharePoint listesi çevrimiçi Bağlayıcısı, SharePoint 'e bağlanmak için hizmet sorumlusu kimlik doğrulamasını kullanır. Ayarlamak için şu adımları izleyin:
 
@@ -55,8 +55,8 @@ SharePoint listesi çevrimiçi Bağlayıcısı, SharePoint 'e bağlanmak için h
     1. SharePoint Online site bağlantısını açın, örn. `https://[your_site_url]/_layouts/15/appinv.aspx` (site URL 'sini değiştirin).
     2. Kaydettiğiniz uygulama KIMLIĞINDE arama yapın, boş alanları doldurup "Oluştur" a tıklayın.
 
-        - Uygulama etki alanı:`localhost.com`
-        - Yeniden yönlendirme URL 'SI:`https://www.localhost.com`
+        - Uygulama etki alanı: `localhost.com`
+        - Yeniden yönlendirme URL 'SI: `https://www.localhost.com`
         - İzin Isteği XML 'i:
 
         ```xml
@@ -200,10 +200,10 @@ SharePoint Online listesinden veri kopyaladığınızda, SharePoint Online liste
 | Kişi veya Grup                                 | Edm.Int32                                            | Int32                                    |
 | Köprü veya resim                            | Edm.String                                           | Dize                                   |
 | Hesaplanan (diğer sütunlara dayalı hesaplama) | EDM. String/Edm. Double/Edm. DateTime/Edm. Boolean | Dize/Double/DateTime/Boolean     |
-| Ek                                      | Desteklenmiyor                                        |                                          |
-| Görev Sonucu                                    | Desteklenmiyor                                        |                                          |
-| Dış Veri                                   | Desteklenmiyor                                        |                                          |
-| Yönetilen Meta Veriler                                | Desteklenmiyor                                        |                                          |
+| Ek                                      | Desteklenmez                                        |                                          |
+| Görev Sonucu                                    | Desteklenmez                                        |                                          |
+| Dış Veri                                   | Desteklenmez                                        |                                          |
+| Yönetilen Meta Veriler                                | Desteklenmez                                        |                                          |
 
 ## <a name="copy-file-from-sharepoint-online"></a>SharePoint Online 'dan Dosya Kopyala
 
@@ -219,7 +219,7 @@ SharePoint Online listesinden veri kopyaladığınızda, SharePoint Online liste
     - **Yöntem**: gönderi
     - **Üst bilgiler**:
         - Content-Type: application/x-www-form-urlencoded
-    - **Gövde**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . İstemci KIMLIĞI, gizli anahtar, kiracı KIMLIĞI ve kiracı adı ' nı değiştirin.
+    - **Gövde**:  `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . İstemci KIMLIĞI, gizli anahtar, kiracı KIMLIĞI ve kiracı adı ' nı değiştirin.
 
     > [!CAUTION]
     > Belirteç değerinin düz metin olarak kaydedilmesini engellemek için Web etkinliğinde güvenli çıkış seçeneğini true olarak ayarlayın. Bu değeri kullanan diğer etkinliklerin, güvenli giriş seçeneğinin true olarak ayarlanmış olması gerekir.

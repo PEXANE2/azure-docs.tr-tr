@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4eef56bd19ed9912625c8ddca3cbf9ff46a59309
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822170"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048075"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -58,7 +58,7 @@ Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutor
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. Gönderme ve alma izinleriyle bir [Yetkilendirme kuralı](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) oluşturun.
+3. Gönderme ve alma izinleriyle bir [Yetkilendirme kuralı](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) oluşturun.
 
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
@@ -76,7 +76,7 @@ Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutor
     >[!NOTE]
     >Şu anda bu komut gruplarını etkileyen Cloud Shell ' de **bilinen bir sorun** var: `az dt route` , `az dt model` , `az dt twin` .
     >
-    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -159,7 +159,7 @@ Daha sonra, bu işlevin kendi olay hub 'larınız ile bağlantı kurmak için ku
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. Gönderme ve alma izinlerine sahip bir [Yetkilendirme kuralı](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) oluşturma
+3. Gönderme ve alma izinlerine sahip bir [Yetkilendirme kuralı](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) oluşturma
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
@@ -203,7 +203,7 @@ Sonra, ikinci olay hub 'ından verileri almak için bir Time Series Insights ör
 
 1. Azure portal, bir Time Series Insights kaynağı oluşturmaya başlayın. 
     1. **PAYG (Önizleme)** fiyatlandırma katmanını seçin.
-    2. Bu ortam için bir **zaman SERISI kimliği** seçmeniz gerekir. Zaman serisi KIMLIĞINIZ, Time Series Insights verilerinizi aramak için kullanacağınız üç değerden fazla olabilir. Bu öğretici için **$dtId**kullanabilirsiniz. [*Bir zaman SERISI kimliği seçmek Için en iyi yöntemler*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid)bölümünde kimlik değeri seçme hakkında daha fazla bilgi edinin.
+    2. Bu ortam için bir **zaman SERISI kimliği** seçmeniz gerekir. Zaman serisi KIMLIĞINIZ, Time Series Insights verilerinizi aramak için kullanacağınız üç değerden fazla olabilir. Bu öğretici için **$dtId**kullanabilirsiniz. [*Bir zaman SERISI kimliği seçmek Için en iyi yöntemler*](../time-series-insights/how-to-select-tsid.md)bölümünde kimlik değeri seçme hakkında daha fazla bilgi edinin.
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin görünümü, vurgulama Time Series Insights":::
 
@@ -213,7 +213,7 @@ Sonra, ikinci olay hub 'ından verileri almak için bir Time Series Insights ör
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure dijital TWINS 'e IoT verileri göndermeye başlama
 
-Time Series Insights veri göndermeye başlamak için Azure Digital TWINS 'te değişen veri değerleriyle Digital ikizi özelliklerini güncelleştirmeye başlamanız gerekir. [Az DT ikizi Update](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) komutunu kullanın.
+Time Series Insights veri göndermeye başlamak için Azure Digital TWINS 'te değişen veri değerleriyle Digital ikizi özelliklerini güncelleştirmeye başlamanız gerekir. [Az DT ikizi Update](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) komutunu kullanın.
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

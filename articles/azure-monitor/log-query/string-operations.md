@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75397463"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki dizelerle çalışma
@@ -46,7 +46,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Dize karşılaştırmaları
 
-İşleç       |Açıklama                         |Büyük/küçük harfe duyarlı|Örnek (verir `true` )
+İşleç       |Açıklama                         |Case-Sensitive|Örnek (verir `true` )
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Eşittir                              |Evet           |`"aBc" == "aBc"`
 `!=`           |Eşit değildir                          |Evet           |`"abc" != "ABC"`
@@ -85,14 +85,14 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 Dizedeki alt dizenin tekrarlamalarını sayar. Düz dizeler ile eşleştirebilir veya normal ifade kullanabilir. Regex eşleştirirken düz dize eşleşmeleri çakışmayabilir.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 ```
 countof(text, search [, kind])
 ```
 
 ### <a name="arguments"></a>Değişkenlerinden
-- `text`-Giriş dizesi 
-- `search`-Düz dize veya metin içinde eşleştirilecek normal ifade.
+- `text` -Giriş dizesi 
+- `search` -Düz dize veya metin içinde eşleştirilecek normal ifade.
 - `kind` - _normal_  |  _Regex_ (varsayılan: normal).
 
 ### <a name="returns"></a>Döndürülenler
@@ -132,10 +132,10 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-- `regex`-Normal ifade.
-- `captureGroup`-Ayıklanacak yakalama grubunu gösteren pozitif bir tamsayı sabiti. Tüm eşleşme için 0, normal ifadede ilk ' (' parantez ') ' ile eşleştirilen değer için 1, sonraki parantezler için 2 veya daha fazla.
-- `text`-Aranacak dize.
-- `typeLiteral`-İsteğe bağlı bir tür değişmez değeri (örneğin, typeof (Long)). Sağlanmışsa ayıklanan alt dize bu türe dönüştürülür.
+- `regex` -Normal ifade.
+- `captureGroup` -Ayıklanacak yakalama grubunu gösteren pozitif bir tamsayı sabiti. Tüm eşleşme için 0, normal ifadede ilk ' (' parantez ') ' ile eşleştirilen değer için 1, sonraki parantezler için 2 veya daha fazla.
+- `text` -Aranacak dize.
+- `typeLiteral` -İsteğe bağlı bir tür değişmez değeri (örneğin, typeof (Long)). Sağlanmışsa ayıklanan alt dize bu türe dönüştürülür.
 
 ### <a name="returns"></a>Döndürülenler
 Belirtilen yakalama grubu captureGroup ile eşleşen alt dize, isteğe bağlı olarak typeLiteral 'a dönüştürüldü.
@@ -174,7 +174,7 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 - *IsEmpty* , bağımsız değişken boş bir dize veya null ise true döndürür (Ayrıca bkz. *IsNull*).
 - bağımsız değişken boş bir dize veya null değilse (Ayrıca bkz. *IsNotNull*), *IsNotEmpty* doğru döndürür. diğer ad: *notEmpty*.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 
 ```Kusto
 isempty(value)
@@ -200,7 +200,7 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 
 Bir URL 'YI bölümlerine böler (protokol, ana bilgisayar, bağlantı noktası, vb.) ve dizeler olarak bölümleri içeren bir sözlük nesnesi döndürür.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 
 ```
 parseurl(urlstring)
@@ -239,9 +239,9 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-- `regex`-Eşleştirilecek normal ifade. ' (' Parantezler ') ' içinde yakalama grupları içerebilir.
-- `rewrite`-Eşleşen Regex ile yapılan eşleştirenlerin yerini değiştirme. Tüm eşleştirmeye başvurmak için \ 0, sonraki yakalama grupları için \ 2 vb. ilk yakalama grubu için \ 1 kullanın.
-- `input_text`-Aranacak giriş dizesi.
+- `regex` -Eşleştirilecek normal ifade. ' (' Parantezler ') ' içinde yakalama grupları içerebilir.
+- `rewrite` -Eşleşen Regex ile yapılan eşleştirenlerin yerini değiştirme. Tüm eşleştirmeye başvurmak için \ 0, sonraki yakalama grupları için \ 2 vb. ilk yakalama grubu için \ 1 kullanın.
+- `input_text` -Aranacak giriş dizesi.
 
 ### <a name="returns"></a>Döndürülenler
 Yeniden yazma değerlendirmelerinde Regex tüm eşleşmelerini değiştirdikten sonraki metin. Eşleşmeler çakışmıyor.
@@ -266,16 +266,16 @@ Etkinlik                                        |silinmeyecek
 
 Verilen bir dizeyi belirtilen sınırlayıcıya göre böler ve sonuçta elde edilen alt dizelerin dizisini döndürür.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 ```
 split(source, delimiter [, requestedIndex])
 ```
 
 ### <a name="arguments"></a>Değişkenlerinden
 
-- `source`-Belirtilen sınırlayıcıya göre bölünecek dize.
-- `delimiter`-Kaynak dizenin bölünebilmesi için kullanılacak sınırlayıcı.
-- `requestedIndex`-İsteğe bağlı sıfır tabanlı dizin. Sağlanmışsa, döndürülen dize dizisi yalnızca o öğeyi (varsa) tutar.
+- `source` -Belirtilen sınırlayıcıya göre bölünecek dize.
+- `delimiter` -Kaynak dizenin bölünebilmesi için kullanılacak sınırlayıcı.
+- `requestedIndex` -İsteğe bağlı sıfır tabanlı dizin. Sağlanmışsa, döndürülen dize dizisi yalnızca o öğeyi (varsa) tutar.
 
 
 ### <a name="examples"></a>Örnekler
@@ -293,7 +293,7 @@ print split("aabbcc", "bb");        // result: ["aa","cc"]
 
 Dize bağımsız değişkenlerini art arda ekler (1-16 bağımsız değişkenlerini destekler).
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 ```
 strcat("string1", "string2", "string3")
 ```
@@ -308,7 +308,7 @@ print strcat("hello", " ", "world") // result: "hello world"
 
 Bir dizenin uzunluğunu döndürür.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 ```
 strlen("text_to_evaluate")
 ```
@@ -323,16 +323,16 @@ print strlen("hello")   // result: 5
 
 Belirtilen dizinden başlayarak, belirli bir kaynak dizeden bir alt dize ayıklar. İsteğe bağlı olarak, istenen alt dizenin uzunluğu belirtilebilir.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 ```
 substring(source, startingIndex [, length])
 ```
 
 ### <a name="arguments"></a>Değişkenlerinden
 
-- `source`-Alt dizenin alınacağı kaynak dize.
-- `startingIndex`-İstenen alt dizenin sıfır tabanlı başlangıç karakter konumu.
-- `length`-Döndürülen alt dizenin istenen uzunluğunu belirtmek için kullanılabilen isteğe bağlı bir parametre.
+- `source` -Alt dizenin alınacağı kaynak dize.
+- `startingIndex` -İstenen alt dizenin sıfır tabanlı başlangıç karakter konumu.
+- `length` -Döndürülen alt dizenin istenen uzunluğunu belirtmek için kullanılabilen isteğe bağlı bir parametre.
 
 ### <a name="examples"></a>Örnekler
 ```Kusto
@@ -347,7 +347,7 @@ print substring("ABCD", 0, 2);  // result: "AB"
 
 Verilen bir dizeyi tüm küçük veya büyük harflere dönüştürür.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 ```
 tolower("value")
 toupper("value")

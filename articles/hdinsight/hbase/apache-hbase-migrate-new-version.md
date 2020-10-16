@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504001"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase kümesini yeni bir sürüme geçirme
@@ -32,16 +32,16 @@ Apache HBase 'i yükseltmeden önce kaynak ve hedef kümelerindeki HBase sürüm
 
 | Uyumluluk türü | Ana sürüm| İkincil sürüm | Patch |
 | --- | --- | --- | --- |
-| İstemci-sunucu hat uyumluluğu | H | E | Y |
-| Sunucu-sunucu uyumluluğu | H | E | Y |
-| Dosya biçimi uyumluluğu | H | E | Y |
-| İstemci API 'SI uyumluluğu | H | E | Y |
+| Client-Server hat uyumluluğu | H | E | E |
+| Server-Server uyumluluğu | H | E | E |
+| Dosya biçimi uyumluluğu | H | E | E |
+| İstemci API 'SI uyumluluğu | H | E | E |
 | İstemci ikili uyumluluğu | N | H | E |
 | **Sunucu tarafı sınırlı API uyumluluğu** |  |  |  |
-| Dengeli | H | E | Y |
+| Dengeli | H | E | E |
 | Mektedir | N | H | E |
 | Gelmesine | N | N | N |
-| Bağımlılık uyumluluğu | H | E | Y |
+| Bağımlılık uyumluluğu | H | E | E |
 | İşletimsel uyumluluk | N | H | E |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Aynı Apache HBase ana sürümüyle yükselt

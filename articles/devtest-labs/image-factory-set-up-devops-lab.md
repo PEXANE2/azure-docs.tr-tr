@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevOps 'tan (eski adıyla Visual Studio Team Ser
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476147"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps’tan bir görüntü fabrikası çalıştırma
@@ -26,7 +26,7 @@ Takımınızın görüntü fabrikasını benimsedeki bir sonraki adım, nelerin 
     - Yapılandırmada. Görüntü fabrikası için girişler
         - Altın Dengörüntüler. Bu klasör, özel görüntülerin tanımlarını temsil eden JSON dosyalarını içerir.
         - Üzerinde Labs.js. Takım, belirli özel görüntüleri almak için kaydolan dosya.
-- Betikleri. Görüntü fabrikası için altyapı.
+- Betikler. Görüntü fabrikası için altyapı.
 
 Bu bölümdeki makaleler, bu betikler ve şablonlar hakkında daha fazla ayrıntı sağlar.
 
@@ -107,7 +107,7 @@ Yapı görevini seçerseniz, sağ bölmedeki, doldurulması gereken tüm ayrınt
 3. **Hizmet uç noktasını**seçin.
 4. **Betik yolu**için... seçeneğini belirleyin **. (üç nokta)** sağ tarafta.
 5. **MakeGoldenImageVMs.ps1** betiğe gidin.
-6. Betik parametreleri şöyle görünmelidir:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
+6. Betik parametreleri şöyle görünmelidir: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
     ![Derleme tanımını doldurun](./media/set-up-devops-lab/complete-build-definition.png)
 

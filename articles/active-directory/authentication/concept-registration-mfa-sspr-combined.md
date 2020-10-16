@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 71900bc3741c25299402e31057ea2237cd0a4637
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718926"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965157"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory genel bakış için Birleşik güvenlik bilgileri kaydı
 
@@ -53,16 +53,16 @@ Birleşik kayıt aşağıdaki kimlik doğrulama yöntemlerini ve eylemleri deste
 
 | Yöntem | Kaydol | Değiştir | Sil |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Evet |
-| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Evet |
-| Donanım belirteci | Hayır | Hayır | Evet |
-| Telefon | Evet | Evet | Evet |
-| Alternatif telefon | Evet | Evet | Evet |
+| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Yes |
+| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Yes |
+| Donanım belirteci | Hayır | Hayır | Yes |
+| Telefon | Yes | Yes | Yes |
+| Alternatif telefon | Yes | Yes | Yes |
 | Ofis telefonu | Hayır | Hayır | Hayır |
-| E-posta | Evet | Evet | Evet |
-| Güvenlik soruları | Evet | Hayır | Evet |
-| Uygulama parolaları | Evet | Hayır | Evet |
-| FIDO2 güvenlik anahtarları<br />*Yalnızca [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasından yönetilen mod*| Evet | Evet | Evet |
+| E-posta | Yes | Yes | Yes |
+| Güvenlik soruları | Yes | Hayır | Yes |
+| Uygulama parolaları | Yes | Hayır | Yes |
+| FIDO2 güvenlik anahtarları<br />*Yalnızca [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasından yönetilen mod*| Yes | Yes | Yes |
 
 > [!NOTE]
 > Uygulama parolaları yalnızca Multi-Factor Authentication için zorlanan kullanıcılar tarafından kullanılabilir. Uygulama parolaları, koşullu erişim ilkesi aracılığıyla Multi-Factor Authentication için etkinleştirilen kullanıcılar tarafından kullanılamaz.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 72658a97f89b14529e8ccb3639cb1b78f1b92316
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91848828"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078485"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -43,6 +43,96 @@ Yan tümcesini kullanarak bir sorgudaki birkaç "üst" öğeyi seçebilirsiniz `
 SELECT TOP (5)
 FROM DIGITALTWINS
 WHERE ...
+```
+
+### <a name="count-items"></a>Öğe sayısı
+
+Bir sonuç kümesindeki öğelerin sayısını yan tümcesini kullanarak saymanız gerekir `Select COUNT` :
+
+```sql
+SELECT COUNT() 
+FROM DIGITALTWINS
+``` 
+
+`WHERE`Belirli bir ölçütü karşılayan öğelerin sayısını saymak için bir yan tümce ekleyin. İkizi modelinin türüne göre uygulanan bir filtre ile saymaya yönelik bazı örnekler aşağıda verilmiştir (Bu söz dizimi hakkında daha fazla bilgi için, aşağıdaki [*modele göre sorgulama*](#query-by-model) bölümüne bakın):
+
+```sql
+SELECT COUNT() 
+FROM DIGITALTWINS 
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') 
+SELECT COUNT() 
+FROM DIGITALTWINS c 
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
+```
+
+`COUNT`Yan tümcesiyle birlikte de kullanabilirsiniz `JOIN` . Burada Oda 1 ve 2 ' nin açık panellerinde bulunan tüm hafif bultları sayan bir sorgu verilmiştir:
+
+```sql
+SELECT COUNT()  
+FROM DIGITALTWINS Room  
+JOIN LightPanel RELATED Room.contains  
+JOIN LightBulb RELATED LightPanel.contains  
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
+AND Room.$dtId IN ['room1', 'room2'] 
+```
+
+### <a name="specify-return-set-with-projections"></a>Yansıtmalar ile dönüş kümesi belirtme
+
+Projeksiyonlar kullanarak, bir sorgunun hangi sütunları döndürdönebileceği seçebilirsiniz. 
+
+>[!NOTE]
+>Şu anda karmaşık özellikler desteklenmez. Projeksiyon özelliklerinin geçerli olduğundan emin olmak için projeksiyonu bir denetim ile birleştirin `IS_PRIMITIVE` . 
+
+Aşağıda, TWINS ve ilişkiler döndürmek için projeksiyonu kullanan bir sorgu örneği verilmiştir. Aşağıdaki *sorgu, bir* *üretici kimliği* olan *fabrikasının* bir *Factory. Customer*ilişkisi aracılığıyla *tüketiciyle* *ilgili olduğu ve* bu ilişki *kenar*olarak sunulur. *Edge*
+
+```sql
+SELECT Consumer, Factory, Edge 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+```
+
+Ayrıca, bir ikizi özelliğini döndürmek için projeksiyonu de kullanabilirsiniz. Aşağıdaki sorgu, *Factory. Customer*ile ilgili bir ilişki aracılığıyla BIR *ABC* kimliğiyle *fabrikaya* ilişkin *tüketicilerle* ilgili *ad* özelliğini projeler. 
+
+```sql
+SELECT Consumer.name 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Consumer.name)
+```
+
+Ayrıca, bir ilişkinin özelliğini döndürmek için projeksiyonu de kullanabilirsiniz. Önceki örnekte olduğu gibi, aşağıdaki sorgu, Factory ile ilgili *tüketicilerinin* *Name* özelliğini, *Factory. Customer*ilişkisi aracılığıyla bir *ABC* *kimliğiyle birlikte projeler* ; Ancak artık, *Prop1* ve *Prop2*ilişkisinin iki özelliğini de döndürür. Bu, ilişki *ucunu* adlandırarak ve özelliklerini toplarken bunu yapar.  
+
+```sql
+SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
+```
+
+Ayrıca, projeksiyonlarla sorguları basitleştirmek için takma adlar kullanabilirsiniz.
+
+Aşağıdaki sorgu, önceki örnekle aynı işlemleri yapar, ancak özellik adları,, ve olarak diğer ad `consumerName` `first` `second` `factoryArea` . 
+ 
+```sql
+SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)" 
+```
+
+Yukarıdaki gibi aynı kümeyi sorgulayan, ancak yalnızca *Consumer.Name* özelliğini projeler `consumerName` ve bir Ikizi olarak tüm *fabrikalara* bağlayan benzer bir sorgu aşağıda verilmiştir. 
+
+```sql
+SELECT Consumer.name AS consumerName, Factory 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) 
 ```
 
 ### <a name="query-by-property"></a>Özelliğe göre sorgu
@@ -178,7 +268,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 Tek bir sorguda daha fazla ayrıntı dahil etmek için, birleşim işleçlerini kullanarak yukarıdaki sorgu türlerinden herhangi birini **birleştirebilirsiniz** . Aynı anda birden fazla ikizi tanımlayıcısı için sorgu oluşturan bileşik sorguların bazı ek örnekleri aşağıda verilmiştir.
 
-| Açıklama | Sorgu |
+| Description | Sorgu |
 | --- | --- |
 | *Oda 123* ' nin sahip olduğu cihazların dışında, işleç rolüne sunan mxyonga cihazlarını döndürün | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | KIMLIĞI *ID1* olan başka bir Ikizi ile *Contains* adlı bir ilişkiye sahip olan TWINS 'i alma | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |

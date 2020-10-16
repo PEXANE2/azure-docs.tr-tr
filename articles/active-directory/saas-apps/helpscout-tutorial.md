@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Öğretici: yardım Scout ile Azure Active Directory tümleştirme
@@ -83,7 +83,7 @@ Azure AD çoklu oturum açmayı yardım Scout ile birlikte yapılandırmak için
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -104,7 +104,7 @@ Azure AD çoklu oturum açmayı yardım Scout ile birlikte yapılandırmak için
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://secure.helpscout.net/members/login/`
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -191,7 +191,7 @@ Bu bölümde, yardım Scout 'a erişim vererek Azure çoklu oturum açma özelli
 
 1. Bu, sizi SAML ayarları bölümüne götürür ve aşağıdaki adımları gerçekleştirir:
 
-    ![Ekran görüntüsü, belirtilen bilgileri girebileceğiniz çoklu oturum açma sekmesini gösterir.](./media/helpscout-tutorial/settings3.png)
+    ![Ekran görüntüsü, belirtilen bilgileri girdiğiniz tek Sign-On sekmesini gösterir.](./media/helpscout-tutorial/settings3.png)
 
     a. **Geri gönderme URL 'si (onaylama tüketici hizmeti URL 'si)** değerini kopyalayın ve değeri Azure Portal **temel SAML yapılandırması** bölümündeki **yanıt URL 'si** metin kutusuna yapıştırın.
 
@@ -199,9 +199,9 @@ Bu bölümde, yardım Scout 'a erişim vererek Azure çoklu oturum açma özelli
 
 1. **SAML etkinleştir** ' i açın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Ekran görüntüsü, SAML 'Yi etkinleştirdiğiniz ve diğer bilgileri ekleyebileceğiniz çoklu oturum açma sekmesini gösterir.](./media/helpscout-tutorial/settings4.png)
+    ![Ekran görüntüsü, SAML 'yi etkinleştirdiğiniz ve diğer bilgileri ekleyebileceğiniz tek Sign-On sekmesini gösterir.](./media/helpscout-tutorial/settings4.png)
 
-    a. **Çoklu oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    a. **Tek Sign-On URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
     b. Azure portal 'ten indirilen **sertifikayı (base64)** karşıya yüklemek Için **sertifikayı karşıya yükle** ' ye tıklayın.
 

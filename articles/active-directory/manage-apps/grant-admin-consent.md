@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069586"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Uygulamaya kiracı genelinde yönetici onayı verme
@@ -25,7 +25,7 @@ Bir uygulamaya kiracı genelinde yönetici onayı vererek Kullanıcı deneyimini
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kiracı genelinde yönetici onayı verme, [genel yönetici](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)veya [bulut uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)olarak oturum açmanızı gerektirir.
 

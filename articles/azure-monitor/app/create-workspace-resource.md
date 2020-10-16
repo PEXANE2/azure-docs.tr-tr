@@ -1,22 +1,20 @@
 ---
 title: Yeni bir Azure Izleyici Application Insights çalışma alanı tabanlı kaynak oluştur | Microsoft Docs
 description: Yeni Azure Izleyici Application Insights çalışma alanı tabanlı kaynakları etkinleştirmek için gereken adımlar hakkında bilgi edinin.
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/06/2020
+ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894543"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945422"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynakları
 
 Çalışma alanı tabanlı kaynaklar Application Insights ve Log Analytics arasında tam tümleştirmeyi destekler. Artık Application Insights telemetrinizi ortak bir Log Analytics çalışma alanına göndermenizi seçebilirsiniz. Bu, uygulama, altyapı ve platform günlüklerinin tek bir birleştirilmiş konumda tutulması sırasında tüm Log Analytics özelliklerine tam erişim sağlar.
 
-Bu Ayrıca, kaynaklarınız genelinde ortak rol tabanlı Access Control (RBAC) sağlar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
+Bu ayrıca kaynaklarınız genelinde ortak Role-Based Access Control (RBAC) sağlar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
 
 > [!NOTE]
 > Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu Log Analytics çalışma alanı üzerinden faturalandırılır. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) .
@@ -83,7 +81,7 @@ Aynı durum, ASP.NET ve ASP.NET Core için Visual Studio 'daki Application Insig
 
 ## <a name="creating-a-resource-automatically"></a>Otomatik olarak kaynak oluşturma
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle şunu çalıştırmanız gerekir:
 
@@ -206,6 +204,10 @@ Application Insights kaynak bölmesi içinden **Özellikler**  >  **çalışma a
 ## <a name="export-telemetry"></a>Telemetriyi dışarı aktarma
 
 Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynaklar için desteklenmez. Bunun yerine, Application Insights kaynağınız içinden **Tanılama ayarları**  >  **Tanılama ayarını Ekle** ' yi seçin. Bir depolama hesabına arşivlemek veya bir Azure Olay Hub 'ına akış yapmak için tüm tabloları veya tabloların bir alt kümesini seçebilirsiniz.
+
+> [!NOTE]
+> Şu anda telemetri dışarı aktarma için ek ücret alınmaz. Bu özellik için fiyatlandırma bilgileri, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)kullanıma sunulacaktır.  Faturalandırma başlamadan önce Bildirimler gönderilir. Bildirim süresinden sonra kullanmaya devam etmeyi tercih etmeniz gerekir <feature name> , ilgili ücret üzerinden faturalandırılırsınız. 
+ 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

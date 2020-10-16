@@ -17,10 +17,10 @@ ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855378"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama
@@ -239,7 +239,7 @@ Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 | Küme ağ adı | SOFS-CL | 10.0.6.13 | yok |
 | SAP genel ana bilgisayar adı | sapglobal | Tüm küme düğümlerinin IP 'lerini kullan | yok |
 
-**Tablo 3**: genişleme dosya sunucusu kümesi
+**Tablo 3**: Scale-Out dosya sunucusu kümesi
 
 
 ## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Bir SAP ASCS/SCS kümesi, bir veritabanı yönetim sistemi (DBMS) kümesi ve SAP uygulama sunucusu örnekleri için VM dağıtma
@@ -259,9 +259,9 @@ Azure altyapısını hazırlamak için aşağıdakileri yapın:
 * Windows Server 2016 kullanırken, [Azure bulut tanığını][deploy-cloud-witness]yapılandırmanızı öneririz.
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Genişleme Dosya Sunucusu kümesini el ile dağıtma 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Scale-Out dosya sunucusu kümesini el ile dağıtma 
 
-Aşağıdaki kodu yürüterek, Microsoft Genişleme Dosya Sunucusu kümesini [Azure 'daki blog depolama alanları doğrudan][ms-blog-s2d-in-azure]açıklanan şekilde el ile dağıtabilirsiniz:  
+Aşağıdaki kodu yürüterek, Microsoft Scale-Out dosya sunucusu kümesini [Azure 'daki blog depolama alanları doğrudan][ms-blog-s2d-in-azure]bölümünde açıklandığı gibi el ile dağıtabilirsiniz:  
 
 
 ```powershell
@@ -294,25 +294,25 @@ $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-## <a name="deploy-scale-out-file-server-automatically"></a>Genişleme Dosya Sunucusu otomatik olarak dağıt
+## <a name="deploy-scale-out-file-server-automatically"></a>Scale-Out dosya sunucusunu otomatik olarak dağıt
 
-Ayrıca, mevcut bir sanal ağ ve Active Directory ortamında Azure Resource Manager şablonları kullanarak Genişleme Dosya Sunucusu dağıtımını otomatik hale getirebilirsiniz.
+Ayrıca, var olan bir sanal ağ ve Active Directory ortamında Azure Resource Manager şablonları kullanarak Scale-Out dosya sunucusu dağıtımını otomatik hale getirebilirsiniz.
 
 > [!IMPORTANT]
-> Üç yönlü yansıtmayla Genişleme Dosya Sunucusu için üç veya daha fazla küme düğümü kullanmanızı öneririz.
+> Üç yönlü yansıtmayla Scale-Out dosya sunucusu için üç veya daha fazla küme düğümü kullanmanızı öneririz.
 >
-> Genişleme Dosya Sunucusu Kaynak Yöneticisi şablonu Kullanıcı arabiriminde, VM sayısını belirtmeniz gerekir.
+> Scale-Out dosya sunucusu Kaynak Yöneticisi Şablon Kullanıcı arabiriminde, VM sayısını belirtmeniz gerekir.
 >
 
 ### <a name="use-managed-disks"></a>Yönetilen diskleri kullanma
 
-Depolama Alanları Doğrudan ve Azure tarafından yönetilen disklerle Genişleme Dosya Sunucusu dağıtmaya yönelik Azure Resource Manager şablonu [GitHub][arm-sofs-s2d-managed-disks]' da kullanılabilir.
+Depolama Alanları Doğrudan ve Azure tarafından yönetilen disklerle Scale-Out dosya sunucusu dağıtmaya yönelik Azure Resource Manager şablonu [GitHub][arm-sofs-s2d-managed-disks]' da kullanılabilir.
 
 Yönetilen diskleri kullanmanızı öneririz.
 
-![Şekil 1: yönetilen diskler içeren Genişleme Dosya Sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı][sap-ha-guide-figure-8010]
+![Şekil 1: yönetilen disklerle Scale-Out dosya sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı][sap-ha-guide-figure-8010]
 
-_**Şekil 1**: yönetilen diskler içeren genişleme dosya sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı_
+_**Şekil 1**: yönetilen disklerle Scale-Out dosya sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı_
 
 Şablonda şunları yapın:
 1. **VM sayısı** kutusunda, en az **2**sayısını girin.
@@ -322,17 +322,17 @@ _**Şekil 1**: yönetilen diskler içeren genişleme dosya sunucusu Kaynak Yöne
 
 ### <a name="use-unmanaged-disks"></a>Yönetilmeyen diskleri kullanma
 
-Depolama Alanları Doğrudan ve Azure yönetilmeyen disklerle Genişleme Dosya Sunucusu dağıtmaya yönelik Azure Resource Manager şablonu [GitHub][arm-sofs-s2d-non-managed-disks]' da kullanılabilir.
+Depolama Alanları Doğrudan ve Azure yönetilmeyen disklerle Scale-Out dosya sunucusu dağıtmaya yönelik Azure Resource Manager şablonu [GitHub][arm-sofs-s2d-non-managed-disks]' da kullanılabilir.
 
-![Şekil 2: yönetilen diskler olmadan Genişleme Dosya Sunucusu Azure Resource Manager şablonu için Kullanıcı arabirimi ekranı][sap-ha-guide-figure-8011]
+![Şekil 2: yönetilen diskler olmadan Scale-Out dosya sunucusu Azure Resource Manager şablonu için Kullanıcı arabirimi ekranı][sap-ha-guide-figure-8011]
 
-_**Şekil 2**: yönetilen diskler olmadan genişleme dosya sunucusu Azure Resource Manager şablonu için Kullanıcı arabirimi ekranı_
+_**Şekil 2**: yönetilen diskler olmadan Scale-Out dosya sunucusu Azure Resource Manager şablonu için Kullanıcı arabirimi ekranı_
 
 **Depolama hesabı türü** kutusunda **Premium Depolama**' yı seçin. Diğer tüm ayarlar, yönetilen diskler ayarlarıyla aynıdır.
 
 ## <a name="adjust-cluster-timeout-settings"></a>Küme zaman aşımı ayarlarını ayarla
 
-Windows Genişleme Dosya Sunucusu kümesini başarıyla yükledikten sonra, yük devretme algılaması için zaman aşımı eşiklerini Azure 'daki koşullara uyarlayabilirsiniz. Değiştirilecek parametreler, [Yük devretme kümesi ağ eşiklerini ayarlama][tuning-failover-cluster-network-thresholds]bölümünde belgelenmiştir. Kümelenmiş sanal makinelerinizin aynı alt ağda olduğunu varsayarsak, aşağıdaki parametreleri şu değerlerle değiştirin:
+Windows Scale-Out dosya sunucusu kümesini başarıyla yükledikten sonra, yük devretme algılaması için zaman aşımı eşiklerini Azure 'daki koşullara uyarlayabilirsiniz. Değiştirilecek parametreler, [Yük devretme kümesi ağ eşiklerini ayarlama][tuning-failover-cluster-network-thresholds]bölümünde belgelenmiştir. Kümelenmiş sanal makinelerinizin aynı alt ağda olduğunu varsayarsak, aşağıdaki parametreleri şu değerlerle değiştirin:
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15

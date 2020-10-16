@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323734"
 ---
 # <a name="system-requirements"></a>Sistem gereksinimleri
@@ -68,7 +68,7 @@ Ağ sorunlarını gidermek için [sorun giderme kılavuzuna](../resources/troubl
 
 Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) aşağıdaki bağlantı noktalarını engellemediğinden emin olun:
 
-| Bağlantı noktası              | Protokol | İzin Ver    | Description |
+| Bağlantı noktası              | Protokol | İzin Ver    | Açıklama |
 |-------------------|----------|----------|-------------|
 | 50051             | TCP      | Tarafına | İlk bağlantı (HTTP el sıkışma) |
 | 8266              | UDP      | Tarafına | Veri aktarımı |

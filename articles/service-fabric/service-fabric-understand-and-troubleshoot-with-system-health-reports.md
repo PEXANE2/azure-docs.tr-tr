@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260187"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Sorun gidermek için sistem durum raporlarını kullanma
@@ -647,7 +647,7 @@ HealthEvents          :
 
 - **Istatefulservicereplica. ChangeRole (P)**: en yaygın durum, hizmetin öğesinden bir görev döndürmediğinde olur `RunAsync` .
 
-Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örnek:
+Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örneğin:
 
 - **Ireplicator. catch Upreplicaset**: Bu uyarı iki işlemlerden birini gösterir. Yetersiz çoğaltma yok. Bu durumun bu olup olmadığını görmek için, bir veya daha fazla yeniden yapılandırma için bölümdeki çoğaltmaların çoğaltma durumuna veya System.FM sistem durumu raporuna bakın. Veya çoğaltmalar, işleme işlemleri değildir. PowerShell cmdlet 'i `Get-ServiceFabricDeployedReplicaDetail` Tüm çoğaltmaların ilerlemesini belirlemede kullanılabilir. Sorun, `LastAppliedReplicationSequenceNumber` değeri birincil değerinin arkasında olan çoğaltmalarla birlikte kalıyor `CommittedSequenceNumber` .
 
@@ -773,7 +773,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>İndirme
+### <a name="download"></a>İndir
 Uygulama paketi indirmesi başarısız olursa System. Hosting bir hata bildirir.
 
 * **SourceId**: System. Hosting
@@ -851,7 +851,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>İndirme
+### <a name="download"></a>İndir
 System. Hosting, hizmet paketi indirmesi başarısız olursa bir hata bildiriyor.
 
 * **SourceId**: System. Hosting

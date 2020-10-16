@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117626"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v 1.0 uç noktasındaki izinler ve onay
@@ -82,7 +82,7 @@ Azure AD'deki uygulamalar gerekli kaynaklara veya API'lere erişim kazanmak içi
   
 * **Yönetici onayı** - Uygulamanızın bazı yüksek ayrıcalıklı izinlere erişmeye ihtiyacı olması durumunda gereklidir. Yönetici onayı, uygulamalara veya kullanıcılara kuruluşunuzun yüksek ayrıcalıklı verilerine erişme yetkisi verilmeden önce yöneticilerin bazı ek denetimler yapabilmesini sağlar. [Yönetici onayı verme hakkında daha fazla bilgi edinin](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 ### <a name="client-best-practices"></a>İstemci en iyi uygulamaları
 
@@ -98,11 +98,11 @@ Azure AD'deki uygulamalar gerekli kaynaklara veya API'lere erişim kazanmak içi
 - Kaynaklar `Read` ve `ReadWrite` izinlerini ayrı ayrı ve açıkça tanımlamalıdır.
 - Kaynaklar, kullanıcı sınırlarının ötesinde veri erişimine olanak tanıyan tüm izinleri `Admin` izinleri olarak işaretlemelidir.
 - Kaynakların `Subject.Permission[.Modifier]` adlandırma modelini kullanması gerekir:
-  - `Subject`kullanılabilir veri türüne karşılık gelir
-  - `Permission`kullanıcının bu verileri üzerinde işlem yapması için eyleme karşılık gelir
-  - `Modifier`farklı bir iznin özelleştirmelerini anlatmak için isteğe bağlı olarak kullanılır
+  - `Subject` kullanılabilir veri türüne karşılık gelir
+  - `Permission` kullanıcının bu verileri üzerinde işlem yapması için eyleme karşılık gelir
+  - `Modifier` farklı bir iznin özelleştirmelerini anlatmak için isteğe bağlı olarak kullanılır
     
-    Örnek:
+    Örneğin:
   - Mail.Read - Kullanıcıların postayı okumasına izin verir.
   - Mail.ReadWrite - Kullanıcıların postayı yazmasına veya okumasına izin verir.
   - Mail.ReadWrite.All - Yöneticinin veya kullanıcının kuruluştaki tüm postaya erişmesine izin verir.

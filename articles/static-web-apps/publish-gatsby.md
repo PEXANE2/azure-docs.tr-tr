@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
 ms.openlocfilehash: e24a2a19eb39e2c6c7612631ad98f95cb4c5b9ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250173"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Gatsby sitesi yayımlama
@@ -102,7 +102,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _SKU_için **ücretsiz**' i seçin.
 
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Ayrıntılar dolduruldu":::
+   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
 
 1. **GitHub Ile oturum aç** düğmesine tıklayın.
 
@@ -112,7 +112,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _Dal_ için **ana öğe**seçin.
 
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
+   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
 
 ### <a name="build"></a>Yapı
 
@@ -126,7 +126,7 @@ Sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandır
 
    Şu anda bir API dağıtmadığından, _API konumu_ için bir değer gerekli değildir.
 
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Derleme ayarları":::
+   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
 
 ### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
@@ -138,7 +138,7 @@ Sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandır
 
 1. Kaynak ekranında, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın. GitHub eyleminin tamamlanabilmesi için bir dakika veya iki dakika beklemeniz gerekebilir.
 
-   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Dağıtılan uygulama":::
+   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

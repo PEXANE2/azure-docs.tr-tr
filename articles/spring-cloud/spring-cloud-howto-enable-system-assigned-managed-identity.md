@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: bff98ea3470110bc29f75361fb3a2adc685e2602
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1802708c3b9e15a2459f29d15da72f2dc1da1a4f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888570"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093999"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme
 
@@ -23,7 +23,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure Spring Cloud uygulamanız gi
 Bu makalede, Azure portal ve CLı (Version 0.2.4 'ten ulaşılabilir) kullanılarak bir Azure yay bulutu uygulaması için sistem tarafından atanan yönetilen kimliklerin nasıl etkinleştirileceği ve devre dışı bırakılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Azure kaynakları için Yönetilen kimlikler hakkında bilgi sahibi değilseniz bkz. [genel bakış bölümü](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Azure kaynakları için Yönetilen kimlikler hakkında bilgi sahibi değilseniz bkz. [genel bakış bölümü](../active-directory/managed-identities-azure-resources/overview.md).
 Dağıtılmış bir Azure yay bulutu örneğine ihtiyacınız olacak. [Azure CLI kullanarak dağıtmak Için hızlı](spring-cloud-quickstart.md)başlangıcı izleyin.
 
 ## <a name="add-a-system-assigned-identity"></a>Sistem tarafından atanan kimlik ekleme
@@ -59,9 +59,9 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ## <a name="obtain-tokens-for-azure-resources"></a>Azure kaynakları için belirteçleri alma
 Bir uygulama, Azure Key Vault gibi Azure Active Directory tarafından korunan diğer kaynaklara erişmek için belirteçleri almak üzere kendi yönetilen kimliğini kullanabilir. Bu belirteçler, uygulamanın belirli bir kullanıcısı yerine kaynağa erişen uygulamayı temsil eder.
 
-[Uygulamanızdaki erişime izin vermek için hedef kaynağı yapılandırmanız](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal)gerekebilir. Örneğin, Key Vault erişmek için bir belirteç istemeniz durumunda uygulamanızın kimliğini içeren bir erişim ilkesi eklediğinizden emin olun. Aksi takdirde, belirteci içerse bile Key Vault çağrılarınız reddedilir. Azure Active Directory belirteçlerini destekleyen kaynaklar hakkında daha fazla bilgi edinmek için bkz. [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication).
+[Uygulamanızdaki erişime izin vermek için hedef kaynağı yapılandırmanız](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)gerekebilir. Örneğin, Key Vault erişmek için bir belirteç istemeniz durumunda uygulamanızın kimliğini içeren bir erişim ilkesi eklediğinizden emin olun. Aksi takdirde, belirteci içerse bile Key Vault çağrılarınız reddedilir. Azure Active Directory belirteçlerini destekleyen kaynaklar hakkında daha fazla bilgi edinmek için bkz. [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Azure Spring Cloud, Azure sanal makinesi ile belirteç alımı için aynı uç noktayı paylaşır. Belirteç almak için Java SDK 'sını veya Spring Boot başlangıçlarını kullanmanızı öneririz.  Bkz. [sanal makine belirtecini](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) çeşitli kod ve betik örnekleri için kullanma ve belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda yönergeler.
+Azure Spring Cloud, Azure sanal makinesi ile belirteç alımı için aynı uç noktayı paylaşır. Belirteç almak için Java SDK 'sını veya Spring Boot başlangıçlarını kullanmanızı öneririz.  Bkz. [sanal makine belirtecini](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) çeşitli kod ve betik örnekleri için kullanma ve belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda yönergeler.
 
 Önerilir: belirteçleri almak için Java SDK 'sını veya Spring Boot başlangıçlarını kullanın.  [Sonraki adımlarda](#next-steps)bulunan örneklere bakın.
 
@@ -88,4 +88,3 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 * [Spring Boot Starter 'da yönetilen kimliklerle Azure Key Vault erişme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi edinin](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [Java SDK ile yönetilen kimlikler kullanma](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
-

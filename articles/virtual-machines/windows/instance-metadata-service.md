@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 51310b1569982e0b71f39dede0d4d7dbefd1a3c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086717"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975544"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -47,13 +47,15 @@ Aşağıda, bir örneğin tüm meta verilerini almaya yönelik örnek kod, belir
 **İstek**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01 | ConvertTo-Json
 ```
+> [!NOTE]
+> `-NoProxy`Bayrak yalnızca PowerShell 6 veya daha büyük bir sürümünde kullanılabilir. Proxy Kurulumu yoksa bayrağını atlayabilirsiniz.
 
 **Response**
 
 > [!NOTE]
-> Yanıt bir JSON dizesidir. Aşağıdaki örnek yanıt, okunabilirlik için oldukça yazdırılır.
+> Yanıt bir JSON dizesidir. REST sorgumuzu, `ConvertTo-Json` düzgün yazdırma için cmdlet 'i aracılığıyla yönelttik.
 
 ```json
 {
@@ -250,8 +252,8 @@ teklif | VM görüntüsü için teklif bilgileri ve yalnızca Azure görüntü G
 osType | Linux veya Windows | 2017-04-02
 Placementgroupıd | Sanal makine ölçek kümesinin [yerleştirme grubu](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren [plan planlayın](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
-platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
-platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
+platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](../manage-availability.md) | 2017-04-02
+platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](../manage-availability.md) | 2017-04-02
 sağlayıcısını | VM sağlayıcısı | 2018-10-01
 publicKeys | VM ve yollara atanan [ortak anahtarların koleksiyonu](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 yayımcı | VM görüntüsünün yayımcısı | 2017-04-02
@@ -262,7 +264,7 @@ securityProfile. secureBootEnabled | SANAL makinede UEFı güvenli önyükleme �
 securityProfile. Virtualaltpmenabled | Sanal Güvenilir Platform Modülü (TPM) VM 'de etkin olup olmadığını belirler | 2020-06-01
 storageProfile | [Depolama profilini](#storage-metadata) gör | 2019-06-01
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
-etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
+tags | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | Daha kolay programlı ayrıştırma için JSON dizisi olarak biçimlendirilen Etiketler  | 2019-06-04
 sürüm | VM görüntüsünün sürümü | 2017-04-02
 Kimliği | VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
@@ -426,7 +428,7 @@ Azure ortamının bulutu ve değerleri aşağıda listelenmiştir.
 ---------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ## <a name="network-metadata"></a>Ağ meta verileri 
@@ -747,7 +749,7 @@ Bulut | Sertifika
 ------|------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/) | *. metadata.azure.com
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)          | *. metadata.azure.us
-[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                | *. metadata.microsoftazure.de
 
 > [!NOTE]

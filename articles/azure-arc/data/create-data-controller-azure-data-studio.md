@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273152"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio veri denetleyicisi oluşturma
@@ -22,7 +22,7 @@ Dağıtım Sihirbazı ve Not defterleri aracılığıyla Azure Data Studio kulla
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Kubernetes kümesine erişmeniz ve kubeconfig dosyanızı, dağıtmak istediğiniz Kubernetes kümesine işaret etmek üzere yapılandırmış olmanız gerekir.
 - **Azure Arc** ve **Azure Data CLI**adlı Azure Data Studio uzantıları **Azure Data Studio** dahil [istemci araçlarını yüklemeniz](install-client-tools.md) gerekir.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261897"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963304"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Sanal makinelerin yaşam döngüsü ve durumları
 
@@ -31,7 +31,7 @@ Aşağıdaki tabloda her örnek durumunun açıklaması verilmiştir ve örnek k
 :::row:::
    :::column span="":::
 
-   **Durumunda**
+   **Durum**
    
    :::column-end:::
    :::column span="":::
@@ -232,7 +232,7 @@ Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, g
 :::row:::
    :::column span="":::
 
-   **Durumunda**
+   **Durum**
    
    :::column-end:::
    :::column span="2":::
@@ -418,13 +418,13 @@ Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, g
 
 ## <a name="vm-instance-view"></a>VM örnek görünümü
 
-Örnek görünümü API 'SI, VM çalışma durumu bilgilerini sağlar. Daha fazla bilgi için bkz. [sanal makineler-örnek görüntüleme](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) API 'si belgeleri.
+Örnek görünümü API 'SI, VM çalışma durumu bilgilerini sağlar. Daha fazla bilgi için bkz. [sanal makineler-örnek görüntüleme](/rest/api/compute/virtualmachines/instanceview) API 'si belgeleri.
 
 Azure Kaynak Gezgini, VM çalıştırma durumunu görüntülemek için basit bir kullanıcı arabirimi sağlar: [Kaynak Gezgini](https://resources.azure.com/).
 
 Sağlama durumları VM özellikleri ve örnek görünümünde görülebilir. Güç durumları VM 'nin örnek görünümünde kullanılabilir.
 
-Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
+Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

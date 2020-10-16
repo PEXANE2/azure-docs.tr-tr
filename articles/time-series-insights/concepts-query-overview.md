@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: e9491757852b42faef40c107540e0ce3da3c7f99
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650910"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 'dan veri sorgulama
@@ -24,7 +24,7 @@ Azure Time Series Insights Gen2, genel yüzey API 'Leri aracılığıyla ortamda
 Azure Time Series Insights Gen2 ' de üç birincil API kategorisi mevcuttur:
 
 * **Ortam API 'leri**: Bu apı 'Ler Azure Time Series Insights Gen2 ortamındaki sorguları etkinleştirir. Bunlar, arayanın erişiminin ve ortam meta verilerinde erişebileceği ortamların listesini toplamak için kullanılabilir.
-* **Zaman serisi modeli-sorgu (TSM-Q) API 'leri**: ortamın zaman serisi modelinde depolanan meta verilerde oluşturma, okuma, güncelleştirme ve SILME (CRUD) işlemlerine izin vermez. Bunlar örneklere, türlere ve hiyerarşilere erişmek ve bunları düzenlemek için kullanılabilir.
+* **Zaman serisi Model-Query (TSM-Q) API 'leri**: ortamın zaman serisi modelinde depolanan meta verilerde oluşturma, okuma, güncelleştirme ve SILME (CRUD) işlemlerine izin vermez. Bunlar örneklere, türlere ve hiyerarşilere erişmek ve bunları düzenlemek için kullanılabilir.
 * **Zaman serisi sorgusu (TSQ) API 'leri**: kaynak sağlayıcıdan kaydedildiğinden telemetri veya olay verilerinin alınmasına izin verebilir ve gelişmiş skaler ve toplama işlevlerini kullanarak verilerde performans hesaplamaları ve toplamaları etkinleştirilir.
 
 Azure Time Series Insights Gen2, [zaman serisi değişkenlerinde](./concepts-variables.md)hesaplamaları ifade etmek için zengin bir dize tabanlı ifade dili, [zaman serisi ifadesi (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)kullanır.
@@ -41,7 +41,7 @@ Aşağıdaki temel API 'Ler desteklenir.
 * [Ortamları al kullanılabilirlik API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): olay zaman damgasına olay sayısı dağılımını döndürür `$ts` . Bu API, varsa, varsa zaman aralıklarıyla oluşan olay sayısını döndürerek ortamda herhangi bir olay olup olmadığını belirlemenize yardımcı olur.
 * [Olay şeması API 'Si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): belirli bir arama yayılması için olay şeması meta verilerini döndürür. Bu API, belirtilen arama alanı için şemada bulunan tüm meta verileri ve özellikleri almaya yardımcı olur.
 
-## <a name="time-series-model-query-tsm-q-apis"></a>Zaman serisi modeli-sorgu (TSD-Q) API 'Leri
+## <a name="time-series-model-query-tsm-q-apis"></a>Zaman serisi Model-Query (TSD-Q) API 'Leri
 
 Bu API 'lerin çoğu, birden çok zaman serisi model varlığı üzerinde toplu CRUD işlemlerini etkinleştirmek için toplu yürütme işlemini destekler:
 

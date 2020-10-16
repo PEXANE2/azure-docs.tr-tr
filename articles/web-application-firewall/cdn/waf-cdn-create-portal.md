@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327947"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Öğretici: Azure CDN Azure portal kullanarak bir WAF ilkesi oluşturma
@@ -54,7 +54,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     
     > [!NOTE]
     > Uç nokta bir WAF ilkesiyle ilişkiliyse gri görüntülenir. Önce ilgili ilkeden bitiş noktasını kaldırmalı ve ardından uç noktayı yeni bir WAF ilkesiyle yeniden ilişkilendirmeniz gerekir.
-1. **Gözden geçir + oluştur**' u seçin ve **Oluştur**' u seçin.
+1. **Gözden Geçir + oluştur**’u ve sonra da **Oluştur**’u seçin.
 
 ## <a name="configure-web-application-firewall-policy-optional"></a>Web uygulaması güvenlik duvarı ilkesini yapılandırma (isteğe bağlı)
 

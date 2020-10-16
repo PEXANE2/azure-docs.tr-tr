@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 825e97bfc80695180195fde07eaa1a25ac74b49b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015658"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078162"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -21,8 +21,7 @@ Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından y
 
 Özel küme, [aks 'in desteklendiği](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)Genel bölgelerde kullanılabilir.
 
-* Azure Çin 21Vianet Şu anda desteklenmemektedir.
-* Eksik özel bağlantı desteği nedeniyle US Gov Teksas Şu anda desteklenmiyor.
+Eksik özel bağlantı desteği nedeniyle US Gov Teksas Şu anda desteklenmiyor.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -86,7 +85,7 @@ Belirtildiği gibi, sanal ağ eşlemesi özel kümenize erişmenin bir yoludur. 
 6. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-VNET- \* *biçimindedir.  
 7. Sol bölmede, eşlemeler ' i **seçin.**  
 8. **Ekle**' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
-9. VM 'nin bulunduğu sanal ağa gidin, **eşlemeler ' i seçin,** aks sanal ağını seçin ve ardından eşlemeyi oluşturun. AKS sanal ağındaki adres aralıkları ve VM 'nin sanal ağ çakışması, eşleme başarısız olur. Daha fazla bilgi için bkz. [sanal ağ eşlemesi][virtual-network-peering].
+9. VM 'nin bulunduğu sanal ağa gidin, **eşlemeler ' i seçin,** aks sanal ağını seçin ve ardından eşlemeyi oluşturun. AKS sanal ağındaki adres aralıkları ve VM 'nin sanal ağ çakışması, eşleme başarısız olur. Daha fazla bilgi için bkz.  [sanal ağ eşlemesi][virtual-network-peering].
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>Özel DNS ile hub ve bağlı bileşen
 

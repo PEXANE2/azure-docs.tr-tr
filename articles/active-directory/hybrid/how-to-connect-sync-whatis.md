@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662386"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect eşitleme: eşitlemeyi anlama ve özelleştirme
@@ -64,7 +64,7 @@ Eşitleme hizmeti iki bileşenden oluşur, şirket içi **Azure AD Connect eşit
 | **Daha fazla bilgi ve başvuru** | |
 | [Bağlantı noktaları](reference-connect-ports.md) |Eşitleme altyapısı ve şirket içi dizinleriniz ile Azure AD arasında açmanız gereken bağlantı noktalarını listeler. |
 | [Azure Active Directory eşitlenen öznitelikler](reference-connect-sync-attributes-synchronized.md) |Şirket içi AD ve Azure AD arasında eşitlenen tüm öznitelikleri listeler. |
-| [İşlevler Başvurusu](reference-connect-sync-functions-reference.md) |Bildirim temelli sağlama içinde kullanılabilen tüm işlevleri listeler. |
+| [İşlevler başvurusu](reference-connect-sync-functions-reference.md) |Bildirim temelli sağlama içinde kullanılabilen tüm işlevleri listeler. |
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

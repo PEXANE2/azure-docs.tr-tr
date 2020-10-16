@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13d78110f50d6ce72b8525914ed0e91dfcadd2cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: mvc
+ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941314"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961417"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak bir PostgreSQL için Azure veritabanı 'nı yönetme-esnek sunucu
 
@@ -23,7 +23,7 @@ Bu makalede, PostgreSQL için Azure veritabanınızı yönetme (esnek sunucu) a�
 
 ## <a name="sign-in"></a>Oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın. Azure portal esnek sunucu kaynağına gidin.
+[Azure portalında](https://portal.azure.com) oturum açın. Azure portal esnek sunucu kaynağına gidin.
 
 ## <a name="scale-compute-and-storage"></a>İşlem ve depolamayı ölçeklendirme
 
@@ -52,7 +52,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 2. Yeni bir parola girin ve parolayı onaylayın. Metin kutusu sizden parola karmaşıklığı gereksinimlerini ister.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="esnek sunucu için parolanızı sıfırlayın":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="depolama esnek sunucusunu ölçeklendirme":::
 
 3. Yeni parolayı kaydetmek için **Kaydet** ' i seçin.
 
@@ -63,7 +63,7 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
 1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
 2. Sunucuyu silmek istediğinizi onaylamak için giriş kutusuna sunucunun adını yazın.
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="esnek sunucuyu silme":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="depolama esnek sunucusunu ölçeklendirme":::
 
    > [!IMPORTANT]
    > Sunucu silindiğinde geri alınamaz.

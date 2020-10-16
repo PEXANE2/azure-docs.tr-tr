@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 45f63aed410c4d140259808044872cbbecfaa95b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355576"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management kullanarak Azure Machine Learning Studio (klasik) Web hizmetlerini yönetme
@@ -27,7 +27,7 @@ Bu kılavuzda, Azure Machine Learning Studio (klasik) Web hizmetlerinizi yönetm
 ## <a name="what-is-azure-api-management"></a>Azure API Management nedir?
 Azure API Management, Kullanıcı erişimi, kullanım azaltma ve Pano izlemeyi tanımlayarak REST API uç noktalarınızı yönetmenize olanak tanıyan bir Azure hizmetidir. Daha fazla bilgi için bkz. [Azure API Management sitesi](https://azure.microsoft.com/services/api-management/) . Azure API Management kullanmaya başlamak için [içeri aktarma ve yayımlama kılavuzuna](/azure/api-management/import-and-publish)bakın. Bu kılavuzun temel aldığı bu diğer kılavuz, bildirim konfigürasyonları, katman fiyatlandırması, yanıt işleme, Kullanıcı kimlik doğrulaması, ürün oluşturma, geliştirici abonelikleri ve kullanım oluşturmasının dahil olduğu daha fazla konuyu ele alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu kılavuzu gerçekleştirmek için şunlar gerekir:
 
 * Azure hesabı.
@@ -38,7 +38,7 @@ Bu kılavuzu gerçekleştirmek için şunlar gerekir:
 
 Azure Machine Learning Web hizmetinizi API Management bir örnekle yönetebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **+ Kaynak oluştur**’u seçin.
 3. Arama kutusuna "API Management" yazın, ardından "API Management" kaynağını seçin.
 4. **Oluştur**’a tıklayın.

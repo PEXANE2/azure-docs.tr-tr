@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998093"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory ve Batch kullanarak büyük ölçekli veri kümelerini işleme
@@ -87,7 +87,7 @@ Aşağıdaki listede işlemin temel adımları verilmiştir. Çözüm, uçtan uc
 
 **Süre:** Azure, Data Factory ve Batch temel bilgileri hakkında bilgi sahibiyseniz ve aşağıdaki önkoşulları tamamladıysanız, bu çözümün tamamlanması iki saate kadar sürer.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 #### <a name="azure-subscription"></a>Azure aboneliği
 Azure aboneliğiniz yoksa hızla ücretsiz bir deneme hesabı oluşturabilirsiniz. Daha fazla bilgi için bkz. [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/).
 

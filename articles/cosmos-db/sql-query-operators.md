@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498846"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB işleçler
@@ -71,7 +71,7 @@ Mantıksal işleçler Boole değerleri üzerinde çalışır. Aşağıdaki tablo
 
 Herhangi bir Boolean ifadesinin değerini tersine çevirir.
 
-|  | **BAŞLATıLMADı** |
+|  | **NOT** |
 | --- | --- |
 | **True** |Yanlış |
 | **False** |Doğru |
@@ -81,15 +81,15 @@ Herhangi bir Boolean ifadesinin değerini tersine çevirir.
 
 Mantıksal işleçler, `OR` `AND` ve `NOT` aşağıda gösterilen öncelik düzeyine sahiptir:
 
-| **Operatör** | **Priority** |
+| **İşleç** | **Priority** |
 | --- | --- |
-| **BAŞLATıLMADı** |1 |
-| **'** |2 |
-| **VEYA** |3 |
+| **NOT** |1 |
+| **AND** |2 |
+| **OR** |3 |
 
 ## <a name="-operator"></a>* işleci
 
-* Özel işleci, tüm öğeyi olduğu gibi projeler. Kullanıldığında, tek bir öngörülen alan olması gerekir. Benzer bir sorgu `SELECT * FROM Families f` geçerli, ancak `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` geçerli değil.
+* Özel işleci, tüm öğeyi olduğu gibi projeler. Kullanıldığında, tek bir öngörülen alan olması gerekir. Benzer bir sorgu `SELECT * FROM Families f` geçerli, ancak `SELECT VALUE * FROM Families f`  `SELECT *, f.id FROM Families f` geçerli değil.
 
 ## <a name="-and--operators"></a>? ve?? işleçler
 
@@ -121,5 +121,5 @@ Diğer sorgu işleçleri gibi? başvurulan Özellikler eksikse veya karşılaşt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Anahtar sözcükler](sql-query-keywords.md)
+- [Anahtar Sözcükler](sql-query-keywords.md)
 - [SELECT yan tümcesi](sql-query-select.md)

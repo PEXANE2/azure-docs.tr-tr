@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5e401fb35e6524e8a32cbe09bf5b9c7feafbf5da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331276"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974745"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 
@@ -55,9 +55,9 @@ Desteklenen SAP ürünleri ve Azure VM türleri hakkında daha fazla bilgi için
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için Linux, UNIX ve Windows yapılandırma yönergeleri için IBM DB2
 ### <a name="storage-configuration"></a>Depolama Yapılandırması
-SAP iş yükü için Azure Depolama türleri 'ne genel bakış için [Azure depolama TÜRLERI SAP iş](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) yükleri makalesine başvurun. tüm veritabanı dosyaları Azure blok depolama 'nın bağlı disklerinde depolanmalıdır (Windows: NFFS, Linux: XFS, ext4 veya ext3). Aşağıdaki Azure hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
+SAP iş yükü için Azure Depolama türleri 'ne genel bakış için [Azure depolama TÜRLERI SAP iş](./planning-guide-storage.md) yükleri makalesine başvurun. tüm veritabanı dosyaları Azure blok depolama 'nın bağlı disklerinde depolanmalıdır (Windows: NFFS, Linux: XFS, ext4 veya ext3). Aşağıdaki Azure hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
 
-* [Microsoft Azure dosya hizmeti](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Microsoft Azure dosya hizmeti](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
@@ -162,7 +162,7 @@ Microsoft Cluster Server (MSCS) desteklenmez.
 
 DB2 yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma (HADR) desteklenir. HA yapılandırmasının sanal makinelerinde çalışma adı çözümlemesi varsa, Azure 'daki kurulum, şirket içinde gerçekleştirilen kurulumdan farklı değildir. Yalnızca IP çözümlemesi kullanılması önerilmez.
 
-Veritabanı disklerini depolayan depolama hesapları için coğrafi çoğaltma kullanmayın. Daha fazla bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında belge konuları](dbms_guide_general.md). 
+Veritabanı disklerini depolayan depolama hesapları için Geo-Replication kullanmayın. Daha fazla bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında belge konuları](dbms_guide_general.md). 
 
 ### <a name="accelerated-networking"></a>Hızlandırılmış Ağ
 Windows üzerinde DB2 dağıtımları için, [Azure hızlandırılmış ağ iletişimi](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)belgesinde açıklandığı gibi hızlandırılmış ağ hizmeti 'nin Azure işlevselliği kullanılması önemle önerilir. Ayrıca, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı açısından dikkat edilmesi gereken](dbms_guide_general.md)öneriler de göz önünde bulundurun. 

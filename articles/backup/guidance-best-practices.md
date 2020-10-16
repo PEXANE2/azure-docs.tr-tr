@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985529"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092316"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -42,13 +42,13 @@ Azure Backup çeşitli iş yükleri (Şirket içi ve bulut) için veri koruması
 
 * **Kötü amaçlı silme koruması –** Yedeklemeleri geçici olarak silme yoluyla yedeklemelerinizi silmeye yönelik yanlışlıkla veya kötü amaçlı saldırılara karşı koruma. Silinen yedekleme verileri, ücretsiz olarak 14 gün boyunca depolanır ve bu durumdan kurtarılıp kurtarılmasını sağlar.
 
-* **Güvenli şifrelenmiş yedeklemeler-** Azure Backup, Azure platformunun RBAC ve şifreleme gibi yerleşik güvenlik yeteneklerini kullanarak yedekleme verilerinizin güvenli bir şekilde depolanmasını sağlar.
+* **Güvenli şifrelenmiş yedeklemeler-** Azure Backup, Azure RBAC ve şifreleme gibi Azure platformunun yerleşik güvenlik yeteneklerini kullanarak yedekleme verilerinizin güvenli bir şekilde depolanmasını sağlar.
 
 * **Yedekleme veri yaşam döngüsü yönetimi-** Azure Backup, bekletme ilkelerine uymak için eski yedekleme verilerini otomatik olarak temizler. Ayrıca, işletimsel depolama alanındaki verilerinizi kasa depolamaya dağıtabilirsiniz.
 
 ### <a name="management-plane"></a>Yönetim düzlemi
 
-* **Erişim denetimi** – kaults (kurtarma hizmetleri ve yedekleme kasaları), yönetim olanakları sağlar ve Azure Portal, yedekleme merkezi, kasa PANOLARı, SDK, CLI ve hatta REST API 'leri aracılığıyla erişilebilir. Ayrıca, yalnızca yetkili yedekleme yöneticilerine yönelik yedeklemelere erişimi kısıtlama seçeneği sunan bir RBAC sınırıdır.
+* **Erişim denetimi** – kaults (kurtarma hizmetleri ve yedekleme kasaları), yönetim olanakları sağlar ve Azure Portal, yedekleme merkezi, kasa PANOLARı, SDK, CLI ve hatta REST API 'leri aracılığıyla erişilebilir. Ayrıca, yalnızca yetkili yedekleme yöneticilerine yönelik yedeklemelere erişimi kısıtlama seçeneği sunan bir Azure RBAC sınırıdır.
 
 * **İlke yönetimi** – her bir kasada yer alan Azure Backup ilkeler, yedeklemelerin ne zaman tetiklenmesi gerektiğini ve ne kadar süreyle tutulacağını tanımlar. Ayrıca, bu ilkeleri yönetebilir ve birden çok öğe arasında uygulayabilirsiniz.
 

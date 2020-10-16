@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86250032"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management sayfa denetimleri
@@ -47,7 +47,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
 -   [abone ol-düğme](#subscribe-button)  
 -   [abonelik-iptal et](#subscription-cancel)  
   
-##  <a name="app-actions"></a><a name="app-actions"></a>Uygulama-eylemler  
+##  <a name="app-actions"></a><a name="app-actions"></a> Uygulama-eylemler  
  `app-actions`Denetim, geliştirici portalındaki Kullanıcı profili sayfasında uygulamalarla etkileşim kurmak için bir kullanıcı arabirimi sağlar.  
   
  ![Uygulama&#45;eylemleri denetimi](./media/api-management-page-controls/APIM-app-actions-control.png "APıM uygulaması-eylemler denetimi")  
@@ -69,7 +69,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
   
 -   [Uygulamalar](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a><a name="basic-signin"></a>temel-oturum açma  
+##  <a name="basic-signin"></a><a name="basic-signin"></a> temel-oturum açma  
  `basic-signin`Denetim, geliştirici portalındaki oturum açma sayfasında Kullanıcı oturum açma bilgilerini toplamaya yönelik bir denetim sağlar.  
   
  ![temel&#45;oturum açma denetimi](./media/api-management-page-controls/APIM-basic-signin-control.png "APıM temel-oturum açma denetimi")  
@@ -88,7 +88,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
   
 -   [Oturum aç](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a><a name="paging-control"></a>sayfalama denetimi  
+##  <a name="paging-control"></a><a name="paging-control"></a> sayfalama denetimi  
  , `paging-control` Bir öğe listesini görüntüleyen geliştirici portalı sayfalarında sayfalama işlevselliği sağlar.  
   
  ![sayfalama denetimi](./media/api-management-page-controls/APIM-paging-control.png "APıM sayfalama denetimi")  
@@ -111,7 +111,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
   
 -   [Ürün listesi](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a><a name="providers"></a>sağlayıcılarla  
+##  <a name="providers"></a><a name="providers"></a> sağlayıcılarla  
  `providers`Denetim, geliştirici portalındaki oturum açma sayfasında kimlik doğrulama sağlayıcılarının seçimine yönelik bir denetim sağlar.  
   
  ![sağlayıcılar denetimi](./media/api-management-page-controls/APIM-providers-control.png "APıM sağlayıcıları denetimi")  
@@ -130,7 +130,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
   
 -   [Oturum aç](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a><a name="search-control"></a>arama denetimi  
+##  <a name="search-control"></a><a name="search-control"></a> arama denetimi  
  , `search-control` Bir öğe listesini görüntüleyen geliştirici portalı sayfalarında arama işlevi sağlar.  
   
  ![arama denetimi](./media/api-management-page-controls/APIM-search-control.png "APıM arama denetimi")  
@@ -151,7 +151,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
   
 -   [Ürün listesi](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a><a name="sign-up"></a>Kaydolma  
+##  <a name="sign-up"></a><a name="sign-up"></a> Kaydolma  
  `sign-up`Denetim, geliştirici portalındaki kaydolma sayfasında Kullanıcı profili bilgilerini toplamaya yönelik bir denetim sağlar.  
   
  ![&#45;denetimini imzala](./media/api-management-page-controls/APIM-sign-up-control.png "APıM kaydolma denetimi")  
@@ -170,7 +170,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
   
 -   [Kaydol](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a><a name="subscribe-button"></a>abone ol-düğme  
+##  <a name="subscribe-button"></a><a name="subscribe-button"></a> abone ol-düğme  
  , `subscribe-button` Bir kullanıcıya bir ürüne abone olmak için bir denetim sağlar.  
   
  ![abone ol&#45;Button denetimi](./media/api-management-page-controls/APIM-subscribe-button-control.png "APıM Subscribe-düğme denetimi")  
@@ -189,7 +189,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
   
 -   [Ürün](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>abonelik-iptal et  
+##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a> abonelik-iptal et  
  `subscription-cancel`Denetim, geliştirici portalındaki Kullanıcı profili sayfasında bir ürüne aboneliği iptal etmek için bir denetim sağlar.  
   
  ![abonelik&#45;iptal denetimi](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APıM aboneliği-denetimi iptal et")  

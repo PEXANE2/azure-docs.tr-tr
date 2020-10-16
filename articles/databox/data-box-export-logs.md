@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87494494"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box için izleme ve olay günlüğü oluşturma ve Azure Data Box Heavy siparişleri dışarı aktarma
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, Data Box dışa aktarma sırası adımlarının bir özeti
 | Data Box dışarı aktarma siparişi aşaması       | İzlenecek ve denetlenecek araç                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Sipariş oluşturma               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order) <br> [Ayrıntılı günlüğü sırayla etkinleştirin](#enable-verbose-log-in-the-order)                                                    |
-| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portalı </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
+| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)              |
 | Cihazdan veri kopyalama        | [Kopyalama günlüklerini gözden geçirme](#copy-log) <br> Verileri kopyalayabilmeniz için önce [ayrıntılı günlükleri gözden geçirin](#verbose-log)            |
 | Cihazdan veri ernure   | Denetim günlükleri ve sıra geçmişi dahil [, gözetim günlüklerinin zincirini görüntüleme](#get-chain-of-custody-logs-after-data-erasure)                |
@@ -190,7 +190,7 @@ NIST SP 800-88 düzeltme 1 yönergelerine göre Data Box disklerden veriler sili
 
 ### <a name="chain-of-custody-audit-logs"></a>Gözetim denetim günlüklerinin Zinciri
 
-Gözetim denetim günlüklerinin zinciri, Data Box paylaşımları açma ve bunlara erişme hakkında bilgiler içerir veya Azure veri merkezi 'nin dışında olduğunda Data Box Heavy. Bu Günlükler şurada bulunur:`storage-account/azuredatabox-chainofcustodylogs`
+Gözetim denetim günlüklerinin zinciri, Data Box paylaşımları açma ve bunlara erişme hakkında bilgiler içerir veya Azure veri merkezi 'nin dışında olduğunda Data Box Heavy. Bu Günlükler şurada bulunur: `storage-account/azuredatabox-chainofcustodylogs`
 
 Data Box bir denetim günlüğü örneği aşağıda verilmiştir:
 

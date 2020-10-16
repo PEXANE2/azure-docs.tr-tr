@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592517"
 ---
 # <a name="translator-30-dictionary-examples"></a>Translator 3,0: Sözlük örnekleri
@@ -37,11 +37,11 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 | --------- | ----------- |
 | api-sürümü <img width=200/> | **Gerekli parametre**.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` . |
 | Kaynak | **Gerekli parametre**.<br/>Giriş metninin dilini belirtir. Kaynak dili, kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır `dictionary` . |
-| - | **Gerekli parametre**.<br/>Çıkış metninin dilini belirtir. Hedef dil, kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır `dictionary` .  | 
+| şöyle değiştirin: | **Gerekli parametre**.<br/>Çıkış metninin dilini belirtir. Hedef dil, kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır `dictionary` .  | 
 
 İstek üstbilgileri şunları içerir:
 
-| Üst Bilgiler  | Açıklama |
+| Üst bilgiler  | Açıklama |
 | ------ | ----------- |
 | Kimlik doğrulama üst bilgisi <img width=200/>  | **Gerekli istek üst bilgisi**.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın. |
 | İçerik Türü | **Gerekli istek üst bilgisi**.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json` . |

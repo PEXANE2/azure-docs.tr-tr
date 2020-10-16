@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: 4ea2f88b02738645af3f8fc32d5fdb99168a1122
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82997386"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows 'da sesli yardımcılar ile çalışmaya başlama
@@ -25,8 +25,8 @@ Bu kılavuz, Windows üzerinde bir ses Yardımcısı geliştirmeye başlama adı
 
 Windows için bir ses Yardımcısı geliştirmeye başlamak için uygun geliştirme ortamınıza sahip olduğunuzdan emin olmanız gerekir.
 
-- **Visual Studio:**  [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition veya üstünü yüklemeniz gerekir
-- **Windows sürümü**: Windows Insider hızlı halka Windows derlemesi ve Windows SDK Windows Insider sürümü olan bir bilgisayar.Bu örnek kod, Windows Insider sürüm derlemesi 19025. vb_release_analog .191112-1600, Windows SDK 19018 kullanılarak doğrulanır.Belirtilen sürümlerin üzerindeki tüm derleme veya SDK uyumlu olmalıdır.
+- **Visual Studio:**    [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition veya üstünü yüklemeniz gerekir
+- **Windows sürümü**: Windows Insider hızlı halka Windows derlemesi ve Windows SDK Windows Insider sürümü olan bir bilgisayar.Bu örnek kod, Windows SDK 19018 kullanarak Windows Insider sürüm derlemesi 19025.vb_release_analog .191112-1600 üzerinde çalıştığı için doğrulanır.Belirtilen sürümlerin üzerindeki tüm derleme veya SDK uyumlu olmalıdır.
 - **UWP geliştirme araçları**: Visual Studio 'da Evrensel Windows platformu geliştirme iş yükü.Makinenizi UWP uygulamaları geliştirmeye hazırlamak için UWP tarafından [Kurulum](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) sayfasına bakın.
 - **Çalışan bir mikrofon ve ses çıkışı**
 
@@ -34,7 +34,7 @@ Windows için bir ses Yardımcısı geliştirmeye başlamak için uygun gelişti
 
 Windows üzerinde tamamen özelleştirilmiş bir ses Aracısı için gereken bazı kaynaklar, Microsoft kaynakları gerektirir. [UWP Voice Yardımcısı örneği](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) , ilk geliştirme ve test için bu kaynakların örnek sürümlerini sağlar; bu nedenle ilk geliştirme için bu bölüm gereksizdir.
 
-- **Anahtar sözcük modeli:** ses etkinleştirme, bir. bin dosyası biçiminde Microsoft 'tan bir anahtar sözcük modeli gerektirir. UWP ses Yardımcısı örneğinde verilen. bin dosyası "contoso" anahtar sözcüğü üzerinde eğitilir.
+- **Anahtar sözcük modeli:**   Ses etkinleştirme, bir. bin dosyası biçiminde Microsoft 'tan bir anahtar sözcük modeli gerektirir. UWP ses Yardımcısı örneğinde verilen. bin dosyası "contoso" anahtar sözcüğü üzerinde eğitilir.
 - **Sınırlı erişim özelliği belirteci:** Konuşma seslerine mikrofon seslerine erişim sağlanması nedeniyle, bu dosyalar sınırlı erişim özelliği kısıtlamalarına göre korunur.Sınırlı bir erişim özelliğini kullanmak için, Microsoft 'tan uygulamanızın paket kimliğine bağlanmış sınırlı bir erişim özelliği belirteci edinmeniz gerekir.
 
 ## <a name="establish-a-dialog-service"></a>İletişim hizmeti oluşturma

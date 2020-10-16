@@ -4,10 +4,10 @@ description: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarlar�
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489853"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifreleyin
@@ -39,14 +39,14 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
     1. **Disk şifreleme kümesi** sayfasında, Sol menüdeki **ERIŞIM denetimi (IAM)** seçeneğini belirleyin. 
     1. Araç çubuğunda **+ Ekle** ' yi seçin ve **rol ataması Ekle**' yi seçin.  
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Rol yönetimi ekleme-menü":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Yönetilen Anahtarlar":::
     1. **Rol ataması Ekle** sayfasında, **okuyucu** rolü veya daha fazla erişime izin veren bir rol seçin. 
     1. Disk şifrelemesi kümesinin kullanılacağı laboratuvar adını yazın ve açılan listeden laboratuvar adını (Laboratuvar için sistem tarafından atanan kimlik) seçin. 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="Laboratuvarın sistem tarafından yönetilen kimliğini seçin":::        
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="Yönetilen Anahtarlar":::        
     1. Araç çubuğunda **Kaydet**’i seçin. 
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Rol atamasını Kaydet":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Yönetilen Anahtarlar":::
 3. **Abonelik**erişim denetimi (IAM) sayfasını kullanarak, laboratuvarın **sistem tarafından atanan kimliğini** **sanal makine katılımcısı** rolüne ekleyin  ->  **Access control (IAM)** . Adımlar önceki adımlarda olanlarla benzerdir. 
 
     
@@ -54,7 +54,7 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
     1. **Erişim denetimi (IAM)** öğesini seçin. 
     1. Araç çubuğunda **+ Ekle** ' yi seçin ve **rol ataması Ekle**' yi seçin. 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="Abonelik-> Access Control (ıAM) sayfası":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="Yönetilen Anahtarlar":::
     1. **Rol ataması Ekle** sayfasında, rol Için **sanal makine katılımcısı** ' nı seçin.
     1. Laboratuvar adını yazın ve açılan listeden **Laboratuvar adını** (Laboratuvar için sistem tarafından atanan kimlik) seçin. 
     1. Araç çubuğunda **Kaydet**’i seçin. 
@@ -64,12 +64,12 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
 1. Laboratuvarınızın giriş sayfasında, Azure portal Sol menüdeki **yapılandırma ve ilkeler** ' i seçin. 
 1. **Yapılandırma ve ilkeler** sayfasında, **şifreleme** bölümünde **diskler (Önizleme)** öğesini seçin. Varsayılan olarak, **şifreleme türü** **Platform yönetilen anahtarıyla bekleyen olarak şifreleme**olarak ayarlanır.
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="Yapılandırma ve ilkeler sayfasının diskler sekmesi":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="Yönetilen Anahtarlar":::
 1. **Şifreleme türü**için, açılan listeden **müşteri tarafından yönetilen bir anahtarla bekleyen şifreleme** ' yi seçin. 
 1. **Disk şifreleme kümesi**için, daha önce oluşturduğunuz disk şifreleme kümesini seçin. Bu, laboratuvar için sistem tarafından atanan kimliğin erişebileceği disk şifrelemesi kümesidir.
 1. Araç çubuğunda **Kaydet**’i seçin. 
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Müşteri tarafından yönetilen anahtarla şifrelemeyi etkinleştir":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Yönetilen Anahtarlar":::
 1. İleti kutusunda aşağıdaki metinle: *Bu ayar, laboratuvardaki yeni oluşturulan makineler için geçerlidir. Eski işletim sistemi diski eski disk şifrelemesi kümesiyle şifreli kalacak*, **Tamam**' ı seçin. 
 
     Bir kez yapılandırıldıktan sonra, laboratuvar işletim sistemi diskleri disk şifreleme kümesi kullanılarak sunulan müşteri tarafından yönetilen anahtarla şifrelenir. 
@@ -79,15 +79,15 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
 1. Laboratuvar üzerinde müşteri tarafından yönetilen bir anahtarla disk şifrelemeyi etkinleştirdikten sonra oluşturulan bir laboratuvar sanal makinesine gidin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Etkin disk şifrelemesi olan VM":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Yönetilen Anahtarlar":::
 1. VM 'nin kaynak grubuna tıklayın ve işletim sistemi diskine tıklayın.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="VM kaynak grubu":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="Yönetilen Anahtarlar":::
 1. Şifreleme ' ye gidin ve şifrelemenin, seçtiğiniz disk şifrelemesi kümesiyle müşterinin yönettiği anahtar olarak ayarlandığını doğrulayın.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Şifrelemeyi doğrula":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Yönetilen Anahtarlar":::
   
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
 ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332993"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL Data Sync için en iyi yöntemler 
@@ -41,7 +41,7 @@ SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden
 
 ### <a name="database-accounts-with-least-required-privileges"></a>En az gerekli ayrıcalıklara sahip veritabanı hesapları
 
--   **Eşitleme kurulumu için**. Tablo Oluştur/Değiştir; Alter database; Yordam oluşturma; Şemayı Seç/Değiştir; Kullanıcı tanımlı tür oluşturun.
+-   **Eşitleme kurulumu için**. Tablo Oluştur/Değiştir; Alter database; Yordam oluşturma; Şemayı Seç/Değiştir; User-Defined türü oluşturun.
 
 -   , **Devam eden eşitleme için**. Eşitleme için seçilen tablolarda ve eşitleme meta verileri ve izleme tablolarında seçme/ekleme/güncelleştirme/silme; Hizmet tarafından oluşturulan saklı yordamlarda yürütme izni; Kullanıcı tanımlı tablo türlerinde yürütme izni.
 

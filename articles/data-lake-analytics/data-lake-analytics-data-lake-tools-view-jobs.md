@@ -6,10 +6,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
 ms.openlocfilehash: 717ad8bfaa9ddfcfa5775654408601ca13d3a636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282621"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için İş Tarayıcısı’nı ve İş Görünümü’nü kullanma
@@ -17,7 +17,7 @@ Azure Data Lake Analytics hizmeti bir sorgu deposunda gönderilen işleri arşiv
 
 Varsayılan olarak, Data Lake Analytics hizmeti işleri 30 gün boyunca arşivler. Süre sonu dönemi, özelleştirilmiş süre sonu ilkesi yapılandırılarak Azure portal yapılandırılabilir. Süre dolduktan sonra iş bilgilerine erişemeyeceksiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bkz. [Visual Studio için Data Lake araçları önkoşulları](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
 ## <a name="open-the-job-browser"></a>Iş tarayıcısını açın

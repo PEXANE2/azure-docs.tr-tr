@@ -7,10 +7,10 @@ ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056454"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
@@ -236,7 +236,7 @@ Oturum açma sunucusu, Windows sanal masaüstü ortamlarında uygulama performan
 
 Bulut dosya hizmetleri 'nin önde gelen sağlayıcısı ve bir üst Azure küresel ISV iş ortağı olan Nasuni Corp., modern sanal masaüstleri için modern dosya depolama çözümü olarak Nasuni Software for-Service platformunu sunmaktadır. Nasuni, Azure Blob depolama ile birleştirildiğinde birincil dosya depolama (NAS), dosya yedekleme, olağanüstü durum kurtarma ve çapraz bölge dosya eşitlemesini tek bir birleştirilmiş çözümde birleştirir. Nasuni sayesinde kuruluşlar, daha fazla kullanım durumu ve daha fazla Azure bölgesinde Windows sanal masaüstlerini dağıtabilir, yönetimi basitleştirir ve iş sürekliliği sağlayabilir. 
 
-Modern bir bulut VDı çözümü olan Windows sanal masaüstü, modern bulut dosya depolaması gerektirir. Geleneksel olarak, VDı dosya depolaması, şirket içinde bulunan ağa bağlı depolama (NAS) ve dosya sunucusu donanımını ve dosya yedeklemeleri, geri yükleme ve olağanüstü durum kurtarma sağlamak için gereken teknolojiyi temel alır. Bu geleneksel yaklaşımlar, kolayca ölçeklenebilmek ve yönetmeniz ve kolayca ölçeklendirilmesi için pahalıdır, karmaşıktır. Ayrıca, Azure 'a ve şirket içi dosya depolama alanına bağlı masaüstleri arasında fiziksel uzaklık ve yavaş WAN bağlantıları nedeniyle Windows sanal masaüstü gibi modern bir bulut VDı çözümü ile kullanılırsa gecikme süresi de tanıtılmaktadır. Azure için özel olarak oluşturulan bir dosya hizmetleri platformu olan Nasuni, sınırsız dosya depolama kapasitesi ve yüksek performanslı dosya erişimi sunar. Nasuni, tek bir genel ad alanına ekonomik ve yüksek performanslı dosya erişimi sunmak için aynı Azure bölgelerinde Windows sanal masaüstü ile birlikte bulunabilir. Nasuni, geleneksel NAS ve Windows dosya sunucularının maliyetinin bir bölümünde Windows sanal masaüstü dosya depolaması sunar ve maliyetleri daha da azaltmak ve BT kaynaklarını boşaltmak için yerleşik yedeklemeler ve olağanüstü durum kurtarma özellikleri içerir.
+Modern bir bulut VDı çözümü olan Windows sanal masaüstü, modern bulut dosya depolaması gerektirir. Geleneksel olarak, VDı dosya depolaması, şirket içinde bulunan Network-Attached depolama (NAS) ve dosya sunucusu donanımını temel alır ve dosya yedeklemeleri, geri yükleme ve olağanüstü durum kurtarma sağlamak için gerekli teknolojiyi temel alır. Bu geleneksel yaklaşımlar, kolayca ölçeklenebilmek ve yönetmeniz ve kolayca ölçeklendirilmesi için pahalıdır, karmaşıktır. Ayrıca, Azure 'a ve şirket içi dosya depolama alanına bağlı masaüstleri arasında fiziksel uzaklık ve yavaş WAN bağlantıları nedeniyle Windows sanal masaüstü gibi modern bir bulut VDı çözümü ile kullanılırsa gecikme süresi de tanıtılmaktadır. Azure için özel olarak oluşturulan bir dosya hizmetleri platformu olan Nasuni, sınırsız dosya depolama kapasitesi ve yüksek performanslı dosya erişimi sunar. Nasuni, tek bir genel ad alanına ekonomik ve yüksek performanslı dosya erişimi sunmak için aynı Azure bölgelerinde Windows sanal masaüstü ile birlikte bulunabilir. Nasuni, geleneksel NAS ve Windows dosya sunucularının maliyetinin bir bölümünde Windows sanal masaüstü dosya depolaması sunar ve maliyetleri daha da azaltmak ve BT kaynaklarını boşaltmak için yerleşik yedeklemeler ve olağanüstü durum kurtarma özellikleri içerir.
 
 - [İş ortağı Web sitesine gidin](https://www.nasuni.com/partner/microsoft/#wvd).
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).

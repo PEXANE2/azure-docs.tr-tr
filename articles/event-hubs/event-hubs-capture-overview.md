@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs aracılığıyla olayları akışın�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1b79db7a7f8d0fe03b21e005ef696d5fe55ac0a1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613416"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama
@@ -53,7 +53,7 @@ Yapılandırıldıktan sonra, ilk olaylarınızı gönderdiğinizde Event Hubs y
 
 ## <a name="setting-up-event-hubs-capture"></a>Event Hubs yakalama ayarlanıyor
 
-[Azure Portal](https://portal.azure.com)kullanarak veya Azure Resource Manager şablonlarını kullanarak Olay Hub 'ı oluşturma sırasında yakalamayı yapılandırabilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+[Azure Portal](https://portal.azure.com)kullanarak veya Azure Resource Manager şablonlarını kullanarak Olay Hub 'ı oluşturma sırasında yakalamayı yapılandırabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure portalını kullanarak Event Hubs Yakalama özelliğini etkinleştirme](event-hubs-capture-enable-through-portal.md)
 - [Bir olay hub'ı ile bir Event Hubs ad alanı oluşturma ve Azure Resource Manager şablonu kullanarak Yakalamayı etkinleştirme](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)

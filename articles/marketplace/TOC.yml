@@ -324,19 +324,27 @@
       href: marketplace-faq-publisher-guide.md
     - name: Bulut İş Ortağı Portalı’na geçiş hakkında SSS
       href: cloud-partner-portal-migration-faq.md
+    - name: İş sürekliliği ofis saatleri
+      href: 'https://aka.ms/marketplaceofficehours'
+    - name: Teknik ve yayımlama ofis saatleri
+      href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: İş Ortağı Merkezi destek seçenekleri
       href: partner-center-portal/support.md
+    - name: İş Ortağı Merkezi duyuruları
+      href: /partner-center/announcements
+    - name: Microsoft İş Ortağı Topluluğu
+      href: 'https://www.microsoftpartnercommunity.com/'
+    - name: İş Ortağı Topluluğu forumu
+      href: 'https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222'
     - name: Coğrafi kullanılabilirlik ve para birimleri
       href: marketplace-geo-availability-currencies.md
     - name: Kiracı ve Nesne kimliklerini bulma
       href: find-tenant-object-id.md
     - name: Desteklenen ülkeler ve bölgeler
       href: sell-from-countries.md
-    - name: Desteklenen HTML etiketleri
-      href: supported-html-tags.md
     - name: Ortak satış ülke ve bölge kodları
       href: partner-center-portal/commercial-marketplace-co-sell-countries.md
     - name: Ortak satış eyalet kodları
       href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 'Forumlar, bloglar ve hızlı bağlantılar'
-      href: marketplace-roadmap.md
+    - name: Desteklenen HTML etiketleri
+      href: supported-html-tags.md

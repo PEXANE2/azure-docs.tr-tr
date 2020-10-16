@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604249"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Öğretici: AVS 'ye geçiş için VMware VM 'lerini değerlendirin
@@ -44,7 +44,7 @@ Makinelerinizi AVS 'ye geçiş için değerlendirmek üzere bu öğreticiyi izle
 
 **Değerlendirme** | **Ayrıntılar** | **Öneri**
 --- | --- | ---
-**Şirket içi olarak** | Makine yapılandırma verilerine/meta verilere göre değerlendirin.  | AVS 'de önerilen düğüm boyutu, düğüm türü, depolama türü ve başarısızlık-Tolerans ayarı için değerlendirmede belirlediğiniz ayarlarla birlikte Şirket içi VM boyutunu temel alır.
+**Şirket içinde olduğu gibi** | Makine yapılandırma verilerine/meta verilere göre değerlendirin.  | AVS 'de önerilen düğüm boyutu, düğüm türü, depolama türü ve başarısızlık-Tolerans ayarı için değerlendirmede belirlediğiniz ayarlarla birlikte Şirket içi VM boyutunu temel alır.
 **Performans tabanlı** | Toplanan dinamik performans verilerine göre değerlendirin. | AVS 'de önerilen düğüm boyutu, CPU ve bellek kullanım verilerine, düğüm türü, depolama türü ve başarısızlık-Tolerans ayarı için değerlendirmede belirlediğiniz ayarlarla birlikte dayanır.
 
 ## <a name="run-an-assessment"></a>Değerlendirme çalıştırma
@@ -120,12 +120,12 @@ Bir AVS değerlendirmesi şunları açıklar:
 - AVS düğümleri genelinde kullanım: tüm düğümlerde öngörülen CPU, bellek ve depolama kullanımı.
 - Aylık maliyet tahmini: şirket içi VM 'Leri çalıştıran tüm Azure VMware çözümü (AVS) düğümlerine yönelik tahmini aylık maliyetler.
 
-## <a name="view-an-assessment"></a>Değerlendirme görüntüleme
+## <a name="view-an-assessment"></a>Değerlendirmeyi görüntüleme
 
 Bir değerlendirmeyi görüntülemek için:
 
 1. **Sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **değerlendirmeler**' ın yanındaki sayıya tıklayın.
-2. **Değerlendirmede**, açmak için bir değerlendirme seçin. 
+2. **Değerlendirmeler** sayfasında açmak istediğiniz değerlendirmeye tıklayın. 
 3. Değerlendirme özetini gözden geçirin. Ayrıca değerlendirme özelliklerini düzenleyebilir veya değerlendirmeyi yeniden hesaplayabilirsiniz.
  
 

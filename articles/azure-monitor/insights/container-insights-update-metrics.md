@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618154"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Kapsayıcılar için Azure İzleyici'yi ölçümleri etkinleştirecek şekilde güncelleştirme
@@ -34,7 +34,7 @@ Her iki işlem de, aracı tarafından toplanan verilerin kümeler kaynağına ya
 > [!IMPORTANT]
 > Gerekli en düşük aracı sürümüne sahip olduklarından, Azure Arc etkin Kubernetes kümeleri için yükseltme gerekli değildir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kümenizi güncelleştirmeden önce aşağıdakileri onaylayın:
 

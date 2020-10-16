@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 3b816ddc0eccf8c406cfed37d6bfc594e27d3629
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850355"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Application Gateway kullanarak bir AKS hizmetini HTTP veya HTTPS üzerinden kullanıma sunma 
 
 Bu öğreticiler, HTTP veya HTTPS üzerinden [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) aracılığıyla örnek bir Kubernetes hizmeti sunmak Için [Kubernetes giriş kaynaklarının](https://kubernetes.io/docs/concepts/services-networking/ingress/) kullanımını göstermeye yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - `ingress-azure`Held grafiği yüklendi.
   - [**Doğa alanı dağıtımı**](ingress-controller-install-new.md): sıfırdan başlatıyorsanız, aks kümesine Application Gateway ve uygulama ağ geçidi denetleyicisi yükleme adımlarını özetleyen bu yükleme yönergelerine bakın.

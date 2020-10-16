@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: b72c20cd67aa4792b5e2a2f96dc39e78301c9219
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5e422b5292f77150e2755cb5963e2cd95d148654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91543491"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939112"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics 'teki Machine Learning özellikleri (çalışma alanları Önizleme)
 
@@ -66,7 +66,7 @@ MLlib 'in yanı sıra, [Scikit öğreni](https://scikit-learn.org/stable/) gibi 
 
 #### <a name="train-models-with-azure-machine-learning-automl"></a>Azure Machine Learning oto ml ile modelleri eğitme
 
-Makine öğrenimi modellerini eğitmek için bir başka yol da, Machine Learning ile ilgili çok daha fazla bilgi gerektirmeyen, oto ml 'yi kullanmaktır. Otomatik [ml](/azure/machine-learning/concept-automated-mls) , bir makine öğrenimi modelleri kümesini otomatik olarak gösteren ve kullanıcının belirli ölçümleri temel alarak en iyi modeli seçmesini sağlayan bir özelliktir. Azure SYNAPSE not defterlerinden Azure Machine Learning ile sorunsuz bir tümleştirme sayesinde, kullanıcılar SYNAPSE 'de doğrudan oto ml 'yi geçiş Azure Active Directory kimlik doğrulamasıyla kolayca kullanabilir.  Bu, yalnızca Azure Machine Learning çalışma alanınızı işaret etmeniz ve herhangi bir kimlik bilgisi girmeniz gerekmediği anlamına gelir. SYNAPSE Spark havuzlarında Azure Machine Learning oto ml kullanarak modellerin nasıl eğleneceğini açıklayan bir [oto ml öğreticisi](../spark/apache-spark-azure-machine-learning-tutorial.md) aşağıda verilmiştir.
+Makine öğrenimi modellerini eğitmek için bir başka yol da, Machine Learning ile ilgili çok daha fazla bilgi gerektirmeyen, oto ml 'yi kullanmaktır. Otomatik [ml](/azure/machine-learning/concept-automated-ml) , bir makine öğrenimi modelleri kümesini otomatik olarak gösteren ve kullanıcının belirli ölçümleri temel alarak en iyi modeli seçmesini sağlayan bir özelliktir. Azure SYNAPSE not defterlerinden Azure Machine Learning ile sorunsuz bir tümleştirme sayesinde, kullanıcılar SYNAPSE 'de doğrudan oto ml 'yi geçiş Azure Active Directory kimlik doğrulamasıyla kolayca kullanabilir.  Bu, yalnızca Azure Machine Learning çalışma alanınızı işaret etmeniz ve herhangi bir kimlik bilgisi girmeniz gerekmediği anlamına gelir. SYNAPSE Spark havuzlarında Azure Machine Learning oto ml kullanarak modellerin nasıl eğleneceğini açıklayan bir [oto ml öğreticisi](../spark/apache-spark-azure-machine-learning-tutorial.md) aşağıda verilmiştir.
 
 ### <a name="model-deployment-and-scoring"></a>Model dağıtımı ve Puanlama
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562528"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bir şablon kullanarak IPv6 ile Internet 'e yönelik yük dengeleyici çözümü dağıtma
@@ -103,7 +103,7 @@ Bu makale, [Azure hızlı başlangıç şablonları](https://azure.microsoft.com
 4. Her VM 'den bir IPv6 veya IPv4 bağlantılı Internet cihazına giden bir bağlantı başlatın. Her iki durumda da, hedef cihaz tarafından görülen kaynak IP, yük dengeleyicinin genel IPv4 veya IPv6 adresidir.
 
 > [!NOTE]
-> Azure ağında hem IPv4 hem de IPv6 için ıCMP engellenir. Sonuç olarak, ping gibi ıCMP araçları her zaman başarısız olur. Bağlantıyı sınamak için, TCPing veya PowerShell test-NetConnection cmdlet 'i gibi bir TCP alternatifi kullanın. Diyagramda gösterilen IP adreslerinin görebileceğiniz değer örnekleri olduğunu unutmayın. IPv6 adresleri dinamik olarak atandığından, aldığınız adresler farklı olur ve bölgeye göre farklılık gösterebilir. Ayrıca, yük dengeleyicideki genel IPv6 adresinin arka uç havuzundaki özel IPv6 adreslerinden farklı bir önekle başlaması yaygındır.
+> Azure ağında hem IPv4 hem de IPv6 için ıCMP engellenir. Sonuç olarak, ping gibi ıCMP araçları her zaman başarısız olur. Bağlantıyı sınamak için, TCPing veya PowerShell Test-NetConnection cmdlet 'i gibi bir TCP alternatifi kullanın. Diyagramda gösterilen IP adreslerinin görebileceğiniz değer örnekleri olduğunu unutmayın. IPv6 adresleri dinamik olarak atandığından, aldığınız adresler farklı olur ve bölgeye göre farklılık gösterebilir. Ayrıca, yük dengeleyicideki genel IPv6 adresinin arka uç havuzundaki özel IPv6 adreslerinden farklı bir önekle başlaması yaygındır.
 
 ## <a name="template-parameters-and-variables"></a>Şablon parametreleri ve değişkenleri
 

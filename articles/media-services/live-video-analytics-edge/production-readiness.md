@@ -4,10 +4,10 @@ description: Bu makalede, canlı video analizinin üretim ortamlarında IoT Edge
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87071936"
 ---
 # <a name="production-readiness-and-best-practices"></a>Üretim hazırlığı ve en iyi uygulamalar
@@ -152,7 +152,7 @@ Sınır aygıtı olarak kullandığınız Linux sanal makinesi, düzenli aralık
 1. `sudo apt-get autoremove1`
 
     Otomatik Kaldır seçeneği, başka bir paket gerektiğinden, ancak diğer paketlerin kaldırılmasının artık gerekli olmadığı için otomatik olarak yüklenen paketleri kaldırır
-1. `sudo docker image ls`– Uç sisteminizde Docker görüntülerinin listesini sağlar
+1. `sudo docker image ls` – Uç sisteminizde Docker görüntülerinin listesini sağlar
 1. `sudo docker system prune `
 
     Docker, görüntü, kapsayıcılar, birimler ve ağlar gibi kullanılmayan nesneleri (genellikle "çöp toplama" olarak adlandırılır) temizlemeye yönelik bir koruyucu yaklaşım sağlar: Bu nesneler, açıkça Docker 'a sorun yapmadığınız sürece genellikle kaldırılmaz. Bu, Docker 'ın fazladan disk alanı kullanmasına neden olabilir. Her nesne türü için Docker bir Ayıkla komutu sağlar. Ayrıca, aynı anda birden çok nesne türünü temizlemek için Docker sistem Ayıkla ' yı kullanabilirsiniz. Daha fazla bilgi için [kullanılmayan Docker nesnelerini ayıklama](https://docs.docker.com/config/pruning/)bölümüne bakın.

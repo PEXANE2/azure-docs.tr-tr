@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329372"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
@@ -26,7 +26,7 @@ Bu makalede, her iki Azure dosyası ve Azure Dosya Eşitleme için ağ uç nokta
 
 Bu nasıl yapılır Kılavuzu ' nu okumadan önce [Azure dosya eşitleme ağ konularını](storage-sync-files-networking-overview.md) okumanızı öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Bu makalede şu şekilde varsayılmaktadır:
 - Azure aboneliğiniz var. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Şirket içinden bağlamak istediğiniz bir depolama hesabında zaten bir Azure dosya paylaşma oluşturmuş olabilirsiniz. Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
@@ -623,5 +623,5 @@ az resource update \
 ---
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
 - [Azure Dosya Eşitleme’yi dağıtma](storage-sync-files-deployment-guide.md)

@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 5075c4858f9584cb19442e19d9009d46d0e00ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85446847e8ad77bc83eea657ab17268839e0b231
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463909"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949829"
 ---
 # <a name="indexer-access-to-data-sources-using-azure-network-security-features"></a>Azure ağ güvenlik özellikleri kullanılarak veri kaynaklarına Dizin Oluşturucu erişimi
 
@@ -41,16 +41,16 @@ Müşteriler, Azure tarafından sunulan çeşitli ağ yalıtımı mekanizmaları
 | Azure Cosmos DB-SQL API 'SI | Desteklenir | Desteklenir |
 | Azure Cosmos DB-Cassandra, Mongo ve Gremlin API 'SI | Desteklenir | Desteklenmeyen |
 | Azure SQL Veritabanı | Desteklenir | Desteklenir |
-| Azure IaaS VM 'lerinde SQL Server | Desteklenir | Yok |
-| SQL yönetilen örnekleri | Desteklenir | Yok |
+| Azure IaaS VM 'lerinde SQL Server | Desteklenir | YOK |
+| SQL yönetilen örnekleri | Desteklenir | YOK |
 | Azure İşlevleri | Desteklenir | Yalnızca belirli Azure işlevleri SKU 'Ları için desteklenir |
 
 > [!NOTE]
-> Kullanıcılar, yukarıda listelenen seçeneklere ek olarak, ağ güvenliği sağlanmış Azure depolama hesapları için Azure Bilişsel Arama 'nin [güvenilir bir Microsoft hizmeti](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)olduğu gerçeden yararlanabilir. Bu, belirli bir arama hizmetinin depolama hesabındaki sanal ağ veya IP kısıtlamalarını atlayabileceği ve depolama hesabında uygun rol tabanlı erişim denetimi etkinse depolama hesabındaki verilere erişebileceği anlamına gelir. Ayrıntılar [nasıl yapılır kılavuzunda](search-indexer-howto-access-trusted-service-exception.md)bulunabilir. Depolama hesabı ya da arama hizmeti farklı bir bölgeye taşınamadığından, bu seçenek IP kısıtlama yolu yerine kullanılabilir.
+> Kullanıcılar, yukarıda listelenen seçeneklere ek olarak, ağ güvenliği sağlanmış Azure depolama hesapları için Azure Bilişsel Arama 'nin [güvenilir bir Microsoft hizmeti](../storage/common/storage-network-security.md#trusted-microsoft-services)olduğu gerçeden yararlanabilir. Bu, belirli bir arama hizmetinin depolama hesabındaki sanal ağ veya IP kısıtlamalarını atlayabileceği ve depolama hesabında uygun rol tabanlı erişim denetimi etkinse depolama hesabındaki verilere erişebileceği anlamına gelir. Ayrıntılar [nasıl yapılır kılavuzunda](search-indexer-howto-access-trusted-service-exception.md)bulunabilir. Depolama hesabı ya da arama hizmeti farklı bir bölgeye taşınamadığından, bu seçenek IP kısıtlama yolu yerine kullanılabilir.
 
 Bir dizin oluşturucunun kullanması gereken güvenli erişim mekanizmasını seçerken aşağıdaki kısıtlamaları göz önünde bulundurun:
 
-- [Hizmet uç noktaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) , hiçbir Azure kaynağı için desteklenmez.
+- [Hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) , hiçbir Azure kaynağı için desteklenmez.
 - Arama hizmeti belirli bir sanal ağa sağlanamıyor-Bu işlevsellik Azure Bilişsel Arama tarafından sunulmayacaktır.
 - Dizin oluşturucular, kaynaklara erişmek için özel uç noktaları (giden) kullanır, ek [özel bağlantı ücretleri](https://azure.microsoft.com/pricing/details/search/) de uygulanabilir.
 
@@ -68,31 +68,31 @@ Belirli bir Dizin Oluşturucu çalıştırması için Azure Bilişsel Arama, diz
 Dizin oluşturucunun erişmeye çalıştığı kaynak yalnızca belirli bir IP aralığı kümesiyle sınırlı ise, Dizin Oluşturucu isteğinin ulaşabileceği olası IP aralıklarını dahil etmek için kümeyi genişletmeniz gerekir. Yukarıda belirtildiği gibi, dizin oluşturucularının çalıştığı ve hangi erişim isteklerinin kaynaklanbileceği iki olası ortam vardır. Dizin Oluşturucu erişimi için __her iki__ ortamın IP adresini de eklemeniz gerekir.
 
 - Arama hizmetine özgü özel ortamın IP adresini `nslookup` (veya `ping` ) arama hizmetinizin tam etki alanı adını (FQDN) almak için. Genel buluttaki bir arama hizmetinin FQDN 'SI (örneğin,) `<service-name>.search.windows.net` . Bu bilgiler Azure portal kullanılabilir.
-- Çok kiracılı ortamların IP adresleri, `AzureCognitiveSearch` hizmet etiketi aracılığıyla kullanılabilir. [Azure hizmet etiketlerinin](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) her hizmet için YAYıMLANMıŞ bir IP adresi aralığı vardır. Bu, bir [bulma API 'si (Önizleme)](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) veya [indirilebilir bir JSON dosyası](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)aracılığıyla sağlanır. Her iki durumda da IP aralıkları bölgeye göre bölünür-yalnızca arama hizmetinizin sağlandığı bölge için atanan IP aralıklarını seçebilirsiniz.
+- Çok kiracılı ortamların IP adresleri, `AzureCognitiveSearch` hizmet etiketi aracılığıyla kullanılabilir. [Azure hizmet etiketlerinin](../virtual-network/service-tags-overview.md) her hizmet için YAYıMLANMıŞ bir IP adresi aralığı vardır. Bu, bir [bulma API 'si (Önizleme)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) veya [indirilebilir bir JSON dosyası](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)aracılığıyla sağlanır. Her iki durumda da IP aralıkları bölgeye göre bölünür-yalnızca arama hizmetinizin sağlandığı bölge için atanan IP aralıklarını seçebilirsiniz.
 
-Belirli veri kaynakları için, hizmet etiketinin kendisi, IP aralıklarının listesini numaralandırmak yerine doğrudan kullanılabilir (Arama hizmetinin IP adresinin hala açıkça kullanılması gerekir). Bu veri kaynakları, bir hizmet etiketi eklemeyi, Azure Storage, CosmosDB, Azure SQL gibi IP kurallarından farklı olarak destekleyen bir [ağ güvenlik grubu kuralı](https://docs.microsoft.com/azure/virtual-network/security-overview)ayarlama yoluyla erişimi kısıtlar, ancak `AzureCognitiveSearch` Arama hizmeti IP adresine ek olarak, hizmet etiketini doğrudan kullanma özelliğini destekleyen veri kaynakları şunlardır:
+Belirli veri kaynakları için, hizmet etiketinin kendisi, IP aralıklarının listesini numaralandırmak yerine doğrudan kullanılabilir (Arama hizmetinin IP adresinin hala açıkça kullanılması gerekir). Bu veri kaynakları, bir hizmet etiketi eklemeyi, Azure Storage, CosmosDB, Azure SQL gibi IP kurallarından farklı olarak destekleyen bir [ağ güvenlik grubu kuralı](../virtual-network/network-security-groups-overview.md)ayarlama yoluyla erişimi kısıtlar, ancak `AzureCognitiveSearch` Arama hizmeti IP adresine ek olarak, hizmet etiketini doğrudan kullanma özelliğini destekleyen veri kaynakları şunlardır:
 
-- [IaaS VM 'lerinde SQL Server](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers#restrict-access-to-the-azure-cognitive-search)
+- [IaaS VM 'lerinde SQL Server](./search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md#restrict-access-to-the-azure-cognitive-search)
 
-- [SQL yönetilen örnekler](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers#verify-nsg-rules)
+- [SQL yönetilen örnekler](./search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md#verify-nsg-rules)
 
 Ayrıntılar [nasıl yapılır kılavuzunda](search-indexer-howto-access-ip-restricted.md)açıklanmaktadır.
 
 ## <a name="granting-access-via-private-endpoints"></a>Özel uç noktalar aracılığıyla erişim verme
 
-Dizin oluşturucular, kaynaklara erişmek için [Özel uç noktaları](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) kullanabilir, sanal ağlar seçmek veya hiçbir ortak erişim özelliği etkinleştirilmemiş olarak kilitlenir.
+Dizin oluşturucular, kaynaklara erişmek için [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanabilir, sanal ağlar seçmek veya hiçbir ortak erişim özelliği etkinleştirilmemiş olarak kilitlenir.
 Bu işlevsellik yalnızca ücretli hizmetler için kullanılabilir ve bu, oluşturulan özel uç nokta sayısıyla sınırlı olur. Limitlerin ayrıntıları [Azure Search sınırları sayfasında](search-limits-quotas-capacity.md)belgelenmiştir.
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>1. Adım: güvenli kaynak için özel bir uç nokta oluşturma
 
-Müşteriler, güvenli kaynaklarına (örneğin, bir depolama hesabı) özel bir uç nokta bağlantısı oluşturmak için arama yönetimi işlemini çağırmalıdır, [ *paylaşılan özel bağlantı kaynak* API 'Sini oluşturur veya güncelleştirir](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) . Bu (giden) özel uç nokta bağlantısının üzerinden geçen trafik yalnızca arama hizmeti 'ne özgü "özel" Dizin Oluşturucu yürütme ortamındaki sanal ağdan kaynaklanacaktır.
+Müşteriler, güvenli kaynaklarına (örneğin, bir depolama hesabı) özel bir uç nokta bağlantısı oluşturmak için arama yönetimi işlemini çağırmalıdır, [ *paylaşılan özel bağlantı kaynak* API 'Sini oluşturur veya güncelleştirir](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) . Bu (giden) özel uç nokta bağlantısının üzerinden geçen trafik yalnızca arama hizmeti 'ne özgü "özel" Dizin Oluşturucu yürütme ortamındaki sanal ağdan kaynaklanacaktır.
 
 Azure Bilişsel Arama, bu API 'nin çağıranlarının güvenli kaynağa özel uç nokta bağlantı isteklerini onaylama izinlerine sahip olduğunu doğrular. Örneğin, erişiminiz olmayan bir depolama hesabına özel bir uç nokta bağlantısı istemeniz durumunda bu çağrı reddedilir.
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>2. Adım: özel uç nokta bağlantısını onaylama
 
 Paylaşılan bir özel bağlantı kaynağı oluşturan (zaman uyumsuz) işlem tamamlandığında, "bekleyen" durumunda özel bir uç nokta bağlantısı oluşturulur. Henüz bağlantı üzerinden trafik akışı yok.
-Daha sonra müşterinin bu isteği güvenli kaynağında bulması ve "onaylaması" beklenir. Genellikle, bu, Portal aracılığıyla veya [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/privatelinkservices/updateprivateendpointconnection)aracılığıyla yapılabilir.
+Daha sonra müşterinin bu isteği güvenli kaynağında bulması ve "onaylaması" beklenir. Genellikle, bu, Portal aracılığıyla veya [REST API](/rest/api/virtualnetwork/privatelinkservices/updateprivateendpointconnection)aracılığıyla yapılabilir.
 
 ### <a name="step-3-force-indexers-to-run-in-the-private-environment"></a>3. Adım: dizin oluşturucularının "özel" ortamda çalışmasına zorla
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710388"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec ile bir yedekleme hedefi olarak StorSimple
@@ -302,7 +302,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 > [!NOTE]
 > Buluta katmanlı bir yedekten veri geri yükleme bulut hızında gerçekleşir.
 
-Aşağıdaki şekilde, tipik bir birimin bir yedekleme işine eşlenmesi gösterilmektedir. Bu durumda, tüm haftalık yedeklemeler Cumartesi tam diskine eşlenir ve artımlı yedeklemeler Pazartesi-Cuma artımlı disklere eşlenir. Tüm yedeklemeler ve geri yüklemeler StorSimple katmanlı bir birimdir.
+Aşağıdaki şekilde, tipik bir birimin bir yedekleme işine eşlenmesi gösterilmektedir. Bu durumda, tüm haftalık yedeklemeler Cumartesi tam diskine eşlenir ve artımlı yedeklemeler artımlı diskler Monday-Friday eşlenir. Tüm yedeklemeler ve geri yüklemeler StorSimple katmanlı bir birimdir.
 
 ![Birincil yedekleme hedefi yapılandırma mantıksal diyagramı](./media/storsimple-configure-backup-target-using-backup-exec/primarybackuptargetdiagram.png)
 
@@ -312,7 +312,7 @@ Dört hafta, aylık ve yıllık için bir GFS döndürme zamanlaması örneği a
 
 | Sıklık/yedekleme türü | Tam | Artımlı (gün 1-5)  |   
 |---|---|---|
-| Haftalık (hafta 1-4) | Cumartesi | Pazartesi-Cuma |
+| Haftalık (hafta 1-4) | Cumartesi | Monday-Friday |
 | Aylık olarak  | Cumartesi  |   |
 | Yıllık | Cumartesi  |   |
 

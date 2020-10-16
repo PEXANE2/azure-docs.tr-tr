@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82780427"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışlarını parametreleştirme
@@ -67,7 +67,7 @@ Dize türünde bir işlem hattı ifade parametresi atarken, varsayılan olarak t
 Veri akışı parametresi `stringParam` değeri olan bir işlem hattı parametresine başvuruyorsa `upper(column1)` . 
 
 - Eğer ifadesi işaretliyse, `$stringParam` Sütun1 'nin tümü büyük harf değeri olarak değerlendirilir.
-- İfade işaretli değilse (varsayılan davranış), `$stringParam` olarak değerlendirilir`'upper(column1)'`
+- İfade işaretli değilse (varsayılan davranış),  `$stringParam` olarak değerlendirilir `'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>Zaman damgalarına geçirme
 
@@ -84,7 +84,7 @@ Veri akışı parametresi `stringParam` değeri olan bir işlem hattı parametre
 
 ![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-2.png "Veri akışı parametresini ayarlama")
 
-`@pipeline.parameters.pipelineParam`çalışma zamanında bir değeri atandı `abs(1)` .
+`@pipeline.parameters.pipelineParam` çalışma zamanında bir değeri atandı `abs(1)` .
 
 ![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-4.png "Veri akışı parametresini ayarlama")
 

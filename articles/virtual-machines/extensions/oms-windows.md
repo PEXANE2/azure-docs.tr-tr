@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
 ms.openlocfilehash: 4730f05adc2625ac576f5963f68d8e3ca8ede355
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331514"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows için Log Analytics sanal makine uzantısı
 
 Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme özellikleri sağlar. Windows için Log Analytics Aracısı sanal makine uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı Log Analytics aracısını Azure sanal makinelerine yükleyip sanal makineleri mevcut bir Log Analytics çalışma alanına kaydeder. Bu belgede, Windows için Log Analytics sanal makine uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -87,7 +87,7 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 ```
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek |
+| Adı | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | yayımcı | Microsoft. EnterpriseCloud. Monitoring |

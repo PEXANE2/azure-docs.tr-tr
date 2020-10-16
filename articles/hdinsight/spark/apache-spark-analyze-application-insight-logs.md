@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86078808"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark Application Insights telemetri günlüklerini çözümleme
@@ -21,7 +21,7 @@ HDInsight üzerinde [Apache Spark](https://spark.apache.org/) kullanarak Applica
 
 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) , Web uygulamalarınızı izleyen bir analiz hizmetidir. Application Insights tarafından oluşturulan telemetri verileri, Azure depolama 'ya aktarılabilir. Veriler Azure Storage 'da olduktan sonra, HDInsight analiz etmek için kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Application Insights kullanacak şekilde yapılandırılmış bir uygulama.
 
@@ -31,7 +31,7 @@ HDInsight üzerinde [Apache Spark](https://spark.apache.org/) kullanarak Applica
 
 Bu belgeyi geliştirmek ve test etmek için aşağıdaki kaynaklar kullanılmıştır:
 
-* Application Insights telemetri verileri, [Application Insights kullanmak üzere yapılandırılmış birNode.js Web uygulaması](../../azure-monitor/app/nodejs.md)kullanılarak oluşturulmuştur.
+* Application Insights telemetri verileri, [ Application Insights kullanmak üzere yapılandırılmış birNode.js Web uygulaması](../../azure-monitor/app/nodejs.md)kullanılarak oluşturulmuştur.
 
 * HDInsight kümesi sürüm 3,5 ' de Linux tabanlı bir Spark, verileri çözümlemek için kullanıldı.
 

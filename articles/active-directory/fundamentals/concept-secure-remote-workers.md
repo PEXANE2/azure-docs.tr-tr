@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705376"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure Active Directory ile güvenli kimliklere hızla yanıt verme
@@ -34,7 +34,7 @@ Bu denetim listesi, aşağıdaki adımları izleyerek kuruluşunuzu hemen koruma
 - Bulut zekası kullanın.
 - Son Kullanıcı self servis hizmetini etkinleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzda yalnızca bulutunuzun veya karma kimliklerinin Azure AD 'de zaten kurulduğu varsayılmaktadır. Kimlik türünü seçme konusunda yardım için, [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin](../hybrid/choose-ad-authn.md) . 
 

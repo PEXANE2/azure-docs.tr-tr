@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709054"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
@@ -194,7 +194,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Nedeni
 
-`java.lang.OutOfMemoryError: unable to create new native thread`Ana işletim sistemi, JVM 'lere daha fazla yerel iş parçacığı atayamaz. Bu özel durumun, işlem başına iş parçacığı sayısı sınırının ihlalinden kaynaklanmış olduğunu doğrulamıştır.
+`java.lang.OutOfMemoryError: unable to create new native thread` Ana işletim sistemi, JVM 'lere daha fazla yerel iş parçacığı atayamaz. Bu özel durumun, işlem başına iş parçacığı sayısı sınırının ihlalinden kaynaklanmış olduğunu doğrulamıştır.
 
 Livy sunucusu beklenmedik şekilde sonlandırıldığında, Spark kümelerine yapılan tüm bağlantılar da sonlandırılır. Bu, tüm işlerin ve ilgili verilerin kaybedildiği anlamına gelir. HDP 2,6 oturum kurtarma mekanizması tanıtılmıştı, Livy sunucu geri alındıktan sonra kurtarılacak Zookeeper içinde oturum ayrıntılarını depolar.
 
@@ -239,7 +239,7 @@ Aşağıda açıklanan adımları kullanarak tüm girdileri silin.
 1. Yukarıdaki komutun tamamlanmasını bekleyin ve imleci bir süre sonra yeniden başlatın ve bu işlemin başarılı olması gerekir.
 
 > [!NOTE]
-> `DELETE`Yürütme tamamlandıktan sonra tüm oturum. Tek tek toplu oturumlar, bir tasarıma göre olan Spark uygulaması tamamlandıktan hemen sonra otomatik olarak silinmez. Livy oturumu, Livy Rest sunucusuna yönelik bir POST isteği tarafından oluşturulan bir varlıktır. `DELETE`Varlığı silmek için bir çağrı gerekir. Ya da GC 'nin başlatılmasını beklememiz gerekir.
+> `DELETE` Yürütme tamamlandıktan sonra tüm oturum. Tek tek toplu oturumlar, bir tasarıma göre olan Spark uygulaması tamamlandıktan hemen sonra otomatik olarak silinmez. Livy oturumu, Livy Rest sunucusuna yönelik bir POST isteği tarafından oluşturulan bir varlıktır. `DELETE`Varlığı silmek için bir çağrı gerekir. Ya da GC 'nin başlatılmasını beklememiz gerekir.
 
 ---
 

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f82883b68ab911fb0b89fc117d9a9d77e05a781a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245900"
 ---
 # <a name="sfctl-container"></a>sfctl container
@@ -25,7 +25,7 @@ Kapsayıcı ile ilgili komutları bir küme düğümünde çalıştırın.
 ## <a name="sfctl-container-invoke-api"></a>sfctl kapsayıcısı çağırma-API
 Verilen kod paketi için bir Service Fabric düğümüne dağıtılan bir kapsayıcıda kapsayıcı API 'sini çağırma.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -53,7 +53,7 @@ Verilen kod paketi için bir Service Fabric düğümüne dağıtılan bir kapsay
 ## <a name="sfctl-container-logs"></a>sfctl kapsayıcı günlükleri
 Service Fabric düğümüne dağıtılan kapsayıcının kapsayıcı günlüklerini alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

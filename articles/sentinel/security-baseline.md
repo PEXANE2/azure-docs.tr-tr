@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 25571db967608c238bccb1ab44f75a0a163803d5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90020377"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure Sentinel için Azure Güvenlik temeli
@@ -551,13 +551,13 @@ Log Analytics çalışma alanı dahil, işlem dışı Azure kaynaklarına karş�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Rehberlik**: anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak Için Key Vault geçici silme özelliğini etkinleştirin. Bir kullanıcının, anahtar şifreleme anahtarını silerek veya Azure Sentinel 'e erişimi bir saat içinde kaldırarak, Azure Sentinel değişikliği kabul eder ve veriler artık kullanılamıyor gibi davranır. Bu noktada, gerçekleştirilen ve veri alımı, kalıcı yapılandırma değişiklikleri ve olay oluşturma gibi kalıcı depolama kaynakları kullanan tüm işlemler engellenir. Daha önce depolanan veriler silinmez, ancak erişilemez kalacak. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bu ilkeye uygun olarak temizlenir.
+**Rehberlik**: anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete etkinleştirin. Bir kullanıcının, anahtar şifreleme anahtarını silerek veya Azure Sentinel 'e erişimi bir saat içinde kaldırarak, Azure Sentinel değişikliği kabul eder ve veriler artık kullanılamıyor gibi davranır. Bu noktada, gerçekleştirilen ve veri alımı, kalıcı yapılandırma değişiklikleri ve olay oluşturma gibi kalıcı depolama kaynakları kullanan tüm işlemler engellenir. Daha önce depolanan veriler silinmez, ancak erişilemez kalacak. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bu ilkeye uygun olarak temizlenir.
 
 Şifreleme anahtarı iptal edildikten veya silindikten sonra mümkün olan tek işlem, hesap silme işlemidir.
 
 Erişim İptalden sonra geri yüklenirse, Azure Sentinel bir saat içinde verilere erişimi geri yükler.
 
-- [Key Vault 'da geçici silme özelliğini etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault Soft-Delete etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 - [Azure Sentinel 'de müşteri tarafından yönetilen anahtarları anlama](customer-managed-keys.md)
 

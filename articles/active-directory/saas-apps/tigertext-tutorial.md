@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 995cd8470d4fbbf3dc340139a86275593a3d5d28
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>Öğretici: TigerConnect Secure Messenger ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ TigerConnect Secure Messenger 'ı Azure AD ile tümleştirmek aşağıdaki avant
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini TigerConnect Secure Messenger ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı TigerConnect Secure Messenger ile yapılandırma
     > [!NOTE]
     > **Tanımlayıcı (VARLıK kimliği)** değeri gerçek değil. Bu değeri gerçek tanımlayıcıyla güncelleştirin. Değeri almak için, [Tigerconnect Secure Messenger destek ekibine](mailto:prosupport@tigertext.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölmesinde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Federasyon meta verileri XML indirme seçeneği](common/metadataxml.png)
 

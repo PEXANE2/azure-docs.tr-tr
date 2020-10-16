@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91530468"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973134"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR kapsayıcılarına geçiş
 
@@ -65,10 +65,10 @@ Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
 >[!NOTE]
 > MongoDB, kapsayıcının 3. x sürümünde artık desteklenmiyor. Bunun yerine kapsayıcılar, Azure depolama ve çevrimdışı dosya sistemlerini destekler.
 
-| Uygulama |  Gerekli çalışma zamanı bağımsız değişkenleri |
+| Uygulama |    Gerekli çalışma zamanı bağımsız değişkenleri |
 |---------|---------|
-|Dosya düzeyi (varsayılan)   | Çalışma zamanı bağımsız değişkeni gerekmez. `/share` Dizin kullanılacak. |
-|Azure Blob | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
+|Dosya düzeyi (varsayılan)    | Çalışma zamanı bağımsız değişkeni gerekmez. `/share` Dizin kullanılacak. |
+|Azure Blob    | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
 
 ## <a name="queue-implementations"></a>Kuyruk uygulamaları
 
@@ -78,7 +78,7 @@ Kapsayıcının v3. x dosyasında, Kbbitmq Şu anda desteklenmiyor. Desteklenen 
 |---------|---------|-------|
 | Bellekte (varsayılan) | Çalışma zamanı bağımsız değişkeni gerekmez. | Geliştirme ve test |
 | Azure Kuyrukları | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Üretim |
-| RabbitMQ  | Kullanılamaz | Üretim |
+| RabbitMQ    | Kullanılamaz | Üretim |
 
 Eklenen artıklık için Read v3. x kapsayıcısı, çok kapsayıcılı bir planda çalışırken isteklerin kilitlenme durumunda başarılı bir şekilde işlenebilmesi için görünürlük zamanlayıcısını kullanır. 
 
@@ -86,7 +86,7 @@ Zamanlayıcıyı, `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` başka bir 
 
 | Varsayılan değer | Önerilen değer |
 |---------|---------|
-| 30000 |   120000 |
+| 30000 |    120000 |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

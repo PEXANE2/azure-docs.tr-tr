@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e63d2cac97a16674c4e2e880f94373b0af1510de
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91627134"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056421"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Microsoft kimlik platformu nedir?
 
@@ -39,7 +39,7 @@ Geliştiriciler için, Microsoft Identity platformu, kimlik ve güvenlik alanın
 
 Microsoft Identity platformu ile kodu bir kez yazabilir ve herhangi bir kullanıcıya ulaşabilirsiniz. Bir uygulamayı bir kez oluşturup çok sayıda platformda çalışır hale getirebilirsiniz veya istemci olarak bir kaynak uygulaması (API) olarak işlev gören bir uygulama oluşturabilirsiniz.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Derlemek istediğiniz [uygulama senaryosunu](authentication-flows-app-scenarios.md) seçin. Bu senaryo yollarının her biri, bir genel bakış ile başlar ve hızlı başlangıç bağlantısı ile çalışmaya başlamanıza yardımcı olur:
 
@@ -74,8 +74,7 @@ Uygulamalarınızda kimlik doğrulaması ve yetkilendirmeyi tümleştirmede Micr
 
 [Azure AD B2B](../external-identities/what-is-b2b.md) -dış KULLANıCıLARı Azure AD kiracınıza "Konuk" kullanıcıları olarak davet edin ve kimlik doğrulama için mevcut kimlik bilgilerini kullanırken yetkilendirme izinlerini atayın.
 
-> [!TIP]
-> *Azure Active Directory geliştirici platformu (v 1.0)* belgeleri mi arıyorsunuz? Bkz. [geliştiriciler için Azure Active Directory (v 1.0) genel bakış](../azuread-dev/v1-overview.md).
+[Geliştiriciler için Azure Active Directory (v 1.0)](../azuread-dev/v1-overview.md) -burada, eski v 1.0 uç noktasını kullanan uygulamaları içeren geliştiriciler için burada gösterilir. Yeni projeler için v **1.0 kullanmayın.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

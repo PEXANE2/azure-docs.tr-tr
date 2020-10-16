@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319869"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme
@@ -131,7 +131,7 @@ Bu geçersiz kılmaların yükseltmeden hemen sonra gerçekleşmesini istemediğ
 5. Scheduler 'ı yeniden başlatmak için aşağıdaki cmdlet 'i çalıştırın: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
-   > Gerekli eşitleme adımlarını en erken rahatınız üzerinde yürütmeyi unutmayın. Synchronization Service Manager kullanarak bu adımları el ile yürütebilir veya set-ADSyncSchedulerConnectorOverride cmdlet 'ini kullanarak geçersiz kılmaları geri ekleyebilirsiniz.
+   > Gerekli eşitleme adımlarını en erken rahatınız üzerinde yürütmeyi unutmayın. Synchronization Service Manager kullanarak bu adımları el ile yürütebilir ya da Set-ADSyncSchedulerConnectorOverride cmdlet 'ini kullanarak geçersiz kılmaları geri ekleyebilirsiniz.
 
 Rastgele bir bağlayıcıda tam içeri aktarma ve tam eşitleme için geçersiz kılmaları eklemek üzere aşağıdaki cmdlet 'i çalıştırın:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 

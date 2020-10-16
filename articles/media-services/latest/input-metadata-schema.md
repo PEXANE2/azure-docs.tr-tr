@@ -14,10 +14,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295573"
 ---
 # <a name="input-metadata"></a>Giriş meta verileri
@@ -47,7 +47,7 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 | --- | --- | 
 | **Videoizler**|Her fiziksel varlık dosyası sıfır veya daha fazla video, araya eklemeli bir şekilde uygun bir kapsayıcı biçimine sahip olabilir. Daha fazla bilgi için bkz. [Videoiz](#videotracks). |
 | **Ses Izleri**|Her fiziksel varlık dosyası, uygun bir kapsayıcı biçiminde araya eklemeli sıfır veya daha fazla ses parçası içerebilir. Daha fazla bilgi için bkz. [ses izleri](#audiotracks) |
-| **Meta Veriler**  |Varlık dosyasının meta verileri key\value dizeleri olarak temsil edilir. <br />Örnek: `<Metadata key="language" value="eng" />` |
+| **Veriyi**  |Varlık dosyasının meta verileri key\value dizeleri olarak temsil edilir. <br />Örnek: `<Metadata key="language" value="eng" />` |
 
 ### <a name="other-child-elements"></a>Diğer alt öğeler
 
@@ -80,8 +80,8 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 | **Kare hızı değerini**<br />Gerekli |.3F biçiminde ölçülen video kare hızı. <br /><br />Örnek: `"FrameRate": 29.970`|
 | **Bit hızı** |Varlık dosyasından hesaplanan bit/saniye cinsinden ortalama video bit hızı. Yalnızca öğesel akış yükü sayılır ve paketleme ek yükü dahil değildir. <br /><br />Örnek: `"Bitrate": 8421583`|
 | **HasBFrames** |Video parça sayısı B kare. <br /><br />Örnek: `"HasBFrames": 2`|
-| **Meta Veriler** |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri. <br />Makalenin sonundaki tam örneğe bakın. |
-| **Numarasını**<br />Gerekli |Bu sesin veya video izlemenin sıfır tabanlı dizini.<br /><br /> Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 2`|
+| **Veriyi** |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri. <br />Makalenin sonundaki tam örneğe bakın. |
+| **Id**<br />Gerekli |Bu sesin veya video izlemenin sıfır tabanlı dizini.<br /><br /> Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 2`|
 | **Bileşeni** |Video izleme codec bileşeni dizesi. <br /><br />Örnek: `"Codec": "h264"`|
 | **CodecLongName** |Ses veya video izleme codec bileşeni uzun adı. <br /><br />Örnek: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
 | **Bileşeni** |Video izleme codec bileşeni dizesi. <br /><br />Örnek: `"Codec": "h264"`|
@@ -99,8 +99,8 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 | **Kanallar**<br />Gerekli |Ses kanalı sayısı (0 veya daha fazla). <br /><br />Örnek: `"Channels": 2`|
 | **SamplingRate**<br />Gerekli |Örnek/sn veya Hz 'teki ses örnekleme oranı. <br /><br />Örnek: `"SamplingRate": 48000`|
 | **Bit hızı** |Varlık dosyasından hesaplanan bit/saniye cinsinden ortalama ses bit hızı. Yalnızca öğesel akış yükü sayılır ve paketleme ek yükü bu sayıma dahil değildir. <br /><br />Örnek: `"Bitrate": 192080`|
-| **Meta Veriler** |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri.  <br />Makalenin sonundaki tam örneğe bakın. |
-| **Numarasını**<br />Gerekli |Bu sesin veya video izlemenin sıfır tabanlı dizini.<br /><br /> Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 1`|
+| **Veriyi** |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri.  <br />Makalenin sonundaki tam örneğe bakın. |
+| **Id**<br />Gerekli |Bu sesin veya video izlemenin sıfır tabanlı dizini.<br /><br /> Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 1`|
 | **Bileşeni** |Video izleme codec bileşeni dizesi. <br /><br />Örnek: `"Codec": "aac"`|
 | **CodecLongName** |Ses veya video izleme codec bileşeni uzun adı. <br /><br />Örnek: `"CodecLongName": "AAC (Advanced Audio Coding)"`|
 | **Temeli**<br />Gerekli |Zaman tabanı.<br /><br />Örnek: `"TimeBase": "1/48000"` |
@@ -108,12 +108,12 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 | **StartTime** |Başlangıç saatini izleyin. Daha fazla bilgi için bkz. [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html). <br /><br />Örnek: `"StartTime": "PT0S"` |
 | **Süre** |Süreyi izleyin. <br /><br />Örnek: `"Duration": "PT1M10.272S"` |
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Ad | Açıklama |
 | --- | --- |
 | **anahtar**<br />Gerekli |Anahtar/değer çiftindeki anahtar. |
-| **deeri**<br /> Gerekli |Anahtar/değer çiftindeki değer. |
+| **değer**<br /> Gerekli |Anahtar/değer çiftindeki değer. |
 
 ## <a name="schema-example"></a>Şema örneği
 

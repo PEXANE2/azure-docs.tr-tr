@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076139"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Tanılama kullanarak olay toplama ve toplama
@@ -193,7 +193,7 @@ Dosyadaki template.jsaçıklandığı gibi değiştirdikten sonra Kaynak Yöneti
 
 ### <a name="update-storage-quota"></a>Depolama kotasını güncelleştirme
 
-Uzantı tarafından doldurulan tablolar, kotaya ulaşılana kadar büyüdükçe, kota boyutunu azaltmasını isteyebilirsiniz. Varsayılan değer 50 GB 'tır ve `overallQuotaInMB` altındaki alanda şablonda yapılandırılabilir`DiagnosticMonitorConfiguration`
+Uzantı tarafından doldurulan tablolar, kotaya ulaşılana kadar büyüdükçe, kota boyutunu azaltmasını isteyebilirsiniz. Varsayılan değer 50 GB 'tır ve `overallQuotaInMB` altındaki alanda şablonda yapılandırılabilir `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
@@ -284,7 +284,7 @@ Dağıtmak üzere olduğunuz yeni bir uygulamayı temsil eden yeni EventSource k
 
 `EtwEventSourceProviderConfiguration`PowerShell komutunu kullanarak yapılandırma güncelleştirmesini uygulamadan önce yeni EventSource kanallarının girdilerini eklemek için template.jsdosyadaki bölümünü güncelleştirin `New-AzResourceGroupDeployment` . Olay kaynağının adı, Visual Studio tarafından oluşturulan ServiceEventSource.cs dosyasındaki kodunuzun bir parçası olarak tanımlanır.
 
-Örneğin, olay kaynağınız My-EventSource olarak adlandırılmışsa, olayları MyDestinationTableName adlı bir tabloya yerleştirmek için aşağıdaki kodu ekleyin.
+Örneğin, olay kaynağınız My-EventSource olarak adlandırılmışsa, My-Eventsource olayları MyDestinationTableName adlı bir tabloya yerleştirmek için aşağıdaki kodu ekleyin.
 
 ```json
         {

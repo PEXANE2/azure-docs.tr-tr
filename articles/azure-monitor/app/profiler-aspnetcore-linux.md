@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 69ec25348c3056536a2e09fd889b48e1e63ea7bb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930392"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992776"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler ile Azure Linux Web Apps ASP.NET Core profili
 
@@ -107,7 +107,7 @@ Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için
 
     ![Git deposunu ayarlama](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Daha fazla dağıtım seçeneği için [App Service belgelerine](https://docs.microsoft.com/azure/app-service)bakın.
+Daha fazla dağıtım seçeneği için [App Service belgelerine](../../app-service/index.yml)bakın.
 
 ## <a name="deploy-your-project"></a>Projenizi dağıtma
 
@@ -172,4 +172,3 @@ Daha fazla dağıtım seçeneği için [App Service belgelerine](https://docs.mi
 Azure App Service tarafından barındırılan özel kapsayıcılar kullanıyorsanız, [ kapsayıcılı bir ASP.NET Core uygulaması için](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) Application Insights Profiler etkinleştirmek üzere Service Profiler etkinleştir bölümündeki yönergeleri izleyin.
 
 Application Insights GitHub deposuna tüm sorunları veya önerileri bildirin: [ApplicationInsights-Profiler-AspNetCore: sorunlar](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
-

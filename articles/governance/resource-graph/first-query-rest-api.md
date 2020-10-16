@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: ilk REST API sorgunuz'
 description: Bu hızlı başlangıçta, REST API için kaynak grafik uç noktasını çağırmak ve ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85802756"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057239"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Hızlı başlangıç: REST API kullanarak ilk kaynak grafik sorgunuzu çalıştırın
 
@@ -16,7 +16,7 @@ REST API ile Azure Kaynak grafiğini kullanmanın ilk adımı, bekleyen API 'Ler
 
 Bu işlemin sonunda REST API uç noktaları çağırma ve ilk kaynak grafik sorgunuzu çalıştırma araçlarına sahip olacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -49,7 +49,8 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-Aboneliğiniz hakkında bilgi almak için yukarıdaki **$restUri** değişkeni içinde yer alan `{subscriptionId}` öğesini değiştirin. $response değişkeni `Invoke-RestMethod` cmdlet'inin sonucunu tutar ve [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) gibi cmdlet'ler ile ayrıştırılabilir. REST API hizmet uç noktası bir **İstek Gövdesi** bekliyorsa `Invoke-RestMethod` öğesinin `-Body` parametresine JSON biçiminde bir değişken sağlayın.
+`{subscriptionId}` `$restUri` Aboneliğiniz hakkında bilgi almak için değişkende değiştirin.
+`$response`Değişkeni, cmdlet 'inin sonucunu tutar `Invoke-RestMethod` ve bu, [ConvertFrom-JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json)gibi cmdlet 'lerle ayrıştırılabilir. REST API hizmet uç noktası bir **İstek Gövdesi** bekliyorsa `Invoke-RestMethod` öğesinin `-Body` parametresine JSON biçiminde bir değişken sağlayın.
 
 ## <a name="run-your-first-resource-graph-query"></a>İlk Kaynak Grafiği sorgunuzu çalıştırma
 

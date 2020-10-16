@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82783753"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
@@ -75,7 +75,7 @@ Varsayılan olarak, IoT Edge kendi yalıtılmış kapsayıcı ağında modüller
 
 **Seçenek 1: kapsayıcı altyapısı ayarlarındaki DNS sunucusunu ayarlama**
 
-Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; Bu, altyapı tarafından başlatılan tüm kapsayıcı modülleri için geçerlidir. `daemon.json`Kullanılacak DNS sunucusunu belirten adlı bir dosya oluşturun. Örnek:
+Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; Bu, altyapı tarafından başlatılan tüm kapsayıcı modülleri için geçerlidir. `daemon.json`Kullanılacak DNS sunucusunu belirten adlı bir dosya oluşturun. Örneğin:
 
 ```json
 {
@@ -103,7 +103,7 @@ Güncelleştirmelerin etkili olabilmesi için kapsayıcı altyapısını yeniden
 
 **Seçenek 2: modül başına IoT Edge dağıtımında DNS sunucusunu ayarlama**
 
-Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayarlayabilirsiniz. Örnek:
+Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayarlayabilirsiniz. Örneğin:
 
 ```json
 "createOptions": {

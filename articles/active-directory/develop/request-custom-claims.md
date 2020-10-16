@@ -13,10 +13,10 @@ ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477201"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Nasıl yapılır: iOS ve macOS için MSAL kullanarak özel talepler ISTEME
@@ -33,7 +33,7 @@ Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
 > [!NOTE]
 > MSAL, bir talep isteği belirtildiğinde erişim belirteci önbelleğini atlar. Yalnızca `claimsRequest` ek talepler gerektiğinde parametre sağlanması önemlidir (her BIR msal API çağrısında aynı parametreyi her zaman sağlama aksine `claimsRequest` ).
 
-`claimsRequest`, ve içinde belirtilebilir `MSALSilentTokenParameters` `MSALInteractiveTokenParameters` :
+`claimsRequest` , ve içinde belirtilebilir `MSALSilentTokenParameters` `MSALInteractiveTokenParameters` :
 
 ```objc
 /*!
@@ -49,7 +49,7 @@ Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
 
 @end
 ```
-`MSALClaimsRequest`JSON talep isteğinin NSString gösteriminden oluşturulabilir. 
+`MSALClaimsRequest` JSON talep isteğinin NSString gösteriminden oluşturulabilir. 
 
 Amaç-C:
 
@@ -98,7 +98,7 @@ do {
 
 
 
-`MSALClaimsRequest`daha sonra belirteç parametrelerinde ayarlanmalıdır ve MSAL Token alımlar API 'Lerinden birine sağlanmalıdır:
+`MSALClaimsRequest` daha sonra belirteç parametrelerinde ayarlanmalıdır ve MSAL Token alımlar API 'Lerinden birine sağlanmalıdır:
 
 Amaç-C:
 

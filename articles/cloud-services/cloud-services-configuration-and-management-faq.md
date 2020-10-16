@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 219c0b90bceb2a123d2e4af21ac7fa1edea58d54
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092754"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070019"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
 
@@ -77,7 +77,7 @@ Bu makalede [Microsoft Azure Cloud Services](https://azure.microsoft.com/service
 
 ### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Bulut hizmeti TLS/SSL sertifikamın sertifika zinciri neden tamamlanmadı?
     
-Müşterilerin yalnızca yaprak sertifika yerine tam sertifika zincirini (yaprak sertifikası, ara sertifikalar ve kök sertifika) yüklemesini öneririz. Yalnızca yaprak sertifikayı yüklediğinizde, CTL 'yi yürüyerek sertifika zincirini oluşturmak için Windows 'u temel alırsınız. Azure 'da aralıklı ağ veya DNS sorunları oluşursa veya Windows sertifikayı doğrulamaya çalışırken Windows Update, sertifika geçersiz kabul edilebilir. Tam sertifika zincirini yükleyerek bu sorunun kaçınılması gerekir. [ZINCIRLEME SSL sertifikasının nasıl yükleneceğini](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) gösteren blog bunun nasıl yapılacağını gösterir.
+Müşterilerin yalnızca yaprak sertifika yerine tam sertifika zincirini (yaprak sertifikası, ara sertifikalar ve kök sertifika) yüklemesini öneririz. Yalnızca yaprak sertifikayı yüklediğinizde, CTL 'yi yürüyerek sertifika zincirini oluşturmak için Windows 'u temel alırsınız. Azure 'da aralıklı ağ veya DNS sorunları oluşursa veya Windows sertifikayı doğrulamaya çalışırken Windows Update, sertifika geçersiz kabul edilebilir. Tam sertifika zincirini yükleyerek bu sorunun kaçınılması gerekir. [ZINCIRLEME SSL sertifikasının nasıl yükleneceğini](/archive/blogs/azuredevsupport/how-to-install-a-chained-ssl-certificate) gösteren blog bunun nasıl yapılacağını gösterir.
 
 ### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>"Uzantılar için Windows Azure Araçları şifreleme sertifikası" amacı nedir?
 
@@ -111,11 +111,11 @@ Bu görevi, bir başlangıç betiği (Batch/cmd/PowerShell) kullanarak otomatikl
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>"MachineKey için Microsoft Azure Service Management" sertifikası amacı nedir?
 
-Bu sertifika, Azure Web rolleri üzerinde makine anahtarlarını şifrelemek için kullanılır. Daha fazla bilgi edinmek için [Bu danışma belgesine](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)göz atın.
+Bu sertifika, Azure Web rolleri üzerinde makine anahtarlarını şifrelemek için kullanılır. Daha fazla bilgi edinmek için [Bu danışma belgesine](/security-updates/securityadvisories/2018/4092731)göz atın.
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
-- [Bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [Ortak bulut hizmeti başlangıç görevleri](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+- [Bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma](./cloud-services-startup-tasks.md)
+- [Ortak bulut hizmeti başlangıç görevleri](./cloud-services-startup-tasks-common.md)
 
 ## <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -139,16 +139,16 @@ Günlük dizinine yazmak için yerel depolama kotasını tüketmiş olursunuz.Bu
 * Yerel kaynaklar için kota sınırını artırın.
 
 Daha fazla bilgi için, aşağıdaki belgelere bakın:
-* [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](/azure/storage/common/storage-introduction)
-* [IIS günlükleri, bulut hizmeti 'nde yazmayı durdurur](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+* [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](../storage/common/storage-introduction.md)
+* [IIS günlükleri, bulut hizmeti 'nde yazmayı durdurur](/archive/blogs/cie/iis-logs-stops-writing-in-cloud-service)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Nasıl yaparım? Cloud Services için WAD günlüğü etkinleştirilsin mi?
 Aşağıdaki seçenekler aracılığıyla Windows Azure Tanılama (WAD) günlük kaydını etkinleştirebilirsiniz:
-1. [Visual Studio 'dan etkinleştir](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [.NET kodu üzerinden etkinleştir](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
-3. [PowerShell aracılığıyla etkinleştir](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+1. [Visual Studio 'dan etkinleştir](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [.NET kodu üzerinden etkinleştir](./cloud-services-dotnet-diagnostics.md)
+3. [PowerShell aracılığıyla etkinleştir](./cloud-services-diagnostics-powershell.md)
 
-Bulut hizmetinizin geçerli WAD ayarlarını almak için [Get-Azurezervicediagnokısextensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) PS cmd komutunu kullanabilir veya "Cloud Services--> Extensions" dikey penceresinden Portal üzerinden görüntüleyebilirsiniz.
+Bulut hizmetinizin geçerli WAD ayarlarını almak için [Get-Azurezervicediagnokısextensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PS cmd komutunu kullanabilir veya "Cloud Services--> Extensions" dikey penceresinden Portal üzerinden görüntüleyebilirsiniz.
 
 
 ## <a name="network-configuration"></a>Ağ yapılandırması
@@ -192,7 +192,7 @@ Microsoft, tehditleri algılamak için sunucuları, ağları ve uygulamaları s�
 Windows 10 ve Windows Server 2016 hem istemci hem de sunucu tarafında HTTP/2 desteğiyle birlikte gelir. İstemciniz (tarayıcı), TLS uzantıları aracılığıyla HTTP/2 ' yi görüşür ve TLS üzerinden IIS sunucusuna bağlanıyorsa, sunucu tarafında herhangi bir değişiklik yapmanız gerekmez. Bunun nedeni, TLS üzerinden HTTP/2 kullanımını belirten H2-14 üst bilgisi varsayılan olarak gönderilir. Diğer taraftan, istemciniz HTTP/2 ' ye yükseltmek için bir yükseltme üst bilgisi gönderiyorsa, yükseltmenin çalıştığından ve bir HTTP/2 bağlantısı ile sonlandırtığınızdan emin olmak için sunucu tarafında aşağıdaki değişikliği yapmanız gerekir. 
 
 1. regedit.exe çalıştırın.
-2. Kayıt defteri anahtarına göz atın: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Kayıt defteri anahtarına gidin: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. **Duoenabled**adlı yenı bir DWORD değeri oluşturun.
 4. Değerini 1 olarak ayarlayın.
 5. Sunucunuzu yeniden başlatın.
@@ -248,7 +248,7 @@ Cloud Services otomatik ölçeklendirmeyi yapılandırmak için Application Insi
 
 Cloud Services için Application Insights Azure Tanılama tümleştirme hakkında daha fazla bilgi için bkz. [bulut hizmeti, sanal makine veya Service Fabric Tanılama verileri gönderme Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
-Cloud Services için Application Insights etkinleştirme hakkında daha fazla bilgi için bkz. [Azure için Application Insights Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
+Cloud Services için Application Insights etkinleştirme hakkında daha fazla bilgi için bkz. [Azure için Application Insights Cloud Services](../azure-monitor/app/cloudservices.md)
 
 Cloud Services için Azure Tanılama günlüğe kaydetmenin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure Cloud Services ve sanal makineler için tanılamayı ayarlama](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
@@ -313,7 +313,7 @@ SNı bağlama, aşağıdaki gibi bir bulut hizmeti rolü örneği için başlang
 New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
 ```
 
-[Burada](https://technet.microsoft.com/library/ee790567.aspx)açıklandığı gibi, $sslFlags aşağıdaki gibi değerlerden biri olabilir:
+[Burada](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee790567(v=technet.10))açıklandığı gibi, $sslFlags aşağıdaki gibi değerlerden biri olabilir:
 
 |Değer|Anlamı|
 ------|------
@@ -324,7 +324,7 @@ New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddr
  
 **Yöntem 2: kodu kullanma**
 
-SNı bağlama, bu [blog gönderisine](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)göre rol başlangıcında kod aracılığıyla da yapılandırılabilir:
+SNı bağlama, bu [blog gönderisine](/archive/blogs/jianwu/expose-ssl-service-to-multi-domains-from-the-same-cloud-service)göre rol başlangıcında kod aracılığıyla da yapılandırılabilir:
 
 ```csharp
 //<code snip> 
@@ -356,7 +356,6 @@ Zaten dağıtılmış bir bulut hizmeti, kullandığı Işlem ve depolama için 
 
 Hizmetinizin IP adresini kaybetmeden faturanızı azaltmak için şunları yapabilirsiniz:
 
-1. Dağıtımları silmeden önce [IP adresini ayırın](../virtual-network/virtual-networks-reserved-public-ip.md) .  Yalnızca bu IP adresi için faturalandırılırsınız. IP adresi faturalaması hakkında daha fazla bilgi için bkz. [IP adresleri fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/).
+1. Dağıtımları silmeden önce [IP adresini ayırın](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) .  Yalnızca bu IP adresi için faturalandırılırsınız. IP adresi faturalaması hakkında daha fazla bilgi için bkz. [IP adresleri fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/).
 2. Dağıtımları silin. Daha sonra kullanabilmeniz için xxx.cloudapp.net silmeyin.
 3. Aboneliğinizde ayrılan ayrılmış IP 'yi kullanarak bulut hizmetini yeniden dağıtmak istiyorsanız, [Cloud Services ve sanal makineler için ayrılmış IP adresleri](https://azure.microsoft.com/blog/reserved-ip-addresses/)bölümüne bakın.
-

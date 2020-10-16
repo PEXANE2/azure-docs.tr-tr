@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759178"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945385"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91759178"
 
 IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek Için C# ' nin nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıcı Windows üzerinde tamamlayabilmeniz için geliştirme m
 
 [Hızlı başlangıç: Windows üzerinde çalışan bir örnek ıot Tak ve kullan cihaz uygulamasını IoT Hub 'A bağlama (C#)](quickstart-connect-device-csharp.md), depoyu zaten Klonladığınız.
 
-.NET GitHub deposu için Microsoft Azure IoT SDK ' dan örnekleri kopyalayın. Seçtiğiniz bir klasörde bir komut istemi açın. .NET GitHub deposu [için Microsoft Azure IoT örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp) kopyalamak üzere aşağıdaki komutu çalıştırın:
+C# GitHub deposu için Azure IoT örneklerinden örnekleri kopyalayın. Seçtiğiniz bir klasörde bir komut istemi açın. .NET GitHub deposu [için Microsoft Azure IoT örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp) kopyalamak üzere aşağıdaki komutu çalıştırın:
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -55,7 +55,6 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak C# dilinde yazılmı
     | IOTHUB_DEVICE_DPS_ID_SCOPE | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | My-PNP-cihazım |
     | IOTHUB_DEVICE_DPS_DEVICE_KEY | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |
-
 
 1. Artık Visual Studio 'da örneği oluşturabilir ve hata ayıklama modunda çalıştırabilirsiniz.
 
@@ -81,9 +80,9 @@ Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurm
 
 1. Artık Visual Studio 'da örneği oluşturabilir ve hata ayıklama modunda çalıştırabilirsiniz.
 
-### <a name="get-digital-twin"></a>Dijital ikizi al
+### <a name="get-device-twin"></a>Cihaz ikizi al
 
-Aşağıdaki kod parçacığı, hizmet uygulamasının dijital ikizi nasıl alacağını göstermektedir:
+Aşağıdaki kod parçacığı, hizmet uygulamasının cihazı ikizi nasıl alacağını gösterir:
 
 ```C#
 // Get a Twin and retrieves model Id set by Device client
@@ -92,7 +91,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> Bu örnek, **IoT Hub hizmeti Istemcisinden** **Microsoft. Azure. Devices. Client;** ad alanını kullanır. Model KIMLIĞINI alma hakkında daha fazla bilgi edinmek için bkz. [Geliştirici Kılavuzu](concepts-developer-guide-service.md).
+> Bu örnek, **IoT Hub hizmeti Istemcisinden** **Microsoft. Azure. Devices. Client** ad alanını kullanır. Dijital TWINS API 'SI de dahil olmak üzere API 'Ler hakkında daha fazla bilgi edinmek için bkz. [hizmet Geliştirici Kılavuzu](concepts-developer-guide-service.md).
 
 Bu kod aşağıdaki çıktıyı oluşturur:
 
@@ -101,7 +100,7 @@ Bu kod aşağıdaki çıktıyı oluşturur:
       Model Id of this Twin is: dtmi:com:example:Thermostat;1
 ```
 
-Aşağıdaki kod parçacığı, dijital ikizi özelliklerini güncelleştirmek için bir *düzeltme ekinin* nasıl kullanılacağını gösterir:
+Aşağıdaki kod parçacığı, ikizi cihaz aracılığıyla özellikleri güncelleştirmek için bir *düzeltme ekinin* nasıl kullanılacağını gösterir:
 
 ```C#
 // Update the twin

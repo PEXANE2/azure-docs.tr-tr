@@ -7,27 +7,30 @@ ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+zone_pivot_groups: non-azure-machines
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612226"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993601"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
-Güvenlik Merkezi, Azure dışı bilgisayarların güvenlik durumunu izleyebilir ancak öncelikle bu kaynakları eklemeniz gerekir. 
+Güvenlik Merkezi, Azure olmayan bilgisayarlarınızın güvenlik duruşunu izleyebilir, ancak önce bunları Azure 'a bağlamanız gerekir. 
 
-Azure dışı bilgisayarları aşağıdaki yollarla ekleyebilirsiniz:
+Azure dışı bilgisayarlarınızı aşağıdaki yollarla bağlayabilirsiniz:
 
 - Azure yay kullanma (**önerilir**)
 - Azure portal (**Başlangıç** ve **Stok**) Güvenlik Merkezi sayfalarından
 
-Bunların her biri aşağıda açıklanmıştır.
+Bunların her biri bu sayfada açıklanmıştır.
+
+::: zone pivot="azure-arc"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc ile Azure olmayan makineler ekleme
 
-Azure Arc 'ın kullanılması, Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne eklemenin tercih edilen yoludur.
+Azure Arc, Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne eklemenin tercih edilen yoludur.
 
 Azure Arc etkin olan bir makine, Azure kaynağı olur ve diğer Azure kaynaklarınız gibi önerilerle birlikte Güvenlik Merkezi 'nde görünür. 
 
@@ -43,7 +46,11 @@ Ayrıca, Azure Arc makinede ilkeleri etkinleştirme, Log Analytics aracısını 
 > [!TIP]
 > AWS makinelerini oluşturuyorsanız AWS için Güvenlik Merkezi Bağlayıcısı, Azure Arc dağıtımını sizin için saydam şekilde işler. [AWS hesaplarınızı Azure Güvenlik Merkezi 'Ne bağlama](quickstart-onboard-aws.md)bölümünde daha fazla bilgi edinin.
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Güvenlik Merkezi 'nin Portal sayfalarından Azure olmayan makineler ekleme
+::: zone-end
+
+::: zone pivot="azure-portal"
+
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>Azure portal Azure dışı makineler ekleme
 
 1. Güvenlik Merkezi 'nin menüsünden **Başlarken** sayfasını açın.
 1. **Başlangıç** sekmesini seçin.
@@ -114,6 +121,7 @@ Tamamlandığında, **Log Analytics Aracısı** **Denetim Masası**'nda görünt
 
 Aracıyı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows makinelerini bağlama](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
+::: zone-end
 
 ## <a name="verifying"></a>Olmadığının
 Tebrikler! Artık Azure ve Azure dışı makinelerinizi tek bir yerde görebilirsiniz. [Varlık envanteri sayfasını](asset-inventory.md) açın ve ilgili kaynak türlerine filtre uygulayın. Bu simgeler türleri ayırt edebilir:

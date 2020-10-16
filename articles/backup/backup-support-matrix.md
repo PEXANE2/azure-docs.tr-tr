@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
 ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332721"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
@@ -114,10 +114,10 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
-**Azure VM’leri** | ![Yes][green] | ![Yes][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
+**Azure VM’leri** | ![Evet][green] | ![Evet][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -130,7 +130,7 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 **Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Yes][green]
 **VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Evet][green] | ![Evet][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
@@ -151,9 +151,9 @@ Azure Backup, veri kullanılabilirliğini ve dayanıklılık özelliğini güçl
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri ve bağımsız bulutlar.  |
-| SQL/SAP HANA | Yes                                                          | Batı ABD 2 (WUS2), Orta Batı ABD (WCUS), Kanada Orta (CNC), Kanada Doğu (CNE), Doğu ABD (EUS), Batı ABD (WUS), Japonya Doğu (JPE), Japonya Doğu (JPE) |
-| MARS Aracısı/şirket içi  | No                                                           | Yok               |
-| AFS (Azure dosya paylaşımları)                 | No                                                           | Yok               |
+| SQL/SAP HANA | Evet                                                          | Batı ABD 2 (WUS2), Orta Batı ABD (WCUS), Kanada Orta (CNC), Kanada Doğu (CNE), Doğu ABD (EUS), Batı ABD (WUS), Japonya Doğu (JPE), Japonya Doğu (JPE) |
+| MARS Aracısı/şirket içi  | Hayır                                                           | Yok               |
+| AFS (Azure dosya paylaşımları)                 | Hayır                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

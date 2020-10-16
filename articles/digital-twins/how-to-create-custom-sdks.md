@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324238"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970138"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel SDK 'lar oluşturma
 
 Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Ları .NET (C#), JavaScript ve Java içindir. Bu SDK 'Lar hakkında genel bilgi edinmek için bkz. [*nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi veri düzlemi SDK 'sını tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilecektir.
 
 >[!NOTE]
-> Ayrıca, dilerseniz bir denetim düzlemi SDK 'Sı oluşturmak için, oto Rest 'i de kullanabilirsiniz. Bunu yapmak için, veri düzlemi yerine [Denetim düzlemi Swagger (Openapı) dosyasını](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) kullanarak bu makaledeki adımları izleyin.
+> Ayrıca, dilerseniz bir denetim düzlemi SDK 'Sı oluşturmak için, oto Rest 'i de kullanabilirsiniz. Bunu yapmak için, bu makaledeki adımları [Denetim düzlemi Swagger klasörü]] (veri düzlemi yerine) en son **Denetim düzlemi Swagger** (openapı) dosyasını kullanarak doldurun https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) .
 
 ## <a name="set-up-your-machine"></a>Makinenizi kurma
 
 Bir SDK oluşturmak için şunlar gerekir:
 * [Oto Rest](https://github.com/Azure/autorest), sürüm 2.0.4413 (sürüm 3 Şu anda desteklenmiyor)
 * Otomatik Rest için önkoşul olarak [Node.js](https://nodejs.org)
-* *digitaltwins.js*sahip olan Azure Digital TWINS [veri düzlemi Swagger (openapı) dosyası](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) ve buna eşlik eden örnek klasörü. Swagger dosyasını ve örnek klasörünü yerel makinenize indirin.
+* [Veri düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)en son Azure dijital TWINS **veri düzlemi Swagger** (openapı) dosyası ve buna eşlik eden örnek klasörü.  Swagger dosyasını ve örnekleri klasöründeki *digitaltwins.js* yerel makinenize indirin.
 
 Makinenizde yukarıdaki listeden her şey varsa, SDK 'Yı oluşturmak için oto Rest 'i kullanmaya hazırsınız demektir.
 
@@ -57,7 +57,7 @@ Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları da
 
 Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Bu adımlar **Visual Studio 'yu** kullanır (en son sürümü [buradan](https://visualstudio.microsoft.com/downloads/)yükleyebilirsiniz).
 
-Adımlar aşağıdaki gibidir:
+Adımlar şunlardır:
 
 1. Sınıf kitaplığı için yeni bir Visual Studio çözümü oluşturma
 2. Proje adı olarak *Adtapi* kullanın

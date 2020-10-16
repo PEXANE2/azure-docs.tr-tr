@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.openlocfilehash: bc84c8ef27b86244a7f467109525bdcb14bd030b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087546"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight 'ta doğrudan sorgu kullanarak Microsoft Power BI ile etkileşimli sorgu Apache Hive verilerini görselleştirme
@@ -23,7 +23,7 @@ Bu makalede, Microsoft Power BI 'yi Azure HDInsight etkileşimli sorgu kümeleri
 
 Power BI Desktop Genel ODBC Bağlayıcısı aracılığıyla içeri aktarmak için [Apache HIVE ODBC sürücüsünden](../hadoop/apache-hadoop-connect-hive-power-bi.md) yararlanabilirsiniz. Ancak, Hive sorgu altyapısının etkileşimli olmayan doğası olarak verilen bı iş yükleri için önerilmez. [HDInsight etkileşimli sorgu Bağlayıcısı](./apache-hadoop-connect-hive-power-bi-directquery.md) ve [HDInsight Apache Spark Bağlayıcısı](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) , performansı için daha iyi seçimlerdir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
 * **HDInsight kümesi**. Küme, Apache Hive veya yeni bir etkileşimli sorgu kümesi olan bir HDInsight kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
@@ -33,7 +33,7 @@ Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
 `hivesampletable`Hive tablosu tüm HDInsight kümeleriyle birlikte gelir.
 
-1. Power BI Desktop'ı başlatın.
+1. Power BI Desktop’ı başlatın.
 
 2. Menü çubuğundan **ana**  >  **veri al**  >  **daha fazla...** seçeneğine gidin.
 

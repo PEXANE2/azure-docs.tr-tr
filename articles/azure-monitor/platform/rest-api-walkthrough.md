@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
 ms.openlocfilehash: 500d5242d5185a8014283918c1f3a22c5c22cf48
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325602"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Izleme REST API izlenecek yol
@@ -464,7 +464,7 @@ Kullanılabilir Ölçüm tanımları bilindikten sonra ilgili ölçüm değerler
 
 **Yöntem**: Get
 
-**İstek URI 'si**:`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**İstek URI 'si**: `https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 Örneğin, belirli bir zaman aralığı ve 1 saatlik zaman dilimi için RunsSucceeded ölçüm veri noktalarını almak için, istek aşağıdaki gibi olacaktır:
 
@@ -582,7 +582,7 @@ Elde edilen JSON yanıt gövdesi, aşağıdaki örneğe benzer olacaktır:
 Ek bir yaklaşım, Windows makinenizde [Armclient](https://github.com/projectkudu/armclient) kullanmaktır. ARMClient, Azure AD kimlik doğrulamasını (ve sonuç JWT belirtecini) otomatik olarak işler. Aşağıdaki adımlarda, ölçüm verilerini almak için ARMClient kullanımı ana hatlarıyla verilmiştir:
 
 1. [Chocolatey](https://chocolatey.org/) ve [armclient](https://github.com/projectkudu/armclient)'ı yükler.
-2. Bir Terminal penceresinde *oturumarmclient.exe*yazın. Bunu yaptığınızda Azure 'da oturum açmanız istenir.
+2. Bir Terminal penceresinde * oturumarmclient.exe*yazın. Bunu yaptığınızda Azure 'da oturum açmanız istenir.
 3. *Armclient Get [your_resource_id]/Providers/Microsoft.insights/MetricDefinitions? api-Version = 2016-03-01* yazın
 4. *Armclient Get [your_resource_id]/Providers/Microsoft.insights/Metrics? api-Version = 2016-09-01* yazın
 
@@ -626,7 +626,7 @@ Kaynak KIMLIĞI Azure portal de elde edilebilir. Bunu yapmak için, istenen kayn
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Kaynak KIMLIĞI, Azure PowerShell cmdlet 'leri kullanılarak da alınabilir. Örneğin, bir Azure mantıksal uygulamasının kaynak KIMLIĞINI almak için, aşağıdaki örnekte olduğu gibi Get-AzureLogicApp cmdlet 'ini yürütün:
+Kaynak KIMLIĞI, Azure PowerShell cmdlet 'leri kullanılarak da alınabilir. Örneğin, bir Azure mantıksal uygulamasının kaynak KIMLIĞINI elde etmek için, aşağıdaki örnekte olduğu gibi Get-AzureLogicApp cmdlet 'ini yürütün:
 
 ```powershell
 Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets

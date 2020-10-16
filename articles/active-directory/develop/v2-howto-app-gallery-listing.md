@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439753"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
@@ -72,7 +72,7 @@ Azure AD uygulama galerisinde bir uygulamayı listelemek için desteklenen çokl
 
 Aşağıdaki tabloda ana standartlar karşılaştırılmaktadır: OpenID Connect (OıDC), Security Assertion Markup Language (SAML) ve Web Hizmetleri Federasyonu (WS-beslenir) ile açık kimlik doğrulama 2,0 (OAuth 2,0).
 
-| Özellik| OAuth/OıDC| SAML/WS-beslenir |
+| Özellik| OAuth/OıDC| SAML/WS-Fed |
 | - |-|-|
 | Web tabanlı çoklu oturum açma| √| √ |
 | Web tabanlı çoklu oturum kapatma| √| √ |
@@ -96,7 +96,7 @@ OAuth 2,0, yetkilendirme için [sektör standardı](https://oauth.net/2/) bir pr
 **Dikkate alınması gereken noktalar**
 - Uygulamanız için SAML tabanlı çoklu oturum açmayı zaten uyguladıysanız, uygulamanızı galeride almak için yeni bir standart uygulamayı tercih edemeyebilirsiniz.
 
-### <a name="saml-20-or-ws-fed"></a>SAML 2,0 veya WS-beslenir
+### <a name="saml-20-or-ws-fed"></a>SAML 2,0 veya WS-Fed
 
 SAML, Web uygulamaları için çok büyük ve yaygın olarak benimsenmiş, [Çoklu oturum açma standardıdır](https://www.oasis-open.org/standards#samlv2.0) . Azure 'un SAML kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure 'un SAML protokolünü nasıl kullandığı](active-directory-saml-protocol-reference.md). 
 
@@ -143,8 +143,8 @@ Uygulamanız SAML 2,0 ' yi destekliyorsa, bunu doğrudan bir Azure AD kiracısı
 
 Microsoft, SAML uygulamalarına yönelik kitaplıklar sağlamaz veya önermemektedir. Kullanılabilir çok sayıda açık kaynak kitaplığı vardır.
 
-### <a name="implement-ws-fed"></a>WS-Besuygulama Uygula
-ASP.NET Core ' de WS-besi hakkında daha fazla bilgi edinmek için bkz. [ASP.NET Core WS-Federation ile kullanıcıların kimliğini doğrulama](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
+### <a name="implement-ws-fed"></a>WS-Fed Uygula
+ASP.NET Core WS-Fed hakkında daha fazla bilgi edinmek için bkz. [ASP.NET Core WS-Federation ile kullanıcıların kimliğini doğrulama](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
 
 ### <a name="implement-password-vaulting"></a>Parola ululturma
 
@@ -238,7 +238,7 @@ Uygulamanızı OpenID Connect kullanarak galerinin listesine eklemek istiyorsan�
 
 **Saml 2,0** veya **WS-besu**kullanarak uygulamanızı Galeriye eklemek Istiyorsanız, gösterildiği gıbı **SAML 2.0/WS-beslenir** ' i seçin.
 
-![Bir SAML 2,0 veya WS-beslenir uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
+![Bir SAML 2,0 veya WS-Fed uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
 
 Uygulamanızı parola SSO 'SU kullanarak galerideki listeye eklemek istiyorsanız, gösterilen şekilde **parola SSO** 'yu seçin.
 
@@ -260,7 +260,7 @@ Mevcut Galeri uygulamasını [Microsoft uygulama ağı portalında](https://micr
 
 ### <a name="timelines"></a>Zaman çizelgeleri
 
-Galerideki bir SAML 2,0 veya WS-Besme uygulamasını listeleme işleminin zaman çizelgesi 7 ila 10 iş gününe kadar olur.
+Galerideki bir SAML 2,0 veya WS-Fed uygulamasını listeleme işleminin zaman çizelgesi 7 ila 10 iş gündür.
 
 ![Galerideki bir SAML uygulamasını listelemek için zaman çizelgesi](./media/howto-app-gallery-listing/timeline.png)
 

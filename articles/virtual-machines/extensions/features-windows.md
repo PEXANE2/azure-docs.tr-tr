@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829093"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977383"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -42,7 +42,7 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -70,7 +70,7 @@ Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu k
 > [!IMPORTANT]
 > Konuk güvenlik duvarını veya bir ara sunucu kullanarak *168.63.129.16* 'e erişimi engellediğiniz takdirde, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir.
 
-Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama veya Azure Active Directory erişimi gerektiren uzantılar için, [Azure NSG hizmeti etiketlerini](../../virtual-network/security-overview.md#service-tags) depolama veya AzureActiveDirectory kullanarak erişime izin verebilirsiniz.
+Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama veya Azure Active Directory erişimi gerektiren uzantılar için, [Azure NSG hizmeti etiketlerini](../../virtual-network/network-security-groups-overview.md#service-tags) depolama veya AzureActiveDirectory kullanarak erişime izin verebilirsiniz.
 
 Windows Konuk Aracısı, aracı trafik isteklerini aracılığıyla yeniden yönlendirebilmeniz için proxy sunucu desteğine sahip değildir. Bu, Windows Konuk aracısının internet üzerindeki kaynaklara veya IP 168.63.129.16 üzerinden ana bilgisayar üzerinde erişim için özel ara sunucunuza (varsa) bağlı olacağı anlamına gelir.
 
@@ -254,7 +254,7 @@ Aşağıdaki örnekte gösterildiği gibi, komutu, **korumalı** yapılandırmay
 
 Uzantılar kullanan bir Azure IaaS sanal makinesinde, sertifikalar konsolunda, **_Windows Azure CRP sertifika Oluşturucu_** olan sertifikalar ' ı görebilirsiniz. Klasik bir RDFE sanal makinesinde bu sertifikaların, **_Uzantılar Için Windows Azure hizmet yönetimi_** konu adı vardır.
 
-Bu sertifikalar, uzantılar tarafından kullanılan korumalı ayarların (parola, diğer kimlik bilgileri) aktarılması sırasında VM ile ana bilgisayar arasındaki iletişimin güvenliğini güvence altına alın. Sertifikalar Azure yapı denetleyicisi tarafından oluşturulur ve VM aracısına geçirilir. VM 'yi her gün durdurup başlatırsanız, yapı denetleyicisi tarafından yeni bir sertifika oluşturulabilir. Sertifika, bilgisayarın kişisel sertifikalar deposunda depolanır. Bu sertifikalar silinebilir. VM Aracısı gerekirse sertifikaları yeniden oluşturur.
+Bu sertifikalar, uzantılar tarafından kullanılan korumalı ayarların (parola, diğer kimlik bilgileri) aktarımı sırasında VM ile konağı arasındaki iletişimin güvenliğini sağlar. Sertifikalar Azure yapı denetleyicisi tarafından oluşturulur ve VM Aracısına geçirilir. VM'yi her gün durdurur ve başlatırsanız yapı denetleyicisi tarafından yeni bir sertifika oluşturulabilir. Sertifika bilgisayarın Kişisel sertifika deposunda saklanır. Bu sertifikalar silinebilir. VM Aracısı gerekirse sertifikaları yeniden oluşturur.
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Aracılar ve uzantılar nasıl güncelleştirilir?
 

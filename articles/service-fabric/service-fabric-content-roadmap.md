@@ -4,10 +4,10 @@ description: Azure Service Fabric 'nin temel kavramları ve ana alanlarıyla ilg
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836709"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric hakkında bilgi edinmek istiyor musunuz?
@@ -75,7 +75,7 @@ Varsayılan olarak, Service Fabric Hizmetleri işlem olarak dağıtır ve etkinl
 ### <a name="reliable-actors"></a>Reliable Actors
 Reliable Services üzerine inşa edilen [güvenilir aktör](service-fabric-reliable-actors-introduction.md) çerçevesi, aktör tasarım düzenine göre sanal aktör modelini uygulayan bir uygulama çerçevesidir. Güvenilir aktör çerçevesi, aktör olarak adlandırılan tek iş parçacıklı yürütme ile bağımsız işlem ve durum birimleri kullanır. Güvenilir aktör çerçevesi, aktörler ve önceden ayarlanmış durum kalıcılığı ve genişleme yapılandırmalarına yönelik yerleşik iletişim sağlar.
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>ASP.NET Çekirdeği
 Service Fabric Web ve API uygulamaları oluşturmak için birinci sınıf programlama modeli olarak [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) tümleştirilir.  ASP.NET Core, Service Fabric iki farklı şekilde kullanılabilir:
 
 - Konuk yürütülebilir dosyası olarak barındırılır. Bu, birincil olarak, mevcut ASP.NET Core uygulamalarını kod değişikliği olmadan Service Fabric üzerinde çalıştırmak için kullanılır.

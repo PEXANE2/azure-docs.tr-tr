@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661117"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969985"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder hizmeti sorunlarını giderme
 
@@ -522,7 +522,7 @@ PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 230
 Görüntü Oluşturucu hizmeti, derleme VM 'sine bağlanmak için 22 (Linux) veya 5986 (Windows) bağlantı noktasını kullanır. bu durum, hizmetin bir görüntü derlemesi sırasında yapı VM bağlantısı kesildiğinde oluşur. Bağlantı kesilmesi nedenleri farklılık gösterebilir, ancak betikte güvenlik duvarlarını etkinleştirmek veya yapılandırmak yukarıdaki bağlantı noktalarını engelleyebilir.
 
 #### <a name="solution"></a>Çözüm
-Güvenlik Duvarı değişiklikleri/etkinleştirme için betiklerinizi gözden geçirin veya SSH ya da WinRM üzerinde değişiklikler yapın ve tüm değişikliklerin yukarıdaki bağlantı noktalarında hizmet ve yapı VM 'si arasında sabit bağlantıya izin verildiğinden emin olun. Görüntü Oluşturucu ağı hakkında daha fazla bilgi için lütfen [gereksinimleri](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)gözden geçirin.
+Güvenlik Duvarı değişiklikleri/etkinleştirme için betiklerinizi gözden geçirin veya SSH ya da WinRM üzerinde değişiklikler yapın ve tüm değişikliklerin yukarıdaki bağlantı noktalarında hizmet ve yapı VM 'si arasında sabit bağlantıya izin verildiğinden emin olun. Görüntü Oluşturucu ağı hakkında daha fazla bilgi için lütfen [gereksinimleri](./image-builder-networking.md)gözden geçirin.
 
 ## <a name="devops-task"></a>DevOps görevi 
 
@@ -586,7 +586,7 @@ Başarılı derlemeleri araştırmanız gereken bazı durumlar olabilir ve günl
 
 Derleme bir kullanıcı tarafından iptal edilmediğinde, Azure DevOps Kullanıcı Aracısı tarafından iptal edildi. Büyük olasılıkla, Azure DevOps özellikleri nedeniyle 1 saatlik zaman aşımı oluştu. Özel bir proje ve aracı kullanıyorsanız, 60 dakikalık derleme zamanı alırsınız. Yapı zaman aşımını aşarsa, DevOps çalışan görevi iptal eder.
 
-Azure DevOps özellikleri ve sınırlamaları hakkında daha fazla bilgi için bkz. [Microsoft tarafından barındırılan aracılar](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+Azure DevOps özellikleri ve sınırlamaları hakkında daha fazla bilgi için bkz. [Microsoft tarafından barındırılan aracılar](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
  
 #### <a name="solution"></a>Çözüm
 
@@ -601,7 +601,7 @@ Please wait for the Windows Modules Installer
 ```
 
 #### <a name="solution"></a>Çözüm
-Görüntü derlemesinde, son özelleştirme olarak bir Windows yeniden başlatma Özelleştirici ekleyerek ve tüm yazılım yüklemesinin tamamlanmasıyla ilgili bekleyen yeniden başlatmalar olmadığından emin olun. Son olarak, AıB 'nin kullandığı varsayılan Sysprep 'e [/Mode: VM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) seçeneğini ekleyin, aşağıya bakın, ' AIB görüntülerden oluşturulan VM 'ler başarıyla oluşturulmaz ' > ' komutları geçersiz kılar '  
+Görüntü derlemesinde, son özelleştirme olarak bir Windows yeniden başlatma Özelleştirici ekleyerek ve tüm yazılım yüklemesinin tamamlanmasıyla ilgili bekleyen yeniden başlatmalar olmadığından emin olun. Son olarak, AıB 'nin kullandığı varsayılan Sysprep 'e [/Mode: VM](/windows-hardware/manufacture/desktop/sysprep-command-line-options) seçeneğini ekleyin, aşağıya bakın, ' AIB görüntülerden oluşturulan VM 'ler başarıyla oluşturulmaz ' > ' komutları geçersiz kılar '  
 
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>AıB görüntülerinden oluşturulan VM 'Ler başarıyla oluşturmaz

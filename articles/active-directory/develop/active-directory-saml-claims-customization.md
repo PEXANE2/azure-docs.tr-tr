@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421467"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
@@ -54,7 +54,7 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa, Microsoft Identity plat
 
 **Ad tanımlayıcı biçimi Seç** açılan menüsünde, aşağıdaki seçeneklerden birini seçebilirsiniz.
 
-| NameID biçimi | Description |
+| NameID biçimi | Açıklama |
 |---------------|-------------|
 | **Varsayılanını** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
 | **Kalıcı** | Microsoft Identity platform, NameID biçimi olarak persistent kullanacaktır. |
@@ -62,7 +62,7 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa, Microsoft Identity plat
 | **Belirtilmemiş** | Microsoft Identity platform, NameID biçimi olarak belirtilmemiş olarak kullanılacak. |
 | **Windows etki alanı nitelikli adı** | Microsoft Identity platformu, NameID biçimi olarak WindowsDomainQualifiedName kullanır. |
 
-Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tarafında yapılandırılamaz. Nameıdpolicy özniteliği hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma SAML Protokolü](single-sign-on-saml-protocol.md).
+Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tarafında yapılandırılamaz. Nameıdpolicy özniteliği hakkında daha fazla bilgi için bkz. [tek Sign-On SAML Protokolü](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Öznitelikler
 

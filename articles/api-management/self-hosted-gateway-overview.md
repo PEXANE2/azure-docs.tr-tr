@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82232981"
 ---
 # <a name="self-hosted-gateway-overview"></a>Şirket içinde barındırılan ağ geçidine genel bakış
@@ -55,7 +55,7 @@ Yönetilen ağ geçitlerinde bulunan aşağıdaki işlevsellik, şirket içinde 
 - İstemci sertifikası yeniden anlaşması. Diğer bir deyişle, [istemci sertifikası kimlik doğrulamasının](api-management-howto-mutual-certificates-for-clients.md) iş API tüketicileri, ilk TLS el sıkışma kapsamında sertifika sunması gerekir. Bunun emin olmak için, şirket içinde barındırılan bir ağ geçidi özel ana bilgisayar adı yapılandırırken istemci sertifikası ayarını etkinleştirin.
 - Yerleşik önbellek. Şirket içinde barındırılan ağ geçitlerinde dış önbellek kullanma hakkında bilgi edinmek için bu [belgeye](api-management-howto-cache-external.md) bakın.
 
-## <a name="connectivity-to-azure"></a>Azure bağlantısı
+## <a name="connectivity-to-azure"></a>Azure ile bağlantı
 
 Şirket içinde barındırılan ağ geçitleri 443 numaralı bağlantı noktasında Azure 'a giden TCP/IP bağlantısı gerektirir. Şirket içinde barındırılan her ağ geçidinin tek bir API Management hizmetiyle ilişkilendirilmesi ve yönetim düzlemi aracılığıyla yapılandırılması gerekir. Şirket içinde barındırılan ağ geçidi, için Azure bağlantısını kullanır:
 

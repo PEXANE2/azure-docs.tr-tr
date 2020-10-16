@@ -1,19 +1,20 @@
 ---
-title: Ayrılmış kapasiteye sahip blob depolaması maliyetlerini iyileştirin-Azure depolama
+title: Ayrılmış kapasite ile Blob depolama maliyetlerini iyileştirme
+titleSuffix: Azure Storage
 description: Blok Blobu ve Azure Data Lake Storage 2. kaynakları üzerinde maliyetleri kaydetmek için Azure Depolama ayrılmış kapasitesi satın alma hakkında bilgi edinin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259210"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874824"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Ayrılmış kapasite ile Blob depolama maliyetlerini iyileştirme
 
@@ -29,7 +30,7 @@ Aşağıdaki bölümlerde bir Azure depolama ayırmasının koşulları açıkla
 
 ### <a name="reservation-capacity"></a>Rezervasyon kapasitesi
 
-Azure Depolama ayrılmış kapasitesini, bir yıllık veya üç yıllık dönem için aylık 100 TB ve 1 PB birimlerde satın alabilirsiniz.
+Azure Depolama ayrılmış kapasitesini bir yıllık veya üç yıllık dönem için aylık 100 TiB ve 1 PiB birimlerinde satın alabilirsiniz.
 
 ### <a name="reservation-scope"></a>Ayırma kapsamı
 
@@ -62,7 +63,7 @@ Ayrılmış kapasiteyi satın almak için:
 
 Bir Azure depolama ayırması satın aldığınızda, ayırma için bölge, erişim katmanı ve artıklık seçeneğini seçmeniz gerekir. Rezervasyon yalnızca ilgili bölgede, erişim katmanında ve artıklık düzeyinde depolanan veriler için geçerlidir. Örneğin, bölgesel olarak yedekli depolama (ZRS) kullanarak sık erişimli katman için ABD Batı verileri için bir rezervasyon satın aldığınızı varsayalım. ABD Doğu veriler için aynı ayırmayı, arşiv katmanındaki verileri veya coğrafi olarak yedekli depolama (GRS) verilerini kullanamazsınız. Ancak, ek gereksinimleriniz için başka bir rezervasyon satın alabilirsiniz.  
 
-Ayırmalar, 100 TB veya 1 PB blok için bugün, 1 PB blok için daha yüksek indirimlerle kullanılabilir. Azure portal bir ayırma satın aldığınızda, Microsoft size satın almanız gereken ayırmayı belirlemede yardımcı olması için size önceki kullanımınıza göre öneriler verebilir.
+Ayırmalar, 100 TiB veya 1 PiB blokları için bugün, 1 PiB blokları için daha yüksek indirimlerle kullanılabilir. Azure portal bir ayırma satın aldığınızda, Microsoft size satın almanız gereken ayırmayı belirlemede yardımcı olması için size önceki kullanımınıza göre öneriler verebilir.
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>Azure Depolama ayrılmış kapasitesi satın alma
 
@@ -82,12 +83,12 @@ Ayrılmış kapasiteyi satın almak için aşağıdaki adımları izleyin:
    |---------|---------|
    |**Kapsam**   |  Rezervasyonla ilişkili faturalandırma avantajını kaç tane aboneliğin kullanabileceğinizi gösterir. Ayrıca, rezervasyonun belirli aboneliklere nasıl uygulanacağını de denetler. <br/><br/> **Paylaşılan**' i seçerseniz, rezervasyon indirimi, faturalandırma bağlamınızın içindeki herhangi bir abonelikte Azure depolama kapasitesine uygulanır. Faturalandırma bağlamı, Azure 'a kaydolmanızı temel alır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan Kullandıkça Öde tarifesine sahip tüm bireysel abonelikleri içerir.  <br/><br/>  **Tek bir abonelik**seçerseniz, rezervasyon indirimi seçili abonelikte Azure depolama kapasitesine uygulanır. <br/><br/> **Tek kaynak grubu**' nu seçerseniz, rezervasyon indirimi seçili abonelikteki Azure depolama kapasitesine ve bu abonelikteki seçili kaynak grubuna uygulanır. <br/><br/> Ayırmayı satın aldıktan sonra rezervasyon kapsamını değiştirebilirsiniz.  |
    |**Abonelik**  | Azure depolama ayırması için ödeme yapmak üzere kullanılan abonelik. Seçili abonelikteki ödeme yöntemi, maliyetleri borçlandırmak üzere kullanılır. Abonelik aşağıdaki türlerden biri olmalıdır: <br/><br/>  Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P): kurumsal bir abonelik Için ücretler, kayıt parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. <br/><br/> Kullandıkça Öde tarifesine sahip tek tek abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P): Kullandıkça Öde tarifesine sahip bireysel bir abonelik Için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.    |
-   | **Geli** | Ayırmanın etkin olduğu bölge. |
+   | **Bölge** | Ayırmanın etkin olduğu bölge. |
    | **Erişim katmanı** | Ayırmanın etkin olduğu erişim katmanı. Seçenekler arasında *sık*erişimli *, seyrek*erişimli veya *Arşiv*bulunur. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md). |
    | **Yedeklilik** | Ayırma için artıklık seçeneği. Seçenekler *LRS*, *ZRS*, *GRS*, *GZRS*, *RA-GRS*ve *ra-GZRS*' i içerir. Artıklık seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](../common/storage-redundancy.md). |
    | **Faturalandırma sıklığı** | Hesabın rezervasyon için ne sıklıkta faturalandırıldığını gösterir. Seçenekler *ayda* veya *önünde*bulunur. |
-   | **Boyut** | Ayırmanın etkin olduğu bölge. |
-   |**Terim**  | Bir yıl veya üç yıl.   |
+   | **Boyut** | Ayrılacak kapasite miktarı. |
+   |**Süre**  | Bir yıl veya üç yıl.   |
 
 1. Rezervasyonunuzun parametrelerini seçtikten sonra Azure portal maliyeti görüntüler. Portal Ayrıca Kullandıkça Öde faturalandırmasına göre indirim yüzdesini gösterir.
 

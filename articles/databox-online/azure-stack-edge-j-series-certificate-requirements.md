@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
 ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891385"
 ---
 # <a name="certificate-requirements"></a>Sertifika gereksinimleri
@@ -70,7 +70,7 @@ Azure Stack Edge Pro cihazınıza yüklü PFX sertifikaları aşağıdaki gereks
 
 * Bir PFX sertifikasını dışarı aktardığınızda, **Mümkünse, zincirdeki tüm sertifikaları dahil et** seçeneğini seçtiğinizden emin olun.
 
-* Azure Stack Edge Pro için hem ortak hem de özel anahtarlar gerektiği için uç nokta, yerel UI, düğüm, VPN ve Wi-Fi için PFX sertifikası kullanın. Özel anahtarın yerel makine anahtarı özniteliği ayarlanmış olmalıdır.
+* Uç nokta, yerel kullanıcı arabirimi, düğüm, VPN ve Wi-Fi için bir PFX sertifikası kullanarak hem genel hem de özel anahtarlar Azure Stack Edge Pro için gereklidir. Özel anahtarın yerel makine anahtarı özniteliği ayarlanmış olmalıdır.
 
 * Sertifikanın PFX şifrelemesi 3DES olmalıdır. Bu, bir Windows 10 istemcisinden veya Windows Server 2016 sertifika deposundan dışarı aktarılırken kullanılan varsayılan şifrelemedir. 3DES ile ilgili daha fazla bilgi için bkz. [Üçlü des](https://en.wikipedia.org/wiki/Triple_DES).
 

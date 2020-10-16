@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe0f2b0efa3f089398493cf30012e34097e065ec
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266080"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944313"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -72,15 +72,15 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 2. **Kılavuzlu yapılandırma** sayfasında, sol üst köşedeki **Kılavuzlu yapılandırmayı Yükselt** ' e tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure14.png) 
+    !["Kılavuzlu yapılandırmayı yükselt" eylemi seçiliyken "Kılavuzlu yapılandırma" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure14.png) 
 
 3. Yükseltme Kılavuzu yapılandırma açılan ekranında, indirilen kullanım örneği paketini karşıya yüklemek için **Dosya Seç** ' i seçin ve karşıya yükle **ve yükle** düğmesine tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure15.png) 
+    !["Dosya Seç" ve "karşıya yükle ve Yükle" seçiliyken "Kılavuzlu yapılandırmayı yükselt" açılan ekranını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure15.png) 
 
 4. Yükseltme tamamlandığında **devam** düğmesine tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure16.png)
+    !["Kılavuzlu yapılandırma güncelleştirmesi Tamam" iletişim kutusunun ve "devam" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -174,7 +174,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -213,60 +213,60 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
 1. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. Bir **sertifika adı** belirtin (daha sonra yapılandırmadan başvurulacak). **Sertifika kaynağında**karşıya yükle ' yı seçin SAML çoklu oturum açmayı yapılandırırken Azure 'dan indirilen sertifikayı belirtin. **İçeri Aktar**’a tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure01.png) 
+    !["Sertifika adı" vurgulanmış, "karşıya dosya yükleme" ve "Içeri aktar" düğmesi seçili olan "S S L sertifikası/anahtar kaynağı" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure01.png) 
 
 1. Ayrıca, **Uygulama ana bilgisayar adı Için SSL sertifikası gerekir. System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. **Içeri aktarma türü** **PKCS 12 (IIS)** olacaktır. **Anahtar adı** belirtin (daha sonra yapılandırmadan başvurulacak) ve pfx dosyasını belirtmeniz gerekir. PFX için **parola** belirtin. **İçeri Aktar**’a tıklayın.
 
     >[!NOTE]
     >Uygulama adı örneğinde, `Kerbapp.superdemo.live` bir joker karakter sertifikası kullanıyoruz KeyName `WildCard-SuperDemo.live`
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure02.png) 
+    !["S S L sertifikası/anahtar kaynağı" sayfasını, girilen değerleri ve "Içeri aktar" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure02.png) 
  
 1. Azure AD Federasyonu ve uygulama erişimini ayarlamak için destekli deneyim kullanacağız. – F5 BIG-IP **Main** ' e gidin ve **erişim > Kılavuzlu yapılandırma > Federasyon > SAML hizmeti sağlayıcısı**' nı seçin. **İleri** ' ye ve ardından yapılandırmaya başlamak için **İleri** ' ye tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure03.png) 
+    !["Federasyon" simgesi vurgulanmış ve "S A M L Service Provider" seçiliyken "Kılavuzlu yapılandırma" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure03.png) 
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure04.png)
+    !["Ileri" düğmesi seçiliyken "Kılavuzlu yapılandırma-S A M L hizmet sağlayıcısı" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure04.png)
 
 1. Bir **yapılandırma adı**girin. **VARLıK kimliğini** (Azure AD uygulama yapılandırmasında yapılandırdığınız gibi) belirtin. **Ana bilgisayar adını**belirtin. Başvuru için bir **Açıklama** ekleyin. Kalan varsayılan girişleri kabul edin ve ardından **& kaydet**' e tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure05.png) 
+    !["Ana bilgisayar adı" ve "Açıklama" metin kutuları vurgulanmış ve "& sonrakini Kaydet" düğmesi seçili olan "hizmet sağlayıcı özellikleri" ni gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure05.png) 
 
 1. Bu örnekte, 443 numaralı bağlantı noktası ile 192.168.30.200 olarak yeni bir sanal sunucu oluşturacağız. **Hedef adreste**sanal sunucu IP adresini belirtin. Istemci **SSL profilini**seçin, yeni oluştur ' u seçin. Daha önce karşıya yüklenen uygulama sertifikasını (Bu örnekteki joker karakter sertifikası) ve ilişkili anahtarı belirtin ve ardından **& Ileri kaydet**' e tıklayın.
 
     >[!NOTE]
     >Bu örnekte, Iç Web sunucusu 80 numaralı bağlantı noktasında çalışıyor ve bunu 443 ile yayımlamak istiyoruz.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure06.png)
+    !["Hedef adres" metin kutusu vurgulanmış ve "& Ileri Kaydet" düğmesi seçili olan "sanal sunucu özellikleri" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure06.png)
 
 1. **IDP bağlayıcınızı yapılandırmak için yöntem seçin**altında, meta veri ' yi belirtin, Dosya Seç ' e tıklayın ve daha önce Azure AD 'Den Indirilen meta veri xml dosyasını yükleyin SAML ıDP Bağlayıcısı için benzersiz bir **ad** belirtin. Daha önce karşıya yüklenen **meta veri Imzalama sertifikasını** seçin. **İleri & kaydet**' e tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure07.png)  
+    !["Ad" metin kutusu vurgulanmış ve "& Ileri Kaydet" düğmesi seçili olan "dış kimlik sağlayıcısı bağlayıcı ayarları" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure07.png)  
 
 1. **Havuz Seç**altında **Yeni oluştur** ' u (alternatif olarak zaten var olan bir havuz seçin) belirtin. Diğer değerin varsayılan olmasına izin verin.    Havuz sunucuları ' nın altında IP **adresi/düğüm adı**altında IP adresini yazın. **Bağlantı noktasını**belirtin. **İleri & kaydet**' e tıklayın.
  
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure08.png)
+    !["IP adresi/düğüm adı" ve "bağlantı noktası" metin kutuları vurgulanmış ve "& sonrakini Kaydet" düğmesi seçili olan "havuz özellikleri" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure08.png)
 
-1. Çoklu oturum açma ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. **Seçili çoklu oturum açma türü** altında **Kerberos**' u seçin. Username. **SAML. Last. Identity** ' i **session.saml.last.attr.name.Identity** (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) **Kullanıcı adı kaynak** (Bu değişken). **Gelişmiş ayarı göster**' i seçin. **Kerberos bölgesi** altında etki alanı adını yazın. **Hesap adı/hesap parolası** altında APM temsili hesabı ve parolasını belirtin. **KDC** alanında etki alanı denetleyicisi IP 'sini belirtin. **İleri & kaydet**' e tıklayın.
+1. Tek Sign-On ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. **Seçili tek Sign-On türü** altında **Kerberos**' u seçin. Username. **SAML. Last. Identity** ' i **session.saml.last.attr.name.Identity** (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) **Kullanıcı adı kaynak** (Bu değişken). **Gelişmiş ayarı göster**' i seçin. **Kerberos bölgesi** altında etki alanı adını yazın. **Hesap adı/hesap parolası** altında APM temsili hesabı ve parolasını belirtin. **KDC** alanında etki alanı denetleyicisi IP 'sini belirtin. **İleri & kaydet**' e tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure09.png)   
+    ![Metin kutuları vurgulanmış ve "& Ileri Kaydet" düğmesinin seçili olduğu "tek Sign-On ayarları" gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure09.png)   
 
 1. Bu kılavuzun amaçları doğrultusunda Endpoint denetimlerini atlayacağız.  Ayrıntılar için F5 belgelerine bakın.  Ekranda **kaydet & ileri ' yi**seçin.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure10.png) 
+    !["Endpoint denetimleri özellikleri" sayfasını ve "& Ileri Kaydet" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure10.png) 
 
 1. Varsayılanları kabul edin ve **& Ileri kaydet**' e tıklayın. SAML oturum yönetimi ayarları ile ilgili ayrıntılar için F5 belgelerine başvurun.
 
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure11.png) 
+    !["& sonrakini Kaydet" düğmesinin seçili olduğu "zaman aşımı ayarları" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure11.png) 
  
 1. BÜYÜK IP 'yi yapılandırmak için özet ekranını gözden geçirin ve **Dağıt** ' ı seçin.
  
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure12.png)
+    !["Özet" bölümü vurgulanmış ve "Dağıt" düğmesi seçili olan "uygulamanızın dağıtılmaya hazırlandığını" gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure12.png)
 
 1. Uygulama yapılandırıldıktan sonra **son**' a tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure13.png)
+    !["Son" düğmesinin seçili olduğu "uygulamanızın dağıtıldığı" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure13.png)
 
 ## <a name="advanced-configuration"></a>Gelişmiş Yapılandırma
 
@@ -279,7 +279,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 1. Ana sekmede, **> aaa sunucuları > Active Directory erişim ilkesi**' ne tıklayın. Active Directory sunucuları listesi ekranı açılır.
 
-2. **Oluştur**’a tıklayın. Yeni sunucu özellikleri ekranı açılır.
+2. **Oluştur**'a tıklayın. Yeni sunucu özellikleri ekranı açılır.
 
 3. **Ad** alanına, kimlik doğrulama sunucusu için benzersiz bir ad yazın.
 
@@ -317,27 +317,27 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 15. **Bitti**' ye tıklayın. Yeni sunucu listede görüntülenir. Bu, yeni Active Directory sunucusunu Active Directory sunucuları listesine ekler.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure17.png)
+    !["Genel Özellikler" ve "yapılandırma" bölümlerini gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure17.png)
 
 ### <a name="saml-configuration"></a>SAML yapılandırması
 
 1. Meta veri sertifikasını, kurulum işleminin ilerleyen kısımlarında kullanılacak olan F5 'e aktarmanız gerekir. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure18.png)
+    !["Içeri aktar" düğmesinin seçili olduğu "S S L sertifikası/anahtar kaynağını Içeri aktar" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure18.png)
 
 2. SAML ıDP 'yi ayarlamak için, **Access > federasyon > saml: Service Provider > dış IDP bağlayıcıları**' na gidin ve meta verilerden **> oluştur**' a tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure19.png)
+    !["Oluştur" açılır listesinden "from meta verileri" içeren "S A M L Service Provider" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure19.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure20.png)
+    !["Yeni S A M L P bağlayıcısını oluştur" iletişim kutusunun gösterildiği ekran görüntüsü.](./media/kerbf5-tutorial/configure20.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure21.png)
+    !["Genel ayarlar" seçiliyken "S A M L L L P bağlayıcısını Düzenle" penceresinin gösterildiği ekran görüntüsü.](./media/kerbf5-tutorial/configure21.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure22.png)
+    !["Tek oturum açma hizmeti ayarları" seçiliyken "S A M L L t I r P bağlayıcısını Düzenle" penceresinin gösterildiği ekran görüntüsü.](./media/kerbf5-tutorial/configure22.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure23.png)
+    !["Güvenlik ayarları" seçiliyken "S A M L L L P bağlayıcısını Düzenle" penceresinin gösterildiği ekran görüntüsü.](./media/kerbf5-tutorial/configure23.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure24.png)
+    !["S A m L L P bağlayıcısını Düzenle" penceresinin "S L O hizmet ayarları" seçili olduğunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure24.png)
 
 1. SAML SP 'yi ayarlamak için, **Yerel SP hizmetleri > > federasyon > SAML hizmet sağlayıcısına erişim** ' e gidin ve **Oluştur**' a tıklayın. Aşağıdaki bilgileri tamamlayıp **Tamam**' a tıklayın.
 
@@ -348,17 +348,17 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
     * Ana bilgisayar: kerbapp200. superdemo. canlı
     * Açıklama: kerbapp200. superdemo. canlı
 
-     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure25.png)
+     !["Genel ayarlar" seçiliyken "S A M L S P Service düzenleme" penceresini gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure25.png)
 
      b. SP yapılandırması ' nı seçin, KerbApp200SAML ve **IDP bağlayıcıları bağlama/** kaldırma ' ya tıklayın.
 
-     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure26.png)
+     !["S a M L Service Provider-Local S P Services" sayfasını "KerbAPP200 S A M L" seçiliyken gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure26.png)
 
-     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure27.png)
+     !["Bağlama/ciltten t P bağlayıcıları bağla" düğmesinin seçili olduğu ekran görüntüsü.](./media/kerbf5-tutorial/configure27.png)
 
      c. **Yeni satır ekle** ' ye tıklayın ve önceki adımda oluşturulan **dış IDP bağlayıcısını** seçin, **Güncelleştir**' e tıklayın ve ardından **Tamam**' a tıklayın.
 
-     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure28.png)
+     !["Yeni satır ekle" düğmesinin seçili olduğu "Bu S P 'yi kullanan bir M L t S ı d PS 'yi Düzenle" penceresini gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure28.png)
 
 1. Kerberos SSO 'yu yapılandırmak için **erişim > çoklu oturum açma > Kerberos**, bilgileri tam olarak Tamam ' a gidin ve **bitti**' ye tıklayın.
 
@@ -369,7 +369,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
     * **Kullanıcı bölgesi kaynağı**: Session. Logon. Last. Domain
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure29.png)
+        !["Kullanıcı adı kaynağı" ve "Kullanıcı bölgesi kaynağı" metin kutuları vurgulanmış "tek Sign-On-Özellikler" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure29.png)
 
 1. Erişim profilini yapılandırmak için, erişim **profili > erişim profiline (oturum ilkeleri başına) >** gidin, **Oluştur**' a tıklayın, aşağıdaki bilgileri doldurun ve **bitti**' ye tıklayın.
 
@@ -378,38 +378,38 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
     * Profil kapsamı: profil
     * Diller: Ingilizce
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure30.png)
+        !["Ad", "profil türü" ve "dil" metin kutuları vurgulanmış "profiller/Ilkeler-Özellikler" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure30.png)
 
 1. KerbApp200 adına tıklayın, aşağıdaki bilgileri doldurun ve **Güncelleştir**' e tıklayın.
 
     * Etki alanı tanımlama bilgisi: superdemo. canlı
     * SSO yapılandırması: KerAppSSO_sso
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure31.png)
+        !["Etki alanı tanımlama bilgisi" metin kutusu ve "S S O yapılandırması" açılır ve "Güncelleştir" düğmesi seçili olan "S S D/auth Domains" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure31.png)
 
 1. **Erişim ilkesi** ' ne tıklayın ve ardından "KerbApp200" profili Için **erişim ilkesini Düzenle** ' ye tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure32.png)
+    !["Profil KerbApp200 için erişim Ilkesini Düzenle" eyleminin seçildiği "erişim Ilkesi" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure32.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure33.png)
+    !["Erişim Ilkesi" sayfasını ve "S A M L kimlik doğrulama S P" iletişim kutusunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure33.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure34.png)
+    !["Erişim Ilkesi" sayfasını ve "atama" metin kutuları vurgulanmış "değişken atama" iletişim kutusunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure34.png)
 
     * **Session. Logon. son. usernameUPN Expr {[mcget {Session. SAML. Last. Identity}]}**
 
     * **Session. ad. lastactualdomain metın superdemo. canlı**
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure35.png)
+        !["Erişim Ilkesi" sayfasını ve "arama filtresi" metin kutusu vurgulanmış "Active Directory" iletişim kutusunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure35.png)
 
     * **(userPrincipalName =% {Session. Logon. Last. usernameUPN})**
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure36.png)
+        !["A D sorgu-dal kuralları" iletişim kutusu ile "erişim Ilkesi" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure36.png)
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure37.png)
+        !["Özel değişken" ve "özel Ifade" metin kutularının vurgulandığını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure37.png)
 
     * **Session. Logon. Last. UserName expr {"[mcget {Session. ad. Last. attr. sAMAccountName}]"}**
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure38.png)
+        !["Oturum açma sayfasından Kullanıcı adı" metin kutusunun vurgulandığını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure38.png)
 
     * **mcget {Session. Logon. Last. UserName}**
     * **mcget {Session. Logon. Last. Password**
@@ -420,7 +420,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
     * Açıklama: KerbApp200
     * Adres: 192.168.20.200
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure39.png)
+        !["Ad", "Açıklama" ve "adres" metin kutularının vurgulandığına ve "tamamlandı" düğmesinin seçili olduğu "yeni düğüm" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure39.png)
 
 1. Yeni bir havuz oluşturmak için **Yerel trafik > havuzlar > havuz listesi**' ne gidin, Oluştur ' a tıklayın, aşağıdaki bilgileri doldurun ve **bitti**' ye tıklayın.
 
@@ -430,7 +430,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
     * Adres: 192.168.20.200
     * Hizmet bağlantı noktası: 81
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure40.png)
+        ![Girilen değerlerin ve "tamamlandı" düğmesinin seçili olduğu "yeni havuz" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure40.png)
 
 1. Sanal sunucu oluşturmak için, sanal sunucu **listesi > sanal sunucular > yerel trafiğe gidin > +**, aşağıdaki bilgileri tamamlayıp **bitti**' ye tıklayın.
 
@@ -440,9 +440,9 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
     * Erişim profili: KerbApp200
     * Önceki adımda oluşturulan erişim profilini belirtin
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure41.png)
+        !["Ad", "hedef adres/maske" ve "hizmet bağlantı noktası" metin kutularının vurgulandığı "sanal sunucu listesi" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure41.png)
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure42.png)
+        !["Erişim profili" açılan listesi vurgulanmış "sanal sunucu listesi" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure42.png)
 
 ### <a name="setting-up-kerberos-delegation"></a>Kerberos temsilcisini ayarlama 
 

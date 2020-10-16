@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82598507"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin
@@ -25,17 +25,17 @@ ms.locfileid: "82598507"
 
 HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Portal kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="getting-started"></a>Kullanmaya Başlama
+## <a name="getting-started"></a>Başlarken
 
 [https://portal.azure.com](https://portal.azure.com) adresinde oturum açın.
 
-## <a name="list-and-show-clusters"></a><a name="showClusters"></a>Kümeleri listeleme ve gösterme
+## <a name="list-and-show-clusters"></a><a name="showClusters"></a> Kümeleri listeleme ve gösterme
 
 **HDInsight kümeleri** sayfası, mevcut kümelerinizi listeler.  Portaldan:
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin.
 2. **Analiz**altında **HDInsight kümeleri** ' ni seçin.
 
-## <a name="cluster-home-page"></a><a name="homePage"></a>Küme giriş sayfası
+## <a name="cluster-home-page"></a><a name="homePage"></a> Küme giriş sayfası
 
 [**HDInsight kümeleri**](#showClusters) sayfasından kümenizin adını seçin.  Bu işlem, aşağıdaki görüntüye benzer şekilde görünen **genel bakış** görünümünü açar:
 
@@ -43,7 +43,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
 **Üst menü:**  
 
-| Öğe| Description |
+| Öğe| Açıklama |
 |---|---|
 |Taşı|Kümeyi başka bir kaynak grubuna veya başka bir aboneliğe kaydırır.|
 |Sil|Kümeyi siler. |
@@ -53,7 +53,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
   - **Sol üst menü**
 
-    | Öğe| Description |
+    | Öğe| Açıklama |
     |---|---|
     |Genel Bakış|Kümeniz için genel bilgiler sağlar.|
     |Etkinlik günlüğü|Etkinlik günlüklerini gösterir ve sorgular.|
@@ -65,7 +65,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
   - **Ayarlar menüsü**  
 
-    | Öğe| Description |
+    | Öğe| Açıklama |
     |---|---|
     |Küme boyutu|Küme çalışan düğümlerinin sayısını denetleyin, artırın ve azaltın. Bkz. [Ölçek Kümeleri](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Kota sınırları|Aboneliğiniz için kullanılan ve kullanılabilir çekirdekleri görüntüleyin.|
@@ -82,7 +82,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
   - **İzleme menüsü**
 
-    | Öğe| Description |
+    | Öğe| Açıklama |
     |---|---|
     |Uyarılar|Uyarıları ve eylemleri yönetin.|
     |Ölçümler|Azure Izleyici günlüklerinde küme ölçümlerini izleyin.|
@@ -91,16 +91,16 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
   - **Destek + sorun giderme menüsü**
 
-    | Öğe| Description |
+    | Öğe| Açıklama |
     |---|---|
     |Kaynak durumu|Bkz. [Azure Kaynak durumu genel bakış](../service-health/resource-health-overview.md).|
     |Yeni destek isteği|Microsoft desteği ile bir destek bileti oluşturmanıza olanak sağlar.|
 
-## <a name="cluster-properties"></a><a name="properties"></a>Küme özellikleri
+## <a name="cluster-properties"></a><a name="properties"></a> Küme özellikleri
 
 [Küme giriş sayfasında](#homePage), **Ayarlar** ' ın altında **Özellikler**' i seçin.
 
-|Öğe | Description |
+|Öğe | Açıklama |
 |---|---|
 |Konak|Küme adı.|
 |KÜME URL 'SI|Ambarı Web arabiriminin URL 'SI.|

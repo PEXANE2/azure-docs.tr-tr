@@ -3,12 +3,12 @@ title: Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 description: Azure VMware Çözüm sanal makinelerinizin yaşam döngüsünün tüm yönlerini Microsoft Azure yerel araçlarla yönetmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575494"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950372"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 
@@ -58,7 +58,7 @@ Azure Otomasyonu 'ndaki **azure güncelleştirme yönetimi** , karma bir ortamda
 
 **Azure Güvenlik Merkezi** , bulutta ve şirket içinde hibrit iş yükleriniz genelinde gelişmiş tehdit koruması sağlar. Bu işlem, Azure VMware Çözüm VM 'lerinin güvenlik açığını değerlendirir ve gerektiğinde uyarı yükseltir. Bu güvenlik uyarıları, çözüm için Azure Izleyici 'ye iletilebilir.
 - Azure Güvenlik Merkezi dağıtım gerektirmez. Daha fazla bilgi için bkz. [sanal makineler Için desteklenen özelliklerin](../security-center/security-center-services.md)listesi.
-- Azure VMware Çözüm VM 'lerini ve Azure olmayan VM 'Leri Azure Güvenlik Merkezi 'ne eklemek için bkz. [Windows bilgisayarlarını Azure Güvenlik Merkezi 'ne](../security-center/quick-onboard-windows-computer.md) ekleme ve [Linux bilgisayarlarını Azure Güvenlik Merkezi](../security-center/quick-onboard-linux-computer.md)'ne ekleme.
+- Azure VMware Çözüm VM 'lerini ve Azure olmayan VM 'Leri Azure Güvenlik Merkezi 'ne eklemek için bkz. [Windows bilgisayarlarını Azure Güvenlik Merkezi 'ne](../security-center/quickstart-onboard-machines.md) ekleme ve [Linux bilgisayarlarını Azure Güvenlik Merkezi](../security-center/quickstart-onboard-machines.md)'ne ekleme.
 - VM 'Ler eklendikten sonra Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynakların güvenlik durumunu analiz eder. Ayrıca Genel Bakış sekmesinde öneriler de sağlar. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde güvenlik önerileri](../security-center/security-center-recommendations.md).
 - Azure Güvenlik Merkezi 'nde güvenlik ilkeleri tanımlayabilirsiniz. Güvenlik ilkelerinizi yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik Ilkeleriyle çalışma](../security-center/tutorial-security-policy.md).
 

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b8979691d03746634b6282b23b05723c35854e1f
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841535"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048517"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
 Azure dijital TWINS sayesinde gerçek ortamlarınızın canlı modellerini oluşturabilir ve bunlarla etkileşim kurabilirsiniz. Bu, ayrı öğelerin **dijital**bir şekilde modellenmesi ve sonra canlı olaylara yanıt verebilecek ve bilgi için sorgulanabilen bir bilgi **grafiğine** bağlanılarak yapılır.
 
-Bu hızlı başlangıçta, [**Azure Digital TWINS (ADT) Gezgini**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)adlı örnek bir uygulamanın yardımıyla önceden oluşturulmuş bir Azure dijital TWINS grafiğini araştıracaktır. ADT Explorer bir senaryoyu karşıya yüklemenize, TWINS ve grafikinizin görsel sunumlarını görüntülemenize ve tarayıcı tabanlı, görsel deneyimle diğer yönetim etkinliklerini gerçekleştirmenize olanak tanır.
+Bu hızlı başlangıçta, [**Azure Digital TWINS (ADT) Gezgini**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)adlı örnek bir uygulamanın yardımıyla önceden oluşturulmuş bir Azure dijital TWINS grafiğini araştıracaktır. ADT Explorer bir ortamın dijital temsilini karşıya yüklemenize, Azure dijital TWINS 'teki ortamı göstermek için oluşturulan TWINS ve grafiğin görsel görüntülerini görüntülemenize ve tarayıcı tabanlı, görsel deneyimle diğer yönetim etkinliklerini gerçekleştirmenize olanak tanır.
 
 Hızlı başlangıç aşağıdaki önemli adımları içerir:
 
@@ -38,8 +38,8 @@ Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip ol
 Ayrıca makinenizde **Node.js** gerekir. Bu bağlantıdaki en son sürümü edinebilirsiniz: [Node.js](https://nodejs.org/).
 
 Son olarak, hızlı başlangıç sırasında kullanmak üzere iki örnek de indirmeniz gerekir:
-* **ADT Explorer** örnek uygulaması. Bu örnek, hızlı başlangıçta bir Azure dijital TWINS senaryosu yüklemek ve araştırmak için kullandığınız ana uygulamayı içerir. Uygulamayı almak için şuraya gidin: [Azure Digital TWINS (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). İndirmek için *posta indirme* düğmesine basın *. * Makinenize Bu örnek kodun ZIP dosyası. Bu, bir yükler. ZIP klasörünü makinenize _**Azure_Digital_Twins__ADT__explorer.zip**_. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
-* **Örnek Azure dijital TWINS senaryosu**. Bu, ile çalışmak üzere ADT Gezgini 'ne yüklediğiniz önceden oluşturulmuş bir Azure dijital TWINS grafiğini içerir. Senaryoya ulaşmak için şuraya gidin: [Azure dijital TWINS örnekleri](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). İndirmek için *posta indirme* düğmesine basın *. * Makinenize Bu örnek kodun ZIP dosyası. Bu, bir yükler. ZIP klasörünü makinenize _**Azure_Digital_Twins_samples.zip**_. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
+* **ADT Explorer** örnek uygulaması. Bu örnek, hızlı başlangıçta bir Azure dijital TWINS senaryosu yüklemek ve araştırmak için kullandığınız ana uygulamayı içerir. Uygulamayı almak için şuraya gidin: [Azure Digital TWINS (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). İndirmek için *posta indirme* düğmesine basın *. * Makinenize Bu örnek kodun ZIP dosyası. Bu, bir yükler. ZIP klasörünü makinenize _**Azure_Digital_Twins__ADT__explorer.zip**_. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
+* **Örnek Azure dijital TWINS senaryosu**. Bu, ile çalışmak üzere ADT Gezgini 'ne yüklediğiniz önceden oluşturulmuş bir Azure dijital TWINS grafiğini içerir. Senaryoya ulaşmak için şuraya gidin: [Azure dijital TWINS örnekleri](/samples/azure-samples/digital-twins-samples/digital-twins-samples). İndirmek için *posta indirme* düğmesine basın *. * Makinenize Bu örnek kodun ZIP dosyası. Bu, bir yükler. ZIP klasörünü makinenize _**Azure_Digital_Twins_samples.zip**_. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure dijital TWINS ve ADT Gezginini ayarlama
 
@@ -205,7 +205,7 @@ ADT Explorer, istenen TWINS ve aralarında ilişkiler oluşturmak için karşıy
     :::column-end:::
 :::row-end:::
 
-Grafik şimdi ADT Explorer 'a yüklendi. Grafiği görüntüle ' yi görmek için, *GRAFIK Gezgini* kutusundaki *sorgu Çalıştır* düğmesine basın, ADT Gezgini penceresinin en üstüne gidin. 
+Grafik şimdi ADT Explorer 'a yüklendi. Grafiği görmek için, *GRAFIK Gezgini* kutusundaki *sorgu Çalıştır* düğmesine, ADT gezgin penceresinin üst kısmına gidin. 
 
 :::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/run-query.png":::
 
@@ -307,7 +307,7 @@ Bu hızlı başlangıçta, bir Azure dijital TWINS örneği oluşturdunuz, bu do
 Daha sonra grafiği bu şekilde incelediniz...
 1. Senaryo hakkında bir soruyu yanıtlamak için sorgu kullanma.
 2. Dijital ikizi bir özelliği Düzenle.
-    * Güncelleştirmenin bir sonucu olarak yanıtın nasıl değiştiğini görmek için sorguyu yeniden çalıştırın.
+3. Güncelleştirmenin bir sonucu olarak yanıtın nasıl değiştiğini görmek için sorguyu yeniden çalıştırın.
 
 Bu alıştırmanın amacı, ortam değişmeye devam ettiği halde ortamınıza ilişkin soruları yanıtlamak için Azure dijital TWINS grafiğini nasıl kullanabileceğinizi gösterir. 
 

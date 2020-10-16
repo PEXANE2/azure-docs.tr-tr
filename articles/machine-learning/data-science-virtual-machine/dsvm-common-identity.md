@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85959152"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi ortak bir kimlik ayarlama
@@ -55,7 +55,7 @@ Azure AD DS, Azure üzerinde tam olarak yönetilen bir hizmet sağlayarak kimlik
     
    1. Oluşturulan parolayı, oturum açabilmeniz için yeni kullanıcıya güvenli bir şekilde dağıtın.
 
-1. Azure AD DS örneği oluşturun. Azure portal ("bir örnek oluşturma ve temel ayarları yapılandırma" bölümünde) [Azure Active Directory Domain Services etkinleştir](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) bölümündeki yönergeleri izleyin. Azure AD DS parolasının eşitlenmesi için Active Directory mevcut kullanıcı parolalarının güncelleştirilmesi önemlidir. Ayrıca, bu bölümdeki "bir Azure AD DS örneği oluşturmak için Azure portal temel bilgileri penceresindeki alanları doldurun" bölümünde açıklandığı gibi, Azure AD DS DNS eklemek de önemlidir.
+1. Azure AD DS örneği oluşturun. Azure portal ("bir örnek oluşturma ve temel ayarları yapılandırma" bölümünde)  [Azure Active Directory Domain Services etkinleştir](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) bölümündeki yönergeleri izleyin. Azure AD DS parolasının eşitlenmesi için Active Directory mevcut kullanıcı parolalarının güncelleştirilmesi önemlidir. Ayrıca, bu bölümdeki "bir Azure AD DS örneği oluşturmak için Azure portal temel bilgileri penceresindeki alanları doldurun" bölümünde açıklandığı gibi, Azure AD DS DNS eklemek de önemlidir.
 
 1. Yukarıdaki adımın "sanal ağ oluşturma ve yapılandırma" bölümünde oluşturulan sanal ağda ayrı bir DSVM alt ağı oluşturun.
 1. DSVM alt ağında bir veya daha fazla DSVM örneği oluşturun.

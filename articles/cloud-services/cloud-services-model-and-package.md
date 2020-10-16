@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 180295599082a762fc525c4740079ceefc0954a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79247494"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077193"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Bulut hizmeti modeli nedir ve nasıl paketlarım?
 Üç bileşenden bir bulut hizmeti, hizmet tanımı *(. csdef)*, hizmet yapılandırma *(. cscfg)* ve bir hizmet paketi *(. cspkg)* oluşturulur. Hem **ServiceDefinition. csdef** hem de **ServiceConfig. cscfg** dosyaları XML tabanlıdır ve bulut hizmetinin yapısını ve nasıl yapılandırıldığını açıklamaktadır; toplu olarak model olarak adlandırılır. **Servicepackage. cspkg** , **ServiceDefinition. csdef** öğesinden ve diğer şeyler arasında oluşturulan ve tüm gerekli ikili tabanlı bağımlılıkları içeren bir zip dosyasıdır. Azure, hem **Servicepackage. cspkg** hem de **ServiceConfig. cscfg**öğesinden bir bulut hizmeti oluşturur.
@@ -289,9 +289,6 @@ Visual Studio kullanıyorum ve şunu yapmak istiyorum...
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md
 [vs_remote]: cloud-services-role-enable-remote-desktop-visual-studio.md
-[vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
-[vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
-[vs_create]: ../vs-azure-tools-azure-project-create.md
-
-
-
+[vs_deploy]: /visualstudio/azure/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio
+[vs_reconfigure]: /visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service
+[vs_create]: /visualstudio/azure/vs-azure-tools-azure-project-create

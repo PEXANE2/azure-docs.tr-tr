@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359163"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure ayrılmış HSM ağı
@@ -39,7 +39,7 @@ Azure hizmetlerini sanal ağla ve sağladığı yeteneklere tümleştirme hakkı
 
 ### <a name="subnets"></a>Alt ağlar
 
-Alt ağlar sanal ağı, yerleştirdiğiniz Azure kaynakları tarafından kullanılabilen ayrı adres alanlarına bölüler. Adanmış HSM 'ler, sanal ağdaki bir alt ağa dağıtılır. Müşterinin alt ağına dağıtılan her bir adanmış HSM aygıtı, bu alt ağdan özel bir IP adresi alır. HSM cihazının dağıtıldığı alt ağın hizmete açıkça atanmış olması gerekir: Microsoft. HardwareSecurityModules/ayrılmış Atedhsms. Bu, alt ağa dağıtım için HSM hizmetine bazı izinler verir. Adanmış HSM 'lerin temsilciliğini, alt ağda belirli ilke kısıtlamalarını uygular. Ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs) Şu anda temsilci alt ağlarda desteklenmez. Sonuç olarak, bir alt ağ adanmış HSM 'ler için temsilci seçildikten sonra yalnızca HSM kaynaklarını dağıtmak için kullanılabilir. Diğer müşteri kaynaklarının alt ağa dağıtılması başarısız olur.
+Alt ağlar sanal ağı, yerleştirdiğiniz Azure kaynakları tarafından kullanılabilen ayrı adres alanlarına bölüler. Adanmış HSM 'ler, sanal ağdaki bir alt ağa dağıtılır. Müşterinin alt ağına dağıtılan her bir adanmış HSM aygıtı, bu alt ağdan özel bir IP adresi alır. HSM cihazının dağıtıldığı alt ağın hizmete açıkça atanmış olması gerekir: Microsoft. HardwareSecurityModules/ayrılmış Atedhsms. Bu, alt ağa dağıtım için HSM hizmetine bazı izinler verir. Adanmış HSM 'lerin temsilciliğini, alt ağda belirli ilke kısıtlamalarını uygular. Ağ güvenlik grupları (NSG 'ler) ve User-Defined yolları (UDRs) Şu anda temsilci alt ağlarda desteklenmez. Sonuç olarak, bir alt ağ adanmış HSM 'ler için temsilci seçildikten sonra yalnızca HSM kaynaklarını dağıtmak için kullanılabilir. Diğer müşteri kaynaklarının alt ağa dağıtılması başarısız olur.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute ağ geçidi

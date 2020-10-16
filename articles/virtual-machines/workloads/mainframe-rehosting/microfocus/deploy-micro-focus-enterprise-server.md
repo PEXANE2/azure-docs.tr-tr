@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87042551"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Micro Focus Enterprise Server 5,0 'i AKS 'e dağıtma
@@ -35,7 +35,7 @@ Bu, üç adımlı bir işlemdir. Şunları yapmanız gerekir:
 
 Bu, bulut platformunun gerçek avantajlarından yararlanarak Azure 'daki ana bilgisayar modernleştirme iş yüklerinizi genişleme (ve Ölçeklendirebilmenizi) sağlar.
 
-Geldiğinizde? Haydi başlayın!
+Geldiğinizde? Başlayalım!
 
 ## <a name="create-the-azure-container-registry"></a>Azure Container Registry oluşturun
 
@@ -73,7 +73,7 @@ Oturum açtıktan sonra, bir komut istemi açın ve aşağıdaki Docker komutlar
 
 -   **Docker login acrmf50.azurecr.io** – burada doğru biçim *Docker oturum açma \<registry name\> *biçimidir. Kayıt defterini oluştururken kullandığınız adı değiştirin.
 
-    -   Azure portal kopyaladığınız **Kullanıcı adı** ve **parolaya** ihtiyacınız olacak. Aşağıdaki görüntüye benzer bir şey görmeniz gerekir.
+    -   Azure portal kopyaladığınız **Kullanıcı adı** ve **parolaya** ihtiyacınız olacak. Aşağıdaki görüntüye benzer bir sonuçla karşılaşmanız gerekir.
 
     ![Yönetici komut Isteminin ekran görüntüsü](media/deploy-image-2.png)
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248178"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric uygulama senaryoları
@@ -23,7 +23,7 @@ Aşağıdaki uygulama türleri için Service Fabric platformunu kullanmayı göz
 
 * **Veri toplama, işleme ve IoT**: Service Fabric büyük ölçeği işler ve durum bilgisi olan hizmetler aracılığıyla düşük gecikme süresine sahiptir. Cihaz ve hesaplama verilerinin birlikte bulunduğu milyonlarca cihazda verileri işlemeye yardımcı olabilir.
 
-    Service Fabric kullanarak IoT Hizmetleri oluşturan müşteriler, [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL yapımı](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider Elektrik](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)ve [kafes sistemleri](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions)içerir.
+    Service Fabric kullanarak IoT Hizmetleri oluşturan müşteriler, [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL yapımı](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure),  [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider Elektrik](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)ve [kafes sistemleri](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions)içerir.
 
 * **Oyun ve oturum tabanlı etkileşimli uygulamalar**: Service Fabric, uygulamanızın çevrimiçi oyun veya anlık mesajlaşma gibi düşük gecikmeli okuma ve yazma işlemleri gerektirmesi durumunda yararlıdır. Service Fabric, ayrı bir mağaza veya önbellek oluşturmak zorunda kalmadan bu etkileşimli ve durum bilgisi olan uygulamalar oluşturmanıza olanak sağlar. [Oyun hizmetlerinde Service Fabric kullanma](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)hakkında tasarım kılavuzu için [Azure oyun çözümlerini](https://azure.microsoft.com/solutions/gaming/) ziyaret edin.
 

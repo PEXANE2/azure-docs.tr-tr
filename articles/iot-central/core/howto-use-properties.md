@@ -1,53 +1,53 @@
 ---
 title: Azure IoT Central çözümünde özellikleri kullanma
-description: Azure IoT Central çözümünde salt okuma ve yazılabilir özellikleri kullanma
-author: v-krghan
-ms.author: v-krghan
+description: Azure IoT Central çözümünde salt okuma ve yazılabilir özellikleri nasıl kullanacağınızı öğrenin.
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: fa9b07d80c34ec26ca920fe147ada8f8ef7f2fd7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91346966"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999758"
 ---
-# <a name="how-to-use-properties-in-an-azure-iot-central-solution"></a>Azure IoT Central çözümünde özellikleri kullanma
+# <a name="use-properties-in-an-azure-iot-central-solution"></a>Azure IoT Central çözümünde özellikleri kullanma
 
 Bu makalede, Azure IoT Central uygulamanızdaki bir cihaz şablonunda tanımlanan cihaz özelliklerinin nasıl kullanılacağı gösterilir.
 
-Özellikler, zaman içinde nokta değerlerini temsil eder. Örneğin, bir cihaz, ulaşmaya çalıştığı hedef sıcaklığın raporlanabilmesi için bir özelliği kullanabilir. Özellikler Ayrıca cihazınız ile IoT Central uygulamanız arasında durum eşitlemesini sağlar.  IoT Central yazılabilir özellikleri ayarlayabilirsiniz.
+Özellikler, zaman içinde nokta değerlerini temsil eder. Örneğin, bir cihaz, ulaşmaya çalıştığı hedef sıcaklığın raporlanabilmesi için bir özelliği kullanabilir. Özellikler Ayrıca cihazınız ile Azure IoT Central uygulamanız arasında durum eşitlemesini sağlar. Azure IoT Central yazılabilir özellikler ayarlayabilirsiniz.
 
-Ayrıca, bulut özelliklerini bir IoT Central uygulamasında da tanımlayabilirsiniz. Bulut özelliği değerleri hiçbir şekilde bir cihazla değiş tokuş edilir ve bu makale için kapsam dışındadır.
+Ayrıca, bulut özelliklerini bir Azure IoT Central uygulamasında da tanımlayabilirsiniz. Bulut özelliği değerleri hiçbir şekilde bir cihazla değiş tokuş edilir ve bu makale için kapsam dışındadır.
 
 ## <a name="define-your-properties"></a>Özelliklerinizi tanımlama
 
-Özellikler, cihazınızın durumunu temsil eden veri alanlarıdır. Cihazın, cihazın açık durumu gibi dayanıklı durumunu göstermek için özellikleri kullanın. Özellikler Ayrıca, cihazın yazılım sürümü gibi temel cihaz özelliklerini de temsil edebilir. Özellikleri salt okunurdur veya yazılabilir olarak bildirebilirsiniz.
+Özellikler, cihazınızın durumunu temsil eden veri alanlarıdır. Cihazın, cihazın açık/kapalı durumu gibi dayanıklı durumunu göstermek için özellikleri kullanın. Özellikler Ayrıca, cihazın yazılım sürümü gibi temel cihaz özelliklerini de temsil edebilir. Özellikleri salt okunurdur veya yazılabilir olarak bildirebilirsiniz.
 
-Aşağıdaki ekran görüntüsünde Azure IoT Central uygulamasında bir özellik tanımı gösterilmektedir
+Aşağıdaki ekran görüntüsünde bir Azure IoT Central uygulamasındaki özellik tanımı gösterilmektedir.
 
-![Özelliği tanımla](./media/howto-use-properties/property-definition.png)
+![Azure IoT Central uygulamasında bir özellik tanımı gösteren ekran görüntüsü.](./media/howto-use-properties/property-definition.png)
 
-Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları gösterilmektedir:
+Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları gösterilmektedir.
 
 | Alan           | Açıklama                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Görünen Ad    | Panolar ve formlarda kullanılan özellik değeri için görünen ad.                                                                                                                                                              |
-| Name            | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir.                                                 |
-| Yetenek Türü | Özelliði.                                                                                                                                                                                                                          |
-| Anlamsal tür   | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler.                                                                       |
+| Görünen ad    | Panolar ve formlarda kullanılan özellik değeri için görünen ad.                                                                                                                                                              |
+| Ad            | Özelliğin adı. Azure IoT Central, görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alan alfasayısal olmalıdır.                                                 |
+| Yetenek türü | Özelliði.                                                                                                                                                                                                                          |
+| Anlam türü   | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler.                                                                       |
 | Şema          | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz.                                               |
-| Yazılabilir       | Özellik yazılabilir değilse, cihaz özellik değerlerini IoT Central rapor edebilir. Özellik yazılabilir ise, cihaz özellik değerlerini IoT Central rapor edebilir ve IoT Central Özellik güncelleştirmelerini cihaza gönderebilir. |
+| Yazılabilir       | Özellik yazılabilir değilse, cihaz özellik değerlerini Azure IoT Central rapor edebilir. Özellik yazılabilir ise, cihaz özellik değerlerini Azure IoT Central rapor edebilir. Ardından Azure IoT Central, cihaza özellik güncelleştirmeleri gönderebilir. |
 | Önem Derecesi        | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**.                                                                                                                         |
 | Durum değerleri    | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın.                                                                                   |
 | Birim            | **Mph**, **%** veya ** &deg; C**gibi özellik değeri için bir birim.                                                                                                                                                              |
 | Görüntüleme birimi    | Panolar ve formlarda kullanılacak bir görüntüleme birimi.                                                                                                                                                                                    |
 | Yorum         | Özellik yeteneği hakkında herhangi bir açıklama.                                                                                                                                                                                        |
-| Description     | Özellik yeteneğinin açıklaması.                                                                                                                                                                                          |
+| Açıklama     | Özellik yeteneğinin açıklaması.                                                                                                                                                                                          |
 
-Özellikler ayrıca bir cihaz şablonundaki bir arabirimde aşağıda gösterildiği gibi tanımlanabilir:
+Özellikler, burada gösterildiği gibi bir cihaz şablonundaki bir arabirim içinde de tanımlanabilir:
 
 ``` json
 {
@@ -91,24 +91,24 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 }
 ```
 
-Bu örnek, aşağıdaki gibi, Kullanıcı arabirimindeki özellik tanımıyla ilişkili olabilecek beş özelliği gösterir:
+Bu örnek, beş özelliği gösterir. Bu özellikler, Kullanıcı arabirimindeki özellik tanımıyla ilgili olarak aşağıda gösterildiği gibi olabilir:
 
 * `@type` özelliğin türünü belirtmek için: `Property`
 * `name` Özellik değeri için.
 * `schema` özellik için veri türünü belirtin. Bu değer, Double, Integer, Boolean veya String gibi bir temel tür olabilir. Karmaşık nesne türleri, diziler ve eşlemeler de desteklenir.
-* `writable` Varsayılan olarak, özellikler salt okunurdur. Bu alanı kullanarak bir özelliği yazılabilir olarak işaretleyebilirsiniz
+* `writable` Varsayılan olarak, özellikler salt okunurdur. Bu alanı kullanarak, bir özelliği yazılabilir olarak işaretleyebilirsiniz.
 
 Görünen ad ve açıklama gibi isteğe bağlı alanlar, arabirime ve yeteneklere daha fazla ayrıntı eklemenizi sağlar.
 
-Bir özellik oluşturduğunuzda nesne, enum vb. gibi karmaşık **şema** türlerini belirtebilirsiniz.
+Bir özellik oluşturduğunuzda, nesne ve sabit listesi gibi karmaşık **şema** türlerini belirtebilirsiniz.
 
-![Yetenek ekleyin](./media/howto-use-properties/property.png)
+![Nasıl özellik ekleneceğini gösteren ekran görüntüsü.](./media/howto-use-properties/property.png)
 
-**Nesne**gibi karmaşık şemayı seçtiğinizde nesneyi de tanımlamanız gerekir.
+**Nesne**gibi karmaşık **Şemayı**seçtiğinizde nesneyi de tanımlamanız gerekir.
 
-![Nesne tanımla](./media/howto-use-properties/object.png)
+![Bir nesnenin nasıl tanımlanacağını gösteren ekran görüntüsü.](./media/howto-use-properties/object.png)
 
-Aşağıdaki kod bir nesne özelliği türünün tanımını gösterir. Bu nesnenin dize ve tamsayı türünde iki alanı vardır:
+Aşağıdaki kod bir nesne özelliği türünün tanımını gösterir. Bu nesnenin dize ve tamsayı türünde iki alanı vardır.
 
 ``` json
 {
@@ -150,9 +150,9 @@ Aşağıdaki kod bir nesne özelliği türünün tanımını gösterir. Bu nesne
 
 ## <a name="implement-read-only-properties"></a>Salt okunurdur özellikleri uygulama
 
-Varsayılan olarak, özellikler salt okunurdur. Salt okuma özellikleri, cihazın IoT Central uygulamanızdaki Özellik değeri güncelleştirmelerini bildirdiği anlamına gelir. IoT Central uygulamanız salt okunurdur bir özelliğin değerini ayarlayamıyorum.
+Varsayılan olarak, özellikler salt okunurdur. Salt okuma özellikleri, cihazın Azure IoT Central uygulamanızda Özellik değeri güncelleştirmelerini bildirdiği anlamına gelir. Azure IoT Central uygulamanız salt okunurdur bir özelliğin değerini ayarlayamadı.
 
-IoT Central cihaz ve IoT Central uygulama arasındaki özellik değerlerini senkronize etmek için cihaz ikizlerini kullanır. Cihaz özelliği değerleri cihaz ikizi bildirilen özelliklerini kullanır. Daha fazla bilgi için bkz. [cihaz TWINS](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins)
+Azure IoT Central, cihaz ve Azure IoT Central uygulaması arasındaki özellik değerlerini senkronize etmek için cihaz ikizlerini kullanır. Cihaz özelliği değerleri cihaz ikizi bildirilen özelliklerini kullanır. Daha fazla bilgi için bkz. [cihaz TWINS](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins).
 
 Bir cihaz yetenek modelinden aşağıdaki kod parçacığında, salt okunurdur özellik türünün tanımı gösterilmektedir:
 
@@ -166,11 +166,11 @@ Bir cihaz yetenek modelinden aşağıdaki kod parçacığında, salt okunurdur �
 }
 ```
 
-Salt okuma özellikleri cihaz tarafından IoT Central için gönderilir. Özellikler JSON yükü olarak gönderilir, daha fazla bilgi için bkz. [yükleri](./concepts-telemetry-properties-commands.md).
+Salt okuma özellikleri cihaz tarafından Azure IoT Central gönderilir. Özellikler JSON yükü olarak gönderilir. Daha fazla bilgi için bkz. [Yük](./concepts-telemetry-properties-commands.md).
 
-IoT Central uygulamanıza bir özellik güncelleştirmesi göndermek için Azure IoT cihaz SDK 'sını kullanabilirsiniz.
+Azure IoT Central uygulamanıza bir özellik güncelleştirmesi göndermek için Azure IoT cihaz SDK 'sını kullanabilirsiniz.
 
-Device ikizi özellikleri, aşağıdaki işlevi kullanılarak Azure IoT Central uygulamanıza gönderilebilir:
+Aşağıdaki işlev kullanılarak Device ikizi özellikleri Azure IoT Central uygulamanıza gönderilebilir:
 
 ``` javascript
 hubClient.getTwin((err, twin) => {
@@ -183,15 +183,18 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-Bu makalede kolaylık sağlaması için Node.js, cihaz uygulama örnekleri hakkında tüm bilgiler için bkz. [azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Node.js)](tutorial-connect-device-nodejs.md) ve [bir Istemci uygulamasını oluşturup Azure IoT Central uygulaması (Python)](tutorial-connect-device-python.md) öğreticilerimize bağlama.
+Bu makale basitlik için Node.js kullanır. Cihaz uygulaması örnekleri hakkında tüm bilgiler için aşağıdaki öğreticilere bakın:
 
-Azure IoT Central uygulamasındaki şu görünüm özellikleri gösterir, görünümün otomatik olarak cihaz modeli özelliğini _salt okunurdur bir cihaz özelliği_haline getiren görünümü görebilirsiniz.
+* [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Node.js)](tutorial-connect-device-nodejs.md)
+* [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Python)](tutorial-connect-device-python.md)
 
-![Salt okunurdur özelliğinin görünümü](./media/howto-use-properties/read-only.png)
+Azure IoT Central uygulamasındaki aşağıdaki görünüm, görebileceğiniz özellikleri gösterir. Görünüm, **cihaz modeli** özelliğini otomatik olarak bir _salt okuma cihaz özelliği_yapar.
+
+![Salt okunurdur özelliğinin görünümünü gösteren ekran görüntüsü.](./media/howto-use-properties/read-only.png)
 
 ## <a name="implement-writable-properties"></a>Yazılabilir özellikleri Uygula
 
-Yazılabilir özellikler, form üzerindeki IoT Central uygulamasındaki bir operatör tarafından ayarlanır. IoT Central, özelliği cihaza gönderir. IoT Central cihazdan bir bildirim bekliyor. 
+Yazılabilir özellikler, bir formdaki Azure IoT Central uygulamasındaki bir operatör tarafından ayarlanır. Azure IoT Central, özelliği cihaza gönderir. Azure IoT Central cihazdan bir bildirim bekliyor.
 
 Bir cihaz yetenek modelinden aşağıdaki kod parçacığında yazılabilir özellik türünün tanımı gösterilmektedir:
 
@@ -212,7 +215,7 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 { "Brightness Level": 2 }
 ```
 
-Cihazınızın yanıt verdiği yazılabilir özellikleri tanımlamak ve işlemek için aşağıdaki kodu kullanabilirsiniz.
+Cihazınızın yanıt verdiği yazılabilir özellikleri tanımlamak ve işlemek için aşağıdaki kodu kullanabilirsiniz:
 
 ``` javascript
 hubClient.getTwin((err, twin) => {
@@ -233,32 +236,33 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-Yanıt iletisi `ac` ve `av` alanlarını içermelidir. `ad` alanı isteğe bağlıdır. Örnekler için aşağıdaki kod parçacıklarına bakın.
+Yanıt iletisi `ac` ve `av` alanlarını içermelidir. `ad` alanı isteğe bağlıdır. Örnekler için aşağıdaki kod parçacıklarına bakın:
 
-* `ac` , aşağıdaki tablodaki değerleri kullanan sayısal bir alandır:
-
+* `ac` , aşağıdaki tabloda yer alan değerleri kullanan sayısal bir alandır.
 * `av` cihaza gönderilen sürüm numarasıdır.
-
 * `ad` , bir seçenek dize açıklamasıdır.
 
-| Değer | Etiket | Description |
+| Değer | Etiket | Açıklama |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Tamamlandı | Özellik değiştirme işlemi başarıyla tamamlandı. |
-| `'ac': 202`  veya `'ac': 201` | Beklemede | Özellik değiştirme işlemi bekliyor veya devam ediyor |
-| `'ac': 4xx` | Hata | İstenen özellik değişikliği geçerli değil veya bir hata oluştu |
+| `'ac': 202` veya `'ac': 201` | Beklemede | Özellik değiştirme işlemi bekliyor veya devam ediyor. |
+| `'ac': 4xx` | Hata | İstenen özellik değişikliği geçerli değil veya bir hata oluştu. |
 | `'ac': 5xx` | Hata | Cihaz, istenen değişikliği işlerken beklenmeyen bir hatayla karşılaştı. |
 
 
-Daha fazla bilgi için bkz. [cihaz TWINS](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins).
+Cihaz ikgörüti hakkında daha fazla bilgi için bkz. [cihazları arka uç hizmetinden yapılandırma](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins).
 
-İşleci IoT Central uygulamasında yazılabilir bir özellik ayarladığında, uygulama, değeri cihaza göndermek için bir Device ikizi istenen özelliğini kullanır. Cihaz daha sonra bir Device ikizi bildirilen özelliği kullanarak yanıt verir. IoT Central bildirilen özellik değerini aldığında, özellik görünümünü **kabul edildi**durumuyla güncelleştirir.
+Operatör, Azure IoT Central uygulamasında yazılabilir bir özellik ayarladığında, uygulama değeri cihaza göndermek için bir Device ikizi istenen özelliğini kullanır. Cihaz daha sonra bir Device ikizi bildirilen özelliği kullanarak yanıt verir. Azure IoT Central bildirilen özellik değerini aldığında, özellik görünümünü **kabul edildi**durumuyla güncelleştirir.
 
-Aşağıdaki görünümde yazılabilir özellikler gösterilmektedir. Değeri girip **kaydettiğinizde**, ilk durum **bekliyor**' dır, cihaz değişikliği kabul ettiğinde durum **kabul edilir**olarak değişir.
+Aşağıdaki görünümde yazılabilir özellikler gösterilmektedir. Değeri girip **Kaydet**' i seçtiğinizde, Ilk durum **bekliyor**' dır. Cihaz değişikliği kabul ettiğinde, durum **kabul edilir**olarak değişir.
 
-![Bekleme durumu](./media/howto-use-properties/status-pending.png)
+![Bekleyen durumu gösteren ekran görüntüsü.](./media/howto-use-properties/status-pending.png)
 
-![Kabul edilen Özellik](./media/howto-use-properties/accepted.png)
+![Kabul edilen özelliği gösteren ekran görüntüsü.](./media/howto-use-properties/accepted.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central uygulamanızda özelliklerin nasıl kullanılacağını öğrendiğinize göre, [yükleri](concepts-telemetry-properties-commands.md) görebilir ve [bir Istemci uygulamasını oluşturup Azure IoT Central uygulamanıza bağlayabilirsiniz (Node.js)](tutorial-connect-device-nodejs.md).
+Azure IoT Central uygulamanızda özelliklerin nasıl kullanılacağını öğrendiğinize göre, bkz.:
+
+* [Yükü](concepts-telemetry-properties-commands.md)
+* [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Node.js)](tutorial-connect-device-nodejs.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
 ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074720"
 ---
 # <a name="use-ip-filters"></a>IP filtrelerini kullanma
@@ -47,11 +47,11 @@ IP filtresi ayarları sayfasına ulaşmak için **ağ**, **ortak erişim**' i SE
 
 Bir IP filtre kuralı eklemek için **+ IP filtre kuralı ekle**' yi seçin.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT Hub 'ına bir IP filtre kuralı ekleme":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT Hub varsayılan IP filtresi ayarları":::
 
 **IP filtre kuralı ekle**' yi seçtikten sonra alanları girin.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IP filtre kuralı ekle seçeneğini belirledikten sonra":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IoT Hub varsayılan IP filtresi ayarları":::
 
 * IP filtresi kuralı için bir **ad** girin. Bu, 128 karakter uzunluğunda benzersiz, büyük/küçük harfe duyarsız, alfasayısal bir dize olmalıdır. Yalnızca ASCII 7 bit alfasayısal karakterler ve kabul edilir `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
 
@@ -61,7 +61,7 @@ Bir IP filtre kuralı eklemek için **+ IP filtre kuralı ekle**' yi seçin.
 
 Alanları doldurduktan sonra, kuralı kaydetmek için **Kaydet** ' i seçin. Güncelleştirmenin devam ettiğini bildiren bir uyarı görürsünüz.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IP filtresi kuralını kaydetme bildirimi":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IoT Hub varsayılan IP filtresi ayarları":::
 
 En fazla 10 IP filtresi kuralına ulaştığınızda **Ekle** seçeneği devre dışıdır.
 
@@ -71,7 +71,7 @@ Mevcut bir kuralı düzenlemek için, değiştirmek istediğiniz verileri seçin
 
 Bir IP filtre kuralını silmek için söz konusu satırdaki çöp kutusu simgesini seçin ve ardından **Kaydet**' i seçin. Kural kaldırılır ve değişiklik kaydedilir.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub IP filtresi kuralını silme":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub varsayılan IP filtresi ayarları":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Azure CLı kullanarak IP filtrelerini alma ve güncelleştirme
 
@@ -161,7 +161,7 @@ Kılavuzdaki IP filtre kurallarınızın sırasını, bir satırın başlangıc�
 
 Yeni IP filtresi kuralı siparişinizi kaydetmek için **Kaydet**' e tıklayın.
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT HUb IP filtresi kurallarınızın sırasını değiştirme":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT Hub varsayılan IP filtresi ayarları":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

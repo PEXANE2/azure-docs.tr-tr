@@ -4,12 +4,12 @@ description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupla
 ms.date: 09/22/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91533816"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951885"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure yönetim grupları nedir?
 
@@ -90,7 +90,7 @@ Bu izinler, hiyerarşide mevcut olan alt kaynaklara devredilir. Herhangi bir Azu
 
 Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eylemler gösterilmektedir.
 
-| Azure rolü adı             | Oluştur | Rename | Geçiş\*\* | Sil | Erişim Ata | İlke Ata | Okuma  |
+| Azure rolü adı             | Oluştur | Yeniden adlandır | Geçiş\*\* | Sil | Erişim Ata | İlke Ata | Okuma  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |Sahip                       | X      | X      | X        | X      | X             | X             | X     |
 |Katılımcı                 | X      | X      | X        | X      |               |               | X     |
@@ -202,6 +202,6 @@ Azure portalının dışında Yönetim Gruplarını sorgulamak istediğinizde, y
 
 Yönetim grupları hakkında daha fazla bilgi almak için bkz.:
 
-- [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](./create.md)
+- [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](./create-management-group-portal.md)
 - [Yönetim gruplarınızı değiştirme, silme veya yönetme](./manage.md)
 - [Kaynak hiyerarşinizi korumaya](./how-to/protect-resource-hierarchy.md) yönelik seçeneklere bakın

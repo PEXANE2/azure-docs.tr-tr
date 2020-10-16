@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357174"
 ---
 # <a name="agent-based-migration-architecture"></a>Aracı tabanlı geçiş mimarisi
@@ -115,7 +115,7 @@ Genişleme işlem sunucusu dağıtmanız gerekiyorsa, sunucu boyutunu anlamak i�
 
 Azure 'a çoğaltılan VMware trafiği belirli bir işlem sunucusundan geçer. İşlem sunucuları olarak çalışan makinelerdeki bant genişliğini azaltarak karşıya yükleme verimini sınırlayabilirsiniz. Bu kayıt defteri anahtarını kullanarak bant genişliğini etkileyebilirsiniz:
 
-- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM kayıt defteri değeri, bir diskin veri aktarımı (başlangıç veya değişim çoğaltması) için kullanılan iş parçacıklarının sayısını belirtir. Daha yüksek bir değer, çoğaltma için kullanılan ağ bant genişliğini artırır. Varsayılan değer 4 ' tür. En büyük değer 32 ' dir. Değeri iyileştirmek için trafiği izleyin.
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM kayıt defteri değeri, bir diskin veri aktarımı (başlangıç veya değişim çoğaltması) için kullanılan iş parçacıklarının sayısını belirtir. Daha yüksek bir değer, çoğaltma için kullanılan ağ bant genişliğini artırır. Varsayılan değer 4 ' tür. En büyük değer 32 ' dir. Değeri iyileştirmek için trafiği izleyin.
 - Buna ek olarak, işlem sunucusu makinesindeki bant genişliğini şu şekilde kısıtlama edebilirsiniz:
 
     1. İşlem sunucusu makinesinde, Azure Backup MMC ek bileşenini açın. Masaüstünde veya C:\Program Files\Microsoft Azure kurtarma hizmetleri servisleri \ bin klasöründe bir kısayol bulunur. 

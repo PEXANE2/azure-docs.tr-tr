@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983725"
 ---
 # <a name="about-virtual-hub-routing"></a>Sanal merkez yönlendirmesi hakkında
@@ -55,7 +55,7 @@ Bağlantılar yolları bir yol tablosuna dinamik olarak yayar. VPN bağlantısı
 
 Her sanal hub için bir **yol tablosu** da kullanılabilir. None yol tablosuna yayılması, bağlantıdan yayılmaması için hiçbir yolun gerekli olmadığını gösterir. VPN, ExpressRoute ve kullanıcı VPN bağlantıları, rotaları aynı yol tabloları kümesine yayar.
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Yayma":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Kaldırma":::
 
 ### <a name="labels"></a><a name="static"></a>Etiketler
 Etiketler, yönlendirme tablolarını mantıksal olarak gruplamak için bir mekanizma sağlar. Bu, özellikle birden çok yol tablosuna yapılan bağlantılardan yolların yayılması sırasında yararlı olur. Örneğin, varsayılan yol tablosunun ' default ' adlı yerleşik bir etiketi vardır. Kullanıcılar bağlantı yollarını ' default ' etiketine yaydığı zaman, otomatik olarak sanal WAN 'daki her hub 'daki tüm varsayılan rota tablolarına uygulanır. 

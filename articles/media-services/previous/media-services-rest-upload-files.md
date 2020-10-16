@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: bc0369e99552859393da206e791477040681ccc4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281074"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST kullanarak Media Services hesabına dosya yükleme
@@ -176,7 +176,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 ### <a name="overview"></a>Genel Bakış
 
-Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure Depolama REST API’sini kullanma](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Blobu koy](/rest/api/storageservices/put-blob)

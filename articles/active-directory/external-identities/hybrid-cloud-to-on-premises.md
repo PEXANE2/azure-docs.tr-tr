@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819383"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
@@ -64,7 +64,7 @@ Aşağıdaki diyagramda, B2B kullanıcılarına şirket içi ıWA ve KCD uygulam
 
 ### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
 
-Şirket içi B2B Kullanıcı nesnelerini yaşam döngüsü yönetim ilkeleri aracılığıyla yönetebilirsiniz. Örnek:
+Şirket içi B2B Kullanıcı nesnelerini yaşam döngüsü yönetim ilkeleri aracılığıyla yönetebilirsiniz. Örneğin:
 
 - Uygulama proxy kimlik doğrulaması sırasında MFA kullanılacak şekilde Konuk Kullanıcı için Multi-Factor Authentication (MFA) ilkeleri ayarlayabilirsiniz. Daha fazla bilgi için bkz. [B2B işbirliği kullanıcıları Için koşullu erişim](conditional-access.md).
 - Bulut B2B kullanıcısı üzerinde gerçekleştirilen tüm sponsorships, erişim incelemeleri, hesap doğrulamaları vb. Şirket içi kullanıcılar için geçerlidir. Örneğin, bulut kullanıcısı yaşam döngüsü yönetimi ilkeleriniz aracılığıyla silinirse, şirket içi Kullanıcı de MıM eşitleme veya Azure AD Connect eşitleme aracılığıyla silinir. Daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).

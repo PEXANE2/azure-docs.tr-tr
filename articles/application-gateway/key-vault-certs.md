@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: c1f6cc21c7a45dbc5c7be7e3f3cc46b4ec4e8c39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282356"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993643"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault sertifikalarla TLS sonlandırma
 
@@ -32,7 +32,7 @@ Key Vault ile tümleştirme Application Gateway aşağıdakiler de dahil olmak �
 - Mevcut sertifikaları anahtar kasanıza aktarma desteği. Ya da güvenilir Key Vault iş ortaklarıyla yeni sertifikalar oluşturup yönetmek için Key Vault API 'Leri kullanın.
 - Anahtar Kasanızda depolanan sertifikaların otomatik yenilenmesi için destek.
 
-Application Gateway Şu anda yalnızca yazılım tarafından doğrulanan sertifikaları desteklemektedir. Donanım güvenlik modülü (HSM)-doğrulanan sertifikalar desteklenmez. Application Gateway Key Vault sertifikaları kullanacak şekilde yapılandırıldıktan sonra, örnekleri sertifikayı Key Vault alır ve TLS sonlandırma için yerel olarak yükler. Örnekler Ayrıca, varsa sertifikanın yenilenen bir sürümünü almak için 24 saatlik aralıklarla Key Vault yoklama yapılır. Güncelleştirilmiş bir sertifika bulunursa, şu anda HTTPS dinleyicisiyle ilişkili olan TLS/SSL sertifikası otomatik olarak döndürülür.
+Application Gateway Şu anda yalnızca yazılım tarafından doğrulanan sertifikaları desteklemektedir. Donanım güvenlik modülü (HSM)-doğrulanan sertifikalar desteklenmez. Application Gateway Key Vault sertifikaları kullanacak şekilde yapılandırıldıktan sonra, örnekleri sertifikayı Key Vault alır ve TLS sonlandırma için yerel olarak yükler. Örnekler Ayrıca Key Vault, varsa sertifikanın yenilenen bir sürümünü almak için 4 saat aralıklarında yoklama yapılır. Güncelleştirilmiş bir sertifika bulunursa, şu anda HTTPS dinleyicisiyle ilişkili olan TLS/SSL sertifikası otomatik olarak döndürülür.
 
 > [!NOTE]
 > Azure portal, gizli dizileri değil yalnızca Keykasa sertifikalarını destekler. Application Gateway, anahtar kasasından gizli dizileri de destekler, ancak yalnızca PowerShell, CLı, API, ARM şablonları gibi portal olmayan kaynaklar aracılığıyla desteklenir. 

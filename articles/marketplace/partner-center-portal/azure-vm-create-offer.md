@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
 ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709026"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
@@ -20,7 +20,7 @@ Bu makalede, Azure [Market 'te](https://azuremarketplace.microsoft.com/)bir Azur
 
 Başlamadan önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md). Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>Azure Marketi 'ne yayımlamanın avantajları
 
@@ -180,7 +180,7 @@ Müşterilerinize teklif hüküm ve koşullar sağlamanız gerekir. İki seçene
 
 ### <a name="marketplace-details"></a>Market ayrıntıları
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler için teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer** adı kutusuna girdiğiniz adla birlikte doldurulur. Bu adı daha sonra değiştirebilirsiniz. Ad:
 
@@ -226,7 +226,7 @@ Müşterilerin destek ekibinize ulaşabilmesi için destek Web sitesini sağlay�
 
 Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş ortakları için iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Name
+- Adı
 - E-posta
 - Telefon
 
@@ -234,7 +234,7 @@ Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş o
 
 Microsoft 'un, Teklifinizle ilgili sorunlar olduğunda, sertifika sorunları da dahil olmak üzere iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Name
+- Adı
 - E-posta
 - Telefon
 

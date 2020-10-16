@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317391"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Izleyici, ölçümler ve otomatik ölçeklendirme için klasik dağıtım modeli API 'Lerinin kullanımdan kaldırılması
@@ -31,13 +31,13 @@ Aşağıdaki bileşenleri kullanıyorsanız, bu makale sizin için geçerlidir:
 
 - **Klasik otomatik ölçeklendirme** - [Klasik otomatik ölçeklendirme ayarları API 'lerini](/previous-versions/azure/reference/mt348562(v=azure.100)) özel olarak oluşturulmuş araçlardan veya [Klasik Azure Insights SDK 'sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)kullanarak arıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir.
 
-- **Klasik ölçümler** -özel olarak oluşturulmuş araçlardan [Klasik REST API 'Leri](/previous-versions/azure/reference/dn510374(v=azure.100)) veya [Klasik Azure Insights SDK 'Sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) kullanarak ölçümler kullanıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir. 
+- **Klasik ölçümler** -özel olarak oluşturulmuş araçlardan [Klasik REST API 'Leri](/previous-versions/azure/reference/dn510374(v=azure.100)) veya  [Klasik Azure Insights SDK 'Sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) kullanarak ölçümler kullanıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir. 
 
 Kodunuzun veya özel araçlarınızın klasik API 'Leri çağırma konusunda emin değilseniz, aşağıdakilere bakın:
 
 - Kodunuzda veya aracınız içinde başvurulan URI 'yi gözden geçirin. Klasik API 'Ler URI kullanır https://management.core.windows.net . Kaynak Yöneticisi tabanlı API 'Ler ile başlayan yeni URI 'yi kullanmanız gerekir `https://management.azure.com/` .
 
-- Makinenizde derleme adını karşılaştırın. Klasik eski derleme https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
+- Makinenizde derleme adını karşılaştırın. Klasik eski derleme  https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
 
 - Ölçüm veya otomatik ölçeklendirme API 'Lerine erişmek için sertifika kimlik doğrulaması kullanıyorsanız, klasik bir uç nokta ve kitaplık kullanıyorsunuz demektir. Yeni Kaynak Yöneticisi API 'Leri, hizmet sorumlusu veya Kullanıcı sorumlusu aracılığıyla Azure Active Directory kimlik doğrulaması gerektirir.
 
@@ -53,7 +53,7 @@ Kodunuzun veya özel araçlarınızın klasik API 'Leri çağırma konusunda emi
 
 Otomatik ölçeklendirme ve ölçümler için mevcut tüm yetenekler yeni API 'Ler aracılığıyla çalışmaya devam edecektir.  
 
-Daha yeni API 'lere geçiş yapmak, tüm izleme hizmetleriniz genelinde tutarlı rol tabanlı Access Control (RBAC) desteği gibi Kaynak Yöneticisi tabanlı yetenekler sağlar. Ayrıca ölçümler için ek işlevler elde edersiniz: 
+Daha yeni API 'lere geçiş yapmak, tüm izleme hizmetleriniz genelinde tutarlı Role-Based Access Control (RBAC) için destek gibi Kaynak Yöneticisi tabanlı yetenekler ile gelir. Ayrıca ölçümler için ek işlevler elde edersiniz: 
 
 - Boyut desteği
 - tüm hizmetlerde tutarlı 1 dakikalık ölçüm ayrıntı düzeyi 

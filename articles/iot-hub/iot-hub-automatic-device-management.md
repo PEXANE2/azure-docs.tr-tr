@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 6d3661128008c13e5d4d459f6f8e7925aa18a9a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322780"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portalını kullanarak otomatik IoT cihazı ve modül yönetimi
@@ -108,7 +108,7 @@ Her yapılandırmanın en fazla beş özel ölçümü olabilir.
 
 2. **Ölçüm ölçütü**için bir sorgu girin.  Sorgu, Device ikizi tarafından bildirilen özellikleri temel alır.  Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-Örnek:
+Örneğin:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -123,7 +123,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız, ' ı seçin `moduleId` `devices.modules` . Örnek:
+Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız, ' ı seçin `moduleId` `devices.modules` . Örneğin:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -213,7 +213,7 @@ Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın:
    * Öncelik 
    * Ölçümler
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 5. Değişiklikleri izlemek için [Yapılandırmayı İzleme](#monitor-a-configuration) bölümündeki adımları izleyin. 
 

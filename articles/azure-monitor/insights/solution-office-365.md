@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498806"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999736"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -104,9 +104,9 @@ ms.locfileid: "86498806"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>S: 31 Ekim 'de ne olur? Önceden Pano yapmam gerekir mi?
 > 
-> - **Office365** çözümünden veri alamazsınız. Bu çözüm Market 'te artık kullanılamayacak
+> - **Office365** çözümünden veri alamazsınız. Çözüm, çalışma alanınızdan kaldırılacak ve artık Market 'te kullanılamayacak.
 > - Azure Sentinel müşterileri için, Azure Sentinel **Securityınsights** çözümüne Log Analytics çalışma alanı çözümü **Office365** eklenecektir.
-> - Çözümünüzü el ile boşaltmıyorsanız, verileriniz 31 Ekim 'e göre otomatik olarak kesilir.
+> - Çözümünüzü 31 Ekim 'e kadar el ile boşaltmıyorsanız, verilerinizin bağlantısı otomatik olarak kesilir ve **Officeactivity** tablosu kaldırılır. Yine de, aşağıda açıklandığı gibi, Azure Sentinel 'de Office 365 bağlayıcısını etkinleştirdiğinizde tabloyu geri yükleyebilirsiniz.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>S: veri, yeni çözüme aktarılsın mı?
 > Evet. **Office 365** çözümünü çalışma alanınızdan kaldırdığınızda, şema kaldırıldığı için verileri geçici olarak kullanılamıyor olacaktır. Yeni **Office 365** bağlayıcısını Sentinel 'de etkinleştirdiğinizde, şema çalışma alanına geri yüklenir ve önceden toplanan tüm veriler kullanılabilir hale gelir. 
@@ -121,7 +121,7 @@ Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izl
 - Kuruluşunuzun Office 365 etkinlik verilerinin en üstünde bulunan [günlük sorgularını](../log-query/log-query-overview.md) kullanarak işlem sorunlarını giderme işlemi gerçekleştirin.
 
 
-## <a name="uninstall"></a>Kaldırma
+## <a name="uninstall"></a>Kaldır
 
 [Yönetim çözümünü kaldırma](solutions.md#remove-a-monitoring-solution)' daki Işlemi kullanarak Office 365 Yönetim çözümünü kaldırabilirsiniz. Bu, Office 365 ' den toplanan verileri de Azure Izleyici 'ye durdurmayacak. Office 365 aboneliğinizi kaldırmak ve veri toplamayı durdurmak için aşağıdaki yordamı izleyin.
 
@@ -246,7 +246,7 @@ Pano aşağıdaki tabloda gösterilen sütunları içerir. Her sütunda, belirti
 | Sütun | Açıklama |
 |:--|:--|
 | Operations | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
-| Exchange | Posta kutusu ekleme Izni veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
+| Exchange | Add-Mailbox Izin veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
 | SharePoint | Kullanıcıların SharePoint belgelerinde gerçekleştirdiği en iyi etkinlikleri gösterir. Bu kutucuktan ayrıntıya indığınızda arama sayfasında, bu etkinliklerin hedef belge ve bu etkinliğin konumu gibi ayrıntıları gösterilir. Örneğin, dosya erişimli bir olay için, erişilen belgeye, ilişkili hesap adına ve IP adresine bakabilirsiniz. |
 | Azure Active Directory | Kullanıcı parolası ve oturum açma girişimlerini sıfırlama gibi ilk kullanıcı etkinliklerini içerir. Ayrıntıya gitmediğiniz zaman, bu etkinliklerin sonuç durumu gibi ayrıntılarını görebileceksiniz. Bu, genellikle Azure Active Directory şüpheli etkinlikleri izlemek istediğinizde yararlı olur. |
 
@@ -462,7 +462,7 @@ Bu kayıtlar, SharePoint 'teki dosya işlemlerine yanıt olarak oluşturulur.
 
 Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtlarına yönelik örnek günlük sorguları verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 | --- | --- |
 |Office 365 aboneliğinizdeki tüm işlemlerin sayısı |OfficeActivity &#124; Işleme göre Count () özetleme |
 |SharePoint sitelerinin kullanımı|OfficeActivity &#124; burada OfficeWorkload = ~ "SharePoint" &#124; Count () değerini \||

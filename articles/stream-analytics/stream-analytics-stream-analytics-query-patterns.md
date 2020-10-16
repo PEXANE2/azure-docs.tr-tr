@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 84e3ced20b828087cd3f2b9e7534826debf1706a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279986"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure Stream Analytics ortak sorgu desenleri
@@ -56,7 +56,7 @@ Birden çok **Select** deyimi, verileri farklı çıkış havuzları için çık
 
 **Çıkış AlertOutput**:
 
-| Marka | Süre | Count |
+| Marka | Süre | Sayı |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -415,14 +415,14 @@ Bir olayın süresi, son olay alındıktan sonra son başlangıç olayına bakar
 
 **Giriş**:  
 
-| Kullanıcı | Öne çıkan özelliği | Olay | Süre |
+| Kullanıcı | Özellik | Olay | Süre |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Başlangıç |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000 Z |
 
 **Çıkış**:  
 
-| Kullanıcı | Öne çıkan özelliği | Süre |
+| Kullanıcı | Özellik | Süre |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -728,7 +728,7 @@ Olaylar, Event üreticileri, bölümler arasındaki saat eğetkinlikleri veya a�
 
 **Çıkış**:
 
-| Tollıd | Count |
+| Tollıd | Sayı |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |

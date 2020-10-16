@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653222"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
@@ -64,12 +64,12 @@ Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırma
 
 ### <a name="federated-environment"></a>Federasyon ortamı
 
-Federasyon ortamının hem WS-Trust hem de WS-beslenir protokollerini destekleyen bir kimlik sağlayıcısı olmalıdır:
+Federasyon ortamında hem WS-Trust hem de WS-Fed protokolleri destekleyen bir kimlik sağlayıcısı olmalıdır:
 
 - **WS-beslenir:** Bu protokol, bir cihazın Azure AD 'ye katılması için gereklidir.
 - **WS-Trust:** Bu protokol, bir Azure AD 'ye katılmış cihazda oturum açmak için gereklidir.
 
-AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir: `/adfs/services/trust/2005/usernamemixed`
+AD FS kullanırken, aşağıdaki WS-Trust uç noktaları etkinleştirmeniz gerekir: `/adfs/services/trust/2005/usernamemixed`
  `/adfs/services/trust/13/usernamemixed`
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
@@ -199,11 +199,11 @@ Bu üç yaklaşımdan oluşan bir karşılaştırma
  
 | Öğe | Self Servis kurulumu | Windows Autopilot | Toplu kayıt |
 | --- | --- | --- | --- |
-| Ayarlama için Kullanıcı etkileşimi gerektir | Yes | Yes | Hayır |
-| BT çabaları gerektir | Hayır | Yes | Evet |
+| Ayarlama için Kullanıcı etkileşimi gerektir | Evet | Evet | Hayır |
+| BT çabaları gerektir | Hayır | Evet | Evet |
 | Uygulanabilir akışlar | OOBE & ayarları | Yalnızca OOBE | Yalnızca OOBE |
 | Birincil kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | Hayır |
-| Cihaz OEM desteği gerektir | Hayır | Yes | Hayır |
+| Cihaz OEM desteği gerektir | Hayır | Evet | Hayır |
 | Desteklenen sürümler | 1511 + | 1709 + | 1703 + |
  
 Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlarınızı seçin ve iki yaklaşımı benimsemeye yönelik aşağıdaki konuları gözden geçirin:  

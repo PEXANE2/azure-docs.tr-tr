@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ed13111584e7e9621ec2ccde16efb3cdf2eef50c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438963"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016187"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Şirket içi veri ağ geçidini yükleme ve yapılandırma
 
@@ -62,7 +62,7 @@ Azure Analysis Services ağ geçidiyle nasıl çalıştığı hakkında daha faz
 
 3. Azure'da oturum açın. Hesabın kiracınızın Azure Active Directory olması gerekir. Bu hesap, Ağ Geçidi Yöneticisi için kullanılır. Ağ geçidini yüklerken ve kaydederken Azure B2B (konuk) hesapları desteklenmez.
 
-   ![Azure’da oturum açma](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Azure'da oturum açma](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > Bir etki alanı hesabıyla oturum açarsanız, Azure AD 'de Kurumsal hesabınıza eşlenir. Kuruluş hesabınız ağ geçidi Yöneticisi olarak kullanılır.
@@ -132,7 +132,7 @@ Ağ geçidinizin yüklenip kaydolduktan sonra Azure 'da bir ağ geçidi kaynağ�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ağ Geçidi RESOURCEID 'yi almak için [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) komutunu kullanın. Daha sonra [set-azanalysisservicesserver](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) veya [New-azanalysisservicesserver](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)içinde **-gatewayresourceıd** belirterek ağ geçidi kaynağını var olan veya yeni bir sunucuya bağlayın.
+Ağ Geçidi RESOURCEID 'yi almak için [Get-AzResource](/powershell/module/az.resources/get-azresource) komutunu kullanın. Daha sonra [set-azanalysisservicesserver](/powershell/module/az.analysisservices/set-azanalysisservicesserver) veya [New-azanalysisservicesserver](/powershell/module/az.analysisservices/new-azanalysisservicesserver)içinde **-gatewayresourceıd** belirterek ağ geçidi kaynağını var olan veya yeni bir sunucuya bağlayın.
 
 Ağ Geçidi kaynak KIMLIĞINI almak için:
 

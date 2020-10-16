@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
 ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405628"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Databricks Delta Gölü 'a ve Azure Data Factory kullanarak veri kopyalama
@@ -37,7 +37,7 @@ Genel olarak, Azure Data Factory çeşitli ihtiyaçlarınızı karşılamak içi
 - [Veri akışı eşleme](concepts-data-flow-overview.md) , Azure depolama 'da, kod ücretsiz ETL için Delta dosyalarını okuyup yazmak üzere kaynak ve havuz olarak genel [Delta biçimini](format-delta.md) destekler ve yönetilen Azure Integration Runtime çalışır.
 - [Databricks etkinlikleri](transform-data-databricks-notebook.md) , kod merkezli ETL veya makine öğrenimi iş yükünüzü Delta Gölü üzerine düzenlemenizi destekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu Azure Databricks Delta Lake bağlayıcısını kullanmak için, Azure Databricks bir küme ayarlamanız gerekir.
 
@@ -81,11 +81,11 @@ Aşağıdaki özellikler Azure Databricks bir Delta Lake bağlı hizmeti için d
 
 | Özellik    | Açıklama                                                  | Gerekli |
 | :---------- | :----------------------------------------------------------- | :------- |
-| tür        | Type özelliği **AzureDatabricksDeltaLake**olarak ayarlanmalıdır. | Yes      |
+| tür        | Type özelliği **AzureDatabricksDeltaLake**olarak ayarlanmalıdır. | Evet      |
 | etki alanı      | Azure Databricks çalışma alanı URL 'sini belirtin, örn. `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
 | Lclusterıd   | Var olan bir kümenin küme KIMLIĞINI belirtin. Önceden oluşturulmuş bir etkileşimli küme olmalıdır. <br>Databricks çalışma alanı-> kümeleri-> etkileşimli küme adı-> yapılandırma-> etiketleri üzerinde etkileşimli bir kümenin küme KIMLIĞINI bulabilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/databricks/clusters/configure#cluster-tags). |          |
 | accessToken | Azure Databricks kimlik doğrulaması için Data Factory erişim belirteci gereklidir. Erişim belirtecinin databricks çalışma alanından oluşturulması gerekir. Erişim belirtecini bulmak için daha ayrıntılı adımlar [burada](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#generate-token)bulunabilir. |          |
-| connectVia  | Veri deposuna bağlanmak için kullanılan [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanını kullanır. | No       |
+| connectVia  | Veri deposuna bağlanmak için kullanılan [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır       |
 
 **Örnek:**
 
@@ -114,9 +114,9 @@ Aşağıdaki özellikler Azure Databricks Delta Lake veri kümesi için destekle
 
 | Özellik  | Açıklama                                                  | Gerekli                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| tür      | Veri kümesinin Type özelliği **AzureDatabricksDeltaLakeDataset**olarak ayarlanmalıdır. | Yes                         |
+| tür      | Veri kümesinin Type özelliği **AzureDatabricksDeltaLakeDataset**olarak ayarlanmalıdır. | Evet                         |
 | database | Veritabanının adı. |Kaynak için Hayır, havuz için Evet  |
-| table | Delta tablosunun adı. |Kaynak için Hayır, havuz için Evet  |
+| tablo | Delta tablosunun adı. |Kaynak için Hayır, havuz için Evet  |
 
 **Örnek:**
 
@@ -148,13 +148,13 @@ Azure Databricks Delta Gölü verileri kopyalamak için, etkinlik **kaynağını
 
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| tür                         | Kopyalama etkinliği kaynağının Type özelliği **AzureDatabricksDeltaLakeSource**olarak ayarlanmalıdır. | Yes      |
-| sorgu          | Verileri okumak için SQL sorgusunu belirtin. Zaman seyahat denetimi için aşağıdaki kalıbı izleyin:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | No       |
-| exportSettings | Delta tablosundan verileri almak için kullanılan gelişmiş ayarlar. | No       |
+| tür                         | Kopyalama etkinliği kaynağının Type özelliği **AzureDatabricksDeltaLakeSource**olarak ayarlanmalıdır. | Evet      |
+| sorgu          | Verileri okumak için SQL sorgusunu belirtin. Zaman seyahat denetimi için aşağıdaki kalıbı izleyin:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Hayır       |
+| exportSettings | Delta tablosundan verileri almak için kullanılan gelişmiş ayarlar. | Hayır       |
 | ***Altında `exportSettings` :*** |  |  |
-| tür | Export komutunun türü, **AzureDatabricksDeltaLakeExportCommand**olarak ayarlanır. | Yes |
-| dateFormat | Tarih türünü Tarih biçimiyle String olarak biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd` . | No |
-| timestampFormat | Zaman damgası türü, zaman damgası biçimindeki dize olarak biçimlendirilir. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| tür | Export komutunun türü, **AzureDatabricksDeltaLakeExportCommand**olarak ayarlanır. | Evet |
+| dateFormat | Tarih türünü Tarih biçimiyle String olarak biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd` . | Hayır |
+| timestampFormat | Zaman damgası türü, zaman damgası biçimindeki dize olarak biçimlendirilir. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Hayır |
 
 #### <a name="direct-copy-from-delta-lake"></a>Delta Gölü doğrudan kopya
 
@@ -262,13 +262,13 @@ Azure Databricks Delta Gölü 'a veri kopyalamak için, etkinlik **havuzunu** ko
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | :------------ | :----------------------------------------------------------- | :------- |
-| tür          | Kopyalama etkinliği havuzunun Type özelliği, **AzureDatabricksDeltaLakeSink**olarak ayarlanır. | Yes      |
-| Ön Copyscrıpt | Her çalıştırmada Databricks Delta tablosuna veri yazmadan önce çalıştırılacak kopyalama etkinliğinin bir SQL sorgusunu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek veya TRUNCATE TABLE ya da vakum deyimleri eklemek için kullanabilirsiniz. | No       |
-| importSettings | Delta tablosuna veri yazmak için kullanılan gelişmiş ayarlar. | No |
+| tür          | Kopyalama etkinliği havuzunun Type özelliği, **AzureDatabricksDeltaLakeSink**olarak ayarlanır. | Evet      |
+| Ön Copyscrıpt | Her çalıştırmada Databricks Delta tablosuna veri yazmadan önce çalıştırılacak kopyalama etkinliğinin bir SQL sorgusunu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek veya TRUNCATE TABLE ya da vakum deyimleri eklemek için kullanabilirsiniz. | Hayır       |
+| importSettings | Delta tablosuna veri yazmak için kullanılan gelişmiş ayarlar. | Hayır |
 | ***Altında `importSettings` :*** |                                                              |  |
-| tür | Import komutunun türü, **AzureDatabricksDeltaLakeImportCommand**olarak ayarlanır. | Yes |
-| dateFormat | Dize türünü Tarih biçimiyle biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd` . | No |
-| timestampFormat | Dizeyi bir zaman damgası biçimiyle zaman damgası türüne biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| tür | Import komutunun türü, **AzureDatabricksDeltaLakeImportCommand**olarak ayarlanır. | Evet |
+| dateFormat | Dize türünü Tarih biçimiyle biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd` . | Hayır |
+| timestampFormat | Dizeyi bir zaman damgası biçimiyle zaman damgası türüne biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Hayır |
 
 #### <a name="direct-copy-to-delta-lake"></a>Delta Gölü doğrudan kopyalama
 

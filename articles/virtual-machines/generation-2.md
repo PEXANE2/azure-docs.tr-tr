@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323031"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977604"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -67,7 +67,7 @@ ms.locfileid: "89323031"
 * Oracle Linux 7,7, 7,7-CI
 
 > [!NOTE]
-> Mv2-Series gibi belirli sanal makine boyutları yalnızca bu görüntülerin bir alt kümesini destekleyebilir-tam Ayrıntılar için lütfen ilgili sanal makine boyutu belgelerine bakın.
+> Mv2-Series gibi belirli sanal makine boyutları yalnızca bu görüntülerin bir alt kümesini destekleyebilir. tüm ayrıntılar için lütfen ilgili sanal makine boyutu belgelerine bakın.
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure 2. nesil VM 'Ler
 
@@ -85,11 +85,11 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. nesil ve 2. nesil Özellikler
 
-| Öne çıkan özelliği | 1. nesil | 2. nesil |
+| Özellik | 1. nesil | 2. nesil |
 |---------|--------------|--------------|
 | Önyükleme             | PCAT                      | UEFı                               |
 | Disk denetleyicileri | IDE                       | SCSI                               |
-| VM boyutları         | Tüm VM boyutları | [Kullanılabilir boyutları gör](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
+| VM boyutları         | Tüm VM boyutları | [Kullanılabilir boyutları gör](#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1. nesil ve 2. nesil yetenekler
 
@@ -117,7 +117,7 @@ Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmişt
 1. **Kaynak oluştur**’u seçin.
 1. Sol taraftaki Azure Marketi 'nden **Tümünü gör** ' e tıklayın.
 1. Gen2 destekleyen bir görüntü seçin.
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünde **Gen 2** seçeneğini belirleyin.
 1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları**altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
 1. [Desteklenen 2. nesil VM 'yi](#generation-2-vm-sizes)seçin.
@@ -222,4 +222,3 @@ Ayrıca, sanal makine ölçek kümelerini kullanarak 2. nesil VM 'Ler oluşturab
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Hyper-V ' d a 2. nesil sanal makineler](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)hakkında bilgi edinin.
-

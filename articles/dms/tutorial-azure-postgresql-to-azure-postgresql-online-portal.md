@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282485"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938432"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB-tek sunuculu Azure DB 'yi PostgreSQL için Azure DB 'ye geçirme-tek sunucu veya hiper ölçek (Citus) Azure portal aracılığıyla DMS kullanarak çevrimiçi
+# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB-tek sunuculu Azure DB 'yi PostgreSQL için Azure DB 'ye geçirme-Azure portal aracılığıyla DMS kullanarak tek sunuculu bir çevrimiçi
 
-Azure veritabanı geçiş hizmeti 'ni, bir [PostgreSQL Için Azure veritabanı-tek sunuculu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) bir örneği, en az kapalı kalma süresine sahip [PostgreSQL için Azure veritabanı örneğine bir hiper ölçeğe (Citus)](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) geçirmek için kullanabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak PostgreSQL için Azure veritabanı ile v10 arasındaki for PostgreSQL için Azure veritabanından Hyperscale (Citus) olan **DVD Kiralama** örneği veritabanını geçireceğiniz.
+Azure veritabanı geçiş hizmeti 'ni, [PostgreSQL Için Azure veritabanı-tek sunuculu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) bir SQL örneğinden, PostgreSQL için Azure veritabanı 'nın aynı veya farklı bir sürümüne, örneğin, PostgreSQL için Azure veritabanı 'na (en az kapalı kalma süresi Ile) esnek sunucuya geçirmek için kullanabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak PostgreSQL için Azure veritabanı ile v10 arasındaki ' dan PostgreSQL için Azure veritabanı 'na (tek sunucu) ait **DVD Kiralama** örneği veritabanını geçireceğiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -42,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!IMPORTANT]
 > PostgreSQL için Azure veritabanından geçiş, PostgreSQL sürüm 10 ve üzeri için desteklenir. Bu öğreticiyi, bir PostgreSQL için Azure veritabanı örneğini PostgreSQL için başka bir Azure veritabanı örneğine veya Hyperscale (Citus) örneğine geçirmek için de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -57,9 +57,10 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 * Sanal ağınız için ağ güvenlik grubu (NSG) kurallarının Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)makalesine bakın.
 * Azure veritabanı geçiş hizmeti 'nin kaynak veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı kaynağı için sunucu düzeyinde bir [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
 * Azure veritabanı geçiş hizmeti 'nin hedef veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı hedefi için sunucu düzeyinde bir [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
+* PostgreSQL için Azure DB kaynağı 'nda [mantıksal çoğaltmayı etkinleştirin](https://docs.microsoft.com/azure/postgresql/concepts-logical) . 
 * Kaynak olarak kullanılan PostgreSQL için Azure veritabanı örneğinde aşağıdaki sunucu parametrelerini ayarlayın:
 
-  * max_replication_slots = [yuva sayısı], **beş yuva** ayarı önerilir
+  * max_replication_slots = [yuva sayısı], **on yuva** olarak ayarlama önerilir
   * max_wal_senders =[eşzamanlı görev sayısı] - max_wal_senders parametresi, çalışabilecek eşzamanlı görevlerin sayısını ayarlar; önerilen ayar **10 görevdir**
 
 > [!NOTE]
@@ -284,7 +285,10 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
     ![Tam geçişi ekranını doldurun](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, uygulamalarınızı PostgreSQL Için Azure veritabanı 'nın yeni hedef örneğine bağlayın.
+3. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, [dizileri yeniden oluşturun](https://wiki.postgresql.org/wiki/Fixing_Sequences) (varsa) ve uygulamalarınızı PostgreSQL için Azure veritabanı 'nın yeni hedef örneğine bağlayın.
+ 
+> [!NOTE]
+> Azure veritabanı geçiş hizmeti, PostgreSQL için Azure veritabanı-tek sunucu 'da azaltılmış kapalı kalma süresiyle büyük sürüm yükseltmeleri gerçekleştirmek için kullanılabilir. İlk olarak, istenen daha fazla PostgreSQL sürümü, ağ ayarları ve parametreleri ile bir hedef veritabanı yapılandırırsınız. Daha sonra, yukarıda açıklanan yordamı kullanarak hedef veritabanlarına geçişi başlatabilirsiniz. Hedef veritabanı sunucusuna geçiş yaptıktan sonra, uygulama Bağlantı dizenizi hedef veritabanı sunucusuna işaret etmek üzere güncelleştirebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

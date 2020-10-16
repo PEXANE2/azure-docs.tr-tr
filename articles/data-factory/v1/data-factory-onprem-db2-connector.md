@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74931779"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory kopyalama etkinliğini kullanarak DB2 verilerini taşıyın
@@ -32,7 +32,7 @@ Bu makalede, şirket içi bir DB2 veritabanından bir veri deposuna veri kopyala
 
 Data Factory Şu anda yalnızca bir DB2 veritabanından [desteklenen havuz veri deposuna](data-factory-data-movement-activities.md#supported-data-stores-and-formats)veri taşımayı destekliyor. Verileri diğer veri depolarından DB2 veritabanına taşıma desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Data Factory, [veri yönetimi ağ geçidini](data-factory-data-management-gateway.md)kullanarak ŞIRKET içi DB2 veritabanına bağlanmayı destekler. Verilerinizi taşımak için ağ geçidi veri işlem hattını ayarlamaya yönelik adım adım yönergeler için, [verileri Şirket içinden buluta taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesine bakın.
 
 DB2, Azure IaaS VM üzerinde barındırıldığında bile bir ağ geçidi gerekir. Ağ geçidini, veri deposuyla aynı IaaS sanal makinesine yükleyebilirsiniz. Ağ Geçidi veritabanına bağlanabilcan, ağ geçidini farklı bir VM 'ye yükleyebilirsiniz.
@@ -56,7 +56,7 @@ Data Factory DB2 Bağlayıcısı, dağıtılmış Ilişkisel veritabanı mimaris
 
 > [!TIP]
 > "Hata iletisini alırsanız, bir SQL deyimindeki yürütme isteğine karşılık gelen paket bulunamadı. SQLSTATE = 51002 SQLCODE =-805, "Bu neden, işletim sistemindeki normal kullanıcı için gerekli bir paket oluşturulmaz. Bu sorunu çözmek için DB2 sunucunuzun türü için şu yönergeleri izleyin:
-> - I için DB2 (AS400): bir Power User 'ın kopyalama etkinliğini çalıştırmadan önce normal kullanıcı için koleksiyon oluşturmasına Izin verin. Koleksiyonu oluşturmak için komutunu kullanın:`create collection <username>`
+> - I için DB2 (AS400): bir Power User 'ın kopyalama etkinliğini çalıştırmadan önce normal kullanıcı için koleksiyon oluşturmasına Izin verin. Koleksiyonu oluşturmak için komutunu kullanın: `create collection <username>`
 > - Z/OS veya LUW için DB2: yüksek ayrıcalıklı bir hesap kullanın--paket yetkilileri ve BIND, BINERDD olan bir Power User veya yönetici, kopyayı bir kez çalıştırmak için ortak izinlere yürütme IZNI verır. Gerekli paket, kopyalama sırasında otomatik olarak oluşturulur. Daha sonra, sonraki kopya çalışmalarınız için normal kullanıcıya dönebilirsiniz.
 
 ## <a name="getting-started"></a>Başlarken
@@ -105,7 +105,7 @@ Kopyalama etkinliği için, kaynak **Relationalsource** (DB2 dahil) türünde ol
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| **sorgulayamadı** |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin, `"query": "select * from "MySchema"."MyTable""` |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
+| **sorgulayamadı** |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örnek: `"query": "select * from "MySchema"."MyTable""` |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
 
 > [!NOTE]
 > Şema ve tablo adları büyük/küçük harfe duyarlıdır. Sorgu ifadesinde, "" (çift tırnak) kullanarak özellik adlarını çevrelemek.
@@ -312,12 +312,12 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 | BigInt |Int64 |
 | Gerçek |Tek |
 | Çift |Çift |
-| Float |Çift |
+| Kayan |Çift |
 | Ondalık |Ondalık |
 | DecimalFloat |Ondalık |
 | Sayısal |Ondalık |
-| Tarih |DateTime |
-| Saat |TimeSpan |
+| Tarih |Tarih-Saat |
+| Süre |TimeSpan |
 | Zaman damgası |DateTime |
 | Xml |Byte [] |
 | Char |Dize |
@@ -338,12 +338,12 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 | BigInt |Int64 |
 | Gerçek |Tek |
 | Çift |Çift |
-| Float |Çift |
+| Kayan |Çift |
 | Ondalık |Ondalık |
 | DecimalFloat |Ondalık |
 | Sayısal |Ondalık |
-| Tarih |DateTime |
-| Saat |TimeSpan |
+| Tarih |Tarih-Saat |
+| Süre |TimeSpan |
 | Zaman damgası |DateTime |
 | Xml |Byte [] |
 | Char |Dize |

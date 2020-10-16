@@ -1,6 +1,6 @@
 ---
 title: "Azure sanal WAN: hub 'da bir ağ sanal gereci (NVA) oluşturma"
-description: Bu öğreticide, sanal WAN hub 'ında bir ağ sanal gereci dağıtmayı öğrenin.
+description: Sanal WAN hub 'ında bir ağ sanal gereci dağıtmayı öğrenin.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773255"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077312"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure sanal WAN hub 'ında ağ sanal gereci oluşturma (Önizleme)
 
-Bu öğreticide, Azure 'daki bir **ağ sanal** gereci (NVA) aracılığıyla Azure 'daki kaynaklarınıza bağlanmak IÇIN sanal WAN 'ın nasıl kullanılacağı gösterilmektedir. Bu bağlantı türü için, şirket içinde yer alan ve kendisine atanmış dışarıya yönelik bir genel IP adresi atanmış olan bir VPN cihazı gerekir. Sanal WAN hakkında daha fazla bilgi için bkz. [Sanal WAN'a Genel Bakış](virtual-wan-about.md).
+Bu makalede, Azure 'daki bir **ağ sanal** gereci (NVA) aracılığıyla Azure 'daki kaynaklarınıza bağlanmak IÇIN sanal WAN 'ın nasıl kullanılacağı gösterilmektedir. Bu bağlantı türü için, şirket içinde yer alan ve kendisine atanmış dışarıya yönelik bir genel IP adresi atanmış olan bir VPN cihazı gerekir. Sanal WAN hakkında daha fazla bilgi için bkz. [sanal WAN nedir?](virtual-wan-about.md).
 
 Bu makaledeki adımlar, sanal WAN hub 'ında bir **Barbcuda CloudGen WAN** ağ sanal gereci oluşturmanıza yardımcı olur. Bu alıştırmayı tamamlayabilmeniz için, başlamadan önce hub 'a dağıttığınız bir barbcuda bulut şirket Içi aygıtı (CPE) ve bir Barrampaya da CloudGen WAN gereci lisansına sahip olmanız gerekir.
 
 Azure sanal WAN içinde **CISCO SD-WAN** 'ın dağıtım belgeleri için lütfen aşağıdaki e-posta adresinden Cisco 'ya e-posta gönderin: vwan_public_preview@external.cisco.com
 
 
-## <a name="before-you-begin"></a>Başlamadan önce
+## <a name="prerequisites"></a>Önkoşullar
 
 Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
@@ -55,7 +55,7 @@ Hub, siteden siteye, ExpressRoute, Noktadan siteye veya ağ sanal gereç işlevl
    **Proje ayrıntıları**
 
    * Bölge (daha önce konum olarak adlandırılır)
-   * Adı
+   * Name
    * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir. Microsoft tarafından yönetilen bir hizmet olan Azure sanal WAN, farklı ağ geçitleri/hizmetler için sanal hub 'da uygun alt ağları oluşturur. (Örneğin: ağ sanal cihazları, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN/Noktadan siteye ağ geçitleri, güvenlik duvarı, yönlendirme vb.). Microsoft bunu hizmetin bir parçası olarak yaptığından, kullanıcının sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlaması gerekmez.
 1. Doğrulamak için **gözden geçir + oluştur** ' u seçin.
 1. Hub 'ı oluşturmak için **Oluştur** ' u seçin.
@@ -90,7 +90,7 @@ Bu adımda, hub 'da bir ağ sanal gereci oluşturacaksınız. Her NVA 'nın yord
    * **NVA altyapı birimleri** -bu NVA 'yı dağıtmak istediğiniz NVA altyapı birimi sayısını belirtin. Bu NVA aracılığıyla bu hub 'a Bağlanılacak tüm dal sitelerinde sağlamak istediğiniz toplam bant genişliği kapasitesini seçin.
    * **Token** -barkcuda, kendinizi bu ürünün kayıtlı kullanıcısı olarak tanımlamak için burada bir kimlik doğrulama belirteci sağlamanızı gerektirir. Bunu Barçcuda 'dan edinmeniz gerekir.
 1. Devam etmek için **gözden geçir ve oluştur** düğmesini seçin.
-1. Bu sayfada, ortak yönetici erişim sözleşmesi koşullarını kabul etmeniz istenir. Bu, yayımcının bu dağıtımdaki bazı kaynaklara erişebileceği yönetilen uygulamalarla standart bir standarttır. **Yukarıdaki hüküm ve koşulları kabul ediyorum** kutusunu işaretleyin ve ardından **Oluştur**' u seçin.
+1. Bu sayfada, Co-Admin erişim sözleşmesinin koşullarını kabul etmeniz istenir. Bu, yayımcının bu dağıtımdaki bazı kaynaklara erişebileceği yönetilen uygulamalarla standart bir standarttır. **Yukarıdaki hüküm ve koşulları kabul ediyorum** kutusunu işaretleyin ve ardından **Oluştur**' u seçin.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet 'i hub 'a bağlama
 
@@ -98,5 +98,5 @@ Bu adımda, hub 'da bir ağ sanal gereci oluşturacaksınız. Her NVA 'nın yord
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sanal WAN hakkında daha fazla bilgi için [Sanal WAN'a Genel Bakış](virtual-wan-about.md) sayfasına bakın.
+* Sanal WAN hakkında daha fazla bilgi edinmek için bkz. [sanal WAN nedir?](virtual-wan-about.md) sayfası.
 * Sanal WAN hub 'ında NVA 'lar hakkında daha fazla bilgi edinmek için bkz. [sanal WAN hub 'ında (Önizleme) ağ sanal gereci hakkında](about-nva-hub.md).

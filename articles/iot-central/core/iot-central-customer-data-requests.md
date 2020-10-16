@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: dabcadea96f4ced5bdf73a35ef533e6d290595c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001885"
 ---
 # <a name="azure-iot-central-customer-data-request-features"></a>Azure IoT Central müşteri verileri isteği özellikleri
@@ -23,7 +23,7 @@ Azure IoT Central, IoT varlıklarınızı ölçeklendirerek kolayca bağlamayı,
 
 ## <a name="identifying-customer-data"></a>Müşteri verilerini tanımlama
 
-Azure Active Directory nesne kimlikleri, kullanıcıları tanımlamak ve rolleri atamak için kullanılır. Azure IoT Central portalı, rol atamaları için kullanıcı e-posta adreslerini görüntüler, ancak yalnızca Azure Active Directory nesne KIMLIĞI depolanır, e-posta adresi Azure Active Directory tarafından dinamik olarak sorgulanır. Azure IoT Central yöneticileri, Azure IoT Central uygulamasının Kullanıcı Yönetimi bölümünde uygulama kullanıcılarını görüntüleyebilir, dışarı aktarabilir ve silebilir.
+Azure Active Directory Object-IDs kullanıcıları tanımlamak ve rolleri atamak için kullanılır. Azure IoT Central portalı, rol atamaları için kullanıcı e-posta adreslerini görüntüler, ancak yalnızca Azure Active Directory nesne KIMLIĞI depolanır, e-posta adresi Azure Active Directory tarafından dinamik olarak sorgulanır. Azure IoT Central yöneticileri, Azure IoT Central uygulamasının Kullanıcı Yönetimi bölümünde uygulama kullanıcılarını görüntüleyebilir, dışarı aktarabilir ve silebilir.
 
 Uygulama içinde e-posta adresleri, uyarıları alacak şekilde yapılandırılabilir. Bu durumda, e-posta adresleri IoT Central içinde depolanır ve uygulama içi hesap yönetimi sayfasından yönetilmelidir.
 

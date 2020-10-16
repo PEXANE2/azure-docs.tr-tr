@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86040784"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics’te gerçek zamanlı Twitter yaklaşım analizi
@@ -29,11 +29,11 @@ News medya web sitesi olan bir şirket, okuyucular üzerinde anında ilgili site
 
 Şirket içi konuları Twitter 'da gerçek zamanlı olarak belirlemek için, şirketin önemli konular hakkında tweet hacim ve yaklaşım hakkında gerçek zamanlı analizler olması gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda, Twitter 'a bağlanan ve belirli bir hashtags olan (ayarlayabileceğiniz) bir istemci uygulaması kullanırsınız. Uygulamayı çalıştırmak ve Azure Akış Analizi 'ni kullanarak fazla doldurulabilir olması için aşağıdakilere sahip olmanız gerekir:
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 * [Twitter](https://twitter.com) hesabı.
 
@@ -60,7 +60,7 @@ Bu bölümde, bir olay hub 'ı ad alanı oluşturur ve bu ad alanına bir olay h
 
 6. Yeni Olay Hub 'ı *socialtwiur-Eh*olarak adlandırın. Farklı bir ad kullanabilirsiniz. Bunu yaparsanız, bu adı daha sonra gerekli olduğunuzdan emin olun. Olay Hub 'ı için başka herhangi bir seçenek ayarlamanıza gerek yoktur.
  
-7. **Oluştur**'u seçin.
+7. **Oluştur**’u seçin.
 
 ### <a name="grant-access-to-the-event-hub"></a>Olay Hub 'ına erişim izni verme
 
@@ -75,7 +75,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının eri
 
 3.  Erişim ilkesi sayfasında **+ Ekle**' yi seçin. Ardından, **ilke adı** için *socialtwiur-Access* girin ve **Yönet** onay kutusunu işaretleyin.
  
-4.  **Oluştur**'u seçin.
+4.  **Oluştur**’u seçin.
 
 5.  İlke dağıtıldıktan sonra, paylaşılan erişim ilkeleri listesinden ilkeyi seçin.
 
@@ -148,7 +148,7 @@ Artık Tweet olayları Twitter 'dan gerçek zamanlı olarak akışa alındığı
 
     En iyi performans için işi ve Olay Hub 'ını aynı bölgeye yerleştirmeniz ve bu sayede verileri bölgeler arasında aktarmaya ödeme yapmanız iyi bir fikirdir.
 
-3. **Oluştur**'u seçin. Ardından dağıtım tamamlandığında işinize gidin.
+3. **Oluştur**’u seçin. Ardından dağıtım tamamlandığında işinize gidin.
 
 ## <a name="specify-the-job-input"></a>İş girişini belirtin
 
@@ -212,7 +212,7 @@ Bu nasıl yapılır kılavuzunda, toplanan Tweet olaylarını iş sorgusundan Az
    * **Depolama hesabı**. Depolama hesabınızı seçin.
    * **Kapsayıcı**. **Yeni oluştur** ' u seçin ve girin `socialtwitter` .
    
-4. **Kaydet**'i seçin.   
+4. **Kaydet**’i seçin.   
 
 ## <a name="start-the-job"></a>İşi başlatma
 
@@ -224,7 +224,7 @@ Bir iş girişi, sorgu ve çıkış belirtilir. Stream Analytics işi başlamaya
 
 3. İşi **Başlat** sayfasında, **iş çıkışı başlangıç zamanı**için **Şimdi** ' yi seçin ve ardından **Başlat**' ı seçin.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

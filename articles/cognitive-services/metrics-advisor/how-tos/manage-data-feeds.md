@@ -3,19 +3,19 @@ title: Ölçüm Danışmanı 'nda veri akışlarını yönetme
 titleSuffix: Azure Cognitive Services
 description: Ölçüm Danışmanı 'na eklediğiniz veri akışlarını yönetmeyi öğrenin.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: aahi
-ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: de8d5d8e9fc5ce1df05cfd4c67ef146760e2c7e9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941155"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043179"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Nasıl yapılır: veri akışlarınızı yönetme
 
@@ -106,11 +106,11 @@ Seçenekler şunlardır:
 
 Eylem bağlantısı şablonları,,,, ve yer tutucularından oluşan, işlem yapılabilir http url 'lerini önceden tanımlamak için kullanılır `%datafeed` `%metric` `%timestamp` `%detect_config` `%tagset` . Ayrıntıya gitmek için bir anomali veya olaydan belirli bir URL 'ye yönlendirmek üzere şablonu kullanabilirsiniz.
 
-:::image type="content" source="../media/action-link-template.png" alt-text="Eylem bağlantısı şablonu" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="Veri akışını geri doldurma" lightbox="../media/action-link-template.png":::
 
 Eylem bağlantısını doldurduktan sonra olay listesinin eylem seçeneğinde **eylem bağlantısına git ' e** tıklayın ve olay ağacının sağ tıklama menüsü ' ne tıklayın. Eylem bağlantı şablonundaki yer tutucuları, anomali veya olay için karşılık gelen değerlerle değiştirin.
 
-| Yer tutucu | Örnekler | Yorum |
+| Yer tutucu | Örnekler | Açıklama |
 | ---------- | -------- | ------- |
 | `%datafeed` | - | Veri akışı KIMLIĞI |
 | `%metric` | - | Ölçüm KIMLIĞI |

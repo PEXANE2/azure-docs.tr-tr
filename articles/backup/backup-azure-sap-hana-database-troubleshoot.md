@@ -4,10 +4,10 @@ description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandı�
 ms.topic: troubleshooting
 ms.date: 11/7/2019
 ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377693"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
@@ -22,7 +22,7 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **Hata İletisi**      | <span style="font-weight:normal">Azure Backup, yedeklemeyi gerçekleştirmek için gerekli rol ayrıcalıklarına sahip değil</span>    |
+| **Hata Iletisi**      | <span style="font-weight:normal">Azure Backup, yedeklemeyi gerçekleştirmek için gerekli rol ayrıcalıklarına sahip değil</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | **Olası nedenler**    | Rolün üzerine yazılmış olabilir.                          |
 | **Önerilen eylem** | Sorunu çözmek için betiği **bul** bölmesinden çalıştırın veya [buradan](https://aka.ms/scriptforpermsonhana)indirin. Alternatif olarak, ' SAP_INTERNAL_HANA_SUPPORT ' rolünü Iş yükü yedekleme kullanıcısına (AZUREWLBACKUPHANAUSER) ekleyin. |

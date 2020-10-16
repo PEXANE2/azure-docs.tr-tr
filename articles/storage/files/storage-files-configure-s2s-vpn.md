@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515338"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Azure dosyaları ile kullanmak için siteden siteye VPN yapılandırma
@@ -54,7 +54,7 @@ Azure VPN Gateway dağıtma amacıyla, aşağıdaki alanları doldurmanız gerek
 - **VPN türü**: VPN cihazınıza bağlı olarak, *yönlendirme tabanlı** veya **ilke tabanlı** seçeneklerinden birini belirleyebilirsiniz. Rota tabanlı VPN 'Ler Ikev2 'yi destekler, ilke tabanlı VPN 'Ler yalnızca IKEv1 'yi destekler. İki tür VPN ağ geçidi hakkında daha fazla bilgi edinmek için bkz. [ilke tabanlı ve rota tabanlı VPN ağ geçitleri hakkında](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
 - **SKU**: SKU, Izin verilen siteden siteye tünel SAYıSıNı ve VPN 'nin istenen performansını denetler. Kullanım durumu için uygun SKU 'YU seçmek için [ağ GEÇIDI SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) listesine başvurun. VPN Gateway SKU 'SU daha sonra gerekirse değiştirilebilir.
 - **Sanal ağ**: önceki adımda oluşturduğunuz sanal ağ.
-- **Genel IP adresi**: internet 'e sunulacak VPN Gateway IP adresi. Büyük olasılıkla, yeni bir IP adresi oluşturmanız gerekecektir, ancak uygunsa mevcut bir kullanılmayan IP adresini de kullanabilirsiniz. Yeni bir IP adresi **oluşturmayı**seçerseniz, VPN Gateway aynı kaynak grubunda Azure kaynağı yeni bir IP adresi oluşturulur ve **genel IP adresi adı** yeni oluşturulan IP adresinin adı olacaktır. **Mevcut olanı kullan**' ı seçerseniz, mevcut kullanılmayan IP adresini seçmeniz gerekir.
+- **Genel IP adresi**: internet 'e sunulacak VPN Gateway IP adresi. Büyük olasılıkla, yeni bir IP adresi oluşturmanız gerekecektir, ancak uygunsa mevcut bir kullanılmayan IP adresini de kullanabilirsiniz. Yeni bir IP adresi **oluşturmayı**seçerseniz, VPN Gateway aynı kaynak grubunda Azure kaynağı yeni bir IP adresi oluşturulur ve  **genel IP adresi adı** yeni oluşturulan IP adresinin adı olacaktır. **Mevcut olanı kullan**' ı seçerseniz, mevcut kullanılmayan IP adresini seçmeniz gerekir.
 - **Etkin-etkin modu etkinleştir**: yalnızca etkin-etkin ağ geçidi yapılandırması oluşturuyorsanız **etkin** ' i seçin, aksi halde **devre dışı** bırakın. Etkin-etkin mod hakkında daha fazla bilgi edinmek için bkz. [yüksek oranda kullanılabilir şirket içi ve VNET 'Ten VNET 'e bağlantı](../../vpn-gateway/vpn-gateway-highlyavailable.md).
 - **BGP ASN 'Yi yapılandırma**: yalnızca yapılandırmanızın bu ayarı gerektirmesi durumunda **etkin** ' i seçin. Bu ayar hakkında daha fazla bilgi edinmek için bkz. [Azure VPN Gateway Ile BGP hakkında](../../vpn-gateway/vpn-gateway-bgp-overview.md).
 
@@ -87,7 +87,7 @@ Bir S2S VPN dağıtımını gerçekleştirmek için, şirket içi ağ gereciniz 
 - **Yerel ağ geçidi**: bu, VPN Gateway bağlamak istediğiniz yerel ağ geçidindir. Sonuç seçim bölmesi, yukarıda oluşturduğunuz yerel ağ geçidinin adına sahip olmalıdır.
 - **Paylaşılan anahtar (PSK)**: bağlantı için şifreleme oluşturmak için kullanılan harflerin ve sayıların karışımı. Aynı paylaşılan anahtarın hem sanal ağ hem de yerel ağ geçitlerinde kullanılması gerekir. Ağ Geçidi cihazınız bir sunmazsa, buradan bir tane oluşturabilir ve bunu cihazınıza sağlayabilirsiniz.
 
-Bağlantıyı oluşturmak için **Tamam ' ı** seçin. **Bağlantılar** sayfası aracılığıyla bağlantının başarıyla yapıldığını doğrulayabilirsiniz.
+Bağlantıyı oluşturmak için **Tamam**'ı seçin. **Bağlantılar** sayfası aracılığıyla bağlantının başarıyla yapıldığını doğrulayabilirsiniz.
 
 ## <a name="mount-azure-file-share"></a>Azure dosya paylaşımından bağlama 
 S2S VPN 'yi yapılandırmanın son adımı, Azure dosyaları için çalıştığını doğrulamakdır. Bunu, Azure dosya paylaşımınızı tercih ettiğiniz işletim sistemi ile şirket içi olarak bağlayarak yapabilirsiniz. İşletim sistemine göre bağlama için şu yönergelere bakın:

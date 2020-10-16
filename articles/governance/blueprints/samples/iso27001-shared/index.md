@@ -3,12 +3,12 @@ title: ISO 27001 Paylaşılan Hizmetler şema örneğine genel bakış
 description: ISO 27001 Paylaşılan Hizmetler şema örneğinin genel bakış bilgileri ve mimarisi. Bu şema örneği, müşterilerin belirli ISO 27001 denetimlerini değerlendirmesine yardımcı olur.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e02f34c424e3f68e67f2d0dc2f4541c57ce3882f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927360"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950559"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 Paylaşılan Hizmetler şema örneğine genel bakış
 
@@ -27,12 +27,12 @@ Bu ortam, ISO 27001 standartlarında güvenli, tümüyle izlenen, kurumsal kulla
 
 - Denetim düzlemi açısından görevler ayrımı sağlamak için kullanılan [Azure rolleri](../../../../role-based-access-control/overview.md). Herhangi bir altyapı dağıtımından önce üç rol tanımlanır:
   - NetOps rolü güvenlik duvarı ayarları, NSG ayarları, yönlendirme ve diğer ağ işlevselliği de dahil olmak üzere ağ ortamını yönetme haklarına sahiptir
-  - SecOps rolü [Azure Güvenlik Merkezi](../../../../security-center/security-center-intro.md)'ni dağıtmak ve yönetmek, [Azure İlkeleri](../../../policy/overview.md) tanımlamak için gereken haklara ve güvenlikle ilgili diğer haklara sahiptir
-  - SysOps rolü, diğer işletme haklarının yanı sıra abonelik içinde [Azure İlkeleri](../../../policy/overview.md) tanımlamak, ortamın tamamı için [Log Analytics](../../../../azure-monitor/overview.md)'i yönetmek için gereken haklara sahiptir
+  - SecOps rolü [Azure Güvenlik Merkezi](../../../../security-center/security-center-introduction.md)'ni dağıtmak ve yönetmek, [Azure İlkesi](../../../policy/overview.md) tanımlarını belirlemek için gereken haklara ve güvenlikle ilgili diğer haklara sahiptir
+  - SysOps rolü, diğer işletme haklarının yanı sıra abonelik içinde [Azure İlkesi](../../../policy/overview.md) tanımlarını belirlemek, ortamın tamamı için [Log Analytics](../../../../azure-monitor/overview.md)'i yönetmek için gereken haklara sahiptir
 - Güvenli dağıtımınıza başladığınız andan itibaren tüm eylemlerin ve hizmetlerin merkezi bir konumda günlüğe kaydedildiğinden emin olmak için, ilk Azure hizmeti olarak [Log Analytics](../../../../azure-monitor/overview.md) dağıtılır
 - Şirket içi veri merkezine geri bağlantı için alt ağları destekleyen bir sanal ağ, İnternet bağlantısı için bir giriş ve çıkış yığını ve tam mikro ayrıma yönelik olarak NSG'lerin ve ASG'lerin kullanıldığı paylaşılan bir hizmet alt ağı. Şunları içerir:
   - Yönetim amacıyla kullanılan ve yalnızca giriş yığını alt ağında dağıtılmış [Azure Güvenlik Duvarı](../../../../firewall/overview.md) üzerinden erişilebilen bir atlama kutusu veya kale konağı
-  - Yalnızca atlama kutusundan erişilebilen, yalnızca VPN veya [ExpressRoute](../../../../expressroute/expressroute-introduction.md) bağlantısı ve Active Directory Domain Services (ADDS) ile DNS çalıştıran iki sanal makine (şema tarafından dağıtılmaz)
+  - Yalnızca atlama kutusundan erişilebilen, yalnızca VPN veya [ExpressRoute](../../../../expressroute/expressroute-introduction.md) bağlantısı ve Azure Active Directory Domain Services (Azure AD DS) ile DNS çalıştıran iki sanal makine (şema tarafından dağıtılmaz)
   - [Azure Ağ İzleyicisi](../../../../network-watcher/network-watcher-monitoring-overview.md) ve standart DDoS korumasının kullanılması
 - Paylaşılan hizmetler ortamına dağıtılmış VM'lerin gizli dizilerini barındırmak için kullanılan [Azure Key Vault](../../../../key-vault/general/overview.md) örneği
 

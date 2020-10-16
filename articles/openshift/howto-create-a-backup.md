@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 6cf77aa41a9a485ba70519fed33c1b6aec736525
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89470077"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078587"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift 4 küme uygulaması yedeklemesi oluşturma
 
@@ -120,14 +120,34 @@ oc get backups -n velero <name of backup> -o yaml
 
 Başarılı bir yedekleme çıkış olur `phase:Completed` ve nesneler depolama hesabındaki kapsayıcıda etkin olur.
 
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Anlık görüntüleri eklemek için Velero ile yedek oluşturma
+
+Uygulamanızın kalıcı birimlerini dahil etmek için Velero ile bir uygulama yedeklemesi oluşturmak üzere, uygulamanın bulunduğu ad alanını ve `snapshot-volumes=true` yedekleme oluştururken bayrağı dahil etmeniz gerekir
+
+```bash
+velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
+```
+
+Şunu çalıştırarak yedeklemenin durumunu kontrol edebilirsiniz:
+
+```bash
+oc get backups -n velero <name of backup> -o yaml
+```
+
+Çıktı `phase:Completed` ve nesneler depolama hesabındaki kapsayıcıda etkin olacak şekilde başarılı bir yedekleme.
+
+Yedekleme oluşturma ve Velero kullanarak geri yükleme hakkında daha fazla bilgi için bkz [. Backup OpenShift Resources in Native Way](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, bir Azure Red Hat OpenShift 4 küme uygulaması yedeklendi. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Velero kullanarak OpenShift v4 kümesi uygulama yedeklemesi oluşturma
+> * Velero kullanarak anlık görüntülerle OpenShift v4 kümesi uygulama yedeklemesi oluşturma
 
 
 Bir Azure Red Hat OpenShift 4 küme uygulaması geri yüklemesi oluşturmayı öğrenmek için bir sonraki makaleye ilerleyin.
 
 * [Azure Red Hat OpenShift 4 küme uygulaması geri yükleme oluşturma](howto-create-a-restore.md)
+* [Anlık görüntüler dahil Azure Red Hat OpenShift 4 küme uygulaması geri yükleme oluşturma](howto-create-a-restore.md)

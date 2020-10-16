@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2b5440ad2bec94d4ef14fa29e723cc91a4fcdf10
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766858"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074847"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Held kullanarak Kubernetes dağıtımıyla tümleştirin
 
@@ -23,17 +23,17 @@ Yayın işlemi sırasında, HELI uygulamayı çalıştırmak için uygun yapıla
 
 Held çalıştırırken komut satırına ek YAML tabanlı yapılandırma dosyaları sağlayarak *values. YAML* içinde depolanan değerleri geçersiz kılabilirsiniz. Azure Uygulama yapılandırması, yapılandırma değerlerinin YAML dosyalarına verilmesini destekler. Bu dışarı aktarma özelliğinin dağıtımınız ile tümleştirilmesi, Kubernetes uygulamalarınızın uygulama yapılandırmasında depolanan yapılandırma değerlerinden yararlanmasını sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Held kullanarak Kubernetes 'e uygulama dağıttığınızda uygulama yapılandırmasındaki değerleri kullanın.
 > * Uygulama yapılandırmasındaki bir Key Vault başvurusunu temel alarak bir Kubernetes gizli dizisi oluşturun.
 
-Bu öğretici, Held ile Kubernetes yönetimi hakkında temel anladığını varsayar. [Azure Kubernetes hizmetinde](https://docs.microsoft.com/azure/aks/kubernetes-helm)Held ile uygulama yükleme hakkında daha fazla bilgi edinin.
+Bu öğretici, Held ile Kubernetes yönetimi hakkında temel anladığını varsayar. [Azure Kubernetes hizmetinde](../aks/kubernetes-helm.md)Held ile uygulama yükleme hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı (sürüm 2.4.0 veya üzeri) yükler
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı (sürüm 2.4.0 veya üzeri) yükler
 - [Held](https://helm.sh/docs/intro/install/) 'yi (sürüm 2.14.0 veya üzeri) yükler
 - Bir Kubernetes kümesi.
 
@@ -51,7 +51,7 @@ Bu öğretici, Held ile Kubernetes yönetimi hakkında temel anladığını vars
     **Etiket** ve **içerik türü** şimdilik boş bırakın.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
-1. [Azure Portal](https://portal.azure.com) oturum açın ve ad **parolasıyla** ve **mypassword**değeriyle [Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) bir parola ekleyin. 
+1. [Azure Portal](https://portal.azure.com) oturum açın ve ad **parolasıyla** ve **mypassword**değeriyle [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) bir parola ekleyin. 
 2. Önceki bölümde oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 3. **Yapılandırma Gezgini**' ni seçin.
@@ -185,7 +185,7 @@ settings:
 İlk olarak, yapılandırmayı uygulama yapılandırmasından bir *MyConfig. YAML* dosyasına indirin. Yalnızca ayarlarla başlayan anahtarları indirmek için bir anahtar filtresi kullanın **.** Anahtar filtresi, Key Vault başvuruların anahtarlarını hariç tutmak için yeterli değilse, **--Skip-keykasa** bağımsız değişkenini kullanarak bunları dışlayabilirsiniz. 
 
 > [!TIP]
-> [Dışa aktarma komutu](https://docs.microsoft.com/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export)hakkında daha fazla bilgi edinin. 
+> [Dışa aktarma komutu](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export)hakkında daha fazla bilgi edinin. 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -225,7 +225,7 @@ else{
 
 ```
 
-[Kubernetes panosuna](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)erişerek yapılandırmaların ve parolaların başarıyla ayarlandığını doğrulayın. Uygulama yapılandırmasından **renk** ve **mesaj** değerlerinin kapsayıcının ortam değişkenlerine doldurulduğunu görürsünüz.
+[Kubernetes panosuna](../aks/kubernetes-dashboard.md)erişerek yapılandırmaların ve parolaların başarıyla ayarlandığını doğrulayın. Uygulama yapılandırmasından **renk** ve **mesaj** değerlerinin kapsayıcının ortam değişkenlerine doldurulduğunu görürsünüz.
 
 ![Hızlı başlangıç uygulaması başlatma yerel](./media/kubernetes-dashboard-env-variables.png)
 
@@ -242,4 +242,4 @@ Bir gizli dizi, **parola**, uygulama yapılandırmasında Key Vault başvuru ola
 Bu öğreticide, Held ile bir Kubernetes dağıtımında kullanılacak Azure uygulama yapılandırma verilerini aktarmış olursunuz. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi için Azure CLı örneklerine devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)

@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43565e812abcf0b7dbb992ac4d25a62a4d08df2b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77925936"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018653"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Ön kapı hizmeti dışlama listeleriyle Web uygulaması güvenlik duvarı (WAF) 
 
-Bazen Web uygulaması güvenlik duvarı (WAF), uygulamanız için izin vermek istediğiniz bir isteği engelleyebilirler. Örneğin Active Directory, kimlik doğrulaması için kullanılan belirteçleri ekler. Bu belirteçler, WAF kurallarından yanlış pozitif bir pozitif tetikleyebildiği özel karakterler içerebilir. WAF dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar.  Bir dışlama listesi [Psershell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure CLı](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)veya Azure Portal kullanılarak yapılandırılabilir. Aşağıdaki örnek Azure portal yapılandırmasını gösterir. 
+Bazen Web uygulaması güvenlik duvarı (WAF), uygulamanız için izin vermek istediğiniz bir isteği engelleyebilirler. Örneğin Active Directory, kimlik doğrulaması için kullanılan belirteçleri ekler. Bu belirteçler, WAF kurallarından yanlış pozitif bir pozitif tetikleyebildiği özel karakterler içerebilir. WAF dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar.  Bir dışlama listesi  [Psershell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure CLı](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)veya Azure Portal kullanılarak yapılandırılabilir. Aşağıdaki örnek Azure portal yapılandırmasını gösterir. 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Dışlama listelerini Azure portal kullanarak yapılandırma
 Özel **durumları yönetme** işlemi, WAF portalından **yönetilen kurallar** altında erişilebilir
 
@@ -45,6 +45,17 @@ Tam bir istek üst bilgisi, gövde, tanımlama bilgisi veya sorgu dizesi öznite
 Üst bilgi ve tanımlama bilgisi adları büyük/küçük harfe duyarlıdır.
 
 Dışlama listesini, yönetilen kural kümesi içindeki tüm kurallara, belirli bir kural grubu için kurallara veya önceki örnekte gösterildiği gibi tek bir kurala uygulayabilirsiniz. 
+
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Web uygulaması güvenlik duvarı günlüklerine göre dışlama tanımlama
+ [Azure Web uygulaması güvenlik duvarı izleme ve günlüğe kaydetme](waf-front-door-monitor.md) , engellenen bir istek ile eşleşen ayrıntıları gösterir. Bir üst bilgi değeri, tanımlama bilgisi değeri, post bağımsız değişkeni değeri veya sorgu bağımsız değişken değeri bazı kurallar için hatalı pozitif sonuçlar oluşturuyorsa, isteğin bu bölümünü kural tarafından dikkate alınacaksa hariç bırakabilirsiniz. Aşağıdaki tabloda, WAF günlüklerinden ve karşılık gelen dışlama koşullarında örnek değerler gösterilmektedir.
+
+|WAF günlüklerinden matchVariableName    |Portalda kural dışlama|
+|--------|------|
+|Tanımlama, ıevalue: SOME_NAME  |İstek tanımlama bilgisi adı eşittir SOME_NAME|
+|HeaderValue: SOME_NAME  |İstek üst bilgisi adı SOME_NAME eşittir|
+|PostParamValue: SOME_NAME|  İstek gövdesi Post args adı eşittir SOME_NAME|
+|QueryParamValue: SOME_NAME| Sorgu dizesi args adı eşittir SOME_NAME|
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

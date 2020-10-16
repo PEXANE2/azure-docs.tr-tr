@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82981230"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072807"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için Yönetilen kimlikler kullanma
 
@@ -27,13 +27,13 @@ Uygulamanıza iki tür kimlik verilebilir:
 
 Sistem tarafından atanan kimlik ile uygulama yapılandırma deposu oluşturmak, depoda ek bir özelliğin ayarlanmasını gerektirir.
 
-### <a name="using-the-azure-cli"></a>Azure CLI kullanma
+### <a name="using-the-azure-cli"></a>Azure CLI'yı kullanma
 
 Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, var olan bir yapılandırma deposunda [az appconfig Identity Assign] komutunu kullanın. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
 
 - Azure portal [Azure Cloud Shell](../cloud-shell/overview.md) kullanın.
 - Aşağıdaki her kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak katıştırılmış Azure Cloud Shell kullanın.
-- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli) (2,1 veya üzeri) yükleyebilirsiniz.
+- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](/cli/azure/install-azure-cli) (2,1 veya üzeri) yükleyebilirsiniz.
 
 Aşağıdaki adımlar, bir uygulama yapılandırma deposu oluşturma ve CLı kullanarak bir kimlik atama işleminde size kılavuzluk eder:
 
@@ -60,13 +60,13 @@ Aşağıdaki adımlar, bir uygulama yapılandırma deposu oluşturma ve CLı kul
 
 Kullanıcı tarafından atanan bir kimlikle uygulama yapılandırma deposu oluşturmak için kimlik oluşturmanız ve ardından kaynak tanımlayıcısını deponuza atamanız gerekir.
 
-### <a name="using-the-azure-cli"></a>Azure CLI kullanma
+### <a name="using-the-azure-cli"></a>Azure CLI'yı kullanma
 
 Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, var olan bir yapılandırma deposunda [az appconfig Identity Assign] komutunu kullanın. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
 
 - Azure portal [Azure Cloud Shell](../cloud-shell/overview.md) kullanın.
 - Aşağıdaki her kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak katıştırılmış Azure Cloud Shell kullanın.
-- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 veya üzeri) yükleyebilirsiniz.
+- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](/cli/azure/install-azure-cli) (2.0.31 veya üzeri) yükleyebilirsiniz.
 
 Aşağıdaki adımlar, Kullanıcı tarafından atanan bir kimlik ve bir uygulama yapılandırma deposu oluşturma ve CLı kullanarak kimliği depoya atama konusunda size kılavuzluk eder:
 

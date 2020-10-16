@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797709"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000218"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Öğretici: bir Jekyll sitesini Azure statik Web Apps önizleme 'ye yayımlama
 
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Jekyıll](https://jekyllrb.com/docs/installation/) 'yi yükler
   - Linux için Windows alt sistemini kullanabilir ve gerekirse Ubuntu yönergelerini izleyebilirsiniz.
@@ -118,7 +118,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _Dal_ için **ana öğe**seçin.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Ayrıntılar dolduruldu":::
 
 ### <a name="build"></a>Yapı
 
@@ -146,12 +146,9 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Jekyıll uygulamasını bir metin düzenleyicisinde açın ve _. GitHub/iş akışları/Azure-Pages-<WORKFLOW_NAME>. yıml_ dosyasını açın.
 
-1. Aşağıdaki yapılandırma bloğuna bloğundan sonra satır ekleyin `- uses: actions/checkout@v2` .
+1. Satır sonra `- uses: actions/checkout@v2` aşağıdaki yapılandırma bloğunu ekledikten sonra.
 
     ```yml
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
@@ -174,7 +171,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Azure portal _genel bakış_ penceresinde, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Dağıtılan uygulama":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Ayrıntılar dolduruldu":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

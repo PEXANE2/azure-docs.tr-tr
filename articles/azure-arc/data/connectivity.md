@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9c1dd6f628e87792808d14db2c7bcc7f050923a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713192"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Bağlantı modları ve gereksinimler
@@ -28,7 +28,7 @@ Azure Arc etkin veri Hizmetleri, Azure 'a iki farklı "bağlantı modunda" bağl
 
 Daha da, Azure Arc etkin veri Hizmetleri doğrudan Azure 'a bağlıysa, kullanıcılar [Azure Resource Manager API 'leri](/rest/api/resources/), Azure CLI ve Azure Arc veri hizmetlerini çalıştırmak için Azure Portal kullanabilir. Doğrudan bağlantılı moddaki deneyim, Azure portal sağlama/kaldırma, ölçeklendirme, yapılandırma vb. ile diğer Azure hizmetini nasıl kullanacağınız konusunda çok benzer.  Azure Arc etkin veri Hizmetleri dolaylı olarak Azure 'a bağlandıysa Azure portal salt okunurdur. Dağıtılan SQL yönetilen örneklerinin ve Postgres hiper ölçek örneklerinin envanterini ve bunlarla ilgili ayrıntıları görebilirsiniz, ancak Azure portal üzerinde işlem yapmanız gerekmez.  Dolaylı olarak bağlı modda, tüm eylemlerin Azure Data Studio, Azure Data CLı veya kubectl gibi yerel araçların bulunduğu Kubernetes kullanılarak yerel olarak alınması gerekir.
 
-Ayrıca, Azure Active Directory ve Azure rol tabanlı Access Control yalnızca, bu işlevselliği sağlamak üzere sürekli olarak ve Azure 'a doğrudan bağlantı için bir bağımlılık olduğundan doğrudan bağlı modda kullanılabilir.
+Ayrıca, Azure Active Directory ve Azure Role-Based Access Control, bu işlevselliği sağlamak üzere sürekli olarak ve Azure 'a doğrudan bağlantı için bir bağımlılık olduğundan doğrudan bağlı modda kullanılabilir.
 
 Son olarak, Azure 'a bağlı bazı hizmetler yalnızca Azure Defender güvenlik hizmetleri, kapsayıcı öngörüleri ve ' Azure Backup/BLOB depolama alanı gibi doğrudan erişilebilecekleri durumlarda kullanılabilir.
 
@@ -72,7 +72,7 @@ Son olarak, Azure 'a bağlı bazı hizmetler yalnızca Azure Defender güvenlik 
 |**Azure rol tabanlı Access Control (Azure RBAC)**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Hayır|Yalnızca doğrudan|Azure RBAC kullanmak istiyorsanız, her zaman Azure ile bağlantı kurulması gerekir.  Azure RBAC kullanmak istemiyorsanız, yerel Kubernetes RBAC kullanılabilir.  **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
 |**Azure Active Directory (AD)**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Belki de zaten Azure AD için ödeme yapabilirsiniz|Yalnızca doğrudan|Kimlik doğrulaması için Azure AD 'yi kullanmak istiyorsanız, her zaman Azure ile bağlantı kurulması gerekir. Kimlik doğrulaması için Azure AD 'yi kullanmak istemiyorsanız, Active Directory üzerinden ABD Active Directory Federasyon Hizmetleri (AD FS) (ADFS) kullanabilirsiniz. **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
 |**Yedeklemeler/geri yükleme**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Depolama maliyetleri için Evet|Yalnızca doğrudan|Yedeklemeleri uzun süreli, site dışı bekletmede Azure Backup için yerel olarak alınmış yedeklemeler göndermek ve geri yükleme için bunları yerel ortama geri getirmek isteyebilirsiniz. **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
-|**Azure Defender güvenlik hizmetleri**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Yes|Yalnızca doğrudan|**Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
+|**Azure Defender güvenlik hizmetleri**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Evet|Yalnızca doğrudan|**Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
 |**Azure portal sağlama ve yapılandırma değişiklikleri**|Müşteri ortamı-> Azure > müşteri ortamı|İsteğe Bağlı|Hayır|Yalnızca doğrudan|Sağlama ve yapılandırma değişiklikleri, Azure Data Studio veya azdata CLı kullanılarak yerel olarak yapılabilir.  Doğrudan bağlı modda, Azure portal de yapılandırma değişiklikleri sağlayabileceksiniz. **Doğrudan bağlantı modunun bekleyen kullanılabilirliği**|
 
 
@@ -82,9 +82,9 @@ Son olarak, Azure 'a bağlı bazı hizmetler yalnızca Azure Defender güvenlik 
 
 |**Ad**|**Bağlantı kaynağı**|**Bağlantı hedefi**|**Protokol**|**Bağlantı noktası**|**Proxy kullanabilir**|**Kimlik Doğrulaması**|**Notlar**|
 |---|---|---|---|---|---|---|---|
-|**Microsoft Container Registry (MCR)**|Kubernetes, kapsayıcı görüntülerini çeken her bir Kubernetes düğümünün her biri için Kubernetes kubelet.|`mcr.microsoft.com`|HTTPS|443|Yes|Hiçbiri|Microsoft Container Registry, Azure Arc etkin veri Hizmetleri kapsayıcı görüntülerini barındırır.  Bu görüntüleri MCR 'den çekebilir ve özel bir kapsayıcı kayıt defterine gönderebilir ve veri denetleyicisi dağıtım işlemini yapılandırarak kapsayıcı görüntülerini bu özel kapsayıcı kayıt defterinden çekebilirsiniz.|
-|**Azure Resource Manager API 'Leri**|Azure 'a bağlanan Azure Data Studio, Azure Data CLı veya Azure CLı çalıştıran bir bilgisayar.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|Yes|Azure Active Directory|Azure Data Studio, Azure Data CLı ve Azure CLı, bazı özellikler için Azure 'a veya Azure 'dan veri göndermek ve almak üzere Azure Resource Manager API 'Lerine bağlanır.|
-|**Azure Izleyici API 'Leri**|Azure Izleyici 'de izleme ölçümlerini veya günlüklerini karşıya yükleyen Azure Data CLı veya Azure CLı çalıştıran bir bilgisayar.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`*.ods.opinsights.azure.com`<br/>`*.oms.opinsights.azure.com`<br/>`*.monitoring.azure.com`|HTTPS|443|Yes|Azure Active Directory|Azure Data Studio, Azure Data CLı ve Azure CLı, bazı özellikler için Azure 'a veya Azure 'dan veri göndermek ve almak üzere Azure Resource Manager API 'Lerine bağlanır.|
+|**Microsoft Container Registry (MCR)**|Kubernetes, kapsayıcı görüntülerini çeken her bir Kubernetes düğümünün her biri için Kubernetes kubelet.|`mcr.microsoft.com`|HTTPS|443|Evet|Yok|Microsoft Container Registry, Azure Arc etkin veri Hizmetleri kapsayıcı görüntülerini barındırır.  Bu görüntüleri MCR 'den çekebilir ve özel bir kapsayıcı kayıt defterine gönderebilir ve veri denetleyicisi dağıtım işlemini yapılandırarak kapsayıcı görüntülerini bu özel kapsayıcı kayıt defterinden çekebilirsiniz.|
+|**Azure Resource Manager API 'Leri**|Azure 'a bağlanan Azure Data Studio, Azure Data CLı veya Azure CLı çalıştıran bir bilgisayar.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|Evet|Azure Active Directory|Azure Data Studio, Azure Data CLı ve Azure CLı, bazı özellikler için Azure 'a veya Azure 'dan veri göndermek ve almak üzere Azure Resource Manager API 'Lerine bağlanır.|
+|**Azure Izleyici API 'Leri**|Azure Izleyici 'de izleme ölçümlerini veya günlüklerini karşıya yükleyen Azure Data CLı veya Azure CLı çalıştıran bir bilgisayar.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`*.ods.opinsights.azure.com`<br/>`*.oms.opinsights.azure.com`<br/>`*.monitoring.azure.com`|HTTPS|443|Evet|Azure Active Directory|Azure Data Studio, Azure Data CLı ve Azure CLı, bazı özellikler için Azure 'a veya Azure 'dan veri göndermek ve almak üzere Azure Resource Manager API 'Lerine bağlanır.|
 
 > [!NOTE]
 > Şimdilik, Grafana ve kibana panolarına ve Azure Data CLı 'dan veri denetleyicisi API 'sine yönelik tüm HTTPS/443 bağlantıları, otomatik olarak imzalanan sertifikalar kullanılarak SSL şifrelenir.  Gelecekte bu SSL bağlantılarının şifrelenmesi için kendi sertifikalarınızı sağlamanıza olanak tanıyan bir özellik kullanıma sunulacaktır.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 0be39ebc765efe968f27d948dada1304c0d6d711
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555255"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Expensesıfy tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, Expensesıfy 'yi Azure Active Directory (Azure AD) ile tümleş
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -61,7 +61,7 @@ Azure AD SSO 'yu Expensesıfy ile yapılandırmak ve test etmek için aşağıda
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Expensesıfy SSO 'Yu yapılandırın](#configure-expensify-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Expensesıfy SSO 'Yu yapılandırın](#configure-expensify-sso)** .
     1. Kullanıcının Azure AD gösterimine bağlı olan Expensesıfy 'de B. Simon 'ın bir karşılığı olacak şekilde, **[pahalı bir test kullanıcısı oluşturun](#create-expensify-test-user)** .
 6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -71,7 +71,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **expensesıfy** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Yanıt URL 'SI değeri gerçek değil. Bu değeri gerçek yanıt URL 'siyle güncelleştirin. Bu değeri almak için [Expensesıfy istemci destek ekibine](mailto:help@expensify.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **meta veri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **meta veri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -128,7 +128,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Expensesıfy 'ye
 
 Expensesıfy 'de SSO 'yu etkinleştirmek için önce uygulamada **etki alanı denetimini** etkinleştirmeniz gerekir. Uygulamada, [burada](https://help.expensify.com/domain-control)listelenen adımlar aracılığıyla etki alanı denetimini etkinleştirebilirsiniz. Ek destek için, [Expensesıfy istemci desteği ekibi](mailto:help@expensify.com)ile çalışın. Etki alanı denetimi etkinleştirildikten sonra aşağıdaki adımları izleyin:
 
-![Çoklu oturum açmayı yapılandırma](./media/expensify-tutorial/tutorial_expensify_51.png)
+![Tek Sign-On yapılandırma](./media/expensify-tutorial/tutorial_expensify_51.png)
 
 1. Expensesıfy uygulamanızda oturum açın.
 

@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89073225"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
@@ -174,7 +174,7 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 | İstek şunları içerir `triggerState` ? | API yanıtı | 
 | -------------------------------- | -------------| 
 | Hayır | Bir HTTP `202 ACCEPTED` durumu `location` `triggerState` ve geçerli saate ayarlanmış bir üstbilgi ve 15 saniyeye kadar olan bir üst bilgi döndürür `retry-after` . | 
-| Yes | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
+| Evet | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
 ||| 
 
 | Bulunan dosya sayısı | API yanıtı | 
@@ -224,7 +224,7 @@ Kimlik doğrulamasını ayarladıktan sonra API 'niz için dağıtımı ayarlay�
 
 Özel API 'lerinizi Logic Apps, Power otomatikleştirmede ve Microsoft Power Apps 'teki tüm kullanıcılar için kullanılabilir hale getirmek için, güvenlik eklemeniz, API 'lerinizi Logic App bağlayıcıları olarak kaydetmeniz ve [Microsoft Azure Sertifikalı program](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)için bağlayıcılarınızı aday hale getirmeniz gerekir. 
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 * Özel API 'lerle ilgili belirli yardım için, ile iletişim kurun [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 

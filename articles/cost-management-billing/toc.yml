@@ -180,8 +180,10 @@
               href: manage/pay-by-invoice.md
             - name: Ek abonelikler oluşturma
               href: manage/create-subscription.md
-            - name: Program aracılığıyla abonelik oluşturma
+            - name: En son API ile program aracılığıyla abonelik oluşturma
               href: manage/programmatically-create-subscription.md
+            - name: Önizleme API’siyle program aracılığıyla abonelik oluşturma
+              href: manage/programmatically-create-subscription-preview.md
             - name: EA abonelikleri oluşturmak için erişim izni verme
               href: manage/grant-access-to-create-subscription.md
             - name: Abonelik bilgilerini dışarı aktarma
@@ -338,6 +340,12 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: Sorun giderme
       items:
+        - name: Kullanım dosyalarındaki EA faturalandırma sorunları
+          href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
+        - name: Kullanım dosyalarındaki MCA faturalandırma sorunları
+          href: manage/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables.md
+        - name: Kullanım dosyalarındaki CSP faturalandırma sorunları
+          href: manage/troubleshoot-csp-billing-issues-usage-file-pivot-tables.md
         - name: Abonelik bulunamadı
           href: manage/no-subscriptions-found.md
         - name: Ödeme sorunları

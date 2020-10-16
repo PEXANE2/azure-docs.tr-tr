@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439101"
 ---
 # <a name="train-pytorch-model"></a>PyTorch Modelini eğitme
@@ -66,11 +66,11 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Name          | Aralık            | Tür    | Varsayılan | Açıklama                              |
+| Adı          | Aralık            | Tür    | Varsayılan | Açıklama                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Dönemler        | >0               | Tamsayı | 5       | Etiket veya sonuç sütununu içeren sütunu seçin |
 | Toplu iş boyutu    | >0               | Tamsayı | 16      | Bir toplu işte eğiten örnek sayısı   |
-| Öğrenme oranı | >= Double. Upsilon | Float   | 0.001   | Stochastic gradyanı ilgili iyileştiricinin ilk öğrenme oranı. |
+| Öğrenme oranı | >= Double. Upsilon | Kayan   | 0.001   | Stochastic gradyanı ilgili iyileştiricinin ilk öğrenme oranı. |
 | Rastgele çekirdek   | Herhangi biri              | Tamsayı | 1       | Model tarafından kullanılan rastgele sayı oluşturucusunun çekirdek. |
 | Beklediğiniz      | >0               | Tamsayı | 3       | Eğitimin erken durdurulması için kaç dönemler   |
 

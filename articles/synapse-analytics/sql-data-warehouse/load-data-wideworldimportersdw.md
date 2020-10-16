@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
 ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369102"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Öğretici: Azure SYNAPSE Analytics SQL havuzuna veri yükleme
@@ -42,7 +42,7 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>SQL havuzunda boş veri ambarı oluşturma
 
@@ -536,7 +536,7 @@ Bu bölüm, Azure Blobundan SQL havuzuna örnek verileri yüklemek için tanıml
 
 Verileri Azure Depolama Blobu'ndan veri ambarınızdaki yeni tablolara yüklemek için, betikte [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimi kullanılır. CTAS bir SELECT deyiminin sonuçlarına göre yeni tablo oluşturur. Yeni tablo, select deyiminin sonuçları ile aynı sütunlara ve veri türlerine sahiptir. Select deyimleri bir dış tablodan seçim yaparken, veriler veri ambarındaki ilişkisel bir tabloya aktarılır.
 
-Bu betik, wwi. dimension_Date ve wwi. fact_Sale tablolarına veri yüklemez. Bu tablolar, boyutlandırılabilir satır sayısı içermesi için daha sonraki bir adımda oluşturulur.
+Bu betik, wwi.dimension_Date ve wwi.fact_Sale tablolarına veri yüklemez. Bu tablolar, boyutlandırılabilir satır sayısı içermesi için daha sonraki bir adımda oluşturulur.
 
 1. Aşağıdaki betiği çalıştırarak verileri veri ambarınızdaki yeni tablolara yükleyin.
 
@@ -732,7 +732,7 @@ Bu betik, wwi. dimension_Date ve wwi. fact_Sale tablolarına veri yüklemez. Bu 
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Tarih ve Satış tablolarını oluşturmak için tablolar ve yordamlar oluşturma
 
-Bu bölümde wwi. dimension_Date ve wwi. fact_Sale tabloları oluşturulur. Ayrıca, wwi. dimension_Date ve wwi. fact_Sale tablolarında milyonlarca satır oluşturabilen saklı yordamlar da oluşturur.
+Bu bölümde wwi.dimension_Date ve wwi.fact_Sale tabloları oluşturulur. Ayrıca, wwi.dimension_Date ve wwi.fact_Sale tablolarında milyonlarca satır oluşturabilen saklı yordamlar da oluşturur.
 
 1. dimension_Date ve fact_Sale tabloları oluşturun.  
 
@@ -876,7 +876,7 @@ Bu bölümde wwi. dimension_Date ve wwi. fact_Sale tabloları oluşturulur. Ayr�
     END;
     ```
 
-4. Wwi. dimension_Date ve wwi. fact_Sale tablolarını dolduran bu yordamı oluşturun. wwi.dimension_Date tablosunu doldurmak için [wwi].[PopulateDateDimensionForYear] çağrısı yapar.
+4. Wwi.dimension_Date ve wwi.fact_Sale tablolarını dolduran bu yordamı oluşturun. wwi.dimension_Date tablosunu doldurmak için [wwi].[PopulateDateDimensionForYear] çağrısı yapar.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -933,7 +933,7 @@ Bu bölümde wwi. dimension_Date ve wwi. fact_Sale tabloları oluşturulur. Ayr�
 
 ## <a name="generate-millions-of-rows"></a>Milyonlarca satır oluşturma
 
-Wwi. fact_Sale tablosunda milyonlarca satır oluşturmak için oluşturduğunuz saklı yordamları ve wwi. dimension_Date tablosundaki karşılık gelen verileri kullanın.
+Wwi.fact_Sale tablosunda milyonlarca satır oluşturmak için oluşturduğunuz saklı yordamları ve wwi.dimension_Date tablosundaki karşılık gelen verileri kullanın.
 
 1. [wwi].[seed_Sale] çekirdeğini daha fazla satırla oluşturmak için bu yordamı çalıştırın.
 
@@ -941,7 +941,7 @@ Wwi. fact_Sale tablosunda milyonlarca satır oluşturmak için oluşturduğunuz 
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Wwi. fact_Sale, 2000 yılında her gün için günde 100.000 satır ile doldurmak için bu yordamı çalıştırın.
+2. Wwi.fact_Sale, 2000 yılında her gün için günde 100.000 satır ile doldurmak için bu yordamı çalıştırın.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000

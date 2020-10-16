@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89319551"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966330"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure 'da Linux görüntülerini getirme ve oluşturma
 
@@ -46,7 +46,7 @@ Azure, genelleştirilmiş ve özelleştirilmiş iki ana görüntü türü sunar.
 
 ### <a name="generalized-images"></a>Genelleştirilmiş görüntüler
 
-Genelleştirilmiş görüntü, kurulumun ilk önyüklemede tamamlanmasını gerektiren bir görüntüdür. Örneğin, ilk önyüklemede ana bilgisayar adı, Yönetici Kullanıcı ve VM 'ye özgü diğer yapılandırma ayarları ayarlanır. Bu, görüntünün birden çok kez yeniden kullanılmasını istediğinizde ve oluşturma sırasında parametreleri geçirmek istediğinizde yararlıdır. Genelleştirilmiş görüntü Azure Aracısı içeriyorsa, aracı parametreleri işleyecek ve ilk yapılandırmanın tamamlandığı platforma geri sinyaline sahip olur. Bu işleme [sağlama](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning)adı verilir. 
+Genelleştirilmiş görüntü, kurulumun ilk önyüklemede tamamlanmasını gerektiren bir görüntüdür. Örneğin, ilk önyüklemede ana bilgisayar adı, Yönetici Kullanıcı ve VM 'ye özgü diğer yapılandırma ayarları ayarlanır. Bu, görüntünün birden çok kez yeniden kullanılmasını istediğinizde ve oluşturma sırasında parametreleri geçirmek istediğinizde yararlıdır. Genelleştirilmiş görüntü Azure Aracısı içeriyorsa, aracı parametreleri işleyecek ve ilk yapılandırmanın tamamlandığı platforma geri sinyaline sahip olur. Bu işleme [sağlama](./provisioning.md)adı verilir. 
 
 Sağlama, görüntüye bir hazırlayıcı eklenmesini gerektirir. İki hazıriyer vardır:
 - [Azure Linux Aracısı](../extensions/agent-linux.md)
@@ -94,7 +94,7 @@ Yüksek düzeyde bir SıG oluşturursunuz ve şu konumda oluşturulur:
 
 ## <a name="hyper-v-generation"></a>Hyper-V oluşturma
 
-Azure; Hyper-V oluşturma 1 (Gen1) ve 2. nesil (Gen2), Gen2 en son kuşak ve Gen1 üzerinde ek işlevsellik sunmaktadır. Örneğin: daha fazla bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM). Şirket içinde çalışan 2. nesil VM 'lerde, henüz Azure 'da desteklenmeyen bazı özellikler var. Daha fazla bilgi için özellikler ve yetenekler bölümüne bakın. Daha fazla bilgi için bu [makaleye](../windows/generation-2.md)bakın. Ek işlevselliğe ihtiyacınız varsa Gen2 görüntüleri oluşturun.
+Azure; Hyper-V oluşturma 1 (Gen1) ve 2. nesil (Gen2), Gen2 en son kuşak ve Gen1 üzerinde ek işlevsellik sunmaktadır. Örneğin: daha fazla bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM). Şirket içinde çalışan 2. nesil VM 'lerde, henüz Azure 'da desteklenmeyen bazı özellikler var. Daha fazla bilgi için özellikler ve yetenekler bölümüne bakın. Daha fazla bilgi için bu [makaleye](../generation-2.md)bakın. Ek işlevselliğe ihtiyacınız varsa Gen2 görüntüleri oluşturun.
 
 Hala kendi görüntünüzü oluşturmanız gerekiyorsa, [görüntü önkoşullarını](./create-upload-generic.md)karşıladığından emin olun ve Azure 'a yükleyin. Dağıtıma özgü gereksinimler:
 

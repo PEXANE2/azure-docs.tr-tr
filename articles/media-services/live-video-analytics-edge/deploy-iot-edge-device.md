@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887232"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019588"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -18,9 +18,9 @@ Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yar
 > ARM64 cihazlarına yönelik destek, IoT Edge yapılar ve daha yeni sürümlerde canlı video analizi 'nde bulunabilir `1.0.4` .
 > ARM64 cihazlarında Azure IoT Edge Runtime çalıştırmaya yönelik destek [genel önizlemededir](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Desteklenen Linux işletim sistemlerinden](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) birini çalıştıran bir x86-64 veya bir ARM64 cihazı
+* [Desteklenen Linux işletim sistemlerinden](../../iot-edge/support.md#operating-systems) birini çalıştıran bir x86-64 veya bir ARM64 cihazı
 * [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner) sahip olduğunuz Azure aboneliği
 * [Oluşturma ve kurulum IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge cihazı kaydetme](../../iot-edge/how-to-register-device.md)
@@ -40,7 +40,7 @@ Bkz. [özel Azure Resource Manager rolü oluşturma](create-custom-azure-resourc
 
 Videoyu buluta sürekli kaydetmek için canlı video analizi kullanmayı ve sonra yeniden oynamadan önce [sorgu API 'lerini](playback-recordings-how-to.md#query-api) kullanmayı düşünüyorsanız, medya hizmetinizi bir [Premium akış uç noktası](../latest/streaming-endpoint-concept.md#types)kullanacak şekilde güncelleştirmenizi öneririz.  
 
-Bu, isteğe bağlı bir adımdır. Bunu yapmak için bu Azure CLı komutunu kullanabilirsiniz:
+Bu isteğe bağlı bir adımdır. Bunu yapmak için bu Azure CLı komutunu kullanabilirsiniz:
 
 ```azurecli
 az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --scale-units 1

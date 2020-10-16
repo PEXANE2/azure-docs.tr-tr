@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 21f5a9f58acbaf3d0444d7da10ad489ade99cd76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604198"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951392"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Bilişsel Arama özellikleri
 
@@ -64,14 +64,14 @@ Azure Bilişsel Arama, daha fazla metin ve yapıyı ve API 'Leri ve araçları a
 
 | Alan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
 |-------------------|----------|
-| REST | [**Service REST API**](https://docs.microsoft.com/rest/api/searchservice/) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Yönetim REST API**](https://docs.microsoft.com/rest/api/searchmanagement/) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
-| .NET için Azure SDK | [**Azure.Search.Doc**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) işlemler, dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Microsoft. Azure. Management. Search**](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
-| Java için Azure SDK | [**com.azure.search.doc**](https://docs.microsoft.com/java/api/com.azure.search.documents) işlemler, dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**com. Microsoft. Azure. Management. Search**](https://docs.microsoft.com/java/api/overview/azure/search/management) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
-| Python için Azure SDK | [**Azure-Search-Belgeler**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Azure-MGMT-arama**](https://docs.microsoft.com/python/api/overview/azure/search/management) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz. |
-| JavaScript/TypeScript için Azure SDK | [**Azure/Search belgeleri**](https://docs.microsoft.com/javascript/api/@azure/search-documents/) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Azure/ARM-arama**](https://docs.microsoft.com/javascript/api/@azure/arm-search/) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz. |
+| REST | [**Service REST API**](/rest/api/searchservice/) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Yönetim REST API**](/rest/api/searchmanagement/) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
+| .NET için Azure SDK | [**Azure.Search.Doc**](/dotnet/api/overview/azure/search.documents-readme) işlemler, dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Microsoft. Azure. Management. Search**](/dotnet/api/microsoft.azure.management.search) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
+| Java için Azure SDK | [**com.azure.search.doc**](/java/api/com.azure.search.documents) işlemler, dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**com. Microsoft. Azure. Management. Search**](/java/api/overview/azure/search/management) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz.|
+| Python için Azure SDK | [**Azure-Search-Belgeler**](/python/api/overview/azure/search-documents-readme) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Azure-MGMT-arama**](/python/api/overview/azure/search/management) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz. |
+| JavaScript/TypeScript için Azure SDK | [**Azure/Search belgeleri**](/javascript/api/@azure/search-documents/) , dizin oluşturma, sorgular ve AI zenginleştirme ile ilgili tüm işlemler de dahil olmak üzere veri düzlemi işlemlerine yöneliktir. Bu istemci kitaplığını sistem bilgilerini ve istatistiklerini almak için de kullanabilirsiniz. <br/><br/>[**Azure/ARM-arama**](/javascript/api/@azure/arm-search/) , hizmet oluşturma ve Azure Resource Manager aracılığıyla Temizleme içindir. Anahtarları yönetmek ve bir hizmeti sağlamak için bu API 'YI de kullanabilirsiniz. |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Bilişsel Arama yenilikleri](whats-new.md)
++ [Bilişsel Arama’daki yenilikler](whats-new.md)
 
 + [Bilişsel Arama Önizleme özellikleri](search-api-preview.md)

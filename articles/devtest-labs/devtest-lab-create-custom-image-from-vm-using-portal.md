@@ -4,10 +4,10 @@ description: Azure portal kullanarak sağlanan bir VM 'den Azure DevTest Labs ö
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87277036"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>VM’den özel görüntü oluşturma
@@ -18,7 +18,7 @@ ms.locfileid: "87277036"
 
 Sağlanan bir VM 'den özel bir görüntü oluşturabilir ve bu özel görüntüyü daha sonra aynı VM 'Ler oluşturmak için kullanabilirsiniz. Aşağıdaki adımlarda, bir VM 'den nasıl özel bir görüntü oluşturacağınız gösterilmektedir:
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
@@ -33,13 +33,13 @@ Sağlanan bir VM 'den özel bir görüntü oluşturabilir ve bu özel görüntü
     :::image type="content" source="./media/devtest-lab-create-template/create-custom-image.png" alt-text="Özel görüntü menü öğesi oluştur":::
 1. **Özel görüntü** bölmesinde, özel görüntünüz için bir ad ve açıklama girin. Bu bilgiler, bir VM oluşturduğunuzda temellerin listesinde görüntülenir. Özel görüntü, işletim sistemi diskini ve sanal makineye bağlı tüm veri disklerini içerir.
 
-    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Özel görüntü oluştur sayfası":::
+    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Özel görüntü menü öğesi oluştur":::
 1. Sysprep 'in VM 'de çalıştırılıp çalıştırılmadığını seçin. Sysprep sanal makinede çalıştırılmadıysa, özel görüntü oluşturulduğunda Sysprep 'in VM 'de çalıştırılmasını isteyip istemediğinizi belirtin.
 1. Özel görüntüyü oluşturmak için bittiğinde **Tamam ' ı** seçin.
 
     Birkaç dakika sonra, özel görüntü oluşturulur ve laboratuvarın depolama hesabı içinde depolanır. Laboratuvar kullanıcısı yeni bir VM oluşturmak istediğinde, görüntü temel görüntüler listesinde kullanılabilir.
 
-    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="temel görüntüler listesinde kullanılabilen özel görüntü":::
+    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="Özel görüntü menü öğesi oluştur":::
 
 ## <a name="related-blog-posts"></a>İlgili blog gönderileri
 

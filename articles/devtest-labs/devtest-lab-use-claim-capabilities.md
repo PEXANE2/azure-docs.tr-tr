@@ -4,10 +4,10 @@ description: Azure DevTest Labs talep/talep dışı yeteneklerini kullanmaya yö
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 73ed3c0b94a66f5d17b5c8e2561c65bb48579aa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476538"
 ---
 # <a name="use-claim-capabilities-in-azure-devtest-labs"></a>Azure DevTest Labs 'da talep yeteneklerini kullanma

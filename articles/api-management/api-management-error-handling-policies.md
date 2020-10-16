@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243554"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070954"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management ilkelerinde hata işleme
 
@@ -82,13 +82,13 @@ Bir hata oluştuğunda ve denetim ilke bölümüne atdığında `on-error` , hat
 
 | Ad       | Tür   | Açıklama                                                                                               | Gerekli |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | string | Hatanın oluştuğu öğeyi adlandırır. İlke ya da yerleşik bir ardışık düzen adımı adı olabilir.      | Evet      |
-| `Reason`   | string | Hata işlemede kullanılabilecek makine dostu hata kodu.                                       | Hayır       |
-| `Message`  | string | İnsan tarafından okunabilen hata açıklaması.                                                                         | Evet      |
-| `Scope`    | string | Hatanın oluştuğu kapsamın adı ve "genel", "ürün", "API" veya "işlem" olabilir | Hayır       |
-| `Section`  | string | Hatanın oluştuğu bölüm adı. Olası değerler: "gelen", "arka uç", "giden" veya "hata üzerinde".      | Hayır       |
-| `Path`     | string | İç içe geçmiş ilkeyi belirtir, örneğin "SELECT [3]/, [2]".                                                 | Hayır       |
-| `PolicyId` | string | `id`Hatanın oluştuğu ilkede, müşteri tarafından belirtilmişse özniteliğin değeri             | Hayır       |
+| `Source`   | dize | Hatanın oluştuğu öğeyi adlandırır. İlke ya da yerleşik bir ardışık düzen adımı adı olabilir.      | Yes      |
+| `Reason`   | dize | Hata işlemede kullanılabilecek makine dostu hata kodu.                                       | No       |
+| `Message`  | dize | İnsan tarafından okunabilen hata açıklaması.                                                                         | Yes      |
+| `Scope`    | dize | Hatanın oluştuğu kapsamın adı ve "genel", "ürün", "API" veya "işlem" olabilir | No       |
+| `Section`  | dize | Hatanın oluştuğu bölüm adı. Olası değerler: "gelen", "arka uç", "giden" veya "hata üzerinde".      | No       |
+| `Path`     | dize | İç içe geçmiş ilkeyi belirtir, örneğin "SELECT [3]/, [2]".                                                 | No       |
+| `PolicyId` | dize | `id`Hatanın oluştuğu ilkede, müşteri tarafından belirtilmişse özniteliğin değeri             | No       |
 
 > [!TIP]
 > Durum koduna bağlam aracılığıyla erişebilirsiniz. Response. StatusCode.
@@ -190,4 +190,4 @@ ve yetkisiz bir istek göndermek aşağıdaki yanıta neden olur:
 -   [API Management ilkeler](api-management-howto-policies.md)
 -   [API dönüştürme](transform-api.md)
 -   İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
--   [İlke örnekleri](policy-samples.md)
+-   [İlke örnekleri](./policy-reference.md)

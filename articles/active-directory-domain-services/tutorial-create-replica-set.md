@@ -2,20 +2,20 @@
 title: Öğretici-Azure AD Domain Services bir çoğaltma kümesi oluşturma | Microsoft Docs
 description: Hizmet dayanıklılığı için Azure portal çoğaltma kümelerini oluşturma ve kullanma hakkında bilgi edinin Azure AD Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 8cd78a98e47468f103459fd7aa40b145d53db4fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88245103"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967044"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Öğretici: Azure Active Directory Domain Services dayanıklılık veya coğrafi konum için çoğaltma kümeleri oluşturma ve kullanma (Önizleme)
 
@@ -25,7 +25,7 @@ Azure AD DS 'yi destekleyen herhangi bir Azure bölgesindeki eşlenen herhangi b
 
 Çoğaltma kümeleri, Azure AD Domain Services ortak bir önizleme özelliğidir. Lütfen hala önizlemede olan özellikler için mevcut olan destek farklarını unutmayın. Önizlemeler hakkında daha fazla bilgi için, [ÖNIZLEME SLA Azure Active Directory](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal ağ gereksinimlerini anlayın

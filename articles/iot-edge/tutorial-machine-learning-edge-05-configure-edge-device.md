@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 1e92da6f99ccb32580d7f0286b5bcbf77d694262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2245bd970e93595358e95465bcc815ddaf2ef821
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855659"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974558"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
@@ -96,7 +96,7 @@ Sertifikalarımızı güvenli bir şekilde depolamak ve bunları birden fazla ci
 
 Bir Azure IoT Edge cihazını IoT Hub 'ına bağlamak için önce hub 'da cihaz için bir kimlik oluşturacağız. Bağlantı dizesini buluttaki cihaz kimliğinden alıp IoT Edge cihazımızda çalışma zamanını yapılandırmak için kullanacaksınız. Yapılandırılmış bir cihaz hub 'a bağlandıktan sonra modülleri dağıtabilecek ve ileti gönderebiliyoruz. Ayrıca, IoT Hub 'da karşılık gelen cihaz kimliğini değiştirerek fiziksel IoT Edge cihazının yapılandırmasını da değiştirebiliriz.
 
-Bu öğreticide, Visual Studio Code kullanarak yeni cihaz kimliğini oluşturacağız. Ayrıca, [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)veya [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)kullanarak bu adımları tamamlayabilirsiniz.
+Bu öğreticide, Visual Studio Code kullanarak yeni cihaz kimliğini oluşturacağız. Ayrıca, Azure portal veya Azure CLı kullanarak bu adımları tamamlayabilirsiniz.
 
 1. Geliştirme makinenizde Visual Studio Code açın.
 

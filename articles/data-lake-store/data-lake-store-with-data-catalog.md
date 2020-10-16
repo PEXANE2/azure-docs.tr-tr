@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578521"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme
 Bu makalede, verileri veri kataloğu ile tümleştirerek bir kuruluşta bulunabilir hale getirmek için Azure Data Lake Storage 1. Azure Veri Kataloğu ile tümleştirmeyi öğreneceksiniz. Verileri kataloglandırma hakkında daha fazla bilgi için bkz. [Azure Veri Kataloğu](../data-catalog/data-catalog-what-is-data-catalog.md). Veri kataloğunu kullanabileceğiniz senaryoları anlamak için bkz. [Azure Veri Kataloğu genel senaryoları](../data-catalog/data-catalog-common-scenarios.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).

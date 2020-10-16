@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84434378"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery Sağlayıcısını yükseltme hatalarını giderme
@@ -48,7 +48,7 @@ Yükseltmenin başarılı olması için 3. taraf klasörü yeniden adlandırılm
 
 Sorunu gidermek için.
 
-1. Kayıt Defteri Düzenleyicisi 'Ni (regedit.exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\10 dalını açın.
+1. Kayıt Defteri Düzenleyicisi 'Ni (regedit.exe) başlatın ve HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 dalını açın.
 1. `Build_Version`Anahtar değerini inceleyin. En son sürüme ayarlanırsa sürüm numarasını küçültün. Örneğin, en son sürüm 9,22 ise. \* ve `Build_Version` bu değere ayarlanan anahtar, 9,21 olarak azaltılmasını sağlar. \*
 1. Birleşik kurulum Site Recovery en son Microsoft Azure indirin:
    1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md#links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
@@ -73,8 +73,8 @@ Microsoft Azure Site Recovery sağlayıcısı (DRA) yükseltilirken, ana hedef y
 
 Bunun nedeni, kayıt defteri anahtarındaki bir parametre için null değer olabilir. Sorunu çözmek için-
 
-1. Kayıt Defteri Düzenleyicisi 'Ni (regedit.exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\4 dalını açın.
+1. Kayıt Defteri Düzenleyicisi 'Ni (regedit.exe) başlatın ve HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 dalını açın.
 1. ' InstallDirectory ' anahtar değerini inceleyin.Null ise, geçerli install dizin değerini ekleyin.
-1. Benzer şekilde, kayıt defteri düzenleyicisinde \Software\wow6432node\ınmage Systems\yüklü Products\5 dalını HKEY_LOCAL_MACHINE açın.
+1. Benzer şekilde, kayıt defteri Düzenleyicisi 'nde Systems\yüklü Products\5 dalını HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage açın.
 1. ' InstallDirectory ' anahtar değerini inceleyin ve geçerli install Directory değerini ekleyin.
 1. Birleşik kurulum yükleyicisini yeniden çalıştırın.

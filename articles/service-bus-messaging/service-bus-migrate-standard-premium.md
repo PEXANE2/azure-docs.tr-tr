@@ -4,10 +4,10 @@ description: Mevcut Azure Service Bus standart ad alanlarının Premium 'a geçi
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85340743"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Mevcut Azure Service Bus standart ad alanlarını Premium katmanına geçirin
@@ -211,7 +211,7 @@ Ancak, planlı bir bakım/temizlik penceresi sırasında geçiş yapabilir ve il
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Standart ve Premium mesajlaşma arasındaki farklılıklar](./service-bus-premium-messaging.md)hakkında daha fazla bilgi edinin.
-* [Service Bus Premium Için yüksek kullanılabilirlik ve coğrafi olağanüstü durum kurtarma yönleri](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)hakkında bilgi edinin.
+* [Service Bus Premium Için yüksek kullanılabilirlik ve Geo-Disaster kurtarma yönleri](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)hakkında bilgi edinin.
 
 [Geçiş giriş sayfası]: ./media/service-bus-standard-premium-migration/1.png
 [Kurulum ad alanı]: ./media/service-bus-standard-premium-migration/2.png

@@ -14,10 +14,10 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e1575ee02a520fd39a1c659eadaeda5822207539
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171135"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
@@ -56,7 +56,7 @@ HANA büyük örnek kılavuzunun farklı belgeleri aşağıdaki alanlara sahipti
 - [Azure 'da sorun giderme ve izleme SAP HANA (büyük örnekler)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [STONITH kullanarak SUSE 'de yüksek kullanılabilirlik kurulumu](./ha-setup-with-stonith.md)
 - [Düzeltme 3 damgalarının tür II SKU 'Ları için işletim sistemi yedekleme ve geri yükleme](./os-backup-type-ii-skus.md)
-- [Azure ayırması ile SAP HANA Büyük Örnekleri kaydetme](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
+- [Azure rezervasyonuyla SAP HANA Büyük Örnekleri’nden tasarruf etme](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
 **Sonraki adımlar**
 - [Koşulları öğrenin](hana-know-terms.md)

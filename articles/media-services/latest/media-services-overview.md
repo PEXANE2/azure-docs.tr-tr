@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 58a142f0be87bb56f9ded9ace5a5143931740e93
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89267624"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019873"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3'e genel bakış
 
@@ -33,7 +33,7 @@ Azure Media Services, yayın kalitesinde video akışı elde etmenizi, erişileb
 Media Services v3 SDK 'Ları, [Media Services v3 Openapı belirtimini (Swagger)](https://aka.ms/ams-v3-rest-sdk)temel alır.
 
 > [!NOTE]
-> Şu anda [Azure Portal](https://portal.azure.com/) kullanabilirsiniz: Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, (yönetmiyorsanız) v3 [varlıklarını](assets-concept.md)görüntülemek, [API 'lere erişme hakkında bilgi almak](./access-api-howto.md). Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+> Şu anda [Azure Portal](https://portal.azure.com/) kullanabilirsiniz: Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, (yönetmiyorsanız) v3 [varlıklarını](assets-concept.md)görüntülemek, [API 'lere erişme hakkında bilgi almak](./access-api-howto.md). Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](/rest/api/media/), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -70,7 +70,7 @@ Media Services v3 ile içerik kodlama ve paketleme, Videoları isteğe bağlı o
 
 [Azure Media Services v3 Istemci SDK 'ları](media-services-apis-overview.md#sdks)ile geliştirmeye başlayın.
 
-### <a name="quickstarts"></a>Hızlı başlangıçlar  
+### <a name="quickstarts"></a>Hızlı Başlangıçlar  
 
 Hızlı başlangıçlarda yeni müşterilerin Media Services hızla deneyebilmesinin temel gün 1 yönergeleri gösterilir.
 

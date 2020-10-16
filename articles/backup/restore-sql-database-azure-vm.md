@@ -4,10 +4,10 @@ description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yede
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985436"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını geri yükleme
@@ -23,7 +23,7 @@ Azure Backup, Azure VM 'lerinde çalışan SQL Server veritabanlarını şu şek
 - İşlem günlüğü yedeklerini kullanarak belirli bir tarih veya saate (ikinci olarak) geri yükleyin. Azure Backup, uygun tam değişiklik yedeklemesini ve seçilen saate göre geri yüklemek için gereken günlük yedeklemeleri zincirini otomatik olarak belirler.
 - Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesini geri yükleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakileri göz önünde bulabilirsiniz:
 

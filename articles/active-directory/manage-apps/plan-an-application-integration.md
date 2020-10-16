@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc691148723e610f0885f7c20fd8684f11a81dc0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182335"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory uygulamalar ile tümleştirme kılavuzunu kullanmaya başlama
@@ -71,7 +71,7 @@ Aşağıdaki makalelerde, uygulamaların Azure AD ile tümleştirilmesine yönel
 * [SaaS uygulamalarını tümleştirme öğreticiler listesi](../active-directory-saas-tutorial-list.md)
 
 ### <a name="authentication-types"></a>Kimlik doğrulama türleri
-Uygulamalarınızın her biri farklı kimlik doğrulama gereksinimlerine sahip olabilir. Azure AD ile imzalama sertifikaları, SAML 2,0, WS-Federation veya OpenID Connect protokollerinin yanı sıra parola çoklu oturum açma 'yı kullanan uygulamalarla kullanılabilir. Azure AD ile kullanım için uygulama kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. Azure Active Directory ve [parola tabanlı çoklu oturum](what-is-single-sign-on.md)açma [için sertifikaları yönetme](manage-certificates-for-federated-single-sign-on.md) .
+Uygulamalarınızın her biri farklı kimlik doğrulama gereksinimlerine sahip olabilir. Azure AD ile imzalama sertifikaları, SAML 2,0, WS-Federation veya OpenID Connect protokollerinin yanı sıra parola çoklu oturum açma 'yı kullanan uygulamalarla kullanılabilir. Azure AD ile kullanım için uygulama kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. Azure Active Directory ve [parola tabanlı çoklu oturum açma](what-is-single-sign-on.md) [içindeki federe tek Sign-On için sertifikaları yönetme](manage-certificates-for-federated-single-sign-on.md) .
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Azure AD Uygulaması Proxy ile SSO 'yu etkinleştirme
 Microsoft Azure AD uygulama proxy 'Si ile, özel ağınızın içinde bulunan uygulamalara, her yerden ve herhangi bir cihazdan erişim sağlayabilirsiniz. Ortamınızda bir uygulama proxy Bağlayıcısı yükledikten sonra, Azure AD ile kolayca yapılandırılabilir.
@@ -79,7 +79,7 @@ Microsoft Azure AD uygulama proxy 'Si ile, özel ağınızın içinde bulunan uy
 ### <a name="integrating-custom-applications"></a>Özel uygulamaları tümleştirme
 Yeni bir uygulama yazıyorsanız ve geliştiricilerin Azure AD 'nin gücünden yararlanmasına yardımcı olmak istiyorsanız, bkz. [geliştiricilere rehberlik](../active-directory-applications-guiding-developers-for-lob-applications.md)etme.
 
-Özel uygulamanızı Azure Uygulama galerisine eklemek istiyorsanız, bkz. [Azure AD Self SERVIS SAML yapılandırması ile "kendi uygulamanızı getirme"](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Özel uygulamanızı Azure Uygulama galerisine eklemek istiyorsanız, bkz. [Azure AD Self-Service SAML yapılandırması ile "kendi uygulamanızı getirme"](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
 
 ## <a name="managing-access-to-applications"></a>Uygulamalara erişimi yönetme
 Aşağıdaki makalelerde, Azure AD bağlayıcıları ve Azure AD 'yi kullanarak Azure AD ile tümleştirildiğinde uygulamalara erişimi yönetme yolları açıklanır.

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906829"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092809"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı dağıtıma hazırlama
 
@@ -23,7 +23,7 @@ Azure yay bulutu, bir Bueltoe uygulamasını barındırmak, izlemek, ölçeklend
 Bu makalede, Azure yay bulutu 'nda .NET Core Steeltoe uygulaması çalıştırmak için gereken bağımlılıklar, yapılandırma ve kod açıklanmaktadır. Azure yay bulutuna bir uygulamanın nasıl dağıtılacağı hakkında bilgi için, bkz. [Ilk Azure Spring Cloud uygulamanızı dağıtma](spring-cloud-quickstart.md).
 
 >[!Note]
-> Azure yay bulutu için steeltoe desteği şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizlemeler sırasında destek hakkında daha fazla bilgi için bkz. [SSS](https://azure.microsoft.com/support/faq/) veya dosya a [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+> Azure yay bulutu için steeltoe desteği şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizlemeler sırasında destek hakkında daha fazla bilgi için bkz. [SSS](https://azure.microsoft.com/support/faq/) veya dosya a [destek isteği](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ##  <a name="supported-versions"></a>Desteklenen sürümler
 
@@ -99,7 +99,7 @@ Bu makalede, gerekli bağımlılıklar ve bunların Pod dosyasına nasıl eklene
 
 Azure yay bulutu 'nda yalnızca Spring/Java uygulamaları çalıştırılabilir.
 
-Azure yay bulutu hem Java 8 hem de Java 11 ' i destekler. Barındırma ortamı, Azure için Azul Zulu OpenJDK 'nin en son sürümünü içerir. Azure için Azul Zulu OpenJDK hakkında daha fazla bilgi için bkz. [JDK 'Yi yüklemeyin](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Azure yay bulutu hem Java 8 hem de Java 11 ' i destekler. Barındırma ortamı, Azure için Azul Zulu OpenJDK 'nin en son sürümünü içerir. Azure için Azul Zulu OpenJDK hakkında daha fazla bilgi için bkz. [JDK 'Yi yüklemeyin](/azure/developer/java/fundamentals/java-jdk-install).
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Yay önyükleme ve yay bulut sürümleri
 
@@ -210,6 +210,8 @@ Spring Boot 2,1 kullanıyorsanız, pom.xml dosyanıza aşağıdaki bağımlılı
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> Yapılandırmanızda belirtmeyin `server.port` . Azure Spring Cloud, bu ayarı bir sabit bağlantı noktası numarasına overide. Lütfen bu ayara de dikkat edin ve kodunuzda sunucu bağlantı noktası belirtmeyin.
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Azure Spring Cloud özelliklerini etkinleştirmek için önerilen diğer bağımlılıklar
 
@@ -227,6 +229,7 @@ Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için, `spring-cloud
 ```
 
 Hizmet kayıt defteri sunucusunun uç noktası, uygulamanıza ortam değişkenleri olarak otomatik olarak eklenir. Uygulamalar, kendilerini hizmet kayıt defteri sunucusuna kaydedebilir ve diğer bağımlı mikro hizmetleri bulabilir.
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient ek açıklaması
 
@@ -302,9 +305,9 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-cl
  Ayrıca Azure Spring Cloud Service örneğiniz ile çalışmak için bir Azure Application Insights örneğini etkinleştirmeniz gerekir. Azure Spring Cloud ile Application Insights kullanma hakkında daha fazla bilgi için bkz. [Dağıtılmış izleme hakkındaki belgeler](spring-cloud-tutorial-distributed-tracing.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Uygulama günlüklerini ve ölçümleri çözümleme](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
-* [Yapılandırma Sunucunuzu ayarlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Azure Spring Cloud ile dağıtılmış izleme kullanma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Uygulama günlüklerini ve ölçümleri çözümleme](./diagnostic-services.md)
+* [Yapılandırma Sunucunuzu ayarlama](./spring-cloud-tutorial-config-server.md)
+* [Azure Spring Cloud ile dağıtılmış izleme kullanma](./spring-cloud-tutorial-distributed-tracing.md)
 * [Yay hızlı başlangıç kılavuzu](https://spring.io/quickstart)
 * [Spring Boot belgeleri](https://spring.io/projects/spring-boot)
 

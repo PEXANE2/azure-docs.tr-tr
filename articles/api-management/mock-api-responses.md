@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631121"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930722"
 ---
 # <a name="tutorial-mock-api-responses"></a>Öğretici: sahte API yanıtları
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 :::image type="content" source="media/mock-api-responses/mock-api-responses01.png" alt-text="Moclenmiş API yanıtı":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + [Azure API Management'ta ilke kavramını](api-management-howto-policies.md) anlayın.
@@ -75,7 +75,7 @@ Bir API, bir veya daha fazla işlem sunar. Bu bölümde, oluşturduğunuz boş A
 1. Sağ taraftaki **Gösterimler** başlığının altında **+ Gösterim ekle**’yi seçin.
 1. Arama kutusuna *Application/JSON* girin ve **Application/JSON** içerik türünü seçin.
 1. **Örnek** metin kutusuna `{ "sampleField" : "test" }` girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 :::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="Moclenmiş API yanıtı" border="false":::
 
@@ -104,10 +104,10 @@ Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları di�
 
     :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Moclenmiş API yanıtı":::
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
     > [!TIP]
-    > API 'niz için, **sahte işlem özelliği etkinleştirilmiş** sarı bir çubuk, API Management döndürülen yanıtların gerçek bir arka uç yanıtı değil, bir sahte işlem ilkesi gönderdiğini gösterir.
+    > API 'niz için metin **taşıtmasını etkin** olan sarı bir çubuk, API Management 'den döndürülen yanıtların [sahte işlem ilkesi](api-management-advanced-policies.md#mock-response) tarafından tıklandığını ve arka uç tarafından üretilmediğini belirtir.
 
 ## <a name="test-the-mocked-api"></a>Sahte API’yi test etme
 

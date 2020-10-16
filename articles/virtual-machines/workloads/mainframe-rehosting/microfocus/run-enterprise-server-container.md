@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320005"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Azure 'daki bir Docker kapsayıcısında mikro odak kurumsal sunucu 5,0 ' i çalıştırın
@@ -27,7 +27,7 @@ Docker, uygulamalara taşınabilirlik ve yalıtım ekler. Örneğin, bir Windows
 
 Bu öğretici, Azure Marketi 'nden **Windows 2016 Datacenter 'ı kapsayıcı VM 'si ile birlikte** yüklenir. Bu VM, **Docker 18.09.0**içerir. Aşağıdaki adımlar, kapsayıcının nasıl dağıtılacağını, çalıştırılacağını nasıl çalıştıracağınızı ve bir 3270 öykünücüsü ile bu sunucuya nasıl bağlanacağını göstermektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce Şu önkoşullara göz atın:
 
@@ -167,7 +167,7 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
 
     ![Enterprise Server Yönetim Konsolu](media/run-image-9.png)
 
-İşte bu kadar! Artık bir Docker kapsayıcısında bir CICS uygulaması çalıştırıyorsunuz ve yönetiyorsunuz.
+Hepsi bu! Artık bir Docker kapsayıcısında bir CICS uygulaması çalıştırıyorsunuz ve yönetiyorsunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

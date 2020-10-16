@@ -2,26 +2,28 @@
 title: Şablon işlevleri-nesneler
 description: Nesneleri ile çalışmak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: 632e92bb798a5e8469079ef4693b7f321617f88c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676803"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977893"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM şablonları için nesne işlevleri
 
 Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzda nesnelerle çalışmak için çeşitli işlevler sağlar.
 
 * [vardır](#contains)
+* [createObject](#createobject)
 * [empty](#empty)
 * [imin](#intersection)
 * [nesnesinde](#json)
-* [uzunluklu](#length)
+* [length](#length)
+* [null](#null)
 * [birleşim](#union)
 
-## <a name="contains"></a>şunu içerir
+## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
 
@@ -31,8 +33,8 @@ Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeri
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| kapsayıcı |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
-| ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
+| kapsayıcı |Yes |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| ıtemtofind |Yes |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -93,14 +95,66 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| stringTrue | Bool | True |
-| stringFalse | Bool | False |
-| objectTrue | Bool | True |
-| Objectfali | Bool | False |
-| arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| stringTrue | Bool | Doğru |
+| stringFalse | Bool | Yanlış |
+| objectTrue | Bool | Doğru |
+| Objectfali | Bool | Yanlış |
+| arrayTrue | Bool | Doğru |
+| arrayFalse | Bool | Yanlış |
+
+## <a name="createobject"></a>createObject
+
+`createObject(key1, value1, key2, value2, ...)`
+
+Anahtarlar ve değerlerden bir nesne oluşturur.
+
+### <a name="parameters"></a>Parametreler
+
+| Parametre | Gerekli | Tür | Açıklama |
+|:--- |:--- |:--- |:--- |
+| key1 |Hayır |dize |Anahtarın adı. |
+| value1 |Hayır |int, Boolean, String, nesne veya dizi |Anahtarın değeri. |
+| ek anahtarlar |Hayır |dize |Anahtarların ek adları. |
+| ek değerler |Hayır |int, Boolean, String, nesne veya dizi |Anahtarlar için ek değerler. |
+
+İşlev yalnızca çift sayıda parametreyi kabul eder. Her anahtar eşleşen bir değere sahip olmalıdır.
+
+### <a name="return-value"></a>Döndürülen değer
+
+Her anahtar ve değer çiftine sahip bir nesne.
+
+### <a name="example"></a>Örnek
+
+Aşağıdaki örnek, farklı değer türlerindeki bir nesne oluşturur.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+    ],
+    "outputs": {
+        "newObject": {
+            "type": "object",
+            "value": "[createObject('intProp', 1, 'stringProp', 'abc', 'boolProp', true(), 'arrayProp', createArray('a', 'b', 'c'), 'objectProp', createObject('key1', 'value1'))]"
+        }
+    }
+}
+```
+
+Önceki örneğin varsayılan değerleri ile çıkış, `newObject` aşağıdaki değere sahip adlı bir nesnedir:
+
+```json
+{
+  "intProp": 1,
+  "stringProp": "abc",
+  "boolProp": true,
+  "arrayProp": ["a", "b", "c"],
+  "objectProp": {"key1": "value1"}
+}
+```
 
 ## <a name="empty"></a>empty
 
@@ -112,7 +166,7 @@ Bir dizi, nesne veya dize boş olup olmadığını belirler.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| ıtemtotest |Evet |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
+| ıtemtotest |Yes |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -161,11 +215,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | True |
-| objectEmpty | Bool | True |
-| stringEmpty | Bool | True |
+| arrayEmpty | Bool | Doğru |
+| objectEmpty | Bool | Doğru |
+| stringEmpty | Bool | Doğru |
 
 ## <a name="intersection"></a>imin
 
@@ -177,8 +231,8 @@ Parametrelerden ortak öğelerle tek bir dizi veya nesne döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
-| arg2 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
+| arg1 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
+| arg2 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
 | ek bağımsız değişkenler |Hayır |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
@@ -228,7 +282,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | objectOutput | Nesne | {"One": "a", "üç": "c"} |
 | arrayOutput | Dizi | ["iki", "üç"] |
@@ -237,40 +291,58 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 `json(arg1)`
 
-JSON nesnesi döndürür.
+Geçerli bir JSON dizesini JSON veri türüne dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |string |JSON 'a dönüştürülecek değer. |
+| arg1 |Yes |dize |JSON 'a dönüştürülecek değer. Dize, düzgün şekilde biçimlendirilen bir JSON dizesi olmalıdır. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Belirtilen dizeden JSON nesnesi veya **null** belirtildiğinde boş bir nesne.
+Belirtilen dizeden JSON veri türü veya **null** belirtildiğinde boş bir değer.
 
 ### <a name="remarks"></a>Açıklamalar
 
 JSON nesnesine bir parametre değeri veya değişken eklemeniz gerekiyorsa, işleve geçirdiğiniz dizeyi oluşturmak için [Concat](template-functions-string.md#concat) işlevini kullanın.
 
+Null bir değer almak için [null ()](#null) de kullanabilirsiniz.
+
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) , JSON işlevinin nasıl kullanılacağını göstermektedir. Nesneyi temsil eden bir dizeyi geçebildiğine veya hiçbir değer gerekmiyorsa **null** değeri kullanmanıza dikkat edin.
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) , JSON işlevinin nasıl kullanılacağını göstermektedir. Boş bir nesne için **null değer** geçirebildiğine dikkat edin.
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "jsonObject1": {
+        "jsonEmptyObject": {
             "type": "string",
             "defaultValue": "null"
         },
-        "jsonObject2": {
+        "jsonObject": {
             "type": "string",
             "defaultValue": "{\"a\": \"b\"}"
         },
-        "testValue": {
+        "jsonString": {
+            "type": "string",
+            "defaultValue": "\"test\""
+        },
+        "jsonBoolean": {
+            "type": "string",
+            "defaultValue": "true"
+        },
+        "jsonInt": {
+            "type": "string",
+            "defaultValue": "3"
+        },
+        "jsonArray": {
+            "type": "string",
+            "defaultValue": "[[1,2,3 ]"
+        },
+        "concatValue": {
             "type": "string",
             "defaultValue": "demo value"
         }
@@ -278,17 +350,33 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
     "resources": [
     ],
     "outputs": {
-        "jsonOutput1": {
+        "emptyObjectOutput": {
             "type": "bool",
-            "value": "[empty(json(parameters('jsonObject1')))]"
+            "value": "[empty(json(parameters('jsonEmptyObject')))]"
         },
-        "jsonOutput2": {
+        "objectOutput": {
             "type": "object",
-            "value": "[json(parameters('jsonObject2'))]"
+            "value": "[json(parameters('jsonObject'))]"
         },
-        "paramOutput": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[json(parameters('jsonString'))]"
+        },
+        "booleanOutput": {
+            "type": "bool",
+            "value": "[json(parameters('jsonBoolean'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[json(parameters('jsonInt'))]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[json(parameters('jsonArray'))]"
+        },
+        "concatObjectOutput": {
             "type": "object",
-            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
+            "value": "[json(concat('{\"a\": \"', parameters('concatValue'), '\"}'))]"
         }
     }
 }
@@ -296,11 +384,15 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| jsonOutput1 | Boole | True |
-| jsonOutput2 | Nesne | {"a": "b"} |
-| paramOutput | Nesne | {"a": "demo değeri"}
+| emptyObjectOutput | Boole | Doğru |
+| objectOutput | Nesne | {"a": "b"} |
+| stringOutput | Dize | test |
+| booleanOutput | Boole | Doğru |
+| ıntoutput | Tamsayı | 3 |
+| arrayOutput | Dizi | [ 1, 2, 3 ] |
+| Içtobjectoutput | Nesne | {"a": "demo değeri"} |
 
 ## <a name="length"></a>length
 
@@ -312,7 +404,7 @@ Bir dizideki öğelerin sayısını, bir dizedeki karakterleri veya bir nesnedek
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
+| arg1 |Yes |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -372,11 +464,49 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
 | objectLength | int | 4 |
+
+## <a name="null"></a>null
+
+`null()`
+
+Null döndürür.
+
+### <a name="parameters"></a>Parametreler
+
+Null işlevi herhangi bir parametreyi kabul etmez.
+
+### <a name="return-value"></a>Döndürülen değer
+
+Her zaman null olan bir değer.
+
+### <a name="example"></a>Örnek
+
+Aşağıdaki örnek, null işlevini kullanır.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(null())]"
+        },
+    }
+}
+```
+
+Yukarıdaki örnekteki çıktı:
+
+| Ad | Tür | Değer |
+| ---- | ---- | ----- |
+| Emptızput | Bool | Doğru |
 
 ## <a name="union"></a>birleşim
 
@@ -388,8 +518,8 @@ Parametrelerden tüm öğeleri içeren tek bir dizi veya nesne döndürür. Yine
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
-| arg2 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
+| arg1 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
+| arg2 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
 | ek bağımsız değişkenler |Hayır |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
@@ -439,7 +569,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | objectOutput | Nesne | {"One": "a", "iki": "b", "üç": "C2", "dört": "d", "beş": "e"} |
 | arrayOutput | Dizi | ["bir", "iki", "üç", "dört"] |

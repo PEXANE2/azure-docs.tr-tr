@@ -10,10 +10,10 @@ ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186359"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Azure Automation 'da metin runbook 'larını düzenleme
@@ -62,7 +62,7 @@ Bu makalede, bu düzenleyiciyle farklı işlevler gerçekleştirmeye yönelik ay
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Windows PowerShell kullanarak bir Azure Otomasyonu runbook 'unu düzenleme
 
-Windows PowerShell ile bir runbook 'u düzenlemek için, seçtiğiniz düzenleyiciyi kullanın ve Runbook 'u bir **. ps1** dosyasına kaydedin. Runbook 'un içeriğini almak için [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 'ini kullanabilirsiniz. Var olan taslak runbook 'unu değiştirilmiş bir ile değiştirmek için [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 'ini kullanabilirsiniz.
+Windows PowerShell ile bir runbook 'u düzenlemek için, seçtiğiniz düzenleyiciyi kullanın ve Runbook 'u bir **. ps1** dosyasına kaydedin. Runbook 'un içeriğini almak için [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 'ini kullanabilirsiniz. Var olan taslak runbook 'unu değiştirilmiş bir ile değiştirmek için  [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 'ini kullanabilirsiniz.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Windows PowerShell kullanarak bir runbook 'un içeriğini alma
 

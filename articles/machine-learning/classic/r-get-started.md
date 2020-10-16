@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91347266"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R 'de Azure Machine Learning Studio (klasik) kullanmaya başlama
@@ -1280,7 +1280,7 @@ RStudio iyi şekilde belgelenmiştir. İşte, başlamanızı sağlamak için RSt
 * **R kodunu düzenleyin ve yürütün**: rstudio, r kodunu düzenlemek ve çalıştırmak için tümleşik bir ortam sağlar. Daha fazla bilgi için bkz. [kodu düzenlemede ve yürütülüyor](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
 * **Hata ayıklama**: rstudio güçlü hata ayıklama özellikleri içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [RStudio Ile hata ayıklama](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Kesme noktası sorun giderme özellikleri hakkında bilgi için bkz. [kesme noktası sorun giderme](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
-## <a name="further-reading"></a><a id="appendixb"></a>Daha fazla okuma
+## <a name="further-reading"></a><a id="appendixb"></a>Daha fazla bilgi
 
 Bu R programlama öğreticisi, Machine Learning Studio (klasik) ile R dilini kullanmak için ihtiyaç duyduğunuz temel bilgileri içerir. R hakkında bilginiz yoksa, CRAN üzerinde iki giriş vardır:
 

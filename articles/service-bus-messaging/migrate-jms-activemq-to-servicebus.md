@@ -15,10 +15,10 @@ ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
 ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067163"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Mevcut Java Ileti hizmeti (JMS) 2,0 uygulamalarını Apache ActiveMQ ' den Azure Service Bus geçirin
@@ -60,7 +60,7 @@ Service Bus yükseltmeleri ve yeniden başlatmalar söz konusu olduğunda geçic
 
 İstemci uygulamalarınızı Azure Service Bus etkileşimde bulunmak üzere geçirme ve değiştirme işleminin bir parçası olarak, ActiveMQ ' de tutulan veriler Service Bus öğesine geçirilmez. ActiveMQ kuyruklarını, konularını ve aboneliklerini boşaltmak için özel bir uygulamaya ihtiyacınız vardır ve ardından iletileri Service Bus kuyruklara, konularına ve aboneliklerine yeniden çalabilirsiniz.
 
-#### <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+#### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
 Azure Active Directory tarafından desteklenen rol tabanlı erişim denetimi (RBAC), Service Bus için tercih edilen kimlik doğrulama mekanizmasıdır. RBAC veya talep tabanlı kimlik doğrulaması, Apache QPID JMS tarafından şu anda desteklenmediğinden, kimlik doğrulaması için SAS anahtarlarını kullanmanız gerekir.
 
@@ -73,7 +73,7 @@ JMS uygulamalarını yazarken aşağıdaki bileşenleri ve sürümleri kullanır
 | Bileşen | Sürüm |
 |---|---|
 | Java Ileti hizmeti (JMS) API | 1,1 veya üzeri |
-| AMQP Protokolü | 1,0 |
+| AMQP Protokolü | 1.0 |
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>AMQP bağlantı noktalarının açık olduğundan emin olun
 
@@ -90,7 +90,7 @@ Service Bus, çeşitli kurumsal güvenlik ve yüksek kullanılabilirlik özellik
   * [Güvenlik duvarı](service-bus-ip-filtering.md)
   * [Müşterinin yönettiği anahtarla hizmet tarafı şifreleme (BYOK)](configure-customer-managed-key.md)
   * [Özel uç noktalar](private-link-service.md)
-  * [Kimlik doğrulama ve yetkilendirme](service-bus-authentication-and-authorization.md)
+  * [Kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>İzleme, uyarılar ve izleme
 
@@ -116,7 +116,7 @@ ActiveMQ haritalarından hangi ölçümlerin Azure Service Bus ' deki ölçümle
 |'Ndan|`CurrentConnectionsCount`|`activeConnections`|
 |'Ndan|`EstablishedConnectionsCount`|`activeConnections` + `connectionsClosed`|
 |'Ndan|`InactiveDurableTopicSubscribersCount`|Abonelik ölçümlerini kullanma|
-|'Ndan|`TotalMessageCount`|Kuyruk/konu/abonelik düzeyi kullan`activeMessages`|
+|'Ndan|`TotalMessageCount`|Kuyruk/konu/abonelik düzeyi kullan `activeMessages`|
 |Kuyruk/konu|`EnqueueCount`|`incomingMessages`|
 |Kuyruk/konu|`DequeueCount`|`outgoingMessages`|
 |Kuyruk|`QueueSize`|`sizeBytes`|

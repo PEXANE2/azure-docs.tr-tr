@@ -1,5 +1,5 @@
 ---
-title: Öğretici-IoT Edge canlı video analizi modüllerini değiştirme
+title: Öğretici-Azure IoT Edge canlı video analizi modüllerini değiştirme
 description: Bu öğreticide, video analizi-nesnesi ve hareket algılama uygulama şablonunun kullandığı canlı video analizi ağ geçidi modüllerinin nasıl değiştirileceği ve oluşturulacağı gösterilmektedir.
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038463"
+ms.locfileid: "91873481"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Öğretici: canlı video analizi ağ geçidi modüllerini değiştirme ve derleme
 
@@ -50,7 +50,7 @@ VS Code yerel *canlı video analizi* deposu klasörünü açın.
 1. `LvaEdgeGatewayModule`İçindeki görüntü adını ve AMS hesabınızın adını eklemek için modül bölümünü düzenleyin `env:amsAccountName:value` .
 1. `lvaYolov3`Modül bölümünü düzenleyin ve resminizin adını ekleyin.
 1. `lvaEdge`Modül bölümünü düzenleyin ve resminizin adını ekleyin.
-1. Yapılandırmanın nasıl tamamlanacağı hakkında daha fazla bilgi için bkz. [Azure 'da bir video Analytics uygulaması oluşturma IoT Central](tutorial-video-analytics-create-app.md) .
+1. Yapılandırmanın nasıl tamamlanacağı hakkında daha fazla bilgi için bkz. [Azure 'da bir video Analytics uygulaması oluşturma IoT Central](tutorial-video-analytics-create-app-yolo-v3.md) .
 
 ## <a name="build-the-code"></a>Kodu oluşturma
 

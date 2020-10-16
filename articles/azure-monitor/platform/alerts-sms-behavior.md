@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: ff3d055840d69623234a799c62b1d8a6efd96ec5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327098"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Eylem gruplarında SMS uyarı davranışı
@@ -32,8 +32,8 @@ Bir eylem grubunun parçası olarak yapılandırılmış bir SMS alıcısı, bir
 
 | YANITLA | Açıklama |
 | ----- | ----------- |
-| Dıı`<Action Group Short name>` | Eylem grubundan daha fazla SMS 'yi devre dışı bırakır |
-| ETKINLEŞTIREBILIR`<Action Group Short name>` | Eylem grubundan SMS 'yi yeniden etkinleştirilir |
+| Dıı `<Action Group Short name>` | Eylem grubundan daha fazla SMS 'yi devre dışı bırakır |
+| ETKINLEŞTIREBILIR `<Action Group Short name>` | Eylem grubundan SMS 'yi yeniden etkinleştirilir |
 | DURDURULMASı | Tüm eylem gruplarından daha fazla SMS 'yi devre dışı bırakır |
 | BAŞıNDAN | TÜM eylem gruplarından SMS 'yi yeniden etkinleştirin |
 | YARDIM | Bu makaleye bir bağlantı ile kullanıcıya bir yanıt gönderilir. |

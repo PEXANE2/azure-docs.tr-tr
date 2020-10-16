@@ -9,18 +9,18 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 99e00ebc8034e77b95986d3062578548bbe32df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59656db2bbb8a6898ae08a168dbbc7e0a6a82aec
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857512"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044726"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları için C IoT Edge modülü geliştirme
 
 C kodu geliştirmek ve Azure IoT Edge çalıştıran bir Windows cihazına dağıtmak için Visual Studio 'Yu kullanın.
 
-İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -49,8 +49,8 @@ Bu öğreticiye başlamadan önce, Windows kapsayıcı geliştirmesi için geli�
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 * [Azure IoT Edge çalıştıran bir Windows cihazı](quickstart.md).
-* [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)gibi bir kapsayıcı kayıt defteri.
-* [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) uzantısıyla yapılandırıldı.
+* [Azure Container Registry](../container-registry/index.yml)gibi bir kapsayıcı kayıt defteri.
+* [Visual Studio 2019](/visualstudio/install/install-visual-studio) [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) uzantısıyla yapılandırıldı.
 * Windows kapsayıcıları çalıştıracak şekilde yapılandırılmış [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) .
 * Vcpkg aracılığıyla Windows x64 için Azure IoT C SDK 'sını yükler:
 
@@ -101,7 +101,7 @@ Dağıtım bildirimi, IoT Edge çalışma zamanına sahip kapsayıcı kayıt def
 
 1. Visual Studio Çözüm Gezgini ' nde, dosyadaki **deployment.template.js** açın.
 
-2. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. Proje oluştururken verdiğiniz bilgilerden kayıt defteri adresiniz, sizin için yeniden doldurulmalıdır. Kullanıcı adı ve parola alanları, değişken adlarını içermelidir. Örneğin:
+2. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. Proje oluştururken verdiğiniz bilgilerden kayıt defteri adresiniz, sizin için yeniden doldurulmalıdır. Kullanıcı adı ve parola alanları, değişken adlarını içermelidir. Örnek:
 
    ```json
    "registryCredentials": {

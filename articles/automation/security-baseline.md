@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400526"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070699"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -84,7 +84,7 @@ Windows sanal makinelerinin sınırlı bir süre boyunca onaylanan IP adresleriy
 
 * [Azure Güvenlik duvarını dağıtma](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/threat-protection.md)
+* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
 * [Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma 'yi anlama](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -150,7 +150,7 @@ Azure şemaları, Azure Kaynak Yöneticisi şablonları, Azure RBAC denetimleri 
 
 * [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ağ için Azure Ilke örnekleri](/azure/governance/policy/samples/#network)
+* [Ağ için Azure Ilke örnekleri](../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint oluşturma](../governance/blueprints/create-blueprint-portal.md)
 
@@ -520,7 +520,7 @@ Bununla birlikte, Azure sanal makineler tarafından desteklenen karma runbook ç
 
 * [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
@@ -720,7 +720,7 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
@@ -752,7 +752,7 @@ Ayrıca, abonelikleri içindeki kaynakları sorgulamak/öğrenmek için Azure Ka
 
 * [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-samples.md)
+* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -854,7 +854,7 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dı
 
 * [Azure Web uygulaması güvenlik duvarına genel bakış](../web-application-firewall/overview.md)
 
-* [Ağ güvenlik grupları](../virtual-network/security-overview.md)
+* [Ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md)
 
 * [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md)
 
@@ -882,7 +882,7 @@ Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli b
 
 * [Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-samples.md)
+* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
 * [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -920,7 +920,7 @@ Karma Runbook Worker özelliğini kullanırken, sanal makinelerinizdeki güvenli
 
 * [Azure Resource Manager şablonu kullanarak Otomasyon hesabı dağıtma](./quickstart-create-automation-account-template.md#deploy-the-template)
 
-* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-samples.md)
+* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -984,7 +984,7 @@ Karma Runbook Worker özelliğini kullanırken, yalnızca yetkili kullanıcılar
 
 * [Diğer adları kullanma](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-samples.md)
+* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1014,7 +1014,7 @@ Karma Runbook Worker özelliğini kullanırken Azure sanal makineleriniz için t
 
 * [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-samples.md)
+* [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

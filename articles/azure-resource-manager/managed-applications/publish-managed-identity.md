@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82508147"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Yönetilen kimliğe sahip Azure yönetilen uygulaması
@@ -50,7 +50,7 @@ Yönetilen bir kimlikle yönetilen bir uygulama oluşturmak için Azure kaynağ�
 
 ### <a name="using-createuidefinition"></a>Createuıdefinition kullanma
 
-Yönetilen bir uygulama, [üzerindeCreateUIDefinition.js](./create-uidefinition-overview.md)aracılığıyla yönetilen kimlik ile yapılandırılabilir. [Çıktılar bölümünde](./create-uidefinition-overview.md#outputs), anahtar, `managedIdentity` yönetilen uygulama şablonunun kimlik özelliğini geçersiz kılmak için kullanılabilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, tüketiciden giriş istemek için Createuıdefinition öğeleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik**Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
+Yönetilen bir uygulama, [ üzerindeCreateUIDefinition.js](./create-uidefinition-overview.md)aracılığıyla yönetilen kimlik ile yapılandırılabilir. [Çıktılar bölümünde](./create-uidefinition-overview.md#outputs), anahtar, `managedIdentity` yönetilen uygulama şablonunun kimlik özelliğini geçersiz kılmak için kullanılabilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, tüketiciden giriş istemek için Createuıdefinition öğeleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik**Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
 
 ```json
 "outputs": {

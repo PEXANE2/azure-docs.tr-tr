@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84888717"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon Özel Raporları
@@ -87,6 +87,6 @@ Tarih aralığını seçtikten sonra, raporu oluşturmak için **Git** ' e tıkl
 | Önbelleklenebilir               | Sınır olmayan önbellek durum koduna neden olan Edge CNAME için aktarılan toplam istek sayısını veya verileri (MB) gösterir.  |
 
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Raporlar yalnızca son 18 ay içinde oluşturulabilir.
 

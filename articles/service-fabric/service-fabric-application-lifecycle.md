@@ -4,10 +4,10 @@ description: Service Fabric uygulamalarını geliştirme, dağıtma, test etme, 
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: 6a36c97c6f1be96dcb8353e886f2159929e8e794
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248319"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric uygulaması yaşam döngüsü
@@ -19,7 +19,7 @@ Diğer platformlarda olduğu gibi, Azure Service Fabric bir uygulama genellikle 
 Hizmet modeli rolleri şunlardır:
 
 * **Service Developer**: aynı türdeki veya farklı türlerde birden çok uygulamada kullanılabilen ve kullanılan modüler ve genel hizmetler geliştirir. Örneğin, bir kuyruk hizmeti bir anahtar oluşturma uygulaması (Yardım Masası) veya bir e-ticaret uygulaması (alışveriş sepeti) oluşturmak için kullanılabilir.
-* **Uygulama geliştiricisi**: belirli belirli gereksinimleri veya senaryoları karşılamak üzere bir hizmet koleksiyonunu tümleştirerek uygulamalar oluşturur. Örneğin, bir e-ticaret Web sitesi "," JSON durum bilgisiz ön uç hizmeti "," açık eksiltme hizmeti "ve" sıra dışı hizmeti "ile bir Auctioning çözümü oluşturmak için tümleştirebilir.
+* **Uygulama geliştiricisi**: belirli belirli gereksinimleri veya senaryoları karşılamak üzere bir hizmet koleksiyonunu tümleştirerek uygulamalar oluşturur. Örneğin, bir e-ticaret Web sitesi, "JSON durum bilgisiz Front-End hizmeti", "açık eksiltme hizmeti" ve "sıra dışı hizmeti" olarak bir Auctioning çözümü oluşturmak için tümleştirebilir.
 * **Uygulama Yöneticisi**: uygulama yapılandırması (yapılandırma şablonu parametrelerini doldurma), dağıtım (kullanılabilir kaynaklarla eşleme) ve hizmet kalitesi hakkında kararlar verir. Örneğin, bir uygulama Yöneticisi, uygulamanın dil yerel ayarına (örneğin, Birleşik Devletler için Ingilizce veya Japonya için Japonca) karar verir. Farklı bir dağıtılmış uygulama farklı ayarlara sahip olabilir.
 * **İşleç**: uygulama Yöneticisi tarafından belirtilen uygulama yapılandırmasına ve gereksinimlerine göre uygulamaları dağıtır. Örneğin, bir operatör uygulamayı hazırlar ve dağıtır ve Azure 'da çalışmasını sağlar. İşleçler, uygulama durumu ve performans bilgilerini izler ve fiziksel altyapıyı gerektiği gibi korur.
 

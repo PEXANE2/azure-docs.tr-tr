@@ -4,10 +4,10 @@ description: Bu makalede, PowerShell kullanarak Azure DevTest Labs VHD dosyasın
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2b393b886a50f60a918690ee2a5583f9623dbe39
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88650766"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>PowerShell kullanarak VHD dosyasını laboratuvar depolama hesabına yükleyin
@@ -20,7 +20,7 @@ Azure DevTest Labs, VHD dosyaları, sanal makineleri sağlamak için kullanılan
 
 Aşağıdaki adımlarda, PowerShell kullanarak Azure DevTest Labs bir VHD dosyasını karşıya yükleme işlemi adım adım gösterilmektedir. 
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 

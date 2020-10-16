@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5fea0cb8c6ac3f706cfef5e4a153fbbf4ff465b8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91451598"
 ---
 *Önbelleği hazırlama*  
@@ -62,24 +62,24 @@ En yüksek aktarım hızını göstermek için daha büyük istek boyutunu kulla
 
 1. Aşağıda gösterilen değerlerle iki erişim belirtimleri oluşturun,
 
-   | Name | İstek boyutu | Fi | Okuyamaz |
+   | Adı | İstek boyutu | Fi | Okuyamaz |
    | --- | --- | --- | --- |
    | Rastgele yazar \_ 1 MB |1 MB |100 |0 |
    | Rastgele okunan \_ 1MB |1 MB |100 |100 |
 1. Önbellek diskini başlatmak için aşağıdaki parametrelerle birlikte Iometer testini çalıştırın. Hedef birim ve 128 sıra derinliği için üç çalışan iş parçacığı kullanın. "Test kurulumu" sekmesinde testin "çalışma süresi" süresini 2 saat olarak ayarlayın.
 
-   | Senaryo | Hedef birim | Name | Süre |
+   | Senaryo | Hedef birim | Adı | Süre |
    | --- | --- | --- | --- |
    | Önbellek diskini Başlat |CacheReads |Rastgele yazar \_ 1 MB |2 saat |
 1. Önbellek diskini aşağıdaki parametrelerle birlikte hazırlama için Iometer testini çalıştırın. Hedef birim ve 128 sıra derinliği için üç çalışan iş parçacığı kullanın. "Test kurulumu" sekmesinde testin "çalışma süresi" süresini 2 saat olarak ayarlayın.
 
-   | Senaryo | Hedef birim | Name | Süre |
+   | Senaryo | Hedef birim | Adı | Süre |
    | --- | --- | --- | --- |
    | Önbellek diskini ısınma |CacheReads |Rastgele okunan \_ 1MB |2 saat |
 
 Önbellek diski çarpdıktan sonra, aşağıda listelenen test senaryolarına devam edin. Iometer testini çalıştırmak için, **her** bir hedef birim için en az üç çalışan iş parçacığı kullanın. Her çalışan iş parçacığı için, hedef birimi seçin, sıra derinliğini ayarlayın ve ilgili test senaryosunu çalıştırmak için aşağıdaki tabloda gösterildiği gibi kaydedilmiş test belirtimlerinden birini seçin. Tabloda Ayrıca bu testler çalıştırılırken ıOPS ve aktarım hızı için beklenen sonuçlar gösterilmektedir. Tüm senaryolarda, 8 KB küçük GÇ boyutu ve 128 yüksek bir sıra derinliği kullanılır.
 
-| Test Senaryosu | Hedef birim | Name | Sonuç |
+| Test Senaryosu | Hedef birim | Adı | Sonuç |
 | --- | --- | --- | --- |
 | En çok, IOPS 'yi oku |CacheReads |Rastgele yazma \_ 8k |50.000 ıOPS |
 | En çok, IOPS yaz |Nocacheyazmaları |Rastgele okuma \_ 8k |64.000 ıOPS |

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 9b34a2435486a905923e783153ccae97628193a2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443759"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure hizmetlerinin sunucuya erişmesine izin vermeden bir Azure SQL veritabanını içeri veya dışarı aktarma
@@ -89,7 +89,7 @@ Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyin
 
 4. Sanal makinenizin genel IP adresini yeni bir sunucu düzeyi IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Sunucu düzeyinde bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet**'i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Güvenlik duvarı ayarları** sayfasını kapatın.
 

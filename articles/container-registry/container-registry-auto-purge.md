@@ -4,10 +4,10 @@ description: Bir Azure Container Registry 'den yaş ve etiket filtresine göre b
 ms.topic: article
 ms.date: 05/14/2020
 ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83652643"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry 'den görüntüleri otomatik olarak Temizleme
@@ -31,23 +31,23 @@ Azure CLı komutlarını kullanarak tek resim etiketlerini veya bildirimleri sil
 `acr purge`Kapsayıcı komutu, bir ad filtresiyle eşleşen ve belirtilen süreden eski olan bir depodaki resimleri etikete göre siler. Varsayılan olarak, temel alınan [Bildirimler](container-registry-concepts.md#manifest) ve katman verileri değil yalnızca etiket başvuruları silinir. Komutun Ayrıca bildirimleri silme seçeneği vardır. 
 
 > [!NOTE]
-> `acr purge`özniteliğin ayarlandığı bir resim etiketini veya depoyu silmez `write-enabled` `false` . Bilgi için bkz. [Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme](container-registry-image-lock.md).
+> `acr purge` özniteliğin ayarlandığı bir resim etiketini veya depoyu silmez `write-enabled` `false` . Bilgi için bkz. [Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme](container-registry-image-lock.md).
 
-`acr purge`, bir [ACR görevinde](container-registry-tasks-overview.md)kapsayıcı komutu olarak çalışacak şekilde tasarlanmıştır ve böylece görevin çalıştırıldığı kayıt defteriyle otomatik olarak kimlik doğrulaması yapar ve eylemler orada gerçekleştirilir. Bu makaledeki görev örnekleri, `acr purge` tam bir kapsayıcı görüntüsü komutu yerine komut [diğer adını](container-registry-tasks-reference-yaml.md#aliases) kullanır.
+`acr purge` , bir [ACR görevinde](container-registry-tasks-overview.md)kapsayıcı komutu olarak çalışacak şekilde tasarlanmıştır ve böylece görevin çalıştırıldığı kayıt defteriyle otomatik olarak kimlik doğrulaması yapar ve eylemler orada gerçekleştirilir. Bu makaledeki görev örnekleri, `acr purge` tam bir kapsayıcı görüntüsü komutu yerine komut [diğer adını](container-registry-tasks-reference-yaml.md#aliases) kullanır.
 
 En azından, çalıştırdığınızda şunları belirtin `acr purge` :
 
-* `--filter`-Depodaki etiketleri filtrelemek için bir depo ve *normal bir ifade* . Örnekler: `--filter "hello-world:.*"` depodaki tüm etiketlerle eşleşir `hello-world` ve `--filter "hello-world:^1.*"` ile başlayan etiketlerle eşleşir `1` . Birden çok `--filter` Depo temizlemek için birden çok parametre geçirin.
-* `--ago`-Bir go stili [Duration dize](https://golang.org/pkg/time/) , resimlerin silindiği süreyi belirtir. Süre, her biri birim sonekine sahip bir veya daha fazla ondalık sayı dizisinden oluşur. Geçerli zaman birimleri günler için "d", saat için "h", dakika için "m" içerir. Örneğin, `--ago 2d3h6m` en son 2 günden daha fazla, 3 saat ve 6 dakika önce değiştirilen tüm filtrelenmiş resimleri seçer ve `--ago 1.5h` en son değiştirilen görüntüleri 1,5 saat önce seçer.
+* `--filter` -Depodaki etiketleri filtrelemek için bir depo ve *normal bir ifade* . Örnekler: `--filter "hello-world:.*"` depodaki tüm etiketlerle eşleşir `hello-world` ve `--filter "hello-world:^1.*"` ile başlayan etiketlerle eşleşir `1` . Birden çok `--filter` Depo temizlemek için birden çok parametre geçirin.
+* `--ago` -Bir go stili [Duration dize](https://golang.org/pkg/time/) , resimlerin silindiği süreyi belirtir. Süre, her biri birim sonekine sahip bir veya daha fazla ondalık sayı dizisinden oluşur. Geçerli zaman birimleri günler için "d", saat için "h", dakika için "m" içerir. Örneğin, `--ago 2d3h6m` en son 2 günden daha fazla, 3 saat ve 6 dakika önce değiştirilen tüm filtrelenmiş resimleri seçer ve `--ago 1.5h` en son değiştirilen görüntüleri 1,5 saat önce seçer.
 
-`acr purge`isteğe bağlı birkaç parametreyi destekler. Aşağıdaki ikisi bu makaledeki örneklerde kullanılmıştır:
+`acr purge` isteğe bağlı birkaç parametreyi destekler. Aşağıdaki ikisi bu makaledeki örneklerde kullanılmıştır:
 
-* `--untagged`-İlişkili etiketleri (*etiketlenmemiş bildirimler*) olmayan bildirimlerin silineceğini belirtir.
-* `--dry-run`-Hiçbir veri silinmediğini belirtir, ancak çıktı komutun bu bayrak olmadan çalıştırıldığı ile aynı olur. Bu parametre, korumak istediğiniz verileri yanlışlıkla silmediğinden emin olmak için bir temizleme komutunun test edilmesi için yararlıdır.
+* `--untagged` -İlişkili etiketleri (*etiketlenmemiş bildirimler*) olmayan bildirimlerin silineceğini belirtir.
+* `--dry-run` -Hiçbir veri silinmediğini belirtir, ancak çıktı komutun bu bayrak olmadan çalıştırıldığı ile aynı olur. Bu parametre, korumak istediğiniz verileri yanlışlıkla silmediğinden emin olmak için bir temizleme komutunun test edilmesi için yararlıdır.
 
 Ek parametreler için, öğesini çalıştırın `acr purge --help` . 
 
-`acr purge`, akan ve ayrıca daha sonra alınabilmeleri için [çalışan değişkenleri](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlüklerini](container-registry-tasks-logs.md) içeren ACR görevleri komutlarının diğer özelliklerini destekler.
+`acr purge` , akan ve ayrıca daha sonra alınabilmeleri için [çalışan değişkenleri](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlüklerini](container-registry-tasks-logs.md) içeren ACR görevleri komutlarının diğer özelliklerini destekler.
 
 ### <a name="run-in-an-on-demand-task"></a>İsteğe bağlı bir görevde Çalıştır
 

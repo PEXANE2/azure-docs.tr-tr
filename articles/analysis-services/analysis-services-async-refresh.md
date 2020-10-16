@@ -8,18 +8,18 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 0a5a7ac7d830cb03b1370c31d7e854f3b2a5a2fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e9fd20fd42e9fe1eb0e98766798e5c759c974c97
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507191"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013908"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API ile zaman uyumsuz yenileme
 
 REST çağrılarını destekleyen herhangi bir programlama dilini kullanarak Azure Analysis Services tablolu modellerinizde zaman uyumsuz veri yenileme işlemleri gerçekleştirebilirsiniz. Bu, sorgu ölçeği için salt okuma çoğaltmalarının eşitlenmesini içerir. 
 
-Veri hacmi, bölümler kullanılarak en iyi duruma getirme düzeyi vb. gibi bir dizi etkene bağlı olarak veri yenileme işlemleri biraz zaman alabilir. Bu işlemler, genellikle [Tom](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (tablolu nesne modeli), [PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet 'leri veya [Tmsl](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (tablosal model betik dili) gibi mevcut yöntemlerle çağırılır. Ancak, bu yöntemler genellikle güvenilir olmayan, uzun süre çalışan HTTP bağlantılarına gerek duyar.
+Veri hacmi, bölümler kullanılarak en iyi duruma getirme düzeyi vb. gibi bir dizi etkene bağlı olarak veri yenileme işlemleri biraz zaman alabilir. Bu işlemler, genellikle [Tom](/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (tablolu nesne modeli), [PowerShell](/analysis-services/powershell/analysis-services-powershell-reference) cmdlet 'leri veya [Tmsl](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (tablosal model betik dili) gibi mevcut yöntemlerle çağırılır. Ancak, bu yöntemler genellikle güvenilir olmayan, uzun süre çalışan HTTP bağlantılarına gerek duyar.
 
 Azure Analysis Services REST API, veri yenileme işlemlerinin zaman uyumsuz olarak gerçekleştirilmesini sağlar. REST API kullanarak, istemci uygulamalarından uzun süre çalışan HTTP bağlantıları gerekli değildir. Güvenilirlik için otomatik yeniden denemeler ve toplu işlemeler gibi diğer yerleşik özellikler de vardır.
 
@@ -98,11 +98,11 @@ Gövde aşağıdakine benzeyebilir:
 
 Parametrelerin belirtilmesi gerekli değildir. Varsayılan değer uygulanır.
 
-| Ad             | Tür  | Description  |Varsayılan  |
+| Ad             | Tür  | Açıklama  |Varsayılan  |
 |------------------|-------|--------------|---------|
-| `Type`           | Sabit listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   otomatik      |
+| `Type`           | Sabit listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](/analysis-services/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   otomatik      |
 | `CommitMode`     | Sabit listesi  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |
-| `MaxParallelism` | int   | Bu değer, işlem komutlarının paralel olarak çalıştırılacağı en fazla iş parçacığı sayısını belirler. Bu değer, TMSL [Sequence komutunda](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) veya diğer yöntemleri kullanarak ayarlanabir Maxparallelilik özelliği ile hizalanır.       | 10        |
+| `MaxParallelism` | int   | Bu değer, işlem komutlarının paralel olarak çalıştırılacağı en fazla iş parçacığı sayısını belirler. Bu değer, TMSL [Sequence komutunda](/analysis-services/tmsl/sequence-command-tmsl) veya diğer yöntemleri kullanarak ayarlanabir Maxparallelilik özelliği ile hizalanır.       | 10        |
 | `RetryCount`     | int   | İşlemin başarısız olmadan önce kaç kez yeniden deneneceğini gösterir.      |     0    |
 | `Objects`        | Dizi | İşlenecek nesne dizisi. Her nesne şunları içerir: bir bölümü işlerken tüm tablo veya "Tablo" ve "Bölüm" işlemlerini işlerken "Table". Hiçbir nesne belirtilmemişse, modelin tamamı yenilenir. |   Modelin tamamını işle      |
 
@@ -113,7 +113,7 @@ CommitMode, partialBatch 'e eşittir. Saat süretabilecek büyük veri kümeleri
 
 ### <a name="status-values"></a>Durum değerleri
 
-|Durum değeri  |Description  |
+|Durum değeri  |Açıklama  |
 |---------|---------|
 |`notStarted`    |   İşlem henüz başlatılmadı.      |
 |`inProgress`     |   İşlem sürüyor.      |
@@ -226,6 +226,4 @@ Hizmet sorumlusunu ayarlama hakkında daha fazla bilgi için bkz. [hizmet soruml
 ## <a name="see-also"></a>Ayrıca bkz.
 
 [Lerinizi](analysis-services-samples.md)   
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
-
-
+[REST API](/rest/api/analysisservices/servers)

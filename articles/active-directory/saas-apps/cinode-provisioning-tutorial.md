@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: dd052bf7a95cbadf2a107f7e49915a9899b084ae
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: ce4b93bc8f44e7bec490466fc42be829f942ae07
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614096"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940931"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cincode yapılandırma
 
@@ -55,7 +55,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 3. **Belirteçler** ' a gidin ve yeni bir belirteç oluşturun.
 
-4. Benzersiz bir ad girin, https://api.cinode.app/scim/v2 hedef kitle olarak seçin ve bir süre sonu tarihi uygun şekilde ayarlayın.
+4. Benzersiz bir ad girin, hedef kitle olarak **' https://api.cinode.app/scim/v2 '** seçeneğini belirleyin ve bir süre sonu tarihi uygun şekilde ayarlayın.
 
 5. **Belirteç oluştur**' a tıklayın.
 

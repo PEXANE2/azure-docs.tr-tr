@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebcb746e10ae910c695e52fb053fc5d0b316e70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8958e16ef4b1b7033fa0757e2a70eb053896b143
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543916"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Öğretici: OpsGenie ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, OpsGenie 'yi Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -103,7 +103,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -133,15 +133,15 @@ Bu bölümde, OpsGenie erişimi vererek Azure çoklu oturum açma özelliğini k
 
 3. SSO 'yu etkinleştirmek için **etkin**' i seçin.
    
-    ![OpsGenie ayarları](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
+    !["Etkin" onay kutusunun seçili olduğunu gösteren ekran görüntüsü.](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. **Sağlayıcı** bölümünde **Azure Active Directory** sekmesine tıklayın.
    
-    ![OpsGenie ayarları](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
+    !["Azure Active Directory" sekmesi seçiliyken "sağlayıcı" bölümünü gösteren ekran görüntüsü.](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. Azure Active Directory iletişim sayfasında, aşağıdaki adımları uygulayın:
    
-    ![OpsGenie ayarları](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
+    !["Çoklu oturum açmayı etkinleştir" bölümünü, "bir M L 2,0 uç noktası" ve "metadata U R L" ile "çoklu oturum açma" bölümünü gösteren ekran görüntüsü.](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
     a. **Uygulama KIMLIĞI URI** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı (varlık kimliği)** metin kutusuna yapıştırın.
 
@@ -169,7 +169,7 @@ Bu bölümün amacı, OpsGenie 'de B. Simon adlı bir Kullanıcı oluşturmaktı
 
 4. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![OpsGenie ayarları](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
+    !["E-posta" ve "tam ad" metin kutuları vurgulanmış "Kullanıcı Ekle" iletişim kutusunu ve "Kaydet" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
     a. **E-posta** metin kutusuna, Azure Active Directory adreslenen B. Simon e-posta adresini yazın.
    

@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008925"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Redis için Azure Cache sunucu tarafı sorunlarını giderme
@@ -35,12 +35,12 @@ Sunucu tarafında bellek baskısı, isteklerin işlenmesini geciktirebileceği t
 
 Redin, bu sorunu belirlemenize yardımcı olabilecek [Info](https://redis.io/commands/info) komutu aracılığıyla iki istatistik ortaya çıkarır: "used_memory" ve "used_memory_rss". Portalı kullanarak [bu ölçümleri görüntüleyebilirsiniz](cache-how-to-monitor.md#view-metrics-with-azure-monitor) .
 
-Bellek kullanımını sağlıklı tutmaya yardımcı olmak için kullanabileceğiniz birkaç olası değişiklik vardır:
+Bellek kullanımını iyi durumda tutmaya yardımcı olmak için yapabileceğiniz birkaç değişiklik vardır:
 
-- [Bir bellek Ilkesi yapılandırın](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) ve anahtarlarınızın süre sonu zamanlarını ayarlayın. Parçalandıysanız Bu ilke yeterli olmayabilir.
+- [Bir bellek Ilkesi yapılandırın](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) ve anahtarlarınızın süre sonu zamanlarını ayarlayın. Ortamınızda parçalanma varsa bu ilke yeterli olmayabilir.
 - Bellek parçalanmasını dengelemek için yeterince büyük olan [MaxMemory ile ayrılmış bir değer yapılandırın](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) .
 - Büyük önbelleğe alınmış nesnelerinizi daha küçük ilgili nesnelere bölün.
-- Olası etkilerden erken haberdar olmak için kullanılan bellek gibi ölçümler üzerinde [uyarılar oluşturun](cache-how-to-monitor.md#alerts) .
+- Olası etkileri hakkında önceden bilgi sahibi olmak için kullanılan bellek gibi ölçümlerle ilgili [uyarılar oluşturun](cache-how-to-monitor.md#alerts).
 - Daha fazla bellek kapasitesine sahip daha büyük bir önbellek boyutuna [ölçeklendirin](cache-how-to-scale.md) .
 
 ## <a name="high-cpu-usage-or-server-load"></a>Yüksek CPU kullanımı veya sunucu yükü
@@ -70,7 +70,7 @@ Farklı önbellek boyutları farklı ağ bant genişliği kapasiteye sahiptir. S
 Ağ bant genişliği kullanımının en yüksek kapasiteye yakın olduğu durumları azaltmak için:
 
 - Ağ talebini azaltmak için istemci çağrısı davranışını değiştirin.
-- Olası etkilerden önce bildirilmesi için önbellek okuma veya önbellek yazma gibi ölçümler üzerinde [uyarılar oluşturun](cache-how-to-monitor.md#alerts) .
+- Olası etkileri hakkında önceden bilgi sahibi olmak için bellek okuma veya bellek yazma gibi ölçümlerle ilgili [uyarılar oluşturun](cache-how-to-monitor.md#alerts).
 - Daha fazla ağ bant genişliği kapasitesine sahip daha büyük bir önbellek boyutuna [ölçeklendirin](cache-how-to-scale.md) .
 
 ## <a name="additional-information"></a>Ek bilgiler
@@ -78,5 +78,5 @@ Ağ bant genişliği kullanımının en yüksek kapasiteye yakın olduğu duruml
 - [Redis için Azure Cache istemci tarafı sorunlarını giderme](cache-troubleshoot-client.md)
 - [Doğru katmanı seçme](cache-overview.md#choosing-the-right-tier)
 - [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Redsıs için Azure önbelleğini izleme](cache-how-to-monitor.md)
+- [Redis için Azure Cache'i izleme](cache-how-to-monitor.md)
 - [Redsıs komutlarını nasıl çalıştırabilirim?](cache-development-faq.md#how-can-i-run-redis-commands)

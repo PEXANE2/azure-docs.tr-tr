@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259122"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742392"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Öğretici: SMB aracılığıyla Azure Data Box’tan veri kopyalama (Önizleme)
 
@@ -50,7 +50,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
 
 1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **Kimlik bilgilerini al**’ı seçin. 
 
-    ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![Paylaşım kimlik bilgilerini alma](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam**’ı seçin.
     
@@ -75,7 +75,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
 
 4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam**’ı seçin.
     
-    ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Dosya Gezgini aracılığıyla paylaşıma bağlanma](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     Artık paylaşımları klasörler olarak görebilirsiniz.
     

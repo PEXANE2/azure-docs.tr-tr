@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
 ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618129"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
@@ -36,7 +36,7 @@ SQL yönetilen örneği, temel altyapıyı ve mimarisine bağlı olan özellikle
 | **Donanım** | Intel® E5-2673 v3 (Haswell) 2,4 GHz işlemcileri, ekli SSD sanal çekirdek = 1 PP (fiziksel çekirdek) | Intel® E5-2673 v4 (geniş) 2,3 GHz, Intel® SP-8160 (ufuk Gölü) ve Intel® 8272CL (Cascade Lake) 2,5 GHz işlemcileri, Fast NVMe SSD, vCore = 1 LP (hiper iş parçacığı) |
 | **Sanal çekirdek sayısı** | 8, 16, 24 sanal çekirdek | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
 | **Maksimum bellek (bellek/çekirdek oranı)** | Sanal çekirdek başına 7 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | vCore başına 5,1 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
-| **Maks. bellek Içi OLTP belleği** | Örnek sınırı: vCore başına 1-1,5 GB| Örnek sınırı: vCore başına 0,8-1,65 GB |
+| **En büyük In-Memory OLTP belleği** | Örnek sınırı: vCore başına 1-1,5 GB| Örnek sınırı: vCore başına 0,8-1,65 GB |
 | **En büyük örnek ayrılmış depolama alanı** |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1 TB | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
 
 > [!IMPORTANT]
@@ -90,7 +90,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 Birkaç ek dikkat edin: 
 
 - **Şu anda kullanılabilir örnek depolama boyutu** , ayrılmış örnek boyutu ve kullanılan depolama alanı arasındaki farktır.
-- Kullanıcı ve sistem veritabanlarındaki veri ve günlük dosyası boyutu, en büyük depolama boyutu sınırı ile karşılaştırılan örnek depolama boyutuna dahildir. Veritabanlarına göre kullanılan toplam alanı öğrenmek için [sys. master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) sistem görünümünü kullanın. Hata günlükleri kalıcı değil ve boyutuna dahil edilmez. Yedeklemeler depolama boyutuna dahil değildir.
+- Kullanıcı ve sistem veritabanlarındaki veri ve günlük dosyası boyutu, en büyük depolama boyutu sınırı ile karşılaştırılan örnek depolama boyutuna dahildir. Veritabanlarına göre kullanılan toplam alanı öğrenmek için [sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) sistem görünümünü kullanın. Hata günlükleri kalıcı değil ve boyutuna dahil edilmez. Yedeklemeler depolama boyutuna dahil değildir.
 - Genel Amaçlı katmanındaki aktarım hızı ve ıOPS, SQL yönetilen örneği tarafından açıkça sınırlı olmayan [dosya boyutuna](#file-io-characteristics-in-general-purpose-tier) da bağlıdır.
   [Otomatik yük devretme gruplarını](../database/auto-failover-group-configure.md) kullanarak farklı bir Azure bölgesinde başka bir okunabilir çoğaltma oluşturabilirsiniz
 - En büyük örnek ıOPS, iş yükünün dosya düzenine ve dağıtımına bağlıdır. Örnek olarak, her biri 500 ıOPS ile en fazla 5 k ıOPS ve 7 küçük dosya (128 GB 'tan küçük) ile 7 x 1TB dosya oluşturursanız, iş yükünüz tüm dosyaları kullanıyorsa örnek başına 38500 ıOPS (7x5000 + 7x500) alabilirsiniz. Bazı ıOPS 'nin otomatik yedeklemeler için de kullanıldığını unutmayın.

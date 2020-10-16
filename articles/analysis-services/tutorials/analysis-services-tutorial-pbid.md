@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229319"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018126"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Öğretici: Power BI Desktop ile bağlanma
 
@@ -57,7 +57,7 @@ Power BI Desktop'tan sunucunuza bağlanmak için önce sunucu adını bilmelisin
 
 4. **GÖRSEL ÖĞELER**'de **Kümelenmiş Çubuk Grafik**'i seçin, sonra **Biçim**'e (rulo fırça simgesi) tıklayın ve **Veri etiketleri**'ni açın. 
 
-   ![Görselleştirmeler](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
+   ![Görsel öğeler](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
 5. **Alanlar**  >  **Internet Sales** tablosunda, **Internet satışları toplamı** ve **kenar boşluğu** ölçüleri ' ni seçin. **Ürün Kategorisi** tablosunda **Ürün Kategorisi Adı**'nı seçin.
 
@@ -70,4 +70,4 @@ Power BI Desktop'tan sunucunuza bağlanmak için önce sunucu adını bilmelisin
 Artık ihtiyacınız yoksa raporunuzu kaydetmeyin veya kaydettiyseniz dosyayı silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, Power BI Desktop kullanarak sunucudaki bir veri modeline bağlanmayı ve temel bir rapor oluşturmayı öğrenin. Veri modeli oluşturma konusunda bilgi sahibi değilseniz, SQL Server Analysis Services belgelerine [Adventure Works Internet satışları tablo verileri modelleme öğreticisine](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) bakın.
+Bu öğreticide, Power BI Desktop kullanarak sunucudaki bir veri modeline bağlanmayı ve temel bir rapor oluşturmayı öğrenin. Veri modeli oluşturma konusunda bilgi sahibi değilseniz, SQL Server Analysis Services belgelerine [Adventure Works Internet satışları tablo verileri modelleme öğreticisine](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) bakın.

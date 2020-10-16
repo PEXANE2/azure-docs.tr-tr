@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f8b2454bb0e39f5923af00502367f7b16bb040a4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268392"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018993"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Azure Portal’ı kullanarak isteğe bağlı içerik göndermeye başlama
 
@@ -127,7 +127,7 @@ Paylaşılan erişim imzası URL'si aşağıdaki biçime sahiptir:
 > 
 > 
 
-Bulucunun sona erme tarihini güncelleştirmek için bir [REST API](/rest/api/media/operations/locator#update_a_locator) veya [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259) kullanabilirsiniz. 
+Bulucunun sona erme tarihini güncelleştirmek için bir [REST API](/rest/api/media/operations/locator#update_a_locator) veya [.NET API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) kullanabilirsiniz. 
 
 > [!NOTE]
 > Paylaşılan erişim imzası bulucunun sona erme tarihini güncelleştirdiğinizde URL değişir.
@@ -137,7 +137,7 @@ Bulucunun sona erme tarihini güncelleştirmek için bir [REST API](/rest/api/me
 2. **Ayar**  >  **varlıkları**' nı seçin. Yayımlamak istediğiniz varlığı seçin.
 3. **Yayımla** düğmesini seçin.
 4. Bulucu türünü seçin.
-5. **Add (Ekle)** seçeneğini belirleyin.
+5. **Ekle**’yi seçin.
    
     ![Videoyu yayımlama](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
@@ -156,7 +156,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 * Videonun yayımlandığından emin olun.
 * Azure portal medya oynatıcı varsayılan akış uç noktasından oynatılır. Varsayılan olmayan bir akış uç noktasından oynatmak istiyorsanız, URL'yi seçip kopyalayın ve başka bir oynatıcıya yapıştırın. Örneğin [Azure Media Player](https://aka.ms/azuremediaplayer) üzerinde videonuzu test edebilirsiniz.
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar

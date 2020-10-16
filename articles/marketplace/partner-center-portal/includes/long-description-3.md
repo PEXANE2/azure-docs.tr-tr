@@ -1,5 +1,5 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: " dosyası"
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
 ms.openlocfilehash: 5197b71db4f46d9908d5539c114d636b9474a870
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317684"
 ---
 Açıklamanızı daha ilgi çekici olacak şekilde biçimlendirmek için HTML etiketlerini kullanın. Çoğu etiket, bu tabloda gösterildiği gibi bir açılış ve kapanış bileşeni gerektirir.
@@ -26,5 +26,5 @@ Açıklamanızı daha ilgi çekici olacak şekilde biçimlendirmek için HTML et
 |   Numaralandırmasının  |  `<ol> & </ol>, <li> & </li>`  |  `<ol>`<br>`<li>`Numaralı öğe`</li>`<br>`<li>`Numaralı öğe`</li>`<br>`<li>`Numaralı öğe`</li>`<br>`</ol>`   |   1. numaralı öğe<br>2. numaralı öğe<br>3. numaralı öğe   |
 |   Yeni sayı olmayan yeni satır (veya madde işareti)  |  `<ol> & </ol>, <li> & </li>, <br>`  |  `<ol>`<br>`<li>`Buraya metin ekleyin`</li>`<br>`<li>`Buraya metin ekleyin `<br>` buraya metin ekleyin`</li>`<br>`</ol>`  |  1. buraya metin ekleyin<br>2. buraya metin ekleyin<br>&nbsp;&nbsp;&nbsp;&nbsp;Buraya metin ekleyin   |
 |   Yeni sayı olmayan yeni paragraf (veya madde işareti)  |  `<ol> & </ol>, <li> & </li>, <br>`  |  `<ol>`<br>`<li>`Buraya metin ekleyin`</li>`<br>`<li>`Buraya metin ekleyin `<br><br>` buraya metin ekleyin`</li>`<br>`</ol>`  |  1. buraya metin ekleyin<br>2. buraya metin ekleyin<p>&nbsp;&nbsp;&nbsp;&nbsp;Buraya metin ekleyin   |
-|   Başlıkları kullanma  |  `<h1> & </h1>, <h2> & </h2>`, en fazla`<h6> & </h6>`  |  `<h1>`Bu başlık 1 ' dir`</h1>`<br>`<h2>`Bu başlık 2 ' dir`</h2>`<br>`<h3>`Bu, başlık 3 ' ün`</h3>`  |  **<font size="+3">Bu başlık 1 ' dir</font>**<br>**<font size="+2">Bu başlık 2 ' dir</font>**<br>**<font size="+1">Bu, başlık 3 ' ün</font>**  |
+|   Başlıkları kullanma  |  `<h1> & </h1>, <h2> & </h2>`, en fazla `<h6> & </h6>`  |  `<h1>`Bu başlık 1 ' dir`</h1>`<br>`<h2>`Bu başlık 2 ' dir`</h2>`<br>`<h3>`Bu, başlık 3 ' ün`</h3>`  |  **<font size="+3">Bu başlık 1 ' dir</font>**<br>**<font size="+2">Bu başlık 2 ' dir</font>**<br>**<font size="+1">Bu, başlık 3 ' ün</font>**  |
 | | | |

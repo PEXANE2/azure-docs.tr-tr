@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
 ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649652"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 ve Dsv3 serisi
@@ -26,7 +26,7 @@ Dv3 serisi boyutlar Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon�
 
 Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium depolama disklerini kullanmak için Dsv3 boyutlarını kullanın. Dsv3 boyutları için fiyatlandırma ve faturalandırma oranları Dv3 serisi ile aynıdır.
 
-Dv3 serisi VM 'Ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
+Dv3 serisi VM 'Ler özelliği Intel® Hyper-Threading teknolojisini.
 
 [Acu](acu.md): 160-190<br>
 [Premium Depolama](premium-storage-performance.md): desteklenmiyor<br>
@@ -50,7 +50,7 @@ Dv3 serisi VM 'Ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
 
 Dsv3 serisi boyutlar Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (Alswell), Intel Turbo Boost Technology 2,0 ile Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve Premium depolama kullanır. Dsv3 serisi boyutları, üretim iş yüklerinin çoğu için uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
 
-Dsv3 serisi VM 'Ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
+Dsv3 serisi VM 'Ler özelliği Intel® Hyper-Threading teknolojisini.
 
 [Acu](acu.md): 160-190<br>
 [Premium Depolama](premium-storage-performance.md): desteklenir<br>

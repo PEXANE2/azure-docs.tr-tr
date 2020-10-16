@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3540add3020c45e5664f96f5c47dec10a551ed4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857070"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978858"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma
 
@@ -109,7 +109,7 @@ IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Üç bile�
 
 ### <a name="deploy-the-iot-edge-device"></a>IoT Edge cihazı dağıtma
 
-Bu bölüm, yeni bir sanal makine oluşturmak ve buna IoT Edge çalışma zamanını yüklemek için bir Azure Resource Manager şablonu kullanır. Bunun yerine kendi Linux cihazınızı kullanmak istiyorsanız, [Linux üzerinde Azure IoT Edge çalışma zamanını yükleme](how-to-install-iot-edge-linux.md)bölümündeki yükleme adımlarını izleyerek bu hızlı başlangıca geri dönebilirsiniz.
+Bu bölüm, yeni bir sanal makine oluşturmak ve buna IoT Edge çalışma zamanını yüklemek için bir Azure Resource Manager şablonu kullanır. Bunun yerine kendi Linux cihazınızı kullanmak istiyorsanız, [Azure IoT Edge çalışma zamanını yükleme](how-to-install-iot-edge.md)' deki yükleme adımlarını izleyerek bu hızlı başlangıca geri dönebilirsiniz.
 
 Önceden oluşturulmuş [ıotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) şablonuna dayalı IoT Edge cihazınızı oluşturmak IÇIN aşağıdaki CLI komutunu kullanın.
 

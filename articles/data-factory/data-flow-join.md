@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83683381"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi Birleştir
@@ -79,7 +79,7 @@ Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı �
 
 Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dışında yayınlamayı** devre dışı bırakmanız önerilmez.
 
-## <a name="self-join"></a>Kendi kendine Birleştir
+## <a name="self-join"></a>Self-Join
 
 Bir veri akışını kendisiyle birleştirmek için, bir seçme dönüşümü olan mevcut bir akışa diğer ad ekleyin. Bir dönüşümün yanındaki artı simgesine tıklayıp **yeni dal**' ı seçerek yeni bir dal oluşturun. Özgün akışa diğer ad için bir seçme dönüşümü ekleyin. Bir JOIN dönüşümü ekleyin ve **sol** akış olarak orijinal akışı ve seçme dönüşümünü **doğru akış**olarak seçin.
 
@@ -91,7 +91,7 @@ Hata ayıklama modundaki veri önizlemesiyle JOIN dönüştürmelerinin test edi
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 
 ```
 <leftStream>, <rightStream>

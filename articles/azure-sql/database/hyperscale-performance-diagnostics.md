@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84324409"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL hiper ölçek performans sorunlarını giderme tanılaması
@@ -26,7 +26,7 @@ Hiper ölçekli bir veritabanında performans sorunlarını gidermek için, Azur
 
 Her Azure SQL veritabanı hizmet düzeyinde günlük oluşturma oranı sınırlamaları, [günlük hızı](resource-limits-logical-server.md#transaction-log-rate-governance)yönetimi aracılığıyla uygulanır. Hiper ölçekte, günlük oluşturma sınırı hizmet düzeyinden bağımsız olarak şu anda 100 MB/sn olarak ayarlanmıştır. Ancak, birincil işlem çoğaltmasındaki günlük oluşturma hızının, kurtarılabilirlik sağlamak için kısıtlandığı durumlar vardır. Bu kısıtlama, bir [sayfa sunucusu veya başka bir işlem çoğaltması](service-tier-hyperscale.md#distributed-functions-architecture) , günlük hizmetinden yeni günlük kayıtlarının uygulanması önemli ölçüde geride olduğunda gerçekleşir.
 
-Aşağıdaki bekleme türleri ( [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)' de), günlük hızının birincil işlem çoğaltmasında nasıl kısıtlanamadığına ilişkin nedenleri anlatmaktadır:
+Aşağıdaki bekleme türleri ( [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)), günlük hızının birincil işlem çoğaltmasında nasıl kısıtlanamadığına ilişkin nedenleri anlatmaktadır:
 
 |Bekleme türü    |Açıklama                         |
 |-------------          |------------------------------------|
@@ -45,11 +45,11 @@ Birkaç dinamik yönetilen görünüm (DMVs) ve genişletilmiş olaylar, bir say
 
 - Sayfa sunucusu okumaları raporlamak için sütunlar, yürütme DMVs ve katalog görünümlerinde mevcuttur, örneğin:
 
-  - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-  - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-  - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-  - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
-  - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
+  - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+  - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+  - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+  - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+  - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - Sayfa sunucusu okuma aşağıdaki genişletilmiş olaylara eklenir:
   - sql_statement_completed
   - sp_statement_completed
@@ -67,11 +67,11 @@ Birkaç dinamik yönetilen görünüm (DMVs) ve genişletilmiş olaylar, bir say
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>Sanal dosya istatistikleri ve GÇ hesabı
 
-Azure SQL veritabanı 'nda, [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF, SQL veritabanı GÇ 'yi izlemenin birincil yoludur. Hyperscale içindeki GÇ özellikleri, [Dağıtılmış mimarisi](service-tier-hyperscale.md#distributed-functions-architecture)nedeniyle farklıdır. Bu bölümde, bu DMF 'de görüldüğü gibi veri dosyalarına GÇ 'ye (okuma ve yazma) odaklanıyoruz. Hiper ölçekte, bu DMF 'de görünür olan her veri dosyası uzak bir sayfa sunucusuna karşılık gelir. Burada bahsedilen RBPEX önbelleği, işlem çoğaltmasındaki kapsayan olmayan bir önbellek olan yerel bir SSD tabanlı önbelleğidir.
+Azure SQL veritabanı 'nda, [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF, SQL veritabanı GÇ 'yi izlemenin birincil yoludur. Hyperscale içindeki GÇ özellikleri, [Dağıtılmış mimarisi](service-tier-hyperscale.md#distributed-functions-architecture)nedeniyle farklıdır. Bu bölümde, bu DMF 'de görüldüğü gibi veri dosyalarına GÇ 'ye (okuma ve yazma) odaklanıyoruz. Hiper ölçekte, bu DMF 'de görünür olan her veri dosyası uzak bir sayfa sunucusuna karşılık gelir. Burada bahsedilen RBPEX önbelleği, işlem çoğaltmasındaki kapsayan olmayan bir önbellek olan yerel bir SSD tabanlı önbelleğidir.
 
 ### <a name="local-rbpex-cache-usage"></a>Yerel RBPEX önbelleği kullanımı
 
-Yerel bir SSD depolamada, işlem çoğaltmasında yerel RBPEX önbelleği var. Bu nedenle, bu önbellekteki GÇ, uzak sayfa sunucularında GÇ 'den daha hızlıdır. Şu anda, bir hiper ölçek veritabanında bulunan [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) , işlem çoğaltmasındaki yerel RBPEX ÖNBELLEĞINE karşı GÇ 'yi bildiren özel bir satıra sahiptir. Bu satırda hem hem de sütunları için 0 değeri `database_id` bulunur `file_id` . Örneğin, aşağıdaki sorgu, veritabanının başlamasından itibaren RBPEX kullanım istatistikleri döndürüyor.
+Yerel bir SSD depolamada, işlem çoğaltmasında yerel RBPEX önbelleği var. Bu nedenle, bu önbellekteki GÇ, uzak sayfa sunucularında GÇ 'den daha hızlıdır. Şu anda, bir hiper ölçek veritabanında [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) , GÇ 'yi işlem çoğaltmasındaki yerel RBPEX önbelleğine göre bildiren özel bir satıra sahiptir. Bu satırda hem hem de sütunları için 0 değeri `database_id` bulunur `file_id` . Örneğin, aşağıdaki sorgu, veritabanının başlamasından itibaren RBPEX kullanım istatistikleri döndürüyor.
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
@@ -92,16 +92,16 @@ Tüm diğer veri dosyalarında yapılan toplanmış okumaların, RBPEX üzerinde
 
 ### <a name="log-writes"></a>Günlük yazma işlemleri
 
-- Birincil işlem sırasında, file_id 2 ' nin sys. dm_io_virtual_file_stats ' de bir günlük yazma işlemi hesaba katılmaz. Birincil işlem üzerine bir günlük yazma, günlük giriş bölgesine bir yazma işlemi olur.
+- Birincil işlem sırasında, file_id sys.dm_io_virtual_file_stats 2 ' de bir günlük yazma işlemi hesaba katılmaz. Birincil işlem üzerine bir günlük yazma, günlük giriş bölgesine bir yazma işlemi olur.
 - Günlük kayıtları, bir işlemede ikincil çoğaltmada sağlamlaştırılmış değildir. Hiper ölçekte günlük hizmeti, günlük hizmeti tarafından zaman uyumsuz olarak uygulanır. Günlük yazma işlemleri ikincil çoğaltmalarda gerçekten gerçekleşmediğinden, ikincil çoğaltmalarda herhangi bir günlük IOs hesabı yalnızca izleme amaçlıdır.
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Kaynak Kullanım istatistiklerinde veri GÇ
 
-Hiper olmayan ölçekli bir veritabanında, [kaynak idare](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) verileri IOPS sınırına göre veri dosyalarına yönelik Birleşik okuma ve Yazma IOPS 'si, sütununda [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) görünümlerinde raporlanır `avg_data_io_percent` . Aynı değer Azure portal _VERI GÇ yüzdesi_olarak raporlanır.
+Hiper olmayan bir veritabanında, [kaynak idare](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) verileri IOPS sınırına göre veri dosyalarına yönelik Birleşik okuma ve Yazma IOPS 'si, [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) görünümlerinde raporlanır `avg_data_io_percent` . Aynı değer Azure portal _VERI GÇ yüzdesi_olarak raporlanır.
 
 Hiper ölçekli bir veritabanında, bu sütun yalnızca işlem çoğaltmasındaki yerel depolama alanı için olan sınıra göre veri ıOPS kullanımını bildirir ve özellikle RBPEX ve ile karşı GÇ `tempdb` . Bu sütundaki %100 değeri, kaynak yönetimi 'nin yerel depolama ıOPS 'yi sınırlandırdığını gösterir. Bu bir performans sorunuyla bağıntılı ise, daha az GÇ oluşturmak için iş yükünü ayarlayın veya kaynak yönetimi _en yüksek VERI IOPS_ [sınırını](resource-limits-vcore-single-databases.md)artırmak için veritabanı hizmeti hedefini artırın. RBPEX okuma ve yazma kaynak idaresi için sistem, SQL Server veritabanı altyapısı tarafından verilebilen daha büyük IOs yerine ayrı ayrı 8 KB 'lık IOs sayısını sayar.
 
-Kaynak Kullanımı görünümlerinde veya portalda, uzak sayfa sunucularındaki veri GÇ 'leri raporlanır, ancak daha önce belirtildiği gibi [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) Dmf içinde raporlanır.
+Kaynak Kullanımı görünümlerinde veya portalda, uzak sayfa sunucularına karşı veri GÇ verileri bildirilmemiştir, ancak daha önce belirtildiği gibi [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) Dmf içinde raporlanır.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74787345"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Azure Logic Apps sonraki eylemi çalıştırmayı geciktir
@@ -28,7 +28,7 @@ Bu eylemleri kullanmanın bazı örnek yolları aşağıda verilmiştir:
 
 * Verileri devam ettirmeden ve almadan önce bir HTTP çağrısı bitene kadar iş akışınızı erteleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -53,7 +53,7 @@ Bu eylemleri kullanmanın bazı örnek yolları aşağıda verilmiştir:
    | Özellik | JSON adı | Gerekli | Tür | Açıklama |
    |----------|-----------|----------|------|-------------|
    | Sayı | count | Evet | Tamsayı | Geciktirime zaman birimi sayısı |
-   | Birim | unit | Evet | Dize | Zaman birimi, örneğin: `Second` , `Minute` ,, `Hour` `Day` , `Week` veya`Month` |
+   | Birim | unit | Evet | Dize | Zaman birimi, örneğin: `Second` , `Minute` ,, `Hour` `Day` , `Week` veya `Month` |
    ||||||
 
 1. İş akışınızda çalıştırmak istediğiniz herhangi bir eylemi ekleyin.

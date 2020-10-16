@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: REST API yeni ilke ataması'
 description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için REST API kullanırsınız.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136531"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074014"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Hızlı başlangıç: REST API ile uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
@@ -23,7 +23,7 @@ REST API, Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu k
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-- Henüz yapmadıysanız, [Armclient](https://github.com/projectkudu/ARMClient)' ı yüklemeyin. Azure Resource Manager tabanlı REST API 'Lerine HTTP istekleri gönderen bir araçtır. Alternatif olarak, bekleyen belgelerde "dene" özelliğini veya PowerShell 'in [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) veya [Postman](https://www.postman.com)gibi araçları kullanabilirsiniz.
+- Henüz yapmadıysanız, [Armclient](https://github.com/projectkudu/ARMClient)' ı yüklemeyin. Azure Resource Manager tabanlı REST API 'Lerine HTTP istekleri gönderen bir araçtır. Ayrıca, bekleyen belgelerde "dene" özelliğini veya PowerShell 'in [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) veya [Postman](https://www.postman.com)gibi araçları kullanabilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

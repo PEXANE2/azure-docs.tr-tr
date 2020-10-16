@@ -18,10 +18,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3d795d30e3ad420e0fed002baddf37469ddcf995
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89004571"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Güvenlik çerçevesi: Iletişim güvenliği | Karşı 
@@ -181,7 +181,7 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [Azure depolama aktarım düzeyi şifreleme – HTTPS kullanarak](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
+| **Başvurular**              | [Azure depolama Transport-Level şifreleme – HTTPS kullanarak](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
 | **Adımlar** | Aktarım sırasında Azure depolama verilerinin güvenliğini sağlamak için, REST API 'Lerini çağırırken veya depolama alanındaki nesnelere erişirken her zaman HTTPS protokolünü kullanın. Ayrıca, Azure Storage nesnelerine erişim yetkisi vermek için kullanılabilen paylaşılan erişim Imzaları, paylaşılan erişim Imzaları kullanılırken yalnızca HTTPS protokolünün kullanılabileceğini belirtmek için bir seçenek içerir. bu sayede, SAS belirteçleriyle bağlantı göndermek için herhangi bir gövdenin doğru protokolü kullanmasını sağlayabilirsiniz.|
 
 ## <a name="validate-md5-hash-after-downloading-blob-if-https-cannot-be-enabled"></a><a id="md5-https"></a>HTTPS etkinleştirilmemişse blob indirildikten sonra MD5 karmasını doğrula

@@ -7,16 +7,16 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 88048c3328114f17b30859efb41bb9f059b71439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296374"
 ---
 # <a name="feature-list"></a>Özellik listesi #
 Sınanan özelliklerin ve desteklenmeyen özelliklerin listesi aşağıda verilmiştir:
 
-| Öne çıkan özelliği | K | KıSMEN TEST EDILDI | TEST EDILMEMIŞ | Desteklenen | NOTLAR |
+| Özellik | K | KıSMEN TEST EDILDI | TEST EDILMEMIŞ | Desteklenen | NOTLAR |
 | ------- | ------ | ---------------- | -------- | ----------- | ----- |
 | **Kayıttan yürütme**                                |        |                  |          |             |                                                                                                                      |
 | Temel Isteğe bağlı kayıttan yürütme                | X      |                  |          |             | Yalnızca Azure Media Services akışlarını destekler                                                                      |
@@ -59,7 +59,7 @@ Sınanan özelliklerin ve desteklenmeyen özelliklerin listesi aşağıda verilm
 | Analiz                               |        | X                |          |             | AMP, istediğiniz analiz arka ucunu göndermek için analiz ve Tanılama olaylarını dinlemek için olanak sağlar.  Platform sınırlamaları nedeniyle Techs genelinde tüm olaylar ve özellikler kullanılamaz.                                                                            |
 | Özel kaplamalar                            |        |                  | X        |             | Bu senaryo, AMP 'daki false değerine ayarlanarak ve kendi HTML ve CSS 'niz kullanılırken elde edilebilir.           |
 | Arama çubuğu Temizleme                      |        |                  |          | X           |                                                                                                                      |
-| El ile yürütme                              |        |                  |          | X           |                                                                                                                      |
+| Trick-Play                              |        |                  |          | X           |                                                                                                                      |
 | Yalnızca ses                              | X      |                  |          |           | AzureHtml5JS içinde desteklenir. İlerleyen MP3 kayıttan yürütme, platform destekliyorsa HTML5 teknik ile çalışabilir.                                                                                                        |
 | Yalnızca video                              | X      |                  |          |           | AzureHtml5JS içinde desteklenir.                                                                                                        |
 | Çok dönemdeki sunum               |        |                  |          | X                                                                                                                                  |

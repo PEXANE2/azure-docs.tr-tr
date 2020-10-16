@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808137"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>İç yük dengeleyici (ıLB) ile uygulama ağ geçidi oluşturma
@@ -52,7 +52,7 @@ Uygulama ağ geçidi oluşturmak için takip etmeniz gereken adımlar şunlardı
 
 Azure Resource Manager cmdlet’lerini kullanmak için PowerShell modunu açtığınızdan emin olun. Daha fazla bilgi için bkz.[Resource Manager ile Windows PowerShell Kullanma](../powershell-azure-resource-manager.md)
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 ```powershell
 Connect-AzAccount
@@ -92,7 +92,7 @@ Yukarıdaki örnekte, "appgw-RG" adlı bir kaynak grubu ve "Batı ABD" konumunu 
 
 Aşağıdaki örnek Resource Manager kullanarak nasıl sanal ağ oluşturulacağını gösterir:
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 ```powershell
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -118,7 +118,7 @@ Bu adım, sonraki adımlar için alt ağ nesnesini $subnet değişkenine atar.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Uygulama ağ geçidi yapılandırma nesnesi oluşturun
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -203,7 +203,7 @@ Bir uygulama ağ geçidini silmek için aşağıdaki adımları sırasıyla yapm
 2. Ağ geçidini kaldırmak için `Remove-AzApplicationGateway` cmdlet’ini kullanın.
 3. Ağ geçidinin kaldırıldığını doğrulamak için `Get-AzureApplicationGateway` cmdlet’ini kullanın.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Uygulama ağ geçidi nesnesini alın ve "$getgw" değişkenine ilişkilendirin.
 

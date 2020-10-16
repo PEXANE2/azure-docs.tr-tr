@@ -1,14 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: İlke ihlalleri ve şema parametre işlevleri gibi şemaları oluşturma, atama ve kaldırma ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651319"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058293"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
 
@@ -18,7 +18,7 @@ ms.locfileid: "89651319"
 
 Birçok hata, bir kapsamda şema atamanın sonucu olacaktır. Bir atama başarısız olduğunda, şema başarısız dağıtım hakkında ayrıntılar sağlar. Bu bilgiler sorunu çözülecektir ve sonraki dağıtım başarılı olur.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki sayfadan **atanan** şemalar ' ı seçin ve başarısız atamayı bulmak için şema atamalarını filtrelemek için arama kutusunu kullanın. Ayrıca, tüm başarısız atamaları birlikte gruplanmış olarak görmek için Atamalar tablosunu **sağlama durumu** sütununa göre sıralayabilirsiniz.
 
@@ -59,7 +59,7 @@ Bir yapıtı gibi bir işlevi kullanan bir şema parametresini geçirmek, `[reso
 
 #### <a name="resolution"></a>Çözüm
 
-Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi, `[` şema parametresi gibi görünen şekilde kaçış `[[resourceGroup().tags.myTag]` . Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/templates/template-expressions.md).
+Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi, `[` şema parametresi gibi görünen şekilde kaçış `[[resourceGroup().tags.myTag]` . Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar hizmeti, işlevi yapıtlara, beklendiği gibi dinamik olmasını sağlayacak şekilde koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="delete-errors"></a>Hataları Sil
 
@@ -75,7 +75,7 @@ Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi, `[` ş
 
 #### <a name="resolution"></a>Çözüm
 
-Terminal olmayan bir durumdaki şema atamaları, _6 saatlik_ bir zaman aşımından sonra **başarısız** olarak otomatik olarak işaretlenir. Zaman aşımı şeması şema atamasının durumunu ayarladığında, silme yeniden denenebilir.
+Terminal olmayan bir durumdaki şema atamaları, _altı saatlik_ bir zaman aşımından sonra **başarısız** olarak otomatik olarak işaretlenir. Zaman aşımı şeması şema atamasının durumunu ayarladığında, silme yeniden denenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

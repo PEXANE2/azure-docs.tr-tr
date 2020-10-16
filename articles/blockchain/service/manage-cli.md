@@ -5,10 +5,10 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87170862"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLı kullanarak Azure blok zinciri hizmetini yönetme
@@ -25,19 +25,19 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ediyorsanız bkz. [Azure CLI 
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
-1. Giriş yapın.
+1. Oturum açın.
 
-    CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
+    CLI’nın yerel yüklemesini kullanıyorsanız [az login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
 
     ```azurecli
     az login
     ```
 
-    Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+    Terminalinizde görüntülenen adımları uygulayarak kimlik doğrulama işlemini tamamlayın.
 
 1. Azure CLI uzantısını yükleyin.
 
-    Azure CLı için uzantı başvurularıyla çalışırken, önce uzantıyı yüklemeniz gerekir.  Azure CLı uzantıları, henüz çekirdek CLı 'nin bir parçası olarak gönderilmeyen deneysel ve yayın öncesi komutlara erişmenizi sağlar.  Güncelleştirme ve kaldırma dahil olmak üzere uzantılar hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
+    Azure CLI için uzantı başvurularıyla çalışırken önce uzantıyı yüklemeniz gerekir.  Azure CLI uzantıları, henüz temel CLI’nın parçası olarak gönderilmeyen deneysel ve ön sürüm komutlarına erişmenize olanak sağlar.  Güncelleştirme ve kaldırma da dahil olmak üzere uzantılar hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
 
     Aşağıdaki komutu çalıştırarak [Azure blok zinciri hizmeti uzantısını](/cli/azure/ext/blockchain/blockchain) yükler:
 
@@ -64,7 +64,7 @@ az blockchain member create \
 | Parametre | Açıklama |
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
-| **name** | Azure blok zinciri hizmeti blok zinciri üyesini tanımlayan benzersiz bir ad. Ad, genel uç nokta adresi için kullanılır. Örneğin, `myblockchainmember.blockchain.azure.com`. |
+| **ada** | Azure blok zinciri hizmeti blok zinciri üyesini tanımlayan benzersiz bir ad. Ad, genel uç nokta adresi için kullanılır. Örneğin, `myblockchainmember.blockchain.azure.com`. |
 | **konumuna** | Blok zinciri üyesinin oluşturulduğu Azure bölgesi. Örneğin, `eastus`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin. Özellikler, bazı bölgelerde kullanılamayabilir. |
 | **parola** | Üyenin varsayılan işlem düğümü için parola. Blok zinciri üyesinin varsayılan işlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır.|
 | **Protocol** | Blok zinciri protokolü. Şu anda *çekirdek* protokol destekleniyor. |
@@ -88,7 +88,7 @@ az blockchain member update \
 | Parametre | Açıklama |
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
-| **name** | Azure blok zinciri hizmeti üyesini tanımlayan ad. |
+| **ada** | Azure blok zinciri hizmeti üyesini tanımlayan ad. |
 | **parola** | Üyenin varsayılan işlem düğümü için parola. Blok zinciri üyesinin varsayılan işlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır.|
 | **Konsorsiyum yönetimi-hesap-parola** | Konsorsiyum hesabı parolası üye hesap parolası olarak da bilinir. Üye hesabı parolası, üyelik için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Konsorsiyum yönetimi için üye hesabı ve üye hesabı parolasını kullanırsınız. |
 | **Güvenlik Duvarı-kurallar** | IP izin verilenler listesi için başlangıç ve bitiş IP adresi. |
@@ -111,7 +111,7 @@ az blockchain transaction-node create \
 | **konumuna** | Blok zinciri üyesinin Azure bölgesi. |
 | **üye adı** | Azure blok zinciri hizmeti üyesini tanımlayan ad. |
 | **parola** | İşlem düğümü için parola. İşlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır.|
-| **name** | İşlem düğümü adı. |
+| **ada** | İşlem düğümü adı. |
 
 ## <a name="change-transaction-node-password"></a>İşlem düğümü parolasını değiştir
 
@@ -130,7 +130,7 @@ az blockchain transaction-node update \
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
 | **üye adı** | Azure blok zinciri hizmeti üyesini tanımlayan ad. |
 | **parola** | İşlem düğümü için parola. İşlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır.|
-| **name** | İşlem düğümü adı. |
+| **ada** | İşlem düğümü adı. |
 
 ## <a name="list-api-keys"></a>API anahtarlarını Listele
 
@@ -145,7 +145,7 @@ az blockchain member list-api-key \
 | Parametre | Açıklama |
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Azure blok zinciri hizmeti blok zinciri üyesinin adı |
+| **ada** | Azure blok zinciri hizmeti blok zinciri üyesinin adı |
 
 ## <a name="regenerate-api-keys"></a>API anahtarlarını yeniden oluştur
 
@@ -161,7 +161,7 @@ az blockchain member regenerate-api-key \
 | Parametre | Açıklama |
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
+| **ada** | Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
 | **Işareti** | \<keyValue\>KEY1, key2 veya her ikisiyle de değiştirin. |
 
 ## <a name="delete-a-transaction-node"></a>İşlem düğümünü silme
@@ -179,7 +179,7 @@ az blockchain transaction-node delete \
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
 | **üye adı** | Silinecek işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
-| **name** | Silinecek işlem düğümü adı. |
+| **ada** | Silinecek işlem düğümü adı. |
 
 ## <a name="delete-a-blockchain-member"></a>Blok zinciri üyesini silme
 
@@ -195,7 +195,7 @@ az blockchain member delete \
 | Parametre | Açıklama |
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Silinecek Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
+| **ada** | Silinecek Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -214,7 +214,7 @@ az role assignment create \
 | **atanan** | Azure AD Kullanıcı KIMLIĞI. Örneğin, `user@contoso.com` |
 | **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
-**Örneğinde**
+**Örnek:**
 
 Azure AD kullanıcısı için blok zinciri **üyesine**düğüm erişimi verme:
 
@@ -225,7 +225,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Örneğinde**
+**Örnek:**
 
 Azure AD kullanıcısı için blok zinciri **işlem düğümüne**düğüm erişimi verme:
 
@@ -250,7 +250,7 @@ az role assignment create \
 | **atane-nesne kimliği** | Azure AD Grup KIMLIĞI veya uygulama KIMLIĞI. |
 | **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
-**Örneğinde**
+**Örnek:**
 
 **Uygulama rolü** için düğüm erişimi verme
 

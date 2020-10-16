@@ -4,10 +4,10 @@ description: Özel bulutunuzu Azure 'da dağıtmak için gereken ağı oluşturm
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578368"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Öğretici: Azure 'da VMware özel bulutunuz için ağı yapılandırma
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. [Özel bulut oluşturma öğreticisinde](tutorial-create-private-cloud.md) oluşturduğunuz kaynak grubuna gidin ve yeni bir kaynak tanımlamak Için **+ Ekle** ' yi seçin. 
 
@@ -109,4 +109,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 VCenter 'daki VM 'Ler için kullanılan NSX-T ağ kesimlerini oluşturma hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [NSX-T ağ kesimi oluşturma](tutorial-nsx-t-network-segment.md)
+> [NSX-T ağ segmenti oluşturma](tutorial-nsx-t-network-segment.md)

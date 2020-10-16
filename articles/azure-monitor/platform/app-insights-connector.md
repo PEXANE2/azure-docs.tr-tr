@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449407"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
@@ -49,7 +49,7 @@ Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından App
 | [SCOM yönetim grubu](./om-agents.md) | Hayır | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
 | [Azure depolama hesabı](./resource-logs.md#send-to-log-analytics-workspace) | Hayır | Çözüm, Azure Storage 'dan bilgi toplamaz. |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Application Insights Bağlayıcısı bilgilerine erişmek için bir Azure aboneliğinizin olması gerekir
 - En az bir yapılandırılmış Application Insights kaynağınız olmalıdır.
@@ -161,7 +161,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 Çözüm, bağlı Application Insights uygulamalarınızdan aşağıdaki telemetri veri türlerini alır:
 
 - Kullanılabilirlik
-- Özel durumlar
+- Özel Durumlar
 - İstekler
 - Sayfa görünümleri: çalışma alanınızın sayfa görünümlerini alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [PageViews](../app/api-custom-events-metrics.md#page-views).
 - Özel olaylar: çalışma alanınızın özel olayları alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Trackevent](../app/api-custom-events-metrics.md#trackevent).
@@ -252,7 +252,7 @@ Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt olu
 | RequestName | Al/postala + URL tabanı |
 | RequestDuration | İstek süresinin saniye cinsinden süresi |
 | URL | Konağın dahil olmadığı isteğin URL 'SI |
-| Konak | Web sunucusu Konağı |
+| Ana bilgisayar | Web sunucusu Konağı |
 | URL tabanı | İsteğin tam URL 'SI |
 | ApplicationProtocol | Uygulama tarafından kullanılan protokol türü |
 | Istek sayısı | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |

@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117218"
 ---
 # <a name="support-and-help-options-for-developers"></a>Geliştiriciler için destek ve yardım seçenekleri
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD), Microsoft kimlikleri veya Microsoft Graph API
 > * Kimlik doğrulama kitaplıklarımızdan biriyle ilgili bir sorun bulursanız, bir *GitHub* sorunu oluştur
 > * Son olarak, birisiyle konuşmanız gerekiyorsa, bir destek isteği açmak isteyebilirsiniz
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Search
 
 Geliştirmeyle ilgili bir sorunuz varsa, yanıtı belgeler, [GitHub örnekleri](https://github.com/azure-samples)veya [Stack Overflow](https://www.stackoverflow.com) sorulara yanıtlar halinde bulabilirsiniz.
 

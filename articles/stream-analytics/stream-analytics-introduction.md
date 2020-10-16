@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 07/6/2020
-ms.openlocfilehash: c6c878aa0e4a9d5caa22f7cd94c438f22a81d2ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/9/2020
+ms.openlocfilehash: 10ffe7c2544be2bf2c09ae39f323b1e643063d27
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90881877"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892889"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics nedir?
 
@@ -43,33 +43,32 @@ Aşağıdaki görüntüde, verilerin depolama veya sunum gibi diğer eylemler i�
 
 ## <a name="key-capabilities-and-benefits"></a>Temel işlevler ve avantajlar
 
-Azure Stream Analytics kullanımı kolay, esnek, güvenilir ve her boyuttaki iş için ölçeklenebilir olacak şekilde tasarlanmıştır. Birden çok Azure bölgesinde mevcuttur. Aşağıdaki görüntüde Azure Stream Analytics temel özellikleri gösterilmektedir:
-
-![Stream Analytics temel özellikleri](./media/stream-analytics-introduction/stream-analytics-key-capabilities.png)
+Azure Stream Analytics kullanımı kolay, esnek, güvenilir ve her boyuttaki iş için ölçeklenebilir olacak şekilde tasarlanmıştır. Birden çok Azure bölgesinde mevcuttur ve IoT Edge veya Azure Stack üzerinde çalışır.
 
 ## <a name="ease-of-getting-started"></a>Başlama kolaylığı
 
 Azure Stream Analytics kolayca başlatılabilir. Birden çok kaynağa ve havuza bağlanmak için, uçtan uca bir işlem hattı oluşturarak yalnızca birkaç tıklama sürer. Stream Analytics, veri alımı için Azure [Event Hubs](/azure/event-hubs/) ve [Azure IoT Hub](/azure/iot-hub/) ve geçmiş verileri almak için [Azure Blob depolama alanı](/azure/storage/common/storage-introduction) 'na bağlanabilir. İş girişi, Azure Blob depolama alanından veya arama işlemlerini gerçekleştirmek için akış verilerine katılabilmeniz gereken [SQL veritabanından](stream-analytics-use-reference-data.md#azure-sql-database) statik veya yavaş değişen başvuru verilerini de içerebilir.
 
-Stream Analytics, iş çıkışını [Azure Blob depolama](/azure/storage/common/storage-introduction), [Azure SQL veritabanı](/azure/sql-database/), [Azure Data Lake Store](/azure/data-lake-store/)ve [Azure cosmosdb](/azure/cosmos-db/introduction)gibi birçok depolama sistemine yönlendirebilir. Azure HDInsight ile saklı çıktıda Batch Analytics 'i çalıştırabilir ya da çıktıyı, tüketim [Power BI](https://docs.microsoft.com/power-bi/) veya gerçek zamanlı görselleştirme için Event Hubs gibi başka bir hizmete gönderebilirsiniz.
+Stream Analytics, iş çıkışını [Azure Blob depolama](/azure/storage/common/storage-introduction), [Azure SQL veritabanı](/azure/sql-database/), [Azure Data Lake Store](/azure/data-lake-store/)ve [Azure cosmosdb](/azure/cosmos-db/introduction)gibi birçok depolama sistemine yönlendirebilir. Batch Analytics 'i Azure SYNAPSE Analytics veya HDInsight ile Stream 'ten de çalıştırabilirsiniz ya da çıktıyı, tüketim [Power BI](https://docs.microsoft.com/power-bi/) veya gerçek zamanlı görselleştirme için Event Hubs gibi başka bir hizmete gönderebilirsiniz.
 
 Tüm Stream Analytics çıktıları listesi için bkz. [Azure Stream Analytics çıktılarını anlama](stream-analytics-define-outputs.md).
 
 ## <a name="programmer-productivity"></a>Programcı verimliliği
 
-Azure Stream Analytics, hareket halindeki verileri çözümlemek için güçlü bir zamana bağlı kısıtlamalarla genişletilmiş basit bir SQL tabanlı sorgu dili kullanır. İş dönüşümlerini tanımlamak için, basit SQL yapıları kullanarak karmaşık geçici sorgular ve analizler yazmanıza olanak tanıyan basit, bildirim temelli bir [Stream Analytics sorgu dili](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanırsınız. Stream Analytics sorgu dili SQL diline uygun olduğundan, SQL 'e alışkın olan işleri oluşturmaya başlamak yeterlidir. Azure PowerShell, [Visual Studio araçları Stream Analytics](stream-analytics-tools-for-visual-studio-install.md), [Stream Analytics Visual Studio Code uzantısı](quick-create-visual-studio-code.md)veya Azure Resource Manager şablonları gibi geliştirici araçlarını kullanarak da işler oluşturabilirsiniz. Geliştirici araçlarının kullanılması, çevrimdışı ortamda dönüşüm sorguları geliştirmenize ve [CI/CD işlem hattı](stream-analytics-tools-for-visual-studio-cicd.md) kullanarak Azure’a iş göndermenize olanak tanır.
+Azure Stream Analytics, hareket halindeki verileri çözümlemek için güçlü zamana bağlı kısıtlamalarla genişletilmiş bir SQL sorgu dili kullanır. Azure PowerShell, Azure CLı, [Stream Analytics Visual Studio Araçları](stream-analytics-tools-for-visual-studio-install.md), [Stream Analytics Visual Studio Code uzantısı](quick-create-visual-studio-code.md)ya da Azure Resource Manager şablonları gibi geliştirici araçlarını kullanarak da işler oluşturabilirsiniz. Geliştirici araçlarının kullanımı, çevrimdışı dönüşüm sorguları geliştirmenize ve Azure 'a iş göndermek için [CI/CD](stream-analytics-tools-for-visual-studio-cicd.md) işlem hattını kullanmanıza olanak sağlar.
 
-Stream Analytics sorgu dili, akış verilerini analiz etmek ve işlemek için geniş bir işlevler dizisi sunar. Bu sorgu dili basit veri işleme, toplama ve analiz işlevlerini, [Jeo uzamsal işlevleri](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions), [model eşleştirmeyi](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) ve [anomali algılamayı](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection)destekler. Portalda sorguları düzenleyebilir ve canlı bir akıştan ayıklanan örnek verileri kullanarak test edebilirsiniz.
+Stream Analytics sorgu dili, akış verilerini çözümlemek için geniş bir işlev dizisi sunarak CEP (karmaşık olay Procmet) gerçekleştirmesine olanak sağlar. Bu sorgu dili basit veri işleme, toplama ve analiz işlevlerini, [Jeo uzamsal işlevleri](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions), [model eşleştirmeyi](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) ve [anomali algılamayı](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection)destekler. Portalda sorguları düzenleyebilir veya geliştirme araçlarımızı kullanarak bunları canlı bir akıştan ayıklanan örnek verileri kullanarak test edebilirsiniz.
 
 Ek işlevler tanımlayıp çağırarak sorgu dilinin yapabileceklerini artırabilirsiniz. Azure Machine Learning çözümlerinin avantajlarından yararlanmak için Azure Machine Learning işlev çağrıları tanımlayabilir ve bir Stream Analytics sorgusunun parçası olarak karmaşık hesaplamalar gerçekleştirmek için JavaScript veya C# Kullanıcı tanımlı işlevleri (UDF 'ler) veya Kullanıcı tanımlı toplamaları tümleştirebilirsiniz.
 
 ## <a name="fully-managed"></a>Tam olarak yönetilir
 
-Azure Stream Analytics, Azure üzerinde tam olarak yönetilen bir sunucusuz (PaaS) tekliftir. Herhangi bir donanım sağlamanız, işlerinizi çalıştırmak için kümeleri yönetmeniz veya işletim sistemini veya yazılımı güncelleştirmeniz gerekmez. Azure Stream Analytics, işinizi tamamen yönetir, bu sayede altyapıya değil iş mantığınıza odaklanırsınız.
+Azure Stream Analytics, Azure üzerinde tam olarak yönetilen (PaaS) bir tekliftir. Herhangi bir donanım veya altyapı sağlamanız, işletim sistemi veya yazılım güncelleştirmeniz gerekmez. Azure Stream Analytics, işinizi tamamen yönetir, bu sayede altyapıya değil iş mantığınıza odaklanırsınız.
+
 
 ## <a name="run-in-the-cloud-or-on-the-intelligent-edge"></a>Bulutta veya akıllı kenarda çalıştırın
 
-Azure Stream Analytics bulutta çalışabilir, büyük ölçekli analizler için veya ultra düşük gecikmeli analizler için IoT Edge çalıştırabilirsiniz. Azure Stream Analytics hem bulutta hem de kenarda aynı araçları ve sorgu dilini kullanır, geliştiricilerin Stream işleme için gerçekten karma mimariler oluşturmalarına olanak tanır. 
+Azure Stream Analytics bulutta çalışabilir, büyük ölçekli analizler için veya IoT Edge ya da ultra düşük gecikmeli analizler için Azure Stack çalıştırabilirsiniz. Azure Stream Analytics hem bulutta hem de kenarda aynı araçları ve sorgu dilini kullanır, geliştiricilerin Stream işleme için gerçekten karma mimariler oluşturmalarına olanak tanır. 
 
 ## <a name="low-total-cost-of-ownership"></a>Düşük toplam sahip olma maliyeti
 
@@ -89,7 +88,7 @@ Yönetilen bir hizmet olarak Stream Analytics, bir dakikalık ayrıntı düzeyi 
 
 ### <a name="security"></a>Güvenlik
 
-Güvenlik açısından, Azure Stream Analytics tüm gelen ve giden iletişimleri şifreler ve TLS 1,2 ' yi destekler. Yerleşik kontrol noktaları da şifrelenir. Tüm işlemler bellek içinde yapıldığından, Stream Analytics gelen verileri depolamaz.
+Güvenlik açısından, Azure Stream Analytics tüm gelen ve giden iletişimleri şifreler ve TLS 1,2 ' yi destekler. Yerleşik kontrol noktaları da şifrelenir. Tüm işlemler bellek içinde yapıldığından, Stream Analytics gelen verileri depolamaz. Stream Analytics Ayrıca, bir [Stream Analytics kümesinde](https://docs.microsoft.com/azure/stream-analytics/cluster-overview)Iş çalıştırılırken Azure sanal AĞLARıNı (VNet) destekler.
 
 ### <a name="compliance"></a>Uyumluluk
 

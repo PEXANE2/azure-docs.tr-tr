@@ -2,13 +2,13 @@
 title: Şablon işlevleri
 description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 10/12/2020
+ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378415"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961179"
 ---
 # <a name="arm-template-functions"></a>ARM şablon işlevleri
 
@@ -40,14 +40,14 @@ Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 
 * [array](template-functions-array.md#array)
 * [Concat](template-functions-array.md#concat)
-* [contains](template-functions-array.md#contains)
+* [vardır](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [empty](template-functions-array.md#empty)
 * [adı](template-functions-array.md#first)
 * [imin](template-functions-array.md#intersection)
 * [soyadına](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
-* [Min](template-functions-array.md#min)
+* [dk](template-functions-array.md#min)
 * [Biçimlendir](template-functions-array.md#max)
 * [aralığı](template-functions-array.md#range)
 * [Şimdilik](template-functions-array.md#skip)
@@ -66,7 +66,7 @@ Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 Kaynak Yöneticisi, şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
 * [Coalesce](template-functions-comparison.md#coalesce)
-* [equals](template-functions-comparison.md#equals)
+* [eşittir](template-functions-comparison.md#equals)
 * [büyüktür](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [büyüktür](template-functions-comparison.md#greater)
@@ -104,9 +104,11 @@ Kaynak Yöneticisi mantıksal koşullarla çalışmak için aşağıdaki işlevl
 
 * [and](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
+* [yanlýþ](template-functions-logical.md#false)
 * [if](template-functions-logical.md#if)
 * [başlatılmadı](template-functions-logical.md#not)
 * [veya](template-functions-logical.md#or)
+* [değeri](template-functions-logical.md#true)
 
 <a id="add" aria-hidden="true"></a>
 <a id="copyindex" aria-hidden="true"></a>
@@ -128,7 +130,7 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [Min](template-functions-numeric.md#min)
+* [dk](template-functions-numeric.md#min)
 * [Biçimlendir](template-functions-numeric.md#max)
 * [alma](template-functions-numeric.md#mod)
 * [MUL](template-functions-numeric.md#mul)
@@ -140,11 +142,13 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 
 Kaynak Yöneticisi nesneleriyle çalışmak için çeşitli işlevler sağlar.
 
-* [contains](template-functions-object.md#contains)
+* [vardır](template-functions-object.md#contains)
+* [createObject](template-functions-object.md#createobject)
 * [empty](template-functions-object.md#empty)
 * [imin](template-functions-object.md#intersection)
 * [nesnesinde](template-functions-object.md#json)
 * [length](template-functions-object.md#length)
+* [null](template-functions-object.md#null)
 * [birleşim](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -215,7 +219,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [Concat](template-functions-string.md#concat)
-* [contains](template-functions-string.md#contains)
+* [vardır](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
 * [empty](template-functions-string.md#empty)
@@ -233,7 +237,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [Şimdilik](template-functions-string.md#skip)
 * [ayırmayı](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [string](template-functions-string.md#string)
+* [dize](template-functions-string.md#string)
 * [dizeden](template-functions-string.md#substring)
 * [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)

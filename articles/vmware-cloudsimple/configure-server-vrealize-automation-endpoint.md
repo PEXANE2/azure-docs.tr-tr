@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77024849"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>VMware Vfarkında otomasyonu için özel bulutunuzda vCenter 'ı ayarlama
@@ -64,7 +64,7 @@ VCenter sunucusunu yapılandırmadan önce bu görevleri doldurun:
         ![vRA yüklemesi proxy 'si](media/configure-vra-endpoint-proxy.png)
 
     11. **İleri**’ye tıklayın.
-    12. **Install**'a tıklayın.
+    12. **Yükle**'ye tıklayın.
 
 ## <a name="configure-the-vsphere-agent"></a>VSphere aracısını yapılandırma
 
@@ -84,7 +84,7 @@ Doğru vCenter sunucusu uç noktası adını belirlemek için aşağıdakileri y
 
 1. IaaS gereci üzerinde bir komut istemi açın.
 2. Dizini C:\Program Files (x86) \VMware\vCAC\Agents\agent-name olarak değiştirin; burada *Aracı adı* vCenter Server uç noktasına atadığınız addır.
-3. Şu komutu çalıştırın.
+3. Aşağıdaki komutu çalıştırın.
 
 ```
 ..\..\Server\DynamicOps.Vrm.VRMencrypt.exe VRMAgent.exe.config get

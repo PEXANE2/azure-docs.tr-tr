@@ -4,10 +4,10 @@ description: Uygulama kapsayıcıları çalıştırılmadan önce bir kapsayıc�
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 5a729263ee632eb9227694ec8684eb6889c6324b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85954290"
 ---
 # <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Bir kapsayıcı grubundaki kurulum görevleri için bir init kapsayıcısı çalıştırın
@@ -190,7 +190,7 @@ az container logs \
   --container-name hamlet
 ```
 
-Çıktı:
+Çıkış:
 
 ```console
 [('HAMLET', 386), ('HORATIO', 127), ('CLAUDIUS', 120)]
@@ -203,7 +203,7 @@ az container logs \
   --container-name juliet
 ```
 
-Çıktı:
+Çıkış:
 
 ```console
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
@@ -213,7 +213,7 @@ az container logs \
 
 Init kapsayıcıları, uygulama kapsayıcılarınız için kurulum ve başlatma görevlerini gerçekleştirmenize yardımcı olur. Görev tabanlı kapsayıcılar çalıştırma hakkında daha fazla bilgi için bkz. [yeniden başlatma ilkeleriyle Kapsayıcılı görevleri çalıştırma](container-instances-restart-policy.md).
 
-Azure Container Instances, uygulama kapsayıcılarının davranışını değiştirmek için başka seçenekler sağlar. Örnekler arasında şunlar yer almaktadır:
+Azure Container Instances, uygulama kapsayıcılarının davranışını değiştirmek için başka seçenekler sağlar. Örneklere şunlar dahildir:
 
 * [Kapsayıcı örneklerinde ortam değişkenlerini ayarlama](container-instances-environment-variables.md)
 * [Varsayılan komut satırı işlemini geçersiz kılmak için bir kapsayıcı örneğindeki komut satırını ayarlayın](container-instances-start-command.md)

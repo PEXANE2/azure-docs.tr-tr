@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2db941edef93b1e836e82753a6d6016adb977e65
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322606"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Kaynak veritabanlarına bağlanırken DMS hatalarını giderme
@@ -58,7 +58,7 @@ Kaynak AWS RDS PostgreSQL veritabanına bağlanma ile ilişkili olası sorunlar 
 | Hata         | Neden ve sorun giderme ayrıntısı |
 | ------------- | ------------- |
 | **Hata [101]**[08001]-bağlantı başarısız oldu. HATA [08001] zaman aşımı süresi doldu. | Postgres sürücüsü kaynak sunucuya bağlanamıyorsa bu hata oluşur. Sorunu gidermek için, bu tablonun altındaki notta listelenen sorun giderme belgelerine başvurun ve sonra yeniden deneyin. |
-| **Hata: wal_level parametresi ' {Value} ' değerine sahip. Çoğaltmaya izin vermek için lütfen bunu ' Logical ' olarak değiştirin.** | Parametrenin değeri yanlış wal_level bu hata oluşur. Sorunu gidermek için, parametre grubundaki RDS. logical_replication öğesini 1 olarak değiştirin ve ardından örneği yeniden başlatın. Daha fazla bilgi için bkz. [Amazon RDS ÜZERINDE DMS veya PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html) [kullanarak Azure PostgreSQL 'e geçiş için önkoşulları](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) . |
+| **Hata: wal_level parametresi ' {Value} ' değerine sahip. Çoğaltmaya izin vermek için lütfen bunu ' Logical ' olarak değiştirin.** | Parametrenin değeri yanlış wal_level bu hata oluşur. Sorunu gidermek için, parametre grubundaki rds.logical_replication 1 olarak değiştirin ve ardından örneği yeniden başlatın. Daha fazla bilgi için bkz. [Amazon RDS ÜZERINDE DMS veya PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html) [kullanarak Azure PostgreSQL 'e geçiş için önkoşulları](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) . |
 
 > [!NOTE]
 > Kaynak AWS RDS PostgreSQL veritabanına bağlanmayla ilgili sorunları giderme hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:

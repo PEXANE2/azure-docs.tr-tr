@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Grid bir olaya abone olmak için özellikl
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119081"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid abonelik şeması
@@ -28,21 +28,21 @@ Olay abonelik adı 3-64 karakter uzunluğunda olmalıdır ve yalnızca a-z, A-Z,
  
 ## <a name="event-subscription-properties"></a>Olay aboneliği özellikleri
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| hedef | nesne | Uç noktasını tanımlayan nesne. |
-| filtre | nesne | Olay türlerini filtrelemek için isteğe bağlı bir alan. |
+| hedef | object | Uç noktasını tanımlayan nesne. |
+| filtre | object | Olay türlerini filtrelemek için isteğe bağlı bir alan. |
 
 ### <a name="destination-object"></a>hedef nesne
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | endpointType | string | Abonelik için uç nokta türü (Web kancası/HTTP, Olay Hub 'ı veya kuyruğu). | 
 | endpointUrl | string | Bu olay aboneliğindeki olaylar için hedef URL. | 
 
 ### <a name="filter-object"></a>filtre nesnesi
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Olay iletisindeki olay türü, bu olay türü adlarından biriyle tam olarak eşleşiyorsa eşleşir. Olay adı olay kaynağı için kayıtlı olay türü adlarıyla eşleşmediği zaman bir hata oluşturur. Varsayılan değer tüm olay türleriyle eşleşir. |
 | subjectBeginsWith | string | Olay iletisindeki Konu alanı için bir önek eşleşmesi filtresi. Varsayılan veya boş dize tümü ile eşleşir. | 

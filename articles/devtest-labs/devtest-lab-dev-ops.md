@@ -4,10 +4,10 @@ description: Bir kurumsal ortamdaki sürekli tümleştirme (CI)/sürekli teslim 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481077"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure DevTest Labs ve Azure DevOps tümleştirmesi
@@ -37,10 +37,10 @@ Yapı işlem hattı, sürüm ardışık düzenine dönmek için birlikte test ed
 
 Yapı aracılarında, laboratuvarın erişimi kısıtlama özelliği güvenliği artırır ve yanlışlıkla bozulma olasılığını azaltır.  
 
-### <a name="test"></a>Test etme 
+### <a name="test"></a>Test 
 DevTest Labs, bir CI/CD işlem hattının otomatik ve el ile test için kullanılabilen Azure Kaynak (VM 'Ler, ortamlar) oluşturulmasını otomatik hale getirmeye olanak tanır. VM 'Ler, test için gereken farklı özel yapılandırmaların oluşturulması için derleme işlemindeki bilgileri kullanan yapıtlar veya formüller kullanılarak oluşturulur.   
 
-### <a name="release"></a>Sürüm 
+### <a name="release"></a>Yayınla 
 DevTest Labs genellikle yayın bölümünde kod dağıtılmadan önce doğrulama için kullanılır. Yapı bölümünde test etmek benzerdir. Üretim kaynakları DevTest Labs içinde dağıtılmamalıdır. 
 
 ### <a name="customization"></a>Özelleştirme 

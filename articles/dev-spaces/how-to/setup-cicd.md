@@ -8,14 +8,16 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure Dev Spaces ile Azure DevOps kullanarak sürekli tümleştirme/sürekli dağıtım ayarlamayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
-ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080275"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960397"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces ile CI/CD kullanma
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Bu makalede, geliştirme alanları etkinken Azure Kubernetes Service (AKS) ile sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlama sırasında size kılavuzluk eder. AKS 'e CI/CD, her kaydedilmiş kod kaynak deponuza gönderildiğinde uygulama güncelleştirmelerinin otomatik olarak dağıtılmasını sağlar. CI/CD 'nin bir geliştirme alanları etkinleştirilmiş kümeyle birlikte kullanılması faydalı olur çünkü ekibin bir taban çizgisini takımın birlikte çalışması için güncel tutar.
 
@@ -70,7 +72,7 @@ Devre dışı bırakma seçeneği:
 
 _Azds_updates_ dalında, *mywebapi* ve *webön uç*için gereken derleme adımlarını tanımlayan basit bir [Azure işlem hattı YAML](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) sunuyoruz.
 
-Seçtiğiniz dile bağlı olarak, işlem hattı YAML, şuna benzer bir yolda iade edildi:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
+Seçtiğiniz dile bağlı olarak, işlem hattı YAML, şuna benzer bir yolda iade edildi: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Bu dosyadan bir işlem hattı oluşturmak için:
 1. DevOps proje ana sayfanızda yapılar > işlem hatları ' na gidin.
@@ -93,7 +95,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Henüz bir yayın tanımı içermeyen yepyeni bir DevOps projesinde çalışıyorsanız, önce devam etmeden önce boş bir yayın tanımı oluşturmanız gerekir. Içeri aktarma seçeneği, var olan bir yayın tanımına sahip olana kadar Kullanıcı arabiriminde görüntülenmez.
 1. Sol tarafta **+ Yeni** düğmesine tıklayın ve ardından Işlem hattını **İçeri Aktar ' a**tıklayın.
 1. **Görüntüle** ' ye tıklayın ve `samples/release.json` projenizden seçin.
-1. **Tamam**’a tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
+1. **Tamam**'a tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
 1. Ardışık düzen bölmesinin sol tarafında, **yapıt balonu Ekle** ' ye tıklayın.
 1. **Kaynak** açılan listesinde, daha önce oluşturduğunuz derleme işlem hattını seçin.
 1. **Varsayılan sürüm**Için, **en son yapı ardışık düzen varsayılan dalından etiketlerle**' ı seçin.
@@ -119,7 +121,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Sağ üst köşedeki **Kaydet** ' e tıklayıp **Tamam**' a tıklayın.
 1. **+ Release** (Kaydet düğmesinin yanında) seçeneğine tıklayın ve **bir yayın oluşturun**.
 1. **Yapıtlar**bölümünde, derleme işlem hattınızdan en son derlemeyi doğrulayın.
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 Otomatik bir yayın işlemi başlar, şimdi _geliştirme_ üst düzey alanında *mywebapi* ve *Webön uç* grafiklerini Kubernetes kümenize dağıtacaksınız. Azure DevOps web portalında, yayınınızın ilerlemesini izleyebilirsiniz:
 
@@ -160,7 +162,7 @@ Tüm görevler tamamlandığında yayın yapılır.
 
 CI/CD işlem hattının _Üretim_ aşaması, _Üretim_ Hizmetleri 'Ne erişim sağlamak üzere dev Spaces giriş denetleyicisi yerine yük dengeleyici kullanır. _Üretim_ aşamasında DAĞıTıLAN hizmetlere DNS adları yerine IP adresleri olarak erişilebilir. Bir üretim ortamında, hizmetlerinizi kendi DNS yapılandırmanıza göre barındırmak için kendi giriş denetleyicinizi oluşturmayı seçebilirsiniz.
 
-Web ön uç hizmetinin IP 'sini öğrenmek için, günlük çıktısını genişletmek üzere **Web ön uç genel IP 'Sini Yazdır** adımına tıklayın. **Web ön uç** uygulamasına erişmek için günlük ÇıKTıSıNDA görüntülenecek IP 'yi kullanın.
+Web ön uç hizmetinin IP 'sini öğrenmek için, günlük çıktısını genişletmek üzere  **Web ön uç genel IP 'Sini Yazdır** adımına tıklayın. **Web ön uç** uygulamasına erişmek için günlük ÇıKTıSıNDA görüntülenecek IP 'yi kullanın.
 
 ```cmd
 ...

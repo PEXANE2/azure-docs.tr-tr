@@ -3,12 +3,12 @@ title: Kaynak hiyerarşinizi koruma-Azure Idare
 description: Kaynak hiyerarşinizi, varsayılan yönetim grubunu ayarlamayı içeren hiyerarşi ayarlarıyla nasıl koruyacağınızı öğrenin.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533988"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951902"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Kaynak hiyerarşinizi koruma
 
@@ -115,5 +115,5 @@ Ayarı yeniden kapatmak için aynı uç noktayı kullanın ve **Requireauthoriza
 
 Yönetim grupları hakkında daha fazla bilgi almak için bkz.:
 
-- [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](../create.md)
+- [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](../create-management-group-portal.md)
 - [Yönetim gruplarınızı değiştirme, silme veya yönetme](../manage.md)

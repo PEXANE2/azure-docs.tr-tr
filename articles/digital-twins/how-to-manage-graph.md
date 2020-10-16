@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326550"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048449"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
@@ -74,7 +74,7 @@ Bu, aynı anda iki farklı ilişki türünü tek seferde ifade ettiğiniz anlam�
 
 ## <a name="list-relationships"></a>Liste ilişkileri
 
-Grafikteki belirli bir ikizi ilişki listesine erişmek için şunu kullanabilirsiniz:
+Grafikteki belirli bir ikizi gelen **giden** ilişkiler listesine erişmek için şunu kullanabilirsiniz:
 
 ```csharp
 await client.GetRelationshipsAsync(id);
@@ -110,11 +110,11 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
 
 Alınan ilişkileri kullanarak, grafiğinizde diğer TWINS 'ye gidebilirsiniz. Bunu yapmak için, `target` döndürülen ilişkiden alanı okuyun ve bir sonraki çağrınızdan kimlik olarak kullanın `GetDigitalTwin` . 
 
-### <a name="find-relationships-to-a-digital-twin"></a>Dijital ikizi ilişkiler bulma
+### <a name="find-incoming-relationships-to-a-digital-twin"></a>Dijital ikizi gelen ilişkilerini bulma
 
-Azure dijital TWINS 'in Ayrıca belirli bir ikizi gelen tüm ilişkileri bulması için bir API 'SI vardır. Bu, genellikle ters gezinmede veya bir ikizi silinirken yararlıdır.
+Azure dijital TWINS 'in Ayrıca belirli bir ikizi **gelen** tüm ilişkileri bulması için bir API 'si vardır. Bu, genellikle ters gezinmede veya bir ikizi silinirken yararlıdır.
 
-Önceki kod örneği giden ilişkileri bulmaya odaklanır. Aşağıdaki örnek benzerdir, ancak bunun yerine gelen ilişkileri bulur. Ayrıca, bunları bulduktan sonra da siler.
+Önceki kod örneği, bir ikizi giden ilişkilerini bulmaya odaklanır. Aşağıdaki örnek benzer şekilde yapılandırılmıştır, ancak bunun yerine ikizi *gelen* ilişkileri bulur.
 
 `IncomingRelationship`Çağrıların ilişkinin tam gövdesini döndürmediğini unutmayın.
 
@@ -237,7 +237,7 @@ Pratik kullanım durumlarında, ikizi hiyerarşileri genellikle farklı bir veri
 
 Oluşturulacak bir dizi dijital TWINS ve ilişki tanımlayan aşağıdaki veri tablosunu göz önünde bulundurun.
 
-| Modelleme    | ID | Üst | İlişki adı | Diğer veriler |
+| Model    | ID | Üst | İlişki adı | Diğer veriler |
 | --- | --- | --- | --- | --- |
 | sını    | Floor01 | | | … |
 | Oda    | Room10 | Floor01 | contains | … |
@@ -247,7 +247,7 @@ Oluşturulacak bir dizi dijital TWINS ve ilişki tanımlayan aşağıdaki veri t
 | Oda    | Room21 | Floor02 | contains | … |
 | Oda    | Room22 | Floor02 | contains | … |
 
-Aşağıdaki kod, bir elektronik tabloyu okumak ve sonuçlardan bir Azure dijital TWINS ikizi grafiği oluşturmak için [MICROSOFT Graph API](https://docs.microsoft.com/graph/overview) kullanır.
+Aşağıdaki kod, bir elektronik tabloyu okumak ve sonuçlardan bir Azure dijital TWINS ikizi grafiği oluşturmak için [MICROSOFT Graph API](/graph/overview) kullanır.
 
 ```csharp
 var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;

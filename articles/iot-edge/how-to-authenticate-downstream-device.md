@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447852"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046732"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -59,7 +59,7 @@ Yeni cihaz kimliğini oluşturduğunuzda, aşağıdaki bilgileri sağlayın:
 
 * Kimlik doğrulama türü olarak **simetrik anahtar** ' ı seçin.
 
-* İsteğe bağlı olarak, **bir üst cihaz ayarlamayı** seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Bu adım simetrik anahtar kimlik doğrulaması için isteğe bağlıdır, ancak bir üst cihaz ayarlandığında, aşağı akış cihazınız için [çevrimdışı yetenekler](offline-capabilities.md) sağladığından önerilir. Üst öğeyi daha sonra eklemek veya değiştirmek için cihaz ayrıntılarını her zaman güncelleştirebilirsiniz.
+* **Bir üst cihaz ayarla** ' yı seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Bu adım, aşağı akış cihazınız için [çevrimdışı yetenekleri](offline-capabilities.md) sunar. Üst öğeyi daha sonra dilediğiniz zaman değiştirebilirsiniz.
 
    ![Portalda simetrik anahtar kimlik doğrulaması ile cihaz KIMLIĞI oluşturma](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
@@ -110,7 +110,7 @@ X. 509.440 otomatik imzalı kimlik doğrulaması için bazen parmak izi kimlik d
 
 4. Hem birincil hem de ikincil cihaz sertifikalarını ve bunların anahtarlarını aşağı akış cihazında herhangi bir konuma kopyalayın. Ayrıca, ağ geçidi cihaz sertifikasını ve aşağı akış cihaz sertifikalarını oluşturan paylaşılan kök CA sertifikasının bir kopyasını da taşıyın.
 
-   IoT Hub bağlanan aşağı akış cihazında bulunan uygulamalarda bu sertifika dosyalarına başvurabileceksiniz. Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+   IoT Hub bağlanan aşağı akış cihazında bulunan uygulamalarda bu sertifika dosyalarına başvurabileceksiniz. Sertifika dosyalarını taşımak için [Azure Key Vault](../key-vault/index.yml) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
 
 5. Tercih ettiğiniz dile bağlı olarak, X. 509.440 sertifikalarına IoT uygulamalarında nasıl başvurulabilen örnekleri gözden geçirin:
 
@@ -156,7 +156,7 @@ Bu bölüm, [Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama](../iot-h
 
 5. Cihaz sertifikasını ve anahtarlarını aşağı akış cihazında herhangi bir konuma kopyalayın. Ayrıca, ağ geçidi cihaz sertifikasını ve aşağı akış cihaz sertifikalarını oluşturan paylaşılan kök CA sertifikasının bir kopyasını da taşıyın.
 
-   IoT Hub bağlanan aşağı akış cihazında bulunan uygulamalarda bu dosyalara başvurabileceksiniz. Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+   IoT Hub bağlanan aşağı akış cihazında bulunan uygulamalarda bu dosyalara başvurabileceksiniz. Sertifika dosyalarını taşımak için [Azure Key Vault](../key-vault/index.yml) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
 
 6. Tercih ettiğiniz dile bağlı olarak, X. 509.440 sertifikalarına IoT uygulamalarında nasıl başvurulabilen örnekleri gözden geçirin:
 
@@ -201,7 +201,7 @@ Veya
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. X. 509.440 kimlik doğrulaması için üst/alt ilişkileri gerekir, ancak simetrik anahtar kimlik doğrulaması için isteğe bağlıdır. Örneğin:
+Üst/alt öğe ilişkisi sayesinde, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örnek:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

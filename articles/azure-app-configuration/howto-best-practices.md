@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588067"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078060"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure Uygulama yapılandırması en iyi uygulamaları
 
@@ -42,7 +42,7 @@ Dikkat edilmesi gereken önemli bir şey, anahtarların ilgili ayarların değer
 
 Uygulama yapılandırması, onunla depolanan tüm anahtarları bağımsız varlıklar olarak değerlendirir. Uygulama yapılandırması, anahtarlar arasında herhangi bir ilişki çıkarması veya hiyerarşiye göre anahtar değerleri devralması denenmez. Ancak uygulama kodunuzda uygun yapılandırma yığınlayarak bağlanmış Etiketler kullanarak birden çok anahtar kümesini toplayabilirsiniz.
 
-Bir örneğe bakalım. Değeri geliştirme ortamına göre değişebilen **Asset1**adlı bir ayarınız olduğunu varsayalım. Boş bir etiketi ve "geliştirme" adlı bir etiketi içeren "Asset1" adlı bir anahtar oluşturun. İlk etikette, **Asset1**için varsayılan değeri yerleştirmelisiniz ve "geliştirme" için belirli bir değeri ikinciden yerleştirebilirsiniz.
+Bir örneğe göz atalım. Değeri geliştirme ortamına göre değişebilen **Asset1**adlı bir ayarınız olduğunu varsayalım. Boş bir etiketi ve "geliştirme" adlı bir etiketi içeren "Asset1" adlı bir anahtar oluşturun. İlk etikette, **Asset1**için varsayılan değeri yerleştirmelisiniz ve "geliştirme" için belirli bir değeri ikinciden yerleştirebilirsiniz.
 
 Kodunuzda, önce herhangi bir etiket olmadan anahtar değerlerini alır ve ardından "geliştirme" etiketiyle ikinci kez aynı anahtar değerleri kümesini alırsınız. İkinci seferinde değerleri aldığınızda, anahtarların önceki değerlerinin üzerine yazılır. .NET Core yapılandırma sistemi, her birinin üzerine birden çok yapılandırma verisi kümesini "yığmanızı" sağlar. Birden çok küme içinde bir anahtar varsa, onu içeren son küme kullanılır. .NET Core gibi modern programlama çerçevesiyle, uygulama yapılandırmasına erişmek için yerel bir yapılandırma sağlayıcısı kullanıyorsanız bu yığınlama özelliğini ücretsiz olarak alırsınız. Aşağıdaki kod parçacığı, .NET Core uygulamasında nasıl yığın uygulayabileceğinizi göstermektedir:
 
@@ -69,7 +69,7 @@ Daha iyi bir seçenek, Azure Active Directory Yönetilen kimlikler özelliğini 
 Aşağıdaki yöntemlerden birini kullanarak Web uygulamaları veya işlevleri için uygulama yapılandırmasına erişim sağlayabilirsiniz:
 
 * Azure portal aracılığıyla, App Service uygulama ayarlarındaki uygulama yapılandırma deponuza bağlantı dizesini girin.
-* Bağlantı dizesini Key Vault, uygulama yapılandırma deponuza depolayın ve [App Service başvurun](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Bağlantı dizesini Key Vault, uygulama yapılandırma deponuza depolayın ve [App Service başvurun](../app-service/app-service-key-vault-references.md).
 * Uygulama yapılandırma deposuna erişmek için Azure yönetilen kimliklerini kullanın. Daha fazla bilgi için bkz. [Azure yönetilen kimliklerle tümleştirme](howto-integrate-azure-managed-service-identity.md).
 * Uygulama yapılandırmasından App Service olarak yapılandırma gönderin. Uygulama yapılandırması, doğrudan App Service içine veri gönderen bir dışarı aktarma işlevi (Azure portal ve Azure CLı) sağlar. Bu yöntemle, uygulama kodunu her zaman değiştirmeniz gerekmez.
 
@@ -85,7 +85,7 @@ Uygulama yapılandırmasına yönelik aşırı istek, azaltma veya fazla kullan�
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>Yapılandırma verilerini uygulama yapılandırmasına aktarma
 
-Uygulama yapılandırması, Azure portal veya CLı kullanarak geçerli yapılandırma dosyalarınızda yapılandırma ayarlarınızı toplu olarak [içeri aktarma](https://aka.ms/azconfig-importexport1) seçeneğini sunar. Aynı seçenekleri, örneğin ilgili mağazalar arasında uygulama yapılandırmasından değerleri dışarı aktarmak için de kullanabilirsiniz. GitHub deponuz ile devam eden bir eşitleme ayarlamak isterseniz, [GitHub eylemmizi](https://aka.ms/azconfig-gha2) kullanarak, uygulama yapılandırmasının avantajlarını alırken mevcut kaynak denetimi uygulamalarınızı kullanmaya devam edebilirsiniz.
+Uygulama yapılandırması, Azure portal veya CLı kullanarak geçerli yapılandırma dosyalarınızda yapılandırma ayarlarınızı toplu olarak [içeri aktarma](./howto-import-export-data.md) seçeneğini sunar. Aynı seçenekleri, örneğin ilgili mağazalar arasında uygulama yapılandırmasından değerleri dışarı aktarmak için de kullanabilirsiniz. GitHub deponuz ile devam eden bir eşitleme ayarlamak isterseniz, [GitHub eylemmizi](./concept-github-action.md) kullanarak, uygulama yapılandırmasının avantajlarını alırken mevcut kaynak denetimi uygulamalarınızı kullanmaya devam edebilirsiniz.
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>Uygulama yapılandırmasında çok bölgeli dağıtım
 

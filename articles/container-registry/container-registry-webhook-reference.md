@@ -4,10 +4,10 @@ description: Web kancaları yapıt Push veya delete olayları için etkinleştir
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74455967"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Web kancası başvurusunu Azure Container Registry
@@ -158,7 +158,7 @@ Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir e
 |[hedef](#delete_target)|Karmaşık Tür|Web kancası olayını tetikleyen etkinliğin hedefi.|
 |[isteyen](#delete_request)|Karmaşık Tür|Web kancası olayını oluşturan istek.|
 
-### <a name="target"></a><a name="delete_target"></a>hedef
+### <a name="target"></a><a name="delete_target"></a> hedef
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
@@ -166,7 +166,7 @@ Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir e
 |`digest`|Dize|Kayıt defteri v2 HTTP API belirtiminde tanımlanan şekilde içeriğin özeti.|
 |`repository`|Dize|Depo adı.|
 
-### <a name="request"></a><a name="delete_request"></a>isteyen
+### <a name="request"></a><a name="delete_request"></a> isteyen
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
@@ -219,7 +219,7 @@ Bir helb grafiği veya deposu silindiğinde Web kancası tetiklendi.
 |`action`|Dize|Web kancası olayını tetikleyen eylem.|
 |[hedef](#chart_delete_target)|Karmaşık Tür|Web kancası olayını tetikleyen etkinliğin hedefi.|
 
-### <a name="target"></a><a name="chart_delete_target"></a>hedef
+### <a name="target"></a><a name="chart_delete_target"></a> hedef
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|

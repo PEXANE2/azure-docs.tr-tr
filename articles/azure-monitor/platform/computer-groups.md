@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86112121"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularının bilgisayar grupları
@@ -21,7 +21,7 @@ Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/l
 ## <a name="creating-a-computer-group"></a>Bilgisayar grubu oluşturma
 Aşağıdaki tablodaki yöntemlerden birini kullanarak Azure Izleyici 'de bir bilgisayar grubu oluşturabilirsiniz.  Her yöntemin ayrıntıları aşağıdaki bölümlerde verilmiştir. 
 
-| Yöntem | Description |
+| Yöntem | Açıklama |
 |:--- |:--- |
 | Günlük sorgusu |Bilgisayarların listesini döndüren bir günlük sorgusu oluşturun. |
 | Günlük Arama API’si |Günlük sorgusunun sonuçlarına göre program aracılığıyla bir bilgisayar grubu oluşturmak için günlük araması API 'sini kullanın. |
@@ -50,7 +50,7 @@ Aşağıdaki tabloda bir bilgisayar grubunu tanımlayan özellikler açıklanmak
 
 | Özellik | Açıklama |
 |:---|:---|
-| Name   | Portalda görüntülenecek sorgunun adı. |
+| Ad   | Portalda görüntülenecek sorgunun adı. |
 | İşlev diğer adı | Bir sorgudaki bilgisayar grubunu tanımlamak için kullanılan benzersiz bir diğer ad. |
 | Kategori       | Portaldaki sorguları düzenlemek için kategori. |
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075254"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows olay günlüğü veri kaynakları
@@ -50,7 +50,7 @@ Windows olay kayıtları bir tür **olaya** sahiptir ve aşağıdaki tabloda bul
 | EventLevelName |Metin biçimindeki olayın önem derecesi. |
 | EventLog |Olayın toplandığı olay günlüğünün adı. |
 | ParameterXml |XML biçimindeki olay parametresi değerleri. |
-| ManagementGroupName |System Center Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için bu değer`AOI-<workspace ID>` |
+| ManagementGroupName |System Center Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için bu değer `AOI-<workspace ID>` |
 | RenderedDescription |Parametre değerleriyle olay açıklaması |
 | Kaynak |Etkinliğin kaynağı. |
 | SourceSystem |Olayın toplandığı aracının türü. <br> OpsManager – Windows Aracısı, doğrudan bağlanma veya Operations Manager yönetilen <br> Linux – tüm Linux aracıları  <br> AzureStorage – Azure Tanılama |

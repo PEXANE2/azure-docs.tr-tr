@@ -4,12 +4,12 @@ description: Azure Izleyici Application Insights .NET Core/. NET Framework HTTP 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 8156541a5b04a5db5f2ce683fd0e514c81e8b53e
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 3d02b6e70d0832b92ae88db237b4c554b92e7f3b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840413"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875079"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 
@@ -21,7 +21,7 @@ Yeni SDK hiçbir telemetri koleksiyonunu kendisi yapmaz. Bunun yerine, [Dependen
 
 [Çalışan hizmeti için APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , her ne kadar veya nasıl çalıştırıldıklarından BAĞıMSıZ olarak http olmayan uygulamalar için idealdir. Uygulamanız çalışıyorsa ve Azure ile ağ bağlantısı varsa telemetri toplanabilir. Application Insights izleme .NET Core 'un desteklendiği her yerde desteklenir. Bu paket, yeni sunulan [.NET Core 3,0 Worker hizmetinde](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [ASP.NET Core 2.1/2.2 'de arka plan görevlerinde](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true), konsol uygulamalarında (.NET Core/.NET Framework) vb. kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
 
@@ -44,7 +44,7 @@ Her uygulama türü için belirli yönergeler aşağıdaki bölümlerde açıkla
 
 ## <a name="net-core-30-worker-service-application"></a>.NET Core 3,0 çalışan hizmeti uygulaması
 
-Tam örnek [burada](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) paylaşılır
+Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) paylaşılır
 
 1. [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) indirin ve yükleyin
 2. Visual Studio yeni proje şablonu veya komut satırı kullanarak yeni bir çalışan hizmeti projesi oluşturma `dotnet new worker`
@@ -136,7 +136,7 @@ Genellikle, `APPINSIGHTS_INSTRUMENTATIONKEY` Web işleri olarak Web Apps dağıt
 
 [Bu](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true) belgede ASP.NET Core 2.1/2.2 uygulamasında arka plan görevlerinin nasıl oluşturulacağı açıklanmaktadır.
 
-Tam örnek [burada](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) paylaşılır
+Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) paylaşılır
 
 1. [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
 2. `services.AddApplicationInsightsTelemetryWorkerService();` `ConfigureServices()` Aşağıdaki örnekteki gibi yöntemine ekleyin:
@@ -223,7 +223,7 @@ Tam örnek [burada](https://github.com/MohanGsk/ApplicationInsights-Home/tree/ma
 
 Bu makalenin başlangıcında bahsedildiği gibi, yeni paket, düzenli bir konsol uygulamasından bile Application Insights Telemetri sağlamak için kullanılabilir. Bu paket [`NetStandard2.0`](/dotnet/standard/net-standard) , .NET Core 2,0 veya üzeri konsol uygulamaları için ve .NET Framework 4.7.2 veya üzeri için kullanılabilir.
 
-Tam örnek [burada](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) paylaşılır
+Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) paylaşılır
 
 1. [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
 
@@ -561,11 +561,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="sample-applications"></a>Örnek uygulamalar
 
-[.NET Core konsol uygulaması](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2,0 veya üzeri) veya .NET Framework (4.7.2 ya da üzeri) olarak yazılmış bir konsol uygulaması kullanıyorsanız bu örneği kullanın
+[.NET Core konsol uygulaması](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2,0 veya üzeri) veya .NET Framework (4.7.2 ya da üzeri) olarak yazılmış bir konsol uygulaması kullanıyorsanız bu örneği kullanın
 
-[HostedServices Ile ASP .NET Core arka plan görevleri](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Bu örneği Asp.Net Core 2.1/2.2 ' de kullanıyorsanız ve [burada](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true) resmi olmayan kılavuza göre arka plan görevleri oluşturuyorsanız kullanın
+[HostedServices Ile ASP .NET Core arka plan görevleri](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Bu örneği Asp.Net Core 2.1/2.2 ' de kullanıyorsanız ve [burada](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true) resmi olmayan kılavuza göre arka plan görevleri oluşturuyorsanız kullanın
 
-[.NET Core 3,0 çalışan hizmeti](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) [Burada](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template) resmi kılavuza göre .net Core 3,0 çalışan hizmet uygulamanız varsa bu örneği kullanın
+[.NET Core 3,0 çalışan hizmeti](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) [Burada](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template) resmi kılavuza göre .net Core 3,0 çalışan hizmet uygulamanız varsa bu örneği kullanın
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 

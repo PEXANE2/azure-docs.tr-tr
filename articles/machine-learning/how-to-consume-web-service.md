@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756679"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966109"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 
@@ -46,7 +46,9 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 * `scoring_uri` -REST API adresi.
 * `swagger_uri` -Openapı belirtiminin adresi. Otomatik şema oluşturmayı etkinleştirdiyseniz, bu URI kullanılabilir. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
-Dağıtılan Web Hizmetleri için bu bilgileri almanın üç yolu vardır:
+Dağıtılan Web Hizmetleri için bu bilgileri almanın birkaç yolu vardır:
+
+# <a name="python"></a>[Python](#tab/python)
 
 * Bir modeli dağıtırken, `Webservice` hizmet hakkındaki bilgilerle bir nesne döndürülür:
 
@@ -72,6 +74,30 @@ Dağıtılan Web Hizmetleri için bu bilgileri almanın üç yolu vardır:
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Dağıtılan hizmetin adını biliyorsanız [az ml Service Show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) komutunu kullanın:
+
+```azurecli
+az ml service show -n <service-name>
+```
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Azure Machine Learning Studio 'dan __uç noktalar__, __gerçek zamanlı uç noktalar__ve sonra uç nokta adı ' nı seçin. Uç nokta için Ayrıntılar bölümünde, __REST uç noktası__ alanı Puanlama URI 'sini içerir. __Swagger URI__ 'SI Swagger URI 'sini içerir.
+
+---
+
+Aşağıdaki tabloda bu URI 'Lerin nasıl göründüğünü gösterilmektedir:
+
+| URI türü | Örnek |
+| ----- | ----- |
+| Puanlama URI 'SI | `http://104.214.29.152:80/api/v1/service/<service-name>/score` |
+| Swagger URI 'SI | `http://104.214.29.152/api/v1/service/<service-name>/swagger.json` |
+
+> [!TIP]
+> Dağıtımınız için IP adresi farklı olacaktır. Her bir AKS kümesi, bu kümeye dağıtımlar tarafından paylaşılan kendi IP adresine sahip olacaktır.
 
 ### <a name="secured-web-service"></a>Güvenli Web hizmeti
 
@@ -268,7 +294,7 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 
 ## <a name="call-the-service-go"></a>Hizmeti çağırın (git)
 
-Bu örnek, go 'nun [Not defteri Içinde tren](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) örneği kullanılarak oluşturulan Web hizmetini çağırmak için nasıl kullanılacağını gösterir:
+Bu örnek, go 'nun [Not defteri Içinde tren](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) örneği kullanılarak oluşturulan Web hizmetini çağırmak için nasıl kullanılacağını gösterir:
 
 ```go
 package main
@@ -360,7 +386,7 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 
 ## <a name="call-the-service-java"></a>Hizmeti çağırma (Java)
 
-Bu örnek, [Not defteri 'nin Içindeki eğten](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) oluşturulan Web hizmetini çağırmak için Java 'nın nasıl kullanılacağını gösterir:
+Bu örnek, [Not defteri 'nin Içindeki eğten](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) oluşturulan Web hizmetini çağırmak için Java 'nın nasıl kullanılacağını gösterir:
 
 ```java
 import java.io.IOException;
@@ -440,7 +466,7 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 
 ## <a name="call-the-service-python"></a>Hizmeti çağırma (Python)
 
-Bu örnekte, Python kullanarak [Not defteri 'nin Içinden eğitim](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) örneği kullanılarak oluşturulan Web hizmetini nasıl çağıracağı gösterilmektedir:
+Bu örnekte, Python kullanarak [Not defteri 'nin Içinden eğitim](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) örneği kullanılarak oluşturulan Web hizmetini nasıl çağıracağı gösterilmektedir:
 
 ```python
 import requests

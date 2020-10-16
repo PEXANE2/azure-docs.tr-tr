@@ -8,20 +8,22 @@ ms.topic: conceptual
 description: Azure dev alanında NuGet paketlerine erişmek ve bunları kullanmak için özel bir NuGet akışı kullanın.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
 manager: gwallace
-ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d60d7142d9b9979be76eebb3d324a448bd76638f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229287"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960227"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Azure Dev Spaces ile özel bir NuGet akışı kullanma
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Bir NuGet akışı, paket kaynaklarını bir projeye dahil etmek için uygun bir yol sağlar. Bağımlılıkların Docker kapsayıcısına düzgün şekilde yüklenmesi için Azure Dev Spaces bu akışa erişmesi gerekir.
 
 ## <a name="set-up-a-nuget-feed"></a>NuGet akışı ayarlama
 
-Düğümün altındaki dosyaya bağımlılığı için bir [paket başvurusu](/nuget/consume-packages/package-references-in-project-files) ekleyin `*.csproj` `PackageReference` . Örneğin:
+Düğümün altındaki dosyaya bağımlılığı için bir [paket başvurusu](/nuget/consume-packages/package-references-in-project-files) ekleyin `*.csproj` `PackageReference` . Örnek:
 
 ```xml
 <ItemGroup>
@@ -31,7 +33,7 @@ Düğümün altındaki dosyaya bağımlılığı için bir [paket başvurusu](/n
 </ItemGroup>
 ```
 
-Proje klasöründe bir [NuGet.Config](/nuget/reference/nuget-config-file) dosyası oluşturun ve `packageSources` `packageSourceCredentials` NuGet akışınız için ve bölümlerini ayarlayın. `packageSources`Bölüm, AKS kümenizdeki erişilebilir olması gereken akış URL 'nizi içerir. , `packageSourceCredentials` Akışa erişim için kimlik bilgileridir. Örneğin:
+Proje klasöründe bir [NuGet.Config](/nuget/reference/nuget-config-file) dosyası oluşturun ve `packageSources` `packageSourceCredentials` NuGet akışınız için ve bölümlerini ayarlayın. `packageSources`Bölüm, AKS kümenizdeki erişilebilir olması gereken akış URL 'nizi içerir. , `packageSourceCredentials` Akışa erişim için kimlik bilgileridir. Örnek:
 
 ```xml
 <packageSources>
@@ -46,7 +48,7 @@ Proje klasöründe bir [NuGet.Config](/nuget/reference/nuget-config-file) dosyas
 </packageSourceCredentials>
 ```
 
-Dockerfiles 'ı, dosyayı görüntüye kopyalamak için güncelleştirin `NuGet.Config` . Örneğin:
+Dockerfiles 'ı, dosyayı görüntüye kopyalamak için güncelleştirin `NuGet.Config` . Örnek:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]

@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8110b98c055a211203fb937990e860fc8dea74f4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88520471"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure İçeri/Dışarı Aktarma işlerinin durumunu görüntüleme
@@ -33,7 +33,7 @@ Sürücünüzün işlemde bulunduğu yere bağlı olarak aşağıdaki iş duruml
 | Oluşturma | Bir iş oluşturulduktan sonra, durumu **oluşturma**olarak ayarlanır. İş **oluşturuluyor** durumundaysa, Içeri/dışarı aktarma hizmeti, sürücülerin veri merkezine gönderilmemiş olduğunu varsayar. Bir iş bu durumda iki hafta boyunca kalabilir ve sonrasında hizmet tarafından otomatik olarak silinir. |
 | Gönderim | Paketinizi gönderdikten sonra, Azure portal izleme bilgilerini güncelleştirmeniz gerekir.  Bunu yapmak işi **Sevkiyat** durumuna getirir. İş, en fazla iki hafta boyunca **Sevkiyat** durumunda kalır. 
 | Alındı | Tüm sürücüler veri merkezinde alındıktan sonra iş durumu **alındı**olarak ayarlanır. |
-| Aktarma | En az bir sürücü işlemeye başladıktan sonra, iş durumu **aktarma**olarak ayarlanır. Daha fazla bilgi için [Sürücü durumları](#view-drive-status)' na gidin. |
+| Aktarılıyor | En az bir sürücü işlemeye başladıktan sonra, iş durumu **aktarma**olarak ayarlanır. Daha fazla bilgi için [Sürücü durumları](#view-drive-status)' na gidin. |
 | Paketleme | Tüm sürücüler işlemeyi tamamladıktan sonra, diskler size geri gönderilene kadar iş **paketleme** durumuna yerleştirilir. |
 | Tamamlandı | Tüm sürücüler size geri gönderildikten sonra, iş hatasız tamamlanırsa, iş **tamamlandı**olarak ayarlanır. İş, **tamamlandı** durumunda 90 gün sonra otomatik olarak silinir. |
 | Kapalı | Tüm sürücüler size geri gönderildikten sonra, iş işleme sırasında herhangi bir hata oluşursa iş **kapalı**olarak ayarlanır. İş, **kapalı** durumda 90 gün sonra otomatik olarak silinir. |
@@ -49,7 +49,7 @@ Aşağıdaki tabloda, bir işteki her bir sürücünün geçeme durumu açıklan
 | Belirtilir | İçeri aktarma işi için, iş Azure portal oluşturulduğunda, bir sürücü için ilk durum **belirtilir**. Bir dışarı aktarma işi için, iş oluşturulduğunda bir sürücü belirtilmediğinden, ilk sürücü durumu **alınır**. |
 | Alındı | Içeri/dışarı aktarma hizmeti bir içeri aktarma işi için sevkiyat şirketten alınan sürücüleri işlediğinde, sürücü **alındı** durumuna geçer. Bir dışarı aktarma işi için ilk sürücü durumu **alınan** durumudur. |
 | NeverReceived | Bir işin paketi ulaştığında, ancak paket sürücüyü içermiyorsa, sürücü **Neverreceived** durumuna gider. Ayrıca, veri merkezi paketi henüz almamışsa ve hizmet gönderim bilgilerini en az iki hafta önce aldıysa bir sürücü bu duruma de getirilir. |
-| Aktarma | Hizmet, sürücüden verileri Azure depolama 'ya aktarmaya başladığında bir sürücü **aktarma** durumuna gider. |
+| Aktarılıyor | Hizmet, sürücüden verileri Azure depolama 'ya aktarmaya başladığında bir sürücü **aktarma** durumuna gider. |
 | Tamamlandı | Hizmet, tüm verileri hatasız bir şekilde aktarmışsa, bir sürücü **tamamlandı** durumuna gider.
 | Completedınfo | Bir sürücü, sürücüye veya sürücüden veri kopyalarken bir sorunla karşılaşmışsa, **Completedınfo** durumuna gider. Bilgiler, Blobların üzerine yazma hakkında hata, uyarı veya bilgi iletileri içerebilir.
 | ShippedBack | Bir sürücü, veri merkezinden dönüş adresine geri gönderildiğinde **ShippedBack** durumuna gider. |

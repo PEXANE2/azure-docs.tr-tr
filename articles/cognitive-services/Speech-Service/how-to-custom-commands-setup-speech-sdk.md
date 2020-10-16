@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360132"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Konuşma SDK 'sını kullanarak bir istemci uygulamasıyla tümleştirme
@@ -25,7 +25,7 @@ Bu makalede, bir UWP uygulamasında çalışan konuşma SDK 'sından yayımlanm�
 - Özel bir komut uygulaması yayımlama ve uygulama tanımlayıcısı (uygulama KIMLIĞI)
 - Özel komutlar uygulamanızla iletişim kurmasını sağlamak için konuşma SDK 'sını kullanarak bir Evrensel Windows Platformu (UWP) istemci uygulaması oluşturun
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. Özel bir komutlar uygulaması oluşturmadıysanız, hızlı başlangıçlardan sonra bunu yapabilirsiniz:
 > [!div class = "checklist"]

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075561"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Apache ambarı Web Kullanıcı arabirimi, JobHistory, süs Yot, Apache Oozie ve diğer Uıto 'a erişmek için SSH tüneli kullanın
@@ -40,7 +40,7 @@ Web hizmetini kullanıma sunan betik eylemleriyle yüklenen hizmetler SSH tünel
 
 [Secure Shell (SSH) tüneli](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) , yerel makinenizdeki bir bağlantı noktasını HDInsight üzerindeki bir baş düğüme bağlar. Yerel bağlantı noktasına gönderilen trafik, baş düğüme bir SSH bağlantısıyla yönlendirilir. İstek, baş düğüm geldiği gibi çözümlenir. Yanıt daha sonra iş istasyonunuza tünelden geri yönlendirilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -93,7 +93,7 @@ Komut bittikten sonra, yerel bilgisayarda 9876 numaralı bağlantı noktasına g
     |Bağlantı noktası|22|
     |Bağlantı Türü|SSH|
 
-1. **Kaydet**'i seçin
+1. **Kaydet**’i seçin
 
     ![HDInsight Putty oturumu oluştur](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 

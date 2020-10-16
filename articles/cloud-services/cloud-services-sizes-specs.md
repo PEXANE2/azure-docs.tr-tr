@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52fad84c9ed145b4acec73ffad1fa470acf94532
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086258"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076955"
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services için Boyutlar
 Bu konuda, bulut hizmeti rol örnekleri (Web rolleri ve çalışan rolleri) için kullanılabilen Boyutlar ve seçenekler açıklanmaktadır. Ayrıca, bu kaynakları kullanmayı planlarken göz önünde bulundurmanız gereken dağıtım konuları da sunar. Her boyutun, [hizmet tanımı dosyanıza](cloud-services-model-and-package.md#csdef)YERLEŞTIRDIĞINIZ bir kimliği vardır. Her boyutun fiyatları [Cloud Services fiyatlandırma](https://azure.microsoft.com/pricing/details/cloud-services/) sayfasında kullanılabilir.
@@ -36,7 +36,7 @@ Sanal makinenin boyutu, fiyatlandırmayı etkiler. Boyut, sanal makinenin işlem
 
 Aşağıdaki önemli noktalar boyut konusunda karar vermenize yardımcı olabilir:
 
-* A8-A11 ve H Serisi boyutlar *yoğun işlem gücü kullanımlı örnekler* olarak da bilinir. Bu boyutları çalıştıran donanım; yüksek performanslı bilgi işlem (HPC) kümesi uygulamaları, modellemeler ve simülasyonlar gibi yoğun işlem ve ağ kullanımlı uygulamalar için tasarlanmış ve iyileştirilmiştir. A8-A11 Serisinde, Intel Xeon E5-2670 @ 2,6 GHZ, H Serisinde ise Intel Xeon E5-2667 v3 @ 3,2 GHz işlemciler kullanılmaktadır. Bu boyutları kullanma hakkında ayrıntılı bilgi ve konular için bkz. [yüksek performanslı Işlem VM boyutları](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* A8-A11 ve H Serisi boyutlar *yoğun işlem gücü kullanımlı örnekler* olarak da bilinir. Bu boyutları çalıştıran donanım; yüksek performanslı bilgi işlem (HPC) kümesi uygulamaları, modellemeler ve simülasyonlar gibi yoğun işlem ve ağ kullanımlı uygulamalar için tasarlanmış ve iyileştirilmiştir. A8-A11 Serisinde, Intel Xeon E5-2670 @ 2,6 GHZ, H Serisinde ise Intel Xeon E5-2667 v3 @ 3,2 GHz işlemciler kullanılmaktadır. Bu boyutları kullanma hakkında ayrıntılı bilgi ve konular için bkz. [yüksek performanslı Işlem VM boyutları](../virtual-machines/sizes-hpc.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 * Dv3-Series, Dv2-serisi, D serisi, G serisi, daha hızlı CPU, daha iyi yerel disk performansı talep eden veya daha yüksek bellek taleplerine sahip uygulamalar için idealdir. Bu seçenekler birçok kurumsal sınıf uygulama için güçlü bir bileşim sunar.
 * Azure veri merkezlerindeki fiziksel ana bilgisayarlardan bazıları A5 – A11 gibi daha büyük sanal makine boyutlarını desteklemeyebilir. Sonuç olarak, mevcut bir sanal makineyi yeni bir boyuta yeniden boyutlandırırken { **Machine Name} sanal makinesini yapılandıramadı** veya **{Machine Name} sanal makinesini oluşturamadı** ; hata iletisini görebilirsiniz. 16 Nisan 2013 tarihinden önce oluşturulan bir sanal ağda yeni bir sanal makine oluşturma; veya var olan bir bulut hizmetine yeni bir sanal makine ekleniyor. Her dağıtım senaryosunda geçici çözümler için destek forumundaki ["sanal makine yapılandırılamadı" hata](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) başlığına bakın.
 * Ayrıca aboneliğiniz, belirli boyut ailelerinde dağıtabileceğiniz çekirdek sayısını da sınırlıyor olabilir. Artırmak istediğini kotalar için Azure Desteği'ne başvurun.
@@ -63,7 +63,7 @@ Azure Işlem birimi (ACU) kavramını, Azure SKU 'Larında işlem (CPU) performa
 | [D v3](#dv3-series) |160-190 * |
 | [E v3](#ev3-series) |160-190 * |
 | [Acil](#g-series) |180-240* |
-| [H](#h-series) |290-300* |
+| [Olsun](#h-series) |290-300* |
 
 * işaretli ACU'lar, CPU frekansını artırmak ve performans artışı sağlamak için Intel® Turbo Boost teknolojisinden faydalanır. Performans artışının oranı VM boyutuna, iş yüküne ve aynı ana bilgisayarda çalışan iş yüklerine göre değişiklik gösterebilir.
 
@@ -88,7 +88,7 @@ Aşağıdaki tablolarda boyutlara ve sundukları kapasiteye yer verilmiştir.
 | A7              | 8         | 56           | 2040                 | 4/yüksek |
 
 ## <a name="a-series---compute-intensive-instances"></a>A Serisi - Yoğun işlem gücü kullanımlı örnekler
-Bu boyutları kullanma hakkında daha fazla bilgi ve dikkat edilmesi gereken noktalar için bkz. [yüksek performanslı Işlem VM boyutları](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Bu boyutları kullanma hakkında daha fazla bilgi ve dikkat edilmesi gereken noktalar için bkz. [yüksek performanslı Işlem VM boyutları](../virtual-machines/sizes-hpc.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 
 | Boyut            | CPU çekirdekleri | Bellek: GiB  | Geçici depolama: GiB       | Maksimum NIC/Ağ bant genişliği |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
@@ -136,7 +136,7 @@ Bu boyutları kullanma hakkında daha fazla bilgi ve dikkat edilmesi gereken nok
 | Standard_D12_v2 | 4         | 28           | 200                  | 4/yüksek |
 | Standard_D13_v2 | 8         | 56           | 400                  | 8/yüksek |
 | Standard_D14_v2 | 16        | 112          | 800                  | 8/aşırı yüksek |
-| Standard_D15_v2 | 20        | 140          | 1000                | 8/aşırı yüksek |
+| Standard_D15_v2 | 20        | 140          | 1.000                | 8/aşırı yüksek |
 
 ## <a name="dv3-series"></a>Dv3 serisi
 
@@ -217,7 +217,4 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) hakkında bilgi edinin.
-* HPC iş yükleri için [yüksek performanslı Işlem VM boyutları hakkında](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) daha fazla bilgi edinin.
-
-
-
+* HPC iş yükleri için [yüksek performanslı Işlem VM boyutları hakkında](../virtual-machines/sizes-hpc.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) daha fazla bilgi edinin.

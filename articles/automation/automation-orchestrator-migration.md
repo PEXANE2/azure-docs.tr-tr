@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426342"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Orchestrator’dan Azure Otomasyonu’na (Beta) geçiş
@@ -73,7 +73,7 @@ ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <s
 * Modül-runbook 'larda etkinlikleri içeren tümleştirme modüllerinin virgülle ayrılmış listesi.
 * OutputFolder-dönüştürülen grafik runbook 'ları oluşturmak için klasörün yolu.
 
-Aşağıdaki örnek komut, runbook 'ları **Myrunbook**'lar adlı bir dışarı aktarma dosyasında dönüştürür. ois_export.  Bu runbook 'lar Active Directory ve Data Protection Manager Tümleştirme paketlerini kullanır.
+Aşağıdaki örnek komut, **MyRunbooks.ois_export**adlı bir dışarı aktarma dosyasındaki runbook 'ları dönüştürür.  Bu runbook 'lar Active Directory ve Data Protection Manager Tümleştirme paketlerini kullanır.
 
 ```powershell
 ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"

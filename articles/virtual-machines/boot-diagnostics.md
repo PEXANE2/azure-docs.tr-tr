@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 52a2b5e27cd5857416343e559237d08ea9a591be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813245"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972399"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure önyükleme tanılaması
 
@@ -39,9 +39,9 @@ Sanal makine dikey penceresinde bulunan önyükleme tanılama seçeneği Azure p
 - Önyükleme tanılaması yalnızca Azure Resource Manager VM 'Ler için kullanılabilir. 
 - Önyükleme tanılaması için Premium depolama hesabı kullanılıyorsa, önyükleme tanılaması Premium Depolama hesaplarını desteklemez `StorageAccountTypeNotSupported` . 
 - Yönetilen depolama hesapları, Kaynak Yöneticisi API sürümü "2020-06-01" ve üzeri sürümlerde desteklenir.
-- Azure seri konsol Şu anda önyükleme tanılaması için yönetilen bir depolama hesabıyla uyumsuz. [Azure seri konsolu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)hakkında daha fazla bilgi edinin.
+- Azure seri konsol Şu anda önyükleme tanılaması için yönetilen bir depolama hesabıyla uyumsuz. [Azure seri konsolu](./troubleshooting/serial-console-overview.md)hakkında daha fazla bilgi edinin.
 - Bir yönetim depolama hesabı kullanan önyükleme tanılaması Şu anda yalnızca Azure portal aracılığıyla uygulanabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [seri konsolu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview) ve [Azure 'da sanal makinelerde sorun gidermek](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)için önyükleme tanılamayı kullanma hakkında daha fazla bilgi edinin.
+Azure [seri konsolu](./troubleshooting/serial-console-overview.md) ve [Azure 'da sanal makinelerde sorun gidermek](./troubleshooting/boot-diagnostics.md)için önyükleme tanılamayı kullanma hakkında daha fazla bilgi edinin.

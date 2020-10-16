@@ -1,6 +1,6 @@
 ---
-title: Azure 'da OpenShift kapsayıcı platformu 3,11 otomatik yönetilen Market teklifi dağıtma
-description: Azure 'da OpenShift kapsayıcı platformu 3,11 kendinden yönetilen Market Teklifini dağıtın.
+title: Azure 'da OpenShift kapsayıcı platformu 3,11 Self-Managed Market Teklifini dağıtma
+description: Azure 'da OpenShift kapsayıcı platformu 3,11 Self-Managed Market Teklifini dağıtın.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,10 +11,10 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374108"
 ---
 # <a name="configure-prerequisites"></a>Önkoşulları yapılandırma

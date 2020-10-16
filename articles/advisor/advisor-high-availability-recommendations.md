@@ -3,12 +3,12 @@ title: Danışman ile uygulamanızın güvenilirliğini geliştirme
 description: İş açısından kritik Azure dağıtımlarınızda güvenilirliği sağlamak ve geliştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405199"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078043"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak uygulamanızın güvenilirliğini geliştirme
 
@@ -44,7 +44,7 @@ Coğrafi yönlendirme için bir Traffic Manager profili yapılandırılmışsa t
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Yanlışlıkla üzerine yazma veya silme işleminden sonra verileri kaydetmek ve kurtarmak için Azure depolama hesabınızda geçici silme kullanın
 
-Silinen Blobların kalıcı olarak silinmesi yerine geçici olarak silinen bir duruma geçmesi için depolama hesabınızda [geçici silme](../storage/blobs/soft-delete-overview.md) özelliğini etkinleştirin. Verilerin üzerine yazıldığında, üzerine yazılan verilerin durumunu kaydetmek için geçici silinen bir anlık görüntü oluşturulur. Geçici silme kullanmak, yanlışlıkla silme veya üzerine yazma işlemleri için kurtarma yapmanıza olanak sağlar. Danışman, geçici silme özelliği etkinleştirilmemiş Azure depolama hesaplarını tanımlar ve bunu etkinleştirmenizi önerir.
+Silinen Blobların kalıcı olarak silinmesi yerine geçici olarak silinen bir duruma geçmesi için depolama hesabınızda [geçici silme](../storage/blobs/soft-delete-blob-overview.md) özelliğini etkinleştirin. Verilerin üzerine yazıldığında, üzerine yazılan verilerin durumunu kaydetmek için geçici silinen bir anlık görüntü oluşturulur. Geçici silme kullanmak, yanlışlıkla silme veya üzerine yazma işlemleri için kurtarma yapmanıza olanak sağlar. Danışman, geçici silme özelliği etkinleştirilmemiş Azure depolama hesaplarını tanımlar ve bunu etkinleştirmenizi önerir.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>VPN ağ geçidinizi bağlantı dayanıklılığı için etkin-etkin olarak yapılandırma
 
@@ -80,23 +80,23 @@ Azure Danışmanı, durumu bölümünde geçersiz sorguları belirtilmiş olan g
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Azure Cosmos DB koleksiyonunuzda tutarlı dizin oluşturma modu yapılandırma
 
-Yavaş dizin oluşturma moduyla Azure Cosmos DB kapsayıcıları yapılandırmak sorgu sonuçlarının yeniliği etkileyebilir. Advisor bu şekilde yapılandırılmış kapsayıcıları algılar ve tutarlı moda geçmeyi önerir. [Azure Cosmos DB 'de dizin oluşturma ilkeleri hakkında daha fazla bilgi edinin.](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+Yavaş dizin oluşturma moduyla Azure Cosmos DB kapsayıcıları yapılandırmak sorgu sonuçlarının yeniliği etkileyebilir. Advisor bu şekilde yapılandırılmış kapsayıcıları algılar ve tutarlı moda geçmeyi önerir. [Azure Cosmos DB 'de dizin oluşturma ilkeleri hakkında daha fazla bilgi edinin.](../cosmos-db/how-to-manage-indexing-policy.md)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Azure Cosmos DB kapsayıcılarınızı bölüm anahtarı ile yapılandırın
 
-Azure Advisor, sağlanan depolama kotasına yaklaşmayan Azure Cosmos DB bölümlenmemiş koleksiyonları tanımlar. Bu koleksiyonları, hizmet tarafından otomatik olarak ölçeklendirilebilmeleri için bölüm anahtarı tanımıyla yeni koleksiyonlara geçirmeniz önerilir. [Bölüm anahtarı seçme hakkında daha fazla bilgi edinin.](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor, sağlanan depolama kotasına yaklaşmayan Azure Cosmos DB bölümlenmemiş koleksiyonları tanımlar. Bu koleksiyonları, hizmet tarafından otomatik olarak ölçeklendirilebilmeleri için bölüm anahtarı tanımıyla yeni koleksiyonlara geçirmeniz önerilir. [Bölüm anahtarı seçme hakkında daha fazla bilgi edinin.](../cosmos-db/partitioning-overview.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Azure Cosmos DB .NET SDK 'nizi NuGet 'den en son sürüme yükseltme
 
-Azure Advisor, .NET SDK 'sının eski sürümlerini kullanan Azure Cosmos DB hesapları tanımlar. En son düzeltmeler, performans iyileştirmeleri ve özellik özellikleri için NuGet 'den en son sürüme yükseltmenizi önerir. [.NET SDK Azure Cosmos DB hakkında daha fazla bilgi edinin.](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor, .NET SDK 'sının eski sürümlerini kullanan Azure Cosmos DB hesapları tanımlar. En son düzeltmeler, performans iyileştirmeleri ve özellik özellikleri için NuGet 'den en son sürüme yükseltmenizi önerir. [.NET SDK Azure Cosmos DB hakkında daha fazla bilgi edinin.](../cosmos-db/sql-api-sdk-dotnet-standard.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Azure Cosmos DB Java SDK'nızı Maven'dan en son sürüme yükseltin
 
-Azure Advisor, Java SDK 'sının eski sürümlerini kullanan Azure Cosmos DB hesapları tanımlar. En son düzeltmeler, performans iyileştirmeleri ve özellik özellikleri için Maven 'ten en son sürüme yükseltmenizi önerir. [Java SDK Azure Cosmos DB hakkında daha fazla bilgi edinin.](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
+Azure Advisor, Java SDK 'sının eski sürümlerini kullanan Azure Cosmos DB hesapları tanımlar. En son düzeltmeler, performans iyileştirmeleri ve özellik özellikleri için Maven 'ten en son sürüme yükseltmenizi önerir. [Java SDK Azure Cosmos DB hakkında daha fazla bilgi edinin.](../cosmos-db/sql-api-sdk-java-v4.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Azure Cosmos DB Spark bağlayıcısını Maven 'nin en son sürümüne yükseltin
 
-Azure Advisor, Azure Cosmos DB Spark bağlayıcısının eski sürümlerini kullanan Azure Cosmos DB hesapları tanımlar. En son düzeltmeler, performans iyileştirmeleri ve özellik özellikleri için Maven 'ten en son sürüme yükseltmenizi önerir. [Azure Cosmos DB Spark Bağlayıcısı hakkında daha fazla bilgi edinin.](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor, Azure Cosmos DB Spark bağlayıcısının eski sürümlerini kullanan Azure Cosmos DB hesapları tanımlar. En son düzeltmeler, performans iyileştirmeleri ve özellik özellikleri için Maven 'ten en son sürüme yükseltmenizi önerir. [Azure Cosmos DB Spark Bağlayıcısı hakkında daha fazla bilgi edinin.](../cosmos-db/spark-connector.md)
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>HDInsight 4,0 üzerinde Kafka 2,1 ' ye geçmeyi düşünün
 
@@ -110,10 +110,10 @@ Azure Advisor, Azure Cosmos DB Spark bağlayıcısının eski sürümlerini kull
 Başka bir bölgeye çoğaltma özelliği etkinleştirilmemiş sanal makineler, bölgesel kesintiler için esnek değildir. Sanal makinelerin çoğaltılması, Azure bölgesi kesintileri sırasında olumsuz iş etkisini azaltır. Advisor, çoğaltmanın etkin olmadığı ve etkinleştirilmesini önerdiği VM 'Leri algılar. Çoğaltmayı etkinleştirdiğinizde, bir kesinti oluşursa, sanal makinelerinizi uzak bir Azure bölgesinde hızlıca alabilirsiniz. [Sanal makine çoğaltma hakkında daha fazla bilgi edinin.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Azure Connected Machine aracısının en son sürümüne yükseltme
-[Azure bağlı makine Aracısı](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) , hata düzeltmeleri, kararlılık iyileştirmeleri ve yeni işlevlerle düzenli olarak güncelleştirilir. Makine aracısının en son sürümünde çalışmayan kaynakları belirledik ve bu danışman önerisi, en iyi Azure Arc deneyimi için aracınızı en son sürüme yükseltmenizi öneriyor.
+[Azure bağlı makine Aracısı](../azure-arc/servers/manage-agent.md) , hata düzeltmeleri, kararlılık iyileştirmeleri ve yeni işlevlerle düzenli olarak güncelleştirilir. Makine aracısının en son sürümünde çalışmayan kaynakları belirledik ve bu danışman önerisi, en iyi Azure Arc deneyimi için aracınızı en son sürüme yükseltmenizi öneriyor.
 
-## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Web sitesi bütünlüğünü sağlamak için konak adını geçersiz kılma
-Advisor, Application Gateway yapılandırılırken ana bilgisayar adının geçersiz kılınmasından kaçınmanızı öneririz. Arka uca erişmek için kullanılan Application Gateway ön ucu üzerinde farklı bir etki alanı olması, tanımlama bilgilerine veya yeniden yönlendirme URL 'lerinin bozulmasına yol açabilir. Bu, tüm durumlarda bu durum söz konusu olmayabilir ve genel olarak tüm arka uçların (REST API gibi) belirli kategorilerinin buna daha az duyarlı olduğunu unutmayın. Lütfen arka ucun bu sorunu karşılayamaz veya Application Gateway yapılandırmayı güncelleştirip ana bilgisayar adının arka uca doğru bir şekilde üzerine yazılmasına gerek kalmaz. App Service ile kullanıldığında, Web uygulamasına özel bir etki alanı adı ekleyin ve *arka uca doğru. azurewebsites.NET ana bilgisayar adını* kullanmaktan kaçının. [Özel etki alanı hakkında daha fazla bilgi edinin](https://aka.ms/appgw-advisor-usecustomdomain).
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Web sitesi bütünlüğünü sağlamak için konak adını geçersiz kılmayın
+Advisor, Application Gateway yapılandırılırken ana bilgisayar adının geçersiz kılınmasından kaçınmanızı öneririz. Application Gateway'in ön ucundaki etki alanının arka uca erişim için kullanılan etki alanından farklı olması, tanımlama bilgilerinin veya yeniden yönlendirme URL'lerinin bozulmasına yol açabilir. Bunun her durumda söz konusu olmayabileceğini ve genelde bazı arka uç kategorilerinin (REST API'ler gibi) buna daha az duyarlı olduğunu aklınızda bulundurun. Arka ucun bu durumla başa çıkabileceğinden emin olun veya Application Gateway yapılandırmasını güncelleştirerek konak adının arka ucun üzerine yazılması gereğini ortadan kaldırın. App Service ile kullanıldığında, Web uygulamasına özel bir etki alanı adı ekleyin ve *arka uca doğru. azurewebsites.NET ana bilgisayar adını* kullanmaktan kaçının. [Özel etki alanı hakkında daha fazla bilgi edinin](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Danışman 'de yüksek kullanılabilirlik önerilerine erişme
 

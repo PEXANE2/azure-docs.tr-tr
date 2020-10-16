@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036360"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory için roller ve izinler
@@ -88,7 +88,7 @@ Bazen farklı veri fabrikası kullanıcıları için farklı erişim düzeyleri 
 
 - Bir kullanıcının PowerShell veya SDK 'dan bir veri fabrikasını güncelleştirmesine izin verin, ancak Azure portal.
 
-  Kullanıcı için veri fabrikası kaynağında yerleşik **katkıda** bulunan rolünü atayın. Bu rol, kullanıcının Azure portal kaynakları görmesini sağlar, ancak kullanıcı **Yayımla** ve **Tümünü Yayımla** düğmelerine erişemez.
+  Kullanıcı için veri fabrikası kaynağında yerleşik **katkıda** bulunan rolünü atayın. Bu rol, kullanıcının Azure portal kaynakları görmesini sağlar, ancak kullanıcı  **Yayımla** ve **Tümünü Yayımla** düğmelerine erişemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

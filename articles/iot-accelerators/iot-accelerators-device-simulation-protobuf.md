@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012339"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075969"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protokol arabellekleri kullanarak telemetri serileştirme
 
@@ -40,7 +40,7 @@ Bu nasıl yapılır kılavuzundaki adımları izlemek için şunlar gerekir:
 * .NET Core. [Mac, Linux ve Windows için .NET Core 'u](https://www.microsoft.com/net/download)indirebilirsiniz.
 * Postman. [Mac, Windows veya Linux Için Postman](https://www.getpostman.com/apps)indirebilirsiniz.
 * [Azure aboneliğinize dağıtılan bir IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md). Bu kılavuzdaki adımları tamamlayabilmeniz için IoT Hub 'ın bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
-* SQL API 'sini kullanan ve [güçlü tutarlılık](../cosmos-db/manage-account.md)Için yapılandırılmış [Azure aboneliğinize dağıtılan bir Cosmos DB veritabanı](../cosmos-db/create-sql-api-dotnet.md#create-account) . Bu kılavuzdaki adımları tamamlayabilmeniz için Cosmos DB veritabanının bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
+* SQL API 'sini kullanan ve [güçlü tutarlılık](../cosmos-db/how-to-manage-database-account.md)Için yapılandırılmış [Azure aboneliğinize dağıtılan bir Cosmos DB veritabanı](../cosmos-db/create-sql-api-dotnet.md#create-account) . Bu kılavuzdaki adımları tamamlayabilmeniz için Cosmos DB veritabanının bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
 * [Azure aboneliğinize dağıtılan bir Azure depolama hesabı](../storage/common/storage-account-create.md). Bu kılavuzdaki adımları tamamlayabilmeniz için depolama hesabının bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
 
 ## <a name="prepare-your-development-environment"></a>Geliştirme ortamınızı hazırlama
@@ -174,7 +174,7 @@ bir **proto** dosyanız olduğunda, sonraki adım iletileri okumak ve yazmak iç
 
 1. [GitHub 'dan Protoarabellek derleyicisini indirin](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Kaynak dizinini, hedef dizini ve **proto** dosyanızın adını belirterek derleyiciyi çalıştırın. Örneğin:
+1. Kaynak dizinini, hedef dizini ve **proto** dosyanızın adını belirterek derleyiciyi çalıştırın. Örnek:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Dosya **üzerinde Web hizmeti/Özellikler/launchSettings.js** açın ve aşağı
 
 Varsayılan olarak, yeni cihaz modeliniz JSON ve JS dosyalarınız, yerleşik çözüme kopyalanmaz. Bunları açıkça dahil etmeniz gerekir.
 
-Dahil etmek istediğiniz her dosya için **services\services.csproj** dosyasına bir giriş ekleyin. Örneğin:
+Dahil etmek istediğiniz her dosya için **services\services.csproj** dosyasına bir giriş ekleyin. Örnek:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">

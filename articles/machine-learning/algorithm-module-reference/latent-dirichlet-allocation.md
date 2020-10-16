@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907854"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Latent Dirichlet ayırma modülü
@@ -188,12 +188,12 @@ Dizin terimi hesaplandıktan sonra, uzaklık tabanlı bir benzerlik ölçüsü, 
 |N-gram|Tamsayı|[1; 10]|Gerekli|2|Karma oluşturma sırasında oluşturulan N-gram sırası.|  
 |Normalleştir|Boole|True veya false|Gerekli|true|Çıktıyı olasılıklara normalleştirin.  Dönüştürülmüş veri kümesi P (konu&#124;belge) olur ve özellik konu matrisi P (Word&#124;konu başlığı) olur.|  
 |Tüm seçenekleri göster|Boole|True veya false|Gerekli|Yanlış|, Scikit 'e özgü ek parametreler sunar ve çevrimiçi LDA öğrenin.|  
-|Ro parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Önceki dağıtım konu başlığı.|  
-|Alpha parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Dağıtım öncesi belge konusu.|  
+|Ro parametresi|Kayan|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Önceki dağıtım konu başlığı.|  
+|Alpha parametresi|Kayan|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Dağıtım öncesi belge konusu.|  
 |Tahmini belge sayısı|Tamsayı|[1; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|1000|Tahmini belge sayısı. Parametresine karşılık gelir `total_samples` .|  
 |Toplu işin boyutu|Tamsayı|[1; 1024]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|32|Toplu işin boyutu.|  
 |Öğrenme oranı güncelleştirme zamanlaması 'nda kullanılan yinelemenin başlangıç değeri|Tamsayı|[0; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0|Erken yinelemeler için öğrenme oranını aşağı doğru örneklerdeki ilk değer. Parametresine karşılık gelir `learning_offset` .|  
-|Güncelleştirmeler sırasında yinelemeye uygulanan güç|Float|[0.0; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,5|Öğrenme oranını denetlemek için yineleme sayısına güç uygulandı. Parametresine karşılık gelir `learning_decay` . |  
+|Güncelleştirmeler sırasında yinelemeye uygulanan güç|Kayan|[0.0; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,5|Öğrenme oranını denetlemek için yineleme sayısına güç uygulandı. Parametresine karşılık gelir `learning_decay` . |  
 |Eğitim yinelemesi sayısı|Tamsayı|[1; 1024]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|25|Eğitim yinelemesi sayısı.|  
 |Ngram sözlüğü oluşturma|Boole|True veya false|**Tüm seçenekleri göster** onay *kutusu seçili olmadığında* geçerlidir|Doğru|Bilgi işlem bilmesinden önce Ngram sözlüğü oluşturur. Model İnceleme ve yorumu için faydalıdır.|  
 |Ngram sözlüğünün en büyük boyutu|Tamsayı|[1; int. Değerini|**Ngram 'ın derleme sözlüğü** seçeneği **doğru** olduğunda geçerlidir|20000|Ngram sözlüğünün en büyük boyutu. Giriş içindeki belirteçlerin sayısı bu boyutu aşarsa, çakışmalar meydana gelebilir.|  

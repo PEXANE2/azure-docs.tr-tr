@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843439"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949859"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
@@ -78,15 +78,15 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 
 | Kaynak | Ücretsiz &nbsp; <sup>1</sup> | Temel &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| En fazla dizin oluşturucu |3 |5 veya 15|50 |200 |200 |Yok |10 |10 |
-| En fazla veri kaynağı |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
-| En fazla becerileri <sup>4</sup> |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
-| Çağrı başına en fazla dizin oluşturma yükü |10.000 belge |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yok |Sınır yok |Sınır yok |
+| En fazla dizin oluşturucu |3 |5 veya 15|50 |200 |200 |YOK |10 |10 |
+| En fazla veri kaynağı |3 |5 veya 15 |50 |200 |200 |YOK |10 |10 |
+| En fazla becerileri <sup>4</sup> |3 |5 veya 15 |50 |200 |200 |YOK |10 |10 |
+| Çağrı başına en fazla dizin oluşturma yükü |10.000 belge |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |YOK |Sınır yok |Sınır yok |
 | En düşük zamanlama | 5 dakika |5 dakika |5 dakika |5 dakika |5 dakika |5 dakika |5 dakika | 5 dakika |
-| En fazla çalışma süresi| 1-3 dakika |24 saat |24 saat |24 saat |24 saat |Yok  |24 saat |24 saat |
-| Beceri <sup>5</sup> ile Dizin oluşturucular için en fazla çalışma süresi | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |Yok  |2 saat |2 saat |
-| Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |Yok  |256 |256 |
-| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4 &nbsp; milyon |8 &nbsp; milyon |16 &nbsp; milyon |Yok |4 &nbsp; milyon |4 &nbsp; milyon |
+| En fazla çalışma süresi| 1-3 dakika |24 saat |24 saat |24 saat |24 saat |YOK  |24 saat |24 saat |
+| Beceri <sup>5</sup> ile Dizin oluşturucular için en fazla çalışma süresi | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |YOK  |2 saat |2 saat |
+| Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |YOK  |256 |256 |
+| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4 &nbsp; milyon |8 &nbsp; milyon |16 &nbsp; milyon |YOK |4 &nbsp; milyon |4 &nbsp; milyon |
 
 <sup>1</sup> ücretsiz hizmet dizin oluşturucunun en yüksek yürütme süresi olan blob kaynakları için 3 dakika ve diğer tüm veri kaynakları için 1 dakikadır. Bilişsel hizmetler 'e çağıran AI dizin oluşturma için ücretsiz hizmetler, bir işlemin, enzenginleştirme ardışık düzeninde başarıyla geçen bir belge olarak tanımlandığı gün başına 20 ücretsiz işlem ile sınırlıdır.
 
@@ -104,13 +104,13 @@ Beceri <sup>başına en fazla</sup> 30 yetenek.
 ### <a name="shared-private-link-resource-limits"></a>Paylaşılan özel bağlantı kaynağı sınırları
 
 > [!NOTE]
-> Dizin oluşturucular, [Bu nasıl yapılır kılavuzunda](search-indexer-howto-access-private.md) açıklandığı gibi [paylaşılan özel bağlantı kaynağı API 'si](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) aracılığıyla yönetilen özel uç noktalar üzerinden kaynaklara güvenli bir şekilde erişebilir.
+> Dizin oluşturucular, [Bu nasıl yapılır kılavuzunda](search-indexer-howto-access-private.md) açıklandığı gibi [paylaşılan özel bağlantı kaynağı API 'si](/rest/api/searchmanagement/sharedprivatelinkresources) aracılığıyla yönetilen özel uç noktalar üzerinden kaynaklara güvenli bir şekilde erişebilir.
 
 | Kaynak | Ücretsiz | Temel | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Özel uç nokta Dizin Oluşturucu desteği | Hayır | Evet | Evet | Evet | Evet | Hayır | Evet | Evet |
-| Beceri<sup>1</sup> ile Dizin oluşturucular için özel uç nokta desteği | Hayır | Hayır | Hayır | Evet | Evet | Hayır | Evet | Evet |
-| En fazla özel uç noktalar | Yok | 10 veya 30 | 100 | 400 | 400 | Yok | 20 | 20 |
+| Özel uç nokta Dizin Oluşturucu desteği | Hayır | Yes | Yes | Yes | Yes | Hayır | Yes | Yes |
+| Beceri<sup>1</sup> ile Dizin oluşturucular için özel uç nokta desteği | Hayır | Hayır | Hayır | Yes | Yes | Hayır | Yes | Yes |
+| En fazla özel uç noktalar | YOK | 10 veya 30 | 100 | 400 | 400 | YOK | 20 | 20 |
 | En fazla farklı kaynak türü<sup>2</sup> | YOK | 4 | 7 | 15 | 15 | YOK | 4 | 4 |
 
 <sup>1</sup> AI zenginleştirme ve resim analizi, yoğun bir şekilde tüketilir ve kullanılabilir işlem gücü orantısız tüketilecektir ve bu nedenle, daha düşük arama hizmeti katmanları özel ortamda çalışmak üzere ayarlandığında, arama hizmetinin performansı ve kararlılığı olumsuz etkileyebilir.

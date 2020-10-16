@@ -12,16 +12,16 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: joscot
 ms.custom: fasttrack-new
-ms.openlocfilehash: 45e16c9aa9e4b04e7225320951e9f839fae75ba3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8249cc543c6334841c8e5152d5d1ceb84d4097dc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75942483"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076122"
 ---
 # <a name="filter-on-request-ip-address-when-using-an-application-gateway"></a>Application Gateway kullanırken istek IP adresini filtrele
 
-Bu makalede, API Management örneğine bir Application Gateway ya da başka bir aracı aracılığıyla erişildiğinde istek IP adresi üzerinde nasıl filtre yapıldığını gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, API Management örneğine bir Application Gateway ya da başka bir aracı aracılığıyla erişildiğinde istek IP adresi üzerinde nasıl filtre yapıldığını gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-reference.md).
 
 ## <a name="policy"></a>İlke
 
@@ -34,4 +34,4 @@ Kodu **gelen** bloğa yapıştırın.
 APıM ilkeleri hakkında daha fazla bilgi edinin:
 
 + [Erişim kısıtlama ilkeleri](../api-management-access-restriction-policies.md)
-+ [İlke örnekleri](../policy-samples.md)
++ [İlke örnekleri](../policy-reference.md)

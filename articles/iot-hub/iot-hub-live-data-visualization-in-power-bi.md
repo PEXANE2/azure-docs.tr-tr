@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
 ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84634510"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Azure IoT Hub Power BI kullanarak gerçek zamanlı algılayıcı verilerini görselleştirin
@@ -34,7 +34,7 @@ Power BI kullanarak Azure IoT Hub 'ınızın aldığı gerçek zamanlı algılay
 
 * Verileri görselleştirmek için bir Power BI raporu oluşturun ve yayımlayın.
 
-## <a name="what-you-need"></a>Ne gerekiyor
+## <a name="what-you-need"></a>Gerekenler
 
 * [Raspberry PI Çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [node.jsRaspberry Pi ](iot-hub-raspberry-pi-kit-node-get-started.md). Bu makaleler aşağıdaki gereksinimleri kapsar:
   
@@ -64,7 +64,7 @@ Stream Analytics işi oluşturarak başlayalım. İşi oluşturduktan sonra, ver
 
    ![Azure 'da Stream Analytics işi oluşturma](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job.png)
 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
@@ -94,7 +94,7 @@ Stream Analytics işi oluşturarak başlayalım. İşi oluşturduktan sonra, ver
 
    ![Azure 'da bir Stream Analytics işine giriş ekleme](./media/iot-hub-live-data-visualization-in-power-bi/add-input-to-stream-analytics-job.png)
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics işine çıkış ekleme
 
@@ -118,11 +118,11 @@ Stream Analytics işi oluşturarak başlayalım. İşi oluşturduktan sonra, ver
 
    ![Azure 'da bir Stream Analytics işine çıkış ekleme](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job.png)
 
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu yapılandırma
 
-1. **İş topolojisi**altında **sorgu**' yı seçin.
+1. **İş topolojisi**'nin altında **Sorgu**'yu seçin.
 
 2. `[YourInputAlias]` değerini işin giriş diğer adıyla değiştirin.
 

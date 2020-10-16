@@ -3,12 +3,12 @@ title: Uzamsal analiz için Görüntü İşleme ile canlı videoyu çözümleme-
 description: Bu öğreticide, canlı video analizinin Azure bilişsel hizmetler 'deki Görüntü İşleme uzamsal analiz AI özelliği ile birlikte nasıl kullanılacağı gösterilmektedir. Bu, (benzetimli) bir IP kamerasından canlı video akışını analiz edebilir.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824128"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015694"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Uzamsal analizler için Görüntü İşleme ile canlı videoyu çözümleme (Önizleme)
 
@@ -32,10 +32,10 @@ Başlamadan önce şu makaleleri okuyun:
 * [IoT Edge terminolojisinde canlı video analizi](terminology.md)
 * [Medya grafiği kavramları](media-graph-concept.md)
 * [Olay tabanlı video kaydı](event-based-video-recording-concept.md)
-* [Öğretici: IoT Edge modülünü geliştirme](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Öğretici: IoT Edge modülünü geliştirme](../../iot-edge/tutorial-develop-for-linux.md)
 * [Azure Stack Edge üzerinde canlı video analizi dağıtma](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıda, uzamsal analiz modülünü canlı video analizi modülüne bağlama önkoşulları verilmiştir.
 
@@ -55,12 +55,12 @@ Bu diyagramda, sinyallerin Bu öğreticide nasıl akagösterdiği gösterilmekte
 
 MediaGraphCognitiveServicesVisionExtension düğümü bir ara sunucu rolünü yürütür. Video çerçevelerini belirtilen görüntü türüne dönüştürür. Ardından, görüntüyü **paylaşılan bellek** üzerine bir GRPC uç noktasının ARKASıNDA bulunan AI işlemlerini çalıştıran başka bir uç modüle geçirir. Bu örnekte, bu Edge modülü, uzamsal analiz modülüdür. MediaGraphCognitiveServicesVisionExtension işlemci düğümü iki şey yapar:
 
-* Sonuçları toplar ve olayları [IoT Hub havuz](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub)gönderir. 
+* Sonuçları toplar ve olayları [IoT Hub havuz](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)gönderir. 
 * Ayrıca, [sinyal kapısı işlemcisi](media-graph-concept.md#signal-gate-processor) kullanarak RTSP kaynağından 30 saniyelik bir video klibi yakalar ve bunu bir Media Services varlığı olarak depolar.
 
 ## <a name="create-the-computer-vision-resource"></a>Görüntü İşleme kaynağı oluşturma
 
-[Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) ya da Azure clı aracılığıyla görüntü işleme türünde bir Azure kaynağı oluşturmanız gerekir. Kapsayıcıya erişim isteğiniz onaylandıktan ve Azure abonelik KIMLIĞINIZ kaydettirildikten sonra kaynağı oluşturabilirsiniz... https://aka.ms/csgateKullanım durumunu ve Azure ABONELIK kimliğinizi göndermek için adresine gidin.  Azure kaynağını, erişim Isteği formunda sağlanmış olan Azure aboneliğini kullanarak oluşturmanız gerekir.
+[Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) ya da Azure clı aracılığıyla görüntü işleme türünde bir Azure kaynağı oluşturmanız gerekir. Kapsayıcıya erişim isteğiniz onaylandıktan ve Azure abonelik KIMLIĞINIZ kaydettirildikten sonra kaynağı oluşturabilirsiniz... https://aka.ms/csgateKullanım durumunu ve Azure ABONELIK kimliğinizi göndermek için adresine gidin.  Azure kaynağını, erişim Isteği formunda sağlanmış olan Azure aboneliğini kullanarak oluşturmanız gerekir.
 
 ### <a name="gathering-required-parameters"></a>Gerekli parametreler toplanıyor
 
@@ -75,7 +75,7 @@ Bir anahtar, uzamsal analiz kapsayıcısını başlatmak için kullanılır ve i
 
 ## <a name="set-up-azure-stack-edge"></a>Azure Stack kenarını ayarlama
 
-Azure Stack kenarını ayarlamak için aşağıdaki [adımları](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) Izleyin ve canlı video analizlerini ve uzamsal analiz modüllerini dağıtmak için aşağıdaki adımları izlemeye devam edin.
+Azure Stack kenarını ayarlamak için aşağıdaki [adımları](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) Izleyin ve canlı video analizlerini ve uzamsal analiz modüllerini dağıtmak için aşağıdaki adımları izlemeye devam edin.
 
 ## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 
@@ -136,7 +136,7 @@ Dağıtım şablonu dosyasında dikkat etmeniz gereken birkaç nokta vardır:
 1. `IpcMode` lvaEdge ve uzamsal analiz modülü createOptions içinde aynı olmalıdır ve konak olarak ayarlanmalıdır.
 1. RTSP benzeticisinin çalışması için Birim sınırlarını oluşturduğunuzdan emin olun. Daha fazla bilgi için bkz. [Docker Volume takmaları kurma](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [SMB paylaşımıyla bağlantı kurmak için](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share) [örnek Bulldozer video dosyasını](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) yerel paylaşıma kopyalayın.
+    1. [SMB paylaşımıyla bağlantı kurmak için](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) [örnek Bulldozer video dosyasını](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) yerel paylaşıma kopyalayın.
     1. Rtspsim modülünün aşağıdaki yapılandırmaya sahip olduğunu görün:
         
         ```json

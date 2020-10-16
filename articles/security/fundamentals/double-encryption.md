@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 08/13/2020
 ms.author: terrylan
 ms.openlocfilehash: 020e8249f57ccb1a14da798a717a00dcc3962389
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88227510"
 ---
 # <a name="double-encryption"></a>Çift şifreleme
-İki veya daha fazla bağımsız şifreleme katmanı, herhangi bir şifreleme katmanının güvencesine karşı korunmak için iki veya daha fazla bağımsız bir şifreleme katmanıdır. İki şifreleme katmanını kullanmak, verileri şifreleme ile gelen tehditleri azaltır. Örnek:
+İki veya daha fazla bağımsız şifreleme katmanı, herhangi bir şifreleme katmanının güvencesine karşı korunmak için iki veya daha fazla bağımsız bir şifreleme katmanıdır. İki şifreleme katmanını kullanmak, verileri şifreleme ile gelen tehditleri azaltır. Örneğin:
 
 - Veri şifrelemesindeki yapılandırma hataları
 - Şifreleme algoritmasındaki uygulama hataları

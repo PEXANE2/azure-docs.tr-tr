@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182131"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070512"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde ortak Standart Load Balancer kullanma
 
@@ -229,7 +229,7 @@ Bu örnekte, kümemdeki her düğüm için 4000 için ayrılan giden bağlantı 
 > [!IMPORTANT]
 > Bağlantı veya ölçeklendirme sorunlarından kaçınmak için, [gerekli kotayı hesaplamanız ve][requirements] *allocatedOutboundPorts* özelleştirmeden önce gereksinimleri denetlemeniz gerekir.
 
-Ayrıca **`load-balancer-outbound-ports`** , bir küme oluştururken parametreleri de kullanabilirsiniz, ancak aynı zamanda, veya ' ı da belirtmeniz gerekir **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** **`load-balancer-outbound-ip-prefixes`** .  Örneğin:
+Ayrıca **`load-balancer-outbound-ports`** , bir küme oluştururken parametreleri de kullanabilirsiniz, ancak aynı zamanda, veya ' ı da belirtmeniz gerekir **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** **`load-balancer-outbound-ip-prefixes`** .  Örnek:
 
 ```azurecli-interactive
 az aks create \
@@ -322,7 +322,7 @@ Bu, türü ile Kubernetes Hizmetleri için desteklenen ek açıklamaların bir l
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` veya `false`                     | Yük dengeleyicinin iç olup olmayacağını belirtin. Ayarlanmamışsa genel olarak varsayılan olarak ayarlanmıştır.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Alt ağın adı                    | İç yük dengeleyicinin hangi alt ağa bağlanması gerektiğini belirtin. Bu, ayarlanmamışsa, bulut yapılandırma dosyasında yapılandırılan alt ağın varsayılan olarak ayarlanmamakta.
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | Genel IP 'lerde DNS etiketinin adı   | **Ortak** HIZMET için DNS etiketi adını belirtin. Boş dizeye ayarlanırsa, genel IP 'deki DNS girişi kullanılmaz.
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` veya `false`                     | Hizmetin, başka bir hizmetle paylaşılabilecek bir Azure güvenlik kuralı kullanılarak sunulduğunu ve açığa çıkarılabileceğiniz hizmet sayısında bir artış için bir artış kuralları için bir artış olduğunu belirtin. Bu ek açıklama, ağ güvenlik gruplarının Azure [genişletilmiş güvenlik kuralları](../virtual-network/security-overview.md#augmented-security-rules) özelliğine bağımlıdır. 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` veya `false`                     | Hizmetin, başka bir hizmetle paylaşılabilecek bir Azure güvenlik kuralı kullanılarak sunulduğunu ve açığa çıkarılabileceğiniz hizmet sayısında bir artış için bir artış kuralları için bir artış olduğunu belirtin. Bu ek açıklama, ağ güvenlik gruplarının Azure [genişletilmiş güvenlik kuralları](../virtual-network/network-security-groups-overview.md#augmented-security-rules) özelliğine bağımlıdır. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Kaynak grubunun adı            | Küme altyapısı (düğüm kaynak grubu) ile aynı kaynak grubunda olmayan yük dengeleyici genel IP 'Lerinin kaynak grubunu belirtin.
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | İzin verilen hizmet etiketlerinin listesi          | Virgülle ayrılmış izin verilen [hizmet etiketlerinin][service-tags] bir listesini belirtin.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | Dakikalar içinde TCP boş zaman aşımları          | Yük dengeleyicide, TCP bağlantısı boşta kalma zaman aşımlarının gerçekleşmesi için dakika cinsinden süreyi belirtin. Varsayılan ve en küçük değer 4 ' dir. En büyük değer 30 ' dur. Bir tamsayı olmalıdır.
@@ -426,4 +426,4 @@ Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri h
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
-[service-tags]: ../virtual-network/security-overview.md#service-tags
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags

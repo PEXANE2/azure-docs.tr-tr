@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86229372"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
@@ -160,7 +160,7 @@ Daha fazla bilgi edinin:
 
 Gizli bilgi işlem, sanal makine güvenliğinin teknik bir parçası olmadığından, sanal makine güvenliği konusu "işlem" güvenliğinin üst düzey konusuna aittir. Gizli bilgi işlem, "işlem" güvenliği kategorisinde yer alıyor.
 
-Gizli bilgi işlem, veriler "açık" olduğunda, verimli işleme için gerekli olduğunda, verilerin bir güvenilir yürütme ortamında https://en.wikipedia.org/wiki/Trusted_execution_environment (örn. bir şifreleme olarak da bilinir), aşağıdaki şekilde gösterildiği bir örnek olarak korunmasını sağlar.  
+Gizli bilgi işlem, veriler "açık" olduğunda, verimli işleme için gerekli olduğunda, verilerin bir güvenilir yürütme ortamında  https://en.wikipedia.org/wiki/Trusted_execution_environment (örn. bir şifreleme olarak da bilinir), aşağıdaki şekilde gösterildiği bir örnek olarak korunmasını sağlar.  
 
 TEEs, bir hata ayıklayıcıyla birlikte, verileri veya dışarıdaki içindeki işlemleri görüntülemenin bir yolu olmadığından emin olun. Bunlara, yalnızca yetkili kodun verilere erişmesine izin verildiğinden emin olun. Kod değiştirilirse veya üzerinde değişiklik yapılmışsa, işlemler reddedilir ve ortam devre dışı bırakılır. T, bu korumaların içindeki kodun yürütülmesi boyunca uygulanmasını zorlar.
 

@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
 ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85838771"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Anahtar işlemleri (bölge başına en fazla 10 saniye içinde izin verilen işlem sayısı<sup>1</sup>):
 
 |Anahtar türü|HSM anahtarı<br>Anahtar oluştur|HSM anahtarı<br>Diğer tüm işlemler|Yazılım anahtarı<br>Anahtar oluştur|Yazılım anahtarı<br>Diğer tüm işlemler|
 |:---|---:|---:|---:|---:|
-|RSA 2.048 bit|5|1000|10|2.000|
+|RSA 2.048 bit|5|1.000|10|2.000|
 |RSA 3.072 bit|5|250|10|500|
 |RSA 4.096 bit|5|125|10|250|
-|ECC P-256|5|1000|10|2.000|
-|ECC P-384|5|1000|10|2.000|
-|ECC P-521|5|1000|10|2.000|
-|ECC SECP256K1|5|1000|10|2.000|
+|ECC P-256|5|1.000|10|2.000|
+|ECC P-384|5|1.000|10|2.000|
+|ECC P-521|5|1.000|10|2.000|
+|ECC SECP256K1|5|1.000|10|2.000|
 
 > [!NOTE]
 > Önceki tabloda, RSA 2.048-bit yazılım anahtarları için, 2.000/10 saniyeye kadar işlem yapılmasına izin verileceğini görüyoruz. RSA 2.048 bit HSM anahtarları için, her 10 saniye başına 1.000 al işlem yapılmasına izin verilir.

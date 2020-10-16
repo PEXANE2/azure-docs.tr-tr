@@ -493,6 +493,8 @@
                   items:
                     - name: Genelleştirilmiş
                       href: ../vm-generalized-image-version-cli.md
+                    - name: Özelleştirilmiş
+                      href: ../vm-specialized-image-version-cli.md
                 - name: Görüntü kaynaklarını güncelleştirme
                   href: ../update-image-resources-cli.md
                 - name: Paylaşım için uygulama kaydı
@@ -577,6 +579,8 @@
           href: build-image-with-packer.md
         - name: Mevcut bir diski indirme
           href: download-vhd.md
+        - name: Görüntü sürümünden yönetilen disk
+          href: ../managed-disk-from-image-version.md
     - name: VM’leri koruma
       items:
         - name: Öneriler

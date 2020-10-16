@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 9a7846d1a63ee0b3042bbea473babffbe52f06a6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f0e4c8b832b17ee97b6e97aaf94640aaad7aa8db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779221"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977845"
 ---
 <a name="HOLTop"></a>
 
@@ -117,11 +117,12 @@ Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşa
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Yaklaşım Analizi](#sentiment-analysis)
+* [Görüşün madenciliği](#opinion-mining)
 * [Dil algılama](#language-detection)
 * [Adlandırılmış varlık tanıma](#named-entity-recognition-ner) 
 * [Kişisel olarak tanımlanabilir bilgi tanıma](#personally-identifiable-information-recognition) 
 * [Varlık bağlama](#entity-linking)
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 
 # <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
@@ -131,7 +132,7 @@ Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşa
 * [Dil algılama](#language-detection)
 * [Adlandırılmış varlık tanıma](#named-entity-recognition-ner) 
 * [Varlık bağlama](#entity-linking)
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 # <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
@@ -140,7 +141,7 @@ Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşa
 * [Dil algılama](#language-detection)
 * [Adlandırılmış varlık tanıma](#named-entity-recognition-ner) 
 * [Varlık bağlama](#entity-linking)
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 ---
 
@@ -485,7 +486,7 @@ Document ID: 3 , Language: Chinese_Simplified
 > Şu sürümde `3.1` : 
 > * Varlık bağlama, NER 'den ayrı bir istek.
 
-`entity_recognition_example`İstemciyi bir bağımsız değişken olarak alan adlı yeni bir işlev oluşturun, sonra `recognize_entities()` işlevi çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa ' da algılanan varlıkların listesini içerir `entity` ve bunu `error` değildir. Algılanan her varlık için, varsa kategorisini ve alt kategorisini yazdırın.
+`entity_recognition_example`İstemciyi bir bağımsız değişken olarak alan adlı yeni bir işlev oluşturun, sonra `recognize_entities()` işlevi çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa ' da algılanan varlıkların listesini içerir `entity` ve bunu `error` değildir. Algılanan her varlık için kategorisini ve varsa Sub-Category yazdırın.
 
 ```python
 def entity_recognition_example(client):
@@ -609,7 +610,7 @@ Linked Entities:
 
 ### <a name="personally-identifiable-information-recognition"></a>Kişisel olarak tanımlanabilir bilgi tanıma
 
-`pii_recognition_example`İstemciyi bir bağımsız değişken olarak alan adlı yeni bir işlev oluşturun, sonra `recognize_pii_entities()` işlevi çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa ' da algılanan varlıkların listesini içerir `entity` ve bunu `error` değildir. Algılanan her varlık için, varsa kategorisini ve alt kategorisini yazdırın.
+`pii_recognition_example`İstemciyi bir bağımsız değişken olarak alan adlı yeni bir işlev oluşturun, sonra `recognize_pii_entities()` işlevi çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa ' da algılanan varlıkların listesini içerir `entity` ve bunu `error` değildir. Algılanan her varlık için kategorisini ve varsa Sub-Category yazdırın.
 
 ```python
 def pii_recognition_example(client):
@@ -653,7 +654,7 @@ Entity: 555-555-5555
 > Şu sürümde `3.0` : 
 > * Varlık bağlama, NER 'den ayrı bir istek.
 
-`entity_recognition_example`İstemciyi bir bağımsız değişken olarak alan adlı yeni bir işlev oluşturun, sonra `recognize_entities()` işlevi çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa ' da algılanan varlıkların listesini içerir `entity` ve bunu `error` değildir. Algılanan her varlık için, varsa kategorisini ve alt kategorisini yazdırın.
+`entity_recognition_example`İstemciyi bir bağımsız değişken olarak alan adlı yeni bir işlev oluşturun, sonra `recognize_entities()` işlevi çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa ' da algılanan varlıkların listesini içerir `entity` ve bunu `error` değildir. Algılanan her varlık için kategorisini ve varsa Sub-Category yazdırın.
 
 ```python
 def entity_recognition_example(client):

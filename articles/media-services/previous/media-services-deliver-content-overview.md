@@ -10,12 +10,12 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266043"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014401"
 ---
 # <a name="deliver-content-to-customers"></a>Müşterilere içerik sunma
 
@@ -69,7 +69,7 @@ Konum belirleyicilerinin süre sonu tarihleri vardır. Azure portal, gelecekte b
 > 
 > 
 
-Bir bulucunun sona erme tarihini güncelleştirmek için [REST](/rest/api/media/operations/locator#update_a_locator) ya da [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API’lerini kullanın. SAS bulucunun sona erme tarihini güncelleştirdiğinizde URL’nin değiştiğini unutmayın.
+Bir bulucunun sona erme tarihini güncelleştirmek için [REST](/rest/api/media/operations/locator#update_a_locator) ya da [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) API’lerini kullanın. SAS bulucunun sona erme tarihini güncelleştirdiğinizde URL’nin değiştiğini unutmayın.
 
 Konumlandırıcı, Kullanıcı başına erişim denetimini yönetmek için tasarlanmamıştır. Dijital Rights Management (DRM) çözümlerini kullanarak, bireysel kullanıcılara farklı erişim hakları verebilirsiniz. Daha fazla bilgi için bkz. [medyayı güvenli hale getirme](/previous-versions/azure/dn282272(v=azure.100)).
 
@@ -186,7 +186,7 @@ Eski Kesintisiz Akış istemcilerinden bazıları yineleme etiketlerini destekle
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular

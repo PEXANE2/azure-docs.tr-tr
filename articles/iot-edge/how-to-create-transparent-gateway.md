@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ae01fc2ef8761305c2096904471ce75b69d1150d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167411"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048415"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma
 
@@ -36,7 +36,7 @@ Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım v
 
 Bir cihazın ağ geçidi olarak davranması için, onun aşağı akış cihazlarına güvenli bir şekilde bağlanması gerekir. Azure IoT Edge, cihazlar arasında güvenli bağlantı kurmak için ortak anahtar altyapısı (PKI) kullanmanıza olanak tanır. Bu durumda, bir aşağı akış cihazının saydam bir ağ geçidi görevi gören bir IoT Edge cihazına bağlanmasına izin veriyoruz. Makul güvenliği korumak için, aşağı akış cihazının ağ geçidi cihazının kimliğini onaylamasını gerekir. Bu kimlik denetimi, cihazlarınızın potansiyel olarak kötü amaçlı ağ geçitlerine bağlanmasını engeller.
 
-Bir aşağı akış cihazı, [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) bulut hizmeti ile oluşturulmuş bir kimliği olan herhangi bir uygulama veya platform olabilir. Bu uygulamalar genellikle [Azure IoT cihaz SDK 'sını](../iot-hub/iot-hub-devguide-sdks.md)kullanır. Bir aşağı akış cihazı, IoT Edge ağ geçidi cihazının kendisi üzerinde çalışan bir uygulama bile olabilir. Ancak, bir IoT Edge cihaz IoT Edge bir ağ geçidinin bir aşağı akış olamaz.
+Bir aşağı akış cihazı, [Azure IoT Hub](../iot-hub/index.yml) bulut hizmeti ile oluşturulmuş bir kimliği olan herhangi bir uygulama veya platform olabilir. Bu uygulamalar genellikle [Azure IoT cihaz SDK 'sını](../iot-hub/iot-hub-devguide-sdks.md)kullanır. Bir aşağı akış cihazı, IoT Edge ağ geçidi cihazının kendisi üzerinde çalışan bir uygulama bile olabilir. Ancak, bir IoT Edge cihaz IoT Edge bir ağ geçidinin bir aşağı akış olamaz.
 
 Cihaz ağ geçidi topolojiniz için gereken güveni sağlayan herhangi bir sertifika altyapısı oluşturabilirsiniz. Bu makalede, belirli bir IoT Hub (IoT Hub 'ı kök CA) ile ilişkili bir X. 509.952 CA sertifikasını, bu CA ile imzalanmış bir sertifika serisini ve IoT Edge cihazının CA 'sını içeren IoT Hub [x. 509.440 CA güvenliğini](../iot-hub/iot-hub-x509ca-overview.md) etkinleştirmek için kullandığınız sertifika kurulumunu kabul ediyoruz.
 
@@ -45,7 +45,7 @@ Cihaz ağ geçidi topolojiniz için gereken güveni sağlayan herhangi bir serti
 
 Aşağıdaki adımlar, sertifikaları oluşturma ve bunları ağ geçidine doğru yerlere yükleme sürecinde size yol gösterir. Sertifikaları oluşturmak için herhangi bir makine kullanabilir ve sonra bunları IoT Edge cihazınıza kopyalayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 IoT Edge yüklü bir Linux veya Windows cihazı.
 
@@ -73,14 +73,14 @@ Aşağıdaki dosyaları hazırlayın:
       * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
    2. [IoT Edge CIHAZ CA sertifikası oluşturun](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Bu yönergelerin sonunda, bir cihaz CA sertifikası ve onun özel anahtarı olmak üzere iki dosya olacaktır:
-      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`'
+      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` '
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
 2. Bu dosyaları farklı bir makinede oluşturduysanız, IoT Edge cihazınıza kopyalayın.
 
 3. IoT Edge cihazınızda güvenlik Daemon yapılandırma dosyasını açın.
-   * Pencerelerin`C:\ProgramData\iotedge\config.yaml`
-   * 'Un`/etc/iotedge/config.yaml`
+   * Pencerelerin `C:\ProgramData\iotedge\config.yaml`
+   * 'Un `/etc/iotedge/config.yaml`
 
 4. Dosyanın **Sertifikalar** bölümünü bulun ve aşağıdaki özellikler için değer olarak dosya URI 'lerini üç dosyaya sağlayın:
    * **device_ca_cert**: cihaz CA sertifikası
@@ -90,8 +90,8 @@ Aşağıdaki dosyaları hazırlayın:
 5. Dosyayı kaydedin ve kapatın.
 
 6. IoT Edge yeniden başlatın.
-   * Pencerelerin`Restart-Service iotedge`
-   * 'Un`sudo systemctl restart iotedge`
+   * Pencerelerin `Restart-Service iotedge`
+   * 'Un `sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub ve yönlendirme iletileri dağıtma
 
@@ -120,12 +120,12 @@ IoT Edge hub modülünü dağıtmak ve gelen iletileri aşağı akış cihazlar�
 6. **Rotalar** sayfasında, aşağı akış aygıtlarından gelen iletileri işlemek için bir yol olduğundan emin olun. Örnek:
 
    * Bir modülden veya bir aşağı akış cihazdan IoT Hub için tüm iletileri gönderen bir yol:
-       * **Ad**:`allMessagesToHub`
-       * **Değer**:`FROM /messages/* INTO $upstream`
+       * **Ad**: `allMessagesToHub`
+       * **Değer**: `FROM /messages/* INTO $upstream`
 
    * Tüm aşağı akış cihazlarındaki tüm iletileri IoT Hub 'e gönderen bir yol:
-      * **Ad**:`allDownstreamToHub`
-      * **Değer**:`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+      * **Ad**: `allDownstreamToHub`
+      * **Değer**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
 
       Bu yol, IoT Edge modüllerinden gelen iletilerden farklı olarak, aşağı akış cihazlarındaki iletilerin bu kendileriyle ilişkili bir modül KIMLIĞI olmadığından dolayı işe yarar. Yolun **WHERE** yan tümcesinin kullanılması, bu sistem özelliğine sahip tüm iletileri filtreleyebileceğimizi sağlar.
 

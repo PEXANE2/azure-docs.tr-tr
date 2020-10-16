@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 18972e991f08db7fa9548454a5c5cdc3ff0f552f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87285195"
 ---
 # <a name="azcopy"></a>azcopy
@@ -38,7 +38,7 @@ Sorunları bildirmek veya araç hakkında daha fazla bilgi edinmek için bkz [ht
 
 **--Yardım** AzCopy için yardım
       
-**--komut çıktısının çıkış türü** (dize) biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer: `text`. (varsayılan `text` )
+**--komut çıktısının çıkış türü**  (dize) biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer: `text`. (varsayılan `text` )
 
 **--Güvenilen-Microsoft-Suffixes** (dize) Azure Active Directory oturum açma belirteçlerinin gönderilebileceği ek etki alanı soneklerini belirler.  Varsayılan değer '*. Core.Windows.net;*' dir. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Burada listelenenler varsayılan olarak eklenir. Güvenlik için yalnızca Microsoft Azure etki alanlarını Buraya yerleştirmeniz gerekir. Birden çok girişi noktalı virgülle ayırın.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202305"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961366"
 ---
 # <a name="display-controls"></a>Görüntüleme denetimleri
 
@@ -30,9 +30,9 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
- [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın `DataUri` sayfa sözleşmesi sürüm 2.0.0 veya üzeri olarak ayarlanması gerekir. Örneğin:
+ [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın `DataUri` sayfa sözleşmesi sürüm 2.0.0 veya üzeri olarak ayarlanması gerekir. Örnek:
 
 ```xml
 <ContentDefinition Id="api.selfasserted">
@@ -48,16 +48,16 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Id | Evet | Görüntüleme denetimi için kullanılan bir tanımlayıcı. [Başvuru](#referencing-display-controls)yapılabilir. |
-| Userınterfacecontroltype | Evet | Görüntü denetiminin türü. Şu anda desteklenen [doğrulama](display-control-verification.md) |
+| Id | Yes | Görüntüleme denetimi için kullanılan bir tanımlayıcı. [Başvuru](#referencing-display-controls)yapılabilir. |
+| Userınterfacecontroltype | Yes | Görüntü denetiminin türü. Şu anda desteklenen [doğrulama](display-control-verification.md) |
 
 **DisplayControl** öğesi aşağıdaki öğeleri içerir:
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Inputclaims | 0:1 | **Inputclaim** , kullanıcıdan toplanacak taleplerin değerini önceden doldurmak için kullanılır. |
-| DisplayClaim | 0:1 | **DisplayClaim** , kullanıcıdan toplanacak talepleri temsil etmek için kullanılır. |
-| Outputclaim | 0:1 | **Outputclaim** , bu **DisplayControl**için geçici olarak kaydedilecek talepleri temsil etmek için kullanılır. |
+| Inputclaims | 0:1 | **Inputclaim** , kullanıcıdan toplanacak taleplerin değerini önceden doldurmak için kullanılır. Daha fazla bilgi için bkz. [ınputclaim](technicalprofiles.md#inputclaims) öğesi. |
+| DisplayClaim | 0:1 | **DisplayClaim** , kullanıcıdan toplanacak talepleri temsil etmek için kullanılır. Daha fazla bilgi için bkz. [DisplayClaim](technicalprofiles.md#displayclaim) öğesi.|
+| Outputclaim | 0:1 | **Outputclaim** , bu **DisplayControl**için geçici olarak kaydedilecek talepleri temsil etmek için kullanılır. Daha fazla bilgi için bkz. [Outputclaim](technicalprofiles.md#outputclaims) öğesi.|
 | Eylemler | 0:1 | **Eylemler** , ön uçta oluşan Kullanıcı eylemleri için çağrılacak doğrulama teknik profillerini listelemek için kullanılır. |
 
 ### <a name="input-claims"></a>Giriş talepleri
@@ -80,7 +80,7 @@ Her bir görüntüleme denetimi türü, gerçekleştirilecek farklı bir görün
 
 [Kendi kendini onaylanan bir teknik profilde](self-asserted-technical-profile.md#display-claims)tanımlanan **görüntüleme taleplerine** benzer şekilde, görüntüleme talepleri Kullanıcı tarafından görüntüleme denetimindeki toplanacak talepleri temsil eder. Başvurulan **ClaimType** öğesinin, veya gibi Azure AD B2C tarafından desteklenen bir kullanıcı giriş türü Için **userınputtype** öğesini belirtmesi gerekir `TextBox` `DropdownSingleSelect` . Bir **eylem**için bir görüntüleme talep değeri gerekliyse, **Required** `true` kullanıcıyı o belirli görüntüleme talebi için bir değer sağlamaya zorlamak üzere gerekli özniteliği olarak ayarlayın.
 
-Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için gereklidir. Örneğin, doğrulamalar **Icationcontrol**türündeki görüntüleme denetimi Için **doğrulama kodu** gereklidir. Bu gerekli talep için hangi DisplayClaim 'nin kullanılacağını belirtmek için **Controlclaimtype** özniteliğini kullanın. Örneğin:
+Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için gereklidir. Örneğin, doğrulamalar **Icationcontrol**türündeki görüntüleme denetimi Için **doğrulama kodu** gereklidir. Bu gerekli talep için hangi DisplayClaim 'nin kullanılacağını belirtmek için **Controlclaimtype** özniteliğini kullanın. Örnek:
 
 ```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -98,7 +98,90 @@ Bir görüntü denetiminin **eylemleri** , bir kullanıcı istemci tarafında (t
 
 Bir eylem, **doğrulama teknik profillerinin**bir listesini tanımlar. Bunlar, görüntüleme denetiminin görüntüleme taleplerinin bazılarını veya tümünü doğrulamak için kullanılır. Doğrulama teknik profili, Kullanıcı girişini doğrular ve kullanıcıya bir hata döndürebilir. Kendi kendini onaylanan bir teknik profilde [doğrulama teknik profillerinde](validation-technical-profile.md) kullanılanlara benzer şekilde, görüntü denetimi eyleminde **devam**ediyor, **devam onSuccess**ve **önkoşulları** kullanabilirsiniz.
 
-Aşağıdaki örnek, kullanıcının **Mfatype** talebinin seçimine bağlı olarak e-posta veya SMS içinde bir kod gönderir.
+#### <a name="actions"></a>Eylemler
+
+**Actions** öğesi aşağıdaki öğeyi içerir:
+
+| Öğe | Öğeleri | Açıklama |
+| ------- | ----------- | ----------- |
+| Eylem | 1: n | Yürütülecek eylemlerin listesi. |
+
+#### <a name="action"></a>Eylem
+
+**Action** öğesi aşağıdaki özniteliği içerir:
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| Id | Yes | İşlem türü. Olası değerler: `SendCode` veya `VerifyCode` . `SendCode`Değer kullanıcıya bir kod gönderir. Bu eylem, iki doğrulama teknik profili içerebilir: bir kod oluşturmak için biri ve bir tane göndermek için. `VerifyCode`Değer, kullanıcının giriş metin kutusuna girdiği kodu doğrular. |
+
+**Action** öğesi aşağıdaki öğeyi içerir:
+
+| Öğe | Öğeleri | Açıklama |
+| ------- | ----------- | ----------- |
+| ValidationClaimsExchange | 1:1 | Referans veren teknik profilin bazı veya tüm görüntüleme taleplerini doğrulamak için kullanılan teknik profillerin tanımlayıcıları. Başvurulan teknik profilin tüm giriş talepleri, başvuran teknik profilin görüntüleme talepleri ' nde görünmelidir. |
+
+#### <a name="validationclaimsexchange"></a>ValidationClaimsExchange
+
+**Validationclaimsexchange** öğesi aşağıdaki öğeyi içerir:
+
+| Öğe | Öğeleri | Açıklama |
+| ------- | ----------- | ----------- |
+| Validationteknisyen Alprofıle | 1: n | Başvuru yapan teknik profilin bazı veya tüm görüntüleme taleplerini doğrulamak için kullanılacak teknik bir profil. |
+
+**Validationitealprofile** öğesi aşağıdaki öznitelikleri içerir:
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| ReferenceId | Yes | İlkede veya üst ilkede önceden tanımlanmış bir teknik profil tanıtıcısı. |
+|ContinueOnError|Hayır| Bu doğrulama teknik profili bir hata harekete geçirirse, sonraki doğrulama teknik profillerinin doğrulanmasının devam etmesi gerekip gerekmediğini gösterir. Olası değerler: `true` veya `false` (varsayılan, diğer doğrulama profillerinin işlenmesi durdurulur ve bir hata döndürülür). |
+|Devam onSuccess | Hayır | Bu doğrulama teknik profili başarılı olursa sonraki doğrulama profillerinin doğrulanmasının devam etmesi gerekip gerekmediğini gösterir. Olası değerler: `true` veya `false` . Varsayılan olarak, `true` diğer doğrulama profillerinin işlenmesi devam edecektir. |
+
+**Validation, Alprofile** öğesi aşağıdaki öğeyi içerir:
+
+| Öğe | Öğeleri | Açıklama |
+| ------- | ----------- | ----------- |
+| Üstbilgisinde | 0:1 | Doğrulama teknik profilinin yürütülmesi için karşılanması gereken önkoşulların bir listesi. |
+
+**Önkoşul** öğesi aşağıdaki öznitelikleri içerir:
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| `Type` | Evet | Önkoşul için gerçekleştirilecek denetim veya sorgunun türü. Olası değerler: `ClaimsExist` veya `ClaimEquals` . `ClaimsExist` Belirtilen talepler kullanıcının geçerli talep kümesinde varsa eylemlerin gerçekleştirilmesi gerektiğini belirtir. `ClaimEquals` belirtilen talep varsa ve değeri belirtilen değere eşitse eylemlerin gerçekleştirilmesi gerektiğini belirtir. |
+| `ExecuteActionsIf` | Yes | Test true veya false olduğunda önkoşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğini gösterir. |
+
+**Önkoşul** öğesi aşağıdaki öğeleri içerir:
+
+| Öğe | Öğeleri | Açıklama |
+| ------- | ----------- | ----------- |
+| Değer | 1: n | Denetim tarafından kullanılan veriler. Bu denetim türü ise `ClaimsExist` , bu alan, sorgulanacak bir ClaimTypeReferenceId belirtir. Denetim türü ise `ClaimEquals` , bu alan sorgu için bir ClaimTypeReferenceId belirtir. Başka bir değer öğesinde denetlenecek değeri belirtin.|
+| Eylem | 1:1 | Bir düzenleme adımı içindeki önkoşul denetimi doğru ise, alınması gereken eylem. **Eylemin** değeri `SkipThisValidationTechnicalProfile` , ilişkili doğrulama teknik profilinin yürütülmemelidir. olarak ayarlanır. |
+
+Aşağıdaki örnek, [Azure AD SSPR Technical profile](aad-sspr-technical-profile.md)kullanarak e-posta adresini gönderir ve doğrular.
+
+```xml
+<DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
+  <InputClaims></InputClaims>
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="email" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="verificationCode" ControlClaimType="VerificationCode" Required="true" />
+  </DisplayClaims>
+  <OutputClaims></OutputClaims>
+  <Actions>
+    <Action Id="SendCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-SendCode" />
+      </ValidationClaimsExchange>
+    </Action>
+    <Action Id="VerifyCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-VerifyCode" />
+      </ValidationClaimsExchange>
+    </Action>
+  </Actions>
+</DisplayControl>
+```
+
+Aşağıdaki örnek, bir e-posta veya SMS içinde, kullanıcının önkoşulları olan **Mfatype** talebinin seçimine bağlı olarak bir kod gönderir.
 
 ```xml
 <Action Id="SendCode">
@@ -141,3 +224,10 @@ Görüntüleme denetimlerine, [kendi kendini onaylanan teknik profilin](self-ass
     <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
     <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
 ```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Görüntüleme denetimini kullanma örnekleri için bkz.: 
+
+- [Mailjet ile özel e-posta doğrulama](custom-email-mailjet.md)
+- [SendGrid ile özel e-posta doğrulama](custom-email-sendgrid.md)

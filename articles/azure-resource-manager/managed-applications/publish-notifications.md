@@ -6,10 +6,10 @@ ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
 ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86054534"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Bildirimleri olan Azure yönetilen uygulamalar
@@ -70,9 +70,9 @@ Aşağıdaki tabloda, EventType ve ProvisioningState 'in tüm olası birleşimle
 Olay türü | ProvisioningState | Bildirim için Tetikle
 ---|---|---
 PUT | Kabul edildi | Yönetilen kaynak grubu, uygulama KONDUKTAN sonra (yönetilen kaynak grubundaki dağıtıma konmadan önce) başarıyla oluşturuldu ve yansıtılmıştır.
-PUT | Başarılı oldu | Yönetilen uygulamanın tam olarak sağlanması, bir KONDUKTAN sonra başarılı oldu.
+PUT | Başarılı | Yönetilen uygulamanın tam olarak sağlanması, bir KONDUKTAN sonra başarılı oldu.
 PUT | Başarısız | Herhangi bir noktada uygulama örneği sağlamayı YERLEŞTIRME hatası.
-DÜZELTMESI | Başarılı oldu | Etiketler, JıT erişim ilkesi veya yönetilen kimlik güncelleştirmek için yönetilen uygulama örneğindeki başarılı bir düzeltme ekiyle sonra.
+DÜZELTMESI | Başarılı | Etiketler, JıT erişim ilkesi veya yönetilen kimlik güncelleştirmek için yönetilen uygulama örneğindeki başarılı bir düzeltme ekiyle sonra.
 DELETE | Siliniyor | Kullanıcı, yönetilen uygulama örneğinin bir SILME işlemini başlatır.
 DELETE | Silindi | Yönetilen uygulamanın tam ve başarılı bir şekilde silinmesinden sonra.
 DELETE | Başarısız | Silme işlemini engelleyen kaldırma işlemi sırasında herhangi bir hatadan sonra.
@@ -178,7 +178,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 Parametre | Açıklama
 ---|---
-Türü | Bildirimi tetikleyen olay türü. (Örneğin, PUT, PATCH, DELETE.)
+eventType | Bildirimi tetikleyen olay türü. (Örneğin, PUT, PATCH, DELETE.)
 applicationId | Bildirimin tetiklendiği yönetilen uygulamanın tam kaynak tanımlayıcısı.
 eventTime | Bildirimi tetikleyen olayın zaman damgası. (UTC ISO 8601 biçiminde tarih ve saat.)
 provisioningState | Yönetilen uygulama örneğinin sağlama durumu. (Örneğin, başarılı, başarısız, silme, silindi.)

@@ -12,10 +12,10 @@ ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259229"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Onfido yapılandırma öğreticisi
@@ -24,7 +24,7 @@ Bu örnek öğreticide, Azure AD B2C [Onfido](https://onfido.com/)ile tümleşti
 
 Bu örnekte, kimlik doğrulaması yapmak için kaydolma veya oturum açma akışındaki Onfido 'ın hizmetini bağlayacağız. Kullanıcının hangi ürün ve hizmete erişebileceği hakkında bilinçli kararlar, Onfido 'ın sonuçlarına göre yapılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunlar gerekir:
 
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![onfido mimarisi için ekran görüntüsü-diyagram](media/partner-onfido/onfido-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak için kaydolun ve sayfaya bilgi girer. Azure AD B2C Kullanıcı özniteliklerini toplar. Azure AD B2C barındırılan onfido istemci uygulaması, Kullanıcı bilgilerini kontrol eder.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.

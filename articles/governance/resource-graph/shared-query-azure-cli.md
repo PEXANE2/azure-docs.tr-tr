@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: Azure CLı ile paylaşılan bir sorgu oluşturma'
 description: Bu hızlı başlangıçta, Azure CLı için kaynak grafik uzantısını etkinleştirmek ve paylaşılan bir sorgu oluşturmak için aşağıdaki adımları izleyin.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667665"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057204"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak kaynak grafiği paylaşılan sorgusu oluşturma
 
@@ -16,7 +16,7 @@ Azure [CLI](/cli/azure/) Ile Azure Resource Graph kullanmanın ilk adımı, uzan
 
 Bu işlemin sonunda, uzantıyı tercih ettiğiniz Azure CLı yüklemesine eklediniz ve kaynak grafiği paylaşılan sorgusu oluşturacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -84,7 +84,7 @@ Azure CLı uzantısı tercih ettiğiniz ortamınıza eklendiğinde, kaynak grafi
    ```
 
 1. `{{shared-query-uri}}`Bir [az Graph Query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query) komutunda SÖZDIZIMI ile Azure CLI 'de paylaşılan sorguyu çalıştırın.
-   İlk olarak, `id` Yukarıdaki komutun sonucundan alanı kopyalayın `show` . `shared-query-uri`Örnekteki metni alanındaki değerle değiştirin `id` , ancak çevreden `{{` ve karakterlerinden ayrılın `}}` .
+   İlk olarak, `id` Önceki komutun sonucundan alanı kopyalayın `show` . `shared-query-uri`Örnekteki metni alanındaki değerle değiştirin `id` , ancak çevreden `{{` ve karakterlerinden ayrılın `}}` .
 
    ```azurecli-interactive
    # Run a Azure Resource Graph shared query

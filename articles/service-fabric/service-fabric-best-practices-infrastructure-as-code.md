@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253686"
 ---
 # <a name="infrastructure-as-code"></a>Kod olarak altyapı
@@ -104,7 +104,7 @@ Sanal makinelerinizin yükseltilmesi Kullanıcı tarafından başlatılan bir i�
 ```
 Service Fabric ile otomatik IŞLETIM sistemi yükseltmeleri kullanırken, yeni işletim sistemi görüntüsü aynı anda bir güncelleştirme etki alanını kullanıma alarak Service Fabric çalıştıran hizmetlerin yüksek kullanılabilirliğe sahip olur. Service Fabric otomatik işletim sistemi yükseltmelerini kullanmak için, kümenizin gümüş dayanıklılık katmanını veya üstünü kullanacak şekilde yapılandırılması gerekir.
 
-Windows konak makinelerinizin Eşgüdümlü olmayan güncelleştirmeleri başlatmasını engellemek için aşağıdaki kayıt defteri anahtarının yanlış olarak ayarlandığından emin olun: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Windows konak makinelerinizin Eşgüdümlü olmayan güncelleştirmeleri başlatmasını engellemek için aşağıdaki kayıt defteri anahtarının false olarak ayarlandığından emin olun: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
 Aşağıda, WindowsUpdate kayıt defteri anahtarını false olarak ayarlamak için, Işlem Sanal Makine Ölçek Kümesi Kaynak Yöneticisi Şablon özellikleri verilmiştir:
 ```json

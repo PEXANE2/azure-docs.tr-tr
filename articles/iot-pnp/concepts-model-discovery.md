@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577722"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042924"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Kullan modellerini kullanma
 
@@ -40,10 +40,10 @@ Bir çözüm, aşağıdaki üç yöntemden birini kullanarak IoT Tak ve Kullan c
 
 ### <a name="get-device-twin-api"></a>Cihaz Ikizi API 'sini al
 
-Çözüm, IoT Tak ve Kullan cihazının model KIMLIĞINI almak için [Device ikizi](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) API 'sini alabilir.
+Çözüm, IoT Tak ve Kullan cihazının model KIMLIĞINI almak için [Device ikizi](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) API 'sini alabilir.
 
 > [!TIP]
-> Modüller ve IoT Edge modüller için [Moduleclient. getTwin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true)kullanın.
+> Modüller ve IoT Edge modüller için [Moduleclient. getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable)kullanın.
 
 Aşağıdaki cihaz ikizi yanıt kod parçacığında, `modelId` ıot Tak ve kullan cihazının model kimliğini içerir:
 
@@ -71,7 +71,7 @@ Aşağıdaki cihaz ikizi yanıt kod parçacığında, `modelId` ıot Tak ve kull
 
 ### <a name="get-digital-twin-api"></a>Digital Ikizi API 'sini al
 
-Çözüm, IoT Tak ve Kullan cihazı tarafından uygulanan modelin model KIMLIĞINI almak için [Get Digital ikizi](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API 'sini kullanabilir.
+Çözüm, IoT Tak ve Kullan cihazı tarafından uygulanan modelin model KIMLIĞINI almak için [Get Digital ikizi](/rest/api/iothub/service/digitaltwin/getdigitaltwin) API 'sini kullanabilir.
 
 Aşağıdaki Digital ikizi yanıt kod parçacığında, `$metadata.$model` ıot Tak ve kullan cihazının model kimliğini içerir:
 
@@ -121,7 +121,7 @@ Bir çözüm, aşağıdaki seçeneklerden birini kullanarak model tanımını al
 
 Yeni bir cihaz bağlantısı için model KIMLIĞINI tanımladıktan sonra aşağıdaki adımları izleyin:
 
-1. Model deposundaki model KIMLIĞINI kullanarak model tanımını alın. Daha fazla bilgi için bkz. [modelleri al](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
+1. Model deposundaki model KIMLIĞINI kullanarak model tanımını alın. Daha fazla bilgi için bkz. [modelleri al](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
 
 1. Bağlı cihazın model tanımını kullanarak, cihazın yeteneklerini sıralayabilirsiniz.
 
@@ -144,5 +144,5 @@ Yeni bir cihaz bağlantısı için model KIMLIĞINI tanımladıktan sonra aşağ
 IoT çözümünde IoT Tak ve Kullan modellerini nasıl tümleştirileceğini öğrendiğinize göre, önerilen bazı sonraki adımlar şunlardır:
 
 - [Çözümünüzden bir cihazla etkileşim kurma](quickstart-service-node.md)
-- [IoT dijital Ikizi REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT dijital Ikizi REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Gezgini](howto-use-iot-explorer.md)

@@ -50,7 +50,7 @@
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Kubernetes için Azure Defender
-          displayName: 'clusters, k8s'
+          displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
         - name: Kapsayıcı kayıt defterleri için Azure Defender
           displayName: 'ACR, registry, images'
@@ -58,7 +58,7 @@
         - name: Ek tehdit korumaları
           href: other-threat-protections.md
     - name: Güvenlik Merkezi’nin kapsayıcı güvenliği özellikleri
-      displayName: 'kubernetes, aks, acr, registries'
+      displayName: 'kubernetes, aks, acr, registries, k8s'
       href: container-security.md
     - name: Fiyatlandırma
       href: security-center-pricing.md
@@ -79,6 +79,8 @@
           href: quickstart-onboard-gcp.md
     - name: PowerShell kullanarak eklemeyi otomatikleştirme
       href: security-center-powershell-onboarding.md
+    - name: Yönetim grubu için Güvenlik Merkezi'ni etkinleştirme
+      href: onboard-management-group.md
     - name: Veri toplamayı yapılandırma
       href: security-center-enable-data-collection.md
     - name: E-posta bildirimlerini ayarlama
@@ -140,8 +142,6 @@
             - name: Önerilere verilen yanıtları otomatikleştirme
               displayName: workflow
               href: workflow-automation.md
-            - name: Önerileri dışarı aktarma
-              href: continuous-export.md
             - name: Kaynağı öneriden muaf tutma
               href: exempt-resource.md
     - name: Azure Defender uyarıları
@@ -169,17 +169,20 @@
           href: update-regulatory-compliance-packages.md
     - name: Sunucular için Azure Defender’ı kullanma
       items:
-        - name: VM’ler için güvenlik açığı taraması
+        - name: Güvenlik açığı taraması
           items:
-            - name: VM’lerinizi tümleşik VA çözümüyle tarama
-              displayName: 'qualys, vulnerability'
+            - name: Makineler için tümleşik VA tarayıcısı
+              displayName: 'qualys, vulnerability, arc'
               href: deploy-vulnerability-assessment-vm.md
             - name: VM’lerinizi KLG VA çözümüyle tarama
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
-            - name: VM'lerinizdeki güvenlik açıklarını gözden geçirme ve düzeltme
+            - name: Güvenlik açıklarını gözden geçirme ve düzeltme
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
+            - name: Belirli güvenlik açığı bulgularını devre dışı bırakma
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Tam zamanında VM erişimi ile yönetim bağlantı noktalarının güvenliğini sağlama
           items:
             - name: Tam zamanında VM erişimine genel bakış
@@ -213,6 +216,15 @@
     - name: Kapsayıcı kayıt defterleri için Azure Defender’ı kullanma
       displayName: 'ACR, registry, images'
       href: defender-for-container-registries-usage.md
+    - name: Uyarıları ve önerileri dışarı aktarma
+      items:
+        - name: 'SIEM, SOAR veya ITSM''ye aktarma'
+          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+          href: export-to-siem.md
+        - name: Log Analytics çalışma alanına veya Azure Olay Hub'ına aktarma
+          href: continuous-export.md
+        - name: Tüm uyarıları içeren CSV raporunu indirme
+          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
     - name: Azure Defender uyarılarını ele alma
       items:
         - name: Güvenlik uyarılarını yönetme
@@ -226,16 +238,14 @@
           href: security-center-incident.md
         - name: Tehdit analizi raporları oluşturma
           href: security-center-threat-report.md
-        - name: Uyarı yapılandırmanızı doğrulama (EICAR test dosyası)
+        - name: Uyarı yapılandırmanızı doğrulama
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
         - name: Uyarıların yanıtlarını otomatikleştirme
           displayName: workflow
           href: workflow-automation.md
-        - name: Uyarıları dışarı aktarma
-          displayName: continuous
-          href: continuous-export.md
     - name: Kubernetes iş yüklerinizi koruma
-      displayName: 'k8s, containers'
+      displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
     - name: Araştırma kullanıcı verilerini yönetme
       href: security-center-investigation-user-data.md

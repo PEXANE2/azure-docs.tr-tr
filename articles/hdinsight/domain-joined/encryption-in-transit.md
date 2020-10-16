@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89668774"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Azure HDInsight için iletim sırasında IPSec şifrelemesi
@@ -42,7 +42,7 @@ Azure portal kullanarak geçiş özelliği etkinken şifreleme ile yeni bir küm
 
 1. **Güvenlik + ağ** sekmesinde, **yoldaki şifrelemeyi etkinleştir** onay kutusunu işaretleyin.
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Küme oluşturma-geçiş sırasında şifrelemeyi etkinleştirin.":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Küme oluşturma-güvenlik ve ağ sekmesi.":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>Azure CLı aracılığıyla etkinleştirilen geçişte şifreleme ile küme oluşturma
 
@@ -50,7 +50,7 @@ Geçiş sırasında şifreleme özelliği kullanılarak etkinleştirildi `isEncr
 
 [Örnek bir şablon ve parametre dosyası indirebilirsiniz](https://github.com/Azure-Samples/hdinsight-enterprise-security). Aşağıdaki şablon ve Azure CLı kod parçacığını kullanmadan önce aşağıdaki yer tutucuları doğru değerlerle değiştirin:
 
-| Yer tutucu | Description |
+| Yer tutucu | Açıklama |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Azure aboneliğinizin KIMLIĞI |
 | `<RESOURCE_GROUP>` | Yeni küme ve depolama hesabının oluşturulmasını istediğiniz kaynak grubu. |

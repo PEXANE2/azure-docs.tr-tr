@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: ExpressRoute ile devre oluşturma ve değiştirme Azure PowerShell'
-description: ExpressRoute bağlantı hattı oluşturma, sağlama, doğrulama, güncelleştirme, silme ve sağlamayı kaldırma.
+description: Bu hızlı başlangıçta bir ExpressRoute bağlantı hattı oluşturma, sağlama, doğrulama, güncelleştirme, silme ve sağlamayı kaldırma işlemlerinin nasıl yapılacağı gösterilir.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: quickstart
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 5397dd2745a0d4e61804cf631014846ae15ec4e1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761915"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971549"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak bir ExpressRoute bağlantı hattı oluşturma ve değiştirme
 
@@ -371,7 +371,7 @@ Aşağıdaki bilgileri not edin:
 * ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa **Provisioned** , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
 * Hizmet sağlayıcı, hizmet sağlayıcısı sağlama durumunun **sağlanmamış**olarak ayarlandığı anlamına gelen devre sağlamasını kaldırdıysa, devreyi silebilirsiniz. Devre için faturalandırma daha sonra durur.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Aşağıdaki komutu çalıştırarak ExpressRoute devrenizi silebilirsiniz:
 

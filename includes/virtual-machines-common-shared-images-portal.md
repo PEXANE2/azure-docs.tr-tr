@@ -9,10 +9,10 @@ ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82789019"
 ---
 ## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma
@@ -93,7 +93,7 @@ Görüntünün tüm hedef bölgelere çoğaltılması biraz zaman alabilir.
 
 Görüntü Galerisi düzeyinde erişimi paylaşmanızı öneririz. Aşağıda, az önce oluşturduğunuz galerinin paylaşılması adım adım gösterilmektedir.
 
-1. [Azure Portal](https://portal.azure.com)açın.
+1. [Azure portalını](https://portal.azure.com) açın.
 1. Soldaki menüde **kaynak grupları**' nı seçin. 
 1. Kaynak grupları listesinde **Mygallerrg**öğesini seçin. Kaynak grubunuz için dikey pencere açılır.
 1. **Mygallerrg** sayfasının solundaki menüde **ERIŞIM denetimi (IAM)** seçeneğini belirleyin. 

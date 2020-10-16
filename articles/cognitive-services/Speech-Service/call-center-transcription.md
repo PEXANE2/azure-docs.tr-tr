@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630160"
 ---
 # <a name="speech-service-for-telephony-data"></a>Telefon verileri için konuşma hizmeti
@@ -70,7 +70,7 @@ Uçtan uca gecikme süresi, [konuşmadan metne](speech-to-text.md), [Luo](https:
 
 Yeni seslerimiz de insan seslerinden ayırt edilemez. Kendi seslerimizi kullanarak botumuzu benzersiz kişiliğine aktarabilirsiniz.
 
-### <a name="search"></a>Arayın
+### <a name="search"></a>Search
 
 Analize ait başka bir zımba, belirli bir olay veya deneyimin gerçekleştiği etkileşimleri belirlemektir. Bu genellikle iki yaklaşımdan biriyle yapılır; kullanıcının bir tümceciği ve sistem yanıt verdiğini veya bir analistdeki bir senaryoyu tanımlayan mantıksal deyimler kümesi oluşturabileceğiniz daha yapılandırılmış bir sorgu ya da her çağrının bu sorgu kümesine göre dizine alınması için bir ad hoc arama. İyi bir arama örneği, ubititous uyumluluk deyimidir "Bu çağrı kalite amacıyla kaydedilecek... ". Birçok şirket, aracıların gerçekten kaydedilmeden önce bu vazgeçme belgesi müşterilere bu bildirimi sağladığından emin olmak ister. Çoğu analiz sistemi, sorgu/arama algoritmalarıyla bulunan davranışları eğilim özelliğine sahiptir ve bu eğilimleri raporlamak, son olarak bir analiz sisteminin en önemli işlevlerinden biridir. Bilişsel [Hizmetler dizini](https://azure.microsoft.com/services/cognitive-services/directory/search/) sayesinde uçtan uca çözümünüz, dizin oluşturma ve arama özellikleri ile önemli ölçüde iyileştirilen olabilir.
 

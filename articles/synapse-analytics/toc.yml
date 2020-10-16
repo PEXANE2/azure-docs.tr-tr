@@ -70,6 +70,8 @@
       href: quickstart-sql-on-demand.md
     - name: Cosmos DB için Synapse Link’e bağlanma
       href: quickstart-connect-synapse-link-cosmos-db.md
+    - name: Azure Veri Gezgini'ne bağlanma
+      href: quickstart-connect-azure-data-explorer.md
 - name: Öğreticiler
   items:
     - name: Apache Spark uygulamaları çalıştırma
@@ -673,6 +675,8 @@
               items:
                 - name: MongoDB (eski)
                   href: ../data-factory/connector-mongodb-legacy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: MongoDB Atlas
+              href: ../data-factory/connector-mongodb-atlas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: MySQL
               href: ../data-factory/connector-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Netezza

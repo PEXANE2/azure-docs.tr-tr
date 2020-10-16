@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923407"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>`$filter` `$orderby` `$select` Azure bilişsel arama için OData diline genel bakış
@@ -46,7 +46,7 @@ OData ifadeleri basit ve çok karmaşık olarak değişir, ancak bunların hepsi
 
 ## <a name="field-paths"></a>Alan yolları
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) alan yollarının dilbilgisini tanımlar.
+Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) alan yollarının dilbilgisini tanımlar.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -95,7 +95,7 @@ Alan yolları [Azure BILIŞSEL arama REST API](/rest/api/searchservice/)'lerinin
 
 | API | Parametre adı | Kısıtlamalar |
 | --- | --- | --- |
-| Dizin [Oluştur](/rest/api/searchservice/create-index) veya [Güncelleştir](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Hiçbiri |
+| Dizin [Oluştur](/rest/api/searchservice/create-index) veya [Güncelleştir](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Yok |
 | Dizin [Oluştur](/rest/api/searchservice/create-index) veya [Güncelleştir](/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Yalnızca **aranabilir** alanlara başvurabilir |
 | Dizin [Oluştur](/rest/api/searchservice/create-index) veya [Güncelleştir](/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Yalnızca **filtrelenebilir** alanlara başvurabilir |
 | [Ara](/rest/api/searchservice/search-documents) | `search` ne `queryType` zaman `full` | Yalnızca **aranabilir** alanlara başvurabilir |
@@ -135,7 +135,7 @@ OData içindeki dize sabitleri tek tırnak ile sınırlandırılmıştır. Tek t
 
 ### <a name="constants-syntax"></a>Sabitler sözdizimi
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), yukarıdaki tabloda gösterilen sabitler için dilbilgisini tanımlar. Coğrafi uzamsal türler için dilbilgisi, [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevlerde](search-query-odata-geo-spatial-functions.md)bulunabilir.
+Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) Yukarıdaki tabloda gösterilen sabitlerin çoğu için dilbilgisini tanımlar. Coğrafi uzamsal türler için dilbilgisi, [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevlerde](search-query-odata-geo-spatial-functions.md)bulunabilir.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -211,7 +211,7 @@ Alan yolları ve sabitler, bir OData ifadesinin en temel kısmıdır, ancak bunl
 
 Ancak, çoğu zaman birden fazla alana ve sabitine başvuran daha karmaşık deyimler gerekecektir. Bu ifadeler parametreye bağlı olarak farklı şekillerde oluşturulmuştur.
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) **$Filter**, **$OrderBy**ve **$Select** parametreleri için dilbilgisini tanımlar. Bunlar alan yollarına ve sabitlere başvuran daha basit ifadelerden oluşturulmuştur:
+Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) **$Filter**, **$OrderBy**ve **$Select** parametrelerine yönelik dilbilgisini tanımlar. Bunlar alan yollarına ve sabitlere başvuran daha basit ifadelerden oluşturulmuştur:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

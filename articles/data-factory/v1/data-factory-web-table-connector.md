@@ -13,10 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689767"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Web tablosu kaynağından veri taşıma
@@ -34,7 +34,7 @@ Data Factory Şu anda yalnızca bir Web tablosundan diğer veri depolarına veri
 > [!IMPORTANT]
 > Bu Web Bağlayıcısı Şu anda yalnızca bir HTML sayfasından tablo içeriğini ayıklamayı desteklemektedir. HTTP/s uç noktasından veri almak için bunun yerine [http bağlayıcısını](data-factory-http-connector.md) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu Web tablosu bağlayıcısını kullanmak için, şirket içinde barındırılan bir Integration Runtime (aka Veri Yönetimi Gateway) ayarlamanız ve bu `gatewayName` özelliği havuz bağlantılı hizmetinde yapılandırmanız gerekir. Örneğin, Web tablosundan Azure Blob depolamaya kopyalamak için, Azure Storage bağlı hizmetini aşağıdaki gibi yapılandırın:
 
@@ -74,7 +74,7 @@ Aşağıdaki tabloda, web bağlantılı hizmetine özgü JSON öğeleri için a�
 | --- | --- | --- |
 | tür |Type özelliği: **Web** olarak ayarlanmalıdır |Evet |
 | Url |Web kaynağının URL 'SI |Evet |
-| authenticationType |Deðeri. |Evet |
+| authenticationType |Anonim. |Evet |
 
 ### <a name="using-anonymous-authentication"></a>Anonim kimlik doğrulaması kullanma
 
@@ -101,7 +101,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür |veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Evet |
-| yol |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
+| path |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
 | dizin |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. [HTML sayfasındaki tablonun dizinini alma](#get-index-of-a-table-in-an-html-page) bölümü. |Evet |
 
 **Örnek:**
@@ -292,7 +292,7 @@ WebSource tarafından desteklenen özelliklerin listesi için bkz. WebSource tü
 
     ![Web iletişim kutusundan](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    Bu örnekte kullanılan URL:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+    Bu örnekte kullanılan URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. **Web Içeriği erişimi** iletişim kutusu ' nu görürseniz, doğru **URL**'yi, **kimlik doğrulamasını**seçin ve **Bağlan**' a tıklayın.
 
    ![Web içeriğine eriş iletişim kutusu](./media/data-factory-web-table-connector/AccessWebContentDialog.png)

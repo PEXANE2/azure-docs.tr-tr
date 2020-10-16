@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: cd7496690ec88fbe4297386c32d1b8a2c3234577
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540770"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>Windows sanal masaüstü (klasik) kullanıcıları için akışı özelleştirme
@@ -46,7 +46,7 @@ Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Görünen adı özelleştirmek için Name ve New FriendlyName ile birlikte RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/set-rdsremoteapp.png)
+> ![Görünen adı özelleştirmek için, Name ve New FriendlyName ile birlikte Set-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Uzak Masaüstü için görünen adı özelleştirme
 
@@ -59,7 +59,7 @@ Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/get-rdsremotedesktop.png)
+> ![PowerShell cmdlet 'inin adı ve FriendlyName vurgulanmış Get-RDSRemoteApp ekran görüntüsü.](../media/get-rdsremotedesktop.png)
 
 Uzak Masaüstü kaynağına kolay bir ad atamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
@@ -68,7 +68,7 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](../media/set-rdsremotedesktop.png)
+> ![PowerShell cmdlet 'inin adı ve yeni FriendlyName vurgulanmış Set-RDSRemoteApp ekran görüntüsü.](../media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

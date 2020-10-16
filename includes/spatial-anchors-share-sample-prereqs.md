@@ -4,20 +4,24 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: rgarcia
-ms.openlocfilehash: c4a03f2701b94821cfc8c1f6d585b1a87ee8bfea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e085c122c196de735cae26a4ea2f04b2da73899
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358836"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971435"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
+Bu öğreticiye başlamadan önce, aşağıdaki önkoşulları karşıladığınızdan emin olun:
 
-* [Azure uzamsal Tutturucuların genel bakış](../articles/spatial-anchors/overview.md)bölümünü okuyun.
-* Seçtiğiniz hızlı başlangıçta listelenen tüm önkoşulları karşıladığınızdan emin olmak için [5 dakikalık hızlı](../articles/spatial-anchors/index.yml)başlangıçlardan birini doldurun. **Note:** Android/NDK ve iOS/Swift quickbaşlangıçlarda, bu öğreticide açıklanan yetenekler Şu anda sunulmamaktadır.
-* Android 'i kullanmak istiyorsanız, <a href="https://developers.google.com/ar/discover/" target="_blank">Arcore</a> hakkında temel bilgi veya iOS kullanmak istiyorsanız <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> .
-* **ASP.net ve Web geliştirme** iş yüküyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> veya sonraki bir sürümünün yüklü olduğu bir Windows bilgisayarı.
+* [Azure uzamsal Tutturucuların genel bakışını](../articles/spatial-anchors/overview.md)okuyun.
+* [5 dakikalık hızlı](../articles/spatial-anchors/index.yml)başlangıçlardan birini doldurun. 
+  > [!NOTE]
+  > Android/NDK ve iOS/Swift quickbaşlangıçlarda, bu öğreticide açıklanan yetenekler Şu anda sunulmamaktadır.
+* Temel bilgileri:
+  *  Android kullanıyorsanız <a href="https://developers.google.com/ar/discover/" target="_blank">Arcore</a> .
+  *  İOS kullanıyorsanız <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> .
+* <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> veya üzeri bir Windows bilgisayarı ve **ASP.net ve Web geliştirme** iş yükü.
 * [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download).
-* Bir uygulamanın dağıtılacağı ve çalıştırılacağı bir veya daha fazla cihaz (HoloLens, HoloLens 2, iOS veya Android).
+* Bir uygulamayı dağıtmak ve çalıştırmak için aşağıdaki cihazlardan biri veya daha fazlası: HoloLens, HoloLens 2, iOS veya Android.

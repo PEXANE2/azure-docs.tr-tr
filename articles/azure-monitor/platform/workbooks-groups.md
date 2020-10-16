@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: b6377cdcdb5816426eba62fdbef79eeb42659dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82892088"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Çalışma kitaplarında grupları kullanma
@@ -22,9 +22,9 @@ ms.locfileid: "82892088"
 
 Çalışma kitaplarındaki gruplar birkaç şey için yararlıdır:
 
-- Layout
+- Düzen
   - Öğelerin dikey olarak düzenlenmesini istediğiniz senaryolarda, tümünün yığılacağı bir öğe grubu oluşturabilir ve grubun stillendirilmesini bir yüzde genişliği olacak şekilde ayarlamak yerine tüm tek öğelerin yüzde genişliği olarak ayarlanmasını sağlayabilirsiniz.
-- Görünürlük
+- Görüş Mesafesi
   - Birçok öğenin birlikte gizlenmesi/gösterilmesi istediğiniz senaryolarda, her bir öğe için görünürlük ayarlarını yapmak yerine tüm öğe grubunun görünürlüğünü ayarlayabilirsiniz. Bu, sekme kullanan şablonlarda yararlı olabilir, böylece bir grup, sekmenin içeriği olarak kullanılabilir ve tüm grup, seçilen sekme tarafından ayarlanan bir parametreye göre gizlenebilir/gösterilir.
 - Performans
   - Birçok bölüm veya sekmeye sahip çok büyük bir şablonunuz olduğu durumlarda, her bir bölümü kendi alt şablonuna dönüştürebilir ve en üst düzey şablon içindeki tüm alt şablonları yüklemek için grupları kullanabilirsiniz. Alt şablonların içeriği, Kullanıcı bu grupları görünür hale gelene kadar yüklenmez veya çalıştırılmaz. [Büyük bir şablonu birçok şablonla bölme](#how-to-split-a-large-template-into-many-templates)hakkında daha fazla bilgi edinin.
@@ -68,7 +68,7 @@ Grup yalnızca öğe görünür olduğunda yüklenir. Bu, bir grubun sekme öğe
 
 Şablondan oluşturulan gruplar için, şablonun içeriği alınamaz ve grup görünür hale gelene kadar gruptaki öğeler oluşturulmaz. Kullanıcı, içerik alınırken tüm grup için ilerleme durumunu görür.
 
-### <a name="explicit"></a>Anlaşılır
+### <a name="explicit"></a>Belirtik
 
 Bu modda, grubun nerede olacağı ve Kullanıcı içeriği yüklemek için düğmeye açıkça tıkladığı sürece hiçbir içerik alınmaz veya oluşturulmaz. Bu, içeriğin hesaplama veya nadiren kullanım açısından pahalı olabileceği senaryolarda faydalıdır. Yazar, düğme üzerinde görünecek metni belirtebilir.
 
@@ -98,8 +98,8 @@ Bir şablon bir gruba yüklendiğinde, çalışma kitabı, zaten grupta bulunan 
 
 En üstte iki parametre bulunan bir şablon düşünün.
 
-- `TimeRange`-bir zaman aralığı parametresi.
-- `Filter`-bir metin parametresi.
+- `TimeRange` -bir zaman aralığı parametresi.
+- `Filter` -bir metin parametresi.
 
 ![Parametreleri Düzenle öğesi: "üst düzey parametreler"](./media/workbooks-groups/groups-top-level-params.png)
 
@@ -113,12 +113,12 @@ Sonra bir Grup öğesi, kendi iki parametresine sahip ikinci bir şablonu ve par
 
 En üstte iki parametre bulunan bir grubun şablonunu göz önünde bulundurun.
 
-- `TimeRange`-bir zaman aralığı parametresi.
-- `FilterB`-bir metin parametresi, `Filter` en üstteki şablon gibi değildir.
+- `TimeRange` -bir zaman aralığı parametresi.
+- `FilterB` -bir metin parametresi, `Filter` en üstteki şablon gibi değildir.
 
 ![Bir grup öğesini birleştirilmiş parametrelerin sonucuyla birlikte Düzenle](./media/workbooks-groups/groups-wont-merge-away.png)
 
-Grubun ıtemı şablonu yüklendiğinde, `TimeRange` parametresi gruptan birleştirilir. Sonra çalışma kitabının başlangıç parametreleri adımı ve ile birlikte olacaktır `TimeRange` `Filter` ve grubun parametre adımı yalnızca şunları içerir`FilterB`
+Grubun ıtemı şablonu yüklendiğinde, `TimeRange` parametresi gruptan birleştirilir. Sonra çalışma kitabının başlangıç parametreleri adımı ve ile birlikte olacaktır `TimeRange` `Filter` ve grubun parametre adımı yalnızca şunları içerir `FilterB`
 
 ![ayrılmayacak parametrelerin sonucu](./media/workbooks-groups/groups-wont-merge-away-result.png)
 

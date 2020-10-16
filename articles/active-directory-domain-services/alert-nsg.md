@@ -2,7 +2,7 @@
 title: Azure AD DS ağ güvenlik grubu uyarılarını çözümleme | Microsoft Docs
 description: Azure Active Directory Domain Services için ağ güvenlik grubu yapılandırma uyarılarını sorun giderme ve çözümleme hakkında bilgi edinin
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: joflore
+ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040461"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962794"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services ağ yapılandırması uyarıları
 
@@ -55,7 +55,7 @@ Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, yönetilen bir etk
 | Öncelik | Name | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | Allvnetoutbağlanmadı | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
-| 65001    | AllowAzureLoadBalancerOutBound | Herhangi biri | Herhangi biri |  Herhangi biri | Internet | İzin Ver |
+| 65001    | AllowAzureLoadBalancerOutBound | Herhangi biri | Herhangi biri |  Herhangi biri | İnternet | İzin Ver |
 | 65500    | DenyAllOutBound | Herhangi biri | Herhangi biri | Herhangi biri | Herhangi biri | Reddet |
 
 >[!NOTE]

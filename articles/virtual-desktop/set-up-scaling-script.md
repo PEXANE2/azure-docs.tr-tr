@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078563"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
@@ -25,9 +25,9 @@ Bu makalede, Azure Otomasyonu hesabı ve Azure Logic App ile oluşturulan ve Win
 
 Ölçeklendirme aracını kullanarak şunları yapabilirsiniz:
 
-- VM 'Leri en yüksek ve en yoğun iş saatlerine göre başlatılacak ve durdurulacak şekilde zamanlayın.
+- VM 'Leri, en yüksek ve Off-Peak iş saatlerine göre başlayıp durduracak şekilde zamanlayın.
 - CPU çekirdeği başına oturum sayısına göre VM 'Leri ölçeklendirin.
-- Yoğun olmayan saatlerde sanal makinelerin ölçeğini, çalışan en az sayıda oturum ana makinesi VM 'sini bırakarak ölçeklendirin.
+- Off-Peak saat boyunca VM 'lerde ölçeklendirin, en az sayıda oturum ana makinesi VM çalışır durumda bırakın.
 
 Ölçeklendirme Aracı, bir Azure Otomasyonu hesabının, bir PowerShell runbook 'unun, Web kancası ve Azure mantıksal uygulamasının işlevini bir arada kullanır. Araç çalıştırıldığında Azure Logic App, Azure Otomasyonu runbook 'u başlatmak için bir Web kancası çağırır. Runbook daha sonra bir iş oluşturur.
 
@@ -56,7 +56,7 @@ Ancak, araç aşağıdaki sınırlamalara de sahiptir:
 >[!NOTE]
 >Ölçeklendirme Aracı, şu anda ölçeklendirildiği konak havuzunun yük dengeleme modunu denetler. Araç, hem yoğun hem de yoğun olmayan saatlerde, birinci düzey Yük Dengeleme modunu kullanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Ölçeklendirme aracı 'nı ayarlamaya başlamadan önce, aşağıdaki şeyleri hazırlamış olduğunuzdan emin olun:
 

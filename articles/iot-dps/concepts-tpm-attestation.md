@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 12860629d78391ed271306daba29a51aeb326c1d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531602"
 ---
 # <a name="tpm-attestation"></a>TPM kanıtlama
@@ -25,7 +25,7 @@ Bu makale yalnızca HMAC anahtar desteği ve bunların onay anahtarlarıyla TPM 
 
 Cihaz sağlama hizmeti cihaz SDK 'Ları, bu makalede açıklanan her şeyi sizin için işler. Cihazlarınızda SDK 'Ları kullanıyorsanız ek bir şey uygulamanız gerekmez. Bu makale, cihazınızın sağlamasını yaparken TPM güvenlik yongasında neler olduğunu ve neden güvenli olduğunu anlamanıza yardımcı olur.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 TPMs, güvenli güven kökü olarak onay anahtarı (EK) olarak adlandırılan bir şeyi kullanır. EK TPM için benzersizdir ve bunun değiştirilmesi aslında cihazı yeni bir tane olarak değiştirir.
 

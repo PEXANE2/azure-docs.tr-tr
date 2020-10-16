@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277300"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
 Uzamsal analiz kapsayıcısı, kişiler, taşınanlar ve fiziksel ortamlardaki nesnelerle etkileşimler arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz etmenizi sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -65,7 +65,7 @@ Bu makalede, aşağıdaki yazılım paketlerini indirip yükleyeceksiniz. Ana bi
 
 | Gereksinim | Açıklama |
 |--|--|
-| Kamera | Uzamsal analiz kapsayıcısı belirli bir kamera markasına bağlı değil. Kamera cihazının şunları yapması gerekir: gerçek zamanlı akış protokolü (RTSP) ve H. ıseencoding 'i desteklemek, ana bilgisayar için erişilebilir olması ve 15 fps ve 1080p çözünürlüğünde akış yapabilen bir cihaz olabilir. |
+| Kamera | Uzamsal analiz kapsayıcısı belirli bir kamera markasına bağlı değil. Kamera cihazının şunları yapması gerekir: Real-Time Akış Protokolü (RTSP) ve H. IBU kodlamayı destekler, ana bilgisayar için erişilebilir olur ve 15 fps ve 1080p çözünürlükte akış yapabilir. |
 | Linux işletim sistemi | [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) , ana bilgisayarda yüklü olmalıdır.  |
 
 

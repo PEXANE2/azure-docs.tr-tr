@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
 ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825668"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesinde üretim öncesi ortamlarında çekme isteklerini gözden geçirme
@@ -35,7 +35,7 @@ Birden çok üretim öncesi ortam, Azure statik Web Apps kullanırken aynı anda
 > [!NOTE]
 > Önizleme süresince, bir seferde [en fazla yalnızca bir hazırlık ortamına](quotas.md) izin verilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure statik Web Apps ile yapılandırılmış mevcut bir GitHub deposu. Bkz. bir tane yoksa, [ilk statik uygulamanızı oluşturma](getting-started.md) .
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
 ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699475"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Eski Azure DNS özel bölgelerini yeni kaynak modeline geçirme
@@ -27,7 +27,7 @@ az network dns zone list --query "[?zoneType=='Private']"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure PowerShell 'ın en son sürümünü yüklediğinizden emin olun. Azure PowerShell (az) ve nasıl yükleneceğine ilişkin daha fazla bilgi için ziyaret edinhttps://docs.microsoft.com/powershell/azure/new-azureps-module-az
+Azure PowerShell 'ın en son sürümünü yüklediğinizden emin olun. Azure PowerShell (az) ve nasıl yükleneceğine ilişkin daha fazla bilgi için ziyaret edin https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
 Azure PowerShell için az. PrivateDns modülünün yüklü olduğundan emin olun. Bu modülü yüklemek için yükseltilmiş bir PowerShell penceresi (yönetim modu) açın ve aşağıdaki komutu girin
 
@@ -50,7 +50,7 @@ Komut dosyasını yüklemek isteyip istemediğiniz sorulduğunda "A" yazın
 
 ![Betiği yükleme](./media/private-dns-migration-guide/install-migration-script.png)
 
-Ayrıca, PowerShell betiğinin en son sürümünü şurada el ile edinebilirsiniz:https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+Ayrıca, PowerShell betiğinin en son sürümünü şurada el ile edinebilirsiniz: https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
 
 >[!IMPORTANT]
 >Geçiş betiği Azure Cloud Shell 'de çalıştırılmamalıdır ve internet 'e bağlı bir VM veya yerel makinede yürütülmesi gerekir.

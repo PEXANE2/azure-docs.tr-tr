@@ -1,6 +1,6 @@
 ---
 title: Windows sanal masaüstü MALTı uygulama eklemeye genel bakış-Azure
-description: MALTı uygulama iliştirme nedir? Bu makaleye ulaşın.
+description: MSIX uygulama iliştirme nedir? Bu makaleye ulaşın.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,13 +9,13 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c6bf296b5173a662b1e9dd7b025648e3f16d23c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556350"
 ---
-# <a name="what-is-msix-app-attach"></a>MALTı uygulama iliştirme nedir?
+# <a name="what-is-msix-app-attach"></a>MSIX uygulama iliştirme nedir?
 
 MSIX, tüm Windows uygulamaları için paketleme deneyimini geliştirmeyi hedefleyen çok sayıda özellik sunan yeni bir paketleme biçimidir. MSIX hakkında daha fazla bilgi edinmek için bkz. [msix genel bakış](/windows/msix/overview).
 

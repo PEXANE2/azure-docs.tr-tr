@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292918"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Bulut İş Ortağı Portalı API Başvurusu
@@ -50,7 +50,7 @@ Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API 'Ler hakk
 - [Teklif oluşturma](./cloud-partner-portal-api-creating-offer.md)
 - [Teklif yayımlama](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>İşlemler
 
 - [İşlemleri alma](./cloud-partner-portal-api-retrieve-operations.md)
 - [İşlemleri iptal etme](./cloud-partner-portal-api-cancel-operations.md)

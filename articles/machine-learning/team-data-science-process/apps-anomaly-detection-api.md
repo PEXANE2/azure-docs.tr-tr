@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087172"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning anomali algılama API 'SI
@@ -115,7 +115,7 @@ Aşağıdaki şekilde, skor API 'sinin algılayabildiği anormalilerin bir örne
 ### <a name="detectors"></a>Algılayıcılar
 Anomali algılama API 'SI, üç geniş kategoride algılayıcıları destekler. Her bir algılayıcısının belirli giriş parametreleri ve çıkışları hakkındaki ayrıntılar aşağıdaki tabloda bulunabilir.
 
-| Algılayıcı kategorisi | Algılayıcısı | Description | Giriş Parametreleri | Çıkışlar |
+| Algılayıcı kategorisi | Algılayıcısı | Açıklama | Giriş Parametreleri | Çıkışlar |
 | --- | --- | --- | --- | --- |
 | Ani Detektorler |Tani algılayıcı |Değerleri temel alarak ani artışları ve DIB 'leri algılayın ve ilk ve üçüncü kutalileri |*tspikealgılayıcı. duyarlılık:* 1-10 aralığında tamsayı değeri alır, varsayılan: 3; Daha yüksek değerler daha fazla bilgi yakalar ve bu sayede daha az hassas hale gelir |Tani: ikili değerler – ' 1 ' bir ani/DIP algılanırsa, ' 0 ' Aksi takdirde |
 | Ani Detektorler | Zani algılayıcı |Veri noktalarının ne kadar ilerlediğiyle ilgili ani artışları ve DIB 'leri Algıla |*zspikealgılayıcı. duyarlılık:* 1-10 aralığında tamsayı değeri Al, varsayılan: 3; Daha yüksek değerler, daha az hassas hale getirmek için daha fazla bilgi yakalar |Zani: ikili değerler – ' 1 ' bir ani/DIP algılanırsa, ' 0 ' Aksi takdirde |
@@ -125,22 +125,22 @@ Anomali algılama API 'SI, üç geniş kategoride algılayıcıları destekler. 
 ### <a name="parameters"></a>Parametreler
 Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda listelenmiştir:
 
-| Giriş Parametreleri | Description | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
+| Giriş Parametreleri | Açıklama | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
 | --- | --- | --- | --- | --- | --- |
-| detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |integer |10-2000 |Zaman serisine bağımlı |
-| algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi de |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi de |
-| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| trendalgılayıcısı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| tspikealgılayıcısı. duyarlılığı |Tani algılayıcı duyarlılığı |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
-| zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
-| postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |integer |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |YOK |
+| detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |tamsayı |10-2000 |Zaman serisine bağımlı |
+| algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi |
+| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| trendalgılayıcısı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| tspikealgılayıcısı. duyarlılığı |Tani algılayıcı duyarlılığı |3 |tamsayı |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
+| zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |tamsayı |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
+| postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |tamsayı |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
 
 ### <a name="output"></a>Çıktı
 API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman içindeki her bir nokta için anomali puanlarını ve ikili ani değer göstergelerini döndürür. Aşağıdaki tabloda API 'den gelen çıktılar listelenmiştir.
 
-| Çıkışlar | Description |
+| Çıkışlar | Açıklama |
 | --- | --- |
-| Saat |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
+| Süre |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
 | Veriler |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin değerleri |
 | Tani |Tani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
 | Zani |Zani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
@@ -161,29 +161,29 @@ Mevsimsellik uç noktasındaki detekleyler, mevsimsellik olmayan uç noktada, an
 
 Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda listelenmiştir:
 
-| Giriş Parametreleri | Description | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
+| Giriş Parametreleri | Açıklama | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
 | --- | --- | --- | --- | --- | --- |
-| preprocess. Aggregationınterval |Toplanan giriş zaman serisi için saniye cinsinden toplama aralığı |0 (toplama yapılmaz) |integer |0: toplamayı atla, > 0, tersi |5 dakika ila 1 gün, zaman serisine bağımlı |
-| preprocess. aggregationFunc |Belirtilen Aggregationınterval öğesine veri toplamak için kullanılan işlev |ortalama |numara |Ortalama, toplam, uzunluk |YOK |
-| preprocess. replaceMissing |Eksik verileri ımpute için kullanılan değerler |LKV (son bilinen değer) |numara |sıfır, LKV, ortalama |YOK |
-| detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |integer |10-2000 |Zaman serisine bağımlı |
-| algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi de |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi de |
-| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| postrendalgılayıcı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| negtrendalgılayıcısı. duyarlılık |Negatif eğilim algılayıcısı için duyarlılık. |3,25 |double |Hiçbiri |3,25-5 (daha az değer daha hassas anlamına gelir) |
-| tspikealgılayıcısı. duyarlılığı |Tani algılayıcı duyarlılığı |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
-| zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |integer |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
-| mevsimsellik. etkinleştir |Mevsimsellik analizinin gerçekleştirilip gerçekleştirilmeyeceğini belirtir |true |boole |doğru, yanlış |Zaman serisine bağımlı |
-| mevsimsellik. Nummevsimsellik |Algılanabilmesi için en fazla düzenli döngü sayısı |1 |integer |1, 2 |1-2 |
-| mevsimsellik. dönüştürme |Anomali algılamayı uygulamadan önce mevsimlere (ve) eğilim bileşenlerinin kaldırılıp kaldırılmayacağı |yılsezon |numara |hiçbiri, demevsim, demevsimeğilimi |YOK |
-| postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |integer |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |YOK |
+| preprocess. Aggregationınterval |Toplanan giriş zaman serisi için saniye cinsinden toplama aralığı |0 (toplama yapılmaz) |tamsayı |0: toplamayı atla, > 0, tersi |5 dakika ila 1 gün, zaman serisine bağımlı |
+| preprocess. aggregationFunc |Belirtilen Aggregationınterval öğesine veri toplamak için kullanılan işlev |ortalama |numara |Ortalama, toplam, uzunluk |Yok |
+| preprocess. replaceMissing |Eksik verileri ımpute için kullanılan değerler |LKV (son bilinen değer) |numara |sıfır, LKV, ortalama |Yok |
+| detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |tamsayı |10-2000 |Zaman serisine bağımlı |
+| algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi |
+| bileşik bir algılayıcı. duyarlılık |Çift yönlü düzey değişiklik algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| postrendalgılayıcı. duyarlılık |Pozitif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| negtrendalgılayıcısı. duyarlılık |Negatif eğilim algılayıcısı için duyarlılık. |3,25 |double |Yok |3,25-5 (daha az değer daha hassas anlamına gelir) |
+| tspikealgılayıcısı. duyarlılığı |Tani algılayıcı duyarlılığı |3 |tamsayı |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
+| zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |tamsayı |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
+| mevsimsellik. etkinleştir |Mevsimsellik analizinin gerçekleştirilip gerçekleştirilmeyeceğini belirtir |true |boolean |doğru, yanlış |Zaman serisine bağımlı |
+| mevsimsellik. Nummevsimsellik |Algılanabilmesi için en fazla düzenli döngü sayısı |1 |tamsayı |1, 2 |1-2 |
+| mevsimsellik. dönüştürme |Anomali algılamayı uygulamadan önce mevsimlere (ve) eğilim bileşenlerinin kaldırılıp kaldırılmayacağı |yılsezon |numara |hiçbiri, demevsim, demevsimeğilimi |Yok |
+| postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |tamsayı |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
 
 ### <a name="output"></a>Çıktı
 API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman içindeki her bir nokta için anomali puanlarını ve ikili ani değer göstergelerini döndürür. Aşağıdaki tabloda API 'den gelen çıktılar listelenmiştir.
 
-| Çıkışlar | Description |
+| Çıkışlar | Açıklama |
 | --- | --- |
-| Saat |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
+| Süre |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
 | OriginalData |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin değerleri |
 | ProcessedData |Aşağıdaki seçeneklerden birini kullanabilirsiniz: <ul><li>Önemli mevsimsellik tespit edildi ve zaman dönemi seçeneği işaretliyse, zaman serisini önemli bir şekilde ayarladı;</li><li>önemli mevsimsellik tespit edildi ve demevsimsel eğilim seçeneği işaretliyse, zaman serisini ayarlama ve zaman serisini azaltma</li><li>Aksi takdirde, bu seçenek OriginalData ile aynıdır</li> |
 | Tani |Tani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203461"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096224"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde kendi kendine onaylanan teknik profil tanımlama
 
@@ -187,7 +187,7 @@ Doğrulama teknik profili, ilkede [Azure Active Directory](active-directory-tech
 
 Ayrıca kurumsal iş kolu uygulamasıyla daha fazla tümleştirme yaparak iş mantığınızla birlikte REST API teknik bir profil çağırabilir, giriş taleplerinin üzerine yazabilir veya zenginleştirme Kullanıcı verileri sağlayabilirsiniz. Daha fazla bilgi için bkz. [doğrulama teknik profili](validation-technical-profile.md)
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
@@ -202,11 +202,13 @@ Ayrıca kurumsal iş kolu uygulamasıyla daha fazla tümleştirme yaparak iş ma
 | Setting. Showsignyukarı <sup>2</sup>| Hayır | Kaydolma düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya `false` |
 | ayar. forgotPasswordLinkLocation <sup>2</sup>| Hayır| Parolayı unuttum bağlantısını görüntüler. Olası değerler: `AfterInput` (varsayılan) bağlantı sayfanın alt kısmında görüntülenir veya `None` parolayı unutma bağlantısını kaldırır.|
 | ayarlanıyor. enableRememberMe <sup>2</sup>| Hayır| Oturumumu [açık tut](custom-policy-keep-me-signed-in.md) onay kutusunu görüntüler. Olası değerler: `true` , veya `false` (varsayılan). |
+| Setting. ınputdoğrulamaları ıationdelaytimeınmilliseconds <sup>3</sup>| Hayır| Kullanıcının yazmayı durdurmasını bekleyip değeri doğrulamak için Kullanıcı deneyimini geliştirir. Varsayılan değer 2000 milisaniyedir. |
 | IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false`   (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
 
 Notlar:
 1. Ya da içerik tanımı [Datauri](contentdefinitions.md#datauri) türü için kullanılabilir `unifiedssp` `unifiedssd` .
 1. Ya da içerik tanımı [Datauri](contentdefinitions.md#datauri) türü için kullanılabilir `unifiedssp` `unifiedssd` . [Sayfa düzeni sürüm](page-layout.md) 1.1.0 ve üstü.
+1. [Sayfa düzeni sürümü](page-layout.md) 1.2.0 ve üzeri için kullanılabilir.
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 

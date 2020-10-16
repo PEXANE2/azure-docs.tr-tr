@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658938"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Öğretici: Prezi ile çoklu oturum açma tümleştirmesi Azure Active Directory
@@ -76,7 +76,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için:
 
 1. [Azure Portal](https://portal.azure.com/), **PREZI** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırmasındaki**ayarları düzenlemek için **Düzenle** simgesini seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırmasındaki**ayarları düzenlemek için **Düzenle** simgesini seçin.
 
    ![Temel SAML yapılandırma ayarlarını Düzenle](common/edit-urls.png)
 
@@ -99,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için:
     | given_name | Kullanıcı. |
     | family_name | User. soyadı |
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)**. Sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)**. Sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -145,9 +145,9 @@ Bu bölümde, Prezi 'e erişim vererek B. Simon 'u Azure SSO 'yu kullanmaya etki
 
     ![Ayarlar sekmesi](./media/prezi-tutorial/settings-image.png)
 
-1. **Çoklu oturum açma (SSO)** bölümüne gıdın ve SSO 'yu etkinleştirmek için değiştirme 'yi açın.
+1. **Tek Sign-On (SSO)** bölümüne gıdın ve SSO 'yu etkinleştirmek için değiştirme 'yi açın.
     
-    ![Çoklu oturum açma (SSO) geçişi](./media/prezi-tutorial/single-signon.png)
+    ![Tek Sign-On (SSO) geçiş](./media/prezi-tutorial/single-signon.png)
 
 1. **Çoklu oturum açma (SSO)** bölümünde, şu adımları izleyin:
 

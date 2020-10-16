@@ -1,26 +1,26 @@
 ---
 title: Windows Server VM 'sini Azure AD Domain Services yönetilen bir etki alanına katma | Microsoft Docs
 description: Bu öğreticide, Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına nasıl katılacağınızı öğrenin.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 259b27528779c9934da6d69ca46f2794e2257d24
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: 3df96f5576829694b5eb12fd1811de112279884d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723036"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963236"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
 Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Directory ile tamamen uyumlu etki alanına katılması, Grup ilkesi, LDAP, Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Azure AD DS yönetilen bir etki alanıyla, Azure 'daki sanal makinelere (VM 'Ler) etki alanına ekleme özellikleri ve yönetimi sağlayabilirsiniz. Bu öğreticide, bir Windows Server sanal makinesi oluşturma ve ardından bunu yönetilen bir etki alanına katma gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Windows Server VM oluşturma
@@ -68,7 +68,7 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'yi yönetilen etki al
     |----------------------|-------------------|
     | Kaynak grubu       | *Myresourcegroup* gibi bir kaynak grubu seçin veya oluşturun |
     | Sanal makine adı | VM için *Myvm* gibi bir ad girin |
-    | Region               | VM 'nizi oluşturmak için bir bölge seçin; örneğin, *Doğu ABD* |
+    | Bölge               | VM 'nizi oluşturmak için bir bölge seçin; örneğin, *Doğu ABD* |
     | Kullanıcı adı             | VM üzerinde oluşturulacak yerel yönetici hesabı için bir Kullanıcı adı girin; Örneğin, *azureuser* . |
     | Parola             | Yerel yönetici için VM 'de oluşturulacak güvenli bir parola girin ve ardından onaylayın. Bir etki alanı kullanıcı hesabının kimlik bilgilerini belirtmeyin. |
 

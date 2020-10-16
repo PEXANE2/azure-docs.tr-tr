@@ -2,14 +2,14 @@
 title: Yapıları aktar
 description: Azure depolama hesaplarını kullanarak bir aktarım işlem hattı oluşturarak, görüntü veya diğer yapıtların koleksiyonlarını bir kapsayıcı kayıt defterinden başka bir kayıt defterine aktarın
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ed848380457862fee506bf5111789e5d44545bdd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253420"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932609"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
 
@@ -21,7 +21,7 @@ Yapıtları aktarmak için [BLOB depolamayı](../storage/blobs/storage-blobs-int
 * Blob, kaynak depolama hesabından bir hedef depolama hesabına kopyalanır
 * Hedef depolama hesabındaki blob, hedef kayıt defterinde yapıt olarak içeri aktarılır. Yapı blobu hedef depolamada her güncelleştirildiğinde tetiklenecek içeri aktarma ardışık düzenini ayarlayabilirsiniz.
 
-Aktarım, her buluttaki depolama hesaplarına göre, fiziksel olarak bağlantısı kesilen bulutlarda iki Azure Container Registry arasında içerik kopyalamak için idealdir. Docker Hub ve diğer bulut satıcıları dahil bağlı bulutlar içindeki kapsayıcı kayıt defterlerinden görüntü kopyalama için, bunun yerine [görüntü içeri aktarma](container-registry-import-images.md) önerilir.
+Aktarım, her buluttaki depolama hesaplarına göre, fiziksel olarak bağlantısı kesilen bulutlarda iki Azure Container Registry arasında içerik kopyalamak için idealdir. Bunun yerine, Docker Hub ve diğer bulut satıcıları dahil olmak üzere bağlı bulutlar içindeki kapsayıcı kayıt defterlerinden görüntüleri kopyalamak istiyorsanız, [görüntü içeri aktarma](container-registry-import-images.md) önerilir.
 
 Bu makalede, aktarım ardışık düzeni oluşturmak ve çalıştırmak için Azure Resource Manager şablon dağıtımlarını kullanırsınız. Azure CLı, depolama gizli dizileri gibi ilişkili kaynakları sağlamak için kullanılır. Azure CLı sürüm 2.2.0 veya üzeri önerilir. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
 
@@ -30,13 +30,20 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Kapsayıcı kayıt defterleri** -aktarılacak yapıtlara ve hedef kayıt defterine sahip mevcut bir kaynak kayıt defterine ihtiyacınız vardır. ACR aktarımı, fiziksel olarak bağlantısı kesilen bulutlar arasında hareket etmek için tasarlanmıştır. Test için kaynak ve hedef kayıt defterleri aynı veya farklı bir Azure aboneliğinde, Active Directory kiracısında veya bulutta olabilir. Bir kayıt defteri oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md). 
-* **Depolama hesapları** -bir abonelikte ve tercih ettiğiniz konumda kaynak ve hedef depolama hesapları oluşturun. Test amacıyla, kaynak ve hedef kayıt defterlerinden aynı abonelik veya abonelikleri kullanabilirsiniz. Platformlar arası senaryolar için genellikle her bulutta ayrı bir depolama hesabı oluşturursunuz. Gerekirse, [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) veya diğer araçlarla depolama hesapları oluşturun. 
+* **Kapsayıcı kayıt defterleri** -aktarılacak yapıtlara ve hedef kayıt defterine sahip mevcut bir kaynak kayıt defterine ihtiyacınız vardır. ACR aktarımı, fiziksel olarak bağlantısı kesilen bulutlar arasında hareket etmek için tasarlanmıştır. Test için kaynak ve hedef kayıt defterleri aynı veya farklı bir Azure aboneliğinde, Active Directory kiracısında veya bulutta olabilir. 
+
+   Bir kayıt defteri oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md). 
+* **Depolama hesapları** -bir abonelikte ve tercih ettiğiniz konumda kaynak ve hedef depolama hesapları oluşturun. Test amacıyla, kaynak ve hedef kayıt defterlerinden aynı abonelik veya abonelikleri kullanabilirsiniz. Platformlar arası senaryolar için genellikle her bulutta ayrı bir depolama hesabı oluşturursunuz. 
+
+  Gerekirse, [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) veya diğer araçlarla depolama hesapları oluşturun. 
 
   Her hesapta yapıt aktarımı için bir blob kapsayıcısı oluşturun. Örneğin, *Aktarım*adlı bir kapsayıcı oluşturun. İki veya daha fazla aktarım işlem hattı aynı depolama hesabını paylaşabilir, ancak farklı depolama kapsayıcısı kapsamları kullanmalıdır.
-* **Anahtar** kasaları-Anahtar kasaları, kaynak ve hedef depolama hesaplarına erişmek IÇIN kullanılan SAS belirteç gizli dizileri depolamak için gereklidir. Kaynak ve hedef kayıt defterlerinden aynı Azure aboneliğinde veya aboneliklerde kaynak ve hedef anahtar kasaları oluşturun. Gerekirse, [Azure CLI](../key-vault/secrets/quick-create-cli.md) veya diğer araçlarla Anahtar kasaları oluşturun.
+* **Anahtar** kasaları-Anahtar kasaları, kaynak ve hedef depolama hesaplarına erişmek IÇIN kullanılan SAS belirteç gizli dizileri depolamak için gereklidir. Kaynak ve hedef kayıt defterlerinden aynı Azure aboneliğinde veya aboneliklerde kaynak ve hedef anahtar kasaları oluşturun. Tanıtım amacıyla, bu makalede kullanılan şablonlar ve komutlar, kaynak ve hedef anahtar kasalarının sırasıyla kaynak ve hedef kayıt defterleri ile aynı kaynak gruplarında bulunduğunu da varsayar. Ortak kaynak gruplarının bu kullanımı gerekli değildir, ancak bu makalede kullanılan şablonları ve komutları basitleştirir.
+
+   Gerekirse, [Azure CLI](../key-vault/secrets/quick-create-cli.md) veya diğer araçlarla Anahtar kasaları oluşturun.
+
 * **Ortam değişkenleri** -bu makaledeki komutlar gibi, kaynak ve hedef ortamlar için aşağıdaki ortam değişkenlerini ayarlayın. Tüm örnekler bash kabuğu için biçimlendirilir.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -62,7 +69,7 @@ Depolama kimlik doğrulaması, anahtar kasalarında gizli dizi olarak yönetilen
 
 ### <a name="things-to-know"></a>Bilinmesi gerekenler
 * ExportPipeline ve ımportpipeline genellikle kaynak ve hedef bulutlarla ilişkili farklı Active Directory kiracılarda olur. Bu senaryo, dışarı ve içeri aktarma kaynakları için ayrı yönetilen kimlikler ve Anahtar kasaları gerektirir. Sınama amacıyla, bu kaynaklar aynı buluta yerleştirilebilecek ve kimlikleri paylaşıyor.
-* İşlem hattı örnekleri, Anahtar Kasası gizli dizilerini erişmek için sistem tarafından atanan Yönetilen kimlikler oluşturur. Exporthatlarının ve ımporthatlarının Kullanıcı tarafından atanan kimlikleri de destekler. Bu durumda, kimlikler için erişim ilkeleriyle anahtar kasalarını yapılandırmanız gerekir. 
+* Varsayılan olarak, ExportPipeline ve ımportpipeline şablonlarının her biri, Anahtar Kasası gizli dizileri için sistem tarafından atanan bir yönetilen kimlik sağlar. ExportPipeline ve ımportpipeline şablonları, sağladığınız kullanıcı tarafından atanan bir kimliği de destekler. 
 
 ## <a name="create-and-store-sas-keys"></a>SAS anahtarları oluşturma ve depolama
 
@@ -152,7 +159,13 @@ Dosyasına aşağıdaki parametre değerlerini girin `azuredeploy.parameters.jso
 
 ### <a name="create-the-resource"></a>Kaynağı oluşturma
 
-Kaynağı oluşturmak için [az Deployment Group Create][az-deployment-group-create] ' i çalıştırın. Aşağıdaki örnek dağıtım *Exportpipeline*öğesini adlandırır.
+Aşağıdaki örneklerde gösterildiği gibi, *Exportpipeline* adlı bir kaynak oluşturmak için [az Deployment Group Create][az-deployment-group-create] ' i çalıştırın. Varsayılan olarak, ilk seçenekle örnek şablon, ExportPipeline kaynağında sistem tarafından atanan bir kimlik sunar. 
+
+İkinci seçenekle, kaynağa Kullanıcı tarafından atanan bir kimlik verebilirsiniz. (Kullanıcı tarafından atanan kimliğin oluşturulması gösterilmez.)
+
+Her iki seçenek de, şablon kimliği dışa aktarma anahtar kasasındaki SAS belirtecine erişecek şekilde yapılandırır. 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>1. seçenek: kaynak oluşturma ve sistem tarafından atanan kimliği etkinleştirme
 
 ```azurecli
 az deployment group create \
@@ -162,10 +175,23 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>2. seçenek: kaynak oluşturma ve Kullanıcı tarafından atanan kimlik sağlama
+
+Bu komutta, Kullanıcı tarafından atanan kimliğin kaynak KIMLIĞINI ek bir parametre olarak belirtin.
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
 Komut çıkışında, işlem hattının kaynak KIMLIĞINI () göz önünde edin `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
 
 ```azurecli
-EXPORT_RES_ID=$(az group deployment show \
+EXPORT_RES_ID=$(az deployment group show \
   --resource-group $SOURCE_RG \
   --name exportPipeline \
   --query 'properties.outputResources[1].id' \
@@ -198,20 +224,39 @@ Parametre  |Değer  |
 
 ### <a name="create-the-resource"></a>Kaynağı oluşturma
 
-Kaynağı oluşturmak için [az Deployment Group Create][az-deployment-group-create] ' i çalıştırın.
+Aşağıdaki örneklerde gösterildiği gibi *ımportpipeline* adlı bir kaynak oluşturmak için [az Deployment Group Create][az-deployment-group-create] ' i çalıştırın. Varsayılan olarak, ilk seçenekle örnek şablon, ımportpipeline kaynağında sistem tarafından atanan bir kimlik sunar. 
+
+İkinci seçenekle, kaynağa Kullanıcı tarafından atanan bir kimlik verebilirsiniz. (Kullanıcı tarafından atanan kimliğin oluşturulması gösterilmez.)
+
+Her iki seçenek de, şablon kimliği içeri aktarma anahtar kasasındaki SAS belirtecine erişecek şekilde yapılandırır. 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>1. seçenek: kaynak oluşturma ve sistem tarafından atanan kimliği etkinleştirme
 
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
   --template-file azuredeploy.json \
-  --parameters azuredeploy.parameters.json \
-  --name importPipeline
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json 
 ```
 
-İçeri aktarmayı el ile çalıştırmayı planlıyorsanız, işlem hattının kaynak KIMLIĞINI () göz önünde bulabilirsiniz `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>2. seçenek: kaynak oluşturma ve Kullanıcı tarafından atanan kimlik sağlama
+
+Bu komutta, Kullanıcı tarafından atanan kimliğin kaynak KIMLIĞINI ek bir parametre olarak belirtin.
 
 ```azurecli
-IMPORT_RES_ID=$(az group deployment show \
+az deployment group create \
+  --resource-group $TARGET_RG \
+  --template-file azuredeploy.json \
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
+İçeri aktarmayı el ile çalıştırmayı planlıyorsanız, işlem hattının kaynak KIMLIĞINI () göz önünde bulabilirsiniz `id` . Bu değeri, daha sonra kullanmak üzere [az Deployment Group Show][az-deployment-group-show] komutunu çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
+
+```azurecli
+IMPORT_RES_ID=$(az deployment group show \
   --resource-group $TARGET_RG \
   --name importPipeline \
   --query 'properties.outputResources[1].id' \
@@ -246,12 +291,22 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+Daha sonra kullanmak için, işlem hattı çalıştırmasının kaynak KIMLIĞINI bir ortam değişkeninde depolayın:
+
+```azurecli
+EXPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $SOURCE_RG \
+  --name exportPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+```
+
 Yapıtların dışarı aktarılması birkaç dakika sürebilir. Dağıtım başarıyla tamamlandığında, dışarı aktarılmış blobu kaynak depolama hesabının *Aktarım* kapsayıcısında listeleyerek yapıtı dışarı aktarmayı doğrulayın. Örneğin, [az Storage blob List][az-storage-blob-list] komutunu çalıştırın:
 
 ```azurecli
 az storage blob list \
-  --account-name $SOURCE_SA
-  --container transfer
+  --account-name $SOURCE_SA \
+  --container transfer \
   --output table
 ```
 
@@ -300,11 +355,21 @@ Kaynağı çalıştırmak için [az Deployment Group Create][az-deployment-group
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
+  --name importPipelineRun \
   --template-file azuredeploy.json \
   --parameters azuredeploy.parameters.json
 ```
 
-Dağıtım başarıyla tamamlandığında, hedef kapsayıcı kayıt defterindeki depoları listeleyerek yapıt içeri aktarma işlemini doğrulayın. Örneğin, [az ACR Repository List][az-acr-repository-list]' i çalıştırın:
+Daha sonra kullanmak için, işlem hattı çalıştırmasının kaynak KIMLIĞINI bir ortam değişkeninde depolayın:
+
+```azurecli
+IMPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $TARGET_RG \
+  --name importPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+
+When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -329,20 +394,20 @@ az deployment group create \
 
 ## <a name="delete-pipeline-resources"></a>İşlem hattı kaynaklarını silme
 
-Bir işlem hattı kaynağını silmek için [az Deployment Group Delete][az-deployment-group-delete] komutunu kullanarak kaynak yöneticisi dağıtımını silin. Aşağıdaki örneklerde, bu makalede oluşturulan işlem hattı kaynakları silinir:
+Aşağıdaki örnek komutlar [az Resource Delete][az-resource-delete] komutunu kullanarak bu makalede oluşturulan işlem hattı kaynaklarını siler. Kaynak kimlikleri daha önce ortam değişkenlerine depolandı.
 
-```azurecli
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipeline
+```
+# Delete export resources
+az resource delete \
+--resource-group $SOURCE_RG \
+--ids $EXPORT_RES_ID $EXPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipelineRun
-
-az deployment group delete \
-  --resource-group $TARGET_RG \
-  --name importPipeline  
+# Delete import resources
+az resource delete \
+--resource-group $TARGET_RG \
+--ids $IMPORT_RES_ID $IMPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 ```
 
 ## <a name="troubleshooting"></a>Sorun giderme
@@ -374,8 +439,6 @@ Tek kapsayıcı görüntülerini ortak bir kayıt defterine veya başka bir öze
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
 [az-login]: /cli/azure/reference-index#az-login
 [az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
 [az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
@@ -387,3 +450,4 @@ Tek kapsayıcı görüntülerini ortak bir kayıt defterine veya başka bir öze
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
+[az-resource-delete]: /cli/azure/resource#az-resource-delete

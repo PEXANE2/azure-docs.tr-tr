@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499401"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights ile Azure 'da üretim uygulamaları profilini yapın
@@ -59,7 +59,7 @@ Zaman çizelgesi görünümünde görüntülenen çağrı yığını örnekleme 
 
 ### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>Kod yükleniyor (clr! ThePreStub)
 
-**clr! ThePreStub** , kodu ilk kez yürütmek üzere hazırlayan .NET Framework bir yardımcı işlevdir. Bu yürütme genellikle tam zamanında (JıT) derlemeyi içerir ancak bunlarla sınırlı değildir. Her C# yöntemi için **clr! **Bir işlem sırasında, ön saplama en fazla bir kez çağrılmalıdır.
+**clr! ThePreStub** , kodu ilk kez yürütmek üzere hazırlayan .NET Framework bir yardımcı işlevdir. Bu yürütme genellikle tam zamanında (JıT) derlemeyi içerir ancak bunlarla sınırlı değildir. Her C# yöntemi için **clr! ** Bir işlem sırasında, ön saplama en fazla bir kez çağrılmalıdır.
 
 Eğer **clr! Ön saplama** bir istek için uzun bir süre sürer, istek bu yöntemi yürütmek için birinci bir yöntemdir. .NET Framework çalışma zamanının ilk yöntemi yüklemesi için zaman önemlidir. Kullanıcılarınızın ona erişmeden önce kodun bu kısmını yürüten bir ısınma işlemi kullanmayı düşünebilirsiniz veya derlemelerinize yerel görüntü Oluşturucu (ngen.exe) çalıştırmayı göz önünde bulundurun.
 
@@ -91,7 +91,7 @@ Kod yükleme bir istek için önemli miktarda zaman alıyorsa istek, metodun en 
 
 ### <a name="unmanaged-async"></a>Yönetilmeyen zaman uyumsuz
 
-.NET Framework ETW olaylarını yayar ve zaman uyumsuz çağrıların iş parçacıkları arasında izlenmesini sağlamak için iş parçacıkları arasında etkinlik kimliklerini geçirir. Yönetilmeyen kod (yerel kod) ve zaman uyumsuz kodun bazı eski stillerinde bu olaylar ve etkinlik kimlikleri eksiktir, bu nedenle profil oluşturucu iş parçacığı hangi iş parçacığını ve hangi işlevlerin çalıştığını söylemez. Bu, çağrı yığınında ' yönetilmeyen Async ' olarak etiketlenir. ETW dosyasını indirdiğinizde, neler olduğuna ilişkin daha fazla bilgi almak için [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) 'ı kullanabilirsiniz.
+.NET Framework ETW olaylarını yayar ve zaman uyumsuz çağrıların iş parçacıkları arasında izlenmesini sağlamak için iş parçacıkları arasında etkinlik kimliklerini geçirir. Yönetilmeyen kod (yerel kod) ve zaman uyumsuz kodun bazı eski stillerinde bu olaylar ve etkinlik kimlikleri eksiktir, bu nedenle profil oluşturucu iş parçacığı hangi iş parçacığını ve hangi işlevlerin çalıştığını söylemez. Bu, çağrı yığınında ' yönetilmeyen Async ' olarak etiketlenir. ETW dosyasını indirdiğinizde, neler olduğuna ilişkin daha fazla bilgi almak için [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)  'ı kullanabilirsiniz.
 
 ### <a name="cpu-time"></a><a id="cpu"></a>CPU süresi
 

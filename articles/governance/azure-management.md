@@ -3,12 +3,12 @@ title: Azure yönetimine genel bakış-Azure Idare
 description: Azure Yönetim Araçları 'ndaki içeriklere yönelik bağlantılarla Azure uygulamaları ve kaynakları için yönetim bölümlerine genel bakış.
 ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89662134"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949505"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Azure Yönetim bölgeleri nelerdir?
 
@@ -44,7 +44,7 @@ Bu özellik, bu kaynakları kurumsal standartlarınızla uyumlu tutar.
 
 ## <a name="secure"></a>Güvenlik
 
-Kaynaklarınızın ve verilerinizin güvenliğini yönetin. Bir güvenlik programı tehditleri değerlendirmek, verileri toplamak ve analiz etmek ve uygulamalarınızın ve kaynaklarınızın uyumluluğunu içerir. Güvenlik izleme ve tehdit analizi, [Azure Güvenlik Merkezi](../security-center/security-center-intro.md)tarafından sağlanır ve karma bulut iş yükleri arasında Birleşik güvenlik yönetimi ve Gelişmiş tehdit koruması içerir. Azure kaynaklarını güvenli hale getirme hakkında kapsamlı bilgi ve yönergeler için bkz. [Azure güvenliğine giriş](../security/fundamentals/overview.md) .
+Kaynaklarınızın ve verilerinizin güvenliğini yönetin. Bir güvenlik programı tehditleri değerlendirmek, verileri toplamak ve analiz etmek ve uygulamalarınızın ve kaynaklarınızın uyumluluğunu içerir. Güvenlik izleme ve tehdit analizi, [Azure Güvenlik Merkezi](../security-center/security-center-introduction.md)tarafından sağlanır ve karma bulut iş yükleri arasında Birleşik güvenlik yönetimi ve Gelişmiş tehdit koruması içerir. Azure kaynaklarını güvenli hale getirme hakkında kapsamlı bilgi ve yönergeler için bkz. [Azure güvenliğine giriş](../security/fundamentals/overview.md) .
 
 ## <a name="protect"></a>Koruma
 

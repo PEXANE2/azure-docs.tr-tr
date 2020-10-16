@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8fbf765168fd848a2ae349badf4017289b5a4380
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904698"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952276"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki paylaşımları yönetmek için Azure portal kullanın
+# <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki paylaşımları yönetmek için Azure portal kullanma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -41,7 +41,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
     
     Paylaşım adları yalnızca rakam, küçük harf ve kısa çizgiler içerebilir. Paylaşım adı 3 ile 63 karakter arası uzunlukta olmalı ve bir harf veya rakamla başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır.
 
-3. Paylaşım için **Tür** seçin. Bu tür SMB veya **NFS**, SMB 'nin varsayılan olarak **olması olabilir.** SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
+3. Paylaşma için bir **tür** seçin. Bu tür SMB veya **NFS**, SMB 'nin varsayılan olarak **olması olabilir.** SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
 
 4. Paylaşımın duracağı **Depolama hesabını** sağlamanız gerekir. Henüz kapsayıcı yoksa, depolama hesabında paylaşım adıyla bir kapsayıcı oluşturulur. Kapsayıcı zaten varsa, bu var olan kapsayıcı kullanılır.
 
@@ -59,19 +59,19 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
 7. Sınır işlem modüllerindeki paylaşımlara kolayca erişmek için yerel bağlama noktasını kullanın. Paylaşımın oluşturulduktan sonra otomatik olarak bağlanması için **kenar COMPUTE ile paylaşma kullan** seçeneğini belirleyin. Bu seçenek belirlendiğinde, Edge modülü aynı zamanda yerel bağlama noktasıyla işlem kullanabilir.
 
-8. Paylaşımı oluşturmak için **Oluştur**'a tıklayın. Paylaşım oluşturma işleminin devam ettiği size bildirilir. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** dikey penceresi yeni paylaşımı yansıtacak şekilde güncelleştirilir.
+8. Paylaşma oluşturmak için **Oluştur** ' a tıklayın. Paylaşım oluşturma işleminin devam ettiği size bildirilir. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** dikey penceresi yeni paylaşımı yansıtacak şekilde güncelleştirilir.
 
 ## <a name="add-a-local-share"></a>Yerel bir paylaşma ekleyin
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
 
-    ![Paylaşma Ekle seçeneğini belirleyin](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
+    ![Paylaşma Ekle 2 ' yi seçin](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
 2. **Paylaşım Ekle**'de, paylaşım ayarlarını belirtin. Paylaşımınız için benzersiz bir ad sağlayın.
     
     Paylaşma adları yalnızca sayı, küçük harf, büyük harf ve kısa çizgi içerebilir. Paylaşım adı 3 ile 63 karakter arası uzunlukta olmalı ve bir harf veya rakamla başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır.
 
-3. Paylaşım için **Tür** seçin. Bu tür SMB veya **NFS**, SMB 'nin varsayılan olarak **olması olabilir.** SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
+3. Paylaşma için bir **tür** seçin. Bu tür SMB veya **NFS**, SMB 'nin varsayılan olarak **olması olabilir.** SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
 
    > [!IMPORTANT]
    > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
@@ -125,7 +125,7 @@ Bir paylaşımın bağlantısını kesmek için Azure portal aşağıdaki adıml
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin.
 
-    ![Paylaşımı seçme](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
+    ![Paylaşma 2 ' yi seçin](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
 2. Paylaşımlar listesinden, çıkarmak istediğiniz paylaşımı seçin. Çıkardık paylaşımın herhangi bir modül tarafından kullanılmadığından emin olmak istiyorsunuz. Paylaşma bir modül tarafından kullanılıyorsa, ilgili modülle ilgili sorunları görürsünüz. Çıkar ' **ı seçin.**
 
@@ -145,7 +145,7 @@ Paylaşımı silmek için Azure portalda aşağıdaki adımları gerçekleştiri
 
 1. Paylaşım listesinde silmek istediğiniz paylaşımı seçin ve üzerine tıklayın.
 
-    ![Paylaşımı seçme](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
+    ![Paylaşma 3 ' ü seçin](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
 
 2. **Sil**'e tıklayın.
 
@@ -169,7 +169,7 @@ Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleşt
 
 1.  Azure portalda **Paylaşımlar** sayfasına gidin. Yenilemek istediğiniz paylaşımı seçin ve üzerine tıklayın.
 
-    ![Paylaşımı seçme](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
+    ![Paylaşma 4 seçin](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
 
 2.  **Yenile**'ye tıklayın. 
 

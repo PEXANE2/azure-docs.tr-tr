@@ -1,23 +1,18 @@
 ---
 title: HC Serisi VM boyutu performansı
 description: Azure 'da HC Serisi VM boyutları için performans testi sonuçları hakkında bilgi edinin.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
-ms.openlocfilehash: 0d63d9770dacf6a200e8b81e8d47d9f807a8a448
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.reviewer: cynthn
+ms.openlocfilehash: 34d47e6c10692cc212b6e178e3f9658069b96020
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603458"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995103"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC Serisi sanal makine boyutları
 
@@ -26,7 +21,7 @@ Birkaç performans testi, HC Serisi boyutlarda çalıştırıldı. Bu performans
 | İş Yükü                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | STREAM Triad                                    | 190 GB/sn (Intel MLC AVX-512)  |
-| Yüksek performanslı linpack (HPL)                  | 3520 GigaFLOPS (Rtepe), 2970 GigaFLOPS (Rmax) |
+| High-Performance linpack (HPL)                  | 3520 GigaFLOPS (Rtepe), 2970 GigaFLOPS (Rmax) |
 | RDMA gecikme & bant genişliği                        | 1,05 mikrosaniye, 96,8 GB/sn   |
 | Yerel NVMe SSD üzerinde FIO                           | 1,3 GB/sn okuma, 900 MB/s yazma |  
 | 4 Azure Premium SSD (P30 yönetilen diskler, RAID0) * *  | 780 MB/s okuma, 780 MB/yazma |
@@ -49,7 +44,7 @@ OSU mikro kıyaslama paketinden MPı bant genişliği sınaması çalıştırıl
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/bandwidth-hc.png" alt-text="Azure HC üzerinde MPı bant genişliği.":::
+:::image type="content" source="./media/bandwidth-hc.png" alt-text="Azure HC üzerinde MPı gecikmesi.":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest

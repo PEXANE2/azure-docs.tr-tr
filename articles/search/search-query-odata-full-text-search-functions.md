@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935798"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Bilişsel Arama OData tam metin arama işlevleri- `search.ismatch` ve `search.ismatchscoring`
@@ -33,9 +33,9 @@ Azure Bilişsel Arama, ve işlevleri aracılığıyla [OData filtre ifadeleri](q
 > [!NOTE]
 > `search.ismatch`Ve `search.ismatchscoring` Işlevleri yalnızca [Arama API 'sindeki](/rest/api/searchservice/search-documents)filtrelerde desteklenir. Bunlar, [öneri](/rest/api/searchservice/suggestions) veya [otomatik tamamlama](/rest/api/searchservice/autocomplete) API 'lerinde desteklenmez.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `search.ismatch` ve işlevlerinin dilbilgisini tanımlar `search.ismatchscoring` :
+Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `search.ismatch` ve işlevlerinin dilbilgisini tanımlar `search.ismatchscoring` :
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

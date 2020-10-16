@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49a51886f921c9d37a33229b6db78479d7198bc
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857818"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938330"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Bilişsel hizmetler belgeleri: 1 Eylül 2020 ' deki yenilikler-30 Eylül 2020
 
@@ -42,51 +42,51 @@ ms.locfileid: "91857818"
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın](/azure/cognitive-services/computer-vision/spatial-analysis-container.md)
+- [Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container?tabs=azure-stack-edge)
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri](https://docs.microsoft.com/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Form Tanıma
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Form tanıyıcı için dil desteği](/azure/cognitive-services/form-recognizer/language-support.md)
-- [Özel model için eğitim veri kümesi oluşturma](/azure/cognitive-services/form-recognizer/build-training-data-set.md)
-- [Makbuz kavramları](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [Bekleyen verilerin form tanıyıcı şifrelemesini şifreleme](/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
-- [Form Tanıma'daki yenilikler](/azure/cognitive-services/form-recognizer/whats-new.md)
-- [Kartvizit kavramları](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
-- [Form Tanıma nedir?](/azure/cognitive-services/form-recognizer/overview.md)
-- [Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+- [Form tanıyıcı için dil desteği](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/language-support)
+- [Özel model için eğitim veri kümesi oluşturma](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/build-training-data-set)
+- [Makbuz kavramları](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-receipts)
+- [Bekleyen verilerin form tanıyıcı şifrelemesini şifreleme](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)
+- [Form Tanıma'daki yenilikler](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/whats-new)
+- [Kartvizit kavramları](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-business-cards)
+- [Form Tanıma nedir?](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/overview)
+- [Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/client-library)
 
 ## <a name="immersive-reader"></a>Tam Ekran Okuyucu
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Modern okuyucu için dil desteği](/azure/cognitive-services/immersive-reader/language-support.md)
-- [Modern okuyucu JavaScript SDK başvurusu (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
-- [Hızlı başlangıç: modern okuyucuyla çalışmaya başlama](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries.md)
-- [Öğretici: Python örnek projesini kullanarak modern okuyucu başlatma](/azure/cognitive-services/immersive-reader/tutorial-python.md)
-- [Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [Modern okuyucu için dil desteği](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/language-support)
+- [Modern okuyucu JavaScript SDK başvurusu (v 1.1)](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)
+- [Hızlı başlangıç: modern okuyucuyla çalışmaya başlama](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
+- [Öğretici: Python örnek projesini kullanarak modern okuyucu başlatma](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/tutorial-python)
+- [Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader)
 
 ## <a name="metrics-advisor"></a>Ölçüm Danışmanı
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Nasıl yapılır: ölçümleri yapılandırma ve yapılandırmayı algılama ince ayar](/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics.md)
-- [Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [Hızlı başlangıç: çözümünüzü özelleştirmek için REST API 'Lerini kullanma](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
-- [Nasıl yapılır: bir kanca kullanarak uyarıları yapılandırma ve bildirim alma](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
+- [Nasıl yapılır: ölçümleri yapılandırma ve yapılandırmayı algılama ince ayar](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics)
+- [Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources)
+- [Hızlı başlangıç: çözümünüzü özelleştirmek için REST API 'Lerini kullanma](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/rest-api)
+- [Nasıl yapılır: bir kanca kullanarak uyarıları yapılandırma ve bildirim alma](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/alerts)
 
 ## <a name="text-analytics"></a>Metin Analizi
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Metin Analizi API'si model sürümü oluşturma](/azure/cognitive-services/text-analytics/concepts/model-versioning.md)
-- [Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma](/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk.md)
+- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [Metin Analizi API'si model sürümü oluşturma](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/model-versioning)
+- [Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk)
 
 ## <a name="community-contributors"></a>Topluluk katkı sağlayanlar
 

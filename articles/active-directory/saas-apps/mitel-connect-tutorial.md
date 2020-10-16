@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae9db6dd20ef4346050be73250c7a10f7a449ec
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552620"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Öğretici: Mitel Micyüksek Connect veya CloudLink platformuyla Azure Active Directory tümleştirme
 
@@ -29,7 +29,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için b
 
 Azure aboneliğiniz yoksa, Mitel Micyüksek Connect veya CloudLink platformuyla Azure AD tümleştirmesi başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini, Micyüksek Connect ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -112,7 +112,7 @@ Azure AD için aynı SSO ile Micyüksek Connect 'i yapılandırmak için Azure p
 
 4. Azure portal, **temel SAML yapılandırması** bölümünde **Düzenle** simgesini seçin.
    
-    ![image](common/edit-urls.png)
+    ![Ekran görüntüsü, Düzenle simgesi seçili olan SAML ile tekli Sign-On ayarlama sayfasını gösterir.](common/edit-urls.png)
 
     Temel SAML yapılandırması iletişim kutusu görüntülenir.
 
@@ -120,7 +120,7 @@ Azure AD için aynı SSO ile Micyüksek Connect 'i yapılandırmak için Azure p
 
 6. URL 'YI, Mitel hesap portalındaki **yanıt URL 'si (onaylama Işlemi tüketici hizmeti URL 'si)** alanından kopyalayın ve Azure Portal, **yanıt URL 'Si (onaylama tüketici hizmeti URL 'si)** alanına yapıştırın.
 
-   ![image](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
+   ![Ekran görüntüsü, Azure portal temel SAML yapılandırmasını ve Mitel hesabı portalındaki kimlik sağlayıcısını ayarla bölümünde aralarındaki ilişkiyi belirten satırları gösterir.](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
 
 7. **Oturum açma URL 'si** metin kutusuna aşağıdaki URL 'lerden birini yazın:
 
@@ -134,11 +134,11 @@ Azure AD için aynı SSO ile Micyüksek Connect 'i yapılandırmak için Azure p
 
 9. Azure portal SAML **tabanlı oturum açma** sayfasındaki SAML **imzalama sertifikası** bölümünde, **imzalama sertifikasını** indirmek ve bilgisayarınıza kaydetmek Için **sertifika (base64)** yanındaki **İndir** ' i seçin.
 
-    ![image](./media/mitel-connect-tutorial/azure-signing-certificate.png)
+    ![Ekran görüntüsü, bir sertifikayı indirebileceğiniz SAML Imzalama sertifikası bölmesini gösterir.](./media/mitel-connect-tutorial/azure-signing-certificate.png)
 
 10. Imza sertifikası dosyasını bir metin düzenleyicisinde açın, dosyadaki tüm verileri kopyalayın ve ardından Mitel hesabı portalındaki **Imza sertifikası** alanından verileri yapıştırın. 
 
-      ![image](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
+      ![Ekran görüntüsü Imza sertifikası alanını gösterir.](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
 
 11. Azure portal **SAML tabanlı oturum açma** sayfasının **Setup Mitel Connect** bölümünde:
 
@@ -146,7 +146,7 @@ Azure AD için aynı SSO ile Micyüksek Connect 'i yapılandırmak için Azure p
 
      1. **Azure AD tanımlayıcı** alanından URL 'yi kopyalayın ve Mitel hesabı PORTALıNDAKI **varlık kimliği** alanına yapıştırın.
          
-         ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
+         ![Ekran görüntüsü, Azure portal ve Mitel hesap portalının SAML tabanlı oturum açma sayfası arasındaki ilişkiyi gösterir.](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
 12. Mitel hesap portalındaki **tek Sign-On ayarları Bağlan** Iletişim kutusunda **Kaydet** ' i seçin.
 
@@ -241,7 +241,7 @@ CloudLink platformunu Azure AD için çoklu oturum açma ile yapılandırmak iç
     
        **SAML tabanlı oturum açma** sayfası AÇıLARAK **temel SAML yapılandırması** bölümünü görüntüler.
 
-       ![image](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
+       ![Ekran görüntüsünde, temel SAML yapılandırması olan SAML tabanlı oturum açma sayfası gösterilir.](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
 
 2. CloudLink hesapları portalındaki **Azure AD çoklu oturum açma** yapılandırma paneline erişmek için:
 
@@ -251,33 +251,33 @@ CloudLink platformunu Azure AD için çoklu oturum açma ile yapılandırmak iç
 
     1. 3. **taraf** sekmesini seçin. Desteklenen üçüncü taraf uygulamaların listesi görüntülenir. **Azure AD çoklu oturum açma**Ile ilişkili **Ekle** düğmesini seçin ve **bitti**' yi seçin.
 
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
+       ![Ekran görüntüsü, Azure 'da D çoklu oturum açma ekleyebileceğiniz tümleştirme sayfasını gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
        **Azure AD çoklu oturum açma** , müşteri hesabı için etkinleştirilmiştir ve **hesap bilgileri** sayfasının **tümleştirmeler** bölümüne eklenir.   
 
    1. **Kurulumu Tamam**' ı seçin.
     
-      ![image](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
+      ![Ekran görüntüsü, Azure 'da D çoklu oturum açma için tam kurulum seçeneğini gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
       
       **Azure AD çoklu oturum açma** yapılandırma paneli açılır.
       
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
+       ![Ekran görüntüsü, Azure A tek Sign-On yapılandırmasını gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
        
        Mitel, **Isteğe bağlı Mitel kimlik bilgileri** bölümünde **Mitel kimlik bilgilerini etkinleştir (isteğe bağlı)** onay kutusunun seçili olmadığından emin olmanızı önerir. Yalnızca kullanıcının CloudLink uygulamasında çoklu oturum açma seçeneğine ek olarak Mitel kimlik bilgilerini kullanarak oturum açmasını istiyorsanız bu onay kutusunu işaretleyin.
 
 3. Azure portal, **SAML tabanlı oturum açma** sayfasında, **temel SAML yapılandırması** bölümünde **Düzenle** simgesini seçin. **Temel SAML yapılandırma** paneli açılır.
 
-    ![image](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
+    ![Ekran görüntüsünde, düzenleme simgesi seçili olan temel SAML yapılandırma bölmesi görüntülenir.](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
  
  4. CloudLink accounts portalındaki **Mitel tanımlayıcı (VARLıK kimliği)** alanından URL 'yi kopyalayın ve Azure Portal içindeki **tanımlayıcı (varlık kimliği)** alanına yapıştırın.
 
  5. CloudLink accounts portalındaki **yanıt URL 'si (onaylama tüketici hizmeti URL 'si)** alanından URL 'yi kopyalayın ve Azure Portal, **yanıt URL 'Si (onaylama tüketici hizmeti URL 'si)** alanına yapıştırın.  
     
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
+    ![Ekran görüntüsü CloudLink accounts portalındaki ve Azure portal arasındaki ilişkiyi gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
 
  6. **Oturum açma URL 'si** metin kutusunda, `https://accounts.mitel.io` CloudLink accounts portalını varsayılan Mitel uygulamanız olarak kullanmak için URL 'yi yazın.
      
-     ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
+     ![Ekran görüntüsü U R L 'de oturum aç metin kutusunu gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
   
      > [!NOTE]
      > Varsayılan Mitel uygulaması, bir Kullanıcı erişim panelinde Mitel Connect kutucuğunu seçtiğinde açılan uygulamadır. Bu, Kullanıcı Azure AD 'den bir test kurulumu yapılandırdığında de uygulamaya erişilir.
@@ -286,14 +286,14 @@ CloudLink platformunu Azure AD için çoklu oturum açma ile yapılandırmak iç
 
 8. Azure portal SAML **tabanlı oturum açma** sayfasındaki **SAML Imzalama sertifikası** bölümünde **imzalama sertifikasını**indirmek Için **sertifika (base64)** yanındaki **İndir** ' i seçin. Sertifikayı bilgisayarınıza kaydedin.
   
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
+    ![Ekran görüntüsü, bir Base64 sertifikası indirebileceğiniz SAML Imzalama sertifikası bölümünü gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
 
 9. Imza sertifikası dosyasını bir metin düzenleyicisinde açın, dosyadaki tüm verileri kopyalayın ve ardından verileri CloudLink accounts portalındaki **Imza sertifikası** alanına yapıştırın.  
 
     > [!NOTE]
     > Birden fazla sertifikanız varsa, bunları diğerinin ardına yapıştırmanız önerilir. 
        
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
+    ![Ekran görüntüsünde, Azure A D tümleştirmesinden değerleri doldurduğunuz yordamın ikinci adımı gösterilmektedir.](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
 
 10. Azure portal **SAML tabanlı oturum açma** sayfasındaki **Mitel Connect** ' i ayarla bölümünde:
 
@@ -301,7 +301,7 @@ CloudLink platformunu Azure AD için çoklu oturum açma ile yapılandırmak iç
 
      1. **Azure AD tanımlayıcı** alanından URL 'yi kopyalayın ve CloudLink accounts portalındaki **IDP tanımlayıcı (varlık kimliği)** alanına yapıştırın.
      
-        ![image](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
+        ![Ekran görüntüsü, Mintel Connect içinde burada açıklanan değerlerin kaynağını gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
 
 11. CloudLink accounts portalındaki **Azure AD çoklu oturum açma** panelinde **Kaydet** ' i seçin.
 

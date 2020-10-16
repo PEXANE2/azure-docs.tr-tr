@@ -1,7 +1,7 @@
 ---
-title: 'PCA tabanlı anomali algılama: modül başvurusu'
+title: 'PCA-Based anomali algılama: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Birincil bileşen analizine (PCA) dayalı bir anomali algılama modeli oluşturmak için PCA tabanlı anomali algılama modülünü nasıl kullanacağınızı öğrenin.
+description: PCA-Based anomali algılama modülünü kullanarak sorumlu bileşen analizini (PCA) temel alan anomali algılama modeli oluşturma hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898454"
 ---
-# <a name="pca-based-anomaly-detection-module"></a>PCA tabanlı anomali algılama modülü
+# <a name="pca-based-anomaly-detection-module"></a>PCA-Based anomali algılama modülü
 
-Bu makalede, sorumlu bileşen analizine (PCA) dayalı bir anomali algılama modeli oluşturmak için Azure Machine Learning tasarımcısında PCA tabanlı anomali algılama modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, asıl bileşen analizine (PCA) dayalı bir anomali algılama modeli oluşturmak için Azure Machine Learning tasarımcısında PCA-Based anomali algılama modülünün nasıl kullanılacağı açıklanır.
 
 Bu modül, geçerli işlemler gibi bir sınıftan eğitim verilerini almanın ve hedeflenen anomali örneklere yeterli örnek almak zor olan senaryolarda bir model oluşturmanıza yardımcı olur. 
 
-Örneğin, sahte işlemleri algılamak için, üzerinde eğecek çok sayıda sahtekarlık örneği yoktur. Ancak iyi işlemlere çok sayıda örnek olabilir. PCA tabanlı anomali algılama modülü, "normal" sınıfının ne olduğunu belirlemek için kullanılabilir özellikleri çözümleyerek sorunu çözer. Modül daha sonra, anormallikleri temsil eden durumları belirlemek için mesafe ölçümleri uygular. Bu yaklaşım, mevcut imdenli verileri kullanarak bir modeli eğmenize imkan tanır.
+Örneğin, sahte işlemleri algılamak için, üzerinde eğecek çok sayıda sahtekarlık örneği yoktur. Ancak iyi işlemlere çok sayıda örnek olabilir. PCA-Based anomali algılama modülü, "normal" sınıfının ne olduğunu belirlemek için kullanılabilir özellikleri çözümleyerek sorunu çözer. Modül daha sonra, anormallikleri temsil eden durumları belirlemek için mesafe ölçümleri uygular. Bu yaklaşım, mevcut imdenli verileri kullanarak bir modeli eğmenize imkan tanır.
 
 ## <a name="more-about-principal-component-analysis"></a>Sorumlu bileşen analizi hakkında daha fazla bilgi
 
@@ -38,7 +38,7 @@ PCA 'nın nasıl çalıştığı hakkında daha fazla bilgi edinmek ve anomali a
 
 - [Rastgele bir yapıyı bulma: yaklaşık matris deklerini (PDF indirmesi) oluşturmak Için dayalı algoritmaları](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) , Halko, Martinsson ve Tropp tarafından
 
-## <a name="how-to-configure-pca-based-anomaly-detection"></a>PCA tabanlı anomali algılamayı yapılandırma
+## <a name="how-to-configure-pca-based-anomaly-detection"></a>PCA-Based anomali algılamayı yapılandırma
 
 1. Tasarımcıdaki işlem hattınızla **PCA tabanlı anomali algılama** modülünü ekleyin. Bu modülü **anomali algılama** kategorisinde bulabilirsiniz.
 

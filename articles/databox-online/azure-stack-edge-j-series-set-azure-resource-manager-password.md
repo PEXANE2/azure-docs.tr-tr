@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904481"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazında Azure Resource Manager parola ayarlama
@@ -122,7 +122,7 @@ Azure portal veya PowerShell cmdlet 'lerini kullanmanıza bağlı olarak parolay
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    Parolayı sıfırlamak için yukarıdaki oluşturulan güvenli dizeleri set-AzDataBoxEdgeUser cmdlet 'inde parametre olarak kullanın. Azure Stack Edge Pro/Data Box Gateway kaynağını oluştururken kullandığınız kaynak grubunu kullanın.
+    Parolayı sıfırlamak için, Set-AzDataBoxEdgeUser cmdlet 'inde yukarıdaki oluşturulan güvenli dizeleri parametre olarak kullanın. Azure Stack Edge Pro/Data Box Gateway kaynağını oluştururken kullandığınız kaynak grubunu kullanın.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key

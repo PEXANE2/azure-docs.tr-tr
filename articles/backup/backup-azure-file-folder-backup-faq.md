@@ -4,10 +4,10 @@ description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık soru
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182522"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
@@ -140,7 +140,7 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
     Net start obengine
     ```
 
-7. İsteğe bağlı yedekleme çalıştırın. Yedekleme işlemi yeni konumu kullanarak başarılı bir şekilde tamamlandıktan sonra özgün önbellek klasörünü kaldırabilirsiniz.
+7. İsteğe bağlı yedekleme çalıştırma. Yedekleme işlemi yeni konumu kullanarak başarılı bir şekilde tamamlandıktan sonra özgün önbellek klasörünü kaldırabilirsiniz.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Önbellek klasörü nerede konumlandırılmalıdır?
 

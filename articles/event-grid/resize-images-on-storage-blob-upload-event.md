@@ -4,10 +4,10 @@ description: "Öğretici: Azure Event Grid Azure Storage 'daki blob karşıya y�
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326618"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme
@@ -263,7 +263,7 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
 
 1.  **Tümleştirme** Seç ' i seçin ve **Event Grid tetikleyiciyi** seçin ve **Event Grid aboneliği oluştur**' u seçin.
 
-    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Azure portal Event Grid abonelik ekleme sayfasına gidin" :::
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Portalda küçük resim işlevini seçin" :::
 
 1. Tabloda belirtilen olay aboneliği ayarlarını kullanın.
     

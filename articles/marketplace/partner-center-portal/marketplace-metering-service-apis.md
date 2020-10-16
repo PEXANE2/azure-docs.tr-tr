@@ -8,10 +8,10 @@ ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319992"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Market ölçülen faturalandırma API 'Leri
@@ -34,7 +34,7 @@ Takvim gününün her bir saati için yalnızca bir kullanım olayı dağıtıla
 
 Kaynak başına bir takvim gününe ait her saat için yalnızca bir kullanım olayı dağıtılabilir. Bir saat içinde birden fazla birim tüketilirse, saat içinde tüketilen tüm birimleri birikir ve tek bir olayda yayın. Kullanım olayları yalnızca son 24 saat için kullanılabilir. Bir kullanım olayını 8:00 ile 8:59:59 arasında herhangi bir zamanda yayar (ve kabul edilirse) ve aynı gün için 8:00 ve 8:59:59 arasında ek bir olay gönderirseniz, yineleme olarak reddedilir.
 
-**Gönderi**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Gönderi**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -65,7 +65,7 @@ Kaynak başına bir takvim gününe ait her saat için yalnızca bir kullanım o
 ```
 
 >[!NOTE]
->`resourceId`SaaS uygulaması ve yönetilen uygulama yayma özel ölçümü için farklı anlamlara sahiptir. 
+>`resourceId` SaaS uygulaması ve yönetilen uygulama yayma özel ölçümü için farklı anlamlara sahiptir. 
 
 Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` `resourceUsageId` `billingDetails` yönetilen uygulama meta verileri nesnesinin altında bulunur. [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir. 
 
@@ -95,7 +95,7 @@ Kod: 400 <br>
 Hatalı istek.
 
 * Eksik veya geçersiz istek verileri belirtildi.
-* `effectiveStartTime`Geçmişte 24 saatten fazla. Olayın süresi doldu.
+* `effectiveStartTime` Geçmişte 24 saatten fazla. Olayın süresi doldu.
 * SaaS aboneliği abone durumunda değil.
 
 Yanıt yükü örneği: 
@@ -189,7 +189,7 @@ Toplu kullanım olayı API 'SI, birden fazla satın alınan kaynağın kullanım
 ```
 
 >[!NOTE]
->`resourceId`SaaS uygulaması ve yönetilen uygulama yayma özel ölçümü için farklı anlamlara sahiptir. 
+>`resourceId` SaaS uygulaması ve yönetilen uygulama yayma özel ölçümü için farklı anlamlara sahiptir. 
 
 Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` `resourceUsageId` `billingDetails` yönetilen uygulama meta verileri nesnesinin altında bulunur. [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir. 
 
@@ -271,7 +271,7 @@ Inı. Yetkilendirme belirteci belirtilmemiş, geçersiz veya zaman aşımına u�
 
 Ayrıca, sınırlı hedef kitlelerine test sırasında bu plana erişimi sınırlandırmak için, mevcut bir canlı teklif için özel planı da kullanabilirsiniz.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Yayımcı desteği seçeneklerini anlamak ve Microsoft ile destek bileti açmak için [Iş Ortağı Merkezi ' nde ticari Market programına yönelik destek](./support.md) bölümündeki yönergeleri izleyin.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438825"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016102"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma
 
@@ -46,7 +46,7 @@ Sorgular ve veri akışı:
 5. Ağ geçidi, yürütme için sorguyu veri kaynağına gönderir.
 6. Sonuçlar, veri kaynağından ağ geçidine ve ardından bulut hizmetine ve sunucunuza geri gönderilir.
 
-## <a name="installing"></a>Yükleniyor
+## <a name="installing"></a>Yükleme
 
 Azure Analysis Services ortamı için yükleme yaparken, [Azure Analysis Services için şirket içi veri ağ geçidini yükleme ve yapılandırma](analysis-services-gateway-install.md)bölümünde açıklanan adımları izlemeniz önemlidir. Bu makale Azure Analysis Services özeldir. Azure 'da şirket içi veri ağ geçidi kaynağı kurmak ve Azure Analysis Services sunucunuzu kaynağa bağlamak için gereken ek adımları içerir.
 
@@ -58,11 +58,11 @@ Azure ağ geçidi kaynağınızı, sunucunuz ile aynı abonelikte oluşturmanız
 
 Ağ geçidi, Azure Service Bus'a yönelik bir giden bağlantı oluşturur. Şu giden bağlantı noktaları üzerinden iletişim kurar: TCP 443 (varsayılan), 5671, 5672, 9350 ila 9354.  Ağ geçidi için gelen bağlantı noktaları gerekli değildir.
 
-Güvenlik duvarınızdaki veri bölgenizin IP adreslerini eklemeniz gerekebilir. [Microsoft Azure Veri Merkezi IP listesini](https://www.microsoft.com/download/details.aspx?id=56519) indirebilirsiniz. Bu liste haftalık olarak güncelleştirilir. Azure Veri Merkezi IP listesindeki adresler, CIDR gösteriminde listelenir. Daha fazla bilgi için bkz. [sınıfsız etki alanları arası yönlendirme](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Güvenlik duvarınızdaki veri bölgenizin IP adreslerini eklemeniz gerekebilir. [Microsoft Azure Veri Merkezi IP listesini](https://www.microsoft.com/download/details.aspx?id=56519) indirebilirsiniz. Bu liste haftalık olarak güncelleştirilir. Azure Veri Merkezi IP listesindeki adresler, CIDR gösteriminde listelenir. Daha fazla bilgi için bkz. [sınıfsız Inter-Domain yönlendirme](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiştir.
 
-| Etki alanı adları | Giden bağlantı noktaları | Description |
+| Etki alanı adları | Giden bağlantı noktaları | Açıklama |
 | --- | --- | --- |
 | *.powerbi.com |80 |Yükleyiciyi indirmek için kullanılan HTTP. |
 | *.powerbi.com |443 |HTTPS |
@@ -91,11 +91,11 @@ Ağ geçidini, doğrudan TCP yerine HTTPS kullanarak Azure Service Bus ile ileti
 
 Aşağıdaki makaleler, ağ geçidinin desteklediği tüm hizmetler için geçerli olan şirket içi veri ağ geçidi genel içeriğine eklenmiştir:
 
-* [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [Şirket içi veri ağ geçidi uygulamasını kullanma](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [Kiracı düzeyinde yönetim](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [Ara sunucu ayarlarını yapılandırma](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [İletişim ayarlarını değiştirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [Günlük dosyalarını yapılandırma](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [Sorun giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Ağ geçidi performansını izleme ve en iyi duruma getirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Şirket içi veri ağ geçidi hakkında SSS](/data-integration/gateway/service-gateway-onprem-faq)   
+* [Şirket içi veri ağ geçidi uygulamasını kullanma](/data-integration/gateway/service-gateway-app)   
+* [Kiracı düzeyinde yönetim](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [Ara sunucu ayarlarını yapılandırma](/data-integration/gateway/service-gateway-proxy)   
+* [İletişim ayarlarını değiştirme](/data-integration/gateway/service-gateway-communication)   
+* [Günlük dosyalarını yapılandırma](/data-integration/gateway/service-gateway-log-files)   
+* [Sorun giderme](/data-integration/gateway/service-gateway-tshoot)
+* [Ağ geçidi performansını izleme ve en iyi duruma getirme](/data-integration/gateway/service-gateway-performance)

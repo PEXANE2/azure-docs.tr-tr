@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807095"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Mevcut bir Application Gateway kullanarak bir Application Gateway Ingcontroller (AGıC) yüklemesi
@@ -27,7 +27,7 @@ AGIC, Kubernetes giriş [kaynaklarını izler](https://kubernetes.io/docs/concep
 - [Held kullanarak giriş denetleyicisini yükler](#install-ingress-controller-as-a-helm-chart)
 - [Çoklu küme/paylaşılan Application Gateway](#multi-cluster--shared-application-gateway): bir ortamda (Application Gateway bir veya daha fazla aks kümesi ve/veya diğer Azure bileşenleri arasında paylaşıldığında) agic 'yi yükler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu belgede aşağıdaki araçların ve altyapının yüklü olduğu varsayılır:
 - [Gelişmiş ağ](https://docs.microsoft.com/azure/aks/configure-azure-cni) özellikli [aks](https://azure.microsoft.com/services/kubernetes-service/) 'lar
 - [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) 'yi aks ile aynı sanal ağda
@@ -79,7 +79,7 @@ Bu bileşeni AKS uygulamanıza eklemek için [AAD Pod kimlik yükleme yönergele
 Bir sonraki adımda Azure kimliği oluşturmanız ve BT izinleri Kolonu vermeniz gerekir.
 Aşağıdaki komutların tümünü çalıştırmak ve bir kimlik oluşturmak için [Cloud Shell](https://shell.azure.com/) kullanın:
 
-1. **AKS düğümleri ile aynı kaynak grubunda**bir Azure kimliği oluşturun. Doğru kaynak grubunu seçmek önemlidir. Aşağıdaki komutta gerekli olan kaynak grubu, AKS portalı bölmesinde başvurulan bir *değildir* . Bu, `aks-agentpool` sanal makinelerin kaynak grubudur. Genellikle bu kaynak grubu ile başlar `MC_` ve AKS 'nizin adını içerir. Örneğin:`MC_resourceGroup_aksABCD_westus`
+1. **AKS düğümleri ile aynı kaynak grubunda**bir Azure kimliği oluşturun. Doğru kaynak grubunu seçmek önemlidir. Aşağıdaki komutta gerekli olan kaynak grubu, AKS portalı bölmesinde başvurulan bir *değildir* . Bu, `aks-agentpool` sanal makinelerin kaynak grubudur. Genellikle bu kaynak grubu ile başlar `MC_` ve AKS 'nizin adını içerir. Örneğin: `MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
@@ -91,9 +91,9 @@ Aşağıdaki komutların tümünü çalıştırmak ve bir kimlik oluşturmak iç
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. `Contributor`Application Gateway kimlik erişimi verin. Bunun için Application Gateway KIMLIĞI gerekir ve şuna benzer şekilde görünecektir:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. `Contributor`Application Gateway kimlik erişimi verin. Bunun için Application Gateway KIMLIĞI gerekir ve şuna benzer şekilde görünecektir: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
-    Aboneliğinizdeki Application Gateway kimliklerinin listesini ile alın:`az network application-gateway list --query '[].id'`
+    Aboneliğinizdeki Application Gateway kimliklerinin listesini ile alın: `az network application-gateway list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -102,7 +102,7 @@ Aşağıdaki komutların tümünü çalıştırmak ve bir kimlik oluşturmak iç
         --scope <App-Gateway-ID>
     ```
 
-1. `Reader`Application Gateway kaynak grubuna kimlik erişimi verin. Kaynak grubu KIMLIĞI şöyle görünür: `/subscriptions/A/resourceGroups/B` . Tüm kaynak gruplarını şu ile edinebilirsiniz:`az group list --query '[].id'`
+1. `Reader`Application Gateway kaynak grubuna kimlik erişimi verin. Kaynak grubu KIMLIĞI şöyle görünür: `/subscriptions/A/resourceGroups/B` . Tüm kaynak gruplarını şu ile edinebilirsiniz: `az group list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -245,7 +245,7 @@ Bu ayarı etkinleştirmeden önce lütfen __Application Gateway yapılandırman�
 
 ### <a name="example-scenario"></a>Örnek Senaryo
 İki Web sitesi için trafiği yöneten bir sanal Application Gateway göz atalım:
-  - `dev.contoso.com`-Application Gateway ve AGIC kullanarak yeni bir AKS 'de barındırılan
+  - `dev.contoso.com` -Application Gateway ve AGIC kullanarak yeni bir AKS 'de barındırılan
   - `prod.contoso.com`-bir [Azure sanal makine ölçek kümesi](https://azure.microsoft.com/services/virtual-machine-scale-sets/) üzerinde barındırılan
 
 Varsayılan ayarlarla AGIC, işaret ettiği Application Gateway %100 sahipliğini üstlenir. AGIC, tüm uygulama ağ geçidi yapılandırmasının üzerine yazar. `prod.contoso.com`(Application Gateway) için, Kubernetes girişi ile tanımlamadan el ile bir dinleyici oluştururuz, AGIC `prod.contoso.com` yapılandırmayı Saniyeler içinde silecek.

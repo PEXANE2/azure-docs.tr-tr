@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 08/16/2020
 ms.author: cshoe
 ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88689584"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Işlevleri bağlama uzantılarını kaydetme
@@ -25,7 +25,7 @@ Aşağıdaki tablo, bağlamaları ne zaman ve nasıl kaydedeceğinizi gösterir.
 |Azure portal|Automatic|Otomatik<sup>*</sup>|
 |Non-.NET dilleri|Automatic|[Uzantı paketleri](#extension-bundles) kullan (önerilir) veya [uzantıları açıkça yükler](#explicitly-install-extensions)|
 |Visual Studio kullanarak C# sınıf kitaplığı|[NuGet araçlarını kullanma](#vs)|[NuGet araçlarını kullanma](#vs)|
-|Visual Studio Code kullanarak C# sınıf kitaplığı|N/A|[.NET Core CLI kullan](#vs-code)|
+|Visual Studio Code kullanarak C# sınıf kitaplığı|Yok|[.NET Core CLI kullan](#vs-code)|
 
 <sup>*</sup> Portalda uzantı paketleri kullanılmaktadır.
 

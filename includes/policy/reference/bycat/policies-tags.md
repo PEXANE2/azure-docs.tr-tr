@@ -6,13 +6,13 @@ ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: 9779036c432fc2dbeb8aea05e79c90e602db9b99
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821138"
 ---
-|Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Kaynak gruplarına etiket ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |Belirtilen etiketi ve değeri, bu etiketin eksik olduğu bir kaynak grubuna ekler veya güncellenir. Varolan kaynak grupları bir düzeltme görevi tetiklenerek düzeltilebilir. Etiket farklı bir değerle varsa, değiştirilmez. |değiştirebilirler |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |
 |[Kaynaklara etiket ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f9dc7db-30c1-420c-b61a-e1d640128d26) |Bu etiket eksik veya güncelleştirilmiş bir kaynak olduğunda belirtilen etiketi ve değeri ekler. Mevcut kaynaklar bir düzeltme görevi tetiklenerek düzeltilebilir. Etiket farklı bir değerle varsa, değiştirilmez. Kaynak gruplarındaki etiketleri değiştirmez. |değiştirebilirler |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json) |

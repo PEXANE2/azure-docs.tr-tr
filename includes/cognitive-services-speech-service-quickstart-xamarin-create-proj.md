@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2019
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d20df031633df4642ce9fb5cbbc469fd7f0a5da
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654457"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097244"
 ---
 Xamarin ile platformlar arası mobil uygulama .NET geliştirmesi için Visual Studio projesi oluşturmak üzere şunları yapmanız gerekir:
 - Visual Studio geliştirme seçeneklerini ayarlayın.
@@ -50,7 +50,7 @@ Başlamak için, .NET ile platformlar arası mobil geliştirme için Visual Stud
 
 1. **Yeni mobil uygulama Xamarin formları proje** penceresine gitmek için **Oluştur** ' u seçin.
 
-   ![Visual Studio 'da yeni Evrensel Windows Platformu proje iletişim kutusunu gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
+   ![Visual Studio 'da yeni mobil uygulama Xamarin formları proje iletişim kutusunu gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
 
 1. **Boş** şablonu seçin.
 

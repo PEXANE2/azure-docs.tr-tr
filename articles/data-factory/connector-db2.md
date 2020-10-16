@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
 ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83873629"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory kullanarak DB2 'den veri kopyalama
@@ -51,7 +51,7 @@ DB2 veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 >[!TIP]
 >DB2 Bağlayıcısı DB2 için Microsoft OLE DB Sağlayıcısı üzerine kurulmuştur. DB2 bağlayıcı hatalarıyla ilgili sorunları gidermek için [veri sağlayıcısı hata kodlarına](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -80,7 +80,7 @@ Bağlantı dizesinin içindeki tipik Özellikler:
 | sunucu |DB2 sunucusunun adı. Sunucu adının sonuna iki nokta üst üste ile ayrılmış bağlantı noktası numarasını belirtebilirsiniz, örneğin `server:port` .<br>DB2 Bağlayıcısı DDM/DRDA protokolünü kullanır ve belirtilmemişse varsayılan olarak 50000 numaralı bağlantı noktasını kullanır. Belirli DB2 veritabanınızın kullandığı bağlantı noktası, sürüme ve ayarlarınıza göre farklı olabilir. Örneğin, DB2 LUW, AS400 için varsayılan bağlantı noktası 50000, varsayılan bağlantı noktası 446 ' dir ve TLS etkinleştirildiğinde 448. Bağlantı noktasının genellikle nasıl yapılandırıldığı hakkında aşağıdaki DB2 belgelerine başvurun: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)ve [db2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Evet |
 | database |DB2 veritabanının adı. |Evet |
 | authenticationType |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değer: **temel**. |Evet |
-| kullanıcı adı |DB2 veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
+| username |DB2 veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet |
 | packageCollection | Veritabanı sorgulanırken, gerekli paketlerin ADF tarafından otomatik olarak oluşturulduğu yeri belirtin. Bu ayarlanmamışsa, Data Factory varsayılan değer olarak {username} kullanır. | Hayır |
 | Certificatecommonadı | Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) şifrelemesini kullandığınızda, sertifika ortak adı için bir değer girmeniz gerekir. | Hayır |
@@ -167,7 +167,7 @@ DB2 'den veri kopyalamak için aşağıdaki özellikler desteklenir:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | DataSet 'in Type özelliği: **Db2Table** olarak ayarlanmalıdır | Evet |
-| manızı | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
@@ -255,7 +255,7 @@ DB2 'den veri kopyalarken aşağıdaki eşlemeler DB2 veri türlerinden, geçici
 | Ondalık |Ondalık |
 | DecimalFloat |Ondalık |
 | Çift |Çift |
-| Float |Çift |
+| Kayan |Çift |
 | Sel |Dize |
 | Tamsayı |Int32 |
 | LongVarBinary |Byte [] |
@@ -264,7 +264,7 @@ DB2 'den veri kopyalarken aşağıdaki eşlemeler DB2 veri türlerinden, geçici
 | Sayısal |Ondalık |
 | Gerçek |Tek |
 | Small |Int16 |
-| Saat |TimeSpan |
+| Süre |TimeSpan |
 | Zaman damgası |DateTime |
 | Ikili |Byte [] |
 | VarChar |Dize |

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/13/2020
+ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907038"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998488"
 ---
 # <a name="group-data-into-bins-module"></a>Verileri depo gözleri modülüne gruplandırma
 
@@ -44,7 +44,8 @@ Veri *hazırlama veya gruplama* (bazen de bir değer elde *edilir) Machine*Learn
 
 Aşağıdaki diyagramda, *quantiles* yöntemiyle bir önce ve sonra sayısal değerlerin dağılımı gösterilmektedir. Solda ham verilerle karşılaştırıldığında verilerin oluşturulmuş ve birim normal ölçeğe dönüştürüldüğünü fark edersiniz.  
 
-[Bu işlem hattı çalıştırmasının sonuçlarından bir örnek](https://ml.azure.com/visualinterface/authoring/Normal/87270db9-4651-448e-bd28-8ef7428084dc?wsid=%2Fsubscriptions%2Fe9b2ec51-5c94-4fa8-809a-dc1e695e4896%2Fresourcegroups%2Fmodule-ws-rg%2Fworkspaces%2Fmodule-prerelease-119&flight=cm&tid=72f988bf-86f1-41af-91ab-2d7cd011db47&smtendpoint=https%3A%2F%2Fsmt-test1.azureml-test.net)bulabilirsiniz.
+> [!div class="mx-imgBorder"]
+> ![Sonuç görselleştirme](media/module/group-data-into-bins-result-example.png)
 
 Verileri gruplamak için pek çok yol olduğundan, tüm özelleştirilebilir, farklı yöntemler ve değerlerle denemeler yapmanızı öneririz. 
 
@@ -65,6 +66,9 @@ Verileri gruplamak için pek çok yol olduğundan, tüm özelleştirilebilir, fa
     - **Özel kenarlar**: her bir bin başlangıç değerlerini belirtebilirsiniz. Kenar değeri her zaman bin alt sınırıdır. 
     
       Örneğin, değerleri iki bölme halinde gruplandırmak istediğinizi varsayın. Biri 0 ' dan büyük değerlere sahip olur ve biri 0 ' dan küçük veya buna eşit değerlere sahip olur. Bu durumda, bin kenarları için, **virgülle ayrılmış bölme kenarları listesine** **0** girersiniz. Modülün çıktısı 1 ve 2 olacaktır, her satır değeri için bin dizinini gösterir. Virgülle ayrılmış değer listesinin, 1, 3, 5, 7 gibi artan bir düzende olması gerektiğini unutmayın.
+    
+    > [!Note]
+    > *ENTROPI MDL* modu, Studio 'da (klasik) tanımlanır ve henüz tasarımcıda desteklemek için yararlanılabilir olabilecek karşılık gelen açık kaynak paketi yoktur.        
 
 4. **Quantiles** ve **eşittir genişlik** atma modlarını kullanıyorsanız, kaç tane depo *gözü veya ölçü*oluşturmak istediğinizi belirtmek için **bölme sayısı** seçeneğini kullanın.
 

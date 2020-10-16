@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d72e6c6a606a199bd8b0ada601479267e0d728d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544205"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Öğretici: HackerOne ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile HackerOne tümleştirme aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini HackerOne ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -126,11 +126,11 @@ Azure AD çoklu oturum açmayı HackerOne ile yapılandırmak için aşağıdaki
 
 2. Üstteki menüde, **Ayarlar**' a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![Menüde "Ayarlar" seçili olduğunu gösteren ekran görüntüsü.](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. **Kimlik doğrulaması** ' na gıdın ve **SAML ayarları ekle**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    !["Kimlik doğrulama ayarları" sayfasını "S A M L ayarları ekle" düğmesi seçiliyken gösteren ekran görüntüsü.](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. **SAML ayarları** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
@@ -146,7 +146,7 @@ Azure AD çoklu oturum açmayı HackerOne ile yapılandırmak için aşağıdaki
 
 5. Kimlik doğrulama ayarları iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    !["Test Çalıştır" düğmesinin seçili olduğu "kimlik doğrulama ayarları" iletişim kutusunun gösterildiği ekran görüntüsü.](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. **Test Çalıştır**öğesine tıklayın.
 
@@ -181,7 +181,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

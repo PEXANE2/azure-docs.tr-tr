@@ -3,12 +3,12 @@ title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
 ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91614266"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892736"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
 
@@ -25,7 +25,7 @@ Azure Blueprints hizmeti, genel olarak dağıtılmış [Azure Cosmos DB](../../c
 
 ## <a name="how-its-different-from-arm-templates"></a>ARM şablonlarından farklı
 
-Bu hizmet, _ortam kurulumu_ aşamasında yardımcı olmak üzere tasarlanmıştır. Bu kurulum genellikle kaynak grupları, ilkeler, rol atamaları ve ARM şablon dağıtımları kümesinden oluşur. Şema, bu _yapıt_ türlerinin her birini bir araya getiren ve bir CI/CD işlem hattı ile birlikte bu paketi oluşturma ve sürümü oluşturmaya olanak tanıyan bir pakettir. Sonuç olarak her biri tek bir işlem içindeki bir aboneliğe atanır ve denetlenip izlenebilir.
+Bu hizmet, _ortam kurulumu_ aşamasında yardımcı olmak üzere tasarlanmıştır. Bu kurulum genellikle kaynak grupları, ilkeler, rol atamaları ve ARM şablon dağıtımları kümesinden oluşur. Şema, bu _yapıt_ türlerinin her birini bir araya getiren ve bir sürekli tümleştirme ve sürekli teslim (CI/CD) işlem hattı dahil olmak üzere bu paketi oluşturma ve sürümüne yönelik bir pakettir. Sonuç olarak her biri tek bir işlem içindeki bir aboneliğe atanır ve denetlenip izlenebilir.
 
 Azure şemaları 'nda dağıtım için eklemek istediğiniz neredeyse her şey ARM şablonuyla gerçekleştirilebilir. Ancak, bir ARM şablonu Azure 'da yerel olarak mevcut olmayan bir belgedir; her biri yerel olarak ya da kaynak denetiminde depolanır. Şablon bir veya daha fazla Azure kaynağının dağıtılması için kullanılır ancak bu kaynaklar dağıtıldıktan sonra kullanılan şablonla etkin bir bağlantı veya ilişki kalmaz.
 
@@ -126,10 +126,10 @@ Belirli alanlar için aşağıdaki sınırlamalar mevcuttur:
 
 |Nesne|Alan|İzin verilen karakterler|En çok, Uzunluk|
 |-|-|-|-|
-|Şema|Name|harfler, rakamlar, tireler ve noktalar|48|
+|Şema|Adı|harfler, rakamlar, tireler ve noktalar|48|
 |Şema|Sürüm|harfler, rakamlar, tireler ve noktalar|20|
-|Şema ataması|Name|harfler, rakamlar, tireler ve noktalar|90|
-|Blueprint yapıtı|Name|harfler, rakamlar, tireler ve noktalar|48|
+|Şema ataması|Adı|harfler, rakamlar, tireler ve noktalar|90|
+|Blueprint yapıtı|Adı|harfler, rakamlar, tireler ve noktalar|48|
 
 ## <a name="video-overview"></a>Genel bakış videosu
 

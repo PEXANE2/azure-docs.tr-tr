@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c7243857db9a3726bb42815ac4c9eef661f52e47
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717889"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964732"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için ağ Ilkesi sunucusu uzantısını kullanarak VPN altyapınızı Azure MFA ile tümleştirin
 
@@ -172,7 +172,7 @@ RADIUS sunucusunu yapılandırmak için standart (sihirbaz tabanlı) veya geliş
 7. **Kimlik doğrulama yöntemlerini Yapılandır** penceresinde, varsayılan seçimi (**Microsoft şifreli kimlik doğrulama sürüm 2 [MS-CHAPv2])** kabul edin veya başka bir seçenek belirleyin ve **İleri**' yi seçin.
 
     > [!NOTE]
-    > Genişletilebilir Kimlik Doğrulama Protokolü (EAP) yapılandırırsanız, Microsoft Karşılıklı kimlik doğrulama protokolü (CHAPv2) veya Korumalı Genişletilebilir Kimlik Doğrulama Protokolü (PEAP) kullanmanız gerekir. Başka EAP desteklenmez.
+    > Genişletilebilir Kimlik Doğrulama Protokolü (EAP) yapılandırırsanız, Microsoft Challenge-Handshake kimlik doğrulama protokolü (CHAPv2) veya Korumalı Genişletilebilir Kimlik Doğrulama Protokolü (PEAP) kullanmanız gerekir. Başka EAP desteklenmez.
 
 8. **Kullanıcı gruplarını belirtin** penceresinde **Ekle**' yi seçin ve ardından uygun bir grup seçin. Grup yoksa, tüm kullanıcılara erişim vermek için seçimi boş bırakın.
 

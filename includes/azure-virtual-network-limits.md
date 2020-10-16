@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8d5f9b360e1d81bae62e34a8e20d61636e1d22ea
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91859189"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91936251"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager
 Aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** ile yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
@@ -75,6 +75,7 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | Load Balancer 1 başına arka uç kaynakları <sup><sup> | 150                   |
 | Yüksek kullanılabilirlik bağlantı noktaları                 | iç ön uç başına 1       |
 | Load Balancer başına giden kuralları        | 600                           |
+| VM başına yük dengeleyiciler                   | 2 (1 genel ve 1 iç)   |
 
 <sup>1</sup> Sınır, tek başına sanal makine kaynaklarının, kullanılabilirlik kümesi kaynaklarının ve sanal makine ölçek kümesi yerleştirme gruplarının herhangi bir birleşiminde 150 kaynağa kadar olur.
 
@@ -88,6 +89,7 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | Ön uç IP yapılandırması              | 200                          |
 | Arka uç havuzu boyutu                       | 300 IP yapılandırması, tek kullanılabilirlik kümesi |
 | Load Balancer başına kullanılabilirlik kümeleri     | 1                            |
+| VM başına yük dengeleyiciler                   | 2 (1 genel ve 1 iç)  |
 
 <a name="virtual-networking-limits-classic"></a>Aşağıdaki sınırlar yalnızca abonelik başına **Klasik** dağıtım modeliyle yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 

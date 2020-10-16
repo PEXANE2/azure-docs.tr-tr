@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: fc99bc645b48739d6d6339111780047496c1984d
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017124"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma
@@ -96,7 +96,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. **FileSystemDataLakeServiceClient. create_file_system** yöntemini çağırarak bir tane oluşturabilirsiniz.
+Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. **FileSystemDataLakeServiceClient.create_file_system** yöntemini çağırarak bir tane oluşturabilirsiniz.
 
 Bu örnek adlı bir kapsayıcı oluşturur `my-file-system` .
 
@@ -114,7 +114,7 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
-**Filesystemclient. create_directory** yöntemini çağırarak bir dizin başvurusu oluşturun.
+**FileSystemClient.create_directory** yöntemini çağırarak bir dizin başvurusu oluşturun.
 
 Bu örnek, bir kapsayıcıya adlı bir dizin ekler `my-directory` . 
 
@@ -129,7 +129,7 @@ def create_directory():
 
 ## <a name="rename-or-move-a-directory"></a>Bir dizini yeniden adlandırma veya taşıma
 
-**Datalakedirectoryclient. rename_directory** yöntemini çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
+**DataLakeDirectoryClient.rename_directory** yöntemini çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 
 Bu örnek, bir alt dizini ada yeniden adlandırır `my-subdirectory-renamed` .
 
@@ -149,7 +149,7 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>Bir dizini silme
 
-**Datalakedirectoryclient. delete_directory** yöntemini çağırarak bir dizini silin.
+**DataLakeDirectoryClient.delete_directory** yöntemini çağırarak bir dizini silin.
 
 Bu örnek adlı bir dizini siler `my-directory` .  
 
@@ -166,7 +166,7 @@ def delete_directory():
 
 ## <a name="manage-directory-permissions"></a>Dizin izinlerini yönetme
 
-**Datalakedirectoryclient. get_access_control** yöntemini çağırarak ve **datalakedirectoryclient. SET_ACCESS_CONTROL** metodunu çağırarak ACL 'yi ayarlayarak bir dizinin ERIŞIM denetim listesini (ACL) alın.
+**DataLakeDirectoryClient.get_access_control** yöntemini çağırarak bir dizinin erişim denetim LISTESINI (ACL) alın ve **DATALAKEDIRECTORYCLIENT.SET_ACCESS_CONTROL** metodunu çağırarak ACL 'yi ayarlayın.
 
 > [!NOTE]
 > Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için  [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
@@ -196,11 +196,11 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-Ayrıca, bir kapsayıcının kök dizininin ACL 'sini de alabilir ve ayarlayabilirsiniz. Kök dizini almak için **Filesystemclient. _get_root_directory_client** yöntemini çağırın.
+Ayrıca, bir kapsayıcının kök dizininin ACL 'sini de alabilir ve ayarlayabilirsiniz. Kök dizini almak için **FileSystemClient._get_root_directory_client** yöntemini çağırın.
 
 ## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme 
 
-İlk olarak, **Datalakefileclient** sınıfının bir örneğini oluşturarak hedef dizinde bir dosya başvurusu oluşturun. **Datalakefileclient. append_data** yöntemini çağırarak bir dosyayı karşıya yükleyin. **Datalakefileclient. flush_data** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
+İlk olarak, **Datalakefileclient** sınıfının bir örneğini oluşturarak hedef dizinde bir dosya başvurusu oluşturun. **DataLakeFileClient.append_data** yöntemini çağırarak bir dosyayı karşıya yükleyin. **DataLakeFileClient.flush_data** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
 
 Bu örnek, adlı bir dizine bir metin dosyası yükler `my-directory` .   
 
@@ -226,11 +226,11 @@ def upload_file_to_directory():
 ```
 
 > [!TIP]
-> Dosya boyutunuz büyükse, kodunuzun **Datalakefileclient. append_data** metoduna birden çok çağrı yapması gerekir. Bunun yerine **Datalakefileclient. upload_data** yöntemini kullanmayı düşünün. Bu şekilde, tüm dosyayı tek bir çağrıda karşıya yükleyebilirsiniz. 
+> Dosya boyutunuz büyükse, kodunuzun **DataLakeFileClient.append_data** yöntemine birden çok çağrı yapması gerekir. Bunun yerine **DataLakeFileClient.upload_data** yöntemini kullanmayı düşünün. Bu şekilde, tüm dosyayı tek bir çağrıda karşıya yükleyebilirsiniz. 
 
 ## <a name="upload-a-large-file-to-a-directory"></a>Bir dizine büyük bir dosya yükleme
 
-**Datalakefileclient. append_data** yöntemine birden çok çağrı yapmak zorunda kalmadan büyük dosyaları karşıya yüklemek Için **datalakefileclient. upload_data** yöntemini kullanın.
+**DataLakeFileClient.append_data** yöntemine birden çok çağrı yapmak zorunda kalmadan büyük dosyaları karşıya yüklemek için **DataLakeFileClient.upload_data** yöntemini kullanın.
 
 ```python
 def upload_file_to_directory_bulk():
@@ -254,7 +254,7 @@ def upload_file_to_directory_bulk():
 
 ## <a name="manage-file-permissions"></a>Dosya izinlerini yönetme
 
-**Datalakefileclient. get_access_control** yöntemini çağırarak ve **datalakefileclient. SET_ACCESS_CONTROL** metodunu çağırarak ACL 'yi ayarlayarak bir dosyanın ERIŞIM denetim listesini (ACL) alın.
+**DataLakeFileClient.get_access_control** yöntemini çağırarak bir dosyanın erişim denetim LISTESINI (ACL) alın ve **DATALAKEFILECLIENT.SET_ACCESS_CONTROL** metodunu çağırarak ACL 'yi ayarlayın.
 
 > [!NOTE]
 > Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için  [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
@@ -288,7 +288,7 @@ def manage_file_permissions():
 
 ## <a name="download-from-a-directory"></a>Bir dizinden indir 
 
-Yazmak için yerel bir dosya açın. Ardından, indirmek istediğiniz dosyayı temsil eden bir **Datalakefileclient** örneği oluşturun. Dosyadaki baytları okumak için **Datalakefileclient. read_file** çağırın ve ardından bu baytları yerel dosyaya yazın. 
+Yazmak için yerel bir dosya açın. Ardından, indirmek istediğiniz dosyayı temsil eden bir **Datalakefileclient** örneği oluşturun. Dosyadaki baytları okumak için **DataLakeFileClient.read_file** çağırın ve ardından bu baytları yerel dosyaya yazın. 
 
 ```python
 def download_file_from_directory():
@@ -314,7 +314,7 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>Dizin içeriğini listeleme
 
-**Filesystemclient. get_paths** yöntemini çağırarak ve sonra sonuçlar arasında sıralama yaparak dizin içeriğini listeleyin.
+**FileSystemClient.get_paths** yöntemini çağırarak ve sonra sonuçlar arasında sıralama yaparak dizin içeriğini listeleyin.
 
 Bu örnek, adlı bir dizinde bulunan her bir alt dizin ve dosyanın yolunu yazdırır `my-directory` .
 

@@ -38,15 +38,17 @@
 - name: Öğreticiler
   items:
     - name: 1 - Kayıt grupları ile cihaz kümelerinin sağlaması
-      href: how-to-legacy-device-symm-key.md
+      items:
+        - name: Simetrik anahtarlarla cihaz sağlama
+          href: how-to-legacy-device-symm-key.md
+        - name: Özel ayırma ilkeleri kullanma
+          href: tutorial-custom-allocation-policies.md
     - name: 2 - Birden çok merkeze cihaz sağlama
       items:
         - name: Birden çok merkezi DPS’ye bağlama
           href: tutorial-provision-multiple-hubs.md
         - name: Çoklu kiracı için sağlama
           href: how-to-provision-multitenant.md
-        - name: Özel ayırma ilkeleri kullanma
-          href: tutorial-custom-allocation-policies.md
 - name: Örnekler
   items:
     - name: Simüle edilmiş TPM cihazı kanıtlama örneği

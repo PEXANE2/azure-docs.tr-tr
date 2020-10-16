@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: da4f9fd9fd4305029f42dbe63326c8782d22d907
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: baeeeae54829fad7378df597965eec5ba2039d20
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825455"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972824"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell ile bir Windows sanal makinesine veri diski iliştirme
 
@@ -117,4 +117,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ayrıca, şablonları kullanarak yönetilen diskler dağıtabilirsiniz. Daha fazla bilgi için, bkz. [Azure Resource Manager şablonlarda yönetilen diskleri kullanma](using-managed-disks-template-deployments.md) veya birden çok veri diski dağıtmak için [hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) .
+Ayrıca, şablonları kullanarak yönetilen diskler dağıtabilirsiniz. Daha fazla bilgi için, bkz. [Azure Resource Manager şablonlarda yönetilen diskleri kullanma](../using-managed-disks-template-deployments.md) veya birden çok veri diski dağıtmak için [hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) .

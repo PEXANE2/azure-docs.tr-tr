@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: eafad5edf9dcac5745986d09060baf7e4278762d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903969"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için altyapı çift şifrelemesi
 
 MySQL için Azure veritabanınız için altyapı ikili şifrelemesini ayarlama ve yönetme hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
 
@@ -33,15 +33,15 @@ Azure portal altyapı çift şifrelemesi ile bir MySQL için Azure veritabanı s
 
 3. Sunucunun temel bilgilerini sağlayın. Parametreyi ayarlamak için **ek ayarlar** ' ı seçin ve **altyapı Çift şifreleme** onay kutusunu etkin yapın.
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-selected.png" alt-text="MySQL için Azure veritabanı seçimleri":::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-selected.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
 
 4. Sunucuyu sağlamak için **gözden geçir + oluştur** ' u seçin.
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-summary.png" alt-text="MySQL için Azure veritabanı Özeti":::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-summary.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
 
 5. Sunucu oluşturulduktan sonra, **veri şifreleme** sunucusu dikey penceresinde durumu denetleyerek altyapıyı çift şifrelemeyi doğrulayabilirsiniz.
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-validation.png" alt-text="MySQL için Azure veritabanı doğrulaması":::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-validation.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
 
 ## <a name="create-an-azure-database-for-mysql-server-with-infrastructure-double-encryption---cli"></a>Altyapı çift şifrelemesi ile MySQL için Azure veritabanı sunucusu oluşturma-CLı
 

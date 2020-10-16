@@ -9,10 +9,10 @@ ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334404"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JavaScript sorgu API 'SI
@@ -59,7 +59,7 @@ Aşağıdaki tabloda çeşitli SQL sorguları ve ilgili JavaScript sorguları su
 |SEÇIN<br>Docs 'TAN<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__. Filter (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Return doc.id = = = "X998_Y998";<br>});|Koşul: ID = "X998_Y998" olan belgeler için sorgular.|
 |SEÇIN<br>Docs 'TAN<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (docs. Etiketler, 123)|__. Filter (işlev (x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;x. Tags. IndexOf (123) && x. Tags döndürün >-1;<br>});|Etiketler özelliği ve etiketleri olan belge sorguları 123 değerini içeren bir dizidir.|
 |SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;Msg olarak docs. Message<br>Docs 'TAN<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__. zinciri ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;döndürülmesini<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kimlik: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: Doc. Message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|Bir koşula sahip belge için sorgular, ID = "X998_Y998" ve ardından kimliği ve iletiyi (diğer adıyla msg) projeler.|
-|DEĞER etiketini Seç<br>Docs 'TAN<br>Docs 'TA etiketi BIrLEŞTIr. Lerimi<br>Belgelere göre sırala. _ts|__. zinciri ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;belgeyi döndür. Array. IsArray (doc && etiketleri. Etiketler);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;belgeyi döndür. _ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. pluck ("Etiketler")<br>&nbsp;&nbsp;&nbsp;&nbsp;. Düzleştir ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|Bir dizi özelliğine, etikete sahip ve sonuç belgelerini _ts zaman damgası sistemi özelliğine göre sıralayan belgeler ve ardından projeler + Etiketler dizisini düzleştirir.|
+|DEĞER etiketini Seç<br>Docs 'TAN<br>Docs 'TA etiketi BIrLEŞTIr. Lerimi<br>SıRALAMA ölçütü docs._ts|__. zinciri ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;belgeyi döndür. Array. IsArray (doc && etiketleri. Etiketler);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dönüş doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. pluck ("Etiketler")<br>&nbsp;&nbsp;&nbsp;&nbsp;. Düzleştir ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|Bir dizi özelliğine, etikete sahip ve sonuç belgelerini _ts zaman damgası sistemi özelliğine göre sıralayan belgeler ve ardından projeler + Etiketler dizisini düzleştirir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

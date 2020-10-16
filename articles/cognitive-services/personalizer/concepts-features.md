@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132781"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
@@ -54,7 +54,7 @@ Kişiselleştirici, ad alanları halinde düzenlenmiş özellikleri alır. Uygul
 Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda verilmiştir:
 
 * User_Profile_from_CRM
-* Zaman
+* Süre
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -131,7 +131,7 @@ Aşağıdaki bölümler, Kişiselleştiriciye gönderilen özellikleri iyileşti
 
 Örneğin, ikincisine doğru bir zaman damgası çok seyrek bir özelliktir. Süreleri "sabah", "Orta gün", "öğleden sonra" vb. sınıflandırarak daha yoğun (etkili) hale getirilebilir.
 
-Ayrıca, konum bilgileri genellikle daha geniş sınıflandırmalar oluşturmaktan faydalanır. Örneğin, Lat: 47,67402 ° N, Long: 122,12154 ° W gibi bir enlem boylam koordinatı çok kesindir ve modeli ayrı boyutlar olarak Enlem ve Boylam öğrenmeye zorlar. Konum bilgilerini temel alarak kişiselleştirmeye çalıştığınızda, konum bilgilerinin daha büyük kesimlerde gruplandırılmaya yardımcı olur. Bunu yapmanın kolay bir yolu, Lat-Long numaraları için uygun bir Yuvarlama Duyarlığı seçmek ve enlem ve Boylam 'yi tek bir dize haline getirerek "bölgeler" halinde birleştirmenize olanak sağlar. Örneğin, 47,67402 ° N, uzun: 122,12154 ° W 'ı göstermek için iyi bir yol, "konum": "34.3, 12,1" olacaktır.
+Ayrıca, konum bilgileri genellikle daha geniş sınıflandırmalar oluşturmaktan faydalanır. Örneğin, Lat: 47,67402 ° N, Long: 122,12154 ° W gibi bir Latitude-Longitude koordinatı çok kesindir ve modeli ayrı boyutlar olarak Enlem ve Boylam öğrenmeye zorlar. Konum bilgilerini temel alarak kişiselleştirmeye çalıştığınızda, konum bilgilerinin daha büyük kesimlerde gruplandırılmaya yardımcı olur. Bunu yapmanın kolay bir yolu, Lat-Long numaraları için uygun bir Yuvarlama Duyarlığı seçmek ve enlem ve boylaları tek bir dize haline getirerek "bölgeler" halinde birleştirmenize olanak sağlar. Örneğin, 47,67402 ° N, uzun: 122,12154 ° W 'ı göstermek için iyi bir yol, "konum": "34.3, 12,1" olacaktır.
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Extrapotildi Information ile özellik kümelerini Genişlet

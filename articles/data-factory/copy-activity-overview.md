@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440601"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995336"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -135,12 +135,12 @@ Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kaps
 | typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Yes |
 | kaynak | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
 | Ev | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
-| çevirmen | Kaynaktan havuza açık sütun eşlemeleri belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | No |
-| Veri tümleştirme birimleri | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance-features.md#data-integration-units). | No |
-| Paralellkopyalar | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance-features.md#parallel-copy). | No |
-| koruyup | Veri kopyalama sırasında meta verilerin/ACL 'Lerin korunup korunmayacağını belirtin. <br/>Daha fazla bilgi için bkz. [meta verileri koruma](copy-activity-preserve-metadata.md). |No |
-| Enablehazırlama<br/>stagingSettings | Verileri kaynaktan havuza doğrudan kopyalamak yerine, blob depolamada geçici verilerin gösterilip gösterilmeyeceğini belirtin.<br/>Faydalı senaryolar ve yapılandırma ayrıntıları hakkında daha fazla bilgi için bkz. [aşamalı kopya](copy-activity-performance-features.md#staged-copy). | No |
-| Enableskipıncompatiblerow<br/>Redirectıncompatiblerowsettings| Kaynaktan havuza veri kopyaladığınızda uyumsuz satırları nasıl işleyeceğinizi seçin.<br/>Daha fazla bilgi için bkz. [hata toleransı](copy-activity-fault-tolerance.md). | No |
+| çevirmen | Kaynaktan havuza açık sütun eşlemeleri belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | Hayır |
+| Veri tümleştirme birimleri | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance-features.md#data-integration-units). | Hayır |
+| Paralellkopyalar | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance-features.md#parallel-copy). | Hayır |
+| koruyup | Veri kopyalama sırasında meta verilerin/ACL 'Lerin korunup korunmayacağını belirtin. <br/>Daha fazla bilgi için bkz. [meta verileri koruma](copy-activity-preserve-metadata.md). |Hayır |
+| Enablehazırlama<br/>stagingSettings | Verileri kaynaktan havuza doğrudan kopyalamak yerine, blob depolamada geçici verilerin gösterilip gösterilmeyeceğini belirtin.<br/>Faydalı senaryolar ve yapılandırma ayrıntıları hakkında daha fazla bilgi için bkz. [aşamalı kopya](copy-activity-performance-features.md#staged-copy). | Hayır |
+| Enableskipıncompatiblerow<br/>Redirectıncompatiblerowsettings| Kaynaktan havuza veri kopyaladığınızda uyumsuz satırları nasıl işleyeceğinizi seçin.<br/>Daha fazla bilgi için bkz. [hata toleransı](copy-activity-fault-tolerance.md). | Hayır |
 
 ## <a name="monitoring"></a>İzleme
 
@@ -183,13 +183,14 @@ Kopyalama etkinliğinin kaynak verilerinizi havuzunuzu nasıl eşlediğini öğr
 
 ## <a name="add-additional-columns-during-copy"></a>Kopyalama sırasında ek sütunlar ekleme
 
-Kaynak veri deposundan havuza veri kopyalamanın yanı sıra, havuza kopyalamak üzere ek veri sütunları da eklemek için yapılandırabilirsiniz. Örneğin:
+Kaynak veri deposundan havuza veri kopyalamanın yanı sıra, havuza kopyalamak üzere ek veri sütunları da eklemek için yapılandırabilirsiniz. Örnek:
 
 - Dosya tabanlı kaynaktan kopyalama yapıldığında, verilerin hangi dosyadan geldiğini izlemek için göreli dosya yolunu ek bir sütun olarak depolayın.
+- Belirtilen kaynak sütununu başka bir sütun olarak çoğaltın. 
 - İşlem hattı adı/işlem hattı KIMLIĞI gibi ADF sistem değişkenlerini eklemek için ADF ifadesi içeren bir sütun ekleyin veya yukarı akış etkinliğinin çıktısından diğer dinamik değeri saklayın.
 - Aşağı akış tüketimi gereksinimini karşılamak için statik değeri olan bir sütun ekleyin.
 
-Kopyalama etkinliği kaynağı sekmesine aşağıdaki yapılandırmayı bulabilirsiniz: 
+Kopyalama etkinliği kaynağı sekmesine aşağıdaki yapılandırmayı bulabilirsiniz. Ayrıca, bu ek sütunları, tanımlı sütun adlarınızı kullanarak her zamanki gibi kopyalama etkinlik [şeması eşlemesinde](copy-activity-schema-and-type-mapping.md#schema-mapping) da eşleyebilirsiniz. 
 
 ![Kopyalama etkinliğine ek sütunlar ekleme](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
 
@@ -200,7 +201,7 @@ Program aracılığıyla yapılandırmak için `additionalColumns` kopyalama etk
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>Dizideki her nesne `additionalColumns` bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve `value` Bu sütunun veri değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`** -ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **İfadesini**<br>- **Statik değer** | No |
+| additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>Dizideki her nesne `additionalColumns` bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve `value` Bu sütunun veri değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`** -ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **`$$COLUMN:<source_column_name>`** -ayrılmış bir değişken stili, belirtilen kaynak sütununun başka bir sütun olarak yinelendiğini belirtir<br>- **İfadesini**<br>- **Statik değer** | Hayır |
 
 **Örnek:**
 
@@ -218,6 +219,10 @@ Program aracılığıyla yapılandırmak için `additionalColumns` kopyalama etk
                     {
                         "name": "filePath",
                         "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "newColName",
+                        "value": "$$COLUMN:SourceColumnA"
                     },
                     {
                         "name": "pipelineName",

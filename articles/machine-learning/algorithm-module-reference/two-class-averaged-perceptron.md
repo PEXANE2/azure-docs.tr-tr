@@ -1,7 +1,7 @@
 ---
-title: 'İki sınıflı ortalama Perceptron: modül başvurusu'
+title: 'Two-Class ortalama Perceptron: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Ortalama Perceptron algoritmaya dayalı bir makine öğrenimi modeli oluşturmak için Azure Machine Learning ' de Iki sınıftaki ortalama Perceptron modülünü nasıl kullanacağınızı öğrenin.
+description: Ortalama Perceptron algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için Azure Machine Learning Two-Class ortalama Perceptron modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907744"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>İki sınıflı ortalama Perceptron modülü
+# <a name="two-class-averaged-perceptron-module"></a>Two-Class ortalama Perceptron modülü
 
 Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
@@ -30,7 +30,7 @@ Bu sınıflandırma algoritması denetimli bir öğrenme yöntemidir ve etiket s
 
 Daha basit Perceptron modelleri öğrenerek doğrusal desenleri öğrenirken, sinir Networks (özellikle derin sinir ağlar) daha karmaşık sınıf sınırlarını modelleyebilir. Ancak, perceptrons daha hızlıdır ve servis taleplerini hizmet olarak işledikleri için, perceptrons sürekli eğitim ile kullanılabilir.
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>Iki sınıflı ortalama Perceptron yapılandırma
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>Two-Class ortalama Perceptron yapılandırma
 
 1.  Ardışık düzene **Iki sınıftaki ortalama Perceptron** modülünü ekleyin.  
 

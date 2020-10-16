@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319886"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect eşitleme Service Manager bağlayıcı kullanma
@@ -67,7 +67,7 @@ Bağlayıcı alanını ara eylemi, nesneleri bulmak ve veri sorunlarını giderm
 
 Bir **kapsam**seçerek başlayın. Verilere (RDN, DN, tutturucu, alt ağaç) veya nesnenin durumuna (diğer tüm seçenekler) göre arama yapabilirsiniz.  
 !["Kapsam" açılan menüsünü gösteren ekran görüntüsü.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-Örneğin bir alt ağaç araması yaparsanız, bir OU 'daki tüm nesneleri alırsınız.  
+Örneğin Sub-Tree arama yaparsanız, tek bir OU 'daki tüm nesneleri alırsınız.  
 !["Alt ağaç" aramasına bir örnek gösteren ekran görüntüsü.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 Bu kılavuzdan bir nesne seçebilir, **Özellikler**' i seçebilir ve kaynak bağlayıcı alanından, meta veri deposu ve hedef bağlayıcı alanına göre [takip](tshoot-connect-object-not-syncing.md) edebilirsiniz.
 

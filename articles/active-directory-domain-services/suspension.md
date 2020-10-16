@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 'de askıya alınan etki alanları | Microsoft Docs
 description: Azure AD DS yönetilen bir etki alanına yönelik farklı sistem durumları ve askıya alınmış bir etki alanını geri yükleme hakkında bilgi edinin.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: joflore
+ms.openlocfilehash: 9bcecdfaf3121ea024fee567dbe83544229373be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223406"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967707"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services içindeki sistem durumlarını anlayın ve askıya alınmış etki alanlarını çözün
 
@@ -32,7 +32,7 @@ Yönetilen bir etki alanının yaşam döngüsü boyunca, sistem durumunu göste
 
 Yönetilen bir etki alanı aşağıdaki durumlardan birinde olabilir:
 
-* [Çalışıyor](#running-state)
+* [Çalışma](#running-state)
 * [İlgilenilmesi gerekiyor](#needs-attention-state)
 * [Askıya alındı](#suspended-state)
 * [Silindi](#deleted-state)
@@ -41,7 +41,7 @@ Yönetilen bir etki alanı aşağıdaki durumlardan birinde olabilir:
 
 Doğru şekilde yapılandırılmış ve sorunsuz şekilde yapılandırılan bir yönetilen etki alanı *çalışır* durumda. Bu, yönetilen bir etki alanı için istenen durumdur.
 
-### <a name="what-to-expect"></a>Bekleneceğiniz
+### <a name="what-to-expect"></a>Beklentiler
 
 * Azure platformu, yönetilen etki alanının durumunu düzenli olarak izleyebilir.
 * Yönetilen etki alanı için etki alanı denetleyicileri düzeltme eki uygulanmış ve düzenli olarak güncelleştirilir.
@@ -58,7 +58,7 @@ Bir uyarı örneği, kısıtlayıcı ağ güvenlik grubu olduğunda oluşur. Bu 
 
 Daha fazla bilgi için bkz. [yönetilen etki alanı için uyarılarla ilgili sorun giderme][resolve-alerts].
 
-### <a name="what-to-expect"></a>Bekleneceğiniz
+### <a name="what-to-expect"></a>Beklentiler
 
 Yönetilen bir etki alanı, *dikkat edilmesi* durumunda olduğunda, Azure platformu verileri düzenli olarak izleyemeyebilir, düzeltme eki, güncelleştiremeyebilir veya yedeklemeyebilir. Bazı durumlarda, geçersiz bir ağ yapılandırması gibi, yönetilen etki alanı için etki alanı denetleyicilerine ulaşılamayabilir.
 
@@ -79,7 +79,7 @@ Yönetilen bir etki alanı aşağıdaki nedenlerden biri için **askıya alınma
 
 Yönetilen etki alanları, Azure platformu etki alanını yönetmediği, izleyemediğinde veya yedeklemediğinde askıya alınır. Yönetilen bir etki alanı, 15 gün boyunca *askıya alınmış* durumda kalır. Yönetilen etki alanına erişimi sürdürmek için, kritik uyarıları hemen çözümleyin.
 
-### <a name="what-to-expect"></a>Bekleneceğiniz
+### <a name="what-to-expect"></a>Beklentiler
 
 Yönetilen bir etki alanı *askıda* durumda olduğunda aşağıdaki davranışa bir deneyim verilir:
 
@@ -110,7 +110,7 @@ Yönetilen etki alanı *askıda* durumdayken uyarıları çözümledikten sonra,
 
 Yönetilen bir etki alanı 15 gün boyunca *askıya alınma* durumunda kalırsa, silinir. Bu işlem kurtarılamaz.
 
-### <a name="what-to-expect"></a>Bekleneceğiniz
+### <a name="what-to-expect"></a>Beklentiler
 
 Yönetilen bir etki alanı *Silinmiş* duruma girdiğinde, aşağıdaki davranış görülür:
 

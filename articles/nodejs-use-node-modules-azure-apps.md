@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
 ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88077127"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Azure uygulamalarıyla Node.js Modüllerini kullanma
@@ -26,7 +26,7 @@ Bu belge, Azure 'da barındırılan uygulamalarla Node.js modülleri kullanma ha
 
 Dosyalar üzerinde **package.js** ve **npm-shrinkwrap.js** Node.js modüller kullanmayı zaten biliyorsanız, aşağıdaki bilgiler bu makalede ele alındıklarla ilgili hızlı bir Özet sağlar:
 
-* Azure App Service dosyalar **üzerindepackage.js** ve **npm-shrinkwrap.js** anlama ve bu dosyalardaki girişlere göre modüller yükleyebilir.
+* Azure App Service dosyalar ** üzerindepackage.js** ve **npm-shrinkwrap.js** anlama ve bu dosyalardaki girişlere göre modüller yükleyebilir.
 
 * Azure Cloud Services, dağıtım paketinin bir parçası olarak dahil edilecek tüm modüllerin geliştirme ortamında ve **düğüm \_ modülleri** dizininde yüklü olmasını bekler. Cloud Services dosyalar üzerinde **package.js** veya **npm-shrinkwrap.js** kullanarak modül yükleme desteğini etkinleştirmek mümkündür; Ancak, bu yapılandırma, bulut hizmeti projeleri tarafından kullanılan varsayılan betiklerin özelleştirilmesini gerektirir. Bu ortamın nasıl yapılandırılacağı hakkında bir örnek için, [düğüm modüllerini dağıtmaktan kaçınmak üzere NPM yüklemesini çalıştırmak Için Azure başlangıç görevi](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) ' ne bakın
 
@@ -64,7 +64,7 @@ Dosyadaki **package.js** olası bir sorun yalnızca en üst düzey bağımlılı
 > [!NOTE]
 > Azure App Service ' ye dağıtım yaparken, dosya <b>package.js</b> yerel bir modüle başvuruyorsa, git kullanarak uygulamayı yayımlarken aşağıdaki örneğe benzer bir hata görebilirsiniz:
 >
-> NPM hatası! module-name@0.6.0Install: ' node-cayp configure Build '
+> NPM hatası! module-name@0.6.0 Install: ' node-cayp configure Build '
 >
 > NPM hatası! ' cmd "/c" "node-cayp configure derlemesi" ', 1 ile başarısız oldu
 >
@@ -78,14 +78,14 @@ Uygulamanız üretime hazırsanız, sürüm gereksinimlerini kilitleyebilir ve *
 > [!NOTE]
 > Azure App Service ' ye dağıtım yaparken, dosya <b>npm-shrinkwrap.js</b> yerel bir modüle başvuruyorsa, git kullanarak uygulamayı yayımlarken aşağıdaki örneğe benzer bir hata görebilirsiniz:
 >
-> NPM hatası! module-name@0.6.0Install: ' node-cayp configure Build '
+> NPM hatası! module-name@0.6.0 Install: ' node-cayp configure Build '
 >
 > NPM hatası! ' cmd "/c" "node-cayp configure derlemesi" ', 1 ile başarısız oldu
 >
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure ile Node.js modüllerinin nasıl kullanılacağını anladığınıza göre, [Node.js sürümünü](https://github.com/squillace/nodejs-microservice)nasıl kullanacağınızı, [Node.js web uygulaması derleyip Dağıteceğinizi](app-service/quickstart-nodejs.md)ve [Mac ve Linux için Azure komut satırı arabiriminin nasıl kullanılacağını](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)öğrenirsiniz.
+Azure ile Node.js modüllerinin nasıl kullanılacağını anladığınıza göre, [Node.js sürümünü](https://github.com/squillace/nodejs-microservice)nasıl kullanacağınızı, [Node.js web uygulaması derleyip Dağıteceğinizi](app-service/quickstart-nodejs.md)ve [Mac ve Linux için Azure Command-Line arabirimini nasıl kullanacağınızı](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)öğrenin.
 
 Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi](/azure/developer/javascript/).
 

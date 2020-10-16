@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: f0d1e57c7e212fefc6e17a8170e3b4537b190f60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8756db881448edcaac1fda44b60229975350676
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211651"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074745"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD işlem hattıyla tümleştirme
 
@@ -33,11 +33,11 @@ Aşağıdaki örnek, uygulama yapılandırma verilerinin hızlı başlangıçlar
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-Yerel olarak oluşturursanız, henüz yapmadıysanız [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi indirip yükleyin.
+Yerel olarak oluşturursanız, henüz yapmadıysanız [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi indirip yükleyin.
 
-Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'nın derleme sisteminizde yüklü olduğundan emin olun.
+Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'nın derleme sisteminizde yüklü olduğundan emin olun.
 
 ### <a name="export-an-app-configuration-store"></a>Uygulama yapılandırma deposunu dışa aktarma
 
@@ -107,4 +107,4 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](https://docs.micr
 Bu öğreticide, bir dağıtım ardışık düzeninde kullanılacak Azure uygulama yapılandırma verilerini aktarmış olursunuz. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi için Azure CLı örneklerine devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)

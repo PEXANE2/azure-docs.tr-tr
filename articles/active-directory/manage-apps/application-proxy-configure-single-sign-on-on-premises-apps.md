@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387277"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Uygulama proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma
@@ -72,7 +72,7 @@ Aşağıdaki protokol diyagramlarında, hem hizmet sağlayıcısı tarafından b
 
 1. Uygulama Azure portal hala açıkken **Çoklu oturum açma**' yı seçin. 
 
-2. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulama ara sunucusu 'nda yapılandırdığınız **dış URL** 'nin **tanımlayıcı**, **yanıt URL 'SI**ve **oturum kapatma URL 'si** alanlarında doldurulduğundan emin olun. Uygulama proxy 'Sinin doğru çalışması için bu URL 'Ler gereklidir. 
+2. **SAML Ile tek Sign-On ayarla** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulama ara sunucusu 'nda yapılandırdığınız **dış URL** 'nin **tanımlayıcı**, **yanıt URL 'SI**ve **oturum kapatma URL 'si** alanlarında doldurulduğundan emin olun. Uygulama proxy 'Sinin doğru çalışması için bu URL 'Ler gereklidir. 
 
 3. Daha önce yapılandırılan **yanıt URL** 'sini, etki alanının uygulama proxy 'si aracılığıyla İnternet üzerinde erişilebilir olacak şekilde düzenleyin. Örneğin, **dış URL** 'niz `https://contosotravel-f128.msappproxy.net` ve özgün **yanıt URL 'si** Ise `https://contosotravel.com/acs` , için özgün **yanıt URL** 'sini güncelleştirmeniz gerekir `https://contosotravel-f128.msappproxy.net/acs` .
 

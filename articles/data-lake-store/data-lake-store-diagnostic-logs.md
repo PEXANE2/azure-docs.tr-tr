@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575546"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için tanılama günlüklerine erişme
@@ -24,7 +24,7 @@ Azure Data Lake Storage 1. hesabınız için tanılama günlüğünü etkinleşt
 
 Kuruluşlar, verilere erişen kullanıcıların listesi, verilere ne sıklıkta erişildiğine, hesapta ne kadar veri depolandığını vb. gibi bilgiler sağlayan veri erişim denetimi izlerini toplamak üzere Azure Data Lake Storage 1. hesabı için tanılama günlüğünü etkinleştirebilir. Etkinleştirildiğinde, tanılama ve/veya istekler en iyi çaba temelinde günlüğe kaydedilir. Hem Istekler hem de tanılama günlüğü girdileri yalnızca hizmet uç noktasına karşı yapılan istekler varsa oluşturulur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin.
 
@@ -117,7 +117,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| time |Dize |Günlüğün zaman damgası (UTC) |
+| saat |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın KIMLIĞI |
 | category |Dize |Günlük kategorisi. Örneğin, **istekler**. |
 | operationName |Dize |Günlüğe kaydedilen işlemin adı. Örneğin, getfilestatus. |
@@ -166,7 +166,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| time |Dize |Günlüğün zaman damgası (UTC) |
+| saat |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın KIMLIĞI |
 | category |Dize |Günlük kategorisi. Örneğin, **Denetim**. |
 | operationName |Dize |Günlüğe kaydedilen işlemin adı. Örneğin, getfilestatus. |

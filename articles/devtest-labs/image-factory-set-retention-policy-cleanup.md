@@ -4,16 +4,16 @@ description: Bir bekletme ilkesi yapılandırmayı, fabrikası temizlemeyi ve es
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 115fdff215399a9a51171161191ecf5009e8e20e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476062"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Azure DevTest Labs 'de bekletme ilkesi ayarlama
 Bu makalede bir bekletme ilkesi ayarlama, fabrikasını Temizleme ve eski görüntüleri kuruluştaki tüm diğer DevTest Labs 'den devre dışı bırakma konuları ele alınmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Devam etmeden önce bu makaleleri izlediğinizden emin olun:
 
 - [Görüntü fabrikası oluşturma](image-factory-create.md)
@@ -47,7 +47,7 @@ Bu görev, eski görüntüleri kaldırır ve yalnızca **Imageretention** derlem
 
 ![Eski görüntüleri devre dışı bırakma PowerShell görevi](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-Betik parametreleri şunlardır:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
+Betik parametreleri şunlardır: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
 ## <a name="queue-the-build"></a>Derlemeyi kuyruğa al
 Artık derleme tanımını tamamladığınıza göre, her şeyin çalıştığından emin olmak için yeni bir derleme kuyruğa alın. Derleme başarıyla tamamlandıktan sonra yeni özel görüntüler hedef laboratuvarda görünür ve görüntü fabrikası laboratuvarını denetledikten, sağlanan VM yok görürsünüz. Ayrıca, daha fazla derleme sıranız varsa, derleme değişkenlerinde ayarlanan saklama değerine uygun olarak, DevTest Labs 'den eski özel görüntüleri devre dışı bırakarak temizleme görevlerini görürsünüz.

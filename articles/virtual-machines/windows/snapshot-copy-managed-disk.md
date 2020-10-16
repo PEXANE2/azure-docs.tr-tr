@@ -10,10 +10,10 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322322"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Portal veya PowerShell kullanarak anlık görüntü oluşturma
@@ -22,7 +22,7 @@ Anlık görüntü, bir sanal sabit sürücünün (VHD) tam, salt okunurdur bir k
 
 Yeni bir VM oluşturmak için anlık görüntüyü kullanacaksanız, devam eden işlemlerin tümünü temizlemek için anlık görüntüyü almadan önce VM 'yi düzgün bir şekilde kapatmanız önerilir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma 
 
 Anlık görüntü oluşturmak için aşağıdaki adımları izleyin: 
 1.  [Azure Portal](https://portal.azure.com) **kaynak oluştur**' u seçin.

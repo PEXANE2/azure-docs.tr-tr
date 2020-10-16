@@ -8,10 +8,10 @@ ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 581e30508b508d5a36f2d5695043ac7bd782a2d5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394389"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid için Azure Güvenlik temeli
@@ -70,7 +70,7 @@ denetlenmesini.
 
 Yalnızca seçili sanal ağlardan erişimi kısıtlamak için özel uç noktaları yapılandırabilirsiniz.
 
-Bu sanal ağlarda, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı koruma sağlamak için DDoS koruma standardı 'nı etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın. Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
+Bu sanal ağlarda, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı koruma sağlamak için DDoS koruma standardı 'nı etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın. Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
 - [Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma](configure-private-endpoints.md)
 

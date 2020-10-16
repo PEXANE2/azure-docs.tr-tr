@@ -1,22 +1,22 @@
 ---
-title: Web hizmetlerini Google Maps 'tan geçirme | Microsoft Azure haritaları
-description: Google Maps 'tan Microsoft Azure Maps 'a Web Hizmetleri geçirme
+title: Öğretici-Google Maps 'tan Web hizmetlerini geçirme | Microsoft Azure haritaları
+description: Google Maps 'tan Microsoft Azure Maps 'a Web Hizmetleri geçirme öğreticisi
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319580"
+ms.locfileid: "91874467"
 ---
-# <a name="migrate-web-service-from-google-maps"></a>Web hizmetini Google Maps 'tan geçirme
+# <a name="tutorial---migrate-web-service-from-google-maps"></a>Öğretici-Google Maps 'tan Web hizmeti geçirme
 
 Hem Azure hem de Google Maps, REST Web Hizmetleri aracılığıyla uzamsal API 'lere erişim sağlar. Bu platformların API arabirimleri benzer işlevleri gerçekleştirir. Ancak, bunların her biri farklı adlandırma kuralları ve yanıt nesneleri kullanır.
 
@@ -24,7 +24,7 @@ Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure
 
 | Google Maps hizmeti API 'SI | Azure haritalar hizmeti API 'SI                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Yönergeler              | [Yol](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Yönergeler              | [Yolu](https://docs.microsoft.com/rest/api/maps/route)                                     |
 | Uzaklık matrisi         | [Yol matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
 | Coğrafi Kodlama               | [Ara](https://docs.microsoft.com/rest/api/maps/search)                                   |
 | Konum arama           | [Ara](https://docs.microsoft.com/rest/api/maps/search)                                   |
@@ -94,7 +94,7 @@ Bu tablo, Google Maps API parametrelerine Azure haritalar 'daki karşılaştır�
 | `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `latlng`                    | `query`  |
-| `location_type`             | *Yok*     |
+| `location_type`             | *yok*     |
 | `result_type`               | `entityType`    |
 
 [Arama için en iyi uygulamaları](how-to-use-best-practices-for-search.md)gözden geçirin.
@@ -138,9 +138,9 @@ Tabloda, Google Maps API parametrelerine benzer Azure Maps API parametreleri ile
 
 | Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi |
 |---------------------------|-------------------------------------|
-| `fields`                  | *Yok*                               |
+| `fields`                  | *yok*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *Yok*                               |
+| `inputtype`               | *yok*                               |
 | `key`                     | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `language`                | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `locationbias`            | `lat``lon`ve`radius`<br/>`topLeft` ve `btmRight`<br/>`countrySet`  |
@@ -157,13 +157,13 @@ Tablo, Google Maps API parametrelerini karşılaştırılabilir Azure Maps API p
 | `keyword`                   | `categorySet` ve `brandSet`        |
 | `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `location`                  | `lat` ve `lon`                     |
-| `maxprice`                  | *Yok*                               |
-| `minprice`                  | *Yok*                               |
+| `maxprice`                  | *yok*                               |
+| `minprice`                  | *yok*                               |
 | `name`                      | `categorySet` ve `brandSet`        |
-| `opennow`                   | *Yok*                               |
+| `opennow`                   | *yok*                               |
 | `pagetoken`                 | `ofs` ve `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *Yok*                               |
+| `rankby`                    | *yok*                               |
 | `type`                      | `categorySet –` Bkz. [desteklenen arama kategorileri](supported-search-categories.md) belgeleri.   |
 
 ## <a name="calculate-routes-and-directions"></a>Rotaları ve yönleri hesapla
@@ -243,10 +243,10 @@ Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar '
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *Yok* – bu, coğrafi kodlama ile ilgili bir özelliktir. `countrySet`Azure Maps coğrafi kodlama API 'sini kullanırken parametresini kullanın.  |
-| `scale`                     | *Yok*                              |
+| `scale`                     | *yok*                              |
 | `size`                      | `width` ve `height` – boyutu 8192x8192 olabilir. |
-| `style`                     | *Yok*                              |
-| `visible`                   | *Yok*                              |
+| `style`                     | *yok*                              |
+| `visible`                   | *yok*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]

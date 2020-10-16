@@ -14,17 +14,17 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764511"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory Uygulama Ara Sunucusu ve Tableau 
 
 Azure Active Directory uygulama ara sunucusu ve Tableau, uygulama ara sunucusunu, Tableau dağıtımınız için uzaktan erişim sağlamak üzere kolayca kullanabildiğinizden emin olmak için kurdu 'e sahiptir. Bu makalede, bu senaryonun nasıl yapılandırılacağı açıklanmaktadır.  
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu makaledeki senaryo şunları olduğunu varsayar:
 
@@ -42,7 +42,7 @@ Uygulama proxy 'Si, Tableau 'in düzgün çalışması için gerekli olan OAuth 
 
 Tableau yayımlamak için, Azure portalında bir uygulama yayımlamanız gerekir.
 
-Bekleniyor
+Şunun için:
 
 - 1-8 adımlarına yönelik ayrıntılı yönergeler, bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md). 
 - Uygulama proxy 'Si alanları için Tableau değerlerinin nasıl bulunacağı hakkında bilgi için lütfen Tableau belgelerine bakın.  
@@ -70,7 +70,7 @@ Bekleniyor
 
 8. Test Kullanıcı atamasını kaydetmek için **ata** ' yı seçin. 
 
-9. Seçim Uygulama Yönetimi sayfasında, **Çoklu oturum açma**' yı seçin. Açılan menüden **Tümleşik Windows kimlik doğrulaması** ' nı seçin ve Tableau yapılandırmanıza göre gerekli alanları doldurun. **Kaydet**'i seçin. 
+9. Seçim Uygulama Yönetimi sayfasında, **Çoklu oturum açma**' yı seçin. Açılan menüden **Tümleşik Windows kimlik doğrulaması** ' nı seçin ve Tableau yapılandırmanıza göre gerekli alanları doldurun. **Kaydet**’i seçin. 
 
  
 

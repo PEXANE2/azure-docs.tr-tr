@@ -13,10 +13,10 @@ ms.date: 07/16/2020
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, tanımla
 ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91461521"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Yüz kapsayıcıları (Önizleme) yükleyip çalıştırma
@@ -28,7 +28,7 @@ Azure bilişsel Hizmetler Yüz Tanıma API'si, görüntülerdeki insan yüzlerin
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yüz hizmeti kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir.
 
@@ -130,7 +130,7 @@ Kapsayıcıyı bir çıkış [bağlaması](./face-resource-container-config.md#m
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Yüz hizmet kapsayıcıları, Azure hesabınızdaki bir yüz kaynağı kullanarak faturalama bilgilerini Azure 'a gönderir. 
 

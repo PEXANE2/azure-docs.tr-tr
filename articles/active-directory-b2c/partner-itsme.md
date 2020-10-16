@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87489524"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Itsme OpenID Connect 'i (OıDC) Azure Active Directory B2C ile yapılandırma
@@ -82,7 +82,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    |Özellik | Değer |
    |------------ |------- |
-   | Ad | itsme |
+   | Adı | itsme |
    | Meta veri URL 'SI | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>nerede `<environment>` `e2e` (test ortamı) ya da `prd` (üretim)  |
    | ClientID     | **ISTEMCI kimliğiniz**( **iş ortağı kodu** olarak da bilinir)  |
    | İstemci Gizli Anahtarı | **Client_secret** |
@@ -96,7 +96,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Soyadı | family_name |
    |E-posta | e-posta|
 
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ### <a name="configure-a-user-flow"></a>Kullanıcı akışı yapılandırma
 
@@ -131,7 +131,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    a. Sınama amacıyla **kimlik doğrulaması**' nı seçin ve **örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.  
 
-   b. **Kaydet**'i seçin.
+   b. **Kaydet**’i seçin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 

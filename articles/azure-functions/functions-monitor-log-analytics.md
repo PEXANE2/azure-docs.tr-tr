@@ -7,10 +7,10 @@ ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208359"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Izleme günlükleri ile Azure Işlevlerini izleme
@@ -38,7 +38,7 @@ Azure Izleyici, Azure Veri Gezgini tarafından kullanılan ve basit günlük sor
 
 1. Bir **Tanılama ayarları adı**girin ve ardından **Kaydet**' i seçin.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Tanılama ayarı ekleme":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Tanılama ayarlarını seçin":::
 
 ## <a name="user-generated-logs"></a>Kullanıcı tarafından oluşturulan Günlükler
 
@@ -89,7 +89,7 @@ Oluşturulan günlükleri sorgulamak için:
 
    Azure Işlevleri, tüm günlükleri **Logmanagement**altındaki **functionapplogs** tablosuna yazar. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics çalışma alanındaki sorgu penceresi":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Tanılama ayarlarını seçin":::
 
 Bazı örnek sorgular aşağıda verilmiştir:
 
@@ -111,7 +111,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 ```
 

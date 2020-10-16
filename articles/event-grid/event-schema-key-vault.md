@@ -4,10 +4,10 @@ description: Azure Event Grid Azure Key Vault olaylar için belirtilen özellikl
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324085"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Event Grid kaynak olarak Azure Key Vault
@@ -20,7 +20,7 @@ Bu makalede, [Azure Key Vault](../key-vault/index.yml)olaylar için özellikler 
 
 Bir Azure Key Vault hesabı aşağıdaki olay türlerini üretir:
 
-| Olay tam adı | Olay görünen adı | Description |
+| Olay tam adı | Olay görünen adı | Açıklama |
 | ---------- | ----------- |---|
 | Microsoft. Keykasası. Certificatenewversionoluşturuldu | Sertifika yeni sürümü oluşturuldu | Yeni bir sertifika veya yeni sertifika sürümü oluşturulduğunda tetiklenir. |
 | Microsoft. Keykasası. Certificatenearsüre sonu | Süresi dolmak üzere olan sertifika | Sertifikanın güncel sürümü sona ermek üzereyken tetiklenir. (Olay, sona erme tarihinden itibaren 30 gün önce tetiklenir.) |
@@ -64,15 +64,15 @@ Aşağıdaki örnek, **Microsoft. Keykasası. Secretnewversiontarafından oluşt
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | ---------- | ----------- |---|
 | kimlik | string | Bu olayı tetikleyen nesnenin KIMLIĞI |
 | vaultName | string | Bu olayı tetikleyen nesnenin Anahtar Kasası adı |
 | Nesne | string | Bu olayı tetikleyen nesnenin türü |
 | objectName | string | Bu olayı tetikleyen nesnenin adı |
 | sürüm | string | Bu olayı tetikleyen nesnenin sürümü |
-| NBF | sayı | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana saniye cinsinden olmayan Tarih |
-| exp | sayı | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana geçen sona erme tarihi |
+| NBF | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana saniye cinsinden olmayan Tarih |
+| exp | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana geçen sona erme tarihi |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 |Başlık  |Açıklama  |

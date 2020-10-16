@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078202"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps için çalışma durumunu izleme, tetikleyici geçmişini gözden geçirme ve uyarı ayarlama
@@ -50,9 +50,9 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
    |--------|-------------|
    | **Yürütüldükten** | İş akışı çalışıyor ancak iptal isteği alındı |
    | **Başarısız** | En az bir eylem başarısız oldu ve hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı |
-   | **Çalışıyor** | İş akışı şu anda çalışıyor. <p>Bu durum, kısıtlanmış iş akışları için veya geçerli fiyatlandırma planı nedeniyle da görünebilir. Daha fazla bilgi için [fiyatlandırma sayfasındaki eylem sınırlarına](https://azure.microsoft.com/pricing/details/logic-apps/)bakın. [Tanılama günlüğü](../logic-apps/monitor-logic-apps.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi alabilirsiniz. |
+   | **Çalışma** | İş akışı şu anda çalışıyor. <p>Bu durum, kısıtlanmış iş akışları için veya geçerli fiyatlandırma planı nedeniyle da görünebilir. Daha fazla bilgi için [fiyatlandırma sayfasındaki eylem sınırlarına](https://azure.microsoft.com/pricing/details/logic-apps/)bakın. [Tanılama günlüğü](../logic-apps/monitor-logic-apps.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi alabilirsiniz. |
    | **Başarılı** | Tüm eylemler başarılı oldu. <p>**Unutmayın**: belirli bir eylemde herhangi bir hata meydana gelirse, iş akışındaki sonraki bir eylem bu hatayı işledi. |
-   | **Bekliyor** | İş akışı başlatılmamış veya örneğin, hala çalışmakta olan önceki bir iş akışı nedeniyle duraklatıldı. |
+   | **Bekleme** | İş akışı başlatılmamış veya örneğin, hala çalışmakta olan önceki bir iş akışı nedeniyle duraklatıldı. |
    |||
 
 1. Belirli bir çalıştırmaya ilişkin adımları ve diğer bilgileri gözden geçirmek için, çalışma **geçmişi**altında, o çalıştırmayı seçin.

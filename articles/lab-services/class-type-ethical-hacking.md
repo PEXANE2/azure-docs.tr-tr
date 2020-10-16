@@ -4,10 +4,10 @@ description: Azure Lab Services kullanarak bir laboratuvarı nasıl ayarlayacağ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631690"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Ahlak hacme sınıfı öğretmek için laboratuvar ayarlama 
@@ -114,7 +114,7 @@ Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yap
 Şablon artık güncellenir ve bu durumda, sızan korsanlık bir test sınıfı için gereken görüntüler, sızma testi yapmak için araçlar içeren bir görüntü ve keşfedilecek güvenlik açıklarına sahip başka bir görüntü vardır. Şablon görüntüsü artık sınıfa yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.
   
 
-## <a name="cost"></a>Cost  
+## <a name="cost"></a>Maliyet  
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz: 
  
 20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrenciye sahip bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 

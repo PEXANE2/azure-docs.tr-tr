@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 336f23f83c33bcee1887d0e41710e686b794a663
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87272020"
 ---
 # <a name="retrieve-offer-status"></a>Teklif durumunu alma
@@ -27,7 +27,7 @@ Teklifin geçerli durumunu alır.
 
 |  **Ad**       |   **Açıklama**                            |  **Veri türü** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  PublisherId    | Yayımcı tanımlayıcı, örneğin`Contoso`  |     Dize     |
+|  PublisherId    | Yayımcı tanımlayıcı, örneğin `Contoso`  |     Dize     |
 |  OfferId        | Teklifi benzersiz bir şekilde tanımlayan GUID      |     Dize     |
 |  api-sürümü    | En son API sürümü                        |     Tarih       |
 |  |  |
@@ -35,7 +35,7 @@ Teklifin geçerli durumunu alır.
 ## <a name="header"></a>Üst bilgi
 
 
-|  Ad           |  Değer               |
+|  Name           |  Değer               |
 |  -------------  | -------------------  |
 |  İçerik Türü   |  `application/json`  |
 |  Yetkilendirme  | `Bearer YOUR_TOKEN`  |
@@ -139,9 +139,9 @@ Teklifin geçerli durumunu alır.
 
 | **Kod** |   **Açıklama**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
-|  200     |  `OK`-İstek başarıyla işlendi ve teklifin geçerli durumu döndürüldü. |
-|  400     | `Bad/Malformed request`-Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                 |
-|  404     | `Not found`-Belirtilen varlık yok.                                                |
+|  200     |  `OK` -İstek başarıyla işlendi ve teklifin geçerli durumu döndürüldü. |
+|  400     | `Bad/Malformed request` -Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                 |
+|  404     | `Not found` -Belirtilen varlık yok.                                                |
 |  |  |
 
 ### <a name="offer-status"></a>Teklif durumu
@@ -151,7 +151,7 @@ Teklifin geçerli durumunu alır.
 |  Neveryayınlandı              | Teklif hiç yayımlanmadı.                          |
 |  NotStarted                  | Teklif yenidir ve başlatılmamaktadır.                            |
 |  WaitingForPublisherReview   | Teklif, yayımcı onayını bekliyor.                 |
-|  Çalışıyor                     | Teklif gönderimi işleniyor.                     |
+|  Çalışma                     | Teklif gönderimi işleniyor.                     |
 |  Başarılı                   | Teklif gönderimi işlemeyi tamamladı.               |
 |  İptal edildi                    | Teklif Gönderimi iptal edildi.                           |
 |  Başarısız                      | Teklif gönderimi başarısız oldu.                                 |

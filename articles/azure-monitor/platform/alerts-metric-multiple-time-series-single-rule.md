@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/04/2020
 ms.subservice: alerts
 ms.openlocfilehash: 81e09e6d9c6a57339f1d6f1eb5ce4f494555fa19
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704489"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Tek bir ölçüm uyarı kuralında birden çok zaman serisini izleme
@@ -21,7 +21,7 @@ Tek bir ölçüm uyarısı kuralı, bir veya daha fazla ölçüm zaman serisini 
 
 Ölçüm zaman serisi, bir süre içinde yakalanan bir dizi ölçümdür (veya "ölçüm değerleri"). 
 
-Örnek:
+Örneğin:
 
 - Bir sanal makinenin CPU kullanımı
 - Bir depolama hesabına gelen baytlar (giriş)
@@ -87,7 +87,7 @@ Bu özellik için desteklenen çoklu kaynak uyarı kuralları ve kaynak türleri
 
 Tek bir ölçüm uyarı kuralı, uyarı kuralı başına en fazla beş koşul da izleyebilir. 
 
-Örnek:
+Örneğin:
 
 - Hedef kaynak: *myVM1*
 - Condition1

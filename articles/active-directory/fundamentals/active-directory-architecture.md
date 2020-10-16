@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319160"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Azure Active Directory mimarisi nedir?
@@ -79,7 +79,7 @@ Okuma işlemleri (yazma işlemlerinden onlarca kat fazladır) yalnızca ikincil 
 
 Bir yazma işlemi, onaylanmadan önce en az iki veri merkezine işlenir. Bu, öncelikle birincili yazmayı kaydederek ve daha sonra yazmayı en az bir diğer veri merkezine çoğaltarak oluşur. Bu yazma eylemi, birincili barındıran veri merkezinin potansiyel bir şekilde kaybının veri kaybına neden olmamasını sağlar.
 
-Azure AD, yük devretme sırasında verilerin kaybedilmediği sıfır [Kurtarma süresi hedefini (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) korur. Buna aşağıdakiler dahildir:
+Azure AD, yük devretme sırasında verilerin kaybedilmediği sıfır [Kurtarma süresi hedefini (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) korur. Şunları içerir:
 
 * Belirteç verme ve dizin okuma
 * Dizin yazmaları için yalnızca 5 dakikalık bir RTO 'A izin verme

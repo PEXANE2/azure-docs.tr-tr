@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659565"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Sorgu hızlandırma SQL dil başvurusu
@@ -91,9 +91,9 @@ Aşağıdaki standart SQL işleçleri desteklenir:
 |[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Bir sayıyı başka bir sayıya böler (aritmetik bölme işleci).|
 |[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |İki ifadeyi çarpar (aritmetik çarpma işleci).|
 |[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Bir sayının başka bir sayıya bölünen kalanını döndürür.|
-|['](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |İki tamsayı değeri arasında bit düzeyinde mantıksal ve işlem gerçekleştirir.|
-|[VEYA](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL deyimlerindeki ikili ifadelere çevrilmiş olarak belirtilen iki tamsayı değeri arasında bit düzeyinde mantıksal veya işlem gerçekleştirir.|
-|[BAŞLATıLMADı](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Boole girişi geçersiz kılar.|
+|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |İki tamsayı değeri arasında bit düzeyinde mantıksal ve işlem gerçekleştirir.|
+|[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL deyimlerindeki ikili ifadelere çevrilmiş olarak belirtilen iki tamsayı değeri arasında bit düzeyinde mantıksal veya işlem gerçekleştirir.|
+|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Boole girişi geçersiz kılar.|
 |[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Bir veri türündeki bir ifadeyi bir diğerine dönüştürür.|
 |[ARALARıNDA](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Sınanacak aralığı belirtir.|
 |['NDAKI](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Belirtilen değerin alt sorgu veya listedeki herhangi bir değerle eşleşip eşleşmediğini belirler.|
@@ -121,9 +121,9 @@ Sorgu hızlandırma SQL dili, aşağıdaki standart SQL dize işlevlerini destek
 |[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |Büyük harfli karakter verilerini küçük harfe dönüştürdükten sonra bir karakter ifadesi döndürür.|
 |[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |Küçük harfli karakter verisi büyük harfe dönüştürülmüş bir karakter ifadesi döndürür.|
 |[DIZEDEN](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |SQL Server bir karakter, ikili, metin veya resim ifadesinin bir parçasını döndürür.|
-|[KıRPMA](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Bir dizenin başından ve sonundan sonra char karakter (32) veya diğer belirtilen karakterleri kaldırır.|
-|LIDERI    |Description|
-|ARKASıNDA    |Description|
+|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Bir dizenin başından ve sonundan sonra char karakter (32) veya diğer belirtilen karakterleri kaldırır.|
+|LIDERI    |Açıklama|
+|ARKASıNDA    |Açıklama|
 
 İşte birkaç örnek:
 
@@ -184,7 +184,7 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 
 Bu tablo, işlevinin çıkış biçimini belirtmek için kullanabileceğiniz dizeleri açıklar ``TO_STRING`` .
 
-|Biçim dizesi    |Çıkış                               |
+|Biçimlendirme dizesi    |Çıktı                               |
 |-----------------|-------------------------------------|
 |yy               |Yıl 2 basamak biçiminde – 1999 ' 99 ' olarak|
 |y                |4 basamaklı biçimde yıl               |

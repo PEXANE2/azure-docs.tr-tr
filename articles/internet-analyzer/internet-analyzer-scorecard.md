@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: f43d094193fb266d1ecec7089b44d8b3fd5e9b43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330222"
 ---
 # <a name="interpreting-your-scorecard"></a>Karnenizi yorumlama
@@ -21,7 +21,7 @@ Karne sekmesi, testlerinizin toplanan ve analiz edilen sonuçlarını içerir. H
 Karne sekmesi Internet çözümleyici kaynak menüsünde bulunabilir. 
 
 
-## <a name="filters"></a>FilTReleri
+## <a name="filters"></a>Filtreler
 
 * ***Test:*** Sonuçlarını görüntülemek istediğiniz testi seçin-her bir testin kendi karnesi vardır. Analizi tamamlamaya yetecek kadar veri olduğunda test verileri görüntülenir; çoğu durumda bu, 24 saat içinde olmalıdır. 
 * ***Zaman aralığı & bitiş tarihi:*** Üç karne günlük olarak oluşturulur: her bir karne, bir önceki 24 saat (gün), önceki yedi gün (hafta) ve 30 gün önce (ay), farklı bir toplama dönemi yansıtır. Görmek istediğiniz dönemin son gününü seçmek için "bitiş tarihi" filtresini kullanın. 

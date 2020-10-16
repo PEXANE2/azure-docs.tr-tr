@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
 ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88650562"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure’da sanal makine bölgeleri
@@ -85,10 +85,10 @@ Aşağıdaki tabloda, depolama çoğaltma türleri arasındaki farkları hızlı
 Fiyatlar seçtiğiniz depolama türüne ve kullanılabilirliğe bağlı olarak değişir.
 
 **Azure Yönetilen Diskler**
-* Premium yönetilen diskler, katı hal sürücüleri (SSD 'Ler) tarafından desteklenir ve standart yönetilen diskler düzenli olarak dönen diskler tarafından desteklenir. Hem Premium hem de Standart Yönetilen Diskler, diskin sağlanan kapasitesine göre ücretlendirilir.
+* Premium yönetilen diskler Solid-State sürücüleri (SSD 'Ler) tarafından desteklenir ve standart yönetilen diskler normal dönen diskler tarafından desteklenir. Hem Premium hem de Standart Yönetilen Diskler, diskin sağlanan kapasitesine göre ücretlendirilir.
 
 **Yönetilmeyen diskler**
-* Premium Depolama katı hal sürücüleri (SSD 'Ler) tarafından desteklenir ve diskin kapasitesine göre ücretlendirilir.
+* Premium Depolama, Solid-State sürücüleri (SSD 'Ler) tarafından desteklenir ve diskin kapasitesine göre ücretlendirilir.
 * Standart depolama, normal dönen disklerle desteklenir ve kullanımdaki kapasiteye ve istenen depolama kullanılabilirliğine göre ücretlendirilir.
   * RA-GRS için, verileri başka bir Azure bölgesine çoğaltmak için gereken bant genişliğine yönelik ek bir Coğrafi Çoğaltma Veri Aktarımı ücreti vardır.
 

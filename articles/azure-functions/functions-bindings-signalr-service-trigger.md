@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
 ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212596"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti tetikleme Bağlayıcısı
@@ -176,7 +176,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**ada**| yok | Tetikleyici çağırma bağlam nesnesi için işlev kodunda kullanılan değişken adı. |
 |**hubName**|**HubName**| Bu değer, tetiklenecek işlevin SignalR hub 'ının adına ayarlanmalıdır.|
 |**alan**|**Kategori**| Bu değer, tetiklenecek işlevin ileti kategorisi olarak ayarlanmalıdır. Kategori aşağıdaki değerlerden biri olabilir: <ul><li>**Bağlantılar**: *bağlı* ve *bağlantısı kesilen* olayları ekleme</li><li>**mesajlar**: *Bağlantılar* kategorisi dışındaki diğer tüm olayları dahil etme</li></ul> |
-|**olay**|**Olay**| Bu değer, işlevin tetiklenmesi için ileti olayı olarak ayarlanmalıdır. *İleti* kategorisi için, olay, istemcilerin gönderdikleri [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *hedeftir* . *Bağlantılar* kategorisi için yalnızca *bağlı* ve *bağlantısı kesik* kullanılır. |
+|**event**|**Olay**| Bu değer, işlevin tetiklenmesi için ileti olayı olarak ayarlanmalıdır. *İleti* kategorisi için, olay, istemcilerin gönderdikleri [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *hedeftir* . *Bağlantılar* kategorisi için yalnızca *bağlı* ve *bağlantısı kesik* kullanılır. |
 |**parameterNames**|**ParameterNames**| Seçim Parametrelere bağlanan adların listesi. |
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
 
@@ -190,14 +190,14 @@ Invocationcontext, SignalR hizmetinden gönderilen iletinin tüm içeriğini iç
 
 |Invocationcontext içindeki Özellik | Açıklama|
 |------------------------------|------------|
-|Arguments| *İleti* kategorisi için kullanılabilir. [Çağırma iletisinde](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *bağımsız değişkenler* içerir|
+|Bağımsız değişkenler| *İleti* kategorisi için kullanılabilir. [Çağırma iletisinde](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *bağımsız değişkenler* içerir|
 |Hata| *Bağlantısı kesilmiş* olay için kullanılabilir. Bağlantı hata olmadan kapalıysa veya hata iletilerini içeriyorsa boş olabilir.|
 |Hub| İletinin ait olduğu hub adı.|
 |Kategori| İletinin kategorisi.|
 |Olay| İleti olayı.|
 |ConnectionID| İletiyi gönderen istemcinin bağlantı KIMLIĞI.|
 |UserId| İletiyi gönderen istemcinin kullanıcı kimliği.|
-|Üst Bilgiler| İsteğin üst bilgileri.|
+|Üst bilgiler| İsteğin üst bilgileri.|
 |Sorgu| İstemciler hizmete bağlandıklarında isteğin sorgusu.|
 |Talepler| İstemci talepleri.|
 

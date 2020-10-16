@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085387"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hive sorguları kullanarak Hadoop kümesindeki veriler için özellikler oluşturma
-Bu belgede, Hive sorguları kullanılarak bir Azure HDInsight Hadoop kümesinde depolanan veriler için nasıl özellik oluşturulacağı gösterilmektedir. Bu Hive sorguları, için sunulan yerleşik Hive Kullanıcı tanımlı Işlevleri (UDF 'ler) kullanır.
+Bu belgede, Hive sorguları kullanılarak bir Azure HDInsight Hadoop kümesinde depolanan veriler için nasıl özellik oluşturulacağı gösterilmektedir. Bu Hive sorguları, için sunulan komut dosyalarını, yerleşik Hive User-Defined Işlevlerini (UDF) kullanır.
 
 Özellik oluşturmak için gereken işlemler bellek açısından yoğun olabilir. Hive sorgularının performansı bu gibi durumlarda daha kritik hale gelir ve belirli parametreleri ayarlayarak geliştirilebilir. Bu parametrelerin ayarlanması son bölümde ele alınmıştır.
 
@@ -150,10 +150,10 @@ limit 10;
 
 Hive Embedded UDF 'Leri listesini <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>'Nin **yerleşik işlevler** bölümünde bulabilirsiniz.  
 
-## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>Gelişmiş Konular: sorgu hızını artırmak için Hive parametrelerini ayarlayın
+## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Gelişmiş Konular: sorgu hızını artırmak için Hive parametrelerini ayarlayın
 Hive kümesinin varsayılan parametre ayarları Hive sorguları ve sorguların işlediği veriler için uygun olmayabilir. Bu bölümde, kullanıcıların Hive sorgularının performansını geliştirmek için ayarlayabileceği bazı parametreler açıklanmaktadır. Kullanıcıların, veri işleme sorgularından önce parametre ayarlama sorgularını eklemesi gerekir.
 
-1. **Java yığın alanı**: büyük veri kümelerine katılmayı veya uzun kayıtları işlemeyi içeren sorgular için, **yığın alanı tükeniyor** ortak hatalardan biridir. *MapReduce. Map. Java. opts* ve *MapReduce. Task. IO. Sort. MB* parametreleri istenen değerlere ayarlanarak bu hata kaçınılabilir. Örnek aşağıda verilmiştir:
+1. **Java yığın alanı**: büyük veri kümelerine katılmayı veya uzun kayıtları işlemeyi içeren sorgular için, **yığın alanı tükeniyor** ortak hatalardan biridir. *MapReduce. Map. Java. opts* ve *MapReduce. Task. IO. Sort. MB* parametreleri istenen değerlere ayarlanarak bu hata kaçınılabilir. Aşağıda bir örnek verilmiştir:
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;

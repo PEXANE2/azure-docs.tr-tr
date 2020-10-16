@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081874"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator işlev kodu kısıtlamaları
@@ -35,7 +35,7 @@ Aşağıdaki tabloda, oluşmaması gereken API 'Ler örnekleri gösterilmektedir
 | Rastgele sayılar | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele sayılar döndüren API 'Ler belirleyici değildir. | Bir düzenleme için rastgele sayılar döndürmek üzere bir etkinlik işlevi kullanın. Etkinlik işlevlerinin dönüş değerleri her zaman yeniden yürütme için güvenlidir. |
 | Bağlamalar | Giriş ve çıkış bağlamaları genellikle g/ç ve belirleyici olmayan bir şekilde yapılır. Orchestrator işlevinin [düzenleme istemcisi](durable-functions-bindings.md#orchestration-client) ve [varlık istemci](durable-functions-bindings.md#entity-client) bağlamaları bile doğrudan kullanılması gerekir. | İstemci veya etkinlik işlevleri içindeki giriş ve çıkış bağlamalarını kullanın. |
 | Ağ | Ağ çağrıları dış sistemler içerir ve belirleyici değildir. | Ağ çağrıları yapmak için etkinlik işlevlerini kullanın. Orchestrator işlevinizden bir HTTP çağrısı yapmanız gerekiyorsa, [DAYANıKLı HTTP API 'lerini](durable-functions-http-features.md#consuming-http-apis)de kullanabilirsiniz. |
-| API 'Leri engelleme | .NET ve benzer API 'lerde olduğu gibi API 'Leri engellemek, `Thread.Sleep` Orchestrator işlevleri için performans ve ölçeklendirme sorunlarına neden olabilir ve kaçınılmalıdır. Azure Işlevleri tüketim planında, bu, hatta gereksiz çalışma zamanı ücretlerine neden olabilir. | Kullanılabilir olduklarında API 'Leri engellemek için alternatifleri kullanın. Örneğin, `CreateTimer` düzenleme yürütmesindeki gecikmeleri tanıtmak için kullanın. [Sürekli süreölçer](durable-functions-timers.md) gecikmeleri, bir Orchestrator işlevinin yürütme zamanına doğru sayılmaz. |
+| API 'Leri engelleme | .NET ve benzer API 'lerde olduğu gibi API 'Leri engellemek, `Thread.Sleep` Orchestrator işlevleri için performans ve ölçeklendirme sorunlarına neden olabilir ve kaçınılmalıdır. Azure Işlevleri tüketim planında, bu, hatta gereksiz çalışma zamanı ücretlerine neden olabilir. | Kullanılabilir olduklarında API 'Leri engellemek için alternatifleri kullanın. Örneğin,  `CreateTimer` düzenleme yürütmesindeki gecikmeleri tanıtmak için kullanın. [Sürekli süreölçer](durable-functions-timers.md) gecikmeleri, bir Orchestrator işlevinin yürütme zamanına doğru sayılmaz. |
 | Zaman uyumsuz API 'Ler | Orchestrator kodu, `IDurableOrchestrationContext` API veya NESNENIN API 'si dışında herhangi bir zaman uyumsuz işlem başlatmalıdır `context.df` . Örneğin,, `Task.Run` , ve ' ı `Task.Delay` `HttpClient.SendAsync` .NET veya `setTimeout` `setInterval` JavaScript 'te kullanamazsınız. Dayanıklı görev çerçevesi, tek bir iş parçacığında Orchestrator kodunu çalıştırır. Diğer zaman uyumsuz API 'Ler tarafından çağrılabilen diğer iş parçacıklarıyla etkileşime giremeyebilir. | Orchestrator işlevi yalnızca dayanıklı zaman uyumsuz çağrılar sağlamalıdır. Etkinlik işlevleri, başka bir zaman uyumsuz API çağrısı yapmalıdır. |
 | Zaman uyumsuz JavaScript işlevleri | `async`node.js çalışma zamanı zaman uyumsuz işlevlerin belirleyici olduğunu garanti edemediğinden, JavaScript Orchestrator işlevlerini bildiremezsiniz. | JavaScript Orchestrator işlevlerini zaman uyumlu Oluşturucu işlevleri olarak bildirin. |
 | İş parçacığı API 'Leri | Dayanıklı görev çerçevesi, Orchestrator kodunu tek bir iş parçacığında çalıştırır ve diğer iş parçacıklarıyla etkileşime giremeyen bir işlem olamaz. Orchestration yürütmesinin yeni iş parçacıklarını tanıtma, belirleyici olmayan yürütme veya kilitlenmeyle sonuçlanabilir. | Orchestrator işlevleri, iş parçacığı API 'Lerini neredeyse asla kullanmaz. Örneğin, .NET 'te kullanmaktan kaçının `ConfigureAwait(continueOnCapturedContext: false)` ; Bu, görev devamlılıklarının Orchestrator işlevinin orijinalde çalıştırılmasını sağlar `SynchronizationContext` . Bu tür API 'Ler gerekliyse, kullanımlarını yalnızca etkinlik işlevlerine sınırlayın. |

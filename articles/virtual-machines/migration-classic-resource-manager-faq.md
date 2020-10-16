@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ccbf7e8aaab5463abf8fa9e129ba9f0ea8599c4e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855849"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969849"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Klasik modelden Azure Resource Manager’a geçişle ilgili sık sorulan sorular
 
@@ -26,7 +26,7 @@ IaaS VM (klasik) içindeki "klasik" sözcüğü, Azure Service Manager (ASM) tar
 
 ## <a name="what-is-azure-resource-manager"></a>Azure Resource Manager nedir?
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) , VM 'leri oluşturma, yönetme, silme ve diğer denetim düzlemi işlemlerini gerçekleştirmekten sorumlu Azure 'un en son denetim düzledir. 
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) , VM 'leri oluşturma, yönetme, silme ve diğer denetim düzlemi işlemlerini gerçekleştirmekten sorumlu Azure 'un en son denetim düzledir. 
 
 ## <a name="what-is-the-time-required-for-migration"></a>Geçiş için gereken süre nedir?
 
@@ -42,7 +42,7 @@ Etkin veya durdurulmuş olan, ancak aboneliklerinde, IaaS VM 'Leri (klasik), Şu
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Neden "NewClassicVMCreationNotAllowedForSubscription" belirten bir hata alıyorum?
 
-Kullanımdan kaldırma işleminin bir parçası olarak, IaaS VM (klasik) artık yeni müşteriler için kullanılamaz. Size yeni müşteri olarak tanımladınız ve bu nedenle işlem yetkilendirilmedi. [ARM kullanarak Azure sanal makinelerini](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)kullanmanızı kesinlikle öneririz. ARM kullanarak Azure VM 'Leri kullanmıyorsanız, aboneliğinizi izin verilenler listesine eklemek için lütfen desteğe başvurun.
+Kullanımdan kaldırma işleminin bir parçası olarak, IaaS VM (klasik) artık yeni müşteriler için kullanılamaz. Size yeni müşteri olarak tanımladınız ve bu nedenle işlem yetkilendirilmedi. [ARM kullanarak Azure sanal makinelerini](./windows/quick-create-powershell.md)kullanmanızı kesinlikle öneririz. ARM kullanarak Azure VM 'Leri kullanmıyorsanız, aboneliğinizi izin verilenler listesine eklemek için lütfen desteğe başvurun.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Bu geçiş planı Azure sanal makinelerde çalışan mevcut hizmetlerimi ya da uygulamaların herhangi birini etkiliyor mu? 
 
@@ -105,7 +105,7 @@ Geçiş işlemini durdurmanızı ve VM’leri geçirdiğiniz bölgede kotaları 
 
 ## <a name="how-do-i-report-an-issue"></a>Bir sorunu nasıl bildirebilirim? 
 
-[Microsoft Q&, bir sanal makine için soru sayfası](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)olan ve Classicıaasmigration anahtar sözcüğüyle ilgili sorunlarınızı ve sorularınızı gönderin. Tüm sorularınızı bu foruma göndermenizi öneririz. Destek anlaşmanız varsa, destek bileti de açabilirsiniz.
+[Microsoft Q&, bir sanal makine için soru sayfası](/answers/topics/azure-virtual-machines.html)olan ve Classicıaasmigration anahtar sözcüğüyle ilgili sorunlarınızı ve sorularınızı gönderin. Tüm sorularınızı bu foruma göndermenizi öneririz. Destek anlaşmanız varsa, destek bileti de açabilirsiniz.
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Geçiş sırasında platformun seçtiği kaynak adlarını beğenmezsem ne yapabilirim? 
 

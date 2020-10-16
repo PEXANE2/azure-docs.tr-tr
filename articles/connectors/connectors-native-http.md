@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
 ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292464"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps'ten HTTP veya HTTPS üzerinden hizmet uç noktalarını çağırma
@@ -28,7 +28,7 @@ Bu makalede, mantıksal uygulamanızın diğer hizmetlere ve sistemlere giden ç
 
 Mantıksal uygulamanızdan, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), önceden imzalanmış sertifikalar veya [Azure Active Directory açık kimlik doğrulama (Azure AD OAuth)](../active-directory/develop/index.yml)gibi güvenli yuva katmanı bilinen giden çağrılar için şifreleme, güvenlik ve yetkilendirme hakkında bilgi için bkz. [diğer hizmet ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -44,7 +44,7 @@ Mantıksal uygulamanızdan, [Aktarım Katmanı Güvenliği (TLS)](https://en.wik
 
 Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
 1. Tasarımcı 'nın arama kutusunda **yerleşik**' i seçin. Arama kutusuna `http` filtreniz olarak yazın. **Tetikleyiciler** listesinden **http** tetikleyicisi ' ni seçin.
 
@@ -73,7 +73,7 @@ Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrıs�
 
 Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek, ilk adım olarak HTTP tetikleyicisini kullanır.
 
@@ -104,7 +104,7 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
 Bu bilgileri döndüren bir HTTP tetikleyicisinden veya eylemden çıktılar hakkında daha fazla bilgi bulabilirsiniz:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 |----------|------|-------------|
 | `headers` | JSON nesnesi | İstekten gelen üstbilgiler |
 | `body` | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |

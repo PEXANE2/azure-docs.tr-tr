@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186665"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071770"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Otomasyonu 'nda bağlantıları yönetme
 
@@ -31,9 +31,9 @@ Bir bağlantı oluşturduğunuzda bir bağlantı türü belirtmeniz gerekir. Ba�
 
 Azure Otomasyonu aşağıdaki yerleşik bağlantı türlerini kullanılabilir hale getirir:
 
-* `Azure`-Klasik kaynakları yönetmek için kullanılan bir bağlantıyı temsil eder.
-* `AzureServicePrincipal`-Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
-* `AzureClassicCertificate`-Klasik Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
+* `Azure` -Klasik kaynakları yönetmek için kullanılan bir bağlantıyı temsil eder.
+* `AzureServicePrincipal` -Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
+* `AzureClassicCertificate` -Klasik Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
 
 Çoğu durumda, bir [Farklı Çalıştır hesabı](manage-runas-account.md)oluşturduğunuzda oluşturulduğundan bir bağlantı kaynağı oluşturmanız gerekmez.
 
@@ -52,9 +52,9 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon bağlantıları olu
 
 Aşağıdaki tablodaki iç cmdlet, runbook 'larınızda ve DSC yapılandırmalarında bağlantılara erişmek için kullanılır. Bu cmdlet, genel modülle birlikte gelir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [iç cmdlet 'ler](shared-resources/modules.md#internal-cmdlets).
 
-|İç cmdlet|Açıklama|
+|İç cmdlet|Description|
 |---|---|
-|`Get-AutomationConnection` | Bağlantıdaki farklı alanların değerlerini alır ve bunları bir [karma tablosu](https://go.microsoft.com/fwlink/?LinkID=324844)olarak döndürür. Daha sonra bu Hashtable 'ı runbook veya DSC yapılandırmasındaki uygun komutlarla kullanabilirsiniz.|
+|`Get-AutomationConnection` | Bağlantıdaki farklı alanların değerlerini alır ve bunları bir [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)olarak döndürür. Daha sonra bu Hashtable 'ı runbook veya DSC yapılandırmasındaki uygun komutlarla kullanabilirsiniz.|
 
 >[!NOTE]
 >Parametresi ile değişkenleri kullanmaktan kaçının `Name` `Get-AutomationConnection` . Bu durumda değişkenlerin kullanılması, runbook 'ları veya DSC yapılandırması ile bağlantı varlıkları arasındaki bağımlılıkları tasarım zamanında karmaşıklaştırır.

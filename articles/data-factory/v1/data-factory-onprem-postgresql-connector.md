@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082843"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL 'ten veri taşıma
@@ -72,14 +72,14 @@ Aşağıdaki tabloda, PostgreSQL bağlı hizmetine özgü JSON öğeleri için a
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **OnPremisesPostgreSql** olarak ayarlanmalıdır |Yes |
-| sunucu |PostgreSQL sunucusunun adı. |Yes |
-| database |PostgreSQL veritabanının adı. |Yes |
+| tür |Type özelliği: **OnPremisesPostgreSql** olarak ayarlanmalıdır |Evet |
+| sunucu |PostgreSQL sunucusunun adı. |Evet |
+| database |PostgreSQL veritabanının adı. |Evet |
 | schema |Veritabanındaki şemanın adı. Şema adı büyük/küçük harfe duyarlıdır. |Hayır |
-| authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
+| authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
 | username |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
-| gatewayName |Data Factory hizmetinin şirket içi PostgreSQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
+| gatewayName |Data Factory hizmetinin şirket içi PostgreSQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri için benzerdir.
@@ -104,7 +104,7 @@ Kaynak, **Relationalsource** türünde olduğunda (PostgreSQL içeren), typeprop
 > [!NOTE]
 > Şema ve tablo adları büyük/küçük harfe duyarlıdır. Onları `""` sorguya (çift tırnak) içine alın.
 
-**Örneğinde**
+**Örnek:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -324,7 +324,7 @@ Verileri PostgreSQL 'e taşırken, PostgreSQL türünden .NET türüne aşağıd
 | ıntarry | |Dize |
 | int4range | |Dize |
 | int8range | |Dize |
-| integer |int, int4 |Int32 |
+| tamsayı |int, int4 |Int32 |
 | Aralık [Fields] [(p)] | |Timespan |
 | json | |Dize |
 | jsonb | |Byte [] |

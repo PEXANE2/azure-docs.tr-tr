@@ -5,14 +5,16 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5d8bf69d456bca2a88b8aa2031d5ef0ba20f7c30
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981061"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979130"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Bu kılavuz, Azure Dev Spaces kullanırken karşılaşabileceğiniz yaygın sorunlar hakkında bilgiler içerir.
 
@@ -268,7 +270,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *Tamam*’a tıklayın.
+* *Tamam*'a tıklayın.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
@@ -422,9 +424,9 @@ Bu sorunu onarmak için Visual Studio Code kapatıp yeniden açın. Hata ayıkla
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Bir Node.js uygulamasına hata ayıklama eklenirken "Iç izleme başarısız oldu: ' ENOSPC ' izleme
 
-Bu hata, bir hata ayıklayıcı ile eklemeye çalıştığınız Node.js uygulamayla Pod 'ı çalıştıran düğüm *FS. inotify. max_user_watches* değerini aştığında oluşur. Bazı durumlarda, [varsayılan *FS. inotify. max_user_watches* değeri bir hata ayıklayıcıyı doğrudan Pod 'a eklemeyi işlemek için çok küçük olabilir](https://github.com/Azure/AKS/issues/772).
+Bu hata, bir hata ayıklayıcı ile eklemeye çalıştığınız Node.js uygulamayla Pod 'ı çalıştıran düğüm *FS.inotify.max_user_watches* değerini aştığından oluşur. Bazı durumlarda, [bir hata ayıklayıcıyı doğrudan Pod 'a eklemeyi işlemek için *FS.inotify.max_user_watches* varsayılan değeri çok küçük olabilir](https://github.com/Azure/AKS/issues/772).
 
-Bu soruna yönelik geçici bir geçici çözüm, kümedeki her bir düğümde *FS. inotify. max_user_watches* değerini artırmanız ve değişikliklerin etkili olması için bu düğümü yeniden başlatvermektir.
+Bu sorun için geçici bir geçici çözüm, kümedeki her düğümdeki *FS.inotify.max_user_watches* değerini artırmanız ve değişikliklerin etkili olması için bu düğümü yeniden başlatvermektir.
 
 ## <a name="other-common-issues"></a>Diğer yaygın sorunları çözme
 

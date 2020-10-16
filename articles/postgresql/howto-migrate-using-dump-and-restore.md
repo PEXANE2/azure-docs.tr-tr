@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710813"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL veritabanınızı döküm ve geri yükleme kullanarak geçirme
@@ -18,7 +18,7 @@ ms.locfileid: "91710813"
 
 Bir PostgreSQL veritabanını bir döküm dosyasına ayıklamak ve pg_dump tarafından oluşturulan bir arşiv dosyasından PostgreSQL veritabanını geri yüklemek için [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - Üzerinde erişime ve veritabanına izin vermek için güvenlik duvarı kuralları içeren bir [PostgreSQL sunucusu Için Azure veritabanı](quickstart-create-server-database-portal.md) .
 - [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) ve [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) komut satırı yardımcı programları yüklendi
@@ -73,7 +73,7 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 >
 
 ### <a name="for-the-backup"></a>Yedekleme için
-- Geri yüklemeyi hızlandırmak üzere paralel olarak gerçekleştirebilmek için-FC anahtarıyla yedeklemeyi gerçekleştirin. Örnek:
+- Geri yüklemeyi hızlandırmak üzere paralel olarak gerçekleştirebilmek için-FC anahtarıyla yedeklemeyi gerçekleştirin. Örneğin:
 
     ```bash
     pg_dump -h my-source-server-name -U source-server-username -Fc -d source-databasename -f Z:\Data\Backups\my-database-backup.dump
@@ -84,7 +84,7 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 
 - Varsayılan olarak zaten yapılmalıdır, ancak create INDEX deyimlerinin veri ekleme deyimlerinden sonra olduğunu doğrulamak için döküm dosyasını açın. Böyle değilse, veri eklendikten sonra CREATE INDEX deyimlerini taşıyın.
 
-- Restore ile paralel hale getirmek için-FC ve-j anahtarlarıyla geri yükleyin *#* . *#* , hedef sunucudaki çekirdekler sayısıdır. *#* Etkiyi görmek için hedef sunucunun çekirdek sayısının iki katı olarak ayarlamayı da deneyebilirsiniz. Örnek:
+- Restore ile paralel hale getirmek için-FC ve-j anahtarlarıyla geri yükleyin *#* . *#* , hedef sunucudaki çekirdekler sayısıdır. *#* Etkiyi görmek için hedef sunucunun çekirdek sayısının iki katı olarak ayarlamayı da deneyebilirsiniz. Örneğin:
 
 Bu **Pg_restore** **tek sunucu**için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 ```bash

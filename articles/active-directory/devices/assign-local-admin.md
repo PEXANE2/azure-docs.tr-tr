@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419827"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
@@ -98,7 +98,7 @@ Azure AD JOIN işlemini kullanmanın yanı sıra, düzenli bir kullanıcıyı be
 Ayrıca, komut istemi kullanarak da kullanıcı ekleyebilirsiniz:
 
 - Kiracı kullanıcılarınız şirket içi Active Directory eşitlendiğinde, kullanın `net localgroup administrators /add "Contoso\username"` .
-- Azure AD 'de kiracı kullanıcılarınız oluşturulduysa, şunu kullanın`net localgroup administrators /add "AzureAD\UserUpn"`
+- Azure AD 'de kiracı kullanıcılarınız oluşturulduysa, şunu kullanın `net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler 
 

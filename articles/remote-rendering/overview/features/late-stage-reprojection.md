@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022189"
+ms.locfileid: "91893212"
 ---
 # <a name="late-stage-reprojection"></a>Geç aşama yeniden projeksiyonu
 
@@ -34,7 +34,9 @@ Bu durumda, uygulamanız derinlik LSR kullanır, aksi takdirde planar LSR kullan
 
 Derinlik LSR 'nin çalışması için, istemci uygulamanın LSR sırasında göz önünde bulundurulması gereken tüm geometriyi içeren geçerli bir derinlik arabelleği sağlaması gerekir.
 
-Derinlik LSR, sağlanan derinlik arabelleğinin içeriğine göre video çerçevesini sabitkurmaya çalışır. Sonuç olarak, saydam nesneler gibi, kendisine işlenen içerik LSR tarafından ayarlanamaz ve kararsızlık ve yeniden projeksiyon yapıtları gösterilebilir.
+Derinlik LSR, sağlanan derinlik arabelleğinin içeriğine göre video çerçevesini sabitkurmaya çalışır. Sonuç olarak, saydam nesneler gibi, kendisine işlenen içerik LSR tarafından ayarlanamaz ve kararsızlık ve yeniden projeksiyon yapıtları gösterilebilir. 
+
+Saydam nesneler için yeniden projeksiyonu kararlaşmasını azaltmak için derinlik arabelleği yazmayı zorlayabilirsiniz. [Renk](color-materials.md) ve [PBR](pbr-materials.md) malzemeleri için malzeme bayrağına *TransparencyWritesDepth* bakın. Ancak, bu bayrak etkinleştirildiğinde saydam/donuk nesne etkileşiminin görsel kalitesi düşebilir.
 
 ## <a name="planar-lsr"></a>Planar LSR
 

@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182046"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
@@ -249,10 +249,10 @@ Waagent için ayrıntılı günlük kaydı gerekiyorsa, şu adımları izleyin:
 2. **Logs. Verbose** değerini *n* ile *y*arasında değiştirin.
 3. Değişikliği kaydedin ve ardından bu bölümde daha önce açıklanan adımları tamamlayarak waagent 'ı yeniden başlatın.
 
-### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-aracı yapılandırma seçenekleri ayarlanmadı (Linux sanal makineleri için)
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-Agent yapılandırma seçenekleri ayarlanmadı (Linux sanal makineleri için)
 
 Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Yapılandırma dosyası seçenekleri **uzantıları. Enable** , **y** ve sağlama olarak ayarlanmalıdır **.** yedeklemenin çalışması için aracının **Auto** olarak ayarlanması gerekir.
-VM Aracısı yapılandırma dosyası seçeneklerinin tam listesi için bkz. <https://github.com/Azure/WALinuxAgent#configuration-file-options>
+VM-Agent yapılandırma dosyası seçeneklerinin tam listesi için bkz. <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Uygulama denetim çözümü IaaSBcdrExtension.exe engelliyor
 

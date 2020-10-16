@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325428"
 ---
 # <a name="set-up-a-capacity-pool"></a>Kapasite havuzunu ayarlama
@@ -71,5 +71,5 @@ Kapasite havuzu ayarlamak, içinde birim oluşturmanıza olanak tanır.
 - [Depolama hiyerarşisi](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Azure NetApp Files için hizmet düzeyleri](azure-netapp-files-service-levels.md)
 - [Azure NetApp Files fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/netapp/)
-- [El ile QoS kapasite havuzunu yönetme](manage-manual-qos-capacity-pool.md)
+- [El ile QoS kapasite havuzu yönetme](manage-manual-qos-capacity-pool.md)
 - [Azure NetApp Files için bir alt ağı temsilci olarak belirleme](azure-netapp-files-delegate-subnet.md)

@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885982"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Azure Machine Learning tasarımcı işlem hatları 'nda günlüğü etkinleştir
@@ -59,7 +59,7 @@ Aşağıdaki örnek, modeli değerlendir ve Python betik modüllerini Yürüt il
         return dataframe1,
     ```
     
-Bu kod, değerlerini günlüğe kaydetmek için Python SDK Azure Machine Learning kullanır. Geçerli çalıştırmanın bağlamını almak için Run. get_context () kullanır. Ardından, Run. Parent. log () yöntemiyle bu bağlamdaki değerleri günlüğe kaydeder. Bu `parent` , değerleri modül çalıştırması yerine üst işlem hattı çalıştırmasına kaydetmek için kullanır.
+Bu kod, değerlerini günlüğe kaydetmek için Python SDK Azure Machine Learning kullanır. Geçerli çalıştırmanın bağlamını almak için Run.get_context () kullanır. Ardından, Run. Parent. log () yöntemiyle bu bağlamdaki değerleri günlüğe kaydeder. Bu `parent` , değerleri modül çalıştırması yerine üst işlem hattı çalıştırmasına kaydetmek için kullanır.
 
 Verileri günlüğe kaydetmek için Python SDK 'nın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme](how-to-track-experiments.md).
 

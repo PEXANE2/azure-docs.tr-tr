@@ -3,12 +3,12 @@ title: Azure portal şablonu dışarı aktarma
 description: Aboneliğinizdeki kaynaklardan bir Azure Resource Manager şablonu dışarı aktarmak için Azure portal kullanın.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423244"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951766"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal bir şablona tek ve çoklu kaynak verme
 
@@ -49,13 +49,15 @@ Seçtiğiniz seçeneğe bağlı olarak, içe aktarılmış şablonların farklı
 
 Bir kaynak grubu veya kaynaktan dışarı aktarırken, dışarı aktarılan şablon her kaynak türü için [yayımlanan şemalardan](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) oluşturulur. Bazen, şema bir kaynak türü için en son sürüme sahip değildir. İhtiyacınız olan özellikleri içerdiğinden emin olmak için, verdiğiniz şablonu kontrol edin. Gerekirse, sizin için gerekli olan API sürümünü kullanmak üzere, verdiğiniz şablonu düzenleyin.
 
-Şablonu dışarı aktar özelliği Azure Data Factory kaynaklarının dışarı aktarılmasını desteklemez. Data Factory kaynaklarını nasıl dışarı aktarabilirsiniz hakkında bilgi edinmek için bkz. [Azure Data Factory veri fabrikasını kopyalama veya](https://aka.ms/exportTemplateViaAdf)kopyalama.
+Şablonu dışarı aktar özelliği Azure Data Factory kaynaklarının dışarı aktarılmasını desteklemez. Data Factory kaynaklarını nasıl dışarı aktarabilirsiniz hakkında bilgi edinmek için bkz. [Azure Data Factory veri fabrikasını kopyalama veya](../../data-factory/copy-clone-data-factory.md)kopyalama.
 
-Klasik dağıtım modeliyle oluşturulan kaynakları dışarı aktarmak için, [bunları Kaynak Yöneticisi dağıtım modeline geçirmeniz](https://aka.ms/migrateclassicresourcetoarm)gerekir.
+Klasik dağıtım modeliyle oluşturulan kaynakları dışarı aktarmak için, [bunları Kaynak Yöneticisi dağıtım modeline geçirmeniz](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)gerekir.
 
 Bir kaynak türünün dışarı aktarılmadığını belirten bir şablonu dışarı aktarırken uyarı alırsanız, bu kaynağın özelliklerini yine de bulabilirsiniz. Kaynak özelliklerini görüntülemeye yönelik farklı seçenekler hakkında bilgi edinmek için bkz. [keşif kaynağı özellikleri](view-resources.md). Kaynak türü için [Azure REST API](/rest/api/azure/) de bakabilirsiniz.
 
-## <a name="export-template-from-a-resource-group"></a>Bir kaynak grubundan şablonu dışarı aktarma
+Kaynak grubunda, için aktarılmış şablonu oluşturduğunuz 200 kaynağın bir sınırı vardır. 200 ' den fazla kaynağa sahip bir kaynak grubunu dışarı aktarmaya çalışırsanız, hata iletisi `Export template is not supported for resource groups more than 200 resources` gösterilir.
+
+## <a name="export-template-from-a-resource-group"></a>Kaynak grubundan şablonu dışarı aktarma
 
 Bir kaynak grubundan bir veya daha fazla kaynağı dışarı aktarmak için:
 

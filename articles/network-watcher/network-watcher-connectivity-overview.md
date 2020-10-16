@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708952"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde bağlantıya sorun giderme konusuna giriş
@@ -72,7 +72,7 @@ Aşağıda, bir atlama üzerinde bulunan bir sorun örneği verilmiştir.
 
 Bağlantı sorunlarını giderme bağlantıyla ilgili hata türlerini döndürür. Aşağıdaki tabloda döndürülen geçerli hata türlerinin bir listesi verilmiştir.
 
-|Tür  |Description  |
+|Tür  |Açıklama  |
 |---------|---------|
 |CPU     | Yüksek CPU kullanımı.       |
 |Bellek     | Yüksek bellek kullanımı.       |

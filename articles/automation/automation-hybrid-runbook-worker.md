@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3c88d21c6ad17c613c5d708bf697ae8717c9ec91
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087906"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075272"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -67,7 +67,7 @@ Azure Otomasyonu ve Log Analytics aracısını çalıştıran makineler arasınd
 
 ### <a name="service-tags"></a>Hizmet etiketleri
 
-Azure Otomasyonu, Azure sanal ağ hizmeti etiketlerini destekleyerek [Guestandhybridmanagement](../virtual-network/service-tags-overview.md)hizmet etiketiyle başlar. [Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı **Guestandhybridmanagement**  ' i belirterek, Otomasyon Hizmeti için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Bu hizmet etiketi, IP aralıklarını belirli bir bölgeyle kısıtlayarak daha ayrıntılı denetim yapılmasına izin vermeyi desteklemez.
+Azure Otomasyonu, Azure sanal ağ hizmeti etiketlerini destekleyerek [Guestandhybridmanagement](../virtual-network/service-tags-overview.md)hizmet etiketiyle başlar. [Ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı **Guestandhybridmanagement**  ' i belirterek, Otomasyon Hizmeti için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Bu hizmet etiketi, IP aralıklarını belirli bir bölgeyle kısıtlayarak daha ayrıntılı denetim yapılmasına izin vermeyi desteklemez.
 
 Azure Otomasyonu hizmetinin hizmet etiketi yalnızca aşağıdaki senaryolar için kullanılan IP 'Leri sağlar:
 

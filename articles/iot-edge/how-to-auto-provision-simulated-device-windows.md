@@ -8,12 +8,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c010fa4ea0289ed91f439a250f0b63703517f5bc
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a1c679ca5a7ff08a4d2490f94548b34e4db49f4d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447779"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966194"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Windows üzerinde sanal TPM ile sanal bir IoT Edge cihaz oluşturma ve sağlama
 
@@ -31,7 +31,7 @@ Bu makalede, aşağıdaki adımlarla sanal bir IoT Edge cihazında otomatik sağ
 > [!TIP]
 > Bu makalede, sanal cihazlarda TPM kanıtlaması kullanılarak otomatik sağlama testi açıklanır, ancak fiziksel TPM donanımı de kullanılırken bunun çoğu geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Windows geliştirme makinesi. Bu makalede Windows 10 kullanılır.
 * Etkin bir IoT Hub.
@@ -75,19 +75,18 @@ Bireysel kaydı oluşturduktan sonra **kayıt kimliği**değerini kaydedin. IoT 
 
 ## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükler
 
-IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalıştırılır ve kenarda kod çalıştırabilmeniz için cihaza ek kapsayıcılar dağıtmanıza izin verir.
+IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalıştırılır ve kenarda kod çalıştırabilmeniz için cihaza ek kapsayıcılar dağıtmanıza izin verir. IoT Edge çalışma zamanını, sanal TPM 'nin çalıştığı cihaza yükler.
 
-Cihazınızı sağlarken aşağıdaki bilgilere sahip olmanız gerekir:
-
-* DPS **kimlik kapsamı** değeri
-* Oluşturduğunuz cihaz **kayıt kimliği**
-
-IoT Edge çalışma zamanını, sanal TPM 'nin çalıştığı cihaza yükler. IoT Edge çalışma zamanını otomatik, el ile değil, sağlama için yapılandıracaksınız.
+[Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge.md)için bu adımları izleyin ve sonra cihazı sağlamak için bu makaleye geri dönün.
 
 > [!TIP]
 > Yükleme ve test etme sırasında TPM simülatörünü çalıştıran pencereyi açık tutun.
 
-Windows üzerinde IoT Edge yükleme hakkında daha ayrıntılı bilgi için IoT Edge, bkz. [Azure IoT Edge çalışma zamanını Windows 'A yükleme](how-to-install-iot-edge-windows.md).
+## <a name="configure-the-device-with-provisioning-information"></a>Cihazı sağlama bilgileriyle yapılandırma
+
+Çalışma zamanı cihazınıza yüklendikten sonra, cihazı cihaz sağlama hizmetine bağlanmak için kullandığı bilgilerle yapılandırın ve IoT Hub.
+
+1. DPS **kimlik kapsamınızı** ve önceki bölümlerde toplanan CIHAZ **kayıt kimliğini** öğrenin.
 
 1. Yönetici modunda bir PowerShell penceresi açın. PowerShell (x86) değil IoT Edge yüklerken PowerShell 'in AMD64 oturumunu kullandığınızdan emin olun.
 
@@ -98,7 +97,7 @@ Windows üzerinde IoT Edge yükleme hakkında daha ayrıntılı bilgi için IoT 
    Deploy-IoTEdge
    ```
 
-1. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
+1. Bu noktada, çıkış sizden yeniden başlatmanız istenebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
 
 1. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler. `-Dps`El ile sağlama yerine cihaz sağlama hizmetini kullanmak için bayrağını kullanın.
 

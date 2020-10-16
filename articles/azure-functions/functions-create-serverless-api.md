@@ -7,10 +7,10 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083030"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Işlevlerinde bir HTTP uç noktasını özelleştirme
@@ -45,7 +45,7 @@ Varsayılan olarak HTTP tetikleyici işleviniz herhangi bir HTTP yöntemini kabu
 
     `/api`Genel bir ayar tarafından işlendiği için yol şablonuna temel yol öneki dahil etmediniz.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 HTTP işlevlerinin özelleştirilmesi hakkında daha fazla bilgi için bkz. [Azure IŞLEVLERI http bağlamaları](./functions-bindings-http-webhook.md).
 
@@ -95,7 +95,7 @@ Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İ
     > [!NOTE] 
     > Proxy için sabit olarak yazılmış ortam bağımlılığı oluşmasını önleme amacıyla ana bilgisayar yapılandırması için uygulama ayarlarının kullanılması önerilir. Uygulama ayarlarını kullanarak proxy yapılandırmasını birden fazla ortamda kullanabilirsiniz ve bu durumda ortama özgü uygulama ayarları geçerli olur.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>Ön uçta proxy oluşturma
 
@@ -112,13 +112,13 @@ Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İ
     | Arka uç URL'si | https://%HELLO_HOST%/api/hello | İsteğe proxy uygulanacak uç noktayı belirtir |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Proxy oluşturma":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="HTTP işlevini özelleştirme":::
 
     Azure İşlev Proxy'leri `/api` , yol şablonuna dahil olması gereken temel yol önekini sağlamaz. `%HELLO_HOST%`Sözdizimi, daha önce oluşturduğunuz uygulama ayarına başvurur. Çözümlenen URL, özgün işlevinize işaret edecektir.
 
 1. Proxy URL 'sini kopyalayıp tarayıcıda veya sık kullandığınız HTTP istemcisi ile test ederek yeni proxy 'nizi deneyin:
-    - Anonim işlev için şunu kullanın: `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` .
-    - Yetkilendirme kullanımı olan bir işlev için: `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` .
+    - Anonim işlev için şunu kullanın:   `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` .
+    - Yetkilendirme kullanımı olan bir işlev için:   `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` .
 
 ## <a name="create-a-mock-api"></a>Sahte API oluşturma
 

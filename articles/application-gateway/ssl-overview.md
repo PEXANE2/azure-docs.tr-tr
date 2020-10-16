@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723308"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway ile TLS sonlandırmasına ve uçtan uca TLS 'ye Genel Bakış
@@ -49,7 +49,7 @@ Application Gateway aşağıdaki sertifika türlerini destekler:
 - CA (sertifika yetkilisi) sertifikası: CA sertifikası, bir sertifika yetkilisi (CA) tarafından verilen dijital bir sertifikadır
 - EV (Genişletilmiş Doğrulama) sertifikası: EV sertifikası, sektör standardı sertifika yönergelerine uygun bir sertifikadır. Bu, tarayıcı Konumlandırıcı çubuğunun yeşil olacağını açıp şirket adını da yayımlayacak.
 - Joker karakter sertifikası: Bu sertifika, alt etki alanınızın * yerini alacak *. site.com bağlı olarak herhangi bir sayıda alt etki alanını destekler. Ancak, site.com desteği yoktur, bu nedenle kullanıcıların Web sitenize önde gelen "www" yazısı olmadan erişmesi durumunda joker karakter sertifikası bunu kapsamaz.
-- Otomatik olarak Imzalanan Sertifikalar: Istemci tarayıcıları bu sertifikalara güvenmez ve sanal hizmetin sertifikasının bir güven zincirinin parçası olmadığı konusunda kullanıcıyı uyarır. Otomatik olarak imzalanan sertifikalar, yöneticilerin istemcileri denetladığı ve tarayıcının güvenlik uyarılarını güvenle atlayabileceği test veya ortamlar için uygundur. Üretim iş yükleri hiçbir şekilde otomatik olarak imzalanan sertifikalar kullanmamalıdır.
+- Self-Signed sertifikaları: Istemci tarayıcıları bu sertifikalara güvenmez ve kullanıcıyı sanal hizmetin sertifikasının bir güven zincirinin parçası olmadığı konusunda uyarır. Otomatik olarak imzalanan sertifikalar, yöneticilerin istemcileri denetladığı ve tarayıcının güvenlik uyarılarını güvenle atlayabileceği test veya ortamlar için uygundur. Üretim iş yükleri hiçbir şekilde otomatik olarak imzalanan sertifikalar kullanmamalıdır.
 
 Daha fazla bilgi için bkz. [Application Gateway Ile TLS sonlandırmayı yapılandırma](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 

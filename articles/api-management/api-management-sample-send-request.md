@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210350"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093285"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management Service 'ten dış hizmetler kullanma
 Azure API Management hizmetinde kullanılabilen ilkeler, yalnızca gelen istek, giden yanıt ve temel yapılandırma bilgilerini temel alan çok sayıda kullanışlı iş gerçekleştirebilir. Ancak API Management ilkelerden, dış hizmetlerle etkileşime girebilmek birçok fırsat daha açar.
@@ -65,7 +65,7 @@ Bolluk, gelen Web kancaları kavramını içerir. Bir gelen Web kancası yapıla
 ### <a name="is-fire-and-forget-good-enough"></a>Ateştir ve yeterince iyi unutur.
 İstek için bir ateş ve unutma stili kullanılırken belirli bir denge vardır. Bir nedenden dolayı istek başarısız olursa, hata bildirilmemiştir. Bu durumda, ikincil hata raporlama sistemine sahip olmanın karmaşıklığı ve yanıt için bekleyen ek performans maliyeti garanti edilmez. Yanıtın denetlenmesi gereken senaryolarda, [gönderme isteği](./api-management-advanced-policies.md#SendRequest) ilkesi daha iyi bir seçenektir.
 
-## <a name="send-request"></a>Gönderme Isteği
+## <a name="send-request"></a>Send-Request
 `send-request`İlke, karmaşık işleme işlevleri gerçekleştirmek ve daha fazla ilke işleme için KULLANıLABILECEK API Yönetimi hizmetine veri döndürmek için bir dış hizmet kullanılmasını sağlar.
 
 ### <a name="authorizing-reference-tokens"></a>Başvuru belirteçlerini yetkilendirme
@@ -123,7 +123,7 @@ Koşul = "@ (((IResponse) bağlamında <. Değişkenler ["tokenstate"]). Body.As
 </choose>
 ```
 
-Belirteçlerin nasıl kullanılması gerektiğini açıklayan, [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) `bearer` ' de, API Management da `WWW-Authenticate` 401 yanıtıyla bir üst bilgi döndürür. WWW-Authenticate, bir istemciyi düzgün şekilde yetkilendirilmiş bir istek oluşturma konusunda size bildirmek üzere tasarlanmıştır. OAuth2 çerçevesiyle mümkün olan çok çeşitli yaklaşımlar nedeniyle, gereken tüm bilgileri iletmek zordur. Neyse ki [İstemcilerin bir kaynak sunucusuna istekleri düzgün bir şekilde nasıl yetkilendirebileceği](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)konusunda yardımcı olmaya yönelik çalışmalar vardır.
+Belirteçlerin nasıl kullanılması gerektiğini açıklayan, [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) `bearer` ' de, API Management da `WWW-Authenticate` 401 yanıtıyla bir üst bilgi döndürür. WWW-Authenticate, bir istemciye düzgün bir şekilde yetkilendirilmiş bir istek oluşturmayı bildirmek üzere tasarlanmıştır. OAuth2 çerçevesiyle mümkün olan çok çeşitli yaklaşımlar nedeniyle, gereken tüm bilgileri iletmek zordur. Neyse ki [İstemcilerin bir kaynak sunucusuna istekleri düzgün bir şekilde nasıl yetkilendirebileceği](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)konusunda yardımcı olmaya yönelik çalışmalar vardır.
 
 ### <a name="final-solution"></a>Son çözüm
 Sonunda aşağıdaki ilkeyi alırsınız:
@@ -178,7 +178,7 @@ Pano kaynağını oluşturmanın ilk adımı Azure portal yeni bir işlem yapıl
 ### <a name="making-the-requests"></a>İstekleri yapma
 İşlem oluşturulduktan sonra, bu işlem için özel olarak bir ilke yapılandırabilirsiniz. 
 
-![Pano işlemi](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Ilke kapsamı ekranını gösteren ekran görüntüsü.](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 İlk adım, gelen istekten herhangi bir sorgu parametresi ayıklayarak bunları arka uca iletebilmeniz için kullanılır. Bu örnekte, Pano bir zaman dilimine göre bilgileri gösteriyor ve bu nedenle `fromDate` ve `toDate` parametresi vardır. `set-variable`İlkeyi, Istek URL 'sindeki bilgileri ayıklamak için kullanabilirsiniz.
 

@@ -12,10 +12,10 @@ ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fe864212eaccb67335586ef8b25049529ab36b81
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360761"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
@@ -41,7 +41,7 @@ Bu API özel uç noktalar gerektirmez ve hiçbir eşzamanlılık gereksinimi yok
 Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır.
 Bir işin çalışma durumuna ne zaman değişene, ancak normal sistem yükü altında dakikalar içinde gerçekleşmesi gerekir. Çalışma durumunda, döküm, ses çalışma zamanı kayıttan yürütme hızından daha hızlı gerçekleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](overview.md#try-the-speech-service-for-free)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
 
@@ -308,7 +308,7 @@ Daha fazla seçim yapmak için `diarizationEnabled` özelliği, `true` http iste
 
 Yukarıdaki istekteki parametreler gösterildiği için sözcük düzeyi zaman damgalarının etkinleştirilmesi gerekir.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Toplu iş dökümü hizmeti, çok sayıda gönderilen dökümü işleyebilir. Onayları [Al](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)ile birlikte, döküm durumlarını sorgulayabilirsiniz.
 Sonuçları aldıktan sonra hizmetten düzenli olarak [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) çağrısını çağırın. Bunun yerine `timeToLive` , sonuçların son silinmesini sağlamak için özelliği de ayarlayın.

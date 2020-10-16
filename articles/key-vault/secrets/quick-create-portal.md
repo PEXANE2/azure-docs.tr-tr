@@ -11,18 +11,22 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83652286"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962454"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
 Azure Key Vault, gizli diziler için güvenli bir depolama sağlayan bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, bir anahtar kasası oluşturacak ve ardından bir gizli diziyi depolamak için kullanacaksınız. Key Vault hakkında daha fazla bilgi için [Genel Bakış](../general/overview.md) bölümünü inceleyin.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Gizli diziler hakkında daha fazla bilgi için bkz. (about-secrets.md).
+
+## <a name="prerequisites"></a>Ön koşullar
+
+- Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -47,6 +51,9 @@ Aşağıda listelenen iki özelliği not edin:
 * **Kasa Adı**: Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer adımlar için kullanacaksınız.
 * **Kasa URI’si**: Örnekte bu: https://contoso-vault2.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
+Azure CLI ve PowerShell ile Key Vault de oluşturabilirsiniz: [Create Key Vault using PowerShell](../general/quick-create-powershell.md) 
+ [Azure CLI kullanarak PowerShell oluşturma Key Vault](../general/quick-create-cli.md) kullanarak Key Vault oluşturma
+
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleştirmeye yetkili olan tek hesaptır.
 
 ![Key Vault oluşturma işlemi tamamlandıktan sonra alınan çıktı](../media/quick-create-portal/vault-properties.png)
@@ -61,7 +68,7 @@ Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu ö
     - **Karşıya yükleme seçenekleri**: El ile.
     - **Ad**: ExamplePassword.
     - **Değer**: hVFkk965BuUv
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**’a tıklayın.
+    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**'a tıklayın.
 
 Gizli dizinin başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra listede gizli diziye tıklayabilirsiniz. 
 
@@ -90,5 +97,8 @@ Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vau
 Bu hızlı başlangıçta bir Key Vault oluşturdunuz ve içinde gizli dizi depolıdınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
+- [Key Vault güvenli erişimi](../general/secure-your-key-vault.md) okuma
+- Bkz. [App Service Web uygulamasıyla Key Vault kullanma](../general/tutorial-net-create-vault-azure-web-app.md)
+- Bkz. [VM 'ye dağıtılan uygulama ile Key Vault kullanma](../general/tutorial-net-virtual-machine.md)
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
 - [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

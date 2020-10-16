@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357497"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server veritabanı kullanarak Azure Machine Learning Studio (klasik) analiz gerçekleştirme
@@ -40,9 +40,9 @@ Azure Machine Learning Studio (klasik) SQL Server veritabanına erişmek için, 
 
 Ayrıca, [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=39717)' nden MSI kurulum paketini indirip çalıştırarak da daha önce IR yükleyebilirsiniz. MSI Ayrıca, mevcut bir IR 'yi en son sürüme yükseltmek için kullanılabilir ve tüm ayarlar korunur.
 
-Data Factory kendinden konak Integration Runtime aşağıdaki önkoşullara sahiptir:
+Data Factory Self-Hosted Integration Runtime aşağıdaki önkoşullara sahiptir:
 
-* Data Factory şirket içinde barındırılan tümleştirme .NET Framework 4.6.1 veya üzerini içeren 64 bitlik bir Işletim sistemi gerektirir.
+* Data Factory Self-Hosted tümleştirmesi .NET Framework 4.6.1 veya üzeri 64 bir Işletim sistemi gerektirir.
 * Desteklenen Windows işletim sistemi sürümleri, Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * IR makinesi için önerilen yapılandırma en az 2 GHz, 4 çekirdek CPU, 8GB RAM ve 80GB disk.
 * Ana makine hazırda beklemesi durumunda, IR veri isteklerine yanıt vermez. Bu nedenle, IR 'yi yüklemeden önce bilgisayarda uygun bir güç planı yapılandırın. Makine hazırda bekleme moduna yapılandırıldıysa, IR yüklemesinde bir ileti görüntülenir.

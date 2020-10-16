@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f1a6a99285e54338b0020aad63fef2944ce3469d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892886"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088678"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Öğretici: Azure sanal ağ 'da Azure yay bulutu dağıtma (VNet ekleme)
 
@@ -27,7 +27,7 @@ Dağıtım şunları sunar:
 * Azure Spring Cloud için gelen ve giden ağ iletişimlerini denetlemek için müşterilerin güçleme
 
 ## <a name="prerequisites"></a>Önkoşullar
-`Microsoft.AppPlatform` [Azure Portal kaynak sağlayıcısını kaydetme](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) yönergelerine göre veya şu az CLI komutunu çalıştırarak Azure yay bulut kaynak sağlayıcısını kaydetmeniz gerekir:
+`Microsoft.AppPlatform` [Azure Portal kaynak sağlayıcısını kaydetme](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) yönergelerine göre veya şu az CLI komutunu çalıştırarak Azure yay bulut kaynak sağlayıcısını kaydetmeniz gerekir:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
@@ -57,7 +57,7 @@ Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten vars
     |-----------------|--------------------------------------------------|
     |Abonelik     |Aboneliğinizi seçin.                         |
     |Kaynak grubu   |Kaynak grubunuzu seçin veya yeni bir tane oluşturun.  |
-    |Ad             |*Azure-Spring-Cloud-VNET* girin                   |
+    |Name             |*Azure-Spring-Cloud-VNET* girin                   |
     |Konum         |**Doğu ABD** seçin                                |
 
 1. Ileri ' ye tıklayın **: IP adresleri >**. 

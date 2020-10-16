@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
 ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600662"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
@@ -71,12 +71,12 @@ Evet, hem aktarım hem de bekleyen.
 
 ### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Kaynak taşıyıcısı hangi yönetilen kimlik izinlerine ihtiyaç duyuyor?
 
-Azure Kaynak taşıyıcısı yönetilen kimliği, en az şu izinlere ihtiyaç duyuyor: 
+Azure Kaynak Taşıyıcı yönetilen kimliğinin en azından şu izinlere sahip olması gerekir: 
 
 - Kullanıcı aboneliğine kaynak yazma/oluşturma izni, *katkıda* bulunan rolüyle kullanılabilir. 
-- Rol atamaları oluşturma izni. Genellikle *sahip* veya *Kullanıcı erişimi yönetici* rolleriyle veya *Microsoft. Authorization/role atama/yazma izni* atanmış özel bir rolle kullanılabilir. Veri paylaşımının yönetilen kimliği zaten Azure veri deposuna erişim izni verildiyse bu izin gerekli değildir. 
+- Rol ataması oluşturma izni. Genellikle *sahip* veya *Kullanıcı erişimi yönetici* rolleriyle veya *Microsoft. Authorization/role atama/yazma izni* atanmış özel bir rolle kullanılabilir. Veri paylaşımının yönetilen kimliği zaten Azure veri deposuna erişim izni verildiyse bu izin gerekli değildir. 
  
-Portal 'da kaynak taşıyıcısı hub 'ına kaynak eklediğinizde, Kullanıcı yukarıda açıklanan izinlere sahip olduğu sürece izinler otomatik olarak işlenir. PowerShell 'e kaynak eklerseniz, izinleri el ile atarsınız.
+Portaldaki Kaynak Taşıyıcı hub'ında kaynak eklediğinizde kullanıcı yukarıda belirtilen izinlere sahip olduğu sürece izinler otomatik olarak işlenir. PowerShell 'e kaynak eklerseniz, izinleri el ile atarsınız.
 
 > [!IMPORTANT]
 > Kimlik rolü atamalarını değiştirmemenizi veya kaldırmanızı kesinlikle öneririz. 

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f349ff62fe211f0610341864a4c7528ee6bfe9c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080140"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961544"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux sanal makineleri için mavi yeşil dağıtım stratejisini yapılandırma
 
@@ -25,7 +25,7 @@ ms.locfileid: "87080140"
 
 Azure Pipelines, sanal makinelere dağıtımlar için tam özellikli bir CI/CD otomasyon araçları kümesi sağlar. Azure portal bir Azure VM için sürekli teslim işlem hattı yapılandırabilirsiniz.
 
-Bu makalede, çok makineli dağıtımlar için mavi yeşil stratejiyi kullanan bir CI/CD işlem hattının nasıl ayarlanacağı gösterilmektedir. Azure Portal Ayrıca, [yuvarlama](https://aka.ms/AA7jlh8) ve [kanarya](https://aka.ms/AA7jdrz)gibi diğer stratejileri de destekler.
+Bu makalede, çok makineli dağıtımlar için mavi yeşil stratejiyi kullanan bir CI/CD işlem hattının nasıl ayarlanacağı gösterilmektedir. Azure Portal Ayrıca, [yuvarlama](./tutorial-devops-azure-pipelines-classic.md) ve [kanarya](./tutorial-azure-devops-canary-strategy.md)gibi diğer stratejileri de destekler.
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Sanal makinelerde CI/CD 'yi yapılandırma
 
@@ -73,8 +73,8 @@ Sürekli teslim seçeneğini kullanarak, Azure portal sanal makinelerinize mavi 
 
 ## <a name="other-deployment-strategies"></a>Diğer dağıtım stratejileri
 
-- [Sıralı dağıtım stratejisini yapılandırma](https://aka.ms/AA7jlh8)
-- [Kanarya dağıtım stratejisini yapılandırma](https://aka.ms/AA7jdrz)
+- [Sıralı dağıtım stratejisini yapılandırma](./tutorial-devops-azure-pipelines-classic.md)
+- [Kanarya dağıtım stratejisini yapılandırma](./tutorial-azure-devops-canary-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projeleri
 

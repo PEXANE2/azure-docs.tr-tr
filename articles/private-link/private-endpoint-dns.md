@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: e71325246b69f501ec8af91c59cb4f042180542c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628018"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999659"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Özel Uç Nokta DNS yapılandırması
 
@@ -117,7 +117,7 @@ Bu model, aynı özel uç noktayla ilişkili birden fazla eşlenmiş sanal ağa 
 > Bu yapılandırma için tek bir özel DNS bölgesi gereklidir. Farklı sanal ağlar için aynı ada sahip birden çok bölge oluşturulması, DNS kayıtlarını birleştirmek için el ile gerçekleştirilen işlemlere ihtiyaç duyar.
 
 > [!IMPORTANT]
-> farklı bir abonelikteki hub ve bağlı bileşen modelinde özel bir uç nokta kullanarak kullanıyorsanız, hub 'da aynı özel DNS bölgesini yeniden kullanın.
+> farklı bir abonelikteki hub ve bağlı bileşen modelinde özel bir uç nokta kullanıyorsanız, hub 'da aynı özel DNS bölgesini yeniden kullanın.
 
 Bu senaryoda, ortak bir özel uç noktasını paylaşan bağlı ağ ağlarının bulunduğu bir [hub ve bağlı](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) ağ topolojisi vardır ve tüm bağlı bileşen sanal ağları aynı özel DNS bölgesine bağlanır. 
 

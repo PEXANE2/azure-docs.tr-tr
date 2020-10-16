@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704990"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Bir sanal makine ağ trafiği Filtreleme sorununu Tanıla
@@ -170,14 +170,14 @@ Bu makaledeki [senaryoda](#scenario) sunulan sorunu tanılamak için Azure [port
 
 | Özellik                | Değer                                                                              |
 |---------                |---------                                                                           |
-| Kaynak                  | Herhangi biri                                                                                |
+| Kaynak                  | Herhangi bir                                                                                |
 | Kaynak bağlantı noktası aralıkları      | Herhangi biri                                                                                |
 | Hedef             | VM 'nin IP adresi, bir IP adresi aralığı veya alt ağdaki tüm adresler. |
 | Hedef bağlantı noktası aralıkları | 80                                                                                 |
 | Protokol                | TCP                                                                                |
 | Eylem                  | İzin Ver                                                                              |
 | Öncelik                | 100                                                                                |
-| Name                    | Allow-HTTP-All                                                                     |
+| Ad                    | Allow-HTTP-All                                                                     |
 
 Kuralı oluşturduktan sonra, bağlantı noktası 80 internet 'ten gelen trafiğe izin verilir, çünkü kuralın önceliği, trafiği reddeden *Denyallinbound*adlı varsayılan güvenlik kuralından daha yüksektir. [Bir güvenlik kuralı oluşturmayı](manage-network-security-group.md#create-a-security-rule)öğrenin. Farklı NSG 'ler hem ağ arabirimiyle hem de alt ağ ile ilişkiliyse, her iki NSG 'de de aynı kuralı oluşturmanız gerekir.
 
@@ -185,7 +185,7 @@ Azure gelen trafiği işlediğinde, alt ağla ilişkili NSG 'deki kuralları iş
 
 Hala iletişim sorunlarınız varsa bkz. [hususlar](#considerations) ve ek tanılama.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Bağlantı sorunlarını giderirken aşağıdaki noktaları göz önünde bulundurun:
 

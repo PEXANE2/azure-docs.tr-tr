@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132424"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK ile U-SQL çalıştırma ve test etme
@@ -35,7 +35,7 @@ Data Lake U-SQL SDK aşağıdaki bağımlılıkları gerektirir:
 
     ![Visual Studio yerel için Data Lake araçları-Windows 10 SDK çalıştırma](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - [Visual Studio için Data Lake araçları](https://aka.ms/adltoolsvs)'nı yükler. Önceden paketlenmiş Visual C++ ve Windows SDK dosyalarını şurada bulabilirsiniz:`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+  - [Visual Studio için Data Lake araçları](https://aka.ms/adltoolsvs)'nı yükler. Önceden paketlenmiş Visual C++ ve Windows SDK dosyalarını şurada bulabilirsiniz: `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
 
     Bu durumda, U-SQL yerel derleyicisi bağımlılıkları otomatik olarak bulamaz. CppSDK yolunu belirtmeniz gerekir. Dosyaları başka bir konuma kopyalayabilir ya da olduğu gibi kullanabilirsiniz.
 
@@ -64,7 +64,7 @@ U-SQL betiklerine hem göreli bir yol hem de yerel mutlak yol kullanabilirsiniz.
 
 U-SQL betiğini yerel olarak çalıştırırken, geçerli çalışan dizin altında derleme sırasında çalışma dizini oluşturulur. Derleme çıktılarına ek olarak, yerel yürütmeye yönelik gerekli çalışma zamanı dosyaları bu çalışma dizinine gölge olarak kopyalanacaktır. Çalışma dizini kök klasörüne "ScopeWorkDir" adı verilir ve çalışma dizini altındaki dosyalar aşağıdaki gibidir:
 
-|Dizin/dosya|Dizin/dosya|Dizin/dosya|Tanım|Açıklama|
+|Dizin/dosya|Dizin/dosya|Dizin/dosya|Tanım|Description|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Çalışma zamanı sürümünün karma dizesi|Yerel yürütme için gereken çalışma zamanı dosyalarının gölge kopyası|
 | |Script_66AE4909AA0ED06C| |Betik adı + betik yolunun karma dizesi|Derleme çıktıları ve yürütme adımı günlüğü|
@@ -154,7 +154,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 |-Ayrıntılı|Yanlış|Çalışma zamanının ayrıntılı çıkışlarını göster|
 |-WorkDir|Geçerli dizin|Derleyici kullanımı ve çıkışları için Dizin|
 |-RunScopeCEP|0|Kullanılacak ScopeCEP modu|
-|-ScopeCEPTempPath|kopyalar|Akış verileri için kullanılacak geçici yol|
+|-ScopeCEPTempPath|temp|Akış verileri için kullanılacak geçici yol|
 |-OptFlags| |İyileştirici bayraklarının virgülle ayrılmış listesi|
 
 Aşağıda bir örnek verilmiştir:

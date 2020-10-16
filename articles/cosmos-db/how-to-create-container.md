@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020006"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı oluşturma
@@ -53,7 +53,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
    * **Tamam**’ı seçin.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="MongoDB için Azure Cosmos DB API 'nin ekran görüntüsü, kapsayıcı ekleme iletişim kutusu":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Yeni kapsayıcı vurgulanmış şekilde Veri Gezgini bölmesinin ekran görüntüsü":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API’si
 
@@ -69,7 +69,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
    * **Tamam**’ı seçin.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API, tablo Ekle iletişim kutusunun ekran görüntüsü":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Yeni kapsayıcı vurgulanmış şekilde Veri Gezgini bölmesinin ekran görüntüsü":::
 
 > [!NOTE]
 > Cassandra API'si için, bölüm anahtarı birincil anahtar olarak kullanılır.
@@ -89,7 +89,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
    * **Tamam**’ı seçin.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Gremlin API ekran görüntüsü, Graf Ekle iletişim kutusu":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Yeni kapsayıcı vurgulanmış şekilde Veri Gezgini bölmesinin ekran görüntüsü":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tablo API’si
 
@@ -103,7 +103,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
    * **Tamam**’ı seçin.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Tablo API'si, tablo Ekle iletişim kutusunun ekran görüntüsü":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Yeni kapsayıcı vurgulanmış şekilde Veri Gezgini bölmesinin ekran görüntüsü":::
 
 > [!Note]
 > Tablo API'si için, her yeni satır eklediğinizde bölüm anahtarı belirtilir.

@@ -4,10 +4,10 @@ description: Sanal makinelerin kullanımda olmadıkları zaman otomatik olarak k
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3532e4859bd63c81cb9b9cda973064e5ef8357ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320719"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Laboratuvar ve işlem sanal makinelerini Azure DevTest Labs için oto kapatma yapılandırma
@@ -31,7 +31,7 @@ Oto kapatma ilkesi, bu laboratuvarın VM 'lerinin kapanması için gereken süre
 
 Bir laboratuvarın ilkelerini görüntülemek (ve değiştirmek) için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.   
 4. **Yapılandırma ve ilkeler '** i seçin.

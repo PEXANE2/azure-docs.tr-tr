@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447995"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969611"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows Önyükleme Yöneticisi hatası-0xC0000428 durum geçersiz görüntü karması
 
@@ -28,7 +28,7 @@ Bu makalede, bir önizleme görüntüsünün kullanıldığı ve deneme süresi 
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde Windows Önyükleme Yöneticisi 'nin şu iletiyle birlikte görüntülediğini görürsünüz:
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde Windows Önyükleme Yöneticisi 'nin şu iletiyle birlikte görüntülediğini görürsünüz:
 
   `File: \windows\system32\boot\winload.exe`
 
@@ -58,7 +58,7 @@ VM 'yi oluşturmak için kullanılan görüntü, RTM (üretim sürümü) görün
 
 `a699494373c04fc0bc8f2bb1389d6106__Windows-Server-Technical-Preview-201505.01-en.us-127GB.vhd`
 
-Önizleme resminin sona erme tarihini genişletemezsiniz. Önizlemenin süresi dolduktan sonra, sanal makine artık önyüklenemeyecektir.
+Önizleme görüntüsünün son kullanma tarihini uzatamazsınız. Önizlemenin süresi dolduktan sonra sanal makine önyüklenemeyecektir.
 
 - Ürüne bağlı olarak, deneme süresi farklılık gösterebilir. Örneğin, Windows önizleme görüntülerinin 180 günlük deneme süresi vardır.
 
@@ -66,7 +66,7 @@ VM 'yi oluşturmak için kullanılan görüntü, RTM (üretim sürümü) görün
 
 ## <a name="solution"></a>Çözüm
 
-Görüntünüz bir önizleme görüntüsü ise, kullanılan görüntünün sona erme tarihini genişletmenin bir yolu yoktur, Önizleme olmayan bir görüntü kullanarak [Yeni BIR VM dağıtmanız](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) gerekir. Aşağıdaki adımlar, bir önizleme görüntüsü kullandıysanız ve bu VM 'den yeni bir VM 'ye veri aktarırken size yardımcı olacak kaynaklar sağlamanıza yardımcı olur. Görüntüyü bir önizleme görüntüsü olarak pozitif olarak belirlediyseniz, artık bu süre dolduğunda görüntü kurtarılamaz.
+Görüntünüz bir önizleme görüntüsü ise, kullanılan görüntünün sona erme tarihini genişletmenin bir yolu yoktur, Önizleme olmayan bir görüntü kullanarak [Yeni BIR VM dağıtmanız](../windows/quick-create-portal.md) gerekir. Aşağıdaki adımlar, bir önizleme görüntüsü kullandıysanız ve bu VM 'den yeni bir VM 'ye veri aktarırken size yardımcı olacak kaynaklar sağlamanıza yardımcı olur. Görüntüyü bir önizleme görüntüsü olarak pozitif olarak belirlediyseniz, artık bu süre dolduğunda görüntü kurtarılamaz.
 
 Tercihinize bağlı olarak, bir önizleme görüntüsü olup olmadığını anlamak üzere görüntünüzü sorgulamak için Azure PowerShell ya da Azure CLı kullanabilirsiniz. Görüntünün bir önizleme görüntüsü olduğunu onaylamak için bu komutları kullanabilirsiniz.
 
@@ -103,7 +103,7 @@ Tercihinize bağlı olarak, bir önizleme görüntüsü olup olmadığını anla
 
 ### <a name="query-using-the-azure-cli"></a>Azure CLı kullanarak sorgulama
 
-1. Henüz yapmadıysanız, [Azure CLI 'yı yüklemeniz](https://docs.microsoft.com/cli/azure/install-azure-cli)gerekecektir.
+1. Henüz yapmadıysanız, [Azure CLI 'yı yüklemeniz](/cli/azure/install-azure-cli)gerekecektir.
 1. İndirildikten sonra komut Istemi veya PowerShell 'i kullanarak `az login` komutu girin ve ardından hesap kimlik bilgilerinizle oturum açın.
 1. Oturum açtıktan sonra aşağıdaki komutları girin:
 

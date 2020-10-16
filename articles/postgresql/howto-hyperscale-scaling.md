@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
 ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295723"
 ---
 # <a name="server-group-size"></a>Sunucu grubu boyutu
@@ -22,13 +22,13 @@ Hyperscale (Citus) dağıtım seçeneği, sorgu yürütmeyi paralel hale getirme
 
 Bir sunucu grubunun boyutu, düğüm sayısı ve bunların donanım kapasitesi açısından kolayca değiştirilebilir ([aşağıya bakın](#scale-a-hyperscale-citus-server-group)). Ancak yine de yeni bir sunucu grubu için bir başlangıç boyutu seçmeniz gerekir. Makul bir seçenek için bazı ipuçları aşağıda verilmiştir.
 
-### <a name="multi-tenant-saas-use-case"></a>Çok kiracılı SaaS kullanımı-örnek
+### <a name="multi-tenant-saas-use-case"></a>Çok kiracılı SaaS Use-Case
 
 Mevcut bir tek düğümlü PostgreSQL veritabanı örneğinden hiper ölçeğe geçiş yapmak için, toplam çalışan sanal çekirdekleri ve RAM sayısının orijinal örneğe eşit olduğu bir küme seçmeniz önerilir. Bu tür senaryolarda, parça kaynak kullanımını iyileştirtiğinden ve daha küçük bir dizin kullanılmasına izin verirken 2 3x performans iyileştirmeleri gördük.
 
 Düzenleyici düğümü için gereken sanal çekirdek sayısı, mevcut iş yükünüze (yazma/okuma aktarım hızı) bağlıdır. Düzenleyici düğümü, çalışan düğümleri olarak çok RAM gerektirmez, ancak sanal çekirdek sayısı temel alınarak ( [Hiperscale (Citus) yapılandırma seçeneklerinde](concepts-hyperscale-configuration-options.md)açıklandığı gibi), sanal çekirdek sayısının gerçek karardır.
 
-### <a name="real-time-analytics-use-case"></a>Gerçek zamanlı analiz kullanımı-örnek
+### <a name="real-time-analytics-use-case"></a>Real-Time Analytics Use-Case
 
 Toplam Vçekirdekler: RAM 'e uygun veri miktarı kullanıldığında, hiper ölçekte (Citus) bir doğrusal performans geliştirmesini, çalışan çekirdekleri sayısıyla orantılı olarak bekleyebilir. Gereksinimlerinize göre doğru sanal çekirdek sayısını öğrenmek için, tek düğümlü veritabanınızdaki sorgular için geçerli gecikme süresini ve hiper ölçekte gereken gecikme süresini göz önünde bulundurun (Citus). Geçerli gecikme süresini istenen gecikme süresine bölün ve sonucu yuvarlayın.
 

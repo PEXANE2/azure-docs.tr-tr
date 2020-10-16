@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978671"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -130,7 +130,7 @@ PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiz
 | **En fazla bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |Kullanılan kaydedilmiş bayt yüzdesi |Vmstat kullanma |
 | **Maks. CPU** |Uygulamayı sorunsuz şekilde çalıştırmak için CPU miktarı gereklidir |% İşlemci zamanı |% Util |
 
-[Iostat](https://linux.die.net/man/1/iostat) ve [Perfmon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)hakkında daha fazla bilgi edinin.
+[Iostat](https://linux.die.net/man/1/iostat) ve [Perfmon](/windows/win32/perfctrs/performance-counters-portal)hakkında daha fazla bilgi edinin.
 
 
 
@@ -197,7 +197,7 @@ Uygulama performansı üzerinde GÇ boyutunun etkilerini sağlamak için, VM 'ni
 
 ## <a name="high-scale-vm-sizes"></a>Yüksek ölçekli VM boyutları
 
-Bir uygulamayı tasarlamaya başladığınızda, ilk yapmanız gereken tek şey, uygulamanızı barındırmak için bir VM seçin. Premium Depolama, daha yüksek bilgi işlem gücü ve yüksek bir yerel disk g/ç performansı gerektiren uygulamalar çalıştırabilen yüksek ölçekli VM boyutlarına sahiptir. Bu VM 'Ler, daha hızlı işlemciler, daha yüksek bellek-çekirdek oranı ve yerel disk için katı hal sürücüsü (SSD) sağlar. Premium depolamayı destekleyen yüksek ölçekli sanal makinelerin örnekleri DS ve GS serisi VM 'lardır.
+Bir uygulamayı tasarlamaya başladığınızda, ilk yapmanız gereken tek şey, uygulamanızı barındırmak için bir VM seçin. Premium Depolama, daha yüksek bilgi işlem gücü ve yüksek bir yerel disk g/ç performansı gerektiren uygulamalar çalıştırabilen yüksek ölçekli VM boyutlarına sahiptir. Bu VM 'Ler, daha hızlı işlemciler, daha yüksek bellek-çekirdek oranı ve yerel disk için bir Solid-State sürücüsü (SSD) sağlar. Premium depolamayı destekleyen yüksek ölçekli sanal makinelerin örnekleri DS ve GS serisi VM 'lardır.
 
 Yüksek ölçekli VM 'Ler, farklı boyutlarda CPU çekirdekleri, bellek, işletim sistemi ve geçici disk boyutuyla farklı boyutlarda kullanılabilir. Her VM boyutunun Ayrıca sanal makineye iliştirebilmeniz için maksimum veri diski sayısı vardır. Bu nedenle, seçilen VM boyutu, uygulamanız için ne kadar işlem, bellek ve depolama kapasitesi olduğunu etkiler. Ayrıca Işlem ve depolama maliyetini de etkiler. Örneğin, bir DS serisi ve GS serisi içindeki en büyük VM boyutunun belirtimleri aşağıda verilmiştir:
 
@@ -279,7 +279,7 @@ Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir
 
 | **Disk önbelleğe alma ayarı** | **Bu ayarın ne zaman kullanılacağı önerisi** |
 | --- | --- |
-| Hiçbiri |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
+| Yok |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
 | ReadOnly |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
 | ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 
@@ -343,7 +343,7 @@ Bu çoklu iş parçacığı oluşturmayı veya bir uygulamanın paralel işlemes
 
 Örneğin, SQL Server kullanarak uygulamanızın aynı anda büyük bir sorgu ve dizin işlemi yürüttüğünü varsayalım. Dizin işleminin büyük sorguyla karşılaştırıldığında daha fazla performansa sahip olduğunu varsayalım. Böyle bir durumda, Dizin işleminin MAXDOP değerini sorgu için MAXDOP değerinden daha yüksek olacak şekilde ayarlayabilirsiniz. Bu şekilde SQL Server, dizin işlemi için, büyük sorguya ayırabildiğinden işlemci sayısıyla karşılaştırıldığında daha fazla sayıda işlemciye sahiptir. Her işlem için kullanılacak SQL Server iş parçacığı sayısını kontrol etmeyi unutmayın. Çoklu iş parçacığı için ayrılan en fazla işlemci sayısını kontrol edebilirsiniz.
 
-SQL Server [paralellik dereceleri](https://technet.microsoft.com/library/ms188611.aspx) hakkında daha fazla bilgi edinin. Uygulamanızda çoklu iş parçacığı ve bunların yapılandırmasını etkileyen bu ayarları, performansı iyileştirmek için öğrenin.
+SQL Server [paralellik dereceleri](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) hakkında daha fazla bilgi edinin. Uygulamanızda çoklu iş parçacığı ve bunların yapılandırmasını etkileyen bu ayarları, performansı iyileştirmek için öğrenin.
 
 ## <a name="queue-depth"></a>Sıra derinliği
 

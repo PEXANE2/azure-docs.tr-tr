@@ -10,18 +10,21 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 30c3fa837f84ff318e9a03a8a11ef6259890f4bb
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 1effb62619f9767cc90c99e037445e7a95981460
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653749"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078247"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Yeni Azure Time Series Insights Gen2 API sürümlerine geçiş
 
 ## <a name="overview"></a>Genel Bakış
 
-Ortak Önizlemedeki bir Azure Time Series Insights Gen2 ortamı oluşturduysanız (16 Temmuz 2020 ' den önce), bu makalede açıklanan adımları izleyerek, lütfen TSI ortamınızı, API 'lerin yeni genel sürümlerini kullanacak şekilde güncelleştirin.
+Ortak Önizlemedeki bir Azure Time Series Insights Gen2 ortamı oluşturduysanız (16 Temmuz 2020 ' den önce), bu makalede açıklanan adımları izleyerek, lütfen TSI ortamınızı, API 'lerin yeni genel sürümlerini kullanacak şekilde güncelleştirin. Bu değişiklik, Azure Time Series Insights Gen1 sürümünü kullanan kullanıcıları etkilemez.
+
+> [!IMPORTANT]
+> Bu makalede açıklanan güncelleştirmeler yalnızca, TSI ortamınızın kullandığı API sürümlerini yükseltir. Bu değişiklik, Gen2 ortamları için sunulan yeni [JSON düzleştirme ve kaçış kurallarından](https://docs.microsoft.com/azure/time-series-insights/concepts-json-flattening-escaping-rules) bağımsız değildir.
 
 Yeni API sürümü `2020-07-31` ve güncelleştirilmiş bir [zaman serisi ifade sözdizimi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)kullanır.
 

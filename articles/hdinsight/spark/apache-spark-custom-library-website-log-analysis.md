@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083806"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight üzerinde Apache Spark kümesiyle özel bir Python kitaplığı kullanarak Web sitesi günlüklerini çözümleme
 
 Bu not defteri, HDInsight üzerinde Apache Spark olan özel bir kitaplık kullanarak günlük verilerinin nasıl çözümlendiğini gösterir. Kullandığımız özel kitaplık, **iislogparser.py**adlı bir Python kitaplığıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -78,7 +78,7 @@ Verileriniz bir Apache Hive tablo olarak kaydedildikten sonra, sonraki bölümde
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. `iislogparser`bir `parse_log_line` `None` günlük satırı bir başlık satırı ise ve `LogLine` bir günlük satırı ile karşılaştığında sınıfın bir örneğini döndürürse döndüren bir işlev sağlar. `LogLine`Yalnızca RDD 'deki günlük satırlarını ayıklamak için sınıfını kullanın:
+1. `iislogparser` bir `parse_log_line` `None` günlük satırı bir başlık satırı ise ve `LogLine` bir günlük satırı ile karşılaştığında sınıfın bir örneğini döndürürse döndüren bir işlev sağlar. `LogLine`Yalnızca RDD 'deki günlük satırlarını ayıklamak için sınıfını kullanın:
 
     ```pyspark
     def parse_line(l):

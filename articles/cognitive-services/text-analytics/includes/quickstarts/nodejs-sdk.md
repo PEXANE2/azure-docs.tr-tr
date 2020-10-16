@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/27/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d9c3c8e795b6651595a17d540aafa849ce81471
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c24a50926fe028dcbf42d3642ae3ec5c9ae84f5b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91401082"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977858"
 ---
 <a name="HOLTop"></a>
 
@@ -35,7 +35,7 @@ ms.locfileid: "91401082"
 
 ---
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Node.js](https://nodejs.org/)geçerli sürümü.
@@ -147,11 +147,12 @@ Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir.
 
 * [İstemci kimlik doğrulaması](#client-authentication)
 * [Yaklaşım Analizi](#sentiment-analysis) 
+* [Görüşün madenciliği](#opinion-mining)
 * [Dil algılama](#language-detection)
 * [Adlandırılmış varlık tanıma](#named-entity-recognition-ner)
 * [Varlık bağlama](#entity-linking)
 * Kişisel Bilgiler
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>İstemci Kimlik Doğrulaması
 
@@ -211,7 +212,7 @@ sentimentAnalysis(textAnalyticsClient)
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -272,7 +273,7 @@ sentimentAnalysisWithOpinionMining(textAnalyticsClient)
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -334,7 +335,7 @@ sentimentAnalysis(textAnalyticsClient)
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -358,7 +359,7 @@ ID: 0
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 [ { id: '1', score: 0.87 } ]
@@ -393,7 +394,7 @@ languageDetection(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -422,7 +423,7 @@ languageDetection(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -437,7 +438,7 @@ Belgelerinizi içeren sözlük nesnelerinin bir listesini oluşturun. İstemcini
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 1 , Language: English
@@ -479,7 +480,7 @@ entityRecognition(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 0
@@ -528,7 +529,7 @@ linkedEntityRecognition(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 0
@@ -583,7 +584,7 @@ piiRecognition(textAnalyticsClient)
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Redacted Text:  The employee's phone number is **************.
@@ -621,7 +622,7 @@ entityRecognition(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 0
@@ -670,7 +671,7 @@ linkedEntityRecognition(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 0
@@ -707,7 +708,7 @@ Belgelerinizi içeren bir nesne listesi oluşturun. İstemcinin [Entities ()](ht
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 1
@@ -763,7 +764,7 @@ keyPhraseExtraction(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -792,7 +793,7 @@ keyPhraseExtraction(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -807,7 +808,7 @@ Belgelerinizi içeren bir nesne listesi oluşturun. İstemcinin [keyPhrases ()](
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 [

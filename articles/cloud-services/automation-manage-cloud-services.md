@@ -10,12 +10,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67830f8c00d9f74f62883e0714ffe1c2bbbd6903
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72439081"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075629"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak Azure Cloud Services yönetme
 Bu kılavuz size Azure Otomasyonu hizmetini ve Azure bulut hizmetlerinizin yönetimini basitleştirmek için nasıl kullanılabileceğini tanıtacaktır.
@@ -39,4 +39,4 @@ Azure Cloud Services 'yi yönetmek için Azure Otomasyonu 'nun bazı örnekleri 
 Azure Otomasyonu ile ilgili temel bilgileri ve Azure bulut hizmetlerini yönetmek için nasıl kullanılabileceğinizi öğrendiğinize göre, Azure Otomasyonu hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
 * [Azure Otomasyonu genel bakış](../automation/automation-intro.md)
-* [İlk runbook’um](../automation/automation-first-runbook-graphical.md)
+* [İlk runbook’um](../automation/learn/automation-tutorial-runbook-graphical.md)

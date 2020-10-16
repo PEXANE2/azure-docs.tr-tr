@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869431"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
@@ -39,7 +39,7 @@ Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel ya
 
 - **Benzersiz anahtar Ihlallerinden kaçının** – Azure Stream Analytics etkinlik günlüğünde [birden çok anahtar ihlali uyarı iletisi](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) alırsanız, işinizin kurtarma durumları sırasında gerçekleşmesi muhtemel olan benzersiz kısıtlama ihlallerinden etkilenmediğinden emin olun. Dizininizdeki [ \_ \_ anahtar yok sayma](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) seçeneği ayarlanarak bu kaçınılabilir.
 
-## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory ve bellek Içi tablolar
+## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory ve In-Memory tabloları
 
 - **Geçici tablo olarak bellek Içi tablo** : [bellek içi tablolar](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) çok yüksek hızlı veri yükleri sağlar ancak verilerin belleğe sığması gerekir. Kıyaslamalar, bir bellek içi tablodan disk tabanlı bir tabloya toplu yükleme işlemini, bir kimlik sütunuyla ve kümelenmiş bir dizinle disk tabanlı tabloya tek bir yazıcı kullanarak doğrudan toplu ekleme işlemi için yaklaşık 10 kat daha hızlıdır. Bu toplu ekleme performansından yararlanmak için, bellek içi tablodaki verileri disk tabanlı tabloya kopyalayan [Azure Data Factory kullanarak bir kopyalama işi](../data-factory/connector-azure-sql-database.md) ayarlayın.
 
@@ -48,10 +48,10 @@ Toplu ekleme verileri, tek eklemeleri olan verileri yüklemeye göre çok daha h
 
 Gelen olaylar oranı düşükse, toplu ekleme verimsiz ve çok fazla disk alanı kullanan 100 satırdan daha düşük toplu işlem boyutları kolayca oluşturulabilir. Bu kısıtlamayı geçici olarak çözmek için şu eylemlerden birini yapabilirsiniz:
 * Her satır için basit ekleme kullanmak üzere bir INSTEAD OF [tetikleyicisi](/sql/t-sql/statements/create-trigger-transact-sql) oluşturun.
-* Önceki bölümde açıklandığı gibi bellek Içi geçici tablo kullanın.
+* Önceki bölümde açıklandığı gibi In-Memory geçici bir tablo kullanın.
 
 Bu tür bir senaryo, kümelenmemiş bir columnstore dizinine (NCCı) yazılırken meydana gelir; burada daha küçük toplu ekler çok fazla bölüt oluşturabilir ve bu da dizin kilitlenebilirler. Bu durumda, bunun yerine kümelenmiş bir columnstore dizininin kullanılması önerilir.
 
 ## <a name="summary"></a>Özet
 
-Özet olarak, SQL çıktısı için Azure Stream Analytics bölümlenmiş çıkış özelliği ile, bir SQL Azure bölümlenmiş tablo ile işinizin hizalı paralelleştirme, size önemli bir işleme iyileştirmeleri vermelidir. Bellek Içi bir tablodan disk tabanlı tablolara veri hareketini düzenlemek için Azure Data Factory kullanma, büyüklük halinde üretilen iş kazanımları verebilir. Mümkünse, ileti yoğunluğunu artırmak, genel üretilen işi iyileştirmeye yönelik bir büyük etken de olabilir.
+Özet olarak, SQL çıktısı için Azure Stream Analytics bölümlenmiş çıkış özelliği ile, bir SQL Azure bölümlenmiş tablo ile işinizin hizalı paralelleştirme, size önemli bir işleme iyileştirmeleri vermelidir. Bir In-Memory tablosundan disk tabanlı tablolara veri hareketini düzenlemek için Azure Data Factory kullanmak, büyüklük halinde üretilen iş kazanımları verebilir. Mümkünse, ileti yoğunluğunu artırmak, genel üretilen işi iyileştirmeye yönelik bir büyük etken de olabilir.

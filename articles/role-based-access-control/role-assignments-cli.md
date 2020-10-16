@@ -11,17 +11,17 @@ ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
 ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597658"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma
+# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Bu makalede, Azure CLı kullanarak rollerin nasıl atanacağı açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 

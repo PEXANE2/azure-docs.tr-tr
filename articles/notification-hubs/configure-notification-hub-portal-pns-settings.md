@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67e90667df2b62ec2c37d865fe431a2be6f81b9e
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87761034"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876575"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Hızlı başlangıç: Bildirim Hub 'ında anında iletme bildirimleri ayarlama
 
@@ -67,14 +67,11 @@ Bu adımları tamamladığınızda, bir uyarı bildirim hub 'ının başarıyla 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>Önkoşullar
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Başlamadan önce aşağıdakilere sahip olmanız gerekir:
+- Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. Yüklenen sürümü ve bağımlı kitaplıkları bulmak için [az Version](/cli/azure/reference-index?#az_version) ' i çalıştırın. En son sürüme yükseltmek için [az Upgrade](/cli/azure/reference-index?#az_upgrade)' i çalıştırın.
 
-* [Azure CLI](/cli/azure/install-azure-cli) sürüm 2.0.67 veya üzeri.
-
-* [Notification Hubs Için](/cli/azure/ext/notification-hub/notification-hub)Azure CLI uzantısı.
-* Google Firebase Cloud Messaging (FCM) projesi için **API anahtarı** .
+- Google Firebase Cloud Messaging (FCM) projeniz için **API anahtarına** ihtiyacınız olacak.
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Google FCM için anında iletme bildirimleri ayarlama
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737538"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Bir Azure sanal ağının topolojisini görüntüleme
@@ -30,7 +30,7 @@ Bir topolojiyi görüntülemek için [Azure Portal](#azure-portal), [Azure CLI](
 
 1. [Azure Portal](https://portal.azure.com) , gerekli [izinlere](required-rbac-permissions.md)sahip bir hesapla oturum açın.
 2. Portalın sol üst köşesinde, **tüm hizmetler**' i seçin.
-3. **Tüm hizmetler** filtresi kutusunda *Ağ İzleyicisi*' ni girin. **Ağ İzleyicisi**, sonuçlarda görüntülendiğinde onu seçin.
+3. **Tüm hizmetler** filtresi kutusunda *Ağ İzleyicisi*' ni girin. Sonuçlarda **Ağ İzleyicisi** göründüğünde seçin.
 4. **Topoloji**’yi seçin. Topoloji oluşturmak için, topolojisi oluşturmak istediğiniz sanal ağın aynı bölgede bir ağ izleyicisi olması gerekir. Topolojisi oluşturmak istediğiniz sanal ağın bulunduğu bölgede etkin bir ağ izleyicisi yoksa, ağ izleyicileri tüm bölgelerde sizin için otomatik olarak oluşturulur. Ağ izleyicileri, **NetworkWatcherRG**adlı bir kaynak grubunda oluşturulur.
 5. Bir abonelik, için topolojiyi görüntülemek istediğiniz bir sanal ağın kaynak grubunu seçin ve ardından sanal ağı seçin. Aşağıdaki resimde, *Myresourcegroup*adlı kaynak grubunda *myvnet*adlı bir sanal ağ için bir topoloji gösterilir:
 

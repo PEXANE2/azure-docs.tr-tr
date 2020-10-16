@@ -4,10 +4,10 @@ description: Bu makalede, IoT Edge terminolojisine ilişkin canlı video analizl
 ms.topic: conceptual
 ms.date: 05/30/2020
 ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88690621"
 ---
 # <a name="terminology"></a>Terminoloji
@@ -38,7 +38,7 @@ Güvenlik kameraları için bir video yönetim sistemi bağlamında, video kayd�
 
 ## <a name="rtsp"></a>RTSP
 
-[RTSP](https://tools.ietf.org/html/rfc2326) gerçek zamanlı akış protokolüne başvurur. Gerçek zamanlı özelliklerle veri tesliminde denetim için uygulama düzeyi bir protokoldür. RTSP, ses ve video gibi gerçek zamanlı verilerin denetimli, isteğe bağlı teslimatını etkinleştirmek için genişletilebilir bir çerçeve sağlar. 
+[RTSP](https://tools.ietf.org/html/rfc2326) Real-Time akış protokolüne başvurur. Gerçek zamanlı özelliklerle veri tesliminde denetim için uygulama düzeyi bir protokoldür. RTSP, ses ve video gibi gerçek zamanlı verilerin denetimli, isteğe bağlı teslimatını etkinleştirmek için genişletilebilir bir çerçeve sağlar. 
 
 ## <a name="streaming"></a>Akış
 

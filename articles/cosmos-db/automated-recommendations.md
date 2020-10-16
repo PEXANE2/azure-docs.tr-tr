@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87450911"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Azure Cosmos DB için otomatik öneriler
@@ -28,7 +28,7 @@ Azure Cosmos DB önerilerini aşağıdaki yollarla görüntüleyebilirsiniz:
 
 - Ayrıca, maliyet, güvenlik, güvenilirlik, performans ve işlemsel üstün çalışma gibi farklı demetlere göre sınıflandırılan [Azure Advisor](../advisor/advisor-overview.md) aracılığıyla önerileri de bulabilirsiniz. Belirli abonelikleri seçebilir ve **Azure Cosmos DB hesaplar**olan kaynak türüne göre filtreleyebilirsiniz.  Belirli bir öneriyi seçtiğinizde, iş yüklerinize yarar sağlamak için gerçekleştirebileceğiniz eylemleri görüntüler.
 
-   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Azure Advisor bölmesinden önerileri görüntüleme":::
+   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Azure Cosmos DB bölmesinden önerileri görüntüle":::
 
 Azure Cosmos DB bölmesinde gösterilen önerilerin hepsi Azure Advisor 'da kullanılabilir değildir ve tam tersi de geçerlidir. Bunun nedeni, Azure Advisor bölmesine, Azure Cosmos DB bölmesine veya her ikisine de uydukları önerinin türüne bağlıdır.
 

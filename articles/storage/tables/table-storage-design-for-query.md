@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236344"
 ---
 # <a name="design-for-querying"></a>Sorgulama için tasarım
@@ -41,7 +41,7 @@ Aşağıdaki örneklerde, tablo hizmetinin çalışan varlıklarını aşağıda
 | **Rowkey** (çalışan kimliği) |Dize |
 | **FirstName** |Dize |
 | **LastName** |Dize |
-| **Yaş** |Tamsayı |
+| **Age** |Tamsayı |
 | **EmailAddress** |Dize |
 
 [Azure Tablo depolama genel bakış](table-storage-overview.md) makalesi, Azure Tablo hizmeti 'nin sorgu tasarımı üzerinde doğrudan bir etkisi olan temel özelliklerden bazılarını açıklar. Bunlar, tablo hizmeti sorguları tasarlamak için aşağıdaki genel yönergelere yol açabilir. Aşağıdaki örneklerde kullanılan filtre sözdiziminin tablo hizmeti REST API olduğunu unutmayın. daha fazla bilgi için bkz. [Sorgu varlıkları](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  

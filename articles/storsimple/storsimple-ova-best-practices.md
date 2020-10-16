@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81460656"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Sanal Dizisi ile ilgili en iyi deneyimler
@@ -149,7 +149,7 @@ Sanal diziniz ile ilişkili depolama hesapları için aşağıdaki önerileri ku
   
   * Gecikme sürelerini en aza indirmek için StorSimple Sanal diziniz dağıtıldığı uzak Office/şube ofise en yakın bölgede oluşturmanız önerilir.
   * Bir depolama hesabını farklı bölgelerde taşıyamayacağınızı göz önünde bulundurun. Ayrıca, bir hizmeti abonelikler arasında taşıyamazsınız.
-  * Veri merkezleri arasında artıklık uygulayan bir depolama hesabı kullanın. Coğrafi olarak yedekli depolama (GRS), bölge yedekli depolama (ZRS) ve yerel olarak yedekli depolama (LRS), sanal diziniz ile kullanım için desteklenir. Farklı türlerde depolama hesapları hakkında daha fazla bilgi için [Azure Storage çoğaltma](../storage/common/storage-redundancy.md)' ya gidin.
+  * Veri merkezleri arasında artıklık uygulayan bir depolama hesabı kullanın. Geo-Redundant depolama (GRS), bölgesel olarak yedekli depolama (ZRS) ve yerel olarak yedekli depolama (LRS), sanal diziniz ile kullanım için desteklenir. Farklı türlerde depolama hesapları hakkında daha fazla bilgi için [Azure Storage çoğaltma](../storage/common/storage-redundancy.md)' ya gidin.
 
 ### <a name="shares-and-volumes"></a>Paylaşımlar ve birimler
 StorSimple Sanal diziniz için, bir Iscsı sunucusu olarak yapılandırıldığında bir dosya sunucusu ve birim olarak yapılandırıldığında paylaşımlar sağlayabilirsiniz. Paylaşımlar ve birimler oluşturmak için en iyi uygulamalar, boyut ve yapılandırılan tür ile ilgilidir.

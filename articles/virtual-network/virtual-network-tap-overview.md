@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 7013c8ed338e727dd79a3845ff3b85749c0f5cee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836097"
 ---
 # <a name="virtual-network-tap"></a>Sanal ağ TAP
@@ -30,7 +30,7 @@ Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi b
 Aşağıdaki resimde, sanal ağ TAP 'ın nasıl çalıştığı gösterilmektedir. Sanal ağınızda dağıtılan bir sanal makineye bağlı bir [ağ arabirimine](virtual-network-network-interface.md) bir dokunma yapılandırması ekleyebilirsiniz. Hedef, izlenen ağ arabirimiyle veya eşlenmiş bir [sanal](virtual-network-peering-overview.md) ağla aynı sanal ağdaki bir sanal ağ IP adresidir. Sanal ağ TAP 'ın toplayıcı çözümü, yüksek kullanılabilirlik için bir Azure Iç yük dengeleyicinin arkasına dağıtılabilir.
 ![Sanal ağ dokunma çalışma şekli](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir sanal ağ TAP 'ı oluşturmadan önce, önizlemeye kaydettiğiniz bir onay e-postası almış ve [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dağıtım modeli kullanılarak oluşturulmuş bir veya daha fazla sanal makineniz ve aynı Azure bölgesindeki dokunma trafiğini toplamak için bir iş ortağı çözümünün olması gerekir. Sanal ağınızda bir iş ortağı çözümünüz yoksa, bir tane dağıtmak için [iş ortağı çözümlerine](#virtual-network-tap-partner-solutions) bakın. Aynı veya farklı aboneliklerdeki birden çok ağ arabiriminden gelen trafiği toplamak için aynı sanal ağ TAP kaynağını kullanabilirsiniz. İzlenen ağ arabirimleri farklı aboneliklerdeyse, aboneliklerin aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir. Ayrıca, dokunma trafiğini toplamak için izlenen ağ arabirimleri ve hedef uç noktası aynı bölgedeki eşlenmiş sanal ağlarda bulunabilir. Bu dağıtım modelini kullanıyorsanız, sanal ağ [dokuyla yapılandırmadan önce sanal ağ](virtual-network-peering-overview.md) eşlemesinin etkinleştirildiğinden emin olun.
 
@@ -38,7 +38,7 @@ Bir sanal ağ TAP 'ı oluşturmadan önce, önizlemeye kaydettiğiniz bir onay e
 
 Ağ arabirimlerinde yapılandırma uygulamak için kullandığınız hesapların [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tablodan gerekli eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
 
-| Eylem | Ad |
+| Eylem | Adı |
 |---|---|
 | Microsoft. Network/virtualNetworkTaps/* | Bir sanal ağ dokunma kaynağı oluşturmak, güncelleştirmek, okumak ve silmek için gereklidir |
 | Microsoft. Network/NetworkInterfaces/Read | TAP 'ın yapılandırıldığı ağ arabirimi kaynağını okumak için gereklidir |
@@ -66,7 +66,7 @@ Ağ arabirimlerinde yapılandırma uygulamak için kullandığınız hesapların
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Riveryatak Steelmerkezi AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA Nettanık® platformu](https://www.rsa.com/azure)
-- [Vectra Bilito](https://vectra.ai/microsoftazure)
+- [Vectra Cognito](https://vectra.ai/microsoftazure)
 
 
 

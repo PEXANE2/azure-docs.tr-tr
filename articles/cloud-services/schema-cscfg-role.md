@@ -10,10 +10,10 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79528430"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Azure Cloud Services yapılandırma rolü şeması
@@ -22,7 +22,7 @@ ms.locfileid: "79528430"
 
 Azure hizmet yapılandırma şeması hakkında daha fazla bilgi için bkz. [Cloud Service (klasik) yapılandırma şeması](schema-cscfg-file.md). Azure hizmet tanımı şeması hakkında daha fazla bilgi için bkz. [bulut hizmeti (klasik) Tanım Şeması](schema-csdef-file.md).
 
-##  <a name="role-element"></a><a name="Role"></a>Rol öğesi
+##  <a name="role-element"></a><a name="Role"></a> Rol öğesi
 Aşağıdaki örnek `Role` öğesi ve onun alt öğelerini gösterir.
 
 ```xml 
@@ -48,7 +48,7 @@ Aşağıdaki tabloda öğesi için öznitelikler açıklanmaktadır `Role` .
 
 Aşağıdaki tablo, öğesinin alt öğelerini açıklar `Role` .
 
-| Öğe | Description |
+| Öğe | Açıklama |
 | ------- | ----------- |
 | Örnekler | Gereklidir. Rol için dağıtılacak örneklerin sayısını belirtir. Örnek sayısı öznitelik için bir tamsayı ile tanımlanır `count` .|
 | Ayar   | İsteğe bağlı. Bir rolün ayarlar koleksiyonundaki bir ayar adı ve değeri belirtir. Ayar adı, özniteliği için bir dize tarafından tanımlanır `name` ve ayar değeri öznitelik için bir dize tarafından tanımlanır `value` .|

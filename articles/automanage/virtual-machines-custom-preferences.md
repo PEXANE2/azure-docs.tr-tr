@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715042"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>VM 'Ler için Azure oto yönetiminde özel bir tercih oluşturma
@@ -26,7 +26,7 @@ Sanal makine için Azure oto yönetimi en iyi yöntemleri, gerekirse ayarlanabil
 > Bir yapılandırma profilini veya bir tercihi, sizin için, oto yönetimi etkinken değiştiremezsiniz. Bu VM için, bu sanal makine için yeniden yönetme 'yi devre dışı bırakmanız ve ardından, istenen yapılandırma profili ve tercihleriyle tekrar yönetmeyi yeniden etkinleştirmeniz gerekir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) .
 
@@ -69,7 +69,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
         1. Abonelik
         1. Kaynak grubu
         1. Tercih adı
-        1. Region
+        1. Bölge
 
     :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Kullanılabilir VM 'Ler listesinden mevcut VM 'yi seçin.":::
 

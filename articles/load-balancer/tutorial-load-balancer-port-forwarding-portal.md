@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d1a08dc588f0303ccb1ae13bd4c28af2a393c7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82207896"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043662"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Öğretici: portalı kullanarak Azure Load Balancer bağlantı noktası iletmeyi yapılandırma
 
@@ -40,6 +40,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu öğreticideki tüm adımlar için Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
+## <a name="prerequisites"></a>Önkoşullar
+
+* Azure aboneliği.
+
 ## <a name="create-a-standard-load-balancer"></a>Standart yük dengeleyici oluşturma
 
 İlk olarak, VM 'Ler üzerinden trafik yükünü dengeleyebilir ortak bir standart yük dengeleyici oluşturun. Standart yük dengeleyici yalnızca standart bir genel IP adresini destekler. Standart yük dengeleyici oluşturduğunuzda, yük dengeleyici ön ucu olarak yapılandırılan ve varsayılan olarak **Loadbalancerön uç** olarak yapılandırılmış yeni bir standart genel IP adresi de oluşturursunuz. 
@@ -51,7 +55,7 @@ Bu öğreticideki tüm adımlar için Azure portal oturum açın [https://portal
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegrouplb* yazın.|
-    | Adı                   | *myLoadBalancer*                                   |
+    | Ad                   | *myLoadBalancer*                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
@@ -121,7 +125,7 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
    
 1. **Yönetim** sekmesini seçin veya **İleri**  >  **Yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
    
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
    
 1. Ayarları gözden geçirin ve doğrulamanın başarılı olması durumunda **Oluştur**' u seçin. 
 
@@ -153,7 +157,7 @@ VM 'Ler için gelen internet (HTTP) bağlantılarına izin veren bir ağ güvenl
    - **Ad**: *Myhttprule*yazın. 
    - **Açıklama**: tür *http 'ye izin ver*. 
    
-1. **Add (Ekle)** seçeneğini belirleyin. 
+1. **Ekle**’yi seçin. 
    
    ![NSG kuralı oluşturma](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
    

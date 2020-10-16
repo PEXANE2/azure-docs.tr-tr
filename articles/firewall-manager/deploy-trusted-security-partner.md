@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85611586"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Güvenlik iş ortağı sağlayıcısı dağıtma
@@ -42,7 +42,7 @@ Mevcut bir hub 'a üçüncü taraf bir sağlayıcı dağıtıyorsanız bu bölü
 11. **İleri ' yi seçin: güvenlik Iş ortağı sağlayıcısı**.
 12. **Güvenlik Iş ortağı sağlayıcısını** **etkin**olarak ayarlayın. 
 13. Bir iş ortağı seçin. 
-14. **İleri ' yi seçin: gözden geçir + oluştur**. 
+14. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin. 
 15. İçeriği gözden geçirin ve ardından **Oluştur**' u seçin.
 
 VPN Gateway dağıtımı 30 dakikadan uzun sürebilir.
@@ -101,7 +101,7 @@ Sanal hub 'ın VPN Gateway tünellerini ayarlamak için, üçüncü taraf sağla
 5. **Güvenli bağlantılar** ' ı seçmeniz ve bu yolların ayarlanması gereken bağlantıları seçmeniz gerekir. Bu, üçüncü taraf sağlayıcıya Internet trafiği göndermeye başlayabileceği sanal ağlar/dallar olduğunu gösterir.
 6. **Yönlendirme ayarları**' ndan Internet trafiği altında **güvenli bağlantılar** ' ı seçin, ardından güvenli hale getirilmekte olan VNET veya dalları (sanal WAN 'da*siteler* ) seçin. **Güvenli Internet trafiği**' ni seçin.
    ![Güvenli Internet trafiği](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Hub 'ları sayfasına geri gidin. Hub 'ın **güvenlik iş ortağı sağlayıcısının** durumu artık **güvenli**olmalıdır.
+7. Hub 'ları sayfasına geri gidin. Hub 'ın **güvenlik iş ortağı sağlayıcısının** durumu artık  **güvenli**olmalıdır.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Üçüncü taraf hizmet aracılığıyla şube veya VNet Internet trafiği
 

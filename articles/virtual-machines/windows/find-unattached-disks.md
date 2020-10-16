@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4f217a53c23df4f161207aaceb528680ddcddbe7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705708"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972807"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Eklenmemiş yönetilen ve yönetilmeyen Azure disklerini bulma ve silme
 
@@ -20,7 +20,7 @@ Azure 'da bir sanal makineyi (VM) sildiğinizde, varsayılan olarak, VM 'ye bağ
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Yönetilen diskler: eklenmemiş diskleri bulma ve silme
 
-Aşağıdaki betik, **ManagedBy** özelliğinin değerini inceleyerek eklenmemiş [yönetilen diskleri](managed-disks-overview.md) arar. Yönetilen bir disk bir sanal makineye eklendiğinde, **ManagedBy** özelliği sanal makınenın kaynak kimliğini içerir. Yönetilen bir disk eklendiği zaman, **ManagedBy** özelliği null olur. Betik, bir Azure aboneliğindeki tüm yönetilen diskleri inceler. Betik, **ManagedBy** özelliği null olarak ayarlanmış bir yönetilen disk bulduktan sonra, komut dosyası diskin eklenmemiş olduğunu belirler.
+Aşağıdaki betik, **ManagedBy** özelliğinin değerini inceleyerek eklenmemiş [yönetilen diskleri](../managed-disks-overview.md) arar. Yönetilen bir disk bir sanal makineye eklendiğinde, **ManagedBy** özelliği sanal makınenın kaynak kimliğini içerir. Yönetilen bir disk eklendiği zaman, **ManagedBy** özelliği null olur. Betik, bir Azure aboneliğindeki tüm yönetilen diskleri inceler. Betik, **ManagedBy** özelliği null olarak ayarlanmış bir yönetilen disk bulduktan sonra, komut dosyası diskin eklenmemiş olduğunu belirler.
 
 >[!IMPORTANT]
 >İlk olarak, **Deleteunattacheddisks** değişkenini 0 olarak ayarlayarak betiği çalıştırın. Bu eylem, tüm ekli yönetilen diskleri bulmanıza ve görüntülemenize olanak sağlar.

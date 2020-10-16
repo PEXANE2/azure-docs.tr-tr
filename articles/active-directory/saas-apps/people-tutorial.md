@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 93b418a2bc4e1b03370b1bb86bd7da95255db0b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb8374802e7ec2596dc5f65a2acaf739b12dc164
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552399"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Öğretici: kişilerle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -108,7 +108,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -142,11 +142,11 @@ Bu bölümde, kişilere erişim vererek, B. Simon 'u Azure çoklu oturum açma �
    
 4. Sol taraftaki menüde, **Ayarlar**' a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/people-tutorial/tutorial_people_001.png)
+    !["Ayarlar" seçiliyken sol taraftaki menüyü gösteren ekran görüntüsü.](./media/people-tutorial/tutorial_people_001.png)
 
 5. **Şirket**' e tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/people-tutorial/tutorial_people_002.png)
+    !["Ayarlar" menüsünden Seçili "Şirket" i gösteren ekran görüntüsü.](./media/people-tutorial/tutorial_people_002.png)
 
 6. **' Çoklu oturum açma ' SAML meta veri dosyasında karşıya yükle** **' ye tıklayarak indirilen** meta veri dosyasını karşıya yükleyin.
 

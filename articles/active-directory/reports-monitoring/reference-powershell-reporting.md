@@ -19,10 +19,10 @@ ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231138"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Raporlama için Azure AD PowerShell cmdlet’leri
@@ -51,8 +51,8 @@ Bu makale, denetim günlükleri ve oturum açma günlükleri için kullanılacak
 
 | Senaryo                      | PowerShell komutu |
 | :--                           | :--                |
-| Uygulama görünen adı      | Get-AzureADAuditDirectoryLogs-filtre "/App/displayName EQ ' Azure AD bulut eşitlemesi '" |
-| Kategori                      | Get-AzureADAuditDirectoryLogs-filtre "category EQ ' ApplicationManagement '" |
+| Uygulama görünen adı      | Get-AzureADAuditDirectoryLogs-filtre "/uygulama/displayName EQ ' Azure AD bulut eşitlemesi '" |
+| Kategori                      | Get-AzureADAuditDirectoryLogs filtre "Kategori EQ ' ApplicationManagement '" |
 | Etkinlik tarihi saati            | Get-AzureADAuditDirectoryLogs-filtre "activityDateTime gt 2019-04-18" |
 | Yukarıdakilerin tümü              | Get-AzureADAuditDirectoryLogs-filtre "/uygulama/displayName EQ ' Azure AD bulut eşitleme ' ve kategori EQ ' ApplicationManagement ' ve activityDateTime gt 2019-04-18"|
 
@@ -72,11 +72,11 @@ Aşağıdaki görüntüde bu komut için bir örnek gösterilmektedir.
 
 | Senaryo                      | PowerShell komutu |
 | :--                           | :--                |
-| Kullanıcı görünen adı             | Get-Azureadauditsignınlogs-"userDisplayName EQ ' Timoingperkins '" filtresini filtrele |
-| Tarih saat oluştur              | Get-Azureadauditsignınlogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (4/18 tarihinde 5:30 ile bu yana her şey) |
-| Durum                        | Get-Azureadauditsignınlogs-filtre "Status/errorCode EQ 50105" |
-| Uygulama görünen adı      | Get-Azureadauditsignınlogs-Filter "appDisplayName EQ ' StoreFrontStudio [wsbessenabled] '" |
-| Yukarıdakilerin tümü              | Get-Azureadauditsignınlogs-"userDisplayName EQ ' Timoilperkins ' ve Status/errorCode ne 0 ve appDisplayName EQ ' StoreFrontStudio [wsbessenabled] '" filtrelemesine filtre uygulayın |
+| Kullanıcı görünen adı             | Get-AzureADAuditSignInLogs-"userDisplayName EQ ' Timokirli Perkins '" filtrelemeye |
+| Tarih saat oluştur              | Get-AzureADAuditSignInLogs-filtre "createdDateTime gt 2019-04-18T17:30:00.0 Z" (4/18 tarihinde 5:30 ile bu yana her şey) |
+| Durum                        | Get-AzureADAuditSignInLogs-filtre "durum/hata kodu EQ 50105" |
+| Uygulama görünen adı      | Get-AzureADAuditSignInLogs-filtre "appDisplayName EQ ' StoreFrontStudio [wsbesenabled] '" |
+| Yukarıdakilerin tümü              | Get-AzureADAuditSignInLogs-"userDisplayName EQ ' Timoilperkins ' ve Status/errorCode 0 ve appDisplayName EQ ' StoreFrontStudio [wsbessenabled] '" filtrelenir |
 
 
 Aşağıdaki görüntüde bu komut için bir örnek gösterilmektedir. 

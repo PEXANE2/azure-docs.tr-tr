@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84463646"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme
@@ -61,7 +61,7 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak blob depolamada
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve `az storage container legal-hold` . `-h`Komutları görmek için üzerinde çalıştırın.
+Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy`  ve `az storage container legal-hold` . `-h`Komutları görmek için üzerinde çalıştırın.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -174,7 +174,7 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve `az storage container legal-hold` . `-h`Komutları görmek için üzerinde çalıştırın.
+Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy`  ve `az storage container legal-hold` . `-h`Komutları görmek için üzerinde çalıştırın.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

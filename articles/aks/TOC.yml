@@ -6,7 +6,7 @@
       href: intro-kubernetes.md
     - name: Çözüm mimarileri
       href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: AKS Kümesi oluşturma
@@ -171,7 +171,7 @@
             - name: Sistem düğüm havuzlarını kullanma
               href: use-system-pools.md
         - name: Terraform ile AKS’yi dağıtma
-          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
         - name: Kubernetes kaynak görüntüleyicisini kullanma (Önizleme)
           href: kubernetes-portal.md
@@ -358,10 +358,10 @@
     - name: DevOps
       items:
         - name: AKS kümeleri oluşturmak için Ansible kullanma
-          href: /azure/ansible/ansible-create-configure-aks
+          href: /azure/developer/ansible/aks-configure-clusters
           maintainContext: true
         - name: Jenkins sürekli dağıtım
-          href: jenkins-continuous-deployment.md
+          href: /azure/developer/jenkins/deploy-from-github-to-aks
         - name: Azure DevOps Projesi
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true

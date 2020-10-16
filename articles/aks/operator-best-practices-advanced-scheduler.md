@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87530070"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) gelişmiş zamanlayıcı özellikleri için en iyi yöntemler
@@ -184,7 +184,7 @@ Bu makalede, gelişmiş Kubernetes Zamanlayıcı özelliklerine odaklanılmışt
 
 * [Çok kiracılılık ve küme yalıtımı][aks-best-practices-scheduler]
 * [Temel Kubernetes Zamanlayıcı özellikleri][aks-best-practices-scheduler]
-* [Kimlik doğrulama ve yetkilendirme][aks-best-practices-identity]
+* [Kimlik doğrulaması ve yetkilendirme][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-taints-tolerations]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

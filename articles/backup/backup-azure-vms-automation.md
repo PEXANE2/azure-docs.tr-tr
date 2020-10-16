@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975107"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094101"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -194,7 +194,7 @@ Bir yedekleme koruma ilkesi en az bir bekletme ilkesiyle ilişkilidir. Bir bekle
 * Varsayılan saklama ilkesini görüntülemek için [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) kullanın.
 * Benzer şekilde, varsayılan zamanlama ilkesini almak için [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) komutunu kullanabilirsiniz.
 * [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) cmdlet 'i, yedekleme ilkesi bilgilerini tutan bir PowerShell nesnesi oluşturur.
-* Zamanlama ve bekletme ilkesi nesneleri, New-AzRecoveryServicesBackupProtectionPolicy cmdlet 'ine giriş olarak kullanılır.
+* Zamanlama ve bekletme ilkesi nesneleri New-AzRecoveryServicesBackupProtectionPolicy cmdlet 'ine giriş olarak kullanılır.
 
 Varsayılan olarak, bir başlangıç saati zamanlama Ilkesi nesnesinde tanımlanmıştır. Başlangıç saatini istenen başlangıç saatine dönüştürmek için aşağıdaki örneği kullanın. İstenen başlangıç saati UTC biçiminde de olmalıdır. Aşağıdaki örnek, günlük yedeklemeler için istenen başlangıç zamanının 01:00. UTC olduğunu varsayar.
 
@@ -529,7 +529,7 @@ Diskleri geri yükledikten sonra, sanal makineyi diskten oluşturup yapılandır
 > [!NOTE]
 >
 > 1. AzureAz modülü 3.0.0 veya üzeri gereklidir. <br>
-> 2. Geri yüklenen disklerden şifrelenmiş VM 'Ler oluşturmak için Azure rolünüzün, **Microsoft. Keykasası/Vaults/Deploy/ACTION**eylemini gerçekleştirme izni olması gerekir. Rolünüzün bu izni yoksa, bu eylemle özel bir rol oluşturun. Daha fazla bilgi için bkz. [Azure RBAC 'de özel roller](../role-based-access-control/custom-roles.md). <br>
+> 2. Geri yüklenen disklerden şifrelenmiş VM 'Ler oluşturmak için Azure rolünüzün, **Microsoft. Keykasası/Vaults/Deploy/ACTION**eylemini gerçekleştirme izni olması gerekir. Rolünüzün bu izni yoksa, bu eylemle özel bir rol oluşturun. Daha fazla bilgi için bkz. [Azure özel rolleri](../role-based-access-control/custom-roles.md). <br>
 > 3. Diskleri geri yükledikten sonra, artık yeni bir VM oluşturmak için doğrudan kullanabileceğiniz bir dağıtım şablonu edinebilirsiniz. Şifrelenmiş/şifrelenmemiş olan yönetilen/yönetilmeyen VM 'Ler oluşturmak için farklı PowerShell cmdlet 'lerinin olması gerekmez.<br>
 > <br>
 

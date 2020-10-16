@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a9285ebe2e749f5ac7f248a2703518c8ac237bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337679"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071685"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit cihazını uzaktan Izleme çözüm hızlandırıcısına bağlama
 
@@ -28,7 +28,7 @@ Bu nasıl yapılır Kılavuzu, IoT DevKit cihazınızda örnek bir uygulamayı n
 
 Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevleri yapın:
 
-* [IoT Hub IoT DEVKIT AZ3166 'e bağlanma bölümündeki adımları Bulutta Azure 'a](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)hazırlayın.
+* [IoT Hub IoT DEVKIT AZ3166 'e bağlanma bölümündeki adımları Bulutta Azure 'a](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)hazırlayın.
 
 ## <a name="open-sample-project"></a>Örnek projeyi aç
 
@@ -128,5 +128,5 @@ Herhangi bir sorunla karşılaşırsanız [IoT DevKit SSS](https://microsoft.git
 
 Artık bir DevKit cihazını uzaktan Izleme çözüm hızlandırıcısına bağlamayı öğrendiğinize göre, aşağıda önerilen birkaç adım verilmiştir:
 
-* [Azure IoT çözüm hızlandırıcılarına genel bakış](https://docs.microsoft.com/azure/iot-accelerators/)
+* [Azure IoT çözüm hızlandırıcılarına genel bakış](./index.yml)
 * [Kullanıcı arabirimini özelleştirme](iot-accelerators-remote-monitoring-customize.md)

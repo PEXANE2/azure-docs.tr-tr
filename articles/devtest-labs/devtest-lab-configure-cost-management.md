@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevTest Labs ' de laboratuvarınızın maliyetin
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283835"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda ilişkili maliyetleri izleyin
@@ -18,7 +18,7 @@ Bu bölümde, **aylık tahmini maliyet eğilimi** grafiğinin geçerli takvim ay
 
 Aylık tahmini maliyet eğilimi grafiğini görüntülemek için aşağıdaki adımları izleyin: 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden laboratuvarınızı seçin.  
 4. Sol taraftaki menüden **yapılandırma ve ilkeler** ' i seçin.  
@@ -28,7 +28,7 @@ Aylık tahmini maliyet eğilimi grafiğini görüntülemek için aşağıdaki ad
 
     **Tahmini maliyet** değeri, geçerli takvim ayının tahmini maliyetlidir. **Öngörülen maliyet** , geçerli takvim ayının tamamı için, önceki beş güne ait laboratuvar maliyeti kullanılarak hesaplanan tahmini maliyettir.
 
-    Maliyet miktarları bir sonraki tam sayıya yuvarlanır. Örnek: 
+    Maliyet miktarları bir sonraki tam sayıya yuvarlanır. Örneğin: 
 
    * 5,01, 6 ' ya kadar yuvarlar 
    * 5,50, 6 ' ya kadar yuvarlar
@@ -74,7 +74,7 @@ DevTest Labs, aylık tahmini maliyet eğilimi grafiğinde görüntüleyebilmeniz
 ## <a name="view-cost-by-resource"></a>Kaynağa göre maliyeti görüntüle 
 Laboratuvardaki aylık maliyet eğilimi özelliği, geçerli takvim ayında ne kadar harcandığını görmenizi sağlar. Ayrıca, son yedi gün içinde harcamalarınızı temel alarak, ayın sonuna kadar harcama projeksiyonunu gösterir. Laboratuvardaki harcamanın neden erken bir şekilde toplantı yaptığını anlamanıza yardımcı olmak için, tablodaki **kaynak başına** aylık maliyeti gösteren **kaynak maliyeti** özelliğini kullanabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Sol taraftaki menüden **yapılandırma ve ilkeler** ' i seçin.

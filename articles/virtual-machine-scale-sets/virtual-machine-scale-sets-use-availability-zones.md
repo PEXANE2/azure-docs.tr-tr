@@ -10,10 +10,10 @@ ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89611913"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir sanal makine ölçek kümesi oluşturma
@@ -62,12 +62,12 @@ Tek bir bölgede bir ölçek kümesi oluşturduğunuzda, bu sanal makine örnekl
 
 Kullanılabilirlik Alanları kullanmak için, ölçek kümesinin [desteklenen bir Azure bölgesinde](../availability-zones/az-region.md)oluşturulması gerekir. Aşağıdaki yöntemlerden biriyle Kullanılabilirlik Alanları kullanan bir ölçek kümesi oluşturabilirsiniz:
 
-- [Azure Portal](#use-the-azure-portal)
+- [Azure portalındaki](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager şablonları](#use-azure-resource-manager-templates)
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Bir kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılı olarak aynıdır. Desteklenen bir Azure bölgesi seçtiğinizde, aşağıdaki örnekte gösterildiği gibi bir veya daha fazla kullanılabilir bölgede ölçek kümesi oluşturabilirsiniz:
 
@@ -75,7 +75,7 @@ Bir kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi Ba
 
 Azure yük dengeleyici ve genel IP adresi gibi ölçek kümesi ve destekleyici kaynaklar, belirttiğiniz tek bölgede oluşturulur.
 
-## <a name="use-the-azure-cli"></a>Azure CLI kullanma
+## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
 
 Bir kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılı olarak aynıdır. Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir.
 

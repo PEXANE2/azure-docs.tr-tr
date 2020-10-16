@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab4b4e0ab7d0474dc4fe7692cfe3c46835095f45
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319614"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873753"
 ---
-# <a name="migrate-from-bing-maps-to-azure-maps"></a>Bing Haritalar 'dan Azure Maps 'e geçiş
+# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Öğretici-Bing Haritalar 'dan Azure Maps 'e geçiş
 
 Bu kılavuzda, Web, mobil ve sunucu tabanlı uygulamaların Bing Haritalar 'dan Azure haritalar platformuna nasıl geçirileceğiyle ilgili Öngörüler sunulmaktadır. Bu kılavuzda, Azure Maps 'e geçiş için karşılaştırılma kodu örnekleri, geçiş önerileri ve en iyi uygulamalar yer almaktadır.
 
@@ -87,7 +87,7 @@ Aşağıda, üst düzey bir geçiş planı verilmiştir.
 Bir Azure Maps hesabı oluşturmak ve Azure haritalar platformuna erişmek için şu adımları izleyin:
 
 1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-2. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. [Azure portalında](https://portal.azure.com/) oturum açın.
 3. [Azure haritalar hesabı](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)oluşturun. 
 4. Gelişmiş güvenlik için [Azure Maps abonelik anahtarınızı](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) veya kurulum Azure Active Directory kimlik doğrulamasını alın.
 

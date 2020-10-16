@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370892"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874841"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -173,7 +173,7 @@ Veri akışları çeşitli dosya türlerini destekleirken, Azure Data Factory en
 
 Aynı veri akışını bir dosya kümesinde çalıştırıyorsanız, joker karakterleri kullanarak veya bir dosya listesinden okurken bir klasörden okumanızı öneririz. Tek bir veri akışı etkinliği çalıştırması, toplu işteki tüm dosyalarınızı işleyebilir. Bu ayarları ayarlama hakkında daha fazla bilgi, [Azure Blob depolama](connector-azure-blob-storage.md#source-transformation)gibi bağlayıcı belgelerinde bulunabilir.
 
-Mümkünse, her bir bir dosya kümesi üzerinde veri akışı çalıştırmak için her etkinlik Için kullanmaktan kaçının. Bu, her bir için öğesinin her yinelemesinin kendi Spark kümesini (genellikle gerekli değildir ve pahalı olabilir) çalışmasına neden olur. 
+Mümkünse, bir dosya kümesi üzerinde veri akışlarını çalıştırmak için For-Each etkinliğini kullanmaktan kaçının. Bu, her bir için öğesinin her yinelemesinin kendi Spark kümesini (genellikle gerekli değildir ve pahalı olabilir) çalışmasına neden olur. 
 
 ## <a name="optimizing-sinks"></a>Havuzları iyileştirme
 
@@ -260,6 +260,10 @@ JOIN koşullarınız için değişmez değer değerleri kullanırsanız veya bir
 #### <a name="sorting-before-joins"></a>Birleşimlerden önce sıralama
 
 SSIS gibi araçlarla birleştirme birleştirmesinin aksine, JOIN dönüşümü zorunlu bir birleştirme birleştirme işlemi değildir. JOIN anahtarları dönüşümden önce sıralama gerektirmez. Azure Data Factory ekibi, veri akışlarında eşleme dönüştürmelerinin kullanılmasını önermez.
+
+### <a name="window-transformation-performance"></a>Pencere dönüştürme performansı
+
+[Pencere dönüştürmesi](data-flow-window.md) , verileri ```over()``` dönüştürme ayarlarındaki yan tümcesinin bir parçası olarak seçtiğiniz sütunlardaki değere göre bölümlendirir. Windows dönüşümünde sunulan çok sayıda popüler toplam ve analitik işlev vardır. Bununla birlikte, kullanım durumu, sıralama veya satır numarası amacıyla tüm veri kümeniz üzerinde bir pencere oluşturmak için, ```rank()``` ```rowNumber()``` bunun yerine [Rank dönüşümünü](data-flow-rank.md) ve [vekil anahtar dönüşümünü](data-flow-surrogate-key.md)kullanmanız önerilir. Bu dönüşüm, bu işlevleri kullanarak daha iyi bir tam veri kümesi işlemi gerçekleştirir.
 
 ### <a name="repartitioning-skewed-data"></a>Asimetrik verileri yeniden bölümleme
 

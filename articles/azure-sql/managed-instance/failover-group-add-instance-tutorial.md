@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
 ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617749"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Öğretici: yük devretme grubuna SQL yönetilen örneği ekleme
@@ -35,7 +35,7 @@ Azure SQL yönetilen örneği 'nin yönetilen örneklerini bir yük devretme gru
   > - Yük devretme grubuna katılan yönetilen örnekler için [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) veya ıkı bağlı VPN ağ geçidi gerekir. Küresel VNet Eşlemesi desteklenmez. Bu öğretici, VPN ağ geçitleri oluşturmak ve bağlamak için gereken adımları sağlar. ExpressRoute zaten yapılandırılmışsa bu adımları atlayın. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 

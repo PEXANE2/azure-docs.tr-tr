@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812871"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
@@ -33,7 +33,7 @@ Azure Stream Analytics aşağıdaki meta verileri ve verileri çalıştırmak i�
 
 Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi karşılamanıza yardımcı olmak için [Microsoft 'un uyumluluk teklifleri](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)hakkında daha fazla bilgi edinebilirsiniz. 
 
-## <a name="in-region-data-residency"></a>Bölge içi veri yerleşimi
+## <a name="in-region-data-residency"></a>In-Region veri yerleşimi
 Azure Stream Analytics, yukarıda açıklanan müşteri verilerini ve diğer meta verileri depolar. Müşteri verileri varsayılan olarak tek bir bölgede Azure Stream Analytics depolanır. bu nedenle bu hizmet, [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler de dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
 Ayrıca, Stream Analytics işiniz ile ilgili tüm veri varlıklarını (müşteri verileri ve diğer meta veriler) dilediğiniz depolama hesabında şifreleyerek tek bir bölgede depolamayı tercih edebilirsiniz.
 
@@ -59,7 +59,7 @@ Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi
 
 Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşağıdaki adımları kullanın. Bu yapılandırma, depolama hesabınızdan değil, Stream Analytics işinden yapılır.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 

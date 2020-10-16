@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Kubernetes izleme | Microsoft Doc
 description: Bu makalede, bir Kubernetes kümesinin, kapsayıcılar için Azure Izleyici ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988135"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994768"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansınızı izleyin
 
@@ -24,7 +24,7 @@ Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıc
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Izleyici 'den çok küme görünümü
 
@@ -34,8 +34,8 @@ Dağıtılan tüm Kubernetes kümelerinin sistem durumunu görüntülemek için 
 
 Kılavuzda gösterilen sonuçların kapsamını şu şekilde tanımlayabilirsiniz:
 
-* Azure Kubernetes hizmetinde barındırılan **Azure** -aks ve aks-Engine kümeleri
-* **Azure Stack (Önizleme)** -Azure Stack barındırılan aks-Engine kümeleri
+* **Azure-** aks ve AKS-Engine kümeleri Azure Kubernetes hizmetinde barındırılıyor
+* **Azure Stack (Önizleme)** -Azure Stack barındırılan AKS-Engine kümeler
 * **Azure dışı (Önizleme)** -şirket içinde barındırılan Kubernetes kümeleri
 * **Tümü** -Azure 'da barındırılan tüm Kubernetes kümelerini, Azure Stack ve kapsayıcılar Için Azure izleyicisine eklendi şirket içi ortamları görüntüleyin
 
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, çok küme görünümünde izlenen bir kümenin sistem dur
 | |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
 |**Sistem Pod**| | |
 | |Sağlam |%100 |
-| |Uyarı |Yok |
+| |Uyarı |YOK |
 | |Kritik |<% 100 |
 | |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
 |**Node** | | |
@@ -293,7 +293,7 @@ Durum alanındaki simgeler, aşağıdaki tabloda açıklandığı gibi, pods 'ni
 
 ## <a name="workbooks"></a>Çalışma Kitapları
 
-Çalışma kitapları metin, [günlük sorgularını](../log-query/query-language.md), [ölçümleri](../platform/data-platform-metrics.md)ve parametreleri zengin etkileşimli raporlara birleştirir. Çalışma kitapları aynı Azure kaynaklarına erişimi olan diğer takım üyeleri tarafından düzenlenebilir.
+Çalışma kitapları metin, [günlük sorgularını](/azure/data-explorer/kusto/query/), [ölçümleri](../platform/data-platform-metrics.md)ve parametreleri zengin etkileşimli raporlara birleştirir. Çalışma kitapları aynı Azure kaynaklarına erişimi olan diğer takım üyeleri tarafından düzenlenebilir.
 
 Kapsayıcılar için Azure Izleyici, başlamanıza olanak sağlamak için dört çalışma kitabı içerir:
 
@@ -321,8 +321,8 @@ Kapsayıcılar için Azure Izleyici, başlamanıza olanak sağlamak için dört 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için uyarı oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarıları oluşturma](container-insights-alerts.md) konusunu inceleyin.
+- DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için uyarı oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarıları oluşturma](./container-insights-log-alerts.md) konusunu inceleyin.
 
 - Önceden tanımlanmış sorguları ve kümelerinizi uyarmak, görselleştirmek veya analiz etmek üzere değerlendirilecek veya özelleştirecek örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin.
 
-- Kubernetes kümenizin sistem durumunu görüntüleme hakkında bilgi edinmek için [izleyici küme durumunu](container-insights-health.md) görüntüleyin.
+- Kubernetes kümenizin sistem durumunu görüntüleme hakkında bilgi edinmek için [izleyici küme durumunu](./container-insights-overview.md) görüntüleyin.

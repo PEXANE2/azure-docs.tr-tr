@@ -7,33 +7,33 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757801"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973453"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Öğretici: gönderme API 'SI ile dizin oluşturmayı Iyileştirme
 
 Azure Bilişsel Arama, verileri bir arama dizinine aktarmaya yönelik [iki temel yaklaşımı](search-what-is-data-import.md) *destekler: verilerinizi* dizine programlamayla gönderme veya desteklenen bir veri kaynağında [Azure bilişsel arama Dizin oluşturucuyu](search-indexer-overview.md) işaret eden verileri *çekme* .
 
-Bu öğreticide, istek toplu işleme ve bir üstel geri alma yeniden deneme stratejisi kullanılarak [anında iletme modeli](search-what-is-data-import.md#pushing-data-to-an-index) kullanılarak verilerin nasıl verimli bir şekilde dizininin oluşturulduğu açıklanmaktadır. [Uygulamayı indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Bu makalede, verilerin dizininin oluşturulması sırasında göz önünde bulundurulması gereken uygulamanın ve faktörlerin temel yönleri açıklanmaktadır.
+Bu öğreticide, istek toplu işleme ve bir üstel geri alma yeniden deneme stratejisi kullanılarak [anında iletme modeli](search-what-is-data-import.md#pushing-data-to-an-index) kullanılarak verilerin nasıl verimli bir şekilde dizininin oluşturulduğu açıklanmaktadır. [Örnek uygulamayı indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Bu makalede, verilerin dizininin oluşturulması sırasında göz önünde bulundurulması gereken uygulamanın ve faktörlerin temel yönleri açıklanmaktadır.
 
 Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](/dotnet/api/overview/azure/search) kullanır:
 
 > [!div class="checklist"]
 > * Dizin oluşturma
 > * En etkili boyutu anlamak için çeşitli toplu iş boyutlarını test edin
-> * Verileri zaman uyumsuz olarak diz
+> * Toplu işleri zaman uyumsuz olarak oluştur
 > * Dizin oluşturma hızlarını artırmak için birden çok iş parçacığı kullanın
-> * Hatalı öğeleri yeniden denemek için bir üstel geri alma yeniden deneme stratejisi kullanın
+> * Hatalı belgeleri yeniden denemek için bir üstel geri alma yeniden deneme stratejisi kullanın
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici için aşağıdaki hizmetler ve araçlar gereklidir.
 
@@ -45,7 +45,7 @@ Bu öğretici için aşağıdaki hizmetler ve araçlar gereklidir.
 
 ## <a name="download-files"></a>Dosyaları indirme
 
-Bu öğreticinin kaynak kodu, [Azure-Samples/Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub deposundaki [optimzize-Data-Indexing](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing) klasöründedir.
+Bu öğreticinin kaynak kodu, [Azure-Samples/Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub deposundaki [optimzize-Data-Indexing/v11](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing/v11) klasöründedir.
 
 ## <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 
@@ -79,12 +79,11 @@ API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle 
 
 1. Visual Studio 'Yu başlatın ve **Optimizedataındexing. sln**' i açın.
 1. Çözüm Gezgini, bağlantı bilgilerini sağlamak için **appsettings.js** açın.
-1. İçin, `searchServiceName` tam URL " https://my-demo-service.search.windows.net " ise, sağlanacak hizmet adı "My-demo-Service" olur.
 
 ```json
 {
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+  "SearchServiceUri": "https://{service-name}.search.windows.net",
+  "SearchServiceAdminApiKey": "",
   "SearchIndexName": "optimize-indexing"
 }
 ```
@@ -112,7 +111,7 @@ Bu basit C#/.NET konsol uygulaması aşağıdaki görevleri gerçekleştirir:
 
 ### <a name="creating-the-index"></a>Dizin oluşturuluyor
 
-Bu örnek program, bir Azure Bilişsel Arama dizini tanımlamak ve oluşturmak için .NET SDK 'sını kullanır. Bir C# veri modeli sınıfından dizin yapısı oluşturmak için [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) sınıfından yararlanır.
+Bu örnek program, bir Azure Bilişsel Arama dizini tanımlamak ve oluşturmak için .NET SDK 'sını kullanır. `FieldBuilder`C# veri modeli sınıfından dizin yapısı oluşturmak için sınıfından faydalanır.
 
 Veri modeli, ayrıca adres sınıfına başvurular içeren Otel Sınıfı tarafından tanımlanır. FieldBuilder, dizin için karmaşık bir veri yapısı oluşturmak üzere birden fazla sınıf tanımı aracılığıyla ayrıntıya gider. Meta veri etiketleri, her alanın, aranabilir veya sıralanabilir olup olmadığı gibi özniteliklerini tanımlamak için kullanılır.
 
@@ -120,27 +119,25 @@ Veri modeli, ayrıca adres sınıfına başvurular içeren Otel Sınıfı taraf�
 
 ```csharp
 . . .
-[IsSearchable, IsSortable]
+[SearchableField(IsSortable = true)]
 public string HotelName { get; set; }
 . . .
 public Address Address { get; set; }
 . . .
 ```
 
-**Program.cs** dosyasında Dizin, yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır `FieldBuilder.BuildForType<Hotel>()` ve sonra aşağıdaki gibi oluşturulur:
+**Program.cs** dosyasında Dizin, yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır `FieldBuilder.Build(typeof(Hotel))` ve sonra aşağıdaki gibi oluşturulur:
 
 ```csharp
-private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
     // Create a new search index structure that matches the properties of the Hotel class.
     // The Address class is referenced from the Hotel class. The FieldBuilder
     // will enumerate these to create a complex data structure for the index.
-    var definition = new Index()
-    {
-        Name = indexName,
-        Fields = FieldBuilder.BuildForType<Hotel>()
-    };
-    await searchService.Indexes.CreateAsync(definition);
+    FieldBuilder builder = new FieldBuilder();
+    var definition = new SearchIndex(indexName, builder.Build(typeof(Hotel)));
+
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
@@ -148,11 +145,12 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 
 Test için veri oluşturmak üzere **DataGenerator.cs** dosyasında basit bir sınıf uygulanır. Bu sınıfın tek amacı, dizin oluşturma için benzersiz bir KIMLIĞE sahip çok sayıda belge oluşturmayı kolaylaştırmaktadır.
 
-Benzersiz kimliklere sahip 100.000 oteller listesini almak için aşağıdaki iki satır kodu çalıştırın:
+Benzersiz kimliklere sahip 100.000 oteller listesini almak için aşağıdaki kod satırlarını çalıştırırsınız:
 
 ```csharp
+long numDocuments = 100000;
 DataGenerator dg = new DataGenerator();
-List<Hotel> hotels = dg.GetHotels(100000, "large");
+List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
 ```
 
 Bu örnekte test için iki adet otel boyutu mevcuttur: **küçük** ve  **büyük**.
@@ -164,7 +162,7 @@ Dizinlerinizin şeması, dizin oluşturma hızları üzerinde önemli bir etkiye
 Azure Bilişsel Arama, bir dizine tek veya birden çok belge yüklemek için aşağıdaki API 'Leri destekler:
 
 + [Belge Ekleme, Güncelleştirme veya Silme (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction sınıfı](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) veya [indexBatch sınıfı](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [Indexdocumentsaction sınıfı](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet) veya [ındexdocumentsbatch sınıfı](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
 
 Belgelerin toplu olarak dizinlemesi, dizin oluşturma performansını önemli ölçüde iyileştirir. Bu toplu işlemler en fazla 1000 belge veya toplu işlem başına en fazla 16 MB olabilir.
 
@@ -178,7 +176,7 @@ En iyi toplu iş boyutu dizininize ve verilerinize bağlı olduğundan, senaryon
 Aşağıdaki işlev, toplu iş boyutlarını test etmek için basit bir yaklaşımı gösterir.
 
 ```csharp
-public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
+public static async Task TestBatchSizesAsync(SearchClient searchClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
 {
     DataGenerator dg = new DataGenerator();
 
@@ -192,7 +190,7 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
             List<Hotel> hotels = dg.GetHotels(numDocs, "large");
 
             DateTime startTime = DateTime.Now;
-            await UploadDocuments(indexClient, hotels);
+            await UploadDocumentsAsync(searchClient, hotels).ConfigureAwait(false);
             DateTime endTime = DateTime.Now;
             durations.Add(endTime - startTime);
 
@@ -208,22 +206,24 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
         // Pausing 2 seconds to let the search service catch its breath
         Thread.Sleep(2000);
     }
+
+    Console.WriteLine();
 }
 ```
 
 Tüm belgeler aynı boyutta olmadığından (Bu örnekte olsalar da), arama hizmetine gönderdiğimiz verilerin boyutunu tahmin ediyoruz. Bunu aşağıdaki işlevini kullanarak yaptık, önce nesneyi JSON 'a dönüştürür ve sonra boyutunu bayt olarak belirler. Bu teknik, MB/s dizin oluşturma hızları açısından hangi toplu iş boyutlarının en verimli olduğunu belirlememize olanak tanır.
 
 ```csharp
+// Returns size of object in MB
 public static double EstimateObjectSize(object data)
 {
-    // converting data to json for more accurate sizing
-    var json = JsonConvert.SerializeObject(data);
-
     // converting object to byte[] to determine the size of the data
     BinaryFormatter bf = new BinaryFormatter();
     MemoryStream ms = new MemoryStream();
     byte[] Array;
 
+    // converting data to json for more accurate sizing
+    var json = JsonSerializer.Serialize(data);
     bf.Serialize(ms, json);
     Array = ms.ToArray();
 
@@ -234,10 +234,10 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-İşlev `ISearchIndexClient` için, her bir toplu iş boyutu için test etmek istediğiniz deneme sayısı ve ek olarak gereklidir. Her toplu iş için dizin oluşturma saatlerinde bir değişkenlik olabileceğinden, sonuçların daha istatistiksel olarak önemli olmasını sağlamak için her toplu işi varsayılan olarak üç kez deneyeceğiz.
+İşlev `SearchClient` için, her bir toplu iş boyutu için test etmek istediğiniz deneme sayısı ve ek olarak gereklidir. Her toplu iş için dizin oluşturma saatlerinde bir değişkenlik olabileceğinden, sonuçların daha istatistiksel olarak önemli olmasını sağlamak için her toplu işi varsayılan olarak üç kez deneyeceğiz.
 
 ```csharp
-await TestBatchSizes(indexClient, numTries: 3);
+await TestBatchSizesAsync(searchClient, numTries: 3);
 ```
 
 İşlevini çalıştırdığınızda, konsolunuza aşağıda olduğu gibi bir çıktı görmeniz gerekir:
@@ -250,8 +250,8 @@ Hangi toplu iş boyutunun en verimli olduğunu ve ardından bu toplu iş boyutun
 
 Kullanmayı planladığımız toplu iş boyutunu tanımladığımıza göre, bir sonraki adım, verileri dizine almayı başlıyoruz. Verileri verimli bir şekilde indekslemek için bu örnek:
 
-* Birden çok iş parçacığını/çalışanı kullanır.
-* Üstel geri alma yeniden deneme stratejisi uygular.
++ Birden çok iş parçacığını/çalışanı kullanır.
++ Üstel geri alma yeniden deneme stratejisi uygular.
 
 ### <a name="use-multiple-threadsworkers"></a>Birden çok iş parçacığı veya çalışan kullanma
 
@@ -268,13 +268,16 @@ Arama hizmetine vurur istekleri artırdığınız için, isteğin tam olarak ba�
 
 Bir hata oluşursa, istekler [üstel geri alma yeniden deneme stratejisi kullanılarak yeniden](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)denenmelidir.
 
-Azure Bilişsel Arama .NET SDK, 503s ve diğer başarısız istekleri otomatik olarak yeniden dener, ancak 20 7s 'yi yeniden denemek için kendi mantığınızı uygulamanız gerekir. Yeniden deneme stratejisi uygulamak için, [Polly](https://github.com/App-vNext/Polly) gibi açık kaynaklı araçlar da kullanılabilir. 
+Azure Bilişsel Arama .NET SDK, 503s ve diğer başarısız istekleri otomatik olarak yeniden dener, ancak 20 7s 'yi yeniden denemek için kendi mantığınızı uygulamanız gerekir. Yeniden deneme stratejisi uygulamak için, [Polly](https://github.com/App-vNext/Polly) gibi açık kaynaklı araçlar da kullanılabilir.
 
 Bu örnekte, kendi üstel geri alma stratejinizi uyguladık. Bu stratejiyi uygulamak için, `maxRetryAttempts` `delay` başarısız bir istek için ve başlangıcı dahil bazı değişkenler tanımlayarak başlayacağız:
 
 ```csharp
 // Create batch of documents for indexing
-IndexBatch<Hotel> batch = IndexBatch.Upload(hotels);
+var batch = IndexDocumentsBatch.Upload(hotels);
+
+// Create an object to hold the result
+IndexDocumentsResult result = null;
 
 // Define parameters for exponential backoff
 int attempts = 0;
@@ -282,9 +285,9 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Bu özel durumlar, dizin oluşturma işleminin yalnızca kısmen başarılı (207s) olduğunu gösterdiği için [ındexbatchexception](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) 'ın yakalanmasının önem taşımaktadır. Başarısız öğeler, `FindFailedActionsToRetry` yalnızca başarısız öğeleri içeren yeni bir toplu iş oluşturmayı kolaylaştıran yöntemi kullanılarak yeniden denenmelidir.
+Dizin oluşturma işleminin sonuçları değişkeninde depolanır `IndexDocumentResult result` . Bu değişken önemlidir çünkü toplu işteki herhangi bir belgenin aşağıda gösterildiği gibi başarısız olup olmadığını kontrol etmenizi sağlar. Kısmi bir hata varsa, başarısız belgelerin KIMLIĞI temel alınarak yeni bir toplu iş oluşturulur.
 
-Dışındaki özel durumlar `IndexBatchException` da yakalanmalıdır ve isteğin tamamen başarısız olduğunu gösterir. Bu özel durumlar, özellikle de 50. otomatik olarak yeniden denemeler yaparken .NET SDK ile daha yaygın olarak yaygındır.
+`RequestFailedException` Ayrıca, isteğin tamamen başarısız olduğunu ve ayrıca yeniden deneneceğini belirten özel durumlar yakalanmalıdır.
 
 ```csharp
 // Implement exponential backoff
@@ -293,29 +296,46 @@ do
     try
     {
         attempts++;
-        var response = await indexClient.Documents.IndexAsync(batch);
-        break;
+        result = await searchClient.IndexDocumentsAsync(batch).ConfigureAwait(false);
+
+        var failedDocuments = result.Results.Where(r => r.Succeeded != true).ToList();
+
+        // handle partial failure
+        if (failedDocuments.Count > 0)
+        {
+            if (attempts == maxRetryAttempts)
+            {
+                Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
+                break;
+            }
+            else
+            {
+                Console.WriteLine("[Batch starting at doc {0} had partial failure]", id);
+                Console.WriteLine("[Retrying {0} failed documents] \n", failedDocuments.Count);
+
+                // creating a batch of failed documents to retry
+                var failedDocumentKeys = failedDocuments.Select(doc => doc.Key).ToList();
+                hotels = hotels.Where(h => failedDocumentKeys.Contains(h.HotelId)).ToList();
+                batch = IndexDocumentsBatch.Upload(hotels);
+
+                Task.Delay(delay).Wait();
+                delay = delay * 2;
+                continue;
+            }
+        }
+
+        return result;
     }
-    catch (IndexBatchException ex)
+    catch (RequestFailedException ex)
     {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2}", attempts, maxRetryAttempts, ex.Message);
+        Console.WriteLine("[Batch starting at doc {0} failed]", id);
+        Console.WriteLine("[Retrying entire batch] \n");
 
         if (attempts == maxRetryAttempts)
+        {
+            Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
             break;
-
-        // Find the failed items and create a new batch to retry
-        batch = ex.FindFailedActionsToRetry(batch, x => x.HotelId);
-        Console.WriteLine("Retrying failed documents using exponential backoff...\n");
-
-        Task.Delay(delay).Wait();
-        delay = delay * 2;
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2} \n", attempts, maxRetryAttempts, ex.Message);
-
-        if (attempts == maxRetryAttempts)
-            break;
+        }
 
         Task.Delay(delay).Wait();
         delay = delay * 2;
@@ -325,10 +345,10 @@ do
 
 Buradan, kolayca çağrılabilmesi için üstel geri alma kodunu bir işleve sarıyoruz.
 
-Daha sonra etkin iş parçacıklarını yönetmek için başka bir işlev oluşturulur. Kolaylık olması için bu işlev buraya dahil değildir, ancak [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v10/OptimizeDataIndexing/ExponentialBackoff.cs)içinde bulunabilir. İşlevi, `hotels` yüklemek istediğimiz veriler nerede, `1000` toplu iş boyutu ve `8` eşzamanlı iş parçacığı sayısı olan aşağıdaki komutla çağrılabilir:
+Daha sonra etkin iş parçacıklarını yönetmek için başka bir işlev oluşturulur. Kolaylık olması için bu işlev buraya dahil değildir, ancak [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs)içinde bulunabilir. İşlevi, `hotels` yüklemek istediğimiz veriler nerede, `1000` toplu iş boyutu ve `8` eşzamanlı iş parçacığı sayısı olan aşağıdaki komutla çağrılabilir:
 
 ```csharp
-ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
+await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);
 ```
 
 İşlevini çalıştırdığınızda, aşağıdaki gibi bir çıktı görmeniz gerekir:
@@ -337,7 +357,10 @@ ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 
 Bir dizi belge başarısız olduğunda, hatayı belirten ve toplu işlemin yeniden denenmekte olduğu bir hata görüntülenir:
 
-![Dizin verileri işlevinden hata](media/tutorial-optimize-data-indexing/index-data-error.png "Test toplu iş boyutu işlevinin çıkışı")
+```
+[Batch starting at doc 6000 had partial failure]
+[Retrying 560 failed documents]
+```
 
 İşlevin çalışması bittikten sonra, tüm belgelerin dizine eklendiğini doğrulayabilirsiniz.
 
@@ -354,7 +377,7 @@ Bir dizindeki belge sayısını denetlemeye yönelik iki ana seçenek vardır: [
 Belgeleri say işlemi, bir arama dizinindeki belge sayısı sayısını alır:
 
 ```csharp
-long indexDocCount = indexClient.Documents.Count();
+long indexDocCount = await searchClient.GetDocumentCountAsync();
 ```
 
 #### <a name="get-index-statistics"></a>Dizin Istatistiklerini al
@@ -362,7 +385,7 @@ long indexDocCount = indexClient.Documents.Count();
 Dizin Istatistiklerini al işlemi, geçerli dizin için bir belge sayısı ve depolama kullanımı döndürür. Dizin istatistikleri Güncelleştirilecek belge sayısından daha uzun sürer.
 
 ```csharp
-IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(configuration["SearchIndexName"]);
+var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 ```
 
 ### <a name="azure-portal"></a>Azure portal

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ecce689e287673a3b08f8f90f87c28e021106d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d05ab19ff7fee43d91a9620f96699d73bc38a1a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038451"
+ms.locfileid: "91873311"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Intel NUC)
 
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Başlamadan önce, Azure IoT Central öğreticide önceki [canlı video analizi uygulaması oluşturma](./tutorial-video-analytics-create-app.md) öğreticisini tamamlamalısınız.
+* Başlamadan önce, Azure IoT Central (YOLO v3) veya [azure IoT Central (OpenVINO &trade; ) öğreticisinde bir video analizi oluşturmanız](tutorial-video-analytics-create-app-openvino.md)için önceki [bir canlı video analizi uygulaması oluşturun](./tutorial-video-analytics-create-app-yolo-v3.md) .
 * Linux çalıştıran Intel NUC gibi bir cihaz, Docker kapsayıcılarını çalıştırabilecek ve video analizlerini çalıştırmak için yeterli işleme gücüne sahip.
 * [IoT Edge çalışma zamanı cihazda yüklendi](../../iot-edge/how-to-install-iot-edge-linux.md) ve çalışıyor.
 * Windows makinenizden IoT Edge cihazına bağlanabiliyor, [Putty SSH istemcisine](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) veya eşdeğer bir yardımcı programa ihtiyacınız vardır.

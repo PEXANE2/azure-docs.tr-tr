@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 07339ea6c53b2abe959e8e0f164412e502bb06b5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 94e3b95e5e1d3c65550046c5db56e0f783fd60c3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068318"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976310"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Mevcut bir Azure sanal ağına erişime izin veren Windows VM 'Leri için Azure Image Builder 'ı kullanma
 
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Şimdi derleme tamamlanmıştır, görüntüden bir VM oluşturabilirsiniz. [PowerShell New-AzVM belgelerindeki](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)örnekleri kullanın.
+Şimdi derleme tamamlanmıştır, görüntüden bir VM oluşturabilirsiniz. [PowerShell New-AzVM belgelerindeki](/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)örnekleri kullanın.
 
 ## <a name="clean-up"></a>Temizleme
 
@@ -297,4 +297,3 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure Paylaşılan görüntü galerileri](shared-image-galleries.md)hakkında daha fazla bilgi edinin.
-

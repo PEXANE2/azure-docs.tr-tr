@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
 ms.openlocfilehash: e04d7fa1f319ca3969d8acdc0235e2838bb3a88d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90998193"
 ---
-# <a name="import-threat-intelligence-into-azure-sentinel"></a>Tehdit zekasını Azure Sentinel 'e aktarma
+# <a name="import-threat-intelligence-into-azure-sentinel"></a>Tehdit analizini Azure Sentinel’e aktarma
 
 ## <a name="introduction-to-threat-intelligence"></a>Tehdit zekasına giriş
 
@@ -78,7 +78,7 @@ Bu bilgiler, aşağıdaki üç adımı içeren **uygulama kaydı** adlı bir iş
 
 1. Uygulama kaydınız için bir ad seçin, **tek kiracılı** radyo düğmesini seçin ve **Kaydet**' i seçin.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Uygulamayı kaydetme":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
 
 1. Ortaya çıkan ekrandan, **uygulama (istemci) kimliği** ve **Dizin (kiracı) kimliği** değerlerini kopyalayın. Bunlar, daha sonra tıp veya özel çözümünüzü Azure Sentinel 'e tehdit göstergeleri gönderecek şekilde yapılandırmak için gereken ilk iki bilgi parçalarından oluşur.
 
@@ -96,13 +96,13 @@ Bu bilgiler, aşağıdaki üç adımı içeren **uygulama kaydı** adlı bir iş
 
 1. **Threatındicators. ReadWrite. OwnedBy** ' ı seçin ve bu izni uygulamanızın izin listesine eklemek Için **izin Ekle** ' yi seçin.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="İzinleri belirtme":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
 
 **Bu izinleri vermek için kuruluşunuzdan onay alın**
 
 1. İzin vermek için uygulamanızın API izinleri sayfasında **kiracınız için yönetici onayı verme** ' yi seçmek üzere bir Azure Active Directory genel yöneticisinin olması gerekir. Hesabınızda genel yönetici rolüne sahip değilseniz, bu düğme kullanılamaz ve kuruluşunuzdaki genel bir yöneticiden bu adımı gerçekleştirmesini isteyebilirsiniz ve bu adımı gerçekleştirin.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Onay ver":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
 
 1. Uygulamanıza izin verildiğinde, **durum**' un altında yeşil bir onay işareti görürsünüz.
  
@@ -114,7 +114,7 @@ Uygulamanız kaydedildikten ve izinler verildiğinden, listenizden son şeyi uyg
 
 1. Menüdeki gizli dizileri **&** seçin ve uygulamanız için gizli dızı (API anahtarı) almak için **yeni istemci gizli** düğmesine tıklayın.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="İstemci gizliliğini al":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
 
 1. Bu sayfadan uzaklaşmanız durumunda, bu parolayı tekrar alamamanız halinde **Ekle** düğmesine tıklayın ve **istemci gizliliğini kopyalamaya dikkat**edin. IPUCUNUZU veya özel çözümünüzü yapılandırırken bu değere ihtiyaç duyarsınız.
 
@@ -145,7 +145,7 @@ Birkaç dakika içinde tehdit göstergelerinin bu Azure Sentinel çalışma alan
 
 Tehdit zekasını iletilmek üzere en yaygın olarak benimsenen endüstri standardı, [STIX veri biçiminin ve TAXıı protokolünün bir birleşimidir](https://oasis-open.github.io/cti-documentation/). Kuruluşunuz geçerli STIX/TAXıı sürümünü (2,0 veya 2,1) destekleyen çözümlerden tehdit göstergelerini alırsa tehdit bilgilerini Azure Sentinel 'e taşımak için **tehdit zekataxıı** veri bağlayıcısını kullanabilirsiniz. Threat Intelligence-TAXıı veri Bağlayıcısı, Azure Sentinel 'deki yerleşik bir TAXıı istemcisinin, TAXıı 2. x sunucularından tehdit zekasını içeri aktarmasını sağlar.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="TAXıı içeri aktarma yolu":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
  
 Bir TAXıı sunucusundan STIX biçimli tehdit göstergelerini Azure Sentinel 'e aktarmak için şu adımları izleyin:
 
@@ -287,7 +287,7 @@ Tehdit göstergelerini bir TAXıı sunucusundan Azure Sentinel 'e aktarmak için
 
 1. Bu TAXıı sunucu koleksiyonu, **API kök URL 'si**, **koleksiyon kimliği**, **Kullanıcı adı** (gerekliyse) ve **parola** (gerekliyse) için bir **ad** yazın ve **Ekle** düğmesine tıklayın.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="TAXıı sunucularını yapılandırma":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
  
 Bir TAXıı sunucusuyla bağlantı kurulamanın başarıyla oluşturulduğunu ve aynı veya farklı bir TAXıı sunucusundan birden çok koleksiyona bağlanmak için istediğiniz kadar bir adım (4) tekrardan bir onay almalısınız.
 
@@ -307,7 +307,7 @@ Tehdit göstergelerini, tehdit **bilgileri platformunu** ve/veya **Threat Intell
 
 Sonuçlarınız aşağıda gösterildiği gibi örnek tehdit göstergesine benzer olmalıdır:
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Örnek sorgu verileri":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
  
 ## <a name="manage-your-threat-indicators-in-the-new-threat-intelligence-area-of-azure-sentinel"></a>Azure Sentinel 'in yeni tehdit bilgileri alanında tehdit göstergelerini yönetin
 
@@ -322,7 +322,7 @@ En yaygın görevlerden birine göz atalım, kolayca gruplandırma ve başvuru i
 
 1. Sayfanın üst menüsünden **Yeni Ekle** düğmesini seçin.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Yeni bir tehdit göstergesi ekleyin" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Tehdit bilgileri içeri aktarma yolu" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
 
 1. Gösterge türünü seçin, ardından **Yeni gösterge** panelinde kırmızı bir yıldız işareti (*) ile işaretlenen gerekli alanları doldurun.
 
@@ -330,7 +330,7 @@ En yaygın görevlerden birine göz atalım, kolayca gruplandırma ve başvuru i
 
 Tehdit göstergelerini etiketleme, bulmayı kolaylaştırmak için bunları gruplamak için kolay bir yoldur. Genellikle, belirli bir olayla ilgili göstergelere veya belirli bir aktörden veya iyi bilinen bir saldırı kampanyasından tehditleri temsil eden göstergelere bir etiket uygulayabilirsiniz. Tehdit göstergelerini tek tek veya çoklu seçim göstergelerini etiketleyebilir ve hepsini bir kez etiketlendirebilirsiniz. Aşağıda gösterilen birden çok göstergeyi bir olay KIMLIĞIYLE etiketlemeyle ilgili bir örnek aşağıda verilmiştir. Etiketleme serbest biçimli olduğundan, tehdit göstergesi etiketleri için standart adlandırma kuralları oluşturmak önerilen bir uygulamadır. Her göstergeye birden çok etiket uygulayabilirsiniz.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Tehdit göstergelerine Etiketler uygulama" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Tehdit bilgileri içeri aktarma yolu" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
 
 ## <a name="analytics-puts-your-threat-indicators-to-work-detecting-potential-threats"></a>Analiz, tehdit göstergelerinizi olası tehditleri tespit etmek için koyar
 
@@ -350,11 +350,11 @@ Bu kural şablonlarından birine göz atalım ve Azure Sentinel 'e aktardığın
 
 1. **TI Map IP varlığı AzureActivity adresine** gidin ve gerekli tüm veri kaynaklarını aşağıda gösterildiği gibi bağladığınıza emin olun.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Gerekli veri kaynakları":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
 
 1. Bu kuralı seçin ve **kural oluştur** düğmesini seçin. Bu, kuralı yapılandırmak için bir sihirbaz açar. Ayarları burada doldurun ve **Sonraki: kural mantığını ayarla >** düğmesini seçin.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Analiz kuralı oluştur":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
 
 1. Sihirbazın kural mantığı kısmı şunları içerir:
     - Kuralda kullanılacak sorgu.
@@ -397,7 +397,7 @@ Azure Sentinel 'de sunulan tehdit bilgileri çalışma kitabını bulmayı ve ay
 
 1. **Tehdit zekası** başlıklı çalışma kitabına gidin ve aşağıda gösterildiği gibi **Threatıntelligenceındicator** tablosunda verileriniz olduğunu doğrulayın.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Verileri doğrulama":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
  
 1. **Kaydet** düğmesini seçin ve çalışma kitabını depolamak Için bir Azure konumu seçin. Çalışma kitabını dilediğiniz şekilde değiştirip değişikliklerinizi kaydettiğinizde bu adım gereklidir.
 
@@ -417,7 +417,7 @@ Azure Sentinel 'de sunulan tehdit bilgileri çalışma kitabını bulmayı ve ay
 
 1. **Düzenle** düğmesini seçin. Çalışma kitabınız için yeni bir grafik oluşturdunuz.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Çubuk Grafik":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
 
 Çalışma kitapları, Azure Sentinel 'in tüm yönlerine yönelik Öngörüler sunan güçlü etkileşimli panolar sağlar. Çalışma kitaplarıyla yapabileceğiniz bir tam nokta vardır ve sağlanan şablonlar harika bir başlangıç noktası olmakla birlikte, büyük olasılıkla bu şablonları incelemek ve özelleştirmek veya birçok farklı veri kaynağını birleştiren yeni panolar oluşturmak isteyeceksiniz, böylece verilerinizi benzersiz yollarla görselleştirebilirsiniz. Azure Sentinel çalışma kitapları Azure Izleyici çalışma kitaplarını temel aldığı için, daha fazla sayıda belge mevcuttur ve birçok şablon daha vardır. Başlamak için harika bir yer, [Azure izleyici çalışma kitapları ile etkileşimli raporlar oluşturmaya](../azure-monitor/platform/workbooks-overview.md)yönelik bu makaledir. 
 

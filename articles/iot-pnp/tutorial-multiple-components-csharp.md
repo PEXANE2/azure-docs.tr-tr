@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575393"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945541"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Öğretici: Windows üzerinde çalışan bir IoT Tak ve Kullan birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (C#)
 
@@ -33,7 +33,7 @@ Bu öğreticiyi Windows üzerinde gerçekleştirmek için, yerel Windows ortamı
 
 [Hızlı başlangıç: Windows üzerinde çalışan bir örnek ıot Tak ve kullan cihaz uygulamasını IoT Hub 'A bağlama (C#)](quickstart-connect-device-csharp.md), depoyu zaten Klonladığınız.
 
-.NET GitHub deposu için Microsoft Azure IoT SDK ' dan örnekleri kopyalayın. Seçtiğiniz bir klasörde bir komut istemi açın. .NET GitHub deposu [için Microsoft Azure IoT örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp) kopyalamak üzere aşağıdaki komutu çalıştırın:
+C# GitHub deposu için Azure IoT örneklerinden örnekleri kopyalayın. Seçtiğiniz bir klasörde bir komut istemi açın. .NET GitHub deposu [için Microsoft Azure IoT örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp) kopyalamak üzere aşağıdaki komutu çalıştırın:
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -47,7 +47,7 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak C# dilinde yazılmı
 
 1. Visual Studio 'da, **hata ayıklama > Project > TemperatureController özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

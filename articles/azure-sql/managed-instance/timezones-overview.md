@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617936"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978382"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde saat dilimleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Desteklenen bir saat dilimi kümesi, yönetilen örneğin temeldeki işletim sis
 
 [Günışığından yararlanma zaman/saat dilimi değişiklikleri ilkesi](https://aka.ms/time) , 2010 ileri 'den geçmiş doğruluğu garanti eder.
 
-Desteklenen saat dilimlerinin adlarına sahip bir liste, [sys. time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) sistem görünümü aracılığıyla sunulur.
+Desteklenen saat dilimlerinin adlarına sahip bir liste [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) sistem görünümü aracılığıyla sunulur.
 
 ## <a name="set-a-time-zone"></a>Saat dilimi ayarlama
 
@@ -95,7 +95,7 @@ Bir yük devretme grubundaki birincil ve ikincil bir örnek genelinde aynı saat
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Mevcut yönetilen Örneğin saat dilimi değiştirilemez.
+- Mevcut yönetilen Örneğin saat dilimi değiştirilemez. Geçici bir çözüm olarak, uygun saat dilimine sahip yeni bir yönetilen örnek oluşturun ve ardından el ile yedekleme ve geri yükleme gerçekleştirin ya da önerdiğimiz bir [süre içinde, bir çapraz örnek zaman geri yükleme](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database)gerçekleştirin.
 - SQL Server Agent işlerden başlatılan dış işlemler, örneğin saat dilimini gözlemlemektir.
 
 ## <a name="list-of-supported-time-zones"></a>Desteklenen saat dilimlerinin listesi
@@ -144,7 +144,7 @@ Bir yük devretme grubundaki birincil ve ikincil bir örnek genelinde aynı saat
 | Saint Pierre standart saati | (UTC-03:00) Saint Pierre ve Miquelon |
 | Bahia standart saati | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Eşgüdümlü Evrensel Saat-02 |
-| Orta Atlantik standart saati | (UTC-02:00) Orta Atlantik-eski |
+| Mid-Atlantic standart saati | (UTC-02:00) Mid-Atlantic-eski |
 | Azor Adaları standart saati | (UTC-01:00) Azor Adaları |
 | Cabo Verde standart saati | (UTC-01:00) Cabo Verde Adaları |
 | UTC | (UTC) Eşgüdümlü Evrensel Saat |
@@ -234,7 +234,7 @@ Bir yük devretme grubundaki birincil ve ikincil bir örnek genelinde aynı saat
 | Yeni Zelanda standart saati | (UTC + 12:00) Auckland, kaynak |
 | UTC + 12 | (UTC + 12:00) Eşgüdümlü Evrensel Saat + 12 |
 | Fiji standart saati | (UTC + 12:00) Fiji |
-| Kamçatstandart saati | (UTC + 12:00) Petropavlovsk-Kamchatsky-Old |
+| Kamçatstandart saati | (UTC + 12:00) Petropavlovsk-Kamchatsky-eski |
 | Chatham Adaları standart saati | (UTC + 12:45) Chatham Adaları |
 | UTC + 13 | (UTC + 13:00) Eşgüdümlü Evrensel Saat + 13 |
 | Tonga standart saati | (UTC + 13:00) Nuku 'alofa |
@@ -246,4 +246,4 @@ Bir yük devretme grubundaki birincil ve ikincil bir örnek genelinde aynı saat
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
 - [AT saat dılımı (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys. time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

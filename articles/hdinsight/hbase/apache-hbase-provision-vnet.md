@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087750"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure sanal ağı 'nda HDInsight 'ta Apache HBase kümeleri oluşturma
@@ -43,7 +43,7 @@ Bu bölümde, bir Azure sanal ağında [Azure Resource Manager şablonu](../../a
 > * **Alt ağ adı**: subnet1
 > * **Alt ağ adres aralığı**: 10.0.0.0/24
 >
-> `CLUSTERNAME`, şablonu kullanırken sağladığınız küme adı ile değiştirilmiştir.
+> `CLUSTERNAME` , şablonu kullanırken sağladığınız küme adı ile değiştirilmiştir.
 
 1. Azure portal şablonu açmak için aşağıdaki görüntüyü seçin. Şablon, [Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)bulunur.
 
@@ -51,7 +51,7 @@ Bu bölümde, bir Azure sanal ağında [Azure Resource Manager şablonu](../../a
 
 1. **Özel dağıtım** iletişim kutusunda **Şablonu Düzenle**' yi seçin.
 
-1. Satır 165 ' de değeri `Standard_A3` olarak değiştirin `Standard_A4_V2` . Sonra **Kaydet**'i seçin.
+1. Satır 165 ' de değeri `Standard_A3` olarak değiştirin `Standard_A4_V2` . Ardından **Kaydet**’i seçin.
 
 1. Kalan şablonu aşağıdaki bilgilerle doldurun:
 
@@ -146,11 +146,11 @@ Bu bilgileri bir Java uygulamasında kullanmak için, bir uygulama oluşturmak �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Apache HBase kümesi oluşturmayı öğrendiniz. Daha fazla bilgi için bkz:
+Bu makalede, Apache HBase kümesi oluşturmayı öğrendiniz. Daha fazla bilgi edinmek için şu makalelere bakın:
 
 * [HDInsight'ı kullanmaya başlama](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight 'ta boş kenar düğümlerini kullanma](../hdinsight-apps-use-edge-node.md)
 * [HDInsight 'ta Apache HBase çoğaltmasını yapılandırma](apache-hbase-replication.md)
 * [HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight 'ta Apache Hadoop ile Apache HBase kullanmaya başlama](./apache-hbase-tutorial-get-started-linux.md)
-* [Sanal Ağ’a Genel Bakış](../../virtual-network/virtual-networks-overview.md)
+* [Sanal ağa genel bakış](../../virtual-network/virtual-networks-overview.md)

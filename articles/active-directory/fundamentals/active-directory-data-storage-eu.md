@@ -13,10 +13,10 @@ ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395898"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory Avrupa müşterileri için kimlik veri depolaması
@@ -36,7 +36,7 @@ Bulut tabanlı Azure Multi-Factor Authentication için, kimlik doğrulaması kul
 
 Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve bulut tabanlı Azure MFA tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](../authentication/howto-mfa-reporting-datacollection.md).
 
-## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Kurumsal uygulamalar için parola tabanlı çoklu oturum açma
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Kurumsal uygulamalar için parola tabanlı tek Sign-On
  
 Bir müşteri yeni bir kurumsal uygulama (Azure AD Galerisi veya Galeri olmayan) oluşturuyorsa ve parola tabanlı SSO 'yu etkinleştirse, uygulama oturum açma URL 'SI ve özel yakalama oturum açma alanları Birleşik Devletler depolanır. Bu özellik hakkında daha fazla bilgi için lütfen [parola tabanlı çoklu oturum açmayı yapılandırma](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) bölümüne bakın
 

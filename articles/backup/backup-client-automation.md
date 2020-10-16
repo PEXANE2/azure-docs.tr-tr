@@ -4,10 +4,10 @@ description: Bu makalede, PowerShell kullanarak Windows Server veya Windows iste
 ms.topic: conceptual
 ms.date: 12/2/2019
 ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987102"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
@@ -312,7 +312,7 @@ Bir `OBFileSpec` nesne, bir yedeklemeye dahil edilecek ve dışlanacak dosyalar�
 * Dışlanacak dosya ve klasörleri belirtin
 * Verilerin özyinelemeli yedeklemesini bir klasöre (veya) yalnızca belirtilen klasördeki en üst düzey dosyaların yedeklenip yedeklenmeyeceğini belirtin.
 
-İkincisi, New-Obdosyabelirtimi komutunda-Nonözyinelemeli bayrağı kullanılarak elde edilir.
+İkincisi, New-OBFileSpec komutunda-Nonözyinelemeli bayrak kullanılarak elde edilir.
 
 Aşağıdaki örnekte, C: ve D: birimi Yedeklenecek ve işletim sistemi ikili dosyalarını Windows klasöründe ve tüm geçici klasörlerde dışarıda bırakacağız. Bunu yapmak için, [New-Obdosyabelirtimi](/powershell/module/msonlinebackup/new-obfilespec) cmdlet 'ini kullanarak iki dosya belirtimi oluşturacağız. ekleme için bir tane ve dışlama için bir tane. Dosya belirtimleri oluşturulduktan sonra, [Add-Obdosyabelirtimi](/powershell/module/msonlinebackup/add-obfilespec) cmdlet 'i kullanılarak ilkeyle ilişkilendirilir.
 

@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
 ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082775"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS yapılandırma ve NFS depolama hedefi sorunlarını giderme
@@ -96,7 +96,7 @@ Birden çok dışarı aktarmada bulunan dosyalar için bu olası dosya çarpış
 
 Azure HPC Cache tarafından sorgulandığında NAS 'ıN dışarı aktarmaları listemalıdır.
 
-Çoğu NFS depolama sisteminde, bir Linux istemcisinden aşağıdaki sorguyu göndererek bunu test edebilirsiniz:``showmount -e <storage IP address>``
+Çoğu NFS depolama sisteminde, bir Linux istemcisinden aşağıdaki sorguyu göndererek bunu test edebilirsiniz: ``showmount -e <storage IP address>``
 
 Mümkünse önbelleğiniz ile aynı sanal ağdaki bir Linux istemcisini kullanın.
 
@@ -120,9 +120,9 @@ VPN yapılandırmanızın ayrıntılarını bilmiyorsanız sisteminizde bu sorun
 
   Bunlar, komutundaki seçeneklerdir:
 
-  * ``-M do``-Parçalara ayırma
-  * ``-c 1``-Yalnızca bir paket gönderin
-  * ``-s 1472``-Yükün boyutunu 1472 bayt olarak ayarlayın. Bu, Ethernet ek yükü için hesap oluşturulduktan sonra 1500 baytlık bir paketin en büyük boyut yüküdür.
+  * ``-M do`` -Parçalara ayırma
+  * ``-c 1`` -Yalnızca bir paket gönderin
+  * ``-s 1472`` -Yükün boyutunu 1472 bayt olarak ayarlayın. Bu, Ethernet ek yükü için hesap oluşturulduktan sonra 1500 baytlık bir paketin en büyük boyut yüküdür.
 
   Başarılı bir yanıt şöyle görünür:
 

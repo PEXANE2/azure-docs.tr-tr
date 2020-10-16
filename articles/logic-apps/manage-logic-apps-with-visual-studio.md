@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87280775"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio ile mantıksal uygulamaları yönetme
@@ -71,7 +71,7 @@ Visual Studio 'da, Azure aboneliğinizle ilişkili olan ve bulut Gezgini kullan�
 
 1. Visual Studio'yu açın. **Görünüm** menüsünde **bulut Gezgini**' ni seçin.
 
-1. Cloud Explorer 'da **Hesap yönetimi** simgesini seçin. Logic Apps ile ilişkili Azure aboneliğini seçin ve **Uygula**' yı seçin. Örnek:
+1. Cloud Explorer 'da **Hesap yönetimi** simgesini seçin. Logic Apps ile ilişkili Azure aboneliğini seçin ve **Uygula**' yı seçin. Örneğin:
 
    !["Hesap yönetimi" ni seçin](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -230,7 +230,7 @@ Mantıksal uygulama çalıştırmaları ile ilgili durumu denetlemek ve sorunlar
 
    ![Mantıksal uygulamanız için çalıştırma geçmişini açma](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için, bir çalıştırmaya çift tıklayın. Örnek:
+1. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için, bir çalıştırmaya çift tıklayın. Örneğin:
 
    ![Belirli bir çalıştırma hakkındaki bilgileri görüntüleme](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   

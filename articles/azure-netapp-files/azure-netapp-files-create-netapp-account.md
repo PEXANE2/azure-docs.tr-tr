@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483678"
 ---
 # <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
@@ -54,7 +54,7 @@ Ayrıca, NetApp kaynak sağlayıcısını kullanmak için aboneliğinizi kaydetm
      ![Yeni NetApp hesabı](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. **Oluştur**'a tıklayın.     
+5. **Oluştur**’a tıklayın.     
    Oluşturduğunuz NetApp hesabı artık Azure NetApp Files dikey penceresinde gösterilir. 
 
 > [!NOTE] 

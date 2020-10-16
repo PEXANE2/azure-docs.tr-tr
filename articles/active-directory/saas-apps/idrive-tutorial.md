@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: a8d79deb55a5693978569f5e3a940a03897efb80
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824822"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idrive"></a>Öğretici: IDrive ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayanarak IDrive I
 Azure AD çoklu oturum açma 'yı IDrive ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[IDrive çoklu oturum açmayı yapılandırma](#configure-idrive-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[IDrive çoklu oturum açmayı yapılandırma](#configure-idrive-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. IDrive **[test kullanıcısı oluşturma](#create-idrive-test-user)** -IDrive 'Da kullanıcının Azure AD gösterimine bağlı olan Britta Simon 'un bir karşılığı olacak.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı IDrive ile yapılandırmak için aşağıdaki ad
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı IDrive ile yapılandırmak için aşağıdaki ad
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.idrive.com/idrive/login/loginForm`
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
@@ -121,7 +121,7 @@ Azure AD çoklu oturum açmayı IDrive ile yapılandırmak için aşağıdaki ad
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-idrive-single-sign-on"></a>IDrive çoklu oturum açmayı yapılandırma
+### <a name="configure-idrive-single-sign-on"></a>IDrive tek Sign-On yapılandırma
 
 **IDrive** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [IDrive destek ekibine](https://www.idrive.com/support)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

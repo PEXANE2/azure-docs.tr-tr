@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652066"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
@@ -63,7 +63,7 @@ Aşağıdaki bölümde, parola karma eşitlemesinin Active Directory ile Azure A
 > [!NOTE]
 > Özgün MD4 karması Azure AD 'ye aktarılmaz. Bunun yerine, özgün MD4 karmasının SHA256 karması iletilir. Sonuç olarak, Azure AD 'de depolanan karma değer elde edilmişse, şirket içi bir karma geçişi saldırısında kullanılamaz.
 
-### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+### <a name="security-considerations"></a>Güvenlik konuları
 
 Parolaları eşitlerken, parolanızın düz metin sürümü Parola karması eşitleme özelliğine, Azure AD 'ye veya ilişkili hizmetlerden herhangi birine gösterilmez.
 
@@ -113,7 +113,7 @@ Etkinleştirildikten sonra Azure AD, PasswordPolicies özniteliğinden değeri k
 
 Parola karma eşitlemesi etkinleştirilmeden önce Enforcechoparlör Passwordpolicyforpasswordsyncedusers ' ı etkinleştirmeniz önerilir, böylece parola karmalarının ilk eşitlenmesi, `DisablePasswordExpiration` Kullanıcılar Için PasswordPolicies özniteliğine değeri eklemez.
 
-Varsayılan Azure AD parola ilkesi, kullanıcıların parolalarının her 90 günde bir değiştirilmesini gerektirir. AD 'deki ilkeniz da 90 gün ise, iki ilke eşleşmelidir. Ancak, AD ilkesi 90 gün değilse, Set-MsolPasswordPolicy PowerShell komutunu kullanarak Azure AD parola ilkesini eşleşecek şekilde güncelleştirebilirsiniz.
+Varsayılan Azure AD parola ilkesi, kullanıcıların parolalarının her 90 günde bir değiştirilmesini gerektirir. AD 'deki ilkeniz da 90 gün ise, iki ilke eşleşmelidir. Ancak, AD ilkesi 90 gün değilse, Azure AD parola ilkesini Set-MsolPasswordPolicy PowerShell komutunu kullanarak eşleşecek şekilde güncelleştirebilirsiniz.
 
 Azure AD, kayıtlı etki alanı başına ayrı bir parola süre sonu ilkesini destekler.
 

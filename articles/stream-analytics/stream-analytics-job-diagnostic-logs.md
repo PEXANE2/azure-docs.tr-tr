@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
 ms.openlocfilehash: ed5c7eee1e8261c65decba4748e1d9c6a4d7212b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91459821"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Kaynak günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme
@@ -97,7 +97,7 @@ Tüm Günlükler JSON biçiminde depolanır. Her giriş aşağıdaki ortak dize 
 
 Ad | Açıklama
 ------- | -------
-time | Günlüğün zaman damgası (UTC).
+saat | Günlüğün zaman damgası (UTC).
 resourceId | İşlemin üzerinde gerçekleştiği kaynağın KIMLIĞI (büyük harfle). Abonelik KIMLIĞI, kaynak grubu ve iş adını içerir. Örneğin, **/Subscriptions/6503d296-dac1-4449-9B03-609a1f4a1c87/ResourceGroups/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMMINGJOB**.
 category | Günlük kategorisi, **yürütme** ya da **yazma**.
 operationName | Günlüğe kaydedilen işlemin adı. Örneğin, **olay gönderme: mysqloutput 'e SQL çıkışı yazma hatası**.

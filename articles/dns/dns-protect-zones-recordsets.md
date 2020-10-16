@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
 ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87920509"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS bölgelerini ve kayıtlarını koruma
@@ -162,8 +162,8 @@ Aşağıdaki örnekte yalnızca CNAME kayıtlarını yönetmek için özel bir r
 
 Actions özelliği, aşağıdaki DNS 'e özgü izinleri tanımlar:
 
-* `Microsoft.Network/dnsZones/CNAME/*`CNAME kayıtları üzerinde tam denetim verir
-* `Microsoft.Network/dnsZones/read`DNS bölgelerini okuma izni verir, ancak bunları değiştirmemelidir, CNAME 'in oluşturulduğu bölgeyi görmenizi sağlar.
+* `Microsoft.Network/dnsZones/CNAME/*` CNAME kayıtları üzerinde tam denetim verir
+* `Microsoft.Network/dnsZones/read` DNS bölgelerini okuma izni verir, ancak bunları değiştirmemelidir, CNAME 'in oluşturulduğu bölgeyi görmenizi sağlar.
 
 Kalan eylemler, [DNS bölgesi katılımcısı yerleşik rolünden](../role-based-access-control/built-in-roles.md#dns-zone-contributor)kopyalanır.
 

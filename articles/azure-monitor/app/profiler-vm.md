@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87315844"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler kullanarak bir Azure sanal makinesinde veya bir sanal makine ölçek kümesinde çalışan Web uygulamaları profili oluşturma
@@ -54,7 +54,7 @@ Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçek kümes
 
    Değişikliklerin uygulanması genellikle tam şablon dağıtımı veya PowerShell cmdlet 'leri ya da Visual Studio aracılığıyla bulut hizmeti tabanlı yayımlama içerir.  
 
-   Aşağıdaki PowerShell komutları, yalnızca Azure Tanılama uzantısına dokunarak var olan sanal makinelere yönelik alternatif bir yaklaşımdır. Daha önce bahsedilen ProfilerSink öğesini Get-Azvmdiagnosticsextenma komutu tarafından döndürülen yapılandırmaya ekleyin. Ardından, güncelleştirilmiş yapılandırmayı set-Azvmdiagnosticsextenma komutuna geçirin.
+   Aşağıdaki PowerShell komutları, yalnızca Azure Tanılama uzantısına dokunarak var olan sanal makinelere yönelik alternatif bir yaklaşımdır. Daha önce bahsedilen ProfilerSink öğesini Get-AzVMDiagnosticsExtension komutu tarafından döndürülen yapılandırmaya ekleyin. Ardından, güncelleştirilmiş yapılandırmayı Set-AzVMDiagnosticsExtension komutuna geçirin.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()

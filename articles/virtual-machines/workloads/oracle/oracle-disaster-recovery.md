@@ -1,25 +1,18 @@
 ---
 title: Azure ortamınızdaki bir Oracle olağanüstü durum kurtarma senaryosuna genel bakış | Microsoft Docs
 description: Azure ortamınızda Oracle Database 12c veritabanı için olağanüstü durum kurtarma senaryosu
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 5a162c0683a953399b48aaf627bbff5bc674e9dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274570"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996184"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure ortamında Oracle Database 12c veritabanı için olağanüstü durum kurtarma
 
@@ -100,7 +93,7 @@ Azure kurulumunun özeti aşağıda verilmiştir:
 - [Azure 'da Oracle veritabanı tasarlama ve uygulama](oracle-design.md)
 - [Oracle Data Guard’ı yapılandırma](configure-oracle-dataguard.md)
 - [Oracle altın kapısını yapılandırma](configure-oracle-golden-gate.md)
-- [Oracle yedekleme ve kurtarma](oracle-backup-recovery.md)
+- [Oracle yedekleme ve kurtarma](./oracle-overview.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

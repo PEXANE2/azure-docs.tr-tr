@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213303"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure için Redis Cache için ASP.NET Oturum Durumu Sağlayıcısı
@@ -125,7 +125,7 @@ Bu adımlar gerçekleştirildikten sonra, uygulamanız Redsıs oturum durumu sa�
 * SQL Server oturum durumu sağlayıcısı-bu sağlayıcı oturum durumunu SQL Server 'da depolar. Oturum durumunu kalıcı depolamada depolamak istiyorsanız bu sağlayıcıyı kullanın. Web uygulamanızı ölçeklendirebilirsiniz, ancak SQL Server 'ın oturum için kullanılması, Web uygulamanızda bir performans etkisine sahiptir. Bu sağlayıcıyı, performansı artırmaya yardımcı olmak için [bellek ıçı OLTP yapılandırması](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) ile de kullanabilirsiniz.
 * Redsıs oturum durumu sağlayıcısı için Azure önbelleği gibi bellek Içi oturum durumu sağlayıcısına dağıtılmış-bu sağlayıcı, her iki dünyanın da en iyi şekilde yararlanmanızı sağlar. Web uygulamanız basit, hızlı ve ölçeklenebilir bir oturum durumu sağlayıcısına sahip olabilir. Bu sağlayıcı oturum durumunu bir önbellekte depoladığından, geçici ağ arızalarına benzer şekilde, uygulamanızın bir dağıtılmış bellek önbelleğinde iletişim kurulurken ilişkili tüm özellikleri dikkate almanız gerekir. Önbellek kullanımı ile ilgili en iyi uygulamalar için bkz. Microsoft desenlerinden [önbelleğe alma kılavuzu](../best-practices-caching.md) & [Azure bulut uygulaması tasarımı ve uygulama kılavuzu](https://github.com/mspnp/azure-guidance).
 
-Oturum durumu ve diğer en iyi uygulamalar hakkında daha fazla bilgi için bkz. [Web geliştirme En Iyi uygulamaları (Azure Ile gerçek bulut uygulamaları oluşturma)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
+Oturum durumu ve diğer en iyi uygulamalar hakkında daha fazla bilgi için bkz. [Web geliştirme En Iyi uygulamaları (Azure Ile bulut uygulamaları oluşturma Real-World)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
 
 ## <a name="third-party-session-state-providers"></a>Üçüncü taraf oturum durumu sağlayıcıları
 

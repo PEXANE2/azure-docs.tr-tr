@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
 ms.openlocfilehash: e06a7a759c712b47f3a725a3c49a660226da6a09
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064195"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>Kasa erişim ilkesinden Azure rol tabanlı erişim denetimi (Önizleme) izin modeline geçiş
@@ -66,7 +66,7 @@ Erişim ilkeleri önceden tanımlanmış izin şablonları:
 - Azure bilgileri BYOK
 
 ### <a name="access-policies-templates-to-azure-roles-mapping"></a>İlke şablonlarına Azure rolleri eşleme erişimi
-| Erişim ilkesi şablonu | Operations | Azure rolü |
+| Erişim ilkesi şablonu | İşlemler | Azure rolü |
 | --- | --- | --- |
 | Anahtar, gizli, sertifika yönetimi | Anahtarlar: tüm işlemler <br>Sertifikalar: tüm işlemler<br>Gizlilikler: tüm işlemler | Key Vault Yöneticisi (Önizleme) |
 | Anahtar & gizli dizi yönetimi | Anahtarlar: tüm işlemler <br>Gizlilikler: tüm işlemler| Key Vault şifre Müdürü (Önizleme)<br> Key Vault gizli bilgileri Müdürü (Önizleme)|

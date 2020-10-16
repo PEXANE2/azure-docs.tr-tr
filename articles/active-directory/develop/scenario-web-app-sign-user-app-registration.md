@@ -12,10 +12,10 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118680"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
@@ -91,7 +91,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 
    1. Bir anahtar açıklaması girin.
    1. **1 yılda**anahtar süresini seçin.
-   1. **Add (Ekle)** seçeneğini belirleyin.
+   1. **Ekle**’yi seçin.
    1. Anahtar değeri göründüğünde, daha sonra için kopyalayın. Bu değer, bir daha görüntülenmez veya başka yollarla alınabilir.
 
 # <a name="python"></a>[Python](#tab/python)
@@ -107,7 +107,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 
    1. Bir anahtar açıklaması girin.
    1. **1 yılda**bir anahtar süresi seçin.
-   1. **Add (Ekle)** seçeneğini belirleyin.
+   1. **Ekle**’yi seçin.
    1. Anahtar değeri göründüğünde kopyalayın. Buna daha sonra ihtiyacınız olacak.
 ---
 

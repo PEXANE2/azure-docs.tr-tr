@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235254"
 ---
 # <a name="get-started-with-storage-explorer"></a>Depolama Gezgini ile çalışmaya başlama
@@ -23,7 +23,7 @@ Microsoft Azure Depolama Gezgini; Windows, macOS ve Linux’ta Azure Depolama il
 
 ![Microsoft Azure Depolama Gezgini][0]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -31,7 +31,7 @@ Aşağıdaki Windows destek sürümleri Depolama Gezgini:
 
 * Windows 10 (önerilir)
 * Windows 8
-* Windows 7
+* Windows 7
 
 Tüm Windows sürümleri için Depolama Gezgini en az .NET Framework 4.7.2 gerektirir.
 
@@ -76,7 +76,7 @@ Depolama Gezgini depolama hesaplarına bağlamak için birçok yol sağlar. Gene
 * [Aboneliklerinize ve kaynaklarına erişmek için Azure 'da oturum açın](#sign-in-to-azure)
 * [Belirli bir depolama alanı veya CosmosDB kaynağı iliştirme](#attach-a-specific-resource)
 
-### <a name="sign-in-to-azure"></a>Azure’da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 > [!NOTE]
 > Oturum açtıktan sonra kaynakları tam olarak erişmek için Depolama Gezgini hem yönetim (Azure Resource Manager) hem de veri katmanı izinleri gerektirir. Bu, depolama hesabınıza, hesaptaki kapsayıcılara ve kapsayıcılardaki verilere erişmenizi sağlayan Azure Active Directory (Azure AD) izinlerinin olması gerektiği anlamına gelir. Yalnızca veri katmanında izinleriniz varsa, [Azure AD aracılığıyla bir kaynak eklemeyi](#add-a-resource-via-azure-ad)düşünün. Depolama Gezgini gerekli olan belirli izinler hakkında daha fazla bilgi için, bkz. [Azure Depolama Gezgini sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues).

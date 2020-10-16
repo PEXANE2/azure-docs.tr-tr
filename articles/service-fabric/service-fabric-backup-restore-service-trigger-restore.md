@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246699"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric yedeklemeyi geri yükleme
@@ -317,7 +317,7 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
 
 ## <a name="automatic-restore"></a>Otomatik geri yükleme
 
-_Otomatik geri yükleme_için Service Fabric kümesinde güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümleri yapılandırabilirsiniz. Yedekleme İlkesi ' nde, `AutoRestore` _doğru_olarak ayarlayın. _Otomatik geri yüklemeyi_ etkinleştirmek, veri kaybı bildirildiğinde en son bölüm yedeklemesinden verileri otomatik olarak geri yükler. Daha fazla bilgi için bkz:
+_Otomatik geri yükleme_için Service Fabric kümesinde güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümleri yapılandırabilirsiniz. Yedekleme İlkesi ' nde, `AutoRestore` _doğru_olarak ayarlayın. _Otomatik geri yüklemeyi_ etkinleştirmek, veri kaybı bildirildiğinde en son bölüm yedeklemesinden verileri otomatik olarak geri yükler. Daha fazla bilgi için bkz.
 
 - [Yedekleme Ilkesinde etkinleştirme otomatik geri yükleme](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [Restobölümlemek API başvurusu](/rest/api/servicefabric/sfclient-api-restorepartition)

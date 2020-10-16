@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568480"
 ---
 # <a name="azure-file-share-protocols"></a>Azure dosya paylaşma protokolleri
@@ -21,7 +21,7 @@ Azure dosyaları, Azure dosya paylaşımlarınızı bağlamaya ve bağlamaya yö
 
 ## <a name="differences-at-a-glance"></a>Bir bakışta farklılıklar
 
-|Öne çıkan özelliği  |NFS (Önizleme)  |SMB  |
+|Özellik  |NFS (Önizleme)  |SMB  |
 |---------|---------|---------|
 |Erişim protokolleri     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Desteklenen işletim sistemi     |Linux çekirdek sürümü 4.3 +         |Windows 2008 R2 +, Linux çekirdek sürümü 4.11 +         |

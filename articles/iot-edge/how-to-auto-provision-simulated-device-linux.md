@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447814"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046052"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
@@ -33,7 +33,7 @@ Görevler aşağıdaki gibidir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)' y i etkin bir Windows geliştirme makinesi. Bu makalede bir Ubuntu sunucu VM 'sini çalıştıran Windows 10 kullanılır.
+* [Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)' y i etkin bir Windows geliştirme makinesi. Bu makalede bir Ubuntu sunucu VM 'sini çalıştıran Windows 10 kullanılır.
 * Etkin bir IoT Hub.
 
 > [!NOTE]
@@ -170,19 +170,44 @@ DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme f�
 
    6. İsterseniz **Ilk cihaz Ikizi durumuna** bir etiket değeri ekleyin. Modül dağıtımı için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Daha fazla bilgi için bkz. [IoT Edge modüllerini ölçekli olarak dağıtma](how-to-deploy-at-scale.md).
 
-   7. **Kaydet**’i seçin.
+   7. **Kaydet**'i seçin.
 
 Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir.
 
-## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükler
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükleme
 
 IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalıştırılır ve kenarda kod çalıştırabilmeniz için cihaza ek kapsayıcılar dağıtmanıza izin verir. IoT Edge çalışma zamanını sanal makinenize yükler.
 
-Cihaz türü ile eşleşen makaleye başlamadan önce, DPS **kimlik kapsamınızı** ve CIHAZ **Kayıt kimliğinizi** öğrenin. Ubuntu Server örneğini yüklediyseniz **x64** yönergelerini kullanın. IoT Edge çalışma zamanını otomatik, el ile değil, sağlama için yapılandırdığınızdan emin olun.
+[Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge.md)için bu adımları izleyin ve sonra cihazı sağlamak için bu makaleye geri dönün.
 
-Güvenlik arka plan programını yapılandırma adımına geldiğinizde, emin olun ve [2. seçenek Için otomatik sağlama](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning) ve yapılandırma seçeneğini belirleyin.
+## <a name="configure-the-device-with-provisioning-information"></a>Cihazı sağlama bilgileriyle yapılandırma
 
-[Linux üzerinde Azure IoT Edge çalışma zamanını yükler](how-to-install-iot-edge-linux.md)
+Çalışma zamanı cihazınıza yüklendikten sonra, cihazı cihaz sağlama hizmetine bağlanmak için kullandığı bilgilerle yapılandırın ve IoT Hub.
+
+1. DPS **kimlik kapsamınızı** ve önceki bölümlerde toplanan CIHAZ **kayıt kimliğini** öğrenin.
+
+1. IoT Edge cihazında yapılandırma dosyasını açın.
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+1. Dosyanın sağlama yapılandırması bölümünü bulun. TPM sağlaması için satırların açıklamasını kaldırın ve diğer sağlama satırlarının açıklama olarak belirlendiğinden emin olun.
+
+   `provisioning:`Satırda önünde boşluk olmaması ve iç içe geçmiş öğelerin iki boşluk olması gerekir.
+
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "tpm"
+       registration_id: "<REGISTRATION_ID>"
+   ```
+
+1. Ve değerlerini, `scope_id` `registration_id` DPS ve cihaz bilgileriniz ile güncelleştirin.
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>TPM 'ye IoT Edge erişim verme
 

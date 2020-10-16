@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: jingwang
 ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84669843"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory kullanarak Sybase 'ten veri kopyalama
@@ -42,7 +42,7 @@ Verileri Sybase veritabanından desteklenen herhangi bir havuz veri deposuna kop
 
 Sybase IQ ve ATıCı desteklenmez. Bunun yerine, genel ODBC bağlayıcısını Sybase sürücüsüyle birlikte kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu Sybase bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
@@ -65,7 +65,7 @@ Aşağıdaki özellikler, Sybase bağlı hizmeti için desteklenir:
 | sunucu | Sybase sunucusunun adı. |Evet |
 | database | Sybase veritabanının adı. |Evet |
 | authenticationType | Sybase veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler şunlardır: **temel**ve **Windows**. |Evet |
-| kullanıcı adı | Sybase veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
+| username | Sybase veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 

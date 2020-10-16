@@ -15,10 +15,10 @@ ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268494"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Azure 'da bir Web rolünde Twilio kullanarak telefon araması yapma
@@ -26,7 +26,7 @@ Bu kılavuzda, Azure 'da barındırılan bir Web sayfasından çağrı yapmak i�
 
 ![Twilio ve ASP.NET kullanarak Azure çağrı formu][twilio_dotnet_basic_form]
 
-## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Ön koşullar
 Bu konudaki kodu kullanmak için aşağıdakileri yapmanız gerekir:
 
 1. [Twilio konsolundan][twilio_console]bir Twilio hesabı ve kimlik doğrulama belirteci alın. Twilio kullanmaya başlamak için, adresinde kaydolun [https://www.twilio.com/try-twilio][try_twilio] . Fiyatlandırma 'yi ' de değerlendirebilirsiniz [https://www.twilio.com/pricing][twilio_pricing] . Twilio tarafından sunulan API hakkında daha fazla bilgi için bkz [https://www.twilio.com/voice/api][twilio_api] ..

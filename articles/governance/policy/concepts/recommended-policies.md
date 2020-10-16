@@ -3,12 +3,13 @@ title: Azure hizmetleri için önerilen ilkeler
 description: Azure sanal makineleri gibi Azure hizmetleri için önerilen ilkelerin nasıl bulunacağını ve uygulanacağını açıklar.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 919d09a569fd950ab2061ba3452a4a940d25cb5c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.customer: generated
+ms.openlocfilehash: 5c297bcedd29fa8d9a2712850a57b66630cb52d9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447999"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951528"
 ---
 # <a name="recommended-policies-for-azure-services"></a>Azure hizmetleri için önerilen ilkeler
 
@@ -24,7 +25,7 @@ Bir kuruluş, [kaynaklarını ve kaynak hiyerarşisini düzenlemeyle](/azure/clo
 
 ### <a name="azure-virtual-machines-recommended-policies"></a>Azure sanal makineler önerilen ilkeler
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Olağanüstü durum kurtarma yapılandırması olmadan sanal makineleri denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Olağanüstü durum kurtarma yapılandırması olmayan sanal makineleri denetleyin. Olağanüstü durum kurtarma hakkında daha fazla bilgi edinmek için adresini ziyaret edin [https://aka.ms/asr-doc](https://aka.ms/asr-doc) . |Auditınotexists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json) |
 |[Yönetilen diskleri kullanmayan VM 'Leri denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |Bu ilke yönetilen diskleri kullanmayan VM 'Leri denetler |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json) |

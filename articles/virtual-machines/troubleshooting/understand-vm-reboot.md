@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508874"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965769"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM için sistemin yeniden başlatılmasını anlama
 
@@ -30,7 +30,7 @@ Azure 'da çalışan bir uygulamayı VM yeniden başlatmaları ve kapalı kalma 
 
 Uygulamanızda bu artıklık düzeyini sağlamak için bir kullanılabilirlik kümesinde iki veya daha fazla VM 'yi gruplandırmalarını öneririz. Bu yapılandırma, planlı veya plansız bir bakım olayı sırasında en az bir VM 'nin kullanılabilmesini ve yüzde 99,95 [Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)karşılamasını sağlar.
 
-Kullanılabilirlik kümeleri hakkında daha fazla bilgi için bkz [. VM 'lerin kullanılabilirliğini yönetme](../windows/manage-availability.md)
+Kullanılabilirlik kümeleri hakkında daha fazla bilgi için bkz [. VM 'lerin kullanılabilirliğini yönetme](../manage-availability.md)
 
 ## <a name="resource-health-information"></a>Kaynak Durumu bilgileri
 
@@ -72,7 +72,7 @@ Genellikle VM 'nin yeniden başlatılmasına neden olan diğer senaryolar, birde
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Güvenlik Merkezi ve Windows Update
 
-Azure Güvenlik Merkezi, eksik işletim sistemi güncelleştirmeleri için günlük Windows ve Linux VM 'lerini izler. Güvenlik Merkezi, Windows VM 'de hangi hizmetin yapılandırıldığına bağlı olarak Windows Update veya Windows Server Update Services (WSUS) ' dan kullanılabilen güvenlik ve kritik güncelleştirmeler listesini alır. Güvenlik Merkezi, Linux sistemleri için en son güncelleştirmeleri de denetler. SANAL makinenizde bir sistem güncelleştirmesi eksikse, Güvenlik Merkezi, sistem güncelleştirmelerini uygulamanızı önerir. Bu sistem güncelleştirmelerinin uygulaması, Azure portal Güvenlik Merkezi aracılığıyla denetlenir. Bazı güncelleştirmeler uygulandıktan sonra, VM yeniden başlatmaları gerekebilir. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde sistem güncelleştirmelerini uygulama](../../security-center/security-center-virtual-machine-protection.md).
+Azure Güvenlik Merkezi, eksik işletim sistemi güncelleştirmeleri için günlük Windows ve Linux VM 'lerini izler. Güvenlik Merkezi, Windows VM 'de hangi hizmetin yapılandırıldığına bağlı olarak Windows Update veya Windows Server Update Services (WSUS) ' dan kullanılabilen güvenlik ve kritik güncelleştirmeler listesini alır. Güvenlik Merkezi, Linux sistemleri için en son güncelleştirmeleri de denetler. SANAL makinenizde bir sistem güncelleştirmesi eksikse, Güvenlik Merkezi, sistem güncelleştirmelerini uygulamanızı önerir. Bu sistem güncelleştirmelerinin uygulaması, Azure portal Güvenlik Merkezi aracılığıyla denetlenir. Bazı güncelleştirmeler uygulandıktan sonra, VM yeniden başlatmaları gerekebilir. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde sistem güncelleştirmelerini uygulama](../../security-center/asset-inventory.md).
 
 Şirket içi sunucular gibi, Azure, bu makinelerin kullanıcıları tarafından yönetilmesi amaçlanan için Windows Update güncelleştirmeleri Windows VM 'lerine itelemez. Ancak, otomatik Windows Update ayarını etkin bırakmanız önerilir. Güncelleştirmelerin Windows Update otomatik olarak yüklenmesi Ayrıca güncelleştirmeler uygulandıktan sonra yeniden başlatma işleminin oluşmasına neden olabilir. Daha fazla bilgi için bkz. [WINDOWS Update SSS](https://support.microsoft.com/help/12373/windows-update-faq).
 

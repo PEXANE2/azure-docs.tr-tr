@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: c42180990f81e179a8fa8cdfe9e5d762323213b0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661058"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Öğretici: Seismik ile tümleştirme Azure Active Directory
@@ -68,7 +68,7 @@ Azure AD çoklu oturum açma 'yı Seismıc ile yapılandırmak ve test etmek iç
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Seismik SSO 'Yu yapılandırın](#configure-seismic-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Seismik SSO 'Yu yapılandırın](#configure-seismic-sso)** .
     * Kullanıcının Azure AD gösterimine bağlı olan Seismik 'de Britta Simon 'ın bir karşılığı olacak şekilde **[seismik test kullanıcısı oluşturun](#create-seismic-test-user)** .
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -93,9 +93,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.seismic.com/SSO/<ROUTEURL>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Değeri, gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'SI ile güncelleştirin. Bu değerleri almak için [Seismik istemci desteği ekibine](mailto:support@seismic.com) başvurun. Ayrıca, tanımlayıcı değerini otomatik olarak doldurmak için **hizmet sağlayıcısı meta verilerini** karşıya yükleyebilirsiniz. **hizmet sağlayıcısı meta verileri**hakkında daha fazla bilgi Için, [seıc istemci desteği ekibine](mailto:support@seismic.com)başvurun.
+    > Bu değerler gerçek değildir. Değeri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Seismik istemci desteği ekibine](mailto:support@seismic.com) başvurun. Ayrıca, tanımlayıcı değerini otomatik olarak doldurmak için **hizmet sağlayıcısı meta verilerini** karşıya yükleyebilirsiniz. **hizmet sağlayıcısı meta verileri**hakkında daha fazla bilgi Için, [seıc istemci desteği ekibine](mailto:support@seismic.com)başvurun.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 

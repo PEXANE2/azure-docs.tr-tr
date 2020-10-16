@@ -4,10 +4,10 @@ description: Bu makalede, özel bir konuya bir olay nasıl nakledeceğiniz açı
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86108269"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid için özel konuya gönderi gönder
@@ -16,7 +16,7 @@ Bu makalede, özel bir konuya bir olay nasıl nakledeceğiniz açıklanmaktadır
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="endpoint"></a>Uç Nokta
+## <a name="endpoint"></a>Uç Noktası
 
 HTTP GÖNDERISINI özel bir konuya gönderirken URI biçimini kullanın: `https://<topic-endpoint>?api-version=2018-01-01` .
 
@@ -99,7 +99,7 @@ Konu uç noktasına gönderdikten sonra bir yanıt alırsınız. Yanıt standart
 |Sonuç  |Yanıt  |
 |---------|---------|
 |Başarılı  | 200 TAMAM  |
-|Olay verileri hatalı biçime sahip | 400 Hatalı Istek |
+|Olay verileri hatalı biçime sahip | 400 Hatalı İstek |
 |Geçersiz erişim anahtarı | 401 Yetkisiz |
 |Geçersiz uç nokta | 404 Bulunamadı |
 |Dizi veya olay boyut sınırlarını aşıyor | 413 yükü çok büyük |

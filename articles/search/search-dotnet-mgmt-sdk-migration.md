@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936716"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Yönetim SDK 'sının sürümlerini yükseltme
@@ -26,9 +26,9 @@ Yönetim SDK 'Ları, yönetim REST API 'nin belirli bir sürümünü hedeflemeli
 
 | SDK sürümü | Karşılık gelen REST API sürümü | Özellik ekleme veya davranış değişikliği |
 |-------------|--------------------------------|-------------------------------------|
-| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-Version = 2020-30-20 | Uç nokta güvenliği ekler (IP güvenlik duvarları ve [Azure özel bağlantısı](../private-link/private-endpoint-overview.md)ile tümleştirme) |
+| [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-Version = 2020-30-20 | Uç nokta güvenliği ekler (IP güvenlik duvarları ve [Azure özel bağlantısı](../private-link/private-endpoint-overview.md)ile tümleştirme) |
 | [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-Version = 2019-10-01 | Kullanılabilirlik geliştirmeleri. [Liste sorgu anahtarlarında](/rest/api/searchmanagement/querykeys/listbysearchservice) Son değişiklik (Get kullanımdan kaldırılmıştır). |
-| [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-Version = 2015-08-19  | İlk sürüm |
+| [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-Version = 2015-08-19  | İlk sürüm |
 
 ## <a name="how-to-upgrade"></a>Yükseltme
 

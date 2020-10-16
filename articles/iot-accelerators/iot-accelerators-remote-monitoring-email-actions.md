@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2776b18dc3faded103b49e8ff58a8a0a6dccf144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74168373"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074473"
 ---
 # <a name="add-an-email-action"></a>E-posta eylemi ekleme
 
@@ -166,7 +166,7 @@ Aşağıdaki adımlarda, HTML e-posta şablonunun nasıl düzenleneceği göster
 
 ## <a name="throttling"></a>Azaltma
 
-Uzaktan Izleme Çözüm Hızlandırıcısı, e-posta bildirimleri göndermek için Outlook 'U kullanır. Outlook, [1 dakikada 30 e-posta](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)ile gönderilen e-posta sayısını sınırlar. E-postaları alan e-posta istemcileri, dakika başına alınan e-postaların sayısını da azaledebilir. Özel e-posta istemciniz hakkında sınırlamalar ile görüşün. Bir kural için e-posta bildirimi ayarladığınızda, kural ortalama değerleri en az bir dakikalık bir dönem boyunca hesaplamalı ve anlık değerler kullanmaz:
+Uzaktan Izleme Çözüm Hızlandırıcısı, e-posta bildirimleri göndermek için Outlook 'U kullanır. Outlook, [1 dakikada 30 e-posta](/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)ile gönderilen e-posta sayısını sınırlar. E-postaları alan e-posta istemcileri, dakika başına alınan e-postaların sayısını da azaledebilir. Özel e-posta istemciniz hakkında sınırlamalar ile görüşün. Bir kural için e-posta bildirimi ayarladığınızda, kural ortalama değerleri en az bir dakikalık bir dönem boyunca hesaplamalı ve anlık değerler kullanmaz:
 
 ![Ortalama hesaplama](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 

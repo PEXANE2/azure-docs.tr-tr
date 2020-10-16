@@ -1,14 +1,14 @@
 ---
 title: Yönetim gruplarınız ile çalışma-Azure Idare
 description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmayı, güncelleştirmeyi ve silmeyi öğrenin.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531047"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058106"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
@@ -91,7 +91,7 @@ Bir yönetim grubunu silmek için aşağıdaki gereksinimlerin karşılanması g
 
    :::image type="content" source="./media/delete_confirm.png" alt-text="Yönetim grubu sayfasında Eylem çubuğunun ve ' grubu yeniden adlandır ' düğmesinin ekran görüntüsü." border="false":::
 
-1. **Evet** seçeneğini belirleyin.
+1. **Evet**’i seçin.
 
 ### <a name="delete-in-powershell"></a>PowerShell 'de Sil
 
@@ -119,7 +119,7 @@ az account management-group delete --name 'Contoso'
 
 1. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 
-1. Yönetim grubu hiyerarşisi sayfası yüklenir. Bu sayfa, erişiminiz olan tüm yönetim gruplarını ve abonelikleri keşfedebileceğiniz yerdir. Grup adı seçildiğinde hiyerarşide bir düzey yer alır. Gezinti, dosya Gezgini ile aynı şekilde çalışmaktadır.
+1. Yönetim grubu hiyerarşisi sayfası yüklenir. Bu sayfa, erişiminiz olan tüm yönetim gruplarını ve abonelikleri keşfedebileceğiniz yerdir. Grup adını seçtiğinizde hiyerarşide daha düşük bir düzeye gidersiniz. Gezinti, dosya Gezgini ile aynı şekilde çalışmaktadır.
 
 1. Yönetim grubunun ayrıntılarını görmek için yönetim grubunun başlığının yanındaki **(Ayrıntılar)** bağlantısını seçin. Bu bağlantı kullanılamıyorsa, bu yönetim grubunu görüntüleme izniniz yok.
 
@@ -211,7 +211,7 @@ Taşıma eylemini gerçekleştiriyorsanız şunlar gerekir:
 
 **Özel durum**: hedef veya var olan üst yönetim grubu kök yönetim grubinise, izin gereksinimleri geçerli değildir. Kök yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan giriş noktası olduğundan, bir öğeyi taşımak için üzerinde izinleriniz olması gerekmez.
 
-Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik (yönetim grubundan devralınmadı) için sahip rolüne doğrudan atandıysanız, bunu katılımcı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz.
+Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden, aboneliği yalnızca katılımcısı olduğunuz bir yönetim grubuna taşıyamazsınız. Aboneliğin sahip rolüne doğrudan atandıysanız, bunu katılımcı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz.
 
 Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seçin ve ardından **IAM**öğesini seçin. Azure rolleri hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
 
@@ -304,7 +304,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ### <a name="move-management-groups-in-powershell"></a>Yönetim gruplarını PowerShell 'de taşıma
 
-Yönetim grubunu farklı bir grup altında taşımak için PowerShell 'de Update-AzManagementGroup komutunu kullanın.
+Yönetim grubunu farklı bir grup altında taşımak için PowerShell 'deki Update-AzManagementGroup komutunu kullanın.
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName ContosoIT
@@ -349,7 +349,7 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 Yönetim grupları hakkında daha fazla bilgi almak için bkz.:
 
-- [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](./create.md)
+- [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](./create-management-group-portal.md)
 - [Yönetim gruplarınızı değiştirme, silme veya yönetme](./manage.md)
 - [Azure PowerShell Kaynak Modülünde yönetim gruplarını gözden geçirme](/powershell/module/az.resources#resources)
 - [REST API'de yönetim gruplarını gözden geçirme](/rest/api/resources/managementgroups)

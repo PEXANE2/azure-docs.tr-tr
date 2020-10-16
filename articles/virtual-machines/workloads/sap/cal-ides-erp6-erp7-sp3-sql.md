@@ -1,26 +1,18 @@
 ---
 title: Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma | Microsoft Docs
 description: Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma
-services: virtual-machines-windows
-documentationcenter: ''
 author: hermanndms
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 56f5072c90a699270a92af317976c8f56bd3e2cb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.reviewer: cynthn
+ms.openlocfilehash: 2e1c20ba5549a1d9660b6e30fafa040d545a6a37
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536537"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993435"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma
 Bu makalede, SAP Cloud gereç kitaplığı (SAP CAL) 3,0 aracılığıyla Azure 'da SQL Server ve Windows işletim sistemi çalıştıran bir SAP ıDES sisteminin nasıl dağıtılacağı açıklanır. Ekran görüntüleri adım adım işlemi gösterir. Farklı bir çözüm dağıtmak için, aynı adımları izleyin.
@@ -105,7 +97,7 @@ SAP CAL 'de oturum açtıktan sonra, ilk sayfa genellikle **çözümler** sayfas
 
     ![SAP CAL temel modu: örnek oluştur](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. **Oluştur**’a tıklayın. Bir süre sonra çözümün boyutuna ve karmaşıklığına (SAP CAL bir tahmin sağlar) bağlı olarak, durum etkin ve kullanıma hazırlık olarak gösterilir: 
+1. **Oluştur**'a tıklayın. Bir süre sonra çözümün boyutuna ve karmaşıklığına (SAP CAL bir tahmin sağlar) bağlı olarak, durum etkin ve kullanıma hazırlık olarak gösterilir: 
 
     ![SAP CAL örnekleri](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

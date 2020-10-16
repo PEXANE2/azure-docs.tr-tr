@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf39fcbfbde8a81400cd93c7f99b066a99f643bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005390"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093336"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric ile bağlanma ve hizmetlerle iletişim kurma
 Service Fabric, bir hizmet, genellikle birden çok VM arasında dağıtılan bir Service Fabric kümesinde bir yerde çalışır. Hizmet sahibine veya Service Fabric göre otomatik olarak bir yerden diğerine taşınabilir. Hizmetler, belirli bir makineye veya adrese statik olarak bağlı değildir.
@@ -30,7 +30,7 @@ Dağıtılmış bir sistemde, hizmetler bir makineden diğerine zaman içinde ge
 
 Service Fabric, Adlandırma Hizmeti adlı bir bulma ve çözümleme hizmeti sağlar. Adlandırma Hizmeti, adlandırılmış hizmet örneklerini dinlediği uç nokta adresleriyle eşleştiren bir tabloyu tutar. Service Fabric tüm adlandırılmış hizmet örnekleri, URI olarak temsil edilen benzersiz adlara sahiptir, örneğin `"fabric:/MyApplication/MyService"` . Hizmetin adı, hizmetin kullanım ömrü boyunca değişmez ve yalnızca hizmetler taşındığında değiştirebileceğinizi belirten uç nokta adresleridir. Bu, sabit URL 'Leri olan, ancak IP adresinin değiştirebildiği Web sitelerine benzerdir. Web sitesi URL 'Lerini IP adreslerine çözümleyen ve Web 'de DNS 'ye benzer şekilde, Service Fabric hizmet adlarını uç nokta adresleriyle eşleyen bir kaydedici vardır.
 
-![hizmet uç noktaları][2]
+![Service Fabric, hizmet adlarını uç nokta adreslerine eşleyen bir kaydedici olduğunu gösteren diyagram.][2]
 
 Hizmetlere çözümleme ve bağlanma, aşağıdaki adımları bir döngüde çalıştırmayı içerir:
 
@@ -47,14 +47,14 @@ Birçok hizmet, özellikle Kapsayıcılı hizmetler, var olan bir URL adına sah
 
 Aşağıdaki diyagramda gösterildiği gibi, Service Fabric kümesinde çalışan DNS hizmeti, DNS adlarını, daha sonra bağlantı kurmak üzere uç nokta adreslerini döndürmek için Adlandırma Hizmeti tarafından çözümlenen hizmet adlarıyla eşler. Hizmetin DNS adı, oluşturma sırasında sağlanır. 
 
-![hizmet uç noktaları][9]
+![DNS hizmetinin Service Fabric kümesinde çalışırken, DNS adlarını hizmet adlarıyla nasıl eşlediğini gösteren diyagram, sonra bağlantı noktası adreslerini döndürmek için Adlandırma Hizmeti tarafından çözümlenir.][9]
 
 DNS hizmetini kullanma hakkında daha fazla ayrıntı için bkz. [Azure Service Fabric 'de DNS hizmeti](service-fabric-dnsservice.md) .
 
 ### <a name="reverse-proxy-service"></a>Ters proxy hizmeti
 Ters proxy, HTTPS de dahil olmak üzere HTTP uç noktalarını kullanıma sunan kümedeki hizmetleri ele alınmaktadır. Ters proxy, belirli bir URI biçimine sahip olan ve Adlandırma Hizmeti kullanarak bir hizmetin birbirleriyle iletişim kurması için gerekli olan çözümle, Bağlan, yeniden deneme adımlarını ele alarak diğer hizmetleri ve bunların yöntemlerini çağırmayı büyük ölçüde basitleştirir. Diğer bir deyişle, URL 'YI çağırmak kadar basit hale getirerek diğer hizmetleri çağırırken Adlandırma Hizmeti gizler.
 
-![hizmet uç noktaları][10]
+![Ters proxy 'nin, HTTPS dahil HTTP uç noktalarını kullanıma sunan kümedeki hizmetleri nasıl ele gösterdiğini gösteren diyagram.][10]
 
 Ters proxy hizmetini kullanma hakkında daha fazla bilgi için bkz. [Azure 'Da ters proxy Service Fabric](service-fabric-reverseproxy.md) makalesi.
 
@@ -153,7 +153,7 @@ Azure 'daki bir Service Fabric kümesi bir Azure Load Balancer arkasına yerleş
     ![Düğüm türünde bir bağlantı noktası açma][4]
 3. Küme oluşturulduktan sonra, bağlantı noktası 80 ' deki trafiği iletmek için kümenin kaynak grubundaki Azure Load Balancer yapılandırın. Azure portal aracılığıyla bir küme oluştururken, bu, yapılandırılmış olan her özel uç nokta bağlantı noktası için otomatik olarak ayarlanır.
 
-    ![Azure Load Balancer trafiği iletme][5]
+    ![Yük Dengeleme kuralları altında arka uç bağlantı noktası alanını vurgulayan ekran görüntüsü.][5]
 4. Azure Load Balancer belirli bir düğüme trafik gönderilmesi gerekip gerekmediğini anlamak için bir araştırma kullanır. Araştırma, düğümün yanıt verip vermediğini anlamak için her düğümdeki bir uç noktayı düzenli olarak denetler. Araştırma, yapılandırılan sayıda kez Yanıt alamadığında, yük dengeleyici bu düğüme trafik göndermeyi durduruyor. Azure portal aracılığıyla bir küme oluştururken, yapılandırılan her özel uç nokta bağlantı noktası için otomatik olarak bir araştırma ayarlanır.
 
     ![Azure Load Balancer trafiği iletme][8]

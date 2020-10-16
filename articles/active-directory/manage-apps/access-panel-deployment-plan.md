@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146632"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory uygulamalarımın dağıtımını planlayın
@@ -122,11 +122,11 @@ Aşağıdaki tabloda birçok önemli uygulama yapılandırması ve kullanabilece
 | Pilot gruplarını belirleme| Kullanılacak Azure AD güvenlik grubunu ve tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Üretime etkinleştirilecek grup veya grupları belirleme.| Kullanılacak Azure AD güvenlik gruplarını veya Azure AD ile eşitlenen Active Directory gruplarını belirler. Tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Kullanıcıların SSO 'yu belirli türlerde uygulamalara kullanmasına izin ver| Federasyon SSO, OAuth, parola SSO, uygulama proxy 'Si |
-| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Yes |
-| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Yes |
+| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Evet |
+| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Evet |
 | Kullanıcıların belirli Grup türleri için Self Servis Grup yönetimini kullanmasına izin ver| Güvenlik grupları, Microsoft 365 grupları |
-| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Yes |
-| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Yes |
+| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Evet |
+| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Evet |
 
 ### <a name="plan-consent-strategy"></a>Onay stratejisini planlayın
 

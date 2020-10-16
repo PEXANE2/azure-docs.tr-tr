@@ -3,14 +3,14 @@ title: Kapsayıcılar için Azure Izleyici aracı veri toplamayı yapılandırma
 description: Bu makalede stdout/stderr ve ortam değişkenleri günlük toplamayı denetlemek için kapsayıcılar aracısının Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 039c6355bef638aae0b2ef074f006aabc04185c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 675b9c9c109ee8bb3b0087523bf5af46ce2c5270
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299290"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994613"
 ---
-# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici için aracı veri toplamayı yapılandırma
+# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici'de aracı veri koleksiyonunu yapılandırma
 
 Kapsayıcılar için Azure Izleyici, Kapsayıcılı aracıdan yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinden stdout, stderr ve ortam değişkenlerini toplar. Bu deneyimi denetlemek için özel bir Kubernetes ConfigMaps oluşturarak, aracı veri toplama ayarlarını yapılandırabilirsiniz. 
 
@@ -38,7 +38,7 @@ Aşağıda, veri toplamayı denetlemek için yapılandırılabilecek ayarlar ver
 | `[log_collection_settings.stdout] enabled =` | Boole | true veya false | Bu, stdout kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. Olarak ayarlandığında `true` ve STDOUT günlük toplama için hiçbir ad alanı dışlanmazsa<br> ( `log_collection_settings.stdout.exclude_namespaces` aşağıda ayarı), stdout günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse,<br> Varsayılan değer `enabled = true` . |
 | `[log_collection_settings.stdout] exclude_namespaces =` | Dize | Virgülle ayrılmış dizi | Stdout günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca şu durumlarda geçerlidir<br> `log_collection_settings.stdout.enabled`<br> , olarak ayarlanır `true` .<br> ConfigMap içinde belirtilmemişse, varsayılan değer<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.stderr] enabled =` | Boole | true veya false | Bu, stderr kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler.<br> Olarak ayarlandığında `true` ve STDOUT günlük toplama için hiçbir ad alanı dışlanmazsa<br> ( `log_collection_settings.stderr.exclude_namespaces` ayar), stderr günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacak.<br> ConfigMaps içinde belirtilmemişse, varsayılan değer<br> `enabled = true`. |
-| `[log_collection_settings.stderr] exclude_namespaces =` | Dize | Virgülle ayrılmış dizi | Stderr günlüklerinin toplanmayacak Kubernetes ad alanları dizisi.<br> Bu ayar yalnızca şu durumlarda geçerlidir<br> `log_collection_settings.stdout.enabled`, olarak ayarlanır `true` .<br> ConfigMap içinde belirtilmemişse, varsayılan değer<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.stderr] exclude_namespaces =` | Dize | Virgülle ayrılmış dizi | Stderr günlüklerinin toplanmayacak Kubernetes ad alanları dizisi.<br> Bu ayar yalnızca şu durumlarda geçerlidir<br> `log_collection_settings.stdout.enabled` , olarak ayarlanır `true` .<br> ConfigMap içinde belirtilmemişse, varsayılan değer<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` | Boole | true veya false | Bu ayar ortam değişkeni toplamayı denetler<br> kümedeki tüm pods/düğümler genelinde<br> ve belirtilmediğinde varsayılan olarak `enabled = true`<br> ConfigMaps 'ta.<br> Ortam değişkenlerinin toplanması genel olarak etkinleştirilmişse, belirli bir kapsayıcı için devre dışı bırakabilirsiniz<br> ortam değişkenini ayarlayarak<br> `AZMON_COLLECT_ENV`bir Dockerfile ayarıyla ya da **env:** bölümünün altındaki [Pod Için yapılandırma dosyasında](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **yanlış** .<br> Ortam değişkenlerinin toplanması genel olarak devre dışıysa, belirli bir kapsayıcı için koleksiyonu etkinleştiremezsiniz (yani, kapsayıcı düzeyinde uygulanabilecek tek geçersiz kılma, genel olarak etkinleştirildiğinde koleksiyonu devre dışı bırakmalıdır.). |
 | `[log_collection_settings.enrich_container_logs] enabled =` | Boole | true veya false | Bu ayar, ad ve görüntü özelliği değerlerini doldurmak için kapsayıcı günlüğü zenginleştirme özelliğini denetler<br> kümedeki tüm kapsayıcı günlükleri için ContainerLog tablosuna yazılan her günlük kaydı için.<br> `enabled = false`ConfigMap içinde belirtilmediğinde varsayılan değer olarak belirlenir. |
 | `[log_collection_settings.collect_all_kube_events]` | Boole | true veya false | Bu ayar tüm türlerin Kume olayları koleksiyonuna izin verir.<br> Varsayılan olarak, *normal* tür Kume olayları toplanmaz. Bu ayar olarak ayarlandığında `true` , *normal* olaylar artık filtrelenmez ve tüm olaylar toplanır.<br> Varsayılan olarak, bu olarak ayarlanır `false` . |
@@ -115,7 +115,7 @@ Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması bir
 
 ## <a name="verifying-schema-version"></a>Şema sürümü doğrulanıyor
 
-Desteklenen yapılandırma şeması sürümleri, omsagent pod üzerinde pod ek açıklaması (şema-sürümler) olarak kullanılabilir. Aşağıdaki kubectl komutuyla bunları görebilirsiniz:`kubectl describe pod omsagent-fdf58 -n=kube-system`
+Desteklenen yapılandırma şeması sürümleri, omsagent pod üzerinde pod ek açıklaması (şema-sürümler) olarak kullanılabilir. Aşağıdaki kubectl komutuyla bunları görebilirsiniz: `kubectl describe pod omsagent-fdf58 -n=kube-system`
 
 Bu çıktı, ek açıklama şeması sürümleriyle aşağıdakine benzer şekilde görünür:
 
@@ -134,7 +134,7 @@ Bu çıktı, ek açıklama şeması sürümleriyle aşağıdakine benzer şekild
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kapsayıcılar için Azure Izleyici, önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için önerilen uyarılar oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarılarını oluşturma](container-insights-alerts.md) ' yı gözden geçirin.
+- Kapsayıcılar için Azure Izleyici, önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için önerilen uyarılar oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarılarını oluşturma](./container-insights-log-alerts.md) ' yı gözden geçirin.
 
 - İzleme etkinken, AKS veya hibrit kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplayıp, kapsayıcılar için Azure Izleyicisini [nasıl kullanacağınızı](container-insights-analyze.md) öğrenin.
 

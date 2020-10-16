@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bf8fe68c28457fd01704762e537fe259a96a6bce
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116239"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Özel bir ilke kullanarak Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
-## <a name="register-an-application"></a>Uygulamayı kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
@@ -326,7 +326,7 @@ Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
 }
 ```
 
-## <a name="use-a-native-sdk-or-app-auth"></a>Yerel SDK veya uygulama kimlik doğrulaması kullanma
+## <a name="use-a-native-sdk-or-app-auth"></a>Yerel SDK veya App-Auth kullanın
 
 Azure AD B2C, genel istemci kaynak sahibi parola kimlik bilgileri için OAuth 2,0 standartlarını karşılar ve çoğu istemci SDK 'Sı ile uyumlu olmalıdır. En son bilgiler için bkz. [OAuth Için yerel uygulama SDK 'sı 2,0 ve OpenID Connect modern en iyi uygulamaları uygulama](https://appauth.io/).
 

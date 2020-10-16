@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
 ms.openlocfilehash: 08adfd7b69d580f6a231f13f9fb2793d828e16a3
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618191"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE korumalı bir veritabanının sertifikasını Azure SQL yönetilen örneği 'ne geçirme
@@ -34,7 +34,7 @@ Hem TDE korumalı bir veritabanının hem de karşılık gelen sertifikanın sor
 > [!IMPORTANT]
 > Geçirilen bir sertifika yalnızca TDE korumalı veritabanının geri yüklenmesi için kullanılır. Geri yükleme yapıldıktan kısa süre sonra, geçirilen sertifika, örnek üzerinde ayarlamış olduğunuz TDE türüne bağlı olarak, hizmet tarafından yönetilen bir sertifika veya anahtar kasasından asimetrik bir anahtarla değiştirilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 

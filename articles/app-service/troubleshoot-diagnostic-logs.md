@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264380"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
@@ -23,7 +23,7 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 >
 >
 
-|Tür|Platform|Konum|Description|
+|Tür|Platform|Konum|Açıklama|
 |-|-|-|-|
 | Uygulama günlüğüne kaydetme | Windows, Linux | App Service dosya sistemi ve/veya Azure depolama Blobları | Uygulama kodunuz tarafından oluşturulan iletileri günlüğe kaydeder. İletiler seçtiğiniz Web çerçevesi tarafından veya Dilinizdeki standart günlük modelini kullanarak doğrudan uygulama kodunuzda oluşturulabilir. Her ileti şu kategorilerden birine atanır: **kritik**, **hata**, **Uyarı**, **bilgi**, **hata ayıklama**ve **izleme**. Uygulama günlüğünü etkinleştirdiğinizde önem düzeyini ayarlayarak günlüğün ne kadar ayrıntılı olmasını istediğinizi seçebilirsiniz.|
 | Web sunucusu günlüğü| Windows | App Service dosya sistemi veya Azure depolama Blobları| [W3C Genişletilmiş günlük dosyası biçimindeki](/windows/desktop/Http/w3c-logging)ham http istek verileri. Her günlük iletisi HTTP yöntemi, kaynak URI, istemci IP, istemci bağlantı noktası, Kullanıcı Aracısı, yanıt kodu vb. gibi verileri içerir. |
@@ -64,7 +64,7 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 |-|-|
 |**Devre dışı** | Yok |
 |**Hata** | Hata, kritik |
-|**Uyarı** | Uyarı, hata, kritik|
+|**Warning** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
 |**Seçeneini** | Trace, Debug, Info, uyarı, hata, kritik (tüm kategoriler) |
 
@@ -166,7 +166,7 @@ Linux/kapsayıcı uygulamaları için, ZIP dosyası hem Docker konağının hem 
 
 Windows uygulamaları için, ZIP dosyası App Service dosya sistemindeki *D:\home\logfiles* dizininin içeriğini içerir. Aşağıdaki yapıya sahiptir:
 
-| Günlük türü | Dizin | Description |
+| Günlük türü | Dizin | Açıklama |
 |-|-|-|
 | **Uygulama günlükleri** |*/LogFiles/Application/* | Bir veya daha fazla metin dosyası içeriyor. Günlük iletilerinin biçimi kullandığınız günlük sağlayıcısına bağlıdır. |
 | **Başarısız Istek Izlemeleri** | */LogFiles/W3SVC # # # # # # # # #/* | XML dosyalarını ve bir XSL dosyasını içerir. Biçimli XML dosyalarını tarayıcıda görüntüleyebilirsiniz. |
@@ -185,16 +185,16 @@ Yeni [Azure izleyici tümleştirmesiyle](https://aka.ms/appsvcblog-azmon), günl
 
 Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilmektedir: 
 
-| Günlük türü | Windows | Windows kapsayıcısı | Linux | Linux kapsayıcısı | Description |
+| Günlük türü | Windows | Windows kapsayıcısı | Linux | Linux kapsayıcısı | Açıklama |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | TBA dili | TBA dili | Yes | Yes | Standart çıkış ve standart hata |
-| AppServiceHTTPLogs | Yes | TBA dili | Yes | Yes | Web sunucusu günlükleri |
-| AppServiceEnvironmentPlatformLogs | Yes | Yok | Yes | Yes | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
-| AppServiceAuditLogs | Yes | TBA dili | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
-| AppServiceFileAuditLogs | Yes | TBA dili | TBA dili | TBA dili | Site içeriğinde yapılan dosya değişiklikleri; yalnızca Premium katmanı ve üzeri için kullanılabilir |
+| AppServiceConsoleLogs | TBA dili | TBA dili | Evet | Evet | Standart çıkış ve standart hata |
+| AppServiceHTTPLogs | Evet | TBA dili | Evet | Evet | Web sunucusu günlükleri |
+| AppServiceEnvironmentPlatformLogs | Evet | Yok | Evet | Evet | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
+| AppServiceAuditLogs | Evet | TBA dili | Evet | Evet | FTP ve kudu aracılığıyla oturum açma etkinliği |
+| AppServiceFileAuditLogs | Evet | TBA dili | TBA dili | TBA dili | Site içeriğinde yapılan dosya değişiklikleri; yalnızca Premium katmanı ve üzeri için kullanılabilir |
 | AppServiceAppLogs | ASP .NET | TBA dili | Java & & Tomcat | Java & & Tomcat | Uygulama günlükleri |
-| AppServiceIPSecAuditLogs  | Yes | TBA dili | Yes | Yes | IP kurallarından gelen istekler |
-| AppServicePlatformLogs  | TBA dili | TBA dili | Yes | Yes | Kapsayıcı işlem günlükleri |
+| AppServiceIPSecAuditLogs  | Evet | TBA dili | Evet | Evet | IP kurallarından gelen istekler |
+| AppServicePlatformLogs  | TBA dili | TBA dili | Evet | Evet | Kapsayıcı işlem günlükleri |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
 ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941183"
 ---
 # <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve SQL sunucusuz kullanın (Önizleme)
@@ -22,7 +22,7 @@ Bu makalede, Azure Cosmos DB için bir Synapse SQL sunucusuz (daha önce **SQL i
 
 Bu senaryoda, bir iş ortağı perakende deposunda Surface ürün satışları hakkında kukla verileri kullanacaksınız. Her mağaza için gelir, büyük bir evye yakınlık ve belirli bir hafta için tanıtım etkisi doğrultusunda analiz edersiniz. Bu makalede, **RetailSales** ve **storedemographics** adlı iki görünüm ve aralarında bir sorgu oluşturacaksınız. Bu [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) deposundan örnek ürün verilerini alabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 
@@ -46,7 +46,7 @@ SYNAPSE çalışma alanından **Geliştir** sekmesine gidip, **+** simgeyi seçi
 
 Her çalışma alanı bir Synapse SQL sunucusuz uç noktasıyla gelir. SQL betiği oluşturduktan sonra, üstteki araç çubuğundan **isteğe bağlı SQL**'e bağlanın.
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL betiğini, çalışma alanında SYNAPSE SQL sunucusuz uç noktasını kullanacak şekilde etkinleştirin":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SYNAPSE Analytics çalışma alanına bir SQL betiği ekleyin":::
 
 **RetailCosmosDB**adlı yeni bir veritabanı ve SYNAPSE bağlantısı etkinleştirilmiş kapsayıcılar ÜZERINDE bir SQL görünümü oluşturun. Aşağıdaki komut, bir veritabanının nasıl oluşturulacağını gösterir:
 
@@ -106,7 +106,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 Sonuç olarak aşağıdaki tabloyu sağlayan **Çalıştır** ' ı seçin:
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="StoreDemographics ve RetailSales görünümlerine katıldıktan sonra sorgu sonuçları":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="SYNAPSE Analytics çalışma alanına bir SQL betiği ekleyin":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Power BI olan kapsayıcılar üzerinde model görüntüleme
 
@@ -141,7 +141,7 @@ Ardından Power BI Masaüstünü açın ve aşağıdaki adımları kullanarak SY
 1. Belirli bir ürün satırını seçmek için **productCode** from **RetailSales** View öğesini göstergeye sürükleyip bırakın.
 Bu seçenekleri belirledikten sonra, aşağıdaki ekran görüntüsüne benzer bir grafik görmeniz gerekir:
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Ev boyutunun göreli önem derecesini mağaza başına ortalama gelire göre karşılaştıran rapor":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="SYNAPSE Analytics çalışma alanına bir SQL betiği ekleyin":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

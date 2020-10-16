@@ -4,10 +4,10 @@ description: Azure Işlevleri 'ni kullanarak Azure DevTest Labs genişletmeyi ö
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bcd12d77065d231198e992fa5c459f0fc210855a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476317"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>DevTest Labs'i genişletmek için Azure İşlevleri'ni kullanma
@@ -66,7 +66,7 @@ Visual Studio 'da, **Çözüm Gezgini** penceresinde **Azurefunctions** projesin
 ### <a name="step-4--gather-application-settings"></a>4. Adım: uygulama ayarlarını toplama
 İşlevler yayımlandıktan sonra, Azure portal bu işlevlerin URL 'Lerini almanız gerekir. 
 
-1. [Azure portalına](https://portal.azure.com) gidin. 
+1. [Azure Portal](https://portal.azure.com)gidin. 
 1. İşlev uygulamasını bulun.
 1. **Işlev uygulamaları** sayfasında, işlevi seçin. 
 1. Aşağıdaki görüntüde gösterildiği gibi **işlev URL 'Sini al** ' ı seçin. 

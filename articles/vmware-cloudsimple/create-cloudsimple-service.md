@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140556"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>CloudSimple hizmeti tarafından Azure VMware çözümünü oluşturma
@@ -23,13 +23,13 @@ CloudSimple ile Azure VMware çözümünü kullanmaya başlamak için Azure port
 
 Ağ geçidi alt ağı için bir/28 CıDR bloğu ayırın. CloudSimple hizmeti başına bir ağ geçidi alt ağı gerekir ve oluşturulduğu bölge için benzersizdir. Ağ geçidi alt ağı, uç ağ hizmetleri için kullanılır ve/28 CıDR bloğu gerektirir. Ağ geçidi alt ağ adresi alanı benzersiz olmalıdır. CloudSimple ortamıyla iletişim kuran herhangi bir ağla çakışmamalıdır. CloudSimple ile iletişim kuran ağlarda şirket içi ağlar ve Azure sanal ağları bulunur.
 
-## <a name="sign-in-to-azure"></a>Azure’da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-the-service"></a>Hizmeti oluşturma
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
     ![CloudSimple hizmeti ara](media/create-cloudsimple-service-search.png)
 3. **Cloudsimple Hizmetleri**' ni seçin.
@@ -41,7 +41,7 @@ Ağ geçidi alt ağı için bir/28 CıDR bloğu ayırın. CloudSimple hizmeti ba
 8. Hizmet ağ geçidi için CıDR girin. Şirket içi alt ağlarınızın, Azure alt ağlarının veya planlı CloudSimple alt ağlarının hiçbiriyle çakışmayacak bir/28 alt ağı belirtin. Hizmet oluşturulduktan sonra CıDR 'yi değiştiremezsiniz.
 
     ![CloudSimple hizmeti oluşturma](media/create-cloudsimple-service.png)
-9. **Tamam**’a tıklayın.
+9. **Tamam**'a tıklayın.
 
 Hizmet oluşturulur ve hizmetler listesine eklenir.
 

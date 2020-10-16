@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231240"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056149"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile Azure AD etkinlik günlüklerini çözümleme
 
@@ -47,7 +47,7 @@ Bu arada izlemek için şunlar gerekir:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Log Analytics çalışma alanına gidin
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 2. **Azure Active Directory**' yi seçin ve sonra Log Analytics çalışma alanınızı açmak için **izleme** bölümünde **Günlükler** ' i seçin. Çalışma alanı varsayılan bir sorgu ile açılır.
 
@@ -100,16 +100,13 @@ Ayrıca, sorgunuzda uyarıları da ayarlayabilirsiniz. Örneğin, son hafta 10 '
 
 5. Uyarıyı yapılandırdıktan sonra, etkinleştirmek için **uyarı oluştur** ' u seçin. 
 
-## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Azure AD etkinlik günlükleri için önceden oluşturulmuş görünümleri yükleyip kullanın
+## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>Azure AD etkinlik günlükleri için önceden oluşturulmuş çalışma kitaplarını kullanın
 
-Azure AD etkinlik günlükleri için önceden oluşturulmuş Log Analytics görünümlerini de indirebilirsiniz. Görünümler, denetim ve oturum açma olaylarını içeren yaygın senaryolarla ilgili birkaç rapor sağlar. Ayrıca, önceki bölümde açıklanan adımları kullanarak raporlarda belirtilen verileri de uyarabilir.
+Çalışma kitapları denetim, oturum açma ve sağlama olaylarını içeren yaygın senaryolarla ilgili birkaç rapor sağlar. Ayrıca, önceki bölümde açıklanan adımları kullanarak raporlarda belirtilen verileri de uyarabilir.
 
-* **Azure AD hesabı sağlama olayları**: Bu görünüm, sağlanan Yeni Kullanıcı sayısı ve sağlama hatalarının sayısı, Kullanıcı sayısı güncelleştirilmiş ve güncelleştirme başarısızlıklarını ve kullanıcı sayısını ve bunlara karşılık gelen hataların sayısını gösterir.    
-* **Oturum açma olayları**: Bu görünüm, uygulama, Kullanıcı, cihaz, oturum açma işlemleri ve zaman içinde oturum açma sayısını izleyen bir Özet görünümü gibi oturum açma etkinliklerini izlemeye ilişkin en ilgili raporları gösterir.
-* **İzin veren kullanıcılar**: Bu görünüm, kullanıcıya izin verilen onay, izin veren kullanıcıların oturum açma işlemleri ve tüm izin tabanlı uygulamalar için uygulamayla oturum açma işlemleri gibi kullanıcı onayı ile ilgili raporları gösterir. 
-
-[Azure ad etkinlik günlükleri için Log Analytics görünümlerini yüklemeyi ve kullanmayı](howto-install-use-log-analytics-views.md)öğrenin. 
-
+* **Sağlama Analizi**: Bu [çalışma kitabı](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) , sağlanan Yeni Kullanıcı sayısı ve sağlama hatalarının sayısı, Kullanıcı sayısı ve güncelleştirme başarısızlıklarını ve kullanıcı sayısını ve bunlara karşılık gelen hataların sayısını gösteren denetim sağlama etkinliğiyle ilgili raporları gösterir.    
+* **Oturum açma olayları**: Bu çalışma kitabı, uygulama, Kullanıcı, cihaz, oturum açma işlemleri ve zaman içinde oturum açma sayısını izleyen bir Özet görünümü gibi oturum açma etkinliklerini izlemeye ilişkin en ilgili raporları gösterir.
+* **Koşullu erişim öngörüleri**: koşullu erişim öngörüleri ve raporlama [çalışma kitabı](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) , kuruluşunuzda koşullu erişim ilkelerinin zaman içinde etkisini anlamanıza olanak sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

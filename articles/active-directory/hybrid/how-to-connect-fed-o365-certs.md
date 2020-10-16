@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661446"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 ve Azure Active Directory için Federasyon sertifikalarını yenileme
@@ -69,13 +69,13 @@ Get-Adfsproperties
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
 >[!NOTE] 
->AD FS 2,0 kullanıyorsanız, önce add-pssnapin Microsoft. ADFS. PowerShell ' i çalıştırın.
+>AD FS 2,0 kullanıyorsanız, önce Microsoft. ADFS. PowerShell Add-Pssnapin çalıştırın.
 
 ### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>2. Adım: AD FS ve Azure AD 'nin eşitlenmiş olduğunu onaylayın
 AD FS sunucunuzda MSOnline PowerShell komut istemi ' ni açın ve Azure AD 'ye bağlanın.
 
 > [!NOTE]
-> MSOL-cmdlet 'Leri MSOnline PowerShell modülünün bir parçasıdır.
+> MSOL-Cmdlets, MSOnline PowerShell modülünün bir parçasıdır.
 > MSOnline PowerShell modülünü doğrudan PowerShell Galerisi indirebilirsiniz.
 > 
 >
@@ -102,13 +102,13 @@ Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCe
 Parmak izleri her iki çıktıda eşleşiyorsa, sertifikalarınız Azure AD ile eşitlenir.
 
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>3. Adım: sertifikanızın sona ermek üzere olup olmadığını denetleyin
-Get-MsolFederationProperty veya Get-Adfscercertificateate çıkışında, tarihi "Not After" altında denetleyin. Tarih 30 günden azsa, işlem yapmanız gerekir.
+Get-MsolFederationProperty veya Get-Adfscercertificate 'ın çıktısında, "sonra değil" altında tarihi kontrol edin. Tarih 30 günden azsa, işlem yapmanız gerekir.
 
 | AutoCertificateRollover | Azure AD ile eşitlenmiş sertifikalar | Federasyon meta verileri herkese açık bir şekilde erişilebilir | Olacağı | Eylem |
 |:---:|:---:|:---:|:---:|:---:|
-| Yes |Yes |Yes |- |Eyleme gerek yok. Bkz. [belirteç imzalama sertifikasını otomatik olarak yenileme](#autorenew). |
-| Yes |Hayır |- |15 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
-| No |- |- |30 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
+| Evet |Evet |Evet |- |Eyleme gerek yok. Bkz. [belirteç imzalama sertifikasını otomatik olarak yenileme](#autorenew). |
+| Evet |Hayır |- |15 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
+| Hayır |- |- |30 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
 
 \[-] Önemi yoktur
 
@@ -152,7 +152,7 @@ Diğer taraftan, **AutoCertificateRollover** **true**olarak ayarlanmışsa, anca
     PS C: \> Get-Adfscercertificate, – CertificateType token-signing
 
    > [!NOTE]
-   > AD FS 2,0 kullanıyorsanız, önce add-pssnapin Microsoft. ADFS. PowerShell ' i çalıştırmalısınız.
+   > AD FS 2,0 kullanıyorsanız, önce Microsoft. ADFS. PowerShell Add-Pssnapin çalıştırmalısınız.
    >
    >
 3. Listelenen tüm sertifikalarda komut çıktısına bakın. AD FS yeni bir sertifika oluşturmışsa, çıktıda iki sertifika görmeniz gerekir: **isprımary** değeri **true** **ve** NotAfter tarihi 5 gün **içinde ve** **NotAfter** **tarihi, gelecekte** bir yıl hakkında.
@@ -167,9 +167,9 @@ Microsoft 365, güven için kullanılacak yeni belirteç imzalama sertifikaları
 
 1. Windows PowerShell için Microsoft Azure Active Directory Modülü açın.
 2. $Cred = Get-Credential ' i çalıştırın. Bu cmdlet kimlik bilgileri girmenizi isterse, bulut hizmeti Yönetici hesabınızın kimlik bilgilerini yazın.
-3. Connect-MsolService – Credential $cred komutunu çalıştırın. Bu cmdlet sizi bulut hizmetine bağlar. Araç tarafından yüklenen ek cmdlet 'lerden herhangi birini çalıştırmadan önce, sizi bulut hizmetine bağlayan bir bağlam oluşturmak gerekir.
-4. Bu komutları AD FS birincil federasyon sunucusu olmayan bir bilgisayarda çalıştırıyorsanız, &lt; &gt; &lt; AD FS birincil sunucu birincil &gt; AD FS sunucusunun iç FQDN adı olduğu Için, set-msoladfcontext-Computer AD FS birincil sunucu ' ı çalıştırın. Bu cmdlet, sizi AD FS bağlayan bir bağlam oluşturur.
-5. Update-MSOLFederatedDomain – DomainName &lt; etki alanını çalıştırın &gt; . Bu cmdlet, AD FS ayarları bulut hizmetine güncelleştirir ve ikisi arasındaki güven ilişkisini yapılandırır.
+3. Connect-MsolService: Credential $cred çalıştırın. Bu cmdlet sizi bulut hizmetine bağlar. Araç tarafından yüklenen ek cmdlet 'lerden herhangi birini çalıştırmadan önce, sizi bulut hizmetine bağlayan bir bağlam oluşturmak gerekir.
+4. Bu komutları AD FS birincil federasyon sunucusu olmayan bir bilgisayarda çalıştırıyorsanız, &lt; &gt; &lt; AD FS birincil sunucu birincil &gt; AD FS sunucusunun iç FQDN 'Si olan Set-MSOLAdfscontext-Computer AD FS birincil sunucusunu çalıştırın. Bu cmdlet, sizi AD FS bağlayan bir bağlam oluşturur.
+5. Update-MSOLFederatedDomain – DomainName &lt; etki alanı çalıştırın &gt; . Bu cmdlet, AD FS ayarları bulut hizmetine güncelleştirir ve ikisi arasındaki güven ilişkisini yapılandırır.
 
 > [!NOTE]
 > Contoso.com ve fabrikam.com gibi birden çok üst düzey etki alanını desteklemeniz gerekiyorsa, bir cmdlet ile **supportmultipledomain** anahtarını kullanmanız gerekir. Daha fazla bilgi için bkz. [birden çok üst düzey etki alanı Için destek](how-to-connect-install-multiple-domains.md).

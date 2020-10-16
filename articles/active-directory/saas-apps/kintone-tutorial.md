@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e831fd561b7c8dcf78e9203ec6d38c60c22a5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1e966595422f353067d66483defa0b880874415
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88535419"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944372"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Öğretici: Kintone ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Kintone 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Kintone ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -145,7 +145,7 @@ Azure AD çoklu oturum açmayı Kintone ile yapılandırmak için aşağıdaki a
 
 1. **SAML kimlik doğrulamasını etkinleştir**' e tıklayın.
 
-    ![SAML kimlik doğrulaması](./media/kintone-tutorial/ic785882.png "SAML kimlik doğrulaması")
+    !["Kullanıcı & sistem yönetimini" gösteren ekran görüntüsü.](./media/kintone-tutorial/ic785882.png "SAML kimlik doğrulaması")
 
 1. SAML kimlik doğrulaması bölümünde aşağıdaki adımları uygulayın:
 
@@ -182,7 +182,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -232,7 +232,7 @@ Azure AD kullanıcılarının Kintone 'da oturum açmasını sağlamak için, bu
 
 1. **Yeni Kullanıcı**' ya tıklayın.
 
-    ![Yeni Kullanıcılar](./media/kintone-tutorial/ic785889.png "Yeni Kullanıcılar")
+    !["Yeni Kullanıcı" eyleminin seçildiği "kullanıcılar" bölümünü gösteren ekran görüntüsü.](./media/kintone-tutorial/ic785889.png "Yeni Kullanıcılar")
 
 1. **Yeni Kullanıcı** bölümünde aşağıdaki adımları gerçekleştirin:
 

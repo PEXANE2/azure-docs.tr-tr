@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300298"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077006"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl 
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için uygulamanızı ayarlayın.
@@ -54,7 +54,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 
 1. Azure portal, **yapılandırma gezgini > oluştur > anahtar-değer**' i seçin.
 1. **Anahtar**için *TestApp: Settings: Sentinel*yazın. **Değer**için 1 girin. **Etiketi** ve **içerik türünü** boş bırakın.
-1. **Uygula**’yı seçin.
+1. **Apply** (Uygula) seçeneğini belirleyin.
 
 > [!NOTE]
 > Sentinel anahtarı kullanmıyorsanız, izlemek istediğiniz her anahtarı el ile kaydetmeniz gerekir.
@@ -161,7 +161,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     ```
     ---
     > [!Tip]
-    > Yapılandırma değerlerini okurken seçenekler deseni hakkında daha fazla bilgi için, [ASP.NET Core Içindeki seçenekler desenlerine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)bakın.
+    > Yapılandırma değerlerini okurken seçenekler deseni hakkında daha fazla bilgi için, [ASP.NET Core Içindeki seçenekler desenlerine](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)bakın.
 
 4. `Configure` `UseAzureAppConfiguration` ASP.NET Core Web uygulaması istekleri almaya devam ederken, yenilemenin güncelleştirilmesi için kaydedilen yapılandırma ayarlarının güncelleştirilmesine izin vermek üzere ara yazılımı ekleyerek yöntemini güncelleştirin.
 

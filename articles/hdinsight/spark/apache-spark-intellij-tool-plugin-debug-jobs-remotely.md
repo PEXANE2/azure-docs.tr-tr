@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
 ms.openlocfilehash: 7ec49ee4f07aff6e9b9f9d6fc43e37742d7e163a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085132"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>VPN aracılığıyla HDInsight 'ta Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma
@@ -285,7 +285,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ![IntelliJ hata ayıklama-Add-Watch-değişken](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
-    Bu örnekte, uygulama, değişken oluşturulmadan önce bir sorun `rdd1` yaratmıştı. Bu gözcü kullanıldığında, değişkende ilk beş satırı görebiliriz `rdd` . **ENTER**' ı seçin.
+    Bu örnekte, uygulama, değişken oluşturulmadan önce bir sorun `rdd1` yaratmıştı. Bu gözcü kullanıldığında, değişkende ilk beş satırı görebiliriz `rdd` . **Enter** tuşunu seçin.
 
     ![IntelliJ programı hata ayıklama modunda çalıştır](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 

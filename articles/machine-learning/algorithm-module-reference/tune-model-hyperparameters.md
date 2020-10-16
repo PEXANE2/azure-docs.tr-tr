@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/17/2020
-ms.openlocfilehash: b88a9477c9d63becb32bc95ca78b4a8117168a47
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 2ec1726056c7ab223f7d3de70a715a8254e95db4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907770"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940218"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hiper Parametrelerini Ayarlama
 
@@ -77,9 +77,9 @@ Bu bölümde, model hiper parametreleri ayarla modülünü kullanarak bir modeli
 
 Eğitim tamamlandığında:
 
-+ Tarama sonuçlarını görüntülemek için, modüle sağ tıklayın ve ardından **Görselleştir**' i seçin.
++ Tarama sonuçlarını görüntülemek için, modüle sağ tıklayıp **Görselleştir**' i seçebilir ya da görselleştirilecek modülün sol çıkış bağlantı noktasına sağ tıklayabilirsiniz.
 
-    Çıktı, model türü için uygulanan tüm parametre tarama ve doğruluk ölçümlerini içerir, ancak sıralama için seçtiğiniz ölçüm hangi modelin "en iyi" kabul edileceğini belirler.
+    **Tarama sonuçları** , model türü için uygulanan tüm parametre tarama ve doğruluk ölçümlerini içerir ve sıralama için seçtiğiniz ölçüm hangi modelin "en iyi" kabul edileceğini belirler.
 
 + Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar + Günlükler** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 

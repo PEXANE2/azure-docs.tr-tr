@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667750"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. kullanmak için en iyi uygulamalar
@@ -23,11 +23,11 @@ ms.locfileid: "91667750"
 
 Bu makalede, Azure Data Lake Storage 1. ile çalışmaya yönelik en iyi yöntemler ve konular hakkında bilgi edineceksiniz. Bu makalede, Data Lake Storage 1. için güvenlik, performans, dayanıklılık ve izleme hakkında bilgi verilmektedir. Data Lake Storage 1. önce, Azure HDInsight gibi hizmetlerde gerçekten büyük verilerle çalışma karmaşıktır. Birden çok BLOB depolama hesabında verileri parçalara çıkaran ve bu ölçekte en iyi performansı elde etmek zorunda kaldık. Data Lake Storage 1., boyut ve performansa ilişkin sabit limitlerin çoğu kaldırılır. Ancak, Data Lake Storage 1. ile en iyi performansı elde edebilmeniz için bu makalenin kapsamakta olduğu bazı noktalar vardır.
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Azure Data Lake Storage 1., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri ve ayrıntılı denetim sağlar. Bu erişim denetimleri, varolan dosya ve klasörlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya klasörlere uygulanabilen varsayılanlar oluşturmak için de kullanılabilir. İzinler varolan klasörlere ve alt nesnelere ayarlandığında, izinlerin her bir nesne üzerinde yinelemeli olarak yayılması gerekir. Çok sayıda dosya varsa, bu izinleri yayan uzun sürebilir. Geçen süre, saniye başına işlenen 30-50 nesne arasında değişebilir. Bu nedenle, klasör yapısını ve Kullanıcı gruplarını uygun şekilde planlayın. Aksi takdirde, verilerle çalışırken beklenmeyen gecikmeler ve sorunlara neden olabilir.
 
-100.000 alt nesne içeren bir klasörünüz olduğunu varsayalım. Saniye başına işlenen 30 nesneden daha düşük bir sınır alırsanız tüm klasörün iznini güncelleştirmek için bir saat sürebilir. Data Lake Storage 1. ACL 'Ler hakkında daha fazla ayrıntı [Azure Data Lake Storage 1. Içindeki erişim denetiminde](data-lake-store-access-control.md)bulunmaktadır. ACL 'Leri yinelemeli olarak atamaya yönelik gelişmiş performans için Azure Data Lake komut satırı aracını kullanabilirsiniz. Araç birden çok iş parçacığı ve özyinelemeli gezinme mantığı oluşturarak milyonlarca dosyaya ACL 'Leri hızlıca uygulayın. Araç Linux ve Windows için kullanılabilir ve bu araç için [Belgeler](https://github.com/Azure/data-lake-adlstool) ve [indirmeler](https://aka.ms/adlstool-download) GitHub 'da bulunabilir. Aynı performans geliştirmeleri, Data Lake Storage 1. [.net](data-lake-store-data-operations-net-sdk.md) ve [Java](data-lake-store-get-started-java-sdk.md) SDK 'ları ile yazılmış kendi araçlarınızla etkinleştirilebilir.
+100.000 alt nesne içeren bir klasörünüz olduğunu varsayalım. Saniye başına işlenen 30 nesneden daha düşük bir sınır alırsanız tüm klasörün iznini güncelleştirmek için bir saat sürebilir. Data Lake Storage 1. ACL 'Ler hakkında daha fazla ayrıntı [Azure Data Lake Storage 1. Içindeki erişim denetiminde](data-lake-store-access-control.md)bulunmaktadır. ACL 'Leri yinelemeli olarak atamaya yönelik gelişmiş performans için Azure Data Lake Command-Line aracını kullanabilirsiniz. Araç birden çok iş parçacığı ve özyinelemeli gezinme mantığı oluşturarak milyonlarca dosyaya ACL 'Leri hızlıca uygulayın. Araç Linux ve Windows için kullanılabilir ve bu araç için [Belgeler](https://github.com/Azure/data-lake-adlstool) ve [indirmeler](https://aka.ms/adlstool-download) GitHub 'da bulunabilir. Aynı performans geliştirmeleri, Data Lake Storage 1. [.net](data-lake-store-data-operations-net-sdk.md) ve [Java](data-lake-store-get-started-java-sdk.md) SDK 'ları ile yazılmış kendi araçlarınızla etkinleştirilebilir.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Bireysel kullanıcılara karşı güvenlik gruplarını kullanın
 
@@ -101,8 +101,8 @@ Aşağıda Data Lake Storage 1. hesapları arasında çoğaltmayı düzenlemek i
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
 |**Ölçek sınırları**     | Çalışan düğümlerine göre sınırlanmış        | Maksimum bulut veri taşıma birimi ile sınırlıdır        | Analiz birimlerine göre bağlıydı        |
-|**Değişimleri kopyalamayı destekler**     |   Yes      | Hayır         | Hayır         |
-|**Yerleşik düzenleme**     |  Hayır (Oozie Airflow veya cron işleri kullanın)       | Yes        | Hayır (Azure Otomasyonu veya Windows Görev Zamanlayıcı kullanın)         |
+|**Değişimleri kopyalamayı destekler**     |   Evet      | Hayır         | Hayır         |
+|**Yerleşik düzenleme**     |  Hayır (Oozie Airflow veya cron işleri kullanın)       | Evet        | Hayır (Azure Otomasyonu veya Windows Görev Zamanlayıcı kullanın)         |
 |**Desteklenen dosya sistemleri**     | ADL,,, CSıB, S3, GS, CFS        |Çok sayıda, bkz. [Bağlayıcılar](../data-factory/connector-azure-blob-storage.md).         | Adl 'den adl 'ye, ADL 'ye (yalnızca aynı bölge)        |
 |**İşletim sistemi desteği**     |Hadoop çalıştıran herhangi bir işletim sistemi         | Yok          | Windows 10         |
 

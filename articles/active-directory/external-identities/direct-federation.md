@@ -1,6 +1,6 @@
 ---
 title: B2B için bir kimlik sağlayıcısı ile doğrudan federasyon-Azure AD
-description: Konukların Azure AD uygulamalarınızda oturum açmasını sağlamak için bir SAML veya WS-beslik kimliği sağlayıcısıyla doğrudan federasyona ayırın
+description: Guests 'in Azure AD uygulamalarınızda oturum açmasını sağlamak için bir SAML veya WS-Fed Identity sağlayıcısıyla doğrudan federasyona ayırın
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87910194"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
@@ -24,7 +24,7 @@ ms.locfileid: "87910194"
 > [!NOTE]
 >  Doğrudan Federasyon, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bu makalede, B2B işbirliği için başka bir kuruluşla doğrudan Federasyonun nasıl ayarlanacağı açıklanır. Kimlik sağlayıcısı (IDP) SAML 2,0 veya WS-beslenir protokolünü destekleyen herhangi bir kuruluşla doğrudan Federasyon oluşturabilirsiniz.
+Bu makalede, B2B işbirliği için başka bir kuruluşla doğrudan Federasyonun nasıl ayarlanacağı açıklanır. Kimlik sağlayıcısı (IDP) SAML 2,0 veya WS-Fed protokolünü destekleyen herhangi bir kuruluşla doğrudan Federasyon oluşturabilirsiniz.
 Bir iş ortağının IDP 'si ile doğrudan Federasyon ayarladığınızda, bu etki alanındaki yeni Konuk kullanıcılar, Azure AD kiracınızda oturum açmak ve sizinle işbirliği yapmaya başlamak için kendi IDP tarafından yönetilen kurumsal hesaplarını kullanabilir. Konuk kullanıcının ayrı bir Azure AD hesabı oluşturmalarına gerek yoktur.
 > [!NOTE]
 > Doğrudan Federasyon Konuk kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>` doğrulanmış bir etki alanı olması durumunda `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Doğrudan Federasyon kullanıcıları, kiracı bağlamı olmayan ortak uç noktaları kullanarak oturum açamıyor. Örneğin,, `https://myapps.microsoft.com` veya kullanarak `https://portal.azure.com` `https://teams.microsoft.com` bir hatayla sonuçlanır.
@@ -83,11 +83,11 @@ Hayır, [e-posta bir kerelik geçiş kodu](one-time-passcode.md) özelliğinin b
 İlk olarak, iş ortağı kuruluşunuzun kimlik sağlayıcısını gerekli talepler ve bağlı olan taraf güvenleri ile yapılandırması gerekir. 
 
 > [!NOTE]
-> Doğrudan Federasyon için bir kimlik sağlayıcısının nasıl yapılandırılacağını göstermek için, örnek olarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanacağız. Doğrudan Federasyonu hazırlama bölümünde SAML 2,0 veya WS-beslik kimlik sağlayıcısı olarak AD FS yapılandırma örnekleri veren [AD FS doğrudan Federasyonu yapılandırma](direct-federation-adfs.md)makalesine bakın.
+> Doğrudan Federasyon için bir kimlik sağlayıcısının nasıl yapılandırılacağını göstermek için, örnek olarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanacağız. Doğrudan Federasyonu hazırlama bölümünde SAML 2,0 veya WS-Fed kimlik sağlayıcısı olarak AD FS yapılandırma örnekleri veren [AD FS doğrudan Federasyonu yapılandırma](direct-federation-adfs.md)makalesine bakın.
 
 ### <a name="saml-20-configuration"></a>SAML 2,0 yapılandırması
 
-Azure AD B2B, SAML protokolünü kullanan kimlik sağlayıcılarıyla federasyona eklemek için aşağıda listelenen belirli gereksinimlere sahip olacak şekilde yapılandırılabilir. SAML kimlik sağlayıcınız ile Azure AD arasında güven ayarlama hakkında daha fazla bilgi için bkz. [Çoklu oturum açma IÇIN saml 2,0 kimlik sağlayıcısı (IDP) kullanma](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
+Azure AD B2B, SAML protokolünü kullanan kimlik sağlayıcılarıyla federasyona eklemek için aşağıda listelenen belirli gereksinimlere sahip olacak şekilde yapılandırılabilir. SAML kimlik sağlayıcınız ile Azure AD arasında güven ayarlama hakkında daha fazla bilgi için bkz.  [Çoklu oturum açma IÇIN saml 2,0 kimlik sağlayıcısı (IDP) kullanma](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
 
 > [!NOTE]
 > Doğrudan Federasyonun hedef etki alanı, Azure AD 'de DNS doğrulanmamış olmalıdır. Kimlik doğrulama URL 'SI etki alanı, hedef etki alanı ile eşleşmelidir veya izin verilen bir kimlik sağlayıcısının etki alanı olması gerekir. Ayrıntılar için [sınırlamalar](#limitations) bölümüne bakın. 
@@ -101,7 +101,7 @@ IDP 'den SAML 2,0 yanıtı için gerekli öznitelikler:
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Hedef kitle     |`urn:federation:MicrosoftOnline`         |
-|Veren     |İş ortağı IDP veren URI 'SI, örneğin`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Veren     |İş ortağı IDP veren URI 'SI, örneğin `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 IDP tarafından verilen SAML 2,0 belirteci için gerekli talepler:
@@ -111,25 +111,25 @@ IDP tarafından verilen SAML 2,0 belirteci için gerekli talepler:
 |NameID biçimi     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-### <a name="ws-fed-configuration"></a>WS-beslenir yapılandırma 
-Azure AD B2B, aşağıda listelenen bazı belirli gereksinimlere sahip WS-Besme protokolünü kullanan kimlik sağlayıcılarıyla federasyona eklemek üzere yapılandırılabilir. Şu anda, iki WS-beslemeli sağlayıcı Azure AD dahil AD FS ve Shibbomath ile uyumluluk için sınanmıştır. Azure AD ile WS-Beslikli bir sağlayıcı arasında bağlı olan taraf güveni oluşturma hakkında daha fazla bilgi için bkz. [Azure AD kimlik sağlayıcısı uyumluluk belgeleri](https://www.microsoft.com/download/details.aspx?id=56843)'nde bulunan "ws PROTOKOLLERINI kullanan STS tümleştirme sayfası".
+### <a name="ws-fed-configuration"></a>WS-Fed yapılandırması 
+Azure AD B2B, aşağıda listelenen bazı belirli gereksinimlere sahip WS-Fed protokolünü kullanan kimlik sağlayıcılarıyla federasyona eklemek üzere yapılandırılabilir. Şu anda, iki WS-Fed sağlayıcı Azure AD içerme AD FS ve Shibbomath ile uyumluluk için sınanmıştır. Azure AD ile WS-Fed uyumlu bir sağlayıcı arasında bağlı olan taraf güveni oluşturma hakkında daha fazla bilgi için [Azure AD kimlik sağlayıcısı uyumluluk belgeleri](https://www.microsoft.com/download/details.aspx?id=56843)' nde bulunan "ws PROTOKOLLERINI kullanan STS tümleştirme sayfası" bölümüne bakın.
 
 > [!NOTE]
 > Doğrudan Federasyonun hedef etki alanı, Azure AD 'de DNS doğrulanmamış olmalıdır. Kimlik doğrulama URL 'SI etki alanı, hedef etki alanı ya da izin verilen bir kimlik sağlayıcısının etki alanı ile aynı olmalıdır. Ayrıntılar için [sınırlamalar](#limitations) bölümüne bakın. 
 
-#### <a name="required-ws-fed-attributes-and-claims"></a>Gerekli WS-beslenir öznitelikleri ve talepleri
+#### <a name="required-ws-fed-attributes-and-claims"></a>Gerekli WS-Fed öznitelikleri ve talepleri
 
-Aşağıdaki tablolarda, üçüncü taraf WS-beslik kimlik sağlayıcısında yapılandırılması gereken belirli öznitelikler ve talepler için gereksinimler gösterilmektedir. Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından gelen WS-Besme iletisinde aşağıdaki öznitelikler alınmalıdır. Bu öznitelikler, çevrimiçi güvenlik belirteci hizmeti XML dosyasına bağlanarak veya el ile girilerek yapılandırılabilir.
+Aşağıdaki tablolarda, üçüncü taraf WS-Fed kimlik sağlayıcısında yapılandırılması gereken belirli öznitelikler ve talepler için gereksinimler gösterilmektedir. Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından gelen WS-Fed iletisinde aşağıdaki öznitelikler alınmalıdır. Bu öznitelikler, çevrimiçi güvenlik belirteci hizmeti XML dosyasına bağlanarak veya el ile girilerek yapılandırılabilir.
 
-IDP 'den WS-BESM iletisinde gerekli öznitelikler:
+IDP 'den WS-Fed iletisinde gerekli öznitelikler:
  
 |Öznitelik  |Değer  |
 |---------|---------|
 |Passıverequestorendpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Hedef kitle     |`urn:federation:MicrosoftOnline`         |
-|Veren     |İş ortağı IDP veren URI 'SI, örneğin`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Veren     |İş ortağı IDP veren URI 'SI, örneğin `http://www.example.com/exk10l6w90DHM0yi...`         |
 
-IDP tarafından verilen WS-Besme belirteci için gerekli talepler:
+IDP tarafından verilen WS-Fed belirteci için gerekli talepler:
 
 |Öznitelik  |Değer  |
 |---------|---------|
@@ -148,11 +148,11 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 2. **Dış kimlikler**  >  **tüm kimlik sağlayıcıları**' nı seçin.
 3. Öğesini seçin ve ardından **yenı SAML/WS-Besıop**' ı seçin.
 
-    ![Yeni SAML veya WS-Besıop ekleme düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp.png)
+    ![Yeni bir SAML veya WS-Fed IDP ekleme düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp.png)
 
 4. **Yenı SAML/WS-beslik** kimliği sayfasında, **kimlik sağlayıcısı Protokolü**altında **SAML** veya **WS-beslik**' i seçin.
 
-    ![SAML veya WS-Besıop sayfasında ayrıştırma düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp-parse.png)
+    ![SAML veya WS-Fed IDP sayfasında ayrıştırma düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp-parse.png)
 
 5. İş ortağı kuruluşunuzun etki alanı adını girin, bu, doğrudan Federasyon için hedef etki alanı adı olacak
 6. Meta veri ayrıntılarını doldurmak için bir meta veri dosyası yükleyebilirsiniz. Meta verileri el ile girmeyi seçerseniz, aşağıdaki bilgileri girin:

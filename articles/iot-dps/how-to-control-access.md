@@ -10,13 +10,13 @@ ms.date: 04/09/2019
 ms.author: wesmc
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 3a374dae89ddf22d33bc44cafd9db3b4b6a9e6fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336829"
 ---
-# <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti 'ne erişimi denetleme
+# <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti’ne erişimi denetleme
 
 Bu makalede IoT cihaz sağlama hizmetinizi güvenli hale getirme seçenekleri açıklanmaktadır. Sağlama Hizmeti, her uç noktaya erişim vermek için *izinleri* kullanır. İzinler, işlevselliği temel alarak bir hizmet örneğine erişimi sınırlar.
 

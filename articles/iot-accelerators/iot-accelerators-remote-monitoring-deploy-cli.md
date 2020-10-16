@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9dcf19f5318021df5d9fdde777b8786942e33d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80258303"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072263"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLı kullanarak uzaktan Izleme çözüm Hızlandırıcısını dağıtma
 
@@ -49,10 +49,10 @@ Oturum açma işlemini gerçekleştirmek için ekrandaki yönergeleri izleyin.
 
 Çözüm hızlandırıcıyı dağıtırken, dağıtım işlemini yapılandıran çeşitli seçenekler vardır:
 
-| Seçenek | Değerler | Description |
+| Seçenek | Değerler | Açıklama |
 | ------ | ------ | ----------- |
 | SKU    | `basic`, `standard`, `local` | _Temel_ bir dağıtım test ve gösteriler için tasarlanan tüm mikro hizmetleri tek bir sanal makineye dağıtır. _Standart_ bir dağıtım üretime yöneliktir, mikro hizmetleri birkaç sanal makineye dağıtır. _Yerel_ bir dağıtım, bir Docker kapsayıcısını yerel makinenizde mikro hizmetleri çalıştıracak şekilde yapılandırır ve depolama ve Cosmos DB gibi Azure bulut hizmetlerini kullanır. |
-| Çalışma Zamanı | `dotnet`, `java` | Mikro hizmetlerin dil uygulamasını seçer. |
+| Çalışma zamanı | `dotnet`, `java` | Mikro hizmetlerin dil uygulamasını seçer. |
 
 Yerel dağıtım seçeneğini nasıl kullanacağınızı öğrenmek için bkz. [Uzaktan izleme çözümünü yerel olarak çalıştırma](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -73,12 +73,12 @@ Temel dağıtım, Azure aboneliğinizde aşağıdaki hizmetleri oluşturur:
 | 1     | [Linux sanal makinesi](https://azure.microsoft.com/services/virtual-machines/) | Standart D1 v2  | Mikro hizmetleri barındırma |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standart katman | Cihaz yönetimi ve iletişim |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standart        | Yapılandırma verilerini, kuralları, uyarıları ve diğer soğuk depolamayı depolama |  
-| 1     | [Azure Depolama Hesabı](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standart        | VM ve akış denetim noktaları için depolama |
+| 1     | [Azure Depolama Hesabı](../storage/common/storage-introduction.md#types-of-storage-accounts)  | Standart        | VM ve akış denetim noktaları için depolama |
 | 1     | [Web uygulaması](https://azure.microsoft.com/services/app-service/web/)        |                 | Ön uç Web uygulaması barındırma |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Kullanıcı kimliklerini ve güvenliğini yönetme |
 | 1     | [Azure Haritalar](https://azure.microsoft.com/services/azure-maps/)        | Standart                | Varlık konumlarını görüntüleme |
 | 1     | [Azure Akış Analizi](https://azure.microsoft.com/services/stream-analytics/)        |   3 birim              | Gerçek zamanlı analizi etkinleştirme |
-| 1     | [Azure cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Cihazları ölçekli olarak sağlama |
+| 1     | [Azure cihaz sağlama hizmeti](../iot-dps/index.yml)        |       S1          | Cihazları ölçekli olarak sağlama |
 | 1     | [Azure Zaman Serisi Görüşleri](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 birim              | İleti verileri için depolama ve derin telemetri analizini mümkün |
 
 ### <a name="standard"></a>Standart
@@ -94,12 +94,12 @@ Standart dağıtım, Azure aboneliğinizde aşağıdaki hizmetleri oluşturur:
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Tam olarak yönetilen bir Kubernetes kapsayıcı düzenleme hizmeti kullanın, varsayılan olarak 3 aracılardır|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standart katman | Cihaz yönetimi, komut ve denetim |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standart        | Yapılandırma verilerini depolama ve kurallar, uyarılar ve iletiler gibi cihaz telemetrisi |
-| 5     | [Azure depolama hesapları](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standart        | VM depolaması için 4 ve akış denetim noktaları için 1 |
+| 5     | [Azure depolama hesapları](../storage/common/storage-introduction.md#types-of-storage-accounts)    | Standart        | VM depolaması için 4 ve akış denetim noktaları için 1 |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standart     | TLS üzerinden uygulama ağ geçidi |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Kullanıcı kimliklerini ve güvenliğini yönetme |
 | 1     | [Azure Haritalar](https://azure.microsoft.com/services/azure-maps/)        | Standart                | Varlık konumlarını görüntüleme |
 | 1     | [Azure Akış Analizi](https://azure.microsoft.com/services/stream-analytics/)        |   3 birim              | Gerçek zamanlı analizi etkinleştirme |
-| 1     | [Azure cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Cihazları ölçekli olarak sağlama |
+| 1     | [Azure cihaz sağlama hizmeti](../iot-dps/index.yml)        |       S1          | Cihazları ölçekli olarak sağlama |
 | 1     | [Azure Zaman Serisi Görüşleri](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 birim              | İleti verileri için depolama ve derin telemetri analizini mümkün |
 
 > [!NOTE]

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544239"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Elium yapılandırma
@@ -49,7 +49,7 @@ Bir kullanıcıyı elim 'e atarken atama iletişim kutusunda geçerli, uygulamay
 
 ## <a name="set-up-elium-for-provisioning"></a>Sağlama için Elium ayarlama
 
-Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önce, sistemi etki alanları arası kimlik yönetimi (SCıM) sağlama için bir arada etkinleştirmeniz gerekir. Şu adımları uygulayın:
+Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önce, sistemi etki alanları arası kimlik yönetimi (SCıM) sağlama için bir arada etkinleştirmeniz gerekir. Şu adımları izleyin:
 
 1. Elim 'de oturum açın ve **profil**  >  **ayarlarıma**gidin.
 
@@ -65,7 +65,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önc
 
 ## <a name="add-elium-from-the-gallery"></a>Galeriden Elium ekleyin
 
-Azure AD ile otomatik Kullanıcı sağlaması için Elium 'u yapılandırmak için Azure AD Uygulama Galerisi 'nden yönetilen hizmet olarak yazılım (SaaS) uygulamaları listenize da Elium eklemeniz gerekir. Şu adımları uygulayın:
+Azure AD ile otomatik Kullanıcı sağlaması için Elium 'u yapılandırmak için Azure AD Uygulama Galerisi 'nden yönetilen hizmet olarak yazılım (SaaS) uygulamaları listenize da Elium eklemeniz gerekir. Şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)sol gezinti panelinde **Azure Active Directory**' i seçin.
 
@@ -100,11 +100,11 @@ Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere
 
     ![Kurumsal uygulamalar dikey penceresinde uygulamalar listesi](common/all-applications.png)
 
-1. **Sağlama** sekmesini seçin.
+1. **Hazırlama** sekmesini seçin.
 
     ![Kurumsal uygulamalar dikey penceresinde sağlama sekmesi](common/provisioning.png)
 
-1. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modu için otomatik ayar](common/provisioning-automatic.png)
 
@@ -114,7 +114,7 @@ Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere
 
 1. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alacak bir kişinin veya grubun e-posta adresini girin. Sonra, **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
 1. **Kaydet**’e tıklayın.
 
@@ -151,4 +151,4 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)

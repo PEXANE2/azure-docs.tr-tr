@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078932"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
@@ -44,7 +44,7 @@ Telemetri verileri, işlenmek üzere Azure Event Hubs yayımlanmış olan kurall
 
 API 'Ler Swagger teknik belgelerini içerir. API 'Ler ve bunlara karşılık gelen istekler ya da yanıtları hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsSwagger).
 
-**Kimlik doğrulaması**
+**Kimlik Doğrulaması**
 
 Farmtler Microsoft Azure Active Directory kimlik doğrulamasını kullanır.Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar.
 
@@ -96,7 +96,7 @@ Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereke
 **Üst bilgi** | **Açıklama ve örnek**
 --- | ---
 İçerik Türü | İstek biçimi (Content-Type: Application/ <format> ). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
-Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <erişim-belirteç>
+Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <Access-Token>
 Kabul Et | Yanıt biçimi. Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
 
 **API istekleri**
@@ -137,7 +137,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Üretici  | Üreticinin adı |
   ProductCode  | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800. |
   Bağlantı noktaları  | Bağlantı noktası adı ve türü, dijital veya analog.  |
-  Name  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
+  Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Üreticiden ek özellikler. |
   **Cihaz** | **Açıklama** |
@@ -146,7 +146,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Reportingınterval |Saniye cinsinden raporlama aralığı. |
   Konum    |Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
   Parentdeviceıd | Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir düğüm bir ağ geçidine bağlıysa, düğümde ağ geçidi olarak Parentdeviceıd vardır. |
-  Name  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
+  Adı  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
   Açıklama  | Anlamlı bir açıklama sağlayın.  |
   Özellikler  |Üreticiden ek özellikler.  |
   **SensorModel** | **Açıklama** |
@@ -160,7 +160,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Sensorölçüleri > AggregationType  | Hiçbiri, ortalama, maksimum, en az veya Standartsapması.
   Sensorölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
   Sensorölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın.
-  Name  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+  Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın.
   Özellikler  | Üreticiden ek özellikler.
   **Algılayıcısı**  | **Açıklama** |
@@ -169,7 +169,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Konum  | Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).
   Bağlantı noktası > adı  |Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bu, cihaz modelinde tanımlananla aynı ada sahip olmalıdır.
   DeviceId  | Algılayıcıın bağlı olduğu cihazın KIMLIĞI.
-  Name  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
+  Adı  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
   Açıklama  | Anlamlı bir açıklama sağlayın.
   Özellikler  | Üreticiden ek özellikler.
 

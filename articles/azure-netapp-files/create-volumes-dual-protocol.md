@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 9266a5efb7156367dfa0d6036f5876337098c143
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743939"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963525"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -28,19 +28,29 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 
-* Zaten bir kapasite havuzu ayarlamış olmalısınız.  
+* Zaten bir kapasite havuzu oluşturmuş olmanız gerekir.  
     Bkz. [Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md).   
 * Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
     [Azure NetApp Files için bir alt ağ temsilcisine](azure-netapp-files-delegate-subnet.md)bakın.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 * [Active Directory bağlantıları Için gereksinimleri](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)karşıladığınızdan emin olun. 
 * DNS sunucusunda bir geriye doğru arama bölgesi oluşturun ve ardından bu geriye doğru arama bölgesine AD ana makinesi için bir işaretçi (PTR) kaydı ekleyin. Aksi halde, çift protokol birimi oluşturma işlemi başarısız olur.
 * NFS istemcisinin güncel olduğundan ve işletim sistemi için en son güncelleştirmeleri çalıştırdığından emin olun.
-* AD üzerinde Active Directory (AD) LDAP sunucusunun açık ve çalışıyor olduğundan emin olun. Bu, AD makinesine [Active Directory Basit Dizin Hizmetleri (AD LDS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) rolü yüklenerek ve yapılandırılarak yapılır.
-* Otomatik olarak imzalanan kök CA sertifikasını oluşturmak ve dışarı aktarmak için [Active Directory Sertifika Hizmetleri (AD CS)](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) rolünü kullanarak ad üzerinde bir sertifika YETKILISININ (CA) oluşturulduğundan emin olun.   
+* AD üzerinde Active Directory (AD) LDAP sunucusunun açık ve çalışıyor olduğundan emin olun. Bunu, AD makinesine [Active Directory Basit Dizin Hizmetleri (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) rolünü yükleyip yapılandırarak yapabilirsiniz.
+* Otomatik olarak imzalanan kök CA sertifikasını oluşturmak ve dışarı aktarmak için [Active Directory Sertifika Hizmetleri (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) rolünü kullanarak ad üzerinde bir sertifika YETKILISININ (CA) oluşturulduğundan emin olun.   
 * Çift protokol birimleri Şu anda Azure Active Directory Domain Services desteklemez (AEKLEMELERI).  
+* Bir çift protokol birimi tarafından kullanılan NFS sürümü NFSv3 ' dir. Bu nedenle, aşağıdaki önemli noktalar geçerlidir:
+    * İkili protokol, NFS istemcilerinden gelen Windows ACL genişletilmiş özniteliklerini desteklemez `set/get` .
+    * NFS istemcileri NTFS güvenlik stili için izinleri değiştiremezler ve Windows istemcileri UNIX stili çift protokol birimlerinin izinlerini değiştiremezler.   
+
+    Aşağıdaki tabloda güvenlik stilleri ve etkileri açıklanmaktadır:  
+    
+    | Güvenlik stili    | İzinleri değiştirebilecek istemciler   | İstemcilerin kullanabileceği izinler  | Ortaya çıkan etkin güvenlik stili    | Dosyalara erişebilen istemciler     |
+    |-  |-  |-  |-  |-  |
+    | UNIX  | NFS   | NFSv3 modu bitleri   | UNIX  | NFS ve Windows   |
+    | NTFS  | Windows   | NTFS ACL 'Leri     | NTFS  |NFS ve Windows|
 
 ## <a name="create-a-dual-protocol-volume"></a>Çift protokollü birim oluşturma
 
@@ -113,9 +123,9 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
 ## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Active Directory Sertifika yetkilisi ortak kök sertifikası yükleme  
 
-1.  Sertifika yetkilisini yüklemek ve yapılandırmak için [sertifika yetkilisini yüklemeyi](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) izleyin. 
+1.  Sertifika yetkilisini yüklemek ve yapılandırmak için [sertifika yetkilisini yüklemeyi](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) izleyin. 
 
-2.  MMC ek bileşenini ve Sertifika Yöneticisi aracını kullanmak için [MMC ek bileşeni ile sertifikaları görüntüleyin](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ' i izleyin.  
+2.  MMC ek bileşenini ve Sertifika Yöneticisi aracını kullanmak için [MMC ek bileşeni ile sertifikaları görüntüleyin](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ' i izleyin.  
     Yerel cihaz için kök veya veren sertifikayı bulmak için Sertifika Yöneticisi ek bileşenini kullanın. Sertifika Yönetimi ek bileşeni komutlarını aşağıdaki ayarlardan birinden çalıştırmalısınız:  
     * Etki alanına katılmış ve kök sertifikası yüklü olan Windows tabanlı bir istemci 
     * Kök sertifikayı içeren etki alanındaki başka bir makine  
@@ -152,4 +162,4 @@ NFS istemcisini yapılandırmak için [Azure NetApp FILES NFS Istemcisi yapılan
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 * [Çift protokol SSS](azure-netapp-files-faqs.md#dual-protocol-faqs)
-* [Azure NetApp Files için NFS istemcisini yapılandırma](configure-nfs-clients.md) 
+* [Azure NetApp Files için NFS istemcisini yapılandırma](configure-nfs-clients.md)

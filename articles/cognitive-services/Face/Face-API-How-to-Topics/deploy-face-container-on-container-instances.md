@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
 ms.openlocfilehash: 5fbe316580cfa2ca280a2587536df037146e8d02
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86538131"
 ---
 # <a name="deploy-the-face-container-to-azure-container-instances"></a>Yüz kapsayıcısını Azure Container Instances dağıtım
 
 > [!IMPORTANT]
-> Yüz kapsayıcı kullanıcıları için sınıra ulaşıldı. Şu anda yüz kapsayıcısı için yeni uygulamalar kabul etmiyoruz.
+> Yüz Tanıma v1 kapsayıcısı kullanıcılarının sınırına ulaşıldı. Şu anda Yüz Tanıma kapsayıcısı için yeni uygulama kabul etmiyoruz.
 
 Bilişsel [Hizmetler kapsayıcısı](../face-how-to-install-containers.md) kapsayıcısını Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)dağıtma hakkında bilgi edinin. Bu yordamda, bir Azure yüz kaynağı oluşturma işlemi gösterilir. Ardından, ilişkili kapsayıcı görüntüsünü çekme hakkında tartışın. Son olarak, bir tarayıcıdan ikisini de düzenleme özelliğini vurgulayacağız. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
 

@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
 ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324561"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose uygulamasını Azure Cosmos DB 'a bağlama
@@ -22,7 +22,7 @@ Bu öğreticide, Cosmos DB veri depolarken [Mongoose çerçevesinin](https://mon
 
 Cosmos DB, Microsoft 'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve her şey belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulayabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -197,7 +197,7 @@ Bu bölümde, MongoDB için Azure Cosmos DB API 'SI ile nasıl elde edilecek anl
 
 1. Şimdi de Azure portal giderek Cosmos DB iki koleksiyonun oluşturulduğunu fark edersiniz.
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js öğreticisi-birden çok koleksiyon adı vurgulanmış bir Azure Cosmos DB hesabı gösteren Azure portal ekran görüntüsü":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js öğreticisi-Azure portal, Mongoose node modülüyle kullanılmak üzere bir Azure Cosmos DB hesabı için Veri Gezgini bir veritabanı oluşturmayı gösteren ekran görüntüsü":::
 
 1. Son olarak, Cosmos DB verileri okuyalim. Varsayılan Mongoose çalışma modelini kullandığımızdan, okuma işlemleri Mongoose'la yapılan diğer okuma işlemleriyle aynıdır.
 
@@ -302,7 +302,7 @@ Burada temel bir nesne modeli oluşturuyor, ayırt edici anahtar tanımlıyor ve
 
 1. Artık Azure Portal'a dönerseniz, hem 'Family' hem de 'VacationDestinations' verilerini içeren ```alldata``` adlı tek bir koleksiyonunuz olduğunu görürsünüz.
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js öğreticisi-koleksiyon adı vurgulanmış düğüm veritabanı ile bir Azure Cosmos DB hesabı gösteren Azure portal ekran görüntüsü":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js öğreticisi-Azure portal, Mongoose node modülüyle kullanılmak üzere bir Azure Cosmos DB hesabı için Veri Gezgini bir veritabanı oluşturmayı gösteren ekran görüntüsü":::
 
 1. Ayrıca, iki farklı nesne modeli arasında ayırt etmenize yardımcı olmak üzere her nesnenin ```__type``` olarak adlandırılan başka bir özniteliği vardır.
 

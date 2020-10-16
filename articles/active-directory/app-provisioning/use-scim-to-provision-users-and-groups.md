@@ -1,24 +1,24 @@
 ---
-title: Azure AD 'den uygulamalara Kullanıcı hazırlama için bir SCıM uç noktası geliştirin
-description: Etki alanları arası kimlik yönetimi (SCıM) sistemi, otomatik Kullanıcı sağlamayı standartlaştırlar. Bir SCıM uç noktası geliştirmeyi, SCıM API 'nizi Azure Active Directory ile tümleştirmeyi ve bulut uygulamalarınıza kullanıcıları ve grupları sağlamayı otomatik hale getirmeye başlamasını öğrenin.
+title: Öğretici-Azure AD 'den uygulamalara Kullanıcı hazırlama için bir SCıM uç noktası geliştirin
+description: Etki alanları arası kimlik yönetimi (SCıM) sistemi, otomatik Kullanıcı sağlamayı standartlaştırlar. Bu öğreticide, bir SCıM uç noktası geliştirmeyi, SCıM API 'nizi Azure Active Directory tümleştirmenizi ve bulut uygulamalarınıza kullanıcıları ve grupları sağlamayı otomatik hale getirmeye başlayacağınızı öğreneceksiniz.
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266658"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070206"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
+# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Öğretici-Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamayı yapılandırın
 
 Uygulama geliştiricisi olarak, uygulamanız ile Azure AD arasında kullanıcıları ve grupları otomatik olarak sağlamayı etkinleştirmek için etki alanları arası kimlik yönetimi (SCıM) Kullanıcı yönetimi API 'sini kullanabilirsiniz. Bu makalede, bir SCıM uç noktası oluşturma ve Azure AD sağlama hizmeti ile tümleştirme açıklanır. SCıM belirtimi, sağlama için ortak bir Kullanıcı şeması sağlar. SAML veya OpenID Connect gibi Federasyon standartlarıyla birlikte kullanıldığında, SCıM yöneticilere erişim yönetimi için uçtan uca standartlara dayalı bir çözüm sunar.
 
@@ -98,7 +98,7 @@ Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özni
 |bölüm|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|
 | displayName |displayName |
 |Çalışan|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|
-| Facsıle-TelephoneNumber |phoneNumbers [tür EQ "Faks"]. değer |
+| Facsimile-TelephoneNumber |phoneNumbers [tür EQ "Faks"]. değer |
 | givenName |name.givenName |
 | jobTitle |başlık |
 | posta |emails[type eq "work"].value |
@@ -747,7 +747,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP aralıkları
-Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. 
+Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. Hesaplanan adresler için IP aralığı listesini dikkatle gözden geçirmeniz gerekeceğini unutmayın. ' 40.126.25.32 ' gibi bir adres, IP aralığı listesinde ' 40.126.0.0/18 ' olarak temsil edilebilir. Ayrıca, aşağıdaki [API 'yi](/rest/api/virtualnetwork/servicetags/list)kullanarak IP aralığı listesini de program aracılığıyla alabilirsiniz.
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. Adım: SCıM uç noktası oluşturma
 

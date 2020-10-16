@@ -3,15 +3,15 @@ title: Yeni oturum Konakları ile mevcut konak havuzunu genişletme-Azure
 description: Mevcut bir konak havuzunu Windows sanal masaüstündeki yeni oturum Konakları ile genişletme.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002442"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929600"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -26,7 +26,7 @@ Bu makalede, mevcut bir konak havuzunu yeni oturum Konakları ile nasıl genişl
 
 Başlamadan önce, aşağıdaki yöntemlerden birini kullanarak bir konak havuzu ve oturum ana bilgisayarı sanal makineleri (VM 'Ler) oluşturduğunuzdan emin olun:
 
-- [Azure Portal](./create-host-pools-azure-marketplace.md)
+- [Azure portalındaki](./create-host-pools-azure-marketplace.md)
 - [PowerShell ile ana bilgisayar havuzu oluşturma](./create-host-pools-powershell.md)
 
 Konak havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda aşağıdaki bilgilere de ihtiyacınız olacaktır:
@@ -39,7 +39,7 @@ Konak havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda aşağ
 
 Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. **Windows sanal masaüstü**araması yapın ve seçin.
 
@@ -56,7 +56,7 @@ Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 8. Konak havuzunuza eklemek istediğiniz oturum ana bilgisayarlarının sayısını **VM sayısına**girin. Örneğin, ana bilgisayar havuzunuzu beş ana bilgisayar ile genişlettiğiniz takdirde **5**girin.
 
     >[!NOTE]
-    >Konak havuzundaki tüm VM 'Lerin aynı boyutta olduğundan emin olmak önemlidir çünkü VM 'lerin boyutunu veya görüntüsünü düzenleyemezsiniz.
+    >VM 'lerin görüntüsünü ve önekini düzenlemek mümkün olsa da, aynı konak havuzunda farklı görüntülere sahip VM 'Ler varsa bunları düzenlemenizi öneririz. Yalnızca etkilenen konak havuzundaki eski görüntülerle VM 'Leri kaldırmayı planlıyorsanız görüntüyü ve ön eki düzenleyin.
 
 9. Sanal **ağ bilgileri**için, sanal makinelerin katılmasını istediğiniz sanal ağı ve alt ağı seçin. Mevcut makinelerinizdeki aynı sanal ağı seçebilir veya adım 7 ' de seçtiğiniz bölgeye daha uygun olan farklı bir tane seçebilirsiniz.
 
@@ -67,7 +67,7 @@ Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 
 11. Sanal makineleri gruplandırmak istediğiniz etiketlere sahipseniz **etiket** sekmesini seçin. Aksi takdirde, bu sekmeyi atlayın.
 
-12. **Gözden geçir + oluştur** sekmesini seçin. seçimlerinizi gözden geçirin ve her şey hassas görünüyorsa **Oluştur**' u seçin.
+12. **Gözden geçir + oluştur** sekmesini seçin. Seçimlerinizi gözden geçirin ve her şey iyi görünüyorsa **Oluştur**' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

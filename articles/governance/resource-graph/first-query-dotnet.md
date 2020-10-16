@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: ilk .NET Core sorgunuz'
 description: Bu hızlı başlangıçta, .NET Core için kaynak grafiği NuGet paketlerini etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f825b22712956c0b94531ddb163301167f30f00
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89005879"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057476"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Hızlı başlangıç: .NET Core kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 

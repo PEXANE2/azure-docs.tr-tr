@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
 ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714356"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın (Önizleme)
@@ -85,8 +85,8 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Name | *Privateendpoint*girin. |
-    | Region | **Yourregion**' ı seçin. |
+    | Adı | *Privateendpoint*girin. |
+    | Bölge | **Yourregion**' ı seçin. |
     |||
 
 4. **Sonraki: kaynak**' ı seçin.
@@ -112,7 +112,7 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
     | Alt ağ | *Mysubnet*öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTİRMESİ**||
-    |Özel DNS bölgesi ile tümleştirme |**Evet** seçeneğini belirleyin. |
+    |Özel DNS bölgesi ile tümleştirme |**Evet**’i seçin. |
     |Özel DNS Bölgesi |Seç *(yeni) Privatelink. Azure-Automation.net* |
     |||
 

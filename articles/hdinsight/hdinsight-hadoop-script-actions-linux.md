@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082259"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile betik eylemi geliştirme
@@ -73,7 +73,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="target-the-operating-system-version"></a><a name="bps10"></a>İşletim sistemi sürümünü hedefleyin
+### <a name="target-the-operating-system-version"></a><a name="bps10"></a> İşletim sistemi sürümünü hedefleyin
 
 HDInsight, Ubuntu Linux dağıtımına dayalıdır. Farklı HDInsight sürümleri Ubuntu 'ın farklı sürümlerine dayanır ve bu, betiğinizin davranışını değiştirebilir. Örneğin, HDInsight 3,4 ve önceki sürümleri, Upstart kullanan Ubuntu sürümlerini temel alır. 3,5 ve üzeri sürümleri, systemd kullanan Ubuntu 16,04 ' i temel alır. Systemd ve Upstart farklı komutlara güventiğinden, betiğinizin her ikisiyle de çalışacak şekilde yazılması gerekir.
 
@@ -177,7 +177,7 @@ Bu, STDOUT 'a yazılan bilgileri STDERR 'e (2) yönlendirir. GÇ yönlendirmesi 
 
 Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntüleme hakkında daha fazla bilgi için bkz. [betik eylemlerine sorun giderme](./troubleshoot-script-action.md).
 
-### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Dosyaları LF satır sonları ile ASCII olarak kaydet
+### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> Dosyaları LF satır sonları ile ASCII olarak kaydet
 
 Bash betikleri, LF tarafından sonlandırılan satırlar ile ASCII biçiminde depolanmalıdır. UTF-8 olarak depolanan dosyalar ya da satır sonu olarak CRLF kullanımı aşağıdaki hatayla başarısız olabilir:
 
@@ -186,7 +186,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>Geçici hatalardan kurtarmak için yeniden deneme mantığını kullanma
+### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a> Geçici hatalardan kurtarmak için yeniden deneme mantığını kullanma
 
 Dosyaları indirirken, apt-get veya Internet üzerinden veri aktaran diğer işlemleri kullanarak paket yüklerken, geçici ağ hataları nedeniyle işlem başarısız olabilir. Örneğin, iletişim kurduğunuz uzak kaynak bir yedekleme düğümüne yük devretme sürecinde olabilir.
 
@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Aşağıdaki yardımcılar betiğinizdeki kullanım için kullanılabilir:
 
-| Yardımcı kullanım | Description |
+| Yardımcı kullanım | Açıklama |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Kaynak URI 'den belirtilen dosya yoluna bir dosya indirir. Varsayılan olarak, varolan bir dosyanın üzerine yazmaz. |
 | `untar_file TARFILE DESTDIR` |Bir tar dosyasını (kullanarak `-xf` ) hedef dizine ayıklar. |
@@ -256,7 +256,7 @@ Bu bölüm, kendi özel betiğinizi yazarken çalıştırabileceğiniz bazı yay
 
 Bazı durumlarda, betiğinizin parametreleri gerekebilir. Örneğin, ambarı REST API kullanılırken küme için yönetici parolası gerekebilir.
 
-Betiğe geçirilen parametreler *Konumsal parametreler*olarak bilinir ve `$1` ilk parametre için, `$2` ikincisi için atanır ve bu şekilde-açık. `$0`betiğin adını içerir.
+Betiğe geçirilen parametreler *Konumsal parametreler*olarak bilinir ve `$1` ilk parametre için, `$2` ikincisi için atanır ve bu şekilde-açık. `$0` betiğin adını içerir.
 
 Komut dosyasına parametre olarak geçirilen değerler tek tırnak (') içine alınmalıdır. Bunun yapılması, geçen değerin değişmez değer olarak değerlendirilmesini sağlar.
 
@@ -360,7 +360,7 @@ Bu sorun çoğu zaman, komut dosyası bir Windows ortamında yazıldığı için
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 ```
 
-`INFILE`Bom içeren dosyayla değiştirin. `OUTFILE`, BOM olmadan betiği içeren yeni bir dosya adı olmalıdır.
+`INFILE`Bom içeren dosyayla değiştirin. `OUTFILE` , BOM olmadan betiği içeren yeni bir dosya adı olmalıdır.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>Sonraki adımlar
 

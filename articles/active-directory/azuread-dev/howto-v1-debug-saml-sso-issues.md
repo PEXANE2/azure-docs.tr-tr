@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
 ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819311"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory'de SAML tabanlı çoklu oturum açma uygulamaları için hata ayıklama
@@ -77,7 +77,7 @@ Oturum açma hatası için hiçbir çözüm sağlanmazsa, bize bildirmek için g
 1. Azure AD 'ye dönün ve **Çoklu oturum açma** dikey penceresini bulun.
 1. Yukarıdaki metin kutusunda, **çözüm kılavuzunu al**' ı, hata iletisini yapıştırın.
 1. Sorunu çözmeye yönelik adımları göstermek için **çözüm kılavuzunu al** ' a tıklayın. Bu kılavuzda, SAML isteğinden veya SAML yanıtından bilgi gerekebilir. Uygulamalarım güvenli oturum açma uzantısını kullanmıyorsanız, SAML isteği ve yanıtını almak için [Fiddler](https://www.telerik.com/fiddler) gibi bir araca ihtiyacınız vardır.
-1. SAML isteğindeki hedefin Azure AD 'den alınan SAML çoklu oturum açma hizmeti URL 'sine karşılık geldiğini doğrulayın.
+1. SAML isteğindeki hedefin Azure AD 'den alınan SAML tek Sign-On hizmet URL 'sine karşılık geldiğini doğrulayın.
 1. SAML isteğindeki veren 'in, Azure AD 'de uygulama için yapılandırdığınız tanımlayıcıyla aynı olduğunu doğrulayın. Azure AD, dizininizdeki bir uygulamayı bulmak için veren 'i kullanır.
 1. AssertionConsumerServiceURL 'nin, uygulamanın Azure AD 'den SAML belirtecini almak için beklediği konum olduğunu doğrulayın. Bu değeri Azure AD 'de yapılandırabilirsiniz, ancak SAML isteğinin bir parçası ise zorunlu değildir.
 

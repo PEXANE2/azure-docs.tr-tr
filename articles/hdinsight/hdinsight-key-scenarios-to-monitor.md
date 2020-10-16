@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 78ff8adcc2b50f89daa37112b14d219233559dab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075579"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
@@ -27,9 +27,9 @@ Küme üzerinde yük, tüm düğümlerde eşit şekilde dağıtıldığında Had
 
 Kümenizin düğümlerine ve bunların yüklenmesine ilişkin üst düzey bir görünüm almak için, [ambarı Web Kullanıcı arabiriminde](hdinsight-hadoop-manage-ambari.md)oturum açın ve ardından **konaklar** sekmesini seçin. Konaklar tam etki alanı adlarına göre listelenir. Her konağın işletim durumu renkli bir sistem durumu göstergesi ile gösterilir:
 
-| Renk | Açıklama |
+| Color | Açıklama |
 | --- | --- |
-| Red | Konaktaki en az bir ana bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
+| Kırmızı | Konaktaki en az bir ana bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
 | Orange | Konaktaki en az bir ikincil bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
 | Yellow | Ambarı sunucusu ana bilgisayardan 3 dakikadan uzun bir sinyal almadı. |
 | Yeşil | Normal çalışma durumu. |
@@ -84,7 +84,7 @@ Kümenizin yedekleme deposu Azure Data Lake Storage (ADLS) ise, azaltma bilgiler
 
 ## <a name="troubleshoot-sluggish-node-performance"></a>Yavaş düğüm performansının sorunlarını giderme
 
-Bazı durumlarda, kümede yetersiz disk alanı nedeniyle ağır bir durum oluşabilir. Şu adımlarla araştırın:
+Bazı durumlarda, kümede yetersiz disk alanı olması yavaş performansa neden olabilir. Şu adımlarla araştırın:
 
 1. Düğümlerin her birine bağlanmak için [SSH komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın.
 
@@ -97,7 +97,7 @@ Bazı durumlarda, kümede yetersiz disk alanı nedeniyle ağır bir durum oluşa
 
 1. Çıktıyı gözden geçirin ve `mnt` klasörde veya diğer klasörlerde büyük dosyaların varlığını denetleyin. Genellikle, `usercache` ve `appcache` (mnt/Resource/Hadoop/Yarn/yerel/kullanıcıönbelleği/Hive/APPCACHE/) klasörleri büyük dosyalar içerir.
 
-1. Büyük dosyalar varsa, geçerli bir iş dosyanın büyümesi veya başarısız olan bir önceki iş bu soruna katkıda bulunabilir. Bu davranışın geçerli bir işin neden olup olmadığını denetlemek için aşağıdaki komutu çalıştırın:
+1. Büyük dosyalar varsa, geçerli bir iş dosyanın büyümesi veya başarısız olan bir önceki iş bu soruna katkıda bulunabilir. Bu davranışa geçerli bir işin neden olup olmadığını denetlemek için şu komutu çalıştırın: 
 
     ```bash
     sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
@@ -109,7 +109,7 @@ Bazı durumlarda, kümede yetersiz disk alanı nedeniyle ağır bir durum oluşa
     yarn application -kill -applicationId <application_id>
     ```
 
-    `application_id`Uygulama kimliğiyle değiştirin. Belirli bir iş belirtilmemişse, sonraki adıma gidin.
+    `application_id`Uygulama kimliğiyle değiştirin. Belirli bir iş gösterilmediyse sonraki adıma gidin.
 
 1. Yukarıdaki komut tamamlandıktan sonra veya belirli bir iş belirtilmemişse, aşağıdakine benzer bir komut çalıştırarak belirlediğiniz büyük dosyaları silin:
 

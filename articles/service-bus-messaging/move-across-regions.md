@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 573ea96437cf6cb76854ffa417fd3ad3fb86138b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88861259"
 ---
 # <a name="move-an-azure-service-bus-namespace-to-another-region"></a>Bir Azure Service Bus ad alanını başka bir bölgeye taşıma
@@ -28,7 +28,7 @@ Hesabınızın kullandığı Azure Service Bus ve özelliklerin hedef bölgede d
 ## <a name="prepare"></a>Hazırlama
 Başlamak için Kaynak Yöneticisi şablonu dışarı aktarın. Bu şablon Service Bus ad alanınızı tanımlayan ayarları içerir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Tüm kaynaklar** ' ı seçin ve sonra Service Bus ad alanınızı seçin.
 3. > **ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** sayfasında **İndir** ' i seçin.
@@ -48,19 +48,19 @@ Hedef bölgede bir Service Bus ad alanı oluşturmak için şablonu dağıtın.
 1. Azure portal **kaynak oluştur**' u seçin.
 2. **Market 'Te arama**yapmak için, arama metni için **şablon dağıtımı** yazın, **şablon dağıtımı (özel şablonları kullanarak dağıtın)** öğesini seçin ve ardından **ENTER**tuşuna basın.
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Yeni şablon dağıtımı":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Kaynak Yöneticisi şablonu indir":::    
 1. **Şablon dağıtımı** sayfasında **Oluştur**' u seçin.
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Yeni şablon dağıtımı-oluştur düğmesi":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Kaynak Yöneticisi şablonu indir":::        
 1. **Özel dağıtım** sayfasında, **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Düzenleyicide kendi şablonunuzu oluşturun-bağlantı":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Kaynak Yöneticisi şablonu indir":::            
 1. **Şablonu Düzenle** sayfasında, araç çubuğunda **Dosya Yükle** ' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Şablon seç":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Kaynak Yöneticisi şablonu indir":::                
 1. Şablonu kaydetmek için **Kaydet** ' i seçin. 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Şablonu Kaydet":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Kaynak Yöneticisi şablonu indir":::                    
 1. **Özel dağıtım** sayfasında, aşağıdaki adımları izleyin: 
     1. Bir Azure **aboneliği**seçin. 
     2. Var olan bir **kaynak grubunu** seçin veya bir kaynak grubu oluşturun. 
@@ -68,26 +68,26 @@ Hedef bölgede bir Service Bus ad alanı oluşturmak için şablonu dağıtın.
     4. **Ad alanı için**yeni bir ad girin.
     1. **Gözden geçir ve oluştur**’u seçin. 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Kaynak Yöneticisi şablonu dağıtma":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Kaynak Yöneticisi şablonu indir":::
     1. **Gözden geçir + oluştur** sayfasında sayfanın alt kısmında **Oluştur** ' u seçin. 
     
 ## <a name="verify"></a>Doğrulama
 1. Dağıtım başarılı olduktan sonra **kaynak grubuna git**' i seçin.
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Kaynak grubu bağlantısına git":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Kaynak Yöneticisi şablonu indir":::    
 1. **Kaynak grubu** sayfasında Service Bus ad alanını seçin. 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Service Bus ad alanını seçin":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Kaynak Yöneticisi şablonu indir":::    
 1. **Service Bus ad alanı** sayfasında, kaynak bölgeden kuyrukları, konuları ve abonelikleri gördiğinizi doğrulayın. 
     1. Sağ bölmenin altındaki ad alanındaki **kuyrukları** görürsünüz.         
     
-        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="Ad alanındaki kuyruklar":::
+        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="Kaynak Yöneticisi şablonu indir":::
     2. Ad alanındaki konuları görmek için **konular** sekmesine geçin
     
-        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="Ad alanındaki konular":::
+        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="Kaynak Yöneticisi şablonu indir":::
     3. Aboneliklerin oluşturulduğunu doğrulamak için konu başlığını seçin. 
 
-        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Konu abonelikleri":::      
+        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Kaynak Yöneticisi şablonu indir":::      
     
     
 

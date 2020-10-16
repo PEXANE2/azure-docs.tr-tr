@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740386"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998117"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -41,7 +41,7 @@ SAML ile iki özel olmayan temel senaryoyu özetleme:
 | Uygulamam bir kimlik doğrulamasını tamamlamaya yönelik bir SAML onayı bekliyor. | **Azure AD B2C, kimlik sağlayıcısı (IDP) olarak davranır**<br />Azure AD B2C, uygulamalar için SAML IDP işlevi görür. | Bu makale. |
 | Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](identity-provider-adfs2016-custom.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
 * Security Assertion Markup Language (SAML) protokolünü temel olarak anlama.
@@ -437,6 +437,24 @@ Aşağıdaki SAML bağlı olan taraf (RP) senaryoları kendi meta veri uç nokta
 
 Aşağıdaki SAML bağlı olan taraf (RP) senaryoları Şu anda desteklenmiyor:
 * Kimlik sağlayıcısı, kimlik sağlayıcısının bir dış kimlik sağlayıcısı olduğu, örneğin ADFS gibi bir oturum açma işlemi başlattı.
+
+## <a name="saml-token"></a>SAML belirteci
+
+SAML belirteci, başarılı bir oturum açma işleminden sonra Azure AD B2C tarafından verilen bir güvenlik belirtecidir. Kullanıcı hakkında, belirtecin istendiği hizmet sağlayıcısı, imza ve geçerlilik süresi hakkında bilgiler içerir. Aşağıdaki tabloda, Azure AD B2C tarafından verilen bir SAML belirtecinde bekleneceğiniz talepler ve özellikler listelenmiştir.
+
+|Öğe  |Özellik  |Notlar  |
+|---------|---------|---------|
+|`<Response>`| `ID` | Yanıtın otomatik olarak üretilmiş benzersiz tanımlayıcısı. | 
+|`<Response>`| `InResponseTo` | Bu iletinin yanıt olarak olduğu SAML isteğinin Kımlığı. | 
+|`<Response>` | `IssueInstant` | Yanıt verme zamanı anında. Zaman değeri UTC olarak kodlanır.Belirteç yaşam sürelerinin ayarlarını değiştirmek için `TokenNotBeforeSkewInSeconds` SAML belirteci verenin teknik profilinin [meta verilerini](saml-issuer-technical-profile.md#metadata) ayarlayın. | 
+|`<Response>` | `Destination`| Bu yanıtın gönderildiği adresi belirten bir URI başvurusu. Değer SAML isteğiyle özdeştir `AssertionConsumerServiceURL` . | 
+|`<Response>` `<Issuer>` | |Belirteç vereni tanımlar. Bu, SAML belirteci sorununun `IssuerUri` [meta verileri](saml-issuer-technical-profile.md#metadata) tarafından tanımlanan rastgele bir URI 'dir     |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Belirtecinin, Kullanıcı nesne KIMLIĞI gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Bu, belirtecin bir kaynağa erişmek için ne zaman kullanıldığı gibi, güvenli bir şekilde, yetkilendirme denetimleri gerçekleştirmek için de kullanılabilir. Varsayılan olarak, konu talebi, dizindeki kullanıcının nesne KIMLIĞIYLE doldurulur.|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Dize tabanlı tanımlayıcı bilgilerinin sınıflandırmasını temsil eden bir URI başvurusu. Varsayılan olarak bu özellik atlanır. Bağlı olan taraf [Subjectnamingınfo](relyingparty.md#subjectnaminginfo) , biçimini belirtmek için ayarlayabilirsiniz `NameID` `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Belirtecin geçerli hale geldiği zaman. Zaman değeri UTC olarak kodlanır. Uygulamanızın belirteç ömrünün geçerliliğini doğrulamak için bu talebi kullanması gerekir. Belirteç kullanım ömürleri üzerindeki ayarları değiştirmek için, `TokenNotBeforeSkewInSeconds` SAML belirteci sorunu teknik profili ' nin [meta verilerini](saml-issuer-technical-profile.md#metadata) ayarlayın. |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Belirtecin geçersiz hale geldiği zaman. Uygulamanızın belirteç ömrünün geçerliliğini doğrulamak için bu talebi kullanması gerekir. Değer, 15 dakika sonrasında `NotBefore` ve değiştirilemez.|
+|`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Hedeflenen bir izleyiciyi tanımlayan bir URI başvurusu. Belirtecin amaçlanan alıcısını tanımlar. Değer SAML isteğiyle özdeştir `AssertionConsumerServiceURL` .|
+|`<Response>``<Assertion>` `<AttributeStatement>` koleksiyonu`<Attribute>` | | [Bağlı olan taraf teknik profil](relyingparty.md#technicalprofile) çıktı taleplerde yapılandırıldığı şekilde onaylar koleksiyonu (talepler). Onay adını, çıkış talebinin ayarını ayarlayarak yapılandırabilirsiniz `PartnerClaimType` . |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

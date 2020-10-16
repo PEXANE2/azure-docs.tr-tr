@@ -10,6 +10,8 @@
       href: overview-iot-central-developer.md
     - name: Son güncelleştirmeler
       items:
+        - name: Eylül 2020 yeni ve güncelleştirilmiş özellikler
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
         - name: Ağustos 2020 yeni ve güncelleştirilmiş özellikler
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
         - name: Temmuz 2020 yeni ve güncelleştirilmiş özellikler
@@ -170,9 +172,11 @@
             - name: Canlı sohbeti açma/kapatma
               href: howto-show-hide-chat.md
     - name: Sorun giderme
-      items: null
-      '-name': Device connections
-      href: troubleshoot-connection.md
+      items:
+        - name: Cihaz bağlantıları
+          href: troubleshoot-connection.md
+    - name: SSS
+      href: howto-faq.md
 - name: Başvuru
   items:
     - name: Azure CLI

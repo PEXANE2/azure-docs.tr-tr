@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496188"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995445"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Dosyaları ölçeklenebilirlik ve performans hedefleri
 
@@ -80,17 +80,26 @@ Bir aşamanın her biri için dağıtımınızı planlamaya yardımcı olmak üz
 | Bellek | 128 GiB |
 | Disk | Pil gücüyle RAID 10 ile SAS diskleri |
 | Ağ | 1 Gbps ağ |
-| İş yükü | Genel Amaçlı dosya sunucusu|
+| İş Yükü | Genel Amaçlı dosya sunucusu|
 
 | İlk bir kerelik sağlama  | Ayrıntılar |
 |-|-|
 | Nesne sayısı | 25.000.000 nesneleri |
 | Veri kümesi boyutu| ~ 4,7 TiB |
 | Ortalama dosya boyutu | ~ 200 KiB (en büyük dosya: 100 GiB) |
+| İlk bulut değişikliği numaralandırması | saniyede 7 nesne  |
 | Aktarım hızını karşıya yükle | Her eşitleme grubu için saniyede 20 nesne |
-| Ad alanı Indirme üretilen Iş * | saniyede 400 nesne |
+| Ad alanı Indirme üretilen Işi | saniyede 400 nesne |
 
-* Yeni bir sunucu uç noktası oluşturulduğunda, Azure Dosya Eşitleme Aracısı dosya içeriğini indirmez. Önce tam ad alanını eşitler ve sonra, dosyaları tamamen veya bulut katmanlaması etkinse, sunucu uç noktasında ayarlanan bulut katmanlaması ilkesi için arka plan geri yüklemeyi tetikler.
+### <a name="initial-one-time-provisioning"></a>İlk bir kerelik sağlama
+
+**İlk bulut değişikliği numaralandırması**: yeni bir eşitleme grubu oluşturulduğunda, ilk bulut değişikliği numaralandırması çalıştırılacak ilk adımdır. Bu süreçte, sistem Azure dosya paylaşımındaki tüm öğeleri listelemeye çalışır. Bu işlem sırasında, hiçbir eşitleme etkinliği olmaz. bir öğe, bulut uç noktasından sunucu uç noktasına indirilmeyecek ve sunucu uç noktasından bulut uç noktasına hiçbir öğe yüklenemeyecektir. İlk bulut değişikliği numaralandırması tamamlandıktan sonra eşitleme etkinliği sürdürülecek.
+Saniye başına 7 nesne performans hızıdır. Müşteriler, bulut paylaşımındaki öğelerin sayısını belirleyerek ve saati gün olarak almak için aşağıdaki formül ' i kullanarak ilk bulut değişikliği numaralandırması işleminin tamamlanması için gereken süreyi tahmin edebilir. 
+
+   **İlk bulut numaralandırması için (gün olarak) süre = (bulut uç noktasındaki nesne sayısı)/(7 * 60 * 60 * 24)**
+
+**Ad alanı indirme üretilen işi** Var olan bir eşitleme grubuna yeni bir sunucu uç noktası eklendiğinde Azure Dosya Eşitleme Aracısı, bulut uç noktasındaki dosya içeriğini indirmez. Önce tam ad alanını eşitler ve sonra, dosyaları tamamen veya bulut katmanlaması etkinse, sunucu uç noktasında ayarlanan bulut katmanlaması ilkesi için arka plan geri yüklemeyi tetikler.
+
 
 | Devam eden eşitleme  | Ayrıntılar  |
 |-|--|
@@ -113,4 +122,4 @@ Dağıtımınız için genel bir kılavuz olarak birkaç şeyi göz önünde bul
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
-- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)

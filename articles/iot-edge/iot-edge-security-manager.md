@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548705"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043009"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Güvenlik Yöneticisi
 
@@ -75,7 +75,7 @@ IoT Edge güvenlik arka plan programı, güvenlik sağlamlaştırma için herhan
 
 #### <a name="cloud-interface"></a>Bulut arabirimi
 
-Bulut arabirimi, IoT Edge güvenlik arka plan programı, bulut Tebrikler gibi bulut hizmetlerine güvenlik yenilemesi gibi cihaz güvenliğine erişmesini sağlar.  Örneğin, IoT Edge güvenlik arka plan programı Şu anda bu arabirimi kullanarak cihaz kimliği yaşam döngüsü yönetimi için Azure IoT Hub [cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/) 'ne erişin.  
+Bulut arabirimi, IoT Edge güvenlik arka plan programı, bulut Tebrikler gibi bulut hizmetlerine güvenlik yenilemesi gibi cihaz güvenliğine erişmesini sağlar.  Örneğin, IoT Edge güvenlik arka plan programı Şu anda bu arabirimi kullanarak cihaz kimliği yaşam döngüsü yönetimi için Azure IoT Hub [cihaz sağlama hizmeti](../iot-dps/index.yml) 'ne erişin.  
 
 #### <a name="management-api"></a>Yönetim API'si
 

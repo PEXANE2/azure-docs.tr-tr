@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085621"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama
@@ -104,7 +104,7 @@ Son bölümde, şablon iki sanal ağın her birinde bir Ubuntu sanal makinesi ol
 
 Bağlama 'yı yüklemek için, iki DNS sanal makinenin genel IP adresini bulmak için yon gerekir.
 
-1. [Azure Portal](https://portal.azure.com)açın.
+1. [Azure portalını](https://portal.azure.com) açın.
 2. Kaynak grupları ' nı seçerek DNS sanal makinesini açın **> [kaynak grubu adı] > [vnet1DNS]**.  Kaynak grubu adı, son yordamda oluşturduğunuz bir addır. Varsayılan DNS sanal makine adları *vnet1DNS* ve *vnet2NDS*' dir.
 3. **Özellikler** ' i seçerek sanal ağın Özellikler sayfasını açın.
 4. **Genel IP adresini**yazın ve ayrıca **özel IP adresini**doğrulayın.  Özel IP adresi, vnet2DNS için vnet1DNS ve **10.2.0.4** için **10.1.0.4** olacaktır.  
@@ -287,7 +287,7 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
 
 **Azure portal HBase çoğaltmasını etkinleştirmek için**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Kaynak HBase kümesini açın.
 3. Küme menüsünde **betik eylemleri**' ni seçin.
 4. Sayfanın üst kısmında **Yeni Gönder**' i seçin.
@@ -305,11 +305,11 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
       >
       > Bu izlenecek yol, hn1 etkin bir yayın düğümü olarak kabul edilir. Etkin baş düğümünü belirlemek için lütfen kümenizi denetleyin.
 
-6. **Oluştur**'u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
+6. **Oluştur**’u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
 
 Gerekli bağımsız değişkenler:
 
-|Name|Description|
+|Ad|Açıklama|
 |----|-----------|
 |-s,--src-Cluster | Kaynak HBase kümesinin DNS adını belirtir. Örneğin:-s hbsrccluster,--src-Cluster = hbsrccluster |
 |-d,--DST-Cluster | Hedef (çoğaltma) HBase kümesinin DNS adını belirtir. Örneğin:-s dsthbcluster,--src-Cluster = dsthbcluster |
@@ -318,7 +318,7 @@ Gerekli bağımsız değişkenler:
 
 İsteğe bağlı bağımsız değişkenler:
 
-|Name|Description|
+|Ad|Açıklama|
 |----|-----------|
 |-su,--src-ambarı-Kullanıcı | Kaynak HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
 |-du,--DST-ambarı-Kullanıcı | Hedef HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |

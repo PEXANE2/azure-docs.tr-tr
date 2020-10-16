@@ -1,19 +1,19 @@
 ---
 title: Azure Ayırmaları nedir?
-description: Sanal makineleriniz, SQL veritabanlarınız, Azure Cosmos DB ve diğer kaynak maliyetlerinde tasarruf etmek için Azure Ayrılmış Sanal Makine Örnekleri ve fiyatlandırma hakkında bilgi edinin.
+description: Sanal makineler için ayrılmış örnekleriniz, SQL veritabanlarınız, Azure Cosmos DB ve diğer kaynak maliyetlerinde tasarruf etmek için Azure Ayrılmış Sanal Makine Örnekleri ve fiyatlandırma hakkında bilgi edinin.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682595"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652372"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -50,9 +50,9 @@ Daha fazla bilgi için bkz.  [Satın alınacak rezervasyonu belirleme](determi
 
 Azure portalından, API’lerden, PowerShell’den ve CLI’dan rezervasyon satın alabilirsiniz. 
 
-Satın almak için Azure portalına gidin (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) ) 
+Satın almak için [Azure portala](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) gidin.
 
-Daha fazla bilgi için bkz.  [Rezervasyon satın alma](prepare-buy-reservation.md) 
+Daha fazla bilgi için bkz.  [Rezervasyon satın alma](prepare-buy-reservation.md).
 
 ## <a name="how-is-a-reservation-billed"></a>Rezervasyon nasıl faturalandırılır? 
 
@@ -106,7 +106,7 @@ Yazılım planları:
 
 - **SUSE Linux** - Rezervasyon yazılım planı maliyetlerini kapsar. Yalnızca SUSE ölçümlerine indirim uygulanır; sanal makine kullanımına uygulanmaz.
 - **Red Hat Planları** - Rezervasyon yazılım planı maliyetlerini kapsar. Yalnızca RedHat ölçümlerine indirim uygulanır; sanal makine kullanımına uygulanmaz.
-- **CloudSimple Azure VMware Çözümü** - Rezervasyon VMWare CloudSimple Düğümlerini kapsar. Yine de ek yazılım ücretleri uygulanabilir.
+- **CloudSimple Azure VMware Çözümü** - Rezervasyon VMware CloudSimple Düğümlerini kapsar. Yine de ek yazılım ücretleri uygulanabilir.
 - **Azure Red Hat OpenShift** - Rezervasyon OpenShift maliyetlerine uygulanır; Azure altyapı maliyetlerine uygulanmaz.
 
 Windows sanal makineleri ve SQL Veritabanı için, yazılım maliyetlerine rezervasyon indirimi uygulanmaz. [Azure Hibrit Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) ile lisanslama maliyetlerini kapsayabilirsiniz.

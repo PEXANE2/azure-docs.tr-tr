@@ -14,10 +14,10 @@ caps.latest.revision: 17
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79534737"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services Definition NetworkTrafficRules şeması
@@ -64,19 +64,19 @@ AllowAllTraffic öğesi
 
 [FromRole öğesi](#FromRole)
 
-##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>NetworkTrafficRules öğesi
+##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a> NetworkTrafficRules öğesi
 Öğesi, hangi `NetworkTrafficRules` rollerin başka bir roldeki hangi uç noktayla iletişim kurabildiğini belirtir. Bir hizmet, bir `NetworkTrafficRules` tanım içerebilir.
 
-##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>OnlyAllowTrafficTo öğesi
+##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo öğesi
 `OnlyAllowTrafficTo`Öğesi, hedef uç noktaları ve bunlarla iletişim kurabilen roller koleksiyonunu açıklar. Birden çok düğüm belirtebilirsiniz `OnlyAllowTrafficTo` .
 
-##  <a name="destinations-element"></a><a name="Destinations"></a>Destinations öğesi
+##  <a name="destinations-element"></a><a name="Destinations"></a> Destinations öğesi
 `Destinations`Öğesi, ile iletilenenden bir RoleEndpoints koleksiyonu tanımlar.
 
-##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>RoleEndpoint öğesi
+##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> RoleEndpoint öğesi
 `RoleEndpoint`Öğesi, ile iletişime izin vermek üzere bir rol üzerinde bir uç nokta tanımlar. `RoleEndpoint`Rol üzerinde birden fazla uç nokta varsa birden çok öğe belirtebilirsiniz.
 
-| Öznitelik      | Tür     | Description |
+| Öznitelik      | Tür     | Açıklama |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | Gereklidir. Trafiğe izin verilecek uç noktanın adı.|
 | `roleName`     | `string` | Gereklidir. İletişime izin verilecek Web rolünün adı.|
@@ -84,17 +84,17 @@ AllowAllTraffic öğesi
 ## <a name="allowalltraffic-element"></a>AllowAllTraffic öğesi
 `AllowAllTraffic`Öğesi, tüm rollerin düğümde tanımlanan uç noktalarla iletişim kurmasına izin veren bir kuraldır `Destinations` .
 
-##  <a name="whensource-element"></a><a name="WhenSource"></a>WhenSource öğesi
+##  <a name="whensource-element"></a><a name="WhenSource"></a> WhenSource öğesi
 `WhenSource`Öğesi, düğümünde tanımlanan uç noktalarla iletişim kurabildiğinden rol koleksiyonunu açıklar `Destinations` .
 
-| Öznitelik | Tür     | Description |
+| Öznitelik | Tür     | Açıklama |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Gereklidir. İletişime izin verirken uygulanacak kuralı belirtir. Geçerli olan tek değer şu anda `AnyRule` .|
   
-##  <a name="fromrole-element"></a><a name="FromRole"></a>FromRole öğesi
+##  <a name="fromrole-element"></a><a name="FromRole"></a> FromRole öğesi
 `FromRole`Öğesi, düğümünde tanımlanan uç noktalarla iletişim kurabilen rolleri belirtir `Destinations` . `FromRole`Uç noktalarla iletişim kurabilen birden fazla rol varsa birden çok öğe belirtebilirsiniz.
 
-| Öznitelik  | Tür     | Description |
+| Öznitelik  | Tür     | Açıklama |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | Gereklidir. İletişime izin verilecek rolün adı.|
 

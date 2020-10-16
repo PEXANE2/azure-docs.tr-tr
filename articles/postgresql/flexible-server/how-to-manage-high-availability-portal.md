@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941019"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>Esnek sunucuda bölge yedekli yüksek kullanılabilirliği yönetme
@@ -35,24 +35,24 @@ Bu bölüm, özellikle de HA ile ilgili alanlar için ayrıntılar sağlar. Esne
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Aboneliği ve bölgeyi görüntüle":::
 
 2.  **Kullanılabilirlik**bölgenizi seçin. Bu, gecikme süresini azaltmak için uygulamanızı veritabanı ile aynı Kullanılabilirlik bölgesinde birlikte konumlandırmak istiyorsanız yararlıdır. Esnek sunucunun herhangi bir kullanılabilirlik alanına dağıtılmasını istiyorsanız **tercih yok** ' ı seçin.
-    ![AZ seçim ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="kullanılabilirlik alanı seçimi":::  
+    ![AZ seçim ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Aboneliği ve bölgeyi görüntüle":::  
 
 3.  Kullanılabilirlik seçeneğinde **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Yüksek kullanılabilirlik onay kutusu":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Aboneliği ve bölgeyi görüntüle":::
 
 4.  Varsayılan işlem ve depolamayı değiştirmek istiyorsanız,  **sunucuyu Yapılandır**' a tıklayın.
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="sunucu-işlem + depolamayı yapılandırma":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Aboneliği ve bölgeyi görüntüle":::  
 
 5.  Yüksek kullanılabilirlik seçeneği işaretliyse, Burstable katman seçim için kullanılamaz. **Genel amaçlı** ya da **bellek için iyileştirilmiş** işlem katmanları seçebilirsiniz. Ardından, açılır menüden istediğiniz **işlem boyutunu** seçebilirsiniz.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="İşlem Katmanı seçimi":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Aboneliği ve bölgeyi görüntüle":::  
 
 
 6.  Kayan çubuğu kullanarak GiB 'de **depolama boyutu** ' nu seçin ve **yedekleme saklama süresini** 7 gün ile 35 gün arasında seçin.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Depolama yedekleme"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
 
 7. **Kaydet**’e tıklayın. 
 
@@ -64,11 +64,11 @@ Mevcut esnek sunucunuz için yüksek kullanılabilirliği etkinleştirmek üzere
 
 2.  Esnek sunucu sayfasında, yüksek kullanılabilirlik sayfasını açmak için sol panelde **yüksek kullanılabilirlik** ' e tıklayın.
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Sol panel seçimi"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
 
 3.  Seçeneği **etkinleştirmek** için **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın ve değişikliği kaydetmek için **Kaydet**' e tıklayın   .
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Yüksek kullanılabilirliği etkinleştir"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
 
 4.  Bir onay iletişim kutusu, yüksek kullanılabilirliği etkinleştirerek, ek sunucu ve depolama dağıtımı nedeniyle maliyetlerinizin arttırabileceğini gösterir.
 
@@ -84,11 +84,11 @@ Zaten bölge yedekliği ile yapılandırılmış esnek sunucunuz için yüksek k
 
 2.  Esnek sunucu sayfasında, yüksek kullanılabilirlik sayfasını açmak için ön panelinden **yüksek kullanılabilirlik** ' e tıklayın.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Sol panel seçimi"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
 
 3.  Seçeneği **devre dışı bırakmak** için **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın. Sonra **Save**   değişikliği kaydetmek için Kaydet ' e tıklayın.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Yüksek kullanılabilirliği devre dışı bırak"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
 
 4.  Yüksek kullanılabilirliği devre dışı bırakmayı doğrulayabileceğiniz bir onay iletişim kutusu gösterilir.
 

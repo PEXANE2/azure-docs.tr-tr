@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358296"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN’de dosyaları sıkıştırarak performansı geliştirme
@@ -139,7 +139,7 @@ Bu profiller yalnızca gzip sıkıştırma kodlamasını destekler. Bir profil u
 Aşağıdaki tablolar her senaryo için Azure CDN sıkıştırma davranışını anlatmaktadır:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Sıkıştırma devre dışı bırakıldı veya dosya sıkıştırma için uygun değil
-| İstemci tarafından istenen biçim (Accept-Encoding üst bilgisi aracılığıyla) | Önbelleğe alınmış dosya biçimi | İstemciye yönelik CDN yanıtı | &nbsp; &nbsp; &nbsp; &nbsp; Notlar &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| İstemci tarafından istenen biçim (Accept-Encoding üst bilgi aracılığıyla) | Önbelleğe alınmış dosya biçimi | İstemciye yönelik CDN yanıtı | &nbsp; &nbsp; &nbsp; &nbsp; Notlar &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Sıkıştırılmış |Sıkıştırılmış |Sıkıştırılmış | |
 | Sıkıştırılmış |Sıkıştırılmamış |Sıkıştırılmamış | |
@@ -149,7 +149,7 @@ Aşağıdaki tablolar her senaryo için Azure CDN sıkıştırma davranışını
 | Sıkıştırılmamış |Önbelleğe alınmamış |Sıkıştırılmamış | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Sıkıştırma etkin ve dosya sıkıştırma için uygun
-| İstemci tarafından istenen biçim (Accept-Encoding üst bilgisi aracılığıyla) | Önbelleğe alınmış dosya biçimi | İstemciye CDN yanıtı | Notlar |
+| İstemci tarafından istenen biçim (Accept-Encoding üst bilgi aracılığıyla) | Önbelleğe alınmış dosya biçimi | İstemciye CDN yanıtı | Notlar |
 | --- | --- | --- | --- |
 | Sıkıştırılmış |Sıkıştırılmış |Sıkıştırılmış |Desteklenen biçimler arasında CDN dönüştürme kodları. |
 | Sıkıştırılmış |Sıkıştırılmamış |Sıkıştırılmış |CDN bir sıkıştırma gerçekleştirir. |

@@ -7,17 +7,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056072"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072722"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Azure Cloud Services için Kaynak Durumu denetimi (RHC) desteği (klasik)
 Bu makalede, [Microsoft Azure Cloud Services (klasik)](https://azure.microsoft.com/services/cloud-services) Için kaynak durumu denetimi (RHC) desteği ele bir konuşuyor
 
-Bulut hizmetleri için [Azure Kaynak durumu](https://docs.microsoft.com/azure/service-health/resource-health-overview) , bulut hizmeti dağıtımınızı, rolleri & rol örneklerini etkileyen hizmet sorunlarını tanılamanıza ve destek almanıza yardımcı olur. Dağıtım, rol & rol örneği düzeyinde bulut hizmetlerinizin güncel ve geçmiş durumunu raporlar.
+Bulut hizmetleri için [Azure Kaynak durumu](../service-health/resource-health-overview.md) , bulut hizmeti dağıtımınızı, rolleri & rol örneklerini etkileyen hizmet sorunlarını tanılamanıza ve destek almanıza yardımcı olur. Dağıtım, rol & rol örneği düzeyinde bulut hizmetlerinizin güncel ve geçmiş durumunu raporlar.
 
 Azure durum, geniş bir Azure müşterisi kümesini etkileyen sorunlar hakkında raporlar. Kaynak Durumu kaynaklarınızın sistem durumunun kişiselleştirilmiş bir panosunu sağlar. Kaynak Durumu, Azure hizmet sorunları nedeniyle kaynaklarınızın kullanılamadığı tüm süreleri gösterir. Bu veriler, bir SLA 'nın ihlal edildiğini görmenizi kolaylaştırır.
 
@@ -30,7 +30,7 @@ Kaynak sistem durumu bir dağıtım veya rol düzeyinde bildirilir. Durum deneti
 Kaynak sistem durumu denetimleri yalnızca üretim yuvası dağıtımı için çalışır. Hazırlama yuvası dağıtımı henüz desteklenmiyor. 
 
 ## <a name="does-resource-health-check-also-check-the-health-of-the-application"></a>Kaynak Durumu denetim Ayrıca uygulamanın sistem durumunu denetler mi?
-Hayır, yalnızca rol örnekleri için sistem durumu denetimi gerçekleşir ve uygulama durumunu izlemez. Örneğin 3 ' ün 3 rol örneği sağlıksız olsa bile, uygulama kullanılabilir olmaya devam edebilir. RHC [yük dengeleyici araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) veya Konuk Aracısı araştırması kullanmaz. Bu nedenle, müşterilerin uygulamalarının sistem durumunu izlemek için yük dengeleyici araştırmalarını kullanmaya devam etmesi gerekir. 
+Hayır, yalnızca rol örnekleri için sistem durumu denetimi gerçekleşir ve uygulama durumunu izlemez. Örneğin 3 ' ün 3 rol örneği sağlıksız olsa bile, uygulama kullanılabilir olmaya devam edebilir. RHC [yük dengeleyici araştırmaları](../load-balancer/load-balancer-custom-probe-overview.md) veya Konuk Aracısı araştırması kullanmaz. Bu nedenle, müşterilerin uygulamalarının sistem durumunu izlemek için yük dengeleyici araştırmalarını kullanmaya devam etmesi gerekir. 
 
 ## <a name="what-are-the-annotations-for-cloud-services"></a>Cloud Services ek açıklamaları nelerdir?
 Ek açıklamalar, dağıtımın veya rollerin sistem durumudur. Sistem durumunu temel alan farklı ek açıklamalar vardır, durum değişikliği nedeni, vb. 

@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84021169"
 ---
 # <a name="create-client-side-performance-traces"></a>İstemci tarafı performans izlemeleri oluşturma
@@ -81,7 +81,7 @@ HoloLens üzerinde bir izleme kaydetmek için cihazınızı önyükleyin ve *cih
 
 1. Sol tarafta *performans > performansı izleme*' ye gidin.
 1. **Özel profiller** seçin
-1. Tıklat**:::no-loc text="Browse...":::**
+1. Tıklat **:::no-loc text="Browse...":::**
 1. *Azureremoterenderingnetworkprofil oluşturma. wprp*dosyasını seçin. Bu dosyayı, *Araçlar/ETLProfiles*altındaki ARR SDK 'sında bulabilirsiniz.
 1. **Izlemeyi Başlat** 'a tıklayın
 1. HoloLens şimdi bir izleme kaydediyor. Araştırmak istediğiniz performans sorunlarını tetiklediğinizden emin olun. Sonra **Izlemeyi durdur**' a tıklayın.

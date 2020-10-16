@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84668755"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
@@ -58,7 +58,7 @@ Toplu geçişler için [Azure Site Recovery](/azure/site-recovery/site-recovery-
 
 SQL Server, kurtarmayı güvence altına almak için uygulamayla tutarlı Azure Site Recovery anlık görüntüler gerektirir. Azure Site Recovery, en az 1 saatlik aralığa sahip uygulamayla tutarlı anlık görüntüleri destekler. Azure Site Recovery geçişleri olan SQL Server için mümkün olan en düşük kurtarma noktası hedefi (RPO) 1 saattir. Kurtarma süresi hedefi (RTO) 2 saat ve kurtarma zamanı SQL Server.
 
-### <a name="database-migration-service"></a>Veritabanı geçiş hizmeti
+### <a name="database-migration-service"></a>Veritabanı Geçiş Hizmeti
 
 [Azure veritabanı geçiş hizmeti](/azure/dms/dms-overview) , SQL Server 2012 sürümüne veya sonrasına yükselterek şirket Içinden BIR Azure VM 'ye geçiş yapıyorsanız müşteriler için bir seçenektir.
 

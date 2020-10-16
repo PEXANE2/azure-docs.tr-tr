@@ -5,21 +5,23 @@ description: Azure Machine Learning ' de zaten dağıtılmış bir Web hizmetini
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
+ms.reviewer: larryfr
 ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
-ms.openlocfilehash: 5f2def8d41252b2267f2de736dc93825ac767540
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: deploy
+ms.openlocfilehash: 3d468048030cad009171622bed175531834b947d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328335"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998795"
 ---
 # <a name="update-a-deployed-web-service"></a>Dağıtılmış bir Web hizmetini güncelleştirme
 
 Bu makalede, Azure Machine Learning ile dağıtılan bir Web hizmetini güncelleştirme hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, Azure Machine Learning ile zaten bir Web hizmeti dağıttığınız varsayılır. Bir Web hizmetini dağıtmayı öğrenmek isterseniz, [aşağıdaki adımları izleyin](how-to-deploy-and-where.md).
 

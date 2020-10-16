@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542985"
 ---
 # <a name="azure-database-security-checklist"></a>Azure veritabanı güvenlik denetim listesi
 
 Güvenliği artırmaya yardımcı olmak için Azure veritabanı, erişimi sınırlandırmak ve denetlemek için kullanabileceğiniz bir dizi yerleşik güvenlik denetimi içerir.
 
-Bunlara
+Bu modüller şunlardır:
 
 -    IP adresine göre bağlantıyı sınırlayan [güvenlik duvarı kuralları](../../azure-sql/database/firewall-configure.md) oluşturmanıza olanak tanıyan bir güvenlik duvarı,
 -    Sunucu düzeyinde güvenlik duvarı Azure portal erişilebilir
@@ -41,7 +41,7 @@ Bunlara
 Bulut bilgi işlem, birçok uygulama kullanıcısı, veritabanı yöneticileri ve programcılara alışkın olmayan yeni güvenlik paradigmalarına gerektirir. Sonuç olarak, bazı kuruluşlar, algılanan güvenlik riskleri nedeniyle veri yönetimi için bir bulut altyapısı uygulamaya yöneliktir. Bununla birlikte, Microsoft Azure ve Microsoft Azure SQL Veritabanı yerleşik güvenlik özellikleri hakkında daha iyi bir anlayışının yanı sıra bu kaygıdan çok alleviated olabilir.
 
 ## <a name="checklist"></a>Denetim Listesi
-Bu denetim listesini gözden geçirmeden önce [Azure veritabanı güvenliği En Iyi Yöntemler](database-best-practices.md) makalesini okumanızı öneririz. En iyi yöntemleri anladıktan sonra bu denetim listesinden en iyi şekilde yararlanabileceksiniz. Daha sonra bu denetim listesini kullanarak Azure veritabanı güvenliği 'nde önemli sorunları giderdiğinizden emin olabilirsiniz.
+Bu denetim listesini gözden geçirmeden önce [Azure veritabanı güvenliği En Iyi Yöntemler](database-best-practices.md)  makalesini okumanızı öneririz. En iyi yöntemleri anladıktan sonra bu denetim listesinden en iyi şekilde yararlanabileceksiniz. Daha sonra bu denetim listesini kullanarak Azure veritabanı güvenliği 'nde önemli sorunları giderdiğinizden emin olabilirsiniz.
 
 
 |Denetim listesi kategorisi| Açıklama|
@@ -57,7 +57,7 @@ Bu denetim listesini gözden geçirmeden önce [Azure veritabanı güvenliği En
 |<br>Azure Güvenlik Merkezi| <ul><li>[Veri izleme](../../security-center/security-center-enable-auditing-on-sql-databases.md) SQL ve diğer Azure hizmetleri için merkezi bir güvenlik izleme çözümü olarak Azure Güvenlik Merkezi 'ni kullanın.</li></ul>|        
 
 ## <a name="conclusion"></a>Sonuç
-Azure veritabanı, çok sayıda kuruluş ve mevzuat uyumluluk gereksinimini karşılayan bir dizi güvenlik özelliği olan sağlam bir veritabanı platformudur. Verilerinize fiziksel erişimi denetleyerek verileri kolayca koruyabilir ve Saydam Veri Şifrelemesi, hücre düzeyinde şifreleme veya satır düzeyi güvenliği olan dosya, sütun-veya satır düzeyinde veri güvenliği için çeşitli seçenekler kullanabilirsiniz. Always Encrypted Ayrıca, uygulama güncelleştirmeleri sürecini basitleştirecek şifreli verilere karşı işlemleri de mümkün bir şekilde sunar. Buna karşılık, SQL veritabanı etkinliğinin denetim günlüklerine erişim, size gereken bilgileri sağlar ve verilere nasıl ve ne zaman erişildiğini bilmenize olanak tanır.
+Azure veritabanı, çok sayıda kuruluş ve mevzuat uyumluluk gereksinimini karşılayan bir dizi güvenlik özelliği olan sağlam bir veritabanı platformudur. Verilerinize fiziksel erişimi denetleyerek verileri kolayca koruyabilir ve dosya, sütun veya satır düzeyinde Saydam Veri Şifrelemesi, Cell-Level şifreleme veya Row-Level güvenliği ile veri güvenliği için çeşitli seçenekler kullanabilirsiniz. Always Encrypted Ayrıca, uygulama güncelleştirmeleri sürecini basitleştirecek şifreli verilere karşı işlemleri de mümkün bir şekilde sunar. Buna karşılık, SQL veritabanı etkinliğinin denetim günlüklerine erişim, size gereken bilgileri sağlar ve verilere nasıl ve ne zaman erişildiğini bilmenize olanak tanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yalnızca birkaç basit adımda kötü amaçlı kullanıcılara ya da yetkisiz erişime karşı veritabanınızın korumasını artırabilirsiniz. Bu öğreticide şunları öğrenirsiniz:

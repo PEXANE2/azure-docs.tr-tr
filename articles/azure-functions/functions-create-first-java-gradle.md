@@ -7,10 +7,10 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322185"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle kullanma
@@ -142,7 +142,7 @@ Dağıtım ayrıca proje dosyalarını paketleyip, paket Çalıştır modu etkin
 
 1. [Azure Portal]gidin, oturum açın, sayfanın üst kısmında **arama** yapmak için işlev uygulamanızın _appname_ öğesini yazın ve ENTER tuşuna basın.
  
-1. İşlev uygulamanızda **işlevler**' i seçin, işlevinizi seçin ve sonra sağ üst köşedeki **Işlev Url 'sini al</>** ' a tıklayın. 
+1. İşlev uygulamanızda **işlevler**' i seçin, işlevinizi seçin ve sonra sağ üst köşedeki ** Işlev Url 'sini al</>** ' a tıklayın. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Azure portalından işlev URL’sini kopyalama":::
 
@@ -176,4 +176,4 @@ HTTP ile tetiklenen bir işlev içeren bir Java işlevleri projesi oluşturdunuz
 
 
 [Azure CLI]: /cli/azure
-[Azure Portal]: https://portal.azure.com
+[Azure portalındaki]: https://portal.azure.com

@@ -4,10 +4,10 @@ description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88750577"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
@@ -24,7 +24,7 @@ CloudAdmin ve CloudGlobalAdmin ayrıcalıkları aşağıdaki tabloda gösterilmi
 
 |  Ayrıcalık kümesi           | CloudAdmin | CloudGlobalAdmin | Yorum |
 | :---                     |    :---:   |       :---:      |   :--:  |
-|  Alarmlar                  | CloudAdmin Kullanıcı, Işlem-ResourcePool ve VM 'lerdeki alarmlar için tüm alarmlar ayrıcalıklarına sahiptir.     |          --        |  -- |
+|  Alarmlar                  | Bir CloudAdmin Kullanıcı, Compute-ResourcePool ve VM 'lerdeki alarmlar için tüm alarmlar ayrıcalıklarına sahiptir.     |          --        |  -- |
 |  Otomatik dağıt             |  --  |        --        |  Microsoft, ana bilgisayar yönetimi yapar.  |
 |  Sertifikalar            |  --  |        --       |  Microsoft, sertifika yönetimi yapar.  |
 |  İçerik Kitaplığı         | Bir CloudAdmin kullanıcısının bir Içerik kitaplığındaki dosyaları oluşturma ve kullanma ayrıcalıkları vardır.    |         SSO ile etkinleştirildi.         |  Microsoft, dosyaları Içerik kitaplığındaki ESXi konaklarına dağıtır.  |
@@ -33,7 +33,7 @@ CloudAdmin ve CloudGlobalAdmin ayrıcalıkları aşağıdaki tabloda gösterilmi
 |  ESX Aracısı Yöneticisi       |  --  |         --       |  Microsoft tüm işlemleri yapar.  |
 |  Klasör                  |  Bir CloudAdmin kullanıcısının tüm klasör ayrıcalıkları vardır.     |  --  |  --  |
 |  Genel                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. Serviceyöneticileri, Global. SetCustomField, Global.SysTıtemtag         |                  |    |
-|  Konak                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
+|  Ana bilgisayar                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
 |  InventoryService        |  InventoryService. etiketleme      |        --          |  --  |
 |  Ağ                 |  Network. assign    |                  |  Microsoft, diğer tüm ağ işlemlerini yapar.  |
 |  İzinler             |  --  |        --       |  Microsoft tüm Izin işlemlerini yapar.  |

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987586"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
@@ -301,7 +301,7 @@ Kutucuğa tıkladığınızda, yürütülen tüm işlerin özetlenen listesini i
 
 Alternatif olarak, belirli bir runbook için iş Özeti ayrıntılarını Otomasyon hesabınızdaki runbook 'Lar sayfasından seçip **işler**' i seçerek görüntüleyebilirsiniz. Bu eylem Işler sayfasını gösterir. Buradan, ayrıntılarını ve çıktısını görüntülemek için bir iş kaydına tıklayabilirsiniz.
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Hatalar düğmesinin vurgulandığı Işler sayfasının ekran görüntüsü.":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Işler sayfasının ekran görüntüsü.":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>PowerShell kullanarak iş durumlarını alma
 

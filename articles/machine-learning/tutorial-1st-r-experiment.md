@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906724"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019384"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 
@@ -68,11 +68,11 @@ Bu öğreticiyi çalıştırmak için bir Azure ML işlem örneğinde RStudio ku
 
 ## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>Örnek Vignettes 'i kopyalayın 
 
-https://github.com/azure/azureml-sdk-for-rBu öğreticide çalıştıracağınız Vignette dosyalarının bir kopyası için GitHub deposunu kopyalayın.
+https://github.com/Azure/azureml-sdk-for-rBu öğreticide çalıştıracağınız Vignette dosyalarının bir kopyası için GitHub deposunu kopyalayın.
 
 1. RStudio 'da, depoyu kopyalamak istediğiniz dizine "Terminal" sekmesine ve CD 'ye gidin.
 
-1. https://github.com/Azure/azureml-sdk-for-rDepoyu kopyalamak için terminalde "git clone" öğesini çalıştırın.
+1. `git clone https://github.com/Azure/azureml-sdk-for-r`Depoyu kopyalamak için terminalde çalıştırın.
 
 1. RStudio 'da, kopyalanmış *azureml-SDK-for-r* klasörünün *Vignettes* klasörüne gidin.  *Vignettes*altında, *eğitme ve dağıtım-ilk modeli ' ni seçin. *Bu öğreticide kullanılan Vignette 'yi bulmak için rmd dosyası. Vignette için kullanılan ek dosyalar, *eğitme ve-dağıt-ilk model* alt klasöründe bulunur. Vignette 'yı açtıktan sonra, çalışma dizinini **oturum >, çalışma dizini > olarak kaynak dosya konumu olarak ayarlayın**. 
 
@@ -80,7 +80,7 @@ https://github.com/azure/azureml-sdk-for-rBu öğreticide çalıştıracağını
 > Bu makalenin geri kalanında,  *eğitme ve dağıtma-ilk modelinde gördüğünüz içerikle aynı içerik bulunur. RMD* dosyası. Rmarkkiyle karşılaşırsanız, bu dosyadaki kodu kullanmayı ücretsiz olarak kullanabilirsiniz.  Ya da kod parçacıklarını buradan veya bu makaleden bir R betiğine veya komut satırına kopyalayabilir/yapıştırabilirsiniz. 
 
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 Bu öğreticide geliştirme çalışmalarınız için kurulum aşağıdaki eylemleri içerir:
 
 * Gerekli paketleri yükleme

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87479855"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
@@ -56,7 +56,7 @@ Bir abonelik için kullanıcıya atanan rolleri denetlemek için:
 
 2. **Select-AzSubscription**kullanarak gerekli aboneliği seçin. 
 
-3. Belirtilen bir kullanıcıya atanan tüm rolleri listelemek için **Get-Azroleatama-Signınname [User email]-IncludeClassicAdministrators**komutunu kullanın. 
+3. Belirtilen bir kullanıcıya atanan tüm rolleri listelemek için  **Get-Azroleatama-Signınname [User email]-IncludeClassicAdministrators**komutunu kullanın. 
 
 Herhangi bir çıkış görmüyorsanız, komutları çalıştırmak için erişim sağlamak üzere ilgili abonelik yöneticisine başvurun. Daha ayrıntılı bilgi için bkz. [Azure PowerShell ile rol tabanlı erişim denetimini yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
@@ -76,7 +76,7 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 - Orta Fransa
 - West Europe
 - Kuzey Avrupa
-- Güney Brezilya
+- Brezilya Güney
 - Batı Birleşik Krallık
 - Güney Birleşik Krallık
 - Doğu Avustralya
@@ -355,7 +355,7 @@ Coğrafi harita sayfası iki ana bölüm içerir:
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Herhangi bir aşamada klavye gezintisi
     
-- `Esc`genişletilen seçimi daraltır.
+- `Esc` genişletilen seçimi daraltır.
 - `Up-arrow`Anahtar, ile aynı eylemi gerçekleştirir `Esc` . `Down arrow`Anahtar, ile aynı eylemi gerçekleştirir `Enter` .
 - Yakınlaştırmak ve uzaklaştırmak için kullanın `Shift+Plus` `Shift+Minus` .
 

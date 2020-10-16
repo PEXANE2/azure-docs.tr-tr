@@ -7,18 +7,18 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d1deac1c7932a8f3cec06d9c264ba401f7f1341d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: da1ac77ad2716abf964c835634d049895fe88654
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91577042"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044556"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-c"></a>Hızlı başlangıç: Windows 'ta IoT Hub için çalışan bir örnek IoT Tak ve Kullan cihaz uygulaması bağlama (C#)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
-Bu hızlı başlangıçta örnek bir IoT Tak ve Kullan cihaz uygulaması oluşturma, IoT Hub 'ınıza bağlama ve Azure IoT Explorer aracını kullanarak gönderdiği Telemetriyi görüntüleme gösterilmektedir. Örnek uygulama, CSharp dilinde yazılmıştır ve C# için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
+Bu hızlı başlangıçta örnek bir IoT Tak ve Kullan cihaz uygulaması oluşturma, IoT Hub 'ınıza bağlama ve Azure IoT Explorer aracını kullanarak gönderdiği Telemetriyi görüntüleme gösterilmektedir. Örnek uygulama C# dilinde yazılır ve c# için Azure IoT örneklerine dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,9 +31,9 @@ Bu hızlı başlangıcı Windows üzerinde tamamlayabilmeniz için geliştirme m
 
 ## <a name="download-the-code"></a>Kodu indirme
 
-Bu hızlı başlangıçta, Azure IoT Hub Device C# SDK 'SıNı klonlamak ve derlemek için kullanabileceğiniz bir geliştirme ortamı hazırlarsınız.
+Bu hızlı başlangıçta, C# deposu için Azure IoT örneklerini klonlamak ve derlemek için kullanabileceğiniz bir geliştirme ortamı hazırlarsınız.
 
-Seçtiğiniz bir klasörde bir komut istemi açın. .NET GitHub deposunun [Microsoft Azure IoT örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp) bu konuma kopyalamak için aşağıdaki komutu çalıştırın:
+Seçtiğiniz bir klasörde bir komut istemi açın. [C# (.net) GitHub deposunu Microsoft Azure IoT örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp) bu konuma kopyalamak için aşağıdaki komutu çalıştırın:
 
 ```cmd
 git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -47,7 +47,7 @@ Artık Visual Studio 'da örneği oluşturabilir ve hata ayıklama modunda çal�
 
 1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -113,4 +113,4 @@ DateTime since = JsonConvert.DeserializeObject<DateTime>(request.DataAsJson);
 Bu hızlı başlangıçta IoT Hub 'ına IoT Tak ve Kullan cihazını bağlamayı öğrendiniz. IoT Tak ve Kullan cihazlarınızla etkileşim kuran bir çözüm oluşturma hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: bir cihaza bağlanma ve cihazla etkileşim kurma](howto-develop-solution.md)
+> [Nasıl yapılır: bir cihaza bağlanma ve cihazla etkileşim kurma](./quickstart-service-node.md)

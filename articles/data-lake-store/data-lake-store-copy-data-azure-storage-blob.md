@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 84ee65b05af4393f49696875bda41df39e283d5d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85980098"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Azure depolama Bloblarından veri kopyalama Azure Data Lake Storage 1.
@@ -31,7 +31,7 @@ Ayrıca, AdlCopy aracını iki farklı modda kullanabilirsiniz:
 * Araç, görevi gerçekleştirmek için Data Lake Storage 1. kaynakları kullandığı **tek başına**.
 * Data Lake Analytics hesabınıza atanan birimlerin kopyalama işlemini gerçekleştirmek için kullanıldığı **Data Lake Analytics bir hesabı kullanarak**. Kopyalama görevlerini öngörülebilir bir şekilde gerçekleştirmeyi ararken bu seçeneği kullanmak isteyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki işlemleri yapmış olmanız gerekir:
 

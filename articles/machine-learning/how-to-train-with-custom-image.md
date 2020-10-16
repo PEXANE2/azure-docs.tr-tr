@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 13a88b327b5ba56b52cd4f08d9c7fae5d653ed38
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537625"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095951"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
 
@@ -25,11 +25,11 @@ Bu makaledeki örnek betikler, bir evsel sinir ağı oluşturarak Evcil hayvan g
 
 Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlarken, korunan [Azure ML taban görüntülerinin](https://github.com/Azure/AzureML-Containers) veya kendi [özel görüntünüzün](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)bir kümesi gibi belirli bir temel görüntü belirtmek için Azure Machine Learning ortamlarını de kullanabilirsiniz. Özel temel görüntüler, kendi bağımlılıklarınızı yakından yönetmenize ve eğitim işleri yürütürken bileşen sürümleri üzerinde daha sıkı bir denetim sürdürmenize imkan tanır. 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Bu kodu şu ortamlardan birinde çalıştırın:
 * Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
     * Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
-    * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples), bu dizine giderek tamamlanan bir not defteri bulun: **nasıl kullanılır-azureml > ml-çerçeveler > fastai > eğitme-özel-Docker** 
+    * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples), bu dizine giderek tamamlanan bir not defteri bulun: **Not defterleri > fastai > tren-pets-resnet34. ipynb** 
 
 * Kendi Jupyter Notebook sunucunuz
     * Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.

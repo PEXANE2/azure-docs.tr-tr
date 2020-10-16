@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243945"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir genel IP adresi ve DNS etiketi kullanın
@@ -63,7 +63,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Statik IP adresini kullanarak bir hizmet oluşturma
 
-Bir hizmet oluşturmadan önce, AKS kümesi tarafından kullanılan hizmet sorumlusunun diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Örnek:
+Bir hizmet oluşturmadan önce, AKS kümesi tarafından kullanılan hizmet sorumlusunun diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Örneğin:
 
 ```azurecli-interactive
 az role assignment create \
@@ -102,7 +102,7 @@ kubectl apply -f load-balancer-service.yaml
 
 Hizmetiniz dinamik veya statik bir genel IP adresi kullanıyorsa, `service.beta.kubernetes.io/azure-dns-label-name` genel kullanıma yönelik BIR DNS etiketi ayarlamak için hizmet ek açıklamasını kullanabilirsiniz. Bu, Azure 'un ortak DNS sunucularını ve en üst düzey etki alanını kullanarak hizmetiniz için tam etki alanı adı yayınlar. Ek açıklama değeri Azure konumu içinde benzersiz olmalıdır, bu nedenle yeterince nitelikli bir etiket kullanılması önerilir.   
 
-Daha sonra Azure, `<location>.cloudapp.azure.com` tam DNS adını oluşturmak için (seçtiğiniz bölgenin bulunduğu konum), sağladığınız ada göre otomatik olarak varsayılan bir alt ağ ekler. Örnek:
+Daha sonra Azure, `<location>.cloudapp.azure.com` tam DNS adını oluşturmak için (seçtiğiniz bölgenin bulunduğu konum), sağladığınız ada göre otomatik olarak varsayılan bir alt ağ ekler. Örneğin:
 
 ```yaml
 apiVersion: v1

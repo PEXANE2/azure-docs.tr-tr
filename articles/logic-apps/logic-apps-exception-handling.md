@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704531"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps'teki hataları ve özel durumları işleme
@@ -29,10 +29,10 @@ Yeniden deneme ilkesi türleri şunlardır:
 
 | Tür | Açıklama |
 |------|-------------|
-| **Varsayılan** | Bu ilke, 7,5 saniye ölçeklendirilen ancak 5 ila 45 saniye arasında ölçeklenebilen, en fazla dört yeniden deneme aralığını üstel olarak *artırır* . |
+| **Varsayılanını** | Bu ilke, 7,5 saniye ölçeklendirilen ancak 5 ila 45 saniye arasında ölçeklenebilen, en fazla dört yeniden deneme aralığını üstel olarak *artırır* . |
 | **Üstel Aralık**  | Bu ilke, sonraki isteği göndermeden önce üstel olarak büyüyen bir aralıktan seçilen rastgele aralığı bekler. |
-| **Sabit Aralık**  | Bu ilke, sonraki isteği göndermeden önce belirtilen aralığı bekler. |
-| **Yok**  | İsteği yeniden gönderin. |
+| **Sabit aralık**  | Bu ilke, sonraki isteği göndermeden önce belirtilen aralığı bekler. |
+| **Hiçbiri**  | İsteği yeniden gönderin. |
 |||
 
 Yeniden deneme ilkesi limitleri hakkında bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#request-limits).
@@ -71,12 +71,12 @@ Ya da yeniden deneme `inputs` ilkelerini destekleyen bir eylem veya tetikleyici 
 
 | Değer | Tür | Açıklama |
 |-------|------|-------------|
-| <*retry-ilke-tür*> | Dize | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default` , `none` , `fixed` veya`exponential` |
+| <*retry-ilke-tür*> | Dize | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default` , `none` , `fixed` veya `exponential` |
 | <*yeniden deneme aralığı*> | Dize | Değerin [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanması gereken yeniden deneme aralığı. Varsayılan en düşük Aralık `PT5S` ve en yüksek Aralık `PT1D` . Üstel Aralık ilkesini kullandığınızda, farklı en düşük ve en yüksek değerleri belirtebilirsiniz. |
 | <*yeniden deneme-denemeler*> | Tamsayı | 1 ile 90 arasında olması gereken yeniden deneme girişimi sayısı |
 ||||
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama |
 |-------|------|-------------|
@@ -112,11 +112,11 @@ Eylemde veya tetikleyicide açıkça tanımlanmamışsa, örnek bir HTTP eylemin
 }
 ```
 
-### <a name="none"></a>Hiçbiri
+### <a name="none"></a>Yok
 
 Eylem veya tetikleyicinin başarısız istekleri yeniden denemediğini belirtmek için <*retry-Policy-type*> olarak ayarlayın `none` .
 
-### <a name="fixed-interval"></a>Sabit Aralık
+### <a name="fixed-interval"></a>Sabit aralık
 
 Bir sonraki isteği göndermeden önce eylemin veya tetikleyicinin belirtilen aralığı bekleyeceğini belirtmek için, <*retry-Policy-type*> olarak ayarlayın `fixed` .
 
@@ -312,7 +312,7 @@ Aşağıda, "My_Scope" kapsamında başarısız olan herhangi bir eylem için ya
 
 Bu örnekte neler olduğunu açıklayan ayrıntılı bir anlatım aşağıda verilmiştir:
 
-1. "My_Scope" içindeki tüm eylemlerin sonucunu almak için, **diziyi filtrele** eylemi bu filtre ifadesini kullanır:`@result('My_Scope')`
+1. "My_Scope" içindeki tüm eylemlerin sonucunu almak için, **diziyi filtrele** eylemi bu filtre ifadesini kullanır: `@result('My_Scope')`
 
 1. **Filtre dizisi** koşulu, `@result()` değerine eşit olan herhangi bir öğedir `Failed` . Bu koşul, "My_Scope" olan tüm eylem sonuçlarına sahip diziyi yalnızca başarısız eylem sonuçlarıyla bir diziye filtreler.
 

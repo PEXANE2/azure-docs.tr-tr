@@ -3,19 +3,19 @@ title: Farklı kaynaklardan ölçüm Danışmanı 'na veri akışları ekleme
 titleSuffix: Azure Cognitive Services
 description: Ölçüm danışmanına farklı veri akışları ekleme
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/12/2020
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324476"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046919"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme
 
@@ -23,7 +23,7 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 
 ## <a name="supported-authentication-types"></a>Desteklenen kimlik doğrulama türleri
 
-| Kimlik doğrulaması türleri | Description |
+| Kimlik doğrulaması türleri | Açıklama |
 | ---------------------|-------------|
 |**Temel** | Veri kaynaklarına erişmek için temel parametreleri sağlayabilmeniz gerekir. Örneğin bir bağlantı dizesi veya anahtar. Veri akışı yöneticileri bu kimlik bilgilerini görüntüleyebiliyor. |
 | **AzureManagedIdentity** | Azure kaynakları için [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Azure Active Directory özelliğidir. Azure hizmetleri 'ni Azure AD 'de otomatik olarak yönetilen bir kimlikle sağlar. Kimliği, Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.|
@@ -40,7 +40,7 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 |[**Azure Application Insights**](#appinsights)|  Temel |
 |[**Azure Blob depolama (JSON)**](#blob) | Temel<br>Managedıdentity kimliğine|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Temel |
-|[**Azure Veri Gezgini (kusto)**](#kusto) | Temel<br>Managedıdentity kimliğine|
+|[**Azure Veri Gezgini (Kusto)**](#kusto) | Temel<br>Managedıdentity kimliğine|
 |[**Azure Data Lake Storage Gen2**](#adl) | Temel<br>DataLakeGen2SharedKey<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br> |
 |[**Azure SQL veritabanı/SQL Server**](#sql) | Temel<br>Managedıdentity kimliğine<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br>Azuressqlconnectionstring
 |[**Azure Table Storage**](#table) | Temel | 
@@ -93,7 +93,7 @@ Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik do
   
   * v1 (varsayılan değer)
 
-      Yalnızca ölçüm *adı* ve *değeri* kabul edilir. Örneğin:
+      Yalnızca ölçüm *adı* ve *değeri* kabul edilir. Örnek:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik do
 
   * v2
 
-      Ölçüm *boyutları* ve *zaman damgası* da kabul edilir. Örneğin:
+      Ölçüm *boyutları* ve *zaman damgası* da kabul edilir. Örnek:
       
       ``` JSON
       [
@@ -131,9 +131,9 @@ JSON dosyası başına yalnızca bir zaman damgasına izin verilir.
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Veri Gezgini (kusto)</span>
+## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Veri Gezgini (Kusto)</span>
 
-* **Bağlantı dizesi**: Azure Veri Gezgini bağlantı dizesi alma hakkında bilgi için bkz. [bağlantı dizesini görüntüleme ve kopyalama](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) (kusto).
+* **Bağlantı dizesi**: ölçüm Danışmanı, Azure AD uygulama kimlik doğrulamasını kullanarak Azure Veri Gezgini (kusto) erişimi destekler. Bir Azure AD uygulaması oluşturup kaydetmeniz ve Azure Veri Gezgini veritabanına erişmek için bu uygulamayı yetkilendirmeniz gerekecektir. Bağlantı dizenizi almak için bkz. [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app) belgeleri.
 
 * **Sorgu**: çok boyutlu zaman serisi verilerine veri almak ve bunları düzenlemek için bkz. [kusto Query Language](https://docs.microsoft.com/azure/data-explorer/kusto/query) . `@StartTime` `@EndTime` Sorgunuzdaki ve değişkenlerini kullanabilirsiniz. Bunların biçimlendirilmesi gerekir: `yyyy-MM-dd HH:mm:ss` .
 
@@ -159,7 +159,7 @@ JSON dosyası başına yalnızca bir zaman damgasına izin verilir.
   * `%h` saat olarak biçimlendirilir `HH`
   * `%M` dakika olarak biçimlendirilir `mm`
 
-Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örneğin:
+Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örnek:
 
 ``` JSON
 [

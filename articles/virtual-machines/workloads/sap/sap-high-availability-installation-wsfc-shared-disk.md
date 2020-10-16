@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c5b7debe0c94839e2ca7742817a49216328c571
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855319"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963644"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure 'da SAP ASCS/SCS örneği için Windows Yük devretme kümesine ve paylaşılan diske SAP NetWeaver HA 'yi yüklemeyin
 
@@ -149,10 +149,10 @@ ms.locfileid: "88855319"
 
 Bu makalede, bir SAP ASCS/SCS örneğini Kümelendirmek için bir Windows Server yük devretme kümesi ve Küme Paylaşılan diski kullanılarak Azure 'da yüksek kullanılabilirliğe sahip bir SAP sisteminin nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır. [Mimari kılavuzunda açıklandığı gibi: Küme Paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDE SAP ASCS/SCS örneği kümeleme][sap-high-availability-guide-wsfc-shared-disk]küme paylaşılan *diski*için iki alternatif vardır:
 
-- [Azure paylaşılan diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure paylaşılan diskleri](../../windows/disks-shared.md)
 - Kümelenmiş paylaşılan diskin benzetimini yapan yansıtılmış depolama alanı oluşturmak için [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster/) kullanma 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yüklemeye başlamadan önce şu belgeleri gözden geçirin:
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
 ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950502"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery hakkındaki genel sorular
@@ -124,7 +124,7 @@ Azure Site Recovery mikro hizmetleri arasındaki tüm iletişimler TLS 1,2 proto
   - [Depolama Blob Verileri Katkıda Bulunanı](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Kaynak Yöneticisi tabanlı depolama hesapları (Premium türü):
   - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor)
-  - [Depolama Blobu veri sahibi](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+  - [Depolama Blob Verileri Sahibi](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 - Klasik depolama hesapları:
   - [Klasik depolama hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
   - [Klasik depolama hesabı anahtar operatörü hizmet rolü](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)

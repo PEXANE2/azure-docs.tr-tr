@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: b09176ad8cb93d7710975b67de619b4f58eaa2f0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142545"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951919"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal Azure Data Box için kendi kendine yönetilen dağıtımı kullanın
 
@@ -41,7 +41,7 @@ Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim seçene
 2. Sevkiyat türü seçerken, **kendi kendine yönetilen sevkiyat** seçeneğini belirleyin. Bu seçenek yalnızca, Önkoşullar bölümünde açıklandığı gibi desteklenen bir bölgedeyse kullanılabilir.
 
 3. Sevkiyat adresinizi girdikten sonra doğrulamanız ve siparişinizi doldurmanız gerekir.
-   ![Otomatik gönderim](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Kendi kendine yönetilen sevkiyat 2](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Cihaz hazırlandıktan ve BT için bir e-posta bildirimi aldıktan sonra, bir toplama zamanlayabilirsiniz.
 
@@ -78,7 +78,7 @@ Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim seçene
 
 9. Bırakma için bir randevu aldıysanız, siparişin Azure portal **Azure veri merkezi durumunda teslim etmeye hazırlanıyor** olması gerekir. Cihazı döndürmek için **zamanlamayı zamanla** bölümündeki yönergeleri izleyin.
 
-   ![Yetkilendirme kodunuzu görüntüleme](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![Yetkilendirme kodunuzu görüntüleme 2](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. KIMLIĞINIZ ve yetkilendirme kodunuz doğrulandıktan ve cihazı veri merkezinde devre dışı bıraktığınız zaman, sipariş durumunun **alınması**gerekir.
 

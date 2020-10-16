@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Technical Support'
 ms.openlocfilehash: b22573fc98d4647c2b05763d9b67c37f6f023f98
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322729"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub bağlantısını izleme, tanılama ve sorun giderme
@@ -32,7 +32,7 @@ Cihazların bağlantısı kesildiğinde uyarıları almak ve günlükleri yazmak
 
 Cihaz bağlantısı olaylarını ve hatalarını günlüğe kaydetmek için IoT Hub tanılamayı açın. Tanılama günlükleri etkinleştirilmemişse, cihazın bağlantısı kesildiğinde sorun gidermek için herhangi bir bilgi olmayacak ve bu günlükleri mümkün olduğunca erken açmanızı öneririz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. IoT Hub 'ınıza gidin.
 
@@ -52,7 +52,7 @@ Daha fazla bilgi edinmek için bkz. [Azure IoT Hub sistem durumunu izleme ve sor
 
 Cihazların bağlantısı kesildiğinde uyarı almak için, **bağlı cihazlar (Önizleme)** ölçümünde uyarıları yapılandırın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. IoT Hub 'ınıza gidin.
 
@@ -74,7 +74,7 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılar nelerdir?](../azu
 
 Bağlı cihazlar için tanılama günlüklerini ve uyarılarını açtığınızda, hata oluştuğunda uyarılar alırsınız. Bu bölümde, bir uyarı aldığınızda yaygın sorunların nasıl aranacağı açıklanmaktadır. Aşağıdaki adımlarda, tanılama günlüklerinizin Azure Izleyici günlüklerini ayarlamış olduğunuz varsayılmaktadır.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. IoT Hub 'ınıza gidin.
 

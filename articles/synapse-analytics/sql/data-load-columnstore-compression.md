@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289285"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Columnstore dizini performansı için satır grubu kalitesini en üst düzeye çıkarın
@@ -42,7 +42,7 @@ Toplu yükleme hakkında daha fazla bilgi için bkz. [kümelenmiş bir columnsto
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Satır grubu kalitesini izleme
 
-DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , RowGroups içindeki satır sayısı ve kırpma durumunda kırpma nedeni gibi yararlı BILGILERI sunan SQL DB ile eşleşen görünüm tanımını içerir). Satır grubu kırpması hakkında bilgi almak için bu DMV sorgusunun kolay bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.DM_DB_COLUMN_STORE_ROW_GROUP_PHYSICAL_STATS](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) SQL DB ile eşleşen görünüm tanımını içerir) RowGroups içindeki satır sayısı ve kırpma durumunda kırpma nedeni gibi yararlı bilgiler sunan. Satır grubu kırpması hakkında bilgi almak için bu DMV sorgusunun kolay bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
 
 ```sql
 create view dbo.vCS_rg_physical_stats

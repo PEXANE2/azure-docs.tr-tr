@@ -4,10 +4,10 @@ description: Bu konu, IoT Edge üzerindeki canlı video analizlerinin Module iki
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053066"
 ---
 # <a name="module-twin-json-schema"></a>Module ikizi JSON şeması
@@ -28,12 +28,12 @@ IoT Edge üzerindeki canlı video analizi, aşağıdaki modülün ikizi özellik
 |applicationDataDirectory |Evet |Hayır |Kalıcı yapılandırma için bağlı bir birimin yolu. |
 |Azudüzeltici Aservicesarmid |Evet |Hayır |Media Services hesabı için benzersiz Azure Kaynak Yönetimi tanımlayıcısı.|
 |Aadtenantıd |Evet |Hayır |Müşteri Azure AD kiracı KIMLIĞI.|
-|Aadserviceprincıpalappıd |Yes |Yes |Müşteri Azure AD AppID oluşturdu.|
-|aadServicePrincipalCertificate |Yes<sup>*</sup>  |Yes |Müşteri Azure AD AppID sertifikası oluşturdu.|
-|aadServicePrincipalPassword |Yes<sup>*</sup>  |Yes |Müşteri Azure AD AppID parolası oluşturdu.|
-|aadEndpoint |Hayır |Hayır |Buluta özel Azure AD uç noktası. <br/>Varsayılanını`https://login.microsoftonline.com` |
-|Aadresourceıd |Hayır |Hayır |Buluta özel Azure AD hedef kitlesi/kaynak KIMLIĞI <br/>Varsayılanını`https://management.core.windows.net/` |
-|armEndpoint |Hayır |Hayır |Buluta özgü Azure Kaynak uç noktasını yönetme. <br/>Varsayılanını`https://management.azure.com/` |
+|Aadserviceprincıpalappıd |Evet |Evet |Müşteri Azure AD AppID oluşturdu.|
+|aadServicePrincipalCertificate |Yes<sup>*</sup>  |Evet |Müşteri Azure AD AppID sertifikası oluşturdu.|
+|aadServicePrincipalPassword |Yes<sup>*</sup>  |Evet |Müşteri Azure AD AppID parolası oluşturdu.|
+|aadEndpoint |Hayır |Hayır |Buluta özel Azure AD uç noktası. <br/>Varsayılanını `https://login.microsoftonline.com` |
+|Aadresourceıd |Hayır |Hayır |Buluta özel Azure AD hedef kitlesi/kaynak KIMLIĞI <br/>Varsayılanını `https://management.core.windows.net/` |
+|armEndpoint |Hayır |Hayır |Buluta özgü Azure Kaynak uç noktasını yönetme. <br/>Varsayılanını `https://management.azure.com/` |
 |diagnosticsLevel |Hayır |Evet |Olaylar ayrıntı düzeyi: <br/>Bilgi & # x02758; Uyarı & # x02758; Hata & # x02758; Kritik & # x02758; Seçim |
 |diagnosticsEventsOutputName |Hayır |Evet |Tanılama olayları için hub çıkışı. <br/>(Boş, tanılama yayımlanmadığı anlamına gelir)|
 |operationalEventsOutputName|Hayır|Evet|İşletimsel olaylar için Merkez çıkışı.<br/>(Boş, işlemsel olayların yayımlanmadığı anlamına gelir)

@@ -9,7 +9,7 @@ ms.openlocfilehash: 870345d244a7f23011c900154e1c486e039a6d8d
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854823"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook’tan Güncelleştirme Yönetimi’ni etkinleştirme
@@ -38,7 +38,7 @@ Bu yöntem iki Runbook kullanır:
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-update-management"></a>Güncelleştirme Yönetimi’ni etkinleştirme
 

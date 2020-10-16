@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 6/10/2020
 ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84730162"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak, LastModifiedDate tabanlı yeni ve değiştirilmiş dosyaları artımlı olarak kopyalama
@@ -37,7 +37,7 @@ Bu öğreticide, şu görevleri tamamlayacaksınız:
 > * Veri Kopyalama aracını kullanarak bir işlem hattı oluşturun.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**: kaynak ve havuz veri depoları için BLOB depolama kullanın. Azure depolama hesabınız yoksa [depolama hesabı oluşturma](../storage/common/storage-account-create.md)' daki yönergeleri izleyin.
@@ -74,7 +74,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
 5. **Sürüm** bölümünde **V2**'yi seçin.
 6. **Konum**bölümünde veri fabrikasının konumunu seçin. Listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanızın kullandığı veri depoları (örneğin, Azure depolama ve Azure SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
-8. **Oluştur**'u seçin.
+8. **Oluştur**’u seçin.
 9. Data Factory oluşturulduktan sonra Data Factory giriş sayfası görüntülenir.
 10. Azure Data Factory Kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **yazar & izleyici** kutucuğunu seçin:
 
@@ -104,7 +104,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
 3. **Kaynak veri deposu** sayfasında, şu adımları uygulayın:
 
-    a. Bağlantı eklemek için **Yeni bağlantı oluştur** ' u seçin.
+    a. Bağlantı eklemek için  **Yeni bağlantı oluştur** ' u seçin.
 
     b. Galeriden **Azure Blob depolama** ' yı seçin ve ardından **devam**' ı seçin:
 
@@ -128,7 +128,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
      ![Giriş dosyası veya klasör sayfasını seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
 
-5. **Hedef veri deposu** sayfasında, oluşturduğunuz **AzureBlobStorage** hizmetini seçin. Bu, kaynak veri deposuyla aynı depolama hesabıdır. Ardından **İleri**' yi seçin.
+5. **Hedef veri deposu** sayfasında, oluşturduğunuz **AzureBlobStorage** hizmetini seçin. Bu, kaynak veri deposuyla aynı depolama hesabıdır. Ardından **İleri**’yi seçin.
 
 6. **Çıktı dosyasını veya klasörünü seçin** sayfasında aşağıdaki adımları uygulayın:
 

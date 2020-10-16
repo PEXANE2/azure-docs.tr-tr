@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
 ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410469"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Öğretici: Service Fabric yönetilen bir küme dağıtma (Önizleme)
@@ -65,7 +65,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="deploy-a-service-fabric-managed-cluster"></a>Service Fabric yönetilen bir küme dağıtma
 
-### <a name="create-a-service-fabric-managed-cluster"></a>Service Fabric yönetilen bir küme oluşturma
+### <a name="create-a-service-fabric-managed-cluster"></a>Service Fabric yönetilen kümesi oluşturma
 
 Bu adımda, New-AzServiceFabricManagedCluster PowerShell komutunu kullanarak Service Fabric yönetilen bir küme oluşturacaksınız. Aşağıdaki örnek, myResourceGroup adlı kaynak grubunda myCluster adlı bir küme oluşturur. Bu kaynak grubu, eastus2 bölgesindeki önceki adımda oluşturulmuştur.
 

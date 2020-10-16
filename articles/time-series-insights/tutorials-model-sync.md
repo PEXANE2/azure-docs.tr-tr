@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
 ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91346390"
 ---
-# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure dijital TWINS ve Time Series Insights Gen2 arasında model eşitleme
+# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure Digital Twins ve Time Series Insights 2. Nesil arasında model eşitlemesi
 
 Bu makalede, Azure dijital TWINS 'teki (ADT) varlık modelini Azure Time Series Insights (TSI) ' deki varlık modeline dönüştürmek için kullanılan en iyi uygulamalar ve araçlar açıklanmaktadır.  Bu makale, Azure dijital TWINS 'in Azure Time Series Insights ile tümleştirilmesini açıklayan iki bölümlü bir öğretici serisinin ikinci parçasıdır. Azure dijital TWINS 'in Time Series Insights ile tümleştirilmesi, dijital TWINS 'in Telemetriler ve hesaplanmış özelliklerinin geçmişini arşivlemeyi ve izlemeyi mümkün. Bu öğretici serisi, Azure dijital TWINS ile Time Series Insights tümleştirmeye çalışan geliştiricilere yönelik olarak tasarlanmıştır. 1. bölüm,  [Azure dijital TWINS 'den gerçek zamanlı seri verileri Time Series Insights ve buna getiren veri işlem hattının](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) oluşturulmasına ve Bu öğreticinin ikinci bölümünde, Azure Digital TWINS ve Time Series Insights arasındaki varlık modeli eşitlemesini açıklamaktadır. Bu öğreticide, zaman serisi KIMLIĞI (TS KIMLIĞI) için adlandırma kuralını seçme ve oluşturma ve zaman serisi modelinde (TSD) hiyerarşileri el ile oluşturma konusunda en iyi yöntemler açıklanmaktadır.
 

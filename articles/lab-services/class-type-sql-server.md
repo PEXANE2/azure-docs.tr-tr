@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88079031"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>SQL Server yönetmek ve geliştirmek için bir laboratuvar kurun
@@ -50,7 +50,7 @@ Laboratuvar hizmetlerinde paylaşılan bir kaynak kullanmak için önce sanal a�
 9. **Konum**için bölge seçin.  Mümkünse, gecikme süresini en aza indirmek için laboratuvar hesabı ve eşlenmiş VNET ile aynı konumu girin.
 10. **SQL veritabanı oluştur** formuna geri dönmek için **Tamam** ' ı tıklatın.
 11. **İşlem + depolama** ayarı altındaki **veritabanı yapılandırma** bağlantısını tıklatın.
-12. Sınıf için gerektiğinde veritabanı ayarlarını değiştirin.  Sağlanan ve sunucusuz seçenekler arasında seçim yapabilirsiniz.  Bu örnek için, en fazla 4, en düşük sanal çekirdekler olan 1. En az 1 saat içinde, oto duraklama ayarını saklayacağız. **Uygula**'ya tıklayın.
+12. Sınıf için gerektiğinde veritabanı ayarlarını değiştirin.  Sağlanan ve sunucusuz seçenekler arasında seçim yapabilirsiniz.  Bu örnek için, en fazla 4, en düşük sanal çekirdekler olan 1. En az 1 saat içinde, oto duraklama ayarını saklayacağız. **Uygula**’ya tıklayın.
 13. **İleri: ağ** düğmesine tıklayın.
 14. Ağ sekmesinde, **bağlantı yöntemi**için özel uç nokta ' ı seçin.
 15. **Özel uç noktalar** bölümünde **Özel uç nokta Ekle**' ye tıklayın.
@@ -61,7 +61,7 @@ Laboratuvar hizmetlerinde paylaşılan bir kaynak kullanmak için önce sanal a�
 20. **Sanal ağ**için, laboratuvar hesabıyla eşlenmiş sanal ağı seçin.
 21. **Alt ağ**için, uç noktanın barındırılmasını istediğiniz alt ağ ' ı seçin.  Uç noktaya atanan IP, bu alt ağa atanan aralıktan olacaktır.
 22. **Özel DNS Ile tümleştir** 'ı **Hayır**olarak ayarlayın. Kolaylık olması için, Azure 'un DNS DNS bölgesi veya kendi DNS sunucularımız üzerinden DNS 'i kullanacağız.
-23. **Tamam**’a tıklayın.
+23. **Tamam**'a tıklayın.
 24. **İleri**' ye tıklayın.
 25. **Varolan verileri kullan** ayarını için **örnek**' i seçin.  AdventureWorksLT veritabanının verileri veritabanı oluşturulduğunda kullanılacaktır.
 26. **Gözden geçir ve oluştur**’a tıklayın.
@@ -98,7 +98,7 @@ Visual Studio, mobil iş yükleri & **Web & bulut** ve **Masaüstü** gibi birç
 4. **Başlat Menüsü Klasörü Seç** sayfasında **İleri**'ye tıklayın.
 5. **Ek görevler seçin** sayfasında masaüstü simgesini istiyorsanız **Masaüstü simgesi oluştur** ' u işaretleyin.  **İleri**’ye tıklayın.
 6. Yüklenmeye **hazırsanız** **İleri**' ye tıklayın.
-7. Yükleyicinin çalışmasını bekleyin.  **Son**'a tıklayın.
+7. Yükleyicinin çalışmasını bekleyin.  **Finish (Son)** düğmesine tıklayın.
 
 Artık Azure Data Studio yüklediğimiz için Azure SQL veritabanı bağlantısını kuralım.
 

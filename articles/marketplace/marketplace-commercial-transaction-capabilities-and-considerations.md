@@ -8,10 +8,10 @@ ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90006406"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
@@ -107,7 +107,7 @@ Bu senaryoda, Microsoft, yayımlanmış VM Görüntünüzün kullanımı için s
 |Microsoft, Azure kullanım maliyetinin %100 ' ünü tutar | $0,14/saat |
 ||
 
-**Kendi Lisansını Getir (KLG)**
+**Kendi lisansınızı getirin (KLG)**
 
 KLG aşağıdaki maliyet yapısına sahiptir:
 

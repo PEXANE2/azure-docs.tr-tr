@@ -10,10 +10,10 @@ ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783053"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleriyle Uygulama Sistem Durumu uzantısını kullanma
@@ -21,7 +21,7 @@ Uygulamanızın sistem durumunu izlemek, dağıtımınızı yönetmek ve yüksel
 
 Bu makalede, sanal makine ölçek kümelerine dağıtılan uygulamalarınızın sistem durumunu izlemek için uygulama sistem durumu uzantısını nasıl kullanabileceğiniz açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır:
 -   Azure sanal makine [uzantıları](../virtual-machines/extensions/overview.md)
 -   Sanal makine ölçek kümelerini [değiştirme](virtual-machine-scale-sets-upgrade-scale-set.md)
@@ -61,16 +61,16 @@ Aşağıdaki JSON, uygulama sistem durumu uzantısının şemasını gösterir. 
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | yayımcı | `Microsoft.ManagedServices` | string |
-| tür | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | string |
+| tür | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Ayarlar
 
 | Name | Değer/örnek | Veri Türü
 | ---- | ---- | ----
-| protokol | `http`or `https` veya`tcp` | string |
-| port | Protokol veya olduğunda isteğe `http` bağlı `https` , protokol olduğunda zorunludur`tcp` | int |
-| Istek yolu | Protokol olduğunda zorunlu `http` `https` , protokol ise izin verilmez`tcp` | string |
+| protokol | `http` or `https` veya `tcp` | string |
+| port | Protokol veya olduğunda isteğe `http` bağlı `https` , protokol olduğunda zorunludur `tcp` | int |
+| Istek yolu | Protokol olduğunda zorunlu `http` `https` , protokol ise izin verilmez `tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Uygulama durumu uzantısını dağıtma
 Aşağıdaki örneklerde açıklandığı şekilde, uygulama durumu uzantısını ölçek kümelerinizi dağıtmanın birden çok yolu vardır.

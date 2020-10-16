@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90d3ff807275c74ce4495c5631ab913971ebe3e3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 4599f4e3ca291c312c99e938b237d1eb9cd9d407
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513018"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929289"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>REST API ile Azure NetApp Files için geliştirme 
 
@@ -34,9 +34,9 @@ Azure NetApp Files için REST API belirtimi [GitHub](https://github.com/Azure/az
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Azure NetApp Files erişin REST API  
 
-1. Daha önce yapmadıysanız [Azure CLI 'Yı yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+1. Daha önce yapmadıysanız [Azure CLI 'Yı yükleyebilirsiniz](/cli/azure/install-azure-cli?view=azure-cli-latest) .
 2. Azure Active Directory bir hizmet sorumlusu oluşturun (Azure AD):
-   1. [Yeterli izinlere](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)sahip olduğunuzu doğrulayın.
+   1. [Yeterli izinlere](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)sahip olduğunuzu doğrulayın.
 
    2. Azure CLı 'de aşağıdaki komutu girin: 
     
@@ -203,4 +203,4 @@ Aşağıdaki örnekte, bir birimin anlık görüntüsünün nasıl oluşturulaca
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure NetApp Files REST API başvurusuna bakın](https://docs.microsoft.com/rest/api/netapp/)
+[Azure NetApp Files REST API başvurusuna bakın](/rest/api/netapp/)

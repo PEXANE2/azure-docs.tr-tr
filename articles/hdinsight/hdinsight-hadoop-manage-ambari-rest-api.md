@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081075"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache ambarı 'nı kullanarak HDInsight kümelerini yönetme REST API
@@ -39,7 +39,7 @@ Apache ambarı, [REST API 'leri](https://github.com/apache/ambari/blob/trunk/amb
 
  HDInsight üzerinde REST API ambarı için temel Tekdüzen Kaynak tanımlayıcısı (URI), `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır**.  URI () öğesinin tam etki alanı adı (FQDN) bölümünde küme adı `CLUSTERNAME.azurehdinsight.net` büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Küme oluşturma sırasında verdiğiniz yönetici hesabı adını (varsayılan **yönetici**) ve parolayı kullanın.
 
@@ -214,11 +214,11 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 Dönüş değeri aşağıdaki örneklerden birine benzerdir:
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net`-Bu değer, kümenin varsayılan depolama alanı için bir Azure depolama hesabı kullandığını gösterir. `ACCOUNTNAME`Değer, depolama hesabının adıdır. `CONTAINER`Bölüm, depolama hesabındaki blob kapsayıcısının adıdır. Kapsayıcı, küme için uyumlu depolamanın köküdür.
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` -Bu değer, kümenin varsayılan depolama alanı için bir Azure depolama hesabı kullandığını gösterir. `ACCOUNTNAME`Değer, depolama hesabının adıdır. `CONTAINER`Bölüm, depolama hesabındaki blob kapsayıcısının adıdır. Kapsayıcı, küme için uyumlu depolamanın köküdür.
 
-* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`-Bu değer, kümenin varsayılan depolama için Azure Data Lake Storage 2. kullandığını gösterir. `ACCOUNTNAME`Ve `CONTAINER` değerleri, daha önce bahsedilen Azure Storage ile aynı anlamlara sahiptir.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` -Bu değer, kümenin varsayılan depolama için Azure Data Lake Storage 2. kullandığını gösterir. `ACCOUNTNAME`Ve `CONTAINER` değerleri, daha önce bahsedilen Azure Storage ile aynı anlamlara sahiptir.
 
-* `adl://home`-Bu değer, kümenin varsayılan depolama için Azure Data Lake Storage 1. kullandığını gösterir.
+* `adl://home` -Bu değer, kümenin varsayılan depolama için Azure Data Lake Storage 1. kullandığını gösterir.
 
     Data Lake Storage hesap adını bulmak için aşağıdaki örnekleri kullanın:
 

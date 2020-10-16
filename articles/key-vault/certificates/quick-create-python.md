@@ -8,58 +8,95 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b9ff7397ad29ac681e21c32608ade9c6ce557c37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d06d7b328525f9d6329f17a10dea9c89a753d533
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89488635"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017276"
 ---
-# <a name="quickstart-azure-key-vault-certificates-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault sertifikaları istemci kitaplığı
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Hızlı başlangıç: Python için sertifika istemci kitaplığı Azure Key Vault
 
-Python için Azure Key Vault istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin. Sertifikaları depolamak için Key Vault kullanarak, kodunuzun içinde sertifikaların depolanmasını önleyin, bu da uygulamanızın güvenliğini artırır.
+Python için Azure Key Vault sertifika istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin. Sertifikaları depolamak için Key Vault kullanarak, kodunuzun içinde sertifikaların depolanmasını önleyin, bu da uygulamanızın güvenliğini artırır.
 
-[API başvuru belgeleri](/python/api/overview/azure/keyvault-certificates-readme?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault-certificates)
+[API başvuru belgeleri](/python/api/overview/azure/keyvault-certificates-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault-certificates)
+
+## <a name="prerequisites"></a>Ön koşullar
+
+- Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Python 2.7 + veya 3.5.3 +](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
+- [Azure CLI](/cli/azure/install-azure-cli)
+
+Bu hızlı başlangıçta, [Azure CLI](/cli/azure/install-azure-cli) 'Yi bir Linux Terminal penceresinde çalıştırdığınız varsayılır.
 
 ## <a name="set-up-your-local-environment"></a>Yerel ortamınızı ayarlama
 
-[!INCLUDE [Set up your local environment](../../../includes/key-vault-python-qs-setup.md)]
+Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, çağrılarının kimliğini doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz [. Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
 
-7. Key Vault sertifikaları kitaplığı 'nı yükler:
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+
+1. `login` komutunu çalıştırın.
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    CLı varsayılan tarayıcınızı açabildiğinden, bunu yapılır ve bir Azure oturum açma sayfası yükler.
+
+    Aksi takdirde, konumunda bir tarayıcı sayfası açın [https://aka.ms/devicelogin](https://aka.ms/devicelogin) ve terminalinizde görünen yetkilendirme kodunu girin.
+
+2. Tarayıcıda hesabınızın kimlik bilgileriyle oturum açın.
+
+### <a name="install-the-packages"></a>Paketleri yükler
+
+1. Bir Terminal veya komut isteminde uygun bir proje klasörü oluşturun ve ardından [Python sanal ortamlarını kullanma](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments) bölümünde açıklandığı gibi bir Python sanal ortamı oluşturun ve etkinleştirin
+
+1. Azure Active Directory Identity Library 'yi yükler:
+
+    ```terminal
+    pip install azure.identity
+    ```
+
+
+1. Key Vault sertifikası istemci kitaplığını yükler:
 
     ```terminal
     pip install azure-keyvault-certificates
     ```
 
-## <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve Anahtar Kasası oluşturma
+### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve Anahtar Kasası oluşturma
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-python-qs-rg-kv-creation.md)]
 
-## <a name="give-the-service-principal-access-to-your-key-vault"></a>Anahtar kasanıza hizmet sorumlusu erişimi verin
+### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
-Hizmet sorumlunuzu sertifikalar üzerinde al, Listele ve oluştur işlemleri için yetkilendirmek üzere aşağıdaki [az keykasası Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu çalıştırın.
+Anahtar kasanız için Kullanıcı hesabınıza gizli izin veren bir erişim ilkesi oluşturun
 
-# <a name="cmd"></a>[cmd](#tab/cmd)
-
-```azurecli
-az keyvault set-policy --name %KEY_VAULT_NAME% --spn %AZURE_CLIENT_ID% --resource-group KeyVault-PythonQS-rg --certificate-permissions delete get list create
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
 ```
 
-# <a name="bash"></a>[Bash](#tab/bash)
+#### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
-```azurecli
-az keyvault set-policy --name $KEY_VAULT_NAME --spn $AZURE_CLIENT_ID --resource-group KeyVault-PythonQS-rg --certificate-permissions delete get list create 
+Bu uygulama, Anahtar Kasası adını adında bir ortam değişkeni olarak kullanıyor `KEY_VAULT_NAME` .
+
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
----
-
-Bu komut, `KEY_VAULT_NAME` `AZURE_CLIENT_ID` önceki adımlarda oluşturulan ve ortam değişkenlerini kullanır.
-
-Daha fazla bilgi için bkz. [erişim Ilkesi atama-CLI](../general/assign-access-policy-cli.md)
+macOS veya Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="create-the-sample-code"></a>Örnek kodu oluşturma
 
-Python için Azure Key Vault istemci kitaplığı, sertifikaları ve gizli dizileri ve şifreleme anahtarları gibi ilgili varlıkları yönetmenizi sağlar. Aşağıdaki kod örneği, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir.
+Python için Azure Key Vault sertifikası istemci kitaplığı, sertifikaları yönetmenizi sağlar. Aşağıdaki kod örneği, bir istemci oluşturma, sertifika ayarlama, sertifika alma ve sertifikayı silme işlemlerinin nasıl yapılacağını gösterir.
 
 Bu kodu içeren *kv_certificates. Kopyala* adlı bir dosya oluşturun.
 
@@ -105,14 +142,16 @@ print(" done.")
 python kv_certificates.py
 ```
 
-- İzin hatalarıyla karşılaşırsanız, [ `az keyvault set-policy` komutunu](#give-the-service-principal-access-to-your-key-vault)çalıştırdığınızdan emin olun.
+- İzin hatalarıyla karşılaşırsanız, [ `az keyvault set-policy` komutunu](#grant-access-to-your-key-vault)çalıştırdığınızdan emin olun.
 - Kodu aynı anahtar adıyla yeniden çalıştırmak, "(çakışma) sertifikası <name> Şu anda silinmiş ancak kurtarılabilir durumda." hatasını verebilir. Farklı bir anahtar adı kullanın.
 
 ## <a name="code-details"></a>Kod ayrıntıları
 
 ### <a name="authenticate-and-create-a-client"></a>İstemci kimliğini doğrulama ve oluşturma
 
-Yukarıdaki kodda, [`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python) nesnesi hizmet sorumlusu için oluşturduğunuz ortam değişkenlerini kullanır. Bu kimlik bilgilerini bir Azure kitaplığından, örneğin [`CertificateClient`](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?view=azure-python) , bu istemci aracılığıyla birlikte çalışmak istediğiniz KAYNAĞıN URI 'siyle birlikte her bir istemci nesnesi oluştururken sağlarsınız:
+Bu hızlı başlangıçta oturum açan kullanıcı, yerel geliştirme için tercih edilen yöntem olan Anahtar Kasası kimlik doğrulaması için kullanılır. Azure 'a dağıtılan uygulamalar için, yönetilen kimlik App Service veya sanal makineye atanmalıdır, daha fazla bilgi için bkz. [yönetilen kimliğe genel bakış](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+
+Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" biçiminde Anahtar Kasası URI 'sine genişletilir \<your-key-vault-name\> . Bu örnek, kimlik sağlamak için farklı seçeneklere sahip farklı ortamlarda aynı kodun kullanılmasına izin veren  [' DefaultAzureCredential () '](/python/api/azure-identity/azure.identity.defaultazurecredential) sınıfını kullanıyor. Daha fazla bilgi için bkz. [varsayılan Azure kimlik bilgisi kimlik doğrulaması](https://docs.microsoft.com/python/api/overview/azure/identity-readme). 
 
 ```python
 credential = DefaultAzureCredential()
@@ -121,7 +160,7 @@ client = CertificateClient(vault_url=KVUri, credential=credential)
 
 ### <a name="save-a-certificate"></a>Sertifika kaydetme
 
-Anahtar Kasası için istemci nesnesini aldıktan sonra, [begin_create_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?view=azure-python#begin-create-certificate-certificate-name--policy----kwargs-) yöntemini kullanarak bir sertifika oluşturabilirsiniz: 
+Anahtar Kasası için istemci nesnesini aldıktan sonra, [begin_create_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#begin-create-certificate-certificate-name--policy----kwargs-) yöntemini kullanarak bir sertifika oluşturabilirsiniz: 
 
 ```python
 policy = CertificatePolicy.get_default()
@@ -129,27 +168,26 @@ poller = client.begin_create_certificate(certificate_name=certificateName, polic
 certificate = poller.result()
 ```
 
-Burada sertifika, [CertificatePolicy.get_default](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificatepolicy?view=azure-python#get-default--) yöntemiyle elde edilen bir ilke gerektirir.
+Burada sertifika, [CertificatePolicy.get_default](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificatepolicy?#get-default--) yöntemiyle elde edilen bir ilke gerektirir.
 
 Bir yöntemi çağırmak, `begin_create_certificate` Anahtar Kasası Için Azure REST API zaman uyumsuz bir çağrı oluşturur. Zaman uyumsuz çağrı bir Poller nesnesi döndürür. İşlemin sonucunu beklemek için, Poller 'in `result` yöntemini çağırın.
 
 Azure, isteği gerçekleştirirken arayanın kimliğini (hizmet sorumlusu) istemciye verdiğiniz kimlik bilgisi nesnesini kullanarak doğrular.
 
-Ayrıca, çağıranın istenen eylemi gerçekleştirme yetkisine sahip olup olmadığını denetler. Bu yetkilendirmeyi, [ `az keyvault set-policy` komutunu](#give-the-service-principal-access-to-your-key-vault)kullanarak daha önce hizmet sorumlusuna vermiş olursunuz.
 
 ### <a name="retrieve-a-certificate"></a>Sertifika alma
 
-Key Vault bir sertifikayı okumak için [get_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?view=azure-python#get-certificate-certificate-name----kwargs-) yöntemi kullanın:
+Key Vault bir sertifikayı okumak için [get_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#get-certificate-certificate-name----kwargs-) yöntemi kullanın:
 
 ```python
 retrieved_certificate = client.get_certificate(certificateName)
  ```
 
-Sertifikanın, [az keykasa sertifikası Show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show)Azure CLI komutuyla ayarlandığını da doğrulayabilirsiniz.
+Sertifikanın, [az keykasa sertifikası Show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show)Azure CLI komutuyla ayarlandığını da doğrulayabilirsiniz.
 
 ### <a name="delete-a-certificate"></a>Sertifikayı silme
 
-Bir sertifikayı silmek için [begin_delete_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?view=azure-python#begin-delete-certificate-certificate-name----kwargs-) yöntemi kullanın:
+Bir sertifikayı silmek için [begin_delete_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#begin-delete-certificate-certificate-name----kwargs-) yöntemi kullanın:
 
 ```python
 poller = client.begin_delete_certificate(certificateName)
@@ -158,7 +196,7 @@ deleted_certificate = poller.result()
 
 `begin_delete_certificate`Yöntemi zaman uyumsuzdur ve bir Poller nesnesi döndürür. Poller 'ın metodunu çağırma işleminin `result` tamamlanmasını bekler.
 
-Sertifikanın, [az keykasa sertifikası Show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show)Azure CLI komutuyla silindiğini doğrulayabilirsiniz.
+Sertifikanın, [az keykasa sertifikası Show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show)Azure CLI komutuyla silindiğini doğrulayabilirsiniz.
 
 Silinen bir sertifika, bir süredir silinmiş ancak kurtarılabilir durumda kalır. Kodu yeniden çalıştırırsanız, farklı bir sertifika adı kullanın.
 
@@ -175,6 +213,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Anahtar Kasası'na Genel Bakış](../general/overview.md)
+- [Anahtar kasasına güvenli erişim](../general/secure-your-key-vault.md)
 - [Geliştirici Kılavuzu Azure Key Vault](../general/developers-guide.md)
 - [En iyi Azure Key Vault uygulamalar](../general/best-practices.md)
 - [Key Vault ile kimlik doğrulama](../general/authentication.md)

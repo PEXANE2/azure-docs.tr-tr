@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
 ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709972"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Bir Azure VM 'den genel IP adresinin ilişkilendirmesini kaldırma 
@@ -28,7 +28,7 @@ Bir VM 'den ortak IP adresinin ilişkilendirmesini kaldırmak için [Azure Porta
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Genel IP adresinin ilişkisini kaldırmak istediğiniz sanal makineyi bulun veya arayın ve ardından seçin.
 3. VM sayfasında **genel bakış**' ı seçin, aşağıdaki resimde gösterildiği gıbı genel IP adresini seçin:
 

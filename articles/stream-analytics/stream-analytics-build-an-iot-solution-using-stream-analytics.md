@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044592"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics kullanarak IoT çözümü oluşturma
@@ -28,7 +28,7 @@ Bu çözümü tamamladıktan sonra şunları yapabilirsiniz:
 * Stream Analytics güvenle kullanarak müşterileriniz için akış çözümleri geliştirin.
 * Sorunları gidermek için izleme ve günlüğe kaydetme deneyimini kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu çözümü tamamlayabilmeniz için aşağıdaki önkoşulların olması gerekir:
 * [Azure aboneliği](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -303,7 +303,7 @@ Akış işini daha fazla akış birimine ölçeklendirmek için:
 
 3. Akış işindeki yapılandırma başlığı altında **Ölçek**' i seçin.
 
-4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet**'i seçin.
+4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet**’i seçin.
 
 5. Ek ölçeği göstermek için akış işini **başlatın** . Azure Stream Analytics, işleri daha fazla işlem kaynağına dağıtır ve bölüm BY yan tümcesinde belirtilen sütunu kullanarak işleri kaynaklar genelinde bölümleyerek daha iyi işleme elde edin.
 

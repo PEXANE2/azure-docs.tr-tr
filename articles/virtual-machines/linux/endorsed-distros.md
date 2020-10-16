@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 08/02/2020
+ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279442"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978943"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
 
@@ -37,9 +37,9 @@ Azure Linux Aracısı zaten Azure Marketi görüntülerinde önceden yüklenmiş
 | Standart dışı bir Wave Software CentOS |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [LIS Download](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: çekirdekte |Paket: "Walınuxagent" altında [Depo](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS, 26 Mayıs 2020 itibariyle artık [yaşam süresi sona](https://coreos.com/os/eol/) erecek. |Artık kullanılamıyor | | |
 | Credavtiv tarafından ortaya çıkarıldı |8.x, 9.x |Çekirdekte |Paket: "waagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
-|Kinvolk tarafından yataylı kapsayıcı Linux| Kararlı, Beta| Çekirdekte | WA-Linux-Agent zaten/usr/share/OEM/bin/waagent içinde yüklendi |
+|Kinvolk tarafından yataylı kapsayıcı Linux| Pro, Stable, Beta| Çekirdekte | WA-Linux-Agent zaten/usr/share/OEM/bin/waagent içinde yüklendi |
 | Oracle tarafından Oracle Linux |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [Red Hat ile Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat ile Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise SUSE |SLES/SLES for SAP 11. x, 12. x, 15. x <br/> [SUSE genel bulut görüntüsü yaşam döngüsü](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |Çekirdekte |Leyebilir<p> Bulutta 11 için [: Araçlar](https://build.opensuse.org/project/show/Cloud:Tools) deposu<br>"genel bulut" modülünde "Python-Azure-Agent" altında bulunan 12 için<br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | SUSE tarafından openSUSE |openSUSE Leap 15.x |Çekirdekte |Paket: [bulutta:](https://build.opensuse.org/project/show/Cloud:Tools) "Python-Azure-Agent" ın altındaki araçlar deposu <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Kurallı olarak Ubuntu |Ubuntu Server ve Pro. 16. x, 18. x, 20. x<p>Ubuntu 12,04 ve 14,04 için genişletilmiş destek hakkında bilgi burada bulunabilir: [Ubuntu genişletilmiş güvenlik Bakımı](https://www.ubuntu.com/esm). |Çekirdekte |Paket: "walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
@@ -50,14 +50,15 @@ Azure, onaylı Linux dağıtımlarının yayımcılarının, üç aylık veya da
 
 ## <a name="azure-tuned-kernels"></a>Azure tarafından ayarlanan çekirdekler
 
-Azure, Azure Market 'Te yayımladıkları görüntüleri iyileştirmek için, çeşitli desteklenen linux dağıtımlarıyla yakından birlikte çalışmaktadır. Bu işbirliğinin bir yönü, Azure platformu için optimize edilmiş ve Linux dağıtımının tamamen desteklenen bileşenleri olarak sunulan "ayarlanmış" Linux çekirdekleri geliştirmektedir. Azure tarafından ayarlanmış çekirdekler yeni özellikler ve performans iyileştirmeleri ve dağıtım tarafından kullanılabilen varsayılan ya da genel çekirdekler ile karşılaştırıldığında daha hızlı (genellikle üç ayda) temposunda.
+Azure, Azure Market 'Te yayımladıkları görüntüleri iyileştirmek için, çeşitli desteklenen linux dağıtımlarıyla yakından birlikte çalışmaktadır. Bu işbirliğinin bir yönü, Azure platformu için optimize edilmiş ve Linux dağıtımının tamamen desteklenen bileşenleri olarak sunulan "ayarlanmış" Linux çekirdekleri geliştirmektedir. Azure-Tuned Keri, yeni özellikleri ve performans geliştirmelerini ve dağıtım tarafından kullanılabilen varsayılan veya genel çekirdekler ile karşılaştırıldığında daha hızlı (genellikle üç ayda) temposunda.
 
-Çoğu durumda, bu çekirdekleri Azure Marketi 'ndeki varsayılan görüntülerde önceden yüklenmiş olarak bulacak ve müşteriler bu iyileştirilmiş çekirdekler için hemen faydalanacaktır. Azure tarafından ayarlanan bu çekirdekler hakkında daha fazla bilgi aşağıdaki bağlantılarda bulunabilir:
+Çoğu durumda, bu çekirdekleri Azure Marketi 'ndeki varsayılan görüntülerde önceden yüklenmiş olarak bulacak ve müşteriler bu iyileştirilmiş çekirdekler için hemen faydalanacaktır. Bu Azure-Tuned keryls hakkında daha fazla bilgi aşağıdaki bağlantılarda bulunabilir:
 
-- [CentOS Azure tarafından ayarlanmış çekirdek-CentOS sanallaştırma SıG ile kullanılabilir](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+- [CentOS Azure-Tuned Kernel-CentOS sanallaştırma SıG ile kullanılabilir](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Bulut çekirdeğini devre dışı bırak-Azure 'da detem 10 ve detem 9 "backports" görüntüsü ile kullanılabilir](https://wiki.debian.org/Cloud/MicrosoftAzure)
-- [SLES Azure tarafından ayarlanan çekirdek](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
-- [Ubuntu Azure tarafından ayarlanan çekirdek](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [SLES Azure-Tuned çekirdeği](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+- [Ubuntu Azure-Tuned çekirdeği](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Düz otomobil kapsayıcısı Linux Pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
 
 ## <a name="partners"></a>İş Ortakları
 

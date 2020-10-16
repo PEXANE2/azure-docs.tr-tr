@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009265"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstünde kiracı ve konak havuzu oluşturma (klasik)
@@ -51,7 +51,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **Çözüm:** izin vermek için [Bu kılavuzu izleyin](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) .
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcının yönetim hizmetini sorgulama yetkisi yok
 
 > [!div class="mx-imgBorder"]
 > ![Kullanıcının yönetim hizmetini sorgulama yetkisine sahip olmadığı PowerShell penceresinin ekran görüntüsü.](../media/UserNotAuthorizedNewTenant.png)
@@ -177,7 +177,7 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 3. Ekranınızın sağ tarafında DNS sunucuları menüsü görünmelidir. Bu menüde **özel**' i seçin.
 4. Özel altında listelenen DNS sunucularının etki alanı denetleyicinize veya Active Directory etki alanına göre eşleştiğinden emin olun. DNS sunucunuzu görmüyorsanız, değerini **DNS sunucusu Ekle** alanına girerek ekleyebilirsiniz.
 
-### <a name="error-your-deployment-failedunauthorized"></a>Hata: dağıtımınız başarısız oldu. ..\Yetkilendirilmemiş
+### <a name="error-your-deployment-failedunauthorized"></a>Hata: Dağıtımınız başarısız oldu...\Unauthorized
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -198,7 +198,7 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 
 **Çözüm:** PowerShell kullanarak oturum açarak Windows sanal masaüstü ortamının sağlıklı olduğunu onaylayın. [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell-2019.md)bölümünde VM kaydını el ile tamamlama.
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hata: belirtilen yönetici kullanıcı adına izin verilmiyor
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hata: Belirtilen Yönetici Kullanıcı Adına izin verilmiyor
 
 > [!div class="mx-imgBorder"]
 > ![Belirtilen bir yöneticiye izin verilmediğinden dağıtımınızın ekran görüntüsü başarısız oldu.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
@@ -218,7 +218,7 @@ Ham hata örneği:
 
 **Çözüm:** Kullanıcı adını güncelleştirin veya farklı kullanıcılar kullanın.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hata: VM, uzantıyı işlerken bir hata bildirdi
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hata: VM uzantıyı işlerken bir hata bildirdi
 
 > [!div class="mx-imgBorder"]
 > ![Dağıtımınızda Terminal sağlama durumu ile tamamlanan kaynak işleminin ekran görüntüsü başarısız oldu.](../media/49c4a1836a55d91cd65125cf227f411f.png)
@@ -351,7 +351,7 @@ the VM.\\\"
 
 **Çözüm:** Statik yolu, güvenlik duvarı kuralını veya NSG 'yi engellemeyi kaldırın. İsteğe bağlı olarak, Azure Resource Manager şablonu json dosyasını bir metin düzenleyicisinde açın, ZIP dosyasına bağlantıyı alın ve kaynağı izin verilen bir konuma indirin.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcının yönetim hizmetini sorgulama yetkisi yok
 
 Ham hata örneği:
 
@@ -375,7 +375,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hata: Kullanıcı Azure Multi-Factor Authentication gerektiriyor (MFA)
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hata: Kullanıcıya Azure Multi-factor Authentication (MFA) gerekiyor
 
 > [!div class="mx-imgBorder"]
 > ![Multi-Factor Authentication olmaması nedeniyle dağıtımınızın ekran görüntüsü başarısız oldu (MFA)](../media/MFARequiredError.png)

@@ -7,10 +7,10 @@ ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89433713"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
@@ -138,7 +138,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>Ek dil desteği ekle
 
-Bu makale, dil ve bölge desteğinin nasıl yapılandırılacağını kapsamaz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Bu makale, dil ve bölge desteğinin nasıl yapılandırılacağını kapsamaz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Windows yansımalarına dil ekleme](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [İsteğe bağlı özellikler](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)

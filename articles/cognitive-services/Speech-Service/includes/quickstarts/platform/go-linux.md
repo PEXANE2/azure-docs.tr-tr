@@ -2,14 +2,14 @@
 author: glecaros
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/30/2020
+ms.date: 10/15/2020
 ms.author: gelecaro
-ms.openlocfilehash: a1bc980f8334ca815a1805f33f3572cded4ba0ef
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 29433e7ecaa4135c790f7cafb36d56c4c07ac684
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86156729"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097006"
 ---
 Bu kılavuzda, Linux için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir
 
@@ -19,7 +19,7 @@ Bu kılavuzda, Linux için [konuşma SDK 'sının](~/articles/cognitive-services
 
 Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunlar gerekir:
 

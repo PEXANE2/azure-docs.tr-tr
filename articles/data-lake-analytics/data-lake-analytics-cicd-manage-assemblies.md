@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132152"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>CI/CD ardışık düzeninde U-SQL derlemelerini yönetmeye yönelik en iyi yöntemler
@@ -82,7 +82,7 @@ Bir u-SQL veritabanı projesi ya da Visual Studio 'da bir paket kullanarak bir U
 
 ### <a name="deploy-a-u-sql-database-in-azure-devops"></a>Azure DevOps 'da bir U-SQL veritabanı dağıtma
 
-`PackageDeploymentTool.exe`U-SQL veritabanlarını dağıtmaya yardımcı olan programlama ve komut satırı arabirimlerini sağlar. SDK, konumunda bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir `build/runtime/PackageDeploymentTool.exe` .
+`PackageDeploymentTool.exe` U-SQL veritabanlarını dağıtmaya yardımcı olan programlama ve komut satırı arabirimlerini sağlar. SDK, konumunda bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir `build/runtime/PackageDeploymentTool.exe` .
 
 Azure DevOps 'da, U-SQL veritabanı yenilemesi için bir Otomasyon işlem hattı ayarlamak üzere bir komut satırı görevi ve bu SDK kullanabilirsiniz. [SDK ve U-SQL veritabanı dağıtımı için BIR CI/CD işlem hattı ayarlama hakkında daha fazla bilgi edinin](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
 

@@ -3,12 +3,12 @@ title: Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540260"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951545"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes kümeleri için Azure İlkesi'ni anlama
 
@@ -57,6 +57,7 @@ Aşağıdaki genel sınırlamalar, Kubernetes kümeleri için Azure Ilke eklenti
 - Azure Ilke eklentisi dışında ağ geçidi denetleyicisi yüklemeleri desteklenmez. Azure Ilke eklentisini etkinleştirmeden önce önceki bir Gatekeeper yüklemesi tarafından yüklenen tüm bileşenleri kaldırın.
 - [Uyumsuzluk nedenleri](../how-to/determine-non-compliance.md#compliance-reasons) `Microsoft.Kubernetes.Data` 
    [kaynak sağlayıcısı modu](./definition-structure.md#resource-provider-modes)için kullanılamaz. [Bileşen ayrıntılarını](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)kullanın.
+- [Muafiyet](./exemption-structure.md) , [kaynak sağlayıcısı modları](./definition-structure.md#resource-provider-modes)için desteklenmez.
 
 Aşağıdaki sınırlamalar yalnızca AKS için Azure Ilke eklentisi için geçerlidir:
 
@@ -410,7 +411,7 @@ Aşağıdaki adımlarla Azure portal kullanarak kümenizi yönetmeye yönelik ye
 
    - Kubernetes ad alanlarını ilke değerlendirmesinden dışlamak için, parametre **ad uzayı dışlamaları**içindeki ad alanlarının listesini belirtin. Şunları hariç tutmak önerilir: _KUVE sistem_, _Gatekeeper-System_ve _Azure-Arc_.
 
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
 
 Alternatif olarak, bir Kubernetes ilkesini bulmak ve atamak için [Ilke atama-Portal](../assign-policy-portal.md) hızlı başlangıcı ' nı kullanın. ' Denetim VM 'leri ' örneği yerine bir Kubernetes ilke tanımı arayın.
 

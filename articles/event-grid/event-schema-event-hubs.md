@@ -4,10 +4,10 @@ description: Azure Event Grid olan olay hub 'ları olayları için sunulan özel
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 960aa1fe7184e1d02d28fdc135907119fee8f123
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113692"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs Event Grid kaynak olarak
@@ -53,28 +53,28 @@ Bu örnek olay, yakalama özelliği bir dosya depoladığında harekete geçiril
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | nesne | Olay Hub 'ı olay verileri. |
+| veriler | object | Olay Hub 'ı olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | Dosya URL 'si | string | Yakalama dosyasının yolu. |
 | fileType | string | Yakalama dosyasının dosya türü. |
 | PartitionID | string | Parça KIMLIĞI. |
-| sizeInBytes | integer | Dosya boyutu. |
-| eventCount | integer | Dosyadaki olay sayısı. |
-| firstSequenceNumber | integer | Kuyruktaki en küçük sıra numarası. |
-| lastSequenceNumber | integer | Kuyruktaki son sıra numarası. |
+| sizeInBytes | tamsayı | Dosya boyutu. |
+| eventCount | tamsayı | Dosyadaki olay sayısı. |
+| firstSequenceNumber | tamsayı | Kuyruktaki en küçük sıra numarası. |
+| lastSequenceNumber | tamsayı | Kuyruktaki son sıra numarası. |
 | firstEnqueueTime | string | Sıradan ilk kez. |
 | lastEnqueueTime | string | Sıradaki son zaman. |
 

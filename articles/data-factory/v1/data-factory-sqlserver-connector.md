@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fe9a50b5557e6165835abf1df67f7486c260c1c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195917"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory kullanarak SQL Server veri taşıma
@@ -79,7 +79,7 @@ Aşağıdaki tabloda SQL Server bağlı hizmetine özgü JSON öğeleri için a�
 | tür |Type özelliği: **OnPremisesSqlServer**olarak ayarlanmalıdır. |Evet |
 | Dizisi |SQL kimlik doğrulaması veya Windows kimlik doğrulaması kullanarak SQL Server veritabanına bağlanmak için gerekli connectionString bilgilerini belirtin. |Evet |
 | gatewayName |Data Factory hizmetinin SQL Server veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
-| kullanıcı adı |Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. Örnek: **DomainName \\ Kullanıcı adı**. |Hayır |
+| username |Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. Örnek: **DomainName \\ Kullanıcı adı**. |Hayır |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
 
 **New-AzDataFactoryEncryptValue** cmdlet 'ini kullanarak kimlik bilgilerini şifreleyebilir ve aşağıdaki örnekte gösterildiği gibi bunları bağlantı dizesinde kullanabilirsiniz (**encryptedcredential** özelliği):
@@ -553,7 +553,7 @@ Veriler her saat yeni bir bloba alınır (sıklık: saat, Aralık: 1). Blob içi
 
     Bkz. TCP/IP protokolünü etkinleştirmenin ayrıntıları ve alternatif yolları için [sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](https://msdn.microsoft.com/library/ms191294.aspx) .
 3. Aynı pencerede, TCP/IP **Özellikler** penceresini başlatmak için **TCP/IP** ' ye çift tıklayın.
-4. **IP adresleri** sekmesine geçin. **ipall** bölümünü görmek için aşağı kaydırın. **TCP bağlantı noktasını**(varsayılan **1433**) göz önünde bulunur.
+4. **IP adresleri** sekmesine geçin. **IPAll** bölümünü görmek için aşağı kaydırın. **TCP bağlantı noktasını**(varsayılan **1433**) göz önünde bulunur.
 5. Bu bağlantı noktası üzerinden gelen trafiğe izin vermek için makinede **Windows Güvenlik Duvarı için bir kural** oluşturun.
 6. **Bağlantıyı doğrula**: tam nitelikli adı kullanarak SQL Server bağlanmak için, farklı bir makineden SQL Server Management Studio kullanın. Örneğin: " \<machine\> . \<domain\> . Corp. \<company\> . com, 1433. "
 
@@ -663,7 +663,7 @@ Eşleme, ADO.NET için SQL Server veri türü eşlemesi ile aynıdır.
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Float |Çift |
+| Kayan |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |
@@ -678,7 +678,7 @@ Eşleme, ADO.NET için SQL Server veri türü eşlemesi ile aynıdır.
 | küçük para |Ondalık |
 | sql_variant |Nesne |
 | metin |Dize, Char [] |
-| time |TimeSpan |
+| saat |TimeSpan |
 | timestamp |Byte [] |
 | tinyint |Bayt |
 | uniqueidentifier |Guid |

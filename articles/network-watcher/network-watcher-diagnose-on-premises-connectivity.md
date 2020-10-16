@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738762"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
@@ -44,7 +44,7 @@ Kritik yapılandırma adımlarından biri IPSec iletişim parametrelerini yapıl
 
 ### <a name="ike-phase-1-setup"></a>IKE Aşama 1 kurulumu
 
-| **Özellik** | **PolicyBased** | **RouteBased ve standart ya da yüksek performanslı VPN ağ geçidi** |
+| **Özellik** | **PolicyBased** | **RouteBased ve Standard veya High-Performance VPN Gateway** |
 | --- | --- | --- |
 | IKE Sürümü |IKEv1 |IKEv2 |
 | Diffie-Hellman Grubu |Grup 2 (1024 bit) |Grup 2 (1024 bit) |

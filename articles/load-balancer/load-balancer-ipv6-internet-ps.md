@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001596"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Kaynak Yöneticisi için PowerShell kullanarak Internet 'e yönelik yük dengeleyici oluşturmaya başlama
@@ -112,7 +112,7 @@ PowerShell için Azure Resource Manager modülünün en son üretim sürümüne 
     > [!IMPORTANT]
     > Yük dengeleyici, FQDN 'sinin ön eki olarak genel IP 'nin etki alanı etiketini kullanır. Bu örnekte, FQDN 'Ler *lbnrpipv4.westus.cloudapp.Azure.com* ve *lbnrpipv6.westus.cloudapp.Azure.com*' dir.
 
-## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Ön uç IP yapılandırması ve arka uç adres havuzu oluşturma
+## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Front-End IP yapılandırması ve Back-End bir adres havuzu oluşturma
 
 1. Oluşturduğunuz genel IP adreslerini kullanan ön uç adres yapılandırması oluşturun.
 

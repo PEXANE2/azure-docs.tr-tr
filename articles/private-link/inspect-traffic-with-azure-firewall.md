@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
 ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236763"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Özel bir uç noktaya giden trafiği incelemek için Azure Güvenlik Duvarı 'nı kullanma
@@ -55,7 +55,7 @@ Eşlenen sanal ağlarla bağlantılarla ilgili ücretler hakkında daha fazla bi
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>Senaryo 2: hub ve bağlı bileşen mimarisi-özel uç noktalar ve sanal makineler için paylaşılan sanal ağ
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Aynı sanal ağdaki özel uç noktalar ve sanal makineler" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Özel uç noktalar için ayrılmış sanal ağ" border="true":::
 
 Bu senaryo şu durumlarda uygulanır:
 
@@ -78,7 +78,7 @@ Eşlenen sanal ağlarla bağlantılarla ilgili ücretler hakkında daha fazla bi
 
 ## <a name="scenario-3-single-virtual-network"></a>Senaryo 3: tek sanal ağ
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Tek sanal ağ" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Özel uç noktalar için ayrılmış sanal ağ" border="true":::
 
 Uygulamayla ilgili bazı sınırlamalar vardır: hub ve bağlı bileşen mimarisine geçiş mümkün değildir. Senaryo 2 ' de ile aynı noktalar geçerlidir. Bu senaryoda, sanal ağ eşleme ücretleri uygulanmaz.
 
@@ -87,7 +87,7 @@ Uygulamayla ilgili bazı sınırlamalar vardır: hub ve bağlı bileşen mimaris
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>Senaryo 4: özel uç noktalara şirket içi trafik
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Özel uç noktalara şirket içi trafik" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Özel uç noktalar için ayrılmış sanal ağ" border="true":::
 
 Bu mimari, şirket içi ağınızla bağlantı yapılandırdıysanız aşağıdakilerden birini kullanarak yapılandırabilirsiniz: 
 
@@ -171,7 +171,7 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
     | ------- | ----- |
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz.  |
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz.  |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm**' i girin. |
     | Bölge | **Orta Güney ABD (ABD)** seçin. |
@@ -181,7 +181,7 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
     | **Yönetici hesabı** |  |
     | Kimlik doğrulaması türü | **Parola**seçin. |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
-    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/linux/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/linux/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **Gelen bağlantı noktası kuralları** |  |
     | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
@@ -189,7 +189,7 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
 
 3. **İleri ' yi seçin: diskler**.
 
-4. **Sanal makine oluşturma-diskler**' de, varsayılan değerleri bırakın ve **İleri ' yi seçin: ağ**.
+4. **Sanal makine oluştur - Diskler** bölümünde varsayılan değerleri değiştirmeyin ve **Sonraki: Ağ** seçeneğini belirleyin.
 
 5. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
 
@@ -202,13 +202,13 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
     | Gelen bağlantı noktalarını seçin | **SSH**' ı seçin.|
     ||
 
-6. **Gözden geçir + oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+6. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
-7. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+7. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 ## <a name="deploy-the-firewall"></a>Güvenlik duvarını dağıtma
 
-1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 2. Arama kutusuna **güvenlik duvarı** yazın ve **ENTER**tuşuna basın.
 
@@ -220,7 +220,7 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
     | ------- | ----- |
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin.  |
+    | Kaynak grubu | **myResourceGroup** öğesini seçin.  |
     | **Örnek ayrıntıları** |  |
     | Name | **Myazurefirewall**yazın. |
     | Bölge | **Orta Güney ABD**seçin. |
@@ -230,9 +230,9 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
     | Genel IP adresi    |    **Yeni Ekle** ' yi seçin ve ad alanına **MyFirewall-ip**yazın.    |
     | Zorlamalı tünel oluşturma    | Varsayılanı **devre dışı**bırakın.    |
     |||
-5. **Gözden geçir + oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+5. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
-6. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+6. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 ## <a name="enable-firewall-logs"></a>Güvenlik Duvarı günlüklerini etkinleştir
 
@@ -271,7 +271,7 @@ Bu bölümde, özel bir SQL veritabanı oluşturursunuz.
     | ------- | ----- |
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz.|
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz.|
     | **Veritabanı ayrıntıları** |  |
     | Veritabanı adı  | **MyDatabase**yazın.  |
     | Sunucu | **Yeni oluştur** ' u seçin ve aşağıdaki bilgileri girin.    |
@@ -284,9 +284,9 @@ Bu bölümde, özel bir SQL veritabanı oluşturursunuz.
     | İşlem + depolama | Varsayılan **genel amaçlı 5. nesil, 2 sanal çekirdek, 32 GB depolama alanını**bırakın. |
     |||
 
-3. **Gözden geçir + oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+3. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
-4. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+4. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 ## <a name="create-private-endpoint"></a>Özel uç nokta oluştur
 
@@ -306,7 +306,7 @@ Bu bölümde, önceki bölümde Azure SQL veritabanı için özel bir uç nokta 
     | ------- | ----- |
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin. |
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. |
     | **Örnek ayrıntıları** | |
     | Name | **Sqlprivateendpoint**girin. |
     | Bölge | **Orta Güney ABD (ABD) seçin.** |
@@ -333,7 +333,7 @@ Bu bölümde, önceki bölümde Azure SQL veritabanı için özel bir uç nokta 
     | Sanal ağ | **Mypevnet**' i seçin. |
     | Alt ağ | **Privateendpointsubnet**öğesini seçin. |
     | **Özel DNS tümleştirme** | |
-    | Özel DNS bölgesiyle tümleştirin | **Evet** seçeneğini belirleyin. |
+    | Özel DNS bölgesi ile tümleştirme | **Evet**’i seçin. |
     | Abonelik | Aboneliğinizi seçin. |
     | Özel DNS bölgeleri | Varsayılan **Privatelink.Database.Windows.net**bırakın. |
 
@@ -374,7 +374,7 @@ Bu bölümde, eşleme kullanarak **Myvmvnet** ve **Mypevnet** 'e ait sanal ağla
     | Uzak sanal ağdan myAzFwVNet 'e iletilen trafiğe izin ver    | **Etkin**'i seçin. |
     | MyAzFwVNet 'ten uzak sanal ağa iletilen trafiğe izin ver | **Etkin**'i seçin. |
     | **Ağ Geçidi geçiş ayarlarını yapılandırma** | |
-    | Ağ Geçidi aktarımına izin ver | İşaretlenmeyen bırak |
+    | Ağ Geçidi aktarımına izin ver | İşaretlemeden bırakın |
     |||
 
 4. **Tamam**’ı seçin.
@@ -400,7 +400,7 @@ Bu bölümde, eşleme kullanarak **Myvmvnet** ve **Mypevnet** 'e ait sanal ağla
     | Uzak sanal ağdan myAzFwVNet 'e iletilen trafiğe izin ver    | **Etkin**'i seçin. |
     | MyAzFwVNet 'ten uzak sanal ağa iletilen trafiğe izin ver | **Etkin**'i seçin. |
     | **Ağ Geçidi geçiş ayarlarını yapılandırma** | |
-    | Ağ Geçidi aktarımına izin ver | İşaretlenmeyen bırak |
+    | Ağ Geçidi aktarımına izin ver | İşaretlemeden bırakın |
 
 7. **Tamam**’ı seçin.
 
@@ -456,24 +456,24 @@ Bu kural, önceki adımlarda oluşturduğumuz güvenlik duvarı üzerinden ileti
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | **Sqlprivateendpoint**girin. |
+    | Adı | **Sqlprivateendpoint**girin. |
     | Öncelik | **100** değerini girin. |
     | Eylem | **Izin ver**' i girin. |
     | **Kurallar** |  |
     | **FQDN etiketleri** | |
-    | Name  | Boş bırakın.  |
+    | Adı  | Boş bırakın.  |
     | Kaynak türü | Varsayılan **IP adresini**bırakın.    |
     | Kaynak | Boş bırakın. |
     | FQDN etiketleri | Varsayılan **0 seçili**bırakın. |
     | **Hedef FQDN 'Ler** | |
-    | Name | **Sqlprivateendpoint**girin.    |
+    | Adı | **Sqlprivateendpoint**girin.    |
     | Kaynak türü | Varsayılan **IP adresini**bırakın. |
     | Kaynak | **10.1.0.0/16**girin. |
     | Protokol: bağlantı noktası | **MSSQL: 1433**girin. |
     | Hedef FQDN 'Ler | **Mydbserver.Database.Windows.net**girin. |
     |||
 
-7. **Add (Ekle)** seçeneğini belirleyin.
+7. **Ekle**’yi seçin.
 
 ## <a name="route-traffic-between-the-virtual-machine-and-private-endpoint-through-azure-firewall"></a>Azure Güvenlik Duvarı ile sanal makine ve özel uç nokta arasında trafiği yönlendirme
 
@@ -483,7 +483,7 @@ Bu bölümde, özel bir yol içeren bir yol tablosu oluşturacağız.
 
 Yol, Azure Güvenlik Duvarı aracılığıyla **Myvm** alt ağından gelen trafiği **Mypevnet**adlı sanal ağın adres alanına gönderir.
 
-1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 2. Arama kutusuna **yol tablosunu** yazın ve **ENTER**tuşuna basın.
 
@@ -495,15 +495,15 @@ Yol, Azure Güvenlik Duvarı aracılığıyla **Myvm** alt ağından gelen trafi
     | ------- | ----- |
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin.  |
+    | Kaynak grubu | **myResourceGroup** öğesini seçin.  |
     | **Örnek ayrıntıları** |  |
     | Bölge | **Orta Güney ABD**seçin. |
-    | Name | **VMsubnet-to-AzureFirewall**girin. |
+    | Adı | **VMsubnet-to-AzureFirewall**girin. |
     | Ağ Geçidi yollarını yayma | **Hayır**'ı seçin. |
 
-5. **Gözden geçir + oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+5. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
-6. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+6. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 7. Dağıtım tamamlandıktan sonra **Kaynağa Git**' i seçin.
 
@@ -561,7 +561,7 @@ Aşağıdaki gibi, internet **'ten gelen VM VM** 'sine bağlanın:
 
 Bu bölümde, Özel uç noktasını kullanarak SQL veritabanına özel olarak bağlanırsınız.
 
-1. Girmesini `nslookup mydbserver.database.windows.net`
+1. `nslookup mydbserver.database.windows.net` değerini girin
     
     Aşağıdakine benzer bir ileti alacaksınız:
 

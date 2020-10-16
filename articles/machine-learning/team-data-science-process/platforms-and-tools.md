@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440006"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Veri bilimi projeleri için platformlar ve araçlar
@@ -83,7 +83,7 @@ Apache Hive, SQL 'e benzer bir sorgu dili olan HiveQL kullanarak veri özetlemes
 
 Hive büyük ölçüde yapılandırılmamış veriler üzerinde proje yapısı oluşturmanızı sağlar. Yapıyı tanımladıktan sonra, kullanmak zorunda kalmadan veya hatta bilmeniz, Java veya MapReduce 'nin kullanılması gerekmeden bu verileri bir Hadoop kümesinde sorgulamak için Hive kullanabilirsiniz. HiveQL (Hive sorgu dili), T-SQL ' e benzeyen deyimlerle sorgu yazmanıza olanak sağlar.
 
-Veri bilimcileri için Hive, kayıtları işlemek üzere Hive sorgularında Python Kullanıcı tanımlı Işlevleri (UDF 'ler) çalıştırabilir. Bu özellik veri analizinde Hive sorgularının yeteneklerini önemli ölçüde genişletir. Özellikle, veri bilimcilerinin, büyük ölçüde alışkın oldukları dillerde ölçeklenebilir Özellik Mühendisliği yapmasına olanak sağlar: SQL benzeri HiveQL ve Python. 
+Veri bilimcileri için Hive, kayıtları işlemek üzere Hive sorgularında Python User-Defined Işlevlerini (UDF 'ler) çalıştırabilir. Bu özellik veri analizinde Hive sorgularının yeteneklerini önemli ölçüde genişletir. Özellikle, veri bilimcilerinin, büyük ölçüde alışkın oldukları dillerde ölçeklenebilir Özellik Mühendisliği yapmasına olanak sağlar: SQL benzeri HiveQL ve Python. 
 
 Azure HDInsight Hive kümeleri hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop Ile Hive ve HiveQL kullanma](../../hdinsight/hadoop/hdinsight-use-hive.md). Azure HDInsight Hive kümeleriyle ölçeklenebilir uçtan uca bir veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Team Data Science Process ın, HDInsight Hadoop kümelerini kullanma](hive-walkthrough.md).
 

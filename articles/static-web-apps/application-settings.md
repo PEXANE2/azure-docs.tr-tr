@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
 ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250037"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için uygulama ayarlarını yapılandırma
@@ -31,7 +31,7 @@ Uygulama ayarları bazen ortam değişkenleri olarak da adlandırılır.
 >
 > Ön uç Web uygulamanızla ortam değişkenlerini kullanma hakkında daha fazla bilgi için, [JavaScript Framework](#javascript-frameworks-and-libraries) veya [statik site Oluşturucu](#static-site-generators)belgelerine bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure statik Web Apps uygulaması
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -144,7 +144,7 @@ Azure CLı komutu, karşıya yüklemeyi çalıştırmak için hesabınıza özg�
 2. Kaynak grubu adı
 3. Abonelik Kimliği
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Azure statik Web Apps genel bakış":::
+:::image type="content" source="media/application-settings/overview.png" alt-text="Azure statik Web Apps yapılandırma görünümü":::
 
 4. Terminal veya komut satırından aşağıdaki komutu yürütün. , Ve ' nin yer tutucuları, `<YOUR_STATIC_SITE_NAME>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_SUBSCRIPTION_ID>` _genel bakış_ penceresindeki değerlerinizle değiştirdiğinizden emin olun.
 

@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: cfd5cf77b9df8cdd5b856a0b36b9010077a7078a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52fa21e5f881c7811f1f3e61f51d0c5a374a9f77
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68562493"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971451"
 ---
 **Dosya**derleme ayarları ' nı seçerek **derleme ayarlarını** açın  >  **Build Settings**.
 
@@ -17,7 +17,7 @@ ms.locfileid: "68562493"
 
 Platformu **iOS**olarak değiştirmek Için **platformu Değiştir** ' i seçin. Unity, eksik olmaları durumunda iOS destek bileşenlerini yüklemenizi isteyebilir.
 
-![Unity derleme ayarları penceresi](./media/spatial-anchors-unity/unity-ios-build-settings.png)
+![Unity derleme ayarları penceresinin ekran görüntüsü.](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
 **Derleme ayarları** penceresini kapatın.
 

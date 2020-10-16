@@ -4,10 +4,10 @@ description: Azure Service Bus bir açık standart protokol olan Gelişmiş İle
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88066347"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus 'da AMQP 1,0 desteği
@@ -65,7 +65,7 @@ Aşağıdaki şekilde, Linux üzerinde çalışan Java istemcilerinin, Windows �
 | Java |Apache Qpid Java Ileti hizmeti (JMS) istemcisi<br/>IıT Software SwiftMQ Java istemcisi |
 | C |Apache Qpid proton-C |
 | PHP |Apache Qpid proton-PHP |
-| Python |Apache Qpid proton-Python |
+| Python |Apache Qpid Proton-Python |
 | C# |AMQP .NET Lite |
 
 **Şekil 2: AMQP 1,0 istemci kitaplıklarının tablosu**

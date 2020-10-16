@@ -1,5 +1,5 @@
 ---
-title: Azure API Management rol tabanlı Access Control kullanma | Microsoft Docs
+title: Azure 'da Role-Based Access Control kullanma API Management | Microsoft Docs
 description: Yerleşik rolleri kullanmayı ve Azure API Management özel roller oluşturmayı öğrenin
 services: api-management
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: faef2721b48ffab12264c585d2dec55ab9334016
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015298"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Azure API Management'te Rol Tabanlı Erişim Denetimini kullanma
@@ -44,7 +44,7 @@ Aşağıdaki tabloda yerleşik rollerin kısa açıklamaları verilmiştir. Azur
 
 <sup>[2] aşağıdaki işlemler hariç API Management Hizmetleri ve varlıklara yazma erişimi: örnek oluşturma, silme ve ölçekleme; VPN yapılandırması; ve özel etki alanı kurulumu.</sup>
 
-<sup>\*Mevcut yayımcı portalından tüm yönetici kullanıcı arabirimini Azure portal geçirdikten sonra hizmet Düzenleyicisi rolü kullanılabilir olacaktır. Içerik Yöneticisi rolü, yayımcı portalının yalnızca geliştirici portalını yönetme ile ilgili işlevselliği içermesi için yeniden düzenlenmiş olduktan sonra kullanılabilir olacaktır.</sup>  
+<sup>\* Mevcut yayımcı portalından tüm yönetici kullanıcı arabirimini Azure portal geçirdikten sonra hizmet Düzenleyicisi rolü kullanılabilir olacaktır. Içerik Yöneticisi rolü, yayımcı portalının yalnızca geliştirici portalını yönetme ile ilgili işlevselliği içermesi için yeniden düzenlenmiş olduktan sonra kullanılabilir olacaktır.</sup>  
 
 ## <a name="custom-roles"></a>Özel roller
 
@@ -79,7 +79,7 @@ New-AzRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionNa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'da rol tabanlı Access Control hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Azure 'da Role-Based Access Control hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
   * [Azure portalında erişim yönetimi ile çalışmaya başlama](../role-based-access-control/overview.md)
   * [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanın](../role-based-access-control/role-assignments-portal.md)
   * [Azure RBAC 'de özel roller](../role-based-access-control/custom-roles.md)

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
 ms.openlocfilehash: a4a666423c6f5a76d69f572f6d8b86a022bf3e30
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443139"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL veritabanı elastik sorguya genel bakış (Önizleme)
@@ -133,7 +133,7 @@ Uygulamalarınızı ve bı veya veri tümleştirme araçlarınızı, dış tablo
 > [!IMPORTANT]
 > Elastik sorgularla Azure Active Directory kullanan kimlik doğrulaması şu anda desteklenmiyor.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Maliyet
 
 Esnek sorgu, Azure SQL veritabanı maliyetine dahildir. Uzak veritabanlarınızın, elastik sorgu uç noktasının desteklenenden farklı bir veri merkezinde olduğu, ancak uzak veritabanlarından gelen veri çıkışları düzenli olarak [Azure ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/)üzerinden ücretlendirildiğini unutmayın.
 

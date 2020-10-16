@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288265"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet ve JSON dosyalarındaki iç içe türler sorgulayın
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > Bu örnek COVıD-19 açık araştırma veri kümesinden bir dosya kullanır. Bu [verilerin yapısına ve yapısına bakın](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk adım, DataSource 'un oluşturulacağı bir veritabanı oluşturmaktır. Ardından, veritabanında bir [kurulum betiği](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) çalıştırarak nesneleri başlatacaksınız. Kurulum betiği, örneklerde kullanılan veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve harici dosya biçimlerini oluşturacaktır.
 

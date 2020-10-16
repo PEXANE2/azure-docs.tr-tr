@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743395"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938364"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro 'YU GPU ile etkinleştirme
 
@@ -25,10 +25,10 @@ Etkinleştirme işleminin tamamlanması 5 dakika sürebilir.
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Fiziksel cihazı etkinleştirin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -92,13 +92,14 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
  
 Cihaz etkinleştirme işlemi tamamlanmıştır. Artık cihazınıza paylaşımlar ekleyebilirsiniz.
 
+Etkinleştirme sırasında herhangi bir sorunla karşılaşırsanız, [etkinleştirme sorunlarını giderme ve Azure Key Vault hataları](azure-stack-edge-gpu-troubleshoot-activation.md#activation-errors)bölümüne gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Fiziksel cihazı etkinleştirin
 
 Azure Stack Edge Pro cihazınızla veri aktarmayı öğrenmek için bkz.:

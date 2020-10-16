@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282128"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071651"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>OPC Ikizi 'yi mevcut bir projeye dağıtma
 
@@ -33,7 +33,7 @@ Modülün çekirdeği gözetmen kimliğidir. Gözetmen, ilgili OPC UA kayıt def
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-PowerShell ve [Azurerd PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) uzantılarının yüklü olduğundan emin olun. Daha önce yapmadıysanız, bu GitHub deposunu kopyalayın. PowerShell 'de aşağıdaki komutları çalıştırın:
+PowerShell ve [Azurerd PowerShell](/powershell/azure/azurerm/install-azurerm-ps) uzantılarının yüklü olduğundan emin olun. Daha önce yapmadıysanız, bu GitHub deposunu kopyalayın. PowerShell 'de aşağıdaki komutları çalıştırın:
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git

@@ -4,10 +4,10 @@ description: Yerel Docker yapılandırması ve kayıt defteri bağlantısı dahi
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245392"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry 'nin sistem durumunu denetleme
@@ -19,7 +19,7 @@ Azure Container Registry kullanırken, zaman zaman sorunlarla karşılaşabilirs
 Ek kayıt defteri sorunlarını giderme kılavuzu için bkz.:
 * [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md)
 * [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
-* [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
+* [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Çalıştır az ACR Check-Health
 
@@ -38,7 +38,7 @@ az acr check-health
 
 ### <a name="check-the-environment-and-a-target-registry"></a>Ortamı ve hedef kayıt defterini denetleme
 
-Bir kayıt defterine erişimi denetlemek ve yerel ortam denetimleri gerçekleştirmek için bir hedef kayıt defteri adı geçirin. Örnek:
+Bir kayıt defterine erişimi denetlemek ve yerel ortam denetimleri gerçekleştirmek için bir hedef kayıt defteri adı geçirin. Örneğin:
 
 ```azurecli
 az acr check-health --name myregistry

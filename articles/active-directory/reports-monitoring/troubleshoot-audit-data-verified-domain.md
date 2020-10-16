@@ -16,10 +16,10 @@ ms.date: 07/22/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3c9ec3b1e96e47dbf46c6acb2c81147b614d069
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117440"
 ---
 # <a name="troubleshoot-audit-data-on-verified-domain-change"></a>Sorun giderme: doğrulanan etki alanı değiştiğinde denetim verileri 
@@ -39,7 +39,7 @@ Azure AD denetim günlüklerini denetm ve Azure AD kiracımda birden çok Kullan
 
 #### <a name="what-does-userprincipalname-consistency-mean"></a>UserPrincipalName tutarlılığı ne anlama geliyor? 
 
-Yalnızca bulutta bulunan kullanıcılar için tutarlılık, **userPrincipalName** 'in doğrulanmış bir etki alanı sonekine ayarlandığı anlamına gelir. Tutarsız bir **userPrincipalName** Işlendiğinde, **proxycalc** onu varsayılan onmicrosoft.com sonekine dönüştürür, örneğin:username@Contoso.onmicrosoft.com 
+Yalnızca bulutta bulunan kullanıcılar için tutarlılık, **userPrincipalName** 'in doğrulanmış bir etki alanı sonekine ayarlandığı anlamına gelir. Tutarsız bir **userPrincipalName** Işlendiğinde, **proxycalc** onu varsayılan onmicrosoft.com sonekine dönüştürür, örneğin: username@Contoso.onmicrosoft.com 
 
 Eşitlenmiş kullanıcılar için tutarlılık, **userPrincipalName** 'in doğrulanmış bir etki alanı sonekine ayarlandığı ve şirket içi **userPrincipalName** değeriyle (shadowuserprincipalname) eşleştiği anlamına gelir. Tutarsız bir **userPrincipalName** Işlendiğinde, **Proxycalc** , **shadowuserprincipalname** ile aynı değere döndürülür veya etki alanı son ekinin kiracıdan kaldırılması durumunda, bunu varsayılan *. onmicrosoft.com etki alanı sonekine dönüştürür. 
 
@@ -47,7 +47,7 @@ Eşitlenmiş kullanıcılar için tutarlılık, **userPrincipalName** 'in doğru
 
 #### <a name="what-does-proxy-address-consistency-mean"></a>Proxy adresi tutarlılığı ne anlama geliyor? 
 
-Yalnızca bulutta bulunan kullanıcılar için tutarlılık, proxy adreslerinin doğrulanmış bir etki alanı sonekiyle eşleştiği anlamına gelir. Tutarsız bir proxy adresi işlendiğinde, **Proxycalc** onu varsayılan *. onmicrosoft.com etki alanı sonekine dönüştürür, örneğin:SMTP:username@Contoso.onmicrosoft.com 
+Yalnızca bulutta bulunan kullanıcılar için tutarlılık, proxy adreslerinin doğrulanmış bir etki alanı sonekiyle eşleştiği anlamına gelir. Tutarsız bir proxy adresi işlendiğinde, **Proxycalc** onu varsayılan *. onmicrosoft.com etki alanı sonekine dönüştürür, örneğin: SMTP:username@Contoso.onmicrosoft.com 
 
 Eşitlenmiş kullanıcılar için tutarlılık, proxy adreslerinin şirket içi ara sunucu adresleri (ler) değerleri ile eşleştiği anlamına gelir (ör. ShadowProxyAddresses). **ProxyAddresses** 'ın **ShadowProxyAddresses**ile eşitlenmesi bekleniyor. Eşitlenmiş kullanıcıya bir Exchange lisansı atanmışsa, proxy adreslerinin şirket içi proxy adresi (ler) değeriyle eşleşmesi ve ayrıca doğrulanmış bir etki alanı sonekiyle eşleşmesi gerekir. Bu senaryoda, **Proxycalc** , doğrulanmamış bir etki alanı sonekine sahip tutarsız proxy adresini temizler ve Azure AD 'deki nesnesinden kaldırılacak. Bu doğrulanmamış etki alanı daha sonra doğrulanırsa, **Proxycalc** yeniden hesaplama ve proxy adresini **SHADOWPROXYADDRESSES** 'den Azure AD 'deki nesnesine eklemektir.  
 

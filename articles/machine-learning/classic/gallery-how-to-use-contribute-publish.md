@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
 ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91346837"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
@@ -28,7 +28,7 @@ Galerinin kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz �
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Galeride neleri bulabilirim?
 
-Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bu güncelleştirmeler şunlardır:
+Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bu modüller şunlardır:
 
 * **Denemeleri** -Galeri Azure Machine Learning Studio (klasik) ' de geliştirilmiş çok çeşitli denemeleri içerir. Bu, belirli bir makine öğrenimi tekniğinin yanı sıra karmaşık makine öğrenimi sorunları için tam olarak geliştirilen çözümlere yönelik olan hızlı prototip denemeleri tarafından görülebilir.
 * **Öğreticiler** -Machine Learning teknolojileri ve kavramları konusunda size yol gösterecek veya çeşitli makine öğrenimi sorunlarını çözmeye yönelik gelişmiş yöntemleri açıklayan birçok öğretici vardır.

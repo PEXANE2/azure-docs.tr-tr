@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c580e44cc827de46c7464ba5f316e6c515de2940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854441"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977995"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure 'da küme paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma
 
@@ -32,7 +32,7 @@ Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirli�
 
 Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğümler) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi oluşabilecek hata sayısını hesaplar ve uygulamalar ve hizmetler sağlamak için sağlıklı bir kümeyi sürdürür. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki görevlere başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
@@ -119,7 +119,7 @@ _Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
 
 Azure 'da bir Windows Yük devretme kümesinde paylaşılan disk için iki seçenek vardır:
 
-- Azure [paylaşılan diskler](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) -özelliği, aynı anda birden çok VM 'ye Azure yönetilen disk iliştirmeye olanak tanır. 
+- Azure [paylaşılan diskler](../../windows/disks-shared.md) -özelliği, aynı anda birden çok VM 'ye Azure yönetilen disk iliştirmeye olanak tanır. 
 - Küme paylaşılan depolama benzetimi yapan yansıtılmış bir depolama alanı oluşturmak için 3. taraf yazılım [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster) kullanma. 
 
 Paylaşılan disk için teknolojiyi seçerken aşağıdaki noktalara dikkat edin:
@@ -128,7 +128,7 @@ Paylaşılan disk için teknolojiyi seçerken aşağıdaki noktalara dikkat edin
 - Azure yönetilen diskini, bakımını yapmak ve çalıştırmak için ek yazılım gerekmeden aynı anda birden çok VM 'ye eklemenize olanak tanır 
 - Tek bir depolama kümesinde tek bir Azure Paylaşılan diskle birlikte çalışır. Bu, SAP çözümünüzün güvenilirliğini etkiler.
 - Şu anda desteklenen tek dağıtım, kullanılabilirlik kümesindeki Azure Paylaşılan Premium diskdir. Azure Paylaşılan disk, bölgesel dağıtımında desteklenmiyor.     
-- Aynı anda gerekli sayıda VM 'ye iliştirilebilmek için [Premium SSD aralıklarında](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes) belirtilen minimum disk boyutuyla Azure Premium disk 'i sağlamayı unutmayın (genellikle sap ascs Windows Yük devretme kümesi için 2). 
+- Aynı anda gerekli sayıda VM 'ye iliştirilebilmek için [Premium SSD aralıklarında](../../windows/disks-shared.md#disk-sizes) belirtilen minimum disk boyutuyla Azure Premium disk 'i sağlamayı unutmayın (genellikle sap ascs Windows Yük devretme kümesi için 2). 
 - Azure Paylaşılan Ultra disk, kullanılabilirlik kümesi veya bölgesel dağıtımında dağıtımı desteklemediğinden SAP iş yükleri için desteklenmez.  
  
 **HARFI**
@@ -139,25 +139,25 @@ Paylaşılan disk için teknolojiyi seçerken aşağıdaki noktalara dikkat edin
 
 ### <a name="shared-disk-using-azure-shared-disk"></a>Azure Paylaşılan disk kullanarak paylaşılan disk
 
-Microsoft, paylaşılan bir disk seçeneği ile SAP Ass/SCS yüksek kullanılabilirliğini uygulamak için kullanılabilen [Azure Paylaşılan diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)sunmaktadır.
+Microsoft, paylaşılan bir disk seçeneği ile SAP Ass/SCS yüksek kullanılabilirliğini uygulamak için kullanılabilen [Azure Paylaşılan diskleri](../../windows/disks-shared.md)sunmaktadır.
 
 #### <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
 
 Şu anda Azure Premium SSD disklerini SAP ASCS/SCS örneği için Azure Paylaşılan diski olarak kullanabilirsiniz. Şu kısıtlamalar Şu anda yerinde:
 
--  [Azure Ultra disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) , SAP iş yükleri Için Azure Paylaşılan diski olarak desteklenmez. Şu anda Azure sanal makinelerini, kullanılabilirlik kümesi 'nde Azure Ultra disk kullanarak yerleştirmek mümkün değildir
--  Premium SSD disklere sahip [Azure Paylaşılan disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
--  Azure Paylaşılan disk değeri [MAXSHARES](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) , kaç küme düğümünün paylaşılan diski kullanabileceğinizi belirler. Genellikle SAP ASCS/SCS örneği için Windows Yük devretme kümesinde iki düğüm yapılandıracaksınız, bu nedenle değerinin `maxShares` iki olarak ayarlanması gerekir.
--  Tüm SAP yoks/SCS kümesi VM 'lerinin aynı [Azure yakınlık yerleşimi grubuna](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)dağıtılması gerekir.   
+-  [Azure Ultra disk](../../disks-types.md#ultra-disk) , SAP iş yükleri Için Azure Paylaşılan diski olarak desteklenmez. Şu anda Azure sanal makinelerini, kullanılabilirlik kümesi 'nde Azure Ultra disk kullanarak yerleştirmek mümkün değildir
+-  Premium SSD disklere sahip [Azure Paylaşılan disk](../../windows/disks-shared.md) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
+-  Azure Paylaşılan disk değeri [MAXSHARES](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) , kaç küme düğümünün paylaşılan diski kullanabileceğinizi belirler. Genellikle SAP ASCS/SCS örneği için Windows Yük devretme kümesinde iki düğüm yapılandıracaksınız, bu nedenle değerinin `maxShares` iki olarak ayarlanması gerekir.
+-  Tüm SAP yoks/SCS kümesi VM 'lerinin aynı [Azure yakınlık yerleşimi grubuna](../../windows/proximity-placement-groups.md)dağıtılması gerekir.   
    PPG olmadan Azure Paylaşılan disk ile kullanılabilirlik kümesi 'nde Windows kümesi VM 'Leri dağıtabilirsiniz, ancak sanal makineler ve depolama katmanı arasında daha düşük gecikme süresi elde etmek için PPG, Azure Paylaşılan disklerinin ve küme VM 'lerinin fiziksel yakınlığını kapatacaktır.    
 
-Azure Paylaşılan diskine ilişkin sınırlamalar hakkında daha fazla ayrıntı için lütfen Azure Paylaşılan disk belgelerinin [kısıtlama](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) bölümünü dikkatle inceleyin.
+Azure Paylaşılan diskine ilişkin sınırlamalar hakkında daha fazla ayrıntı için lütfen Azure Paylaşılan disk belgelerinin [kısıtlama](../../linux/disks-shared.md#limitations) bölümünü dikkatle inceleyin.
 
 > [!IMPORTANT]
 > SAP ASCS/SCS Windows Yük devretme kümesini Azure Paylaşılan disk ile dağıttığınızda, dağıtımınızın tek bir depolama kümesinde tek bir paylaşılan diskle birlikte çalışır durumda olacağını unutmayın. Azure Paylaşılan diskinin dağıtıldığı depolama kümesiyle ilgili sorunlar durumunda SAP ASCS/SCS örneğiniz etkilenebilir.    
 
 > [!TIP]
-> SAP dağıtımınızı planlarken önemli noktalar için [Azure Planlama Kılavuzu 'Nda SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) ve [SAP Iş yükleri için Azure depolama Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) ' nu gözden geçirin.
+> SAP dağıtımınızı planlarken önemli noktalar için [Azure Planlama Kılavuzu 'Nda SAP NetWeaver](./planning-guide.md) ve [SAP Iş yükleri için Azure depolama Kılavuzu](./planning-guide-storage.md) ' nu gözden geçirin.
 
 ### <a name="supported-os-versions"></a>Desteklenen işletim sistemi sürümleri
 

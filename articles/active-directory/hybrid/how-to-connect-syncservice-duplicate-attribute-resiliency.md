@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313323"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Kimlik eşitleme ve yinelenen öznitelik dayanıklılığı
@@ -66,7 +66,7 @@ Yinelenen öznitelik dayanıklılığı, tüm Azure Active Directory kiracılard
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> Artık, kiracı için kullanılmadan önce yinelenen öznitelik dayanıklılığı özelliğini önceden etkinleştirmek için set-MsolDirSyncFeature cmdlet 'ini kullanamazsınız. Özelliği test etmek için yeni bir Azure Active Directory kiracısı oluşturmanız gerekecektir.
+> Kiracı için kullanılmadan önce yinelenen öznitelik dayanıklılığı özelliğini önceden etkinleştirmek üzere Set-MsolDirSyncFeature cmdlet 'i artık kullanamazsınız. Özelliği test etmek için yeni bir Azure Active Directory kiracısı oluşturmanız gerekecektir.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>DirSyncProvisioningErrors ile Nesneleri Tanımlama
 Yinelenen özellik çakışmaları, Azure Active Directory PowerShell ve [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com)nedeniyle bu hatalara sahip nesneleri belirlemek için şu anda iki yöntem vardır. Gelecekte ek portal tabanlı raporlamaya genişletecek planlar vardır.
@@ -85,7 +85,7 @@ Ardından, hataları farklı yollarla görüntülemek için aşağıdaki cmdlet 
 2. [Özellik türüne göre](#by-property-type)
 3. [Çakışan değere göre](#by-conflicting-value)
 4. [Dize araması kullanma](#using-a-string-search)
-5. Sütununa
+5. Sorted
 6. [Sınırlı miktarda veya tümü](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>Tümünü göster

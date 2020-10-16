@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449379"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978263"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -75,7 +75,7 @@ Linux 'ta birkaç farklı g/ç zamanlama modu vardır. Linux satıcıları ve SA
 Azure Yazma Hızlandırıcısı, yalnızca Azure a serisi VM 'Leri için kullanılabilen bir işlevdir. Ad olduğu gibi, işlevselliğin amacı, Azure Premium depolamada yazma işlemleri için g/ç gecikmesini geliştirmedir. SAP HANA için, Yazma Hızlandırıcısı yalnızca **/Hana/log hacminde** kullanılması gerekir. Bu nedenle, **/Hana/Data** ve **/Hana/log** , Azure yazma Hızlandırıcısı yalnızca **/Hana/log** birimini desteklemeye yönelik ayrı birimlerdir. 
 
 > [!IMPORTANT]
-> Azure Premium Depolama kullanılırken, **/Hana/log** birimi için Azure [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) kullanımı zorunludur. Yazma Hızlandırıcısı yalnızca Premium Depolama ve yalnızca d serisi ve Mv2 serisi VM 'Ler için kullanılabilir. Yazma Hızlandırıcısı, Esv3 veya Edsv4 gibi diğer Azure VM aileleriyle birlikte çalışmıyor.
+> Azure Premium Depolama kullanılırken, **/Hana/log** birimi için Azure [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) kullanımı zorunludur. Yazma Hızlandırıcısı Premium Depolama ve yalnızca d serisi ve Mv2-Series VM 'Ler için kullanılabilir. Yazma Hızlandırıcısı, Esv3 veya Edsv4 gibi diğer Azure VM aileleriyle birlikte çalışmıyor.
 
 Aşağıdaki Azure Premium disklerine yönelik önbelleğe alma önerileri, şunun gibi SAP HANA için g/ç özelliklerinin olduğunu varsayar:
 
@@ -88,7 +88,7 @@ Aşağıdaki Azure Premium disklerine yönelik önbelleğe alma önerileri, şun
 **Öneri: Bu gözlemlenen g/ç desenlerinin SAP HANA sonucu olarak, Azure Premium depolama kullanan farklı birimlerin önbelleğe alınması şöyle ayarlanmalıdır:**
 
 - **/Hana/Data** -önbelleğe alma veya okuma önbelleği yok
-- **/Hana/log** -önbelleğe alma-Azure yazma Hızlandırıcısı etkinleştirilmesi gereken, d ve Mv2 serisi VM 'ler için özel durum 
+- **/Hana/log** -önbelleğe alma-Azure yazma Hızlandırıcısı etkinleştirilmesi gereken, d ve Mv2-Series VM 'ler için özel durum 
 - **/Hana/Shared** -okuma önbelleği
 - **Işletim sistemi diski** -VM oluşturma sırasında Azure tarafından ayarlanan varsayılan önbelleğe alma işlemini değiştirmeyin
 
@@ -229,7 +229,7 @@ Ultra Disk size boyut, ıOPS ve disk aktarım hızı aralığınızı karşılay
 Ultra disk 'in diğer avantajları Premium depolamaya kıyasla daha iyi okuma gecikmesi olabilir. Daha hızlı okuma gecikmesi, HANA başlangıç zamanlarını ve verilerin sonraki yükünü belleğe düşürmek istediğinizde avantajlara sahip olabilir. Ayrıca, HANA Savepoints yazarken Ultra disk depolamanın avantajları da keçeli olabilir. 
 
 > [!NOTE]
-> Ultra disk henüz tüm Azure bölgelerinde mevcut değildir ve henüz aşağıda listelenen tüm VM türlerini desteklemede. Ultra diskin kullanılabildiği ve hangi VM ailelerinin desteklendiği hakkında ayrıntılı bilgi için, [Azure 'da disk türlerinin kullanılabildiği](../../windows/disks-types.md#ultra-disk)makaleye bakın.
+> Ultra disk henüz tüm Azure bölgelerinde mevcut değildir ve henüz aşağıda listelenen tüm VM türlerini desteklemede. Ultra diskin kullanılabildiği ve hangi VM ailelerinin desteklendiği hakkında ayrıntılı bilgi için, [Azure 'da disk türlerinin kullanılabildiği](../../disks-types.md#ultra-disk)makaleye bakın.
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>Saf Ultra disk yapılandırmasına sahip üretim tarafından önerilen depolama çözümü
 Bu yapılandırmada, **/Hana/Data** ve **/Hana/log** birimlerini ayrı tutmanız gerekir. Önerilen değerler SAP 'nin SAP HANA ve depolama yapılandırmalarının VM türlerini, [SAP TDI depolaması teknik](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)penceresinde önerildiği şekilde onaylamak Için gereken KPI 'lerin dışına türetilir.
@@ -272,7 +272,7 @@ HANA için ANF hakkında ayrıntılı bilgi için [Azure NetApp Files belge NFS 
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure Premium Depolama ile maliyet bilincine çözüm
-Şimdiye kadar, bu belgede açıklanan Azure Premium depolama çözümü, [Azure n serisi sanal makineler için Premium Depolama ve azure yazma hızlandırıcısı ile Ilgili çözüm çözümleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) SAP HANA üretimde desteklenen senaryolara yöneliktir. Üretim destektable yapılandırmalarının özelliklerinden biri, SAP HANA verileri için birimlerin ayrılmasıdır ve günlüğü iki farklı birime geri kaydeder. Bu tür bir ayrımı nedeni, birimlerdeki iş yükü özelliklerinin farklı olması nedenidir. Bu, önerilen üretim yapılandırmalarına sahip olan, farklı türde önbelleğe alma veya hatta farklı Azure blok depolama türleri gerekli olabilir. Azure blok depolama hedefini kullanan üretim, [Azure sanal makineleri için tek VM SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/) ile uyumlu olacak şekilde desteklenir.  Üretim dışı senaryolar için, üretim sistemlerine yönelik olarak gerçekleştirilen bazı önemli noktalar, üretim dışı olan daha düşük üretimden oluşan sistemlere uygulanmayabilir. Sonuç olarak, HANA verileri ve günlük birimi birleştirilebilir. Sonuç olarak, bazı küller ile sonuç olarak, üretim sistemleri için gerekli olan belirli aktarım hızını veya gecikmeli KPI 'Ları henüz karşılamıyor. Bu ortamlarda maliyetleri azaltmanın başka bir yönü de [Azure Standart SSD Storage](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)kullanımı olabilir. [Azure sanal makineleri için tek VM SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)geçersiz kılan bir seçenek de vardır. 
+Şimdiye kadar, bu belgede açıklanan Azure Premium depolama çözümü, [Azure n serisi sanal makineler için Premium Depolama ve azure yazma hızlandırıcısı ile Ilgili çözüm çözümleri](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) SAP HANA üretimde desteklenen senaryolara yöneliktir. Üretim destektable yapılandırmalarının özelliklerinden biri, SAP HANA verileri için birimlerin ayrılmasıdır ve günlüğü iki farklı birime geri kaydeder. Bu tür bir ayrımı nedeni, birimlerdeki iş yükü özelliklerinin farklı olması nedenidir. Bu, önerilen üretim yapılandırmalarına sahip olan, farklı türde önbelleğe alma veya hatta farklı Azure blok depolama türleri gerekli olabilir. Azure blok depolama hedefini kullanan üretim, [Azure sanal makineleri için tek VM SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/) ile uyumlu olacak şekilde desteklenir.  Üretim dışı senaryolar için, üretim sistemlerine yönelik olarak gerçekleştirilen bazı önemli noktalar, üretim dışı olan daha düşük üretimden oluşan sistemlere uygulanmayabilir. Sonuç olarak, HANA verileri ve günlük birimi birleştirilebilir. Sonuç olarak, bazı küller ile sonuç olarak, üretim sistemleri için gerekli olan belirli aktarım hızını veya gecikmeli KPI 'Ları henüz karşılamıyor. Bu ortamlarda maliyetleri azaltmanın başka bir yönü de [Azure Standart SSD Storage](./planning-guide-storage.md#azure-standard-ssd-storage)kullanımı olabilir. [Azure sanal makineleri için tek VM SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)geçersiz kılan bir seçenek de vardır. 
 
 Bu tür yapılandırmalara daha az maliyetli bir alternatif şöyle görünebilir:
 

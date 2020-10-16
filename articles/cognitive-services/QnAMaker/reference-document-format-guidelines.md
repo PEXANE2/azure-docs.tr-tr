@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776740"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>İçeri aktarılan belgeler ve URL 'Ler için biçimlendirme yönergeleri
@@ -54,7 +54,7 @@ Bir dizin olmadan yarı yapılandırılmış bir belge örneği aşağıda veril
 
 ## <a name="structured-qna-document"></a>Yapılandırılmış QnA belgesi
 
-Belge dosyalarında yapılandırılmış soru-cevap biçimi, her satırda değişen sorular ve yanıtlar biçiminde, satır başına bir soru ve aşağıdaki satırdaki yanıtı aşağıda gösterildiği gibi bir şekilde oluşturulur:
+Belge dosyalarında yapılandırılmış Question-Answers biçimi, satır başına değişen sorular ve yanıtlar biçiminde, her satıra bir soru ve aşağıdaki satırdaki yanıtı aşağıda gösterildiği gibi, aşağıdaki satıra gelir:
 
 ```text
 Question1

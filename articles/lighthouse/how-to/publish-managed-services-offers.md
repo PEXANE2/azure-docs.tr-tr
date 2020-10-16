@@ -3,16 +3,16 @@ title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure 'da kullanımı için bir yönetilen hizmet teklifini nasıl yayımlayacağınızı öğrenin.
 ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589733"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974371"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
-Bu makalede ortak veya özel yönetilen hizmet teklifini Iş Ortağı Merkezi 'ndeki [ticari Market](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) programını kullanarak [Azure Marketi](https://azuremarketplace.microsoft.com) 'nde nasıl yayımlayacağınızı öğreneceksiniz. Teklifi satın alan müşteriler, abonelikleri veya kaynak gruplarını devredebilir ve bu da bunları [Azure ışıklı kullanım](../overview.md)aracılığıyla yönetmenizi sağlar.
+Bu makalede ortak veya özel yönetilen hizmet teklifini Iş Ortağı Merkezi 'ndeki [ticari Market](../../marketplace/overview.md) programını kullanarak [Azure Marketi](https://azuremarketplace.microsoft.com) 'nde nasıl yayımlayacağınızı öğreneceksiniz. Teklifi satın alan müşteriler, abonelikleri veya kaynak gruplarını devredebilir ve bu da bunları [Azure ışıklı kullanım](../overview.md)aracılığıyla yönetmenizi sağlar.
 
 ## <a name="publishing-requirements"></a>Yayımlama gereksinimleri
 
@@ -28,19 +28,19 @@ Aşağıdaki tablo, yönetilen bir hizmet teklifini yayımlayarak veya Azure Res
 
 |**Dikkate Alınacak Nokta**  |**Yönetilen hizmet teklifi**  |**ARM şablonları**  |
 |---------|---------|---------|
-|[Iş Ortağı Merkezi hesabı](../../marketplace/partner-center-portal/create-account.md) gerektirir   |Evet         |Hayır        |
-|[Gümüş veya altın bulut platformu uzmanlık düzeyi](/partner-center/learn-about-competencies) veya [Azure uzmanı msp](https://partner.microsoft.com/membership/azure-expert-msp) gerektirir      |Evet         |Hayır         |
-|Azure Marketi aracılığıyla yeni müşteriler tarafından kullanılabilir     |Evet     |Hayır       |
-|Teklifi belirli müşterilerle sınırlayabilir     |Evet (yalnızca özel tekliflerle birlikte, bulut çözümü sağlayıcısı (CSP) programının satıcısı ile belirlenen aboneliklerle birlikte kullanılamaz)         |Evet         |
-|Azure portal müşteri kabulünü gerektirir     |Evet     |Hayır   |
-|Birden çok abonelik, kaynak grubu veya müşteri eklemek için Otomasyonu kullanabilir |Hayır     |Evet    |
-|Yeni yerleşik rollere ve Azure ışıklı kullanım özelliklerine anında erişin     |Her zaman değil (genellikle bir gecikmeden sonra kullanılabilir)         |Evet         |
+|[Iş Ortağı Merkezi hesabı](../../marketplace/partner-center-portal/create-account.md) gerektirir   |Yes         |Hayır        |
+|[Gümüş veya altın bulut platformu uzmanlık düzeyi](/partner-center/learn-about-competencies) veya [Azure uzmanı msp](https://partner.microsoft.com/membership/azure-expert-msp) gerektirir      |Yes         |Hayır         |
+|Azure Marketi aracılığıyla yeni müşteriler tarafından kullanılabilir     |Yes     |Hayır       |
+|Teklifi belirli müşterilerle sınırlayabilir     |Evet (yalnızca özel tekliflerle birlikte, bulut çözümü sağlayıcısı (CSP) programının satıcısı ile belirlenen aboneliklerle birlikte kullanılamaz)         |Yes         |
+|Azure portal müşteri kabulünü gerektirir     |Yes     |Hayır   |
+|Birden çok abonelik, kaynak grubu veya müşteri eklemek için Otomasyonu kullanabilir |Hayır     |Yes    |
+|Yeni yerleşik rollere ve Azure ışıklı kullanım özelliklerine anında erişin     |Her zaman değil (genellikle bir gecikmeden sonra kullanılabilir)         |Yes         |
 
 ## <a name="create-your-offer"></a>Teklifinizi oluşturma
 
 Sağlamanız gereken tüm bilgiler ve varlıklar dahil olmak üzere teklifinizi oluşturma hakkında ayrıntılı yönergeler için bkz. [yönetilen hizmet teklifi oluşturma](../../marketplace/partner-center-portal/create-new-managed-service-offer.md).
 
-Genel yayımlama süreci hakkında bilgi edinmek için bkz. [Azure Marketi ve AppSource Yayımlama Kılavuzu](../../marketplace/marketplace-publishers-guide.md). Ayrıca, özellikle [yönetilen hizmetler](/legal/marketplace/certification-policies#700-managed-services) bölümünü [ticari Market sertifika ilkelerini](/legal/marketplace/certification-policies)gözden geçirmeniz gerekir.
+Genel yayımlama süreci hakkında bilgi edinmek için bkz. [Azure Marketi ve AppSource Yayımlama Kılavuzu](../../marketplace/overview.md). Ayrıca, özellikle [yönetilen hizmetler](/legal/marketplace/certification-policies#700-managed-services) bölümünü [ticari Market sertifika ilkelerini](/legal/marketplace/certification-policies)gözden geçirmeniz gerekir.
 
 Müşteri teklifinizi ekledikten sonra, bir veya daha fazla abonelik veya kaynak grubu temsilciliğini sağlayacak ve bu, [Azure açık eklendi](#the-customer-onboarding-process).
 
@@ -64,6 +64,6 @@ Müşteri bir abonelik (veya bir abonelik içindeki bir veya daha fazla kaynak g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ticari Market](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)hakkında bilgi edinin.
+- [Ticari Market](../../marketplace/overview.md)hakkında bilgi edinin.
 - [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
 - Azure portal **müşterilerime** giderek [müşterileri görüntüleyin ve yönetin](view-manage-customers.md) .

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092737"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069934"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure bulut hizmeti için özel bir etki alanı adı yapılandırma
 Bir bulut hizmeti oluşturduğunuzda, Azure onu **cloudapp.net**'in bir alt etki alanına atar. Örneğin, bulut hizmetiniz "contoso" olarak adlandırılmışsa, kullanıcılarınız uygulamanıza benzer bir URL üzerinden erişebilecektir `http://contoso.cloudapp.net` . Azure, bir sanal IP adresi de atar.
@@ -62,7 +62,7 @@ Bir CNAME kaydı oluşturmak için, kaydediciniz tarafından sunulan araçları 
 
        ![Site URL 'sini gösteren hızlı bakış bölümü][csurl]
 
-       **VEYA**
+       **OR**
    * [Azure PowerShell](/powershell/azure/)'i yükleyip yapılandırın ve ardından aşağıdaki komutu kullanın:
 
        ```powershell
@@ -95,7 +95,7 @@ Bir kayıt oluşturmak için, önce bulut hizmetinizin sanal IP adresini bulman�
 
        ![VIP 'yi gösteren hızlı bakış bölümü][vip]
 
-       **VEYA**
+       **OR**
    * [Azure PowerShell](/powershell/azure/)'i yükleyip yapılandırın ve ardından aşağıdaki komutu kullanın:
 
        ```powershell
@@ -119,7 +119,7 @@ Bir kayıt oluşturmak için, önce bulut hizmetinizin sanal IP adresini bulman�
 Bu örnek, kök etki alanı için bir kayıt oluşturmayı gösterir. Tüm alt etki alanlarını kapsayacak bir joker karakter girişi oluşturmak istiyorsanız, alt etki alanı olarak ' * * * * * ' girersiniz.
 
 > [!WARNING]
-> Azure 'daki IP adresleri varsayılan olarak dinamiktir. IP adresinizin değişmediğinden emin olmak için büyük olasılıkla [ayrılmış BIR IP adresi](../virtual-network/virtual-networks-reserved-public-ip.md) kullanmak isteyeceksiniz.
+> Azure 'daki IP adresleri varsayılan olarak dinamiktir. IP adresinizin değişmediğinden emin olmak için büyük olasılıkla [ayrılmış BIR IP adresi](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) kullanmak isteyeceksiniz.
 > 
 > 
 
@@ -135,9 +135,6 @@ Bu örnek, kök etki alanı için bir kayıt oluşturmayı gösterir. Tüm alt e
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure Portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-

@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0991992a6138d263dfb4d200c9555a8d53366d70
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995984"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Azure Key Vault içinde depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma
@@ -33,7 +33,7 @@ Müşteri tarafından yönetilen anahtarları depolamak için yeni veya var olan
 
 Azure depolama şifrelemesi ile müşteri tarafından yönetilen anahtarların kullanılması, Anahtar Kasası için hem geçici silme hem de Temizleme korumasının etkinleştirilmesini gerektirir. Yeni bir Anahtar Kasası oluşturduğunuzda ve devre dışı bırakılamaz, geçici silme varsayılan olarak etkindir. Anahtar kasasını oluştururken veya oluşturulduktan sonra, temizleme korumasını etkinleştirebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir Anahtar Kasası oluşturma](../../key-vault/general/quick-create-portal.md). Anahtar Kasası oluşturduğunuzda, aşağıdaki görüntüde gösterildiği gibi **Temizleme korumasını etkinleştir**' i seçin.
 
@@ -131,7 +131,7 @@ Ardından, anahtar kasasında bir anahtar ekleyin.
 
 Azure depolama şifrelemesi, 2048, 3072 ve 4096 boyutlarının RSA ve RSA-HSM anahtarlarını destekler. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault anahtarlar** .
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal bir anahtar ekleme hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault bir anahtar ayarlama ve alma](../../key-vault/keys/quick-create-portal.md).
 
@@ -170,7 +170,7 @@ Sonra, Azure depolama hesabınızı Azure Key Vault ile müşteri tarafından y�
 
 Azure depolama, şifreleme için kullanılan müşteri tarafından yönetilen anahtarı, en son anahtar sürümünü kullanacak şekilde otomatik olarak güncelleştirebilir. Müşteri tarafından yönetilen anahtar Azure Key Vault döndürüldüğünde, Azure depolama, şifreleme için anahtarın en son sürümünü otomatik olarak kullanmaya başlayacaktır.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Müşteri tarafından yönetilen anahtarları Azure portal anahtar sürümünün otomatik güncelleştirilmesiyle birlikte yapılandırmak için aşağıdaki adımları izleyin:
 
@@ -190,7 +190,7 @@ Müşteri tarafından yönetilen anahtarları Azure portal anahtar sürümünün
 
 Anahtarı belirttikten sonra Azure portal, anahtar sürümünün otomatik güncelleştirilme özelliğinin etkin olduğunu ve şifreleme için kullanılmakta olan anahtar sürümü görüntülediğini gösterir.
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Anahtar sürümünün etkinleştirildiği otomatik güncelleştirmeyi gösteren ekran görüntüsü":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Anahtar Kasası oluştururken Temizleme korumasının nasıl etkinleştirileceğini gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -236,7 +236,7 @@ az storage account update
 
 Anahtar sürümünü el ile güncelleştirmeyi tercih ediyorsanız, sürümü, müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırdığınız sırada açıkça belirtin. Bu durumda, anahtar kasasında yeni bir sürüm oluşturulduğunda Azure Storage anahtar sürümünü otomatik olarak güncelleştirmez. Yeni bir anahtar sürümü kullanmak için, Azure depolama şifrelemesi için kullanılan sürümü el ile güncelleştirmeniz gerekir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Müşteri tarafından yönetilen anahtarları Azure portal anahtar sürümünün el ile güncelleştirilmesiyle birlikte yapılandırmak için, sürüm dahil olmak üzere anahtar URI 'sini belirtin. Bir anahtarı URI olarak belirtmek için şu adımları izleyin:
 
@@ -304,7 +304,7 @@ Anahtar sürümünü el ile güncelleştirdiğinizde, yeni sürümü kullanmak i
 
 Azure depolama şifrelemesi için kullandığınız anahtarı dilediğiniz zaman değiştirebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Anahtarı Azure portal değiştirmek için şu adımları izleyin:
 
@@ -326,7 +326,7 @@ Anahtarı Azure CLı ile değiştirmek için, [müşteri tarafından yönetilen 
 
 Müşteri tarafından yönetilen bir anahtarı iptal etmek, depolama hesabı ile Anahtar Kasası arasındaki ilişkiyi kaldırır.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Müşteri tarafından yönetilen anahtarları Azure portal iptal etmek için, [müşteri tarafından yönetilen anahtarları devre dışı bırak](#disable-customer-managed-keys)bölümünde açıklandığı gibi anahtarı devre dışı bırakın.
 
@@ -355,7 +355,7 @@ az keyvault delete-policy \
 
 Müşteri tarafından yönetilen anahtarları devre dışı bıraktığınızda, depolama hesabınız Microsoft tarafından yönetilen anahtarlarla yeniden şifrelenir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal müşteri tarafından yönetilen anahtarları devre dışı bırakmak için şu adımları izleyin:
 

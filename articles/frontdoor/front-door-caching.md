@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535840"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure ön kapılı önbelleğe alma
@@ -113,13 +113,13 @@ Bir öğenin önbellekte ne kadar süreyle depolanacağını anlamak için aşa�
 2. Cache-Control: Max-Age =\<seconds>
 3. Bitiminden \<http-date>
 
-Yanıtın Cache-Control: Private, Cache-Control: No-Cache ve Cache-Control gibi önbelleğe alınacağını belirten Cache-Control yanıt üstbilgileri: No-Store kabul edilir.  Cache-Control yoksa, varsayılan davranış ön kapısının kaynağı x 'in 1 ila 3 gün arasında rastgele bir şekilde çekileceği X miktarı için önbelleğe alır.
+Yanıtın Cache-Control: Private, Cache-Control: No-Cache ve Cache-Control gibi önbelleğe alınmayabileceği belirten yanıt üstbilgileri Cache-Control: No-Store kabul edilir.  Cache-Control yoksa, varsayılan davranış ön kapısının kaynağı, X 'in 1 ila 3 gün arasında rastgele bir şekilde çekileceği X miktarı için önbelleğe alır.
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 
 Önbelleğe alma kullanılırken aşağıdaki istek üstbilgileri bir arka uca iletilmez.
 - İçerik Uzunluğu
-- Aktarım kodlaması
+- Transfer-Encoding
 
 ## <a name="cache-duration"></a>Önbellek süresi
 

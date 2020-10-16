@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
 ms.openlocfilehash: 9b51205fe67bfe5be46491b0238e987fc14f6737
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074360"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure portal kullanarak işletim sistemi diskini bir kurtarma VM 'sine ekleyerek bir Windows sanal makinesi sorunlarını giderme
@@ -127,7 +127,7 @@ Hatalar çözümlendikten sonra, var olan sanal sabit diski sorun giderme sanal 
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>VM için işletim sistemi diskini değiştirme
 
-Azure portal artık VM 'nin işletim sistemi diskini değiştirmeyi destekler. Bunu yapmak için şu adımları izleyin:
+Azure portal artık VM 'nin işletim sistemi diskini değiştirmeyi destekler. Bunu yapmak için şu adımları uygulayın:
 
 1. [Azure Portal](https://portal.azure.com)gidin. Kenar çubuğundan **sanal makineler** ' i seçin ve ardından sorunlu VM 'yi seçin.
 1. Sol bölmede, **diskler**' i seçin ve ardından **Işletim sistemi diski Değiştir**' i seçin.

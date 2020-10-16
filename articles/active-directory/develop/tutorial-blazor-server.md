@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611480"
+ms.locfileid: "91873192"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir Blazor Server uygulaması oluşturma
 
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Microsoft. Identity. Web kullanarak hem kimlik doğrulamasını hem de yetkilendirmeyi işleme
 > * Korumalı bir Web API 'sinden veri alma, Microsoft Graph
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - Bir uygulamayı kaydedebileceğiniz bir Azure AD kiracısı. Bir Azure AD kiracısına erişiminiz yoksa, [Microsoft 365 Geliştirici programına](https://developer.microsoft.com/microsoft-365/dev-program) kaydolarak veya [ücretsiz Azure hesabı](https://azure.microsoft.com/free)oluşturarak bir tane edinebilirsiniz.
@@ -84,7 +84,7 @@ Tarayıcınızda `https://localhost:5001` , ' a gidin ve uygulamanın çalışt�
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Microsoft Graph verileri alma
 
-[Microsoft Graph](/graph/overview) kullanıcılarınızın Microsoft 365 verilerine erişim sağlayan bir dizi API sunar. Microsoft Identity platformunu uygulamanızın kimlik sağlayıcısı olarak kullanarak Microsoft Identity platform tarafından verilen belirteçleri Microsoft Graph doğrudan desteklediğinden bu bilgilere daha kolay erişebilirsiniz. Bu bölümde kod eklemek, oturum açan kullanıcının e-postalarını uygulamanın "verileri getir" sayfasında görüntüleyebilir.
+[Microsoft Graph](/graph/overview) kullanıcılarınızın Microsoft 365 verilerine erişim sağlayan bir dizi API sunar. Microsoft Identity platformunu uygulamanızın kimlik sağlayıcısı olarak kullanarak Microsoft Identity platform tarafından verilen belirteçleri Microsoft Graph doğrudan desteklediğinden bu bilgilere daha kolay erişebilirsiniz. Bu bölümde, oturum açan kullanıcının e-postalarını uygulamanın "verileri getir" sayfasında görüntüleyecek kodu ekleyin.
 
 Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygulamanızı oturumunuzu kapatıp geçerli belirteciniz çalışmayacak. Henüz yapmadıysanız, aşağıdaki kodu güncelleştirmeden önce uygulamanızı yeniden çalıştırın ve **Oturumu Kapat** ' ı seçin.
 

@@ -4,10 +4,10 @@ description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uyg
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370043"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
@@ -134,13 +134,13 @@ Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebilece
 
 |                     | Micrometer | Log4J, logback, Tem | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Özel olaylar**   |            |                     |  Yes    |
-| **Özel ölçümler**  |  Yes       |                     |  Yes    |
-| **Bağımlılıklar**    |            |                     |  Yes    |
-| **Özel durumlar**      |            |  Yes                |  Yes    |
-| **Sayfa Görüntülemeleri**      |            |                     |  Yes    |
-| **İstekler**        |            |                     |  Yes    |
-| **İzlemeler**          |            |  Yes                |  Yes    |
+| **Özel olaylar**   |            |                     |  Evet    |
+| **Özel ölçümler**  |  Evet       |                     |  Evet    |
+| **Bağımlılıklar**    |            |                     |  Evet    |
+| **Özel Durumlar**      |            |  Evet                |  Evet    |
+| **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
+| **İstekler**        |            |                     |  Evet    |
+| **İzlemeler**          |            |  Evet                |  Evet    |
 
 Application Insights 3,0 ile bir SDK 'Yı Şu anda serbest bırakmaya planlanıyoruz.
 
@@ -166,7 +166,7 @@ private static final TelemetryClient telemetryClient = new TelemetryClient();
 
 ve bunu özel telemetri göndermek için kullanın.
 
-### <a name="events"></a>Ekinlikler
+### <a name="events"></a>Olaylar
 
   ```java
 telemetryClient.trackEvent("WinGame");
@@ -211,7 +211,7 @@ Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 En sevdiğiniz günlük çatısı aracılığıyla özel özel durum telemetrisi gönderebilirsiniz.
 
 Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445724"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973589"
 ---
 # <a name="deploy-azure-sql-edge"></a>Azure SQL Edge 'i dağıtma 
 
@@ -25,8 +25,7 @@ Azure SQL Edge, IoT ve Azure IoT Edge dağıtımları için iyileştirilmiş bir
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * [Azure portalında](https://portal.azure.com/) oturum açın.
 * [Azure IoT Hub](../iot-hub/iot-hub-create-through-portal.md)oluşturun.
-* Azure portal bir [IoT Edge cihazı](../iot-edge/how-to-register-device-portal.md)kaydedin.
-* [Azure portal IoT Edge modülünü dağıtmak](../iot-edge/how-to-deploy-modules-portal.md)üzere IoT Edge cihazı hazırlayın.
+* Azure IoT Edge bir [cihaz](../iot-edge/how-to-install-iot-edge.md)oluşturun.
 
 > [!NOTE]   
 > Bir Azure Linux sanal makinesini IoT Edge bir cihaz olarak dağıtmak için bu [hızlı başlangıç kılavuzuna](../iot-edge/quickstart-linux.md)bakın.

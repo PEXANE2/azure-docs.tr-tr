@@ -8,10 +8,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 07/14/2017
 ms.openlocfilehash: 4b8285281119121b509c62b11bf48a5f70a9f0f0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125709"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL çalıştırma ve Visual Studio Code yerel olarak hata ayıklama
@@ -34,7 +34,7 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
 
     ![BuildTools 'ı yükler](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 **Win10SDK 10240**yüklemek Için LocalRunDependency/Win10SDK_10.0.10240 _2 klasöründe sdksetup.exe ' a tıklayın ve ardından sihirbaz yönergelerini izleyin.  
+   2,2 **Win10SDK 10240**yüklemek Için LocalRunDependency/Win10SDK_10.0.10240 _2 klasöründe sdksetup.exe ' a ve ardından sihirbaz yönergelerini izleyin.  
 
     ![Win10SDK 10240 'yi yükler](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 

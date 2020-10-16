@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fff569c586548d84ed55018764363ad7f05e526d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257096"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
@@ -45,7 +45,7 @@ Bölümün OnDataLossAsync API 'sine bir çağrı tetikler.  Bu API, belirtilen 
 > [!NOTE]   
 > Bu API çağrıldıktan sonra geri alınamaz. CancelOperation çağrısı yalnızca yürütmeyi durdurur ve iç sistem durumunu temizler. Komutun veri kaybına neden olmak için yeterince ilerlemedi varsa verileri geri yükleme işlemi olmayacaktır. Bu API ile başlatılan işlem hakkında bilgi döndürmek için aynı operationId ile GetDataLossProgress API 'sini çağırın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -70,7 +70,7 @@ StartDataLoss API kullanılarak başlatılan bir bölüm veri kaybı işleminin 
 
 OperationId kullanarak, StartDataLoss ile başlatılan bir veri kaybı işleminin ilerleme durumunu alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -94,7 +94,7 @@ Belirtilen Service Fabric bölümünün sistem durumunu alır.
 
 Hizmette bildirilen sistem durumu olaylarının toplanmasını sistem durumuna göre filtrelemek için EventsHealthStateFilter ' i kullanın. Bölüm üzerindeki ReplicaHealthState nesnelerinin koleksiyonunu filtrelemek için ReplicasHealthStateFilter kullanın. Sistem durumu deposunda mevcut olmayan bir bölüm belirtirseniz bu istek bir hata döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -119,7 +119,7 @@ Service Fabric bölüm hakkındaki bilgileri alır.
 
 Belirtilen bölüm hakkındaki bilgileri alır. Yanıt, bölüm KIMLIĞINI, bölümleme şeması bilgilerini, Bölüm tarafından desteklenen anahtarları, durumu, durumu ve bölüm hakkındaki diğer ayrıntıları içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -141,7 +141,7 @@ Service Fabric bir hizmetin bölümlerinin listesini alır.
 
 Yanıt, bölüm KIMLIĞINI, bölümleme şeması bilgilerini, Bölüm tarafından desteklenen anahtarları, durumu, durumu ve bölüm hakkındaki diğer ayrıntıları içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -164,7 +164,7 @@ Belirtilen Service Fabric bölümünün yükleme bilgilerini alır.
 
 Belirtilen bölümün yüklenmesi hakkındaki bilgileri döndürür. Yanıt, Service Fabric bölüm için yükleme raporlarının bir listesini içerir. Her rapor, UTC 'de yük ölçümü adı, değeri ve son raporlanan saati içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -186,7 +186,7 @@ Service Fabric bölümün geçerli yükünü sıfırlar.
 
 Bir Service Fabric bölümünün geçerli yükünü hizmetin varsayılan yüküne sıfırlar.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -208,7 +208,7 @@ Belirli bir durum bilgisi olan hizmet bölümü için çekirdek kaybına yol aç
 
 Bu API, hizmetinize geçici bir çekirdek kaybı durumu için faydalıdır. Bu API ile başlatılan işlem hakkında bilgi döndürmek için aynı operationId ile GetQuorumLossProgress API 'sini çağırın. Bu, yalnızca durum bilgisi olan kalıcı (HasPersistedState = = true) hizmetlerde çağrılabilir.  Bu API 'yi durum bilgisi olmayan hizmetlerde veya yalnızca bellek içi hizmetlerde kullanmayın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -234,7 +234,7 @@ Startquorumkaybetme API 'SI kullanılarak başlatılan bir bölümdeki çekirdek
 
 Belirtilen operationId kullanılarak Startquorumkaybetme ile başlatılan bir çekirdek kaybı işleminin ilerlemesini alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -258,7 +258,7 @@ Service Fabric kümesine, şu anda çekirdek kaybına takılmış olan belirli b
 
 Bu işlem yalnızca, alt kopyaların kurtarılamamış olduğu biliniyorsa gerçekleştirilmelidir. Bu API 'nin yanlış kullanımı olası veri kaybına neden olabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -280,7 +280,7 @@ Service Fabric kümesine, şu anda çekirdek kaybına takılmış olan Hizmetler
 
 Bu işlem yalnızca, alt kopyaların kurtarılamamış olduğu biliniyorsa gerçekleştirilmelidir. Bu API 'nin yanlış kullanımı olası veri kaybına neden olabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -301,7 +301,7 @@ Service Fabric bölümünde bir sistem durumu raporu gönderir.
 
 Belirtilen Service Fabric bölümünün sistem durumunu raporlar. Rapor, sistem durumu raporunun ve rapor alındığı özelliğin kaynağı hakkında bilgi içermelidir. Rapor, sistem durumu deposuna ileten bir Service Fabric ağ geçidi bölümüne gönderilir. Rapor, ağ geçidi tarafından kabul edilebilir, ancak ek doğrulamadan sonra sistem durumu deposu tarafından reddedildi. Örneğin, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle sistem durumu deposu raporu reddedebilir. Raporun sistem durumu deposuna uygulanıp uygulanmadığını görmek için, raporun Olaylar bölümünde görünüp göründüğünü kontrol edin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -331,7 +331,7 @@ Bu API, belirtilen bölümün bazı veya tüm çoğaltmalarını veya örnekleri
 
 Bu API, yük devretmeyi test etmek için kullanışlıdır. Durum bilgisi olmayan bir hizmet bölümünü hedeflemek için kullanılırsa, RestartPartitionMode Allreplicasorınstances olmalıdır. İlerlemeyi almak için aynı operationId 'YI kullanarak GetPartitionRestartProgress API 'sini çağırın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -356,7 +356,7 @@ StartPartitionRestart kullanılarak başlatılan bir PartitionRestart işleminin
 
 Belirtilen operationId kullanılarak StartPartitionRestart ile başlatılan PartitionRestart işleminin ilerlemesini alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -380,7 +380,7 @@ Bir bölüm için Service Fabric hizmetinin adını alır.
 
 Belirtilen bölüm için hizmetin adını alır. Bölüm KIMLIĞI kümede yoksa 404 hatası döndürülür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

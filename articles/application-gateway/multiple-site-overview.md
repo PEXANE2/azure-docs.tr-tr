@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474334"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway birden çok site barındırma
@@ -35,7 +35,7 @@ Application Gateway, çok siteli HTTP (ler) dinleyicisi kullanılarak ana bilgis
 
 Ana bilgisayar adında bir joker karakter kullanarak, tek bir dinleyicide birden çok konak adını eşleştirebilirsiniz. Örneğin, `*.contoso.com` ve ile eşleştirebilir `ecom.contoso.com` `b2b.contoso.com` `customer1.b2b.contoso.com` . Bir ana bilgisayar adları dizisi kullanarak, istekleri bir arka uç havuzuna yönlendirmek için bir dinleyici için birden çok konak adı yapılandırabilirsiniz. Örneğin, bir dinleyici, `contoso.com, fabrikam.com` her iki konak adı için istekleri kabul edecek şekilde içerebilir.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Joker karakter dinleyicisi":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Çok siteli Application Gateway":::
 
 >[!NOTE]
 > Bu özellik önizleme aşamasındadır ve yalnızca Application Gateway Standard_v2 ve WAF_v2 SKU 'SU için kullanılabilir. Önizlemeler hakkında daha fazla bilgi edinmek için [buradaki kullanım koşullarına](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
@@ -50,16 +50,16 @@ Ana bilgisayar adında bir joker karakter kullanarak, tek bir dinleyicide birden
 
 ### <a name="allowed-characters-in-the-host-names-field"></a>Ana bilgisayar adları alanında izin verilen karakterler:
 
-* `(A-Z,a-z,0-9)`-alfasayısal karakterler
-* `-`-kısa çizgi veya eksi
-* `.`-ayırıcı olarak dönem
-*   `*`-izin verilen aralıkta birden çok karakterle eşleştirebilir
-*   `?`-izin verilen aralıktaki tek bir karakterle eşleştirebilir
+* `(A-Z,a-z,0-9)` -alfasayısal karakterler
+* `-` -kısa çizgi veya eksi
+* `.` -ayırıcı olarak dönem
+*   `*` -izin verilen aralıkta birden çok karakterle eşleştirebilir
+*   `?` -izin verilen aralıktaki tek bir karakterle eşleştirebilir
 
 ### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Bir dinleyicide joker karakter ve birden çok konak adı kullanma koşulları:
 
 *   Tek bir dinleyicide yalnızca 5 ana bilgisayar adı belirtebilirsiniz
-*   Yıldız işareti `*` , bir etki alanı stili adının veya ana bilgisayar adının bir bileşeninde yalnızca bir kez belirtilebilir. Örneğin, Component1 *. component2*. component3. `(*.contoso-*.com)`geçerli.
+*   Yıldız işareti `*` , bir etki alanı stili adının veya ana bilgisayar adının bir bileşeninde yalnızca bir kez belirtilebilir. Örneğin, Component1 *. component2*. component3. `(*.contoso-*.com)` geçerli.
 *   Ana bilgisayar adında yalnızca en fazla iki yıldız olabilir `*` . Örneğin, `*.contoso.*` geçerlidir ve `*.contoso.*.*.com` geçersizdir.
 *   Ana bilgisayar adında yalnızca en fazla 4 joker karakter olabilir. Örneğin, `????.contoso.com` geçerlidir, `w??.contoso*.edu.*` ancak `????.contoso.*` geçersizdir.
 *   `*` `?` Ana bilgisayar adının (veya veya) bir bileşeninde birlikte yıldız işareti ve soru işareti kullanılması `*?` `?*` `**` geçersizdir. Örneğin, `*?.contoso.com` ve `**.contoso.com` geçersizdir.

@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91543204"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizinleyicileri ve becerileri kullanarak şifrelenmiş Blobların dizinini oluşturma
@@ -31,7 +31,7 @@ Bu kılavuzda, aşağıdaki görevleri gerçekleştirmek için Postman ve arama 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örnekte, dosyalarınızı zaten Azure Blob depolama alanına yüklediğinizi ve bunları süreçte şifrelediğinizi varsaymış olursunuz. Dosyalarınızı başlangıçta karşıya yüklenmiş ve şifreli olarak almak için yardıma ihtiyacınız varsa, bunun nasıl yapılacağını öğrenmek için [Bu öğreticiye](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) göz atın.
 

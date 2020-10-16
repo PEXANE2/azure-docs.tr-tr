@@ -1,25 +1,18 @@
 ---
 title: Azure Linux sanal makinesinde Oracle ASM 'yi ayarlama | Microsoft Docs
 description: Oracle ASM 'yi hızlı bir şekilde Azure ortamınızda çalışır duruma alın.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: e82b458487dd4c865013c806447473d25c75017f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 2d112db720d8ad5a1cba1ec2f35fbb59670e1e92
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328097"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996737"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle ASM ayarlama  
 

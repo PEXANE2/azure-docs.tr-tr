@@ -16,10 +16,10 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269599"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android için çevrimdışı Widevine akışı
@@ -161,7 +161,7 @@ Yukarıdaki açık kaynaklı PWA uygulaması Node.js yazılır. Bir Ubuntu sunuc
 
 1. CORS sorunu: örnek uygulamadaki örnek video içinde barındırılır https://storage.googleapis.com/biograf-video-files/videos/ . Google, Google bulut depolama demeti içinde barındırılan tüm test örnekleri için CORS 'yi ayarladı. Bunlar, özel olarak CORS girişi `https://biograf-155113.appspot.com` (Google 'ın örneğini barındırdığı etki alanı) diğer sitelere erişimi ENGELLEDIĞI CORS üstbilgileri ile birlikte sunulur. Denerseniz, aşağıdaki HTTP hatasını görürsünüz: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Sertifika sorunu: Chrome v 58 ' den başlayarak Widevine için EME, HTTPS gerektirir. Bu nedenle, örnek uygulamayı bir x509 sertifikasıyla HTTPS üzerinden barındırmanıza gerek duyarsınız. Aşağıdaki gereksinimler nedeniyle olağan bir test sertifikası çalışmıyor: aşağıdaki minimum gereksinimleri karşılayan bir sertifika edinmeniz gerekir:
-    - Chrome ve Firefox, sertifikada SAN konusu alternatif adı ayarının mevcut olmasını gerektirir
+    - Chrome ve Firefox, sertifikada SAN-Subject alternatif ad ayarının mevcut olmasını gerektirir
     - Sertifika, güvenilir bir CA 'ya sahip olmalı ve kendinden imzalı bir geliştirme sertifikası çalışmıyor
     - Sertifika, Web sunucusunun veya ağ geçidinin DNS adıyla eşleşen bir CN 'ye sahip olmalıdır
 

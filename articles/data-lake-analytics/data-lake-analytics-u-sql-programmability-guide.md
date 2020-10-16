@@ -8,10 +8,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288947"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programlama kılavuzu
@@ -83,7 +83,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>Bugünün tarihi için C# ifadelerini kullanın
 
-Bugünün tarihini çekmek için aşağıdaki C# ifadesini kullanabiliriz:`DateTime.Now.ToString("M/d/yyyy")`
+Bugünün tarihini çekmek için aşağıdaki C# ifadesini kullanabiliriz: `DateTime.Now.ToString("M/d/yyyy")`
 
 Bu ifadenin bir betikte nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
@@ -529,9 +529,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **Serileştirme**: belirtilen akışa verilen köke sahip bir nesneyi veya nesne grafiğini seri hale getirir.
 
-`MyType`Örnek: türünün örneği.  
-`IColumnWriter`Yazıcı/ `IColumnReader` Okuyucu: temel alınan sütun akışı.  
-`ISerializationContext`Bağlam: serileştirme sırasında akış için kaynak veya hedef bağlamını belirten bir bayrak kümesini tanımlayan sabit listesi.
+`MyType` Örnek: türünün örneği.  
+`IColumnWriter` Yazıcı/ `IColumnReader` Okuyucu: temel alınan sütun akışı.  
+`ISerializationContext` Bağlam: serileştirme sırasında akış için kaynak veya hedef bağlamını belirten bir bayrak kümesini tanımlayan sabit listesi.
 
 * **Ara**: kaynak veya hedef bağlamın kalıcı bir depo olduğunu belirtir.
 
@@ -941,7 +941,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 * T2: biriktirmek için Ikinci parametre
 * TResult: sonlandırma türü döndürme
 
-Örnek:
+Örneğin:
 
 ```csharp
 public class GuidAggregate : IAggregate<string, int, int>
@@ -1259,9 +1259,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`her giriş satırı için çağrılır. `IUnstructuredWriter output`Satır kümesini döndürür.
+* `Output` her giriş satırı için çağrılır. `IUnstructuredWriter output`Satır kümesini döndürür.
 * Oluşturucu sınıfı, parametreleri Kullanıcı tanımlı outputter 'a geçirmek için kullanılır.
-* `Close`, pahalı durum yayınlamak veya son satırın ne zaman yazıldığını belirleyebilmek için isteğe bağlı olarak geçersiz kılmak için kullanılır.
+* `Close` , pahalı durum yayınlamak veya son satırın ne zaman yazıldığını belirleyebilmek için isteğe bağlı olarak geçersiz kılmak için kullanılır.
 
 **SqlUserDefinedOutputter** özniteliği, türün Kullanıcı tanımlı bir outputter olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
 
@@ -2105,7 +2105,7 @@ public class EmptyUserReducer : IReducer
 **SqlUserDefinedReducer** , Kullanıcı tanımlı Reducer tanımı için isteğe bağlı bir özniteliktir. Isyinelemeli özelliği tanımlamak için kullanılır.
 
 * bool Isyinelemeli    
-* **true** = bu Reducer ilişkilendirilebilir ve iletişim olup olmadığını belirtir
+* **true**  = bu Reducer ilişkilendirilebilir ve iletişim olup olmadığını belirtir
 
 Ana programlama nesneleri **giriş** ve **Çıkış**' dır. Giriş nesnesi, giriş satırlarını numaralandırmak için kullanılır. Çıktı, etkinliğin azaltılmasının sonucu olarak çıktı satırlarını ayarlamak için kullanılır.
 

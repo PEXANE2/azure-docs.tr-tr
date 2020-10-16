@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 880770345eb7d65850db322bd97d64c60b6681ee
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260873"
 ---
 # <a name="sfctl-application"></a>sfctl application
@@ -20,7 +20,7 @@ Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin.
 |Komut|Açıklama|
 | --- | --- |
 | oluşturmaya | Belirtilen açıklamayı kullanarak bir Service Fabric uygulaması oluşturur. |
-| silme | Mevcut bir Service Fabric uygulamasını siler. |
+| delete | Mevcut bir Service Fabric uygulamasını siler. |
 | dağıtılan | Service Fabric düğümünde dağıtılan bir uygulamayla ilgili bilgileri alır. |
 | dağıtılan-sistem durumu | Service Fabric düğümünde dağıtılan bir uygulamanın sistem durumu hakkındaki bilgileri alır. |
 | dağıtılan-liste | Bir Service Fabric düğümünde dağıtılan uygulamaların listesini alır. |
@@ -43,7 +43,7 @@ Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin.
 ## <a name="sfctl-application-create"></a>sfctl uygulama oluştur
 Belirtilen açıklamayı kullanarak bir Service Fabric uygulaması oluşturur.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -71,7 +71,7 @@ Mevcut bir Service Fabric uygulamasını siler.
 
 Bir uygulamanın silinebilmesi için önce oluşturulması gerekir. Bir uygulamayı silmek, uygulamanın parçası olan tüm hizmetleri siler. Varsayılan olarak, Service Fabric hizmet çoğaltmalarını düzgün bir şekilde kapatmaya çalışır ve ardından hizmeti silmez. Ancak, bir hizmet çoğaltmayı düzgün bir şekilde kapatmada sorun yaşadığı takdirde, silme işlemi uzun zaman alabilir veya takılmış olabilir. Düzgün kapatma sırasını atlamak ve uygulamayı ve tüm hizmetlerini zorla silmek için isteğe bağlı ForceRemove bayrağını kullanın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -94,7 +94,7 @@ Service Fabric düğümünde dağıtılan bir uygulamayla ilgili bilgileri alır
 
 Bu sorgu, belirtilen uygulama KIMLIĞI sistem uygulaması için ise sistem uygulama bilgilerini döndürür. Sonuçlar, Dağıtılmış uygulamaların etkin, etkinleştiriliyor ve karşıdan yükleme durumlarında dağılması. Bu sorgu, düğüm adının kümedeki bir düğüme karşılık gelmesini gerektirir. Girilen düğüm adı kümedeki etkin Service Fabric düğümlerine işaret etmez sorgu başarısız olur.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -118,7 +118,7 @@ Service Fabric düğümünde dağıtılan bir uygulamanın sistem durumu hakkın
 
 Service Fabric düğümünde dağıtılan bir uygulamanın sistem durumu hakkındaki bilgileri alır. Sistem durumuna bağlı olarak dağıtılan uygulamada raporlanan HealthEvent nesnelerinin toplanmasını sağlamak için EventsHealthStateFilter ' i kullanın. DeployedServicePackagesHealthStateFilter komutunu, isteğe bağlı olarak DeployedServicePackageHealth alt sistem durumuna göre filtrelemek için kullanın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -144,7 +144,7 @@ Bir Service Fabric düğümünde dağıtılan uygulamaların listesini alır.
 
 Bir Service Fabric düğümünde dağıtılan uygulamaların listesini alır. Sonuçlar, KIMLIĞE göre açıkça sorgulanmadığı takdirde dağıtılan sistem uygulamalarıyla ilgili bilgiler içermez. Sonuçlar, Dağıtılmış uygulamaların etkin, etkinleştiriliyor ve karşıdan yükleme durumlarında dağılması. Bu sorgu, düğüm adının kümedeki bir düğüme karşılık gelmesini gerektirir. Girilen düğüm adı kümedeki etkin Service Fabric düğümlerine işaret etmez sorgu başarısız olur.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -169,7 +169,7 @@ Service Fabric uygulamasının sistem durumunu alır.
 
 Service Fabric uygulamasının yığın durumunu döndürür. Yanıt, Tamam, hata ya da Uyarı sistem durumunu bildirir. Varlık sistem durumu deposunda bulunamazsa, hata döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -195,7 +195,7 @@ Bir Service Fabric uygulaması hakkında bilgi alır.
 
 Service Fabric kümesinde oluşturulma sürecinde veya, adı parametresi olarak belirtilen adla eşleşen uygulama hakkındaki bilgileri döndürür. Yanıt, uygulama hakkındaki adı, türü, durumu, parametreleri ve diğer ayrıntıları içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -218,7 +218,7 @@ Service Fabric kümesinde oluşturulan, belirtilen filtrelerle eşleşen uygulam
 
 Service Fabric kümesinde oluşturulma ve belirtilen filtrelerle eşleşme sürecinde oluşturulan uygulamalar hakkındaki bilgileri alır. Yanıt, uygulama hakkındaki adı, türü, durumu, parametreleri ve diğer ayrıntıları içerir. Uygulamalar bir sayfaya uygun değilse, bir sonuç sayfası ve bir sonraki sayfayı almak için kullanılabilecek bir devamlılık belirteci döndürülür. Aynı anda ApplicationTypeName ve ApplicationDefinition, ' Filter ' filtre belirtilemez.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -244,7 +244,7 @@ Service Fabric bir uygulamayla ilgili yükleme bilgilerini alır.
 
 Oluşturulan uygulamayla ilgili yükleme bilgisini veya Service Fabric kümesinde oluşturulma işlemini ve adı parametresi olarak belirtilen adla eşleşen yükleme bilgilerini döndürür. Yanıt; adı, minimum düğümleri, maksimum düğümleri, uygulamanın Şu anda işgal eden düğümlerin sayısını ve uygulama hakkında uygulama yük ölçüm bilgilerini içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -266,7 +266,7 @@ Uygulama türünü tanımlayan bildirimi alır.
 
 Yanıt, uygulama bildirimi XML 'sini bir dize olarak içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -289,7 +289,7 @@ Dış depodaki '. sfpkg ' paketini veya görüntü deposundaki uygulama paketini
 
 Kümeyle birlikte Service Fabric bir uygulama türü sağlar. Yeni uygulamaların örneklendirilmesinden önce sağlama gereklidir. Sağlama işlemi, Relativepathınımafıtemte tarafından belirtilen uygulama paketinde ya da External '. sfpkg ' URI 'SI kullanılarak gerçekleştirilebilir. --Dış sağlama ayarlı değilse, bu komut görüntü deposu sağlamasını bekler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -316,7 +316,7 @@ Service Fabric uygulamasına bir sistem durumu raporu gönderir.
 
 Belirtilen Service Fabric uygulamasının sistem durumunu raporlar. Rapor, sistem durumu raporunun ve rapor alındığı özelliğin kaynağı hakkında bilgi içermelidir. Rapor, sistem durumu deposuna ileten bir Service Fabric ağ geçidi uygulamasına gönderilir. Rapor, ağ geçidi tarafından kabul edilebilir, ancak ek doğrulamadan sonra sistem durumu deposu tarafından reddedildi. Örneğin, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle sistem durumu deposu raporu reddedebilir. Raporun sistem durumu deposuna uygulanıp uygulanmadığını görmek için, uygulama durumunu alın ve raporun göründüğünü denetleyin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -346,7 +346,7 @@ Service Fabric kümesinde belirtilen adı tam olarak eşleşen uygulama türleri
 
 Service Fabric kümesinde sağlanmakta olan uygulama türleriyle ilgili bilgileri döndürür. Bu sonuçlar, adı tam olarak parametresi olarak belirtilen ve belirtilen sorgu parametreleriyle uyumlu olan uygulama türleridir. Uygulama türü adıyla eşleşen uygulama türünün tüm sürümleri, her sürüm tek bir uygulama türü olarak döndürüldüğünden döndürülür. Yanıt, uygulama türü ile ilgili ad, sürüm, durum ve diğer ayrıntıları içerir. Bu, tüm uygulama türlerinin bir sayfaya sığması, bir sonuç sayfasının ve bir sonraki sayfayı almak için kullanılabilecek bir devamlılık belirtecinin döndürülmeyeceği anlamına gelen, disk belleğine alınmış bir sorgudur. Örneğin, 10 uygulama türü varsa ancak bir sayfa yalnızca ilk üç uygulama türüne sığıyorsa veya en fazla sonuç 3 olarak ayarlandıysa, üç değeri döndürülür. Sonuçların geri kalanına erişmek için sonraki sorguda döndürülen devamlılık belirtecini kullanarak sonraki sayfaları alın. Sonraki sayfa yoksa boş bir devamlılık belirteci döndürülür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -372,7 +372,7 @@ Service Fabric kümesindeki uygulama türlerinin listesini alır.
 
 Service Fabric kümesinde sağlanmakta olan uygulama türleriyle ilgili bilgileri döndürür. Uygulama türünün her sürümü bir uygulama türü olarak döndürülür. Yanıt, uygulama türü ile ilgili ad, sürüm, durum ve diğer ayrıntıları içerir. Bu, tüm uygulama türlerinin bir sayfaya sığması, bir sonuç sayfasının ve bir sonraki sayfayı almak için kullanılabilecek bir devamlılık belirtecinin döndürülmeyeceği anlamına gelen, disk belleğine alınmış bir sorgudur. Örneğin, 10 uygulama türü varsa ancak bir sayfa yalnızca ilk üç uygulama türüne sığıyorsa veya en fazla sonuç 3 olarak ayarlandıysa, üç değeri döndürülür. Sonuçların geri kalanına erişmek için sonraki sorguda döndürülen devamlılık belirtecini kullanarak sonraki sayfaları alın. Sonraki sayfa yoksa boş bir devamlılık belirteci döndürülür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -397,7 +397,7 @@ Service Fabric bir uygulama türünü kümeden kaldırır veya kaydını siler.
 
 Bu işlem, yalnızca uygulama türünün tüm uygulama örnekleri silinmişse gerçekleştirilebilir. Uygulama türü kaydedildikten sonra, bu belirli uygulama türü için yeni uygulama örnekleri oluşturulamaz.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -421,7 +421,7 @@ Service Fabric kümesinde bir uygulamanın yükseltilmesine başlar.
 
 Sağlanan uygulama yükseltme parametrelerini doğrular ve parametreler geçerliyse uygulamayı yükseltmeye başlar. Yükseltme açıklamasının varolan uygulama açıklamasını değiştirdiğine unutmayın. Bu, parametreler belirtilmemişse, uygulamalardaki mevcut parametrelerin boş parametreler listesi ile üzerine yazılır. Bu, uygulamanın uygulama bildiriminden parametrelerin varsayılan değerini kullanacağından oluşur.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -458,7 +458,7 @@ Service Fabric kümesindeki bir uygulamayı yükseltmeyi sürdürür.
 
 İzlenmeyen bir el ile uygulama yükseltmesini sürdürür Service Fabric. Service Fabric, tek seferde bir yükseltme etki alanını yükseltir. İzlenmeyen el ile yükseltmeler için Service Fabric bir yükseltme etki alanını tamamladıktan sonra, bir sonraki yükseltme etki alanına geçmeden önce bu API 'yi çağırmanız bekler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -481,7 +481,7 @@ Service Fabric kümesindeki bir uygulamanın Şu anda yükseltmesini geri almaya
 
 Önceki sürüme geçerli uygulama yükseltmesini geri almaya başlar. Bu API yalnızca yeni sürüme dönük geçerli devam eden yükseltmeyi geri almak için kullanılabilir. Uygulama Şu anda yükseltilmiyorsa, önceki bir sürüme geri dönme dahil olmak üzere, istenen sürüme yükseltmek için StartApplicationUpgrade API kullanın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -503,7 +503,7 @@ Bu uygulama üzerinde gerçekleştirilen en son yükseltmenin ayrıntılarını 
 
 Uygulamanın sistem durumu sorunlarını ayıklamaya yardımcı olacak ayrıntılarla birlikte en son uygulama yükseltmesinin durumuyla ilgili bilgileri döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -525,7 +525,7 @@ Service Fabric uygulama paketini görüntü deposuna kopyalayın.
 
 İsteğe bağlı olarak paketteki her dosya için karşıya yükleme ilerlemesini görüntüleyin. Karşıya yükleme ilerlemesi öğesine gönderilir `stderr` .
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

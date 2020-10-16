@@ -4,16 +4,16 @@ description: Dağıtım bildiriminin hangi modüllerin dağıtılacağını, nas
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/26/2020
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a9f4f165f457dfb902a4c0ecce3f4a9b13e2ec8
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611546"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963406"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin
 
@@ -46,32 +46,31 @@ Dağıtım bildirimleri bu yapıyı izler:
 
 ```json
 {
-    "modulesContent": {
-        "$edgeAgent": { // required
-            "properties.desired": {
-                // desired properties of the Edge agent
-                // includes the image URIs of all modules
-                // includes container registry credentials
-            }
-        },
-        "$edgeHub": { //required
-            "properties.desired": {
-                // desired properties of the Edge hub
-                // includes the routing information between modules, and to IoT Hub
-            }
-        },
-        "module1": {  // optional
-            "properties.desired": {
-                // desired properties of module1
-            }
-        },
-        "module2": {  // optional
-            "properties.desired": {
-                // desired properties of module2
-            }
-        },
-        ...
+  "modulesContent": {
+    "$edgeAgent": { // required
+      "properties.desired": {
+        // desired properties of the IoT Edge agent
+        // includes the image URIs of all deployed modules
+        // includes container registry credentials
+      }
+    },
+    "$edgeHub": { //required
+      "properties.desired": {
+        // desired properties of the IoT Edge hub
+        // includes the routing information between modules, and to IoT Hub
+      }
+    },
+    "module1": {  // optional
+      "properties.desired": {
+        // desired properties of module1
+      }
+    },
+    "module2": {  // optional
+      "properties.desired": {
+        // desired properties of module2
+      }
     }
+  }
 }
 ```
 
@@ -79,40 +78,101 @@ Dağıtım bildirimleri bu yapıyı izler:
 
 IoT Edge çalışma zamanının dağıtımınıza modülleri nasıl yüklediğini tanımlayın. IoT Edge Aracısı, bir IoT Edge cihazının yükleme, güncelleştirme ve durum raporlamasını yöneten çalışma zamanı bileşenidir. Bu nedenle, ikizi Module $edgeAgent tüm modüller için yapılandırma ve yönetim bilgilerini içerir. Bu bilgiler IoT Edge aracısının kendisi için yapılandırma parametrelerini içerir.
 
-Dahil edilebilir veya dahil olması gereken özelliklerin tamamen listesi için bkz. [IoT Edge Aracısı ve IoT Edge hub 'ının özellikleri](module-edgeagent-edgehub.md).
-
 $EdgeAgent Özellikler bu yapıyı izler:
 
 ```json
-"$edgeAgent": {
-    "properties.desired": {
-        "schemaVersion": "1.0",
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "runtime": {
-            "settings":{
-                "registryCredentials":{ // give the edge agent access to container images that aren't public
-                    }
-                }
+          "settings":{
+            "registryCredentials":{
+              // give the IoT Edge agent access to container images that aren't public
             }
+          }
         },
         "systemModules": {
-            "edgeAgent": {
-                // configuration and management details
-            },
-            "edgeHub": {
-                // configuration and management details
-            }
+          "edgeAgent": {
+            // configuration and management details
+          },
+          "edgeHub": {
+            // configuration and management details
+          }
         },
         "modules": {
-            "module1": { // optional
-                // configuration and management details
-            },
-            "module2": { // optional
-                // configuration and management details
-            }
+          "module1": {
+            // configuration and management details
+          },
+          "module2": {
+            // configuration and management details
+          }
         }
-    }
-},
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
 ```
+
+IoT Edge Agent şema sürümü 1,1, IoT Edge Version 1.0.10 ile birlikte yayımlanmıştır ve modül başlangıç sırasını sunar. 1,1 şema sürümü, sürüm 1.0.10 veya üstünü çalıştıran tüm IoT Edge dağıtımlar için önerilir.
+
+### <a name="module-configuration-and-management"></a>Modül yapılandırması ve yönetimi
+
+IoT Edge Agent istenen özellikler listesi, hangi modüllerin bir IoT Edge cihazına dağıtıldığını ve bunların nasıl yapılandırılması ve yönetilmesi gerektiğini tanımladığınız yerdir.
+
+Dahil edilen veya dahil olması gereken özelliklerin tamamı listesi için bkz. [IoT Edge Aracısı ve IoT Edge hub özellikleri](module-edgeagent-edgehub.md).
+
+Örnek:
+
+```json
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
+        "runtime": { ... },
+        "systemModules": {
+          "edgeAgent": { ... },
+          "edgeHub": { ... }
+        },
+        "modules": {
+          "module1": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "startupOrder": 2,
+            "settings": {
+              "image": "myacr.azurecr.io/module1:latest",
+              "createOptions": "{}"
+            }
+          },
+          "module2": { ... }
+        }
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
+```
+
+Her modülün modül **görüntüsünü**, bir kapsayıcı kayıt defterinde kapsayıcı görüntüsünün adresini ve başlangıçta görüntüyü yapılandırmak için herhangi bir **createOptions** içeren bir **Ayarlar** özelliği vardır. Daha fazla bilgi için bkz. [IoT Edge modüller için kapsayıcı oluşturma seçeneklerini yapılandırma](how-to-use-create-options.md).
+
+EdgeHub modülü ve özel modüller Ayrıca IoT Edge aracısına nasıl yönetileceğini söyleyen üç özelliğe sahiptir:
+
+* **Durum**: ilk dağıtıldığında modülün çalışıyor veya durdurulmuş olması gerekip gerekmediğini belirtir. Gereklidir.
+* **RestartPolicy**: IoT Edge aracısının durması durumunda modülü yeniden başlatması gerekir. Gereklidir.
+* **Startuporder**: *IoT Edge Version 1.0.10 içinde tanıtılmıştır.* İlk dağıtıldığında IoT Edge aracısının modülleri başlatması gereken sıralama. Sıra, başlangıç değeri 0 olan bir modülün ilk önce başlatıldığı ve ardından daha yüksek sayıların izlediği tamsayılar ile birlikte bildirilmiştir. EdgeAgent modülünün başlangıç değeri yok çünkü her zaman ilk olarak başlar. İsteğe bağlı.
+
+  IoT Edge Aracısı, modülleri başlangıç değeri sırasıyla başlatır, ancak bir sonraki birine geçmeden önce her modülün bitmesini beklemez.
+
+  Bazı modüller diğerlerine bağımlıysa, başlangıç sırası yararlı olur. Örneğin, diğer modüller başlatıldığında iletileri yönlendirmeye başlamaya başlamak için edgeHub modülünün önce başlamasını isteyebilirsiniz. Ya da veri gönderen modüllerden önce bir depolama modülü başlatmak isteyebilirsiniz. Ancak, diğer modüllerin başarısızlıklarını işlemek için her zaman modüllerinizi tasarlamanız gerekir. Bu, istedikleri zaman ve herhangi bir sayıda, durdurdukları ve yeniden başlatabilecekleri kapsayıcıların doğası olur.
 
 ## <a name="declare-routes"></a>Yolları bildir
 
@@ -121,17 +181,36 @@ IoT Edge hub, modüller, IoT Hub ve herhangi bir yaprak cihaz arasındaki ileti�
 Yollar **$edgeHub** istenen özelliklerde aşağıdaki sözdizimi ile bildiriliyor:
 
 ```json
-"$edgeHub": {
-    "properties.desired": {
+{
+  "modulesContent": {
+    "$edgeAgent": { ... },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "routes": {
-            "route1": "FROM <source> WHERE <condition> INTO <sink>",
-            "route2": "FROM <source> WHERE <condition> INTO <sink>"
+          "route1": "FROM <source> WHERE <condition> INTO <sink>",
+          "route2": {
+            "route": "FROM <source> WHERE <condition> INTO <sink>",
+            "priority": 0,
+            "timeToLiveSecs": 86400
+          }
         },
-    }
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
+        }
+      }
+    },
+    "module1": { ... },
+    "module2": { ... }
+  }
 }
 ```
 
-Her rotada bir kaynak ve havuz gerekir, ancak durum, iletileri filtrelemek için kullanabileceğiniz isteğe bağlı bir parçadır.
+IoT Edge hub şeması sürüm 1,1 IoT Edge sürüm 1.0.10 ile birlikte yayımlanmıştır ve yol önceliklendirmesini ve yaşam süresini sağlar. 1,1 şema sürümü, sürüm 1.0.10 veya üstünü çalıştıran tüm IoT Edge dağıtımlar için önerilir.
+
+Her yol, iletilerin geldiği bir *kaynağa* ve iletilerin gideceği bir *havuza* ihtiyaç duyuyor. Bu *koşul* , iletileri filtrelemek için kullanabileceğiniz isteğe bağlı bir parçadır.
+
+Öncelikle iletilerinin işlemesini sağlamak istediğiniz yollara *Öncelik* atayabilirsiniz. Bu özellik, yukarı akış bağlantısının zayıf veya sınırlı olduğu senaryolarda ve standart telemetri iletileri üzerinden öncelik verilmelidir önemli verileriniz olduğunda yararlıdır.
 
 ### <a name="source"></a>Kaynak
 
@@ -177,7 +256,7 @@ Havuz, iletilerin nereye gönderileceğini tanımlar. Yalnızca modüller ve IoT
 
 Sink özelliği aşağıdaki değerlerden herhangi biri olabilir:
 
-| Havuz | Description |
+| Havuz | Açıklama |
 | ---- | ----------- |
 | `$upstream` | İletiyi IoT Hub gönder |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | İletiyi belirli bir modülün belirli bir girdisine gönder |
@@ -185,6 +264,32 @@ Sink özelliği aşağıdaki değerlerden herhangi biri olabilir:
 IoT Edge en az bir kez garanti sağlar. IoT Edge hub, bir yolun iletiyi havuza teslim etmesi durumunda iletileri yerel olarak depolar. Örneğin, IoT Edge hub IoT Hub bağlanamıyorsa veya hedef modül bağlı değilse.
 
 IoT Edge hub, `storeAndForwardConfiguration.timeToLiveSecs` [IoT Edge hub istenen özelliklerinin](module-edgeagent-edgehub.md)özelliğinde belirtilen zamana kadar olan iletileri depolar.
+
+### <a name="priority-and-time-to-live"></a>Öncelik ve yaşam süresi
+
+Yollar yalnızca yolu tanımlayan bir dizeyle veya bir yol dizesi, bir öncelik tamsayı ve bir yaşam süresi tamsayı alan bir nesne olarak bildirilemez.
+
+1. Seçenek:
+
+   ```json
+   "route1": "FROM <source> WHERE <condition> INTO <sink>",
+   ```
+
+Seçenek 2, IoT Edge hub şeması sürüm 1,1 ile IoT Edge Version 1.0.10 ile kullanıma sunulmuştur:
+
+   ```json
+   "route2": {
+     "route": "FROM <source> WHERE <condition> INTO <sink>",
+     "priority": 0,
+     "timeToLiveSecs": 86400
+   }
+   ```
+
+**Öncelik** değerleri 0-9, dahil olabilir, burada 0 en yüksek önceliktir. İletiler, uç noktalarına göre sıralanır. Belirli bir uç noktayı hedefleyen tüm öncelik 0 iletileri, aynı uç noktayı hedefleyen herhangi bir öncelik 1 ileti işlenmeden ve satırın altına alınmadan önce işlenir. Aynı uç nokta için birden çok yol aynı önceliğe sahip ise, iletileri ilk kez sunulan bir temelde işlenir. Hiçbir öncelik belirtilmemişse, rota en düşük önceliğe atanır.
+
+**Timetolivesecs** özelliği açıkça ayarlanmamışsa değeri IoT Edge hub 'ın **Storeandforwardconfiguration** öğesinden devralır. Değer herhangi bir pozitif tamsayı olabilir.
+
+Öncelik sıralarının nasıl yönetildiği hakkında ayrıntılı bilgi için, [Rota önceliği ve yaşam süresi](https://github.com/Azure/iotedge/blob/master/doc/Route_priority_and_TTL.md)için başvuru sayfasına bakın.
 
 ## <a name="define-or-update-desired-properties"></a>İstenen özellikleri tanımlama veya güncelleştirme
 
@@ -203,7 +308,7 @@ Aşağıdaki örnekte, geçerli bir dağıtım bildirimi belgesinin nasıl gör�
   "modulesContent": {
     "$edgeAgent": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "runtime": {
           "type": "docker",
           "settings": {
@@ -230,6 +335,7 @@ Aşağıdaki örnekte, geçerli bir dağıtım bildirimi belgesinin nasıl gör�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 0,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
@@ -242,6 +348,7 @@ Aşağıdaki örnekte, geçerli bir dağıtım bildirimi belgesinin nasıl gör�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 2,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
               "createOptions": "{}"
@@ -252,6 +359,7 @@ Aşağıdaki örnekte, geçerli bir dağıtım bildirimi belgesinin nasıl gör�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 1,
             "env": {
               "tempLimit": {"value": "100"}
             },
@@ -265,13 +373,21 @@ Aşağıdaki örnekte, geçerli bir dağıtım bildirimi belgesinin nasıl gör�
     },
     "$edgeHub": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "routes": {
-          "sensorToFilter": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+          "sensorToFilter": {
+            "route": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+            "priority": 0,
+            "timeToLiveSecs": 1800
+          },
+          "filterToIoTHub": {
+            "route": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream",
+            "priority": 1,
+            "timeToLiveSecs": 1800
+          }
         },
         "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 10
+          "timeToLiveSecs": 100
         }
       }
     }

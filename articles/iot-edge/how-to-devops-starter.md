@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297139"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045865"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Azure DevOps Starter ile IoT Edge için bir CI/CD işlem hattı oluşturma
 
@@ -81,7 +81,7 @@ DevOps Starter, Azure Repos projeniz için bir git deposu oluşturdu. Bu bölüm
 
    ![Azure Repos dosyasında module.jsaçın](./media/how-to-devops-starter/open-module-json.png)
 
-3. Bu dosyanın **Sürüm** parametresinde [Azure DevOps derleme değişkenlerini](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) kullandığından emin olun. Bu yapılandırma, her yeni derleme çalıştırıldığında modülün yeni bir sürümünün oluşturulmasını sağlar.
+3. Bu dosyanın **Sürüm** parametresinde [Azure DevOps derleme değişkenlerini](/azure/devops/pipelines/build/variables?view=vsts#build-variables) kullandığından emin olun. Bu yapılandırma, her yeni derleme çalıştırıldığında modülün yeni bir sürümünün oluşturulmasını sağlar.
 
 ## <a name="examine-the-cicd-pipeline"></a>CI/CD işlem hattını inceleyin
 

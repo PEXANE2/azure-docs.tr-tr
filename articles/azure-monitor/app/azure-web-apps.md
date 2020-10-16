@@ -4,12 +4,12 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 36f6ad4c248b3de54de5de0893410e9b13df0c26
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759467"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875621"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -61,11 +61,11 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
         
 | Veriler | .NET temel koleksiyonu | Önerilen .NET koleksiyonu |
 | --- | --- | --- |
-| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Yes |Yes |
-| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Yes |Yes |
-| Ana işlem tarafından işlenmeyen özel durumları toplar | Yes |Yes |
-| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Yes |Yes |
-| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Yes |
+| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Evet |Evet |
+| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Evet |Evet |
+| Ana işlem tarafından işlenmeyen özel durumları toplar | Evet |Evet |
+| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Evet |Evet |
+| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Evet |
 
 3. Daha önce applicationinsights.config dosyası aracılığıyla denetleyebilmeniz gereken örnekleme gibi ayarları yapılandırmak için artık karşılık gelen bir ön ek ile uygulama ayarları aracılığıyla aynı ayarlarla etkileşime geçebilirsiniz. 
 
@@ -75,7 +75,7 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2 ASP.NET Core 3,0
+Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0 ASP.NET Core 3,1
 
 .NET Core, kendinden bağımsız dağıtım ve Linux tabanlı uygulamalardan tam Framework 'ü hedeflemek, aracı/uzantı tabanlı izleme ile Şu anda **desteklenmemektedir** . (Kod aracılığıyla[el ile izleme](./asp-net-core.md) , önceki senaryolardan tümünde çalışır.)
 
@@ -90,7 +90,7 @@ Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2
 
      ![Web uygulamanızı izleme](./media/azure-web-apps/create-resource-01.png)
 
-2. Hangi kaynağı kullanacağınızı belirttikten sonra, uygulamanız için her platform için verileri nasıl toplayacağınızı Application Insights istediğinizi seçebilirsiniz. .NET Core, .NET Core 2,0, 2,1, 2,2 ve 3,0 için **Önerilen koleksiyon** veya **devre dışı** olanakları sunmaktadır.
+2. Hangi kaynağı kullanacağınızı belirttikten sonra, uygulamanız için her platform için verileri nasıl toplayacağınızı Application Insights istediğinizi seçebilirsiniz. .NET Core, ASP.NET Core 2,1, 2,2, 3,0 ve 3,1 için **Önerilen koleksiyon** veya **devre dışı** bırakma olanakları sunmaktadır.
 
     ![Platform başına seçenekleri belirleyin](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -359,8 +359,8 @@ Azure Uygulama Hizmetleri 'nde çalışan .NET ve .NET Core tabanlı uygulamalar
 
     ![https://yoursitename.scm.azurewebsites/applicationinsightsSonuç sayfasının ekran görüntüsü](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * `Application Insights Extension Status`Olduğunu onaylayın`Pre-Installed Site Extension, version 2.8.12.1527, is running.`
-        * Çalışmıyorsa, [etkinleştirme Application Insights izleme yönergelerini](#enable-application-insights) izleyin
+    * `Application Insights Extension Status`Olduğunu onaylayın`Pre-Installed Site Extension, version 2.8.12.1527, is running.` 
+    * Çalışmıyorsa, [etkinleştirme Application Insights izleme yönergelerini](#enable-application-insights) izleyin
 
     * Durum kaynağının var olduğunu ve şu şekilde göründüğünü onaylayın: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Benzer bir değer yoksa, uygulamanın Şu anda çalışmadığı veya desteklenmediği anlamına gelir. Uygulamanın çalıştığından emin olmak için, uygulama URL 'si/uygulama uç noktalarını el ile ziyaret etmeyi deneyin, bu, çalışma zamanı bilgilerinin kullanılabilir hale gelmesini sağlar.
@@ -406,6 +406,10 @@ PHP ve WordPress siteleri desteklenmez. Şu anda bu iş yüklerinin sunucu taraf
 ### <a name="connection-string-and-instrumentation-key"></a>Bağlantı dizesi ve izleme anahtarı
 
 Kodsuz kullanacaksınız izleme kullanıldığında yalnızca bağlantı dizesi gereklidir. Bununla birlikte, el ile izleme gerçekleştirilirken SDK 'nın eski sürümleriyle geriye dönük uyumluluğu korumak için de izleme anahtarını ayarlamayı öneririz.
+
+## <a name="release-notes"></a>Sürüm notları
+
+En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakın](./web-app-extension-release-notes.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Canlı uygulamanızda profil oluşturucuyu çalıştırın](./profiler.md).

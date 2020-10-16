@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
 ms.openlocfilehash: a70216286e6f19f565d189c1c16f8862494e3aef
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743089"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Öğretici: BeyondTrust uzak desteğiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri öğreticide ilerleyen kısımlarında bulabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri öğreticide ilerleyen kısımlarında bulabilirsiniz.
 
 1. BeyondTrust uzaktan destek uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -163,7 +163,7 @@ Bu bölümde, BeyondTrust uzak destek 'e erişim vererek Azure çoklu oturum aç
 
 1. Açılan menüden **SAML** ' yi seçin ve **sağlayıcı oluştur** düğmesine tıklayın.
 
-1. Kimlik sağlayıcısı ayarları bölümünde, kimlik sağlayıcısı meta verilerini karşıya yükleme seçeneği vardır. Azure portal indirdiğiniz meta veri XML dosyasını bulun ve **karşıya yükle** düğmesine tıklayın. **VARLıK kimliği**, **Çoklu oturum açma hizmeti URL 'si** ve sertifika otomatik olarak karşıya yüklenecek ve **protokol bağlamasının** **http post**olarak değiştirilmesi gerekir. Aşağıdaki ekran görüntüsüne bakın:
+1. Kimlik sağlayıcısı ayarları bölümünde, kimlik sağlayıcısı meta verilerini karşıya yükleme seçeneği vardır. Azure portal indirdiğiniz meta veri XML dosyasını bulun ve **karşıya yükle** düğmesine tıklayın. **VARLıK kimliği**, **tek Sign-On hizmeti URL 'si** ve sertifika otomatik olarak yüklenir ve **protokol bağlamasının** **http post**olarak değiştirilmesi gerekir. Aşağıdaki ekran görüntüsüne bakın:
 
     ![Ekran görüntüsü, bu eylemleri gerçekleştirdiğiniz kimlik sağlayıcısı ayarları bölümünü gösterir.](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 

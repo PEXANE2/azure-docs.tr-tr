@@ -4,10 +4,10 @@ description: Tarihlerle çalışmak için bir Azure Resource Manager şablonunda
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86058053"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM şablonları için tarih işlevleri
@@ -74,7 +74,7 @@ Aşağıdaki örnek şablonda saat değerleri eklemenin farklı yolları göster
 
 Yukarıdaki şablon bir taban saati ile dağıtıldığında `2020-04-07 14:53:14Z` , çıkış şu şekilde olur:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | add3Years | Dize | 4/7/2023 2:53:14 PM |
 | subtract9Days | Dize | 3/29/2020 2:53:14 PM |
@@ -201,7 +201,7 @@ Aşağıdaki örnek şablonda tarih saat değeri için farklı biçimler göster
 
 Yukarıdaki örnekteki çıktı her dağıtım için farklılık gösterir, ancak şuna benzer olacaktır:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | Utckısaltoutput | string | 03/05/2019 |

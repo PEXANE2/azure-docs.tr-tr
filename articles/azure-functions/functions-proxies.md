@@ -4,10 +4,10 @@ description: Azure İşlev Proxy'leri kullanmaya genel bakış
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385883"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure İşlev Proxy'leri çalışın
@@ -55,7 +55,7 @@ Bir ara sunucu yapılandırmasının statik olması gerekmez. Özgün istemci is
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Yerel işlevlere başvur
 `localhost`Aynı işlev uygulaması içindeki bir işleve, gidiş dönüş proxy isteği olmadan doğrudan başvurmak için ' yi kullanabilirsiniz.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"`rotada yerel bir HTTP tetiklemeli işleve başvuracaktır`/api/httptriggerC#1`
+`"backendurl": "https://localhost/api/httptriggerC#1"` rotada yerel bir HTTP tetiklemeli işleve başvuracaktır `/api/httptriggerC#1`
 
  
 >[!Note]  
@@ -142,7 +142,7 @@ Her proxy 'nin, önceki örnekteki *Proxy1* gibi kolay bir adı vardır. Karşı
 > [!NOTE] 
 > Azure İşlev Proxy'leri *route* özelliği, işlev uygulaması ana bilgisayar yapılandırmasının *routeprefix* özelliğini karşılamıyor. Gibi bir ön ek eklemek istiyorsanız `/api` , *route* özelliğine eklenmelidir.
 
-### <a name="disable-individual-proxies"></a><a name="disableProxies"></a>Ayrı proxy 'leri devre dışı bırak
+### <a name="disable-individual-proxies"></a><a name="disableProxies"></a> Ayrı proxy 'leri devre dışı bırak
 
 Dosyadaki ara sunucuya ekleyerek ayrı proxy 'leri devre dışı bırakabilirsiniz `"disabled": true` `proxies.json` . Bu, matchCondition 'a uyan isteklerin 404 döndürmesini sağlar.
 ```json
@@ -160,14 +160,14 @@ Dosyadaki ara sunucuya ekleyerek ayrı proxy 'leri devre dışı bırakabilirsin
 }
 ```
 
-### <a name="application-settings"></a><a name="applicationSettings"></a>Uygulama ayarları
+### <a name="application-settings"></a><a name="applicationSettings"></a> Uygulama ayarları
 
 Proxy davranışı birkaç uygulama ayarı tarafından denetlenebilir. Bunlar, [Işlevler uygulama ayarları başvurusu](./functions-app-settings.md) 'nda özetlenmiştir
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a>Ayrılmış karakterler (dize biçimlendirme)
+### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a> Ayrılmış karakterler (dize biçimlendirme)
 
 Proxy 'ler, bir JSON dosyasının dışında tüm dizeleri okur ve bunu çıkış simgesi olarak kullanın. Proxy 'ler Ayrıca küme ayraçları da yorumlayabilir. Aşağıdaki örnek bir dizi örneğe bakın.
 
@@ -241,7 +241,7 @@ Değerler uygulama ayarlarına, özgün istemci isteğinden parametrelere ve ark
 > [!NOTE] 
 > Bu örnekte, yanıt gövdesi doğrudan ayarlanır, bu nedenle hiçbir `backendUri` özellik gerekmez. Örnek, sahte işlem API 'leri için Azure işlev proxy'leri nasıl kullanabileceğinizi gösterir.
 
-[Azure Portal]: https://portal.azure.com
+[Azure portalındaki]: https://portal.azure.com
 [HTTP Tetikleyicileri]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response

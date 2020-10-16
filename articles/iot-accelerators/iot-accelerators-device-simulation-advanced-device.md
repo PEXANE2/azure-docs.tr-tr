@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261439"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076054"
 ---
 # <a name="create-an-advanced-device-model"></a>Gelişmiş bir cihaz modeli oluşturma
 
@@ -173,7 +173,7 @@ Her ileti türünün iyi tanımlanmış bir şeması olmalıdır. İleti şemas�
 
 ### <a name="supported-methods"></a>Desteklenen Yöntemler
 
-Sanal cihazlar ayrıca yöntem çağrılarına yanıt verebilir, bu durumda bazı mantık yürütür ve bir yanıt sağlar. Simülasyonuna benzer şekilde, yöntem mantığı bir JavaScript dosyasında depolanır ve cihaz durumuyla etkileşime geçebilir. Örneğin:
+Sanal cihazlar ayrıca yöntem çağrılarına yanıt verebilir, bu durumda bazı mantık yürütür ve bir yanıt sağlar. Simülasyonuna benzer şekilde, yöntem mantığı bir JavaScript dosyasında depolanır ve cihaz durumuyla etkileşime geçebilir. Örnek:
 
 ```json
 "CloudToDeviceMethods": {
@@ -263,7 +263,7 @@ JavaScript dosyalarının iki parametreyi kabul eden bir **ana** işlevi olması
     * **Devicemodel**. Örneğin, **Asansör**.
 * Önceki çağrıda işlevin döndürdüğü değer olan bir **durum** nesnesi. Bu cihaz durumu Simülasyon hizmeti tarafından tutulur ve telemetri iletileri oluşturmak için kullanılır.
 
-**Main** işlevi yeni cihaz durumunu döndürür. Örneğin:
+**Main** işlevi yeni cihaz durumunu döndürür. Örnek:
 
 ```JavaScript
 function main(context, state) {
@@ -520,4 +520,4 @@ Dosyalarınız doğrulamayı geçirirseniz, **Kaydet** ' e tıklayın ve cihaz m
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır kılavuzunda, cihaz benzetiminde kullanılan cihaz modeli dosyaları ve gelişmiş cihaz modeli oluşturma hakkında bilgi edindiniz. Daha sonra, [cihaz benzetimi çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights nasıl kullanacağınızı](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)araştırmak isteyebilirsiniz.
+Bu nasıl yapılır kılavuzunda, cihaz benzetiminde kullanılan cihaz modeli dosyaları ve gelişmiş cihaz modeli oluşturma hakkında bilgi edindiniz. Daha sonra, [cihaz benzetimi çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights nasıl kullanacağınızı](./iot-accelerators-device-simulation-time-series-insights.md)araştırmak isteyebilirsiniz.

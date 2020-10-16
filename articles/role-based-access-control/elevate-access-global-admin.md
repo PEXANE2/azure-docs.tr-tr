@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
 ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799341"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Tüm Azure aboneliklerini ve yönetim gruplarını yönetmek için erişimi yükseltme
@@ -330,4 +330,4 @@ Bir kullanıcı için tüm reddetme atamalarını kök kapsamda ( `/` ) listeley
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Farklı rolleri anlama](rbac-and-directory-admin-roles.md)
-- [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
+- [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-rest.md)

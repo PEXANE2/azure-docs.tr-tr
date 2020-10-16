@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: jeedes
-ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2574a656f659dfed12b59d52c9f147527c65d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555952"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950097"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>Öğretici: Dataköpek ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile veri Köminin nasıl tüm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -107,7 +107,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -141,6 +141,22 @@ Bu bölümde, Dataköpek içinde B. Simon adlı bir Kullanıcı oluşturacaksın
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde Dataköpek kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız veri kökte otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>Kiracınızdaki tüm kullanıcıların uygulama ile kimlik doğrulaması yapmasını sağlama
+
+Bu bölümde, bir kullanıcının veri köpek tarafında bir hesabı varsa kiracınızdaki herkesin veri Köğine erişmesini sağlayabilirsiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Dataköpek**' ı seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet**altında **Özellikler**' i seçin.
+
+    !["Özellikler" bağlantısı](common/properties.png)
+
+1. **Kullanıcı Ataması gerekli mi?**, **Hayır**' ı seçin.
+
+    ![Kullanıcı Ataması gerekli değil](common/user-assignment-not-required.png)
+
+1. **Kaydet**'i seçin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

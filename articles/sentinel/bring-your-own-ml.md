@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
 ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91347509"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Kendi Machine Learning (ML) Azure Sentinel 'e taşıyın
@@ -79,7 +79,7 @@ Zaten Databricks veya başka bir Spark ortamınız varsa ve var olan kurulumu ku
 
 BYO ML paketi, güvenlik için ML 'nin ön ucundaki Microsoft 'un en iyi yöntemlerini ve araştırmasını içerir. Bu pakette, güvenlik sorunları için aşağıdaki yardımcı programlar, Not defterleri ve algoritma şablonları listesini sağlıyoruz.
 
-| Dosya adı | Description |
+| Dosya adı | Açıklama |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | Azure 'dan blob 'ları okumak ve Log Analytics yazmak için yardımcı programları içerir. |
 | Anomalousstrasampledata | Not defteri, üretilen eğitim ve test örnek verileriyle birlikte Sentinel 'de anormal kaynak erişim modelinin kullanımını gösterir. |
@@ -159,13 +159,13 @@ Puanlama elde etmeniz için, Puanlama not defterindeki modülünü Azure Sentine
 
 Puanlanmış sonuçlarınızı ilgili günlük ayrıntılarıyla birlikte görmek için, Azure Sentinel portalınıza geri dönün. Özel günlüklerde **günlükler** >, sonuçları **AnomalousResourceAccessResult_CL** tablosunda (veya kendi özel tablo adınızla) görürsünüz. Bu sonuçları, araştırma ve avcılık deneyimlerinizi geliştirmek için kullanabilirsiniz.
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="anormal kaynak erişim günlükleri":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="Machine Learning çerçevesi":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>ML sonuçlarıyla özel analiz kuralı oluşturma
 
 ML sonuçlarının özel Günlükler tablosunda olduğunu onayladıktan sonra puanları uygunlukta memnun kaldığınızda, sonuçlara göre bir algılama oluşturabilirsiniz. Azure Sentinel portalından analizler **' e gidin** ve [Yeni bir algılama kuralı oluşturun](tutorial-detect-threats-custom.md). Aşağıda, algılamayı oluşturmak için kullanılan sorguyu gösteren bir örnek verilmiştir.
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="B Y O M L algılama için özel analiz kuralı oluştur":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Machine Learning çerçevesi":::
 
 ### <a name="view-and-respond-to-incidents"></a>Olayları görüntüleme ve yanıtlama
 ML sonuçlarını temel alarak analiz kuralını ayarladıktan sonra, sorguda ayarladığınız eşiğin üstünde sonuçlar varsa, Azure Sentinel 'teki **Olaylar** sayfasında bir olay oluşturulur ve ortaya çıkacak. 

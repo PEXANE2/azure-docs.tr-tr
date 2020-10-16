@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 897df7f07a349457c49929b69993c75345f52241
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297442"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017820"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminoloji ve kavramlar
 
@@ -30,7 +30,7 @@ Bu konularda açıklanan temel kavramlar, geliştirmeye başlamadan önce incele
 
 > [!NOTE]
 > Şu anda [Azure Portal](https://portal.azure.com/) : Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek (yönetmek değil) ve [apı 'lere erişim hakkında bilgi almak](./access-api-howto.md)için kullanabilirsiniz.
-> Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+> Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +43,7 @@ Bu konularda açıklanan temel kavramlar, geliştirmeye başlamadan önce incele
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3 kavramları
 
-|Kavramlar|Description|Bağlantılar|
+|Kavramlar|Açıklama|Bağlantılar|
 |---|---|---|
 |Varlıklar ve karşıya içerik yükleme|Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız ve dijital dosyalarınızı **varlıklara**yüklemeniz gerekir.|[Bulutta karşıya yükleme ve depolama](storage-account-concept.md)<br/><br/>[Varlık kavramı](assets-concept.md)|
 |İçerik kodlama|Yüksek kaliteli dijital medya dosyalarınızı varlıklara yükledikten sonra, bunları çok çeşitli tarayıcılarda ve cihazlarda yürütülebilecek biçimlere kodlayabilirsiniz. <br/><br/>Media Services v3 ile kodlamak için **dönüşümler** ve **işler**oluşturmanız gerekir.|[Dönüşümler ve Işler](transforms-jobs-concept.md)<br/><br/>[Media Services kodlama](encoding-concept.md)|

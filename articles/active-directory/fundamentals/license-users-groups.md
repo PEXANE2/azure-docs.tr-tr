@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319534"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977023"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında Lisans atama veya kaldırma
 
@@ -102,11 +102,11 @@ Lisanslı bir Azure AD hizmeti kullanması gereken herkesin uygun lisansa sahip 
 
 1. **Ata** sayfasında, **Kullanıcılar ve gruplar**' ı seçin ve ardından lisansı atadığınız grubu bulun ve seçin.
 
-    ![Vurgulanan arama ve seçim seçeneklerini içeren lisans sayfası ata](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![Vurgulanan aramayla lisans sayfası atayın ve seçenekleri belirleyin 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. **Atama seçeneklerini**belirleyin, uygun lisans seçeneklerinin açık olduğundan emin olun ve ardından **Tamam**' ı seçin.
 
-    ![Lisans seçeneği sayfasında, lisans planındaki tüm seçeneklerle kullanılabilir](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Lisans seçeneği sayfasında, lisans planı 2 ' de kullanılabilir tüm seçenekler mevcuttur](media/license-users-groups/license-option-blade-group-assignments.png)
 
     Bir kullanıcının seçili olduğunu ve atamaların yapılandırıldığını göstermek için **Lisans ata** sayfası güncellenir.
 
@@ -135,7 +135,7 @@ Bir kullanıcının Azure AD Kullanıcı sayfasından bir lisansı, Grup atama i
 
 1. **Lisansı kaldır**' ı seçin.
 
-    ![Lisansı kaldır seçeneği vurgulanmış olan lisanslı gruplar sayfası](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![Lisansı kaldır seçeneği vurgulanmış olan lisanslı gruplar sayfası 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > Azure AD ile eşitlenen şirket içi bir kullanıcı hesabı eşitleme için kapsam dışına düştüğünde veya eşitleme kaldırıldığında, Kullanıcı Azure AD 'de geçici olarak silinir. Bu durumda, kullanıcıya doğrudan veya grup tabanlı lisanslama aracılığıyla atanan lisanslar, **silinmek**yerine **askıya alındı** olarak işaretlenir.

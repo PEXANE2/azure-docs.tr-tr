@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c7ebcdac3174f7eb497ae3e976386ab92212e1ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4bd1bb93c9ce0f491c5bf1153917491b88d55109
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715570"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043723"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Geçerli IoT Tak ve Kullan sürümünde neler vardır
 
@@ -41,10 +41,7 @@ IoT Tak ve Kullan cihazlarının DTDL ile nasıl çalıştığı hakkında daha 
 
 - Azure CLı IoT uzantısı 0.10.0.
 
-    Daha fazla bilgi edinmek için bkz. [Azure CLI Için Azure IoT uzantısını yüklemek ve kullanmak](howto-use-iot-pnp-cli.md).
-
-    > [!TIP]
-    > Azure IoT uzantısı, cihazların sertifikalandırmaya yardımcı olmak için komutlar içerir. Bkz. `az iot product -h`.
+    Azure IoT uzantısı, cihazların sertifikalandırmaya yardımcı olmak için komutlar içerir. Bkz. `az iot product -h`.
 
 ## <a name="libraries-and-sdks"></a>Kitaplıklar ve SDK’lar
 
@@ -64,7 +61,7 @@ Kitaplıklar ve SDK 'lar hakkında daha fazla bilgi edinmek için bkz. [IoT Içi
 
 ## <a name="rest-apis"></a>REST API'leri
 
-REST API [2020-09-30](https://docs.microsoft.com/rest/api/iothub).
+REST API [2020-09-30](/rest/api/iothub).
 
 Daha fazla bilgi için bkz. [ıot Tak ve kullan Geliştirici Kılavuzu](concepts-developer-guide-service.md).
 

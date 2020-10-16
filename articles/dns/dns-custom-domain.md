@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84693121"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure hizmeti için özel etki alanı ayarları sağlamak üzere Azure DNS kullanma
 
 Azure DNS, özel etki alanlarını destekleyen veya tam etki alanı adı (FQDN) olan Azure kaynaklarınızın herhangi biri için özel bir etki alanı için DNS sağlar. Örneğin, bir Azure Web uygulamanız var ve kullanıcılarınızın buna bir FQDN olarak contoso.com ya da www contoso.com kullanarak erişmesini istiyorsunuz \. . Bu makalede, Azure hizmetinizi özel etki alanlarının kullanımı için Azure DNS yapılandırma adımları gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Özel etki alanınız için Azure DNS kullanabilmeniz için öncelikle etki alanınızı Azure DNS için temsilci olarak vermelisiniz. Ad sunucularınızı temsilci olarak yapılandırmayla ilgili yönergeler için [Azure DNS için bir etki alanı temsilcisini](./dns-delegate-domain-azure-dns.md) ziyaret edin. Etki alanınız Azure DNS bölgenize atandıktan sonra, gereken DNS kayıtlarını yapılandırabilirsiniz.
 
@@ -40,7 +40,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Name     | myfunctionapp        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Ad     | myfunctionapp        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |
 |TTL     | 1        | 1 saat için 1 kullanılır        |
 |TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
@@ -65,7 +65,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Name     | MyWebServer        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Ad     | MyWebServer        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | A        | Kaynak bir IP adresi olduğu için bir kayıt kullanın.        |
 |TTL     | 1        | 1 saat için 1 kullanılır        |
 |TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
@@ -92,7 +92,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Name     | MyWebServer        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Ad     | MyWebServer        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor. Kaynak bir IP adresi kullansaydı bir kayıt kullanılır.        |
 |TTL     | 1        | 1 saat için 1 kullanılır        |
 |TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
@@ -128,7 +128,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Name     | asverify. mystorageaccount        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Ad     | asverify. mystorageaccount        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |
 |TTL     | 1        | 1 saat için 1 kullanılır        |
 |TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
@@ -138,7 +138,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 
 ![BLOB depolama özel etki alanı](./media/dns-custom-domain/indirectvalidate.png)
 
-Çalıştırarak DNS çözümlemesini doğrulama`nslookup`
+Çalıştırarak DNS çözümlemesini doğrulama `nslookup`
 
 Özel bir etki alanını BLOB depolama uç noktası ile eşleme hakkında daha fazla bilgi edinmek için [bkz. blob depolama uç noktanız için özel etki alanı adı yapılandırma](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
 
@@ -156,7 +156,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Name     | cdnverify. mycdnendpoint        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Ad     | cdnverify. mycdnendpoint        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
 |Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |
 |TTL     | 1        | 1 saat için 1 kullanılır        |
 |TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |

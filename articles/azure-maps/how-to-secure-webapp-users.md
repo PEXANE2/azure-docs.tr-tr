@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 50194341d1d34da4b02558461f532ae64b941b16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319631"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090225"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Kullanıcı oturumu açma ile bir Web uygulamasını güvenli hale getirme
 
@@ -59,7 +59,7 @@ Kullanıcıların oturum açması için Azure AD 'de Web uygulaması oluşturman
    * Bir AspNetCore uygulaması veya diğeri için bkz. Azure AD belgelerinden [uygulama belirteci alma](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) .
    * Güvenli belirteç uç noktası, kimliği doğrulanmış ve yetkili kullanıcının Azure haritalar REST API 'Lerini çağırması için bir erişim belirteci döndürmekten sorumludur.
 
-8. Kullanıcılar veya gruplar için Azure rol tabanlı erişim denetimi 'ni yapılandırın. Bkz. [kullanıcılar için rol tabanlı erişim verme](#grant-role-based-access-for-users-to-azure-maps).
+8. Kullanıcılar veya gruplar için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırın. Bkz. [kullanıcılar için rol tabanlı erişim verme](#grant-role-based-access-for-users-to-azure-maps).
 
 9. Güvenli belirteç uç noktasına erişmek için Web uygulaması sayfasını Azure Maps web SDK 'Sı ile yapılandırın. 
 
@@ -94,7 +94,7 @@ var map = new atlas.Map("map", {
     });
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

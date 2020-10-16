@@ -4,10 +4,10 @@ description: Bir Azure sanal ağına bir işlev bağlamayı gösteren adım adı
 ms.topic: article
 ms.date: 4/23/2020
 ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387532"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Öğretici: İşlevleri bir Azure sanal ağı ile tümleştirme
@@ -29,7 +29,7 @@ Aşağıdaki diyagramda, oluşturduğunuz çözümün mimarisi gösterilmektedir
 
 Premium planda çalışan işlevler, VNet tümleştirme özelliği de dahil olmak üzere Azure App Service Web Apps ile aynı barındırma özelliklerine sahiptir. Sorun giderme ve gelişmiş yapılandırma dahil VNet tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](../app-service/web-sites-integrate-with-vnet.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide IP adresleme ve alt ağ oluşturma hakkında bilgi almanız önemlidir. [Bu makaleyle, adresleme ve alt ağ oluşturma temellerini kapsayan bir](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)başlangıç yapabilirsiniz. Daha birçok makale ve video çevrimiçi olarak kullanılabilir.
 
@@ -59,7 +59,7 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
     | ------------ | ---------------- | ---------------- |
     | **Abonelik** | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. | 
     | **[Kaynak grubu](../azure-resource-manager/management/overview.md)**  | myResourceGroup | `myResourceGroup`İşlev uygulamanız ile oluşturduğunuz kaynak grubunu seçin. İşlev uygulaması, WordPress VM ve barındırma planı için aynı kaynak grubunu kullanmak, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
-    | **Sanal makine adı** | VNET-WordPress | VM adının kaynak grubunda benzersiz olması gerekir |
+    | **Sanal makine adı** | VNET-Wordpress | VM adının kaynak grubunda benzersiz olması gerekir |
     | **[Bölge](https://azure.microsoft.com/regions/)** | 'Ya Batı Avrupa | Size yakın veya sanal makineye erişen işlevlerin yakınında bir bölge seçin. |
     | **Boyut** | B1S | **Boyutu Değiştir** ' i seçin ve ardından 1 vCPU ve 1 GB belleği olan B1S standart görüntüsünü seçin. |
     | **Kimlik doğrulaması türü** | Parola | Parola kimlik doğrulamasını kullanmak için bir **Kullanıcı adı**, güvenli bir **parola**belirtmeniz ve ardından **parolayı onaylamanız**gerekir. Bu öğreticide, sorun gidermenize gerek olmadığı takdirde VM 'de oturum açmanız gerekmez. |
@@ -74,7 +74,7 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
     | ------------ | ---------------- | ---------------- |
     | **Ad** | myResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
     | **Adres aralığı** | 10.10.0.0/16 | Sanal ağ için tek bir adres aralığı kullanın. |
-    | **Alt ağ adı** | Öğretici-net | Alt ağın adı. |
+    | **Alt ağ adı** | Tutorial-Net | Alt ağın adı. |
     | **Adres aralığı** (alt ağ) | 10.10.1.0/24   | Alt ağ boyutu, alt ağa kaç arabirim eklenebileceğini tanımlar. Bu alt ağ WordPress sitesi tarafından kullanılır.  Bir `/24` alt ağ 254 ana bilgisayar adresi sağlar. |
 
 1. Sanal ağı oluşturmak için **Tamam ' ı** seçin.
@@ -105,7 +105,7 @@ Bir sanal ağdaki VM 'de çalışan bir WordPress sitesi ile artık işlev uygul
 
 1. **Sanal ağ tümleştirmesi** sayfasında **VNET Ekle**' yi seçin.
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="VNet tümleştirme önizlemesini ekleyin":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="İşlev uygulamasındaki ağı seçin":::
 
 1. **Ağ özelliği durumu**' nda, görüntünün altındaki tabloda bulunan ayarları kullanın:
 
@@ -113,9 +113,9 @@ Bir sanal ağdaki VM 'de çalışan bir WordPress sitesi ile artık işlev uygul
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | **Sanal Ağ** | MyResourceGroup-VNET | Bu sanal ağ, daha önce oluşturduğunuz bir tane. |
+    | **Sanal ağ** | MyResourceGroup-VNET | Bu sanal ağ, daha önce oluşturduğunuz bir tane. |
     | **Alt ağ** | Yeni alt ağ oluştur | İşlev uygulamanızın kullanması için sanal ağda bir alt ağ oluşturun. VNet tümleştirmesi boş bir alt ağ kullanacak şekilde yapılandırılmalıdır. İşlevlerinizin sanal makinenizin dışında farklı bir alt ağ kullanması fark etmez. Sanal ağ iki alt ağ arasındaki trafiği otomatik olarak yönlendirir. |
-    | **Alt ağ adı** | İşlev-net | Yeni alt ağın adı. |
+    | **Alt ağ adı** | Function-Net | Yeni alt ağın adı. |
     | **Sanal ağ adres bloğu** | 10.10.0.0/16 | WordPress sitesi tarafından kullanılan aynı adres bloğunu seçin. Yalnızca bir adres bloğu tanımlanmış olmalıdır. |
     | **Adres aralığı** | 10.10.2.0/24   | Alt ağ boyutu, Premium plan işlev uygulamanızın ölçeklenebilmesini sağlayan toplam örnek sayısını kısıtlar. Bu örnek `/24` , 254 kullanılabilir ana bilgisayar adresi olan bir alt ağ kullanır. Bu alt ağ daha fazla sağlanmış, ancak hesaplama kolaydır. |
 
@@ -127,9 +127,9 @@ Bir sanal ağdaki VM 'de çalışan bir WordPress sitesi ile artık işlev uygul
 
 VNet tümleştirmesi etkinken, sanal ağda çalışan VM 'ye istekleri iletmek için işlev uygulamanızda bir ara sunucu oluşturabilirsiniz.
 
-1. İşlev uygulamanızda, sol menüden **proxy 'ler** ' i seçin ve ardından **Ekle**' yi seçin. Görüntünün altındaki tabloda bulunan ara sunucu ayarlarını kullanın:
+1. İşlev uygulamanızda, sol menüden  **proxy 'ler** ' i seçin ve ardından **Ekle**' yi seçin. Görüntünün altındaki tabloda bulunan ara sunucu ayarlarını kullanın:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Proxy ayarlarını tanımlama":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="İşlev uygulamasındaki ağı seçin":::
 
     | Ayar  | Önerilen değer  | Açıklama      |
     | -------- | ---------------- | ---------------- |

@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87910079"
 ---
-# <a name="leave-an-organization-as-a-guest-user"></a>Bir kuruluştan Konuk Kullanıcı olarak ayrılın
+# <a name="leave-an-organization-as-a-guest-user"></a>Kuruluştan konuk kullanıcı olarak ayrılma
 
 Azure Active Directory (Azure AD) B2B Konuk kullanıcısı, artık bu kuruluştan uygulama kullanmaya gerek kalmadığında veya herhangi bir ilişkilendirmeyi koruduklarında, bir kuruluştan herhangi bir zamanda ayrılmaya karar verebilir. Bir Kullanıcı bir yönetici ile iletişim kurmak zorunda kalmadan bir kuruluştan kendi kendine bırakabilir.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554524"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940846"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Öğretici: Azure AD çoklu oturum açma (SSO) ile NetSuite tümleştirme
 
@@ -79,7 +79,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
 1. [Azure Portal](https://portal.azure.com/), **Netsuite** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** bölmesinde **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **temel SAML yapılandırması**' nın yanındaki **Düzenle** ("kurşun kalem") simgesini seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **temel SAML yapılandırması**' nın yanındaki **Düzenle** ("kurşun kalem") simgesini seçin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
     * Netsuite yapılandırma **<`Instance ID`>** bölümünde, Netsuite Yapılandırması altındaki 8. adımdaki Öğreticinin ilerleyen kısımlarında açıklanan değeri alacaksınız. Tam etki alanını (Bu durumda system.na0.netsuite.com gibi) bulacaksınız.
 
-        ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/domain-value.png)
+        ![Ekran görüntüsü, etki alanını alabileceğiniz SAML kurulum sayfasını gösterir.](./media/NetSuite-tutorial/domain-value.png)
 
         > [!NOTE]
         > Yukarıdaki URL 'Lerdeki değerler gerçek değildir. Bunları gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için, [Netsuite istemci desteği ekibine](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen biçimlere de başvurabilirsiniz.
@@ -164,31 +164,31 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
 2. Üst gezinti çubuğunda, **Kurulum**' u seçin ve ardından **Şirket**  >  **Etkinleştir Özellikler**' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-setupsaml.png)
+    ![Ekran görüntüsü şirketten seçilen özellikleri etkinleştir ' i gösterir.](./media/NetSuite-tutorial/ns-setupsaml.png)
 
 3. Sayfanın ortasındaki araç çubuğunda **Suitecloud**' ı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-suitecloud.png)
+    ![Ekran görüntüsünde SuiteCloud seçili gösterilmektedir.](./media/NetSuite-tutorial/ns-suitecloud.png)
 
 4. **Kimlik doğrulamasını Yönet**altında, Netsuite 'teki SAML çoklu oturum açma seçeneğini etkinleştirmek Için **SAML çoklu oturum açma** onay kutusunu seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-ticksaml.png)
+    ![Ekran görüntüsünde, SAML çoklu oturum açma seçeneğini seçebileceğiniz kimlik doğrulamasını yönetme gösterilmektedir.](./media/NetSuite-tutorial/ns-ticksaml.png)
 
 5. Üst gezinti çubuğunda **Kurulum**' u seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-setup.png)
+    ![Ekran görüntüsü NETSUITE gezinti çubuğundan seçilen kurulumu gösterir.](./media/NetSuite-tutorial/ns-setup.png)
 
 6. **Kurulum görevleri** listesinde, **tümleştirme**' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-integration.png)
+    ![Ekran görüntüsünde, kurulum GÖREVLERINDEN seçilen tümleştirme gösterilmektedir.](./media/NetSuite-tutorial/ns-integration.png)
 
 7. **Kimlik doğrulamasını Yönet**altında **SAML çoklu oturum açma**' yı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-saml.png)
+    ![Ekran görüntüsü, kurulum GÖREVLERINDE tümleştirme öğesinden seçilen SAML çoklu oturum açmayı gösterir.](./media/NetSuite-tutorial/ns-saml.png)
 
 8. **SAML kurulum** bölmesindeki **Netsuite yapılandırması**altında aşağıdakileri yapın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-saml-setup.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML kurulumunu gösterir.](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. **Birincil kimlik doğrulama yöntemi** onay kutusunu seçin.
 
@@ -198,9 +198,9 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
 9. Netsuite üst gezinti çubuğunda **Kurulum**' u ve ardından **Şirket**  >  **Şirket bilgileri**' ni seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-com.png)
+    ![Ekran görüntüsü şirketten seçilen şirket bilgilerini gösterir.](./media/NetSuite-tutorial/ns-com.png)
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-account-id.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz bölmeyi gösterir.](./media/NetSuite-tutorial/ns-account-id.png)
 
     b. **Şirket bilgileri** bölmesindeki sağ SÜTUNDA **hesap kimliği** değerini kopyalayın.
 
@@ -210,23 +210,23 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
     a. Üst gezinti çubuğunda **Kurulum**' u seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-setup.png)
+    ![Ekran görüntüsü NETSUITE gezinti çubuğundan seçilen kurulumu gösterir.](./media/NetSuite-tutorial/ns-setup.png)
 
     b. Sol bölmede **Kullanıcılar/roller**' i seçin ve ardından **rolleri Yönet**' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-manage-roles.png)
+    ![Ekran görüntüsü rol yönetme bölmesini gösterir ve burada yeni rol seçebilirsiniz.](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. **Yeni rol**' i seçin.
 
     d. Yeni rol için bir **ad** girin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-new-role.png)
+    ![Ekran görüntüsü, rol için bir ad girebileceğiniz Kurulum Yöneticisini gösterir.](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. **Kaydet**’i seçin.
 
     f. Üst gezinti çubuğunda **izinler**' i seçin. Ardından **Kurulum**' u seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-sso.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kurulum sekmesini gösterir.](./media/NetSuite-tutorial/ns-sso.png)
 
     örneğin: **SAML çoklu oturum açma**' yı seçin ve ardından **Ekle**' yi seçin.
 
@@ -234,19 +234,19 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
     i. Üst gezinti çubuğunda **Kurulum**' u ve ardından **Kurulum Yöneticisi**' ni seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-setup.png)
+    ![Ekran görüntüsü NETSUITE gezinti çubuğundan seçilen kurulumu gösterir.](./media/NetSuite-tutorial/ns-setup.png)
 
     j. Sol bölmede **Kullanıcılar/roller**' i seçin ve ardından **Kullanıcıları Yönet**' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-manage-users.png)
+    ![Ekran görüntüsü, Suite demo ekibini seçebileceğiniz kullanıcıları Yönet bölmesini gösterir.](./media/NetSuite-tutorial/ns-manage-users.png)
 
     k. Bir test kullanıcısı seçin, **Düzenle**' yi seçin ve sonra **erişim** sekmesini seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-edit-user.png)
+    ![Ekran görüntüsü kullanıcıları Yönet bölmesini gösterir ve burada Düzenle seçeneğini belirleyebilirsiniz.](./media/NetSuite-tutorial/ns-edit-user.png)
 
     l. **Roller** bölmesinde, oluşturduğunuz uygun rolü atayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-add-role.png)
+    ![Ekran görüntüsü, çalışan tarafından seçilen yöneticiyi gösterir.](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. **Kaydet**’i seçin.
 

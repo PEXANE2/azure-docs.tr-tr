@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 691b7c2890d29d390abbe8151fe66dbd99c5bc60
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653554"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978195"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure sanal makineleri için yüksek kullanılabilirlik SAP HANA
 
 Azure VM 'lerinde SAP HANA gibi görev açısından kritik veritabanlarını dağıtmak için çok sayıda Azure özelliği kullanabilirsiniz. Bu makalede, Azure VM 'lerinde barındırılan SAP HANA örnekleri için nasıl kullanılabilirlik elde edilecek hakkında rehberlik sunulmaktadır. Makalesinde Azure 'da SAP HANA kullanılabilirliğini artırmak için Azure altyapısını kullanarak uygulayabileceğiniz çeşitli senaryolar açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede aşağıdakiler de dahil olmak üzere Azure 'da hizmet olarak altyapı (IaaS) hakkında bilgi sahibi olduğunuz varsayılır. 
 
@@ -52,7 +52,7 @@ Ayrıca, SAP HANA hakkındaki bu makalelerle ilgili bilgi sahibi olmak iyi bir f
 - [SAP HANA hizmeti otomatik yeniden başlatma](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [SAP HANA sistem çoğaltmasını yapılandırma](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Azure 'da VM dağıtımı hakkında daha fazla bilgi sahibi olmak için, Azure 'da kullanılabilirlik mimarinizi tanımladıktan önce, [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../windows/manage-availability.md)konusunu okumanız önerilir.
+Azure 'da VM dağıtımı hakkında daha fazla bilgi sahibi olmak için, Azure 'da kullanılabilirlik mimarinizi tanımladıktan önce, [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../manage-availability.md)konusunu okumanız önerilir.
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure bileşenleri için hizmet düzeyi sözleşmeleri
 
@@ -85,4 +85,3 @@ Azure bileşenlerinin sağlayacağımız SLA 'Lara karşı kullanılabilirlik ge
 
 
 
-  

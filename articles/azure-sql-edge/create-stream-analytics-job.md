@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888107"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge 'de veri akışı işi oluşturma 
@@ -38,7 +38,7 @@ Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aş
 
 | Veri kaynağı türü | Girdi | Çıktı | Açıklama |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub 'ı | Y | Y | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
+| Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
 | SQL Veritabanı | H | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
 | Kafka | E | H | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel veya AMD sürümlerinde kullanılabilir. Azure SQL Edge 'in ARM64 sürümünde kullanılamaz.|
 

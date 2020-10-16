@@ -7,10 +7,10 @@ ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650485"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure uzaktan Işleme örneğinize erişmek için Azure AD ile kimlik doğrulama
 > * Azure uzaktan Işleme kimlik doğrulaması için Azure kimlik bilgilerini kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici [öğretici: malzemeleri, aydınlatmayı ve etkileri Iyileştirirken](..\materials-lighting-effects\materials-lighting-effects.md)Bu öğreticide oluşturulur.
 

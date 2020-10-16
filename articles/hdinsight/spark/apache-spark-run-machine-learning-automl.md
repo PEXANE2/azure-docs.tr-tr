@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087496"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight 'ta Apache Spark otomatik makine öğrenimi ile Azure Machine Learning iş yüklerini çalıştırma
@@ -21,7 +21,7 @@ Azure Machine Learning, makine öğrenimi modellerinin oluşturulmasını, eğit
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>HDInsight kümesine Azure Machine Learning yüklemesi
 
 Otomatik makine öğrenimi hakkında genel öğreticiler için bkz. [öğretici: gerileme modelinizi derlemek için otomatik makine öğrenimi kullanma](../../machine-learning/tutorial-auto-train-models.md).
-Tüm yeni HDInsight-Spark kümeleri, AzureML-otomatik ml SDK 'Sı ile önceden yüklenmiş olarak gelir.
+Tüm yeni HDInsight-Spark kümeleri AzureML-AutoML SDK ile önceden yüklenmiş olarak gelir.
 
 > [!Note]
 > Azure Machine Learning paketleri Python3 Conda ortamına yüklenir. Yüklü Jupyter Not defteri, PySpark3 çekirdeği kullanılarak çalıştırılmalıdır.

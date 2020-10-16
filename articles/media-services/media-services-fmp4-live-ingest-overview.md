@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072033"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019520"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services parçalanmış MP4 canlı alma belirtimi 
 
@@ -39,7 +39,7 @@ Aşağıdaki diyagramda Media Services içindeki canlı akış hizmetinin üst d
 ![alma akışı][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstream biçimi – ISO 14496-12 parçalanmış MP4
-Bu belgede ele alınan canlı akış için Tel biçimi [ISO-14496-12] tabanlıdır. İsteğe bağlı video dosyaları ve canlı akış alımı için parçalı MP4 biçimi ve uzantılarının ayrıntılı bir açıklaması için, bkz. [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
+Bu belgede ele alınan canlı akış için Tel biçimi [ISO-14496-12] tabanlıdır. İsteğe bağlı video dosyaları ve canlı akış alımı için parçalı MP4 biçimi ve uzantılarının ayrıntılı bir açıklaması için, bkz. [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).
 
 ### <a name="live-ingest-format-definitions"></a>Canlı alma biçimi tanımları
 Aşağıdaki listede, Azure Media Services içine canlı alma için uygulanan özel biçim tanımları açıklanmaktadır:
@@ -70,12 +70,12 @@ Ayrıntılı gereksinimler şunlardır:
 1. HTTP POST isteği akışın sonundan önce bir TCP hatasıyla sonlandığında veya zaman aşımına uğrarsa, kodlayıcı yeni bir bağlantı kullanarak yeni bir POST isteği VERMELIDIR ve önceki gereksinimleri izlemelidir. Ayrıca, kodlayıcı akıştaki her parça için önceki iki MP4 parçalarını yeniden göndermesi ve medya zaman çizelgesinde sürekliliği bildirmeden devam ETMELIDIR. Her bir parça için son iki MP4 parçasının yeniden kesilmesi, veri kaybı olmamasını sağlar. Diğer bir deyişle, bir akış hem bir ses hem de video izlemesi içeriyorsa ve geçerli POST isteği başarısız olursa, kodlayıcı, daha önce başarıyla gönderilen ses izi için son iki parçayı yeniden bağlanmalıdır ve yeniden göndermesi ve veri kaybı olmamasını sağlamak için daha önce başarıyla gönderilen video izlemesine yönelik son iki parça olmalıdır. Kodlayıcı, yeniden bağlandığında daha sonra sona erecek olan medya parçalarının "ileri" bir arabelleğini KORUMALıDıR.
 
 ## <a name="5-timescale"></a>5. zaman ölçeği
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) , **yumuşak streamingmedia** (Section 2.2.2.1), **streamelement** (Section 2.2.2.3), **StreamFragmentElement** (Bölüm 2.2.2.6) ve **livesmil** (Bölüm 2.2.7.3.1) için zaman ölçeğinin kullanımını açıklar. Zaman ölçeği değeri yoksa, kullanılan varsayılan değer 10.000.000 ' dir (10 MHz). Kesintisiz Akış biçim belirtimi diğer zaman ölçeği değerlerinin kullanımını engelmese de, çoğu Kodlayıcı uygulaması bu varsayılan değeri (10 MHz) kullanarak Kesintisiz Akış alma verileri oluşturur. [Azure Medya dinamik paketleme](./previous/media-services-dynamic-packaging-overview.md) özelliği nedeniyle, video akışları için 90-khz zaman ölçeğini ve ses akışları Için 44,1 khz veya 48,1 kHz kullanmanızı öneririz. Farklı akışlar için farklı zaman ölçeği değerleri kullanılıyorsa, akış düzeyi zaman ölçeğinin gönderilmesi gerekır. Daha fazla bilgi için bkz. [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) , **yumuşak streamingmedia** (Section 2.2.2.1), **streamelement** (Section 2.2.2.3), **StreamFragmentElement** (Bölüm 2.2.2.6) ve **livesmil** (Bölüm 2.2.7.3.1) için zaman ölçeğinin kullanımını açıklar. Zaman ölçeği değeri yoksa, kullanılan varsayılan değer 10.000.000 ' dir (10 MHz). Kesintisiz Akış biçim belirtimi diğer zaman ölçeği değerlerinin kullanımını engelmese de, çoğu Kodlayıcı uygulaması bu varsayılan değeri (10 MHz) kullanarak Kesintisiz Akış alma verileri oluşturur. [Azure Medya dinamik paketleme](./previous/media-services-dynamic-packaging-overview.md) özelliği nedeniyle, video akışları için 90-khz zaman ölçeğini ve ses akışları Için 44,1 khz veya 48,1 kHz kullanmanızı öneririz. Farklı akışlar için farklı zaman ölçeği değerleri kullanılıyorsa, akış düzeyi zaman ölçeğinin gönderilmesi gerekır. Daha fazla bilgi için bkz. [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).     
 
 ## <a name="6-definition-of-stream"></a>6. "Stream" tanımı
 Stream, canlı bir sunu oluşturmaya, akış yük devretmesini işlemeye ve artıklık senaryolarına yönelik olarak dinamik alma işlemindeki temel işlem birimidir. Akış, tek bir izleme veya birden çok parça içerebilen bir benzersiz, parçalanmış MP4 Bitstream olarak tanımlanır. Tam canlı bir sunum, canlı kodlayıcıların yapılandırmasına bağlı olarak bir veya daha fazla akış içerebilir. Aşağıdaki örneklerde, tam canlı bir sunum oluşturmak için akışları kullanmanın çeşitli seçenekleri gösterilmektedir.
 
-**Örneğinde** 
+**Örnek:** 
 
 Müşteri, aşağıdaki ses/video bitoranını içeren canlı bir akış sunumu oluşturmak istiyor:
 
@@ -193,7 +193,7 @@ Gereksiz ses parçaları için aşağıdaki uygulama önerilir:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

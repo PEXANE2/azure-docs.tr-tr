@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bbd274f6b039ef4492068d939c755ab279c2830a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91286659"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070002"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Öğretici: Azure AD 'den SAP 'ye geri yazma özelliği yapılandırma başarılı
 Bu öğreticinin amacı, Azure AD 'den SAP 'nin başarıyla, çalışan Merkezi ' ne kadar geri yazma adımlarını gösterir. 
@@ -324,13 +324,23 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
 
-2. **Kaydet**’e tıklayın.
+1. **Kapsam**seçin. Aşağıdaki seçeneklerden birini seçebilirsiniz: 
+   * **Tüm kullanıcıları ve grupları Eşitle**: Azure AD 'den başarılı etkenlere, **eşleme**  ->  **kaynak nesne kapsamı**altında tanımlanan kapsam kurallarına tabi olan tüm kullanıcıların yeniden eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. 
+   * **Yalnızca atanmış kullanıcıları ve grupları Eşitle**: yalnızca **uygulama**  ->  **Manage**  ->  **kullanıcıları ve grupları** Yönet menü seçeneğinde bu uygulamaya atadığınız kullanıcıların geri eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. Bu kullanıcılar ayrıca, **eşlemeler**  ->  **kaynak nesne kapsamı**altında tanımlanan kapsam kurallarına tabidir.
 
-3. Bu işlem ilk eşitlemeyi başlatacak ve bu da, başarılı bir sayıda kullanıcının başarılı olan kiracı kiracısında olmasına bağlı olarak birkaç saat sürebilir. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
+   > [!div class="mx-imgBorder"]
+   > ![Geri yazma kapsamını Seç](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
 
-4. Herhangi bir zamanda, sağlama hizmeti 'nin gerçekleştirdiği işlemleri görmek için Azure portal **Denetim günlükleri** sekmesini kontrol edin. Denetim günlükleri, sağlama hizmeti tarafından gerçekleştirilen kullanıcıların, çalışan merkezi 'nden okunmakta olduğu ve daha sonra Active Directory olarak eklendiği veya güncelleştirileceği tüm bireysel eşitleme olaylarını listeler. 
+   > [!NOTE]
+   > Başarılı bir şekilde geri yazma sağlama uygulaması "Grup atamasını" desteklemez. Yalnızca "Kullanıcı Ataması" desteklenir. 
 
-5. İlk eşitleme tamamlandıktan sonra, aşağıda gösterildiği gibi **sağlama** sekmesinde bir denetim Özeti raporu yazar.
+1. **Kaydet**’e tıklayın.
+
+1. Bu işlem ilk eşitlemeyi başlatacak ve bu, Azure AD kiracısında kaç Kullanıcı olduğuna ve işlem için tanımlanan kapsama bağlı olarak birkaç saat sürebilir. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
+
+1. Herhangi bir zamanda, sağlama hizmetinin gerçekleştirdiği işlemleri görmek için Azure portal **sağlama günlükleri** sekmesini kontrol edin. Sağlama günlükleri, sağlama hizmeti tarafından gerçekleştirilen tüm bireysel eşitleme olaylarını listeler. 
+
+1. İlk eşitleme tamamlandıktan sonra, aşağıda gösterildiği gibi **sağlama** sekmesinde bir denetim Özeti raporu yazar.
 
    > [!div class="mx-imgBorder"]
    > ![Sağlama ilerleme çubuğu](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

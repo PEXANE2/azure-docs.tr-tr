@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330120"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079080"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -118,11 +118,6 @@ Tasarımcı, Web tarayıcınızda bir sürükle ve bırak arabirimini kullanarak
 
 + [Tasarımcı nedir?](concept-designer.md)
 + [Öğretici: otomobil fiyatlarını tahmin etme](tutorial-designer-automobile-price-train-score.md)
-+ [Regresyon: tahmin fiyatı](how-to-designer-sample-regression-automobile-price-basic.md)
-+ [Sınıflandırma: geliri tahmin etme](how-to-designer-sample-classification-predict-income.md)
-+ [Sınıflandırma: dalgalanma, uygulama ve up satışı tahmin etme](how-to-designer-sample-classification-churn.md)
-+ [Özel R betiği ile sınıflandırma: uçuş gecikmelerini tahmin etme](how-to-designer-sample-classification-flight-delay.md)
-+ [Metin sınıflandırması: Vikipedi SP 500 veri kümesi](how-to-designer-sample-text-classification.md)
 
 ## <a name="many-models-solution-accelerator"></a>Birçok modelte Çözüm Hızlandırıcısı
 

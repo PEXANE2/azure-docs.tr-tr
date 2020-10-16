@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318088"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Izleyici ile Active Directory çoğaltma durumunu izleme
@@ -41,7 +41,7 @@ Etki alanı denetleyicilerinizin herhangi birine doğrudan Azure Izleyici 'ye ba
 
 1. Bilgisayarın AD Çoğaltma Durumu çözümünü kullanarak izlemek istediğiniz etki alanının bir üyesi olduğunu doğrulayın.
 2. [Windows bilgisayarını Azure izleyici 'ye bağlayın](../platform/om-agents.md) veya zaten bağlı değilse [Azure izleyici 'ye mevcut Operations Manager ortamınızı kullanarak bağlayın](../platform/om-agents.md).
-3. Bu bilgisayarda, aşağıdaki kayıt defteri anahtarını ayarlayın:<br>Anahtar: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\yönetim grupları \<ManagementGroupName> \Solutions\adreplication**<br>Değer: **ıstarget**<br>Değer verisi: **true**
+3. Bu bilgisayarda, aşağıdaki kayıt defteri anahtarını ayarlayın:<br>Anahtar: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName> \Solutions\adreplication**<br>Değer: **ıstarget**<br>Değer verisi: **true**
 
    > [!NOTE]
    > Bu değişiklikler, Microsoft Monitoring Agent hizmeti (HealthService.exe) yeniden başlatılana kadar etkili olmaz.

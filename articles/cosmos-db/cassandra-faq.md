@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
 ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167615"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Azure Cosmos DB Cassandra API hakkında sık sorulan sorular
@@ -133,7 +133,7 @@ Evet, TTL destekleniyor.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>İş verimini birlikte altyapıyı nasıl izleyebilirim?
 
-Azure Cosmos DB, altyapıyı yönetme ve izleme konusunda endişelenmenize yardımcı olan bir platform hizmetidir. Örneğin, daha önce çeşitli araçlarla düğüm durumu, çoğaltma durumu, GC ve işletim sistemi parametrelerini izlemeniz gerekmez. Yalnızca, kısıtlı olup olmadığını görmek için Portal ölçümlerinde bulunan aktarım hızını bilmeniz ve daha sonra bu iş üretimini artırabilir veya azaltabilirsiniz. Seçenekleriniz şunlardır:
+Azure Cosmos DB, altyapıyı yönetme ve izleme konusunda endişelenmenize yardımcı olan bir platform hizmetidir. Örneğin, daha önce çeşitli araçlarla düğüm durumu, çoğaltma durumu, GC ve işletim sistemi parametrelerini izlemeniz gerekmez. Yalnızca, kısıtlı olup olmadığını görmek için Portal ölçümlerinde bulunan aktarım hızını bilmeniz ve daha sonra bu iş üretimini artırabilir veya azaltabilirsiniz. Şunları yapabilirsiniz:
 
 - [SLA 'ları](monitor-accounts.md) izleme
 - [Ölçümleri](use-metrics.md) kullanma

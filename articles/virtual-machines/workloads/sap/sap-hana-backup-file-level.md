@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833394"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Dosya düzeyinde Azure Backup SAP HANA
@@ -43,7 +43,7 @@ Bunlardan biri, coğrafi olarak çoğaltılan ayrılmış bir yedekleme depolama
 
 ## <a name="azure-blobxfer-utility-details"></a>Azure blobxfer yardımcı programı ayrıntıları
 
-Dizinleri ve dosyaları Azure depolama üzerinde depolamak için, bir tane CLı veya PowerShell kullanabilir ya da [Azure SDK 'lardan](https://azure.microsoft.com/downloads/)birini kullanarak bir araç geliştirebilirsiniz. Ayrıca Azure depolama 'ya veri kopyalamak için kullanıma yönelik kullanıma yönelik bir yardımcı program ve AzCopy de vardır. (bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](../../../storage/common/storage-use-azcopy-v10.md)).
+Dizinleri ve dosyaları Azure depolama üzerinde depolamak için, bir tane CLı veya PowerShell kullanabilir ya da [Azure SDK 'lardan](https://azure.microsoft.com/downloads/)birini kullanarak bir araç geliştirebilirsiniz. Ayrıca Azure depolama 'ya veri kopyalamak için kullanıma yönelik kullanıma yönelik bir yardımcı program ve AzCopy de vardır. (bkz. [AzCopy Command-Line yardımcı programıyla veri aktarma](../../../storage/common/storage-use-azcopy-v10.md)).
 
 Bu nedenle, SAP HANA yedekleme dosyalarını kopyalamak için blobxfer kullanıldı. Bu, üretim ortamlarında birçok müşteri tarafından kullanılan ve [GitHub](https://github.com/Azure/blobxfer)'da kullanılabilen açık kaynaktır. Bu araç, bir birinin verileri doğrudan Azure Blob depolama veya Azure dosya paylaşımında kopyalamasına olanak sağlar. Ayrıca, birden çok dosya içeren bir dizin kopyalanırken MD5 karma veya otomatik paralellik gibi bir dizi kullanışlı özellik sunar.
 

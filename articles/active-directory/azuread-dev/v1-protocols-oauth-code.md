@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5f987ab15201e4c4dabf147ac468184881e9ed17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85551635"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 kod verme akışını kullanarak Azure Active Directory web uygulamalarına erişimi yetkilendirme
@@ -36,7 +36,7 @@ OAuth 2,0 yetkilendirme kodu akışı, [oauth 2,0 belirtiminin 4,1 bölümünde]
 ## <a name="register-your-application-with-your-ad-tenant"></a>Uygulamanızı AD kiracınıza kaydetme
 İlk olarak, Azure Active Directory (Azure AD) kiracınızı kullanarak uygulamanızı kaydedin. Bu, uygulamanıza bir Uygulama Kimliği verir ve uygulamanızın belirteçleri alabilmesini sağlar.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
    
 1. Sayfanın sağ üst köşesindeki hesabınızı seçerek Azure AD kiracınızı seçin ve ardından **Dizin gezintisini Değiştir** ' i seçip uygun kiracıyı seçin. 
    - Hesabınız kapsamında yalnızca bir Azure AD kiracınız varsa veya uygun Azure AD kiracısını zaten seçtiyseniz bu adımı atlayın.
@@ -84,8 +84,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |gerekli |Azure AD ile kaydettiğinizde uygulamanıza atanan uygulama KIMLIĞI. Bunu Azure portalında bulabilirsiniz. Hizmetler kenar çubuğunda **Azure Active Directory** ' a tıklayın, **uygulama kayıtları**' a tıklayın ve uygulamayı seçin. |
 | response_type |gerekli |`code`, Yetkilendirme kodu akışı için içermelidir. |
 | redirect_uri |Önerilen |Uygulamanızın, kimlik doğrulama yanıtlarının sizin uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz redirect_uris biriyle tam olarak eşleşmesi gerekir. Yerel & mobil uygulamalar için varsayılan değerini kullanmanız gerekir `https://login.microsoftonline.com/common/oauth2/nativeclient` . |
-| response_mode |isteğe bağlı |Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. `query`, Veya olabilir `fragment` `form_post` . `query`kodu, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, `query` [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız, `query` `fragment` veya kullanabilirsiniz `form_post` . `form_post`yeniden yönlendirme URI 'nize kod içeren bir GÖNDERI yürütür. Varsayılan değer `query` bir kod akışı içindir.  |
-| durum |Önerilen |İstekte bulunan, belirteç yanıtında de döndürülen bir değer. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
+| response_mode |isteğe bağlı |Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. `query`, Veya olabilir `fragment` `form_post` . `query` kodu, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, `query` [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız, `query` `fragment` veya kullanabilirsiniz `form_post` . `form_post` yeniden yönlendirme URI 'nize kod içeren bir GÖNDERI yürütür. Varsayılan değer `query` bir kod akışı içindir.  |
+| state |Önerilen |İstekte bulunan, belirteç yanıtında de döndürülen bir değer. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
 | kaynak | Önerilen |Hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI URI 'SI. Uygulama KIMLIĞI URI 'sini bulmak için Azure portalında **Azure Active Directory**' a tıklayın, **uygulama kayıtları**' na tıklayın, uygulamanın **Ayarlar** sayfasını açın ve ardından **Özellikler**' e tıklayın. Ayrıca, gibi bir dış kaynak da olabilir `https://graph.microsoft.com` . Bu, yetkilendirme ya da belirteç isteklerinden birinde gereklidir. Daha az kimlik doğrulama isteminin, kullanıcıdan onay aldığından emin olmak için bunu yetkilendirme isteğine yerleştirdiğinden emin olmak için. |
 | scope | **LIP** | V1 Azure AD uygulamaları için kapsamlar, Azure portalında uygulamalar **ayarları**altında, **gerekli izinler**altında statik olarak yapılandırılmalıdır. |
 | isteme |isteğe bağlı |Gerekli kullanıcı etkileşiminin türünü belirtin.<p> Geçerli değerler: <p> *oturum açma*: kullanıcıdan yeniden kimlik doğrulaması yapması istenir. <p> *select_account*: kullanıcıdan bir hesap seçmesi ve çoklu oturum açmayı kesintiye uğratma istenir. Kullanıcı, mevcut bir oturum açmış hesabı seçebilir, hatırlanan bir hesap için kimlik bilgilerini girebilir veya tamamen farklı bir hesap kullanmayı tercih edebilir. <p> *onay*: Kullanıcı izni verildi, ancak güncelleştirilmesi gerekiyor. Kullanıcıdan onay girmesi istenir. <p> *admin_consent*: bir yöneticinin kuruluşlarındaki tüm kullanıcılar adına onay girmeleri istenir |
@@ -114,7 +114,7 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 | admin_consent |Bir yönetici bir izin isteği istemine kabul etmişse değer true 'dur. |
 | kod |Uygulamanın istediği yetkilendirme kodu. Uygulama, hedef kaynak için bir erişim belirteci istemek üzere yetkilendirme kodunu kullanabilir. |
 | session_state |Geçerli Kullanıcı oturumunu tanımlayan benzersiz bir değer. Bu değer bir GUID 'dir, ancak incelenmesi gerekmeden geçirilen donuk bir değer olarak değerlendirilmelidir. |
-| durum |İsteğe bir durum parametresi dahil edilir, yanıtta aynı değer görünmelidir. Bu, uygulamanın istek ve yanıt içindeki durum değerlerinin yanıtı kullanmadan önce özdeş olduğunu doğrulaması için iyi bir uygulamadır. Bu, istemciye karşı [siteler arası Istek forgery (CSRF) saldırılarını](https://tools.ietf.org/html/rfc6749#section-10.12) algılamaya yardımcı olur. |
+| state |İsteğe bir durum parametresi dahil edilir, yanıtta aynı değer görünmelidir. Bu, uygulamanın istek ve yanıt içindeki durum değerlerinin yanıtı kullanmadan önce özdeş olduğunu doğrulaması için iyi bir uygulamadır. Bu, istemciye karşı [siteler arası Istek forgery (CSRF) saldırılarını](https://tools.ietf.org/html/rfc6749#section-10.12) algılamaya yardımcı olur. |
 
 ### <a name="error-response"></a>Hata yanıtı
 Ayrıca, `redirect_uri` uygulamanın uygun şekilde işleyebilmesi için hata yanıtları öğesine gönderilebilir.
@@ -129,7 +129,7 @@ error=access_denied
 | --- | --- |
 | error |[OAuth 2,0 yetkilendirme çerçevesinin](https://tools.ietf.org/html/rfc6749)5,2 bölümünde tanımlanan bir hata kodu değeri. Sonraki tabloda, Azure AD 'nin döndürdüğü hata kodları açıklanmaktadır. |
 | error_description |Hatanın daha ayrıntılı bir açıklaması. Bu ileti, son kullanıcı kullanımı için tasarlanmamıştır. |
-| durum |Durum değeri, istekte gönderilen ve siteler arası istek sahteciliği (CSRF) saldırılarını önlemeye yönelik yanıtta döndürülen rastgele oluşturulmuş bir yeniden kullanılabilir olmayan değerdir. |
+| state |Durum değeri, istekte gönderilen ve siteler arası istek sahteciliği (CSRF) saldırılarını önlemeye yönelik yanıtta döndürülen rastgele oluşturulmuş bir yeniden kullanılabilir olmayan değerdir. |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Yetkilendirme uç noktası hataları için hata kodları
 Aşağıdaki tabloda, hata yanıtının parametresinde döndürülebilecek çeşitli hata kodları açıklanmaktadır `error` .
@@ -163,7 +163,7 @@ grant_type=authorization_code
 //NOTE: client_secret only required for web apps
 ```
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | Kiracı |gerekli |`{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler kiracı tanımlayıcılarıdır, örneğin `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` veya `contoso.onmicrosoft.com` `common` kiracı bağımsız belirteçler için |
 | client_id |gerekli |Azure AD ile kaydettiğinizde uygulamanıza atanan uygulama kimliği. Bunu Azure portal bulabilirsiniz. Uygulama kimliği, uygulama kaydının ayarlarında görüntülenir. |

@@ -1,25 +1,18 @@
 ---
 title: Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama | Microsoft Docs
 description: Oracle Data Guard 'ı hızlı bir şekilde Azure ortamınızda çalışır duruma alın.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: f8a40f87b8fdaa2adf445392bd598dd8133aae4c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: b56fc172aa9fa4e88f03f488bdd1ac567708fe91
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335910"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996701"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama 
 
@@ -57,7 +50,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
-Bir kullanılabilirlik kümesi oluşturmak isteğe bağlıdır, ancak bunu yapmanızı öneririz. Daha fazla bilgi için bkz. [Azure kullanılabilirlik kümeleri yönergeleri](../../windows/infrastructure-example.md).
+Bir kullanılabilirlik kümesi oluşturmak isteğe bağlıdır, ancak bunu yapmanızı öneririz. Daha fazla bilgi için bkz. [Azure kullanılabilirlik kümeleri yönergeleri](/previous-versions/azure/virtual-machines/windows/infrastructure-example).
 
 ```azurecli
 az vm availability-set create \

@@ -8,26 +8,26 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441268"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096547"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmaya yönelik adım adım yönergeler
 
 Bu öğreticide, Azure uzamsal bağlayıcılarla yeni bir HoloLens Unity uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
 1. **Evrensel Windows platformu geliştirme** iş yükü ve **Windows 10 SDK (10.0.18362.0 veya üzeri)** bileşeni ve <a href="https://git-scm.com/download/win" target="_blank">Windows için git</a>ile <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> yüklü bir Windows makinesi.
 2. Visual Studio için [C++/Wınrt Visual Studio uzantısı (VSIX)](https://aka.ms/cppwinrt/vsix) [Visual Studio Market](https://marketplace.visualstudio.com/)yüklenmelidir.
-3. [Geliştirici modu](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) etkin bir HoloLens cihazı. Bu makalede, [Windows 10 ekim 2018 güncelleştirmesi](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (RS5 olarak da bilinir) Ile bir HoloLens cihazı gerekir. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenlik**' e gidin ve **Güncelleştirmeleri denetle** düğmesini seçin.
+3. [Geliştirici modu](/windows/mixed-reality/using-visual-studio) etkin bir HoloLens cihazı. Bu makalede, [Windows 10 mayıs 2020 güncelleştirmesi](/windows/mixed-reality/whats-new/release-notes-may-2020)Ile bir HoloLens cihazı gerekir. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenlik**' e gidin ve **Güncelleştirmeleri denetle** düğmesini seçin.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 İlk olarak proje ve Unity sahümüzü ayarlayacağız:
 1. Unity 'yi başlatın.
@@ -89,7 +89,7 @@ Unity uygulamamızı 2B görünüm yerine bir tam ekran görünümüyle yapılan
 Artık **Proje** bölmesinizdeki bir Sphere prefab sahibi olmanız gerekir.
 
 ## <a name="trying-it-out"></a>Deneniyor
-Her şeyin çalıştığını test etmek için, uygulamanızı **Unity** 'de derleyin ve **Visual Studio**'dan dağıtın. [ **Mr temel kuralları 100: Unity kursu ile çalışmaya** ](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) başlama başlıklı Bölüm 6 ' yı izleyin. Unity başlangıç ekranı ' nı ve ardından temiz bir ekran görmeniz gerekir.
+Her şeyin çalıştığını test etmek için, uygulamanızı **Unity** 'de derleyin ve **Visual Studio**'dan dağıtın. [ **Mr temel kuralları 100: Unity kursu ile çalışmaya** ](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) başlama başlıklı Bölüm 6 ' yı izleyin. Unity başlangıç ekranı ' nı ve ardından temiz bir ekran görmeniz gerekir.
 
 ## <a name="place-an-object-in-the-real-world"></a>Gerçek dünyaya bir nesne yerleştirme
 Uygulamanızı kullanarak bir nesne oluşturalım &. [Uygulamamızı dağıttığımızda](#trying-it-out)oluşturduğumuz Visual Studio çözümünü açın.
@@ -208,7 +208,7 @@ Son olarak her şeyi bir araya alalım. `CreateAndSaveSphere()`Yönteminde aşa�
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Uygulamanızı **Visual Studio** 'dan bir kez daha çalıştırın. Başlarınızın etrafında ilerleyin ve sonra kürenin yerleştirileceği yere dokunarak uçak yapın. Yeterli kare olduktan sonra Sphere, sarı bir şekilde döner ve bulut karşıya yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, uygulamanızın gönderdiği günlük iletilerini izlemek üzere **Visual Studio** içinde hata ayıklarken [Çıkış penceresini](https://docs.microsoft.com/visualstudio/ide/reference/output-window) de kullanabilirsiniz. `Debug`Günlük iletilerini görmek için uygulamanızın yapılandırmasını Visual Studio 'dan dağıttığınızdan emin olun. `RecommendedForCreateProgress`' Yi izleyebilir ve karşıya yükleme tamamlandıktan sonra buluttan döndürülen bağlantı tanımlayıcısını görebilirsiniz.
+Uygulamanızı **Visual Studio** 'dan bir kez daha çalıştırın. Başlarınızın etrafında ilerleyin ve sonra kürenin yerleştirileceği yere dokunarak uçak yapın. Yeterli kare olduktan sonra Sphere, sarı bir şekilde döner ve bulut karşıya yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, uygulamanızın gönderdiği günlük iletilerini izlemek üzere **Visual Studio** içinde hata ayıklarken [Çıkış penceresini](/visualstudio/ide/reference/output-window) de kullanabilirsiniz. `Debug`Günlük iletilerini görmek için uygulamanızın yapılandırmasını Visual Studio 'dan dağıttığınızdan emin olun. `RecommendedForCreateProgress`' Yi izleyebilir ve karşıya yükleme tamamlandıktan sonra buluttan döndürülen bağlantı tanımlayıcısını görebilirsiniz.
 
 > [!NOTE]
 > "DllNotFoundException: ' AzureSpatialAnchors ' DLL dosyası yüklenemiyor: belirtilen modül bulunamadı.", çözümünüzü yeniden **temizlemeniz** ve **derlemeniz** gerekir.

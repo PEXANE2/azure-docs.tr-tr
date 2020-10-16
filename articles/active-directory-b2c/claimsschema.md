@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201370"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -44,7 +44,7 @@ ms.locfileid: "85201370"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Talep türü için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
+| Id | Evet | Talep türü için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
 
 **ClaimType** öğesi aşağıdaki öğeleri içerir:
 
@@ -66,12 +66,12 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 
 **DataType** öğesi aşağıdaki değerleri destekler:
 
-| Tür | Description |
+| Tür | Açıklama |
 | ------- | ----------- |
-|boole|Bir Boole ( `true` veya `false` ) değeri temsil eder.|
+|boolean|Bir Boole ( `true` veya `false` ) değeri temsil eder.|
 |date| Genellikle günün bir tarihi olarak ifade edilen bir anlık zamanı temsil eder. Tarihin değeri ISO 8601 kuralı ' nı izler.|
 |tarih saat|Genellikle günün tarih ve saati olarak ifade edilen bir anlık zamanı temsil eder. Tarihin değeri ISO 8601 kuralı ' nı izler.|
-|süre|Yıl, ay, gün, saat, dakika ve saniye cinsinden bir zaman aralığını temsil eder. Biçimi `PnYnMnDTnHnMnS` , burada `P` pozitif veya `N` negatif değer için belirtir. `nY`, bir sabit değer tarafından izlenen yıl sayısıdır `Y` . `nMo`, bir sabit değer tarafından izlenen ayların sayısıdır `Mo` . `nD`, ardından bir sabit değer tarafından izlenen gün sayısıdır `D` . Örnekler: `P21Y` 21 yılı temsil eder. `P1Y2Mo`bir yılı ve iki ayı temsil eder. `P1Y2Mo5D`bir yılı, iki ayı ve beş günü temsil eder.  `P1Y2M5DT8H5M620S`bir yıl, iki ay, beş gün, sekiz saat, beş dakika ve Yirmi saniye temsil eder.  |
+|süre|Yıl, ay, gün, saat, dakika ve saniye cinsinden bir zaman aralığını temsil eder. Biçimi `PnYnMnDTnHnMnS` , burada `P` pozitif veya `N` negatif değer için belirtir. `nY` , bir sabit değer tarafından izlenen yıl sayısıdır `Y` . `nMo` , bir sabit değer tarafından izlenen ayların sayısıdır `Mo` . `nD` , ardından bir sabit değer tarafından izlenen gün sayısıdır `D` . Örnekler: `P21Y` 21 yılı temsil eder. `P1Y2Mo` bir yılı ve iki ayı temsil eder. `P1Y2Mo5D` bir yılı, iki ayı ve beş günü temsil eder.  `P1Y2M5DT8H5M620S` bir yıl, iki ay, beş gün, sekiz saat, beş dakika ve Yirmi saniye temsil eder.  |
 |phoneNumber|Bir telefon numarasını temsil eder. |
 |int| -2.147.483.648 ile 2.147.483.647 arasındaki sayıyı temsil eder|
 |long| -9223372036854775808 ile 9.223.372.036.854.775.807 arasında bir sayı temsil eder |
@@ -92,7 +92,7 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Name | Evet | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır: OAuth1, OAuth2, SAML2, Openıdconnect. |
+| Ad | Evet | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır: OAuth1, OAuth2, SAML2, Openıdconnect. |
 | PartnerClaimType | Evet | Kullanılacak talep türü adı. |
 
 Aşağıdaki örnekte, kimlik deneyimi çerçevesi bir SAML2 Identity provider veya bağlı olan taraf uygulamasıyla etkileşime geçtiğinde, **surname** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` openıdconnect ve OAuth2 ile, talep ile eşleştirilir `family_name` .

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: ''
 ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90709685"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Öğretici: Docker Compose kullanarak çok kapsayıcılı bir grup dağıtma 
@@ -18,7 +18,7 @@ Bu öğreticide, bir çok Kapsayıcılı uygulamayı yerel olarak tanımlayıp �
 Docker ile bulutta yerel uygulamalar geliştirirken ve yerel geliştirmeden bulut dağıtımına sorunsuz bir şekilde geçmek istediğinizde, kapsayıcıları isteğe bağlı Azure Container Instances olarak çalıştırın. Bu özellik, [Docker ve Azure arasındaki tümleştirmeyle](https://docs.docker.com/engine/context/aci-integration/)etkinleştirilir. Yerel Docker komutlarını, Azure 'da [tek bir kapsayıcı örneği](quickstart-docker-cli.md) veya çok kapsayıcılı bir grup çalıştırmak için kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Azure Container Instances özelliklerinin hepsi desteklenmez. Docker [ACI tümleştirmesi](https://github.com/docker/aci-integration-beta) GitHub deposunda bir sorun oluşturarak Docker-Azure tümleştirmesi hakkında geri bildirim sağlayın.
+> Azure Container Instances özelliklerinin hepsi desteklenmez. [Docker ACI tümleştirmesi](https://github.com/docker/aci-integration-beta) GitHub deposunda bir sorun oluşturarak Docker-Azure tümleştirme hakkında geri bildirim sağlayın.
 
 > [!TIP]
 > Kapsayıcıları, görüntüleri ve bağlamlarını geliştirmek, çalıştırmak ve yönetmek için tümleşik bir deneyim için [Visual Studio Code Için Docker uzantısını](https://aka.ms/VSCodeDocker) kullanabilirsiniz.
@@ -212,7 +212,7 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 Çalışan uygulamayı bulutta görmek için, görüntülenecek IP adresini yerel bir Web tarayıcısına girin. Bu örnekte, girin `52.179.23.131` . Örnek uygulama aşağıdaki örnekte gösterilen şekilde yüklenir:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="ACI 'de oylama uygulaması görüntüsü":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Oylama uygulamasının görüntüsü":::
 
 Ön uç kapsayıcısının günlüklerini görmek için [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) komutunu çalıştırın. Örneğin:
 

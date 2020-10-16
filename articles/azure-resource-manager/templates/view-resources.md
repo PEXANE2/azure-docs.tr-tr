@@ -4,10 +4,10 @@ description: Kaynak özelliklerinin nasıl aranacağını açıklar.
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327757"
 ---
 # <a name="discover-resource-properties"></a>Kaynak özelliklerini bulma
@@ -71,7 +71,7 @@ Kaynak Gezgini Azure portal katıştırılır. Bu yöntemi kullanmadan önce bir
 
 [![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Arama kutusuna **Kaynak Gezgini**' ni girip **Kaynak Gezgini**' ı seçin.
 
     ![Ekran görüntüsünde, Azure portal Kaynak Gezgini araması gösterilmektedir.](./media/view-resources/azure-portal-resource-explorer.png)

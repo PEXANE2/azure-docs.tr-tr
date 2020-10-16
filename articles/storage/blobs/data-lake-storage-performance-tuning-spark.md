@@ -10,10 +10,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 8ae9f96b42c0eb36a9380589780d141711c7ae4d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034745"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: Spark, HDInsight & Azure Data Lake Storage 2.
@@ -46,7 +46,7 @@ Spark işlerini çalıştırırken, Data Lake Storage 2. performansı artırmak 
 
 Varsayılan olarak, HDInsight 'ta Spark çalıştırılırken her fiziksel çekirdek için iki sanal YARN çekirdeği tanımlanmıştır.  Bu sayı, birden fazla iş parçacığından eşzamanlılık ve bağlam değiştirme miktarının iyi bir bakiyesini sağlar.  
 
-## <a name="guidance"></a>Yönerge
+## <a name="guidance"></a>Rehber
 
 Spark analitik iş yüklerini Data Lake Storage 2. verilerle çalışacak şekilde çalıştırırken en son HDInsight sürümünü kullanarak Data Lake Storage 2. en iyi performansı elde etmenizi öneririz. İşiniz daha yoğun olan g/ç olduğunda, performansı artırmak için bazı parametreler yapılandırılabilir.  Data Lake Storage 2. yüksek aktarım hızını işleyebilen, yüksek düzeyde ölçeklenebilir bir depolama platformudur.  İş, genellikle okuma veya yazma işlemleri içeriyorsa, g/ç için eşzamanlılık kullanımını Data Lake Storage 2., performansı artırabilir.
 

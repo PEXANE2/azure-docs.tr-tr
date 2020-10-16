@@ -17,10 +17,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94c0d1efa83af53804be89a9e86f4cafd5bc0ae0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86057764"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory bir kullanıcı veya grup için lisans atamalarını değiştirme
@@ -54,7 +54,7 @@ Lisans atamalarını güncelleştirmeden önce, tüm Kullanıcı veya grupların
 
     ![Office 365 E1 temizlenmiş ve Office 365 E3 seçili olduğunu gösteren bir kullanıcının lisans atamaları sayfası](media/licensing-groups-change-licenses/update-user-license-assignments.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için eski lisansları aynı anda kaldırır.
 
@@ -69,7 +69,7 @@ Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için 
 
     ![Kullanıcı veya grup lisansları sayfasında atamalar komutunu seçin](media/licensing-groups-change-licenses/update-group-license-assignments.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Azure AD, hizmet devamlılığını sağlamak için yeni lisansları uygular ve gruptaki tüm kullanıcılar için aynı anda eski lisansları kaldırır.
 

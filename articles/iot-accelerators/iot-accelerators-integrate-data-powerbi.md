@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ba669c86c406959a3f92949e5f806fa011527d47
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975994"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070920"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI kullanarak uzaktan Izleme verilerini görselleştirin
 
@@ -94,9 +94,9 @@ Akış bağlandıktan sonra kişiselleştirilmiş panolarınızı oluşturmaya h
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Panoyu yayımlama ve verileri yenileme
 
-Panolarınızı başarıyla oluşturduktan sonra, [Power BI panolarınızı](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) başkalarıyla paylaşmak üzere yayımlamanızı öneririz.
+Panolarınızı başarıyla oluşturduktan sonra, [Power BI panolarınızı](/power-bi/desktop-upload-desktop-files) başkalarıyla paylaşmak üzere yayımlamanızı öneririz.
 
-Ayrıca, en son veri kümesine sahip olduğunuzdan emin olmak için yayımlanan panodaki [verileri yenilemek](https://docs.microsoft.com/power-bi/refresh-data) isteyeceksiniz.
+Ayrıca, en son veri kümesine sahip olduğunuzdan emin olmak için yayımlanan panodaki [verileri yenilemek](/power-bi/refresh-data) isteyeceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -107,4 +107,3 @@ Uzaktan Izleme çözümünü özelleştirme hakkında daha fazla bilgi için bkz
 * [Uzaktan Izleme çözümü Kullanıcı arabirimini özelleştirme](iot-accelerators-remote-monitoring-customize.md)
 * [Geliştirici Başvuru Kılavuzu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Geliştirici sorun giderme kılavuzu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-

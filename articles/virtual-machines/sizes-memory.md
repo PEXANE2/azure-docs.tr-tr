@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ea58eeac5a77f2e1eaf2a7756de6d36a3fc0626b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1e27ee2c045404d13b10945ac65484281b0cd967
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825506"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019724"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Bellek için iyileştirilmiş sanal makine boyutları
 
@@ -34,9 +34,9 @@ Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları,
 
 - [Ev3 ve Esv3-Series](ev3-esv3-series.md) Intel &reg; Xeon &reg; 8171M 2,1 GHz (ufuk Gölü) veya &reg; &reg; bir hiper iş yükleri için ıntel Xeon E5-2673 v4 2,3 GHz (çok iyi) işlemcisi, çoğu genel amaçlı iş yükleri için daha Iyi bir değer teklifi sağlar ve Ev3 diğer birçok bulutun genel amaçlı VM 'leri ile hizalı hale getiriliyor. Bellek ve ağ sınırları, Hyper-Threading ' e geçiş ile hizalamak için, disk ve ağ sınırları her bir çekirdek temelinde ayarlanırken, bellek ve ağ sınırları, her bir çekirdek için bir saniyede ayarlanmışsa (7 GiB/vCPU 'dan 8 GiB Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
 
-- [Ev4 ve Esv4 serisi](ev4-esv4-series.md) , &reg; &reg; hiper iş parçacıklı bir yapılandırmada 2. nesil Intel Xeon Platinum 8272Cl (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar ve 504 GIB 'a kadar RAM için idealdir. Intel [ &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir. Ev4 ve Esv4 serisi yerel bir geçici disk içermez. Daha fazla bilgi için [Yerel geçici disk olmadan Azure VM boyutlarına](azure-vms-no-temp-disk.md)bakın.
+- [Ev4 ve Esv4 serisi](ev4-esv4-series.md) , &reg; &reg; hiper iş parçacıklı bir yapılandırmada 2. nesil Intel Xeon Platinum 8272Cl (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar ve 504 GIB 'a kadar RAM için idealdir. Intel [ &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir. Ev4 ve Esv4 serisi yerel bir geçici disk içermez. Daha fazla bilgi için  [Yerel geçici disk olmadan Azure VM boyutlarına](azure-vms-no-temp-disk.md)bakın.
 
-- [Edv4 ve Edsv4 serisi](edv4-edsv4-series.md) 2. nesil Intel &reg; Xeon &reg; Platinum 8272Cl (Cascade Lake) işlemcileri üzerinde çalışarak, son derece büyük veritabanları veya yüksek vCPU sayıları ve büyük miktarda bellekten faydalanabilecek diğer uygulamalar için idealdir. Ayrıca, bu VM boyutları, düşük gecikme süresi, yüksek hızlı yerel depolama 'dan faydalanabilir uygulamalar için hızlı, daha büyük yerel SSD depolaması içerir. 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)için tüm çekirdek Turbo saat hızını sürekli olarak sunar.
+- [Edv4 ve Edsv4 serisi](edv4-edsv4-series.md) 2. nesil Intel &reg; Xeon &reg; Platinum 8272Cl (Cascade Lake) işlemcileri üzerinde çalışarak, son derece büyük veritabanları veya yüksek vCPU sayıları ve büyük miktarda bellekten faydalanabilecek diğer uygulamalar için idealdir. Ayrıca, bu VM boyutları, düşük gecikme süresi, yüksek hızlı yerel depolama 'dan faydalanabilir uygulamalar için hızlı, daha büyük yerel SSD depolaması içerir. 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)tüm Core Turbo saat hızına sahiptir.
 
 - [M serisi](m-series.md) , yüksek bir vCPU sayısı (128 vCPU kadar) ve büyük miktarda bellek (3,8 TİB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek sanal CPU sayılarından ve büyük miktarda bellekten faydalanabilir diğer uygulamalar için de idealdir.
 

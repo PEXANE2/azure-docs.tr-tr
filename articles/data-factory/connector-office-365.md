@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513298"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' deki verileri Azure 'a kopyalama
@@ -35,7 +35,7 @@ ADF Office 365 Bağlayıcısı ve Microsoft Graph veri bağlantısı, Exchange e
 >- Kopyalama etkinliği için kullanılan Azure Integration Runtime bölgesinin ve hedefin, Office 365 Kiracı kullanıcılarının posta kutusunun bulunduğu bölgede bulunduğundan emin olun. Azure IR konumunun nasıl belirlendiğini anlamak için [buraya](concepts-integration-runtime.md#integration-runtime-location) başvurun. Desteklenen Office bölgelerinin ve ilgili Azure bölgelerinin listesi için [buradaki tabloya](https://docs.microsoft.com/graph/data-connect-datasets#regions) bakın.
 >- Hizmet sorumlusu kimlik doğrulaması, Azure Blob depolama, Azure Data Lake Storage 1. ve Azure Data Lake Storage 2. hedef depoları olarak desteklenen tek kimlik doğrulama mekanizmasıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Office 365 ' deki verileri Azure 'a kopyalamak için aşağıdaki önkoşul adımlarını gerçekleştirmeniz gerekir:
 

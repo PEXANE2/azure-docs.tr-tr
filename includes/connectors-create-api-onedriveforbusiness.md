@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 07/21/2020
 ms.openlocfilehash: 06a503e800309d8689735417931820d9f16a6e75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87103076"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
@@ -19,7 +19,7 @@ OneDrive Iş hesabınızı Logic Apps ile kullanabilmeniz için önce Azure port
 
 OneDrive Iş hesabınıza bağlanmak üzere Logic Apps yetkilendirmek için aşağıdaki adımları izleyin:  
 
-1. Azure portalında oturum açın. 
+1. Azure Portal’da oturum açın. 
 
 1. **Azure hizmetleri**altında **Logic Apps**' yi seçin. Ardından, listeden mantıksal uygulamanızın adını seçin.
 

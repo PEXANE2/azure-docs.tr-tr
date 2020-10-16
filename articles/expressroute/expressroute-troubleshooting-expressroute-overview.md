@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401750"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute bağlantısını doğrulama
@@ -42,18 +42,18 @@ Yukarıdaki diyagramda, numaralar anahtar ağ noktalarını gösterir. Bu ağ no
 
 1.  Müşteri işlem cihazı (örneğin, bir sunucu veya BILGISAYAR)
 2.  CEs: müşteri Edge yönlendiricileri 
-3.  PEs (CE 'ye yönelik): sağlayıcının Edge yönlendiricileri/ilgili müşteri Edge yönlendiricileriyle anahtarlar. Bu belgede PE-CEs adı verilir.
-4.  PEs (MSEE 'e bakan): sağlayıcıya yönelik olan sağlayıcı Edge yönlendiricileri/anahtarları. Bu belgede PE-Mas olarak adlandırılır.
+3.  PEs (CE 'ye yönelik): sağlayıcının Edge yönlendiricileri/ilgili müşteri Edge yönlendiricileriyle anahtarlar. Bu belgede PE-CEs olarak adlandırılır.
+4.  PEs (MSEE 'e bakan): sağlayıcıya yönelik olan sağlayıcı Edge yönlendiricileri/anahtarları. Bu belgede PE-MSEEs olarak adlandırılır.
 5.  MSEE: Microsoft Enterprise Edge (MSEE) ExpressRoute yönlendiricileri
 6.  Sanal ağ (VNet) ağ geçidi
 7.  Azure VNet 'te işlem cihazı
 
 Bulut değişim ortak konumu, noktadan noktaya Ethernet veya doğrudan bağlantı modelleri kullanılırsa, CEs (2) MSEE (5) ile BGP eşlemesi oluşturun. 
 
-Any-any (ıPVPN) bağlantı modeli kullanılırsa, PE-MSEE (4) MSEE (5) ile BGP eşlemesi oluşturun. PE-MSEE, Microsoft 'tan alınan yolları ıPVPN hizmet sağlayıcısı ağı aracılığıyla müşteri ağına yayar.
+Herhangi bir (ıPVPN) bağlantı modeli kullanılırsa, PE-MSEEs (4) MSEE (5) BGP eşlemesi oluşturun. Microsoft 'tan alınan yolları ıPVPN hizmet sağlayıcısı ağı aracılığıyla müşteri ağına yayın PE-MSEEs.
 
 > [!NOTE]
->Microsoft, yüksek kullanılabilirlik için MSEE (5) ve PE-MSEE (4) çiftleri arasında tam olarak yedekli bir paralel bağlantı kurar. Müşteri ağı ile PE-CEs çifti arasında tam olarak yedekli bir paralel ağ yolu da önerilir. Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [ExpressRoute ile yüksek kullanılabilirlik Için tasarlama][HA] makalesi
+>Microsoft, yüksek kullanılabilirlik için MSEE (5) ve PE-MSEEs (4) çiftleri arasında tam olarak yedekli bir paralel bağlantı kurar. Aynı zamanda müşteri ağı ve PE-CEs çifti arasında tam olarak yedekli bir paralel ağ yolu da önerilir. Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [ExpressRoute ile yüksek kullanılabilirlik Için tasarlama][HA] makalesi
 >
 >
 
@@ -319,7 +319,7 @@ StatusCode: 400
 ## <a name="next-steps"></a>Sonraki Adımlar
 Daha fazla bilgi veya yardım için aşağıdaki bağlantıları inceleyin:
 
-- [Microsoft Destek][Support]
+- [Microsoft Desteği][Support]
 - [ExpressRoute bağlantı hattını oluşturma ve değiştirme][CreateCircuit]
 - [Bir ExpressRoute bağlantı hattı için yönlendirmeyi oluşturma ve değiştirme][CreatePeering]
 

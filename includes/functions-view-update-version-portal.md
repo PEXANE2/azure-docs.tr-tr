@@ -9,10 +9,10 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: aa9a715fdafc143a116458691965087b016dec1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83343363"
 ---
 Bir işlev uygulaması tarafından şu anda kullanılan çalışma zamanı sürümünü görüntülemek ve güncelleştirmek için aşağıdaki yordamı kullanın.
@@ -27,4 +27,4 @@ Bir işlev uygulaması tarafından şu anda kullanılan çalışma zamanı sür�
 
 1. Çalışma zamanı sürümünü değiştirdiğinizde, **genel bakış** sekmesine dönün ve uygulamayı yeniden başlatmak Için **Yeniden Başlat** ' ı seçin.  Sürüm 1. x çalışma zamanı üzerinde çalışan işlev uygulaması yeniden başlatılır ve işlev oluştururken sürüm 1. x şablonları kullanılır.
 
-    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="İşlev uygulamanızı yeniden başlatın." border="true":::
+    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="Çalışma zamanı sürümünü görüntüleyin." border="true":::

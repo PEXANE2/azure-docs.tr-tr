@@ -4,10 +4,10 @@ description: Azure geçişi hizmeti kullanılarak Azure 'a geçiş için çok sa
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171919"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda VMware VM 'lerini değerlendirin
@@ -37,7 +37,7 @@ Bu makalede şunları öğreneceksiniz:
 - **Bulma için hesapları planlayın**: Azure geçişi gereci, değerlendirme ve geçiş Için VM 'leri bulmak üzere vCenter Server erişimi olan bir hesap kullanır. 10.000 'den fazla VM keşfederseniz, bir projedeki herhangi bir iki gereçde bulunan VM 'Ler arasında çakışma olmaması gerektiği için birden çok hesap ayarlayın. 
 
 > [!NOTE]
-> Birden çok gereç ayarlıyorsanız, belirtilen vCenter hesaplarında VM 'Ler arasında çakışma olmadığından emin olun. Bu tür bir örtüşme ile bulma işlemi desteklenmeyen bir senaryodur. Bir sanal makine birden fazla gereç tarafından bulunursa, bu, sunucu geçişinin Azure portal kullanarak VM için çoğaltmayı etkinleştirirken bulma ve sorun halinde yinelenmesine neden olur.
+> Birden çok gereç ayarlıyorsanız, belirtilen vCenter hesaplarında VM 'Ler arasında çakışma olmadığından emin olun. Böyle bir çakışmayla bulma işlemi desteklenmeyen bir senaryodur. Bir sanal makine birden fazla gereç tarafından bulunursa, bu, sunucu geçişinin Azure portal kullanarak VM için çoğaltmayı etkinleştirirken bulma ve sorun halinde yinelenmesine neden olur.
 
 ## <a name="planning-limits"></a>Planlama limitleri
  
@@ -56,9 +56,9 @@ Bu limitlerin göz önünde bulundurularak bazı örnek dağıtımlar verilmişt
 **vCenter server** | **Sunucudaki VM 'Ler** | **Öneri** | **Eylem**
 ---|---|---|---
 Bir | < 10.000 | Bir Azure geçişi projesi.<br/> Tek gereç.<br/> Bulma için bir vCenter hesabı. | Gereci ayarlama, bir hesapla vCenter Server bağlanma.
-Bir | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | Her 10.000 VM için gereç ayarlayın.<br/><br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz. <br/> <br/> Belirtilen vCenter hesaplarında VM 'Ler arasında çakışma olmadığından emin olun. Bu tür bir örtüşme ile bulma işlemi desteklenmeyen bir senaryodur. Bir sanal makine birden fazla gereç tarafından bulunursa, bu, bulma ve problemteki yinelemeler ile sonuçlanır ve sunucu geçişi içindeki Azure portal kullanarak VM için çoğaltmayı etkinleştirir.
+Bir | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | Her 10.000 VM için gereç ayarlayın.<br/><br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz. <br/> <br/> Belirtilen vCenter hesaplarında VM 'Ler arasında çakışma olmadığından emin olun. Böyle bir çakışmayla bulma işlemi desteklenmeyen bir senaryodur. Bir sanal makine birden fazla gereç tarafından bulunursa, bu, bulma ve problemteki yinelemeler ile sonuçlanır ve sunucu geçişi içindeki Azure portal kullanarak VM için çoğaltmayı etkinleştirir.
 Birden çok | < 10.000 |  Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Bulma için bir vCenter hesabı. | Gereçlerini ayarlama, bir hesapla vCenter Server bağlama.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
-Birden çok | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | VCenter Server bulma < 10.000 VM 'Leri varsa, her vCenter Server için bir gereç kurun.<br/><br/> VCenter Server bulma > 10.000 VM 'Ler için, her 10.000 sanal makine için bir gereç kurun.<br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz. <br/><br/> Belirtilen vCenter hesaplarında VM 'Ler arasında çakışma olmadığından emin olun. Bu tür bir örtüşme ile bulma işlemi desteklenmeyen bir senaryodur. Bir sanal makine birden fazla gereç tarafından bulunursa, bu, bulma ve problemteki yinelemeler ile sonuçlanır ve sunucu geçişi içindeki Azure portal kullanarak VM için çoğaltmayı etkinleştirir.
+Birden çok | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | VCenter Server bulma < 10.000 VM 'Leri varsa, her vCenter Server için bir gereç kurun.<br/><br/> VCenter Server bulma > 10.000 VM 'Ler için, her 10.000 sanal makine için bir gereç kurun.<br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz. <br/><br/> Belirtilen vCenter hesaplarında VM 'Ler arasında çakışma olmadığından emin olun. Böyle bir çakışmayla bulma işlemi desteklenmeyen bir senaryodur. Bir sanal makine birden fazla gereç tarafından bulunursa, bu, bulma ve problemteki yinelemeler ile sonuçlanır ve sunucu geçişi içindeki Azure portal kullanarak VM için çoğaltmayı etkinleştirir.
 
 
 
@@ -88,7 +88,7 @@ Planlama gereksinimlerinize uygun olarak şunları yapın:
 1. Bir Azure geçişi projesi oluşturun.
 2. Azure geçişi sunucu değerlendirmesi aracını projelere ekleyin.
 
-[Daha fazla bilgi](how-to-add-tool-first-time.md)
+[Daha fazla bilgi edinin](how-to-add-tool-first-time.md)
 
 ## <a name="create-and-review-an-assessment"></a>Değerlendirme oluşturma ve gözden geçirme
 

@@ -1,16 +1,16 @@
 ---
-title: Kayıt defteri performansının sorunlarını giderme
+title: Kayıt defteri performansı sorunlarını giderme
 description: Bir kayıt defterinin performansı ile ilgili genel sorunların belirtileri, nedenleri ve çözümlenmesi
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: 414e3a92b8ebd4ff58528fc5e9ec4794471bd775
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88227538"
 ---
-# <a name="troubleshoot-registry-performance"></a>Kayıt defteri performansının sorunlarını giderme
+# <a name="troubleshoot-registry-performance"></a>Kayıt defteri performansı sorunlarını giderme
 
 Bu makale, bir Azure Container Registry 'nin performansıyla karşılaşacağınız sorunları gidermenize yardımcı olur. 
 
@@ -80,7 +80,7 @@ Coğrafi olarak çoğaltılan bir kayıt defteriyle ilgili sorunları gidermek i
 
 ### <a name="configure-dns-for-geo-replicated-registry"></a>Coğrafi olarak çoğaltılan kayıt defteri için DNS yapılandırma
 
-Coğrafi olarak çoğaltılan bir kayıt defterindeki çekme işlemleri yavaş görünüyorsa, istemcideki DNS yapılandırması coğrafi olarak uzak bir DNS sunucusuna çözümleyebilir. Bu durumda, Traffic Manager DNS sunucusuna ağ yakın, ancak istemciden uzak olan bir çoğaltmaya yönlendirme istekleri olabilir. `nslookup` `dig` Kayıt defteri isteklerini yönlendirdiğini Traffic Manager çoğaltmayı öğrenmek için veya (Linux üzerinde) gibi bir araç çalıştırın. Örnek:
+Coğrafi olarak çoğaltılan bir kayıt defterindeki çekme işlemleri yavaş görünüyorsa, istemcideki DNS yapılandırması coğrafi olarak uzak bir DNS sunucusuna çözümleyebilir. Bu durumda, Traffic Manager DNS sunucusuna ağ yakın, ancak istemciden uzak olan bir çoğaltmaya yönlendirme istekleri olabilir. `nslookup` `dig` Kayıt defteri isteklerini yönlendirdiğini Traffic Manager çoğaltmayı öğrenmek için veya (Linux üzerinde) gibi bir araç çalıştırın. Örneğin:
 
 ```console
 nslookup myregistry.azurecr.io

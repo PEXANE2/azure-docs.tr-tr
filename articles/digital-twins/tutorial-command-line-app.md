@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297682"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048500"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Öğretici: örnek bir istemci uygulamasıyla Azure dijital TWINS 'i araştırma
 
@@ -79,24 +79,24 @@ Taşımadan önce dosyayı kaydettiğinizden emin olun.
 > Kendi modelinizi oluşturmayı denemek istiyorsanız, *Oda* modeli kodunu *AdtSampleApp\SampleClientApp\Models* klasöründe bir *. JSON* uzantısıyla kaydedeceğiniz yeni bir dosyaya yapıştırabilirsiniz. Ardından, istediğiniz şeyi temsil etmek üzere Özellikler ve ilişkiler ekleyerek bir adım adım oynayın. Ayrıca, bu klasördeki diğer örnek modellere fikir için göz atabilirsiniz.
 
 > [!TIP] 
-> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [*nasıl yapılır: modellerinizi ayrıştırma ve doğrulama*](how-to-parse-models.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
+> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [*nasıl yapılır: modellerinizi ayrıştırma ve doğrulama*](how-to-parse-models.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
 
 ### <a name="get-started-with-the-command-line-app"></a>Komut satırı uygulaması ile çalışmaya başlama
 
 Bir model tanımladığınıza göre, kalan adımlar Azure dijital TWINS örneğiniz ile etkileşim kurmak için örnek uygulamayı kullanmayı içerir. Araç çubuğunda Bu düğmeyle projeyi Çalıştır:
 
-:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Visual Studio Başlangıç düğmesi (SampleClientApp Projesi)":::
+:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 Bir konsol penceresi açılır, kimlik doğrulama işlemi gerçekleştirebilir ve bir komut için bekler. 
 * Kimlik doğrulaması tarayıcı aracılığıyla gerçekleştirilir: varsayılan Web tarayıcınız, bir kimlik doğrulama istemiyle açılır. Azure kimlik bilgilerinizle oturum açmak için bu istemi kullanın. Ardından tarayıcı sekmesini veya penceresini kapatabilirsiniz.
 
 Proje konsolunun neye benzediğinin ekran görüntüsü aşağıda verilmiştir:
 
-:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Komut satırı uygulamasından hoş geldiniz iletisi":::
+:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 > [!TIP]
 > Bu projeyle kullanabileceğiniz tüm olası komutların listesi için, `help` Proje konsoluna girip Return tuşuna basın.
-> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Yardım komutunun çıkışı":::
+> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 Bu öğreticideki adımların geri kalanında proje konsolunu çalışır durumda tutun.
 
@@ -117,7 +117,7 @@ CreateModels Room Floor
 
 Komutu çalıştırarak modellerin oluşturulduğunu doğrulayın `GetModels true` . Bu, karşıya yüklenen tüm modeller için Azure dijital TWINS örneğini sorgular ve tam bilgilerini yazdırır. Sonuçlarda düzenlenmiş *Oda* modelini arayın:
 
-:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Güncelleştirilmiş Oda modelini gösteren GetModel sonuçları":::
+:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 #### <a name="errors"></a>Hatalar
 
@@ -165,7 +165,7 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 Bu komutların çıktısı, TWINS 'nin başarıyla oluşturulduğunu göstermelidir. 
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Floor0, Floor1, room0 ve room1 gösteren CreateDigitalTwin komutlarının sonuçlarından alıntı yapın":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 Ayrıca, komutunu çalıştırarak TWINS 'nin oluşturulduğunu doğrulayabilirsiniz `Query` . Bu komut, içerdiği tüm dijital TWINS için Azure dijital TWINS örneğinizi sorgular. Sonuçlarda *floor0*, *Floor1*, *room0*ve *room1* TWINS ' i arayın.
 
@@ -205,15 +205,7 @@ CreateRelationship floor1 contains room1 relationship1
 
 Bu komutların çıktısı, ilişkilerin başarıyla oluşturulduğunu onaylar:
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Relationship0 ve relationship1 gösteren CreateRelationship komutlarının sonuçlarından alıntı":::
-
-Ayrıca, Azure dijital TWINS örneğiniz ilişkilerini sorgulayan aşağıdaki komutlardan herhangi biriyle ilişkileri doğrulayabilirsiniz.
-* Her bir tabandan gelen tüm ilişkileri görmek için (ilişkiyi bir taraftan görüntüleme),
-    ```cmd/sh
-    GetRelationships floor0
-    GetRelationships floor1
-    ```
-* Her odaya ulaşan tüm ilişkileri görmek için ("diğer" taraftan ilişkiyi görüntüleme),
+:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir" taraftan ilişkiyi görüntüleme),
     ```cmd/sh
     GetIncomingRelationships room0
     ```
@@ -225,7 +217,7 @@ Ayrıca, Azure dijital TWINS örneğiniz ilişkilerini sorgulayan aşağıdaki k
 
 Bu öğreticide ayarladığınız TWINS ve ilişkiler aşağıdaki kavramsal grafiği oluşturur:
 
-:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Relationship0 ile room0 arasında bağlanan floor0 ve Floor1 ile relationship1 arasında bağlanan bir grafik" border="false":::
+:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir" border="false":::
 
 ### <a name="query-the-twin-graph-to-answer-environment-questions"></a>Ortam sorularını yanıtlamak için ikizi grafiğini sorgulama
 
@@ -239,7 +231,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Bu, ortamınızı bir bakışta almanıza olanak sağlar ve her şeyin Azure dijital TWINS 'in içinde olmasını istediğiniz şekilde gösterildiğinden emin olun. Bunun sonucu, her dijital ikizi ayrıntılarını içeren bir çıktıdır. Aşağıda bir alıntı verilmiştir:
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="İkizi sorgusunun kısmi sonuçları, room0 ve Floor1 gösteriliyor":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
     >[!NOTE]
     >Örnek projede, `Query` ek bağımsız değişken içermeyen komutu ' nin eşdeğeridir `Query SELECT * FROM DIGITALTWINS` . [Sorgu API 'lerini](how-to-use-apis-sdks.md) veya [CLI komutlarını](how-to-use-cli.md)kullanarak örneğinizdeki tüm TWINS 'leri sorgulamak için, daha uzun (tamamlanmış) sorguyu kullanın.
@@ -252,7 +244,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Hangi bilgilerin temsil edildiği hakkında daha ayrıntılı bilgi edinmek için sorgunuzu belirli bir türden TWINS ile kısıtlayabilirsiniz. Bunun sonucu, *room0* ve *room1*gösterir, ancak *floor0* veya *Floor1* **göstermez (** Odalar, odaların değil, bu nedenle).
     
-    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Yalnızca room0 ve room1 gösteren model sorgusunun sonuçları":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 * ***Floor0*üzerindeki tüm odalar nelerdir?** (ilişkiye göre sorgulama)
 
@@ -262,7 +254,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     TWINS 'in nasıl bağlı olduğu hakkında bilgi edinmek veya sorgunuzu belirli bir alanla kısıtlamak için grafiğinizde ilişkiler temelinde sorgulama yapabilirsiniz. Yalnızca *room0* *floor0*, bu nedenle sonuçtaki tek yer.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="İlişki sorgusunun sonuçları, room0 gösteriliyor":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 * **75 üzerinde sıcaklık olan ortammdaki tüm TWINS nedir?** (özelliğe göre sorgu)
 
@@ -272,7 +264,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Ortamınızda dikkat etmeniz gerekebilecek aykırı değerleri bulma dahil olmak üzere çeşitli soruları yanıtlamak için, özellikleri temel alarak grafik sorgulama yapabilirsiniz. Diğer karşılaştırma işleçleri ( *<* , *>* , *=* veya *! =*) de desteklenir. *room1* , 80 sıcaklığını içerdiğinden burada sonuçlarda görüntülenir.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Yalnızca room1 gösteren özellik sorgusunun sonuçları":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 * **75 üzerindeki sıcaklığa sahip *floor0* üzerindeki tüm odalar nelerdir?** (bileşik sorgu)
 
@@ -282,7 +274,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     SQL 'de olduğu gibi önceki sorguları,, gibi Birleşik işleçler kullanarak da birleştirebilirsiniz `AND` `OR` `NOT` . Bu sorgu `AND` , önceki ikizi sıcaklıklar hakkında daha belirgin bir sorgu oluşturmak için kullanır. Sonuç artık yalnızca, *floor0*üzerinde olan 75 üzerinde sıcaklık olan odaları (Bu durumda, bunlardan hiçbiri) içerir. Sonuç kümesi boş.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Bileşik sorgunun sonuçları, sonuç yok gösteriliyor":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

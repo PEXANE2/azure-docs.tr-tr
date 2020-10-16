@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527838"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972025"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Yedekleme kümesinden StorSimple birimini geri yükleme
 
@@ -115,7 +115,7 @@ StorSimple biriminizi belirli bir yedekten geri yüklemek için **Yedekleme kata
    
 4. **Yedekleme kataloğu** sekmesine geri gidin ve bir yedekleme kümesi seçin. Sağ tıklayıp bağlam menüsünden **geri yükle**' yi seçin.
 
-    ![Yedekleme kümesi listesi](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Yedekleme kümesi listesi 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. Onayınız istenir. Geri yükleme bilgilerini gözden geçirin ve ardından onay onay kutusunu seçin.
    
@@ -123,7 +123,7 @@ StorSimple biriminizi belirli bir yedekten geri yüklemek için **Yedekleme kata
 
 7. **Geri yükle**' ye tıklayın. Bu, **işler** sayfasına erişerek görüntüleyebilmeniz için bir geri yükleme işi başlatır.
 
-   ![Onay sayfası](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Onay sayfası 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. Geri yükleme tamamlandıktan sonra, birimlerinizin içeriğinin yedekteki birimlerle değiştirildiğini doğrulayın.
 

@@ -3,18 +3,18 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 3b4185fb90aec68eda600b67c95529e6b80b09e4
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665639"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950253"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir.
 
-Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiyatlandırması genel bakış](https://azure.microsoft.com/pricing/). Burada, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)' nı kullanarak maliyetlerinizi tahmin edebilirsiniz. Ayrıca, belirli bir hizmet için (örneğin, [Windows VM 'ler](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) Fiyatlandırma ayrıntıları sayfasına gidebilirsiniz. Maliyetlerinizi yönetmeye yardımcı olacak ipuçları için bkz. [Azure Faturalandırma ve maliyet yönetimiyle ilgili beklenmedik maliyetleri engelleme](../../cost-management-billing/manage/getting-started.md).
+Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiyatlandırması genel bakış](https://azure.microsoft.com/pricing/). Burada, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)' nı kullanarak maliyetlerinizi tahmin edebilirsiniz. Ayrıca, belirli bir hizmet için (örneğin, [Windows VM 'ler](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) Fiyatlandırma ayrıntıları sayfasına gidebilirsiniz. Maliyetlerinizi yönetmeye yardımcı olacak ipuçları için bkz. [Azure Faturalandırma ve maliyet yönetimiyle ilgili beklenmedik maliyetleri engelleme](../../cost-management-billing/cost-management-billing-overview.md).
 
 ## <a name="managing-limits"></a>Sınırları yönetme
 

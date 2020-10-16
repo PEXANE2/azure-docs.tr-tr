@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961899"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
@@ -205,7 +205,7 @@ http.createServer(function (req, res) {
 
 ![Profile. cpuprofile dosyasını gösteren ekran görüntüsü.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-Bu dosyayı indirin ve Chrome F12 araçlarıyla açın. Chrome üzerinde F12 tuşuna basın, sonra **profiller** sekmesini seçin. **Yükle** düğmesini seçin. İndirdiğiniz profile. cpuprofile dosyanızı seçin. Az önce yüklediğiniz profile tıklayın.
+Bu dosyayı indirin ve Chrome F12 araçlarıyla açın. Chrome üzerinde F12 tuşuna basın ve ardından **profiller** sekmesini seçin. **Yükle** düğmesini seçin. İndirdiğiniz profile. cpuprofile dosyanızı seçin. Az önce yüklediğiniz profile tıklayın.
 
 ![Yüklediğiniz profile. cpuprofile dosyasını gösteren ekran görüntüsü.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 

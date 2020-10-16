@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
 ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441503"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
@@ -20,7 +20,7 @@ VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve
 >[!NOTE]
 >Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. VM'ler için Azure İzleyici Map özelliği, tek başına Hizmet Eşlemesi çözümünün yerini alacak şekilde tasarlanmıştır. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](vminsights-overview.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * System Center Operations Manager yönetim grubu (2012 R2 veya üzeri).
 * VM'ler için Azure İzleyici desteklemek için yapılandırılmış bir Log Analytics çalışma alanı.

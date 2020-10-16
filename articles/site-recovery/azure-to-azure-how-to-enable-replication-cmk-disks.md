@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: mayg
 ms.openlocfilehash: 2dc7bbd060d77b8f90d16e2a336edc1eb6dbf651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86529004"
 ---
-# <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Müşteri tarafından yönetilen anahtarlar (CMK) özellikli diskler ile makineleri çoğaltma
+# <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Müşteri Tarafından Yönetilen Anahtarların (CMK) etkinleştirildiği disklere sahip makineleri çoğaltma
 
-Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine, müşteri tarafından yönetilen anahtarlar (CMK) özellikli yönetilen disklerle nasıl çoğaltılacağı açıklanır.
+Bu makalede, Azure sanal makinelerinin Customer-Managed Keys (CMK) özellikli yönetilen disklerle, bir Azure bölgesinden diğerine nasıl çoğaltılacağı açıklanır.
 
 ## <a name="prerequisite"></a>Önkoşul
 CMK özellikli yönetilen disklere sahip sanal makineleriniz için çoğaltmayı etkinleştirmeden önce hedef aboneliğin hedef bölgesinde disk şifreleme kümesi (ler) i oluşturmanız gerekir.
@@ -70,7 +70,7 @@ Site Recovery varsayılan hedef ayarlarını değiştirmek için aşağıdaki ad
 ![CMK özellikli disklere sahip makine için çoğaltmayı etkinleştirme](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-customize-target-disk-properties.png)
 
 >[!NOTE]
->İlk çoğaltma sırasında durum, görünür ilerleme olmadan yenilenmesi biraz zaman alabilir. En son durumu almak için **Yenile** ' ye tıklayın.
+>İlk çoğaltma sırasında durum, görünür ilerleme olmadan yenilenmesi biraz zaman alabilir. En son durumu almak için **Yenile**  ' ye tıklayın.
 
 ## <a name="faqs"></a>SSS
 

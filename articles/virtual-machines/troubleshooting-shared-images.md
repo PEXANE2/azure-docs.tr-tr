@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/15/2020
 ms.author: cynthn
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a206a7aabee9f75524ab4715afa30ec05c612bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d01ac7d5b01f485c3b0100c468332475a9bd4274
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328072"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978552"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Azure 'da paylaşılan görüntü galerileri sorunlarını giderme
 
@@ -79,7 +79,7 @@ Olası nedenler:
 
 *VM veya sanal makine ölçek kümesi oluşturmaya çalışan kullanıcının görüntü sürümüne okuma erişimi yok.*
 
-Abonelik sahibine başvurarak, [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)aracılığıyla görüntü sürümüne veya üst kaynaklara (paylaşılan görüntü Galerisi veya görüntü tanımı gibi) okuma erişimi vermesini isteyin. 
+Abonelik sahibine başvurarak, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md)aracılığıyla görüntü sürümüne veya üst kaynaklara (paylaşılan görüntü Galerisi veya görüntü tanımı gibi) okuma erişimi vermesini isteyin. 
 
 *Görüntü sürümü bulunamadı.*
 
@@ -91,7 +91,7 @@ VM veya sanal makine ölçek kümesi oluşturmaya çalıştığınız görüntü
 
 ## <a name="unable-to-share-resources"></a>Kaynaklar paylaşılamıyor
 
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)kullanılarak, paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü kaynakları abonelikler genelinde paylaşılır. 
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md)kullanılarak, paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü kaynakları abonelikler genelinde paylaşılır. 
 
 ## <a name="replication-is-slow"></a>Çoğaltma yavaş
 
@@ -99,7 +99,7 @@ Belirtilen tüm hedef bölgelere yönelik çoğaltmanın tamamlanıp tamamlanmad
 
 ## <a name="azure-limits-and-quotas"></a>Azure limitleri ve kotaları 
 
-[Azure Limitleri ve kotaları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) tüm paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü kaynakları için geçerlidir. Aboneliklerinizin sınırları dahilinde olduğunuzdan emin olun. 
+[Azure Limitleri ve kotaları](../azure-resource-manager/management/azure-subscription-service-limits.md) tüm paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü kaynakları için geçerlidir. Aboneliklerinizin sınırları dahilinde olduğunuzdan emin olun. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

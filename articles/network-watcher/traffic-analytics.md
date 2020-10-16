@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: references_regions
+ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967503"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951596"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -58,64 +59,108 @@ Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi,
 ## <a name="supported-regions-nsg"></a>Desteklenen bölgeler: NSG 
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
-
-* Orta Kanada
-* Orta Batı ABD
-* Doğu ABD
-* Doğu ABD 2
-* Orta Kuzey ABD
-* Orta Güney ABD
-* Central US
-* Batı ABD
-* Batı ABD 2
-* Orta Fransa
-* West Europe
-* Kuzey Avrupa
-* Brezilya Güney
-* Batı Birleşik Krallık
-* Güney Birleşik Krallık
-* Doğu Avustralya
-* Güneydoğu Avustralya
-* Doğu Asya
-* Güneydoğu Asya
-* Güney Kore - Orta
-* Orta Hindistan
-* Güney Hindistan
-* Doğu Japonya 
-* Batı Japonya
-* US Gov Virginia
-* Çin Doğu 2
+:::row:::
+   :::column span="":::
+      Orta Avustralya  
+      Doğu Avustralya  
+      Güneydoğu Avustralya  
+      Brezilya Güney  
+      Orta Kanada  
+      Doğu Kanada  
+      Orta Hindistan  
+      Central US  
+      Çin Doğu 2  
+      Çin Kuzey 2  
+   :::column-end:::
+   :::column span="":::
+      Doğu Asya  
+      Doğu ABD  
+      Doğu ABD 2  
+      EUAP Doğu ABD 2  
+      Orta Fransa  
+      Doğu Japonya  
+      Batı Japonya  
+      Güney Kore - Orta  
+      Güney Kore - Güney  
+      Orta Kuzey ABD  
+   :::column-end:::
+   :::column span="":::
+      Kuzey Avrupa  
+      Güney Afrika Kuzey  
+      Orta Güney ABD  
+      Güney Hindistan  
+      Güneydoğu Asya  
+      İsviçre Kuzey  
+      İsviçre Batı  
+      Güney Birleşik Krallık  
+      Batı Birleşik Krallık  
+      USGov Arizona  
+   :::column-end:::
+   :::column span="":::
+      USGov Texas  
+      USGov Virginia  
+      USNat Doğu  
+      USNat Batı  
+      USSec Doğu  
+      USSec Batı  
+      Orta Batı ABD  
+      West Europe  
+      Batı ABD  
+      Batı ABD 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics çalışma alanları
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
-* Orta Kanada
-* Orta Batı ABD
-* Doğu ABD
-* Doğu ABD 2
-* Orta Kuzey ABD
-* Orta Güney ABD
-* Central US
-* Batı ABD
-* Batı ABD 2
-* Orta ABD
-* Orta Fransa
-* West Europe
-* Kuzey Avrupa
-* Brezilya Güney
-* Batı Birleşik Krallık
-* Güney Birleşik Krallık
-* Doğu Avustralya
-* Güneydoğu Avustralya
-* Doğu Asya
-* Güneydoğu Asya
-* Güney Kore - Orta
-* Orta Hindistan
-* Doğu Japonya
-* US Gov Virginia
-* Çin Doğu 2
+:::row:::
+   :::column span="":::
+      Orta Avustralya  
+      Doğu Avustralya  
+      Güneydoğu Avustralya  
+      Brezilya Güney  
+      Orta Kanada  
+      Orta Hindistan  
+      Central US  
+      Çin Doğu 2  
+      Doğu Asya  
+      Doğu ABD  
+   :::column-end:::
+   :::column span="":::
+      Doğu ABD 2  
+      EUAP Doğu ABD 2  
+      Orta Fransa  
+      Almanya Orta Batı  
+      Doğu Japonya  
+      Güney Kore - Orta  
+      Orta Kuzey ABD  
+      Kuzey Avrupa  
+      Güney Afrika Kuzey  
+      Orta Güney ABD  
+   :::column-end:::
+   :::column span="":::
+      Güneydoğu Asya  
+      İsviçre Kuzey  
+      İsviçre Batı  
+      BAE Orta  
+      Güney Birleşik Krallık  
+      Batı Birleşik Krallık  
+      USGov Arizona  
+      USGov Virginia  
+      USNat Doğu  
+      USNat Batı  
+   :::column-end:::
+   :::column span="":::
+      USSec Doğu  
+      USSec Batı  
+      Orta Batı ABD  
+      West Europe  
+      Batı ABD  
+      Batı ABD 2  
+   :::column-end:::
+:::row-end:::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="user-access-requirements"></a>Kullanıcı erişimi gereksinimleri
 
@@ -192,7 +237,7 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 > [!NOTE]
 >Trafik Analizi çözümünü barındıran Log Analytics çalışma alanının ve NSG 'lerin aynı bölgede olması gerekmez. Örneğin, Batı Avrupa bölgesindeki bir çalışma alanında trafik analizlerinin olması, Doğu ABD ve Batı ABD NSG 'lerinizin olması olabilir. Aynı çalışma alanında birden çok NSG yapılandırılabilir.
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 
     ![Depolama hesabı, Log Analytics çalışma alanı ve Trafik Analizi etkinleştirme seçimi](./media/traffic-analytics/ta-customprocessinginterval.png)
 

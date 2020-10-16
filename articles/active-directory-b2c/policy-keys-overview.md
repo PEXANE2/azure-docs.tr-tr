@@ -11,10 +11,10 @@ ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8019c049d830df0c2f3301a450eed60145c8eab3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89570482"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'deki ilke anahtarlarına genel bakış
@@ -38,9 +38,9 @@ Azure AD B2C içindeki ilke anahtarlarına yönelik en üst düzey kaynak, **ana
 
 | Öznitelik |  Gerekli | Açıklamalar |
 | --- | --- |--- |
-| `use` | Yes | Kullanım: ortak anahtarın amaçlanan kullanımını tanımlar. Verileri şifreleme `enc` veya veri üzerindeki imzayı doğrulama `sig` .|
-| `nbf`| No | Etkinleştirme tarihi ve saati. |
-| `exp`| No | Sona erme tarihi ve saati. |
+| `use` | Evet | Kullanım: ortak anahtarın amaçlanan kullanımını tanımlar. Verileri şifreleme `enc` veya veri üzerindeki imzayı doğrulama `sig` .|
+| `nbf`| Hayır | Etkinleştirme tarihi ve saati. |
+| `exp`| Hayır | Sona erme tarihi ve saati. |
 
 Anahtar etkinleştirme ve süre sonu değerlerini PKI standartlarınıza göre ayarlamayı öneririz. Güvenlik veya ilke nedenleriyle bu sertifikaları düzenli aralıklarla döndürmenize gerek duyabilirsiniz. Örneğin, tüm sertifikalarınızı her yıl döndürmek için bir ilkenize sahip olabilirsiniz.
 

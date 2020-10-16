@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20cb5f70a5844cb2d56fc9ff357fcaf640a6c56b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f6131232d9f6f98095d073672e201cfb591b540
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388587"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054789"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak ADFS 'yi SAML kimlik sağlayıcısı olarak ekleyin
 
@@ -34,7 +34,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](c
 
 Sertifikanızı Azure AD B2C kiracınızda depolamanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -42,7 +42,7 @@ Sertifikanızı Azure AD B2C kiracınızda depolamanız gerekir.
 6. **Seçenekler**için öğesini seçin `Upload` .
 7. İlke anahtarı için bir **ad** girin. Örneğin, `SamlCert`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 8. Özel anahtarla Certificate. pfx dosyanıza gidin ve bu dosyayı seçin.
-9. **Oluştur**'a tıklayın.
+9. **Oluştur**’a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -69,7 +69,6 @@ Bir ADFS hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesi
             <Item Key="XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
           </CryptographicKeys>
           <OutputClaims>
@@ -196,9 +195,9 @@ Bir tarayıcı açın ve URL 'ye gidin. Doğru URL 'YI yazdığınızdan ve XML 
     | -------------- | ------------------- |
     | Kullanıcı Asıl Adı | userPrincipalName |
     | Soyadı | family_name |
-    | Verilen-ad | given_name |
+    | Given-Name | given_name |
     | E-posta adresi | e-posta |
-    | Görünen ad | name |
+    | Display-Name | name |
 
     Bu adların, giden talep türü açılan listesinde görüntülemediğine unutmayın. Bunları el ile yazmanız gerekir. (Açılan menü aslında düzenlenebilir).
 

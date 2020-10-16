@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 93c686fb2688a7a8ae71d8156e6e5c7915d6c604
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 626f5b67905e5dd89cf8f12460bc2378451614de
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205759"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078315"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management örneğini yükseltme ve ölçeklendirme  
 
@@ -33,7 +33,7 @@ Her bir birimin fiyatı ve kullanılabilir Özellikler (örneğin, çok bölgeli
 
 Bu makaledeki adımları izleyerek şunları yapmanız gerekir:
 
-+ Etkin bir Azure aboneliğiniz olmalıdır.
++ Etkin bir Azure aboneliğine sahip olma.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Bu makaledeki adımları izleyerek şunları yapmanız gerekir:
 
 ## <a name="upgrade-and-scale"></a>Yükseltme ve ölçeklendirme  
 
-Dört katman arasından seçim yapabilirsiniz: **Geliştirici**, **temel**, **Standart**ve **Premium**. **Geliştirici** katmanı, hizmeti değerlendirmek için kullanılmalıdır; üretim için kullanılmamalıdır. **Geliştirici** katmanının SLA 'sı yok ve bu katmanı ölçeklendiremezsiniz (birim Ekle/Kaldır). 
+Dört katman arasından seçim yapabilirsiniz: **Geliştirici**, **temel**,  **Standart**ve **Premium**. **Geliştirici** katmanı, hizmeti değerlendirmek için kullanılmalıdır; üretim için kullanılmamalıdır. **Geliştirici** katmanının SLA 'sı yok ve bu katmanı ölçeklendiremezsiniz (birim Ekle/Kaldır). 
 
 **Temel**, **Standart**ve **Premium** , SLA 'ya sahip olan ve ölçeklendirilebilen üretim katmanlarıdır. **Temel** katman, SLA ile birlikte en fazla iki birime ölçeklendirilebilir ve **Standart** katman, en fazla dört birime ölçeklenuygulanabilir. **Premium** katmana istediğiniz sayıda birim ekleyebilirsiniz.
 
@@ -67,7 +67,7 @@ Herhangi bir katmana ve sürümüne yükseltebilir ve buradan indirgeme yapabili
 2. Menüden **konumlar** ' ı seçin.
 3. Ölçeklendirmek istediğiniz konuma sahip satıra tıklayın.
 4. Yeni **birim** sayısını belirtin-kaydırıcıyı kullanın veya numarayı yazın.
-5. **Uygula**'ya tıklayın.
+5. **Uygula**’ya tıklayın.
 
 ## <a name="change-your-api-management-service-tier"></a>API Management hizmet katmanınızı değiştirin
 
@@ -84,4 +84,4 @@ Ya da geliştirici katmanına ölçeklendirebilirsiniz kapalı kalma süresi ola
 
 - [Bir Azure API Management hizmeti örneğini birden fazla Azure bölgesine dağıtma](api-management-howto-deploy-multi-region.md)
 - [Azure API Management hizmet örneğini otomatik olarak ölçeklendirme](api-management-howto-autoscale.md)
-- [Bulut harcamalarınızı iyileştirin ve kaydedin](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Bulut harcamalarınızı iyileştirin ve kaydedin](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

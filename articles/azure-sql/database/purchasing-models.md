@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319461"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>VCore ve DTU satın alma modelleri arasında seçim yapın-Azure SQL veritabanı ve SQL yönetilen örneği
@@ -127,7 +127,7 @@ Mevcut bir havuza, veritabanı kapalı kalma süresi olmadan ve havuzdaki verita
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Bir iş yükü için gereken DTU sayısını belirleme
 
-Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü SQL veritabanına geçirmek istiyorsanız, gerekli DTU sayısını yaklaşık olarak tahmin etmek için [DTU Hesaplayıcı](https://dtucalculator.azurewebsites.net/) ' ı kullanın. Mevcut bir SQL veritabanı iş yükü için, veritabanı-kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](query-performance-insight-use.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
+Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü SQL veritabanına geçirmek istiyorsanız, gerekli DTU sayısını yaklaşık olarak tahmin etmek için [DTU Hesaplayıcı](https://dtucalculator.azurewebsites.net/) ' ı kullanın. Mevcut bir SQL veritabanı iş yükü için, veritabanı-kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](query-performance-insight-use.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
 
 ### <a name="determine-dtu-utilization"></a>DTU kullanımını belirleme
 
@@ -135,7 +135,7 @@ Bir veritabanının veya elastik havuzun DTU/eDTU sınırına göre DTU/eDTU kul
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-Bu formülün giriş değerleri [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMVs 'den elde edilebilir. Diğer bir deyişle, bir veritabanının veya elastik havuzun DTU/eDTU sınırına yönelik DTU/eDTU kullanımının yüzdesini öğrenmek için aşağıdakilerden en büyük yüzde değerini seçin: `avg_cpu_percent` , `avg_data_io_percent` , ve `avg_log_write_percent` belirli bir noktada.
+Bu formülün giriş değerleri [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMVs 'den elde edilebilir. Diğer bir deyişle, bir veritabanının veya elastik havuzun DTU/eDTU sınırına yönelik DTU/eDTU kullanımının yüzdesini öğrenmek için aşağıdakilerden en büyük yüzde değerini seçin: `avg_cpu_percent` , `avg_data_io_percent` , ve `avg_log_write_percent` belirli bir noktada.
 
 > [!NOTE]
 > Bir veritabanının DTU sınırı, CPU, okuma, yazma ve veritabanı tarafından kullanılabilir bellek tarafından belirlenir. Ancak, SQL veritabanı altyapısı performansı artırmak için genellikle veri önbelleği için tüm kullanılabilir belleği kullandığından, `avg_memory_usage_percent` geçerli veritabanı yüküne bakılmaksızın değer genellikle yüzde 100 ' e yakın olur. Bu nedenle, bellek, DTU sınırını dolaylı olarak etkilese de, DTU kullanım formülünde kullanılmaz.

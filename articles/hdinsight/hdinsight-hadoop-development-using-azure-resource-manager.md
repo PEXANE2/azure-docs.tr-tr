@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: faf13f580f6600e761cdaa9927fee4efa2b5995f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500189"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight kümeleri için Azure Resource Manager tabanlı geliştirme araçlarına geçiş
@@ -31,21 +31,21 @@ HDInsight, HDInsight için Azure Service Manager (ASM) tabanlı araçları kulla
 
 Azure klasik CLı aracılığıyla HDInsight ile çalışmaya yönelik temel komutlar aşağıda verilmiştir:
 
-* `azure hdinsight cluster create`-Yeni bir HDInsight kümesi oluşturur
-* `azure hdinsight cluster delete`-var olan bir HDInsight kümesini siler
-* `azure hdinsight cluster show`-var olan bir kümeyle ilgili bilgileri görüntüle
-* `azure hdinsight cluster list`-Azure aboneliğiniz için HDInsight kümelerini listeler
+* `azure hdinsight cluster create` -Yeni bir HDInsight kümesi oluşturur
+* `azure hdinsight cluster delete` -var olan bir HDInsight kümesini siler
+* `azure hdinsight cluster show` -var olan bir kümeyle ilgili bilgileri görüntüle
+* `azure hdinsight cluster list` -Azure aboneliğiniz için HDInsight kümelerini listeler
 
 `-h`Her komut için kullanılabilen parametreleri ve anahtarları incelemek için anahtarını kullanın.
 
 ### <a name="new-commands"></a>Yeni komutlar
 Azure Resource Manager ile kullanılabilen yeni komutlar şunlardır:
 
-* `azure hdinsight cluster resize`-kümedeki çalışan düğümlerinin sayısını dinamik olarak değiştirir
-* `azure hdinsight cluster enable-http-access`-kümeye HTTPs erişimi sağlar (varsayılan olarak açık)
-* `azure hdinsight cluster disable-http-access`-kümeye HTTPs erişimini devre dışı bırakır
-* `azure hdinsight script-action`-bir kümede betik eylemleri oluşturmak/yönetmek için komutlar sağlar
-* `azure hdinsight config`- `hdinsight cluster create` yapılandırma bilgilerini sağlamak için komutuyla kullanılabilecek bir yapılandırma dosyası oluşturmaya yönelik komutlar sağlar.
+* `azure hdinsight cluster resize` -kümedeki çalışan düğümlerinin sayısını dinamik olarak değiştirir
+* `azure hdinsight cluster enable-http-access` -kümeye HTTPs erişimi sağlar (varsayılan olarak açık)
+* `azure hdinsight cluster disable-http-access` -kümeye HTTPs erişimini devre dışı bırakır
+* `azure hdinsight script-action` -bir kümede betik eylemleri oluşturmak/yönetmek için komutlar sağlar
+* `azure hdinsight config` - `hdinsight cluster create` yapılandırma bilgilerini sağlamak için komutuyla kullanılabilecek bir yapılandırma dosyası oluşturmaya yönelik komutlar sağlar.
 
 ### <a name="deprecated-commands"></a>Kullanım dışı komutlar
 `azure hdinsight job`HDInsight kümenize iş göndermek için komutları kullanırsanız, bu komutlar Kaynak Yöneticisi komutları aracılığıyla kullanılamaz. İş dosyalarından iş aracılığıyla HDInsight 'a iş göndermeniz gerekiyorsa, bunun yerine HDInsight tarafından sağlanmış REST API 'Lerini kullanmanız gerekir. REST API 'Leri kullanarak işleri gönderme hakkında daha fazla bilgi için aşağıdaki belgelere bakın.
@@ -59,26 +59,26 @@ MapReduce, Apache Hive ve Apache Pig etkileşimli Apache Hadoop diğer yolları 
 ### <a name="examples"></a>Örnekler
 **Küme oluşturma**
 
-* Eski komut (ASM)-`azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* Yeni komut-`azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Eski komut (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Yeni komut- `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **Küme silme**
 
-* Eski komut (ASM)-`azure hdinsight cluster delete myhdicluster`
-* Yeni komut-`azure hdinsight cluster delete mycluster -g myresourcegroup`
+* Eski komut (ASM)- `azure hdinsight cluster delete myhdicluster`
+* Yeni komut- `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
 **Kümeleri Listele**
 
-* Eski komut (ASM)-`azure hdinsight cluster list`
-* Yeni komut-`azure hdinsight cluster list`
+* Eski komut (ASM)- `azure hdinsight cluster list`
+* Yeni komut- `azure hdinsight cluster list`
 
 > [!NOTE]  
 > Liste komutu için, kullanarak kaynak grubunu belirtmek `-g` yalnızca belirtilen kaynak grubundaki kümeleri döndürür.
 
 **Küme bilgilerini göster**
 
-* Eski komut (ASM)-`azure hdinsight cluster show myhdicluster`
-* Yeni komut-`azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* Eski komut (ASM)- `azure hdinsight cluster show myhdicluster`
+* Yeni komut- `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell Azure Resource Manager geçiriliyor
 Azure Resource Manager modundaki Azure PowerShell hakkındaki genel bilgiler [Azure Resource Manager ile Azure PowerShell kullanma](../powershell-azure-resource-manager.md)bölümünde bulunabilir.

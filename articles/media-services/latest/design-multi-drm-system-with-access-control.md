@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89298207"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama
@@ -192,11 +192,11 @@ Uygulama aşağıdaki adımları içerir:
 
 7. Video yürütücünüzü barındırmak için bir ASP.NET MVC uygulaması oluşturun. Bu ASP.NET uygulaması, Azure AD kiracısında Kullanıcı kimlik doğrulamasıyla korunuyor. Kullanıcı kimlik doğrulamasından sonra alınan erişim belirteçlerine uygun talepler dahildir. Bu adım için OpenID Connect API 'SI önerilir. Aşağıdaki NuGet paketlerini yükleyin:
 
-   * Install-Package Microsoft. Azure. ActiveDirectory. GraphClient
-   * Install-Package Microsoft. Owin. Security. Openıdconnect
-   * Install-Package Microsoft. Owin. Security. Cookies
+   * Microsoft. Azure. ActiveDirectory. GraphClient Install-Package
+   * Microsoft. Owin. Security. Openıdconnect Install-Package
+   * Microsoft. Owin. Security. Cookies Install-Package
    * Install-Package Microsoft.Owin.Host.SystemWeb
-   * Install-Package Microsoft. IdentityModel. clients. ActiveDirectory
+   * Microsoft. IdentityModel. clients. ActiveDirectory Install-Package
 
 8. [Azure MEDIA Player API](https://amp.azure.net/libs/amp/latest/docs/)'sini kullanarak bir oyuncu oluşturun. Farklı DRM platformlarında hangi DRM teknolojisinin kullanılacağını belirtmek için [Azure Media Player Protectionınfo API](https://amp.azure.net/libs/amp/latest/docs/) 'sini kullanın.
 

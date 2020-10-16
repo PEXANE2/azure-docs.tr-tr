@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317574"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitleme sorunlarını giderme
@@ -227,7 +227,7 @@ Bir kullanıcı için hiçbir parolanın eşitlenmediği sorunları gidermek iç
 
 2. `Set-ExecutionPolicy RemoteSigned`Veya çalıştırın `Set-ExecutionPolicy Unrestricted` .
 
-3. `Import-Module ADSyncDiagnostics` öğesini çalıştırın.
+3. `Import-Module ADSyncDiagnostics` komutunu çalıştırın.
 
 4. Aşağıdaki cmdlet'i çalıştırın:
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085744"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme
@@ -44,7 +44,7 @@ Visual Studio için Data Lake araçlarını kullanarak, fırtınası kümenize C
 
 1. **Yeni proje oluştur** penceresinde arama kutusunu seçin ve girin `Storm` . Sonra sonuç listesinden **fırtınası örneği** ' ni seçin ve **İleri**' yi seçin.
 
-1. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı**girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**'u seçin.
+1. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı**girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**’u seçin.
 
     ![Yeni proje pencerenizi, Visual Studio 'yu yapılandırın](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -80,7 +80,7 @@ Visual Studio için Data Lake araçlarını kullanarak, fırtınası kümenize C
 
 ## <a name="submit-a-topology-programmatically"></a>Bir topolojiyi programlı olarak gönderme
 
-Nimbus hizmetini kullanarak bir topolojiyi programlı bir şekilde dağıtabilirsiniz. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology)Nimbus hizmeti aracılığıyla bir topolojinin nasıl dağıtılacağını ve başlatılacağını gösteren örnek bir Java uygulaması sağlar.
+Nimbus hizmetini kullanarak bir topolojiyi programlı bir şekilde dağıtabilirsiniz. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) Nimbus hizmeti aracılığıyla bir topolojinin nasıl dağıtılacağını ve başlatılacağını gösteren örnek bir Java uygulaması sağlar.
 
 ## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Visual Studio 'da topolojiyi izleme ve yönetme
 
@@ -172,7 +172,7 @@ Fırtınası Kullanıcı arabirimi, çalışan topolojilerle çalışmaya yönel
 
 Fırtınası Kullanıcı arabiriminin ana sayfası aşağıdaki bilgileri sağlar:
 
-| Section | Description |
+| Section | Açıklama |
 | --- | --- |
 | Küme özeti| Fırtınası kümesiyle ilgili temel bilgiler. |
 | Nimbus Özeti | Temel Nimbus bilgilerinin listesi. |
@@ -188,7 +188,7 @@ Fırtınası Kullanıcı arabirimi ana sayfası bu Web sayfasına benzer şekild
 
 **Topoloji Özeti** bölümünden bir bağlantı seçmek topolojiyle ilgili aşağıdaki bilgileri görüntüler:
 
-| Section | Description |
+| Section | Açıklama |
 | --- | --- |
 | Topoloji Özeti | Topolojiyle ilgili temel bilgiler. |
 | Topoloji eylemleri| Topoloji için yapabileceğiniz yönetim eylemleri. Kullanılabilir eylemler, bu bölümün ilerleyen kısımlarında açıklanmıştır. |
@@ -205,7 +205,7 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 **Topoloji eylemleri** bölümünde, bir eylem yapmak için aşağıdaki düğmeleri seçebilirsiniz:
 
-| Düğme | Description |
+| Düğme | Açıklama |
 | --- | --- |
 | Etkinleştir | Devre dışı bırakılan bir topoloji işlemeyi sürdürür. |
 | Devre dışı bırak | Çalışan bir topolojiyi duraklatır. |
@@ -219,7 +219,7 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 **Spout** veya **cıvatalar** bölümlerinden bir biriktirmede seçim yapmak seçili öğeyle ilgili aşağıdaki bilgileri görüntüler:
 
-| Section | Description |
+| Section | Açıklama |
 | --- | --- |
 | Bileşen Özeti | Spout veya cıvam hakkındaki temel bilgiler. |
 | Bileşen eylemleri | **Hata Ayıkla ve** **Hata Ayıkla** düğmeleri. |
@@ -249,7 +249,7 @@ Linux tabanlı HDInsight kümelerinde REST API için temel URI, `https://HEADNOD
 
 Küme baş düğümü için tam etki alanı adını (FQDN) çeşitli yollarla bulabilirsiniz:
 
-| FQDN bulma yöntemi | Description |
+| FQDN bulma yöntemi | Açıklama |
 | --- | --- |
 | SSH oturumu | `headnode -f`Kümeden BIR SSH oturumunda komutunu kullanın. |
 | Ambarı web | Ambarı küme Web sayfasında ( `https://CLUSTERNAME.azurehdinsight.net` ), sayfanın üst kısmından **Hizmetler** ' i seçin ve ardından **fırtınası**' yi seçin. **Özet** sekmesinden, **fırtınası Kullanıcı arabirimi sunucusu**' nu seçin. Fırtınası Kullanıcı arabirimini barındıran düğümün FQDN 'SI ve REST API sayfanın en üstünde görüntülenir. |
@@ -262,7 +262,7 @@ REST API istekleri *temel kimlik doğrulaması*kullanmalıdır, bu nedenle HDIns
 > [!NOTE]  
 > Temel kimlik doğrulaması şifresiz metin kullanılarak gönderildiğinden, kümeyle iletişimleri güvenli hale getirmek için *her zaman* HTTPS kullanmanız gerekir.
 
-### <a name="return-values"></a>Döndürülen değerler
+### <a name="return-values"></a>Dönüş değerleri
 
 REST API döndürülen bilgiler yalnızca küme içinden kullanılabilir olabilir. Örneğin, [Apache ZooKeeper](https://zookeeper.apache.org/) sunucuları için döndürülen tam etki alanı ADıNA (FQDN) internet 'ten erişilemez.
 

@@ -48,7 +48,7 @@
     - name: Cihazı bağlamak için MQTT kullanma
       href: tutorial-use-mqtt.md
     - name: MXChip cihazıyla etkileşim kurma (Örnek)
-      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
+      href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
     - name: Cihazı modüle geçirme
       href: tutorial-migrate-device-to-module.md
 - name: Kavramlar
@@ -95,8 +95,6 @@
       href: howto-use-iot-explorer.md
     - name: IoT Tak Çalıştır köprüsünü yükleme ve kullanma
       href: howto-use-iot-pnp-bridge.md
-    - name: Azure IoT CLI uzantısını yükleme ve kullanma
-      href: howto-use-iot-pnp-cli.md
     - name: DTDL yazma araçlarını yükleme ve kullanma
       href: howto-use-dtdl-authoring-tools.md
     - name: Ekli C kullanma
@@ -110,34 +108,34 @@
     - name: Kitaplıklar ve SDK’lar
       href: libraries-sdks.md
     - name: Digital Twins REST API
-      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
+      href: /rest/api/iothub/service/digitaltwin
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT hizmetleri
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT Hub Cihazı Sağlama Hizmeti
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT çözüm hızlandırıcıları
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT Tak Çalıştır
-          href: /azure/iot-pnp
+          href: ./index.yml
         - name: Azure Haritalar
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks

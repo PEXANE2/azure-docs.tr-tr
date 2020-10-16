@@ -16,12 +16,12 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262420"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014394"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET kullanarak Media Encoder Standard bir varlık kodla
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262420"
 
 Kodlama işleri, Media Services en yaygın işlem işlemlerinden biridir. Bir kodlamadan diğerine medya dosyalarını dönüştürmek için kodlama işleri oluşturursunuz. Kodlarken, yerleşik Medya Kodlayıcısı Media Services kullanabilirsiniz. Bir Media Services iş ortağı tarafından sunulan bir kodlayıcı de kullanabilirsiniz; üçüncü taraf kodlayıcılar Azure Marketi aracılığıyla kullanılabilir. 
 
-Bu makalede, varlıklarınızı Media Encoder Standard (MES) ile kodlamak için .NET kullanımı gösterilmektedir. Media Encoder Standard, [burada](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)açıklanan kodlayıcılar önayarlarından biri kullanılarak yapılandırılır.
+Bu makalede, varlıklarınızı Media Encoder Standard (MES) ile kodlamak için .NET kullanımı gösterilmektedir. Media Encoder Standard, [burada](./media-services-mes-presets-overview.md)açıklanan kodlayıcılar önayarlarından biri kullanılarak yapılandırılır.
 
 Kaynak dosyalarınızı her zaman Uyarlamalı bit hızı bir MP4 kümesine kodlamak ve sonra [dinamik paketleme](media-services-dynamic-packaging-overview.md)kullanarak kümeyi istenen biçime dönüştürmeniz önerilir. 
 
@@ -44,7 +44,7 @@ Kaynak dosyalarınızı her zaman Uyarlamalı bit hızı bir MP4 kümesine kodla
 [Biçimler ve codec bileşenleri](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES Ön ayarları
-Media Encoder Standard, [burada](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)açıklanan kodlayıcılar önayarlarından biri kullanılarak yapılandırılır.
+Media Encoder Standard, [burada](./media-services-mes-presets-overview.md)açıklanan kodlayıcılar önayarlarından biri kullanılarak yapılandırılır.
 
 ### <a name="input-and-output-metadata"></a>Giriş ve çıkış meta verileri
 MES kullanarak bir giriş varlığını (veya varlıkları) kodlarken, bu kodlama görevinin başarıyla tamamlanmasında bir çıkış varlığı alırsınız. Çıktı varlığı, kullandığınız kodlama ön ayarını temel alarak video, ses, küçük resim, bildirim vb. içerir.
@@ -209,10 +209,9 @@ namespace MediaEncoderStandardSample
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 .NET ile Media Encoder Standard [kullanarak küçük resim oluşturma](media-services-dotnet-generate-thumbnail-with-mes.md) 
  [Media Services kodlamaya genel bakış](media-services-encode-asset.md)
-

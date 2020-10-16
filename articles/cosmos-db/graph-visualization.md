@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 07/02/2019
 ms.openlocfilehash: a9850af3ea2365aa73d8b9f08b2e706c79062860
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400528"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Veri görselleştirme çözümleriyle Azure Cosmos DB Gremlin API 'de depolanan grafik verilerini görselleştirin
@@ -26,11 +26,11 @@ ms.locfileid: "91400528"
 
 Şirket içindeki etkileşimli arabirim, karmaşık verileri araştırmak için kolay bir yol sunar. Belirli varlıkları arayabilir, gizli ilişkileri ortaya çıkarmak için bağlantıları genişletebilir ve istediğiniz düzenleri karmaşık ağlara atayabilirsiniz. Linkurdeğerli kurumsal artık Azure Cosmos DB Gremlin API 'siyle uyumludur. Uçtan uca grafik görselleştirme senaryoları için uygundur ve kullanıcı arabiriminden okuma ve yazma özelliklerini destekler. [Azure Cosmos DB Ile Linkümi tanıtımına sahip](https://linkurio.us/contact/) olabilirsiniz
 
-:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurdeğerli demo" border="false":::
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurdeğerli logosu" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
-:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence logosu" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Linkurdeğerli logosu" border="false":::
 
 [Cambridge Intelligence 'ın](https://cambridge-intelligence.com/products/) Graf görselleştirme araç takımları artık Azure Cosmos DB destekliyor. Aşağıdaki iki görselleştirme araç seti Azure Cosmos DB tarafından desteklenir:
 
@@ -38,11 +38,11 @@ ms.locfileid: "91400528"
 
 - [Tepki verme geliştiricileri için yeniden grafik](https://cambridge-intelligence.com/regraph/)
 
-:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Cambridge Intelligence tanıtımı" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Linkurdeğerli logosu" border="false":::
 
 Bu araç takımları, kullanım durumu için yüksek performanslı grafik görselleştirme ve analiz uygulamaları tasarlamanıza olanak sağlar. Kullanıcılara hızlı ve öngörülü bir görselleştirme deneyimi sunmak için güçlü web grafikleri kitaplığı (WebGL) işleme ve dikkatle hazırlanmış kod sunar. Bu araçlar, herhangi bir tarayıcı, cihaz, sunucu veya veritabanıyla uyumludur ve adım adım öğreticiler, tamamen belgelenmiş API 'Ler ve etkileşimli tanıtımlar ile gelir.
 
-:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Cambridge Intelligence tanıtımı" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Linkurdeğerli logosu" border="false":::
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

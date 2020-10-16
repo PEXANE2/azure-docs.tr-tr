@@ -1,28 +1,28 @@
 ---
-title: IoT Tak ve Kullan cihazını genel modüle dönüştürme | Microsoft Docs
-description: C# PnP Cihaz kodunu kullanın ve bir modüle dönüştürün.
+title: Genel IoT Tak ve Kullan genel modülünü bağlama | Microsoft Docs
+description: Örnek C# IoT Tak ve Kullan Cihaz kodunu genel bir modülde kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 671809b9cdbe72c8f3091b0056897c2342a38b1f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761286"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089171"
 ---
-# <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Öğretici: IoT Tak ve Kullan cihazını modüle dönüştürme (C#)
+# <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Öğretici: IoT Tak ve Kullan modülünü bağlama (C#)
 
-Bu öğreticide, IoT Tak ve Kullan Cihaz kodunu genel bir modül olarak çalışacak şekilde nasıl dönüştürebileceğiniz gösterilmektedir.
+Bu öğreticide, bir genel IoT Tak ve Kullan [modülünün](../iot-hub/iot-hub-devguide-module-twins.md)nasıl bağlanacağı gösterilmektedir.
 
-Bir cihaz, bir IoT Hub 'ına bağlanırken model KIMLIĞINI yayımladığında bir IoT Tak ve Kullan aygıtıdır ve model KIMLIĞI tarafından tanımlanan dijital TWINS tanım dili (DTDL) modelinde açıklanan özellikleri ve yöntemleri uygular. Cihazların DTDL ve model KIMLIĞINI kullanma hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan Geliştirici Kılavuzu](concepts-developer-guide.md). Modüller model kimliklerini ve DTDL modellerini aynı şekilde kullanır.
+Bir cihaz, bir IoT Hub 'ına bağlanırken model KIMLIĞINI yayımladığında bir IoT Tak ve Kullan aygıtıdır ve model KIMLIĞI tarafından tanımlanan dijital TWINS tanım dili (DTDL) modelinde açıklanan özellikleri ve yöntemleri uygular. Cihazların DTDL ve model KIMLIĞINI kullanma hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan Geliştirici Kılavuzu](./concepts-developer-guide-device-csharp.md). Modüller model kimliklerini ve DTDL modellerini aynı şekilde kullanır.
 
 IoT Tak ve Kullan modülünün nasıl uygulanacağını göstermek için bu öğreticide, termostat C# cihaz örneğini genel bir modüle nasıl dönüştürebileceğiniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -224,7 +224,7 @@ Bu örneği bir IoT Tak ve Kullan IoT Edge modülü olarak çalışacak şekilde
 Kapsayıcılı modülünüzü dağıtmayı öğrenmek için bkz.:
 
 * [Ubuntu sanal makinelerinde Azure IoT Edge çalıştırın](../iot-edge/how-to-install-iot-edge-ubuntuvm.md).
-* [Azure IoT Edge çalışma zamanını, detem tabanlı Linux sistemlerine yükler](../iot-edge/how-to-install-iot-edge-linux.md).
+* [Azure IoT Edge çalışma zamanını, detem tabanlı Linux sistemlerine yükler](../iot-edge/how-to-install-iot-edge.md).
 
 Azure IoT gezgin aracını kullanarak şunları görebilirsiniz:
 
@@ -238,4 +238,4 @@ Azure IoT gezgin aracını kullanarak şunları görebilirsiniz:
 Bu öğreticide, IoT Hub 'a modüllerle bir IoT Tak ve Kullan cihazını nasıl bağlayadığınızı öğrendiniz. IoT Tak ve Kullan cihaz modelleri hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [IoT Tak ve Kullan modelleme Geliştirici Kılavuzu](concepts-developer-guide.md)
+> [IoT Tak ve Kullan modelleme Geliştirici Kılavuzu](./concepts-developer-guide-device-csharp.md)

@@ -4,10 +4,10 @@ description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular vb.)
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064834"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme
@@ -152,9 +152,9 @@ Konsol uygulamasını çalıştırdığınızda, bir senaryo seçmeniz istenir. 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure RBAC hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)nedir?
 - Azure rol atamalarını Azure PowerShell, Azure CLı veya REST API ile atamayı ve yönetmeyi öğrenmek için şu makalelere bakın:
-    - [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-powershell.md)  
-    - [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-cli.md)
-    - [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-rest.md)
+    - [Azure PowerShell kullanarak Azure rol atamalarını ekleme veya kaldırma](../role-based-access-control/role-assignments-powershell.md)  
+    - [Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma](../role-based-access-control/role-assignments-cli.md)
+    - [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](../role-based-access-control/role-assignments-rest.md)
     - [Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-template.md)
 
 Service Bus mesajlaşma hizmeti hakkında daha fazla bilgi edinmek için aşağıdaki konu başlıklarına bakın.

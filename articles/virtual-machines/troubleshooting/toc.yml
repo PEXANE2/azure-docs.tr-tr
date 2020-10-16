@@ -241,9 +241,9 @@
 - name: Paylaşılan Görüntü Galerisi Sorunlarını Giderme
   items:
     - name: Paylaşılan Görüntü Galerisi Sorunlarını Giderme - Windows
-      href: ../windows/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
     - name: Paylaşılan Görüntü Galerisi Sorunlarını Giderme - Linux
-      href: ../linux/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
 - name: VM uzantısı sorunları
   items:
     - name: Azure uzantısına genel bakış

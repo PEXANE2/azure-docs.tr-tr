@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions, devx-track-js
 ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333299"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılmak Application Insights
@@ -158,7 +158,7 @@ Opencensus-Python SDK 'sının alma uç noktasını değiştirme Kılavuzu için
 
 Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](../../azure-government/compare-azure-government-global-azure.md#application-insights) ve [Azure Çin](/azure/china/resources-developer-guide)' dir.
 
-|Region |  Uç nokta adı | Değer |
+|Bölge |  Uç nokta adı | Değer |
 |-----------------|:------------|:-------------|
 | Azure Çin | Telemetri kanalı | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure Çin | QuickPulse (canlı ölçümler) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -170,7 +170,7 @@ Opencensus-Python SDK 'sının alma uç noktasını değiştirme Kılavuzu için
 Şu anda ' api.applicationinsights.io ' aracılığıyla erişilen [Application Insights REST API](https://dev.applicationinsights.io/
 ) kullanıyorsanız, bölgeniz için yerel bir uç nokta kullanmanız gerekir:
 
-|Region |  Uç nokta adı | Değer |
+|Bölge |  Uç nokta adı | Değer |
 |-----------------|:------------|:-------------|
 | Azure Çin | REST API | `api.applicationinsights.azure.cn` |
 | Azure Kamu | REST API | `api.applicationinsights.us`|

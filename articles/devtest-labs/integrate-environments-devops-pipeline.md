@@ -4,10 +4,10 @@ description: Azure DevTest Labs ortamlarını Azure DevOps sürekli tümleştirm
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483032"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Ortamları Azure DevOps CI/CD işlem hatlarınızla tümleştirin
@@ -53,8 +53,8 @@ Dağıtımın sonraki aşaması, geliştirme veya test amacıyla kullanılacak o
 4. **Şablon adı**için, kaynak kodu deponuza kaydettiğiniz ortamın adını seçin *. 
 5. **Laboratuvar adı**, **Depo adı**ve **şablon adı** Azure Kaynak kimliklerinin kolay temsilleridir. Kolay adın el ile girilmesi hatalara neden olur, bilgileri seçmek için açılan listeleri kullanın.
 6. **Ortam adı**için, laboratuvar dahilinde ortam örneğini benzersiz bir şekilde tanımlamak için bir ad girin.  Laboratuvar dahilinde benzersiz olmalıdır.
-7. **Parametre dosyası** ve **Parametreler**, ortama özel parametrelerin geçirilmesine izin verir. Ya da her ikisi de parametre değerlerini ayarlamak için kullanılabilir. Bu örnek için parametreler bölümü kullanılacaktır. Ortamda tanımladığınız değişkenlerin adlarını kullanın, örneğin:`-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
-8. Ortam şablonundaki bilgiler, şablonun çıkış bölümünde geçirilebilirler. Diğer görevlerin verileri kullanabilmesi için **ortam şablonu çıktısına göre çıkış değişkenleri oluştur ' u** işaretleyin. `$(Reference name.Output Name)`İzlenecek modeldir. Örneğin, başvuru adı DTL ise ve şablondaki çıkış adı konumdaysa, değişken olur `$(DTL.location)` .
+7. **Parametre dosyası** ve **Parametreler**, ortama özel parametrelerin geçirilmesine izin verir. Ya da her ikisi de parametre değerlerini ayarlamak için kullanılabilir. Bu örnek için parametreler bölümü kullanılacaktır. Ortamda tanımladığınız değişkenlerin adlarını kullanın, örneğin: `-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
+8. Ortam şablonundaki bilgiler, şablonun çıkış bölümünde geçirilebilirler. Diğer görevlerin verileri kullanabilmesi için **ortam şablonu çıktısına göre çıkış değişkenleri oluştur ' u** işaretleyin. `$(Reference name.Output Name)` İzlenecek modeldir. Örneğin, başvuru adı DTL ise ve şablondaki çıkış adı konumdaysa, değişken olur `$(DTL.location)` .
 
 ## <a name="delete-the-environment"></a>Ortamı silme
 Son aşama Azure DevTest Labs örneğiniz için dağıttığınız ortamı silmektir. Geliştirme görevlerini yürütmeden veya dağıtılan kaynaklarda ihtiyacınız olan testleri çalıştırdıktan sonra normalde ortamı silebilirsiniz.

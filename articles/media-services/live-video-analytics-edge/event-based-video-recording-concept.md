@@ -4,10 +4,10 @@ description: Olay tabanlı video kaydı (EVR), bir olay tarafından tetiklenen v
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568523"
 ---
 # <a name="event-based-video-recording"></a>Olay tabanlı video kaydı  
@@ -46,7 +46,7 @@ Hareket algılayıcısı düğümünden bir olay, sinyal kapısı işlemci düğ
 Bu kullanım durumunda, başka bir IoT sensörden gelen sinyaller video kaydını tetiklemek için kullanılabilir. Aşağıdaki diyagramda, bu kullanım örneğini ele alan bir medya grafiğinin grafik temsili gösterilmektedir. Bu tür bir medya grafiğinin grafik topolojisinin JSON temsili [burada](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json)bulunabilir.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Diğer kaynaklardaki olaylara dayalı video kaydı":::
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Hareket algılamayı temel alan video kaydı":::
 
 Diyagramda, dış algılayıcı olayları IoT Edge hub 'ına gönderir. Daha sonra olaylar [IoT Hub ileti kaynağı](media-graph-concept.md#iot-hub-message-source) düğümü aracılığıyla sinyal kapısı işlemci düğümüne yönlendirilir. Sinyal kapısı işlemci düğümünün davranışı, önceki kullanım örneği ile aynıdır. Bu işlem açılır ve canlı video akışının, dış olay tarafından tetiklendiğinde RTSP kaynak düğümünden dosya havuzu düğümüne (veya varlık havuz düğümü) üzerinden akmasını sağlar. 
 
@@ -57,7 +57,7 @@ Bir dosya havuzu düğümü kullanıyorsanız, video Edge cihazında yerel dosya
 Bu kullanım durumunda, bir dış mantıksal sistemden bir sinyal temelinde video klipleri kaydedebilirsiniz. Bu tür bir kullanım örneğine örnek olarak bir video klibini yalnızca trafiğin video akışında highbir biçimde algılandığında bir örnek kayıt olabilir. Aşağıdaki diyagramda, bu kullanım örneğini ele alan bir medya grafiğinin grafik temsili gösterilmektedir. Bu tür bir medya grafiğinin grafik topolojisinin JSON temsili [burada](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)bulunabilir.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Harici bir ının sınırlaması modülünü temel alan video kaydı":::
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Hareket algılamayı temel alan video kaydı":::
 
 Diyagramda, RTSP kaynak düğümü, kameradan canlı video akışını yakalar ve iki dala sunar: biri bir [sinyal kapısı işlemci](media-graph-concept.md#signal-gate-processor) düğümüne sahiptir ve diğeri dış mantık modülüne veri göndermek Için bir [http uzantısı](media-graph-concept.md) düğümü kullanır. HTTP uzantısı düğümü, medya grafiğinin, bekleyen bir dış çıkarım hizmetine görüntü çerçeveleri (JPEG, BMP veya PNG biçiminde) göndermesini sağlar. Bu sinyal yolu, genellikle yalnızca düşük kare oranlarını destekleyebilir (<5fps). Videonun kare hızını düşürmek için, HTTP uzantısı düğümüne giden kare hızı [filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümünü kullanabilirsiniz.
 

@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481842"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme
@@ -48,7 +48,7 @@ Bölüm anahtarınızı seçmek Azure Cosmos DB basit ancak önemli bir tasarım
 **Tüm** kapsayıcılar için, Bölüm anahtarınız şunları yapmalısınız:
 
 * Değişmez değeri olan bir özellik olamaz. Bir özellik bölüm anahtarınıza sahip ise, bu özelliğin değerini güncelleştiremezsiniz.
-* Yüksek bir kardinalite olmalıdır. Diğer bir deyişle, özelliği çok sayıda olası değere sahip olmalıdır.
+* Yüksek bir kardinaliteye sahip olma. Diğer bir deyişle, özelliği çok sayıda olası değere sahip olmalıdır.
 * İstek birimi (RU) tüketimini ve veri depolamayı tüm mantıksal bölümlerde eşit oranda dağıt. Bu da fiziksel bölümlerinizde RU tüketim ve depolama dağıtımı sağlar.
 
 Azure Cosmos DB [Çoklu öğe ACID işlemlerine](database-transactions-optimistic-concurrency.md#multi-item-transactions) ihtiyacınız varsa, [saklı yordamları veya Tetikleyicileri](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)kullanmanız gerekir. Tüm JavaScript tabanlı saklı yordamlar ve Tetikleyiciler, tek bir mantıksal bölümün kapsamına alınır.

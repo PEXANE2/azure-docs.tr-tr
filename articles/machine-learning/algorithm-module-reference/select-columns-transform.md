@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893621"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945609"
 ---
 # <a name="select-columns-transform"></a>Sütun Dönüştürmeyi Seçme
 
@@ -46,8 +46,14 @@ Bu senaryo, model eğitimi için kullanılacak dinamik bir sütun kümesi oluşt
 
    *Giriş veri kümesini bağlama.* Bunun yerine, [dönüştürme modülünü Uygula](apply-transformation.md) ' yı ekleyin ve Özellik seçimi dönüşümünün çıkışını bağlayın.
 
+   İşlem hattı yapısı aşağıdaki gibi olmalıdır:
+
+   > [!div class="mx-imgBorder"]
+   > ![Örnek işlem hattı](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > Puanlama veri kümesine [filtre tabanlı özellik seçimi](filter-based-feature-selection.md) uygulamayı ve aynı sonuçları elde etmek için beklemeniz gerekmez. Özellik seçimi değerleri temel aldığı için, farklı bir sütun kümesi seçebilir ve bu da Puanlama işleminin başarısız olmasına neden olabilir.
+    
 7. İşlem hattını gönderme.
 
 Bu işlem kaydetme ve sonra bir sütun seçimini uygulama, aynı veri şemasının eğitim ve Puanlama için kullanılabilir olmasını sağlar.

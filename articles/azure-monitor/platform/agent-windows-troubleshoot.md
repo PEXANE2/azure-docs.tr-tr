@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927326"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows için Log Analytics aracısıyla ilgili sorunları giderme 
@@ -34,10 +34,10 @@ Güvenlik duvarının veya proxy 'nin aşağıdaki tabloda açıklanan bağlant�
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Yes |  
-|*. agentsvc.azure-automation.net |Bağlantı noktası 443 |Outbound|Yes |  
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Evet |  
+|*. agentsvc.azure-automation.net |Bağlantı noktası 443 |Outbound|Evet |  
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
 

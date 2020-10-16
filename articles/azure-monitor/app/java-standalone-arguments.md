@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374312"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Azure Izleyici için JVM args Java tek başına Aracısı 'nı yapılandırma Application Insights
@@ -139,12 +139,12 @@ Tek bir konakta birden çok yönetilen sunucu çalıştırıyorsanız, `applicat
 ...
 ```
 
-Belirtilen `applicationinsights.agent.id` değer benzersiz olmalıdır. Her JVM işlemi kendi yerel ApplicationInsights yapılandırması ve yerel ApplicationInsights günlük dosyasına ihtiyaç duyduğunda, ApplicationInsights dizini altında bir alt dizin oluşturmak için kullanılır. Ayrıca, merkezi toplayıcıya raporlama yapıyorsanız, `applicationinsights.properties` dosya birden çok yönetilen sunucu tarafından paylaşılır ve bu nedenle, `applicationinsights.agent.id` `agent.id` Bu paylaşılan dosyadaki ayarı geçersiz kılmak için belirtilen gereklidir. `applicationinsights.agent.rollup.id`, `system-properties` `agent.rollup.id` yönetilen sunucu başına ayarı geçersiz kılmanız gerekiyorsa sunucuda benzer şekilde belirtilebilir.
+Belirtilen `applicationinsights.agent.id` değer benzersiz olmalıdır. Her JVM işlemi kendi yerel ApplicationInsights yapılandırması ve yerel ApplicationInsights günlük dosyasına ihtiyaç duyduğunda, ApplicationInsights dizini altında bir alt dizin oluşturmak için kullanılır. Ayrıca, merkezi toplayıcıya raporlama yapıyorsanız, `applicationinsights.properties` dosya birden çok yönetilen sunucu tarafından paylaşılır ve bu nedenle, `applicationinsights.agent.id` `agent.id` Bu paylaşılan dosyadaki ayarı geçersiz kılmak için belirtilen gereklidir. `applicationinsights.agent.rollup.id` , `system-properties` `agent.rollup.id` yönetilen sunucu başına ayarı geçersiz kılmanız gerekiyorsa sunucuda benzer şekilde belirtilebilir.
 
 
 ## <a name="jetty-9"></a>Jetty 9
 
-Bu satırları Ekle`start.ini`
+Bu satırları Ekle `start.ini`
 
 ```
 --exec

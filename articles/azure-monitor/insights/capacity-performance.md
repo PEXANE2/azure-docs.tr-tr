@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318003"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Hyper-V sanal makine kapasitesini Kapasite ve Performans çözümüyle planlayın (kullanım dışı)
@@ -41,9 +41,9 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 | Bağlı Kaynak | Destek | Açıklama |
 |---|---|---|
-| [Windows aracıları](../platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
+| [Windows aracıları](../platform/agent-windows.md) | Evet | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
 | [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
-| [SCOM yönetim grubu](../platform/om-agents.md) | Yes |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
+| [SCOM yönetim grubu](../platform/om-agents.md) | Evet |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
 | [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, kapasite ve performans verilerini içermez.|
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -85,10 +85,10 @@ Kapasite ve Performans çözümünü çalışma alanınıza eklediğinizde, Kapa
 
 Kapasite ve Performans panosunu açmak için Kapasite ve Performans kutucuğuna tıklayın. Pano aşağıdaki tabloda gösterilen sütunları içerir. Her sütun, sütunun belirtilen kapsam ve zaman aralığına yönelik kriterleriyle eşleşen en fazla on öğe listeler. Sütunun altındaki **Tümünü gör**’e tıklayarak veya sütun başlığına tıklayarak tüm kayıtları döndüren bir günlük araması gerçekleştirebilirsiniz.
 
-- **Bilgisayarlarınızı**
+- **Ana bilgisayarlar**
     - **Ana BILGISAYAR CPU kullanımı** Seçilen döneme bağlı olarak konak bilgisayarların CPU kullanımının ve konaklar listesinin grafik eğilimini gösterir. Belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Konak aramasını açmak ve barındırılan VM 'Ler için CPU sayacı ayrıntılarını görüntülemek için herhangi bir ana bilgisayar adına tıklayın.
     - **Ana bilgisayar bellek kullanımı** Seçili dönem temelinde konak bilgisayarların bellek kullanımının ve bir konak listesinin grafik eğilimini gösterir. Belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Konak aramasını açmak ve barındırılan VM 'Ler için bellek sayacı ayrıntılarını görüntülemek için herhangi bir ana bilgisayar adına tıklayın.
-- **Sanal makineler**
+- **Sanal Makineler**
     - **VM CPU kullanımı** Seçilen döneme bağlı olarak, sanal makinelerin CPU kullanımının ve sanal makinelerin listesinin grafik eğilimini gösterir. İlk 3 VM için belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Günlük aramasını açmak ve VM 'nin toplu CPU sayacı ayrıntılarını görüntülemek için herhangi bir VM adına tıklayın.
     - **VM bellek kullanımı** Seçilen döneme bağlı olarak, sanal makinelerin bellek kullanımının ve sanal makinelerin listesinin grafik eğilimini gösterir. İlk 3 VM için belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Günlük aramasını açmak ve VM için toplanan bellek sayacı ayrıntılarını görüntülemek için herhangi bir VM adına tıklayın.
     - **VM toplam DISK IOPS** Seçilen dönem temelinde, sanal makineler için toplam disk ıOPS ve her biri için ıOPS olan sanal makinelerin bir listesini gösterir. İlk 3 VM için belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Günlük aramasını açmak ve VM için toplam disk ıOPS sayacı ayrıntılarını görüntülemek için herhangi bir VM adına tıklayın.

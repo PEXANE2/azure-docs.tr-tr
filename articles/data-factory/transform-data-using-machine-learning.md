@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/16/2020
 ms.openlocfilehash: dabb7b8cd8023fe88a8c8d6dc507a09623bd11dd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537689"
 ---
 # <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Azure Machine Learning Studio (klasik) ve Azure Data Factory kullanarak tahmine dayalı bir işlem hattı oluşturun
@@ -128,13 +128,13 @@ Aşağıdaki JSON kod parçacığı Azure Machine Learning Studio (klasik) toplu
 
 | Özellik          | Açıklama                              | Gerekli |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | İşlem hattındaki etkinliğin adı     | Yes      |
-| açıklama       | Etkinliğin ne yaptığını açıklayan metin.  | No       |
-| tür              | Data Lake Analytics U-SQL etkinliği için etkinlik türü **AzureMLBatchExecution**' dir. | Yes      |
-| linkedServiceName | Azure Machine Learning Studio (klasik) bağlı hizmetine bağlı hizmetler. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| Webservicegirişlerinde  | Azure Machine Learning Studio (klasik) Web hizmeti girişlerinin adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan giriş parametreleriyle eşleşmelidir. Değer, giriş blobu konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | No       |
-| Webserviceçıktılar | Azure Machine Learning Studio (klasik) Web hizmeti çıktılarının adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan çıkış parametreleriyle eşleşmelidir. Değer, çıkış blob konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | No       |
-| globalParameters  | Azure Machine Learning Studio (klasik) toplu yürütme hizmeti uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan Web hizmeti parametrelerinin adlarıyla eşleşmesi gerekir. Değerler Azure Machine Learning Studio (klasik) toplu yürütme isteğinin GlobalParameters özelliğinde geçirilir | No       |
+| name              | İşlem hattındaki etkinliğin adı     | Evet      |
+| açıklama       | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
+| tür              | Data Lake Analytics U-SQL etkinliği için etkinlik türü **AzureMLBatchExecution**' dir. | Evet      |
+| linkedServiceName | Azure Machine Learning Studio (klasik) bağlı hizmetine bağlı hizmetler. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
+| Webservicegirişlerinde  | Azure Machine Learning Studio (klasik) Web hizmeti girişlerinin adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan giriş parametreleriyle eşleşmelidir. Değer, giriş blobu konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
+| Webserviceçıktılar | Azure Machine Learning Studio (klasik) Web hizmeti çıktılarının adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan çıkış parametreleriyle eşleşmelidir. Değer, çıkış blob konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
+| globalParameters  | Azure Machine Learning Studio (klasik) toplu yürütme hizmeti uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan Web hizmeti parametrelerinin adlarıyla eşleşmesi gerekir. Değerler Azure Machine Learning Studio (klasik) toplu yürütme isteğinin GlobalParameters özelliğinde geçirilir | Hayır       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Senaryo 1: Azure Blob depolama alanındaki verilere başvuran Web hizmeti girişlerini/çıkışlarını kullanarak denemeleri
 

@@ -4,10 +4,10 @@ description: Bir Premium kayıt defterindeki belirli depolara kapsamlı, görün
 ms.topic: article
 ms.date: 05/27/2020
 ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84509415"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Depo kapsamlı izinlerle belirteç oluşturma
@@ -59,7 +59,7 @@ Aşağıdaki görüntüde belirteçler ve kapsam haritaları arasındaki ilişki
 
 ![Kayıt defteri belirteçleri ve kapsam haritaları](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure **CLI** -belirteçleri oluşturmak ve yönetmek IÇIN Azure CLI komutları Azure CLI sürüm 2.0.76 veya sonraki sürümlerinde kullanılabilir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 * **Docker** -görüntüleri çekmek veya göndermek için kayıt defteriyle kimlik doğrulamak için yerel bir Docker yüklemesine ihtiyacınız vardır. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) sistemleri için yükleme yönergeleri sağlar.
@@ -159,7 +159,7 @@ Aşağıdaki örnek bir belirteç oluşturur ve depo üzerinde aşağıdaki izin
     1. Kapsam eşlemesi için bir ad ve açıklama girin. 
     1. **Depolar**' ın altında `samples/hello-world` , ve **izinler**altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle**' yi seçin.  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Portalda kapsam haritası oluşturma":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Portalda belirteç oluşturma":::
 
     1. Depoları ve izinleri ekledikten sonra, kapsam eşlemesini eklemek için **Ekle** ' yi seçin.
 1. **Etkin** ' in varsayılan belirteç **durumunu** kabul edin ve **Oluştur**' u seçin.
@@ -176,7 +176,7 @@ Portalda oluşturulan bir belirteci kullanmak için bir parola oluşturmanız ge
 1. Parola ekranında, isteğe bağlı olarak parola için bir sona erme tarihi ayarlayın ve **Oluştur**' u seçin. Sona erme tarihi ayarlamanız önerilir.
 1. Parola oluşturduktan sonra güvenli bir konuma kopyalayın ve kaydedin. Ekran kapatıldıktan sonra oluşturulan bir parolayı alamazsınız, ancak yeni bir tane oluşturabilirsiniz.
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Portalda belirteç parolası oluşturma":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Portalda belirteç oluşturma":::
 
 ## <a name="authenticate-with-token"></a>Belirteç ile kimlik doğrulama
 
@@ -186,11 +186,11 @@ Kimlik doğrulama yöntemi, belirteç ile ilişkili eyleme veya eylemlere bağl�
 
 |Eylem  |Kimlik doğrulaması nasıl yapılır?  |
   |---------|---------|
-  |`content/delete`    | `az acr repository delete`Azure CLı 'da<br/><br/>Örnek: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
-  |`content/read`     |  `docker login`<br/><br/>`az acr login`Azure CLı 'da<br/><br/>Örnek: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
-  |`content/write`     |  `docker login`<br/><br/>`az acr login`Azure CLı 'da     |
-  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests`Azure CLı 'da   |
-  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update`Azure CLı 'da |
+  |`content/delete`    | `az acr repository delete` Azure CLı 'da<br/><br/>Örnek: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
+  |`content/read`     |  `docker login`<br/><br/>`az acr login` Azure CLı 'da<br/><br/>Örnek: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
+  |`content/write`     |  `docker login`<br/><br/>`az acr login` Azure CLı 'da     |
+  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests` Azure CLı 'da   |
+  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update` Azure CLı 'da |
 
 ## <a name="examples-use-token"></a>Örnekler: belirteci kullan
 
@@ -261,7 +261,7 @@ Azure portalında:
 1. Kapsayıcı Kayıt defterinize gidin.
 1. **Depo izinleri**altında **kapsam haritaları ' nı (Önizleme)** seçin ve güncelleştirilecek kapsam eşlemesini seçin.
 1. **Depolar**' ın altında `samples/alpine` , ve **izinler**altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle**' yi seçin.
-1. **Depolar**' ın altında, `samples/hello-world` **izinler**' i seçin ve sonra seçimini kaldırın `content/write` . Sonra **Kaydet**'i seçin.
+1. **Depolar**' ın altında, `samples/hello-world` **izinler**' i seçin ve sonra seçimini kaldırın `content/write` . Ardından **Kaydet**’i seçin.
 
 Kapsam eşlemesini güncelleştirdikten sonra, şu gönderim başarılı olur:
 

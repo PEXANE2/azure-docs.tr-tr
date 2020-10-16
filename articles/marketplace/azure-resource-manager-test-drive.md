@@ -8,10 +8,10 @@ ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
 ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287944"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
@@ -72,10 +72,10 @@ Parametreleriniz için geçerli herhangi bir ad kullanabilirsiniz; test sürüc�
 
 | Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
 |---|---|---|---|
-| **BaseUri**     | dize          | Dağıtım paketinizin temel URI 'SI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
-| **username**    | dize          | Yeni rastgele Kullanıcı adı.| admin68876      |
+| **BaseUri**     | string          | Dağıtım paketinizin temel URI 'SI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **nitelen**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |
 | **parola**    | güvenli dize    | Yeni rastgele parola | LP! ACS \^ 2kh     |
-| **oturum kimliği**   | dize          | Benzersiz test sürücüsü oturum KIMLIĞI (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **oturum kimliği**   | string          | Benzersiz test sürücüsü oturum KIMLIĞI (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="baseuri"></a>BaseUri
 
@@ -122,7 +122,7 @@ Test sürücüsü bu parametreyi yeni bir rastgele Kullanıcı adı ile başlat�
 }
 ```
 
-Örnek değer:`admin68876`
+Örnek değer: `admin68876`
 
 Çözümünüz için rastgele veya sabit Kullanıcı adlarını kullanabilirsiniz.
 
@@ -144,7 +144,7 @@ Test sürücüsü bu parametreyi yeni bir rastgele parolayla başlatır:
 }
 ```
 
-Örnek değer:`Lp!ACS^2kh`
+Örnek değer:  `Lp!ACS^2kh`
 
 Çözümünüz için rastgele veya sabit parolalar kullanabilirsiniz.
 
@@ -166,7 +166,7 @@ Test sürücüsü bu parametreyi test sürücüsü oturum KIMLIĞINI temsil eden
 }
 ```
 
-Örnek değer:`b8c8693e-5673-449c-badd-257a405a6dee`
+Örnek değer: `b8c8693e-5673-449c-badd-257a405a6dee`
 
 Bu parametreyi, gerekirse test sürücüsü oturumunu benzersiz şekilde tanımlamak için kullanabilirsiniz.
 
@@ -266,7 +266,7 @@ Bununla birlikte test sürücüsü Kaynak Yöneticisi şablonları için, test s
 
 ### <a name="subscription-limits"></a>Abonelik limitleri
 
-Abonelik ve hizmet limitlerini unutmayın. Örneğin, on 4 çekirdekli sanal makine dağıtmak istiyorsanız, laboratuvarınız için kullandığınız aboneliğin 40 çekirdek kullanmanıza izin verdiğinden emin olmanız gerekir. Azure aboneliği ve hizmet limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md). Aynı anda birden çok test sürücüsü alınacağından, aboneliğinizin alınabilecek toplam eşzamanlı test sürücüsü sayısıyla çarpıldığı çekirdek sayısını işleyebildiğini doğrulayın.
+Abonelik ve hizmet limitlerini unutmayın. Örneğin, 10 4 çekirdekli sanal makineleri dağıtmak istiyorsanız, laboratuvarınız için kullandığınız aboneliğin 40 çekirdekleri kullanmanıza izin verdiğinden emin olmanız gerekir. Azure aboneliği ve hizmet limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md). Aynı anda birden çok test sürücüsü alınacağından, aboneliğinizin alınabilecek toplam eşzamanlı test sürücüsü sayısıyla çarpıldığı çekirdek sayısını işleyebildiğini doğrulayın.
 
 ### <a name="what-to-upload"></a>Karşıya yüklenecek
 
@@ -313,7 +313,7 @@ Tamamlanacak son bölüm, Azure aboneliğinizi ve Azure Active Directory (AD) ba
    6. **Oluştur**’u seçin.
    7. Uygulama oluşturulduktan sonra **Özellikler**' i,  >  **uygulamayı çok kiracılı olarak ayarla** ve sonra **Kaydet**' i seçin.
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 5. Bu kayıtlı uygulamanın uygulama KIMLIĞINI kopyalayın ve test sürücüsü alanına yapıştırın.
 
@@ -331,7 +331,7 @@ Tamamlanacak son bölüm, Azure aboneliğinizi ve Azure Active Directory (AD) ba
 
       ![İzinleri ekleme](media/test-drive/access-control-permissions.jpg)
 
-   1. **Kaydet**'i seçin.
+   1. **Kaydet**’i seçin.
 
 7. **Azure AD uygulaması** bir kimlik doğrulama anahtarı oluşturun. **Anahtarlar**' ın altında, bir **anahtar açıklaması**ekleyin, süreyi **süresiz** olarak ayarlayın (süresi dolan bir anahtar, üretimde test sürücünüzü keser) ve ardından **Kaydet**' i seçin. Bu değeri kopyalayın ve gerekli Test Drive alanına yapıştırın.
 

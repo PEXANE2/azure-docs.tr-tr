@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Öğretici: RightScale ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ RightScale 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini RightScale ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, RightScale ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Sağ **[ölçeklendirmeyi çoklu oturum açmayı yapılandırma](#configure-rightscale-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. Her bir uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[RightScale çoklu oturum açmayı yapılandırın](#configure-rightscale-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimine bağlı olan sağ ölçekte Britta Simon 'ın bir karşılığı olacak şekilde, **[RightScale test kullanıcısı oluşturun](#create-rightscale-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı RightScale ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı RightScale ile yapılandırmak için aşağıdak
 
     **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://login.rightscale.com/`
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -121,38 +121,38 @@ Azure AD çoklu oturum açmayı RightScale ile yapılandırmak için aşağıdak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-rightscale-single-sign-on"></a>RightScale çoklu oturum açmayı yapılandırma
+### <a name="configure-rightscale-single-sign-on"></a>RightScale tek Sign-On yapılandırma
 
 1. Uygulamanız için yapılandırılmış SSO 'yu almak için, bir yönetici olarak RightScale kiracınızda oturum açmanız gerekir.
 
 2. Üstteki menüde, **Ayarlar** sekmesine tıklayın ve **Çoklu oturum açma**' yı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
 3. **SAML kimlik sağlayıcılarınızı**eklemek için **Yeni** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. **Görünen ad**metin kutusuna şirketinizin adını girin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. **Bir keşif ipucu kullanarak sağ ölçekte BAŞLATıLAN SSO 'Ya Izin ver** ' i seçin ve aşağıdaki metin kutusunda **etki alanı adınızı** girin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. Azure portal kopyaladığınız **oturum açma URL 'si** değerini, RightScale IÇINDEKI **SAML SSO uç noktasına** yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. Azure portal kopyaladığınız **Azure AD tanımlayıcısının** değerini, RightScale Içindeki **SAML EntityId** 'ye yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. Azure portal 'den indirdiğiniz sertifikayı karşıya yüklemek için **tarayıcı** düğmesine tıklayın.
 
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. **Kaydet**’e tıklayın.
 

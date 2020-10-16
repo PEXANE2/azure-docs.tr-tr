@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80240354"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972552"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Yerleşik doğrudan yöntemler kullanarak edgeAgent ile iletişim kurma
 
@@ -69,13 +69,14 @@ Azure portal Yöntem adı `RestartModule` ve AŞAĞıDAKI JSON yüküyle yöntem
 
 ![Azure portal ' RestartModule ' doğrudan metodunu çağır](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>Deneysel Yöntemler
+## <a name="diagnostic-direct-methods"></a>Doğrudan tanılama yöntemleri
 
-Yeni doğrudan Yöntem seçenekleri, test edilecek Deneysel özellikler olarak kullanılabilir:
+* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs): modül günlüklerini doğrudan yöntemin yanıtında satır içi alın.
+* [Uploadmodulelogs](how-to-retrieve-iot-edge-logs.md#upload-module-logs): modül günlüklerini alın ve Azure Blob depolamaya yükleyin.
+* [Uploadsupportdemeti](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics): bir destek paketi kullanarak modül günlüklerini alın ve Azure Blob depolama alanına bir ZIP dosyası yükleyin.
+* [Gettaskstatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status): karşıya yükleme günlüklerinin veya destek paketi isteğinin durumunu denetleyin.
 
-* [Uploadlogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): modül günlüklerini alın ve Azure Blob depolamaya yükleyin.
-* [Gettaskstatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): karşıya yükleme günlüğü isteğinin durumunu denetleyin.
-* [Getlogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): doğrudan yöntemin yanıtında modül günlüklerini satır içinde alın.
+Bu tanılama doğrudan yöntemleri 1.0.10 sürümü itibariyle kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

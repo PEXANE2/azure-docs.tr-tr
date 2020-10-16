@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 9b6766137dd88a5a780dcca7b6eab7c6c3f9bbf4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260399"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
@@ -19,7 +19,7 @@ Ağ Geçidi kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| silme | Ağ Geçidi kaynağını siler. |
+| delete | Ağ Geçidi kaynağını siler. |
 | list | Tüm ağ geçidi kaynaklarını listeler. |
 | göster | Belirtilen ada sahip ağ geçidi kaynağını alır. |
 
@@ -28,7 +28,7 @@ Ağ Geçidi kaynağını siler.
 
 Ad tarafından tanımlanan ağ geçidi kaynağını siler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -64,7 +64,7 @@ Belirtilen ada sahip ağ geçidi kaynağını alır.
 
 Belirtilen ada sahip ağ geçidi kaynağıyla ilgili bilgileri alır. Bilgiler, ağ geçidinin açıklamasını ve diğer özelliklerini içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

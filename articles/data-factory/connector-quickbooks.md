@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529271"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak QuickBooks Online 'dan veri kopyalama (Önizleme)
@@ -50,17 +50,17 @@ QuickBooks bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **QuickBooks** olarak ayarlanmalıdır | Yes |
-| connectionProperties | QuickBooks 'a nasıl bağlanılacağını tanımlayan bir özellik grubu. | Yes |
+| tür | Type özelliği: **QuickBooks** olarak ayarlanmalıdır | Evet |
+| connectionProperties | QuickBooks 'a nasıl bağlanılacağını tanımlayan bir özellik grubu. | Evet |
 | ***Altında `connectionProperties` :*** | | |
-| endpoint | QuickBooks Online sunucusunun uç noktası. (yani, quickbooks.api.intuit.com)  | Yes |
-| CompanyID | Yetkilendirmek için QuickBooks şirketinin şirket KIMLIĞI. Şirket KIMLIĞINI bulma hakkında bilgi için, bkz. [ŞIRKET kimliğini bulma nasıl yaparım?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
-| consumerKey | OAuth 2,0 kimlik doğrulaması için tüketici anahtarı. | Yes |
-| consumerSecret | OAuth 2,0 kimlik doğrulaması için tüketici parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| refreshToken | QuickBooks uygulamasıyla ilişkili OAuth 2,0 yenileme belirteci. [Buradan](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)daha fazla bilgi edinebilirsiniz. Göz yenileme belirtecinin 180 gün sonra zaman aşımına erdiğini göreceksiniz. Müşterinin yenileme belirtecini düzenli olarak güncelleştirmesi gerekiyor. <br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.| Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| endpoint | QuickBooks Online sunucusunun uç noktası. (yani, quickbooks.api.intuit.com)  | Evet |
+| CompanyID | Yetkilendirmek için QuickBooks şirketinin şirket KIMLIĞI. Şirket KIMLIĞINI bulma hakkında bilgi için, bkz. [ŞIRKET kimliğini bulma nasıl yaparım?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Evet |
+| consumerKey | OAuth 2,0 kimlik doğrulaması için tüketici anahtarı. | Evet |
+| consumerSecret | OAuth 2,0 kimlik doğrulaması için tüketici parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| refreshToken | QuickBooks uygulamasıyla ilişkili OAuth 2,0 yenileme belirteci. [Buradan](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)daha fazla bilgi edinebilirsiniz. Göz yenileme belirtecinin 180 gün sonra zaman aşımına erdiğini göreceksiniz. Müşterinin yenileme belirtecini düzenli olarak güncelleştirmesi gerekiyor. <br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.| Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -95,7 +95,7 @@ QuickBooks Online 'daki verileri kopyalamak için, veri kümesinin Type özelli�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Quickbooksobject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **Quickbooksobject** olarak ayarlanmalıdır | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -125,10 +125,10 @@ QuickBooks Online 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak t�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Quickbookssource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Quickbookssource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

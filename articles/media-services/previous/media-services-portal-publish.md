@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1f9f1b51ce09577bf17fa4d92273348665987848
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f86f7a0a7eaef7c0dc244a2e089596de3779eae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266621"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018976"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure portal içerik yayımlama
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için bkz. [içerik sunma genel bakış](media-services-deliver
 > 
 > 
 
-Bir bulucunun sona erme tarihini güncelleştirmek için, kullanımı bir [REST API](/rest/api/media/operations/locator#update_a_locator) veya [.NET API 'si](https://go.microsoft.com/fwlink/?LinkID=533259)kullanabilir. 
+Bir bulucunun sona erme tarihini güncelleştirmek için, kullanımı bir [REST API](/rest/api/media/operations/locator#update_a_locator) veya [.NET API 'si](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator)kullanabilir. 
 
 > [!NOTE]
 > Paylaşılan erişim imzası bulucunun sona erme tarihini güncelleştirdiğinizde URL değişir.
@@ -76,7 +76,7 @@ Bir bulucunun sona erme tarihini güncelleştirmek için, kullanımı bir [REST 
 2. **Ayar**  >  **varlıkları**' nı seçin. Yayımlamak istediğiniz varlığı seçin.
 3. **Yayımla** düğmesini seçin.
 4. Bulucu türünü seçin.
-5. **Add (Ekle)** seçeneğini belirleyin.
+5. **Ekle**’yi seçin.
    
     ![Videoyu yayımlama](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
@@ -95,7 +95,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 * Azure portal medya oynatıcı varsayılan akış uç noktasından oynatılır. Varsayılan olmayan bir akış uç noktasından oynatmak istiyorsanız, URL'yi seçip kopyalayın ve başka bir oynatıcıya yapıştırın. Örneğin [Azure Media Player](https://aka.ms/azuremediaplayer) üzerinde videonuzu test edebilirsiniz.
 * Akış olduğunuz akış uç noktasının çalışıyor olması gerekir.  
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar

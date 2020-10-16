@@ -3,12 +3,12 @@ title: Kaynak kilitlemeyi anlama
 description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki kilitleme seçenekleri hakkında bilgi edinin.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744024"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096003"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -39,7 +39,7 @@ Bu güvenlik ölçüsü, tanımlanan şema 'in ve yanlışlıkla ya da programl�
 
 ### <a name="assign-at-management-group"></a>Yönetim grubuna ata
 
-Abonelik sahiplerinin bir şema atamasını kaldırmasını önlemeye yönelik ek bir seçenek, şema 'in bir yönetim grubuna atanması olur. Bu senaryoda, BLUEPRINT atamasını kaldırmak için gerekli izinlere sahip yalnızca yönetim grubunun **sahipleri** vardır.
+Abonelik sahiplerinin bir şema atamasını kaldırmasını engelleyen tek seçenek, şema 'i bir yönetim grubuna atacaktır. Bu senaryoda, BLUEPRINT atamasını kaldırmak için gerekli izinlere sahip yalnızca yönetim grubunun **sahipleri** vardır.
 
 Şemayı bir abonelik yerine bir yönetim grubuna atamak için, REST API çağrısı şuna benzer şekilde değişir:
 

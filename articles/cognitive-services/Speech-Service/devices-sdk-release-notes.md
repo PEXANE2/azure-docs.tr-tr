@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
 ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212505"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Sürüm notları: konuşma cihazları SDK 'Sı
@@ -82,7 +82,7 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 
 - [Anahtar sözcük yükleme](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) basitleştirildi, artık uygulamanın bir parçasıdır ve cihaza ayrı yükleme gerektirmez.
 - Anahtar sözcük tanıma değiştirilmiştir ve iki olay desteklenir.
-  - `RecognizingKeyword,`konuşma sonucu 'nın (doğrulanmamış) anahtar sözcük metnini içerdiğini belirtir.
+  - `RecognizingKeyword,` konuşma sonucu 'nın (doğrulanmamış) anahtar sözcük metnini içerdiğini belirtir.
   - `RecognizedKeyword`, anahtar sözcük tanımanın verilen anahtar sözcüğü tanımayı tamamladığını gösterir.
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Konuşma cihazları SDK 1.1.0:2018-kas sürümü

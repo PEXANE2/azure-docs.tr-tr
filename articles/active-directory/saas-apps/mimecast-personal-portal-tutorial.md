@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c006e38d30e4e32645024a8c307a18767e8a1090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549101"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941067"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>Öğretici: Mimecast kişisel portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -80,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | Region  |  Değer | 
+    | Bölge  |  Değer | 
     | --------------- | --------------- |
     | Avrupa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Birleşik Devletler   | `https://us-api.mimecast.com/sso/<accountcode>`|
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Yanıt URL** 'si metin kutusuna bir URL yazın:
 
-    | Region  |  Değer |
+    | Bölge  |  Değer |
     | --------------- | --------------- |
     | Avrupa          | `https://eu-api.mimecast.com/login/saml`|
     | Birleşik Devletler   | `https://us-api.mimecast.com/login/saml`|
@@ -105,7 +105,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:
 
-    | Region  |  Değer |
+    | Bölge  |  Değer |
     | --------------- | --------------- |
     | Avrupa          | `https://eu-api.mimecast.com/login/saml`|
     | Birleşik Devletler   | `https://us-api.mimecast.com/login/saml`|
@@ -155,23 +155,23 @@ Bu bölümde, Mimecast kişisel portalına erişim izni vererek Azure çoklu otu
 
 1. **Yönetim**  >  **Hizmetleri**  >  **uygulamalarına**gidin.
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/services.png)
+    ![Ekran görüntüsü, seçili uygulamaların bulunduğu Mimecast penceresini gösterir.](./media/mimecast-personal-portal-tutorial/services.png)
 
 1. **Kimlik doğrulama profilleri** sekmesi ' ne tıklayın.
     
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
+    ![Ekran görüntüsü, kimlik doğrulama profillerinin seçili olduğu uygulama sekmesini gösterir.](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
 
 1. **Yeni kimlik doğrulama profili** sekmesi ' ne tıklayın.
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
+    ![Ekran görüntüsü yeni kimlik doğrulama profili seçili olduğunu gösterir.](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
 
 1. **Açıklama** metin kutusuna geçerli bir açıklama girin ve **Mimecast kIşIsel portalı Için SAML kimlik doğrulamasını zorla** onay kutusunu seçin.
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
+    ![Ekran görüntüsü yeni kimlik doğrulama profili seçili olduğunu gösterir.](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
 
 1. **Mimecast kişisel portalı Için SAML yapılandırması** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/sso-settings.png)
+    ![Ekran görüntüsünde, Yönetim Konsolu için SAML kimlik doğrulamasının zorla ' nın nasıl oluşturulacağı gösterilir.](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
     a. **Sağlayıcı**Için, açılan listeden **Azure Active Directory** seçin.
 
@@ -189,19 +189,19 @@ Bu bölümde, Mimecast kişisel portalına erişim izni vererek Azure çoklu otu
 
 1. **Yönetim**  >  **dizinleri**  >  **iç dizinleri**' ne gidin.
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/internal-directories.png)
+    ![Ekran görüntüsünde, Mimecast kişisel portalının SAML yapılandırması gösterilir ve burada açıklanan değerleri girebilirsiniz.](./media/mimecast-personal-portal-tutorial/internal-directories.png)
 
 1. Etki alanı aşağıda bahsedildiğinde, etki alanınızı seçin, aksi takdirde lütfen **yeni etki alanına**tıklayarak yeni bir etki alanı oluşturun.
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/domain-name.png)
+    ![Ekran görüntüsü, Iç dizinlerin seçili olduğu Mimecast penceresini gösterir.](./media/mimecast-personal-portal-tutorial/domain-name.png)
 
 1. **Yeni adres** sekmesi ' ne tıklayın.
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/new-address.png)
+    ![Ekran görüntüsü seçili etki alanını gösterir.](./media/mimecast-personal-portal-tutorial/new-address.png)
 
 1. Aşağıdaki sayfada gerekli Kullanıcı bilgilerini sağlayın:
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/user-information.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz sayfayı gösterir.](./media/mimecast-personal-portal-tutorial/user-information.png)
 
     a. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini girin `B.Simon@yourdomainname.com` .
 
@@ -215,7 +215,7 @@ Bu bölümde, Mimecast kişisel portalına erişim izni vererek Azure çoklu otu
 
     f. Kullanıcılara roller atamak için **rol Düzenle** ' ye tıklayın ve gerekli rolü, kuruluşunuzun gereksinimlerine göre kullanıcıya atayın.
 
-    ![Mimecast kişisel Portal Yapılandırması](./media/mimecast-personal-portal-tutorial/assign-role.png)
+    ![Ekran görüntüsü, rol düzenleme seçebileceğiniz adres ayarlarını gösterir.](./media/mimecast-personal-portal-tutorial/assign-role.png)
 
 
 ## <a name="test-sso"></a>Test SSO 'SU 

@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 03bc41a0159253359b4f87fd35d4de055b294cc4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961797"
 ---
 # <a name="create-an-external-app-service-environment"></a>Dış App Service ortamı oluşturma
@@ -65,7 +65,7 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
 2. Aboneliğinizi seçin. Uygulama ve Ao, aynı aboneliklerde oluşturulur.
 
-3. Kaynak grubunu seçin veya oluşturun. Kaynak grupları ile ilgili Azure kaynaklarını birim olarak yönetebilirsiniz. Kaynak grupları, uygulamalarınız için rol tabanlı Access Control kuralları oluştururken de yararlı olur. Daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış][ARMOverview].
+3. Kaynak grubunu seçin veya oluşturun. Kaynak grupları ile ilgili Azure kaynaklarını birim olarak yönetebilirsiniz. Ayrıca, uygulamalarınız için Role-Based Access Control kuralları oluştururken kaynak grupları da yararlıdır. Daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış][ARMOverview].
 
 4. İşletim sistemini (Windows, Linux veya Docker) seçin. 
 
@@ -103,7 +103,7 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
 1. Aboneliğinizi seçin. Uygulama ve Ao, aynı aboneliklerde oluşturulur.
 
-1. Kaynak grubunu seçin veya oluşturun. Kaynak grupları ile ilgili Azure kaynaklarını birim olarak yönetebilirsiniz. Kaynak grupları, uygulamalarınız için rol tabanlı Access Control kuralları oluştururken de yararlı olur. Daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış][ARMOverview].
+1. Kaynak grubunu seçin veya oluşturun. Kaynak grupları ile ilgili Azure kaynaklarını birim olarak yönetebilirsiniz. Ayrıca, uygulamalarınız için Role-Based Access Control kuralları oluştururken kaynak grupları da yararlıdır. Daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış][ARMOverview].
 
 1. App Service planını seçin ve ardından **Yeni oluştur**' u seçin. Linux Web Apps ve Windows Web Apps aynı App Service planında olamaz, ancak aynı App Service Ortamı olabilir. 
 

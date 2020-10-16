@@ -4,10 +4,10 @@ description: Bu veri modeli, Log Analytics (LA) ' a tanılama olayları gönderm
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569586"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup tanılama olayları için veri modeli
@@ -38,9 +38,9 @@ Bu tablo, kasa ve yedekleme öğeleri gibi temel yedekleme varlıkları hakkınd
 | BackupManagementServerOSVersion   | Metin          | Yedekleme yönetim sunucusunun işletim sistemi sürümü                   |
 | BackupManagementServerVersion     | Metin          | Yedekleme yönetim sunucusunun sürümü                      |
 | LatestRecoveryPointLocation       | Metin          | Yedekleme öğesi için en son kurtarma noktasının konumu    |
-| LatestRecoveryPointTime           | Tarih-Saat      | Yedekleme öğesi için en son kurtarma noktasının tarih saati   |
+| LatestRecoveryPointTime           | DateTime      | Yedekleme öğesi için en son kurtarma noktasının tarih saati   |
 | OldestRecoveryPointLocation       | Metin          | Yedekleme öğesi için en eski kurtarma noktası konumu    |
-| OldestRecoveryPointTime           | Tarih-Saat      | Yedekleme öğesi için en son kurtarma noktasının tarih saati   |
+| OldestRecoveryPointTime           | DateTime      | Yedekleme öğesi için en son kurtarma noktasının tarih saati   |
 | Policyuniqueıd                    | Metin          | İlkeyi tanımlamak için benzersiz KIMLIK                             |
 | ProtectedContainerFriendlyName    | Metin          | Korumalı sunucunun kolay adı                        |
 | ProtectedContainerLocation        | Metin          | Korumalı kapsayıcının şirket içinde mi yoksa Azure 'da mı bulunduğu |
@@ -74,7 +74,7 @@ Bu tablo, uyarı ile ilgili alanlarla ilgili ayrıntıları sağlar.
 | Kategori                       | Metin          | Azure Izleyici günlüklerine gönderilen tanılama verilerinin kategorisi-AddonAzureBackupAlerts |
 | AlertCode                      | Metin          | Uyarı türünü benzersiz şekilde tanımlamak için kod                     |
 | AlertConsolidationStatus       | Metin          | Uyarının birleştirilmiş bir uyarı olup olmadığını tanımla         |
-| AlertOccurrenceDateTime        | Tarih-Saat      | Uyarının oluşturulduğu tarih ve saat                     |
+| AlertOccurrenceDateTime        | DateTime      | Uyarının oluşturulduğu tarih ve saat                     |
 | AlertRaisedOn                  | Metin          | Uyarının üzerinde ortaya çıkarılan varlık türü                        |
 | AlertSeverity                  | Metin          | Uyarının önem derecesi. Örneğin, kritik                 |
 | AlertStatus                    | Metin          | Uyarının durumu. Örneğin, etkin                     |
@@ -130,12 +130,12 @@ Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 | JobFailureCode                 | Metin          | İş hatası oluştuğundan hata kodu dizesi    |
 | JobOperation                   | Metin          | İşin çalıştırıldığı işlem Örneğin, yedekleme, geri yükleme, yedeklemeyi yapılandırma |
 | JobOperationSubType            | Metin          | Iş Işleminin alt türü. Örneğin, günlük yedekleme Işi durumunda ' log ' |
-| JobStartDateTime               | Tarih-Saat      | İşin çalışmaya başladığı tarih ve saat                       |
+| JobStartDateTime               | DateTime      | İşin çalışmaya başladığı tarih ve saat                       |
 | JobStatus                      | Metin          | Tamamlanmış işin durumu, örneğin, tamamlandı, başarısız   |
 | Jobuniqueıd                    | Metin          | İşi tanımlamak için benzersiz KIMLIK                                |
 | Protectedcontaineruniqueıd     | Metin          | İşle ilişkili korumalı sunucunun benzersiz tanıtıcısı |
 | RecoveryJobDestination         | Metin          | Verilerin kurtarıldığı bir kurtarma işinin hedefi   |
-| RecoveryJobRPDateTime          | Tarih-Saat      | Kurtarılan kurtarma noktasının oluşturulduğu tarih, saat |
+| RecoveryJobRPDateTime          | DateTime      | Kurtarılan kurtarma noktasının oluşturulduğu tarih, saat |
 | RecoveryJobLocation            | Metin          | Kurtarılan kurtarma noktasının depolandığı konum |
 | RecoveryLocationType           | Metin          | Kurtarma konumunun türü                                |
 | SchemaVersion                  | Metin          | Şemanın geçerli sürümü, örneğin **v2**            |

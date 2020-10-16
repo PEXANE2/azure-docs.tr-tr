@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296660"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Izleyici aracılığıyla Media Services ölçümleri ve tanılama günlüklerini izleme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Azure Izleyici tarafından toplanan tüm veriler iki temel türden birine uyar: ölçümler ve Günlükler. Media Services tanılama günlüklerini izleyebilir, toplanan ölçümler ve Günlükler için uyarılar ve bildirimler oluşturabilirsiniz. Ölçüm [Gezgini](../../azure-monitor/platform/metrics-getting-started.md)'ni kullanarak ölçüm verilerini görselleştirebilir ve çözümleyebilirsiniz. [Azure depolama](https://azure.microsoft.com/services/storage/)'ya Günlükler gönderebilir, bunları [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)akışa alabilir, [Log Analytics](https://azure.microsoft.com/services/log-analytics/)dışarı aktarabilir veya üçüncü taraf hizmetleri kullanabilirsiniz.
+[Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Azure İzleyici tarafından toplanan tüm veriler, ölçüm ve günlükler şeklindeki iki temel türden birine uyar. Media Services tanılama günlüklerini izleyebilir, toplanan ölçümler ve Günlükler için uyarılar ve bildirimler oluşturabilirsiniz. Ölçüm [Gezgini](../../azure-monitor/platform/metrics-getting-started.md)'ni kullanarak ölçüm verilerini görselleştirebilir ve çözümleyebilirsiniz. [Azure depolama](https://azure.microsoft.com/services/storage/)'ya Günlükler gönderebilir, bunları [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)akışa alabilir, [Log Analytics](https://azure.microsoft.com/services/log-analytics/)dışarı aktarabilir veya üçüncü taraf hizmetleri kullanabilirsiniz.
 
 Ayrıntılı bir genel bakış için bkz. [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md) ve [Azure izleyici tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md).
 
@@ -44,7 +44,7 @@ Media Services aşağıdaki kaynaklar için izleme ölçümlerini destekler:
 
 Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 
-|Ölçüm adı|Görünen ad|Description|
+|Ölçüm adı|Görünen ad|Açıklama|
 |---|---|---|
 |AssetCount|Varlık sayısı|Hesabınızdaki varlıklar.|
 |AssetQuota|Varlık kotası|Hesabınızdaki varlık kotası.|
@@ -62,7 +62,7 @@ Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 
 Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpoints) ölçümleri desteklenir:
 
-|Ölçüm adı|Görünen ad|Description|
+|Ölçüm adı|Görünen ad|Açıklama|
 |---|---|---|
 |İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
 |Çıkış|Çıkış|Akış uç noktası başına dakika başına toplam çıkış baytı.|

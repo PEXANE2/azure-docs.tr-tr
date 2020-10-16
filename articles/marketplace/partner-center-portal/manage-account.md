@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
 ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400698"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
@@ -265,7 +265,7 @@ Yeni bir Azure AD uygulama hesabına Iş ortağı merkezi erişimi vermek istiyo
 
 1. **Kullanıcılar** sayfasından ( **Hesap ayarları**altında) **Azure AD uygulamaları Ekle**' yi seçin.
 2. Sonraki sayfada, **yeni Azure AD uygulaması**' nı seçin.
-3. Yeni Azure AD uygulamasının **yanıt URL 'sini** girin. Bu URL, kullanıcıların oturum açmak ve Azure AD uygulamanızı kullanabilmesi (bazen uygulama URL 'SI veya oturum açma URL 'SI olarak da bilinir). **Yanıt URL 'si** 256 karakterden uzun olamaz ve dizininiz içinde benzersiz olmalıdır.
+3. Yeni Azure AD uygulamasının **yanıt URL 'sini** girin. Bu URL, kullanıcıların oturum açmak ve Azure AD uygulamanızı kullanabilmesi (bazen uygulama URL 'SI veya Sign-On URL 'SI olarak da bilinir). **Yanıt URL 'si** 256 karakterden uzun olamaz ve dizininiz içinde benzersiz olmalıdır.
 4. Yeni Azure AD uygulaması için **uygulama KIMLIĞI URI** 'sini girin. Bu, Azure AD 'ye çoklu oturum açma isteği gönderildiğinde sunulan Azure AD uygulaması için mantıksal bir tanıtıcıdır. Dizininizdeki her bir Azure AD uygulaması için **uygulama kimliği URI 'si** benzersiz olmalıdır. Bu KIMLIK 256 karakterden daha uzun olamaz. Uygulama KIMLIĞI URI 'SI hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory Ile tümleştirme](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts).
 5. **Roller** bölümünde, Azure AD uygulaması için rol (ler) veya özelleştirilmiş izinleri belirtin.
 6. **Kaydet**’i seçin.

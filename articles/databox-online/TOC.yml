@@ -31,10 +31,6 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8 - İşlemi yapılandırma
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: '9A - Paylaşıma ekleme, bağlanma'
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: '9B - Depolama hesaplarına ekleme, bağlama'
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Kavramlar
       items:
         - name: Gereksinimleri inceleme
@@ -61,6 +57,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Kubernetes iş yükleri
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Key Vault tümleştirmesini görüntüleme
+          href: azure-stack-edge-gpu-activation-key-vault.md
     - name: Nasıl yapılır
       items:
         - name: IoT Edge örneklerini dağıtma
@@ -87,6 +85,8 @@
               items:
                 - name: Durum bilgisi olmayan uygulama
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: C# modülü geliştirme
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
             - name: Azure Arc aracılığıyla (Önizleme)
               items:
                 - name: Kubernetes kümesinde Arc'ı etkinleştirme
@@ -123,12 +123,14 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: Sertifika hatalarını giderme
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: C# modülü geliştirme
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Uç işlemini yönetme
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Depolama ağ geçidini yönetme
           items:
+            - name: 'Paylaşıma ekleme, bağlanma'
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: 'Depolama hesaplarına ekleme, bağlama'
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: Paylaşımlar
               href: azure-stack-edge-j-series-manage-shares.md
             - name: Kullanıcılar
@@ -149,6 +151,10 @@
               href: azure-stack-edge-return-device.md
             - name: Cihazı değiştirme
               href: azure-stack-edge-replace-device.md
+            - name: Cihaz hatasına hazırlanma
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: Cihaz hatasından kurtarma
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: İzleme
           items:
             - name: Ölçüm grafiklerini kullanma
@@ -161,6 +167,8 @@
               href: azure-stack-edge-gpu-troubleshoot.md
             - name: Sorunları sıralama
               href: azure-stack-edge-troubleshoot-ordering.md
+            - name: Etkinleştirme sorunları
+              href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Microsoft Desteği’ne başvurma
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Sürüm notları

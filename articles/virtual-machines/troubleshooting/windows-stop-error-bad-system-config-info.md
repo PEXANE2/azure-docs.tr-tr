@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447325"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977040"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Dur hatası-0x00000074 hatalı sistem yapılandırma bilgileri
 
@@ -27,7 +27,7 @@ Bu makalede, bir Azure sanal makinesindeki (VM) bozuk sistem yapılandırma bilg
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde Windows dur kodu **#0x00000074** veya **BAD_SYSTEM_CONFIG_INFO**görüntülenir.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde Windows dur kodu **#0x00000074** veya **BAD_SYSTEM_CONFIG_INFO**görüntülenir.
 
 *Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz.* 
  *Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için şu http://windows.com/stopcode adresi ziyaret edin* 
@@ -58,7 +58,7 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
 1. Hive bozulma olup olmadığını denetleyin.
 1. Onarım sanal makinesine bağlanmak için Uzak Masaüstü Bağlantısı kullanın.
 1. Klasörü kopyalayın `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` ve iyi disk bölümünüze ya da başka bir güvenli konuma kaydedin. Kritik kayıt defteri dosyalarını düzenleyebileceğinizden bu klasörü bir önlem olarak yedekleyin. 
@@ -133,4 +133,4 @@ Aşağıdaki yönergeler, nedenin Hive bozulması olup olmadığını veya Hive 
    
 ### <a name="rebuild-the-vm"></a>VM 'yi yeniden oluşturma
 
-VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 8ea8376307807abff8227d82bb6de7956fa3de99
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664996"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088542"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Öğretici: Azure yay bulut uygulamasından Azure Işlevleri çağırmak için yönetilen bir kimlik kullanma
 
@@ -23,9 +23,9 @@ Hem Azure Işlevleri hem de uygulama hizmetleri Azure Active Directory (Azure AD
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
-* [Azure CLı sürüm 2.0.67 veya üstünü yükler](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Azure CLı sürüm 2.0.67 veya üstünü yükler](/cli/azure/install-azure-cli)
 * [Maven 3,0 veya üstünü yükler](https://maven.apache.org/download.cgi)
-* [Azure Functions Core Tools sürüm 3.0.2009 veya üstünü yükler](https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
+* [Azure Functions Core Tools sürüm 3.0.2009 veya üstünü yükler](../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)
 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
@@ -77,7 +77,7 @@ func init --worker-runtime node
 func new --template HttpTrigger --name HttpTrigger
 ```
 
-Varsayılan olarak Işlevler, HTTP uç noktalarını güvenli hale getirmek için anahtar tabanlı kimlik doğrulaması kullanır. Işlevlerine erişim sağlamak için Azure AD kimlik doğrulamasını etkinleştiriyoruz, bu [işlev kimlik doğrulama düzeyini anonim olarak ayarlamak](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger#secure-an-http-endpoint-in-production)istiyoruz.
+Varsayılan olarak Işlevler, HTTP uç noktalarını güvenli hale getirmek için anahtar tabanlı kimlik doğrulaması kullanır. Işlevlerine erişim sağlamak için Azure AD kimlik doğrulamasını etkinleştiriyoruz, bu [işlev kimlik doğrulama düzeyini anonim olarak ayarlamak](../azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)istiyoruz.
 
 ```json function.json
 {
@@ -124,7 +124,7 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="build-sample-spring-boot-app-to-invoke-the-function"></a>Işlevi çağırmak için örnek yay önyükleme uygulaması oluşturma
 
-Bu örnek, önce [MSI uç noktasından](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) bir erişim belirteci Isteyerek ve işlev http isteğinin kimliğini doğrulamak için bu belirteci kullanarak http tarafından tetiklenen işlevi çağıracaktır.
+Bu örnek, önce [MSI uç noktasından](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http) bir erişim belirteci Isteyerek ve işlev http isteğinin kimliğini doğrulamak için bu belirteci kullanarak http tarafından tetiklenen işlevi çağıracaktır.
 
 1. Örnek projeyi kopyalayın. 
 
@@ -173,6 +173,6 @@ Bu örnek, önce [MSI uç noktasından](https://docs.microsoft.com/azure/active-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
+* [Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi edinin](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [Hizmetten hizmete çağrılar için bir Daemon istemci uygulaması yapılandırma](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad#configure-a-daemon-client-application-for-service-to-service-calls)
+* [Hizmetten hizmete çağrılar için bir Daemon istemci uygulaması yapılandırma](../app-service/configure-authentication-provider-aad.md#configure-a-daemon-client-application-for-service-to-service-calls)

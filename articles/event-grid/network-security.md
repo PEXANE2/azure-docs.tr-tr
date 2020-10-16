@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
 ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326465"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
@@ -33,7 +33,7 @@ Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu te
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
 Azure Event Grid konularda ve etki alanlarında yayımlama için IP tabanlı erişim denetimlerini destekler. IP tabanlı denetimlerle, yayımcıları bir konu veya etki alanıyla yalnızca onaylanmış bir makine ve bulut hizmetleri kümesiyle sınırlayabilirsiniz. Bu özellik Event Grid tarafından desteklenen [kimlik doğrulama mekanizmalarını](security-authentication.md) tamamlar.
 
-Varsayılan olarak, konu ve etki alanına, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca BIR dizi IP adresı veya IP adresi aralığı ile sınırlayabilirsiniz. Başka herhangi bir IP adresinden kaynaklanan yayımcılar reddedilir ve 403 (yasak) yanıtı alacaktır.
+Varsayılan olarak, konu ve etki alanına, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IP adresı veya IP adresi aralığı kümesiyle daha fazla sınırlandırabilirsiniz. Başka herhangi bir IP adresinden kaynaklanan yayımcılar reddedilir ve 403 (yasak) yanıtı alacaktır.
 
 Konular ve etki alanları için IP güvenlik duvarını yapılandırmaya yönelik adım adım yönergeler için bkz. [IP güvenlik duvarını yapılandırma](configure-firewall.md).
 
@@ -83,10 +83,10 @@ Aşağıdaki tabloda özel uç nokta bağlantısının çeşitli durumları ve y
 
 | Bağlantı durumu   |  Başarıyla Yayımla (Evet/Hayır) |
 | ------------------ | -------------------------------|
-| Onaylandı           | Yes                            |
-| Reddedildi           | No                             |
-| Beklemede            | No                             |
-| Bağlantı kesildi       | No                             |
+| Onaylandı           | Evet                            |
+| Reddedildi           | Hayır                             |
+| Beklemede            | Hayır                             |
+| Bağlantı kesildi       | Hayır                             |
 
 Yayımlamanın başarılı olması için özel uç nokta bağlantı durumunun **onaylanması**gerekir. Bir bağlantı reddedilirse, Azure portal kullanılarak onaylanamaz. Tek olasılık, bağlantıyı silmek ve bunun yerine yeni bir tane oluşturmaktır.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/16/2020
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325496"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072790"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -65,7 +65,7 @@ Hizmet, bir birimin sağlanan boyutuna bağlı olarak maxfiles sınırını dina
 |    > 3 TiB ancak <= 4 TiB    |    80.000.000     |
 |    > 4 TiB                 |    100.000.000    |
 
-Bir birim için en az 4 TiB kotayı zaten ayırdıysanız, maxfiles limitini 100.000.000 ' den fazla artırmak için bir [destek isteği](#limit_increase) başlatabilirsiniz.
+Bir birim için en az 4 TiB kotayı zaten ayırdıysanız, maxfiles limitini 100.000.000 ' den fazla artırmak için bir [destek isteği](#limit_increase) başlatabilirsiniz. Artırmış olduğunuz her 100.000.000 dosya için (veya bir kesri), karşılık gelen birim kotasını 4 TiB ile artırmanız gerekir.  Örneğin, maxfiles limitini 100.000.000 dosyadan 200.000.000 dosya (veya aralarında herhangi bir sayı) olarak artırırsanız, birim kotasını 4 TiB 'den 8 TiB 'ye artırmanız gerekir.
 
 ## <a name="request-limit-increase"></a>İstek sınırı artışı <a name="limit_increase"></a> 
 

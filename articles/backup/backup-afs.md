@@ -4,10 +4,10 @@ description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yed
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890357"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme
@@ -21,7 +21,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 * Dosya paylaşma bölmesinden yedeklemeyi yapılandırma
 * Geri yükleme noktası oluşturmak için isteğe bağlı yedekleme işini çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure dosya paylaşma anlık görüntü tabanlı yedekleme çözümü hakkında [bilgi edinin](azure-file-share-backup-overview.md) .
 * Dosya paylaşımının [Desteklenen depolama hesabı türlerinden](azure-file-share-support-matrix.md)birinde bulunduğundan emin olun.
@@ -211,7 +211,7 @@ Bazen yedekleme ilkesinde zamanlanan saatlerin dışında bir yedekleme anlık g
 >[!NOTE]
 >Azure Backup, karşılık gelen hesaptaki herhangi bir dosya paylaşımının korumasını yapılandırırken depolama hesabını kilitler. Bu, yedeklenen dosya paylaşımlarına sahip bir depolama hesabının yanlışlıkla silinmesine karşı koruma sağlar.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 * Azure Backup tarafından oluşturulan anlık görüntüleri silmeyin. Anlık görüntülerin silinmesi, kurtarma noktalarının kaybolması ve/veya geri yükleme işlemlerinin başarısız olmasıyla sonuçlanabilir
 

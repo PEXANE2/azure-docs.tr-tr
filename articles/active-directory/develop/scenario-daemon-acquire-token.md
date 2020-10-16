@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119224"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran Daemon uygulaması-belirteç alma
@@ -202,7 +202,7 @@ Daha fazla bilgi için bkz. protokol belgeleri: [Microsoft Identity platform ve 
 
 ## <a name="application-token-cache"></a>Uygulama belirteci önbelleği
 
-MSAL.NET ' de, `AcquireTokenForClient` uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken*xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) `AcquireTokenSilent`Çağrısı yapmadan önce çağrı yapmayın `AcquireTokenForClient` , çünkü `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullanır. `AcquireTokenForClient`*uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
+MSAL.NET ' de, `AcquireTokenForClient` uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken*xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) `AcquireTokenSilent` Çağrısı yapmadan önce çağrı yapmayın `AcquireTokenForClient` , çünkü `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullanır. `AcquireTokenForClient`*uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

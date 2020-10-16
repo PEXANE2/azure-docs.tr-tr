@@ -14,10 +14,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
 ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620367"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL yönetilen örnek denetimi 'ni kullanmaya başlama
@@ -209,7 +209,7 @@ Yönetilen bir örnekten gelen denetim günlükleri Azure Event Hubs veya Azure 
 
 Blob denetim günlüklerini görüntülemek için kullanabileceğiniz çeşitli yöntemler vardır.
 
-- `sys.fn_get_audit_file`Denetim günlüğü verilerini tablosal biçiminde döndürmek için sistem işlevini (T-SQL) kullanın. Bu işlevi kullanma hakkında daha fazla bilgi için [sys. fn_get_audit_file belgelerine](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)bakın.
+- `sys.fn_get_audit_file`Denetim günlüğü verilerini tablosal biçiminde döndürmek için sistem işlevini (T-SQL) kullanın. Bu işlevi kullanma hakkında daha fazla bilgi için [sys.fn_get_audit_file belgelerine](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)bakın.
 
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi bir araç kullanarak denetim günlüklerini inceleyebilirsiniz. Azure depolama 'da denetim günlükleri, Denetim günlüklerini depolamak için tanımlanan bir kapsayıcı içinde blob dosyaları koleksiyonu olarak kaydedilir. Depolama klasörü, adlandırma kuralları ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [BLOB denetim günlüğü biçim başvurusu](https://go.microsoft.com/fwlink/?linkid=829599).
 

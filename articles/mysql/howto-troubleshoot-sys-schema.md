@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
 ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902770"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda performans ayarlama ve veritabanı bakımı için sys_schema kullanma
@@ -33,50 +33,50 @@ Sys_schema 52 görünüm vardır ve her görünüm aşağıdaki öneklerden biri
 
 ## <a name="performance-tuning"></a>Performans ayarlama
 
-### <a name="sysuser_summary_by_file_io"></a>*sys. user_summary_by_file_io*
+### <a name="sysuser_summary_by_file_io"></a>*sys.user_summary_by_file_io*
 
-GÇ, veritabanında en pahalı bir işlemdir. *Sys. user_summary_by_file_io* görünümünü SORGULAYARAK ortalama GÇ gecikme süresini bulabiliriz. Varsayılan 125 GB sağlanmış depolama alanı ile GÇ gecikme süresi yaklaşık 15 saniyedir.
+GÇ, veritabanında en pahalı bir işlemdir. *Sys.user_summary_by_file_io* görünümünü SORGULAYARAK ortalama GÇ gecikme süresini bulabiliriz. Varsayılan 125 GB sağlanmış depolama alanı ile GÇ gecikme süresi yaklaşık 15 saniyedir.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="GÇ gecikmesi: 125 GB":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="sys_schema görünümleri":::
 
 MySQL için Azure veritabanı, depolama 'ya göre GÇ 'yi ölçeklendirdikten sonra, sağlanan depolama alanını 1 TB olarak artırdıktan sonra, GÇ gecikmesi 571 MS olarak azalır.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="GÇ gecikmesi: 1TB":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="sys_schema görünümleri":::
 
-### <a name="sysschema_tables_with_full_table_scans"></a>*sys. schema_tables_with_full_table_scans*
+### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
-Dikkatli bir planlamaya rağmen çok sayıda sorgu yine de tam tablo taramasına neden olabilir. Dizinlerin türleri ve bunların nasıl iyileştirileceği hakkında ek bilgiler için, bu makaleye başvurabilirsiniz: [sorgu performansı sorunlarını giderme](./howto-troubleshoot-query-performance.md). Tam tablo taramaları Kaynak yoğunluklu ve veritabanı performanslarını düşürür. Tam tablo taraması olan tabloları bulmanın en hızlı yolu, *sys. schema_tables_with_full_table_scans* görünümünü sorgulamanızı sağlar.
+Dikkatli bir planlamaya rağmen çok sayıda sorgu yine de tam tablo taramasına neden olabilir. Dizinlerin türleri ve bunların nasıl iyileştirileceği hakkında ek bilgiler için, bu makaleye başvurabilirsiniz: [sorgu performansı sorunlarını giderme](./howto-troubleshoot-query-performance.md). Tam tablo taramaları Kaynak yoğunluklu ve veritabanı performanslarını düşürür. Tam tablo taraması olan tabloları bulmanın en hızlı yolu *sys.schema_tables_with_full_table_scans* görünümünü sorgulamanızı sağlar.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="tam tablo taramaları":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="sys_schema görünümleri":::
 
-### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
+### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
-Veritabanı performans sorunlarını gidermek için veritabanınızın içinde oluşan olayları belirlemek yararlı olabilir ve *sys. user_summary_by_statement_type* görünümünün kullanılması yalnızca eli olabilir.
+Veritabanı performans sorunlarını gidermek için veritabanınızın içinde oluşan olayları belirlemek yararlı olabilir ve *sys.user_summary_by_statement_type* görünümünün kullanılması yalnızca eli olabilir.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="deyime göre Özet":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="sys_schema görünümleri":::
 
 Bu örnekte, MySQL için Azure veritabanı, slog sorgu günlüğü 44579 kez temizlenme 53 dakika harcamıştır. Bu uzun süredir ve çok sayıda IOs. Yavaş sorgu günlüğliğinizi devre dışı bırakarak veya yavaş sorgu oturum açma Azure portal sıklığını azaltabilmeniz için bu etkinliği azaltabilirsiniz.
 
 ## <a name="database-maintenance"></a>Veritabanı Bakımı
 
-### <a name="sysinnodb_buffer_stats_by_table"></a>*sys. innodb_buffer_stats_by_table*
+### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
 
 [!IMPORTANT]
 > Bu görünümü sorgulamak performansı etkileyebilir. Bu sorun gidermeyi yoğun olmayan iş saatlerinde gerçekleştirmeniz önerilir.
 
-InnoDB arabellek havuzu bellekte bulunur ve DBMS ile depolama arasındaki ana önbellek mekanizmasıdır. InnoDB arabellek havuzunun boyutu performans katmanına bağlıdır ve farklı bir Ürün SKU 'SU seçilmediği takdirde değiştirilemez. İşletim Sisteminizdeki bellekte olduğu gibi, fresher verileri için yer açmak üzere eski sayfalar takas edilir. InnoDB arabellek havuzu belleğinin çoğunu hangi tabloların tükettiği hakkında bilgi edinmek için *sys. innodb_buffer_stats_by_table* görünümünde sorgulama yapabilirsiniz.
+InnoDB arabellek havuzu bellekte bulunur ve DBMS ile depolama arasındaki ana önbellek mekanizmasıdır. InnoDB arabellek havuzunun boyutu performans katmanına bağlıdır ve farklı bir Ürün SKU 'SU seçilmediği takdirde değiştirilemez. İşletim Sisteminizdeki bellekte olduğu gibi, fresher verileri için yer açmak üzere eski sayfalar takas edilir. Hangi tabloların en fazla InnoDB arabellek havuzu belleği tükettiği hakkında bilgi edinmek için *sys.innodb_buffer_stats_by_table* görünümünde sorgulama yapabilirsiniz.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="InnoDB arabellek durumu":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="sys_schema görünümleri":::
 
 Yukarıdaki grafikte, sistem tabloları ve görünümleri dışında, WordPress Sitelerimin birini barındıran mysqldatabase033 veritabanındaki her tablo, bellekteki verilerin 16 KB veya 1 sayfa üzerinde kapladığı şekilde görünür.
 
-### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys. schema_unused_indexes* & *sys. schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
 
-Dizinler, okuma performansını artırmaya yönelik harika araçlardır, ancak eklemeler ve depolama için ek maliyetler doğurur. *Sys. schema_unused_indexes* ve *sys. schema_redundant_indexes* , kullanılmayan veya yinelenen dizinler hakkında öngörüler sağlar.
+Dizinler, okuma performansını artırmaya yönelik harika araçlardır, ancak eklemeler ve depolama için ek maliyetler doğurur. *Sys.schema_unused_indexes* ve *sys.schema_redundant_indexes* , kullanılmayan veya yinelenen dizinler hakkında öngörüler sağlar.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="kullanılmayan dizinler":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="sys_schema görünümleri":::
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="Yedekli dizinler":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="sys_schema görünümleri":::
 
 ## <a name="conclusion"></a>Sonuç
 

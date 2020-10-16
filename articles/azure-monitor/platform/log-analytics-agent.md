@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
 ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310008"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
@@ -39,7 +39,7 @@ Log Analytics Aracısı için maliyet yoktur, ancak alınan veriler için ücret
 ## <a name="data-collected"></a>Toplanan veriler
 Aşağıdaki tabloda, tüm bağlı aracılardan toplanacak bir Log Analytics çalışma alanını yapılandırabileceğiniz veri türleri listelenmektedir. Diğer veri türlerini toplamak için Log Analytics aracısını kullanan Öngörüler, çözümler ve diğer çözümlerin listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../monitor-reference.md) .
 
-| Veri Kaynağı | Description |
+| Veri Kaynağı | Açıklama |
 | --- | --- |
 | [Windows olay günlükleri](data-sources-windows-events.md) | Windows olay günlüğü sistemine gönderilen bilgiler. |
 | [Syslog](data-sources-syslog.md)                     | Linux olay günlüğü sistemine gönderilen bilgiler. |
@@ -111,10 +111,10 @@ Aşağıdaki tabloda, Linux ve Windows aracılarının Azure Izleyici günlükle
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Yes |
-|*.azure-automation.net |Bağlantı noktası 443 |Outbound|Yes |
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Evet |
+|*.azure-automation.net |Bağlantı noktası 443 |Outbound|Evet |
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 

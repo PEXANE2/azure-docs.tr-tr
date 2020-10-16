@@ -1,5 +1,5 @@
 ---
-title: Oluşturma veya güncelleştirme işlemleri için çağrı koyma
+title: Oluşturma veya güncelleştirme işlemlerine yönelik PUT çağrıları
 description: İşlem kaynaklarında oluşturma veya güncelleştirme işlemleri için çağrılar koy
 author: mimckitt
 ms.author: mimckitt
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.date: 08/4/2020
 ms.custom: avverma
-ms.openlocfilehash: c57025346a9f623e3fe5536b36820ea62f355cc0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d6ee4179dce905d637e933743ade7452a2484077
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347497"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978569"
 ---
 # <a name="put-calls-for-creation-or-updates-on-compute-resources"></a>İşlem kaynaklarında oluşturma veya güncelleştirme için çağrılar koy
 
@@ -66,5 +66,4 @@ Bu, bir ilişkiyi kaldırma amacıyla bir kaynağa güncelleştirme işlemleri g
 `
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-[Sanal makineler](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) ve [Sanal Makine Ölçek Kümeleri](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate) için oluşturma veya güncelleştirme çağrıları hakkında daha fazla bilgi edinin
-
+[Sanal makineler](/rest/api/compute/virtualmachines/createorupdate) ve [Sanal Makine Ölçek Kümeleri](/rest/api/compute/virtualmachinescalesets/createorupdate) için oluşturma veya güncelleştirme çağrıları hakkında daha fazla bilgi edinin

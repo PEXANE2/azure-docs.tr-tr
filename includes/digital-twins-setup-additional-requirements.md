@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
 ms.openlocfilehash: c2668bdda5002ebd2a34b8a2ffa5885263aec0c9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009687"
 ---
 Kuruluşunuzun, bir uygulama kaydını başarıyla ayarlayabilmesi (ve bu nedenle, kullanılabilir bir Azure dijital TWINS örneği ayarlamayı tamamlaması) için abonelik sahipleri/yöneticileri 'nden ek eylemler gerektirmesi olasıdır. Gerekli adımlar kuruluşunuzun belirli ayarlarına bağlı olarak değişiklik gösterebilir.
@@ -20,7 +20,7 @@ Bir sahibin/yöneticinin gerçekleştirmesi gerekebilecek bazı yaygın etkinlik
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/grant-admin-consent.png" alt-text="API izinleri altında ' yönetici onayı verme ' düğmesinin Portal görünümü":::
   - Onay başarıyla verildiyse, Azure Digital TWINS girişi için giriş için verilen bir *durum* değeri gösterilir _ **(şirketiniz)** _
    
-    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/granted-admin-consent-done.png" alt-text="Şirket için API izinleri kapsamında verilen yönetici izninin Portal görünümü":::
+    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/granted-admin-consent-done.png" alt-text="API izinleri altında ' yönetici onayı verme ' düğmesinin Portal görünümü":::
 * Ortak istemci erişimini etkinleştir
 * Web ve masaüstü erişimi için belirli yanıt URL 'Lerini ayarlayın
 * Örtük OAuth2 kimlik doğrulama akışları için izin ver

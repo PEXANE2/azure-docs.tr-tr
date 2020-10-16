@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4fc8a0a4ea5063f52b6f9553018bddddd7bcf312
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadbc7e7831805c92fdc13982516f64cdf725dd8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974608"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963730"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
@@ -70,7 +70,7 @@ Aboneliğin tümüne bir güvenlik ilkesi oluşturmak için:
 
 ## <a name="view-vm-configuration-health"></a>Sanal makine yapılandırma durumunu görüntüleme
 
-Veri toplamayı açıp bir güvenlik ilkesi ayarlamanızın ardından Güvenlik Merkezi, uyarılar ve öneriler sağlamaya başlar. Sanal makineler dağıtılırken veri toplama aracısı yüklenir. Güvenlik Merkezi, yeni sanal makineler için verilerle doldurulur. Sanal makine yapılandırma durumu hakkında ayrıntılı bilgi için bkz. [Güvenlik Merkezinizdeki sanal makinelerinizi koruma](../../security-center/security-center-virtual-machine-protection.md). 
+Veri toplamayı açıp bir güvenlik ilkesi ayarlamanızın ardından Güvenlik Merkezi, uyarılar ve öneriler sağlamaya başlar. Sanal makineler dağıtılırken veri toplama aracısı yüklenir. Güvenlik Merkezi, yeni sanal makineler için verilerle doldurulur. Sanal makine yapılandırma durumu hakkında ayrıntılı bilgi için bkz. [Güvenlik Merkezinizdeki sanal makinelerinizi koruma](../../security-center/asset-inventory.md). 
 
 Veriler toplanırken, her bir sanal makine ve ilgili Azure kaynağı için kaynak durumu toplanır. Bilgiler, kolay okunur bir grafikte gösterilir. 
 

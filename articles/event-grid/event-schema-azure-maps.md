@@ -4,10 +4,10 @@ description: Azure Event Grid ile Azure Maps olayları için belirtilen özellik
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 4203bdf5222278b698d656835afebd9769557303
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461995"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Azure haritalar Event Grid kaynak olarak
@@ -100,7 +100,7 @@ Aşağıdaki örnek **GeofenceResult** için şemayı gösterir
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
@@ -113,23 +113,23 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | apiCategory | string | Etkinliğin API kategorisi. |
 | apiName | string | Etkinliğin API adı. |
 | sorunlar | object | İşlem sırasında karşılaşılan sorunları listeler. Herhangi bir sorun döndürülürse, yanıtla birlikte hiçbir geometriler döndürülmeyecektir. |
-| responseCode | sayı | HTTP yanıt kodu |
+| responseCode | number | HTTP yanıt kodu |
 | ileri | object | Koordinat konumunu içeren sınır geometrileri listeler veya konumun çevresindeki searchBuffer ile çakışıyor. |
 
 Maps API 'sinde bir hata oluştuğunda hata nesnesi döndürülür. Hata nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | error | ErrorDetails |Bu nesne, Haritalar API 'sinde bir hata oluştuğunda döndürülür  |
 
 Maps API 'sinde bir hata oluştuğunda ErrorDetails nesnesi döndürülür. ErrorDetails veya nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | kod | string | HTTP durum kodu. |
 | message | string | Kullanılabiliyorsa, hatanın okunabilir bir açıklaması. |
@@ -137,24 +137,24 @@ Maps API 'sinde bir hata oluştuğunda ErrorDetails nesnesi döndürülür. Erro
 
 Innererror, hatayla ilgili hizmete özel bilgileri içeren bir nesnedir. Innererror nesnesi aşağıdaki özelliklere sahiptir: 
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | kod | string | Hata iletisi. |
 
 Geometriler nesnesi, istekteki Kullanıcı saatine göre süresi geçen bölge sayısının geometri kimliklerini listeler. Geometriler nesnesi, aşağıdaki özelliklere sahip geometri öğelerine sahiptir: 
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 |:-------- |:---- |:----------- |
 | DeviceID | string | Cihazın KIMLIĞI. |
 | Uzaklık | string | <p>Koordinatlardan bölge alanının en yakın kenarlığına olan uzaklık. Pozitif, koordinat bölge sayısının dışında olduğu anlamına gelir. Koordinat Bölge sınırının dışında, ancak en yakın bölge genişliğinden daha fazla searchBuffer değeri varsa, değer 999 ' dir. Negatif, koordinat bölge sayısının içinde olduğu anlamına gelir. Koordinat Çokgen içindeyse, ancak en yakın bölge sınırlaması kenarından daha fazla searchBuffer değerinden fazla olursa değer-999 olur. 999 değeri, koordinat bölge alanının dışında iyi bir güvenilirlik olduğu anlamına gelir. -999 değeri, koordinatın bölge kapsamında iyi olduğu anlamına gelir.<p> |
 | geometryıd |string | Benzersiz kimlik, bölge sınırı geometrisini tanımlar. |
-| nearestlat | sayı | En yakın geometri noktası enlem. |
-| nearestlon | sayı | Geometri 'nın en yakın noktasının boylam. |
+| nearestlat | number | En yakın geometri noktası enlem. |
+| nearestlon | number | Geometri 'nın en yakın noktasının boylam. |
 | UDID | string | Bölge, karşıya yüklenirken Kullanıcı karşıya yükleme hizmetinden döndürülen benzersiz kimlik. , Bölge sınırlaması Post API 'sine dahil edilmez. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | String [] | İstekteki Kullanıcı saatine göre süresi dolmak üzere olan bölge sınırı 'ın geometri kimliği listesi. |
 | ileri | geometriler [] |Koordinat konumunu içeren sınır geometrileri listeler veya konumun çevresindeki searchBuffer ile çakışıyor. |

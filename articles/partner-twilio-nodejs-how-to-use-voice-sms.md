@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: c4b1c506ff0e78e5e304ceb1682c73f9cd784c95
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080550"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Azure 'da Voice, VoIP ve SMS mesajlaşması için Twilio kullanma
@@ -235,7 +235,7 @@ Artık iletişim kuran uygulamalar oluşturmak için node.js ve Twilio kullanman
 * [Resmi modül belgeleri][docs]
 * [node.js uygulamalarla VoIP hakkında öğretici][voipnode]
 * [Votr-node.js ve Couşdb (üç bölümden oluşan) ile gerçek zamanlı SMS oylama uygulaması][votr]
-* [node.jsile tarayıcıda programlama eşleştirin][pair]
+* [node.jsile tarayıcıda programlama eşleştirin ][pair]
 
 Azure 'da node.js ve Twilio 'u çok sevtireceğiz!
 

@@ -15,15 +15,15 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921160"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS ile Azure CDN kullanma
 ## <a name="what-is-cors"></a>CORS nedir?
-CORS (Cross-Origin kaynak paylaşımı), bir etki alanı altında çalışan bir Web uygulamasının başka bir etki alanındaki kaynaklara erişmesine olanak tanıyan bir HTTP özelliğidir. Siteler arası komut dosyası saldırıları olasılığını azaltmak için, tüm modern web tarayıcıları [aynı kaynak ilkesi](https://www.w3.org/Security/wiki/Same_Origin_Policy)olarak bilinen bir güvenlik kısıtlaması uygular.  Bu, bir Web sayfasının farklı bir etki alanındaki API 'Leri aramasını engeller.  CORS, farklı bir kaynaktan API 'Leri çağırmak için bir kaynağa (kaynak etki alanı) izin vermek için güvenli bir yol sağlar.
+CORS (Çıkış Noktaları Arası Kaynak Paylaşımı), bir etki alanında çalışan web uygulamasının başka bir etki alanındaki kaynaklara erişmesini sağlayan bir HTTP özelliğidir. Siteler arası komut dosyası saldırıları olasılığını azaltmak için, tüm modern web tarayıcıları [aynı kaynak ilkesi](https://www.w3.org/Security/wiki/Same_Origin_Policy)olarak bilinen bir güvenlik kısıtlaması uygular.  Bu, bir Web sayfasının farklı bir etki alanındaki API 'Leri aramasını engeller.  CORS, farklı bir kaynaktan API 'Leri çağırmak için bir kaynağa (kaynak etki alanı) izin vermek için güvenli bir yol sağlar.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 İki tür CORS isteği, *basit istekler* ve *karmaşık istekler vardır.*

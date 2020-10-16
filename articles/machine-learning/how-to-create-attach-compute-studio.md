@@ -12,10 +12,10 @@ ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708404"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da model eğitimi ve dağıtımı için işlem hedefleri oluşturma
@@ -30,7 +30,7 @@ Bu makalede, Azure Machine Studio 'da işlem hedefleri oluşturmayı ve yönetme
 * Azure Machine Learning için [vs Code uzantısı](how-to-manage-resources-vscode.md#compute-clusters) .
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -132,7 +132,7 @@ Büyük ölçekli ikinci kullanım için bir Azure Kubernetes hizmeti (AKS) küm
 |---------|---------|
 |İşlem adı     |  <li>Ad gereklidir. Ad, 2 ila 16 karakter arasında olmalıdır. </li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve  **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
 |Kubernetes Hizmeti | **Yeni oluştur** ' u seçin ve formun geri kalanını doldurun.  Veya **var olanı kullan** ' ı seçin ve ardından aboneliğinizden mevcut bir aks kümesi seçin.
-|Region |  Kümenin oluşturulacağı bölgeyi seçin |
+|Bölge |  Kümenin oluşturulacağı bölgeyi seçin |
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |Küme amacı  | **Üretim** veya **geliştirme testi** seçin |
 |Düğüm sayısı | Sanal makinenin çekirdek sayısıyla (vCPU 'Lar) çarpıldığı düğüm sayısı 12 ' den büyük veya buna eşit olmalıdır. |

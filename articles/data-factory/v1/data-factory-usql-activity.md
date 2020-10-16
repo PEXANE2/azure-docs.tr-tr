@@ -14,10 +14,10 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322624"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics'te U-SQL betiklerini çalıştırarak verileri dönüştürme 
@@ -48,9 +48,9 @@ Aşağıdaki tabloda JSON tanımında kullanılan genel özellikler için açık
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Type özelliği: **AzureDataLakeAnalytics**olarak ayarlanmalıdır. |Yes |
-| **Adı** |Azure Data Lake Analytics hesap adı. |Yes |
-| **Datalakeanaliz Ticsurı** |Azure Data Lake Analytics URI 'SI. |No |
+| **türüyle** |Type özelliği: **AzureDataLakeAnalytics**olarak ayarlanmalıdır. |Evet |
+| **Adı** |Azure Data Lake Analytics hesap adı. |Evet |
+| **Datalakeanaliz Ticsurı** |Azure Data Lake Analytics URI 'SI. |Hayır |
 | **SubscriptionID** |Azure abonelik kimliği |Hayır (belirtilmemişse, Veri Fabrikası aboneliği kullanılır). |
 | **resourceGroupName** |Azure kaynak grubu adı |Hayır (belirtilmemişse, veri fabrikasının kaynak grubu kullanılır). |
 
@@ -64,9 +64,9 @@ Aşağıdaki özellikleri belirterek hizmet sorumlusu kimlik doğrulamasını ku
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **Serviceprincipalıd** | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
-| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin. | Yes |
-| **tenant** | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Yes |
+| **Serviceprincipalıd** | Uygulamanın istemci KIMLIĞINI belirtin. | Evet |
+| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin. | Evet |
+| **tenant** | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet |
 
 **Örnek: hizmet sorumlusu kimlik doğrulaması**
 ```json
@@ -92,8 +92,8 @@ Alternatif olarak, aşağıdaki özellikleri belirterek Data Lake Analytics içi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **yetkisi** | Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıklayın ve bu özelliğe otomatik olarak oluşturulan yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Yes |
-| **Kimliği** | OAuth yetkilendirme oturumundan gelen OAuth oturum KIMLIĞI. Her oturum KIMLIĞI benzersizdir ve yalnızca bir kez kullanılabilir. Bu ayar Data Factory düzenleyicisini kullandığınızda otomatik olarak üretilir. | Yes |
+| **yetkisi** | Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıklayın ve bu özelliğe otomatik olarak oluşturulan yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Evet |
+| **Kimliği** | OAuth yetkilendirme oturumundan gelen OAuth oturum KIMLIĞI. Her oturum KIMLIĞI benzersizdir ve yalnızca bir kez kullanılabilir. Bu ayar Data Factory düzenleyicisini kullandığınızda otomatik olarak üretilir. | Evet |
 
 **Örnek: Kullanıcı kimlik bilgisi kimlik doğrulaması**
 ```json
@@ -208,16 +208,16 @@ Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamala
 
 | Özellik            | Açıklama                              | Gerekli                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| tür                | Type özelliği **Datalakeanalticsu-SQL**olarak ayarlanmalıdır. | Yes                                      |
-| linkedServiceName   | Data Factory bağlı hizmet olarak kaydedilen Azure Data Lake Analytics başvurusu | Yes                                      |
+| tür                | Type özelliği **Datalakeanalticsu-SQL**olarak ayarlanmalıdır. | Evet                                      |
+| linkedServiceName   | Data Factory bağlı hizmet olarak kaydedilen Azure Data Lake Analytics başvurusu | Evet                                      |
 | scriptPath          | U-SQL betiğini içeren klasörün yolu. Dosyanın adı büyük/küçük harfe duyarlıdır. | Hayır (komut dosyası kullanıyorsanız)                   |
 | scriptLinkedService | Betiği içeren depolamayı Data Factory 'ye bağlayan bağlantılı hizmet | Hayır (komut dosyası kullanıyorsanız)                   |
 | betik              | ScriptPath ve scriptLinkedService belirtmek yerine satır içi betiği belirtin. Örneğin: `"script": "CREATE DATABASE test"`. | Hayır (scriptPath ve scriptLinkedService kullanıyorsanız) |
-| Analyticsunits | İşi çalıştırmak için eşzamanlı olarak kullanılan en fazla düğüm sayısı. | No                                       |
-| Priority            | Önce kuyruğa alınan tüm işlerin ne kadar önce çalıştırılacağını belirler. Sayı ne kadar düşükse öncelik o kadar yüksektir. | No                                       |
-| parameters          | U-SQL betiği için parametreler          | No                                       |
-| runtimeVersion      | Kullanılacak U-SQL altyapısının çalışma zamanı sürümü | No                                       |
-| compilationMode     | <p>U-SQL derleme modu. Şu değerlerden biri olmalıdır:</p> <ul><li>**Anlam:** Yalnızca anlam denetimleri ve gerekli sağlamlık denetimleri gerçekleştirin.</li><li>**Tam:** Sözdizimi denetimi, iyileştirme, kod oluşturma vb. dahil olmak üzere tam derlemeyi gerçekleştirin.</li><li>**Tekbox:** Tam derlemeyi, TargetType ayarını SingleBox ile birlikte gerçekleştirin.</li></ul><p>Bu özellik için bir değer belirtmezseniz, sunucu en uygun derleme modunu belirler. </p> | No                                       |
+| Analyticsunits | İşi çalıştırmak için eşzamanlı olarak kullanılan en fazla düğüm sayısı. | Hayır                                       |
+| Priority            | Önce kuyruğa alınan tüm işlerin ne kadar önce çalıştırılacağını belirler. Sayı ne kadar düşükse öncelik o kadar yüksektir. | Hayır                                       |
+| parameters          | U-SQL betiği için parametreler          | Hayır                                       |
+| runtimeVersion      | Kullanılacak U-SQL altyapısının çalışma zamanı sürümü | Hayır                                       |
+| compilationMode     | <p>U-SQL derleme modu. Şu değerlerden biri olmalıdır:</p> <ul><li>**Anlam:** Yalnızca anlam denetimleri ve gerekli sağlamlık denetimleri gerçekleştirin.</li><li>**Tam:** Sözdizimi denetimi, iyileştirme, kod oluşturma vb. dahil olmak üzere tam derlemeyi gerçekleştirin.</li><li>**Tekbox:** Tam derlemeyi, TargetType ayarını SingleBox ile birlikte gerçekleştirin.</li></ul><p>Bu özellik için bir değer belirtmezseniz, sunucu en uygun derleme modunu belirler. </p> | Hayır                                       |
 
 Betik tanımı için [SearchLogProcessing.txt betik tanımına](#sample-u-sql-script) bakın. 
 

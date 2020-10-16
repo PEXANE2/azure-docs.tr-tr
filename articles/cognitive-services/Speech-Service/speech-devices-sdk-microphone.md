@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
 ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232534"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Konuşma cihazları SDK 'Sı dizi önerileri
@@ -30,7 +30,7 @@ Aşağıdaki dizi geometrileri, Microsoft ses yığını ile kullanım için ön
 | Mik& geometrisi | Dairesel dizi | Dairesel dizi | Doğrusal dizi | Doğrusal dizi |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
-| \#Akademik | 7 | 4 | 4 | 2 |
+| \# Akademik | 7 | 4 | 4 | 2 |
 | Geometri | 6 dış, 1 orta, yarıçap = 42,5 mm, eşit aralıklı | 3 dış, 1 orta, yarıçap = 42,5 mm, eşit aralıklı | Uzunluk = 120 mm, Aralık = 40 mm | Aralık = 40 mm |
 
 Mikrofon kanalları, yukarıdaki her dizi için gösterilen numaralandırmaya göre sıralanmalıdır, 0 ' dan artış yapılır. Microsoft ses yığını, yankı iptali gerçekleştirmek için ek bir ses kayıttan yürütme akışı gerektirir.
@@ -62,7 +62,7 @@ Bir cihazla tümleşik hale geldiğinde Microphone dizisinin performansı, bile�
 
 | Parametre          | Önerilen                                        |
 | ------------------ | -------------------------------------------------- |
-| SNR                | \>63 dB (1 kHz sinyal 94 dBSPL, A-ağırlıklı gürültü) |
+| SNR                | \> 63 dB (1 kHz sinyal 94 dBSPL, A-ağırlıklı gürültü) |
 | Çıkış duyarlılığı | -26 dBFS/PA @ 1 kHz (önerilir)                  |
 | Genlik eşleştirme | ± 2 dB, 200-8000 Hz                                |
 | % D\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5 sipariş             |
@@ -81,7 +81,7 @@ Hoparlör içeren konuşma tanıma cihazları için yankı iptali gerekli olduğ
 | Doğrus konuları | Konuşmacı başvurusundan sonra doğrusal olmayan işlem yapılmaz, aksi takdirde donanım tabanlı geri döngü başvuru akışı gerekir |
 | Konuşmacı geri döngüsü | WASAPı, özel API 'Ler, özel ALSA eklentisi (Linux) veya bellenim kanalı aracılığıyla temin edilmiştir |
 | % D | 3. Octave bantları minimum 5 sipariş, 70 dBA kayıttan yürütme @ 0,8 5 ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
-| Yankı bağlantısı-mikrofonlar | \>-10 dB TCLw, ITU-T G. 122.368 ek B. 4 metodunu kullanarak, MIC düzeyinde normalleştirilmiş<br />TCLw = Tclwölçülen \+ (ölçülen düzey-hedef çıkış duyarlılığı)<br />TCLw = Tclwölçülen \+ (ölçülen düzey-(-26)) |
+| Yankı bağlantısı-mikrofonlar | \> -10 dB TCLw, ITU-T G. 122.368 ek B. 4 metodunu kullanarak, MIC düzeyinde normalleştirilmiş<br />TCLw = Tclwölçülen \+ (ölçülen düzey-hedef çıkış duyarlılığı)<br />TCLw = Tclwölçülen \+ (ölçülen düzey-(-26)) |
 
 ## <a name="integration-design-architecture"></a>Tümleştirme tasarım mimarisi
 

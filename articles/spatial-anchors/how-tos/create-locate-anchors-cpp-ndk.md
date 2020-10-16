@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9592de0bfb53d0ba3f37cf3d34c6cd7ce3d4d65d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 445528b7d4f8d0b50270dfd775f6453252396f4c
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74270273"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097550"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>C++ ' da Azure uzamsal bağlayıcılarını kullanarak bağlayıcıları oluşturma ve bulma/N/NDK
 
@@ -43,7 +43,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-[CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession) yapısı hakkında daha fazla bilgi edinin.
+[CloudSpatialAnchorSession](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession) yapısı hakkında daha fazla bilgi edinin.
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchorSession> cloudSession_;
@@ -53,7 +53,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-[Sessionconfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionconfiguration) yapısı hakkında daha fazla bilgi edinin.
+[Sessionconfiguration](/cpp/api/spatial-anchors/ndk/sessionconfiguration) yapısı hakkında daha fazla bilgi edinin.
 
 ```cpp
     auto configuration = cloudSession_->Configuration();
@@ -69,7 +69,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-[Tokenrequireddelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/tokenrequireddelegate) temsilcisi hakkında daha fazla bilgi edinin.
+[Tokenrequireddelegate](/cpp/api/spatial-anchors/ndk/tokenrequireddelegate) temsilcisi hakkında daha fazla bilgi edinin.
 
 ```cpp
     auto accessTokenRequiredToken = cloudSession_->TokenRequired([](auto&&, auto&& args) {
@@ -118,7 +118,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-[Başlangıç](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#start) yöntemi hakkında daha fazla bilgi edinin.
+[Başlangıç](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#start) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     cloudSession_->Session(ar_session_);
@@ -127,7 +127,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-[Processframe](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#processframe) yöntemi hakkında daha fazla bilgi edinin.
+[Processframe](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#processframe) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     cloudSession_->ProcessFrame(ar_frame_);
@@ -135,7 +135,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-[Sessionupdateddelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionupdateddelegate) temsilcisi hakkında daha fazla bilgi edinin.
+[Sessionupdateddelegate](/cpp/api/spatial-anchors/ndk/sessionupdateddelegate) temsilcisi hakkında daha fazla bilgi edinin.
 
 ```cpp
     auto sessionUpdatedToken = cloudSession_->SessionUpdated([this](auto&&, auto&& args) {
@@ -151,7 +151,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-[CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor) yapısı hakkında daha fazla bilgi edinin.
+[CloudSpatialAnchor](/cpp/api/spatial-anchors/ndk/cloudspatialanchor) yapısı hakkında daha fazla bilgi edinin.
 
 ```cpp
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -203,7 +203,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-[Getsessionstatusasync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getsessionstatusasync) yöntemi hakkında daha fazla bilgi edinin.
+[Getsessionstatusasync](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getsessionstatusasync) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     cloudSession_->GetSessionStatusAsync([this](Status status, const std::shared_ptr<SessionStatus>& value) {
@@ -220,7 +220,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-[Appproperties](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#appproperties) metodu hakkında daha fazla bilgi edinin.
+[Appproperties](/cpp/api/spatial-anchors/ndk/cloudspatialanchor#appproperties) metodu hakkında daha fazla bilgi edinin.
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchor> cloudAnchor = std::make_shared<CloudSpatialAnchor>();
@@ -235,7 +235,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-[UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#updateanchorpropertiesasync) yöntemi hakkında daha fazla bilgi edinin.
+[UpdateAnchorPropertiesAsync](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#updateanchorpropertiesasync) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchor> anchor = /* locate your anchor */;
@@ -252,7 +252,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-[GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getanchorpropertiesasync) yöntemi hakkında daha fazla bilgi edinin.
+[GetAnchorPropertiesAsync](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getanchorpropertiesasync) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     cloudSession_->GetAnchorPropertiesAsync(R"(anchorId)", [this](Status status, const std::shared_ptr<CloudSpatialAnchor>& anchor) {
@@ -274,7 +274,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-[Süre sonu](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) yöntemi hakkında daha fazla bilgi edinin.
+[Süre sonu](/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
@@ -285,7 +285,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-[Createizleyici](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher) yöntemi hakkında daha fazla bilgi edinin.
+[Createizleyici](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     auto criteria = std::make_shared<AnchorLocateCriteria>();
@@ -295,7 +295,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-[Anchorkonumlandırılan](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/anchorlocateddelegate) temsilci hakkında daha fazla bilgi edinin.
+[Anchorkonumlandırılan](/cpp/api/spatial-anchors/ndk/anchorlocateddelegate) temsilci hakkında daha fazla bilgi edinin.
 
 ```cpp
     auto anchorLocatedToken = cloudSession_->AnchorLocated([this](auto&&, auto&& args) {
@@ -323,7 +323,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-[Deleteanchorasync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#deleteanchorasync) yöntemi hakkında daha fazla bilgi edinin.
+[Deleteanchorasync](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#deleteanchorasync) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     cloudSession_->DeleteAnchorAsync(cloudAnchor, [this](Status status) {
@@ -333,7 +333,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-[Stop](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop) yöntemi hakkında daha fazla bilgi edinin.
+[Stop](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     cloudSession_->Stop();
@@ -341,7 +341,7 @@ Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-[Reset](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) yöntemi hakkında daha fazla bilgi edinin.
+[Reset](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     cloudSession_->Reset();

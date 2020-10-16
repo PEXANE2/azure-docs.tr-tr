@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743616"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>İşi tetiklemek için Azure Otomasyonu'nu kullanma
@@ -22,7 +22,7 @@ Bu makalede, StorSimple cihaz verilerini dönüştürmek için StorSimple Veri Y
  
 Bu makalede, bir Azure Otomasyonu runbook 'u oluşturma ve ardından bir veri dönüştürme işi başlatmak için kullanma hakkında bilgi yer alabilir. .NET SDK aracılığıyla veri dönüştürmeyi başlatma hakkında daha fazla bilgi edinmek için [.NET SDK kullanma bölümüne giderek veri dönüştürme işlerini tetikleyin](storsimple-data-manager-dotnet-jobs.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 

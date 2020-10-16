@@ -11,10 +11,10 @@ ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326822"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
@@ -197,16 +197,16 @@ NSString* value =
 
 ## <a name="customer-lockbox"></a>Müşteri Kasası
 
-[Microsoft Azure için müşteri kasası](../security/fundamentals/customer-lockbox-overview.md) , müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması için bir arabirim sağlar. Bir Microsoft mühendisinin bir destek isteği sırasında müşteri verilerine erişmesi gereken durumlarda kullanılır. Müşteri Kasası isteklerinin nasıl başlatıldığı, izlendiği ve daha sonraki incelemeler ve denetimleri için depolandığı hakkında daha fazla bilgi için bkz. [müşteri kasası](../security/fundamentals/customer-lockbox-overview.md). 
+[Microsoft Azure için müşteri kasası](../security/fundamentals/customer-lockbox-overview.md) , müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması için bir arabirim sağlar. Bu arabirim Microsoft mühendisinin destek isteği sırasında müşterinin verilerine erişmesi gerektiğinde kullanılır. Müşteri Kasası isteklerinin nasıl başlatıldığı, izlendiği ve daha sonraki incelemeler ve denetimleri için depolandığı hakkında daha fazla bilgi için bkz. [müşteri kasası](../security/fundamentals/customer-lockbox-overview.md). 
 
 Bu bilişsel hizmet için Müşteri Kasası kullanılabilir:
 
-* Translator
+* Çevirmen
 
 Aşağıdaki hizmetler için, Microsoft mühendisleri E0 katmanındaki herhangi bir müşteri verilerine erişmeyecektir: 
 
 * Language Understanding
-* Yüz Tanıma
+* Yüz
 * Content Moderator
 * Kişiselleştirme
 

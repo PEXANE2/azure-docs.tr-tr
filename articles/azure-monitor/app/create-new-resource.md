@@ -4,10 +4,10 @@ description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323137"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
@@ -103,7 +103,7 @@ Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle
  az extension add -n application-insights
 ```
 
-Komutu çalıştırmazsanız `az extension add` , şu durumlarda bir hata iletisi görürsünüz:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Komutu çalıştırmazsanız `az extension add` , şu durumlarda bir hata iletisi görürsünüz: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Artık Application Insights kaynağınız oluşturmak için aşağıdakileri çalıştırabilirsiniz:
 

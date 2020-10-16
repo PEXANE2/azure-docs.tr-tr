@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577654"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042975"
 ---
-# <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT Tak ve Kullan cihazlarını onaylama
+# <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT Tak Çalıştır cihazlarına sertifika verme
 
-IoT Tak ve Kullan cihaz Sertifikası programı, bir cihazın IoT Tak ve Kullan sertifika gereksinimlerini karşılayıp karşılamadığını denetlemek için araçlar içerir. Bu araçlar, kuruluşların IoT Tak ve Kullan cihazlarının kullanılabilirliğini de kullanmalarına yardımcı olur. Bu sertifikalı cihazlar IoT çözümleri için tasarlanmıştır ve pazara ulaşma süresini azaltmaya yardımcı olur.
+IoT Tak Çalıştır cihazı sertifika programı, cihazın IoT Tak Çalıştır sertifika gereksinimlerini karşılayıp karşılamadığını denetlemeye yönelik araçlar içerir. Bu araçlar, kuruluşların IoT Tak ve Kullan cihazlarının kullanılabilirliğini de kullanmalarına yardımcı olur. Bu sertifikalı cihazlar IoT çözümleri için tasarlanmıştır ve pazara ulaşma süresini azaltmaya yardımcı olur.
 
 Bu makale, şunları nasıl yapacağınızı gösterir:
 
@@ -45,15 +45,15 @@ Sertifika gereksinimlerini karşılamak için cihazınızın şunları yapmanız
 - DPS sağlama yükünde, [DPS kaydı](concepts-developer-guide-device-csharp.md#dps-payload) SıRASıNDA model kimliğini gönderin.
 - [MQTT bağlantısı](concepts-developer-guide-device-csharp.md#model-id-announcement)SıRASıNDA model kimliğini duyurur.
 
-## <a name="test-with-the-azure-iot-extension-cli"></a>Azure IoT uzantısı CLı ile test etme
+## <a name="test-with-the-azure-iot-extension-cli"></a>Azure IoT Uzantısı CLI ile test etme
 
-[Azure ıOT CLI uzantısı](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true) , cihazı Azure Sertifikalı cihaz portalı aracılığıyla sertifika için göndermeden önce cihaz uygulamasının modelle eşleştiğini doğrulamanızı sağlar.
+[Azure ıOT CLI uzantısı](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) , cihazı Azure Sertifikalı cihaz portalı aracılığıyla sertifika için göndermeden önce cihaz uygulamasının modelle eşleştiğini doğrulamanızı sağlar.
 
 Aşağıdaki adımlarda, CLı kullanarak sertifika testlerinin nasıl hazırlanacağı ve çalıştırılacağı gösterilmektedir:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükler
 
-Ortamınızdaki [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) 'yı ayarlamak için yükleme yönergelerine bakın.
+Ortamınızdaki [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) 'yı ayarlamak için yükleme yönergelerine bakın.
 
 Azure IoT uzantısını yüklemek için şu komutu çalıştırın:
 
@@ -61,7 +61,7 @@ Azure IoT uzantısını yüklemek için şu komutu çalıştırın:
 az extension add --name azure-iot
 ```
 
-Daha fazla bilgi için bkz. [Azure IoT Için Azure CLI](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true).
+Daha fazla bilgi için bkz. [Azure IoT Için Azure CLI](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest).
 
 ### <a name="create-a-new-product-test"></a>Yeni bir ürün testi oluşturun
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> CLı kullandığınızda aboneliğinizde [oturum açmanız](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) gerekir.
+> CLı kullandığınızda aboneliğinizde [oturum açmanız](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) gerekir.
 
 Komuttan gelen JSON çıktısı, `primaryKey` `registrationId` cihazınızı bağladığınızda kullanılacak, ve öğesini içerir `scopeID` .
 
@@ -162,7 +162,7 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
             },
 ```
 
-## <a name="test-using-the-azure-certified-device-portal"></a>Azure Sertifikalı cihaz portalını kullanarak test etme
+## <a name="test-using-the-azure-certified-device-portal"></a>Azure Sertifikalı Cihaz portalını kullanarak test etme
 
 Aşağıdaki adımlarda, [Azure Sertifikalı cihaz portalı](https://aka.ms/acdp) 'nı eklemek, ürün ayrıntılarını kaydetmek, Başlangıç Kılavuzu göndermek ve sertifika testlerini çalıştırmak için nasıl kullanılacağı gösterilmektedir.
 

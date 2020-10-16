@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Projenizin Azure Dev Spaces çalışma ile nasıl hazırlanıldığını açıklar
 keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213422"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968166"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projeyi Azure Dev Spaces için hazırlama
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces, Kubernetes uygulamalarının hızla yinelenemez ve hata ayıklamanın yanı sıra Azure Kubernetes hizmeti (AKS) kümesinde ekibinizle işbirliği yapmak için birden çok yol sağlar. Geliştirme alanları, projeniz için Dockerfiles ve Help grafikleri oluşturabilir. Dev Spaces Ayrıca AKS 'te Kubernetes uygulamalarınızı dağıtmak, çalıştırmak ve hata ayıklamak için bir yapılandırma dosyası oluşturur ve kullanır. Bu dosyaların tümü uygulamanızın koduyla birlikte bulunur ve sürüm denetim sisteminize eklenebilir.
 

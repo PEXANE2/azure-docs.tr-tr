@@ -12,10 +12,10 @@ ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84759938"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Uygulama Ara Sunucusu CORS sorunlarını anlama ve çözme
@@ -116,5 +116,5 @@ Uygulamanızın kimlik doğrulaması için *login.microsoftonline.com* 'e yenide
 
 ## <a name="see-also"></a>Ayrıca bkz.
 - [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md) 
-- [Azure AD Uygulama Ara Sunucusu dağıtımı planlayın](application-proxy-deployment-plan.md) 
+- [Azure AD Uygulama Ara Sunucusu dağıtımı planlama](application-proxy-deployment-plan.md) 
 - [Azure Active Directory Uygulama Ara Sunucusu aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md) 

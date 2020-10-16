@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86201800"
 ---
 # <a name="how-caching-works"></a>Önbelleğe alma nasıl işler?
@@ -60,7 +60,7 @@ Bir kaynağın eski olduğu kabul edildiğinde, kaynak sunucunun onu doğrulamas
 
 Önbelleğe almanın bir Web tarayıcısında uygulanma biçimine benzer şekilde, Cache-Directive üst bilgilerini göndererek bir CDN 'de önbelleğe almanın nasıl gerçekleştirileceğini denetleyebilirsiniz. Cache-Directive üstbilgileri, genellikle kaynak sunucu tarafından eklenen HTTP başlıklardır. Bu üstbilgilerin çoğu başlangıçta istemci tarayıcılarındaki önbelleğe alma için tasarlansa da, bunlar artık CDNs gibi tüm ara önbellekler tarafından da kullanılmaktadır. 
 
-Önbellek yeniliği tanımlamak için iki üst bilgi kullanılabilir: `Cache-Control` ve `Expires` . `Cache-Control`daha güncel olur ve `Expires` her ikisi de varsa önceliklidir. Ayrıca, doğrulama için kullanılan iki tür üstbilgi vardır (doğrulayıcılar adı verilir): `ETag` ve `Last-Modified` . `ETag``Last-Modified`, her ikisi de tanımlıysa daha güncel ve önceliklidir.  
+Önbellek yeniliği tanımlamak için iki üst bilgi kullanılabilir: `Cache-Control` ve `Expires` . `Cache-Control` daha güncel olur ve `Expires` her ikisi de varsa önceliklidir. Ayrıca, doğrulama için kullanılan iki tür üstbilgi vardır (doğrulayıcılar adı verilir): `ETag` ve `Last-Modified` . `ETag``Last-Modified`, her ikisi de tanımlıysa daha güncel ve önceliklidir.  
 
 ## <a name="cache-directive-headers"></a>Cache-Directive üstbilgileri
 
@@ -90,7 +90,7 @@ Azure CDN, önbellek süresini ve önbellek paylaşımını tanımlayan aşağı
    - Varsayılan olarak Azure CDN tarafından kabul edilmez.
    - HTTP 1,0 ' de sunulan eski üst bilgi; geriye dönük uyumluluk için desteklenir.
    - Şu yönergeyle istemci isteği üst bilgisi olarak kullanılır: `no-cache` . Bu yönerge, sunucuya kaynağın yeni bir sürümünü sunmasını söyler.
-   - `Pragma: no-cache`değerine eşdeğerdir `Cache-Control: no-cache` .
+   - `Pragma: no-cache`, `Cache-Control: no-cache` ile eşdeğerdir.
 
 ## <a name="validators"></a>Metninin
 
@@ -98,7 +98,7 @@ Azure CDN, önbellek süresini ve önbellek paylaşımını tanımlayan aşağı
 
 **Özelliği**
 - **Verizon ' dan Standart/Premium Azure CDN** `ETag` Varsayılan olarak destekler, **Microsoft 'Tan Azure CDN standard** ve **Akamai 'den Azure CDN Standart** .
-- `ETag`bir dosyanın her bir dosyası ve sürümü için benzersiz olan bir dize tanımlar. Örneğin, `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
+- `ETag` bir dosyanın her bir dosyası ve sürümü için benzersiz olan bir dize tanımlar. Örneğin, `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - HTTP 1,1 ' de kullanıma sunulmuştur ve ' den daha güncel `Last-Modified` . Son değiştirme tarihi saptanmaları zor olduğunda faydalıdır.
 - Hem güçlü doğrulamayı hem de zayıf doğrulamayı destekler; Ancak, Azure CDN yalnızca güçlü doğrulamayı destekler. Güçlü doğrulama için iki kaynak temsili, bayt için bayt özdeş olmalıdır. 
 - Önbellek `ETag` `If-None-Match` , istekte bir veya daha fazla doğrulayıcıya sahip bir üst bilgi göndererek kullanan bir dosyayı doğrular `ETag` . Örneğin, `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Sunucunun sürümü listedeki bir doğrulayıcı ile eşleşiyorsa `ETag` , yanıt olarak 304 (değiştirilmez) durum kodunu gönderir. Sürüm farklıysa, sunucu 200 (Tamam) durum koduyla ve güncelleştirilmiş kaynakla yanıt verir.
@@ -126,8 +126,8 @@ Aşağıdaki tabloda Azure CDN ürünlerin varsayılan önbelleğe alma davranı
 
 |    | Microsoft: genel web teslimi | Verizon: genel web teslimi | Verizon: DSA | Akamai: genel web teslimi | Akamai: DSA | Akamai: büyük dosya indirme | Akamai: genel veya VOD medya akışı |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Kaynak kabul**       | Yes    | Evet   | Hayır   | Evet    | Hayır   | Evet   | Yes    |
-| **CDN önbellek süresi** | 2 gün |7 gün | Hiçbiri | 7 gün | Hiçbiri | 1 gün | 1 yıl |
+| **Kaynak kabul**       | Evet    | Evet   | Hayır   | Evet    | Hayır   | Evet   | Evet    |
+| **CDN önbellek süresi** | 2 gün |7 gün | Yok | 7 gün | Yok | 1 gün | 1 yıl |
 
 **Kaynağı**kabul edin: kaynak SUNUCUDAN gelen http yanıtında varsa, desteklenen Cache-Directive üst bilgilerini kabul edilip edilmeyeceğini belirtir.
 

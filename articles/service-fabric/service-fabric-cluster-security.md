@@ -4,12 +4,12 @@ description: Azure Service Fabric kümesi için güvenlik senaryoları ve bunlar
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261079"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946204"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric kümesi güvenlik senaryoları
 
@@ -134,7 +134,7 @@ Güvenli kümeler oluşturma kavramı, Linux veya Windows kümeleri olup olmalar
 
 ### <a name="client-authentication-certificates-optional"></a>İstemci kimlik doğrulama sertifikaları (isteğe bağlı)
 
-Yönetici veya Kullanıcı istemci işlemleri için herhangi bir sayıda ek sertifika belirtilebilir. İstemci, karşılıklı kimlik doğrulaması gerektiğinde bu sertifikayı kullanabilir. İstemci sertifikaları genellikle bir üçüncü taraf CA tarafından verilmez. Bunun yerine, geçerli kullanıcı konumunun kişisel deposu genellikle bir kök yetkilisi tarafından yerleştirilmiş istemci sertifikalarını içerir. Sertifikanın, **Istemci kimlik doğrulaması**için **amaçlanan bir amaç** değeri olmalıdır.  
+Yönetici veya Kullanıcı istemci işlemleri için herhangi bir sayıda ek sertifika belirtilebilir. İstemci, karşılıklı kimlik doğrulaması gerektiğinde bu sertifikaları kullanabilir. İstemci sertifikaları genellikle bir üçüncü taraf CA tarafından verilmez. Bunun yerine, geçerli kullanıcı konumunun kişisel deposu genellikle bir kök yetkilisi tarafından yerleştirilmiş istemci sertifikalarını içerir. Sertifikanın, **Istemci kimlik doğrulaması**için **amaçlanan bir amaç** değeri olmalıdır.  
 
 Varsayılan olarak, küme sertifikasında yönetici istemci ayrıcalıkları vardır. Bu ek istemci sertifikaları kümeye yüklenmemelidir, ancak küme yapılandırmasında izin verilme olarak belirtilir.  Ancak, kümeye bağlanmak ve tüm işlemleri gerçekleştirmek için istemci sertifikalarının istemci makinelere yüklenmesi gerekir.
 

@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236582"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079216"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 |**Azure SQL Veritabanı**|Azure SQL veritabanı *tek veritabanı*| Açıkça belirtilmediği takdirde, Azure SQL veritabanı ürün adı, elastik bir havuza dağıtılan tek veritabanlarını ve veritabanlarını içerir. |
 |**Azure SQL Veritabanı**|Azure SQL veritabanı *elastik havuzu*| Açıkça belirtilmediği takdirde, Azure SQL veritabanı ürün adı, elastik bir havuza dağıtılan tek veritabanlarını ve veritabanlarını içerir.  |
 |**Azure SQL Veritabanı** |Azure SQL Veritabanı | Terim aynı kalır, ancak artık tek veritabanı ve elastik havuz dağıtımları için geçerli olur ve yönetilen örnek içermez. |
-| **Azure SQL**| Yok | Bu, Azure 'da kullanılabilen SQL Server veritabanı motoru ürünlerinin ailesini ifade eder: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'lerinde SQL Server. | 
+| **Azure SQL**| YOK | Bu, Azure 'da kullanılabilen SQL Server veritabanı motoru ürünlerinin ailesini ifade eder: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'lerinde SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>Genel önizlemede Özellikler
 
@@ -64,6 +64,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 | Özellik | Ayrıntılar |
 | ---| --- |
+| <a href="/azure/azure-sql/database/elastic-transactions-overview">Dağıtılmış işlemler</a> | Yönetilen örnekler arasında dağıtılmış işlemler. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış sağlayıcıdan BIR oturum açma oluştur</a> ifadesiyle örnek düzeyinde oturumlar oluşturun. |
 | [İşlemsel çoğaltma](../managed-instance/replication-transactional-overview.md) | Tablolardaki değişiklikleri SQL yönetilen örneği, SQL veritabanı veya SQL Server diğer veritabanlarına çoğaltın. Ya da diğer SQL yönetilen örneği veya SQL Server diğer örneklerinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde çoğaltmayı yapılandırma](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
@@ -72,7 +73,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 ---
 
-## <a name="sql-managed-instance-new-features-and-known-issues"></a>SQL tarafından yönetilen örnek yeni özellikler ve bilinen sorunlar
+## <a name="new-features"></a>Yeni özellikler
 
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL yönetilen örnek H2 2019 güncelleştirmeleri
 
@@ -93,10 +94,13 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
   - Yeni yerleşik [örnek katılımcısı rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) , güvenlik ilkelerine ve kurumsal standartlarla uyumluluğa sahip vergi (SOD) uyumluluğuna izin verebilir.
   - SQL yönetilen örneği, aşağıdaki Azure Kamu bölgelerinde GA (US Gov Teksas, US Gov Arizona) ve Çin Kuzey 2 ve Çin Doğu 2 ' ye kadar sunulmaktadır. Ayrıca, şu ortak bölgelerde de mevcuttur: Avustralya Orta, Avustralya Orta 2, Brezilya Güney, Fransa Güney, BAE Orta, BAE Kuzey, Güney Afrika Kuzey, Güney Afrika Batı.
 
-### <a name="known-issues"></a>Bilinen sorunlar
+## <a name="known-issues"></a>Bilinen sorunlar
 
 |Sorun  |Keşfedilen Tarih  |Durum  |Çözümlenme tarihi  |
 |---------|---------|---------|---------|
+|[Dağıtılmış işlemler, sunucu güven grubundan yönetilen örnek kaldırıldıktan sonra yürütülebilir](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Eki 2020|Geçici çözüm vardır||
+|[Dağıtılmış işlemler, yönetilen örnek ölçeklendirme işleminden sonra yürütülemez](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Eki 2020|Geçici çözüm vardır||
+|Azure SQL 'de [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) ve `BACKUP` / `RESTORE` yönetilen örnekteki bildirimde Azure depolama 'da kimlik doğrulaması yapmak için Azure AD Manage Identity kullanılamaz|Eyl 2020|Geçici çözüm vardır||
 |[Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor](#service-principal-cannot-access-azure-ad-and-akv)|Ağu 2020|Geçici çözüm vardır||
 |[SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir](#restoring-manual-backup-without-checksum-might-fail)|Mayıs 2020|Çözümlendi|Haziran 2020|
 |[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Çözümlendi|Haziran 2020|
@@ -125,11 +129,34 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 |Güvenli bağlantı kullanan harici (Azure dışı) posta sunucularıyla veritabanı posta özelliği||Çözümlendi|Eki 2019|
 |Kapsanan veritabanları SQL yönetilen örneği 'nde desteklenmiyor||Çözümlendi|Ağu 2019|
 
+### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>Dağıtılmış işlemler, sunucu güven grubundan yönetilen örnek kaldırıldıktan sonra yürütülebilir
+
+[Sunucu güven grupları](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) , [dağıtılmış işlemleri](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)yürütmek Için önkoşul olan yönetilen örnekler arasında güven oluşturmak için kullanılır. Yönetilen örneği sunucu güven grubundan kaldırdıktan veya grubu sildikten sonra, dağıtılmış işlemleri yürütebiliyor olabilirsiniz. Dağıtılmış işlemlerin devre dışı bırakıldığından ve yönetilen örnek üzerinde [Kullanıcı tarafından başlatılan el ile yük devretme](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover) olduğundan emin olmak için uygulayabileceğiniz bir geçici çözüm vardır.
+
+### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>Dağıtılmış işlemler, yönetilen örnek ölçeklendirme işleminden sonra yürütülemez
+
+Hizmet katmanını veya sanal çekirdek sayısını değiştiren yönetilen örnek ölçekleme işlemleri arka uçta sunucu güven grubu ayarlarını sıfırlar ve [dağıtılmış işlemleri](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)çalıştırmayı devre dışı bırakır. Geçici bir çözüm olarak, Azure portal yeni [sunucu güveni grubunu](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) silin ve oluşturun.
+
+### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT ve yedekleme/GERI yükleme deyimleri, Azure depolama 'ya erişmek için yönetilen kimlik kullanamaz
+
+Toplu INSERT deyimleri, `DATABASE SCOPED CREDENTIAL` Azure depolama 'da kimlik doğrulaması yapmak Için yönetilen kimlikle kullanılamaz. Geçici bir çözüm olarak, PAYLAŞıLAN ERIŞIM IMZASı kimlik doğrulaması ' na geçin. Aşağıdaki örnek Azure SQL 'de (hem veritabanı hem de yönetilen örnek) çalışmaz:
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';
+GO
+CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
+  WITH ( TYPE = BLOB_STORAGE, LOCATION = 'https://****************.blob.core.windows.net/curriculum', CREDENTIAL= msi_cred );
+GO
+BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
+```
+
+**Geçici çözüm**: [depolama için kimlik doğrulaması yapmak üzere paylaşılan erişim imzasını](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)kullanın.
+
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor
 
 Bazı durumlarda, Azure AD ve Azure Key Vault (AKV) hizmetlerine erişmek için kullanılan hizmet sorumlusu ile ilgili bir sorun var olabilir. Sonuç olarak, bu sorun SQL yönetilen örneği ile birlikte Azure AD kimlik doğrulaması ve saydam veritabanı şifrelemesi (TDE) kullanımını etkiler. Bu durum aralıklı bir bağlantı sorunu veya dış SAĞLAYıCıDAN oturum açma/Kullanıcı oluşturma ya da oturum açma/kullanıcı olarak yürütme gibi deyimleri çalıştırabilmeyebilir. Yeni bir Azure SQL yönetilen örneği üzerinde, müşteri tarafından yönetilen anahtarla TDE ayarlama, bazı durumlarda da çalışmayabilir.
 
-**Geçici çözüm**: herhangi bir güncelleştirme komutunu YÜRÜTMEDEN önce SQL yönetilen Örneğinizde bu sorunun oluşmasını önlemek için veya güncelleştirme komutlarından sonra bu sorunla karşılaştıysanız, Azure Portal 'a gıdın, SQL yönetilen örnek [Active Directory yönetici dikey penceresine](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)erişin. "Yönetilen örnek 'in Azure Active Directory erişmek için bir hizmet sorumlusu olması gerekir" hata iletisini görebildiğinizi doğrulayın. Hizmet sorumlusu oluşturmak için buraya tıklayın. Bu hata iletisiyle karşılaştıysanız, üzerine tıklayın ve bu hata çözümlenene kadar sunulan adım adım yönergeleri izleyin.
+**Geçici çözüm**: herhangi bir güncelleştirme komutunu YÜRÜTMEDEN önce SQL yönetilen Örneğinizde bu sorunun oluşmasını önlemek için veya güncelleştirme komutlarından sonra bu sorunla karşılaştıysanız, Azure Portal gıdın, SQL yönetilen örneği [Active Directory Yönetim dikey penceresine](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)erişin. "Yönetilen örnek 'in Azure Active Directory erişmek için bir hizmet sorumlusu olması gerekir" hata iletisini görebildiğinizi doğrulayın. Hizmet sorumlusu oluşturmak için buraya tıklayın. Bu hata iletisiyle karşılaştıysanız, üzerine tıklayın ve bu hata çözümlenene kadar sunulan adım adım yönergeleri izleyin.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir
 

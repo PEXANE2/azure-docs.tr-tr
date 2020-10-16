@@ -1,32 +1,37 @@
 ---
-title: Azure Güvenlik Merkezi uyarılarını ve önerilerini Sıems 'ye aktarma | Microsoft Docs
-description: Bu makalede, güvenlik uyarılarının ve önerilerin Sıems 'ye sürekli olarak dışarı aktarılması nasıl ayarlanacağı açıklanır
+title: Sürekli dışarı aktarma, Azure Güvenlik Merkezi 'nin uyarılarını ve önerilerini Log Analytics çalışma alanlarına veya Azure Event Hubs gönderebilir
+description: Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli güvenlik uyarılarını ve önerilerini yapılandırmayı öğrenin
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: d0ada1b615d4673f696c6f1b003288f3e7aa02e4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449154"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945304"
 ---
-# <a name="export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma
+# <a name="continuously-export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini sürekli dışa aktarma
 
-Azure Güvenlik Merkezi, ayrıntılı güvenlik uyarıları ve önerileri oluşturur. Bunları portalda veya programlı araçlar aracılığıyla görüntüleyebilirsiniz. Bu bilgileri dışarı aktarmanız veya ortamınızdaki diğer izleme araçlarına göndermeniz de gerekebilir. 
+Azure Güvenlik Merkezi, ayrıntılı güvenlik uyarıları ve önerileri oluşturur. Bunları portalda veya programlı araçlar aracılığıyla görüntüleyebilirsiniz. Ayrıca, bu bilgilerin bir kısmını veya tümünü ortamınızdaki diğer izleme araçlarıyla izlemek için dışarı aktarmanız gerekebilir. 
 
-Bu makalede, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmaya izin veren araç kümesi açıklanır.
+**Sürekli dışarı aktarma** , nelerin dışa aktarılacağını ve *nerede* *gidebileceklerini* tamamen özelleştirmenizi sağlar. Örneğin, bunu şu şekilde yapılandırabilirsiniz:
 
-Bu araçları kullanarak şunları yapabilirsiniz:
+- Tüm yüksek önem derecesi uyarıları bir Azure Olay Hub 'ına gönderilir
+- SQL sunucularınızın güvenlik açığı değerlendirme taramalarının tüm Orta veya yüksek önem dereceleri, belirli bir Log Analytics çalışma alanına gönderilir
+- Belirli öneriler, her oluşturulduğunda bir olay hub 'ına veya Log Analytics çalışma alanına teslim edilir 
 
-* Log Analytics çalışma alanlarına sürekli dışa aktarma
-* Azure Event Hubs sürekli olarak dışarı aktarma (üçüncü taraf Sıems ile Tümleştirmeler için)
-* CSV 'ye aktar (bir kez)
+Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli dışarı aktarmanın nasıl yapılandırılacağı açıklanır.
 
+> [!NOTE]
+> Güvenlik Merkezi 'ni SıEM ile tümleştirmeniz gerekiyorsa, seçenekleriniz için [akış uyarılarını BIR SIEM 'ye](export-to-siem.md) gözden geçirin.
+
+> [!TIP]
+> Güvenlik Merkezi, CSV 'ye bir kerelik bir el ile dışarı aktarma seçeneği de sunar. [Uyarıların ve önerilerin el ile tek seferlik dışarı aktarılması](#manual-one-time-export-of-alerts-and-recommendations)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="availability"></a>Kullanılabilirlik
@@ -35,28 +40,30 @@ Bu araçları kullanarak şunları yapabilirsiniz:
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|Ücretsiz|
-|Gerekli roller ve izinler:|Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**<br>Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır|
+|Gerekli roller ve izinler:|<ul><li>Kaynak grubundaki **Güvenlik Yöneticisi** veya **sahibi**</li><li>Hedef kaynak için yazma izinleri</li><li>Aşağıda açıklanan Azure Ilkesi ' DeployIfNotExist ' ilkelerini kullanıyorsanız, ilke atama izinlerine de ihtiyacınız olacaktır</li></ul>|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Çin gov (Olay Hub 'ına), diğer gov|
 |||
 
 
 
-## <a name="set-up-a-continuous-export"></a>Sürekli dışarı aktarma ayarlama
+
+
+## <a name="set-up-a-continuous-export"></a>Sürekli dışarı aktarma ayarlama 
+
+Azure portal, güvenlik merkezi REST API aracılığıyla veya sağlanan Azure Ilke şablonlarını kullanarak ölçekteki Güvenlik Merkezi sayfalarından sürekli dışarı aktarmayı yapılandırabilirsiniz. Her birinin ayrıntıları için aşağıdaki uygun sekmeyi seçin.
+
+### <a name="use-the-azure-portal"></a>[**Azure portalını kullanma**](#tab/azure-portal)
+
+### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Azure portal 'de Güvenlik Merkezi sayfalarından sürekli dışarı aktarmayı yapılandırma
 
 Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs sürekli bir dışarı aktarma işlemi yapılıp yapılmayacağını belirtir.
 
 1. Güvenlik Merkezi 'nin kenar çubuğundan **fiyatlandırma & ayarları**' nı seçin.
-
 1. Veri dışarı aktarmayı yapılandırmak istediğiniz belirli aboneliği seçin.
-    
 1. Bu aboneliğin Ayarlar sayfasının kenar çubuğundan **sürekli dışarı aktarma**' yı seçin.
-
     [ ![ Azure Güvenlik Merkezi 'nde dışarı aktarma seçenekleri](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) burada dışa aktarma seçeneklerini görürsünüz. Kullanılabilir her dışa aktarma hedefi için bir sekme vardır. 
-
 1. Dışarı aktarmak istediğiniz veri türünü seçin ve her bir türdeki filtrelerden birini seçin (örneğin, yalnızca yüksek önem derecesine sahip uyarıları dışarı aktarın).
-
 1. İsteğe bağlı olarak, seçiminiz bu dört önerinden birini içeriyorsa, güvenlik açığı değerlendirmesi bulgularını bunlarla birlikte dahil edebilirsiniz:
-
     - SQL veritabanlarındaki güvenlik açığı değerlendirmesi bulguları düzeltildi
     - Makinelerdeki SQL sunucularınızda bulunan güvenlik açığı değerlendirmesi (Önizleme) düzeltilmelidir.
     - Azure Container Registry görüntülerdeki güvenlik açıkları düzeltilmelidir (Qualys tarafından desteklenir)
@@ -66,15 +73,14 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
 
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et&quot; :::
 
-
 1. &quot;Dışarı aktarma hedefi" alanından, verilerin kaydedilmesini istediğiniz yeri seçin. Veriler farklı bir abonelikteki hedefe kaydedilebilir (örneğin, merkezi bir olay hub 'ı örneği veya merkezi bir Log Analytics çalışma alanı).
-
 1. **Kaydet**'i seçin.
 
+### <a name="use-the-rest-api"></a>[**REST API kullanma**](#tab/rest-api)
 
-## <a name="set-up-continuous-export-via-the-rest-api"></a>REST API aracılığıyla sürekli dışarı aktarmayı ayarlama
+### <a name="configure-continuous-export-using-the-rest-api"></a>REST API kullanarak sürekli dışarı aktarmayı yapılandırma
 
-Sürekli dışa aktarma özelliği Azure Güvenlik Merkezi tahmin [API 'si](https://docs.microsoft.com/rest/api/securitycenter/automations)aracılığıyla yapılandırılabilir ve yönetilebilir. Aşağıdaki olası hedeflerin herhangi birine dışarı aktarmak için bu API 'yi kullanarak akışlarını otomatikleştirin oluşturun veya güncelleştirin:
+Sürekli dışarı aktarma, Azure Güvenlik Merkezi tahmin [API 'si](https://docs.microsoft.com/rest/api/securitycenter/automations)aracılığıyla yapılandırılabilir ve yönetilebilir. Aşağıdaki olası hedeflere herhangi birine dışarı aktarmaya yönelik kurallar oluşturmak veya güncelleştirmek için bu API 'yi kullanın:
 
 - Azure Event Hub
 - Log Analytics çalışma alanı
@@ -95,47 +101,73 @@ API, Azure portal kullanılamayan ek işlevler sağlar, örneğin:
 
 
 
-## <a name="configure-siem-integration-via-azure-event-hubs"></a>Azure Event Hubs ile SıEM tümleştirmesini yapılandırma
-
-Azure Event Hubs, tüm akış verilerini kullanan program aracılığıyla için harika bir çözümdür. Azure Güvenlik Merkezi uyarıları ve önerileri için, üçüncü taraf SıEM ile tümleştirme için tercih edilen bir yoldur.
-
-> [!NOTE]
-> Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem Azure Event Hubs kullanmaktır. [Bu makalede](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs) , farklı kaynaklardan bir olay hub 'ına izleme verileri akışını ve ayrıntılı kılavuza bağlantıları nasıl alabileceğiniz hakkında kısa bir açıklama sunulmaktadır.
-
-> [!NOTE]
-> Daha önce Azure etkinlik günlüğü 'nü kullanarak güvenlik merkezi uyarılarını bir SıEM 'e aktardıysanız, aşağıdaki yordam bu metodolojide yerini alır.
-
-Aktarılmış veri türlerinin olay şemalarını görüntülemek için, [Olay Hub 'ı olay şemaları](https://aka.ms/ASCAutomationSchemas)' nı ziyaret edin.
 
 
-### <a name="to-integrate-with-a-siem"></a>SıEM ile tümleştirme için 
+### <a name="deploy-at-scale-with-azure-policy"></a>[**Azure Ilkesiyle ölçekli olarak dağıtın**](#tab/azure-policy)
 
-Seçtiğiniz güvenlik merkezi verilerinizin sürekli olarak dışarı aktarılmasını Azure Event Hubs yapılandırdıktan sonra SıEM 'niz için uygun bağlayıcıyı ayarlayabilirsiniz:
+### <a name="configure-continuous-export-at-scale-using-the-supplied-policies"></a>Sağlanan ilkeleri kullanarak sürekli dışarı aktarmayı uygun ölçekte yapılandırın
 
-* **Azure Sentinel** -burada sunulan yerel Azure Güvenlik Merkezi uyarıları [veri bağlayıcısını](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center) kullanın.
-* **Splunk** - [splunk Için Azure izleyici eklentisini](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md) kullanma
-* **IBM QRadar** - [el ile yapılandırılmış bir günlük kaynağı](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/t_dsm_guide_microsoft_azure_enable_event_hubs.html) kullanın
-* **Arcgörüş** – [smartconnector](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292) kullanın
+Kuruluşunuzun izleme ve olay yanıtı süreçlerini otomatik hale getirmek, güvenlik olaylarını araştırmak ve azaltmak için gereken süreyi büyük ölçüde iyileştirebilir.
 
-Ayrıca, sürekli olarak dışarıya aktarılmış verileri otomatik olarak yapılandırılmış olay hub 'ından Azure Veri Gezgini taşımak istiyorsanız, [Olay Hub 'ından azure Veri Gezgini veri](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub)alma içindeki yönergeleri kullanın.
+Kuruluşunuzda sürekli dışarı aktarma yapılandırmalarınızı dağıtmak için, aşağıdaki açıklanan Azure Ilkesi ' DeployIfNotExist ' ilkelerini kullanarak sürekli dışarı aktarma yordamları oluşturun ve yapılandırın.
 
+**Bu ilkeleri uygulamak için**
 
+1. Aşağıdaki tablodan, uygulamak istediğiniz ilkeyi seçin:
 
-## <a name="continuous-export-to-a-log-analytics-workspace"></a>Log Analytics çalışma alanına sürekli dışarı aktarma
+    |Hedef  |İlke  |İlke KIMLIĞI  |
+    |---------|---------|---------|
+    |Olay Hub 'ına sürekli dışarı aktarma|[Azure Güvenlik Merkezi uyarıları ve önerileri için Olay Hub 'ına aktarma dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Log Analytics çalışma alanına sürekli dışarı aktarma|[Azure Güvenlik Merkezi uyarıları ve önerileri için Log Analytics çalışma alanına dışarı aktarma dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    ||||
 
-Azure Güvenlik Merkezi verilerini bir Log Analytics çalışma alanı içinde çözümlemek veya Azure uyarılarını Güvenlik Merkezi ile birlikte kullanmak istiyorsanız, Log Analytics çalışma alanınıza sürekli dışarı aktarma ayarlayın.
+    > [!TIP]
+    > Ayrıca, Azure Ilkesi 'ni arayarak bunları bulabilirsiniz:
+    > 1. Azure Ilkesini açın.
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et&quot; :::
 
-Log Analytics çalışma alanına aktarmak için, güvenlik merkezi 'nin çalışma alanınızda etkin olan Log Analytics çözümlerinin etkinleştirilmiş olması gerekir. Azure portal kullanıyorsanız, sürekli dışarı aktarmayı etkinleştirdiğinizde güvenlik merkezi 'nin ücretsiz çözümü otomatik olarak etkinleştirilir. Ancak, sürekli dışa aktarma ayarlarınızı programlama yoluyla yapılandırıyorsanız, Azure Defender 'ı **fiyatlandırma & ayarları** sayfasında el ile açmanız veya kapatmanız gerekir.
+1. &quot;Dışarı aktarma hedefi":::
+    > 2. Azure Ilke menüsünden **tanımlar** ' ı seçin ve adları ada göre arayın. 
+
+1. İlgili Azure Ilkesi sayfasında **ata**' yı seçin.
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et&quot; :::
+
+1. &quot;Dışarı aktarma hedefi":::
+
+1. Her sekmeyi açın ve parametreleri istediğiniz şekilde ayarlayın:
+    1. **Temel bilgiler** sekmesinde, ilke kapsamını ayarlayın. Merkezi Yönetim 'i kullanmak için, ilkeyi sürekli dışa aktarma yapılandırması kullanacak olan abonelikleri içeren yönetim grubuna atayın. 
+    1. **Parametreler** sekmesinde, kaynak grubu ve veri türü ayrıntılarını ayarlayın. 
+        > [!TIP]
+        > Her parametrenin size sunulan seçenekleri açıklayan bir araç ipucu vardır.
+        >
+        > Azure Ilkesinin Parametreler sekmesi (1), güvenlik merkezi 'nin sürekli dışa aktarma sayfası (2) olarak benzer yapılandırma seçeneklerine erişim sağlar.
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et&quot; :::
+
+1. &quot;Dışarı aktarma hedefi" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+    1. İsteğe bağlı olarak, bu atamayı mevcut aboneliklere uygulamak için **Düzeltme** sekmesini açın ve bir düzeltme görevi oluşturma seçeneğini belirleyin.
+1. Özet sayfasını gözden geçirin ve **Oluştur**' u seçin.
+
+--- 
+
+## <a name="information-about-exporting-to-a-log-analytics-workspace"></a>Log Analytics çalışma alanına aktarma hakkında bilgi
+
+Azure Güvenlik Merkezi verilerini bir Log Analytics çalışma alanı içinde çözümlemek veya Azure uyarılarını Güvenlik Merkezi uyarılarla birlikte kullanmak istiyorsanız, Log Analytics çalışma alanınıza sürekli dışarı aktarma ayarlayın.
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabloları ve şemaları
 
-Güvenlik uyarıları ve önerileri sırasıyla *Securityalert* ve *securityöneriler* tablolarında depolanır. Bu tabloları içeren Log Analytics çözümünün adı, Azure Defender 'ın etkin olup olmamasına bağlıdır: güvenlik (' Güvenlik ve Denetim ') veya SecurityCenterFree.
+Güvenlik uyarıları ve önerileri sırasıyla *Securityalert* ve *securityöneriler* tablolarında depolanır. 
+
+Bu tabloları içeren Log Analytics çözümünün adı, Azure Defender 'ın etkin olup olmamasına bağlıdır: güvenlik (' Güvenlik ve Denetim ') veya SecurityCenterFree. 
+
+> [!TIP]
+> Hedef çalışma alanındaki verileri görmek için, Bu çözümlerden birini **güvenlik ve denetim** veya **securitycenterfree**' ı etkinleştirmeniz gerekir.
 
 ![Log Analytics içindeki * SecurityAlert * tablosu](./media/continuous-export/log-analytics-securityalert-solution.png)
 
 Aktarılmış veri türlerinin olay şemalarını görüntülemek için [Log Analytics tablo şemalarını](https://aka.ms/ASCAutomationSchemas)ziyaret edin.
 
-###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>Azure Izleyici 'de, verilmiş güvenlik uyarılarını ve önerilerini görüntüleme
+
+##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Azure Izleyici 'de, verilmiş uyarıları ve önerileri görüntüleme
 
 Bazı durumlarda, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)'de, verilmiş güvenlik uyarılarını ve/veya önerilerini görüntülemeyi tercih edebilirsiniz. 
 
@@ -156,9 +188,9 @@ Azure Izleyici 'de Güvenlik Merkezi 'ndeki uyarıları ve önerileri görüntü
     * İsteğe bağlı olarak, tetiklemek istediğiniz [Eylem grubunu](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) yapılandırın. Eylem grupları e-posta gönderme, ıTSM biletleri, Web kancaları ve daha fazlasını tetikleyebilir.
     ![Azure Izleyici uyarı kuralı](./media/continuous-export/azure-monitor-alert-rule.png)
 
-Artık, Azure Izleyici uyarıları 'ndaki yeni Azure Güvenlik Merkezi uyarılarını veya önerilerini (yapılandırmanıza bağlı olarak), bir eylem grubunun otomatik olarak tetiklemesini (sağlanmışsa) görürsünüz.
+Artık yeni Azure Güvenlik Merkezi uyarılarını veya önerilerini (yapılandırılmış sürekli dışarı aktarma kurallarınıza ve Azure izleyici uyarı kuralınız ' nda tanımladığınız koşula bağlı olarak) Azure Izleyici uyarıları ' nda, bir eylem grubunun otomatik tetiklenimiyle (sağlanmışsa) görürsünüz.
 
-## <a name="manual-one-time-export-of-security-alerts"></a>Güvenlik uyarılarını el ile tek seferlik dışarı aktarma
+## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>Uyarıların ve önerilerin el ile tek seferlik dışarı aktarılması
 
 Uyarılar veya öneriler için bir CSV raporu indirmek için, **güvenlik uyarıları** veya **öneriler** sayfasını açın ve **CSV raporu indir** düğmesini seçin.
 
@@ -166,7 +198,6 @@ Uyarılar veya öneriler için bir CSV raporu indirmek için, **güvenlik uyarı
 
 > [!NOTE]
 > Bu raporlar Şu anda seçili olan aboneliklerdeki kaynaklara yönelik uyarıları ve önerileri içerir.
-
 
 
 ## <a name="faq---continuous-export"></a>SSS-sürekli dışarı aktarma
@@ -180,13 +211,16 @@ Sürekli dışarı aktarmayı etkinleştirme maliyeti yoktur. Yapılandırmaya b
 [Azure Olay Hub 'ı fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/)hakkında daha fazla bilgi edinin.
 
 
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, önerilerinizi ve uyarılarınızı sürekli dışarı aktarmaların nasıl yapılandırılacağını öğrendiniz. Ayrıca, uyarı verilerinizi bir CSV dosyası olarak nasıl indirileceğini öğrendiniz. 
 
 İlgili malzemeler için aşağıdaki belgelere bakın: 
 
+- [İş akışı Otomasyonu şablonları](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)hakkında daha fazla bilgi edinin.
 - [Azure Event Hubs belgeleri](https://docs.microsoft.com/azure/event-hubs/)
 - [Azure Sentinel belgeleri](https://docs.microsoft.com/azure/sentinel/)
 - [Azure İzleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
-- [İş akışı otomasyonu ve sürekli dışarı aktarma veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)
+- [Veri türlerini dışarı aktarma şemaları](https://aka.ms/ASCAutomationSchemas)

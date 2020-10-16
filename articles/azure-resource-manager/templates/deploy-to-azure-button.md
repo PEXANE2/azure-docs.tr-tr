@@ -1,13 +1,13 @@
 ---
-title: Azure 'a dağıt düğmesi
+title: Azure'a Dağıt düğmesi
 description: Bir GitHub deposundan Azure Resource Manager şablonları dağıtmak için düğmeyi kullanın.
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079465"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın
@@ -24,7 +24,7 @@ Web sayfanıza veya depoya düğme eklemek için aşağıdaki görüntüyü kull
 
 Görüntü şöyle görünür:
 
-![Azure 'a dağıt düğmesi](https://aka.ms/deploytoazurebutton)
+![Azure'a Dağıt düğmesi](https://aka.ms/deploytoazurebutton)
 
 ## <a name="create-url-for-deploying-template"></a>Şablon dağıtmak için URL Oluştur
 
@@ -86,7 +86,7 @@ HTML için şunu kullanın:
 
 Çözümü tam olarak test etmek için aşağıdaki düğmeyi seçin:
 
-[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
+[![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
 Portal, kolayca parametre değerleri sağlamanıza olanak tanıyan bir bölme görüntüler. Parametreler şablondaki varsayılan değerlerle önceden doldurulur.
 

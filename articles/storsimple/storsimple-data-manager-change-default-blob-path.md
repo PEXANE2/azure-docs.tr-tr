@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743582"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Blob yolunu varsayılan yoldan değiştirme
 
 StorSimple Veri Yöneticisi hizmeti verileri dönüştürzaman, varsayılan olarak, dönüştürülmüş blob 'ları hedef deponun oluşturulması sırasında belirtilen şekilde bir depolama kapsayıcısına koyar. Blob 'lar bu konuma ulaştığında, bu Blobları alternatif bir konuma taşımak isteyebilirsiniz. Bu makalede, bir Azure işlevinin varsayılan bir BLOB dosya yolunu yeniden adlandırmak için nasıl ayarlanacağı ve bu nedenle Blobları farklı bir konuma taşımanın nasıl yapılacağı açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 StorSimple Veri Yöneticisi hizmetinizde doğru şekilde yapılandırılmış bir iş tanımına sahip olduğunuzdan emin olun.
 

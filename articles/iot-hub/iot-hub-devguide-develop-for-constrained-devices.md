@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81733196"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK kullanarak kısıtlı cihazlar için geliştirme
@@ -30,7 +30,7 @@ C SDK, apt-get, NuGet ve MBED 'den paket biçiminde kullanılabilir. Kısıtlanm
 
 Kısıtlanmış cihazlar için C SDK 'Yı derleyin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme ortamınızı C SDK 'Sı oluşturmaya hazırlamak için bu [c SDK 'sı kurulum kılavuzunu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) izleyin. CMake ile oluşturmaya yönelik adıma geçmeden önce, kullanılmayan özellikleri kaldırmak için CMake bayraklarını çağırabilirsiniz.
 

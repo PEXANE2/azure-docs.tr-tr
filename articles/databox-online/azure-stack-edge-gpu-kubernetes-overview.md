@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899259"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes
@@ -106,7 +106,7 @@ IoT Edge aracılığıyla Kubernetes kümenizdeki uygulamaları dağıtma hakkı
 
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes ve Azure yay
 
-Azure Arc, Kubernetes kümelerinizde uygulamalar dağıtmanıza imkan tanıyan bir karma yönetim aracıdır. Azure Arc, kümelerinizi görüntülemek ve izlemek için kapsayıcılar için Azure Izleyici kullanmanıza da olanak tanır. Daha fazla bilgi için [Azure-Arc etkin Kubernetes nedir?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)bölümüne bakın. Azure Arc fiyatlandırması hakkında bilgi için [Azure Arc fiyatlandırması](https://azure.microsoft.com/services/azure-arc/#pricing)' na gidin.
+Azure Arc, Kubernetes kümelerinizde uygulamalar dağıtmanıza imkan tanıyan bir karma yönetim aracıdır. Azure Arc, kümelerinizi görüntülemek ve izlemek için kapsayıcılar için Azure Izleyici kullanmanıza da olanak tanır. Daha fazla bilgi için, [Kubernetes Azure-Arc etkinleştirilmiş olduğuna](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)bakın. Azure Arc fiyatlandırması hakkında bilgi için [Azure Arc fiyatlandırması](https://azure.microsoft.com/services/azure-arc/#pricing)' na gidin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

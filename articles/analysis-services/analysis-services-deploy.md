@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697599"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018785"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Visual Studio üzerinden model dağıtma
 
@@ -23,7 +23,7 @@ Azure aboneliğinizde bir sunucu oluşturduktan sonra, aboneliğinize bir tablo 
 Başlamak için gerekli olanlar:
 
 * Azure’da **Analysis Services sunucusu**. Daha fazla bilgi için bkz. [Azure Analysis Services sunucusu oluşturma](analysis-services-create-server.md).
-* Visual Studio 'da **tablosal model projesi** veya 1200 veya daha yüksek uyumluluk düzeyinde var olan tablolu model. Daha önce hiç oluşturmadınız mı? [Adventure Works İnternet satışı tablosal modelleme öğreticisini](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) deneyin.
+* Visual Studio 'da **tablosal model projesi** veya 1200 veya daha yüksek uyumluluk düzeyinde var olan tablolu model. Daha önce hiç oluşturmadınız mı? [Adventure Works İnternet satışı tablosal modelleme öğreticisini](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) deneyin.
 * **Şirket içi ağ geçidi** - Bir veya daha fazla veri kaynağı kuruluşunuzun ağında şirket içi olarak bulunuyorsa bir [Şirket içi veri ağ geçidi](analysis-services-gateway.md) yüklemeniz gerekir. Ağ geçidi, buluttaki sunucunuzun modeldeki verileri işlemek ve yenilemek üzere şirket içi veri kaynaklarınıza bağlanması için gereklidir.
 
 > [!TIP]
@@ -63,7 +63,4 @@ Bir tabloda dağıtım başarısız olursa, bunun nedeni sunucunuzun bir veri ka
 
 Tablo modelinizi sunucunuza dağıttığınıza göre bağlanmak için hazırsınız. Bunu yönetmek için, [SQL Server Management Studio (SSMS) ile bağlanabilirsiniz](analysis-services-manage.md) . Ayrıca, Power BI, Power BI Desktop veya Excel gibi [bir istemci araç kullanarak bağlanabilir](analysis-services-connect.md) ve rapor oluşturmaya başlayabilirsiniz.   
 
-Gelişmiş dağıtım yöntemleri hakkında bilgi edinmek için bkz. [tablolu model çözüm dağıtımı](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).
-
-
-
+Gelişmiş dağıtım yöntemleri hakkında bilgi edinmek için bkz. [tablolu model çözüm dağıtımı](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).

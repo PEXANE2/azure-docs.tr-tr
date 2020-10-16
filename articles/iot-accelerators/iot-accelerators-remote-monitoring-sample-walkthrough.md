@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9477b11b52431211dc91a0ea6ff0767a9d495be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546306"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073606"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Uzaktan İzleme çözümü hızlandırıcısına genel bakış
 
@@ -106,7 +106,7 @@ Hizmet, anahtar-değer çiftlerinde CRUD işlemleri için yeniden bir uç nokta 
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Çözüm Hızlandırıcı dağıtımları, kuralları, uyarıları, yapılandırma ayarlarını ve diğer tüm soğuk depolamayı depolamak için [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) kullanır.
+Çözüm Hızlandırıcı dağıtımları, kuralları, uyarıları, yapılandırma ayarlarını ve diğer tüm soğuk depolamayı depolamak için [Azure Cosmos DB](../cosmos-db/index.yml) kullanır.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Azure Stream Analytics Manager Mikro hizmeti
 
@@ -120,11 +120,11 @@ ASA işleri, depolama ve analiz için Time Series Insights bağlı cihazlardan T
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) , cihazlardan yüksek hacimli veri akışını incelemenize olanak tanıyan bir olay işleme motorudur.
+[Azure Stream Analytics](../stream-analytics/index.yml) , cihazlardan yüksek hacimli veri akışını incelemenize olanak tanıyan bir olay işleme motorudur.
 
 ### <a name="azure-time-series-insights"></a>Azure Zaman Serisi Görüşleri
 
-[Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) , telemetrisi çözüm hızlandırıcısına bağlı cihazlardan depolar. Ayrıca çözüm Web Kullanıcı arabiriminde cihaz telemetrisini görselleştirmeyi ve sorgulamayı de mümkün kılar.
+[Azure Time Series Insights](../time-series-insights/index.yml) , telemetrisi çözüm hızlandırıcısına bağlı cihazlardan depolar. Ayrıca çözüm Web Kullanıcı arabiriminde cihaz telemetrisini görselleştirmeyi ve sorgulamayı de mümkün kılar.
 
 ### <a name="configuration-microservice"></a>Yapılandırma mikro hizmeti
 
@@ -136,7 +136,7 @@ ASA işleri, depolama ve analiz için Time Series Insights bağlı cihazlardan T
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Çözüm Hızlandırıcı dağıtımları bir OpenID Connect sağlayıcısı olarak [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) kullanır. Azure Active Directory, Kullanıcı bilgilerini depolar ve JWT belirteci imzalarını doğrulamak için sertifika sağlar.
+Çözüm Hızlandırıcı dağıtımları bir OpenID Connect sağlayıcısı olarak [Azure Active Directory](../active-directory/index.yml) kullanır. Azure Active Directory, Kullanıcı bilgilerini depolar ve JWT belirteci imzalarını doğrulamak için sertifika sağlar.
 
 ## <a name="presentation"></a>Sunum
 

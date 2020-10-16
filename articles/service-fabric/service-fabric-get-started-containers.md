@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564330"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
@@ -25,7 +25,7 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Şunları çalıştıran bir geliştirme bilgisayarı:
   * Visual Studio 2015 veya Visual Studio 2019.
@@ -344,7 +344,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server kapsayıcısı işletim sistemi ve konak işletim sistemi uyumluluğu
 
-Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Örnek:
+Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Örneğin:
  
 - Windows Server sürüm 1709 kullanılarak oluşturulan Windows Server kapsayıcıları, Windows Server sürüm 2016 çalıştıran bir konakta çalışmıyor. 
 - Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcıları, Hyper-V yalıtım modunda yalnızca Windows Server sürüm 1709 çalıştıran bir konakta çalışır. 
@@ -352,7 +352,7 @@ Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri 
  
 Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Service Fabric kümenize kapsayıcı oluştururken ve dağıttığınızda konak IŞLETIM sisteminin ve kapsayıcı işletim sisteminin uyumluluğunu göz önünde bulundurun. Örnek:
+Service Fabric kümenize kapsayıcı oluştururken ve dağıttığınızda konak IŞLETIM sisteminin ve kapsayıcı işletim sisteminin uyumluluğunu göz önünde bulundurun. Örneğin:
 
 - Küme düğümlerinizin işletim sistemi ile uyumlu bir işletim sistemi ile kapsayıcıları dağıttığınızdan emin olun.
 - Kapsayıcı uygulamanız için belirtilen yalıtım modunun, dağıtıldığı düğümde kapsayıcı işletim sistemi desteğiyle tutarlı olduğundan emin olun.

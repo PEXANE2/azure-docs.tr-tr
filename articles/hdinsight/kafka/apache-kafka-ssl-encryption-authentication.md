@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082089"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için TLS şifrelemesini ve kimlik doğrulamasını ayarlama
@@ -52,7 +52,7 @@ Aracı Kurulum işleminin Özeti aşağıdaki gibidir:
 Aracı kurulumunu gerçekleştirmek için aşağıdaki ayrıntılı yönergeleri kullanın:
 
 > [!Important]
-> Aşağıdaki kod parçacıklarında wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve yerine `wn0` `wn1` veya `wn2` uygun şekilde olmalıdır. `WorkerNode0_Name`ve `HeadNode0_Name` ilgili makinelerin adlarıyla yerine gelmelidir.
+> Aşağıdaki kod parçacıklarında wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve yerine `wn0` `wn1` veya `wn2` uygun şekilde olmalıdır. `WorkerNode0_Name` ve `HeadNode0_Name` ilgili makinelerin adlarıyla yerine gelmelidir.
 
 1. HDInsight için, sertifika yetkilisinin (CA) rolünü dolduracağı baş düğüm 0 ' da ilk kurulumu gerçekleştirin.
 

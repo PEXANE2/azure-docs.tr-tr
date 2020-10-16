@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0fcd57a71baec54fbed2dd41a936895ad9a462
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419640"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966585"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Öğretici: Azure Multi-Factor Authentication veya parola değişikliklerini tetiklemek için Kullanıcı oturum açma işlemlerinin risk algılamalarını kullanın
 
@@ -26,7 +26,7 @@ Kullanıcılarınızı korumak için, riskli davranışlara otomatik olarak yan�
 >
 > BT ekibiniz Azure Multi-Factor Authentication kullanma özelliğini etkinleştirmemişse veya oturum açma sırasında sorun yaşıyorsanız, ek yardım için yardım masasına ulaşın.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure AD Kimlik Koruması için kullanılabilir ilkeleri anlayın

@@ -10,18 +10,18 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0ce2c17586e5437047ff27cb67577b0480a83af
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714768"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939350"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>İstemci uygulamasından gelen istekleri yetkilendirmek için Azure AD 'den bir belirteç alın
 
 Azure Blob depolama veya kuyruk depolama ile Azure Active Directory (Azure AD) kullanmanın önemli bir avantajı, kimlik bilgilerinizin artık kodunuzda depolanmasına gerek kalmaz. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya erişim belirtecini döndürür ve uygulama, istekleri Azure Blob depolama veya kuyruk depolama alanına yetkilendirmek için erişim belirtecini kullanabilir.
 
-Bu makalede, yerel uygulamanızı veya Web uygulamanızı, indirmek üzere kullanılabilecek örnek bir uygulama kullanarak Microsoft Identity Platform 2,0 kimlik doğrulaması için nasıl yapılandıracağınız gösterilir. Örnek uygulama .NET özellikleri, ancak diğer diller de benzer bir yaklaşım kullanır. Microsoft Identity Platform 2,0 hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) genel bakış](../../active-directory/develop/v2-overview.md).
+Bu makalede, yerel uygulamanızı veya Web uygulamanızı, indirmek üzere kullanılabilecek örnek bir uygulama kullanarak Microsoft Identity platformu ile kimlik doğrulaması için nasıl yapılandıracağınız gösterilir. Örnek uygulama .NET özellikleri, ancak diğer diller de benzer bir yaklaşım kullanır. Microsoft Identity platformu hakkında daha fazla bilgi için bkz. [Microsoft Identity platform genel bakış](../../active-directory/develop/v2-overview.md).
 
 OAuth 2,0 kod verme akışına genel bakış için bkz. [oauth 2,0 kod verme akışını kullanarak Azure Active Directory Web uygulamalarına erişimi yetkilendirme](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
@@ -247,7 +247,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendirme izni veren bir işlemdir. Microsoft Identity Platform 2,0 artımlı onayı destekler, yani bir güvenlik sorumlusu başlangıçta minimum izin kümesi isteyebilir ve gerektiğinde zaman içinde izinler ekleyebilir. Kodunuz bir erişim belirteci istediğinde, uygulamanızın ihtiyaç duyacağı izin kapsamını belirtin. Artımlı izin hakkında daha fazla bilgi için bkz. [artımlı ve dinamik izin](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
+Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendirme izni veren bir işlemdir. Microsoft Identity platformu artımlı onayı destekler, yani bir güvenlik sorumlusu başlangıçta minimum izin kümesi isteyebilir ve gerektiğinde zaman içinde izinler ekleyebilir. Kodunuz bir erişim belirteci istediğinde, uygulamanızın ihtiyaç duyacağı izin kapsamını belirtin. Artımlı izin hakkında daha fazla bilgi için bkz. [artımlı ve dinamik izin](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
 ## <a name="view-and-run-the-completed-sample"></a>Tamamlanan örneği görüntüleme ve çalıştırma
 

@@ -1,22 +1,20 @@
 ---
 title: Azure Izleyici Application Insights klasik kaynağını çalışma alanı tabanlı bir kaynağa geçirme | Microsoft Docs
 description: Azure monitörünüzü Application Insights klasik kaynağınızı yeni çalışma alanı tabanlı modele yükseltmek için gereken adımlar hakkında bilgi edinin.
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333350"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930596"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynaklarına geçirin
 
 Bu kılavuz, klasik Application Insights kaynağını çalışma alanı tabanlı bir kaynağa geçirme sürecinde size yol gösterecektir. Çalışma alanı tabanlı kaynaklar Application Insights ve Log Analytics arasında tam tümleştirmeyi destekler. Çalışma alanı tabanlı kaynaklar, uygulama, altyapı ve platform günlüklerini tek bir birleştirilmiş konumda tutarken [Azure izleyici 'nin en son özelliklerine](#new-capabilities) erişmenize olanak sağlayan ortak bir Log Analytics çalışma alanına Application Insights telemetri gönderir.
 
-Çalışma alanı tabanlı kaynaklar, kaynaklarınız genelinde ortak rol tabanlı Access Control (RBAC) sunar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
+Çalışma alanı tabanlı kaynaklar, kaynaklarınızın tamamında ortak Role-Based Access Control (RBAC) sunar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
 
 **Çalışma alanı tabanlı kaynaklar şu anda tüm ticari bölgelerde ve Azure ABD kamu 'da kullanılabilir**
 
@@ -88,7 +86,7 @@ Application Insights deneyiminde Application Insights klasik kaynak sorguları, 
 
 ## <a name="programmatic-resource-migration"></a>Programlı kaynak geçişi
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle şunu çalıştırmanız gerekir:
 

@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs Data Rest 'i şifrelemek için kendi 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537267"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
@@ -26,7 +26,7 @@ Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure
 Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Azure Event Hubs ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmış olmasını gerektirir. Bunlar: **geçici silme** ve **Temizleme**. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
+> Azure Event Hubs ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmış olmasını gerektirir. Bunlar:  **geçici silme** ve **Temizleme**. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
 
 ## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir
 Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için şu adımları izleyin:
@@ -103,7 +103,7 @@ Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her g
 | keyVault | Anahtar kasasının tam adı. |
 | anahtar | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
 | sürüm | Kullanılan anahtarın sürümü. |
-| çalışmasını | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
+| operation | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
 | kod | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
 | message | İşlemle ilişkili herhangi bir hata iletisi |
 
@@ -223,9 +223,9 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
-    > - `<EventHubsClusterName>`-Event Hubs Kümenizin adı    
-    > - `<EventHubsNamespaceName>`-Event Hubs ad alanının adı
-    > - `<Location>`-Event Hubs ad alanınız konumu
+    > - `<EventHubsClusterName>` -Event Hubs Kümenizin adı    
+    > - `<EventHubsNamespaceName>` -Event Hubs ad alanının adı
+    > - `<Location>` -Event Hubs ad alanınız konumu
 
     ```json
     {
@@ -356,15 +356,15 @@ Bu adımda, Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleirsini
     }
     ``` 
 
-2. Şablon parametre dosyası oluşturma: **üzerindeUpdateEventHubClusterAndNamespaceParams.js**. 
+2. Şablon parametre dosyası oluşturma: ** üzerindeUpdateEventHubClusterAndNamespaceParams.js**. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
-    > - `<EventHubsClusterName>`-Event Hubs Kümenizin adı.        
-    > - `<EventHubsNamespaceName>`-Event Hubs ad alanının adı
-    > - `<Location>`-Event Hubs ad alanınız konumu
-    > - `<KeyVaultName>`-Anahtar kasanızın adı
-    > - `<KeyName>`-Anahtar kasasındaki anahtarın adı
+    > - `<EventHubsClusterName>` -Event Hubs Kümenizin adı.        
+    > - `<EventHubsNamespaceName>` -Event Hubs ad alanının adı
+    > - `<Location>` -Event Hubs ad alanınız konumu
+    > - `<KeyVaultName>` -Anahtar kasanızın adı
+    > - `<KeyName>` -Anahtar kasasındaki anahtarın adı
 
     ```json
     {

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 22f36448a4246f7cc8c66b2c4f8051c835ed939a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86510166"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963491"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux sanal makineleri için kanarya dağıtım stratejisini yapılandırma
 
@@ -25,7 +25,7 @@ ms.locfileid: "86510166"
 
 Azure Pipelines, sanal makinelere dağıtımlar için tam özellikli bir CI/CD otomasyon araçları kümesi sağlar. Azure portal bir Azure VM için sürekli teslim işlem hattı yapılandırabilirsiniz.
 
-Bu makalede, çok makineli dağıtımlar için kanarya stratejisini kullanan bir CI/CD işlem hattının nasıl ayarlanacağı gösterilmektedir. Azure portal Ayrıca, [yuvarlama](https://aka.ms/AA7jlh8) ve [mavi-yeşil](https://aka.ms/AA83fwu)gibi diğer stratejileri de destekler.
+Bu makalede, çok makineli dağıtımlar için kanarya stratejisini kullanan bir CI/CD işlem hattının nasıl ayarlanacağı gösterilmektedir. Azure portal Ayrıca, [yuvarlama](./tutorial-devops-azure-pipelines-classic.md) ve [mavi-yeşil](./tutorial-azure-devops-blue-green-strategy.md)gibi diğer stratejileri de destekler.
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Sanal makinelerde CI/CD 'yi yapılandırma
 
@@ -72,8 +72,8 @@ Sürekli teslim seçeneğini kullanarak, Azure Portal sanal makinelerinize yöne
    ![Deployscripts klasöründe deploy.sh gösteren yapılar bölmesi](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Diğer dağıtım stratejileri
-- [Sıralı dağıtım stratejisini yapılandırma](https://aka.ms/AA7jlh8)
-- [Mavi yeşil dağıtım stratejisini yapılandırma](https://aka.ms/AA83fwu)
+- [Sıralı dağıtım stratejisini yapılandırma](./tutorial-devops-azure-pipelines-classic.md)
+- [Mavi yeşil dağıtım stratejisini yapılandırma](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projeleri
 

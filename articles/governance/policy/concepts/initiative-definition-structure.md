@@ -1,14 +1,14 @@
 ---
 title: Girişim tanımı yapısının ayrıntıları
 description: Kuruluşunuzdaki Azure kaynaklarına dağıtım için ilke tanımlarını gruplamak üzere ilke girişim tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 08/17/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048508"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876184"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Ilke girişimi tanım yapısı
 
@@ -102,7 +102,7 @@ Aşağıdaki örnek, iki etiket işlemek için bir girişim oluşturmayı göste
 
 Azure Ilkesi yerleşik bileşenleri ve desenleri [Azure ilke örnekleri](../samples/index.md)' nde bulunur.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 İsteğe bağlı `metadata` özelliği, ilke girişim tanımıyla ilgili bilgileri depolar.
 Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır.
@@ -248,19 +248,18 @@ Bir ilke tanımını temsil eden her _dizi_ öğesi aşağıdaki özelliklere sa
 ]
 ```
 
-## <a name="policy-definitions-groups-preview"></a><a name="policy-definition-groups"></a>İlke tanımları grupları (Önizleme)
+## <a name="policy-definition-groups"></a>İlke Tanım grupları
 
-Azure Ilkesinin [yasal uyumluluk](./regulatory-compliance.md) (Önizleme) özelliğinin bir parçası olarak, bir girişim tanımındaki ilke tanımları gruplandırılabilir. Bu bilgiler, `policyDefinitionGroups` _dizi_ özelliğinde tanımlanmıştır. Bu gruplandırmalar, ilke tanımının kapsama sağladığı **Denetim** ve **Uyumluluk etki alanı** gibi ek ayrıntılara sahiptir.
-Ek gruplandırma ayrıntıları, Microsoft tarafından oluşturulan **Policymetadata** nesnesinde bulunabilir. Bilgi için bkz. [meta veri nesneleri](#metadata-objects).
+Bir girişim tanımındaki ilke tanımları gruplandırılabilir ve kategorilere ayrılır. Azure Ilkesinin [mevzuat uyumluluğu](./regulatory-compliance.md) (Önizleme) **özelliği, bu** özelliği tanımlar ve **Uyumluluk etki alanlarına**tanımları gruplamak için kullanır. Bu bilgiler, `policyDefinitionGroups` _dizi_ özelliğinde tanımlanmıştır. Ek gruplandırma ayrıntıları, Microsoft tarafından oluşturulan **Policymetadata** nesnesinde bulunabilir. Bilgi için bkz. [meta veri nesneleri](#metadata-objects).
 
 ### <a name="policy-definition-groups-parameters"></a>İlke Tanım grupları parametreleri
 
 İçindeki her _dizi_ öğesi `policyDefinitionGroups` aşağıdaki özelliklerden her ikisine de sahip olmalıdır:
 
-- `name` (dize) \[ gerekli \] : **denetimin**kısa adı. Bu özelliğin değeri içinde tarafından kullanılır `groupNames` `policyDefinitions` .
-- `category` (dize): denetimin **Uyumluluk etki alanı** .
-- `displayName` (dize): **denetimin**kolay adı. Portal tarafından kullanılır.
-- `description` (dize): **denetimin** ne yaptığını açıklama.
+- `name` (dize) \[ gerekli \] : **grubun**kısa adı. Mevzuat uyumluluğu, **Denetim**. Bu özelliğin değeri içinde tarafından kullanılır `groupNames` `policyDefinitions` .
+- `category` (dize): grubun ait olduğu hiyerarşi. Yasal uyumluluk bölümünde, denetimin **Uyumluluk etki alanı** .
+- `displayName` (dize): **Grup** veya **denetimin**kolay adı. Portal tarafından kullanılır.
+- `description` (dize): **grubun** veya **denetimin** neleri kapsadığından bir açıklama.
 - `additionalMetadataId`(dize): **Denetim** ve **Uyumluluk etki alanı**hakkında ek ayrıntılara sahip [policymetadata](#metadata-objects) nesnesinin konumu.
 
   > [!NOTE]

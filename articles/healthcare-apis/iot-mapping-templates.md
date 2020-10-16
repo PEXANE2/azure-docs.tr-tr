@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
 ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87553657"
 ---
-# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) eşleme şablonları
+# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>FHIR için Azure IoT Bağlayıcısı’nın (önizleme) eşleme şablonları
 Bu makalede, eşleme şablonları kullanılarak FHıR için Azure IoT bağlayıcısının nasıl yapılandırılacağı açıklanır.
 
 FHıR için Azure IoT Bağlayıcısı, iki tür JSON tabanlı eşleme şablonu gerektirir. İlk tür olan **cihaz eşleme**, `devicedata` Azure Olay Hub 'ı uç noktasına gönderilen cihaz yüklerini eşleştirmekten sorumludur. Türleri, cihaz tanımlayıcılarını, ölçüm Tarih saatini ve ölçüm değerlerini ayıklar. İkinci tür olan **fhır eşleme**, fhır kaynağı için eşlemeyi denetler. Bu, izleme döneminin uzunluğunu, değerleri depolamak için kullanılan FHıR veri türünü ve terminoloji kodlarını yapılandırmanızı sağlar. 
@@ -39,7 +39,7 @@ Normalleştirme sırasında ne olacağı hakkında kavramsal bir örnek aşağı
 
 ![Normalleştirme örneği](media/concepts-iot-mapping-templates/normalization-example.png)
 
-İçerik yükünün kendisi, üç bölümden oluşan bir Azure Olay Hub iletisidir: Body, Properties ve SystemProperties. , `Body` BIR UTF-8 kodlu dizeyi temsil eden bir bayt dizisidir. Şablon değerlendirmesi sırasında, bayt dizisi otomatik olarak dize değerine dönüştürülür. `Properties`, ileti Oluşturucu tarafından kullanılmak üzere bir anahtar değer koleksiyonudur. `SystemProperties`Ayrıca, Azure Event hub çerçevesi tarafından otomatik olarak doldurulmuş girdilerle ayrılmış bir anahtar değer koleksiyonudur.
+İçerik yükünün kendisi, üç bölümden oluşan bir Azure Olay Hub iletisidir: Body, Properties ve SystemProperties. , `Body` BIR UTF-8 kodlu dizeyi temsil eden bir bayt dizisidir. Şablon değerlendirmesi sırasında, bayt dizisi otomatik olarak dize değerine dönüştürülür. `Properties` , ileti Oluşturucu tarafından kullanılmak üzere bir anahtar değer koleksiyonudur. `SystemProperties` Ayrıca, Azure Event hub çerçevesi tarafından otomatik olarak doldurulmuş girdilerle ayrılmış bir anahtar değer koleksiyonudur.
 
 ```json
 {
@@ -352,7 +352,7 @@ CodeValueFhirTemplate Şu anda FHıR eşlemesinde desteklenen tek şablondur.  K
 |**Bileşenler []. Kodları**|Bileşene uygulanacak bir veya daha fazla [ortak](http://hl7.org/fhir/datatypes-definitions.html#coding) .
 |**Bileşenler []. Deeri**|Bileşendeki Ayıklanacak ve temsil edilecek değer. Daha fazla bilgi için bkz. [değer türü şablonları](#valuetypes).
 
-### <a name="value-type-templates"></a>Değer türü şablonları<a name="valuetypes"></a>
+### <a name="value-type-templates"></a>Değer türü şablonları <a name="valuetypes"></a>
 Şu anda desteklenen değer türü şablonları aşağıda verilmiştir. Gelecekte, daha fazla şablon eklenebilir.
 #### <a name="sampleddata"></a>SampledData
 [Sampleddata](http://hl7.org/fhir/datatypes.html#SampledData) fhır veri türünü temsil eder. İzleme ölçümleri, zaman içinde bir noktada başlayan bir değer akışına yazılır ve tanımlanan süre kullanılarak ileri 'yi artırmaktadır. Değer yoksa, `E` veri akışına yazılır. Süre, iki değerden daha fazla değerin veri akışında aynı konumda yer alıyorsa, en son değer kullanılır. Aynı mantık, SampledData kullanan bir izleme güncellendiği zaman uygulanır.

@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297479"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanarak geçiş etkinliğini izleme
@@ -108,7 +108,7 @@ Dikey pencerenin alt kısmı tabloları listeler ve geçiş ilerlemesinin hızl�
 
 Aşağıdaki tabloda Tablo düzeyi ayrıntılarında gösterilen alanlar açıklanmaktadır.
 
-| Alan adı        | Description       |
+| Alan adı        | Açıklama       |
 | ------------- | ------------- |
 | **Tam yük tamamlandı**      | Tam veri yükünü tamamlayan tablo sayısı. |
 | **Tam yük sıraya alındı**      | Tam yük için sıraya alınan tablo sayısı.      |
@@ -129,7 +129,7 @@ Geçiş ilerlemesini tam yükleme ve artımlı veri eşitleme içinde gösteren 
 
 Aşağıdaki tabloda tablo düzeyinde geçiş ilerlemede gösterilen alanlar açıklanmaktadır.
 
-| Alan adı        | Description       |
+| Alan adı        | Açıklama       |
 | ------------- | ------------- |
 | **Durum-eşitleniyor**      | Sürekli eşitleme çalışıyor. |
 | **Ekle**      | Hedefe uygulanan CDC ekleme sayısı.      |

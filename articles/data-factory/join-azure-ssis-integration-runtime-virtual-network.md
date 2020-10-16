@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69ec30a14d4c04e1f47c909e829f7388132e64d6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187821"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018225"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime'ı sanal ağa bağlama
 
@@ -105,7 +105,7 @@ Bu diyagramda Azure-SSIS IR için gereken bağlantılar gösterilmektedir:
 
 ![Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
 
-### <a name="set-up-permissions"></a><a name="perms"></a>İzinleri ayarla
+### <a name="set-up-permissions"></a><a name="perms"></a> İzinleri ayarla
 
 Azure-SSIS IR oluşturan kullanıcının aşağıdaki izinlere sahip olması gerekir:
 
@@ -117,7 +117,7 @@ Azure-SSIS IR oluşturan kullanıcının aşağıdaki izinlere sahip olması ger
 
 - SSIS IR 'nizi klasik bir sanal ağa katılıyorsanız yerleşik, klasik sanal makine katılımcısı rolünü kullanmanızı öneririz. Aksi takdirde, sanal ağa ekleme iznini içeren özel bir rol tanımlamanız gerekir.
 
-### <a name="select-the-subnet"></a><a name="subnet"></a>Alt ağı seçin
+### <a name="select-the-subnet"></a><a name="subnet"></a> Alt ağı seçin
 
 Bir alt ağ seçtiğinizde: 
 
@@ -141,7 +141,7 @@ Bir sanal ağa katılırken Azure-SSIS IR için kendi statik genel IP adreslerin
 
 - Bunlar ve sanal ağ aynı abonelikte ve aynı bölgede olmalıdır.
 
-### <a name="set-up-the-dns-server"></a><a name="dns_server"></a>DNS sunucusunu ayarlama 
+### <a name="set-up-the-dns-server"></a><a name="dns_server"></a> DNS sunucusunu ayarlama 
 Özel ana bilgisayar adınızı çözümlemek için Azure-SSIS IR tarafından birleştirilmiş bir sanal ağda kendi DNS sunucunuzu kullanmanız gerekiyorsa, aynı zamanda küresel Azure ana bilgisayar adlarını (örneğin, adlı bir Azure Depolama Blobu) çözümleyebiliyorsanız emin olun `<your storage account>.blob.core.windows.net` . 
 
 Önerilen bir yaklaşım aşağıda verilmiştir: 
@@ -151,31 +151,31 @@ Bir sanal ağa katılırken Azure-SSIS IR için kendi statik genel IP adreslerin
 Daha fazla bilgi için, bkz. [kendı DNS sunucunuzu kullanan ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). 
 
 > [!NOTE]
-> Özel ana bilgisayar adınız için tam etki alanı adı (FQDN) kullanın, örneğin `<your_private_server>.contoso.com` yerine kullanın `<your_private_server>` , Azure-SSIS IR kendi DNS son ekini otomatik olarak ekler.
+> Lütfen özel ana bilgisayar adınız (örneğin yerine kullanın) için tam etki alanı adı (FQDN) kullanın `<your_private_server>.contoso.com` `<your_private_server>` . Alternatif olarak, kendi DNS son ekini (örneğin `contoso.com` ) herhangi bir Nitelenmemiş tek etiketli etki alanı adına otomatik olarak eklemek ve bunu DNS sorgularında kullanmadan önce BIR FQDN 'ye dönüştürmek için Azure-SSIS IR standart özel bir kurulum kullanabilirsiniz, bkz. [Standart özel kurulum örnekleri](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup#standard-custom-setup-samples). 
 
-### <a name="set-up-an-nsg"></a><a name="nsg"></a>NSG ayarlama
+### <a name="set-up-an-nsg"></a><a name="nsg"></a> NSG ayarlama
 Azure-SSIS IR tarafından kullanılan alt ağ için bir NSG uygulamanız gerekiyorsa, gelen ve giden trafiğe aşağıdaki bağlantı noktalarıyla izin verin: 
 
 -   **Azure-SSIS IR gelen gereksinimi**
 
 | Yön | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Yorumlar |
 |---|---|---|---|---|---|---|
-| Gelen | TCP | BatchNodeManagement | * | VirtualNetwork | 29876, 29877 (IR 'ye Kaynak Yöneticisi sanal bir ağa katılırsanız) <br/><br/>10100, 20100, 30100 (IR 'yi klasik bir sanal ağa katılırsanız)| Data Factory hizmeti, sanal ağdaki Azure-SSIS IR düğümlerle iletişim kurmak için bu bağlantı noktalarını kullanır. <br/><br/> Bir alt ağ düzeyinde NSG oluşturup oluşturamadıkça, Data Factory Azure-SSIS IR barındıran sanal makinelere bağlı ağ arabirimi kartları (NIC 'ler) düzeyinde her zaman bir NSG yapılandırır. Yalnızca belirtilen bağlantı noktalarında Data Factory IP adreslerinden gelen trafiğe NIC düzeyinde NSG tarafından izin verilir. Bu bağlantı noktalarını alt ağ düzeyinde internet trafiğine açmış olsanız bile, IP adreslerinden Data Factory IP adreslerinden gelen trafik NIC düzeyinde engellenir. |
-| Gelen | TCP | Corpnetgördünüz | * | VirtualNetwork | 3389 | Seçim Bu kural yalnızca Microsoft Supporter 'ın müşteriyi gelişmiş sorun giderme için açmasını istemesi ve sorun giderirken hemen kapatılabilir olması durumunda gereklidir. **Corpnetgördünüz** hizmet etiketi, yalnızca Microsoft Kurumsal ağındaki güvenli erişim iş istasyonlarının uzak masaüstünü kullanmasına izin verir. Ve bu hizmet etiketi portaldan seçilemez ve yalnızca Azure PowerShell veya Azure CLı aracılığıyla kullanılabilir. <br/><br/> NIC düzeyi NSG 'de, bağlantı noktası 3389 varsayılan olarak açıktır ve Windows Güvenlik Duvarı 'nda, koruma için her IR düğümünde Varsayılan olarak giden bağlantı noktası 3389 Azure-SSIS IR izin vermediği sırada 3389 numaralı bağlantı noktasını denetlemenize izin veririz. |
+| Inbound | TCP | BatchNodeManagement | * | VirtualNetwork | 29876, 29877 (IR 'ye Kaynak Yöneticisi sanal bir ağa katılırsanız) <br/><br/>10100, 20100, 30100 (IR 'yi klasik bir sanal ağa katılırsanız)| Data Factory hizmeti, sanal ağdaki Azure-SSIS IR düğümlerle iletişim kurmak için bu bağlantı noktalarını kullanır. <br/><br/> Bir alt ağ düzeyinde NSG oluşturup oluşturamadıkça, Data Factory Azure-SSIS IR barındıran sanal makinelere bağlı ağ arabirimi kartları (NIC 'ler) düzeyinde her zaman bir NSG yapılandırır. Yalnızca belirtilen bağlantı noktalarında Data Factory IP adreslerinden gelen trafiğe NIC düzeyinde NSG tarafından izin verilir. Bu bağlantı noktalarını alt ağ düzeyinde internet trafiğine açmış olsanız bile, IP adreslerinden Data Factory IP adreslerinden gelen trafik NIC düzeyinde engellenir. |
+| Inbound | TCP | Corpnetgördünüz | * | VirtualNetwork | 3389 | Seçim Bu kural yalnızca Microsoft Supporter 'ın müşteriyi gelişmiş sorun giderme için açmasını istemesi ve sorun giderirken hemen kapatılabilir olması durumunda gereklidir. **Corpnetgördünüz** hizmet etiketi, yalnızca Microsoft Kurumsal ağındaki güvenli erişim iş istasyonlarının uzak masaüstünü kullanmasına izin verir. Ve bu hizmet etiketi portaldan seçilemez ve yalnızca Azure PowerShell veya Azure CLı aracılığıyla kullanılabilir. <br/><br/> NIC düzeyi NSG 'de, bağlantı noktası 3389 varsayılan olarak açıktır ve Windows Güvenlik Duvarı 'nda, koruma için her IR düğümünde Varsayılan olarak giden bağlantı noktası 3389 Azure-SSIS IR izin vermediği sırada 3389 numaralı bağlantı noktasını denetlemenize izin veririz. |
 ||||||||
 
 -   **Azure-SSIS IR giden gereksinimi**
 
 | Yön | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Yorumlar |
 |---|---|---|---|---|---|---|
-| Giden | TCP | VirtualNetwork | * | AzureCloud | 443 | Sanal ağdaki Azure-SSIS IR düğümleri Azure depolama ve Azure Event Hubs gibi Azure hizmetlerine erişmek için bu bağlantı noktasını kullanır. |
-| Giden | TCP | VirtualNetwork | * | İnternet | 80 | Seçim Sanal ağdaki Azure-SSIS IR düğümleri Internet 'ten bir sertifika iptal listesi indirmek için bu bağlantı noktasını kullanır. Bu trafiği engellerseniz, IR 'yi başlatır ve sertifika kullanımı için sertifika iptal listesini denetleme yeteneğini kaybederseniz performansı indirgeyede karşılaşabilirsiniz. Hedefi belirli FQDN 'lere daha fazla daraltmak istiyorsanız lütfen **Azure ExpressRoute veya UDR kullanma** bölümüne bakın|
-| Giden | TCP | VirtualNetwork | * | Sql | 1433, 11000-11999 | Seçim Bu kural yalnızca, sanal ağdaki Azure-SSIS IR düğümleri sunucunuz tarafından barındırılan bir SSıSDB 'ye erişirken gereklidir. Sunucu bağlantı ilkeniz **yeniden yönlendirme**yerine **proxy** olarak ayarlandıysa yalnızca bağlantı noktası 1433 gerekir. <br/><br/> Bu giden güvenlik kuralı, sanal ağ veya özel uç noktayla yapılandırılmış SQL veritabanı 'nda SQL yönetilen örneğiniz tarafından barındırılan bir SSSıSDB için geçerli değildir. |
-| Giden | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Seçim Bu kural yalnızca sanal ağdaki Azure-SSIS IR düğümleri, sanal ağda veya özel uç noktayla yapılandırılmış SQL veritabanı tarafından barındırılan bir SSıSDB 'ye erişirken gereklidir. Sunucu bağlantı ilkeniz **yeniden yönlendirme**yerine **proxy** olarak ayarlandıysa yalnızca bağlantı noktası 1433 gerekir. |
-| Giden | TCP | VirtualNetwork | * | Depolama | 445 | Seçim Bu kural yalnızca Azure dosyalarında depolanan SSIS paketini yürütmek istediğinizde gereklidir. |
+| Outbound | TCP | VirtualNetwork | * | AzureCloud | 443 | Sanal ağdaki Azure-SSIS IR düğümleri Azure depolama ve Azure Event Hubs gibi Azure hizmetlerine erişmek için bu bağlantı noktasını kullanır. |
+| Outbound | TCP | VirtualNetwork | * | İnternet | 80 | Seçim Sanal ağdaki Azure-SSIS IR düğümleri Internet 'ten bir sertifika iptal listesi indirmek için bu bağlantı noktasını kullanır. Bu trafiği engellerseniz, IR 'yi başlatır ve sertifika kullanımı için sertifika iptal listesini denetleme yeteneğini kaybederseniz performansı indirgeyede karşılaşabilirsiniz. Hedefi belirli FQDN 'lere daha fazla daraltmak istiyorsanız lütfen **Azure ExpressRoute veya UDR kullanma** bölümüne bakın|
+| Outbound | TCP | VirtualNetwork | * | Sql | 1433, 11000-11999 | Seçim Bu kural yalnızca, sanal ağdaki Azure-SSIS IR düğümleri sunucunuz tarafından barındırılan bir SSıSDB 'ye erişirken gereklidir. Sunucu bağlantı ilkeniz **yeniden yönlendirme**yerine **proxy** olarak ayarlandıysa yalnızca bağlantı noktası 1433 gerekir. <br/><br/> Bu giden güvenlik kuralı, sanal ağ veya özel uç noktayla yapılandırılmış SQL veritabanı 'nda SQL yönetilen örneğiniz tarafından barındırılan bir SSSıSDB için geçerli değildir. |
+| Outbound | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Seçim Bu kural yalnızca sanal ağdaki Azure-SSIS IR düğümleri, sanal ağda veya özel uç noktayla yapılandırılmış SQL veritabanı tarafından barındırılan bir SSıSDB 'ye erişirken gereklidir. Sunucu bağlantı ilkeniz **yeniden yönlendirme**yerine **proxy** olarak ayarlandıysa yalnızca bağlantı noktası 1433 gerekir. |
+| Outbound | TCP | VirtualNetwork | * | Depolama | 445 | Seçim Bu kural yalnızca Azure dosyalarında depolanan SSIS paketini yürütmek istediğinizde gereklidir. |
 ||||||||
 
-### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a>Azure ExpressRoute veya UDR kullanma
+### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Azure ExpressRoute veya UDR kullanma
 Azure-SSIS IR giden trafiği incelemek istiyorsanız, [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) Zorlamalı tünel oluşturma (bir BGP yolu, 0.0.0.0/0, sanal ağa bildirme) veya [udrs](../virtual-network/virtual-networks-udr-overview.md)aracılığıyla bir güvenlik duvarı ya da [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/) olarak ağ sanal gereci (NVA) ile Azure-SSIS IR başlatılan trafiği şirket içi güvenlik duvarı aracısına yönlendirebilir. 
 
 ![Azure-SSIS IR için NVA senaryosu](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
@@ -236,7 +236,7 @@ Giden trafiğe izin vermek için güvenlik duvarı gerecinin, NSG giden kurallar
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Genel      | <ul><li><b>Azure Data Factory (Yönetim)</b><ul><li>\*. frontend.clouddatahub.net</li></ul></li><li><b>Azure depolama (Yönetim)</b><ul><li>\*.blob.core.windows.net</li><li>\*. table.core.windows.net</li></ul></li><li><b>Azure Container Registry (özel kurulum)</b><ul><li>\*. azurecr.io</li></ul></li><li><b>Olay Hub 'ı (günlük)</b><ul><li>\*. servicebus.windows.net</li></ul></li><li><b>Microsoft günlük hizmeti (Iç kullanım)</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
     | Azure Kamu  | <ul><li><b>Azure Data Factory (Yönetim)</b><ul><li>\*. frontend.datamovement.azure.us</li></ul></li><li><b>Azure depolama (Yönetim)</b><ul><li>\*. blob.core.usgovcloudapi.net</li><li>\*. table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Container Registry (özel kurulum)</b><ul><li>\*. azurecr.us</li></ul></li><li><b>Olay Hub 'ı (günlük)</b><ul><li>\*. servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft günlük hizmeti (Iç kullanım)</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
-    | Azure Çin 21Vianet     | <ul><li><b>Azure Data Factory (Yönetim)</b><ul><li>\*. frontend.datamovement.azure.cn</li></ul></li><li><b>Azure depolama (Yönetim)</b><ul><li>\*. blob.core.chinacloudapi.cn</li><li>\*. table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (özel kurulum)</b><ul><li>\*. azurecr.cn</li></ul></li><li><b>Olay Hub 'ı (günlük)</b><ul><li>\*. servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft günlük hizmeti (Iç kullanım)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
+    | Azure China 21Vianet     | <ul><li><b>Azure Data Factory (Yönetim)</b><ul><li>\*. frontend.datamovement.azure.cn</li></ul></li><li><b>Azure depolama (Yönetim)</b><ul><li>\*. blob.core.chinacloudapi.cn</li><li>\*. table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (özel kurulum)</b><ul><li>\*. azurecr.cn</li></ul></li><li><b>Olay Hub 'ı (günlük)</b><ul><li>\*. servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft günlük hizmeti (Iç kullanım)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
 
     Azure depolama, Azure Container Registry ve Olay Hub 'ının FQDN 'leri itibariyle, bu uç noktalara giden ağ trafiğinin güvenlik duvarı gerecinize yönlendirilmek yerine Azure omurga ağı üzerinden geçmesi için sanal ağınız için aşağıdaki hizmet uç noktalarını etkinleştirmeyi de tercih edebilirsiniz:
     -  Microsoft.Storage
@@ -279,7 +279,7 @@ Azure-SSIS IR giden trafiği inceleme yeteneğine ihtiyacınız yoksa, tüm traf
 > [!NOTE]
 > Sonraki atlama türü **İnternet** ile rota belirtme tüm trafiğin internet üzerinden gidebileceği anlamına gelmez. Hedef adres Azure hizmetlerinden birine ait olduğu sürece Azure, trafiği Internet 'e yönlendirmek yerine doğrudan Azure omurga ağı üzerinden hizmete yönlendirir.
 
-### <a name="set-up-the-resource-group"></a><a name="resource-group"></a>Kaynak grubunu ayarlama
+### <a name="set-up-the-resource-group"></a><a name="resource-group"></a> Kaynak grubunu ayarlama
 
 Azure-SSIS IR, sanal ağ ile aynı kaynak grubunda belirli ağ kaynaklarını oluşturması gerekir. Bu kaynaklar şunları içerir:
 - * \<Guid> -Azurebatch-cloudserviceloaddengeleyici*adlı bir Azure yük dengeleyici.
@@ -300,7 +300,7 @@ Sanal ağın/statik genel IP adreslerinin ait olduğu kaynak grubu/abonelik alt�
 
 Aboneliğinizin kaynak kotasının Yukarıdaki üç ağ kaynağı için yeterli olduğundan emin olun. Özellikle, sanal ağda oluşturulan her bir Azure-SSIS IR için, yukarıdaki üç ağ kaynağı için iki adet boş kota ayırmanız gerekir. Azure-SSIS IR, düzenli aralıklarla yükseltireceğiz, daha fazla bir kota kullanılacaktır.
 
-### <a name="faq"></a><a name="faq"></a>SSS
+### <a name="faq"></a><a name="faq"></a> SSS
 
 - Gelen bağlantı için Azure-SSIS IR kullanıma sunulan genel IP adresini nasıl koruyabilirim? Genel IP adresini kaldırmak mümkün mü?
  

@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87910024"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
@@ -42,9 +42,9 @@ Davet e-postasına alternatif olarak, bir konuğa uygulamanız veya portalınız
 
 > [!IMPORTANT]
 > Doğrudan bağlantı, kiracıya özgü olmalıdır. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. https://myapps.microsoft.comKimlik doğrulaması için kendi giriş kiracısına yönlendirireceği için, benzer ortak BIR URL, konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
- > - Uygulamalar erişim paneli:`https://myapps.microsoft.com/?tenantid=<tenant id>`
- > - Doğrulanmış bir etki alanı için uygulamalar erişim paneli:`https://myapps.microsoft.com/<;verified domain>`
- > - Azure portal:`https://portal.azure.com/<tenant id>`
+ > - Uygulamalar erişim paneli: `https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - Doğrulanmış bir etki alanı için uygulamalar erişim paneli: `https://myapps.microsoft.com/<;verified domain>`
+ > - Azure portal: `https://portal.azure.com/<tenant id>`
  > - Tek uygulama: bkz. [doğrudan oturum açma bağlantısı](../manage-apps/end-user-experiences.md#direct-sign-on-links) kullanma
 
 Davet e-postasında doğrudan bağlantı üzerinden önerilen bazı durumlar vardır. Bu özel durumlar kuruluşunuz için önemliyse, davet e-postasını hala gönderen yöntemleri kullanarak kullanıcıları davet etmenizi öneririz:
@@ -113,4 +113,4 @@ Dizininizde, Konuk **davetinin kabul edilebilir** değeri **Evet**olarak değiş
 - [Azure portal Azure Active Directory B2B işbirliği kullanıcıları ekleyin](add-users-administrator.md)
 - [Bilgi çalışanları, Azure Active Directory B2B işbirliği kullanıcılarını nasıl ekler?](add-users-information-worker.md)
 - [PowerShell kullanarak Azure Active Directory B2B işbirliği kullanıcıları ekleme](customize-invitation-api.md#powershell)
-- [Bir kuruluştan Konuk Kullanıcı olarak ayrılın](leave-the-organization.md)
+- [Kuruluştan konuk kullanıcı olarak ayrılma](leave-the-organization.md)

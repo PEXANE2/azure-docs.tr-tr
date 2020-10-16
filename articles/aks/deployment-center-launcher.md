@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360846"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes için dağıtım merkezi
@@ -81,7 +81,7 @@ Bu öğreticide şunları yapacaksınız:
 
     Azure Pipelines, kod projenizi otomatik olarak derlemek ve test etmek ve diğer kullanıcıların kullanımına sunmak için kullanabileceğiniz bir bulut hizmetidir. Azure Pipelines sürekli tümleştirme ve sürekli teslimi sürekli ve tutarlı bir şekilde bir araya getirerek kodunuzu oluşturup her hedefe sunamaz.
 
-    ![Container Registry](media/deployment-center-launcher/container-registry.png)
+    ![Container Kayıt Defteri](media/deployment-center-launcher/container-registry.png)
 
 1. Devam eden ardışık düzeni görmek için bağlantıyı seçin.
 

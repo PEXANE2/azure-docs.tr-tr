@@ -1,23 +1,18 @@
 ---
 title: Azure 'da Oracle veritabanları için başvuru mimarileri | Microsoft Docs
 description: Microsoft Azure Sanal Makineler üzerinde Oracle Database Enterprise Edition veritabanlarını çalıştırmaya yönelik mimarilere başvurur.
-services: virtual-machines-linux
 author: dbakevlar
-manager: ''
-tags: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: f9765f4ce47e6e698daf1680aecf059241c58382
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274445"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993577"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -33,7 +28,7 @@ Oracle veritabanınızın performansını en üst düzeye çıkarmak hakkında d
 
 ## <a name="high-availability-for-oracle-databases"></a>Oracle veritabanları için yüksek kullanılabilirlik
 
-Bulutta yüksek kullanılabilirlik elde etmek, her kuruluşun planlama ve tasarımının önemli bir parçasıdır. Microsoft Azure kullanılabilirlik [alanları](../../../availability-zones/az-overview.md) ve kullanılabilirlik kümeleri sunar (kullanılabilirlik bölgelerinin kullanılamadığı bölgelerde kullanılmak üzere). Bulut için tasarlamak üzere [sanal makinelerinizin kullanılabilirliğini yönetme](../../../virtual-machines/linux/manage-availability.md) hakkında daha fazla bilgi edinin.
+Bulutta yüksek kullanılabilirlik elde etmek, her kuruluşun planlama ve tasarımının önemli bir parçasıdır. Microsoft Azure kullanılabilirlik [alanları](../../../availability-zones/az-overview.md) ve kullanılabilirlik kümeleri sunar (kullanılabilirlik bölgelerinin kullanılamadığı bölgelerde kullanılmak üzere). Bulut için tasarlamak üzere [sanal makinelerinizin kullanılabilirliğini yönetme](../../manage-availability.md) hakkında daha fazla bilgi edinin.
 
 Oracle Native araçlara ve sunumlarına ek olarak, Oracle [Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), Azure 'da AYARLANABILECEĞI fsfo, [parça](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)ve [altın başak](https://www.oracle.com/middleware/technologies/goldengate.html) [ile Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)gibi yüksek kullanılabilirliğe yönelik çözümler sağlar. Bu kılavuz, bu çözümlerin her biri için başvuru mimarilerini içerir.
 
@@ -43,7 +38,7 @@ Son olarak, bulut için uygulamaları geçirirken veya oluştururken, [yeniden d
 
 Oracle gerçek uygulama kümesi (RAC), bir veritabanı depolamasına (paylaşılan-tüm mimari desenler) erişen çok sayıda örneğe sahip olacak şekilde, müşterilerin yüksek bir geçiş yapmasına yardımcı olmak için Oracle tarafından sağlanan bir çözümdür. Oracle RAC, şirket içi yüksek kullanılabilirlik için de kullanılabilir olsa da, yalnızca örnek düzeyindeki hatalara karşı koruma ve raf düzeyinde ya da veri merkezi düzeyindeki hatalara karşı değil, bulutta yüksek kullanılabilirlik için yalnızca Oracle RAC kullanılamaz. Bu nedenle, Oracle, yüksek kullanılabilirlik için veritabanınızda Oracle Data Guard (tek örnekli veya RAC) kullanmanızı önerir. Müşteriler, iş açısından kritik uygulamalarını çalıştırmak için genellikle yüksek bir SLA gerektirir. Oracle RAC Şu anda Azure 'da Oracle tarafından sertifikalı veya desteklenmiyor. Ancak Azure, örnek düzeyindeki hatalara karşı korumaya yardımcı olmak için Azure gibi Kullanılabilirlik Alanları ve planlı bakım pencereleri sunmaktadır. Bunlara ek olarak müşteriler, veritabanlarını raf düzeyinde ve veri merkezi düzeyi ve coğrafi siyatik arızalardan yararlanarak yüksek performans ve dayanıklılık için Oracle veri koruyucusu, Oracle GoldenGate ve Oracle parçaları gibi teknolojileri de kullanabilir.
 
-Oracle veritabanlarını Oracle Data Guard veya GoldenGate ile birlikte birden çok [kullanılabilirlik](../../../availability-zones/az-overview.md) alanında çalıştırırken, müşteriler% 99,99 ' lik bir çalışma süresi SLA 'sı alabilir. Kullanılabilirlik bölgelerinin henüz mevcut olmadığı Azure bölgelerinde, müşteriler [kullanılabilirlik kümelerini](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) kullanabilir ve% 99,95 ' lik bir çalışma süresi SLA 'sı elde edebilir.
+Oracle veritabanlarını Oracle Data Guard veya GoldenGate ile birlikte birden çok [kullanılabilirlik](../../../availability-zones/az-overview.md) alanında çalıştırırken, müşteriler% 99,99 ' lik bir çalışma süresi SLA 'sı alabilir. Kullanılabilirlik bölgelerinin henüz mevcut olmadığı Azure bölgelerinde, müşteriler [kullanılabilirlik kümelerini](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) kullanabilir ve% 99,95 ' lik bir çalışma süresi SLA 'sı elde edebilir.
 
 >NOTE: Microsoft tarafından sunulan çalışma süresi SLA 'sına göre çok daha yüksek bir çalışma süresi hedefi olabilir.
 
@@ -71,7 +66,7 @@ Oracle Data Guard kullanırken, ikincil veritabanınızı salt okuma amacıyla d
 > Etkin veri koruma ek lisanslama gerektirir. Bu lisans, en çok eşitleme özelliğini kullanmak için de gereklidir. Lisanslama etkilerini tartışmak için lütfen Oracle temsilcinizle bağlantı sağlayın.
 
 #### <a name="oracle-data-guard-with-fsfo"></a>FSFO ile Oracle Data Guard
-Hızlı başlangıç yük devretmesi (FSFO) ile Oracle Data Guard, aracıyı ayrı bir makineye ayarlayarak ek dayanıklılık sağlayabilir. Data Guard Broker ve ikincil veritabanı, gözlemci çalıştırır ve kapalı kalma süresi için birincil veritabanını gözlemleyin. Bu, Data Guard gözlemci kurulumunda de artıklık sağlar. 
+Fast-Start yük devretme (FSFO) ile Oracle Data Guard, aracıyı ayrı bir makineye ayarlayarak ek dayanıklılık sağlayabilir. Data Guard Broker ve ikincil veritabanı, gözlemci çalıştırır ve kapalı kalma süresi için birincil veritabanını gözlemleyin. Bu, Data Guard gözlemci kurulumunda de artıklık sağlar. 
 
 Oracle Database sürüm 12,2 ve üzeri ile, tek bir Oracle Data Guard Broker yapılandırması ile birden çok Observer yapılandırmak da mümkündür. Bu kurulum, bir gözlemci ve ikincil veritabanı deneyimine kapalı kalma olasılığına karşı ek kullanılabilirlik sağlar. Data Guard Aracısı hafif ve görece küçük bir sanal makinede barındırılabilir. Data Guard Aracısı ve avantajları hakkında daha fazla bilgi edinmek için bu konudaki [Oracle belgelerini](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) ziyaret edin.
 
@@ -152,7 +147,7 @@ Oracle parçalama öncelikle aşağıdaki bileşenlerden oluşur. [Oracle parça
 
 - **Küresel hizmet** -genel hizmet normal veritabanı hizmetine benzerdir. Bir veritabanı hizmetinin tüm özelliklerine ek olarak, küresel bir hizmet, istemciler ile parça ve çoğaltma gecikmesi toleransı arasındaki bölge benzeşimi gibi parçalı veritabanları için özelliklere sahiptir. Parçalı bir veritabanına veri okumak/buradan veri yazmak için yalnızca bir genel hizmetin oluşturulması gerekir. Etkin Data Guard 'ı kullanırken ve parçaların salt okuma çoğaltmalarını ayarlarken, salt okuma iş yükleri için başka bir gGobal hizmeti oluşturabilirsiniz. İstemci bu genel Hizmetleri veritabanına bağlanmak için kullanabilir.
 
-- Parça **veritabanları-parça veritabanları Oracle** veritabanlarlarlardır. Her veritabanı, hızlı başlatma yük devretmesi (FSFO) etkin olan bir aracı yapılandırmasında Oracle Data Guard kullanılarak çoğaltılır. Her parçada Data Guard yük devretmesini ve çoğaltmasını ayarlamanız gerekmez. Bu, paylaşılan veritabanı oluşturulduğunda otomatik olarak yapılandırılır ve dağıtılır. Belirli bir parça başarısız olursa, Oracle paylaşımı birincil sunucudan bekleme moduna otomatik olarak yük devreder.
+- Parça **veritabanları-parça veritabanları Oracle** veritabanlarlarlardır. Her veritabanı, Fast-Start yük devretme (FSFO) etkin olan bir aracı yapılandırmasında Oracle Data Guard kullanılarak çoğaltılır. Her parçada Data Guard yük devretmesini ve çoğaltmasını ayarlamanız gerekmez. Bu, paylaşılan veritabanı oluşturulduğunda otomatik olarak yapılandırılır ve dağıtılır. Belirli bir parça başarısız olursa, Oracle paylaşımı birincil sunucudan bekleme moduna otomatik olarak yük devreder.
 
 Oracle parçalı veritabanlarını iki arabirim ile dağıtabilir ve yönetebilirsiniz: Oracle Enterprise Manager Cloud Control GUI ve/veya `GDSCTL` komut satırı yardımcı programı. Bulut denetimini kullanarak kullanılabilirlik ve performans için farklı parçaları da izleyebilirsiniz. Komut, parçaları `GDSCTL DEPLOY` ve ilgili dinleyicileri otomatik olarak oluşturur. Ayrıca, bu komut, yönetici tarafından belirtilen parça düzeyinde yüksek kullanılabilirlik için kullanılan çoğaltma yapılandırmasını otomatik olarak dağıtır.
 
@@ -209,7 +204,7 @@ Bu kurulum, örnek düzeyinde veya kullanılabilirlik bölgesi düzeyinde bir ha
 
 ## <a name="patching-and-maintenance"></a>Düzeltme eki uygulama ve bakım
 
-Oracle iş yüklerinizi Azure 'a dağıttığınızda, Microsoft tüm ana bilgisayar işletim sistemi düzeyinde düzeltme eki uygulamayı üstlenir. Planlı tüm işletim sistemi düzeyinde bakım, müşterilere bu planlı bakım için izin vermek üzere önceden gönderilir. İki farklı Kullanılabilirlik Alanları iki sunucu aynı anda hiçbir şekilde Düzeltme Eki. VM bakımı ve düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../../virtual-machines/linux/manage-availability.md) . 
+Oracle iş yüklerinizi Azure 'a dağıttığınızda, Microsoft tüm ana bilgisayar işletim sistemi düzeyinde düzeltme eki uygulamayı üstlenir. Planlı tüm işletim sistemi düzeyinde bakım, müşterilere bu planlı bakım için izin vermek üzere önceden gönderilir. İki farklı Kullanılabilirlik Alanları iki sunucu aynı anda hiçbir şekilde Düzeltme Eki. VM bakımı ve düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../manage-availability.md) . 
 
 Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure otomasyonu güncelleştirme yönetimi](../../../automation/update-management/update-mgmt-overview.md)kullanılarak otomatikleştirilebilir. Devre dışı kalma süresini en aza indirmek için Oracle veritabanınızın düzeltme ve sürdürme [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) veya [Azure Otomasyonu güncelleştirme yönetimi](../../../automation/update-management/update-mgmt-overview.md) kullanılarak otomatik ve zamanlanmış olabilir. Oracle veritabanlarınızın bağlamında nasıl kullanılabileceğini anlamak için [sürekli teslim ve mavi/yeşil dağıtımlar](/azure/devops/learn/what-is-continuous-delivery) konusuna bakın.
 
@@ -232,6 +227,6 @@ Senaryonuza uygulanan aşağıdaki Oracle başvuru makalelerini gözden geçirin
 
 - [Oracle Data Guard 'a giriş](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Oracle Data Guard aracı kavramları](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [Oracle GoldenGate 'i etkin-etkin yüksek kullanılabilirlik için yapılandırma](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [Oracle GoldenGate 'i Active-Active yüksek kullanılabilirlik için yapılandırma](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Oracle parçalara genel bakış](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Oracle etkin Data Guard her mesafede sıfır veri kaybı](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

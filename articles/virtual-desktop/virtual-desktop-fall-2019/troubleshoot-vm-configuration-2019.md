@@ -7,10 +7,10 @@ ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008636"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows sanal masaüstü (klasik) oturum ana bilgisayarı sanal makine yapılandırması
@@ -114,7 +114,7 @@ Bileşenlerin yüklendiğini doğrulamak ve hata iletilerini denetlemek için bu
 
 Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yüklendiğinde (el ile veya Azure Resource Manager şablonu ve PowerShell DSC aracılığıyla), bir kayıt belirteci sağlar. Aşağıdaki bölümde, Windows sanal masaüstü Aracısı ve belirteci için geçerli olan sorun giderme sorunları ele alınmaktadır.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Hata: Get-RdsSessionHost cmdlet 'inde dosyalanmış durum durumu kullanım dışı olarak gösteriyor
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Hata: Get-RdsSessionHost cmdlet 'inde dosyalanmış durum durumu kullanılamıyor olarak gösterir
 
 > [!div class="mx-imgBorder"]
 > ![Get-RdsSessionHost cmdlet 'i, durumu kullanım dışı olarak gösterir.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)

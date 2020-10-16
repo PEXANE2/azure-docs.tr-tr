@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service 'te (AKS) Windows Server düğüm havuzlarını ve uygulama iş yüklerini çalıştırdığınızda sık sorulan sorular bölümüne bakın.
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 10/12/2020
+ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927574"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013976"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 'deki Windows Server düğüm havuzları hakkında sık sorulan sorular
 
@@ -58,7 +58,7 @@ Windows node havuzlarıyla AKS kümelerinin Azure CNı (Gelişmiş) ağ modelini
 
 Şu anda, [istemci kaynak IP koruması][client-source-ip] Windows düğümlerinde desteklenmez.
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Maksimum değeri değiştirebilir miyim? düğüm başına düşen öğe sayısı?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Düğüm başına en fazla sayıda Pod 'yi değiştirebilir miyim?
 
 Evet. Kullanılabilir etkileri ve seçenekleri için bkz. [maksimum sayıda Pod][maximum-number-of-pods].
 
@@ -113,6 +113,49 @@ Evet, ancak Azure Izleyici, Windows kapsayıcılarından günlükleri (stdout, s
 
 Windows düğümlerine sahip bir küme, bağlantı noktası tükenmesi ile karşılaşmadan önce yaklaşık 500 hizmete sahip olabilir.
 
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>Windows düğümleri ile Azure Hibrit Avantajı kullanabilir miyim?
+
+Evet. Windows Server için Azure Hibrit Avantajı, şirket içi Windows Server lisansınızı AKS Windows düğümlerine getirmenize izin vererek işletim maliyetlerini azaltır.
+
+Azure Hibrit Avantajı, tüm AKS kümenizde veya tek tek düğümlerde kullanılabilir. Tek tek düğümler için [düğüm kaynak grubuna][resource-groups] gitmeniz ve Azure hibrit avantajı doğrudan düğümlere uygulamanız gerekir. Tek tek düğümlere Azure Hibrit Avantajı uygulama hakkında daha fazla bilgi için bkz. [Windows Server için Azure hibrit avantajı][hybrid-vms]. 
+
+Yeni bir AKS kümesinde Azure Hibrit Avantajı kullanmak için `--enable-ahub` bağımsız değişkenini kullanın.
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+Mevcut bir AKS kümesinde Azure Hibrit Avantajı kullanmak için, bağımsız değişkenini kullanarak kümeyi güncelleştirin `--enable-ahub` .
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+Azure Hibrit Avantajı kümede ayarlanmış olup olmadığını denetlemek için aşağıdaki komutu kullanın:
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+Kümede Azure Hibrit Avantajı etkinse, çıkışı `az vmss show` aşağıdakine benzer olacaktır:
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Kubernetes web panosunu Windows kapsayıcılarıyla kullanabilir miyim?
 
 Evet, [Kubernetes web panosunu][kubernetes-dashboard] Windows kapsayıcıları hakkındaki bilgilere erişmek için kullanabilirsiniz, ancak şu anda *kubectl exec* 'i çalışan bir Windows kapsayıcısına doğrudan Kubernetes Web panosundan çalıştıramazsınız. Çalışan Windows kapsayıcınıza bağlanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) küme Windows Server düğümlerine bakım veya sorun giderme IÇIN RDP Ile bağlanma][windows-rdp].
@@ -152,3 +195,5 @@ AKS 'de Windows Server kapsayıcıları kullanmaya başlamak için [AKS 'de Wind
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

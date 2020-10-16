@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888135"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Geçmiş verilerini bekletme ilkesiyle yönetme
@@ -79,7 +79,7 @@ Aşağıdaki altı genişletilmiş olay Temizleme işlemlerinin durumunu izlemey
 | data_retention_cleanup_exception  | Bekletme ilkesi olan tablonun Temizleme işlemi başarısız olur. |
 | data_retention_cleanup_completed  | Veri saklama ilkesi sona erdiğinde tablo işlemini Temizleme işlemi tamamlandığında gerçekleşir. |  
 
-Ayrıca, `RING_BUFFER_DATA_RETENTION_CLEANUP` sys. dm_os_ring_buffers dinamik yönetim görünümüne adlandırılmış yeni bir halka arabelleği türü eklenmiştir. Bu görünüm veri bekletme temizleme işlemlerini izlemek için kullanılabilir. 
+Ayrıca, sys.dm_os_ring_buffers dinamik yönetim görünümüne adlı yeni bir halka arabelleği türü `RING_BUFFER_DATA_RETENTION_CLEANUP` eklenmiştir. Bu görünüm veri bekletme temizleme işlemlerini izlemek için kullanılabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

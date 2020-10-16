@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 351b10b68cf1c014d358032f41bb01ac1093bd68
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373184"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979028"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure ayrılmış Konakları
 
@@ -122,7 +122,7 @@ Sanal makinelerinizi destekleyen altyapı, güvenilirliği, performansı ve güv
 
 **Bakım denetimi** , müşterilere kendi adanmış konaklarında zamanlanan normal platform güncelleştirmelerini atlama seçeneği sağlar ve ardından bunu, 35 günlük bir pencere penceresinde tercih ettikleri zaman uygular.
 
-Daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](https://docs.microsoft.com/azure/virtual-machines/maintenance-control).
+Daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](./maintenance-control.md).
 
 ## <a name="capacity-considerations"></a>Kapasiteye ilişkin önemli noktalar
 
@@ -142,7 +142,7 @@ Adanmış bir konağın sağlanması hem adanmış konak vCPU hem de VM ailesi v
 
 ![Portalda kullanım ve Kotalar sayfasının ekran görüntüsü](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-Daha fazla bilgi için bkz. [sanal makine vCPU kotaları](/azure/virtual-machines/windows/quotas).
+Daha fazla bilgi için bkz. [sanal makine vCPU kotaları](./windows/quotas.md).
 
 Ücretsiz deneme ve MSDN aboneliklerinin Azure ayrılmış konakları için kotası yoktur.
 
@@ -172,7 +172,7 @@ Boyutlar ve donanım türleri bölgeye göre farklılık gösterir. Daha fazla b
 
 Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
 
-| Sistem Durumu   | Description       |
+| Sistem Durumu   | Açıklama       |
 |----------|----------------|
 | Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
 | Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |
@@ -182,7 +182,7 @@ Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınız
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure PowerShell](./windows/dedicated-hosts-powershell.md), [Portal](./windows/dedicated-hosts-portal.md)ve [Azure CLI](./linux/dedicated-hosts-cli.md)kullanarak adanmış bir konak dağıtabilirsiniz.
+- [Azure PowerShell](./windows/dedicated-hosts-powershell.md), [Portal](./dedicated-hosts-portal.md)ve [Azure CLI](./linux/dedicated-hosts-cli.md)kullanarak adanmış bir konak dağıtabilirsiniz.
 
 - [Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), bir bölgedeki maksimum dayanıklılık için hem bölge hem de hata etki alanı kullanan örnek şablon vardır.
 

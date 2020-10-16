@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823413"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978080"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
 HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Müşterilerin, dış Python paketlerini yükleme gibi Python ortamını özelleştirmesi gerekebilir. Burada, HDInsight 'ta Apache Spark kümeleri için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). HDInsight üzerinde zaten bir Spark kümeniz yoksa, küme oluşturma sırasında betik eylemleri çalıştırabilirsiniz. [Özel Betik eylemlerinin kullanımı](../hdinsight-hadoop-customize-cluster-linux.md)hakkındaki belgeleri ziyaret edin.
 
@@ -46,8 +46,8 @@ HDInsight Spark kümesi, Anaconda yüklemesiyle oluşturulur. Kümede, Anaconda 
 |Ayar |Python 2,7|Python 3,5|
 |----|----|----|
 |Yol|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark sürümü|Varsayılan olarak 2,7 ayarlanır|Yok|
-|Livy sürümü|Varsayılan olarak 2,7 ayarlanır|Yok|
+|Spark sürümü|Varsayılan olarak 2,7 ayarlanır|YOK|
+|Livy sürümü|Varsayılan olarak 2,7 ayarlanır|YOK|
 |Jupyter|PySpark çekirdeği|PySpark3 çekirdeği|
 
 ## <a name="safely-install-external-python-packages"></a>Dış Python paketlerini güvenle yükler
@@ -81,7 +81,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
     - Ya da PyPi depoyu, değişiklik `seaborn` ve `py35new` karşılık geleni kullanın:
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install seaborn
         ```
 
     Belirli bir sürümü olan bir kitaplık yüklemek istiyorsanız aşağıdaki komutu kullanın:
@@ -98,7 +98,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
     - Ya da PyPi depoyu, değişiklik `numpy==1.16.1` ve `py35new` karşılık geleni kullanın:
 
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install numpy==1.16.1
         ```
 
     sanal ortam adını bilmiyorsanız, kümenin baş düğümüne SSH gönderebilir ve `/usr/bin/anaconda/bin/conda info -e` tüm sanal ortamları göstermek için çalıştırabilirsiniz.

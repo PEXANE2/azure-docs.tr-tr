@@ -4,10 +4,10 @@ description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanm
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275549"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
@@ -29,14 +29,14 @@ Azure geçişi: sunucu geçiş aracı, UEFı tabanlı makineleri Azure 2. nesil 
 
 | **UEFı tabanlı makineler için desteklenen işletim sistemleri** | **Aracısız VMware 'den Azure 'a**                                                                                                             | **Azure 'dan aracısız Hyper-V** | **Azure 'da aracı tabanlı VMware, fiziksel ve diğer bulutlar** |
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
-| Windows Server 2019, 2016, 2012 R2, 201                 | Y                                                                                                                                         | Y                              | Y                                                          |
-| Windows 10 Pro, Windows 10 Enterprise                   | Y                                                                                                                                         | Y                              | Y                                                          |
-| SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
-| SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
-| Ubuntu Server 16,04, 18,04, 19,04, 19,10                | Y                                                                                                                                         | Y                              | Y                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _RHEL 8. x [el ile hazırlık](https://go.microsoft.com/fwlink/?linkid=2143939) gerektiriyor_   | Y                              | Y                                                          |
-| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_Sent OS 8. x [el ile hazırlık](https://go.microsoft.com/fwlink/?linkid=2143939) gerektirir_ | Y                              | Y                                                          |
-| Oracle Linux 7,7, 7,7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
+| Windows Server 2019, 2016, 2012 R2, 201                 | E                                                                                                                                         | E                              | E                                                          |
+| Windows 10 Pro, Windows 10 Enterprise                   | E                                                                                                                                         | E                              | E                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | E                                                                                                                                         | E                              | E                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | E                                                                                                                                         | E                              | E                                                          |
+| Ubuntu Server 16,04, 18,04, 19,04, 19,10                | E                                                                                                                                         | E                              | E                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | E<br>                 _RHEL 8. x [el ile hazırlık](https://go.microsoft.com/fwlink/?linkid=2143939) gerektiriyor_   | E                              | E                                                          |
+| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | E<br>_Sent OS 8. x [el ile hazırlık](https://go.microsoft.com/fwlink/?linkid=2143939) gerektirir_ | E                              | E                                                          |
+| Oracle Linux 7,7, 7,7-CI                                |  E                                                                                                                                        | E                              | E                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Olağanüstü durum kurtarma senaryoları için Azure geçişi tarafından oluşturulan Kurtarma Hizmetleri kasasını kullanabilir miyim?
 Olağanüstü durum kurtarma senaryoları için Azure geçişi tarafından oluşturulan Kurtarma Hizmetleri kasasının kullanılmasını önermiyoruz. Bunun yapılması, Azure geçişi 'nde çoğaltma başarısızlıklarını başlatmaya neden olabilir. 
@@ -135,7 +135,7 @@ NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örneğin:
 
 NetQosPolicy içinde kullanılacak AppNamePrefix "GatewayWindowsService.exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
 
-New-NetQosPolicy-Name "kısıtlanacak"-AppPathNameMatchCondition "GatewayWindowsService.exe"-kısıtlar Lerateactionbitspersecond 1 MB
+New-NetQosPolicy-adı "kısıtlanacak"-AppPathNameMatchCondition "GatewayWindowsService.exe"-kısıtlar Lerateactionbitspersecond 1 MB
 
 ## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>Veriler şirket içi ortamdan Azure 'a nasıl iletilir? İletimden önce şifrelendi mı?
 

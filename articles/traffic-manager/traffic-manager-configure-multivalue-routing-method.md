@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401053"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager çoklu değer yönlendirme yöntemini yapılandırma
@@ -42,7 +42,7 @@ En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı traf
     
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Ad                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
+    | Adı                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
     | Yönlendirme yöntemi          | **Çoklu değer** yönlendirme yöntemini seçin.                                       |
     | Abonelik            | Aboneliğinizi seçin.                          |
     | Kaynak grubu          | *MyResourceGroupTM1*öğesini seçin. |
@@ -62,7 +62,7 @@ En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı traf
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Tür                    | Dış uç nokta                                   |
-    | Name           | myEndpoint1                                        |
+    | Adı           | myEndpoint1                                        |
     | Tam etki alanı adı (FQDN) veya IP           | Bu Traffic Manager profiline eklemek istediğiniz uç noktanın genel IP adresini yazın                         |
     |        |           |
 

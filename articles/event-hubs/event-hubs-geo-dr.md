@@ -4,10 +4,10 @@ description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs ol
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934081"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
@@ -150,7 +150,7 @@ Uygulamanız için bir olağanüstü durum kurtarma yapılandırması oluşturur
 
 ![Özel uç noktalar ve sanal ağlar](./media/event-hubs-geo-dr/private-endpoints-virtual-networks.png)
 
-Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Event Hubs ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları inceleyin: 
+Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Event Hubs ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları göz önünde bulundurun: 
 
 **Yalnızca uygulama yük devretmesi:** Burada uygulama VNET-1 ' de mevcut olmayacaktır, ancak VNET-2 ' ye geçmeyecektir. Hem birincil hem de ikincil ad alanları için hem VNET-1 hem de VNET-2 üzerinde hem özel uç noktalar yapılandırıldığından, uygulama çalışacaktır. 
 

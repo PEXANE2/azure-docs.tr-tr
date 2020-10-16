@@ -4,10 +4,10 @@ description: Bu makalede, Azure Relay için kullanılabilen tüm etkinlik ve tan
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533011"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Azure Relay Karma Bağlantılar için tanılama günlüklerini etkinleştir

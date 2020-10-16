@@ -4,10 +4,10 @@ description: Bu makaleler, uygulamaları potansiyel bir Azure Service Bus kesint
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065633"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Uygulamaları Service Bus kesintilerine ve olağanüstü durumlarına karşı dayanıklı hale getirmek için en iyi yöntemler
@@ -19,9 +19,9 @@ Kesinti, Azure Service Bus geçici olarak kullanım dışı olarak tanımlanır.
 Olağanüstü durum, Service Bus ölçek birimi veya veri merkezinin kalıcı kaybı olarak tanımlanır. Veri merkezi bir kez daha kullanılabilir duruma gelebilir veya kullanılamıyor olabilir. Genellikle bir olağanüstü durum, iletilerin veya diğer verilerin kaybedilmesine neden olur. Olağanüstü durumlar örnekleri ateş, taşması veya deprem.
 
 ## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Kesintilere ve olağanüstü durumlara karşı koruma-Service Bus Premium
-Yüksek kullanılabilirlik ve olağanüstü durum kurtarma kavramları, hem aynı Kullanılabilirlik Alanları bölgede hem de farklı bölgelerde (coğrafi olağanüstü durum kurtarma yoluyla) Azure Service Bus Premium katmanda yerleşiktir.
+Yüksek kullanılabilirlik ve olağanüstü durum kurtarma kavramları, her ikisi de aynı bölgedeki (Kullanılabilirlik Alanları aracılığıyla) ve farklı bölgelerde (Geo-Disaster kurtarma aracılığıyla) Azure Service Bus Premium katmanda yerleşiktir.
 
-### <a name="geo-disaster-recovery"></a>Coğrafi olağanüstü durum kurtarma
+### <a name="geo-disaster-recovery"></a>Geo-Disaster kurtarma
 
 Service Bus Premium, ad alanı düzeyinde coğrafi olağanüstü durum kurtarmayı destekler. Daha fazla bilgi için bkz. [Azure Service Bus coğrafi olağanüstü durum kurtarma](service-bus-geo-dr.md). Yalnızca [PREMIUM SKU](service-bus-premium-messaging.md) için kullanılabilen olağanüstü durum kurtarma özelliği, meta veri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarını kullanır.
 

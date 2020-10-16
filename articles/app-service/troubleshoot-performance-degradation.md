@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88958261"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service 'de yavaş uygulama performansı sorunlarını giderme
@@ -34,7 +34,7 @@ Bu sorun genellikle uygulama düzeyi sorunlarından kaynaklanır, örneğin:
 Sorun giderme üç farklı göreve sıralı sırayla ayrılabilir:
 
 1. [Uygulama davranışını gözlemleyin ve izleyin](#observe)
-2. [Verileri toplama](#collect)
+2. [Veri toplama](#collect)
 3. [Sorunu azaltma](#mitigate)
 
 [App Service](overview.md) her adımda çeşitli seçenekler sunar.

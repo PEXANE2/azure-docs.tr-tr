@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
 ms.openlocfilehash: 6bb3b8dbc7887419f7901a52b56c25f60c869abb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90998233"
 ---
 # <a name="application-development-on-intel-sgx"></a>Intel SGX üzerinde uygulama geliştirme 
@@ -59,5 +59,5 @@ Bu açık kaynaklı çerçeve, blok zinciri için yüksek, hassas gizlilik ve ko
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-- [Gizli bilgi işlem DCsv2-serisi sanal makine dağıtma](quick-create-portal.md)
+- [Bir gizli bilgi işlem DCsv2-Series sanal makine dağıtma](quick-create-portal.md)
 - [OE SDK 'sını indirip yükleyin ve uygulama geliştirmeye başlayın](https://github.com/openenclave/openenclave)

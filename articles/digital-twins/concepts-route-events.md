@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541365"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044301"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -21,7 +21,7 @@ Azure dijital TWINS, hizmet dışındaki tüketicilere veri göndermek için **o
 Önizleme süresince Azure dijital TWINS verileri göndermek için iki önemli durum vardır:
 * Azure dijital TWINS grafiğindeki bir ikizi 'den diğerine veri gönderme. Örneğin, bir dijital ikizi üzerinde bir özellik değiştiğinde, başka bir dijital ikizi 'e göre bildirim almak ve güncelleştirmek isteyebilirsiniz.
 * Ek depolama veya işleme ( *veri*çıkışı olarak da bilinir) için aşağı akış veri hizmetlerine veri gönderme. Örneğin,
-  - Bir barındırma, toplu analizler için el ile ilgili olayların zaman serisi verilerini kaydetmek üzere Azure dijital TWINS olay verilerini [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md)' A göndermek isteyebilir.
+  - Bir barındırma, toplu analizler için el ile ilgili olayların zaman serisi verilerini kaydetmek üzere Azure dijital TWINS olay verilerini [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md)' A göndermek isteyebilir.
   - Zaten [Azure Maps](../azure-maps/about-azure-maps.md) kullanan bir işletme, çözümlerini geliştirmek Için Azure dijital TWINS 'i kullanmak isteyebilir. Azure dijital TWINS 'i ayarladıktan sonra Azure haritasını hızlı bir şekilde etkinleştirebilir, Azure Map varlıklarını ikizi grafiğinde [dijital TWINS](concepts-twins-graph.md) olarak Azure dijital TWINS 'e taşıyın veya Azure haritalarını ve Azure dijital TWINS verilerini birlikte kullanarak güçlü sorgular çalıştırın.
 
 Olay yolları bu senaryoların her ikisi için kullanılır.

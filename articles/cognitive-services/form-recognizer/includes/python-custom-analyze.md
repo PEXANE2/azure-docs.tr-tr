@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 88be632e17912012618ab559f22f97487ad26c9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 262774233871a46cf971d95a6cf5d810adf9746a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88723511"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961807"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Anahtar-değer çiftleri ve tablolar için formları analiz etme
 
 Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Yeni bir Python betiğine aşağıdaki kodu çalıştırarak **[analiz formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API 'sini çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. `<file path>`Formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.pdf). Bu, uzak bir dosyanın URL 'SI de olabilir. Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
+1. `<file path>`Formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.pdf). Bu, uzak bir dosyanın URL 'SI de olabilir. Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz ( *sample_data.zip*indir ve Ayıkla).
 1. `<model_id>`Önceki bölümde aldığınız model kimliğiyle değiştirin.
 1. `<endpoint>`Form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
 1. `<file type>`Dosya türü ile değiştirin. Desteklenen türler: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .

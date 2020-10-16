@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
 ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87808516"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP başarılı etmenleri öznitelik başvurusu
@@ -70,7 +70,7 @@ Ek özniteliklerin şemasını genişletmek için lütfen [SAP başarılı fakt�
 | 32 | Kullanıcı                                   | homePhone 'dur                    | Okuma           |
 | 33 | Kullanıcı                                   | jobFamily                    | Okuma           |
 | 34 | Kullanıcı                                   | takma ad                     | Okuma           |
-| 35 | Kullanıcı                                   | durum                        | Okuma           |
+| 35 | Kullanıcı                                   | state                        | Okuma           |
 | 36 | Kullanıcı                                   | timeZone                     | Okuma           |
 | 37 | Kullanıcı                                   | username                     | Okuma           |
 | 38 | Kullanıcı                                   | Posta kodu                      | Okuma           |
@@ -88,7 +88,7 @@ Ek özniteliklerin şemasını genişletmek için lütfen [SAP başarılı fakt�
 | 50 | EmpJob                                 | countryOfCompany             | Okuma           |
 | 51 | EmpJob                                 | emplStatus                   | Okuma           |
 | 52 | EmpJob                                 | endDate                      | Okuma           |
-| 53 | EmpJob                                 | startDate                    | Okuma           |
+| 53 | EmpJob                                 | Başlangıç                    | Okuma           |
 | 54 | EmpJob                                 | jobTitle                     | Okuma           |
 | 55 | EmpJob                                 | konum                     | Okuma           |
 | 65 | EmpJob                                 | customString13               | Okuma           |
@@ -130,7 +130,7 @@ Aşağıdaki tabloda, yukarıda listelenen başarılı Özellikler ve AD/Azure A
 | 6  | Kullanıcı                                   | addressLine1             | streetAddress                           | NA                                                                                           |
 | 7  | Kullanıcı                                   | city                     | l                                       | NA                                                                                           |
 | 8  | Kullanıcı                                   | ülke                  | co                                      | NA                                                                                           |
-| 9  | Kullanıcı                                   | durum                    | st                                      | NA                                                                                           |
+| 9  | Kullanıcı                                   | state                    | st                                      | NA                                                                                           |
 | 10 | Kullanıcı                                   | username                 | samAccountName                          | NA                                                                                           |
 | 11 | Kullanıcı                                   | Posta kodu                  | postalCode                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | posta                                    | NA                                                                                           |

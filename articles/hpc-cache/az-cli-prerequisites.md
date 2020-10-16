@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
 ms.openlocfilehash: 7d0844e699c012d987c23a75e2b0874005cf535a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87100333"
 ---
-# <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Azure HPC önbelleği için Azure CLı 'yı ayarlama
+# <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Azure HPC Önbelleği için Azure CLI’yı ayarlama
 
 Azure HPC önbelleği oluşturmak veya yönetmek için Azure CLı kullanmadan önce ortamınızı hazırlamak üzere bu adımları izleyin.
 
@@ -21,7 +21,7 @@ Azure HPC önbelleği oluşturmak veya yönetmek için Azure CLı kullanmadan ö
 
 ## <a name="install-azure-cli"></a>Azure CLI'yı yükleme
 
-Azure HPC Cache, Azure CLı 'nın 2,7 veya sonraki bir sürümünü gerektirir. `az --version`Yüklenen sürümü ve bağımlı kitaplıkları bulmak için ' i çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
+Azure HPC Cache, Azure CLı 'nın 2,7 veya sonraki bir sürümünü gerektirir. Yüklü olan sürümü ve bağımlı kitaplıkları bulmak için `az --version` kodunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 az --version
@@ -39,7 +39,7 @@ Azure HPC önbellek işlevleri ana kod tabanının bir parçası olmadığından
     az login
     ```
 
-    Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+    Terminalinizde görüntülenen adımları uygulayarak kimlik doğrulama işlemini tamamlayın.
 
    > [!TIP]
    > Birden çok aboneliğiniz varsa, bir tane seçmeniz gerekir. Azure portalında bir Cloud Shell oturumu başlattığınızda seçin ya da aboneliğinizi komut satırından ayarlamak için [Azure CLI ile çalışmaya başlama](/cli/azure/get-started-with-azure-cli#sign-in) bölümündeki yönergeleri izleyin.

@@ -6,12 +6,12 @@ ms.service: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a3e9b7406e11261aff12d77d9fbeed5debbe938
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 8e32e4960776084669c8f2f7743b66b9d0f9a6ae
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744279"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978484"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Azure disk şifrelemesi kullanan mantıksal birim yönetimi cihazlarını yeniden boyutlandırma
 
@@ -27,7 +27,7 @@ Bu yeniden boyutlandırma işlemini aşağıdaki ortamlarda kullanabilirsiniz:
     - Tek pass uzantısı
     - Çift Pass uzantısı
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede sahip olduğunuz varsayılır:
 
@@ -37,7 +37,7 @@ Bu makalede sahip olduğunuz varsayılır:
 
 - Linux ve LVM kullanma deneyimi.
 
-- Azure 'da veri diskleri için */dev/disk/scsi1/* yollarını kullanma deneyimi. Daha fazla bilgi için bkz. [LINUX VM cihaz adı sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems). 
+- Azure 'da veri diskleri için */dev/disk/scsi1/* yollarını kullanma deneyimi. Daha fazla bilgi için bkz. [LINUX VM cihaz adı sorunlarını giderme](../troubleshooting/troubleshoot-device-names-problems.md). 
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -572,7 +572,7 @@ Bu yöntemi, var olan bir LV 'ye alan eklemek için kullanabilirsiniz. Ya da yen
     >
     >Daha fazla bilgi için bkz. [şifrelenmiş cihazlarda LVM ve RAID yapılandırma](how-to-configure-lvm-raid-on-crypt.md).
 
-    Aşağıda bir örnek verilmiştir:
+    İşte bir örnek:
 
     ``` bash
     az vm encryption enable \

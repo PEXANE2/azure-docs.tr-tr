@@ -9,12 +9,12 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fcb389736df8bedb2602919e986f7d65e8f3024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296918"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043740"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
 
@@ -51,13 +51,13 @@ Ayrıca modülünüzü geliştirmek için dile özgü bazı ek araçlar yükleme
 
 - Node.js: [Node.js](https://nodejs.org). Ayrıca [Yeumman](https://www.npmjs.com/package/yo) ve [Azure IoT Edge Node.js modül oluşturucusunu](https://www.npmjs.com/package/generator-azure-iot-edge-module)yüklemek isteyeceksiniz.
 
-- Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) ve [Maven](https://maven.apache.org/). [ `JAVA_HOME` Ortam değişkenini](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) JDK yüklemenize işaret etmek için ayarlamanız gerekir.
+- Java: [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) ve [Maven](https://maven.apache.org/). [ `JAVA_HOME` Ortam değişkenini](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) JDK yüklemenize işaret etmek için ayarlamanız gerekir.
 
 Modül görüntünüzü derlemek ve dağıtmak için, modül görüntüsünü ve modül görüntüsünü tutacak bir kapsayıcı kayıt defteri oluşturmak üzere Docker gereklidir:
 
 - Geliştirme makinenizde [Docker Community Edition](https://docs.docker.com/install/) .
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) veya [Docker Hub 'ı](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](../container-registry/index.yml) veya [Docker Hub 'ı](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > Yerel bir Docker kayıt defteri 'ni, bir bulut kayıt defteri yerine prototip ve test amacıyla kullanabilirsiniz.

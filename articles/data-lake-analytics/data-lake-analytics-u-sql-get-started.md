@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
 ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128854"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics 'de U-SQL ile çalışmaya başlama
@@ -56,8 +56,8 @@ Alandaki veri türünün yanındaki soru işaretine dikkat edin `Duration` . Bu,
 ### <a name="key-concepts"></a>Önemli kavramlar
 
 * **Satır kümesi değişkenleri**: bir satır kümesi üreten her sorgu ifadesi bir değişkene atanabilir. U-SQL, betikteki T-SQL değişken adlandırma örüntüsünün ( `@searchlog` örneğin) izler.
-* **Extract** anahtar sözcüğü bir dosyadaki verileri okur ve okunan şemayı tanımlar. `Extractors.Tsv`, sekmeyle ayrılmış değer dosyaları için yerleşik bir U-SQL ayıklayıcısı. Özel ayıklayıcıları geliştirebilirsiniz.
-* **Çıktı** , verileri bir satır kümesinden dosyaya yazar. `Outputters.Csv()`, virgülle ayrılmış değer dosyası oluşturmak için yerleşik bir U-SQL çıktıcısı olur. Özel çıktıcılar geliştirebilirsiniz.
+* **Extract** anahtar sözcüğü bir dosyadaki verileri okur ve okunan şemayı tanımlar. `Extractors.Tsv` , sekmeyle ayrılmış değer dosyaları için yerleşik bir U-SQL ayıklayıcısı. Özel ayıklayıcıları geliştirebilirsiniz.
+* **Çıktı** , verileri bir satır kümesinden dosyaya yazar. `Outputters.Csv()` , virgülle ayrılmış değer dosyası oluşturmak için yerleşik bir U-SQL çıktıcısı olur. Özel çıktıcılar geliştirebilirsiniz.
 
 ### <a name="file-paths"></a>Dosya yolları
 

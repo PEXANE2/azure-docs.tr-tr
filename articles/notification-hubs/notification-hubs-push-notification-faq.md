@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077923"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs ile anında iletme bildirimleri: sık sorulan sorular
@@ -119,7 +119,7 @@ Anında iletme bildirimlerinin doğası nedeniyle (bunlar harici, platforma özg
 
 Bir mobil uygulama, platformun geliştirici portalına (örneğin, Apple veya Google) kaydedildiğinde, bir uygulama tanımlayıcısı ve güvenlik belirteçleri gönderilir. Uygulama arka ucu bu belirteçleri platformun PNS 'leri için sağlar, böylece anında iletme bildirimleri cihazlara gönderilebilir. Güvenlik belirteçleri, sertifikalar biçiminde (örneğin, Apple iOS veya Windows Phone) veya güvenlik anahtarlarına (örneğin, Google Android veya Windows) olabilir. Bildirim Hub 'larında yapılandırılması gerekir. Yapılandırma genellikle Bildirim Hub 'ı düzeyinde yapılır, ancak aynı zamanda çok kiracılı bir senaryoda ad alanı düzeyinde de yapılabilir.
 
-#### <a name="namespaces"></a>Ad alanları
+#### <a name="namespaces"></a>Ad Alanları
 
 Ad alanları, dağıtım gruplandırması için kullanılabilir. Aynı uygulamadaki tüm kiracılar için tüm Bildirim Hub 'larını çok kiracılı bir senaryoda göstermek için de kullanılabilir.
 
@@ -151,7 +151,7 @@ Gönderenin Azure Notification Hubs 'den PNS 'ye kadar olan tüm bağlantılar H
 
 Gizli yükleri göndermek için güvenli bir gönderme deseninin kullanılması önerilir. Gönderen, hassas yük olmadan cihaza ileti tanımlayıcısı ile bir ping bildirimi sunar. Cihazdaki uygulama yükü aldığında, uygulama ileti ayrıntılarını getirmek için doğrudan güvenli bir API çağırır. Bu düzenin nasıl uygulanacağı hakkında bir kılavuz için, [Notification Hubs güvenli anında iletme öğreticisi] sayfasına gidin.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>İşlemler
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Olağanüstü durum kurtarma için hangi destek sağlanır?
 
@@ -191,7 +191,7 @@ Azure Notification Hubs, özellikle bırakılan bildirimlerin en yaygın senaryo
 
 Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine izin verebilir. Ölçümlerin ayrıntıları [Notification Hubs ölçümleri] sayfasında bulunabilir.
 
-Ölçümlere de programlı bir şekilde erişebilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Ölçümlere de programlı bir şekilde erişebilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [.Net Ile Azure izleyici ölçümlerini alın](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). Bu örnek, Kullanıcı adını ve parolayı kullanır. Bir sertifika kullanmak için, [Bu örnekte](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)gösterildiği gibi bir sertifika sağlamak üzere FromServicePrincipal metodunu aşırı yükleme. 
 - [Bir kaynak için ölçümleri ve etkinlik günlüklerini alma](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
@@ -200,7 +200,7 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 > [!NOTE]
 > Başarılı bildirimler, anında iletme bildirimlerinin dış PNS 'ye teslim edildiğini (örneğin, iOS ve macOS için APNs ve Android cihazlar için FCM) sağlar. Hedef cihazlara bildirimleri teslim etmek için PNS 'nin sorumluluğundadır. Genellikle, PNS, teslim ölçümlerini üçüncü taraflara sunmaz.  
 
-[Azure Portal]: https://portal.azure.com
+[Azure portalındaki]: https://portal.azure.com
 [Notification Hubs fiyatlandırması]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [REST API 'Leri Notification Hubs]: /previous-versions/azure/reference/dn530746(v=azure.100)
@@ -212,6 +212,6 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 [Notification Hubs sorunlarını giderme]: ./notification-hubs-push-notification-fixer.md
 [Notification Hubs ölçümleri]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Kayıt verme/Içeri aktarma]: ./export-modify-registrations-bulk.md
-[Azure Portal]: https://portal.azure.com
+[Azure portalındaki]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
 ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284192"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>Komut parametrelerine yapılandırma ekleme
@@ -43,7 +43,7 @@ Bunu yapmak için yeni bir Web uç noktası ekleyerek başlayın. Sol bölmedeki
 
 | Ayar | Önerilen değer |
 |----|----|
-| Ad | `getDevices` |
+| Adı | `getDevices` |
 | URL | `https://aka.ms/speech/cc-sampledevices` |
 | Yöntem | GET |
 
@@ -103,7 +103,7 @@ Sonra **Kaydet**' i seçin.
 **Setsıcaklık** komutunu kullanarak doğrulamaları test edin. **Sıcaklık** parametresi için bir doğrulama eklemek için aşağıdaki adımları kullanın.
 
 1. Sol bölmedeki **Setsıcaklık** komutunu seçin.
-1. Orta bölmedeki **sıcaklık** ' ı seçin.
+1. Orta bölmedeki  **sıcaklık** ' ı seçin.
 1. Sağ bölmede **Doğrulama Ekle** ' yi seçin.
 1. **Yeni doğrulama** penceresinde doğrulamayı aşağıdaki şekilde yapılandırın ve **Oluştur**' u seçin.
 
@@ -112,7 +112,7 @@ Sonra **Kaydet**' i seçin.
     | ---- | ---- | ---- |
     | Minimum Değer | `60` | Sayı parametreleri için bu parametrenin varsaydığı en küçük değer |
     | Maksimum Değer | `80` | Sayı parametreleri için bu parametrenin varsaydığı en büyük değer |
-    | Hata yanıtı |  Ilk varyasyon > basit düzenleyici >`Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Doğrulama başarısız olursa yeni bir değer sormak isteyip istemediğinizi sor |
+    | Hata yanıtı |  Ilk varyasyon > basit düzenleyici > `Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Doğrulama başarısız olursa yeni bir değer sormak isteyip istemediğinizi sor |
 
     > [!div class="mx-imgBorder"]
     > ![Aralık doğrulaması ekle](media/custom-commands/add-validations-temperature.png)

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 849057ab1ccde2e0771f0c1cd52ea399ffe4cea7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419572"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964698"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory kullanarak SMS tabanlı kimlik doğrulaması için kullanıcıları yapılandırma ve etkinleştirme (Önizleme)
 
@@ -110,7 +110,7 @@ Başarılı bir şekilde sağlandığında, *SMS oturum açma özelliğinin etki
 
 SMS tabanlı oturum açma için etkin durumda olan kullanıcı hesabını test etmek için aşağıdaki adımları izleyin:
 
-1. Yeni bir InPrivate veya ınbilito Web tarayıcı penceresi açın[https://www.office.com][office]
+1. Yeni bir InPrivate veya ınbilito Web tarayıcı penceresi açın [https://www.office.com][office]
 1. Sağ üst köşede **oturum aç**' ı seçin.
 1. Oturum açma isteminde, önceki bölümde kullanıcıyla ilişkili telefon numarasını girin ve ardından **İleri**' yi seçin.
 

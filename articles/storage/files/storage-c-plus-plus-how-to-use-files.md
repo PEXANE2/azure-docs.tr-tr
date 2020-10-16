@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515394"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ ile Azure dosyaları için geliştirme
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Azure dosya paylaşımındaki dosyaları ve dizinleri listeleme
 
-Bir paylaşımın içindeki dosya ve dizinlerin bir listesini almak, **cloud_file_directory** bir başvuruya **list_files_and_directories** çağırarak kolayca yapılır. Döndürülen bir **list_file_and_directory_item**için zengin özellik ve yöntemlere erişmek üzere, bir **cloud_file** nesnesi almak için **list_file_and_directory_item. as_file** metodunu veya **list_file_and_directory_item** nesnesini almak için **as_directory. cloud_file_directory** yöntemini çağırmanız gerekir.
+Bir paylaşımın içindeki dosya ve dizinlerin bir listesini almak, **cloud_file_directory** bir başvuruya **list_files_and_directories** çağırarak kolayca yapılır. Döndürülen bir **list_file_and_directory_item**için zengin özellik ve Yöntem kümesine erişmek için, bir **cloud_file** nesnesi almak üzere **list_file_and_directory_item. as** _directory metodunu veya bir **cloud_file_directory** nesnesi almak için **list_file_and_directory_item. as _directory** yöntemini çağırmanız gerekir.
 
 Aşağıdaki kod, paylaşımın kök dizinindeki her bir öğenin URI 'sini alma ve çıkışın nasıl yapılacağını gösterir.
 

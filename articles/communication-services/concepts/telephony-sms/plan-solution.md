@@ -10,19 +10,19 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 0420360b70485e49dc6cd06dbeb19400c0f73ef5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767154"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070359"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Telefon ve SMS çözümünüzü planlama
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Azure Iletişim Hizmetleri, sesli aramalar yapmak ve ortak anahtarlı telefon ağı (PSTN) ile SMS mesajları göndermek için telefon numaralarını kullanmanıza olanak sağlar. Bu belgede, Iletişim hizmetlerini kullanarak telefon ve SMS çözümünüzü planlamak için telefon numarası türlerini, planları ve bölge kullanılabilirliğini gözden geçireceğiz.
+Azure Iletişim Hizmetleri, sesli aramalar yapmak ve ortak anahtarlı telefon ağı (PSTN) ile SMS mesajları göndermek için telefon numaralarını kullanmanıza olanak sağlar. Bu belgede, Iletişim hizmetlerini kullanarak telefon ve SMS çözümünüzü planlamak için telefon numarası türlerini, yapılandırma seçeneklerini ve bölge kullanılabilirliğini gözden geçireceğiz.
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -48,33 +48,35 @@ Aşağıdaki tabloda bu telefon numarası türleri özetlenmektedir:
 | Telefon numarası türü | Örnek                              | Ülke kullanılabilirliği    | Telefon numarası özelliği |Yaygın kullanım durumu                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
 | Yerel (coğrafi)        | + 1 (yerel alan kodu) XXX XX XX  | ABD                      | Çağırma (giden) | Uygulamalarınızda kullanıcılara telefon numarası atama  |
-| Ücretsiz         | + 1 (ücretsiz alan *kodu*) xxx xx xx | ABD                      | Çağırma (giden), SMS (gelen/giden)| Telefon numaralarını etkileşimli sesli yanıt (ıVR) sistemleri/botlar, SMS uygulamalarına atama                                        |
+| Toll-Free         | + 1 (ücretsiz alan *kodu*) xxx xx xx | ABD                      | Çağırma (giden), SMS (gelen/giden)| Telefon numaralarını etkileşimli sesli yanıt (ıVR) sistemleri/botlar, SMS uygulamalarına atama                                        |
 
 
-## <a name="phone-number-plans-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde telefon numarası planları 
+## <a name="phone-number-features-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası özellikleri 
 
-Çoğu telefon numarası için "a la carte" plan kümesini yapılandırmanıza izin veririz. Bazı geliştiricilerin yalnızca giden çağrı planına ihtiyacı vardır; Bazıları giden çağrı ve giden SMS planlarını kabul edebilir. Bu planlar, Azure Iletişim Hizmetleri içindeki telefon numaralarınızı kiralayan şekilde seçilebilir.
+Çoğu telefon numarası için "a la carte" özellik kümesini yapılandırmanıza izin veririz. Bu özellikler, Azure Iletişim Hizmetleri içindeki telefon numaralarınızı kiralayan şekilde seçilebilir.
 
-Sizin için kullanılabilen planlar, kullandığınız ülkeye, kullanım servis talebine ve seçtiğiniz telefon numarası türüne bağlıdır. Bu planlar, yasal gereksinimler nedeniyle ülkeye göre farklılık gösterir. Azure Iletişim Hizmetleri aşağıdaki planları sunar:
+Sizin için kullanılabilir olan özellikler, kullandığınız ülkeye, kullanım servis talebine ve seçtiğiniz telefon numarası türüne bağlıdır. Bu özellikler, yasal gereksinimler nedeniyle ülkeye göre farklılık gösterir. Azure Iletişim Hizmetleri aşağıdaki telefon numarası özelliklerini sunar:
 
-- **Tek yönlü gıden SMS** Bu plan kullanıcılarınıza SMS iletileri göndermenizi sağlar. Bu plan, bildirimler ve iki öğeli kimlik doğrulama uyarıları gibi senaryolar için yararlıdır. 
-- **İki yönlü gelen ve gıden SMS** Bu plan, telefon numaralarını kullanarak kullanıcılarınızın iletilerinizi göndermenizi ve almanızı sağlar. Bu plan, müşteri hizmeti senaryolarında yararlı olur.
-- **Tek yönlü giden telefon çağırma** Bu plan, kullanıcılarınız için çağrılar yapmanıza ve hizmetiniz tarafından verilen giden çağrılar için arayan KIMLIĞINI yapılandırmanıza olanak tanır. Bu plan, müşteri hizmetleri ve sesli bildirim senaryolarında yararlı olur.
+- **Tek yönlü gıden SMS** Bu seçenek kullanıcılarınıza SMS iletileri göndermenizi sağlar. Bu, bildirim ve iki öğeli kimlik doğrulama senaryolarında yararlı olabilir. 
+- **İki yönlü gelen ve gıden SMS** Bu seçenek, telefon numaralarını kullanarak kullanıcılarınızın iletilerinizi göndermenizi ve almanızı sağlar. Bu, müşteri hizmeti senaryolarında yararlı olabilir.
+- **Tek yönlü giden telefon çağırma** Bu seçenek, kullanıcılarınız için çağrılar yapmanıza ve hizmetiniz tarafından verilen giden çağrılar için arayan KIMLIĞINI yapılandırmanıza olanak tanır. Bu, müşteri hizmeti ve sesli bildirim senaryolarında yararlı olabilir.
 
 ## <a name="countryregion-availability"></a>Ülke/bölge kullanılabilirliği
 
-Aşağıdaki tabloda, bu telefon numarası türleriyle ilişkili gelen ve giden çağrı ve SMS özellikleri ile birlikte farklı türlerde telefon numaralarını nereden edinebileceğiniz gösterilmektedir.
+Aşağıdaki tabloda, bu telefon numarası türleriyle ilişkili gelen ve giden çağrı ve SMS özellikleriyle birlikte farklı türlerde telefon numaralarını nereden edinebileceğiniz gösterilmektedir.
 
 |Sayı türü| Sayıları alma | Çağrısı yap                                        | Şuradan gelen çağrıları al                                    |Iletileri buraya gönder       | Şuradan Ileti al |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
 | Yerel (coğrafi)  | ABD                 | ABD, Kanada, Birleşik Krallık, Almanya, Fransa,. + daha fazla *| ABD, Kanada, Birleşik Krallık, Almanya, Fransa,. + daha fazla * |Kullanılamaz| Kullanılamaz |
-| Ücretsiz | ABD                 | ABD                                                   | ABD                                                    |ABD                | ABD |
+| Toll-Free | ABD                 | ABD                                                   | ABD                                                    |ABD                | ABD |
 
 * Çağrı hedefleri ve fiyatlandırma hakkında daha fazla bilgi için [fiyatlandırma sayfasına](../pricing.md)bakın.
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure aboneliklerine uygunluk
 
-Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında elde alınamaz. 
+Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında veya Azure Ücretsiz kredilerine göre alınamıyor. 
+
+Şu anda telefon numarası kullanılabilirliği, Birleşik Devletler fatura adresi olan Azure abonelikleri ile kısıtlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

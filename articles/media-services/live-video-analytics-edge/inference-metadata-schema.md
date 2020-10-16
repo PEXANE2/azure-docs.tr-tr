@@ -3,12 +3,12 @@ title: Çıkarım meta verileri şeması-Azure
 description: Bu makalede, çıkarım meta verileri şeması hakkında bilgi edineceksiniz.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691950"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019503"
 ---
 # <a name="inference-metadata-schema"></a>Çıkarım meta verileri şeması 
 
@@ -123,5 +123,5 @@ Aşağıdaki örnekte, bazı desteklenen çıkarım türlerine sahip tek bir ola
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [gRPC veri anlaşması](grpc-data-contract.md)
-- [HTTP veri anlaşması](http-data-contract.md)
+- [gRPC veri anlaşması](./grpc-extension-protocol.md)
+- [HTTP veri anlaşması](./http-extension-protocol.md)

@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
 ms.openlocfilehash: d4a08035b03c104555c39311bfb812218cca44b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482556"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme
@@ -76,11 +76,11 @@ Bir coğrafi yedekleme, [eşleştirilmiş bir veri merkezine](../../best-practic
 
 ## <a name="backup-and-restore-costs"></a>Yedekleme ve geri yükleme maliyetleri
 
-Azure faturanızda depolama için bir satır öğesi ve olağanüstü durum kurtarma depolaması için bir satır öğesi olduğunu fark edeceksiniz. Depolama ücreti, verileri birincil bölgede, anlık görüntüler tarafından yakalanan artımlı değişikliklerle birlikte depolamanın toplam maliyetidir. Anlık görüntülerin nasıl ücretlendirildiğinin daha ayrıntılı bir açıklaması için bkz. [anlık görüntülerin nasıl tahakkuk](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)ettirileceğini anlama. Coğrafi olarak yedekli ücret, coğrafi yedeklemeleri depolamanın maliyetini içerir.  
+Azure faturanızda depolama için bir satır öğesi ve olağanüstü durum kurtarma depolaması için bir satır öğesi olduğunu fark edeceksiniz. Depolama ücreti, verileri birincil bölgede, anlık görüntüler tarafından yakalanan artımlı değişikliklerle birlikte depolamanın toplam maliyetidir. Anlık görüntülerin nasıl ücretlendirildiğinin daha ayrıntılı bir açıklaması için bkz.  [anlık görüntülerin nasıl tahakkuk](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)ettirileceğini anlama. Coğrafi olarak yedekli ücret, coğrafi yedeklemeleri depolamanın maliyetini içerir.  
 
 Birincil veri ambarınızın toplam maliyeti ve yedi günlük anlık görüntü değişikliği, en yakın TB 'ye yuvarlanır. Örneğin, veri ambarınız 1,5 TB ise ve anlık görüntüler 100 GB ise, Azure Premium Depolama ücretlendirirken 2 TB veri için faturalandırılırsınız.
 
-Coğrafi olarak yedekli depolama kullanıyorsanız, ayrı bir depolama ücreti alırsınız. Coğrafi olarak yedekli depolama, standart Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) fiyatı üzerinden faturalandırılır.
+Coğrafi olarak yedekli depolama kullanıyorsanız, ayrı bir depolama ücreti alırsınız. Coğrafi olarak yedekli depolama, standart Read-Access coğrafi olarak yedekli depolama (RA-GRS) fiyatı üzerinden faturalandırılır.
 
 Azure SYNAPSE fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure SYNAPSE fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/). Bölgeler arasında geri yükleme sırasında veri çıkışı için ücretlendirilirsiniz.
 

@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
 ms.openlocfilehash: 5c728b219168f61f7f791b7db280a701ff216985
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362393"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) üzerinde Python Machine Learning betikleri yürütme
@@ -149,7 +149,7 @@ Farklı görüntülere kaydederek birden çok şekil döndürmek mümkündür. S
 
 Studio 'da yüklü Anaconda ortamı (klasik), sayısal tuş y, SciPy ve Scikits-öğren gibi ortak paketleri içerir. Bu paketler, makine öğrenimi ardışık düzeninde veri işleme için etkili bir şekilde kullanılabilir.
 
-Örneğin, aşağıdaki deneme ve komut dosyası, bir veri kümesi için özellik önem puanlarını hesaplama hakkında bilgi edinin. Puanlar, denetimli özellik seçimini başka bir modele gönderilmeden önce gerçekleştirmek için kullanılabilir.
+Örneğin, aşağıdaki deneme ve komut dosyası, bir veri kümesi için özellik önem puanlarını hesaplamak üzere Scikits-Learn için ensebölümlü öğrenenler kullanımını gösterir. Puanlar, denetimli özellik seçimini başka bir modele gönderilmeden önce gerçekleştirmek için kullanılabilir.
 
 Önem puanlarını hesaplamak ve özellikleri puanlarını temel alarak sıralamak için kullanılan Python işlevi aşağıda verilmiştir:
 

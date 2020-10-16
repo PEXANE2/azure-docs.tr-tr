@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79504292"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>Çoklu oturum açmayı etkinleştirme adımları
@@ -18,7 +18,7 @@ Bulut sağlama, çoklu oturum açma ile birlikte kullanılabilir.  Şu anda arac
 ### <a name="step-1-download-and-extract-azure-ad-connect-files"></a>1. Adım: Azure AD Connect dosyaları Indirme ve ayıklama
 1.  İlk olarak, [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) en son sürümünü indirin
 2.  Yönetici ayrıcalıklarını kullanarak bir komut istemi açın ve yeni indirdiğiniz MSI 'ye gidin.
-3.  Aşağıdakileri çalıştırın:`msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
+3.  Aşağıdakileri çalıştırın:  `msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
 4. FilePath ve extractfolder öğesini dosya yolunuza ve ayıklama klasörünüzün adına uyacak şekilde değiştirin.  İçerik artık ayıklama klasöründe olmalıdır.
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>2. Adım: sorunsuz SSO PowerShell modülünü Içeri aktarma

@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Duvarı tehdit zekası tabanlı filtreleme
-description: Güvenlik duvarınızın, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği uyarmasını ve reddetmesi için tehdit zekası tabanlı filtreleme etkinleştirilebilir.
+description: Güvenlik duvarınızda tehdit analizi tabanlı filtrelemeyi etkinleştirerek bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği reddedebilir ve uyarı oluşturulmasını sağlayabilirsiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
 ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83655075"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Güvenlik Duvarı tehdit zekası tabanlı filtreleme
 
-Güvenlik duvarınızın, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği uyarmasını ve reddetmesi için tehdit zekası tabanlı filtreleme etkinleştirilebilir. IP adresleri ve etki alanları Microsoft Threat Intelligence akışından kaynaklıdır. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) , Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.<br>
+Güvenlik duvarınızda tehdit analizi tabanlı filtrelemeyi etkinleştirerek bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği reddedebilir ve uyarı oluşturulmasını sağlayabilirsiniz. IP adresleri ve etki alanları, Microsoft Tehdit Analizi akışından alınır. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) , Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.<br>
 <br>
 
 :::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="Güvenlik Duvarı tehdit bilgileri" border="false":::
@@ -27,7 +27,7 @@ Bir kural tetiklendiğinde yalnızca bir uyarıyı günlüğe kaydedebilir veya 
 
 Varsayılan olarak, tehdit zekası tabanlı filtreleme, uyarı modunda etkindir. Bu özelliği kapatamaz veya Portal arabirimi bölgenizde kullanılabilir hale gelene kadar modu değiştiremezsiniz.
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Tehdit zekası tabanlı filtreleme portalı arabirimi":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Güvenlik Duvarı tehdit bilgileri":::
 
 ## <a name="logs"></a>Günlükler
 

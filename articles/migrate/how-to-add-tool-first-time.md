@@ -4,10 +4,10 @@ description: Azure geçişi projesi oluşturmayı ve değerlendirme/geçiş arac
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.openlocfilehash: a94e3cc18f46c457d6ed54ef88c62adefb07c5b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86102540"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Bir değerlendirmeyi/geçiş aracını ilk kez ekleme
@@ -19,10 +19,10 @@ Azure geçişi, şirket içi uygulamalarınızı, iş yüklerinizi ve özel/gene
 
 Henüz bir Azure geçişi projesi oluşturmadıysanız, doğru izinlere sahip olup olmadığınızı kontrol edin.
 
-1. Azure portal aboneliğini açın ve **erişim denetimi (IAM)** seçeneğini belirleyin.
+1. Azure portalında ilgili aboneliği açın ve **Erişim denetimi (IAM)** öğesini seçin.
 2. Erişimi denetle ' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın. Katkıda bulunan veya sahip izinlerinizin olması gerekir.
-    - Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz.
-    - Abonelik sahibi değilseniz, rolü atamak için sahip ile çalışın.
+    - Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz.
+    - Aboneliğin sahibi siz değilseniz sahibiyle iletişime geçerek gerekli rolün atanmasını sağlayın.
 
 ## <a name="create-a-project-and-add-a-tool"></a>Proje oluşturma ve araç ekleme
 
@@ -45,7 +45,7 @@ Azure aboneliğinde yeni bir Azure geçişi projesi ayarlayın ve bir araç ekle
 2. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
 3. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin.  [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
 
-    ![Azure geçişi projesi oluşturma](./media/how-to-add-tool-first-time/migrate-project.png)
+    ![Azure Geçişi projesi oluşturma](./media/how-to-add-tool-first-time/migrate-project.png)
 
     - Proje için belirtilen coğrafya yalnızca şirket içi VM’lerden toplanan meta verileri depolamak için kullanılır. Gerçek geçiş için herhangi bir hedef bölge seçebilirsiniz.
     - Bir coğrafya içindeki belirli bir bölge içinde bir proje dağıtmanız gerekiyorsa, bir proje oluşturmak için aşağıdaki API 'yi kullanın. Abonelik KIMLIĞINI, kaynak grubu adını ve proje adını, konum ile birlikte belirtin. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için coğrafi Bölümleri/bölgeleri gözden geçirin.

@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 31d98e0d37da1b957d86e425e01fe04de842f532
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715144"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure CLı 'yi kullanma
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD), [Azure rol tabanlı erişim denetimi (Azure R
 
 Azure AD güvenlik sorumlusuna bir Azure rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, aboneliğin düzeyi, kaynak grubu, depolama hesabı veya tek bir kapsayıcı veya kuyruk kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir Kullanıcı, Grup, uygulama hizmeti sorumlusu veya [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)olabilir.
 
-Bu makalede, Azure CLı kullanarak Azure yerleşik rollerini listeleme ve kullanıcılara atama işlemlerinin nasıl yapılacağı açıklanır. Azure CLı kullanma hakkında daha fazla bilgi için bkz. [Azure komut satırı arabirimi (CLI)](/cli/azure).
+Bu makalede, Azure CLı kullanarak Azure yerleşik rollerini listeleme ve kullanıcılara atama işlemlerinin nasıl yapılacağı açıklanır. Azure CLı kullanma hakkında daha fazla bilgi için bkz. [azure Command-Line arabirimi (CLI)](/cli/azure).
 
 ## <a name="azure-roles-for-blobs-and-queues"></a>Blob 'lar ve kuyruklar için Azure rolleri
 

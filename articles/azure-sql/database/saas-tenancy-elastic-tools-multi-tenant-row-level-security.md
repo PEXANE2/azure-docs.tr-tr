@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b9550f365eb11ffff87add041824504488c0de15
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619942"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Elastik veritabanı araçları ve satır düzeyi güvenliği olan çok kiracılı uygulamalar
@@ -37,7 +37,7 @@ Amaç, belirli bir kiracıyı doğru parça veritabanına otomatik olarak bağla
 
 ## <a name="download-the-sample-project"></a>Örnek projeyi indirin
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - Visual Studio 'Yu kullanma (2012 veya üzeri)
 - Azure SQL veritabanı 'nda üç veritabanı oluşturma
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> Karmaşık bir projede, koşulu yüzlerce tablo üzerinde eklemeniz gerekebilir ve bu da sıkıcı olabilir. Otomatik olarak bir güvenlik ilkesi üreten ve bir şemadaki tüm tablolara bir koşul ekleyen bir yardımcı saklı yordam vardır. Daha fazla bilgi için, [tüm tablolarda (blog) satır düzeyi güvenliği uygulama](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360)başlıklı blog gönderisine bakın.
+> Karmaşık bir projede, koşulu yüzlerce tablo üzerinde eklemeniz gerekebilir ve bu da sıkıcı olabilir. Otomatik olarak bir güvenlik ilkesi üreten ve bir şemadaki tüm tablolara bir koşul ekleyen bir yardımcı saklı yordam vardır. Daha fazla bilgi için bkz. blog gönderisi [tüm tablolarda Row-Level güvenliği uygulama-yardımcı betik (blog)](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360).
 
 Şimdi örnek uygulamayı yeniden çalıştırırsanız, kiracılar yalnızca bunlara ait olan satırları görür. Ayrıca, uygulama, şu anda parça veritabanına bağlı olan kiracılara ait olan satırları ekleyemiyor. Ayrıca, uygulama, tarafından görebileceğiniz herhangi bir satırda Tenantıd 'yi güncelleştiremez. Uygulama herhangi birini yapmayı denerse, bir DbUpdateException tetiklenir.
 
@@ -303,7 +303,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 > [!NOTE]
 > Bir Entity Framework projesi için varsayılan kısıtlamalar kullanıyorsanız, EF veri modelinize Tenantıd sütununu *dahil etmeniz* önerilir. Bu öneri Entity Framework sorgularının, oturum bağlamını kullanan T-SQL içinde oluşturulan varsayılan kısıtlamaları geçersiz kılan varsayılan değerleri otomatik olarak sağlamalarından kaynaklanır \_ .
-> Örnek projede varsayılan kısıtlamaları kullanmak için, örneğin Tenantıd 'yi DataClasses.cs 'den kaldırmanız gerekir (ve Paket Yöneticisi konsolunda Add-Migration ' ı çalıştırmalısınız) ve alanın veritabanı tablolarında mevcut olduğundan emin olmak için T-SQL ' i kullanın. Bu şekilde, EF veri eklenirken yanlış varsayılan değerleri otomatik olarak sağlar.
+> Örnek projede varsayılan kısıtlamaları kullanmak için, örneğin Tenantıd 'yi DataClasses.cs 'den kaldırmanız gerekir (ve Paket Yöneticisi konsolunda Add-Migration çalıştırıp, bu alanın yalnızca veritabanı tablolarında mevcut olduğundan emin olmak için T-SQL ' i kullanın. Bu şekilde, EF veri eklenirken yanlış varsayılan değerleri otomatik olarak sağlar.
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>Seçim *Süper kullanıcının* tüm satırlara erişmesini sağlama
 
@@ -342,7 +342,7 @@ GO
 ### <a name="maintenance"></a>Bakım
 
 - **Yeni parçalar ekleme**: yeni parçalar üzerinde RLS 'yi etkinleştirmek için T-SQL betiğini yürütün, aksi takdirde bu parçaların sorguları filtrelenmez.
-- **Yeni tablolar ekleniyor**: her yeni tablo oluşturulduğunda tüm parçalardan GÜVENLIK ilkesine FILTRE ve engelleme koşulu ekleyin. Aksi halde yeni tablodaki sorgular filtrelenmez. Bu ekleme, [Yeni oluşturulan tablolara (blog) otomatik olarak satır düzeyi güvenlik uygulama](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393)bölümünde açıklandığı gıbı bir DDL tetikleyicisi kullanılarak otomatikleştirilebilir.
+- **Yeni tablolar ekleniyor**: her yeni tablo oluşturulduğunda tüm parçalardan GÜVENLIK ilkesine FILTRE ve engelleme koşulu ekleyin. Aksi halde yeni tablodaki sorgular filtrelenmez. Bu ekleme, [Yeni oluşturulan tablolara (blog) otomatik olarak Row-Level güvenlik uygulama](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393)bölümünde açıklandığı üzere bir DDL tetikleyicisi kullanılarak otomatikleştirilebilir.
 
 ## <a name="summary"></a>Özet
 

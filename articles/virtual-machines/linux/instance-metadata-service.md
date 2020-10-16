@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ffa9502a42af9e927f82d7a135473ff702b76577
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974145"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970716"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (ıMDS)
 
@@ -249,8 +249,8 @@ teklif | VM görüntüsü için teklif bilgileri ve yalnızca Azure görüntü G
 osType | Linux veya Windows | 2017-04-02
 Placementgroupıd | Sanal makine ölçek kümesinin [yerleştirme grubu](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren [plan planlayın](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
-platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
-platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
+platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](../manage-availability.md) | 2017-04-02
+platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](../manage-availability.md) | 2017-04-02
 sağlayıcısını | VM sağlayıcısı | 2018-10-01
 publicKeys | VM ve yollara atanan [ortak anahtarların koleksiyonu](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 yayımcı | VM görüntüsünün yayımcısı | 2017-04-02
@@ -261,7 +261,7 @@ securityProfile. secureBootEnabled | SANAL makinede UEFı güvenli önyükleme �
 securityProfile. Virtualaltpmenabled | Sanal Güvenilir Platform Modülü (TPM) VM 'de etkin olup olmadığını belirler | 2020-06-01
 storageProfile | [Depolama profilini](#storage-metadata) gör | 2019-06-01
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
-etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
+tags | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | Daha kolay programlı ayrıştırma için JSON dizisi olarak biçimlendirilen Etiketler  | 2019-06-04
 sürüm | VM görüntüsünün sürümü | 2017-04-02
 Kimliği | VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02

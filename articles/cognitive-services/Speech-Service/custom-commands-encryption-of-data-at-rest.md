@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
 ms.openlocfilehash: 83b6e6be8764a86c41bd9156cc96f8a594dbe1e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87294558"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Bekleyen verinin Özel Komutlarla şifrelenmesi
@@ -25,7 +25,7 @@ ms.locfileid: "87294558"
 > Özel komutlar hizmeti, uygulamanızla ilişkili LUSıS kaynakları için şifrelemeyi otomatik olarak etkinleştirmez. Gerekirse, LUSıS kaynağınız için şifrelemeyi [buradan](./../LUIS/luis-encryption-of-data-at-rest.md)etkinleştirmeniz gerekir.
 
 ## <a name="about-cognitive-services-encryption"></a>Bilişsel hizmetler şifreleme hakkında
-[Fıps 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifrelemesi kullanılarak veriler şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetilip yönetilmediğini belirtir. Verileriniz varsayılan olarak güvenlidir ve şifreleme avantajlarından yararlanmak için kodunuzu veya uygulamalarınızı değiştirmeniz gerekmez.
+[Fıps 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifrelemesi kullanılarak veriler şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetilip yönetilmediğini belirtir. Verileriniz varsayılan olarak koruma altındadır ve şifrelemeden yararlanmak için kodunuzu veya uygulamalarınızı değiştirmenize gerek yoktur.
 
 ## <a name="about-encryption-key-management"></a>Şifreleme anahtarı yönetimi hakkında
 
@@ -33,17 +33,17 @@ ms.locfileid: "87294558"
 * Özel komutlar uygulamasının arkasında Configuration JSON
 * LUSıS yazma ve tahmin anahtarı
 
-Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Bununla birlikte, aboneliğinizi kendi şifreleme anahtarlarınız ile de yönetebilirsiniz. Kendi anahtarını getir (BYOK) olarak da bilinen müşteri tarafından yönetilen anahtarlar (CMK), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
+Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Öte yandan aboneliğinizi kendi şifreleme anahtarlarınızla da yönetebilirsiniz. Kendi Anahtarını Getir (KAG) olarak da bilinen Müşteri Tarafından Yönetilen Anahtarlar (CMK) erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme konusunda daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
 
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen anahtarlar yalnızca 27 Haziran 2020 ' den sonra oluşturulan kullanılabilir kaynaklardır. CMK 'yi konuşma hizmetleriyle birlikte kullanmak için yeni bir konuşma kaynağı oluşturmanız gerekir. Kaynak oluşturulduktan sonra, yönetilen kimliğinizi ayarlamak için Azure Key Vault kullanabilirsiniz.
 
-Müşteri tarafından yönetilen anahtarları kullanma yeteneği istemek için, müşteri tarafından yönetilen anahtar Isteği formunu doldurun ve gönderebilirsiniz. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. Konuşma Hizmetleri ile CMK kullanmaya onaylandıktan sonra, Azure portal yeni bir konuşma kaynağı oluşturmanız gerekir.
+Müşteri tarafından yönetilen anahtarlar kullanma yeteneği istemek için Customer-Managed anahtar Isteği formunu doldurun ve iletin. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. Konuşma Hizmetleri ile CMK kullanmaya onaylandıktan sonra, Azure portal yeni bir konuşma kaynağı oluşturmanız gerekir.
    > [!NOTE]
    > **Müşteri tarafından yönetilen anahtarlar (CMK) yalnızca özel komutlar için desteklenir.**
    >
-   >  **Özel Konuşma Tanıma ve özel ses desteği yalnızca kendi depolama alanınızı (BYOS) getirir.**  [Daha fazla bilgi](speech-encryption-of-data-at-rest.md)
+   >  **Özel Konuşma Tanıma ve özel ses desteği yalnızca kendi depolama alanınızı (BYOS) getirir.**  [Daha fazla bilgi edinin](speech-encryption-of-data-at-rest.md)
    >
    > Bu hizmete erişmek için verilen konuşma kaynağını kullanıyorsanız, KCG 'LERI açıkça yapılandırarak uyumluluk ihtiyaçlarına ulaşılmalıdır.
 
@@ -151,7 +151,7 @@ Müşteri tarafından yönetilen anahtarları devre dışı bıraktığınızda,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma müşterisi tarafından yönetilen anahtar Isteği formu](https://aka.ms/cogsvc-cmk)
+* [Konuşma Customer-Managed anahtar Istek Formu](https://aka.ms/cogsvc-cmk)
 * [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 

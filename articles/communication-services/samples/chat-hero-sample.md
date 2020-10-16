@@ -2,19 +2,19 @@
 title: Grup sohbeti Hero örneği
 titleSuffix: An Azure Communication Services sample overview
 description: Azure Iletişim Hizmetleri ile sohbet Hero örneğine genel bakış geliştiricilerin, örneğin iç işleyişi hakkında daha fazla bilgi edinmek ve nasıl değiştirileceğini öğrenmek için.
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0a01036eb4856d9fd306a50958285bd469791f24
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823872"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962998"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
 
@@ -60,7 +60,7 @@ Ana sohbet ekranının bileşenleri:
 
 Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha fazla bilgi bulacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 ve üzeri)](https://nodejs.org/en/download/)
@@ -82,7 +82,6 @@ Birden çok kullanıcı sohbetini benzetirmek için sohbet URL 'siyle birden faz
 2. `git clone https://github.com/Azure/Communication.git`
 3. Azure portal alın `Connection String` . Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Iletişim kaynakları oluşturma](../quickstarts/create-communication-resource.md)
 4. ' I aldıktan sonra `Connection String` , sohbet klasörünün altında bulunan dosyadaki **sohbet/appsettings.js** dosyasına bağlantı dizesini ekleyin. Bağlantı dizenizi şu değişkende girin: `ResourceConnectionString` .
-5. İçindeki ENVIRONMENT_URL, `./Chat/ClientApp/src/constants.tsx` kaynağınızın konumuyla güncelleştirin. (ör. https://<RESOURCE_NAME>. communication.azure.com)
 
 ### <a name="local-run"></a>Yerel çalıştırma
 
@@ -110,7 +109,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 >[!div class="nextstepaction"] 
 >[GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Sohbet kavramları](../concepts/chat/concepts.md) hakkında bilgi edinin
 - [Sohbet istemci kitaplığımızı](../concepts/chat/sdk-features.md) öğrenmeye

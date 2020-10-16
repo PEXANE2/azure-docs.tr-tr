@@ -12,10 +12,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8a73336ba0a324c65ee0de764d81a8e69ab6079c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87843275"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi desteklenen diller 
@@ -72,7 +72,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Python 2,7 ve 3,5 |
 | Desteklenen DSVM sürümleri      | Linux   |
-| DSVM 'de nasıl yapılandırılır/yüklenir?  | İki genel `conda` ortam oluşturulur: <br /> * `root`konumunda bulunan ortam `/anaconda/` Python 2,7 ' dir. <br/> * `py35`konumunda bulunan ortam `/anaconda/envs/py35` Python 3,5 ' dir.       |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | İki genel `conda` ortam oluşturulur: <br /> * `root` konumunda bulunan ortam `/anaconda/` Python 2,7 ' dir. <br/> * `py35` konumunda bulunan ortam `/anaconda/envs/py35` Python 3,5 ' dir.       |
 | Örneklere bağlantılar      | Python için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | PySpark, R, Julia      |
 
@@ -111,7 +111,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Microsoft R Open 3. x (CRAN-R ile %100 uyumlu)<br /> Microsoft R Server 9. x geliştirici sürümü (bir kurumsal özellikli ölçeklenebilir R platformu)|
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
-| DSVM 'de nasıl yapılandırılır/yüklenir?  | Pencerelerin`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />'Un`/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Pencerelerin `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />'Un `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Örneklere bağlantılar      | R için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | Parlak r, Python, Julia      |
 
@@ -160,7 +160,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | 0.6 |
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
-| DSVM 'de nasıl yapılandırılır/yüklenir?  | Windows: yüklendi`C:\JuliaPro-VERSION`<br /> Linux: yüklendi`/opt/JuliaPro-VERSION`    |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Windows: yüklendi `C:\JuliaPro-VERSION`<br /> Linux: yüklendi `/opt/JuliaPro-VERSION`    |
 | Örneklere bağlantılar      | Julia için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | Python, R      |
 

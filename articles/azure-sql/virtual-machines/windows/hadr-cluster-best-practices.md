@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317030"
 ---
-# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi uygulamaları (Azure VM 'lerinde SQL Server)
+# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi yöntemleri (Azure VM'leri üzerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bir küme, Azure sanal makinelerinde (VM 'Ler) SQL Server yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) için kullanılır. 
@@ -82,7 +82,7 @@ Başlamak için bkz. [dosya paylaşma tanığını yapılandırma](/windows-serv
 
 **Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
 
-## <a name="connectivity"></a>Bağlanabilirlik
+## <a name="connectivity"></a>Bağlantı
 
 Geleneksel bir şirket içi ağ ortamında, SQL Server yük devretme kümesi örneği tek bir bilgisayarda çalışan tek bir SQL Server örneği olarak görünür. Yük devretme kümesi örneği düğümünden düğüme yük devrettiğinden, örnek için sanal ağ adı (VNN) Birleşik bir bağlantı noktası sağlar ve uygulamaların hangi düğümün etkin olduğunu bilmeksizin SQL Server örneğine bağlanmasına izin verir. Yük devretme gerçekleştiğinde, sanal ağ adı yeni etkin düğümüne başladıktan sonra kaydedilir. Bu işlem, SQL Server bağlanan istemci veya uygulama için saydamdır ve bu, hata sırasında istemci veya uygulamanın karşılaştığı kapalı kalma süresini en aza indirir. 
 

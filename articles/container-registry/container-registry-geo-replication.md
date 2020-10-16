@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
 ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116792"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry coğrafi çoğaltma
@@ -55,8 +55,8 @@ Birden çok kayıt defterlerinin tipik sorunları şunlardır:
 
 Azure Container Registry coğrafi çoğaltma özelliğini kullanarak bu avantajlar gerçekleştirilir:
 
-* Tüm bölgelerde tek bir kayıt defterini yönetme:`contoso.azurecr.io`
-* Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetin:`contoso.azurecr.io/public/products/web:1.2`
+* Tüm bölgelerde tek bir kayıt defterini yönetme: `contoso.azurecr.io`
+* Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetin: `contoso.azurecr.io/public/products/web:1.2`
 * Tek bir kayıt defterine göndererek ACR, Coğrafi çoğaltmayı yönetir. Bölgesel [Web kancalarını](container-registry-webhook.md) belirli çoğaltmalarda olayları bilgilendirmek üzere yapılandırabilirsiniz.
 
 ## <a name="configure-geo-replication"></a>Coğrafi çoğaltmayı yapılandırma

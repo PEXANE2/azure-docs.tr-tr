@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: ad006279a656758ba856cd3f39c17b0410e525e6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90709038"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Çapraz bölge çoğaltmasını kullanarak olağanüstü durum kurtarmayı yönetme 
@@ -99,9 +99,9 @@ Hedefin kaynağa yeniden eşitleme işlemi tamamlandıktan sonra, kaynaktan hede
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-* [Çapraz bölge çoğaltma](cross-region-replication-introduction.md)
+* [Bölgeler arası çoğaltma](cross-region-replication-introduction.md)
 * [Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları](cross-region-replication-requirements-considerations.md)
-* [Çoğaltma ilişkisinin sistem durumunu görüntüle](cross-region-replication-display-health-status.md)
+* [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
-* [Bölgeler arası çoğaltmanın sorunlarını giderme](troubleshoot-cross-region-replication.md)
+* [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 

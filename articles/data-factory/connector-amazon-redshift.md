@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: a756a3cec5702570751e0bea09a4f59152accafc
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89484553"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'tan veri kopyalama
@@ -59,13 +59,13 @@ Amazon Redshift Linked Service için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **AmazonRedshift** olarak ayarlanmalıdır | Yes |
-| sunucu |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
+| tür | Type özelliği: **AmazonRedshift** olarak ayarlanmalıdır | Evet |
+| sunucu |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
 | port |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır, varsayılan değer 5439 ' dir |
-| database |Amazon Redshift veritabanının adı. |Yes |
-| username |Veritabanına erişimi olan kullanıcının adı. |Yes |
-| password |Kullanıcı hesabı için parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
+| database |Amazon Redshift veritabanının adı. |Evet |
+| username |Veritabanına erişimi olan kullanıcının adı. |Evet |
+| password |Kullanıcı hesabı için parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 **Örnek:**
 
@@ -101,9 +101,9 @@ Amazon Redshift 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **AmazonRedshiftTable** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **AmazonRedshiftTable** olarak ayarlanmalıdır | Evet |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| table | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -136,9 +136,9 @@ Amazon Redshift 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak tür
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **AmazonRedshiftSource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **AmazonRedshiftSource** olarak ayarlanmalıdır | Evet |
 | sorgu |Verileri okumak için özel sorguyu kullanın. Örneğin: select * from MyTable. |Hayır (veri kümesinde "tableName" belirtilmişse) |
-| Redkaydırıcı Tunloadsettings | Amazon Redshift UNLOAD kullanılırken özellik grubu. | No |
+| Redkaydırıcı Tunloadsettings | Amazon Redshift UNLOAD kullanılırken özellik grubu. | Hayır |
 | s3LinkedServiceName | "AmazonS3" türünde bağlı bir hizmet adı belirtilerek geçici depo olarak kullanılacak bir Amazon S3 'e başvurur. | KALDıRMA kullanılıyorsa Evet |
 | bucketName | Geçici verileri depolamak için S3 demetini belirtin. Sağlanmazsa, Data Factory hizmet otomatik olarak oluşturur.  | KALDıRMA kullanılıyorsa Evet |
 
@@ -223,14 +223,14 @@ Amazon Redshift 'tan veri kopyalarken, Amazon Redshift veri türlerinden aşağ�
 | BIGıNT |Int64 |
 | BOOLEAN |Dize |
 | CHAR |Dize |
-| DATE |Tarih-Saat |
+| DATE |DateTime |
 | KATEGORI |Ondalık |
 | ÇIFT DUYARLıK |Çift |
 | TAMSAYI |Int32 |
 | GERÇEK SAYI |Tek |
 | Small |Int16 |
 | TEXT |Dize |
-| ILIŞKIN |Tarih-Saat |
+| ILIŞKIN |DateTime |
 | VARCHAR |Dize |
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri

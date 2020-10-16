@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 10/12/2020
+ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440533"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951108"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
 
@@ -53,7 +53,7 @@ Bir başvuru olarak şu anda performans ayarlama ipuçları aşağıdaki durumla
 
 Kopyalama etkinliği izleme görünümünün en altındaki yürütme ayrıntıları ve süreleri, kopyalama etkinliğinizin (Bu makalenin başındaki örnek), özellikle de kopyalama performansının giderilmesi için yararlı olan anahtar aşamalarını açıklar. Kopya çalışmalarınızın performans sorunu en uzun süreye sahip bir süredir. Her bir aşamanın tanımında aşağıdaki tabloya başvurun ve [Azure IR kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-azure-ir) ve bu tür bilgiyle şirket IÇINDE [barındırılan IR 'de kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-self-hosted-ir) öğrenin.
 
-| Aşama           | Description                                                  |
+| Aşama           | Açıklama                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Kuyruk           | Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde çalışmaya başlanana kadar geçen süre. |
 | Kopyalama öncesi betiği | IR ve kopyalama etkinliğinden itibaren kopyalama etkinliği arasındaki geçen süre, havuz veri deposunda kopyalama öncesi betiği yürütmeyi tamamlıyor. Veritabanı havuzları için kopyalama öncesi betiği yapılandırdığınızda, örneğin Azure SQL veritabanı 'na veri yazarken yeni verileri kopyalamaya başlamadan önce bu uygulamayı temizleyebilirsiniz. |
@@ -74,7 +74,7 @@ Kopyalama etkinliği performansı beklentilerinizi karşılamıyorsa, Azure Inte
 
     - [Dosyaları, tarih saat bölümlenmiş dosya yoluna veya adına göre kopyalayıp kopyalayamayacağını](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)denetleyin. Bu şekilde, kaynak tarafında liste üzerinde yük getirmez.
 
-    - Bunun yerine, Amazon S3 ve Azure Blob için özel olarak "**önek**" olmak üzere veri deposunun yerel filtresini kullanıp kullanınızın olup olmadığını kontrol edin. Ön ek filtresi, veri deposu sunucu tarafı filtretir ve çok daha iyi performansa sahip olur.
+    - Bunun yerine veri deposunun yerel filtresini kullanıp kullananınızın, özellikle Amazon S3/Azure Blob/Azure dosya depolaması ve "**listafter/listBefore**ADLS 1." için özel olarak "**önek**" gibi. Bu filtreler veri deposu sunucu tarafı filtreleridir ve çok daha iyi performansa sahip olur.
 
     - Tek büyük veri kümesini birkaç küçük veri kümesine bölmek ve bu kopyalama işlerinin verilerin her bir tackles bölümünü aynı anda çalıştırmasına izin vermek için göz önünde bulundurun. Bunu arama/GetMetadata + ForEach + Copy ile yapabilirsiniz. [Birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md) veya [Amazon S3 'ten verileri](solution-template-migration-s3-azure.md) genel örnek olarak ADLS 2. çözüm şablonlarına geçirme bölümüne bakın.
 
@@ -128,7 +128,7 @@ Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Run
 
     - [Dosyaları, tarih saat bölümlenmiş dosya yoluna veya adına göre kopyalayıp kopyalayamayacağını](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)denetleyin. Bu şekilde, kaynak tarafında liste üzerinde yük getirmez.
 
-    - Bunun yerine, Amazon S3 ve Azure Blob için özel olarak "**önek**" olmak üzere veri deposunun yerel filtresini kullanıp kullanınızın olup olmadığını kontrol edin. Ön ek filtresi, veri deposu sunucu tarafı filtretir ve çok daha iyi performansa sahip olur.
+    - Bunun yerine veri deposunun yerel filtresini kullanıp kullananınızın, özellikle Amazon S3/Azure Blob/Azure dosya depolaması ve "**listafter/listBefore**ADLS 1." için özel olarak "**önek**" gibi. Bu filtreler veri deposu sunucu tarafı filtreleridir ve çok daha iyi performansa sahip olur.
 
     - Tek büyük veri kümesini birkaç küçük veri kümesine bölmek ve bu kopyalama işlerinin verilerin her bir tackles bölümünü aynı anda çalıştırmasına izin vermek için göz önünde bulundurun. Bunu arama/GetMetadata + ForEach + Copy ile yapabilirsiniz. [Birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md) veya [Amazon S3 'ten verileri](solution-template-migration-s3-azure.md) genel örnek olarak ADLS 2. çözüm şablonlarına geçirme bölümüne bakın.
 
@@ -142,7 +142,7 @@ Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Run
 
   - Data Factory-> genel bakış sayfanıza Azure portal > şirket içinde barındırılan IR 'nin CPU ve bellek kullanımı eğilimini kontrol edin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse, [ölçeği artırma/genişletme](create-self-hosted-integration-runtime.md#high-availability-and-scalability) için göz önünde bulundurun.
 
-  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örneğin:
+  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örnek:
 
     - [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)'dan verileri kopyalarken, verileri paralel olarak kopyalamak için veri bölümü seçeneklerini etkinleştirin.
 

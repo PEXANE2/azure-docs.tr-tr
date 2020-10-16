@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89003856"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044675"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -38,13 +38,13 @@ Modeller, [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigita
 * Modeller, TWINS 'nizi, etkileşimlerini yansıtan bir bilgi grafiğine bağlayabilmeniz için varlıklarınız arasında anlamsal **ilişkiler** tanımlar. Modelleri, dünyanın bir açıklamasında ve ilişkileri fiiller olarak düşünebilir.
 * Ayrıca, model devralmayı kullanarak TWINS 'yi özelleştirebilirsiniz. Bir model diğerinden kalıtımla alabilir.
 
-DTDL, [ıot Tak ve kullan (PnP)](../iot-pnp/overview-iot-plug-and-play.md) ve [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md)dahil olmak üzere diğer Azure IoT hizmetlerinin tamamında veri modelleri için kullanılır. Bu, Azure dijital TWINS çözümünüzü bağlı ve Azure ekosisteminin diğer bölümleriyle uyumlu tutmanıza yardımcı olur.
+DTDL, [ıot Tak ve kullan (PnP)](../iot-pnp/overview-iot-plug-and-play.md) ve [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md)dahil olmak üzere diğer Azure IoT hizmetlerinin tamamında veri modelleri için kullanılır. Bu, Azure dijital TWINS çözümünüzü bağlı ve Azure ekosisteminin diğer bölümleriyle uyumlu tutmanıza yardımcı olur.
 
 ### <a name="live-execution-environment"></a>Canlı yürütme ortamı
 
 Azure dijital TWINS 'deki dijital modeller gerçek dünyanın canlı, güncel temsilleridir. Özel DTDL modellerinizde ilişkileri kullanarak, TWINS 'i ortamınızı temsil eden **canlı bir grafiğe** bağlayacaksınız.
 
-Azure dijital TWINS grafınızı, [**Azure Digital TWINS Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)örnek bir uygulamanın yardımıyla görüntüleyebilirsiniz.
+Azure dijital TWINS grafınızı, [**Azure Digital TWINS Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)örnek bir uygulamanın yardımıyla görüntüleyebilirsiniz.
 
 Örnek görselleştirmenin nasıl görüneceğine ilişkin bir görünüm aşağıda verilmiştir:
 
@@ -84,7 +84,7 @@ Azure dijital TWINS kullanan tüm çözümler aşağıdaki bölümleri içerebil
 * Modelleri yapılandırarak, topoloji oluşturarak ve ikizi grafiğinden öngörüleri ayıklayarak Azure dijital TWINS örneğini çalıştıran bir veya daha fazla istemci uygulaması.
 * Azure dijital TWINS tarafından oluşturulan olayları veya cihazlar gibi bağlı veri kaynaklarını işleyecek bir veya daha fazla dış işlem kaynağı. İşlem kaynaklarını sağlamanın yaygın bir yolu [Azure işlevleri](../azure-functions/functions-overview.md)aracılığıyla yapılır.
 * Cihaz yönetimi ve IoT veri akışı özellikleri sağlamak için bir IoT Hub 'ı.
-* İş akışı tümleştirmesi ( [Logic Apps](../logic-apps/logic-apps-overview.md), soğuk depolama, zaman serisi tümleştirme veya analiz gibi) görevlerini işleyecek olan aşağı akış Hizmetleri. 
+* İş akışı Tümleştirme ( [Logic Apps](../logic-apps/logic-apps-overview.md), soğuk depolama, zaman serisi tümleştirme veya analiz gibi) görevlerini işleyecek olan aşağı akış Hizmetleri.
 
 Aşağıdaki diyagramda Azure Digital TWINS 'in daha büyük bir Azure IoT çözümü bağlamında bulunduğu yer gösterilmektedir.
 

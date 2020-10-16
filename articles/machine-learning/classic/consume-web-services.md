@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
 ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91345961"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (klasik) Web hizmetini kullanma
@@ -36,7 +36,7 @@ Azure Machine Learning Web hizmeti ile bir dış uygulama, Machine Learning iş 
 
 Azure Machine Learning Studio (klasik) iki tür hizmete sahiptir:
 
-* İstek-yanıt hizmeti (RR) – Machine Learning Studio (klasik) tarafından oluşturulan ve dağıtılan durum bilgisiz modellerin arabirimini sağlayan düşük gecikmeli, yüksek düzeyde ölçeklenebilir bir hizmettir.
+* Request-Response Service (RR)-Machine Learning Studio (klasik) tarafından oluşturulan ve dağıtılan durum bilgisiz modellere yönelik bir arabirim sağlayan düşük gecikme süreli, yüksek oranda ölçeklenebilir bir hizmettir.
 * Toplu yürütme hizmeti (BES): veri kayıtları için toplu iş puan veren bir zaman uyumsuz hizmettir.
 
 Machine Learning Web Hizmetleri hakkında daha fazla bilgi için bkz. [Machine Learning Web hizmeti dağıtma](deploy-a-machine-learning-web-service.md).
@@ -78,7 +78,7 @@ Machine Learning API yardımı, bir tahmin Web hizmeti hakkındaki ayrıntılar�
 1. Üzerinde çalıştığınız Web hizmeti ' ne tıklayın.
 2. API yardım sayfasını görüntülemek istediğiniz uç noktaya tıklayın.
 3. Üstteki menüde **tüketme**' ye tıklayın.
-4. Istek-yanıt veya toplu yürütme uç noktaları altında **API Yardım sayfası** ' na tıklayın.
+4. Request-Response veya toplu yürütme uç noktaları altında **API Yardım sayfası** ' na tıklayın.
 
 **Yeni bir Web hizmeti için Machine Learning API yardımını görüntülemek için**
 
@@ -87,7 +87,7 @@ Machine Learning API yardımı, bir tahmin Web hizmeti hakkındaki ayrıntılar�
 1. Üst menüdeki **Web Hizmetleri** ' ne tıklayın.
 2. Anahtarı almak istediğiniz Web hizmetine tıklayın.
 
-Istek-yanıt ve toplu yürütme Hizmetleri için URI 'Leri ve C#, R ve Python 'da örnek kodu almak için **Web hizmetini kullan** ' a tıklayın.
+Request-Response ve Batch yürütme Hizmetleri için URI 'Leri ve C#, R ve Python 'da örnek kodu almak için **Web hizmetini kullan** ' a tıklayın.
 
 Sağlanan URI 'lerden çağrılan API 'Ler için Swagger tabanlı belgeler almak üzere **Swagger API** ' ye tıklayın.
 

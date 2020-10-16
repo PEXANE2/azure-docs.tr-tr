@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bedb619d77d9e5a88fdc16d0fbd066fa092e0765
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020805"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950797"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>.NET uygulamasında Microsoft. Azure. Search (ile v10 arasındaki) kullanma
 
@@ -44,7 +44,7 @@ SDK 'nın gelecekteki bir güncelleştirmesiyle ilgili geri bildirim sağlamak i
 
 .NET SDK, `2019-05-06` [Azure bilişsel arama REST API](/rest/api/searchservice/)sürümünü hedefler. Bu sürüm, Azure Blob 'Ları dizin oluştururken [karmaşık türler](search-howto-complex-data-types.md), [AI zenginleştirme](cognitive-search-concept-intro.md), [otomatik tamamlama](/rest/api/searchservice/autocomplete)ve [jsonlines ayrıştırma modu](search-howto-index-json-blobs.md) için destek içerir. 
 
-Bu SDK, arama hizmetleri oluşturma ve ölçekleme ve API anahtarlarını yönetme gibi [yönetim işlemlerini](/rest/api/searchmanagement/) desteklemez. Arama kaynaklarınızı bir .NET uygulamasından yönetmeniz gerekiyorsa [Azure bilişsel arama .NET Yönetim SDK 'sını](https://aka.ms/search-mgmt-sdk)kullanabilirsiniz.
+Bu SDK, arama hizmetleri oluşturma ve ölçekleme ve API anahtarlarını yönetme gibi [yönetim işlemlerini](/rest/api/searchmanagement/) desteklemez. Arama kaynaklarınızı bir .NET uygulamasından yönetmeniz gerekiyorsa [Azure bilişsel arama .NET Yönetim SDK 'sını](/dotnet/api/overview/azure/search)kullanabilirsiniz.
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>SDK 'nın en son sürümüne yükseltme
 Zaten Azure Bilişsel Arama .NET SDK 'nın daha eski bir sürümünü kullanıyorsanız ve en son genel kullanıma sunulan sürüme yükseltmek istiyorsanız, [Bu makalede](search-dotnet-sdk-migration-version-9.md) nasıl yapılacağı açıklanmaktadır.

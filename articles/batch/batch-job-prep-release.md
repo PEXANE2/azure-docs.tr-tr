@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/17/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5b1084cfdd5995b7983badcdce71460f7bdec3d5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919463"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma
@@ -38,7 +38,7 @@ Batch işleri genellikle iş görevleri için giriş olarak ortak bir veri küme
 
 Bir havuzun işlem düğümlerinin iş arasında kullanımdan kaldırılacağı bir "paylaşılan havuz" ortamında, çalışma arasında iş verilerini silmeniz gerekebilir. Düğümlerdeki disk alanından tasarruf etmeniz veya kuruluşunuzun güvenlik ilkelerini karşılamanız gerekebilir. Bir iş hazırlama görevi tarafından indirilen veya Görev yürütülürken oluşturulan verileri silmek için bir **iş bırakma görevi** kullanın.
 
-**Günlük tutma**
+**Günlük saklama**
 
 Görevlerinizin oluşturduğu günlük dosyalarının bir kopyasını tutmak veya hatalı uygulamalar tarafından oluşturulabilecek döküm dosyalarını korumak isteyebilirsiniz. Bu verileri sıkıştırmak ve bir [Azure depolama][azure_storage] hesabına yüklemek için bu gibi durumlarda **iş serbest bırakma görevi** kullanın.
 

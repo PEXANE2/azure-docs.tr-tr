@@ -7,10 +7,10 @@ ms.date: 2/28/2018
 ms.author: gwallace
 ms.custom: devx-track-csharp
 ms.openlocfilehash: eeb2fd94e6b98bc9d89be22501406db9a8ba7773
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89013172"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric sistem durumu raporlarını görüntüleme
@@ -1039,10 +1039,10 @@ Varlıklar için **HealthState** içeren sorgular şunlardır:
   * PowerShell: Get-ServiceFabricReplica
 * Dağıtılan uygulama listesi: bir düğümdeki dağıtılan uygulamaların listesini döndürür.
   * API: [FabricClient. QueryClient. Getdeployedavınpplicationlistasync](/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
-  * PowerShell: Get-Servicefabricdeployedadpplication
+  * PowerShell: Get-ServiceFabricDeployedApplication
 * Dağıtılan hizmet paketi listesi: dağıtılan bir uygulamadaki hizmet paketlerinin listesini döndürür.
   * API: [FabricClient. QueryClient. GetDeployedServicePackageListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
-  * PowerShell: Get-Servicefabricdeployedadpplication
+  * PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
 > Bazı sorgular disk belleğine alınmış sonuçlar döndürüyor. Bu sorguların geri dönmesi [Pagedlist \<T> ](/dotnet/api/system.fabric.query.pagedlist-1)öğesinden türetilmiş bir listesidir. Sonuçlar bir iletiye uymuyorsa, yalnızca bir sayfa döndürülür ve numaralandırmanın nerede durdurulduğunu izleyen bir ContinuationToken olur. Sonraki sonuçları almak için aynı sorguyu çağırmaya ve önceki sorgudan devamlılık belirtecini geçirmeye devam edin.

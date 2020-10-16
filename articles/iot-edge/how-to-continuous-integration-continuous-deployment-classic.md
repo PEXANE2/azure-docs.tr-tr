@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447799"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046018"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge cihazlara sürekli tümleştirme ve sürekli dağıtım (klasik düzenleyici)
 
@@ -21,7 +21,7 @@ Azure Pipelines içindeki yerleşik Azure IoT Edge görevlerle DevOps 'u Azure I
 
 ![Geliştirme ve üretim için diyagram-CI ve CD dalları](./media/how-to-continuous-integration-continuous-deployment-classic/model.png)
 
-Bu makalede, IoT Edge çözümünüz için derleme ve yayın işlem hatları oluşturmak üzere Azure Pipelines için yerleşik [Azure IoT Edge görevlerinin](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) nasıl kullanılacağını öğrenirsiniz. İşlem hattınızı eklenen her bir Azure IoT Edge görevi aşağıdaki dört eylemden birini uygular:
+Bu makalede, IoT Edge çözümünüz için derleme ve yayın işlem hatları oluşturmak üzere Azure Pipelines için yerleşik [Azure IoT Edge görevlerinin](/azure/devops/pipelines/tasks/build/azure-iot-edge) nasıl kullanılacağını öğrenirsiniz. İşlem hattınızı eklenen her bir Azure IoT Edge görevi aşağıdaki dört eylemden birini uygular:
 
  | Eylem | Açıklama |
  | --- | --- |
@@ -32,22 +32,22 @@ Bu makalede, IoT Edge çözümünüz için derleme ve yayın işlem hatları olu
 
 Aksi belirtilmediği takdirde, bu makaledeki yordamlar görev parametreleri aracılığıyla kullanılabilen tüm işlevleri araştırmaz. Daha fazla bilgi için, aşağıdakilere bakın:
 
-* [Görev sürümü](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
+* [Görev sürümü](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
 * **Gelişmiş** -uygunsa, inşa etmek istemediğiniz modülleri belirtin.
-* [Denetim seçenekleri](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-control-options)
-* [Ortam değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
-* [Çıkış değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
+* [Denetim seçenekleri](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
+* [Ortam değişkenleri](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
+* [Çıkış değişkenleri](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Azure Repos deposu. Bir tane yoksa, [projenizde yeni bir git deposu oluşturabilirsiniz](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav). Bu makalede, **ıotedgerepo**adlı bir depo oluşturduk.
-* IoT Edge bir çözüm kaydedilir ve deponuza gönderilir. Bu makaleyi test etmek için yeni bir örnek çözüm oluşturmak istiyorsanız, [Visual Studio Code 'de modül geliştirme ve hata ayıklama](how-to-vs-code-develop-module.md) veya [Visual Studio 'Da C# modüllerini geliştirme ve hata](how-to-visual-studio-develop-csharp-module.md)ayıklama işlemleri bölümündeki adımları uygulayın. Bu makalede, depomızda **filtermodule**adlı bir modülün kodunu içeren **IoTEdgeSolution**adlı bir çözüm oluşturduk.
+* Bir Azure Repos deposu. Bir tane yoksa, [projenizde yeni bir git deposu oluşturabilirsiniz](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts). Bu makalede, **ıotedgerepo**adlı bir depo oluşturduk.
+* IoT Edge bir çözüm kaydedilir ve deponuza gönderilir. Bu makaleyi test etmek için yeni bir örnek çözüm oluşturmak istiyorsanız, [Visual Studio Code 'de modül geliştirme ve hata ayıklama](how-to-vs-code-develop-module.md) veya [Visual Studio 'Da C# modüllerini geliştirme ve hata](./how-to-visual-studio-develop-module.md)ayıklama işlemleri bölümündeki adımları uygulayın. Bu makalede, depomızda **filtermodule**adlı bir modülün kodunu içeren **IoTEdgeSolution**adlı bir çözüm oluşturduk.
 
    Bu makalede, her türlü Visual Studio Code veya Visual Studio 'da IoT Edge şablonları tarafından oluşturulan çözüm klasörüdür. Devam etmeden önce bu kodu oluşturmanız, göndermeniz, dağıtmanız veya hata ayıklamanıza gerek yoktur. Azure Pipelines bu süreçlerini ayarlayacaksınız.
 
    Yeni bir çözüm oluşturuyorsanız, deponuzu önce yerel olarak kopyalayın. Ardından, çözümü oluşturduğunuzda doğrudan depo klasöründe oluşturmayı seçebilirsiniz. Yeni dosyaları oradan kolayca kaydedebilir ve gönderebilirsiniz.
 
-* Modül görüntülerini ititebileceğiniz bir kapsayıcı kayıt defteri. [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) veya bir üçüncü taraf kayıt defteri kullanabilirsiniz.
+* Modül görüntülerini ititebileceğiniz bir kapsayıcı kayıt defteri. [Azure Container Registry](../container-registry/index.yml) veya bir üçüncü taraf kayıt defteri kullanabilirsiniz.
 * Ayrı test ve üretim dağıtımı aşamalarını test etmek için en az iki IoT Edge cihazı olan etkin bir Azure [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) . [Linux](quickstart-linux.md) veya [Windows](quickstart.md) üzerinde IoT Edge bir cihaz oluşturmak için hızlı başlangıç makalelerini takip edebilirsiniz
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>Sürekli tümleştirme için derleme işlem hattı oluşturma
@@ -84,7 +84,7 @@ Bu bölümde, yeni bir yapı işlem hattı oluşturacaksınız. İşlem hattın�
 
    * Modüllerinizi Linux kapsayıcıları için platform AMD64 'de derlemek istiyorsanız **Ubuntu-16,04** ' ı seçin.
 
-   * Modüllerinizi Windows 1809 kapsayıcıları için platform AMD64 'de derlemek isterseniz, [Windows üzerinde şirket içinde barındırılan aracıyı ayarlamanız](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)gerekir.
+   * Modüllerinizi Windows 1809 kapsayıcıları için platform AMD64 'de derlemek isterseniz, [Windows üzerinde şirket içinde barındırılan aracıyı ayarlamanız](/azure/devops/pipelines/agents/v2-windows?view=vsts)gerekir.
 
    * Modüllerinizi Linux kapsayıcıları için platform arm32v7 veya arm64 ' de derlemek isterseniz, [Linux üzerinde şirket içinde barındırılan aracıyı ayarlamanız](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)gerekir.
 
@@ -136,14 +136,14 @@ Bu bölümde, yeni bir yapı işlem hattı oluşturacaksınız. İşlem hattın�
     | Görünen ad | Varsayılan adı kullan veya Özelleştir |
     | Kaynak klasör | Kopyalanacak dosyaları içeren klasör. |
     | İçindekiler | İki satır ekleyin: `deployment.template.json` ve `**/module.json` . Bu iki dosya IoT Edge dağıtım bildirimini oluşturmak için giriş olarak hizmet verir. |
-    | Hedef klasör | Değişkeni belirtin `$(Build.ArtifactStagingDirectory)` . Açıklama hakkında bilgi edinmek için bkz. [derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) . |
+    | Hedef klasör | Değişkeni belirtin `$(Build.ArtifactStagingDirectory)` . Açıklama hakkında bilgi edinmek için bkz. [derleme değişkenleri](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
 
 10. Düzenlemek için **derleme yapıtları Yayımla** görevini seçin. Yolun serbest bırakma işlem hattına yayınlanabilmesi için göreve yapıt hazırlama dizini yolu sağlayın.
 
     | Parametre | Açıklama |
     | --- | --- |
     | Görünen ad | Varsayılan adı kullanın veya özelleştirin. |
-    | Yayımlanacak yol | Değişkeni belirtin `$(Build.ArtifactStagingDirectory)` . Daha fazla bilgi için bkz. [derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) . |
+    | Yayımlanacak yol | Değişkeni belirtin `$(Build.ArtifactStagingDirectory)` . Daha fazla bilgi için bkz. [derleme değişkenleri](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
     | Yapıt adı | Varsayılan adı kullan: **bırak** |
     | Yapıt yayımlama konumu | Varsayılan konumu kullanın: **Azure Pipelines** |
 
@@ -160,7 +160,7 @@ Bu işlem hattı, artık yeni kodu depoya gönderdiğinizde otomatik olarak çal
 >[!NOTE]
 >İşlem hattınızda **katmanlı dağıtımlar** kullanmak istiyorsanız, katmanlı dağıtımlar henüz Azure devops 'daki Azure IoT Edge görevlerinde desteklenmez.
 >
->Ancak, [Azure DevOps 'da bir Azure CLI görevi](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) kullanarak dağıtımınızı katmanlı bir dağıtım olarak oluşturabilirsiniz. **Satır Içi betik** değeri için [az IoT Edge Deployment Create komutunu](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)kullanabilirsiniz:
+>Ancak, [Azure DevOps 'da bir Azure CLI görevi](/azure/devops/pipelines/tasks/deploy/azure-cli) kullanarak dağıtımınızı katmanlı bir dağıtım olarak oluşturabilirsiniz. **Satır Içi betik** değeri için [az IoT Edge Deployment Create komutunu](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)kullanabilirsiniz:
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

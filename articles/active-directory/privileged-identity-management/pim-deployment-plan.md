@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89050208"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management dağıtma (PıM)
@@ -78,7 +78,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Paydaşlar: Azure AD rolleri Için Privileged Identity Management
 
-| Name | Rol | Eylem |
+| Adı | Rol | Eylem |
 | --- | --- | --- |
 | Ad ve e-posta | **Kimlik mimarı veya Azure genel Yöneticisi**<br/>Kimlik Yönetimi ekibinin, bu değişikliği kuruluşunuzda temel kimlik yönetimi altyapısına nasıl hizalamayı tanımlamaya yönelik bir temsilcisidir. | SO/R/ı |
 | Ad ve e-posta | **Hizmet sahibi/satır Yöneticisi**<br/>Bir hizmetin veya bir hizmet grubunun BT sahiplerine bir temsilci. Bunlar, kararlar verirken ve takımlarına yönelik Privileged Identity Management almaya yardımcı olan bir anahtarlıyız. | SO/R/ı |
@@ -88,7 +88,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-roles"></a>Paydaşlar: Azure rolleri Için Privileged Identity Management
 
-| Name | Rol | Eylem |
+| Adı | Rol | Eylem |
 | --- | --- | --- |
 | Ad ve e-posta | **Abonelik/kaynak sahibi**<br/>Privileged Identity Management dağıtmak istediğiniz her abonelik veya kaynağın BT sahiplerine bir temsilci | SO/R/ı |
 | Ad ve e-posta | **Güvenlik sahibi**<br/>Güvenlik ekibinden, planın kuruluşunuzun güvenlik gereksinimlerini karşıladığı oturumu kapatan bir temsilcisidir. | SO/R |

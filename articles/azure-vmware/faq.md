@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530485"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078944"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -67,6 +67,21 @@ Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yön
 
 VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlevdir/hizmettir ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Ayrıca, hizmeti kapatma/devre dışı bırakma seçeneğiniz de vardır.
 
+#### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware Çözüm VM 'Leri VMRC tarafından yönetiliyor mu?
+Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve genel DNS (ESXi ana bilgisayar adlarını çözümleyebilmesi için) kullanıyor olabilir.
+
+#### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri ile VMRC 'yi yüklemek ve kullanmak için özel yönergeler var mı?
+Hayır, [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) kullanın ve bu YÖNERGELERDE belirtilen VM önkoşullarını yerine uygulayın. 
+
+#### <a name="is-vmware-hcx-supported-on-vpns"></a>Şu VPN 'lerde VMware HCX destekleniyor mu?
+Bant genişliği ve gecikme süresi gereksinimleri nedeniyle Hayır.
+
+#### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>Azure savunma, AVS VM 'lerine bağlanmak için kullanılabilir mi?
+Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek için bağlantı kutusu 'na bağlanmanız önerilir. Azure IaaS nesneleri olmadığından Azure VMware Çözüm VM 'lerine bağlanmak için Azure savunma 'yi kullanamazsınız.
+
+#### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidi kullanılabilir mi?
+Evet, sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanabilirsiniz.  Bununla birlikte, ExpressRoute aracılığıyla şirket içi Azure VMware çözümüne erişmek için ExpressRoute Global Reach sahip olmanız gerekir. Bu, ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamamalıdır.
+
 ## <a name="compute-network-storage-and-backup"></a>İşlem, ağ, depolama ve yedekleme
 
 #### <a name="is-there-more-than-one-type-of-host-available"></a>Birden fazla konak türü var mı?
@@ -100,6 +115,14 @@ Evet, tüm vSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak var
 #### <a name="what-about-support-for-isv-backup-solutions"></a>ISV yedekleme çözümleri için destek nedir?
 
 Bu yedekleme çözümleri müşteriler tarafından yüklenip yönetildiğinden, destek için ilgili ISV 'ye ulaşabilirler. 
+
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Yinelenenleri kaldırma ayarı için doğru depolama ilkesi nedir?
+
+VM şablonunuz için *thin_provision* depolama ilkesini kullanın.  Varsayılan değer *thick_provision*.
+
+#### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP altyapı günlükleri paylaşılıyor mu?
+
+Hayır.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Konaklar, kümeler ve özel bulutlar
 
@@ -174,6 +197,8 @@ Hayır. İnternet 'ten özel bulutlara doğrudan gelen ağ trafiğine izin veril
 
 Evet. İnternet 'e yönelik VM erişimini kısıtlayan bir güvenlik duvarı oluşturmak için NSX-T Yöneticisi ' ni kullanmanız gerekir.
 
+
+
 ## <a name="accounts-and-privileges"></a>Hesaplar ve ayrıcalıklar
 
 #### <a name="what-accounts-and-privileges-will-i-get-with-my-new-azure-vmware-solution-private-cloud"></a>Yeni Azure VMware çözümü özel bulutum ile hangi hesapları ve ayrıcalıkları alabilirim?
@@ -211,7 +236,7 @@ Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
 
-* Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) gerekir.
+* Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
 * Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
 Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.

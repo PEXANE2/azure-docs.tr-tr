@@ -4,13 +4,13 @@ description: Paylaşılan görüntü galerisine özel bir görüntü yüklemeyi 
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: cd701215eb375b7f9b867ba05082afc7ed348ff7
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91712417"
 ---
-# <a name="upload-a-custom-image-to-shared-image-gallery"></a>Paylaşılan görüntü galerisine özel bir görüntü yükleme
+# <a name="upload-a-custom-image-to-shared-image-gallery"></a>Paylaşılan Görüntü Galerisi’ne özel görüntü yükleme
 
 Paylaşılan görüntü Galerisi, Azure Lab Services Labs oluşturmak için kendi özel görüntülerinizi içeri aktarmak için kullanılabilir. University IT departmanları, özellikle aşağıdaki nedenlerden dolayı yararlı olan görüntüleri içeri aktarma işlemi bulur: 
 

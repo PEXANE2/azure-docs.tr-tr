@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298720"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium dosya paylaşımıyla bir FCı oluşturma (Azure VM 'lerinde SQL Server)
@@ -29,7 +29,7 @@ Premium dosya paylaşımları, Windows Server 2012 veya sonraki sürümlerde SQL
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -41,7 +41,7 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 ## <a name="mount-premium-file-share"></a>Premium dosya paylaşma bağlama
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. ve depolama hesabınıza gidin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. ve depolama hesabınıza gidin.
 1. **Dosya hizmeti**altında **dosya paylaşımları** ' na gidin ve ardından SQL depolaması için kullanmak istediğiniz Premium dosya paylaşımını seçin.
 1. Dosya paylaşımınızın bağlantı dizesini görüntülemek için **Bağlan** ' ı seçin.
 1. Açılan listede, kullanmak istediğiniz sürücü harfini seçin ve ardından her iki kod bloğunu Not defteri 'ne kopyalayın.
@@ -96,17 +96,7 @@ Kullanıcı arabirimini kullanarak kümeyi doğrulamak için sanal makinelerden 
 1. **İleri**’yi seçin.
 1. **Test seçimi**altında, **depolama** ve **depolama alanları doğrudan**dışındaki tüm testleri aşağıda gösterildiği gibi seçin:
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Küme doğrulama testlerini seçin":::
-
-1. **İleri**’yi seçin.
-1. **Onay**altında **İleri**' yi seçin.
-
-**Yapılandırma doğrulama** Sihirbazı doğrulama testlerini çalıştırır.
-
-PowerShell 'i kullanarak kümeyi doğrulamak için sanal makinelerden birindeki yönetici PowerShell oturumundan aşağıdaki betiği çalıştırın:
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Her iki PowerShell komutunu da dosya paylaşımının Connect portalından Kopyala"
    ```
 
 Kümeyi doğruladıktan sonra, yük devretme kümesini oluşturun.
@@ -151,7 +141,7 @@ Daha fazla bilgi için bkz. [Yük devretme kümesi: küme ağ nesnesi](https://b
 
 Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi**, kümenize sağ tıklayın, **diğer eylemler**' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü**seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Çekirdek kaynağı diğer düğümlere taşıyarak küme yük devretmesini test etme":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Her iki PowerShell komutunu da dosya paylaşımının Connect portalından Kopyala":::
 
 
 ## <a name="create-sql-server-fci"></a>SQL Server FCı oluştur
@@ -172,7 +162,7 @@ Yük devretme kümesini yapılandırdıktan sonra, SQL Server FCı 'yi oluştura
 
    FCı veri dizinlerinin Premium dosya paylaşımında olması gerekir. Paylaşımın tam yolunu şu biçimde girin: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Veri dizini olarak bir dosya sunucusu belirtmiş olduğunu söyleyen bir uyarı görüntülenir. Bu uyarı beklenmektedir. Dosya paylaşımından kalıcı hale geldiğinde, sanal makineye RDP aracılığıyla erişmek için kullandığınız kullanıcı hesabının, SQL Server hizmetin olası hatalardan kaçınmak için kullandığı hesapla aynı olduğundan emin olun.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Dosya paylaşımının SQL veri dizinleri olarak kullanılması":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Her iki PowerShell komutunu da dosya paylaşımının Connect portalından Kopyala":::
 
 1. Sihirbazdaki adımları tamamladıktan sonra, kurulum ilk düğümde bir SQL Server FCı yükler.
 

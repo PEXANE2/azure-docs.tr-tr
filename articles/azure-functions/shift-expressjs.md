@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
 ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87810233"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Express.js 'den Azure Işlevlerine kaydırma
@@ -109,7 +109,7 @@ IŞLEVLERE taşırken aşağıdaki değişiklikler yapılır:
 
 - **Bağlam ve yanıt nesnesi**:, [`context`](./functions-reference-node.md#context-object) işlevin çalışma zamanıyla iletişim kurmanızı sağlar. Bağlamdan, istek verilerini okuyabilir ve işlevin yanıtını ayarlayabilirsiniz. Zaman uyumlu kod `context.done()` , yürütmeyi tamamlamaya yönelik çağrı yapmanızı gerektirir, ancak `asyc` işlevler isteği örtülü olarak çözer.
 
-- **Adlandırma kuralı**: Azure işlevleri dosyalarını içerecek şekilde kullanılan klasör adı, varsayılan olarak uç nokta adı olarak kullanılır (Bu, [üzerindefunction.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint)geçersiz kılınabilir).
+- **Adlandırma kuralı**: Azure işlevleri dosyalarını içerecek şekilde kullanılan klasör adı, varsayılan olarak uç nokta adı olarak kullanılır (Bu, [ üzerindefunction.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint)geçersiz kılınabilir).
 
 - **Yapılandırma**: http fiillerini, veya gibi dosyada [function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) tanımlarsınız `POST` `PUT` .
 

@@ -3,15 +3,15 @@ title: Windows sanal masaüstü yük dengelemesini Yapılandırma-Azure
 description: Windows sanal masaüstü ortamı için yük dengeleme yöntemini yapılandırma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010115"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951664"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
 
@@ -20,7 +20,7 @@ Bir konak havuzu için yük dengeleme yöntemini yapılandırmak, Windows sanal 
 >[!NOTE]
 > Bu, kullanıcıların konak havuzundaki bir oturum ana bilgisayarına her zaman bir 1:1 eşlemesi olduğundan, kalıcı bir masaüstü konak havuzu için geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, PowerShell modülünü indirip yüklemek ve Azure hesabınızda oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izlediğiniz varsayılmaktadır.
 
@@ -51,13 +51,19 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 
 ## <a name="configure-depth-first-load-balancing"></a>Derinlik-ilk yük dengelemeyi yapılandırma
 
-Derinlik-ilk yük dengeleme, yeni kullanıcı oturumlarını en fazla bağlantı sayısına sahip kullanılabilir bir oturum ana bilgisayarına dağıtır ancak en fazla oturum sınırı eşiğine ulaşmaz. Derinlik-ilk yük dengelemeyi yapılandırırken, konak havuzundaki oturum ana bilgisayarı başına en fazla oturum sınırı ayarlamanız gerekir.
+Derinlik-ilk yük dengeleme, yeni kullanıcı oturumlarını en fazla bağlantı sayısına sahip kullanılabilir bir oturum ana bilgisayarına dağıtır ancak en fazla oturum sınırı eşiğine ulaşmaz.
+
+>[!IMPORTANT]
+>Derinlik-ilk yük dengelemeyi yapılandırırken, konak havuzundaki oturum ana bilgisayarı başına en fazla oturum sınırı ayarlamanız gerekir.
 
 Bir konak havuzunu derinlik-ilk yük dengelemesi gerçekleştirecek şekilde yapılandırmak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
+
+>[!NOTE]
+> Derinlik-ilk yük dengeleme algoritması, oturum ana bilgisayar sayısı üst sınırını () temel alarak oturumları oturum konaklarına dağıtır `-MaxSessionLimit` . Bu parametrenin varsayılan değeri `999999` , aynı zamanda bu değişkeni olarak ayarlayabileceğiniz mümkün olan en yüksek sayıdır. Derinlik-ilk yük dengeleme algoritmasını kullandığınızda bu parametre gereklidir. En iyi olası kullanıcı deneyimi için, en fazla oturum ana bilgisayar sınırı parametresini ortamınıza en uygun bir sayıyla değiştirdiğinizden emin olun.
 
 Ayarın güncelleştirildiğinden emin olmak için şu cmdlet 'i çalıştırın:
 

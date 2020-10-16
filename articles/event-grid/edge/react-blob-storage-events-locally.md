@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87462029"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Öğretici: IoT Edge BLOB depolama olaylarına tepki verme (Önizleme)
@@ -37,7 +37,7 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge cihazınızı seçin
 
-1. [Azure portalında](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 1. IoT Hub gidin.
 1. **Otomatik cihaz yönetimi** bölümündeki menüden **IoT Edge** ' yi seçin. 
 1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın
@@ -54,7 +54,7 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
 1. Kapsayıcının adını, görüntüsünü, kapsayıcı oluşturma seçeneklerini belirtin:
 
    * **Ad**: eventgridmodule
-   * **Görüntü URI 'si**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Görüntü URI 'si**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Kapsayıcı oluşturma seçenekleri**:
 
     ```json
@@ -93,7 +93,7 @@ Bu bölümde, olayların sunulabileceği bir olay işleyicisi olarak görev yapa
 1. Kapsayıcının adını, görüntüsünü ve kapsayıcı oluşturma seçeneklerini belirtin:
 
    * **Ad**: abone
-   * **Görüntü URI 'si**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Görüntü URI 'si**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Kapsayıcı oluşturma seçenekleri**: yok
 1. **Kaydet**’e tıklayın
 1. Azure Blob depolama modülünü eklemek için sonraki bölüme geçin
@@ -193,8 +193,8 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
     ```
 
     > [!IMPORTANT]
-    > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
-    > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
 
 2. Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay almak için, **Microsoftstorage** konusu için bir Event Grid aboneliği oluşturmanız gerekir.
     1. Aşağıdaki içerikle birlikte blobsubscription.jsoluşturun. Yük hakkında daha fazla bilgi için [API belgelerimize](api.md) bakın
@@ -222,7 +222,7 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
        ```
 
        > [!IMPORTANT]
-       > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
        > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
     3. Aboneliğin başarıyla oluşturulduğunu doğrulamak için şu komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
@@ -251,8 +251,8 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
        ```
 
        > [!IMPORTANT]
-       > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-       > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
 3. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) indirin ve [yerel depolama birimine bağlayın](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
@@ -339,12 +339,12 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| api | string | Olayı tetikleyen işlem. Aşağıdaki değerlerden biri olabilir: <ul><li>BlobCreated-izin verilen değerler: `PutBlob` ve`PutBlockList`</li><li>BlobDeleted-izin verilen değerler `DeleteBlob` , `DeleteAfterUpload` ve `AutoDelete` . <p>`DeleteAfterUpload`DeleteAfterUpload istenen özelliği true olarak ayarlandığından, blob otomatik olarak silindiğinde olay oluşturulur. </p><p>`AutoDelete`Deleteafutes istenen özellik değerinin geçerliliği aşıldığı için blob otomatik olarak silindiğinde olay oluşturulur.</p></li></ul>|
+| api | string | Olayı tetikleyen işlem. Aşağıdaki değerlerden biri olabilir: <ul><li>BlobCreated-izin verilen değerler: `PutBlob` ve `PutBlockList`</li><li>BlobDeleted-izin verilen değerler `DeleteBlob` , `DeleteAfterUpload` ve `AutoDelete` . <p>`DeleteAfterUpload`DeleteAfterUpload istenen özelliği true olarak ayarlandığından, blob otomatik olarak silindiğinde olay oluşturulur. </p><p>`AutoDelete` Deleteafutes istenen özellik değerinin geçerliliği aşıldığı için blob otomatik olarak silindiğinde olay oluşturulur.</p></li></ul>|
 | Clientrequestıd 'ye sahip | string | depolama API 'SI işlemi için istemci tarafından sağlanmış bir istek KIMLIĞI. Bu KIMLIK, günlüklerdeki "istemci-istek-kimliği" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve "x-MS-Client-Request-ID" üst bilgisi kullanılarak istemci isteklerinde sağlanabilirler. Ayrıntılar için bkz. [günlük biçimi](/rest/api/storageservices/storage-analytics-log-format). |
 | No | string | Depolama API 'SI işlemi için hizmet tarafından oluşturulan istek KIMLIĞI. , Günlüklerdeki "istek-kimliği-üst bilgi" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve ' x-MS-Request-id ' üst bilgisinde API çağrısını başlatma işleminden döndürülür. [Günlük biçimine](/rest/api/storageservices/storage-analytics-log-format)bakın. |
 | Özelliği | string | İşlemleri koşullu olarak gerçekleştirmek için kullanabileceğiniz değer. |
 | contentType | string | Blob için belirtilen içerik türü. |
-| contentLength | integer | Blobun bayt cinsinden boyutu. |
+| contentLength | tamsayı | Blobun bayt cinsinden boyutu. |
 | blobType | string | Blob türü. Geçerli değerler "BlockBlob" ya da "PageBlob". |
 | url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
 

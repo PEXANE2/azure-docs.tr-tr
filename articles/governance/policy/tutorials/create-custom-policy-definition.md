@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649829"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876303"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -66,12 +66,15 @@ Bir Azure kaynağı için özellikleri belirlemenin birçok yolu vardır. Bu ö�
 
 ### <a name="arm-templates"></a>ARM şablonları
 
-Yönetmek istediğiniz özelliği içeren [Kaynak Yöneticisi şablona](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) bakmak için birkaç yol vardır.
+Yönetmek istediğiniz özelliği içeren bir [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) 'ye bakmak için birkaç yol vardır.
 
 #### <a name="existing-resource-in-the-portal"></a>Portalda mevcut kaynak
 
 Özellikleri bulmanın en kolay yolu, aynı türdeki mevcut bir kaynağa bakmanız. Zorlamak istediğiniz ayarla önceden yapılandırılmış kaynaklar, karşılaştırılacak değeri de sağlar.
 Söz konusu kaynak için Azure portal **şablonu dışarı aktar** sayfasına ( **Ayarlar**altında) bakın.
+
+> [!WARNING]
+> Azure portal tarafından dışarıya alınan ARM şablonu, `deployment` bir [Deployifnotexists](../concepts/effects.md#deployifnotexists) Ilke tanımındaki bir ARM şablonunun özelliğine doğrudan takılıdır.
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure portal içindeki mevcut bir kaynaktaki şablonu dışarı aktar sayfasının ekran görüntüsü." border="false":::
 
@@ -350,7 +353,7 @@ Artık, yönetmeyi planladığımız özellikler için özellik ayrıntıları v
 }
 ```
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 İlk üç bileşen ilke meta verilersidir. Bu bileşenlerin, için kural oluşturduğumuz öğrendiğimiz için değerleri sağlaması kolaydır. [Mod](../concepts/definition-structure.md#mode) öncelikli olarak Etiketler ve kaynak konumu ile ilgilidir. Etiketleri destekleyen kaynaklarla değerlendirmeyi sınırlandırmaya gerek olmadığı için, **mod**için _Tüm_ değeri kullanacağız.
 

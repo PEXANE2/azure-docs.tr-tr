@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166117"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
@@ -57,9 +57,9 @@ V 1.0 kaynaklarına erişmek için MSAL.NET de mümkündür. Bkz. [bir v 1.0 uyg
 
 ### <a name="core-classes"></a>Çekirdek sınıflar
 
-- ADAL.NET, bir yetkili aracılığıyla güvenlik belirteci hizmeti (STS) veya yetkilendirme sunucusu bağlantınızın temsili olarak [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) kullanır. Aksine, MSAL.NET [istemci uygulamaları](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications)etrafında tasarlanmıştır. İki ayrı sınıf sağlar: `PublicClientApplication` ve`ConfidentialClientApplication`
+- ADAL.NET, bir yetkili aracılığıyla güvenlik belirteci hizmeti (STS) veya yetkilendirme sunucusu bağlantınızın temsili olarak [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) kullanır. Aksine, MSAL.NET [istemci uygulamaları](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications)etrafında tasarlanmıştır. İki ayrı sınıf sağlar: `PublicClientApplication` ve `ConfidentialClientApplication`
 
-- Belirteçleri alma: ADAL.NET ve MSAL.NET aynı kimlik doğrulama çağrılarına sahiptir ( `AcquireTokenAsync` ve `AcquireTokenSilentAsync` adal.net, ve `AcquireTokenInteractive` msal.NET için `AcquireTokenSilent` ), ancak farklı parametrelerle gereklidir. Tek fark, MSAL.NET ' de, `ClientID` her AcquireTokenXX çağrısında uygulamanızın içinde geçiş yapmak zorunda kalmayın. Aslında, `ClientID` (veya) derlerken yalnızca bir kez ayarlanır `IPublicClientApplication` `IConfidentialClientApplication` .
+- Belirteçleri alma: ADAL.NET ve MSAL.NET aynı kimlik doğrulama çağrılarına sahiptir ( `AcquireTokenAsync` ve  `AcquireTokenSilentAsync` adal.net, ve `AcquireTokenInteractive` msal.NET için `AcquireTokenSilent` ), ancak farklı parametrelerle gereklidir. Tek fark, MSAL.NET ' de, `ClientID` her AcquireTokenXX çağrısında uygulamanızın içinde geçiş yapmak zorunda kalmayın. Aslında, `ClientID` (veya) derlerken yalnızca bir kez ayarlanır `IPublicClientApplication` `IConfidentialClientApplication` .
 
 ### <a name="iaccount-not-iuser"></a>IAccount IUser değil
 
@@ -69,7 +69,7 @@ MSAL.NET 2. x artık hesap kavramını (IAccount arabirimi aracılığıyla) tan
 
 IUser ve IAccount arasındaki farklar hakkında daha fazla bilgi için bkz. [msal.NET 2. x](https://aka.ms/msal-net-2-released).
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 #### <a name="interaction-required-exceptions"></a>Etkileşim gerekli özel durumları
 
@@ -101,7 +101,7 @@ catch(MsalUiRequiredException exception)
 
 ADAL.NET ' de, talep sınama özel durumları aşağıdaki şekilde işlenir:
 
-- `AdalClaimChallengeException`, `AdalServiceException` bir kaynağın kullanıcıdan daha fazla talep gerektirmesi durumunda (örneğin iki etmenle kimlik doğrulaması için), hizmet tarafından oluşturulan bir özel durumdur (türetiliyor). `Claims`Üye, talepler içeren bazı JSON parçaları içeriyor, bu da bekleniyor.
+- `AdalClaimChallengeException` , `AdalServiceException` bir kaynağın kullanıcıdan daha fazla talep gerektirmesi durumunda (örneğin iki etmenle kimlik doğrulaması için), hizmet tarafından oluşturulan bir özel durumdur (türetiliyor). `Claims`Üye, talepler içeren bazı JSON parçaları içeriyor, bu da bekleniyor.
 - Hala ADAL.NET sürümünde, bu özel durumu alan ortak istemci uygulamasının, `AcquireTokenInteractive` bir talep parametresine sahip geçersiz kılmayı çağırması gerekir. Bu geçersiz kılma, `AcquireTokenInteractive` gerekli olmadığı için önbellekte vurmasına bile gerek yoktur. Bu nedenle, önbellekteki belirtecin doğru talepler yoktur (Aksi halde, bir şekilde oluşturulmaz `AdalClaimChallengeException` ). Bu nedenle, önbelleğe bakmamız gerekmez. `ClaimChallengeException` `AcquireTokenInteractive` Bu Web API 'sini çağıran bir ortak istemci uygulamasında çağrılması gerektiğinde, bir WebAPI, OBO 'da alınılabileceğini unutmayın.
 - örnekler de dahil olmak üzere Ayrıntılar için bkz. [Adalclaimbir Geexception](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Exceptions-in-ADAL.NET#handling-adalclaimchallengeexception) işleme
 
@@ -241,7 +241,7 @@ Bu yöntemde, daha önce kullanılan yenileme belirtecini istediğiniz kapsamlar
 
 Bu yöntem, tipik olmayan senaryolar için düşünülbildiği için, bu, `IConfidentialClientApplication` ilk olarak kendisine atama yapılmadan ile erişilebilir değildir `IByRefreshToken` .
 
-Bu kod parçacığı, bir gizli istemci uygulamasındaki bazı geçiş kodlarını gösterir. `GetCachedRefreshTokenForSignedInUser`bir depolama alanında depolanan yenileme belirtecini, ADAL 2. x 'ten yararlanmak için kullanılan uygulamanın önceki bir sürümüyle elde edin. `GetTokenCacheForSignedInUser`oturum açan kullanıcı için bir önbelleği kaldırır (gizli istemci uygulamalarının Kullanıcı başına bir önbelleği olması gerekir).
+Bu kod parçacığı, bir gizli istemci uygulamasındaki bazı geçiş kodlarını gösterir. `GetCachedRefreshTokenForSignedInUser` bir depolama alanında depolanan yenileme belirtecini, ADAL 2. x 'ten yararlanmak için kullanılan uygulamanın önceki bir sürümüyle elde edin. `GetTokenCacheForSignedInUser` oturum açan kullanıcı için bir önbelleği kaldırır (gizli istemci uygulamalarının Kullanıcı başına bir önbelleği olması gerekir).
 
 ```csharp
 TokenCache userCache = GetTokenCacheForSignedInUser();

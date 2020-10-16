@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abec780deb7834e67618c74e556a1bc20154b0b4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658548"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Karma kimlik yaşam döngüsü benimseme stratejisini belirleme
@@ -60,7 +60,7 @@ Diğer şirketler, tam rol tabanlı sağlama elde etmek ve bir karma yaklaşım�
 ## <a name="license-management"></a>Lisans yönetimi
 Azure AD 'de grup tabanlı lisans yönetimi, yöneticilerin kullanıcıları bir güvenlik grubuna atamasını sağlar ve Azure AD, otomatik olarak grup üyelerine lisans atar. Bir Kullanıcı daha sonra gruba eklendiyse veya gruptan kaldırılırsa, bir lisans otomatik olarak atanır veya uygun şekilde kaldırılır.
 
-Şirket içi AD 'den eşitlediğiniz grupları veya Azure AD 'de yönetimi kullanabilirsiniz. Azure AD Premium Self Servis Grup yönetimi ile eşleştirme, uygun karar mekanizmalarına lisans atamasını kolayca devredebilir. Lisans çakışmaları ve eksik konum verileri gibi sorunların otomatik olarak sıralandığından emin olabilirsiniz.
+Şirket içi AD 'den eşitlediğiniz grupları veya Azure AD 'de yönetimi kullanabilirsiniz. Bu Azure AD Premium Self-Service Grup yönetimi ile eşleştirme, uygun karar mekanizmalarının lisans atamasını kolayca devredebilir. Lisans çakışmaları ve eksik konum verileri gibi sorunların otomatik olarak sıralandığından emin olabilirsiniz.
 
 ## <a name="self-regulating-user-administration"></a>Kendi kendine düzenleme Kullanıcı Yönetimi
 Kuruluşunuz tüm iç kuruluşlarda kaynak sağlamaya başladığında, kendi kendine düzenleme Kullanıcı yönetimi özelliğini uygularsınız. Kullanıcıları kuruluş sınırları genelinde sağlamanın olumlu ve avantajlarından yararlanabilirsiniz. Bu ortamda, kullanıcının durumundaki bir değişiklik, kuruluş sınırları ve coğrafi bölgelerde erişim haklarıyla otomatik olarak yansıtılır. Sağlama maliyetlerini azaltabilir, erişim ve onay süreçlerini kolaylaştırabilirsiniz. Uygulama, kuruluşunuzda uçtan uca erişim yönetimi için rol tabanlı erişim denetimi uygulamanın tam potansiyelini daha gerçekçi hale getirir. Yönetici maliyetlerini, Kullanıcı sağlamasını yönetmek için otomatikleştirilmiş yordamlar aracılığıyla azaltabilirsiniz. Güvenlik ilkesi zorlamayı otomatikleştirerek güvenliği iyileştirebilir, büyük Kullanıcı popülasyonu için Kullanıcı yaşam döngüsü yönetimi ve kaynak sağlamayı kolaylaştırabilir ve merkezileştirin.

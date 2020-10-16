@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611311"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
@@ -185,9 +185,9 @@ Bu tablo, kullanım modeli farklarını özetler:
 
 | Kullanım modeli                   | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| Yoğun, seyrek okunan yazma işlemleri | Okuma         | Asla                 | Hiçbiri                     |
+| Yoğun, seyrek okunan yazma işlemleri | Okuma         | Asla                 | Yok                     |
 | %15 yazma boyutundan büyük       | Okuma/yazma   | Asla                 | 1 saat                   |
-| İstemcileri önbelleği atlar      | Okuma         | 30 saniye            | Hiçbiri                     |
+| İstemcileri önbelleği atlar      | Okuma         | 30 saniye            | Yok                     |
 
 ### <a name="create-an-nfs-storage-target"></a>NFS depolama hedefi oluşturma
 

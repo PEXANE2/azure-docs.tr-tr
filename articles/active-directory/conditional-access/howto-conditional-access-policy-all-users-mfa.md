@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a45ce7bee04716612431effe77315d739f328dba
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049307"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Koşullu erişim: tüm kullanıcılar için MFA gerektir
@@ -50,7 +50,7 @@ Aşağıdaki adımlar, tüm kullanıcıların Multi-Factor Authentication gerçe
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Dahil et**altında **tüm kullanıcılar** ' ı seçin
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin.
    1. **Hariç tut**' un altında, Multi-Factor Authentication gerektirmeyen tüm uygulamaları seçin.
 1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında, bu ilke tüm varsayılanları seçili bırakmak **için geçerli olur** ve **bitti**' yi seçin.
@@ -68,8 +68,8 @@ Yukarıdaki örnek ilkede, bir kuruluş, kurumsal ağından bir bulut uygulamas�
    1. **Evet 'i**yapılandırın.
    1. **Herhangi bir konum**ekleyin.
    1. **Tüm güvenilen konumları**hariç tutun.
-   1. **Bitti**'yi seçin.
-1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
+1. **Bitti** seçeneğini belirleyin.
 1. İlke değişikliklerinizi **kaydedin** .
 
 ## <a name="next-steps"></a>Sonraki adımlar

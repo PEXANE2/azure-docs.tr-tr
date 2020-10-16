@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078936"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047667"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
@@ -26,7 +26,7 @@ Bu makalede, ortamınız geliştirme ve dağıtım için hazırlanmanıza yardı
 
 Bu adım genellikle bir bulut geliştiricisi tarafından gerçekleştirilir. Bazı yazılımlar da bir veri bilimcı için yararlı olabilir.
 
-Zaten yapılandırılmış bir çok önkoşul içeren bir Azure sanal makinesi oluşturan bir PowerShell betiği oluşturduk. Oluşturduğumuz sanal makinenin [iç içe sanallaştırmayı](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)işleyebilmesi gerekir, bu nedenle [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) makine boyutu seçtik.
+Zaten yapılandırılmış bir çok önkoşul içeren bir Azure sanal makinesi oluşturan bir PowerShell betiği oluşturduk. Oluşturduğumuz sanal makinenin [iç içe sanallaştırmayı](../virtual-machines/windows/nested-virtualization.md)işleyebilmesi gerekir, bu nedenle [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) makine boyutu seçtik.
 
 Geliştirme sanal makinesi şu şekilde ayarlanır:
 
@@ -38,7 +38,7 @@ Geliştirme sanal makinesi şu şekilde ayarlanır:
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/?view=azps-1.1.0)
 * [VS Code uzantıları](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -82,7 +82,7 @@ Sanal makineyi oluşturmak ve yapılandırmak yaklaşık 30 dakika sürer.
 
    Komut dosyası aşağıdaki adımları yürüttüğünde birkaç dakika çalışır:
 
-    1. [Azure PowerShell az Module 'ü](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)yüklüyor.
+    1. [Azure PowerShell az Module 'ü](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)yüklüyor.
     1. Azure 'da oturum açmanızı ister.
     1. VM 'nizin oluşturulmasıyla ilgili bilgileri onaylar. Devam etmek için **y** veya **ENTER** tuşuna basın.
     1. Mevcut değilse kaynak grubunu oluşturur.
@@ -215,7 +215,7 @@ Bu makalede bir IoT Hub oluşturdunuz ve bir Azure depolama hesabına yol yapıl
 
 IoT Edge öğreticisindeki Machine Learning bu bölümünde ele alınan adımlar hakkında daha fazla bilgi için bkz.:
 
-* [Azure IoT temelleri](https://docs.microsoft.com/azure/iot-fundamentals/)
+* [Azure IoT temelleri](../iot-fundamentals/index.yml)
 * [IoT Hub ile ileti yönlendirmeyi yapılandırma](../iot-hub/tutorial-routing.md)
 * [Azure portal kullanarak IoT Hub 'ı oluşturma](../iot-hub/iot-hub-create-through-portal.md)
 

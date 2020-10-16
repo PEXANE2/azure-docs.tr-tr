@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203516"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk sınırları
@@ -75,7 +75,7 @@ Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıy
 |-------------------|-----------------------------------------------------------|
 | Blok Blobu        | ~ 4,75 TiB                                                 |
 | Sayfa Blobu         | 8 TiB <br> (Sayfa Blobu biçiminde karşıya yüklenen her dosya 512 bayt hizalı olmalıdır, aksi takdirde karşıya yükleme başarısız olur. <br> Hem VHD hem de VHDX 512 bayt hizalı.) |
-|Azure Dosyalar        | 1 TiB <br> En çok, paylaşımın boyutu 5 TiB     |
+|Azure Dosyaları        | 1 TiB <br> En çok, paylaşımın boyutu 5 TiB     |
 | Yönetilen diskler     |4 TiB <br> Boyut ve sınırlar hakkında daha fazla bilgi için bkz. <li>[Yönetilen diskler için ölçeklenebilirlik hedefleri](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
@@ -84,7 +84,7 @@ Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıy
 | Varlık                                       | Kurallar                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Blok Blobu ve Sayfa Blobu için kapsayıcı adları <br> Azure dosyaları için FileShare adları | 3 ile 63 karakter uzunluğunda geçerli bir DNS adı olmalıdır. <br>  Bir harf veya sayı ile başlamalıdır. <br> Yalnızca küçük harf, sayı ve kısa çizgi (-) içerebilir. <br> Kısa çizgiden (-) hemen önce ve sonra bir harf veya rakam gelmelidir. <br> Adlarda kısa çizgiler art arda kullanılamaz. |
-| Azure dosyaları için dizin ve dosya adları     |<li> Büyük küçük harf koruma, büyük/küçük harfe duyarsız ve 255 karakter uzunluğunda olmalıdır. </li><li> Eğik çizgi (/) ile bitemez. </li><li>Sağlanmışsa, otomatik olarak kaldırılır. </li><li> Şu karakterlere izin verilmez:<code>" \\ / : \| < > * ?</code></li><li> Ayrılmış URL karakterleri doğru şekilde atlanmalıdır. </li><li> Geçersiz URL yolu karakterlerine izin verilmiyor. UE000 gibi kod noktaları \\ geçerli Unicode karakterler değildir. Denetim karakterleri (0x00-0x1F, u0081, vb.) gibi bazı ASCII veya Unicode karakterlere \\ de izin verilmez. HTTP/1.1 'de Unicode dizelerini yöneten kurallar için bkz. RFC 2616, Bölüm 2,2: temel kurallar ve RFC 3987. </li><li> Şu dosya adlarına izin verilmiyor: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, Dot karakteri (.) ve iki nokta karakteri (..).</li>|
+| Azure dosyaları için dizin ve dosya adları     |<li> Büyük küçük harf koruma, büyük/küçük harfe duyarsız ve 255 karakter uzunluğunda olmalıdır. </li><li> Eğik çizgi (/) ile bitemez. </li><li>Sağlanmışsa, otomatik olarak kaldırılır. </li><li> Şu karakterlere izin verilmez: <code>" \\ / : \| < > * ?</code></li><li> Ayrılmış URL karakterleri doğru şekilde atlanmalıdır. </li><li> Geçersiz URL yolu karakterlerine izin verilmiyor. UE000 gibi kod noktaları \\ geçerli Unicode karakterler değildir. Denetim karakterleri (0x00-0x1F, u0081, vb.) gibi bazı ASCII veya Unicode karakterlere \\ de izin verilmez. HTTP/1.1 'de Unicode dizelerini yöneten kurallar için bkz. RFC 2616, Bölüm 2,2: temel kurallar ve RFC 3987. </li><li> Şu dosya adlarına izin verilmiyor: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, Dot karakteri (.) ve iki nokta karakteri (..).</li>|
 | Blok blobu ve sayfa blobu için blob adları      | Blob adları büyük/küçük harfe duyarlıdır ve karakterler herhangi bir düzende sıralanabilir. <br> Blob adı 1 ila 1024 karakter uzunluğunda olmalıdır. <br> Ayrılmış URL karakterleri doğru şekilde atlanmalıdır. <br>Blob adını oluşturan yolun bölümleri 254 karakterden uzun olamaz. Yol bölümü, arka arkaya gelen sınırlayıcı karakterlerinin (örneğin eğik çizgi "/") arasında yer alan ve bir sanal dizinin adına karşılık gelen dizedir. |
 
 ## <a name="managed-disk-naming-conventions"></a>Yönetilen disk adlandırma kuralları

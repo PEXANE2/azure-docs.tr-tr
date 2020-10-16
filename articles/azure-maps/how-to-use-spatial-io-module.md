@@ -10,17 +10,17 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335305"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure haritalar uzamsal GÇ modülünü kullanma
 
 Azure Haritalar Web SDK 'Sı, uzamsal verileri JavaScript veya TypeScript kullanarak Azure Maps web SDK 'Sı ile tümleştiren **uzamsal GÇ modülünü**sağlar. Bu modüldeki güçlü özellikler geliştiricilerin şunları yapmasına izin verir:
 
-- [Sık kullanılan uzamsal veri dosyalarını okuyun ve yazın](spatial-io-read-write-spatial-data.md). Desteklenen dosya biçimleri şunlardır: KML, KMZ, GPX, GeoRSS, GML, GeoJSON ve uzamsal bilgiler içeren sütunlar içeren CSV dosyaları. Ayrıca Iyi bilinen metinleri (WKT) destekler.
+- [Sık kullanılan uzamsal veri dosyalarını okuyun ve yazın](spatial-io-read-write-spatial-data.md). Desteklenen dosya biçimleri şunlardır: KML, KMZ, GPX, GeoRSS, GML, GeoJSON ve uzamsal bilgiler içeren sütunlar içeren CSV dosyaları. Well-Known metin (WKT) de destekler.
 - [Open Geospatial Consortium (OGC) hizmetlerine bağlanın ve Azure Maps web SDK ile tümleştirin. Harita üzerinde katman olarak Web harita Hizmetleri (WMS) ve Web harita kutucuk Hizmetleri 'ni (WMTS) kaplama](spatial-io-add-ogc-map-layer.md).
 - [Verileri bir Web Özellik hizmetinde (WFS) sorgulama](spatial-io-connect-wfs-service.md).
 - [Stil bilgisi içeren karmaşık veri kümelerini kaplama ve bunların en az kod kullanılarak otomatik olarak işlemesini](spatial-io-add-simple-data-layer.md)içerir.
@@ -38,7 +38,7 @@ Bu videoda, Azure Maps web SDK 'sında uzamsal GÇ modülüne ilişkin bir genel
 > [!WARNING]
 > Yalnızca güvendiğiniz bir kaynaktan gelen veri ve Hizmetleri, özellikle de başka bir etki alanından başvuru yapıyorsanız kullanın. Uzamsal GÇ modülü, riski en aza indirmek için gereken adımları ele alır, ancak en güvenli yaklaşım, uygulamanıza yönelik herhangi bir desteklenmeyen veriye izin vermez. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Uzamsal GÇ modülünü kullanabilmeniz için önce [bir Azure haritalar hesabı](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) oluşturmanız ve [hesabınız için birincil abonelik anahtarını almanız](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)gerekir.
 

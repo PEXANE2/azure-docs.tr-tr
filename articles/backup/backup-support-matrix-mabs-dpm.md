@@ -4,10 +4,10 @@ description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek iç
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332704"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
@@ -50,7 +50,7 @@ Daha fazla bilgi için:
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-**Senaryo** | **Aracı** | **Konum**
+**Senaryo** | **Aracısı** | **Konum**
 --- | --- | ---
 **Şirket içi makineleri/iş yüklerini yedekleme** | DPM/MABS koruma Aracısı, yedeklemek istediğiniz makinelerde çalışır.<br/><br/> DPM/MABS sunucusundaki MARS Aracısı.<br/> Bu özelliği etkinleştirmek için gereken Microsoft Azure Kurtarma Hizmetleri aracısının veya Azure Backup aracısının en düşük sürümü 2.0.8719.0 ' dir.  | DPM/MABS 'nin şirket içinde çalışıyor olması gerekir.
 
@@ -80,7 +80,7 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 
 ## <a name="management-support"></a>Yönetim desteği
 
-**Sorun** | **Ayrıntılar**
+**Konuda** | **Ayrıntılar**
 --- | ---
 **Yükleme** | Tek amaçlı bir makineye DPM/MABS 'yi yükler.<br/><br/> DPM/MABS 'yi bir etki alanı denetleyicisine, uygulama sunucusu rolü yüklemesine sahip bir makineye, Microsoft Exchange Server veya System Center Operations Manager çalıştıran bir makineye veya bir küme düğümüne yüklemeyin.<br/><br/> [Tüm DPM sistem gereksinimlerini gözden geçirin](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Etki alanı** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.
@@ -102,7 +102,7 @@ Azure Stack sanal makinelerin ve iş yüklerinin yedeklemesini tek bir konumdan 
 **MABS üzerinde .NET Framework** | MABS VM 'sinin .NET Framework 3,3 SP1 veya sonraki bir sürümü yüklü olması gerekir.
 **MABS etki alanı** | MABS VM 'nin bir etki alanına katılması gerekir. Yönetici ayrıcalıklarına sahip bir etki alanı kullanıcısının VM 'ye MABS yüklemesi gerekir.
 **VM veri yedeklemesini Azure Stack** | Dosyaları, klasörleri ve uygulamaları yedekleyebilirsiniz.
-**Desteklenen yedekleme** | Bu işletim sistemleri yedeklemek istediğiniz VM 'Ler için desteklenir:<br/><br/> Windows Server yarı yıllık kanal (Datacenter, Enterprise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+**Desteklenen yedekleme** | Bu işletim sistemleri yedeklemek istediğiniz VM 'Ler için desteklenir:<br/><br/> Windows Server Semi-Annual kanalı (Datacenter, Enterprise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 **Azure Stack VM 'Ler için SQL Server desteği** | Yedekleme SQL Server 2016, SQL Server 2014 SQL Server 2012 SP1.<br/><br/> Veritabanını yedekleme ve kurtarma.
 **Azure Stack VM 'Ler için SharePoint desteği** | SharePoint 2016, SharePoint 2013, SharePoint 2010.<br/><br/> Bir grup, veritabanı, ön uç ve Web sunucusunu yedekleyin ve kurtarın.
 **Yedeklenen VM 'Ler için ağ gereksinimleri** | Azure Stack iş yükündeki tüm sanal makineler aynı sanal ağa ait ve aynı aboneliğe ait olmalıdır.

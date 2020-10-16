@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/02/2019
 ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045272"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Azure Stream Analytics ile bölge sınırlama ve jeo uzamsal toplama senaryoları
@@ -70,7 +70,7 @@ Aşağıdaki resim, bölge sınırlarını temsil eder. Cihazların akış veri 
 
 ### <a name="site-with-multiple-allowed-devices"></a>Birden çok izin verilen cihaz içeren site
 
-Bir site birden çok cihaza izin veriyorsa, bir cihaz kimlikleri dizisi ' de tanımlanabilir `AllowedDeviceID` ve yan tümcesinde Kullanıcı tanımlı bir işlev kullanılabilir ve `WHERE` Bu da AKıŞ cihazı kimliğinin bu listedeki herhangi BIR cihaz kimliğiyle eşleşip eşleşmediğini doğrular. Daha fazla bilgi için, bulut işlerinin [JAVASCRIPT UDF](stream-analytics-javascript-user-defined-functions.md) öğreticisini ve Edge Işleri Için [C# UDF](stream-analytics-edge-csharp-udf.md) öğreticisini görüntüleyin.
+Bir site birden çok cihaza izin veriyorsa, cihaz kimliklerinin bir dizisi içinde tanımlanabilir `AllowedDeviceID` ve bir User-Defined işlevi yan tümce üzerinde kullanılabilir ve `WHERE` Bu da AKıŞ cihazı kimliğinin bu listedeki herhangi BIR cihaz kimliğiyle eşleşip eşleşmediğini doğrular. Daha fazla bilgi için, bulut işlerinin [JAVASCRIPT UDF](stream-analytics-javascript-user-defined-functions.md) öğreticisini ve Edge Işleri Için [C# UDF](stream-analytics-edge-csharp-udf.md) öğreticisini görüntüleyin.
 
 ## <a name="geospatial-aggregation"></a>Jeo-uzamsal toplama
 

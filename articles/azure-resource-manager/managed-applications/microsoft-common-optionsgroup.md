@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tomfitz
 ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87004208"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft. Common. Options grubu UI öğesi
@@ -59,7 +59,7 @@ Options Grup denetimi, kullanıcıların iki veya daha fazla seçenekten birini 
 
 - Etiketi, `constraints.allowedValues` bir öğe için görüntüleme metintir ve değeri seçildiğinde öğenin çıkış değeridir.
 - Belirtilmişse, varsayılan değer içinde bulunan bir etiket olmalıdır `constraints.allowedValues` . Belirtilmemişse, içindeki ilk öğe `constraints.allowedValues` Varsayılan olarak seçilidir. Varsayılan değer **null**.
-- `constraints.allowedValues`en az bir öğe olmalıdır.
+- `constraints.allowedValues` en az bir öğe olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

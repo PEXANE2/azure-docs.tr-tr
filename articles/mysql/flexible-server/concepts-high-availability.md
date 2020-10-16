@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941040"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yüksek kullanılabilirlik kavramları (Önizleme)
@@ -18,7 +18,7 @@ ms.locfileid: "90941040"
 > [!IMPORTANT] 
 > MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
 
-MySQL için Azure veritabanı esnek sunucu (Önizleme), **bölge yedekli** yüksek kullanılabilirlik seçeneği kullanılarak otomatik yük devretme ile yüksek kullanılabilirliğe izin verir. Esnek sunucu, bölgesel olarak yedekli bir yapılandırmada dağıtıldığında, farklı bir kullanılabilirlik bölgesindeki bir bekleme çoğaltmasını otomatik olarak sağlar ve yönetir. Depolama düzeyi çoğaltmasını kullanarak, veriler, yük devretmeden sonra sıfır veri kaybını etkinleştirmek için ikincil bölgedeki bekleme sunucusuna **eşzamanlı olarak çoğaltılır** . Yük devretme, istemci uygulamasından tamamen saydamdır ve herhangi bir kullanıcı eylemi gerektirmez. Bekleme sunucusu herhangi bir okuma veya yazma işlemi için kullanılamaz, ancak hızlı yük devretmeyi etkinleştirmek için pasif bir bekleme olur. Yük devretme süreleri genellikle 60-120 saniyeden fazla aralığındadır.
+MySQL için Azure veritabanı esnek sunucu (Önizleme), **bölge yedekli** yüksek kullanılabilirlik seçeneği kullanılarak otomatik yük devretme ile yüksek kullanılabilirliğe izin verir. Alanlar arası yedekli bir yapılandırmada dağıtıldığında, esnek sunucu farklı bir kullanılabilirlik alanında bekleyen çoğaltmayı otomatik olarak sağlar ve yönetir. Depolama düzeyi çoğaltmasını kullanarak, veriler, yük devretmeden sonra sıfır veri kaybını etkinleştirmek için ikincil bölgedeki bekleme sunucusuna **eşzamanlı olarak çoğaltılır** . Yük devretme, istemci uygulamasından tamamen saydamdır ve herhangi bir kullanıcı eylemi gerektirmez. Bekleme sunucusu herhangi bir okuma veya yazma işlemi için kullanılamaz, ancak hızlı yük devretmeyi etkinleştirmek için pasif bir bekleme olur. Yük devretme süreleri genellikle 60-120 saniyeden fazla aralığındadır.
 
 Bölgesel olarak yedekli yüksek kullanılabilirlik yapılandırması, Kullanıcı tarafından başlatılan ölçek işlem işlemleri gibi planlı olaylar ve temel alınan donanım ve yazılım hataları, ağ hataları ve hatta kullanılabilirlik bölgesi hataları gibi planlanmamış olaylar sırasında otomatik yük devretmeyi mümkün bir şekilde sunar.
 

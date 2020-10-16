@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: 562d5010458fc938d9d62fed5d0d2c8284f2055d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936954"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN'de web içeriğinin süre sonunu yönetme
@@ -38,7 +38,7 @@ Ayrıca, [CDN önbelleğe alma kurallarını](cdn-caching-rules.md)ayarlayarak A
 > Azure CDN dosyalara ve diğer kaynaklara erişimi hızlandırmak için nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure Content Delivery Network genel bakış](cdn-overview.md).
 > 
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN önbelleğe alma kurallarını kullanarak Cache-Control üst bilgilerini ayarlama
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN önbelleğe alma kurallarını kullanarak Cache-Control üst bilgileri ayarlama
 Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure Portal önbelleğe alma kurallarını kullanmaktır. CDN önbelleğe alma kuralları hakkında daha fazla bilgi için bkz. [önbelleğe alma kurallarıyla denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
 
 > [!NOTE] 
@@ -84,7 +84,7 @@ Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-
 1. **Kaydet**’i seçin.
 
 
-## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Yapılandırma dosyalarını kullanarak Cache-Control üst bilgilerini ayarlama
+## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Yapılandırma dosyalarını kullanarak Cache-Control üst bilgileri ayarlama
 Görüntüler ve stil sayfaları gibi statik içerik için, Web uygulamanız için **applicationHost.config** veya **Web.config** yapılandırma dosyalarını değiştirerek güncelleştirme sıklığını kontrol edebilirsiniz. `Cache-Control`İçeriğinizin üst bilgisini ayarlamak için, `<system.webServer>/<staticContent>/<clientCache>` her iki dosyadaki öğesini kullanın.
 
 ### <a name="using-applicationhostconfig-files"></a>ApplicationHost.config dosyaları kullanma
@@ -109,7 +109,7 @@ Aşağıdaki XML yapılandırma dosyası örneği, `<clientCache>` öğesinin ü
 
 **CacheControlMaxAge** özniteliğini kullanmak Için, **cachecontrolmode** özniteliğinin değerini olarak ayarlamanız gerekir `UseMaxAge` . Bu ayar, HTTP üst bilgisi ve yönergesinin `Cache-Control: max-age=<nnn>` yanıta eklenmesine neden oldu. **CacheControlMaxAge** özniteliği için TimeSpan değerinin biçimi `<days>.<hours>:<min>:<sec>` . Değeri saniyeye dönüştürülür ve yönergesinin değeri olarak kullanılır `Cache-Control` `max-age` . Öğesi hakkında daha fazla bilgi için `<clientCache>` bkz. [istemci önbelleği \<clientCache> ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
-## <a name="setting-cache-control-headers-programmatically"></a>Önbellek denetimi üstbilgilerini programlama yoluyla ayarlama
+## <a name="setting-cache-control-headers-programmatically"></a>Cache-Control üst bilgileri program aracılığıyla ayarlama
 ASP.NET uygulamalarında, .NET API 'nin **HttpResponse. Cache** ÖZELLIĞINI ayarlayarak CDN önbelleğe alma davranışını programlı bir şekilde kontrol edersiniz. **HttpResponse. Cache** özelliği hakkında daha fazla bilgi için bkz. [HttpResponse. Cache özelliği](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) ve [HttpCachePolicy sınıfı](/dotnet/api/system.web.httpcachepolicy).  
 
 ASP.NET ' de uygulama içeriğini programlı bir şekilde önbelleğe almak için şu adımları izleyin:

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9580f1c7a29b19bb926a7079b95cb3ed0b314d05
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580538"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048109"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Azure Sertifikalı cihaz programı nedir?
 
@@ -102,7 +102,7 @@ Onaylamak istediğiniz her cihaz için, cihaz donanımı, kurulum yönergeleri v
 
 Bu aşama, cihazlarınız ile etkileşime girer ve cihaz IoT Hub bağlanmak için DPS kullandığında bir dizi test çalıştırır. Tamamlandığında, bir günlük dosyaları kümesini cihaz test sonuçlarınıza göre görüntüleyebilirsiniz.
 
-Sertifika Portalı, test için kullanılan IoT Hub örneğine nasıl bağlanacağınız hakkında yönergeler içerir. Her türlü [desteklenen kanıtlama yöntemlerinden](https://aka.ms/acdAttestation)herhangi bırını kullanarak DPS bağlantısı kurabilirsiniz.
+Sertifika Portalı, test için kullanılan IoT Hub örneğine nasıl bağlanacağınız hakkında yönergeler içerir. Her türlü [desteklenen kanıtlama yöntemlerinden](../iot-dps/concepts-service.md#attestation-mechanism)herhangi bırını kullanarak DPS bağlantısı kurabilirsiniz.
 
 Azure Sertifikalı cihaz ekibi, cihazın el ile doğrulanması için cihaz Oluşturucu ile iletişim kurabilme.
 

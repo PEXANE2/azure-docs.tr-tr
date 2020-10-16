@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83736509"
 ---
 # <a name="identity-protection-policies"></a>Kimlik Koruması ilkeleri
@@ -30,7 +30,7 @@ Kimlik koruması, kuruluşların oturum açma sırasında kayıt gerektiren bir 
 
 Azure Multi-Factor Authentication hakkında daha fazla bilgi makalesinde, nasıl çalıştığı hakkında daha fazla bilgi bulabilirsiniz [: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
 
-## <a name="sign-in-risk-policy"></a>Oturum açma risk ilkesi
+## <a name="sign-in-risk-policy"></a>Oturum açma riski ilkesi
 
 Kimlik koruması, hem gerçek zamanlı hem de çevrimdışı olan her oturum açma işleminden gelen sinyalleri analiz eder ve oturum açma işleminin Kullanıcı tarafından gerçekleştirilmeme olasılığını temel alarak bir risk puanı hesaplar. Yöneticiler, kurumsal gereksinimleri zorlamak için bu risk puanı sinyaline dayalı bir karar verebilir. Yöneticiler erişimi engellemeyi, erişime izin vermeyi veya erişime izin vermeyi seçebilir ancak çok faktörlü kimlik doğrulaması gerektirir.
 
@@ -45,7 +45,7 @@ Yöneticiler, oturum açma riskini atama koşulu da dahil olmak üzere özel bir
 
 ![Özel koşullu erişim oturum açma risk ilkesi](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
 
-## <a name="user-risk-policy"></a>Kullanıcı risk ilkesi
+## <a name="user-risk-policy"></a>Kullanıcı riski ilkesi
 
 Kimlik koruması, kullanıcının davranışı için ne düşündüğü için ne olduğunu hesaplayabilir ve bu durumu risk temelinde kararlara dayandırmak için kullanır. Kullanıcı riski, bir kimliğin tehlikeye düşmesi olasılığının bir hesaplanmasıdır. Yöneticiler, kurumsal gereksinimleri zorlamak için bu risk puanı sinyaline dayalı bir karar verebilir. Yöneticiler erişimi engellemeyi, erişime izin vermeyi veya erişime izin vermeyi seçebilir ancak [Azure AD self servis parola sıfırlama](../authentication/howto-sspr-deployment.md)kullanarak parola değişikliği gerektirir.
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083959"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma
@@ -65,7 +65,7 @@ Bu giriş verilerinin bir işe ve bir iş çıktılarının **/kümelerin**dış
 
 Tek bir Data Lake Storage hesabını paylaşabilen küme sayısı sınırı, bu kümelerde çalıştırılmakta olan iş yüküne bağlıdır. Bir depolama hesabını paylaşan kümeler üzerinde çok fazla küme veya çok ağır iş yükleri olması, depolama hesabı giriş/çıkış 'nin kısıtlanmasına neden olabilir.
 
-## <a name="support-for-default-acls"></a>Varsayılan ACL 'Ler için destek
+## <a name="support-for-default-acls"></a>Default-ACLs için destek
 
 Adlandırılmış Kullanıcı erişimi (yukarıdaki tabloda gösterildiği gibi) ile bir hizmet sorumlusu oluştururken, adlandırılmış kullanıcıyı varsayılan-ACL ile **eklememeyi** öneririz. Varsayılan ACL 'Ler kullanılarak adlandırılmış Kullanıcı erişiminin sağlanması, sahip olan Kullanıcı, sahip olan grup ve diğerleri için 770 izinlerinin atanmasına neden olur. Bu varsayılan 770 değeri, sahip olan Kullanıcı (7) veya sahibi olan grup (7) için izin almasa da, diğerleri için tüm izinleri alır (0). Bu, [bilinen sorunlar ve geçici çözümler](#known-issues-and-workarounds) bölümünde ayrıntılı olarak açıklanan belirli bir kullanım durumu ile ilgili bilinen bir soruna neden olur.
 

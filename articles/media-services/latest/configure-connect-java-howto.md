@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/31/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: 0f099a1b807cb860aaeda95a442cfdd7fd3c2869
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8f5044a5fb43956e857bc7b93b92e15d40225326
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89297391"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013245"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API 'sine bağlanma-Java
 
@@ -29,7 +29,7 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 
 Bu makalede, örnek uygulamayı geliştirmek için Visual Studio Code kullanılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Yüklemek için [Visual Studio Code Java yazma](https://code.visualstudio.com/docs/java/java-tutorial) ' yı izleyin:
 
@@ -126,7 +126,7 @@ Komutunu çalıştırdığınızda,, `pom.xml` `App.java` ve diğer dosyalar olu
 
 - [Media Services kavramlar](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
-- [Java başvurusu](https://aka.ms/ams-v3-java-ref)
+- [Java başvurusu](/java/api/overview/azure/mediaservices/management)
 - [com.microsoft.azure.mediaservices.v2018_07_01: Azure-MGMT-medya](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
 ## <a name="next-steps"></a>Sonraki adımlar

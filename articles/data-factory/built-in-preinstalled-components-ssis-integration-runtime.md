@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 05/14/2020
-ms.openlocfilehash: 0c3fa3e61f3e35bcd29e923b87ddf68f0860486e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 17831f06d4176ae6666bbc7b05a11ee689b842fc
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483142"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096700"
 ---
 # <a name="built-in-and-preinstalled-components-on-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime yerleşik ve önceden yüklenmiş bileşenler
 
@@ -29,7 +29,7 @@ Bu makalede, Azure Data Factory (ADF) içinde SSIS Integration Runtime (IR) içi
 
 | Tür | Ad-sürüm-platform |
 |------|---------------------------|
-| **Yerleşik istemciler/sürücüler/sağlayıcılar** | *Access Database Engine 2016 yeniden dağıtılabilir* -RTM-x64<br/><br/>*Microsoft Çözümleme Yönetim nesneleri* -15.0.1000.81-x64<br/><br/>*Microsoft ANALYSIS SERVICES OLEDB Sağlayıcısı* -15.0.1000.81-x64<br/><br/>*SQL Server Için MICROSOFT ODBC sürücüsü 13* -14.0.900.902-x64<br/><br/>*SQL Server Için MICROSOFT OLEDB sürücüsü 18* -18.1.0.0-x64<br/><br/>*DB2 Için MICROSOFT OLEDB Sağlayıcısı* -6,0-x64<br/><br/>*SharePoint Online Istemci BILEŞENLERI SDK* -15.4711.1001-x64 |
+| **Yerleşik istemciler/sürücüler/sağlayıcılar** | *Access Database Engine 2016 yeniden dağıtılabilir* -RTM-x64<br/><br/>*Microsoft Çözümleme Yönetim nesneleri* -15.0.1000.81-x64<br/><br/>*Microsoft ANALYSIS SERVICES OLEDB Sağlayıcısı* -15.0.1000.81-x64<br/><br/>*Microsoft SQL Server 2012 Native Client* -11.4.7462.6-x64<br/><br/>*SQL Server Için MICROSOFT ODBC sürücüsü 13* -14.0.900.902-x64<br/><br/>*SQL Server Için MICROSOFT OLEDB sürücüsü 18* -18.1.0.0-x64<br/><br/>*DB2 Için MICROSOFT OLEDB Sağlayıcısı* -6,0-x64<br/><br/>*SharePoint Online Istemci BILEŞENLERI SDK* -15.4711.1001-x64 |
 
 ## <a name="built-in-and-preinstalled-connection-managers-on-azure-ssis-ir"></a>Azure-SSIS IR yerleşik ve önceden yüklenmiş bağlantı yöneticileri
 

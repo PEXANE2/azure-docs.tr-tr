@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063790"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. COMPUTE. CredentialsCombo UI öğesi
@@ -111,7 +111,7 @@ Windows için aşağıdaki şemayı kullanın:
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `osPlatform`belirtilmelidir ve **Windows** ya da **Linux**olabilir.
+- `osPlatform` belirtilmelidir ve **Windows** ya da **Linux**olabilir.
 - `constraints.required` **True**olarak ayarlanırsa, parola veya SSH ortak anahtar metin kutularının başarıyla doğrulanacak değerleri olmalıdır. Varsayılan değer **true**'dur.
 - `options.hideConfirmation` **True**olarak ayarlanırsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
 - `options.hidePassword` **True**olarak ayarlanırsa, parola kimlik doğrulamasını kullanma seçeneği gizlenir. Bu, yalnızca Linux olduğunda kullanılabilir `osPlatform` . **Linux** Varsayılan değer **false** şeklindedir.

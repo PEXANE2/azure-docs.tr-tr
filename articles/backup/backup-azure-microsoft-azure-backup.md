@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975508"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056710"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -78,9 +78,9 @@ Yedekleme verilerini Azure 'a göndermenizi veya yerel olarak saklamayı, Azure 
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
-### <a name="set-storage-replication"></a>Depolama Çoğaltmayı Ayarlama
+### <a name="set-storage-replication"></a>Depolama çoğaltmasını ayarla
 
-Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama ve yerel olarak yedekli depolama arasında seçim yapmanıza olanak sağlar. Varsayılan olarak, kurtarma hizmetleri kasaları coğrafi olarak yedekli depolama kullanır. Bu kasa birincil kasanız, depolama seçeneğini coğrafi olarak yedekli depolama olarak ayarlayın. Daha düşük dayanıklılık düzeyinde olan daha uygun maliyetli bir seçenek istiyorsanız yerel olarak yedekli depolamayı seçin. [Azure Storage Çoğaltmaya genel bakış](../storage/common/storage-redundancy.md)bölümünde [coğrafi olarak yedekli](../storage/common/storage-redundancy.md#geo-redundant-storage), [yerel olarak yedekli](../storage/common/storage-redundancy.md#locally-redundant-storage) [ve bölgesel olarak yedekli depolama](../storage/common/storage-redundancy.md#zone-redundant-storage) seçenekleri hakkında daha fazla bilgi edinin.
+Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama ve yerel olarak yedekli depolama arasında seçim yapmanıza olanak sağlar. Varsayılan olarak, kurtarma hizmetleri kasaları coğrafi olarak yedekli depolama kullanır. Bu kasa birincil kasanız, depolama seçeneğini coğrafi olarak yedekli depolama olarak ayarlayın. Daha düşük dayanıklılık düzeyinde olan daha uygun maliyetli bir seçenek istiyorsanız yerel olarak yedekli depolamayı seçin. [Azure Storage Çoğaltmaya genel bakış](../storage/common/storage-redundancy.md)bölümünde [coğrafi olarak yedekli](../storage/common/storage-redundancy.md#geo-redundant-storage), [yerel olarak yedekli](../storage/common/storage-redundancy.md#locally-redundant-storage)ve bölgesel olarak [yedekli depolama seçenekleri](../storage/common/storage-redundancy.md#zone-redundant-storage) hakkında daha fazla bilgi edinin.
 
 Depolama çoğaltma ayarını düzenlemek için:
 
@@ -95,7 +95,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Zaten açık bir kurtarma hizmetleri Kasası varsa adım 3 ' e geçin. Kurtarma Hizmetleri Kasası açık değilse, ancak Azure portal, ana menüde, **Araştır**' ı seçin.
 
    * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
@@ -200,6 +200,9 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
     ![Dosyaların yüklenmesi için konum belirtin](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     Karalama konumu Azure 'a yedekleme gereksinimidir. Karalama konumunun, buluta yedeklenmek üzere planlandığı verilerin en az %5 ' i olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [veri depolamayı hazırlama](/system-center/dpm/plan-long-and-short-term-data-storage).
+
+    Disk depolaması için kapasite gereksinimleri, birincil olarak korunan verilerin boyutuna, günlük kurtarma noktası boyutuna, beklenen birim veri büyüme hızına ve Bekletme aralığı hedeflerine bağlıdır. Disk depolamasını korunan verilerin iki katı boyutta yapmanızı öneririz. Bu, korunan veri boyutunun %10’u olan günlük kurtarma noktası boyutu ve 10 günlük bekletme aralığı varsayar. Boyut iyi bir şekilde tahmin etmek için [DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301)gözden geçirin. 
+
 5. Kısıtlanmış yerel kullanıcı hesapları için güçlü bir parola sağlayın ve **İleri ' yi**seçin.
 
     ![Güçlü parola sağla](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -210,7 +213,7 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
    >
    >
 
-    ![Microsoft Update kabul etme](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Microsoft Update Opt-In](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. *Ayarların özetini* gözden geçirin ve **yüklemeyi**seçin.
 
     ![Ayarların Özeti](./media/backup-azure-microsoft-azure-backup/summary-screen.png)

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: df4b94702d14278a3279c504f52f46b922859db8
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b489f7daebc9232088020948752c3792dca65095
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822781"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018755"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -92,6 +92,19 @@ App Service çalışma ve Linux 'ta Python uygulamaları oluşturma hakkında da
 > [!NOTE]
 > Oryx 'in çalıştığı yapı kapsayıcısı uygulamanın çalıştığı çalışma zamanı kapsayıcısından farklı olduğundan, her zaman tüm ön ve derleme sonrası betiklerdeki göreli yolları kullanın. Uygulama Projesi klasörünüzün kapsayıcı içinde tam olarak yerleştirilme (örneğin, *site/Wwwroot*altına yerleştirilmiş olması) hiçbir şekilde güvenmeyin.
 
+## <a name="production-settings-for-django-apps"></a>Docgo uygulamaları için üretim ayarları
+
+Azure App Service gibi bir üretim ortamında, Docgo uygulamaları Docgo 'nun [dağıtım denetim listesini](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) (djangoproject.com) izlemelidir.
+
+Aşağıdaki tabloda, Azure ile ilgili üretim ayarları açıklanmaktadır. Bu ayarlar, uygulamanın *Setting.py* dosyasında tanımlanmıştır.
+
+| Docgo ayarı | Azure için yönergeler |
+| --- | --- |
+| `SECRET_KEY` | Değeri, [uygulama ayarlarında ortam değişkenleri olarak erişim](#access-app-settings-as-environment-variables)bölümünde açıklandığı gibi bir App Service ayarında depolayın. [Değeri, Azure Key Vault ' de bir "secrete" olarak da saklayabilirsiniz](/azure/key-vault/secrets/quick-create-python). |
+| `DEBUG` | `DEBUG`App Service 0 (false) değeriyle bir ayar oluşturun ve ardından değeri bir ortam değişkeni olarak yükleyin. Geliştirme ortamınızda, `DEBUG` 1 değerine sahip bir ortam değişkeni oluşturun (true). |
+| `ALLOWED_HOSTS` | Üretimde, Docgo, uygulamanın URL 'sini `ALLOWED_HOSTS` *Settings.py*dizisine dahil etmeniz gerekir. Bu URL 'YI çalışma zamanında bu kodla elde edebilirsiniz `os.environ['WEBSITE_HOSTNAME']` . App Service, `WEBSITE_HOSTNAME` ortam değişkenini otomatik olarak uygulamanın URL 'si olarak ayarlar. |
+| `DATABASES` | Veritabanı bağlantısı için App Service ayarları tanımlayın ve sözlüğü doldurmak için ortam değişkenleri olarak yükleyin [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) . Değerleri (özellikle Kullanıcı adı ve parola) [gizli Azure Key Vault](/azure/key-vault/secrets/quick-create-python)olarak saklayabilirsiniz. |
+
 ## <a name="container-characteristics"></a>Kapsayıcı özellikleri
 
 App Service 'ye dağıtıldığında, Python uygulamaları [App Service Python GitHub deposunda](https://github.com/Azure-App-Service/python)tanımlanan bir Linux Docker kapsayıcısı içinde çalışır. Görüntü yapılandırmasını sürüme özgü dizinler içinde bulabilirsiniz.
@@ -109,6 +122,8 @@ Bu kapsayıcı aşağıdaki özelliklere sahiptir:
 
     *requirements.txt* dosyanın yüklenecek bağımlılıklar için proje kökünde olması *gerekir* . Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. " Bu hatayla karşılaşırsanız, gereksinim dosyanızın konumunu kontrol edin.
 
+- App Service `WEBSITE_HOSTNAME` , Web uygulamasının URL 'si ile adlı bir ortam değişkenini otomatik olarak tanımlar, örneğin `msdocs-hello-world.azurewebsites.net` . Ayrıca `WEBSITE_SITE_NAME` , uygulamanızın adıyla da tanımlar `msdocs-hello-world` . 
+   
 ## <a name="container-startup-process"></a>Kapsayıcı başlangıç işlemi
 
 Başlatma sırasında Linux'ta App Service kapsayıcısı şu adımları çalıştırır:

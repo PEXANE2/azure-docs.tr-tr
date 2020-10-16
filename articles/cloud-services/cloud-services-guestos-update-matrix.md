@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/17/2020
+ms.date: 10/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: d79fd60f4fe3786cfe3106329904d9d262078411
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: b2f66f9d4a96bda323413ac9016f582f5605e6cd
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024222"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073334"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi
 Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında güncel bilgiler sağlar. Bu bilgiler, Konuk işletim sistemi devre dışı bırakmadan önce yükseltme yolunuzu planlamanızı sağlar. Rollerinizi [Azure Konuk işletim sistemi güncelleştirme ayarlarında][Azure Guest OS Update Settings]açıklandığı şekilde *Otomatik* Konuk işletim sistemi güncelleştirmelerini kullanacak şekilde yapılandırırsanız, bu sayfayı okumanız çok önemli değildir.
@@ -41,6 +41,9 @@ Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında g
 Konuk işletim sistemini nasıl güncelleştireceğinizden emin misiniz? [Bunu][cloud updates] kontrol edin.
 
 ## <a name="news-updates"></a>Haber güncelleştirmeleri
+
+###### <a name="october-10-2020"></a>**10 Ekim 2020**
+Eylül Konuk işletim sistemi serbest bırakıldı. 
 
 ###### <a name="september-5-2020"></a>**5 Eylül 2020**
 Ağustos Konuk işletim sistemi serbest bırakıldı. 
@@ -140,8 +143,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.23 _202009-01  |  10 Ekim 2020  |  6,25 sonrası  |  
 |  WA-GUEST-OS-6.22 _202008-02  |  5 Eylül 2020  |  6,24 sonrası  |  
-|  WA-GUEST-OS-6.21 _202007-01  |  17 Ağustos 2020  |  6,23 sonrası  |  
+|~~WA-GUEST-OS-6.21 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  |  
 |~~WA-GUEST-OS-6.20 _202006-02~~|  10 Ağustos 2020  |  5 Eylül 2020  |  
 |~~WA-GUEST-OS-6.19 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
 |~~WA-GUEST-OS-6.18 _202004-01~~|  4 Mayıs 2020  |  10 Ağustos 2020  |  
@@ -175,8 +179,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.47 _202009-01  |  10 Ekim 2020  |  5,49 sonrası  | 
 |  WA-GUEST-OS-5.46 _202008-02  |  5 Eylül 2020  |  5,48 sonrası  |  
-|  WA-GUEST-OS-5.45 _202007-01  |  17 Ağustos 2020  |  5,47 sonrası  |  
+|~~WA-GUEST-OS-5.45 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  |  
 |~~WA-GUEST-OS-5.44 _202006-02~~|  10 Ağustos 2020  |  5 Eylül 2020  |  
 |~~WA-GUEST-OS-5.43 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
 |~~WA-GUEST-OS-5.42 _202004-01~~|  4 Mayıs 2020  |  10 Ağustos 2020  |  
@@ -207,8 +212,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.82 _202009-01  |  10 Ekim 2020  |  4,84 sonrası  | 
 |  WA-GUEST-OS-4.81 _202008-02  |  5 Eylül 2020  |  4,83 sonrası  | 
-|  WA-GUEST-OS-4.80 _202007-01  |  17 Ağustos 2020  |  4,82 sonrası  | 
+|~~WA-GUEST-OS-4.80 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  | 
 |~~WA-GUEST-OS-4.79 _202006-02~~|  10 Ağustos 2020  |  5 Eylül 2020  | 
 |~~WA-GUEST-OS-4.78 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
 |~~WA-GUEST-OS-4.77 _202004-01~~|  4 Mayıs 2020  |  10 Ağustos 2020  |  
@@ -239,8 +245,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.89 _202009-01  |  10 Ekim 2020  |  3,91 sonrası  |  
 |  WA-GUEST-OS-3.88 _202008-02  |  5 Eylül 2020  |  3,90 sonrası  |  
-|  WA-GUEST-OS-3.87 _202007-01  |  17 Ağustos 2020  |  3,89 sonrası  |  
+|~~WA-GUEST-OS-3.87 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  |  
 |~~WA-GUEST-OS-3.86 _202006-02~~|  10 Ağustos 2020  |  5 Eylül 2020  |  
 |~~WA-GUEST-OS-3.85 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
 |~~WA-GUEST-OS-3.84 _202004-01~~|  4 Mayıs 2020  |  10 Ağustos 2020  |  
@@ -271,8 +278,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.102 _202009-01  |  10 Ekim 2020  |  2,104 sonrası  |  
 |  WA-GUEST-OS-2.101 _202008-02  |  5 Eylül 2020  |  2,103 sonrası  |  
-|  WA-GUEST-OS-2.100 _202007-01  |  17 Ağustos 2020  |  2,102 sonrası  |  
+|~~WA-GUEST-OS-2.100 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  |  
 |~~WA-GUEST-OS-2.99 _202006-02~~|  10 Ağustos 2020  | 5 Eylül 2020  |  
 |~~WA-GUEST-OS-2.98 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
 |~~WA-GUEST-OS-2.97 _202004-01~~|  4 Mayıs 2020  |  10 Ağustos 2020  |  
@@ -352,26 +360,26 @@ Konuk işletim sistemini el ile güncelleştirirseniz daha fazla bilgi için [Ko
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Konuk işletim sistemi desteklenebilirlik ve emeklilik ilkesi
 Konuk işletim sistemi desteklenebilirlik ve emeklilik ilkesi [burada][retirepolicy]açıklanmıştır.
 
-[cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
+[cloud updates]: ./cloud-services-update-azure-service.md
 [Konuk işletim sistemi güncelleştirme RSS akışı]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: ./cloud-services-dotnet-install-dotnet.md?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
-[Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
+[Microsoft Security Advisory 3009008]: /security-updates/SecurityAdvisories/2015/3009008
 [ssl3-fixit]: https://go.microsoft.com/?linkid=9863266
-[MS14-066]: https://technet.microsoft.com/library/security/ms14-066.aspx
-[MS14-046]: https://technet.microsoft.com/library/security/ms14-046.aspx
-[retire policy sdk]: https://msdn.microsoft.com/library/dn479282.aspx
+[MS14-066]: /security-updates/SecurityBulletins/2014/ms14-066
+[MS14-046]: /security-updates/SecurityBulletins/2014/ms14-046
+[retire policy sdk]: /previous-versions/azure/reference/dn479282(v=azure.100)
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: https://azure.microsoft.com/support/options/
 [net install pkg]: https://www.microsoft.com/download/details.aspx?id=42643
 [msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
-[restarts]: https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
+[restarts]: /archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[fix]: /security-updates/SecurityBulletins/2017/ms17-010
 [Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
-[daha fazla]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  
+[daha fazla]: ./applications-dont-support-tls-1-2.md

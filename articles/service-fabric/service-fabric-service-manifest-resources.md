@@ -3,12 +3,13 @@ title: Service Fabric hizmet uç noktalarını belirtme
 description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bildiriminde uç nokta kaynaklarını açıklama
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.custom: contperfq1
+ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91354768"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017599"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
@@ -220,7 +221,7 @@ Belirttiğiniz hizmet bildiriminde
 
 Uygulama parametreleri için PORT1 ve Protocol1 değerinin null ya da boş olduğunu varsayın. Bağlantı noktasına ServiceFabric tarafından karar verilir ve protokol TCP olur.
 
-Yanlış bir değer belirtdiğinizi varsayın. Bir int yerine "foo" dize değerini belirttiğiniz bağlantı noktası için söyleyin.  New-ServiceFabricApplication komutu bir hata vererek başarısız olur: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+Yanlış bir değer belirtdiğinizi varsayın. Bir int yerine "foo" dize değerini belirttiğiniz bağlantı noktası için söyleyin.  New-ServiceFabricApplication komut bir hata vererek başarısız olur: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

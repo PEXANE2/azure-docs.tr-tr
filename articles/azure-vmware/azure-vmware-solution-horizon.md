@@ -3,12 +3,12 @@ title: Azure VMware çözümünde dağıtım ufku
 description: Azure VMware çözümünde VMware ufuk dağıtımı hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729058"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078893"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde dağıtım ufku 
 
@@ -197,11 +197,14 @@ Gereksinimlerinize göre ufku lisanslama maliyetini öğrenmek için VMware EUC 
 
 Standart dağıtım mimarisine bağlı olarak, ufuk altyapısı VM 'Leri bağlantı sunucuları, UAGs, App Volume yöneticileri ve müşterinin Azure sanal ağında dağıtılır. Azure 'da yüksek kullanılabilirlik (HA), Microsoft SQL veya Microsoft Active Directory (AD) hizmetlerini desteklemek için ek Azure yerel örnekleri gerekir. Aşağıda, 2.000 masaüstü dağıtım örneğine göre Azure örneklerinin bir listesi verilmiştir. 
 
+>[!NOTE]
+>Sorunu işleyebilmek için, bağlantı sayısı için gerekenden daha fazla sunucu dağıtın (n + 1). Bağlantı sunucusunun, UAG ve App Volumes Yöneticisi 'nin önerilen minimum örnek sayısı 2 ' dir ve gereken süre, ortamın destekleyeceği kullanıcı miktarına göre genişleyecektir.  Tek bir bağlantı sunucusu en çok 4.000 oturumu destekler, ancak en iyi yöntem olarak 2.000 önerilir. En fazla yedi bağlantı sunucusu, Pod başına toplam 12.000 etkin oturum önerisi ile pod başına desteklenir. En güncel sayılar için bkz. VMware [Bilgi Bankası makalesi VMware ufuk 7 boyutlandırma sınırları ve önerileri](https://kb.vmware.com/s/article/2150348).
+
 | Ufuk Altyapısı bileşeni | Azure örneği | Gerekli örnek sayısı (2.000-masaüstü bilgisayarlar için)    | Yorum  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
-| Bağlantı sunucusu                | D4sv3          | 2       | *HA için 1 örnek içerir*             |    
-| UAG                              | F2sv2          | 2       | *HA için 1 örnek içerir*             |
-| Uygulama birimleri Yöneticisi              | D4sv3          | 2       | *HA için 1 örnek içerir*             |
+| Bağlantı sunucusu                | D4sv3          | 2       | *Yukarıdaki nota bakın*                         |    
+| UAG                              | F2sv2          | 2       | *Yukarıdaki nota bakın*                         |
+| Uygulama birimleri Yöneticisi              | D4sv3          | 2       | *Yukarıdaki nota bakın*                         |
 | Bulut bağlayıcısı                  | D4sv3          | 1       |                                          |
 | AD denetleyicisi                    | D4sv3          | 2       | *Azure 'da MSFT AD hizmetini kullanma seçeneği* |
 | MS-SQL veritabanı                  | D4sv3          | 2       | *Azure 'da SQL hizmetini kullanma seçeneği*     |

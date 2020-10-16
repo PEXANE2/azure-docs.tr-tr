@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
 ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84782821"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Güvenlik Merkezi 'nde çapraz Kiracı Yönetimi
@@ -28,7 +28,7 @@ ms.locfileid: "84782821"
 
 - Birden çok kiracıya sahip kuruluşların güvenlik ekipleri, güvenlik duruşunu tek bir konumdan görüntüleyebilir ve yönetebilir.
 
-## <a name="set-up-cross-tenant-management"></a>Çapraz kiracı yönetimini ayarlama
+## <a name="set-up-cross-tenant-management"></a>Kiracılar arası yönetim ayarlama
 
 [Azure Temsilcili kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)'ni kullanarak kendi kiracınıza yönetilen kiracılar kaynaklarına erişim yetkisi vererek çapraz Kiracı Yönetimi ayarlayın.
 
@@ -43,7 +43,7 @@ Birden çok Kiracıdaki abonelikleri, tek bir kiracıda birden çok aboneliği y
 
   ![Kiracıları filtrele](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-Görünümler ve eylemler temelde aynıdır. Aşağıda bazı örnekler verilmiştir:
+Görünümler ve eylemler temelde aynıdır. İşte bazı örnekler:
 
 - **Güvenlik Ilkelerini yönetme**: tek bir görünümden, [ilkelerle](tutorial-security-policy.md)birçok kaynağın güvenlik duruşunu yönetin, güvenlik önerileri ile eylemler gerçekleştirin ve güvenlikle ilgili verileri toplayın ve yönetin.
 - **Güvenli puanı ve uyumluluğu iyileştirme**: çapraz kiracı görünürlüğü, tüm Kiracılarınızın genel güvenlik duruşunu ve bunların her biri için [güvenli puan](secure-score-security-controls.md) ve [Uyumluluk](security-center-compliance-dashboard.md) duruşunu en iyi şekilde nasıl iyileştirebileceğinizi görüntülemenize olanak sağlar.

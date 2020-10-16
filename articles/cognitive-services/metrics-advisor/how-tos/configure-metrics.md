@@ -3,19 +3,19 @@ title: Web portalını kullanarak ölçüm Danışmanı örneğinizi yapılandı
 titleSuffix: Azure Cognitive Services
 description: Ölçüm Danışmanı örneğinizi yapılandırma ve anomali algılama sonuçlarında ince ayar yapma.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.author: mbullwin
+ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446361"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048262"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Nasıl yapılır: ölçümleri yapılandırma ve yapılandırmayı algılama ince ayar
 
@@ -136,7 +136,7 @@ Yapılandırabileceğiniz birkaç farklı değer vardır:
 |**Genişletilecek günler**    |  Bir tatilden önce ve sonra etkilenen günler.        |
 
 
-Veri içindeki Döngüsel desenleri kullanarak gereksiz uyarıların azaltılmasına yardımcı olması için, **Cycle olayı** bölümü bazı senaryolarda kullanılabilir. Örneğin: 
+Veri içindeki Döngüsel desenleri kullanarak gereksiz uyarıların azaltılmasına yardımcı olması için, **Cycle olayı** bölümü bazı senaryolarda kullanılabilir. Örnek: 
 
 - Hem haftalık hem de aylık desen gibi birden çok desen veya döngü içeren ölçümler. 
 - Açık bir düzene sahip olmayan ölçümler, ancak veriler yıl içinde (YoY), aya göre ay (MoM), hafta üzerinden hafta (WoW) veya gün içinde (DoD) arasında karşılaştırılabilir.

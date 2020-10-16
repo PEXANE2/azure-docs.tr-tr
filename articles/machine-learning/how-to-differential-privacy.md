@@ -12,10 +12,10 @@ author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90897687"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning 'de değişiklik gizliliğini kullanın (Önizleme)
@@ -29,7 +29,7 @@ Değişiklik gizliliği, altın standart gizlilik tanımıdır. Bu Gizlilik tan�
 > [!NOTE]
 > Araç takımını yeniden adlandırdığımızda, gelecek haftalarda yeni adı tanıtılacağını lütfen unutmayın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 - [Python 3](https://www.python.org/downloads/)
@@ -149,11 +149,11 @@ Birden fazla mekanizma, istatistikler ve yardımcı program işlevleriyle daha k
 
 | İstatistikler    | Düzen | Yardımcı Programlar  |
 | ------------- |------------|------------|
-| Count         | Gauss   | Cast       |
+| Sayı         | Gauss   | Cast       |
 | Histogram     | Geometrik  | Clamping   |
 | Ortalama          | Laplace    | Dijitalleştirerek   |
 | Dağılım Dilimleri     |            | Filtre     |
-| Toplam           |            | Dayanak |
+| Sum           |            | Dayanak |
 | Varyans/Kovaryans |      | Dönüşüm  |
 
 Daha fazla bilgi için bkz. [veri analizi Not defteri](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .

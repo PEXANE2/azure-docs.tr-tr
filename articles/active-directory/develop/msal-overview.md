@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0c4da177644a1cdb648c00e8309c18031a905d7f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8fbcacf4e3c26f117be4ab5b64b35f670435e6b6
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825949"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092758"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı 'na genel bakış (MSAL)
-Microsoft kimlik doğrulama kitaplığı (MSAL), geliştiricilerin güvenli Web API 'Lerine erişmek için Microsoft Identity platform uç noktasından [belirteç](developer-glossary.md#security-token) almasına olanak sağlar. Bu Web API 'Leri Microsoft Graph, diğer Microsoft API 'leri, üçüncü taraf Web API 'Leri veya kendi Web API 'niz olabilir. MSAL, birçok farklı uygulama mimarilerini ve platformunu destekleyen .NET, JavaScript, Java, Python, Android ve iOS için kullanılabilir.
+Microsoft kimlik doğrulama kitaplığı (MSAL), geliştiricilerin kullanıcıların kimliğini doğrulamak ve güvenli Web API 'Lerine erişmek için Microsoft Identity platform uç noktasından [belirteçleri](developer-glossary.md#security-token) almasına olanak sağlar. Microsoft Graph, diğer Microsoft API 'Leri, üçüncü taraf Web API 'Lerine veya kendi Web API 'nize güvenli erişim sağlamak için kullanılabilir. MSAL, .NET, JavaScript, Java, Python, Android ve iOS dahil birçok farklı uygulama mimarilerini ve platformunu destekler.
 
 MSAL, çeşitli platformlar için tutarlı bir API ile belirteç almanın birçok yolunu sağlar. MSAL kullanmak aşağıdaki avantajları sağlar:
 

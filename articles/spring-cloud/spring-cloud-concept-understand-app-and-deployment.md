@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323646"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda uygulamayı ve dağıtımı anlama
@@ -29,7 +29,7 @@ Azure yay bulutu standart katmanı, bir uygulamanın bir üretim dağıtımına 
 ## <a name="app"></a>Uygulama
 Aşağıdaki özellikler/Özellikler uygulama düzeyinde tanımlanmıştır.
 
-| Özellikler | Description |
+| Özellikler | Açıklama |
 |:--|:----------------|
 | Ortak</br>Uç Noktası | Uygulamaya erişmek için URL |
 | Özel</br>Etki alanı | Özel etki alanının güvenliğini sağlayan CNAME kaydı |
@@ -45,17 +45,17 @@ Aşağıdaki özellikler/özellikler dağıtım düzeyinde tanımlanmıştır ve
 |:--|:----------------|
 | CPU | Uygulama örneği başına sanal çekirdek sayısı |
 | Bellek | Uygulama örneği başına GB bellek|
-| Örnek</br>Count | Uygulama örneklerinin sayısı, el ile veya otomatik olarak ayarlanır |
+| Örnek</br>Sayı | Uygulama örneklerinin sayısı, el ile veya otomatik olarak ayarlanır |
 | Otomatik ölçeklendirme | Önceden tanımlanmış kurallara ve zamanlamaya göre örnek sayısını otomatik olarak Ölçeklendir |
 | JVM</br>Seçenekler | JVM seçeneklerini ayarlama  |
 | Ortam</br>Değişkenler | Ortam değişkenlerini ayarlama |
-| Çalışma Zamanı</br>Sürüm | Java 8/Java 11|
+| Çalışma zamanı</br>Sürüm | Java 8/Java 11|
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
 * **Uygulamanın bir üretim dağıtımı olması gerekir**: bir üretim DAĞıTıMıNıN silinmesi API tarafından engelleniyor. Silinmeden önce hazırlama olarak değiştirilmelidir.
 * **Bir uygulama en fazla Iki dağıtıma sahip olabilir**: API tarafından ikiden fazla dağıtım oluşturma engellenmiş. Yeni ikilinizi mevcut üretime veya hazırlama dağıtımına dağıtın.
-* **Dağıtım yönetimi temel katmanda kullanılamıyor**: mavi yeşil dağıtım yeteneği için standart katmanı kullanın.
+* **Dağıtım yönetimi temel katmanda kullanılamıyor**: Blue-Green dağıtım özelliği için standart katmanı kullanın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure yay bulutu 'nda hazırlama ortamı ayarlama](spring-cloud-howto-staging-environment.md)

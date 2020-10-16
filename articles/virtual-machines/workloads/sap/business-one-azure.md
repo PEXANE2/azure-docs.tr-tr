@@ -1,26 +1,18 @@
 ---
 title: Azure sanal makinelerinde SAP Business One | Microsoft Docs
 description: Azure 'da SAP Business One.
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.reviewer: cynthn
+ms.openlocfilehash: caabaa6fbf65787f90c0033a06af26996c2388f2
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654659"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994096"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
 Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberlik sağlar. Belgeler, SAP için Iş 'nin yükleme belgelerinin yerini almaz. Belgeler, Azure altyapısına ilişkin Iş tek uygulamaları çalıştırmak için temel planlama ve dağıtım yönergelerini kapsamalıdır.
@@ -58,7 +50,7 @@ Azure belgelerinin yanı sıra, Iş için SAP 'den bir veya iş için merkezi no
 - [2483583-SAP Business One 9,3 için merkezi](https://launchpad.support.sap.com/#/notes/2483583)
 - [2483615-yayın güncelleştirmeleri için SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483615)
 - [2483595-SAP Business One 9,3 genel sorunlar için toplu Not](https://launchpad.support.sap.com/#/notes/2483595)
-- [2027458-SAP HANA Ilgili SAP Business One konuları için toplu danışmanlık, SAP HANA sürümü](https://launchpad.support.sap.com/#/notes/2027458)
+- [2027458-SAP HANA-Related SAP Business One, SAP HANA sürümü için toplu danışmanlık notuna bakın](https://launchpad.support.sap.com/#/notes/2027458)
 
 
 ## <a name="business-one-architecture"></a>İş One mimarisi
@@ -95,7 +87,7 @@ Azure 'da dağıtmanız gereken ağ altyapısı, kendiniz için tek bir Iş sist
 Sunulan Basitleştirilmiş yapılandırma, yönlendirmeyi denetlemeye ve sınırlamaya izin veren çeşitli güvenlik örnekleri sunar. İle başlar 
 
 - Müşterinin Şirket içi tarafında yönlendirici/güvenlik duvarı.
-- Sonraki örnek, içinde SAP Business One yapılandırmanızı çalıştırdığınız Azure VNet 'in yönlendirme ve güvenlik kurallarını tanıtmak için kullanabileceğiniz [Azure ağ güvenlik grubudur](../../../virtual-network/security-overview.md) .
+- Sonraki örnek, içinde SAP Business One yapılandırmanızı çalıştırdığınız Azure VNet 'in yönlendirme ve güvenlik kurallarını tanıtmak için kullanabileceğiniz [Azure ağ güvenlik grubudur](../../../virtual-network/network-security-groups-overview.md) .
 - Iş kolu kullanıcılarının, veritabanını çalıştıran Iş tek bir sunucuyu çalıştıran sunucuyu görebilmesi için, iş bir istemciyi ve iş tek sunucusunu barındıran VM 'yi VNet 'in içindeki iki farklı alt ağda ayırmanız gerekir.
 - Iş tek sunucuya erişimi sınırlandırmak için, Azure NSG 'yi iki farklı alt ağa yeniden atandı.
 
@@ -111,7 +103,7 @@ Veritabanı türü için SQL Server ve SAP HANA kullanılabilir. DBMS 'den bağ�
 
 Yalnızca belirli ve genel veritabanı belgelerinde vurgulandı olsa da şunları öğrenmelisiniz:
 
-- Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../windows/manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliğini yönetme](../../linux/manage-availability.md)
+- Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliğini yönetme](../../manage-availability.md)
 - [Sanal Makineler için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Bu belgeler, depolama türleri ve yüksek kullanılabilirlik yapılandırması seçimine karar vermenize yardımcı olmalıdır.

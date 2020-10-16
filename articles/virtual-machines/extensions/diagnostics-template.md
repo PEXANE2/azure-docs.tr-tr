@@ -16,10 +16,10 @@ ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 31f690277675650323763a7bc6872ad736f5776c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837015"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma
@@ -62,7 +62,7 @@ Basit Kaynak Yöneticisi tabanlı bir sanal makine için uzantı yapılandırmas
 ]
 ```
 
-Diğer bir yaygın kural, uzantı yapılandırmasını, sanal makinenin kaynaklar düğümü altında tanımlamak yerine şablonun kök kaynakları düğümüne eklemektir. Bu yaklaşımda, uzantı ile sanal makine arasında *ad* ve *tür* değerleriyle açık bir şekilde hiyerarşik ilişki belirtmeniz gerekir. Örnek: 
+Diğer bir yaygın kural, uzantı yapılandırmasını, sanal makinenin kaynaklar düğümü altında tanımlamak yerine şablonun kök kaynakları düğümüne eklemektir. Bu yaklaşımda, uzantı ile sanal makine arasında *ad* ve *tür* değerleriyle açık bir şekilde hiyerarşik ilişki belirtmeniz gerekir. Örneğin: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -168,7 +168,7 @@ Yukarıdaki ölçüm yapılandırması, tanılama depolama hesabınızda aşağ�
 Her Wadölçümler tablosu şu sütunları içerir:
 
 * **Partitionkey**: bölüm anahtarı, VM kaynağını benzersiz şekilde tanımlamak için *RESOURCEID* değeri temel alınarak oluşturulur. Örnek: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **Rowkey**: biçimi izler `<Descending time tick>:<Performance Counter Name>` . Azalan zaman değeri hesaplaması, en fazla zaman aralığı toplama döneminin başlangıcının süresinin çıkarılmasıyla elde edilir. Örneğin, 10-Kas-2015 ve 00:00Saat UTC 'de örnek dönem başlatılırsa, hesaplama şöyle olacaktır: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . Kullanılabilir bellek baytları performans sayacı için satır anahtarı şöyle görünür:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **Rowkey**: biçimi izler `<Descending time tick>:<Performance Counter Name>` . Azalan zaman değeri hesaplaması, en fazla zaman aralığı toplama döneminin başlangıcının süresinin çıkarılmasıyla elde edilir. Örneğin, 10-Kas-2015 ve 00:00Saat UTC 'de örnek dönem başlatılırsa, hesaplama şöyle olacaktır: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . Kullanılabilir bellek baytları performans sayacı için satır anahtarı şöyle görünür: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: performans sayacının adıdır. Bu, XML yapılandırmasında tanımlanan *sayaç belirticisiyle* eşleşir.
 * **Maksimum**: toplama dönemi boyunca performans sayacının maksimum değeri.
 * **Minimum**: toplama dönemi boyunca performans sayacının minimum değeri.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 283eb9b9cbdc03813cf7c765c9ef3be5965919eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336131"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978348"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux için sanal makine uzantıları ve özellikleri
 
@@ -37,7 +37,7 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Linux için özel Betik uzantısı, bir sanal makine üzerinde herhangi bir bash komut dosyasının çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [LINUX VM özel Betik uzantısı](custom-script-linux.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SANAL makinede uzantıyı işlemek için Azure Linux aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -65,7 +65,7 @@ Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu k
 > [!IMPORTANT]
 > Konuk güvenlik duvarını kullanarak *168.63.129.16* 'e erişimi engellediyse, uzantılar yukarıdaki bağımsız olarak başarısız olur.
 
-Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama 'ya erişim gerektiren uzantılar için, [depolama](../../virtual-network/security-overview.md#service-tags)için Azure NSG hizmet etiketlerini kullanarak erişime izin verebilirsiniz.
+Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama 'ya erişim gerektiren uzantılar için, [depolama](../../virtual-network/network-security-groups-overview.md#service-tags)için Azure NSG hizmet etiketlerini kullanarak erişime izin verebilirsiniz.
 
 Aracı trafik isteklerini yeniden yönlendirmek için, Linux aracısının proxy sunucu desteği vardır. Ancak, bu proxy sunucu desteği uzantıları uygulamaz. Her bir uzantıyı bir ara sunucu ile çalışacak şekilde yapılandırmanız gerekir.
 
@@ -83,7 +83,7 @@ Azure VM uzantıları, mevcut VM 'lerde çalışır, bu, önceden dağıtılmı�
 
 Aşağıdaki yöntemler mevcut bir VM 'ye karşı bir uzantı çalıştırmak için kullanılabilir.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure VM uzantıları, [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutuyla mevcut bir VM 'ye karşı çalıştırılabilir. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı bir VM 'ye karşı özel Betik uzantısı 'nı çalıştırır. Örnek kaynak grubu adı, VM adı ve betiği (https: \/ /RAW.githubusercontent.com/Me/Project/Hello.sh) kendi bilgileriniz ile değiştirin. 
 
@@ -221,7 +221,7 @@ Aracılar ve uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı
 Bir güncelleştirme kullanılabilir olduğunda, yalnızca Uzantılardaki bir değişiklik olduğunda VM 'de ve diğer VM modeli değiştikçe şu şekilde değişir:
 
 - Veri diskleri
-- Uzantıları
+- Uzantılar
 - Önyükleme tanılaması kapsayıcısı
 - Konuk işletim sistemi gizli dizileri
 - VM boyutu
@@ -403,7 +403,7 @@ Azure portal bir uzantıyı aşağıdaki gibi da kaldırabilirsiniz:
 
 ## <a name="common-vm-extension-reference"></a>Ortak VM Uzantısı başvurusu
 
-| Uzantı adı | Description | Daha fazla bilgi |
+| Uzantı adı | Açıklama | Daha fazla bilgi |
 | --- | --- | --- |
 | Linux için özel Betik uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Linux için özel Betik uzantısı](custom-script-linux.md) |
 | VM Erişimi uzantısı |Bir Azure sanal makinesine yeniden erişim elde edin |[VM Erişimi uzantısı](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

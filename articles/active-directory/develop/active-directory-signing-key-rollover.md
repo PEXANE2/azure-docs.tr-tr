@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948139"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft Identity platformunda imzalama anahtarı geçişi
@@ -37,7 +37,7 @@ Uygulamanızın anahtar rollover 'ı nasıl işleyeceği, uygulamanın türü ve
 * [Kaynaklara erişen yerel istemci uygulamaları](#nativeclient)
 * [Kaynaklara erişen web uygulamaları/API 'Ler](#webclient)
 * [Kaynakları koruyan ve Azure Uygulama Hizmetleri kullanılarak oluşturulan Web uygulamaları/API 'Leri](#appservices)
-* [.NET OWIN OpenID Connect, WS-beslenir veya Windowsazureactivedirectoryyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri](#owin)
+* [.NET OWIN OpenID Connect, WS-Fed veya Windowsazureactivedirectoryyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri](#owin)
 * [.NET Core OpenID Connect veya Jwtyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri](#owincore)
 * [Node.js Passport-Azure-ad modülü kullanarak kaynakları koruyan Web uygulamaları/API 'Leri](#passport)
 * [Kaynakları koruyan ve Visual Studio 2015 veya üzeri ile oluşturulan Web uygulamaları/API 'Leri](#vs2015)
@@ -65,8 +65,8 @@ Belirteçleri istemek için yalnızca uygulama akışını (istemci kimlik bilgi
 ### <a name="web-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Kaynakları koruyan ve Azure Uygulama Hizmetleri kullanılarak oluşturulan Web uygulamaları/API 'Leri
 Azure Uygulama Hizmetleri ' kimlik doğrulama/yetkilendirme (EasyAuth) işlevselliğinde, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten var.
 
-### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>.NET OWIN OpenID Connect, WS-beslenir veya Windowsazureactivedirectoryyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri
-Uygulamanız .NET OWIN OpenID Connect, WS-beslenir veya Windowsazureactivedirectoryyataerauthentication ara yazılımı kullanıyorsa, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır.
+### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>.NET OWIN OpenID Connect, WS-Fed veya Windowsazureactivedirectoryyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri
+Uygulamanız .NET OWIN OpenID Connect, WS-Fed veya Windowsazureactivedirectoryyataerauthentication ara yazılım kullanıyorsa, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır.
 
 Uygulamanızın Startup.cs veya Startup.Auth.cs ' de aşağıdaki kod parçacıklarını arayarak uygulamanızın bunlardan herhangi birini kullandığını doğrulayabilirsiniz.
 
@@ -284,7 +284,7 @@ Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki
           </keys>
    ```
 2. **\<add thumbprint="">** Ayarında, herhangi bir karakteri farklı bir karakterle değiştirerek parmak izi değerini değiştirin. **Web.config** dosyasını kaydedin.
-3. Uygulamayı derleyin ve çalıştırın. Oturum açma işlemini tamamlayabilirseniz, uygulamanız dizininizin Federasyon meta veri belgesinden gerekli bilgileri indirerek anahtarı başarıyla güncelliyor. Oturum açarken sorun yaşıyorsanız, [Microsoft Identity platform makalesini kullanarak Web uygulamanıza oturum açma ekleme](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) veya aşağıdaki kod örneğini indirme ve İnceleme ' yi okuyarak uygulamanızdaki değişikliklerin doğru olduğundan emin olun: [Azure Active Directory Için çok kiracılı bulut uygulaması](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Uygulamayı derleyin ve çalıştırın. Oturum açma işlemini tamamlayabilirseniz, uygulamanız dizininizin Federasyon meta veri belgesinden gerekli bilgileri indirerek anahtarı başarıyla güncelliyor. Oturum açarken sorun yaşıyorsanız, [Microsoft Identity platform makalesini kullanarak Web uygulamanıza Sign-On ekleme](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) veya aşağıdaki kod örneğini indirip İnceleme ' yi okuyarak uygulamanızdaki değişikliklerin doğru olduğundan emin olun: [Azure Active Directory Için çok kiracılı bulut uygulaması](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>.NET 3,5 için kaynakları koruyan ve Visual Studio 2008 ya da 2010 ve Windows Identity Foundation (WıF) v 1.0 ile oluşturulan Web uygulamaları
 WıF v 1.0 üzerinde bir uygulama oluşturduysanız, yeni bir anahtar kullanmak için uygulamanızın yapılandırmasını otomatik olarak yenilemek üzere bir sağlanmayan mekanizma yoktur.

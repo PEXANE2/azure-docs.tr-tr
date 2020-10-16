@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252942"
 ---
 # <a name="group-policy-and-mdm-settings"></a>grup ilkesi ve MDM ayarları
@@ -32,7 +32,7 @@ Aşağıdaki tablolarda kullanılabilir ilke ayarları açıklanır.
 
 MDM ilke ayarları hem Windows 10 hem de Windows 10 Mobile için geçerlidir.  Windows 10 Mobile desteği yalnızca kullanıcının OneDrive hesabı aracılığıyla Microsoft hesabı tabanlı dolaşımda bulunur. Azure AD tabanlı eşitlemede desteklenen cihazların ayrıntılarını görmek için [cihazlar ve uç noktalar](enterprise-state-roaming-windows-settings-reference.md) bölümüne bakın.
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | --- | --- |
 | Microsoft hesabı bağlantısına izin ver |Kullanıcıların cihazda Microsoft hesabı kullanarak kimlik doğrulaması yapmasına izin verir |
 | Ayarlarımı eşitlemeye izin ver |Kullanıcıların Windows ayarlarını ve uygulama verilerini dolaşımını sağlar; Bu ilkeyi devre dışı bırakmak, eşitlemenin yanı sıra mobil cihazlarda yedeklemeler de devre dışı bırakılır |
@@ -41,9 +41,9 @@ MDM ilke ayarları hem Windows 10 hem de Windows 10 Mobile için geçerlidir.  W
 
 Grup İlkesi ayarları, bir Active Directory etki alanına katılmış Windows 10 cihazlarına uygulanır. Tablo, eşitleme ayarlarını yönetmek için görünen eski ayarları da içerir, ancak bu, açıklamada ' kullanılamaz ' olarak belirtilen Windows 10 için Enterprise State Roaming çalışmaz.
 
-Bu ayarlar şurada bulunur:`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
+Bu ayarlar şurada bulunur: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | --- | --- |
 | Hesaplar: Microsoft hesaplarını engelleyin |Bu ilke ayarı, kullanıcıların bu bilgisayarda yeni Microsoft hesapları eklemesini engeller |
 | Eşitleme |Kullanıcıların Windows ayarlarını ve uygulama verilerini dolaşımını engeller |

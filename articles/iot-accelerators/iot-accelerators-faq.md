@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462556"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078230"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT çözüm hızlandırıcıları için sık sorulan sorular
 
@@ -65,7 +65,7 @@ Azure aboneliğiniz olduğundan emin değilseniz, aboneliğinizin kiracı eşlem
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Uzaktan Izleme çözümünün önceki sürümüyle ilgili bilgileri nereden bulabilirim?
 
-Uzaktan Izleme çözüm hızlandırıcısının önceki sürümü IoT Suite uzaktan Izleme çözümü olarak bilinir. Arşivlenmiş belgeleri adresinde bulabilirsiniz [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
+Uzaktan Izleme çözüm hızlandırıcısının önceki sürümü IoT Suite uzaktan Izleme çözümü olarak bilinir. Arşivlenmiş belgeleri adresinde bulabilirsiniz [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) .
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Yeni Çözüm Hızlandırıcısı var olan çözümle aynı coğrafi bölgede kullanılabilir mi?
 
@@ -101,13 +101,13 @@ Elli. Bu sınırı yükseltmek için bir [Azure destek bileti](https://portal.az
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Nasıl yaparım? bir Azure AD kiracısı silinsin mi?
 
-[Azure AD kiracısı silme hakkında](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)bilgi için bkz. Eric Golpe 'nin blog gönderisi Kılavuzu.
+[Azure AD kiracısı silme hakkında](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)bilgi için bkz. Eric Golpe 'nin blog gönderisi Kılavuzu.
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
 IoT çözüm hızlandırıcılarının diğer özellik ve yeteneklerinden bazılarını da keşfedebilirsiniz:
 
 * [Uzaktan Izleme çözüm hızlandırıcısının yeteneklerini keşfet](quickstart-remote-monitoring-deploy.md)
-* [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-overview.md)
+* [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](./iot-accelerators-predictive-walkthrough.md)
 * [Bağlı fabrika çözüm Hızlandırıcısını dağıtma](quickstart-connected-factory-deploy.md)
-* [Baştan sona IoT güvenliği](/azure/iot-fundamentals/iot-security-ground-up)
+* [Baştan sona IoT güvenliği](../iot-fundamentals/iot-security-ground-up.md)

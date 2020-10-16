@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b945b984210dc3fc3338da8a5670a7813198e40
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 70d431b0094264d37f60d63636be388802b3552e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919480"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968574"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows Kimlik Doğrulaması ve Azure Multi-Factor Authentication Sunucusu
 
@@ -42,14 +42,14 @@ Uygulamalara yönelik Windows kimlik doğrulamasını etkinleştirmek ve yapıla
    ![MFA sunucusunda Windows kimlik doğrulaması](./media/howto-mfaserver-windows/windowsauth.png)
 2. **Windows Kimlik Doğrulamasını Etkinleştir** onay kutusunu işaretleyin. Varsayılan olarak, bu kutu işaretlenmemiştir.
 3. Uygulamalar sekmesi yöneticinin Windows Kimlik Doğrulaması için bir veya daha fazla uygulamayı yapılandırmasını sağlar.
-4. Bir sunucu veya uygulama seçin – sunucusu/uygulama etkin olup olmadığını belirtin. **Tamam** düğmesine tıklayın.
+4. Bir sunucu veya uygulama seçin – sunucusu/uygulama etkin olup olmadığını belirtin. **Tamam**'a tıklayın.
 5. **Ekle...** öğesine tıklayın
 6. Güvenilen IP'ler sekmesi belirli IP'lerden gelen Windows oturumları için Azure Multi-Factor Authentication’ı atlamanızı sağlar. Örneğin, çalışanlar ofiste ve evden uygulama kullanıyorsa, ofisteyken Azure Multi-Factor Authentication için telefonlarının çalmasını istemediğinize karar verebilirsiniz. Bunun için ofis alt ağını Güvenilen IP’ler girişi olarak belirtebilirsiniz.
 7. **Ekle...** öğesine tıklayın
 8. Tek bir IP adresini atlamak istiyorsanız, **tek IP** ' yi seçin.
 9. Tüm IP aralığını atlamak istiyorsanız **IP aralığı** ' nı seçin. Örnek: 10.63.193.1-10.63.193.100.
 10. Alt ağ gösterimini kullanarak bir IP aralığı belirtmek istiyorsanız **alt ağ** ' ı seçin. Alt ağın başlangıç IP’sini girin ve açılır listede uygun ağ maskesini seçin.
-11. **Tamam** düğmesine tıklayın.
+11. **Tamam**'a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,16 +4,16 @@ description: Bu makale, Azure DevTest Labs ' de zaten oluşturulmuş sanal makin
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476249"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Özel görüntüleri birden çok laboratuvara kaydetme ve dağıtma
 Bu makale, önceden oluşturulmuş sanal makinelerden (VM 'Ler) özel görüntüleri kaydetme adımlarını sağlar. Ayrıca, bu özel görüntülerin kuruluştaki diğer DevTest Labs 'e nasıl dağıtılacağını da ele alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Şu öğeler zaten yerinde olmalıdır:
 
 - Azure DevTest Labs görüntü fabrikası için laboratuvar.
@@ -78,7 +78,7 @@ Bu makalede daha önce gördüğünüz adımların aynısını kullanarak, derle
 
 ![Görüntüleri dağıtmak için görev oluştur](./media/save-distribute-custom-images/second-build-task-powershell.png)
 
-Parametreler şunlardır:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
+Parametreler şunlardır: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
 
 Bu görev, görüntü fabrikasında bulunan özel görüntüleri alır ve bunları dosyada Labs.jstanımlanan tüm laboratuvarlara gönderir.
 

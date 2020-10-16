@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91859383"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92038434"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure sanal WAN, GA 'de mi?
 
@@ -228,7 +228,7 @@ Bir sanal hub, bağlantıda ' Enabled ' olduğunda, bir sanal ağ/siteden siteye
 Bir sanal hub birden fazla uzak hub 'dan aynı rotayı öğrenirse, karar verdiği sıra aşağıdaki gibidir:
 
 1. En uzun önek eşleşmesi.
-2. Interhub üzerinden yerel yollar.
+2. Interhub üzerinden yerel yollar (sanal hub, ınterhub için 65520-65520 atar)
 3. BGP üzerinden statik yollar: Bu, sanal hub yönlendiricisinin yaptığı kararların bağlamıdır. Ancak karar Oluşturucu bir sitenin BGP aracılığıyla yollar duyurduğu veya statik adres önekleri sağladığı VPN ağ geçidse, BGP yollarının üzerinde statik yollar tercih edilebilir.
 4. VPN üzerinden ExpressRoute (ER): bağlam yerel bir hub olduğunda VPN üzerinden de tercih edilir. ExpressRoute devreleri arasındaki aktarım bağlantısı yalnızca Global Reach aracılığıyla kullanılabilir. Bu nedenle, ExpressRoute bağlantı hattının bir hub 'a bağlı olduğu ve VPN bağlantısıyla farklı bir hub 'a bağlı başka bir ExpressRoute bağlantı hattının bulunduğu senaryolarda, hub 'lar arası senaryolar için VPN tercih edilebilir.
 5. Yol uzunluğu olarak.

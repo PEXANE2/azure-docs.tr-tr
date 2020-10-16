@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ce24bf541c5a71c50bb34f5e42aa3452f01b871c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598077"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978178"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği
 
@@ -80,22 +80,22 @@ Bu belgedeki adımlar aşağıdaki öneklerle işaretlendiğinde, anlamı aşağ
 - [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
 - [Pacemaker kümesinde sistem çoğaltmasını SAP HANA.](https://access.redhat.com/articles/3004101)
 - Genel RHEL belgeleri
-    - [Yüksek kullanılabilirlik eklentisi genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-    - [Yüksek kullanılabilirlik eklentisi Yönetimi.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [Yüksek kullanılabilirlik eklentisi başvurusu.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [HANA dosya sistemleri NFS paylaşımlardaytığında, bir pacemaker kümesinde ölçek artırma SAP HANA sistem çoğaltmasını yapılandırma](https://access.redhat.com/solutions/5156571)
+    - [Yüksek kullanılabilirlik Add-On genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+    - [Yüksek kullanılabilirlik Add-On yönetimi.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [Yüksek kullanılabilirlik Add-On başvurusu.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [HANA dosya sistemleri NFS paylaşımlarındaytığında, bir pacemaker kümesinde Scale-Up SAP HANA sistem çoğaltmasını yapılandırma](https://access.redhat.com/solutions/5156571)
 - Azure 'a özgü RHEL belgeleri:
     - [RHEL yüksek kullanılabilirlik kümeleri için destek Ilkeleri-küme üyesi olarak Microsoft Azure Sanal Makineler.](https://access.redhat.com/articles/3131341)
-    - [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma.](https://access.redhat.com/articles/3252491)
+    - [Microsoft Azure Red Hat Enterprise Linux 7,4 (ve üzeri) High-Availability kümesini yükleme ve yapılandırma.](https://access.redhat.com/articles/3252491)
     - [Microsoft Azure kullanım için Red Hat Enterprise Linux SAP HANA yüklemesi.](https://access.redhat.com/solutions/3193782)
     - [HANA dosya sistemleri NFS paylaşımlarındaytığında, genişleme sistem çoğaltmasını yukarı Paceoluşturucu kümesi SAP HANA yapılandırma](https://access.redhat.com/solutions/5156571)
 - [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları](https://www.netapp.com/us/media/tr-4746.pdf)
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
-Geleneksel olarak, ölçek artırma ortamında, SAP HANA için tüm dosya sistemleri yerel depolamadan bağlanır. Red Hat Enterprise Linux üzerinde SAP HANA sistem çoğaltmasının yüksek kullanılabilirliğini ayarlama, [RHEL üzerinde sistem çoğaltmasını SAP HANA ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) bölümünde yayımlanır
+Geleneksel olarak, ölçek artırma ortamında, SAP HANA için tüm dosya sistemleri yerel depolamadan bağlanır. Red Hat Enterprise Linux üzerinde SAP HANA sistem çoğaltmasının yüksek kullanılabilirliğini ayarlama, [RHEL üzerinde sistem çoğaltmasını SAP HANA ayarlama](./sap-hana-high-availability-rhel.md) bölümünde yayımlanır
 
-[Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/) NFS paylaşımlarında ölçek artırma sisteminin yüksek oranda kullanılabilir duruma getirmek SAP HANA için, bir düğüm ANF üzerinde NFS paylaşımlarına ERIŞIMI kaybettiğinde Hana kaynaklarının kurtarılmasını sağlamak üzere kümede bazı ek kaynak yapılandırmasına ihtiyacımız vardır.  Küme, NFS takmaları yönetir ve bu da kaynakların sistem durumunu izlemesine olanak tanır. Dosya sistemi takmaları ve SAP HANA kaynakları arasındaki bağımlılıklar zorlanır.  
+[Azure NetApp Files](../../../azure-netapp-files/index.yml) NFS paylaşımlarında ölçek artırma sisteminin yüksek oranda kullanılabilir duruma getirmek SAP HANA için, bir düğüm ANF üzerinde NFS paylaşımlarına ERIŞIMI kaybettiğinde Hana kaynaklarının kurtarılmasını sağlamak üzere kümede bazı ek kaynak yapılandırmasına ihtiyacımız vardır.  Küme, NFS takmaları yönetir ve bu da kaynakların sistem durumunu izlemesine olanak tanır. Dosya sistemi takmaları ve SAP HANA kaynakları arasındaki bağımlılıklar zorlanır.  
 
 ![ANF 'de HA ölçeğini SAP HANA](./media/sap-hana-high-availability-rhel/sap-hana-scale-up-netapp-files-red-hat.png)
 
@@ -125,29 +125,29 @@ SAP HANA sistem çoğaltma yapılandırması, ayrılmış bir sanal konak adı v
 
 ## <a name="set-up-the-azure-netapp-file-infrastructure"></a>Azure NetApp dosya altyapısını ayarlama
 
-Azure NetApp Files altyapısına yönelik kuruluma devam etmeden önce, Azure [NetApp dosyaları belgelerini](https://docs.microsoft.com/azure/azure-netapp-files/)öğrenmeye çalışın.
+Azure NetApp Files altyapısına yönelik kuruluma devam etmeden önce, Azure [NetApp dosyaları belgelerini](../../../azure-netapp-files/index.yml)öğrenmeye çalışın.
 
 Azure NetApp Files çeşitli [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)kullanılabilir. Seçtiğiniz Azure bölgesinin Azure NetApp Files sunmadığını denetleyin.
 
 Azure bölgesine göre Azure NetApp Files kullanılabilirliği hakkında daha fazla bilgi için bkz. [Azure bölgesine göre Azure NetApp Files kullanılabilirliği](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all).
 
-Azure NetApp Files dağıtmadan önce [Azure NetApp Files yönergeler Için kaydolun](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)bölümüne giderek Azure NetApp Files ekleme isteyin.
+Azure NetApp Files dağıtmadan önce [Azure NetApp Files yönergeler Için kaydolun](../../../azure-netapp-files/azure-netapp-files-register.md)bölümüne giderek Azure NetApp Files ekleme isteyin.
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files kaynaklarını dağıtma
 
-Aşağıdaki yönergelerde, [Azure Sanal ağınızı](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)zaten dağıttığınız varsayılmaktadır. Azure NetApp Files kaynakların dağıtılacağı Azure NetApp Files kaynakları ve VM 'Ler, aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında dağıtılmalıdır.
+Aşağıdaki yönergelerde, [Azure Sanal ağınızı](../../../virtual-network/virtual-networks-overview.md)zaten dağıttığınız varsayılmaktadır. Azure NetApp Files kaynakların dağıtılacağı Azure NetApp Files kaynakları ve VM 'Ler, aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında dağıtılmalıdır.
 
-1. Kaynakları henüz dağıtmadıysanız [Azure NetApp Files ekleme](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)isteyin.
+1. Kaynakları henüz dağıtmadıysanız [Azure NetApp Files ekleme](../../../azure-netapp-files/azure-netapp-files-register.md)isteyin.
 
-2. [Bir NetApp hesabı oluşturma](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)bölümündeki yönergeleri Izleyerek seçtiğiniz Azure bölgesindeki bir NetApp hesabı oluşturun.
+2. [Bir NetApp hesabı oluşturma](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)bölümündeki yönergeleri Izleyerek seçtiğiniz Azure bölgesindeki bir NetApp hesabı oluşturun.
 
-3.  [Bir Azure NetApp Files kapasite havuzu ayarlama](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)bölümündeki yönergeleri izleyerek Azure NetApp Files bir kapasite havuzu ayarlayın.
+3.  [Bir Azure NetApp Files kapasite havuzu ayarlama](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)bölümündeki yönergeleri izleyerek Azure NetApp Files bir kapasite havuzu ayarlayın.
 
-    Bu makalede sunulan HANA mimarisi, *Ultra* hizmet düzeyinde tek bir Azure NetApp Files kapasite havuzu kullanır. Azure 'daki HANA iş yükleri için Azure NetApp Files *Ultra* veya *Premium* [hizmet düzeyi](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)kullanmanızı öneririz.
+    Bu makalede sunulan HANA mimarisi, *Ultra* hizmet düzeyinde tek bir Azure NetApp Files kapasite havuzu kullanır. Azure 'daki HANA iş yükleri için Azure NetApp Files *Ultra* veya *Premium* [hizmet düzeyi](../../../azure-netapp-files/azure-netapp-files-service-levels.md)kullanmanızı öneririz.
 
-4.  [Azure NetApp Files için bir alt ağ devretmek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)içindeki yönergelerde açıklandığı gibi Azure NetApp Files için bir alt ağ atayın.
+4.  [Azure NetApp Files için bir alt ağ devretmek](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)içindeki yönergelerde açıklandığı gibi Azure NetApp Files için bir alt ağ atayın.
 
-5.  [Azure NetApp Files IÇIN NFS birimi oluşturma](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)bölümündeki yönergeleri izleyerek Azure NetApp Files birimleri dağıtın.
+5.  [Azure NetApp Files IÇIN NFS birimi oluşturma](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)bölümündeki yönergeleri izleyerek Azure NetApp Files birimleri dağıtın.
 
     Birimleri dağıttığınızda, NFSv 4.1 sürümünü seçtiğinizden emin olun. Birimleri belirlenen Azure NetApp Files alt ağına dağıtın. Azure NetApp birimlerinin IP adresleri otomatik olarak atanır.
 
@@ -171,10 +171,10 @@ SAP HANA ölçeği artırma sistemleri için Azure NetApp Files oluştururken, a
 
 - En düşük kapasite havuzu 4 tebibayt (Tib).
 - En küçük birim boyutu 100 Gibibyte (gib).
-- Azure NetApp Files ve Azure NetApp Files birimlerinin takılabileceği tüm sanal makineler aynı bölgedeki aynı Azure sanal ağında veya eşlenmiş [sanal ağlarda](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) olmalıdır.
+- Azure NetApp Files ve Azure NetApp Files birimlerinin takılabileceği tüm sanal makineler aynı bölgedeki aynı Azure sanal ağında veya eşlenmiş [sanal ağlarda](../../../virtual-network/virtual-network-peering-overview.md) olmalıdır.
 - Seçili sanal ağın Azure NetApp Files için temsilci atanmış bir alt ağı olmalıdır.
-- Azure NetApp Files bir birimin verimlilik, [Azure NetApp Files Için hizmet düzeyinde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)belgelendiği gibi birim kotasının ve hizmet düzeyinin bir işlevidir. HANA Azure NetApp birimlerini boyutlandırdığınızda, sonuçta elde edilen aktarım hızı HANA sistem gereksinimlerini karşıladığından emin olun.
-- Azure NetApp Files [dışarı aktarma ilkesiyle](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)izin verilen istemcileri, erişim türünü (okuma-yazma, salt okuma vb.) denetleyebilirsiniz.
+- Azure NetApp Files bir birimin verimlilik, [Azure NetApp Files Için hizmet düzeyinde](../../../azure-netapp-files/azure-netapp-files-service-levels.md)belgelendiği gibi birim kotasının ve hizmet düzeyinin bir işlevidir. HANA Azure NetApp birimlerini boyutlandırdığınızda, sonuçta elde edilen aktarım hızı HANA sistem gereksinimlerini karşıladığından emin olun.
+- Azure NetApp Files [dışarı aktarma ilkesiyle](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)izin verilen istemcileri, erişim türünü (okuma-yazma, salt okuma vb.) denetleyebilirsiniz.
 - Azure NetApp Files özelliği henüz bölge duyarlı değil. Şu anda, özelliği bir Azure bölgesindeki tüm kullanılabilirlik bölgelerinde dağıtılmadı. Bazı Azure bölgelerindeki olası gecikme etkilerine yönelik etkileri göz önünde bulundurun.
 
 > [!IMPORTANT]
@@ -182,7 +182,7 @@ SAP HANA ölçeği artırma sistemleri için Azure NetApp Files oluştururken, a
 
 ### <a name="sizing-of-hana-database-on-azure-netapp-files"></a>Azure NetApp Files HANA veritabanının boyutlandırması
 
-Azure NetApp Files bir birimin verimlilik, [Azure NetApp Files Için hizmet düzeyinde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)belgelendiği gibi birim boyutu ve hizmet düzeyi işlevindedir.
+Azure NetApp Files bir birimin verimlilik, [Azure NetApp Files Için hizmet düzeyinde](../../../azure-netapp-files/azure-netapp-files-service-levels.md)belgelendiği gibi birim boyutu ve hizmet düzeyi işlevindedir.
 
 SAP altyapısını Azure 'da tasarlarken, en düşük işleme özelliklerine çeviren SAP 'ye göre bazı minimum depolama gereksinimlerini göz önünde bulundurun:
 
@@ -190,7 +190,7 @@ SAP altyapısını Azure 'da tasarlarken, en düşük işleme özelliklerine çe
 - 16 MB ve 64-MB g/ç boyutları için/Hana/Data için en az 400 MB/sn etkinliğini okuyun.
 - 16 MB ve 64-MB g/ç boyutları ile/Hana/Data için en az 250 MB/sn etkinliğini yazın.
 
-Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) şunlardır:
+Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](../../../azure-netapp-files/azure-netapp-files-service-levels.md) şunlardır:
 
 - Premium depolama katmanı-64 MIB/s.
 - Ultra Storage katmanı-128 MIB/s.
@@ -240,7 +240,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
         1.  **Sanal makine Ekle**' yi seçin.
         1.  * * Sanal makine * * öğesini seçin.
         1.  SAP HANA kümesinin sanal makinelerini ve IP adreslerini seçin.
-        1.  **Add (Ekle)** seçeneğini belirleyin.
+        1.  **Ekle**’yi seçin.
     1.  Sonra, bir sistem durumu araştırması oluşturun:
         1.  Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
         1.  Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
@@ -256,7 +256,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
         1.  **Tamam**’ı seçin.
 
 > [!NOTE] 
-> Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).
+> Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).
 
 9. Alternatif olarak, senaryonuz temel yük dengeleyiciyi kullanmayı belirlemesi durumunda aşağıdaki yapılandırma adımlarını izleyin:
     1.  Yük dengeleyiciyi yapılandırın. İlk olarak, bir ön uç IP havuzu oluşturun:
@@ -308,7 +308,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
 SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [SAP HANA kiracı veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) Kılavuzu veya SAP Note [2388694](https://launchpad.support.sap.com/#/notes/2388694)' de [kiracı veritabanlarına yönelik bölüm bağlantılarını](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) okuyun.
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview). Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md). Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>Azure NetApp Files birimini bağlama
 
@@ -457,7 +457,7 @@ SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [
 
 ## <a name="configure-sap-hana-system-replication"></a>SAP HANA sistem çoğaltmasını yapılandırma
 
-SAP HANA sistem çoğaltmasını yapılandırmak için [SAP HANA sistem çoğaltmasını](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) ayarlama bölümündeki adımları izleyin. 
+SAP HANA sistem çoğaltmasını yapılandırmak için [SAP HANA sistem çoğaltmasını](./sap-hana-high-availability-rhel.md#configure-sap-hana-20-system-replication) ayarlama bölümündeki adımları izleyin. 
 
 ## <a name="cluster-configuration"></a>Küme yapılandırması
 
@@ -465,7 +465,7 @@ Bu bölümde, Azure NetApp Files kullanılarak NFS paylaşımlarına SAP HANA y�
 
 ### <a name="create-a-pacemaker-cluster"></a>Paceoluşturucu kümesi oluşturma
 
-Bu HANA sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere Azure 'daki [Red Hat Enterprise Linux Paceyapıcısı ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) bölümündeki adımları izleyin.
+Bu HANA sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere Azure 'daki [Red Hat Enterprise Linux Paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md) bölümündeki adımları izleyin.
 
 ### <a name="configure-filesystem-resources"></a>Dosya sistemi kaynaklarını yapılandırma
 
@@ -536,11 +536,11 @@ Bu örnekte her küme düğümünün kendi HANA NFS dosya sistemleri/Hana/Shared
     ```
 
    > [!TIP]
-   > Yapılandırmanız, grubun dışında dosya sistemleri içeriyorsa, `hanadb1_nfs` `hanadb2_nfs` `sequential=false` dosya sistemleri arasında sıralama bağımlılığı kalmayacak şekilde seçeneğini ekleyin. Tüm dosya sistemleri önce başlamalıdır `hana_nfs1_active` , ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla ayrıntı için bkz [. Hana dosya SISTEMLERI NFS paylaşımlardaytığında bir Paceoluşturucu kümesinde SAP HANA sistem çoğaltmasını yapılandırma nasıl yaparım?](https://access.redhat.com/solutions/5156571)
+   > Yapılandırmanız, grubun dışında dosya sistemleri içeriyorsa, `hanadb1_nfs` `hanadb2_nfs` `sequential=false` dosya sistemleri arasında sıralama bağımlılığı kalmayacak şekilde seçeneğini ekleyin. Tüm dosya sistemleri önce başlamalıdır `hana_nfs1_active` , ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla ayrıntı için bkz [. Hana dosya SISTEMLERI NFS paylaşımlardaytığında, bir Paceoluşturucu kümesinde Scale-Up SAP HANA sistem çoğaltmasını yapılandırma nasıl yaparım?](https://access.redhat.com/solutions/5156571)
 
 ### <a name="configure-sap-hana-cluster-resources"></a>SAP HANA küme kaynaklarını yapılandırma
 
-1. Kümedeki SAP HANA kaynaklarını oluşturmak için [SAP HANA kümesi kaynakları oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#create-sap-hana-cluster-resources) bölümündeki adımları izleyin. SAP HANA kaynakları oluşturulduktan sonra, SAP HANA kaynakları ve dosya sistemleri (NFS takmaları) arasında bir konum kuralı kısıtlaması oluşturmanız gerekir
+1. Kümedeki SAP HANA kaynaklarını oluşturmak için [SAP HANA kümesi kaynakları oluşturma](./sap-hana-high-availability-rhel.md#create-sap-hana-cluster-resources) bölümündeki adımları izleyin. SAP HANA kaynakları oluşturulduktan sonra, SAP HANA kaynakları ve dosya sistemleri (NFS takmaları) arasında bir konum kuralı kısıtlaması oluşturmanız gerekir
 
 2. **[1]** SAP HANA kaynaklarıyla NFS takmaları arasında kısıtlamalar yapılandırın
 
@@ -687,4 +687,4 @@ Bu bölüm, kurulumunuzu nasıl test kullanabileceğinizi açıklar.
          vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hanadb2
     ```
 
-   Ayrıca, [RHEL üzerinde sistem çoğaltma SAP HANA kurulum](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)bölümünde açıklanan testleri gerçekleştirerek SAP HANA küme yapılandırmasını kapsamlı bir şekilde test etmenizi öneririz.   
+   Ayrıca, [RHEL üzerinde sistem çoğaltma SAP HANA kurulum](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)bölümünde açıklanan testleri gerçekleştirerek SAP HANA küme yapılandırmasını kapsamlı bir şekilde test etmenizi öneririz.

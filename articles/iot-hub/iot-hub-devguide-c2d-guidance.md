@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 10206aced4f38f4d157f46703aac2d28ec863274
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319159"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Buluttan cihaza iletişim Kılavuzu
@@ -41,7 +41,7 @@ IoT Hub, cihaz uygulamaları için bir arka uç uygulamasına işlevsellik sunan
 | Dayanıklılık | Bağlantısı kesilen cihazlara bağlantı kurulmadı. Çözüm arka ucu, cihazın bağlı olmadığı bildirilir. | Özellik değerleri cihaz ikizi korunur. Cihaz, bir sonraki yeniden bağlantı noktasında okur. Özellik değerleri [IoT Hub sorgu diliyle](iot-hub-devguide-query-language.md)alınabilir. | İletiler, 48 saate kadar IoT Hub korunabilir. |
 | Targets | **DeviceID**veya [işleri](iot-hub-devguide-jobs.md)kullanan birden çok cihaz kullanan tek bir cihaz. | **DeviceID**veya [işleri](iot-hub-devguide-jobs.md)kullanan birden çok cihaz kullanan tek bir cihaz. | **DeviceID**tarafından tek bir cihaz. |
 | Boyut | En yüksek doğrudan Yöntem yük boyutu 128 KB 'tır. | İstenen en fazla özellik boyutu 32 KB 'tır. | En çok 64 KB ileti. |
-| Sıklık | Yüksek. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). |
+| Frequency | Yüksek. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). |
 | Protokol | MQTT veya AMQP kullanılarak kullanılabilir. | MQTT veya AMQP kullanılarak kullanılabilir. | Tüm protokollerde kullanılabilir. HTTPS kullanılırken cihaz yoklamalıdır. |
 
 Aşağıdaki öğreticilerde doğrudan yöntemleri, istenen özellikleri ve buluttan cihaza iletileri nasıl kullanacağınızı öğrenin:

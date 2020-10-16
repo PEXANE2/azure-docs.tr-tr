@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87482864"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
@@ -127,7 +127,7 @@ Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
 > [!NOTE]
 > Graph API aracılığıyla Kullanıcı oluştururken, uygulamanın "OpenID", "offline_access" ve "profile" izinlerinin Microsoft Graph olması gerekir.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Tercih ettiğiniz yerel SDK ile uygulayın veya uygulama kimlik doğrulamasını kullanın
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Tercih ettiğiniz yerel SDK ile uygulayın veya App-Auth kullanın
 
 Azure AD B2C uygulama, ortak istemci kaynak sahibi parola kimlik bilgileri için OAuth 2,0 standartlarını karşılar ve çoğu istemci SDK 'Sı ile uyumlu olmalıdır. Bu akışı, üretimde, iOS için AppAuth ve Android için appauth ile kapsamlı bir şekilde test ediyoruz. En son bilgiler için bkz. [OAuth Için yerel uygulama SDK 'sı 2,0 ve OpenID Connect modern en iyi uygulamaları uygulama](https://appauth.io/).
 

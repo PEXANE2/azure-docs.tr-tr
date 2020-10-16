@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0297c8674cc47a1d5f59fef196a60175244eaae2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831422"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978331"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale
 
@@ -86,7 +86,7 @@ Bu mimaride, Azure sanal makinelerinde uygulama, depolama ve veri katmanları ç
 
 ### <a name="storage-considerations"></a>Depolama hakkında dikkat edilmesi gerekenler
 
-Oracle RAC gibi DB2 pureScale, yüksek performanslı bir blok g/ç, genişleme veritabanıdır. Gereksinimlerinize uygun en büyük [Azure PREMIUM SSD](disks-types.md) seçeneğini kullanmanızı öneririz. Üretim ortamları genellikle daha fazla depolama kapasitesine ihtiyaç duyurken, daha küçük depolama seçenekleri geliştirme ve test ortamları için uygun olabilir. Örnek mimari, ıOPS 'nin boyut ve fiyata oranı nedeniyle [P30](https://azure.microsoft.com/pricing/details/managed-disks/) kullanır. Boyut ne olursa olsun, en iyi performans için Premium depolama kullanın.
+Oracle RAC gibi DB2 pureScale, yüksek performanslı bir blok g/ç, genişleme veritabanıdır. Gereksinimlerinize uygun en büyük [Azure PREMIUM SSD](../disks-types.md) seçeneğini kullanmanızı öneririz. Üretim ortamları genellikle daha fazla depolama kapasitesine ihtiyaç duyurken, daha küçük depolama seçenekleri geliştirme ve test ortamları için uygun olabilir. Örnek mimari, ıOPS 'nin boyut ve fiyata oranı nedeniyle [P30](https://azure.microsoft.com/pricing/details/managed-disks/) kullanır. Boyut ne olursa olsun, en iyi performans için Premium depolama kullanın.
 
 DB2 pureScale, tüm verilere tüm küme düğümlerinden erişilebilen bir paylaşılan her şey mimarisi kullanır. Premium Depolama, isteğe bağlı veya adanmış örneklerde, birden çok örnek arasında paylaşılmalıdır.
 

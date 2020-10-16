@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441198"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
@@ -39,7 +39,7 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 |Doğu Avustralya     |Üç kullanılabilirlik bölgesi         |
 |Güneydoğu Asya    |Üç kullanılabilirlik bölgesi        |
 |Kanada Orta *     |Üç kullanılabilirlik bölgesi          |
-|Orta ABD     |Üç kullanılabilirlik bölgesi          |
+|Central US     |Üç kullanılabilirlik bölgesi          |
 |Doğu ABD     |Üç kullanılabilirlik bölgesi          |
 |Doğu ABD 2     |Üç kullanılabilirlik bölgesi         |
 |Orta Fransa    |İki kullanılabilirlik bölgesi        |

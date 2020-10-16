@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b7324115c880fb1ee4d5a1730a3b84a289cee4b0
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89490148"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri kopyalama
@@ -70,8 +70,8 @@ Aşağıdaki tabloda, Azure SYNAPSE Analytics bağlı hizmetine özgü JSON öğ
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **Azuresqldw** olarak ayarlanmalıdır |Yes |
-| Dizisi |ConnectionString özelliği için Azure SYNAPSE Analytics örneğine bağlanmak için gereken bilgileri belirtin. Yalnızca temel kimlik doğrulaması desteklenir. |Yes |
+| tür |Type özelliği: **Azuresqldw** olarak ayarlanmalıdır |Evet |
+| Dizisi |ConnectionString özelliği için Azure SYNAPSE Analytics örneğine bağlanmak için gereken bilgileri belirtin. Yalnızca temel kimlik doğrulaması desteklenir. |Evet |
 
 > [!IMPORTANT]
 > Azure [hizmetlerinin sunucuya erişmesine izin](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)vermek IÇIN [Azure SQL veritabanı güvenlik duvarını](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) ve veritabanı sunucusunu yapılandırın. Ayrıca, Data Factory ağ geçidine sahip şirket içi veri kaynaklarından dahil olmak üzere Azure dışından Azure SYNAPSE Analytics 'e veri kopyalıyorsanız, verileri Azure SYNAPSE Analytics 'e gönderen makine için uygun IP adresi aralığını yapılandırın.
@@ -83,7 +83,7 @@ TypeProperties bölümü her bir veri kümesi türü için farklıdır ve veri d
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tableName |Bağlı hizmetin başvurduğu Azure SYNAPSE Analytics veritabanında tablonun veya görünümün adı. |Yes |
+| tableName |Bağlı hizmetin başvurduğu Azure SYNAPSE Analytics veritabanında tablonun veya görünümün adı. |Evet |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilke gibi özellikler, tüm etkinlik türleri için kullanılabilir.
@@ -98,9 +98,9 @@ Kaynak **Sqldwsource**türünde olduğunda, **typeproperties** bölümünde aşa
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |No |
-| sqlReaderStoredProcedureName |Kaynak tablodaki verileri okuyan saklı yordamın adı. |Saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |No |
-| storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |No |
+| sqlReaderQuery |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Hayır |
+| sqlReaderStoredProcedureName |Kaynak tablodaki verileri okuyan saklı yordamın adı. |Saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |Hayır |
+| storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |Hayır |
 
 SqlDWSource için **Sqlreaderquery** belirtilmişse, kopyalama etkinliği verileri almak için bu sorguyu Azure SYNAPSE Analytics kaynağında çalıştırır.
 
@@ -144,15 +144,15 @@ GO
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. Ayrıntılar için bkz. [yinelenebilirlik bölümü](#repeatability-during-copy). |Sorgu ekstresi. |No |
-| allowPolyBase |BULKıNSERT mekanizması yerine PolyBase 'in (uygun olduğunda) kullanılıp kullanılmayacağını belirtir. <br/><br/> **PolyBase 'in kullanılması, verileri Azure SYNAPSE Analytics 'e yüklemek için önerilen yoldur.** Kısıtlamalar ve Ayrıntılar için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Doğru <br/>False (varsayılan) |No |
-| polyBaseSettings |**Allowpolybase** özelliği **true**olarak ayarlandığında belirtilenebilir bir özellik grubu. |&nbsp; |No |
-| rejectValue |Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir. <br/><br/>[Dış tablo oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) konusunun **bağımsız değişkenler** bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. |0 (varsayılan), 1, 2,... |No |
-| rejectType |RejectValue seçeneğinin sabit değer değeri mi yoksa yüzde olarak mı belirtilmediğini belirtir. |Değer (varsayılan), yüzde |No |
+| sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. Ayrıntılar için bkz. [yinelenebilirlik bölümü](#repeatability-during-copy). |Sorgu ekstresi. |Hayır |
+| allowPolyBase |BULKıNSERT mekanizması yerine PolyBase 'in (uygun olduğunda) kullanılıp kullanılmayacağını belirtir. <br/><br/> **PolyBase 'in kullanılması, verileri Azure SYNAPSE Analytics 'e yüklemek için önerilen yoldur.** Kısıtlamalar ve Ayrıntılar için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Doğru <br/>False (varsayılan) |Hayır |
+| polyBaseSettings |**Allowpolybase** özelliği **true**olarak ayarlandığında belirtilenebilir bir özellik grubu. |&nbsp; |Hayır |
+| rejectValue |Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir. <br/><br/>[Dış tablo oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) konusunun **bağımsız değişkenler** bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. |0 (varsayılan), 1, 2,... |Hayır |
+| rejectType |RejectValue seçeneğinin sabit değer değeri mi yoksa yüzde olarak mı belirtilmediğini belirtir. |Değer (varsayılan), yüzde |Hayır |
 | rejectSampleValue |PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler. |1, 2,... |Evet, **rejectType** **ise** |
-| useTypeDefault |PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin. |True, false (varsayılan) |No |
+| useTypeDefault |PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin. |True, false (varsayılan) |Hayır |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
-| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |No |
+| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink örneği
 
@@ -308,14 +308,14 @@ Data Factory, kaynak veri deposunda aynı tablo adına sahip hedef depoda tablo 
 | Sürümleri | Sürümleri |
 | Ondalık | Ondalık |
 | Sayısal | Ondalık |
-| Float | Float |
+| Kayan | Kayan |
 | Para | Para |
 | Gerçek | Gerçek |
 | Küçük para | Küçük para |
 | İkili | İkili |
 | İkili | Varbinary (8000 'e kadar) |
 | Tarih | Tarih |
-| Tarih-Saat | Tarih-Saat |
+| DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Süre | Süre |
 | DateTimeOffset | DateTimeOffset |
@@ -348,13 +348,13 @@ Eşleme, [ADO.NET için SQL Server veri türü eşlemesi](https://msdn.microsoft
 | ikili |Byte [] |
 | bit |Boole |
 | char |Dize, Char [] |
-| date |Tarih-Saat |
-| Tarih saat |Tarih-Saat |
-| datetime2 |Tarih-Saat |
+| date |DateTime |
+| Tarih saat |DateTime |
+| datetime2 |DateTime |
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Float |Çift |
+| Kayan |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |
@@ -364,12 +364,12 @@ Eşleme, [ADO.NET için SQL Server veri türü eşlemesi](https://msdn.microsoft
 | nvarchar |Dize, Char [] |
 | real |Tek |
 | rowversion |Byte [] |
-| girişin |Tarih-Saat |
+| girişin |DateTime |
 | smallint |Int16 |
 | küçük para |Ondalık |
 | sql_variant |Nesne |
 | metin |Dize, Char [] |
-| time |TimeSpan |
+| saat |TimeSpan |
 | timestamp |Byte [] |
 | tinyint |Bayt |
 | uniqueidentifier |Guid |

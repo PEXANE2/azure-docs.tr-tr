@@ -1,14 +1,14 @@
 ---
 title: Uyumlu olmayan kaynakları düzeltme
 description: Bu kılavuzda, Azure Ilkesindeki ilkelerle uyumlu olmayan kaynakların düzeltilme adımları gösterilmektedir.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76d2e57c1b5df965c81c88506ff2c2f70b2cb1f8
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269854"
+ms.locfileid: "91876337"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Ilkesiyle uyumlu olmayan kaynakları düzelt
 
@@ -17,7 +17,7 @@ Bir **Deployifnotexists** veya **MODIFY** Policy ile uyumlu olmayan kaynaklar, *
 ## <a name="how-remediation-security-works"></a>Düzeltme güvenliğinin nasıl çalıştığı
 
 Azure Ilkesi, şablonu **Deployifnotexists** ilke tanımında çalıştırdığında, bu, [yönetilen bir kimlik](../../../active-directory/managed-identities-azure-resources/overview.md)kullanılarak yapılır.
-Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimliğe hangi rollerin verilmek üzere ayrıntıları içermelidir. Yönetilen kimliğin rolleri yoksa, ilke veya girişim ataması sırasında bu hata görüntülenir. Portalı kullanırken, Azure Ilkesi, atama başladıktan sonra listelenen roller için yönetilen kimliğe otomatik olarak izin verir. SDK kullanırken, rollerin yönetilen kimliğe el ile verilmesi gerekir. Yönetilen kimliğin _konumu_ , Azure ilkesiyle birlikte çalışmasını etkilemez.
+Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimliğe hangi rollerin verilmek üzere ayrıntıları içermelidir. Yönetilen kimliğin rolleri eksikse, ilke veya girişim ataması sırasında bir hata görüntülenir. Portalı kullanırken, Azure Ilkesi, atama başladıktan sonra listelenen roller için yönetilen kimliğe otomatik olarak izin verir. SDK kullanırken, rollerin yönetilen kimliğe el ile verilmesi gerekir. Yönetilen kimliğin _konumu_ , Azure ilkesiyle birlikte çalışmasını etkilemez.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Yönetilen kimlik üzerinde tanımlı bir izin eksik olan bir deployIfNotExists ilkesinin ekran görüntüsü." border="false":::
 

@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs 'te bir olay hub 'ına dinamik olarak
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87002548"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Azure Event Hubs bir olay hub 'ına (Apache Kafka konuya) dinamik olarak bölüm ekleme
@@ -74,7 +74,7 @@ Event Hubs üç gönderici seçeneği sağlar:
 - Hepsini bir **kez deneme gönderici (varsayılan)** – Bu senaryoda, Event Hubs hizmeti, olayları bölümler arasında bir arada yer olarak bölümlere kapın. Event Hubs hizmeti bölüm sayısı değişikliklerinin farkındadır ve bölüm sayısını değiştiren Saniyeler içinde yeni bölümlere gönderilir.
 
 ### <a name="receiverconsumer-clients"></a>Alıcı/tüketici istemcileri
-Event Hubs doğrudan alıcılar ve [olay Işlemcisi Konağı (eskı SDK)](event-hubs-event-processor-host.md) veya [olay IŞLEMCISI (yeni SDK)](event-processor-balance-partition-load.md)olarak adlandırılan kolay bir tüketici kitaplığı sağlar.
+Event Hubs doğrudan alıcılar ve [olay Işlemcisi Konağı (eskı SDK)](event-hubs-event-processor-host.md)  veya [olay IŞLEMCISI (yeni SDK)](event-processor-balance-partition-load.md)olarak adlandırılan kolay bir tüketici kitaplığı sağlar.
 
 - **Doğrudan alıcılar** – doğrudan alıcılar belirli bölümleri dinler. Çalışma zamanı davranışları, bölümler bir olay hub 'ı için ölçekleniyorsa etkilenmez. Doğrudan alıcılar kullanan uygulamanın yeni bölümleri ve alıcıları buna göre atamasını sağlaması gerekir.
 - **Olay işlemcisi Konağı** – bu istemci, varlık meta verilerini otomatik olarak yenilemez. Bu nedenle, bölüm sayısı artışının üzerinde seçim olmayacaktır. Bir olay işlemcisi örneğinin yeniden oluşturulması bir varlık meta verilerinin alınmasına neden olur. Bu, sırayla yeni eklenen bölümler için yeni Bloblar oluşturur. Önceden var olan Bloblar etkilenmez. Tüm örneklerin yeni eklenen bölümlerin farkında olduğundan emin olmak için tüm olay işlemci örneklerinin yeniden başlatılması önerilir ve Yük Dengeleme, tüketiciler arasında doğru şekilde işlenir.

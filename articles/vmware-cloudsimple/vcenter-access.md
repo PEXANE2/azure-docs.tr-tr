@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77022673"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>Özel bulut vCenter portala erişin
@@ -36,7 +36,7 @@ VCenter portalına erişmek için ağ bağlantısı kurulması ve DNS ad çözü
 
 Azure portal ' dan özel bulutunuzun vCenter Portal 'ı başlatabilirsiniz.
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 
 2. **Cloudsimple Hizmetleri**için arama yapın.
 

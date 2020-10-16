@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294877"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Karma kimlik benimseme stratejisi tanımlama
@@ -82,7 +82,7 @@ Kullandığınız strateji, Kullanıcı oturum açma deneyimini dikte eder.  Aş
 
 Görev 1 ' den üçüncü taraf IDP olduğunu veya Azure AD ile Federasyon sağlamak için bir tane kullanacağınızı belirlerseniz, aşağıdaki desteklenen özellikleri bilmeniz gerekir:
 
-* SP-Lite profili için uyumlu olan herhangi bir SAML 2,0 sağlayıcısı, kimlik doğrulamasını Azure AD ve ilişkili uygulamalarla destekleyebilir
+* SP-Lite profili için uyumlu olan herhangi bir SAML 2,0 sağlayıcısı, Azure AD ve ilişkili uygulamalarla ilgili kimlik doğrulamasını destekleyebilir
 * , OWA, SPO, vb. kimlik doğrulamasını kolaylaştıran pasif kimlik doğrulamasını destekler.
 * Exchange Online istemcileri SAML 2,0 geliştirilmiş Istemci profili (ECP) aracılığıyla desteklenebilir
 
@@ -158,7 +158,7 @@ Bunu yapmak için, aşağıdakilerin doğru olması gerekir:
 * DNS etki alanı yalnızca tek bir Azure AD dizinine kaydedilebilir, böylece şirket içi AD içindeki kullanıcıların UPN 'leri ayrı ad alanları kullanmalıdır
 * Azure AD 'nin bir örneğindeki kullanıcılar yalnızca kendi örneklerinden kullanıcıları görebilirler.  Diğer örneklerde kullanıcıları göremeyecektir
 * Azure AD dizinlerinden yalnızca biri şirket içi AD ile Exchange karma 'i etkinleştirebilir
-* Karşılıklı denetim, geri yazma için de geçerlidir.  Bu, tek bir şirket içi yapılandırma varsaydığından bu topolojide bazı geri yazma özelliklerinin desteklenmesini sağlar.  Buna aşağıdakiler dahildir:
+* Karşılıklı denetim, geri yazma için de geçerlidir.  Bu, tek bir şirket içi yapılandırma varsaydığından bu topolojide bazı geri yazma özelliklerinin desteklenmesini sağlar.  Şunları içerir:
   * Varsayılan yapılandırma ile grup geri yazma
   * Cihaz geri yazma
 

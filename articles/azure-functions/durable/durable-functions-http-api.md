@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84697852"
 ---
 # <a name="http-api-reference"></a>HTTP API başvurusu
@@ -24,7 +24,7 @@ Uzantı tarafından uygulanan tüm HTTP API 'Leri aşağıdaki parametreleri ger
 | **`connection`** | Sorgu dizesi    | Depolama hesabı için bağlantı dizesinin **adı** . Belirtilmemişse, işlev uygulaması için varsayılan bağlantı dizesi varsayılır. |
 | **`systemKey`**  | Sorgu dizesi    | API 'YI çağırmak için gereken yetkilendirme anahtarı. |
 
-`systemKey`, Azure Işlevleri ana bilgisayarı tarafından oluşturulan bir yetkilendirme anahtarıdır. Bu, özellikle dayanıklı görev uzantısı API 'Lerine erişim verir ve [diğer yetkilendirme anahtarlarıyla](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)aynı şekilde yönetilebilir. `taskHub` `connection` `systemKey` [orchestration client binding](durable-functions-bindings.md#orchestration-client) `CreateCheckStatusResponse` `CreateHttpManagementPayload` .Net 'teki ve API 'leri ya da `createCheckStatusResponse` JavaScript 'teki API 'ler gibi Orchestration istemci bağlama API 'lerini kullanarak doğru, ve sorgu dizesi değerlerini içeren URL 'ler oluşturabilirsiniz `createHttpManagementPayload` .
+`systemKey` , Azure Işlevleri ana bilgisayarı tarafından oluşturulan bir yetkilendirme anahtarıdır. Bu, özellikle dayanıklı görev uzantısı API 'Lerine erişim verir ve [diğer yetkilendirme anahtarlarıyla](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)aynı şekilde yönetilebilir. `taskHub` `connection` `systemKey` [orchestration client binding](durable-functions-bindings.md#orchestration-client) `CreateCheckStatusResponse` `CreateHttpManagementPayload` .Net 'teki ve API 'leri ya da `createCheckStatusResponse` JavaScript 'teki API 'ler gibi Orchestration istemci bağlama API 'lerini kullanarak doğru, ve sorgu dizesi değerlerini içeren URL 'ler oluşturabilirsiniz `createHttpManagementPayload` .
 
 Sonraki birkaç bölümde uzantı tarafından desteklenen belirli HTTP API 'Leri ele alınmaktadır ve bunların nasıl kullanılacağına ilişkin örnekler sağlanmaktadır.
 
@@ -166,7 +166,7 @@ Olası birkaç durum kodu değeri döndürülebilir.
 
 **Http 200** ve **http 202** örnekleri için yanıt yükü AŞAĞıDAKI alanları içeren bir JSON nesnesidir:
 
-| Alan                 | Veri türü | Description |
+| Alan                 | Veri türü | Açıklama |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | dize    | Örneğin çalışma zamanı durumu. Değerler *çalışıyor*, *bekliyor*, *başarısız*, *iptal edildi*, *sonlandırıldı*, *tamamlandı*olarak verilebilir. |
 | **`input`**           | JSON      | Örneği başlatmak için kullanılan JSON verileri. Bu alan, `null` `showInput` sorgu dizesi parametresi olarak ayarlanmışsa olur `false` .|
@@ -385,7 +385,7 @@ Aşağıdaki HTTP durum kodu değerleri döndürülebilir.
 
 | Alan                  | Veri türü | Açıklama |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | integer   | Silinen örneklerin sayısı. Tek örnekli durum için bu değer her zaman olmalıdır `1` . |
+| **`instancesDeleted`** | tamsayı   | Silinen örneklerin sayısı. Tek örnekli durum için bu değer her zaman olmalıdır `1` . |
 
 Örnek bir yanıt yükü (okunabilirlik için biçimlendirilir) aşağıda verilmiştir:
 
@@ -447,7 +447,7 @@ Aşağıdaki HTTP durum kodu değerleri döndürülebilir.
 
 | Alan                   | Veri türü | Açıklama |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | integer   | Silinen örneklerin sayısı. |
+| **`instancesDeleted`**  | tamsayı   | Silinen örneklerin sayısı. |
 
 Örnek bir yanıt yükü (okunabilirlik için biçimlendirilir) aşağıda verilmiştir:
 

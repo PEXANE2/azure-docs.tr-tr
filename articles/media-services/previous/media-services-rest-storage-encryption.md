@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264173"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Depolama şifrelemesiyle içeriğinizi şifreleme
@@ -51,7 +51,7 @@ Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi ala
 |---|---|---|---|
 |Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
 |[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan, Azure veya müşteri tarafından yönetilen anahtar olan sunucu tarafı şifrelemesi|Desteklenir|Desteklenir|
-|[Depolama Istemci tarafı şifrelemesi](../../storage/common/storage-client-side-encryption.md)|Azure depolama tarafından sunulan istemci tarafı şifreleme, Key Vault ' de müşteri tarafından yönetilen anahtar|Desteklenmez|Desteklenmez|
+|[Depolama Client-Side şifrelemesi](../../storage/common/storage-client-side-encryption.md)|Azure depolama tarafından sunulan istemci tarafı şifreleme, Key Vault ' de müşteri tarafından yönetilen anahtar|Desteklenmez|Desteklenmez|
 
 <sup>1</sup> Media Services, şifresiz ve herhangi bir şifreleme formu olmadan içerik işlemeyi desteklese de, bunu yapmanız önerilmez.
 

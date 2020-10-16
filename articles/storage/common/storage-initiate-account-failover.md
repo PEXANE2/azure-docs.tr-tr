@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610067"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095917"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Depolama hesabı yük devretmesini başlatma
 
@@ -45,13 +45,13 @@ Azure depolama artıklığı hakkında daha fazla bilgi için bkz. [Azure Storag
 Azure portal hesap yük devretmesini başlatmak için aşağıdaki adımları izleyin:
 
 1. Depolama hesabınıza gidin.
-1. **Ayarlar**altında **coğrafi çoğaltma**' yı seçin. Aşağıdaki görüntüde, bir depolama hesabının coğrafi çoğaltma ve yük devretme durumu gösterilmektedir.
+1. **Ayarlar**'ın altında **Coğrafi çoğaltma**'yı seçin. Aşağıdaki görüntüde, bir depolama hesabının coğrafi çoğaltma ve yük devretme durumu gösterilmektedir.
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="Coğrafi çoğaltma ve yük devretme durumunu gösteren ekran görüntüsü":::
 
 1. Depolama hesabınızın coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için yapılandırıldığını doğrulayın. Aksi takdirde, hesabınız coğrafi olarak yedekli olacak şekilde güncelleştirmek için **Ayarlar** ' ın altında **yapılandırma** ' yı seçin.
 1. **Son eşitleme zamanı** özelliği, ikinc'nin birincili hedeften gerisinde olduğunu gösterir. **Son eşitleme zamanı** , yük devretme tamamlandıktan sonra karşılaşabileceğiniz veri kaybı kapsamını tahmin eder. **Son eşitleme zamanı** özelliğini denetleme hakkında daha fazla bilgi için bkz. [bir depolama hesabı Için Son eşitleme zamanı özelliğini denetleme](last-sync-time-get.md).
-1. **Yük devretme Için hazırla**' yı seçin.
+1. **Yük devretme için hazırlan**'ı seçin.
 1. Onay iletişim kutusunu inceleyin. Hazırsanız, yük devretmeyi onaylamak ve başlatmak için **Evet** girin.
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Coğrafi çoğaltma ve yük devretme durumunu gösteren ekran görüntüsü":::
@@ -107,6 +107,8 @@ az storage account failover \ --name accountName
 Depolama hesabınız için bir hesap yük devretmesi başlattığınızda, ikincil uç nokta için DNS kayıtları, ikincil uç nokta birincil uç nokta olacak şekilde güncelleştirilir. Yük devretme işlemine başlamadan önce depolama hesabınıza yönelik olası etkiyi anladığınızdan emin olun.
 
 Yük devretme başlamadan önce büyük olasılıkla veri kaybı kapsamını tahmin etmek için **son eşitleme zamanı** özelliğini denetleyin. **Son eşitleme zamanı** özelliğini denetleme hakkında daha fazla bilgi için bkz. [bir depolama hesabı Için Son eşitleme zamanı özelliğini denetleme](last-sync-time-get.md).
+
+Başlatma sonrasında yük devretme için gereken süre, genellikle bir saatten daha az olabilir.
 
 Yük devretmenin ardından, depolama hesabı türü otomatik olarak yeni birincil bölgedeki yerel olarak yedekli depolama (LRS) olarak dönüştürülür. Hesap için coğrafi olarak yedekli depolamayı (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) yeniden etkinleştirebilirsiniz. LRS 'den GRS 'ye veya RA-GRS ' ye dönüştürme ek bir maliyet doğurur. Daha fazla bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/).
 

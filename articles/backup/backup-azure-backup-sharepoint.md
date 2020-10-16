@@ -4,10 +4,10 @@ description: Bu makalede, Azure 'da bir SharePoint grubunun DPM/Azure Backup sun
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254440"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM ile bir SharePoint grubunu Azure 'a yedekleme
@@ -24,7 +24,7 @@ Desteklenen SharePoint sürümleri ve bunları yedeklemek için gereken DPM sür
 
 Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız gereken birkaç nokta vardır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullanmaya yönelik tüm önkoşulları](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşıladığınızdan emin olun. Önkoşullar için bazı görevler şunlardır: bir yedekleme Kasası oluşturma, kasa kimlik bilgilerini indirme, Azure Backup Aracısı yükleme ve DPM/Azure Backup Sunucusu 'i kasaya kaydetme.
 
@@ -69,9 +69,9 @@ DPM ile bir diskten bir SharePoint öğesini geri yüklemeyi öğrenmek için bk
     ![DPM SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Bu noktada, bir SharePoint içerik veritabanını diskten kurtarmak için bu makalenin önceki kısımlarında yer alarak kurtarma adımlarını izleyin.
 
-## <a name="switching-the-front-end-web-server"></a>Ön uç Web sunucusunu değiştirme
+## <a name="switching-the-front-end-web-server"></a>Front-End Web sunucusunu değiştirme
 
-Birden fazla ön uç Web sunucunuz varsa ve DPM 'nin grubu korumak için kullandığı sunucuyu değiştirmek istiyorsanız, [ön uç Web sunucusunu değiştirme](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)bölümündeki yönergeleri izleyin.
+Birden fazla ön uç Web sunucunuz varsa ve DPM 'nin grubu korumak için kullandığı sunucuyu değiştirmek istiyorsanız, [Front-End Web sunucusunu değiştirme](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)bölümündeki yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

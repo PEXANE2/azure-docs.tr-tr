@@ -4,10 +4,10 @@ description: Bir Azure Container Instance dağıtırken bir kapsayıcı görünt
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86169638"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Varsayılan komut satırı işlemini geçersiz kılmak için bir kapsayıcı örneğindeki komut satırını ayarlayın
@@ -54,8 +54,8 @@ Komut satırı sözdizimi, örnekleri oluşturmak için kullanılan Azure API ve
 
 |    |  Azure CLI   | Portal | Şablon | 
 | ---- | ---- | --- | --- |
-| **Tek komut** | `--command-line "python myscript.py arg1 arg2"` | **Komut geçersiz kılma**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| **Birden çok komut** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Komut geçersiz kılma**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| **Tek komut** | `--command-line "python myscript.py arg1 arg2"` | **Komut geçersiz kılma**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| **Birden çok komut** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Komut geçersiz kılma**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLı örneği
 
@@ -78,7 +78,7 @@ Kapsayıcının durumu *sonlandırıldıktan* sonra (durumu denetlemek için [az
 az container logs --resource-group myResourceGroup --name mycontainer1
 ```
 
-Çıktı:
+Çıkış:
 
 ```console
 [('HAMLET', 386), ('HORATIO', 127), ('CLAUDIUS', 120)]
@@ -104,7 +104,7 @@ Yeniden, kapsayıcı *sonlandırıldıktan*sonra kapsayıcının günlüklerini 
 az container logs --resource-group myResourceGroup --name mycontainer2
 ```
 
-Çıktı:
+Çıkış:
 
 ```console
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]

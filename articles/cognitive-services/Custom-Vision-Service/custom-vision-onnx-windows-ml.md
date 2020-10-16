@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
 ms.openlocfilehash: d6bcb5485833fbfaa3eb72191ee54b1ee69bab04
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82594304"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Windows ML ile Özel Görüntü İşleme bir ONNX modeli kullanma (Önizleme)
@@ -23,7 +23,7 @@ Windows ML (önizleme) ile Özel Görüntü İşleme hizmetinden dışarı aktar
 
 Bu kılavuzda, Windows ML ile Özel Görüntü İşleme Hizmeti aktarılmış bir ONNX dosyasını nasıl kullanacağınızı öğreneceksiniz. Örnek UWP uygulamasını, eğitilen görüntü sınıflandırıcınızla kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Windows 10 sürüm 1809 veya üzeri
 * 17763 veya üzeri derleme Windows SDK
@@ -53,10 +53,10 @@ Kendi resim sınıflandırıcı modelinizi kullanmak için şu adımları izleyi
 1. İndirilen *. zip* dosyasını açın ve *modelden model. onnx* dosyasını ayıklayın. Bu dosya, sınıflandırıcı modelinizi içerir.
 1. Visual Studio 'daki Çözüm Gezgini **varlıklar** klasörüne sağ tıklayın ve __Varolan öğe Ekle__' yi seçin. ONNX dosyanızı seçin.
 1. Çözüm Gezgini, ONNX dosyasına sağ tıklayın ve **Özellikler**' i seçin. Dosya için aşağıdaki özellikleri değiştirin:
-   * __Derleme eylemi__ -> __içeriği__
-   * __Copy to Output Directory__ -> __Daha yeniyse__ çıkış dizinine Kopyala
+   * __Derleme eylemi__  ->  __İçerik__
+   * __Çıkış Dizinine Kopyala__  ->  __Daha yeniyse kopyala__
 1. Sonra _MainPage.xaml.cs_ ' i açın ve değerini `_ourOnnxFileName` onnx dosyanızın adıyla değiştirin.
-1. Projeyi derlemek `F5` ve çalıştırmak için öğesini kullanın.
+1. `F5`Projeyi derlemek ve çalıştırmak için öğesini kullanın.
 1. Değerlendirilecek görüntüyü seçmek için düğmeye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

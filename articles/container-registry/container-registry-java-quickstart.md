@@ -6,21 +6,21 @@ ms.custom: devx-track-java, devx-track-azurecli
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 42200fe61b0ac73a63b9f8a3317687fac60c5c02
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9e400ee0bae2690a84f9cfd3f6a76359e08eabc2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88078589"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018347"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Hızlı başlangıç: Java kapsayıcı görüntülerini derleyin ve Azure Container Registry gönderin
 
 Bu hızlı başlangıçta, kapsayıcılı bir Java uygulamasının nasıl oluşturulacağı ve Maven JIB eklentisini kullanarak Azure Container Registry nasıl göndergörüntüleneceği gösterilmektedir. Maven ve JIB kullanımı, bir Azure Container Registry ile etkileşim kurmak için geliştirici araçları kullanmanın bir örneğidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği; henüz Azure aboneliğiniz yoksa [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz Azure hesabı](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
-* [Azure komut satırı arabirimi (CLI)](/cli/azure/overview).
+* [Azure Command-Line arabirimi (CLI)](/cli/azure/overview).
 * Desteklenen bir Java Development Kit (JDK). Azure’da geliştirme sırasında kullanılabilecek JDK’ler hakkında daha fazla bilgi için bkz. <https://aka.ms/azure-jdks>.
 * Apache [Maven](http://maven.apache.org) derleme aracı (sürüm 3 veya üzeri).
 * [Git](https://git-scm.com) istemcisi.
@@ -177,5 +177,5 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Azure DevOps ve Java ile çalışma](/azure/devops/java)
 * [Docker üzerinde Spring Boot'u Kullanmaya Başlama](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
-* [Azure App Service’e Spring Boot Uygulaması Dağıtma](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
+* [Azure App Service’e Spring Boot Uygulaması Dağıtma](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-on-linux#configure-maven-to-build-image-to-your-azure-container-registry)
 * [Linux üzerinde Azure Web App’e yönelik özel Docker görüntüsü kullanma](../app-service/tutorial-custom-container.md)

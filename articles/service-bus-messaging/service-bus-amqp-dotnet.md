@@ -4,10 +4,10 @@ description: Bu makalede, AMQP (gelişmiş mesajlaşma sıraya alma Protokolü) 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067112"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1,0 ile .NET 'ten Service Bus kullanma
@@ -89,7 +89,7 @@ Non-.NET istemcilerle birlikte çalışabilirliği kolaylaştırmak için yalnı
 Varsayılan protokolle karşılaştırıldığında AMQP kullanılırken Service Bus .NET API 'SI davranışında bazı küçük farklılıklar vardır:
 
 * [OperationTimeout][OperationTimeout] özelliği yoksayıldı.
-* `MessageReceiver.Receive(TimeSpan.Zero)`olarak uygulanır `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
+* `MessageReceiver.Receive(TimeSpan.Zero)` olarak uygulanır `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
 * Kilit belirteçlerine göre iletilerin tamamlanması, yalnızca ilk olarak iletileri alan ileti alıcıları tarafından yapılabilir.
 
 ## <a name="control-amqp-protocol-settings"></a>AMQP protokol ayarlarını denetleme

@@ -4,10 +4,10 @@ description: Azure Event Grid Container Registry olaylar için belirtilen özell
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113726"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Container Registry
@@ -20,7 +20,7 @@ Bu makalede Container Registry olayları için özellikler ve şema sağlanmakta
 
 Azure Container Registry aşağıdaki olay türlerini yayar:
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
 | Microsoft. ContainerRegistry. ımagegönderildi | Bir görüntü gönderildiğinde tetiklenir. |
 | Microsoft. ContainerRegistry. ımagedeleted | Bir görüntü silindiğinde tetiklenir. |
@@ -152,35 +152,35 @@ Grafik silinmiş bir etkinliğin şeması, görüntü silinmiş silinen bir etki
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | nesne | BLOB depolama olay verileri. |
+| veriler | object | BLOB depolama olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | kimlik | string | Olay KIMLIĞI. |
 | timestamp | string | Olayın gerçekleştiği zaman. |
-| action | string | Belirtilen olayı kapsayan eylem. |
-| hedef | nesne | Etkinliğin hedefi. |
-| istek | nesne | Olayı oluşturan istek. |
+| eylem | string | Belirtilen olayı kapsayan eylem. |
+| hedef | object | Etkinliğin hedefi. |
+| istek | object | Olayı oluşturan istek. |
 
 Hedef nesne aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | Type | string | Başvurulan nesnenin MIME türü. |
-| size | integer | İçeriğin bayt sayısı. Length alanıyla aynı. |
+| boyut | tamsayı | İçeriğin bayt sayısı. Length alanıyla aynı. |
 | digest | string | Kayıt defteri v2 HTTP API belirtiminde tanımlanan şekilde içeriğin özeti. |
-| length | integer | İçeriğin bayt sayısı. Boyut alanıyla aynı. |
+| length | tamsayı | İçeriğin bayt sayısı. Boyut alanıyla aynı. |
 | depo | string | Depo adı. |
 | etiket | string | Etiket adı. |
 | name | string | Grafik adı. |
@@ -188,7 +188,7 @@ Hedef nesne aşağıdaki özelliklere sahiptir:
 
 İstek nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | kimlik | string | Olayı başlatan isteğin KIMLIĞI. |
 | addr | string | Olayı başlatan istemci bağlantısının IP veya ana bilgisayar adı ve muhtemelen bağlantı noktası. Bu değer, standart http isteğinden RemoteAddr değeridir. |

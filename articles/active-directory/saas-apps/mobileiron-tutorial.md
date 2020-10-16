@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfd14d979b84061690410f3da9e29ba07899654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554671"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Öğretici: MobileIron ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ MobileIron 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini MobileIron ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açmayı MobileIron ile yapılandırmak için aşağıdak
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
 
-    ![MobileIron etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.mobileiron.com/<key>`
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı MobileIron ile yapılandırmak için aşağıdak
 
     c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![MobileIron etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<host>.mobileiron.com/user/login.html`
 
@@ -124,11 +124,11 @@ Azure AD çoklu oturum açmayı MobileIron ile yapılandırmak için aşağıdak
 
 2. **Yönetici**  >  **kimliği** ' ne gidin ve **Cloud IDP kurulumu alanındaki bilgiler** ' de **AAD** seçeneğini belirleyin.
 
-    ![Tek Sign-On yönetici düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![Ekran görüntüsü, seçilen kimlik ile MobileIron sitesinin Yönetim sekmesini gösterir.](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. **Anahtar** ve **ana bilgisayar** değerlerini kopyalayın ve Azure Portal içindeki **temel SAML yapılandırması** bölümünde bulunan URL 'leri doldurmak için bunları yapıştırın.
 
-    ![Tek Sign-On yönetici düğmesini yapılandırma](./media/mobileiron-tutorial/key.png)
+    ![Ekran görüntüsü, bir anahtar ve ana bilgisayar değeri ile SAML ayarlama seçeneğini gösterir.](./media/mobileiron-tutorial/key.png)
 
 4. **AAD 'den meta veri dosyasını dışarı aktar ve MobileIron bulutuna aktar alanına** indirilen meta verileri Azure Portal karşıya yüklemek Için **Dosya Seç** ' e tıklayın. Karşıya yüklendikten sonra **bitti** ' ye tıklayın.
 

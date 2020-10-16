@@ -15,10 +15,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317013"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>FCı için dağıtılmış ağ adı yapılandırma 
@@ -28,7 +28,7 @@ Azure sanal makineler 'de, trafiği uygun kümelenmiş kaynağa yönlendirmek i�
 
 Bu makalede, yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) için Azure VM 'lerinde SQL Server hesabınızı Fcsize yönlendirmek üzere DNN 'yi yapılandırma öğretilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamadan önce, zaten şunları yapmalısınız:
 
@@ -119,7 +119,7 @@ Olası sahipleri güncelleştirmek için şu adımları izleyin:
    :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="DNN kaynağı için kısayol menüsü, Özellikler komutuyla vurgulanır.":::
 1. Yük devretme kümesi örneğine katılmayan düğümlerin onay kutusunu temizleyin. DNN kaynağı için olası sahipler listesi, SQL Server örneği kaynağı için olası sahipler listesiyle eşleşmelidir. Örneğin, DATA3 'in FCı 'ye katılmadığından, aşağıdaki görüntüde DNN kaynağı için olası sahipler listesinden DATA3 kaldırma örneği verilmiştir: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN kaynağının olası sahipleri için FCı 'ye katılmayan düğümlerin yanındaki onay kutusunu temizleyin":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN kaynağı için kısayol menüsü, Özellikler komutuyla vurgulanır.":::
 
 1. Ayarlarınızı kaydetmek için **Tamam ' ı** seçin. 
 

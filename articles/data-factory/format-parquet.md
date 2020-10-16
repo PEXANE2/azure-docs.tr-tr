@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404751"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946153"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory içinde Parquet biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -156,7 +156,7 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>Veri türü desteği
 
-Parquet karmaşık veri türleri şu anda desteklenmiyor (örn. MAP, LIST, STRUCT).
+Parquet karmaşık veri türleri (örn. MAP, LIST, STRUCT) Şu anda yalnızca veri akışlarında desteklenir, kopyalama etkinliğinde desteklenmez. Veri akışlarında karmaşık türleri kullanmak için, şema veri kümesinde boş bırakarak dosya şemasını veri kümesinde içeri aktarmayın. Ardından, kaynak dönüşümünde projeksiyonu içeri aktarın.
 
 ## <a name="using-self-hosted-integration-runtime"></a>Şirket içinde barındırılan Integration Runtime kullanma
 

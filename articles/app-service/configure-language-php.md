@@ -1,15 +1,15 @@
 ---
 title: PHP uygulamalarını yapılandırma
-description: Yerel Windows örneklerinde veya önceden oluşturulmuş bir PHP kapsayıcısında bir PHP uygulamasını Azure App Service ' de nasıl yapılandıracağınızı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
+description: Yerel Windows örneklerinde veya önceden oluşturulmuş bir PHP kapsayıcısında bir PHP uygulamasını Azure App Service ' de nasıl yapılandıracağınızı öğrenin. Bu makalede en yaygın yapılandırma görevlerine yer verilmiştir.
 ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055308"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service için bir PHP uygulaması yapılandırma
@@ -203,7 +203,7 @@ fi
 Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
 1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
-1. `php composer.phar install` öğesini çalıştırın.
+1. `php composer.phar install` komutunu çalıştırın.
 1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 
 `PRE_BUILD_COMMAND` ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
@@ -231,7 +231,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a> Ortam değişkenlerine erişme
 
-App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](configure-common.md#configure-app-settings) . Ardından, standart [getenv ()](https://secure.php.net/manual/function.getenv.php) modelini kullanarak bunlara erişebilirsiniz. Örneğin, adlı bir uygulama ayarına erişmek için `DB_HOST` aşağıdaki kodu kullanın:
+App Service'te uygulama kodunuzun dışında [uygulama ayarlarını düzenleyebilirsiniz](configure-common.md#configure-app-settings). Ardından, standart [getenv ()](https://secure.php.net/manual/function.getenv.php) modelini kullanarak bunlara erişebilirsiniz. Örneğin `DB_HOST` adlı bir uygulama ayarına erişmek için şu kodu kullanabilirsiniz:
 
 ```php
 getenv("DB_HOST")
@@ -489,7 +489,7 @@ Tanılama günlüklerinizin Azure App Service görünmesini sağlamak için stan
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [App Service Linux SSS](faq-app-service-linux.md)
+> [App Service Linux Hakkında SSS](faq-app-service-linux.md)
 
 ::: zone-end
 

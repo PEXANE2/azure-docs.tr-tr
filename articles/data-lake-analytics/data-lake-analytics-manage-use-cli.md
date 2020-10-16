@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
 ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320855"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak Azure Data Lake Analytics yönetme
@@ -20,7 +20,7 @@ ms.locfileid: "91320855"
 Azure CLı kullanarak Azure Data Lake Analytics hesaplarını, veri kaynaklarını, kullanıcıları ve işleri yönetmeyi öğrenin. Diğer araçları kullanarak yönetim konularını görmek için yukarıdaki sekmeye tıklayın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir:
 

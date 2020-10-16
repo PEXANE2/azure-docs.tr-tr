@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321955"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874552"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Bir uygulamaya onay gerçekleştirilirken beklenmeyen hata oluştu
 
@@ -79,10 +79,12 @@ Bu hatalar, bir Kullanıcı, bir kullanıcının, kuruluşun dizininde (kiracı)
     -   Azure AD uygulama galerisinden uygulamayı ekleme
 
 ## <a name="risky-app-error-and-warning"></a>Riskli uygulama hatası ve uyarısı
+* **AADSTS900941:** Yönetici onayı gereklidir. Uygulama riskli olarak kabul edilir. (AdminConsentRequiredDueToRiskyApp)
 * Bu uygulama riskli olabilir. Bu uygulamaya güveniyorsanız, lütfen yöneticinizden size erişim vermesini isteyin.
+* **AADSTS900981:** Riskli bir uygulama için yönetici onayı isteği alındı. (AdminConsentRequestRiskyAppWarning)
 * Bu uygulama riskli olabilir. Yalnızca bu uygulamaya güveniyorsanız devam edin.
 
-Bu iletilerden her ikisi de, Microsoft izin isteğinin riskli olabileceğini tespit edildiğinde görüntülenir. Bir dizi diğer faktörde, bu durum [doğrulanmış bir yayımcının](../develop/publisher-verification-overview.md) uygulama kaydına eklenmemiş olması durumunda gerçekleşebilir. [Yönetici onayı iş akışı](configure-admin-consent-workflow.md) devre dışı bırakıldığında ilk ileti son kullanıcılara gösterilir. Yönetici onayı iş akışı etkinleştirildiğinde ve yöneticiler için ikinci ileti son kullanıcılara gösterilir. 
+Bu iletilerden her ikisi de, Microsoft izin isteğinin riskli olabileceğini tespit edildiğinde görüntülenir. Bir dizi diğer faktörde, bu durum [doğrulanmış bir yayımcının](../develop/publisher-verification-overview.md) uygulama kaydına eklenmemiş olması durumunda gerçekleşebilir. [Yönetici onayı iş akışı](configure-admin-consent-workflow.md) devre dışı bırakıldığında ilk hata kodu ve ileti son kullanıcılara gösterilir. Yönetici onayı iş akışı etkinleştirildiğinde ve yöneticiler için ikinci kod ve ileti son kullanıcılara gösterilir. 
 
 Son kullanıcılar riskli olarak algılanan uygulamalara onay veremeyecektir. Yöneticiler erişebilir, ancak uygulamayı çok dikkatli bir şekilde değerlendirmeli ve dikkatli bir şekilde devam edebilir. Uygulama daha fazla inceleme sonrasında şüpheli görünüyorsa, onay ekranından Microsoft 'a bildirilebilir. 
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314887"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996440"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları – hiper ölçek (Citus)
 
@@ -41,6 +41,7 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 > | [verilsin](https://www.postgresql.org/docs/current/lo.html) | Büyük nesne bakımı. |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Hiyerarşik ağaç benzeri yapılar için bir veri türü sağlar. |
 > | [SEG](https://www.postgresql.org/docs/current/seg.html) | Satır parçalarını veya kayan nokta aralıklarını göstermek için veri türü. |
+> | [tdigest](https://github.com/tvondra/tdigest) | Quantiles ve kırpılmış ortalamalar gibi sıralama tabanlı istatistiklerin satır içi birikmesi için veri türü. |
 > | [üst n](https://github.com/citusdata/postgresql-topn/) | Top-n JSONB için yazın. |
 
 ### <a name="full-text-search-extensions"></a>Tam metin arama uzantıları

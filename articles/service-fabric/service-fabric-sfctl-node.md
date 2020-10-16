@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f2cf1011db37892f71bdd06f409cec1a76463507
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257160"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -39,7 +39,7 @@ Belirtilen düğümdeki yapılandırma geçersiz kılma listesini ekler.
 
 Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının eklenmesine izin verir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -63,7 +63,7 @@ Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına g�
 
 Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın. Devre dışı bırakma işlemi devam ederken, devre dışı bırakma amacı artırılabilir, ancak azalmayabilir (örneğin, duraklatma amacı ile devre dışı bırakılmış bir düğüm, yeniden başlatma ile daha fazla şekilde devre dışı bırakılabilir, ancak başka bir şekilde kullanılamaz. Düğüm devre dışı bırakıldıktan sonra düğümleri etkinleştir işlemi kullanılarak düğümler yeniden etkinleştirilebilir. Devre dışı bırakma işlemi tamamlanmazsa, devre dışı bırakma işlemi iptal edilir. Devre dışı bırakılan ve geri yüklenen bir düğüm, hizmetler söz konusu düğüme yerleştirilmesinden önce yeniden etkinleştirilmeleri gerekir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -86,7 +86,7 @@ Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına g�
 
 Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirir. Etkinleştirildikten sonra, düğüm yeni çoğaltmaları yerleştirmek için uygun bir hedef olur ve düğümde kalan devre dışı bırakılmış çoğaltmalar yeniden etkinleştirilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -108,7 +108,7 @@ Belirtilen düğümdeki yapılandırma geçersiz kılmalarının listesini alır
 
 Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının alınmasını sağlar.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -130,7 +130,7 @@ Service Fabric düğümünün sistem durumunu alır.
 
 Service Fabric düğümünün sistem durumunu alır. Düğümde bildirilen sistem durumu olaylarının koleksiyonunu sistem durumuna göre filtrelemek için EventsHealthStateFilter ' i kullanın. Ada göre belirttiğiniz düğüm sistem durumu deposunda yoksa, bu bir hata döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -153,7 +153,7 @@ Service Fabric kümesindeki belirli bir düğüm hakkındaki bilgileri alır.
 
 Yanıt, ad, durum, KIMLIK, sistem durumu, çalışma süresi ve düğüm hakkında diğer ayrıntıları içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -175,7 +175,7 @@ Service Fabric kümesindeki düğümlerin listesini alır.
 
 Yanıt, ad, durum, KIMLIK, sistem durumu, çalışma süresi ve düğümlerle ilgili diğer ayrıntıları içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -199,7 +199,7 @@ Service Fabric düğümünün yükleme bilgilerini alır.
 
 Yük veya kapasite tanımlı tüm ölçümler için bir Service Fabric düğümünün yükleme bilgilerini alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -221,7 +221,7 @@ Belirtilen düğümdeki yapılandırma geçersiz kılmalarını kaldırır.
 
 Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının kaldırılmasına izin verir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -243,7 +243,7 @@ Bir düğümdeki kalıcı durumun kalıcı olarak kaldırıldığını veya kayb
 
 Bu, düğümün kalıcı durumunu kurtarmanın mümkün olmadığı anlamına gelir. Bu genellikle bir sabit diskin temizlenmesi veya bir sabit diskin kilitlenmesi durumunda meydana gelir. Bu işlemin başarılı olması için düğüm aşağı doğru olmalıdır. Bu işlem, bu düğümdeki çoğaltmaların artık mevcut olmadığını ve bu çoğaltmaların geri dönmesi için Service Fabric durması gerektiğini Service Fabric sağlar. Düğümdeki durum kaldırılmadığı ve düğüm durumu bozulmadan geri dönebileceği takdirde bu cmdlet 'i çalıştırmayın. Service Fabric 6,5 ' den başlayarak çekirdek düğümleri için bu API 'yi kullanmak üzere, çekirdek düğümleri normal (çekirdek olmayan) düğümlere değiştirip düğüm durumunu kaldırmak için bu API 'yi çağırın. Küme Azure 'da çalışıyorsa, çekirdek düğüm kapatıldıktan sonra, Service Fabric otomatik olarak çekirdek olmayan bir düğümle değiştirmeye çalışacaktır. Bunu yapmak için, birincil düğüm türündeki çekirdek olmayan düğümlerin sayısının aşağı çekirdek düğümlerin sayısından küçük olmadığından emin olun. Gerekirse, bunu elde etmek için birincil düğüm türüne daha fazla düğüm ekleyin. Tek başına kümede, aşağı çekirdek düğümünün durumunun bozulmadan geri gelmesi beklenmiyorsa, lütfen düğümü kümeden kaldırın, bkz \: . https//docs.Microsoft.com/en-US/Azure/Service-Fabric/Service-Fabric-Cluster-Windows-Server-Add-Remove-Nodes.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -265,7 +265,7 @@ Service Fabric düğümünde bir sistem durumu raporu gönderir.
 
 Belirtilen Service Fabric düğümünün sistem durumunu raporlar. Rapor, sistem durumu raporunun ve rapor alındığı özelliğin kaynağı hakkında bilgi içermelidir. Rapor, sistem durumu deposuna ileten bir Service Fabric ağ geçidi düğümüne gönderilir. Rapor, ağ geçidi tarafından kabul edilebilir, ancak ek doğrulamadan sonra sistem durumu deposu tarafından reddedildi. Örneğin, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle sistem durumu deposu raporu reddedebilir. Raporun sistem durumu deposuna uygulanıp uygulanmadığını görmek için raporun HealthEvents bölümünde göründüğünü kontrol edin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -295,7 +295,7 @@ Service Fabric küme düğümünü yeniden başlatır.
 
 Zaten başlatılmış bir Service Fabric küme düğümünü yeniden başlatır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -319,7 +319,7 @@ Bir küme düğümünü başlatır veya sonlandırır.
 
 Bir küme düğümünü başlatır veya sonlandırır.  Küme düğümü, işletim sistemi örneğinin kendisi değil, bir işlemdir.  Bir düğümü başlatmak için Nodegeçişli Tiontype parametresi için "Start" geçirin. Bir düğümü durdurmak için Nodegeçişli Tiontype parametresi için "Durdur" geçirin. Bu API işlemi başlatır-API geri döndüğünde düğümü henüz geçirmeyi bitirmemiş olabilir. İşlemin ilerlemesini almak için aynı operationId ile Getnodeınlationprogress çağrısı yapın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -345,7 +345,7 @@ StartNodeTransition kullanılarak başlatılan bir işlemin ilerleme durumunu al
 
 Belirtilen operationId kullanarak StartNodeTransition ile başlatılan bir işlemin ilerlemesini alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249912"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management ürün şablonları
@@ -37,7 +37,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="product-list"></a><a name="ProductList"></a>Ürün listesi  
+##  <a name="product-list"></a><a name="ProductList"></a> Ürün listesi  
  **Ürün listesi** şablonu, geliştirici portalındaki ürün listesi sayfasının gövdesini özelleştirmenizi sağlar.  
   
  ![Ürün listesi](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -123,7 +123,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 }  
 ```  
   
-##  <a name="product"></a><a name="Product"></a>Ürünüyle  
+##  <a name="product"></a><a name="Product"></a> Ürünüyle  
  **Ürün** şablonu, geliştirici portalındaki ürün sayfasının gövdesini özelleştirmenizi sağlar.  
   
  ![Geliştirici portalı ürün sayfası](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -206,17 +206,17 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|Çarpım|[Ürün](api-management-template-data-model-reference.md#Product)|Belirtilen ürün.|  
-|IsDeveloperSubscribed|boole|Geçerli kullanıcının bu ürüne abone olup olmadığı.|  
-|SubscriptionState|sayı|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> -   `0 - suspended`– abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br />-   `1 - active`– Abonelik etkin.<br />-   `2 - expired`– abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br />-   `3 - submitted`– abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br />-   `4 - rejected`– abonelik isteği bir yönetici tarafından reddedildi.<br />-   `5 - cancelled`– abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
+|Ürün|[Ürün](api-management-template-data-model-reference.md#Product)|Belirtilen ürün.|  
+|IsDeveloperSubscribed|boolean|Geçerli kullanıcının bu ürüne abone olup olmadığı.|  
+|SubscriptionState|number|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> -   `0 - suspended` – abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br />-   `1 - active` – Abonelik etkin.<br />-   `2 - expired` – abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br />-   `3 - submitted` – abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br />-   `4 - rejected` – abonelik isteği bir yönetici tarafından reddedildi.<br />-   `5 - cancelled` – abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
 |Sınırlar|array|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
-|DelegatedSubscriptionEnabled|boole|Bu abonelik için [temsilcinin](./api-management-howto-setup-delegation.md) etkin olup olmadığı.|  
+|DelegatedSubscriptionEnabled|boolean|Bu abonelik için [temsilcinin](./api-management-howto-setup-delegation.md) etkin olup olmadığı.|  
 |DelegatedSubscriptionUrl 'Si|string|Temsilci etkin ise, temsil edilen abonelik URL 'SI.|  
-|Isınmış|boole|Ürünün koşulları varsa, geçerli kullanıcının koşulları kabul etmediğini belirtir.|  
+|Isınmış|boolean|Ürünün koşulları varsa, geçerli kullanıcının koşulları kabul etmediğini belirtir.|  
 |Abonelikler|[Abonelik Özeti](api-management-template-data-model-reference.md#SubscriptionSummary) varlıklarının koleksiyonu.|Ürüne yönelik abonelikler.|  
 |GetVersionEx|[API](api-management-template-data-model-reference.md#API) varlıkları koleksiyonu.|Bu üründeki API 'Ler.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|boole|Geçerli kullanıcının bu ürüne abonelik limitine göre abone olmaya uygun olup olmadığı.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|boole|Mevcut kullanıcının bu ürüne abone olmaya uygun olup olmadığı, birden fazla aboneliğe izin verilmesi veya bu ürüne izin verilmediğine bakılmaksızın.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|boolean|Geçerli kullanıcının bu ürüne abonelik limitine göre abone olmaya uygun olup olmadığı.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|Mevcut kullanıcının bu ürüne abone olmaya uygun olup olmadığı, birden fazla aboneliğe izin verilmesi veya bu ürüne izin verilmediğine bakılmaksızın.|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  
   

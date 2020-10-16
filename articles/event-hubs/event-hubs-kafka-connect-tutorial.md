@@ -4,10 +4,10 @@ description: Bu makalede Kafka için Azure Event Hubs ile Kafka Connect 'in nas�
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: b063bb36ec17c22c0f093f1b33f11597eed5ea68
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061674"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Azure Event Hubs'a Apache Kafka Connect desteğiyle tümleştirme (Önizleme)
@@ -27,7 +27,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Kafka Connect'i çalıştırma
 > * Bağlayıcıları oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu yol gösterici adımları tamamlamak için aşağıdaki önkoşulların karşılandığından emin olun:
 
 - Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
@@ -97,7 +97,7 @@ Bu adımda, bir Kafka Connect çalışanı dağıtılmış modda yerel olarak ba
 
 1. Yukarıdaki `connect-distributed.properties` dosyasını yerel olarak kaydedin.  Küme ayracı içindeki tüm değerleri değiştirdiğinizden emin olun.
 2. Makinenizde Kafka sürümünün konumuna gidin.
-4. `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` öğesini çalıştırın.  `'INFO Finished starting connectors and tasks'` iletisini gördüğünüzde Connect çalışanı REST API etkileşime hazır demektir. 
+4. `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` komutunu çalıştırın.  `'INFO Finished starting connectors and tasks'` iletisini gördüğünüzde Connect çalışanı REST API etkileşime hazır demektir. 
 
 > [!NOTE]
 > Kafka Connect, Kafka AdminClient API 'sini kullanarak, sıkıştırma de dahil olmak üzere önerilen yapılandırmalara sahip konuları otomatik olarak oluşturur. Azure portalında ad alanına hızla göz attığınızda, Connect çalışanı iç konusunun otomatik olarak oluşturulduğu ortaya çıkar.

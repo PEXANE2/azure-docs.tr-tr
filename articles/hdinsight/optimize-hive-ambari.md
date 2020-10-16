@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084367"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile Apache Hive iyileştirin
@@ -132,12 +132,12 @@ Hadoop işleri genellikle g/ç bottlenecked. Verilerin sıkıştırılması, g/�
 
 Kullanılabilir sıkıştırma türleri şunlardır:
 
-| Biçim | Araç | Algoritma | Dosya Uzantısı | Bölünebilir? |
+| Biçimlendir | Araç | Algoritma | Dosya Uzantısı | Bölünebilir? |
 | --- | --- | --- | --- | --- |
 | Gzip | Gzip | Söndür | `.gz` | Hayır |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | Evet |
 | LZO | `Lzop` | LZO | `.lzo` | Dizine alınmışsa Evet |
-| Snappy | YOK | Snappy | Snappy | Hayır |
+| Snappy | Yok | Snappy | Snappy | Hayır |
 
 Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli olduğundan, bazı durumlarda birkaç mapas oluşturulur. Giriş verileri metin ise `bzip2` en iyi seçenektir. ORC biçimi için, Snappy en hızlı sıkıştırma seçeneğidir.
 
@@ -158,7 +158,7 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
 
     c. Özellik Ekle penceresinde, `mapred.map.output.compression.codec` anahtar olarak ve `org.apache.hadoop.io.compress.SnappyCodec` değerini girin.
 
-    d. **Ekle**'yi seçin.
+    d. **Ekle**’yi seçin.
 
     ![' Apache Hive özel Özellik Ekle '](./media/optimize-hive-ambari/hive-custom-property.png)
 
@@ -223,7 +223,7 @@ Aşağıdaki bölümlerde, ayarlayabileceğiniz, Hive ile ilgili ek iyileştirme
 
 Hive içindeki varsayılan JOIN türü bir *karışık birleşimdir*. Hive 'de özel mapvın girişi okur ve bir ara dosyaya bir JOIN anahtar/değer çifti yayar. Hadoop, bu çiftleri bir karışık aşamada sıralar ve birleştirir. Bu karışık aşama pahalıdır. Verilerinize göre doğru katılmayı seçmek performansı önemli ölçüde iyileştirebilir.
 
-| JOIN türü | Oluşturulurken | Nasıl | Hive ayarları | Yorumlar |
+| JOIN türü | Ne zaman | Nasıl? | Hive ayarları | Yorumlar |
 | --- | --- | --- | --- | --- |
 | Karışık ekleme | <ul><li>Varsayılan seçenek</li><li>Her zaman çalışma</li></ul> | <ul><li>Tablolardan birinin bir bölümünden okur</li><li>Demetler ve JOIN anahtarına göre sıralar</li><li>Her küçültme için bir demet gönderir</li><li>Düşürme, azaltma tarafında yapılır</li></ul> | Önemli Hive ayarı gerekmiyor | Her seferinde çalışma |
 | Eşleme birleşimi | <ul><li>Bir tablo, belleğe sığmayacak</li></ul> | <ul><li>Küçük tabloyu bellek karması tablosuna okur</li><li>Büyük dosyanın bir parçası aracılığıyla akışlar</li><li>Karma tablodaki her kaydı birleştirir</li><li>Birleşimler eşleştiriciyle tek başına</li></ul> | `hive.auto.confvert.join=true` | Hızlı, ancak sınırlı |

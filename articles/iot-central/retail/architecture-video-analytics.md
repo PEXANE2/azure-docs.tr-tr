@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 916d491c45a2979c59580328a721c11bd79d49c0
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 48808f762536390287bae40e8af3849da20b81c2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372213"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874297"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>Video analizi-nesne ve hareket algılama uygulama mimarisi
 
@@ -41,4 +41,4 @@ Medya grafiği, medyanın nerede yakalanacağını, nasıl işlem yapılacağın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önerilen sonraki adım, [Azure IoT Central 'da bir video analizi uygulaması oluşturmayı](tutorial-video-analytics-create-app.md)öğrenmektir.
+Önerilen sonraki adım, [video analizi-nesne ve hareket algılama uygulama şablonunu kullanarak bir IoT Central uygulamasının nasıl dağıtılacağını](tutorial-video-analytics-deploy.md)öğrenmektir.

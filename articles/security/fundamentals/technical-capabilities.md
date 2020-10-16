@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
 ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399542"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
@@ -150,7 +150,7 @@ Azure 'daki erişim denetimi, faturalandırma perspektifinden başlar. [Azure He
 
 ![Azure 'da güvenli kaynak erişimi](./media/technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
-Abonelikler Ayrıca bir dizinle bir ilişkiye sahiptir. Dizin bir kullanıcı kümesi tanımlar. Bunlar, dizin oluşturan iş veya okul kullanıcıları veya dış kullanıcılar (yani, Microsoft hesapları) olabilir. Abonelikler, hizmet Yöneticisi (SA) veya ortak yönetici (CA) olarak atanmış olan dizin kullanıcılarının bir alt kümesiyle erişilebilir; Tek istisna, eski nedenlerle Microsoft hesaplarının (eski adıyla Windows Live ID), dizinde mevcut olmadan SA veya CA olarak atanabileceği durumdur.
+Abonelikler Ayrıca bir dizinle bir ilişkiye sahiptir. Dizin bir kullanıcı kümesi tanımlar. Bunlar, dizin oluşturan iş veya okul kullanıcıları veya dış kullanıcılar (yani, Microsoft hesapları) olabilir. Abonelikler, hizmet Yöneticisi (SA) veya Co-Administrator (CA) olarak atanmış olan dizin kullanıcılarının bir alt kümesiyle erişilebilir; Tek istisna, eski nedenlerle Microsoft hesaplarının (eski adıyla Windows Live ID), dizinde mevcut olmadan SA veya CA olarak atanabileceği durumdur.
 
 Güvenlik odaklı şirketler, çalışanların ihtiyaç duydukları tam izinleri sağlamaya odaklanmalıdır. Çok fazla izin, saldırganlar için bir hesap sunabilir. Çok az izin, çalışanların işlerini verimli bir şekilde işleyemeyeceği anlamına gelir. Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure için ayrıntılı erişim yönetimi sunarak bu sorunu ele almanıza yardımcı olur.
 
@@ -339,7 +339,7 @@ Bu yöntem, çeşitli kaynaklardan gelen verileri birleştirerek Azure hizmetini
 
 Güvenlik Merkezi, olası güvenlik açıklarını tanımlamak için Azure kaynaklarınızın güvenlik durumunu inceler. Gerekli denetimlerin yapılandırılması işlemi boyunca bir öneri listesi size rehberlik eder.
 
-Örnekler şunları içerir:
+Örneklere şunlar dahildir:
 
 - Kötü amaçlı yazılımı tanımlama ve kaldırmada yardım etmesi için kötü amaçlı yazılımdan koruma yazılımı hazırlama
 

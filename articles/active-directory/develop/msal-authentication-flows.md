@@ -13,10 +13,10 @@ ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437879"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
@@ -136,7 +136,7 @@ Yukarıdaki diyagramda:
 
 Birçok modern web uygulaması, istemci tarafı, JavaScript 'te yazılmış tek sayfalı uygulamalar (SPA) veya angular, Vue.js ve React.js gibi bir SPA çerçevesi olarak oluşturulmuştur. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum açmasını sağlar ve dolaylı verme akışını kullanarak arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri alır. Örtük akış, uygulamanın kimliği doğrulanmış kullanıcıyı temsil etmesi için kimlik belirteçleri almasına izin verir ve ayrıca korumalı API 'Leri çağırmak için gereken belirteçlere erişim sağlar.
 
-Bu kimlik doğrulama akışı, yerel platformlarla etkileşim için daha fazla özellik gerektirdiğinden, elektron veya yanıt verme gibi platformlar arası JavaScript çerçeveleri kullanan uygulama senaryoları içermez.
+Bu kimlik doğrulama akışı, yerel platformlarla etkileşim için daha fazla özellik gerektirdiğinden, elektron veya React-Native gibi platformlar arası JavaScript çerçeveleri kullanan uygulama senaryoları içermez.
 
 Örtük akış modu aracılığıyla verilen belirteçlerin, tarayıcıya URL tarafından döndürüldüğünden (ya da) bir **uzunluk sınırlaması** vardır `response_mode` `query` `fragment` . Bazı tarayıcılar, tarayıcı çubuğundaki URL 'nin uzunluğunu sınırlar ve çok uzunsa başarısız olur. Bu nedenle, bu örtük akış belirteçleri `groups` veya `wids` talep içermez.
 

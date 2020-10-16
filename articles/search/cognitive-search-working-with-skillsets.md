@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.openlocfilehash: f1d8715fcadeda5ccd1a98192a70939b0c359c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84976685"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Azure Bilişsel Arama Beceri kavramları
@@ -98,8 +98,8 @@ Belge, zenginleştirme ardışık düzeninde olduktan sonra bir içerik ağacı 
 |Veri kaynağı \ ayrıştırma modu|Varsayılan|JSON, JSON satırları & CSV|
 |---|---|---|
 |Blob Depolama|/Document/Content<br>/Document/normalized_images/*<br>…|/Document/{KEY1}<br>/Document/{key2}<br>…|
-|SQL|/Document/{column1}<br>/Document/{Column2}<br>…|YOK |
-|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>…|YOK|
+|SQL|/Document/{column1}<br>/Document/{Column2}<br>…|Yok |
+|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>…|Yok|
 
  Yetenekler yürütülürken, yeni düğümleri zenginleştirme ağacına ekler. Bu yeni düğümler daha sonra aşağı akış becerileri, bilgi deposuna yansıtma veya dizin alanlarıyla eşleme için giriş olarak kullanılabilir. Enrichments değişebilir değil: oluşturulduktan sonra düğümler düzenlenemez. Becerileri daha karmaşık olsa da, zenginleştirme ağacınızı oluşturur, ancak zenginleştirme ağacındaki tüm düğümlerin dizin veya bilgi deposu üzerinde olması gerekmez. 
 

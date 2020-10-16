@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019734"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Öğretici: Azure IoT Hub ileti zenginleştirme kullanın
@@ -36,7 +36,7 @@ Bu öğreticiyi tamamlamak için gerçekleştirdiğiniz görevler şunlardır:
 > * Hub 'a ileti gönderen bir IoT cihazının benzetimini yapan bir uygulama çalıştırın.
 > * Sonuçları görüntüleyin ve iletinin zenginleştirildiği gibi çalıştığını doğrulayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * [Visual Studio 'yu](https://www.visualstudio.com/)yükler.
@@ -77,7 +77,7 @@ Daha önce yapmadıysanız, bir Azure [Cloud Shell penceresi](https://shell.azur
 
 Komut dosyası tarafından oluşturulan kaynaklar aşağıda verilmiştir. *Zenginleştirme* , kaynağın enzenginler içeren iletiler için olduğu anlamına gelir. *Özgün* , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir.
 
-| Ad | Değer |
+| Name | Değer |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | kapsayıcı adı | Özgün  |
@@ -279,7 +279,7 @@ Bu noktada, kaynakların hepsi ayarlanır ve ileti yönlendirme yapılandırıl�
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak oluşturma ve yapılandırma
 Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşturmak ve yapılandırmak için bir Kaynak Yöneticisi şablonu kullanabilirsiniz.
 
-1. Azure portalında oturum açın. Arama kutusunu açmak için **+ kaynak oluştur** ' u seçin. *Şablon dağıtımını*girin ve arama yapın. Sonuçlar bölmesinde **şablon dağıtımı (özel şablon kullanarak Dağıt)** öğesini seçin.
+1. Azure Portal’da oturum açın. Arama kutusunu açmak için **+ kaynak oluştur** ' u seçin. *Şablon dağıtımını*girin ve arama yapın. Sonuçlar bölmesinde **şablon dağıtımı (özel şablon kullanarak Dağıt)** öğesini seçin.
 
    ![Azure portal Şablon dağıtımı](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -297,7 +297,7 @@ Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşt
 
    Şablonu yükleyerek oluşturulan kaynaklar aşağıda verilmiştir. **Zenginleştirme** , kaynağın enzenginler içeren iletiler için olduğu anlamına gelir. **Özgün** , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir. Bunlar, Azure CLı betikte kullanılan aynı değerlerdir.
 
-   | Ad | Değer |
+   | Name | Değer |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | kapsayıcı adı | Özgün  |

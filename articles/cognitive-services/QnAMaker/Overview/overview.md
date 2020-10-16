@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: soru-cevap Oluşturucu, düşük kod sohbeti botları, çok yönlü konuşmalar
-ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776791"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874433"
 ---
 # <a name="what-is-qna-maker"></a>Soru-Cevap Oluşturma nedir?
 
@@ -83,9 +83,9 @@ Soru-Cevap Oluşturma, tam geliştirme yaşam döngüsü ile tümleştirme için
 
 Her biri temel tasarım desenleri öğretmek ve kodu 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan en popüler programlama dillerinde hızlı başlangıçlar sunuyoruz. Her bir özelliğin hızlı başlangıcı için aşağıdaki listeye bakın.
 
-* [LUSıS istemci kitaplığıyla çalışmaya başlama](../quickstarts/quickstart-sdk.md)
-* [LUO portalını kullanmaya başlama](../quickstarts/create-publish-knowledge-base.md)
-* [LUıS REST API 'Leri ile çalışmaya başlama](../quickstarts/quickstart-rest-curl.md)
+* [Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlama](../quickstarts/quickstart-sdk.md)
+* [Soru-Cevap Oluşturma portalını kullanmaya başlama](../quickstarts/create-publish-knowledge-base.md)
+* [Soru-Cevap Oluşturma REST API 'Leri ile çalışmaya başlama](../quickstarts/quickstart-rest-curl.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4241ba55c464169257ec0a4b2d20eaa5e76534d5
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905168"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092707"
 ---
 # <a name="edit-an-api"></a>API’yi düzenleme
 
@@ -26,7 +26,7 @@ Bu öğreticideki adımlar, bir API’yi düzenlemek için API Management’ın 
 + Bu işlemi, APIM örneğindeki işlemleri ekleyerek, silerek ve yeniden adlandırarak yapabilirsiniz. 
 + API’nizin swagger’ını düzenleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + [İlk API’nizi içeri aktarma ve yayımlama](import-and-publish.md)
@@ -35,7 +35,7 @@ Bu öğreticideki adımlar, bir API’yi düzenlemek için API Management’ın 
 
 ## <a name="edit-an-api-in-apim"></a>APIM’de bir API’yi düzenleme
 
-![API’yi düzenleme](./media/edit-api/edit-api001.png)
+![APıM 'de bir API 'YI düzenlemeyle ilgili işlemi vurgulayan ekran görüntüsü.](./media/edit-api/edit-api001.png)
 
 1. **API'ler** sekmesine tıklayın.
 2. Daha önce içeri aktardığınız API'lerden birini seçin.
@@ -50,7 +50,7 @@ Aşağıdaki adımları izleyerek Azure portaldan arka uç API’nizi güncelle�
 1. **Tüm işlemleri** Seç
 2. **Ön uç** penceresinde kaleme tıklayın.
 
-    ![API’yi düzenleme](./media/edit-api/edit-api002.png)
+    ![Ön uç ekranındaki kurşun kalem simgesini vurgulayan ekran görüntüsü.](./media/edit-api/edit-api002.png)
 
     API’nizin swagger’ı görüntülenir.
 
@@ -64,5 +64,5 @@ Aşağıdaki adımları izleyerek Azure portaldan arka uç API’nizi güncelle�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [APIM ilke örnekleri](policy-samples.md) 
+> [APIM ilke örnekleri](./policy-reference.md) 
 >  [Yayınlanmış BIR API 'Yi dönüştürme ve koruma](transform-api.md)

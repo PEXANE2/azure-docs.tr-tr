@@ -1,29 +1,24 @@
 ---
-title: Uzak masaüstünü Azure AD Uygulaması Proxy ile yayımlama | Microsoft Docs
-description: Uygulama proxy 'Sini RDS ile yapılandırmayı içerir
+title: Azure Active Directory Uygulama Ara Sunucusu uzak masaüstü 'Nü yayımlama
+description: Uzak Masaüstü Hizmetleri (RDS) ile uygulama proxy 'Sinin nasıl yapılandırılacağını ele alır
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: kenwith
-ms.custom: it-pro
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 83d7ed6c937d515520058819636bc23c8de173fd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396769"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015285"
 ---
-# <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu uzak masaüstü 'Nü yayımlama
+# <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu ile Uzak Masaüstünü yayımlama
 
 Uzak Masaüstü hizmeti ve Azure AD Uygulama Ara Sunucusu, kurumsal ağdan uzakta çalışan çalışanların üretkenliğini artırmak için birlikte çalışır. 
 
@@ -146,6 +141,6 @@ Geçiş kimlik doğrulamasını kullanmak için, bu makalede listelenen adımlar
 2. [Uygulama proxy 'Sine doğrudan RDS trafiği](#direct-rds-traffic-to-application-proxy)içinde, 8. adımı tamamen atlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-[Azure AD uygulama ara sunucusu](application-proxy-integrate-with-sharepoint-server.md) 
- ile SharePoint 'e uzaktan erişimi etkinleştirme [Azure AD uygulama ara sunucusu kullanarak uygulamalara uzaktan erişmek Için güvenlik konuları](application-proxy-security.md)
+- [Azure AD Uygulama Ara Sunucusu ile SharePoint’e uzaktan erişimi etkinleştirme](application-proxy-integrate-with-sharepoint-server.md)
+- [Azure AD Uygulama Ara Sunucusu kullanarak uygulamalara uzaktan erişmek için güvenlik konuları](application-proxy-security.md)
+- [Birden çok uygulama sunucusuna yük dengeleme için en iyi uygulamalar](application-proxy-high-availability-load-balancing.md#best-practices-for-load-balancing-among-multiple-app-servers)

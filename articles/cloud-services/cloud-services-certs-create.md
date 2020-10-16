@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142375"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072433"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services’da sertifikalara genel bakış
 Sertifikalar, Azure 'da bulut Hizmetleri ([hizmet sertifikaları](#what-are-service-certificates)) ve yönetim API 'siyle ([yönetim sertifikaları](#what-are-management-certificates)) kimlik doğrulaması için kullanılır. Bu konu, her iki sertifika türü için genel bir bakış sağlar ve bunları Azure 'a [oluşturma](#create) ve dağıtma.
@@ -76,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > Sertifikayı bir etki alanı yerine bir IP adresiyle kullanmak istiyorsanız,-DnsName parametresindeki IP adresini kullanın.
 
 
-Bu [sertifikayı yönetim portalı ile birlikte](../azure-api-management-certs.md)kullanmak istiyorsanız, bir **. cer** dosyasına dışarı aktarın:
+Bu [sertifikayı yönetim portalı ile birlikte](/previous-versions/azure/azure-api-management-certs)kullanmak istiyorsanız, bir **. cer** dosyasına dışarı aktarın:
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
@@ -91,8 +91,4 @@ Internet 'te bunun IIS ile nasıl yapılacağını kapsayan çok sayıda sayfa v
 ## <a name="next-steps"></a>Sonraki adımlar
 [Hizmet sertifikanızı Azure Portal yükleyin](cloud-services-configure-ssl-certificate-portal.md).
 
-Azure portal bir [Yönetim API 'si sertifikasını](../azure-api-management-certs.md) karşıya yükleyin.
-
-
-
-
+Azure portal bir [Yönetim API 'si sertifikasını](/previous-versions/azure/azure-api-management-certs) karşıya yükleyin.

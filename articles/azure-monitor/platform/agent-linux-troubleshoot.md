@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531199"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
@@ -193,7 +193,7 @@ Performansla ilgili hatalar her zaman gerçekleşmez ve yeniden oluşturulması 
 
 ### <a name="resolution-step-by-step"></a>Çözüm (adım adım)
 
-1. NSS-pek paketini [v 1.0.3-5. el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html)' e yükseltin. <br/>
+1. NSS-pek paketini [v 1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html)' e yükseltin. <br/>
 `sudo yum upgrade nss-pem`
 
 2. NSS-PEI yükseltme için uygun değilse (genellikle CentOS üzerinde gerçekleşir), daha sonra 7.29.0-46 olarak kıvma düşürme olur. "Yıum Güncelleştir" i çalıştırırsanız, 7.29.0-51 ' e yükseltilecektir ve sorun yeniden gerçekleşir. <br/>
@@ -298,7 +298,7 @@ Bu hata, Linux Tanılama uzantısının (LAD) Log Analytics Linux VM uzantısıy
 * OMı paketi, Linux paketi için Log Analytics Aracısı tarafından yüklenmiş olana kıyasla daha yeni bir sürüme el ile yükseltildi
 * DSC kaynak günlükleri *sınıfı* günlük dosyasında bulunamadı hatası `omsconfig.log`
 * Verilerin Log Analytics Aracısı yedeklendi
-* DSC günlükleri *geçerli yapılandırması yok. Bir yapılandırma dosyası belirtmek ve önce geçerli bir yapılandırma oluşturmak için-Path parametresiyle birlikte start-DscConfiguration komutunu yürütün.* `omsconfig.log`günlük dosyasında, ancak işlemler hakkında bir günlük iletisi yok `PerformRequiredConfigurationChecks` .
+* DSC günlükleri *geçerli yapılandırması yok. Bir yapılandırma dosyası belirtmek ve önce geçerli bir yapılandırma oluşturmak için-Path parametresiyle birlikte Start-DscConfiguration komutunu yürütün.* `omsconfig.log`günlük dosyasında, ancak işlemler hakkında bir günlük iletisi yok `PerformRequiredConfigurationChecks` .
 
 ### <a name="resolution"></a>Çözüm
 1. Auditd paketi gibi tüm bağımlılıkları yükler.

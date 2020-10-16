@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0db0a705d97743bb199550bc74ade8e270c7472c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907480"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu
@@ -48,7 +48,7 @@ PostgreSQL için Azure veritabanı tek sunucu için veri şifrelemeyi ayarlamak 
 
 2. **Anahtar izinleri**' ni seçin ve PostgreSQL sunucusunun adı olan Al, **sarmalama**, **geri** **Al**ve **asıl**' ı seçin. Sunucu sorumlunuz mevcut sorumlular listesinde bulunamazsa, kaydolmanız gerekir. Veri şifrelemeyi ilk kez ayarlamaya çalıştığınızda sunucu sorumlunuzu kaydetmeniz istenir ve başarısız olur.  
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Erişim ilkesine genel bakış":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
 3. **Kaydet**’i seçin.
 
@@ -56,11 +56,11 @@ PostgreSQL için Azure veritabanı tek sunucu için veri şifrelemeyi ayarlamak 
 
 1. PostgreSQL için Azure veritabanı 'nda, müşteri tarafından yönetilen anahtarı ayarlamak için **veri şifreleme** ' yi seçin.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png" alt-text="Veri şifrelemesi vurgulanmış şekilde PostgreSQL için Azure veritabanı ekran görüntüsü":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
 2. Bir anahtar kasası ve anahtar çifti seçebilir ya da bir anahtar tanımlayıcı girebilirsiniz.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Veri şifreleme seçenekleri vurgulanmış şekilde PostgreSQL için Azure veritabanı ekran görüntüsü":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
 3. **Kaydet**’i seçin.
 
@@ -72,28 +72,28 @@ PostgreSQL için Azure veritabanı tek sunucu, Key Vault ' de depolanan bir mü�
 
 1. Sunucunuzda **genel bakış**  >  **geri yükleme**' yi seçin.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="PostgreSQL için Azure veritabanı 'Na genel bakış ve geri yükleme vurgulanmış ekran görüntüsü":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
    Ya da çoğaltma özellikli bir sunucu için, **Ayarlar** başlığı altında **çoğaltma**' yı seçin.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-replica.png" alt-text="Çoğaltma vurgulanmış şekilde PostgreSQL için Azure veritabanı ekran görüntüsü":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-replica.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
 2. Geri yükleme işlemi tamamlandıktan sonra oluşturulan yeni sunucu birincil sunucunun anahtarıyla şifrelenir. Ancak, sunucudaki Özellikler ve seçenekler devre dışı bırakılır ve sunucuya erişilemez. Bu, tüm veri düzenlemesini engeller, çünkü yeni sunucu kimliği henüz anahtar kasasına erişmek için izin verilmemiş.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="PostgreSQL için Azure veritabanı 'nın, erişilemeyen durum vurgulandığı ekran görüntüsü":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
 3. Sunucuyu erişilebilir hale getirmek için geri yüklenen sunucuda anahtarı yeniden doğrulayın. **Veri şifrelemeyi**  >  **yeniden doğrula anahtarını**seçin.
 
    > [!NOTE]
    > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusunu oluşturmak için **anahtarı yeniden doğrula**' yı seçin, bu, bir hatayı gösterir, ancak hizmet sorumlusu oluşturur. Bundan sonra bu makalede daha önce bahsedilen [adımlara](#set-the-right-permissions-for-key-operations) bakın.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Yeniden doğrulama adımı vurgulanmış şekilde PostgreSQL için Azure veritabanı 'nın ekran görüntüsü":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
    Yeni sunucuya Anahtar Kasası erişimi sağlamanız gerekir.
 
 4. Hizmet sorumlusu kaydedildikten sonra anahtarı yeniden doğruladıktan sonra sunucu normal işlevselliğini sürdürür.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="PostgreSQL için Azure veritabanı 'nın, geri yüklenen işlevselliği gösteren ekran görüntüsü":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946763"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Öğretici: App Service ve PostgreSQL için Azure veritabanı ile Docgo uygulaması dağıtma-esnek sunucu (Önizleme)
@@ -194,11 +194,11 @@ python manage.py runserver
 ```
 Web uygulaması tam olarak yüklendikten sonra, Dmongo geliştirme sunucusu, "geliştirme sunucusu başlatılıyor" iletisinde yerel uygulama URL 'sini sağlar http://127.0.0.1:8000/ . CTRL-BREAK ile sunucudan çıkın.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Örnek Docgo geliştirme sunucusu çıkışı":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Örnek Docgo geliştirme sunucusu çıkışı&quot;:::
 
 Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
 
-1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
+1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda &quot;hiçbir yoklama yok" iletisini görüntülemesi gerekir.
 
 1. *Http: \/ /localhost: 8000/admin* adresine gidin ve daha önce oluşturduğunuz yönetici kullanıcıyı kullanarak oturum açın. **Yoklamalar**' ın altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
@@ -270,11 +270,19 @@ python manage.py migrate
 
 [Azure Portal](https://portal.azure.com), uygulama adını arayın ve sonuçlarda uygulamayı seçin.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Azure portal Python Docgo uygulamanıza gidin":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Örnek Docgo geliştirme sunucusu çıkışı&quot;:::
+
+Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
+
+1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda &quot;hiçbir yoklama yok":::
 
 Varsayılan olarak, portal genel bir performans görünümü sağlayan uygulamanızın **genel bakış** sayfasını gösterir. Burada, gezinme, durdurma, yeniden başlatma ve silme gibi temel yönetim görevlerini de gerçekleştirebilirsiniz. Sayfanın sol tarafındaki sekmeler, açabileceğiniz farklı yapılandırma sayfalarını gösterir.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Python Docgo uygulamanızı Azure portal genel bakış sayfasında yönetin":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Örnek Docgo geliştirme sunucusu çıkışı&quot;:::
+
+Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
+
+1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda &quot;hiçbir yoklama yok":::
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: a-sakand
 author: skandil
-ms.openlocfilehash: 22f5ab332c52a3b567b37089def6e4a494a15d29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d801971ca62c416c66608b40aab3e8052fe941a1
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309481"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931419"
 ---
 # <a name="sign-in-to-luis-portal"></a>LUIS portalında oturum açma
 
@@ -36,7 +36,7 @@ Bir Azure aboneliği ile ilişkilendirilmemiş bir hesap, sağ üst gezinti çub
 
 Azure aboneliğiyle ilişkili bir hesap, kullanılacak aboneliğinizi ve kaynağı seçmenize olanak sağlar.
 
-:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Kısmi ekran-kaynak seçimi açılan seçim kutularıyla HALSıS portalının görüntüsü.":::
+:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Kısmi ekran-Azure simgesiyle HALSıS gezinti çubuğunun görüntüsü.":::
 
 ## <a name="sign-in-with-account-associated-with-an-azure-subscription"></a>Bir Azure aboneliğiyle ilişkili hesapla oturum açın
 
@@ -50,11 +50,11 @@ Azure aboneliğiyle ilişkili bir hesap, kullanılacak aboneliğinizi ve kaynağ
 
     [Yazma ve başlangıç anahtarları hakkında daha fazla bilgi edinin](luis-how-to-azure-subscription.md#luis-resources). Her iki kaynak de size 1.000.000 ücretsiz yazma işlemi ve 1000 ücretsiz tahmin uç noktası işlemi sunar.
 
-    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Kısmi ekran görüntüsü Language Understanding yazma kaynağı türünü seçmek için.":::
+    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Kısmi ekran-Azure simgesiyle HALSıS gezinti çubuğunun görüntüsü.":::
 
 1. Mevcut bir yazma kaynağı kullan
 
-    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Kaynak yazma seçin":::
+    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Kısmi ekran-Azure simgesiyle HALSıS gezinti çubuğunun görüntüsü.":::
 
     Hala aboneliğinizde zaten bir kaynak yazıyorsanız ve oturum açma sırasında LUO hesabınızla bir ilişki oluşturduysanız, **mevcut yazma kaynağını kullan** seçeneğini belirleyin ve aşağıdaki bilgileri sağlayın:
 
@@ -67,18 +67,9 @@ Azure aboneliğiyle ilişkili bir hesap, kullanılacak aboneliğinizi ve kaynağ
 
 1. Yeni bir yazma kaynağı oluşturma
 
-    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Yazma kaynağı oluşturma":::
+    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Kısmi ekran-Azure simgesiyle HALSıS gezinti çubuğunun görüntüsü." ifadesini gösteren bir oturum açana kadar birkaç saniye sürebilir. Devam ' i seçerek son ' a **geçin**.
 
-    **Yeni bir yazma kaynağı oluştururken**aşağıdaki bilgileri sağlayın:
-
-    * **Kiracı** -Azure aboneliğinizin ilişkilendirildiği kiracı. Mevcut pencereden kiracılar arasında geçiş yapamazsınız. Üst kısımdaki baş harflerinizi içeren en sağdaki avatarını seçerek kiracılar arasında geçiş yapabilirsiniz.
-    * **Kaynak adı** -seçtiğiniz özel bir ad, yazma IŞLEMLERINIZ için URL 'nin bir parçası olarak kullanılır. Kaynak adınız yalnızca alfasayısal karakter içerebilir, '-', '-' ile başlayamaz veya bitemez. Adda başka semboller varsa, kaynak oluşturma işlemi başarısız olur.
-    * **Abonelik adı** -kaynakla ilişkilendirilecek abonelik. Kiracınıza ait birden fazla aboneliğiniz varsa, açılan listeden istediğiniz birini seçin.
-    * **Kaynak grubu** -aboneliğinizde seçtiğiniz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır. Şu anda aboneliğinizde bir kaynak grubunuz yoksa, LUı portalında bir tane oluşturmanıza izin verilmez. Bir tane oluşturmak için [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) gidin ve oturum açma işlemine devam etmek için lusıs 'e gidin.
-
-1. Yolunuzu seçtikten sonra, "hesabınız başarılı bir şekilde geçirildi" ifadesini gösteren bir oturum açana kadar birkaç saniye sürebilir. Devam ' i seçerek son ' a **geçin**.
-
-    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Kaynak yazmayı Onayla":::
+    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Kısmi ekran-Azure simgesiyle HALSıS gezinti çubuğunun görüntüsü.":::
 
     > [!Note]
     > Portalda oturum açmak için kullandığınız bölgede bir aboneliğiniz ve en az bir yazma kaynağınız varsa, hangi yolun gidebileceğini seçme gereksinimi olmadan LUYA geçişi ve bir kaynakla ilişkili olarak oturum açmanız gerekir.
@@ -90,7 +81,7 @@ Azure aboneliğiyle ilişkili bir hesap, kullanılacak aboneliğinizi ve kaynağ
 
 1. Devam ' i seçerek son ' a **geçin**. Deneme/başlangıç anahtarıyla otomatik olarak oturum açacaksınız. Bu, sonunda [Hesabınızı geçirmeniz](luis-migration-authoring.md#migration-steps) ve uygulamalarınızı bir yazma kaynağına bağlamanız gerektiği anlamına gelir. Geçiş işlemine dönmek için [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/free/)için oturum açmanız gerekir.
 
-    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Abonelik senaryosu yok":::
+    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Kısmi ekran-Azure simgesiyle HALSıS gezinti çubuğunun görüntüsü.":::
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

@@ -3,12 +3,12 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74d8cc9cdb1d9c01c8238f205ae485b61d665cd7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729075"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940844"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -78,20 +78,20 @@ Azure Backup tarafından alınan tüm anlık görüntülere Portal, PowerShell v
 
 ### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>Yedeklenmiş bir dosya paylaşımından farklı bir aboneliğe taşıdıktan sonra ne olur?
 
-Dosya paylaşma farklı bir aboneliğe taşındıktan sonra, Azure Backup tarafından yeni bir dosya paylaşma olarak kabul edilir. Önerilen adımlar aşağıda verilmiştir:
+Dosya paylaşma farklı bir aboneliğe taşındıktan sonra, Azure Backup tarafından yeni bir dosya paylaşma olarak kabul edilir. Önerilen adımlar şunlardır:
  
-Senaryo: abonelik S1 'teki bir dosya paylaşımının FS1 olduğunu ve v1 Kasası kullanılarak korunduğunu varsayalım. Şimdi dosya paylaşımınızı S2 aboneliğine taşımak istiyorsunuz.
+Senaryo: abonelik *S1* 'teki bir dosya paylaşımının *FS1* olduğunu ve *v1* Kasası kullanılarak korunduğunu varsayalım. Şimdi dosya paylaşımınızı *S2*aboneliğine taşımak istiyorsunuz.
  
 1.  İstenen depolama hesabı ve dosya paylaşımının (FS1) farklı aboneliğe (S2) taşıyın.
-2.  V1 kasasında, FS1 için verileri silme işlemiyle korumayı durdur işlemini tetikleyin.
+2.  V1 kasasında, FS1 için verileri silme ile korumayı durdur işlemini tetikleyin.
 3.  V1 kasasından FS1 barındıran depolama hesabının kaydını kaldırın.
 4.  FS1 için yedeklemeyi yeniden yapılandırın, şimdi S2 aboneliğine bir kasa (v2) ile S2 'ye taşınmıştır. 
  
-Lütfen v2 ile yedeklemeyi yeniden yapılandırdıktan sonra, v1 ile alınan anlık görüntülerin artık Azure Backup tarafından yönetilmeyeceği ve bu anlık görüntüleri gereksiniminize göre el ile silmeniz gerekir.
+V2 ile yedeklemeyi yeniden yapılandırdıktan sonra, v1 ile alınan anlık görüntülerin artık Azure Backup tarafından yönetilmediğini unutmayın. Bu nedenle, bu anlık görüntüleri gereksinimlerinize göre el ile silmeniz gerekir.
 
 ### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>Yedeklenen dosya paylaşımımı farklı bir kaynak grubuna taşıyabilir miyim?
  
-Evet, yedeklenen dosya paylaşımınızı farklı bir kaynak grubuna taşıyabilirsiniz. Ancak, Azure Backup tarafından yeni bir kaynak kabul edildiği için dosya paylaşımının yedeklemesini yeniden yapılandırmanız gerekir. Ayrıca, kaynak grubu taşımadan önce oluşturulan anlık görüntüler artık Azure Backup tarafından yönetilmeyecektir. Bu nedenle, bu anlık görüntüleri gereksiniminize göre el ile silmeniz gerekir.
+Evet, yedeklenen dosya paylaşımınızı farklı bir kaynak grubuna taşıyabilirsiniz. Ancak, Azure Backup tarafından yeni bir kaynak olarak işlenemeyeceği için dosya paylaşımının yedeklemesini yeniden yapılandırmanız gerekir. Ayrıca, kaynak grubu taşıma işleminden önce oluşturulan anlık görüntüler artık Azure Backup tarafından yönetilmeyecektir. Bu nedenle, bu anlık görüntüleri gereksinimlerinize göre el ile silmeniz gerekir.
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Yedeklemeler için yapılandırabildiğim maksimum bekletme nedir?
 

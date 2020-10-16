@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8cd72d34535ac3a2aec60aa3d2369da34dd7194
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997464"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017412"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory sürüm 1 ardışık düzeninde özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -31,7 +31,7 @@ ms.locfileid: "88997464"
 Azure Data Factory ardışık düzeninde kullanabileceğiniz iki tür etkinlik vardır.
 
 - Verileri [, desteklenen kaynak ve havuz veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats)arasında taşımak Için [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) .
-- Azure HDInsight, Azure Batch ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri dönüştürmek için [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) .
+- Azure HDInsight, Azure Batch ve Azure Machine Learning Studio (klasik) gibi işlem hizmetlerini kullanarak verileri dönüştürmek için [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) .
 
 Data Factory desteklemediği bir veri deposuna/veritabanından veri taşımak için kendi veri taşıma mantığınızla özel bir **etkinlik** oluşturun ve etkinliği bir işlem hattında kullanın. Benzer şekilde, Data Factory tarafından desteklenmeyen bir şekilde verileri dönüştürmek/işlemek için kendi veri dönüştürme mantığınızla özel bir etkinlik oluşturun ve etkinliği bir işlem hattında kullanın.
 
@@ -43,7 +43,7 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 > - Şirket içi veri kaynaklarına erişmek için özel etkinlikten bir Veri Yönetimi ağ geçidi kullanılması mümkün değildir. Şu anda [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) , Data Factory içindeki kopyalama etkinliği ve saklı yordam etkinliğini destekler.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>İzlenecek yol: özel etkinlik oluşturma
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 * Visual Studio 2012/2013/2015/2017
 * [Azure .NET SDK 'sını](https://azure.microsoft.com/downloads/) indirme ve yükleme
 
@@ -1025,7 +1025,7 @@ GitHub 'daki [Azure Data Factory yerel ortam](https://github.com/gbrueckl/Azure.
 | Örnek | Özel etkinlik ne yapar |
 | --- | --- |
 | [Http veri yükleyici](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Data Factory 'daki özel C# etkinliğini kullanarak bir HTTP uç noktasından Azure Blob depolama alanına veri indirir. |
-| [Twitter Yaklaşım Analizi örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Azure Machine Learning Studio modelini çağırır ve yaklaşım analizi, Puanlama, tahmin vb. |
+| [Twitter Yaklaşım Analizi örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Azure Machine Learning Studio (klasik) modeli çağırır ve yaklaşım analizi, Puanlama, tahmin vb. |
 | [R betiğini çalıştırın](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Zaten R 'nin yüklü olduğu HDInsight kümenizde RScript.exe çalıştırarak R betiğini çağırır. |
 | [Çapraz AppDomain .NET etkinliği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Data Factory başlatıcısı tarafından kullanılan farklı derleme sürümlerini kullanır |
 | [Azure Analysis Services bir modeli yeniden işleme](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Azure Analysis Services bir modeli yeniden işler. |

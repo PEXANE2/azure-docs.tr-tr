@@ -12,10 +12,10 @@ ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
 ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691471"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Tarif: büyük veriler için bilişsel hizmetler ile tahmine dayalı bakım
@@ -28,7 +28,7 @@ Kuramsal senaryo, IoT cihazlarının [Buhar es](https://en.wikipedia.org/wiki/St
 
 Veride rastgele bir sıklıkta bir grup olabilir. Bu durumlarda, RPM değerleri devreye alınacaktır ve bu, devre koruması için MW çıkış olacaktır. Bu düşünce, verileri aynı zamanda, ancak farklı sinyallerle aynı anda görmenizde yarar vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Spark havuzuyla](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool) yapılandırılmış [Azure SYNAPSE çalışma alanı](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)

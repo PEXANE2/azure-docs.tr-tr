@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837389"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services uygulamalarınızı ve çözümlerinizi Azure Logic Apps geçirin
@@ -59,7 +59,7 @@ Varsayılan olarak, her köprü için, çalışma zamanı adresiyle ve köprün�
 
 ## <a name="xml-processing-and-bridges"></a>XML işleme ve köprüler
 
-BizTalk Services, bir köprü işleme ardışık düzenine benzer. Köprü, bir bağlayıcıdan alınan verileri alabilir, verilerle çalışmayı gerçekleştirebilir ve sonuçları başka bir sisteme gönderebilir. Logic Apps, aynı işlem hattı tabanlı etkileşim düzenlerini BizTalk Services ile destekleyerek aynı zamanda diğer tümleştirme desenleri de sağlar. BizTalk Services içindeki [XML istek-yanıt Köprüsü](/previous-versions/azure/hh689781(v=azure.100)) , bu görevleri gerçekleştiren aşamalardan oluşan BIR veter işlem hattı olarak bilinir:
+BizTalk Services, bir köprü işleme ardışık düzenine benzer. Köprü, bir bağlayıcıdan alınan verileri alabilir, verilerle çalışmayı gerçekleştirebilir ve sonuçları başka bir sisteme gönderebilir. Logic Apps, aynı işlem hattı tabanlı etkileşim düzenlerini BizTalk Services ile destekleyerek aynı zamanda diğer tümleştirme desenleri de sağlar. BizTalk Services [XML Request-Reply Köprüsü](/previous-versions/azure/hh689781(v=azure.100)) , bu görevleri gerçekleştiren aşamalardan oluşan BIR veter işlem hattı olarak bilinir:
 
 * (V) doğrula
 * (E) zenginleştirme
@@ -71,7 +71,7 @@ Bu görüntüde, işleme ve yanıt yolları için ayrı olarak denetim sağlayan
 
 ![İşlemin istek ve yanıt arasında nasıl bölüneceği gösteren ekran görüntüsü.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
-Ayrıca, XML tek yönlü köprü, işleme ve işleme aşamasına kod çözme ve kodlama aşamalarını ekliyor. Doğrudan geçiş Köprüsü, tek bir zenginleştirme aşaması içerir.
+Ayrıca, bir XML One-Way Köprüsü, işlemenin başlangıcında ve sonunda kod çözme ve kodlama aşamalarını ekler. Pass-Through Köprüsü, tek bir zenginleştirme aşaması içerir.
 
 ### <a name="message-processing-decoding-and-encoding"></a>İleti işleme, kod çözme ve kodlama
 

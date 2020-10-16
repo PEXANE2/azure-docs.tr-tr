@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: ad21c5b34a58c35b2cef5e430be7cb8cd1296402
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87099918"
 ---
 # <a name="createuidefinition-referencing-functions"></a>Createuıdefinition başvuru işlevleri
@@ -101,4 +101,4 @@ Aşağıdaki özellikleri döndürür:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Portal arabirimini geliştirmeye giriş hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamanın oluşturma deneyimi içinCreateUiDefinition.js](create-uidefinition-overview.md).
+* Portal arabirimini geliştirmeye giriş hakkında daha fazla bilgi için bkz. [ Azure yönetilen uygulamanın oluşturma deneyimi içinCreateUiDefinition.js](create-uidefinition-overview.md).

@@ -3,19 +3,19 @@ title: Ölçüm Danışmanı uyarılarını yapılandırma
 titleSuffix: Azure Cognitive Services
 description: E-posta, Web ve Azure DevOps için kancalar kullanarak ölçüm Danışmanı uyarılarınızı yapılandırma.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.author: mbullwin
+ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977795"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046800"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Nasıl yapılır: bir kanca kullanarak uyarıları yapılandırma ve bildirim alma
 
@@ -88,11 +88,11 @@ Bir Azure DevOps kancası oluşturmak için aşağıdaki bilgileri eklemeniz ger
 Ölçüm Ayrıntıları sayfasının sol alt köşesindeki **Uyarı ayarları** bölümünü bulmak için ölçüm ayrıntısı sayfasına gidin. Seçili algılama yapılandırması için uygulanan tüm uyarı ayarlarını listeler. Yeni bir algılama yapılandırması oluşturulduğunda, hiçbir uyarı ayarı yoktur ve hiçbir uyarı gönderilmez.  
 Uyarı ayarlarını değiştirmek için **Ekle**, **Düzenle** ve **Sil** simgelerini kullanabilirsiniz.
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Uyarı ayarları menü öğesi.":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Web kancası oluşturma penceresi.":::
 
 Uyarı ayarlarınızı eklemek veya düzenlemek üzere bir pencere almak için **Ekle** veya **Düzenle** düğmelerine tıklayın.
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Uyarı ayarlarını Ekle veya Düzenle":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Web kancası oluşturma penceresi.":::
 
 **Uyarı ayarı adı**: Bu uyarı ayarının adı. Uyarı e-postası başlığında görüntülenecektir.
 
@@ -134,7 +134,7 @@ Başka bir bölüm eklemek için uyarı ayarları sayfasında **+ çapraz ölç�
 |AND     | Yalnızca bir dizi her uyarı bölümüyle eşleşiyorsa bir uyarı gönder ve tüm veri noktaları bozukluklar. Ölçümler farklı boyut adlarına sahip ise, bir uyarı tetiklenmez.         |
 |VEYA     | En az bir bölüm bozukluklar içeriyorsa uyarıyı gönderin.         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Birden çok uyarı ayarı için işleç bölümü":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Web kancası oluşturma penceresi.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16e232cedb13dc246bf7a568adfad401c1fe3eb8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236723"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964800"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Azure AD 'de karma FIDO2 güvenlik anahtarları için dağıtım hakkında sık sorulan sorular (SSS) (Önizleme)
 
@@ -160,7 +160,7 @@ Windows Server 2016 veya 2019 etki alanı denetleyicisinde aşağıdaki düzeltm
 
 Hayır, bu özellik yalnızca şirket içi cihaz için desteklenmiyor. FIDO2 kimlik bilgisi sağlayıcısı gösterilmez.
 
-### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 güvenlik anahtarı oturum açma, etki alanı yöneticisi veya diğer yüksek ayrıcalıklı hesaplar için çalışmıyor. Neden?
+### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 güvenlik anahtarı oturum açma, etki alanı yöneticisi veya diğer yüksek ayrıcalıklı hesaplar için çalışmıyor. Neden mi?
 
 Varsayılan güvenlik ilkesi, şirket içi kaynaklara yönelik yüksek ayrıcalıklı hesapları imzalamak için Azure AD izni vermez.
 
@@ -185,7 +185,7 @@ Azure AD Kerberos sunucusu, bir şirket içi AD DS ortamında etki alanı denetl
 
 * *CN = AzureADKerberos, OU = etki alanı denetleyicileri,\<domain-DN>*
     
-    AD DS ' de bir salt okuma etki alanı denetleyicisini (RODC) temsil eden bir *bilgisayar* nesnesi. Bu nesneyle ilişkili bilgisayar yok. Bunun yerine, bir DC 'nin mantıksal bir gösterimidir.
+    AD DS bir Read-Only etki alanı denetleyicisini (RODC) temsil eden bir *bilgisayar* nesnesi. Bu nesneyle ilişkili bilgisayar yok. Bunun yerine, bir DC 'nin mantıksal bir gösterimidir.
 
 * *CN = krbtgt_AzureAD, CN = kullanıcılar,\<domain-DN>*
 
@@ -234,11 +234,11 @@ HTTP isteği, standart bir birincil yenileme belirteci (PRT) isteği. Bu PRT ist
 
 Azure AD, şifreli istemci anahtarını ve ileti arabelleğini, ek özellikler olarak PRT yanıtıyla birleştirir. Yük, Azure AD cihaz oturum anahtarı kullanılarak şifrelenir.
 
-| Alan              | Tür   | Description  |
+| Alan              | Tür   | Açıklama  |
 |--------------------|--------|--------------|
-| tgt_client_key     | string | Base64 kodlamalı istemci anahtarı (gizli). Bu anahtar, TGT 'yi korumak için kullanılan istemci sırrı ' dir. Bu passwordless senaryosunda, istemci parolası her TGT isteğinin bir parçası olarak sunucu tarafından oluşturulur ve ardından yanıtta istemciye döndürülür. |
+| tgt_client_key     | dize | Base64 kodlamalı istemci anahtarı (gizli). Bu anahtar, TGT 'yi korumak için kullanılan istemci sırrı ' dir. Bu passwordless senaryosunda, istemci parolası her TGT isteğinin bir parçası olarak sunucu tarafından oluşturulur ve ardından yanıtta istemciye döndürülür. |
 | tgt_key_type       | int    | KERB_MESSAGE_BUFFER dahil olan istemci anahtarı ve Kerberos oturum anahtarı için kullanılan şirket içi AD DS anahtar türü. |
-| tgt_message_buffer | string | Base64 kodlamalı KERB_MESSAGE_BUFFER. |
+| tgt_message_buffer | dize | Base64 kodlamalı KERB_MESSAGE_BUFFER. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

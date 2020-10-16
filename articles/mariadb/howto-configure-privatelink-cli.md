@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a8f94c34281adbe274ad70425850e2ade4dc94ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833241"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>CLı kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
@@ -21,7 +21,7 @@ ms.locfileid: "87833241"
 > [!NOTE]
 > Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
@@ -133,7 +133,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
-1. Portalın arama çubuğunda *Myvm*' i girin.
+1. Portalın arama çubuğuna *myVm* değerini girin.
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
@@ -150,7 +150,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Tamam**’ı seçin.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ' i veya **devam et**' i seçin.
+1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
@@ -158,9 +158,9 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
 
-2. Şunu girin:  `nslookup mydemoserver.privatelink.mariadb.database.azure.com`. 
+2.  `nslookup mydemoserver.privatelink.mariadb.database.azure.com` yazın. 
 
-    Şuna benzer bir ileti alacaksınız:
+    Şuna benzer bir ileti alırsınız:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -176,7 +176,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     | Ayar | Değer |
     | ------- | ----- |
     | Bağlantı Adı| Seçtiğiniz bağlantı adını seçin.|
-    | Ana Bilgisayar Adı | *Mydemoserver.Privatelink.MariaDB.Database.Azure.com* seçin |
+    | Konak adı | *Mydemoserver.Privatelink.MariaDB.Database.Azure.com* seçin |
     | Kullanıcı adı | *username@servername*MariaDB sunucu oluşturma sırasında belirtilen kullanıcı adını girin. |
     | Parola | MariaDB sunucu oluşturma sırasında bir parola girin. |
     ||

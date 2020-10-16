@@ -7,21 +7,21 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 4f5328bbe21bb5f4a7947d5a495f4a0c8759c8da
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87315650"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights ile canlı Azure App Service uygulamalar profili
 
 ASP.NET üzerinde profil oluşturucuyu ve temel hizmet katmanını veya üstünü kullanarak Azure App Service çalıştıran uygulamaları ASP.NET Core çalıştırabilirsiniz. Linux 'ta profil oluşturucuyu etkinleştirmek Şu anda yalnızca [Bu yöntem](profiler-aspnetcore-linux.md)aracılığıyla mümkündür.
 
-## <a name="enable-profiler-for-your-app"></a><a id="installation"></a>Uygulamanız için profil oluşturucuyu etkinleştirin
+## <a name="enable-profiler-for-your-app"></a><a id="installation"></a> Uygulamanız için profil oluşturucuyu etkinleştirin
 Bir uygulama için profil oluşturucuyu etkinleştirmek üzere aşağıdaki yönergeleri izleyin. Farklı bir Azure hizmeti türü çalıştırıyorsanız, desteklenen diğer platformlarda profil oluşturucuyu etkinleştirme talimatları aşağıda verilmiştir:
 * [Bulut Hizmetleri](./profiler-cloudservice.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Service Fabric uygulamalar](./profiler-servicefabric.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
-* [Sanal makineler](./profiler-vm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Sanal Makineler](./profiler-vm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 Application Insights Profiler, App Services çalışma zamanının bir parçası olarak önceden yüklenir. Aşağıdaki adımlarda, App Service için nasıl etkinleştirileceği gösterilmektedir. Application Insights SDK 'sını uygulamanıza derleme zamanında dahil etseniz bile bu adımları izleyin.
 
@@ -50,7 +50,7 @@ Profil oluşturucuyu etkinleştirmek için gereken ayarlar şunlardır:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-Bu değerleri [Azure Resource Manager şablonları](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp), [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest)kullanarak ayarlayabilirsiniz.
+Bu değerleri [Azure Resource Manager şablonları](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp),  [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest)kullanarak ayarlayabilirsiniz.
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>Diğer bulutlar için profil oluşturucuyu el ile etkinleştirme
 

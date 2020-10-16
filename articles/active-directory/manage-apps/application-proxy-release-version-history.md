@@ -12,10 +12,10 @@ ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88210871"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi
@@ -83,7 +83,7 @@ Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme |  [En son bağlayıcıy�
 - QlikSense uygulaması için WebSocket desteği eklendi. Uygulama proxy 'Si ile QlikSense tümleştirme hakkında daha fazla bilgi edinmek için bu [izlenecek yolu](application-proxy-qlik.md)inceleyin. 
 - Bir giden proxy 'nin yapılandırmasını kolaylaştırmak için Yükleme Sihirbazı geliştirildi. 
 - Bağlayıcılar için varsayılan protokol olan TLS 1,2 ' i ayarlayın. 
-- Yeni bir Son Kullanıcı Lisans Sözleşmesi (EULA) eklendi.  
+- Yeni bir End-User Lisans Sözleşmesi (EULA) eklendi.  
 
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
 

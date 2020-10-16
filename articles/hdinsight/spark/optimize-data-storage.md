@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperfq1
 ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88757821"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark için veri depolama iyileştirmesi
@@ -29,7 +29,7 @@ Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snap
 
 Önceki Spark sürümleri, verileri, Spark 1,3 ve 1,6 ' nin sırasıyla veri çerçeveleri ve veri kümelerini kullanıma sunmuştur. Aşağıdaki göreli birleşmenizi göz önünde bulundurun:
 
-* **DataFrames**
+* **Veri Çerçeveleri**
     * Çoğu durumda en iyi seçim.
     * Catalyst aracılığıyla sorgu iyileştirmesi sağlar.
     * Tam aşamalı kod oluşturma.
@@ -60,7 +60,7 @@ Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alan�
 | Azure Blob Depolama | fazla **b:**// | **Standart** | Evet | Geçici küme |
 | Azure Blob depolama (güvenli) | fazla **BS:**// | **Standart** | Evet | Geçici küme |
 | Azure Data Lake Storage 2. Nesil| **ABFS:**// | **Lýdýr** | Evet | Geçici küme |
-| Azure Data Lake Storage Gen 1| **adl:**// | **Lýdýr** | Evet | Geçici küme |
+| Azure Data Lake Storage 1. Nesil| **adl:**// | **Lýdýr** | Evet | Geçici küme |
 | Yerel olarak | Bu **:**// | **En hızlı** | Hayır | Etkileşimli 24/7 kümesi |
 
 Depolama seçeneklerinin tam açıklaması için bkz. [Azure HDInsight kümeleri ile kullanım için depolama seçeneklerini karşılaştırma](../hdinsight-hadoop-compare-storage-options.md).

@@ -4,10 +4,10 @@ description: Azure DevTest 'te laboratuvar kimliği yapılandırmayı öğrenin.
 ms.topic: article
 ms.date: 08/20/2020
 ms.openlocfilehash: a652eb5751f9b723911a1c1baaaaf9860febc5b6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719736"
 ---
 # <a name="configure-a-lab-identity"></a>Laboratuvar kimliği yapılandırma
@@ -38,7 +38,7 @@ Bu bölümde, laboratuvarın kimlik ilkesini yapılandırma gösterilmektedir.
 >
 > 8/10/2020 sonra oluşturulan yeni laboratuvarlar için, laboratuvarın sistem tarafından atanan kimliği varsayılan olarak açık olarak ayarlanır ve laboratuvar sahibi, laboratuvarın yaşam döngüsü için bunu devre dışı bırakır.  
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **DevTest Labs**için arama yapın.
 1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.
 1. **Yapılandırma ve ilke**  ->  **kimliği (Önizleme)** öğesini seçin. 

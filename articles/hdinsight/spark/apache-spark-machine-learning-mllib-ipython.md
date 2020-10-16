@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
 ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230424"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Machine Learning uygulaması derlemek ve bir veri kümesini çözümlemek için Apache Spark MLlib kullanın
@@ -84,7 +84,7 @@ Ham CSV verilerini belleğe yapılandırılmamış metin olarak çekmek için Sp
     inspections.take(1)
     ```
 
-    Çıktı şu şekildedir:
+    Çıkış şöyle olur:
 
     ```
     [['413707',
@@ -129,7 +129,7 @@ Ham CSV verilerini belleğe yapılandırılmamış metin olarak çekmek için Sp
     df.show(5)
     ```
 
-    Çıktı şu şekildedir:
+    Çıkış şöyle olur:
 
     ```
     +------+--------------------+-------+--------------------+
@@ -153,7 +153,7 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
     df.select('results').distinct().show()
     ```
 
-    Çıktı şu şekildedir:
+    Çıkış şöyle olur:
 
     ```
     +--------------------+
@@ -176,7 +176,7 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
 
     `%%sql`Sonra da Magic, `-o countResultsdf` sorgunun çıkışının jupi sunucusunda (genellikle kümenin baş düğümüne) kalıcı olarak kalıcı olmasını sağlar. Çıktı, belirtilen **Countresultsdf**adlı bir [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcıdır. `%%sql`MAGIC ve PySpark çekirdekle sunulan diğer mıknatık hakkında daha fazla bilgi için, [Apache Spark HDInsight kümeleri Ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)bölümüne bakın.
 
-    Çıktı şu şekildedir:
+    Çıkış şöyle olur:
 
     ![SQL sorgu çıktısı](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL sorgu çıktısı")
 
@@ -227,7 +227,7 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
     labeledData.take(1)
     ```
 
-    Çıktı şu şekildedir:
+    Çıkış şöyle olur:
 
     ```
     [Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
@@ -349,7 +349,7 @@ Artık bu testin sonuçları hakkında neden olacak bir son görselleştirme olu
     plt.axis('equal')
     ```
 
-    Aşağıdaki çıktıyı görmeniz gerekir:
+    Aşağıdaki çıkışı görmeniz gerekir:
 
     ![Spark Machine Learning uygulama çıkışı-başarısız yiyecek incelemeleri için pasta grafik yüzdeleri.](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark Machine Learning sonuç çıkışı")
 

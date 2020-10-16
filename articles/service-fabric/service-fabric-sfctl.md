@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257062"
 ---
 # <a name="sfctl"></a>sfctl
@@ -24,10 +24,10 @@ Komutlar, isim-fiil modelini izler. Daha fazla bilgi için bkz. alt gruplar.
 | [Chaos](service-fabric-sfctl-chaos.md) | Chaos test hizmetini başlatın, durdurun ve rapor edin. |
 | [içi](service-fabric-sfctl-cluster.md) | Service Fabric kümelerini seçin, yönetin ve çalıştırın. |
 | [iletinizi](service-fabric-sfctl-compose.md) | Docker Compose uygulamalar oluşturun, silin ve yönetin. |
-| [kapsayıcı](service-fabric-sfctl-container.md) | Kapsayıcı ile ilgili komutları bir küme düğümünde çalıştırın. |
+| [container (kapsayıcı)](service-fabric-sfctl-container.md)  | Kapsayıcı ile ilgili komutları bir küme düğümünde çalıştırın. |
 | [olayları](service-fabric-sfctl-events.md) | Olayları olay deposundan al (EventStore hizmeti zaten yüklüyse). |
-| [eklenir](service-fabric-sfctl-is.md) | Altyapı hizmetine komutları sorgulayın ve gönderin. |
-| [mesh](service-fabric-sfctl-mesh.md) | Service Fabric kafes uygulamalarını silin ve yönetin. |
+| [is](service-fabric-sfctl-is.md) | Altyapı hizmetine komutları sorgulayın ve gönderin. |
+| [ese](service-fabric-sfctl-mesh.md) | Service Fabric kafes uygulamalarını silin ve yönetin. |
 | [düğümüne](service-fabric-sfctl-node.md) | Bir küme oluşturan düğümleri yönetin. |
 | [bölümünüzün](service-fabric-sfctl-partition.md) | Tüm hizmet için bölümleri sorgulayın ve yönetin. |
 | [özelliði](service-fabric-sfctl-property.md) | Service Fabric adları altında mağaza ve sorgu özellikleri. |

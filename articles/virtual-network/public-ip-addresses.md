@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329270"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
@@ -178,11 +178,11 @@ Aşağıdaki tabloda, genel bir IP 'nin en üst düzey bir kaynakla ve olası ay
 
 | En üst düzey kaynak | IP Adresi ilişkilendirme | Dinamik | Statik |
 | --- | --- | --- | --- |
-| Sanal makine |Ağ arabirimi |Yes |Yes |
-| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Yes |Yes |
-| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Yes |Hayır |
+| Sanal makine |Ağ arabirimi |Evet |Evet |
+| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Evet |Evet |
+| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Evet |Hayır |
 | Uygulama ağ geçidi |Ön uç yapılandırması |Evet (yalnızca v1) |Evet (yalnızca v2) |
-| Azure Güvenlik Duvarı | Ön uç yapılandırması | Hayır | Yes|
+| Azure Güvenlik Duvarı | Ön uç yapılandırması | Hayır | Evet|
 
 ## <a name="limits"></a>Sınırlar
 

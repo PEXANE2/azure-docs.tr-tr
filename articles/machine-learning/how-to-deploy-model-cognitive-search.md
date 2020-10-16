@@ -10,12 +10,13 @@ ms.author: cgronlun
 author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
-ms.openlocfilehash: d9d509f23ca62415035bdda5231033a0c2f830ce
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.custom: deploy
+ms.openlocfilehash: 5d198a27d7aeca679f1ee17f35d3f4384283f13c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728735"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998903"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Bilişsel Arama ile kullanmak üzere bir model dağıtma
 
@@ -41,7 +42,7 @@ Bir modeli Azure Bilişsel Arama ile kullanmak üzere dağıttığınızda, dağ
 * Giriş betiği Ayrıca JSON verilerini girdi olarak kabul etmelidir ve JSON 'u çıkış olarak oluşturur.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 

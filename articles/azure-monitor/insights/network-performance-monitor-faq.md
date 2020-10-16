@@ -7,10 +7,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326146"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
@@ -238,7 +238,7 @@ Bu durum, ana bilgisayar güvenlik duvarı veya ara güvenlik duvarının (ağ g
 * Şimdi, komutu hedef düğümden kaynak düğüm IP 'si olarak çalıştırın.
 
 
-### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>A düğümünden B 'ye kadar bir kayıp vardır ancak B düğümünden bir arasında değildir. Kaydol?
+### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>A düğümünden B 'ye kadar bir kayıp var ancak düğüm B 'den A 'ya değil. neden?
 A ile B arasındaki ağ yolları B ile arasında ağ yollarından farklı olabilir, kayıp ve gecikme süresinin farklı değerleri gözlemlenebilir.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Tüm ExpressRoute devreleri ve eşleme bağlantılarım neden bulunamadı?

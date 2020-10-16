@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185662"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Güncelleştirilmiş dosyaları izleyici göreviyle izleme
@@ -64,7 +64,7 @@ Ayrıca, aşağıdaki adımları kullanarak bu runbook 'u portaldan Otomasyon he
 Bir [Otomasyon değişkeni](./shared-resources/variables.md) , önceki runbook 'un her bir dosyadan okuduğu ve depoladığı zaman damgalarını depolamak için kullanılır.
 
 1. **Paylaşılan kaynaklar** altında **değişkenler** ' i seçin ve **+ bir değişken Ekle**' ye tıklayın.
-1. Ad için Watch-NewFileTimestamp yazın.
+1. Ad için Watch-NewFileTimestamp girin.
 1. Tür için TarihSaat ' i seçin.
 1. Otomasyon değişkenini oluşturmak için **Oluştur** ' a tıklayın.
 

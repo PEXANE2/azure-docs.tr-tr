@@ -15,16 +15,16 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84760057"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Uygulama proxy 'Si ve Qlik Sense 
 Azure Active Directory Uygulama Ara Sunucusu ve Qlik Sense, Qlik Sense dağıtımınız için uzaktan erişim sağlamak üzere kolayca uygulama proxy 'Si kullanabildiğinizden emin olmak için iş ortağı ile işbirliği yaptı.  
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Bu senaryonun geri kalanı şunları yaptığınızı varsayar:
  
 - [Qlik Sense](https://community.qlik.com/docs/DOC-19822)yapılandırıldı. 
@@ -47,7 +47,7 @@ Uygulamanızı yayımlamak için aşağıdaki adımları izleyin. 1-8 adımları
 1. Dikey pencerenin alt kısmında **Ekle** ' yi seçin. Uygulamanız eklenir ve hızlı başlangıç menüsü açılır. 
 2. Hızlı Başlangıç menüsünde, **test için Kullanıcı ata**' yı seçin ve uygulamaya en az bir kullanıcı ekleyin. Bu sınama hesabının şirket içi uygulamaya erişimi olduğundan emin olun. 
 3. Test Kullanıcı atamasını kaydetmek için **ata** ' yı seçin. 
-4. Seçim Uygulama yönetimi dikey penceresinde çoklu oturum açma ' yı seçin. Açılan menüden **Kerberos kısıtlanmış temsilciyi** seçin ve Qlik yapılandırmanıza göre gerekli alanları doldurun. **Kaydet**'i seçin. 
+4. Seçim Uygulama yönetimi dikey penceresinde çoklu oturum açma ' yı seçin. Açılan menüden **Kerberos kısıtlanmış temsilciyi** seçin ve Qlik yapılandırmanıza göre gerekli alanları doldurun. **Kaydet**’i seçin. 
 
 ### <a name="application-2"></a>Uygulama #2: 
 Aşağıdaki özel durumlarla birlikte uygulama #1 ile aynı adımları izleyin: 

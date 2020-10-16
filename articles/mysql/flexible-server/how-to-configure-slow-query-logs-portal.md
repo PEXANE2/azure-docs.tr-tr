@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: e2046673cda17c58153ceb12eee31edb83365092
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565759"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için yavaş sorgu günlüklerini yapılandırma ve erişme-esnek sunucu
@@ -20,7 +20,7 @@ ms.locfileid: "91565759"
 
 MySQL için Azure veritabanı esnek sunucu [yavaş sorgu günlüklerini](concepts-slow-query-logs.md) Azure Portal yapılandırabilir, listeleyebilir ve indirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki adımlarda [esnek sunucu](quickstart-create-server-portal.md)olması gerekir.
 
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
@@ -39,7 +39,7 @@ MySQL yavaş sorgu günlüğüne erişimi yapılandırın.
 1. Gerekli diğer parametreleri değiştirin (örn. `long_query_time`, `log_slow_admin_statements`). Daha fazla parametre için [yavaş sorgu günlükleri](./concepts-slow-query-logs.md#configure-slow-query-logging) belgelerine bakın.  
    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="Sunucu parametreleri sayfası.":::
 
-1. **Kaydet**'i seçin. 
+1. **Kaydet**’i seçin. 
    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="Sunucu parametreleri sayfası.":::
 
 **Sunucu parametreleri** sayfasında, sayfayı kapatarak Günlükler listesine geri dönebilirsiniz.

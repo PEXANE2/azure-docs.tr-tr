@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661094"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948094"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -25,7 +25,7 @@ Bir Azure Bilişsel Arama hizmeti oluşturduğunuzda, hizmet ömrü boyunca düz
 
 Aşağıdaki tabloda katman ile ilgili özellik kısıtlamaları açıklanmaktadır.
 
-| Öne çıkan özelliği | Sınırlamalar |
+| Özellik | Sınırlamalar |
 |---------|-------------|
 | [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz. |
 | [Yapay zeka zenginleştirme](search-security-manage-encryption-keys.md) | Ücretsiz katmanda çalışır, ancak önerilmez. |
@@ -130,7 +130,7 @@ Aşağıdaki öneriler, maliyetleri düşürmenize veya maliyetleri daha etkin b
 
 + Dizin oluşturma gibi yoğun kaynak gerektiren işlemlere göre ölçeklendirin ve normal sorgu iş yükleri için hemen aşağı doğru. Azure Bilişsel Arama için en düşük yapılandırma (bir bölümden ve bir çoğaltmayla bir SU) ile başlayın ve ardından daha fazla kapasiteye ihtiyacı olan kullanım düzenlerini belirlemek için Kullanıcı etkinliğini izleyin. Tahmin edilebilir bir model varsa, ölçeklendirmeyi etkinlikle eşitlenebilir (Bunu otomatikleştirmek için kod yazmanız gerekir).
 
-Ayrıca, harcama ile ilgili yerleşik araçlar ve özellikler için [faturalandırma ve maliyet yönetimi](../cost-management-billing/manage/getting-started.md) ' ni ziyaret edin.
+Ayrıca, harcama ile ilgili yerleşik araçlar ve özellikler için [faturalandırma ve maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md) ' ni ziyaret edin.
 
 Arama hizmetini geçici olarak kapatmak mümkün değildir. Adanmış kaynaklar her zaman çalışır ve hizmetinizin kullanım ömrü boyunca özel kullanım için ayrılır. Bir hizmetin silinmesi kalıcıdır ve ayrıca ilişkili verileri de silinir.
 

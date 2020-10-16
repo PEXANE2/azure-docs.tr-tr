@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776298"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078842"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -71,7 +71,7 @@ Runbook 'larınız, [kaynaklarla ilgili kaynakları](/rest/api/resources/resourc
 
 ## <a name="security"></a>Güvenlik
 
-Azure Otomasyonu, [Azure Güvenlik Merkezi 'ni (ASC)](../security-center/security-center-intro.md) kullanarak kaynaklarınız için güvenlik sağlar ve Linux sistemlerinde tehlikeye atabilir. Kaynaklar Azure 'da olup olmadığı için iş yükleriniz genelinde güvenlik sağlanır. Bkz. [Azure Otomasyonu 'nda kimlik doğrulamaya giriş](automation-security-overview.md).
+Azure Otomasyonu, [Azure Güvenlik Merkezi 'ni (ASC)](../security-center/security-center-introduction.md) kullanarak kaynaklarınız için güvenlik sağlar ve Linux sistemlerinde tehlikeye atabilir. Kaynaklar Azure 'da olup olmadığı için iş yükleriniz genelinde güvenlik sağlanır. Bkz. [Azure Otomasyonu 'nda kimlik doğrulamaya giriş](automation-security-overview.md).
 
 ASC, bir VM 'de imzalanmış veya imzasız herhangi bir komut dosyasını çalıştırabilen kullanıcılara yönelik kısıtlamaları. VM 'ye kök erişimi olan bir kullanıcı değilseniz, makineyi bir dijital imza ile açıkça yapılandırmanız veya kapatmanız gerekir. Aksi takdirde, yalnızca bir Otomasyon hesabı oluşturduktan ve uygun özelliği etkinleştirerek işletim sistemi güncelleştirmelerini uygulamak için bir komut dosyası çalıştırabilirsiniz.
 
@@ -218,7 +218,7 @@ Azure korumalı alanında çalışan runbook 'lar, yürütülebilir dosyalar (**
 
 ## <a name="device-and-application-characteristics"></a>Cihaz ve uygulama özellikleri
 
-Azure korumalı alanındaki runbook işleri hiçbir cihaza veya uygulama özelliklerine erişemez. Windows üzerinde performans ölçümlerini sorgulamak için kullanılan en yaygın API, bazı yaygın ölçülerden bellek ve CPU kullanımı ile WMI 'dır. Ancak, bulutta çalışan işler web tabanlı kuruluş yönetimi 'nin (WBEM) Microsoft uygulamasına erişemediğinden, API 'nin hangi API 'nin kullanılması gerektiği konusunda değildir. Bu platform, cihaz ve uygulama özelliklerini tanımlamaya yönelik sektör standartları sağlayan Genel Bilgi Modeli (CıM) üzerine kurulmuştur.
+Azure korumalı alanındaki runbook işleri hiçbir cihaza veya uygulama özelliklerine erişemez. Windows üzerinde performans ölçümlerini sorgulamak için kullanılan en yaygın API, bazı yaygın ölçülerden bellek ve CPU kullanımı ile WMI 'dır. Ancak, bulutta çalışan işler Web-Based kuruluş yönetimi 'nin (WBEM) Microsoft uygulamasına erişemezse API 'nin kullanılması önemlidir. Bu platform, cihaz ve uygulama özelliklerini tanımlamaya yönelik sektör standartları sağlayan Genel Bilgi Modeli (CıM) üzerine kurulmuştur.
 
 ## <a name="webhooks"></a>Web Kancaları
 

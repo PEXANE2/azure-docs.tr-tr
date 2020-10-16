@@ -13,10 +13,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439784"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Bulutta yeni DBA: geçişten sonra Azure SQL veritabanı 'nı yönetme
@@ -139,7 +139,7 @@ Varsayılan olarak, veritabanınız "Azure hizmetlerinin sunucuya erişmesine Iz
 
 Hizmet uç noktaları (o), kritik Azure kaynaklarınızı yalnızca Azure 'daki özel sanal ağınıza sunmanıza olanak tanır. Bunu yaparak kaynaklarınıza genel erişimi ortadan kaldırabilirsiniz. Azure ile sanal ağınız arasındaki trafik Azure omurga ağında kalır. Zorunlu olmadan Zorlamalı tünel paket yönlendirmesi edinirsiniz. Sanal ağınız, internet trafiğini kuruluşunuza ve Azure hizmet trafiğine aynı rotaya göre devam etmeye zorlar. Hizmet uç noktaları ile, paketlerin sanal ağınızdan Azure omurga ağı üzerindeki hizmetine doğrudan akışı nedeniyle bunu iyileştirebilirsiniz.
 
-![VNet hizmet uç noktaları](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
+![Sanal ağ hizmet uç noktaları](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Ayrılmış IP’ler
 
@@ -172,7 +172,7 @@ Hassas verilerinizi uçuş sırasında ve bekleyen bir şekilde korumak için SQ
 |**Özellikler**|**Always Encrypted**|**Saydam Veri Şifrelemesi**|
 |---|---|---|
 |**Şifreleme kapsamı**|Uçtan uca|Rest verileri|
-|**Sunucu, hassas verilere erişebilir**|No|Evet, çünkü şifreleme bekleyen veriler için|
+|**Sunucu, hassas verilere erişebilir**|Hayır|Evet, çünkü şifreleme bekleyen veriler için|
 |**İzin verilen T-SQL işlemleri**|Eşitlik karşılaştırması|Tüm T-SQL Surface alanı kullanılabilir|
 |**Özelliği kullanmak için gereken uygulama değişiklikleri**|En az|Çok küçük|
 |**Şifreleme ayrıntı düzeyi**|Sütun düzeyi|Veritabanı düzeyinde Kimlik Bilgileri belirleme seçeneği|
@@ -223,7 +223,7 @@ ExpressRoute Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği 
 
 - [Express Route 'a giriş](../../expressroute/expressroute-introduction.md)
 - [Önkoşullar](../../expressroute/expressroute-prerequisites.md)
-- [İş Akışları](../../expressroute/expressroute-workflows.md)
+- [İş akışları](../../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL veritabanı, herhangi bir düzenleme gereksinimleriyle uyumludur ve kendi Kuruluşumun uyumluluğuyla nasıl yardımcı olur?
 
@@ -273,7 +273,7 @@ Bu grafikten, uyarıları kaynağa göre de yapılandırabilirsiniz. Bu uyarıla
 
 #### <a name="dynamic-management-views"></a>Dinamik yönetim görünümleri
 
-Son 14 günün geçmişini döndürmek için son saatten ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Sistem kataloğu görünümünden kaynak tüketimi istatistikleri geçmişini döndürmek üzere [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümünü sorgulayabilirsiniz.
+Son 14 günün geçmişini döndürmek için son saatten ve [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Sistem kataloğu görünümünden kaynak tüketimi istatistikleri geçmişini döndürmek üzere [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümünü sorgulayabilirsiniz.
 
 #### <a name="query-performance-insight"></a>Sorgu Performansı İçgörüleri
 
@@ -293,7 +293,7 @@ Performans sorunlarını giderme yaklaşımınız, [sorgu performansı içgörü
 
 Performans sorunlarını giderme sayesinde, uygulamanın yalnızca uygulamanın mı yoksa veritabanı yedeklemesi mi olduğunu belirlemek önemlidir. Bu, uygulama performansınızı etkiliyor. Genellikle, performans sorunu uygulama katmanında yer alır. Bu, mimari veya veri erişim deseninin olabilir. Örneğin, ağ gecikme süresine duyarlı bir geveze uygulamanız olduğunu düşünün. Bu durumda uygulamanız, uygulama ile sunucu arasında ve çok yönlü bir ağ üzerinde ileri ve geri dönerek ("geveze") bir çok kısa istek olduğu için, bu gidiş dönüşlerin hızlı bir şekilde daha hızlı bir şekilde bir şekilde yapıldığından, uygulamanız vardır. Bu durumda performansı artırmak için [Batch sorgularını](performance-guidance.md#batch-queries)kullanabilirsiniz. Artık istekleriniz bir toplu işte işlendiğinden, toplu işlem gecenin size yardımcı olur; Bu nedenle, gidiş dönüş gecikmesini kesip uygulama performansınızı iyileştirmenize yardımcı olur.
 
-Ayrıca, veritabanınızın genel performansına karşı bir düşüş fark ederseniz, CPU, GÇ ve bellek tüketimini anlamak için [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamik yönetim görünümlerini izleyebilirsiniz. Veritabanınız kaynakları kullandığından, performanstan etkilenmiş olabilirsiniz. Artan ve daraltma iş yükü taleplerine göre işlem boyutunu ve/veya hizmet katmanını değiştirmeniz gerekebilir.
+Ayrıca, veritabanınızın genel performansına karşı bir düşüş fark ederseniz CPU, GÇ ve bellek tüketimini anlamak için [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve dinamik yönetim görünümlerini [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) izleyebilirsiniz. Veritabanınız kaynakları kullandığından, performanstan etkilenmiş olabilirsiniz. Artan ve daraltma iş yükü taleplerine göre işlem boyutunu ve/veya hizmet katmanını değiştirmeniz gerekebilir.
 
 Performans sorunlarını ayarlama hakkında kapsamlı bir öneriler kümesi için bkz.: [veritabanınızı ayarlama](performance-guidance.md#tune-your-database).
 

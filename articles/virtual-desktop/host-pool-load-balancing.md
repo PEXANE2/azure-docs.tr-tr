@@ -3,15 +3,15 @@ title: Windows sanal masaüstü konak havuzu yük dengelemesi-Azure
 description: Windows sanal masaüstü ortamı için konak havuzu Yük Dengeleme yöntemleri hakkında bilgi edinin.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd8f9e4a3ef63cd97f96af3d4f96a2bb65c3cd09
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461128"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951868"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Ana bilgisayar havuzu yük dengeleme yöntemleri
 
@@ -41,3 +41,6 @@ Enine ilk yöntem, yeni bağlantılara izin veren oturum ana bilgisayarlarını 
 Derinlik-ilk yük dengeleme yöntemi, bu senaryoyu iyileştirmek için tek seferde bir oturum ana bilgisayarının doygunluğunu görmenizi sağlar. Bu yöntem, bir konak havuzu için ayırdıkları sanal makine sayısı üzerinde daha ayrıntılı denetim yapmak isteyen maliyet açısından bilinçli kuruluşlar için idealdir.
 
 İlk olarak kısıtlama yöntemi, yeni bağlantılara izin veren ve en fazla oturum sınırının üzerinde olmayan oturum konaklarını sorgular. Daha sonra yöntemi, en fazla oturum sayısı olan oturum konağını seçer. Bir bağ varsa, yöntem sorgudaki ilk oturum konağını seçer.
+
+>[!IMPORTANT]
+>Derinlik-ilk yük dengeleme algoritması, oturum ana bilgisayar sayısı üst sınırına göre oturumları oturum konaklarına dağıtır. Derinlik-ilk yük dengeleme algoritmasını kullandığınızda bu parametre gereklidir. En iyi olası kullanıcı deneyimi için, en fazla oturum ana bilgisayar sınırı parametresini ortamınıza en uygun bir sayıyla değiştirdiğinizden emin olun.

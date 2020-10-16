@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844125"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure'daki klasik uyarılar nedir?
@@ -33,7 +33,7 @@ Yeni uyarılar kullanıcı deneyimi, klasik uyarılar deneyimine göre aşağıd
 - **Azure portal Log Analytics uyarı** tetiklenme, artık aboneliğinizde tetiklenen Log Analytics uyarıları da görebilirsiniz. Bunlar, daha önce ayrı bir portalda vardı.
 - **Tetiklenen uyarıların ve uyarı kurallarının ayrımı** -uyarı kuralları (bir uyarıyı tetikleyen koşulun tanımı) ve başlatılan uyarılar (uyarı kuralı tetiklemesini bir örnek) farklılaştırdığında işlemsel ve yapılandırma görünümleri ayrılır.
 - **Daha iyi iş akışı** -yeni uyarı yazma deneyimi, kullanıcıyı bir uyarı kuralı yapılandırma sürecinde rehberlik eder ve bu da uyarı almak için doğru şeyleri bulmayı kolaylaştırır.
-- **Akıllı uyarılar birleştirme** ve **uyarı durumunu ayarlama** -daha yeni uyarılar, Kullanıcı arabirimindeki aşırı yüklemeyi azaltmak için benzer uyarıları gösteren otomatik gruplandırma işlevlerini içerir. 
+- **Akıllı uyarılar birleştirme** ve **uyarı durumunu ayarlama**  -daha yeni uyarılar, Kullanıcı arabirimindeki aşırı yüklemeyi azaltmak için benzer uyarıları gösteren otomatik gruplandırma işlevlerini içerir. 
 
 Daha yeni ölçüm uyarıları klasik ölçüm uyarıları üzerinde aşağıdaki avantajlara sahiptir:
 - **İyileştirilmiş gecikme**: daha yeni ölçüm uyarıları, her dakika daha sık çalıştırılabilir. Daha eski ölçüm uyarıları her zaman 5 dakikalık bir sıklıkta çalışır. Daha yeni uyarılar, sorun oluşma süresinden bildirim veya eyleme (3 ila 5 dakika) karşı daha küçük gecikmeyi artırır. Daha eski uyarılar, türe bağlı olarak 5 ila 15 dakika sürer.  Günlük uyarıları genellikle günlüklerin alınması için gereken süre nedeniyle 10 ila 15 dakikalık gecikme olur, ancak daha yeni işleme yöntemleri bu süreyi azaltmaktadır. 

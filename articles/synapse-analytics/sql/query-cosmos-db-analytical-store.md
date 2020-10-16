@@ -9,19 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757604"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097261"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te SQL Server 'ı kullanarak Azure Cosmos DB verileri sorgulama (Önizleme)
 
 SYNAPSE SQL sunucusuz (daha önce isteğe bağlı SQL), işlemsel iş yüklerinizin performansını etkilemeden [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile neredeyse gerçek zamanlı olarak etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenizi sağlar. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veri sorgulama ve t-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar.
-
-> [!NOTE]
-> SQL sunucusuz ile Azure Cosmos DB analitik depoyu sorgulama desteği şu anda geçitli önizlemededir. 
 
 Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) yüzeyi alanı [SQL işlevlerinin ve işleçlerin](overview-features.md)çoğunluğu dahil olmak üzere [OPENROWSET](develop-openrowset.md) işlevi aracılığıyla desteklenir. Ayrıca, Azure Blob depolama alanındaki verilerle birlikte Azure Cosmos DB verileri okuyan sorgunun sonuçlarını veya [dış tablo oluştur](develop-tables-cetas.md#cetas-in-sql-on-demand)' u kullanarak Azure Data Lake Storage ' i seçin. Şu anda [Cetas](develop-tables-cetas.md#cetas-in-sql-on-demand)kullanarak Azure Cosmos db SQL sunucusuz sorgu sonuçlarını depolayamaz.
 
@@ -36,10 +33,15 @@ OPENROWSET(
        'CosmosDB',
        '<Azure Cosmos DB connection string>',
        <Container name>
-    )  [ < with clause > ]
+    )  [ < with clause > ] AS alias
 ```
 
-Azure Cosmos DB bağlantı dizesi, çalışacak Azure Cosmos DB hesap adı, veritabanı adı, veritabanı hesabı ana anahtarı ve isteğe bağlı bir bölge adı belirtir `OPENROWSET` . Bağlantı dizesi aşağıdaki biçimdedir:
+Azure Cosmos DB bağlantı dizesi, çalışacak Azure Cosmos DB hesap adı, veritabanı adı, veritabanı hesabı ana anahtarı ve isteğe bağlı bir bölge adı belirtir `OPENROWSET` . 
+
+> [!IMPORTANT]
+> Sonra diğer adı kullandığınızdan emin olun `OPENROWSET` . İşlevden sonra diğer adı belirtmezseniz, SYNAPSE sunucusuz SQL uç noktasına bağlantı sorunu oluşmasına neden olan [bilinen bir sorun](#known-issues) vardır `OPENROWSET` .
+
+Bağlantı dizesi aşağıdaki biçimdedir:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
@@ -252,6 +254,22 @@ Azure Cosmos DB SQL (Core) API 'SI hesaplarının JSON özelliği türlerini des
 | İç içe nesne veya dizi | JSON metni olarak seri hale getirilmiş varchar (max) (UTF8 veritabanı harmanlaması) |
 
 Mongo DB API türü Azure Cosmos DB hesaplarını sorgulamak için, analitik depoda tam uygunluk şeması gösterimi ve [burada](../../cosmos-db/analytical-store-introduction.md#analytical-schema)kullanılacak genişletilmiş özellik adları hakkında daha fazla bilgi edinebilirsiniz.
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+- Diğer **ad** , işlevinden sonra belirtilmelidir `OPENROWSET` (örneğin, `OPENROWSET (...) AS function_alias` ). Takma ad atlama bağlantı sorununa neden olabilir ve SYNAPSE sunucusuz SQL uç noktası geçici olarak kullanılamıyor olabilir. Bu sorun, Kasım 2020 ' de çözümlenir.
+- SYNAPSE sunucusuz SQL Şu anda [Azure Cosmos DB tam uygunluk şemasını](../../cosmos-db/analytical-store-introduction.md#schema-representation)desteklemiyor. İyi tanımlanmış şemaya Cosmos DB erişmek için yalnızca SYNAPSE sunucusuz SQL kullanın.
+
+Olası hataların listesi ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir:
+
+| Hata | Kök neden |
+| --- | --- |
+| Sözdizimi hataları:<br/> -' OPENROWSET ' yakınında yanlış sözdizimi<br/> - `...` tanınan bir toplu OPENROWSET sağlayıcı seçeneği değil.<br/> -Yakınında yanlış söz dizimi `...` | Olası kök nedenler<br/> -İlk parametre olarak ' CosmosDB ' kullanmıyor,<br/> -Üçüncü parametrede tanımlayıcı yerine dize sabit değeri kullanma<br/> -Üçüncü parametre (kapsayıcı adı) belirtilmiyor |
+| CosmosDB bağlantı dizesinde bir hata oluştu | -Hesap, veritabanı, anahtar belirtilmemiş <br/> -Bağlantı dizesinde tanınmayan bir seçenek vardır.<br/> -Noktalı virgül, `;` bağlantı dizesinin sonuna yerleştirilir |
+| CosmosDB yolunun çözümlenmesi ' hatalı hesap/veritabanı adı ' hatasıyla başarısız oldu | Belirtilen hesap adı veya veritabanı adı bulunamıyor. |
+| CosmosDB yolunu çözümleme, ' yanlış gizli değer ' ' gizli anahtarı null veya boş ' hatası vererek başarısız oldu | Hesap anahtarı geçerli değil veya eksik. |
+
+[Azure SYNAPSE geri bildirim sayfasında](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)öneriler ve sorunlar rapor edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

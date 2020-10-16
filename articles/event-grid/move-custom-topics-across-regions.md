@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145357"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Azure Event Grid özel konuları başka bir bölgeye taşıyın
@@ -25,7 +25,7 @@ Bu makalede ele alınan üst düzey adımlar aşağıda verilmiştir:
 - **Dağıtımı doğrulayın**. Özel konunun hedef bölgede oluşturulduğunu doğrulayın. 
 - **Taşıma işleminin tamamlanabilmesi**için, kaynak bölgeden özel konuyu silin. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Hızlı başlangıcı doldurun [: özel olayları kaynak bölgedeki Web uç noktasına yönlendir](custom-event-quickstart-portal.md) . Bu makaledeki adımları test edebilmeniz için bu adımı uygulayın. 
 - Event Grid hizmetinin hedef bölgede kullanılabildiğinden emin olun. [Bölgeye göre kullanılabilen ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)görüntüleyin.
 
@@ -38,22 +38,10 @@ Başlamak için, özel konu için bir Kaynak Yöneticisi şablonu dışarı akta
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="Event Grid konuları arayın ve seçin":::
 3. Kaynak Yöneticisi şablonuna aktarmak istediğiniz **konuyu** seçin. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Özel konuyu seçin":::   
+    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Event Grid konuları arayın ve seçin":::   
 4. **Event Grid konu** sayfasında sol menüdeki **Ayarlar** ' ın altında **şablonu dışarı aktar** ' ı seçin ve ardından araç çubuğunda **İndir** ' i seçin. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Şablonu dışarı aktar-> Indir":::   
-
-    > [!IMPORTANT]
-    > Yalnızca konu, şablona verilir. Konu için abonelikler aktarılmaz. Bu nedenle, konuyu hedef bölgeye taşıdıktan sonra konu için abonelikler oluşturmanız gerekir. 
-5. Portaldan indirdiğiniz **. zip** dosyasını bulun ve bu dosyayı seçtiğiniz bir klasöre ayıklayın. Bu ZIP dosyası Template ve Parameters JSON dosyalarını içerir. 
-1. **template.js** seçtiğiniz bir düzenleyicide açın. 
-8. `location` **Konu** kaynağını hedef bölgeye veya konuma güncelleştirin. Konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). Bir bölgenin kodu, boşluk içermeyen bölge adıdır, örneğin, `West US` eşittir `westus` .
-
-    ```json
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2020-06-01",
-    "name": "[parameters('topics_mytopic0130_name')]",
-    "location": "westus"
+    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Event Grid konuları arayın ve seçin"
     ```
 1. Şablonu **kaydedin** . 
 
@@ -74,14 +62,14 @@ Hedef bölgede özel bir konu oluşturmak için şablonu dağıtın.
     1. **Konu adı**için, konu için yeni bir ad girin. 
     1. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin. 
     
-        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Özel dağıtım":::
+        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Event Grid konuları arayın ve seçin":::
     1. **Gözden geçir + oluştur** sayfasında ayarları gözden geçirin ve **Oluştur**' u seçin. 
 
 ## <a name="verify"></a>Doğrulama
 
 1. Dağıtım başarılı olduktan sonra **Kaynağa Git**' i seçin. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Kaynağa git":::
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Event Grid konuları arayın ve seçin":::
 1. Özel konu için **Event Grid konu** sayfasını görtığınızdan emin olun.   
 1. Konuya olay göndermek için [özel olayları bir Web uç noktasına yönlendir](custom-event-quickstart-portal.md#send-an-event-to-your-topic) ' i izleyin. Web kancası olay işleyicisinin çağrıldığından emin olun. 
 

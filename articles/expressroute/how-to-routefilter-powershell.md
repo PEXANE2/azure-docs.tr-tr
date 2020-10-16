@@ -1,21 +1,22 @@
 ---
-title: 'ExpressRoute: yönlendirme filtreleri-Microsoft eşlemesi: Azure PowerShell'
-description: Bu makalede, PowerShell kullanarak Microsoft eşlemesi için yol filtrelerinin nasıl yapılandırılacağı açıklanır.
+title: 'Öğretici: Microsoft eşlemesi için yol filtrelerini Yapılandırma-Azure PowerShell'
+description: Bu öğreticide, PowerShell kullanarak Microsoft eşlemesi için yol filtrelerinin nasıl yapılandırılacağı açıklanmaktadır.
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 02/25/2019
+ms.topic: tutorial
+ms.date: 10/08/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: c4ca4362f10ea6ed2fa7cc39370fc9b4c764ff3b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 90d4def5a1c08e305b9315f299e83e2187b6be2c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566203"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969951"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft eşlemesi için rota filtrelerini yapılandırma: PowerShell
+# <a name="tutorial-configure-route-filters-for-microsoft-peering-using-powershell"></a>Öğretici: PowerShell kullanarak Microsoft eşlemesi için yol filtrelerini yapılandırma
+
 > [!div class="op_single_selector"]
 > * [Azure Portalı](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -26,125 +27,80 @@ Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi a
 
 Exchange Online, SharePoint Online ve Skype Kurumsal gibi Microsoft 365 hizmetlere ve depolama ve SQL DB gibi Azure ortak hizmetlerine Microsoft eşlemesi aracılığıyla erişilebilir. Azure genel hizmetleri bölge başına seçilebilir ve genel hizmet başına tanımlanamaz.
 
-ExpressRoute devresi üzerinde Microsoft eşlemesi yapılandırıldığında ve bir yol filtresi eklendiğinde, bu hizmetler için seçilen tüm önekler oluşturulan BGP oturumları aracılığıyla bildirilir. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerinin ve eşlendikleri hizmetlerin listesi için bkz. [BGP toplulukları](expressroute-routing.md#bgp).
+ExpressRoute bağlantı hattındaki Microsoft eşlemesi yapılandırıldığında, bu hizmetlerle ilgili tüm önekler, oluşturulan BGP oturumları aracılığıyla tanıtıldığında. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerinin ve eşlendikleri hizmetlerin listesi için bkz. [BGP toplulukları](expressroute-routing.md#bgp).
 
-Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Seçenekleriniz şunlardır:
+Tüm Azure ve Microsoft 365 hizmetlerine yönelik bağlantı, BGP aracılığıyla çok sayıda önek tanıtılmasına neden olur. Büyük sayıda önek, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Seçenekleriniz şunlardır:
 
-- BGP topluluklarına rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Bu standart bir ağ uygulamasıdır ve genellikle birçok ağ içinde kullanılır.
+* BGP topluluklarına rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Yol filtreleme standart bir ağ uygulamasıdır ve çoğu ağ içinde yaygın olarak kullanılır.
 
-- Rota filtrelerini tanımlayın ve bunları ExpressRoute devrenizi ile uygulayın. Yol filtresi, Microsoft eşlemesi aracılığıyla tüketmek üzere planladığınız hizmetlerin listesini seçmenize olanak sağlayan yeni bir kaynaktır. ExpressRoute yönlendiricileri yalnızca yol filtresinde tanımlanan hizmetlere ait olan ön eklerin listesini gönderir.
+* Rota filtrelerini tanımlayın ve bunları ExpressRoute devrenizi ile uygulayın. Yol filtresi, Microsoft eşlemesi aracılığıyla tüketmek üzere planladığınız hizmetlerin listesini seçmenize olanak sağlayan yeni bir kaynaktır. ExpressRoute yönlendiricileri yalnızca yol filtresinde tanımlanan hizmetlere ait olan ön eklerin listesini gönderir.
+
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+> [!div class="checklist"]
+> - BGP topluluk değerlerini al.
+> - Rota filtresi ve filtre kuralı oluşturma.
+> - Rota filtresini bir ExpressRoute devresine ilişkilendirin.
 
 ### <a name="about-route-filters"></a><a name="about"></a>Yol filtreleri hakkında
 
-ExpressRoute bağlantı hattınızda Microsoft eşlemesi yapılandırıldığında, Microsoft ağ uç yönlendiricileri, uç yönlendiricilerle (sizinki veya bağlantı sağlayıcınız) bir çift BGP oturumu oluşturur. Ağınıza rota tanıtılmaz. Ağınızda rota tanıtılmasını sağlamak için bir rota filtresiyle ilişkilendirmeniz gerekir.
+ExpressRoute devreniz için Microsoft eşlemesi yapılandırıldığında, Microsoft Edge yönlendiricileri, bağlantı sağlayıcınız aracılığıyla Edge yönlendiricileriniz ile bir dizi BGP oturumu oluşturur. Ağınıza rota tanıtılmaz. Ağınızda rota tanıtılmasını sağlamak için bir rota filtresiyle ilişkilendirmeniz gerekir.
 
-Rota filtresi, ExpressRoute bağlantı hattınızın Microsoft eşlemesi üzerinden kullanmak istediğiniz hizmetleri tanımlamanızı sağlar. Bu aslında tüm BGP topluluk değerlerinin izin verilenler listesidir. Rota filtresi kaynağı tanımlandıktan ve bir ExpressRoute bağlantı hattına eklendikten sonra BGP topluluk değerleriyle eşleşen tüm ön ekler ağınızda tanıtılır.
+Rota filtresi, ExpressRoute bağlantı hattınızın Microsoft eşlemesi üzerinden kullanmak istediğiniz hizmetleri tanımlamanızı sağlar. Bu aslında tüm BGP topluluk değerlerinin izin verilen bir listesidir. Bir yol filtresi kaynağı tanımlandıktan ve bir ExpressRoute devresine eklendikten sonra, BGP topluluk değerleriyle eşlenen tüm önekler ağınıza tanıtılabilir.
 
-Yönlendirme filtrelerini bunlara Microsoft 365 hizmetleriyle iliştirebilmek için, ExpressRoute aracılığıyla Microsoft 365 hizmetleri kullanma yetkisiyle sahip olmanız gerekir. ExpressRoute aracılığıyla Microsoft 365 hizmetlerini kullanma yetkiniz yoksa, yol filtreleri iliştirme işlemi başarısız olur. Yetkilendirme işlemi hakkında daha fazla bilgi için bkz. [Azure ExpressRoute for Microsoft 365](/microsoft-365/enterprise/azure-expressroute).
+Yönlendirme filtrelerini Microsoft 365 hizmetleriyle birlikte eklemek için, ExpressRoute aracılığıyla Microsoft 365 hizmetleri kullanma yetkisiyle sahip olmanız gerekir. ExpressRoute aracılığıyla Microsoft 365 hizmetlerini kullanma yetkiniz yoksa, yol filtrelerini iliştirme işlemi başarısız olur. Yetkilendirme işlemi hakkında daha fazla bilgi için bkz. [Azure ExpressRoute for Microsoft 365](/microsoft-365/enterprise/azure-expressroute).
 
 > [!IMPORTANT]
 > 1 Ağustos 2017 ' den önce yapılandırılmış ExpressRoute bağlantı hattı Microsoft eşlemesi, yol filtreleri tanımlanmasa bile Microsoft eşlemesi aracılığıyla tanıtılan tüm hizmet öneklerini alacak. 1 Ağustos 2017 ' de veya sonrasında yapılandırılan ExpressRoute devrelerinin Microsoft eşlemesi, bir yol filtresi devresine iliştirilene kadar tanıtılan öneklere sahip olmayacaktır.
 > 
-> 
+## <a name="prerequisites"></a>Ön koşullar
 
-### <a name="workflow"></a><a name="workflow"></a>İş akışı
-
-Microsoft eşlemesi aracılığıyla hizmetlere başarıyla bağlanabiliyor olması için aşağıdaki yapılandırma adımlarını gerçekleştirmeniz gerekir:
+- Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md) ve [iş akışlarını](expressroute-workflows.md) gözden geçirin.
 
 - Microsoft eşlemesi sağlanmış etkin bir ExpressRoute devresine sahip olmanız gerekir. Aşağıdaki yönergeleri kullanarak şu görevleri gerçekleştirebilirsiniz:
   - Devam etmeden önce [bir ExpressRoute devresi oluşturun](expressroute-howto-circuit-arm.md) ve bağlantı sağlayıcınız tarafından devre dışı bırakıldı. ExpressRoute bağlantı hattı sağlanmış ve etkinleştirilmiş durumda olmalıdır.
   - BGP oturumunu doğrudan yönetiyorsanız, [Microsoft eşlemesi oluşturun](expressroute-circuit-peerings.md) . Ya da bağlantı sağlayıcınızın, devreniz için Microsoft eşlemesi sağlamasını sağlayın.
+  
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
--  Bir yol filtresi oluşturmanız ve yapılandırmanız gerekir.
-    - Microsoft eşlemesi aracılığıyla kullanmak için kullandığınız Hizmetleri tanımla
-    - Hizmetlerle ilişkili BGP topluluk değerlerinin listesini belirler
-    - BGP topluluk değerleriyle eşleşen ön ek listesine izin veren bir kural oluşturma
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure hesabınızda oturum açın ve aboneliğinizi seçin
 
--  Yol filtresini ExpressRoute devresine bağlamanız gerekir.
+[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
-## <a name="before-you-begin"></a>Başlamadan önce
+## <a name="get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a> Ön eklerin ve BGP topluluk değerlerinin bir listesini alın
 
-Yapılandırmaya başlamadan önce aşağıdaki ölçütleri karşıladığınızdan emin olun:
+1. Microsoft eşlemesi aracılığıyla erişilebilen hizmet ile ilişkili BGP topluluk değerlerinin ve öneklerinin listesini almak için aşağıdaki cmdlet 'i kullanın:
 
- - Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md) ve [iş akışlarını](expressroute-workflows.md) gözden geçirin.
+    ```azurepowershell-interactive
+    Get-AzBgpServiceCommunity
+    ```
 
- - Etkin bir ExpressRoute bağlantı hattınızın olması gerekir. Devam etmeden önce [ExpressRoute bağlantı hattı oluşturma](expressroute-howto-circuit-arm.md) yönergelerini izleyin ve bağlantı sağlayıcınızın bağlantı hattını etkinleştirmesini isteyin. ExpressRoute bağlantı hattı sağlanmış ve etkinleştirilmiş durumda olmalıdır.
+1. Yol filtresinde kullanmak istediğiniz BGP topluluk değerlerinin bir listesini oluşturun.
 
- - Etkin bir Microsoft eşlemesine sahip olmanız gerekir. [Eşleme yapılandırması oluşturma ve değiştirme](expressroute-circuit-peerings.md) makalesindeki yönergeleri izleyin.
+## <a name="create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>Yol filtresi ve filtre kuralı oluşturma
 
+Yol filtresi yalnızca bir kurala sahip olabilir ve kuralın ' Allow ' türünde olması gerekir. Bu kural, kendisiyle ilişkili BGP topluluk değerlerinin bir listesine sahip olabilir. Komut `az network route-filter create` yalnızca bir yol filtre kaynağı oluşturur. Kaynağı oluşturduktan sonra bir kural oluşturmanız ve bunu yol filtresi nesnesine bağlamanız gerekir.
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
+1. Bir yol filtre kaynağı oluşturmak için aşağıdaki komutu çalıştırın:
 
-[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
+    ```azurepowershell-interactive
+    New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
+    ```
 
-[!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
-
-### <a name="log-in-to-your-azure-account"></a>Azure hesabınızda oturum açma
-
-Bu yapılandırmaya başlamadan önce Azure hesabınızda oturum açmalısınız. Bu cmdlet, Azure hesabınıza ilişkin oturum açma kimlik bilgilerinizi girmenizi ister. Oturum açtıktan sonra, Azure PowerShell'de kullanabilmeniz için hesap ayarlarınızı indirir.
-
-PowerShell konsolunuzu yükseltilmiş ayrıcalıklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın. Azure Cloud Shell kullanıyorsanız, otomatik olarak oturum açabileceksiniz, bu cmdlet 'i çalıştırmanız gerekmez.
-
-```azurepowershell
-Connect-AzAccount
-```
-
-Birden çok Azure aboneliğiniz varsa, hesabın aboneliklerini denetleyin.
-
-```azurepowershell-interactive
-Get-AzSubscription
-```
-
-Kullanmak istediğiniz aboneliği belirtin.
-
-```azurepowershell-interactive
-Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-```
-
-## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>1. Adım: ön eklerin ve BGP topluluk değerlerinin listesini alın
-
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. BGP topluluk değerlerinin bir listesini alın
-
-Microsoft eşlemesi aracılığıyla erişilebilen hizmetlerle ilişkili BGP topluluk değerlerinin listesini ve bunlarla ilişkili ön eklerin listesini almak için aşağıdaki cmdlet 'i kullanın:
-
-```azurepowershell-interactive
-Get-AzBgpServiceCommunity
-```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. kullanmak istediğiniz değerlerin bir listesini oluşturun
-
-Yol filtresinde kullanmak istediğiniz BGP topluluk değerlerinin bir listesini oluşturun.
-
-## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>2. Adım: bir yol filtresi ve bir filtre kuralı oluşturma
-
-Yol filtresi yalnızca bir kurala sahip olabilir ve kuralın ' Allow ' türünde olması gerekir. Bu kural, kendisiyle ilişkili BGP topluluk değerlerinin bir listesine sahip olabilir.
-
-### <a name="1-create-a-route-filter"></a>1. yol filtresi oluşturma
-
-İlk olarak, yol filtresini oluşturun. ' New-AzRouteFilter ' komutu yalnızca bir yol filtre kaynağı oluşturuyor. Kaynağı oluşturduktan sonra bir kural oluşturmanız ve bunu yol filtresi nesnesine bağlamanız gerekir. Bir yol filtresi kaynağı oluşturmak için aşağıdaki komutu çalıştırın:
-
-```azurepowershell-interactive
-New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
-```
-
-### <a name="2-create-a-filter-rule"></a>2. filtre kuralı oluşturma
-
-Bir BGP toplulukları kümesini, örnekte gösterildiği gibi, virgülle ayrılmış bir liste olarak belirtebilirsiniz. Yeni bir kural oluşturmak için aşağıdaki komutu çalıştırın:
+1. Bir yol filtre kuralı oluşturmak için aşağıdaki komutu çalıştırın:
  
-```azurepowershell-interactive
-$rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList 12076:5010,12076:5040
-```
+    ```azurepowershell-interactive
+    $rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList 12076:5010,12076:5040
+    ```
 
-### <a name="3-add-the-rule-to-the-route-filter"></a>3. kuralı rota filtresine ekleyin
-
-Filtre kuralını rota filtresine eklemek için aşağıdaki komutu çalıştırın:
+1. Filtre kuralını rota filtresine eklemek için aşağıdaki komutu çalıştırın:
  
-```azurepowershell-interactive
-$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
-$routefilter.Rules.Add($rule)
-Set-AzRouteFilter -RouteFilter $routefilter
-```
+    ```azurepowershell-interactive
+    $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+    $routefilter.Rules.Add($rule)
+    Set-AzRouteFilter -RouteFilter $routefilter
+    ```
 
-## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>3. Adım: yol filtresini bir ExpressRoute devresine Iliştirme
+## <a name="attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Yol filtresini bir ExpressRoute devresine iliştirme
 
 Yönlendirme filtresini ExpressRoute bağlantı hattına eklemek için aşağıdaki komutu çalıştırın ve yalnızca Microsoft 'un eşlemesini kullanabilirsiniz:
 
@@ -174,7 +130,7 @@ Bir yol filtresinin özelliklerini almak için aşağıdaki adımları kullanın
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Bir yol filtresinin özelliklerini güncelleştirmek için
 
-Yol filtresi zaten bir bağlantı hattına eklenmişse, BGP topluluk listesi güncelleştirmeleri otomatik olarak, belirlenen BGP oturumlarıyla ilgili önek tanıtım değişikliklerini yayar. Aşağıdaki komutu kullanarak yol filtrenizin BGP topluluk listesini güncelleştirebilirsiniz:
+Yol filtresi zaten bir bağlantı hattına eklenmişse, BGP topluluk listesi güncelleştirmeleri otomatik olarak, belirlenen BGP oturumunda önek tanıtım değişikliklerini yayar. Aşağıdaki komutu kullanarak yol filtrenizin BGP topluluk listesini güncelleştirebilirsiniz:
 
 ```azurepowershell-interactive
 $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
@@ -191,9 +147,9 @@ $ckt.Peerings[0].RouteFilter = $null
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Yol filtresini silmek için
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir yol filtresini yalnızca herhangi bir devreye iliştirilmişse silebilirsiniz. Yol filtresinin silmeyi denemeden önce herhangi bir devreye bağlı olmadığından emin olun. Aşağıdaki komutu kullanarak bir yol filtresini silebilirsiniz:
+Bir yol filtresini yalnızca herhangi bir devreye iliştirilmemişse silebilirsiniz. Yol filtresinin silmeyi denemeden önce herhangi bir devreye bağlı olmadığından emin olun. Aşağıdaki komutu kullanarak bir yol filtresini silebilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
@@ -201,4 +157,7 @@ Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-ExpressRoute hakkında daha fazla bilgi için, bkz. [ExpressRoute SSS](expressroute-faqs.md).
+Yönlendirici yapılandırma örnekleri hakkında daha fazla bilgi için bkz.:
+
+> [!div class="nextstepaction"]
+> [Yönlendirmeyi ayarlamak ve yönetmek için yönlendirici yapılandırma örnekleri](expressroute-config-samples-routing.md)

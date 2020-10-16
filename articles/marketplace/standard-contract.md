@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/20/2020
-ms.openlocfilehash: 3487b5a069b1862ec302a979318ea78722b1433c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 3079cb18f7bc88d691081a7970f5833e8b8d6887
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361696"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078196"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
 
@@ -34,7 +34,7 @@ Ticari Market yayımcıları için iki çeşit değişiklik bulunur:
 * Özel değişiklik: Bu değişiklik, yalnızca Azure kiracı kimlikleri aracılığıyla belirli müşterileri hedefleyen standart sözleşmeye yönelik özel değişiklik amaçlıdır. Yayımcılar hedeflemek istedikleri kiracıyı seçebilirler. Yalnızca kiracının müşterilerine, teklifin satın alma akışındaki özel değişiklik koşulları sunulur.  Müşterilerin teklifinizi kullanabilmesi için önce standart sözleşme ve değişiklik koşullarını kabul etmesi gerekir.
 
 >[!Note]
->Bu iki tür değişiklik yığını birbirlerinin üzerine. Özel değişiklik ile hedeflenen müşteriler, satın alma sırasında standart sözleşmeye evrensel değişiklik de alır.
+>Bu iki tür değişiklik yığını birbirlerinin üzerine. Özel değişiklik ile hedeflenen müşteriler, satın alma sırasında standart sözleşmeye evrensel değişiklik de alır. Değişiklik sayısı, boşluklar dahil 4000 karakterle sınırlıdır.
 
 Aşağıdaki teklif türleri için Microsoft ticari Marketi için standart sözleşme özelliğinden yararlanabilirsiniz: Azure uygulamaları (çözüm şablonları ve yönetilen uygulamalar), sanal makineler ve SaaS.
 
@@ -50,4 +50,4 @@ Azure portal satın alma işlemi sırasında müşteriler, Microsoft ticari Mark
 
 ## <a name="api"></a>API
 
-Müşteriler, bir teklifin şartlarını almak ve kabul etmek için Get-Azurermmarket Placeterms ' i kullanabilir. Standart Sözleşme ve ilişkili değişiklik, cmdlet 'in çıkışında döndürülür.
+Müşteriler bir teklif şartlarını almak ve kabul etmek için Get-AzureRmMarketplaceTerms kullanabilir. Standart Sözleşme ve ilişkili değişiklik, cmdlet 'in çıkışında döndürülür.

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 085da17a29e1d5ff1fa69a62e0029fb917d56bb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e404e4cc0e4131ba7ade5ec8ec6115e26268a2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936342"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965905"
 ---
 # <a name="call-the-computer-vision-api"></a>Görüntü İşleme API’sini çağırma
 
@@ -35,7 +35,7 @@ Bu makaledeki örneklerde aşağıdaki özellikler gösterilmektedir:
 - **Seçenek 1**: kapsamlı analiz-yalnızca belirtilen modeli çözümle
 - **Seçenek 2**: gelişmiş analiz- [86-Categories taksonomi](../Category-Taxonomy.md) kullanarak ek ayrıntılar sağlamak için çözümleyin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -148,7 +148,7 @@ Bu durumda, tüm v1 sorgu parametreleri aynı şekilde davranır. VisualFeatures
 
 ## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Analiz için JSON çıkışını alma ve anlama
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 ```json
 {  
@@ -254,4 +254,4 @@ Bu hatalar, hem 1 hem de seçenek 2 senaryolarında döndürülen ek NotSupporte
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-REST API’yi kullanmak için [Görüntü İşleme API’si Başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b) bölümüne gidin.
+REST API’yi kullanmak için [Görüntü İşleme API’si Başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) bölümüne gidin.

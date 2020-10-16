@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: f5ac97812f973a20f6ee4c2dea34baaeb91203af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91605898"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016556"
 ---
 ![Dsv3 belgeleri](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -129,4 +129,21 @@ VM GÇ dönüşü tanılamaya yardımcı olan ölçümler:
 - **VM önbelleğe alınan bant genişliği yüzdesi** -toplam disk işleme tarafından hesaplanan yüzde, önbelleğe alınan en fazla sanal makine performansı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmış bant genişliği sınırından itibaren GÇ üzerinden yapılır.
 - **VM önbelleğe ALıNMAMıŞ IOPS yüzdesi** -bir sanal MAKINEDEKI toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmamış maksimum sanal makine IOPS sınırı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmamış ıOPS sınırından itibaren GÇ üzerinden yapılır.
 - **VM önbelleğe alınmamış bant genişliği yüzdesi** -sanal makinedeki toplam disk aktarım hızı tarafından hesaplanan yüzde, sağlanan en yüksek sanal makine aktarım hızı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız, sanal makinenin önbelleğe alınmamış bant genişliği sınırından itibaren GÇ üzerinden yapılır.
+
+## <a name="storage-io-utilization-metrics-example"></a>Storage ıO kullanım ölçümleri örneği
+Bu yeni depolama GÇ kullanım ölçümlerini kullanarak hata ayıklamamıza yardımcı olması için bu yeni depolama ıO kullanım ölçümlerinin nasıl kullanılacağına ilişkin bir örnek üzerinden çalıştırılalım. Sistem Kurulumu, bir önceki örnekte sahip olduğumuz, bu süre dışında, eklediğimiz işletim sistemi Diskimizin **önbelleğe alınmadığı** bir süredir.
+
+Ayarla:
+- Standard_D8s_v3 
+    - Önbelleğe alınan ıOPS: 16.000
+    - Önbelleğe alınmamış ıOPS: 12.800
+- P30 işletim sistemi diski 
+    - IOPS: 5.000
+    - Konak önbelleğe alma: devre dışı
+- 2 P30 veri diski X 2
+    - IOPS: 5.000
+    - Konak önbelleğe alma: okuma/yazma
+- 2 P30 veri diski X 2
+    - IOPS: 5.000
+    - Konak önbelleğe alma: devre dışı
 

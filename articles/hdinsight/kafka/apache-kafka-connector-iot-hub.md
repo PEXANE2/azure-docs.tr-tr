@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
 ms.openlocfilehash: ea7aa7758b5ccf7be02fa8d450ce710dcbef86a4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087393"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Azure ile HDInsight üzerinde Apache Kafka kullanın IoT Hub
@@ -29,7 +29,7 @@ Aşağıdaki diyagramda, bağlayıcıyı kullanırken HDInsight üzerinde Azure 
 
 Connect API 'SI hakkında daha fazla bilgi için bkz [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect) ..
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Kafka kümesi. Daha fazla bilgi için [HDInsight üzerinde Kafka hızlı başlangıcı](apache-kafka-get-started.md) belgesine bakın.
 
@@ -123,7 +123,7 @@ SSH bağlantınızdan kenar düğümüne, bağlayıcıyı tek başına modda ça
     |`bootstrap.servers=localhost:9092`|Değeri, `localhost:9092` önceki adımdaki aracı konaklarıyla değiştirin|Kafka aracılarını bulmak için kenar düğümü için tek başına yapılandırmayı yapılandırır.|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Bu değişiklik, Kafka ile birlikte sunulan konsol üreticisi 'ni kullanarak test etmenizi sağlar. Diğer üreticileri ve tüketiciler için farklı dönüştürücülerin olması gerekebilir. Diğer dönüştürücü değerlerini kullanma hakkında daha fazla bilgi için bkz [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) ..|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Yukarıdaki gibi.|
-    |YOK|`consumer.max.poll.records=10`|Dosyanın sonuna ekleyin. Bu değişiklik, havuz bağlayıcısında aynı anda 10 kayıt arasında sınırlama yaparak zaman aşımlarını önlemektir. Daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
+    |Yok|`consumer.max.poll.records=10`|Dosyanın sonuna ekleyin. Bu değişiklik, havuz bağlayıcısında aynı anda 10 kayıt arasında sınırlama yaparak zaman aşımlarını önlemektir. Daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
 
 1. Dosyayı kaydetmek için __CTRL + X__, __Y__kullanın ve ardından __girin__.
 

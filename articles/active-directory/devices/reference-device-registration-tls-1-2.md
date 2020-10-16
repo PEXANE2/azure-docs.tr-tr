@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268766"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>Azure AD kayıt hizmeti için TLS 1,2 ' i zorla
@@ -37,13 +37,13 @@ Azure AD cihaz kayıt hizmeti 'ni kullanan veya proxy olarak görev yapan Window
 
 Aşağıdaki kayıt defteri dizelerinin gösterildiği gibi yapılandırıldığından emin olun:
 
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Istemci
   - "DisabledByDefault" = DWORD: 00000000
   - "Etkin" = DWORD: 00000001
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ sunucu
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ sunucu
   - "DisabledByDefault" = DWORD: 00000000
   - "Etkin" = DWORD: 00000001
-- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\. NETFramework\v4.0.30319
   - "Schusestrongşifre" = DWORD: 00000001
 
 ## <a name="update-non-windows-proxies"></a>Windows olmayan proxy 'leri Güncelleştir

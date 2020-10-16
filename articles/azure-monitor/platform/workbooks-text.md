@@ -2,19 +2,17 @@
 title: Azure Izleyici çalışma kitapları metin parametreleri
 description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın. Çalışma kitabı metin parametreleri hakkında daha fazla bilgi edinin.
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7241777c0b94ce7ccadbd273c5c305c679bfe30a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687337"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932320"
 ---
 # <a name="workbook-text-parameters"></a>Çalışma kitabı metin parametreleri
 
@@ -27,10 +25,10 @@ Metin kutularının yaygın kullanımı, diğer çalışma kitabı denetimleri t
 2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
 3. Mavi _parametre Ekle_ düğmesine tıklayın.
 4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı:`SlowRequestThreshold`
-    2. Parametre türü:`Text`
-    3. Gerekli:`checked`
-    4. Sorgudan varsayılan değeri al:`unchecked`
+    1. Parametre adı: `SlowRequestThreshold`
+    2. Parametre türü: `Text`
+    3. Gerekli: `checked`
+    4. Sorgudan varsayılan değeri al: `unchecked`
 5. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
 
     ![Metin parametresinin oluşturulmasını gösteren resim](./media/workbooks-text/text-create.png)
@@ -67,10 +65,10 @@ Metin kutularının yaygın kullanımı, diğer çalışma kitabı denetimleri t
 2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
 3. Mavi _parametre Ekle_ düğmesine tıklayın.
 4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı:`SlowRequestThreshold`
-    2. Parametre türü:`Text`
-    3. Gerekli:`checked`
-    4. Sorgudan varsayılan değeri al:`checked`
+    1. Parametre adı: `SlowRequestThreshold`
+    2. Parametre türü: `Text`
+    3. Gerekli: `checked`
+    4. Sorgudan varsayılan değeri al: `checked`
 5. KQL kutusunda şu kod parçacığını ekleyin:
     ```kusto
     requests

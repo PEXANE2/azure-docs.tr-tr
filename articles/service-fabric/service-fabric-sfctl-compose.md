@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: e84b35ff3dfa7be0c848a4d7b906c622d9b88914
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257337"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
@@ -30,7 +30,7 @@ Docker Compose uygulamalar oluşturun, silin ve yönetin.
 ## <a name="sfctl-compose-create"></a>sfctl oluşturma oluştur
 Service Fabric oluşturma dağıtımı oluşturur.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -56,7 +56,7 @@ Service Fabric kümesinde oluşturulan oluşturma dağıtımlarının listesini 
 
 Service Fabric kümesinde oluşturulma sürecinde veya oluşturulurken oluşturulan dağıtımların durumunu alır. Yanıt, oluşturma dağıtımları hakkında ad, durum ve diğer ayrıntıları içerir. Dağıtım listesi bir sayfaya uygun değilse, bir sonuç sayfası ve bir sonraki sayfayı almak için kullanılabilecek bir devamlılık belirteci döndürülür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -79,7 +79,7 @@ Kümeden varolan bir Service Fabric oluşturma dağıtımını siler.
 
 Var olan bir Service Fabric Compose dağıtımını siler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -101,7 +101,7 @@ Service Fabric oluşturma dağıtımı hakkında bilgi alır.
 
 Oluşturulan veya Service Fabric kümesinde oluşturulma sürecinde ve adı parametresi olarak belirtilen adla eşleşen oluşturma dağıtımının durumunu döndürür. Yanıt, dağıtım ile ilgili ad, durum ve diğer ayrıntıları içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -123,7 +123,7 @@ Service Fabric kümesinde bir oluşturma dağıtımını yükseltmeye başlar.
 
 Sağlanan yükseltme parametrelerini doğrular ve parametreler geçerliyse dağıtımı yükseltmeye başlar.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -163,7 +163,7 @@ Service Fabric kümesinde bir dağıtım yükseltmesini oluşturma ile çalışm
 
 Service Fabric oluşturma dağıtım yükseltmesini geri alın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -185,7 +185,7 @@ Bu Service Fabric oluşturma dağıtımı üzerinde gerçekleştirilen en son y�
 
 Dağıtım yükseltmesinin oluşturma durumuyla birlikte, uygulama sistem durumu sorunlarını ayıklamaya yardımcı olacak ayrıntılarla ilgili bilgileri döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

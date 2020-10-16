@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: d6532747c50311ada4df6a0038bd0e05f4d9ce31
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400715"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089703"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Sanal ağ veya VPN bağlantılarını yapılandırma ve doğrulama
 
@@ -64,7 +64,7 @@ Eşleme yapılandırmasını denetlemek için aşağıdaki yöntemi kullanın:
 
 ![Sanal ağ eşleme yapılandırmasını denetleme seçimleri](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Azure PowerShell için, sanal ağ eşlemesini almak üzere [Get-Azurermvirtualnetworkeşleme](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) komutunu çalıştırın. Aşağıda bir örnek verilmiştir:
+Azure PowerShell için, sanal ağ eşlemesini almak üzere [Get-Azurermvirtualnetworkeşleme](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) komutunu çalıştırın. İşte bir örnek:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -122,7 +122,7 @@ Farklı aboneliklerdeki ve farklı bölgelerdeki sanal ağlar arasında bir bağ
 
 Klasik bir sanal ağ ile Kaynak Yöneticisi sanal ağ arasında bağlantı yapılandırmak için, bkz. [Azure Portal kullanarak farklı dağıtım modellerindeki sanal ağları bağlama](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
 
-![Azure Resource Manager sanal ağ ile klasik sanal ağ bağlantısı](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+![Azure Resource Manager bir sanal ağa yönelik bir klasik sanal ağ bağlantısını gösteren diyagram.](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
 Klasik bir sanal ağı bir Azure Resource Manager sanal ağa bağladığınızda yapılandırmayı denetlemek için bu yönergeleri izleyin.
 
@@ -258,7 +258,7 @@ Bağlantı nesnesi BGP 'nin etkin olması gerekir. `-EnableBGP`Değeri `$True` [
 
 ### <a name="validate-the-bgp-configuration"></a>BGP yapılandırmasını doğrulama
 
-BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örneğin:
+BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örnek:
 
 ```
 {

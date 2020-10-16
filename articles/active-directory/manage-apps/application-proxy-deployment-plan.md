@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
 ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642427"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlama
@@ -241,7 +241,7 @@ Uygulamanızın dış URL aracılığıyla ona erişen uygulama proxy 'Si aracı
 
 Ön kimlik doğrulaması etkinken, Azure AD, kullanıcıları kimlik doğrulaması için önce ve çoklu oturum açma yapılandırıldıktan sonra da uygulamanın erişim izni verilmeden önce kullanıcının kimliğini doğrulayacaktır. Ön kimlik doğrulama modunun geçiş 'den Azure AD 'ye değiştirilmesi, dış URL 'yi HTTPS ile de yapılandırır, bu nedenle başlangıçta HTTP için yapılandırılmış tüm uygulamaların artık HTTPS ile güvenliği sağlanır.
 
-### <a name="enable-single-sign-on"></a>Çoklu oturum açmayı etkinleştir
+### <a name="enable-single-sign-on"></a>Tek Sign-On etkinleştir
 
 SSO, kullanıcıların Azure AD 'ye erişirken yalnızca bir kez oturum açması gerektiğinden, en iyi olası kullanıcı deneyimini ve güvenliğini sağlar. Bir kullanıcının kimliği önceden doğrulandıktan sonra, SSO Kullanıcı adına şirket içi uygulamada kimlik doğrulaması yapan uygulama proxy Bağlayıcısı tarafından gerçekleştirilir. Arka uç uygulaması, oturum açma işlemini kullanıcının kendisi gibi işler.
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d5167d9041e8edfd6e829bdd1a78f826f73eea4d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531250"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964596"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication ve AD FS ile bulut kaynaklarını güvenli hale getirme
 
@@ -44,7 +44,7 @@ Bulut kaynağınızın güvenliğini sağlamak için, kullanıcı iki adımlı d
 7. Gelen talep türü olarak **Kimlik Doğrulama Yöntemleri Başvuruları**’nı seçin.
 8. **Tüm talep değerlerini geçir**’i seçin.
     ![Ekran görüntüsü, tüm talep değerlerini geçir ' i seçtiğiniz dönüştürme talep kuralı ekleme Sihirbazı ' nı gösterir.](./media/howto-mfa-adfs/configurewizard.png)
-9. **Son**'a tıklayın. AD FS Yönetim Konsolu'nu kapatın.
+9. **Finish (Son)** düğmesine tıklayın. AD FS Yönetim Konsolu'nu kapatın.
 
 ## <a name="trusted-ips-for-federated-users"></a>Federasyon kullanıcıları için Güvenilen IP'ler
 
@@ -67,7 +67,7 @@ Yapmamız gereken ilk şey, AD FS taleplerini yapılandırmaktır. Biri Kurumsal
 6. Talep kuralı adının yanındaki kutuda kuralınıza bir ad verin. Örneğin: InsideCorpNet.
 7. Gelen talep türü’nün yanındaki açılır menüde, **Kurumsal Ağ İçinde** seçeneğini belirleyin.
    ![Şirket ağı talebi Içine ekleniyor](./media/howto-mfa-adfs/trustedip4.png)
-8. **Son**'a tıklayın.
+8. **Finish (Son)** düğmesine tıklayın.
 9. Verme dönüştürme kurallarında **Kural Ekle**' ye tıklayın.
 10. Dönüştürme Kuralı Ekleme Sihirbazı’nda, açılır menüden **Talepleri Özel Bir Kural Kullanarak Gönder**’i seçin ve **İleri**’ye tıklayın.
 11. Talep kuralı adı: altındaki kutuya *Kullanıcıların Oturumlarını Açık Tut* ifadesini girin.
@@ -79,7 +79,7 @@ Yapmamız gereken ilk şey, AD FS taleplerini yapılandırmaktır. Biri Kurumsal
     ![Create custom claim to keep users signed in](./media/howto-mfa-adfs/trustedip5.png)
 ```
 
-13. **Son**'a tıklayın.
+13. **Finish (Son)** düğmesine tıklayın.
 14. **Uygula**’ya tıklayın.
 15. **Tamam**’a tıklayın.
 16. AD FS Yönetimi'ni kapatın.

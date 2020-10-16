@@ -1,14 +1,14 @@
 ---
 title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
-ms.date: 08/07/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756699"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075493"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -18,8 +18,7 @@ Azure Ilkesi, hem Azure 'da hem de [yay bağlantılı makinelerde](../../../azur
 - Uygulama yapılandırması veya varlığı
 - Ortam ayarları
 
-Şu anda Azure İlkesi Konuk Yapılandırma ilkelerinin çoğu yalnızca makinenin içindeki ayarları denetlemektedir.
-Yapılandırma uygulamamaktadır. Özel durum [aşağıda başvurulan](#applying-configurations-using-guest-configuration)bir yerleşik ilkedir.
+Şu anda, çoğu Azure Ilkesi Konuk yapılandırma ilkesi tanımı yalnızca makinenin içindeki ayarları denetler. Yapılandırma uygulamamaktadır. Özel durum [aşağıda başvurulan](#applying-configurations-using-guest-configuration)bir yerleşik ilkedir.
 
 ## <a name="enable-guest-configuration"></a>Konuk yapılandırmasını etkinleştir
 
@@ -59,10 +58,9 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 
 ## <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Konuk yapılandırma ilkelerine yeni sürümler dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde kullanılabilen işletim sistemlerinin daha eski sürümleri hariç tutulur.
-Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
+Konuk yapılandırma ilkesi tanımları yeni sürümlere dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde kullanılabilen işletim sistemlerinin daha eski sürümleri hariç tutulur. Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
 
-|Publisher|Ad|Sürümler|
+|Publisher|Name|Sürümler|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 ve üzeri|
 |Credavtiv|Debian|8 ve üzeri|
@@ -72,7 +70,7 @@ Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin
 |Red Hat|Red Hat Enterprise Linux|7,4-7,8|
 |SUSE|SLES|12 SP3-SP5|
 
-Özel sanal makine görüntüleri, Konuk yapılandırma ilkeleri tarafından, yukarıdaki tablodaki işletim sistemlerinden biri oldukları sürece desteklenir.
+Özel sanal makine görüntüleri, Konuk yapılandırma ilkesi tanımları tarafından, yukarıdaki tablodaki işletim sistemlerinden biri oldukları sürece desteklenir.
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -86,7 +84,7 @@ Sanal ağları iletişim için kullanan sanal makineler, bağlantı noktasındak
 
 ### <a name="communicate-over-private-link-in-azure"></a>Azure 'da özel bağlantı üzerinden iletişim kurma
 
-Sanal makineler, Konuk yapılandırma hizmeti ile iletişim kurmak için [özel bağlantıyı](../../../private-link/private-link-overview.md) kullanabilir. `EnablePrivateNeworkGC`Bu özelliği etkinleştirmek için adı ve değeri ile etiket uygulayın `TRUE` . Bu etiket, Konuk yapılandırma ilkelerinin makineye uygulanmadan önce veya sonra uygulanabilir.
+Sanal makineler, Konuk yapılandırma hizmeti ile iletişim kurmak için [özel bağlantıyı](../../../private-link/private-link-overview.md) kullanabilir. `EnablePrivateNeworkGC`Bu özelliği etkinleştirmek için adı ve değeri ile etiket uygulayın `TRUE` . Bu etiket, Konuk yapılandırma ilkesi tanımlarının makineye uygulanmadan önce veya sonra uygulanabilir.
 
 Azure platform kaynaklarıyla güvenli ve kimliği doğrulanmış bir kanal oluşturmak için Azure [sanal genel IP adresi](../../../virtual-network/what-is-ip-address-168-63-129-16.md) kullanılarak trafik yönlendirilir.
 
@@ -111,14 +109,12 @@ Makinenin Şu anda Kullanıcı tarafından atanan bir sistem kimliği varsa, etk
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 
-Konuk yapılandırma ilkeleri **Auditınotexists** efektini kullanır. Tanım atandığında, bir arka uç hizmeti Azure Kaynak sağlayıcısındaki tüm gereksinimlerin yaşam döngüsünü otomatik olarak işler `Microsoft.GuestConfiguration` .
+Konuk yapılandırma ilkesi tanımları, **Auditınotexists** efektini kullanır. Tanım atandığında, bir arka uç hizmeti Azure Kaynak sağlayıcısındaki tüm gereksinimlerin yaşam döngüsünü otomatik olarak işler `Microsoft.GuestConfiguration` .
 
-Tüm gereksinimler makinede karşılanana kadar **Auditınotexists** ilkeleri uyumluluk sonuçlarını döndürmez. [Gereksinimler, Azure sanal makineleri için bölüm dağıtma gereksinimleri](#deploy-requirements-for-azure-virtual-machines) bölümünde açıklanmaktadır
+**Auditınotexists** ilke tanımları, makinede tüm gereksinimler karşılanana kadar uyumluluk sonuçları döndürmez. Gereksinimler, [Azure sanal makineler için bölüm dağıtma gereksinimleri](#deploy-requirements-for-azure-virtual-machines) bölümünde açıklanmaktadır.
 
 > [!IMPORTANT]
-> Konuk yapılandırmasının önceki bir sürümünde, **Deployifnot Exists** ve **Auditınotexists** tanımlarını birleştirmek için bir girişim gerekiyordu. **Deployifnotexists** tanımları artık gerekli değildir. Tanımlar ve önler etiketlidir `[Deprecated]` ancak var olan atamalar çalışmaya devam edecektir.
->
-> El ile bir adım gereklidir. İlke girişimlerini daha önce kategoride atadıysanız `Guest Configuration` , ilke atamasını silin ve yeni tanımı atayın. Konuk yapılandırma ilkeleri aşağıdaki gibi bir ad düzenine sahiptir: `Audit <Windows/Linux> machines that <non-compliant condition>`
+> Konuk yapılandırmasının önceki bir sürümünde, **Deployifnot Exists** ve **Auditınotexists** tanımlarını birleştirmek için bir girişim gerekiyordu. **Deployifnotexists** tanımları artık gerekli değildir. Tanımlar ve önler etiketlidir `[Deprecated]` ancak var olan atamalar çalışmaya devam edecektir. Bilgi için blog gönderisine bakın: [Konuk yapılandırma denetim ilkeleri Için önemli değişiklik yayınlandı](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk yapılandırma kaynak sağlayıcısı **karmaşıkancestatus** özelliğini kullanır. Daha fazla bilgi için bkz. [uyumluluk verilerini alma](../how-to/get-compliance-data.md).
 
@@ -140,15 +136,15 @@ Yalnızca _Windows makinelerinde saat dilimini yapılandıran_ tanım, saat dili
 _Yapılandırma_ile başlayan tanımları atarken, _Windows VM 'Lerde Konuk yapılandırma ilkesini etkinleştirmek için tanım dağıtma ön koşullarını_da atamanız gerekir. Seçeneğini belirlerseniz bu tanımları bir girişim içinde birleştirebilirsiniz.
 
 > [!NOTE]
-> Yerleşik saat dilimi ilkesi, makineler içindeki ayarları yapılandırmayı destekleyen tek tanımdır ve makineler içindeki ayarları yapılandıran özel ilkeler desteklenmez.
+> Yerleşik saat dilimi ilkesi, makineler içindeki ayarları yapılandırmayı destekleyen tek tanımdır ve makineler içindeki ayarları yapılandıran özel ilke tanımları desteklenmez.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Azure dışındaki makinelere ilke atama
 
-Konuk yapılandırması için kullanılabilen denetim ilkeleri **Microsoft. HybridCompute/machines** kaynak türünü içerir. İlke atamasının kapsamındaki [sunucular Için Azure yaya](../../../azure-arc/servers/overview.md) eklendi tüm makineler otomatik olarak eklenir.
+Konuk yapılandırması için kullanılabilen Denetim ilkesi tanımları, **Microsoft. HybridCompute/machines** kaynak türünü içerir. İlke atamasının kapsamındaki [sunucular Için Azure yaya](../../../azure-arc/servers/overview.md) eklendi tüm makineler otomatik olarak eklenir.
 
 ### <a name="multiple-assignments"></a>Birden çok atama
 
-Konuk yapılandırma ilkeleri Şu anda yalnızca makine başına aynı Konuk atamasının atanmasını, Ilke ataması farklı parametreler kullanıyor olsa bile destekler.
+Konuk yapılandırma ilkesi tanımları, Ilke ataması farklı parametreler kullanıyor olsa bile, şu anda yalnızca makine başına aynı Konuk atamasını atamayı destekler.
 
 ## <a name="client-log-files"></a>İstemci günlük dosyaları
 

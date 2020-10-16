@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
 ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409774"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
@@ -105,7 +105,7 @@ Açıklayıcı ilişki etiketlerinin kullanılması, sınır çözümleme işlem
 * Bir ilişkiyi etiketlemek için genel olmayan terimleri kullanın.
 * Kaynak köşesinin etiketini, ilişki adı ile hedef köşe etiketi ile ilişkilendirin.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="İlişki etiketleme örnekleri." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Özellikler için köşeleri olan varlık modeli." border="false":::
 
 Traverser 'ın kenarları filtrelemesini sağlamak için kullanacağı etiket daha iyidir. Bu karar, sorgu maliyetinde önemli bir etkiye sahip olabilir. Sorgu maliyetini, her zaman [executionProfile adımını kullanarak](graph-execution-profile.md)değerlendirebilirsiniz.
 

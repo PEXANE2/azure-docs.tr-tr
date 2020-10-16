@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565516"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory kullanarak bir grubu silme
@@ -36,7 +36,7 @@ Herhangi bir sayıda nedenden dolayı Azure Active Directory (Azure AD) grubunu 
 
 3. **Gruplar-tüm gruplar** sayfasında, silmek istediğiniz grubu arayıp seçin. Bu adımlar için **MDM ilkesi-Doğu**kullanacağız.
 
-    ![Gruplar-tüm gruplar sayfası, Grup adı vurgulanmış](media/active-directory-groups-delete-group/group-all-groups-screen.png)
+    ![Groups-All grupları sayfası, Grup adı vurgulanmış](media/active-directory-groups-delete-group/group-all-groups-screen.png)
 
 4. **MDM ilkesi-Doğu genel bakış** sayfasında, **Sil**' i seçin.
 

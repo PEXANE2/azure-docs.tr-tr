@@ -16,10 +16,10 @@ ms.date: 04/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cfc2ae06a1dca855b03f69b7f57adcfd2bfe13e5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89259889"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 dinamik şifreleme ve anahtar dağıtım hizmetini kullanma
@@ -254,7 +254,7 @@ Aşağıdaki kod, anahtar teslim URI 'Si (bildirimden ayıklanan) ve bir belirte
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Örnek
+### <a name="example"></a><a id="example"></a>Örneğinde
 
 Bu bölümde gösterilen kodu Program.cs dosyanızdaki kodun üzerine yazın.
  
@@ -268,5 +268,5 @@ Değişkenleri, giriş dosyalarınızın bulunduğu klasörlere işaret edecek �
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

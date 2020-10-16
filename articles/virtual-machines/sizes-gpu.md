@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 87314e38225d6e08f81ce6c3855f70a13db9c6bf
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: fb534ae4a59c9a5c87a7eb7ab268a40b9771fdb2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653188"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876235"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU için iyileştirilmiş sanal makine boyutları
 
 GPU en iyileştirilmiş VM boyutları, tek, birden çok veya kısmi GPU 'Lar ile sunulan özel sanal makinelerdir. Bu boyutlar, işlem yoğunluğu, grafik yoğun ve görselleştirme iş yükleri için tasarlanmıştır. Bu makalede GPU 'Lar, vCPU 'Lar, veri diskleri ve NIC 'lerin sayısı ve türleri hakkında bilgi sağlanır. Bu gruplandırmadaki her boyut için depolama verimlilik ve ağ bant genişliği de mevcuttur.
 
-- [NC serisi](nc-series.md), [NCv2 serisi](ncv2-series.md), [NCv3 serisi](ncv3-series.md) ve [NCT4_v3 serisi](nct4-v3-series.md) boyutları, yoğun işlem yoğunluğu ve ağ kullanımı yoğun uygulamalar ve algoritmalar için iyileştirilmiştir. Bazı örnekler CUDA ve OpenCL tabanlı uygulamalar ve benzetimler, AI ve derin öğrenime sahiptir. NCT4v3 serisi, NVıDıA 'nin Tesla T4 GPU 'SU ve AMD EPYC2 Roma işlemcisi özelliklerine sahip çıkarım iş yüklerine odaklanır. NCv3-Series, NVıDıA 'nin Tesla V100 GPU 'SU olan yüksek performanslı bilgi işlem iş yükleri üzerine odaklanır. NC serisi, Intel Xeon E5-2690 v3 2.60 GHz v3 (Haswell) işlemcisini kullanır ve NCv2-serisi ve NCv3 serisi VM 'Ler Intel Xeon E5-2690 v4 (geniş Iyi) işlemcisini kullanır.
+- [NCv3-Series](ncv3-series.md) ve [NC T4_v3 serisi](nct4-v3-series.md) BOYUTLARı, işlem yoğunluklu GPU hızlandırmalı uygulamalar için iyileştirilmiştir. Bazı örnekler CUDA ve OpenCL tabanlı uygulamalar ve benzetimler, AI ve derin öğrenime sahiptir. NC T4 v3 serisi, NVıDıA 'nin Tesla T4 GPU 'SU ve AMD EPYC2 Roma işlemcisi özelliklerine sahip çıkarım iş yüklerine odaklanılmıştır. NCv3 serisi, NVıDıA Tesla V100 GPU 'SU ile yüksek performanslı bilgi işlem ve AI iş yüklerine odaklanılmıştır.
 
-- [ND serisi](nd-series.md)ve [NDv2 serisi](ndv2-series.md) boyutları, derinlemesine öğrenime yönelik eğitim ve çıkarım senaryolarına odaklanılmıştır. ND serisi, NVıDıA Tesla P40 GPU ve Intel Xeon E5-2690 v4 (çok Iyi) işlemcisini kullanır. NDv2-Series, NVIDIA Volta V100 ve Intel Xeon Platinum 8168 (ufuk Gölü) işlemcisini kullanır.
+- [NDv2 serisi](ndv2-series.md) boyutu, genişleme ve genişleme derinlemesine öğrenme eğitimi uygulamalarına odaklanır. NDv2-Series, NVIDIA Volta V100 ve Intel Xeon Platinum 8168 (ufuk Gölü) işlemcisini kullanır.
 
 - [NV serisi](nv-series.md) ve [NVv3 serisi](nvv3-series.md) boyutları, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun, kodlama ve VDI senaryoları için iyileştirilmiştir ve tasarlanmıştır. Bu VM 'Ler NVıDıA Tesla M60 GPU tarafından desteklenir.
 
@@ -31,7 +31,7 @@ GPU en iyileştirilmiş VM boyutları, tek, birden çok veya kısmi GPU 'Lar ile
 
 Azure N serisi VM 'lerin GPU yeteneklerini avantajlarından yararlanmak için NVıDıA veya AMD GPU sürücüleri yüklenmelidir.
 
-- NVıDıA GPU 'Lar tarafından desteklenen VM 'Ler için, [NVıDıA GPU sürücü uzantısı](./extensions/hpccompute-gpu-windows.md) uygun NVIDIA CUDA veya kılavuz sürücülerini yüklemiştir. Azure portal veya Azure PowerShell veya Azure Resource Manager şablonları gibi araçları kullanarak uzantıyı yükler veya yönetir. Desteklenen işletim sistemleri ve dağıtım adımları için [NVıDıA GPU sürücü uzantısı belgelerine](./extensions/hpccompute-gpu-windows.md) bakın. VM uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](./extensions/overview.md).
+- NVıDıA GPU 'Lar tarafından desteklenen VM 'Ler için, [NVıDıA GPU sürücü uzantısı](./extensions/hpccompute-gpu-windows.md) uygun NVIDIA CUDA veya kılavuz sürücülerini yüklemiştir. Azure portal veya Azure PowerShell veya Azure Resource Manager şablonları gibi araçları kullanarak uzantıyı yükler veya yönetir. Desteklenen işletim sistemleri ve dağıtım adımları için [NVıDıA GPU sürücü uzantısı belgelerine](./extensions/hpccompute-gpu-windows.md) bakın. VM uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](./extensions/overview.md).   
 
    Alternatif olarak, NVıDıA GPU sürücülerini el ile de yükleyebilirsiniz. Bkz. [Windows çalıştıran n serisi VM 'LERE NVıDıA GPU sürücülerini yükleme](./windows/n-series-driver-setup.md) veya desteklenen işletim sistemleri, sürücüler, yükleme ve doğrulama adımları için [Linux çalıştıran n SERISI VM 'lere NVIDIA GPU sürücülerini yükleme](./linux/n-series-driver-setup.md) .
 

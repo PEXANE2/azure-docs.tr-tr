@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330341"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893756"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile MySQL için Azure DB 'ye yönelik sınırlamalar & çevrimiçi geçiş sorunları
 
@@ -82,12 +82,12 @@ Büyük nesne (LOB) sütunları, boyutu büyük büyüyerek kullanılan sütunla
 
     **Geçici çözüm**: birincil anahtarı diğer veri TÜRLERI veya LOB olmayan sütunlarla değiştirin.
 
-- **Kısıtlama**: büyük nesne (LOB) sütununun uzunluğu 32 KB 'tan büyükse, veriler hedefte kesilebilir. Bu sorguyu kullanarak LOB sütununun uzunluğunu kontrol edebilirsiniz:
+- **Kısıtlama**: büyük nesne (LOB) sütununun uzunluğu "LOB boyutunu sınırla" parametresinden daha büyükse (64 KB 'den büyük olmamalıdır), veriler hedefte kesilebilir. Bu sorguyu kullanarak LOB sütununun uzunluğunu kontrol edebilirsiniz:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Geçici çözüm**: 32 KB 'den büyük bir lob nesneniz varsa [Azure veritabanı geçişleri sorun](mailto:AskAzureDatabaseMigrations@service.microsoft.com)konusunda mühendislik ekibine başvurun.
+    **Geçici çözüm**: 64 KB 'den büyük lob nesneniz varsa, "sınırsız lob boyutuna izin ver" parametresini kullanın. "Sınırsız LOB boyutuna Izin ver" parametresi kullanılarak geçişler "LOB boyutunu sınırla" parametresi kullanılarak geçişten daha yavaş olacağını unutmayın.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>AWS RDS MySQL 'ten çevrimiçi geçiş yapma sınırlamaları
 

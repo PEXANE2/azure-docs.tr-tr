@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
 ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360812"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
@@ -26,7 +26,7 @@ Bu makalede, Azure Data Factory kullanarak SAP Business Warehouse 'tan (bant gen
 > [!TIP]
 > Açık Hub tümleştirmesi ve değişim ayıklama akışı SAP BW dahil SAP BW verileri kopyalama hakkında genel bilgi için, bkz. [Azure Data Factory kullanarak SAP Business Warehouse 'Tan açık hub aracılığıyla veri kopyalama](connector-sap-business-warehouse-open-hub.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Azure Data Factory**: yoksa [bir veri fabrikası oluşturmak](quickstart-create-data-factory-portal.md#create-a-data-factory)için adımları izleyin.
 
@@ -77,7 +77,7 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
 6. Gerekiyorsa bir filtre belirtin. OHD 'niz yalnızca tek bir istek KIMLIĞIYLE tek bir veri aktarım işlemi (DTP) yürütmeden veri içeriyorsa veya DTP 'nizin tamamlantığınızdan ve verileri kopyalamak istediğinizden emin değilseniz, **son Isteği hariç tut** onay kutusunu temizleyin.
 
-   Bu ayarlar hakkında daha fazla bilgi edinmek için bu makaledeki [SAP BW hub hedef yapılandırması](#sap-bw-open-hub-destination-configurations) ' nı açın. Hangi verilerin döndürüleceğini çift denetlemek için **Doğrula** ' yı seçin. Ardından **İleri**’yi seçin.
+   Bu ayarlar hakkında daha fazla bilgi edinmek için bu makaledeki [SAP BW hub hedef yapılandırması](#sap-bw-open-hub-destination-configurations) ' nı açın. Hangi verilerin döndürüleceğini çift denetlemek için **Doğrula** ' yı seçin. Sonra **İleri**’yi seçin.
 
    ![SAP BW açık hub filtresini yapılandırma](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
@@ -88,9 +88,9 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
    ![ADLS 2. bağlı hizmet sayfası oluşturma](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. **Ad** açılır listesinden Data Lake Storage 2. özellikli hesabınızı seçin.
-   2. **Son**'u seçerek bağlantıyı oluşturun. Ardından **İleri**’yi seçin.
+   2. **Son**'u seçerek bağlantıyı oluşturun. Sonra **İleri**’yi seçin.
 
-9. **Çıktı dosyasını veya klasörünü seçin** sayfasında, çıkış klasörü adı olarak **copyfromopenhub** yazın. Ardından **İleri**’yi seçin.
+9. **Çıktı dosyasını veya klasörünü seçin** sayfasında, çıkış klasörü adı olarak **copyfromopenhub** yazın. Sonra **İleri**’yi seçin.
 
    ![Çıkış klasörü seçin sayfası](media/load-sap-bw-data/choose-output-folder.png)
 
@@ -98,11 +98,11 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
     ![Havuz biçim sayfasını belirtin](media/load-sap-bw-data/specify-sink-format.png)
 
-11. **Ayarlar** sayfasında, **performans ayarları**' nı genişletin. Paralel olarak SAP BW yükleme için 5 gibi **kopya paralellik derecesi** için bir değer girin. Ardından **İleri**’yi seçin.
+11. **Ayarlar** sayfasında, **performans ayarları**' nı genişletin. Paralel olarak SAP BW yükleme için 5 gibi **kopya paralellik derecesi** için bir değer girin. Sonra **İleri**’yi seçin.
 
     ![Kopyalama ayarlarını yapılandırma](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. **Özet** sayfasında, ayarları inceleyin. Ardından **İleri**’yi seçin.
+12. **Özet** sayfasında, ayarları inceleyin. Sonra **İleri**’yi seçin.
 
 13. **Dağıtım** sayfasında, işlem hattını Izlemek için **izleyici** ' yi seçin.
 

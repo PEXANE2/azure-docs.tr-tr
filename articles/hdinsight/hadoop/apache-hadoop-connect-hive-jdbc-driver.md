@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207384"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight’ta JDBC sürücüsü üzerinden Apache Hive’ı sorgulama
@@ -23,7 +23,7 @@ Bir Java uygulamasından JDBC sürücüsünü nasıl kullanacağınızı öğren
 
 Hive JDBC arabirimi hakkında daha fazla bilgi için bkz. [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Hadoop kümesi An HDInsight. Bir tane oluşturmak için bkz. [Azure HDInsight kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md). Service HiveServer2 'ın çalıştığından emin olun.
 * [Java geliştirici seti (JDK) sürüm 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) veya üstü.
@@ -51,7 +51,7 @@ Bağlantı dizesindeki ' CLUSTERNAME.azurehdinsight.net ' konak adı, küme URL 
 
 Kümeye yalnızca Azure sanal ağı dışındaki bazı yerlerden bağlanmak için **443 numaralı bağlantı noktasını** kullanabilirsiniz. HDInsight Yönetilen bir hizmettir. Bu, kümeye yapılan tüm bağlantıların güvenli bir ağ geçidi üzerinden yönetildiği anlamına gelir. 10001 veya 10000 bağlantı noktalarında doğrudan HiveServer 2 ' ye bağlanamazsınız. Bu bağlantı noktaları dışarıdan gösterilmez.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Bağlantıyı kurarken, kimlik doğrulamak için HDInsight kümesi yönetici adını ve parolasını kullanın. SQUIRREL SQL gibi JDBC istemcilerinden, istemci ayarlarında yönetici adı ve parola girin.
 
@@ -87,7 +87,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
     |Özellik | Değer |
     |---|---|
-    |Ad|Hive|
+    |Adı|Hive|
     |Örnek URL|`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`|
     |Ek sınıf yolu|Daha önce indirilen tüm jar dosyalarını eklemek için **Ekle** düğmesini kullanın.|
     |Sınıf Adı|org. Apache. Hive. JDBC. HiveDriver|
@@ -104,7 +104,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
     |Özellik |Değer |
     |---|---|
-    |Ad|HDInsight üzerinde Hive|
+    |Adı|HDInsight üzerinde Hive|
     |Sürücü|**Hive** sürücüsünü seçmek için açılan eklentiyi kullanın.|
     |URL|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.|
     |User Name|HDInsight kümeniz için küme oturum açma hesabı adı. **Yönetici**varsayılandır.|

@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 2b98b11d85bde8dd49b6bbde5d048493493b73f5
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620248"
 ---
-# <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için yönetilen API başvurusu
+# <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için Yönetilen API başvurusu
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure portal, PowerShell, Azure CLı, REST API ve Transact-SQL ' i kullanarak Azure SQL yönetilen örneği 'nin yönetilen örneklerini oluşturabilir ve yapılandırabilirsiniz. Bu makalede, yönetilen örnekleri oluşturmak ve yapılandırmak için kullanabileceğiniz işlevlere ve API 'ye genel bir bakış bulabilirsiniz.

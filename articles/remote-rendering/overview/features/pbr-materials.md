@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ad7fc7d9d02cd9a9a6fe74534a7c674fe0ac778d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613670"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893263"
 ---
 # <a name="pbr-materials"></a>PBR malzemeleri
 
@@ -40,6 +40,8 @@ Bu özellikler tüm malzemelerde ortaktır:
 * **Usevertexcolor:** Kafes :::no-loc text="vertex"::: renkler içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin :::no-loc text="vertex"::: rengi *Albedocolor* ve *albedomap*ile çarpılır. Varsayılan olarak *UI, Texcolor* devre dışıdır.
 
 * **ıdoubleyüzlü:** Çift sidebir değer true olarak ayarlanırsa, kamera arka yüzlerine baksa bile bu malzemeden üçgenler işlenir. PBR malzemeleri için aydınlatma, arka yüzlere uygun olarak da hesaplanır. Varsayılan olarak bu seçenek devre dışıdır. Ayrıca bkz. [ :::no-loc text="Single-sided"::: işleme](single-sided-rendering.md).
+
+* **TransparencyWritesDepth:** TransparencyWritesDepth bayrağı malzeme üzerinde ayarlandıysa ve malzeme saydamsa, bu malzemeyi kullanan nesneler Ayrıca son derinlik arabelleğine katkıda bulunur. Sonraki bölümde bkz. PBR malzeme bayrağı *saydam* . Kullanım betiğini tamamen saydam sahneler için daha fazla sayıda daha uygun bir [geç doldurma](late-stage-reprojection.md) gerekirse bu özelliğin etkinleştirilmesi önerilir. Karışık donuk/saydam sahneler için, bu ayar, kesin yansıtma davranışı veya yeniden projeksiyon yapıtları ortaya çıkarabilir. Bu nedenle, genel kullanım durumu için varsayılan ve önerilen ayar bu bayrağı devre dışı bırakktır. Yazılı derinlik değerleri, kameraya en yakın nesnenin piksel başına derinlik katmanından alınır.
 
 ## <a name="pbr-material-properties"></a>PBR malzeme özellikleri
 
@@ -76,7 +78,7 @@ Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada ma
 
 ## <a name="technical-details"></a>Teknik ayrıntılar
 
-Azure uzaktan Işleme, GGX NDF, Schlick Fresnel düşüşünü ve bir Lambx Smith bağıntılı görünürlük terimi olan Cook-Torrance Micro-model BRDF 'ı ve Lambert dağıtma terimiyle birlikte kullanır. Bu model, şu anda endüstri standardıdır. Daha ayrıntılı bilgi için şu makaleye bakın: [fiziksel tabanlı işleme-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure uzaktan Işleme, bir Lambert dağıtma terimiyle GGX NDF, Schlick Fresnel düşüşünü ve GGX Smith bağıntılı görünürlük terimi ile Micro-model BRDF Cook-Torrance kullanır. Bu model, şu anda endüstri standardıdır. Daha ayrıntılı bilgi için şu makaleye bakın: [fiziksel tabanlı işleme-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  Azure uzaktan Işlemede kullanılan *Metalness-Kabghize* yönelik PBR modelinin bir alternatifi, *Yansımalı* bir ve daha fazla kullanım PBR modelidir. Bu model, daha geniş bir malzeme aralığını temsil edebilir. Ancak, daha pahalıdır ve genellikle gerçek zamanlı durumlarda iyi çalışmaz.
 ( *Basecolor, Metalness)* öğesine dönüştürülemeyen *(dağıtılmış, yansımalı)* değer çiftleri olduğu Için, *Yansımalı bir ışıldan* *Metalness-kabıya* dönüştürme her zaman mümkün değildir. Tüm *(Basecolor, Metalness)* çiftleri iyi tanımlanmış *(dağıtılmış, yansımalı)* çiftlerine karşılık geldiğinden, diğer yönde dönüştürme daha basit ve daha kesin bir hale gelir.

@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87010878"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Windows için AMD GPU sürücü uzantısı
 
-Bu makalede, Windows [NVv4 serisi](../nvv4-series.md) VM 'LERINDE AMD GPU sürücülerini DAĞıTMAYA yönelik VM uzantısına genel bir bakış sunulmaktadır. Bu uzantıyı kullanarak AMD sürücülerini yüklediğinizde, [AMD Son Kullanıcı Lisans Sözleşmesi](https://amd.com/radeonsoftwarems)koşullarını kabul etmiş ve kabul etmiş olursunuz. Yükleme işlemi sırasında, sanal makine, Sürücü kurulumunu tamamlayacak şekilde yeniden başlayabilir.
+Bu makalede, Windows [NVv4 serisi](../nvv4-series.md) VM 'LERINDE AMD GPU sürücülerini DAĞıTMAYA yönelik VM uzantısına genel bir bakış sunulmaktadır. Bu uzantıyı kullanarak AMD sürücülerini yüklediğinizde, [amd End-User lisans sözleşmesinin](https://amd.com/radeonsoftwarems)koşullarını kabul etmiş ve kabul etmiş olursunuz. Yükleme işlemi sırasında, sanal makine, Sürücü kurulumunu tamamlayacak şekilde yeniden başlayabilir.
 
 Sürücülerin ve desteklenen geçerli sürümlerin el ile yüklenmesiyle ilgili yönergeler [burada](../windows/n-series-amd-driver-setup.md)bulunabilir.
 
@@ -72,7 +72,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 | apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. HpcCompute | string |
 | tür | AmdGpuDriverWindows | string |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 
 
 ## <a name="deployment"></a>Dağıtım

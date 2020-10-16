@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88031423"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs ve Azure Logic Apps ile olayları izleme, alma ve gönderme
@@ -33,7 +33,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 Mantıksal uygulamanızın Olay Hub 'ınıza erişebildiğinizden emin olmak için, izinlerinizi denetleyin ve Event Hubs ad alanınız için bağlantı dizesini alın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Belirli bir olay hub 'ına değil Event Hubs *ad alanına*gidin. 
 
@@ -79,12 +79,12 @@ Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygul
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay Hub'ı adı** | Yes | İzlemek istediğiniz olay hub 'ının adı |
+   | **Olay Hub'ı adı** | Evet | İzlemek istediğiniz olay hub 'ının adı |
    | **İçerik türü** | Hayır | Olayın içerik türü. Varsayılan değer: `application/octet-stream`. |
    | **Tüketici grubu adı** | Hayır | Olayları okumak için kullanılacak [Olay Hub 'ı Tüketici grubu adı](../event-hubs/event-hubs-features.md#consumer-groups) . Belirtilmemişse, varsayılan Tüketici grubu kullanılır. |
    | **En fazla olay sayısı** | Hayır | En fazla olay sayısı. Tetikleyici, bu özellik tarafından belirtilen bir ve olay sayısı arasında döndürülür. |
-   | **Aralık** | Yes | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
-   | **Sıklık** | Yes | Yinelenme için zaman birimi |
+   | **Aralık** | Evet | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
+   | **Sıklık** | Evet | Yinelenme için zaman birimi |
    ||||
 
    **Ek özellikler**
@@ -95,7 +95,7 @@ Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygul
    | **Minimum bölüm anahtarı** | Hayır | Okunacak minimum [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliğini girin. Varsayılan olarak, tüm bölümler okunurdur. |
    | **En büyük bölüm anahtarı** | Hayır | Okunacak [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği üst sınırını girin. Varsayılan olarak, tüm bölümler okunurdur. |
    | **Saat dilimi** | Hayır | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici UTC sapmasını kabul etmez. Uygulamak istediğiniz saat dilimini seçin. <p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
-   | **Başlangıç saati** | Hayır | Bu biçimde bir başlangıç saati sağlayın: <p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz<p>-veya-<p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme<p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
+   | **Başlangıç zamanı** | Hayır | Bu biçimde bir başlangıç saati sağlayın: <p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz<p>-veya-<p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme<p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
    ||||
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
@@ -130,7 +130,7 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay Hub'ı adı** | Yes | Olayı göndermek istediğiniz olay hub 'ı |
+   | **Olay Hub'ı adı** | Evet | Olayı göndermek istediğiniz olay hub 'ı |
    | **İçerik** | Hayır | Göndermek istediğiniz olay için içerik |
    | **Özellikler** | Hayır | Gönderilen uygulama özellikleri ve değerler |
    | **Bölüm anahtarı** | Hayır | Olayın gönderileceği [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği |
@@ -152,8 +152,8 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | **Event Hubs ad alanı** | Yes | <*Olay-Hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
+   | **Bağlantı adı** | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | **Event Hubs ad alanı** | Evet | <*Olay-Hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
    |||||  
 
    Örneğin:

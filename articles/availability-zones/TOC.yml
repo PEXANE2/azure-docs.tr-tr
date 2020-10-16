@@ -3,11 +3,11 @@
     - name: Azure’da Dayanıklılık özellik sayfası
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: Azure için dayanıklı uygulamalar tasarlama
-      href: 'https://docs.microsoft.com/azure/architecture/resiliency/'
+      href: /azure/architecture/resiliency/
 - name: Yüksek Kullanılabilirlik
   items:
     - name: Azure uygulamaları için yüksek kullanılabilirlik
-      href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+      href: /azure/architecture/resiliency/high-availability-azure-applications
     - name: Bölgeler ve Kullanılabilirlik Alanları
       href: az-overview.md
     - name: Kullanılabilirlik Alanları Belgeleri
@@ -39,34 +39,34 @@
             - name: Load Balancer Standart ve Kullanılabilirlik Bölgeleri
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma'
-              href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma (PowerShell)'
-                  href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-powershell.md
                 - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma (CLI)'
-                  href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: 'Bölgesel, genel bir Standard Load Balancer oluşturma'
-              href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: 'Bölgesel, genel bir Standard Load Balancer oluşturma (PowerShell)'
-                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-powershell.md
                 - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma (CLI)'
-                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: Farklı kullanılabilirlik bölgelerindeki VM’lerin yükünü dengeleme
-              href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+              href: ../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md
               items:
                 - name: Azure CLI’si ile kullanılabilirlik bölgelerindeki VM’lerde yük dengeleme
-                  href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
         - name: Genel IP adresi
           href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Veritabanı
           items:
             - name: SQL Veritabanı ile kullanılabilirlik alanları
-              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
+              href: ../azure-sql/database/high-availability-sla.md#zone-redundant-configuration
         - name: Depolama
           items:
             - name: Alanlar arası yedekli depolama
-              href: ../storage/common/storage-redundancy-zrs.md
+              href: ../storage/common/storage-redundancy.md
         - name: Event Hubs
           items:
             - name: Event Hubs coğrafi olağanüstü durum kurtarma
@@ -102,11 +102,11 @@
 - name: Olağanüstü Durum Kurtarma
   items:
     - name: Azure Site Recovery’yi kullanma
-      href: 'https://docs.microsoft.com/azure/site-recovery/'
+      href: ../site-recovery/index.yml
 - name: Azure Backup
   items:
     - name: Azure Backup'ı kullanma
-      href: 'https://docs.microsoft.com/azure/backup/'
+      href: ../backup/index.yml
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

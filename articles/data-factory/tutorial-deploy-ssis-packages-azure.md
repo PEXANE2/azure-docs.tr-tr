@@ -9,17 +9,17 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 840ccb00fdc91cc44fee46500bbc7237fe55ff2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24ae71206188dc6d60f6a37629ad55ae4d4c1567
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185528"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015371"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de Azure-SSIS tümleştirme çalışma zamanını sağlama
 
@@ -176,6 +176,9 @@ Bu onay kutusunu seçerseniz, **Yeni**' yi seçerek Azure-SSIS IR birden çok pa
    1. **Paket deposu adı**için, paket deponuzın adını girin. 
 
    1. **Paket deposu bağlı hizmeti**için, paketlerinizin dağıtıldığı dosya sistemi/Azure dosyaları/Azure SQL yönetilen örneği için erişim bilgilerini depolayan mevcut bağlı hizmetinizi seçin veya **Yeni**' yi seçerek yeni bir tane oluşturun. **Yeni bağlı hizmet** bölmesinde aşağıdaki adımları izleyin. 
+
+      > [!NOTE]
+      > Azure dosyalarına erişmek için **Azure dosya depolama** veya **dosya sistemi** bağlı hizmetlerini kullanabilirsiniz. **Azure dosya depolama** bağlı hizmeti kullanıyorsanız, Azure-SSIS IR paket deposu şimdilik yalnızca **temel** ( **hesap anahtarı** veya **SAS URI**) kimlik doğrulama yöntemini destekler. **Azure dosya depolama** bağlı hizmetinde **temel** kimlik doğrulaması kullanmak için, `?feature.upgradeAzureFileStorage=false` Tarayıcınızda ADF Portal URL 'sine ekleyebilirsiniz. Alternatif olarak, bunun yerine Azure dosyalarına erişmek için **dosya sistemi** bağlı hizmeti ' ni kullanabilirsiniz. 
 
       ![Bağlı hizmetler için dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833326"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978212"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Tek bir Azure bölgesinde kullanılabilirliği SAP HANA
 Bu makalede, bir Azure bölgesindeki çeşitli kullanılabilirlik senaryoları açıklanmaktadır. Azure, dünyanın tamamında yayılan birçok bölgeye sahiptir. Azure bölgelerinin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/). Tek bir Azure bölgesindeki sanal makinelere SAP HANA dağıtmak için, Microsoft, bir HANA örneğiyle tek bir sanal makinenin dağıtımını sunmaktadır. Daha yüksek kullanılabilirlik için, kullanılabilirlik için HANA sistem çoğaltması kullanan bir [Azure kullanılabilirlik kümesi](../../windows/tutorial-availability-sets.md) IÇINDE iki Hana örneğiyle iki VM dağıtabilirsiniz. 
@@ -29,7 +29,7 @@ Azure Şu anda [Azure kullanılabilirlik alanları](../../../availability-zones/
 
 Kullanılabilirlik Alanları sunulan Azure bölgelerinin birden çok veri merkezi vardır. Veri merkezleri, güç kaynağı, soğutma ve ağ tedarikinden bağımsızdır. Tek bir Azure bölgesi içinde farklı bölgeler sunma nedeni, sunulan iki veya üç Kullanılabilirlik Alanları arasında uygulama dağıtmaktır. Bölgeler arasında dağıtım, güç ve ağ sorunları yalnızca bir Azure kullanılabilirlik alanı altyapısını etkileyerek, bir Azure bölgesindeki uygulama dağıtımınız hala çalışır durumda. Azaltılan bazı kapasite meydana gelebilir. Örneğin, bir bölgedeki VM 'Ler kaybolabilir, ancak diğer iki bölgedeki VM 'Ler çalışmaya devam edebilir. 
  
-Azure kullanılabilirlik kümesi, kullanılabilirlik kümesi içinde yerleştirdiğiniz VM kaynaklarının, bir Azure veri merkezinde dağıtıldığında birbirinden hata yalıtımlı olmasını sağlamaya yardımcı olan bir mantıksal gruplandırma özelliğidir. Azure, bir Kullanılabilirlik Kümesi içine yerleştirdiğiniz sanal makinelerin birden fazla fiziksel sunucuda, bilgi işlem rafında, depolama biriminde ve ağ anahtarında çalışmasını sağlar. Bazı Azure belgelerinde, bu yapılandırma farklı [güncelleştirme ve hata etki alanlarında](../../windows/manage-availability.md)placeas olarak adlandırılır. Bu Place, genellikle bir Azure veri merkezinde yer alan. Güç kaynağı ve ağ sorunlarının dağıttığınız veri merkezini etkileyeceğini varsayarsak, bir Azure bölgesindeki tüm kapasiteniz etkilenir.
+Azure kullanılabilirlik kümesi, kullanılabilirlik kümesi içinde yerleştirdiğiniz VM kaynaklarının, bir Azure veri merkezinde dağıtıldığında birbirinden hata yalıtımlı olmasını sağlamaya yardımcı olan bir mantıksal gruplandırma özelliğidir. Azure, bir Kullanılabilirlik Kümesi içine yerleştirdiğiniz sanal makinelerin birden fazla fiziksel sunucuda, bilgi işlem rafında, depolama biriminde ve ağ anahtarında çalışmasını sağlar. Bazı Azure belgelerinde, bu yapılandırma farklı [güncelleştirme ve hata etki alanlarında](../../manage-availability.md)placeas olarak adlandırılır. Bu Place, genellikle bir Azure veri merkezinde yer alan. Güç kaynağı ve ağ sorunlarının dağıttığınız veri merkezini etkileyeceğini varsayarsak, bir Azure bölgesindeki tüm kapasiteniz etkilenir.
 
 Azure Kullanılabilirlik Alanları temsil eden veri merkezlerinin yerleşimi, farklı bölgelerde dağıtılan hizmetler arasında kabul edilebilir ağ gecikme süresi ve veri merkezleri arasında bir mesafe arasında bir uzlaşdır. Doğal catastrophes ideal olarak bu bölgedeki tüm Kullanılabilirlik Alanları için güç, ağ kaynağı ve altyapıyı etkilemez. Ancak, Monumental doğal catastrophes gösterildiği gibi, Kullanılabilirlik Alanları her zaman bir bölgede istediğiniz kullanılabilirliği sağlayamayabilir. 20 Eylül 2017 ' de Porto Riko 'nun Adası ile başlayan Acericane Maria hakkında düşünün. Acericane, temelde 90-Wide Adası üzerinde yaklaşık %100 bir kararya neden oldu.
 
@@ -127,4 +127,4 @@ Azure 'da bu yapılandırmaların ayarlanmasına yönelik adım adım yönergele
 
 Azure bölgelerinde SAP HANA kullanılabilirliği hakkında daha fazla bilgi için bkz.:
 
-- [Azure bölgeleri arasında kullanılabilirlik SAP HANA](./sap-hana-availability-across-regions.md) 
+- [Azure bölgeleri arasında kullanılabilirlik SAP HANA](./sap-hana-availability-across-regions.md)

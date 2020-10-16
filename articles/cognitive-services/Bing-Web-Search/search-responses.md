@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297799"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Araması API'si yanıt yapısı ve yanıt türleri  
@@ -304,7 +304,7 @@ Matematik ifadesi aşağıdaki sembolleri içerebilir:
 
 Matematik ifadesinde aşağıdaki sabitler bulunabilir:
 
-|Sembol|Description|
+|Sembol|Açıklama|
 |------------|-----------------|
 |Pi|3,14159...|
 |Ölçüde|Ölçüde|
@@ -314,9 +314,9 @@ Matematik ifadesinde aşağıdaki sabitler bulunabilir:
 
 Matematik ifadesi aşağıdaki işlevleri içerebilir:
 
-|Sembol|Description|
+|Sembol|Açıklama|
 |------------|-----------------|
-|Sırala|Kare kök|
+|Sıralama|Kare kök|
 |Sin [x], cos [x], tan [x]<br />CSC [x], SEC [x], COT [x]|Trigonometrik İşlevler (radyan cinsinden bağımsız değişkenlerle)|
 |ArcSin [x], ArcCos [x], ArcTan [x]<br />ArcCsc [x], ArcSec [x], ArcCot [x]|Ters Trigonometrik İşlevler (radyan cinsinden sonuçlar verir)|
 |Exp [x], E ^ x|Üstel işlevi|
@@ -435,7 +435,7 @@ Bing, kullanıcının farklı bir şeyi aramak için tasarlanmış olabileceğin
 
 Bing Web Araması API'si yanıtları aşağıdaki üst bilgileri içerebilir:
 
-| Üst bilgi | Description |
+| Üst bilgi | Açıklama |
 |-|-|
 |`X-MSEdge-ClientID`|Bing 'in kullanıcıya atadığı benzersiz KIMLIK|
 |`BingAPIs-Market`|İsteği yerine getirmek için kullanılan Pazar|

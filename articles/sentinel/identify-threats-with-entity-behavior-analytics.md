@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90998116"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizi (UEBA) ile gelişmiş tehditleri tanımla
@@ -47,15 +47,13 @@ Vartner 'ın UEBA çözümleri için paradigması sayesinde Azure Sentinel, üç
 
 - **Analiz:** Azure Sentinel, çeşitli makine öğrenimi (ML) algoritmaları kullanarak anormal etkinlikleri tanımlar ve açık ve öz yanı sıra bağlamsal zenginler biçiminde, aşağıda gösterilen bazı örnekler sunar.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Davranış analizi dış yerinde yaklaşım":::
-
-Azure Sentinel, Güvenlik analistlerinin bağlamdaki anormal etkinlikleri net bir şekilde öğrenme ve kullanıcının temel profiliyle karşılaştırılmasının yanı sıra yapıları sunar. Bir Kullanıcı (veya bir konak ya da bir adres) tarafından gerçekleştirilen eylemler, "true" sonucunun tanımlanan bir anomali olduğunu gösterdiği bağlamsal olarak değerlendirilir:
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Varlık davranışı analitik mimarisi" sonucunun tanımlanan bir anomali olduğunu gösterdiği bağlamsal olarak değerlendirilir:
 - coğrafi konumlar, cihazlar ve ortamlar üzerinde.
 - zaman ve sıklık Horizons (kullanıcının kendi geçmişiyle karşılaştırıldığında).
 - eşlerin davranışına kıyasla.
 - Kuruluşunuzun davranışına kıyasla.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Varlık bağlamı":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Varlık davranışı analitik mimarisi":::
 
 
 ### <a name="scoring"></a>Puanlama
@@ -79,7 +77,7 @@ Varlık sayfaları üç bölümden oluşur:
 
 ### <a name="the-timeline"></a>Zaman çizelgesi
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Varlık sayfaları zaman çizelgesi":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Varlık davranışı analitik mimarisi":::
 
 Zaman çizelgesi, varlık sayfasının Azure Sentinel 'de davranış analizinin katkılarının önemli bir parçasıdır. Varlıkla ilgili olaylar hakkında bir hikaye sunar ve varlığın etkinliğini belirli bir zaman çerçevesinde anlamanıza yardımcı olur.
 
@@ -107,7 +105,7 @@ Varlık öngörüleri, analistlerinizin daha verimli ve etkili bir şekilde ara�
 
 Varlık sayfaları birden çok kullanım senaryosunun parçası olacak şekilde tasarlanmıştır ve olay yönetimi, araştırma grafiği, yer işaretleri veya doğrudan Azure Sentinel ana menüsündeki **varlık davranışı Analizi** altındaki varlık arama sayfasından erişilebilir.
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Varlık sayfası kullanım örnekleri":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Varlık davranışı analitik mimarisi":::
 
 
 ## <a name="data-schema"></a>Veri şeması
@@ -156,7 +154,7 @@ Kullanıcı eşleri Meta verileri tehdit Algılamalarda, bir olayı araştırmak
 
 Azure Sentinel, kullanıcının Azure AD güvenlik grubu üyeliğine, posta listesine, et cetera 'ya bağlı olarak bir kullanıcının eşlerini hesaplar ve sıralar ve derecelendirilen 1-20 eşlerini **Userpeeranalytics** tablosuna depolar. Aşağıdaki ekran görüntüsünde, UserPeerAnalytics tablosunun şeması gösterilmektedir ve Kullanıcı kendinin en üst sekiz dereceli eşlerini görüntüler. Azure Sentinel, dereceyi hesaplamak için ağırlığı normalleştirmek üzere *Sıklık-ters belge sıklığı* (TF-IDF) algoritmasını kullanır: grubun daha küçük olması, ağırlığa göre daha yükseği. 
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Kullanıcı eşleri Meta veri tablosu ekran görüntüsü":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Varlık davranışı analitik mimarisi":::
 
 Kullanıcı eşi meta verilerini görselleştirmek için Azure Sentinel GitHub deposunda sunulan [Jupyter Not defterini](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) kullanabilirsiniz. Not defterini kullanma hakkında ayrıntılı yönergeler için bkz. [Kılavuzlu analiz-Kullanıcı güvenliği meta verileri](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) Not defteri.
 
@@ -166,7 +164,7 @@ Kullanıcı eşi meta verilerini görselleştirmek için Azure Sentinel GitHub d
 
 Azure Sentinel, kullanıcının doğrudan veya gruplar ya da hizmet sorumluları aracılığıyla erişebileceği Azure aboneliklerini değerlendirerek, belirli bir kullanıcı tarafından Azure kaynakları için tutulan doğrudan ve geçişli erişim haklarını belirler. Bu bilgilerin yanı sıra kullanıcının Azure AD güvenlik grubu üyeliğinin tam listesi, **UserAccessAnalytics** tablosunda depolanır. Aşağıdaki ekran görüntüsünde, UserAccessAnalytics tablosundaki bir örnek satır gösterilmektedir ve Kullanıcı Alex Johnson. **Kaynak varlık** Kullanıcı veya hizmet sorumlusu hesabıdır ve **hedef varlık** , kaynak varlığın erişimi olan kaynaktır. **Erişim düzeyi** ve **erişim türü** değerleri, hedef varlığın erişim denetimi modeline bağlıdır. Alex 'ın Azure aboneliği *contoso oteller kiracısına*katkıda bulunan erişimine sahip olduğunu görebilirsiniz. Aboneliğin erişim denetimi modeli RBAC 'dir.   
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Kullanıcı erişimi Analizi tablosunun ekran görüntüsü":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Varlık davranışı analitik mimarisi":::
 
 İzin analizi verilerini görselleştirmek için Azure Sentinel GitHub deposundan [Jupyter Not defterini](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) (yukarıda bahsedilen aynı not defteri) kullanabilirsiniz. Not defterini kullanma hakkında ayrıntılı yönergeler için bkz. [Kılavuzlu analiz-Kullanıcı güvenliği meta verileri](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) Not defteri.
 

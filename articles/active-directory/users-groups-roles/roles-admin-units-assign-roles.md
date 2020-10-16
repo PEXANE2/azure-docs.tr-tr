@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6ea638124ed81a494231c814962345c028fc12c9
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817982"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940863"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Yönetim birimine kapsamlı roller atama
 
@@ -60,7 +60,7 @@ Atanacak rolü seçin ve ardından **atama Ekle**' yi seçin. Sağ tarafta, role
 
 > [!Note]
 >
-> Bir yönetim birimine PıM kullanarak bir rol atamak için [buradaki](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)adımları izleyin.
+> Bir yönetim birimine PıM kullanarak bir rol atamak için [buradaki](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user?tabs=new#assign-a-role-with-restricted-scope)adımları izleyin.
 
 ### <a name="powershell"></a>PowerShell
 

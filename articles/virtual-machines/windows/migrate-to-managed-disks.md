@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d64ebb053ef01e375edd52ad0bf2c1f424f1b837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b7490723d3930a151abf1d3f72bb957e02e5988
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660825"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975510"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure VM 'Leri Azure 'da yönetilen disklere geçirme
 
 Azure yönetilen diskler, depolama hesaplarını ayrı olarak yönetme gereksinimini ortadan kaldırarak depolama yönetiminizi basitleştirir.  Ayrıca, bir kullanılabilirlik kümesindeki VM 'lerin daha iyi güvenlerinden yararlanmak için mevcut Azure sanal makinelerinizi yönetilen disklere geçirebilirsiniz. Tek bir başarısızlık noktasını önlemek için bir kullanılabilirlik kümesindeki farklı sanal makinelerin disklerinin birbirinden yeterince yalıtılmış olmasını sağlar. Farklı sanal makinelerin disklerini, farklı depolama ölçek birimlerindeki (damgalar), donanım ve yazılım hatalarından kaynaklanan tek bir depolama ölçek birimi hatalarının etkisini sınırlayan bir kullanılabilirlik kümesine otomatik olarak koyar.
-Gereksinimlerinize göre dört tür depolama seçeneği arasından seçim yapabilirsiniz. Kullanılabilir disk türleri hakkında bilgi edinmek için bkz. makalemiz [disk türü seçme](disks-types.md)
+Gereksinimlerinize göre dört tür depolama seçeneği arasından seçim yapabilirsiniz. Kullanılabilir disk türleri hakkında bilgi edinmek için bkz. makalemiz [disk türü seçme](../disks-types.md)
 
 ## <a name="migration-scenarios"></a>Geçiş senaryoları
 
@@ -34,5 +34,5 @@ Aşağıdaki senaryolarda yönetilen disklere geçiş yapabilirsiniz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yönetilen diskler](managed-disks-overview.md) hakkında daha fazla bilgi edinin
+- [Yönetilen diskler](../managed-disks-overview.md) hakkında daha fazla bilgi edinin
 - [Yönetilen diskler için fiyatlandırmayı](https://azure.microsoft.com/pricing/details/managed-disks/)gözden geçirin.

@@ -4,10 +4,10 @@ description: Azure geçişi sunucu geçişi ile VMware VM 'lerini Azure 'a geçi
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: e62b9cea80f1ed7f672135b93e52ba606a717a6c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950230"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği seçin
@@ -25,7 +25,7 @@ Hangi yöntemin kullanılacağına karar vermenize yardımcı olması için bu s
 **Ayar** | **Aracısız** | **Aracı tabanlı**
 --- | --- | ---
 **Azure izinleri** | Azure geçişi projesi oluşturma ve Azure geçiş gereci dağıtırken oluşturulan Azure AD uygulamalarını kaydetme izinlerine sahip olmanız gerekir. | Azure aboneliğinde katkıda bulunan izinlerine sahip olmanız gerekir. 
-**Yinelemesi** | VCenter Server en fazla 300 VM aynı anda çoğaltılabilir.<br/> Geçiş için 50 ' den fazla VM varsa, birden çok VM toplu işi oluşturun.<br/> Tek seferde daha fazla çoğaltma performansı etkiler.<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.| Çoğaltma gereci ölçeklendirerek çoğaltma kapasitesi artar.
+**Çoğaltma** | VCenter Server en fazla 300 VM aynı anda çoğaltılabilir.<br/> Geçiş için 50 ' den fazla VM varsa, birden çok VM toplu işi oluşturun.<br/> Tek seferde daha fazla çoğaltma performansı etkiler.<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.| Çoğaltma gereci ölçeklendirerek çoğaltma kapasitesi artar.
 **Gereç dağıtımı** | [Azure geçişi](migrate-appliance.md) gereci şirket içinde dağıtılır. | [Azure geçişi çoğaltma](migrate-replication-appliance.md) gereci şirket içinde dağıtılır.
 **Site Recovery uyumluluğu** | Uyumluluk. | Site Recovery kullanarak bir makine için çoğaltma ayarladıysanız Azure geçişi sunucu geçişi ile çoğaltamaz.
 **Hedef disk** | Yönetilen diskler | Yönetilen diskler

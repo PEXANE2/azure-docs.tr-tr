@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477592"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL.js kullanarak özel durumu kimlik doğrulama isteklerinde geçirme
@@ -46,7 +46,7 @@ export type AuthenticationParameters = {
 
 > [!Note]
 > Önbelleğe alınmış bir belirteci atlayıp sunucuya gitmek isterseniz, lütfen `forceRefresh` bir oturum açma/belirteç isteği oluşturmak için kullanılan AuthenticationParameters nesnesine Boole değeri geçirin.
-> `forceRefresh`, uygulamanızdaki performans etkisi nedeniyle varsayılan olarak kullanılmamalıdır.
+> `forceRefresh` , uygulamanızdaki performans etkisi nedeniyle varsayılan olarak kullanılmamalıdır.
 > Önbelleğe bağlı olarak kullanıcılarınıza daha iyi bir deneyim sağlar.
 > Önbelleğin atlanması yalnızca şu anda önbelleğe alınan verilerin güncel bilgilere sahip olmadığını bildiğiniz senaryolarda kullanılmalıdır.
 > Bir kullanıcıya, güncelleştirilmiş rollere sahip yeni bir belirteç alması gereken roller ekleyen bir yönetim aracı gibi.

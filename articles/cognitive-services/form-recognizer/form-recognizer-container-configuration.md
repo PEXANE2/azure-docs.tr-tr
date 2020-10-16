@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86538012"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form tanıyıcı kapsayıcılarını yapılandırma
@@ -47,7 +47,7 @@ Bu ayarı, Azure portal, **anahtarlar**altında, **form tanıyıcı kaynak yöne
 
 Bu ayarı, Azure portal, **uç nokta**altında **form tanıyıcıya genel bakış**' da bulabilirsiniz.
 
-|Gerekli| Name | Veri türü | Description |
+|Gerekli| Adı | Veri türü | Açıklama |
 |--|------|-----------|-------------|
 |Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](form-recognizer-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
@@ -76,7 +76,7 @@ Form tanıyıcı kapsayıcısı, bir giriş bağlama ve çıkış bağlama gerek
 
 Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmet hesabı izinleri ile konak bağlama konumu izinleri arasındaki bir çakışma nedeniyle [ana bilgisayarın](form-recognizer-container-howto.md#the-host-computer) bağlama konumuna erişilemiyor olabilir.
 
-|İsteğe Bağlı| Name | Veri türü | Açıklama |
+|İsteğe Bağlı| Adı | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
 |Gerekli| `Input` | Dize | Giriş bağlama hedefi. Varsayılan değer: `/input`.    <br><br>Örnek:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Gerekli| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`.  <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|

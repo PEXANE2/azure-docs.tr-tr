@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499894"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) uygulamaları için ölçeklendirme seçenekleri
@@ -30,7 +30,7 @@ Düğüm ölçeğini ölçeklendirirken, Kubernetes API 'SI, kümeniz tarafında
 
 Pod 'leri ve düğümleri el ile ölçeklendirmeye başlamak için bkz. [aks 'teki Uygulamaları ölçeklendirme][aks-scale].
 
-## <a name="horizontal-pod-autoscaler"></a>Yatay Pod otomatik Scaler
+## <a name="horizontal-pod-autoscaler"></a>Yatay pod otomatik ölçeklendiricisi
 
 Kubernetes, kaynak talebini izlemek ve çoğaltmalar sayısını otomatik olarak ölçeklendirmek için yatay Pod otomatik Scaler (HPA) kullanır. Varsayılan olarak, yatay Pod otomatik Scaler, çoğaltma sayısında gerekli değişiklikler için ölçüm API 'sini her 30 saniyede bir denetler. Değişiklikler gerektiğinde, kopyaların sayısı artar veya buna göre azaltılır. Yatay Pod otomatik Scaler, Kubernetes 1.8 + için ölçüm sunucusunu dağıtmış olan AKS kümeleriyle birlikte çalışmaktadır.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: sorunsuz çoklu oturum açma-sık sorulan sorular | Microsoft Docs'
+title: 'Azure AD Connect: sorunsuz tek Sign-On-sık sorulan sorular | Microsoft Docs'
 description: Azure Active Directory sorunsuz çoklu oturum açma hakkında sık sorulan soruların yanıtları.
 services: active-directory
 keywords: Azure AD Connect nedir, yükler Active Directory, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658348"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Kesintisiz çoklu oturum açma Azure Active Directory: sık sorulan sorular
 
-Bu makalede, sorunsuz çoklu oturum açma Azure Active Directory (sorunsuz SSO) hakkında sık sorulan soruları ele aldık. Yeni içerik için yeniden kullanıma devam edin.
+Bu makalede, Azure Active Directory kesintisiz tek Sign-On (sorunsuz SSO) hakkında sık sorulan soruları ele aldık. Yeni içerik için yeniden kullanıma devam edin.
 
 **S: hangi oturum açma yöntemlerinin sorunsuz SSO iş yaptığını**
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085948"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight üzerinde iş akışı tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie'yi kullanma
@@ -37,7 +37,7 @@ Ayrıca, Java programları veya kabuk betikleri gibi bir sisteme özgü işleri 
 
 * **Bir Azure SQL veritabanı**.  Bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](../sql-database/sql-database-get-started.md).  Bu makale, **oozıetest**adlı bir veritabanını kullanır.
 
-* Kümelerinizin birincil depolama alanı için URI şeması. `wasb://`Azure depolama için, `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` . Ayrıca bkz. [Güvenli aktarım](../storage/common/storage-require-secure-transfer.md).
+* Kümelerinizin birincil depolama alanı için URI şeması. `wasb://` Azure depolama için, `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` . Ayrıca bkz. [Güvenli aktarım](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="example-workflow"></a>Örnek iş akışı
 

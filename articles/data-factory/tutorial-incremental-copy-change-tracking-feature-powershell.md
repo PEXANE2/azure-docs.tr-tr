@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
 ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541756"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>PowerShell kullanarak değişiklik izleme bilgilerini kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
@@ -287,7 +287,7 @@ Bu adımda, kaynak verileri temsil etmek için bir veri kümesi oluşturursunuz.
     }   
     ```
 
-2.  Veri kümesini oluşturmak için set-AzDataFactoryV2Dataset cmdlet 'ini çalıştırın: SourceDataset
+2.  Veri kümesini oluşturmak için Set-AzDataFactoryV2Dataset cmdlet 'ini çalıştırın: SourceDataset
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -416,7 +416,7 @@ Bu adımda, kaynak veri deposundaki (Azure SQL Veritabanı) tüm verileri hedef 
         }
     }
     ```
-2. FullCopyPipeline işlem hattını oluşturmak için set-AzDataFactoryV2Pipeline cmdlet 'ini çalıştırın.
+2. İşlem hattını oluşturmak için Set-AzDataFactoryV2Pipeline cmdlet 'ini çalıştırın: FullCopyPipeline.
 
    ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
@@ -605,7 +605,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
     }
 
     ```
-2. FullCopyPipeline işlem hattını oluşturmak için set-AzDataFactoryV2Pipeline cmdlet 'ini çalıştırın.
+2. İşlem hattını oluşturmak için Set-AzDataFactoryV2Pipeline cmdlet 'ini çalıştırın: FullCopyPipeline.
 
    ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"

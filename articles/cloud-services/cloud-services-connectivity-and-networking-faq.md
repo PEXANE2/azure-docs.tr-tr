@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d8f57cc16cad4c0b081478932f820c983e4bbdc7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533426"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070036"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için bağlantı ve ağ sorunları: sık sorulan sorular (SSS)
 
@@ -40,7 +40,7 @@ Hayır, normal "ping"/ıCMP protokolü kullanılarak değil. ICMP protokolüne A
 
 Bağlantıyı test etmek için bir bağlantı noktası ping işlemi yapmanızı öneririz. Ping.exe ıCMP kullandığından, belirli bir TCP bağlantı noktasıyla bağlantıyı sınamak için PSPing, nmap ve Telnet gibi diğer araçları da kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure VM bağlantısını test etmek IÇIN ICMP yerine bağlantı noktası ping 'Leri kullanma](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
+Daha fazla bilgi için bkz. [Azure VM bağlantısını test etmek IÇIN ICMP yerine bağlantı noktası ping 'Leri kullanma](/archive/blogs/mast/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity).
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>Nasıl yaparım?, bilinmeyen IP adreslerinden gelen ve bulut hizmeti için kötü amaçlı saldırı olabilecek binlerce isabetlerin alınmasını engelliyor mu?
 Azure, platform hizmetlerini dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korumak için çok katmanlı bir ağ güvenliği uygular. Azure DDoS savunma sistemi, Azure 'un sürekli izleme sürecinin bir parçasıdır ve bu da sızma testi aracılığıyla sürekli olarak geliştirilmiştir. Bu DDoS savunma sistemi, diğer Azure kiracılarından de yalnızca dışarıdaki saldırıları değil, yalnızca dışarıdan gerçekleştirilen saldırıları değil. Daha fazla bilgi için bkz. [Azure ağ güvenliği](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf).
@@ -67,7 +67,7 @@ Kullanılan dağıtım algoritması, trafiği kullanılabilir sunucularla eşlem
 
 IIS 'nin URL yeniden yazma modülü, bulut hizmeti için varsayılan URL 'ye gelen trafiği (örneğin, \* . cloudapp.net) bir özel ad/URL 'ye yönlendirmek için kullanılabilir. URL yeniden yazma modülü Web rolleri üzerinde varsayılan olarak etkinleştirildiğinden ve kuralları uygulamanın web.config yapılandırıldığı için, yeniden başlatmalar/regörüntülerden bağımsız olarak sanal makine üzerinde her zaman kullanılabilir. Daha fazla bilgi için bkz.
 
-- [URL yeniden yazma modülü için yeniden yazma kuralları oluşturma](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [URL yeniden yazma modülü için yeniden yazma kuralları oluşturma](/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Varsayılan bağlantıyı kaldır](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Bulut hizmetimin varsayılan URL 'SI için gelen trafiği nasıl engelleyebilir/devre dışı bırakabilirim?

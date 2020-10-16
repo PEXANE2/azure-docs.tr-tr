@@ -194,7 +194,7 @@
     - name: Öğrenme yolu
       href: /learn/paths/azure-fundamentals/
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+      href: /answers/topics/azure-cloud-services.html
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: Fiyatlandırma hesaplayıcı

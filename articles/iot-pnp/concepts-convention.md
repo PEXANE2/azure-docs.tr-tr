@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 8b5492a737b733f486455507a8a813b5d583d453
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91573846"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045491"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT Tak Çalıştır kuralları
 
@@ -132,7 +132,7 @@ Cihaz veya modül bildirilen bir özellik göndererek özelliği aldığını on
 
 Bir cihaz başlatıldığında cihaz ikizi istemeli ve yazılabilir Özellik güncelleştirmelerini denetlemelidir. Cihaz çevrimdışıyken yazılabilir bir özelliğin sürümü artmışsa, cihazın güncelleştirmeyi aldığını onaylamak için bildirilen bir özellik yanıtı göndermelidir.
 
-Bir cihaz ilk kez başlatıldığında, bundan sonra bildirilen bir özellik için bir başlangıç değeri gönderebilir ve bu, hub 'dan istenen bir özelliği almaz. Bu durumda, cihaz `av` olarak ayarlanmalıdır `1` . Örneğin:
+Bir cihaz ilk kez başlatıldığında, bundan sonra bildirilen bir özellik için bir başlangıç değeri gönderebilir ve bu, hub 'dan istenen bir özelliği almaz. Bu durumda, cihaz `av` olarak ayarlanmalıdır `1` . Örnek:
 
 ```json
 "reported": {
@@ -343,6 +343,6 @@ Bir cihazda veya modülde, birden çok bileşen arabirimi komut adlarını aşa�
 IoT Tak ve Kullan kuralları hakkında bilgi edindiğinize göre artık bazı ek kaynaklar verilmiştir:
 
 - [Dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [C cihaz SDK’sı](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [C cihaz SDK’sı](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT REST API](/rest/api/iothub/device)
 - [Model bileşenleri](./concepts-components.md)

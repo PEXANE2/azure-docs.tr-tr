@@ -5,16 +5,16 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 08/24/2017
-ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 10/09/2020
+ms.openlocfilehash: fbfd384787d35317a4e45c4f91cf8a3ad4ba5a61
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004802"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000017"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için veri kalıcılığını yapılandırma
-Redsıs için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium bir Azure önbelleğinde kalıcılığı yapılandırma açıklanmaktadır.
+Bu makalede, Azure portal aracılığıyla Redsıs örneği için Premium Azure önbelleğinde kalıcılığı yapılandırmayı öğreneceksiniz. Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. 
 
 ## <a name="what-is-data-persistence"></a>Veri kalıcılığı nedir?
 [Redsıs kalıcılığı](https://redis.io/topics/persistence) , redin içinde depolanan verileri kalıcı hale getirebilmeniz için izin verir. Ayrıca, anlık görüntüler alabilir ve verileri yedekleyebilir ve bu da donanım arızası durumunda yükleyebilirsiniz. Bu, tüm verilerin bellekte depolandığı temel veya standart katmandan çok büyük bir avantajdır ve önbellek düğümlerinin kapatılmasında oluşabilecek bir hata olması durumunda olası veri kaybı olabilir. 
@@ -32,54 +32,62 @@ Kalıcılık, Redsıs verilerini sahip olduğunuz ve yönettiğiniz bir Azure de
 > 
 > 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Premium önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin. Önbellekleri Azure portalında oluşturabileceğiniz gibi, Resource Manager şablonlarını, PowerShell'i veya Azure CLI'sini kullanarak da oluşturabilirsiniz. Redu için Azure önbelleği oluşturma hakkında daha fazla bilgi için bkz. [önbellek oluşturma](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-Premium fiyatlandırma katmanı seçildikten sonra **redsıs kalıcılığı ' ne**tıklayın.
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Kaynak oluştur.":::
+   
+2. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
-![Redsıs kalıcılığı][redis-cache-persistence]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Kaynak oluştur.":::
 
-Sonraki bölümdeki adımlarda, yeni Premium önbelleğinizin Redsıs kalıcılığı nasıl yapılandırılacağı açıklanır. Redsıs kalıcılığı yapılandırıldıktan sonra, yeni Premium önbelleğinizi Redsıs kalıcılığı ile oluşturmak için **Oluştur** ' a tıklayın.
+3. **Yeni Redis Cache** sayfasında, yeni Premium önbelleğiniz için ayarları yapılandırın.
+   
+   | Ayar      | Önerilen değer  | Açıklama |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* * \<DNS name> . Redis.cache.Windows.net*olacaktır. | 
+   | **Abonelik** | Açılır ve aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
+   | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
+   | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+   | **Önbellek türü** | Açılır ve Premium özellikleri yapılandırmak için Premium önbellek seçin. Ayrıntılar için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/). |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](cache-overview.md). |
 
-## <a name="enable-redis-persistence"></a>Redsıs kalıcılığını etkinleştir
+4. **Ağ** sekmesini seçin veya sayfanın altındaki **ağ** düğmesine tıklayın.
 
-Redsıs kalıcılığı, **RDB** ya da **AOF** kalıcılığı seçerek **veri kalıcılığı** dikey penceresinde etkinleştirilir. Yeni önbellekler için, önceki bölümde açıklandığı gibi, önbellek oluşturma işlemi sırasında bu dikey pencereye erişilir. Mevcut önbellekler için, **veri Kalıcılık** dikey penceresine önbelleğiniz için **Kaynak menüsünden** erişilir.
+5. **Ağ** sekmesinde, bağlantı yönteminizi seçin. Premium önbellek örnekleri için genel IP adresleri veya hizmet uç noktaları aracılığıyla ya da özel bir uç nokta kullanarak özel olarak bağlanabilir.
 
-![Redsıs ayarları][redis-cache-settings]
+6. **İleri: Gelişmiş** sekmesini seçin veya sayfanın altındaki **İleri: Gelişmiş** düğmesine tıklayın.
 
+7. Premium önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bağlantı noktası, kümeleme ve veri kalıcılığı için ayarları yapılandırın. Veri kalıcılığı için **RDB** ya da **AOF** kalıcılığı seçebilirsiniz. 
 
-## <a name="configure-rdb-persistence"></a>RDB kalıcılığını yapılandırma
+8. RDB kalıcılığı etkinleştirmek için **RDB** ' e tıklayın ve ayarları yapılandırın. 
+   
+   | Ayar      | Önerilen değer  | Açıklama |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Yedekleme sıklığı** | Açılır ve bir yedekleme aralığı seçin, **15 dakika**, **30 dakika**, **60 dakika**, **6 saat**, **12 saat**ve **24 saat**arasında seçim yapın. | Önceki yedekleme işlemi başarıyla tamamlandıktan sonra ve yeni bir yedekleme tamamlandığında bu Aralık sona erdiğinde, bu Aralık başlatılır. | 
+   | **Depolama Hesabı** | Açılır ve depolama hesabınızı seçin. | Önbellek ile aynı bölgede bir depolama hesabı seçmeniz gerekir ve Premium depolamada daha yüksek aktarım hızı bulunduğundan **Premium Depolama** hesabı önerilir.  | 
+   | **Depolama anahtarı** | Açılan ve kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. | Kalıcılık hesabınız için depolama anahtarı yeniden oluşturulursa, istenen anahtarı **depolama anahtarı** açılır listesinden yeniden yapılandırmanız gerekir. | 
 
-RDB kalıcılığı etkinleştirmek için **RDB**' e tıklayın. Daha önce etkinleştirilmiş bir Premium önbellekte RDB kalıcılığı devre dışı bırakmak için **devre dışı**' ya tıklayın.
+    Yedekleme sıklığı aralığı geçtiğinde ilk yedekleme başlatılır.
 
-![Redsıs RDB kalıcılığı][redis-cache-rdb-persistence]
+9. Sürekliliği etkinleştirmek için **AOF** 'ye tıklayın ve ayarları yapılandırın. 
+   
+   | Ayar      | Önerilen değer  | Açıklama |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **İlk depolama hesabı** | Açılır ve depolama hesabınızı seçin. | Bu depolama hesabı, önbellek ile aynı bölgede olmalıdır ve Premium depolamada daha yüksek aktarım hızı bulunduğundan **Premium Depolama** hesabı önerilir. | 
+   | **İlk depolama anahtarı** | Açılan ve kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. | Kalıcılık hesabınız için depolama anahtarı yeniden oluşturulursa, istenen anahtarı **depolama anahtarı** açılır listesinden yeniden yapılandırmanız gerekir. | 
+   | **İkinci depolama hesabı** | Seçim Açılan ve kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. | İsteğe bağlı olarak ek bir depolama hesabı yapılandırabilirsiniz. İkinci bir depolama hesabı yapılandırılmışsa, çoğaltma önbelleğine yazma işlemleri bu ikinci depolama hesabına yazılır. | 
+   | **İkinci depolama anahtarı** | Seçim Açılan ve kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. | Kalıcılık hesabınız için depolama anahtarı yeniden oluşturulursa, istenen anahtarı **depolama anahtarı** açılır listesinden yeniden yapılandırmanız gerekir. | 
 
-Yedekleme aralığını yapılandırmak için, açılan listeden bir **yedekleme sıklığı** seçin. Seçimler **15 dakika**, **30 dakika**, **60 dakika**, **6 saat**, **12 saat**ve **24 saat**içerir. Önceki yedekleme işlemi başarıyla tamamlandıktan sonra ve yeni bir yedekleme tamamlandığında bu Aralık sona erdiğinde, bu Aralık başlatılır.
+    BIR dizi kalıcılığı etkinleştirildiğinde, önbelleğe yazma işlemleri belirlenen depolama hesabına (veya ikinci bir depolama hesabı yapılandırdıysanız hesaplar) kaydedilir. Hem birincil hem de çoğaltma önbelleğinin kullanıldığı çok önemli bir hata durumunda, önbelleğin yeniden oluşturulması için depolanan AOF günlüğü kullanılır.
 
-Depolama **hesabı** ' na tıklayarak kullanılacak depolama hesabını seçin ve **depolama anahtarı** açılan listesinden kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. Önbellek ile aynı bölgede bir depolama hesabı seçmeniz gerekir ve Premium depolamada daha yüksek aktarım hızı bulunduğundan **Premium Depolama** hesabı önerilir. 
+10. **Sonraki: Etiketler** sekmesini seçin veya sayfanın altındaki **Sonraki: Etiketler** düğmesine tıklayın.
 
-> [!IMPORTANT]
-> Kalıcılık hesabınız için depolama anahtarı yeniden oluşturulursa, istenen anahtarı **depolama anahtarı** açılır listesinden yeniden yapılandırmanız gerekir.
-> 
-> 
+11. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
 
-Kalıcılık yapılandırmasını kaydetmek için **Tamam** ' ı tıklatın.
+12.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
 
-Yedekleme sıklığı aralığı geçtiğinde sonraki yedekleme (veya yeni önbelleklere ilk yedekleme) başlatılır.
+13. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
 
-## <a name="configure-aof-persistence"></a>AOF kalıcılığı yapılandırma
-
-AOF kalıcılığı etkinleştirmek için **AOF**öğesine tıklayın. Önceden etkinleştirilmiş bir Premium önbellekte kalıcılığı devre dışı bırakmak için **devre dışı**' ya tıklayın.
-
-![Redin AOF kalıcılığı][redis-cache-aof-persistence]
-
-AOF kalıcılığı yapılandırmak için bir **Ilk depolama hesabı**belirtin. Bu depolama hesabı, önbellek ile aynı bölgede olmalıdır ve Premium depolamada daha yüksek aktarım hızı bulunduğundan **Premium Depolama** hesabı önerilir. İsteğe bağlı olarak, **Ikinci depolama hesabı**adlı ek bir depolama hesabı yapılandırabilirsiniz. İkinci bir depolama hesabı yapılandırılmışsa, çoğaltma önbelleğine yazma işlemleri bu ikinci depolama hesabına yazılır. Yapılandırılmış her depolama hesabı için, **depolama anahtarı** açılan listesinden kullanılacak **birincil anahtarı** veya **İkincil anahtarı** seçin. 
-
-> [!IMPORTANT]
-> Kalıcılık hesabınız için depolama anahtarı yeniden oluşturulursa, istenen anahtarı **depolama anahtarı** açılır listesinden yeniden yapılandırmanız gerekir.
-> 
-> 
-
-BIR dizi kalıcılığı etkinleştirildiğinde, önbelleğe yazma işlemleri belirlenen depolama hesabına (veya ikinci bir depolama hesabı yapılandırdıysanız hesaplar) kaydedilir. Hem birincil hem de çoğaltma önbelleğinin kullanıldığı çok önemli bir hata durumunda, önbelleğin yeniden oluşturulması için depolanan AOF günlüğü kullanılır.
+Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış**   sayfasında ilerlemeyi izleyebilirsiniz.  **Durum**    **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
 
 ## <a name="persistence-faq"></a>Kalıcılık SSS
 Aşağıdaki liste, Redsıs kalıcılığı için Azure önbelleği hakkında sık sorulan soruların yanıtlarını içerir.
@@ -148,7 +156,7 @@ En güncel olanı hariç tüm RDB Kalıcılık yedeklemeleri otomatik olarak sil
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>İkinci Depolama hesabını nasıl kaldırabilirim?
 
-İkinci Depolama hesabını ilk depolama hesabıyla aynı olacak şekilde ayarlayarak, AOF kalıcılığı ikincil depolama hesabını kaldırabilirsiniz. Yönergeler için bkz. [AOF kalıcılığı yapılandırma](#configure-aof-persistence).
+İkinci Depolama hesabını ilk depolama hesabıyla aynı olacak şekilde ayarlayarak, AOF kalıcılığı ikincil depolama hesabını kaldırabilirsiniz. Mevcut önbellekler için, **veri Kalıcılık** dikey penceresine önbelleğiniz için **Kaynak menüsünden** erişilir. Kalıcılığı devre dışı bırakmak için **devre dışı**öğesine tıklayın.
 
 ### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Yeniden yazma nedir ve önbelleğinizi nasıl etkiler?
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
 ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309498"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
@@ -194,7 +194,7 @@ LUSıS 'de, bir amaca veya tümceciği, bir varlıkla birlikte _pozitif_ bir ör
 
 [Uygulama tanımına (uygulama)](#application-app)bakın.
 
-## <a name="model"></a>Modelleme
+## <a name="model"></a>Model
 
 (Makine tarafından öğrenilen) modeli, giriş verilerini tahmin eden bir işlevdir. LUO 'da, amaç sınıflandırıcıları ve varlık ayıklayıcıları genel olarak "modeller" olarak ifade edilir ve "uygulama" olarak bir araya göre eğitilen, yayınlanan ve sorgulanan bir model koleksiyonuna başvurduk.
 
@@ -292,7 +292,7 @@ LUıN [listesi varlıkları](reference-entity-list.md)' nda, her birinin bir eş
 
 Girişte herhangi bir eş anlamlılar bulunduğunda, model varlık için normalleştirilmiş değeri döndürür.
 
-## <a name="test"></a>Test etme
+## <a name="test"></a>Test
 
 Bir lusıs uygulamasını [test etmek](luis-concept-test.md) , model tahminlerinin görüntülenmesi anlamına gelir.
 

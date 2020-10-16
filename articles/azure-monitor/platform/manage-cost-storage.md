@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: af168fe4c4dca71077464fdb9caf30f27c4b9fe2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0f71b1e75ecb60a53a004b7bf1bf0bd0c7522cc9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578266"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096530"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -46,9 +46,9 @@ Ayrıca, [Azure Güvenlik Merkezi](https://azure.microsoft.com/pricing/details/s
 
 ### <a name="log-analytics-dedicated-clusters"></a>Adanmış kümeler Log Analytics
 
-Log Analytics adanmış kümeler, [müşteri tarafından yönetilen anahtarlar](customer-managed-keys.md)gibi gelişmiş senaryoları desteklemek üzere tek bir yönetilen Azure Veri Gezgini kümesinde çalışma alanlarının koleksiyonlarıdır.  Log Analytics adanmış kümeler, en az 1000 GB/gün olarak yapılandırılması gereken bir kapasite ayırma fiyatlandırma modeli kullanır. Bu kapasite düzeyinde Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında %25 indirim vardır. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Küme kapasitesi rezervasyonunun, ayırma düzeyi arttırılarak 31 günlük taahhüt süresi vardır. Taahhüt dönemi boyunca kapasite ayırma düzeyi düşürülemez, ancak herhangi bir zamanda artırılabilir. Çalışma alanları bir kümeyle ilişkilendirildiğinde, bu çalışma alanları için veri alma faturalandırması, yapılandırılan kapasite ayırma düzeyi kullanılarak küme düzeyinde yapılır. [Log Analytics kümeleri oluşturma](customer-managed-keys.md#create-cluster-resource) ve [çalışma alanlarını onunla ilişkilendirme](customer-managed-keys.md#workspace-association-to-cluster-resource)hakkında daha fazla bilgi edinin. Kapasite ayırma fiyatlandırma bilgileri, [Azure izleyici fiyatlandırma sayfasında]( https://azure.microsoft.com/pricing/details/monitor/)bulunabilir.  
+Log Analytics adanmış kümeler, [müşteri tarafından yönetilen anahtarlar](customer-managed-keys.md)gibi gelişmiş senaryoları desteklemek üzere tek bir yönetilen Azure Veri Gezgini kümesinde çalışma alanlarının koleksiyonlarıdır.  Log Analytics adanmış kümeler, en az 1000 GB/gün olarak yapılandırılması gereken bir kapasite ayırma fiyatlandırma modeli kullanır. Bu kapasite düzeyinde Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında %25 indirim vardır. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Küme kapasitesi rezervasyonunun, ayırma düzeyi arttırılarak 31 günlük taahhüt süresi vardır. Taahhüt dönemi boyunca kapasite ayırma düzeyi düşürülemez, ancak herhangi bir zamanda artırılabilir. Çalışma alanları bir kümeyle ilişkilendirildiğinde, bu çalışma alanları için veri alma faturalandırması, yapılandırılan kapasite ayırma düzeyi kullanılarak küme düzeyinde yapılır. [Log Analytics kümeleri oluşturma](customer-managed-keys.md#create-cluster) ve [çalışma alanlarını onunla ilişkilendirme](customer-managed-keys.md#link-workspace-to-cluster)hakkında daha fazla bilgi edinin. Kapasite ayırma fiyatlandırma bilgileri, [Azure izleyici fiyatlandırma sayfasında]( https://azure.microsoft.com/pricing/details/monitor/)bulunabilir.  
 
-Küme kapasitesi ayırma düzeyi, altındaki parametresi kullanılarak Azure Resource Manager aracılığıyla program aracılığıyla yapılandırılır `Capacity` `Sku` . `Capacity`GB cinsinden belirtilir ve 100 GB/gün artışlarla 1000 GB veya daha fazla değere sahip olabilir. Bu, [Azure izleyici müşteri tarafından yönetilen anahtarı ile](customer-managed-keys.md#create-cluster-resource)ayrıntılıdır. Kümenizin 2000 GB/gün üzerinde bir ayırmaya ihtiyacı varsa bizimle iletişime geçin [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
+Küme kapasitesi ayırma düzeyi, altındaki parametresi kullanılarak Azure Resource Manager aracılığıyla program aracılığıyla yapılandırılır `Capacity` `Sku` . `Capacity`GB cinsinden belirtilir ve 100 GB/gün artışlarla 1000 GB veya daha fazla değere sahip olabilir. Bu, [Azure izleyici müşteri tarafından yönetilen anahtarı ile](customer-managed-keys.md#create-cluster)ayrıntılıdır. Kümenizin 2000 GB/gün üzerinde bir ayırmaya ihtiyacı varsa bizimle iletişime geçin [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 Bir kümede kullanıma yönelik iki faturalandırma modu vardır. Bu, `billingType` [kümeniz yapılandırılırken](customer-managed-keys.md#cmk-management)parametresi tarafından belirtilebilir. İki mod şunlardır: 
 
@@ -102,7 +102,7 @@ Ayrıca, parametresini kullanarak (Azure Resource Manager şablonunda) [Azure Re
 
 Tek başına fiyatlandırma katmanındaki kullanım, alınan veri hacmi tarafından faturalandırılır. **Log Analytics** hizmetinde raporlanır ve ölçer "veri çözümlendi" olarak adlandırılmıştır. 
 
-Bir saat ayrıntı düzeyi temelinde izlenen VM başına (düğüm) düğüm başına fiyatlandırma katmanı ücretleri. İzlenen her düğüm için, çalışma alanı faturalandırılmamış günde 500 MB veri tahsis edilir. Bu ayırma, çalışma alanı düzeyinde toplanır. Günlük toplam veri ayırmanın üzerine gelen veriler, veri fazla yaşı olarak GB başına faturalandırılır. Faturanızda, çalışma alanı düğüm başına fiyatlandırma katmanındaysa hizmetin Log Analytics kullanımı için **öngörü ve analiz** olacağını unutmayın. Kullanım üç ölçüm üzerinden bildirilir:
+Bir saat ayrıntı düzeyi temelinde izlenen VM başına (düğüm) düğüm başına fiyatlandırma katmanı ücretleri. İzlenen her düğüm için, çalışma alanı faturalandırılmamış günde 500 MB veri tahsis edilir. Bu ayırma saatlik ayrıntı düzeyi ile hesaplanır ve her gün çalışma alanı düzeyinde toplanır. Günlük toplam veri ayırmanın üzerine gelen veriler, veri fazla yaşı olarak GB başına faturalandırılır. Faturanızda, çalışma alanı düğüm başına fiyatlandırma katmanındaysa hizmetin Log Analytics kullanımı için **öngörü ve analiz** olacağını unutmayın. Kullanım üç ölçüm üzerinden bildirilir:
 
 1. Düğüm: Bu, düğüm * ay birimleri cinsinden izlenen düğümlerin (VM) sayısı için kullanımdır.
 2. Düğüm başına veri fazla kullanımı: Bu, toplanan veri ayırmanın fazla olması halinde alınan veri GB sayısıdır.
@@ -124,7 +124,11 @@ Fiyatlandırma Katmanı sınırlamaları hakkında daha fazla ayrıntı için [A
 Eski fiyatlandırma katmanlarının hiçbirinde bölgesel tabanlı fiyatlandırma yoktur.  
 
 > [!NOTE]
-> System Center için OMS E1 Suite, OMS E2 Suite veya OMS eklentisi satın alma işleminden gelen yetkilendirmeleri kullanmak için *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
+> System Center için OMS E1 Suite, OMS E2 Suite veya OMS Add-On satın alma işleminden gelen yetkilendirmeleri kullanmak için, *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
+
+## <a name="log-analytics-and-security-center"></a>Log Analytics ve Güvenlik Merkezi
+
+[Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'nin faturalandırması Log Analytics faturalandırmaya yakından bağlıdır. Güvenlik Merkezi, bir dizi [güvenlik veri türüne](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) KARŞı 500 MB/düğüm/gün ayırması sağlar (WindowsEvent, güncelleştirme yönetimi çözümü çalışma alanında çalışmadığı veya çözüm hedefleme etkin olduğunda SecurityAlert, Securitybaseline, SecurityBaselineSummary, securitydetection, Securityevent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, protectionstatus) ve Update ve updateSummary veri türleri. Çalışma alanı eski düğüm başına fiyatlandırma katmanındaysa, güvenlik merkezi ve Log Analytics ayırmaları birleştirilir ve tüm faturalandırılabilir veriler için birleştirilir.  
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
@@ -283,6 +287,24 @@ find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
+
+### <a name="nodes-billed-by-the-legacy-per-node-pricing-tier"></a>Eski düğüm başına fiyatlandırma katmanında faturalandırılan düğümler
+
+Saatlik ayrıntı düzeyi olan düğümler için [eski düğüm başına fiyatlandırma katmanı](#legacy-pricing-tiers) , yalnızca bir güvenlik veri türleri kümesi gönderen düğümlerin sayımını yapmaz. Günlük düğüm sayısı aşağıdaki sorguya yakın olacaktır:
+
+```kusto
+find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now()) project Computer, _IsBillable, Type, TimeGenerated
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| where _IsBillable == true
+| summarize billableNodesPerHour=dcount(computerName) by bin(TimeGenerated, 1h)
+| summarize billableNodesPerDay = sum(billableNodesPerHour)/24., billableNodeMonthsPerDay = sum(billableNodesPerHour)/24./31.  by day=bin(TimeGenerated, 1d)
+| sort by day asc
+```
+
+Faturanızda bulunan birim sayısı, sorguda temsil edilen düğüm * ay birimleridir `billableNodeMonthsPerDay` . Çalışma alanında Güncelleştirme Yönetimi çözümü yüklüyse, güncelleştirmeyi ve UpdateSummary veri türlerini yukarıdaki sorgudaki WHERE yan tümcesinde bulunan listeye ekleyin. Son olarak, Yukarıdaki sorguda temsil edilmeyen çözüm hedeflemesi kullanıldığında gerçek faturalandırma algoritmasında bazı ek karmaşıklıklar vardır. 
+
 
 > [!TIP]
 > `find`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara Ihtiyacınız yoksa kullanım verileri türü üzerinde sorgulama yapın (aşağıya bakın).
@@ -567,7 +589,7 @@ union *
 Bu sorgu, kullanımın nasıl hesaplanmasının tam bir yinelemesi değildir, ancak çoğu durumda fiyatlandırma katmanı önerileri sağlamaya çalışır.  
 
 > [!NOTE]
-> System Center için OMS E1 Suite, OMS E2 Suite veya OMS eklentisi satın alma işleminden gelen yetkilendirmeleri kullanmak için *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
+> System Center için OMS E1 Suite, OMS E2 Suite veya OMS Add-On satın alma işleminden gelen yetkilendirmeleri kullanmak için, *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Veri toplama işlemi yüksekse uyarı oluştur
 

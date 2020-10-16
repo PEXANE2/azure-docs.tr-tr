@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87129925"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics kodunuzu test etme
@@ -122,9 +122,9 @@ U-SQL testi için, yapı bilgisayarınıza yüklediğinizden emin olun `CPPSDK` 
 
 CPPSDK, Microsoft Visual C++ 14 ve Windows SDK 10.0.10240.0 içeren bir pakettir. Bu paket, U-SQL çalışma zamanı için gereken ortamı içerir. Bu paketi Visual Studio için Azure Data Lake Araçları yükleme klasörü altında edinebilirsiniz:
 
-- Visual Studio 2015 için`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
-- Visual Studio 2017 için`C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
-- Visual Studio 2019 için`C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- Visual Studio 2015 için `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
+- Visual Studio 2017 için `C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- Visual Studio 2019 için `C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
 
 #### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>Azure Pipelines yapı aracısında CPPSDK hazırlama
 

@@ -1,14 +1,14 @@
 ---
 title: Gelişmiş sorgu örnekleri
 description: Sütunlarla çalışma, kullanılan etiketleri listeleme ve normal ifadelerle eşleşen kaynakları de içeren bazı gelişmiş sorguları çalıştırmak için Azure Kaynak grafiğini kullanın.
-ms.date: 08/13/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 8463880189a76f299ce5552fff2b7bccddfa8dec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425305"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057153"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Gelişmiş kaynak grafiği sorgu örnekleri
 
@@ -625,9 +625,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>Konuk yapılandırma atama raporlarının sorgu ayrıntıları
 
-[Konuk yapılandırması atama nedeni](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) ayrıntılarından rapor görüntüle.
-Aşağıdaki örnekte sorgu Yalnızca Konuk atama adının olduğu sonuçları döndürür `installed_application_linux` ve çıktı, `Python` **Python**adını içeren bir paketin yüklendiği tüm Linux makinelerini listelemek için dizeyi içerir.
-Belirli bir atamaya ait tüm makinelerin uyumluluğunu sorgulamak için, 2 `where` . yan tümcesini kaldırın.
+[Konuk yapılandırması atama nedeni](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) ayrıntılarından rapor görüntüle. Aşağıdaki örnekte, sorgu Yalnızca Konuk atama adının olduğu sonuçları döndürür `installed_application_linux` ve çıktı, `Python` **Python**adını içeren bir paketin yüklendiği tüm Linux makinelerini listelemek için dizeyi içerir. Belirli bir atamaya ait tüm makinelerin uyumluluğunu sorgulamak için ikinci `where` yan tümceyi kaldırın.
 
 ```kusto
 GuestConfigurationResources
@@ -666,8 +664,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments"></a><a name="query-gcmachinedetails"></a>Bir makinenin Konuk yapılandırma atamaları için uyumsuz olduğu tüm nedenleri bul
 
-Belirli bir makine için tüm [Konuk yapılandırması atama nedenlerini](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) görüntüleyin.
-`where`Makinenin uyumlu olduğu denetimleri de içerecek şekilde ilk yan tümceyi kaldırın.
+Belirli bir makine için tüm [Konuk yapılandırması atama nedenlerini](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) görüntüleyin. `where`Makinenin uyumlu olduğu denetimleri de içerecek şekilde ilk yan tümceyi kaldırın.
 
 ```kusto
 GuestConfigurationResources

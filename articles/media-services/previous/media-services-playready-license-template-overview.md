@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: df28078363162496672232ecdebe02fc99ce50f5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8cdf5915396fc40c12644552bb24a044279ea32d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89261062"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019350"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady lisans şablonuna genel bakış
 
@@ -86,7 +86,7 @@ Aşağıdaki sınıflar, Media Services PlayReady lisans şablonlarını yapıla
 > 
 > 
 
-Silverlight tarafından desteklenen koruma düzeylerine bir örnek için bkz. [Çıkış korumaları Için Silverlight desteği](https://go.microsoft.com/fwlink/?LinkId=617318).
+Silverlight tarafından desteklenen koruma düzeylerine bir örnek için bkz. [Çıkış korumaları Için Silverlight desteği](/previous-versions/windows/silverlight/dotnet-windows-silverlight/cc838192(v=vs.95)).
 
 ## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>PlayReady lisans şablonu XML şeması
 ```xml
@@ -319,5 +319,5 @@ Silverlight tarafından desteklenen koruma düzeylerine bir örnek için bkz. [�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 38e3526627eb4191643f8bc86b9ce5f49e41a71f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564415"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048126"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
 
@@ -39,9 +39,9 @@ Azure SignalR hizmetini aşağıdaki yoldan Azure dijital TWINS 'e iliştirirsin
 ## <a name="download-the-sample-applications"></a>Örnek uygulamaları indirme
 
 İlk olarak, gerekli örnek uygulamaları indirin. Aşağıdakilerin her ikisine de ihtiyacınız olacak:
-* [**Azure dijital TWINS örnekleri**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Bu örnek, verileri bir Azure dijital TWINS örneğine taşımak Için iki Azure işlevi tutan bir *AdtSampleApp* içerir (öğreticide daha ayrıntılı bilgi edinmek için bkz. [*uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)). Ayrıca, bir IoT cihazına benzetiren, her saniye yeni bir sıcaklık değeri oluşturan bir *Devicesimülatör* örnek uygulaması da içerir. 
+* [**Azure dijital TWINS örnekleri**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Bu örnek, verileri bir Azure dijital TWINS örneğine taşımak Için iki Azure işlevi tutan bir *AdtSampleApp* içerir (öğreticide daha ayrıntılı bilgi edinmek için bkz. [*uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)). Ayrıca, bir IoT cihazına benzetiren, her saniye yeni bir sıcaklık değeri oluşturan bir *Devicesimülatör* örnek uygulaması da içerir. 
     - Örnek bağlantısına gidin ve örneğin _**Azure_Digital_Twins_samples.zip**_ bir kopyasını makinenize ındırmek Için *ZIP yükle* düğmesine basın. Klasörün sıkıştırmasını açın.
-* [**SignalR tümleştirmesi Web uygulaması örneği**](https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Bu, Azure SignalR hizmetinden Azure dijital TWINS telemetri verilerini tüketen örnek bir tepki veren Web uygulamasıdır.
+* [**SignalR tümleştirmesi Web uygulaması örneği**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Bu, Azure SignalR hizmetinden Azure dijital TWINS telemetri verilerini tüketen örnek bir tepki veren Web uygulamasıdır.
     -  Örnek bağlantısına gidin ve örneğin _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_ bir kopyasını makinenize ındırmek Için *ZIP yükle* düğmesine basın. Klasörün sıkıştırmasını açın.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -61,7 +61,7 @@ Bu bölümde, iki Azure işlevi ayarlayacaksınız:
 
 1. Birincil bağlantı dizesini kopyalamak için simgeyi seçin.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="SignalR örneği için anahtarlar sayfasını gösteren Azure portal ekran görüntüsü. Birincil bağlantı DIZESININ yanındaki ' panoya kopyala ' simgesi vurgulanır." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
 Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini) başlatın ve kod çözümünü *Azure_Digital_Twins_samples > ADTSampleApp* klasöründe açın. Ardından, işlevleri oluşturmak için aşağıdaki adımları uygulayın:
 
@@ -139,13 +139,13 @@ Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini)
 Sonra, *bir uçtan uca çözüm oluşturma* öğreticisinin [ *uygulamayı Yayımla* bölümünde](tutorial-end-to-end.md#publish-the-app) açıklanan adımları kullanarak işlevinizi Azure 'da yayımlayın. Bunu, uçtan uca öğretici ön eki 'nde kullandığınız App Service/Function uygulamasında yayımlayabilir veya yeni bir tane oluşturabilirsiniz, ancak yinelemeyi en aza indirmek için aynı olanı kullanmak isteyebilirsiniz. Ayrıca, uygulamayı aşağıdaki adımlarla Yayımla:
 1. *Negotiate* işlevinin **http uç nokta URL 'sini**toplayın. Bunu yapmak için Azure portal [işlev uygulamaları](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) sayfasına gidin ve listeden işlev uygulamanızı seçin. Uygulama menüsünde *işlevler* ' i seçin ve *Negotiate* işlevini seçin.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Menüde ' Functions ' vurgulanmış olarak işlev uygulamasının Azure portal görünümü. İşlevlerin listesi sayfada gösterilir ve ' anlaş ' işlevi de vurgulanır.":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
     *İşlev URL 'Sini Al ' a* gidin ve değeri ** _/API_ aracılığıyla kopyalayın (son _/Negotiate_'i eklemeyin?)**. Bunu daha sonra kullanacaksınız.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="' Anlaş ' işlevinin Azure portal görünümü. ' İşlev URL 'sini Al ' düğmesi vurgulanır ve URL 'nin kısmı '/API ' ile başlayarak başlar":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
-1. Son olarak, aşağıdaki Azure CLı komutunu kullanarak daha önce Azure SignalR **Bağlantı dizenizi** işlevin uygulama ayarlarına ekleyin. Bu komut, [makinenizde yüklü](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)olan Azure CLI 'niz varsa [Azure Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir:
+1. Son olarak, aşağıdaki Azure CLı komutunu kullanarak daha önce Azure SignalR **Bağlantı dizenizi** işlevin uygulama ayarlarına ekleyin. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest)olan Azure CLI 'niz varsa [Azure Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir:
  
     ```azurecli
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -153,7 +153,7 @@ Sonra, *bir uçtan uca çözüm oluşturma* öğreticisinin [ *uygulamayı Yayı
 
     Bu komutun çıktısı, Azure işleviniz için ayarlanmış tüm uygulama ayarlarını yazdırır. `AzureSignalRConnectionString`Eklendiğinden emin olmak için listenin en altında bulunan bölümüne bakın.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="Bir komut penceresinde çıkış alıntısı, ' AzureSignalRConnectionString ' adlı bir liste öğesi gösteriliyor":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
 #### <a name="connect-the-function-to-event-grid"></a>İşlevi Event Grid bağlayın
 
@@ -163,7 +163,7 @@ Bunu yapmak için, olay kılavuzunuzda, bir uç nokta olarak *yayın* Azure işl
 
 [Azure Portal](https://portal.azure.com/), en üstteki arama çubuğunda adını arayarak olay kılavuzunuza gidin. *+ Olay Aboneliği*'ni seçin.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure portal: Event Grid olay aboneliği":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
 *Olay aboneliği oluştur* sayfasında, alanları aşağıdaki gibi girin (varsayılan olarak doldurulmuş alanlar verilmez):
 * *olay ABONELIĞI ayrıntıları*  >  **Ad**: olay aboneliğinize bir ad verin.
@@ -172,7 +172,7 @@ Bunu yapmak için, olay kılavuzunuzda, bir uç nokta olarak *yayın* Azure işl
     - **Aboneliğiniz**, **kaynak grubunuz**, **işlev uygulaması** ve **işlevinizi** (*yayın*) girin. Bunlardan bazıları abonelik seçildikten sonra otomatik olarak doldurulabilir.
     - **Seçimi Onayla**' ya basın.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Olay aboneliği oluşturma Azure portal görünümü. Yukarıdaki alanlar doldurulmuştur ve ' seçimi onayla ' ve ' oluştur ' düğmeleri vurgulanır.":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
 *Olay aboneliği oluştur* sayfasına dönün ve **Oluştur**' a basın.
 
@@ -186,7 +186,7 @@ Uçtan uca öğretici ön eki sırasında, [cihaz simülatörünü](tutorial-end
 
 Şimdi yapmanız gerekir, *Azure_Digital_Twins_samples > devicesimülatör > devicesimülatör. sln*' de bulunan simülatör projesini başlatmıştır. Visual Studio kullanıyorsanız, projeyi açabilir ve araç çubuğunda Bu düğmeyle çalıştırabilirsiniz:
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio Başlangıç düğmesi (Devicesimülatör Projesi)":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
 Bir konsol penceresi açılır ve sanal sıcaklık telemetri iletilerini görüntüler. Bunlar Azure Digital Twins örneğiniz aracılığıyla gönderilmekte ve burada Azure işlevleri ve SignalR tarafından alınırlar.
 
@@ -214,7 +214,7 @@ Sonra, Azure portal işlev uygulamanızda izinleri ayarlayın:
 1. Azure portal [işlev uygulamaları](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) sayfasında, işlev uygulaması örneğinizi seçin.
 1. Örnek menüsünde aşağı kaydırın ve *CORS*' yi seçin. CORS sayfasında, `http://localhost:3000` boş kutuya girerek izin verilen bir kaynak olarak ekleyin. *Erişim-denetim-izin-kimlik bilgilerini etkinleştir* ve *Kaydet*için kutuyu işaretleyin.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Azure Işlevinde CORS ayarı":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
 ### <a name="see-the-results"></a>Sonuçları görme
 
@@ -226,13 +226,13 @@ npm start
 
 Bu işlem, bir görsel sıcaklık ölçer görüntüleyen örnek uygulamayı çalıştıran bir tarayıcı penceresi açar. Uygulama çalışmaya başladıktan sonra, Web uygulamasına gerçek zamanlı olarak yansıtılmakta olan Azure dijital TWINS aracılığıyla yayılan cihaz simülatörü 'nden sıcaklık telemetri değerlerini görmeye başlamanız gerekir.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="Görsel sıcaklık ölçerin gösterildiği örnek istemci Web uygulamasından alıntı. Yansıtılan sıcaklık 67,52 ' dir":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu makalede oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin. 
 
-Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Kaynak grubunun kaldırılması da kaldırılır...
+Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Kaynak grubunun kaldırılması da kaldırılır...
 * Azure dijital TWINS örneği (uçtan uca öğreticiden)
 * IoT Hub ve Hub cihaz kaydı (uçtan uca öğreticiden)
 * olay Kılavuzu konusu ve ilişkili abonelikler
@@ -259,7 +259,7 @@ Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize (*Azure_Di
 Bu makalede, Azure Digital TWINS telemetri olaylarını örnek bir istemci uygulamasına yayımlamak için Azure işlevleri 'ni SignalR ile ayarlarsınız.
 
 Daha sonra, Azure SignalR hizmeti hakkında daha fazla bilgi edinin:
-* [*Azure SignalR hizmeti nedir?*](../azure-signalr/signalr-overview.md)
+* [*Azure SignalR Hizmeti nedir?*](../azure-signalr/signalr-overview.md)
 
 Veya Azure Işlevleri ile Azure SignalR hizmeti kimlik doğrulaması hakkında daha fazla bilgi edinin:
 * [*Azure SignalR hizmeti kimlik doğrulaması*](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)

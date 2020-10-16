@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662571"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
@@ -181,7 +181,7 @@ Hazır olmayan eşitleme kuralları 100 öncelik değeriyle başlar. Birçok orm
 
 Kullanıma hazır kuralların önüne ek kuralların eklenmesini istediğiniz eşitleme motoruna talimat verebilirsiniz. Bu davranışı almak için aşağıdaki adımları izleyin:
 
-1. Eşitleme kuralları düzenleyicisinde ilk kullanıma hazır eşitleme kuralını (**ad-Kullanıcı birleşimden**) Işaretleyin ve **dışarı aktar**' ı seçin. SR tanımlayıcı değerini kopyalayın.  
+1. Eşitleme kuralları düzenleyicisinde ilk kullanıma hazır eşitleme kuralını (**AD-User birleşimden**) Işaretleyin ve **dışarı aktar**' ı seçin. SR tanımlayıcı değerini kopyalayın.  
 ![Değişiklikten önce PowerShell](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. Yeni eşitleme kuralını oluşturun. Eşitleme kuralları düzenleyicisini oluşturmak için bunu kullanabilirsiniz. Kuralı bir PowerShell betiğine dışarı aktarın.
 3. Daha önce özellik **başında**, kutudan çıkış kuralı ' ndan tanımlayıcı değerini ekleyin. **Önceliği** **0**olarak ayarlayın. Tanımlayıcı özniteliğinin benzersiz olduğundan ve başka bir kuraldan bir GUID 'yi yeniden kullandığınızdan emin olun. Ayrıca **ımmutabletag** özelliğinin ayarlı olmadığından emin olun. Bu özellik yalnızca hazır olmayan bir kural için ayarlanmalıdır.
@@ -264,8 +264,8 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
-    | Name | *Bir ad belirtin* | Örneğin, *ad 'Den içinde – Kullanıcı UserType* |
-    | Description | *Bir açıklama girin* |  |
+    | Adı | *Bir ad belirtin* | Örneğin, *ad 'Den içinde – Kullanıcı UserType* |
+    | Açıklama | *Bir açıklama girin* |  |
     | Bağlı sistem | *Şirket içi AD bağlayıcısını seçin* |  |
     | Bağlı sistem nesne türü | **Kullanıcı** |  |
     | Meta veri deposu nesne türü | **Kişi** |  |
@@ -306,8 +306,8 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
 
     | Öznitelik | Değer | Ayrıntılar |
     | ----- | ------ | --- |
-    | Name | *Bir ad belirtin* | Örneğin, *AAD 'ye kadar – Kullanıcı UserType* |
-    | Description | *Bir açıklama girin* ||
+    | Adı | *Bir ad belirtin* | Örneğin, *AAD 'ye kadar – Kullanıcı UserType* |
+    | Açıklama | *Bir açıklama girin* ||
     | Bağlı sistem | *AAD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcı** ||
     | Meta veri deposu nesne türü | **Kişi** ||

@@ -2,15 +2,15 @@
 title: Azure Otomasyonu Güncelleştirme Yönetimi sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu Güncelleştirme Yönetimi sorunları nasıl giderebileceğiniz ve giderebileceğiniz açıklanır.
 services: automation
-ms.date: 09/30/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d6a87d9b420ea394baaa21c87dff457e4c908d0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858413"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070342"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -486,6 +486,8 @@ Sistem hesabının **C:\programdata\microsoft\crypto\rsa** klasörüne okuma eri
 Güncelleştirmeler için varsayılan bakım penceresi 120 dakikadır. Bakım penceresini en fazla 6 saat veya 360 dakika olarak artırabilirsiniz.
 
 ### <a name="resolution"></a>Çözüm
+
+Başarılı bir şekilde başladıktan sonra bir güncelleştirme çalıştırması sırasında neden oluştuğunu anlamak için, çalıştırmada etkilenen makinenin [iş çıktısını kontrol edin](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) . Çözebileceğinizi ve üzerinde işlem yapmanız gereken makinelerinizden belirli hata iletileri bulabilirsiniz.  
 
 Başarısız olan zamanlanmış güncelleştirme dağıtımlarını düzenleyin ve bakım penceresini arttırın.
 

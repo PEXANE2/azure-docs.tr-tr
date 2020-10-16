@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85958430"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL havuzları için en iyi yöntemler
@@ -71,7 +71,7 @@ Gzip metin dosyalarını kullanırken üretilen işi en üst düzeye çıkarmak 
 
 PolyBase sorgular için ideal değildir. SQL havuzları için PolyBase tabloları Şu anda yalnızca Azure Blob dosyalarını ve Azure Data Lake depolamayı destekler. Bu dosyalarda, onları yedekleyen işlem kaynakları yoktur. Sonuç olarak, SQL havuzları bu çalışmanın yükünü boşaltarak verileri okuyabilmesi için tempdb 'ye yükleyerek dosyanın tamamını okummalıdır.
 
-Bu verileri sorgulamak için birkaç sorgunuz varsa, bu verilerin bir kez yüklenmesi ve sorguların yerel tabloyu kullanması daha iyidir. Ek PolyBase Kılavuzu, [PolyBase makalesini kullanmaya yönelik kılavuza](data-loading-best-practices.md) dahildir.
+Bu verileri sorgulamak için birkaç sorgunuz varsa, bu verilerin bir kez yüklenmesi ve sorguların yerel tabloyu kullanması daha iyidir. Ek PolyBase Kılavuzu,  [PolyBase makalesini kullanmaya yönelik kılavuza](data-loading-best-practices.md) dahildir.
 
 ## <a name="hash-distribute-large-tables"></a>Büyük tabloları karma olarak dağıtın
 
@@ -171,7 +171,7 @@ Kaynak sınıfları hakkında daha fazla bilgi için [iş yükü yönetimi Için
 
 Kullanıcı sorgularında uzun bir gecikme fark ederseniz, kullanıcılarınız daha büyük kaynak sınıflarında çalışıyor olabilir. Bu senaryo, diğer sorguların sıraya alınmasına neden olabilecek eşzamanlılık yuvaları tüketimini yükseltir.  Kullanıcı sorgularının sıraya alınıp döndürülmeyeceğini anlamak için, `SELECT * FROM sys.dm_pdw_waits` bir satırın döndürülüp döndürülmediğine bakmak için öğesini çalıştırın.
 
-İş yükü yönetimi ve [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) makalelerine [yönelik kaynak sınıfları](../sql-data-warehouse/resource-classes-for-workload-management.md) size daha fazla bilgi sağlayacaktır.
+İş yükü yönetimi ve [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) makaleleriyle [ilgili kaynak sınıfları](../sql-data-warehouse/resource-classes-for-workload-management.md) size daha fazla bilgi sağlayacaktır.
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Sorgularınızı izlemek ve iyileştirmek için DMV’leri kullanın
 
@@ -180,7 +180,7 @@ SQL havuzlarının sorgu yürütmeyi izlemek için kullanılabilecek çeşitli D
 - [DMV’leri kullanarak iş yükünüzü izleme](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 - [ETIKETIN](develop-label.md)
-- [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [SEÇENEĞI](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

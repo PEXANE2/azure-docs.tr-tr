@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e5b8dc325fa7eaceaa0274029049f546db5b6995
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6aa56eeab59dee3f080895d5f15285a2b2d41591
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888538"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088780"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ kullanarak Azure Spring Cloud uygulamalarını dağıtma
 
@@ -23,7 +23,7 @@ Azure yay bulutu için IntelliJ eklentisi, IntelliJ FIKRINDEN uygulama dağıtı
 Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
-* [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable&preserve-view=true)
+* [JDK 8 Azul Zulu](/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
 * [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
 * [IntelliJ fıkır, topluluk/Ultimate Edition, sürüm 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 
@@ -57,7 +57,7 @@ Aşağıdaki yordamlar IntelliJ FIKRINI kullanarak bir Merhaba Dünya uygulamas�
     ![Projeyi içeri aktar](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Azure yay bulutuna dağıtın
-Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı**' nı seçin.
 
@@ -104,5 +104,5 @@ Günlükleri almak için:
     ![Akış günlüğü çıkışı](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure yay bulutu için yay uygulamasını hazırlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
-* [Azure Toolkit for IntelliJ hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)
+* [Azure yay bulutu için yay uygulamasını hazırlama](./spring-cloud-tutorial-prepare-app-deployment.md)
+* [Azure Toolkit for IntelliJ hakkında daha fazla bilgi edinin](/azure/developer/java/toolkit-for-intellij/)

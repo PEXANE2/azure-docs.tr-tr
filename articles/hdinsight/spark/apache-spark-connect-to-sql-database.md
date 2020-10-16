@@ -9,21 +9,21 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86078825"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Azure SQL veritabanı 'na veri okumak ve yazmak için HDInsight Spark kümesi kullanma
 
 Azure SQL veritabanı ile Azure HDInsight 'ta bir Apache Spark kümesini bağlamayı öğrenin. Sonra verileri SQL veritabanına okuyun, yazın ve veri akışını yapın. Bu makaledeki yönergeler, Scala kod parçacıklarını çalıştırmak için bir Jupyter Notebook kullanır. Ancak, Scala veya Python 'da tek başına bir uygulama oluşturabilir ve aynı görevleri gerçekleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure HDInsight Spark küme.  [HDInsight 'ta Apache Spark kümesi oluşturma bölümündeki](apache-spark-jupyter-spark-sql.md)yönergeleri izleyin.
 
-* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. [Azure SQL veritabanı 'nda veritabanı oluşturma bölümündeki](../../azure-sql/database/single-database-create-quickstart.md)yönergeleri izleyin. Örnek **AdventureWorksLT** şeması ve verilerle bir veritabanı oluşturduğunuzdan emin olun. Ayrıca, istemcinizin IP adresinin SQL veritabanına erişmesine izin vermek için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturduğunuzdan emin olun. Güvenlik duvarı kuralını ekleme yönergeleri aynı makalede bulunur. SQL veritabanınızı oluşturduktan sonra, aşağıdaki değerleri yararlı tutmanız gerekir. Bir Spark kümesinden veritabanına bağlanmanız gerekir.
+* Azure SQL Veritabanı. [Azure SQL veritabanı 'nda veritabanı oluşturma bölümündeki](../../azure-sql/database/single-database-create-quickstart.md)yönergeleri izleyin. Örnek **AdventureWorksLT** şeması ve verilerle bir veritabanı oluşturduğunuzdan emin olun. Ayrıca, istemcinizin IP adresinin SQL veritabanına erişmesine izin vermek için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturduğunuzdan emin olun. Güvenlik duvarı kuralını ekleme yönergeleri aynı makalede bulunur. SQL veritabanınızı oluşturduktan sonra, aşağıdaki değerleri yararlı tutmanız gerekir. Bir Spark kümesinden veritabanına bağlanmanız gerekir.
 
     * Sunucu adı.
     * Veritabanı adı.

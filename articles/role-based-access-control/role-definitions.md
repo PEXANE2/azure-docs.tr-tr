@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511645"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure rol tanımlarını anlama
@@ -80,7 +80,7 @@ Aşağıdaki tabloda rol özelliklerinin anlamı açıklanmaktadır.
 
 Bir `{action}` işlem dizesinin bölümü, bir kaynak türü üzerinde gerçekleştirebileceğiniz işlem türünü belirtir. Örneğin, içinde aşağıdaki alt dizeleri görürsünüz `{action}` :
 
-| Eylem alt dizesi    | Description         |
+| Eylem alt dizesi    | Açıklama         |
 | ------------------- | ------------------- |
 | `*` | Joker karakter karakteri dize ile eşleşen tüm işlemlere erişim verir. |
 | `read` | Okuma işlemlerini (GET) etkinleştirilir. |
@@ -239,7 +239,7 @@ Sahip
 &nbsp;&nbsp;&nbsp;&nbsp;Eylem<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Depolama Blobu veri Katılımcısı
+Depolama Blob Verileri Katkıda Bulunanı
 
 &nbsp;&nbsp;&nbsp;&nbsp;Eylem<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -281,7 +281,7 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 `Actions`İzin, rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirler. Azure Kaynak sağlayıcılarının güvenli kılınabilir işlemlerini tanımlayan bir işlem dizeleri koleksiyonudur. Burada, ' de kullanılabilen yönetim işlemlerine ilişkin bazı örnekler verilmiştir `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | İşlem dizesi    | Description         |
+> | İşlem dizesi    | Açıklama         |
 > | ------------------- | ------------------- |
 > | `*/read` | Tüm Azure Kaynak sağlayıcılarının tüm kaynak türleri için okuma işlemlerine erişim izni verir.|
 > | `Microsoft.Compute/*` | Microsoft. COMPUTE kaynak sağlayıcısındaki tüm kaynak türleri için tüm işlemlere erişim verir.|
@@ -294,7 +294,7 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 `NotActions`İzin izin verilen ' dan dışlanan yönetim işlemlerini belirler `Actions` . İzin vermek istediğiniz `NotActions` işlem kümesi kısıtlanmış işlemleri dışlayarak daha kolay tanımlanmazsa, izni kullanın. Bir rol tarafından verilen erişim (geçerli izinler) işlemleri işlemlerden çıkararak hesaplanır `NotActions` `Actions` .
 
 > [!NOTE]
-> Bir kullanıcıya ' de bir işlemi dışlayan bir rol atanırsa `NotActions` ve aynı işleme erişim izni veren ikinci bir rol atanırsa, kullanıcının bu işlemi gerçekleştirmesine izin verilir. `NotActions`bir reddetme kuralı değil, belirli işlemler dışlanmanız gerektiğinde, izin verilen bir işlem kümesi oluşturmanın kolay bir yoludur.
+> Bir kullanıcıya ' de bir işlemi dışlayan bir rol atanırsa `NotActions` ve aynı işleme erişim izni veren ikinci bir rol atanırsa, kullanıcının bu işlemi gerçekleştirmesine izin verilir. `NotActions` bir reddetme kuralı değil, belirli işlemler dışlanmanız gerektiğinde, izin verilen bir işlem kümesi oluşturmanın kolay bir yoludur.
 >
 
 ## <a name="dataactions"></a>Veri eylemleri
@@ -302,7 +302,7 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 `DataActions`İzin, rolün bu nesne içindeki verilerinize yapılmasına izin verdiği veri işlemlerini belirler. Örneğin, bir kullanıcının depolama hesabına yönelik blob veri okuma erişimi varsa, bu depolama hesabındaki Blobları okuyabilirler. İşte kullanılabilecek veri işlemlerine ilişkin bazı örnekler aşağıda verilmiştir `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | İşlem dizesi    | Description         |
+> | İşlem dizesi    | Açıklama         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Blob veya Blobların listesini döndürür. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Blob yazma sonucunu döndürür. |
@@ -314,7 +314,7 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 `NotDataActions`İzin izin verilen ' dan dışlanan veri işlemlerini belirler `DataActions` . Bir rol tarafından verilen erişim (geçerli izinler) işlemleri işlemlerden çıkararak hesaplanır `NotDataActions` `DataActions` . Her kaynak sağlayıcı, veri işlemlerini karşılamak için ilgili API kümesini sağlar.
 
 > [!NOTE]
-> Bir kullanıcıya ' de bir veri işlemini dışlayan bir rol atanırsa `NotDataActions` ve aynı veri işlemine erişim veren ikinci bir rol atanırsa, kullanıcının bu veri işlemini gerçekleştirmesine izin verilir. `NotDataActions`, bir reddetme kuralı değil, belirli veri işlemlerinin dışlanması gerektiğinde bir izin verilen veri işlemleri kümesi oluşturmanın kolay bir yoludur.
+> Bir kullanıcıya ' de bir veri işlemini dışlayan bir rol atanırsa `NotDataActions` ve aynı veri işlemine erişim veren ikinci bir rol atanırsa, kullanıcının bu veri işlemini gerçekleştirmesine izin verilir. `NotDataActions` , bir reddetme kuralı değil, belirli veri işlemlerinin dışlanması gerektiğinde bir izin verilen veri işlemleri kümesi oluşturmanın kolay bir yoludur.
 >
 
 ## <a name="assignablescopes"></a>Astifblescopes
@@ -337,6 +337,6 @@ Yerleşik roller `AssignableScopes` kök kapsamına ( `"/"` ) ayarlı. Kök kaps
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Yerleşik Azure rolleri](built-in-roles.md)
+* [Azure yerleşik rolleri](built-in-roles.md)
 * [Özel Azure rolleri](custom-roles.md)
 * [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

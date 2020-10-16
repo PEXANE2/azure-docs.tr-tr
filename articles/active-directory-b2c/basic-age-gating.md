@@ -11,10 +11,10 @@ ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85386140"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C yaş ve ömrü etkinleştir
@@ -33,19 +33,19 @@ Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değer
 
 | Ülke/Bölge | Ülke/bölge adı | Küçük onay yaşı | Küçük yaş |
 | -------------- | ------------------- | ----------------- | --------- |
-| Varsayılan | Hiçbiri | Hiçbiri | 18 |
-| AE | Birleşik Arap Emirlikleri | Hiçbiri | 21 |
+| Varsayılan | Yok | Yok | 18 |
+| AE | Birleşik Arap Emirlikleri | Yok | 21 |
 | AT | Avusturya | 14 | 18 |
 | BE | Belçika | 14 | 18 |
 | BG | Bulgaristan | 16 | 18 |
-| BH | Bahreyn | Hiçbiri | 21 |
-| CM | Kamerun | Hiçbiri | 21 |
+| BH | Bahreyn | Yok | 21 |
+| CM | Kamerun | Yok | 21 |
 | CY | Kıbrıs | 16 | 18 |
 | CZ | Çek Cumhuriyeti | 16 | 18 |
 | DE | Almanya | 16 | 18 |
 | DK | Danimarka | 16 | 18 |
 | EE | Estonya | 16 | 18 |
-| EG | Mısır | Hiçbiri | 21 |
+| EG | Mısır | Yok | 21 |
 | ES | İspanya | 13 | 18 |
 | GS | Fransa | 16 | 18 |
 | GB | Birleşik Krallık | 13 | 18 |
@@ -59,18 +59,18 @@ Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değer
 | LU | Lüksemburg | 16 | 18 |
 | LV | Letonya | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| NA | Namibya | Hiçbiri | 21 |
+| NA | Namibya | Yok | 21 |
 | NL | Hollanda | 16 | 18 |
 | PL | Polonya | 13 | 18 |
 | PT | Portekiz | 16 | 18 |
 | RO | Romanya | 16 | 18 |
 | SE | İsveç | 13 | 18 |
-| SG | Singapur | Hiçbiri | 21 |
+| SG | Singapur | Yok | 21 |
 | SI | Slovenya | 16 | 18 |
 | SK | Slovakya | 16 | 18 |
-| TD | Çad | Hiçbiri | 21 |
-| TH | Tayland | Hiçbiri | 20 |
-| TW | Tayvan | Hiçbiri | 20 |
+| TD | Çad | Yok | 21 |
+| TH | Tayland | Yok | 20 |
+| TW | Tayvan | Yok | 20 |
 | ABD | Birleşik Devletler | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Yaş aşımları seçenekleri

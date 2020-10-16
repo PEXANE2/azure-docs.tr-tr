@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 2f41aac085fef62e0356a93a07823f21d7ba3667
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448337"
 ---
 # <a name="introduction-to-azure-defender-for-iot"></a>IoT için Azure Defender 'a giriş
@@ -32,7 +32,7 @@ Tüm Ayrıntılar [adanmış belgelerde](https://docs.microsoft.com/azure/asc-fo
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|[Azure Defender](security-center-pricing.md) gerektirir|
 |Gerekli roller ve izinler:|Makinenin NSG 'leri üzerinde yazma izinleri|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-devices-can-azure-defender-for-iot-secure"></a>IoT için Azure Defender hangi cihazları güvende?

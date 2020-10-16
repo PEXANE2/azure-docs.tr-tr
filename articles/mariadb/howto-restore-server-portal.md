@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115919"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
@@ -89,7 +89,7 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
 
 3. **Veri kaynağı**olarak **yedekleme** ' yi seçin. Bu eylem, coğrafi olarak yedekli yedeklemelerin etkinleştirildiği sunucuların listesini sağlayan bir açılan menü yükler.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Veri kaynağını seçin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="MariaDB için Azure veritabanı 'na gidin.":::
     
    > [!NOTE]
    > Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
@@ -97,21 +97,21 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
 
 4. **Yedekleme** açılan listesini seçin.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Yedekleme açılan listesini seçin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="MariaDB için Azure veritabanı 'na gidin.":::
 
 5. Geri yüklenecek kaynak sunucuyu seçin.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Yedekle 'yi seçin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="MariaDB için Azure veritabanı 'na gidin.":::
 
 6. Sunucu, **sanal çekirdek**sayısı, **yedekleme saklama süresi**, **yedekleme artıklığı seçeneği**, **altyapı sürümü**ve **yönetici kimlik bilgileri**için varsayılan değerleri sağlar. **Devam**’ı seçin. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Yedeklemeye devam edin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="MariaDB için Azure veritabanı 'na gidin.":::
 
 7. Formun geri kalanını tercihlerinize göre doldurun. Herhangi bir **konum**seçebilirsiniz.
 
     Konumu seçtikten sonra, **Işlem üretimini** güncelleştirmek Için **Sunucu Yapılandır** ' ı seçebilirsiniz (seçtiğiniz bölgede varsa), **sanal çekirdek**sayısı, **yedekleme saklama süresi**ve **yedek artıklık seçeneği**. Geri yükleme sırasında **fiyatlandırma katmanını** (temel, genel amaçlı veya bellek için iyileştirilmiş) veya **depolama** boyutunu değiştirme desteklenmiyor.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Form Doldur."::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="MariaDB için Azure veritabanı 'na gidin."::: 
 
 8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
 

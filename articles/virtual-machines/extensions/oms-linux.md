@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
 ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307458"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux için Log Analytics sanal makine uzantısı
@@ -32,7 +32,7 @@ Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme, 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -104,7 +104,7 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek |
+| Adı | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | yayımcı | Microsoft. EnterpriseCloud. Monitoring |

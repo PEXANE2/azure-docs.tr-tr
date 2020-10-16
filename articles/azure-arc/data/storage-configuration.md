@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317336"
 ---
 # <a name="storage-configuration"></a>Depolama Yapılandırması
@@ -175,14 +175,14 @@ Veya komutlarını kullanarak bir örnek `azdata arc sql mi create` oluştururke
 
 Aşağıdaki tabloda, veri ve Günlükler için kalıcı birimle eşlenen Azure SQL yönetilen örnek kapsayıcısının içindeki yollar listelenmiştir:
 
-|Parametre adı, kısa ad|MSSQL-mıaa kapsayıcısının içindeki yol|Description|
+|Parametre adı, kısa ad|MSSQL-mıaa kapsayıcısının içindeki yol|Açıklama|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|MSSQL yüklemesi ve diğer sistem işlemlerine yönelik dizinleri içerir. MSSQL dizini, varsayılan verileri (işlem günlükleri dahil), hata günlüğü & yedekleme dizinlerini içerir|
 |`--storage-class-logs`, `-scl`|/var/log|Konsol çıkışını (stderr, STDOUT) ve kapsayıcı içindeki işlemlerin diğer günlük bilgilerini depolayan dizinleri içerir|
 
 Aşağıdaki tabloda, veri ve Günlükler için kalıcı birimle eşlenen PostgreSQL örnek kapsayıcısının içindeki yollar listelenmiştir:
 
-|Parametre adı, kısa ad|Postgres kapsayıcısının içindeki yol|Description|
+|Parametre adı, kısa ad|Postgres kapsayıcısının içindeki yol|Açıklama|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/seçenek/PostgreSQL|Postgres yüklemesi için veri ve günlük dizinleri içerir|
 |`--storage-class-logs`, `-scl`|/var/log|Konsol çıkışını (stderr, STDOUT) ve kapsayıcı içindeki işlemlerin diğer günlük bilgilerini depolayan dizinleri içerir|

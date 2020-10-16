@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979843"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma 
@@ -232,7 +232,7 @@ Bu bölüm, tümleştirmenizi kapsamındaki her bir Active Directory etki alanı
   
    ![Çıkış ekranı](./media/workday-inbound-tutorial/pa_install_screen_9.png "Çıkış ekranı")
    
-1. Aracının yüklenmesini doğrulayın ve "Hizmetler" eklentisini açıp "Microsoft Azure AD Connect sağlama Aracısı" adlı hizmeti arayın ve çalıştığından emin olun.
+1. Aracının yüklenmesini doğrulayın ve "Hizmetler" Snap-In açarak çalıştığından emin olun ve "Microsoft Azure AD Connect sağlama Aracısı" adlı hizmeti arayın
   
    ![Hizmetler 'de çalışan Microsoft Azure AD Connect sağlama aracısının ekran görüntüsü.](./media/workday-inbound-tutorial/services.png)
 
@@ -329,7 +329,7 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
 
          * **Yalnızca oluşturma sırasında** -bu eşlemeyi yalnızca Kullanıcı oluşturma eylemlerinde Uygula
 
-1. Eşlemelerinizi kaydetmek için öznitelik eşleme bölümünün en üstündeki **Kaydet** ' e tıklayın.
+1. Eşlemelerinizi kaydetmek için Attribute-Mapping bölümünün en üstündeki **Kaydet** ' e tıklayın.
 
 Öznitelik eşleme yapılandırmanız tamamlandıktan sonra, artık [Kullanıcı sağlama hizmetini etkinleştirebilir ve başlatabilirsiniz](#enable-and-launch-user-provisioning).
 

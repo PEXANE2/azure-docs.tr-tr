@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266709"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069883"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kullanıcı hazırlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -55,7 +55,7 @@ Dört farklı eşleme türü desteklenir:
 - **Doğrudan** – Target özniteliği, Azure AD 'deki bağlantılı nesnenin bir özniteliğinin değeri ile doldurulur.
 - **Sabit** – Target özniteliği belirttiğiniz belirli bir dizeyle doldurulur.
 - **İfade** -Target özniteliği, komut dosyası benzeri bir ifadenin sonucuna göre doldurulur.
-  Daha fazla bilgi için bkz. [Azure Active Directory öznitelik eşlemeleri Için Ifadeler yazma](../app-provisioning/functions-for-customizing-application-data.md).
+  Daha fazla bilgi için bkz. [Azure Active Directory Attribute-Mappings Için Ifadeler yazma](../app-provisioning/functions-for-customizing-application-data.md).
 - **Hiçbiri** -hedef öznitelik değiştirilmemiş olarak bırakıldı. Ancak, hedef özniteliği boşsa, belirttiğiniz varsayılan değerle doldurulur.
 
 Bu dört temel tür ile birlikte özel öznitelik eşlemeleri, isteğe bağlı **varsayılan** değer atama kavramını destekler. Varsayılan değer atama, Azure AD 'de veya hedef nesnede bir değer olmadığında bir hedef özniteliğin bir değer ile doldurulmasını sağlar. En yaygın yapılandırma bu boş bırakılmamalıdır.
@@ -129,7 +129,7 @@ Desteklenen özniteliklerin listesi düzenlenirken aşağıdaki özellikler sağ
 - **Çoklu değer?** -Özniteliğin birden çok değeri destekleyip desteklemediğini belirtir.
 - **Tam durum?** -Öznitelik değerlerinin büyük/küçük harfe duyarlı bir şekilde değerlendirilip değerlendirilmediğini belirtir.
 - **API ifadesi** -bunu, belirli bir sağlama Bağlayıcısı (Workday gibi) için belgeler tarafından istenmedikçe kullanmayın.
-- **Başvurulan nesne özniteliği** -Eğer bir başvuru türü özniteliği ise, bu menü, öznitelik ile ilişkili değeri içeren hedef uygulamadaki tablo ve özniteliği seçmenizi sağlar. Örneğin, saklı değeri ayrı bir "departmanlar" tablosunda bir nesneye başvuran "Departman" adlı bir özniteliğe sahipseniz, "Departments.Name" seçeneğini belirleyin. Başvuru tabloları ve belirli bir uygulama için desteklenen birincil KIMLIK alanları önceden yapılandırılmıştır ve şu anda Azure portal kullanılarak düzenlenemez, ancak [Microsoft Graph API 'si](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)kullanılarak düzenlenebilirler.
+- **Başvurulan nesne özniteliği** -Eğer bir başvuru türü özniteliği ise, bu menü, öznitelik ile ilişkili değeri içeren hedef uygulamadaki tablo ve özniteliği seçmenizi sağlar. Örneğin, saklı değeri ayrı bir "departmanlar" tablosunda bir nesneye başvuran "Departman" adlı bir özniteliğe sahipseniz, "Departments.Name" seçeneğini belirleyin. Başvuru tabloları ve belirli bir uygulama için desteklenen birincil KIMLIK alanları önceden yapılandırılmıştır ve şu anda Azure portal kullanılarak düzenlenemez, ancak [Microsoft Graph API 'si](/graph/api/resources/synchronization-configure-with-custom-target-attributes)kullanılarak düzenlenebilirler.
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCıM uyumlu bir uygulamaya özel uzantı özniteliği sağlama
 SCıM RFC, çekirdek Kullanıcı ve grup şeması tanımlar, Ayrıca, şema uzantılarının uygulamanızın ihtiyaçlarını karşılamasına izin verir. Bir SCıM uygulamasına özel bir öznitelik eklemek için:
@@ -321,7 +321,7 @@ Bu seçeneğin belirlenmesi, sağlama hizmeti çalışırken tüm kullanıcılar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [SaaS uygulamalarına Kullanıcı sağlamasını/sağlamayı kaldırmayı otomatikleştirme](user-provisioning.md)
-- [Öznitelik eşlemeleri için Ifadeler yazma](../app-provisioning/functions-for-customizing-application-data.md)
-- [Kullanıcı hazırlama için kapsam filtreleri](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+- [Öznitelik eşlemeleri için Ifadeler yazma](functions-for-customizing-application-data.md)
+- [Kullanıcı hazırlama için kapsam filtreleri](define-conditional-rules-for-provisioning-user-accounts.md)
 - [Kullanıcıların ve grupların Azure Active Directory'den uygulamalara otomatik olarak hazırlanmasını etkinleştirmek için SCIM'yi kullanma](use-scim-to-provision-users-and-groups.md)
 - [SaaS Uygulamalarını Tümleştirme Hakkında Öğreticiler Listesi](../saas-apps/tutorial-list.md)

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
 ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570115"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes 'i Azure Cosmos DB ile kullanma (Önizleme)
@@ -25,7 +25,7 @@ Azure Cosmos DB ' deki etcd API 'SI, Azure Kubernetes için arka uç deposu olar
 
 Azure Cosmos DB ' de etcd API 'SI hakkında daha fazla bilgi edinmek için [genel bakış](etcd-api-introduction.md) makalesine bakın. Bu makalede, Azure 'da yerel olarak yüklenmiş ve yapılandırılmış bir etcd yerine [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) kullanan bir Kubernetes kümesini önyüklemek Için [Azure Kubernetes altyapısının](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-Engine) nasıl kullanılacağı gösterilmektedir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)'nın en son sürümünü yükler. İşletim sisteminize özel Azure CLı 'yi indirebilir ve yükleme yapabilirsiniz.
 

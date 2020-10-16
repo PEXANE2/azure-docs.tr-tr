@@ -7,32 +7,32 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2af4f2e2148c96a6059836f861cf56d4a4ac005b
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: bfeafdea149cd41ea35562c2ff4b9e67a99b95d0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766175"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058531"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
 Azure dijital TWINS, örneğinizi ve onun öğelerini yönetmek için hem **Denetim düzlemi API 'leri** hem de **veri düzlemi API 'leri** ile birlikte sunulur. 
-* Denetim düzlemi API 'leri [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) API 'lardır ve örneğinizi oluşturma ve silme gibi kaynak yönetimi işlemlerini kapsar. 
+* Denetim düzlemi API 'leri [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md) API 'lardır ve örneğinizi oluşturma ve silme gibi kaynak yönetimi işlemlerini kapsar. 
 * Veri düzlemi API 'leri Azure dijital TWINS API 'leridir ve modelleri, TWINS 'Leri ve grafiği yönetme gibi veri yönetimi işlemleri için kullanılır.
 
 Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemlere genel bir bakış sunar. REST API 'Leri doğrudan ilişkili Swaggers ile veya bir SDK aracılığıyla kullanabilirsiniz.
 
 ## <a name="overview-control-plane-apis"></a>Genel Bakış: denetim düzlemi API 'Leri
 
-Denetim düzlemi API 'Leri, Azure dijital TWINS örneğinizi bir bütün olarak yönetmek için kullanılan [ARM](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) API 'lardır, böylece tüm örneğinizi oluşturma veya silme gibi işlemleri kapsar. Bunları, uç noktaları oluşturmak ve silmek için de kullanacaksınız.
+Denetim düzlemi API 'Leri, Azure dijital TWINS örneğinizi bir bütün olarak yönetmek için kullanılan [ARM](../azure-resource-manager/management/overview.md) API 'lardır, böylece tüm örneğinizi oluşturma veya silme gibi işlemleri kapsar. Bunları, uç noktaları oluşturmak ve silmek için de kullanacaksınız.
 
-Genel önizleme için en güncel Denetim düzlemi API sürümü _**2020-03-01-Preview**_' dır.
+Genel önizleme için en güncel Denetim düzlemi API sürümü _**2020-10-31**_' dir.
 
 Denetim düzlemi API 'Lerini kullanmak için:
-* En son [Swagger klasörüne](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
+* [Denetim düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)en son Swagger 'A başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
 * Şu anda, içindeki denetim API 'Leri için SDK 'Lara erişebilirsiniz...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([başvuru [otomatik olarak oluşturulan]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([başvuru [otomatik olarak oluşturulan]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview&preserve-view=true))
+  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview))
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [Kaynak ol](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)
@@ -47,23 +47,23 @@ Veri düzlemi API 'Leri, Azure dijital TWINS örneğinizin içindeki öğeleri y
 * **Sorgu** -sorgu kategorisi, geliştiricilerin ilişkiler genelinde [ikizi grafiğinde dijital TWINS kümeleri bulmasına](how-to-query-graph.md) olanak tanır.
 * **Eventroutes** -eventroutes kategorisi, verileri sistem ve aşağı akış Hizmetleri aracılığıyla [yönlendiren](concepts-route-events.md)API 'leri içerir.
 
-Genel önizleme için en güncel veri düzlemi API sürümü _**2020-05-31-Preview**_' dir. Veri düzlemi işlemleri için _2020-03-01-Preview_ API sürümü artık kullanım dışıdır.
+Genel önizleme için en güncel veri düzlemi API sürümü _**2020-10-31**_' dir.
 
 Veri düzlemi API 'Lerini kullanmak için:
 * API 'Leri doğrudan çağırabilirsiniz...
-   - en son [Swagger klasörüne](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)başvuruluyor. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir. 
-   - [API başvuru belgelerini](https://docs.microsoft.com/rest/api/azure-digitaltwins/)görüntüleme.
+   - [veri düzlemi Swagger klasöründe](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)en son Swagger 'ye başvuruluyor. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir. 
+   - [API başvuru belgelerini](/rest/api/azure-digitaltwins/)görüntüleme.
 * **.Net (C#)** SDK 'sını kullanabilirsiniz. .NET SDK 'Yı kullanmak için...
    - paketi NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)' dan görüntüleyebilir ve ekleyebilirsiniz. 
    - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - [SDK başvuru belgelerini](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview&preserve-view=true)görüntüleyebilirsiniz.
+   - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview)görüntüleyebilirsiniz.
    - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
 * **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
    - paketi NPM 'den görüntüleyebilir ve yükleyebilirsiniz: [JavaScript Için Azure Azure Digital TWINS istemci kitaplığı](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
-   - [SDK başvuru belgelerini](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true)görüntüleyebilirsiniz.
+   - [SDK başvuru belgelerini](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)görüntüleyebilirsiniz.
 * **Java** SDK 'sını kullanabilirsiniz. Java SDK 'sını kullanmak için...
    - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
-   - [SDK başvuru belgelerini](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/client?view=azure-java-preview&preserve-view=true) görüntüleyebilirsiniz
+   - [SDK başvuru belgelerini](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) görüntüleyebilirsiniz
 * Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [*Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
 
 [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek Tarih düzlemi API 'leri de uygulayabilirsiniz.
@@ -269,22 +269,19 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>Genel API/SDK kullanım notları
 
 > [!NOTE]
-> Önizleme sırasında Azure Digital TWINS 'in, **çıkış noktaları arası kaynak paylaşımını (CORS)** desteklemediğini lütfen unutmayın. Sonuç olarak, bir tarayıcı uygulamasından, bir [API Management (APıM)](../api-management/api-management-key-concepts.md) arabiriminden veya bir [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) bağlayıcısından REST API arıyorsanız bir ilke hatası görebilirsiniz.
-> Bu hatayı çözmek için aşağıdakilerden birini yapabilirsiniz:
-> * İletibir bilgisayardan CORS üst bilgisini şerit `Access-Control-Allow-Origin` . Bu üstbilgi yanıtın paylaşılıp paylaşılamayacağını gösterir. 
-> * Alternatif olarak, bir CORS proxy 'si oluşturun ve Azure dijital TWINS REST API isteği üzerinden isteyin. 
+> Azure dijital TWINS 'in Şu anda **çıkış noktaları arası kaynak paylaşımını (CORS)** desteklemediğini lütfen unutmayın. Etki ve çözüm stratejileri hakkında daha fazla bilgi için bkz. *Kavramlar: Azure dijital TWINS çözümleri Için güvenlik*. [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors)
 
 Aşağıdaki listede, API 'Leri ve SDK 'ları kullanmaya yönelik ek ayrıntılar ve genel yönergeler verilmiştir.
 
-* SDK 'yı kullanmak için, sınıfın örneğini oluşturun `DigitalTwinsClient` . Oluşturucu, paketteki çeşitli kimlik doğrulama yöntemleriyle elde edilebilir kimlik bilgileri gerektirir `Azure.Identity` . Daha fazla bilgi için `Azure.Identity` bkz. [ad alanı belgeleri](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true). 
-* Başlarken faydalı olduğunu fark edebilirsiniz `InteractiveBrowserCredential` , ancak [yönetilen kimliğin](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)kimlik bilgileri de dahil olmak üzere, Azure Digital TWINS ['e karşı MSI ile ayarlanan Azure işlevleri](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) kimlik doğrulaması için kullanacağınız diğer birkaç seçenek vardır. Hakkında daha fazla bilgi için `InteractiveBrowserCredential` bkz. [sınıf belgeleri](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true).
+* SDK 'yı kullanmak için, sınıfın örneğini oluşturun `DigitalTwinsClient` . Oluşturucu, paketteki çeşitli kimlik doğrulama yöntemleriyle elde edilebilir kimlik bilgileri gerektirir `Azure.Identity` . Daha fazla bilgi için `Azure.Identity` bkz. [ad alanı belgeleri](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet). 
+* Başlarken faydalı olduğunu fark edebilirsiniz `InteractiveBrowserCredential` , ancak [yönetilen kimliğin](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)kimlik bilgileri de dahil olmak üzere, Azure Digital TWINS ['e karşı MSI ile ayarlanan Azure işlevleri](../app-service/overview-managed-identity.md?tabs=dotnet) kimlik doğrulaması için kullanacağınız diğer birkaç seçenek vardır. Hakkında daha fazla bilgi için `InteractiveBrowserCredential` bkz. [sınıf belgeleri](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet).
 * Tüm hizmet API çağrıları, sınıf üzerinde üye işlevleri olarak gösterilir `DigitalTwinsClient` .
 * Tüm hizmet işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde bulunur.
-* Tüm hizmet işlevleri, 400 veya üzeri bir dönüş durumu için bir özel durum oluşturur. Çağrıları bir bölüme sardığınızdan `try` ve en azından yakaladığınızdan emin olun `RequestFailedExceptions` . Bu tür özel durum hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/dotnet/api/azure.requestfailedexception?view=azure-dotnet&preserve-view=true)bakın.
-* Çoğu hizmet yöntemi döndürür `Response<T>` veya ( `Task<Response<T>>` zaman uyumsuz çağrılar için), burada `T` hizmet çağrısının dönüş nesnesinin sınıfıdır. [`Response`](https://docs.microsoft.com/dotnet/api/azure.response-1?view=azure-dotnet&preserve-view=true)Sınıfı, hizmet döndürmesini kapsüller ve dönüş değerlerini kendi `Value` alanına sunar.  
-* Disk belleğine alınmış sonuçları olan hizmet yöntemleri, `Pageable<T>` veya `AsyncPageable<T>` sonuçlarını döndürür. Sınıfı hakkında daha fazla bilgi için buraya bakın `Pageable<T>` . hakkında daha fazla bilgi için [here](https://docs.microsoft.com/dotnet/api/azure.pageable-1?view=azure-dotnet-preview&preserve-view=true) `AsyncPageable<T>` [buraya](https://docs.microsoft.com/dotnet/api/azure.asyncpageable-1?view=azure-dotnet-preview&preserve-view=true)bakın.
-* Bir döngüsü kullanarak, disk belleğine alınmış sonuçları yineleyebilirsiniz `await foreach` . Bu süreç hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)bakın.
-* Temel alınan SDK `Azure.Core` . SDK altyapısı ve türleri hakkında başvuru için bkz. [Azure ad alanı belgeleri](https://docs.microsoft.com/dotnet/api/azure?view=azure-dotnet-preview&preserve-view=true) .
+* Tüm hizmet işlevleri, 400 veya üzeri bir dönüş durumu için bir özel durum oluşturur. Çağrıları bir bölüme sardığınızdan `try` ve en azından yakaladığınızdan emin olun `RequestFailedExceptions` . Bu tür özel durum hakkında daha fazla bilgi için [buraya](/dotnet/api/azure.requestfailedexception?preserve-view=true&view=azure-dotnet)bakın.
+* Çoğu hizmet yöntemi döndürür `Response<T>` veya ( `Task<Response<T>>` zaman uyumsuz çağrılar için), burada `T` hizmet çağrısının dönüş nesnesinin sınıfıdır. [`Response`](/dotnet/api/azure.response-1?preserve-view=true&view=azure-dotnet)Sınıfı, hizmet döndürmesini kapsüller ve dönüş değerlerini kendi `Value` alanına sunar.  
+* Disk belleğine alınmış sonuçları olan hizmet yöntemleri, `Pageable<T>` veya `AsyncPageable<T>` sonuçlarını döndürür. Sınıfı hakkında daha fazla bilgi için buraya bakın `Pageable<T>` . hakkında daha fazla bilgi için [here](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview) `AsyncPageable<T>` [buraya](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview)bakın.
+* Bir döngüsü kullanarak, disk belleğine alınmış sonuçları yineleyebilirsiniz `await foreach` . Bu süreç hakkında daha fazla bilgi için [buraya](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)bakın.
+* Temel alınan SDK `Azure.Core` . SDK altyapısı ve türleri hakkında başvuru için bkz. [Azure ad alanı belgeleri](/dotnet/api/azure?preserve-view=true&view=azure-dotnet-preview) .
 
 Hizmet yöntemleri mümkün olduğunda kesin türü belirtilmiş nesneler döndürür. Ancak, Azure dijital TWINS, çalışma zamanında Kullanıcı tarafından özel olarak yapılandırılmış modelleri temel aldığı için (hizmete yüklenen DTDL modelleri aracılığıyla), çoğu hizmet API 'Leri JSON biçiminde ikizi verileri alır ve döndürür.
 

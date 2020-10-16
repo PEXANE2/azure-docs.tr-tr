@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
 ms.openlocfilehash: 49a89ee90d28c9c7a3f59424b773ee0f221381e4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89303533"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak genel IP adresi oluşturma
@@ -36,7 +36,7 @@ Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma göste
     | ---                     | ---                         |
     | IP sürümü              | IPv4 seçin                 |    
     | SKU                     | **Standart** seçin         |
-    | Name                    | *Mystandardzrpublicıp* girin          |
+    | Adı                    | *Mystandardzrpublicıp* girin          |
     | IP adresi ataması   | Bu, "static" olarak kilitlenecek                                        |
     | Boşta kalma zaman aşımı (dakika)  | Değeri 4 ' te bırakın        |
     | DNS ad etiketi          | Değeri boş bırakın    |
@@ -61,7 +61,7 @@ Standart genel IP adresini **Mystandardpublicıp**adlı bir kaynak olmayan kayna
     | ---                     | ---                         |
     | IP sürümü              | IPv4 seçin                 |    
     | SKU                     | **Standart** seçin         |
-    | Name                    | *Mystandardpublicıp* girin          |
+    | Adı                    | *Mystandardpublicıp* girin          |
     | IP adresi ataması   | Bu, "static" olarak kilitlenecek                                        |
     | Boşta kalma zaman aşımı (dakika)  | Değeri 4 ' te bırakın        |
     | DNS ad etiketi          | Değeri boş bırakın    |
@@ -86,7 +86,7 @@ Bu seçim tüm bölgelerde geçerlidir ve [kullanılabilirlik alanları](https:/
     | ---                     | ---                         |
     | IP sürümü              | IPv4 seçin                 |    
     | SKU                     | **Standart** seçin         |
-    | Name                    | *Mybasicpublicıp* girin          |
+    | Adı                    | *Mybasicpublicıp* girin          |
     | IP adresi ataması   | **Statik** öğesini seçin (aşağıdaki nota bakın)                                     |
     | Boşta kalma zaman aşımı (dakika)  | Değeri 4 ' te bırakın        |
     | DNS ad etiketi          | Değeri boş bırakın    |

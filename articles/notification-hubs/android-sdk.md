@@ -10,10 +10,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315210"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Öğretici: Firebase SDK sürümü 1.0.0-preview1 'i kullanarak Android cihazlara anında iletme bildirimleri gönderme
@@ -62,23 +62,23 @@ Ayrıca aşağıdaki öğeler de gereklidir:
 
 2. Projenizi oluşturduktan sonra, **Android uygulamanıza Firebase ekleyin**' i seçin.
 
-   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Firebase Ekle":::
+   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Projeyi Yapılandır":::
 
 3.  **Android uygulamanıza Firebase ekleme**   sayfasında şunları yapın:
 
    1.  **Android paket adı**Için, **ApplicationId**değerini   uygulamanızın **Build. Gradle** dosyasına kopyalayın. Bu örnekte,  `com.fabrikam.fcmtutorial1app` .
 
-      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Paket adını belirtin":::
+      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Projeyi Yapılandır":::
 
    2.  **Uygulamayı kaydet**' i seçin.
 
 4.  **google-services.jskarşıdan yükle**' yi seçin, dosyayı projenizin **uygulama**   klasörüne kaydedin ve sonra **İleri**' yi seçin.
 
-   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Google hizmetini indirin":::
+   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Projeyi Yapılandır":::
 
 5. Firebase konsolunda projenizin dişli simgesini seçin. Ardından **proje ayarları**' nı seçin.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Proje ayarları":::
+   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Projeyi Yapılandır":::
 
 6. Dosyadaki **google-services.js** Android Studio projenizin **uygulama**   klasörüne indirmediyseniz, bu sayfada bunu yapabilirsiniz.
 
@@ -94,7 +94,7 @@ Ayrıca aşağıdaki öğeler de gereklidir:
 
 3.  **Notification Hubs**   sayfasında, araç çubuğunda **Ekle**' yi seçin   .
 
-   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Hub Ekle":::
+   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Projeyi Yapılandır":::
 
 4.  **Notification Hubs**   sayfasında, aşağıdakileri yapın:
 
@@ -108,15 +108,15 @@ Ayrıca aşağıdaki öğeler de gereklidir:
 
    5.  **Oluştur**' u seçin.
 
-      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Merkez oluştur":::
+      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Projeyi Yapılandır":::
 
 5.  **Bildirimleri**   (zil simgesi) seçin ve ardından **Kaynağa Git**' i seçin. Ayrıca **Notification Hubs**   sayfasında listeyi yenileyebilir ve hub 'ınızı seçebilirsiniz.
 
-   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Hub seçin":::
+   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Projeyi Yapılandır":::
 
 6. Listeden **erişim ilkeleri**' ni seçin   . İki bağlantı dizesinin kullanılabilir olduğunu unutmayın. Anında iletme bildirimlerini işlemek için onlara daha sonra ihtiyacınız olacak.
 
-   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Erişim ilkeleri":::
+   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Projeyi Yapılandır":::
 
    > [!IMPORTANT]
    > Uygulamanızda **Defaultfullsharedaccesssignature**   ilkesini kullanmayın. Bu ilke yalnızca uygulama arka ucunda kullanılacaktır.
@@ -129,7 +129,7 @@ Ayrıca aşağıdaki öğeler de gereklidir:
 
 3. Araç çubuğunda **Kaydet**' i seçin.
 
-   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Sunucu anahtarı":::
+   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Projeyi Yapılandır":::
 
 4. Azure portal, hub 'ın başarıyla güncelleştirildiğini belirten bir ileti görüntüler.  **Kaydet**   düğmesi devre dışı bırakıldı.
 
@@ -143,15 +143,15 @@ Bildirim Hub 'ınız şimdi Firebase Cloud Messaging ile çalışacak şekilde y
 
 2. Projenizde kullanılan Android SDK hedef sürümünü seçin. Ardından **Paket ayrıntılarını göster**' i seçin.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="SDK Yöneticisi":::
+   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="Projeyi Yapılandır":::
 
 3. Zaten yüklenmemişse **Google API 'leri**seçin.
 
-   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="API'ler":::
+   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="Projeyi Yapılandır":::
 
 4.  **SDK Tools**   sekmesine geçin. Google Play Hizmetleri zaten yüklemediyseniz, **Google Play Services**   aşağıdaki görüntüde gösterildiği gibi Google Play hizmetleri seçin. Ardından, yüklemek için **Uygula**' yı seçin   . SDK yolunun sonraki bir adım için olduğunu unutmayın.
 
-   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Play Services":::
+   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Projeyi Yapılandır":::
 
 5.  **Değişikliği Onayla**   Iletişim kutusunu görürseniz **Tamam**' ı seçin. Bileşen yükleyicisi istenen bileşenleri yüklüyor. Bileşenler yüklendikten sonra **son**' u seçin   .
 
@@ -237,11 +237,11 @@ Bildirim Hub 'ınız şimdi Firebase Cloud Messaging ile çalışacak şekilde y
 
 4. Uygulamayı çalıştırmak için bir sanal cihazınıza sahip olduğunuzdan emin olun. Yoksa, aşağıdaki gibi bir tane ekleyin:
 
-   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Cihaz Yöneticisi":::
-   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Sanal cihazlar":::
+   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Projeyi Yapılandır":::
+   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Projeyi Yapılandır":::
    3. Seçili cihazınızda uygulamayı çalıştırın ve hub 'a başarıyla kaydedildiğinizi doğrulayın.
 
-      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Cihaz kaydı":::
+      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Projeyi Yapılandır":::
 
       > [!NOTE]
       > Kayıt, `onTokenRefresh()` örnek kimliği hizmetinin yöntemi çağrılana kadar ilk başlatma sırasında başarısız olabilir. Yenileme işlemi Bildirim Hub 'ına başarılı bir kayıt başlatmalıdır.
@@ -258,7 +258,7 @@ Aşağıdaki gibi [Azure Portal](https://portal.azure.com/)Bildirim Hub 'ınız
 
 4. Portal sayfasının altındaki listede işlemin sonucuna bakın.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Test bildirimi gönder":::
+   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Projeyi Yapılandır":::
 
 5. Uyarı iletisini cihazınızda görürsünüz.
 

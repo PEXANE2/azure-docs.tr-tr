@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226990"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory raporları için Azure Izleyici çalışma kitaplarını kullanma
@@ -186,7 +186,7 @@ Devre dışı bırakılan oturum açma işlemleri için, koşullu erişim durumu
 ### <a name="instructions"></a>Yönergeler 
 Koşullu erişim öngörüleri için çalışma kitabına erişmek üzere koşullu erişim bölümünde **koşullu erişim öngörüleri** çalışma kitabını seçin. Bu çalışma kitabı, kiracınızdaki her bir koşullu erişim ilkesinin beklenen etkisini gösterir. Aşağıdaki filtreleri uygulayarak, açılan listeden bir veya daha fazla koşullu erişim ilkesi seçin ve çalışma kitabının kapsamını daraltın: 
 
-- **Zaman Aralığı**
+- **Zaman aralığı**
 
 - **Kullanıcı**
 

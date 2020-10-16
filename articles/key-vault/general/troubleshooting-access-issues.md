@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 3110e02c2c4cb8b254e80a55997577db95ba1be0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595997"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075663"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
@@ -45,13 +45,15 @@ Key Vault için bulut tabanlı bir uygulamanın kimlik doğrulamasının en kola
 
 ### <a name="how-can-i-give-the-ad-group-access-to-the-key-vault"></a>AD grubuna Anahtar Kasası erişimine nasıl izin veririm?
 
-Azure CLı `az keyvault set-policy` komutunu veya Azure PowerShell set-AzKeyVaultAccessPolicy cmdlet 'ini kullanarak anahtar kasanıza ad grubu izinleri verin. Bkz. [erişim Ilkesi atama-CLI](assign-access-policy-cli.md) ve [erişim Ilkesi atama-PowerShell](assign-access-policy-powershell.md).
+Azure CLı `az keyvault set-policy` komutunu veya Azure PowerShell Set-AzKeyVaultAccessPolicy cmdlet 'ini kullanarak anahtar kasanıza ad grubu izinleri verin. Bkz. [erişim Ilkesi atama-CLI](assign-access-policy-cli.md) ve [erişim Ilkesi atama-PowerShell](assign-access-policy-powershell.md).
 
 Uygulamanın Ayrıca anahtar kasasına atanmış en az bir kimlik ve erişim yönetimi (ıAM) rolü olması gerekir. Aksi takdirde, oturum açamayacak ve aboneliğe erişmek için yetersiz haklarla başarısız olacak. Yönetilen kimlikleri olan Azure AD grupları belirteçleri yenilemek için sekiz saate kadar sürebilir ve geçerli hale gelir.
 
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Mevcut erişim ilkelerini silmeden ARM şablonuyla Key Vault nasıl yeniden dağırım?
 
 Key Vault yeniden dağıtımı, Key Vault erişim ilkesini siler ve ARM şablonundaki erişim ilkesiyle değiştirir. Key Vault erişim ilkeleri için artımlı bir seçenek yoktur. Key Vault erişim ilkelerini korumak için, Key Vault ' de var olan erişim ilkelerini okumanız ve tüm erişim kesintilerini önlemek için ARM şablonunu bu ilkelerle doldurmanız gerekir.
+
+Bu senaryo için yardımcı olabilecek başka bir seçenek, erişim ilkelerine alternatif olarak RBAC rollerini kullanmaktır. RBAC ile, ilkeyi yeniden belirtmeden anahtar kasasını yeniden dağıtabilirsiniz. Bu [çözümü daha fazla bulabilirsiniz.](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Aşağıdaki hata türleri için önerilen sorun giderme adımları
 

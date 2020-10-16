@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/12/2020
 ms.author: victorh
-ms.openlocfilehash: 56e0d40bcbfb97f57b63dc82da1a6604f83dffad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c840bf9e82b8dcdb1fbf9b380ea847b3d1b08dd9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85563618"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948077"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>Güvenli sanal merkez nedir?
 
@@ -20,9 +20,9 @@ Sanal hub, diğer kaynaklardan bağlantı sağlayan, Microsoft tarafından yöne
 
 *Güvenli* bir sanal hub, Azure Güvenlik Duvarı Yöneticisi tarafından yapılandırılan ilişkili güvenlik ve yönlendirme ilkelerine sahip bir [Azure sanal WAN hub 'ına](../virtual-wan/virtual-wan-about.md#resources) sahiptir. Trafik yönetimi ve koruması için yerel güvenlik hizmetleriyle hub ve bağlı bileşen ve geçişli mimarilerin kolayca oluşturulmasını sağlamak için güvenli sanal hub 'ları kullanın. 
 
-Şirket içi bağlantı olmadan yönetilen merkezi VNet olarak güvenli bir sanal hub kullanabilirsiniz. Daha önce bir Azure Güvenlik Duvarı dağıtımı için gerekli olan merkezi VNet 'in yerini alır. Güvenli sanal hub otomatik yönlendirme sağladığından, trafiği güvenlik duvarınız üzerinden yönlendirmek için kendi UDRs 'nizi (Kullanıcı tanımlı yollar) yapılandırmanız gerekmez.
+Sanal ağlar (V2V), sanal ağlar ve şube ofisleri (B2V) ile Internet arasındaki trafiği filtrelemek için güvenli bir sanal hub kullanabilirsiniz (B2I/V2I). Güvenli bir sanal hub otomatik yönlendirme sağlar. Trafiği güvenlik duvarınız üzerinden yönlendirmek için kendi UDRs 'nizi (Kullanıcı tanımlı yollar) yapılandırmaya gerek yoktur.
 
-Tam sanal WAN mimarisinin bir parçası olarak güvenli sanal hub 'ları kullanmak da mümkündür. Bu mimari, Azure ile ve arasında güvenli, iyileştirilmiş ve otomatik bir dal bağlantısı sağlar. Azure Güvenlik Duvarı ve hizmet olarak diğer üçüncü taraf güvenlik (SECaaS) sağlayıcıları da dahil olmak üzere ağ trafiğinizi korumak ve yönetmek için Hizmetleri seçebilirsiniz.
+Azure Güvenlik Duvarı, üçüncü taraf güvenlik hizmeti (SECaaS) sağlayıcıları veya her ikisi de dahil olmak üzere ağ trafiğinizi korumak ve yönetmek için gerekli güvenlik sağlayıcılarını seçebilirsiniz. Şu anda, güvenli bir hub, dal (B2B) filtreleme ve birden çok hub arasında filtreleme işlemlerini desteklemez. Daha fazla bilgi edinmek için bkz. [Azure Güvenlik Duvarı Yöneticisi nedir?](overview.md#known-issues). 
 
 ## <a name="create-a-secured-virtual-hub"></a>Güvenli sanal hub oluşturma
 

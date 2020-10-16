@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
 ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370921"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
@@ -25,7 +25,7 @@ Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan v
 
 Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tamamen görsel bir deneyim sağlar. Veri akışlarınız, ölçeklendirilmemiş veri işleme için ADF tarafından yönetilen yürütme kümelerinde çalışır. Azure Data Factory, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bölmesinden oluşturulur. Bir veri akışı oluşturmak için, **fabrika kaynakları**' nın yanındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
 
@@ -110,7 +110,7 @@ Eşleme veri akışları aşağıdaki bölgelerde kullanılabilir:
 | Brezilya Güney  | ✓ |  |
 | Orta Kanada | ✓ |  |
 | Orta Hindistan | ✓ |   ✓ |
-| Orta ABD    | ✓ |   ✓ |
+| Central US    | ✓ |   ✓ |
 | Doğu Çin |      | ✓ |
 | Çin Doğu 2  |   |    |
 | Çin bölgesel olmayan | | |

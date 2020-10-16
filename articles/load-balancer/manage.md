@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/8/2020
 ms.author: allensu
 ms.openlocfilehash: e1080aea12e70f4312fbee07b063d5a5cfbd1201
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89596315"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure Load Balancer portal ayarları
@@ -36,7 +36,7 @@ Yük dengeleyici portalı Oluştur sayfasının **temel bilgiler** sekmesinde a�
 | ---------- | ---------- |
 | Abonelik  | Aboneliğinizi seçin. Bu seçim, yük dengeleyicinizin dağıtılmasını istediğiniz aboneliğiniz. |
 | Kaynak grubu | **Yeni oluştur** ' u seçin ve metin kutusuna kaynak grubunuzun adını yazın. Oluşturulmuş bir kaynak grubunuz varsa, bunu seçin. |
-| Name | Bu ayar Azure Load Balancer adıdır. |
+| Adı | Bu ayar Azure Load Balancer adıdır. |
 | Bölge | Yük dengeleyicinizi dağıtmak istediğiniz bir Azure bölgesi seçin. |
 | Tür | Yük dengeleyici iki türe sahiptir: </br> **İç (özel)** </br> **Ortak (harici)**.</br> İç yük dengeleyici (ıLB), trafiği özel bir IP adresi aracılığıyla arka uç havuzu üyelerine yönlendirir.</br> Ortak yük dengeleyici, istekleri Internet üzerinden arka uç havuzuna yönlendirir.</br> [Yük dengeleyici türleri](components.md#frontend-ip-configuration-)hakkında daha fazla bilgi edinin.|
 | SKU  | **Standart**' ı seçin. </br> Yük dengeleyicinin iki SKU 'su vardır: **temel** ve **Standart**. </br> Temel, sınırlı işlevlere sahiptir. </br> **Standart** , üretim iş yükleri için önerilir. </br> [SKU 'lar](skus.md)hakkında daha fazla bilgi edinin. |
@@ -63,7 +63,7 @@ Türünde **dahili** ' ı seçerseniz, aşağıdaki bilgileri görürsünüz:
 | IP adresi ataması | Seçenekleriniz **statik** veya **dinamik**. </br> Statik, IP 'nin değişmemesini sağlar. Dinamik bir IP değişebilir. |
 | Kullanılabilirlik alanı | Seçenekleriniz şunlardır: </br> **Bölge yedekli** </br> **Bölge 1** </br> **Bölge 2** </br> **Bölge 3** </br> Yüksek oranda kullanılabilir ve kullanılabilirlik bölgesi hatalarıyla dayanıklı olan bir yük dengeleyici oluşturmak için, bölgesel olarak **yedekli** bir IP seçin. |
 
-:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="Yük Dengeleyici iç oluşturma." border="true":::
+:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="Yük dengeleyici ortak oluşturma." border="true":::
 
 ## <a name="frontend-ip-configuration"></a>Ön uç IP yapılandırması
 
@@ -75,12 +75,12 @@ Yük dengeleyicisine bir ön uç IP yapılandırması eklemek istiyorsanız, Azu
 
 | Ayar |  Ayrıntılar |
 | ---------- | ---------- |
-| Name | Ön uç IP yapılandırmanızın adı. |
+| Adı | Ön uç IP yapılandırmanızın adı. |
 | IP sürümü | Ön uçta istediğiniz IP adresi sürümü. </br> Yük dengeleyici hem IPv4 hem de IPv6 ön uç IP yapılandırmasını destekler. |
 | IP türü | IP türü, tek bir IP adresinin ön uçta veya IP öneki kullanarak bir IP adresi aralığı ile ilişkili olup olmadığını belirler. </br> [Genel BIR IP öneki](../virtual-network/public-ip-address-prefix.md) , aynı uç noktaya sürekli olarak bağlanmanız gerektiğinde yardımcı olur. Ön ek, SNAT bağlantı noktası sorunlarıyla ilgili yardım almak için yeterli bağlantı noktası verilmesini sağlar. |
 | Genel IP adresi (yukarıdaki öneki seçtiyseniz önek) | Yük dengeleyici ön ucu için yeni bir genel IP (veya ön ek) seçin veya oluşturun. |
 
-:::image type="content" source="./media/manage/frontend.png" alt-text="Ön uç IP yapılandırması oluştur sayfası." border="true":::
+:::image type="content" source="./media/manage/frontend.png" alt-text="Yük dengeleyici ortak oluşturma." border="true":::
 
 ## <a name="backend-pools"></a>Arka uç havuzları
 
@@ -90,13 +90,13 @@ Yük dengeleyicisine bir arka uç havuzu eklemek istiyorsanız, Azure portal yü
 
 | Ayar | Ayrıntılar |
 | ---------- |  ---------- |
-| Name | Arka uç havuzunuzun adı. |
+| Adı | Arka uç havuzunuzun adı. |
 | Sanal ağ | Arka uç örneklerinizin bulunduğu sanal ağ. |
 | IP sürümü | Seçenekleriniz **IPv4** veya **IPv6**. |
 
 Azure Load Balancer arka uç havuzuna sanal makineler veya sanal makine ölçek kümeleri ekleyebilirsiniz. Önce sanal makineler veya sanal makine ölçek kümeleri oluşturun. Sonra, bunları portalda yük dengeleyiciye ekleyin.
 
-:::image type="content" source="./media/manage/backend.png" alt-text="Arka uç Havuzu Oluştur sayfası." border="true":::
+:::image type="content" source="./media/manage/backend.png" alt-text="Yük dengeleyici ortak oluşturma." border="true":::
 
 ## <a name="health-probes"></a>Sistem durumu araştırmaları
 
@@ -106,13 +106,13 @@ Yük dengeleyicisine bir sistem durumu araştırması eklemek istiyorsanız, Azu
 
 | Ayar | Ayrıntılar |
 | ---------- | ---------- |
-| Name | Sistem durumu araştırmanın adı. |
+| Adı | Sistem durumu araştırmanın adı. |
 | Protokol | Seçtiğiniz protokol, arka uç örneklerinin sağlıklı olup olmadığını belirlemek için kullanılan denetim türünü belirler. </br> Seçenekleriniz şunlardır: </br> **TCP** </br> **HTTPS** </br> **HTTP** </br> Doğru protokolü kullandığınızdan emin olun. Bu seçim, uygulamanızın yapısına göre değişir. </br> Sistem durumu araştırması ve araştırma yanıtlarının yapılandırması, hangi arka uç havuzu örneklerinin yeni akışlar alacağını belirler. </br> Bir arka uç uç noktasındaki uygulamanın başarısızlığını algılamak için sistem durumu araştırmalarını kullanabilirsiniz. </br> [Sistem durumu araştırmaları](load-balancer-custom-probe-overview.md)hakkında daha fazla bilgi edinin. |
 | Bağlantı noktası | Durum araştırması için hedef bağlantı noktası. </br> Bu ayar, durum araştırmasının, örneğin durumunu belirlemede kullanacağı arka uç örneğindeki bağlantı noktasıdır. |
 | Aralık | Yoklama denemeleri arasındaki saniye sayısı. </br> Aralık, sistem durumu araştırmasının ne sıklıkta arka uç örneğine ulaşmaya çalışacağını belirleyecek. </br> 5 ' i seçerseniz ikinci araştırma denemesi 5 saniye sonra yapılır ve bu şekilde devam eder. |
 | İyi durumda olmayan durum eşiği | Bir VM sağlıksız olarak kabul edilmeden önce gerçekleşmesi gereken arka arkaya araştırma hatalarının sayısı.</br> 2 ' yi seçerseniz, art arda iki hatadan sonra bu arka uç örneğine yeni akış ayarlanmayacak. |
 
-:::image type="content" source="./media/manage/health-probe.png" alt-text="Sistem durumu araştırması ekleyin." border="true":::
+:::image type="content" source="./media/manage/health-probe.png" alt-text="Yük dengeleyici ortak oluşturma." border="true":::
 
 ## <a name="load-balancing-rules"></a>Yük Dengeleme kuralları
 
@@ -122,7 +122,7 @@ Yük dengeleyicisine yük dengeleyici kuralı eklemek istiyorsanız, Azure porta
     
 | Ayar | Ayrıntılar |
 | ---------- | ---------- |
-| Name | Yük dengeleyici kuralının adı. |
+| Adı | Yük dengeleyici kuralının adı. |
 | IP sürümü | Seçenekleriniz **IPv4** veya **IPv6**.  |
 | Ön uç IP adresi | Ön uç IP adresini seçin. </br> Yük dengeleyicinin yük dengeleyici kuralını ilişkilendirilmesini istediğiniz ön uç IP adresi.|
 | Protokol | Azure Load Balancer, katman 4 ağ yükü dengeleyicidir. </br> Seçenekleriniz şunlardır: **TCP** veya **UDP**. |
@@ -136,7 +136,7 @@ Yük dengeleyicisine yük dengeleyici kuralı eklemek istiyorsanız, Azure porta
 | Kayan IP | Kayan IP, **doğrudan sunucu dönüşü (DSR)** olarak bilinen bir kısmı için Azure 'un terminolojileridir. </br> DSR iki bölümden oluşur: <br> 1. Flow topolojisi </br> 2. bir platform düzeyinde bir IP adresi eşleme şeması. </br></br> Azure Load Balancer, kayan IP 'nin etkin olup olmadığı bir DSR Flow topolojisinde her zaman çalışır. </br> Bu işlem, bir akışın giden bölümünün her zaman doğrudan başlangıca akışa doğru şekilde yeniden yazılması anlamına gelir. </br> Kayan IP olmadan Azure, geleneksel bir yük dengeleme IP adresi eşleme şeması, sanal makine örneklerinin IP 'sini gösterir. </br> Kayan IP 'nin etkinleştirilmesi, ek esneklik sağlamak için IP adresi eşlemesini yük dengeleyicinin ön uç IP 'si olarak değiştirir. </br> Daha fazla bilgi için bkz. [Azure Load Balancer Için birden fazla ön uçlar](load-balancer-multivip-overview.md).|
 | Örtük giden kuralları oluşturma | **Hayır**'ı seçin. </br> Varsayılan: **Disableoutboundsnat = false**  </br> Bu durumda, giden bir ön uç IP 'si ile meydana gelir. </br></br> **disableOutboundSnat = true** </br>Bu durumda giden kuralları giden için gerekir. |
 
-:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="Yük Dengeleme kuralı ekle." border="true":::
+:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="Yük dengeleyici ortak oluşturma." border="true":::
 
 ## <a name="inbound-nat-rules"></a>Gelen NAT kuralları
 
@@ -152,7 +152,7 @@ Yük dengeleyicisine bir gelen NAT kuralı eklemek istiyorsanız, Azure portal y
 
 | Ayar | Ayrıntılar |
 | ---------- | ---------- |
-| Name | Gelen NAT kuralınızın adı |
+| Adı | Gelen NAT kuralınızın adı |
 | Ön uç IP adresi | Ön uç IP adresini seçin. </br> Gelen NAT kuralını ilişkilendirmek istediğiniz yük dengeleyicinizin ön uç IP adresi. |
 | IP sürümü | Seçenekleriniz IPv4 ve IPv6. |
 | Hizmet | Azure Load Balancer üzerinde çalıştırdığınız hizmetin türü. </br> Burada bir seçim, bağlantı noktası bilgilerini uygun şekilde güncelleştirecek. |
@@ -163,7 +163,7 @@ Yük dengeleyicisine bir gelen NAT kuralı eklemek istiyorsanız, Azure portal y
 | Hedef sanal makine | Bu kuralın ilişkilendirilmesini istediğiniz arka uç havuzunun sanal makine parçası. |
 | Bağlantı noktası eşleme | Bu ayar, uygulama tercihlerinize göre varsayılan veya özel olabilir. |
 
-:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="Gelen NAT kuralı ekle." border="true":::
+:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="Yük dengeleyici ortak oluşturma." border="true":::
 
 ## <a name="outbound-rules"></a>Giden kuralları
 
@@ -173,7 +173,7 @@ Yük dengeleyicisine bir giden kuralı eklemek istiyorsanız, Azure portal yük 
 
 | Ayar | Ayrıntılar |
 | ------- | ------ |
-| Name | Giden kuralınızın adı. |
+| Adı | Giden kuralınızın adı. |
 | Ön uç IP adresi | Ön uç IP adresini seçin. </br> Giden kuralının ilişkilendirilmesini istediğiniz yük dengeleyicinizin ön uç IP adresi. |
 | Protokol | Azure Load Balancer, katman 4 ağ yükü dengeleyicidir. </br> Seçenekleriniz şunlardır: **Tümü**, **TCP**veya **UDP**. |
 | Boşta kalma zaman aşımı (dakika) | Etkin tut iletileri göndermek için istemcilere bağlı kalmadan bir **TCP** veya **http** bağlantısını açık tutun. |
@@ -193,7 +193,7 @@ Yük dengeleyicisine bir giden kuralı eklemek istiyorsanız, Azure portal yük 
 | Seçme ölçütü | **Örnek başına bağlantı noktası** seçin |
 | Örnek başına bağlantı noktası | **10.000**girin. |
 
-:::image type="content" source="./media/manage/outbound-rule.png" alt-text="Gelen giden kuralı ekle." border="true":::
+:::image type="content" source="./media/manage/outbound-rule.png" alt-text="Yük dengeleyici ortak oluşturma." border="true":::
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

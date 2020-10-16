@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88853103"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
@@ -143,7 +143,7 @@ SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>İlk yoks/SCS kümesi düğümüne bir ASCS/SCS örneği yükler
 
-1. İlk küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve şuraya gidin: **ürün**  >  **DBMS** > yükleme > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ilk küme düğümü.  
+1. İlk küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve şuraya gidin: **ürün**  >  **DBMS** > yükleme > uygulama sunucusu ABAP (veya Java) > High-Availability sistem > ascs/SCS örneği > ilk küme düğümü.  
 
 2. SWPM 'de küme paylaşma yapılandırması olarak **dosya paylaşma kümesi** ' ni seçin.  
 3. **SAP sistem kümesi parametrelerine**adım sorulduğunda, **dosya paylaşma ana bilgisayar adı**olarak zaten oluşturduğunuz Azure NetApp Files SMB paylaşımının ana bilgisayar adını girin.  Bu örnekte, SMB paylaşımının ana bilgisayar adı **anfsmb-9562**' dir. 
@@ -158,7 +158,7 @@ SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>İkinci yoks/SCS küme düğümüne bir ASCS/SCS örneği yükler
 
-1. İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve ardından **ürün**  >  **DBMS** > yükleme > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ek küme düğümü ' ne gidin.  
+1. İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve ardından > **ürün**  >  **DBMS** 'ye gidin > uygulama sunucusu ABAP (veya Java) > High-Availability sistem > ascs/SCS örneği > ek küme düğümü.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Bir DBMS örneği ve SAP uygulama sunucuları yükler
 

@@ -12,10 +12,10 @@ author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
 ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629735"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning eğitim ortamının güvenliğini sağlama
@@ -36,7 +36,7 @@ Bu makalede, bir sanal ağda aşağıdaki eğitim işlem kaynaklarını güvenli
 > - Sanal Makine
 > - HDInsight kümesi
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -171,7 +171,7 @@ Bunu yapmanın iki yolu vardır:
         ```
 
         > [!TIP]
-        > US-Virginia, US-Arizlonregion veya Çin-Doğu-2 bölgelerini kullanıyorsanız, bu komutlar IP adresi döndürmez. Bunun yerine, IP adreslerinin bir listesini indirmek için aşağıdaki bağlantılardan birini kullanın:
+        > ABD-Virginia, US-Arizona bölgelerini veya Çin-Doğu-2 bölgelerini kullanıyorsanız, bu komutlar IP adresi döndürmez. Bunun yerine, IP adreslerinin bir listesini indirmek için aşağıdaki bağlantılardan birini kullanın:
         >
         > * [Azure Kamu için Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [Azure Çin için Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com//download/details.aspx?id=57062)
@@ -276,7 +276,7 @@ Bu bölümde, bir sanal makineyi veya Azure HDInsight kümesini çalışma alan�
 
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>VM veya HDInsight kümesi oluşturma
 
-Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makalelere bakın:
 * [Linux VM 'Ler için Azure sanal ağları oluşturma ve yönetme](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
 * [Azure sanal ağını kullanarak HDInsight 'ı genişletme](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)

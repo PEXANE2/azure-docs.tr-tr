@@ -4,10 +4,10 @@ description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygula
 ms.topic: article
 ms.date: 07/22/2020
 ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387107"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
@@ -103,7 +103,7 @@ Dağıtımın tamamlanması birkaç dakika sürer. Daha sonra kapsayıcı başla
 az container logs --resource-group myResourceGroup --name gpucontainergroup --container-name gpucontainer
 ```
 
-Çıktı:
+Çıkış:
 
 ```Console
 [Vector addition of 50000 elements]
@@ -180,7 +180,7 @@ Dağıtımın tamamlanması birkaç dakika sürer. Ardından, kapsayıcı başla
 az container logs --resource-group myResourceGroup --name gpucontainergrouprm --container-name gpucontainer
 ```
 
-Çıktı:
+Çıkış:
 
 ```Console
 2018-10-25 18:31:10.155010: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA

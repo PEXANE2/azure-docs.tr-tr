@@ -4,10 +4,10 @@ description: VMware tarafından Azure 'da VMware çözümünde Azure VMware yaz�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316877"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü özel bulutu ve küme kavramları
@@ -38,7 +38,7 @@ Hiper yakınsama, çıplak altyapı düğümleri Azure VMware Çözüm özel bul
 
 | Ana Bilgisayar Türü              |             CPU             |   RAM (GB)   |  vSAN NVMe önbellek katmanı (TB, RAW)  |  vSAN SSD kapasite katmanı (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| Yüksek uç (BT)          |  Çift Intel 18 çekirdek 2,3 GHz  |     576      |                3.2               |                15,20               |
+| High-End (BT)          |  Çift Intel 18 çekirdek 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 Kümeleri derlemek veya ölçeklendirmek için kullanılan konaklar, yalıtılmış bir ana bilgisayar havuzundan elde edilir. Bu konaklar donanım testlerini geçti ve tüm verileri Flash disklerinden güvenli bir şekilde sildi. Bir konağı kümeden kaldırdığınızda, iç diskler güvenli bir şekilde temizlenir ve konaklar, ana bilgisayarların yalıtılmış havuzuna yerleştirilir. Bir kümeye bir konak eklediğinizde, yalıtılmış havuzdan ayıklanmış bir konak kullanılır.
 
@@ -61,7 +61,7 @@ Azure VMware çözüm platformu yazılımının genel yükseltme ilkeleri ve iş
 
 Konak bakımı ve yaşam döngüsü yönetimi, özel bulut kümelerinin kapasitesine veya performansına etkilenmeden yapılır. Otomatik ana bilgisayar bakımı örnekleri, bellenim yükseltmeleri ve donanım onarımı ya da değişikliği içerir.
 
-Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve Kuzey-Güney yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmadan da sorumludur. Azure VMware Çözüm özel bulutunuzun Yöneticisi olarak NSX-T SDN yapılandırmasından sorumludur. Örneğin, ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler.
+Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve North-South yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmadan da sorumludur. Azure VMware Çözüm özel bulutunuzun Yöneticisi olarak NSX-T SDN yapılandırmasından sorumludur. Örneğin, ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler.
 
 > [!IMPORTANT]
 > Azure VMware Çözüm Yöneticisi NSX-T Edge veya Katman-0 ağ geçidinin yapılandırmasını değiştirmemelidir. Bu durum hizmet kaybına neden olabilir.

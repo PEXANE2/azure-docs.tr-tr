@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543461"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell & kısıtlamaları sorunlarını giderme
@@ -46,7 +46,7 @@ Azure Cloud Shell sorunları gidermeye yönelik bilinen çözümler şunlardır:
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Depolama Iletişim kutusu-hata: 403 RequestDisallowedByPolicy
 
-- **Ayrıntılar**: Cloud Shell aracılığıyla bir depolama hesabı oluştururken, yöneticiniz tarafından verilen bir Azure ilke ataması nedeniyle başarısız olur. Hata iletisi şunları içerir:`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Ayrıntılar**: Cloud Shell aracılığıyla bir depolama hesabı oluştururken, yöneticiniz tarafından verilen bir Azure ilke ataması nedeniyle başarısız olur. Hata iletisi şunları içerir: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **Çözüm**: depolama oluşturmayı reddetmekten Azure ilke atamasını kaldırmak veya güncelleştirmek için Azure yöneticinize başvurun.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Depolama Iletişim kutusu-hata: 400 DisallowedOperation
@@ -80,10 +80,10 @@ Azure Cloud Shell sorunları gidermeye yönelik bilinen çözümler şunlardır:
 > [!NOTE]
 > Azure VM 'lerinin herkese açık bir IP adresi olmalıdır.
 
-- **Ayrıntılar**: WinRM Için varsayılan Windows Güvenlik Duvarı ayarları nedeniyle, Kullanıcı aşağıdaki hatayı görebilir:`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **Ayrıntılar**: WinRM Için varsayılan Windows Güvenlik Duvarı ayarları nedeniyle, Kullanıcı aşağıdaki hatayı görebilir: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - **Çözüm**: `Enable-AzVMPSRemoting` hedef makinede PowerShell uzaktan iletişim özelliklerinin tüm yönlerini etkinleştirmek için ' i çalıştırın.
 
-### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir`Azure Drive 'daki sonucu güncelleştirmez
+### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` Azure Drive 'daki sonucu güncelleştirmez
 
 - **Ayrıntılar**: varsayılan olarak, Kullanıcı deneyimini iyileştirmek için, sonuçları `dir` Azure sürücüde önbelleğe alınır.
 - **Çözüm**: bir Azure kaynağını oluşturduktan, güncelleştirdikten veya kaldırdıktan sonra, `dir -force` Azure sürücüsündeki sonuçları güncelleştirmek için ' i çalıştırın.

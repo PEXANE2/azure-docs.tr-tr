@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080720"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
@@ -48,13 +48,13 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 ## <a name="enable-local-cache-in-app-service"></a>App Service 'de yerel önbelleği etkinleştir
 Yerel önbelleği, ayrılmış uygulama ayarları birleşimini kullanarak yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
 
-* [Azure Portal](#Configure-Local-Cache-Portal)
+* [Azure portalındaki](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portal kullanarak yerel önbelleği yapılandırma
 <a name="Configure-Local-Cache-Portal"></a>
 
-Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına temelinde etkinleştirin:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına temelinde etkinleştirin: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
 ![Azure portal App Settings: yerel önbellek](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 

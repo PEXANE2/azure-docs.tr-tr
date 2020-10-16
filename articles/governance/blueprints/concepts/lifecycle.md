@@ -4,10 +4,10 @@ description: Şema tanımının ilerleyen yaşam döngüsü ve şema atamaların
 ms.date: 08/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049715"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint yaşam döngüsünü anlama
@@ -60,7 +60,7 @@ Bir şema 'in her sürümü benzersiz bir nesnedir ve tek tek **yayımlanabilir*
 > [!NOTE]
 > Etkin atamaları olan bir şema silmek mümkün değildir. Önce atamaları silin ve ardından kaldırmak istediğiniz sürümü silin.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki sayfadan **şema tanımlarını** seçin ve bir sürümünü silmek istediğiniz şema öğesini bulmak için filtre seçeneklerini kullanın. Düzenleme sayfasını açmak için seçin.
 

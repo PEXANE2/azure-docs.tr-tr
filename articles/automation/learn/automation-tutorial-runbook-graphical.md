@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987643"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Öğretici: grafik runbook 'u oluşturma
@@ -124,7 +124,7 @@ Oluşturduğunuz runbook hala taslak modunda. Üretimde çalıştırılabilmesi 
 
     Akışlar bölmesinin, runbook 'a yazıyorsa ayrıntılı ve hata akışları gibi bir runbook işi için diğer akışları gösterebileceğini unutmayın.
 
-9. MyFirstRunbook-grafik sayfasına dönmek için akışlar bölmesini ve Iş bölmesini kapatın.
+9. MyFirstRunbook-Graphical sayfasına dönmek için akışlar bölmesini ve Iş bölmesini kapatın.
 
 10. Runbook 'un tüm işlerini görüntülemek için **kaynaklar**altında **işler** ' i seçin. Işler sayfasında, runbook 'larınız tarafından oluşturulan tüm işler listelenir. İşi yalnızca bir kez çalıştırdığınız için yalnızca bir iş listelendiğini görmeniz gerekir.
 
@@ -156,7 +156,7 @@ Abonelik KIMLIĞINI tutmak için bir değişkene sahip olduğunuza göre, runboo
 >[!NOTE]
 >PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` diğer adlardır `Connect-AzAccount` . Bu diğer adların grafik runbook 'larınız için kullanılamayacağını unutmayın. Grafik runbook 'u yalnızca kendisi kullanabilir `Connect-AzAccount` .
 
-1. Runbook 'e gidin ve MyFirstRunbook-grafik sayfasında **Düzenle** ' yi seçin.
+1. Runbook 'e gidin ve MyFirstRunbook-Graphical sayfasında **Düzenle** ' yi seçin.
 
 2. `Write Hello World to output`Girişe daha fazla ihtiyacınız yoktur. Üç noktaya tıklayıp **Sil**' i seçmeniz yeterlidir.
 
@@ -234,21 +234,21 @@ Artık bir `Start-AzVM` sanal makineyi başlatmak için bir etkinlik eklemeniz g
 
 5. Parametre kümesi için **Resourcegroupnameparametersetname** ' ı seçin. **Resourcegroupname** ve **Name** alanları, bunların yanında, gerekli parametreler olduğunu göstermek için ünlem işaretleri vardır. Her iki alanın de dize değerleri beklediği unutulmamalıdır.
 
-6. **Ad**’ı seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** ' ni seçin. Bu runbook 'u başlatmak için kullandığınız VM için, çift tırnak işaretleriyle çevrelenen makine adını yazın. **Tamam**’a tıklayın.
+6. **Ad**’ı seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** ' ni seçin. Bu runbook 'u başlatmak için kullandığınız VM için, çift tırnak işaretleriyle çevrelenen makine adını yazın. **Tamam**'a tıklayın.
 
-7. **ResourceGroupName**’i seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** değerini kullanın ve çift tırnaklarla çevrelenen kaynak grubunun adını yazın. **Tamam**’a tıklayın.
+7. **ResourceGroupName**’i seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** değerini kullanın ve çift tırnaklarla çevrelenen kaynak grubunun adını yazın. **Tamam**'a tıklayın.
 
 8. Runbook 'u test edebilmeniz için **Test bölmesi** ' ne tıklayın.
 
 9. Testi başlatmak için **Başlat** ' a tıklayın. Tamamlandıktan sonra, VM 'nin başlatıldığından emin olun. Runbook 'larınızın bu noktada aşağıdaki gibi görünmesi gerekir.
 
-    ![Runbook başlangıcı-AzVM çıkışı](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
+    ![Runbook Start-AzVM çıkışı](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
 
 ## <a name="step-8---add-additional-input-parameters"></a>8. adım-ek giriş parametreleri ekleme
 
 Runbook 'larınız Şu anda cmdlet 'i için belirttiğiniz kaynak grubundaki VM 'yi başlatır `Start-AzVM` . Runbook başlatıldığında hem ad hem de kaynak grubu belirtirseniz runbook daha yararlı olacaktır. Bu işlevi sağlamak için Runbook 'a giriş parametreleri ekleyelim.
 
-1. MyFirstRunbook-grafik sayfasında **Düzenle** ' ye tıklayarak grafik düzenleyiciyi açın.
+1. MyFirstRunbook-Graphical sayfasında **Düzenle** ' ye tıklayarak grafik düzenleyiciyi açın.
 
 2. **Giriş ve çıkış** ' ı seçin ve ardından giriş ' e **ekleyerek** runbook giriş parametresi bölmesini açın.
 
@@ -297,11 +297,11 @@ Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çal�
 
 6. **GetVirtualMachineInResourceGroupNameParamSet** parametre kümesini seçin. **Resourcegroupname** ve **ad** alanları, bunların yanında, gerekli parametreleri belirttikleri belirten ünlem işaretleri vardır. Her iki alanın de dize değerleri beklediği unutulmamalıdır.
 
-7. **Ad**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **VMName**' i seçin. **Tamam**’a tıklayın.
+7. **Ad**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **VMName**' i seçin. **Tamam**'a tıklayın.
 
-8. **Resourcegroupname**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **resourcegroupname**' ı seçin. **Tamam**’a tıklayın.
+8. **Resourcegroupname**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **resourcegroupname**' ı seçin. **Tamam**'a tıklayın.
 
-9. **Durum**için **veri kaynağı** altında, **sabit değer**' i seçin ve ardından **doğru**. **Tamam**’a tıklayın.
+9. **Durum**için **veri kaynağı** altında, **sabit değer**' i seçin ve ardından **doğru**. **Tamam**'a tıklayın.
 
 10. ' Den ' e bir bağlantı oluşturun `Specify Subscription Id` `Get-AzVM` .
 

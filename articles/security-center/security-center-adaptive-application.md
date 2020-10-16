@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c580dd26c64a27b88b4416e85da101b78782013e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439011"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076989"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -149,6 +149,23 @@ Bir makine grubunun kurallarını düzenlemek için:
 
 1. Değişiklikleri uygulamak için **Kaydet**' i seçin.
 
+
+## <a name="review-and-edit-a-groups-settings"></a>Grubun ayarlarını gözden geçirme ve düzenleme
+
+1. Grubunuzun ayrıntılarını ve ayarlarını görüntülemek için **Grup ayarları** ' nı seçin.
+
+    Bu bölmede grubun adı (değiştirilebilir), işletim sistemi türü, konum ve ilgili diğer ayrıntılar gösterilir.
+
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Azure panosundan Uyarlamalı uygulama denetimleri açma" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+
+    > [!IMPORTANT]
+    > Dosya türü koruma modu ayarlarındaki **zorla** seçeneği **Tüm** senaryolarda gri değildir. Şu anda hiçbir zorlama seçeneği yok. 
+    >
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Azure panosundan Uyarlamalı uygulama denetimleri açma":::
+
+1. İsteğe bağlı olarak, grubun adını veya dosya türü koruma modlarını değiştirin.
+
+1. **Uygula** ve **Kaydet**' i seçin.
 
 
 

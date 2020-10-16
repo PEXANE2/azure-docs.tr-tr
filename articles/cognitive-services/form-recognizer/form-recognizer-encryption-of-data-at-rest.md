@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326805"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Bekleyen verilerin form tanıyıcı şifrelemesini şifreleme
@@ -29,5 +29,5 @@ Azure form tanıyıcı, verileri buluta kalıcı hale geldiğinde otomatik olara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Form tanıyıcı müşteri tarafından yönetilen anahtar Istek Formu](https://aka.ms/cogsvc-cmk)
+* [Form tanıyıcı Customer-Managed anahtar Isteği formu](https://aka.ms/cogsvc-cmk)
 * [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

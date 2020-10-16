@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files ağ planlaması yönergeleri
       href: azure-netapp-files-network-topologies.md
+    - name: El ile QoS kapasite havuzu
+      href: manual-qos-capacity-pool-introduction.md
     - name: Bölgeler arası çoğaltma
       items:
         - name: Bölgeler arası çoğaltmayı anlama
@@ -126,7 +128,7 @@
 - name: Başvuru
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.netapp/allversions
 - name: Kaynaklar

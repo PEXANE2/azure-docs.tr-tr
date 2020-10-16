@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001583"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLı kullanarak IPv6 ile genel yük dengeleyici oluşturma
@@ -157,7 +157,7 @@ Bu örnek aşağıdaki nesneleri oluşturur:
 * 3391 numaralı bağlantı noktasına gelen tüm trafiği Uzak Masaüstü Protokolü (RDP) için bağlantı noktası 3389 ' ye çevirecek bir NAT kuralı.\*
 * 80 numaralı bağlantı noktasındaki tüm gelen trafiği arka uç havuzundaki adreslerde 80 numaralı bağlantı noktasına dengelemek için bir yük dengeleyici kuralı.
 
-\*NAT kuralları yük dengeleyicinin arkasındaki belirli bir sanal makine örneğiyle ilişkilendirilir. 3389 numaralı bağlantı noktasına ulaşan ağ trafiği, NAT kuralıyla ilişkili belirli sanal makineye ve bağlantı noktasına gönderilir. NAT kuralı için bir protokol (UDP veya TCP) belirtmeniz gerekir. Her iki protokolü de aynı bağlantı noktasına atayamazsınız.
+\* NAT kuralları yük dengeleyicinin arkasındaki belirli bir sanal makine örneğiyle ilişkilendirilir. 3389 numaralı bağlantı noktasına ulaşan ağ trafiği, NAT kuralıyla ilişkili belirli sanal makineye ve bağlantı noktasına gönderilir. NAT kuralı için bir protokol (UDP veya TCP) belirtmeniz gerekir. Her iki protokolü de aynı bağlantı noktasına atayamazsınız.
 
 1. PowerShell değişkenlerini ayarlayın:
 

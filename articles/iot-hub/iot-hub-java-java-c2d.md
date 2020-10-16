@@ -14,10 +14,10 @@ ms.custom:
 - mqtt
 - devx-track-java
 ms.openlocfilehash: f4e5880a39d6ad299fd6e7f29bd0e3aefadc3bcd
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91446896"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub ile buluttan cihaza iletileri gönderme (Java)
@@ -47,7 +47,7 @@ Bu öğreticinin sonunda iki Java konsol uygulaması çalıştırırsınız:
 > [!NOTE]
 > IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java, Python ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://azure.microsoft.com/develop/iot).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md) veya [IoT Hub öğreticisiyle ileti yönlendirmeyi yapılandırma ile Telemetriyi](tutorial-routing.md) gönderme işleminin tamamen bir çalışma sürümü.
 

@@ -6,24 +6,24 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: fe811c81d0774393f40dc5c8403d1af8b22da109
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448599"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019146"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Otomasyonu ile yenileme
 
 Azure Otomasyonu ve PowerShell runbook 'Larını kullanarak Azure Analysis tablolu modellerinizde otomatik veri yenileme işlemleri gerçekleştirebilirsiniz.  
 
-Bu makaledeki örnek, [SqlServer PowerShell modülünü](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)kullanır. Bir modelin yenilenmesini gösteren örnek bir PowerShell runbook 'u, bu makalenin ilerleyen kısımlarında verilmiştir.  
+Bu makaledeki örnek, [SqlServer PowerShell modülünü](/powershell/module/sqlserver/?view=sqlserver-ps)kullanır. Bir modelin yenilenmesini gösteren örnek bir PowerShell runbook 'u, bu makalenin ilerleyen kısımlarında verilmiştir.  
 
-## <a name="authentication"></a>Kimlik Doğrulama
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örnek, Azure Analysis Services kimlik doğrulaması yapmak için bir hizmet sorumlusu (SPN) kullanır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!IMPORTANT]
 > Aşağıdaki örnek, Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını varsayar. Bir Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi bir güvenlik duvarı kuralına dahil olmalıdır.
@@ -161,7 +161,7 @@ Azure Data Factory kullanarak runbook 'u kullanmak için önce runbook için bir
 
 Bu parametreler runbook PowerShell betiği içinde tanımlanmıştır.  Web etkinliği yürütüldüğünde, geçirilen JSON yükü Web KANCASı VERILERI olur.
 
-Bu, seri durumdan çıkarılan ve PowerShell parametreleri olarak depolanarak Invoke-Komusasdatabase PowerShell komutu tarafından kullanılır.
+Bu, seri durumdan çıkarılan ve PowerShell parametresi olarak depolanarak Invoke-ProcesASDatabase PowerShell komutu tarafından kullanılır.
 
 ![Seri durumdan çıkarılan Web kancası](./media/analysis-services-refresh-azure-automation/20.png)
 
@@ -226,4 +226,4 @@ else
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Örnekler](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

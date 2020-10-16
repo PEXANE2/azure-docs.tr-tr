@@ -7,10 +7,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006814"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
@@ -18,7 +18,7 @@ ms.locfileid: "89006814"
 >[!IMPORTANT]
 >Bu içerik Azure Resource Manager Windows sanal masaüstü nesneleri ile Windows sanal masaüstü için geçerlidir. Azure Resource Manager nesneleri olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)bakın.
 
-Windows sanal masaüstü, diğer birçok Azure hizmeti gibi izleme ve uyarılar için [Azure izleyicisini](../azure-monitor/overview.md) kullanır. Bu, yöneticilerin tek bir arabirim üzerinden sorunları belirlemesine olanak sağlar. Hizmet hem Kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü aşağıdaki kategoriler altında yer alıyorsa:
+Windows sanal masaüstü, diğer birçok Azure hizmeti gibi izleme ve uyarılar için [Azure izleyicisini](../azure-monitor/overview.md) kullanır. Bu sayede yöneticiler sorunları tek bir arabirimden takip edebilir. Hizmet hem Kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü aşağıdaki kategoriler altında yer alıyorsa:
 
 - Yönetim etkinlikleri:
     - API veya PowerShell kullanarak Windows sanal masaüstü nesnelerini değiştirme girişimlerinin başarılı olup olmadığını izleyin. Örneğin, PowerShell kullanarak birisi bir konak havuzunu başarıyla oluşturabilir mi?
@@ -91,7 +91,7 @@ Azure portal veya Azure Izleyici üzerinde Log Analytics çalışma alanına eri
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki Log Analytics erişim
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. **Log Analytics çalışma alanı**araması yapın.
 

@@ -8,12 +8,12 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d76207d9991d496c36fa8f9db3911a62d003fafe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d55890fc97ff24bd4b77628791bdda60c5f54347
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006143"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096190"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Azure uzamsal bağlayıcılarla Unity 'de derleme
 
@@ -22,12 +22,12 @@ Aşağıdaki platformlar desteklenir:
 
 **HoloLens için Unity**
 
-[Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity HoloLens uygulaması oluşturma](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
+[Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity HoloLens uygulaması oluşturma](./quickstarts/get-started-unity-hololens.md)
 
 **Android için Unity**
 
-[Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity Android uygulaması oluşturma](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
+[Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity Android uygulaması oluşturma](./quickstarts/get-started-unity-android.md)
 
 **İOS için Unity**
 
-[Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity iOS uygulaması oluşturma](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)
+[Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity iOS uygulaması oluşturma](./quickstarts/get-started-unity-ios.md)

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89276193"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için karma kimlik konuları
@@ -74,9 +74,9 @@ Geçiş kimlik doğrulamasını oturum açma yönteminiz olarak kullanırsanız,
 
   Aksi takdirde, haftalık olarak güncellenen Azure veri merkezi IP aralıklarına erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Gerçek Kullanıcı oturum açma bileşenleri için gerekli değildir.
 
-### <a name="roll-out-seamless-single-sign-on"></a>Sorunsuz çoklu oturum açmayı kullanıma al
+### <a name="roll-out-seamless-single-sign-on"></a>Kesintisiz tek Sign-On kullanıma al
 
-Aşağıdaki yönergeleri kullanarak, kullanıcılarınız için Azure AD sorunsuz çoklu oturum açmayı kademeli olarak alabilirsiniz. Azure AD URL 'sini, `https://autologon.microsoft.us` Active Directory Grup İlkesi kullanarak tüm kullanıcıların Intranet bölgesi ayarlarına ekleyerek başlayın.
+Aşağıdaki yönergeleri kullanarak, Azure AD sorunsuz tek Sign-On kullanıcılarınıza giderek ekleyebilirsiniz. Azure AD URL 'sini, `https://autologon.microsoft.us` Active Directory Grup İlkesi kullanarak tüm kullanıcıların Intranet bölgesi ayarlarına ekleyerek başlayın.
 
 Ayrıca, **Grup İlkesi aracılığıyla betik aracılığıyla durum çubuğu güncelleştirmelerine Izin ver**intranet bölgesi ilkesi ayarını etkinleştirmeniz gerekir.
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
 ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076275"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>HDInsight 'ta kıvrımlı ile Apache Sqoop işleri çalıştırma
@@ -22,7 +22,7 @@ HDInsight 'ta Apache Hadoop kümesinde Apache Sqoop işleri çalıştırmak içi
 
 Kıvrımlı, Sqoop işlerinin sonuçlarını çalıştırmak, izlemek ve almak için ham HTTP istekleri kullanarak HDInsight ile nasıl etkileşim kurabileceğinizi göstermek için kullanılır. Bu, HDInsight kümeniz tarafından sağlanmış olan WebHCat REST API (eski adıyla Temptaton) kullanılarak işe yarar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Test ortamını ayarlama](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) , [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanın](./hdinsight-use-sqoop.md).
 
@@ -77,7 +77,7 @@ REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.o
 
     Bu komutta kullanılan parametreler aşağıdaki gibidir:
 
-   * **-d** -bu yana `-G` kullanılmadığından, istek varsayılan Post yöntemine göre yapılır. `-d`istekle birlikte gönderilen veri değerlerini belirtir.
+   * **-d** -bu yana `-G` kullanılmadığından, istek varsayılan Post yöntemine göre yapılır. `-d` istekle birlikte gönderilen veri değerlerini belirtir.
 
        * **User.Name** -komutunu çalıştıran kullanıcı.
 

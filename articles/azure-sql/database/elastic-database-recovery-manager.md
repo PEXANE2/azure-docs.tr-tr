@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: fdd5f7d291d9c56361c17547628795b378091109
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443452"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager sınıfı ile parça eşleme sorunlarını düzeltme
@@ -130,7 +130,7 @@ Bu örnek, kısa süre önce önceki bir noktadan geri yüklenen parça eşlemes
 
 Coğrafi Yük devretme varsa, ikincil veritabanına yazma erişimi yapılır ve yeni birincil veritabanı olur. Sunucunun adı ve potansiyel olarak veritabanı (yapılandırmanıza bağlı olarak) özgün Birincilden farklı olabilir. Bu nedenle, GSM ve LSM içindeki parça için olan eşleme girdileri düzeltilmelidir. Benzer şekilde, veritabanı farklı bir ada veya konuma veya daha önceki bir zaman noktasına geri yüklenirse, bu, parça haritalarındaki tutarsızlıklara neden olabilir. Parça eşleme Yöneticisi, açık bağlantıların doğru veritabanına dağıtımını işler. Dağıtım, parça eşlemesindeki verileri ve uygulama isteğinin hedefi olan parçalı anahtar değerini temel alır. Coğrafi Yük devretme sonrasında bu bilgilerin, kurtarılan veritabanının doğru sunucu adı, veritabanı adı ve parça eşlemesi ile güncelleştirilmeleri gerekir.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Coğrafi Yük devretme ve kurtarma genellikle Azure SQL veritabanı iş sürekliliği özelliklerini kullanan uygulamanın bulut Yöneticisi tarafından yönetilen işlemlerdir. İş sürekliliği planlaması, iş işlemlerinin kesintiye uğramadan devam edememesini sağlamak için işlemler, yordamlar ve ölçüler gerektirir. Bu iş akışında, GSM ve LSM 'nin gerçekleştirilen kurtarma eylemine göre güncel kalmasını sağlamak için, RecoveryManager sınıfının bir parçası olarak kullanılabilir yöntemler kullanılmalıdır. GSM ve LSM 'nin bir yük devretme olayından sonra doğru bilgileri yansıtmasını sağlamaya yönelik beş temel adım vardır. Bu adımları yürütmek için uygulama kodu mevcut araçlarla ve iş akışıyla tümleştirilebilir.
 

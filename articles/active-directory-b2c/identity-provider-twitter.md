@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e07be01a0fb6d74b4dcef5cbc6ec129f95fd2e7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387941"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Twitter hesabıyla kaydolma ve oturum açma ayarlama
@@ -42,4 +42,4 @@ Twitter 'ı Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için, bir 
 1. Bir **ad**girin. Örneğin, *Twitter*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Twitter UYGULAMASıNıN tüketici API anahtarını girin.
 1. **İstemci parolası**için, kaydettiğiniz tüketici API 'si gizli anahtarını girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.

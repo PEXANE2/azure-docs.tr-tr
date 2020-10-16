@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207141"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074864"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Uygulama yapılandırma depolarını otomatik olarak yedekleme
 
@@ -37,7 +37,7 @@ Uygulama yapılandırma depolarını yedeklemenin arkasındaki mosyon, uygulaman
 
 Bu öğreticide, bölgede `centralus` ve bölgedeki tüm diğer kaynaklarda ikincil bir depo oluşturacaksınız `westus` .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/). 
 - Azure geliştirme iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
@@ -124,7 +124,7 @@ Bu makalede, aşağıdaki özelliklere sahip C# işlevleri ile çalışacaksın�
 - Azure Işlevleri çalışma zamanı sürüm 3. x
 - Her 10 dakikada bir Zamanlayıcı tarafından tetiklenen işlev
 
-Verilerinizi yedeklemeye başlamanız daha kolay hale getirmek için, kodda herhangi bir değişiklik yapmadan kullanabileceğiniz [bir işlevi test ettik ve yayımladık](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) . Proje dosyalarını indirin ve [Visual Studio 'dan kendi Azure işlev uygulamanızda yayımlayın](/azure/azure-functions/functions-develop-vs#publish-to-azure).
+Verilerinizi yedeklemeye başlamanız daha kolay hale getirmek için, kodda herhangi bir değişiklik yapmadan kullanabileceğiniz [bir işlevi test ettik ve yayımladık](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) . Proje dosyalarını indirin ve [Visual Studio 'dan kendi Azure işlev uygulamanızda yayımlayın](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
 > [!IMPORTANT]
 > İndirdiğiniz koddaki ortam değişkenlerinde herhangi bir değişiklik yapmayın. Sonraki bölümde gerekli uygulama ayarlarını oluşturacaksınız.
@@ -133,13 +133,13 @@ Verilerinizi yedeklemeye başlamanız daha kolay hale getirmek için, kodda herh
 ### <a name="build-your-own-function"></a>Kendi işlevinizi oluşturma
 
 Daha önce belirtilen örnek kod gereksinimlerinizi karşılamıyorsa, kendi işlevinizi de oluşturabilirsiniz. Yedekleme işlemini tamamlamak için işleviniz aşağıdaki görevleri gerçekleştirebilmelidir:
-- Event Grid bir bildirim içerip içermediğinden, düzenli aralıklarla kuyrukla içeriğini okuyun. Uygulama ayrıntıları için [depolama kuyruğu SDK 'sına](/azure/storage/queues/storage-quickstart-queues-dotnet) bakın.
-- Kuyruğunuz [Event Grid olay bildirimleri](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema)içeriyorsa, tüm benzersiz `<key, label>` bilgileri olay iletilerinden ayıklayın. Anahtar ve etiket birleşimi, birincil depodaki anahtar-değer değişikliklerinin benzersiz tanımlayıcısıdır.
+- Event Grid bir bildirim içerip içermediğinden, düzenli aralıklarla kuyrukla içeriğini okuyun. Uygulama ayrıntıları için [depolama kuyruğu SDK 'sına](../storage/queues/storage-quickstart-queues-dotnet.md) bakın.
+- Kuyruğunuz [Event Grid olay bildirimleri](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)içeriyorsa, tüm benzersiz `<key, label>` bilgileri olay iletilerinden ayıklayın. Anahtar ve etiket birleşimi, birincil depodaki anahtar-değer değişikliklerinin benzersiz tanımlayıcısıdır.
 - Birincil depodan tüm ayarları okuyun. Yalnızca ikincil depoda, kuyrukta karşılık gelen bir olaya sahip olan ayarları güncelleştirin. Depoda bulunan ancak birincil depoda olmayan ikincil depodan tüm ayarları silin. Yapılandırma depolarına programlı olarak erişmek için [uygulama yapılandırma SDK 'sını](https://github.com/Azure/AppConfiguration#sdks) kullanabilirsiniz.
 - İşlem sırasında özel durum yoksa kuyruktaki iletileri silin.
 - Gereksinimlerinize göre hata işleme uygulayın. İşlemek isteyebileceğiniz bazı yaygın özel durumları görmek için yukarıdaki kod örneğine bakın.
 
-Bir işlev oluşturma hakkında daha fazla bilgi edinmek için bkz. [Azure 'da bir Zamanlayıcı tarafından tetiklenen](/azure/azure-functions/functions-create-scheduled-function) ve [Visual Studio kullanarak Azure işlevleri geliştiren](/azure/azure-functions/functions-develop-vs)bir işlev oluşturma.
+Bir işlev oluşturma hakkında daha fazla bilgi edinmek için bkz. [Azure 'da bir Zamanlayıcı tarafından tetiklenen](../azure-functions/functions-create-scheduled-function.md) ve [Visual Studio kullanarak Azure işlevleri geliştiren](../azure-functions/functions-develop-vs.md)bir işlev oluşturma.
 
 
 > [!IMPORTANT]
@@ -167,16 +167,16 @@ az functionapp config appsettings set --name $functionAppName --resource-group $
 
 ## <a name="grant-access-to-the-managed-identity-of-the-function-app"></a>İşlev uygulamasının yönetilen kimliğine erişim izni verme
 
-İşlev uygulamanız için sistem tarafından atanan bir yönetilen kimlik eklemek için aşağıdaki komutu veya [Azure Portal](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity) kullanın.
+İşlev uygulamanız için sistem tarafından atanan bir yönetilen kimlik eklemek için aşağıdaki komutu veya [Azure Portal](../app-service/overview-managed-identity.md#add-a-system-assigned-identity) kullanın.
 
 ```azurecli-interactive
 az functionapp identity assign --name $functionAppName --resource-group $resourceGroupName
 ```
 
 > [!NOTE]
-> Gerekli kaynak oluşturma ve rol yönetimini gerçekleştirmek için hesabınızın `Owner` uygun kapsamda (aboneliğiniz veya kaynak grubunuz) izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa, [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma hakkında](/azure/role-based-access-control/role-assignments-portal)bilgi edinin.
+> Gerekli kaynak oluşturma ve rol yönetimini gerçekleştirmek için hesabınızın `Owner` uygun kapsamda (aboneliğiniz veya kaynak grubunuz) izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa, [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma hakkında](../role-based-access-control/role-assignments-portal.md)bilgi edinin.
 
-İşlev uygulamanızın yönetilen kimliğine uygulama yapılandırma Depolarınıza erişim izni vermek için aşağıdaki komutları veya [Azure Portal](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration) kullanın. Şu rolleri kullan:
+İşlev uygulamanızın yönetilen kimliğine uygulama yapılandırma Depolarınıza erişim izni vermek için aşağıdaki komutları veya [Azure Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) kullanın. Şu rolleri kullan:
 - `App Configuration Data Reader`Rolü birincil uygulama yapılandırma deposuna atayın.
 - `App Configuration Data Owner`Rolü Ikincil uygulama yapılandırma deposuna atayın.
 
@@ -196,7 +196,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-İşlev uygulamanızın yönetilen kimliğine kuyruğunuza erişim izni vermek için aşağıdaki komutu veya [Azure Portal](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal) kullanın. `Storage Queue Data Contributor`Rolü kuyruğa atayın.
+İşlev uygulamanızın yönetilen kimliğine kuyruğunuza erişim izni vermek için aşağıdaki komutu veya [Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) kullanın. `Storage Queue Data Contributor`Rolü kuyruğa atayın.
 
 ```azurecli-interactive
 az role assignment create \
@@ -216,7 +216,7 @@ az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 Olayı tetikledi. Birkaç dakika içinde, Event Grid olay bildirimini kuyruğunuza gönderir. *İşlevinizin bir sonraki zamanlanmış çalıştıktan sonra*, ikincil deponuzdaki yapılandırma ayarlarını görüntüleyerek, birincil depodan güncelleştirilmiş anahtar-değer olup olmadığını görebilirsiniz.
 
 > [!NOTE]
-> Test ve sorun giderme sırasında işlevinizi, zamanlanmış Zamanlayıcı tetikleyicisi için beklemeden [el ile tetikleyebilirsiniz](/azure/azure-functions/functions-manually-run-non-http) .
+> Test ve sorun giderme sırasında işlevinizi, zamanlanmış Zamanlayıcı tetikleyicisi için beklemeden [el ile tetikleyebilirsiniz](../azure-functions/functions-manually-run-non-http.md) .
 
 Yedekleme işlevinin başarıyla çalıştırıldığından emin olduktan sonra, anahtarın artık ikincil deponuzda bulunduğunu görebilirsiniz.
 
@@ -243,9 +243,9 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 
 - Birincil deponuzda ayarı oluşturduktan *sonra* yedekleme işlevinin tetiklendiğinden emin olun.
 - Event Grid olay bildirimini zaman içinde sıraya gönderemiyor olabilir. Kuyruğunuzun birincil deponuzdaki olay bildirimini hala içerip içerbir şekilde kontrol edin. Varsa, yedekleme işlevini yeniden tetikleyin.
-- Herhangi bir hata veya uyarı için [Azure işlevleri günlüklerine](/azure/azure-functions/functions-create-scheduled-function#test-the-function) bakın.
-- Azure işlevi uygulamasının, Azure Işlevlerinin okumaya çalıştığı uygulama ayarları için doğru değerleri içerdiğinden emin olmak için [Azure Portal](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal) kullanın.
-- Azure [Application Insights](/azure/azure-functions/functions-monitoring?tabs=cmd)kullanarak Azure işlevleri için izleme ve uyarı ayarlama de yapabilirsiniz. 
+- Herhangi bir hata veya uyarı için [Azure işlevleri günlüklerine](../azure-functions/functions-create-scheduled-function.md#test-the-function) bakın.
+- Azure işlevi uygulamasının, Azure Işlevlerinin okumaya çalıştığı uygulama ayarları için doğru değerleri içerdiğinden emin olmak için [Azure Portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) kullanın.
+- Azure [Application Insights](../azure-functions/functions-monitoring.md?tabs=cmd)kullanarak Azure işlevleri için izleme ve uyarı ayarlama de yapabilirsiniz. 
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

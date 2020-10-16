@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: be6dbb74883f12498c5c011e35fa955509ff627c
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042777"
 ---
-# <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Cosmos DB (SQL API) Azure Data Factory kullanarak verileri kopyalama ve dönüştürme
+# <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory'yi kullanarak Azure Cosmos DB'deki (SQL API) verileri kopyalama ve dönüştürme
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-documentdb-connector.md)
@@ -64,9 +64,9 @@ Azure Cosmos DB (SQL API) bağlı hizmeti için aşağıdaki özellikler destekl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **cosmosdb**olarak ayarlanmalıdır. | Yes |
-| Dizisi |Azure Cosmos DB veritabanına bağlanmak için gereken bilgileri belirtin.<br />**Note**: bağlantı dizesinde, izleyen örneklerde gösterildiği gibi veritabanı bilgilerini belirtmeniz gerekir. <br/> Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Bu özellik belirtilmezse, varsayılan Azure Integration Runtime kullanılır. |No |
+| tür | **Type** özelliği **cosmosdb**olarak ayarlanmalıdır. | Evet |
+| Dizisi |Azure Cosmos DB veritabanına bağlanmak için gereken bilgileri belirtin.<br />**Note**: bağlantı dizesinde, izleyen örneklerde gösterildiği gibi veritabanı bilgilerini belirtmeniz gerekir. <br/> Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Bu özellik belirtilmezse, varsayılan Azure Integration Runtime kullanılır. |Hayır |
 
 **Örnek**
 
@@ -120,8 +120,8 @@ Azure Cosmos DB (SQL API) veri kümesi için aşağıdaki özellikler destekleni
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin **Type** özelliği **CosmosDbSqlApiCollection**olarak ayarlanmalıdır. |Yes |
-| Ma |Azure Cosmos DB belge koleksiyonunun adı. |Yes |
+| tür | Veri kümesinin **Type** özelliği **CosmosDbSqlApiCollection**olarak ayarlanmalıdır. |Evet |
+| Ma |Azure Cosmos DB belge koleksiyonunun adı. |Evet |
 
 "DocumentDbCollection" tür veri kümesini kullanıyorsanız, kopyalama ve arama etkinliği için geriye dönük uyumluluk için olduğu gibi hala desteklenir, veri akışı için desteklenmez. İleri doğru olan yeni modeli kullanmanız önerilir.
 
@@ -156,10 +156,10 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının **Type** özelliği **Cosmosdbsqlapısource**olarak ayarlanmalıdır. |Yes |
-| sorgu |Verileri okumak için Azure Cosmos DB sorgusunu belirtin.<br/><br/>Örnek:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Belirtilmemişse, bu SQL deyimi yürütülür:`select <columns defined in structure> from mycollection` |
-| Preferredregion | Cosmos DB veri alınırken Bağlanılacak bölgelerin tercih edilen listesi. | No |
-| pageSize | Sorgu sonucunun sayfa başına belge sayısı. Varsayılan değer olan "-1", hizmet tarafı dinamik sayfa boyutunu 1000 'e kadar kullanır. | No |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği **Cosmosdbsqlapısource**olarak ayarlanmalıdır. |Evet |
+| sorgu |Verileri okumak için Azure Cosmos DB sorgusunu belirtin.<br/><br/>Örnek:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Hayır <br/><br/>Belirtilmemişse, bu SQL deyimi yürütülür: `select <columns defined in structure> from mycollection` |
+| Preferredregion | Cosmos DB veri alınırken Bağlanılacak bölgelerin tercih edilen listesi. | Hayır |
+| pageSize | Sorgu sonucunun sayfa başına belge sayısı. Varsayılan değer olan "-1", hizmet tarafı dinamik sayfa boyutunu 1000 'e kadar kullanır. | Hayır |
 
 "DocumentDbCollectionSource" tür kaynağını kullanırsanız, geriye dönük uyumluluk için olduğu gibi hala desteklenir. Cosmos DB verileri kopyalamak için daha zengin yetenekler sağlayan yeni modeli ileri kullanmanız önerilir.
 
@@ -208,9 +208,9 @@ Aşağıdaki özellikler, kopyalama etkinliği **havuzu** bölümünde desteklen
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği havuzunun **Type** özelliği **Cosmosdbsqlapisink**olarak ayarlanmalıdır. |Yes |
-| writeBehavior |Azure Cosmos DB verilerin nasıl yazılacağını açıklar. İzin verilen değerler: **Insert** ve **upsert**.<br/><br/>Aynı KIMLIĞE sahip bir belge zaten mevcutsa, **upsert** 'un davranışı belgeyi değiştirir; Aksi takdirde, belgeyi ekleyin.<br /><br />**Note**: özgün belgede veya sütun EŞLEMESINDE bir kimlik belirtilmemişse, otomatik olarak BIR belge kimliği üretir Data Factory. Yani, **büyük** bir şekilde çalışması için BELGENIZDE bir kimliğe sahip olduğundan emin olmanız gerekir. |No<br />(varsayılan değer **Insert**'dir) |
-| writeBatchSize | Data Factory, Azure Cosmos DB verileri yazmak için [Azure Cosmos DB toplu yürütücü kitaplığını](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) kullanır. **Writebatchsize** ÖZELLIĞI, ADF 'nin kitaplığa sağladığı belge boyutunu denetler. Performansı artırmak ve belge boyutunuz büyük olduğunda bu değeri azaltmak için **Writebatchsize** değerini artırmayı deneyebilirsiniz. |No<br />(varsayılan değer **10.000**' dir) |
+| tür | Kopyalama etkinliği havuzunun **Type** özelliği **Cosmosdbsqlapisink**olarak ayarlanmalıdır. |Evet |
+| writeBehavior |Azure Cosmos DB verilerin nasıl yazılacağını açıklar. İzin verilen değerler: **Insert** ve **upsert**.<br/><br/>Aynı KIMLIĞE sahip bir belge zaten mevcutsa, **upsert** 'un davranışı belgeyi değiştirir; Aksi takdirde, belgeyi ekleyin.<br /><br />**Note**: özgün belgede veya sütun EŞLEMESINDE bir kimlik belirtilmemişse, otomatik olarak BIR belge kimliği üretir Data Factory. Yani, **büyük** bir şekilde çalışması için BELGENIZDE bir kimliğe sahip olduğundan emin olmanız gerekir. |Hayır<br />(varsayılan değer **Insert**'dir) |
+| writeBatchSize | Data Factory, Azure Cosmos DB verileri yazmak için [Azure Cosmos DB toplu yürütücü kitaplığını](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) kullanır. **Writebatchsize** ÖZELLIĞI, ADF 'nin kitaplığa sağladığı belge boyutunu denetler. Performansı artırmak ve belge boyutunuz büyük olduğunda bu değeri azaltmak için **Writebatchsize** değerini artırmayı deneyebilirsiniz. |Hayır<br />(varsayılan değer **10.000**' dir) |
 | disableMetricsCollection | Data Factory, performansı iyileştirmek ve önerileri kopyalamak için Cosmos DB ru gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, `true` devre dışı bırakmak için belirtin. | Hayır (varsayılan değer `false` ) |
 
 >[!TIP]

@@ -1,6 +1,6 @@
 ---
-title: Rol tabanlı Access Control kullanarak Azure portal panoları paylaşma
-description: Bu makalede rol tabanlı Access Control kullanarak Azure portal bir panonun nasıl paylaşılacağını açıklanmaktadır.
+title: Azure rol tabanlı erişim denetimi kullanarak Azure portal panoları paylaşma
+description: Bu makalede, Azure rol tabanlı erişim denetimi kullanarak Azure portal bir panonun nasıl paylaşılacağını açıklanmaktadır.
 services: azure-portal
 documentationcenter: ''
 author: mgblythe
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b74cae439ce351a4d720f215679cc0802eebe898
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923892"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092214"
 ---
-# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Rol Tabanlı Erişim Denetimi kullanarak Azure panolarını paylaşma
+# <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi kullanarak Azure panoları paylaşma
 
 Bir panoyu yapılandırdıktan sonra yayımlayabilir ve kuruluşunuzdaki diğer kullanıcılarla paylaşabilirsiniz. Diğer kullanıcıların, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kullanarak panonuzu görüntülemesine izin verebilirsiniz. Bir role Kullanıcı veya Kullanıcı grubu atayın. Bu rol, bu kullanıcıların yayınlanan panoyu görüntüleyip görüntüleyemeyeceğini veya değiştiremeyeceklerini tanımlar.
 
@@ -33,7 +33,7 @@ Yayımlanan tüm panolar Azure kaynakları olarak uygulanır. Abonelikleriniz i�
 
 ## <a name="understanding-access-control-for-dashboards"></a>Panolar için erişim denetimini anlama
 
-Rol tabanlı Access Control (RBAC) ile, kullanıcıları rollere üç farklı kapsam düzeyinde atayabilirsiniz:
+Azure rol tabanlı erişim denetimi (Azure RBAC) sayesinde, kullanıcıları rollere üç farklı kapsam düzeyinde atayabilirsiniz:
 
 * aboneliği
 * kaynak grubu
@@ -88,4 +88,4 @@ Bu Pano için bir kullanıcı grubunu bir role atayabilirsiniz.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Rollerin listesi için bkz. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md).
-* Kaynakları yönetme hakkında bilgi edinmek için, bkz. [Azure Portal kullanarak Azure kaynaklarını yönetme](resource-group-portal.md).
+* Kaynakları yönetme hakkında bilgi edinmek için, bkz. [Azure Portal kullanarak Azure kaynaklarını yönetme](../azure-resource-manager/management/manage-resources-portal.md).

@@ -4,10 +4,10 @@ description: Azure Storage 'da uygulama verilerinizi şifreleyin ve paket dosyas
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87282339"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak uygulama verilerinizi Rest 'te şifreleyin
@@ -105,7 +105,7 @@ Uygulama dosyalarınız artık depolama hesabınızda Rest olarak şifrelenir. �
 
 Uygulamanın depolama hesabınıza erişimini iptal etmeniz gerekirse, anahtar kasasına erişimi iptal edebilir veya SAS URL 'sini geçersiz kılan depolama hesabı anahtarlarını döndürebilirsiniz.
 
-## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
 ### <a name="is-there-any-additional-charge-for-running-my-function-app-from-the-deployment-package"></a>Dağıtım paketinden işlev uygulamamı çalıştırmak için herhangi bir ek ücret var mı?
 

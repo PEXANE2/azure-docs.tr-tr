@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Anomali algılayıcı API 'sini ve Azure Databricks kullanarak verilerinize ilişkin anormallikleri nasıl izleyeceğinizi öğrenin.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: aahi
-ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: mbullwin
+ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245613"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017667"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verilerinde anomali algılama
 
@@ -45,7 +45,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Hesabınız yoksa bir [Azure aboneliği](https://azure.microsoft.com/free/cognitive-services) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure Event Hubs ad alanı](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) ve Olay Hub 'ı.
 
@@ -63,7 +63,7 @@ Bu bölümde, [Azure Portal](https://portal.azure.com/)kullanarak bir Azure Data
 
 1. Azure Portal, **kaynak**  >  **Analizi**oluştur  >  **Azure Databricks**' u seçin.
 
-    ![Azure portal databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal databricks")
+    ![Portalda Azure Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal databricks")
 
 3. **Azure Databricks hizmeti**altında, bir Databricks çalışma alanı oluşturmak için aşağıdaki değerleri sağlayın:
 
@@ -115,7 +115,7 @@ Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturmanız g
 
 3. Uygulama sayfasında **Anahtarlar ve Erişim Belirteçleri** sekmesini seçin ve **Tüketici Anahtarı** ve **Tüketici Parolası** değerlerini kopyalayın. Ayrıca **Erişim belirtecimi oluştur**’u seçip erişim belirteçleri oluşturun. **Erişim Belirteci** ve**Erişim Belirteci Parolası** değerlerini kopyalayın.
 
-    ![Twitter uygulaması ayrıntıları](../media/tutorials/twitter-app-key-secret.png "Twitter uygulaması ayrıntıları")
+    ![Twitter uygulaması ayrıntıları 2](../media/tutorials/twitter-app-key-secret.png "Twitter uygulaması ayrıntıları")
 
 Twitter uygulaması için aldığınız değerleri kaydedin. Öğreticinin sonraki bölümlerinde bu değerlere ihtiyacınız olacaktır.
 
@@ -193,7 +193,7 @@ Bu bölümde, Databricks çalışma alanında aşağıdaki adlarla iki not defte
 
 2. **Not Defteri Oluştur** Iletişim kutusunda **Sendtweetstoeventhub** adını adı olarak girin, dil olarak **Scala** ' yı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-    ![Databricks 'te Not defteri oluşturma](../media/tutorials/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
+    ![Not defteri ayrıntıları](../media/tutorials/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
 
     **Oluştur**’u seçin.
 

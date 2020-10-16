@@ -4,10 +4,10 @@ description: Bu makalede, istemcilerin Azure Event Hubs bağlanmak için kullana
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537199"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs bağlantı dizesi al
@@ -25,7 +25,7 @@ Bağlantı dizesi şablonu şöyle görünür
 Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 ```
 
-Örnek bir bağlantı dizesi şöyle görünebilir`Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
+Örnek bir bağlantı dizesi şöyle görünebilir `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
 
 Bu makale, bağlantı dizesini elde etmenin çeşitli yollarını gösterir.
 
@@ -74,4 +74,4 @@ Event Hubs için Azure CLı komutları hakkında daha fazla bilgi için bkz. [Az
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Event Hubs genel bakış](./event-hubs-about.md)
-* [Olay Hub'ı oluşturma](event-hubs-create.md)
+* [Olay Hub 'ı oluşturma](event-hubs-create.md)

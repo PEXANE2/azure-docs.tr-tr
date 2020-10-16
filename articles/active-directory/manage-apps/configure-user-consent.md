@@ -12,10 +12,10 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819269"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara onay verme şeklini yapılandırma
@@ -177,7 +177,7 @@ Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışs
 Daha fazlasını öğrenin:
 
 * [Kullanıcı izin ayarlarını yapılandırma](configure-user-consent.md)
-* [Uygulama onay ilkelerini yönetme](manage-app-consent-policies.md)
+* [Uygulama onayı ilkelerini yönetme](manage-app-consent-policies.md)
 * [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 * [Uygulama onayını yönetmeyi ve izin isteklerini değerlendirmeyi öğrenin](manage-consent-requests.md)
 * [Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)

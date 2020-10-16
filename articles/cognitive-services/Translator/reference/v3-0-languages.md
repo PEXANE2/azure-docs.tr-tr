@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588607"
 ---
 # <a name="translator-30-languages"></a>Translator 3,0: Diller
@@ -48,7 +48,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 İstek üst bilgileri:
 
 <table width="100%">
-  <th width="20%">Üst Bilgiler</th>
+  <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
     <td>Accept-Language</td>
@@ -67,9 +67,9 @@ Dil kaynaklarını almak için kimlik doğrulaması gerekli değildir.
 
 İstemci, `scope` hangi dil gruplarını ilgilendiğinizi tanımlamak için sorgu parametresini kullanır.
 
-* `scope=translation`metni bir dilden başka bir dile çevirmek için desteklenen dilleri sağlar;
+* `scope=translation` metni bir dilden başka bir dile çevirmek için desteklenen dilleri sağlar;
 
-* `scope=transliteration`bir dildeki metni bir betiğe başka bir betiğe dönüştürmek için yetenekler sağlar;
+* `scope=transliteration` bir dildeki metni bir betiğe başka bir betiğe dönüştürmek için yetenekler sağlar;
 
 * `scope=dictionary``Dictionary`işlem verileri döndüren dil çiftlerini sağlar.
 
@@ -93,7 +93,7 @@ Başarılı bir yanıt, istenen her grup için bir özelliği olan bir JSON nesn
 
 Her bir özelliğin değeri aşağıdaki gibidir.
 
-* `translation`özelliði
+* `translation` özelliði
 
   `translation`Özelliğin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Bir anahtar, metnin çevrilebilmesi veya çevrilebilmesi için bir dil tanımlar. Anahtarla ilişkili değer, dili tanımlayan özellikleri içeren bir JSON nesnesidir:
 
@@ -119,7 +119,7 @@ Her bir özelliğin değeri aşağıdaki gibidir.
   }
   ```
 
-* `transliteration`özelliði
+* `transliteration` özelliði
 
   `transliteration`Özelliğin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Bir anahtar, metnin bir betikten başka bir betiğe dönüştürülebileceği dili tanımlar. Anahtarla ilişkili değer, dili ve desteklenen betikleri tanımlayan özellikleri içeren bir JSON nesnesidir:
 
@@ -184,7 +184,7 @@ Her bir özelliğin değeri aşağıdaki gibidir.
   }
   ```
 
-* `dictionary`özelliði
+* `dictionary` özelliði
 
   `dictionary`Özelliğin değeri (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar bir BCP 47 dili etikettir. Anahtar, alternatif çevirilerin ve geri çevirilerin kullanılabildiği dili tanımlar. Değer, kullanılabilir çevirileri içeren kaynak dilini ve hedef dilleri açıklayan bir JSON nesnesidir:
 
@@ -229,7 +229,7 @@ Desteklenen dillerin listesi sıklıkla değişmeyecektir. Ağ bant genişliğin
 ## <a name="response-headers"></a>Yanıt üst bilgileri
 
 <table width="100%">
-  <th width="20%">Üst Bilgiler</th>
+  <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
     <td>Özelliği</td>

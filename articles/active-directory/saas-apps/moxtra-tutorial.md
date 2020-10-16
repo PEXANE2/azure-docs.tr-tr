@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 7fffe58dfdb63da28edc19c19b56b576f4fbadd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 132da93bcb1e8138b63361cdb448c05b985cdf27
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544052"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940914"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Öğretici: Moxtra ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -156,11 +156,11 @@ Bu bölümde, Moxtra 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
 2. Soldaki araç çubuğunda, **yönetici konsolu > SAML çoklu oturum açma**' ya tıklayın ve ardından **Yeni**' ye tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Ekran görüntüsü, yeni bir SAML çoklu oturum açma seçeneği oluşturma seçeneğiyle birlikte SAML çoklu oturum açma sayfasını gösterir.](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 3. **SAML** sayfasında, aşağıdaki adımları uygulayın:
    
-    ![Tek Sign-On yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML sayfasını gösterir.](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. **Ad** metin kutusuna yapılandırmanız için bir ad yazın (örneğin: *SAML*). 
   
@@ -191,7 +191,7 @@ Bu bölümün amacı, Moxtra içinde B. Simon adlı bir Kullanıcı oluşturmakt
 
 1. Soldaki araç çubuğunda **yönetici konsolu > Kullanıcı yönetimi**' ne ve ardından **Kullanıcı Ekle**' ye tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Ekran görüntüsü Kullanıcı Ekle seçili olan Kullanıcı Yönetimi sayfasını gösterir.](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
   

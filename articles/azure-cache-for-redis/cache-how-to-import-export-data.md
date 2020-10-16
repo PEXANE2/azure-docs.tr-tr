@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004330"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğindeki verileri içeri ve dışarı aktarma
@@ -28,7 +28,7 @@ Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarm
 >
 >
 
-## <a name="import"></a>İçeri Aktar
+## <a name="import"></a>İçeri Aktarma
 İçeri aktarma, Linux, Windows veya Amazon Web Services ve diğer bulut sağlayıcılarından sonra, herhangi bir bulutta veya ortamda çalışan redin uyumlu RDB dosyalarını getirmek için kullanılabilir. Verilerin içeri aktarılması, önceden doldurulmuş verilerle bir önbellek oluşturmanın kolay bir yoludur. İçeri aktarma işlemi sırasında Redsıs için Azure önbelleği, RDB dosyalarını Azure depolama alanından belleğe yükler ve ardından anahtarları önbelleğe ekler.
 
 > [!NOTE]
@@ -55,7 +55,7 @@ Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarm
    >
    >
 
-    ![İçeri Aktar](./media/cache-how-to-import-export-data/cache-import-blobs.png)
+    ![İçeri Aktarma](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
     Azure portal bildirimlerini izleyerek veya [Denetim günlüğündeki](../azure-resource-manager/management/view-activity-logs.md)olayları görüntüleyerek içeri aktarma işleminin ilerlemesini izleyebilirsiniz.
 

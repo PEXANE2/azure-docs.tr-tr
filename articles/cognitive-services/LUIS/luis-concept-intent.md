@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536112"
 ---
 # <a name="intents-in-your-luis-app"></a>LUSıS uygulamanızdaki amaçlar
@@ -25,9 +25,9 @@ Uygulamanızda almak istedikleri eylemlere karşılık gelen bir amaç kümesi t
 Seyahat uygulaması amaçları   |   Örnek konuşmalar   |
 ------|------|
  BookFlight     |   "RIO sonraki haftada bir uçuş <br/> "24th 'da RIO 'ya giriş" <br/> "Sonraki Pazar için bir düzlem bileti gerekir.    |
- Karşılama     |   N <br/>"Merhaba" <br/>"İyi sabah"  |
- Checkhava durumu | "Boston 'da olduğu gibi hava durumu nedir?" <br/> "Bu hafta sonu için tahminleri göster" |
- Hiçbiri         | "Bana bir tanımlama bilgisi tarifi al"<br>"Lamanlar kazanın mi?" |
+ Karşılama     |   "Selam" <br/>"Merhaba" <br/>"Günaydın"  |
+ CheckWeather | "Boston 'da olduğu gibi hava durumu nedir?" <br/> "Bu hafta sonu için tahminleri göster" |
+ Yok         | "Bana bir tanımlama bilgisi tarifi al"<br>"Lamanlar kazanın mi?" |
 
 Tüm uygulamalar, geri dönüş amacı olan önceden tanımlanmış "[none](#none-intent)" hedefi ile gelir.
 
@@ -53,8 +53,8 @@ Kullanıcının _amacı_ , checkhava durumu () işlevine yapılan bir çağrı g
 
 |Amaç   | Varlık | Örnek konuşma   |
 |------------------|------------------------------|------------------------------|
-| Checkhava durumu | {"tür": "konum", "varlık": "Seattle"}<br>{"Type": "Builtin. datetimeV2. Date", "Entity": "Yarın", "Çözüm": "2018-05-23"} | Hava durumu ne gibi `Seattle` `tomorrow` ? |
-| Checkhava durumu | {"tür": "date_range", "varlık": "Bu hafta sonu"} | Şunu göster `this weekend` |
+| CheckWeather | {"tür": "konum", "varlık": "Seattle"}<br>{"Type": "Builtin. datetimeV2. Date", "Entity": "Yarın", "Çözüm": "2018-05-23"} | Hava durumu ne gibi `Seattle` `tomorrow` ? |
+| CheckWeather | {"tür": "date_range", "varlık": "Bu hafta sonu"} | Şunu göster `this weekend` |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>Önceden oluşturulmuş etki alanı amaçları
@@ -63,7 +63,7 @@ Kullanıcının _amacı_ , checkhava durumu () işlevine yapılan bir çağrı g
 
 ## <a name="none-intent"></a>Amaç yok
 
-**Hiçbiri** amacı oluşturulur ancak boş bırakılır. **Hiçbiri** amacı gerekli bir amaç değildir ve silinemez veya yeniden adlandırılamaz. Bunu, etki alanınız dışında olan utterlerle doldurabilirsiniz.
+**Hiçbiri** amacı oluşturulur ancak boş bırakılır. **Hiçbiri** amacı gerekli bir amaç değildir ve silinemez veya yeniden adlandırılamaz. Bu amacı etki alanınız dışında kalan ifadelerle doldurun.
 
 **Hiçbiri** amacı her uygulama için önemli olan geri dönüş amacı ve toplam dikkat sayısının %10 ' u olmalıdır. Bu, uygulama etki alanında (konu alanı) önemli olmayan LUSıS utssıs 'leri öğretmek için kullanılır. **Hiçbiri** amacı için herhangi bir söylik eksiz DEĞILSENIZ, Lua, etki alanı dışındaki bir şekilde etki alanı amaçlardakilerden birine zorlar. Bu, bu tahmin puanlarını, deterlik için yanlış bir amaç öğretmek için eğriltebilir.
 

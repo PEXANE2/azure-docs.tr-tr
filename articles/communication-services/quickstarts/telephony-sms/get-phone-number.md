@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 49a5fd51a62dd6c90d7b1bac8d99296ddc81287f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756980"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070104"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak telefon numarası alın
 
@@ -22,7 +22,7 @@ ms.locfileid: "91756980"
 
 Telefon numarası satın almak için Azure portal kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Etkin bir Iletişim Hizmetleri kaynağı.](../create-communication-resource.md)
@@ -45,16 +45,16 @@ Kaynak menüsündeki telefon numaraları dikey penceresine gidin.
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
-### <a name="select-a-phone-plan"></a>Telefon planı seçin
+### <a name="select-your-phone-number-features"></a>Telefon numaranız özelliklerinizi seçin
 
-Telefon planının seçilmesi iki adıma ayrılmıştır: 
+Telefon numaranızı yapılandırmak iki adımda bölünmüştür: 
 
 1. [Sayı türünün](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) seçimi
-2. [Planın](../../concepts/telephony-sms/plan-solution.md#phone-number-plans-in-azure-communication-services) seçimi
+2. [Sayı özelliklerinin](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services) seçimi
 
-Şu anda iki sayı türü sunuyoruz: `Geographic` , ve `Toll-free` . Bir sayı türü seçtiğinizde, aralarından seçim yapabileceğiniz birkaç plan sunulacaktır.
+İki telefon numarası türünden seçim yapabilirsiniz: `Geographic` , ve `Toll-free` . Bir sayı türü seçtiğinizde, özelliği seçebilirsiniz.
 
-Bizim örneğimizde, `Toll-free` `Outbound calling` ve planlarla bir sayı türü seçtik `Inbound and Outbound SMS` .
+Örneğimizde, `Toll-free` ve özelliklerine sahip bir sayı türü seçtik `Outbound calling` `Inbound and Outbound SMS` .
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
@@ -74,7 +74,7 @@ Buradan, `Next: Numbers` sağlamak istediğiniz telefon numaralarını özelleş
 :::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
 > [!NOTE]
-> Kullanılabilirlik, seçtiğiniz sayı türüne, konuma ve plana bağlıdır.
+> Kullanılabilirlik, seçtiğiniz sayı türüne, konuma ve özelliklere bağlıdır.
 > Sayılar, işlemin süresi dolmadan kısa bir süre için ayrılır. İşlemin süresi dolarsa, numaraları yeniden seçmeniz gerekir.
 
 Satın alma özetini görüntülemek ve siparişinizi yerleştirmek için `Next: Summary` sayfanın altındaki düğmeye tıklayın.
@@ -103,12 +103,14 @@ Telefon numaralarınızı yönetmek için menüdeki telefon numaraları dikey pe
 > [!NOTE]
 > Sağlanan sayıların bu sayfada gösterilmesi birkaç dakika sürebilir.
 
-### <a name="customizing-phone-number-plans"></a>Telefon numarası planlarını özelleştirme
-`Numbers`Sayfada, planı özelleştirmek istediğiniz numaraya tıklayarak telefon numarasını seçebilirsiniz...
+
+### <a name="customizing-phone-numbers"></a>Telefon numaralarını özelleştirme
+
+`Numbers`Sayfada, yapılandırmak için bir telefon numarası seçebilirsiniz.
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
-Kullanılabilir arama ve SMS özellikleri listesinden özellikleri seçin ve ardından `Confirm` seçimi uygulamak için tıklayın.
+Kullanılabilir seçeneklerden özellikleri seçin ve `Confirm` Seçiminizi uygulamak için tıklayın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

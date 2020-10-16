@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132050"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway arka uç sistem durumu sorunlarını giderme
@@ -131,7 +131,7 @@ Ayrıca, herhangi bir NSG/UDR/güvenlik duvarının IP 'ye ve bu arka ucun bağl
 
 **Çözüm:** Bu hatayı alırsanız, şu adımları izleyin:
 
-1.  Tarayıcı veya PowerShell kullanarak HTTP ayarlarında bahsedilen bağlantı noktasında arka uç sunucusuna bağlanıp bağlanamaıp bağlanamayacağını denetleyin. Örneğin, aşağıdaki komutu çalıştırın:`Test-NetConnection -ComputerName
+1.  Tarayıcı veya PowerShell kullanarak HTTP ayarlarında bahsedilen bağlantı noktasında arka uç sunucusuna bağlanıp bağlanamaıp bağlanamayacağını denetleyin. Örneğin, aşağıdaki komutu çalıştırın: `Test-NetConnection -ComputerName
     www.bing.com -Port 443`
 
 1.  Belirtilen bağlantı noktası istenen bağlantı noktası değilse, arka uç sunucusuna bağlanmak için Application Gateway doğru bağlantı noktası numarasını girin

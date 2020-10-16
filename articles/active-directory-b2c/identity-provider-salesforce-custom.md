@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 668bc645edd1be611fe71b8fc1fa81288572e843
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b709293360dfaae8b7aa694442e44e9e4ab8a019
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388077"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054687"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içinde özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama
 
@@ -40,7 +40,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [özel ilkeler](cust
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Salesforce 'ta bağlantılı uygulama oluşturma
 
-1. **Kimlik sağlayıcısı** sayfasında, **artık bağlı uygulamalar aracılığıyla hizmet sağlayıcıları ' nı seçin. Buraya tıklayın.**
+1. **Kimlik sağlayıcısı** sayfasında, **artık bağlı uygulamalar aracılığıyla hizmet sağlayıcıları oluşturuluyor ' i seçin. buraya tıklayın.**
 2. **Temel bilgiler**altında, bağlı uygulamanız için gerekli değerleri girin.
 3. **Web uygulaması ayarları**altında **SAML etkinleştir** kutusunu işaretleyin.
 4. **VARLıK kimliği** alanına aşağıdaki URL 'yi girin. Değerini `your-tenant` Azure AD B2C kiracınızın adıyla değiştirdiğinizden emin olun.
@@ -88,7 +88,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 Azure AD B2C kiracınızda oluşturduğunuz sertifikayı depolamanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -97,7 +97,7 @@ Azure AD B2C kiracınızda oluşturduğunuz sertifikayı depolamanız gerekir.
 7. İlke için bir **Ad** girin. Örneğin, SAMLSigningCert. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 8. ' A gidin ve oluşturduğunuz B2CSigningCert. pfx sertifikasını seçin.
 9. Sertifika için **parolayı** girin.
-3. **Oluştur**'a tıklayın.
+3. **Oluştur**’a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -124,7 +124,6 @@ Bir Salesforce hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** �
             <Item Key="PartnerEntity">https://contoso-dev-ed.my.salesforce.com/.well-known/samlidp.xml</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
           </CryptographicKeys>
           <OutputClaims>

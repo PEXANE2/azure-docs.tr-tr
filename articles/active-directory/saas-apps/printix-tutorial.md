@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552352"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Öğretici: Printix ile tümleştirme Azure Active Directory
@@ -98,50 +98,50 @@ Bu bölümde, Azure AD Azure portal 'de çoklu oturum açmayı etkinleştirin ve
 
 1. Azure portal, **Printix** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' ya tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma][4]
+    ![Tek Sign-On yapılandırma][4]
 
 1. Çoklu oturum **açma iletişim kutusunda** , çoklu oturum açmayı etkinleştirmek için **SAML tabanlı oturum açma** olarak **mod** ' u seçin.
  
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_samlbase.png)
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
 1. **Printix etki alanı ve URL 'ler** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_url.png)
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_url.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.printix.net`
 
     > [!NOTE] 
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Printix istemci desteği ekibine](mailto:support@printix.net) başvurun. 
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [Printix istemci desteği ekibine](mailto:support@printix.net) başvurun. 
  
 1. **SAML Imzalama sertifikası** bölümünde **metadata XML** ' e tıklayın ve ardından meta veri dosyasını bilgisayarınıza kaydedin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_certificate.png) 
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
 1. **Kaydet** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_general_400.png)
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_general_400.png)
 
 1. Yönetici olarak Printix kiracınızda oturum açın.
 
 1. Üstteki menüden sağ üst köşedeki simgeye tıklayın ve "**kimlik doğrulaması**" seçeneğini belirleyin.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_06.png)
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_06.png)
 
 1. **Kurulum** sekmesinde **Azure/Office 365 kimlik doğrulamasını etkinleştir** ' i seçin.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_07.png)
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_07.png)
 
 1. **Azure** sekmesinde, Federasyon meta verileri URL 'Sini "**Federasyon meta verileri belgesi**" metin kutusuna girin. 
 
     Azure AD 'den [Printix destek ekibine](mailto:support@printix.net)indirdiğiniz meta veri xml dosyasını ekleyin. Ardından, XML dosyasını karşıya yükler ve bir Federasyon meta veri URL 'SI sağlar.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_08.png)
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_08.png)
    
 1. "**Test**" düğmesine tıklayın ve test başarılı olduysa "**Tamam**" düğmesine tıklayın.
    
      Azure Active Directory sayfası, **Test** düğmesine tıklandıktan sonra gösterilir. "Test başarılı oldu" burada Azure test hesabınızın kimlik bilgilerini girdikten sonra bir "ayarlar test edildi" iletisi açılır. Ardından **Tamam** düğmesine tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_09.png)
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_09.png)
 
 1. "**Kimlik doğrulama**" sayfasında **Kaydet** düğmesine tıklayın.
 
@@ -205,7 +205,7 @@ Bu bölümde, Printtix 'e erişim vererek Azure çoklu oturum açma özelliğini
 
 1. Uygulamalar listesinde, **Printix**' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_app.png) 
+    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_app.png) 
 
 1. Soldaki menüde **Kullanıcılar ve gruplar**' a tıklayın.
 

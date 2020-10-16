@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258685"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992854"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) koşullu erişim (CA), kararları otomatik hal
 
 Microsoft, temel düzeyde güvenlik sağlayan [güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md) adlı standart koşullu ilkeler sağlar. Bununla birlikte, kuruluşunuzun güvenlik varsayılanlarını önerenden daha fazla esneklik ihtiyacı olabilir. Koşullu erişimi, güvenlik varsayılanlarını daha fazla ayrıntı ile özelleştirmek ve gereksinimlerinizi karşılayan yeni ilkeleri yapılandırmak için kullanabilirsiniz.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Öğrenin
 
 Başlamadan önce, [Koşullu erişimin](overview.md) nasıl çalıştığını ve ne zaman kullanılacağını anladığınızdan emin olun.
 
@@ -89,7 +89,7 @@ Ortamınızda bu dağıtımın stratejisini belirlerken kurumsal ihtiyaçların�
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, doğru paydaşları ve proje rollerinin açık [olduğundan emin olun](https://aka.ms/deploymentplans) .
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, doğru paydaşları ve proje rollerinin açık [olduğundan emin olun](../fundamentals/active-directory-deployment-plans.md) .
 
 ### <a name="plan-communications"></a>İletişimi planlama
 
@@ -493,7 +493,7 @@ Bilgileri topladıktan sonra, aşağıdaki kaynaklara bakın:
 
 * [Koşullu erişimle oturum açma sorunları](troubleshoot-conditional-access.md) – hata Iletilerini ve Azure AD oturum açma günlüğünü kullanarak koşullu erişimle ilgili beklenmedik oturum açma sonuçlarını anlayın.
 
-* [Ne tür aracının kullanılması](troubleshoot-conditional-access-what-if.md) -bir ilkenin belirli bir durumdaki bir kullanıcıya veya bir ilkenin bilinen bir durumda nasıl uygulanacağını anlayın.
+* [What-If aracını kullanarak](troubleshoot-conditional-access-what-if.md) , bir ilkenin belirli bir durumdaki bir kullanıcıya veya bir ilkenin bilinen bir durumda uygulanabileceğini anlayın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

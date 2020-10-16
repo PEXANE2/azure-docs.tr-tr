@@ -4,12 +4,12 @@ description: NıST SP 800-53 R4 mevzuatı uyumluluğu yerleşik girişiminin ayr
 ms.date: 10/07/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 196522101cbc09a8c6a3ee12593a273e6565da88
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8c1e41036e71c91fbe4f8438c0271fb7f7db2e4a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823980"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930144"
 ---
 # <a name="details-of-the-nist-sp-800-53-r4-regulatory-compliance-built-in-initiative"></a>NıST SP 800-53 R4 mevzuatı uyumluluğu yerleşik girişiminin ayrıntıları
 
@@ -23,7 +23,7 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../overview.md) tanımı ile ilişkilidir.
-> Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesiyle **uyumlu** yalnızca ilke tanımlarının kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk standardı için uyumluluk etki alanları, denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json)bakın.
+> Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ile bir veya daha fazla ilke arasında genellikle bire bir veya tam eşleşme yoktur. Bu nedenle, Azure Ilkesiyle **uyumlu** yalnızca ilke tanımlarının kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk standardı için uyumluluk etki alanları, denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json)bakın.
 
 ## <a name="access-control"></a>Erişim Denetimi
 
@@ -99,7 +99,7 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1017-hesap yönetimi \| eylemsizlik dışı oturum kapatma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fc3db37-e59a-48c1-84e9-1780cedb409e) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1017.json) |
 
-### <a name="account-management--role-based-schemes"></a>Hesap yönetimi | Rol tabanlı şemalar
+### <a name="account-management--role-based-schemes"></a>Hesap yönetimi | Role-Based şemaları
 
 **Kimlik**: nıst SP 800-53 R4 AC-2 (7) **sahiplik**: paylaşılan
 
@@ -107,9 +107,9 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f314764-cb73-4fc9-b863-8eca98ac36e9) |Azure AD kimlik doğrulamasını etkinleştirmek için SQL sunucunuz için bir Azure Active Directory yöneticisinin sağlamasını denetleyin. Azure AD kimlik doğrulaması, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SQL_DB_AuditServerADAdmins_Audit.json) |
 |[Özel RBAC kurallarının kullanımını denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa451c1ef-c6ca-483d-87ed-f49761e3ffb5) |Hataya açık olan özel RBAC rolleri yerine ' Owner, katılımcısı, Reader ' gibi yerleşik rolleri denetleyin. Özel rolleri kullanmak özel durum olarak değerlendirilir ve kapsamlı bir inceleme ve tehdit modelleme gerektirir |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/Subscription_AuditCustomRBACRoles_Audit.json) |
-|[Microsoft yönetilen denetim 1018-hesap yönetimi \| rol tabanlı şemalar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9121abf-e698-4ee9-b1cf-71ee528ff07f) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1018.json) |
-|[Microsoft yönetilen denetim 1019-hesap yönetimi \| rol tabanlı şemalar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a3ee9b2-3977-459c-b8ce-2db583abd9f7) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1019.json) |
-|[Microsoft yönetilen denetim 1020-hesap yönetimi \| rol tabanlı şemalar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b291ee8-3140-4cad-beb7-568c077c78ce) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1020.json) |
+|[Microsoft yönetilen denetim 1018-hesap yönetimi \| Role-Based düzenleri](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9121abf-e698-4ee9-b1cf-71ee528ff07f) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1018.json) |
+|[Microsoft yönetilen denetim 1019-hesap yönetimi \| Role-Based düzenleri](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a3ee9b2-3977-459c-b8ce-2db583abd9f7) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1019.json) |
+|[Microsoft yönetilen denetim 1020-hesap yönetimi \| Role-Based düzenleri](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b291ee8-3140-4cad-beb7-568c077c78ce) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1020.json) |
 |[Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb54ed75b-3e1a-44ac-a333-05ba39b99ff0) |İstemci kimlik doğrulamasının kullanımını yalnızca Service Fabric Azure Active Directory aracılığıyla denetle |Denetim, reddetme, devre dışı |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditADAuth_Audit.json) |
 
 ### <a name="account-management--restrictions-on-use-of-shared--group-accounts"></a>Hesap yönetimi | Paylaşılan/grup hesaplarının kullanımıyla ilgili kısıtlamalar
@@ -146,13 +146,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |[Microsoft yönetilen denetim 1024-hesap yönetimi \| hesabı izleme/genel kullanım](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F84914fb4-12da-4c53-a341-a9fd463bed10) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1024.json) |
 |[Microsoft yönetilen denetim 1025-hesap yönetimi \| hesabı izleme/genel kullanım](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fadfe020d-0a97-45f4-a39c-696ef99f3a95) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1025.json) |
 
-### <a name="account-management--disable-accounts-for-high-risk-individuals"></a>Hesap yönetimi | Yüksek riskli bireyler için hesapları devre dışı bırakma
+### <a name="account-management--disable-accounts-for-high-risk-individuals"></a>Hesap yönetimi | High-Risk bireyler için hesapları devre dışı bırakma
 
 **Kimlik**: nıst SP 800-53 R4 AC-2 (13) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1026-hesap yönetimi \| yüksek riskli bireyler Için hesapları devre dışı bırakma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55419419-c597-4cd4-b51e-009fd2266783) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1026.json) |
+|[Microsoft yönetilen denetim 1026-hesap yönetimi \| High-Risk kişiler Için hesapları devre dışı bırakma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55419419-c597-4cd4-b51e-009fd2266783) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1026.json) |
 
 ### <a name="access-enforcement"></a>Erişim zorlaması
 
@@ -322,13 +322,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |[Microsoft yönetilen denetim 1051-oturum kilidi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7cac6ee9-b58b-40c8-a5ce-f0efc3d9b339) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1051.json) |
 |[Microsoft yönetilen denetim 1052-oturum kilidi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F027cae1c-ec3e-4492-9036-4168d540c42a) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1052.json) |
 
-### <a name="session-lock--pattern-hiding-displays"></a>Oturum kilidi | Desenler-gizleme ekranları
+### <a name="session-lock--pattern-hiding-displays"></a>Oturum kilidi | Pattern-Hiding görüntüler
 
 **Kimlik**: nıst SP 800-53 R4 AC-11 (1) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1053-oturum kilit \| kalıbı-gizleme ekranları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7582b19c-9dba-438e-aed8-ede59ac35ba3) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1053.json) |
+|[Microsoft yönetilen denetim 1053-oturum kilidi \| Pattern-Hiding görüntüler](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7582b19c-9dba-438e-aed8-ede59ac35ba3) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1053.json) |
 
 ### <a name="session-termination"></a>Oturum sonlandırma
 
@@ -338,14 +338,14 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1054-oturum sonlandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5807e1b4-ba5e-4718-8689-a0ca05a191b2) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1054.json) |
 
-### <a name="session-termination--user-initiated-logouts--message-displays"></a>Oturum sonlandırma | Kullanıcı tarafından başlatılan Günlüklermeler/Iletiler görüntülenir
+### <a name="session-termination--user-initiated-logouts--message-displays"></a>Oturum sonlandırma | User-Initiated günlüğe kaydetme/Ileti görüntüleme
 
 **Kimlik**: nıst SP 800-53 R4 AC-12 (1) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1055-oturum sonlandırma \| Kullanıcı tarafından başlatılan günlüğe kaydetme/Ileti görüntüleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F769efd9b-3587-4e22-90ce-65ddcd5bd969) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1055.json) |
-|[Microsoft yönetilen denetim 1056-oturum sonlandırma \| Kullanıcı tarafından başlatılan günlüğe kaydetme/Ileti görüntüleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac43352f-df83-4694-8738-cfce549fd08d) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1056.json) |
+|[Microsoft yönetilen denetim 1055-oturum sonlandırma \| User-Initiated günlüğe kaydetme/Ileti görüntüleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F769efd9b-3587-4e22-90ce-65ddcd5bd969) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1055.json) |
+|[Microsoft yönetilen denetim 1056-oturum sonlandırma \| User-Initiated günlüğe kaydetme/Ileti görüntüleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac43352f-df83-4694-8738-cfce549fd08d) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1056.json) |
 
 ### <a name="permitted-actions-without-identification-or-authentication"></a>Tanımlayıcı veya kimlik doğrulaması olmayan izin verilen eylemler
 
@@ -474,13 +474,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |[Microsoft yönetilen denetim 1073-mobil cihazlar Için Access Control](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fab55cdb0-c7dd-4bd8-ae22-a7cea7594e9c) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1073.json) |
 |[Microsoft yönetilen denetim 1074-mobil cihazlar Için Access Control](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F27a69937-af92-4198-9b86-08d355c7e59a) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1074.json) |
 
-### <a name="access-control-for-mobile-devices--full-device--container-based--encryption"></a>Mobil cihazlar için Access Control | Tam cihaz/kapsayıcı tabanlı şifreleme
+### <a name="access-control-for-mobile-devices--full-device--container-based--encryption"></a>Mobil cihazlar için Access Control | Tam cihaz/Container-Based şifreleme
 
 **Kimlik**: nıst SP 800-53 R4 AC-19 (5) **sahiplik**: Microsoft
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1075-mobil cihazlar Için Access Control \| tam cihaz/kapsayıcı tabanlı şifreleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc933d22-04df-48ed-8f87-22a3773d4309) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1075.json) |
+|[Microsoft yönetilen denetim 1075-mobil cihazlar Için Access Control \| tam cihaz/Container-Based şifreleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc933d22-04df-48ed-8f87-22a3773d4309) |Microsoft bu Access Control denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1075.json) |
 
 ### <a name="use-of-external-information-systems"></a>Dış bilgi sistemlerinin kullanımı
 
@@ -557,31 +557,31 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1092-güvenlik tanıma Eğitimi \| Insider tehdidi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8a29d47b-8604-4667-84ef-90d203fcb305) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1092.json) |
 
-### <a name="role-based-security-training"></a>Rol tabanlı güvenlik eğitimi
+### <a name="role-based-security-training"></a>Role-Based güvenlik eğitimi
 
 **Kimlik**: nıst SP 800-53 R4-3 **sahipliği**: Shared
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1093-rol tabanlı güvenlik eğitimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7a0bdeeb-15f4-47e8-a1da-9f769f845fdf) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1093.json) |
-|[Microsoft yönetilen denetim 1094-rol tabanlı güvenlik eğitimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4b1853e0-8973-446b-b567-09d901d31a09) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1094.json) |
-|[Microsoft yönetilen denetim 1095-rol tabanlı güvenlik eğitimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbc3f6f7a-057b-433e-9834-e8c97b0194f6) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1095.json) |
+|[Microsoft yönetilen denetim 1093-Role-Based güvenlik eğitimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7a0bdeeb-15f4-47e8-a1da-9f769f845fdf) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1093.json) |
+|[Microsoft yönetilen denetim 1094-Role-Based güvenlik eğitimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4b1853e0-8973-446b-b567-09d901d31a09) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1094.json) |
+|[Microsoft yönetilen denetim 1095-Role-Based güvenlik eğitimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbc3f6f7a-057b-433e-9834-e8c97b0194f6) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1095.json) |
 
-### <a name="role-based-security-training--practical-exercises"></a>Rol tabanlı güvenlik eğitimi | Pratik alýþtýrmalar
+### <a name="role-based-security-training--practical-exercises"></a>Role-Based güvenlik eğitimi | Pratik alýþtýrmalar
 
 **Kimlik**: nıst SP 800-53 R4-3 (3) **sahipliği**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1096-rol tabanlı güvenlik eğitimi \| pratik alıştırmaları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F420c1477-aa43-49d0-bd7e-c4abdd9addff) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1096.json) |
+|[Microsoft yönetilen denetim 1096-Role-Based güvenlik eğitimi \| pratik alıştırmaları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F420c1477-aa43-49d0-bd7e-c4abdd9addff) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1096.json) |
 
-### <a name="role-based-security-training--suspicious-communications-and-anomalous-system-behavior"></a>Rol tabanlı güvenlik eğitimi | Şüpheli Iletişimler ve anormal sistem davranışı
+### <a name="role-based-security-training--suspicious-communications-and-anomalous-system-behavior"></a>Role-Based güvenlik eğitimi | Şüpheli Iletişimler ve anormal sistem davranışı
 
 **Kimlik**: nıst SP 800-53 R4 at-3 (4) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1097-rol tabanlı güvenlik eğitimi \| şüpheli Iletişim ve anormal sistem davranışı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf3e4836-f19e-47eb-a8cd-c3ca150452c0) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1097.json) |
+|[Microsoft yönetilen denetim 1097-Role-Based güvenlik eğitimi \| şüpheli Iletişim ve anormal sistem davranışı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf3e4836-f19e-47eb-a8cd-c3ca150452c0) |Microsoft bu tanıma ve eğitim denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1097.json) |
 
 ### <a name="security-training-records"></a>Güvenlik eğitimi kayıtları
 
@@ -678,13 +678,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1113-denetim Işleme hatalarının yanıtı \| Denetim depolama kapasitesi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F562afd61-56be-4313-8fe4-b9564aa4ba7d) |Microsoft bu denetim ve sorumluluk denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1113.json) |
 
-### <a name="response-to-audit-processing-failures--real-time-alerts"></a>Işleme başarısızlıklarını denetleme yanıtı | Gerçek zamanlı uyarılar
+### <a name="response-to-audit-processing-failures--real-time-alerts"></a>Işleme başarısızlıklarını denetleme yanıtı | Real-Time uyarılar
 
 **Kimlik**: nıst SP 800-53 R4 au-5 (2) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1114-denetim Işleme hatalarının gerçek zamanlı \| uyarılarda yanıtı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4c090801-59bc-4454-bb33-e0455133486a) |Microsoft bu denetim ve sorumluluk denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1114.json) |
+|[Microsoft yönetilen denetim 1114-Işleme başarısızlıklarını denetleme yanıtı \| Real-Time uyarıları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4c090801-59bc-4454-bb33-e0455133486a) |Microsoft bu denetim ve sorumluluk denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1114.json) |
 
 ### <a name="audit-review-analysis-and-reporting"></a>Denetim Inceleme, analiz ve raporlama
 
@@ -854,13 +854,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |[Microsoft yönetilen denetim 1138-denetim oluşturma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9c284fc0-268a-4f29-af44-3c126674edb4) |Microsoft bu denetim ve sorumluluk denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1138.json) |
 |[Microsoft yönetilen denetim 1139-denetim oluşturma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ed62522-de00-4dda-9810-5205733d2f34) |Microsoft bu denetim ve sorumluluk denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1139.json) |
 
-### <a name="audit-generation--system-wide--time-correlated-audit-trail"></a>Denetim oluşturma | Sistem genelindeki/saat ile bağıntılı denetim Izi
+### <a name="audit-generation--system-wide--time-correlated-audit-trail"></a>Denetim oluşturma | System-Wide/Time-Correlated denetim Izi
 
 **Kimlik**: nıst SP 800-53 R4 Au-12 (1) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1140-denetim oluşturma \| sistem genelinde/zaman bağıntılı denetim izi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F90d8b8ad-8ee3-4db7-913f-2a53fcff5316) |Microsoft bu denetim ve sorumluluk denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1140.json) |
+|[Microsoft yönetilen denetim 1140-denetim oluşturma \| System-Wide/Time-Correlated denetim izi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F90d8b8ad-8ee3-4db7-913f-2a53fcff5316) |Microsoft bu denetim ve sorumluluk denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1140.json) |
 
 ### <a name="audit-generation--changes-by-authorized-individuals"></a>Denetim oluşturma | Yetkili kişiler tarafından yapılan değişiklikler
 
@@ -1061,14 +1061,14 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1181- \| önceki yapılandırmaların temel yapılandırma saklama](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21839937-d241-4fa5-95c6-b669253d9ab9) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1181.json) |
 
-### <a name="baseline-configuration--configure-systems-components-or-devices-for-high-risk-areas"></a>Temel yapılandırma | Yüksek riskli alanlara yönelik sistemleri, bileşenleri veya cihazları yapılandırın
+### <a name="baseline-configuration--configure-systems-components-or-devices-for-high-risk-areas"></a>Temel yapılandırma | High-Risk alanlara yönelik sistemleri, bileşenleri veya aygıtları yapılandırma
 
 **Kimlik**: nıst SP 800-53 R4 cm-2 (7) **sahiplik**: Microsoft
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1182-temel yapılandırma \| sistemleri, bileşenleri veya cihazları yüksek riskli alanlara göre yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f34f554-da4b-4786-8d66-7915c90893da) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1182.json) |
-|[Microsoft yönetilen denetim 1183-temel yapılandırma \| sistemleri, bileşenleri veya cihazları yüksek riskli alanlara göre yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5352e3e0-e63a-452e-9e5f-9c1d181cff9c) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1183.json) |
+|[Microsoft yönetilen denetim 1182-temel yapılandırma \| sistemleri, bileşenleri veya High-Risk alanlara yönelik cihazları yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f34f554-da4b-4786-8d66-7915c90893da) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1182.json) |
+|[Microsoft yönetilen denetim 1183-temel yapılandırma \| sistemleri, bileşenleri veya High-Risk alanlara yönelik cihazları yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5352e3e0-e63a-452e-9e5f-9c1d181cff9c) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1183.json) |
 
 ### <a name="configuration-change-control"></a>Yapılandırma değişikliği denetimi
 
@@ -1322,24 +1322,24 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1237-yazılım kullanım kısıtlamaları \| açık kaynak yazılım](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe80b6812-0bfa-4383-8223-cdd86a46a890) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1237.json) |
 
-### <a name="user-installed-software"></a>Kullanıcı tarafından yüklenen yazılım
+### <a name="user-installed-software"></a>User-Installed yazılım
 
 **Kimlik**: nıst SP 800-53 R4 cm-11 **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Güvenli uygulamaları tanımlamaya yönelik Uyarlamalı uygulama denetimleri, makinelerinizde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Makinelerinizde çalışan bilinen güvenli uygulamaların listesini tanımlamak için uygulama denetimlerini etkinleştirin ve diğer uygulamalar çalıştırıldığında sizi uyarır. Bu, makinelerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, kurallarınızı yapılandırma ve sürdürme sürecini basitleştirmek için makine öğrenimini kullanarak her makinede çalışan uygulamaları analiz eder ve bilinen güvenli uygulamalar listesini önerir. |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveApplicationControls_Audit.json) |
-|[Microsoft yönetilen denetim 1238-Kullanıcı tarafından yüklenen yazılımlar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa36cedd4-3ffd-4b1f-8b18-aa71d8d87ce1) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1238.json) |
-|[Microsoft yönetilen denetim 1239-Kullanıcı tarafından yüklenen yazılımlar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0be51298-f643-4556-88af-d7db90794879) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1239.json) |
-|[Microsoft yönetilen denetim 1240-Kullanıcı tarafından yüklenen yazılımlar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F129eb39f-d79a-4503-84cd-92f036b5e429) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1240.json) |
+|[Microsoft yönetilen denetim 1238-User-Installed yazılım](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa36cedd4-3ffd-4b1f-8b18-aa71d8d87ce1) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1238.json) |
+|[Microsoft yönetilen denetim 1239-User-Installed yazılım](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0be51298-f643-4556-88af-d7db90794879) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1239.json) |
+|[Microsoft yönetilen denetim 1240-User-Installed yazılım](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F129eb39f-d79a-4503-84cd-92f036b5e429) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1240.json) |
 
-### <a name="user-installed-software--alerts-for-unauthorized-installations"></a>Kullanıcı tarafından yüklenen yazılım | Yetkisiz yüklemeler için uyarılar
+### <a name="user-installed-software--alerts-for-unauthorized-installations"></a>User-Installed yazılım | Yetkisiz yüklemeler için uyarılar
 
 **Kimlik**: nıst SP 800-53 R4 cm-11 (1) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1241-yetkisiz yüklemeler Için Kullanıcı tarafından yüklenen yazılım \| uyarıları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feca4d7b2-65e2-4e04-95d4-c68606b063c3) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1241.json) |
+|[Microsoft yönetilen denetim 1241- \| yetkisiz yüklemeler için User-Installed yazılım uyarıları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feca4d7b2-65e2-4e04-95d4-c68606b063c3) |Microsoft bu yapılandırma yönetimi denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1241.json) |
 
 ## <a name="contingency-planning"></a>Yedek planlama
 
@@ -1791,7 +1791,7 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |[Microsoft yönetilen denetim 1325-Authenticator yönetimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1845796a-7581-49b2-ae20-443121538e19) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1325.json) |
 |[Microsoft yönetilen denetim 1326-Authenticator yönetimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8605fc00-1bf5-4fb3-984e-c95cec4f231d) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1326.json) |
 
-### <a name="authenticator-management--password-based-authentication"></a>Doğrulayıcı yönetimi | Parola tabanlı kimlik doğrulaması
+### <a name="authenticator-management--password-based-authentication"></a>Doğrulayıcı yönetimi | Password-Based kimlik doğrulaması
 
 **Kimlik**: nıst SP 800-53 R4 IA-5 (1) **sahiplik**: paylaşılan
 
@@ -1807,23 +1807,23 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |[Parolaları, ters çevrilebilir şifreleme kullanarak depolamamayan Windows makinelerini denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fda0f98fe-a24b-4ad5-af69-bd0400233661) |Önkoşulların ilke atama kapsamına dağıtılmasını gerektirir. Ayrıntılar için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . Ters çevrilebilir şifreleme kullanarak parolaları depolamayan Windows makineler ise, makineler uyumlu değildir |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPasswordEncryption_AINE.json) |
 |[Linux VM 'lerinde Konuk yapılandırma atamalarını etkinleştirmek için Linux konuk yapılandırma uzantısını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F331e8ea8-378a-410f-a2e5-ae22f38bb0da) |Bu ilke, Linux konuk yapılandırma uzantısını Azure 'da barındırılan ve konuk yapılandırması tarafından desteklenen Linux sanal makinelerine dağıtır. Linux konuk yapılandırma uzantısı, tüm Linux konuk yapılandırma atamaları için bir önkoşuldur ve Linux konuk yapılandırma ilkesi tanımı kullanılmadan önce makinelere dağıtılmalıdır. Konuk yapılandırması hakkında daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_DeployExtensionLinux_Prerequisite.json) |
 |[Windows VM 'lerde Konuk yapılandırma atamalarını etkinleştirmek için Windows Konuk yapılandırma uzantısı 'nı dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F385f5831-96d4-41db-9a3c-cd3af78aaae6) |Bu ilke, Windows Konuk yapılandırma uzantısını Azure 'da barındırılan ve konuk yapılandırması tarafından desteklenen Windows sanal makinelerine dağıtır. Windows Konuk yapılandırma uzantısı, tüm Windows Konuk yapılandırma atamaları için bir önkoşuldur ve herhangi bir Windows Konuk yapılandırma ilkesi tanımı kullanılmadan önce makinelere dağıtılmalıdır. Konuk yapılandırması hakkında daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_DeployExtensionWindows_Prerequisite.json) |
-|[Microsoft yönetilen denetim 1327-Authenticator Yönetimi \| parola tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03188d8f-1ae5-4fe1-974d-2d7d32ef937d) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1327.json) |
-|[Microsoft yönetilen denetim 1328-Authenticator Yönetimi \| parola tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff5c66fdc-3d02-4034-9db5-ba57802609de) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1328.json) |
-|[Microsoft yönetilen denetim 1329-Authenticator Yönetimi \| parola tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F498f6234-3e20-4b6a-a880-cbd646d973bd) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1329.json) |
-|[Microsoft yönetilen denetim 1330-Authenticator Yönetimi \| parola tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff75cedb2-5def-4b31-973e-b69e8c7bd031) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1330.json) |
-|[Microsoft yönetilen denetim 1331-Authenticator Yönetimi \| parola tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F05460fe2-301f-4ed1-8174-d62c8bb92ff4) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1331.json) |
-|[Microsoft yönetilen denetim 1332-Authenticator Yönetimi \| parola tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F068260be-a5e6-4b0a-a430-cd27071c226a) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1332.json) |
+|[Microsoft yönetilen denetim 1327-Authenticator Yönetimi \| Password-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03188d8f-1ae5-4fe1-974d-2d7d32ef937d) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1327.json) |
+|[Microsoft yönetilen denetim 1328-Authenticator Yönetimi \| Password-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff5c66fdc-3d02-4034-9db5-ba57802609de) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1328.json) |
+|[Microsoft yönetilen denetim 1329-Authenticator Yönetimi \| Password-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F498f6234-3e20-4b6a-a880-cbd646d973bd) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1329.json) |
+|[Microsoft yönetilen denetim 1330-Authenticator Yönetimi \| Password-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff75cedb2-5def-4b31-973e-b69e8c7bd031) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1330.json) |
+|[Microsoft yönetilen denetim 1331-Authenticator Yönetimi \| Password-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F05460fe2-301f-4ed1-8174-d62c8bb92ff4) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1331.json) |
+|[Microsoft yönetilen denetim 1332-Authenticator Yönetimi \| Password-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F068260be-a5e6-4b0a-a430-cd27071c226a) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1332.json) |
 
-### <a name="authenticator-management--pki-based-authentication"></a>Doğrulayıcı yönetimi | PKI tabanlı kimlik doğrulaması
+### <a name="authenticator-management--pki-based-authentication"></a>Doğrulayıcı yönetimi | Pki-Based kimlik doğrulaması
 
 **Kimlik**: nıst SP 800-53 R4 IA-5 (2) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1333-Authenticator Yönetimi \| PKI tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3298d6bf-4bc6-4278-a95d-f7ef3ac6e594) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1333.json) |
-|[Microsoft yönetilen denetim 1334-Authenticator Yönetimi \| PKI tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F44bfdadc-8c2e-4c30-9c99-f005986fabcd) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1334.json) |
-|[Microsoft yönetilen denetim 1335-Authenticator Yönetimi \| PKI tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F382016f3-d4ba-4e15-9716-55077ec4dc2a) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1335.json) |
-|[Microsoft yönetilen denetim 1336-Authenticator Yönetimi \| PKI tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77f56280-e367-432a-a3b9-8ca2aa636a26) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1336.json) |
+|[Microsoft yönetilen denetim 1333-Authenticator Yönetimi \| Pki-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3298d6bf-4bc6-4278-a95d-f7ef3ac6e594) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1333.json) |
+|[Microsoft yönetilen denetim 1334-Authenticator Yönetimi \| Pki-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F44bfdadc-8c2e-4c30-9c99-f005986fabcd) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1334.json) |
+|[Microsoft yönetilen denetim 1335-Authenticator Yönetimi \| Pki-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F382016f3-d4ba-4e15-9716-55077ec4dc2a) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1335.json) |
+|[Microsoft yönetilen denetim 1336-Authenticator Yönetimi \| Pki-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77f56280-e367-432a-a3b9-8ca2aa636a26) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1336.json) |
 
 ### <a name="authenticator-management--in-person-or-trusted-third-party-registration"></a>Doğrulayıcı yönetimi | yerinde veya güvenilir üçüncü taraf kaydı
 
@@ -1831,7 +1831,7 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1337-kimlik doğrulayıcı Yönetimi \| kişi veya güvenilir üçüncü taraf kaydı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F463e5220-3f79-4e24-a63f-343e4096cd22) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1337.json) |
+|[Microsoft yönetilen denetim 1337-Authenticator Yönetimi \| In-Person veya güvenilir üçüncü taraf kaydı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F463e5220-3f79-4e24-a63f-343e4096cd22) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1337.json) |
 
 ### <a name="authenticator-management--automated-support--for-password-strength-determination"></a>Doğrulayıcı yönetimi | Parola gücü belirleme otomatik desteği
 
@@ -1865,13 +1865,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1341-Authenticator Yönetimi \| birden çok bilgi sistemi hesabı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34cb7e92-fe4c-4826-b51e-8cd203fa5d35) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1341.json) |
 
-### <a name="authenticator-management--hardware-token-based-authentication"></a>Doğrulayıcı yönetimi | Donanım belirteci tabanlı kimlik doğrulaması
+### <a name="authenticator-management--hardware-token-based-authentication"></a>Doğrulayıcı yönetimi | Donanım Token-Based kimlik doğrulaması
 
 **Kimlik**: nıst SP 800-53 R4 IA-5 (11) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1342-Authenticator Yönetimi \| donanım belirteci tabanlı kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F283a4e29-69d5-4c94-b99e-29acf003c899) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1342.json) |
+|[Microsoft yönetilen denetim 1342-Authenticator Yönetim \| donanımı Token-Based kimlik doğrulaması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F283a4e29-69d5-4c94-b99e-29acf003c899) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1342.json) |
 
 ### <a name="authenticator-management--expiration-of-cached-authenticators"></a>Doğrulayıcı yönetimi | Önbelleğe alınan kimlik doğrulayıcılar süresi sonu
 
@@ -1921,21 +1921,21 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1348-tanımlama ve kimlik doğrulaması (org dışı). Kullanıcılar) \| üçüncü taraf kimlik bilgilerini kabul etme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F855ced56-417b-4d74-9d5f-dd1bc81e22d6) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1348.json) |
 
-### <a name="identification-and-authentication-non-organizational-users--use-of-ficam-approved-products"></a>Tanımlama ve kimlik doğrulaması (kurumsal olmayan kullanıcılar) | Kurgu-onaylanan ürünlerin kullanımı
+### <a name="identification-and-authentication-non-organizational-users--use-of-ficam-approved-products"></a>Tanımlama ve kimlik doğrulaması (kurumsal olmayan kullanıcılar) | Ficam-Approved ürünlerin kullanımı
 
 **Kimlik**: nıst SP 800-53 R4 IA-8 (3) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1349-tanımlama ve kimlik doğrulaması (org dışı). Kullanıcılar) \| kurgu-onaylanan ürünlerin kullanımı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17641f70-94cd-4a5d-a613-3d1143e20e34) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1349.json) |
+|[Microsoft yönetilen denetim 1349-tanımlama ve kimlik doğrulaması (org dışı). Kullanıcılar) \| FICAM-Approved ürünlerin kullanımı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17641f70-94cd-4a5d-a613-3d1143e20e34) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1349.json) |
 
-### <a name="identification-and-authentication-non-organizational-users--use-of-ficam-issued-profiles"></a>Tanımlama ve kimlik doğrulaması (kurumsal olmayan kullanıcılar) | Kurgu-verilen profillerin kullanımı
+### <a name="identification-and-authentication-non-organizational-users--use-of-ficam-issued-profiles"></a>Tanımlama ve kimlik doğrulaması (kurumsal olmayan kullanıcılar) | Ficam-Issued profillerinin kullanımı
 
 **Kimlik**: nıst SP 800-53 R4 IA-8 (4) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1350-tanımlama ve kimlik doğrulaması (org dışı). Kullanıcılar) \| kurgu-verilen profillerin kullanımı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd77fd943-6ba6-4a21-ba07-22b03e347cc4) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1350.json) |
+|[Microsoft yönetilen denetim 1350-tanımlama ve kimlik doğrulaması (org dışı). Kullanıcılar) \| FICAM-Issued profillerinin kullanımı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd77fd943-6ba6-4a21-ba07-22b03e347cc4) |Microsoft bu tanımlama ve kimlik doğrulama denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1350.json) |
 
 ## <a name="incident-response"></a>Olay Yanıtı
 
@@ -2530,13 +2530,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1473-acil durum gücü](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd7047705-d719-46a7-8bb0-76ad233eba71) |Microsoft bu fiziksel ve ortam koruma denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1473.json) |
 
-### <a name="emergency-power--long-term-alternate-power-supply---minimal-operational-capability"></a>Acil durum gücü | Uzun vadeli alternatif güç kaynağı-minimum Işlemsel yetenek
+### <a name="emergency-power--long-term-alternate-power-supply---minimal-operational-capability"></a>Acil durum gücü | Long-Term alternatif güç kaynağı-minimum Işletimsel yetenek
 
 **Kimlik**: nıst SP 800-53 R4 PE-11 (1) **sahiplik**: Microsoft
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1474-acil durum gücü \| uzun süreli alternatif güç kaynağı-minimum Işlemsel yetenek](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03ad326e-d7a1-44b1-9a76-e17492efc9e4) |Microsoft bu fiziksel ve ortam koruma denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1474.json) |
+|[Microsoft yönetilen denetim 1474-acil güç \| Long-Term alternatif güç kaynağı-minimum Işletimsel yetenek](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F03ad326e-d7a1-44b1-9a76-e17492efc9e4) |Microsoft bu fiziksel ve ortam koruma denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1474.json) |
 
 ### <a name="emergency-lighting"></a>Acil aydınlatma
 
@@ -3136,13 +3136,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |[Microsoft yönetilen denetim 1609-geliştirme Işlemi, standartları ve araçları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9e93fa71-42ac-41a7-b177-efbfdc53c69f) |Microsoft bu sistem ve hizmetler alma denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1609.json) |
 |[Microsoft yönetilen denetim 1610-geliştirme Işlemi, standartları ve araçları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb9f3fb54-4222-46a1-a308-4874061f8491) |Microsoft bu sistem ve hizmetler alma denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1610.json) |
 
-### <a name="developer-provided-training"></a>Geliştirici tarafından sunulan eğitim
+### <a name="developer-provided-training"></a>Developer-Provided eğitimi
 
 **Kimlik**: nıst SP 800-53 R4 sa-16 **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1611-geliştirici tarafından sunulan eğitim](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffdda8a0c-ac32-43f6-b2f4-7dc1df03f43f) |Microsoft bu sistem ve hizmetler alma denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1611.json) |
+|[Microsoft yönetilen denetim 1611-Developer-Provided eğitimi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffdda8a0c-ac32-43f6-b2f4-7dc1df03f43f) |Microsoft bu sistem ve hizmetler alma denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1611.json) |
 
 ### <a name="developer-security-architecture-and-design"></a>Geliştirici güvenlik mimarisi ve tasarımı
 
@@ -3273,13 +3273,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1634-sınır koruması \| yetkisiz bir savunma oluşmasını engelliyor](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F292a7c44-37fa-4c68-af7c-9d836955ded2) |Microsoft bu sistem ve Iletişim koruması denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1634.json) |
 
-### <a name="boundary-protection--host-based-protection"></a>Sınır koruma | Ana bilgisayar tabanlı koruma
+### <a name="boundary-protection--host-based-protection"></a>Sınır koruma | Host-Based koruması
 
 **Kimlik**: nıst SP 800-53 R4 SC-7 (12) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1635-sınır koruma \| ana bilgisayar tabanlı koruma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F87551b5d-1deb-4d0f-86cc-9dc14cb4bf7e) |Microsoft bu sistem ve Iletişim koruması denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1635.json) |
+|[Microsoft yönetilen denetim 1635-sınır koruma \| Host-Based koruması](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F87551b5d-1deb-4d0f-86cc-9dc14cb4bf7e) |Microsoft bu sistem ve Iletişim koruması denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1635.json) |
 
 ### <a name="boundary-protection--isolation-of-security-tools--mechanisms--support-components"></a>Sınır koruma | Güvenlik araçları/mekanizmaları/destek bileşenleri yalıtımı
 
@@ -3580,13 +3580,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1681-kötü amaçlı kod koruma \| Otomatik Güncelleştirmeler](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12623e7e-4736-4b2e-b776-c1600f35f93a) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1681.json) |
 
-### <a name="malicious-code-protection--nonsignature-based-detection"></a>Kötü amaçlı kod koruma | İmza tabanlı olmayan algılama
+### <a name="malicious-code-protection--nonsignature-based-detection"></a>Kötü amaçlı kod koruma | Nonsignature-Based algılama
 
 **Kimlik**: nıst SP 800-53 R4 sı-3 (7) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1682-imza temelli olmayan kötü amaçlı kod koruma \| -tabanlı algılama](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F62b638c5-29d7-404b-8d93-f21e4b1ce198) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1682.json) |
+|[Microsoft yönetilen denetim 1682-kötü amaçlı kod koruma \| Nonsignature-Based algılama](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F62b638c5-29d7-404b-8d93-f21e4b1ce198) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1682.json) |
 
 ### <a name="information-system-monitoring"></a>Bilgi sistemi Izleme
 
@@ -3607,21 +3607,21 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |[Microsoft yönetilen denetim 1688-bilgi sistemi Izleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F063c3f09-e0f0-4587-8fd5-f4276fae675f) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1688.json) |
 |[Microsoft yönetilen denetim 1689-bilgi sistemi Izleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fde901f2f-a01a-4456-97f0-33cda7966172) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1689.json) |
 
-### <a name="information-system-monitoring--system-wide-intrusion-detection-system"></a>Bilgi sistemi Izleme | Sistem genelinde yetkisiz giriş algılama sistemi
+### <a name="information-system-monitoring--system-wide-intrusion-detection-system"></a>Bilgi sistemi Izleme | System-Wide yetkisiz giriş algılama sistemi
 
 **Kimlik**: nıst SP 800-53 R4 sı-4 (1) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1690-bilgi sistemi Izleme \| sistem genelinde yetkisiz giriş algılama sistemi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2567a23-d1c3-4783-99f3-d471302a4d6b) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1690.json) |
+|[Microsoft yönetilen denetim 1690-bilgi sistemi Izleme \| System-Wide yetkisiz giriş algılama sistemi](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2567a23-d1c3-4783-99f3-d471302a4d6b) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1690.json) |
 
-### <a name="information-system-monitoring--automated-tools-for-real-time-analysis"></a>Bilgi sistemi Izleme | Gerçek zamanlı analiz için otomatikleştirilmiş araçlar
+### <a name="information-system-monitoring--automated-tools-for-real-time-analysis"></a>Bilgi sistemi Izleme | Real-Time çözümleme için otomatikleştirilmiş araçlar
 
 **Kimlik**: nıst SP 800-53 R4 sı-4 (2) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft Managed Control 1691-gerçek zamanlı analiz Için bilgi sistemi Izleme \| Otomatikleştirilmiş araçları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F71475fb4-49bd-450b-a1a5-f63894c24725) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1691.json) |
+|[Microsoft yönetilen denetim 1691- \| Real-Time analiz için otomatik araçlar bilgi sistemi izleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F71475fb4-49bd-450b-a1a5-f63894c24725) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1691.json) |
 
 ### <a name="information-system-monitoring--inbound-and-outbound-communications-traffic"></a>Bilgi sistemi Izleme | Gelen ve giden Iletişim trafiği
 
@@ -3631,13 +3631,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1692-bilgi sistemi Izleme \| gelen ve giden Iletişim trafiği](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ecda928-9df4-4dd7-8f44-641a91e470e8) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1692.json) |
 
-### <a name="information-system-monitoring--system-generated-alerts"></a>Bilgi sistemi Izleme | Sistem tarafından oluşturulan uyarılar
+### <a name="information-system-monitoring--system-generated-alerts"></a>Bilgi sistemi Izleme | System-Generated uyarılar
 
 **Kimlik**: nıst SP 800-53 R4 sı-4 (5) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1693-bilgi sistemi Izleme \| sistem tarafından oluşturulan uyarılar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa450eba6-2efc-4a00-846a-5804a93c6b77) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1693.json) |
+|[Microsoft yönetilen denetim 1693-bilgi sistemi Izleme \| System-Generated uyarıları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa450eba6-2efc-4a00-846a-5804a93c6b77) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1693.json) |
 
 ### <a name="information-system-monitoring--analyze-communications-traffic-anomalies"></a>Bilgi sistemi Izleme | Iletişim trafiği Bozukluklerini çözümleyin
 
@@ -3695,13 +3695,13 @@ Bu yerleşik girişim, [NIST SP 800-53 R4 şema örneğinin](../../blueprints/sa
 |---|---|---|---|
 |[Microsoft yönetilen denetim 1700-bilgi sistemi Izleme \| yetkisiz ağ hizmetleri](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7831b4ba-c3f4-4cb1-8c11-ef8d59438cd5) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1700.json) |
 
-### <a name="information-system-monitoring--host-based-devices"></a>Bilgi sistemi Izleme | Ana bilgisayar tabanlı cihazlar
+### <a name="information-system-monitoring--host-based-devices"></a>Bilgi sistemi Izleme | Host-Based cihazlar
 
 **Kimlik**: nıst SP 800-53 R4 sı-4 (23) **sahiplik**: paylaşılan
 
 |Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Microsoft yönetilen denetim 1701-bilgi sistemi Izleme \| ana bilgisayar tabanlı cihazlar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff25bc08f-27cb-43b6-9a23-014d00700426) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1701.json) |
+|[Microsoft yönetilen denetim 1701-bilgi sistemi Izleme \| Host-Based cihazları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff25bc08f-27cb-43b6-9a23-014d00700426) |Microsoft bu sistem ve bilgi bütünlüğü denetimini uygular |denetlenmesini |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1701.json) |
 
 ### <a name="information-system-monitoring--indicators-of-compromise"></a>Bilgi sistemi Izleme | Uzlaşmaya yönelik göstergeler
 

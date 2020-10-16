@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81606290"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Eşleme veri akışında vekil anahtar dönüşümü 
@@ -41,7 +41,7 @@ Anahtar değerini önceki maksimum ile temel almak için, kaynak verilerinizin b
 
 #### <a name="database-sources"></a>Veritabanı kaynakları
 
-Kaynağınızdan MAX () ' i seçmek için bir SQL sorgu seçeneği kullanın. Örneğin,`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+Kaynağınızdan MAX () ' i seçmek için bir SQL sorgu seçeneği kullanın. Örneğin, `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
 ![Vekil anahtar sorgusu](media/data-flow/sk002.png "Vekil anahtar dönüştürme sorgusu")
 
@@ -57,7 +57,7 @@ Her iki durumda da, gelen yeni verilerinizi önceki maksimum değeri içeren kay
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 
 ```
 <incomingStream> 

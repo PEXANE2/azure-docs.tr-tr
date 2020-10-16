@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327710"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Cihazdan buluta iletilerini yerleşik uç noktadan okuma
@@ -53,10 +53,10 @@ IoT Hub farkında olmayan Event Hubs SDK 'Ları veya ürün tümleştirmelerini 
 
 Portalda, Olay Hub 'ı ile uyumlu uç nokta alanı, şunun gibi görünen bir tam Event Hubs bağlantı dizesi içerir: **Endpoint = SB://abcd1234namespace.ServiceBus.Windows.net/; SharedAccessKeyName = ıothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = ıothub-eHub-abcd-1234-123456**. Kullanmakta olduğunuz SDK başka değerler gerektiriyorsa, bunlar şöyle olur:
 
-| Ad | Değer |
+| Name | Değer |
 | ---- | ----- |
 | Uç Noktası | sb://abcd1234namespace.servicebus.windows.net/ |
-| Ana Bilgisayar Adı | abcd1234namespace.servicebus.windows.net |
+| Konak adı | abcd1234namespace.servicebus.windows.net |
 | Ad Alanı | abcd1234namespace |
 
 Daha sonra, yukarıdaki ekran görüntüsünde gösterildiği gibi açılan listeden herhangi bir paylaşılan erişim ilkesini seçebilirsiniz. Yalnızca belirtilen olay hub 'ına bağlanmak için **Serviceconnect** izinlerine sahip olan ilkeleri gösterir.

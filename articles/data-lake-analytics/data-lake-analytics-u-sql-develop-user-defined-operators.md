@@ -8,10 +8,10 @@ ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: 71cb6e026c81b00e475ae3f4e7fc4958a8de82a3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131812"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL Kullanıcı tanımlı işleçler (UDOs) geliştirme
@@ -22,7 +22,7 @@ Bu makalede, bir U-SQL işinde verileri işlemek için Kullanıcı tanımlı iş
 ### <a name="to-create-and-submit-a-u-sql-job"></a>Bir U-SQL işi oluşturmak ve göndermek için
 
 1. Visual Studio 'da **yeni > project > U-SQL projesi > dosya**seçin.
-2. **Tamam** düğmesine tıklayın. Visual Studio, Script.usql dosyasıyla bir çözüm oluşturur.
+2. **Tamam**'a tıklayın. Visual Studio, Script.usql dosyasıyla bir çözüm oluşturur.
 3. **Çözüm Gezgini**, Script. usql öğesini genişletin ve ardından **Script.usql.cs**öğesine çift tıklayın.
 4. Aşağıdaki kodu dosyaya yapıştırın:
 

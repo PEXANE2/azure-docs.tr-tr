@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113080"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Yapılandırma sunucusu sorunlarını giderme
@@ -28,8 +28,8 @@ Mobility aracısını yüklediğinizde kaynak makine, yapılandırma sunucusuna 
    1. İstenen konak KIMLIĞININ, kaynak makinenin ana bilgisayar KIMLIĞIYLE aynı olduğunu doğrulayın.
    2. Kaynak makinenin fiziksel NIC 'ye atanmış en az bir IP adresi olduğunu doğrulayın. Yapılandırma sunucusunun başarılı olması için aracı kaydı için, kaynak makinenin fiziksel NIC 'ye atanmış en az bir geçerli IP v4 adresi olması gerekir.
    3. Kaynak makinenin tüm IP adreslerini almak için kaynak makinede aşağıdaki komutlardan birini çalıştırın:
-      - Windows için:`> ipconfig /all`
-      - Linux için:`# ifconfig -a`
+      - Windows için: `> ipconfig /all`
+      - Linux için: `# ifconfig -a`
 
 3. Dize geçerli bir **IP adresi bulunamadıysa** , string **=>null**dizesini arayın. Bu hata, kaynak makine yapılandırma sunucusuna kaydolmak için boş bir konak kullanıyorsa oluşur. Dize bulunursa:
     - Sorunları çözdükten sonra, kaydı el ile yeniden denemek için [kaynak makineyi yapılandırma sunucusuna kaydetme](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) bölümündeki yönergeleri izleyin.
@@ -234,7 +234,7 @@ Bu hata, veritabanında birden çok yapılandırma sunucusu (CS) örnek UUID gir
 
 Bu sorunu çözmek için:
 
-1. Eski/eski CS VM 'leri vCenter 'dan kaldırın. Daha fazla bilgi için bkz. [sunucuları kaldırma ve korumayı devre dışı bırakma](site-recovery-manage-registration-and-protection.md).
+1. Eski/eski CS VM 'leri vCenter 'dan kaldırın. Daha fazla bilgi için bkz.  [sunucuları kaldırma ve korumayı devre dışı bırakma](site-recovery-manage-registration-and-protection.md).
 2. Yapılandırma sunucusu VM 'de oturum açın ve MySQL svsdb1 veritabanına bağlanın. 
 3. Aşağıdaki sorguyu yürütün:
 

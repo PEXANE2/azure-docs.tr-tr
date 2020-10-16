@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 77ab19296d1e310e48cdf3609c9f109dc42f6ec1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408317"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874025"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Hızlı başlangıç: SignalR hizmetini kullanarak sohbet odası oluşturma
 
@@ -27,7 +27,7 @@ Bu öğreticinin kodu [AzureSignalR-samples GitHub deposundan](https://github.co
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
 * [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) GitHub deposunu indirin veya kopyalayın. 
@@ -112,11 +112,11 @@ Bu bölümde, projenize [gizli yönetici aracını](https://docs.microsoft.com/a
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddSignalR();
+        services.AddAzureSignalR();
     }
     ```
 
-    Parametresi öğesine geçirilmeyen `AddSignalR()` Bu kod, SignalR hizmeti kaynak bağlantı dizesinin varsayılan yapılandırma anahtarını kullanır. Varsayılan yapılandırma anahtarı *Azure: SignalR: ConnectionString*.
+    Parametresi öğesine geçirilmeyen `AddAzureSignalR()` Bu kod, SignalR hizmeti kaynak bağlantı dizesinin varsayılan yapılandırma anahtarını kullanır. Varsayılan yapılandırma anahtarı *Azure: SignalR: ConnectionString*.
 
 5. *Startup.cs*' de, `Configure` yöntemi aşağıdaki kodla değiştirerek yöntemini güncelleştirin.
 

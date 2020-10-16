@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435380"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952004"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri
 
@@ -42,7 +42,7 @@ Bu erişim denetimlerine ilişkin üst düzey bir açıklama ve ne yapacakların
 
 ## <a name="allow-azure-services"></a>Azure hizmetlerine izin ver
 
-[Azure Portal](single-database-create-quickstart.md)yeni BIR mantıksal SQL Server oluşturulması sırasında, bu ayar işaretsiz bırakılır.
+Yeni bir mantıksal SQL Server oluşturma sırasında [Azure Portal](single-database-create-quickstart.md)varsayılan olarak, bu ayar **kapalı**olarak ayarlanır. Bu ayar, genel hizmet uç noktası kullanılarak bağlantıya izin verildiğinde görüntülenir.
 
 Bu ayarı, mantıksal SQL Server aşağıdaki gibi oluşturulduktan sonra güvenlik duvarı bölmesi aracılığıyla da değiştirebilirsiniz.
   
@@ -80,9 +80,9 @@ PS C:\> $sql.Properties.AddressPrefixes
 ```
 
 > [!TIP]
-> Get-AzNetworkServiceTag, location parametresini belirtirken SQL Service etiketinin genel aralığını döndürür. Eşitleme grubunuz tarafından kullanılan Merkez veritabanını barındıran bölgeye filtre uyguladığınızdan emin olun
+> Get-AzNetworkServiceTag, konum parametresini belirtirken SQL Service etiketinin genel aralığını döndürür. Eşitleme grubunuz tarafından kullanılan Merkez veritabanını barındıran bölgeye filtre uyguladığınızdan emin olun
 
-PowerShell betiğinin çıktısının sınıfsız etki alanları arası yönlendirme (CıDR) gösterimde olduğunu unutmayın. Bunun gibi [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmesi gerekir:
+PowerShell betiğinin çıktısının sınıfsız Inter-Domain yönlendirme (CıDR) gösteriminde olduğunu unutmayın. Bunun gibi [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmesi gerekir:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26

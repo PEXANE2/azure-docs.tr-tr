@@ -1,23 +1,18 @@
 ---
 title: HPC uygulamalarını ölçeklendirme-Azure sanal makineleri | Microsoft Docs
 description: Azure VM 'lerinde HPC uygulamalarını ölçeklendirmeyi öğrenin.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: cynthn
+ms.openlocfilehash: 2c20fcf2624c1f620b68b46e56e0602f15041348
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020125"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993836"
 ---
 # <a name="scaling-hpc-applications"></a>HPC uygulamalarını ölçeklendirme
 
@@ -33,7 +28,7 @@ AMD Iyileştirmeli C/C++ derleyicisi (AOCC) derleyicisi sistemi, genel iyileşti
 
 ### <a name="clang"></a>Clang
 
-Clang, bir C, C++ ve amaç-C derleyicisi, ön işleme, ayrıştırma, iyileştirme, kod oluşturma, derleme ve bağlamayı işleme. Clang, `-march=znver1` AMD 'Nin Zen tabanlı x86 mimarisi için en iyi kod oluşturmayı ve ayarlamayı etkinleştirme bayrağını destekler.
+Clang, bir C, C++ ve amaç-C derleyicisi, ön işleme, ayrıştırma, iyileştirme, kod oluşturma, derleme ve bağlamayı işleme. Clang,  `-march=znver1` AMD 'Nin Zen tabanlı x86 mimarisi için en iyi kod oluşturmayı ve ayarlamayı etkinleştirme bayrağını destekler.
 
 ### <a name="flang"></a>FLANG
 

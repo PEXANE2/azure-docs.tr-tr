@@ -1,6 +1,6 @@
 ---
-title: Bellek içi OLTP SQL TXN perf 'yi geliştirir
-description: Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde var olan bir veritabanında işlem performansını artırmak için bellek Içi OLTP 'yi benimseyin.
+title: In-Memory OLTP SQL TXN perf 'yi geliştirir
+description: Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde var olan bir veritabanında işlemsel performansı artırmak için In-Memory OLTP benimseyin.
 services: sql-database
 ms.service: sql-database
 ms.custom: sqldbrb=2
@@ -11,13 +11,13 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619755"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde uygulama performansınızı geliştirmek için bellek Içi OLTP kullanın
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde uygulama performansınızı geliştirmek için In-Memory OLTP kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 [Bellek ıçı OLTP](in-memory-oltp-overview.md) , işlem işleme, veri alımı ve geçici veri senaryolarında, fiyatlandırma katmanını arttırmadan [Premium ve iş açısından kritik katmanı](database/service-tiers-vcore.md) veritabanlarında performansı geliştirmek için kullanılabilir.
@@ -25,11 +25,11 @@ ms.locfileid: "91619755"
 > [!NOTE]
 > [Azure SQL veritabanı Ile DTU 'yu %70 oranında düşürürken, çekirdeğin anahtar veritabanı iş yükünü nasıl çift katına](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database) kullandığını öğrenin
 
-Mevcut veritabanınızda bellek Içi OLTP 'yi benimsemek için bu adımları izleyin.
+Mevcut veritabanınızda In-Memory OLTP benimsemek için aşağıdaki adımları izleyin.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1. Adım: Premium ve İş Açısından Kritik katmanı veritabanı kullandığınızdan emin olun
 
-Bellek içi OLTP yalnızca Premium ve İş Açısından Kritik katmanı veritabanlarında desteklenir. Döndürülen sonuç 1 ise (0 değil) bellek içi desteklenir:
+In-Memory OLTP yalnızca Premium ve İş Açısından Kritik katmanı veritabanlarında desteklenir. Döndürülen sonuç 1 (0 değil) ise In-Memory desteklenir:
 
 ```sql
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -37,16 +37,16 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 *XTP* , *aşırı işlem işleme* için temsil eder
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. Adım: bellek Içi OLTP 'a geçirilecek nesneleri tanımla
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. Adım: In-Memory OLTP 'a geçirilecek nesneleri tanımla
 
-SSMS, etkin iş yüküne sahip bir veritabanında çalıştırabileceğiniz bir **Işlem performansı analizine genel bakış** raporu içerir. Rapor, bellek Içi OLTP 'a geçiş için aday olan tabloları ve saklı yordamları tanımlar.
+SSMS, etkin iş yüküne sahip bir veritabanında çalıştırabileceğiniz bir **Işlem performansı analizine genel bakış** raporu içerir. Rapor, In-Memory OLTP 'e geçiş için aday olan tabloları ve saklı yordamları tanımlar.
 
 SSMS 'de, raporu oluşturmak için:
 
 * **Nesne Gezgini**, veritabanı düğümünüz ' a sağ tıklayın.
 * **Raporlar**  >  **Standart raporlar**  >  **işlem performansı analizine genel bakış ' a**tıklayın.
 
-Daha fazla bilgi için, bkz. [bir tablo veya saklı yordamın bellek ıçı OLTP 'ye mi yerleştirileceğini belirleme](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
+Daha fazla bilgi için bkz. [In-Memory OLTP 'a bir tablo veya saklı yordam arasında bağlantı olup olmadığını belirleme](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
 
 ## <a name="step-3-create-a-comparable-test-database"></a>3. Adım: karşılaştırılabilir bir test veritabanı oluşturma
 
@@ -83,8 +83,8 @@ Bu geçiş seçeneğini kullanmak için:
 3. Sihirbazda, bellek için iyileştirilmiş tablolarda desteklenmeyen desteklenmeyen özelliklere sahip olup olmadığını görmek için **geçiş doğrulaması** (veya **sonraki** düğme) seçeneğine tıklayın. Daha fazla bilgi için bkz.
 
    * [Bellek Iyileştirme Danışmanı](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor)'nda *bellek iyileştirme denetim listesi* .
-   * [Transact-SQL yapıları bellek ıçı OLTP tarafından desteklenmiyor](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).
-   * [Bellek ıçı OLTP 'A geçme](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server).
+   * [Transact-SQL yapıları In-Memory OLTP tarafından desteklenmiyor](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).
+   * [In-Memory OLTP 'A geçiriliyor](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server).
 4. Tabloda desteklenmeyen özellikler yoksa, danışman gerçek şemayı ve veri geçişini sizin için gerçekleştirebilir.
 
 ### <a name="manual-t-sql"></a>El ile T-SQL
@@ -109,7 +109,7 @@ INSERT INTO <new_memory_optimized_table>
 
 ## <a name="step-5-optional-migrate-stored-procedures"></a>5. adım (isteğe bağlı): saklı yordamları geçirme
 
-Bellek Içi özelliği, gelişmiş performans için bir saklı yordamı da değiştirebilir.
+In-Memory özelliği, gelişmiş performans için bir saklı yordamı da değiştirebilir.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Yerel koda derlenmiş saklı yordamlar ile ilgili konular
 
@@ -157,7 +157,7 @@ Geçiş adımları şunlardır:
 
 ## <a name="step-6-run-your-workload-in-test"></a>6. Adım: test sırasında iş yükünüzü çalıştırma
 
-Test veritabanınızda, üretim veritabanınızda çalışan iş yüküne benzer bir iş yükü çalıştırın. Bu, tablolar ve saklı yordamlar için bellek Içi özelliği kullanımı ile elde edilen performans kazancını açığa çıkarmalıdır.
+Test veritabanınızda, üretim veritabanınızda çalışan iş yüküne benzer bir iş yükü çalıştırın. Bu, tablolar ve saklı yordamlar için In-Memory özelliğini kullanmanız ile elde edilen performans kazancını açığa çıkarmalıdır.
 
 İş yükünün ana öznitelikleri şunlardır:
 
@@ -170,9 +170,9 @@ Ağ gecikmesini en aza indirmek için, testinizi, veritabanının bulunduğu ayn
 
 ## <a name="step-7-post-implementation-monitoring"></a>7. Adım: uygulama sonrası izleme
 
-Üretimde bellek Içi uygulamalarınızın performans etkilerini izlemeyi düşünün:
+Üretimde In-Memory uygulamalarınızın performans efektlerini izlemeyi düşünün:
 
-* [Bellek içi depolamayı izleyin](in-memory-oltp-monitor-space.md).
+* [In-Memory depolamayı izleyin](in-memory-oltp-monitor-space.md).
 * [Dinamik yönetim görünümlerini kullanarak izleme](database/monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>İlgili bağlantılar

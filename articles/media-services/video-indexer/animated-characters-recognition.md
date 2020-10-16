@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047484"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018891"
 ---
 # <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (önizleme)
 
@@ -55,7 +55,7 @@ Bu bölümde, animasyonlu karakter algılama modelini kullanmaya başlamak için
 
 ### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Özel Görüntü İşleme hesabınızı bağlama (yalnızca ücretli hesaplar)
 
-Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşleme hesabı bağlamanız gerekir. Zaten bir Özel Görüntü İşleme hesabınız yoksa lütfen bir tane oluşturun. Daha fazla bilgi için bkz. [özel görüntü işleme](../../cognitive-services/custom-vision-service/home.md).
+Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşleme hesabı bağlamanız gerekir. Zaten bir Özel Görüntü İşleme hesabınız yoksa lütfen bir tane oluşturun. Daha fazla bilgi için bkz. [özel görüntü işleme](../../cognitive-services/custom-vision-service/overview.md).
 
 > [!NOTE]
 > Her iki hesabın de aynı bölgede olması gerekir. Özel Görüntü İşleme tümleştirme Şu anda Japonya bölgesinde desteklenmiyor.
@@ -160,7 +160,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 1. Özel Görüntü İşleme bir hesabı bağlayın.
 
     Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşleme hesabı bağlamanız gerekir. <br/>
-    Zaten bir Özel Görüntü İşleme hesabınız yoksa lütfen bir tane oluşturun. Daha fazla bilgi için bkz. [özel görüntü işleme](../../cognitive-services/custom-vision-service/home.md).
+    Zaten bir Özel Görüntü İşleme hesabınız yoksa lütfen bir tane oluşturun. Daha fazla bilgi için bkz. [özel görüntü işleme](../../cognitive-services/custom-vision-service/overview.md).
 
     [API kullanarak özel görüntü işleme hesabınızı bağlayın](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
 1. Bir animasyonlu karakter modeli oluşturun.
@@ -208,7 +208,7 @@ Oluşturulan JSON dosyasındaki animasyonlu karakterleri görüntüleyin.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Şu anda, "animasyon kimliği" özelliği Doğu Asya bölgesinde desteklenmez.
+* Şu anda, "animasyon kimliği" özelliği East-Asia bölgede desteklenmez.
 * Videonun kalitesi zayıflarsa videoda küçük veya uzak görünen karakterler düzgün şekilde tanımlanmayabilir.
 * Öneri, her bir animasyon karakter kümesi için (örneğin, bir animasyon serisi) bir model kullanmaktır.
 

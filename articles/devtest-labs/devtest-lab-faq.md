@@ -4,10 +4,10 @@ description: Bu makalede Azure DevTest Labs hakkında sık sorulan soruların (S
 ms.topic: article
 ms.date: 07/17/2020
 ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289363"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
@@ -29,7 +29,7 @@ DevTest Labs 'de yeni özellikler hakkında bilgi sahibi olmak için DevTest [La
 Artık sonraki sürümlerde Twitter işleyicimizi kullanarak kesinti güncellemeleri göndereceğiz. Kesintiler ve bilinen hatalar hakkında en son güncelleştirmeleri almak için bizi Twitter 'da izleyin.
 
 ### <a name="twitter"></a>Twitter
-Twitter tanıtıcımız:[@azlabservices](https://twitter.com/azlabservices)
+Twitter tanıtıcımız: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Genel
 ### <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
@@ -68,7 +68,7 @@ DevTest Labs ücretsiz bir hizmettir. Laboratuvar oluşturma ve DevTest Labs 'de
 ## <a name="security"></a>Güvenlik
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>DevTest Labs 'deki farklı güvenlik düzeyleri nelerdir?
-Güvenlik erişimi rol tabanlı Access Control (RBAC) tarafından belirlenir. Erişimin nasıl çalıştığını öğrenmek için, RBAC tarafından tanımlanan bir izin, rol ve kapsam arasındaki farkları öğrenmenize yardımcı olur.
+Güvenlik erişimi Role-Based Access Control (RBAC) tarafından belirlenir. Erişimin nasıl çalıştığını öğrenmek için, RBAC tarafından tanımlanan bir izin, rol ve kapsam arasındaki farkları öğrenmenize yardımcı olur.
 
 - **İzin**: izin, belirli bir eyleme tanımlı bir erişimdir. Örneğin, bir izin tüm sanal makinelere okunabilir.
 - **Rol**: rol, gruplandırılabilen ve bir kullanıcıya atanabilecek bir izinler kümesidir. Örneğin, abonelik sahibi rolüne sahip bir kullanıcının abonelik içindeki tüm kaynaklara erişimi vardır.
@@ -277,7 +277,7 @@ Daha ayrıntılı bir açıklama için bkz. DevTest Labs 'de [özel resimleri ve
 
 Laboratuvarınız ile ilişkili hedef depolama hesabını bulmak için:
 
-1.  [Azure portalında](https://portal.azure.com) oturum açın.
+1.  [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2.  Sol taraftaki menüden **kaynak grupları**' nı seçin.
 3.  Laboratuvarınız ile ilişkili kaynak grubunu bulun ve seçin.
 4.  **Genel bakış**' ın altında, depolama hesaplarından birini seçin.

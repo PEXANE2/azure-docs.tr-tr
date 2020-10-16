@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevTest Labs ' de laboratuvarınızı nasıl öl
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533963"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs 'de kotaları ve sınırları ölçeklendirin
@@ -25,7 +25,7 @@ Kotasına ulaşana kadar her bir Azure kaynağını kullanabilirsiniz. Her abone
 ## <a name="view-your-usage-and-quotas"></a>Kullanımınızı ve kotaları görüntüleme
 Bu adımlarda, belirli Azure kaynakları için aboneliğinizdeki geçerli kotaları görüntüleme ve hangi kotanın kullanıldığı her kotayı görme işlemleri gösterilmektedir.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 1. **Diğer hizmetler**' i seçin ve ardından listeden **faturalandırma** ' i seçin.
 1. Faturalama dikey penceresinde bir abonelik seçin.
 4. **Kullanım + kotalar**' ı seçin.

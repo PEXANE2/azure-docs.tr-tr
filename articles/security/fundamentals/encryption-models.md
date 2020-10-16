@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b92c84234432320aa08017a15fbf8a5a4630eb3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645743"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019741"
 ---
 # <a name="data-encryption-models"></a>Veri şifreleme modelleri
 
@@ -27,7 +27,7 @@ ms.locfileid: "89645743"
 
 Sunucu tarafı şifreleme için üç senaryo vardır:
 
-- Hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
+- Service-Managed anahtarları kullanarak sunucu tarafı şifreleme
   - Azure kaynak sağlayıcıları şifreleme ve şifre çözme işlemlerini gerçekleştirir
   - Microsoft, anahtarları yönetir
   - Tam bulut işlevselliği
@@ -143,13 +143,13 @@ Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar kullanı
 ## <a name="supporting-services"></a>Destekleyici hizmetler
 Her şifreleme modelini destekleyen Azure hizmetleri:
 
-| Ürün, özellik veya hizmet | Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı   | Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı | İstemci-yönetilen anahtarı kullanarak istemci tarafı  |
+| Ürün, özellik veya hizmet | Service-Managed anahtarı kullanarak Server-Side   | Customer-Managed anahtarı kullanarak Server-Side | Client-Managed anahtarı kullanarak Client-Side  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **Yapay Zeka ve Makine Öğrenmesi**      |                    |                    |                    |
 | Azure Bilişsel Arama           | Yes                | Yes                | -                  |
 | Azure Bilişsel Hizmetler         | Yes                | Yes                | -                  |
 | Azure Machine Learning           | Yes                | Yes                | -                  |
-| Azure Machine Learning Studio    | Yes                | Önizleme, RSA 2048 bit | -               |
+| Azure Machine Learning Studio (klasik) | Yes         | Önizleme, RSA 2048 bit | -               |
 | Content Moderator                | Yes                | Yes                | -                  |
 | Yüz Tanıma                             | Yes                | Yes                | -                  |
 | Language Understanding           | Yes                | Yes                | -                  |
@@ -159,7 +159,7 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 | Translator Metin Çevirisi                  | Yes                | Yes                | -                  |
 | Power BI                         | Yes                | Evet, RSA 4096 bit  | -                  |
 | **Analiz**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | Yok\*              | -                  |
+| Azure Stream Analytics           | Yes                | YOK\*              | -                  |
 | Event Hubs                       | Yes                | Yes                | -                  |
 | İşlevler                        | Yes                | Yes                | -                  |
 | Azure Analysis Services          | Evet                | -                  | -                  |
@@ -175,7 +175,7 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 | Container Instances              | Yes                | Yes                | -                  |
 | Container Registry               | Yes                | Yes                | -                  |
 | **İşlem**                      |                    |                    |                    |
-| Virtual Machines                 | Yes                | Yes                | -                  |
+| Sanal Makineler                 | Yes                | Yes                | -                  |
 | Sanal makine ölçek kümesi        | Yes                | Evet                | -                  |
 | SAP HANA                         | Evet                | Yes                | -                  |
 | App Service                      | Yes                | Yes\*\*            | -                  |
@@ -197,7 +197,7 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 | Tablo Depolama                    | Yes                | Yes                | Yes                |
 | Azure Cosmos DB                  | Evet                | Yes                | -                  |
 | Azure Databricks                 | Yes                | Yes                | -                  |
-| Azure Veritabanı Geçiş Hizmeti | Yes                | Yok\*              | -                  |
+| Azure Veritabanı Geçiş Hizmeti | Yes                | YOK\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Yes                | -                  | Yes                |
 | Azure Repos                      | Yes                | -                  | Yes                |
@@ -230,7 +230,7 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 | Dosya Eşitleme                        | Yes                | Yes                | -                  |
 | Kuyruk Depolama                    | Yes                | Yes                | Yes                |
 | Avere vFXT                       | Yes                | -                  | -                  |
-| Redis için Azure Önbelleği            | Yes                | Yok\*              | -                  |
+| Redis için Azure Cache            | Yes                | YOK\*              | -                  |
 | Azure NetApp Files               | Yes                | Yes                | -                  |
 | Arşiv Depolama                  | Yes                | Yes                | -                  |
 | StorSimple                       | Yes                | Yes                | Yes                |
@@ -240,7 +240,7 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 
 \* Bu hizmet, verileri kalıcı olarak tutmaz. Varsa geçici önbellekler bir Microsoft anahtarıyla şifrelenir.
 
-\*\* Bu hizmet, verileri kendi Key Vault, depolama hesabınızda veya müşteri tarafından yönetilen anahtarla sunucu tarafı şifrelemeyi zaten destekleyen diğer veri kalıcı hizmetinde depolamayı destekler.
+\*\* Bu hizmet, Customer-Managed anahtarla Server-Side şifrelemeyi zaten destekleyen, kendi Key Vault, depolama hesabınızda veya diğer veri kalıcı hizmette veri depolamayı destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

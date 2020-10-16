@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187345"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonu 'nda kaynak denetimi tümleştirmesini kullanma-eski
@@ -115,7 +115,7 @@ Depo eşitleme sayfasındaki Eşitle düğmesi, deponuzdaki runbook klasörü yo
 
     ![Tüm runbook 'ların eşitleneceğini onaylayan ileti ile Eşitle düğmesi](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
 
-2. Eşitleme, GitHub 'a bağlanan ve değişiklikleri deponuzdan Azure Otomasyonu 'na çeken **Sync-MicrosoftAzureAutomationAccountFromGitHubV1** runbook 'unu başlatır. Bu eylem için depo eşitleme sayfasında yeni bir iş görmeniz gerekir. Eşitleme işi hakkındaki ayrıntıları görüntülemek için, iş ayrıntıları sayfasını açmak üzere tıklayın.  
+2. Eşitleme, GitHub 'a bağlanan ve değişiklikleri deponuzdan Azure Otomasyonu 'na çeken  **Sync-MicrosoftAzureAutomationAccountFromGitHubV1** runbook 'unu başlatır. Bu eylem için depo eşitleme sayfasında yeni bir iş görmeniz gerekir. Eşitleme işi hakkındaki ayrıntıları görüntülemek için, iş ayrıntıları sayfasını açmak üzere tıklayın.  
 
     ![GitHub deposunda eşitleme işinin Eşitleme sonuçlarını gösteren bir pencere](media/source-control-integration-legacy/automation-SyncRunbook.png)
 

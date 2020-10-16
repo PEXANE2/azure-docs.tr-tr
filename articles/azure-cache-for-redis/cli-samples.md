@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 04/14/2017
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87499611"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Azure CLı ile Redsıs için Azure önbelleğini yönetme
 
 Aşağıdaki tablo, Azure CLI’si kullanılarak oluşturulan bash komut dosyalarına yönelik bağlantılar içerir.
 
-| Önbellek oluşturma | Description |
+| Önbellek oluşturma | Açıklama |
 | ------------ | ----------- |
 | [Bir önbellek oluşturma](./scripts/create-cache.md) | Redsıs için bir kaynak grubu ve temel katman Azure önbelleği oluşturur. |
 | [Kümeleme ile Premium önbellek oluşturma](./scripts/create-premium-cache-cluster.md) | Kümelendirmeyi etkin bir kaynak grubu ve Premium katman önbelleği oluşturur.|

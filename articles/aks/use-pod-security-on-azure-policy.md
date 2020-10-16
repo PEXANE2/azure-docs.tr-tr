@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a1fafdf1db29917982bbf136de45237459712bcd
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368864"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073470"
 ---
-# <a name="secure-pods-with-azure-policy"></a>Azure ilkesi ile güvenli Pod
+# <a name="secure-pods-with-azure-policy"></a>Azure İlkesi ile pod güvenliğini sağlama
 
 AKS kümenizin güvenliğini artırmak için, hangi işlevlerin verildiğini ve şirket ilkesine göre herhangi bir şeyin çalıştığını kontrol edebilirsiniz. Bu erişim, [AKS Için Azure Ilke eklentisi][kubernetes-policy-reference]tarafından belirtilen yerleşik ilkeler aracılığıyla tanımlanmıştır. Pod 'un belirtiminin güvenlik yönleri üzerinde ek denetim sağlayarak, kök ayrıcalıklar gibi, kümenizde dağıtılan özelliklerin daha sıkı güvenlik uygunluğunu ve görünürlüğünü sağlar. Pod, ilkede belirtilen koşulları karşılamıyorsa, Azure Ilkesi Pod 'un bir ihlalin başlamasını veya bayrak olarak işaretini değiştirmesine izin verebilir. Bu makalede, AKS 'deki yığınların dağıtımını sınırlamak için Azure Ilkesi 'nin nasıl kullanılacağı gösterilmektedir.
 
@@ -336,7 +336,7 @@ Pod ağ trafiğini sınırlama hakkında daha fazla bilgi için bkz. [aks 'deki 
 [policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md
 [policy-limitations]: ../governance/policy/concepts/policy-for-kubernetes.md?#limitations
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
-[policy-samples]: policy-samples.md#microsoftcontainerservice
+[policy-samples]: ./policy-reference.md#microsoftcontainerservice
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

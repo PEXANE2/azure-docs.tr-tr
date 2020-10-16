@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319006"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Izleyici Application Insights aracı API 'SI başvurusu
@@ -26,7 +26,7 @@ Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powers
 > - İzleme altyapısı ek yük ekler ve varsayılan olarak kapalıdır.
 
 
-## <a name="enable-instrumentationengine"></a>Enable-ınstrumentationengine
+## <a name="enable-instrumentationengine"></a>Enable-InstrumentationEngine
 
 Bazı kayıt defteri anahtarlarını ayarlayarak izleme altyapısını sunar.
 Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
@@ -84,10 +84,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
 Bu örnekte:
-- `MachineFilter`joker karakterini kullanarak geçerli bilgisayarla eşleşir `'.*'` .
-- `AppFilter='WebAppExclude'`bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
-- `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
-- `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- `MachineFilter` joker karakterini kullanarak geçerli bilgisayarla eşleşir `'.*'` .
+- `AppFilter='WebAppExclude'` bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
+- `AppFilter='WebAppOne'` belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- `AppFilter='WebAppTwo'` belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
 - Son olarak, `AppFilter` `'.*'` önceki kurallarla eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
@@ -181,7 +181,7 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="disable-instrumentationengine"></a>Disable-ınstrumentationengine
+## <a name="disable-instrumentationengine"></a>Disable-InstrumentationEngine
 
 Bazı kayıt defteri anahtarlarını kaldırarak izleme altyapısını devre dışı bırakır.
 Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
@@ -253,7 +253,7 @@ Successfully disabled Application Insights Status Monitor
 ```
 
 
-## <a name="get-applicationinsightsmonitoringconfig"></a>Get-Applicationınsiısmonitoringconfig
+## <a name="get-applicationinsightsmonitoringconfig"></a>Get-ApplicationInsightsMonitoringConfig
 
 Yapılandırma dosyasını alır ve değerleri konsola yazdırır.
 
@@ -280,7 +280,7 @@ Filters:
 2)InstrumentationKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault AppFilter: .* MachineFilter: .*
 ```
 
-## <a name="get-applicationinsightsmonitoringstatus"></a>Get-Applicationınsiısmonitoringstatus
+## <a name="get-applicationinsightsmonitoringstatus"></a>Get-ApplicationInsightsMonitoringStatus
 
 Bu cmdlet Durum İzleyicisi hakkında sorun giderme bilgileri sağlar.
 Bu cmdlet 'i kullanarak izleme durumunu, PowerShell modülünün sürümünü araştırın ve çalışan işlemi inceleyin.
@@ -456,7 +456,7 @@ Bu işlem herhangi bir nedenle başarısız olursa, bu komutları el ile çalı�
 **Isteğe bağlı**. Yalnızca ınspectprocess ile kullanılır. Ek araçlar indirilmeden önce görüntülenen kullanıcı isteğini atlamak için bu anahtarı kullanın.
 
 
-## <a name="set-applicationinsightsmonitoringconfig"></a>Set-Applicationınsiısmonitoringconfig
+## <a name="set-applicationinsightsmonitoringconfig"></a>Set-ApplicationInsightsMonitoringConfig
 
 Tam yeniden yükleme yapmadan yapılandırma dosyasını ayarlar.
 Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
@@ -476,10 +476,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
 Bu örnekte:
-- `MachineFilter`joker karakterini kullanarak geçerli bilgisayarla eşleşir `'.*'` .
-- `AppFilter='WebAppExclude'`bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
-- `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
-- `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- `MachineFilter` joker karakterini kullanarak geçerli bilgisayarla eşleşir `'.*'` .
+- `AppFilter='WebAppExclude'` bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
+- `AppFilter='WebAppOne'` belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- `AppFilter='WebAppTwo'` belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
 - Son olarak, `AppFilter` `'.*'` önceki kurallarla eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
@@ -550,7 +550,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="start-applicationinsightsmonitoringtrace"></a>Start-Applicationınsiizsmonitoringtrace
+## <a name="start-applicationinsightsmonitoringtrace"></a>Start-ApplicationInsightsMonitoringTrace
 
 Kodsuz kullanacaksınız Attach çalışma zamanından [ETW olaylarını](/windows/desktop/etw/event-tracing-portal) toplar. Bu cmdlet [PerfView](https://github.com/microsoft/perfview)çalıştırmaya alternatiftir.
 

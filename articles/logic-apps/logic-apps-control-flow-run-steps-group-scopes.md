@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575019"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps kapsamları kullanarak Grup durumuna göre eylemleri çalıştırma
@@ -23,7 +23,7 @@ Bir kapsamın durumunu denetlemek için, bir Logic Apps 'in çalışma durumunu 
 
 ![Diyagram mantıksal uygulama kapsamı akışını "scope failed" ve "scope Succeeded" örnekleri ile gösterir.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki örneği takip etmek için şu öğelere ihtiyacınız vardır:
 
@@ -82,7 +82,7 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
       | **Mesafe birimi** | <*tercih edin*> | Rotayı hesaplamak için mesafe birimini girin. Bu örnek şu değeri kullanır: "mil" | 
       | **Seyahat modu** | Sürüş | Yönlendirmenize ait seyahat modunu girin. Bu örnekte bu değer "Itici" kullanılmaktadır | 
       | **Toplu Ulaşım Tarih-Saati** | Yok | Yalnızca aktarım modu için geçerlidir. | 
-      | **Transit Tarih-tür türü** | Yok | Yalnızca aktarım modu için geçerlidir. | 
+      | **Aktarım Date-Type türü** | Yok | Yalnızca aktarım modu için geçerlidir. | 
       ||||  
 
 1. Geçerli seyahat zamanının trafik ile belirtilen bir süreyi aşıp aşmadığını denetleyen [bir koşul ekleyin](../logic-apps/logic-apps-control-flow-conditional-statement.md) . 

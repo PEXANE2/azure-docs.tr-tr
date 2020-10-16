@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
 ms.openlocfilehash: c7852bd1b6d93357c1c9127686d1edbb5c702a3c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88701648"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Kısıtlanmış vCPU özellikli VM boyutları
@@ -24,7 +24,7 @@ VCPU sayısı, özgün VM boyutunun bir yarısı veya bir çeyrekte kısıtlanab
 SQL Server veya Oracle için ücretlendirilen lisanslama ücretleri yeni vCPU sayısı ile sınırlıdır ve diğer ürünlerin yeni vCPU sayısı temelinde ücretlendirilmelidir. Bu, VM özelliklerinin etkin (Faturalanabilir) vCPU 'Lara oranını artırdığı için %50 ile %75 arasında bir sonuç verir. Bu yeni VM boyutları, müşteri iş yüklerinin, yazılım lisanslama maliyetini iyileştirirken aynı bellek, depolama ve g/ç bant genişliğini kullanmasına izin verir. Şu anda, işletim maliyeti, işletim sistemi lisansı içeren işlem maliyeti, özgün boyutuyla aynı kalır. Daha fazla bilgi için bkz. [Azure VM boyutları daha fazla maliyetli veritabanı iş yükleri için](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Ad                | Sanal işlemci | Özellikler           |
+| Adı                | Sanal işlemci | Özellikler           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | M8ms ile aynı    |
 | Standard_M8-4ms     | 4    | M8ms ile aynı    |

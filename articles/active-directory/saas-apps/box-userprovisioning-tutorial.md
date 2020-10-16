@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312915"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için yapılandırma kutusu
@@ -24,7 +24,7 @@ Bu öğreticinin amacı, Box ve Azure AD 'de gerçekleştirmeniz gereken adımla
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesi 'ni kutusuyla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -79,7 +79,7 @@ Otomatik sağlama etkinse, atanan kullanıcılar ve/veya grupları otomatik olar
  * Grup nesneleri sağlanacak şekilde yapılandırıldıysa, tüm atanan Grup nesneleri, Box ve bu grupların üyesi olan tüm kullanıcılar tarafından sağlanır. Grup ve Kullanıcı üyelikleri, kutusuna yazıldıktan sonra korunur.
 
 > [!TIP] 
-> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek, Box için SAML tabanlı çoklu oturum açma 'yı da tercih edebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Ayrıca, [Azure Portal](https://portal.azure.com)sağlanan YÖNERGELERI izleyerek SAML tabanlı tek Sign-On for kutusunu etkin seçebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="to-configure-automatic-user-account-provisioning"></a>Otomatik Kullanıcı hesabı sağlamayı yapılandırmak için:
 

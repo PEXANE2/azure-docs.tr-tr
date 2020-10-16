@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987328"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda grafik runbook 'ları yazma
@@ -95,7 +95,7 @@ Bir etkinlik için yeniden denemeyi etkinleştirdiğinizde bir gecikme ve koşul
 
 Yeniden deneme koşulu, etkinlik her çalıştıktan sonra değerlendirilen bir PowerShell deyimidir. İfade true olarak çözümlenirse etkinlik yeniden çalışır. İfade false olarak çözümlenirse etkinlik yeniden çalıştırılmaz ve Runbook bir sonraki etkinliğe gider.
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Bu koşul doğru alana ve yeniden deneme koşulunda kullanılabilecek PowerShell ifadelerine örneklere kadar yeniden denemeyi gösteren ekran görüntüsü.":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Yeniden deneme özelliği etkinleştirme ayarlarının ekran görüntüsü.":::
 
 Yeniden deneme koşulu, `RetryData` etkinlik yeniden denemeleri hakkında bilgilere erişim sağlayan adlı bir değişken kullanabilir. Bu değişken aşağıdaki tablodaki özelliklere sahiptir:
 

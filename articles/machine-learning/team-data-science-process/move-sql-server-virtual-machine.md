@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012187"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Bir Azure sanal makinesinde SQL Server’a veri taşıma
@@ -28,8 +28,8 @@ Aşağıdaki tabloda, verileri bir Azure sanal makinesinde SQL Server taşıma s
 
 | <b>KAYNAKTAKI</b> | <b>Hedef: Azure VM 'de SQL Server</b> |
 | --- | --- |
-| <b>Düz dosya</b> |1. <a href="#insert-tables-bcp">komut satırı toplu kopyalama yardımcı programı (bcp)</a><br> 2. <a href="#insert-tables-bulkquery">SQL sorgusunu toplu ekleme</a><br> 3. <a href="#sql-builtin-utilities">SQL Server Içindeki grafik yerleşik yardımcı programlar</a> |
-| <b>Şirket Içi SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">bir SQL Server veritabanını MICROSOFT Azure VM sihirbazına dağıtma</a><br> 2. <a href="#export-flat-file">düz bir dosyaya aktarın</a><br> 3. <a href="#sql-migration">SQL veritabanı geçiş Sihirbazı</a> <br> 4. <a href="#sql-backup">veritabanı yedekleme ve geri yükleme</a><br> |
+| <b>Düz dosya</b> |1. <a href="#insert-tables-bcp">komut satırı toplu kopyalama yardımcı programı (bcp) </a><br> 2. <a href="#insert-tables-bulkquery">SQL sorgusunu toplu ekleme </a><br> 3. <a href="#sql-builtin-utilities">SQL Server Içindeki grafik yerleşik yardımcı programlar</a> |
+| <b>Şirket Içi SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">bir SQL Server veritabanını MICROSOFT Azure VM sihirbazına dağıtma</a><br> 2. <a href="#export-flat-file">düz bir dosyaya aktarın </a><br> 3. <a href="#sql-migration">SQL veritabanı geçiş Sihirbazı </a> <br> 4. <a href="#sql-backup">veritabanı yedekleme ve geri yükleme </a><br> |
 
 Bu belgede SQL komutlarının SQL Server Management Studio veya Visual Studio Veritabanı Gezgini yürütüldüğü varsayılmaktadır.
 
@@ -46,7 +46,7 @@ Bu öğreticide şunları kabul edersiniz:
 * **Azure VM üzerinde SQL Server**sağlandı. Yönergeler için bkz. [Azure SQL Server sanal makinesini gelişmiş analizler için bir IPython Not defteri sunucusu olarak ayarlama](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * **Azure PowerShell** yerel olarak yüklendi ve yapılandırıldı. Yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/).
 
-## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>Verileri bir Azure VM 'deki SQL Server düz bir dosya kaynağından taşıma
+## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> Verileri bir Azure VM 'deki SQL Server düz bir dosya kaynağından taşıma
 Verileriniz düz bir dosya (satır/sütun biçiminde düzenlenmiş) ise, aşağıdaki yöntemlerle Azure 'da SQL Server VM taşıyabilirsiniz:
 
 1. [Komut satırı toplu kopyalama yardımcı programı (BCP)](#insert-tables-bcp)

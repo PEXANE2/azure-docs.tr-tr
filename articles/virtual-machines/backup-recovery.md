@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554883"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972365"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için yedekleme ve geri yükleme seçenekleri
 
@@ -32,7 +32,7 @@ Azure Site Recovery, bir bölgenin büyük doğal olağanüstü durum veya geni�
 
 Olağanüstü durum kurtarma detaylarını, üretim iş yüklerinizi veya devam eden Çoğaltmayı etkilemeden isteğe bağlı yük devretme işlemleri ile gerçekleştirebilirsiniz. Birden çok VM 'de çalışan tüm uygulamanın yük devretme ve yeniden çalışma işlemlerini düzenlemek için kurtarma planları oluşturun. Kurtarma planı özelliği, Azure Otomasyonu runbook 'larla tümleşiktir.
 
-[Sanal makinelerinizi çoğaltarak](https://aka.ms/a2a-getting-started)çalışmaya başlamanızı sağlayabilirsiniz. 
+[Sanal makinelerinizi çoğaltarak](../site-recovery/azure-to-azure-quickstart.md)çalışmaya başlamanızı sağlayabilirsiniz. 
 
 ## <a name="managed-snapshots"></a>Yönetilen anlık görüntüler 
 

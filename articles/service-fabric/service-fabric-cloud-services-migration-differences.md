@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836743"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091177"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Uygulamaları geçirmeden önce Cloud Services ve Service Fabric arasındaki farklar hakkında bilgi edinin.
 Microsoft Azure Service Fabric, yüksek düzeyde ölçeklenebilir, yüksek oranda güvenilir dağıtılmış uygulamalar için yeni nesil bulut uygulama platformudur. Dağıtılmış bulut uygulamalarının paketlenmesi, dağıtılması, yükseltilmesi ve yönetilmesi için birçok yeni özellik sunar. 
@@ -69,7 +69,7 @@ Doğrudan iletişim sayesinde, Katmanlar her katman tarafından kullanıma sunul
 
 Service Fabric, hizmetlerin uç nokta adreslerini çözümlemek için kullanılabilecek Adlandırma Hizmeti olarak adlandırılan bir hizmet bulma mekanizması sağlar. 
 
-![Doğrudan iletişim Service Fabric][6]
+![Service Fabric, hizmetlerin uç nokta adreslerini çözümlemek için kullanılabilecek Adlandırma Hizmeti olarak adlandırılan bir hizmet bulma mekanizmasını nasıl sağladığını gösteren diyagram.][6]
 
 ### <a name="queues"></a>Kuyruklar
 Cloud Services gibi durum bilgisi olmayan ortamlarda Katmanlar arasındaki ortak bir iletişim mekanizması, çalışma görevlerini bir katmandan diğerine aktarmak için bir dış depolama kuyruğu kullanmaktır. Yaygın bir senaryo, Azure kuyruğuna iş gönderen veya çalışan rolü örneklerinin işleri sıradan ve işleyebildiği Service Bus bir Web katmandır.
@@ -91,7 +91,7 @@ Aynı iletişim modeli Service Fabric kullanılabilir. Bu, mevcut bir Cloud Serv
 | Roleınstance. GetUpgradeDomain | FabricClient. QueryManager. GetNodeList | Düğüye filtre uygulayın ve yükseltme özelliğini kullanın |
 | Roleınstance. Getınstanceendpoints | FabricRuntime. GetActivationContext veya Naming (ResolveService) | Hem FabricRuntime. GetActivationContext hem de ' de Serviceınitializationparameters. CodePackageActivationContext aracılığıyla bulunan çoğaltmalar içinde sunulan CodePackageActivationContext. Öbek |
 | RoleEnvironment. GetRoles | FabricClient. QueryManager. GetNodeList | Türe göre aynı filtreleme sıralamasını yapmak istiyorsanız, FabricClient. ClusterManager. GetClusterManifest aracılığıyla küme bildiriminden düğüm türleri listesini alabilir ve buradan rol/düğüm türlerini alabilirsiniz. |
-| RoleEnvironment. Getısavailable | Connect-WindowsFabricCluster veya belirli bir düğüme işaret eden bir FabricRuntime oluşturun | * |
+| RoleEnvironment. Getısavailable | Belirli bir düğüme işaret eden bir FabricRuntime Connect-WindowsFabricCluster veya oluşturun | * |
 | RoleEnvironment. GetLocalResource | CodePackageActivationContext. log/Temp/Work | * |
 | RoleEnvironment. Getcurrentrotaınstance | CodePackageActivationContext. log/Temp/Work | * |
 | LocalResource. GetRootPath | CodePackageActivationContext. log/Temp/Work | * |

@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88864895"
 ---
-## <a name="authentication"></a>Kimlik Doğrulama
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Her istek bir yetkilendirme üst bilgisi gerektirir. Bu tabloda, her bir hizmet için hangi üstbilgilerin desteklendiği gösterilmektedir:
 
 | Desteklenen yetkilendirme üstbilgileri | Konuşmayı metne dönüştürme | Metin okuma |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | Yes | Hayır |
-| Yetkilendirme: taşıyıcı | Yes | Yes |
+| Ocp-Apim-Subscription-Key | Evet | Hayır |
+| Yetkilendirme: taşıyıcı | Evet | Evet |
 
-`Ocp-Apim-Subscription-Key`Üstbilgiyi kullanırken yalnızca abonelik anahtarınızı sağlamanız gerekir. Örnek:
+`Ocp-Apim-Subscription-Key`Üstbilgiyi kullanırken yalnızca abonelik anahtarınızı sağlamanız gerekir. Örneğin:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'

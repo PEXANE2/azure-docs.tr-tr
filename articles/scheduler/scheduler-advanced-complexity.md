@@ -10,10 +10,10 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78898595"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler 'da işler için gelişmiş zamanlamalar ve Yinelenmeler oluşturma
@@ -68,8 +68,8 @@ Bu tablo, işler için Yinelenmeler ve zamanlamalar ayarlarken kullanabileceğin
 |---------|----------|-------------|
 | **startTime** | Hayır | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin ilk olarak temel bir zamanlamaya göre ne zaman başlayacağını belirten bir tarih saat dizesi değeri. <p>Karmaşık zamanlamalar için iş **StartTime**değerinden önce başlamaz. | 
 | **yinelemeyi** | Hayır | İşin çalıştığı zaman için yineleme kuralları. **Yinelenme** nesnesi şu öğeleri destekler: **Sıklık**, **Interval**, **zamanlama**, **sayı**ve **bitişsaati**. <p>**Yineleme** öğesini kullanırsanız **Sıklık** öğesini de kullanmanız gerekir, diğer **yineleme** öğeleri isteğe bağlıdır. |
-| **lemiyor** | Evet, **yinelenme** kullandığınızda | Oluşum arasındaki zaman birimi ve bu değerleri destekler: "Minute", "Hour", "Day", "Week", "month" ve "Year" | 
-| **aralığında** | Hayır | **Sıklık**temelinde oluşum arasındaki zaman birimi sayısını belirleyen pozitif bir tamsayı. <p>Örneğin, **Aralık** 10, **Sıklık** ise "Week" ise, iş her 10 haftada bir yinelenir. <p>Her bir sıklık için en fazla Aralık sayısı aşağıda verilmiştir: <p>-18 ay <br>-78 hafta <br>-548 gün <br>-Saat ve dakika için Aralık 1 <= <*aralığı*> <= 1000 olur. | 
+| **frequency** | Evet, **yinelenme** kullandığınızda | Oluşum arasındaki zaman birimi ve bu değerleri destekler: "Minute", "Hour", "Day", "Week", "month" ve "Year" | 
+| **interval** | Hayır | **Sıklık**temelinde oluşum arasındaki zaman birimi sayısını belirleyen pozitif bir tamsayı. <p>Örneğin, **Aralık** 10, **Sıklık** ise "Week" ise, iş her 10 haftada bir yinelenir. <p>Her bir sıklık için en fazla Aralık sayısı aşağıda verilmiştir: <p>-18 ay <br>-78 hafta <br>-548 gün <br>-Saat ve dakika için Aralık 1 <= <*aralığı*> <= 1000 olur. | 
 | **çizelgesini** | Hayır | Belirtilen dakika işaretleri, saat işaretleri, haftanın günleri ve ayın günleri temelinde tekrardaki değişiklikleri tanımlar | 
 | **biriktirme** | Hayır | İşin bitmeden önce kaç kez çalışacağını belirten pozitif bir tamsayı. <p>Örneğin, günlük iş **sayısı** 7 olarak ayarlandığında ve başlangıç tarihi Pazartesi ise, iş Pazar günü çalışmayı sonlandırır. Başlangıç tarihi zaten geçmişse, ilk çalıştırma oluşturma zamanından hesaplanır. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. | 
 | **endTime** | Hayır | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin çalışmayı ne zaman durdurduğunu belirten bir tarih veya tarih saat dizesi değeri. Geçmişte olan **bitişsaati** için bir değer ayarlayabilirsiniz. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. |
@@ -165,7 +165,7 @@ Aşağıdaki tabloda schedule öğeleri ayrıntılı bir şekilde açıklanmış
 | **dakika** |İşin çalıştırıldığı saatin dakikası. |Tamsayılar dizisi. |
 | **saatlerinin** |İşin çalıştırıldığı günün saati. |Tamsayılar dizisi. |
 | **weekDays** |İşin çalıştırıldığı haftanın günleri. Yalnızca haftalık sıklık ile belirtilebilir. |Aşağıdaki değerlerden herhangi birinin dizisi (en fazla dizi boyutu 7 ' dir):<br />-"Pazartesi"<br />-"Salı"<br />-"Çarşamba"<br />-"Perşembe"<br />-"Cuma"<br />-"Cumartesi"<br />-"Pazar"<br /><br />Büyük/küçük harfe duyarlı değildir. |
-| **monthlyOccurrences** |İşin ayın hangi günlerinde çalışacağını belirler. Yalnızca aylık bir sıklık ile belirtilebilir. |**Monthlyoccurrobjects** dizisi:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **gün** , işin çalıştığı haftanın günü. Örneğin, *{Pazar}* ayın her Pazar günü olur. Gereklidir.<br /><br />**oluşum** , ay içinde günün oluşma sayısıdır. Örneğin, *{Pazar,-1}* ayın son Pazar günüdür. İsteğe bağlı. |
+| **monthlyOccurrences** |İşin ayın hangi günlerinde çalışacağını belirler. Yalnızca aylık bir sıklık ile belirtilebilir. |**Monthlyoccurrobjects** dizisi:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **gün** , işin çalıştığı haftanın günü. Örneğin, *{Pazar}* ayın her Pazar günü olur. Gereklidir.<br /><br />**oluşum** , ay içinde günün oluşma sayısıdır. Örneğin,  *{Pazar,-1}* ayın son Pazar günüdür. İsteğe bağlı. |
 | **monthDays** |İşin çalıştırıldığı ayın günü. Yalnızca aylık bir sıklık ile belirtilebilir. |Aşağıdaki değerlerden oluşan bir dizi:<br />- <= -1 ve >= -31 koşullarına uyan herhangi bir değer<br />- >= 1 ve <= 31 koşullarına uyan herhangi bir değer|
 
 ## <a name="examples-recurrence-schedules"></a>Örnekler: yinelenme zamanlamaları

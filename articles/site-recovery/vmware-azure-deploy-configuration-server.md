@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287745"
 ---
 # <a name="deploy-a-configuration-server"></a>Yapılandırma sunucusunu dağıtma
@@ -42,7 +42,7 @@ Yapılandırma sunucusunu Azure Site Recovery Hizmetleri ile kaydetmek için Azu
     - Uygulama geliştirici rolünün kullanıcıya atandığını doğrulayın. Aksi takdirde, bu izinle bir Kullanıcı kullanın veya [izni etkinleştirmek için bir yöneticiye](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles)başvurun.
     
 2. Uygulama geliştirici rolü atanmadığından, kullanıcıların bir kimlik oluşturması için **kullanıcıların uygulamaları kaydedebilmesi** için, **doğru** olarak ayarlanmış olduğundan emin olun. Bu izinleri etkinleştirmek için:
-    - Azure portalında oturum açın.
+    - Azure Portal’da oturum açın.
     - **Azure Active Directory**  >  **Kullanıcı ayarları**' na gidin.
     - **Uygulama kayıtları**altında **kullanıcılar uygulamaları kaydedebilir**, **Evet**' i seçin.
 
@@ -92,7 +92,7 @@ Yapılandırma sunucusunu Azure Site Recovery Hizmetleri ile kaydetmek için Azu
 Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kaydetmeden önce ekleyin. Kayıt işleminden sonra ek sunucu eklenemez.
 
 1. vSphere Client envanterinde VM’ye sağ tıklayın ve **Ayarları Düzenle**’yi seçin.
-2. **Donanım** bölümünde **Ekle** > **Ethernet Bağdaştırıcısı** seçeneğini belirleyin. Sonra **İleri**’yi seçin.
+2. **Donanım** bölümünde **Ekle** > **Ethernet Bağdaştırıcısı** seçeneğini belirleyin. Ardından **İleri**’yi seçin.
 3. Bir bağdaştırıcı türü ve ağ seçin.
 4. VM açıldığında sanal NIC 'yi bağlamak için, **oturum açma sırasında bağlan**' ı seçin. Ardından **İleri**  >  **bitiş**  >  **Tamam**' ı seçin.
 
@@ -102,7 +102,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 2. VM’de Windows Server 2016 yükleme deneyimi önyüklemesi yapılır. Lisans sözleşmesini kabul edin ve bir yönetici parolası girin.
 3. Yükleme tamamlandıktan sonra VM’de yönetici olarak oturum açın.
 4. İlk kez oturum açtığınızda, birkaç saniye içinde Azure Site Recovery yapılandırma aracı başlatılır.
-5. Yapılandırma sunucusunu Site Recovery’ye kaydetmek için kullanılacak bir ad girin. Sonra **İleri**’yi seçin.
+5. Yapılandırma sunucusunu Site Recovery’ye kaydetmek için kullanılacak bir ad girin. Ardından **İleri**’yi seçin.
 6. Araç, VM’nin Azure bağlanıp bağlanamadığını denetler. Bağlantı kurulduktan sonra Azure aboneliğinizde oturum açmak için **Oturum aç** seçeneğini belirleyin.</br>
     a. Kimlik bilgilerinin, yapılandırma sunucusunu kaydetmek istediğiniz kasaya erişim izni olmalıdır.</br>
     b. Seçilen Kullanıcı hesabının Azure 'da uygulama oluşturma izni olduğundan emin olun. Gerekli izinleri etkinleştirmek için, [izin gereksinimleri Azure Active Directory](#azure-active-directory-permission-requirements)bölümündeki yönergeleri izleyin.
@@ -111,7 +111,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 
 ### <a name="configure-settings"></a>Ayarları yapılandırma
 
-1. Yapılandırma sunucusu Yönetim Sihirbazı 'nda, **Kurulum bağlantısı**' nı seçin. Açılan kutudan önce, yerleşik işlem sunucusunun kaynak makinelere Mobility hizmeti bulma ve anında yükleme için kullandığı NIC 'i seçin. Ardından yapılandırma sunucusunun Azure ile bağlantı için kullandığı NIC 'ı seçin. **Kaydet**'i seçin. Bu ayar yapılandırıldıktan sonra değiştirilemez. Yapılandırma sunucusunun IP adresini değiştirmeyin. Yapılandırma sunucusuna atanan IP 'nin bir DHCP IP 'si değil statik IP olduğundan emin olun.
+1. Yapılandırma sunucusu Yönetim Sihirbazı 'nda, **Kurulum bağlantısı**' nı seçin. Açılan kutudan önce, yerleşik işlem sunucusunun kaynak makinelere Mobility hizmeti bulma ve anında yükleme için kullandığı NIC 'i seçin. Ardından yapılandırma sunucusunun Azure ile bağlantı için kullandığı NIC 'ı seçin. **Kaydet**’i seçin. Bu ayar yapılandırıldıktan sonra değiştirilemez. Yapılandırma sunucusunun IP adresini değiştirmeyin. Yapılandırma sunucusuna atanan IP 'nin bir DHCP IP 'si değil statik IP olduğundan emin olun.
 2. **Kurtarma Hizmetleri kasasını Seç**sayfasında, [yapılandırma sunucusunu Azure Site Recovery hizmetleriyle kaydetme](#register-the-configuration-server-with-azure-site-recovery-services)adım 6 ' da kullanılan kimlik bilgileriyle Microsoft Azure için oturum açın.
 3. Oturum açtıktan sonra Azure aboneliğinizi ve ilgili kaynak grubunu ve kasasını seçin.
 

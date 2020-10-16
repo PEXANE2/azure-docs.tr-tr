@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764902"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Azure Active Directory içindeki şirket içi uygulamalara erişim için tanımlama bilgisi ayarları
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD), uygulama proxy 'Si aracılığıyla şirket i
 
 | Tanımlama bilgisi ayarı | Varsayılan | Açıklama | Öneriler |
 | -------------- | ------- | ----------- | --------------- |
-| Yalnızca HTTP tanımlama bilgisini kullan | **Hayır** | **Evet** seçeneği, uygulama proxy 'sinin http yanıt üst bilgilerinde HTTPOnly bayrağını içermesini sağlar. Bu bayrak ek güvenlik avantajları sağlar, örneğin, istemci tarafı komut dosyasının (CSS) tanımlama bilgilerini kopyalamasını veya değiştirmesini engeller.<br></br><br></br>Yalnızca HTTP ayarını destekliyoruz, uygulama proxy 'Si, değişikliklere karşı koruma sağlamak için güvenli bir TLS kanalı üzerinden şifrelenmiş ve iletilen tanımlama bilgilerini. | Ek güvenlik avantajları nedeniyle **Evet** ' i kullanın.<br></br><br></br>Oturum tanımlama bilgisine erişmesi gereken istemciler veya kullanıcı aracıları için **Hayır** kullanın. Örneğin, uygulama proxy 'Si aracılığıyla bir Uzak Masaüstü Ağ Geçidi sunucusuna bağlanan bir RDP veya MTSC istemcisi için **Hayır** ' ı kullanın.|
+| HTTP-Only tanımlama bilgisi kullan | **Hayır** | **Evet** seçeneği, uygulama proxy 'sinin http yanıt üst bilgilerinde HTTPOnly bayrağını içermesini sağlar. Bu bayrak ek güvenlik avantajları sağlar, örneğin, istemci tarafı komut dosyasının (CSS) tanımlama bilgilerini kopyalamasını veya değiştirmesini engeller.<br></br><br></br>HTTP-Only ayarını desteklemeden önce, uygulama proxy 'Si, değişikliklere karşı koruma sağlamak için güvenli bir TLS kanalı üzerinden şifrelenmiş ve iletilen tanımlama bilgilerini. | Ek güvenlik avantajları nedeniyle **Evet** ' i kullanın.<br></br><br></br>Oturum tanımlama bilgisine erişmesi gereken istemciler veya kullanıcı aracıları için **Hayır** kullanın. Örneğin, uygulama proxy 'Si aracılığıyla bir Uzak Masaüstü Ağ Geçidi sunucusuna bağlanan bir RDP veya MTSC istemcisi için **Hayır** ' ı kullanın.|
 | Güvenli tanımlama bilgisi kullan | **Hayır** | **Evet** seçeneği, uygulama proxy 'sinin http yanıt üst bilgilerinde güvenli bayrağını içermesini sağlar. Güvenli tanımlama bilgileri, HTTPS gibi bir TLS güvenli kanalı üzerinden tanımlama bilgilerini ileterek güvenliği geliştirir. Bu, tanımlama bilgisinin şifresiz taraflar tarafından gösterilmesini engeller. | Ek güvenlik avantajları nedeniyle **Evet** ' i kullanın.|
 | Kalıcı tanımlama bilgisi kullan | **Hayır** | **Evet** seçeneği, Web tarayıcısı kapalıyken uygulama proxy 'sinin erişim tanımlama bilgilerini süre sonu olarak ayarlamasına izin verir. Kalıcılık, erişim belirtecinin süresi dolana kadar veya Kullanıcı kalıcı tanımlama bilgilerini elle silinceye kadar sürer. | Kullanıcıları kimlik doğrulamasından tutarak ilişkili güvenlik riski nedeniyle **Hayır** 'ı kullanın.<br></br><br></br>Yalnızca süreçler arasında tanımlama bilgilerini paylaşabilen eski uygulamalar için **Evet 'i** kullanmanızı öneririz. Kalıcı tanımlama bilgileri kullanmak yerine, uygulamanızı süreçler arasında paylaşım tanımlama bilgilerini işleyecek şekilde güncelleştirmek daha iyidir. Örneğin, bir kullanıcının Office belgelerini bir SharePoint sitesinden gezgin görünümünde açmasına izin vermek için kalıcı tanımlama bilgilerine ihtiyacınız vardır. Kalıcı tanımlama bilgileri olmadan, erişim tanımlama bilgileri tarayıcı, Gezgin işlemi ve Office işlemi arasında paylaşılmaması durumunda bu işlem başarısız olabilir. |
 
@@ -41,14 +41,14 @@ Sürüm Chrome 80 ve sonuç olarak, Kmıum kullanan tarayıcılarda, [SameSite](
 
 Uygulama proxy 'Si tanımlama bilgilerinde yapılan bu değişiklikler, Chrome 80 yayın tarihinden önceki birkaç haftada bir gelecek şekilde ele alınacaktır.
 
-Ayrıca, arka uç uygulamanızın bir üçüncü taraf bağlamında kullanılabilir olması gereken tanımlama bilgileri varsa, uygulamanızı bu tanımlama bilgileri için SameSite = None kullanacak şekilde değiştirerek açıkça tercih etmeniz gerekir. Uygulama proxy 'Si, set-Cookie üst bilgisini, URL 'lerine çevirir ve arka uç uygulaması tarafından ayarlanan bu tanımlama bilgilerinin ayarlarına göre değişir.
+Ayrıca, arka uç uygulamanızın bir üçüncü taraf bağlamında kullanılabilir olması gereken tanımlama bilgileri varsa, uygulamanızı bu tanımlama bilgileri için SameSite = None kullanacak şekilde değiştirerek açıkça tercih etmeniz gerekir. Uygulama proxy 'Si Set-Cookie üst bilgisini URL 'lerine çevirir ve arka uç uygulaması tarafından ayarlanan bu tanımlama bilgilerinin ayarlarına göre değişir.
 
 
 
 ## <a name="set-the-cookie-settings---azure-portal"></a>Tanımlama bilgisi ayarlarını ayarla-Azure portal
 Azure portal kullanarak tanımlama bilgisi ayarlarını yapmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 2. **Azure Active Directory**   >  **Kurumsal uygulamalar**   >  **tüm uygulamalar**' a gidin.
 3. Tanımlama bilgisi ayarını etkinleştirmek istediğiniz uygulamayı seçin.
 4. **Uygulama proxy 'si**' ne tıklayın.

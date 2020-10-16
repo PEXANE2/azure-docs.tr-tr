@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88783697"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure AD erişim incelemelerini kullanın
@@ -63,7 +63,7 @@ Yeni bir Azure AD grubu ve bu gruba uygulanmayan bir koşullu erişim ilkesi olu
 
 ### <a name="create-an-exclusion-group"></a>Dışlama grubu oluşturma
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Sol gezinti bölmesinde **Azure Active Directory** ' a ve ardından **gruplar**' a tıklayın.
 

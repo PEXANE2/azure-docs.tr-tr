@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325585"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Izleyici veri platformu
@@ -32,7 +32,7 @@ Azure kaynakları, önemli miktarda izleme verisi üretir. Azure Izleyici, bu ve
 
 
 ### <a name="metrics"></a>Ölçümler
-[Ölçümler](data-platform-metrics.md) , belirli bir noktadaki sistemin bazı yönlerini tanımlayan sayısal değerlerdir. Bunlar düzenli aralıklarla toplanır ve bir zaman damgası, bir ad, bir değer ve bir veya daha fazla etiket tanımlama ile tanımlanır. Ölçümler, diğer ölçümler ile karşılaştırıldığında çeşitli algoritmalar kullanılarak toplanabilir ve zaman içinde Eğilimler için analiz edilebilir. 
+[Ölçümler](data-platform-metrics.md) , belirli bir noktadaki sistemin bazı yönlerini tanımlayan sayısal değerlerdir. Düzenli aralıklarla toplanır ve bir zaman damgası, ad, değer ve bir veya daha fazla tanımlayıcı etiketle tanımlanır. Diğer ölçümlere kıyasla çeşitli algoritmalar kullanılarak ölçümler toplanabilir ve zaman içindeki eğilimler açısından analiz edilebilir. 
 
 Azure Izleyici ölçümleri, zaman damgalı verileri çözümlemek için en iyi duruma getirilmiş bir zaman serisi veritabanında depolanır. Bu, ölçümleri uyarı ve hızlı bir şekilde algılama için özellikle uygun hale getirir. Bunlar sisteminizin nasıl çalıştığını söyleyebilir, ancak genellikle sorunların temel nedenini belirlemek için günlüklerle birleştirilmesi gerekir.
 
@@ -41,7 +41,7 @@ Azure Izleyici ölçümleri, zaman damgalı verileri çözümlemek için en iyi 
 Azure izleyici [ölçümlerinde](data-platform-metrics.md)bulunan veri kaynakları da dahil olmak üzere Azure izleyici ölçümleri hakkında daha fazla bilgi edinin.
 
 ### <a name="logs"></a>Günlükler
-[Günlükler](data-platform-logs.md) , sistem içinde gerçekleşen olaylardır. Farklı türlerde veriler içerebilir ve zaman damgasıyla yapılandırılmış veya serbest biçimli metinler olabilir. Ortamdaki olaylar günlük girişleri oluşturabileceğinden ve ağır yük altında bir sistem genellikle daha fazla günlük birimi oluşturabileceğinden, tek tek oluşturulabilir.
+[Günlükler](data-platform-logs.md) , sistem içinde gerçekleşen olaylardır. Farklı türlerde veriler içerebilir ve zaman damgasıyla yapılandırılmış veya serbest biçimli metinler olabilir. Ortamdaki olaylar, günlük girişleri oluşturdukça gelişigüzel oluşturulabilir ve ağır yük altındaki bir sistem genellikle daha fazla günlük hacmi oluşturur.
 
 Azure Izleyici 'deki Günlükler, güçlü bir analiz altyapısı ve [zengin sorgu dili](/azure/kusto/query/)sağlayan [Azure Veri Gezgini](/azure/data-explorer/) temel alan Log Analytics çalışma alanında depolanır. Günlükler genellikle tanımlanmakta olan sorunun tamamen bağlamını sağlamak için yeterli bilgi sağlar ve bu sorunların kök durumunu tanımlamak için değerlidir.
 
@@ -67,7 +67,7 @@ Aşağıdaki tabloda Azure Izleyici 'de ölçümler ve Günlükler karşılaşt�
 
 | Öznitelik  | Ölçümler | Günlükler |
 |:---|:---|:---|
-| Avantajlar | Uyarı gibi neredeyse gerçek zamanlı senaryolara sahip hafif ve yetenekli senaryolar. Sorunların hızlı algılanması için idealdir. | Zengin sorgu diliyle çözümlendi. Derin analiz ve temel nedeni tanımlama için idealdir. |
+| Yararları | Uyarı gibi neredeyse gerçek zamanlı senaryolara sahip hafif ve yetenekli senaryolar. Sorunların hızlı algılanması için idealdir. | Zengin sorgu diliyle çözümlendi. Derin analiz ve temel nedeni tanımlama için idealdir. |
 | Veriler | Yalnızca sayısal değerler | Metin veya sayısal veriler |
 | Yapı | Örnek saat, izlenen kaynak ve sayısal bir değer dahil olmak üzere standart özellikler kümesi. Bazı ölçümler, daha fazla tanım için birden çok boyut içerir. | Günlük türüne göre benzersiz özellik kümesi. |
 | Koleksiyon | Düzenli aralıklarla toplanır. | , Olayların oluşturulması için bir kayıt tetiklemesi olarak toplanabilir. |

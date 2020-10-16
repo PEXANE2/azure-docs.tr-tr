@@ -4,10 +4,10 @@ description: Bu makalede, Azure IoT Hub olayları için özellikler ve şema sa�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113658"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub Event Grid kaynak olarak
@@ -19,13 +19,13 @@ Bu makalede, Azure IoT Hub olayları için özellikler ve şema sağlanmaktadır
 
 Azure IoT Hub aşağıdaki olay türlerini yayar:
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. Devices. DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
-| Microsoft. Devices. DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. | 
-| Microsoft. Devices. DeviceConnected | Bir cihaz IoT Hub 'ına bağlandığında yayımlandı. |
-| Microsoft. Devices. DeviceConnected bağlantısı kesildi | Bir cihazın IoT Hub 'ından bağlantısı kesildiğinde yayımlandı. | 
-| Microsoft. Devices. Devicetelemetri | Bir IoT Hub 'ına telemetri iletisi gönderildiğinde yayımlandı. |
+| Microsoft.Devices.DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
+| Microsoft.Devices.DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. | 
+| Microsoft.Devices.DeviceConnected | Bir cihaz IoT Hub 'ına bağlandığında yayımlandı. |
+| Microsoft.Devices.DeviceDisconnected | Bir cihazın IoT Hub 'ından bağlantısı kesildiğinde yayımlandı. | 
+| Microsoft.Devices.DeviceTelemetry | Bir IoT Hub 'ına telemetri iletisi gönderildiğinde yayımlandı. |
 
 Cihaz telemetri olayları dışındaki tüm cihaz olayları, Event Grid tarafından desteklenen tüm bölgelerde genel kullanıma sunulmuştur. Cihaz telemetri olayı genel önizlemede bulunur ve Doğu ABD, Batı ABD, Batı Avrupa, [Azure Kamu](../azure-government/documentation-government-welcome.md), [Azure Çin 21Vianet](/azure/china/china-welcome)ve [Azure Almanya](https://azure.microsoft.com/global-infrastructure/germany/)dışındaki tüm bölgelerde kullanılabilir.
 
@@ -140,20 +140,20 @@ DeviceCreated ve DeviceDeleted olaylarının şeması aynı yapıya sahiptir. Bu
 
 Tüm olaylar, en üst düzey verileri içerir: 
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| veriler | nesne | Olay verilerini IoT Hub.  |
+| veriler | object | Olay verilerini IoT Hub.  |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Tüm IoT Hub olayları için veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | hubName | string | Cihazın oluşturulduğu veya silindiği IoT Hub adı. |
 | deviceId | string | Cihazın benzersiz tanımlayıcısı. Bu büyük/küçük harf duyarlı dize en fazla 128 karakter uzunluğunda olabilir ve ASCII 7 bit alfasayısal karakterlerini ve şu özel karakterleri destekler: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
@@ -162,15 +162,15 @@ Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır.
 
 **Cihaz bağlı** ve **cihaz bağlantısı kesik** IoT Hub olayları için veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | Modül kimliği | string | Modülün benzersiz tanımlayıcısı. Bu alan yalnızca modül cihazları için çıktıdır. Bu büyük/küçük harf duyarlı dize en fazla 128 karakter uzunluğunda olabilir ve ASCII 7 bit alfasayısal karakterlerini ve şu özel karakterleri destekler: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
-| Deviceconnectionstateeventınfo | nesne | Cihaz bağlantısı durumu olay bilgileri
+| Deviceconnectionstateeventınfo | object | Cihaz bağlantısı durumu olay bilgileri
 | sequenceNumber | string | Cihaz bağlı veya cihaz bağlantısı kesilen olayların sırasını gösteren bir sayı. En son olay, önceki olaydan daha yüksek bir sıra numarasına sahip olacaktır. Bu sayı 1 ' den fazla değişebilir, ancak kesinlikle artmaktadır. Bkz. [sıra numarası kullanımı](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 **Cihaz telemetri** IoT Hub olayında veri nesnesi, [IoT Hub ileti biçiminde](../iot-hub/iot-hub-devguide-messages-construct.md) cihazdan buluta ileti içerir ve aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | body | string | Cihazdaki iletinin içeriği. |
 | properties | string | Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu alanlar isteğe bağlıdır. |
@@ -178,9 +178,9 @@ Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır.
 
 **Oluşturulan cihaz** ve **cihaz IoT Hub silinen** olaylar için, veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| ikizi | nesne | Uygulama aygıtı meta verilerinin bulut temsili olan cihaz ikizi hakkında bilgiler. | 
+| ikizi | object | Uygulama aygıtı meta verilerinin bulut temsili olan cihaz ikizi hakkında bilgiler. | 
 | DeviceID | string | Cihazın benzersiz tanımlayıcısı ikizi. | 
 | özelliği | string | Bir cihaz ikizi güncelleştirmelerinin tutarlılığını sağlamaya yönelik bir Doğrulayıcı. Her ETag 'in cihaz ikizi başına benzersiz olması garanti edilir. |  
 | deviceEtag| string | Bir cihaz kayıt defterinde güncelleştirmelerin tutarlılığını sağlamaya yönelik bir Doğrulayıcı. Her deviceEtag 'in cihaz kayıt defteri başına benzersiz olması garanti edilir. |
@@ -188,14 +188,14 @@ Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır.
 | statusUpdateTime | string | Son cihaz ikizi durumu güncelleştirmesinin ıSO8601 zaman damgası. |
 | connectionState | string | Cihazın bağlı veya bağlantısı kesilmiş olup olmadığı. | 
 | lastActivityTime | string | Son etkinliğin ıSO8601 zaman damgası. | 
-| cloudToDeviceMessageCount | integer | Bu cihaza gönderilen cihaz iletileri için bulut sayısı. | 
+| cloudToDeviceMessageCount | tamsayı | Bu cihaza gönderilen cihaz iletileri için bulut sayısı. | 
 | authenticationType | string | Bu cihaz için kullanılan kimlik doğrulaması türü: `SAS` , `SelfSigned` , veya `CertificateAuthority` . |
 | x509Thumbprint | string | Parmak izi, bir sertifika deposundaki belirli bir sertifikayı bulmak için yaygın olarak kullanılan x509 sertifikası için benzersiz bir değerdir. Parmak izi, SHA1 algoritması kullanılarak dinamik olarak oluşturulur ve sertifikada fiziksel olarak bulunmaz. | 
 | Primaryparmak Izi | string | X509 sertifikası için birincil parmak izi. |
 | Secondaryparmak Izi | string | X509 sertifikası için ikincil parmak izi. | 
-| sürüm | integer | Cihaz ikizi her güncelleştirildiği zaman arttırılan bir tamsayı. |
-| istediðiniz | nesne | Özelliklerin bir kısmı yalnızca uygulama arka ucu tarafından yazılabilir ve cihaz tarafından okunabilir. | 
-| bildirilen | nesne | Özelliklerin bir kısmı yalnızca cihaz tarafından yazılabilir ve uygulama arka ucu tarafından okunabilir. |
+| sürüm | tamsayı | Cihaz ikizi her güncelleştirildiği zaman arttırılan bir tamsayı. |
+| istediðiniz | object | Özelliklerin bir kısmı yalnızca uygulama arka ucu tarafından yazılabilir ve cihaz tarafından okunabilir. | 
+| bildirilen | object | Özelliklerin bir kısmı yalnızca cihaz tarafından yazılabilir ve uygulama arka ucu tarafından okunabilir. |
 | lastUpdated | string | Son Device ikizi özelliği güncelleştirmesinin ıSO8601 zaman damgası. | 
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları

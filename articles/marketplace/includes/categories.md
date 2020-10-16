@@ -1,5 +1,5 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: Kategori ve alt kategori listesi için dosya ekleme
 documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace
@@ -10,10 +10,10 @@ ms.custom: include file
 author: anbene
 ms.author: mingshen
 ms.openlocfilehash: 763ee108e1e2899bb2268ae5e6236f74a73e4b44
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498064"
 ---
 | [**Azure Market**](https://azuremarketplace.microsoft.com/marketplace/apps)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) |
@@ -21,10 +21,10 @@ ms.locfileid: "87498064"
 |**Analiz** | **Analiz** |
 | &nbsp;&nbsp;Veri öngörüleri | &nbsp;&nbsp;Gelişmiş analiz  |
 | &nbsp;&nbsp;Veri Analizi |  &nbsp;&nbsp;Görselleştirme & raporlama |
-| &nbsp;&nbsp;Büyük veri | **Yapay Zeka + Makine Öğrenmesi**  |
+| &nbsp;&nbsp;Büyük veri | **Yapay Zeka ve Makine Öğrenmesi**  |
 | &nbsp;&nbsp;Tahmine dayalı analiz | &nbsp;&nbsp;Iş için AI |
 | &nbsp;&nbsp;Gerçek zamanlı/Akış Analizi | &nbsp;&nbsp;Bot uygulamaları |
-| **Yapay Zeka + Makine Öğrenmesi** | **İşbirliği** |
+| **Yapay Zeka ve Makine Öğrenmesi** | **İşbirliği** |
 | &nbsp;&nbsp;Bot hizmeti | &nbsp;&nbsp;& kişilerle iletişim kurun |
 | &nbsp;&nbsp;Bilişsel hizmetler | &nbsp;&nbsp;Toplantı Yönetimi |
 | &nbsp;&nbsp;ML hizmeti | &nbsp;&nbsp;Site tasarımı & yönetimi |
@@ -34,7 +34,7 @@ ms.locfileid: "87498064"
 | &nbsp;&nbsp;Veri hazırlama | &nbsp;&nbsp;Vergi & denetimi |
 | &nbsp;&nbsp;Bilgi madenciliği | &nbsp;&nbsp;Kanun |
 | &nbsp;&nbsp;ML Işlemleri | &nbsp;&nbsp;Veri, Idare & gizliliği |
-| **Blok Zinciri**  | &nbsp;&nbsp;Sistem durumu & güvenliği |
+| **Blok zinciri**  | &nbsp;&nbsp;Sistem durumu & güvenliği |
 | &nbsp;&nbsp;Uygulama hızlandırıcıları | **Customer Service**  |
 | &nbsp;&nbsp;Tek düğümlü defter | &nbsp;&nbsp;Kişi Merkezi |
 | &nbsp;&nbsp;Çok düğümlü defter | &nbsp;&nbsp;Yüz yüze hizmet |

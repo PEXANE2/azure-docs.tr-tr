@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505605"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verileri vFXT kümesine taşıma-Parallel Data ınest
@@ -185,7 +185,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Bu sonucu bir dosyaya yeniden yönlendir:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Bu sonucu bir dosyaya yeniden yönlendir: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
 Ardından, dosyaları saymak ve alt dizinlerin boyutlarını belirleyebilmek için BASH komutlarını kullanarak bildirimde yineleyebilirsiniz.
 
@@ -280,13 +280,13 @@ Bu yöntem, iç dizin yöneticisinin işleyebileceği dosya sayısına kadar ver
 
 ``msrsync``Araç Ayrıca, avere kümesi için bir arka uç çekirdek filine veri taşımak için de kullanılabilir. Bu araç birden çok paralel işlem çalıştırarak bant genişliği kullanımını iyileştirmek için tasarlanmıştır ``rsync`` . Bu, tarihinde GitHub 'dan alınabilir <https://github.com/jbd/msrsync> .
 
-``msrsync``Kaynak dizini ayrı "demetlere" ayırır ve sonra ``rsync`` her bir Bucket üzerinde ayrı süreçler çalıştırır.
+``msrsync`` Kaynak dizini ayrı "demetlere" ayırır ve sonra ``rsync`` her bir Bucket üzerinde ayrı süreçler çalıştırır.
 
 Dört çekirdekli bir VM kullanan ön test, 64 işlemleri kullanırken en iyi verimliliği gösteriyordu. ``msrsync`` ``-p`` İşlem sayısını 64 olarak ayarlamak için seçeneğini kullanın.
 
 ``--inplace``Bağımsız değişkenini komutlarla de kullanabilirsiniz ``msrsync`` . Bu seçeneği kullanırsanız, veri bütünlüğünü sağlamak için ikinci bir komut (yukarıda açıklanan [rsync](#use-a-two-phase-rsync-process)ile olduğu gibi) çalıştırmayı göz önünde bulundurun.
 
-``msrsync``yalnızca yerel birimlere yazabilir ve bu birimleri alabilir. Kaynak ve hedef, kümenin sanal ağındaki yerel başlatmalar olarak erişilebilir olmalıdır.
+``msrsync`` yalnızca yerel birimlere yazabilir ve bu birimleri alabilir. Kaynak ve hedef, kümenin sanal ağındaki yerel başlatmalar olarak erişilebilir olmalıdır.
 
 Bir ``msrsync`` Azure bulut birimini bir avere kümesiyle doldurmak için kullanmak üzere aşağıdaki yönergeleri izleyin:
 

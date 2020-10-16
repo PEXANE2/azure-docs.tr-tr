@@ -7,14 +7,16 @@ description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kub
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js
-ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c11150105db7a7bb48d20992dcc259cb5d87752
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316112"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973113"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces, çekme isteği deponuzdaki ana dalınızla birleştirilmeden önce doğrudan AKS 'de yapılan değişiklikleri test etmenize olanak sağlayan GitHub eylemleri kullanarak bir iş akışı sağlar. Bir çekme isteğinin değişikliklerini gözden geçirmek için çalışan bir uygulamanın olması, hem geliştiricinin hem de takım üyelerinin güvenini artırabilir. Bu çalışan uygulama, ürün yöneticileri ve tasarımcılar gibi takım üyelerinin, geliştirme aşamaları sırasında inceleme sürecinin bir parçası haline gelmesine de yardımcı olabilir.
 
@@ -51,7 +53,7 @@ Sonraki bir adımda kullanıldığından, çıkışta *Loginserver* değerini ka
 
 ## <a name="create-a-service-principal-for-authentication"></a>Kimlik doğrulaması için bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örneğin:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örnek:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment

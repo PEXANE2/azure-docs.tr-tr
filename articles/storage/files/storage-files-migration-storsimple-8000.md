@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653256"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
@@ -427,7 +427,7 @@ Dosyaların gerisinde bırakılmış olup olmadığını görmek için Robocopy 
 
 Daha önce StorSimple verilerinde bulunan Windows Server üzerinde SMB paylaşımlarının oluşturulması gerekir. Bu adımı önyükleyebilir ve daha önce zaman kaybetmezsiniz. bu noktadan önce, Windows Server 'da dosyalarda değişiklik olmamasını sağlamalısınız.
 
-Bir DFS-N dağıtımınız varsa, DFN-ad alanlarını yeni sunucu klasörü konumlarına işaret edebilirsiniz. Bir DFS-N dağıtımınız yoksa ve 8100 8600 gerecinizi bir Windows Server ile yerel olarak aldıysanız, bu sunucuyu etki alanından alabilir ve etki alanına yeni Windows Server 'ı AFS ile etki alanına katılabilir, eski sunucu ile aynı sunucu adını ve aynı paylaşımın adlarını, bu durumda yeni sunucuya yönelik kesilen kullanıcılar kullanıcılarınız için saydam kalır , Grup İlkesi veya betikler.
+Bir DFS-N dağıtımınız varsa, DFN-Namespaces yeni sunucu klasörü konumlarına işaret edebilirsiniz. Bir DFS-N dağıtımınız yoksa ve 8100 8600 gerecinizi bir Windows Server ile yerel olarak aldıysanız, bu sunucuyu etki alanından alabilir ve etki alanına yeni Windows Server 'ı AFS ile etki alanına katılabilir, eski sunucu ile aynı sunucu adını ve aynı paylaşımın adlarını, bu durumda yeni sunucuya yönelik kesilen kullanıcılar kullanıcılarınız için saydam kalır , Grup İlkesi veya betikler.
 
 ## <a name="phase-7-deprovision"></a>7. Aşama: sağlamayı kaldırma
 

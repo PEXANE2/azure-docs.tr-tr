@@ -214,6 +214,8 @@
           href: log-query/scope.md
         - name: Basit günlükler deneyimi
           href: log-query/simple-logs.md
+        - name: Azure Veri Gezgini kullanarak sorgulama
+          href: platform/azure-data-explorer-monitor-proxy.md
         - name: Günlük sorguları
           items:
             - name: Standart sütunlar
@@ -303,6 +305,14 @@
               href: platform/service-providers.md
             - name: Ayrılmış kümeler
               href: log-query/logs-dedicated-clusters.md
+        - name: Veri dışarı aktarma
+          items:
+            - name: Çalışma alanı verilerini dışarı aktarma
+              href: platform/logs-data-export.md
+            - name: Logic Apps ile dışarı aktarma
+              href: platform/logs-export-logic-app.md
+            - name: Dışarı aktarılan verileri Veri Gezgini ile sorgulama
+              href: platform/azure-data-explorer-query-storage.md
     - name: Ölçüm gezgini
       items:
         - name: Ölçüm Gezgini’ni kullanmaya başlama
@@ -658,6 +668,8 @@
                       href: app/javascript-react-plugin.md
                     - name: React Native eklentisi
                       href: app/javascript-react-native-plugin.md
+                    - name: Angular eklentisi
+                      href: app/javascript-angular-plugin.md
                 - name: Sorun giderme
                   items:
                     - name: SDK yükleme hatası

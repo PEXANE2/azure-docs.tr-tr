@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319699"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090293"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Kullanıcı oturumu açma ile tek sayfalı bir uygulamanın güvenliğini sağlama
 
@@ -67,7 +67,7 @@ Kullanıcıların oturum açması için Azure AD 'de Web uygulaması oluşturun.
         </script>   
     ```
 
-7. Kullanıcılar veya gruplar için Azure rol tabanlı erişim denetimi 'ni yapılandırın. [RBAC 'yi etkinleştirmek için aşağıdaki bölümlere](#grant-role-based-access-for-users-to-azure-maps)bakın.
+7. Kullanıcılar veya gruplar için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırın. [Azure RBAC 'i etkinleştirmek için aşağıdaki bölümlere](#grant-role-based-access-for-users-to-azure-maps)bakın.
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 

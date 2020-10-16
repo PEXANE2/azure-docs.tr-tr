@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273232"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio panoları
@@ -24,7 +24,7 @@ ms.locfileid: "91273232"
 
 ## <a name="connecting-to-a-data-controller"></a>Veri denetleyicisine bağlanma
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - [Azure Data Studio](https://aka.ms/getazuredatastudio) indir
 - Azure Arc uzantısı yüklendi

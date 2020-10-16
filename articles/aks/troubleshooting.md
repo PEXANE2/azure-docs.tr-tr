@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614028"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074422"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -86,7 +86,7 @@ AKS 'in hizmet düzeyi hedeflerini (SLOs) ve hizmet düzeyi sözleşmelerini (SL
 
 Bu zaman aşımları, engellenen düğümler arasındaki iç trafikle ilgili olabilir. Bu trafiğin, kümenizin düğümleri için alt ağdaki [ağ güvenlik grupları](concepts-security.md#azure-network-security-groups) gibi engellenmediğinden emin olun.
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Var olan bir kümede rol tabanlı Access Control (RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
+## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Mevcut bir kümede Role-Based Access Control (RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
 
 Mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor, yeni kümeler oluşturulurken ayarlanmalıdır. Daha sonra CLı, portal veya API sürümü kullanılırken RBAC varsayılan olarak etkindir `2020-03-01` .
 
@@ -198,6 +198,23 @@ AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe ba�
 
 Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktaları/ağ kuralları ve FQDN/uygulama kurallarından hiçbiriyle çakışmadığını doğrulayın.
 
+## <a name="im-receiving-429---too-many-requests-errors"></a>"429-çok fazla Istek" hatası alıyorum 
+
+Azure 'daki bir Kubernetes kümesi (AKS veya No) sıklıkla bir ölçek artırma/azaltma veya küme otomatik olarak (CA) kullandığında, bu işlemler, atanan abonelik kotasının önde gelen hata olarak aşıldığı çok sayıda HTTP çağrısı oluşmasına neden olabilir. Hatalar şöyle görünür
+
+```
+Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
+```
+
+Bu azaltma hataları [burada](../azure-resource-manager/management/request-limits-and-throttling.md) ve [burada](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md) ayrıntılı olarak açıklanmaktadır
+
+AKS mühendislik ekibinin retıoni, en az 1.18. x sürümünü çalıştırıyor olduğunuzdan emin olmak için birçok geliştirme içerir. Bu geliştirmelerin [burada](https://github.com/Azure/AKS/issues/1413) ve [burada](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)daha fazla ayrıntıya ulaşabilirsiniz.
+
+Bu azaltma hataları, abonelik düzeyinde ölçülerek, şu durumlarda yine de gerçekleşmeyebilirsiniz:
+- GET istekleri oluşturan üçüncü taraf uygulamalar vardır (örn. izleme uygulamaları, vs...). Öneri, bu çağrıların sıklığını azaltmaktır.
+- VMSS 'de çok sayıda AKS kümesi/nodepools vardır. Olağan önerisi, belirli bir abonelikte 20-30 ' den az kümeniz olmalıdır.
+
+
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure depolama ve AKS sorunlarını giderme
 
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Azure disk için, Kubernetes 'in önerilen kararlı sürümleri nelerdir? 
@@ -213,14 +230,14 @@ Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktala
 
 Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach bir Azure disk uzaktan bağlantısı ile başarısız olabilir.
 
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örneğin:
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örneğin:
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -267,7 +284,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örneğin:
+* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örnek:
 
 ```yaml
 initContainers:
@@ -426,13 +443,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 `azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örneğin:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örneğin:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

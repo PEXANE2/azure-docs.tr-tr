@@ -4,10 +4,10 @@ description: Bu makalede, Azure CLı kullanarak sistem konuları oluşturma, gö
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 354afb89b145e288f525e40ad700e8f8a67c6dad
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115052"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Azure CLı kullanarak Event Grid sistem konuları oluşturma, görüntüleme ve yönetme
@@ -18,14 +18,14 @@ Azure CLı için [Event Grid uzantıya](/cli/azure/azure-cli-extensions-list)iht
 
 Cloud Shell:
 
-- Uzantıyı daha önce yüklediyseniz, güncelleştirin:`az extension update -n eventgrid`
-- Uzantıyı daha önce yüklemediyseniz, yükleme:`az extension add -n eventgrid`
+- Uzantıyı daha önce yüklediyseniz, güncelleştirin: `az extension update -n eventgrid`
+- Uzantıyı daha önce yüklemediyseniz, yükleme:  `az extension add -n eventgrid`
 
 Yerel yükleme için:
 
 1. [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli). İle kontrol ederek en son sürüme sahip olduğunuzdan emin olun `az --version` .
-2. Uzantının önceki sürümlerini kaldırın:`az extension remove -n eventgrid`
-3. Eventgrid uzantısını şu şekilde yükler`az extension add -n eventgrid`
+2. Uzantının önceki sürümlerini kaldırın: `az extension remove -n eventgrid`
+3. Eventgrid uzantısını şu şekilde yükler `az extension add -n eventgrid`
 
 ## <a name="create-a-system-topic"></a>Bir sistem konusu oluşturun
 
@@ -60,7 +60,7 @@ Yerel yükleme için:
             -g rg1 --system-topic-name <SYSTEM TOPIC NAME> \
             --endpoint <ENDPOINT URL>         
         ```
-- Bir Azure kaynağı için bir olay aboneliği oluştururken bir sistem konusu (örtük) oluşturmak için [az eventgrid Event-Subscription Create](/cli/azure/ext/eventgrid/eventgrid/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-event-subscription-create) metodunu kullanın. İşte bir örnek:
+- Bir Azure kaynağı için bir olay aboneliği oluştururken bir sistem konusu (örtük) oluşturmak için [az eventgrid Event-Subscription Create](/cli/azure/ext/eventgrid/eventgrid/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-event-subscription-create) metodunu kullanın. Aşağıda bir örnek verilmiştir:
     
     ```azurecli-interactive
     storageid=$(az storage account show --name <AZURE STORAGE ACCOUNT NAME> --resource-group <AZURE RESOURCE GROUP NAME> --query id --output tsv)

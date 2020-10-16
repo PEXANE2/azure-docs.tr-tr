@@ -11,10 +11,10 @@ ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398517"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Sanal ağa yönelik VPN aktarım hızını doğrulama
@@ -108,7 +108,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
 
    Aşağıdaki ekranda bu örnekteki çıktı gösterilmektedir:
 
-   ![Çıkış](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+   ![Çıktı](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
 1. SEÇIM Test sonuçlarını korumak için şu komutu çalıştırın:
 
@@ -265,4 +265,4 @@ MS ağ omurgasını girmeden önce herhangi bir sıçramadan yüksek gecikmeli b
 
 Daha fazla bilgi veya yardım için aşağıdaki bağlantıyı inceleyin:
 
-* [Microsoft Destek](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [Microsoft Desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

@@ -64,8 +64,14 @@
           href: ./hdinsight-capacity-planning.md
         - name: Küme yönetimi için en iyi yöntemler
           href: ./cluster-management-best-practices.md
-        - name: Kullanılabilirlik ve güvenilirlik
-          href: ./hdinsight-high-availability-linux.md
+        - name: İş sürekliliği
+          items:
+            - name: İş sürekliliğine genel bakış
+              href: hdinsight-business-continuity.md
+            - name: İş sürekliliği mimarisi
+              href: ./hdinsight-business-continuity-architecture.md
+            - name: Yüksek kullanılabilirlik örnek olay incelemesi
+              href: ./hdinsight-high-availability-case-study.md
         - name: Yönetilen kimlikleri anlama
           href: ./hdinsight-managed-identities.md
         - name: Depolama seçeneklerini karşılaştırın
@@ -100,12 +106,16 @@
               iconUrl: null
         - name: Küme depolama alanını kullanma
           items:
-            - name: Azure Depolama’yı kullanma
+            - name: Azure Depolama'yı kullanma
               href: hdinsight-hadoop-use-blob-storage.md
-            - name: Azure Data Lake Storage 2. Nesil kullanma
+            - name: Azure Data Lake Storage 2. Nesil'i kullanma
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Azure Data Lake Storage 1. Nesil kullanma
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Azure Data Lake Storage 2. Nesil'i portalda kullanma
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-portal.md
+            - name: Azure Data Lake Storage 2. Nesil'i Azure CLI ile kullanma
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md
+            - name: Data Lake Storage 1. Nesil'i kullanma
+              href: hdinsight-hadoop-use-data-lake-storage-gen1.md
         - name: Kümeleri genişletme
           items:
             - name: HDInsight uygulamaları yükleme
@@ -757,6 +767,8 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: Boyutlandırma yönergeleri
           href: ./interactive-query/sizing-guidelines.md
+        - name: Hive çoğaltması
+          href: ./interactive-query/apache-hive-replication.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Geliştirme

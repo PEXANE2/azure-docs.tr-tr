@@ -4,10 +4,10 @@ description: Azure Event Grid ile kaynak grubu olayları için sunulan özellikl
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: ed01bfdb67d9b8a3dd5875ec3fd8c6edf8922520
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105923"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>Azure Kaynak grubu Event Grid kaynak olarak
@@ -22,7 +22,7 @@ Bir kaynak grubu için olaylara abone olduğunuzda, uç noktanız bu kaynak grub
 
 Olayları programlı bir şekilde işlemek için, değere bakarak olayları sıralayabilirsiniz `operationName` . Örneğin, olay uç noktanız yalnızca veya ' ye eşit olan işlemlere yönelik olayları işleyebilir `Microsoft.Compute/virtualMachines/write` `Microsoft.Storage/storageAccounts/write` .
 
-Olay konusu, işlemin hedefi olan kaynağın kaynak KIMLIĞIDIR. Bir kaynağın olaylarını filtrelemek için, olay aboneliğini oluştururken bu kaynak KIMLIĞINI sağlayın.  Bir kaynak türüne göre filtrelemek için aşağıdaki biçimde bir değer kullanın:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Olay konusu, işlemin hedefi olan kaynağın kaynak KIMLIĞIDIR. Bir kaynağın olaylarını filtrelemek için, olay aboneliğini oluştururken bu kaynak KIMLIĞINI sağlayın.  Bir kaynak türüne göre filtrelemek için aşağıdaki biçimde bir değer kullanın: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 
 ## <a name="event-grid-event-schema"></a>Event Grid olay şeması
@@ -31,7 +31,7 @@ Olay konusu, işlemin hedefi olan kaynağın kaynak KIMLIĞIDIR. Bir kaynağın 
 
 Kaynak grupları, yönetim olaylarını Azure Resource Manager (örneğin, bir VM oluşturulduğunda veya bir depolama hesabı silinir).
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
 | Microsoft. resources. ResourceActionCancel | Kaynak üzerinde eylem iptal edildiğinde tetiklenir. |
 | Microsoft. resources. ResourceActionFailure | Kaynak üzerinde eylem başarısız olduğunda tetiklenir. |
@@ -231,25 +231,25 @@ Aşağıdaki örnekte bir **Resourceactionsuccess** olayının şeması gösteri
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | nesne | Kaynak grubu olay verileri. |
+| veriler | object | Kaynak grubu olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| yetkilendirme | nesne | İşlem için istenen yetkilendirme. |
-| belirt | nesne | Taleplerin özellikleri. Daha fazla bilgi için bkz. [JWT belirtimi](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| yetkilendirme | object | İşlem için istenen yetkilendirme. |
+| belirt | object | Taleplerin özellikleri. Daha fazla bilgi için bkz. [JWT belirtimi](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | string | Sorun giderme için bir işlem KIMLIĞI. |
-| httpRequest | nesne | İşlemin ayrıntıları. Bu nesne yalnızca var olan bir kaynağı güncelleştirirken veya bir kaynağı silerken dahil edilir. |
+| httpRequest | object | İşlemin ayrıntıları. Bu nesne yalnızca var olan bir kaynağı güncelleştirirken veya bir kaynağı silerken dahil edilir. |
 | resourceProvider | string | İşlemin kaynak sağlayıcısı. |
 | resourceUri | string | İşlemdeki kaynağın URI 'SI. |
 | operationName | string | Gerçekleştirilen işlem. |

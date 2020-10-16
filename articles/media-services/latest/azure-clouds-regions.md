@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
 ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597123"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 'nin bulunduğu bulutlar ve bölgeler
@@ -27,7 +27,7 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure bulutlarında özellik kullanılabilirliği
 
-| Öne çıkan özelliği|Küresel Azure bölgeleri | Azure Kamu|Azure Almanya|Azure Çin 21Vianet|
+| Özellik|Küresel Azure bölgeleri | Azure Kamu|Azure Almanya|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 | [Videoanaliz Zerönayar](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
@@ -44,7 +44,7 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 - West Europe
 - Kuzey Avrupa
 - Doğu ABD
-- Orta ABD
+- Central US
 - Orta Güney ABD
 - Batı ABD 2
 - Brezilya Güney
@@ -106,7 +106,7 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 | Kimlik Doğrulaması | `https://login.microsoftonline.de/` |
 | Belirteç hedef kitlesi | `https://management.core.cloudapi.de/`|
 
-### <a name="azure-china-21vianet"></a>Azure Çin 21Vianet
+### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
 | Hizmet | Uç Noktası |
 | ------- | -------- |

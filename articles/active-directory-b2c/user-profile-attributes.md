@@ -11,10 +11,10 @@ ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83738567"
 ---
 # <a name="user-profile-attributes"></a>Kullanıcı profili öznitelikleri
@@ -35,23 +35,23 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 - Öznitelik bir Kullanıcı akışında kullanılıyorsa
 - Öznitelik, özel bir ilkede [Azure AD teknik profilinde](active-directory-technical-profile.md) ve bu bölümde ( &lt; ınputclaim &gt; , &lt; outputclaim &gt; veya &lt; PersistedClaims &gt; ) kullanılabilir
 
-|Name     |Tür     |Açıklama|Azure portal|Kullanıcı akışları|Özel ilke|
+|Ad     |Tür     |Açıklama|Azure portal|Kullanıcı akışları|Özel ilke|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boole|Kullanıcı hesabının etkin mi yoksa devre dışı mı olduğunu: hesap etkinse **doğru** , aksi takdirde **yanlış**olur.|Evet|Hayır|Kalıcı, çıkış|
 |ageGroup        |Dize|Kullanıcının yaş grubu. Olası değerler: null, tanımsız, küçük, Yetişkin, NotAdult.|Evet|Hayır|Kalıcı, çıkış|
 |Alternativesecurityıd ([kimlikler](manage-user-accounts-graph-api.md#identities-property))|Dize|Dış kimlik sağlayıcısından tek bir kullanıcı kimliği.|Hayır|Hayır|Giriş, kalıcı, çıkış|
 |Alternativesecurityıds ([kimlikler](manage-user-accounts-graph-api.md#identities-property))|Alternatif Securityıd koleksiyonu|Dış kimlik sağlayıcılarından Kullanıcı kimlikleri koleksiyonu.|Hayır|Hayır|Kalıcı, çıkış|
-|city            |Dize|Kullanıcının bulunduğu şehir. Maksimum uzunluk 128.|Yes|Evet|Kalıcı, çıkış|
+|city            |Dize|Kullanıcının bulunduğu şehir. Maksimum uzunluk 128.|Evet|Evet|Kalıcı, çıkış|
 |consentProvidedForMinor|Dize|İkincil için onay sağlanmış olup olmadığı. İzin verilen değerler: null, verildi, reddedildi veya notRequired.|Evet|Hayır|Kalıcı, çıkış|
-|ülke         |Dize|Kullanıcının bulunduğu ülke/bölge. Örnek: "US" veya "UK". Maksimum uzunluk 128.|Yes|Evet|Kalıcı, çıkış|
+|ülke         |Dize|Kullanıcının bulunduğu ülke/bölge. Örnek: "US" veya "UK". Maksimum uzunluk 128.|Evet|Evet|Kalıcı, çıkış|
 |Saati|DateTime|Kullanıcı nesnesinin oluşturulduğu tarih. Salt okunurdur.|Hayır|Hayır|Kalıcı, çıkış|
 |creationType    |Dize|Kullanıcı hesabı bir Azure Active Directory B2C kiracısı için yerel hesap olarak oluşturulduysa, değer LocalAccount veya namebir. Salt okunurdur.|Hayır|Hayır|Kalıcı, çıkış|
 |Tarih Ofdoğum     |Tarih|Doğum tarihi.|Hayır|Hayır|Kalıcı, çıkış|
 |bölüm      |Dize|Kullanıcının çalıştığı departmanın adı. Maksimum uzunluk 64.|Evet|Hayır|Kalıcı, çıkış|
-|displayName     |Dize|Kullanıcının görünen adı. Maksimum uzunluk 256.|Yes|Evet|Kalıcı, çıkış|
+|displayName     |Dize|Kullanıcının görünen adı. Maksimum uzunluk 256.|Evet|Evet|Kalıcı, çıkış|
 |facsimileTelephoneNumber<sup>1</sup>|Dize|Kullanıcının iş Faks makinesinin telefon numarası.|Evet|Hayır|Kalıcı, çıkış|
-|givenName       |Dize|Kullanıcının verilen adı (ilk adı). Maksimum uzunluk 64.|Yes|Evet|Kalıcı, çıkış|
-|jobTitle        |Dize|Kullanıcının iş unvanı. Maksimum uzunluk 128.|Yes|Evet|Kalıcı, çıkış|
+|givenName       |Dize|Kullanıcının verilen adı (ilk adı). Maksimum uzunluk 64.|Evet|Evet|Kalıcı, çıkış|
+|jobTitle        |Dize|Kullanıcının iş unvanı. Maksimum uzunluk 128.|Evet|Evet|Kalıcı, çıkış|
 |ImmutableID     |Dize|Genellikle şirket içi Active Directory geçirilen kullanıcılar için kullanılan bir tanımlayıcı.|Hayır|Hayır|Kalıcı, çıkış|
 |Ligalagegroupclassification|Dize|Yasal yaş grubu sınıflandırması. Bir salt okunurdur ve ageGroup ve consentProvidedForMinor özellikleri temel alınarak hesaplanır. İzin verilen değerler: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult ve yetişkin.|Evet|Hayır|Kalıcı, çıkış|
 |legalCountry<sup>1</sup>  |Dize|Yasal amaçlar için ülke/bölge.|Hayır|Hayır|Kalıcı, çıkış|
@@ -71,19 +71,19 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 |Signınnames. userName ([kimlikler](manage-user-accounts-graph-api.md#identities-property)) |Dize|Dizindeki yerel hesap kullanıcısının benzersiz Kullanıcı adı. Bunu, belirli bir oturum açma Kullanıcı adı ile Kullanıcı oluşturmak veya almak için kullanın. Bunu Patch işlemi sırasında PersistedClaims içinde belirtmek, diğer oturum adı türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
 |Signınnames. phoneNumber ([kimlikler](manage-user-accounts-graph-api.md#identities-property)) |Dize|Dizindeki yerel hesap kullanıcısının benzersiz telefon numarası. Belirli bir oturum açma telefon numarası ile Kullanıcı oluşturmak veya almak için bunu kullanın. Bunu Patch işlemi sırasında PersistedClaims içinde belirtmek, diğer oturum adı türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
 |Signınnames. Emaadresi ([kimlikler](manage-user-accounts-graph-api.md#identities-property))|Dize|Dizindeki yerel hesap kullanıcısının benzersiz e-posta adresi. Belirli bir oturum açma e-posta adresine sahip bir kullanıcı oluşturmak veya almak için bunu kullanın. Bunu Patch işlemi sırasında PersistedClaims içinde belirtmek, diğer oturum adı türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
-|durum           |Dize|Kullanıcının adresindeki eyalet veya bölge. Maksimum uzunluk 128.|Yes|Evet|Kalıcı, çıkış|
-|streetAddress   |Dize|Kullanıcının iş yeri için cadde adresi. Maksimum uzunluk 1024.|Yes|Evet|Kalıcı, çıkış|
+|state           |Dize|Kullanıcının adresindeki eyalet veya bölge. Maksimum uzunluk 128.|Evet|Evet|Kalıcı, çıkış|
+|streetAddress   |Dize|Kullanıcının iş yeri için cadde adresi. Maksimum uzunluk 1024.|Evet|Evet|Kalıcı, çıkış|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|Dize|Kullanıcının çok faktörlü kimlik doğrulaması için kullandığı ikincil telefon numarası.|Evet|Hayır|Kalıcı, çıkış|
 |Strongauthenticationemaadresi<sup>1</sup>|Dize|Kullanıcının SMTP adresi. Örnek: " bob@contoso.com " Bu öznitelik, kullanıcı e-posta adresini depolamak için Kullanıcı adı ilkesi ile oturum açma için kullanılır. Daha sonra bir parola sıfırlama akışında kullanılan e-posta adresi.|Evet|Hayır|Kalıcı, çıkış|
 |strongAuthenticationPhoneNumber<sup>1</sup>|Dize|Kullanıcının çok faktörlü kimlik doğrulaması için kullanılan birincil telefon numarası.|Evet|Hayır|Kalıcı, çıkış|
-|surname         |Dize|Kullanıcının Soyadı (aile adı veya soyadı). Maksimum uzunluk 64.|Yes|Evet|Kalıcı, çıkış|
+|surname         |Dize|Kullanıcının Soyadı (aile adı veya soyadı). Maksimum uzunluk 64.|Evet|Evet|Kalıcı, çıkış|
 |telephoneNumber (ilk departman girişi)|Dize|Kullanıcının iş yeri için birincil telefon numarası.|Evet|Hayır|Kalıcı, çıkış|
 |userPrincipalName    |Dize|Kullanıcının kullanıcı asıl adı (UPN). UPN, Internet standart RFC 822 ' i temel alan Kullanıcı için Internet stili bir oturum açma adıdır. Etki alanının, kiracının doğrulanmış etki alanları koleksiyonunda mevcut olması gerekir. Bir hesap oluşturulduğunda bu özellik gereklidir. Değişmez.|Hayır|Hayır|Giriş, kalıcı, çıkış|
 |usageLocation   |Dize|Ülkelerde/bölgelerde hizmetlerin kullanılabilirliğini kontrol etmek için yasal gereksinim nedeniyle lisanslar atanacak kullanıcılar için gereklidir. Null yapılabilir değil. İki harfli ülke/bölge kodu (ISO standart 3166). Örnekler: "US", "JP" ve "GB".|Evet|Hayır|Kalıcı, çıkış|
 |userType        |Dize|Dizininizdeki Kullanıcı türlerini sınıflandırmak için kullanılabilen bir dize değeri. Değer üye olmalıdır. Salt okunur.|Salt okunur|Hayır|Kalıcı, çıkış|
 |userState (externalUserState)<sup>2</sup>|Dize|Yalnızca Azure AD B2B hesabı için, davetin Pendingkabulünü veya kabul edilip edilmediğini belirtir.|Hayır|Hayır|Kalıcı, çıkış|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|UserState özelliği için en son değişikliğin zaman damgasını gösterir.|Hayır|Hayır|Kalıcı, çıkış|
-|<sup>1</sup> Microsoft Graph tarafından desteklenmiyor<br><sup>2</sup> Azure AD B2C ile kullanılmamalıdır||||||
+|<sup>1 </sup> Microsoft Graph tarafından desteklenmiyor<br><sup>2 </sup> Azure AD B2C ile kullanılmamalıdır||||||
 
 
 ## <a name="extension-attributes"></a>Uzantı öznitelikleri

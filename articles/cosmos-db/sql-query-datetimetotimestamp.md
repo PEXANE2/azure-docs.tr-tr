@@ -8,10 +8,10 @@ ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 673e6a8cb86986ff24e3ee55589d13e8a9e4fdc5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88608830"
 ---
 # <a name="datetimetotimestamp-azure-cosmos-db"></a>DateTimeToTimestamp (Azure Cosmos DB)
@@ -67,7 +67,7 @@ SELECT DateTimeToTimestamp("2020-07-09T23:20:13.4575530Z") AS Timestamp
 ]
 ```  
 
-Bir örnek daha:
+Aşağıda başka bir örnek verilmiştir:
 
 ```sql
 SELECT DateTimeToTimestamp("2020-07-09") AS Timestamp
@@ -85,4 +85,4 @@ SELECT DateTimeToTimestamp("2020-07-09") AS Timestamp
 
 - [Tarih ve saat işlevleri Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)

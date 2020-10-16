@@ -52,10 +52,12 @@
           items:
             - name: VMware VM’lere yönelik geçiş seçenekleri hakkında
               href: server-migrate-overview.md
-            - name: VMware VM'leri aracısız geçiş ile geçirme
+            - name: VMware VM'leri aracısız geçiş ile geçirme - Azure portal
               href: tutorial-migrate-vmware.md
             - name: VMware VM'leri aracı tabanlı geçiş ile geçirme
               href: tutorial-migrate-vmware-agent.md
+            - name: VMware VM'leri aracısız geçiş ile geçirme - PowerShell
+              href: tutorial-migrate-vmware-powershell.md
         - name: Hyper-V VM’leri Azure’a Geçirme
           href: tutorial-migrate-hyper-v.md
         - name: Fiziksel sunucuları geçirme

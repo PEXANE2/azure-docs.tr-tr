@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263241"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075714"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server her zaman açık kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 
@@ -44,7 +44,7 @@ Bir Azure hesabınız olmalıdır. [Ücretsiz bir Azure hesabı açabilir](https
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **+** Portalda yeni bir nesne oluşturmak için seçin.
 
    ![Yeni nesne](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -232,7 +232,7 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
     ![Rol Ekle iletişim kutusu](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. **Onay** bölümüne ulaşana kadar **İleri ' yi** seçin. **Gerekirse hedef sunucuyu otomatik olarak yeniden Başlat** onay kutusunu seçin.
-8. **Yükle**’yi seçin.
+8. **Yükle**'yi seçin.
 9. Özelliklerin yüklenmesi bittikten sonra, **Sunucu Yöneticisi** panosuna geri dönün.
 10. Sol bölmedeki yeni **AD DS** seçeneğini belirleyin.
 11. Sarı uyarı çubuğunda **daha fazla** bağlantıyı seçin.
@@ -248,7 +248,7 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
     | **Etki Alanı Denetleyicisi Seçenekleri** |**DSRM parolası** = contoso! 0000<br/>**Parolayı onaylayın** = contoso! 0000 |
 
 14. Sihirbazdaki diğer sayfalara gitmek için **İleri ' yi** seçin. **Önkoşul denetimi** sayfasında, aşağıdaki iletiyi görmediğinizi doğrulayın: **tüm önkoşul denetimleri başarıyla geçildi**. Geçerli uyarı iletilerini gözden geçirebilirsiniz, ancak yüklemeye devam etmek mümkündür.
-15. **Yükle**’yi seçin. **Ad-birincil-DC** sanal makinesi otomatik olarak yeniden başlatılır.
+15. **Yükle**'yi seçin. **Ad-birincil-DC** sanal makinesi otomatik olarak yeniden başlatılır.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Birincil etki alanı denetleyicisinin IP adresini aklınızda
 
@@ -276,7 +276,7 @@ Bu sunucunun özel IP adresini aklınızda edin.
 
 3. **Özel**' i seçin ve birincil etki alanı DENETLEYICISININ özel IP adresini yazın.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 ### <a name="configure-the-second-domain-controller"></a>İkinci etki alanı denetleyicisini yapılandırma
 
@@ -397,7 +397,7 @@ Ardından, üç VM oluşturun-iki SQL Server VM ve ek bir küme düğümü için
 | Sanal makine yapılandırma **temelleri** |**Ad** = küme-FSW<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |**Ad** = SqlServer-0<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |**Ad** = SqlServer-1<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |
 | Sanal makine yapılandırma **boyutu** |**Boyut** = DS1 \_ v2 (1 vcpu, 3,5 GB) |**Boyut** = DS2 \_ v2 (2 sanal CPU, 7 GB)</br>Boyut SSD depolamayı desteklemelidir (Premium disk desteği). )) |**Boyut** = DS2 \_ v2 (2 sanal CPU, 7 GB) |
 | Sanal makine yapılandırma **ayarları** |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |
-| Sanal makine yapılandırması **SQL Server ayarları** |Geçerli değil |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |
+| Sanal makine yapılandırması **SQL Server ayarları** |Uygulanamaz |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |
 
 <br/>
 
@@ -420,6 +420,10 @@ Artık VM 'Leri **corp.contoso.com**'e katabilirsiniz. Hem SQL Server VM 'Ler he
 7. "Corp.contoso.com etki alanına hoş geldiniz" iletisini gördüğünüzde **Tamam**' ı seçin.
 8. **Kapat**' ı seçin ve ardından açılan Iletişim kutusunda **Şimdi yeniden Başlat** ' ı seçin.
 
+## <a name="add-accounts"></a>Hesap ekleme
+
+Yükleme hesabını her bir VM 'ye yönetici olarak ekleyin, SQL Server içinde yükleme hesabına ve yerel hesaplara izin verin ve SQL Server hizmet hesabını güncelleştirin. 
+
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>Corp\ınstall kullanıcısını her küme sanal makinesine yönetici olarak ekleyin
 
 Her bir sanal makine etki alanının bir üyesi olarak yeniden başlatıldıktan sonra, **Corp\ınstall** ' i yerel Yöneticiler grubunun bir üyesi olarak ekleyin.
@@ -438,16 +442,6 @@ Her bir sanal makine etki alanının bir üyesi olarak yeniden başlatıldıktan
 7. **Yönetici özellikleri** iletişim kutusunu kapatmak için **Tamam ' ı** seçin.
 8. **SqlServer-1** ve **cluster-FSW**üzerinde önceki adımları yineleyin.
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server hizmet hesaplarını ayarlama
-
-Her SQL Server VM SQL Server hizmet hesabını ayarlayın. Etki alanı hesaplarını yapılandırdığınızda oluşturduğunuz hesapları kullanın.
-
-1. **SQL Server Configuration Manager**’ı açın.
-2. SQL Server hizmetine sağ tıklayın ve ardından **Özellikler**' i seçin.
-3. Hesabı ve parolayı ayarlayın.
-4. Diğer SQL Server VM bu adımları yineleyin.  
-
-SQL Server kullanılabilirlik grupları için, her SQL Server VM bir etki alanı hesabı olarak çalıştırılması gerekir.
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Yükleme hesabı için her SQL Server VM bir oturum açma oluşturun
 
@@ -467,13 +461,54 @@ Kullanılabilirlik grubunu yapılandırmak için yükleme hesabı 'nı (Corp\ın
 
 1. Etki alanı Yöneticisi ağ kimlik bilgilerini girin.
 
-1. Yükleme hesabını kullanın.
+1. Yükleme hesabını (Corp\ınstall) kullanın.
 
 1. Oturum açma adını **sysadmin** sabit sunucu rolünün bir üyesi olacak şekilde ayarlayın.
 
 1. **Tamam**’ı seçin.
 
 Yukarıdaki adımları diğer SQL Server VM tekrarlayın.
+
+### <a name="configure-system-account-permissions"></a>Sistem hesabı izinlerini yapılandırma
+
+Sistem hesabı için bir hesap oluşturmak ve uygun izinleri vermek için, her bir SQL Server örneği için aşağıdaki adımları izleyin:
+
+1. Her bir SQL Server örneği için bir hesap oluşturun `[NT AUTHORITY\SYSTEM]` . Aşağıdaki betik bu hesabı oluşturur:
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. `[NT AUTHORITY\SYSTEM]`Her SQL Server örneğine aşağıdaki izinleri verin:
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   Aşağıdaki betik şu izinleri verir:
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server hizmet hesaplarını ayarlama
+
+Her SQL Server VM SQL Server hizmet hesabını ayarlayın. Etki alanı hesaplarını yapılandırdığınızda oluşturduğunuz hesapları kullanın.
+
+1. **SQL Server Configuration Manager**’ı açın.
+2. SQL Server hizmetine sağ tıklayın ve ardından **Özellikler**' i seçin.
+3. Hesabı ve parolayı ayarlayın.
+4. Diğer SQL Server VM bu adımları yineleyin.  
+
+SQL Server kullanılabilirlik grupları için, her SQL Server VM bir etki alanı hesabı olarak çalıştırılması gerekir.
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>SQL Server VM 'lerine Yük Devretme Kümelemesi özellikleri ekleme
 
@@ -524,35 +559,6 @@ Bağlantı noktalarını açma yöntemi, kullandığınız güvenlik duvarı ç�
 
 İkinci SQL Server VM bu adımları yineleyin.
 
-## <a name="configure-system-account-permissions"></a>Sistem hesabı izinlerini yapılandırma
-
-Sistem hesabı için bir hesap oluşturmak ve uygun izinleri vermek için, her bir SQL Server örneği için aşağıdaki adımları izleyin:
-
-1. Her bir SQL Server örneği için bir hesap oluşturun `[NT AUTHORITY\SYSTEM]` . Aşağıdaki betik bu hesabı oluşturur:
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. `[NT AUTHORITY\SYSTEM]`Her SQL Server örneğine aşağıdaki izinleri verin:
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   Aşağıdaki betik şu izinleri verir:
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

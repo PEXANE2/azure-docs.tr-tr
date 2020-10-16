@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5bcb63a325ca6bbf464faf9c5f9934879ccf9a3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9dc11faa502e5a6d8ede761d35d1ba24305b7688
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949669"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964188"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication Sunucusunu AD FS 2.0 ile çalışacak şekilde yapılandırma
 
@@ -45,10 +45,10 @@ Ara sunucu ile AD FS 2.0’ı güvenli hale getirmek için ADFS ara sunucusuna A
 
    ![MFA sunucusu IIS kimlik doğrulama penceresi](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. Kullanıcı adı, parola ve etki alanı değişkenlerini otomatik olarak algılamak için, `https://sso.contoso.com/adfs/ls` otomatik yapılandırma form tabanlı Web sitesi iletişim kutusuna oturum açma URL 'sini (gibi) girin ve **Tamam**' a tıklayın.
+4. Kullanıcı adı, parola ve etki alanı değişkenlerini otomatik olarak algılamak için, `https://sso.contoso.com/adfs/ls` otomatik yapılandırma Form-Based Web sitesi iletişim kutusuna oturum açma URL 'sini (gibi) girin ve **Tamam**' a tıklayın.
 5. Tüm kullanıcılar Sunucu’ya aktarılmışsa ya da aktarılacaksa ve iki aşamalı doğrulamaya tabi olacaksa **Azure Multi-Factor Authentication kullanıcılarının eşleşmesini gerektir** kutusunu işaretleyin. Sunucu’ya henüz aktarılmamış ve/veya iki aşamalı doğrulamadan muaf tutulacak çok sayıda kullanıcı varsa kutunun işaretini kaldırın.
 6. Sayfa değişkenleri otomatik olarak algılanamadığından **El Ile belirt...** öğesine tıklayın. Web Sitesi iletişim kutusunda Elle Belirt düğmesine tıklayın.
-7. Form tabanlı Web sitesi Ekle iletişim kutusunda URL Gönder alanına AD FS oturum açma sayfasına URL girin (gibi `https://sso.contoso.com/adfs/ls` ) ve bir uygulama adı girin (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
+7. Form-Based Web sitesi Ekle iletişim kutusunda URL 'yi gönder alanındaki AD FS oturum açma sayfasının URL 'sini girin (gibi `https://sso.contoso.com/adfs/ls` ) ve bir uygulama adı girin (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
 8. Istek biçimini **Post veya Get**olarak ayarlayın.
 9. Kullanıcı adı değişkeni (ctl00$ContentPlaceHolder1$UsernameTextBox) ve Parola değişkenini (ctl00$ContentPlaceHolder1$PasswordTextBox) girin. Form tabanlı oturum açma sayfanız bir etki alanı metin kutusu görüntülerse, Etki alanı değişkenini de girin. Oturum açma sayfasında girdi kutularının adlarını bulmak için, bir web tarayıcısında oturum açma sayfasına gidin, sayfaya sağ tıklayın ve **Kaynağı Görüntüle**’yi seçin.
 10. Tüm kullanıcılar Sunucu’ya aktarılmışsa ya da aktarılacaksa ve iki aşamalı doğrulamaya tabi olacaksa **Azure Multi-Factor Authentication kullanıcılarının eşleşmesini gerektir** kutusunu işaretleyin. Sunucu’ya henüz aktarılmamış ve/veya iki aşamalı doğrulamadan muaf tutulacak çok sayıda kullanıcı varsa kutunun işaretini kaldırın.
@@ -61,7 +61,7 @@ Ara sunucu ile AD FS 2.0’ı güvenli hale getirmek için ADFS ara sunucusuna A
     - Tanımlama bilgilerini kullanarak web sitesinde başarılı kimlik doğrulamalarını önbelleğe alma
     - Birincil kimlik bilgilerini doğrulamanın nasıl gerçekleştirileceğini seçme
 
-12. AD FS ara sunucusunun etki alanına katılması pek olası olmadığından, kullanıcı içeri aktarma ve ön kimlik doğrulama için etki alanı denetleyicisine bağlanmak amacıyla LDAP’yi kullanabilirsiniz. Gelişmiş form tabanlı Web sitesi iletişim kutusunda, **birincil kimlik** doğrulama sekmesine tıklayın ve kimlik doğrulama öncesi kimlik doğrulama türü Için **LDAP bağlaması** ' nı seçin.
+12. AD FS ara sunucusunun etki alanına katılması pek olası olmadığından, kullanıcı içeri aktarma ve ön kimlik doğrulama için etki alanı denetleyicisine bağlanmak amacıyla LDAP’yi kullanabilirsiniz. Gelişmiş Form-Based Web sitesi iletişim kutusunda, **birincil kimlik doğrulama** sekmesine tıklayın ve kimlik doğrulama öncesi kimlik doğrulama türü Için **LDAP bağlaması** ' nı seçin.
 13. Tamamlandığında Form Tabanlı Web Sitesi Ekle iletişim kutusuna dönmek için **Tamam**’a tıklayın.
 14. **Tamam**’a tıklayarak iletişim kutusunu kapatın.
 15. URL ve sayfa değişkenleri algılandığında veya girildiğinde, web sitesi verileri Form Tabanlı panelde görüntülenir.
@@ -112,7 +112,7 @@ AD FS ara sunucusu kullanılmadığında AD FS’yi güvenli hale getirebilirsin
 
    ![Ara sunucu olmadan AD FS 2.0 Direct](./media/howto-mfaserver-adfs-2/noproxy.png)
 
-8. **Tamam** düğmesine tıklayın.
+8. **Tamam**'a tıklayın.
 9. IIS eklentisini istediğiniz düzeyde etkinleştirmek için **yerel modül** sekmesine tıklayın ve sunucuyu, Web sitesini ("varsayılan Web sitesi" gibi) veya AD FS uygulamasını ("ADFS" altındaki "ls" gibi) seçin.
 10. Ekranın üst kısmındaki **IIS kimlik doğrulamasını etkinleştir** kutusuna tıklayın.
 

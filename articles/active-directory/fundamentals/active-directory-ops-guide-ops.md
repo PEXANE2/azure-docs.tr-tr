@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601325"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory genel işlemler Kılavuzu başvurusu
@@ -156,7 +156,7 @@ Gönderilen bildirimlerin türünü ve bunların nerede kontrol edildiği hakkı
 
 Uygulamaları [Azure AD akıllı kilitleme](../authentication/concept-sspr-howitworks.md)'den Azure AD avantajına doğrudan kimlik doğrulaması yapacak şekilde yapılandıran kuruluşlar. Windows Server 2012 R2 'de AD FS kullanıyorsanız, AD FS [Extranet kilitleme koruması](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)uygulayın. Windows Server 2016 veya sonraki sürümlerde AD FS kullanıyorsanız, [extranet akıllı kilitleme](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)uygulayın. En azından, şirket içi Active Directory karşı deneme yanılma saldırısı riskini içermesi için extranet kilitlemeyi etkinleştirmenizi öneririz. Ancak, Windows 2016 veya üzeri sürümlerde AD FS varsa, [parola spreyi](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) saldırılarını azaltmaya yardımcı olacak extranet akıllı kilitleme özelliğini de etkinleştirmeniz gerekir.
 
-AD FS yalnızca Azure AD Federasyonu için kullanılıyorsa, saldırı yüzeyi alanını en aza indirmek için kapatılabilir bazı uç noktalar vardır. Örneğin, AD FS yalnızca Azure AD için kullanılıyorsa, **usernamemixed** ve **windowstransport**için ETKINLEŞTIRILEN uç noktalar dışında WS-Trust uç noktalarını devre dışı bırakmanız gerekir.
+AD FS yalnızca Azure AD Federasyonu için kullanılıyorsa, saldırı yüzeyi alanını en aza indirmek için kapatılabilir bazı uç noktalar vardır. Örneğin, AD FS yalnızca Azure AD için kullanılıyorsa, **usernamemixed** ve **windowstransport**için etkinleştirilen uç noktaların dışında WS-Trust uç noktaları devre dışı bırakmanız gerekir.
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>Şirket içi kimlik bileşenleriyle makinelere erişim
 

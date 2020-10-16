@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792386"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078264"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Bağlı fabrika çözümü Hızlandırıcısı için sık sorulan sorular
 
@@ -76,13 +76,13 @@ Simülasyon VM 'de oturum açmak yalnızca çözümünüzü depodaki PowerShell 
 1. Hangi kapsayıcıların etkin olduğunu denetlemek için şunu çalıştırın: `docker ps` .
 1. Tüm simülasyon kapsayıcılarını durdurmak için şunu çalıştırın: `./stopsimulation` .
 1. Tüm simülasyon kapsayıcılarını başlatmak için:
-    * **IOTHUB_CONNECTIONSTRING**adıyla bir Shell değişkenini dışarı aktarın. Dosyadaki **ıothubownerconnectionstring** ayarının değerini kullanın `<name of your deployment>.config.user` . Örneğin:
+    * **IOTHUB_CONNECTIONSTRING**adıyla bir Shell değişkenini dışarı aktarın. Dosyadaki **ıothubownerconnectionstring** ayarının değerini kullanın `<name of your deployment>.config.user` . Örnek:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * `./startsimulation` öğesini çalıştırın.
+    * `./startsimulation` komutunu çalıştırın.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>VM 'deki benzetimi güncelleştirmek Nasıl yaparım? mı?
 
@@ -125,7 +125,7 @@ Alternatif olarak, SSH aracılığıyla VM 'de oturum açın ve çalışma zaman
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Simülasyonun buluta veri gönderip göndermesinin nasıl kontrol edebilirim?
 
-[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) veya [Azure IoT CLI uzantısı izleyici-olayları](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) komutuyla, belirli cihazlardan IoT Hub gönderilen verileri inceleyebilirsiniz. Bu araçları kullanmak için, dağıtımınızdaki IoT Hub 'ı için bağlantı dizesini bilmeniz gerekir. [Çözümünüz tarafından kullanılan IoT Hub 'ı bağlantı dizesini öğrenmek nasıl yaparım? bakın mi?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) veya [Azure IoT CLI uzantısı izleyici-olayları](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) komutuyla, belirli cihazlardan IoT Hub gönderilen verileri inceleyebilirsiniz. Bu araçları kullanmak için, dağıtımınızdaki IoT Hub 'ı için bağlantı dizesini bilmeniz gerekir. [Çözümünüz tarafından kullanılan IoT Hub 'ı bağlantı dizesini öğrenmek nasıl yaparım? bakın mi?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Yayımcı cihazlarından biri tarafından gönderilen verileri inceleyin:
 
@@ -186,7 +186,7 @@ OPC UA cihazlarından bağlı fabrikaya telemetri verileri göndermek için:
     ]
     ```
 
-1. Biçimi `<timestamp>` :`2017-12-08T19:24:51.886753Z`
+1. Biçimi `<timestamp>` : `2017-12-08T19:24:51.886753Z`
 
 1. Bağlı fabrika App Service yeniden başlatın.
 
@@ -194,6 +194,6 @@ OPC UA cihazlarından bağlı fabrikaya telemetri verileri göndermek için:
 
 IoT çözüm hızlandırıcılarının diğer özellik ve yeteneklerinden bazılarını da keşfedebilirsiniz:
 
-* [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-overview.md)
+* [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](./iot-accelerators-predictive-walkthrough.md)
 * [Bağlı fabrika çözüm Hızlandırıcısını dağıtma](quickstart-connected-factory-deploy.md)
-* [Baştan sona IoT güvenliği](/azure/iot-fundamentals/iot-security-ground-up)
+* [Baştan sona IoT güvenliği](../iot-fundamentals/iot-security-ground-up.md)

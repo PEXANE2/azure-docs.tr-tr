@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/10/2020
 ms.openlocfilehash: 4b5deeec0b76520952345e9b03135fa094a1f78e
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87986874"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes hizmeti (AKS) üzerinde ana bilgisayar tabanlı şifreleme (Önizleme)
@@ -23,7 +23,7 @@ Bu özellik yalnızca küme oluşturma veya düğüm havuzu oluşturma zamanınd
 > [!NOTE]
 > Ana bilgisayar tabanlı şifreleme, Azure yönetilen disklerin sunucu tarafı şifrelemesini ve yalnızca belirli [desteklenen VM boyutlarını][supported-sizes]destekleyen [Azure bölgelerinde][supported-regions] kullanılabilir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - `aks-preview`CLI uzantısının v 0.4.55 veya üzeri yüklü olduğundan emin olun
 - `EncryptionAtHost`Özellik bayrağının etkin ' in altında olduğundan emin olun `Microsoft.Compute` .

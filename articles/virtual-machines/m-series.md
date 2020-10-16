@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
 ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653664"
 ---
 # <a name="m-series"></a>M serisi
 
 M serisi, yüksek bir vCPU sayısı (128 vCPU kadar) ve büyük miktarda bellek (3,8 TiB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek sanal CPU sayılarından ve büyük miktarda bellekten faydalanabilir diğer uygulamalar için de idealdir. Her ikisi de Intel &reg; Xeon &reg; CPU E7-8890 v3 @ 2.50 GHz ve Intel &reg; Xeon &reg; Platinum 8280(Cascade Lake) üzerinde desteklenir.
 
-A serisi VM 'nin özelliği Intel &reg; hiper Iş parçacığı teknolojisi.
+A serisi VM 'nin Özellik Intel &reg; Hyper-Threading teknolojisi.
 
 [Acu](acu.md): 160-180<br>
 [Premium Depolama](premium-storage-performance.md): desteklenir<br>

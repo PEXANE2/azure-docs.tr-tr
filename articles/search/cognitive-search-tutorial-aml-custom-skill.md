@@ -3,17 +3,17 @@ title: 'Öğretici: Azure Machine Learning ile özel bir yetenek oluşturma ve d
 titleSuffix: Azure Cognitive Search
 description: Bu öğreticide, Azure Bilişsel Arama AI zenginleştirme işlem hattı için özel bir yetenek derlemek ve dağıtmak üzere Azure Machine Learning nasıl kullanılacağı gösterilmektedir.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399848"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057612"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile özel bir yetenek derleme ve dağıtma 
 
@@ -33,7 +33,7 @@ Belirtilen iki veri kümesi vardır. Modeli kendiniz eğmek istiyorsanız hotel_
 > [!IMPORTANT] 
 > Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda .NET SDK desteği yok.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği-ücretsiz bir [abonelik](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)alın.
 * [Bilişsel Arama hizmeti](./search-get-started-arm.md)

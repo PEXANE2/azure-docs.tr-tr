@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982705"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Dynamics AX 'ten veri kopyalama
@@ -45,7 +45,7 @@ Dynamics AX 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabili
 
 Aşağıdaki bölümlerde, Dynamics AX bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanabileceğiniz özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Hizmet sorumlusu kimlik doğrulamasını kullanmak için şu adımları izleyin:
 
@@ -108,7 +108,7 @@ Dynamics AX 'ten veri kopyalamak için veri kümesinin **Type** özelliğini **D
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Veri kümesinin **Type** özelliği **Dynamicsaxresource**olarak ayarlanmalıdır. | Evet |
-| yol | Dynamics AX OData varlığının yolu. | Evet |
+| path | Dynamics AX OData varlığının yolu. | Evet |
 
 **Örnek**
 

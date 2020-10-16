@@ -12,17 +12,17 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259077"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio Verify uygulamasını Azure Active Directory B2C ile tümleştirme
 
 Bu kılavuzda, Azure Active Directory B2C (Azure AD B2C) ' de bir örnek çevrimiçi ödeme uygulamasını Twilio Verify API 'siyle tümleştirmeyi öğrenin. Azure AD B2C müşteriler, Twilio Verify uygulamasını kullanarak, dinamik bağlama ve güçlü müşteri kimlik doğrulaması aracılığıyla PSD2 (ödeme hizmetleri yönerge 2) işlem gereksinimleriyle uyumlu olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunlar gerekir:
 
@@ -45,7 +45,7 @@ Aşağıdaki bileşenler Twilio çözümünü yapar:
 | Adım | Açıklama |
 |------|------|
 | 1     | Kullanıcı oturum açma veya PSD2 demo uygulamasına kaydolma işlemini başlatır. Kullanıcının kimliği, Azure AD B2C Birleşik oturum açma ve kaydolma ilkesi aracılığıyla doğrulanır. Uygulamaya bir belirteç döndürülür. Kaydolma sırasında kullanıcının telefon numarası SMS/Phone kullanılarak doğrulanır ve Azure AD B2C hesabına kaydedilir.     |
-| 2     | Kullanıcı, $50,00 aktarımı gibi yüksek riskli bir işlem başlatır. Kullanıcının geçerli erişim belirteci, kullanıcının bir adım adım özel ilke aracılığıyla zaten kimlik doğrulamasının yapılıp kalmadığını tespit etmek üzere PolicyId için değerlendirilir.     |
+| 2     | Kullanıcı, $50,00 aktarımı gibi yüksek riskli bir işlem başlatır. Kullanıcının geçerli erişim belirteci, kullanıcının kimlik doğrulamasının Step-Up özel bir ilke aracılığıyla zaten yapılıp kalmadığını tespit etmek üzere PolicyId için değerlendirilir.     |
 | 3     | Uygulama, işlem değerini ve alacaklı, $50,00 ve John tikan değerlerini kaydeder ve imzalı bir belirteç oluşturur. Bu belirteç, olarak adlandırılır `id_token_hint` ve talebi içerir `amount:$500, payee:john doe` . , `id_token_hint` Twilio ile tümleştirilmiş Azure AD B2C özel ilkesi isteğiyle birlikte gönderilir.     |
 | 4     | Azure AD B2C, uygulamalar `/.well-known` OpenID Connect uç noktasını denetleyerek id_token_hint imzasını doğrular. Doğruladıktan sonra, bu belirteçteki talepleri, özellikle ve olarak ayıklar `amount` `payee` . Kullanıcı, SMS iletisi aracılığıyla cep telefonu numaralarını doğrulamak için bir sayfa görür.     |
 | 5     | Kullanıcı, SMS iletisi aracılığıyla telefon numaralarını doğrulamayı ister ve Azure AD B2C Twilio 'in API uç noktasını doğrulama REST API isteği yapar. Ayrıca, `amount` `payee` bir kerelik geçiş kodu (OTP) oluşturmak için IŞLEMI ve PSD2 işleminin bir parçası olarak gönderir. Twilio kullanıcının kayıtlı telefon numarasına SMS iletisi gönderir.     |

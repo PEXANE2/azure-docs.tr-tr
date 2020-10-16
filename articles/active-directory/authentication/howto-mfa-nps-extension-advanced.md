@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7dab1d9e46aec64cc3c0fda9e8e6ba503f696b0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 3a9156f84e5189b38a2c15f257bd6a47ac3db130
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716767"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964409"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication NPS uzantısı için gelişmiş yapılandırma seçenekleri
 
@@ -32,9 +32,9 @@ Alternatif oturum açma kimliklerini yapılandırmak için `HKLM\SOFTWARE\Micros
 
 | Ad | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Olmamalıdır | UPN yerine kullanmak istediğiniz Active Directory özniteliğin adını belirleyin. Bu öznitelik AlternateLoginID özniteliği olarak kullanılır. Bu kayıt defteri değeri [geçerli bir Active Directory özniteliğine](/windows/win32/adschema/attributes-all) ayarlandıysa (örneğin, posta veya DisplayName), kimlik doğrulaması IÇIN kullanıcının UPN 'si yerine özniteliğin değeri kullanılır. Bu kayıt defteri değeri boş veya yapılandırılmamışsa, AlternateLoginID devre dışıdır ve kullanıcının UPN 'si kimlik doğrulaması için kullanılır. |
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | dize | Olmamalıdır | UPN yerine kullanmak istediğiniz Active Directory özniteliğin adını belirleyin. Bu öznitelik AlternateLoginID özniteliği olarak kullanılır. Bu kayıt defteri değeri [geçerli bir Active Directory özniteliğine](/windows/win32/adschema/attributes-all) ayarlandıysa (örneğin, posta veya DisplayName), kimlik doğrulaması IÇIN kullanıcının UPN 'si yerine özniteliğin değeri kullanılır. Bu kayıt defteri değeri boş veya yapılandırılmamışsa, AlternateLoginID devre dışıdır ve kullanıcının UPN 'si kimlik doğrulaması için kullanılır. |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | Yanlış | AlternateLoginID aranırken LDAP aramaları için genel kataloğun kullanımını zorlamak üzere bu bayrağı kullanın. Bir etki alanı denetleyicisini genel katalog olarak yapılandırın, AlternateLoginID özniteliğini genel kataloğa ekleyin ve bu bayrağı etkinleştirin. <br><br> LDAP_LOOKUP_FORESTS yapılandırıldıysa (boş değil), kayıt defteri ayarı değeri ne olursa olsun, **Bu bayrak true olarak zorlanır**. Bu durumda, NPS uzantısı genel kataloğun her orman için AlternateLoginID özniteliğiyle yapılandırılmasını gerektirir. |
-| LDAP_LOOKUP_FORESTS | string | Olmamalıdır | Aranacak ormanların noktalı virgülle ayrılmış bir listesini sağlayın. Örneğin, *contoso. com; foobar. com*. Bu kayıt defteri değeri yapılandırılmışsa, NPS uzantısı tüm ormanları listelendikleri sırayla arar ve ilk başarılı AlternateLoginID değerini döndürür. Bu kayıt defteri değeri yapılandırılmamışsa, AlternateLoginID araması geçerli etki alanıyla sınırlandırlanır.|
+| LDAP_LOOKUP_FORESTS | dize | Olmamalıdır | Aranacak ormanların noktalı virgülle ayrılmış bir listesini sağlayın. Örneğin, *contoso. com; foobar. com*. Bu kayıt defteri değeri yapılandırılmışsa, NPS uzantısı tüm ormanları listelendikleri sırayla arar ve ilk başarılı AlternateLoginID değerini döndürür. Bu kayıt defteri değeri yapılandırılmamışsa, AlternateLoginID araması geçerli etki alanıyla sınırlandırlanır.|
 
 Alternatif oturum açma kimlikleriyle ilgili sorunları gidermek için, [Alternatif oturum açma kimliği hataları](howto-mfa-nps-extension-errors.md#alternate-login-id-errors)için önerilen adımları kullanın.
 
@@ -46,7 +46,7 @@ IP izin verilen listesini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMf
 
 | Ad | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
-| IP_WHITELIST | string | Olmamalıdır | IP adreslerinin noktalı virgülle ayrılmış bir listesini sağlar. NAS/VPN sunucusu gibi hizmet isteklerinin gerçekleştiği makinelerin IP adreslerini ekleyin. IP aralıkları ve alt ağları desteklenmez. <br><br> Örneğin, *10.0.0.1; 10.0.0.2; 10.0.0.3*.
+| IP_WHITELIST | dize | Olmamalıdır | IP adreslerinin noktalı virgülle ayrılmış bir listesini sağlar. NAS/VPN sunucusu gibi hizmet isteklerinin gerçekleştiği makinelerin IP adreslerini ekleyin. IP aralıkları ve alt ağları desteklenmez. <br><br> Örneğin, *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 
 > [!NOTE]
 > Bu kayıt defteri anahtarı yükleyici tarafından varsayılan olarak oluşturulmaz ve hizmet yeniden başlatıldığında AuthZOptCh günlüğünde bir hata görünür. Günlükteki bu hata yoksayılabilir, ancak bu kayıt defteri anahtarı oluşturulup boş bırakılırsa, hata iletisi döndürmez.

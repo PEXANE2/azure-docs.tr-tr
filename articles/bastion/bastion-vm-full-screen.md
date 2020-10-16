@@ -2,21 +2,21 @@
 title: 'Azure savunma: sanal makine oturumunu görüntüle: tam ekran'
 description: Azure 'da bir RDP veya SSH bağlantısı için sanal makine görünümünü tam ekran olarak değiştirme ve tarayıcınıza geri dönme hakkında bilgi edinin.
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
-ms.author: charwen
-ms.openlocfilehash: fa795d7b066733aba54f8612bbabecf264a11c70
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.author: cherylmc
+ms.openlocfilehash: 7db85c5e1d5f67c30adf08969c51bb4c57838fb5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270300"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079148"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>VM oturumu için tam ekran görünümüne geçiş yapın: Azure savunma
 
-Bu makale, sanal makine görünümünü tam ekran olarak değiştirmenize ve tarayıcınıza geri dönüştürmenize yardımcı olur. Bir VM ile çalışmadan önce, [bir savunma ana bilgisayarı oluşturma](bastion-create-host-portal.md)adımlarını izlediğinizden emin olun. Ardından, [RDP](bastion-connect-vm-rdp.md) veya [SSH](bastion-connect-vm-ssh.md)kullanarak birlikte çalışmak istediğiniz sanal makineye bağlanın.
+Bu makale, sanal makine görünümünü tam ekran olarak değiştirmenize ve tarayıcınıza geri dönüştürmenize yardımcı olur. Bir VM ile çalışmadan önce, [bir savunma ana bilgisayarı oluşturma](./tutorial-create-host-portal.md)adımlarını izlediğinizden emin olun. Ardından, [RDP](bastion-connect-vm-rdp.md) veya [SSH](bastion-connect-vm-ssh.md)kullanarak birlikte çalışmak istediğiniz sanal makineye bağlanın.
 
 ## <a name="launch-the-clipboard-tool"></a>Pano aracını başlatma
 

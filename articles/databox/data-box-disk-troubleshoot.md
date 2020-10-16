@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925551"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Azure Data Box Disk doğrulama sorunlarını gidermek için günlükleri kullanma
@@ -21,7 +21,7 @@ Bu makale, Microsoft Azure Data Box Disk için geçerlidir. Makalesinde, bu çö
 
 ## <a name="validation-tool-log-files"></a>Doğrulama aracı günlük dosyaları
 
-[Doğrulama aracını](data-box-disk-deploy-copy-data.md#validate-data)kullanarak disklerdeki verileri doğruladığınızda, tüm hataları günlüğe kaydetmek için bir *error.xml* oluşturulur. Günlük dosyası `Drive:\DataBoxDiskImport\logs` sürücünüzün klasöründe bulunur. Doğrulama çalıştırdığınızda hata günlüğüne bir bağlantı sağlanır.
+[Doğrulama aracını](data-box-disk-deploy-copy-data.md#validate-data)kullanarak disklerdeki verileri doğruladığınızda, tüm hataları günlüğe kaydetmek için bir *error.xml* oluşturulur. Günlük dosyası  `Drive:\DataBoxDiskImport\logs` sürücünüzün klasöründe bulunur. Doğrulama çalıştırdığınızda hata günlüğüne bir bağlantı sağlanır.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -73,7 +73,7 @@ Doğrulama için birden çok oturum çalıştırırsanız, oturum başına bir h
 
 *error.xml* bulunan hatalar, ilgili önerilen eylemlerle birlikte aşağıdaki tabloda özetlenmiştir.
 
-| Hata kodu| Description                       | Önerilen Eylemler               |
+| Hata kodu| Açıklama                       | Önerilen Eylemler               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Veriler başarıyla doğrulanmadı. | İşlem yapmanız gerekmez. |
 | `InvalidXmlCharsInPath` |Dosya yolu geçersiz karakterler içerdiğinden bildirim dosyası oluşturulamadı. | Devam etmek için bu karakterleri kaldırın.  |

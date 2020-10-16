@@ -8,10 +8,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.openlocfilehash: c82f98df8fb79fa10f2e30b219c1a02bb646e2de
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85937560"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>IoT Hub 'ınız için ortak ağ erişimini yönetme
@@ -24,13 +24,13 @@ Erişimi [sanal ağınızdaki IoT Hub 'ınız için yalnızca özel uç nokta](v
 2. IoT Hub'ınıza gidin.
 3. Sol taraftaki menüden **ağ** ' ı seçin.
 4. "Genel ağa erişime Izin ver" altında **devre dışı** seçeneğini belirleyin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Ortak ağ erişiminin kapatılacağı Azure portal gösteren resim" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
 Ortak ağ erişimini açmak **için seçili ve**sonra **kaydedin**.
 
-## <a name="ip-filter"></a>IP filtresi 
+## <a name="ip-filter"></a>IP Filtresi 
 
 Ortak ağ erişimi devre dışıysa, tüm [IP filtresi](iot-hub-ip-filtering.md) kuralları yok sayılır. Bunun nedeni, genel İnternet 'ten gelen tüm IP 'Lerin engellenmesidir. IP filtresini kullanmak için **SEÇILI IP aralıkları** seçeneğini kullanın.
 

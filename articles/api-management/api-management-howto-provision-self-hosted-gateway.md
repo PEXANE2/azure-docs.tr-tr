@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050341"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Azure API Management şirket içinde barındırılan ağ geçidi sağlama
@@ -32,7 +32,7 @@ Azure API Management Örneğinizde bir ağ geçidi kaynağı sağlama, şirket i
 ## <a name="provision-a-self-hosted-gateway"></a>Şirket içinde barındırılan ağ geçidini sağlama
 
 1. **Dağıtım ve altyapı**altında **ağ geçitlerini** seçin.
-2. **+ Ekle**'ye tıklayın.
+2. **+ Ekle**’ye tıklayın.
 3. Ağ geçidinin **adını** ve **bölgesini** girin.
 > [!TIP]
 > **Bölge** , bu ağ geçidi kaynağıyla ilişkilendirilecek ağ geçidi düğümlerinin amaçlanan konumunu belirtir. Bu, herhangi bir Azure kaynağıyla ilişkili benzer bir özelliğe anlam olarak eşdeğerdir, ancak rastgele bir dize değeri atanabilir.

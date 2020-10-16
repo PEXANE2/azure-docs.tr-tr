@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319585"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure tarafından yönetilen uygulamanın oluşturma deneyimi için CreateUiDefinition.json
@@ -129,7 +129,7 @@ Kaynak grubu denetimi için bir seçeneği vardır `allowExisting` . Ne zaman `t
 
 **Temel kavramlar** adımı Azure Portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Varsayılan olarak, temel bilgiler, kullanıcıların dağıtım için abonelik, kaynak grubu ve konum seçmesini sağlar.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Temel bilgiler varsayılan":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Sekme Sihirbazı":::
 
 Bu bölüme daha fazla öğe ekleyebilirsiniz. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım genelindeki parametreleri sorgulayan öğeleri ekleyin.
 

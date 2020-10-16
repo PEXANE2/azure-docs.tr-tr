@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077907"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mimari en iyi uygulamaları
@@ -25,14 +25,14 @@ Birçok şirket içi Apache Hadoop dağıtımı, birçok iş yükünü destekley
 
 Azure HDInsight kümeleri belirli bir işlem kullanımı türü için tasarlanmıştır. Depolama birden çok küme genelinde paylaşılabildiğinden, farklı işlerin ihtiyaçlarını karşılamak için birden çok iş yükü için iyileştirilmiş işlem kümesi oluşturmak mümkündür. Her küme türü bu belirli iş yükü için en uygun yapılandırmaya sahiptir. Aşağıdaki tabloda, HDInsight 'ta ve ilgili iş yüklerinde desteklenen küme türleri listelenmektedir.
 
-|İş yükü|HDInsight küme türü|
+|İş Yükü|HDInsight küme türü|
 |---|---|
 |Toplu işleme (ETL/ELT)|Hadoop, Spark|
 |Veri ambarlama|Hadoop, Spark, etkileşimli sorgu|
 |IoT/akış|Kafka, fırtınası, Spark|
 |NoSQL Işlem işleme|HBase|
 |Bellek içi önbelleğe alma ile etkileşimli ve daha hızlı sorgular|Interactive Query|
-|Veri bilimi|ML Hizmetleri, Spark|
+|Veri Bilimi|ML Hizmetleri, Spark|
 
 Aşağıdaki tabloda, HDInsight kümesi oluşturmak için kullanılabilecek farklı yöntemler gösterilmektedir.
 

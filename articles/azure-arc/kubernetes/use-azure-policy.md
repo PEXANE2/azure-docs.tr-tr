@@ -9,17 +9,17 @@ ms.author: mlearned
 description: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050033"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesi kullanma (Önizleme)
 
 ## <a name="overview"></a>Genel Bakış
 
-Her `Microsoft.Kubernetes/connectedclusters` kaynak veya git Ops özellikli `Microsoft.ContainerService/managedClusters` kaynağın bu kaynağa uygulanmasını zorlamak Için Azure ilkesini kullanın `Microsoft.KubernetesConfiguration/sourceControlConfigurations` . Azure Ilkesini kullanmak için var olan bir ilke tanımı seçin ve bir ilke ataması oluşturun. İlke atamasını oluştururken atama için kapsamı ayarlarsınız: Bu, bir Azure Kaynak grubu veya aboneliği olacaktır. Oluşturulacak için parametreleri de ayarlarsınız `sourceControlConfiguration` . Atama oluşturulduktan sonra, Ilke altyapısı `connectedCluster` `managedCluster` kapsam içinde bulunan tüm veya kaynakları belirler ve `sourceControlConfiguration` her birine uygular.
+Her bir `Microsoft.Kubernetes/connectedclusters` kaynağın veya Git-Ops etkinleştirilmiş `Microsoft.ContainerService/managedClusters` kaynağın bu uygulamaya uygulanmasını zorlamak Için Azure ilkesini kullanın `Microsoft.KubernetesConfiguration/sourceControlConfigurations` . Azure Ilkesini kullanmak için var olan bir ilke tanımı seçin ve bir ilke ataması oluşturun. İlke atamasını oluştururken atama için kapsamı ayarlarsınız: Bu, bir Azure Kaynak grubu veya aboneliği olacaktır. Oluşturulacak için parametreleri de ayarlarsınız `sourceControlConfiguration` . Atama oluşturulduktan sonra, Ilke altyapısı `connectedCluster` `managedCluster` kapsam içinde bulunan tüm veya kaynakları belirler ve `sourceControlConfiguration` her birine uygular.
 
 Her küme için Truth kaynakları olarak birden çok git deposu kullanıyorsanız (örneğin, merkezi BT/küme operatörü için bir depo ve uygulama ekiplerine yönelik diğer depolar), bunu, her ilke atamasını farklı bir git deposu kullanacak şekilde yapılandırılmış birden fazla ilke ataması kullanarak etkinleştirebilirsiniz.
 

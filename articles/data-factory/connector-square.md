@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529373"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak kareden veri kopyalama (Önizleme)
@@ -50,17 +50,17 @@ Kare bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Square** olarak ayarlanmalıdır | Yes |
-| connectionProperties | Karekökünü nasıl bağlayabileceğini tanımlayan bir özellik grubu. | Yes |
+| tür | Type özelliği: **Square** olarak ayarlanmalıdır | Evet |
+| connectionProperties | Karekökünü nasıl bağlayabileceğini tanımlayan bir özellik grubu. | Evet |
 | ***Altında `connectionProperties` :*** | | |
-| konak | Kare örneğinin URL 'SI. (örn. mystore.mysquare.com)  | Yes |
-| clientId | Kare uygulamanızla ilişkili istemci KIMLIĞI.  | Yes |
-| clientSecret | Kare uygulamanızla ilişkili istemci gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| accessToken | Kareden alınan erişim belirteci. Kimliği doğrulanmış bir kullanıcıdan açık izinler isteyerek bir kare hesabına sınırlı erişim verir. OAuth erişim belirteçlerinin süresi, verildikten 30 gün sonra dolar, ancak yenileme belirteçlerinin süresi dolmaz. Erişim belirteçleri yenileme belirteci tarafından yenilenebilir.<br>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.  | Yes |
-| refreshToken | Kareden alınan yenileme belirteci. Geçerli bir süre sona erdiğinde yeni erişim belirteçleri elde etmek için kullanılır.<br>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
+| konak | Kare örneğinin URL 'SI. (örn. mystore.mysquare.com)  | Evet |
+| clientId | Kare uygulamanızla ilişkili istemci KIMLIĞI.  | Evet |
+| clientSecret | Kare uygulamanızla ilişkili istemci gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| accessToken | Kareden alınan erişim belirteci. Kimliği doğrulanmış bir kullanıcıdan açık izinler isteyerek bir kare hesabına sınırlı erişim verir. OAuth erişim belirteçlerinin süresi, verildikten 30 gün sonra dolar, ancak yenileme belirteçlerinin süresi dolmaz. Erişim belirteçleri yenileme belirteci tarafından yenilenebilir.<br>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.  | Evet |
+| refreshToken | Kareden alınan yenileme belirteci. Geçerli bir süre sona erdiğinde yeni erişim belirteçleri elde etmek için kullanılır.<br>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
 Kare iki tür erişim belirtecini destekler: **Personal** ve **OAuth**.
 
@@ -69,7 +69,7 @@ Kare iki tür erişim belirtecini destekler: **Personal** ve **OAuth**.
 
 Data Factory, yalnızca kişisel erişim belirteci ile kimlik doğrulama `accessToken` , OAuth aracılığıyla kimlik doğrulaması gerekir `accessToken` `refreshToken` . [Buradan](https://developer.squareup.com/docs/build-basics/access-tokens)erişim belirtecini nasıl alacağınızı öğrenin.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -109,7 +109,7 @@ Kare içinden veri kopyalamak için, veri kümesinin Type özelliğini **Squareo
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği: **Squareobject** olarak ayarlanmalıdır | Yes |
+| tür | Veri kümesinin Type özelliği: **Squareobject** olarak ayarlanmalıdır | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -139,10 +139,10 @@ Kare içinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü *
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **SquareSource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **SquareSource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Business"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

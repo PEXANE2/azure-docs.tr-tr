@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: e4f31c560fe3dd91689b361ed520e466fd52da1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360019"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Azure AD Bağlayıcısı hesap parolasını değiştirme
@@ -31,7 +31,7 @@ Azure AD Bağlayıcısı hesabının hizmet ücretsiz olması gerekir. Kimlik bi
 Kimlik doğrulama sorunları nedeniyle Azure AD bağlayıcı hesabı Azure AD ile iletişim kuramıyor, parola sıfırlanabilir.
 
 1. Azure AD Connect eşitleme sunucusunda oturum açın ve PowerShell 'i başlatın.
-2. `Add-ADSyncAADServiceAccount` öğesini çalıştırın.
+2. `Add-ADSyncAADServiceAccount` komutunu çalıştırın.
    ![PowerShell cmdlet 'i addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
 3. Azure AD Genel yönetici kimlik bilgilerini sağlayın.
 

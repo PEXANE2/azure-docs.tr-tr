@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029877"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078179"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 
@@ -34,12 +34,12 @@ Bu makalede şunları öğreneceksiniz:
 > * Uygulamanızı, uygulama yapılandırmasına bağlandığınızda yönetilen bir kimlik kullanacak şekilde yapılandırın.
 > * İsteğe bağlı olarak, uygulama yapılandırma Key Vault başvurusu aracılığıyla Key Vault bağlandığınızda Uygulamanızı yönetilen bir kimlik kullanacak şekilde yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Azure Cloud Shell yapılandırıldı](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+* [Azure Cloud Shell yapılandırıldı](../cloud-shell/quickstart.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -69,11 +69,11 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
 1. **Abonelik**altında Azure aboneliğinizi seçin. Uygulamanız için App Service kaynağını seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     ![Yönetilen kimlik ekleme](./media/add-managed-identity.png)
 
-1. İsteğe bağlı: Key Vault erişim vermek istiyorsanız, [Key Vault erişim Ilkesi atama](/azure/key-vault/general/assign-access-policy-portal)bölümündeki yönergeleri izleyin.
+1. İsteğe bağlı: Key Vault erişim vermek istiyorsanız, [Key Vault erişim Ilkesi atama](../key-vault/general/assign-access-policy-portal.md)bölümündeki yönergeleri izleyin.
 
 ## <a name="use-a-managed-identity"></a>Yönetilen kimlik kullanma
 
@@ -185,7 +185,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     Artık diğer uygulama yapılandırma anahtarı gibi Key Vault başvurularına erişebilirsiniz. Yapılandırma sağlayıcısı, `KeyVaultClient` Key Vault kimlik doğrulaması yapmak için yapılandırdığınız ve değeri alacak olan ' i kullanacaktır.
 
 > [!NOTE]
-> `ManagedIdentityCredential` yalnızca yönetilen kimlik kimlik doğrulamasını destekler. Yerel ortamlarda çalışmaz. Kodu yerel olarak çalıştırmak istiyorsanız `DefaultAzureCredential` , hizmet sorumlusu kimlik doğrulamasını da destekleyen kullanmayı göz önünde bulundurun. Ayrıntılar için [bağlantıyı](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) denetleyin.
+> `ManagedIdentityCredential` yalnızca yönetilen kimlik kimlik doğrulamasını destekler. Yerel ortamlarda çalışmaz. Kodu yerel olarak çalıştırmak istiyorsanız `DefaultAzureCredential` , hizmet sorumlusu kimlik doğrulamasını da destekleyen kullanmayı göz önünde bulundurun. Ayrıntılar için [bağlantıyı](/dotnet/api/azure.identity.defaultazurecredential) denetleyin.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

@@ -8,10 +8,10 @@ author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
 ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710728"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
@@ -38,7 +38,7 @@ Ticari Market için Azure uygulama teklifinizi hazırlarken aşağıdaki kaynakl
 
 * Hızlı Başlangıçlar:
 
-    * [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
+    * [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
     * [Azure şablonları en iyi yöntemler Kılavuzu](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Uygulama tanımını yayımlama](../../managed-applications/publish-service-catalog-app.md)
     * [Hizmet kataloğu uygulaması dağıtma](../../managed-applications/deploy-service-catalog-quickstart.md)
@@ -202,7 +202,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 

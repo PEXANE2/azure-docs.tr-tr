@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982127"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde özel Web API 'SI yeteneği
@@ -37,8 +37,8 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
 | `uri` | _JSON_ yükünün GÖNDERILECEĞI Web API 'sinin URI 'si. Yalnızca **https** URI şemasına izin veriliyor |
-| `httpMethod` | Yük gönderilirken kullanılacak yöntem. İzin verilen yöntemler `PUT` veya`POST` |
-| `httpHeaders` | Anahtarların üstbilgi adlarını ve değerlerini temsil ettiği anahtar-değer çiftleri koleksiyonu, yük ile birlikte Web API 'nize gönderilecek üst bilgi değerlerini temsil eder. Şu üst bilgilerin bu koleksiyonda olması yasaktır: `Accept` , `Accept-Charset` ,, `Accept-Encoding` `Content-Length` , `Content-Type` , `Cookie` , `Host` , `TE` , `Upgrade` ,`Via` |
+| `httpMethod` | Yük gönderilirken kullanılacak yöntem. İzin verilen yöntemler `PUT` veya `POST` |
+| `httpHeaders` | Anahtarların üstbilgi adlarını ve değerlerini temsil ettiği anahtar-değer çiftleri koleksiyonu, yük ile birlikte Web API 'nize gönderilecek üst bilgi değerlerini temsil eder. Şu üst bilgilerin bu koleksiyonda olması yasaktır:  `Accept` , `Accept-Charset` ,, `Accept-Encoding` `Content-Length` , `Content-Type` , `Cookie` , `Host` , `TE` , `Upgrade` , `Via` |
 | `timeout` | Seçim Belirtildiğinde, API çağrısını yapan http istemcisinin zaman aşımını gösterir. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Örneğin, `PT60S` 60 saniye için. Ayarlanmamışsa, varsayılan değer olan 30 saniye seçilir. Zaman aşımı en fazla 230 saniyeye ayarlanabilir ve en az 1 saniye olabilir. |
 | `batchSize` | Seçim Her API çağrısı için, kaç "veri kaydı" (aşağıdaki _JSON_ yük yapısına bakın) gönderileceğini belirtir. Ayarlanmamışsa, varsayılan olarak 1000 seçilidir. Dizin oluşturma işleme ve API 'niz üzerinde yükleme arasında uygun bir zorunluluğunu getirir elde etmek için bu parametreyi kullanmanızı öneririz |
 | `degreeOfParallelism` | Seçim Belirtildiğinde, dizin oluşturucunun verdiğiniz bitiş noktasına paralel olarak kullanacağı çağrı sayısını gösterir. Uç noktanız bir istek yükünün çok yüksek altındaysa bu değeri azaltabilir veya uç noktanız daha fazla istek kabul edebilse ve dizin oluşturucunun performansına bir artış istiyorsanız bu değeri azaltabilirsiniz.  Ayarlanmamışsa, varsayılan 5 değeri kullanılır. `degreeOfParallelism`En fazla 10 ve en az 1 olarak ayarlanabilir. |
@@ -87,7 +87,7 @@ Bu beceri için "önceden tanımlanmış" çıkış yok. Web API 'nizin döndür
 Bu _JSON_ yapısı, Web API 'nize gönderilecek yükü temsil eder.
 Her zaman şu kısıtlamalara uyar:
 
-* En üst düzey varlık çağrılır `values` ve bir nesne dizisi olur. Bu tür nesnelerin sayısı en fazla şu kadar olacaktır:`batchSize`
+* En üst düzey varlık çağrılır `values` ve bir nesne dizisi olur. Bu tür nesnelerin sayısı en fazla şu kadar olacaktır: `batchSize`
 * Dizideki her bir nesne `values` ,
     * `recordId`Bu kaydı tanımlamak için kullanılan **benzersiz** bir dize olan bir özellik.
     * `data` _JSON_ nesnesi olan bir özellik. Özelliğin alanları, `data` yetenek tanımının bölümünde belirtilen "adlara" karşılık gelir `inputs` . Bu alanların değeri `source` Bu alanlardan (belgedeki bir alandan ya da başka bir beceriye ait olabilir) olacaktır

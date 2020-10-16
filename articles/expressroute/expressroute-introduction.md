@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: ee690a73907eca3bcd577cf2d983c8abc5409925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 5de3d61f5b671f5ed6685e6cdee25be951fab69e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743072"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071889"
 ---
 # <a name="what-is-azure-expressroute"></a>Azure ExpressRoute nedir?
 ExpressRoute, şirket içi ağlarınızı bir bağlantı sağlayıcısının yardımıyla özel bir bağlantı üzerinden Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure ve Microsoft 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
@@ -36,7 +36,7 @@ Daha fazla bilgi için bkz. [ExpressRoute SSS](expressroute-faqs.md).
 ## <a name="features"></a>Özellikler
 
 ### <a name="layer-3-connectivity"></a>Katman 3 bağlantısı
-Microsoft, bir sektör standardı dinamik yönlendirme protokolü olan BGP 'yi kullanır. Şirket içi ağınız ile Azure 'daki örnekleriniz ile Microsoft ortak adresleri arasındaki rotaları Exchange 'e. Farklı trafik profilleri için ağınızda birden çok BGP oturumu oluştururuz. Daha fazla bilgi [ExpressRoute bağlantı hattı ve yönlendirme etki alanları](expressroute-circuit-peerings.md) makalesinde bulunabilir. 
+Microsoft, şirket içi ağınız ile Azure ve Microsoft ortak adreslerinde bulunan örnekleriniz arasındaki yolları değiştirmek için endüstri standardı bir dinamik yönlendirme protokolü olan BGP'yi kullanır. Farklı trafik profilleri için ağınızda birden çok BGP oturumu oluştururuz. Daha fazla bilgi [ExpressRoute bağlantı hattı ve yönlendirme etki alanları](expressroute-circuit-peerings.md) makalesinde bulunabilir. 
 
 ### <a name="redundancy"></a>Yedeklilik
 Her ExpressRoute bağlantı hattı, bağlantı sağlayıcısından/ağ ucunuzdaki bir [ExpressRoute konumundaki](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) Iki Microsoft Enterprise Edge yönlendiricilerine (MSEE) iki bağlantı içerir. Microsoft, her MSEE için bir adet olmak üzere bağlantı sağlayıcısından veya ağınızın çıkış noktasından ikili BGP bağlantısı gerektirir. Kendi tarafınızdaki yedekli cihazlara veya Ethernet bağlantı hattına dağıtmamayı seçebilirsiniz. Ancak, bağlantı sağlayıcılar bağlantılarınızın yedekli olarak Microsoft’a devredildiğinden emin olmak için yedekli cihazlar kullanır. Yedekli Layer 3 bağlantı yapılandırması [SLA](https://azure.microsoft.com/support/legal/sla/)’mızın geçerli olması için bir gereksinimdir.

@@ -8,10 +8,10 @@ ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
 ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91301210"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Kbbitmq 'i Azure Service Bus ile tümleştirme
@@ -38,27 +38,27 @@ Azure portal ' de, yeni bir kaynak eklemek için büyük artı düğmesine tıkl
 
 Ardından, tümleştirme ' i seçin ve Azure Service Bus ' ye tıklayarak bir mesajlaşma ad alanı oluşturun:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Azure Service Bus 'ı seçin":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Kaynak oluşturma":::
 
 Ad alanı bilgilerini girmeniz istenir. Kullanmak istediğiniz Azure aboneliğini seçin. Bir [kaynak grubunuz](../azure-resource-manager/management/manage-resource-groups-portal.md)yoksa yeni bir tane oluşturabilirsiniz.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Ad alanı oluşturma":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Kaynak oluşturma":::
 
 `rabbitmq`İçin kullanın `Namespace name` , ancak istediğiniz herhangi bir şey olabilir. Ardından `East US` konum için ayarlayın. `Basic`Fiyat katmanı olarak seçin.
 
 Hepsi de varsa, aşağıdaki onay ekranını görmeniz gerekir:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="Ad alanı onayı oluştur":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="Kaynak oluşturma":::
 
 Sonra Azure portal geri döndüğünüzde, `rabbitmq` burada listelenen yeni ad alanınızı görürsünüz. Kendisine bir kuyruk ekleyebilmek için kaynağa erişmek üzere tıklayın.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="Yeni ad alanı olan kaynak listesi":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="Kaynak oluşturma":::
 
 ## <a name="creating-our-azure-service-bus-queue"></a>Azure Service Bus kuyruğumuzu oluşturma
 
 Azure Service Bus ad alanınız olduğuna göre, sol taraftaki düğmeye tıklayın, bu `Queues` `Entities` nedenle yeni bir kuyruk ekleyebilirsiniz:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="Sıra oluştur":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="Kaynak oluşturma":::
 
 Kuyruğun adı, `from-rabbitmq` iletilerin nereden geldiği hakkında bir anımsatıcı olarak olacaktır. Diğer tüm seçenekleri varsayılan olarak bırakabilirsiniz, ancak bunları uygulamanızın gereksinimlerine uyacak şekilde değiştirebilirsiniz.
 
@@ -78,21 +78,21 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 Kuyruğunuza yönelik bir [paylaşılan erişim ilkesi](../storage/common/storage-sas-overview.md) (SAS) oluşturmanız gerekir. bu nedenle, Kbbitmq bu iletiye ileti yayımlayabilir. SAS Ilkesi, kaynağınız ile hangi dış tarafın yapılmasına izin verileceğini belirtmenizi sağlar. Bu düşünce, Kbbitmq 'ın ileti gönderebilmesinde veya sıradan yönetmemelidir.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="SAS Ilkesi Ekle":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="Kaynak oluşturma":::
 
 Kutuyu işaret `Send` edin ve ardından `Create` SAS ilkenize sahip olmak için tıklayın.
 
 İlke oluşturulduktan sonra, **birincil bağlantı dizesini**görmek için üzerine tıklayın. Bu uygulamayı, kbbitmq ile Azure Service Bus konuşmasına olanak verecek şekilde kullanacağız:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="SAS Ilkesini al":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="Kaynak oluşturma":::
 
 Bu bağlantı dizesini kullanabilmeniz için, bunu kbbitmq 'ın AMQP bağlantı biçimine dönüştürmeniz gerekir. [Bağlantı dizesi Dönüştürücüsü aracına](https://red-mushroom-0f7446a0f.azurestaticapps.net/) gidin ve Bağlantı dizenizi forma yapıştırın, Dönüştür ' e tıklayın. Korbbitmq Ready bağlantı dizesi alacaksınız. (Bu web sitesi, tarayıcınızda yerel olarak her şeyi çalıştırır, böylece Verileriniz hat üzerinden gönderilmez). [GitHub](https://github.com/videlalvaro/connstring_to_amqp)'da kaynak koduna erişebilirsiniz.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Bağlantı dizesini Dönüştür":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Kaynak oluşturma":::
 
 Şimdi tarayıcılarımızda Kbbitmq yönetim eklentisini açın `http://localhost:15672/#/dynamic-shovels` ve adresine giderek `Admin -> Shovel Management` , bir kbıbitmq kuyruğundan Azure Service Bus kuyruğuna ileti göndermek için gereken yeni bir showlekinizi ekleyebilirsiniz.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="Kbıbitmq Sholevel ekleme":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="Kaynak oluşturma":::
 
 Burada, Showsize `azure` 'yı çağırın ve `AMQP 0.9.1` kaynak protokolü olarak öğesini seçin. Ekran görüntüsünde, `amqp://` bize yerel bir kbıı MQ sunucusuna bağlanan varsayılan URI değeri sunuyoruz. Bunu geçerli dağıtımınız ile uyarlayadığınızdan emin olun.
 
@@ -110,15 +110,15 @@ amqps://rabbitmq-shovel:StringOfRandomChars@rabbitmq.servicebus.windows.net:5671
 
 Kbbitmq yönetim arabiriminde gideceğiz `Queues` , `azure` kuyruğu seçebilir ve panel için arama yapabilirsiniz `Publish message` . İletileri doğrudan kuyruğunuza yayımlamanıza olanak sağlayacak bir form görüntülenir. Bizim örneğimizde şu şekilde ekleyeceğiz `fist message` `Payload` `Publish Message` :
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="İlk iletiyi Yayımla":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Kaynak oluşturma":::
 
 Azure 'a geri dönün ve kuyruğunuzu inceleyin. `Service Bus Explorer`Sol panelde ve ardından _göz at_ düğmesine tıklayın. Hepsi de varsa, kuyruğunuzun şimdi bir ileti olduğunu görürsünüz. Oley, tebrikler!
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Azure Service Bus kuyruğu":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Kaynak oluşturma":::
 
 Ancak, Oybbitmq ' den gönderdiğiniz iletinin olduğundan emin olalım. Bu `Peek` sekmeyi seçin ve `Peek` Sıradaki son iletileri almak için düğmeye tıklayın. İçeriğini incelemek için iletiye tıklayın. Aşağıda listelenen görüntüye benzer bir şey görmeniz gerekir `first message` .
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="Kuyruk Özeti":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="Kaynak oluşturma":::
 
 ## <a name="lets-recap"></a>Redelim
 

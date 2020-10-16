@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
 ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405182"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory kullanarak kar tanesi içindeki verileri kopyalama ve dönüştürme
@@ -39,7 +39,7 @@ Kopyalama etkinliği için, bu kar tanesi bağlayıcı aşağıdaki işlevleri d
 
 Azure SYNAPSE Analytics çalışma alanını kullandığınızda kar tanesi havuz desteklenmez.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -51,9 +51,9 @@ Aşağıdaki özellikler, bir kar tanesi bağlantılı hizmeti için desteklenir
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | :--------------- | :----------------------------------------------------------- | :------- |
-| tür             | Tür özelliğinin **kar**tanesi olarak ayarlanması gerekir.              | Yes      |
-| Dizisi | Kar tanesi örneğine bağlanmak için gereken bilgileri belirtir. Azure Key Vault bir parola veya tam bağlantı dizesi koyabilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki örneklere ve [Azure Key Vault 'de mağaza kimlik bilgileri](store-credentials-in-key-vault.md) ' ne bakın.<br><br>Bazı tipik ayarlar:<br>- **Hesap adı:** Kar sunan hesabınızın  [tam hesap adı](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (bölge ve bulut platformunu tanımlayan ek segmentler dahil), örn. xy12345. Doğu-US-2. Azure.<br/>- **Kullanıcı adı:** Bağlantının kullanıcı oturum açma adı.<br>- **Parola:** Kullanıcının parolası.<br>- **Veritabanı:** Bağlandıktan sonra kullanılacak varsayılan veritabanı. Belirtilen rolün ayrıcalıkları olan mevcut bir veritabanı olmalıdır.<br>- **Ambar:** Bağlandıktan sonra kullanılacak sanal ambar. Belirtilen rolün ayrıcalıkları olan mevcut bir ambar olması gerekir.<br>- **Rol:** Kar tanesi oturumunda kullanılacak varsayılan erişim denetimi rolü. Belirtilen rol, belirtilen kullanıcıya zaten atanmış olan mevcut bir rol olmalıdır. Varsayılan rol GENELDIR. | Yes      |
-| connectVia       | Veri deposuna bağlanmak için kullanılan [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanını kullanır. | No       |
+| tür             | Tür özelliğinin **kar**tanesi olarak ayarlanması gerekir.              | Evet      |
+| Dizisi | Kar tanesi örneğine bağlanmak için gereken bilgileri belirtir. Azure Key Vault bir parola veya tam bağlantı dizesi koyabilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki örneklere ve [Azure Key Vault 'de mağaza kimlik bilgileri](store-credentials-in-key-vault.md) ' ne bakın.<br><br>Bazı tipik ayarlar:<br>- **Hesap adı:** Kar sunan hesabınızın  [tam hesap adı](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (bölge ve bulut platformunu tanımlayan ek segmentler dahil), örn. xy12345. Doğu-US-2. Azure.<br/>- **Kullanıcı adı:** Bağlantının kullanıcı oturum açma adı.<br>- **Parola:** Kullanıcının parolası.<br>- **Veritabanı:** Bağlandıktan sonra kullanılacak varsayılan veritabanı. Belirtilen rolün ayrıcalıkları olan mevcut bir veritabanı olmalıdır.<br>- **Ambar:** Bağlandıktan sonra kullanılacak sanal ambar. Belirtilen rolün ayrıcalıkları olan mevcut bir ambar olması gerekir.<br>- **Rol:** Kar tanesi oturumunda kullanılacak varsayılan erişim denetimi rolü. Belirtilen rol, belirtilen kullanıcıya zaten atanmış olan mevcut bir rol olmalıdır. Varsayılan rol GENELDIR. | Evet      |
+| connectVia       | Veri deposuna bağlanmak için kullanılan [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır       |
 
 **Örnek:**
 
@@ -111,9 +111,9 @@ Aşağıdaki özellikler, kar tanesi veri kümesi için desteklenir.
 
 | Özellik  | Açıklama                                                  | Gerekli                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| tür      | Veri kümesinin Type özelliği, **kar tablosu**olarak ayarlanmalıdır. | Yes                         |
+| tür      | Veri kümesinin Type özelliği, **kar tablosu**olarak ayarlanmalıdır. | Evet                         |
 | schema | Şemanın adı. Şema adı ADF 'de büyük/küçük harfe duyarlıdır. |Kaynak için Hayır, havuz için Evet  |
-| table | Tablo/görünüm adı. ADF 'de tablo adının büyük/küçük harfe duyarlı olduğunu aklınızda edin. |Kaynak için Hayır, havuz için Evet  |
+| tablo | Tablo/görünüm adı. ADF 'de tablo adının büyük/küçük harfe duyarlı olduğunu aklınızda edin. |Kaynak için Hayır, havuz için Evet  |
 
 **Örnek:**
 
@@ -149,13 +149,13 @@ Verileri kar 'lerden kopyalamak için, etkinlik **kaynağını** kopyalama böl�
 
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| tür                         | Kopyalama etkinliği kaynağının Type özelliği **SnowflakeSource**olarak ayarlanmalıdır. | Yes      |
-| sorgu          | Kar tanesi 'nden verileri okumak için SQL sorgusunu belirtir. Şema, tablo ve sütun adları küçük harf içeriyorsa, sorgu gibi nesne tanımlayıcısını tırnak içine alarak tırnak işareti `select * from "schema"."myTable"` .<br>Saklı yordamın yürütülmesi desteklenmiyor. | No       |
-| exportSettings | Kar tanesi 'nden verileri almak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | No       |
+| tür                         | Kopyalama etkinliği kaynağının Type özelliği **SnowflakeSource**olarak ayarlanmalıdır. | Evet      |
+| sorgu          | Kar tanesi 'nden verileri okumak için SQL sorgusunu belirtir. Şema, tablo ve sütun adları küçük harf içeriyorsa, sorgu gibi nesne tanımlayıcısını tırnak içine alarak tırnak işareti `select * from "schema"."myTable"` .<br>Saklı yordamın yürütülmesi desteklenmiyor. | Hayır       |
+| exportSettings | Kar tanesi 'nden verileri almak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | Hayır       |
 | ***Altında `exportSettings` :*** |  |  |
-| tür | Dışa aktarma komutunun türü, **kar Keexportcopycommand**olarak ayarlanır. | Yes |
-| additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: MAX_FILE_SIZE, ÜZERINE yaz. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | No |
-| additionalFormatOptions | Komutları anahtar-değer çiftleri sözlüğü olarak kopyalamak için belirtilen ek dosya biçimi seçenekleri. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | No |
+| tür | Dışa aktarma komutunun türü, **kar Keexportcopycommand**olarak ayarlanır. | Evet |
+| additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: MAX_FILE_SIZE, ÜZERINE yaz. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | Hayır |
+| additionalFormatOptions | Komutları anahtar-değer çiftleri sözlüğü olarak kopyalamak için belirtilen ek dosya biçimi seçenekleri. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | Hayır |
 
 #### <a name="direct-copy-from-snowflake"></a>Kar tanesi 'nden doğrudan kopya
 
@@ -280,13 +280,13 @@ Verileri kar 'a kopyalamak için, etkinlik **havuzunu** Kopyala bölümünde aş
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| tür              | Kopyalama etkinliği havuzunun Type özelliği, **SnowflakeSink**olarak ayarlanır. | Yes                                           |
-| Ön Copyscrıpt     | Kopyalama etkinliği için, her çalıştırmada verileri kar alanına yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | No                                            |
-| importSettings | Kar ayarlarına veri yazmak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | No |
+| tür              | Kopyalama etkinliği havuzunun Type özelliği, **SnowflakeSink**olarak ayarlanır. | Evet                                           |
+| Ön Copyscrıpt     | Kopyalama etkinliği için, her çalıştırmada verileri kar alanına yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | Hayır                                            |
+| importSettings | Kar ayarlarına veri yazmak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | Hayır |
 | ***Altında `importSettings` :*** |                                                              |  |
-| tür | Import komutunun türü, **kar Keımportcopycommand**olarak ayarlanır. | Yes |
-| additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: ON_ERROR, zorla, LOAD_UNCERTAIN_FILES. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | No |
-| additionalFormatOptions | Anahtar-değer çiftleri sözlüğü olarak sağlanmış olan COPY komutuna ek dosya biçimi seçenekleri verilmiştir. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | No |
+| tür | Import komutunun türü, **kar Keımportcopycommand**olarak ayarlanır. | Evet |
+| additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: ON_ERROR, zorla, LOAD_UNCERTAIN_FILES. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | Hayır |
+| additionalFormatOptions | Anahtar-değer çiftleri sözlüğü olarak sağlanmış olan COPY komutuna ek dosya biçimi seçenekleri verilmiştir. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | Hayır |
 
 #### <a name="direct-copy-to-snowflake"></a>Kar için doğrudan kopya
 
@@ -443,9 +443,9 @@ Aşağıdaki tabloda, kar havuz tarafından desteklenen özellikler listelenmiş
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Yöntemi Güncelleştir | Kar hedefi hedefinde hangi işlemlere izin verileceğini belirtin.<br>Satırları güncelleştirmek, kaldırmak veya silmek için, bu eylemler için satırları etiketlemek üzere bir [alter Row dönüşümü](data-flow-alter-row.md) gereklidir. | Yes | `true` veya `false` | siler <br/>eklenebilir <br/>güncellenebilir <br/>upsertable |
-| Anahtar sütunlar | Güncelleştirmeler, yukarı ve silme için bir anahtar sütunu veya sütunları ayarlanacak satırı belirleyecek şekilde ayarlanmalıdır. | No | Dizi | keys |
-| Tablo eylemi | Yazmadan önce hedef tablodaki tüm satırların yeniden oluşturulup kaldırılacağını belirler.<br>- **Hiçbiri**: tabloya hiçbir eylem yapılmaz.<br>- **Yeniden oluştur**: tablo bırakılır ve yeniden oluşturulur. Dinamik olarak yeni bir tablo oluşturuluyoruz gereklidir.<br>- **Kes**: hedef tablodaki tüm satırlar kaldırılacak. | No | `true` veya `false` | Oluştur<br/>kesilemedi |
+| Yöntemi Güncelleştir | Kar hedefi hedefinde hangi işlemlere izin verileceğini belirtin.<br>Satırları güncelleştirmek, kaldırmak veya silmek için, bu eylemler için satırları etiketlemek üzere bir [alter Row dönüşümü](data-flow-alter-row.md) gereklidir. | Evet | `true` veya `false` | siler <br/>eklenebilir <br/>güncellenebilir <br/>upsertable |
+| Anahtar sütunlar | Güncelleştirmeler, yukarı ve silme için bir anahtar sütunu veya sütunları ayarlanacak satırı belirleyecek şekilde ayarlanmalıdır. | Hayır | Dizi | keys |
+| Tablo eylemi | Yazmadan önce hedef tablodaki tüm satırların yeniden oluşturulup kaldırılacağını belirler.<br>- **Hiçbiri**: tabloya hiçbir eylem yapılmaz.<br>- **Yeniden oluştur**: tablo bırakılır ve yeniden oluşturulur. Dinamik olarak yeni bir tablo oluşturuluyoruz gereklidir.<br>- **Kes**: hedef tablodaki tüm satırlar kaldırılacak. | Hayır | `true` veya `false` | Oluştur<br/>kesilemedi |
 
 #### <a name="snowflake-sink-script-examples"></a>Kar tanesi havuz betiği örnekleri
 

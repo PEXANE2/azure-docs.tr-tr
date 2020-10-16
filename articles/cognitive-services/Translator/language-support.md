@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
 ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568106"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
@@ -101,7 +101,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Sırpça (Latin)|   `sr-Latn`       |
 |Slovakça|    `sk`    |
 |Slovence| `sl`    |
-|Spanish|   `es`    |
+|İspanyolca|   `es`    |
 |Svahili dili|   `sw`    |
 |İsveççe|   `sv`    |
 |Tahiti dili|  `ty`    |
@@ -172,7 +172,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Sırpça (Latin)|   `sr-Latn`       |
 |Slovakça|    `sk`    |
 |Slovence| `sl`    |
-|Spanish|   `es`    |
+|İspanyolca|   `es`    |
 |Svahili dili|   `sw`    |
 |İsveççe|   `sv`    |
 |Tahiti dili|  `ty`    |
@@ -262,7 +262,7 @@ Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingiliz
 | Sırpça (Latin)      | `sr-Latn`          |
 | Slovakça     | `sk`          |
 | Slovence      | `sl`          |
-| Spanish      | `es`          |
+| İspanyolca      | `es`          |
 | Svahili dili      | `sw`          |
 | İsveççe      | `sv`          |
 | Tamil dili      | `ta`          |
@@ -334,7 +334,7 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Sırpça (Latin)      | `sr-Latn`          |
 | Slovakça     | `sk`          |
 | Slovence      | `sl`          |
-| Spanish      | `es`          |
+| İspanyolca      | `es`          |
 | Svahili dili|  `sw`    |
 | İsveççe      | `sv`          |
 |Tahiti dili|  `ty`    |

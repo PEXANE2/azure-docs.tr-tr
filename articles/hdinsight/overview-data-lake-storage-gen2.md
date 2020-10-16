@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82195137"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>HDInsight 'ta Azure Data Lake Storage 2. genel bakış
@@ -57,11 +57,11 @@ Azure Data Lake Storage 2., HDInsight 'tan Azure Storage 'daki dosyalara erişme
 
 URI şeması, SSL şifreli erişim sağlar.
 
-`<FILE_SYSTEM_NAME>`Data Lake Storage 2. dosya sisteminin yolunu tanımlar.
+`<FILE_SYSTEM_NAME>` Data Lake Storage 2. dosya sisteminin yolunu tanımlar.
 
-`<ACCOUNT_NAME>`Azure depolama hesabı adını tanımlar. Tam uygun etki alanı adı (FQDN) gereklidir.
+`<ACCOUNT_NAME>` Azure depolama hesabı adını tanımlar. Tam uygun etki alanı adı (FQDN) gereklidir.
 
-`<PATH>`dosya ya da dizin \ yol adı.
+`<PATH>` dosya ya da dizin \ yol adı.
 
 `<FILE_SYSTEM_NAME>`Ve değerleri `<ACCOUNT_NAME>` belirtilmemişse, varsayılan dosya sistemi kullanılır. Varsayılan dosya sistemindeki dosyalar için göreli bir yol veya mutlak bir yol kullanın. Örneğin, `hadoop-mapreduce-examples.jar` HDInsight kümeleriyle birlikte gelen dosyaya aşağıdaki yollardan biri kullanılarak başvurulabilir:
 
@@ -77,6 +77,6 @@ Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. URI 'Si kullanma](../sto
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Lake Storage 2. giriş](../storage/blobs/data-lake-storage-introduction.md)
+* [Azure Data Lake Storage 2. Nesil'e giriş](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure Depolama’ya giriş](../storage/common/storage-introduction.md)
 * [Azure Data Lake Storage 1. Nesil’e genel bakış](./overview-data-lake-storage-gen1.md)

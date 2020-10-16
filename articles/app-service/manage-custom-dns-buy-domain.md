@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970045"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için bir özel etki alanı adı satın alma
@@ -18,7 +18,7 @@ App Service etki alanları doğrudan Azure 'da yönetilen en üst düzey etki al
 
 Azure VM veya Azure depolama için bkz. [Azure VM veya Azure Storage 'a App Service etki alanı atama](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -61,7 +61,7 @@ App Service planı **F1** katmanında değilse, **Ölçek artırma** sayfasını
 
 **Uygula**’ya tıklayın.
 
-:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Üretim kategorisindeki üretim sekmesindeki özel etki alanı fiyatlandırma katmanlarının ekran görüntüsü, B1 planı ve Uygula düğmesi vurgulanır.":::
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Ölçek Genişletme (App Service planı) seçiliyken uygulama sayfasının sol gezinti menüsünün ekran görüntüsü.":::
 
 Aşağıdaki bildirimi gördüğünüzde, ölçeklendirme işlemi tamamlanmıştır.
 
@@ -168,7 +168,7 @@ Satın alınan etki alanının **App Service etki alanları** bölümünde liste
 **Konak adı ekle**'yi seçin.
 
 ### <a name="configure-hostname"></a>Ana bilgisayar adını Yapılandır
-Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örnek:
+Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örneğin:
 
 - kontoso.net
 - www \. kontoso.net

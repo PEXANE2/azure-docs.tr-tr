@@ -1,5 +1,5 @@
 ---
-title: Bilişsel hizmetler için müşteri tarafından yönetilen anahtarlar
+title: Bilişsel hizmetler için Customer-Managed anahtarları
 titleSuffix: Cognitive Services
 description: Azure portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma hakkında bilgi edinin. Müşteri tarafından yönetilen anahtarlar, erişim denetimleri oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal edebilmesini sağlar.
 services: cognitive-services
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 1369f30c4a3bcb0a391a5f2b2a63191590afd622
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84310708"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Bilişsel hizmetler için Azure Key Vault müşteri tarafından yönetilen anahtarları yapılandırın
 
-Bilişsel hizmetler için Azure Key Vault ile müşteri tarafından yönetilen anahtarların etkinleştirilmesi, ürüne göre farklılık gösterir. Hizmete özgü yönergeler için bu bağlantıları kullanın:
+Bilişsel hizmetler için Azure Key Vault Customer-Managed anahtarları etkinleştirme işlemi ürüne göre farklılık gösterir. Hizmete özgü yönergeler için bu bağlantıları kullanın:
 
 ## <a name="vision"></a>Görsel
 
@@ -39,4 +39,4 @@ Bilişsel hizmetler için Azure Key Vault ile müşteri tarafından yönetilen a
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
-* [Bilişsel hizmetler müşteri tarafından yönetilen anahtar Istek Formu](https://aka.ms/cogsvc-cmk)
+* [Bilişsel hizmetler Customer-Managed anahtar Isteği formu](https://aka.ms/cogsvc-cmk)

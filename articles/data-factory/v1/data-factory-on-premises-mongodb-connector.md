@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79281346"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB 'Den veri taşıma
@@ -30,7 +30,7 @@ Bu makalede, verileri şirket içi MongoDB veritabanından taşımak için Azure
 
 Şirket içi bir MongoDB veri deposundaki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir MongoDB veri deposundaki verileri diğer veri depolarına taşımayı destekler, ancak verileri diğer veri depolarından MongoDB veri deposuna taşımak için kullanmaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure Data Factory hizmetinin şirket içi MongoDB veritabanınıza bağlanabilmesi için aşağıdaki bileşenleri yüklemelisiniz:
 
 - Desteklenen MongoDB sürümleri şunlardır: 2,4, 2,6, 3,0, 3,2, 3,4 ve 3,6.
@@ -67,7 +67,7 @@ Aşağıdaki tabloda, **OnPremisesMongoDB** bağlı HIZMETINE özgü JSON öğel
 | sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
 | port |MongoDB sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |İsteğe bağlı, varsayılan değer: 27017 |
 | authenticationType |Temel veya anonim. |Evet |
-| kullanıcı adı |MongoDB 'ye erişmek için Kullanıcı hesabı. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
+| username |MongoDB 'ye erişmek için Kullanıcı hesabı. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
 | password |Kullanıcının parolası. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
 | authSource |Kimlik doğrulaması için kimlik bilgilerinizi denetlemek üzere kullanmak istediğiniz MongoDB veritabanının adı. |İsteğe bağlı (temel kimlik doğrulaması kullanılıyorsa). Varsayılan: yönetici hesabını ve databaseName özelliği kullanılarak belirtilen veritabanını kullanır. |
 | Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Evet |
@@ -321,14 +321,14 @@ Sanal tablolar, gerçek tablodaki verilere başvurur ve bu da sürücünün, ver
 ### <a name="example"></a>Örnek
 Örneğin, aşağıdaki "ExampleTable" tablosu, her hücrede bir nesne dizisi olan tek bir sütun içeren bir MongoDB tablosu ve bir sütun skaler türlerden oluşan bir dizi içeren bir sütun içerir.
 
-| _id | Müşteri Adı | Faturalar | Hizmet düzeyi | Derecelendirmeler |
+| _id | Müşteri Adı | Faturalar | Hizmet Düzeyi | Derecelendirmeler |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", öğe: "Toaster", Price: "456", indirim: "0.2"}, {invoice_id: "124", öğe: "oven", Fiyat: "1235", indirim: "0,2"}] |Silver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", öğe: "Fridge", Price: "12543", indirim: "0,0"}] |Gold |[1, 2] |
 
 Bu tek tabloyu temsil eden sürücü birden çok sanal tablo oluşturur. İlk sanal tablo, aşağıda gösterildiği gibi "ExampleTable" adlı temel tablodur. Temel tablo özgün tablonun tüm verilerini içerir, ancak dizilerdeki veriler atlanmıştır ve sanal tablolarda genişletilir.
 
-| _id | Müşteri Adı | Hizmet düzeyi |
+| _id | Müşteri Adı | Hizmet Düzeyi |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Gold |
@@ -343,8 +343,8 @@ Aşağıdaki tablolarda, örnekteki özgün dizileri temsil eden sanal tablolar 
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | öğe | price | İndirim |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |Toaster |456 |0,2 |
-| 1111 |1 |124 |oven |1235 |0,2 |
+| 1111 |0 |123 |Toaster |456 |0.2 |
+| 1111 |1 |124 |oven |1235 |0.2 |
 | 2222 |0 |135 |buzdolabı |12543 |0,0 |
 
 "ExampleTable_Ratings" tablosu:

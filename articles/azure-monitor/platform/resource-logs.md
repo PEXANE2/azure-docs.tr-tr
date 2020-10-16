@@ -1,5 +1,5 @@
 ---
-title: Azure Kaynak günlükleri
+title: Azure kaynak günlükleri
 description: Azure Kaynak günlüklerinin Azure Izleyici 'de bir Log Analytics çalışma alanına akışını nasıl sağlayacağınızı öğrenin.
 author: bwren
 services: azure-monitor
@@ -8,13 +8,13 @@ ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87800509"
 ---
-# <a name="azure-resource-logs"></a>Azure Kaynak günlükleri
+# <a name="azure-resource-logs"></a>Azure kaynak günlükleri
 Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.
 
 Oluşturduğunuz her Azure kaynağı için otomatik olarak bir tanılama ayarı oluşturmak üzere [Azure ilkesi 'ni](../deploy-scale.md) kullanma hakkında ayrıntılı bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları](diagnostic-settings.md) oluşturma.
@@ -54,7 +54,7 @@ AzureDiagnostics tablosu şöyle görünür:
 | ... |
 
 ### <a name="resource-specific"></a>Kaynağa özgü
-Bu modda, seçilen çalışma alanındaki tek tablolar, tanılama ayarında seçilen her kategori için oluşturulur. Bu yöntem, günlük sorgularındaki verilerle çalışmayı çok daha kolay hale getiren, şemaların ve yapısının daha iyi keşfedilmesini sağlayan, hem alma gecikmesi hem de sorgu sürelerinde performansı artıran ve belirli bir tabloda RBAC hakları verme olanağı sağladığından önerilir. Tüm Azure Hizmetleri, sonunda kaynağa özgü moda geçirilir. 
+Bu modda, seçilen çalışma alanındaki tek tablolar, tanılama ayarında seçilen her kategori için oluşturulur. Bu yöntem, günlük sorgularındaki verilerle çalışmayı çok daha kolay hale getiren, şemaların ve yapısının daha iyi keşfedilmesini sağlayan, hem alma gecikmesi hem de sorgu sürelerinde performansı artıran ve belirli bir tabloda RBAC hakları verme olanağı sağladığından önerilir. Tüm Azure hizmetleri sonunda Resource-Specific moduna geçirilir. 
 
 Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
  
@@ -85,7 +85,7 @@ Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
 
 
 ### <a name="select-the-collection-mode"></a>Koleksiyon modunu seçin
-Azure kaynaklarının çoğu, verileri bir seçim yapmadan **Azure tanılama** veya **kaynağa özgü modda** çalışma alanına yazar. Hangi modun kullandığı hakkında ayrıntılı bilgi edinmek için [her hizmet için belgelere](./resource-logs-schema.md) bakın. Tüm Azure Hizmetleri, sonunda kaynağa özgü modu kullanacaktır. Bu geçişin bir parçası olarak, bazı kaynaklar tanılama ayarında bir mod seçmenizi sağlayacak. Tüm yeni tanılama ayarları için kaynağa özgü modu belirtin çünkü bu, verileri yönetmeyi kolaylaştırır ve daha sonraki bir tarihte karmaşık geçişlere karşı kaçınmanıza yardımcı olabilir.
+Azure kaynaklarının çoğu, verileri bir seçim yapmadan **Azure tanılama** veya **kaynağa özgü modda** çalışma alanına yazar. Hangi modun kullandığı hakkında ayrıntılı bilgi edinmek için [her hizmet için belgelere](./resource-logs-schema.md) bakın. Tüm Azure hizmetleri sonunda Resource-Specific modu kullanacaktır. Bu geçişin bir parçası olarak, bazı kaynaklar tanılama ayarında bir mod seçmenizi sağlayacak. Tüm yeni tanılama ayarları için kaynağa özgü modu belirtin çünkü bu, verileri yönetmeyi kolaylaştırır ve daha sonraki bir tarihte karmaşık geçişlere karşı kaçınmanıza yardımcı olabilir.
   
    ![Tanılama ayarları mod seçicisi](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
@@ -95,7 +95,7 @@ Azure kaynaklarının çoğu, verileri bir seçim yapmadan **Azure tanılama** v
 
 Mevcut bir tanılama ayarını kaynağa özgü mod olarak değiştirebilirsiniz. Bu durumda, zaten toplanmış olan veriler, çalışma alanının saklama ayarına göre kaldırılana kadar _AzureDiagnostics_ tablosunda kalır. Adanmış tabloda yeni veriler toplanacak. Her iki tablo genelinde verileri sorgulamak için [UNION](/azure/kusto/query/unionoperator) işlecini kullanın.
 
-Kaynağa özgü modu destekleyen Azure hizmetleri hakkında duyurular için [Azure Updates](https://azure.microsoft.com/updates/) blogunu izlemeye devam edin.
+Resource-Specific modunu destekleyen Azure hizmetleri hakkında duyurular için [Azure Updates](https://azure.microsoft.com/updates/) blogunu izlemeye devam edin.
 
 ### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics içinde sütun sınırı
 Azure Izleyici günlüklerinde herhangi bir tablo için 500 Özellik sınırı vardır. Bu sınıra ulaşıldığında, ilk 500 dışında herhangi bir özelliği olan verileri içeren tüm satırlar alma zamanında bırakılır. *AzureDiagnostics* tablosu, bu sınıra yönelik olan tüm Azure hizmetlerinin özelliklerini içerdiğinden bu sınıra açıktır.

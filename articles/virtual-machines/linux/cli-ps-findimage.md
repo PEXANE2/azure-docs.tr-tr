@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374091"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI ile Azure Market'te Linux VM görüntülerini bulma
 
 Bu konu başlığında, Azure Marketi 'nde VM görüntülerini bulmak için Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır. CLı, Kaynak Yöneticisi şablonları veya diğer araçlarla programlı bir şekilde VM oluştururken Market görüntüsü belirtmek için bu bilgileri kullanın.
 
-Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/) storefront, [Azure Portal](https://portal.azure.com)veya [Azure PowerShell](../windows/cli-ps-findimage.md)kullanarak kullanılabilir görüntülere ve tekliflere de gözatın. 
+Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/) storefront, [Azure Portal](https://portal.azure.com)veya  [Azure PowerShell](../windows/cli-ps-findimage.md)kullanarak kullanılabilir görüntülere ve tekliflere de gözatın. 
 
 En son [Azure CLI](/cli/azure/install-azure-cli) 'yi yüklediğinizden ve bir Azure hesabında () oturum açtığınızdan emin olun `az login` .
 
@@ -192,7 +192,7 @@ Belirli bir yayımcının tekliflerini bulmak için bu bilgileri kullanın. Örn
 az vm image list-offers --location westus --publisher Canonical --output table
 ```
 
-Çıktı:
+Çıkış:
 
 ```
 Location    Name
@@ -209,7 +209,7 @@ Batı ABD bölgesinde, kurallı olarak *Ubuntuserver* teklifini Azure üzerinde 
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
 ```
 
-Çıktı:
+Çıkış:
 
 ```
 Location    Name
@@ -284,7 +284,7 @@ Bir görüntünün satın alma planı bilgilerini görüntülemek için [az VM I
 az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 ```
 
-Çıktı:
+Çıkış:
 
 ```
 {
@@ -305,7 +305,7 @@ BitNami görüntüsü tarafından Minbbitmq sertifikalı benzer bir komutun çal
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 ```
-Çıktı:
+Çıkış:
 
 ```
 {
@@ -327,7 +327,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 
 ### <a name="accept-the-terms"></a>Koşulları kabul edin
 
-Lisans koşullarını görüntülemek ve kabul etmek için [az VM Image Accept-terms](/cli/azure/vm/image?) komutunu kullanın. Koşulları kabul ettiğinizde, aboneliğinizde programlı dağıtımı etkinleştirirsiniz. Her görüntü için abonelik başına koşulları kabul etmeniz yeterlidir. Örnek:
+Lisans koşullarını görüntülemek ve kabul etmek için [az VM Image Accept-terms](/cli/azure/vm/image?) komutunu kullanın. Koşulları kabul ettiğinizde, aboneliğinizde programlı dağıtımı etkinleştirirsiniz. Her görüntü için abonelik başına koşulları kabul etmeniz yeterlidir. Örneğin:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest

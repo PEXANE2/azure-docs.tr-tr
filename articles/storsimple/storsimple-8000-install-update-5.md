@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: bbac6eade634ffcfdc47ae3d22b32e0bd429b7c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513177"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>StorSimple cihazınıza güncelleştirme 5 ' i yükledikten sonra
@@ -78,21 +78,21 @@ Aşağıdaki düzeltmeleri önceden belirlenmiş sıraya ve önerilen klasörler
 
 | Sipariş verme | KB | Açıklama | Güncelleştirme türü | Yükleme saati |Klasöre yüklensin|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Yazılım güncelleştirmesi<br> Hem _HcsSoftwareUpdate.exe_ hem de _CisMSDAgent.exe_ indir |Normal <br></br>Kesintiye uğramamış |~ 25 dakika |FirstOrderUpdate|
+| 1. |KB4037264 |Yazılım güncelleştirmesi<br> Hem _HcsSoftwareUpdate.exe_ hem de _CisMSDAgent.exe_ indir |Düzenli <br></br>Kesintiye uğramamış |~ 25 dakika |FirstOrderUpdate|
 
 Güncelleştirme 4 çalıştıran bir cihazdan güncelleştirme yapıyorsanız, işletim sistemi toplu güncelleştirmelerini yalnızca ikinci sipariş güncelleştirmeleri olarak yüklemeniz gerekir.
 
 | Sipariş verme | KB | Açıklama | Güncelleştirme türü | Yükleme saati |Klasöre yüklensin|
 | --- | --- | --- | --- | --- | --- |
-| 2A. |KB4025336 |İşletim sistemi toplu güncelleştirmeler paketi <br> Windows Server 2012 R2 sürümünü indirin |Normal <br></br>Kesintiye uğramamış |- |SecondOrderUpdate|
+| 2A. |KB4025336 |İşletim sistemi toplu güncelleştirmeler paketi <br> Windows Server 2012 R2 sürümünü indirin |Düzenli <br></br>Kesintiye uğramamış |- |SecondOrderUpdate|
 
 Güncelleştirme 3 veya önceki bir sürümünü çalıştıran bir cihazdan yüklüyorsanız, toplu güncelleştirmelere ek olarak aşağıdakileri de yüklemeniz gerekir.
 
 | Sipariş verme | KB | Açıklama | Güncelleştirme türü | Yükleme saati |Klasöre yüklensin|
 | --- | --- | --- | --- | --- | --- |
-| 7.. |KB4011841 <br> KB4011842 |LSI sürücü ve bellenim güncelleştirmeleri <br> USMBELLENIM Güncelleştirmesi (sürüm 3,38) |Normal <br></br>Kesintiye uğramamış |~ 3 saat <br> (2A 'yı içerir. + 2B. + 2C.)|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |İşletim sistemi güvenlik güncelleştirmeleri paketi <br> Windows Server 2012 R2 sürümünü indirin |Normal <br></br>Kesintiye uğramamış |- |SecondOrderUpdate|
-| 2B. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |İşletim sistemi güncelleştirmeleri paketi <br> Windows Server 2012 R2 sürümünü indirin |Normal <br></br>Kesintiye uğramamış |- |SecondOrderUpdate|
+| 7.. |KB4011841 <br> KB4011842 |LSI sürücü ve bellenim güncelleştirmeleri <br> USMBELLENIM Güncelleştirmesi (sürüm 3,38) |Düzenli <br></br>Kesintiye uğramamış |~ 3 saat <br> (2A 'yı içerir. + 2B. + 2C.)|SecondOrderUpdate|
+| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |İşletim sistemi güvenlik güncelleştirmeleri paketi <br> Windows Server 2012 R2 sürümünü indirin |Düzenli <br></br>Kesintiye uğramamış |- |SecondOrderUpdate|
+| 2B. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |İşletim sistemi güncelleştirmeleri paketi <br> Windows Server 2012 R2 sürümünü indirin |Düzenli <br></br>Kesintiye uğramamış |- |SecondOrderUpdate|
 
 
 Ayrıca, önceki tablolarda gösterilen tüm güncelleştirmelerin üzerine disk üretici yazılımı güncelleştirmelerini yüklemeniz gerekebilir. Cmdlet 'ini çalıştırarak, disk üretici yazılımı güncelleştirmelerine ihtiyacınız olup olmadığını doğrulayabilirsiniz `Get-HcsFirmwareVersion` . Bu bellenim sürümlerini çalıştırıyorsanız:,,,,,,,,,,,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N003` `0107` Bu güncelleştirmeleri yüklemeniz gerekmez.

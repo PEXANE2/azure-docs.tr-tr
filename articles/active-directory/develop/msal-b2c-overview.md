@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119802"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Azure AD B2C ile çalışmak için JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
@@ -201,7 +201,7 @@ Kullanıcı **parolayı unutma**seçeneğini belirlediğinde, uygulamanız kodun
 
     Parolasını sıfırladıktan sonra, Kullanıcı yeniden oturum açmak için uygulamaya geri döndürülür.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C tarafından gösterilen parola sıfırlama akışı ekranları" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C tarafından görünen oturum açma ekranı" border="false":::
 
     Hata kodları ve özel durumları işleme hakkında daha fazla bilgi için bkz. [msal hata ve özel durum kodları](msal-handling-exceptions.md).
 

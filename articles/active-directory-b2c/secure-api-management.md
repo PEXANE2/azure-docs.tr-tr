@@ -11,17 +11,17 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87482847"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C ile Azure API Management API 'sinin güvenliğini sağlama
 
 Azure API Management (APıM) API 'nize erişimi, Azure Active Directory B2C (Azure AD B2C) ile kimliği doğrulanan istemcilere nasıl kısıtlayacağınızı öğrenin. Bu makaledeki adımları izleyerek, erişimi yalnızca geçerli bir Azure AD B2C verilen erişim belirteci içeren isteklerle sınırlayan APıM 'de bir gelen ilke oluşturun ve test edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki kaynaklara sahip olmanız gerekir:
 
@@ -35,11 +35,11 @@ Bu makaledeki adımlarla devam etmeden önce aşağıdaki kaynaklara sahip olman
 
 Azure API Management 'de Azure AD B2C bir API 'yi güvenli hale getirmeye çalıştığınızda, APıM içinde oluşturduğunuz [gelen ilke](../api-management/api-management-howto-policies.md) için birkaç değere ihtiyacınız vardır. İlk olarak, Azure AD B2C kiracınızda daha önce oluşturduğunuz bir uygulamanın uygulama KIMLIĞINI kaydedin. Önkoşullarda oluşturduğunuz uygulamayı kullanıyorsanız, *webbapp1*IÇIN uygulama kimliği ' ni kullanın.
 
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**' yi seçin ve ardından **sahip olunan uygulamalar** sekmesini seçin.
@@ -47,7 +47,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Yönet**altında uygulamalar ' ı **(eski)** seçin.
@@ -144,7 +144,7 @@ API 'yi çağırmak için hem Azure AD B2C tarafından verilen bir erişim belir
 Yayımlanmış bir API 'yi çağıran bir istemci uygulaması (Bu durumda Postman), HTTP isteklerinde API 'ye geçerli bir API Management abonelik anahtarı içermelidir. Postman HTTP isteğinize dahil edilecek bir abonelik anahtarı almak için:
 
 1. [Azure Portal](https://portal.azure.com)Azure API Management hizmet örneğinize gidin.
-1. **Abonelikler**' i seçin.
+1. **Abonelikler**'i seçin.
 1. **Ürün**için üç noktayı seçin ve ardından **anahtarları göster/gizle**' yi seçin.
 1. Ürünün **BIRINCIL anahtarını** kaydedin. Bu anahtarı `Ocp-Apim-Subscription-Key` Postman 'DAKI http talebinizdeki üst bilgi için kullanırsınız.
 

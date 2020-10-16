@@ -7,10 +7,10 @@ ms.date: 11/27/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
 ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324633"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java Istemci API 'Leri
@@ -63,7 +63,7 @@ Service Fabric Java istemci kodunu, oto Rest aracını kullanarak oluşturmak i�
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Aşağıdaki komut, ``servicefabric.json`` Belirtim dosyasını girdi olarak alır ve klasörde Java istemci kodu oluşturur ``java-rest-api-     code`` ve kodu ``servicefabricrest`` ad alanına barındırır. Bu adımdan sonra iki klasör ``models`` ``implementation`` ve klasörde oluşturulan iki dosya bulunur ``ServiceFabricClientAPIs.java`` ``package-info.java`` ``java-rest-api-code`` .
+   Aşağıdaki komut, ``servicefabric.json`` Belirtim dosyasını girdi olarak alır ve klasörde Java istemci kodu oluşturur ``java-rest-api-     code`` ve kodu  ``servicefabricrest`` ad alanına barındırır. Bu adımdan sonra iki klasör ``models`` ``implementation`` ve klasörde oluşturulan iki dosya bulunur ``ServiceFabricClientAPIs.java`` ``package-info.java`` ``java-rest-api-code`` .
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>Projenizde oluşturulan istemciyi ekleme ve kullanma

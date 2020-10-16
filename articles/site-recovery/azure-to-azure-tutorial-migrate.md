@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 33d1be493cba9fd9f01ecdbad10afb5330256aa0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006423"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045355"
 ---
 # <a name="move-vms-to-another-azure-region"></a>VM 'Leri başka bir Azure bölgesine taşıma
 
@@ -21,7 +21,7 @@ Mevcut Azure IaaS sanal makinelerinizi (VM) bir bölgeden diğerine taşımak is
 
 Azure VM 'lerini ikincil bir bölgeye taşımak için [Azure Site Recovery](site-recovery-overview.md) hizmeti kullanabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > 
@@ -100,8 +100,8 @@ Aşağıdaki adımlarda, bir çözüm olarak Azure Site Recovery kullanarak sana
 1. **Ad** bölümünde **ContosoVMVault** kolay adını belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 1. **ContosoRG**kaynak grubunu oluşturun.
 1. Bir Azure bölgesi belirtin. Desteklenen bölgeleri denetlemek için [Azure Site Recovery fiyatlandırma ayrıntılarında](https://azure.microsoft.com/pricing/details/site-recovery/)coğrafi kullanılabilirlik bölümüne bakın.
-1. **Kurtarma Hizmetleri kasalarında** **genel bakış**  >  **contosovmkasaçoğaltılan**  >  **öğeleri**  >  **+ Çoğalt**' ı seçin.
-1. **Kaynak** bölümünde **Azure** seçeneğini belirleyin.
+1. **Kurtarma Hizmetleri kasalarında** **contosovmkasaçoğaltılan**  >  **öğeleri**  >  **+ Çoğalt**' ı seçin.
+1. Açılan menüde **Azure sanal makineler**' i seçin.
 1. **Kaynak konumu**’nda, VM’lerinizin çalışmakta olduğu kaynak Azure bölgesini seçin.
 1. Kaynak Yöneticisi dağıtım modelini seçin. Ardından **kaynak aboneliği** ve **kaynak kaynak grubunu**seçin.
 1. Ayarları kaydetmek için **Tamam ' ı** seçin.

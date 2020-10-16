@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0e661cb3c3bafa92a060b0fdfd899aa152b46a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507883"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977468"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>StorSimple Sanal diziniz üzerinde güncelleştirmeleri yükler-Azure portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "85507883"
 
 Bu makalede, yerel Web Kullanıcı arabirimi ve Azure portal aracılığıyla StorSimple Sanal dizinize güncelleştirme yüklemek için gereken adımlar açıklanmaktadır. StorSimple Sanal dizinizi güncel tutmak için yazılım güncelleştirmelerini veya düzeltmeleri uygulamanız gerekir. 
 
-Bir güncelleştirme veya Düzeltme yüklemenin cihazınızı yeniden başlatdığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar. 
+Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar. 
 
 Bir güncelleştirmeyi uygulamadan önce, önce konakta ve sonra da cihazda bulunan birimleri veya paylaşımları çevrimdışına almanız önerilir. Bu, veri bozulması olasılığını en aza indirir.
 
@@ -77,28 +77,28 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
 
 1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![cihazı Güncelleştir 1](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**'ya tıklayın.
+2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![cihaz güncelleştirme 2](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. Bir uyarı görüntülenir. Bu tek düğümlü bir cihaz olduğundan, güncelleştirme uygulandıktan sonra cihaz yeniden başlatılır ve kapalı kalma süresi vardır. Onay simgesine tıklayın.
    
-   ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![cihaz güncelleştirme 3](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![güncelleştirme aygıtı 4](./media/storsimple-virtual-array-install-update/update5m.png)
 
 5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 0,3 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10288.0** olmalıdır.
    
    > [!NOTE]
    > Yazılım sürümlerini yerel Web Kullanıcı arabiriminde ve Azure portal biraz farklı bir şekilde raporlarız. Örneğin, yerel Web Kullanıcı arabirimi raporları **10.0.0.0.0.10288** ve aynı sürüm için **10.0.10288.0** raporlar Azure Portal.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![güncelleştirme aygıtı 5](./media/storsimple-virtual-array-install-update/update6m.png)
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Güncelleştirme 0,2 ' yi çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Portal yordamı, kullanıcının güncelleştirmeleri taramasını, indirmesini ve yüklemesini gerektirir. Bu yordamın tamamlanmasıyla yaklaşık 7 dakika sürer. Güncelleştirmeyi veya düzeltmeyi yüklemek için aşağıdaki adımları gerçekleştirin.
 

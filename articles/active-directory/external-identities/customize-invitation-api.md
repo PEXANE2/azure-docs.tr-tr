@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cc959d23aebea082d873e9474998e7f17b1b320
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295167"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B işbirliği API 'SI ve özelleştirmesi
@@ -100,7 +100,7 @@ Aşağıdaki seçenekleri kullanabilirsiniz:
 
 ### <a name="invitation-status"></a>Davetiye durumu
 
-Bir dış Kullanıcı daveti gönderdikten sonra, bunu kabul edip etmediğini görmek için **Get-AzureADUser** cmdlet 'ini kullanabilirsiniz. Get-AzureADUser öğesinin aşağıdaki özellikleri bir dış kullanıcıya Davetiye gönderildiğinde doldurulur:
+Bir dış Kullanıcı daveti gönderdikten sonra, bunu kabul edip etmediğini görmek için **Get-AzureADUser** cmdlet 'ini kullanabilirsiniz. Bir dış kullanıcıya Davetiye gönderildiğinde Get-AzureADUser aşağıdaki özellikleri doldurulur:
 
 * **UserState** , davetin **Pendingkabulünü** veya **kabul**edilip edilmediğini belirtir.
 * **Userstatechangedon** , **userState** özelliğindeki en son değişikliğin zaman damgasını gösterir.

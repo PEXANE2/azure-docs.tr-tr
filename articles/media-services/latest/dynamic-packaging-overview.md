@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598291"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016834"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -30,7 +30,7 @@ Microsoft Azure Media Services, birçok medya kaynak dosya biçimini kodlamak i�
 Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) (Origin), canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına teslim edebilen bir dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Aşağıdaki bölümde bahsedilen ortak akış medya protokollerinden birini kullanır. *Dinamik paketleme* , tüm akış uç noktalarında standart olarak gelen bir özelliktir.
 
 > [!NOTE]
-> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve işler) için [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve işler) için [REST API](/rest/api/media/), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Kaynak dosyalarınızı teslim edilmek üzere hazırlamak için
 
@@ -88,7 +88,7 @@ Aşağıdaki adımlarda, Azure Media Services içindeki standart kodlayıcıyla 
 1. MP4, QuickTime/MOV veya desteklenen başka bir dosya biçimi gibi [bir giriş dosyasını karşıya yükleyin](job-input-from-http-how-to.md) . Bu dosya, Mezzanine veya kaynak dosya olarak da adlandırılır. Desteklenen biçimlerin listesi için bkz. [Standart kodlayıcı tarafından desteklenen biçimler](media-encoder-standard-formats.md).
 1. Mezzanine dosyanızı H. bir H.,/AAC MP4 Uyarlamalı bit hızı kümesine [kodlayın](#encode-to-adaptive-bitrate-mp4s) .
 
-    Zaten kodlanmış dosyalarınız varsa ve yalnızca dosyaları kopyalayıp akışa almak istiyorsanız şunu kullanın: [Copyvideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) ve [Copyaudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API 'leri. Sonuç olarak, akış bildirimi (. ISM dosyası) içeren yeni bir MP4 dosyası oluşturulur.
+    Zaten kodlanmış dosyalarınız varsa ve yalnızca dosyaları kopyalayıp akışa almak istiyorsanız şunu kullanın: [Copyvideo](/rest/api/media/transforms/createorupdate#copyvideo) ve [Copyaudio](/rest/api/media/transforms/createorupdate#copyaudio) API 'leri. Sonuç olarak, akış bildirimi (. ISM dosyası) içeren yeni bir MP4 dosyası oluşturulur.
 1. Uyarlamalı bit hızı MP4 kümesini içeren çıkış varlığını yayımlayın. Bir [akış Bulucu](streaming-locators-concept.md)oluşturarak yayımlayabilirsiniz.
 1. Farklı biçimleri (HLS, MPEG-DASH ve Kesintisiz Akış) hedefleyen derleme URL 'Leri. *Akış uç noktası* , tüm bu farklı biçimlere yönelik doğru bildirime ve isteklere hizmet vermeye yöneliktir.
     

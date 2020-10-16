@@ -11,10 +11,10 @@ ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
 ms.openlocfilehash: f98cfcd49806061a969a9227f9ade05f70ce79ff
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85982329"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL veritabanı ve yönetilen örnek Içeri/dışarı aktarma hizmeti bir veritabanını içeri veya dışarı aktarmak uzun zaman alıyor
@@ -42,7 +42,7 @@ Veritabanınızın dışarı aktarmaları yalnızca yanlışlıkla veri silme i�
 
 * [SQLPackage yardımcı programını kullanarak BIR BACPAC dosyasına dışarı aktarın](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility).
 * [SQL Server Management Studio (SSMS) kullanarak BACPAC dosyasına dışarı aktarın](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms).
-* Microsoft SQL Server Data-Tier Application Framework (DacFx) API 'sini kullanarak doğrudan kodunuzda BACPAC içeri aktarma veya dışarı aktarma işlemini çalıştırın. Daha fazla bilgi için bkz.
+* Microsoft SQL Server Data-Tier uygulama çerçevesi (DacFx) API 'sini kullanarak doğrudan kodunuzda BACPAC içeri aktarma veya dışarı aktarma işlemini çalıştırın. Daha fazla bilgi için bkz.
   * [Veri katmanı uygulamasını dışarı aktarma](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
   * [Microsoft. SqlServer. Dac ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)
   * [DACFx 'i indir](https://www.microsoft.com/download/details.aspx?id=55713)

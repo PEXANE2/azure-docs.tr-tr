@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79477672"
 ---
 # <a name="convert-to-indicator-values"></a>Gösterge Değerlerine dönüştürme
@@ -98,7 +98,7 @@ Bu bölümde, sık sorulan soruların uygulama ayrıntıları, ipuçları ve yan
 
 -   Yalnızca kategorik olarak işaretlenen sütunlar gösterge sütunlarına dönüştürülebilir. Aşağıdaki hatayı görürseniz, seçtiğiniz sütunlardan biri kategorik değildir:  
 
-     Hata 0056: adı olan sütun \<column name> izin verilen bir kategoride değil.  
+     Hata 0056: adı olan sütun  \<column name> izin verilen bir kategoride değil.  
 
      Varsayılan olarak, çoğu dize sütunu dize özellikleri olarak işlenir, bu nedenle bunları doğrudan [düzenleme meta verilerini](edit-metadata.md)kullanarak kategorik olarak işaretlemeniz gerekir.  
 

@@ -4,10 +4,10 @@ description: Docker komutlarını çalıştırmaya gerek kalmadan Azure API 'Ler
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541586"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Kapsayıcı görüntülerini kapsayıcı kayıt defterine aktarma
@@ -36,7 +36,7 @@ Kapsayıcı görüntülerini içeri aktarmak için bu makale, Azure CLı 'yı Az
 > Aynı kapsayıcı görüntülerini birden çok Azure bölgesinde dağıtmanız gerekiyorsa Azure Container Registry [Coğrafi çoğaltmayı](container-registry-geo-replication.md)da destekler. Bir kayıt defteri coğrafi olarak çoğaltılırken (Premium hizmet katmanı gereklidir), tek bir kayıt defterinden aynı görüntü ve etiket adları ile birden çok bölgeye hizmet verebilirsiniz.
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Zaten bir Azure Container kayıt defteriniz yoksa bir kayıt defteri oluşturun. Adımlar için bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md).
 

@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394100"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Işlevleri için Azure Güvenlik temeli
@@ -1031,7 +1031,7 @@ Microsoft 'un kötü amaçlı yazılımdan koruma özelliği, Azure hizmetlerini
 
 **Rehberlik**: uygulamanızın düzenli yedeklemelerini zamanlamak için yedekleme ve geri yükleme özelliğini kullanın. Premium planda çalışan işlev uygulamalarının, "yedekleme ve geri yükleme" özelliğini içeren Azure App Service Web uygulamalarıyla aynı barındırma özelliklerine sahip olması gerekir.
 
-Ayrıca, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos ve Azure DevOps gibi bir kaynak denetimi çözümünü de kullanın. Azure DevOps Services, donanım hatası, hizmet kesintisi veya bölge olağanüstü durum durumunda veri kullanılabilirliği sağlamak için Azure depolama özelliklerinin çoğunun yararlanır. Ayrıca, Azure DevOps ekibi, verileri yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak için prosedürleri izler.
+Ayrıca, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos ve Azure DevOps gibi bir kaynak denetimi çözümünü de kullanın. Azure DevOps Services donanım hatası, hizmet kesintisi veya bölge çapında olağanüstü durum gibi durumlarda verilerin kullanılabilir olmasını sağlamak için Azure depolama alanlarına özgü birçok farklı özellikten faydalanır. Azure DevOps ekibi ayrıca verileri yanlışlıkla veya kötü niyetli kişiler tarafından silinmeye karşı korumak için gerekli yordamları izler.
 
 - [Uygulamanızı Azure’a yedekleme](../app-service/manage-backup.md)
 
@@ -1049,7 +1049,7 @@ Ayrıca, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos
 
 **Rehberlik**: uygulamanızın düzenli yedeklemelerini zamanlamak için yedekleme ve geri yükleme özelliğini kullanın. Premium planda çalışan işlev uygulamalarının, "yedekleme ve geri yükleme" özelliğini içeren Azure App Service Web uygulamalarıyla aynı barındırma özelliklerine sahip olması gerekir. Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde yedekleyin.
 
-Ayrıca, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos ve Azure DevOps gibi bir kaynak denetimi çözümünü de kullanın. Azure DevOps Services, donanım hatası, hizmet kesintisi veya bölge olağanüstü durum durumunda veri kullanılabilirliği sağlamak için Azure depolama özelliklerinin çoğunun yararlanır. Ayrıca, Azure DevOps ekibi, verileri yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak için prosedürleri izler.
+Ayrıca, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos ve Azure DevOps gibi bir kaynak denetimi çözümünü de kullanın. Azure DevOps Services donanım hatası, hizmet kesintisi veya bölge çapında olağanüstü durum gibi durumlarda verilerin kullanılabilir olmasını sağlamak için Azure depolama alanlarına özgü birçok farklı özellikten faydalanır. Azure DevOps ekibi ayrıca verileri yanlışlıkla veya kötü niyetli kişiler tarafından silinmeye karşı korumak için gerekli yordamları izler.
 
 - [Uygulamanızı Azure’a yedekleme](../app-service/manage-backup.md)
 
@@ -1083,11 +1083,11 @@ Ayrıca, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos
 
 **Rehberlik**: yedekleme ve geri yükleme özelliğinden yedeklemeler, aboneliğinizde bir Azure depolama hesabı kullanır. Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, depolama verilerinin şifrelenmesi için müşteri tarafından yönetilen anahtarlar sağlayabilirsiniz.
 
-Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault ' deki geçici silme özelliğinin yanlışlıkla veya kötü amaçlı silme ile karşı korunması için etkinleştirildiğinden emin olun.
+Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault içindeki Soft-Delete yanlışlıkla veya kötü amaçlı silmeye karşı anahtarları korumak için etkinleştirildiğinden emin olun.
 
 - [Azure Depolama bekleyen verileri şifreleme](../storage/common/storage-service-encryption.md)
 
-- [Key Vault 'da geçici silme özelliğini etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

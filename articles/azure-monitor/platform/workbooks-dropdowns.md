@@ -2,19 +2,17 @@
 title: Azure Izleyici çalışma kitabı açılan parametreleri
 description: Açılan parametreleri içeren önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad1e09a0f9d1e0f9e4a748220edf5eced96123f8
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965068"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932575"
 ---
 # <a name="workbook-drop-down-parameters"></a>Çalışma kitabı açılan parametreleri
 
@@ -28,11 +26,11 @@ Açılan bir liste belirtmek için en kolay yol, parametre ayarında bir statik 
 2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
 3. Mavi _parametre Ekle_ düğmesine tıklayın.
 4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı:`Environment`
-    2. Parametre türü:`Drop down`
-    3. Gerekli:`checked`
-    4. İzin ver `multiple selection` :`unchecked`
-    5. Veri al:`JSON`
+    1. Parametre adı: `Environment`
+    2. Parametre türü: `Drop down`
+    3. Gerekli: `checked`
+    4. İzin ver `multiple selection` : `unchecked`
+    5. Veri al: `JSON`
 5. JSON giriş metin bloğunda şu JSON kod parçacığını ekleyin:
     ```json
     [
@@ -70,11 +68,11 @@ Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer gr
 2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
 3. Mavi _parametre Ekle_ düğmesine tıklayın.
 4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı:`RequestName`
-    2. Parametre türü:`Drop down`
-    3. Gerekli:`checked`
-    4. İzin ver `multiple selection` :`unchecked`
-    5. Veri al:`Query`
+    1. Parametre adı: `RequestName`
+    2. Parametre türü: `Drop down`
+    3. Gerekli: `checked`
+    4. İzin ver `multiple selection` : `unchecked`
+    5. Veri al: `Query`
 5. JSON giriş metin bloğunda şu JSON kod parçacığını ekleyin:
 
     ```kusto

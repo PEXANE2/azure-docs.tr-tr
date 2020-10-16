@@ -6,14 +6,14 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435618"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057765"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Azure depolama 'nın App Service bir kapsayıcıdan ağ paylaşma olarak erişme
+# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>App Service'teki bir kapsayıcıdan ağ paylaşımı olarak Azure Depolama'ya erişme
 
 ::: zone pivot="container-windows"
 
@@ -65,7 +65,6 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 
 - App Service 'de Azure depolama, Linux ve Kapsayıcılar için Web App App Service için **Önizleme** aşamasındadır. **Üretim senaryolarında**bu **desteklenmez** .
 - App Service Azure Storage, **Azure dosya kapsayıcıları** (okuma/yazma) ve **Azure Blob kapsayıcıları** (salt okuma) bağlamayı destekler
-- App Service ' deki Azure depolama, altyapı sınırlamaları nedeniyle **depolama güvenlik duvarı** yapılandırmasını kullanmayı **desteklemez** .
 - App Service Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
 - Bir uygulamaya bağlı Azure Storage App Service FTP/FTPs uç noktaları aracılığıyla erişilebilir değildir. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)kullanın.
 
@@ -91,7 +90,7 @@ Bunu, bir Azure dosya paylaşımıyla bağlantılı olmasını istediğiniz diğ
 
 [Azure depolama hesabınızı, dosya paylaşımınızı ve dizininizi](#prerequisites)oluşturduktan sonra uygulamanızı Azure Storage ile yapılandırabilirsiniz.
 
-Bir depolama hesabını App Service uygulamanızdaki bir dizine bağlamak için [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) komutunu kullanın. Depolama türü AzureBlob veya AzureFiles olabilir. Bu örnekte AzureFiles kullanılır. Bağlama yolu ayarı, Azure depolama 'dan bağlamak istediğiniz klasöre karşılık gelir. '/' Olarak ayarlanması, tüm Azure depolama alanını takar.
+Bir depolama hesabını App Service uygulamanızdaki bir dizine bağlamak için [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) komutunu kullanın. Depolama türü AzureBlob veya AzureFiles olabilir. Bu örnekte AzureFiles kullanılır. Bağlama yolu ayarı, Azure depolama 'ya bağlamak istediğiniz kapsayıcının içindeki klasöre karşılık gelir. '/' Olarak ayarlanması kapsayıcının tamamını Azure depolama 'ya bağlar.
 
 
 > [!CAUTION]

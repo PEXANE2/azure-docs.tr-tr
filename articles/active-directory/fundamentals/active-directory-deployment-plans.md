@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318436"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
@@ -59,7 +59,7 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 
 ## <a name="deploy-authentication"></a>Kimlik doğrulaması dağıtma
 
-| Özellik | Description|
+| Özellik | Açıklama|
 | -| -|
 | [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) Microsoft'un iki adımlı doğrulama çözümüdür. Azure MFA, yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur. |
 | [Koşullu Erişim](../conditional-access/plan-conditional-access.md)| Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz. |
@@ -68,7 +68,7 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 
 ## <a name="deploy-application-and-device-management"></a>Uygulama ve cihaz yönetimini dağıtma
 
-| Özellik | Description|
+| Özellik | Açıklama|
 | -| - |
 | [Çoklu oturum açma](../manage-apps/plan-sso-deployment.md)| Çoklu oturum açma, kullanıcılarınızın yalnızca bir kez oturum açarken iş yapması gereken uygulamalara ve kaynaklara erişmesine yardımcı olur. Oturum açtıktan sonra, kimlik bilgilerini ikinci bir kez girmek zorunda kalmadan iç uygulamalara Microsoft Office, SalesForce 'a kadar gidebilirler. |
 | [Erişim paneli](../manage-apps/access-panel-deployment-plan.md)| Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın. |
@@ -77,7 +77,7 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 
 ## <a name="deploy-hybrid-scenarios"></a>Karma senaryoları dağıtma
 
-| Özellik | Description|
+| Özellik | Açıklama|
 | -| -|
 | [Parola Karması Eşitleme için ADFS](../hybrid/plan-migrate-adfs-password-hash-sync.md)| Parola karması eşitlemeyle, kullanıcı parolalarının karmaları şirket içi Active Directory Azure AD 'ye eşitlenir, bu da Azure AD 'nin kullanıcıların şirket içi bir etkileşim olmadan kimlik doğrulaması yapmasına olanak sağlar Active Directory |
 | [Doğrudan Geçiş Kimlik Doğrulaması için ADFS](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD geçişli kimlik doğrulaması, kullanıcılarınızın aynı parolaları kullanarak hem şirket içi hem de bulut tabanlı uygulamalarda oturum açmasını sağlar. Bu özellik, kullanıcılara daha fazla deneyim sağlamak için daha az bir parola sağlar ve kullanıcılar oturum açmayı unutmamak daha az olabileceğinden BT yardım masası maliyetlerini azaltır. Kullanıcılar Azure AD'de oturum açtığında bu özellik parolaları doğrudan şirket için Active Directory dizininizde doğrular. |
@@ -86,14 +86,14 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 
 ## <a name="deploy-user-provisioning"></a>Kullanıcı sağlamayı dağıtma
 
-| Özellik | Description|
+| Özellik | Açıklama|
 | -| -|
 | [Kullanıcı sağlama](../app-provisioning/plan-auto-user-provisioning.md)| Azure AD; Dropbox, Salesforce ve ServiceNow gibi bulut (SaaS) uygulamalarında kullanıcı oluşturma, bakım ve kaldırma adımlarını otomatikleştirmenize yardımcı olur. |
 | [Bulut HR Kullanıcı sağlama](../app-provisioning/plan-cloud-hr-provision.md)| Active Directory için bulut HR Kullanıcı sağlama, devam eden kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir. Bu özelliği, iş günü veya başarılı faktörleri gibi bulut HR ürününüzle birlikte kullanarak, birleştirici ve iş çalışanlarının kimlik yaşam döngüsünü sorunsuz bir şekilde yönetebilir (yeni Işe alma, sonlandırma, aktarma gibi) BT sağlama eylemlerine (örneğin, oluşturma, etkinleştirme, devre dışı bırakma) eşlenen kuralları yapılandırarak çalışanların kimlik ömrünü sorunsuzca yönetebilirsiniz |
 
 ## <a name="deploy-governance-and-reporting"></a>İdare ve raporlama dağıtma
 
-| Özellik | Description|
+| Özellik | Açıklama|
 | -| -|
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PıM), Azure AD, Azure kaynakları ve diğer Microsoft Online Services genelinde ayrıcalıklı yönetim rollerini yönetmenize yardımcı olur. PıM, tam zamanında erişim, onay iş akışları isteme ve tam olarak tümleşik erişim incelemeleri gibi çözümler sağlayarak ayrıcalıklı rollerin kötü amaçlı etkinliklerini belirlemek, açmak ve gerçek zamanlı olarak engellemek için. |
 | [Raporlama ve Izleme](../reports-monitoring/plan-monitoring-and-reporting.md)| Azure AD raporlama ve izleme çözümünüzün tasarımı, yasal, güvenlik ve işletimsel gereksinimlerinize ek olarak mevcut ortamınız ve süreçlerinize bağlıdır. Bu makalede, çeşitli tasarım seçenekleri sunulmakta ve doğru dağıtım stratejisinde size rehberlik sunulmaktadır. |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764018"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089494"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure portalında pano oluşturma ve paylaşma
 
@@ -30,7 +30,7 @@ Azure portal, başlangıç noktası olarak varsayılan bir pano sağlar. Varsay�
 
 Bu örnekte, yeni, özel bir pano oluşturacağız ve bir ad atamalısınız. Kullanmaya başlamak için bu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 
 1. Azure portal menüsünde, **Pano**' yı seçin. Varsayılan görünüm zaten pano olarak ayarlanmış olabilir.
 
@@ -118,7 +118,7 @@ Panodaki veriler, son 24 saat için etkinliği otomatik olarak gösterir. Yalnı
 
 1. Görüntülenecek zaman parçalı yapısını seçin. Tek dakikalık artışlarla bir ay boyunca herhangi bir yere gösterebilirsiniz.
 
-1. **Uygula**’yı seçin.
+1. **Apply** (Uygula) seçeneğini belirleyin.
 
 ## <a name="delete-a-tile"></a>Kutucukları silme
 
@@ -130,7 +130,7 @@ Bir panodaki kutucuğu kaldırmak için şu adımları izleyin:
 
    ![Panodan kutucuğun nasıl kaldırılacağını gösteren ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
-## <a name="clone-a-dashboard"></a>Bir panoyu kopyalama
+## <a name="clone-a-dashboard"></a>Panoyu kopyalama
 
 Mevcut bir panoyu yeni bir Pano için şablon olarak kullanmak için şu adımları izleyin:
 
@@ -142,7 +142,7 @@ Mevcut bir panoyu yeni bir Pano için şablon olarak kullanmak için şu adımla
 
 ## <a name="publish-and-share-a-dashboard"></a>Bir panoyu yayımlama ve paylaşma
 
-Bir pano oluşturduğunuzda, bu, varsayılan olarak özeldir. Bu, onu görebilen tek bir tane olduğu anlamına gelir. Panoları başkaları için kullanılabilir hale getirmek için, bunları yayımlayabilir ve paylaşabilirsiniz. Daha fazla bilgi için bkz. [rol tabanlı Access Control kullanarak Azure panoları paylaşma](azure-portal-dashboard-share-access.md).
+Bir pano oluşturduğunuzda, bu, varsayılan olarak özeldir. Bu, onu görebilen tek bir tane olduğu anlamına gelir. Panoları başkaları için kullanılabilir hale getirmek için, bunları yayımlayabilir ve paylaşabilirsiniz. Daha fazla bilgi için bkz. [Azure 'un rol tabanlı erişim denetimi kullanarak Azure panoları paylaşma](azure-portal-dashboard-share-access.md).
 
 ### <a name="open-a-shared-dashboard"></a>Paylaşılan bir panoyu açma
 
@@ -164,7 +164,7 @@ Paylaşılan bir panoyu bulup açmak için şu adımları izleyin:
 
     1. Paylaşılan panolar listesinden bir pano seçin.
 
-## <a name="delete-a-dashboard"></a>Bir panoyu silme
+## <a name="delete-a-dashboard"></a>Panoyu silme
 
 Özel veya paylaşılan bir panoyu kalıcı olarak silmek için şu adımları izleyin:
 
@@ -178,5 +178,5 @@ Paylaşılan bir panoyu bulup açmak için şu adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Rol Tabanlı Erişim Denetimi kullanarak Azure panolarını paylaşma](azure-portal-dashboard-share-access.md)
+* [Azure rol tabanlı erişim denetimi kullanarak Azure panoları paylaşma](azure-portal-dashboard-share-access.md)
 * [Program aracılığıyla Azure panoları oluşturma](azure-portal-dashboards-create-programmatically.md)

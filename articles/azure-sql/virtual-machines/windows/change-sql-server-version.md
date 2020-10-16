@@ -15,10 +15,10 @@ ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293382"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM'deki SQL Server sürümünü yerinde değiştirme
@@ -27,11 +27,11 @@ ms.locfileid: "91293382"
 
 Bu makalede, Microsoft Azure bir Windows sanal makinesinde (VM) Microsoft SQL Server sürümünün nasıl değiştirileceği açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server yerinde yükseltmesi yapmak için aşağıdaki koşullar geçerlidir:
 
-- SQL Server istenen sürümünün Kurulum medyası gereklidir. [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım Güvencesi sahibi olmayan müşteriler, SQL Server daha sonraki bir sürümü olan (genellikle C:\SQLServerFull içinde bulunur) bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
+- SQL Server istenen sürümünün Kurulum medyası gereklidir. [Yazılım Güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)'ne sahip olan müşteriler, yükleme medyasını [Toplu Lisanslama Merkezi](https://www.microsoft.com/Licensing/servicecenter/default.aspx)'nden alabilir. Yazılım Güvencesi sahibi olmayan müşteriler, SQL Server daha sonraki bir sürümü olan (genellikle C:\SQLServerFull içinde bulunur) bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
 - Sürüm yükseltmeleri, [destek yükseltme yollarını](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)izlemelidir.
 
 ## <a name="planning-for-version-change"></a>Sürüm değişikliğini planlama
@@ -69,11 +69,11 @@ SQL Server sürümünü yükseltmek için, SQL Server [yükseltme yolunu destekl
 1. **Ürün anahtarı** sayfasında, SQL Server ücretsiz sürümüne yükseltme yapıp kullanmayacağınızı veya ürünün üretim sürümü IÇIN bir PID anahtarınız olduğunu göstermek için bir seçenek belirleyin. Daha fazla bilgi için, bkz. [SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) ve [desteklenen sürüm ve sürüm yükseltmeleri (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15).
 1. **Yükseltmeye hazırlanma** sayfasına ulaşana kadar **İleri** ' yi seçin ve ardından **Yükselt**' i seçin. Değişiklik etkinleşirken kurulum penceresi birkaç dakika yanıt vermeyi durdurabilir. **Komple** bir sayfa, yükseltmenin tamamlandığını doğrulayacaktır. Yükseltme için adım adım bir yordam için, [Tüm yordama](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)bakın.
 
-   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Tüm sayfa":::
+   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="SQL Server sürümünü yükseltmek için seçim":::
 
 Sürümü değiştirmeye ek olarak SQL Server sürümünü değiştirdiyseniz, SQL sanal makine örneğini değiştirmek için sürümü de güncelleştirin ve **portalda sürümü ve sürümü doğrula** bölümüne başvurun.
 
-   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="Sürüm meta verilerini Değiştir":::
+   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="SQL Server sürümünü yükseltmek için seçim":::
 
 ## <a name="downgrade-the-version-of-sql-server"></a>SQL Server sürümünün sürümü düşürme
 
@@ -91,7 +91,7 @@ Aşağıdaki adımları izleyerek SQL Server sürümünü indirgeyebilmeniz gere
 
    Hedef sürüm, bağımlı nesneler ve gelişmiş seçenekler olarak bu öğeler için komut dosyası oluştururken doğru seçenekleri seçtiğinizden emin olun.
 
-   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="Betik seçenekleri":::
+   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="SQL Server sürümünü yükseltmek için seçim":::
 
 1. SQL Server ve tüm ilişkili hizmetleri tamamen kaldırın.
 1. VM’yi yeniden başlatın.
@@ -104,7 +104,7 @@ Aşağıdaki adımları izleyerek SQL Server sürümünü indirgeyebilmeniz gere
 
 SQL Server sürümünü değiştirdikten sonra, SQL Server sürümünü görüntülemek için Azure portal kullanabilmeniz için SQL Server VM [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md) 'na yeniden kaydedin. Listelenen sürüm numarası artık SQL Server yüklemenizin yeni yükseltilen sürümünü yansıtmalıdır.
 
-:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Sürümü doğrula":::
+:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="SQL Server sürümünü yükseltmek için seçim":::
 
 > [!NOTE]
 > SQL VM kaynak sağlayıcısına zaten kaydolduysanız, [RP 'den kaydını kaldırın](sql-vm-resource-provider-register.md#unregister-from-rp) ve ardından [SQL VM kaynağını yeniden kaydedin](sql-vm-resource-provider-register.md#register-with-rp) . böylece, VM 'de yüklü olan SQL Server doğru sürümü ve sürümünü tespit edin. Bu, bu VM ile ilişkili meta verileri ve faturalandırma bilgilerini güncelleştirir.

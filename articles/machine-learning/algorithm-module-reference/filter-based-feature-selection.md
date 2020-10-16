@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893795"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945711"
 ---
 # <a name="filter-based-feature-selection"></a>Filtre Tabanlı Özellik Seçimi
 
@@ -36,7 +36,7 @@ Tahmine dayalı modelinizi oluşturmak için genellikle en iyi puanları içeren
 
 ## <a name="how-to-choose-a-feature-selection-metric"></a>Özellik seçimi ölçümü seçme
 
-Filtre tabanlı özellik seçimi modülü, her sütunda bilgi değerini değerlendirmek için çeşitli ölçümler sağlar. Bu bölüm, her ölçüm için genel bir açıklama ve nasıl uygulandığını sağlar. Her bir ölçümü, [Teknik notlarda](#technical-notes) ve her bir modülü yapılandırmaya yönelik [yönergelerden](#how-to-configure-filter-based-feature-selection) kullanmaya yönelik ek gereksinimler bulabilirsiniz.
+Filter-Based Özellik seçimi modülü, her sütunda bilgi değerini değerlendirmek için çeşitli ölçümler sağlar. Bu bölüm, her ölçüm için genel bir açıklama ve nasıl uygulandığını sağlar. Her bir ölçümü, [Teknik notlarda](#technical-notes) ve her bir modülü yapılandırmaya yönelik [yönergelerden](#how-to-configure-filter-based-feature-selection) kullanmaya yönelik ek gereksinimler bulabilirsiniz.
 
 -   **Pearson bağıntı**  
 
@@ -52,11 +52,11 @@ Filtre tabanlı özellik seçimi modülü, her sütunda bilgi değerini değerle
 > [!TIP]
 > Özel özellik seçimi yöntemi için farklı bir seçeneğe ihtiyaç duyuyorsanız, [R betiği Yürüt](execute-r-script.md) modülünü kullanın. 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>Filtre tabanlı özellik seçimini yapılandırma
+## <a name="how-to-configure-filter-based-feature-selection"></a>Filter-Based özellik seçimini yapılandırma
 
 Standart istatistiksel bir ölçüm seçersiniz. Modül bir sütun çifti arasındaki bağıntıyı hesaplar: etiket sütunu ve bir özellik sütunu.
 
-1.  İşlem hattınızla filtre tabanlı özellik seçimi modülünü ekleyin. Tasarımcı 'daki **Özellik seçimi** kategorisinde bulabilirsiniz.
+1.  Filter-Based özelliği seçim modülünü işlem hattınızı ekleyin. Tasarımcı 'daki **Özellik seçimi** kategorisinde bulabilirsiniz.
 
 2. Olası özellikler olan en az iki sütun içeren bir giriş veri kümesini bağlayın.  
 
@@ -90,8 +90,14 @@ Standart istatistiksel bir ölçüm seçersiniz. Modül bir sütun çifti arası
 
     - Özellik sütunlarından daha az sonuç sütunu belirtirseniz, Özellikler azalan puana göre sıralanır. Yalnızca en üstteki Özellikler döndürülür. 
 
-7.  İşlem hattını gönder veya filtre tabanlı özellik seçimi modülünü seçin ve ardından **Seçileni Çalıştır**' ı seçin.
+7.  İşlem hattını gönderme.
 
+> [!IMPORTANT]
+> Çıkarma aşamasında **filtre tabanlı özellik seçimini** kullanacaksanız, özelliği seçili sonucu depolamak Için [Sütunları Seç dönüşümünü](./select-columns-transform.md) , sonra da seçilen özelliği Puanlama veri kümesine uygulamak için [dönüşüm Uygula](./apply-transformation.md) ' yı kullanmanız gerekir.
+>
+> Sütun seçimlerinin Puanlama işlemi için aynı olmasını sağlamak üzere işlem hattınızı derlemek için aşağıdaki ekran görüntüsüne bakın.
+> [!div class="mx-imgBorder"]
+> ![Örnek işlem hattı](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>Sonuçlar
 

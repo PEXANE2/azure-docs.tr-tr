@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82780445"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight 'ta küme oluşturma işlemi ınvalidnetworkconfigurationerrorcode ile başarısız oluyor
@@ -54,7 +54,7 @@ Hata açıklaması "Azure depolama hesabına bağlanılamadı" veya "Azure SQL '
 
 ### <a name="cause"></a>Nedeni
 
-Azure Storage ve SQL 'in sabit IP adresleri yok, bu nedenle bu hizmetlere erişime izin vermek için tüm IP 'Lere giden bağlantılara izin vermemiz gerekiyor. Tam çözümleme adımları, bir ağ güvenlik grubu (NSG) veya Kullanıcı tanımlı kurallar (UDR) ayarlamanıza bağlı olarak değişir. Bu yapılandırmalara ilişkin ayrıntılar için [ağ güvenlik grupları ve Kullanıcı tanımlı rotalar Ile HDInsight ile ağ trafiğini denetleme](../control-network-traffic.md) bölümüne bakın.
+Azure Storage ve SQL 'in sabit IP adresleri yok, bu nedenle bu hizmetlere erişime izin vermek için tüm IP 'Lere giden bağlantılara izin vermemiz gerekiyor. Tam çözümleme adımları, bir ağ güvenlik grubu (NSG) veya User-Defined kuralları (UDR) ayarlayıp ayarladığınıza bağlıdır. Bu yapılandırmalara ilişkin ayrıntılar için [ağ güvenlik grupları ve Kullanıcı tanımlı rotalar Ile HDInsight ile ağ trafiğini denetleme](../control-network-traffic.md) bölümüne bakın.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -95,13 +95,13 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Aşağıdaki komutu yürütün:
+1. Şu kodu yürütün:
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*
     ```
 
-    Şunun gibi bir görüntüyle karşılaşacaksınız:
+    Şuna benzer bir şey görmeniz gerekir:
 
     ```output
     nameserver 168.63.129.16

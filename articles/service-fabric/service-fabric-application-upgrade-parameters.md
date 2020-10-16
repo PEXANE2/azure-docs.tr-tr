@@ -4,10 +4,10 @@ description: Gerçekleştirilecek durum denetimleri ve otomatik olarak yükseltm
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247974"
 ---
 # <a name="application-upgrade-parameters"></a>Uygulama yükseltme parametreleri
@@ -52,7 +52,7 @@ Sistem durumu değerlendirme parametreleri isteğe bağlıdır. Bir yükseltme b
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Uygulama parametrelerinin geçersiz kılmalarını belirtir.<br>PowerShell uygulama parametreleri, Hashtable ad/değer çiftleri olarak belirtilir. Örneğin, @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>Visual Studio uygulama parametreleri, **uygulama parametreleri dosya** alanındaki Service Fabric uygulaması Yayımla iletişim kutusunda belirtilebilir.
 > | Confirm |PS| İzin verilen değerler **true** ve **false**şeklindedir. Cmdlet 'ini çalıştırmadan önce onay ister. |
-> | ConsiderWarningAsError |PS, VS |İzin verilen değerler **true** ve **false**şeklindedir. Varsayılan ayar, **False** değeridir. Yükseltme sırasında uygulamanın sistem durumunu değerlendirirken, uygulamanın uyarı durumu olaylarını hata olarak değerlendirin. Varsayılan olarak Service Fabric, uyarı durumu olaylarını hatalara (hata) göre değerlendirmez, bu nedenle, uyarı olayları olsa bile yükseltme devam edebilir. |
+> | ConsiderWarningAsError |PS, VS |İzin verilen değerler **true** ve **false**şeklindedir. Varsayılan değer **false**'dur. Yükseltme sırasında uygulamanın sistem durumunu değerlendirirken, uygulamanın uyarı durumu olaylarını hata olarak değerlendirin. Varsayılan olarak Service Fabric, uyarı durumu olaylarını hatalara (hata) göre değerlendirmez, bu nedenle, uyarı olayları olsa bile yükseltme devam edebilir. |
 > | DefaultServiceTypeHealthPolicy | PS, VS |Maxyüztunhealthypartitionsperservice, Maxyüztunhealthyıreplicasperpartition, Maxyüztunhealthyıservices biçimindeki izlenen yükseltme için kullanılacak varsayılan hizmet türünün sistem durumu ilkesini belirtir. Örneğin, 5, 10, 15 şu değerleri gösterir: Maxyüztunhealthypartitionsperservice = 5, Maxyüztunhealthyreplicasperpartition = 10, Maxyüztunhealthyservices = 15. |
 > | Force | PS, VS | İzin verilen değerler **true** ve **false**şeklindedir. Yükseltme işleminin uyarı iletisini atlayıp atmadığını ve sürüm numarası değiştirilmediyse bile yükseltmeyi zorlandığını belirtir. Bu, yerel test için yararlıdır, ancak bir üretim ortamında kullanım için önerilmez; bu durumda, zaman ve potansiyel veri kaybına neden olan mevcut dağıtımın kaldırılması gerekir. |
 > | ForceRestart |PS, VS |Bir yapılandırma veya veri paketini hizmet kodunu güncelleştirmeden güncelleştirirseniz, hizmet yalnızca ForceRestart özelliği **true**olarak ayarlandığında yeniden başlatılır. Güncelleştirme tamamlandığında, hizmete yeni bir yapılandırma paketinin veya veri paketinin kullanılabildiğini bildiren Service Fabric. Bu hizmet, değişiklikleri uygulamaktan sorumludur. Gerekirse, hizmet kendi kendine yeniden başlatılabilir. |
@@ -82,7 +82,7 @@ Service Fabric CLı kullanarak uygulama yükseltmeleri Service Fabric, [sfctl uy
 | --- | --- |
 | Uygulama kimliği  |Yükseltilmekte olan uygulamanın KIMLIĞI. <br> Bu genellikle uygulamanın ' Fabric: ' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar ' \~ ' karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı ' Fabric:/MyApp/APP1 ' ise, uygulama kimliği \~ önceki sürümlerde 6.0 + ve ' MyApp/APP1 ' içinde ' MyApp APP1 ' olur.|
 Uygulama sürümü |Yükseltmenin hedeflediği uygulama türünün sürümü.|
-parametreler  |Uygulamanın yükseltilmesi sırasında uygulanacak bir JSON kodlamalı uygulama parametresi listesi.|
+parameters  |Uygulamanın yükseltilmesi sırasında uygulanacak bir JSON kodlamalı uygulama parametresi listesi.|
 
 ### <a name="optional-parameters"></a>İsteğe bağlı parametreler
 
@@ -101,7 +101,7 @@ hizmet-sistem durumu-ilke | Hizmet türü adı başına hizmet türü sistem dur
 timeout | İşlem için saniye cinsinden zaman aşımı süresini belirtir. Varsayılan: 60. |
 yükseltme-etki alanı zaman aşımı | Her yükseltme etki alanının, *FailureAction* yürütülmeden önce tamamlaması gereken süre miktarı. İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. Varsayılan değer asla (sonsuz) ve uygulamanız için uygun şekilde özelleştirilmelidir. Varsayılan: P10675199DT02H48M 05.4775807 S. |
 yükseltme-zaman aşımı | Her yükseltme etki alanının, *FailureAction* yürütülmeden önce tamamlaması gereken süre miktarı. İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. Varsayılan değer asla (sonsuz) ve uygulamanız için uygun şekilde özelleştirilmelidir. Varsayılan: P10675199DT02H48M 05.4775807 S.|
-hata olarak uyarı | İzin verilen değerler **true** ve **false**şeklindedir. Varsayılan ayar, **False** değeridir. , Bir bayrak olarak geçirilebilir. Yükseltme sırasında uygulamanın sistem durumunu değerlendirirken, uygulamanın uyarı durumu olaylarını hata olarak değerlendirin. Varsayılan olarak Service Fabric, uyarı durumu olaylarını hatalara (hata) göre değerlendirmez, bu nedenle, uyarı olayları olsa bile yükseltme devam edebilir. |
+hata olarak uyarı | İzin verilen değerler **true** ve **false**şeklindedir. Varsayılan değer **false**'dur. , Bir bayrak olarak geçirilebilir. Yükseltme sırasında uygulamanın sistem durumunu değerlendirirken, uygulamanın uyarı durumu olaylarını hata olarak değerlendirin. Varsayılan olarak Service Fabric, uyarı durumu olaylarını hatalara (hata) göre değerlendirmez, bu nedenle, uyarı olayları olsa bile yükseltme devam edebilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Visual Studio 'Yu kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial.md) , Visual Studio kullanarak bir uygulama yükseltme işleminde size yol gösterir.

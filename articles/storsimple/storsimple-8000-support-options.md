@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070331"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple çözümü desteği
@@ -85,7 +85,7 @@ Faturalandırma ve abonelik yönetimi ile ilgili sorunlar için destek tüm dest
 | B        | Orta ölçekli işletme etkisi: <ul><br> <li> Müşterinin işi, hizmetlerden oluşan bir kayıp veya performans düşüşü içeriyor, ancak iş, daha fazla bir şekilde devam edebilir. | İlk yanıt: <sup>1</sup><ul><br> <li> Premium için 2 saat veya daha az. <br> <li> Standart için 4 saat veya daha az.                                      | <ul><li> Müşterilerin 7/24 devre dışı bırakılmadığı müddetçe iş saatlerinde sürekli çabalar için uygun kaynakların ayrılması. <br> <li> Servis talebi sahibine yönelik doğru iletişim bilgileri. |
 | C        | En düşük iş etkisi: <ul><br> <li> Müşterinin işi, hizmetler için küçük veya hiçbir engel olmadan önemli ölçüde çalışır.                                 | İlk yanıt: <sup>1</sup><ul> <br> <li> Premium için 4 saat veya daha az. <br> <li> Standart için 8 saat veya daha az.                                      | <ul><li>Büyük/küçük harf sahibi için doğru iletişim bilgileri                                                                                                                                    |
  
-<sup>1</sup> müşteri, Microsoft 'un sorun çözme çabalarıyla devam etmesini sağlamak için yeterli kaynak veya Yanıt sağlayamadığından, önem derecesi düzeyinin önem derecesini indirgeyebiliyor.
+<sup>1 </sup> müşteri, Microsoft 'un sorun çözme çabalarıyla devam etmesini sağlamak için yeterli kaynak veya Yanıt sağlayamadığından, önem derecesi düzeyinin önem derecesini indirgeyebiliyor.
 
 <sup>2</sup> beklenen yanıt süresi, önem derecesi A ve önem derecesi B ve C için yerel çalışma saatleri ve kalan yerel dillerde yerel çalışma saatleri desteği için İngilizce 'de 7/24 desteği temel alır: Japonca, Taiwanese, geleneksel Çince ve Korece.
 
@@ -111,7 +111,7 @@ StorSimple 8000 serisi depolama dizileri desteği, StorSimple dizisinin nasıl s
 
 
 
-*<text>* Premium kapsam tüm konumlarda kullanılamaz. \@StorSimple Premium desteği satın almadan önce, coğrafi tedarik için Microsoft.com adresindeki Microsoft 'a başvurun.*
+*<text> * Premium kapsam tüm konumlarda kullanılamaz. \@StorSimple Premium desteği satın almadan önce, coğrafi tedarik için Microsoft.com adresindeki Microsoft 'a başvurun.*
 
 ***StorSimple gereci, Premium StorSimple desteğinin ücretsiz yükseltmesine uygun olması için müşterinin Premier destek kapsamında bulunduğu bir bölgeye dağıtılması gerekir.*
 

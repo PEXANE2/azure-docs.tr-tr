@@ -4,26 +4,30 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e6f68daf22659b880827ad027268d9757c60063
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188060"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971434"
 ---
 ### <a name="open-the-publish-wizard"></a>Yayımlama sihirbazını açın
 
-**Çözüm Gezgini**, **sharingservice** projesine sağ tıklayın ve **Yayımla**' yı seçin.
+**Çözüm Gezgini**, **sharingservice** projesine sağ tıklayın ve ardından **Yayımla**' yı seçin.
 
-Yayımla Sihirbazı başlatılır. **App Service**  >  **App Service oluştur** iletişim kutusunu açmak için App Service**Yayımla** ' yı seçin.
+Yayımla Sihirbazı başlatılır. 
+
+**App Service**  >  **Oluştur App Service** bölmesini açmak için App Service**Yayımla** ' yı seçin.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-**App Service oluştur** iletişim kutusunda **Hesap Ekle** ' yi seçin ve Azure aboneliğinizde oturum açın. Zaten oturum açtıysanız, açılan listeden istediğiniz hesabı seçin.
+Azure Portal’da oturum açın.
 
-> [!NOTE]
-> Zaten oturum açtıysanız **Oluştur** öğesini henüz seçmeyin.
->
+**App Service oluştur** bölmesinde **Hesap Ekle**' yi seçin ve ardından Azure aboneliğinizde oturum açın. Zaten oturum açtıysanız, açılan listeden istediğiniz hesabı seçin.
+
+   > [!NOTE]
+   > Zaten oturum açtıysanız **Oluştur** öğesini henüz seçmeyin.
+   >
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -31,7 +35,7 @@ Yayımla Sihirbazı başlatılır. **App Service**  >  **App Service oluştur** 
 
 **Kaynak Grubu**’nun yanındaki **Yeni** öğesini seçin.
 
-Kaynak grubunuzu **myResourceGroup** olarak adlandırıp **Tamam**’ı seçin.
+Kaynak grubunu **Myresourcegroup**olarak adlandırın ve ardından **Tamam**' ı seçin.
 
 ### <a name="create-an-app-service-plan"></a>App Service planı oluşturma
 
@@ -39,24 +43,24 @@ Kaynak grubunuzu **myResourceGroup** olarak adlandırıp **Tamam**’ı seçin.
 
 **Barındırma Planı**'nın yanındaki **Yeni**'yi seçin.
 
-**Barındırma planını Yapılandır** iletişim kutusunda şu ayarları kullanın:
+**Barındırma planını Yapılandır** bölmesinde, şu ayarları kullanın:
 
 | Ayar | Önerilen değer | Açıklama |
 |-|-|-|
-|App Service Planı| MySharingServicePlan | App Service planının adı. |
-| Konum | Batı ABD | Web uygulamasının barındırıldığı veri merkezi. |
-| Boyut | Ücretsiz | Barındırma özelliklerini belirleyen [fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) . |
+|App Service planı| MySharingServicePlan | App Service planının adı |
+| Konum | Batı ABD | Web uygulamasının barındırıldığı veri merkezi |
+| Boyut | Ücretsiz | Barındırma özelliklerini belirleyen [fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
 
 **Tamam**’ı seçin.
 
 ### <a name="create-and-publish-the-web-app"></a>Web uygulaması oluşturma ve yayımlama
 
-**Uygulama adı**alanına benzersiz bir uygulama adı girin (geçerli karakterler `a-z` , `0-9` ve `-` ) veya otomatik olarak oluşturulan benzersiz adı kabul edin. Web uygulamasının URL'si `https://<app_name>.azurewebsites.net` şeklindedir; burada `<app_name>`, uygulamanızın adıdır.
+**Uygulama adı**alanına benzersiz bir uygulama adı girin. Geçerli karakterler şunlardır-z, 0-9 ve tireler (-) veya otomatik olarak oluşturulan benzersiz adı kabul eder. Web uygulamasının URL'si `https://<app_name>.azurewebsites.net` şeklindedir; burada `<app_name>`, uygulamanızın adıdır.
 
 Azure kaynaklarını oluşturmaya başlamak için **Oluştur**’u seçin.
 
-Sihirbaz tamamlandıktan sonra, ASP.NET Core Web uygulamasını Azure 'da yayımlar ve ardından uygulamayı varsayılan tarayıcınızda açar.
+   Sihirbaz tamamlandıktan sonra, ASP.NET Core Web uygulamasını Azure 'da yayımlar ve ardından uygulamayı varsayılan tarayıcınızda açar.
 
-![Azure’da yayımlanmış ASP.NET web uygulaması](./media/spatial-anchors-azure/web-app-running-live.png)
+  ![Azure 'da yayınlanmış bir ASP.NET Web uygulamasının ekran görüntüsü.](./media/spatial-anchors-azure/web-app-running-live.png)
 
-Bu bölümde kullandığınız uygulama adı, biçimdeki URL ön eki olarak kullanılır `https://<app_name>.azurewebsites.net` . Bu URL 'YI bir yere göz atın çünkü ihtiyacınız olacak.
+Bu bölümde kullandığınız uygulama adı, biçimdeki URL ön eki olarak kullanılır `https://<app_name>.azurewebsites.net` . Bu URL 'YI daha sonra kullanmak üzere bir metin düzenleyicisine kopyalayın.

@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
-ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e54cd0e3c5b9499a3bc1a499ae4cef62c73160e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318407"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070716"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir sayfa ekleme
 
@@ -155,7 +155,7 @@ Artık, site yerel olarak çalışırken kodu düzenleyebilir ve Web Kullanıcı
 
 1. **Bilgisayar** CLI 'sını kullanarak çözüm hızlandırıcının **temel** bir örneğini dağıtın. Dağıtımınızın adını ve sanal makine için verdiğiniz kimlik bilgilerini bir yere unutmayın. Daha fazla bilgi için bkz. [CLI kullanarak dağıtma](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Çözümünüzde mikro hizmetleri barındıran sanal makineye SSH erişimini etkinleştirmek için Azure portal veya [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Örneğin:
+1. Çözümünüzde mikro hizmetleri barındıran sanal makineye SSH erişimini etkinleştirmek için Azure portal veya [az CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Örnek:
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -163,7 +163,7 @@ Artık, site yerel olarak çalışırken kodu düzenleyebilir ve Web Kullanıcı
 
     Yalnızca test ve geliştirme sırasında SSH erişimini etkinleştirmeniz gerekir. SSH 'yi etkinleştirirseniz, [mümkün olan en kısa sürede yeniden devre dışı bırakmanız gerekir](../security/fundamentals/network-best-practices.md).
 
-1. Sanal makinenizin adını ve genel IP adresini bulmak için Azure portal veya [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Örneğin:
+1. Sanal makinenizin adını ve genel IP adresini bulmak için Azure portal veya [az CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Örnek:
 
     ```azurecli
     az resource list --resource-group {your solution name} -o table

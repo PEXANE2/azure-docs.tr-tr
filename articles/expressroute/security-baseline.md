@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 69a47820d2afaf24f413aabf2c59a40c032070c1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231393"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute için Azure Güvenlik temeli
@@ -242,7 +242,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları aray
 
 Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırmak için, aboneliğiniz için Azure portal kimlik ve erişim denetimi (ıAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır.
 
-Ayrıca, ExpressRoute Iş ortağı Kaynak Yöneticisi API 'sini kullanan iş ortakları, expressRouteCrossConnection kaynağına rol tabanlı Access Control uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
+Ayrıca, ExpressRoute Iş ortağı Kaynak Yöneticisi API 'sini kullanan iş ortakları expressRouteCrossConnection kaynağına Access Control Role-Based uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
 
 * [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -459,7 +459,7 @@ ExpressRoute üzerinden siteden siteye ıPSEC 'i yapılandırma: https://docs.mi
 
 Azure ExpressRoute Ayrıca devre sahibine ve devre Kullanıcı rolüne sahiptir. Devre kullanıcıları ExpressRoute bağlantı hattı ile aynı abonelikte yer alan sanal ağ geçitlerinin sahiplerinden oluşur. Devre sahibinin, her zaman yetkilendirmeleri değiştirme ve iptal etme gücü vardır. Erişim iptal edilen abonelikten tüm bağlantı bağlantılarında silinen bir yetkilendirme sonuçları iptal ediliyor. Devre kullanıcıları yetkilendirmeleri (sanal ağ başına bir yetkilendirme) kullanabilir.
 
-Ayrıca, ExpressRoute Iş ortağı Kaynak Yöneticisi API 'sini kullanan iş ortakları, expressRouteCrossConnection kaynağına rol tabanlı Access Control uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
+Ayrıca, ExpressRoute Iş ortağı Kaynak Yöneticisi API 'sini kullanan iş ortakları expressRouteCrossConnection kaynağına Access Control Role-Based uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
 
 * [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -891,9 +891,9 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Rehberlik**: anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak Için Key Vault geçici silme özelliğini etkinleştirin.
+**Rehberlik**: anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete etkinleştirin.
 
-* [Key Vault 'da geçici silme özelliğini etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Key Vault Soft-Delete etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

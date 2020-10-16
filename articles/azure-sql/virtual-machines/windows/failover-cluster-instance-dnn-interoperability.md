@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: ca782e9949f990857db408919cac342d7f712d2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272625"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>SQL Server FCı & DNN ile özellik birlikte çalışabilirliği
@@ -86,7 +86,7 @@ URL 'deki bağlantı noktasını, varsayılan 1433 bağlantı noktası ise atlay
 
 Aşağıdaki görüntü örneği gibi adlandırılmış bir örnek için tam örnek adını kullanın: 
 
-:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="Adlandırılmış bir örnek için bir ağ diğer adı yapılandırırken tam örnek adını kullanın." :::
+:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="DNN DNS adını SQL Server Yapılandırma Yöneticisi kullanarak ağ diğer adı olarak yapılandırın." :::
 
 ## <a name="database-mirroring"></a>Veritabanı yansıtma
 

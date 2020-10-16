@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89087211"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>Azure Event Grid iş ortağı ad alanlarını başka bir bölgeye taşıyın
@@ -24,13 +24,13 @@ Bu makalede ele alınan üst düzey adımlar aşağıda verilmiştir:
     > - Müşteriler doğrudan bir iş ortağı konusu oluşturamadığı için **iş ortağı konularının** Azure Resource Manager bir şablona aktarılması desteklenmez. 
     > - **Iş ortağı kayıtları** genel kaynaklardır (belirli bir bölgeye bağlı değildir), bu nedenle bunları bir bölgeden başka bir bölgeye taşımak geçerli değildir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Event Grid hizmetinin hedef bölgede kullanılabildiğinden emin olun. [Bölgeye göre kullanılabilen ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)görüntüleyin.
 
 ## <a name="prepare"></a>Hazırlama
 Başlamak için iş ortağı ad alanı için bir Kaynak Yöneticisi şablonu dışarı aktarın. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Üstteki arama çubuğunda **Event Grid iş ortakları**yazın ve sonuç listesinden **Event Grid Iş ortağı ad alanları** ' nı seçin. 
 3. Kaynak Yöneticisi şablonuna aktarmak istediğiniz **iş ortağı ad alanını** seçin. 
 4. **Event Grid Iş ortağı ad alanı** sayfasında sol menüdeki **Ayarlar** ' ın altında **şablonu dışarı aktar** ' ı seçin ve ardından araç çubuğunda **İndir** ' i seçin. 

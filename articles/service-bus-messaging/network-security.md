@@ -4,10 +4,10 @@ description: Bu makalede hizmet etiketleri, IP güvenlik duvarı kuralları, hiz
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766404"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus için ağ güvenliği 
@@ -33,7 +33,7 @@ Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu te
 > Yalnızca **Premium** ad alanları için hizmet etiketlerini kullanabilirsiniz. **Standart** bir ad alanı kullanıyorsanız, aşağıdaki komutu ÇALıŞTıRDıĞıNıZDA gördüğünüz IP adresini kullanın: `nslookup <host name for the namespace>` . Örneğin: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
-Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Service Bus ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
+Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Service Bus ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz.
 
 Bu özellik, Azure Service Bus yalnızca belirli bilinen sitelerden erişilebilir olması gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Express Route] [Express-Route] ile Service Bus kullanırsanız, yalnızca şirket içi altyapı IP adreslerinizin veya bir kurumsal NAT ağ geçidinin adreslerinden gelen trafiğe izin vermek için bir **güvenlik duvarı kuralı** oluşturabilirsiniz. 
 

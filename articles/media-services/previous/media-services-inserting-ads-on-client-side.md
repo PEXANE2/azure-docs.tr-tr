@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89263595"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>İstemci tarafına reklam ekleme
@@ -353,7 +353,7 @@ Bir MAST dosyası bir **Triggers** öğesi Içeren bir **mast** öğesi ile baş
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video oynatıcı kullanma-ad arabirimi tanımı (VÜCRETLI)
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video Player-Ad arabirimi tanımını kullanma (VÜCRETLI)
 VÜCRETLI, yürütülebilir ad birimlerinin bir video oynatıcı ile iletişim kurmasını sağlayan bir API 'dir. Bu, son derece etkileşimli ad deneyimlerine izin verir. Kullanıcı ad ile etkileşime geçebilir ve ad, Görüntüleyici tarafından alınan eylemlere yanıt verebilir. Örneğin, bir ad, kullanıcının daha fazla bilgi veya daha uzun bir sürümü görüntülemesine izin veren düğmeler görüntüleyebilir. Video oynatıcı, VÜCRETLI API 'yi desteklemelidir ve yürütülebilir ad, API 'YI uygulamalıdır. Bir oyuncu bir ad sunucusundan bir ad istediğinde, sunucu, VÜCRETLI ad içeren büyük bir Yanıt ile yanıt verebilir.
 
 Bir yürütülebilir ad, Adobe Flash™ veya bir Web tarayıcısında yürütülebilecek JavaScript gibi bir çalışma zamanı ortamında yürütülmesi gereken kodda oluşturulur. Bir ad sunucusu VÜCRETLI ad içeren büyük bir yanıt döndürdüğünde, öğesindeki apiFramework özniteliğinin değeri `<MediaFile>` "VÜCRETLI" olmalıdır. Bu öznitelik, kapsanan ad 'nin bir VÜCRETLI yürütülebilir ad olduğunu belirtir. Tür özniteliği yürütülebilir dosyanın MIME türüne ayarlanmalıdır (örneğin, "application/x-Shockwave-Flash" veya "application/x-JavaScript"). Aşağıdaki XML kod parçacığında, `<MediaFile>` vücretli yürütülebilir ad içeren büyük bir yanıttan öğe gösterilmektedir.
@@ -850,5 +850,5 @@ Aşağıdaki örnek, bir orta seviye kaplama ad zamanlamasının nasıl planlana
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

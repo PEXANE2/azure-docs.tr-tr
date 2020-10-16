@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
 ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627236"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
@@ -33,7 +33,7 @@ Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında d
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, bir sunucu veya yönetilen örnek üzerinde veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 
-- [Azure Portal](geo-distributed-application-configure-tutorial.md)
+- [Azure portalındaki](geo-distributed-application-configure-tutorial.md)
 - [Azure CLı: yük devretme grubu](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: yük devretme grubu](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: yük devretme grubu](/rest/api/sql/failovergroups).
@@ -184,7 +184,7 @@ Tipik bir Azure uygulaması birden çok Azure hizmeti kullanır ve birden çok b
 Bir kesinti algılanırsa, Azure tarafından belirttiğiniz dönem için bekler `GracePeriodWithDataLossHours` . Varsayılan değer 1 saattir. Veri kaybını bilmiyorsanız, `GracePeriodWithDataLossHours` 24 saat gibi yeterince büyük bir sayıya ayarladığınızdan emin olun. İkincil sunucudan birinciye yeniden yük devretmek için el ile grup yük devretmesini kullanın.
 
 > [!IMPORTANT]
-> 800 veya daha az DTU ile esnek havuzlar ve coğrafi çoğaltma kullanan 250 ' den fazla veritabanı, daha uzun planlı yük devretme ve performans düşüklükiyle ilgili sorunlarla karşılaşabilir.  Bu sorunların, yazma yoğunluklu iş yükleri, coğrafi çoğaltma uç noktaları Coğrafya tarafından yaygın olarak ayrıldığı veya her veritabanı için birden çok ikincil uç nokta kullanıldığı durumlarda oluşma olasılığı daha yüksektir.  Bu sorunların belirtileri, coğrafi çoğaltma gecikmesi zaman içinde arttıkça belirtilir.  Bu gecikme, [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)kullanılarak izlenebilir.  Bu sorunlar oluşursa, azaltmaları, havuz DTU sayısını artırmayı veya aynı havuzdaki coğrafi çoğaltılan veritabanlarının sayısını azaltmayı içerir.
+> 800 veya daha az DTU ile esnek havuzlar ve coğrafi çoğaltma kullanan 250 ' den fazla veritabanı, daha uzun planlı yük devretme ve performans düşüklükiyle ilgili sorunlarla karşılaşabilir.  Bu sorunların, yazma yoğunluklu iş yükleri, coğrafi çoğaltma uç noktaları Coğrafya tarafından yaygın olarak ayrıldığı veya her veritabanı için birden çok ikincil uç nokta kullanıldığı durumlarda oluşma olasılığı daha yüksektir.  Bu sorunların belirtileri, coğrafi çoğaltma gecikmesi zaman içinde arttıkça belirtilir.  Bu gecikme, [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)kullanılarak izlenebilir.  Bu sorunlar oluşursa, azaltmaları, havuz DTU sayısını artırmayı veya aynı havuzdaki coğrafi çoğaltılan veritabanlarının sayısını azaltmayı içerir.
 
 ### <a name="changing-secondary-region-of-the-failover-group"></a>Yük devretme grubunun ikincil bölgesini değiştirme
 

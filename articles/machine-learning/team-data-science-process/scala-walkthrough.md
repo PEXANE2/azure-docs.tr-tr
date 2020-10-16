@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026194"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Azure üzerinde Scala ve Spark kullanan Veri Bilimi
@@ -39,7 +39,7 @@ Bu makaledeki kurulum adımları ve kodu, Azure HDInsight 3,4 Spark 1,6 içindir
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Bir Azure aboneliğiniz olmalıdır. Henüz bir tane yoksa [Azure Ücretsiz deneme sürümü alın](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Aşağıdaki yordamları tamamlayabilmeniz için bir Azure HDInsight 3,4 Spark 1,6 kümesine ihtiyacınız vardır. Bir küme oluşturmak için bkz. [Başlarken: Azure HDInsight üzerinde Apache Spark oluşturma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Küme türünü **seçin** menüsünde küme türünü ve sürümünü ayarlayın.
 
@@ -77,14 +77,14 @@ val beginningTime = Calendar.getInstance().getTime()
 
 Jupyter Not defterleri ile birlikte sunulan Spark çekirdekler 'in önceden ayarlanmış bağlamları vardır. Geliştirmekte olduğunuz uygulamayla çalışmaya başlamadan önce Spark veya Hive bağlamlarını açıkça ayarlamanız gerekmez. Önceden ayarlanmış bağlamlar şunlardır:
 
-* `sc`Mini bağlam için
-* `sqlContext`HiveContext için
+* `sc` Mini bağlam için
+* `sqlContext` HiveContext için
 
 ### <a name="spark-magics"></a>Spark mıknatıcs
 Spark çekirdeği, ile çağırabilmeniz için bazı önceden tanımlanmış "mıknatıcs" sağlar `%%` . Aşağıdaki kod örneklerinde bu komutlardan ikisi kullanılır.
 
-* `%%local`sonraki satırlardaki kodun yerel olarak yürütüleceğini belirtir. Kod geçerli bir Scala kodu olmalıdır.
-* `%%sql -o <variable name>`için bir Hive sorgusu yürütür `sqlContext` . `-o`Parametresi geçirilirse, sorgunun sonucu, `%%local` bir Spark veri çerçevesi olarak Scala bağlamında kalıcı hale getirilir.
+* `%%local` sonraki satırlardaki kodun yerel olarak yürütüleceğini belirtir. Kod geçerli bir Scala kodu olmalıdır.
+* `%%sql -o <variable name>` için bir Hive sorgusu yürütür `sqlContext` . `-o`Parametresi geçirilirse, sorgunun sonucu, `%%local` bir Spark veri çerçevesi olarak Scala bağlamında kalıcı hale getirilir.
 
 Jupyter Not defterleri ve ile çağırdığınız önceden tanımlanmış "mıknatık" için çekirdekler hakkında daha fazla bilgi için `%%` `%%local` bkz. [HDInsight 'ta HDInsight Spark Linux kümeleri ile Jupyter Not defterleri için sunulan çekirdekler](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/29/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 7ddc83874526a99383f94491771a81da2cde86d8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460484"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047310"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Azure Stack Edge Pro GPU genel kullanılabilirliği (GA) sürüm notları
 
@@ -21,11 +21,11 @@ Aşağıdaki sürüm notları, GPU ile Azure Stack Edge Pro cihazlarınız için
 
 Sürüm notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar keşfedildiğinde eklenirler. Azure Stack Edge Pro cihazınızı dağıtmadan önce, sürüm notlarında bulunan bilgileri dikkatle gözden geçirin.
 
-Bu makale, **2.1.1364.2110**yazılım sürüm numarası ile eşleşen **Azure Stack Edge Pro 2009** sürümü için geçerlidir.
+Bu makale, **2.1.1377.2170**yazılım sürüm numarası ile eşleşen **Azure Stack Edge Pro 2010** sürümü için geçerlidir.
 
 ## <a name="whats-new"></a>Yenilikler
 
-Azure Stack Edge 2009 sürümünde aşağıdaki yeni özellikler mevcuttur. 
+Azure Stack Edge 2010 sürümünde aşağıdaki yeni özellikler mevcuttur. 
 
 - Depolama **sınıfları** -bu sürümde, depolama sınıfları, depolamayı dinamik olarak sağlamanıza olanak tanıyan kullanılabilir. Daha fazla bilgi için [Azure Stack Edge Pro GPU cihazınızda Kubernetes depolama yönetimi](azure-stack-edge-gpu-kubernetes-storage.md#dynamicprovisioning)bölümüne bakın. 
 - **Ölçüm sunucusu Ile Kubernetes panosu** -bu sürümde, bir ölçüm sunucusu eklentisi Ile bir Kubernetes panosu eklenir. Azure Stack Edge Pro cihazınızda çalışan uygulamalara genel bir bakış almak, Kubernetes küme kaynaklarının durumunu görüntülemek ve cihazda oluşan tüm hataları görmek için panoyu kullanabilirsiniz. Ölçüm sunucusu, cihazdaki Kubernetes kaynakları genelinde CPU ve bellek kullanımını toplar. Daha fazla bilgi için bkz. [Azure Stack Edge Pro GPU cihazınızı izlemek Için Kubernetes panosunu kullanma](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
@@ -35,7 +35,7 @@ Azure Stack Edge 2009 sürümünde aşağıdaki yeni özellikler mevcuttur.
 
 Aşağıdaki tabloda Azure Stack Edge Pro cihazı için bilinen sorunların bir özeti verilmiştir.
 
-| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 |**1.**|Önizleme özellikleri |Bu GA sürümünde şu özellikler bulunur: yerel Azure Resource Manager, VM 'Ler, Kubernetes, Azure Arc etkinleştirilmiş Kubernetes, GPU için çok Işlem hizmeti (MPS), Azure Stack Edge Pro cihazınız için önizleme aşamasındadır.  |Bu özellikler daha sonraki bir sürümde genel kullanıma sunulacaktır. |
 | **2.** |Azure Stack Edge Pro + Azure SQL | SQL veritabanı oluşturma, yönetici erişimi gerektirir.   |İçindeki adımlar 1-2 yerine aşağıdaki adımları uygulayın [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) . <ul><li>Cihazınızın yerel kullanıcı arabiriminde, işlem arabirimini etkinleştirin. İşlem **> Için işlem > bağlantı noktası # > etkinleştir** ' i seçin.</li><li>`sqlcmd`İstemci makinenize şuradan indirinhttps://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>Adresin sonuna bir ", 1401" ekleyerek işlem arabirimi IP adresine (etkin olan bağlantı noktası) bağlanın.</li><li>Son komut şöyle görünür: sqlcmd-S {Interface IP}, 1401-U SA-P "Strong! Passw0rd".</li>Bundan sonra geçerli belgelerden 3-4 arasındaki adımlar aynı olmalıdır. </li></ul> |

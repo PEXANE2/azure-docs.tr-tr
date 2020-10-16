@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9ae3e9b4bb69bf0c85054b5d6144633923cac947
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282077"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071515"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Ikizi modülünü ve bağımlılıklarını sıfırdan dağıtma
 
@@ -25,8 +25,8 @@ OPC Ikizi modülü IoT Edge üzerinde çalışır ve OPC cihaz ikizi ve kayıt d
 
 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) ağ geçidinize modül dağıtmak için çeşitli seçenekler vardır
 
-- [Azure portal IoT Edge dikey penceresinden dağıtma](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
-- [AZ CLı kullanarak dağıtma](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
+- [Azure portal IoT Edge dikey penceresinden dağıtma](../iot-edge/how-to-deploy-modules-portal.md)
+- [AZ CLı kullanarak dağıtma](../iot-edge/how-to-deploy-cli-at-scale.md)
 
 > [!NOTE]
 > Dağıtım ayrıntıları ve yönergeleri hakkında daha fazla bilgi için bkz. GitHub [deposu](https://github.com/Azure/azure-iiot-components).
@@ -86,7 +86,7 @@ Tüm modüller bir dağıtım bildirimi kullanılarak dağıtılır.  Aşağıda
               "restartPolicy": "always",
               "settings": {
                 "image": "mcr.microsoft.com/iotedge/opc-publisher:latest",
-                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--to\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
+                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--tm\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
               }
             }
           }
@@ -117,7 +117,7 @@ Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azu
 
 1. OPC Ikizi [bağımlılıklarını](howto-opc-twin-deploy-dependencies.md) dağıtın ve elde edilen dosyayı elde edin `.env` . `hub name` `PCS_IOTHUBREACT_HUB_NAME` Değişkenin elde edilen dosyada dağıtıldığını aklınızda edin `.env` .
 
-2. Bir [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) veya [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge ağ geçidini kaydedin ve başlatın ve konumunu aklınızda yapın `device id` .
+2. Bir [Linux](../iot-edge/how-to-install-iot-edge-linux.md) veya [Windows](../iot-edge/how-to-install-iot-edge-windows.md) IoT Edge ağ geçidini kaydedin ve başlatın ve konumunu aklınızda yapın `device id` .
 
 ### <a name="deploy-to-an-edge-device"></a>Sınır cihazına dağıtma
 
@@ -143,7 +143,7 @@ Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azu
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
-   Gerekirse isteğe bağlı alanları doldurun. Kapsayıcı oluşturma seçenekleri hakkında daha fazla bilgi için, ilkeyi yeniden başlatın ve istenen durum bkz. [Edgeagent istenen özellikler](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties). Modül ikizi hakkında daha fazla bilgi için bkz. [istenen özellikleri tanımlama veya güncelleştirme](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
+   Gerekirse isteğe bağlı alanları doldurun. Kapsayıcı oluşturma seçenekleri hakkında daha fazla bilgi için, ilkeyi yeniden başlatın ve istenen durum bkz. [Edgeagent istenen özellikler](../iot-edge/module-edgeagent-edgehub.md#edgeagent-desired-properties). Modül ikizi hakkında daha fazla bilgi için bkz. [istenen özellikleri tanımlama veya güncelleştirme](../iot-edge/module-composition.md#define-or-update-desired-properties).
 
 7. **Kaydet** ' i seçin ve **5**. adımı yineleyin.  
 
@@ -156,7 +156,7 @@ Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azu
    *Kapsayıcı oluşturma seçenekleri*olarak aşağıdaki JSON 'u kullanın:
 
    ```json
-   {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
+   {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--tm","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
 9. **Kaydet** ' i ve ardından yollar bölümüne devam etmek için **İleri** ' yi seçin.
@@ -182,7 +182,7 @@ Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azu
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure komut satırı arabirimi 'nin (az)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) en son sürümünü [buradan](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)yüklersiniz.
+1. [Azure komut satırı arabirimi 'nin (az)](/cli/azure/?view=azure-cli-latest) en son sürümünü [buradan](/cli/azure/install-azure-cli?view=azure-cli-latest)yüklersiniz.
 
 ### <a name="quickstart"></a>Hızlı Başlangıç
 
@@ -195,7 +195,7 @@ Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azu
    ```
 
    `device id`Parametresi, büyük/küçük harfe duyarlıdır. İçerik parametresi, kaydettiğiniz dağıtım bildirimi dosyasını işaret eder. 
-    ![az IoT Edge set-modules çıktısı](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+    ![az IoT Edge set-modules çıktısı](/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. Modülleri cihazınıza dağıttıktan sonra, aşağıdaki komutla bunların tümünü görüntüleyebilirsiniz:
 
@@ -203,7 +203,7 @@ Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azu
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   Cihaz KIMLIĞI parametresi, büyük/küçük harfe duyarlıdır. ![az IoT Hub modülü-kimlik listesi çıkışı](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
+   Cihaz KIMLIĞI parametresi, büyük/küçük harfe duyarlıdır. ![az IoT Hub modülü-kimlik listesi çıkışı](/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

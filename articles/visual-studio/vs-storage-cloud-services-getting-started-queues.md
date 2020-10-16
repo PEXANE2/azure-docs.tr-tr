@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9f0a3c3a96a73bd71a9b0c769a3ceff85ae428f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017626"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure Kuyruk Depolama ve Visual Studio’ya bağlı hizmetleri kullanmaya başlama (bulut hizmeti projeleri)
@@ -149,8 +149,8 @@ int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
-## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Ortak Azure kuyruğu API 'Leri ile Async-Await modelini kullanın
-Bu örnek, ortak Azure kuyruğu API 'Leri ile Async-Await modelinin nasıl kullanılacağını gösterir. Örnek, verilen yöntemlerin her birinin zaman uyumsuz sürümünü çağırır, bu, her yöntemin **zaman uyumsuz** onarma sonrasında görülebilir. Zaman uyumsuz bir yöntem kullanıldığında, zaman uyumsuz-await deseninin, çağrı tamamlanana kadar yerel yürütmeyi askıya alır. Bu davranış, performans sorunlarını önlemeye yardımcı olan ve uygulamanızın genel yanıt hızını geliştiren geçerli iş parçacığının diğer işleri yapmasına izin verir. .NET’te Zaman Uyumsuz-Bekleme yönteminin kullanılması ile ilgili daha fazla ayrıntı için bkz. [Zaman Uyumsuz ve Bekleme (C# ve Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
+## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Ortak Azure kuyruğu API 'Leriyle Async-Await modelini kullanma
+Bu örnek, Async-Await deseninin ortak Azure kuyruğu API 'Leri ile nasıl kullanılacağını gösterir. Örnek, verilen yöntemlerin her birinin zaman uyumsuz sürümünü çağırır, bu, her yöntemin **zaman uyumsuz** onarma sonrasında görülebilir. Zaman uyumsuz bir yöntem kullanıldığında, zaman uyumsuz-await deseninin, çağrı tamamlanana kadar yerel yürütmeyi askıya alır. Bu davranış, performans sorunlarını önlemeye yardımcı olan ve uygulamanızın genel yanıt hızını geliştiren geçerli iş parçacığının diğer işleri yapmasına izin verir. .NET’te Zaman Uyumsuz-Bekleme yönteminin kullanılması ile ilgili daha fazla ayrıntı için bkz. [Zaman Uyumsuz ve Bekleme (C# ve Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
 
 ```csharp
 // Create a message to put in the queue

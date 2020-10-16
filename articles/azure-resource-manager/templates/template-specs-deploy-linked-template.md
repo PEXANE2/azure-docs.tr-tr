@@ -4,17 +4,17 @@ description: Bağlı bir dağıtımda var olan bir şablon belirtimini dağıtma
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369119"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Öğretici: bir şablon belirtimini bağlantılı şablon olarak dağıtma (Önizleme)
 
 [Bağlı bir dağıtım](linked-templates.md#linked-template)kullanarak var olan bir [şablon belirtimini](template-specs.md) dağıtmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Şablon belirtimini oluşturduktan sonra, Azure PowerShell veya Azure CLı kullanarak şablon belirtimini dağıtabilirsiniz. Ayrıca, bağlantılı bir şablon kullanarak, çözümünüzün bir parçası olarak şablon belirtimini dağıtabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 57a91622bef401d946a383e3be39f2e566fa50b4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267845"
 ---
 # <a name="input-metadata"></a>Giriş meta verileri
@@ -72,7 +72,7 @@ Bu makalenin sonundaki bir XML örneğine bakın: [XML örneği](media-services-
 | **Programlar**<br /><br /> minOccurs = "0" | |Varlık dosyası MPEG-TS biçiminde olduğunda tüm [Programlar öğesi](media-services-input-metadata-schema.md#Programs) koleksiyonu. |
 | **Videoizler**<br /><br /> minOccurs = "0" | |Her fiziksel varlık dosyası sıfır veya daha fazla video, araya eklemeli bir şekilde uygun bir kapsayıcı biçimine sahip olabilir. Bu öğe, varlık dosyasının parçası olan tüm [video izlemelerinin](media-services-input-metadata-schema.md#VideoTracks) bir koleksiyonunu içerir. |
 | **Ses Izleri**<br /><br /> minOccurs = "0" | |Her fiziksel varlık dosyası, uygun bir kapsayıcı biçiminde araya eklemeli sıfır veya daha fazla ses parçası içerebilir. Bu öğe, varlık dosyasının parçası olan tüm [Ses izlemelerinin](media-services-input-metadata-schema.md#AudioTracks) bir koleksiyonunu içerir. |
-| **Meta Veriler**<br /><br /> minOccurs = "0" maxOccurs = "sınırsız" |[Meta veri türü](media-services-input-metadata-schema.md#MetadataType) |Varlık dosyasının meta verileri key\value dizeleri olarak temsil edilir. Örneğin:<br /><br /> **&lt;Metadata anahtarı = "Language" Value = "ENG"/&gt;** |
+| **Veriyi**<br /><br /> minOccurs = "0" maxOccurs = "sınırsız" |[Meta veri türü](media-services-input-metadata-schema.md#MetadataType) |Varlık dosyasının meta verileri key\value dizeleri olarak temsil edilir. Örneğin:<br /><br /> **&lt;Metadata anahtarı = "Language" Value = "ENG"/&gt;** |
 
 ## <a name="tracktype"></a><a name="TrackType"></a> TrackType
 Bu makalenin sonundaki bir XML örneğine bakın: [XML örneği](media-services-input-metadata-schema.md#xml).  
@@ -80,7 +80,7 @@ Bu makalenin sonundaki bir XML örneğine bakın: [XML örneği](media-services-
 ### <a name="attributes"></a>Öznitelikler
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| **Numarasını**<br /><br /> Gerekli |**xs: int** |Bu sesin veya video izlemenin sıfır tabanlı dizini.<br /><br /> Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
+| **Id**<br /><br /> Gerekli |**xs: int** |Bu sesin veya video izlemenin sıfır tabanlı dizini.<br /><br /> Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
 | **Bileşeni** |**xs: String** |Video izleme codec bileşeni dizesi. |
 | **CodecLongName** |**xs: String** |Ses veya video izleme codec bileşeni uzun adı. |
 | **Temeli**<br /><br /> Gerekli |**xs: String** |Zaman tabanı. Örnek: zaman temeli = "1/48000" |
@@ -97,7 +97,7 @@ Bu makalenin sonundaki bir XML örneğine bakın: [XML örneği](media-services-
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
 | **Çıkarma**<br /><br /> minOccurs = "0" maxOccurs = "1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Sunum bilgilerini içerir (örneğin, belirli bir ses izlemenin görsel olarak Engelli görüntüleyiciler için olup olmadığı). |
-| **Meta Veriler**<br /><br /> minOccurs = "0" maxOccurs = "sınırsız" |[Meta veri türü](media-services-input-metadata-schema.md#MetadataType) |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri. Örneğin, Key = "Language" ve value = "ENG". |
+| **Veriyi**<br /><br /> minOccurs = "0" maxOccurs = "sınırsız" |[Meta veri türü](media-services-input-metadata-schema.md#MetadataType) |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri. Örneğin, Key = "Language" ve value = "ENG". |
 
 ## <a name="audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a> AudioTrackType (TrackType öğesinden devralır)
  **Audiotracktype** , [tracktype](media-services-input-metadata-schema.md#TrackType)'dan devralan küresel bir karmaşık türdür.  
@@ -130,8 +130,8 @@ Bu makalenin sonundaki bir XML örneğine bakın: [XML örneği](media-services-
 | **Profil** |**xs: String** |Video izleme profili. |
 | **Düzeyde** |**xs: String** |Video izlemenin düzeyi. |
 | **PixelFormat 'a dönüştürme** |**xs: String** |Video izlemenin piksel biçimi. |
-| **Width**<br /><br /> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video genişliği. |
-| **Height**<br /><br /> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video yüksekliği. |
+| **Genişlik**<br /><br /> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video genişliği. |
+| **Yükseklik**<br /><br /> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video yüksekliği. |
 | **DisplayAspectRatioNumerator**<br /><br /> Gerekli |**xs: Double** |Video görüntüleme en boy oranı payı. |
 | **Displayaspectratiopayda**<br /><br /> Gerekli |**xs: Double** |Video görüntüleme en boy oranı paydası. |
 | **Displayaspectratiopayda**<br /><br /> Gerekli |**xs: Double** |Video örneği en boy oranı payı. |
@@ -151,7 +151,7 @@ Bu makalenin sonundaki bir XML örneğine bakın: [XML örneği](media-services-
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
 | **anahtar**<br /><br /> Gerekli |**xs: String** |Anahtar/değer çiftindeki anahtar. |
-| **deeri**<br /><br /> Gerekli |**xs: String** |Anahtar/değer çiftindeki değer. |
+| **değer**<br /><br /> Gerekli |**xs: String** |Anahtar/değer çiftindeki değer. |
 
 ## <a name="programtype"></a><a name="ProgramType"></a> ProgramType
 **Programtype** , bir programı tanımlayan küresel bir karmaşık türdür.  
@@ -650,6 +650,6 @@ Aşağıda, giriş meta verileri dosyasına bir örnek verilmiştir.
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

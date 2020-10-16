@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212259"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory
@@ -45,9 +45,9 @@ Bu kılavuzda, şirket içinde veya aboneliklerinizde sanal makineler çalışt�
 > [!IMPORTANT]
 > **Active Directory (Windows tümleşik kimlik doğrulaması) desteklenmez.** Kimlik kaynağı olarak yalnızca LDAP seçeneği Active Directory desteklenir.
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Çoklu oturum açma kimlik kaynağı olarak şirket Içi Active Directory ekleme
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Tek bir Sign-On kimlik kaynağı olarak şirket Içi Active Directory ekleme
 
-Şirket içi Active Directory çoklu oturum açma kimlik kaynağı olarak ayarlamak için şunlar gerekir:
+Şirket içi Active Directory tek bir Sign-On kimlik kaynağı olarak ayarlamak için şunları yapmanız gerekir:
 
 * Şirket içi veri merkezinizden özel bulutunuz için [siteden sıteye VPN bağlantısı](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) .
 * VCenter ve platform hizmetleri denetleyicisine (PSC) Şirket içi DNS sunucusu IP 'si eklendi.
@@ -67,10 +67,10 @@ Active Directory etki alanınızı ayarlarken aşağıdaki tablodaki bilgileri k
 | **Kullanıcı adı** | Etki alanındaki, kullanıcılar ve gruplar için temel DN 'ye yönelik en az salt okuma erişimi olan bir kullanıcının KIMLIĞI. |
 | **Parola** | Kullanıcı adı tarafından belirtilen kullanıcının parolası. |
 
-Önceki tabloda yer alan bilgilere sahip olduğunuzda, vCenter 'da çoklu oturum açma kimlik kaynağı olarak şirket içi Active Directory ekleyebilirsiniz.
+Önceki tabloda yer alan bilgilere sahip olduğunuzda, vCenter 'da tek bir Sign-On kimlik kaynağı olarak şirket içi Active Directory ekleyebilirsiniz.
 
 > [!TIP]
-> [VMware belgeleri sayfasında](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)çoklu oturum açma kimlik kaynakları hakkında daha fazla bilgi bulabilirsiniz.
+> [VMware belgeleri sayfasında](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)tek Sign-On kimlik kaynakları hakkında daha fazla bilgi bulacaksınız.
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Özel bulutta yeni Active Directory ayarlama
 
@@ -103,9 +103,9 @@ Active Directory etki alanını ayarladıktan sonra, yeni Active Directory için
 
 ## <a name="set-up-active-directory-on-azure"></a>Azure 'da Active Directory ayarlama
 
-Azure üzerinde çalışan Active Directory, şirket içinde çalışan Active Directory benzerdir.  VCenter 'da çoklu oturum açma kimlik kaynağı olarak Azure 'da çalışan Active Directory ayarlamak için, vCenter Server ve PSC 'nin Active Directory hizmetlerinin çalıştığı Azure sanal ağı ile ağ bağlantısı olması gerekir.  Azure sanal ağ bağlantısı kullanarak bu bağlantıyı, Active Directory hizmetlerinin CloudSimple özel bulutuna çalıştığı Azure sanal ağından [ExpressRoute kullanarak](azure-expressroute-connection.md) kurabilirsiniz.
+Azure üzerinde çalışan Active Directory, şirket içinde çalışan Active Directory benzerdir.  VCenter 'da tek bir Sign-On kimlik kaynağı olarak Azure 'da çalışan Active Directory ayarlamak için, vCenter Server ve PSC 'nin Active Directory hizmetlerinin çalıştığı Azure sanal ağı ile ağ bağlantısı olması gerekir.  Azure sanal ağ bağlantısı kullanarak bu bağlantıyı, Active Directory hizmetlerinin CloudSimple özel bulutuna çalıştığı Azure sanal ağından [ExpressRoute kullanarak](azure-expressroute-connection.md) kurabilirsiniz.
 
-Ağ bağlantısı kurulduktan sonra, kimlik kaynağı olarak eklemek için [Şirket içi Active Directory çoklu oturum açma kimlik kaynağı olarak ekleme](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) bölümündeki adımları izleyin.  
+Ağ bağlantısı kurulduktan sonra, kimlik kaynağı olarak eklemek için [Şirket içi Active Directory tek bir Sign-On kimlik kaynağı olarak ekleme](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) bölümündeki adımları izleyin.  
 
 ## <a name="add-an-identity-source-on-vcenter"></a>VCenter 'a bir kimlik kaynağı ekleme
 

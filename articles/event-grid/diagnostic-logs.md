@@ -4,10 +4,10 @@ description: Bu makalede bir Azure olay Kılavuzu konusu veya etki alanı için 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116752"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Azure Event Grid konuları/etki alanları için tanılama günlükleri
@@ -16,12 +16,12 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
 
 ## <a name="schema-for-publishdelivery-failure-logs"></a>Yayımlama/teslim hatası günlükleri için şema
 
-| Özellik adı | Veri türü | Description |
+| Özellik adı | Veri türü | Açıklama |
 | ------------- | --------- | ----------- | 
-| Saat | DateTime | Günlük girişinin oluşturulduğu saat <p>**Örnek değer:** 01-29-2020 09:52:02.700</p> |
+| Süre | DateTime | Günlük girişinin oluşturulduğu saat <p>**Örnek değer:**  01-29-2020 09:52:02.700</p> |
 | EventSubscriptionName | Dize | Olay aboneliğinin adı <p>**Örnek değer:** "EVENTSUB1"</p> <p>Bu özellik yalnızca teslim hatası günlükleri için geçerlidir.</p>  |
 | Kategori | Dize | Günlük kategorisi adı. <p>**Örnek değerler:** "Deliveryarızaları" veya "Publishhatalarıyla" | 
-| ThrottledRequests | Dize | Hatayla karşılaşıldığında gerçekleştirilen işlemin adı.<p>**Örnek değerler:** Teslim hatalarının "teslim edilmesi". |
+| OperationName | Dize | Hatayla karşılaşıldığında gerçekleştirilen işlemin adı.<p>**Örnek değerler:** Teslim hatalarının "teslim edilmesi". |
 | İleti | Dize | Kullanıcının hatanın nedenini ve diğer ek ayrıntıları açıklayan günlük iletisi. |
 | ResourceId | Dize | Konu/etki alanı kaynağı için kaynak KIMLIĞI<p>**Örnek değerler:**`/SUBSCRIPTIONS/SAMPLE-SUBSCRIPTION-ID/RESOURCEGROUPS/SAMPLE-RESOURCEGROUP/PROVIDERS/MICROSOFT.EVENTGRID/TOPICS/TOPIC1` |
 

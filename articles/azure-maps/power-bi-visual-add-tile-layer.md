@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86262157"
 ---
 # <a name="add-a-tile-layer"></a>Kutucuk katmanı ekleme
@@ -35,7 +35,7 @@ Bir kutucuk hizmetinin kullanılabildiği sınırlama kutusu ve yakınlaştırma
 | Güney ile bağlantılı    | Kutucukların kullanılabildiği sınırlayıcı kutunun güney enlem. |
 | Doğu sınırlı     | Kutucukların kullanılabildiği sınırlayıcı kutunun Doğu Boylam.  |
 | Batı bağlantılı     | Kutucukların kullanılabildiği sınırlayıcı kutunun Batı boylam.   |
-| Saydamlık   | Döşeme katmanının saydamlığı.   |
+| Şeffaflık   | Döşeme katmanının saydamlığı.   |
 | TMS         | Döşeme katmanı, kutucuk katmanının Y koordinatı eksenini tersine çevirir. |
 | En az yakınlaştırma       | En düşük yakınlaştırma düzeyi kutucukları var. |
 | En fazla yakınlaştırma       | En yüksek yakınlaştırma düzeyi kutucukları var.  |
@@ -51,11 +51,11 @@ Azure haritalar görseli tarafından desteklenen üç farklı kutucuk hizmeti ad
 
 Kutucuk URL 'si, aşağıdaki parametreleri kullanan bir kutucuk URL şablonuna yönelik https URL 'sine sahiptir:
 
--   `{x}`-X kutucuğunun konumu. Ayrıca `{y}` , ve gerektirir `{z}` .
--   `{y}`-Kutucuğun Y konumu. Ayrıca `{x}` , ve gerektirir `{z}` .
--   `{z}`-Kutucuğun yakınlaştırma düzeyi. Ayrıca `{x}` , ve gerektirir `{y}` .
--   `{quadkey}`- `quadkey` Bing Haritalar kutucuk sistem adlandırma kuralına göre kutucuk tanımlayıcısı.
--   `{bbox-epsg-3857}`- `{west},{south},{east},{north}` EPSG 3857 uzamsal başvuru sisteminde biçim içeren bir sınırlayıcı kutu dizesi.
+-   `{x}` -X kutucuğunun konumu. Ayrıca `{y}` , ve gerektirir `{z}` .
+-   `{y}` -Kutucuğun Y konumu. Ayrıca `{x}` , ve gerektirir `{z}` .
+-   `{z}` -Kutucuğun yakınlaştırma düzeyi. Ayrıca `{x}` , ve gerektirir `{y}` .
+-   `{quadkey}` - `quadkey` Bing Haritalar kutucuk sistem adlandırma kuralına göre kutucuk tanımlayıcısı.
+-   `{bbox-epsg-3857}` - `{west},{south},{east},{north}` EPSG 3857 uzamsal başvuru sisteminde biçim içeren bir sınırlayıcı kutu dizesi.
 
 Örnek olarak, aşağıdakiler Azure haritalar 'daki [Hava durumu radar kutucuk hizmeti](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) için biçimlendirilen bir kutucuk URL 'sidir. `[subscription-key]`Azure Maps abonelik anahtarınız için bir yer tutucu olduğunu unutmayın.
 
@@ -68,4 +68,4 @@ Azure haritalar döşeme sistemi hakkında daha fazla bilgi için bkz. [yakınl
 Haritaya daha fazla bağlam ekleyin:
 
 > [!div class="nextstepaction"]
-> [Gerçek zamanlı trafiği göster](power-bi-visual-show-real-time-traffic.md)
+> [Gerçek zamanlı trafiği gösterme](power-bi-visual-show-real-time-traffic.md)

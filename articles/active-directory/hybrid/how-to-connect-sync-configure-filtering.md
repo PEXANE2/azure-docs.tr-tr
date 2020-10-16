@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319988"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
@@ -299,9 +299,9 @@ Aşağıdaki adımları uygulayın:
 Eşitlemeden sonra tüm değişiklikler verilmek üzere hazırlanır. Azure AD 'de değişiklikleri gerçekten yapmadan önce, tüm bu değişikliklerin doğru olduğunu doğrulamak istiyorsunuz.
 
 1. Bir komut istemi başlatın ve adresine gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. `csexport "Name of Connector" %temp%\export.xml /f:x` öğesini çalıştırın.  
+2. `csexport "Name of Connector" %temp%\export.xml /f:x` komutunu çalıştırın.  
    Bağlayıcının adı, eşitleme hizmetidir. Azure AD için "contoso.com – Azure AD" benzeri bir ada sahiptir.
-3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` öğesini çalıştırın.
+3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` komutunu çalıştırın.
 4. Artık% TEMP% adlı, Microsoft Excel 'de incelenebilir export.csv adlı bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 5. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklediğiniz şeydir, bu adımları yeniden çalıştırın (Içeri aktar, eşitlendiğinde ve Doğrula).
 

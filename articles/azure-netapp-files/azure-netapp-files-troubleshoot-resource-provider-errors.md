@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
 ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483474"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files Kaynak Sağlayıcısı hatalarını giderme 
@@ -126,7 +126,7 @@ Yeni sözcüklerin başlangıcını göstermek için boşluk yerine bir alt çiz
 Bu hata, değiştirmeye çalıştığınızda oluşur `FileSystemId` .  Değiştirme `FileSystemdId` desteklenen bir işlem değil. 
 
 * Neden:   
-Dosya sisteminin KIMLIĞI, birim oluşturulduğunda ayarlanır. `FileSystemId`daha sonra değiştirilemez.
+Dosya sisteminin KIMLIĞI, birim oluşturulduğunda ayarlanır. `FileSystemId` daha sonra değiştirilemez.
 * Çözüm:   
 `FileSystemId`Bir yama ve güncelleştirme (put) isteğine dahil etmeyin.  Alternatif olarak, isteğin aynı olduğundan emin olun `FileSystemId` .
 
@@ -439,7 +439,7 @@ Yok.  Yukarıdaki çözüme bakın.
 
 ***SubnetID değiştirilemez.***
 
-Bu hata, birim oluşturulduktan sonra değişiklik yapmayı denediğinizde oluşur `subnetId` .  `SubnetId`birim oluşturulduğunda ayarlanmalıdır ve daha sonra değiştirilemez.
+Bu hata, birim oluşturulduktan sonra değişiklik yapmayı denediğinizde oluşur `subnetId` .  `SubnetId` birim oluşturulduğunda ayarlanmalıdır ve daha sonra değiştirilemez.
 
 * Neden:   
 `subnetId`Birim oluşturulduktan sonra, desteklenmeyen bir işlem olmayan ' ı değiştirmeye çalışıyorsunuz. 

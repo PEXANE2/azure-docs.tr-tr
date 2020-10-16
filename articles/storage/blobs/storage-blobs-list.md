@@ -9,18 +9,18 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280105"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093302"
 ---
 # <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
 
 Kodlarınızdan blob 'ları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Her bir sonuç kümesinde döndürülecek sonuç sayısını belirtebilir ve ardından sonraki kümeleri elde edebilirsiniz. Adları bu karakterle veya dizeyle başlayan Blobları döndürmek için bir ön ek belirtebilirsiniz. Blob 'ları düz bir liste yapısında veya hiyerarşik olarak listeleyebilirsiniz. Hiyerarşik bir liste Blobları klasörler halinde düzenlenmiş gibi döndürür.
 
-Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)kullanılarak Blobların nasıl listeyapılacağı gösterilmektedir.  
+Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage)kullanılarak Blobların nasıl listeyapılacağı gösterilmektedir.  
 
 ## <a name="understand-blob-listing-options"></a>Blob listeleme seçeneklerini anlama
 
@@ -28,10 +28,10 @@ Blob 'ları bir depolama hesabında listelemek için şu yöntemlerden birini ç
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-- [BlobContainerClient. Getbloblar](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
-- [BlobContainerClient. GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
-- [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
-- [BlobContainerClient. Getblobsbyhiyerarşik Yasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+- [BlobContainerClient. Getbloblar](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs)
+- [BlobContainerClient. GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)
+- [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)
+- [BlobContainerClient. Getblobsbyhiyerarşik Yasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync)
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
@@ -65,7 +65,7 @@ Blobların listesini filtrelemek için, parametre için bir dize belirtin `prefi
 
 Sonuçlarla blob meta verileri döndürebilirsiniz. 
 
-- .NET V12 SDK kullanıyorsanız [Blobnitelikleri](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) numaralandırması Için **meta veri** değerini belirtin.
+- .NET V12 SDK kullanıyorsanız [Blobnitelikleri](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) numaralandırması Için **meta veri** değerini belirtin.
 
 - .NET v11 SDK kullanıyorsanız, [Bloblistingdetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her blob döndürülen meta verileri içerir, bu nedenle blob meta verilerini almak için bu bağlamdaki **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
 
@@ -153,7 +153,7 @@ Bir Listeleme işlemini hiyerarşik olarak çağırdığınızda, Azure Storage 
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Blobları hiyerarşik olarak listelemek için [blobcontainerclient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)veya [Blobcontainerclient. Getblobsbysıradüzenli yasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) yöntemini çağırın.
+Blobları hiyerarşik olarak listelemek için [blobcontainerclient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)veya [Blobcontainerclient. Getblobsbysıradüzenli yasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync) yöntemini çağırın.
 
 Aşağıdaki örnek, belirtilen kapsayıcıdaki Blobları, isteğe bağlı bir kesim boyutuyla belirtilen hiyerarşik bir liste kullanılarak listeler ve BLOB adını konsol penceresine yazar.
 

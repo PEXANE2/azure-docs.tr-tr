@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85984860"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>REST API kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
@@ -24,7 +24,7 @@ ms.locfileid: "85984860"
 
 Bu makalede, Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması yapmak için REST API nasıl kullanacağınızı öğreneceksiniz. REST API kullanarak Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması için, bkz. [Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması REST API kullanarak](data-lake-store-service-to-service-authenticate-rest-api.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -37,14 +37,14 @@ Son Kullanıcı kimlik doğrulaması, bir kullanıcının Azure AD 'yi kullanara
 
 Son Kullanıcı oturumuna sahip olmanın sonucu, uygulamanıza bir erişim belirteci ve yenileme belirteci verilme sonucudur. Erişim belirteci Data Lake Storage 1. veya Data Lake Analytics yapılan her isteğe iliştirilir ve varsayılan olarak bir saat için geçerlidir. Yenileme belirteci yeni bir erişim belirteci almak için kullanılabilir ve düzenli olarak kullanılıyorsa, varsayılan olarak en fazla iki hafta için geçerlidir. Son Kullanıcı oturumu için iki farklı yaklaşım kullanabilirsiniz.
 
-Bu senaryoda, uygulama kullanıcıdan oturum açmasını ister ve tüm işlemler, kullanıcı bağlamında gerçekleştirilir. Aşağıdaki adımları uygulayın:
+Bu senaryoda, uygulama kullanıcıdan oturum açmasını ister ve tüm işlemler, kullanıcı bağlamında gerçekleştirilir. Aşağıdaki adımları gerçekleştirin:
 
 1. Uygulamanızı kullanarak kullanıcıyı şu URL'ye yönlendirin:
 
     `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > \<REDIRECT-URI>URL 'de kullanılmak üzere kodlanmalıdır. Bu nedenle, için https://localhost kullanın `https%3A%2F%2Flocalhost` )
+   > \<REDIRECT-URI> URL 'de kullanılmak üzere kodlanmalıdır. Bu nedenle, için https://localhost kullanın `https%3A%2F%2Flocalhost` )
 
     Bu öğreticinin amaçları doğrultusunda, yukarıdaki URL'deki yer tutucu değerlerini değiştirebilir ve bir web tarayıcısının adres çubuğuna yapıştırabilirsiniz. Azure oturum açma bilgilerinizi kullanarak kimlik doğrulaması gerçekleştirmeye yönlendirileceksiniz. Başarıyla oturum açtığınızda yanıt, tarayıcının adres çubuğunda görüntülenir. Yanıt şu biçimde olacaktır:
 

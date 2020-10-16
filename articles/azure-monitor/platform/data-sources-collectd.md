@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111992"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Izleyici 'de Linux aracılarında CollectD 'den veri toplama
@@ -54,7 +54,7 @@ CollectD yapılandırması, `write_http` 26000 numaralı bağlantı noktası üz
 > [!NOTE]
 > Bu bağlantı noktası, gerekirse özel tanımlı bir bağlantı noktasına yapılandırılabilir.
 
-Linux için Log Analytics Aracısı Ayrıca, CollectD ölçümleri için 26000 numaralı bağlantı noktasını dinler ve ardından bunları Azure Izleyici şeması ölçümlerine dönüştürür. Linux yapılandırması için Log Analytics Aracısı aşağıda verilmiştir `collectd.conf` .
+Linux için Log Analytics Aracısı Ayrıca, CollectD ölçümleri için 26000 numaralı bağlantı noktasını dinler ve ardından bunları Azure Izleyici şeması ölçümlerine dönüştürür. Linux yapılandırması için Log Analytics Aracısı aşağıda verilmiştir  `collectd.conf` .
 
 ```xml
 <source>
@@ -123,12 +123,12 @@ Linux için Log Analytics Aracısı tarafından zaten toplanan altyapı ölçüm
 | CollectD ölçüm alanı | Azure Izleyici alanı |
 |:--|:--|
 | `host` | Bilgisayar |
-| `plugin` | Hiçbiri |
+| `plugin` | Yok |
 | `plugin_instance` | Örnek Adı<br>**Plugin_instance** *null* ise InstanceName = "*_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>**Type_instance** *null* ise CounterName =**Blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | Hiçbiri |
+| `dstypes` | Yok |
 | `values[]` | Onay değeri |
 
 ## <a name="next-steps"></a>Sonraki adımlar

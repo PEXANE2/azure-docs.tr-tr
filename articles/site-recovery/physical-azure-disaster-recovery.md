@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927292"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Şirket içi fiziksel sunucular için Azure 'da olağanüstü durum kurtarmayı ayarlama
@@ -27,7 +27,7 @@ Bu öğreticide, şirket içi fiziksel Windows ve Linux sunucularının Azure 'a
 > * Çoğaltma ilkesi oluşturma
 > * Sunucu için çoğaltmayı etkinleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -84,8 +84,8 @@ Bir [Azure depolama hesabı](../storage/common/storage-account-create.md)ayarlay
 Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır. Site Recovery, sunucu için çoğaltmayı etkinleştirdiğinizde bu hizmeti otomatik olarak yüklüyor. Otomatik olarak yüklemek için Site Recovery sunucuya erişmek üzere kullanacağı bir hesap hazırlamanız gerekir.
 
 - Bir etki alanı veya yerel hesap kullanabilirsiniz
-- Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, Register **HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\ilkelersystem**altında, 1 değeriyle **LocalAccountTokenFilterPolicy**DWORD girişini ekleyin.
-- Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, kayıt **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**altında, **LocalAccountTokenFilterPolicy**DWORD girişini 1 değeri ile ekleyin.
+- Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın:       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux için hesap, kaynak Linux sunucusunda kök olmalıdır.
 
 

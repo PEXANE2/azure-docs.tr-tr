@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317185"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
@@ -18,7 +18,7 @@ Bu kılavuz, JavaScript kullanarak Azure Işlevleri geliştirmeye yardımcı ola
 
 Express.js, Node.js veya JavaScript geliştiricisi olarak Azure Işlevleri 'ne yeni bir deyişle, lütfen önce aşağıdaki makalelerden birini okuyun:
 
-| Kullanmaya başlama | Kavramlar| Kılavuzlu öğrenme |
+| Başlarken | Kavramlar| Kılavuzlu öğrenme |
 | -- | -- | -- | 
 | <ul><li>[ Visual Studio Code kullanarakNode.js işlevi](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[ Terminal/komut istemiyleNode.js işlevi](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 İşlevinize geçirilen bağlam, `executionContext` aşağıdaki özelliklere sahip bir nesne olan bir özelliği gösterir:
 
-| Özellik adı  | Tür  | Description |
+| Özellik adı  | Tür  | Açıklama |
 |---------|---------|---------|
 | `invocationId` | Dize | Belirli işlev çağrısı için benzersiz bir tanımlayıcı sağlar. |
 | `functionName` | Dize | Çalışan işlevin adını sağlar |

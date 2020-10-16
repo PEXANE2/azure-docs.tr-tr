@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
 ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714444"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
@@ -100,7 +100,7 @@ Sertifikanın nereden geldiği konusunda emin değilseniz, bulmak için aşağı
 2. OpenSSL 'yi çalıştırın.
     * Windows: yükleme dizinini açın, **/bin/** seçin ve ardından **openssl.exe**öğesine çift tıklayın.
     * Mac ve Linux: `openssl` terminalden çalıştırın.
-3. `s_client -showcerts -connect microsoft.com:443` öğesini çalıştırın.
+3. `s_client -showcerts -connect microsoft.com:443` komutunu çalıştırın.
 4. Otomatik olarak imzalanan sertifikaları bulun. Hangi sertifikaların kendinden imzalandığına ilişkin emin değilseniz, konunun ve verenin aynı olduğu her yerde dikkat edin `("s:")` `("i:")` .
 5. Her biri için otomatik olarak imzalanan sertifikalar bulduğunuzda, (ve dahil) her şeyi `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` Yeni bir. cer dosyasına kopyalayıp yapıştırın.
 6. Depolama Gezgini açın ve **Edit**  >  **SSL sertifikalarını**düzenlemek için  >  **sertifikaları içeri aktarın**' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.

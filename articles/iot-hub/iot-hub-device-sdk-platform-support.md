@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423091"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072280"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT cihaz SDK 'Ları platform desteği
 
@@ -60,7 +60,7 @@ Listelenen her SDK 'nın her biri için Microsoft:
 | İşletim Sistemi                  | Derleyici                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2,7. *, 3,5 veya üzeri |
-| MacOS High Sierra   | Python 2,7. *, 3,5 veya üzeri |
+| macOS High Sierra   | Python 2,7. *, 3,5 veya üzeri |
 | Windows 10 ailesi   | Python 2,7. *, 3,5 veya üzeri |
 
 Yalnızca Python sürüm 3.5.3 veya üzeri zaman uyumsuz API 'Leri destekliyorsa, 3,7 veya sonraki bir sürümü kullanmanızı öneririz.
@@ -120,7 +120,7 @@ Microsoft, Azure IoT test ve sertifikalı cihazlarla Azure IoT Universe 'ı sür
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>SDK olmadan IoT Hub bağlanma
 
-IoT Hub cihaz SDK 'Lardan birini kullanabiletirseniz, HTTPS istekleri ve yanıtları gönderip alma yeteneğine sahip herhangi bir uygulamadan [IoT Hub REST API 'lerini](https://docs.microsoft.com/rest/api/iothub/) kullanarak doğrudan IoT Hub bağlanabilirsiniz.
+IoT Hub cihaz SDK 'larından birini kullanmıyorsanız, desteklenen bir iletişim protokolünü kullanarak doğrudan IoT Hub bağlanabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure ıOT SDK olmadan geliştirme](iot-hub-devguide-no-sdk.md).
 
 ## <a name="support-and-other-resources"></a>Destek ve diğer kaynaklar
 

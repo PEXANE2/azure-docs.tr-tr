@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540719"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963542"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler Oracle DBMS dağıtımı
 
@@ -376,10 +376,10 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium veya ultra disk | Hiçbiri | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
+| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 
@@ -389,13 +389,13 @@ Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| \oracle \<SID> \origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -416,7 +416,7 @@ Ayrıca, uygulamayla tutarlı bir VM yedeklemesi çalıştırmak için Azure Bac
 
 
 ### <a name="high-availability"></a>Yüksek kullanılabilirlik
-Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma amaçları için desteklenir. Data Guard 'da otomatik yük devretmeyi başarmak için, hızlı başlatma yük devretmesini (FSFA) kullanmanız gerekir. Gözlemci (FSFA) yük devretmeyi tetikler. FSFA kullanmıyorsanız, yalnızca el ile yük devretme yapılandırması kullanabilirsiniz.
+Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma amaçları için desteklenir. Data Guard 'da otomatik yük devretmeyi başarmak için Fast-Start yük devretme (FSFA) kullanmanız gerekir. Gözlemci (FSFA) yük devretmeyi tetikler. FSFA kullanmıyorsanız, yalnızca el ile yük devretme yapılandırması kullanabilirsiniz.
 
 Azure 'da Oracle veritabanları için olağanüstü durum kurtarma hakkında daha fazla bilgi için bkz. [Azure ortamında Oracle Database 12c veritabanı Için olağanüstü durum kurtarma](../oracle/oracle-disaster-recovery.md).
 
@@ -444,7 +444,7 @@ Bu durumda, bir Oracle giriş, aşama,,,,, `saptrace` `saparch` `sapbackup` `sap
 
 ### <a name="storage-configuration"></a>Depolama yapılandırması
 
-Ext4, XFS veya Oracle ASM 'nin dosya sistemleri Azure 'daki Oracle Database dosyaları için desteklenir. Tüm veritabanı dosyaları, VHD 'leri veya yönetilen diskleri temel alan bu dosya sistemlerinde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) veya [Azure tarafından yönetilen diskleri](../../managed-disks-overview.md)temel alır.
+Ext4, XFS veya Oracle ASM 'nin dosya sistemleri Azure 'daki Oracle Database dosyaları için desteklenir. Tüm veritabanı dosyaları, VHD 'leri veya yönetilen diskleri temel alan bu dosya sistemlerinde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) veya [Azure tarafından yönetilen diskleri](../../managed-disks-overview.md)temel alır.
 
 Oracle Linux UEK kernels için, [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)'leri desteklemek için en az UEK sürüm 4 gerekir.
 
@@ -468,10 +468,10 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium veya ultra disk | Hiçbiri | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -482,13 +482,13 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| /Oracle/ \<SID> /origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -508,10 +508,10 @@ Azure n serisi VM 'Ler için Azure Yazma Hızlandırıcısı kullandığınızda
 ### <a name="backuprestore"></a>Yedekleme/geri yükleme
 Yedekleme/geri yükleme işlevselliği için, Hyper-V ' n i n SAP BR * araçları, çıplak ve Hyper-V ' d a olduklarından aynı şekilde desteklenmektedir. Oracle kurtarma Yöneticisi (RMAN), diskler için yedekleme ve diskten geri yükleme işlemleri için de desteklenir.
 
-Oracle veritabanlarını yedeklemek ve kurtarmak üzere Azure Backup ve kurtarma hizmetlerini nasıl kullanabileceğiniz hakkında daha fazla bilgi için bkz. bir [Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleme ve](../oracle/oracle-backup-recovery.md)kurtarma.
+Oracle veritabanlarını yedeklemek ve kurtarmak üzere Azure Backup ve kurtarma hizmetlerini nasıl kullanabileceğiniz hakkında daha fazla bilgi için bkz. bir [Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleme ve](../oracle/oracle-overview.md)kurtarma.
 
 ### <a name="high-availability"></a>Yüksek kullanılabilirlik
-Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma amaçları için desteklenir. Data Guard 'da otomatik yük devretmeyi başarmak için, hızlı başlatma yük devretmesini (FSFA) kullanmanız gerekir. Gözlemci işlevselliği (FSFA) yük devretmeyi tetikler. FSFA kullanmıyorsanız, yalnızca el ile yük devretme yapılandırması kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama](../oracle/configure-oracle-dataguard.md).
+Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma amaçları için desteklenir. Data Guard 'da otomatik yük devretmeyi başarmak için Fast-Start yük devretme (FSFA) kullanmanız gerekir. Gözlemci işlevselliği (FSFA) yük devretmeyi tetikler. FSFA kullanmıyorsanız, yalnızca el ile yük devretme yapılandırması kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama](../oracle/configure-oracle-dataguard.md).
 
 
 Azure 'da Oracle veritabanları için olağanüstü durum kurtarma yönleri, [bir Azure ortamında Oracle Database 12c veritabanı Için olağanüstü durum kurtarma](../oracle/oracle-disaster-recovery.md)makalesinde sunulmaktadır.
@@ -531,5 +531,3 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 Makaleyi okuyun 
 
 - [SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular](dbms_guide_general.md)
- 
-

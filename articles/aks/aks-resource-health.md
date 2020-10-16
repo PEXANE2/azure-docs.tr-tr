@@ -6,17 +6,17 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358262"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070665"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>AKS kümenizi etkileyen Kaynak Durumu olaylarını kontrol edin (Önizleme)
 
 
-AKS üzerinde kapsayıcı iş yüklerinizi çalıştırırken, iş yüklerinizin kullanılabilirliği üzerindeki etkiyi en aza indirmek için ortaya çıkan sorunları giderebileceğinizden ve giderebileceğinizden emin olmak istersiniz. [Azure Kaynak durumu](https://docs.microsoft.com/azure/service-health/resource-health-overview) , aks kümenizin kullanılamaz olmasına neden olabilecek çeşitli sistem durumu olaylarına ilişkin görünürlük sağlar.
+AKS üzerinde kapsayıcı iş yüklerinizi çalıştırırken, iş yüklerinizin kullanılabilirliği üzerindeki etkiyi en aza indirmek için ortaya çıkan sorunları giderebileceğinizden ve giderebileceğinizden emin olmak istersiniz. [Azure Kaynak durumu](../service-health/resource-health-overview.md) , aks kümenizin kullanılamaz olmasına neden olabilecek çeşitli sistem durumu olaylarına ilişkin görünürlük sağlar.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -49,7 +49,7 @@ Kaynak Durumu, kümenin sistem durumunu tespit etmek üzere yönetilen kümeniz 
 
 - **Düşürülmüş**: eyleminizi gerektiren bir sistem durumu sorunu olduğunda, kümenizi *düşürülmüş*olarak rapor kaynak durumu.
 
-Her sistem durumunun gösterdiği diğer ayrıntılar için [kaynak durumu genel bakış](https://docs.microsoft.com/azure/service-health/resource-health-overview#health-status)' ı ziyaret edin.
+Her sistem durumunun gösterdiği diğer ayrıntılar için [kaynak durumu genel bakış](../service-health/resource-health-overview.md#health-status)' ı ziyaret edin.
 
 ### <a name="view-historical-data"></a>Geçmiş verileri görüntüleme
 
@@ -57,4 +57,4 @@ Geçmiş Kaynak Durumu bilgisinin son 30 gün sonra **durum geçmişi** bölüm�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Aks tanılamayı](https://docs.microsoft.com/azure/aks/concepts-diagnostics)kullanarak küme sorunlarını gidermek için kümenizdeki denetimleri çalıştırın.
+[Aks tanılamayı](./concepts-diagnostics.md)kullanarak küme sorunlarını gidermek için kümenizdeki denetimleri çalıştırın.

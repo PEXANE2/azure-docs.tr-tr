@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85250723"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Çok kiracılı SaaS veritabanı Kiracı desenleri
@@ -135,13 +135,13 @@ Genel olarak, çok kiracılı veritabanlarının en düşük kiracı başına ma
 
 Çok kiracılı bir veritabanı modelinin iki farklı çeşidi, parçalı çok kiracılı model en esnek ve ölçeklenebilir olacak şekilde aşağıdaki şekilde ele alınmıştır.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>Vadeli. Tek bir çok kiracılı veritabanı ile çok kiracılı uygulama
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Tek bir çok kiracılı veritabanı ile çok kiracılı uygulama
 
 En basit çok kiracılı veritabanı, tüm kiracılara yönelik verileri barındırmak için tek bir veritabanı kullanır.  Daha fazla kiracı eklendikçe, veritabanı daha fazla depolama ve işlem kaynaklarıyla ölçeklenir.  Bu ölçek artırma, her zaman bir en son ölçek sınırı olmasına rağmen gerekli olabilir.  Ancak, bu sınıra ulaşılmadan önce uzun bir süre, veritabanının yönetilmesi için çok daha etkin hale gelir.
 
 Ayrı kiracılara odaklanan yönetim işlemleri çok kiracılı bir veritabanında uygulamak daha karmaşıktır.  Ve bu işlemler ölçeğinde, kabul edilebilir yavaş hale gelebilir.  Tek bir örnek, tek bir kiracının verilerinin bir nokta geri yüklemesi örneğidir.
 
-## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>Acil. Parçalı çok kiracılı veritabanları içeren çok kiracılı uygulama
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Parçalı çok kiracılı veritabanları içeren çok kiracılı uygulama
 
 Birçok SaaS uygulaması tek seferde yalnızca bir kiracının verilerine erişir.  Bu erişim stili, kiracı verilerinin birden çok veritabanına veya parçalara dağıtılmasına olanak tanır. Bu, herhangi bir kiracının tüm verilerinin tek parça içinde yer aldığı yerdir.  Çok kiracılı bir veritabanı düzeniyle birleştirildiğinde, parçalı bir model neredeyse sınırsız ölçeğe izin verir.
 

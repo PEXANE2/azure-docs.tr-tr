@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006305"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977587"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Sanal dizisi dağıtma-Azure portal aracılığıyla dosya sunucusu olarak ayarlama
 ![Bir sanal diziyi dağıtmak için gereken adımları gösteren diyagram. Üçüncü adımın ilk bölümü dosya sunucusu olarak ayarlanır ve vurgulanır.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -113,23 +113,23 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
     3. **Kaydet**’e tıklayın. Bu işlem cihazı yeniden başlatacak. Cihaz başarıyla kaydedilmeden önce 2-3 dakika beklemeniz gerekebilir. Cihaz yeniden başlatıldıktan sonra oturum açma sayfasına yönlendirilirsiniz.
        
        ![Bulut ayarları sayfasının ekran görüntüsü. Kayıt anahtarı ve şifreleme anahtarı kutuları doldurulmuştur, ancak değerler redaksiyonu yapılır.](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
-12. Azure portala dönün. **Tüm kaynaklara**gidin, storsimple Aygıt Yöneticisi hizmetinizi arayın.
+12. Azure portalına dönün. **Tüm kaynaklara**gidin, storsimple Aygıt Yöneticisi hizmetinizi arayın.
     
     ![Azure portal tüm kaynaklar sayfasının ekran görüntüsü. Bir Aygıt Yöneticisi hizmeti vurgulanır.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. Filtrelenmiş listede, StorSimple Aygıt Yöneticisi hizmetinizi seçin ve ardından **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, cihazın hizmete başarıyla bağlandığını ve durumu **ayarlamaya hazırlanıyor**olduğunu doğrulayın.
     
-    ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
+    ![Dağıtma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
 ## <a name="step-2-configure-the-device-as-file-server"></a>2. Adım: cihazı dosya sunucusu olarak yapılandırma
 Gerekli cihaz kurulumunu tamamlamak için [Azure Portal](https://portal.azure.com/) aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Cihazı dosya sunucusu olarak yapılandırmak için
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, yeni oluşturduğunuz cihazı seçin. Bu cihaz, **ayarlamaya hazırlanıyor**olarak görünür.
+1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve  **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, yeni oluşturduğunuz cihazı seçin. Bu cihaz, **ayarlamaya hazırlanıyor**olarak görünür.
    
    ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Cihaza tıklayın ve cihazın kuruluma hazırlandığını belirten bir başlık iletisi görürsünüz.
    
-    ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
+    ![Dosya sunucusunu yapılandırma 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Komut çubuğunda **Yapılandır** ' ı tıklatın. Bu, **Yapılandır** dikey penceresini açar. **Yapılandır** dikey penceresinde aşağıdakileri yapın:
    
    1. Dosya sunucusu adı otomatik olarak doldurulur.
@@ -140,7 +140,7 @@ Gerekli cihaz kurulumunu tamamlamak için [Azure Portal](https://portal.azure.co
     
    4. Aygıtınızla kullanılacak depolama hesabı kimlik bilgilerini belirtmek için **gerekli ayarları Yapılandır** ' a tıklayın. Yapılandırılmış depolama hesabı kimlik bilgileri yoksa **Yeni Ekle** ' ye tıklayın. **Kullandığınız depolama hesabının blok bloblarını desteklediğinden emin olun. Sayfa Blobları desteklenmez.** [Blok Blobları ve sayfa Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)hakkında daha fazla bilgi.
    
-      ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![Dosya sunucusunu yapılandırma 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. **Depolama hesabı kimlik bilgileri ekleme** dikey penceresinde aşağıdakileri yapın: 
 
     1. Depolama hesabı hizmetle aynı abonelikte ise geçerli abonelik ' ı seçin. Diğer, depolama hesabının hizmet aboneliğinin dışında olduğunu belirtir. 
@@ -153,19 +153,19 @@ Gerekli cihaz kurulumunu tamamlamak için [Azure Portal](https://portal.azure.co
     
     5. Bu depolama hesabı kimlik bilgilerini eklemek için **Ekle** ' ye tıklayın. 
    
-        ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
+        ![Dosya sunucusunu yapılandırma 4](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
 5. Depolama hesabı kimlik bilgileri başarıyla oluşturulduktan sonra, **yapılandırma** dikey penceresi belirtilen depolama hesabı kimlik bilgilerini görüntüleyecek şekilde güncelleştirilir. **Yapılandır**'a tıklayın.
    
-   ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
+   ![Dosya sunucusunu yapılandırma 5](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
    Bir dosya sunucusunun oluşturulduğunu görürsünüz. Dosya sunucusu başarıyla oluşturulduktan sonra bilgilendirilir.
    
-   ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
+   ![Bir dosya sunucusu 5B yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
    Cihaz durumu da **çevrimiçi**olarak değişir.
    
-   ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
+   ![Dosya sunucusunu yapılandırma 5c](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
    Bir paylaşma eklemeye devam edebilirsiniz.
 
@@ -189,21 +189,21 @@ Paylaşım oluşturmak için [Azure portalında](https://portal.azure.com/) aşa
    
    5. Paylaşma oluşturmak için **Ekle** ' ye tıklayın. 
     
-       ![Paylaşım ekleme](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![Paylaşma 1 ekle](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
        Paylaşım oluşturma işleminin devam ettiği size bildirilir.
    
-       ![Paylaşım ekleme](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![Paylaşma ekleme 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
       Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** dikey penceresi yeni paylaşımı yansıtacak şekilde güncelleşilir. Varsayılan olarak, izleme ve yedekleme, paylaşma için etkinleştirilmiştir.
    
-      ![Paylaşım ekleme](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![Paylaşma 3 Ekle](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>4. Adım: paylaşıma bağlanma
 Şimdi, önceki adımda oluşturduğunuz bir veya daha fazla paylaşımlara bağlanmanız gerekir. Bu adımları, StorSimple Sanal diziniz ile bağlantılı Windows Server konağında gerçekleştirin.
 
 #### <a name="to-connect-to-the-share"></a>Paylaşıma bağlanmak için
-1. :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png":::+ R tuşuna basın. Çalıştır penceresinde, dosya sunucusu *adını* dosya sunucunuza atadığınız cihaz adı ile değiştirerek yol olarak *&#92;&#92;&lt; dosya sunucusu adını &gt; * belirtin. **Tamam** düğmesine tıklayın.
+1. :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png":::+ R tuşuna basın. Çalıştır penceresinde, dosya sunucusu *adını* dosya sunucunuza atadığınız cihaz adı ile değiştirerek yol olarak *&#92;&#92;&lt; dosya sunucusu adını &gt; * belirtin. **Tamam**'a tıklayın.
    
    ![Çalıştır iletişim kutusunun ekran görüntüsü. Aç kutusu, dosya sunucusunun başında bir yol ile doldurulur.](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. Bu, dosya Gezgini 'ni açar. Artık oluşturduğunuz paylaşımları klasörler olarak görebiliyor olmalısınız. İçeriğini görmek için paylaşımı (klasörü) seçin ve çift tıklayın.

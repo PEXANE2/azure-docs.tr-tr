@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596251"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Azure Time Series Insights ortamınıza bir olay hub 'ı olay kaynağı ekleme
@@ -25,7 +25,7 @@ Bu makalede, Azure Event Hubs verileri Azure Time Series Insights ortamınıza o
 > [!NOTE]
 > Bu makalede açıklanan adımlar, hem Azure Time Series Insights Gen 1 hem de Gen 2 ortamlarının Azure Time Series Insights uygular.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure Time Series Insights ortamı oluşturma](./time-series-insights-update-create-environment.md)bölümünde açıklandığı gibi bir Azure Time Series Insights ortamı oluşturun.
 - Bir olay hub'ı oluşturun. [Azure Portal kullanarak Event Hubs ad alanı ve Olay Hub 'ı oluşturun](../event-hubs/event-hubs-create.md).

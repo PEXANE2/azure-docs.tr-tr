@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317625"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
@@ -43,7 +43,7 @@ Otomatik yükseltmenin geçerli durumu PowerShell cmdlet 'i ile görüntülenebi
 | Askıya alındı |Yalnızca sistem tarafından ayarlanır. Sistem **Şu anda** Otomatik yükseltmeleri almaya uygun değil. |
 | Devre dışı |Otomatik yükseltme devre dışı bırakıldı. |
 
-İle **etkin** ve **devre dışı** arasında geçiş yapabilirsiniz `Set-ADSyncAutoUpgrade` . Yalnızca sistem durumu **askıya alındı**olarak ayarlanmalıdır.  1.1.750.0 öncesinde, set-ADSyncAutoUpgrade cmdlet 'i, otomatik yükseltme durumu askıya alındı olarak ayarlandıysa otomatik yükseltmeyi engeller. Bu işlev artık, yeniden yükseltme engellenmemesi için değişti.
+İle **etkin** ve **devre dışı** arasında geçiş yapabilirsiniz `Set-ADSyncAutoUpgrade` . Yalnızca sistem durumu **askıya alındı**olarak ayarlanmalıdır.  1.1.750.0 'ten önce, otomatik yükseltme durumu askıya alındı olarak ayarlandıysa Set-ADSyncAutoUpgrade cmdlet 'i otomatik yükseltmeyi engeller. Bu işlev artık, yeniden yükseltme engellenmemesi için değişti.
 
 Otomatik yükseltme, yükseltme altyapısı için Azure AD Connect Health kullanıyor. Otomatik yükseltmenin çalışması için, proxy sunucunuzdaki URL 'Leri [Office 365 URL 'lerinde ve IP adresi aralıklarında](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)belgelendiği gibi **Azure AD Connect Health** açtığınızdan emin olun.
 
@@ -71,7 +71,7 @@ Artık otomatik yükseltme durumuyla ilişkili Eventlogs ' u görebilirsiniz.
 
 Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
-| Sonuç kodu öneki | Description |
+| Sonuç kodu öneki | Açıklama |
 | --- | --- |
 | Başarılı |Yükleme başarıyla yükseltildi. |
 | Yükseltme Iptal edildi |Geçici bir koşul yükseltmeyi durdurdu. Yeniden denenecek ve beklenmek, daha sonra başarılı olur. |
@@ -79,7 +79,7 @@ Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
 Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü listelemez, ancak sonuç iletisi sorunun ne olduğu konusunda açık olmalıdır.
 
-| Sonuç Iletisi | Description |
+| Sonuç Iletisi | Açıklama |
 | --- | --- |
 | **Yükseltme Iptal edildi** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Kayıt defterine yazılamadı. |

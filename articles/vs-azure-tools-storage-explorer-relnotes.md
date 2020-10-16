@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828787"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Depolama Gezgini sürüm notları
@@ -168,7 +168,7 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
   * Otomatik yenileme #1526
   * AzCopy 'i etkinleştir
   * AzCopy SAS süresi eklemek istediğiniz başka ayarlar varsa, lütfen görmek istediğiniz ayarı açıklayan [GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) .
-* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Seçenekleriniz şunlardır:
+* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Şunları yapabilirsiniz:
   * Şirket içi VHD 'yi yeni bir diske yükleme
   * Bir disk indirin
   * Diskleri kaynak grupları ve bölgeler arasında Kopyala ve Yapıştır
@@ -242,7 +242,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
     * AzCopy SAS süresi
 
     Eklemek istediğiniz başka ayarlar varsa, lütfen [görmek istediğiniz ayarı açıklayan GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Seçenekleriniz şunlardır:
+* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Şunları yapabilirsiniz:
     * Şirket içi VHD 'yi yeni bir diske yükleme
     * Bir disk indirin
     * Diskleri kaynak grupları ve bölgeler arasında Kopyala ve Yapıştır
@@ -810,7 +810,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
    * İliştirmekte olduğunuz kaynağın görünen adını özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Farklı bağlantı noktaları kullanarak birden çok yerel öykünücüye ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Hızlı erişime eklenen kaynakları ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini artık geçici silme destekleniyor. Seçenekleriniz şunlardır:
+* Depolama Gezgini artık geçici silme destekleniyor. Şunları yapabilirsiniz:
    * Depolama hesabınızın blob kapsayıcıları düğümüne sağ tıklayarak bir geçici silme ilkesi yapılandırın.
    * Gezinti çubuğunun yanındaki açılan menüde bulunan "etkin ve silinen Bloblar" seçeneğini belirleyerek blob düzenleyicisinde geçici olarak silinen Blobları görüntüleyin.
    * Geçici silinen Blobları geri al.
@@ -866,7 +866,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
    * İliştirmekte olduğunuz kaynağın görünen adını özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Farklı bağlantı noktaları kullanarak birden çok yerel öykünücüye ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Hızlı erişime eklenen kaynakları ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini artık geçici silme destekleniyor. Seçenekleriniz şunlardır:
+* Depolama Gezgini artık geçici silme destekleniyor. Şunları yapabilirsiniz:
    * Depolama hesabınızın blob kapsayıcıları düğümüne sağ tıklayarak bir geçici silme ilkesi yapılandırın.
    * Gezinti çubuğunun yanındaki açılan menüde bulunan "etkin ve silinen Bloblar" seçeneğini belirleyerek blob düzenleyicisinde geçici olarak silinen Blobları görüntüleyin.
    * Geçici silinen Blobları geri al.
@@ -921,7 +921,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
    * İliştirmekte olduğunuz kaynağın görünen adını özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Farklı bağlantı noktaları kullanarak birden çok yerel öykünücüye ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Hızlı erişime eklenen kaynakları ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini artık geçici silme destekleniyor. Seçenekleriniz şunlardır:
+* Depolama Gezgini artık geçici silme destekleniyor. Şunları yapabilirsiniz:
    * Depolama hesabınızın blob kapsayıcıları düğümüne sağ tıklayarak bir geçici silme ilkesi yapılandırın.
    * Gezinti çubuğunun yanındaki açılan menüde bulunan "etkin ve silinen Bloblar" seçeneğini belirleyerek blob düzenleyicisinde geçici olarak silinen Blobları görüntüleyin.
    * Geçici silinen Blobları geri al.
@@ -981,7 +981,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
    * İliştirmekte olduğunuz kaynağın görünen adını özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Farklı bağlantı noktaları kullanarak birden çok yerel öykünücüye ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Hızlı erişime eklenen kaynakları ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini artık geçici silme destekleniyor. Seçenekleriniz şunlardır:
+* Depolama Gezgini artık geçici silme destekleniyor. Şunları yapabilirsiniz:
    * Depolama hesabınızın blob kapsayıcıları düğümüne sağ tıklayarak bir geçici silme ilkesi yapılandırın.
    * Gezinti çubuğunun yanındaki açılan menüde bulunan "etkin ve silinen Bloblar" seçeneğini belirleyerek blob düzenleyicisinde geçici olarak silinen Blobları görüntüleyin.
    * Geçici silinen Blobları geri al.
@@ -1031,7 +1031,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 ### <a name="new"></a>Yeni
 * Statik Web siteleri tarafından kullanılan $web kapsayıcılarına erişim artık desteklenmektedir. Bu sayede Web siteniz tarafından kullanılan dosya ve klasörleri kolayca karşıya yükleyebilir ve yönetebilirsiniz. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * MacOS 'ta uygulama çubuğu yeniden düzenlendi. Değişiklikler bir dosya menüsü, bazı kısayol tuşu değişiklikleri ve uygulama menüsü altında birkaç yeni komut içerir. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* Azure ABD kamu 'da oturum açmak için yetkili uç noktası şu şekilde değiştirildihttps://login.microsoftonline.us/
+* Azure ABD kamu 'da oturum açmak için yetkili uç noktası şu şekilde değiştirildi https://login.microsoftonline.us/
 * Erişilebilirlik: ekran okuyucu etkin olduğunda, klavye gezintisi artık sağ taraftaki öğeleri görüntülemek için kullanılan tablolarla birlikte çalışıyor. Ok tuşlarını, satırlarda ve sütunlarda gezinmek için, varsayılan eylemleri çağırmak için, bağlam menüsü tuşu, bir öğe için bağlam menüsünü açmak için yazın ve çoklu seçim yapmak için kaydırma veya denetim kullanabilirsiniz. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>Düzeltmeler

@@ -1,7 +1,7 @@
 ---
-title: 'İki sınıf tarafından artırılmış karar ağacı: modül başvurusu'
+title: 'Two-Class artırılmış karar ağacı: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ' de Iki sınıf önceden artırılmış karar ağacı modülünü kullanarak, önceden artırılmış karar ağaçları algoritmasına dayalı bir makine öğrenimi modeli oluşturmayı öğrenin.
+description: Azure Machine Learning ' de, artırılmış karar ağacı algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için Two-Class artırılmış karar ağacı modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
 ms.openlocfilehash: 833caa0cf264fb49d8b32255f429132cd888c6c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907730"
 ---
-# <a name="two-class-boosted-decision-tree-module"></a>İki sınıf önceden artırılmış karar ağacı modülü
+# <a name="two-class-boosted-decision-tree-module"></a>Two-Class artırılmış karar ağacı modülü
 
 Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 

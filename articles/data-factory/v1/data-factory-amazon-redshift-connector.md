@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443033"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'Tan veri taşıma
@@ -61,12 +61,12 @@ Aşağıdaki tabloda, Amazon Redshift bağlı hizmetine özgü JSON öğeleri i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Yes |
-| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
+| **türüyle** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Evet |
+| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
 | **bağ** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır (varsayılan değer 5439) |
-| **veritabanınızı** |Amazon Redshift veritabanının adı. |Yes |
-| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Yes |
-| **parola** |Kullanıcı hesabının parolası. |Yes |
+| **veritabanınızı** |Amazon Redshift veritabanının adı. |Evet |
+| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Evet |
+| **parola** |Kullanıcı hesabının parolası. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -87,7 +87,7 @@ Kopyalama etkinliği için, kaynak **AmazonRedshiftSource**türünde olduğunda 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | **sorgulayamadı** | Verileri okumak için özel sorguyu kullanın. |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
-| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | No |
+| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | Hayır |
 | **s3LinkedServiceName** | Bir ara mağaza olarak kullanmak için Amazon S3. Bağlı hizmet, **Awsaccesskey**türünde bir Azure Data Factory adı kullanılarak belirtilir. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 | **bucketName** | Ara verileri depolamak için kullanılacak Amazon S3 demet öğesini gösterir. Bu özellik sağlanmazsa, kopyalama etkinliği otomatik olarak bir demet oluşturur. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 
@@ -338,8 +338,8 @@ Kopyalama etkinliği verileri bir Amazon Redshift türünden .NET türüne dön�
 | BOOLEAN |Dize |
 | CHAR |Dize |
 | VARCHAR |Dize |
-| DATE |Tarih-Saat |
-| ILIŞKIN |Tarih-Saat |
+| DATE |DateTime |
+| ILIŞKIN |DateTime |
 | TEXT |Dize |
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin

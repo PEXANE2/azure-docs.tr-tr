@@ -1,24 +1,18 @@
 ---
 title: Azure sanal makinelerinde Oracle çözümleri | Microsoft Docs
 description: Microsoft Azure 'de Oracle sanal makine görüntülerinin desteklenen yapılandırma ve sınırlamaları hakkında bilgi edinin.
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 32e79e12eae9997df8163401d2abc5f06bc02fc0
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331378"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993490"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -111,7 +105,7 @@ Azure NetApp Files, Azure yerel hizmeti olarak Azure veri merkezi ortamında ça
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 'da & Yazılım Oracle Database lisanslama
 
-Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş hiper Iş parçacığı teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
+Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş Hyper-Threading teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
 Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](../../sizes-memory.md) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](../../constrained-vcpu.md) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle Database iş yükleri için önerilir.
 
 Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçirirken Oracle, [Azure 'Da Oracle](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 'da belirtildiği gibi lisans taşınabilirliği sağlar
@@ -132,7 +126,7 @@ Oracle Data Guard ile yüksek kullanılabilirlik, bir sanal makinedeki birincil 
 
 [Azure 'Da Oracle GoldenGate uygulayan](configure-oracle-golden-gate.md) öğretici, Azure 'daki temel kurulum yordamında size yol gösterir.
 
-Bir HA ve DR çözümünün Azure 'da tasarlanmış olmasının yanı sıra, veritabanınızı geri yüklemek için bir yedekleme stratejisine sahip olmanız gerekir. Öğretici [yedekleme ve kurtarma Oracle Database](oracle-backup-recovery.md) , tutarlı bir yedekleme oluşturmaya yönelik temel yordamda size rehberlik eder.
+Bir HA ve DR çözümünün Azure 'da tasarlanmış olmasının yanı sıra, veritabanınızı geri yüklemek için bir yedekleme stratejisine sahip olmanız gerekir. Öğretici [yedekleme ve kurtarma Oracle Database](./oracle-overview.md) , tutarlı bir yedekleme oluşturmaya yönelik temel yordamda size rehberlik eder.
 
 ## <a name="support-for-jd-edwards"></a>JD edi desteği
 

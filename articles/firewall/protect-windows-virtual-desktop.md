@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
 ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400171"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Sanal Masaüstü dağıtımlarını korumak için Azure Güvenlik Duvarı kullanma
@@ -22,7 +22,7 @@ Windows sanal masaüstü, Azure 'da çalışan bir masaüstü ve uygulama sanall
 
 Azure Güvenlik Duvarı 'nı kullanarak Windows sanal masaüstü ana bilgisayar havuzunuza ek koruma sağlamak için bu makaledeki yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 
  - Dağıtılan bir Windows sanal masaüstü ortamı ve konak Havuzu.

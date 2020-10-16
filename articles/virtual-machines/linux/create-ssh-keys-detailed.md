@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 34a84ed333172ea0931c529d2dbeee1b774ae8c5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513205"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ayrıntılı adımlar: Azure 'da bir Linux VM 'sine kimlik doğrulaması için SSH anahtarları oluşturma ve yönetme
@@ -33,7 +33,7 @@ SSH anahtarlarını kullanmak istemiyorsanız, Linux sanal makinenizin parolası
 
 ## <a name="generate-keys-with-ssh-keygen"></a>SSH-keygen ile anahtar oluşturma
 
-Anahtarları oluşturmak için, `ssh-keygen` Azure Cloud Shell, macOS veya Linux ana bilgisayarı ve Windows 10 ' da OpenSSH yardımcı programları ile kullanılabilen tercih edilen bir komut vardır. `ssh-keygen`bir dizi soru sorar ve sonra özel bir anahtar ve eşleşen bir ortak anahtar yazar. 
+Anahtarları oluşturmak için, `ssh-keygen` Azure Cloud Shell, macOS veya Linux ana bilgisayarı ve Windows 10 ' da OpenSSH yardımcı programları ile kullanılabilen tercih edilen bir komut vardır. `ssh-keygen` bir dizi soru sorar ve sonra özel bir anahtar ve eşleşen bir ortak anahtar yazar. 
 
 SSH anahtarları, varsayılan olarak `~/.ssh` dizininde tutulur.  `~/.ssh` dizininiz yoksa `ssh-keygen` komutu, doğru izinler ile sizin için oluşturur.
 
@@ -62,17 +62,17 @@ ssh-keygen \
 
 `ssh-keygen` = anahtarları oluşturmak için kullanılan program
 
-`-m PEM`= anahtarı ped olarak Biçimlendir
+`-m PEM` = anahtarı ped olarak Biçimlendir
 
-`-t rsa`= Bu örnekte, bu durumda, RSA biçiminde oluşturulacak anahtar türü
+`-t rsa` = Bu örnekte, bu durumda, RSA biçiminde oluşturulacak anahtar türü
 
-`-b 4096`= Bu örnekte, anahtardaki bit sayısı 4096
+`-b 4096` = Bu örnekte, anahtardaki bit sayısı 4096
 
 `-C "azureuser@myserver"` = kolayca tanımlamak için ortak anahtar dosyasının sonuna eklenen bir açıklama. Normalde açıklama olarak bir e-posta adresi kullanılır, ancak altyapınız için en iyi şeyi kullanın.
 
-`-f ~/.ssh/mykeys/myprivatekey`= varsayılan adı kullanmayı tercih ederseniz, özel anahtar dosyasının dosya adı. Birlikte eklenmiş karşılık gelen ortak anahtar dosyası `.pub` aynı dizinde oluşturulur. Dizinin var olması gerekir.
+`-f ~/.ssh/mykeys/myprivatekey` = varsayılan adı kullanmayı tercih ederseniz, özel anahtar dosyasının dosya adı. Birlikte eklenmiş karşılık gelen ortak anahtar dosyası `.pub` aynı dizinde oluşturulur. Dizinin var olması gerekir.
 
-`-N mypassphrase`= özel anahtar dosyasına erişmek için kullanılan ek bir parola. 
+`-N mypassphrase` = özel anahtar dosyasına erişmek için kullanılan ek bir parola. 
 
 ### <a name="example-of-ssh-keygen"></a>ssh-keygen örneği
 

@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 416e2c767b5afd40fea38e6f75fcd3f01440b49a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89255370"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için faturalandırma modeli
@@ -78,7 +78,7 @@ Kiracı, Azure AD B2C kiracınızla birlikte kullanmak istediğiniz özelliklere
 
 Fiyatlandırma katmanınızı değiştirmek için aşağıdaki adımları izleyin.
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure B2C kiracınızın bağlandığı Azure aboneliğini içeren dizini seçin (Azure AD B2C kiracının*kendisini seçmeyin)* .
 

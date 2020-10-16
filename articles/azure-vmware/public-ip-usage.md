@@ -3,12 +3,12 @@ title: Sanal WAN 'da genel IP işlevselliğini kullanma
 description: Bu makalede, Azure sanal WAN 'da genel IP işlevlerinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: ec8af45a98e82a7c1c657776c4fee2c3ef068dca
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91745005"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048313"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>Azure sanal WAN 'da genel IP işlevselliğini kullanma
 
@@ -29,9 +29,9 @@ Bu makalede, bir genel ağ aracılığıyla erişilebilen Web sunucuları, sanal
 
 ## <a name="prerequisites"></a>Önkoşullar
 
--   Azure VMware Çözüm ortamı
-
--   Azure VMware Çözüm ortamında çalışan bir Web sunucusu.
+- Azure VMware Çözüm ortamı
+- Azure VMware Çözüm ortamında çalışan bir Web sunucusu.
+- Sanal WAN hub dağıtımı için genellikle bir olan, çakışmayan yeni bir IP aralığı `/24` .
 
 ## <a name="reference-architecture"></a>Başvuru mimarisi
 
@@ -62,15 +62,15 @@ Bu senaryoda, IIS Web sunucusunu Internet 'te yayımlamanız gerekir. Web sitesi
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Genel IP mimarisi diyagramı" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-2.  Varsayılan değerleri kabul edin veya değiştirin ve ardından **Oluştur**' u seçin.
+1. Varsayılan değerleri kabul edin veya değiştirin ve ardından **Oluştur**' u seçin.
 
-   -  Sanal geniş alan ağı kaynak grubu
+   - Sanal geniş alan ağı kaynak grubu
 
-   -  Sanal geniş alan ağı adı
+   - Sanal geniş alan ağı adı
 
-   -  Sanal hub adres bloğu
+   - Sanal hub adres bloğu (yeni çakışmayan IP aralığı kullanılarak)
 
-   -  Genel IP sayısı (1-100)
+   - Genel IP sayısı (1-100)
 
 Tüm bileşenlerin dağıtımını tamamlaması yaklaşık bir saat sürer. Bu dağıtımın, bu Azure VMware Çözüm ortamı için gelecekteki tüm genel IP 'Leri desteklemesi için yalnızca bir kez gerçekleşmesi yeterlidir.  
 
@@ -120,7 +120,7 @@ Tüm bileşenler dağıtıldıktan sonra, bunları eklenen kaynak grubunda göre
 
 1. **Kural koleksiyonu Ekle**' yi seçin, aşağıdaki ayrıntıları sağlayın ve **Ekle** ' yi seçin ve ardından İleri ' yi seçin **: tehdit bilgileri**.
 
-   -  Name
+   -  Ad
    -  Kural koleksiyonu türü-DNAT
    -  Öncelik
    -  Kural toplama eylemi – Izin ver

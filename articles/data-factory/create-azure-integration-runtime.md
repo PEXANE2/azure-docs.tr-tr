@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84659704"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime oluşturma ve yapılandırma
@@ -43,7 +43,7 @@ Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -N
 ```  
 Azure IR için türün **yönetilen**olarak ayarlanması gerekir. Bulutta tam olarak yönetilen bir esnek olduğundan işlem ayrıntılarını belirtmeniz gerekmez. Azure-SSIS IR oluşturmak istediğinizde düğüm boyutu ve düğüm sayısı gibi işlem ayrıntılarını belirtin. Daha fazla bilgi için [Azure-SSIS IR oluşturma ve yapılandırma](create-azure-ssis-integration-runtime.md)konusuna bakın.
 
-Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 'ini kullanarak konumunu değiştirmek için mevcut bir Azure IR yapılandırabilirsiniz. Azure IR konumu hakkında daha fazla bilgi için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md).
+Mevcut bir Azure IR, konumunu değiştirmek için Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 'ini kullanarak yapılandırabilirsiniz. Azure IR konumu hakkında daha fazla bilgi için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md).
 
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Data Factory Kullanıcı arabirimi aracılığıyla Azure IR oluşturma
 Azure Data Factory Kullanıcı arabirimini kullanarak bir Azure IR oluşturmak için aşağıdaki adımları kullanın.

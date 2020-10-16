@@ -14,10 +14,10 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689495"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC Uzantısı
@@ -26,7 +26,7 @@ ms.locfileid: "84689495"
 
 Windows için PowerShell DSC Uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, bir Azure VM 'de PowerShell DSC yapılandırmasını karşıya yükler ve uygular. DSC Uzantısı, VM 'de alınan DSC yapılandırmasını uygulamak için PowerShell DSC 'ye çağrı görür. Bu belgede, Windows için DSC sanal makine uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 

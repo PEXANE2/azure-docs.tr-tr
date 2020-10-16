@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045408"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio 'da iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
@@ -52,23 +52,23 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı canlı giriş kaynakları](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Metric|Açıklama|
+|Ölçüm|Açıklama|
 |-|-|
 |**Taxırıde**| Girişin adı.|
-|**Olay Hub'ı** | Giriş kaynağı türü.|
+|**Olay Hub’ı** | Giriş kaynağı türü.|
 |**Olaylar**|Okunan olay sayısı.|
 |**Biriktirme listesindeki olay kaynakları**|Event Hubs ve IoT Hub girişleri için kaç tane daha fazla ileti okunması gerekiyor.|
 |**Bayt cinsinden olaylar**|Okunan bayt sayısı.|
 | **Düşürülmüş olaylar**|Seri durumdan çıkarma dışında bir sorunu olan olay sayısı.|
 |**Erken olaylar**| Yüksek filigrandan önce uygulama zaman damgasına sahip olay sayısı.|
 |**Geç olaylar**| Yüksek filigrandan sonra uygulama zaman damgasına sahip olay sayısı.|
-|**Olay kaynakları**| Okunan veri birimi sayısı. Örneğin, Blobların sayısı.|
+|**Olay Kaynakları**| Okunan veri birimi sayısı. Örneğin, Blobların sayısı.|
 
 #### <a name="input-sources-local-input"></a>Giriş kaynakları (yerel giriş)
 
 ![İş diyagramı yerel giriş kaynakları](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Metric|Açıklama|
+|Ölçüm|Açıklama|
 |-|-|
 |**Taxırıde**| Girişin adı.|
 |**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
@@ -79,7 +79,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı sorgu adımı](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Metric|Açıklama|
+|Ölçüm|Açıklama|
 |-|-|
 |**TripData**|Geçici sonuç kümesinin adı.|
 |**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
@@ -89,7 +89,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı yerel çıkış havuzları](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Metric|Açıklama|
+|Ölçüm|Açıklama|
 |-|-|
 |**regionaggEH**|Çıkışın adı.|
 |**Olaylar**|Havuza çıkış yapılacak olay sayısı.|
@@ -98,7 +98,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı yerel çıkış havuzları](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Metric|Açıklama|
+|Ölçüm|Açıklama|
 |-|-|
 |**regionaggEH**|Çıkışın adı.|
 |**Yerel çıkış**| Yerel bir dosyaya giden sonuç çıktısı.|

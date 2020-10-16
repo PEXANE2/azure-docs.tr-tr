@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: f4dcec5e58cb10850e22d3006b0ecd41f6d013fd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86202281"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Azure SQL Server Stretch Database hizmeti için tüm konular
@@ -31,7 +31,7 @@ Bu konu, Azure 'un **SQL Server Stretch Database** hizmetine doğrudan uygulanan
 |[Stretch Database’e genel bakış](sql-server-stretch-database-overview.md) |Stretch Database’in soğuk verilerinizi şeffaf ve güvenli bir şekilde Microsoft Azure bulutuna nasıl geçirdiğini öğrenin. |
 |[Esnetme İçin Veritabanını Etkinleştirme Sihirbazını çalıştırarak kullanmaya başlama](sql-server-stretch-database-wizard.md) |Esnetme İçin Veritabanını Etkinleştirme Sihirbazını çalıştırarak, bir veritabanının Stretch Database için nasıl yapılandırılacağını öğrenin. |
 
-## <a name="enable"></a>Etkinleştirme
+## <a name="enable"></a>Etkinleştir
 | Başlık | Açıklama |
 |:--- |:--- |
 |[Stretch Database‘i bir veritabanı için etkinleştirme](sql-server-stretch-database-enable-database.md) |Stretch Database için bir veritabanını yapılandırmayı öğrenin. |

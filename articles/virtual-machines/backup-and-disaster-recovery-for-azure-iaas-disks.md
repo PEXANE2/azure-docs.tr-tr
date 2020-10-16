@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754982"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969713"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS diskleri için yedekleme ve olağanüstü durum kurtarma
 
@@ -48,7 +48,7 @@ Bu mimaride, Azure, IaaS diskleri için sürekli olarak kurumsal düzeyde dayan�
 
 İşlem konağında veya depolama platformunda yerelleştirilmiş donanım hataları bazen, VM kullanılabilirliği için [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) kapsamındaki VM 'nin geçici kullanım dışı kalması ile sonuçlanabilir. Azure ayrıca Azure Premium SSD 'leri kullanan tek VM örnekleri için sektör lideri bir SLA sağlar.
 
-Bir disk veya VM 'nin geçici olarak KULLANILAMAMASINDAN dolayı uygulama iş yüklerinin kapalı kalma süresini korumak için, müşteriler [kullanılabilirlik kümelerini](windows/manage-availability.md)kullanabilir. Bir kullanılabilirlik kümesindeki iki veya daha fazla sanal makine uygulama için artıklık sağlar. Azure daha sonra bu VM 'Leri ve diskleri farklı güç, ağ ve sunucu bileşenleriyle ayrı hata etki alanlarında oluşturur.
+Bir disk veya VM 'nin geçici olarak KULLANILAMAMASINDAN dolayı uygulama iş yüklerinin kapalı kalma süresini korumak için, müşteriler [kullanılabilirlik kümelerini](./manage-availability.md)kullanabilir. Bir kullanılabilirlik kümesindeki iki veya daha fazla sanal makine uygulama için artıklık sağlar. Azure daha sonra bu VM 'Leri ve diskleri farklı güç, ağ ve sunucu bileşenleriyle ayrı hata etki alanlarında oluşturur.
 
 Bu ayrı hata etki alanları nedeniyle, yerelleştirilmiş donanım arızaları genellikle aynı anda küme içinde birden çok VM 'yi etkilemez. Ayrı hata etki alanlarının olması, uygulamanız için yüksek kullanılabilirlik sağlar. Yüksek kullanılabilirlik gerektiğinde kullanılabilirlik kümelerini kullanmak iyi bir uygulama olarak kabul edilir. Sonraki bölümde olağanüstü durum kurtarma yönü ele alınmaktadır.
 
@@ -77,7 +77,7 @@ Yüksek kullanılabilirliği destekleyebilen SQL Server veya Oracle gibi bir ür
 - Verilerin korunması ve kurtarılabilir olması gerekir.
 - Sunucu kullanıma hazır olmalıdır.
 
-Olağanüstü durum kurtarma planı, farklı bir bölgedeki veritabanının bir çoğaltmasını yedekleme olarak sürdürmek isteyebilir. Sunucu kullanılabilirliği ve veri kurtarma gereksinimlerine bağlı olarak, çözüm etkin-etkin veya etkin-Pasif bir çoğaltma sitesinden verilerin düzenli aralıklarla çevrimdışı yedeklemelere göre değişebilir. SQL Server ve Oracle gibi ilişkisel veritabanları, çoğaltma için çeşitli seçenekler sağlar. SQL Server için, yüksek kullanılabilirlik için [SQL Server AlwaysOn kullanılabilirlik grupları](https://msdn.microsoft.com/library/hh510230.aspx) kullanın.
+Olağanüstü durum kurtarma planı, farklı bir bölgedeki veritabanının bir çoğaltmasını yedekleme olarak sürdürmek isteyebilir. Sunucu kullanılabilirliği ve veri kurtarma gereksinimlerine bağlı olarak, çözüm etkin-etkin veya etkin-Pasif bir çoğaltma sitesinden verilerin düzenli aralıklarla çevrimdışı yedeklemelere göre değişebilir. SQL Server ve Oracle gibi ilişkisel veritabanları, çoğaltma için çeşitli seçenekler sağlar. SQL Server için, yüksek kullanılabilirlik için [SQL Server AlwaysOn kullanılabilirlik grupları](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) kullanın.
 
 MongoDB gibi NoSQL veritabanları da yedeklilik için [çoğaltmaları](https://docs.mongodb.com/manual/replication/) destekler. Yüksek kullanılabilirlik için çoğaltmalar kullanılır.
 
@@ -201,7 +201,7 @@ Tutarlı yedeklemeler oluşturmaya yönelik başka bir seçenek de sanal makiney
 
 1. Yalnızca birkaç saniye süren her bir sanal sabit sürücü blobunun anlık görüntüsünü oluşturun.
 
-    Anlık görüntü oluşturmak için, [PowerShell](https://docs.microsoft.com/powershell/module/az.storage), [Azure depolama REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/)veya [.NET için depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/hh488361.aspx)gibi Azure depolama istemci kitaplıklarından birini kullanabilirsiniz.
+    Anlık görüntü oluşturmak için, [PowerShell](/powershell/module/az.storage), [Azure depolama REST API](/rest/api/storageservices/Snapshot-Blob), [Azure CLI](/cli/azure/)veya [.NET için depolama istemci kitaplığı](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)gibi Azure depolama istemci kitaplıklarından birini kullanabilirsiniz.
 
 1. Sanal makineyi başlatın ve kapalı kalma süresini sonlandırır. Genellikle tüm işlem birkaç dakika içinde tamamlanır.
 
@@ -224,7 +224,7 @@ Artımlı anlık görüntülerinizi DR için verimli bir şekilde kopyalamak iç
 
 ### <a name="recovery-from-snapshots"></a>Anlık görüntülerden kurtarma
 
-Anlık görüntü almak için yeni bir blob oluşturmak üzere kopyalayın. Anlık görüntüyü birincil hesaptan kopyalıyorsanız, anlık görüntüyü anlık görüntünün temel blobuna kopyalayabilirsiniz. Bu işlem, diski anlık görüntüye geri döndürür. Bu işlem, anlık görüntüyü yükseltme olarak bilinir. Anlık görüntü yedeklemesini ikincil bir hesaptan kopyalıyorsanız, Okuma Erişimli Coğrafi olarak yedekli depolama hesabı söz konusu olduğunda, bir birincil hesaba kopyalamanız gerekir. [PowerShell kullanarak](https://docs.microsoft.com/powershell/module/az.storage) veya AZCopy yardımcı programını kullanarak bir anlık görüntüyü kopyalayabilirsiniz. Daha fazla bilgi için bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
+Anlık görüntü almak için yeni bir blob oluşturmak üzere kopyalayın. Anlık görüntüyü birincil hesaptan kopyalıyorsanız, anlık görüntüyü anlık görüntünün temel blobuna kopyalayabilirsiniz. Bu işlem, diski anlık görüntüye geri döndürür. Bu işlem, anlık görüntüyü yükseltme olarak bilinir. Anlık görüntü yedeklemesini ikincil bir hesaptan kopyalıyorsanız, Okuma Erişimli Coğrafi olarak yedekli depolama hesabı söz konusu olduğunda, bir birincil hesaba kopyalamanız gerekir. [PowerShell kullanarak](/powershell/module/az.storage) veya AZCopy yardımcı programını kullanarak bir anlık görüntüyü kopyalayabilirsiniz. Daha fazla bilgi için bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](../storage/common/storage-use-azcopy-v10.md).
 
 Birden çok diski olan VM 'Ler için, aynı Eşgüdümlü geri yükleme noktasının parçası olan tüm anlık görüntüleri kopyalamanız gerekir. Anlık görüntüleri yazılabilir VHD bloblarına kopyaladıktan sonra, sanal makine şablonunu kullanarak VM 'nizi yeniden oluşturmak için Blobları kullanabilirsiniz.
 
@@ -265,4 +265,3 @@ Bkz. [Artımlı anlık görüntülerle Azure yönetilmeyen sanal makine diskleri
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png
-

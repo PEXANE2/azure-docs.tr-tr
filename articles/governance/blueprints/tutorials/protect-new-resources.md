@@ -4,10 +4,10 @@ description: Bu öğreticide, Azure şemaları kaynak kilitleri seçeneklerini s
 ms.date: 08/27/2020
 ms.topic: tutorial
 ms.openlocfilehash: 3ed75a1dee925f2a55ac46705a171bec5fc1d30e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89048579"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Öğretici: Azure şemaları kaynak kilitleri ile yeni kaynakları koruma
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 İlk olarak, şema tanımını oluşturun.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Soldaki **Başlarken** sayfasında, şema **Oluştur**altında **Oluştur** ' u seçin.
 
@@ -109,11 +109,11 @@ Bu adım, seçilen yönetim grubunda veya abonelikte şema tanımını oluşturu
 
 Şema tanımınız artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce yayımlanmaları gerekir.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. **Kilitli-storageaccount** şeması tanımını bulmak için filtreleri kullanın ve ardından seçin.
 
-1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağdaki yeni bölmede **Sürüm**olarak **1,0** girin. Daha sonra bir değişiklik yaparsanız bu özellik faydalıdır. **Şeması dağıtılan kaynakları kilitlemek için yayımlanan ilk sürüm**gibi **değişiklik notlarını**girin. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni bölmede **Sürüm**olarak **1,0** girin. Daha sonra bir değişiklik yaparsanız bu özellik faydalıdır. **Şeması dağıtılan kaynakları kilitlemek için yayımlanan ilk sürüm**gibi **değişiklik notlarını**girin. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı yayımlandıktan sonra yine de değişiklik yapabilirsiniz. Değişiklik yaparsanız, aynı şema tanımının sürümleri arasındaki farkları izlemek için tanımı yeni bir sürüm değeriyle yayımlamanız gerekir.
 
@@ -123,13 +123,13 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı
 
 Şema tanımı yayımlandıktan sonra, bunu kaydettiğiniz yönetim grubu içindeki bir aboneliğe atayabilirsiniz. Bu adımda, şema tanımının her bir dağıtımını benzersiz hale getirmek için parametreler sağlarsınız.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. **Kilitli-storageaccount** şeması tanımını bulmak için filtreleri kullanın ve ardından seçin.
 
-1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
+1. Şema tanımı sayfasının en üstünde **Şema ata**’yı seçin.
 
-1. Şema atamasının parametre değerlerini sağlayın:
+1. Şema ataması için parametre değerlerini sağlayın:
 
    - **Temel Bilgiler**
 
@@ -167,7 +167,7 @@ Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapı
 
 Atama, _Testingbpkilitler_ kaynak grubunu ve ARM şablonu yapıtı tarafından dağıtılan depolama hesabını oluşturur. Yeni kaynak grubu ve seçilen kilit durumu atama ayrıntıları sayfasında gösterilir.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **atanan** şemalar sayfasını seçin. **Atama-kilitli-storageaccount-Testingbpkilitleri** şeması atamasını bulmak için filtreleri kullanın ve ardından seçin.
 
@@ -199,7 +199,7 @@ Bu adımlarda, dağıtılmış kaynaklarımızın, kaynakları silme izni olan b
 
 Son adım, şema tanımının atamasını kaldırdır. Atamanın kaldırılması ilişkili yapıtları kaldırmaz.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **atanan** şemalar sayfasını seçin. **Atama-kilitli-storageaccount-Testingbpkilitleri** şeması atamasını bulmak için filtreleri kullanın ve ardından seçin.
 

@@ -11,10 +11,10 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511978"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure dosya paylaşımı – Azure dosya paylaşımından dosyalar silinemedi
@@ -92,4 +92,4 @@ Açık bir tutamacı kapatmak için aşağıdaki komutu kullanın:
 
 * [Windows 'da Azure dosyaları sorunlarını giderme](storage-troubleshoot-windows-file-connection-problems.md)
 * [Linux 'ta Azure dosyaları sorunlarını giderme](storage-troubleshoot-linux-file-connection-problems.md)
-* [Azure Dosya Eşitleme ile ilgili sorunları giderme](storage-sync-files-troubleshoot.md)
+* [Azure Dosya Eşitleme'de sorun giderme](storage-sync-files-troubleshoot.md)

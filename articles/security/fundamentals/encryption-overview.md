@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458629"
 ---
 # <a name="azure-encryption-overview"></a>Azure'da şifrelemeye genel bakış
@@ -30,7 +30,7 @@ Rest 'deki verilerin Azure 'da nasıl şifrelendiği hakkında daha ayrıntılı
 
 ## <a name="azure-encryption-models"></a>Azure şifreleme modelleri
 
-Azure, hizmet tarafından yönetilen anahtarlar, Key Vault içindeki müşteri tarafından yönetilen anahtarlar veya müşteri tarafından denetlenen donanımda müşteri tarafından yönetilen anahtarlar kullanan sunucu tarafı şifreleme dahil olmak üzere çeşitli şifreleme modellerini destekler. İstemci tarafı şifreleme ile, anahtarları şirket içinde veya başka bir güvenli konumda yönetebilir ve saklayabilirsiniz.
+Azure, hizmet tarafından yönetilen anahtarlar, Key Vault içindeki müşteri tarafından yönetilen anahtarlar veya müşteri tarafından denetlenen donanımda müşteri tarafından yönetilen anahtarlar kullanan sunucu tarafı şifreleme dahil olmak üzere çeşitli şifreleme modellerini destekler. İstemci tarafı şifreleme sayesinde, anahtarları şirket içinde veya başka bir güvenli konumda yönetebilirsiniz.
 
 ### <a name="client-side-encryption"></a>İstemci Tarafında Şifreleme
 
@@ -197,7 +197,7 @@ Data Lake aktarım sırasında verilerin şifrelenmesi hakkında daha fazla bilg
 
 Anahtarların düzgün korunması ve yönetilmesi olmadan, şifreleme kullanılamaz şekilde işlenir. Key Vault, bulut Hizmetleri tarafından kullanılan şifreleme anahtarlarına erişimi yönetmeye ve denetlemeye yönelik Microsoft tarafından önerilen çözümdür. Anahtarlara erişim izinleri, Azure Active Directory hesapları aracılığıyla hizmetlere veya kullanıcılara atanabilir.
 
-Donanım güvenlik modüllerini (HSM 'ler) ve anahtar yönetim yazılımını yapılandırma, düzeltme eki uygulama ve bakımını yapma ihtiyacı olan sizi maliyetinden kurtarır kuruluşları Key Vault. Key Vault kullandığınızda denetim devam edersiniz. Microsoft, anahtarlarınızı hiçbir şekilde görmez ve uygulamalar bunlara doğrudan erişemez. Ayrıca, HSM 'lerde de anahtarlar içeri aktarabilir veya oluşturabilirsiniz.
+Key Vault, kuruluşların donanım güvenlik modülleri (HSM) ve anahtar yönetimi yazılımını yapılandırma, koruma ve buna düzeltme eki uygulama ihtiyacını ortadan kaldırır. Key Vault kullandığınızda denetim devam edersiniz. Microsoft, anahtarlarınızı hiçbir şekilde görmez ve uygulamalar bunlara doğrudan erişemez. Ayrıca, HSM 'lerde de anahtarlar içeri aktarabilir veya oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

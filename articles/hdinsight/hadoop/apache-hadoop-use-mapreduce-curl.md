@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207714"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>REST kullanarak HDInsight üzerinde Apache Hadoop MapReduce işleri çalıştırma
@@ -22,7 +22,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 > [!NOTE]  
 > Linux tabanlı Hadoop sunucuları kullanmayı zaten biliyorsanız, ancak HDInsight 'a yeni bir adım daha sahipseniz [HDInsight 'Ta Linux tabanlı Apache Hadoop hakkında bilmeniz](../hdinsight-hadoop-linux-information.md) gerekenler bölümüne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -77,7 +77,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 
     URI 'nin sonu (/MapReduce/jar), bu isteğin bir jar dosyasındaki bir sınıftan MapReduce işi başlattığı Web Hcat 'e bildirir. Bu komutta kullanılan parametreler aşağıdaki gibidir:
 
-   * **-d**: `-G` kullanılmıyor, bu nedenle istek Post yöntemine varsayılan olarak yapılır. `-d`istekle birlikte gönderilen veri değerlerini belirtir.
+   * **-d**: `-G` kullanılmıyor, bu nedenle istek Post yöntemine varsayılan olarak yapılır. `-d` istekle birlikte gönderilen veri değerlerini belirtir.
      * **User.Name**: komutunu çalıştıran Kullanıcı
      * **jar**: çalıştırılacak sınıfı içeren jar dosyasının konumu
      * **Class**: MapReduce mantığını içeren sınıf

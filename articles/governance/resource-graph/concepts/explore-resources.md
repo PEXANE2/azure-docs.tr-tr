@@ -1,18 +1,18 @@
 ---
 title: Azure kaynaklarınızı inceleme
 description: Kaynak grafik sorgu dilini kullanarak kaynaklarınızı keşfetme ve bunların nasıl bağlandığını bulma hakkında bilgi edinin.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056593"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056251"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Kaynak Grafiği ile Azure kaynaklarınızı keşfedin
 
-Azure Kaynak Grafiği, Azure kaynaklarınızı hızlı ve ölçeklenebilir bir şekilde keşfetme ve bulma özelliği sağlar. Hızlı yanıtlar için tasarlanan bu, ortamınız ve ayrıca Azure kaynaklarınızı oluşturan özellikler hakkında bilgi edinmek için harika bir yoldur.
+Azure Kaynak Grafiği, Azure kaynaklarınızı hızlı ve ölçeklenebilir bir şekilde keşfetme ve bulma özelliği sağlar. Hızlı yanıtlar için tasarlanan bu, ortamınız ve ayrıca Azure kaynaklarınızda bulunan özellikler hakkında bilgi edinmek için harika bir yoldur.
 
 ## <a name="explore-virtual-machines"></a>Sanal makineleri keşfet
 
@@ -104,7 +104,7 @@ JSON sonuçları, aşağıdaki örneğe benzer şekilde yapılandırılır:
 ]
 ```
 
-Özellikler, sanal makine kaynağının kendisi, SKU, işletim sistemi, diskler, Etiketler ve kaynak grubu ve aboneliğin üyesi olduğu her şey hakkındaki ek bilgileri bize söyler.
+Özellikler, sanal makine kaynağı hakkında daha fazla bilgi bildirir. Bu özellikler şunları içerir: işletim sistemi, diskler, Etiketler ve bir üyesi olan kaynak grubu ve abonelik.
 
 ### <a name="virtual-machines-by-location"></a>Konuma göre sanal makineler
 
@@ -165,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Premium yönetilen disklere bağlı sanal makineler
 
-Bu **Standard_B2s** sanal makinelere eklenmiş Premium yönetilen disklerin ayrıntılarını almak istiyorsam, bu yönetilen DISKLERIN kaynak kimliğini sağlamak için sorguyu genişletebilirsiniz.
+Bu **Standard_B2s** sanal makinelere eklenmiş Premium yönetilen disklerin ayrıntılarını almak için, sorguyu bu yönetilen DISKLERIN kaynak kimliğini döndürecek şekilde genişlettik.
 
 ```kusto
 Resources

@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500377"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045967"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
 
@@ -25,7 +25,7 @@ Bu makalede, bir proxy sunucusunun arkasında bir IoT Edge cihazını yapıland�
 
 1. [**IoT Edge çalışma zamanını cihazınıza yüklemesi**](#install-the-runtime-through-a-proxy)
 
-   IoT Edge yükleme betikleri, paketleri ve dosyaları internet 'ten çeker, böylece cihazınızın bu istekleri yapması için proxy sunucusu üzerinden iletişim kurması gerekir. Windows cihazlarında, yükleme betiği de [çevrimdışı bir yükleme](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) seçeneği sağlar.
+   IoT Edge yükleme betikleri, paketleri ve dosyaları internet 'ten çeker, böylece cihazınızın bu istekleri yapması için proxy sunucusu üzerinden iletişim kurması gerekir. Windows cihazlarında, yükleme betiği de çevrimdışı bir yükleme seçeneği sağlar.
 
    Bu adım, ilk kez ayarladığınızda IoT Edge cihazı yapılandırmak için tek seferlik bir işlemdir. IoT Edge çalışma zamanını güncelleştirdiğinizde aynı bağlantılar da gereklidir.
 
@@ -65,7 +65,7 @@ IoT Edge cihazınızın Windows veya Linux üzerinde çalışıp çalışmadığ
 
 ### <a name="linux-devices"></a>Linux cihazları
 
-IoT Edge çalışma zamanını bir Linux cihazına yüklüyorsanız, paket yöneticisini, yükleme paketine erişmek için proxy sunucunuzun üzerinden gezinmek üzere yapılandırın. Örneğin, [bir http-proxy kullanmak için apt-get](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)' i ayarlayın. Paket yöneticiniz yapılandırıldıktan sonra, [Linux üzerinde Azure IoT Edge Runtime 'ı](how-to-install-iot-edge-linux.md) her zamanki gibi Install ' daki yönergeleri izleyin.
+IoT Edge çalışma zamanını bir Linux cihazına yüklüyorsanız, paket yöneticisini, yükleme paketine erişmek için proxy sunucunuzun üzerinden gezinmek üzere yapılandırın. Örneğin, [bir http-proxy kullanmak için apt-get](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)' i ayarlayın. Paket yöneticiniz yapılandırıldıktan sonra her zamanki gibi [Azure IoT Edge çalışma zamanını Install](how-to-install-iot-edge.md) ' daki yönergeleri izleyin.
 
 ### <a name="windows-devices"></a>Windows cihazları
 
@@ -73,13 +73,13 @@ IoT Edge çalışma zamanını bir Windows cihazına yüklüyorsanız, proxy sun
 
 Aşağıdaki adımlarda, bağımsız değişkenini kullanarak bir Windows yüklemesinin örneği gösterilmektedir `-proxy` :
 
-1. Invoke-WebRequest komutu, yükleyici betiğine erişmek için ara sunucu bilgilerine sahip olmalıdır. Ardından, dağıtım-ıotedge komutunun yükleme dosyalarını indirmesi için proxy bilgilerine ihtiyacı vardır.
+1. Invoke-WebRequest komutu, yükleyici betiğine erişmek için proxy bilgilerine ihtiyaç duyuyor. Ardından Deploy-IoTEdge komutu, yükleme dosyalarını indirmek için proxy bilgilerine ihtiyaç duyuyor.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
    ```
 
-2. Initialize-ıotedge komutunun ara sunucu üzerinden gitmesi gerekmez, bu nedenle ikinci adım yalnızca Invoke-WebRequest için proxy bilgileri gerektirir.
+2. Initialize-IoTEdge komutun ara sunucu üzerinden gitmesi gerekmez, bu nedenle ikinci adım yalnızca Invoke-WebRequest için proxy bilgileri gerektirir.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-Ara sunucu parametreleri hakkında daha fazla bilgi için bkz. [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). Çevrimdışı yükleme dahil Windows yükleme seçenekleri hakkında daha fazla bilgi için bkz. [Windows üzerinde Azure IoT Edge çalışma zamanı yükleme](how-to-install-iot-edge-windows.md).
+Ara sunucu parametreleri hakkında daha fazla bilgi için bkz. [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest). Windows yükleme parametreleri hakkında daha fazla bilgi için bkz. [Windows üzerinde IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
 
 ## <a name="configure-the-daemons"></a>Daemon 'ları yapılandırma
 
@@ -108,7 +108,7 @@ Moby Docker üzerine inşa edildiğinden, Moby cini ortam değişkenleriyle yap�
 IoT Edge cihaz işletim sisteminiz için geçerli olan makaleyi seçin:
 
 * [Linux 'Ta Docker Daemon 'ı yapılandırma](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) Linux cihazlarındaki Moby Daemon, Docker adını tutar.
-* [Windows 'Da Docker Daemon yapılandırma](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows cihazlarındaki Moby Daemon, ıotedge-Moby olarak adlandırılır. Bir Windows cihazında hem Docker Desktop hem de Moby paralel olarak çalıştırılabilmesini sağladığından adlar farklıdır.
+* [Windows 'Da Docker Daemon yapılandırma](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows cihazlarındaki Moby Daemon, ıotedge-Moby olarak adlandırılır. Bir Windows cihazında hem Docker Desktop hem de Moby paralel olarak çalıştırılabilmesini sağladığından adlar farklıdır.
 
 ### <a name="iot-edge-daemon"></a>IoT Edge Daemon
 

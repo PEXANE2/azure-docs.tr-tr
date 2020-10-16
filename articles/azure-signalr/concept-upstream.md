@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514246"
 ---
 # <a name="upstream-settings"></a>Yukarı akış ayarları
@@ -34,7 +34,7 @@ Belirtilen olay gerçekleştiğinde, bir öğenin kuralları sırayla tek tek de
 
 Farklı desenleri desteklemek için URL 'YI parametreleştirebilirsiniz. Önceden tanımlanmış üç parametre vardır:
 
-|Önceden tanımlanmış parametre|Description|
+|Önceden tanımlanmış parametre|Açıklama|
 |---------|---------|
 |Hub| Hub, Azure SignalR hizmeti kavramıdır. Hub bir yalıtım birimidir. Kullanıcıların ve ileti tesliminin kapsamı bir hub ile kısıtlanır.|
 |alan| Bir kategori aşağıdaki değerlerden biri olabilir: <ul><li>**Bağlantılar**: bağlantı ömrü olayları. İstemci bağlantısı bağlandığında veya bağlantısı kesildiğinde tetiklenir. Bağlı ve bağlantısı kesilmiş olayları içerir.</li><li>**mesajlar**: istemciler bir hub yöntemi çağıryüklerken tetiklenir. **Bağlantılar** kategorisinden hariç olmak üzere diğer tüm olayları içerir.</li></ul>|
@@ -82,7 +82,7 @@ Seçeneğini belirlediğinizde `ManagedIdentity` , Azure SignalR hizmetinde yön
 3. **Yukarı akış URL 'Si deseninin**altında URL 'ler ekleyin. Ardından, **hub kuralları** gibi ayarlar varsayılan değeri gösterir.
 4. **Hub kuralları**, **olay kuralları**, **Kategori kuralları**ve **yukarı akış kimlik doğrulaması**ayarlarını belirlemek için **hub kuralları**değerini seçin. Ayarları düzenlemenizi sağlayan bir sayfa görüntülenir:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Yukarı akış ayarı ayrıntıları":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Yukarı akış ayarları":::
 
 5. **Yukarı akış kimlik doğrulamasını**ayarlamak için, önce yönetilen bir kimliği etkinleştirdiğinizden emin olun. Ardından **yönetilen kimliği kullan**' ı seçin. Gereksinimlerinize göre, **kimlik doğrulama kaynak kimliği**altında herhangi bir seçeneği belirleyebilirsiniz. Ayrıntılar için bkz. [Azure SignalR hizmeti Için Yönetilen kimlikler](howto-use-managed-identity.md) .
 
@@ -133,7 +133,7 @@ POST
 |X-ASRS-Kullanıcı talepleri |İstemci bağlantısının talep grubu.|
 |X-ASRS-Kullanıcı kimliği |İletiyi gönderen istemcinin kullanıcı kimliği.|
 |X-ASRS-Client-Query |İstemciler hizmete bağlandıklarında isteğin sorgusu.|
-|Kimlik doğrulaması |Kullanırken isteğe bağlı bir belirteç `ManagedIdentity` . |
+|Kimlik Doğrulaması |Kullanırken isteğe bağlı bir belirteç `ManagedIdentity` . |
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -145,7 +145,7 @@ Content-Type: Application/JSON
 
 İçerik türü: `application/json`
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |Hata |string |Kapalı bir bağlantının hata iletisi. Bağlantılar hata olmadan kapatıldığında boştur.|
 
@@ -153,11 +153,11 @@ Content-Type: Application/JSON
 
 İçerik türü: `application/json` veya `application/x-msgpack`
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |Invocationıd |string | Bir çağrı iletisini temsil eden isteğe bağlı bir dize. [Etkinleştirmeleri](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)içindeki ayrıntıları bulun.|
 |Hedef |string | Olay ile aynı ve bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)hedefle aynı. |
-|Arguments |Nesne dizisi |İçinde başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi `Target` . |
+|Bağımsız değişkenler |Nesne dizisi |İçinde başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi `Target` . |
 
 ### <a name="signature"></a>İmza
 

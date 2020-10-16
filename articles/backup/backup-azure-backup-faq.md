@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986414"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096632"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -57,6 +57,10 @@ Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız g
 
 - ILR, Azure VM yedeklemesi tarafından yedeklenen Azure VM'lerinde desteklenir. Daha fazla bilgi için şu [makaleye](backup-azure-restore-files-from-vm.md) bakın
 - ILR, Azure Backup Sunucusu (MABS) veya System Center DPM tarafından yedeklenen şirket içi VM 'lerin çevrimiçi kurtarma noktaları için desteklenmez.
+
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Verileri kurtarma hizmetleri kasasından şirket içine nasıl taşıyabilirim?
+
+Data Box kullanarak doğrudan kurtarma hizmetleri kasasından şirket içine veri aktarmak desteklenmez. Veriler bir depolama hesabına geri yüklenmelidir ve sonra [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) veya [Içeri/dışarı aktarma](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)aracılığıyla şirket içine taşınabilir.
 
 ## <a name="azure-backup-agent"></a>Azure Backup aracısı
 
@@ -174,7 +178,7 @@ Genel uzun vadeli bekletme noktası ürünleri, yedekleme verilerini tam noktala
 - Tam noktalar depolama açısından *verimsizdir* ancak daha kolay ve hızlı şekilde geri yüklenir.
 - Artımlı kopyalar depolama açısından *verimlidir* ancak kurtarma süresini etkileyecek şekilde bir veri zincirini geri yüklemenizi gerektirir
 
-Azure Backup alanı mimarisi, hızlı geri yükleme özelliğiyle optimum veri depolama olanağı sunarken aynı zamanda düşük depolama maliyetleri oluşturarak iki açıdan da avantaj sağlar. Bu, giriş ve çıkış bant genişliğinizin verimli şekilde kullanılmasını sağlar. Veri depolama alanı miktarı ve verileri kurtarmak için gereken süre minimum düzeyde tutulur. [Artımlı yedeklemeler](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/) hakkında daha fazla bilgi edinin.
+Azure Backup alanı mimarisi, hızlı geri yükleme özelliğiyle optimum veri depolama olanağı sunarken aynı zamanda düşük depolama maliyetleri oluşturarak iki açıdan da avantaj sağlar. Bu, giriş ve çıkış bant genişliğinizin verimli şekilde kullanılmasını sağlar. Veri depolama alanı miktarı ve verileri kurtarmak için gereken süre minimum düzeyde tutulur. [Artımlı yedeklemeler](backup-architecture.md#backup-types) hakkında daha fazla bilgi edinin.
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>Oluşturulabilecek kurtarma noktalarının sayısına yönelik bir sınır var mıdır?
 

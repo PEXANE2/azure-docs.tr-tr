@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.topic: conceptual
 ms.custom: devx-track-python
 ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987564"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Otomasyonu 'nda Python 2 paketlerini yönetme
@@ -25,11 +25,11 @@ Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **Python 2 paketleri
 
 Python 2 paketi Ekle sayfasında, karşıya yüklenecek yerel bir paket seçin. Paket bir **. WHL** veya **. tar. gz** dosyası olabilir. Paket seçildiğinde, yüklemek için **Tamam** ' ı tıklatın.
 
-:::image type="content" source="media/python-packages/upload-package.png" alt-text="Ekran görüntüsü, karşıya yüklenen bir tar. gz dosyası seçiliyken Python 2 paketi Ekle sayfasını gösterir.":::
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="Python 2 paketleri sayfasının ekran görüntüsü Sol menüdeki Python 2 paketlerini gösterir ve bir Python 2 paketi vurgulanmış olarak ekler.":::
 
 Paket içeri aktarıldıktan sonra, Otomasyon hesabınızdaki Python 2 paketleri sayfasında listelenir. Bir paketi kaldırmanız gerekiyorsa, paketi seçin ve **Sil**' e tıklayın.
 
-:::image type="content" source="media/python-packages/package-list.png" alt-text="Ekran görüntüsü, bir paket içe aktarıldıktan sonra Python 2 paketleri sayfasını gösterir.":::
+:::image type="content" source="media/python-packages/package-list.png" alt-text="Python 2 paketleri sayfasının ekran görüntüsü Sol menüdeki Python 2 paketlerini gösterir ve bir Python 2 paketi vurgulanmış olarak ekler.":::
 
 ## <a name="import-packages-with-dependencies"></a>Bağımlılıkları olan paketleri içeri aktarma
 
@@ -54,7 +54,7 @@ Paketler indirildikten sonra Otomasyon hesabınıza içeri aktarabilirsiniz.
 * -a \<automationAccount\>
 * -a \<modulePackage\>
 
-:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Ekran görüntüsünde, sağ taraftaki runbook 'U Başlat bölmesine sahip import_py2package_from_pypi için genel bakış sayfası gösterilir.":::
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Python 2 paketleri sayfasının ekran görüntüsü Sol menüdeki Python 2 paketlerini gösterir ve bir Python 2 paketi vurgulanmış olarak ekler.":::
 
 Runbook, hangi paketin indirileceği belirtmenizi sağlar. Örneğin, `Azure` parametresinin kullanımı tüm Azure modüllerini ve tüm bağımlılıkları indirir (yaklaşık 105).
 

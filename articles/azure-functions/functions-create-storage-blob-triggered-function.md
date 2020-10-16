@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: bf6865d2756579f457dded90b247326d2eec137c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83123131"
 ---
 # <a name="create-a-function-in-azure-thats-triggered-by-blob-storage"></a>Azure 'da BLOB depolama tarafından tetiklenen bir işlev oluşturma
 
 Bir BLOB depolama kapsayıcısına dosyalar yüklenirken veya güncelleştirilirken tetiklenen bir işlev oluşturmayı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -36,13 +36,13 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 1. **İşlevler**' i seçin ve sonra yeni bir işlev eklemek Için **+ Ekle** ' yi seçin.
 
-   :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-template.png" alt-text="Azure portal bir Işlev şablonu seçin." border="true":::
+   :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-template.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. **Azure Blob depolama tetikleyicisi** şablonunu seçin.
 
 1. Görüntünün altındaki tabloda belirtilen ayarları kullanın.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png" alt-text="BLOB depolama ile tetiklenen işlevi adlandırın ve yapılandırın." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
     | Ayar | Önerilen değer | Açıklama |
     |---|---|---|
@@ -52,7 +52,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 1. İşlevinizi oluşturmak için **Işlev oluştur** ' u seçin.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-3.png" alt-text="Blob depolama ile tetiklenen bir işlev oluşturun." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-3.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 Ardından, **Samples-WorkItems** kapsayıcısını oluşturun.
 
@@ -60,19 +60,19 @@ Ardından, **Samples-WorkItems** kapsayıcısını oluşturun.
 
 1. İşlevinizde **genel bakış** sayfasında, kaynak grubunuzu seçin.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-resource-group.png" alt-text="Azure portal kaynak grubunuzu seçin." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-resource-group.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. Kaynak grubunuzun depolama hesabını bulun ve seçin.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-account-access.png" alt-text="Depolama hesabına erişin." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-account-access.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. **Kapsayıcılar**' ı seçin ve ardından **+ kapsayıcı**' yı seçin. 
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-add-container.png" alt-text="Azure portal depolama hesabınıza kapsayıcı ekleyin." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-add-container.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. **Ad** alanına yazın `samples-workitems` ve ardından **Oluştur**' u seçin.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-name-blob-container.png" alt-text="Depolama kapsayıcısını adlandırın." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-name-blob-container.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 Artık bir blob kapsayıcısına sahip olduğunuza göre, kapsayıcıya bir dosya yükleyerek işlevi test edebilirsiniz.
 
@@ -80,23 +80,23 @@ Artık bir blob kapsayıcısına sahip olduğunuza göre, kapsayıcıya bir dosy
 
 1. Azure portalına dönün, işlevinizi bulun, sayfanın en altındaki **Günlükler** bölümünü genişletin ve günlük akışının duraklatılmış olmadığından emin olun.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-log-expander.png" alt-text="Azure portal günlüğü genişletin." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-log-expander.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. Ayrı bir tarayıcı penceresinde, Azure portal kaynak grubunuza gidin ve depolama hesabını seçin.
 
 1. **Kapsayıcılar**' ı seçin ve ardından **Samples-WorkItems** kapsayıcısını seçin.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-container.png" alt-text="Azure portal, Samples-WorkItems kapsayıcısına gidin." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-container.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. **Karşıya yükle**' yi seçin ve ardından karşıya yüklenecek dosyayı seçmek için klasör simgesini seçin.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png" alt-text="Dosyayı blob kapsayıcısına yükleyin." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. Yerel bilgisayarınızda bir görüntü dosyası gibi bir dosyaya gidin, dosyayı seçin. **Aç** ' ı seçin ve ardından **karşıya yükleyin**.
 
 1. İşlev günlüklerinize geri dönün ve blob’un okunduğunu doğrulayın.
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png" alt-text="Günlüklerde iletiyi görüntüleyin." border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
     >[!NOTE]
     > İşlev uygulamanız varsayılan Tüketim planında çalıştığında, blob’un eklenmesi veya güncelleştirilmesi ile işlevin tetiklenmesi arasında birkaç dakika gecikme olabilir. Blob ile tetiklenen işlevlerde düşük gecikme süresi gerekiyorsa, işlev uygulamanızı bir App Service planında çalıştırmayı düşünün.

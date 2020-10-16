@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
 ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84261292"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Azure yönetilen uygulamalarla mevcut sanal ağı kullan
@@ -59,4 +59,4 @@ Bu öğe, tüketicinin yeni veya var olan bir sanal ağ seçmesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-UI tanım dosyası oluşturma hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamanın oluşturma deneyimi içinCreateUiDefinition.js](create-uidefinition-overview.md).
+UI tanım dosyası oluşturma hakkında daha fazla bilgi için bkz. [ Azure yönetilen uygulamanın oluşturma deneyimi içinCreateUiDefinition.js](create-uidefinition-overview.md).

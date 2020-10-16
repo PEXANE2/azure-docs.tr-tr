@@ -4,10 +4,10 @@ description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi ger
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322266"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Geçişi aleti mimarisi
@@ -85,7 +85,7 @@ Gereç, aşağıdaki işlemi kullanarak vCenter sunucularıyla ve Hyper-V konakl
 
 Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden, Gereç yükseltilir. Otomatik güncelleştirme, Gereç üzerinde varsayılan olarak etkinleştirildiğinden bu otomatik olarak gerçekleşir. Aracıları el ile güncelleştirmek için bu varsayılan ayarı değiştirebilirsiniz.
 
-HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "otomatik güncelleştirme" anahtarını 0 (DWORD) olarak ayarlayarak, kayıt defterinde otomatik güncelleştirmeyi devre dışı bırakabilirsiniz.
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "otomatik güncelleştirme" anahtarını 0 (DWORD) olarak ayarlayarak, kayıt defterinde otomatik güncelleştirmeyi devre dışı bırakabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

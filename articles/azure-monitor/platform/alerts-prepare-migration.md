@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358794"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve runbook'larınızı klasik uyarı kurallarının geçişine hazırlama
@@ -30,7 +30,7 @@ Aşağıdaki tabloda hem klasik hem de yeni uyarılar için programlı arabiriml
 | Dağıtım betiği türü | Klasik uyarılar | Yeni ölçüm uyarıları |
 | ---------------------- | -------------- | ----------------- |
 |REST API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
-|Azure CLI’si     | [az Monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|Azure CLI     | [az Monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Başvuru](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Başvuru](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager şablonu | [Klasik uyarılar için](./alerts-enable-template.md)|[Yeni ölçüm uyarıları için](./alerts-metric-create-templates.md)|
 

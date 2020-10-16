@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85509515"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Kayıtlı sunucuları Azure Dosya Eşitleme yönetme
@@ -22,7 +22,7 @@ Aşağıdaki makalede, bir sunucunun depolama eşitleme hizmeti ile nasıl kayde
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Depolama eşitleme hizmeti ile bir sunucuyu kaydetme/kaydını kaldırma
 Bir sunucuyu Azure Dosya Eşitleme kaydetme, Windows Server ile Azure arasında bir güven ilişkisi kurar. Bu ilişki daha sonra sunucuda *sunucu uç noktaları* oluşturmak için kullanılabilir. Bu, bir Azure dosya paylaşımıyla ( *bulut uç noktası*olarak da bilinir) eşitlenmesi gereken belirli klasörleri temsil eder. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bir sunucuyu depolama eşitleme hizmeti ile kaydetmek için öncelikle sunucunuzu gerekli önkoşullara hazırlamanız gerekir:
 
 * Sunucunuz Windows Server 'ın desteklenen bir sürümünü çalıştırıyor olmalıdır. Daha fazla bilgi için bkz. [sistem gereksinimleri ve birlikte çalışabilirlik Azure dosya eşitleme](storage-sync-files-planning.md#windows-file-server-considerations).
@@ -186,4 +186,4 @@ Azure Dosya Eşitleme, Windows Server Sanallaştırma Ana bilgisayarı üzerinde
 - [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
 - [Azure Dosya Eşitleme’yi dağıtma](storage-sync-files-deployment-guide.md)
 - [Azure Dosya Eşitleme’yi izleme](storage-sync-files-monitoring.md)
-- [Azure Dosya Eşitleme ile ilgili sorunları giderme](storage-sync-files-troubleshoot.md)
+- [Azure Dosya Eşitleme'de sorun giderme](storage-sync-files-troubleshoot.md)

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311113"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089460"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure haritalar 'da kimlik doğrulamasını yönetme
 
@@ -41,11 +41,11 @@ Uygulama ihtiyaçlarına bağlı olarak, uygulamayı güvenli hale getirmek içi
 Aşağıdaki tabloda Azure Maps 'ta yaygın kimlik doğrulama ve yetkilendirme senaryoları özetlenmektedir. Tablo her senaryonun sunduğu koruma türlerinin bir karşılaştırmasını sağlar.
 
 > [!IMPORTANT]
-> Microsoft, üretim uygulamaları için rol tabanlı erişim denetimi (RBAC) ile Azure Active Directory (Azure AD) uygulamayı önerir.
+> Microsoft, üretim uygulamaları için Azure rol tabanlı erişim denetimi (Azure RBAC) ile Azure Active Directory (Azure AD) uygulamayı önerir.
 
 | Senaryo                                                                                    | Kimlik Doğrulaması | Yetkilendirme | Geliştirme çabası | İşletimsel çaba |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [Güvenilen Daemon/etkileşimli olmayan istemci uygulaması](./how-to-secure-daemon-app.md)        | Paylaşılan Anahtar     | Yok           | Orta             | Yüksek               |
+| [Güvenilen Daemon/etkileşimli olmayan istemci uygulaması](./how-to-secure-daemon-app.md)        | Paylaşılan Anahtar     | YOK           | Orta             | Yüksek               |
 | [Güvenilen Daemon/etkileşimli olmayan istemci uygulaması](./how-to-secure-daemon-app.md)        | Azure AD       | Yüksek          | Düşük                | Orta             |
 | [Etkileşimli Çoklu oturum açma ile Web tek sayfalı uygulama](./how-to-secure-spa-users.md) | Azure AD       | Yüksek          | Orta             | Orta             |
 | [Etkileşimli olmayan oturum açma ile Web tek sayfalı uygulama](./how-to-secure-spa-app.md)      | Azure AD       | Yüksek          | Orta             | Orta             |
@@ -63,10 +63,10 @@ Azure haritalar için kullanılabilen Azure rollerini görüntülemek için **er
 
 ## <a name="view-role-assignments"></a>Rol atamalarını görüntüle
 
-Azure haritalar için RBAC verilen kullanıcıları ve uygulamaları görüntülemek için **Access Control (IAM)** sayfasına gidin. Burada **rol atamaları**' nı seçin ve ardından **Azure Maps**'a göre filtreleyin.
+Azure haritalar için erişim izni verilen kullanıcıları ve uygulamaları görüntülemek için **Access Control (IAM)** sayfasına gidin. Burada **rol atamaları**' nı seçin ve ardından **Azure Maps**'a göre filtreleyin.
 
 > [!div class="mx-imgBorder"]
-> ![RBAC verilen kullanıcıları ve uygulamaları görüntüleme](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+> ![Erişim izni verilen kullanıcıları ve uygulamaları görüntüleme](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>Azure haritalar için istek belirteçleri
 

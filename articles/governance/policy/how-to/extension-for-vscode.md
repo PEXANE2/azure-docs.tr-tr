@@ -1,14 +1,14 @@
 ---
 title: Visual Studio Code için Azure Ilke uzantısı
 description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Azure Resource Manager diğer adları arama hakkında bilgi edinin.
-ms.date: 06/16/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648340"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077941"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
@@ -21,7 +21,7 @@ Visual Studio Code için Azure Ilke uzantısı, Visual Studio Code tarafından d
 > [!NOTE]
 > Visual Studio Code için Azure Ilke uzantısında görüntülenen ilkelerde yerel olarak yapılan değişiklikler Azure ile eşitlenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
@@ -64,13 +64,13 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
      Azure Ilke uzantısı ' **nda Azure 'Da oturum aç**' ı seçin.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code ekran görüntüsü ve Azure Ilke uzantısı simgesi." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code için ulus Azure bulutu oturum açma seçeneğinin ekran görüntüsü." border="false":::
 
    - Komut paleti
 
      Menü çubuğundan **Görünüm**  >  **komut paleti**' ne gidin ve **Azure: oturum aç**' ı girin.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Komut paletinden Visual Studio Code için Azure bulutu oturum açma seçeneklerinin ekran görüntüsü." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Visual Studio Code için ulus Azure bulutu oturum açma seçeneğinin ekran görüntüsü." border="false":::
 
 1. Azure 'da oturum açmak için oturum açma yönergelerini izleyin. Bağlandıktan sonra, Azure hesabınızın adı Visual Studio Code penceresinin altındaki durum çubuğunda gösterilir.
 
@@ -82,7 +82,7 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
    - Komut paleti: 
 
-     Menü çubuğundan, **görüntüleme**  >  **komut paleti**' ne gidin ve **Azure: abonelikleri Seç**' i girin.
+     Menü çubuğundan, **görüntüleme** > **komut paleti**' ne gidin ve **Azure: abonelikleri Seç**' i girin.
 
    - Pencere altbilgisi
 
@@ -125,7 +125,7 @@ Bir kaynak seçildiğinde, arama arabiriminden veya TreeView 'da seçilerek, Azu
 
 Bir kaynak açıldıktan sonra, Kaynak Yöneticisi özellik adı veya değerinin üzerine gelindiğinde, varsa Azure Ilkesi diğer adı görüntülenir. Bu örnekte, kaynak bir `Microsoft.Compute/virtualMachines` kaynak türüdür ve **Properties. Storageprofile. ImageReference. teklifin** özelliği üzerine düştir. Vurgulama, eşleşen diğer adları gösterir.
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code için Azure Ilke uzantısının, diğer ad adlarını görüntüleyecek bir özelliği bir ekran görüntüsü." border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code için ulus Azure bulutu oturum açma seçeneğinin ekran görüntüsü." border="false":::
 
 > [!NOTE]
 > VS Code uzantısı yalnızca Kaynak Yöneticisi modu özelliklerini gösterir ve herhangi bir [kaynak sağlayıcısı modu](../concepts/definition-structure.md#mode) özelliği görüntülemez.

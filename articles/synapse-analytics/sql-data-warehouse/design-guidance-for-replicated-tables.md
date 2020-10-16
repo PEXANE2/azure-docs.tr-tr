@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86181344"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda çoğaltılan tabloları kullanmaya yönelik tasarım kılavuzu
@@ -47,7 +47,7 @@ Aşağıdaki diyagramda, her bir Işlem düğümündeki erişilebilir bir çoğa
 Şu durumlarda çoğaltılan bir tablo kullanmayı göz önünde bulundurun:
 
 - Disk üzerindeki tablo boyutu, satır sayısından bağımsız olarak 2 GB 'tan az. Bir tablonun boyutunu bulmak için [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutunu kullanabilirsiniz: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` .
-- Tablo, aksi takdirde veri hareketine gerek duyduğu birleşimlerde kullanılır. Karma olarak dağıtılan tablo gibi aynı sütunda dağıtılmamış tablolar, hepsini bir kez deneme tablosuna katılırken, sorguyu tamamlaması için veri taşıma gerekir.  Tablolardan biri küçükse, çoğaltılan bir tabloyu düşünün. Çoğu durumda, hepsini bir kez deneme tablosu yerine çoğaltılan tabloları kullanmanızı öneririz. Sorgu planlarında veri taşıma işlemlerini görüntülemek için [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanın.  Yayınmoveişlem, çoğaltılan bir tablo kullanılarak ortadan kaldırılabilir olan tipik veri taşıma işlemidir.  
+- Tablo, aksi takdirde veri hareketine gerek duyduğu birleşimlerde kullanılır. Karma olarak dağıtılan tablo gibi aynı sütunda dağıtılmamış tablolar, hepsini bir kez deneme tablosuna katılırken, sorguyu tamamlaması için veri taşıma gerekir.  Tablolardan biri küçükse, çoğaltılan bir tabloyu düşünün. Çoğu durumda, hepsini bir kez deneme tablosu yerine çoğaltılan tabloları kullanmanızı öneririz. Sorgu planlarında veri taşıma işlemlerini görüntülemek için [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanın.  Yayınmoveişlem, çoğaltılan bir tablo kullanılarak ortadan kaldırılabilir olan tipik veri taşıma işlemidir.  
 
 Çoğaltılan tablolar şu durumlarda en iyi sorgu performansını vermeyebilir:
 
@@ -99,7 +99,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Hepsini bir kez deneme için sorgu performansı örneği yinelenmiş
 
-Çoğaltılan bir tablo, tüm tablo bir Işlem düğümünde zaten mevcut olduğundan, birleştirmeler için herhangi bir veri taşıması gerektirmez. Boyut tabloları hepsini bir kez daha kez dağıtılmışsa, bir JOIN boyut tablosunu her bir Işlem düğümüne tam olarak kopyalar. Verileri taşımak için, sorgu planı, Yayınmoveoperation adlı bir işlem içerir. Bu tür veri taşıma işlemi sorgu performansını yavaşlatır ve çoğaltılan tablolar kullanılarak ortadan kalkar. Sorgu planı adımlarını görüntülemek için [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Sistem kataloğu görünümünü kullanın.  
+Çoğaltılan bir tablo, tüm tablo bir Işlem düğümünde zaten mevcut olduğundan, birleştirmeler için herhangi bir veri taşıması gerektirmez. Boyut tabloları hepsini bir kez daha kez dağıtılmışsa, bir JOIN boyut tablosunu her bir Işlem düğümüne tam olarak kopyalar. Verileri taşımak için, sorgu planı, Yayınmoveoperation adlı bir işlem içerir. Bu tür veri taşıma işlemi sorgu performansını yavaşlatır ve çoğaltılan tablolar kullanılarak ortadan kalkar. Sorgu planı adımlarını görüntülemek için [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Sistem kataloğu görünümünü kullanın.  
 
 Örneğin, AdventureWorks şemasına karşı aşağıdaki sorguda `FactInternetSales` tablo karma olarak dağıtılır. `DimDate`Ve `DimSalesTerritory` tabloları daha küçük boyut tablolarıdır. Bu sorgu, 2004 mali yılı için Kuzey Amerika toplam satışları döndürür:
 
@@ -170,7 +170,7 @@ Standart dizin oluşturma uygulamaları çoğaltılan tablolar için geçerlidir
 
 Tutarlı sorgu yürütme süreleri sağlamak için, bir toplu yükleme sonrasında çoğaltılan tabloların derlemesini zorunlu tutmayı düşünün. Aksi halde, ilk sorgu sorguyu tamamlayacak veri hareketini kullanmaya devam eder.
 
-Bu sorgu, değiştirilmiş ancak yeniden derlenmemişse çoğaltılan tabloları listelemek için [sys. pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV kullanır.
+Bu sorgu, değiştirilmiş ancak yeniden derlenmemişse çoğaltılan tabloları listelemek için [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV 'yi kullanır.
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]

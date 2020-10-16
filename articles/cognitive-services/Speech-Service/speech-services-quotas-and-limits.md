@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: alexeyo
 ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567171"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
@@ -33,11 +33,11 @@ Bu makalede, Azure bilişsel konuşma Hizmetleri kotaları ve tüm [fiyatlandır
 | Ayarlanabilir | <sup>2</sup> yok | Evet<sup>2</sup> |
 | **REST API Istek sınırı ([API Management](../../api-management/api-management-key-concepts.md) uç noktalar)** | 10 saniye başına 100 istek | 10 saniye başına 100 istek |
 | **Veri Içeri aktarma için en büyük veri kümesi dosya boyutu** | 2 GB | 2 GB |
-| **Toplu Iş dökümü için maksimum giriş blobu boyutu** | YOK | 2,5 GB |
-| **Toplu Iş dökümü için maksimum blob kapsayıcısı boyutu** | YOK | 5 GB |
-| **Toplu Iş dökümü için kapsayıcı başına en fazla BLOB sayısı** | YOK | 10000 |
-| **Toplu Iş dökümü için döküm isteği başına en fazla dosya sayısı (giriş olarak birden çok içerik URL 'Si kullanılırken)** | YOK | 1000  |
-| **Toplu Iş dökümü için eşzamanlı çalışan en fazla iş sayısı** | YOK | 2000  |
+| **Toplu Iş dökümü için maksimum giriş blobu boyutu** | Yok | 2,5 GB |
+| **Toplu Iş dökümü için maksimum blob kapsayıcısı boyutu** | Yok | 5 GB |
+| **Toplu Iş dökümü için kapsayıcı başına en fazla BLOB sayısı** | Yok | 10000 |
+| **Toplu Iş dökümü için döküm isteği başına en fazla dosya sayısı (giriş olarak birden çok içerik URL 'Si kullanılırken)** | Yok | 1000  |
+| **Toplu Iş dökümü için eşzamanlı çalışan en fazla iş sayısı** | Yok | 2000  |
 
 <sup>1</sup> **ücretsiz (F0)** fiyatlandırma katmanı için bkz. [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)Ayrıca aylık allowsuyum.<br/>
 <sup>2</sup> [ek açıklamalar](#detailed-description-quota-adjustment-and-best-practices), [en iyi uygulamalar](#general-best-practices-to-mitigate-throttling-during-autoscaling)ve [ayarlama yönergelerine](#speech-to-text-increasing-online-transcription-concurrent-request-limit)bakın.<br/> 
@@ -86,7 +86,7 @@ Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . 
 
 **Taban** ve **özel** modellerin eşzamanlı istek sınırları **ayrı ayrı**ayarlanması gerekir.
 
-Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, komut satırı araçları veya API istekleri aracılığıyla görünür **değil** . Mevcut değeri doğrulamak için bir Azure destek Isteği oluşturun.
+Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-Line araçları veya API istekleri aracılığıyla görünür **değil** . Mevcut değeri doğrulamak için bir Azure destek Isteği oluşturun.
 
 >[!NOTE]
 >Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları ile sınırlandırıldığından, [konuşma kapsayıcıları](speech-container-howto.md) eşzamanlı istek sınırı artışı gerektirmez.
@@ -94,9 +94,9 @@ Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, komut sa
 #### <a name="have-the-required-information-ready"></a>Gerekli bilgileri hazırlayın:
 - **Taban model**için:
   - Konuşma kaynak KIMLIĞI
-  - Region
+  - Bölge
 - **Özel model**için: 
-  - Region
+  - Bölge
   - Özel uç nokta KIMLIĞI
 
 - **Bilgi alma (temel model)**:  
@@ -152,7 +152,7 @@ Varsayılan olarak, bir özel ses bitiş noktası için eşzamanlı istek sayıs
 
 Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . Konuşma Hizmetleri "yalnızca kullandığınız kadar ödeyin" modeli kullanır. Sınır, hizmetin isteklerinizi kısıtlama başlamadan önce ne kadar yüksek ölçeklenebileceğini tanımlar.
 
-Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, komut satırı araçları veya API istekleri aracılığıyla görünür **değil** . Mevcut değeri doğrulamak için bir Azure destek Isteği oluşturun.
+Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-Line araçları veya API istekleri aracılığıyla görünür **değil** . Mevcut değeri doğrulamak için bir Azure destek Isteği oluşturun.
 
 >[!NOTE]
 >Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları ile sınırlandırıldığından, [konuşma kapsayıcıları](speech-container-howto.md) eşzamanlı istek sınırı artışı gerektirmez.

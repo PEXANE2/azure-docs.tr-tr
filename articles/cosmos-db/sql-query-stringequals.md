@@ -8,10 +8,10 @@ ms.date: 05/20/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 57d124421082e1c38fab4d982687a8e6c970505e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83853802"
 ---
 # <a name="stringequals-azure-cosmos-db"></a>STRıNGEQUALS (Azure Cosmos DB)
@@ -66,4 +66,4 @@ Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strat
 
 - [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)

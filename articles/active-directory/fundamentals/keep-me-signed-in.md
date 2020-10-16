@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320265"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>' Oturum açmış kalsın ' öğesini yapılandırın Azure AD hesapları istemi
@@ -40,20 +40,15 @@ Aşağıdaki diyagramda, yönetilen bir kiracı ve Federal kiracı için Kullan�
    * **Hayır**' ı seçerseniz, **oturum açık kalsın mı?** seçeneği, Kullanıcı başarıyla oturum açtıktan sonra ve kullanıcının her kapatılıp yeniden açıldığı zaman oturum açması gerekir.
    * **Evet**' i seçerseniz, **oturum açmış durumda kal?** seçeneği kullanıcıya gösterilir.
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Ekran görüntüsü, oturum açmış olarak kalan ayarı göster seçeneğini gösterir":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Yönetilen ve Federal kiracı için Kullanıcı oturum açma akışını gösteren diyagram":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>Oturum açma sorunlarını giderme
 
 Bir Kullanıcı, aşağıdaki diyagramda gösterildiği gibi oturum **açmış kalmak** için işlem yapmaz, ancak oturum açma girişimini terk ederseniz, kesmeyi gösteren bir oturum açma günlüğü girişi görürsünüz.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Oturum açık kalsın ' i gösterir mi? isteme":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Yönetilen ve Federal kiracı için Kullanıcı oturum açma akışını gösteren diyagram" kesmesi nedeniyle bu hata oluştu.
 
-Oturum açma hatası hakkındaki ayrıntılar aşağıda verilmiştir ve örnekte vurgulanır.
-
-* **Oturum açma hata kodu**: 50140
-* **Hata nedeni**: Kullanıcı oturum açarken "Oturumumu Açık tut" kesmesi nedeniyle bu hata oluştu.
-
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Oturumumu Açık tut kesintiye sahip örnek oturum açma günlüğü girişi":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Yönetilen ve Federal kiracı için Kullanıcı oturum açma akışını gösteren diyagram":::
 
 Gelişmiş marka ayarlarında **göster seçeneğini oturum açmış olarak kalacak şekilde** ayarlayarak, kullanıcıların kesme işlemini görmesini durdurabilirsiniz. **No** Bu, Azure AD dizininizde tüm kullanıcılar için KMSı isteğini devre dışı bırakır.
 

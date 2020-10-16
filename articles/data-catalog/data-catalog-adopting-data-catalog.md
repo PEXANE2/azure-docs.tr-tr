@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72801885"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Veri Kataloğu'nu benimseme yaklaşımı ve işlemi
@@ -73,7 +73,7 @@ Aşağıda durumları tanımlamaya yönelik birkaç ipucu verilmiştir:
 
 Aşağıda Veri Kataloğu ile ilgili bazı örnek kullanım durumları verilmiştir:
 
-### <a name="example-use-cases"></a>Örnek kullanım durumları
+### <a name="example-use-cases"></a>Kullanım örnekleri
 
 * **Merkezi yüksek değerli veri kaynaklarını kaydedin** - BT, kuruluş genelinde kullanılan veri kaynaklarını yönetir. BT, genel kurumsal veri kaynaklarını kaydederek ve bunlara açıklama ekleyerek Veri Kataloğu'nu kullanmaya başlayabilir.
 * **Ekip tabanlı veri kaynaklarını kaydedin** - Farklı ekipler faydalı iş kolu veri kaynaklarına sahiptir. Birçok farklı ekip tarafından kullanılan önemli veri kaynaklarını tanımlayarak ve kaydederek **Azure Veri Kataloğu** ile çalışmaya başlayın ve ekibin bilgilerini **Azure Veri Kataloğu** ek açıklamalarına kaydedin.

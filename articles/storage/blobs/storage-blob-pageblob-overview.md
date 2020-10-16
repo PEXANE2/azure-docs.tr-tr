@@ -10,22 +10,22 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018850"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091024"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure sayfa bloblarına genel bakış
 
 Azure depolama, üç tür BLOB depolama alanı sunar: blok Blobları, ekleme Blobları ve sayfa Blobları. Blok Blobları bloklardan oluşur ve metin veya ikili dosyaları depolamak ve büyük dosyaları verimli bir şekilde yüklemek için idealdir. Ekleme Blobları bloklarından da oluşur, ancak bunlar, oturum açma senaryolarında ideal hale getirilmeleri için, ekleme işlemleri için iyileştirilmiştir. Sayfa Blobları toplam boyut olarak 8 TB 'a kadar 512 baytlık sayfalardan oluşur ve sık rastgele okuma/yazma işlemleri için tasarlanmıştır. Sayfa Blobları, Azure IaaS disklerinin temelidir. Bu makalede, sayfa bloblarının özelliklerinin ve avantajlarından faydalanılır.
 
-Sayfa Blobları, rastgele bayt aralıklarını okuma/yazma özelliği sağlayan 512 baytlık sayfaların koleksiyonudur. Bu nedenle, sayfa Blobları, sanal makineler ve veritabanları için işletim sistemi ve veri diskleri gibi dizin tabanlı ve seyrek veri yapılarını depolamak için idealdir. Örneğin, Azure SQL DB, veritabanı için temeldeki kalıcı depolama olarak sayfa bloblarını kullanır. Ayrıca, sayfa Blobları, Aralık tabanlı güncelleştirmeler içeren dosyalar için de kullanılır.  
+Sayfa Blobları, rastgele bayt aralıklarını okuma/yazma özelliği sağlayan 512 baytlık sayfaların koleksiyonudur. Bu nedenle, sayfa Blobları, sanal makineler ve veritabanları için işletim sistemi ve veri diskleri gibi dizin tabanlı ve seyrek veri yapılarını depolamak için idealdir. Örneğin, Azure SQL DB, veritabanı için temeldeki kalıcı depolama olarak sayfa bloblarını kullanır. Ayrıca, sayfa Blobları genellikle Range-Based güncelleştirmeleri olan dosyalar için de kullanılır.  
 
 Azure sayfa bloblarının temel özellikleri, REST arabirimidir, temeldeki depolamanın dayanıklılığı ve Azure 'a sorunsuz geçiş özellikleri sağlar. Bu özellikler, sonraki bölümde daha ayrıntılı olarak ele alınmıştır. Ayrıca, Azure sayfa Blobları Şu anda iki tür depolama üzerinde desteklenmektedir: Premium Depolama ve standart depolama. Premium Depolama özellikle yüksek performans ve düşük gecikme gerektiren iş yükleri için tasarlanmıştır ve Premium sayfa Blobları yüksek performanslı depolama senaryoları için idealdir. Standart depolama hesapları, gecikme süresine duyarsız iş yüklerini çalıştırmaya daha uygun maliyetli bir hesapdır.
 
-## <a name="sample-use-cases"></a>Örnek kullanım örnekleri
+## <a name="sample-use-cases"></a>Kullanım örnekleri
 
 Azure IaaS disklerinden başlayarak sayfa Blobları için birkaç kullanım durumu tartışalım. Azure sayfa Blobları, Azure IaaS için sanal diskler platformunun omurgası. Hem Azure işletim sistemi hem de veri diskleri, verilerin Azure depolama platformunda sürekli olarak kalıcı olduğu sanal diskler olarak uygulanır ve daha sonra en yüksek performans için sanal makinelere dağıtılır. Azure diskleri, Hyper-V [VHD biçiminde](https://technet.microsoft.com/library/dd979539.aspx) kalıcı hale getirilir ve Azure Storage 'da bir [Sayfa Blobu](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) olarak depolanır. Sayfa Blobları, Azure IaaS VM 'Leri için sanal disklerin kullanılmasına ek olarak, SQL verilerini depolamak için şu anda sayfa Blobları kullanan PaaS ve DBaaS senaryolarını da etkinleştirir ve bu veritabanı için hızlı rastgele okuma yazma işlemlerini etkinleştirir. Ortak video düzenlemesi uygulamalarına yönelik paylaşılan medya erişimi için bir PaaS hizmetiniz varsa, sayfa Blobları medyadaki rastgele konumlara hızlı erişim sağlar. Aynı medyayı birden çok kullanıcı tarafından hızlı ve verimli bir şekilde düzenlemenizi ve birleştirmeyi de sağlar. 
 
@@ -90,7 +90,7 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Oluşturulduktan sonra bir sayfa blobunu yeniden boyutlandırmak için, [Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) yöntemini kullanın. İstenen boyut, 512 baytlık bir katı olmalıdır.
+Oluşturulduktan sonra bir sayfa blobunu yeniden boyutlandırmak için, [Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize) yöntemini kullanın. İstenen boyut, 512 baytlık bir katı olmalıdır.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: jeedes
 ms.openlocfilehash: 7d2dc1d5d02f1a371d6d94f9eeddf395d49126d7
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620146"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Öğretici: F5 BIG-IP APM ile Oracle PeopleSoft ile korunan çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -73,8 +73,8 @@ F5 BIG-IP APM tarafından Oracle PeopleSoft-Protected ile Azure AD SSO 'yu yapı
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[F5 BIG-IP APM SSO Ile Oracle PeopleSoft-Protected](#configure-oracle-peoplesoft-protected-by-f5-big-ip-apm-sso)** ' i yapılandırın.
-    1. **[F5 Big-IP APM test kullanıcısına göre Oracle PeopleSoft-Protected](#create-oracle-peoplesoft-protected-by-f5-big-ip-apm-test-user)** ' y i, kullanıcının Azure AD gösterimine bağlı olan F5 BIG-IP APM 'de B. Simon 'a sahip olmak için
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[F5 BIG-IP APM SSO Ile Oracle PeopleSoft-Protected yapılandırın](#configure-oracle-peoplesoft-protected-by-f5-big-ip-apm-sso)** .
+    1. **[F5 Big-IP APM test kullanıcısına göre oracle PeopleSoft-Protected oluşturun](#create-oracle-peoplesoft-protected-by-f5-big-ip-apm-test-user)** , bu, kullanıcının Azure AD gösterimine bağlı olan F5 BIG-IP APM 'de B. Simon 'a sahip olacak şekilde
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
@@ -100,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<FQDN>.peoplesoft.f5.com/`
 
     > [!NOTE]
-    >Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı, yanıt URL 'si ve oturum kapatma URL 'SI ile güncelleştirin. Değeri almak için [F5 büyük-IP APM istemci destek ekibi tarafından Oracle PeopleSoft Ile korunan ile](https://support.f5.com) iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    >Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı, yanıt URL 'si ve oturum kapatma URL 'SI ile güncelleştirin. Değeri almak için [F5 büyük-IP APM istemci destek ekibi tarafından Oracle PeopleSoft Ile korunan ile](https://support.f5.com) iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. F5 BIG-IP APM uygulaması, Oracle PeopleSoft tarafından korunan belirli bir biçimde SAML onayları bekler, bu da SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektirir. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -108,7 +108,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, F5 büyük-IP APM uygulaması tarafından korunan Oracle PeopleSoft, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Ad |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ------------------ | --------- |
     | EMPLıD | User. EmployeeID |
 
@@ -140,7 +140,7 @@ Bu bölümde, F5 BIG-IP APM tarafından Oracle PeopleSoft ile korunan erişimi v
 1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-oracle-peoplesoft-protected-by-f5-big-ip-apm-sso"></a>F5 BIG-IP APM SSO ile Oracle PeopleSoft-Protected 'ı yapılandırma
+## <a name="configure-oracle-peoplesoft-protected-by-f5-big-ip-apm-sso"></a>F5 büyük-IP APM SSO ile Oracle PeopleSoft-Protected yapılandırma
 
 ### <a name="f5-saml-sp-configuration"></a>F5 SAML SP yapılandırması
 
@@ -259,25 +259,25 @@ Yeni bir kullanıcı profili oluşturmak için Kullanıcı profillerine **> Peop
 
 ## <a name="setting-up-f5-big-ip-apm-to-populate-ps_sso_uid-http-header-with-the-peoplesoft-user-id"></a>F5 Big-IP APM 'yi ayarlama, "PS_SSO_UID" HTTP üst bilgisini PeopleSoft Kullanıcı KIMLIĞIYLE doldurmak için
 
-### <a name="configuring-per-request-policy"></a>Istek başına Ilkeyi yapılandırma
-1. **Erişim > profil/ilkeler > Istek başına ilkeleri**' ne gidin, **Oluştur**' a tıklayın, aşağıdaki bilgileri doldurun ve **bitti**' ye tıklayın.
+### <a name="configuring-per-request-policy"></a>Per-Request Ilkesini yapılandırma
+1. **> profile/ilkelerine > erişim Per-Request ilkeleri**' ne gidin, **Oluştur**' a tıklayın, aşağıdaki bilgileri doldurun ve **bitti**' ye tıklayın.
 
     * Ad: `<Name>`
     * Profil türü: tümü
     * Diller: `<Language>`
 
-    ![Istek başına Ilkeyi yapılandırma ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/per-request.png)
+    ![Per-Request Ilkesini yapılandırma ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/per-request.png)
 
-1. Istek başına Ilkeyi **Düzenle** ' ye tıklayın `<Name>` ![ Istek başına ilkeyi Düzenle PeopleSoftSSO ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-sso.png)
+1. Per-Request Ilkeyi **Düzenle** ' ye tıklayın `<Name>` ![ Per-Request ilkesini Düzenle PeopleSoftSSO ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-sso.png)
 
     `Header Name: <Header Name>`   
     `Header Value: <Header Value>`
 
-### <a name="assign-per-request-policy-to-the-virtual-server"></a>Istek başına Ilkeyi sanal sunucuya atama
+### <a name="assign-per-request-policy-to-the-virtual-server"></a>Sanal sunucuya Per-Request Ilkesi atama
 
-Sanal **sunucular > sanal sunucu listesini > yerel trafiğe gidin >** `<Name>` istek başına ilke olarak belirtin
+Sanal **sunucular > sanal sunucu listesini > yerel trafiğe gidin >** `<Name>` Per-Request ilkesi olarak belirtin
 
-![Istek başına PeopleSoftSSO as Ilkesi ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-sso-1.png)
+![Per-Request Ilke olarak PeopleSoftSSO ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-sso-1.png)
 
 ## <a name="setting-up-f5-big-ip-apm-to-support-single-logout-from-peoplesoft-application"></a>PeopleSoft uygulamasından çoklu oturum kapatma desteği için F5 Big-IP APM ayarlanıyor
 
@@ -311,9 +311,9 @@ Tüm PeopleSoft kullanıcıları için çoklu oturum kapatma desteği eklemek i�
         ![_iRule_PeopleSoftApp bitti](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/common-irule.png)
 
 
-### <a name="create-oracle-peoplesoft-protected-by-f5-big-ip-apm-test-user"></a>F5 BIG-IP APM test kullanıcısı tarafından Oracle PeopleSoft korumalı oluşturma
+### <a name="create-oracle-peoplesoft-protected-by-f5-big-ip-apm-test-user"></a>F5 BIG-IP APM test kullanıcısı tarafından Oracle PeopleSoft-Protected oluşturma
 
-Bu bölümde, F5 büyük-IP APM tarafından Oracle PeopleSoft-protected ' de B. Simon adlı bir Kullanıcı oluşturacaksınız. F5 Big-IP APM platformu tarafından Oracle PeopleSoft tarafından korunan kullanıcıları eklemek için [F5 büyük-IP APM destek ekibi tarafından Oracle PeopleSoft Ile korunan](https://support.f5.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, F5 büyük-IP APM tarafından PeopleSoft-Protected Oracle 'da B. Simon adlı bir Kullanıcı oluşturacaksınız. F5 Big-IP APM platformu aracılığıyla Oracle PeopleSoft-Protected kullanıcıları eklemek için [F5 büyük-IP APM destek ekibi tarafından oracle PeopleSoft-Protected](https://support.f5.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -321,15 +321,15 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 #### <a name="sp-initiated"></a>SP başlatıldı:
 
-* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu işlem, oturum akışını başlatabileceğiniz F5 BIG-IP APM oturum açma URL 'sine göre Oracle PeopleSoft-Protected 'a yönlendirilir.  
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu işlem, oturum akışını başlatabileceğiniz F5 BIG-IP APM oturum açma URL 'sine göre Oracle PeopleSoft-Protected yönlendirir.  
 
-* F5 BIG-IP APM oturum açma URL 'sine doğrudan Oracle PeopleSoft-Protected öğesine gidin ve oturum açma akışını buradan başlatın.
+* F5 BIG-IP APM oturum açma URL 'sine doğrudan Oracle PeopleSoft-Protected gidin ve oturum açma akışını buradan başlatın.
 
 #### <a name="idp-initiated"></a>IDP başlatıldı:
 
-* Azure portal ' de **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu AYARLADıĞıNıZ F5 BIG-IP APM tarafından Oracle PeopleSoft-Protected tarafından otomatik olarak oturum açmış olmanız gerekir 
+* Azure portal ' de **Bu uygulamayı test et** ' e tıklayın. SSO 'Yu AYARLADıĞıNıZ F5 BIG-IP APM tarafından Oracle PeopleSoft-Protected otomatik olarak oturum açmış olmanız gerekir 
 
-Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Access panel 'deki F5 BIG-IP APM kutucuğuna tıkladığınızda, SP modunda yapılandırılmışsa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız F5 BIG-IP APM tarafından otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Access panel 'de F5 BIG-IP APM kutucuğuna göre Oracle PeopleSoft-Protected tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız F5 BIG-IP APM 'ye göre Oracle PeopleSoft-Protected otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
 ms.openlocfilehash: 7b11d7f577f0a2ceb7284d9f78ccf83a64c72fd3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89258121"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Tek bit hızlı canlı akış göndermek için kablolu dönüştürme Kodlayıcısı 'nı kullanın
@@ -95,7 +95,7 @@ Bu öğreticide, aşağıdaki çıkış ayarları kullanılır. Bu bölümün ge
 2. **Çıkış sekmesine gidip** çıkış ayarları ' nı seçerek çıktıyı yapılandırın **...**
 
     **Çıktı hedefinin** **RTMP sunucusu**olarak ayarlandığından emin olun.
-3. **Tamam**’a tıklayın.
+3. **Tamam**'a tıklayın.
 4. Ayarlar sayfasında, **hedef** alanı **Azure Media Services**olarak ayarlayın.
 
     Kodlama profili **Azure H. ıbu 16:9 (1280x720)** için önceden seçilmiştir. Bu ayarları özelleştirmek için, açılan kutudan sağ tarafındaki dişli simgesini seçin ve ardından **Yeni önayar**' ı seçin.
@@ -178,5 +178,5 @@ Rehberlik için [sorun giderme](media-services-troubleshooting-live-streaming.md
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

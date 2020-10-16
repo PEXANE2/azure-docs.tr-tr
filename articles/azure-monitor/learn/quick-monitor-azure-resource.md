@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f70994f35148614fb048ed2c3297727d5099b05
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448207"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056523"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Azure kaynağını Izleme
 [Azure izleyici](../overview.md) , verileri oluşturuldukları anda Azure kaynaklarından toplamayı başlatır. Bu hızlı başlangıçta, bir kaynak için otomatik olarak toplanan veriler ve belirli bir kaynak için Azure portal nasıl görüntüleneceği hakkında kısa bir yol sunulmaktadır. Daha sonra, ek verileri toplamak için yapılandırma ekleyebilirsiniz ve aboneliğinizdeki tüm kaynaklar için toplanan verilere erişmek üzere aynı araçları kullanmak için Azure Izleyici menüsüne gidebilirsiniz.
@@ -70,5 +70,5 @@ Etkinlik günlüğü, abonelikteki her bir Azure kaynağı üzerinde işlemler h
 Bu hızlı başlangıçta, Azure Izleyici tarafından otomatik olarak toplanan bir Azure kaynağı için etkinlik günlüğü ve ölçümleri görüntülenir. Etkinlik günlüğünü, [günlük sorguları](../log-query/log-query-overview.md)kullanılarak çözümlenebilecekleri bir Log Analytics çalışma alanında nasıl toplayacağınızı gösteren bir sonraki hızlı başlangıca geçin.
 
 > [!div class="nextstepaction"]
-> [Log Analytics çalışma alanına Azure etkinlik günlüğü gönder]()
+> [Log Analytics çalışma alanına Azure etkinlik günlüğü gönder](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-activity-log-portal)
 

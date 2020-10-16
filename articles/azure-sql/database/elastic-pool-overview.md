@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330800"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastik havuzlar Azure SQL veritabanı 'nda birden çok veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
@@ -176,7 +176,7 @@ Havuzu yapılandırmayı tamamladıktan sonra ' Uygula 'ya tıklayabilir, havuzu
 
 Azure portal, elastik havuzun ve bu havuzun içindeki veritabanlarının kullanımını izleyebilirsiniz. Aynı zamanda esnek havuzunuzdaki bir değişiklik kümesi de oluşturabilir ve tüm değişiklikleri aynı anda gönderebilirsiniz. Bu değişiklikler veritabanlarını ekleme veya kaldırma, elastik havuz ayarlarınızı değiştirme veya veritabanı ayarlarınızı değiştirme içerir.
 
-Elastik havuzunuzu izlemeye başlamak için portalda bir elastik havuz bulun ve açın. Önce esnek havuzunuzun durumuna ilişkin bir genel bakış sunan bir ekran görürsünüz. Buna aşağıdakiler dahildir:
+Elastik havuzunuzu izlemeye başlamak için portalda bir elastik havuz bulun ve açın. Önce esnek havuzunuzun durumuna ilişkin bir genel bakış sunan bir ekran görürsünüz. Şunları içerir:
 
 - Esnek havuzun kaynak kullanımını gösteren grafikleri izleme
 - Elastik havuz için, varsa son uyarılar ve öneriler

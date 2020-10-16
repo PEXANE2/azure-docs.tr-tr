@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 5dc8bf670e14d8a44b10b8093d786091791ae793
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186816"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Portalı kullanarak Application Gateway için özel bir araştırma oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure portalındaki](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -34,7 +34,7 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
 
 ### <a name="enter-probe-properties"></a><a name="createprobe"></a>Araştırma özelliklerini girin
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
 
 2. Azure Portal Sık Kullanılanlar bölmesinde, Tüm kaynaklar’a tıklayın. Tüm kaynaklar dikey penceresinde uygulama ağ geçidine tıklayın. Seçili abonelikte zaten çeşitli kaynaklar varsa, DNS bölgesine kolaylıkla erişmek için Ada göre filtrele... kutusuna partners.contoso.net girebilirsiniz.
 
@@ -85,7 +85,7 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
 
 ### <a name="create-the-probe"></a><a name="createprobe"></a>Araştırma oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
 
 2. Azure Portal Sık Kullanılanlar bölmesinde, **Tüm kaynaklar**’ı seçin. **Tüm kaynaklar** sayfasında uygulama ağ geçidini seçin. Seçili abonelikte zaten çeşitli kaynaklar varsa, DNS bölgesine kolaylıkla erişmek için Ada göre filtrele... kutusuna partners.contoso.net girebilirsiniz.
 

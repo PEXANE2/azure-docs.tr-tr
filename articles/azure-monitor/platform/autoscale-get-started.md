@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743531"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
@@ -127,7 +127,7 @@ Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir
 
 #### <a name="security"></a>Güvenlik 
 
-Büyük kuruluşlarda bulunan geliştirme ekipleri, genellikle sunulan API 'Ler için güvenlik gereksinimlerine bağlı kalmalıdır. Healthcheck uç noktasının güvenliğini sağlamak için öncelikle, uygulamaya erişimi kısıtlamak üzere [IP kısıtlamaları](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [istemci sertifikaları](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)veya bir sanal ağ gibi özellikleri kullanmanız gerekir. Gelen isteğin eşleşmesini isteyerek healthcheck uç noktasının kendisini güvenli hale getirebilirsiniz `User-Agent` `ReadyForRequest/1.0` . İstek önceki güvenlik özellikleri tarafından zaten güvenli hale getirildiğinden Kullanıcı Aracısı taklit edilemez.
+Büyük kuruluşlarda bulunan geliştirme ekipleri, genellikle sunulan API 'Ler için güvenlik gereksinimlerine bağlı kalmalıdır. Healthcheck uç noktasının güvenliğini sağlamak için öncelikle, uygulamaya erişimi kısıtlamak üzere [IP kısıtlamaları](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [istemci sertifikaları](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)veya bir sanal ağ gibi özellikleri kullanmanız gerekir. Gelen isteğin eşleşmesini isteyerek healthcheck uç noktasının kendisini güvenli hale getirebilirsiniz `User-Agent` `ReadyForRequest/1.0` . İstek önceki güvenlik özellikleri tarafından zaten güvenli hale getirildiğinden User-Agent taklit edilemez.
 
 ### <a name="behavior"></a>Davranış
 

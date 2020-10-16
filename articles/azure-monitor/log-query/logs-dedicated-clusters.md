@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575529"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996328"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -49,7 +49,7 @@ Bir kümede kullanıma yönelik iki faturalandırma modu vardır. Bu, `billingTy
 
 1. **Küme**: Bu durumda (varsayılan), alınan verilerin faturalandırılması küme düzeyinde yapılır. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. 
 
-2. **Çalışma alanları**: kümenizin kapasite ayırma maliyeti, kümedeki çalışma alanlarıyla orantılı olarak atanır (her çalışma alanı Için [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'nden düğüm başına ayırmalar için hesap oluşturulduktan sonra).
+2. **Çalışma alanları**: kümenizin kapasite ayırma maliyeti, kümedeki çalışma alanlarıyla orantılı olarak atanır (her çalışma alanı Için [Azure Güvenlik Merkezi](../../security-center/index.yml) 'nden düğüm başına ayırmalar için hesap oluşturulduktan sonra).
 
 Çalışma alanınız düğüm başına eski fiyatlandırma katmanını kullanıyorsa, bir kümeye bağlandığında kümenin kapasite rezervasyonuna ve düğüm başına artık olmayan verilere göre faturalandırılır. Azure Güvenlik Merkezi 'nden düğüm başına veri ayırmaları uygulanmasına devam edilecek.
 
@@ -116,7 +116,7 @@ Content-type: application/json
 
 Log Analytics kümesinin sağlanması bir süre sürer. Sağlama durumunu çeşitli yollarla kontrol edebilirsiniz:
 
-- Get-Azoperationalınsightscluster PowerShell komutunu kaynak grubu adıyla çalıştırın ve ProvisioningState özelliğini denetleyin. Bu değer, sağlama sırasında *Provisioningaccount* ve tamamlandığında *başarılı* olur.
+- Get-AzOperationalInsightsCluster PowerShell komutunu kaynak grubu adıyla çalıştırın ve ProvisioningState özelliğini denetleyin. Bu değer, sağlama sırasında *Provisioningaccount* ve tamamlandığında *başarılı* olur.
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
@@ -182,7 +182,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 > [!NOTE]
 > Düzeltme ekini kullanarak *cluster* kaynak *SKU 'su*, *Keyvaultproperties* veya *billingtype* 'ı güncelleştirebilirsiniz.
 
-Örneğin: 
+Örnek: 
 
 *Call*
 
@@ -321,7 +321,7 @@ Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, alınan veriler i
 
 - Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve zaman uyumsuz işlemler durum denetimini izleyin.
 
-- [Çalışma alanları gönderin – Isteği alın](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) ve yanıtı gözlemleyin. İlişkili çalışma alanında "Özellikler" altında bir Clusterresourceıd vardır.
+- [Çalışma alanları gönderin – Isteği alın](/rest/api/loganalytics/workspaces/get) ve yanıtı gözlemleyin. İlişkili çalışma alanında "Özellikler" altında bir Clusterresourceıd vardır.
 
 Gönderme isteği aşağıdakine benzer:
 

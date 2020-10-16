@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: Azure portal sorguları yönetme'
 description: Bu öğreticide, bir kaynak grafiği sorgusu oluşturur ve yeni sorguyu Azure portal başkalarıyla paylaşabilirsiniz.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: tutorial
-ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005174"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057935"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Öğretici: Azure portal Azure Kaynak Grafiği sorgusu oluşturma ve paylaşma
 
@@ -60,8 +60,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
 
 ## <a name="create-a-shared-query"></a>Paylaşılan sorgu oluşturma
 
-Özel bir sorgunun aksine, paylaşılan bir sorgu Kaynak Yöneticisi kaynağıdır. Bu olgu, sorgunun bir kaynak grubuna kaydedildiği, Azure RBAC ile yönetilebilecek ve denetlenebileceği, hatta kaynak kilitleri ile korunabilecek anlamına gelir. Kaynak olarak, uygun izinlere sahip olan herkes onu görebilir ve kullanabilir.
-Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
+Özel bir sorgunun aksine, paylaşılan bir sorgu Kaynak Yöneticisi kaynağıdır. Bu olgu, sorgunun bir kaynak grubuna kaydedildiği, Azure RBAC ile yönetilebilecek ve denetlenebileceği, hatta kaynak kilitleri ile korunabilecek anlamına gelir. Kaynak olarak, uygun izinlere sahip olan herkes onu görebilir ve kullanabilir. Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
 
 1. Portal menüsünde **tüm hizmetler**' i seçin veya **kaynak grafik Gezgini**' ni aramak ve seçmek için tüm sayfaların en üstündeki Azure Arama kutusunu kullanın.
 
@@ -107,7 +106,7 @@ Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
 
 Paylaşılan bir sorgu Kaynak Yöneticisi kaynak olduğundan, bir tane bulmak için çeşitli yollar vardır:
 
-- Kaynak Grafiği Gezgini ' nden **bir sorgu aç** ' ı seçin ve türü **paylaşılan sorgu**olarak ayarlayın.
+- Kaynak grafik Gezgini ' nden. **Sorgu aç** ' ı seçin ve türü **paylaşılan sorgu**olarak ayarlayın.
 - Kaynak Grafiği sorguları portalı sayfasından.
 - Paylaşılan sorgunun kaydedildiği kaynak grubundan.
 - Kaynak grafiğine bir sorgu üzerinden.

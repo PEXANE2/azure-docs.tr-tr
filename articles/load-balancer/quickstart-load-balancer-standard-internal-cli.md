@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: dc6abc51fd0e5669126f1d2f1a977194479db5f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df1db5467dadcd127141708fa33147769f1f50a7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91269888"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047888"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
@@ -826,7 +826,7 @@ Sanal makineyi [az VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure
 ```
 Sanal makinenin dağıtılması birkaç dakika sürebilir.
 
-### <a name="test"></a>Test
+### <a name="test"></a>Test etme
 
 1. Azure portalında [oturum açın](https://portal.azure.com).
 
@@ -865,6 +865,6 @@ Bu hızlı başlangıçta
 * Yük dengeleyici trafik kuralı ve sistem durumu araştırması yapılandırıldı.
 * Yük dengeleyici test edildi.
 
-Azure Load Balancer hakkında daha fazla bilgi edinmek için [Azure Load Balancer nedir?](load-balancer-overview.md) ve [sık sorulan sorular Load Balancer](load-balancer-faqs.md).
-
-[Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.
+Azure Load Balancer hakkında daha fazla bilgi edinmek için devam edin 
+> [!div class="nextstepaction"]
+> [Azure Load Balancer nedir?](load-balancer-overview.md)

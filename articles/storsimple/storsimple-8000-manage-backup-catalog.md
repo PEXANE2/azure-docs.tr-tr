@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 549c14e0506613aca91ee4666026348d74afedbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514755"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961604"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>StorSimple Aygıt Yöneticisi hizmetini kullanarak yedekleme kataloğunuzu yönetin
 ## <a name="overview"></a>Genel Bakış
@@ -75,11 +75,11 @@ Bir birim veya yedekleme ilkesi için bir yedekleme kümesi seçmek üzere aşa�
       
       Seçilen birim veya yedekleme ilkesiyle ilişkili yedeklemeler, yedekleme kümeleri listesinde görünmelidir.
 
-      ![Yedekleme kataloğuna git](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Yedekleme kataloğu 2 ' ye git](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 3. Bir yedekleme kümesi seçin ve genişletin. Artık içerdiği birimler tarafından ayrılmış yedekleme kümelerini görebilirsiniz. **Geri yükleme** ve **silme** seçenekleri, yedekleme kümesi için bağlam menüsü (sağ tıklama) yoluyla kullanılabilir. Seçtiğiniz yedekleme kümesinde bu eylemlerden birini gerçekleştirebilirsiniz.
 
-    ![Yedekleme kataloğuna git](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![Yedekleme kataloğu 3 ' e git](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>Bir yedekleme kümesini silme
 Artık onunla ilişkili verileri sürdürmek istemediğiniz zaman bir yedeği silin. Bir yedekleme kümesini silmek için aşağıdaki adımları gerçekleştirin.
@@ -95,19 +95,19 @@ Artık onunla ilişkili verileri sürdürmek istemediğiniz zaman bir yedeği si
       
       Seçilen birim veya yedekleme ilkesiyle ilişkili yedeklemeler, yedekleme kümeleri listesinde görünmelidir.
 
-      ![Yedekleme kataloğuna git](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Yedekleme kataloğu 4 ' e git](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 1. Bir yedekleme kümesi seçin ve genişletin. Artık içerdiği birimler tarafından ayrılmış yedekleme kümelerini görebilirsiniz. **Geri yükleme** ve **silme** seçenekleri, yedekleme kümesi için bağlam menüsü (sağ tıklama) yoluyla kullanılabilir. Seçili yedekleme kümesine sağ tıklayın ve bağlam menüsünden **Sil**' i seçin.
 
-    ![Yedekleme kataloğuna git](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![Yedekleme kataloğuna git 5](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
 1. Onay istendiğinde, görünen bilgileri gözden geçirin ve **Sil**' e tıklayın. Seçilen yedekleme kalıcı olarak silindi.
 
-    ![Yedekleme kataloğuna git](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![Yedekleme kataloğuna git 6](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
 1. Silme işlemi devam ederken ve başarıyla tamamlandığında size bildirilir. Silme işlemi tamamlandıktan sonra, bu sayfadaki sorguyu yenileyin. Silinen yedekleme kümesi artık yedekleme kümeleri listesinde gözükmeyecektir.
 
-    ![Yedekleme kataloğuna git](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![Yedekleme kataloğuna git 7](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Yedekleme [kataloğunu kullanarak cihazınızı bir yedekleme kümesinden geri yükleme](storsimple-8000-restore-from-backup-set-u2.md)hakkında bilgi edinin.

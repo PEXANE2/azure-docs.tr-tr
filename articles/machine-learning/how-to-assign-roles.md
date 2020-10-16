@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893403"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966415"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -66,6 +66,22 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning işlemler
 
 Birçok işlem ve görev için yerleşik Eylemler Azure Machine Learning. Tüm liste için bkz. [Azure Kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+
+## <a name="mlflow-operations-in-azure-machine-learning"></a>Azure Machine Learning 'de MLflow işlemleri
+
+Bu tablolar, MLflow işlemlerini gerçekleştirmek için oluşturulan özel roldeki eylemlere eklenmesi gereken izin kapsamını açıklar.
+
+| MLflow işlemi | Kapsam |
+| --- | --- |
+| Çalışma alanı izleme deposundaki tüm denemeleri Listele, kimliğe göre bir deneme al, ada göre bir deneme al | Microsoft. MachineLearningServices/Workspaces/denemeleri/Read |
+| Ad ile bir deneme oluşturun, bir deneyde etiket ayarlayın, silme için işaretlenen bir denemeyi geri yükleyin| Microsoft. MachineLearningServices/Workspaces/denemeleri/Write | 
+| Deneme silme | Microsoft. MachineLearningServices/Workspaces/denemeleri/Delete |
+| Çalıştırma ve ilgili verileri ve meta verileri alın, belirli bir çalıştırma için belirtilen ölçüm için tüm değerlerin bir listesini alın, bir çalıştırma için yapıları listeleyin | Microsoft. MachineLearningServices/Workspaces/denemeleri/çalıştırmalar/Read |
+| Deneme içinde yeni bir çalıştırma oluşturma, silme çalıştırmaları, silinen çalıştırmaları geri yükleme, geçerli çalışma altında Etiketleri ayarlama, bir çalıştırmada etiket ayarlama, bir çalıştırma için kullanılan etiketleri silme, günlük parametreleri (anahtar-değer çifti), bir çalıştırma için kullanılan bir toplu işlem, parametreleri ve etiketi günlüğe kaydetme, çalışma durumunu güncelleştirme | Microsoft. MachineLearningServices/Workspaces/denemeleri/çalıştırmalar/Write |
+| Ada göre kayıtlı model al, kayıt defterindeki tüm kayıtlı modellerin bir listesini getirin, kayıtlı modeller için arama yapın, her bir istek için en son sürüm modellerini bulun, kayıtlı bir modelin sürümünü, arama modeli sürümlerini alın, bir model sürümünün bulunduğu URI 'yi alın, deneme kimliklerine göre çalıştırmaları arayın | Microsoft. MachineLearningServices/çalışma alanları/modeller/okuma |
+| Yeni bir kayıtlı model oluşturma, kayıtlı bir modelin adını/açıklamasını güncelleştirme, var olan kayıtlı modeli yeniden adlandırma, modelin yeni sürümü oluşturma, model sürümünün açıklamasını güncelleştirme, kayıtlı bir modeli aşamaların birine geçirme | Microsoft. MachineLearningServices/çalışma alanları/modeller/yazma |
+| Kayıtlı bir modeli tüm sürümüyle birlikte silme, kayıtlı bir modelin belirli sürümlerini silme | Microsoft. MachineLearningServices/çalışma alanları/modeller/silme |
+
 
 ## <a name="create-custom-role"></a>Özel rol oluştur
 
@@ -141,7 +157,7 @@ Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en 
 | Ardışık düzen uç noktası yayımlama | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | AKS/ACI kaynağına kayıtlı model dağıtma | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Dağıtılan bir AKS uç noktasına göre Puanlama | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Azure Active Directory kimlik doğrulaması kullanmadığınız zaman) veya `"/workspaces/read"` (belirteç kimlik doğrulamasını kullanırken) |
-| Etkileşimli not defterleri kullanarak depolamaya erişme | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Etkileşimli not defterleri kullanarak depolamaya erişme | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
 | Yeni özel rol oluştur | Sahip, katkıda bulunan veya özel rol `Microsoft.Authorization/roleDefinitions/write` | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/computes/write` |
 
 > [!TIP]
@@ -253,6 +269,46 @@ Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabilece
         ]
     }
     ```
+     
+* __Mlflow veri Bilimcst özel__: şu **durumlar dışında**, veri Bilimclarının tüm mlflow AzureML desteklenen işlemlerini gerçekleştirmesine izin verir:
+
+   * İşlem oluşturma
+   * Bir üretim AKS kümesine model dağıtma
+   * Üretimde bir işlem hattı uç noktası dağıtma
+
+   `mlflow_data_scientist_custom_role.json` :
+   ```json
+   {
+        "Name": "MLFlow Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/experiments/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/delete",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/models/read",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/models/delete"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+     "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```   
 
 * __Mlops Custom__: bir hizmet sorumlusuna rol atamanıza ve MLOps işlem hatlarınızı otomatikleştirmek için bunu kullanmanıza olanak sağlar. Örneğin, önceden yayımlanmış bir işlem hattına karşı çalıştırmaları göndermek için:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42024fc506de7befed7c44ebcc410756b6f43a35
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282111"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078995"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Yerel geliştirme için bağımlılıkları dağıtma
 
@@ -24,7 +24,7 @@ Bu makalede, yalnızca yerel geliştirme ve hata ayıklama işlemleri için gere
 
 ## <a name="deploy-azure-platform-services"></a>Azure platform hizmetleri 'ni dağıtma
 
-1. PowerShell ve [Azurerd PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) uzantılarının yüklü olduğundan emin olun.  Bir komut istemi veya Terminal açın ve şunu çalıştırın:
+1. PowerShell ve [Azurerd PowerShell](/powershell/azure/azurerm/install-azurerm-ps) uzantılarının yüklü olduğundan emin olun.  Bir komut istemi veya Terminal açın ve şunu çalıştırın:
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components

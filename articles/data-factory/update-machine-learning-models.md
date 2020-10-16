@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092550"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak Azure Machine Learning Studio (klasik) modellerini güncelleştirme
@@ -61,13 +61,13 @@ Aşağıdaki JSON kod parçacığı Azure Machine Learning Studio (klasik) toplu
 
 | Özellik                      | Açıklama                              | Gerekli |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | İşlem hattındaki etkinliğin adı     | Yes      |
+| name                          | İşlem hattındaki etkinliğin adı     | Evet      |
 | açıklama                   | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| tür                          | Azure Machine Learning Studio (klasik) kaynak güncelleştirme etkinliği için etkinlik türü **AzureMLUpdateResource**' dir. | Yes      |
-| linkedServiceName             | UpdateResourceEndpoint özelliği içeren Azure Machine Learning Studio (klasik) bağlı hizmet. | Yes      |
-| Traınedmodelname              | Web hizmeti denemesinde güncellenmek üzere eğitilen model modülünün adı | Yes      |
-| Traınedmodellinkedservicename | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını tutan Azure depolama bağlı hizmetinin adı | Yes      |
-| Traınedmodelfilepath          | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını temsil etmek için Traınedmodellinkedservice içindeki göreli dosya yolu | Yes      |
+| tür                          | Azure Machine Learning Studio (klasik) kaynak güncelleştirme etkinliği için etkinlik türü  **AzureMLUpdateResource**' dir. | Evet      |
+| linkedServiceName             | UpdateResourceEndpoint özelliği içeren Azure Machine Learning Studio (klasik) bağlı hizmet. | Evet      |
+| Traınedmodelname              | Web hizmeti denemesinde güncellenmek üzere eğitilen model modülünün adı | Evet      |
+| Traınedmodellinkedservicename | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını tutan Azure depolama bağlı hizmetinin adı | Evet      |
+| Traınedmodelfilepath          | Güncelleştirme işlemi tarafından karşıya yüklenen ilearner dosyasını temsil etmek için Traınedmodellinkedservice içindeki göreli dosya yolu | Evet      |
 
 ## <a name="end-to-end-workflow"></a>Uçtan uca iş akışı
 
@@ -198,7 +198,7 @@ Aşağıdaki JSON kod parçacığı, Puanlama Web hizmetinin güncelleştirilebi
 }
 ```
 
-### <a name="pipeline"></a>İşlem hattı
+### <a name="pipeline"></a>İşlem Hattı
 İşlem hattının iki etkinliği vardır: **AzureMLBatchExecution** ve **AzureMLUpdateResource**. Toplu yürütme etkinliği eğitim verilerini giriş olarak alır ve çıkış olarak bir iLearner dosyası üretir. Kaynağı Güncelleştir etkinliği daha sonra bu iLearner dosyasını alır ve tahmine dayalı Web hizmetini güncelleştirmek için onu kullanır.
 
 ```JSON

@@ -4,10 +4,10 @@ description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kull
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986507"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
@@ -149,7 +149,7 @@ Aşağıda verilen şekilde **yedekleme işi** ayrıntıları bölmesinden denet
 
 **Anlık Görüntü** | **Verileri kasaya aktar** | **İş Durumu**
 --- | --- | ---
-Tamamlandı | Sürüyor | Sürüyor
+Tamamlandı | Devam ediyor | Devam ediyor
 Tamamlandı | Atlandı | Tamamlandı
 Tamamlandı | Tamamlandı | Tamamlandı
 Tamamlandı | Başarısız | Uyarıyla tamamlandı

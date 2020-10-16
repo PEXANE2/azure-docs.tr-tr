@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e04f6120f7d9a5646a3b30553b5083c5259acae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b3817bd33c72ce6d1c3426aa8379101c84f5bc5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499645"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961519"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Öğretici: Azure CLI ile yüksek oranda kullanılabilir sanal makineler oluşturma ve dağıtma
 
 Bu öğreticide, Kullanılabilirlik Kümeleri adlı bir özellik kullanarak Azure’da Sanal Makine çözümlerinizin kullanılabilirlik ve güvenilirliğini nasıl artıracağınızı öğreneceksiniz. Kullanılabilirlik kümeleri, Azure’da dağıttığınız VM’lerin birden fazla yalıtılmış donanım kümesi arasında dağıtılmasını sağlar. Böylece, Azure’da bir donanım veya yazılım hatası oluşursa yalnızca sanal makinelerinizin bir alt kümesinin etkilenmesi ve genel çözümünüzün kullanılabilir ve çalışır durumda kalması sağlanır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kullanılabilirlik kümesi oluşturma
@@ -116,5 +116,5 @@ Sanal makine ölçek kümeleri hakkında daha fazla bilgi edinmek için sonraki 
 > [Sanal makine ölçek kümesi oluşturma](tutorial-create-vmss.md)
 
 * Kullanılabilirlik bölgeleri hakkında daha fazla bilgi edinmek için  [kullanılabilirlik alanları belgelerini](../../availability-zones/az-overview.md)ziyaret edin.
-* Hem kullanılabilirlik kümeleri hem de kullanılabilirlik bölgeleri hakkında daha fazla belgeye de [ulaşabilirsiniz.](./manage-availability.md)
+* Hem kullanılabilirlik kümeleri hem de kullanılabilirlik bölgeleri hakkında daha fazla belgeye de [ulaşabilirsiniz.](../manage-availability.md)
 * Kullanılabilirlik bölgelerini denemek için [Azure CLI ile bir kullanılabilirlik alanında Linux sanal makinesi oluşturma](./create-cli-availability-zone.md) sayfasını ziyaret edin

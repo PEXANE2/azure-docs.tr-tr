@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 8eafd99f07c64c20565a954216341f3dea9541b0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442661"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework ile elastik veritabanı istemci kitaplığı
@@ -271,7 +271,7 @@ Bunlardan biri, temel sınıftan devralınan oluşturucunun sürümünü kullanm
 Bu belgede özetlenen yaklaşımların birkaç sınırlaması vardır:
 
 * **LocalDB** kullanan EF uygulamalarının, elastik veritabanı istemci kitaplığını kullanmadan önce düzenli bir SQL Server veritabanına geçirilmesi gerekir. **LocalDB**ile bir uygulamanın esnek ölçeğe sahip bir şekilde ölçeklendirilmesi mümkün değildir. Geliştirme, **LocalDB**kullanmaya devam edebilir.
-* Uygulamadaki tüm değişikliklerin, veritabanı şeması değişikliklerinin tüm parçalar üzerinde EF geçişlerinde olması gerekir. Bu belgenin örnek kodu bunun nasıl yapılacağını göstermez. Tüm parçaları yinelemek için Update-Database ConnectionString parametresiyle birlikte kullanmayı düşünün; veya-script seçeneğiyle Update-Database ' i kullanarak bekleyen geçiş için T-SQL betiğini ayıklayın ve T-SQL betiğini parçalara uygulayın.  
+* Uygulamadaki tüm değişikliklerin, veritabanı şeması değişikliklerinin tüm parçalar üzerinde EF geçişlerinde olması gerekir. Bu belgenin örnek kodu bunun nasıl yapılacağını göstermez. Tüm parçalar üzerinde yinelemek için ConnectionString parametresiyle Update-Database kullanmayı düşünün; ya da-Script seçeneğiyle Update-Database kullanarak bekleyen geçiş için T-SQL betiğini ayıklayın ve T-SQL betiğini parçalara uygulayın.  
 * İstek verildiğinde, tüm veritabanı işlemlerinin, istek tarafından sağlanan parçalı anahtar tarafından tanımlanan tek bir parça içinde bulunduğu varsayılır. Ancak, bu varsayım her zaman true olarak bulunmaz. Örneğin, bir parça anahtarı kullanılabilir hale getirmek mümkün olmadığında. Bu, istemci kitaplığı, çeşitli parçaları sorgulamak için bağlantı soyutlaması uygulayan **Multishardquery** sınıfını sağlar. EF ile birlikte **Multishardquery** kullanmayı öğrenmek bu belgenin kapsamının ötesinde
 
 ## <a name="conclusion"></a>Sonuç

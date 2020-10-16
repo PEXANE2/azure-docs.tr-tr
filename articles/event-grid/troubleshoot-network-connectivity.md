@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
 ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119013"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Bağlantı sorunlarını giderme-Azure Event Grid
@@ -61,7 +61,7 @@ Uygulamanız bir alt ağ içinde çalışıyorsa ve ilişkili bir ağ güvenlik 
 
 Uygulamanın üzerinde çalıştığı makinenin genel IP adresinin EventGrid konusu/etki alanı IP güvenlik duvarı tarafından engellenmediğinden emin olun.
 
-Varsayılan olarak, Event Grid konular/etki alanları, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
+Varsayılan olarak, Event Grid konular/etki alanları, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz.
 
 IP güvenlik duvarı kuralları Event Grid konusu/etki alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Event Grid konusu/etki alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yasaklanmış olarak reddedilir. Yanıt, IP kuralından bahsetmiyor.
 

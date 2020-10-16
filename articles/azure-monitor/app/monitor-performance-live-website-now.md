@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91758672"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
@@ -40,14 +40,14 @@ Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
-| **Özel durumları & istekleri** |Yes |Yes |
-| **[Daha ayrıntılı özel durumlar](./asp-net-exceptions.md)** | |Yes |
+| **Özel durumları & istekleri** |Evet |Evet |
+| **[Daha ayrıntılı özel durumlar](./asp-net-exceptions.md)** | |Evet |
 | **[Bağımlılık tanılama](./asp-net-dependencies.md)** |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| **[Sistem performans sayaçları](./performance-counters.md)** |Yes |Yes |
-| **[Özel telemetri için API][api]** |Yes |Hayır |
-| **[İzleme günlüğü tümleştirmesi](./asp-net-trace-logs.md)** |Yes |Hayır |
-| **[Sayfa görüntüleme & Kullanıcı verileri](./javascript.md)** |Yes |Hayır |
-| **Kodu yeniden derlemeniz gerekir** |Yes | Hayır |
+| **[Sistem performans sayaçları](./performance-counters.md)** |Evet |Evet |
+| **[Özel telemetri için API][api]** |Evet |Hayır |
+| **[İzleme günlüğü tümleştirmesi](./asp-net-trace-logs.md)** |Evet |Hayır |
+| **[Sayfa görüntüleme & Kullanıcı verileri](./javascript.md)** |Evet |Hayır |
+| **Kodu yeniden derlemeniz gerekir** |Evet | Hayır |
 
 
 
@@ -295,7 +295,7 @@ Durum İzleyicisi'ni kullanarak yalnızca çalışma zamanında izlediğiniz uyg
 
 * HTTP istekleri
 * Bağımlılık çağrıları
-* Özel durumlar
+* Özel Durumlar
 * Performans sayaçları
 
 Derleme zamanında zaten izlenmekte olan uygulamalar için:

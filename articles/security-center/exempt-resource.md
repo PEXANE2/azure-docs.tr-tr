@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532559"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Önerilerden ve güvenli puanın kaynağını muaf tutma
@@ -33,7 +33,7 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 |Yayın durumu:|Önizleme|
 |Fiyat|Bu, Azure Defender müşterileri için ek ücret ödemeden sunulan bir Premium Azure ilke özelliğidir. Diğer kullanıcılar için ücretler gelecekte uygulanabilir.|
 |Gerekli roller ve izinler:|Muafiyet oluşturmak için **abonelik sahibi** veya **ilke katılımcısı**<br>Bir kural oluşturmak için Azure Ilkesinde ilkeleri düzenleme izinlerinizin olması gerekir.<br>Azure [Ilkesinde Azure RBAC izinleri](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)hakkında daha fazla bilgi edinin.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -50,7 +50,7 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 1. Ölçütlerinizi girin ve bu kaynağın neden dışlandığı için bir ölçüt seçin:
     - **Azaltıldığında** , bu sorun, önerilenden farklı bir araç veya işlem tarafından işlendiği için kaynakla ilgili değildir
     - **Feragat aldığınız** -bu kaynak için risk kabul ediliyor
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 1. Bir süre sonra (24 saate kadar sürebilir):
     - Kaynak, güvenli puanınızı etkilemez.
     - Kaynak, öneri Ayrıntıları sayfasının **geçerli değil** sekmesinde listelenir

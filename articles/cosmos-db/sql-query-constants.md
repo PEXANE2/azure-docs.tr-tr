@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74873429"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL sorgu sabitlerini Azure Cosmos DB  
@@ -26,10 +26,10 @@ ms.locfileid: "74873429"
 |**Boole**|Değerler: **false**, **true**.|  
 |**Sayı**|Bir çift duyarlıklı kayan noktalı sayı, IEEE 754 standardı.|  
 |**Dize**|Sıfır veya daha fazla Unicode karakterden oluşan bir dizi. Dizeler tek veya çift tırnak içine alınmalıdır.|  
-|**Dizi**|Sıfır veya daha fazla öğe dizisi. Her öğe, **tanımsız**bir değer hariç herhangi bir skaler veri türü değeri olabilir.|  
+|**Dizide**|Sıfır veya daha fazla öğe dizisi. Her öğe, **tanımsız**bir değer hariç herhangi bir skaler veri türü değeri olabilir.|  
 |**Nesne**|Sırasız bir sıfır veya daha fazla ad/değer çifti kümesi. Ad bir Unicode dizesidir, değer **tanımsız**olmayan herhangi bir skaler veri türünde olabilir.|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
+## <a name="syntax"></a><a name="bk_syntax"></a>Sözdizimi
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "74873429"
   
 ```  
   
-##  <a name="arguments"></a><a name="bk_arguments"></a>Değişkenlerinden
+##  <a name="arguments"></a><a name="bk_arguments"></a> Değişkenlerinden
   
 * `<undefined_constant>; Undefined`  
   

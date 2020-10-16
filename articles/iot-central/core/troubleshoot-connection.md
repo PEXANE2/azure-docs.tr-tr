@@ -8,13 +8,13 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322458"
 ---
-# <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdaki verilerin Azure IoT Central neden gösterilmediğini sorun giderme
+# <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdan gelen verilerin Azure IoT Central'da gösterilmemesi sorununu giderme
 
 Bu belge, cihaz geliştiricilerinin cihazların IoT Central ' a gönderdiği verilerin uygulamada gösterilmediğini bulmasına yardımcı olur.
 
@@ -129,9 +129,9 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Cihaz sağlama durumu | Description | Olası risk azaltma |
+| Cihaz sağlama durumu | Açıklama | Olası risk azaltma |
 | - | - | - |
-| Oluşturulamadı | Anında tanınabilir sorun yoktur. | Yok |
+| Sağlanan | Anında tanınabilir sorun yoktur. | Yok |
 | Kaydedildi | Cihaz henüz IoT Central bağlanmadı. | Bağlantı sorunları için cihaz günlüklerinizi denetleyin. |
 | Engellendi | Cihazın IoT Central 'e bağlanması engellendi. | Cihazın IoT Central uygulamasına bağlanması engellendi. IoT Central cihaz engelini kaldırın ve yeniden deneyin. Daha fazla bilgi için bkz. [Cihazları engelleme](concepts-get-connected.md#device-status-values). |
 | Durumdaki | Cihaz onaylanmadı. | Cihaz IoT Central uygulamasına bağlanacak şekilde onaylanmadı. IoT Central cihazı onaylayın ve yeniden deneyin. Daha fazla bilgi için bkz. [cihazları onaylama](concepts-get-connected.md#connect-without-registering-devices) |
@@ -149,7 +149,7 @@ Aşağıdaki tablolarda, genel hata kodları ve hafifletmek için olası eylemle
 
 Kimlik doğrulama akışla ilgili sorunlar görüyorsanız:
 
-| Hata kodu | Description | Olası risk azaltma |
+| Hata kodu | Açıklama | Olası risk azaltma |
 | - | - | - |
 | 400 | İsteğin gövdesi geçerli değil. Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor. | Kanıtlama akışının bir parçası olarak doğru istek gövdesini gönderdiğinizden emin olun veya bir cihaz SDK 'Sı kullanın. |
 | 401 | Yetkilendirme belirteci doğrulanamıyor. Örneğin, süresi sona ermiştir veya isteğin URI 'sine uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | Cihazınızın doğru kimlik bilgilerine sahip olduğundan emin olun. |

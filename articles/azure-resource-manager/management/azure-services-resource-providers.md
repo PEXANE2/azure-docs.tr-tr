@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330834"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949131"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -110,7 +110,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft.Kusto | [Azure Veri Gezgini](/azure/data-explorer/) |
 | Microsoft. LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft. Logic | [Logic Apps](../../logic-apps/index.yml) |
-| Microsoft. Machinöğrenim | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
+| Microsoft. Machinöğrenim | [Machine Learning Studio](../../machine-learning/classic/index.yml) |
 | Microsoft.MachineLearningServices | [Azure Machine Learning](../../machine-learning/index.yml) |
 | Microsoft. Maintenance | [Azure Bakımı](../../virtual-machines/maintenance-control-cli.md) |
 | Microsoft. Managedıdentity | [Azure kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/index.yml) |
@@ -135,7 +135,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. OperationsManagement | [Azure İzleyici](../../azure-monitor/index.yml) |
 | Microsoft. eşleme | [Azure Eşleme Hizmeti](../../peering-service/index.yml) |
 | Microsoft. Poliyelei | [Azure İlkesi](../../governance/policy/index.yml) |
-| Microsoft. Portal<sup>1</sup> | [Azure Portal](../../azure-portal/index.yml) |
+| Microsoft. Portal<sup>1</sup> | [Azure portalı](../../azure-portal/index.yml) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft. Powerbiadanmış | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft. PowerPlatform | [Power Platform](/power-platform/) |
@@ -158,7 +158,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft. Servicefabrickafesi | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
 | Microsoft. Services | çekirdeğin |
-| Microsoft. SignalRService | [Azure SignalR Service](../../azure-signalr/index.yml) |
+| Microsoft. SignalRService | [Azure SignalR Hizmeti](../../azure-signalr/index.yml) |
 | Microsoft. SoftwarePlan | Lisans |
 | Microsoft. Solutions | [Azure Yönetilen Uygulamalar](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Veritabanı](../../azure-sql/database/index.yml)<br /> [Azure SQL Yönetilen Örnek](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |

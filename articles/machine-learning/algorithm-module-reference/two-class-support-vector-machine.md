@@ -1,5 +1,5 @@
 ---
-title: 'İki sınıf destek vektör makinesi: modül başvurusu'
+title: 'Two-Class desteği vektör makinesi: modül başvurusu'
 titleSuffix: Azure Machine Learning
 description: Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için Azure Machine Learning ' de **Iki sınıf destek vektör makinesi** modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907669"
 ---
-# <a name="two-class-support-vector-machine-module"></a>İki sınıf destek vektör makinesi modülü
+# <a name="two-class-support-vector-machine-module"></a>Two-Class desteği vektör makinesi modülü
 
 Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 

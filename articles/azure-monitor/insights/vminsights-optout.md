@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79480530"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici ' de sanal makinelerinizin izlenmesini devre dışı bırakın
@@ -38,7 +38,7 @@ VM 'lerinizi izlemeyi devre dışı bırakmayı hazırlarken şu noktaları göz
 
 Hala Log Analytics çalışma alanına ihtiyacınız varsa, VM'ler için Azure İzleyici tamamen kaldırmak için aşağıdaki adımları izleyin. `VMInsights`Çözümü çalışma alanından kaldıracaksınız.  
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, giriş listenize göre öneriler uygular. **Log Analytics**’i seçin.
 3. Log Analytics çalışma alanları listenizde, VM'ler için Azure İzleyici etkinleştirildiğinde seçtiğiniz çalışma alanını seçin.
 4. Sol tarafta **çözümler**' i seçin.  
@@ -56,7 +56,7 @@ Log Analytics çalışma alanınızın diğer kaynaklardan izlemeyi desteklemesi
 >
 > Log Analytics aracısını kaldırırsanız, bu hizmetlerin ve çözümlerin sanal makinenizin yönetimini proaktif olarak yönetmesini önlemektir. 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 2. Azure portal **sanal makineler**' i seçin. 
 3. Listeden bir VM seçin. 
 4. Sol tarafta, **Uzantılar**' ı seçin. **Uzantılar** sayfasında **DependencyAgent**' yi seçin.

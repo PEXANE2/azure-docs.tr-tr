@@ -4,16 +4,16 @@ description: App Service ' de barındırılan bir API 'yi PowerApps ve Microsoft
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 359f19598d5f1dff6cda4b303d33ed721ed72d97
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015094"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054806"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure 'da barındırılan bir API 'yi PowerApps ve Microsoft Flow dışa aktarma
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) , verilerinize bağlanan ve platformlar arasında çalışan özel iş uygulamaları oluşturmaya ve kullanmaya yönelik bir hizmettir. [Microsoft Flow](/learn/modules/get-started-with-flow/index) , sık kullandığınız uygulamalar ve hizmetler arasında iş akışlarını ve iş süreçlerini otomatikleştirmenizi kolaylaştırır. Hem PowerApps hem de Microsoft Flow, Office 365, Dynamics 365, Salesforce gibi veri kaynaklarına yönelik çeşitli yerleşik bağlayıcılarla birlikte gelir. Bazı durumlarda, uygulama ve akış oluşturucuları, kuruluşları tarafından oluşturulan veri kaynaklarına ve API 'lere bağlanmak de ister.
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) , verilerinize bağlanan ve platformlar arasında çalışan özel iş uygulamaları oluşturmaya ve kullanmaya yönelik bir hizmettir. [Güç otomatikleştirme](/learn/modules/get-started-with-flow/index) , en sevdiğiniz uygulamalar ve hizmetler arasında iş akışlarını ve iş süreçlerini otomatikleştirmenizi kolaylaştırır. Hem PowerApps hem de Microsoft Flow, Office 365, Dynamics 365, Salesforce gibi veri kaynaklarına yönelik çeşitli yerleşik bağlayıcılarla birlikte gelir. Bazı durumlarda, uygulama ve akış oluşturucuları, kuruluşları tarafından oluşturulan veri kaynaklarına ve API 'lere bağlanmak de ister.
 
 Benzer şekilde, API 'Lerini bir kuruluşta daha geniş hale getirmek isteyen geliştiriciler, API 'Lerinin uygulama ve akış oluşturucuları tarafından kullanılabilmesini sağlayabilir. Bu makalede, [Azure işlevleri](../azure-functions/functions-overview.md) veya [Azure App Service](../app-service/overview.md)ile oluşturulmuş bir API 'yi dışarı aktarma işlemi gösterilmektedir. Oluşturulan API, PowerApps 'te kullanılan *özel bir bağlayıcı*olur ve tıpkı yerleşik bağlayıcı gibi Microsoft Flow.
 
@@ -66,7 +66,7 @@ Dışarı aktarmayı **hızlı** modda gerçekleştirmek için şu adımları iz
  
     ![PowerApps ve Microsoft Flow Express dışa aktarma](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. **Tamam** düğmesine tıklayın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
+3. **Tamam**'a tıklayın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>El ile dışarı aktarma kullan

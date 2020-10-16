@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: aca16e334e594f8adf0c0a3b0354db827fc475fe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9db530c1bdff6521c945ae0c2373bb9d32b8a476
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334013"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047786"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
@@ -1186,7 +1186,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 Özel Betik uzantısını yüklemek için [set-Azvmexgerkomutunu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) kullanın. 
 
-Uzantı, IIS Web sunucusunu yüklemek için PowerShell Add-WindowsFeature Web-Server ' ı çalıştırır ve ardından Default.htm sayfasını, sanal makinenin ana bilgisayar adını gösterecek şekilde güncelleştirir:
+Uzantı, IIS Web sunucusunu yüklemek için PowerShell Add-WindowsFeature Web-Server çalıştırır ve ardından VM 'nin ana bilgisayar adını göstermek için Default.htm sayfasını güncelleştirir:
 
 ### <a name="vm1"></a>VM1 
 
@@ -1271,8 +1271,8 @@ Bu hızlı başlangıçta
 * Yük dengeleyici trafik kuralı ve sistem durumu araştırması yapılandırıldı.
 * Yük dengeleyici test edildi.
 
-Azure Load Balancer hakkında daha fazla bilgi edinmek için [Azure Load Balancer nedir?](load-balancer-overview.md) ve [sık sorulan sorular Load Balancer](load-balancer-faqs.md).
-
-* [Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.
+Azure Load Balancer hakkında daha fazla bilgi edinmek için devam edin..
+> [!div class="nextstepaction"]
+> [Azure Load Balancer nedir?](load-balancer-overview.md)
 
 

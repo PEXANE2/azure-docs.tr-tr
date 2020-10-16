@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935067"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Bilişsel Arama günlük verilerini toplayın ve çözümleyin
@@ -29,7 +29,7 @@ Tanılama günlük kaydını ayarlarken, bir depolama mekanizması belirtmeniz i
 | [BLOB depolama ile arşivleme](../storage/blobs/storage-blobs-overview.md) | Olaylar ve ölçümler bir blob kapsayıcısına arşivlenir ve JSON dosyalarında depolanır. Günlükler, belirli bir olayı araştırmak için faydalı olan ancak açık uçlu araştırma için kullanışlı olan oldukça ayrıntılı olabilir (saat/dakika). Ham günlük dosyasını görüntülemek için bir JSON düzenleyicisi kullanın veya günlük verilerini toplamak ve görselleştirmek için Power BI.|
 | [Olay Hub 'ına akış](../event-hubs/index.yml) | Olaylar ve ölçümler bir Azure Event Hubs hizmetine akışla kaydedilir. Çok büyük Günlükler için bunu alternatif bir veri toplama hizmeti olarak seçin. |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Tanılama günlüğünü yapılandırırken bir veya daha fazla seçim yapabilmeniz için kaynakları önceden oluşturun.
 
@@ -51,7 +51,7 @@ Tanılama ayarları, günlüğe kaydedilen olayların ve ölçümlerin nasıl to
 
 1. **Log Analytics**denetleyin, çalışma alanınızı seçin ve **Operationlogs** ve **allölçümler**' i seçin.
 
-   ![Veri toplamayı yapılandır](./media/search-monitor-usage/configure-storage.png "Veri toplamayı yapılandır")
+   ![Veri toplamayı yapılandırma](./media/search-monitor-usage/configure-storage.png "Veri toplamayı yapılandırma")
 
 1. Ayarı kaydedin.
 
@@ -169,7 +169,7 @@ Aşağıdaki özellikler Azure Bilişsel Arama özgüdür.
 | --- | --- | --- | --- |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>KAYNAKGRUPLARı/VARSAYıLAN/SAĞLAYıCıLAR/<br/>MICROSOFT. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Kaynak KIMLIĞINIZ |
 | metricName |string |Dönemlerinde |ölçümün adı |
-| time |datetime |"2018-12-07T00:00:43.6872559 Z" |işlemin zaman damgası |
+| saat |datetime |"2018-12-07T00:00:43.6872559 Z" |işlemin zaman damgası |
 | ortalama |int |64 |Ölçüm zaman aralığındaki ham örneklerin ortalama değeri, ölçüye göre saniye veya yüzde cinsinden birimler. |
 | minimum |int |37 |Ölçüm zaman aralığı içindeki (saniye cinsinden) ham örneklerin en küçük değeri. |
 | maksimum |int |78 |Ölçüm zaman aralığı (saniye cinsinden) içindeki ham örneklerin maksimum değeri.  |

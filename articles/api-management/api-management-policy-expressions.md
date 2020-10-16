@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844250"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076870"
 ---
 # <a name="api-management-policy-expressions"></a>API Management İlkesi ifadeleri
 Bu makalede C# 7 ' de ilke ifadeleri sözdizimi anlatılmaktadır. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
@@ -33,12 +33,12 @@ Daha fazla bilgi için:
 - İlke deyimlerini indirmek için bkz. [api-Management-Samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub deposu.
 
 
-## <a name="syntax"></a><a name="Syntax"></a>Sözdizimi
+## <a name="syntax"></a><a name="Syntax"></a> Sözdizimi
 Tek deyim ifadeleri içine alınmıştır `@(expression)` , burada `expression` iyi biçimlendirilmiş bir C# ifade deyimidir.
 
 Çoklu deyim ifadeleri içine alınmıştır `@{expression}` . Çok deyimli ifadeler içindeki tüm kod yollarının bir ifadesiyle bitmesi gerekir `return` .
 
-## <a name="examples"></a><a name="PolicyExpressionsExamples"></a>Örnekler
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> Örnekler
 
 ```
 @(true)
@@ -71,7 +71,7 @@ Tek deyim ifadeleri içine alınmıştır `@(expression)` , burada `expression` 
 > [!IMPORTANT]
 > İlke ifadelerini kullandığınızda, ilke tanımlandığında ilke ifadelerinin yalnızca sınırlı doğrulaması vardır. İfadeler çalışma zamanında ağ geçidi tarafından yürütülür, ilke ifadeleri tarafından oluşturulan tüm özel durumlar bir çalışma zamanı hatasına neden oluşur.
 
-## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>İlke ifadelerinde izin verilen .NET Framework türleri
+## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> İlke ifadelerinde izin verilen .NET Framework türleri
 Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve üyelerini listelemektedir.
 
 |Tür|Desteklenen Üyeler|
@@ -156,7 +156,7 @@ Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve 
 |System. Security. Cryptography. SymmetricAlgorithm|Tümü|
 |System. Security. Cryptography. X509Certificates. PublicKey|Tümü|
 |System. Security. Cryptography. X509Certificates. RSACertificateExtensions|Tümü|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Ad|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Name|
 |System. Security. Cryptography. X509Certificates. X509Certificate|Tümü|
 |System. Security. Cryptography. X509Certificates. X509Certificate2|Tümü|
 |System. Security. Cryptography. X509Certificates. X509ContentType|Tümü|
@@ -205,7 +205,7 @@ Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve 
 |System.Xml. LINQ. XText|Tümü|
 |System.Xml.XmlNodeType|Tümü|
 
-## <a name="context-variable"></a><a name="ContextVariables"></a>Bağlam değişkeni
+## <a name="context-variable"></a><a name="ContextVariables"></a> Bağlam değişkeni
 Adlı bir değişken `context` , her ilke [ifadesinde](api-management-policy-expressions.md#Syntax)örtülü olarak kullanılabilir. Üyeleri ile ilgili bilgiler sağlar `\request` . Tüm `context` Üyeler salt okunurdur.
 
 |Bağlam değişkeni|İzin verilen Yöntemler, Özellikler ve parametre değerleri|
@@ -253,4 +253,4 @@ Adlı bir değişken `context` , her ilke [ifadesinde](api-management-policy-exp
 + [API Management ilkeler](api-management-howto-policies.md)
 + [API dönüştürme](transform-api.md)
 + İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
-+ [İlke örnekleri](policy-samples.md)
++ [İlke örnekleri](./policy-reference.md)

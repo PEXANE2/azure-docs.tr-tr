@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85833562"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager Şablonlarını kullanarak ILB ASE oluşturma
@@ -87,8 +87,8 @@ Dosyadaki *azuredeploy.parameters.js* parametreler aşağıda listelenmiştir:
 * *Existingaselocation*: ıLB atıcı 'Nin dağıtıldığı Azure bölgesini içeren metin dizesi.  Örneğin: "Orta Güney ABD".
 * *Pfxblobstring*:. pfx dosyasının based64 kodlu dize temsili.  Daha önce gösterilen kod parçacığını kullanarak, "exportedcert. pfx. B64" içinde bulunan dizeyi kopyalayın ve bunu *Pfxblobstring* özniteliğinin değeri olarak içine yapıştırın.
 * *parola*:. pfx dosyasının güvenliğini sağlamak için kullanılan parola.
-* *certificateThumbprint*: sertifikanın parmak izi.  Bu değeri PowerShell 'den alırsanız (ör. *$Certificate. *Önceki kod parçacığındaki parmak izi), değerini olduğu gibi kullanabilirsiniz.  Ancak, Windows sertifikası iletişim kutusundan değeri kopyalarsanız, gereksiz alanları sökmesini unutmayın.  *CertificateThumbprint* şöyle GÖRÜNMELIDIR: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *CertificateName*: sertifikayı belirlemek için kullanılan seçtiğiniz kolay bir dize tanımlayıcısı.  Ad, TLS/SSL sertifikasını temsil eden *Microsoft. Web/Certificates* varlığı için benzersiz Azure Resource Manager tanımlayıcısının bir parçası olarak kullanılır.  Ad şu soneke sahip **olmalıdır** : \_ yourASENameHere_InternalLoadBalancingASE.  Bu sonek, portal tarafından, bir ıLB özellikli bir AO 'nun güvenliğini sağlamak için sertifikanın kullanıldığı bir gösterge olarak kullanılır.
+* *certificateThumbprint*: sertifikanın parmak izi.  Bu değeri PowerShell 'den alırsanız (ör. *$Certificate. * Önceki kod parçacığındaki parmak izi), değerini olduğu gibi kullanabilirsiniz.  Ancak, Windows sertifikası iletişim kutusundan değeri kopyalarsanız, gereksiz alanları sökmesini unutmayın.  *CertificateThumbprint* şöyle GÖRÜNMELIDIR: AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *CertificateName*: sertifikayı belirlemek için kullanılan seçtiğiniz kolay bir dize tanımlayıcısı.  Ad, TLS/SSL sertifikasını temsil eden *Microsoft. Web/Certificates* varlığı için benzersiz Azure Resource Manager tanımlayıcısının bir parçası olarak kullanılır.  Ad şu soneke sahip **olmalıdır** :  \_ yourASENameHere_InternalLoadBalancingASE.  Bu sonek, portal tarafından, bir ıLB özellikli bir AO 'nun güvenliğini sağlamak için sertifikanın kullanıldığı bir gösterge olarak kullanılır.
 
 Kısaltılmış bir *azuredeploy.parameters.js* örneği aşağıda gösterilmiştir:
 

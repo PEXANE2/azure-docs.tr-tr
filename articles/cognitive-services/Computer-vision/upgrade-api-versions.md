@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5910c40729d07d5a759b2e5cc7b7a4272524c150
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c3394156b073df54d6582dc43571137b21df29cd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253862"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968948"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>V2. x okuma sürümünden v3. x ' e yükseltme
 
@@ -55,7 +55,7 @@ Yeni bir isteğe bağlı _dil_ parametresi var. Belgenizin dilini bilmiyorsanız
  
 |2. x 'i oku |3. x oku  |
 |----------|-----------|
-|`"NotStarted"` |   `"notStarted"`|
+|`"NotStarted"` |    `"notStarted"`|
 |`"Running"` | `"running"`|
 |`"Failed"` | `"failed"`|
 |`"Succeeded"` | `"succeeded"`|
@@ -194,7 +194,7 @@ V 3.0 'da yeni bir isteğe bağlı _dil_ parametresi mevcuttur. Belgenizin dilin
  
 |Metin Tanıma 2. x |3. x oku  |
 |----------|-----------|
-|`"NotStarted"` |   `"notStarted"`|
+|`"NotStarted"` |    `"notStarted"`|
 |`"Running"` | `"running"`|
 |`"Failed"` | `"failed"`|
 |`"Succeeded"` | `"succeeded"`|
@@ -311,4 +311,4 @@ V3. x içinde ayarlandı:
 
 |2,0 okuyun |3. x oku  |
 |----------|-----------|
-|https://{Endpoint}/vizyon/**v 2.0/okuma/çekirdek/analiz**     |https://{Endpoint}/Vision/<**sürüm dizesi**>/Read/syncanalyze [? Language]|
+|https://{Endpoint}/vizyon/**v 2.0/okuma/çekirdek/analiz**     |https://{Endpoint}/Vision/<**sürüm dizesi**>/Read/syncAnalyze [? Language]|

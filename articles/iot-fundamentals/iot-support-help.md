@@ -5,16 +5,16 @@ author: philmea
 ms.author: phil
 ms.service: iot-fundamentals
 services: iot-fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 6/10/2020
-ms.openlocfilehash: ea4ecbbeaa4ad016e32aa9301d6f6ac49a6d342e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 23381a45d045e8f96e989bce9f52d627f5a88255
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91330188"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979079"
 ---
-# <a name="azure-iot-support-and-help-options"></a>Azure IoT desteği ve yardım seçenekleri
+# <a name="what-are-the-azure-iot-support-and-help-options"></a>Azure IoT desteği ve yardım seçenekleri nelerdir?
 
 Azure IoT çözümlerinizi geliştirirken yardım alabileceğiniz öneriler aşağıda verilmiştir.
 
@@ -26,7 +26,7 @@ Azure IoT çözümlerinizi geliştirirken yardım alabileceğiniz öneriler aşa
 
 [Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Microsoft Q&A 'da soru gönderin
@@ -101,5 +101,4 @@ Ayrıca deneyimlerinizi paylaşarak, [nesnelerin interneti teknoloji topluluğun
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Azure IoT nedir?](iot-introduction.md)
+[Azure IoT nedir?](iot-introduction.md)

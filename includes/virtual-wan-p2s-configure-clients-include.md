@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9caf63fc90be7bae0461ddc24c94594a32199765
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812783"
 ---
 #### <a name="microsoft-windows"></a>Microsoft Windows
@@ -20,7 +20,7 @@ ms.locfileid: "91812783"
 ##### <a name="openvpn"></a>OpenVPN
 
 1. Resmi web sitesinden OpenVPN istemcisini indirip yükleyin.
-1. Ağ geçidinin VPN profilini indirin. Bu, Azure portal veya PowerShell 'de New-AzureRmVpnClientConfiguration içindeki kullanıcı VPN yapılandırmaları sekmesinden yapılabilir.
+1. Ağ geçidinin VPN profilini indirin. Bu, Azure portal veya PowerShell 'de New-AzureRmVpnClientConfiguration Kullanıcı VPN yapılandırması sekmesinden yapılabilir.
 1. Profilin sıkıştırmasını açın. OpenVPN klasöründeki vpnconfig.ovpn yapılandırma dosyasını not defterinde açın.
 1. P2S istemci sertifikası bölümünü base64’teki P2S istemci sertifikası genel anahtarı ile doldurun. PEK biçimli bir sertifikada,. cer dosyasını açabilir ve sertifika üstbilgileri arasında Base64 anahtarı üzerinden kopyalama yapabilirsiniz. Adımlar için bkz [. kodlanmış ortak anahtarı almak için sertifikayı dışarı aktarma.](../articles/virtual-wan/certificates-point-to-site.md)
 1. Özel anahtar bölümünü, base64’teki P2S istemci sertifikası özel anahtarı ile doldurun. Adımlar için bkz [. özel anahtar ayıklama.](../articles/virtual-wan/howto-openvpn-clients.md#windows).

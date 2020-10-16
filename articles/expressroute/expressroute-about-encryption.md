@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 46f0a0e86c5db612f440bcf631329d2800251dab
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 83fa16265106e1033cb77ab4175b606714ec66d7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397806"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996840"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute şifreleme
  
@@ -37,10 +37,8 @@ Yalnızca AES128 ve AES256 [genişletilmiş paket numaralandırma](https://1.iee
 IPSec bir [IETF standardıdır](https://tools.ietf.org/html/rfc6071). Internet Protokolü (IP) düzeyinde veya ağ katmanı 3 ' teki verileri şifreler. Azure 'da şirket içi ağınız ile sanal ağınız (VNET) arasında uçtan uca bir bağlantıyı şifrelemek için IPSec kullanabilirsiniz. Aşağıdaki diğer SSS bölümüne bakın.
 ### <a name="can-i-enable-ipsec-in-addition-to-macsec-on-my-expressroute-direct-ports"></a>ExpressRoute doğrudan bağlantı noktalarında MACsec 'e ek olarak IPSec 'i etkinleştirebilir miyim?
 Evet. MACsec, siz ve Microsoft arasındaki fiziksel bağlantıları korur. IPSec, sizin ve sanal ağlarınızla Azure 'daki uçtan uca bağlantının güvenliğini sağlar. Bunları bağımsız olarak etkinleştirebilirsiniz. 
-### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Azure VPN ağ geçidini, şirket içi ağım ve Azure sanal ağım arasında IPSec tüneli kurmak için kullanabilir miyim?
-Evet. ExpressRoute devreniz için Microsoft eşlemesi üzerinden Bu IPSec tüneli ayarlayabilirsiniz. [Yapılandırma kılavuzumuzu](site-to-site-vpn-over-microsoft-peering.md)izleyin.
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Azure özel eşleme üzerinden IPSec tüneli ayarlamak için Azure VPN ağ geçidini kullanabilir miyim?
-Azure sanal WAN 'ı benimsediğinizde, uçtan uca bağlantıyı şifrelemek için [aşağıdaki adımları](../virtual-wan/vpn-over-expressroute.md) izleyebilirsiniz. Normal Azure VNET 'iniz varsa, sanal ağınıza bir üçüncü taraf VPN ağ geçidi dağıtabilir ve şirket içi VPN ağ geçidiniz arasında bir IPSec tüneli oluşturabilirsiniz.
+Evet. Azure sanal WAN 'ı benimsediğinizde, uçtan uca bağlantıyı şifrelemek için [aşağıdaki adımları](../virtual-wan/vpn-over-expressroute.md) izleyebilirsiniz. Normal Azure VNET 'iniz varsa, Azure VPN ağ geçidi ve şirket içi VPN ağ geçidiniz arasında bir IPSec tüneli oluşturmak için [Bu adımları](../vpn-gateway/site-to-site-vpn-private-peering.md) izleyebilirsiniz.
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>ExpressRoute bağlantınızda IPSec 'i etkinleştirdikten sonra alacağınız aktarım hızı nedir?
 Azure VPN Gateway kullanılıyorsa, [burada performans numaralarını](../vpn-gateway/vpn-gateway-about-vpngateways.md)kontrol edin. Üçüncü taraf bir VPN ağ geçidi kullanılıyorsa, performans numaraları için satıcıya başvurun.
 

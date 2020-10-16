@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84712556"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure DNS alt etki alanı temsilcisi seçme
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure DNS bir alt etki alanı atamak için, önce genel etki alanınızı Azure DNS olarak vermelisiniz. Ad sunucularınızı temsilci olarak yapılandırma hakkında yönergeler için bkz. [Azure DNS etki alanı verme](./dns-delegate-domain-azure-dns.md) . Etki alanınız Azure DNS bölgenize atandıktan sonra, alt etki alanınızı temsil edebilirsiniz.
 
@@ -67,7 +67,7 @@ $RecordSet = New-AzDnsRecordSet -Name engineering -RecordType NS -ResourceGroupN
 Temsilciyi test etmek için nslookup 'ı kullanın.
 
 1. PowerShell penceresini açın.
-2. Komut isteminde şunu yazın:`nslookup www.engineering.contoso.com.`
+2. Komut isteminde şunu yazın: `nslookup www.engineering.contoso.com.`
 3. **10.10.10.10**adresini gösteren yetkili olmayan bir yanıt almanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

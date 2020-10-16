@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360319"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075068"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma
 Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. Gerçekleştirmek isteyebileceğiniz işlemler, bir bileşeni yüklemeyi, COM bileşenlerini kaydetmeyi, kayıt defteri anahtarlarını ayarlamayı veya uzun süre çalışan bir işlemi başlatmayı içerir.
@@ -154,13 +154,10 @@ Bulut hizmetinizdeki bazı [yaygın başlangıç görevlerini](cloud-services-st
 Bulut hizmetinizi [paketleyin](cloud-services-model-and-package.md) .  
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Görev]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Başlangıç]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Çalışma Zamanı]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Ortam]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Değişken]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-
-
-
+[Görev]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Başlangıç]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Çalışma zamanı]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Ortam]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Değişken]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[Roleınstancevalue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)

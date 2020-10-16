@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
 ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289617"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell kullanarak hızlandırılmış ağlarla bir Windows sanal makinesi oluşturma
@@ -41,7 +41,7 @@ Hızlandırılmış ağ ile ağ trafiği VM 'nin ağ arabirimine (NIC) ulaşır 
 
 Hızlandırılmış ağ avantajları yalnızca etkin olduğu VM için geçerlidir. En iyi sonuçlar için, bu özelliği aynı Azure sanal ağına bağlı en az iki VM üzerinde etkinleştirin. Sanal ağlar arasında iletişim kurarken veya şirket içinde bağlantı kurarken, bu özelliğin genel gecikme süresine en az etkisi vardır.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 - **Saniye başına düşük gecikme süresi/daha yüksek paketler (PPS)**: veri yolundan sanal anahtarı ortadan kaldırmak, ilke işleme için konakta harcadıkları zaman paketlerini kaldırır. Ayrıca sanal makine içinde işlenebilecek paketlerin sayısını artırır.
 

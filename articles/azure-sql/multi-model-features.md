@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
 ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073312"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği 'nin çok modelli özellikleri
@@ -142,7 +142,7 @@ CREATE TABLE Collection (
 
 Bu anahtar-değer yapısını, herhangi bir kısıtlama olmadan gereksinimlerinize uyacak şekilde özelleştirebilirsiniz. Örnek olarak, değeri türü yerine XML belgesi olabilir `nvarchar(max)` . değer JSON belgesi ise, `CHECK` JSON içeriğinin geçerliliğini doğrulayan bir kısıtlama koyabilirsiniz. Ek sütunlarda bir anahtarla ilgili herhangi bir sayıda değer koyabilirsiniz, veri erişimini basitleştirmek ve iyileştirmek için hesaplanmış sütunlar ve dizinler ekleyebilirsiniz, daha iyi performans sağlamak için tabloyu bellek/en iyileştirilmiş şema tablosu olarak tanımlayın, vb.
 
-Bkz. BWin 'nın, bir saniyede 1.200.000 toplu işlem elde eden, bir örnek olarak anahtar-değer çifti çözümü olarak nasıl verimli bir şekilde kullanılabileceği gibi, ASP.NET önbelleğe alma çözümü için [bellek ıçı OLTP kullanma](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) .
+Bkz. [BWin 'nın,](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) bir saniyede 1.200.000 toplu işlem elde eden bir örnek olarak, ilişkisel modelin uygulamada anahtar-değer çifti çözümü olarak nasıl etkili bir şekilde kullanılabileceğini gösteren ASP.NET önbelleğe alma çözümüne YÖNELIK In-Memory OLTP 'yi nasıl kullandığını öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

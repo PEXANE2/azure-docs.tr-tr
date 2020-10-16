@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 65d6151536eb92e2ab9b740a99984fb0b5977cab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256883"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory için AppSource sertifikası alın
@@ -102,7 +102,7 @@ Müşteri LED deneme sürümü, AppSource 'un uygulamanıza tek tıklamayla eri�
 
 AppSource deneme deneyimi hakkında daha fazla bilgi için [Bu videoya](https://aka.ms/trialexperienceforwebapps)bakın. 
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Azure AD tümleştirmesi için, destek sağlamak üzere topluluk ile [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) kullanırız.
 

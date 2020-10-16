@@ -3,19 +3,19 @@ title: Ölçüm Danışmanı ölçüm grafiği
 titleSuffix: Azure Cognitive Services
 description: Ölçüm grafınızı yapılandırma ve verilerinizde ilgili bozukluklar görselleştirme.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: aahi
-ms.openlocfilehash: 09ea16f07973757b169f21c7c3f909a24651daa4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90942098"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043162"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Nasıl yapılır: ilgili ölçümleri çözümlemek için ölçüm grafiği oluşturma
 
@@ -35,7 +35,7 @@ Daha sonra başka bir düğüm eklemeniz ve var olan düğüm (ler) e bir ilişk
 
 **Ilişki Ekle**' ye tıklayın, başka bir ölçüm seçebilir ve iki düğüm arasındaki ilişki türünü belirtebilirsiniz. Ayrıca, belirli boyut filtrelerini de uygulayabilirsiniz. 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Düğüm ve ilişki ekleme":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Ölçüm seçin":::
 
 Yukarıdaki adımları tekrarladıktan sonra, tüm ilgili ölçümler arasındaki ilişkileri açıklayan bir ölçüm grafiğine sahip olursunuz.
 **Düğüm renkleriyle ilgili ipucu**
@@ -50,7 +50,7 @@ Yukarıdaki adımları tekrarladıktan sonra, tüm ilgili ölçümler arasındak
 
 Grafik içindeki bir olaya tıklayın ve daha sonra, tanılama bilgilerinin altındaki **çapraz ölçüm analizine**kaydırın.
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="İlgili ölçümleri ve anormallikleri görüntüleme":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Ölçüm seçin":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -33,7 +33,7 @@
       href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Örnekler
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -45,7 +45,7 @@
       href: whats-new.md
     - name: Bileşenler
       href: components.md
-    - name: Kavramlar
+    - name: Yük dengeleme algoritması
       href: concepts.md
     - name: SKU'lar
       href: skus.md
@@ -63,9 +63,12 @@
       href: load-balancer-ha-ports-overview.md
     - name: Birden çok ön uç
       href: load-balancer-multivip-overview.md
-    - name: Giden bağlantılar
+    - name: Giden ara sunucu
       href: load-balancer-outbound-connections.md
     - name: TCP sıfırlama ve TCP boşta zaman aşımı
+    - name: Giden kuralları
+      href: outbound-rules.md
+    - name: Boşta kalma süresi zaman aşımında TCP sıfırlama
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer ve Kullanılabilirlik Bölgeleri
       href: load-balancer-standard-availability-zones.md
@@ -101,7 +104,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: IPv6 ile genel Load Balancer oluşturma
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'

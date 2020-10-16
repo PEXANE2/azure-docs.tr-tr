@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eace1ee1f97acaf04608d37c9edba482622bd59
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76548297"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097380"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>C++/Wınrt 'de kaba reyerelleştirme kullanarak Tutturucular oluşturma ve bulma
 
@@ -31,7 +31,7 @@ Azure uzamsal bağlantıları, cihaz üzerinde ilişki oluşturabilir ve algıla
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
-- C++ ve <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows çalışma zamanı API 'lerinde</a>temel bilgi.
+- C++ ve <a href="/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows çalışma zamanı API 'lerinde</a>temel bilgi.
 - [Azure uzamsal Tutturucuların genel bakış](../overview.md)bölümünü okuyun.
 - [5 dakikalık hızlı](../index.yml)başlangıçlardan biri tamamlandı.
 - [Oluşturma ve bağlantıları bulma ile nasıl yapılacağını](../create-locate-anchors-overview.md)okuyun.

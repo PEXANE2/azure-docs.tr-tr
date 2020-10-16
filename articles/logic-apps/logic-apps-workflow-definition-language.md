@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078151"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps Iş akışı tanım dili için şema başvurusu Kılavuzu
@@ -74,11 +74,11 @@ Bir parametre tanımının genel yapısı aşağıda verilmiştir:
 },
 ```
 
-| Öznitelik | Gerekli | Tür | Description |
+| Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*parametre-adı*> | Yes | Dize | Tanımlamak istediğiniz parametrenin adı |
-| <*parametre türü*> | Yes | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Note**: tüm parolalar, anahtarlar ve gizli diziler için, `securestring` veya türlerini kullanın `secureobject` çünkü `GET` işlem bu türleri döndürmez. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [eylem ve giriş parametreleri Için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Parametrenin türü |
-| <*Varsayılan parametre değeri*> | Yes | Aynı`type` | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. `defaultValue`Mantıksal uygulama Tasarımcısı 'nın parametreyi doğru bir şekilde gösterebilmesi için özniteliği gereklidir, ancak boş bir değer belirtebilirsiniz. |
+| <*parametre-adı*> | Evet | Dize | Tanımlamak istediğiniz parametrenin adı |
+| <*parametre türü*> | Evet | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Note**: tüm parolalar, anahtarlar ve gizli diziler için, `securestring` veya türlerini kullanın `secureobject` çünkü `GET` işlem bu türleri döndürmez. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [eylem ve giriş parametreleri Için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Parametrenin türü |
+| <*Varsayılan parametre değeri*> | Evet | Aynı `type` | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. `defaultValue`Mantıksal uygulama Tasarımcısı 'nın parametreyi doğru bir şekilde gösterebilmesi için özniteliği gereklidir, ancak boş bir değer belirtebilirsiniz. |
 | <*dizi ile izin verilen-parametre değerleri*> | Hayır | Dizi | Parametrenin kabul edebileceği değerleri içeren bir dizi |
 | <*parametre-açıklama*> | Hayır | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
 ||||
@@ -112,13 +112,13 @@ Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu]
 }
 ```
 
-| Öznitelik | Gerekli | Tür | Description |
+| Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*statik-sonuç tanımı-adı*> | Yes | Dize | Bir eylem tanımının bir nesne aracılığıyla başvurabileceğinden, statik sonuç tanımının adı `runtimeConfiguration.staticResult` . Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
-| <*çıkış-öznitelikler-ve-değerler-döndürülen*> | Yes | Değişir | Bu özniteliklerin gereksinimleri farklı koşullara göre farklılık gösterir. Örneğin, olduğunda, `status` öznitelik, `Succeeded` `outputs` eylem tarafından sahte çıktılar olarak döndürülen öznitelikleri ve değerleri içerir. `status`İse öznitelik, `Failed` `outputs` `errors` hata bilgilerine sahip bir veya daha fazla hata nesnesi olan bir dizi olan özniteliği içerir `message` . |
+| <*statik-sonuç tanımı-adı*> | Evet | Dize | Bir eylem tanımının bir nesne aracılığıyla başvurabileceğinden, statik sonuç tanımının adı `runtimeConfiguration.staticResult` . Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
+| <*çıkış-öznitelikler-ve-değerler-döndürülen*> | Evet | Değişir | Bu özniteliklerin gereksinimleri farklı koşullara göre farklılık gösterir. Örneğin, olduğunda, `status` öznitelik, `Succeeded` `outputs` eylem tarafından sahte çıktılar olarak döndürülen öznitelikleri ve değerleri içerir. `status`İse öznitelik, `Failed` `outputs` `errors` hata bilgilerine sahip bir veya daha fazla hata nesnesi olan bir dizi olan özniteliği içerir `message` . |
 | <*üst bilgi-değerler*> | Hayır | JSON | Eylem tarafından döndürülen üst bilgi değerleri |
-| <*durum-kod döndürüldü*> | Yes | Dize | Eylem tarafından döndürülen durum kodu |
-| <*eylem-durum*> | Yes | Dize | Eylemin durumu, örneğin `Succeeded` veya`Failed` |
+| <*durum-kod döndürüldü*> | Evet | Dize | Eylem tarafından döndürülen durum kodu |
+| <*eylem-durum*> | Evet | Dize | Eylemin durumu, örneğin `Succeeded` veya `Failed` |
 |||||
 
 Örneğin, bu HTTP eylem tanımında `runtimeConfiguration.staticResult.name` öznitelik, `HTTP0` `staticResults` eylem için olan model çıkışları tanımlı özniteliğin içinde başvuru yapıyor. `runtimeConfiguration.staticResult.staticResultOptions`Özniteliği statik sonuç AYARıNıN `Enabled` http eyleminde olduğunu belirtir.
@@ -199,7 +199,7 @@ Sonuç her zaman bir dizedir ve bu özellik işleve benzer hale getirir `concat(
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Karakteriyle başlayan bir sabit dize varsa \@ , \@ karakteri \@ Çıkış karakteri olarak başka bir karakterle önek olarak ekleyin:\@\@
+Karakteriyle başlayan bir sabit dize varsa \@ , \@ karakteri \@ Çıkış karakteri olarak başka bir karakterle önek olarak ekleyin: \@\@
 
 Bu örnekler, ifadelerin nasıl değerlendirildiğini gösterir:
 
@@ -277,9 +277,9 @@ Bir çıkış tanımının genel yapısı aşağıda verilmiştir:
 
 | Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*anahtar adı*> | Yes | Dize | Çıkış dönüş değeri için anahtar adı |
-| <*anahtar türü*> | Yes | int, float, String, SecureString, bool, Array, JSON nesnesi | Çıkış dönüş değeri için tür |
-| <*anahtar-değer*> | Yes | <*anahtar türüyle* aynı> | Çıkış dönüş değeri |
+| <*anahtar adı*> | Evet | Dize | Çıkış dönüş değeri için anahtar adı |
+| <*anahtar türü*> | Evet | int, float, String, SecureString, bool, Array, JSON nesnesi | Çıkış dönüş değeri için tür |
+| <*anahtar-değer*> | Evet | <*anahtar türüyle* aynı> | Çıkış dönüş değeri |
 |||||
 
 Bir iş akışı çalıştırmasının çıkışını almak için Azure portal mantıksal uygulamanızın çalıştırma geçmişini ve ayrıntılarını gözden geçirin veya [Iş akışı REST API](/rest/api/logic/workflows)kullanın. Ayrıca, panoları oluşturabilmeniz için çıktıyı dış sistemlere geçirebilirsiniz (örneğin, Power BI).
@@ -290,7 +290,7 @@ Bir iş akışı çalıştırmasının çıkışını almak için Azure portal m
 
 [İfadeler](#expressions) ve [işlevlerde](#functions), işleçler bir özellik başvurusu veya dizideki bir değer gibi belirli görevleri gerçekleştirir.
 
-| Operatör | Görev |
+| İşleç | Görev |
 |----------|------|
 | ' | Dize sabit değerini girdi olarak veya ifadeler ve işlevler içinde kullanmak için, dizeyi yalnızca tek tırnak işaretleriyle sarın, örneğin, `'<myString>'` . Bir ifadenin tamamında JSON biçimlendirmesiyle çakışan çift tırnak işaretleri ("") kullanmayın. Örneğin: <p>**Evet**: Uzunluk (' Merhaba ') </br>**Hayır**: length ("Hello") <p>Dizileri veya sayıları geçirdiğinizde, kaydırma noktalaması gerekmez. Örneğin: <p>**Evet**: Uzunluk ([1, 2, 3]) </br>**Hayır**: length ("[1, 2, 3]") |
 | [] | Bir dizideki belirli bir konumdaki (Dizin) bir değere başvurmak için köşeli ayraçları kullanın. Örneğin, bir dizide ikinci öğeyi almak için: <p>`myArray[1]` |

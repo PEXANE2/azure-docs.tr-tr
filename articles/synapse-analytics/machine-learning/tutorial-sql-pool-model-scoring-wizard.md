@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 14358f60b700e80c17b1dd8259f1d0566a854c43
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e92ff75bb6a9757c06de3561a385cbcbb7f75ba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91543444"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019979"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-for-synapse-sql-pools"></a>Öğretici: SYNAPSE SQL havuzları için Machine Learning model Puanlama Sihirbazı
 
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
 - SYNAPSE Analytics çalışma alanınızda SQL havuzu SYNAPSE. Ayrıntılar için bkz. [SYNAPSE SQL havuzu oluşturma](../quickstart-create-sql-pool-studio.md).
@@ -50,7 +50,7 @@ Not defterindeki tüm hücreleri çalıştırmadan önce, işlem örneğinin ça
 
 1. İndirme [tahmin NYC TAXI Tips. ipynb](https://go.microsoft.com/fwlink/?linkid=2144301)'yi indirin.
 
-1. [Azure Machine Learning Studio](https://ml.azure.com)Azure Machine Learning çalışma alanını başlatın.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da Azure Machine Learning çalışma alanını başlatın.
 
 1. **Not defterleri** ' ne gidin ve **dosyaları karşıya yükle**' ye tıkladıktan sonra dosyayı indirdiğiniz ve karşıya yüklediğiniz "NYC Taxi Tips. ipynb" öğesini seçin.
    ![Dosya yükleme](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)

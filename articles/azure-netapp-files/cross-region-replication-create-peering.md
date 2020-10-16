@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: df70f8a37a7223119068afd323583ea6126ca542
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90709057"
 ---
 # <a name="create-replication-peering-for-azure-netapp-files"></a>Azure NetApp Files için çoğaltma eşlemesi oluştur
@@ -108,9 +108,9 @@ NFS protokolü için, dışarı aktarma ilkesi kurallarının dışarı aktarmay
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-* [Çapraz bölge çoğaltma](cross-region-replication-introduction.md)
+* [Bölgeler arası çoğaltma](cross-region-replication-introduction.md)
 * [Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları](cross-region-replication-requirements-considerations.md)
-* [Çoğaltma ilişkisinin sistem durumunu görüntüle](cross-region-replication-display-health-status.md)
+* [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)

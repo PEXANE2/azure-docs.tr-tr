@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182024"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973878"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 serisi için destek paketi oluşturma ve yönetme
 
@@ -23,7 +23,7 @@ Bu öğretici, StorSimple 8000 serisi cihazınız için destek paketini oluştur
 
 ## <a name="create-a-support-package"></a>Destek paketi oluşturma
 
-Bazı durumlarda, StorSimple için Windows PowerShell aracılığıyla destek paketini el ile oluşturmanız gerekir. Örneğin:
+Bazı durumlarda, StorSimple için Windows PowerShell aracılığıyla destek paketini el ile oluşturmanız gerekir. Örnek:
 
 * Microsoft Desteği ile paylaşmadan önce, günlük dosyalarınızda hassas bilgileri kaldırmanız gerekirse.
 * Bağlantı sorunları nedeniyle paketi karşıya yüklerken güçlük çekiyorsanız.
@@ -108,7 +108,7 @@ Bir destek paketini Microsoft Desteği siteye yüklemeden önce düzenlemek içi
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![Destek paketini Düzenle](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![Destek paketini Düzenle 2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. İstendiğinde, değiştirilen destek paketi için bir şifreleme parolası girin.
    
     ```powershell

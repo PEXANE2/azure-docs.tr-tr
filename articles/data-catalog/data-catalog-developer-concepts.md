@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799256"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Veri Kataloğu geliştirici kavramları
@@ -142,7 +142,7 @@ Ek açıklama türleri, kataloğun içindeki diğer türlere atanabilecek meta v
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>Veri kümesindeki satır sayısı</td></tr>
-<tr><td></td><td>size</td><td>long</td><td>Veri kümesinin bayt cinsinden boyutu.  </td></tr>
+<tr><td></td><td>boyut</td><td>long</td><td>Veri kümesinin bayt cinsinden boyutu.  </td></tr>
 <tr><td></td><td>schemaModifiedTime</td><td>string</td><td>Şemanın değiştirildiği son zaman</td></tr>
 <tr><td></td><td>dataModifiedTime</td><td>string</td><td>Veri kümesinin son değiştirildiği zaman (veri eklendi, değiştirildi veya silindi)</td></tr>
 

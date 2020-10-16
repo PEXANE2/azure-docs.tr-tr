@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
 ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87290617"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database bağlayıcısını kullanmaya başlama
@@ -60,7 +60,7 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
     ![Bir iletişim kutusu, tüm Tetiklerde arama yapmak için bir kutu içerir. Ayrıca, "Istek/yanıt-Istek" adlı ve seçim düğmesi ile gösterilen tek bir tetikleyici de vardır.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. **Kaydet**'i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
+3. **Kaydet**’i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
 
 4. **Yeni adım**’ı ve **Eylem ekle**’yi seçin. `oracle`Kullanılabilir eylemleri görmek için yazın: 
 

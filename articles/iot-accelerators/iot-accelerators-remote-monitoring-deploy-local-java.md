@@ -1,20 +1,19 @@
 ---
 title: Uzaktan Izleme çözümünü yerel olarak dağıtma-IntelliJ IDE-Azure | Microsoft Docs
 description: Bu nasıl yapılır kılavuzunda, test ve geliştirme için IntelliJ kullanarak uzaktan Izleme çözümü hızlandırıcısının yerel makinenize nasıl dağıtılacağı gösterilmektedir.
-author: v-krghan
-manager: dominicbetts
+author: dominicbetts
 ms.custom: devx-track-java
-ms.author: v-krghan
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 78573cfe00d8e2e7ddcbf705dffdd5530f82c4e0
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319176"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998610"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Uzaktan Izleme çözüm Hızlandırıcısını yerel olarak dağıtma-IntelliJ
 
@@ -24,7 +23,7 @@ Bu makalede, test ve geliştirme için uzaktan Izleme çözümü hızlandırıc�
 
 Yerel makinenizde Docker 'da uzaktan Izleme çözüm hızlandırıcıyı çalıştırmak istiyorsanız, bkz. [Uzaktan izleme çözüm hızlandırıcıyı yerel olarak dağıtma-Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Uzaktan Izleme çözümü Hızlandırıcısı tarafından kullanılan Azure hizmetlerini dağıtmak için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
@@ -191,10 +190,10 @@ Her Web hizmeti bir komut Istemi penceresi ve Web tarayıcısı penceresi açar.
 
 Hizmetlerin durumuna erişmek için aşağıdaki URL 'Lere gidin:
 
-* IoT-Hub Yöneticisi:`http://localhost:9002/v1/status`
-* Cihaz telemetrisi:`http://localhost:9004/v1/status`
-* kurulumunun`http://localhost:9005/v1/status`
-* depolama bağdaştırıcısı:`http://localhost:9022/v1/status`
+* IoT-Hub Yöneticisi: `http://localhost:9002/v1/status`
+* Cihaz telemetrisi: `http://localhost:9004/v1/status`
+* kurulumunun `http://localhost:9005/v1/status`
+* depolama bağdaştırıcısı: `http://localhost:9022/v1/status`
 
 ### <a name="start-the-stream-analytics-job"></a>Stream Analytics işini Başlat
 

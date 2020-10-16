@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 567def7abaff3cd8d70eb56f0aa117d1eeb52a13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300437"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'da Kullanıcı tanımlı işlevlerde hata ayıkla 
@@ -49,7 +49,7 @@ Stream Analytics doğrudan JavaScript işlevleri için hata ayıklama desteği o
 
 Aşağıdaki örnek, [Visual Studio Code](quick-create-visual-studio-code.md)' deki tümleşik çalışma zamanı ortamında bazı sınırlamalara sahip JavaScript UDF 'leri hata ayıklamanın nasıl yapılacağını gösterir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, Azure Stream Analytics projenizin aşağıdaki öğelere sahip olduğundan emin olun:
 

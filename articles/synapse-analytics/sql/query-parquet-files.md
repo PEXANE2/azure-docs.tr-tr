@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288316"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet dosyalarını sorgulama
@@ -70,7 +70,7 @@ from openrowset(
 
 Aşağıdaki bölümlerde, çeşitli türlerdeki PARQUET dosyalarını sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk adımınız, bir veri kaynağı ile [NYC sarı TAXI](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) depolama hesabına başvuran **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 
@@ -182,13 +182,13 @@ Parquet dosyaları her sütun için tür açıklamalarını içerir. Aşağıdak
 | INT32 |INT (8, false) |tinyint |
 | INT32 |INT (16, false) |int |
 | INT32 |INT (32, false) |bigint |
-| INT32 |DATE |tarih |
+| INT32 |DATE |date |
 | INT32 |KATEGORI |decimal |
-| INT32 |SAAT (MILIMETRE)|time |
+| INT32 |SAAT (MILIMETRE)|saat |
 | INT64 |INT (64, true) |bigint |
 | INT64 |INT (64, false) |ondalık (20, 0) |
 | INT64 |KATEGORI |decimal |
-| INT64 |SAAT (MIKRO S/NANOS) |time |
+| INT64 |SAAT (MIKRO S/NANOS) |saat |
 |INT64 |ZAMAN DAMGASı (MILIMETRE/MIKRO S/NANOS) |datetime2 |
 |[Karmaşık tür](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTELE |JSON ile seri hale getirilmiş varchar (max) |
 |[Karmaşık tür](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|HARITA|JSON ile seri hale getirilmiş varchar (max) |

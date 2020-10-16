@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
 ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645797"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde performans için uygulamaları ve veritabanlarını ayarlama
@@ -122,7 +122,7 @@ Oluşturulduktan sonra, aynı SELECT açıklaması tarama yerine bir arama kulla
 
 ![Düzeltilen dizinler içeren bir sorgu planı](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-Temel Öngörüler, paylaşılan bir emtia sisteminin GÇ kapasitesinin, ayrılmış bir sunucu makinesinden daha fazla sınırlı olması. Hizmet katmanlarının her işlem boyutu için kaynakların en büyük avantajlarından yararlanmak üzere gereksiz GÇ 'yi en aza indirmeden bir Premium vardır. Uygun fiziksel veritabanı tasarım seçimleri, bireysel sorguların gecikmesini önemli ölçüde iyileştirebilir, ölçek birimi başına işlenen eşzamanlı isteklerin verimini artırır ve sorguyu karşılamak için gereken maliyetleri en aza indirir. Eksik dizin DMVs hakkında daha fazla bilgi için bkz. [sys. dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Temel Öngörüler, paylaşılan bir emtia sisteminin GÇ kapasitesinin, ayrılmış bir sunucu makinesinden daha fazla sınırlı olması. Hizmet katmanlarının her işlem boyutu için kaynakların en büyük avantajlarından yararlanmak üzere gereksiz GÇ 'yi en aza indirmeden bir Premium vardır. Uygun fiziksel veritabanı tasarım seçimleri, bireysel sorguların gecikmesini önemli ölçüde iyileştirebilir, ölçek birimi başına işlenen eşzamanlı isteklerin verimini artırır ve sorguyu karşılamak için gereken maliyetleri en aza indirir. Eksik dizin DMVs hakkında daha fazla bilgi için bkz. [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
 ### <a name="query-tuning-and-hinting"></a>Sorgu ayarlama ve ipuçcu
 
@@ -216,7 +216,7 @@ Testini `SET STATISTICS IO` olarak ayarla `ON` ' yı çalıştırırsanız, bu �
 
 ![Sorgu ipucu kullanarak sorgu ayarlama](./media/performance-guidance/query_tuning_3.png)
 
-Bu etkiyi **sys. resource_stats** tablosunda görebilirsiniz (testi yürüttüğünüzde ve veriler tabloyu doldurışınızda bir gecikme vardır). Bu örnekte, 1. Bölüm 22:25:00 zaman penceresi sırasında yürütülür ve Bölüm 2 22:35:00 ' de yürütülür. Önceki zaman penceresi, daha sonraki bir zaman penceresinde daha fazla kaynak kullandı (plan verimlilik geliştirmeleri nedeniyle).
+**Sys.resource_stats** tablodaki etkiyi görebilirsiniz (testi yürüttüğünüzde ve veriler tabloyu doldurunca bir gecikme olur). Bu örnekte, 1. Bölüm 22:25:00 zaman penceresi sırasında yürütülür ve Bölüm 2 22:35:00 ' de yürütülür. Önceki zaman penceresi, daha sonraki bir zaman penceresinde daha fazla kaynak kullandı (plan verimlilik geliştirmeleri nedeniyle).
 
 ```sql
 SELECT TOP 1000 *
@@ -230,7 +230,7 @@ ORDER BY start_time DESC
 > [!NOTE]
 > Bu örnekteki birim bilinçli olarak küçük olsa da, alt optimum parametrelerin etkisi özellikle daha büyük veritabanlarında çok önemli olabilir. Büyük durumlarda farklılık, yavaş durumlar için hızlı durumlar ve saatler için saniyeler arasında olabilir.
 
-Bir testin kaynağının başka bir testten daha fazla veya daha az kaynak kullanıp kullanmadığını anlamak için, **sys. resource_stats** ' i inceleyebilirsiniz. Verileri karşılaştırdığınızda, test zamanlamasını, **sys. resource_stats** görünümündeki 5 dakikalık bir pencerede kalmayacak şekilde ayırın. Alıştırma hedefi, en yoğun kaynakları en aza indirmek için kullanılan toplam kaynak miktarını en aza indirmektir. Genellikle, gecikme için kod parçasını iyileştirmek kaynak tüketimini de azaltır. Bir uygulamada yaptığınız değişikliklerin gerekli olduğundan ve değişikliklerin uygulamada sorgu ipuçları kullanıyor olabilecek bir kişiye ait müşteri deneyimini olumsuz şekilde etkilemediğinden emin olun.
+Bir testin kaynağının başka bir testten daha fazla veya daha az kaynak kullanıp kullanmadığını öğrenmek için **sys.resource_stats** inceleyebilirsiniz. Verileri karşılaştırdığınızda, testlerin zamanlamasını **sys.resource_stats** görünümünde aynı 5 dakikalık pencerede kalmayacak şekilde ayırın. Alıştırma hedefi, en yoğun kaynakları en aza indirmek için kullanılan toplam kaynak miktarını en aza indirmektir. Genellikle, gecikme için kod parçasını iyileştirmek kaynak tüketimini de azaltır. Bir uygulamada yaptığınız değişikliklerin gerekli olduğundan ve değişikliklerin uygulamada sorgu ipuçları kullanıyor olabilecek bir kişiye ait müşteri deneyimini olumsuz şekilde etkilemediğinden emin olun.
 
 Bir iş yükünün yinelenen sorgular kümesi varsa, genellikle, veritabanını barındırmak için gereken en düşük kaynak boyutu birimini barındıracağından plan seçimlerinizin optimizasyonu ve doğrulanması mantıklı olur. Bunu doğruladıktan sonra, bunların düşürülmediğinden emin olmanıza yardımcı olacak planları bazen yeniden inceleyin. [Sorgu ipuçları (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)hakkında daha fazla bilgi edinebilirsiniz.
 

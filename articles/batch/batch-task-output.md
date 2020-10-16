@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85965119"
 ---
 # <a name="persist-job-and-task-output"></a>İş ve görev çıktılarını kalıcı hale getirme
@@ -59,7 +59,7 @@ Kanıtlanmış bir adlandırma düzeni istediğinizde veya Azure portal görev �
 
 Ayrıca, kendi dosya taşıma çözümünüzü de uygulayabilirsiniz. Şu durumlarda bu yaklaşımı kullanın:
 
-- Görev verilerini Azure depolama dışında bir veri deposuna kalıcı hale getirmek istiyorsunuz. Dosyaları Azure SQL veya Azure Data Lake gibi bir veri deposuna yüklemek için, bu konuma yüklemek üzere özel bir betik veya yürütülebilir dosya oluşturabilirsiniz. Sonra, birincil yürütülebilir dosyanızı çalıştırdıktan sonra komut satırında bunu çağırabilirsiniz. Örneğin, bir Windows düğümünde şu iki komutu çağırabilirsiniz:`doMyWork.exe && uploadMyFilesToSql.exe`
+- Görev verilerini Azure depolama dışında bir veri deposuna kalıcı hale getirmek istiyorsunuz. Dosyaları Azure SQL veya Azure Data Lake gibi bir veri deposuna yüklemek için, bu konuma yüklemek üzere özel bir betik veya yürütülebilir dosya oluşturabilirsiniz. Sonra, birincil yürütülebilir dosyanızı çalıştırdıktan sonra komut satırında bunu çağırabilirsiniz. Örneğin, bir Windows düğümünde şu iki komutu çağırabilirsiniz: `doMyWork.exe && uploadMyFilesToSql.exe`
 - İlk sonuçların iade etme veya erken yükleme işlemini gerçekleştirmek istiyorsunuz.
 - Hata işleme üzerinde ayrıntılı denetim sağlamak istiyorsunuz. Örneğin, belirli bir görev çıkış koduna göre belirli karşıya yükleme eylemlerini almak için görev bağımlılığı eylemlerini kullanmak istiyorsanız kendi çözümünüzü uygulamak isteyebilirsiniz. Görev bağımlılığı eylemleri hakkında daha fazla bilgi için bkz. [diğer görevlere bağımlı görevleri çalıştırmak için görev bağımlılıkları oluşturma](batch-task-dependencies.md).
 

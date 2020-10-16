@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 2f47ded22209a9d53510c7d0a2f8270096161354
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86244148"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Tüketil 'ı yükleyip kullanma
@@ -67,10 +67,10 @@ Bu makale, Tüketil yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nih
 > **Yükleme seçenekleri**
 > 
 > Yüklememizin kapsamında aşağıdaki seçenekleri kullanıyoruz:
-> - `connectInject.enabled=true`-ara sunucu 'ların Pod 'ye eklenmesi için
-> - `client.enabled=true`-Tüketil istemcilerini her düğümde çalışacak şekilde etkinleştirin
-> - `client.grpc=true`-Connectınject için gRPC dinleyicisini etkinleştirin
-> - `syncCatalog.enabled=true`-Kubernetes ve Tüketil hizmetlerini eşitleme
+> - `connectInject.enabled=true` -ara sunucu 'ların Pod 'ye eklenmesi için
+> - `client.enabled=true` -Tüketil istemcilerini her düğümde çalışacak şekilde etkinleştirin
+> - `client.grpc=true` -Connectınject için gRPC dinleyicisini etkinleştirin
+> - `syncCatalog.enabled=true` -Kubernetes ve Tüketil hizmetlerini eşitleme
 >
 > **Düğüm seçicileri**
 >

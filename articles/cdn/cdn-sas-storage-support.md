@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87432757"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS ile Azure CDN kullanma
@@ -32,7 +32,7 @@ SAS ile başlangıç ve sona erme zamanları, izinler (okuma/yazma) ve IP aralı
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Depolama SAS ile çalışmak için Azure CDN ayarlama
 Azure CDN ile SAS kullanımı için aşağıdaki üç seçenek önerilir. Tüm seçenekler zaten bir çalışma SAS oluşturmuş olduğunu varsayar (bkz. Önkoşullar). 
  
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Başlamak için bir depolama hesabı oluşturun ve ardından varlığınız için bir SAS oluşturun. İki tür saklı erişim imzası oluşturabilirsiniz: hizmet SAS veya hesap SAS. Daha fazla bilgi için bkz. [paylaşılan erişim Imzaları türleri](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures).
 
 Bir SAS belirteci oluşturduktan sonra, URL 'nize ekleyerek BLOB depolama dosyanıza erişebilirsiniz `?sv=<SAS token>` . Bu URL aşağıdaki biçimdedir: 
@@ -58,7 +58,7 @@ Bu seçenek en basit seçenektir ve Azure CDN kaynak sunucuya geçirilen tek bir
 
 2. Depolama hesabınızda SAS ayarladıktan sonra, dosyaya erişmek için CDN uç noktası ve kaynak sunucu URL 'Leriyle SAS belirtecini kullanmanız gerekir. 
    
-   Elde edilen CDN uç noktası URL 'SI aşağıdaki biçime sahiptir:`https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
+   Elde edilen CDN uç noktası URL 'SI aşağıdaki biçime sahiptir: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
    Örneğin:   
    ```
@@ -90,7 +90,7 @@ Bu seçenek yalnızca **Verizon profillerden Azure CDN Premium** için kullanıl
    ![CDN URL yeniden yazma kuralı-sol ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
     ![ CDN URL yeniden yazma kuralı-sağ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Yeni kural etkin olduktan sonra herkes, URL 'de bir SAS belirteci kullanıp kullanmadıklarından bağımsız olarak, CDN uç noktasındaki belirtilen kapsayıcıdaki dosyalara erişebilir. Biçim şöyledir:`https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Yeni kural etkin olduktan sonra herkes, URL 'de bir SAS belirteci kullanıp kullanmadıklarından bağımsız olarak, CDN uç noktasındaki belirtilen kapsayıcıdaki dosyalara erişebilir. Biçim şöyledir: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Örneğin:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
@@ -134,7 +134,7 @@ Azure CDN güvenlik belirteci kimlik doğrulamasını kullanmak için Verizon pr
 
 SAS parametreleri Azure CDN görünür olmadığından, Azure CDN kendisine göre teslim davranışını değiştiremez. Tanımlanan parametre kısıtlamaları, istemciden Azure CDN istekleri için değil, yalnızca kaynak sunucuya Azure CDN istekleri uygular. Bu ayrım, SAS parametrelerini ayarladığınızda göz önünde bulundurmanız önemlidir. Bu gelişmiş yetenekler gerekliyse ve [seçenek 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)' ü kullanıyorsanız, Azure CDN güvenlik belirtecinde uygun kısıtlamaları ayarlayın.
 
-| SAS parametre adı | Description |
+| SAS parametre adı | Açıklama |
 | --- | --- |
 | Başlangıç | Azure CDN blob dosyasına erişmeye başlayabileceğiniz zaman. Saat farkı (farklı bileşenler için saat sinyali farklı zamanlara ulaştığında) nedeniyle, varlığın hemen kullanılabilir olmasını istiyorsanız 15 dakika daha erken bir süre seçin. |
 | End | Azure CDN blob dosyasına artık erişememesi gereken süre. Daha önce Azure CDN önbelleğe alınmış dosyalara hala erişilebilir. Dosya sona erme süresini denetlemek için Azure CDN güvenlik belirtecinde uygun süre sonu saatini ayarlayın veya varlığı temizleyin. |

@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa87ee06e0ed01828148a58b2d2f754a40d8803a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300233"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088474"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>İsteğe bağlı SQL ile verileri analiz etme
 
@@ -57,4 +58,4 @@ Spark veritabanlarındaki tablolar otomatik olarak görünür ve isteğe bağlı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Spark kullanarak çözümleme](get-started-analyze-spark.md)
+> [Depolamadaki verileri analiz etme](get-started-analyze-storage.md)

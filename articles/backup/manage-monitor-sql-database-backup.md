@@ -4,10 +4,10 @@ description: Bu makalede, bir Azure VM üzerinde çalışan SQL Server veritaban
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146530"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenmiş SQL Server veritabanlarını yönetme ve izleme

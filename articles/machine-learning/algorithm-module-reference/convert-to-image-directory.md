@@ -8,56 +8,63 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/28/2020
-ms.openlocfilehash: 9f5f4b2b069ebc65430fba4bc31a9891ed61fedf
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/09/2020
+ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450109"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940385"
 ---
 # <a name="convert-to-image-directory"></a>Görüntü Dizinine Dönüştürme
 
-Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönüştürmeye yardımcı olması için görüntü veri kümesinin nasıl kullanılacağı açıklanır. Azure Machine Learning tasarımcısında görüntü sınıflandırması gibi görüntüyle ilgili görevlerde standartlaştırılmış veri biçimi.
+Bu makalede, görüntü veri kümesini, Azure Machine Learning tasarımcısında görüntü sınıflandırması gibi görüntüyle ilgili görevlerde standartlaştırılmış veri biçimi olan görüntü *dizini* veri türüne dönüştürmeye yardımcı olması için görüntü dizin oluşturma modülünün nasıl kullanılacağı açıklanır.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Görüntü dizinine Dönüştür kullanımı  
 
-1.  **Görüntü dizinine Dönüştür** modülünü tuvale ekleyin. Modül listesindeki ' Görüntü İşleme/Image Data Transformation ' kategorisinde bu modülü bulabilirsiniz. 
+1. Önce görüntü veri kümenizi hazırlayın. 
 
-2.  **Görüntü dizinine Dönüştür** modülünün girişi bir dosya veri kümesi olmalıdır. [Bir görüntü veri kümesini kaydedin](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) ve modül giriş bağlantı noktasına bağlayın. Lütfen giriş veri kümesinde resim olduğundan emin olun. Şu anda tasarımcı Image veri kümesini görselleştirmeyi desteklemiyor.
- 
-    Aşağıdaki veri kümesi biçimleri desteklenir:
+    Denetimli öğrenme için eğitim veri kümesinin etiketini belirtmeniz gerekir. Görüntü veri kümesi dosyası şu yapıda olmalıdır:
+    
+    ```
+    Your_image_folder_name/Category_1/xxx.png
+    Your_image_folder_name/Category_1/xxy.jpg
+    Your_image_folder_name/Category_1/xxz.jpeg
+    
+    Your_image_folder_name/Category_2/123.png
+    Your_image_folder_name/Category_2/nsdf3.png
+    Your_image_folder_name/Category_2/asd932_.png
+    ```
+    
+    Görüntü veri kümesi klasöründe birden çok alt klasör vardır. Her alt klasör sırasıyla bir kategorinin görüntülerini içerir. Alt klasörlerin adları, görüntü sınıflandırması gibi görevler için Etiketler olarak değerlendirilir. Daha fazla bilgi için [torchvision veri kümelerine](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) bakın.
 
-    - Şu Uzantılarda sıkıştırılmış dosya: '. zip ', '. tar ', '. gz ', '. bz2 '.
-    - Görüntüleri içeren klasör. **Öncelikle bu gibi bir klasörü sıkıştırmak ve sonra sıkıştırılmış dosyayı veri kümesi olarak kullanmak önerilir**.
+    > [!WARNING]
+    > Veri etiketlemenin içinden aktarılmış olan etiketlenmiş veri kümeleri tasarımcıda desteklenmez.
+
+    Bu uzantılara sahip görüntüler (küçük harfle) desteklenir: '. jpg ', '. jpeg ', '. png ', '. ppm ', '. bmp ', '. PGM ', '. tif ', '. tiff ', '. webp '. Ayrıca, bir klasörde birden fazla görüntü türüne sahip olabilirsiniz. Her kategori klasöründeki aynı görüntü sayısını içermesi gerekmez.
+
+    Klasörü veya sıkıştırılmış dosyayı '. zip ', '. tar ', '. gz ' ve '. bz2 ' uzantılı bir dosya kullanabilirsiniz. **Daha iyi performans için sıkıştırılmış dosyalar önerilir.** 
+    
+    ![Görüntü örneği veri kümesi](./media/module/image-sample-dataset.png)
+
+    Puanlama için, görüntü veri kümesi klasörünün yalnızca sınıflandırılmayan görüntüleri içermesi gerekir.
+
+1. Görüntü dizini modülüne dönüştürme girişi bir **dosya veri kümesi**olması gerektiğinden, görüntü veri kümesini çalışma alanınıza [bir dosya veri kümesi olarak kaydedin](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) .
+
+1. Kayıtlı görüntü veri kümesini tuvale ekleyin. Kayıtlı veri kümenizi, tuvalin solundaki modül listesindeki **veri kümeleri** kategorisinde bulabilirsiniz. Şu anda tasarımcı Image veri kümesini görselleştirmeyi desteklemiyor.
 
     > [!WARNING]
     > **Veri alma** modülünün çıkış türü yalnızca dosya yolu dizesini Içeren Dataframe dizini olduğundan, görüntü veri kümesini içeri aktarmak Için **veri alma** **modülünü kullanamazsınız.**
-    
 
-    > [!NOTE]
-    > - Denetimli öğreniminde görüntü veri kümesini kullanıyorsanız eğitim veri kümesinin etiketini belirtmeniz gerekir.
-    > - Görüntü sınıflandırma görevi için, bu görüntü veri kümesi torchvision ımagefolder biçiminde düzenleniyorsa, etiket modül çıkışında ' Category ' görüntüsü olarak oluşturulabilir. Aksi halde, etiket olmadan yalnızca görüntüler kaydedilir. Aşağıda, resim veri kümesini etiketi almak için nasıl düzenleyecağınız hakkında bir örnek verilmiştir. alt klasör adı olarak görüntü kategorisini kullanın. 
-    > - Her bir kategori klasörüne aynı sayıda görüntü yüklemeniz gerekmez.
-    > - Bu uzantılara sahip görüntüler (küçük harfle) desteklenir: '. jpg ', '. jpeg ', '. png ', '. ppm ', '. bmp ', '. PGM ', '. tif ', '. tiff ', '. webp '. Ayrıca, bir klasörde birden fazla görüntü türüne sahip olabilirsiniz.    
-    > - Daha fazla bilgi için lütfen [torchvision veri kümelerine](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) bakın.
-    >
-    > ```
-    > Your_image_folder_name/Category_1/xxx.png
-    > Your_image_folder_name/Category_1/xxy.jpg
-    > Your_image_folder_name/Category_1/xxz.jpeg
-    >
-    > Your_image_folder_name/Category_2/123.png
-    > Your_image_folder_name/Category_2/nsdf3.png
-    > Your_image_folder_name/Category_2/asd932_.png
-    > ```
-    > - Puanlama için görüntü veri kümesini kullanıyorsanız, Bu modülün giriş dosyası veri kümesi sınıflandırılmamış görüntüleri içermelidir.
+1. **Görüntü dizinine Dönüştür** modülünü tuvale ekleyin. Modül listesindeki ' Görüntü İşleme/Image Data Transformation ' kategorisinde bu modülü bulabilirsiniz. Görüntü veri kümesine bağlayın.
     
 3.  İşlem hattını gönderme. Bu modül GPU ya da CPU üzerinde çalıştırılabilir.
 
 ## <a name="results"></a>Sonuçlar
 
-**Görüntü dizini modülüne dönüştürme** çıkışı görüntü dizini biçimindedir ve giriş bağlantı noktası biçiminin de görüntü dizini olduğu diğer görüntüyle ilgili modüllerle bağlantı yapılabilir.
+**Görüntü dizini modülüne dönüştürme** çıkışı **görüntü dizini** biçimindedir ve giriş bağlantı noktası biçiminin de görüntü dizini olduğu görüntüyle ilgili diğer modüllere bağlanabilir.
+
+![Görüntü dizini çıkışına Dönüştür](./media/module/convert-to-image-directory-output.png)
 
 ## <a name="technical-notes"></a>Teknik notlar 
 
@@ -67,7 +74,7 @@ Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönü
 | ------------- | --------------------- | ------------- |
 | Giriş veri kümesi | AnyDirectory, ZipFile | Giriş veri kümesi |
 
-###  <a name="output"></a>Çıkış  
+###  <a name="output"></a>Çıktı  
 
 | Ad                   | Tür           | Açıklama            |
 | ---------------------- | -------------- | ---------------------- |

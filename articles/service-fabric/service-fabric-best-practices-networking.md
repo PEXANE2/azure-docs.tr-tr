@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
 ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630711"
 ---
 # <a name="networking"></a>Ağ
@@ -62,7 +62,7 @@ Mevcut bir kümede hızlandırılmış ağı etkinleştirmek için genişleme al
 Aşağıdaki temel kurallar, Azure yönetilen Service Fabric kümesinin güvenlik kilidi için en düşük gerekliliktir. Aşağıdaki bağlantı noktalarını açma veya IP/URL 'YI onaylama işlemi, kümenin düzgün çalışmasını engeller ve desteklenmiyor olabilir. Bu kural sayesinde, [Otomatik işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)kullanmak için kesinlikle gerekli değildir, aksi takdirde ek bağlantı noktalarının açılması gerekir.
 
 ### <a name="inbound"></a>Inbound 
-|Öncelik   |Ad               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
+|Öncelik   |Adı               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Azure              |19080       |TCP       |İnternet           |VirtualNetwork    |İzin Ver
 |3910       |İstemci             |19000       |TCP       |İnternet           |VirtualNetwork    |İzin Ver
@@ -97,7 +97,7 @@ Gelen güvenlik kuralları hakkında daha fazla bilgi:
 
 ### <a name="outbound"></a>Outbound
 
-|Öncelik   |Ad               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
+|Öncelik   |Adı               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Ağ            |Herhangi biri         |TCP       |VirtualNetwork     |VirtualNetwork    |İzin Ver
 |3910       |Kaynak sağlayıcısı  |443         |TCP       |VirtualNetwork     |ServiceFabric     |İzin Ver

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: genli
 ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85983241"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Azure sanal makine aracısını çevrimdışı modda yükler 
@@ -62,8 +62,8 @@ VM aracısını çevrimdışı modda yüklemek için aşağıdaki adımları kul
     1. \Windowsazure klasörünü \windowsazure.exe olarak yeniden adlandırın.
 
     2. Aşağıdaki kayıt defterlerini dışarı aktarın:
-        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE \Brokensystem\controlset001\services\rdadgent
+        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
+        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
 8.  VM Aracısı yüklemesi için bir depo olarak sorun giderici VM 'sinde var olan dosyaları kullanın. Aşağıdaki adımları tamamlayın:
 

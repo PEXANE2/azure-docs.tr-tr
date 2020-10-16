@@ -8,10 +8,10 @@ author: github-2407
 ms.author: krsh
 ms.date: 08/14/2020
 ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821321"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>Azure Marketi için bir sanal makine görüntüsünü test etme
@@ -31,7 +31,7 @@ Bu bölümde, yeni bir Azure VM kaynağı oluşturmak için genelleştirilmiş b
 
 Bu bölümde, Kullanıcı tarafından belirtilen bir sanal makine (VM) görüntüsünün nasıl oluşturulacağı ve dağıtılacağı açıklanmaktadır. Bunu, Azure tarafından dağıtılan bir sanal sabit diskten işletim sistemi ve veri diski VHD görüntüleri sağlayarak yapabilirsiniz. Bu adımlar, genelleştirilmiş VHD kullanarak VM 'yi dağıtır.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Genelleştirilmiş işletim sistemi VHD 'nizi ve veri diski VHD 'nizi Azure depolama hesabınıza yükleyin.
 3. Giriş sayfasında, **kaynak oluştur**' u seçin, "şablon dağıtımı" ifadesini arayın ve **Oluştur**' u seçin.
 4. **Düzenleyicide kendi şablonunuzu oluşturun**öğesini seçin.
@@ -1735,7 +1735,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 ![Çevrimiçi bir JSON görüntüleyicisindeki sonuçları test edin.](media/vm/test-results-json-viewer-2.png)
 
-## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>Linux IŞLETIM sisteminde kendi kendine test API 'sini kullanmak için KıVRıMLı kullanma
+## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>Linux IŞLETIM sisteminde Self-Test API 'sini kullanmak için KıVRıMLı kullanma
 
 API 'YI KıVRıMLı olarak çağırın:
 

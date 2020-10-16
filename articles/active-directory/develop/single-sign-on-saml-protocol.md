@@ -1,7 +1,7 @@
 ---
 title: Azure çoklu oturum açma SAML Protokolü
 titleSuffix: Microsoft identity platform
-description: Bu makalede Azure Active Directory içindeki çoklu oturum açma (SSO) SAML Protokolü açıklanmaktadır
+description: Bu makalede Azure Active Directory ' de tek Sign-On (SSO) SAML Protokolü açıklanmaktadır
 services: active-directory
 documentationcenter: .net
 author: kenwith
@@ -14,20 +14,20 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118459"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950678"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Çoklu oturum açma SAML Protokolü
+# <a name="single-sign-on-saml-protocol"></a>Tek Sign-On SAML Protokolü
 
-Bu makalede, Azure Active Directory (Azure AD) tarafından çoklu oturum açma (SSO) için desteklenen SAML 2,0 kimlik doğrulama istekleri ve yanıtları ele alınmaktadır.
+Bu makalede, Azure Active Directory (Azure AD) tarafından tek Sign-On (SSO) için desteklenen SAML 2,0 kimlik doğrulama istekleri ve yanıtları ele alınmaktadır.
 
 Aşağıdaki protokol diyagramında çoklu oturum açma sırası açıklanmaktadır. Bulut hizmeti (hizmet sağlayıcısı), `AuthnRequest` (kimlik doğrulama isteği) öğesini Azure AD 'ye (kimlik sağlayıcısı) geçirmek için BIR http yeniden yönlendirme bağlaması kullanır. Daha sonra Azure AD, bulut hizmetine bir öğe göndermek için HTTP POST bağlamasını kullanır `Response` .
 
-![Çoklu oturum açma (SSO) Iş akışı](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![Tek Sign-On (SSO) Iş akışı](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 > [!NOTE]
 > Bu makalede çoklu oturum açma için SAML kullanımı ele alınmaktadır. Çoklu oturum açmayı işlemenin diğer yolları hakkında daha fazla bilgi için (örneğin, OpenID Connect veya tümleşik Windows kimlik doğrulaması kullanarak) bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](../manage-apps/what-is-single-sign-on.md).
@@ -51,7 +51,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ID | Gerekli | Azure AD döndürülen yanıtın özniteliğini doldurmak için bu özniteliği kullanır `InResponseTo` . KIMLIK bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji, bir GUID 'nin dize gösterimine "ID" gibi bir dizeyi eklemek için kullanılır. Örneğin, `id6c1c178c166d486687be4aaf5e482730` geçerli BIR kimliğidir. |
 | Sürüm | Gerekli | Bu parametre **2,0**olarak ayarlanmalıdır. |
 | IssueInstant | Gerekli | Bu, UTC değeri ve [gidiş dönüş biçimine ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)sahip bir tarih saat dizesidir. Azure AD bu türde bir DateTime değeri bekler, ancak bu değeri değerlendirmez veya kullanmaz. |
-| AssertionConsumerServiceUrl | İsteğe Bağlı | Sağlanmışsa, bu parametrenin `RedirectUri` Azure AD 'deki bulut hizmeti ile eşleşmesi gerekir. |
+| AssertionConsumerServiceURL | İsteğe Bağlı | Sağlanmışsa, bu parametrenin `RedirectUri` Azure AD 'deki bulut hizmeti ile eşleşmesi gerekir. |
 | ForceAuthn | İsteğe Bağlı | Bu bir Boole değeridir. Doğru ise, kullanıcının Azure AD ile geçerli bir oturumu olsa bile yeniden kimlik doğrulaması yapması zorunlu olacaktır. |
 | Ipassive | İsteğe Bağlı | Bu, Azure AD 'nin Kullanıcı etkileşimi olmadan kullanıcının kimlik doğrulaması yapması gerekip gerekmediğini, varsa oturum tanımlama bilgisini kullanmasını belirten bir Boole değeridir. Bu değer doğru ise, Azure AD oturum tanımlama bilgisini kullanarak kullanıcının kimliğini doğrulamaya çalışacaktır. |
 
@@ -273,7 +273,7 @@ Bu konu veya Kullanıcı hakkında talepler içerir. Aşağıdaki alıntıda ör
 ```        
 
 * **Ad talebi** - `Name` özniteliğin değeri ( `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ), kimliği doğrulanmış kullanıcının Kullanıcı asıl adıdır, örneğin `testuser@managedtenant.com` .
-* **Objectıdentifier Claim** - `ObjectIdentifier` özniteliğin değeri ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ), `ObjectId` Azure AD 'de kimliği doğrulanmış kullanıcıyı temsil eden dizin nesnesidir. `ObjectId`, sabit, genel olarak benzersiz ve kimliği doğrulanmış kullanıcının güvenli tanımlayıcısını yeniden kullanır.
+* **Objectıdentifier Claim** - `ObjectIdentifier` özniteliğin değeri ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ), `ObjectId` Azure AD 'de kimliği doğrulanmış kullanıcıyı temsil eden dizin nesnesidir. `ObjectId` , sabit, genel olarak benzersiz ve kimliği doğrulanmış kullanıcının güvenli tanımlayıcısını yeniden kullanır.
 
 #### <a name="authnstatement"></a>Authndeyim
 

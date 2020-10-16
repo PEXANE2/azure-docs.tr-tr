@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776145"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
@@ -39,7 +39,7 @@ Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adım
 
 ### <a name="retrieve-your-domain-name"></a>Etki alanı adınızı alın 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.  
+1. [Azure portalında](https://portal.azure.com) oturum açın.  
 1. **Azure Active Directory**  >  **Özel etki alanı adlarına**Azure Active Directory gidin. 
 1. `.onmicrosoft.com`Etki alanını bir yere göz atın, bu bilgilere sonraki bir adımda ihtiyacınız olacaktır.
 
@@ -70,7 +70,7 @@ Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adım
 1. Oluşturduğunuz **uygulamadan** **Sertifikalar & parolaları**' nı seçin.
 1. **İstemci gizli**dizileri altında **yeni istemci parolası**' nı seçin.
    1. İstemciye gizli dizi **açıklaması** verin ve kullanım süresi sonu süresini kuruluş ilkelerinize göre ayarlayın.
-   1. **Add (Ekle)** seçeneğini belirleyin.
+   1. **Ekle**’yi seçin.
 
    > [!NOTE]
    > Bu anahtarı kaybederseniz, bu bölüme dönüp yeni bir anahtar oluşturmanız gerekir. Bu anahtarı gizli tut: verilerinize erişebilen herkes, verilerinize erişebilir.

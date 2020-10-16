@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906945"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093982"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub eylemleri ile Azure yay bulut CI/CD
 
 GitHub eylemleri otomatik yazılım geliştirme yaşam döngüsü iş akışını destekler. Azure Spring Cloud için GitHub eylemleri sayesinde deponuzda oluşturmak, test etmek, paketlemek, yayınlamak ve Azure 'a dağıtmak için iş akışları oluşturabilirsiniz. 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu örnek, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerektirir.
+Bu örnek, [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)gerektirir.
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub deposunu ayarlama ve kimlik doğrulama
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Maven eklentisi ile dağıtma
-Diğer bir seçenek de Jar 'yi dağıtmak ve uygulama ayarlarını güncelleştirmek için [Maven eklentisini](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) kullanmaktır. Komut `mvn azure-spring-cloud:deploy` ıdempotent ' dir ve gerekirse otomatik olarak uygulamalar oluşturur. İlgili uygulamaları önceden oluşturmanız gerekmez.
+Diğer bir seçenek de Jar 'yi dağıtmak ve uygulama ayarlarını güncelleştirmek için [Maven eklentisini](./spring-cloud-quickstart.md) kullanmaktır. Komut `mvn azure-spring-cloud:deploy` ıdempotent ' dir ve gerekirse otomatik olarak uygulamalar oluşturur. İlgili uygulamaları önceden oluşturmanız gerekmez.
 
 ```
 name: AzureSpringCloud
@@ -340,5 +340,5 @@ Eylemleriniz hatada çalışıyorsa, örneğin, Azure kimlik bilgisini ayarlamad
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Spring Cloud GitHub eylemleri için Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Hizmet sorumlularını Azure Active Directory](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
+* [Hizmet sorumlularını Azure Active Directory](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [Azure için GitHub Actions](https://github.com/Azure/actions/)

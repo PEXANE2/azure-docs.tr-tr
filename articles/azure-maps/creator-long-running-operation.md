@@ -1,5 +1,5 @@
 ---
-title: Azure haritalar uzun süren Işlem API 'SI
+title: Azure Maps Long-Running Işlem API 'SI
 description: Azure haritalar 'da uzun süre çalışan zaman uyumsuz arka plan işleme hakkında bilgi edinin
 author: anastasia-ms
 ms.author: v-stharr
@@ -10,15 +10,15 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 360fc4af688e393bb8639ee773f0bf0de603a425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83598391"
 ---
-# <a name="creator-long-running-operation-api"></a>Oluşturucu uzun süredir çalışan Işlem API 'SI
+# <a name="creator-long-running-operation-api"></a>Oluşturucu Long-Running Işlem API 'SI
 
-Azure Maps 'taki bazı API 'leri [zaman uyumsuz istek-yanıt modelini](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)kullanır. Bu model, Azure haritalar 'ın yüksek oranda kullanılabilir ve hızlı yanıt veren hizmetler sağlamasına olanak sağlar Bu makalede, Azure Map 'in uzun süreli zaman uyumsuz arka plan işlemenin belirli bir uygulanması açıklanmaktadır.
+Azure Maps 'taki bazı API 'leri [zaman uyumsuz Request-Reply bir model](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)kullanır. Bu model, Azure haritalar 'ın yüksek oranda kullanılabilir ve hızlı yanıt veren hizmetler sağlamasına olanak sağlar Bu makalede, Azure Map 'in uzun süreli zaman uyumsuz arka plan işlemenin belirli bir uygulanması açıklanmaktadır.
 
 ## <a name="submitting-a-request"></a>İstek gönderiliyor
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631350"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096343"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
@@ -40,13 +40,13 @@ Genellikle, ağlar güvenlik duvarları ve ağ güvenlik grupları (NSG 'ler) ku
 >[!IMPORTANT]
 > Ağ bağlantısını denetlemek için kimliği doğrulanmış bir proxy kullanmak Site Recovery tarafından desteklenmez ve çoğaltma etkinleştirilemez.
 
+>[!NOTE]
+> Giden bağlantıyı denetlemek için IP adresi tabanlı filtreleme gerçekleştirilmemelidir.
+> Giden bağlantıyı denetlemek için Azure Site Recovery IP adresleri Azure yönlendirme tablosuna eklenmemelidir.
 
 ## <a name="outbound-connectivity-for-urls"></a>URL'ler için giden bağlantı
 
 Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, bu Site Recovery URL 'Lerine izin verin:
-
->[!NOTE]
-> Giden bağlantıyı denetlemek için IP adresi tabanlı filtreleme gerçekleştirilmemelidir.
 
 **URL** | **Ayrıntılar**
 --- | ---
@@ -59,7 +59,7 @@ login.microsoftonline.com | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve 
 
 ## <a name="outbound-connectivity-using-service-tags"></a>Hizmet etiketlerini kullanarak giden bağlantı
 
-Giden bağlantıyı denetlemek için bir NSG kullanıyorsanız, bu hizmet etiketlerine izin verilmesi gerekir.
+Giden bağlantıyı denetlemek için NSG kullanılırken, bu hizmet etiketlerine izin verilmesi gerekir.
 
 - Kaynak bölgesindeki depolama hesapları için:
     - Kaynak bölge için bir [depolama hizmeti etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.

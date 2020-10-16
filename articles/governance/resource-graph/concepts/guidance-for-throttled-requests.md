@@ -1,15 +1,15 @@
 ---
 title: Kısıtlanan istekler için yönergeler
 description: Azure Kaynak Grafiği tarafından daraltılan isteklerin önüne geçmek için, paralel olarak Grup, Stagger, sayfal ve sorgu yapmayı öğrenin.
-ms.date: 08/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006015"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056183"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
 
@@ -118,7 +118,7 @@ Sorguları aboneliğe, kaynak grubuna veya tek tek kaynağa göre gruplandırma,
 
 ## <a name="staggering-queries"></a>Sorguları kademelendirme
 
-Kısıtlama zorlandığı için sorguların kademeli olmasını öneririz. Diğer bir deyişle, aynı anda 60 sorgu göndermek yerine sorguları dört saniyelik bir Windows 'a ayırır:
+Kısıtlama zorlandığı için sorguların kademeli olmasını öneririz. Diğer bir deyişle, aynı anda 60 sorgu göndermek yerine, sorguları 4 5 saniyelik pencereler halinde yeniden dağıtın:
 
 - Aşamalı olmayan sorgu zamanlaması
 
@@ -132,7 +132,7 @@ Kısıtlama zorlandığı için sorguların kademeli olmasını öneririz. Diğe
   |---------------------|-----|------|-------|-------|
   | Zaman aralığı (sn) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Aşağıda, Azure Kaynak grafı sorgulanırken azaltma üst bilgilerinin önceden belirtilme örneği verilmiştir:
+Azure Kaynak Grafını sorgularken azaltma üst bilgilerini önceden oluşturma örneği aşağıda verilmiştir:
 
 ```csharp
 while (/* Need to query more? */)
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Paralel olarak sorgula
 
-Gruplandırmanın paralelleştirme üzerinde kullanılması önerilse de, sorguların kolayca gruplanamamasının zaman vardır. Bu durumlarda, paralel bir biçimde birden fazla sorgu göndererek Azure Kaynak grafiğini sorgulamak isteyebilirsiniz. Aşağıda, bu senaryolarda azaltma üst bilgilerine göre nasıl _geri_ alınacağını gösteren bir örnek verilmiştir:
+Gruplandırmanın paralelleştirme üzerinde kullanılması önerilse de, sorguların kolayca gruplanamamasının zaman vardır. Bu durumlarda, paralel bir biçimde birden fazla sorgu göndererek Azure Kaynak grafiğini sorgulamak isteyebilirsiniz. Bu tür senaryolarda azaltma üst bilgilerine göre nasıl _geri_ alınacağını gösteren bir örnek aşağıda verilmiştir:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -219,7 +219,7 @@ Azure Kaynak Graph tek bir sorgu yanıtında en fazla 1000 girişi döndürdüğ
 
 - Azure CLı/Azure PowerShell
 
-  Azure CLı veya Azure PowerShell kullanırken, Azure Kaynak grafiğine yönelik sorgular, en fazla 5000 girişi getirecek şekilde otomatik olarak sayfalandırılır. Sorgu sonuçları, tüm sayfalandırılmış çağrılardaki girişlerin birleştirilmiş bir listesini döndürür. Bu durumda, sorgu sonucundaki giriş sayısına bağlı olarak, tek bir sayfalandırılmış sorgu birden fazla sorgu kotası tüketebilir. Örneğin, aşağıdaki örnekte, bir sorgunun tek bir çalıştırması en fazla beş sorgu kotası tüketebilir:
+  Azure CLı veya Azure PowerShell kullanırken, Azure Kaynak grafiğine yönelik sorgular, en fazla 5000 girişi getirecek şekilde otomatik olarak sayfalandırılır. Sorgu sonuçları, tüm sayfalandırılmış çağrılardaki girişlerin birleştirilmiş bir listesini döndürür. Bu durumda, sorgu sonucundaki giriş sayısına bağlı olarak, tek bir sayfalandırılmış sorgu birden fazla sorgu kotası tüketebilir. Örneğin, aşağıdaki örneklerde sorgunun tek bir çalıştırması en fazla beş sorgu kotası tüketebilir:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000

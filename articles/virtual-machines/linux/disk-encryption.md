@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: d2c1103ab58379781aa13bd9e90e01c474c3b6e4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4636bacafd9f643a62657196746cef0d6006f6d1
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279765"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952072"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Depolama sunucu tarafı şifrelemesi
 
@@ -76,7 +76,7 @@ Herhangi bir şifreleme algoritması, uygulama veya anahtarla ilişkili riskten 
 
 ### <a name="supported-regions"></a>Desteklenen bölgeler
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+İki şifreleme, yönetilen disklerin kullanılabildiği tüm bölgelerde kullanılabilir.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Sunucu tarafı şifrelemesi ile Azure disk şifrelemesi karşılaştırması
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/21/2020
 ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83800079"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Eşleme veri akışında koşullu bölünmüş dönüştürme
@@ -33,7 +33,7 @@ Bölünmüş koşul için bir ifade girmek üzere veri akışı ifade oluşturuc
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 
 ```
 <incomingStream>
@@ -47,7 +47,7 @@ Bölünmüş koşul için bir ifade girmek üzere veri akışı ifade oluşturuc
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akışı alan adlı, koşullu bölünmüş bir dönüşümdir `SplitByYear` `CleanData` . Bu dönüşümde iki bölünmüş koşul `year < 1960` ve `year > 1980` . `disjoint`veriler ilk eşleşen koşula gittiğinden false. İlk koşulla eşleşen her satır çıkış akışına gider `moviesBefore1960` . İkinci koşulla eşleşen tüm kalan satırlar çıkış akışına gider `moviesAFter1980` . Diğer tüm satırlar varsayılan akış üzerinden akar `AllOtherMovies` .
+Aşağıdaki örnek, gelen akışı alan adlı, koşullu bölünmüş bir dönüşümdir `SplitByYear` `CleanData` . Bu dönüşümde iki bölünmüş koşul `year < 1960` ve `year > 1980` . `disjoint` veriler ilk eşleşen koşula gittiğinden false. İlk koşulla eşleşen her satır çıkış akışına gider `moviesBefore1960` . İkinci koşulla eşleşen tüm kalan satırlar çıkış akışına gider `moviesAFter1980` . Diğer tüm satırlar varsayılan akış üzerinden akar `AllOtherMovies` .
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

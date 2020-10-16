@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254512"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management şirket içinde barındırılan ağ geçidi için yerel ölçümleri ve günlükleri yapılandırma
@@ -153,7 +153,7 @@ StatsD ve Prometheus öğelerinin her ikisi de dağıtıldığına göre, otomat
 | ------------- | ------------- | ------------- |
 | Telemetri. ölçümler. yerel  | `none` | StatsD aracılığıyla günlüğe kaydetmeyi etkinleştirir. Değer, olabilir `none` `statsd` . |
 | Telemetri. ölçümler. Local. statsd. Endpoint  | yok | StatsD uç noktasını belirtir. |
-| Telemetri. ölçümler. Local. statsd. örnekleme  | yok | Ölçüm örnekleme hızını belirtir. Değer 0 ile 1 arasında olabilir. ör.,`0.5`|
+| Telemetri. ölçümler. Local. statsd. örnekleme  | yok | Ölçüm örnekleme hızını belirtir. Değer 0 ile 1 arasında olabilir. ör., `0.5`|
 | Telemetri. ölçümler. yerel. statsd. Tag-Format  | yok | StatsD Dışarı Aktarıcı [etiketleme biçimi](https://github.com/prometheus/statsd_exporter#tagging-extensions). Değer,,,, olabilir `none` `librato` `dogStatsD` `influxDB` . |
 
 Örnek bir yapılandırma aşağıda verilmiştir:
@@ -210,12 +210,12 @@ kubectl logs <pod-name>
 
 | Alan  | Varsayılan | Açıklama |
 | ------------- | ------------- | ------------- |
-| Telemetri. logs. std  | `text` | Standart akışlara günlük kaydını sağlar. Değer `none` , `text` ,`json` |
+| Telemetri. logs. std  | `text` | Standart akışlara günlük kaydını sağlar. Değer `none` , `text` , `json` |
 | Telemetri. logs. Local  | `none` | Yerel günlüğe kaydetmeye izin vermez. Değer,, `none` , `auto` , `localsyslog` `rfc5424``journal`  |
 | Telemetri. logs. Local. localsyslog. Endpoint  | yok | Localsyslog uç noktasını belirtir.  |
-| Telemetri. logs. Local. localsyslog. tesis  | yok | Localsyslog [tesis kodunu](https://en.wikipedia.org/wiki/Syslog#Facility)belirtir. ör.,`7` 
+| Telemetri. logs. Local. localsyslog. tesis  | yok | Localsyslog [tesis kodunu](https://en.wikipedia.org/wiki/Syslog#Facility)belirtir. ör., `7` 
 | Telemetri. logs. Local. rfc5424. Endpoint  | yok | Rfc5424 uç noktasını belirtir.  |
-| Telemetri. logs. Local. rfc5424. tesis  | yok | [Rfc5424](https://tools.ietf.org/html/rfc5424)başına tesis kodunu belirtir. ör.,`7`  |
+| Telemetri. logs. Local. rfc5424. tesis  | yok | [Rfc5424](https://tools.ietf.org/html/rfc5424)başına tesis kodunu belirtir. ör., `7`  |
 | Telemetri. logs. Local. Journal. Endpoint  | yok | Günlük uç noktasını belirtir.  |
 
 Yerel günlüğe kaydetme işleminin örnek bir yapılandırması aşağıda verilmiştir:

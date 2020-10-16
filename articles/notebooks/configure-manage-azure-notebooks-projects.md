@@ -5,13 +5,13 @@ ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852812"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Azure Notebooks önizlemede projeleri yönetme ve yapılandırma
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Azure Notebooks önizlemede projeleri yönetme ve yapılandırma
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -30,7 +30,7 @@ Azure Notebooks içindeki proje panosu, dosyaları yönetmenizi ve proje özelli
 
 Azure Notebooks, her bir not defteri veya başka bir dosya çalıştırdığınızda temel alınan sanal makineyi başlatır. Sunucu dosyaları otomatik olarak kaydeder ve 60 dakika etkinlik dışı kaldıktan sonra kapatır. Ayrıca, sunucuyu dilediğiniz zaman **kapatın** komutunu (klavye kısayolu: h) kullanabilirsiniz.
 
-## <a name="compute-tier"></a>İşlem Katmanı
+## <a name="compute-tier"></a>İşlem katmanı
 
 Varsayılan olarak, projeler **ücretsiz işlem** katmanında çalışır, bu da kötüye kullanımı engellemek için 4 GB bellek ve 1 GB veri ile sınırlıdır. Bu sınırlamaları atlayabilir ve bir Azure aboneliğinde sağladığınız farklı bir sanal makineyi kullanarak işlem gücünü artırabilirsiniz. Daha fazla bilgi için bkz. [veri bilimi sanal makinelerini kullanma](use-data-science-virtual-machine.md).
 
@@ -190,4 +190,4 @@ Ayrıca, bir Python not defterindeki kod hücresinden komutunu da kullanabilirsi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Nasıl yapılır: proje veri dosyalarıyla çalışma](work-with-project-data-files.md)
-- [Not defterinde bulut verilerine erişme](access-data-resources-jupyter-notebooks.md)
+- [Bir not defterinde bulut verilerine erişme](access-data-resources-jupyter-notebooks.md)

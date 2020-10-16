@@ -9,10 +9,10 @@ ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
 ms.openlocfilehash: bea4a5d92309710645dd63e611cd0a5e3b742c34
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604355"
 ---
 # <a name="azure-key-vault-recovery-overview"></a>Azure Key Vault kurtarmaya genel bakış
@@ -34,7 +34,7 @@ Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özell
 > [!NOTE]
 > Temizleme koruması, hiçbir yönetici rolü veya izninin, temizleme korumasını geçersiz kılabilir, devre dışı bırakamaz veya atlatmak için tasarlanmıştır. **Temizleme koruması etkinleştirildikten sonra, Microsoft dahil herkes tarafından devre dışı bırakılamaz veya geçersiz kılınamaz.** Bu, silinen bir anahtar kasasını kurtarmanız veya Anahtar Kasası adını yeniden kullanmadan önce bekletme süresinin geçmesini beklemeniz gerektiği anlamına gelir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/azure-portal)
 
 ## <a name="verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete"></a>Bir anahtar kasasında geçici silmenin etkinleştirilip etkinleştirilmediğini ve geçici silme özelliğini etkinleştirip etkinleştirmediğinizi doğrulayın
 

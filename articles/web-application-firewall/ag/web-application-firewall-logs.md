@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84753597"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için kaynak günlükleri
@@ -100,7 +100,7 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 |httpVersion     | İsteğin HTTP sürümü.        |
 |Alınma baytları     | Bayt cinsinden alınan paket boyutu.        |
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
-|timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
+|timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Time-Taken alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin TLS/SSL kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
 |konak| İsteğin arka uç sunucusuna gönderildiği ana bilgisayar adı. Arka uç ana bilgisayar adı geçersiz kılınırsa, bu ad bu adı yansıtır.|
 |originalHost| İstemciden Application Gateway tarafından isteğin alındığı ana bilgisayar adı.|
@@ -143,7 +143,7 @@ Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir
 |httpVersion     | İsteğin HTTP sürümü.        |
 |Alınma baytları     | Bayt cinsinden alınan paket boyutu.        |
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
-|timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
+|timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Time-Taken alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin TLS kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
 |sslCipher| TLS iletişimi için kullanılan şifre paketi (TLS etkinse).|
 |sslProtocol| Kullanılan TLS Protokolü (TLS etkinse).|
@@ -191,7 +191,7 @@ Performans günlüğü, yalnızca, önceki adımlarda açıklandığı gibi her 
 |Healthyıhostcount     | Arka uç havuzundaki sağlıklı ana bilgisayar sayısı.        |
 |Unhealthyıhostcount     | Arka uç havuzundaki sağlıksız ana bilgisayar sayısı.        |
 |Istek sayısı     | Hizmet verilen istek sayısı.        |
-|dönemlerinde | Örneğinden istekleri sunan arka uca yapılan isteklerin ortalama gecikme süresi (milisaniye cinsinden). |
+|gecikme süresi | Örneğinden istekleri sunan arka uca yapılan isteklerin ortalama gecikme süresi (milisaniye cinsinden). |
 |failedRequestCount| Başarısız istek sayısı.|
 |aktarım hızı| Son günlüğün bu yana saniye başına bayt cinsinden ölçülen ortalama aktarım hızı.|
 
@@ -232,7 +232,7 @@ Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yal
 |ruleSetVersion     | Kural kümesi sürümü kullanıldı. Kullanılabilir değerler 2.2.9 ve 3,0 ' dir.     |
 |RuleId     | Tetikleme olayının kural KIMLIĞI.        |
 |message     | Tetikleme olayı için Kullanıcı dostu ileti. Ayrıntılar bölümünde daha fazla ayrıntı sağlanır.        |
-|action     |  İstek üzerinde gerçekleştirilen eylem. Kullanılabilir değerler engellendi ve Izin verilir.      |
+|eylem     |  İstek üzerinde gerçekleştirilen eylem. Kullanılabilir değerler engellendi ve Izin verilir.      |
 |Site     | Günlüğün oluşturulduğu site. Şu anda, kurallar genel olduğundan yalnızca küresel olarak listelenir.|
 |bilgileri     | Tetikleme olayının ayrıntıları.        |
 |Ayrıntılar. ileti     | Kuralın açıklaması.        |

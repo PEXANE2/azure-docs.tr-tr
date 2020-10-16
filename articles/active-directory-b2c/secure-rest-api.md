@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385340"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089545"
 ---
 # <a name="secure-your-restful-services"></a>Yeniden takip eden hizmetlerinizi güvenli hale getirin 
 
@@ -43,7 +43,7 @@ HTTP temel kimlik doğrulaması, [RFC 2617](https://tools.ietf.org/html/rfc2617)
 
 HTTP temel kimlik doğrulamasıyla REST API teknik bir profil yapılandırmak için, Kullanıcı adını ve parolayı depolamak üzere aşağıdaki şifreleme anahtarlarını oluşturun:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalda](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -132,7 +132,7 @@ Aşağıda, HTTP temel kimlik doğrulaması ile yapılandırılmış bir RESTAN 
 
 ### <a name="add-a-client-certificate-policy-key"></a>İstemci sertifikası ilke anahtarı ekleme
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalda](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -312,9 +312,9 @@ Yukarıdaki kod parçacıklarını ekledikten sonra teknik profiliniz aşağıda
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>OAuth2 taşıyıcı belirteci ilke anahtarını ekleyin
 
-Taşıyıcı belirteç değerini depolamak için bir ilke anahtarı oluşturun.
+Bir REST API teknik profilini OAuth2 taşıyıcı belirteciyle yapılandırmak için, REST API sahibinden bir erişim belirteci alın. Ardından, taşıyıcı belirtecini depolamak için aşağıdaki şifreleme anahtarını oluşturun.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalda](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.

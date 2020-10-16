@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90998065"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL yönetilen örnek yönetimi işlemlerini izleme
@@ -88,7 +88,7 @@ Azure portal yönetilen örnek **genel bakış** sayfasını kullanarak yönetil
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Get-Azsqlınstanceoperation cmdlet 'i, yönetilen bir örnekteki işlemler hakkında bilgi alır. Yönetilen bir örnek üzerinde tüm işlemleri görüntüleyebilir veya işlem adı sağlayarak belirli bir işlemi görüntüleyebilirsiniz.
+Get-AzSqlInstanceOperation cmdlet 'i yönetilen bir örnekteki işlemler hakkında bilgi alır. Yönetilen bir örnek üzerinde tüm işlemleri görüntüleyebilir veya işlem adı sağlayarak belirli bir işlemi görüntüleyebilirsiniz.
 
 ```powershell-interactive
 $managedInstance = "yourInstanceName"

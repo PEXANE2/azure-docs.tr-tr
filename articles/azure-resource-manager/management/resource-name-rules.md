@@ -4,10 +4,10 @@ description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlam
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653375"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
@@ -39,8 +39,8 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | hizmet | global | 1-50 | Alfasayısal ve kısa çizgi.<br><br>Mektupla başlayın ve alfasayısal ile bitemez. |
 > | hizmet/API 'ler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/sorunlar/ekler | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/sorunlar/açıklamalar | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/sorunlar/ekler | veriliş | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/sorunlar/açıklamalar | veriliş | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/işlemler | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/işlemler/Etiketler | operation | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/yayınlar | api | 1-80 | Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Alfasayısal veya alt çizgi ile başlatın ve sonlandırın. |
@@ -107,7 +107,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region | 3-24 | Küçük harfler ve rakamlar. |
+> | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/sertifikalar | Batch hesabı | 5-45 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/havuzlar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -653,7 +653,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | storageAccounts/managementPolicies | depolama hesabı |  | Olmalıdır `default` . |
 > | blob | kapsayıcı | 1-1024 | Herhangi bir URL karakteri, büyük/küçük harfe duyarlı |
 > | kuyruk | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
-> | table | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
+> | tablo | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. Storagessync
 

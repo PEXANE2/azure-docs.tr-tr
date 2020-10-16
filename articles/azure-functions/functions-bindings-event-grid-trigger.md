@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214129"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid tetikleyicisi
@@ -407,11 +407,11 @@ Event Grid tetikleyicisiyle Azure portal geliştirdiğiniz işlevlerde **tümle�
 
 Bu bağlantıyı seçtiğinizde, portal geçerli tetikleyici uç noktası zaten tanımlı olan **olay aboneliği oluştur** sayfasını açar.
 
-:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="İşlev uç noktası zaten tanımlı olay aboneliği oluştur" :::
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Portalda tetiklemek için yeni bir olay aboneliği bağlayın." :::
 
 Azure portal kullanarak abonelikler oluşturma hakkında daha fazla bilgi için Event Grid belgelerinde [özel olay oluşturma-Azure Portal](../event-grid/custom-event-quickstart-portal.md) konusuna bakın.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)kullanarak bir abonelik oluşturmak için [az eventgrid olay-abonelik oluştur](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) komutunu kullanın.
 

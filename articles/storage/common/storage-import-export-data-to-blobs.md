@@ -9,17 +9,17 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514219"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Blob depolama alanına veri aktarmak için Azure Içeri/dışarı aktarma hizmetini kullanma
 
 Bu makalede, Azure Içeri/dışarı aktarma hizmeti 'ni kullanarak büyük miktarlarda verileri Azure Blob depolamaya güvenli bir şekilde aktarmak için adım adım yönergeler sağlanmaktadır. Azure Bloblarına veri aktarmak için hizmet, verilerinizi içeren şifrelenmiş disk sürücülerinin bir Azure veri merkezine sevk etmeniz gerekir.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Verileri Azure Blob depolamaya aktarmak üzere bir içeri aktarma işi oluşturmadan önce, bu hizmet için aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun.
 Şunları yapmanız gerekir:
@@ -82,7 +82,7 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
     |/j     |. Jrn uzantılı günlük dosyasının adı. Her sürücü için bir günlük dosyası oluşturulur. Günlük dosyası adı olarak disk seri numarasını kullanmanızı öneririz.         |
     |/id     |Oturum KIMLIĞI. Komutun her örneği için benzersiz bir oturum numarası kullanın.      |
     |/t:     |Sevk edilecek diskin sürücü harfi. Örneğin, sürücü `D` .         |
-    |/BK:     |Sürücünün BitLocker anahtarı. Çıktısından alınan sayısal parola`manage-bde -protectors -get D:`      |
+    |/BK:     |Sürücünün BitLocker anahtarı. Çıktısından alınan sayısal parola `manage-bde -protectors -get D:`      |
     |/srcdir:     |Sevk edilecek diskin sürücü harfi ve ardından `:\` . Örneğin, `D:\`.         |
     |/dstdir:     |Azure depolama 'daki Hedef kapsayıcının adı.         |
     |/blobtype:     |Bu seçenek, verileri içe aktarmak istediğiniz Blobların türünü belirtir. Blok Blobları için bu `BlockBlob` ve sayfa Blobları için olduğu gibi `PageBlob` .         |

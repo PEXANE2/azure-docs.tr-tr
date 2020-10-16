@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827897"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
@@ -52,7 +52,7 @@ Risk algılamaları görünümüne gidin ve ' algılama türü 'ne göre filtrel
 
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Her risk algılaması için kendi risk düzeylerimi neden ayarlayamıyorum?
 
-Kimlik koruması 'ndaki risk düzeyleri algılama hassasiyetini temel alır ve denetimli makine öğrenimi tarafından desteklenir. Kullanıcıların hangi deneyimle sunulduğunu özelleştirmek için, Yönetici Kullanıcı risk ve oturum açma risk Ilkelerinden belirli kullanıcıları/grupları dahil edebilir/hariç tutabilir.
+Kimlik koruması 'ndaki risk düzeyleri algılama hassasiyetini temel alır ve denetimli makine öğrenimi tarafından desteklenir. Kullanıcıların hangi deneyimle sunulduğunu özelleştirmek için, Yönetici Kullanıcı riskidir Sign-In ve risk Ilkelerinden bazı kullanıcıları/grupları dahil edebilir/hariç tutabilir.
 
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Bir oturum açma konumu, kullanıcının gerçekten gerçekten oturum açmasından nasıl eşleşmez?
 

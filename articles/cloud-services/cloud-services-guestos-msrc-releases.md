@@ -10,47 +10,44 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/29/2020
+ms.date: 10/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6ceba8e81c4700963e0d147c10085760b9308319
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531165"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076666"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
 
 ## <a name="september-2020-guest-os"></a>Eylül 2020 Konuk işletim sistemi
->[!NOTE]
->Eylül Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Eylül Konuk işletim sisteminde bulunur. Bu liste değişikliğe tabidir.
-
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2,102, 3,89, 4,82 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4561600]  |  Flash güncelleştirmesi | 3,89, 4,82, 5,47, 6,23 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4577015]  |  En son toplu güncelleştirme (LCU) | 5,47 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4570333]  |  En son toplu güncelleştirme (LCU) | 6,23 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4570673]  |  Hizmet yığını güncelleştirmesi | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4577051]  |  Aylık toplu | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4569767]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4566426]  |  Hizmet yığını güncelleştirmesi | 3,89 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4577038]  |  Aylık toplu | 3,89 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4569765]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 3,89 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 3,89 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4566425]  |  Hizmet yığını güncelleştirmesi | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4577066]  |  Aylık toplu | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4569768]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 Security ve Quality ROLLUP | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4578013]  |  Güvenlik Güncelleştirmesi | 2,102 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4576750]  |  Hizmet yığını güncelleştirmesi | 5,47 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4494175]  |  Mikro kod | 5,47 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4570332]  |  Hizmet yığını güncelleştirmesi | 6,23 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4570720]  |  .NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi | 6,23 | 8 Eyl, 2020 |
-|  Rel 20-09 |  [4494174]  |  Mikro kod | 6,23 | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | [2,102], [3,89], [4,82] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4561600]  |  Flash güncelleştirmesi | [3,89], [4,82], [5,47], [6,23] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4577015]  |  En son toplu güncelleştirme (LCU) | [5,47] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4570333]  |  En son toplu güncelleştirme (LCU) | [6,23] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4570673]  |  Hizmet yığını güncelleştirmesi | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4577051]  |  Aylık toplu | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4569767]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4566426]  |  Hizmet yığını güncelleştirmesi | [3,89] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4577038]  |  Aylık toplu | [3,89] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4569765]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [3,89] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | [3,89] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4566425]  |  Hizmet yığını güncelleştirmesi | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4577066]  |  Aylık toplu | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4569768]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 Security ve Quality ROLLUP | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4578013]  |  Güvenlik Güncelleştirmesi | [2,102] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4576750]  |  Hizmet yığını güncelleştirmesi | [5,47] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4494175]  |  Mikro kod | [5,47] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4570332]  |  Hizmet yığını güncelleştirmesi | [6,23] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4570720]  |  .NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi | [6,23] | 8 Eyl, 2020 |
+|  Rel 20-09 |  [4494174]  |  Mikro kod | [6,23] | 8 Eyl, 2020 |
 
 [4577010]: https://support.microsoft.com/kb/4577010
 [4561600]: https://support.microsoft.com/kb/4561600
@@ -74,6 +71,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
 [4494174]: https://support.microsoft.com/kb/4494174
+[2,102]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,47]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,23]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 ## <a name="august-2020-guest-os"></a>Ağustos 2020 Konuk işletim sistemi
 
@@ -122,11 +124,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4565912]: https://support.microsoft.com/kb/4565912
 [4569776]: https://support.microsoft.com/kb/4569776
 [4566424]: https://support.microsoft.com/kb/4566424
-[2,101]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,88]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,46]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,22]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,101]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,88]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,81]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,46]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,22]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="july-2020-guest-os"></a>Temmuz 2020 Konuk işletim sistemi
@@ -177,11 +179,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4565632]: https://support.microsoft.com/kb/4565632
 [4558997]: https://support.microsoft.com/kb/4558997
 [4494174]: https://support.microsoft.com/kb/4494174
-[2,100]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,87]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,45]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,21]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,100]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,87]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,80]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,45]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,21]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="june-2020-guest-os"></a>Haziran 2020 Konuk işletim sistemi
@@ -216,11 +218,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4561666]: https://support.microsoft.com/kb/4561666
 [4562561]: https://support.microsoft.com/kb/4562561
 [4562562]: https://support.microsoft.com/kb/4562562
-[2,99]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,86]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,44]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,20]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,99]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,86]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,79]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,44]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,20]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="may-2020-guest-os"></a>Mayıs 2020 Konuk işletim sistemi
@@ -262,11 +264,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
-[2,98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2,98]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,85]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,78]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,43]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,19]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="april-2020-guest-os"></a>Nisan 2020 Konuk işletim sistemi
@@ -304,11 +306,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4540725]: https://support.microsoft.com/kb/4540725
 [4540723]: https://support.microsoft.com/kb/4540723
 [4539571]: https://support.microsoft.com/kb/4539571
-[2.97]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
-[3,84]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[4,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[5,42]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[6,18]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[2.97]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,84]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,77]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,42]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,18]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 ## <a name="march-2020-guest-os"></a>Mart 2020 Konuk işletim sistemi
@@ -335,11 +337,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4537814]: https://support.microsoft.com/kb/4537814 
 [4537821]: https://support.microsoft.com/kb/4537821 
 
-[6,17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5.41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,96]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,17]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.41]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,76]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,83]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,96]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="february-2020-guest-os"></a>Şubat 2020 Konuk işletim sistemi
@@ -378,11 +380,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4532920]: https://support.microsoft.com/kb/4532920
 [4534297]: https://support.microsoft.com/kb/4534297
 
-[6,16]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,40]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,75]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,95]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,16]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,40]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,75]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,82]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,95]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="january-2020-guest-os"></a>Ocak 2020 Konuk işletim sistemi
@@ -428,11 +430,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4530734]: https://support.microsoft.com/kb/4530734
 [4530691]: https://support.microsoft.com/kb/4530691
 [4530702]: https://support.microsoft.com/kb/4530702
-[6,15]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,39]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,74]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,94]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,15]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,39]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,74]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,81]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,94]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="december-2019-guest-os"></a>Aralık 2019 Konuk işletim sistemi
@@ -472,11 +474,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4524445]: https://support.microsoft.com/kb/4524445
 [4520724]: https://support.microsoft.com/kb/4520724
 [4523204]: https://support.microsoft.com/kb/4523204
-[6,14]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3.80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,14]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,38]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,73]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.80]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,93]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 
@@ -515,11 +517,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4521864]: https://support.microsoft.com/kb/4521864
 [4521858]: https://support.microsoft.com/kb/4521858
 [4521862]: https://support.microsoft.com/kb/4521862
-[6,13]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,37]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,72]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3.79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,92]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,13]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,37]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,72]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3.79]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,92]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="october-2019-guest-os"></a>Ekim 2019 Konuk işletim sistemi
@@ -564,11 +566,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
-[6,12]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,36]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,71]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,91]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,12]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,36]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,71]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,78]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,91]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>Eylül 2019 Konuk işletim sistemi
@@ -606,11 +608,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
-[6,11]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5.35]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,70]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,11]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5.35]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,70]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,77]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,90]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>Ağustos 2019 Konuk işletim sistemi
@@ -663,11 +665,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6,1]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,34]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,69]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,1]: ./cloud-services-guestos-update-matrix.md#family-6-releases
+[5,34]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[4,69]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[3,76]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[2,89]: ./cloud-services-guestos-update-matrix.md#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>Temmuz 2019 Konuk işletim sistemi
@@ -1438,7 +1440,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS16-147 |[3204063]   |Microsoft Uniscribe için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
 | MS16-149 |[3205655]   |Microsoft Windows için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
 | MS16-150 |[3205642]   |Güvenli çekirdek modu için güvenlik güncelleştirmesi |5.4 |13. ara, 2016 |
-| MS16-151.552 |[3205651]   |Çekirdek modu sürücüleri için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
+| MS16-151.552 |[3205651]   |Kernel-Mode sürücüleri için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
 | MS16- |[3199709]   |Windows çekirdeği için güvenlik güncelleştirmesi |5.4 |13. ara, 2016 |
 | MS16- |[3207328] |Ortak Günlük Dosya Sistemi sürücü için güvenlik güncelleştirmesi|2,58, 3,46, 4,39, 5,4 |13. ara, 2016 |
 | MS16-155 |[3205640]   |.NET Framework için güvenlik güncelleştirmesi |5.4 |13. ara, 2016 |
@@ -1454,7 +1456,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS16-131 |[3199151]   |Microsoft video denetimi için güvenlik güncelleştirmesi |5,3, 4,38, 3,45, 2,57 |8 Kasım 2016 |
 | MS16-132 |[3199120] |Microsoft bileşeni için güvenlik güncelleştirmesi |5,3, 4,38, 3,45, 2,57 |8 Kasım 2016 |
 | MS16-134 |[3193706] |Ortak Günlük Dosya Sistemi sürücü için güvenlik güncelleştirmesi |5,3, 4,38, 3,45, 2,57 |8 Kasım 2016 |
-| MS16-135 |[3199135] |Çekirdek modu sürücüleri için güvenlik güncelleştirmesi |5,3, 4,38, 3,45, 2,57 |8 Kasım 2016 |
+| MS16-135 |[3199135] |Kernel-Mode sürücüleri için güvenlik güncelleştirmesi |5,3, 4,38, 3,45, 2,57 |8 Kasım 2016 |
 | MS16-137 |[3199173]   |Windows kimlik doğrulama yöntemleri için güvenlik güncelleştirmesi |5,3, 4,38, 3,45, 2,57 |8 Kasım 2016 |
 | MS16-138 |[3199647] |Microsoft sanal sabit sürücüsüne yönelik güvenlik güncelleştirmesi |5,3, 4,38, 3,45 |8 Kasım 2016 |
 | MS16-139 |[3199720] |Windows çekirdeği için güvenlik güncelleştirmesi |2,57 |Kas 8,2016 |
@@ -1476,7 +1478,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | --- | --- | --- | --- | --- |
 | MS16-118 |[3192887] |Internet Explorer için toplu güvenlik güncelleştirmesi |4,37, 3,44, 2,56 |11 Ekim 2016 |
 | MS16-120 |[3192884] |Microsoft grafik bileşeni için güvenlik güncelleştirmesi |4,37, 3,44, 2,56 |11 Ekim 2016 |
-| MS16-123 |[3192892] |Çekirdek modu sürücüleri için güvenlik güncelleştirmesi |4,37, 3,44, 2,56 |11 Ekim 2016 |
+| MS16-123 |[3192892] |Kernel-Mode sürücüleri için güvenlik güncelleştirmesi |4,37, 3,44, 2,56 |11 Ekim 2016 |
 | MS16-124 |[3193227] |Windows kayıt defteri için güvenlik güncelleştirmesi |4,37, 3,44, 2,56 |11 Ekim 2016 |
 | MS16-126 |[3196067] |Microsoft Internet mesajlaşma API 'SI için güvenlik güncelleştirmesi |2,56 |11 Ekim 2016 |
 | MS16-101 |[3178465] |Windows kimlik doğrulama yöntemleri için güvenlik güncelleştirmesi |4,37, 3,44, 2,56 |11 Ekim 2016 |
@@ -1497,7 +1499,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS16-114 |[3185879] |Windows SMB sunucusu için güvenlik güncelleştirmesi |4,36, 3,43, 2,55 |13 Eyl, 2016 |
 | MS16-115 |[3188733] |PDF için güvenlik güncelleştirmesi |4,35, 3,43 |13 Eyl, 2016 |
 | MS16-116 |[3188724] |VBScript betik altyapısı için OLE Otomasyonunda güvenlik güncelleştirmesi |4,36, 3,43, 2,55 |13 Eyl, 2016 |
-| YOK |[3174644] |Diffie-Hellman anahtar değişimi için güncelleştirilmiş destek |4,36, 3,43, 2,55 |13 Eyl, 2016 |
+| YOK |[3174644] |Diffie-Hellman anahtar değişimi için destek güncelleştirildi |4,36, 3,43, 2,55 |13 Eyl, 2016 |
 | YOK |[3177723] |Saat dilimi güncelleştirmesi-Mısır DST iptal eder |4,36, 3,43, 2,55 |13 Eyl, 2016 |
 | YOK |[3179573] |Windows 7 SP1 ve Windows Server 2008 R2 SP1 için Ağustos 2016 güncelleştirme paketi |2.55 |13 Eyl, 2016 |
 | YOK |[3179575] |Windows Server 2012 için Ağustos 2016 güncelleştirme paketi |3,43 |13 Eyl, 2016 |
@@ -1508,11 +1510,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | --- | --- | --- | --- | --- |
 | MS16-095 |[3177356] |Internet Explorer için toplu güvenlik güncelleştirmesi |4,35, 3,42, 2,54 |9 Ağu, 2016 |
 | MS16-097 |[3177393] |Microsoft grafik bileşeni için güvenlik güncelleştirmesi |4,35, 3,42, 2,54 |9 Ağu, 2016 |
-| MS16-098 |[3178466] |Windows çekirdek modu sürücüleri için güvenlik güncelleştirmesi |4,35, 3,42, 2,54 |9 Ağu, 2016 |
+| MS16-098 |[3178466] |Windows Kernel-Mode sürücüleri için güvenlik güncelleştirmesi |4,35, 3,42, 2,54 |9 Ağu, 2016 |
 | MS16-100 |[3179577] |Güvenli önyükleme için güvenlik güncelleştirmesi |4,35, 3,42 |9 Ağu, 2016 |
 | MS16-101 |[3178465] |Windows kimlik doğrulama yöntemleri için güvenlik güncelleştirmesi |4,35, 3,42, 2,54 |9 Ağu, 2016 |
 | MS16-102 |[3182248] |Microsoft Windows PDF kitaplığı için güvenlik güncelleştirmesi |4,35, 3,42 |9 Ağu, 2016 |
-| MS16-077 yeniden yayınlama |[3165191] |Web proxy için güvenlik güncelleştirmesi otomatik bul (WPAD) |4,35, 3,42, 2,54 |9 Ağu, 2016 |
+| MS16-077 Re-Release |[3165191] |Web proxy için güvenlik güncelleştirmesi otomatik bul (WPAD) |4,35, 3,42, 2,54 |9 Ağu, 2016 |
 | YOK |[3172605] |Windows 7 SP1 ve Windows Server 2008 R2 SP1 için Temmuz 2016 güncelleştirme paketi |2,54 |9 Ağu, 2016 |
 | YOK |[3172615] |Windows Server 2012 için Temmuz 2016 güncelleştirme paketi |3,42 |9 Ağu, 2016 |
 | YOK |[3172614] |Windows RT 8,1, Windows 8.1 ve Windows Server 2012 R2 için Temmuz 2016 güncelleştirme paketi |4,35 |9 Ağu, 2016 |
@@ -1600,7 +1602,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS16-031 |[3140410] |Ayrıcalık yükselmesine yönelik Microsoft Windows için güvenlik güncelleştirmesi |2,49 |8 Mart 2016 |
 | MS16- |[3143141] |Ayrıcalık yükselmesine yönelik Ikincil oturum açma güvenlik güncelleştirmesi |4,30, 3,37, 2,49 |8 Mart 2016 |
 | MS16-033 |[3143142] |Ayrıcalık yükselmesine yönelik olarak USB yığın depolama sınıfı sürücüsüne güvenlik güncelleştirmesi |4,30, 3,37, 2,49 |8 Mart 2016 |
-| MS16-034 |[3143145] |Ayrıcalık yükselmesine yönelik çekirdek modu sürücüsü için güvenlik güncelleştirmeleri |4,30, 3,37, 2,49 |8 Mart 2016 |
+| MS16-034 |[3143145] |Ayrıcalık yükselmesine yönelik Kernel-Mode sürücü için güvenlik güncelleştirmeleri |4,30, 3,37, 2,49 |8 Mart 2016 |
 
 ## <a name="february-2016-guest-os"></a>Şubat 2016 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
@@ -1609,20 +1611,20 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS16-013 |[3134811] |Uzaktan kod yürütmeye yönelik olarak Windows Journal 'a güvenlik güncelleştirmesi |4,29, 3,36, 2,48 |9 Şubat 2016 |
 | MS16-014 |[3134228] |Uzaktan kod yürütmeye yönelik olarak Microsoft Windows Güvenlik Güncelleştirmesi |4,29, 3,36, 2,48 |9 Şubat 2016 |
 | MS16-BIR |[3136041] |Ayrıcalık yükselmesine yönelik olarak WebDAV güvenlik güncelleştirmesi |4,29, 3,36, 2,48 |9 Şubat 2016 |
-| MS16-018 |[3136082] |Ayrıcalık yükselmesine yönelik Windows çekirdek modu sürücüsü için güvenlik güncelleştirmesi |4,29, 3,36, 2,48 |9 Şubat 2016 |
+| MS16-018 |[3136082] |Ayrıcalık yükselmesine yönelik Windows Kernel-Mode sürücüsü için güvenlik güncelleştirmesi |4,29, 3,36, 2,48 |9 Şubat 2016 |
 | MS16-019 |[3137893] |Uzaktan kod yürütmeye yönelik .NET Framework için güvenlik güncelleştirmesi |4,29, 3,36, 2,48 |9 Şubat 2016 |
 | MS16-021 |[3133043] |NPS RADIUS sunucusu için hizmet reddinin ele aldığı güvenlik güncelleştirmesi |4,29, 3,36, 2,48 |9 Şubat 2016 |
 | Microsoft Güvenlik Danışmanlığı |[3109853] |TLS birlikte çalışabilirliğini artırmak için güncelleştirme |4,29, 3,36 |9 Şubat 2016 |
-| Yeniden Yayınla-MS15-101 |[3089662] |.NET Framework güvenlik açıkları ayrıcalık yükselmesine Izin verebilir |4,29, 3,36, 2,48 |9 Şubat 2016 |
-| Yeniden Yayınla-MS15-118 |[3104507] |Ayrıcalık yükselmesine yönelik .NET Framework için güvenlik güncelleştirmeleri |4,29, 3,36, 2,48 |9 Şubat 2016 |
-| Yeniden Yayınla-MS15-128 |[3104503] |Uzaktan kod yürütmeye yönelik olarak Microsoft grafik bileşeni için güvenlik güncelleştirmeleri |4,29, 3,36, 2,48 |9 Şubat 2016 |
+| Re-Release-MS15-101 |[3089662] |.NET Framework güvenlik açıkları ayrıcalık yükselmesine Izin verebilir |4,29, 3,36, 2,48 |9 Şubat 2016 |
+| Re-Release-MS15-118 |[3104507] |Ayrıcalık yükselmesine yönelik .NET Framework için güvenlik güncelleştirmeleri |4,29, 3,36, 2,48 |9 Şubat 2016 |
+| Re-Release-MS15-128 |[3104503] |Uzaktan kod yürütmeye yönelik olarak Microsoft grafik bileşeni için güvenlik güncelleştirmeleri |4,29, 3,36, 2,48 |9 Şubat 2016 |
 
 ## <a name="january-2016-guest-os"></a>Ocak 2016 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | MS16-001 |[3124903] |Internet Explorer için toplu güvenlik güncelleştirmesi |4,28, 3,35, 2,47 |12 Ocak 2016 |
 | MS16-003 |[3125540] |JScript ve VBScript için toplu güvenlik güncelleştirmesi |2,47 |12 Ocak 2016 |
-| MS16-005 |[3124584] |Uzaktan kod yürütmeye yönelik olarak Windows çekirdek modu sürücülerine yönelik güvenlik güncelleştirmesi |4,28, 3,35, 2,47 |12 Ocak 2016 |
+| MS16-005 |[3124584] |Uzaktan kod yürütmeye yönelik olarak Windows Kernel-Mode sürücüleri için güvenlik güncelleştirmesi |4,28, 3,35, 2,47 |12 Ocak 2016 |
 | MS16-007 |[3124901] |Uzak kod yürütmeye yönelik olarak Microsoft Windows için güvenlik güncelleştirmesi |4,28, 3,35, 2,47 |12 Ocak 2016 |
 | MS16-008 |[3124605] |Ayrıcalık yükselmesine yönelik çekirdek için güvenlik güncelleştirmesi |4,28, 3,35, 2,47 |12 Ocak 2016 |
 | Microsoft Güvenlik Danışmanlığı düzeltmesi |[2755801] |Internet Explorer 'da Adobe Flash Player 'da güvenlik açıkları Güncelleştirmesi (paket KB: TBD)-danışmanlık yer tutucusu |4,28, 3,35 |12 Ocak 2016 |
@@ -1699,7 +1701,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS15-069 |[3072631] |Windows 'daki güvenlik açıkları uzaktan kod yürütmeye Izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
 | MS15-071 |[3068457] |NETLOGON güvenlik açığı sızdırmaya Izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
 | MS15-BIR |[3069392] |Grafik sürücüsündeki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
-| MS15-073 |[3070102] |Çekirdek modu sürücüsündeki güvenlik açıkları ayrıcalık yükselmesine izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
+| MS15-073 |[3070102] |Kernel-Mode sürücüsündeki güvenlik açıkları ayrıcalık yükselmesine izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
 | MS15-074 |[3072630] |Windows Installer hizmetindeki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
 | MS15-075 |[3072633] |OLE 'deki güvenlik açıkları ayrıcalık yükselmesine izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
 | MS15-076 |[3067505] |Windows Uzaktan yordam çağrısındaki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
@@ -1712,7 +1714,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS15-056 |[3058515] |Internet Explorer için toplu güvenlik güncelleştirmesi |4,21, 3,28, 2,40 |9 Haziran 2015 |
 | MS15-BU |[3033890] |Windows Media Player güvenlik açığı uzaktan kod yürütmeye Izin verebilir |4,21, 3,28, 2,40 |9 Haziran 2015 |
 | MS15-060 |[3059317] |Microsoft ortak denetimlerindeki güvenlik açığı uzaktan kod yürütmeye Izin verebilir |4,21, 3,28, 2,40 |9 Haziran 2015 |
-| MS15-061 |[3057839] |Windows Çekirdek Modu Sürücülerindeki Güvenlik açıkları ayrıcalık yükselmesine Izin verebilir |4,21, 3,28, 2,40 |9 Haziran 2015 |
+| MS15-061 |[3057839] |Windows Kernel-Mode sürücülerindeki güvenlik açıkları ayrıcalık yükselmesine Izin verebilir |4,21, 3,28, 2,40 |9 Haziran 2015 |
 | MS15-062 |[3062577] |Active Directory Federasyon Hizmetleri (AD FS) güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4,21, 3,28, 2,40 |9 Haziran 2015 |
 | MS15-063 |[3063858] |Windows çekirdeğindeki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4,21, 3,28, 2,40 |9 Haziran 2015 |
 
@@ -1724,7 +1726,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS15-045 |[3046002] |Windows Journal 'daki güvenlik açığı uzaktan kod yürütmeye Izin verebilir |4,20, 3,27, 2,39 |12 Mayıs 2015 |
 | MS15-2.048 |[3057134] |.NET Framework güvenlik açıkları ayrıcalık yükselmesine Izin verebilir |4,20, 3,27, 2,39 |12 Mayıs 2015 |
 | MS15-050 |[3055642] |Hizmet denetimi Yöneticisi 'ndeki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4,20, 3,27, 2,39 |12 Mayıs 2015 |
-| MS15-051 |[3057191] |Windows Çekirdek Modu Sürücülerindeki Güvenlik açıkları ayrıcalık yükselmesine Izin verebilir |4,20, 3,27, 2,39 |12 Mayıs 2015 |
+| MS15-051 |[3057191] |Windows Kernel-Mode sürücülerindeki güvenlik açıkları ayrıcalık yükselmesine Izin verebilir |4,20, 3,27, 2,39 |12 Mayıs 2015 |
 | MS15-052 |[3050514] |Windows çekirdeğindeki güvenlik açığı güvenlik özelliği geçişine Izin verebilir |4,20, 3,27, 2,39 |12 Mayıs 2015 |
 | MS15-053 |[3057263] |JScript ve VBScript komut dosyası altyapısındaki güvenlik açıkları güvenlik özelliği geçişine Izin verebilir |4,20, 3,27, 2,39 |12 Mayıs 2015 |
 | MS15-054 |[3051768] |Microsoft Yönetim Konsolu dosya biçimindeki güvenlik açığı hizmet reddine Izin verebilir |4,20, 3,27, 2,39 |12 Mayıs 2015 |
@@ -2132,9 +2134,9 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4014567]: https://support.microsoft.com/kb/4014567
 [4015550]: https://support.microsoft.com/kb/4015550
 [4013418]: https://support.microsoft.com/kb/4013418
-[4022345]: https://technet.microsoft.com/library/security/4022345.aspx
-[4022344]: https://technet.microsoft.com/library/security/4022344.aspx
-[4021279]: https://technet.microsoft.com/library/security/4021279.aspx
+[4022345]: /security-updates/SecurityAdvisories/2017/4022345
+[4022344]: /security-updates/SecurityAdvisories/2017/4022344
+[4021279]: /security-updates/SecurityAdvisories/2017/4021279
 
 
 [4015217]: https://support.microsoft.com/kb/4015217
@@ -2173,7 +2175,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [3211320]: https://support.microsoft.com/kb/3211320
 
 
-[3216771]: https://technet.microsoft.com/library/security/MS17-004
+[3216771]: /security-updates/SecurityBulletins/2017/ms17-004
 
 [3204059]: https://support.microsoft.com/kb/3204059
 [3204062]: https://support.microsoft.com/kb/3204062
@@ -2302,7 +2304,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [3133977]: https://support.microsoft.com/kb/3133977
 [3133681]: https://support.microsoft.com/kb/3133681
 [3123245]: https://support.microsoft.com/kb/3123245
-[RC4 devre dışı bırak]: https://blogs.msdn.microsoft.com/azuresecurity/2016/04/12/azure-cipher-suite-change-removes-rc4-support/
+[RC4 devre dışı bırak]: /archive/blogs/azuresecurity/azure-cipher-suite-change-removes-rc4-support
 
 
 [3148531]: https://support.microsoft.com/kb/3148531
@@ -2407,7 +2409,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [3077657]: https://support.microsoft.com/kb/3077657
 [3057154]: https://support.microsoft.com/kb/3057154
 
-[MS15-034]: https://technet.microsoft.com/library/security/MS15-034
+[MS15-034]: /security-updates/SecurityBulletins/2015/ms15-034
 
 [3042553]: https://support.microsoft.com/en-us/kb/3042553/
 
@@ -2484,5 +2486,5 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [3063858]:https://support.microsoft.com/kb/3063858
 
 
-[archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
+[archive]: /previous-versions/azure/
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation

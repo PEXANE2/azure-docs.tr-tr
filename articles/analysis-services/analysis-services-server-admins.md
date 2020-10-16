@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922958"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019452"
 ---
 # <a name="manage-server-administrators"></a>Sunucu yöneticilerini yönetme
 
@@ -40,13 +40,13 @@ Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid` . Hizmet soruml
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Yeni bir sunucu oluştururken yönetici parametresini belirtmek için [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) cmdlet 'ini kullanın. <br>
-Var olan bir sunucunun yönetici parametresini değiştirmek için [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) cmdlet 'ini kullanın.
+Yeni bir sunucu oluştururken yönetici parametresini belirtmek için [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) cmdlet 'ini kullanın. <br>
+Var olan bir sunucunun yönetici parametresini değiştirmek için [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) cmdlet 'ini kullanın.
 
 ## <a name="rest-api"></a>REST API
 
-Yeni bir sunucu oluştururken asAdministrator özelliğini belirtmek için [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) komutunu kullanın. <br>
-Var olan bir sunucuyu değiştirirken asAdministrator özelliğini belirtmek için [Güncelleştir](https://docs.microsoft.com/rest/api/analysisservices/servers/update) ' i kullanın. <br>
+Yeni bir sunucu oluştururken asAdministrator özelliğini belirtmek için [Create](/rest/api/analysisservices/servers/create) komutunu kullanın. <br>
+Var olan bir sunucuyu değiştirirken asAdministrator özelliğini belirtmek için [Güncelleştir](/rest/api/analysisservices/servers/update) ' i kullanın. <br>
 
 
 
@@ -54,4 +54,4 @@ Var olan bir sunucuyu değiştirirken asAdministrator özelliğini belirtmek iç
 
 [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md)  
 [Veritabanı rollerini ve kullanıcılarını yönetme](analysis-services-database-users.md)  
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)

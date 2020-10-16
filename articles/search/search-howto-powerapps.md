@@ -10,10 +10,10 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530701"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Öğretici: Power Apps 'ten bir Bilişsel Arama dizini sorgulama
@@ -49,7 +49,7 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
 1. **+ Yeni özel bağlayıcı**' ı seçin ve **boş oluştur**' u seçin.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Boş menüden oluştur" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. Özel bağlayıcınıza bir ad verin (örneğin, *AzureSearchQuery*) ve ardından **devam**' a tıklayın.
 
@@ -60,15 +60,15 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
    * Konakta, arama hizmeti URL 'nizi (gibi) girmeniz gerekir `<yourservicename>.search.windows.net`
    * Taban URL 'SI için, "/" girmeniz yeterlidir.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Genel bilgiler iletişim kutusu" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. Güvenlik sayfasında, *API anahtarını* **kimlik doğrulama türü**olarak ayarlayın, hem parametre etiketini hem de parametre adını *API anahtarı*olarak ayarlayın. **Parametre konumu**için aşağıda gösterildiği gibi *üst bilgi* ' yi seçin.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Kimlik doğrulama türü seçeneği" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. Tanımlar sayfasında, dizinde sorgulama yapılacak bir eylem oluşturmak için **+ yeni eylem** ' i seçin. Özet için "Query" değerini ve işlem KIMLIĞI adını girin. *"Arama dizinini sorgulama"* gibi bir açıklama girin.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Yeni eylem seçenekleri" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. Aşağı kaydırın. Istekler ' de, arama hizmetinize bir sorgu isteği yapılandırmak için **örnekten + Içeri aktar** ' ı seçin:
 
@@ -80,23 +80,23 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
      **Power Apps** , sorgudan parametreleri ayıklamak için söz dizimini kullanır. Arama alanını açık bir şekilde tanımladığımızda dikkat edin. 
 
-       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Örnekten içeri aktarma" border="true":::
+       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. Isteği otomatik olarak doldurmanız için **Içeri aktar** ' a tıklayın. Parametrelerin her birinin yanındaki **...** simgesine tıklayarak parametre meta verilerini ayarlamayı tamamen doldurun. Her bir parametre güncelleştirmesinden sonra Istek sayfasına dönmek için **geri** ' ye tıklayın.
 
-   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Örnekten Al iletişim kutusu" border="true":::
+   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. *Arama*için: `*` **varsayılan değer**olarak ayarlayın, **gerekli** olarak ayarlayın ve *False* **görünürlüğü** *hiçbiri*olarak ayarlayın. 
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Arama parametresi meta verileri" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. *Seçim*için: `HotelName,Description,Address/City` **varsayılan değer**olarak ayarla, **gerekli** ayarını *false*olarak ayarlayın ve **görünürlüğü** *hiçbiri*olarak ayarlayın.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Parametre meta verilerini seçin" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. *Api sürümü*için: `2020-06-30` **varsayılan değer**olarak ayarlayın, *true*olarak ayarlayın **required** ve **görünürlüğü** *iç*olarak ayarlayın.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Sürüm parametresi meta verileri" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. *Içerik türü*için: olarak ayarlayın `application/json` .
 
@@ -158,7 +158,7 @@ Bu görev için bir [sorgu API 'si anahtarına](search-security-api-keys.md#find
 
 1. Bağlayıcıyı seçin, eylemler listesini genişletin ve **özellikleri görüntüle**' yi seçin.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Özellikleri Görüntüle" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. Sağ üst köşedeki **Düzenle** ' yi seçin.
 
@@ -170,7 +170,7 @@ Bu görev için bir [sorgu API 'si anahtarına](search-security-api-keys.md#find
 
 1. Işlemler ' de **test işlemi** düğmesine tıklayın. Başarılı olursanız, 200 durumunda bir durum görmeniz ve yanıt gövdesinde arama sonuçlarını açıklayan JSON görmeniz gerekir.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="JSON yanıtı" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 ## <a name="3---visualize-results"></a>3-sonuçları görselleştirin
 
@@ -178,7 +178,7 @@ Bu adımda, sonuçlar için bir arama kutusuyla, bir arama düğmesiyle ve bir g
 
 1. Sol tarafta **uygulamalar**  >  **+ Yeni uygulama**  >  **tuvali**' ni genişletin.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Tuval uygulaması oluşturma" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. Uygulama türünü seçin. Bu öğreticide, **Telefon düzeninde** **boş bir uygulama** oluşturun. **Power Apps Studio** görüntülenir.
 
@@ -186,13 +186,13 @@ Bu adımda, sonuçlar için bir arama kutusuyla, bir arama düğmesiyle ve bir g
 
    Sorgu API anahtarını girin.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="bağlayıcı bağlama" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
     Artık *AzureSearchQuery* , uygulamanızdan kullanılabilecek bir veri kaynağıdır.
 
 1. **Ekle sekmesinde**tuvale birkaç denetim ekleyin.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Denetimleri Ekle" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. Aşağıdaki öğeleri ekleyin:
 
@@ -203,7 +203,7 @@ Bu adımda, sonuçlar için bir arama kutusuyla, bir arama düğmesiyle ve bir g
 
     Tuval şuna benzer görünmelidir:
 
-    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Denetim düzeni" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
 1. **Arama düğmesine** bir sorgu vermesini sağlamak için, aşağıdaki eylemi **OnSelect**içine yapıştırın:
 
@@ -214,7 +214,7 @@ Bu adımda, sonuçlar için bir arama kutusuyla, bir arama düğmesiyle ve bir g
 
    Aşağıdaki ekran görüntüsünde, **OnSelect** eyleminin formül çubuğu gösterilmektedir.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Düğme OnSelect" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
    Bu eylem, düğmenin Sorgu terimi olarak *txtquery* metin kutusundaki metni kullanarak, *azresult* adlı yeni bir koleksiyonu, arama sorgusunun sonucuyla güncelleştirmesine neden olur.
 
@@ -236,17 +236,17 @@ Bu adımda, sonuçlar için bir arama kutusuyla, bir arama düğmesiyle ve bir g
 
     Bağlayıcıyı tanımladığımızda bir örnek sonuç sağladığımızdan, uygulama dizininizdeki kullanılabilir alanları algılar.
     
-    :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Galeri alanları" border="true":::   
+    :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Özel bağlayıcı menüsü" border="true":::   
  
 1. Uygulamayı önizlemek için **F5** tuşuna basın.  
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="Uygulamanın son hali" border="true":::    
+    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="Özel bağlayıcı menüsü" border="true":::    
 
 <!--     Remember that the fields can be set to calculated values.
 
     For the example, setting using the *"Image, Title and Subtitle"* layout and specifying the *Image* function as the concatenation of the root path for the data and the file name (for instance, `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`) will produce the result below.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Final app" border="true":::         -->
+    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Özel bağlayıcı menüsü" border="true":::         -->
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

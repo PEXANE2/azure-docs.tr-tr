@@ -17,13 +17,13 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91299757"
 ---
-# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Uygulama proxy 'Si ile uygulamalarınıza çoklu oturum açma için Kerberos kısıtlanmış temsili
+# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Uygulama Ara Sunucusu ile uygulamalarınızda çoklu oturum açmak için Kerberos Kısıtlanmış Temsil
 
 Tümleşik Windows kimlik doğrulaması ile güvenliği sağlanan uygulama proxy 'Si aracılığıyla yayımlanan şirket içi uygulamalar için çoklu oturum açma sağlayabilirsiniz. Bu uygulamalar erişim için Kerberos bileti gerektirir. Uygulama proxy 'Si, bu uygulamaları desteklemek için Kerberos kısıtlanmış temsili (KCD) kullanır. 
 
@@ -43,7 +43,7 @@ Bu diyagramda, bir Kullanıcı ıWA kullanan bir şirket içi uygulamaya erişme
 7. Bağlayıcı, AD 'den aldığı Kerberos belirtecini kullanarak özgün isteği uygulama sunucusuna gönderir.
 8. Uygulama, yanıtı bağlayıcıya gönderir ve ardından uygulama proxy 'Si hizmetine ve son olarak kullanıcıya döndürülür.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 IWA uygulamaları için çoklu oturum açma ile çalışmaya başlamadan önce ortamınızın aşağıdaki ayarlar ve yapılandırmalara göre hazırlandığına emin olun:
 
 * SharePoint Web Apps gibi uygulamalarınız tümleşik Windows kimlik doğrulaması kullanacak şekilde ayarlanmıştır. Daha fazla bilgi için bkz. [Kerberos kimlik doğrulaması desteğini etkinleştirme](https://technet.microsoft.com/library/dd759186.aspx)veya SharePoint için bkz. [SharePoint 2013 'de Kerberos kimlik doğrulaması planı](https://technet.microsoft.com/library/ee806870.aspx).

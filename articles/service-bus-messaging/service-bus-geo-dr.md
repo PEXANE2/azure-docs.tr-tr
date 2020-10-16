@@ -4,10 +4,10 @@ description: Azure Service Bus için coğrafi bölgeleri kullanarak yük devretm
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372532"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus coğrafi olağanüstü durum kurtarma
@@ -17,7 +17,7 @@ Azure bölgelerinin veya veri merkezlerinin (hiçbir [kullanılabilirlik](../ava
 Coğrafi olağanüstü durum kurtarma özelliği Service Bus Premium SKU için genel kullanıma sunulmuştur. 
 
 >[!NOTE]
-> Coğrafi olağanüstü durum kurtarma şu anda yalnızca meta verilerin (kuyruklar, konular, abonelikler, filtreler) birincil ad alanından eşleştirildiği ikincil ad alanına kopyalanmasını sağlar.
+> Geo-Disaster kurtarma şu anda yalnızca meta verilerin (kuyruklar, konular, abonelikler, filtreler), eşleştirildiği zaman birincil ad alanından ikincil ad alanına kopyalanmasını sağlar.
 
 ## <a name="outages-and-disasters"></a>Kesintiler ve olağanüstü durumlar
 
@@ -168,7 +168,7 @@ Uygulamanız ve Service Bus için bir olağanüstü durum kurtarma yapılandırm
 ![Özel uç noktalar ve sanal ağlar](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
 
 
-Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Service Bus ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları inceleyin: 
+Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Service Bus ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları göz önünde bulundurun: 
 
 **Yalnızca uygulama yük devretmesi:** Burada uygulama VNET-1 ' de mevcut olmayacaktır, ancak VNET-2 ' ye geçmeyecektir. Hem birincil hem de ikincil ad alanları için hem VNET-1 hem de VNET-2 üzerinde hem özel uç noktalar yapılandırıldığından, uygulama çalışacaktır. 
 

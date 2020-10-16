@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84687795"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Sanal ağ geçidi SKU 'Ları (eski SKU 'Lar) ile çalışma
 
 Bu makale, eski (eski) sanal ağ geçidi SKU 'Ları hakkında bilgi içerir. Eski SKU 'Lar, zaten oluşturulmuş olan VPN ağ geçitlerinin her iki dağıtım modelinde de çalışır. Klasik VPN ağ geçitleri, hem mevcut ağ geçitleri hem de yeni ağ geçitleri için eski SKU 'Ları kullanmaya devam eder. Yeni Kaynak Yöneticisi VPN ağ geçitleri oluştururken, yeni ağ geçidi SKU 'Larını kullanın. Yeni SKU 'Lar hakkında bilgi için bkz. [VPN Gateway](vpn-gateway-about-vpngateways.md).
 
-## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU'ları
+## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU’ları
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 

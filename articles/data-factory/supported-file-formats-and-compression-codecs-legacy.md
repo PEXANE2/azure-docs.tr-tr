@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254625"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory 'de desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri (eski)
@@ -25,7 +25,7 @@ ms.locfileid: "85254625"
 >[!IMPORTANT]
 >Data Factory yeni biçim tabanlı veri kümesi modeli sunuldu, Ayrıntılar için ilgili biçim makalesine bakın: <br>- [Avro biçimi](format-avro.md)<br>- [İkili biçim](format-binary.md)<br>- [Sınırlandırılmış metin biçimi](format-delimited-text.md)<br>- [JSON biçimi](format-json.md)<br>- [ORC biçimi](format-orc.md)<br>- [Parquet biçimi](format-parquet.md)<br>Bu makalede bahsedilen Rest konfigürasyonları, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir. 
 
-## <a name="text-format-legacy"></a><a name="text-format"></a>Metin biçimi (eski)
+## <a name="text-format-legacy"></a><a name="text-format"></a> Metin biçimi (eski)
 
 >[!NOTE]
 >[Sınırlandırılmış metin biçimi](format-delimited-text.md) makalesindeki yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
@@ -40,9 +40,9 @@ Bir metin dosyasından okumak veya bir metin dosyasına yazmak isterseniz, `type
 | quoteChar |Bir dize değerini tırnak içine almak için kullanılan karakterdir. Tırnak işareti içindeki sütun ve satır sınırlayıcıları, dize değerinin bir parçası olarak kabul edilir. Bu özellik hem giriş hem de çıkış veri kümelerine uygulanabilir.<br/><br/>Bir tablo için hem escapeChar hem de quoteChar parametrelerini aynı anda belirtemezsiniz. |Yalnızca bir karaktere izin verilir. Varsayılan değer yoktur. <br/><br/>Örneğin, sütun sınırlayıcınız virgül (",") karakteriyse ancak metin içinde virgül karakteri kullanılıyorsa (örneğin: <Merhaba, dünya>), " (çift tırnak) karakterini tırnak karakteri olarak tanımlayabilir ve kaynakta "Merhaba, dünya" dizesini kullanabilirsiniz. |Hayır |
 | nullValue |Bir null değeri temsil etmek için kullanılan bir veya daha fazla karakterdir. |Bir veya daha fazla karakter olabilir. **Varsayılan** değerler okuma sırasında **"\N" ve "NULL"**, yazma sırasında ise **"\N"** olarak belirlenmiştir. |Hayır |
 | encodingName |Kodlama adını belirtir. |Geçerli bir kodlama adı. Bkz. [Encoding.EncodingName Özelliği](https://msdn.microsoft.com/library/system.text.encoding.aspx). Örnek: windows-1250 veya shift_jis. **Varsayılan** değer **UTF-8** olarak belirlenmiştir. |Hayır |
-| firstRowAsHeader |İlk satırın üst bilgi olarak kabul edilip edilmeyeceğini belirtir. Giriş veri kümesinde Data Factory ilk satırı üst bilgi olarak okur. Çıkış veri kümesinde Data Factory ilk satırı üst bilgi olarak yazar. <br/><br/>Örnek senaryolar için bkz. [`firstRowAsHeader` ve `skipLineCount` kullanım senaryoları](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (varsayılan)</b> |Hayır |
+| firstRowAsHeader |İlk satırın üst bilgi olarak kabul edilip edilmeyeceğini belirtir. Giriş veri kümesinde Data Factory ilk satırı üst bilgi olarak okur. Çıkış veri kümesinde Data Factory ilk satırı üst bilgi olarak yazar. <br/><br/>Örnek senaryolar için bkz. [`firstRowAsHeader` ve `skipLineCount` kullanım senaryoları](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Doğru<br/><b>False (varsayılan)</b> |Hayır |
 | skipLineCount |Giriş dosyalarından veri okurken atlanacak **boş olmayan** satır sayısını belirtir. Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. <br/><br/>Örnek senaryolar için bkz. [`firstRowAsHeader` ve `skipLineCount` kullanım senaryoları](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Tamsayı |Hayır |
-| treatEmptyAsNull |Bir giriş dosyasından veri okuma sırasında null veya boş dizenin null değer olarak kabul edilip edilmeyeceğini belirtir. |**True (varsayılan)**<br/>False |Hayır |
+| treatEmptyAsNull |Bir giriş dosyasından veri okuma sırasında null veya boş dizenin null değer olarak kabul edilip edilmeyeceğini belirtir. |**True (varsayılan)**<br/>Yanlış |Hayır |
 
 ### <a name="textformat-example"></a>TextFormat örneği
 
@@ -79,7 +79,7 @@ Bir veri kümesi için aşağıdaki JSON tanımında, isteğe bağlı özellikle
 * Üst bilgi satırı içeren bir metin dosyasından dosya olmayan bir havuza kopyalama yapıyorsunuz ve üst bilgi satırını almak istemiyorsunuz. Giriş veri kümesinde `firstRowAsHeader` parametresini true olarak belirleyin.
 * Bir metin dosyasından kopyalama yapıyorsunuz ve dosyanın başındaki veri içermeyen veya üst bilgi bilgilerini içeren birkaç satırı atlamak istiyorsunuz. Atlanacak satır sayısını belirtmek için `skipLineCount` değerini belirtin. Dosyanın geri kalan kısmında üst bilgi satırı varsa `firstRowAsHeader` değerini de belirtebilirsiniz. Hem `skipLineCount` hem de `firstRowAsHeader` parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur.
 
-## <a name="json-format-legacy"></a><a name="json-format"></a>JSON biçimi (eski)
+## <a name="json-format-legacy"></a><a name="json-format"></a> JSON biçimi (eski)
 
 >[!NOTE]
 >[JSON biçimi](format-json.md) makalesindeki yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
@@ -406,7 +406,7 @@ Her kayıt için aşağıdaki biçimde bir JSON nesnesine yazmayı beklemeniz ge
 }
 ```
 
-## <a name="parquet-format-legacy"></a><a name="parquet-format"></a>Parquet biçimi (eski)
+## <a name="parquet-format-legacy"></a><a name="parquet-format"></a> Parquet biçimi (eski)
 
 >[!NOTE]
 >Yeni modeli [Parquet biçimi](format-parquet.md) makalesinden öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
@@ -445,7 +445,7 @@ Iquet dosya serileştirme/seri hale getirme ile şirket içinde barındırılan 
 
 | Veri Fabrikası geçici veri türü | Parquet temel türü | Parquet orijinal türü (serisini kaldırma) | Parquet orijinal türü (serileştirme) |
 |:--- |:--- |:--- |:--- |
-| Boole | Boole | YOK | YOK |
+| Boole | Boole | Yok | Yok |
 | SByte | Int32 | Int8 | Int8 |
 | Bayt | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -454,19 +454,19 @@ Iquet dosya serileştirme/seri hale getirme ile şirket içinde barındırılan 
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/binary | UInt64 | Ondalık |
-| Tek | Float | YOK | YOK |
-| Çift | Çift | YOK | YOK |
+| Tek | Kayan | Yok | Yok |
+| Çift | Çift | Yok | Yok |
 | Ondalık | İkili | Ondalık | Ondalık |
 | Dize | İkili | Utf8 | Utf8 |
-| DateTime | Int96 | YOK | YOK |
-| TimeSpan | Int96 | YOK | YOK |
-| DateTimeOffset | Int96 | YOK | YOK |
-| ByteArray | İkili | YOK | YOK |
+| DateTime | Int96 | Yok | Yok |
+| TimeSpan | Int96 | Yok | Yok |
+| DateTimeOffset | Int96 | Yok | Yok |
+| ByteArray | İkili | Yok | Yok |
 | Guid | İkili | Utf8 | Utf8 |
 | Char | İkili | Utf8 | Utf8 |
-| CharArray | Desteklenmiyor | YOK | YOK |
+| CharArray | Desteklenmez | Yok | Yok |
 
-## <a name="orc-format-legacy"></a><a name="orc-format"></a>ORC biçimi (eski)
+## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORC biçimi (eski)
 
 >[!NOTE]
 >[Orc biçimindeki](format-orc.md) yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
@@ -507,7 +507,7 @@ ORC dosya serileştirme/seri hale getirme ile şirket içinde barındırılan IR
 | UInt32 | Kalacağını |
 | Int64 | Kalacağını |
 | UInt64 | Dize |
-| Tek | Float |
+| Tek | Kayan |
 | Çift | Çift |
 | Ondalık | Ondalık |
 | Dize | Dize |
@@ -518,7 +518,7 @@ ORC dosya serileştirme/seri hale getirme ile şirket içinde barındırılan IR
 | Guid | Dize |
 | Char | Char (1) |
 
-## <a name="avro-format-legacy"></a><a name="avro-format"></a>AVRO biçimi (eski)
+## <a name="avro-format-legacy"></a><a name="avro-format"></a> AVRO biçimi (eski)
 
 >[!NOTE]
 >Yeni modeli [avro Format](format-avro.md) makalesinden öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
@@ -538,7 +538,7 @@ Aşağıdaki noktalara dikkat edin:
 
 * [Karmaşık veri türleri](https://avro.apache.org/docs/current/spec.html#schema_complex) desteklenmez (kayıtlar, numaralandırmalar, diziler, Haritalar, birleşimler ve sabit).
 
-## <a name="compression-support-legacy"></a><a name="compression-support"></a>Sıkıştırma desteği (eski)
+## <a name="compression-support-legacy"></a><a name="compression-support"></a> Sıkıştırma desteği (eski)
 
 Azure Data Factory, kopyalama sırasında verileri sıkıştırmayı/sıkıştırmayı destekler. `compression`Bir giriş veri kümesinde özelliği belirttiğinizde kopyalama etkinliği kaynaktaki sıkıştırılmış verileri okur ve sıkıştırmasını açın; bir çıkış veri kümesinde özelliği belirttiğinizde, kopyalama etkinliği sıkıştırır ve sonra verileri havuza yazar. Aşağıda birkaç örnek senaryo verilmiştir:
 

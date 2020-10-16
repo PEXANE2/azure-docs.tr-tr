@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328267"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure Güvenlik kıyaslaması tanıtımı
@@ -46,7 +46,7 @@ Azure Güvenlik kıyaslaması, müşteriler veya hizmet iş ortakları için şu
 "Denetim", "kıyaslama" ve "taban çizgisi" terimleri genellikle Azure Güvenlik kıyaslama belgelerinde kullanılır ve Azure 'un bu koşulları nasıl kullandığını anlamak önemlidir.
 
 
-| Terim | Açıklama | Örnek |
+| Süre | Açıklama | Örnek |
 |--|--|--|
 | Denetim | Denetim, bir özellik veya etkinliğin giderilmesi ve bir teknoloji ya da uygulamaya özgü olmaması gereken üst düzey bir açıklamadır. | Veri koruma, güvenlik denetimlerinden biridir. Bu denetim, verilerin korunduğundan emin olmak için giderilmesi gereken belirli eylemleri içerir. |
 | Kıyaslama | Bir kıyaslama, Azure gibi belirli bir teknoloji için güvenlik önerileri içerir. Öneriler, ait oldukları denetime göre kategorize edilir. | Azure Güvenlik kıyaslaması, Azure platformuna özgü güvenlik önerilerini içerir |

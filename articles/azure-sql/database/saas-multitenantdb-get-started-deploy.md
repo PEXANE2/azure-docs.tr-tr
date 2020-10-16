@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619653"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Parçalı bir çok kiracılı uygulamayı dağıtma ve araştırma
@@ -47,7 +47,7 @@ Herkes, [GitHub deposundan][link-github-wingtip-multitenantdb-55g]Wingtip biletl
 
 Bu ilk dağıtımı üzerine inşa eden bir dizi ilgili öğretici vardır. Öğreticiler bir dizi SaaS tasarımı ve yönetim desenini keşfedebilir. Öğreticilerde çalışırken, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betiklerin içinde ilerletirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -96,7 +96,7 @@ Uygulama dağıtıldığında, uygulama kaynak kodunu ve yönetim betikleri ' ni
 > [!NOTE]
 > ZIP dosyaları bir dış kaynaktan indirilip ayıklandığında, yürütülebilir içerikler (betikler, dll 'Ler) Windows tarafından engellenebilir. Bir zip dosyasından betikleri ayıkladığınızda, Ayıklamadan önce. zip dosyasının engelini kaldırmak için aşağıdaki adımları kullanın. . Zip dosyasının engellemesini kaldırarak betiklerin çalışmasına izin verildiğinden emin olursunuz.
 
-1. [Wingtipbilet ssaas-MultiTenantDb GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)deposuna gidin.
+1. [WingtipTicketsSaaS-MultiTenantDb GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)deposuna gidin.
 2. **Kopyala veya indir**' e tıklayın.
 3. **ZIP 'ı indir** ' e tıklayın ve dosyayı kaydedin.
 4. **WingtipTicketsSaaS-MultiTenantDb-master.zip** dosyasına sağ tıklayın ve **Özellikler**' i seçin.

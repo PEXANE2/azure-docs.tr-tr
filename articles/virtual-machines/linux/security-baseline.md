@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 627c0c77cc206cd1b3210fcfc7b2a9bbc3c6daea
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 9468b9c2c906ffe26bae400dc9e4746630a66e0e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401104"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970325"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Sanal Makineleri için Azure Güvenlik temeli
 
@@ -32,7 +32,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../../
 
 Alternatif olarak, Merkezi güvenlik duvarı için belirli bir kullanım durumu varsa, bu gereksinimleri karşılamak için Azure Güvenlik duvarı da kullanılabilir.
 
-* [Azure 'da sanal ağlar ve sanal makineler](../windows/network-overview.md)
+* [Azure 'da sanal ağlar ve sanal makineler](../network-overview.md)
 
 * [Sanal ağ oluşturma](../../virtual-network/quick-create-portal.md)
 
@@ -64,7 +64,7 @@ Azure Web uygulaması güvenlik duvarını (WAF), gelen trafiğin ek incelemesi 
 
 * [Azure portal kullanarak Web uygulaması güvenlik duvarı ile uygulama ağ geçidi oluşturma](../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-* [Azure 'da sanal ağlar ve sanal makineler](../windows/network-overview.md)
+* [Azure 'da sanal ağlar ve sanal makineler](../network-overview.md)
 
 * [Ağ güvenlik grupları hakkında bilgi](../../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -82,7 +82,7 @@ Azure Güvenlik Merkezi 'nin, sınırlı bir süre için onaylanan IP adresleriy
 
 * [Azure Güvenlik duvarını dağıtma](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../../security-center/threat-protection.md)
+* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../../security-center/azure-defender.md)
 
 * [Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma 'yi anlama](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -148,7 +148,7 @@ Azure Güvenlik Merkezi 'nin, sınırlı bir süre için onaylanan IP adresleriy
 
 * [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Ağ için Azure Ilke örnekleri](/azure/governance/policy/samples/#network)
+* [Ağ için Azure Ilke örnekleri](../../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint oluşturma](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -182,7 +182,7 @@ Linux Sanal Makineleri ilişkili ağ kaynağına yönelik yapılandırmaların d
 
 * [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Ağ için Azure Ilke örnekleri](/azure/governance/policy/samples/#network)
+* [Ağ için Azure Ilke örnekleri](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -306,7 +306,7 @@ Alternatif olarak, anormal etkinliklere yönelik uyarıları ayarlamak için Azu
 
 **Rehberlik**: Linux işletim sisteminde için kötü amaçlı yazılımdan koruma güvenlik açığı algılama için bir üçüncü taraf araca ihtiyacınız olacak.
 
-* [Linux sunucularını Azure Güvenlik Merkezi 'ne ekleme yönergeleri](../../security-center/quick-onboard-linux-computer.md)
+* [Linux sunucularını Azure Güvenlik Merkezi 'ne ekleme yönergeleri](../../security-center/quickstart-onboard-machines.md)
 
 * [Aşağıdaki bağlantı, Microsoft tarafından önerilen güvenlik yönergeleri sağlar ve bu, seçilen güvenlik açığı yazılımının ölçüt listesi olarak işlev görebilir](./security-recommendations.md)
 
@@ -514,7 +514,7 @@ Alternatif olarak, anormal etkinliklere yönelik uyarıları ayarlamak için Azu
 
 * [Ek Azure abonelikleri oluşturma](../../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../../azure-resource-manager/management/tag-resources.md)
 
@@ -584,7 +584,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: hassas bilgileri Rest 'te şifreleyin
 
-**Rehberlik**: LINUX sanal MAKINELERI (VM) üzerindeki sanal diskler, sunucu tarafı şifreleme veya Azure disk ŞIFRELEMESI (ade) kullanılarak Rest 'te şifrelenir. Azure disk şifrelemesi, Konuk VM içindeki müşteri tarafından yönetilen anahtarlarla yönetilen diskleri şifrelemek için Linux 'un DM-Crypt özelliğini kullanır. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, depolama hizmetindeki verileri şifreleyerek VM 'niz için herhangi bir işletim sistemi türünü ve görüntüsünü kullanmanızı sağlayarak ADE 'yi geliştirir.
+**Rehberlik**: LINUX sanal MAKINELERI (VM) üzerindeki sanal diskler, sunucu tarafı şifreleme veya Azure disk ŞIFRELEMESI (ade) kullanılarak Rest 'te şifrelenir. Azure disk şifrelemesi, Konuk VM içindeki müşteri tarafından yönetilen anahtarlarla yönetilen diskleri şifrelemek için Linux 'un DM-Crypt özelliğinden yararlanır. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, depolama hizmetindeki verileri şifreleyerek VM 'niz için herhangi bir işletim sistemi türünü ve görüntüsünü kullanmanızı sağlayarak ADE 'yi geliştirir.
 
 * [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../windows/disk-encryption.md)
 
@@ -616,7 +616,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 **Rehberlik**: Linux işletim sisteminde için kötü amaçlı yazılımdan koruma güvenlik açığı algılama için bir üçüncü taraf araca ihtiyacınız olacak.
 
-* [Linux sunucularını Azure Güvenlik Merkezi 'ne ekleme yönergeleri](../../security-center/quick-onboard-linux-computer.md)
+* [Linux sunucularını Azure Güvenlik Merkezi 'ne ekleme yönergeleri](../../security-center/quickstart-onboard-machines.md)
 
 * [Microsoft 'un önerdiği güvenlik yönergeleri](./security-recommendations.md)
 
@@ -700,7 +700,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 * [Ek Azure abonelikleri oluşturma](../../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../../azure-resource-manager/management/tag-resources.md)
 
@@ -784,7 +784,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 * [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../../governance/policy/samples/index.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -824,13 +824,13 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 **Rehberlik**: Azure ortamınızda dağıtılan yüksek riskli uygulamalar, sanal ağlar, alt ağlar, abonelikler, yönetim grupları ve bir Azure Güvenlik Duvarı, Web uygulaması güvenlik duvarı (WAF) veya ağ güvenlik grubu (NSG) ile yeterince güvenli hale getirilmiş olabilir.
 
-* [Azure 'da sanal ağlar ve sanal makineler](../windows/network-overview.md)
+* [Azure 'da sanal ağlar ve sanal makineler](../network-overview.md)
 
 * [Azure Güvenlik Duvarı 'na genel bakış](../../firewall/overview.md)
 
 * [Web uygulaması güvenlik duvarına genel bakış](../../web-application-firewall/overview.md)
 
-* [Ağ güvenliğine genel bakış](../../virtual-network/security-overview.md)
+* [Ağ güvenliğine genel bakış](../../virtual-network/network-security-groups-overview.md)
 
 * [Azure sanal ağına genel bakış](../../virtual-network/virtual-networks-overview.md)
 
@@ -1094,7 +1094,7 @@ Azure Disk Şifrelemesi kullanıyorsanız, Azure VM 'yi disk şifreleme anahtarl
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Rehberlik**: Azure Backup Ile Azure VM 'lerini yedeklediyseniz, sanal makineler depolama HIZMETI ŞIFRELEMESI (SSE) ile geri kalanıyla şifrelenir. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri de yedekleyebilir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin. 
+**Rehberlik**: Azure Backup Ile Azure VM 'lerini yedeklediyseniz, sanal makineler depolama HIZMETI ŞIFRELEMESI (SSE) ile geri kalanıyla şifrelenir. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri de yedekleyebilir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete etkinleştirin. 
 
 * [VM 'Ler için geçici silme](../../backup/soft-delete-virtual-machines.md)
 

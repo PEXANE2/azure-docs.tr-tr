@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336403"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Canlı akışta zamanlanmış meta verileri sinyal alma 
@@ -42,7 +42,7 @@ Bu belirtim, canlı akış sinyalleri içindeki zaman aşımına uğramış meta
 
 ## <a name="11-terms-used"></a>1,1 terim kullanıldı
 
-| Terim                | Tanım                                                                                                                                                                                                                                    |
+| Süre                | Tanım                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ad kesmesi            | Bir veya daha fazla reklamın teslim edilmek üzere zamanlanabileceği bir konum veya zaman noktası; kullanılabilir ve yerleştirme fırsatına benzer.                                                                                                                     |
 | Ad karar hizmeti | kullanıcıya hangi ad (ler) ve süreler gösterildiğine karar veren dış hizmet. Hizmetler genellikle bir iş ortağı tarafından sağlanır ve bu belgenin kapsamı dışındadır.                                                                    |
@@ -57,7 +57,7 @@ Bu belirtim, canlı akış sinyalleri içindeki zaman aşımına uğramış meta
 | TILDE                | HTTP üzerinden dinamik uyarlamalı akış                                                                                                                                                                                                          |
 | Kesintisiz              | Kesintisiz Akış Protokolü                                                                                                                                                                                                                     |
 | MPEG2-TS            | MPEG 2 aktarım akışları                                                                                                                                                                                                                      |
-| RTMP                | Gerçek zamanlı multimedya Protokolü                                                                                                                                                                                                                 |
+| RTMP                | Real-Time multimedya Protokolü                                                                                                                                                                                                                 |
 | uıısbf              | İşaretsiz tamsayı, önce en önemli bit.                                                                                                                                                                                                 |
 
 ---
@@ -84,10 +84,10 @@ Aşağıdaki belgeler, bu metinde başvuru aracılığıyla bu belgenin sağlama
 | [MS-SSTR-ınest]  | [Azure Media Services parçalanmış MP4 canlı alma belirtimi](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | Sağ. Pantos, Ed.; W. Mayıs. HTTP Canlı Akışı. Ağustos 2017. Amaçlı. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | Base16, Base32 ve Base64 veri kodlamaları- [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
-| RTMP            | ["Adobe 'un gerçek zamanlı mesajlaşma Protokolü", 21 Aralık 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
+| RTMP            | ["Adobe 'un Real-Time mesajlaşma Protokolü", 21 Aralık 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
 | [SCTE-35-2019]    | SCTE 35:2019-kablo için dijital program ekleme Cueiletisi- https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
-| [SCTE-214-1]      | SCTE 214-1 2016 – IP tabanlı kablo hizmetleri için MPEG DASH 1. Bölüm: MPD kısıtlamaları ve uzantıları                                                                                                                 |
-| [SCTE-214-3]      | IP tabanlı kablo hizmetleri için SCTE 214-3 2015 MPEG DASH 3. Bölüm: DASH/FF profili                                                                                                                                  |
+| [SCTE-214-1]      | SCTE 214-1 2016 – IP-Based kablo hizmetleri için MPEG DASH 1. Bölüm: MPD kısıtlamaları ve uzantıları                                                                                                                 |
+| [SCTE-214-3]      | IP-Based kablo hizmetleri için SCTE 214-3 2015 MPEG DASH 3. Bölüm: DASH/FF profili                                                                                                                                  |
 | [SCTE-224]        | SCTE 224 2018r1 – olay zamanlama ve bildirim arabirimi                                                                                                                                                  |
 | [SCTE-250]        | Olay ve sinyal yönetimi API 'SI (ESAM)                                                                                                                                                                      |
 
@@ -208,7 +208,7 @@ Her 0,5 saniye (500ms) veya canlı akışla ilgili kararlılık sorunlarından d
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Yerleşik desteklenen şema KIMLIĞI URI 'Leri
-| Şema KIMLIĞI URI 'SI                 | Description                                                                                                                                                                                                                                          |
+| Şema KIMLIĞI URI 'SI                 | Açıklama                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/EMSG/ID3 | [ID3v2] meta verilerinin CMAF ile uyumlu [MPEGCMAF] parçalanmış MP4 içinde zaman aşımına uğramış bir meta veriler olarak nasıl taşınabilir açıklar. Daha fazla bilgi için bkz [. ortak medya uygulaması biçimindeki (CMAF) zaman aşımına uğrayan meta veriler](https://github.com/AOMediaCodec/id3-emsg) |
 
@@ -243,7 +243,7 @@ Aşağıdaki bölümde, HLS, DASH ve Microsoft Kesintisiz Akış istemci bildiri
 | kimlik         | Dize     | Gerekli  | Splice veya segment tanımlayan benzersiz bir tanımlayıcı. İletinin bu örneğini tanımlar                                                                                                                                                                                       |
 | süre   | Sayı     | Gerekli  | Splice 'ın süresi. Birimler kesirli saniyedir.                                                                                                                                                                                                                           |
 | elapsed    | Sayı     | İsteğe Bağlı  | Sinyal, içindeki ayarlamayı desteklemek için yinelendiğinde, bu alan, splice başladıktan sonra geçen sunum süresinin miktarı olacaktır. Birimler kesirli saniyedir. Basit mod kullanılırken bu değer, splice 'ın orijinal süresini aşmamalıdır. |
-| time       | Sayı     | Gerekli  | , Sunum süresi içinde, splice 'ın saati olacaktır. Birimler kesirli saniyedir.                                                                                                                                                                                                |
+| saat       | Sayı     | Gerekli  | , Sunum süresi içinde, splice 'ın saati olacaktır. Birimler kesirli saniyedir.                                                                                                                                                                                                |
 
 ---
  
@@ -272,7 +272,7 @@ Bu senaryoda, **"Onadcue"** [AMF0] ileti türü kullanılarak şirket içi kodla
 | kimlik         | Dize     | Gerekli  | Splice veya segment tanımlayan benzersiz bir tanımlayıcı. İletinin bu örneğini tanımlar.  Denk semantiklere sahip iletiler aynı değere sahip olacaktır.                                                                                                                                                                                                                                                       |
 | süre   | Sayı     | Gerekli  | Biliniyorsa olay veya ad splice-segment süresi. Bilinmiyorsa **, değer 0 olmalıdır.**                                                                                                                                                                                                                                                                                                                    |
 | elapsed    | Sayı     | İsteğe Bağlı  | ' İ ayarlamak için [SCTE-35] ad sinyali yinelendiğinde, bu alan, splice başladıktan sonra geçen sunum süresi kadar olacaktır. Birimler kesirli saniyedir. [SCTE-35] modunda, bu değer, splice veya segment için belirtilen özgün süreyi aşabilirler.                                                                                                                   |
-| time       | Sayı     | Gerekli  | Etkinliğin veya ad splice 'ın sunum süresi.  Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** . HLS çıkışı için saat ve süre, kesim sınırlarıyla hizalı **olmalıdır** . Aynı olay akışı içindeki farklı olay iletilerinin sunum süresi ve süresi çakışmamalıdır. Birimler kesirli saniyedir. |
+| saat       | Sayı     | Gerekli  | Etkinliğin veya ad splice 'ın sunum süresi.  Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** . HLS çıkışı için saat ve süre, kesim sınırlarıyla hizalı **olmalıdır** . Aynı olay akışı içindeki farklı olay iletilerinin sunum süresi ve süresi çakışmamalıdır. Birimler kesirli saniyedir. |
 
 ---
 
@@ -296,7 +296,7 @@ Dinamik şirket içi kodlayıcı, RTMP sinyalinde ad işaretçilerini destekler.
 | Özellik   | Açıklama                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name       | Ad, elete Live tarafından '**scte35**' olmalıdır.                                                                                                                                                                              |
-| time       | Zaman çizelgesi sırasında, bir video dosyasında işaret noktasının gerçekleştiği saniye cinsinden süre                                                                                                                                           |
+| saat       | Zaman çizelgesi sırasında, bir video dosyasında işaret noktasının gerçekleştiği saniye cinsinden süre                                                                                                                                           |
 | tür       | İşaret noktası türü "**Event**" olarak ayarlanmalıdır.                                                                                                                                                                             |
 | parameters | Kimliği ve süresi de dahil olmak üzere SCTE-35 iletisindeki bilgileri içeren ad/değer çifti dizelerinin ilişkilendirilebilir dizisi. Bu değerler Azure Media Services tarafından ayrıştırılır ve bildirim dekorasyonu etiketine dahildir. |
 

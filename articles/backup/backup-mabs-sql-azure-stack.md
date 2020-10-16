@@ -4,10 +4,10 @@ description: Bu makalede, Azure Stack SQL Server veritabanlarını korumak için
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332823"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
@@ -76,7 +76,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     ![Veri koruma yöntemi-kısa süreli disk çevrimiçi & Azure](./media/backup-azure-backup-sql/pg-name.png)
 
-6. **Kısa dönem hedeflerini belirtin** ekranında, diske yedekleme noktaları oluşturmak için gerekli girişleri ekleyin ve **İleri**' yi seçin.
+6. **Short-Term hedeflerini belirtin** ekranında, diske yedekleme noktaları oluşturmak için gerekli girişleri ekleyin ve **İleri**' yi seçin.
 
     Bu örnekte, **bekletme aralığı** **5 gündür** **ve yedekleme** sıklığı, her **15 dakikada**bir yapılır. **Hızlı tam yedekleme** **8:00 P. M**olarak ayarlanır.
 
@@ -134,7 +134,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
 14. **Özet** ekranında ilke ayrıntılarını gözden geçirdikten sonra, iş akışını gerçekleştirmek Için **Grup Oluştur** ' u seçin. **Kapat** ' ı seçebilir ve izleme çalışma alanında işin ilerlemesini izleyebilirsiniz.
 
-    ![Koruma grubu oluşturma devam ediyor](./media/backup-azure-backup-sql/pg-summary.png)
+    ![Koruma grubu oluşturma In-Progress](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>SQL Server veritabanının isteğe bağlı yedeklemesi
 

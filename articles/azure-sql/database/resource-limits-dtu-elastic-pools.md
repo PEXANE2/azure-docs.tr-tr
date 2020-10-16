@@ -12,10 +12,10 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: 72d50cadcc9b0f913c66f00ebc16d5e12a39de70
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619109"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanarak elastik havuzlar için kaynak limitleri
@@ -30,7 +30,7 @@ Bu makalede, DTU satın alma modelini kullanan bir elastik havuzda Azure SQL ver
 
 Azure SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda kullanılabilen kaynaklar gösterilmektedir. Kullanarak hizmet katmanını, işlem boyutunu ve depolama miktarını ayarlayabilirsiniz:
 
-* [Azure Portal](elastic-pool-manage.md#azure-portal)
+* [Azure portalındaki](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure CLI](elastic-pool-manage.md#azure-cli)
 * [REST API](elastic-pool-manage.md#rest-api).
@@ -51,7 +51,7 @@ Aynı sayıda DTU için, elastik bir havuza sunulan kaynaklar, elastik havuzun d
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Havuz başına maks. depolama alanı (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok | Yok | Yok | Yok |
+| Havuz başına en fazla In-Memory OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok | Yok | Yok | Yok |
 | Havuz başına en fazla veritabanı sayısı <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Her havuz <sup>2</sup> için maksimum eş zamanlı çalışan (istek) | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Her havuz için en fazla eşzamanlı oturum <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -70,7 +70,7 @@ Aynı sayıda DTU için, elastik bir havuza sunulan kaynaklar, elastik havuzun d
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | Havuz başına maks. depolama alanı (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok | Yok |
+| Havuz başına en fazla In-Memory OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok | Yok |
 | Havuz başına en fazla veritabanı sayısı <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Havuz başına maksimum eş zamanlı çalışan (istek) <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Havuz başına en fazla eşzamanlı oturum <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -91,7 +91,7 @@ Aynı sayıda DTU için, elastik bir havuza sunulan kaynaklar, elastik havuzun d
 |:---|---:|---:|---:| ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Havuz başına maks. depolama alanı (GB) | 2560 | 3072 | 3584 | 4096 | 4096 |
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok |
+| Havuz başına en fazla In-Memory OLTP depolaması (GB) | Yok | Yok | Yok | Yok | Yok |
 | Havuz başına en fazla veritabanı sayısı <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
 | Havuz başına maksimum eş zamanlı çalışan (istek) <sup>3</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Havuz başına en fazla eşzamanlı oturum <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -112,7 +112,7 @@ Aynı sayıda DTU için, elastik bir havuza sunulan kaynaklar, elastik havuzun d
 |:---|---:|---:|---:| ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) <sup>1</sup> | 250 | 500 | 750 | 1024 | 1536 |
 | Havuz başına maks. depolama alanı (GB) | 1024 | 1024 | 1024 | 1024 | 1536 |
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | 1 | 2 | 4 | 10 | 12 |
+| Havuz başına en fazla In-Memory OLTP depolaması (GB) | 1 | 2 | 4 | 10 | 12 |
 | Havuz başına en fazla veritabanı sayısı <sup>2</sup> | 50 | 100 | 100 | 100 | 100 |
 | Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup> | 200 | 400 | 800 | 1600 | 2400 |
 | Havuz başına en fazla eşzamanlı oturum <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -133,7 +133,7 @@ Aynı sayıda DTU için, elastik bir havuza sunulan kaynaklar, elastik havuzun d
 |:---|---:|---:|---:| ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) <sup>1</sup> | 2048 | 2560 | 3072 | 3548 | 4096 |
 | Havuz başına maks. depolama alanı (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | 16 | 20 | 24 | 28 | 32 |
+| Havuz başına en fazla In-Memory OLTP depolaması (GB) | 16 | 20 | 24 | 28 | 32 |
 | Havuz başına en fazla veritabanı sayısı <sup>2</sup> | 100 | 100 | 100 | 100 | 100 |
 | Havuz başına maksimum eş zamanlı çalışan (istek) <sup>3</sup> | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Havuz başına en fazla eşzamanlı oturum <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |

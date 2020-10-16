@@ -4,10 +4,10 @@ description: Docker ile uyumlu kapsayıcı görüntüleri, Held grafikleri, OCı
 ms.topic: article
 ms.date: 08/30/2019
 ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84695275"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry desteklenen içerik biçimleri
@@ -32,7 +32,7 @@ Azure Container Registry, kapsayıcı görüntülerini ve diğer içerik türler
 
 OCı yapıtları hakkında daha fazla bilgi edinmek için bkz. [depolama (ORAS) deposu olarak OCI kayıt defteri](https://github.com/deislabs/oras) ve GitHub 'Daki [OCI yapıtları](https://github.com/opencontainers/artifacts) deposu.
 
-## <a name="helm-charts"></a>Helb grafikleri
+## <a name="helm-charts"></a>Helm grafikleri
 
 Azure Container Registry, Kubernetes için uygulamaları hızlı bir şekilde yönetmek ve dağıtmak üzere kullanılan bir paketleme biçimi olan [helk grafikleri](https://helm.sh/)için depolar barındırabilir. [Held Client](https://docs.helm.sh/using_helm/#installing-helm) sürüm 2 (2.11.0 veya üzeri) desteklenir.
 

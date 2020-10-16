@@ -121,6 +121,8 @@
       href: ../../storage/common/security-baseline.md
     - name: Azure Traffic Manager güvenlik temeli
       href: ../../traffic-manager/security-baseline.md
+    - name: Azure Web Uygulaması Güvenlik Duvarı güvenlik temeli
+      href: ../../web-application-firewall/security-baseline.md
     - name: Batch güvenlik temeli
       href: ../../batch/security-baseline.md
     - name: Bilişsel Hizmetler güvenlik temeli

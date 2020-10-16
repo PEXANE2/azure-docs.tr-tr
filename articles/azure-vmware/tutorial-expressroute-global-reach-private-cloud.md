@@ -3,12 +3,12 @@ title: Eğitim-şirket içi ortamlarından özel bir buluta
 description: Azure VMware çözümünde özel buluta ExpressRoute Global Reach eşlemesi oluşturmayı öğrenin.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9de6cbe177ac8d2ca4957e80c7ca1072a0d7985e
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576736"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948315"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Öğretici: şirket içi ortamlar için özel bir buluta
 
@@ -16,7 +16,7 @@ ExpressRoute Global Reach şirket içi ortamınızı Azure VMware çözümünüz
 
 [Azure 'dan özel bulut ağını yapılandırırken](tutorial-configure-networking.md) kullandığınız ExpressRoute bağlantı hattı, ExpressRoute ağ geçitlerine veya Global Reach kullanarak diğer ExpressRoute devrelerine eşler için yetkilendirme anahtarları oluşturmanızı ve kullanmanızı gerektirir. ExpressRoute bağlantı hattı tarafından zaten bir yetkilendirme anahtarı kullandınız ve bu öğreticide şirket içi ExpressRoute bağlantı hattını kullanarak ikinci bir tane oluşturabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * _Devre 2_için ikinci bir yetkilendirme anahtarı oluşturun, özel bulut ExpressRoute devresi
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasında bağlantıyı etkinleştirmeden önce, [farklı Azure aboneliklerinde bağlantının nasıl etkinleştirileceği](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions)hakkındaki belgeleri gözden geçirin.  
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Azure VMware Çözüm özel bulutuyla, ExpressRoute bağlantı hattı, bir Azure sanal ağı 'nda (VNet) bir ExpressRoute bağlantı hattı ile, eşleme yordamlarından itibaren _devre 2_ olan bağlantı kurdu.  
 1. Şirket içi ortamları Azure 'a bağlamak için kullanılan, eşleme yordamlarının perspektifinden _devre_ dışı olan ayrı, çalışan bir ExpressRoute devresi.
@@ -83,7 +83,7 @@ ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasınd
 [CLI komutlarını](../expressroute/expressroute-howto-set-global-reach-cli.md) , şirket içi ortamlar arasında Azure VMware Çözüm özel bulutuna yönelik expressroute Global Reach eşlemeyi yapılandırmanıza yardımcı olacak belirli Ayrıntılar ve örneklerle genişlettik.  
 
 > [!TIP]  
-> Azure CLı komut çıkışında bu yönergeler, [ `–query` yalnızca gerekli sonuçları göstermek Için bir JMESPath sorgusu yürütmek üzere bir bağımsız değişken](https://docs.microsoft.com/cli/azure/query-azure-cli)kullanabilir.
+> Azure CLı komut çıkışında bu yönergeler, [ `–query` yalnızca gerekli sonuçları göstermek Için bir JMESPath sorgusu yürütmek üzere bir bağımsız değişken](/cli/azure/query-azure-cli)kullanabilir.
 
 
 1. Şirket içi ExpressRoute devresi ile aynı aboneliği kullanarak Azure portal oturum açın ve bir Cloud Shell açın. Kabuğu Bash olarak bırakın.
@@ -109,7 +109,7 @@ Bu öğreticide, özel bulut ExpressRoute bağlantı hattı için ikinci bir yet
 Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü dağıtma ve yapılandırma hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [VMware HCX 'i dağıtma ve yapılandırma](tutorial-deploy-vmware-hcx.md)
+> [VMware HCX’i dağıtma ve yapılandırma](tutorial-deploy-vmware-hcx.md)
 
 
 <!-- LINKS - external-->

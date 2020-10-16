@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b29f6b400ba7b500e215caec4a2115a12b369fe
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891187"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952208"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Dosyaları Azure Stack Edge Pro 'ya taşımak için C# IoT Edge modülünü geliştirme
 
@@ -42,7 +42,7 @@ Azure Stack Edge Pro cihazınız, IoT Edge modülleri dağıtabilir ve çalışt
 
 Dosya bulut paylaşımından olduktan sonra otomatik olarak Azure depolama hesabınıza yüklenir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -65,7 +65,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görüntülerinizi depolayıp yönetebileceğiniz özel bir Docker kayıt defteridir. Bulutta bulunan iki popüler Docker kayıt defteri hizmeti Azure Container Registry ve Docker Hub 'lardır. Bu makale Container Registry kullanır.
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**’a tıklayın.
+2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**'a tıklayın.
 3. Girmelisiniz
 
    1. Azure 'da 5 ile 50 alfasayısal karakter içeren benzersiz bir **kayıt defteri adı** .
@@ -259,7 +259,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
  
 3. Kimlik bilgileri sağlandığında modül görüntünüzü Azure Container Registry 'nize gönderebilirsiniz. VS Code Gezgini 'nde, dosya ** üzerindemodule.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
 
-    ![IoT Edge çözümü oluşturun ve gönderin](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![Derleme ve gönderme IoT Edge çözüm 2](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Çözümünüzü derlemek için Visual Studio Code söylemeniz durumunda, tümleşik terminalde iki komut çalıştırılır: Docker Build ve Docker Push. Bu iki komut kodunuzu derler, CSharpModule.dll ile kapsayıcı oluşturur ve ardından kodu, çözümü başlatırken belirttiğiniz kapsayıcı kayıt defterine gönderir.
 

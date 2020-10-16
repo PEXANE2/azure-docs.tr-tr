@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5d8adea95708f4c7bbe3e7113c3e39e0484159ee
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827616"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018058"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -34,7 +34,7 @@ Mikro hizmetler ortamında, bileşenlerden izlemeler farklı depolama öğelerin
 
 ## <a name="example"></a>Örnek
 
-Bir örneğe bakalım. Hisse senedi fiyatları adlı bir uygulama, hisse senedi adlı bir dış API kullanarak bir stokun geçerli pazar fiyatını gösterir. Hisse senedi fiyatları uygulaması, kullanarak istemci Web tarayıcısının açtığı hisse senedi sayfası adlı bir sayfa içerir `GET /Home/Stock` . Uygulama, HTTP çağrısını kullanarak hisse senedi API 'sini sorgular `GET /api/stock/value` .
+Bir örneğe göz atalım. Hisse senedi fiyatları adlı bir uygulama, hisse senedi adlı bir dış API kullanarak bir stokun geçerli pazar fiyatını gösterir. Hisse senedi fiyatları uygulaması, kullanarak istemci Web tarayıcısının açtığı hisse senedi sayfası adlı bir sayfa içerir `GET /Home/Stock` . Uygulama, HTTP çağrısını kullanarak hisse senedi API 'sini sorgular `GET /api/stock/value` .
 
 Bir sorgu çalıştırarak elde edilen telemetrisini çözümleyebilirsiniz:
 
@@ -62,7 +62,7 @@ Application Insights, şunu tanımlayan [W3C Trace-Context](https://w3c.github.i
 - `traceparent`: Genel benzersiz işlem KIMLIĞI ve çağrının benzersiz tanımlayıcısını taşır.
 - `tracestate`: Sisteme özgü izleme bağlamını taşır.
 
-Application Insights SDK 'sının en son sürümü, Trace-Context protokolünü destekler, ancak bunu kabul etmeniz gerekebilir. (Application Insights SDK tarafından desteklenen önceki Bağıntı protokolü ile geriye dönük uyumluluk korunur.)
+Application Insights SDK 'sının en son sürümü Trace-Context protokolünü destekler, ancak bunu kabul etmeniz gerekebilir. (Application Insights SDK tarafından desteklenen önceki Bağıntı protokolü ile geriye dönük uyumluluk korunur.)
 
 [Istek kimliği olarak da bilinen BAĞıNTı http Protokolü](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)kullanım dışı bırakılıyor. Bu protokol iki üstbilgiyi tanımlar:
 
@@ -84,7 +84,7 @@ Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](../../a
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>.NET uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
 
-W3C TraceContext tabanlı dağıtılmış izleme, eski Istek kimliği protokolüyle geriye dönük uyumlulukla birlikte, tüm son .NET Framework/. NET Core SDK 'lerinde varsayılan olarak etkindir.
+W3C TraceContext tabanlı dağıtılmış izleme, eski Request-Id protokolle geriye dönük uyumluluk ile birlikte, tüm son .NET Framework/. NET Core SDK 'lerinde varsayılan olarak etkindir.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Java uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
 
@@ -133,34 +133,21 @@ W3C TraceContext tabanlı dağıtılmış izleme, eski Istek kimliği protokolü
 
 Bu özellik ' de bulunur `Microsoft.ApplicationInsights.JavaScript` . Varsayılan olarak devre dışıdır. Etkinleştirmek için, config kullanın `distributedTracingMode` . AI_AND_W3C, Application Insights tarafından işaretlenmiş eski hizmetlerle geriye dönük uyumluluk için sağlanır.
 
-- **NPM kurulumu (kod parçacığı kurulumu kullanılıyorsa yoksay)**
+- **[NPM tabanlı kurulum](./javascript.md#npm-based-setup)**
 
-  ```javascript
-  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
-
-  const appInsights = new ApplicationInsights({ config: {
-    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+Aşağıdaki yapılandırmayı ekleyin:
+  ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
-    /* ...other configuration options... */
-  } });
-  appInsights.loadAppInsights();
   ```
   
-- **Kod parçacığı kurulumu (NPM kurulumu kullanılıyorsa yoksay)**
+- **[Kod parçacığı tabanlı kurulum](./javascript.md#snippet-based-setup)**
 
+Aşağıdaki yapılandırmayı ekleyin:
   ```
-  <script type="text/javascript">
-  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-  (
-    {
-      instrumentationKey:"INSTRUMENTATION_KEY",
       distributedTracingMode: 2 // DistributedTracingModes.W3C
-      /* ...other configuration options... */
-    }
-  );
-  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-  </script>
   ```
+> [!IMPORTANT] 
+> Bağıntıyı etkinleştirmek için gereken tüm konfigürasyonları görmek için [JavaScript bağıntı belgelerine](/azure/azure-monitor/app/javascript#enable-correlation)bakın.
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 'da telemetri bağıntısı
 
@@ -170,7 +157,7 @@ Başvuru olarak, OpenCensus veri modeli [burada](https://github.com/census-instr
 
 ### <a name="incoming-request-correlation"></a>Gelen istek bağıntısı
 
-OpenCensus Python, W3C Trace-Context üst bilgilerini gelen isteklerden, isteklerden oluşturulan yayılmaya göre ilişkilendirir. OpenCensus, bu popüler web uygulaması çerçeveleri için tümleştirmelerle otomatik olarak yapılır: Flask, Docgo ve piramit. Yalnızca W3C Trace-Context üst bilgilerini [doğru biçimle](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) doldurmanız ve istekle birlikte göndermeniz gerekir. Bunu gösteren örnek bir Flask uygulaması aşağıda verilmiştir:
+OpenCensus Python 'da W3C Trace-Context gelen isteklerden gelen üst bilgileri, isteklerden oluşturulan yayılmaya ilişkilendirir. OpenCensus, bu popüler web uygulaması çerçeveleri için tümleştirmelerle otomatik olarak yapılır: Flask, Docgo ve piramit. Yalnızca W3C Trace-Context üst bilgilerini [doğru biçimde](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) doldurmanız ve istekle birlikte göndermeniz gerekir. Bunu gösteren örnek bir Flask uygulaması aşağıda verilmiştir:
 
 ```python
 from flask import Flask

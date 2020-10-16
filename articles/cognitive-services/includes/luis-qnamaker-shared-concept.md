@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -8,10 +8,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87133936"
 ---
 Bilişsel hizmetler, [Language Understanding](../luis/what-is-luis.md) ve [soru-cevap oluşturma](../qnamaker/overview/overview.md)her biri farklı bir amaca sahip iki doğal dil işleme hizmeti sağlar. Her bir hizmetin ne zaman kullanılacağını ve birbirini nasıl zorluk yaptığını anlayın.
@@ -33,7 +33,7 @@ Sohbet botunuzu metin alırsa `How do I get to the Human Resources building on t
 |Hizmet|İstemci uygulaması şunları belirler|
 |--|--|
 |LUIS|**Kullanıcının** metin düzeyini belirler; hizmet soruya cevap vermez. Örneğin, bu metin amacınızla eşleşen olarak sınıflandırılır `FindLocation` .<br>|
-|Soru-Cevap Oluşturucu|Özel bir bilgi bankasından **sorunun yanıtını döndürür** . Örneğin, bu metin, statik metin yanıtı olan bir soru olarak belirlenir `Get on the #9 bus and get off at Franklin street` .|
+|Soru-Cevap Oluşturucu|Özel bir bilgi bankasından **sorunun yanıtını döndürür** . Örneğin, bu metin, statik metin yanıtı olan bir soru olarak belirlenir  `Get on the #9 bus and get off at Franklin street` .|
 |||
 
 > [!div class="mx-imgBorder"]
@@ -75,7 +75,7 @@ Her iki hizmet ile birlikte çalışmak üzere bir işlem oluşturmaya yardımc�
 
 Bu tür sohbet bot 'ı uygulamak için, bot Oluşturucu örneği **olan NLP 'yi Dispatch**, [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) veya [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)ile birlikte kullanın.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Her hizmet için en iyi yöntemleri uygulayın:
 
@@ -85,7 +85,7 @@ Her hizmet için en iyi yöntemleri uygulayın:
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Language Understanding (LUIS)](../luis/what-is-luis.md)
-* [Soru-Cevap Oluşturucu](../qnamaker/overview/overview.md)
+* [Soru-Cevap Oluşturma](../qnamaker/overview/overview.md)
 * [CLı dağıtma](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Bot Framework örnekleri](https://github.com/Microsoft/BotBuilder-Samples)
 * [Azure bot hizmeti](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)

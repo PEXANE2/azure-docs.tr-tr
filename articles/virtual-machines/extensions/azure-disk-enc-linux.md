@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
-ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc82109c60ac077d9e92e4d4a52abdaf8577771f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066912"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971192"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure disk şifrelemesi, [Select Azure Linux dağıtımları](https://aka.ms/adelinux)üzerinde tam disk şifrelemesi sağlamak için Linux 'daki dm-crypt alt sisteminden yararlanır.  Bu çözüm, disk şifreleme anahtarlarını ve gizli dizileri yönetmek için Azure Key Vault ile tümleşiktir.
+Azure disk şifrelemesi, [Select Azure Linux dağıtımları](../linux/disk-encryption-overview.md)üzerinde tam disk şifrelemesi sağlamak için Linux 'daki dm-crypt alt sisteminden yararlanır.  Bu çözüm, disk şifreleme anahtarlarını ve gizli dizileri yönetmek için Azure Key Vault ile tümleşiktir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Önkoşulların tam listesi için bkz. [Linux VM 'leri Için Azure disk şifrelemesi](../linux/disk-encryption-overview.md), özellikle aşağıdaki bölümler:
 
@@ -144,22 +144,22 @@ V 1.1 şeması önerilir ve Azure Active Directory (AAD) özellikleri gerektirme
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| yayımcı | Microsoft. Azure. Security | string |
-| tür | AzureDiskEncryptionForLinux | string |
+| yayımcı | Microsoft. Azure. Security | dize |
+| tür | AzureDiskEncryptionForLinux | dize |
 | typeHandlerVersion | 1,1, 0,1 | int |
 | (0,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0,1 şeması) AADClientSecret | password | string |
-| (0,1 şeması) AADClientCertificate | #c0 | string |
-| seçim (0,1 şeması) Deyimi | password | string |
+| (0,1 şeması) AADClientSecret | password | dize |
+| (0,1 şeması) AADClientCertificate | #c0 | dize |
+| seçim (0,1 şeması) Deyimi | password | dize |
 | DiskFormatQuery | {"dev_path": "", "ad": "", "file_system": ""} | JSON sözlüğü |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| (isteğe bağlı-varsayılan RSA-OAEP) KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |
-| KeyVaultURL | url | string |
-| Keyvaultresourceıd | url | string |
-| seçim KeyEncryptionKeyURL 'Si | url | string |
-| seçim KekVaultResourceId | url | string |
-| seçim SequenceVersion | uniqueidentifier | string |
-| Birimtürü | İşletim sistemi, veri, tümü | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | dize | 
+| (isteğe bağlı-varsayılan RSA-OAEP) KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | dize |
+| KeyVaultURL | url | dize |
+| Keyvaultresourceıd | url | dize |
+| seçim KeyEncryptionKeyURL 'Si | url | dize |
+| seçim KekVaultResourceId | url | dize |
+| seçim SequenceVersion | uniqueidentifier | dize |
+| Birimtürü | İşletim sistemi, veri, tümü | dize |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 

@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325632"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072161"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma
 
@@ -26,11 +26,11 @@ NFSv4, bir kimlik doğrulama etki alanı kavramını tanıtır. Azure NetApp Fil
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>Kullanıcı/Grup eşlemesinin varsayılan davranışı
 
-`nobody`NFSv4 etki alanı olarak ayarlandığından kök eşleme varsayılan olarak kullanıcıya ayarlanır `localdomain` . Bir Azure NetApp Files NFSv 4.1 birimini kök olarak bağladığınızda, dosya izinlerini şöyle görürsünüz:  
+`nobody`NFSv4 etki alanı varsayılan olarak olarak ayarlandığından kök eşleme varsayılan olarak kullanıcıya ayarlanır `localdomain` . Bir Azure NetApp Files NFSv 4.1 birimini kök olarak bağladığınızda, dosya izinlerini şöyle görürsünüz:  
 
 ![NFSv 4.1 için Kullanıcı/Grup eşlemesinin varsayılan davranışı](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Yukarıdaki örnekte gösterildiği gibi, kullanıcısının `file1` olması gerekir `root` , ancak varsayılan olarak ile eşlenir `nobody` .  Bu makalede, kullanıcının nasıl ayarlanacağı gösterilmektedir `file1` `root` .  
+Yukarıdaki örnekte gösterildiği gibi, kullanıcısının `file1` olması gerekir `root` , ancak varsayılan olarak ile eşlenir `nobody` .  Bu makalede, `file1` `root` ayarını olarak değiştirerek kullanıcının nasıl ayarlanacağı gösterilmektedir `idmap Domain` `defaultv4iddomain.com` .  
 
 ## <a name="steps"></a>Adımlar 
 

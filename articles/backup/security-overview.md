@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012560"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093353"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -16,7 +16,7 @@ Verilerinizi korumak için uygulayabileceğiniz en önemli adımlardan biri, gü
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Kimlik ve Kullanıcı erişiminin yönetimi ve denetimi
 
-Kurtarma Hizmetleri kasaları tarafından kullanılan depolama hesapları yalıtılmış ve herhangi bir kötü amaçlı kullanıcı tarafından erişilemez. Erişime yalnızca geri yükleme gibi Azure Backup yönetim işlemleri aracılığıyla izin verilir. Azure Backup, [Azure rol tabanlı erişim denetimi (Azure RBAC)](./backup-rbac-rs-vault.md)kullanarak ayrıntılı erişim aracılığıyla yönetilen işlemleri denetlemenize olanak sağlar. RBAC, takımınızın içindeki görevleri ayırt etmenize ve yalnızca işlerini yapmak için gereken kullanıcılara erişim miktarına izin vermenizi sağlar.
+Kurtarma Hizmetleri kasaları tarafından kullanılan depolama hesapları yalıtılmış ve herhangi bir kötü amaçlı kullanıcı tarafından erişilemez. Erişime yalnızca geri yükleme gibi Azure Backup yönetim işlemleri aracılığıyla izin verilir. Azure Backup, [Azure rol tabanlı erişim denetimi (Azure RBAC)](./backup-rbac-rs-vault.md)kullanarak ayrıntılı erişim aracılığıyla yönetilen işlemleri denetlemenize olanak sağlar. Azure RBAC, takımınızın içindeki görevleri ayırt etmenize ve yalnızca işlerini yapmak için gereken kullanıcılara erişim miktarına izin vermenizi sağlar.
 
 Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç [yerleşik rol](../role-based-access-control/built-in-roles.md) sağlar:
 
@@ -24,7 +24,7 @@ Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç [yerleşik 
 * Yedekleme Işleci-katkıda bulunan her şey, yedeklemenin kaldırılması ve yedekleme ilkelerinin yönetilmesi dışında
 * Yedekleme okuyucusu-tüm yedekleme yönetimi işlemlerini görüntüleme izinleri
 
-[Azure Backup yönetmek Için rol tabanlı erişim denetimi](./backup-rbac-rs-vault.md)hakkında daha fazla bilgi edinin.
+[Azure Backup yönetmek Için Azure rol tabanlı erişim denetimi](./backup-rbac-rs-vault.md)hakkında daha fazla bilgi edinin.
 
 Azure Backup, güvenlik açıklarını engellemek, algılamak ve yanıtlamak için hizmette yerleşik olarak bulunan çeşitli güvenlik denetimlerine sahiptir. [Azure Backup için güvenlik denetimleri](./backup-security-controls.md)hakkında daha fazla bilgi edinin.
 
@@ -64,7 +64,7 @@ Azure Backup, Azure Backup ilgili olaylara yönelik eylemleri görüntülemek ve
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Karma yedeklemeleri korumaya yardımcı olan güvenlik özellikleri
 
-Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlıyor. Bu özellikler şunları içerir:
+Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlıyor. Bu özellikler şunlardır:
 
 * Bir parolayı değiştirme gibi kritik bir işlem gerçekleştirildiğinde ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilmesini sağlamaktır. [Saldırıları engelleyen özellikler hakkında daha fazla bilgi edinin](./backup-azure-security-feature.md#prevent-attacks).
 

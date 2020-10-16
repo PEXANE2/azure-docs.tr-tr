@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 81fad94dc02bd57f839d7ab8653bec7074e41800
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89076349"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps için Azure Resource Manager şablonu oluşturma
 
 Mantıksal uygulamanız için bir Azure Resource Manager şablonu oluşturduktan sonra, şablonunuzu şu yollarla dağıtabilirsiniz:
 
-* [Azure Portal](#portal)
+* [Azure portalındaki](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
@@ -31,7 +31,7 @@ Mantıksal uygulamanız için bir Azure Resource Manager şablonu oluşturduktan
 
 Mantıksal uygulama şablonunu Azure 'a otomatik olarak dağıtmak için, aşağıdaki **Azure 'A dağıt** düğmesini seçebilirsiniz ve bu, Azure Portal oturumunuzu açar ve mantıksal uygulamanız hakkında bilgi ister. Daha sonra mantıksal uygulama şablonunda veya parametrelerde gerekli değişiklikleri yapabilirsiniz.
 
-[![Azure’a dağıt](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Azure’a dağıtın](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 Örneğin, Azure portal oturum açtıktan sonra aşağıdaki bilgiler istenir:
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086968"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight’ta WebHCat’ten alınan hataları anlama ve düzeltme
@@ -71,7 +71,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 | --- | --- |
 | Web Hcat işleminde iç çöp toplama işlemi yapılıyor |Çöp toplamanın bitmesini bekleyin veya WebHCat hizmetini yeniden başlatın |
 | ResourceManager hizmetinden yanıt beklerken zaman aşımı. Etkin uygulama sayısı yapılandırılmış en yüksek değeri geçtiğinde bu hata oluşabilir (varsayılan 10.000) |Çalışmakta olan işlerin tamamlanmasını bekleyin veya değiştirerek eşzamanlı iş sınırını artırın `yarn.scheduler.capacity.maximum-applications` . Daha fazla bilgi için [yapılandırma değiştirme](#modifying-configuration) bölümüne bakın. |
-| Olarak ayarlandığında, [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) çağrısı aracılığıyla tüm işleri alma girişimi `Fields``*` |*Tüm* iş ayrıntılarını alma. Bunun yerine `jobid` yalnızca belirli Iş kimliğinden daha büyük işlerin ayrıntılarını almak için kullanın. Veya kullanma`Fields` |
+| Olarak ayarlandığında, [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) çağrısı aracılığıyla tüm işleri alma girişimi `Fields``*` |*Tüm* iş ayrıntılarını alma. Bunun yerine `jobid` yalnızca belirli Iş kimliğinden daha büyük işlerin ayrıntılarını almak için kullanın. Veya kullanma `Fields` |
 | WebHCat hizmeti, yayın düğümü yük devretmesi sırasında çalışmıyor |İki dakika bekleyip işlemi yeniden deneyin |
 | WebHCat aracılığıyla en çok 500 bekleyen iş gönderildi |Daha fazla iş göndermeden önce Şu anda bekleyen işlerin tamamlanmasını bekleyin |
 

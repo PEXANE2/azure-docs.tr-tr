@@ -9,12 +9,14 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17260c3890df0bd78b1503a046ff39ab173712be
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.reviewer: larryfr
+ms.custom: deploy
+ms.openlocfilehash: 9a6e2de07921d05e123154f604c3d1b369b3b89d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91622097"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998750"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -30,7 +32,7 @@ Triton, *çıkarım için iyileştirilmiş*bir çerçevedir. GPU 'ların daha iy
 > [!TIP]
 > Bu belgedeki kod parçacıkları tanım amaçlıdır ve bir çözümü tamamen gösteremeyebilir. Çalışan örnek kod için [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine](https://aka.ms/aml-triton-sample)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * Azure Machine Learning [bir modelin nasıl ve nasıl dağıtılacağı hakkında](how-to-deploy-and-where.md) benzerlik.

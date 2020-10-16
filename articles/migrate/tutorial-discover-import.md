@@ -4,10 +4,10 @@ description: Azure geçişi sunucu değerlendirmesi ' nde içeri aktarılan CSV 
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604232"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Öğretici: içeri aktarılan bir CSV dosyası kullanarak sunucuları değerlendirme
@@ -18,10 +18,10 @@ Bu öğreticide, içeri aktarılan bir virgülle ayrılmış değerler (CSV) dos
 
 Bir CSV dosyası kullanıyorsanız, sunucuları bulup değerlendirmek için Azure geçişi gereci ayarlamanız gerekmez. Dosya içinde paylaştığınız verileri denetleyebilir ve verilerin büyük bölümü isteğe bağlıdır. Bu yöntem şu durumlarda yararlı olur:
 
-- Gereci dağıtmadan önce hızlı, ilk değerlendirme oluşturmak istersiniz.
-- Azure geçişi gerecini kuruluşunuza dağıtamazsınız.
-- Şirket içi sunuculara erişime izin veren kimlik bilgilerini paylaşamazsınız.
-- Güvenlik kısıtlamaları, Gereç tarafından toplanan verileri Azure 'a toplamayı ve göndermeyi önler.
+- Aleti dağıtmadan önce hızlı bir başlangıç değerlendirmesi oluşturmak istiyorsanız.
+- Azure Geçişi aletini kuruluşunuzda dağıtma imkanınız yoksa.
+- Şirket içi sunuculara erişim sağlayan kimlik bilgilerini paylaşamıyorsanız.
+- Güvenlik kısıtlamaları nedeniyle alet tarafından toplanan verilerin Azure'a gönderilmesini sağlayamıyorsanız.
 
 > [!NOTE]
 > CSV dosyası kullanılarak içeri aktarılan sunucuları geçiremezsiniz.
@@ -29,7 +29,7 @@ Bir CSV dosyası kullanıyorsanız, sunucuları bulup değerlendirmek için Azur
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure hesabı ayarlama
-> * Azure geçişi projesi ayarlama
+> * Azure Geçişi projesi oluşturma
 > * CSV dosyası hazırlama
 > * Dosyayı içeri aktarma
 > * Sunucuları değerlendir
@@ -51,7 +51,7 @@ Bir Azure geçişi projesi oluşturmak için şunları içeren bir hesap gerekir
 - Azure aboneliğinde katkıda bulunan veya sahip izinleri.
 - Azure Active Directory uygulamaları kaydetme izinleri.
 
-Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
+Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
 1. Azure portal, "abonelikler" araması yapın ve **Hizmetler**altında **abonelikler**' i seçin.
 
@@ -94,98 +94,98 @@ Yoksa yeni bir Azure geçişi projesi ayarlayın.
 
 ![Varsayılan olarak eklenen sunucu değerlendirmesi aracını gösteren sayfa](./media/tutorial-discover-import/added-tool.png)
 
-## <a name="prepare-the-csv"></a>CSV 'yi hazırlama
+## <a name="prepare-the-csv"></a>CSV dosyasını hazırlama
 
-CSV şablonunu indirin ve buna sunucu bilgilerini ekleyin.
+CSV şablonunu indirin ve içine sunucu bilgilerini ekleyin.
 
 ### <a name="download-the-template"></a>Şablonu indirme
 
-1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
-2. **Makine bul**' da **CSV kullanarak içeri aktar**' ı seçin.
-3. CSV şablonunu indirmek için **İndir** ' i seçin. Alternatif olarak, [doğrudan indirebilirsiniz](https://go.microsoft.com/fwlink/?linkid=2109031).
+1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
+2. **Makineleri bul** bölümünde **CSV kullanarak içeri aktar**'ı seçin.
+3. CSV şablonunu indirmek için **İndir**'i seçin. Alternatif olarak [buradan doğrudan indirebilirsiniz](https://go.microsoft.com/fwlink/?linkid=2109031).
 
-    ![CSV şablonunu indir](./media/tutorial-discover-import/download-template.png)
+    ![CSV şablonunu indirin](./media/tutorial-discover-import/download-template.png)
 
-### <a name="add-server-information"></a>Sunucu bilgileri ekleme
+### <a name="add-server-information"></a>Sunucu bilgilerini ekleyin
 
 Sunucu verilerini toplayın ve CSV dosyasına ekleyin.
 
-- Verileri toplamak için, VMware vSphere veya yapılandırma yönetimi veritabanınız (CMDB) gibi şirket içi sunucu yönetimi için kullandığınız araçlardan dışarı aktarabilirsiniz.
-- Örnek verileri gözden geçirmek için [örnek dosyayı](https://go.microsoft.com/fwlink/?linkid=2108405)indirin.
+- Verileri toplamak için şirket içi sunucu yönetiminde kullandığınız VMware vSphere veya yapılandırma yönetimi veritabanınız (CMDB) gibi araçlarda bulunan verileri dışarı aktarabilirsiniz.
+- Örnek verileri gözden geçirmek için [örnek dosyayı](https://go.microsoft.com/fwlink/?linkid=2108405) indirin.
 
-Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir:
+Aşağıdaki tabloda doldurulacak dosya alanları özetlenmiştir:
 
-**Alan adı** | **Girilmesi** | **Ayrıntılar**
+**Alan adı** | **Zorunlu** | **Ayrıntılar**
 --- | --- | ---
-**Sunucu adı** | Yes | Tam etki alanı adını (FQDN) belirtmeyi öneririz.
-**IP adresi** | No | Sunucu adresi.
-**Çekirdekler** | Yes | Sunucuya ayrılan işlemci çekirdekleri sayısı.
-**Bellek** | Yes | Sunucuya ayrılan toplam RAM (MB).
-**İşletim sistemi adı** | Yes | Sunucu işletim sistemi. <br/> [Bu](#supported-operating-system-names) listedeki adları eşleşen veya içeren işletim sistemi adları değerlendirme tarafından tanınır.
-**İşletim sistemi sürümü** | No | Sunucu işletim sistemi sürümü.
-**İşletim sistemi mimarisi** | No | Sunucu işletim sistemi mimarisi <br/> Geçerli değerler şunlardır: x64, x86, AMD64, 32-bit veya 64 bit
-**Disk sayısı** | No | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
-**Disk 1 boyutu**  | No | Maksimum disk boyutu (GB cinsinden).<br/>Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
-**Disk 1 okuma Ops** | No | Saniye başına disk okuma işlemi.
-**Disk 1 yazma Ops** | No | Saniye başına disk yazma işlemi.
-**Disk 1 okuma aktarım hızı** | No | Diskten saniyede okunan veriler, MB/saniye cinsinden.
-**Disk 1 yazma aktarım hızı** | No | Saniyede diske yazılan veriler (MB/saniye).
-**CPU kullanım yüzdesi** | No | Kullanılan CPU yüzdesi.
-**Bellek kullanım yüzdesi** | No | Kullanılan RAM yüzdesi.
-**Toplam disk okuma Ops** | No | Saniye başına disk okuma işlemi.
-**Toplam disk yazma Ops** | No | Saniye başına disk yazma işlemi.
-**Toplam disk okuma performansı** | No | Diskten MB/saniye cinsinden okunan veriler.
-**Toplam disk yazma performansı** | No | Diske yazılan veriler MB/saniye cinsinden.
-**Aktarım sırasında ağ** | No | Sunucu tarafından saniyede MB cinsinden alınan veriler.
-**Ağ çıkış performansı** | No | Sunucu tarafından saniye başına MB cinsinden aktarılan veriler.
-**Bellenim türü** | No | Sunucu üretici yazılımı. Değerler "BIOS" veya "UEFı" olabilir.
-**MAC adresi**| No | Sunucu MAC adresi.
+**Sunucu adı** | Yes | Tam etki alanı adını (FQDN) belirtmeniz önerilir.
+**IP adresi** | Hayır | Sunucunun adresi.
+**Çekirdekler** | Yes | Sunucu için ayrılmış olan işlemci çekirdeği sayısı.
+**Bellek** | Yes | Sunucu için ayrılmış olan toplam RAM miktarı (MB).
+**İşletim sistemi adı** | Yes | Sunucunun işletim sistemi. <br/> Değerlendirme aracı, [bu listede](#supported-operating-system-names) yer alan adlarla eşleşen veya onları içeren işletim sistemi adlarını tanır.
+**İşletim sistemi sürümü** | Hayır | Sunucunun işletim sistemi sürümü.
+**İşletim sistemi mimarisi** | Hayır | Sunucunun işletim sistemi mimarisi <br/> Geçerli değerler: x64, x86, amd64, 32-bit veya 64-bit
+**Disk sayısı** | Hayır | Her diskle ilgili ayrıntılı bilgi sağlanmışsa gerekli değildir.
+**Disk 1 boyutu**  | Hayır | Maksimum disk boyutu (GB).<br/>Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla diskin ayrıntılarını ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
+**Disk 1 okuma işlemi/saniye** | Hayır | Saniyede gerçekleştirilen disk okuma işlemi sayısı.
+**Disk 1 yazma işlemi/saniye** | Hayır | Saniyede gerçekleştirilen disk yazma işlemi sayısı.
+**Disk 1 okuma aktarım hızı** | Hayır | Diskten bir saniyede okunan veri miktarı (MB/sn).
+**Disk 1 yazma aktarım hızı** | Hayır | Diske bir saniyede yazılan veri miktarı (MB/sn).
+**CPU kullanım yüzdesi** | Hayır | Kullanılan CPU yüzdesi.
+**Bellek kullanım yüzdesi** | Hayır | Kullanılan RAM yüzdesi.
+**Toplam disk okuma işlemi/saniye** | Hayır | Saniye başına disk okuma işlemi.
+**Toplam disk yazma işlemi/saniye** | Hayır | Saniye başına disk yazma işlemi.
+**Toplam disk okuma aktarım hızı** | Hayır | Diskten MB/saniye cinsinden okunan veriler.
+**Toplam disk yazma aktarım hızı** | Hayır | Diske yazılan veriler MB/saniye cinsinden.
+**Ağa gelen aktarım hızı** | Hayır | Sunucu tarafından alınan veri miktarı (MB/sn).
+**Ağdan giden aktarım hızı** | Hayır | Sunucu tarafından gönderilen veri miktarı (MB/sn).
+**Üretici yazılımı türü** | Hayır | Sunucunun üretici yazılımı. Değerler "BIOS" veya "UEFI" olabilir.
+**MAC adresi**| Hayır | Sunucunun MAC adresi.
 
 
-### <a name="add-operating-systems"></a>İşletim sistemleri ekleme
+### <a name="add-operating-systems"></a>İşletim sistemi ekleme
 
-Değerlendirme, belirli işletim sistemi adlarını tanır. Belirttiğiniz ad, [desteklenen adlar listesindeki](#supported-operating-system-names)dizelerden biriyle tam olarak eşleşmelidir.
+Değerlendirme, belirli işletim sistemi adlarını tanır. Belirttiğiniz adların [desteklenen adlar listesinde](#supported-operating-system-names) yer alan girişlerle tam olarak eşleşmesi gerekir.
 
-### <a name="add-multiple-disks"></a>Birden çok disk Ekle
+### <a name="add-multiple-disks"></a>Birden çok disk ekleme
 
-Şablon, ilk disk için varsayılan alanlar sağlar. En fazla sekiz diske benzer sütunlar ekleyebilirsiniz.
+Şablonda ilk disk için varsayılan alanlar verilmiştir. Benzer sütunlar ekleyerek en fazla sekiz disk ekleyebilirsiniz.
 
-Örneğin, ikinci bir disk için tüm alanları belirtmek için şu sütunları ekleyin:
+Örneğin ikinci disk için tüm alanları belirtmek isterseniz şu sütunları ekleyin:
 
 - Disk 2 boyutu
-- Disk 2 okuma Ops
-- Disk 2 yazma Ops
-- Disk 2 okuma performansı
-- Disk 2 yazma işleme
+- Disk 2 okuma işlemi/saniye
+- Disk 2 yazma işlemi/saniye
+- Disk 2 okuma aktarım hızı
+- Disk 2 yazma aktarım hızı
 
 
 ## <a name="import-the-server-information"></a>Sunucu bilgilerini içeri aktarma
 
 CSV şablonuna bilgi ekledikten sonra, CSV dosyasını sunucu değerlendirmesi içine aktarın.
 
-1. Azure geçişi 'nde, **bulma makineler**bölümünde, tamamlanan şablona gidin.
+1. Azure Geçişi'nin **Makineleri bul** bölümünde doldurduğunuz şablonu seçin.
 2. **İçeri aktar**'ı seçin.
 3. İçeri aktarma durumu gösterilir.
-    - Durum durumunda uyarı görünürse, bunları çözebilir ya da bunları bilmeden devam edebilirsiniz.
-    - Değerlendirme doğruluğunu artırmak için, Uyarılar bölümünde önerildiği gibi sunucu bilgilerini geliştirebilirsiniz.
-    - Uyarıları görüntülemek ve onarmak için **uyarı ayrıntılarını İndir ' i seçin. CSV**. Bu işlem CSV 'yi dahil edilen uyarılarla indirir. Uyarıları gözden geçirin ve sorunları gerektiği şekilde giderin.
-    - Durum, içeri aktarma durumunun **başarısız**olması için durumda görünüyorsa, içeri aktarmaya devam edebilmeniz için önce bu hataları çözmeniz gerekir:
-        1. Artık hata ayrıntılarını içeren CSV 'yi indirin.
-        1. Hataları gözden geçirin ve gerektiği şekilde çözün. 
-        1. Değiştirilen dosyayı yeniden karşıya yükleyin.
-4. İçeri aktarma durumu **tamamlandığında**, sunucu bilgileri içeri aktarılır. İçeri aktarma işleminin tamamlanmamış gibi görünmediğini yenileyin.
+    - Durum alanında uyarılar görünürse bunları düzeltebilir veya düzeltmeden devam edebilirsiniz.
+    - Değerlendirmenin doğruluğunu artırmak için uyarıları dikkate alarak sunucu bilgilerini düzeltmeniz önerilir.
+    - Uyarıları görüntülemek ve düzeltmek için **Uyarı ayrıntılarını indir (CSV)** öğesini seçin. Bunu yaptığınızda CSV dosyası uyarılarla birlikte indirilir. Uyarıları inceleyin ve sorunları gerektiği gibi giderin.
+    - Durumda hata görünürse ve içeri aktarma işlemi **Başarısız** olursa içeri aktarma işlemini gerçekleştirmek için ilgili hataları mutlaka gidermeniz gerekir:
+        1. Hata bilgilerinin yer aldığı CSV dosyasını indirin.
+        1. Hataları gözden geçirin ve gerektiği gibi düzeltin. 
+        1. Değiştirdiğiniz dosyayı yeniden karşıya yükleyin.
+4. İçeri aktarma durumu **Tamamlandı** olduğunda sunucu bilgileri içeri aktarılmış demektir. İçeri aktarma işleminin tamamlanmamış gibi görünmediğini yenileyin.
 
-## <a name="update-server-information"></a>Sunucu bilgilerini güncelleştir
+## <a name="update-server-information"></a>Sunucu bilgilerini güncelleştirme
 
-Sunucu için verileri aynı **sunucu adıyla**yeniden içeri aktararak sunucu bilgilerini güncelleştirebilirsiniz. **Sunucu adı** alanını değiştiremezsiniz. Sunucuları silme işlemi şu anda desteklenmiyor.
+Aynı **Sunucu adı** değerini kullanarak yeniden veri içeri aktardığınızda sunucu bilgilerini güncelleştirmiş olursunuz. **Sunucu adı** alanını değiştiremezsiniz. Şu an için sunucuları silme işlemi desteklenmez.
 
 ## <a name="verify-servers-in-the-portal"></a>Portalda sunucuları doğrulama
 
-Azure portal, bulma sonrasında sunucuların göründüğünü doğrulamak için:
+Bulma işlemi sonrasında sunucuların Azure portalında göründüğünü doğrulamak için:
 
-1. Azure geçişi panosunu açın.
-2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeyi seçin.
-3. **Içeri aktarma tabanlı** sekmesini seçin.
+1. Azure Geçişi panosunu açın.
+2. **Azure Geçişi - Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** sayfasında **Bulunan sunucuların** sayısını gösteren simgeyi seçin.
+3. **İçeri aktarma tabanlı** sekmesini seçin.
 
 
 
@@ -195,7 +195,7 @@ CSV 'de belirtilen işletim sistemi adları içermesi ve eşleşmesi gerekir. Ak
 
 **A-H** | **I-R** | **S-T** | **U-Z**
 --- | --- | --- | ---
-Apple Mac OS X 10<br/>Asıanux 3<br/>Asıanux 4<br/>Asıanux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Borçlu GNU/Linux 4<br/>Borçlu GNU/Linux 5<br/>Borçlu GNU/Linux 6<br/>Borçlu GNU/Linux 7<br/>De, GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>MS-DOS<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenlik sistemleri eComStation 1<br/>Çevre sistemleri eComStation <br/>Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server eşiği<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
+Apple Mac OS X 10<br/>Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>MS-DOS<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenity Systems eComStation 1<br/>Çevre sistemleri eComStation <br/>Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

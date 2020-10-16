@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082622"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux ve Windows için Chef VM Uzantısı
@@ -71,22 +71,22 @@ Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az C
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | dize (Tarih) |
 | yayımcı | `Chef.Bootstrap.WindowsAzure` | string |
-| tür | `LinuxChefClient`(Linux), `ChefClient` (Windows) | string |
+| tür | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.13` | dize (çift) |
 
 ### <a name="settings"></a>Ayarlar
 
 | Name | Değer/örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ----
-| ayarlar/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | dize (URL) | Y |
-| ayarlar/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
-| ayarlar/runlist | `recipe[mycookbook::default]` | string | Y |
+| ayarlar/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | dize (URL) | E |
+| ayarlar/bootstrap_options/validation_client_name | `myorg-validator` | string | E |
+| ayarlar/runlist | `recipe[mycookbook::default]` | string | E |
 
 ### <a name="protected-settings"></a>Korumalı ayarlar
 
 | Name | Örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | E |
 
 <!--
 ### Linux-specific settings

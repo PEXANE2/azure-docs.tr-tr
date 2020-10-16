@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037414"
 ---
 # <a name="geofencing-geojson-data"></a>Bölge sınırlaması coğrafi JSON verileri
@@ -24,9 +24,9 @@ Bölge ölçütü veya bölge kümesi verileri `Feature` `FeatureCollection` `Ge
 * GeoJSON nesne türü bir `Feature` nesne veya `FeatureCollection` nesne olabilir.
 * Geometri nesne türü,,,,,, `Point` `MultiPoint` ve olabilir `LineString` `MultiLineString` `Polygon` `MultiPolygon` `GeometryCollection` .
 * Tüm özellik özellikleri `geometryId` , geofence 'yi tanımlamak için kullanılan bir içermelidir.
-* Özelliği,,,,, `Point` `MultiPoint` `LineString` `MultiLineString` özelliklerinde içermesi gerekir `radius` . `radius`değer ölçü cinsinden ölçülür, `radius` değer 1 ile 10000 arasında değişir.
+* Özelliği,,,,, `Point` `MultiPoint` `LineString` `MultiLineString` özelliklerinde içermesi gerekir `radius` . `radius` değer ölçü cinsinden ölçülür, `radius` değer 1 ile 10000 arasında değişir.
 * `polygon`Ve `multipolygon` geometri türündeki özellik bir Radius özelliğine sahip değil.
-* `validityTime`, Kullanıcı bölge verileri için süresi dolmuş süreyi ve geçerlilik süresi dönemini ayarlamaya olanak sağlayan isteğe bağlı bir özelliktir. Belirtilmemişse, verilerin süresi süresiz olur ve her zaman geçerlidir.
+* `validityTime` , Kullanıcı bölge verileri için süresi dolmuş süreyi ve geçerlilik süresi dönemini ayarlamaya olanak sağlayan isteğe bağlı bir özelliktir. Belirtilmemişse, verilerin süresi süresiz olur ve her zaman geçerlidir.
 * , `expiredTime` Bölge sınırlaması verilerinin son kullanma tarihi ve saati. `userTime`İstekteki değeri bu değerden daha sonra ise, karşılık gelen bölge verileri, süre dolmayan veriler olarak değerlendirilir ve sorgulanmaz. Bu durumda, bu bölge verilerinin geometryıd 'si, `expiredGeofenceGeometryId` Bölge sınırı yanıtı içinde diziye dahil edilir.
 * , `validityPeriod` Geofence 'ın geçerlilik zaman döneminin bir listesidir. `userTime`İstekteki değeri geçerlilik süresinin dışında kalırsa, ilgili bölge verileri geçersiz olarak kabul edilir ve sorgulanmaz. Bu bölge verilerinin geometryıd 'si, `invalidPeriodGeofenceGeometryId` Bölge sınırı Response içindeki diziye dahil edilmiştir. Aşağıdaki tabloda validityPeriod öğesinin özellikleri gösterilmektedir.
 
@@ -34,15 +34,15 @@ Bölge ölçütü veya bölge kümesi verileri `Feature` `FeatureCollection` `Ge
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Tarih saat  | true | Geçerlilik zaman döneminin başlangıç tarihi saati. |
 | endTime   | Tarih saat  | true |  Geçerlilik zaman döneminin bitiş tarihi. |
-| Numaralarına | string | yanlış |   Dönemin yinelenme türü. Değer,, `Daily` veya olabilir `Weekly` `Monthly` `Yearly` . Varsayılan değer `Daily` .|
-| yalnızca BusinessDay | Boole | yanlış |  Verilerin yalnızca iş günleri için geçerli olup olmadığını belirtin. Varsayılan değer `false` .|
+| Numaralarına | string | yanlış |   Dönemin yinelenme türü. Değer,, `Daily` veya olabilir `Weekly` `Monthly` `Yearly` . Varsayılan değer `Daily` olarak belirlenmiştir.|
+| yalnızca BusinessDay | Boole | yanlış |  Verilerin yalnızca iş günleri için geçerli olup olmadığını belirtin. Varsayılan değer `false` olarak belirlenmiştir.|
 
 
 * Tüm koordinat değerleri içinde tanımlanmış [Boylam, Enlem] olarak gösterilir `WGS84` .
 * ,,, Veya içeren her özellik için, `MultiPoint` `MultiLineString` `MultiPolygon` `GeometryCollection` Özellikler tüm öğelere uygulanır. Örneğin: içindeki tüm noktaları, `MultiPoint` birden çok daire bölge oluşturmak için aynı yarıçapı kullanır.
 * Nokta-daire senaryosunda, bir daire geometrisi, `Point` [geojson geometrileri genişletilerek](https://docs.microsoft.com/azure/azure-maps/extend-geojson)ayrıntılı Properties ile bir geometri nesnesi kullanılarak gösterilebilir.      
 
-Aşağıda, bir `GeoJSON` orta nokta ve yarıçap kullanan bir daire bölge alanı geometrisi olarak temsil edilen bölge için örnek bir istek gövdesi verilmiştir. Bölge verilerinin geçerli dönemi 2018-10-22, 00 ila 17:00, hafta sonu hariç her gün yinelenir. `expiredTime`istekte daha sonra olması durumunda bu bölge verilerinin zaman aşımına geçeceğini belirtir `userTime` `2019-01-01` .  
+Aşağıda, bir `GeoJSON` orta nokta ve yarıçap kullanan bir daire bölge alanı geometrisi olarak temsil edilen bölge için örnek bir istek gövdesi verilmiştir. Bölge verilerinin geçerli dönemi 2018-10-22, 00 ila 17:00, hafta sonu hariç her gün yinelenir. `expiredTime` istekte daha sonra olması durumunda bu bölge verilerinin zaman aşımına geçeceğini belirtir `userTime` `2019-01-01` .  
 
 ```json
 {

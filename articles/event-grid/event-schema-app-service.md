@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jafreebe
 ms.openlocfilehash: 2465b2f260ed6c174b762fcf64a71100a148254d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86106720"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure App Service
@@ -22,7 +22,7 @@ Bu makalede Azure App Service olayları için özellikler ve şema sağlanmaktad
 
 Azure App Service aşağıdaki olay türlerini yayar
 
-|    Olay Türü                                             |    Description                                                     |
+|    Olay Türü                                             |    Açıklama                                                     |
 |-----------------------------------------------------------|--------------------------------------------------------------------|
 |    Microsoft. Web/Sites. Backupoperationbaşlatıldı             |    Bir yedekleme başlatıldığında tetiklendi                             |
 |    Microsoft. Web/Sites. BackupOperationCompleted           |    Bir yedekleme tamamlandığında tetiklenir                           |
@@ -45,14 +45,14 @@ Azure App Service aşağıdaki olay türlerini yayar
 Bir olay tetiklendiğinde, Event Grid hizmeti bu olayla ilgili verileri bu olay ile abone olacak şekilde gönderir.
 Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek içerir. Her olay aşağıdaki en üst düzey verilere sahiptir:
 
-|     Özellik          |     Tür     |     Description                                                                                                                                |
+|     Özellik          |     Tür     |     Açıklama                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    konu başlığı              |    string    |    Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar.                                      |
-|    Konu            |    string    |    Olay konusunun yayımcı tanımlı yolu.                                                                                              |
-|    Türü          |    string    |    Bu olay kaynağı için kayıtlı olay türlerinden biri.                                                                                  |
+|    subject            |    string    |    Olay konusunun yayımcı tanımlı yolu.                                                                                              |
+|    eventType          |    string    |    Bu olay kaynağı için kayıtlı olay türlerinden biri.                                                                                  |
 |    eventTime          |    string    |    Etkinliğin UTC saatine göre oluşturulduğu zaman.                                                                         |
 |    kimlik                 |    string    |    Etkinliğin benzersiz tanımlayıcısı.                                                                                                            |
-|    veriler               |    nesne    |    BLOB depolama olay verileri.                                                                                                                    |
+|    veriler               |    object    |    BLOB depolama olay verileri.                                                                                                                    |
 |    dataVersion        |    string    |    Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar.                                                          |
 |    metadataVersion    |    string    |    Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar.    |
 
@@ -81,10 +81,10 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    nesne    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
-|    action                  |    string    |    İşlem eyleminin türü                                                                                   |
+|    appEventTypeDetail      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
+|    eylem                  |    string    |    İşlem eyleminin türü                                                                                   |
 |    name                    |    string    |    Bu olaya sahip olan Web sitesinin adı                                                                          |
 |    Clientrequestıd 'ye sahip         |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan istemci istek kimliği         |
 |    Correlationrequestıd    |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan bağıntı istek kimliği    |
@@ -119,10 +119,10 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    nesne    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
-|    action                  |    string    |    İşlem eyleminin türü                                                                                   |
+|    appEventTypeDetail      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
+|    eylem                  |    string    |    İşlem eyleminin türü                                                                                   |
 |    name                    |    string    |    Bu olaya sahip olan Web sitesinin adı                                                                          |
 |    Clientrequestıd 'ye sahip         |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan istemci istek kimliği         |
 |    Correlationrequestıd    |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan bağıntı istek kimliği    |
@@ -157,10 +157,10 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    nesne    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
-|    action                  |    string    |    İşlem eyleminin türü                                                                                   |
+|    appEventTypeDetail      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
+|    eylem                  |    string    |    İşlem eyleminin türü                                                                                   |
 |    name                    |    string    |    Bu olaya sahip olan Web sitesinin adı                                                                          |
 |    Clientrequestıd 'ye sahip         |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan istemci istek kimliği         |
 |    Correlationrequestıd    |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan bağıntı istek kimliği    |
@@ -196,10 +196,10 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    nesne    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
-|    action                  |    string    |    İşlem eyleminin türü                                                                                   |
+|    appEventTypeDetail      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
+|    eylem                  |    string    |    İşlem eyleminin türü                                                                                   |
 |    name                    |    string    |    Bu olaya sahip olan Web sitesinin adı                                                                          |
 |    Clientrequestıd 'ye sahip         |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan istemci istek kimliği         |
 |    Correlationrequestıd    |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan bağıntı istek kimliği    |
@@ -234,10 +234,10 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    nesne    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
-|    action                  |    string    |    İşlem eyleminin türü                                                                                   |
+|    appEventTypeDetail      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
+|    eylem                  |    string    |    İşlem eyleminin türü                                                                                   |
 |    name                    |    string    |    Bu olaya sahip olan Web sitesinin adı                                                                          |
 |    Clientrequestıd 'ye sahip         |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan istemci istek kimliği         |
 |    Correlationrequestıd    |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan bağıntı istek kimliği    |
@@ -281,19 +281,19 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-|    Özellik                         |    Tür      |    Description                                                                                                       |
+|    Özellik                         |    Tür      |    Açıklama                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appServicePlanEventTypeDetail    |    nesne    |    App Service planındaki eylemin ayrıntıları                                                                          |
+|    appServicePlanEventTypeDetail    |    object    |    App Service planındaki eylemin ayrıntıları                                                                          |
 |    stampKind                        |    string    |    App Service planının bulunduğu ortam türü                                                                     |
-|    action                           |    string    |    App Service planındaki eylemin türü                                                                            |
+|    eylem                           |    string    |    App Service planındaki eylemin türü                                                                            |
 |    durum                           |    string    |    Uygulama hizmeti planındaki işlemin durumu                                                                   |
-|    isteyin                              |    nesne    |    App Service planının SKU 'su                                                                                       |
+|    isteyin                              |    object    |    App Service planının SKU 'su                                                                                       |
 |    name                             |    string    |    App Service planının adı                                                                                      |
 |    Katman                             |    string    |    App Service planının katmanı                                                                                      |
 |    Boyut                             |    string    |    App Service planının boyutu                                                                                      |
 |    Family (Aile)                           |    string    |    uygulama hizmeti planı ailesi                                                                                        |
 |    Kapasite                         |    string    |    App Service planının kapasitesi                                                                                      |
-|    action                           |    string    |    İşlem eyleminin türü                                                                                   |
+|    eylem                           |    string    |    İşlem eyleminin türü                                                                                   |
 |    name                             |    string    |    Bu olaya sahip olan Web sitesinin adı                                                                          |
 |    Clientrequestıd 'ye sahip                  |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan istemci istek kimliği         |
 |    Correlationrequestıd             |    string    |    Bu olayı tetikleyen site API 'SI işlemi için App Service tarafından oluşturulan bağıntı istek kimliği    |

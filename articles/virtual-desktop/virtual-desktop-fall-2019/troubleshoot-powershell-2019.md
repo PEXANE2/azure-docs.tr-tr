@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 23d1e4b06c9c0278742da0cec8ac565b5f80a362
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004903"
 ---
 # <a name="windows-virtual-desktop-classic-powershell"></a>Windows sanal masaüstü (klasik) PowerShell
@@ -52,7 +52,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 - Kullanıcı, işletmeden müşteriye (B2C) veya işletmeden işletmeye (B2B) ticareti 'ne bağlı değildir.
 - Windows sanal masaüstü kiracısı, doğru Azure Active Directory bağlıdır.
 
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities--User, Yönetim hizmetini sorgulama yetkisine sahip değil
+### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities--Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
 
 ```PowerShell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
@@ -60,7 +60,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Neden:** -TenantName parametresi
 
-**Çözüm:** Get-RdsDiagnosticActivities WITH-TenantName ile sorun \<TenantName> .
+**Çözüm:** Sorun Get-RdsDiagnosticActivities-TenantName \<TenantName> .
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities--Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
 
@@ -72,7 +72,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Çözüm:** -dağıtım anahtarı yalnızca dağıtım yöneticileri tarafından kullanılabilir. Bu yöneticiler genellikle Uzak Masaüstü Hizmetleri/Windows sanal masaüstü ekibinin üyeleridir. -Deployment anahtarını-TenantName ile değiştirin \<TenantName> .
 
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: New-RdsRoleAssignment--Kullanıcı Yönetim hizmetini sorgulama yetkisine sahip değil
+### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: New-RdsRoleAssignment--Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
 
 **Neden 1:** Kullanılan hesabın kiracı üzerinde Uzak Masaüstü Hizmetleri sahip izinleri yok.
 
@@ -83,7 +83,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 **2. Çözüm:** Active Directory izinlere sahip bir kullanıcının rol atamasını yürütmesi gerekir.
 
 >[!Note]
->New-RdsRoleAssignment, Azure Active Directory (AD) içinde olmayan bir kullanıcıya izin verebilir.
+>New-RdsRoleAssignment, Azure Active Directory (AD) içinde mevcut olmayan bir kullanıcıya izin veremez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

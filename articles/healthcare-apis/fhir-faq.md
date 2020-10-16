@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269718"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056864"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -43,6 +43,10 @@ FHıR için Azure API 'SI, Azure için açık kaynaklı Microsoft FHıR sunucusu
 Azure için FHıR sunucusu çalıştırırken, temeldeki hizmetlere doğrudan erişim sahibi olursunuz. Ancak, FI verilerini depoluyorsanız, sunucunun ve gerekli tüm uyumluluk işinin saklanması ve güncelleştirilmesinden de sorumlu olursunuz.
 
 Geliştirme açısından, her özellik ilk olarak Azure için açık kaynaklı Microsoft FHıR sunucusuna dağıtılır. Açık kaynakta doğrulandıktan sonra, FHıR çözümü için PaaS Azure API 'sinde kullanıma sunulacaktır. Açık kaynaklı ve PaaS 'deki yayın arasındaki süre, özelliğin karmaşıklığına ve diğer yol haritası önceliklere bağlıdır. 
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>FHIR için Azure API 'ye ne kadar serbest bırakıldıklarınızı nereden görebilirim?
+
+FHıR için Azure API 'sine nelerin [yayınlanabileceği](https://github.com/microsoft/fhir-server/releases) hakkında daha fazla bilgi için lütfen açık kaynaklı Fhır sunucusunun sürümüne bakın. Yönetilen hizmete serbest bırakmaları ve genellikle açık kaynaklı sürüm sayfasında olduktan sonra iki hafta kullanılabilir olmaları durumunda, öğeleri Azure-API-for-FHıR ile etiketledik. Ayrıca, kendi ortamınızda test etmek istiyorsanız, [burada](https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) derlemeyi test etme yönergeleri de eklenmiştir. Ek yönetilen hizmet güncelleştirmelerinin en iyi şekilde nasıl paylaşılacağını değerlendiriyoruz.
 
 ### <a name="what-is-smart-on-fhir"></a>FHAR üzerinde akıllı nedir?
 

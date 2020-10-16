@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: b42c693943c41176936ac796f4586463e9af917c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142392"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076700"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Bulut hizmeti oluşturma ve dağıtma
 Azure portal bulut hizmeti oluşturmanız ve dağıtmanız için iki yol sunar: *hızlı oluşturma* ve *özel oluşturma*.
@@ -84,13 +84,10 @@ Dağıtım paketiniz [sertifikaları kullanacak şekilde yapılandırıldıysa](
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: ./cloud-services-choose-me.md
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Bulut hizmetinizin genel yapılandırması](cloud-services-how-to-configure-portal.md).
 * Özel bir [etki alanı adı](cloud-services-custom-domain-name-portal.md)yapılandırın.
 * [Bulut hizmetinizi yönetin](cloud-services-how-to-manage-portal.md).
 * [TLS/SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma.
-
-
-

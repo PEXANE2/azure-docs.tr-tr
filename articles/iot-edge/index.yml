@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: d3a71cd919660686c77b866b9e7fab461678da96
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 63c36cf0f602c7c19e3ec1eb0b38b84a2e3a6e15
+  ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89300366"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92048347"
 landingContent:
 - title: Linux cihazları için geliştirme
   linkLists:
@@ -46,18 +46,16 @@ landingContent:
     links:
     - text: Modül geliştirmek ve modülde hata ayıklamak için Visual Studio 2017’yi kullanma
       url: how-to-visual-studio-develop-module.md
-- title: IoT Edge cihazları hazırlama
+- title: IoT Edge cihazı oluşturma
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Linux’ta IoT Edge yükleme
-      url: how-to-install-iot-edge-linux.md
-    - text: Windows’da IoT Edge yükleme
-      url: how-to-install-iot-edge-windows.md
-    - text: Linux cihazlarını otomatik olarak sağlama
-      url: how-to-auto-provision-simulated-device-linux.md
-    - text: Windows cihazlarını otomatik olarak sağlama
-      url: how-to-auto-provision-simulated-device-windows.md
+    - text: IoT Edge çalışma zamanını yükleme
+      url: how-to-install-iot-edge.md
+    - text: Tek cihazı kaydetme ve sağlama
+      url: how-to-manual-provision-symmetric-key.md
+    - text: Cihazları büyük ölçekte kaydetme ve sağlama
+      url: how-to-auto-provision-symmetric-keys.md
 - title: Açık kaynak topluluğuyla etkileşim kurma
   linkLists:
   - linkListType: get-started
@@ -105,7 +103,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: IoT Hub için REST API
-      url: https://docs.microsoft.com/rest/api/iothub/
+      url: /rest/api/iothub/
 - title: Uçta yapay zeka dağıtma
   linkLists:
   - linkListType: tutorial

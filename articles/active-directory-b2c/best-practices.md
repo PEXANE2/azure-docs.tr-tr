@@ -12,10 +12,10 @@ ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
 ms.openlocfilehash: c8739da859c00a9caf08ac833f7b4ae7ae52e392
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90084320"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için öneriler ve en iyi uygulamalar
@@ -70,7 +70,7 @@ Azure AD B2C uygulamanızı test edin ve otomatikleştirin.
 | Azaltma |  Kısa bir süre içinde aynı kaynaktan çok fazla istek gönderiliyorsa, trafiği kısıtlar Azure AD B2C. Yük testi sırasında birkaç trafik kaynağı kullanın ve `AADB2C90229` hata kodunu uygulamalarınızda düzgün şekilde işleyin. |
 | Otomasyon | Test ve dağıtımları otomatik hale getirmek için sürekli tümleştirme ve teslim (CI/CD) işlem hatlarını kullanın, örneğin, [Azure DevOps](deploy-custom-policies-devops.md). |
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>İşlemler
 
 Azure AD B2C ortamınızı yönetin.
 
@@ -90,5 +90,5 @@ Hizmetin durumuyla ilgili güncel kalın ve destek seçeneklerini bulun.
 | En iyi yöntem | Açıklama |
 |--|--|
 | [Hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Azure AD B2C ürün güncelleştirmeleri ve duyuruları ile güncel kalın. |
-| [Microsoft Destek](support-options.md) | Azure AD B2C teknik sorunları için bir destek isteği dosyası. Faturalandırma ve abonelik yönetim desteği ücretsiz olarak sunulmaktadır. |
+| [Microsoft Desteği](support-options.md) | Azure AD B2C teknik sorunları için bir destek isteği dosyası. Faturalandırma ve abonelik yönetim desteği ücretsiz olarak sunulmaktadır. |
 | [Azure durumu](https://status.azure.com/status) | Tüm Azure hizmetlerinin geçerli sistem durumunu görüntüleyin. |

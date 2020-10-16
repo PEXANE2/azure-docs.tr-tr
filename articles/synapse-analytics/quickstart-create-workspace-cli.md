@@ -5,16 +5,16 @@ services: synapse-analytics
 author: alehall
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 065e24c12e0750cd7a1f3ce2d4cad5c7ad4b95df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4606dc1c4daa8e54f8fce03cedd9709a7a5c4367
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260742"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093914"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure SYNAPSE çalışma alanı oluşturma
 
@@ -59,13 +59,13 @@ az extension add --name synapse
 
 1. Azure SYNAPSE çalışma alanı için kaynak oluşturmak üzere gerekli ortam değişkenlerini tanımlayın.
 
-    | Ortam Değişkeni Adı | Açıklama |
+    | Ortam Değişkeni Adı | Description |
     |---|---|---|
     |StorageAccountName| Mevcut ADLS 2. depolama hesabınızın adı.|
     |StorageAccountResourceGroup| Mevcut ADLS 2. depolama hesabı kaynak grubunuzun adı. |
     |FileShareName| Mevcut depolama dosya sisteminizin adı.|
     |SynapseResourceGroup| Azure SYNAPSE kaynak grubunuz için yeni bir ad seçin. |
-    |Region| [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/geographies/#overview)birini seçin. |
+    |Bölge| [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/geographies/#overview)birini seçin. |
     |SynapseWorkspaceName| Yeni Azure SYNAPSE çalışma alanınız için benzersiz bir ad seçin. |
     |SqlUser| Yeni Kullanıcı adı için bir değer seçin.|
     |SQLPassword de belirtilmelidir| Güvenli bir parola seçin.|

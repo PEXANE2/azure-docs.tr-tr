@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85512974"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Cihazınızı yönetmek için StorSimple izleme göstergelerini kullanın
@@ -55,13 +55,13 @@ Cihaz veya EBOD Kasası için ön panelde bulunan LED 'ler tarafından belirtile
 
 | Sistem gücü | Modül hatası | Mantıksal hata | Alarm | Durum |
 | --- | --- | --- | --- | --- |
-| Red-, |KAPALI |KAPALI |YOK |AC güç kaybı, yedekleme gücüyle çalışma veya AC gücü açık ve denetleyici modülleri kaldırılmıştır. |
-| Yeşil |AÇIK |AÇIK |YOK |Ops panel güç açma (5 s) test durumu |
-| Yeşil |KAPALI |KAPALI |YOK |Power On, tüm işlevler iyi |
-| Yeşil |AÇIK |YOK |PCM hata LED 'Leri, fan hata LED 'Leri |Herhangi bir PCM hatası, fan hatası, sıcaklığın üzerinde veya altında |
-| Yeşil |AÇIK |YOK |G/ç Modülü LED 'Leri |Herhangi bir denetleyici modülü hatası |
-| Yeşil |AÇIK |YOK |YOK |Kasa mantığı hatası |
-| Yeşil |In |YOK |Modül durumu denetleyici modülünde ışığı. PCM hata LED 'Leri, fan hata LED 'Leri |Bilinmeyen denetleyici modülü türü yüklendi, ı2C veri yolu hatası, denetleyici modülü önemli ürün verileri (VPD) yapılandırma hatası |
+| Red-, |KAPALI |KAPALI |Yok |AC güç kaybı, yedekleme gücüyle çalışma veya AC gücü açık ve denetleyici modülleri kaldırılmıştır. |
+| Yeşil |AÇIK |AÇIK |Yok |Ops panel güç açma (5 s) test durumu |
+| Yeşil |KAPALI |KAPALI |Yok |Power On, tüm işlevler iyi |
+| Yeşil |AÇIK |Yok |PCM hata LED 'Leri, fan hata LED 'Leri |Herhangi bir PCM hatası, fan hatası, sıcaklığın üzerinde veya altında |
+| Yeşil |AÇIK |Yok |G/ç Modülü LED 'Leri |Herhangi bir denetleyici modülü hatası |
+| Yeşil |AÇIK |Yok |Yok |Kasa mantığı hatası |
+| Yeşil |In |Yok |Modül durumu denetleyici modülünde ışığı. PCM hata LED 'Leri, fan hata LED 'Leri |Bilinmeyen denetleyici modülü türü yüklendi, ı2C veri yolu hatası, denetleyici modülü önemli ürün verileri (VPD) yapılandırma hatası |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Güç soğutma modülü (PCM) göstergesi LED 'Leri
 Güç soğutma modülü (PCM) göstergesi LED 'Leri, her bir PCM modülündeki birincil kutunun arkasında veya EBOD Kasası bulunabilir. Bu konuda, StorSimple cihazınızın durumunu izlemek için aşağıdaki LED 'ler nasıl kullanılacağı ele alınmaktadır.  
@@ -91,7 +91,7 @@ PCM 'nin durumu,, LED panelinde belirtilir. Cihaz PCM LED paneli altı LED 'e sa
 | AC gücü yok (e-kasa) |KAPALI |KAPALI |KAPALI |KAPALI |
 | AC gücü yok (yalnızca bu PCM) |KAPALI |AÇIK |KAPALI |AÇIK |
 | AC mevcut PCM-Tamam |AÇIK |KAPALI |KAPALI |KAPALI |
-| PCM başarısız (fan başarısız) |KAPALI |KAPALI |AÇIK |YOK |
+| PCM başarısız (fan başarısız) |KAPALI |KAPALI |AÇIK |Yok |
 | PCM hatası (amp üzerinde, voltaj üzeri, güncel) |KAPALI |AÇIK |AÇIK |AÇIK |
 | PCM (tolerans dışı fan) |AÇIK |KAPALI |KAPALI |AÇIK |
 | Bekleme modu |Yanıp sönen |KAPALI |KAPALI |KAPALI |
@@ -179,9 +179,9 @@ Her bir disk sürücüsünün durumunu öğrenmek için aşağıdaki tabloyu kul
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>EBOD Kasası için disk sürücüsü göstergesi LED 'Leri
 | Durum | Etkinlik Tamam ışığı (yeşil) | Hata LED 'i (Red-bir) | İlişkili Ops paneli ışığı |
 | --- | --- | --- | --- |
-| Yüklü sürücü yok |KAPALI |KAPALI |Hiçbiri |
-| Sürücü yüklendi ve çalışıyor |Etkinlik ile yanıp sönmeye açık/kapalı |X |Hiçbiri |
-| SCSI kutu Hizmetleri (SES) cihaz kimliği kümesi |AÇIK |1 saniye açık/1 saniye kapalı |Hiçbiri |
+| Yüklü sürücü yok |KAPALI |KAPALI |Yok |
+| Sürücü yüklendi ve çalışıyor |Etkinlik ile yanıp sönmeye açık/kapalı |X |Yok |
+| SCSI kutu Hizmetleri (SES) cihaz kimliği kümesi |AÇIK |1 saniye açık/1 saniye kapalı |Yok |
 | SES cihazı hata biti kümesi |AÇIK |AÇIK |Mantıksal hata (kırmızı) |
 | Güç denetimi devre hatası |KAPALI |AÇIK |Modül hatası (kırmızı) |
 
@@ -204,8 +204,8 @@ Aşağıdaki tabloda çeşitli alarm durumları açıklanmaktadır.
 | --- | --- | --- |
 | S0 |Normal mod: sessiz |İki kez bip sesi |
 | S1 |Hata modu: 1 saniye/1 saniye kapalı |S2 veya S3 'e geçiş (bkz. notlar) |
-| S2 |Anımsatma modu: aralıklı bip |Hiçbiri |
-| S3 |Sessiz mod: sessiz |Hiçbiri |
+| S2 |Anımsatma modu: aralıklı bip |Yok |
+| S3 |Sessiz mod: sessiz |Yok |
 | S4 |Kritik hata modu: sürekli alarm |Kullanılamıyor: sessiz etkin değil |
 
 > [!NOTE]
@@ -219,13 +219,13 @@ Ops panelinde susma düğmesine basarak duyulabilir Alarmın sesini kapatabilirs
 Aşağıdaki tabloda çeşitli alarm koşulları açıklanmaktadır.
 
 ### <a name="alarm-conditions"></a>Uyarı koşulları
-| Durum | Severity | Alarm | Ops paneli LED 'i |
+| Durum | Önem Derecesi | Alarm | Ops paneli LED 'i |
 | --- | --- | --- | --- |
 | PCM uyarısı – tek bir PCM 'den DC gücü kaybı |Hata – artıklık kaybı yok |S1 |Modül hatası |
 | PCM uyarısı – tek bir PCM 'den DC gücü kaybı |Hata – artıklık kaybı |S1 |Modül hatası |
 | PCM fanı başarısız |Hata – artıklık kaybı |S1 |Modül hatası |
 | SBB modülü PCM hatası algıladı |Dayanıklı |S1 |Modül hatası |
-| PCM kaldırıldı |Yapılandırma hatası |Hiçbiri |Modül hatası |
+| PCM kaldırıldı |Yapılandırma hatası |Yok |Modül hatası |
 | Kutu yapılandırma hatası |Hata – kritik |S1 |Modül hatası |
 | Düşük uyarı sıcaklık uyarısı |Uyarı |S1 |Modül hatası |
 | Yüksek uyarı sıcaklık uyarısı |Uyarı |S1 |Modül hatası |
@@ -235,10 +235,10 @@ Aşağıdaki tabloda çeşitli alarm koşulları açıklanmaktadır.
 | Denetleyici hatası |Hata – kritik |S1 |Modül hatası |
 | SBB arabirim modülü hatası |Hata – kritik |S1 |Modül hatası |
 | SBB Interface modülü hatası – hiçbir çalışan modül kaldı |Hata – kritik |S4 |Modül hatası |
-| SBB arabirim modülü kaldırıldı |Uyarı |Hiçbiri |Modül hatası |
+| SBB arabirim modülü kaldırıldı |Uyarı |Yok |Modül hatası |
 | Sürücü güç denetimi hatası |Uyarı – sürücü gücü kaybı yok |S1 |Modül hatası |
 | Sürücü güç denetimi hatası |Hata – kritik; Sürücü gücü kaybı |S1 |Modül hatası |
-| Sürücü kaldırıldı |Uyarı |Hiçbiri |Modül hatası |
+| Sürücü kaldırıldı |Uyarı |Yok |Modül hatası |
 | Yeterli güç yok |Uyarı |yok |Modül hatası |
 
 ## <a name="next-steps"></a>Sonraki adımlar

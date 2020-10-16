@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: d753aef3c7cd855b1ab137e85a233a1bca27c25a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826781"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edubrite-lms"></a>Öğretici: Eğitibrite LMS ile Azure Active Directory tümleştirme
@@ -75,7 +75,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak Azu
 Azure AD çoklu oturum açmayı Eğitbrite LMS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Eğitibrite LMS çoklu oturum açmayı yapılandırın](#configure-edubrite-lms-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Eğitibrite LMS çoklu oturum açma yapılandırma](#configure-edubrite-lms-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Eğitim **[LMS test kullanıcısı oluşturma](#create-edubrite-lms-test-user)** -kullanıcının Azure AD gösterimine bağlı olan eğitim LMS 'de Britta Simon 'un bir karşılığı olacak şekilde.
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı Eğitibrite LMS ile yapılandırmak için aşağ
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -116,7 +116,7 @@ Azure AD çoklu oturum açmayı Eğitibrite LMS ile yapılandırmak için aşağ
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [EĞITIME LMS istemci destek ekibine](mailto:support@edubrite.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -130,7 +130,7 @@ Azure AD çoklu oturum açmayı Eğitibrite LMS ile yapılandırmak için aşağ
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-edubrite-lms-single-sign-on"></a>Eğitide LMS 'Yi çoklu oturum açmayı yapılandırma
+### <a name="configure-edubrite-lms-single-sign-on"></a>Eğitibrite LMS tek Sign-On yapılandırma
 
 **EĞITIME LMS** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den uygun kopyalanmış URL 'LERI [eğitbrite LMS destek ekibine](mailto:support@edubrite.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

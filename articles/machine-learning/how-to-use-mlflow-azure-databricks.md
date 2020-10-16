@@ -12,10 +12,10 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91347038"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning ile Azure Databricks ML denemeleri izleme (Önizleme)
@@ -32,7 +32,7 @@ Daha fazla MLflow ve Azure Machine Learning işlevselliği tümleştirmeleri iç
 > [!TIP]
 > Bu belgedeki bilgiler öncelikli olarak, model eğitimi sürecini izlemek isteyen veri bilimcileri ve geliştiricileri içindir. Kotalar, tamamlanan eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning kaynak kullanımını ve olayları izlemek isteyen bir yöneticiyseniz, bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * `azureml-mlflow` paketini yükleyin. 
     * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)otomatik olarak getirir.
@@ -172,7 +172,7 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 
 ML modelleriniz için bir uç nokta oluşturmaya hazırsanız. Dağıtım yapabilirsiniz, 
 
-* Etkileşimli Puanlama için bir Azure Machine Learning Isteği-yanıtı Web hizmeti. Bu dağıtım, Azure Machine Learning model yönetimi ve veri Drın algılama yeteneklerini üretim modellerinize uygulayıp uygulamanıza olanak tanır. 
+* Etkileşimli Puanlama için bir Azure Machine Learning Request-Response Web hizmeti. Bu dağıtım, Azure Machine Learning model yönetimi ve veri Drın algılama yeteneklerini üretim modellerinize uygulayıp uygulamanıza olanak tanır. 
 
 * Azure Databricks çalışma alanında Python işlevleri veya Pandas UDF 'ler olarak akış veya toplu işlem hatları olarak kullanılabilen MLFlow model nesneleri.
 

@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.openlocfilehash: a2642ebbad7c8d7a2e092a6e00929e32b72b52d8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86104988"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-from-the-azure-portal"></a>Azure portal Maria DB yavaş sorgu günlükleri için Azure veritabanı 'nı yapılandırma ve erişme
@@ -23,7 +23,7 @@ Bu makaledeki adımlarda, [MariaDB sunucusu Için Azure veritabanı](quickstart-
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 Yavaş sorgu günlüğüne erişimi yapılandırın. 
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. MariaDB sunucusu için Azure veritabanınızı seçin.
 
@@ -38,7 +38,7 @@ Yavaş sorgu günlüğüne erişimi yapılandırın.
 
 7. Gerekli diğer parametreleri değiştirin. 
 
-8. **Kaydet**'i seçin. 
+8. **Kaydet**’i seçin. 
 
    :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="Yavaş sorgu günlüğü parametrelerinin ekran görüntüsü ve kaydetme.":::
 
@@ -47,7 +47,7 @@ Yavaş sorgu günlüğüne erişimi yapılandırın.
 ## <a name="view-list-and-download-logs"></a>Listeyi görüntüle ve günlükleri indir
 Günlüğe kaydetme başladıktan sonra, kullanılabilir yavaş sorgu günlüklerinin bir listesini görüntüleyebilir ve günlük dosyalarını tek tek indirebilirsiniz. 
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 
 2. MariaDB sunucusu için Azure veritabanınızı seçin.
 

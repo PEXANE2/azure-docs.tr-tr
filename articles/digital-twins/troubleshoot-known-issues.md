@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290787"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047650"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -30,7 +30,7 @@ Azure dijital TWINS için özellikle bu, aşağıdaki komut gruplarını etkiler
 
 Bu, `az login` Cloud Shell komutu yeniden çalıştırarak ve sonraki oturum açma adımlarını tamamlayarak çözülebilir. Bundan sonra, komutunu yeniden çalıştırmanız gerekir.
 
-Azure CLı komutlarını yerel olarak çalıştırabilmeniz için, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi makinenize yüklemek alternatif bir çözümdür. Yerel CLı bu sorunla karşılaşmaz.
+Azure CLı komutlarını yerel olarak çalıştırabilmeniz için, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi makinenize yüklemek alternatif bir çözümdür. Yerel CLı bu sorunla karşılaşmaz.
 
 ### <a name="possible-causes"></a>Olası nedenler
 
@@ -60,7 +60,7 @@ Kişisel bir [Microsoft hesabı (MSA)](https://account.microsoft.com/account)ile
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun
 
-Azure ** [. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
+Azure ** [. Identity](/dotnet/api/azure.identity?view=azure-dotnet) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
 
 Bu, kitaplığın en son sürümü değildir. En son sürüm **1.2.2**' dir.
 

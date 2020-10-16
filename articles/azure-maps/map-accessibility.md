@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
 ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88006222"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
@@ -103,15 +103,15 @@ Haritada, eşlemenin kullanımını kolaylaştıran yerleşik bir dizi klavye k�
 | Sağ ok tuşu | Haritayı sağa kaydır 100 piksel |
 | Aşağı ok tuşu | Haritayı aşağı kaydırın 100 piksel |
 | Yukarı ok tuşu | Haritayı 100 piksel yukarı kaydır |
-| `Shift`+ yukarı ok | Eşleme aralığını 10 derece artır |
-| `Shift`+ aşağı ok | Eşleme aralığını 10 derece azalt |
-| `Shift`+ sağ ok | Haritayı saat yönünde 15 derece döndürün |
-| `Shift`+ sol ok | Haritayı saatin tersi yönde 15 derece döndürün |
+| `Shift` + yukarı ok | Eşleme aralığını 10 derece artır |
+| `Shift` + aşağı ok | Eşleme aralığını 10 derece azalt |
+| `Shift` + sağ ok | Haritayı saat yönünde 15 derece döndürün |
+| `Shift` + sol ok | Haritayı saatin tersi yönde 15 derece döndürün |
 | Artı işareti ( `+` ) veya <sup>*</sup> eşittir işareti ( `=` ) | Yakınlaştır |
 | Eksi işareti, kısa çizgi ( `-` ) veya <sup>*</sup> alt çizgi ( `_` ) | Uzaklaştır | 
-| `Shift`çizim alanına haritada fare sürükleme | Alana Yakınlaştır |
+| `Shift` çizim alanına haritada fare sürükleme | Alana Yakınlaştır |
 
-<sup>*</sup>Bu anahtar kısayollar genellikle klavyede aynı anahtarı paylaşır. Bu kısayollar, Kullanıcı deneyimini geliştirmek için eklenmiştir. Ayrıca, kullanıcının bu kısayollar için değil, Shift tuşunu kullanıp kullanmadığını önemli değildir.
+<sup>*</sup> Bu anahtar kısayollar genellikle klavyede aynı anahtarı paylaşır. Bu kısayollar, Kullanıcı deneyimini geliştirmek için eklenmiştir. Ayrıca, kullanıcının bu kısayollar için değil, Shift tuşunu kullanıp kullanmadığını önemli değildir.
 
 ## <a name="screen-reader-support"></a>Ekran okuyucu desteği
 

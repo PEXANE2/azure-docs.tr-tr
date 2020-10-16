@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087263"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091619"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage bağlantı dizelerini yapılandırma
 
@@ -110,9 +110,10 @@ Bir bağlantı dizesindeki uç nokta değerleri, depolama hizmetlerine istek URI
 
 Bir depolama uç noktasını özel bir etki alanına eşleştirdiyseniz ve bu uç noktayı bir bağlantı dizesinden atlarsanız, bu bağlantı dizesini kodınızdan bu hizmette bulunan verilere erişmek için kullanamazsınız.
 
+Azure depolama için özel bir etki alanı yapılandırma hakkında daha fazla bilgi için bkz. [özel bir etki alanını Azure Blob depolama uç noktasına eşleme](../blobs/storage-custom-domain-name.md).
+
 > [!IMPORTANT]
-> Bağlantı dizelerinizdeki hizmet uç noktası değerlerinin `https://` (önerilir) veya dahil doğru biçimlendirilmiş URI 'ler olması gerekir `http://` . Azure Storage özel etki alanları için HTTPS 'yi desteklemediği için, *must* `http://` özel bir etki alanına işaret eden herhangi BIR uç nokta URI 'si belirtmeniz gerekir.
->
+> Bağlantı dizelerinizdeki hizmet uç noktası değerlerinin `https://` (önerilir) veya dahil doğru biçimlendirilmiş URI 'ler olması gerekir `http://` .
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Uç nokta sonekine sahip bir bağlantı dizesi oluşturma
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086492"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
@@ -160,7 +160,7 @@ Bir kenar düğümünü Azure portal silebilirsiniz.
 2. HDInsight kümesini bir Edge düğümü ile açın.
 3. **Uygulamalar**' ı seçin. Kenar düğümlerinin bir listesini görürsünüz.  
 4. Silmek istediğiniz kenar düğümüne sağ tıklayın ve ardından **Sil**' i seçin.
-5. Onaylamak için **Evet**'i seçin.
+5. Onaylamak için **Evet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

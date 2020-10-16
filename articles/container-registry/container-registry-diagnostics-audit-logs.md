@@ -4,10 +4,10 @@ description: Kimlik doğrulama, görüntü gönderme ve resim çekme gibi Azure 
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87553385"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirmesi ve denetimi için Azure Container Registry günlükleri
@@ -24,7 +24,7 @@ Azure Izleyici 'yi kullanarak kaynak günlük verilerinin toplanması ek maliyet
 
 Görüntüler ve diğer yapıtlar için aşağıdaki depo düzeyi olaylar şu anda günlüğe kaydedilir:
 
-* **Gönder**
+* **Hareketle**
 * **Çek**
 * **Etiketi Kaldır**
 * **Sil** (depo silme olayları dahil)
@@ -37,7 +37,7 @@ Görüntüler ve diğer yapıtlar için aşağıdaki depo düzeyi olaylar şu an
 
 Kaynak günlükleri, iç işlemlerini tanımlayan Azure kaynakları tarafından yayılan bilgiler içerir. Azure Container Registry 'de, Günlükler aşağıdaki tablolarda depolanan kimlik doğrulama ve depo düzeyi olaylarını içerir. 
 
-* **Kapsayıcıregistryloginevents** -kayıt defteri doğrulama olayları ve gelen KIMLIK ve IP adresi dahil olmak üzere durum
+* **Kapsayıcıregistryloginevents**  -kayıt defteri doğrulama olayları ve gelen KIMLIK ve IP adresi dahil olmak üzere durum
 * **Containerregistryhavuzuyevents** -kayıt defteri depolarındaki görüntüler ve diğer yapılar için gönderme ve çekme gibi işlemler
 * **AzureMetrics**  -  Toplu gönderim ve çekme sayıları gibi [kapsayıcı kayıt defteri ölçümleri](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) .
 

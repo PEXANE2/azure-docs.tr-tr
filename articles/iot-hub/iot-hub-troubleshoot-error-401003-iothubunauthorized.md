@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81759584"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
@@ -42,7 +42,7 @@ IoT Hub istekleri aşağıdaki hata iletilerinden biriyle başarısız olur:
 
 ### <a name="cause-1"></a>Neden 1
 
-MQTT için bazı SDK 'lar, bir kilit süresinin ne zaman yenileneceğini bilmek için SAS belirtecinin süresi dolarsa bağlantıyı kesmek için IoT Hub kullanır. Nedenle 
+MQTT için bazı SDK 'lar, bir kilit süresinin ne zaman yenileneceğini bilmek için SAS belirtecinin süresi dolarsa bağlantıyı kesmek için IoT Hub kullanır. Dolayısıyla: 
 
 1. SAS belirtecinin süresi doluyor
 1. IoT Hub sona erme süresini fark eder ve cihazın bağlantısını **401003 Iothubyetkilendirilmemiş** ile keser
@@ -56,13 +56,13 @@ IoT Hub auth üstbilgisinin, kuralın veya anahtarın kimliğini doğrulayamadı
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="solution-1"></a>Çözüm 1
+### <a name="solution-1"></a>1\. Çözüm
 
 Cihaz bağlantı dizesini kullanarak bağlantı için IoT SDK kullanıyorsanız hiçbir işlem yapmanız gerekmez. IoT SDK, SAS belirteci süre sonuna yeniden bağlanmak için yeni belirteci yeniden oluşturur. 
 
 Hata hacmi bir sorun oluşturacaksa, SAS belirtecini sona ermeden önce yenilediğinde C SDK 'sına geçin. Ayrıca, AMQP için SAS belirtecinin bağlantısı kesilmeden yenilenebilirler.
 
-### <a name="solution-2"></a>Çözüm 2
+### <a name="solution-2"></a>2\. Çözüm
 
 Genel olarak, sunulan hata iletisinde hatanın nasıl düzeltileceğini açıklamalıdır. Bazı nedenlerle hata iletisi ayrıntısına erişiminiz yoksa şunları yaptığınızdan emin olun:
 

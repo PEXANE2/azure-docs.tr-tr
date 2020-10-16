@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
 ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707668"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Azure veritabanı for PostgreSQL için Azure veritabanı-tek sunucu, Azure portal kullanarak başka bir bölgeye taşıma
@@ -23,7 +23,7 @@ Bir PostgreSQL için Azure veritabanı [çapraz bölge okuma çoğaltması](conc
 > [!NOTE]
 > Bu makale, sunucunuzu farklı bir bölgeye taşımaya odaklanır. Sunucunuzu farklı bir kaynak grubuna veya aboneliğine taşımak istiyorsanız [taşıma](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) makalesine başvurun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bölgeler arası okuma çoğaltması özelliği yalnızca PostgreSQL için Azure veritabanı-Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında tek bir sunucu için kullanılabilir. Kaynak sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 

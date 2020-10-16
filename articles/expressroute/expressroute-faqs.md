@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: d91d896da21d9d96e45c0eab3d5d895364f3e149
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566429"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077363"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -242,6 +242,9 @@ Evet. BGP oturumu aracılığıyla varsayılan yolları (0.0.0.0/0) veya Interne
 ### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>ExpressRoute devrelerine bağlı sanal ağlara Internet bağlantısını engelleyebilir miyim?
 
 Evet. Bir sanal ağ içinde dağıtılan sanal makinelere yönelik tüm Internet bağlantılarını engellemek ve tüm trafiği ExpressRoute devresi aracılığıyla yönlendirmek için varsayılan yolları (0.0.0.0/0) duyurtabilirsiniz.
+
+> [!NOTE]
+> 0.0.0.0/0 ' ın tanıtılan yolu tanıtılan rotalardan geri alınır (örneğin, bir kesinti veya yanlış yapılandırma nedeniyle) Azure, internet bağlantısı sağlamak için bağlı sanal ağdaki kaynaklara bir [sistem yolu](../virtual-network/virtual-networks-udr-overview.md#system-routes) sağlar.  İnternet 'e giden trafik engellendiğinden emin olmak için, internet trafiği için giden reddetme kuralıyla tüm alt ağlara bir ağ güvenlik grubu yerleştirmeniz önerilir.
 
 Varsayılan yolları tanılarsanız, Microsoft eşlemesi (Azure depolama ve SQL DB gibi) üzerinden sunulan hizmetlere trafiği şirket içine geri zorlıyoruz. Yönlendiricilerinizi, Microsoft eşleme yolu veya Internet üzerinden Azure 'a trafik döndürecek şekilde yapılandırmanız gerekecektir. Hizmet için bir hizmet uç noktası etkinleştirdiyseniz, hizmete giden trafik, şirket içine zorlanmaz. Trafik, Azure omurga ağı içinde kalır. Hizmet uç noktaları hakkında daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 

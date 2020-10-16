@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260346"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
@@ -19,7 +19,7 @@ Ağ gizli anahtarı kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| silme | Gizli kaynağı siler. |
+| delete | Gizli kaynağı siler. |
 | list | Tüm gizli kaynakları listeler. |
 | göster | Verilen ada sahip gizli kaynağı alır. |
 
@@ -28,7 +28,7 @@ Gizli kaynağı siler.
 
 Belirtilen gizli kaynağı ve tüm adlandırılmış değerlerini siler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -64,7 +64,7 @@ Verilen ada sahip gizli kaynağı alır.
 
 Verilen ada sahip gizli kaynakla ilgili bilgileri alır. Bilgiler, gizli dizinin açıklamasını ve diğer özelliklerini içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

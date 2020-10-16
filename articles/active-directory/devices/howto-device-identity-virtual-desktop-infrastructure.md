@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089675"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
@@ -48,10 +48,10 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 
 | Cihaz kimliği türü | Kimlik altyapısı | Windows cihazları | VDı platformu sürümü | Desteklenir |
 | --- | --- | --- | --- | --- |
-| Hibrit Azure AD'ye katılmış | Federal<sup>3</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
+| Hibrit Azure AD'ye katılmış | Federal<sup>3</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Evet |
 |   |   | Windows geçerli | Kalıcı olmayan | Evet<sup>5</sup> |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
-|   | Yönetilen<sup>4</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
+|   | Yönetilen<sup>4</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Evet |
 |   |   | Windows geçerli | Kalıcı olmayan | Hayır |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
 | Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | Hayır |

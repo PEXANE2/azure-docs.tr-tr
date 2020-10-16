@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749382"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure yönetilen disklerini yönetmek için Azure Depolama Gezgini kullanma
 
 Depolama Gezgini 1.10.0, kullanıcıların yönetilen diskleri karşıya yüklemesi, indirmesi ve kopyalaması ve anlık görüntü oluşturma imkanı sağlar. Bu ek yetenekler nedeniyle, verileri Şirket içinden Azure 'a geçirmek ve Azure bölgelerine veri geçirmek için Depolama Gezgini kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için şunlar gerekir:
 - Bir Azure aboneliği

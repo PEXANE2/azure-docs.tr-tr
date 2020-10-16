@@ -10,10 +10,10 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230118"
 ---
 # <a name="soft-delete-for-blobs"></a>Bloblar için geçici silme
@@ -83,7 +83,7 @@ Geçici silme, verileri kapsayıcı veya hesap silme durumlarında veya blob met
 
 Aşağıdaki tabloda, geçici silme açıkken beklenen davranışın ayrıntıları verilmiştir:
 
-| REST API işlemi | Kaynak türü | Description | Davranış değişikliği |
+| REST API işlemi | Kaynak türü | Açıklama | Davranış değişikliği |
 |--------------------|---------------|-------------|--------------------|
 | [Silme](/rest/api/storagerp/StorageAccounts/Delete) | Hesap | İçerdiği tüm kapsayıcılar ve BLOB 'lar dahil olmak üzere depolama hesabını siler.                           | Değişiklik yok. Silinen hesaptaki kapsayıcılar ve Bloblar kurtarılamaz. |
 | [Kapsayıcıyı Silme](/rest/api/storageservices/delete-container) | Kapsayıcı | Kapsayıcı, içerdiği tüm Bloblar dahil olmak üzere siler. | Değişiklik yok. Silinen kapsayıcıdaki Bloblar kurtarılamaz. |

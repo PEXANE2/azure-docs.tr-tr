@@ -8,23 +8,23 @@ ms.reviewer: zhshang
 ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
-ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 105b40da2a612d2a2e9958eff52bfb786c500bc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "74158200"
+ms.locfileid: "91876082"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Azure SignalR Hizmeti olaylarına yanıt verme
 
-Azure SignalR hizmeti olayları, uygulamaların modern sunucusuz mimariler kullanılarak bağlanan veya bağlantısı kesilen istemci bağlantılarına tepki vermesini sağlar. Bu, karmaşık kod veya pahalı ve verimsiz yoklama Hizmetleri gereksinimini ortadan kaldırmaz.  Bunun yerine, olaylar [Azure işlevleri](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), hatta kendi özel http dinleyiciniz gibi abonelere [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderilir ve yalnızca kullandığınız kadar ödersiniz.
+Azure SignalR hizmeti olayları, uygulamaların modern sunucusuz mimariler kullanılarak bağlanan veya bağlantısı kesilen istemci bağlantılarına tepki vermesini sağlar. Bu, karmaşık kod veya pahalı ve verimsiz yoklama Hizmetleri gereksinimini ortadan kaldırmaz.  Bunun yerine, olaylar [Azure işlevleri](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)gibi abonelere veya kendi özel http dinleyicinize de [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderilir. Azure SignalR ile yalnızca kullandığınız kadar ödersiniz.
 
 Azure SignalR hizmeti olayları, zengin yeniden deneme ilkeleri ve atılacak mektup teslimi aracılığıyla uygulamalarınıza güvenilir teslim hizmetleri sağlayan Event Grid hizmetine güvenilir bir şekilde gönderilir. Daha fazla bilgi edinmek için bkz. [ileti teslimi Event Grid ve yeniden deneyin](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
 ![Event Grid modeli](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
 
 ## <a name="serverless-state"></a>Sunucusuz durum
-Azure SignalR hizmeti olayları yalnızca istemci bağlantıları sunucusuz durumundayken etkindir. Genel olarak, bir istemci bir hub sunucusuna yönlendirmezse sunucusuz duruma geçer. Klasik mod yalnızca, istemci bağlantılarının bağlantı aldığı Merkez bir hub sunucusu içermiyorsa çalışır. Ancak, bazı sorunlardan kaçınmak için sunucusuz mod önerilir. Hizmet modu hakkında daha fazla bilgi edinmek için bkz. [hizmet modunu seçme](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
+Azure SignalR hizmeti olayları yalnızca istemci bağlantıları sunucusuz bir durumda olduğunda etkindir. Bir istemci bir hub sunucusuna yönlendirmezse sunucusuz duruma geçer. Klasik mod yalnızca, istemci bağlantılarının bağlanacağı Hub bir hub sunucusu içermiyorsa geçerlidir. En iyi uygulama olarak sunucusuz mod önerilir. Hizmet modu hakkında daha fazla bilgi edinmek için bkz. [hizmet modunu seçme](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
 
 ## <a name="available-azure-signalr-service-events"></a>Kullanılabilir Azure SignalR hizmeti olayları
 Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../event-grid/concepts.md#event-subscriptions) kullanır. Azure SignalR hizmeti olay abonelikleri iki tür olayı destekler:  

@@ -5,10 +5,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578079"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
@@ -53,7 +53,7 @@ Aşağıdaki gibi basit bir dinamik eşikler ölçüm uyarısı kuralı oluştur
 
 Uyarı kuralı oluşturulduktan sonra dinamik eşikler makine öğrenimi algoritması, mevcut geçmiş verileri alır, ölçüm serisi davranış düzenine en uygun eşiği hesaplar ve eşiği daha doğru hale getirmek için yeni verileri temel alarak sürekli olarak öğrenirsiniz.
 
-Uyarı kuralının oluşturulduğu zamandan itibaren izleyici, her 1 dakikada bir çalışır ve 5 dakikalık bir dönemdeki ölçüm değerlerine bakar ve 4 dönem içindeki dönem değerlerinin ortalamasının beklenen eşiği aşıp aşmadığını denetler. Koşul karşılanıyorsa, son 20 dakikada ortalama yüzde CPU (dört 5 dakikalık dönem), beklenen davranışdan dört kez eşit oranda dağıtılır, uyarı kuralı etkinleştirilmiş bir bildirim tetikler. Uyarı kuralıyla ilişkili eylem grubunda bir e-posta veya Web kancası eylemi yapılandırdıysanız her ikisinde de etkinleştirilmiş bir bildirim alırsınız.
+Uyarı kuralının oluşturulduğu zamandan itibaren izleyici, her 1 dakikada bir çalışır ve 5 dakikalık bir dönemdeki ölçüm değerlerine bakar ve 4 dönem içindeki dönem değerlerinin ortalamasının beklenen eşiği aşıp aşmadığını denetler. Koşul karşılanıyorsa, son 20 dakika içinde (4 5 dakika dönemdeki) ortalama yüzde CPU değeri, beklenen davranışdan dört kez eşit olarak, uyarı kuralı etkinleştirilmiş bir bildirim tetikler. Uyarı kuralıyla ilişkili eylem grubunda bir e-posta veya Web kancası eylemi yapılandırdıysanız her ikisinde de etkinleştirilmiş bir bildirim alırsınız.
 
 ### <a name="view-and-resolution-of-fired-alerts"></a>Tetiklenen uyarıları görüntüleme ve çözümleme
 
@@ -135,7 +135,7 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler için platform ölçümleri (özel ölçümler değil) için desteklenir:
 
-| Hizmet | Genel Azure | Devlet | Çin |
+| Hizmet | Genel Azure | Kamu | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler<sup>1</sup>  | **Evet** | Hayır | Hayır |
 | SQL Server veritabanları | **Evet** | **Evet** | **Evet** |

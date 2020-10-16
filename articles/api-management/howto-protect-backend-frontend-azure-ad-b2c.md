@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253703"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2,0, Azure Active Directory B2C ve Azure API Management ile SPA arka ucunu koruyun
@@ -99,7 +99,7 @@ Portalda Azure AD B2C dikey penceresini açın ve aşağıdaki adımları uygula
 
 ## <a name="build-the-function-api"></a>İşlev API 'sini oluşturma
 1. Aboneliğinizdeki öğeleri yeniden yapılandırabilmemiz için Azure portal standart Azure AD kiracınıza geri dönün 
-1. Azure portal Işlev uygulamaları dikey penceresine gidin, boş işlev uygulamanızı açın, sonra hızlı başlangıç yoluyla yeni bir portal Içi ' Web kancası + API ' işlevi oluşturun.
+1. Azure portal Işlev uygulamaları dikey penceresine gidin, boş işlev uygulamanızı açın, sonra hızlı başlangıç yoluyla yeni bir In-Portal ' Web kancası + API ' işlevi oluşturun.
 1. Aşağıdaki örnek kodu, görüntülenen varolan kodun üzerinde. CSX öğesine yapıştırın.
 
    ```csharp

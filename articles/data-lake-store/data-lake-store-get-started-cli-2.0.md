@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85985798"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Azure CLı kullanarak Azure Data Lake Storage 1. kullanmaya başlama
@@ -29,7 +29,7 @@ Azure Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri dosya
 Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. MacOS, Linux ve Windows’da kullanılabilir. Daha fazla bilgi için bkz. [Azure CLI 'Ya genel bakış](https://docs.microsoft.com/cli/azure). Komutların ve sözdiziminin tüm listesi için [Azure Data Lake Storage 1. CLI başvurusuna](https://docs.microsoft.com/cli/azure/dls) da bakabilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki işlemleri yapmış olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -59,7 +59,7 @@ Bu makalede, Son Kullanıcı kullanıcısı olarak oturum açtığınızda Data 
 
 ## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Azure Data Lake Storage 1. hesabı oluşturma
 
-1. Yeni bir kaynak grubu oluşturun. Aşağıdaki komut içinde kullanmak istediğiniz parametre değerlerini sağlayın. Konum adı boşluk içeriyorsa adı tırnak işaretleri içine alın. Örneğin, "Doğu ABD 2". 
+1. Yeni bir kaynak grubu oluşturma. Aşağıdaki komut içinde kullanmak istediğiniz parametre değerlerini sağlayın. Konum adı boşluk içeriyorsa adı tırnak işaretleri içine alın. Örneğin, "Doğu ABD 2". 
    
     ```azurecli
     az group create --location "East US 2" --name myresourcegroup

@@ -4,10 +4,10 @@ description: Azure Notebooks Preview projeleri, başka bir kaynaktan yeni veya k
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86181514"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede proje oluşturma ve kopyalama
@@ -28,14 +28,14 @@ Panoda yapabilecekleriniz, Kullanıcı KIMLIĞININ sahibi olan hesapla oturum a�
 
 | Komut | Kullanılabilir | Açıklama |
 | --- | --- | --- |
-| **Çalıştır** | Sahip | Proje sunucusunu başlatır ve proje klasörünü Jupyıter içinde açar. (Daha yaygın olarak, önce bir proje klasörüne giderek sonra buradan bir not defteri başlatabilirsiniz.) |
+| **Çalışmaz** | Sahip | Proje sunucusunu başlatır ve proje klasörünü Jupyıter içinde açar. (Daha yaygın olarak, önce bir proje klasörüne giderek sonra buradan bir not defteri başlatabilirsiniz.) |
 | **İndir** | Herkes | Seçili projenin bir kopyasını ZIP dosyası olarak indirir. |
-| **Paylaş** | Herkes | Seçilen bir projenin URL 'sini elde edebilir, sosyal medya paylaşabilir, URL ile bir e-posta gönderebilir ve bir "başlatma Not defteri" rozeti (bkz. [bir başlatma rozet alma](#obtain-a-launch-badge)) ile birlikte IÇIN hem HTML hem de markı kodu elde edebilirsiniz. |
-| **Sil** | Sahip | Seçilen projeyi siler. Bu işlem geri alınamaz. |
+| **Paylaşım** | Herkes | Seçilen bir projenin URL 'sini elde edebilir, sosyal medya paylaşabilir, URL ile bir e-posta gönderebilir ve bir "başlatma Not defteri" rozeti (bkz. [bir başlatma rozet alma](#obtain-a-launch-badge)) ile birlikte IÇIN hem HTML hem de markı kodu elde edebilirsiniz. |
+| **Silme** | Sahip | Seçilen projeyi siler. Bu işlem geri alınamaz. |
 | **Terminal** | Sahip | Proje sunucusunu başlatır ve ardından bu sunucu için bash terminaliyle yeni bir tarayıcı penceresi açar. |
 | **+ Yeni proje** | Sahip | Yeni bir proje oluşturur. Bkz. [Yeni proje oluşturma](#create-a-new-project). |
 | **GitHub deposunu karşıya yükle** | Sahip | GitHub 'dan bir projeyi içeri aktarır. [GitHub 'dan bir projeyi Içeri aktarın](#import-a-project-from-github). |
-| **Oluşturulacak** | Herkes | Seçili bir projeyi kendi hesabınıza kopyalar. Henüz yoksa oturum açmanızı ister. Bkz. [projeyi kopyalama](#clone-a-project). |
+| **Kopyalama** | Herkes | Seçili bir projeyi kendi hesabınıza kopyalar. Henüz yoksa oturum açmanızı ister. Bkz. [projeyi kopyalama](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Başlatma rozetini edinin
 
@@ -53,7 +53,7 @@ Azure Notebooks projeniz yoksa, aşağıdaki şablonları kullanarak doğrudan G
 [![Azure Notebooks](https://notebooks.azure.com/launch.png)](https://notebooks.azure.com/import/gh/<GitHub_username>/<repository_name>)
 ```
 
-## <a name="create-a-new-project"></a>Yeni proje oluşturma
+## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
 **+ Yeni proje** komutunu kullandığınızda Azure Notebooks **Yeni bir proje oluştur** açılır penceresi görüntüler. Bu açılan pencerede, aşağıdaki bilgileri girin ve ardından **Oluştur**' u seçin:
 
@@ -61,7 +61,7 @@ Azure Notebooks projeniz yoksa, aşağıdaki şablonları kullanarak doğrudan G
 | --- | --- |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. Örneğin, "Not Defterim projem". |
 | Proje Kimliği | Bir projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı (form olur `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
-| Genel | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
+| Ortak | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
 | Bu projeyi bir BENIOKU ile Başlat | Ayarlanırsa, projede varsayılan bir *README.MD* dosyası oluşturur. İsterseniz, projeniz için belgeler sağladığınız bir *README.MD* dosyası. |
 
 ### <a name="reserved-project-ids"></a>Ayrılmış proje kimlikleri
@@ -85,7 +85,7 @@ Aşağıdaki ayrılmış sözcükler kendileri proje kimliği olarak kullanılam
 - kitaplık
 - yönetim
 - new
-- Mini
+- notebook
 - not defterleri
 - pdf
 - preview
@@ -110,7 +110,7 @@ Tüm genel GitHub deposunu, herhangi bir veri ve *README.MD* dosyası dahil olma
 | Yinelemeli olarak Kopyala | GitHub depoları birden çok alt depo içerebilir. Üst depoyu ve tüm alt öğelerini kopyalamak istiyorsanız bu seçeneği ayarlayın. Bir deponun çok sayıda alt öğesi olması mümkün olduğundan, ihtiyacınız olduğunu bilmiyorsanız bu seçeneği açık bırakın. |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. |
 | Proje Kimliği | Bir projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı (form olur `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
-| Genel | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
+| Ortak | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
 
 Bir depoyu GitHub 'dan içeri aktarmak Ayrıca geçmişini içeri aktarır. Yeni değişiklikleri yürütmek, GitHub 'dan değişiklikleri çekmek vb. için terminaldeki standart git komutlarını kullanabilirsiniz.
 

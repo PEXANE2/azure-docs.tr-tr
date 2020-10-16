@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b34d5cdd95f44082d05153390209de5145e56d3f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259603"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089579"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>İzlenecek yol: Azure Active Directory B2C içindeki özel ilkelere REST API talep alışverişi ekleme
 
@@ -75,7 +75,7 @@ Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak 
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>Restsize API teknik profilini yapılandırma 
+## <a name="add-the-restful-api-technical-profile"></a>Yeniden takip eden API teknik profilini ekleyin 
 
 Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi restsize hizmeti ile arabirim oluşturma desteği sağlar. Azure AD B2C, verileri bir koleksiyondaki yeniden bir hizmete gönderir `InputClaims` ve verileri bir koleksiyonda geri alır `OutputClaims` . Dosyanızdaki **Claimsproviders** öğesini bulun <em>**`TrustFrameworkExtensions.xml`**</em> ve yeni bir talep sağlayıcısını aşağıdaki şekilde ekleyin:
 
@@ -87,6 +87,7 @@ Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi rest
       <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -107,9 +108,20 @@ Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi rest
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-```
+``` 
 
 Bu örnekte, `userLanguage` JSON yükünün içinde olduğu gıbı Rest hizmetine gönderilir `lang` . `userLanguage`Talebin değeri geçerli kullanıcı DILI kimliğini içerir. Daha fazla bilgi için bkz. [talep çözümleyici](claim-resolver-overview.md).
+
+### <a name="configure-the-restful-api-technical-profile"></a>Restsize API teknik profilini yapılandırma 
+
+REST API dağıttıktan sonra, `REST-ValidateProfile` Teknik profilin meta verilerini kendi REST API yansıtacak şekilde ayarlayın, örneğin:
+
+- **ServiceUrl**. REST API uç noktasının URL 'sini ayarlayın.
+- **Sendclaimsin**. Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtin.
+- **AuthenticationType**. Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türünü ayarlayın. 
+- **Allowınsecureauthınproduction**. Bir üretim ortamında, bu meta verileri olarak ayarladığınızdan emin olun. `true`
+    
+Daha fazla yapılandırma için bkz. [yeniden teknik profil meta verileri](restful-technical-profile.md#metadata) .
 
 Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtin. Üretim için yeniden yapılan API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için bkz. [güvenli restsize API](secure-rest-api.md).
 
@@ -177,7 +189,7 @@ Değiştirdiğiniz dosyaları kaydedin: *TrustFrameworkBase.xml*ve *TrustFramewo
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Kimlik deneyimi çerçevesini**seçin.

@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
 ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409678"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>MongoDB hesabı için Azure Cosmos DB API 'nizin MongoDB kablo protokol sürümünü yükseltin
@@ -62,27 +62,27 @@ Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevc
 
 2. Soldaki seçeneklerden `Features` Dikey pencereyi seçin. Bu, veritabanı hesabınız için kullanılabilen hesap düzeyi özelliklerini açığa çıkarır.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Özellikler dikey penceresinde MongoDB hesabına genel bakış ile Azure portal" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
 3. `Upgrade to Mongo server version 3.6`Satıra tıklayın. Bu seçeneği görmüyorsanız, hesabınız bu yükseltme için uygun olmayabilir. Bu durumda, lütfen [bir destek bileti](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) dosyası sağlayın.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Seçeneklerle Özellikler dikey penceresi." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
 4. Bu belirli yükseltmeyle ilgili olarak görünen bilgileri gözden geçirin. Yükseltmenin, bu bölümde vurgulanan şekilde, yalnızca uygulamalarınız güncelleştirilmiş uç noktası kullanana kadar tamamlanacağını unutmayın. `Enable`İşlemi başlatmak için hazırsanız açık ' a tıklayın.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Genişletilmiş Yükseltme Kılavuzu." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
 5. İşlem başladıktan sonra, `Features` menü yükseltmenin durumunu gösterir. Durum,,, olarak değişir `Pending` `In Progress` `Upgraded` . Bu işlem, veritabanı hesabının mevcut işlevlerini veya işlemlerini etkilemez.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Başlatıldıktan sonra yükseltme durumu." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
 6. Yükseltme tamamlandıktan sonra durum olarak gösterilir `Upgraded` . İşlemi tamamlamak için gerçekleştirmeniz gereken sonraki adımlar ve eylemler hakkında daha fazla bilgi edinmek için buraya tıklayın. İsteğiniz işlenirken bir sorun oluşursa lütfen [desteğe başvurun](https://azure.microsoft.com/en-us/support/create-ticket/) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Yükseltilen hesap durumu." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
 7. **Veritabanı hesabınızın yükseltilen sürümünü kullanmaya başlamak için**dikey pencereye geri dönün `Overview` ve uygulamanızda kullanmak üzere yeni bağlantı dizesini kopyalayın. Uygulamalar, yeni uç noktaya bağlandıklarında yükseltilen sürümü kullanmaya başlar. Mevcut bağlantılar kesintiye uğramayacak ve bu işlem sizin için uygun şekilde güncelleştirilemeyebilir. Tutarlı bir deneyim sağlamak için tüm uygulamalarınızın yeni uç noktayı kullanması gerekir.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Yeni genel bakış dikey penceresi." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

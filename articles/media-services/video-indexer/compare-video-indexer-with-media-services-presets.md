@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047339"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Azure Media Services v3 önayarlarını karşılaştırın ve Video Indexer 
@@ -31,8 +31,8 @@ Bu makalede **video Indexer API** 'lerin ve **Media Services v3 API**'lerinin ö
 
 |Özellik|Video Indexer API 'Leri |Video Çözümleyicisi ve ses Çözümleyicisi ön ayarları<br/>Media Services v3 API 'Lerinde|
 |---|---|---|
-|Media Insights|[Gelişmiş](video-indexer-output-json-v2.md) |[Temel Bilgiler](../latest/analyzing-video-audio-files-concept.md)|
-|Lerinde|Desteklenen özelliklerin tam listesini görüntüleyin: <br/> [Genel bakış](video-indexer-overview.md)|Yalnızca video öngörülerini döndürür|
+|Media Insights|[Gelişmiş](video-indexer-output-json-v2.md) |[Temeller](../latest/analyzing-video-audio-files-concept.md)|
+|Lerinde|Desteklenen özelliklerin tam listesini görüntüleyin: <br/> [Genel Bakış](video-indexer-overview.md)|Yalnızca video öngörülerini döndürür|
 |Faturalandırma|[Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |Uyumluluk|En güncel Uyumluluk güncelleştirmeleri için, [Azure uyumluluk Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) ziyaret edin ve ilgili sertifikayla uyumlu olup olmadığını görmek için "video Indexer" araması yapın.|En güncel Uyumluluk güncelleştirmeleri için, [Azure uyumluluk Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) ziyaret edin ve ilgili sertifikayla uyumlu olup olmadığını görmek için "Media Services" araması yapın.|
 |Ücretsiz Deneme|Doğu ABD|Kullanılamaz|

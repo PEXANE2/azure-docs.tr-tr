@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708841"
 ---
 # <a name="best-practices-for-query-store"></a>Sorgu deposu için en iyi uygulamalar
@@ -24,7 +24,7 @@ Sorgu deposunun sizin için önemli olan verileri yakalamasına izin verin.
 
 |**pg_qs pg_qs.query_capture_mode** | **Senaryo**|
 |---|---|
-|_Tümü_  |İş yükünüzü tüm sorgular ve bunların yürütülme sıklıklarıyla ve diğer istatistiklerde ayrıntılı şekilde çözümleyin. İş yükünüzün yeni sorgularını belirler. Kullanıcı veya otomatik Parametreleştirme fırsatlarını belirlemek için geçici sorguların kullanıldığını algıla. _Hepsi_ daha fazla kaynak tüketim maliyetiyle gelir. |
+|_Bütün_  |İş yükünüzü tüm sorgular ve bunların yürütülme sıklıklarıyla ve diğer istatistiklerde ayrıntılı şekilde çözümleyin. İş yükünüzün yeni sorgularını belirler. Kullanıcı veya otomatik Parametreleştirme fırsatlarını belirlemek için geçici sorguların kullanıldığını algıla. _Hepsi_ daha fazla kaynak tüketim maliyetiyle gelir. |
 |_Üst_  |En iyi sorgulara dikkat edin-istemciler tarafından verilen olanlardır.
 |_Hiçbiri_ |Araştırmak istediğiniz bir sorgu kümesi ve zaman penceresi zaten yakalandı ve diğer sorguların getirebilme nedenlerini ortadan kaldırmak istiyorsunuz. _Hiçbiri_ , test ve tezgahtır işaretleme ortamları için uygun değildir. Önemli yeni sorguları izleme ve iyileştirme fırsatını kaçırdığı için _hiçbiri_ dikkatli kullanılmamalıdır. Bu eski zaman Windows üzerinde veri kurtaramazsınız. |
 

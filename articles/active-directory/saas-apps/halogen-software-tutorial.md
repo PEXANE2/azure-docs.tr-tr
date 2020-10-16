@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1743908652a70667a368dced18b2e808ce590a1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746f60374a4e8f01af119d6e9c604b941e7c4950
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550002"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>Öğretici: Saba TalentSpace ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -105,7 +105,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -131,15 +131,15 @@ Bu bölümde, Saba TalentSpace erişimi vererek Azure çoklu oturum açma özell
 
 2. **Seçenekler** sekmesine tıklayın.
   
-    ![Azure AD Connect nedir?](./media/halogen-software-tutorial/tutorial-halogen-12.png)
+    !["Saba TalentSpace" ana sayfasını "Seçenekler" sekmesi seçili olarak gösteren ekran görüntüsü.](./media/halogen-software-tutorial/tutorial-halogen-12.png)
 
 3. Sol gezinti bölmesinde **SAML yapılandırması**' na tıklayın.
   
-    ![Azure AD Connect nedir?](./media/halogen-software-tutorial/tutorial-halogen-13.png)
+    !["Kullanıcı arabirimi" sol gezinti bölmesini "S A M L Configuration" seçiliyken gösteren ekran görüntüsü.](./media/halogen-software-tutorial/tutorial-halogen-13.png)
 
 4. **SAML yapılandırması** sayfasında, aşağıdaki adımları gerçekleştirin:
 
-    ![Azure AD Connect nedir?](./media/halogen-software-tutorial/tutorial-halogen-14.png)
+    !["Ayarlar" seçeneklerinin vurgulandığı "S A M L yapılandırma" sayfasını gösteren ekran görüntüsü.](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
     a. **Benzersiz tanımlayıcı**olarak, **NameID**' yi seçin.
 
@@ -166,7 +166,7 @@ Bu bölümün amacı, Saba TalentSpace 'te Britta Simon adlı bir Kullanıcı ol
 
 2. **Kullanıcı Merkezi** sekmesine tıklayın ve ardından **Kullanıcı oluştur**' a tıklayın.
 
-    ![Azure AD Connect nedir?](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
+    !["Kullanıcı Merkezi" sekmesini ve "Kullanıcı Oluştur" ' un seçili olduğunu gösteren ekran görüntüsü.](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
 
 3. **Yeni Kullanıcı** iletişim sayfasında, aşağıdaki adımları uygulayın:
 

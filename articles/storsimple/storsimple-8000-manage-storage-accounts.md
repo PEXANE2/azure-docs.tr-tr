@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515026"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978722"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Depolama hesabı kimlik bilgilerinizi yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -33,7 +33,7 @@ StorSimple Aygıt Yöneticisi hizmeti dikey penceresindeki **yapılandırma** b�
 
 Bu öğreticide depolama hesabı kimlik bilgilerini ekleme, düzenleme veya silme ya da bir depolama hesabı için güvenlik anahtarlarını döndürme işlemleri açıklanmaktadır.
 
- ![Depolama hesabı kimlik bilgileri listesi](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![Depolama hesabı kimlik bilgilerinin listesi 1](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 Depolama hesapları, StorSimple cihazının bulut hizmeti sağlayıcınızda depolama hesabınıza erişmek için kullandığı kimlik bilgilerini içerir. Microsoft Azure depolama hesapları için, bunlar hesap adı ve birincil erişim anahtarı gibi kimlik bilgileridir. 
 
@@ -102,7 +102,7 @@ Birim kapsayıcısı tarafından kullanılan bir depolama hesabını düzenleyeb
 
 1. StorSimple Cihaz Yöneticisi hizmetinize gidin. **Yapılandırma** bölümünde **Depolama hesabı kimlik bilgileri**’ne tıklayın.
 
-    ![Depolama hesabı kimlik bilgileri](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![Depolama hesabı kimlik bilgileri 2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. **Depolama hesabı kimlik bilgileri** dikey penceresinde, depolama hesabı kimlik bilgileri listesinden, düzenlemek istediğiniz bir tane seçin ve tıklayın. 
 
@@ -159,11 +159,11 @@ Bu değişikliğin StorSimple Aygıt Yöneticisi hizmetini bilgilendirmek için,
 
 3. Tıklayın **... Daha fazla** ve ardından, **döndürmek için eşitleme erişim anahtarını**seçin.   
 
-    ![anahtarları Synchronize](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![anahtarları Synchronize 2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. StorSimple Aygıt Yöneticisi hizmetinde, daha önce Microsoft Azure Depolama hizmetinde değiştirilen anahtarı güncelleştirmeniz gerekir. Birincil erişim anahtarı değiştirildiyse (yeniden oluşturulursa), **birincil** anahtar ' ı seçin. İkincil anahtar değiştirildiyse, **İkincil** anahtar ' ı seçin. **Eşitleme anahtarı**' na tıklayın.
       
-      ![anahtarları Synchronize](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![anahtarları Synchronize 3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 Anahtar başarıyla eşitlendikten sonra size bildirimde bulunulacaktır.
 

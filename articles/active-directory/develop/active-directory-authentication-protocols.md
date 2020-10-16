@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80884690"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft Identity platform kimlik doğrulama protokolleri
@@ -31,7 +31,7 @@ Microsoft Identity platform, en yaygın olarak kullanılan kimlik doğrulama ve 
 * [OpenID Connect 1,0](v2-protocols-oidc.md) -kimlik doğrulaması için OAuth 2,0, yetkilendirme protokolünü nasıl kullanacağınızı öğrenin.
 * [Istemci kimlik bilgileriyle](v2-oauth2-client-creds-grant-flow.md) hizmete hizmet çağrıları-Service to hizmet çağrıları için OAuth 2,0 istemci kimlik bilgileri verme akışını nasıl kullanacağınızı öğrenin.
 * Service [to-on Flow ile](v2-oauth2-on-behalf-of-flow.md) hizmetten hizmete çağrılar-hizmet için hizmet çağrıları için OAuth 2,0 ' in nasıl kullanılacağını öğrenin.
-* [Saml protokol başvurusu](active-directory-saml-protocol-reference.md) -Microsoft Identity platform 'un çoklu oturum açma ve çoklu oturum açma SAML profilleri hakkında bilgi edinin.
+* [Saml protokol başvurusu](active-directory-saml-protocol-reference.md) -Microsoft Identity platform 'un tek Sign-On ve çoklu oturum açma SAML profilleri hakkında bilgi edinin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

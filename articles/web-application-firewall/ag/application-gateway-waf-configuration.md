@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84752482"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri
@@ -24,9 +24,9 @@ Azure Application Gateway Web uygulaması güvenlik duvarı (WAF), Web uygulamal
 
 WAF dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar. Ortak bir örnek, kimlik doğrulama veya parola alanları için kullanılan Active Directory eklenen belirteçlerdir. Bu tür öznitelikler, WAF kurallarından yanlış bir pozitif değeri tetikleyebilecek özel karakterler içeriyor olabilir. WAF dışlama listesine bir öznitelik eklendikten sonra, yapılandırılmış ve etkin bir WAF kuralı tarafından değerlendirilmez. Dışlama listeleri, kapsamda geneldir.
 
-Aşağıdaki öznitelikler ada göre dışlama listelerine eklenebilir. Seçilen alanın değerleri WAF kurallarına göre değerlendirilmez, ancak adları yine de olur (Aşağıdaki örnek 1 ' i inceleyin, Kullanıcı Aracısı üstbilgisinin değeri WAF değerlendirmesinden hariç tutulur). Dışlama Listeleri alanın değerinin incelemesini kaldırır.
+Aşağıdaki öznitelikler ada göre dışlama listelerine eklenebilir. Seçilen alanın değerleri WAF kurallarına göre değerlendirilmez, ancak adları yine de (örnek 1 ' de bulunur, User-Agent üst bilgisinin değeri WAF değerlendirmesinden hariç tutulur). Dışlama Listeleri alanın değerinin incelemesini kaldırır.
 
-* İstek Üst Bilgileri
+* İstek üst bilgileri
 * İstek tanımlama bilgileri
 * İstek özniteliği adı (args) bir dışlama öğesi olarak eklenebilir, örneğin:
 

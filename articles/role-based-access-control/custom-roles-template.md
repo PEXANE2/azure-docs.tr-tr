@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 06/25/2020
 ms.author: rolyon
 ms.openlocfilehash: bcf1966ffc326291448cb611d99390fe0d652151
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85392982"
 ---
 # <a name="create-an-azure-custom-role-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure özel rolü oluşturma
@@ -23,7 +23,7 @@ ms.locfileid: "85392982"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Özel bir rol oluşturmak için şunları yapmanız gerekir:
 
@@ -54,7 +54,7 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
 
 Önceki şablonu dağıtmak için aşağıdaki adımları izleyin.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. PowerShell için Azure Cloud Shell açın.
 

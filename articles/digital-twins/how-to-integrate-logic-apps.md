@@ -8,18 +8,18 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91849852"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097533"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Özel bağlayıcı kullanarak Logic Apps tümleştirme
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , uygulamalar ve hizmetler arasında iş akışlarını otomatikleştirmenize yardımcı olan bir bulut hizmetidir. Azure dijital TWINS API 'Lerine Logic Apps bağlayarak, Azure dijital TWINS ve bunların verileri etrafında bu tür otomatikleştirilmiş akışlar oluşturabilirsiniz.
 
-Azure dijital TWINS 'in Şu anda Logic Apps için Sertifikalı (önceden oluşturulmuş) bir Bağlayıcısı yoktur. Bunun yerine, Azure Digital TWINS ile Logic Apps kullanmaya yönelik geçerli işlem, Logic Apps ile çalışmak üzere değiştirilmiş [özel bir Azure dijital TWINS Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) kullanarak [**özel bir Logic Apps Bağlayıcısı**](../logic-apps/custom-connector-overview.md)oluşturmaktır.
+Azure dijital TWINS 'in Şu anda Logic Apps için Sertifikalı (önceden oluşturulmuş) bir Bağlayıcısı yoktur. Bunun yerine, Azure Digital TWINS ile Logic Apps kullanmaya yönelik geçerli işlem, Logic Apps ile çalışmak üzere değiştirilmiş [özel bir Azure dijital TWINS Swagger](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) kullanarak [**özel bir Logic Apps Bağlayıcısı**](../logic-apps/custom-connector-overview.md)oluşturmaktır.
 
 > [!NOTE]
 > Yukarıdaki özel Swagger örneğinde bulunan Swagger 'un birden çok sürümü vardır. En son tarihe sahip alt klasörde en son sürüm bulunur, ancak örnekte yer alan önceki sürümler de desteklenmeye devam eder.
@@ -93,9 +93,9 @@ Bağlayıcının dağıtım sayfasına yönlendirilirsiniz. Dağıtım tamamland
 
 Daha sonra, oluşturduğunuz bağlayıcıyı Azure dijital TWINS 'e ulaşmak için yapılandıracaksınız.
 
-İlk olarak, Logic Apps çalışmak üzere değiştirilmiş olan özel bir Azure dijital TWINS Swagger 'yi indirin. *Posta indirme* düğmesine basarak **Azure Digital Twins özel Swaggers** örneğini [**Bu bağlantıdan**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) indirin. İndirilen *Azure_Digital_Twins_Custom_Swaggers.zip* klasörüne gidin ve sıkıştırmayı açın. 
+İlk olarak, Logic Apps çalışmak üzere değiştirilmiş olan özel bir Azure dijital TWINS Swagger 'yi indirin. *Posta indirme* düğmesine basarak [**Bu bağlantıdan**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) **Azure Digital twıns özel Swaggers (Logic Apps Bağlayıcısı)** örneğini indirin. İndirilen *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* klasörüne gidin ve sıkıştırmayı açın. 
 
-Bu öğreticide özel Swagger, _**Azure_Digital_Twins_Custom_Swaggers \LogicApps**_ klasöründe bulunur. Bu klasör, her ikisi de tarihe göre düzenlenmiş farklı Swagger sürümlerini tutan, *Stable* ve *Preview*adlı alt klasörleri içerir. En son tarihi olan klasör Swagger 'nin en son kopyasını içerir. Hangi sürümü seçerseniz, Swagger dosyası _**digitaltwins.jsolarak**_ adlandırılır.
+Bu öğreticide özel Swagger, _* * Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\Logicapps **_ klasöründe bulunur. Bu klasör, her ikisi de tarihe göre düzenlenmiş farklı Swagger sürümlerini tutan, *Stable* ve *Preview*adlı alt klasörleri içerir. En son tarihi olan klasör Swagger 'nin en son kopyasını içerir. Hangi sürümü seçerseniz, Swagger dosyası** * * _ üzerinde _digitaltwins.jsolarak adlandırılır.
 
 > [!NOTE]
 > Bir önizleme özelliğiyle çalışmıyorsanız, genellikle Swagger 'nin en son *kararlı* sürümünü kullanmanız önerilir. Ancak, Swagger 'nin önceki sürümleri ve önizleme sürümleri de desteklenmeye devam eder. 
@@ -108,7 +108,7 @@ Aşağıdaki *Logic Apps özel bağlayıcıyı Düzenle* sayfasında, bu bilgile
 * **Özel bağlayıcılar**
     - API uç noktası: REST (varsayılan olarak bırakın)
     - İçeri aktarma modu: Openapı dosyası (varsayılanı bırak)
-    - Dosya: Bu, daha önce indirdiğiniz özel Swagger dosyası olacaktır. *Içeri aktar*' a basın, makinenizde dosyayı bulun (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js*) ve *Aç*' a basın.
+    - Dosya: Bu, daha önce indirdiğiniz özel Swagger dosyası olacaktır. *Içeri aktar*' a gidin, makinenizde dosyayı bulun (*Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \logicapps \...\digitaltwins.js*) ve *Aç*' a basın.
 * **Genel bilgiler**
     - Simge: dilediğiniz simgeyi karşıya yükleyin
     - Simge arka plan rengi: renk için ' #xxxxxx ' biçiminde onaltılık kod girin.
@@ -201,7 +201,7 @@ Bağlayıcıya bağlanmak için Azure kimlik bilgilerinizle oturum açmanız ist
 Yeni *DigitalTwinsAdd* kutusunda, alanları aşağıdaki gibi girin:
 * _kimlik_: örnekte mantıksal uygulamanın güncelleştirilmesini istediğiniz dijital Ikizi 'ıN *ikizi kimliğini* doldurursunuz.
 * _ikizi_: Bu alan, seçilen API isteğinin gerektirdiği gövdeye girebileceğiniz yerdir. *Digitaltwınsupdate*için bu gövde JSON Patch kodu biçimindedir. İkizi 'nizi güncelleştirmek için bir JSON Patch yapılandırma hakkında daha fazla bilgi için *nasıl yapılır: dijital TWINS yönetme*konusunun [dijital ikizi güncelleştirme](how-to-manage-twin.md#update-a-digital-twin) bölümüne bakın.
-* _api sürümü_: geçerli genel önizlemede, bu değer *2020-05-31-Preview* ' dir
+* _api sürümü_: en son API sürümü. Geçerli genel önizlemede, bu değer *2020-05-31-Preview* ' dir
 
 Logic Apps tasarımcısında *Kaydet* ' i ziyaret edin.
 
@@ -213,7 +213,7 @@ Aynı pencerede _+ yeni adım_ ' ı seçerek diğer işlemleri seçebilirsiniz.
 
 Mantıksal uygulamanız oluşturulduktan sonra, Logic Apps tasarımcısında tanımladığınız ikizi Update olayı her üç saniyede bir tekrarda gerçekleşmelidir. Bu, üç saniyeden sonra, ikizi sorgunuzu sorgulayabilmeniz ve yeni düzeltme eki uygulanmış değerlerinizin yansıtıldığını görmeniz gerekir.
 
-İkizi 'nizi tercih ettiğiniz Yöntem (örneğin, [özel bir istemci uygulaması](tutorial-command-line-app.md), [Azure Digital TWINS Explorer örnek uygulaması](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/), [SDK 'Lar ve API 'ler](how-to-use-apis-sdks.md)veya [CLI](how-to-use-cli.md)) aracılığıyla sorgulayabilirsiniz. 
+İkizi 'nizi tercih ettiğiniz Yöntem (örneğin, [özel bir istemci uygulaması](tutorial-command-line-app.md), [Azure Digital TWINS Explorer örnek uygulaması](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/), [SDK 'Lar ve API 'ler](how-to-use-apis-sdks.md)veya [CLI](how-to-use-cli.md)) aracılığıyla sorgulayabilirsiniz. 
 
 Azure dijital TWINS örneğinizi sorgulama hakkında daha fazla bilgi için bkz. [*nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md).
 

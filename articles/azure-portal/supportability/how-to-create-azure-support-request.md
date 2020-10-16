@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851875"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091449"
 ---
 # <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
@@ -23,9 +23,9 @@ Azure, destek bileti olarak da bilinen destek istekleri oluşturmanıza ve yöne
 > [!NOTE]
 > Azure portal URL 'SI, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür.
 >
->* Ticari kullanım için Azure portal:[https://portal.azure.com](https://portal.azure.com)
->* Almanya için Azure portal:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
->* Birleşik Devletler kamu Azure portal:[https://portal.azure.us](https://portal.azure.us)
+>* Ticari kullanım için Azure portal: [https://portal.azure.com](https://portal.azure.com)
+>* Almanya için Azure portal: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>* Birleşik Devletler kamu Azure portal: [https://portal.azure.us](https://portal.azure.us)
 
 Destek isteği deneyimi üç ana hedefle odaklanır:
 
@@ -35,11 +35,11 @@ Destek isteği deneyimi üç ana hedefle odaklanır:
 
 Azure, faturalandırma, kota ayarlamaları ve hesap aktarımları dahil olmak üzere abonelik yönetimi için sınırsız destek sağlar. Teknik destek için bir destek planına ihtiyacınız vardır. Daha fazla bilgi için bkz. [Destek planlarını karşılaştırma](https://azure.microsoft.com/support/plans).
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Azure portal **Yardım + Destek** alabilirsiniz. Bu, bir hizmetin Azure portal menüsünde, genel üst bilgisinde veya kaynak menüsünden kullanılabilir. Bir destek isteğini kaydedebilmeniz için, uygun izinlere sahip olmanız gerekir.
 
-### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+### <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
 Bir destek isteği oluşturmak için, abonelik düzeyindeki [destek Isteği katılımcısı](../../role-based-access-control/built-in-roles.md#support-request-contributor) rolüne bir [sahip](../../role-based-access-control/built-in-roles.md#owner), [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) veya atanmış olmanız gerekir. Aboneliği olmayan bir destek isteği oluşturmak için, örneğin bir Azure Active Directory senaryosunda, [yönetici](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)olmanız gerekir.
 
@@ -47,7 +47,7 @@ Bir destek isteği oluşturmak için, abonelik düzeyindeki [destek Isteği kat�
 
 Azure portal her yerden bir destek talebi başlatmak için:
 
-1. Power BI hizmetinde **?** Genel üst bilgisinde. **Yardım + Destek**' i seçin.
+1. Seçin **?** Genel üst bilgisinde. **Yardım + Destek**' i seçin.
 
    ![Yardım ve Destek](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -95,7 +95,7 @@ Daha sonra, sorunla ilgili ek ayrıntıları topladık. Bu adımda kapsamlı ve 
 
 1. Ardından, sizinle nasıl iletişim kurabileceğinizi bilmemiz için **iletişim bilgileri** bölümünü doldurun.
 
-### <a name="review--create"></a>Gözden geçir + oluştur
+### <a name="review--create"></a>Gözden geçirme ve oluşturma
 
 Her sekme için gerekli tüm bilgileri doldurun ve ardından **gözden geçir + oluştur**' u seçin. Destek için göndereceğiniz ayrıntıları denetleyin. Gerekirse değişiklik yapmak için herhangi bir sekmeye dönün. Destek isteği tamamlandıktan memnun olduğunuzda **Oluştur**' u seçin.
 
@@ -114,5 +114,5 @@ Daha fazla bilgi edinmek için bu bağlantıları izleyin:
 * [Azure destek bileti REST API](/rest/api/support)
 * [Görüşlerinizi ve önerilerinizi bize gönderin](https://feedback.azure.com/forums/266794-support-feedback)
 * [Twitter](https://twitter.com/azuresupport) 'da bizimle iletişime katılın
-* [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/products/azure) Meslektaşlarınızdan yardım alın
+* [Microsoft Q&soru sayfasında](/answers/products/azure) Meslektaşlarınızdan yardım alın
 * [Azure DESTEĞI hakkında](https://azure.microsoft.com/support/faq) daha fazla bilgi
