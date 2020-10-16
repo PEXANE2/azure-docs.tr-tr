@@ -180,7 +180,7 @@
           href: basic-age-gating.md
         - name: Özel öznitelikleri tanımlama
           href: user-flow-custom-attributes.md
-        - name: API bağlayıcıları
+        - name: API bağlayıcıları (önizleme)
           items:
             - name: Genel Bakış
               href: api-connectors-overview.md

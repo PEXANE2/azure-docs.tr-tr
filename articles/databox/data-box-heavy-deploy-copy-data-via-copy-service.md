@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77560229"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127157"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Öğretici: verileri Azure Data Box Heavy kopyalamak için veri kopyalama hizmetini kullanma (Önizleme)
 
@@ -24,7 +24,7 @@ Veri kopyalama hizmetini kullanın:
 - Ara ana bilgisayarların kullanılabilir olabileceği NAS ortamlarında.
 - Veri alma ve karşıya yükleme için hafta alan küçük dosyalarla birlikte. Veri kopyası hizmeti, küçük dosyalar için alma ve karşıya yükleme süresini önemli ölçüde geliştirir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Data Box Heavy’ye veri kopyalama
@@ -64,7 +64,7 @@ Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız
     |**Hedef depolama hesabı**    |Verileri listeden karşıya yüklemek için hedef depolama hesabını seçin.         |
     |**Hedef türü**       |Listeden hedef depolama türünü seçin: **Blok Blobu**, **Sayfa Blobu**veya **Azure dosyaları**.        |
     |**Hedef kapsayıcı/paylaşma**    |Hedef depolama hesabınızda veri yüklemek istediğiniz kapsayıcının veya paylaşımın adını girin. Ad bir paylaşma adı veya kapsayıcı adı olabilir. Örneğin `myshare` veya `mycontainer` kullanın. Adı veya biçiminde de girebilirsiniz `sharename\directory_name` `containername\virtual_directory_name` .        |
-    |**Dosya düzeniyle eşleşen dosya Kopyala**    | Dosya adı eşleştirme modelini aşağıdaki iki şekilde girebilirsiniz:<ul><li>**Joker karakter Ifadesi kullanın:** Yalnızca `*` ve `?` Joker ifadelerinde desteklenir. Örneğin, ifadesi `*.vhd` uzantısına sahip olan tüm dosyalarla eşleşir `.vhd` . Benzer şekilde, `*.dl?` uzantısı olan `.dl` veya ile başlayan tüm dosyalarla eşleşir `.dl` `.dll` . Benzer şekilde, `*foo` adları ile biten tüm dosyalarla eşleşir `foo` .<br>Joker karakter ifadesini alana doğrudan girebilirsiniz. Varsayılan olarak, alana girdiğiniz değer joker karakter ifadesi olarak değerlendirilir.</li><li>**Normal Ifadeleri kullan:** POSIX tabanlı normal ifadeler desteklenir. Örneğin, normal ifade `.*\.vhd` uzantısına sahip olan tüm dosyalarla eşleşir `.vhd` . Normal ifadeler için `<pattern>` doğrudan olarak ' ı belirtin `regex(<pattern>)` . Normal ifadeler hakkında daha fazla bilgi için bkz. [normal ifade dili-hızlı başvuru](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Dosya düzeniyle eşleşen dosya Kopyala**    | Dosya adı eşleştirme modelini aşağıdaki iki şekilde girebilirsiniz:<ul><li>**Joker karakter Ifadesi kullanın:** Yalnızca `*` ve `?` Joker ifadelerinde desteklenir. Örneğin, ifadesi `*.vhd` uzantısına sahip olan tüm dosyalarla eşleşir `.vhd` . Benzer şekilde, `*.dl?` uzantısı olan `.dl` veya ile başlayan tüm dosyalarla eşleşir `.dl` `.dll` . Benzer şekilde, `*foo` adları ile biten tüm dosyalarla eşleşir `foo` .<br>Joker karakter ifadesini alana doğrudan girebilirsiniz. Varsayılan olarak, alana girdiğiniz değer joker karakter ifadesi olarak değerlendirilir.</li><li>**Normal Ifadeleri kullan:** POSIX tabanlı normal ifadeler desteklenir. Örneğin, normal ifade `.*\.vhd` uzantısına sahip olan tüm dosyalarla eşleşir `.vhd` . Normal ifadeler için `<pattern>` doğrudan olarak ' ı belirtin `regex(<pattern>)` . Normal ifadeler hakkında daha fazla bilgi için bkz. [normal ifade dili-hızlı başvuru](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Dosya iyileştirme**              |Bu özellik etkinleştirildiğinde 1 MB 'den küçük dosyalar alma sırasında paketlenmiştir. Bu paketleme, küçük dosyalar için veri kopyasının hızlanmasını hızlandırır. Ayrıca dosya sayısının dizin sayısını aştığında önemli miktarda zaman kazandırır.        |
  
 4. **Başlat**'ı seçin. Girişler onaylanır ve doğrulama başarılı olursa iş başlatılır. İşin başlatılması birkaç dakika sürebilir.
@@ -147,4 +147,3 @@ Data Box Heavy cihazınızı Microsoft 'a geri gönderme hakkında bilgi edinmek
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Heavy cihazınızı Microsoft 'a gönderin](./data-box-heavy-deploy-picked-up.md)
-

@@ -1,38 +1,42 @@
 ---
 title: Azure Resource Manager şablonu kullanarak App Service uygulaması oluşturma
-description: App Service dağıtmanın birçok yolu olan bir Azure Resource Manager şablonu kullanarak saniyeler içinde Azure App Service ilk uygulamanızı oluşturun.
+description: App Service dağıtmanın birçok yolu olan bir Azure Resource Manager şablonu (ARM şablonu) kullanarak saniyeler içinde Azure App Service ilk uygulamanızı oluşturun.
 author: msangapu-msft
 ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
-ms.date: 05/25/2020
+ms.date: 10/15/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e577616e0976ca050a55c8524e68129545ed1912
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ca8301e9be51279cd9b80791126b41b99d89d6b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89653600"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127395"
 ---
-# <a name="create-app-service-app-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak App Service uygulaması oluşturma
+# <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak App Service uygulaması oluşturma
 
-Azure Resource Manager şablonu ve Cloud Shell [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) kullanarak buluta uygulama dağıtarak [Azure App Service](overview.md) kullanmaya başlayın. Ücretsiz bir App Service katmanı kullandığınız için, bu hızlı başlangıcı tamamlamaya yönelik bir ücret ödeirsiniz.
+Azure Resource Manager şablonu (ARM şablonu) ve Cloud Shell [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) kullanarak buluta uygulama dağıtarak [Azure App Service](overview.md) kullanmaya başlayın. Ücretsiz bir App Service katmanı kullandığınız için, bu hızlı başlangıcı tamamlamaya yönelik bir ücret ödeirsiniz.
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+**Linux**'ta dağıtmak için aşağıdaki düğmeyi kullanın:
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-an-azure-app-service-app"></a>Azure App Service uygulaması oluşturma
-
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 ::: zone pivot="platform-windows"
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/) alınmıştır. Bir App Service planını ve bir App Service uygulamasını Windows üzerinde dağıtır. .NET Core, .NET Framework, PHP, Node.js ve statik HTML uygulamalarıyla uyumludur. Java için bkz. [Java uygulaması oluşturma](app-service-web-get-started-java.md). 
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows) alınmıştır. Bir App Service planını ve bir App Service uygulamasını Windows üzerinde dağıtır. .NET Core, .NET Framework, PHP, Node.js ve statik HTML uygulamalarıyla uyumludur. Java için bkz. [Java uygulaması oluşturma](app-service-web-get-started-java.md).
 
-[!code-json[<Azure Resource Manager template App Service Windows app>](~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
@@ -43,17 +47,17 @@ Bu şablon, kolaylık olması için önceden tanımlanmış birkaç parametre i�
 
 | Parametreler | Tür    | Varsayılan değer                | Açıklama |
 |------------|---------|------------------------------|-------------|
-| webAppName | string  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Uygulama adı |
-| location   | string  | "[[resourceGroup (). Location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Uygulama bölgesi |
-| isteyin        | string  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
-| language   | string  | .net                       | Programlama dili yığını (.net, php, Node, HTML) |
+| webAppName | dize  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Uygulama adı |
+| location   | dize  | "[[resourceGroup (). Location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Uygulama bölgesi |
+| isteyin        | dize  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
+| language   | dize  | .net                       | Programlama dili yığını (.net, php, Node, HTML) |
 | helloWorld | boolean | Yanlış                        | Doğru = "Merhaba Dünya" uygulamasını dağıt |
-| repoUrl    | string  | " "                          | Dış git deposu (isteğe bağlı) |
+| repoUrl    | dize  | " "                          | Dış git deposu (isteğe bağlı) |
 ::: zone-end
 ::: zone pivot="platform-linux"
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/) alınmıştır. Linux üzerinde bir App Service planı ve bir App Service uygulaması dağıtır. App Service tüm desteklenen programlama dilleri ile uyumludur.
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux) alınmıştır. Linux üzerinde bir App Service planı ve bir App Service uygulaması dağıtır. App Service tüm desteklenen programlama dilleri ile uyumludur.
 
-[!code-json[<Azure Resource Manager template App Service Linux app>](~/quickstart-templates/101-app-service-docs-linux/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-app-service-docs-linux/azuredeploy.json":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
@@ -64,19 +68,18 @@ Bu şablon, kolaylık olması için önceden tanımlanmış birkaç parametre i�
 
 | Parametreler | Tür    | Varsayılan değer                | Açıklama |
 |------------|---------|------------------------------|-------------|
-| webAppName | string  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Uygulama adı |
-| location   | string  | "[[resourceGroup (). Location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Uygulama bölgesi |
-| isteyin        | string  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
-| linuxFxVersion   | string  | "DOTNETCORE&#124;3,0        | "Programlama dil yığını &#124; sürümü" |
-| repoUrl    | string  | " "                          | Dış git deposu (isteğe bağlı) |
+| webAppName | dize  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Uygulama adı |
+| location   | dize  | "[[resourceGroup (). Location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Uygulama bölgesi |
+| isteyin        | dize  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
+| linuxFxVersion   | dize  | "DOTNETCORE&#124;3,0        | "Programlama dil yığını &#124; sürümü" |
+| repoUrl    | dize  | " "                          | Dış git deposu (isteğe bağlı) |
 
 ---
 ::: zone-end
 
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
-
-Azure CLı, şablonu dağıtmak için burada kullanılır. Azure portal, Azure PowerShell ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md). 
+Azure CLı, şablonu dağıtmak için burada kullanılır. Azure portal, Azure PowerShell ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
 Aşağıdaki kod, bir kaynak grubu, bir App Service planı ve bir Web uygulaması oluşturur. Sizin için varsayılan bir kaynak grubu, App Service planı ve konum ayarlanmış. `<app-name>`Genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z` , `0-9` ve `-` ).
 
@@ -86,11 +89,11 @@ Windows 'a bir .NET Framework uygulaması dağıtmak için aşağıdaki kodu ça
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup \
---parameters language=".net" sample="true" webAppName="<app-name>" \
+--parameters language=".net" helloWorld="true" webAppName="<app-name>" \
 --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-service-docs-windows/azuredeploy.json"
 ::: zone-end
 ::: zone pivot="platform-linux"
-Run the code below to create a Python app on Linux. 
+Run the code below to create a Python app on Linux.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -114,7 +117,6 @@ Farklı bir dil yığınını dağıtmak için `linuxFxVersion` uygun değerlerl
 
 > [!NOTE]
 > Daha fazla [Azure App Service şablon örneği](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites)bulabilirsiniz.
-
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 

@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018210"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126765"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics, Azure İşlevleri ve SendGrid kullanarak özel kurallarla Azure IoT Central’ın kapsamını genişletme
 
-Bu nasıl yapılır kılavuzunda, çözüm geliştiricisi olarak, IoT Central uygulamanızı özel kurallarla ve bildirimlerle genişletmenin nasıl genişletileceği gösterilmektedir. Örnek, bir cihaz telemetri göndermeyi durdurduğu zaman bir işlece bildirim göndermeyi gösterir. Çözüm, bir cihazın telemetri göndermeyi durdurduğunu algılamak için bir [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) sorgusu kullanır. Stream Analytics işi, [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)kullanarak bildirim e-postaları göndermek Için [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/) 'ni kullanır.
+Bu nasıl yapılır kılavuzunda, çözüm geliştiricisi olarak, IoT Central uygulamanızı özel kurallarla ve bildirimlerle genişletmenin nasıl genişletileceği gösterilmektedir. Örnek, bir cihaz telemetri göndermeyi durdurduğu zaman bir işlece bildirim göndermeyi gösterir. Çözüm, bir cihazın telemetri göndermeyi durdurduğunu algılamak için bir [Azure Stream Analytics](../../stream-analytics/index.yml) sorgusu kullanır. Stream Analytics işi, [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)kullanarak bildirim e-postaları göndermek Için [Azure işlevleri](../../azure-functions/index.yml) 'ni kullanır.
 
 Bu nasıl yapılır Kılavuzu, yerleşik kurallar ve eylemlerle daha önce neler yapabileceğini IoT Central nasıl genişletebileceğinizi gösterir.
 
@@ -28,7 +28,7 @@ Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 * Bir cihazın veri göndermeyi durdurduğunu algılayan bir Stream Analytics sorgusu oluşturun.
 * Azure Işlevleri ve SendGrid hizmetlerini kullanarak e-posta bildirimi gönderin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
@@ -62,7 +62,7 @@ Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal]
 
 | Ayar | Değer |
 | ------- | ----- |
-| Adı    | Ad alanı adınızı seçin |
+| Ad    | Ad alanı adınızı seçin |
 | Fiyatlandırma katmanı | Temel |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
@@ -75,7 +75,7 @@ Aşağıdaki ayarlarla [bir Stream Analytics işi oluşturmak için Azure Portal
 
 | Ayar | Değer |
 | ------- | ----- |
-| Adı    | İş adınızı seçin |
+| Ad    | İş adınızı seçin |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
 | Konum | Doğu ABD |
@@ -103,7 +103,7 @@ Aşağıdaki ayarlarla [bir SendGrid hesabı oluşturmak için Azure Portal](htt
 
 | Ayar | Değer |
 | ------- | ----- |
-| Adı    | SendGrid hesabınızın adını seçin |
+| Ad    | SendGrid hesabınızın adını seçin |
 | Parola | Parola oluştur |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |

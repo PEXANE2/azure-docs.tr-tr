@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3c5fc8e7ac4e61d44bb6cd54e1690d7c053526
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540244"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127174"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Öğretici: ServiceNow ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide ServiceNow 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -290,11 +290,11 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
              > [!NOTE]
              > Sınama bağlantısı başarısız olursa ve bu bağlantıyı etkinleştiremeyebilirsiniz, ServiceNow geçersiz kılma anahtarını sunar. Sys_properties girmeniz gerekir **. ** **Arama GEZINTISINDE** listeleyin ve sistem özelliklerinin yeni sayfasını açar. Burada, ad **veri türü** ile **doğru/yanlış** olarak ayarlanmış ve sonra **değeri** **false**olarak ayarlanmış yeni bir özellik oluşturmanız **gerekir.**
 
-             > ![Test Sonuçları sayfasının ekran görüntüsü](./media/servicenow-tutorial/testconnection-fail.png "Çoklu oturum açmayı yapılandırma")
+             > ![Ekran görüntüsü, bir test bağlantısı olarak adlandırılan sistem özellikleri sekmesini gösterir.](./media/servicenow-tutorial/testconnection-fail.png "Çoklu oturum açmayı yapılandırma")
         
           1. Kimlik bilgileriniz sorulduğunda, bunları girin. Aşağıdaki sayfayı görürsünüz. **SSO oturumu kapatma test sonuçları** hatası bekleniyor. Hatayı yoksayın ve  **Etkinleştir**' i seçin.
 
-             ![Test Sonuçları sayfasının ekran görüntüsü](./media/servicenow-tutorial/servicenowactivate.png "Çoklu oturum açmayı yapılandırma")
+             ![Ekran görüntüsünde, s s O oturum açma Test Sonuçları ve S S O oturumu kapatma Test Sonuçları, etkinleştir düğmesiyle birlikte gösterilir.](./media/servicenow-tutorial/servicenowactivate.png "Çoklu oturum açmayı yapılandırma")
   
 1. **ServiceNow** 'ı el ile yapılandırmak için aşağıdaki adımları izleyin:
 
@@ -347,11 +347,11 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
           > [!NOTE]
           > Sınama bağlantısı başarısız olursa ve bu bağlantıyı etkinleştiremeyebilirsiniz, ServiceNow geçersiz kılma anahtarını sunar. Sys_properties girmeniz gerekir **. ** **Arama GEZINTISINDE** listeleyin ve sistem özelliklerinin yeni sayfasını açar. Burada, ad **veri türü** ile **doğru/yanlış** olarak ayarlanmış ve sonra **değeri** **false**olarak ayarlanmış yeni bir özellik oluşturmanız **gerekir.**
 
-          > ![Test Sonuçları sayfasının ekran görüntüsü](./media/servicenow-tutorial/testconnection-fail.png "Çoklu oturum açmayı yapılandırma")
+          > ![Ekran görüntüsü, bir test bağlantısı olarak adlandırılan sistem özellikleri sekmesini gösterir.](./media/servicenow-tutorial/testconnection-fail.png "Çoklu oturum açmayı yapılandırma")
 
         * Kimlik bilgileriniz sorulduğunda, bunları girin. Aşağıdaki sayfayı görürsünüz. **SSO oturumu kapatma test sonuçları** hatası bekleniyor. Hatayı yoksayın ve  **Etkinleştir**' i seçin.
 
-          ![Test Sonuçları sayfasının ekran görüntüsü](./media/servicenow-tutorial/servicenowactivate.png "Çoklu oturum açmayı yapılandırma")
+          ![Ekran görüntüsünde, s s O oturum açma Test Sonuçları ve S S O oturumu kapatma Test Sonuçları, etkinleştir düğmesiyle birlikte gösterilir.](./media/servicenow-tutorial/servicenowactivate.png "Çoklu oturum açmayı yapılandırma")
 
 ### <a name="create-servicenow-test-user"></a>ServiceNow test kullanıcısı oluşturma
 

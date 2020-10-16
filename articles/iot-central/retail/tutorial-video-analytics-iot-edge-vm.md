@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873287"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127037"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Linux VM)
 
@@ -27,12 +27,12 @@ IoT Edge, bu hizmetler doğrudan platformlar arası IoT cihazlarında çalışı
 
 Bu öğreticide bir Azure VM 'de IoT Edge cihazının nasıl hazırlanacağı gösterilmektedir. IoT Edge örnek, Azure IoT Central video analizi-nesne ve hareket algılama uygulama şablonunun kullandığı canlı video analizi modüllerini çalıştırır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure IoT Edge çalışma zamanı yüklü bir Azure VM oluşturma
 > * Canlı video analizi modülünü barındırmak ve IoT Central bağlanmak için IoT Edge yüklemesini hazırlayın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, Azure IoT Central bir önceki [video analizi uygulaması oluşturma](./tutorial-video-analytics-create-app-yolo-v3.md) veya [Azure IoT Central (openvino &trade; ) öğreticisinde bir video analizi oluşturma](tutorial-video-analytics-create-app-openvino.md) işlemini tamamlamalısınız.
 
@@ -64,7 +64,7 @@ En son IoT Edge çalışma zamanı ve canlı video analizi modülleri yüklü bi
 | Ubuntu işletim sistemi sürümü | *18,04-LTS* |
 | Konum | *[resourceGroup (). Location]* |
 
-**Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandığında **Oluştur**' u seçin. Dağıtımın tamamlanabilmesi için genellikle üç dakika sürer. Dağıtım tamamlandığında, Azure portal **LVA-RG** kaynak grubuna gidin.
+**Gözden geçir + oluştur**’u seçin. Doğrulama tamamlandığında **Oluştur**' u seçin. Dağıtımın tamamlanabilmesi için genellikle üç dakika sürer. Dağıtım tamamlandığında, Azure portal **LVA-RG** kaynak grubuna gidin.
 
 ## <a name="ensure-the-iot-edge-runtime-loads-the-modules"></a>IoT Edge çalışma zamanının modülleri yüklediğini emin olun
 
@@ -94,7 +94,7 @@ Dağıtım aşağıdaki beş IoT Edge modülünü çalışacak şekilde yapılan
 
 Dağıtım, canlı video analizi için gerekli modüllerle özel bir IoT Edge ortamı oluşturdu. Dağıtım, IoT Edge çalışma zamanının IoT Central bağlanmak için IoT cihaz sağlama hizmeti ' ni kullandığından emin olmak için varsayılan **config. YAML** 'yi güncelleştirmiş. Dağıtım Ayrıca, modüllerde ek yapılandırma verileri sağlamak için **/Data/Storage** klasöründe **state.js** adlı bir dosya oluşturmuştur. Daha fazla bilgi için bkz. [video analizi için IoT Edge örneği oluşturma (Intel NUC)](./tutorial-video-analytics-iot-edge-nuc.md) öğreticisi.
 
-IoT Edge cihazda sorun gidermek için, bkz. [IoT Edge cihazınızda sorun giderme](https://docs.microsoft.com/azure/iot-edge/troubleshoot)
+IoT Edge cihazda sorun gidermek için, bkz. [IoT Edge cihazınızda sorun giderme](../../iot-edge/troubleshoot.md)
 
 ## <a name="use-the-rtsp-simulator"></a>RTSP simülatörü kullanma
 

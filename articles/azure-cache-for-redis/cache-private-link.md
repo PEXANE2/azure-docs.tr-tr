@@ -5,24 +5,25 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 93a21b627acfb127c98ead465ebeadc8a472bdfd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838662"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122713"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Redin için Azure önbelleği Azure özel bağlantısı (Genel Önizleme)
 Bu makalede, Azure portal kullanarak özel bir uç nokta ile Redsıs örneği için bir sanal ağ ve Azure önbelleği oluşturmayı öğreneceksiniz. Ayrıca, Redsıs örneği için mevcut bir Azure önbelleğine özel bir uç nokta eklemeyi öğreneceksiniz.
 
 Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen, özel olarak ve güvenli bir şekilde Azure önbelleğine bağlayan bir ağ arabirimidir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Özel uç noktaları kullanmak için, Redsıs örneği için Azure önbelleğinizin 28 Temmuz 2020 ' den sonra oluşturulmuş olması gerekir.
+> Şu anda, coğrafi çoğaltma, güvenlik duvarı kuralları, Portal konsolu desteği, kümelenmiş önbellek başına birden fazla uç nokta, güvenlik duvarı ve VNet 'e eklenen önbellekler için kalıcılık desteklenmez. 
 >
 >
 
@@ -109,6 +110,23 @@ Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.
 
 Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış**   sayfasında ilerlemeyi izleyebilirsiniz.  **Durum**    **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
     
+> [!IMPORTANT]
+> 
+> `publicNetworkAccess`Varsayılan olarak bir bayrak vardır `Enabled` . 
+> Bu bayrak, isteğe bağlı olarak ayarlandıysa önbelleğe hem genel hem de özel uç nokta erişimine izin vermek için tasarlanmıştır `Enabled` . Olarak ayarlanırsa `Disabled` , yalnızca özel uç nokta erişimine izin verir. Değerini `Disabled` aşağıdaki düzeltme eki isteğiyle olarak ayarlayabilirsiniz.
+> ```http
+> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+> {    "properties": {
+>        "publicNetworkAccess":"Disabled"
+>    }
+> }
+> ```
+>
+
+> [!IMPORTANT]
+> 
+> Kümelenmiş bir önbelleğe bağlanmak için, `publicNetworkAccess` olarak ayarlanması gerekir `Disabled` ve yalnızca bir özel uç nokta bağlantısı olabilir. 
+>
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Redsıs örneği için mevcut bir Azure önbelleği ile özel bir uç nokta oluşturma 
 

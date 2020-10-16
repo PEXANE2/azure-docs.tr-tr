@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543127"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Öğretici: Seqile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Sequr Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Seqile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -131,15 +131,15 @@ Azure AD çoklu oturum açma 'yı Seqile yapılandırmak için aşağıdaki adı
 
 1. Sol Gezinti panelinden **tümleştirmelere** tıklayın.
 
-    ![Seqyapılandırması](./media/sequr-tutorial/configure1.png)
+    ![Ekran görüntüsü, Gezinti panelinden seçilen tümleştirmeyi gösterir.](./media/sequr-tutorial/configure1.png)
 
 1. Aşağı kaydırarak **Çoklu oturum** açma bölümüne gidin ve **Yönet**' e tıklayın.
 
-    ![Seqyapılandırması](./media/sequr-tutorial/configure2.png)
+    ![Ekran görüntüsü, Yönet düğmesinin seçili olduğu çoklu oturum açma bölümünü gösterir.](./media/sequr-tutorial/configure2.png)
 
 1. **Çoklu oturum açmayı Yönet** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Seqyapılandırması](./media/sequr-tutorial/configure3.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tek Sign-On Yönet bölümünü gösterir.](./media/sequr-tutorial/configure3.png)
 
     a. **Kimlik sağlayıcısı tek Sign-On URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 

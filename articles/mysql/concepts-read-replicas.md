@@ -1,17 +1,17 @@
 ---
-title: Çoğaltmaları oku-MySQL için Azure veritabanı.
+title: Çoğaltmaları oku-MySQL için Azure veritabanı
 description: "MySQL için Azure veritabanı 'nda çoğaltmaları okuma hakkında bilgi edinin: bölge seçme, çoğaltmalar oluşturma, çoğaltmalara bağlanma, çoğaltmayı izleme ve çoğaltmayı durdurma."
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/1/2020
-ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 10/15/2020
+ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876558"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126677"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -38,7 +38,7 @@ Yaygın bir senaryo, bı ve analitik iş yüklerinin raporlama için veri kayna�
 Okuma çoğaltması özelliği MySQL zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Kaynak ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda, ana sunucudaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
 
 > [!IMPORTANT]
-> MySQL için Azure veritabanı, **satır** tabanlı ikili günlüğe kaydetme kullanır. Tablonuzda birincil anahtar eksikse, tablodaki tüm satırlar DML işlemleri için taranır. Bu, daha fazla çoğaltma gecikmesi oluşmasına neden olur. Çoğaltmanın kaynak üzerinde değişikliklere devam edebilmesini sağlamak için, genellikle çoğaltma sunucusunu oluşturmadan önce kaynak sunucudaki tablolara birincil anahtar eklemeniz veya zaten varsa çoğaltma sunucusunu yeniden oluşturmanız önerilir.
+> MySQL için Azure Veritabanı **SATIR** tabanlı ikili günlüğü destekler. Tablonuzda birincil anahtar eksikse, DML işlemleri için tablodaki tüm satırlar taranır. Bu da çoğaltma gecikmesinin artmasına neden olur. Çoğaltmanın kaynaktaki değişikliklere ayak uydurabileceğinden emin olmak için, genellikle çoğaltma sunucusunu oluşturmadan veya önceden varsa yeniden oluşturmadan önce kaynak sunucudaki tablolara birincil anahtar eklenmesini öneririz.
 
 ## <a name="cross-region-replication"></a>Bölgeler arası çoğaltma
 Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
@@ -50,7 +50,7 @@ Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilir
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
 Kaynak sunucunuzun bulunduğu yere bakılmaksızın, aşağıdaki bölgelerin herhangi birinde bir okuma çoğaltması oluşturabilirsiniz. Desteklenen evrensel çoğaltma bölgeleri şunları içerir:
 
-Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2, Orta Batı ABD.
+Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2, Orta Batı ABD.
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
 Evrensel çoğaltma bölgelerine ek olarak, kaynak sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.

@@ -118,6 +118,10 @@
       items:
         - name: Rezervasyonu yenileme
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Sorun giderme
+      items:
+        - name: Koşullara uygun abonelik yok
+          href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Başvuru
   items:
     - name: Rezervasyonlar REST API’si

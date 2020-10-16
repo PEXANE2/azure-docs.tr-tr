@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 8d05ab19ff7fee43d91a9620f96699d73bc38a1a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873311"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127054"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Intel NUC)
 
@@ -27,23 +27,23 @@ IoT Edge, bu hizmetler doğrudan platformlar arası IoT cihazlarında çalışı
 
 Bu öğreticide, IoT Edge çalışma zamanının bir Intel NUC cihazında nasıl yükleneceği ve yapılandırılacağı gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * IoT Edge güncelleştirin ve yapılandırın
 > * IoT Edge ağ geçidini kurma
 > * Yerel bir ONVıF-uyumlu kamerayı Intel NUC cihazınıza bağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Başlamadan önce, Azure IoT Central (YOLO v3) veya [azure IoT Central (OpenVINO &trade; ) öğreticisinde bir video analizi oluşturmanız](tutorial-video-analytics-create-app-openvino.md)için önceki [bir canlı video analizi uygulaması oluşturun](./tutorial-video-analytics-create-app-yolo-v3.md) .
 * Linux çalıştıran Intel NUC gibi bir cihaz, Docker kapsayıcılarını çalıştırabilecek ve video analizlerini çalıştırmak için yeterli işleme gücüne sahip.
-* [IoT Edge çalışma zamanı cihazda yüklendi](../../iot-edge/how-to-install-iot-edge-linux.md) ve çalışıyor.
+* [IoT Edge çalışma zamanı cihazda yüklendi](../../iot-edge/how-to-install-iot-edge.md) ve çalışıyor.
 * Windows makinenizden IoT Edge cihazına bağlanabiliyor, [Putty SSH istemcisine](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) veya eşdeğer bir yardımcı programa ihtiyacınız vardır.
 * Ayrıca bir Azure aboneliğine de ihtiyacınız vardır. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)ücretsiz olarak bir tane oluşturabilirsiniz.
 
 ## <a name="configure-the-iot-edge-device"></a>IoT Edge cihazını yapılandırma
 
-Intel NUC makinenizde yüklü IoT Edge çalışma zamanı yoksa, bkz. [Azure IoT Edge çalışma zamanını, detem tabanlı Linux sistemleri yönergelerine yükleme](../../iot-edge/how-to-install-iot-edge-linux.md) .
+Intel NUC makinenizde yüklü IoT Edge çalışma zamanı yoksa, bkz. [Azure IoT Edge çalışma zamanını, detem tabanlı Linux sistemleri yönergelerine yükleme](../../iot-edge/how-to-install-iot-edge.md) .
 
 IoT Edge çalışma zamanını güncelleştirmek için:
 

@@ -3,12 +3,12 @@ title: Danışman ile operasyonel Excel 'i geliştirme
 description: Azure abonelikleriniz için işlemsel mükemmelliği iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077397"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122628"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak işlemsel mükemmellik elde edin
 
@@ -53,6 +53,12 @@ Azure Ilkesi, Azure 'da ilke oluşturmak, atamak ve yönetmek için kullanabilec
 ***Yönetilen disk kullanmayan VM 'Leri denetlemeyi*zorunlu tutun.**
 
 ***Kaynak gruplarından etiket devralmayı*etkinleştirin.** Bu ilke, bir kaynak oluşturulduğunda veya güncelleştirildiğinde üst kaynak grubunda belirtilen etiketi ve değeri ekler veya değiştirir. Bir düzeltme görevi tetikleyerek mevcut kaynakları düzeltebilirsiniz.
+
+Danışman, müşterilerin en iyi yöntemleri benimseerek işlemsel mükemmellik elde etmenize yardımcı olan birkaç ayrı Azure ilkesi önerir. Bir müşteri önerilen bir ilkeyi atamaya karar verirse, öneriyi gizlenecektir. Müşteri ilkeyi daha sonra kaldırmaya karar verirse, danışman, kaldırma işleminin güçlü bir sinyal olarak yorumlandığı için öneriyi göstermeye devam eder:
+
+1.  Danışman önerisine karşın ilgili kullanım durumlarına uygulanmamasına rağmen müşteri ilkeyi kaldırdı. 
+2.  Müşteri, atamayı ve kaldırmayı doğruladıktan sonra bu ilkeyi algılar ve öğrenirler ve daha sonra kullanım durumlarına uygun hale gelirse rehberlik olmadan yeniden atayabilir veya kaldırabilir. Müşteri, aynı ilkeyi yeniden atamak için en iyi ilgi çekici bir şekilde bulursa, danışman 'de öneri gerektirmeden bunu Azure Ilkesinde gerçekleştirebilir. Bu mantığın özellikle Işlemsel üstün çalışma kategorisindeki ilke önerisi için geçerli olduğuna lütfen emin olun. Bu kurallar güvenlik önerilerine uygulanmaz.  
+
 
 ## <a name="no-validation-environment-enabled"></a>Etkin doğrulama ortamı yok
 Azure Advisor, geçerli abonelikte etkin bir doğrulama ortamınız olmadığını belirler. Konak havuzlarınızı oluştururken, \" \" \" Özellikler sekmesinde doğrulama ortamı için Hayır ' ı seçmiş olursunuz \" . Doğrulama ortamı etkinleştirilmiş en az bir konak havuzu olması, olası sorunları erken algılamada Windows sanal masaüstü hizmeti dağıtımları aracılığıyla iş sürekliliği sağlar. [Daha fazla bilgi edinin](../virtual-desktop/create-validation-host-pool.md)

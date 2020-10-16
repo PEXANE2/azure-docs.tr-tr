@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8fb60a4b549a7203057dd60298d2ae0540450d6
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803798"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122662"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama
 
@@ -45,7 +45,7 @@ Bir IoT Central uygulamasında cihaz şablonu, bir cihazın yeteneklerini anlatm
 - Visual Studio Code kullanarak bir cihaz yetenek modeli oluşturun. Modelden cihaz kodunuzu uygulayın. Cihaz yetenek modelini IoT Central uygulamanıza el ile içeri aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
 - Visual Studio Code kullanarak bir cihaz yetenek modeli oluşturun. Cihazdan cihaz kodunuzu uygulayın ve cihaz ilk bağlantısı kullanarak gerçek cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, cihaz yetenek modelini sizin için ortak depodan bulur ve içeri aktarır. Daha sonra IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları cihaz şablonuna ekleyebilirsiniz.
 
-Ayrıca, [REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) veya [clı](howto-manage-iot-central-from-cli.md)kullanarak bir IoT Central uygulamasına cihaz şablonları ekleyebilirsiniz.
+Ayrıca, [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) veya [clı](howto-manage-iot-central-from-cli.md)kullanarak bir IoT Central uygulamasına cihaz şablonları ekleyebilirsiniz.
 
 Bazı [uygulama şablonları](concepts-app-templates.md) , uygulama şablonunun desteklediği senaryoda faydalı olan cihaz şablonlarını zaten içeriyor. Örneğin, bkz. [Mağaza içi analiz mimarisi](../retail/store-analytics-architecture.md).
 
@@ -123,7 +123,7 @@ Aşağıdaki tabloda bir telemetri yeteneğinin yapılandırma ayarları göster
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan telemetri değeri için görünen ad. |
-| Adı | Telemetri iletisindeki alanın adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
+| Name | Telemetri iletisindeki alanın adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Telemetri. |
 | Anlamsal tür | Telemetrinin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Çift, dize veya vektör gibi telemetri veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
@@ -143,7 +143,7 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan özellik değeri için görünen ad. |
-| Adı | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
+| Name | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Özelliði. |
 | Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
@@ -164,7 +164,7 @@ Aşağıdaki tabloda, bir komut özelliğine ait yapılandırma ayarları göste
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan komutun görünen adı. |
-| Adı | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
+| Name | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Komutundaki. |
 | Komut | `SynchronousExecutionType`. |
 | Yorum | Komut özelliğiyle ilgili herhangi bir yorum. |
@@ -202,7 +202,7 @@ Aşağıdaki tabloda bir bulut özelliğinin yapılandırma ayarları gösterilm
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan bulut özelliği değeri için görünen ad. |
-| Adı | Bulut özelliğinin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Name | Bulut özelliğinin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
 | Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Çift, dize veya vektör gibi bulut özelliği veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. |
 

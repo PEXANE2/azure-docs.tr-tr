@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3ef4790f9f7a3b3488dade9312203de41be1ff75
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972235"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122160"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Sürekli hasta izleme mimarisi
 
@@ -33,11 +33,11 @@ Sağlık IoT çözümlerinde kullanılan birçok tıp wearables, uyumlu olmayan 
 
 ### <a name="mobile-phone-gateway"></a>Cep telefonu ağ geçidi
 
-Cep telefonu uygulamasının birincil işlevi, tıp cihazlarından AYRıLABILIR verileri toplayıp IoT Central ile iletişim kurmaktır. Uygulama Ayrıca cihaz kurulumu aracılığıyla hastalara kılavuzluk eder ve kendi kişisel sistem durumu verilerini görüntülemesine olanak tanır. Diğer çözümler bir tablet ağ geçidini veya bir saldırgan odasındaki statik ağ geçidini kullanabilir. Android ve iOS 'un uygulama geliştirme için başlangıç noktası olarak kullanması için açık kaynaklı örnek bir mobil uygulama kullanılabilir. Daha fazla bilgi edinmek için bkz. [IoT Central sürekli hasta izleme mobil uygulaması](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
+Cep telefonu uygulamasının birincil işlevi, tıp cihazlarından AYRıLABILIR verileri toplayıp IoT Central ile iletişim kurmaktır. Uygulama Ayrıca cihaz kurulumu aracılığıyla hastalara kılavuzluk eder ve kendi kişisel sistem durumu verilerini görüntülemesine olanak tanır. Diğer çözümler bir tablet ağ geçidini veya bir saldırgan odasındaki statik ağ geçidini kullanabilir. Android ve iOS 'un uygulama geliştirme için başlangıç noktası olarak kullanması için açık kaynaklı örnek bir mobil uygulama kullanılabilir. Daha fazla bilgi edinmek için bkz. [IoT Central sürekli hasta izleme mobil uygulaması](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>FHıR için Azure API 'ye dışarı aktarma&reg;
 
-Azure IoT Central HIPAA uyumludur ve ITRUST &reg; sertifikalı. Ayrıca, [FHıR Için Azure API](../../healthcare-apis/overview.md)kullanarak diğer hizmetlere hasta sistem durumu verileri gönderebilirsiniz. FHıR için Azure API, klinik sağlık verileri için standartlara dayalı bir API 'dir. [Fhır Için Azure IoT Bağlayıcısı](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart) , IoT Central 'den sürekli veri dışa aktarma hedefi olarak fhır için Azure API 'si kullanmanıza olanak sağlar.
+Azure IoT Central HIPAA uyumludur ve ITRUST &reg; sertifikalı. Ayrıca, [FHıR Için Azure API](../../healthcare-apis/overview.md)kullanarak diğer hizmetlere hasta sistem durumu verileri gönderebilirsiniz. FHıR için Azure API, klinik sağlık verileri için standartlara dayalı bir API 'dir. [Fhır Için Azure IoT Bağlayıcısı](../../healthcare-apis/iot-fhir-portal-quickstart.md) , IoT Central 'den sürekli veri dışa aktarma hedefi olarak fhır için Azure API 'si kullanmanıza olanak sağlar.
 
 ### <a name="machine-learning"></a>Makine öğrenimi
 

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714240"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126850"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanma
 
@@ -185,7 +185,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Ayrı kayıt tabanlı cihaz bağlantısı
 
-Her biri kendi kimlik doğrulama kimlik bilgilerine sahip olan cihazları bağlayan müşteriler için bireysel kayıtları kullanın. Tek bir kayıt, bağlanmasına izin verilen tek bir cihaz için bir giriştir. Bireysel kayıtlar, bir X. 509.440 yaprak sertifikası veya SAS belirteçleri (fiziksel veya sanal Güvenilir Platform modülünden) kanıtlama mekanizmaları olarak kullanabilir. Tek bir kayıtta bulunan cihaz KIMLIĞI (kayıt KIMLIĞI olarak da bilinir) alfasayısal, küçük harf ve kısa çizgi içerebilir. Daha fazla bilgi için bkz. [DPS bireysel kayıt](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
+Her biri kendi kimlik doğrulama kimlik bilgilerine sahip olan cihazları bağlayan müşteriler için bireysel kayıtları kullanın. Tek bir kayıt, bağlanmasına izin verilen tek bir cihaz için bir giriştir. Bireysel kayıtlar, bir X. 509.440 yaprak sertifikası veya SAS belirteçleri (fiziksel veya sanal Güvenilir Platform modülünden) kanıtlama mekanizmaları olarak kullanabilir. Tek bir kayıtta bulunan cihaz KIMLIĞI (kayıt KIMLIĞI olarak da bilinir) alfasayısal, küçük harf ve kısa çizgi içerebilir. Daha fazla bilgi için bkz. [DPS bireysel kayıt](../../iot-dps/concepts-service.md#individual-enrollment).
 
 > [!NOTE]
 > Bir cihaz için tek bir kayıt oluşturduğunuzda, IoT Central uygulamanızdaki varsayılan grup kayıt seçeneklerine göre önceliklidir.
@@ -204,7 +204,7 @@ IoT Central, bireysel kayıtlar için aşağıdaki kanıtlama mekanizmalarını 
     > [!TIP]
     > Sınama için, otomatik olarak imzalanan bir sertifika oluşturmak üzere [Node.jsIçin Azure IoT cihaz sağlama cihaz SDK 'Sı araçlarını ](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) kullanabilirsiniz: `node create_test_cert.js device "mytestdevice"`
 
-- **Güvenilir Platform Modülü (TPM) kanıtlama:** [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) , bir tür donanım güvenlik modülüdür. TPM kullanmak, bir cihazı bağlamak için en güvenli yöntemlerle biridir. Bu makalede ayrı, bellenim veya tümleşik TPM kullandığınız varsayılır. Yazılım öykünmesi, prototip oluşturma veya test etme için idealdir, ancak ayrık, bellenim veya tümleşik TPMs ile aynı güvenlik düzeyini sağlamalardır. Üretimde yazılım TPM 'Leri kullanmayın. TPM kullanan tek bir kayıt oluşturmak için, **cihaz bağlantısı** sayfasını açın, bağlantı yöntemi olarak **bireysel kayıt** ' ı ve, mekanizma olarak **TPM 'yi** seçin. TPM onay anahtarını girin ve cihaz bağlantı bilgilerini kaydedin.
+- **Güvenilir Platform Modülü (TPM) kanıtlama:** [TPM](../../iot-dps/concepts-tpm-attestation.md) , bir tür donanım güvenlik modülüdür. TPM kullanmak, bir cihazı bağlamak için en güvenli yöntemlerle biridir. Bu makalede ayrı, bellenim veya tümleşik TPM kullandığınız varsayılır. Yazılım öykünmesi, prototip oluşturma veya test etme için idealdir, ancak ayrık, bellenim veya tümleşik TPMs ile aynı güvenlik düzeyini sağlamalardır. Üretimde yazılım TPM 'Leri kullanmayın. TPM kullanan tek bir kayıt oluşturmak için, **cihaz bağlantısı** sayfasını açın, bağlantı yöntemi olarak **bireysel kayıt** ' ı ve, mekanizma olarak **TPM 'yi** seçin. TPM onay anahtarını girin ve cihaz bağlantı bilgilerini kaydedin.
 
 ## <a name="automatically-associate-with-a-device-template"></a>Otomatik olarak bir cihaz şablonuyla ilişkilendir
 
@@ -253,7 +253,7 @@ Gerçek bir cihaz IoT Central uygulamasına bağlanırsa, cihaz durumu aşağıd
 
     Işleci, **geçirme** düğmesini kullanarak **cihazları cihazlar** sayfasından bir cihaz şablonuyla ilişkilendirebilir.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 Cihazı ilk kez bağladığınızda, DPS tarafından döndürülen cihaz bağlantı dizesini kalıcı veya önbelleğe alma. Bir cihazı yeniden bağlamak için, doğru cihaz bağlantı dizesini almak üzere standart cihaz kayıt akışı ' na gidin. Cihaz bağlantı dizesini önbelleğe alıyorsa, cihaz yazılımı, kullandığı temeldeki Azure IoT Hub 'ını güncelleştirse IoT Central eski bir bağlantı dizesine sahip olma riskiyle çalışır.
 

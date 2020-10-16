@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337152"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126182"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central mimarisi
 
@@ -104,7 +104,7 @@ Azure IoT Central, Azure IoT Hub cihaz bağlantısı sağlayan bir bulut ağ ge�
 - Cihaz yönetimi.
 - Güvenli cihaz bağlantısı.
 
-IoT Hub hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+IoT Hub hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Hub](../../iot-hub/index.yml).
 
 Azure IoT Central cihaz bağlantısı hakkında daha fazla bilgi için bkz. [cihaz bağlantısı](concepts-get-connected.md).
 

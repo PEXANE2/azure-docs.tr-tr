@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449690"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127533"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
@@ -177,7 +177,7 @@ Performans ciddi şekilde etkilenmedikçe sağlama toplamını kesinlikle atlama
     ![Sağlama toplamını devre dışı bırakma](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. Sağlama toplamı doğrulamasını **Devre dışı bırakma**
-3. **Uygula**’yı seçin.
+3. **Apply** (Uygula) seçeneğini belirleyin.
 
 > [!NOTE]
 > Sağlama toplamı hesaplamayı Atla seçeneği yalnızca Azure Data Box kilidi açıldığında kullanılabilir. Cihaz kilitlendiğinde bu seçeneği görmezsiniz.
@@ -198,7 +198,7 @@ Azure cihazınızda SMB imzalamayı etkinleştirmek için:
 
     ![SMB imzalamayı etkinleştir](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
 
-3. **Uygula**’yı seçin.
+3. **Apply** (Uygula) seçeneğini belirleyin.
 4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
 5. **Yeniden Başlat**' ı seçin.
 
@@ -206,7 +206,7 @@ Azure cihazınızda SMB imzalamayı etkinleştirmek için:
 
 Web Kullanıcı arabirimi kullanıcılarınız varsayılan olarak SMB paylaşımlarında yedekleme Işletmeni ayrıcalıklarına sahiptir. Bunu istemiyorsanız, ayrıcalıkları devre dışı bırakmak veya etkinleştirmek için **geri dönüş işleci ayrıcalıklarını etkinleştir** ' i kullanın.
 
-Bilgi için bkz. [Active Directory güvenlik gruplarında](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)yedekleme işleçleri.
+Bilgi için bkz. [Active Directory güvenlik gruplarında](/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)yedekleme işleçleri.
 
 Azure cihazınızda yedekleme Işletmeni ayrıcalıklarını etkinleştirmek için:
 
@@ -241,7 +241,7 @@ Azure dosyaları için ACL 'lerin aktarılmasını etkinleştirmek için:
 
      ![Azure dosyaları için ACL 'Leri etkinleştirme](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
   
-3. **Uygula**’yı seçin.
+3. **Apply** (Uygula) seçeneğini belirleyin.
 4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
 5. **Yeniden Başlat**' ı seçin.
 
@@ -261,7 +261,7 @@ Azure cihazınızda TLS 1,1 ' i etkinleştirmek için:
 
     ![TLS 1,1 'yi etkinleştirme](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
 
-3. **Uygula**’yı seçin.
+3. **Apply** (Uygula) seçeneğini belirleyin.
 4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
 5. **Yeniden Başlat**' ı seçin.
 

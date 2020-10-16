@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88923696"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126782"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
@@ -103,14 +103,14 @@ Aşağıdaki tablo, x509 anahtar kullanımı ilkesinin Key Vault sertifikası ol
 
 |**X509 anahtar kullanım bayrakları**|**Key Vault anahtar Ops**|**Varsayılan davranış**|
 |----------|--------|--------|
-|Veri şifreleme|şifreleme, şifre çözme| Yok |
-|Yalnızca çözülemez|çözülemiyor| Yok  |
+|Veri şifreleme|şifreleme, şifre çözme| YOK |
+|Yalnızca çözülemez|çözülemiyor| YOK  |
 |DigitalSignature|imzala, Doğrula| Sertifika oluşturma sırasında kullanım belirtimi olmadan varsayılan Key Vault | 
-|Yalnızca şifreleme|şifrele| Yok |
-|KeyCertSign|imzala, Doğrula|Yok|
+|Yalnızca şifreleme|şifrele| YOK |
+|KeyCertSign|imzala, Doğrula|YOK|
 |KeyEncipherment|wrapKey, unwrapKey| Sertifika oluşturma sırasında kullanım belirtimi olmadan varsayılan Key Vault | 
-|Kabullenme|imzala, Doğrula| Yok |
-|crlsign|imzala, Doğrula| Yok |
+|Kabullenme|imzala, Doğrula| YOK |
+|crlsign|imzala, Doğrula| YOK |
 
 ## <a name="certificate-issuer"></a>Sertifikayı veren
 
@@ -141,42 +141,11 @@ Verenin nesneleri kasada oluşturulur ve yalnızca aynı kasadaki KV sertifikala
 
 ## <a name="certificate-contacts"></a>Sertifika kişileri
 
-Sertifika kişileri, sertifika ömrü olayları tarafından tetiklenen bildirimleri göndermek için iletişim bilgilerini içerir. Kişi bilgileri, anahtar kasasındaki tüm sertifikalar tarafından paylaşılır. Anahtar kasasındaki tüm sertifikalar için bir olay için belirtilen tüm kişilere bir bildirim gönderilir.  
-
-Bir sertifikanın ilkesi otomatik olarak yenilemeye ayarlandıysa, aşağıdaki olaylara bir bildirim gönderilir.  
-
-- Sertifika yenilemeden önce
-- Sertifika yenileme sonrasında, sertifikanın başarıyla yenilendiğini veya bir hata olup olmadığını ve sertifikanın el ile yenilenmesini gerektirme.  
-
-  El ile yenilenmek üzere ayarlanmış bir sertifika ilkesi (yalnızca e-posta) olduğunda, sertifikayı yenileme zamanı olduğunda bir bildirim gönderilir.  
+Sertifika kişileri, sertifika ömrü olayları tarafından tetiklenen bildirimleri göndermek için iletişim bilgilerini içerir. Kişi bilgileri, anahtar kasasındaki tüm sertifikalar tarafından paylaşılır. Anahtar kasasındaki tüm sertifikalar için bir olay için belirtilen tüm kişilere bir bildirim gönderilir. Sertifika kişisini ayarlama hakkında daha fazla bilgi için [buraya](overview-renew-certificate.md#steps-to-set-certificate-notifications) bakın  
 
 ## <a name="certificate-access-control"></a>Sertifika Access Control
 
- Sertifikalar için erişim denetimi, Key Vault tarafından yönetilir ve bu sertifikaları içeren Key Vault tarafından sağlanır. Sertifikalar için erişim denetimi ilkesi, aynı Key Vault anahtarlar ve gizli diziler için erişim denetimi ilkelerinden farklıdır. Kullanıcılar, senaryoya uygun bir veya daha fazla kasa oluşturarak sertifikaların uygun segmentlerini ve yönetimini korumanıza olanak sağlayabilir.  
-
- Aşağıdaki izinler, bir anahtar kasasındaki gizli dizi erişim denetimi girişinde, her bir sorumlu temelinde kullanılabilir ve gizli bir nesne üzerinde izin verilen işlemleri yakından yansıtır:  
-
-- Sertifika yönetimi işlemlerine yönelik izinler
-  - *Get*: geçerli sertifika sürümünü veya bir sertifika sürümünü alın 
-  - *liste*: geçerli sertifikaları veya bir sertifikanın sürümlerini listeleyin  
-  - *güncelleştirme*: bir sertifikayı güncelleştirme
-  - *oluşturma*: Key Vault sertifikası oluşturma
-  - *içeri aktarma*: sertifika malzemesini bir Key Vault sertifikasına aktarma
-  - *Sil*: bir sertifikayı, ilkesini ve tüm sürümlerini silme  
-  - *kurtar*: silinen bir sertifikayı kurtar
-  - *yedekleme*: bir sertifikayı anahtar kasasında yedekleme
-  - *geri yükleme*: yedeklenen sertifikayı bir anahtar kasasına geri yükleme
-  - *managecontacts*: Key Vault sertifikası kişilerini yönetme  
-  - *manageverenler*: Key Vault sertifika yetkililerini/verenler yönetme
-  - *getısers*: bir sertifikanın yetkililerini/verenler al
-  - *listissuers*: bir sertifikanın yetkililerini/verenler listeleyin  
-  - *setısers*: Key Vault sertifikanın yetkililerini/verenler oluşturma veya güncelleştirme  
-  - *deleteverenler*: Key Vault sertifikasının yetkililerini/verenler silme  
- 
-- Ayrıcalıklı işlemler için izinler
-  - *Temizle*: silinen bir sertifikayı temizle (kalıcı olarak sil)
-
-Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
+ Sertifikalar için erişim denetimi, Key Vault tarafından yönetilir ve bu sertifikaları içeren Key Vault tarafından sağlanır. Sertifikalar için erişim denetimi ilkesi, aynı Key Vault anahtarlar ve gizli diziler için erişim denetimi ilkelerinden farklıdır. Kullanıcılar, senaryoya uygun bir veya daha fazla kasa oluşturarak sertifikaların uygun segmentlerini ve yönetimini korumanıza olanak sağlayabilir.  Sertifika erişim denetimi hakkında daha fazla bilgi için [buraya](certificate-access-control.md) bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

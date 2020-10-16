@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c522ae70314a5f9bf691e935f1f171cd66c938b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528055"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122390"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Öğretici: ufuk SITESIYLE çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, ufuk sItesInI Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -88,15 +88,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. UFUK SITESI uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 1. Yukarıdaki sıtede ek olarak, ufuk sitesi uygulaması SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
     a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
 
-    ![image](./media/skysite-tutorial/config01.png)
+    ![Ekran görüntüsü, yeni talep ekleme seçeneğiyle Kullanıcı taleplerini gösterir.](./media/skysite-tutorial/config01.png)
 
-    ![image](./media/skysite-tutorial/config02.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı taleplerini Yönet iletişim kutusunu gösterir.](./media/skysite-tutorial/config02.png)
 
     b. Radyo listesinden **tüm gruplar** ' ı seçin.
 
@@ -148,11 +148,11 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak ufuk sıtesıne 
 
 4. Sayfanın sağ üst tarafındaki **Ayarlar** ' a tıklayın ve ardından **Hesap ayarları**' na gidin.
 
-    ![Yapılandırma](./media/skysite-tutorial/config03.png)
+    ![Ekran görüntüsü ayarlarından seçilen hesap ayarını gösterir.](./media/skysite-tutorial/config03.png)
 
 5. **Çoklu oturum açma (SSO)** sekmesine geçiş yapın, aşağıdaki adımları uygulayın:
 
-    ![Yapılandırma](./media/skysite-tutorial/config04.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz çoklu oturum açma sekmesini gösterir.](./media/skysite-tutorial/config04.png)
 
     a. **Kimlik sağlayıcısı oturum açma URL 'si** metin kutusunda, Azure Portal **Özellikler** sekmesinden kopyaladığınız **Kullanıcı erişim URL 'si**değerini yapıştırın.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c94109746545a1f7ff33534ca3ec54f55357281
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 00ef6cf6d4149f139876cb0c2d845133ba00157c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316043"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127516"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central-Solar paneli uygulama mimarisi
 
@@ -29,7 +29,7 @@ Bu mimari aşağıdaki bileşenlerden oluşur. Bazı uygulamalara burada listele
 
 ## <a name="solar-panels-and-connectivity"></a>Güneş bölmeleri ve bağlantısı 
 
-Güneş bölmeleri, yenilenebilir enerji açısından önemli kaynaklardan biridir. Solar paneli türüne ve ayarına bağlı olarak, ağ geçitlerini veya diğer ara cihazları ve özel sistemleri kullanarak da bağlanabilirsiniz. Cihazları bağlamak için doğrudan bağlanamamış IoT Central cihaz Köprüsü oluşturmanız gerekebilir. IoT Central cihaz Köprüsü açık kaynaklı bir çözümdür ve tüm ayrıntıları [burada](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)bulabilirsiniz. 
+Güneş bölmeleri, yenilenebilir enerji açısından önemli kaynaklardan biridir. Solar paneli türüne ve ayarına bağlı olarak, ağ geçitlerini veya diğer ara cihazları ve özel sistemleri kullanarak da bağlanabilirsiniz. Cihazları bağlamak için doğrudan bağlanamamış IoT Central cihaz Köprüsü oluşturmanız gerekebilir. IoT Central cihaz Köprüsü açık kaynaklı bir çözümdür ve tüm ayrıntıları [burada](../core/howto-build-iotc-device-bridge.md)bulabilirsiniz. 
 
 
 
@@ -43,4 +43,4 @@ IoT Central platformu iki genişletilebilirlik seçeneği sağlar: sürekli veri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Artık mimari hakkında bilgi edindiğinize göre, [güneş panel uygulamasını ücretsiz oluşturun](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* IoT Central hakkında daha fazla bilgi edinmek için bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/)
+* IoT Central hakkında daha fazla bilgi edinmek için bkz. [IoT Central genel bakış](../index.yml)

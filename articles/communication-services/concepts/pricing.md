@@ -9,24 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761235"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126199"
 ---
 # <a name="pricing-scenarios"></a>Fiyatlandırma senaryoları
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-<!--
-> [!WARNING]
-> This document is under construction and needs the following items to be addressed:
-> - Looks like other resources point to a /pricing page that is managed by Commerce or Marketing? https://azure.microsoft.com/pricing/details/functions/ Should we? FOLLOWING UP WITH KRISTIN TO FIND THE RIGHT ACS PAGE
--->
 
-Azure Iletişim Hizmetleri için fiyatlar, ön ücretler olmadan Kullandıkça Öde modeline dayanır. Yalnızca kullanım için ücretlendirilirsiniz ve hizmetlerin kullanımı için faturalandırılırsınız.
+Azure Iletişim Hizmetleri için fiyatlara genellikle Kullandıkça Öde modeli temel alınır.
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Ses/video çağırma ve ekran paylaşımı
 
@@ -84,6 +79,16 @@ Gül iletileri görür ve sohbet başlatır. Bu arada, Casey bir çağrı alır 
 ## <a name="price"></a>Fiyat 
 
 Telefon hizmetleri dakika başına fiyatlandırılır, ancak SMS ileti başına ücretlendirilir. Fiyatlandırma, kullandığınız sayının türü ve konumu ile çağrılarınızın ve SMS iletilerinizin hedefinin yerini belirler.
+
+### <a name="telephone-number-leasing"></a>Telefon numarası Kiralama
+
+Telefon numarası kiralama ücretleri önde ücretlendirilir ve ayda bir ay temelinde tekrarlardır:
+
+|Sayı türü   |Aylık ücret   |
+|--------------|-----------|
+|Yerel (Birleşik Devletler)     |1/ay        |
+|Ücretsiz (Birleşik Devletler) |2/ay |
+
 
 ### <a name="telephone-calling"></a>Telefon çağırma
 

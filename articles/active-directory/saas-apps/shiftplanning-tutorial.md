@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99355a88a52e318b231d9032ede770ee0ba5208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3520597ef8c02bc225e6f8a7625e6a961a7e37
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548695"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126935"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Öğretici: ınsanlarla Azure Active Directory tümleştirme
 
@@ -131,11 +131,11 @@ Azure AD çoklu oturum açma 'yı ınsanlarla yapılandırmak için aşağıdaki
     ![Yönetici](./media/shiftplanning-tutorial/iC786619.png "Yönetici")
 3. **Tümleştirme**altında **Çoklu oturum açma**' ya tıklayın.
 
-    ![Çoklu oturum açma](./media/shiftplanning-tutorial/iC786620.png "Çoklu Oturum Açma")
+    ![Ekran görüntüsü, tümleştirme menüsünden Seçili tek Sign-On gösterir.](./media/shiftplanning-tutorial/iC786620.png "Çoklu Oturum Açma")
 
 4. **Çoklu oturum açma** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açma](./media/shiftplanning-tutorial/iC786905.png "Çoklu Oturum Açma")
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tek Sign-On bölümünü gösterir.](./media/shiftplanning-tutorial/iC786905.png "Çoklu Oturum Açma")
 
     a. **SAML etkin**' i seçin.
 

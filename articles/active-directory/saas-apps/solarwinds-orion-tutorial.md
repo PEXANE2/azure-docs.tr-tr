@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9f93457edc4276422eb97b56c90b83ad6a19a65
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545106"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126901"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>Öğretici: SolarWinds Orion ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, SolarWinds Orion 'u Azure Active Directory (Azure AD) ile tüml
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. SolarWinds Orion uygulamasına ek olarak, aşağıda gösterilen SAML yanıtına birkaç özniteliğin daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ----------- | --------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -144,19 +144,19 @@ Bu bölümde, SolarWinds Orion 'a erişim vererek Azure çoklu oturum açma öze
 
 1. Solarwinds Orion 'da oturum açın ve **Ayarlar**  ->  **Tüm ayarlar**' a gidin.
 
-    ![ Yapılandırma SolarWinds Orion ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Ekran görüntüsü ayarlardan seçilen tüm ayarları gösterir.](./media/solarwinds-orion-tutorial/settings.png)
 
 1. **Kullanıcı hesapları** bölümünde **SAML yapılandırması**' nı seçin.
 
-    ![ Yapılandırma SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![Ekran görüntüsü Kullanıcı hesaplarından seçilen SAML yapılandırmasını gösterir.](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
 1. **KIMLIK sağlayıcısı ekle**' ye tıklayın.
 
-    ![ Yapılandırma SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![Ekran görüntüsü, KIMLIK sağlayıcısı ekle ' yi seçebileceğiniz SAML yapılandırmasını gösterir.](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
 1. **Kimlik sağlayıcısı ekle** sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![ Yapılandırma SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik sağlayıcısı Ekle sayfasını gösterir.](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
     a. **Yapılandır** sekmesine gidin.
 
@@ -174,25 +174,25 @@ Bu bölümde, SolarWinds Orion 'a erişim vererek Azure çoklu oturum açma öze
 
 1. Solarwinds Orion Web sitesinde oturum açın ve **Ayarlar**  ->  **Tüm ayarlar**' a gidin.
 
-    ![ Test kullanıcısı oluşturma SolarWinds Orion ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Ekran görüntüsü ayarlardan seçilen tüm ayarları gösterir.](./media/solarwinds-orion-tutorial/settings.png)
 
 1. **Kullanıcı hesapları** bölümünde **hesapları Yönet**' i seçin.
 
-    ![ Test kullanıcısı oluşturma SolarWinds Orion ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![Ekran görüntüsü SAML yapılandırmasını göster seçili.](./media/solarwinds-orion-tutorial/user-accounts.png)
 
 1. **BIREYSEL hesaplar** SEKMESINDE **Yeni Hesap Ekle**' ye tıklayın.
 
-    ![ Test kullanıcısı oluşturma SolarWinds Orion ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![Ekran görüntüsü, hesapları Yönet ' de seçilen yenı hesap Ekle ' ye gösterilir](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. SAML bireysel kullanıcı veya grup oluşturmanız gereken hesap türünü seçin.
 
-    ![ Test kullanıcısı oluşturma SolarWinds Orion ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![Ekran görüntüsü, hesap türünü seçebileceğiniz yeni hesap Ekle ' yi gösterir.](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  **Ad kimliği** metin kutusuna, Azure AD 'de olduğu gibi, Kullanıcı adı veya grup adıyla eşleşmesi gereken adı girin.
 
 1.  **İleri** ' ye tıklayın ve ardından sayfayı iletin.
 
-    ![ Test kullanıcısı oluşturma SolarWinds Orion ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![Ekran görüntüsü yeni hesap Ekle ' ye, Azure A 'dan d. d adını girebileceğiniz yeni hesabı gösterir.](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

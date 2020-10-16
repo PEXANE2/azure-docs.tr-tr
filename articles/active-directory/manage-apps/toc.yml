@@ -230,12 +230,8 @@
               href: application-sign-in-problem-application-error.md
             - name: Microsoft uygulamasında oturum açma sorunu
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: Federasyonda çoklu oturum açma sorunu - galeri dışındaki uygulama
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: Federasyonda çoklu oturum açma sorunu - galeri uygulaması
+            - name: Çoklu oturum açma ile ilgili sorunlar
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: Özel geliştirilmiş uygulama ile ilgili sorun
-              href: application-sign-in-problem-custom-dev.md
         - name: Şirket içi uygulamalarda sorun giderme
           items:
             - name: Uygulama Ara Sunucusu sorunlarını giderme

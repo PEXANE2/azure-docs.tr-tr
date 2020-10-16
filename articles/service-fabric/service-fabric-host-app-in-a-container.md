@@ -3,18 +3,18 @@ title: Bir kapsayıcıda .NET uygulamasını Azure Service Fabric dağıtma
 description: Visual Studio'yu ve Service Fabric'teki hata ayıklama kapsayıcılarını yerel olarak kullanıp mevcut .NET uygulamasını kapsayıcılı hale getirmeyi öğrenin. Kapsayıcılı hale getirilen uygulama Azure Container Registry'ye gönderilir ve Service Fabric kümesine dağıtılır. Azure'a dağıtıldığında, verilerin kalıcı olmasını sağlamak için uygulama Azure SQL veritabanını kullanır.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: b841591bb200bca7edbde24744c5b47302816ea0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2e44db9bc813b346493b4d23b9f48b279e245b3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817637"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122072"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Öğretici: Azure Service Fabric’e Windows kapsayıcısındaki bir .NET uygulamasını dağıtma
 
 Bu öğreticide mevcut ASP.NET uygulamasını kapsayıcılı hale getirme ve bir Service Fabric uygulaması olarak paketleme işlemleri gösterilir.  Kapsayıcıları yerel olarak Service Fabric geliştirme kümesinde çalıştırın ve ardından uygulamayı Azure'a dağıtın.  Uygulama verileri [Azure SQL Veritabanında](../azure-sql/database/sql-database-paas-overview.md) kalıcı olarak bulundurur.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -144,7 +144,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 Service Fabric uygulamaları, ağ bağlantılı sanal veya fiziksel makinelerin bulunduğu bir kümede çalışır.  Uygulamayı Azure 'a dağıtabilmeniz için önce Azure 'da bir Service Fabric kümesi oluşturun.
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 * Visual Studio'dan test kümesi oluşturma. Bu seçenek doğrudan Visual Studio'dan tercih ettiğiniz yapılandırmalarla güvenli bir küme oluşturmanızı sağlar.
 * [Şablondan güvenli bir küme oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
@@ -157,7 +157,7 @@ Küme oluşturulurken:
 
 1. Çözüm Gezgini'nde **FabrikamFiber.CallCenterApplication** uygulama projesine sağ tıklayın ve **Yayımla**’yı seçin.
 2. Aboneliklerinize erişebilmek için Azure hesabınızı kullanarak oturum açın.
-3. **Bağlantı Uç Noktası**'nın açılan listesini seçin ve sonra da **Yeni Küme Oluştur...** seçeneğini belirtin.
+3. **Bağlantı uç noktası**için açılan listenin altında **Yeni küme oluştur...** seçeneğini belirleyin.
 4. **Küme oluştur** iletişim kutusunda aşağıdaki ayarları değiştirin:
 
     a. Küme **adı** alanında kümenizin adını ve kullanmak istediğiniz aboneliği ve konumu belirtin. Küme kaynak grubunuzun adını bir yere göz atın.

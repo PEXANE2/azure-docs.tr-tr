@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee5927e19dfb6864d7edcde9dceadfd744d7ddbf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525433"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126627"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Öğretici: küçük geliştirmelerle Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Azure AD ile küçük Iyileştirmeleri tümleştirmek aşağıdaki avantajları 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini küçük geliştirmelerle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -128,15 +128,15 @@ Azure AD çoklu oturum açmayı küçük geliştirmelerle yapılandırmak için 
 
 1. Ana Pano sayfasında, sol taraftaki **Yönetim** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![Ekran görüntüsünde yönetim düğmesi seçili görüntülenir.](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
 1. **Tümleştirmeler** bölümünden **SAML SSO** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![Ekran görüntüsü, tümleştirmeler ' de seçilen SAML S O simgesini gösterir.](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
 1. SSO kurulum sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz S S O kurulum sayfasını gösterir.](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
     a. **Http uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
@@ -211,15 +211,15 @@ Azure AD kullanıcılarının küçük geliştirmelere oturum açmasını sağla
 
 1. Kullanıcı Yönetimi bölümünden **Kullanıcı dizini** düğmesine tıklayın.
 
-    ![Azure AD test kullanıcısı oluşturma](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
+    ![Ekran görüntüsü, yönetime genel bakış 'dan seçilen kullanıcı dizinini gösterir.](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
 1. **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Azure AD test kullanıcısı oluşturma](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
+    ![Ekran görüntüsü Kullanıcı Ekle düğmesini gösterir.](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
 1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin: 
 
-    ![Azure AD test kullanıcısı oluşturma](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz Kullanıcı Ekle iletişim kutusunu gösterir.](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
     a. Kullanıcının **ilk adını** **Britta**gibi girin.
 

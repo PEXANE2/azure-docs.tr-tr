@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ac6540dfd86430aab518b145ed391d1d6283219e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c491a0b5e4c4fc517368c5947fa6181201a5b5fd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276586"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127276"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory sınırlandırılmış metin biçimi
 
@@ -34,8 +34,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` .  | Evet      |
 | columnDelimiter  | Bir dosyadaki sütunları ayırmak için kullanılan karakter (ler). <br>Varsayılan değer **virgüldür `,` **. Sütun sınırlayıcısı boş dize olarak tanımlandığında, bu da sınırlayıcı olmadığında, tüm satır tek bir sütun olarak alınır.<br>Şu anda, boş dize olarak sütun sınırlayıcısı veya birden çok char yalnızca veri akışı eşlemesi için desteklenir ancak kopyalama etkinliği değildir.  | Hayır       |
 | rowDelimiter     | Tek karakter veya "\r\n" bir dosyadaki satırları ayırmak için kullanılır. <br>Varsayılan değer **: ["\r\n", "\r", "\n"]** ve **"\n" ya da "\r\n"** veri akışını eşleyerek ve kopyalama etkinliğini sırasıyla yazma sırasında aşağıdaki değerlerden herhangi biri. <br>Satır sınırlayıcısı sınırlayıcı (boş dize) olarak ayarlandığında, sütun sınırlayıcısı de sınırlayıcı (boş dize) olarak ayarlanmalıdır ve bu da tüm içeriği tek bir değer olarak değerlendirmek anlamına gelir.<br>Şu anda, boş dize olarak satır sınırlayıcısı yalnızca veri akışını eşlemek için desteklenir ancak kopyalama etkinliği değildir. | Hayır       |
-| quoteChar        | Sütun sınırlayıcısı içeriyorsa, tırnak işareti için tek karakter değeri. <br>Varsayılan değer **çift tırnak** olur `"` . <br>Veri akışını eşlemek için `quoteChar` boş bir dize olamaz. <br>Kopyalama etkinliği için, `quoteChar` boş bir dize olarak tanımlandığında, tırnak işareti yok ve sütun değeri tırnak içine alınmaz ve `escapeChar` sütun sınırlayıcısı ve kendisini atlamak için kullanılır. | Hayır       |
-| escapeChar       | Tırnak işaretli bir değer içindeki tırnak işareti için tek karakter.<br>Varsayılan değer **ters eğik `\` **çizgidir. <br>Veri akışını eşlemek için `escapeChar` boş bir dize olamaz. <br/>Kopyalama etkinliği için, `escapeChar` boş dize olarak tanımlandığında, `quoteChar` boş bir dize olarak ayarlanmalıdır ve bu durumda, tüm sütun değerlerinin sınırlayıcı içermediğinden emin olun. | Hayır       |
+| quoteChar        | Sütun sınırlayıcısı içeriyorsa, tırnak işareti için tek karakter değeri. <br>Varsayılan değer **çift tırnak** olur `"` . <br>`quoteChar`Boş dize olarak tanımlandığında, tırnak işareti yok ve sütun değeri tırnak içine alınmaz ve `escapeChar` sütun sınırlayıcısı ve kendisini atlamak için kullanılır. | Hayır       |
+| escapeChar       | Tırnak işaretli bir değer içindeki tırnak işareti için tek karakter.<br>Varsayılan değer **ters eğik `\` **çizgidir. <br>`escapeChar`Boş dize olarak tanımlandığında, `quoteChar` boş bir dize olarak ayarlanmalıdır ve bu durumda tüm sütun değerlerinin sınırlayıcı içermediğinden emin olun. | Hayır       |
 | firstRowAsHeader | İlk satırın, sütun adlarıyla bir başlık satırı olarak değerlendirilip değerlendirilmeyeceğini belirtir.<br>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br>Üst bilgi olarak ilk satır yanlış olduğunda, Kullanıcı arabirimi veri önizleme ve arama etkinliği çıkışı otomatik olarak sütun adları oluştur Prop_ {n} (0 ' dan başlayarak), kopyalama etkinliği kaynaktan havuza [Açık eşleme](copy-activity-schema-and-type-mapping.md#explicit-mapping) gerektirir ve sütunları sıraya göre konumlandırır (Column_ 1 ' den başlayarak)  | Hayır       |
 | nullValue        | Null değerin dize gösterimini belirtir. <br>Varsayılan değer boş bir **dizedir**. | Hayır       |
 | encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "" IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Veri akışı eşleme, UTF-7 kodlamasını desteklemez. | Hayır       |
