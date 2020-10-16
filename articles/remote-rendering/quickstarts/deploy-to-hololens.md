@@ -1,6 +1,6 @@
 ---
 title: Unity örneğini HoloLens’e dağıtma
-description: HoloLens üzerinde Unity örneğini almayı gösteren hızlı başlangıç
+description: Unity örneğinin HoloLens'te nasıl alınacağını gösteren hızlı başlangıç
 author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
@@ -12,55 +12,55 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
 ms.locfileid: "88796808"
 ---
-# <a name="quickstart-deploy-unity-sample-to-hololens"></a>Hızlı başlangıç: Unity örneğini HoloLens 'e dağıtma
+# <a name="quickstart-deploy-unity-sample-to-hololens"></a>Hızlı Başlangıç: Unity örneğini HoloLens’e dağıtma
 
-Bu hızlı başlangıçta, Unity için hızlı başlangıç örnek uygulamasının bir HoloLens 2 ' ye nasıl dağıtılacağı ve çalıştırılacağı ele alınmaktadır.
+Bu hızlı başlangıç, Unity için hızlı başlangıç örnek uygulamasını HoloLens 2'de dağıtma ve çalıştırma işlemlerini kapsar.
 
-Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
+Bu hızlı başlangıçta şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
 >
->* HoloLens için hızlı başlangıç örnek uygulaması oluşturma
->* Örneği cihaza dağıtın
->* Örneği cihazda çalıştırın
+>* HoloLens için hızlı başlangıç örnek uygulamasını derleme
+>* Örneği cihaza dağıtma
+>* Örneği cihazda çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıçta örnek projeyi hızlı başlangıç konumundan dağıtacağız [: Unity ile model işleme](render-model.md).
+Bu hızlı başlangıçta [Hızlı Başlangıç: Unity ile model işleme](render-model.md) bölümündeki örnek uygulamayı dağıtacağız.
 
-Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Unity Düzenleyicisi içinden bir oturuma bağlanabilirsiniz.
+Kimlik bilgilerinizin sahneyle düzgün kaydedildiğinden ve Unity düzenleyicisinin içinden bir oturuma bağlanabildiğinizden emin olun.
 
-## <a name="build-the-sample-project"></a>Örnek projeyi oluşturma
+## <a name="build-the-sample-project"></a>Örnek projeyi derleme
 
-1. *Dosya > derleme ayarları*'nı açın.
-1. *Platformu* **Evrensel Windows platformu** olarak değiştir
-1. *Hedef cihazı* **HoloLens** olarak ayarla
-1. *Mimariyi* **ARM64** olarak ayarla
-1. *Yapı türünü* **D3D projesi** olarak ayarla\
+1. *Dosya > Derleme Ayarları*'nı açın.
+1. *Platform*'u **Evrensel Windows Platformu** olarak değiştirin
+1. *Hedef Cihaz*'ı **HoloLens** olarak ayarlayın
+1. *Mimari*'yi **ARM64** olarak ayarlayın
+1. *Derleme Türü*'nü **D3D Project**\ olarak ayarlayın
     ![Derleme ayarları](./media/unity-build-settings.png)
-1. **Platforma geç** ' i seçin
-1. **Derleme** (veya ' derleme ve çalıştırma ') tuşlarına basıldığında çözümün depolanacağı bir klasör seçmeniz istenir
-1. Visual Studio ile oluşturulan **hızlı başlangıç. sln** 'yi açın
-1. Yapılandırmayı **Release** ve **ARM64** olarak değiştirme
-1. Hata ayıklayıcı modunu **uzak makineye** değiştirme\
+1. **Platforma Geç**'i seçin
+1. **Derle**'ye (veya 'Derle ve Çalıştır') bastığınızda çözümün depolanacağı klasörü seçmeniz istenir
+1. Oluşturulan **Quickstart.sln**'yi Visual Studio ile açın
+1. Yapılandırmayı **Sürüm** ve **ARM64** olarak değiştirin
+1. Hata ayıklayıcı modunu **Uzak Makine**\ olarak değiştirin
     ![Çözüm yapılandırması](media/unity-deploy-config.png)
 1. Çözümü derleme
-1. ' Hızlı başlangıç ' projesi için *özellikler > hata ayıklama* sayfasına gidin
-    1. Yapılandırma *sürümünün* etkin olduğundan emin olun
-    1. Hata ayıklayıcıyı **uzak makineye** *başlatılacak şekilde* ayarla
-    1. *Makine adını* **Hoellens sitenizin IP 'si** olarak değiştirin
+1. 'Quickstart' projesi için *Özellikler > Hata Ayıklama*'ya gidin
+    1. Yapılandırma olarak *Sürüm*'ün etkin olduğundan emin olun
+    1. *Çalıştırılacak Hata Ayıklayıcı*'yı **Uzak Makine** olarak ayarlayın
+    1. *Makine Adı*'nı **HoleLens IP'si** olarak değiştirin
 
 ## <a name="launch-the-sample-project"></a>Örnek projeyi başlatma
 
-1. HoloLens 'i bir USB kablosu ile BILGISAYARıNıZA bağlayın.
-1. Visual Studio 'da hata ayıklayıcıyı başlatın (F5). Uygulamayı cihaza otomatik olarak dağıtır.
+1. HoloLens'i USB kablosuyla bilgisayarınıza bağlayın.
+1. Visual Studio'da Hata Ayıklayıcı'yı başlatın (F5). Bu, uygulamayı otomatik olarak cihaza dağıtır.
 
-Örnek uygulama, yeni bir oturum başlatıp başlatmalıdır. Bir süre sonra, oturum hazırlanıyor ve uzaktan işlenen model sizin sizin için görünür olacaktır.
-Daha sonra örneği ikinci kez başlatmak isterseniz, şimdi HoloLens Başlat menüsünden de bulabilirsiniz.
+Örnek uygulama ve ardından yeni bir oturum başlatılmalıdır. Bir süre sonra oturum hazır olur ve uzaktan işlenen model karşınıza gelir.
+Örneği daha sonra ikinci kez başlatmak isterseniz, artık HoloLens başlat menüsünden de bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki hızlı başlangıçta, özel bir modeli dönüştürmeye göz atacağız.
+Sonraki hızlı başlangıçta özel modülü dönüştürme konusunu gözden geçireceğiz.
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: bir modeli işleme için dönüştürme](convert-model.md)
+> [Hızlı başlangıç: Modeli işlenmek üzere dönüştürme](convert-model.md)

@@ -1,6 +1,6 @@
 ---
-title: Erişim belirteci isteme-Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C bir erişim belirteci isteme hakkında bilgi edinin.
+title: Erişim belirteci isteme - Azure Active Directory B2C | Microsoft Docs
+description: Azure Active Directory B2C'den erişim belirteci istemeyi öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,61 +12,61 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87115529"
 ---
-# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C erişim belirteci isteme
+# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de erişim belirteci isteme
 
-*Erişim belirteci* , API 'lerinize verilen izinleri tanımlamak için Azure Active Directory B2C (Azure AD B2C) içinde kullanabileceğiniz talepler içerir. Bir kaynak sunucusu çağrılırken, HTTP isteğinde bir erişim belirtecinin bulunması gerekir. Erişim belirteci, Azure AD B2C yanıtlarındaki **access_token** olarak gösterilir.
+*Erişim belirteci*, API'lerinize verilen izinleri tanımlamak için Azure Active Directory B2C'de (Azure AD B2C) kullanabileceğiniz beyanlar içerir. Kaynak sunucusunu çağırırken HTTP isteğinde erişim belirteci bulunmalıdır. Erişim belirteci Azure AD B2C'den gelen yanıtlarda **access_token** olarak gösterilir.
 
-Bu makalede bir Web uygulaması ve Web API 'SI için erişim belirteci isteme yöntemi gösterilmektedir. Azure AD B2C belirteçleri hakkında daha fazla bilgi için [Azure Active Directory B2C belirteçlerine genel bakış](tokens-overview.md)bölümüne bakın.
+Bu makalede web uygulaması ve web API'si için nasıl erişim belirteci isteyebileceğiniz gösterilir. Azure AD B2C'deki belirteçler hakkında daha fazla bilgi için [Azure Active Directory B2C'de belirteçlere genel bakış](tokens-overview.md) konusuna bakın.
 
 > [!NOTE]
-> **Web API zincirleri (Şirket içi) Azure AD B2C tarafından desteklenmez.** -Birçok mimaride, Azure AD B2C tarafından güvenliği sağlanmış başka bir aşağı akış Web API 'sini çağırması gereken bir Web API 'SI vardır. Bu senaryo, bir Web API 'SI arka ucu olan istemcilerde yaygındır ve bu da başka bir hizmeti çağırır. Bu zincirleme Web API 'SI senaryosu, OAuth 2,0 JWT taşıyıcı kimlik bilgisi verme kullanılarak desteklenir, aksi takdirde şirket adına akış olarak bilinir. Ancak, şirket adına akış şu anda Azure AD B2C uygulanmamıştır.
+> **Web API zincirleri (Kullanıcı Adına) Azure AD B2C tarafından desteklenmez.** - Çoğu mimari başka bir aşağı akış web API'si çağırmayı gerektiren bir web API'si içerir; her iki API'nin güvenliği de Azure AD B2C tarafından sağlanır. Bu senaryo bir web API'si arka ucu olan ve başka bir hizmet çağıran istemcilerde yaygındır. Bu zincirli web API'si senaryosu, Kullanıcı Adına akışı olarak da bilinen OAuth 2.0 JWT Taşıyıcı Kimlik Bilgisi yetkisi kullanılarak desteklenebilir. Öte yandan Kullanıcı Adına akışı şu anda Azure AD B2C'de uygulanmamaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
-- Daha önce yapmadıysanız, [Azure Active Directory B2C kiracınıza bir Web API uygulaması ekleyin](add-web-api-application.md).
+- Kullanıcıların uygulamanıza kaydolmasını ve oturum açmasını sağlamak için [bir kullanıcı akışı oluşturun](tutorial-create-user-flows.md).
+- Daha önce yapmadıysanız, [Azure Active Directory B2C kiracınıza bir web API'si uygulaması ekleyin](add-web-api-application.md).
 
 ## <a name="scopes"></a>Kapsamlar
 
-Kapsamlar, korunan kaynaklarla izinleri yönetmek için bir yol sağlar. Erişim belirteci istendiğinde, istemci uygulamasının isteğin **kapsam** parametresinde istenen izinleri belirtmesi gerekir. Örneğin, uygulama KIMLIĞI URI 'si olan API 'nin **kapsam değerini** belirtmek için `read` **App ID URI** `https://contoso.onmicrosoft.com/api` kapsam olacaktır `https://contoso.onmicrosoft.com/api/read` .
+Kapsamlar korumalı kaynaklar üzerindeki izinleri yönetmek için bir yol sağlar. Erişim belirteci istenirken, istemci uygulamanın isteğin **scope** parametresinde istenen izinleri belirtmesi gerekir. Örneğin **App ID URI'si** `https://contoso.onmicrosoft.com/api` olan API'nin **Kapsam Değeri** olarak `read` belirtmek için, kapsam `https://contoso.onmicrosoft.com/api/read` olabilir.
 
-Kapsamlar web API’si tarafından kapsam tabanlı erişim denetimi uygulamak için kullanılır. Örneğin web API'sinin kullanıcıları hem okuma hem de yazma veya yalnızca okuma erişimine sahip olabilir. Aynı istekte birden çok izin almak için, isteğin tek **kapsam** parametresine, boşluklarla ayırarak birden çok giriş ekleyebilirsiniz.
+Kapsamlar web API’si tarafından kapsam tabanlı erişim denetimi uygulamak için kullanılır. Örneğin web API'sinin kullanıcıları hem okuma hem de yazma veya yalnızca okuma erişimine sahip olabilir. Aynı istekte birden çok izin almak için, isteğin tek **scope** parametresine birden çok girdiyi boşluklarla ayırarak ekleyebilirsiniz.
 
-Aşağıdaki örnekte bir URL 'de kodu çözülen kapsamlar gösterilmektedir:
+Aşağıdaki örnekte URL'de kodu çözülmüş kapsamlar gösterilir:
 
 ```
 scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 ```
 
-Aşağıdaki örnek bir URL 'de kodlanan kapsamları gösterir:
+Aşağıdaki örnekte URL'de kodlanmış kapsamlar gösterilir:
 
 ```
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-İstemci uygulamanız için sağlandıklarından daha fazla kapsam istemeniz durumunda, en az bir izin verildiğinde çağrı başarılı olur. Elde edilen erişim belirtecindeki **SCP** talebi yalnızca başarıyla verilen izinlerle doldurulur. OpenID Connect standardı birkaç özel kapsam değeri belirtir. Aşağıdaki kapsamlar, kullanıcının profiline erişme iznini temsil eder:
+İstemci uygulamanıza sağlanandan daha fazla kapsam isterseniz, en az bir izin verildiğinde çağrı başarılı olur. Sonuçta elde edilen erişim belirtecinde **scp** beyanı yalnızca başarılı bir şekilde verilmiş izinlerle doldurulur. OpenID Connect standardı çeşitli özel kapsam değerlerini belirtir. Aşağıdaki kapsamlar kullanıcının profiline erişme iznini temsil eder:
 
-- **OpenID** -bir kimlik belirteci ister.
-- **offline_access** - [kimlik doğrulama kod akışlarını](authorization-code-flow.md)kullanarak yenileme belirteci ister.
+- **openid** - Kimlik belirteci ister.
+- **offline_access** - [Auth Code akışlarını](authorization-code-flow.md) kullanarak yenileme belirteci ister.
 
-Bir istekteki **response_type** parametresi `/authorize` içeriyorsa `token` , **kapsam** parametresi, `openid` izin verilen ve verilecek en az bir kaynak kapsamı içermelidir `offline_access` . Aksi takdirde, `/authorize` istek başarısız olur.
+`/authorize` isteğindeki **response_type** parametresi `token` içeriyorsa, **scope** parametresi verilecek `openid` ve `offline_access` dışında en az bir kaynak kapsamı içermelidir. Aksi takdirde `/authorize` isteği başarısız olur.
 
 ## <a name="request-a-token"></a>Belirteç isteme
 
-Erişim belirteci istemek için bir yetkilendirme kodu gerekir. Bir `/authorize` yetkilendirme kodu için uç nokta isteğine bir örnek aşağıda verilmiştir. Özel etki alanları, erişim belirteçleri ile kullanım için desteklenmez. İstek URL 'sinde tenant-name.onmicrosoft.com etki alanınızı kullanın.
+Erişim belirteci istemek için bir yetkilendirme kodu gerekir. Aşağıda yetkilendirme kodu için `/authorize` uç noktasına yönelik bir istek örneği verilmiştir. Özel etki alanlarının erişim belirteçleriyle kullanılması desteklenmez. İstek URL'sinde kiracı-adı.onmicrosoft.com etki alanınızı kullanın.
 
 Aşağıdaki örnekte, şu değerleri değiştirirsiniz:
 
-- `<tenant-name>`-Azure AD B2C kiracınızın adı.
-- `<policy-name>`-Özel ilkenizin veya Kullanıcı akışınız adı.
-- `<application-ID>`-Kullanıcı akışını desteklemek için kaydettiğiniz Web uygulamasının uygulama tanımlayıcısı.
-- `<redirect-uri>`-İstemci uygulamasını kaydettiğinizde girdiğiniz **yeniden yönlendirme URI 'si** .
+- `<tenant-name>` - Azure AD B2C kiracınızın adı.
+- `<policy-name>` - Özel ilkenizin veya kullanıcı akışınızın adı.
+- `<application-ID>` - Kullanıcı akışını desteklemek için kaydettiğiniz web uygulamasının uygulama tanımlayıcısı.
+- `<redirect-uri>` - İstemci uygulamayı kaydederken girdiğiniz **Yeniden Yönlendirme URI'si**.
 
 ```http
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
@@ -77,13 +77,13 @@ client_id=<application-ID>
 &response_type=code
 ```
 
-Yetkilendirme koduna sahip yanıt bu örneğe benzer olmalıdır:
+Yetkilendirme kodunu içeren yanıt şu örneğe benzer olmalıdır:
 
 ```
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-Yetkilendirme kodunu başarıyla aldıktan sonra, bir erişim belirteci istemek için bunu kullanabilirsiniz:
+Yetkilendirme kodunu başarıyla aldıktan sonra bu kodu kullanarak erişim belirteci isteyebilirsiniz:
 
 ```http
 POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
@@ -98,7 +98,7 @@ grant_type=authorization_code
 &client_secret=2hMG2-_:y12n10vwH...
 ```
 
-Aşağıdaki yanıta benzer bir şey görmeniz gerekir:
+Aşağıdaki yanıta benzer bir sonuç görmeniz gerekir:
 
 ```json
 {
@@ -112,7 +112,7 @@ Aşağıdaki yanıta benzer bir şey görmeniz gerekir:
 }
 ```
 
-https://jwt.msDöndürülen erişim belirtecini incelemek için kullanırken, aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+Döndürülen erişim belirtecini incelemek için https://jwt.ms kullandığınızda aşağıdaki örnekte gösterilene benzer bir şey görmeniz gerekir:
 
 ```json
 {
@@ -138,4 +138,4 @@ https://jwt.msDöndürülen erişim belirtecini incelemek için kullanırken, a�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD B2C belirteçlerin nasıl yapılandırılacağı](configure-tokens.md) hakkında bilgi edinin
+- [Azure AD B2C'de belirteçleri yapılandırma](configure-tokens.md) hakkında bilgi edinin
