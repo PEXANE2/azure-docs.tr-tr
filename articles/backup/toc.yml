@@ -386,7 +386,7 @@
       items:
         - name: Genel Bakış
           href: security-overview.md
-        - name: Rol Tabanlı Access Control
+        - name: Azure rol tabanlı erişim denetimi
           href: backup-rbac-rs-vault.md
         - name: Geçici silme
           items:

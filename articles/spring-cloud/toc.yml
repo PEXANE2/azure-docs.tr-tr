@@ -40,7 +40,7 @@
     - name: Terrayform ile Azure Spring Cloud örneğini sağlama
       href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Jenkins ile CI/CD
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+      href: /azure/developer/jenkins/deploy-to-azure-spring-cloud-using-azure-cli
     - name: Yönetilen kimlik kullanarak Key Vault'u Azure Spring Cloud uygulamasına bağlama
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Sanal ağda Azure Spring Cloud dağıtma
@@ -114,15 +114,15 @@
 - name: Başvuru
   items:
     - name: Azure CLI Eklentisi
-      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+      href: /cli/azure/ext/spring-cloud/spring-cloud
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.springcloud'
+      href: /powershell/module/az.springcloud
     - name: Kaynaklar
       href: spring-cloud-resources.md
     - name: Sık Sorulan Sorular
       href: spring-cloud-faq.md
     - name: REST API başvurusu
-      href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+      href: /rest/api/azurespringclould/
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

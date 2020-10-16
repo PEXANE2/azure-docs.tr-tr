@@ -65,7 +65,7 @@
             - name: VM havuzunu yönetme
               href: how-to-manage-vm-pool-within-teams.md
             - name: Laboratuvarları silme
-              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+              href: how-to-delete-lab-within-teams.md
             - name: Zamanlamalar ve ayarlar
               href: how-to-create-schedules-within-teams.md
             - name: VM'ye erişme (öğrenci görünümü)

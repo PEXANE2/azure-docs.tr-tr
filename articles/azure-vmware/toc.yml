@@ -92,6 +92,10 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: VMware Horizon dağıtma
           href: azure-vmware-solution-horizon.md
+    - name: VMware ekosistemi
+      items:
+        - name: VM’ler için yedekleme çözümleri
+          href: ecosystem-back-up-vms.md
 - name: Kaynaklar
   items:
     - name: Sorun giderme
