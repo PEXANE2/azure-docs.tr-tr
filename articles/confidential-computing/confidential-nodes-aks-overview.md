@@ -7,21 +7,20 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940778"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125450"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes hizmetindeki gizli bilgi işlem düğümleri (Genel Önizleme)
 
-[Azure gizli bilgi işlem](overview.md) , önemli verilerinizi kullanımda iken korumanıza olanak sağlar. Temel altyapılar bu verileri diğer uygulamalardan, yöneticilerden ve bulut sağlayıcılarından korur. 
+[Azure gizli bilgi işlem](overview.md) , önemli verilerinizi kullanımda iken korumanıza olanak sağlar. Temel alınan altyapılar, donanım tarafından desteklenen bir güvenilir yürütme kapsayıcı ortamları ile diğer uygulamalardan, yöneticilerden ve bulut sağlayıcılarından bu verileri korur.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Kubernetes hizmeti (AKS), [DCsv2 gizli bilgi işlem düğümlerinin](confidential-computing-enclaves.md) Intel SGX üzerinde eklenmesini destekler. Bu düğümler, kullanıcı düzeyindeki kodun özel belleğe ayrılmasına izin vererek, kritik iş yüklerini donanım tabanlı bir güvenilir yürütme ortamı (t) içinde çalıştırır. Bu özel bellek bölgeleri, şifreleme olarak adlandırılır. Kuşışları, daha yüksek bir ayrıcalıkla çalışan işlemlerden kodu ve verileri korumak için tasarlanmıştır. SGX yürütme modeli, Konuk işletim sisteminin ve hiper yöneticinin ara katmanlarını kaldırır. Bu, kapsayıcı uygulamalarını doğrudan CPU 'nun üzerinde yürüterek özel bellek bloğunu şifreli tutmaya olanak sağlar. 
-
+Azure Kubernetes hizmeti (AKS), Intel SGX tarafından desteklenen [DCsv2 gizli bilgi işlem düğümlerinin](confidential-computing-enclaves.md) eklenmesini destekler. Bu düğüm çalıştırmaları, kullanıcı düzeyindeki kodun özel belleğe ayrılmasına izin vererek, kritik iş yüklerini donanım tabanlı bir güvenilir yürütme ortamı (t) içinde çalıştırabilir. Bu özel bellek bölgeleri, şifreleme olarak adlandırılır. Kuşışları, daha yüksek bir ayrıcalıkla çalışan işlemlerden kodu ve verileri korumak için tasarlanmıştır. SGX yürütme modeli, Konuk işletim sistemi, konak işletim sistemi ve hiper yönetici ara katmanlarını kaldırır. *Kapsayıcı başına yalıtılmış yürütme modeli tabanlı donanım* , uygulamaların özel bir bellek bloğunu ŞIFRELI tutarken CPU ile doğrudan yürütülmesini sağlar. Gizli bilgi işlem düğümleri, AKS 'teki kapsayıcı uygulamalarının genel güvenlik duruşunu ve derinlemesine savunma kapsayıcısı stratejisi hakkında harika bir ek yardım sağlar. 
 
 ![SGX düğümüne genel bakış](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -36,7 +35,7 @@ Azure Kubernetes hizmeti (AKS), [DCsv2 gizli bilgi işlem düğümlerinin](confi
 - AKS daemonset aracılığıyla proc kanıtlama Yardımcısı
 - Linux kapsayıcıları Ubuntu 18,04 Gen 2 VM çalışan düğümleri aracılığıyla desteklenir
 
-## <a name="aks-provided-daemon-sets"></a>AKS tarafından sunulan Daemon kümeleri
+## <a name="aks-provided-daemon-sets-addon"></a>AKS tarafından sunulan Daemon kümeleri (eklenti)
 
 #### <a name="sgx-device-plugin"></a>SGX cihaz eklentisi <a id="sgx-plugin"></a>
 

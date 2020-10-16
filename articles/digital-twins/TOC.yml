@@ -37,6 +37,8 @@
       href: concepts-route-events.md
     - name: Azure Digital Twins çözümleri için güvenlik
       href: concepts-security.md
+    - name: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
+      href: concepts-high-availability-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Dağıtma
@@ -199,7 +201,7 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DPS ve IoT Hub tümleştirmesi örneği
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: Azure Digital Twins Özel Swagger’lar
+        - name: Logic Apps bağlayıcısı için Azure Digital Twins özel Swagger’lar
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: SignalR tümleştirme örneği
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/

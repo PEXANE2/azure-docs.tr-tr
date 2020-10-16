@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86206229"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123571"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box nedir?
 
@@ -144,7 +144,7 @@ Data Box, Hizmetin dağıtıldığı bölge, cihazın gönderildiği ülke/bölg
 
 - **Hizmet kullanılabilirliği** -bölge kullanılabilirliği hakkında bilgi almak için Data Box kullanılırken, bölgeye [göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)gidin. Data Box dışa aktarma özelliği şu anda önizlemededir. 
 
-    İçeri aktarma siparişleri için Data Box Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). 
+    İçeri aktarma siparişleri için Data Box Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](../azure-government/documentation-government-welcome.md). 
 
 - **Hedef depolama hesapları** -verileri depolayan depolama hesapları, hizmetin kullanılabilir olduğu tüm Azure bölgelerinde kullanılabilir.
 
@@ -154,7 +154,3 @@ Data Box, Hizmetin dağıtıldığı bölge, cihazın gönderildiği ülke/bölg
 - [Data Box sistem gereksinimlerini](data-box-system-requirements.md) gözden geçirin.
 - [Data Box sınırlarını](data-box-limits.md) anlayın.
 - Azure portalda [Azure Data Box](data-box-quickstart-portal.md)’u hızla dağıtın.
-
-
-
-

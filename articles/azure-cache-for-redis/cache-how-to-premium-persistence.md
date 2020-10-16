@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: fbfd384787d35317a4e45c4f91cf8a3ad4ba5a61
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3e8cef04e0711492b6e76d4c865695ac75e21422
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000017"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125688"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için veri kalıcılığını yapılandırma
 Bu makalede, Azure portal aracılığıyla Redsıs örneği için Premium Azure önbelleğinde kalıcılığı yapılandırmayı öğreneceksiniz. Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. 
@@ -63,7 +63,7 @@ Kalıcılık, Redsıs verilerini sahip olduğunuz ve yönettiğiniz bir Azure de
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Yedekleme sıklığı** | Açılır ve bir yedekleme aralığı seçin, **15 dakika**, **30 dakika**, **60 dakika**, **6 saat**, **12 saat**ve **24 saat**arasında seçim yapın. | Önceki yedekleme işlemi başarıyla tamamlandıktan sonra ve yeni bir yedekleme tamamlandığında bu Aralık sona erdiğinde, bu Aralık başlatılır. | 
-   | **Depolama Hesabı** | Açılır ve depolama hesabınızı seçin. | Önbellek ile aynı bölgede bir depolama hesabı seçmeniz gerekir ve Premium depolamada daha yüksek aktarım hızı bulunduğundan **Premium Depolama** hesabı önerilir.  | 
+   | **Depolama Hesabı** | Açılır ve depolama hesabınızı seçin. | Önbellek ile aynı bölgede ve abonelikte bir depolama hesabı seçmeniz gerekir ve Premium depolamada daha yüksek aktarım hızı bulunduğundan **Premium Depolama** hesabı önerilir.  | 
    | **Depolama anahtarı** | Açılan ve kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. | Kalıcılık hesabınız için depolama anahtarı yeniden oluşturulursa, istenen anahtarı **depolama anahtarı** açılır listesinden yeniden yapılandırmanız gerekir. | 
 
     Yedekleme sıklığı aralığı geçtiğinde ilk yedekleme başlatılır.
@@ -72,9 +72,9 @@ Kalıcılık, Redsıs verilerini sahip olduğunuz ve yönettiğiniz bir Azure de
    
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **İlk depolama hesabı** | Açılır ve depolama hesabınızı seçin. | Bu depolama hesabı, önbellek ile aynı bölgede olmalıdır ve Premium depolamada daha yüksek aktarım hızı bulunduğundan **Premium Depolama** hesabı önerilir. | 
+   | **İlk depolama hesabı** | Açılır ve depolama hesabınızı seçin. | Bu depolama hesabı, önbellek ile aynı bölgede ve abonelikte olmalıdır ve Premium depolamada daha yüksek aktarım hızı bulunduğundan **Premium Depolama** hesabı önerilir. | 
    | **İlk depolama anahtarı** | Açılan ve kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. | Kalıcılık hesabınız için depolama anahtarı yeniden oluşturulursa, istenen anahtarı **depolama anahtarı** açılır listesinden yeniden yapılandırmanız gerekir. | 
-   | **İkinci depolama hesabı** | Seçim Açılan ve kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. | İsteğe bağlı olarak ek bir depolama hesabı yapılandırabilirsiniz. İkinci bir depolama hesabı yapılandırılmışsa, çoğaltma önbelleğine yazma işlemleri bu ikinci depolama hesabına yazılır. | 
+   | **İkinci depolama hesabı** | Seçim Açılır ve ikincil depolama hesabınızı seçin. | İsteğe bağlı olarak ek bir depolama hesabı yapılandırabilirsiniz. İkinci bir depolama hesabı yapılandırılmışsa, çoğaltma önbelleğine yazma işlemleri bu ikinci depolama hesabına yazılır. | 
    | **İkinci depolama anahtarı** | Seçim Açılan ve kullanılacak **birincil anahtarı** ya da **İkincil anahtarı** seçin. | Kalıcılık hesabınız için depolama anahtarı yeniden oluşturulursa, istenen anahtarı **depolama anahtarı** açılır listesinden yeniden yapılandırmanız gerekir. | 
 
     BIR dizi kalıcılığı etkinleştirildiğinde, önbelleğe yazma işlemleri belirlenen depolama hesabına (veya ikinci bir depolama hesabı yapılandırdıysanız hesaplar) kaydedilir. Hem birincil hem de çoğaltma önbelleğinin kullanıldığı çok önemli bir hata durumunda, önbelleğin yeniden oluşturulması için depolanan AOF günlüğü kullanılır.

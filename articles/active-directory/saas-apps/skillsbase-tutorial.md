@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e93827278fb501bc6d857d3cb39f9e0ba24d5d0a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552252"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Öğretici: beceriler tabanıyla Azure Active Directory tümleştirme
 
@@ -134,11 +134,11 @@ Azure AD çoklu oturum açmayı beceriler tabanıyla yapılandırmak için aşa�
 
 3. **Kimlik doğrulama** sayfasında, **SAML 2**olarak tek Sign-On seçin.
 
-    ![Tek](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![Ekran görüntüsü, oturum açma için SAML 2 ' nin seçtiği kimlik doğrulama sayfasını gösterir.](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. **Kimlik doğrulama** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Tek](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama sayfasını gösterir.](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. **Durum** seçeneğinin yanındaki **IDP meta verilerini Güncelleştir** düğmesine tıklayın ve belirtilen metin kutusundaki Azure Portal indirdiğiniz meta veri XML içeriğini yapıştırın.
 

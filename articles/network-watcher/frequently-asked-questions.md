@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471865"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123536"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure ağ Izleyicisi hakkında sık sorulan sorular (SSS)
 [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) hizmeti, bir Azure sanal ağındaki kaynaklara yönelik günlükleri izlemeye, tanılamaya, görüntülemeye ve etkinleştirmeye ve devre dışı bırakacak bir araç paketi sağlar. Bu makalede hizmetle ilgili yaygın soruların yanıtları vardır.
@@ -80,6 +80,14 @@ Bu özelliğin çalışması için bir abonelik için ağ Izleyicisi 'nin etkinl
 
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Ağ Izleyicisi kaynağını nasıl yönetebilirim? 
 Ağ Izleyicisi kaynağı, ağ Izleyicisi için arka uç hizmetini temsil eder ve Azure tarafından tam olarak yönetilir. Müşterilerin bunu yönetmesi gerekmez. Kaynak üzerinde taşıma gibi işlemler desteklenmez. Ancak, [kaynak silinebilir](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
+
+## <a name="service-availability-and-redundancy"></a>Hizmet kullanılabilirliği ve artıklığı 
+
+### <a name="is-the-network-watcher-service-zone-resilient"></a>Ağ Izleyicisi hizmet bölgesi dayanıklı mi? 
+Evet. Ağ Izleyicisi hizmeti varsayılan olarak bölge dayanıklıdır. 
+
+### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>Nasıl yaparım? ağ Izleyicisi hizmetini bölge-dayanıklı olacak şekilde yapılandırmak mı istiyorsunuz? 
+Bölge dayanıklılığı sağlamak için hiçbir müşteri yapılandırması gerekmez. Ağ Izleyicisi kaynakları için bölge esnekliği, varsayılan olarak kullanılabilir ve hizmet tarafından yönetilir. 
 
 ## <a name="nsg-flow-logs"></a>NSG akış günlükleri
 

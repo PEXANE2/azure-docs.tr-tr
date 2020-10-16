@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc5bfb7c9cadea7aaa9cdedb2a17943014c6ef59
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445054"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124767"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ Varsayılan olarak, ikincil öğesinin yedek depolama yedekliği birincil verita
 > Birincil üzerindeki işlem günlüğü hızı, ikincil üzerinde işlem boyutu alt sınır azalmasının ilgisiz olması nedeniyle kısıtlanmayabilir. İkincil öğe, birincili aynı veya daha yüksek bir işlem boyutuna sahip olsa bile, bu tür azaltma meydana gelebilir. Farklı türlerde günlük hızı azaltma için bekleme türleri dahil Ayrıntılar için bkz. [işlem günlüğü oranı İdaresi](resource-limits-logical-server.md#transaction-log-rate-governance).
 
 > [!NOTE]
-> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel önizlemede kullanılabilir. Önizlemede, kaynak veritabanı yerel olarak yedekli veya bölgesel olarak yedekli yedekleme yedeklemesiyle oluşturulduysa, farklı bir Azure bölgesinde ikincil bir veritabanı oluşturmak desteklenmez. 
+> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel kullanıma sunulmuştur. Kaynak veritabanı yerel olarak yedekli veya bölgesel olarak yedekli yedekleme depolama yedekliliği ile oluşturulduğunda, farklı bir Azure bölgesinde ikincil veritabanı oluşturmak desteklenmez. 
 
 SQL veritabanı işlem boyutları hakkında daha fazla bilgi için bkz. [SQL veritabanı hizmet katmanları](purchasing-models.md)nelerdir.
 

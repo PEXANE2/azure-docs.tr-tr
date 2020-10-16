@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 1cc4f40374fce83589d2dc10a0422b91f5178c0b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999758"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123792"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Azure IoT Central çözümünde özellikleri kullanma
 
@@ -35,7 +35,7 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Alan           | Açıklama                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Görünen ad    | Panolar ve formlarda kullanılan özellik değeri için görünen ad.                                                                                                                                                              |
-| Ad            | Özelliğin adı. Azure IoT Central, görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alan alfasayısal olmalıdır.                                                 |
+| Name            | Özelliğin adı. Azure IoT Central, görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alan alfasayısal olmalıdır.                                                 |
 | Yetenek türü | Özelliði.                                                                                                                                                                                                                          |
 | Anlam türü   | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler.                                                                       |
 | Şema          | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz.                                               |
@@ -152,7 +152,7 @@ Aşağıdaki kod bir nesne özelliği türünün tanımını gösterir. Bu nesne
 
 Varsayılan olarak, özellikler salt okunurdur. Salt okuma özellikleri, cihazın Azure IoT Central uygulamanızda Özellik değeri güncelleştirmelerini bildirdiği anlamına gelir. Azure IoT Central uygulamanız salt okunurdur bir özelliğin değerini ayarlayamadı.
 
-Azure IoT Central, cihaz ve Azure IoT Central uygulaması arasındaki özellik değerlerini senkronize etmek için cihaz ikizlerini kullanır. Cihaz özelliği değerleri cihaz ikizi bildirilen özelliklerini kullanır. Daha fazla bilgi için bkz. [cihaz TWINS](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins).
+Azure IoT Central, cihaz ve Azure IoT Central uygulaması arasındaki özellik değerlerini senkronize etmek için cihaz ikizlerini kullanır. Cihaz özelliği değerleri cihaz ikizi bildirilen özelliklerini kullanır. Daha fazla bilgi için bkz. [cihaz TWINS](../../iot-hub/tutorial-device-twins.md).
 
 Bir cihaz yetenek modelinden aşağıdaki kod parçacığında, salt okunurdur özellik türünün tanımı gösterilmektedir:
 
@@ -250,7 +250,7 @@ Yanıt iletisi `ac` ve `av` alanlarını içermelidir. `ad` alanı isteğe bağl
 | `'ac': 5xx` | Hata | Cihaz, istenen değişikliği işlerken beklenmeyen bir hatayla karşılaştı. |
 
 
-Cihaz ikgörüti hakkında daha fazla bilgi için bkz. [cihazları arka uç hizmetinden yapılandırma](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins).
+Cihaz ikgörüti hakkında daha fazla bilgi için bkz. [cihazları arka uç hizmetinden yapılandırma](../../iot-hub/tutorial-device-twins.md).
 
 Operatör, Azure IoT Central uygulamasında yazılabilir bir özellik ayarladığında, uygulama değeri cihaza göndermek için bir Device ikizi istenen özelliğini kullanır. Cihaz daha sonra bir Device ikizi bildirilen özelliği kullanarak yanıt verir. Azure IoT Central bildirilen özellik değerini aldığında, özellik görünümünü **kabul edildi**durumuyla güncelleştirir.
 

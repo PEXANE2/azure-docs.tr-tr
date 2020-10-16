@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408865"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123741"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme (Önizleme)
 
@@ -143,9 +143,7 @@ Bağlantı izleyicileri aşağıdaki ölçek sınırlarına sahiptir:
 * Her bölge için abonelik başına en fazla bağlantı İzleyicisi: 100
 * Bağlantı İzleyicisi başına en fazla test grubu: 20
 * Bağlantı İzleyicisi başına en fazla kaynak ve hedef sayısı: 100
-* Bağlantı İzleyicisi başına en fazla test yapılandırması: 
-    * 20 ile ARMClient
-    * 2 Azure portal aracılığıyla
+* Bağlantı İzleyicisi başına en fazla test yapılandırması: 20
 
 ## <a name="analyze-monitoring-data-and-set-alerts"></a>İzleme verilerini çözümleme ve uyarıları ayarlama
 

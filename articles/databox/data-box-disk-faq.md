@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9305ff5904588241ff8319f28eab2ce20ad77876
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826149"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125124"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -66,7 +66,7 @@ A. Data Box Disk, yalnızca hedef olarak aynı ülke/bölge dahilinde veri alım
 
 ### <a name="option-1"></a>1. Seçenek: 
 
-[Azure içeri/dışarı aktarma hizmeti](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) 'Ni kullanarak Kanada 'daki kaynak konumundan Azure WestUS veri merkezine kadar verileri içeren [desteklenen bir disk](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) gönderin.
+[Azure içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md) 'Ni kullanarak Kanada 'daki kaynak konumundan Azure WestUS veri merkezine kadar verileri içeren [desteklenen bir disk](../storage/common/storage-import-export-requirements.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#supported-disks) gönderin.
 
 ### <a name="option-2"></a>2. Seçenek:
 
@@ -77,7 +77,7 @@ A. Data Box Disk, yalnızca hedef olarak aynı ülke/bölge dahilinde veri alım
 3. Daha sonra AzCopy gibi bir araç kullanarak, verileri WestUS ' deki bir depolama hesabına kopyalayabilirsiniz. Bu adım, Data Box Disk faturalandırmaya dahil olmayan [Standart depolama](https://azure.microsoft.com/pricing/details/storage/) ve [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) doğurur.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>S. Data Box Diskleriyle ilgili sorun yaşamam halinde kiminle iletişim kurmam gerekir?
-A. Data Box diskleriyle ilgili herhangi bir sorunla karşılaşırsanız lütfen [Microsoft desteği başvurun](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
+A. Data Box diskleriyle ilgili herhangi bir sorunla karşılaşırsanız lütfen [Microsoft desteği başvurun](./data-box-disk-contact-microsoft-support.md).
 
 ## <a name="configure-and-connect"></a>Yapılandırma ve bağlanma
  
@@ -147,7 +147,7 @@ A.  Kopyalama işlemini hızlandırmak için:
 - Birden fazla veri kopyalama akışı kullanın. Örneğin Robocopy'de çok iş parçacıklı seçeneği kullanın. Kullanılan komut hakkında daha fazla bilgi için [Öğretici: Azure Data Box Diskine veri kopyalama ve doğrulama](data-box-disk-deploy-copy-data.md#copy-data-to-disks) sayfasına gidin.
 - Birden fazla oturum kullanın.
 - Ağ paylaşımı üzerinden kopyalama yapmak yerine (ağ hızları kısıtlayıcı olabilir) verilerin, disklerin bağlı olduğu bilgisayarın yerel depolama alanında bulunduğundan emin olun.
-- Kopyalama işlemi boyunca USB 3.0 veya üzeri bağlantı kullandığınızdan emin olun. Bilgisayara bağlı USB denetleyicilerini ve USB cihazlarını tanımlamak için [USBView aracını](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) indirin ve kullanın.
+- Kopyalama işlemi boyunca USB 3.0 veya üzeri bağlantı kullandığınızdan emin olun. Bilgisayara bağlı USB denetleyicilerini ve USB cihazlarını tanımlamak için [USBView aracını](/windows-hardware/drivers/debugger/usbview) indirin ve kullanın.
 - Veri kopyalamak için kullanılan bilgisayarın performansını karşılaştırın. Sunucu donanımının performansını karşılaştırmak için [Bluestop FIO aracını](https://ci.appveyor.com/project/axboe/fio) indirin ve kullanın. En son x86 veya x64 yapısını seçin, **yapılar** sekmesini SEÇIN ve MSI 'yi indirin.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>S. Kaynak veriler küçük dosyalardan (KB veya birkaç MB) oluşuyorsa veri aktarımını nasıl hızlandırabilirim?

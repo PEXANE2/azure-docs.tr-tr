@@ -4,12 +4,12 @@ description: Azure geçişi hizmetindeki yenilikler ve son güncelleştirmeler h
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a36e73496b07df18c61b07df9d90992c0ab399ce
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667087"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124668"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
@@ -17,7 +17,7 @@ ms.locfileid: "91667087"
 
 ## <a name="update-september-2020"></a>Güncelleştirme (Eylül 2020)
 - Sunucuların Kullanılabilirlik Alanları geçişi artık desteklenmektedir.
-- UEFı tabanlı VM 'lerin ve fiziksel sunucuların Azure 2. nesil VM 'lere geçirilmesi artık desteklenmektedir
+- UEFı tabanlı VM 'lerin ve fiziksel sunucuların Azure 2. nesil VM 'lere geçirilmesi artık desteklenmektedir. Bu sürümle birlikte, Azure geçişi: sunucu geçiş aracı, geçiş sırasında Gen 2 VM 'den Gen 1 VM 'ye dönüştürmeyi gerçekleştirmeyecektir.
 - Farklı değerlendirme ayarları genelinde maliyetleri karşılaştırmanıza yardımcı olmak için yeni bir Azure geçişi Power BI değerlendirme Panosu kullanılabilir. Pano, Power BI panosuna eklenen değerlendirmeleri otomatik olarak oluşturan bir PowerShell yardımcı programıyla birlikte gelir. [Daha fazla bilgi edinin.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
 - Bağımlılık Analizi (aracısız), artık 1000 VM 'lerde eşzamanlı olarak çalıştırılabilir.
 - Bağımlılık Analizi (aracısız) artık PowerShell betikleri kullanılarak uygun ölçekte etkinleştirilebilir veya devre dışı bırakılabilir. [Daha fazla bilgi edinin.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)

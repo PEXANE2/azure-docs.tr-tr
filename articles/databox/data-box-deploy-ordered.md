@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c8143a19d7e18b24e202018698b37e1b2855db4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575308"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125431"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -55,7 +55,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 #### <a name="install-the-cli-locally"></a>CLI’yi yerel olarak yükleme
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sürüm 2.0.67 veya üstünü yükler. Alternatif olarak, [MSI kullanarak yükleyebilirsiniz](https://aka.ms/installazurecliwindows).
+* [Azure CLI](/cli/azure/install-azure-cli) sürüm 2.0.67 veya üstünü yükler. Alternatif olarak, [MSI kullanarak yükleyebilirsiniz](https://aka.ms/installazurecliwindows).
 
 **Azure'da oturum açma**
 
@@ -164,13 +164,13 @@ Windows PowerShell sürüm 6.2.4 veya sonraki bir sürümün yüklü olması ger
     WSManStackVersion              3.0
 ```
 
-Sürümünüz 6.2.4 'den düşükse, Windows PowerShell sürümünüzü yükseltmeniz gerekir. Windows PowerShell 'in en son sürümünü yüklemek için bkz. [ınstall Azure PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7).
+Sürümünüz 6.2.4 'den düşükse, Windows PowerShell sürümünüzü yükseltmeniz gerekir. Windows PowerShell 'in en son sürümünü yüklemek için bkz. [ınstall Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7).
 
 **Azure PowerShell ve Data Box modülleri 'ni yükler**
 
 Azure Data Box sıralamak için Azure PowerShell kullanmak üzere Azure PowerShell modüllerini yüklemeniz gerekir. Azure PowerShell modüllerini yüklemek için:
 
-1. [Azure PowerShell az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)' ü yükler.
+1. [Azure PowerShell az Module](/powershell/azure/new-azureps-module-az)' ü yükler.
 2. Ardından komutunu kullanarak az. DataBox öğesini kullanın `Install-Module -Name Az.DataBox` .
 
 ```azurepowershell
@@ -184,7 +184,7 @@ Version              Name                                Repository           De
 
 #### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Bir Windows PowerShell komut penceresi açın ve [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) komutuyla Azure 'da oturum açın:
+Bir Windows PowerShell komut penceresi açın ve [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) komutuyla Azure 'da oturum açın:
 
 ```azurepowershell
 PS C:\Windows> Connect-AzAccount
@@ -202,7 +202,7 @@ gusp@contoso.com     MySubscription                            aaaaaaaa-aaaa-aaa
 PS C:\Windows\System32>
 ```
 
-Windows PowerShell kullanarak Azure 'da oturum açma hakkında ayrıntılı bilgi için bkz. [Azure PowerShell Ile oturum açma](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+Windows PowerShell kullanarak Azure 'da oturum açma hakkında ayrıntılı bilgi için bkz. [Azure PowerShell Ile oturum açma](/powershell/azure/authenticate-azureps).
 
 ---
 
@@ -338,7 +338,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
    |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
-2. Tercih ettiğiniz veya terminalin komut isteminde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) komutunu kullanın.
+2. Tercih ettiğiniz veya terminalin komut isteminde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) komutunu kullanın.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -431,7 +431,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
     $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
    ```
 
-2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
+2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
 
     | Ayar (parametre) | Açıklama |  Örnek değer |
     |---|---|---|
@@ -452,7 +452,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
     |CompanyName| Çalıştığınız şirketinizin adı.| "Contoso, LTD" |
     |Storageaccountresourceıd [gerekli]| Verileri içeri aktarmak istediğiniz Azure depolama hesabı KIMLIĞI.| <AzStorageAccount>. ID |
 
-3. Komut istemindeki veya terminalinizde, Azure Data Box siparişinizi oluşturmak için [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) ' u kullanın.
+3. Komut istemindeki veya terminalinizde, Azure Data Box siparişinizi oluşturmak için [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob) ' u kullanın.
 
    ```azurepowershell
     PS> $storAcct = Get-AzureStorageAccount -StorageAccountName "mystorageaccount"
@@ -506,7 +506,7 @@ Microsoft ardından cihazınızı hazırlar ve bölgeye uygun gönderim şirketi
 
 ### <a name="track-a-single-order"></a>Tek bir siparişi izleyin
 
-Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az databox iş göster](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show)' i çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
+Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az databox iş göster](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show)' i çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -547,7 +547,7 @@ Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az 
 
 ### <a name="list-all-orders"></a>Tüm siparişleri Listele
 
-Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [az databox iş listesi](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) ' ni çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
+Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [az databox iş listesi](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) ' ni çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
 Komut ayrıca her bir siparişin zaman damgalarını görüntüler.
 
 ```azurecli
@@ -590,7 +590,7 @@ Aşağıdaki tabloda, için parametre bilgileri gösterilmektedir `az databox jo
 
 ### <a name="track-a-single-order"></a>Tek bir siparişi izleyin
 
-Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob)komutunu çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
+Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob)komutunu çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
 
 > [!NOTE]
 > `Get-AzDataBoxJob` hem tek hem de birden çok siparişi görüntülemek için kullanılır. Fark, tek siparişler için sipariş adını belirtmektir.
@@ -623,7 +623,7 @@ Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için [G
 
 ### <a name="list-all-orders"></a>Tüm siparişleri Listele
 
-Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) komutunu çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
+Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) komutunu çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
 Komut ayrıca her bir siparişin zaman damgalarını görüntüler.
 
 ```azurepowershell
@@ -666,7 +666,7 @@ Sipariş verdikten sonra, sipariş durumu işlendi olmadan önce herhangi bir no
 
 ### <a name="cancel-an-order"></a>Siparişi iptal etme
 
-Azure Data Box sırayı iptal etmek için [az databox Job Cancel](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel)' ı çalıştırın. Siparişi iptal etme nedeninizi belirtmeniz gerekir.
+Azure Data Box sırayı iptal etmek için [az databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel)' ı çalıştırın. Siparişi iptal etme nedeninizi belirtmeniz gerekir.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -703,7 +703,7 @@ Azure Data Box sırayı iptal etmek için [az databox Job Cancel](https://docs.m
 
 ### <a name="delete-an-order"></a>Bir siparişi silme
 
-Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox Job Delete](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) ' i çalıştırabilirsiniz.
+Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox Job Delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) ' i çalıştırabilirsiniz.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -742,7 +742,7 @@ Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox J
 
 ### <a name="cancel-an-order"></a>Siparişi iptal etme
 
-Azure Data Box sırayı iptal etmek için [stop-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob)komutunu çalıştırın. Siparişi iptal etme nedeninizi belirtmeniz gerekir.
+Azure Data Box sırayı iptal etmek için [stop-AzDataBoxJob](/powershell/module/az.databox/stop-azdataboxjob)komutunu çalıştırın. Siparişi iptal etme nedeninizi belirtmeniz gerekir.
 
 ```azurepowershell
 Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
@@ -776,7 +776,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Bir siparişi silme
 
-Azure Data Box sırayı iptal etmeniz durumunda, sırayı silmek için [Remove-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob) komutunu çalıştırabilirsiniz.
+Azure Data Box sırayı iptal etmeniz durumunda, sırayı silmek için [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) komutunu çalıştırabilirsiniz.
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: aac5e35f3d0c42e97069ecb38fedaadcdc7794dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9f5e1ba52390191409d8da4bc4c41faaa859a4a8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87001851"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125620"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central-akıllı ölçüm uygulama mimarisi
 
@@ -28,7 +28,7 @@ Bu mimari aşağıdaki bileşenlerden oluşur. Bazı çözümler burada listelen
 
 ## <a name="smart-meters-and-connectivity"></a>Akıllı ölçümler ve bağlantı 
 
-Akıllı ölçüm, tüm enerji varlıkları arasındaki en önemli cihazlardan biridir. Tüketim ve ödeme ve talep yanıtı gibi diğer kullanım durumları için enerji tüketimi verilerini kaydeder ve bu programlarla iletişim kurar. Ölçüm türüne bağlı olarak, ağ geçitlerini veya diğer ara cihazları veya sistemleri (örneğin, uç aygıtları ve baş uç sistemleri) kullanarak IoT Central bağlanabilir. Doğrudan bağlanmayan cihazlara bağlanmak için IoT Central cihaz Köprüsü oluşturun. IoT Central cihaz Köprüsü açık kaynaklı bir çözümdür ve tüm ayrıntıları [burada](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)bulabilirsiniz. 
+Akıllı ölçüm, tüm enerji varlıkları arasındaki en önemli cihazlardan biridir. Tüketim ve ödeme ve talep yanıtı gibi diğer kullanım durumları için enerji tüketimi verilerini kaydeder ve bu programlarla iletişim kurar. Ölçüm türüne bağlı olarak, ağ geçitlerini veya diğer ara cihazları veya sistemleri (örneğin, uç aygıtları ve baş uç sistemleri) kullanarak IoT Central bağlanabilir. Doğrudan bağlanmayan cihazlara bağlanmak için IoT Central cihaz Köprüsü oluşturun. IoT Central cihaz Köprüsü açık kaynaklı bir çözümdür ve tüm ayrıntıları [burada](../core/howto-build-iotc-device-bridge.md)bulabilirsiniz. 
 
 
 ## <a name="iot-central-platform"></a>IoT Central platform
@@ -42,4 +42,4 @@ IoT Central platformu iki genişletilebilirlik seçeneği sağlar: sürekli veri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Artık mimari hakkında bilgi edindiğinize göre, [ücretsiz olarak akıllı ölçüm uygulaması oluşturun](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* IoT Central hakkında daha fazla bilgi edinmek için bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/)
+* IoT Central hakkında daha fazla bilgi edinmek için bkz. [IoT Central genel bakış](../index.yml)

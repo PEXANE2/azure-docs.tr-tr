@@ -9,16 +9,16 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5035e511b0f3a105a047738fed1c5cc17e88d086
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a7e2240e3f74f82186827ec82bb1aa39a5b93f6c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114656"
+ms.locfileid: "92123843"
 ---
 # <a name="teams-interoperability"></a>Takımlar birlikte çalışabilirliği
 
-[!INCLUDE [Public Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
 Azure Iletişim Hizmetleri, Microsoft ekipleriyle etkileşime geçen özel toplantı deneyimleri oluşturmak için kullanılabilir. Iletişim Hizmetleri çözümünüzün kullanıcıları ses, video ve ekran paylaşımı üzerinde takımlar katılımcıları ile etkileşime geçebilir.
 
@@ -37,7 +37,7 @@ Belirli takımlar, kabarık, birlikte modu ve bir arada bulunan odalar gibi öze
 
 Bir Iletişim Hizmetleri kullanıcısı takımlar toplantısına katıldığında, çağıran istemci kitaplığı aracılığıyla verilen görünen ad takımlar kullanıcıları tarafından gösterilir. Iletişim Hizmetleri kullanıcısı başka şekilde ekiplerde anonim bir kullanıcı gibi ele alınacaktır. Özel uygulamanız, takımlar toplantılarını korumak için Kullanıcı kimlik doğrulamasını ve diğer güvenlik önlemlerini göz önünde bulundurmalıdır. Anonim kullanıcıların toplantılara katılmasına imkan tanıyan güvenlik etkilerine karşı dikkatli olun ve anonim kullanıcılara sunulan özellikleri yapılandırmak için [takımlar güvenlik kılavuzunu](https://docs.microsoft.com/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) kullanın.
 
-Iletişim Hizmetleri kullanıcılarının, [Toplantı ayarlarında](https://docs.microsoft.com/microsoftteams/meeting-settings-in-teams)anonim birleşimler etkinleştirildiği sürece zamanlanan takımlar toplantılarına katılabileceğini unutmayın.
+İletişim Hizmetleri kullanıcıları, [Toplantı ayarlarında](https://docs.microsoft.com/microsoftteams/meeting-settings-in-teams)anonim birleşimler etkinleştirildiği sürece zamanlanan takımlar toplantılarına katılabilir.
 
 
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611665"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123724"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy yönetmek için Azure portal kullanın
 
@@ -222,8 +222,8 @@ Cihaz durumu portalda değiştiğinde bu, size e-posta ile bildirilir.
 |Alındı     | Cihazınız alındı ve Azure veri merkezinde tarandı. <br> Gönderi incelendikten sonra cihaz karşıya yüklemesi başlar.      |
 |Veri kopyalama     | Veri kopyalama işlemi devam ediyor. Azure portal’da siparişinizin kopyalama ilerleme durumunu takip edin. <br> Veri kopyalama işlemi tamamlanana kadar bekleyin. |
 |Tamamlandı       |Sipariş başarıyla tamamlandı.<br> Şirket içi verilerini sunuculardan silmeden önce verilerinizin Azure’a kopyalandığından emin olun.         |
-|Hatalarla tamamlandı| Veri kopyalama tamamlandı ancak kopyalama sırasında hatalar oluştu. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. [Karşıya yükleme hatalarla tamamlandığında kopyalama günlüklerine örneklere](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)bakın.   |
-|Uyarılarla tamamlandı| Veri kopyalama tamamlandı, ancak verileriniz değiştirildi. Veriler, dosya veya blob adlarını değiştirerek düzeltilen kritik olmayan BLOB veya dosya adı hatalarıyla karşılaştı. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. Verilerdeki değişikliklere bir göz önünde bir dikkat edin. [Karşıya yükleme uyarılarla tamamlandığında, kopyalama günlüklerine örneklere](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)bakın.   |
+|Hatalarla tamamlandı| Veri kopyalama tamamlandı ancak kopyalama sırasında hatalar oluştu. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. [Karşıya yükleme hatalarla tamamlandığında kopyalama günlüklerine örneklere](./data-box-logs.md#upload-completed-with-errors)bakın.   |
+|Uyarılarla tamamlandı| Veri kopyalama tamamlandı, ancak verileriniz değiştirildi. Veriler, dosya veya blob adlarını değiştirerek düzeltilen kritik olmayan BLOB veya dosya adı hatalarıyla karşılaştı. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. Verilerdeki değişikliklere bir göz önünde bir dikkat edin. [Karşıya yükleme uyarılarla tamamlandığında, kopyalama günlüklerine örneklere](./data-box-logs.md#upload-completed-with-warnings)bakın.   |
 |İptal edildi            |Sipariş iptal edildi. <br> Siparişi iptal ettiniz veya bir hatayla karşılaşıldı ve sipariş, hizmet tarafından iptal edildi. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.     |
 |Temizleme | Cihaz sürücülerindeki veriler silinir. Cihaz temizleme; sipariş geçmişi Azure portalından indirilmeye hazır olduğunda tamamlanmış olarak değerlendirilir.|
 
@@ -238,9 +238,9 @@ Dışarı aktarma siparişi için durumlar aşağıda verilmiştir.
 |İşlendi     | Siparişin işlenmesi tamamlandı. Siparişiniz uyarınca, cihaz veri merkezindeki veri kopyalama için hazırlanır. Cihaz paylaşımları oluşturulur.         |
 |Veri kopyalama devam ediyor     | Belirtilen Azure depolama hesaplarından cihaza veri kopyalama işlemi devam ediyor. Azure portal’da siparişinizin kopyalama ilerleme durumunu takip edin. <br> Veri kopyalama işlemi tamamlanana kadar bekleyin. |
 |Kopyalama tamamlandı     | Belirtilen Azure depolama hesaplarından cihaza veri kopyalama işlemi tamamlanmıştır. Ayrıntılı günlük dosyası (Eğer seçenek sırasıyla etkinleştirilmişse) ve depolama hesabınızda bir kopyalama günlüğü oluşturulur. Ayrıntılı günlük, cihaza kopyalanan tüm dosyalar (ad, yol, hesaplama sağlama toplamı) hakkındaki bilgileri içerir. Kopyalama günlüğü, herhangi bir hata nedeniyle kopyalanamayan bir dosya listesi dahil olmak üzere kopyalama işleminin özetini içerir.<br> Depolama hesabı verileri olduğu gibi kalır. |
-|Kopyalama hatalarla tamamlandı| Veri kopyalama tamamlandı ancak kopyalama sırasında hatalar oluştu. <br> Azure portal belirtilen yolu kullanarak Azure Storage hesabındaki kopyalama günlüklerini gözden geçirin. [İndirme işlemi hatalarla tamamlandığında, günlükleri kopyalama örneklerine](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)bakın.   |
-|Kopyalama uyarılarla tamamlandı| Azure depolama hesabından veri kopyalama tamamlandı, ancak veriler kritik olmayan hatalara sahipti. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. Kritik olmayan hataları bir yere dikkat edin. [İndirme, uyarılarla tamamlandığında günlükleri kopyalama örneklerine](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)bakın.   |
-|Kopyalama hatalarla başarısız oldu| Azure depolama hesabından veri kopyalama işlemi başarısız oldu ve sıra sonlandırıldı. Bir cihaz gönderilmeyecektir.<br> Azure portal belirtilen yolu kullanarak Azure Storage hesabındaki kopyalama günlüklerini gözden geçirin. [İndirme işlemi hata ile başarısız olduğunda günlükleri kopyalama örneklerine](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)bakın.   |
+|Kopyalama hatalarla tamamlandı| Veri kopyalama tamamlandı ancak kopyalama sırasında hatalar oluştu. <br> Azure portal belirtilen yolu kullanarak Azure Storage hesabındaki kopyalama günlüklerini gözden geçirin. [İndirme işlemi hatalarla tamamlandığında, günlükleri kopyalama örneklerine](./data-box-logs.md#upload-completed-with-errors)bakın.   |
+|Kopyalama uyarılarla tamamlandı| Azure depolama hesabından veri kopyalama tamamlandı, ancak veriler kritik olmayan hatalara sahipti. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. Kritik olmayan hataları bir yere dikkat edin. [İndirme, uyarılarla tamamlandığında günlükleri kopyalama örneklerine](./data-box-logs.md#upload-completed-with-warnings)bakın.   |
+|Kopyalama hatalarla başarısız oldu| Azure depolama hesabından veri kopyalama işlemi başarısız oldu ve sıra sonlandırıldı. Bir cihaz gönderilmeyecektir.<br> Azure portal belirtilen yolu kullanarak Azure Storage hesabındaki kopyalama günlüklerini gözden geçirin. [İndirme işlemi hata ile başarısız olduğunda günlükleri kopyalama örneklerine](./data-box-logs.md#upload-completed-with-errors)bakın.   |
 |Yola çıktı     |Sipariş sevk edildi. Gönderiyi takip etmek için portalda, siparişinizde görüntülenen takip kimliğini kullanın.        |
 |Teslim Edildi     |Gönderim, belirtilen adrese teslim edildi.        |
 |Teslim alındı     |İade gönderiniz teslim alındı ve kurye tarafından tarandı.         |

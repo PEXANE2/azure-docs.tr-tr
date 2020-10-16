@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b388b8efb7d993baa243975dbf499576246f3185
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01f10d3ba83d23478a7113cf4935181ee34959e3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91001071"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125295"
 ---
 # <a name="enclave-aware-containers"></a>Şifreleme kullanan kapsayıcılar
 
@@ -51,14 +51,19 @@ Bu çözüm, istemci ile sunucu arasında kanıtlama ve doğrulamalar aracılı�
 
 ML modeli kaldırma ile çalışmaya başlayın ve [burada](https://aka.ms/confidentialinference) onnx çalışma zamanına geçin
 
-## <a name="container-samples-implementations"></a>Kapsayıcı örnekleri uygulamaları
+### <a name="edgeless-rt"></a>Edgeless RT
 
-[AKS üzerinde şifreleme kullanan kapsayıcılar için Azure örnekleri](https://github.com/Azure-Samples/enclave-aware-container-samples)
+Edgeless RT, açık bir Kuşve SDK 'Yı oluşturan açık kaynaklı bir projem. Go ve ek C++ özellikleri için destek ekler. Bildiğiniz [vs Code ortamınızı kullanarak](https://github.com/edgelesssys/edgelessrt)basit bir gizli Go uygulamasını kullanmaya başlayın. AKS üzerinde Edgeless uygulamalar için [buradaki](https://github.com/edgelesssys/edgelessrt/blob/master/docs/ERTAzureAKSDeployment.md) yönergeleri izleyin
+
+
+## <a name="container-based-sample-implementations"></a>Kapsayıcı tabanlı örnek uygulamalar
+
+[AKS üzerinde şifreleme kullanan kapsayıcılar için Azure örnekleri](https://github.com/Azure-Samples/confidential-computing/tree/main/containersamples)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure kanıtlama](../attestation/overview.md)
 
 
 <!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
-[Confidential Containers]: /confidential-computing/containercompute/confidential-containers
+[DC sanal makinesi](/confidential-computing/virtual-machine-solutions) 
+ [Gizli kapsayıcılar](/confidential-computing/containercompute/confidential-containers)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4028cb8d4f206a0e62dda1cb130cc55e71831c78
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587969"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Öğretici: Spotınst ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -139,7 +139,7 @@ Bu bölümde, Spotınst 'ye erişim izni vererek Azure çoklu oturum açma özel
 
 2. Ekranın sağ üst tarafındaki **Kullanıcı simgesine** tıklayın ve **Ayarlar**' a tıklayın.
 
-    ![Spotınst ayarları](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![Ekran görüntüsü Kullanıcı simgesinden seçilen ayarları gösterir.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
 3. Üstteki **güvenlik** sekmesine tıklayın ve ardından **kimlik sağlayıcıları** ' nı seçin ve aşağıdaki adımları gerçekleştirin:
 
@@ -161,15 +161,15 @@ Bu bölümün amacı, Spotınst 'de Britta Simon adlı bir Kullanıcı oluşturm
 
    b. Ekranın sağ üst tarafındaki **Kullanıcı simgesine** tıklayın ve **Ayarlar**' a tıklayın.
 
-    ![Spotınst ayarları](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![Ekran görüntüsü Kullanıcı simgesinden seçilen ayarları gösterir.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
     c. **Kullanıcılar** ' a tıklayın ve **Kullanıcı Ekle**' yi seçin.
 
-    ![Spotınst ayarları](./media/spotinst-tutorial/adduser1.png)
+    ![Ekran görüntüsü kullanıcılardan seçili Kullanıcı Ekle ' nin gösterir.](./media/spotinst-tutorial/adduser1.png)
 
     d. Kullanıcı Ekle bölümünde aşağıdaki adımları uygulayın:
 
-    ![Spotınst ayarları](./media/spotinst-tutorial/adduser2.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı ekle bölümünü gösterir.](./media/spotinst-tutorial/adduser2.png)
 
     * **Tam ad** metin kutusuna, **Brittasıon**gibi kullanıcının tam adını girin.
 
