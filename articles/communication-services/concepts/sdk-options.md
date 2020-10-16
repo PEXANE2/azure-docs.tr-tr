@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d5aba3638ce19c24841fe5b49b19b1139327b790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c294079663630e71581f08227fbdb9ae4640cab5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578096"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102434"
 ---
 # <a name="client-libraries-and-rest-apis"></a>İstemci kitaplıkları ve REST API’leri
 
@@ -24,7 +24,7 @@ Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde dü
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 
-| Bütünleştirilmiş Kod               | Protokoller             |Açık ve kapalı kaynaklı kaynağı aç| Ad Alanları                          | Özellikler                                                      |
+| Bütünleştirilmiş Kod               | Protokoller             |Açık ve kapalı kaynaklı kaynağı aç| Ad alanları                          | Özellikler                                                      |
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Aç            | Azure. ResourceManager. Communication | Iletişim Hizmetleri kaynaklarını sağlama ve yönetme             |
 | Common                 | REST | Aç               | Azure. Communication. Common          | Diğer istemci kitaplıkları için temel türleri sağlar |
@@ -39,17 +39,15 @@ Azure Resource Manager, yönetim ve SMS istemci kitaplıklarının hizmet tümle
 
 Ayrı istemci kitaplığı paketleri için yayımlama konumları aşağıda ayrıntılı olarak verilmiştir. 
 
-
-| Alan           | JavaScript | .NET | Python | Java | Swift veya obj-C | Java (Android) | Diğer                          |
+| Alan           | JavaScript | .NET | Python | Java SE | iOS | Android | Diğer                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
-| Azure Resource Manager | -         | [NuGet](https://www.NuGet.org/packages/Azure.ResourceManager.Communication)    |   [Pypı](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [GitHub aracılığıyla git](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
-| Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Common/)    | Yok      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub aracılığıyla Swift](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
-| Yönetim | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Administration)    | [Pypı](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
-| Sohbet           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Chat)     | [Pypı](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -  | -  | -                              |
-| SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Sms)    | [Pypı](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
-| Events        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub aracılığıyla obj-C](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
-| Başvuru Belgeleri     | [belgeler](https://azure.github.io/azure-sdk-for-js/communication.html)         | [belgeler](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [belgeler](http://azure.github.io/azure-sdk-for-java/communication.html)     | 
-
+| Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [Pypı](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [GitHub aracılığıyla git](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
+| Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | YOK      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| Yönetim | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Administration)    | [Pypı](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
+| Sohbet           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [Pypı](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
+| SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [Pypı](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
+| Events        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
+| Başvuru Belgeleri     | [belgeler](https://azure.github.io/azure-sdk-for-js/communication.html)         | [belgeler](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [belgeler](http://azure.github.io/azure-sdk-for-java/communication.html)     | (Obj-C) ✔️     | ✔️            | -                              |
 ## <a name="rest-apis"></a>REST API'leri
 
 İletişim Hizmetleri API 'Leri, [docs.Microsoft.com](https://docs.microsoft.com/rest/api/azure/)' deki DIĞER Azure REST API 'leri ile birlikte belgelenmiştir. Bu belgede, HTTP iletilerinizi nasıl yapılandıracağınızı ve Postman kullanmaya yönelik yönergeler sunulmaktadır. Bu belge [GitHub](https://github.com/Azure/azure-rest-api-specs)'da Swagger biçiminde de sunulur.

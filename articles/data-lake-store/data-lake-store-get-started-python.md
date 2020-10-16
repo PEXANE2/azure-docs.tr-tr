@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-python
-ms.openlocfilehash: 57414828394e7f241cd33b7d56190a3ce9a7eab2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35e71b80c6f47bb13f7a2b490b493b0cb42acf04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876009"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103518"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Data Lake Storage 1. hesap yönetimi işlemleri
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Python kullanarak Data Lake Storage 1. çalışmak için üç modül yüklemeniz
 
 * `azure-mgmt-resource` modülü, Active Directory gibi şeyler için Azure modüllerini içerir.
 * `azure-mgmt-datalake-store`Azure Data Lake Storage 1. hesap yönetimi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure Data Lake Storage 1. Management Module Reference](/python/api/azure-mgmt-datalake-store/).
-* `azure-datalake-store`Azure Data Lake Storage 1. dosya sistemi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure-datalake-Store FileSystem Module Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* `azure-datalake-store`Azure Data Lake Storage 1. dosya sistemi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure-datalake-Store FileSystem Module Reference](/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Modülleri yüklemek için aşağıdaki komutları kullanın.
 
@@ -136,5 +136,5 @@ adlsAcctClient.account.delete(adlsAccountName)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure-datalake-Store Python (FileSystem) başvurusu](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
+* [Azure-datalake-Store Python (FileSystem) başvurusu](/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Azure Data Lake Storage 1. uyumlu açık kaynak büyük veri uygulamaları](data-lake-store-compatible-oss-other-applications.md)

@@ -1,5 +1,5 @@
 ---
-title: Kullanıcı akışlarına API bağlayıcıları ekleme
+title: Kullanıcı akışlarına API bağlayıcıları ekleme (Önizleme)
 description: Bir Kullanıcı akışında kullanılacak bir API bağlayıcısını yapılandırın.
 services: active-directory-b2c
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854367"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102281"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Kaydolma Kullanıcı akışına API Bağlayıcısı ekleme
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Kaydolma Kullanıcı akışına API Bağlayıcısı ekleme (Önizleme)
 
 Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce API bağlayıcısını oluşturun ve ardından Kullanıcı akışında etkinleştirin.
 
@@ -238,8 +238,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sürüm                                            | Dize            | Evet      | API sürümü.                                                                                                                                                                                                                                                                |
 | eylem                                             | Dize            | Evet      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi**olarak seçilirse, belirteçte değerler döndürülür.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
+| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir **uygulama talebi**olarak seçilirse belirtece de döndürülebilir.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir **uygulama talebi**olarak seçilirse belirtece de döndürülebilir.  |
 
 ### <a name="example-of-a-blocking-response"></a>Engelleme yanıtı örneği
 
@@ -267,6 +267,8 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>Doğrulama hatası yanıt örneği
 
+
+
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -285,6 +287,8 @@ Content-type: application/json
 | eylem      | Dize  | Evet      | Değer olmalıdır `ValidationError` .                                           |
 | durum      | Tamsayı | Evet      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
 | userMessage | Dize  | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+
+*Note:* Yanıt gövdesinde "durum" değerine ek olarak HTTP durum kodu "400" olmalıdır.
 
 **Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi**
 

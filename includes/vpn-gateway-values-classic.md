@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 75aec9f3509881c35de9309fa1532b961fb2bc03
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 11d2172d085fe9b47587f4084908f99d7b54437e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875579"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103246"
 ---
-Azure portal klasik VNET oluştururken, görüntülediğiniz ad PowerShell için kullandığınız tam ad değildir. Örneğin, portalda **TestVNet1** adında görünen bir VNet, ağ yapılandırma dosyasında çok daha uzun bir ada sahip olabilir. Ad şöyle görünebilir: **Grup ClassicRG TestVNet1**. Bağlantılarınızı oluştururken, ağ yapılandırma dosyasında gördüğünüz değerlerin kullanılması önemlidir.
+Azure portal klasik VNET oluştururken, görüntülediğiniz ad PowerShell için kullandığınız tam ad değildir. Örneğin, portalda **TestVNet1** adında görünen bir VNet, ağ yapılandırma dosyasında çok daha uzun bir ada sahip olabilir. "ClassicRG" adlı kaynak grubundaki bir VNet için şu şekilde görünebilir: **Grup Classicrg TestVNet1**. Bağlantılarınızı oluştururken, ağ yapılandırma dosyasında gördüğünüz değerlerin kullanılması önemlidir.
 
 Aşağıdaki adımlarda, Azure hesabınıza bağlanır ve bağlantılarınız için gerekli olan değerleri almak için ağ yapılandırma dosyasını indirmeniz ve görüntülemeniz gerekir.
 
@@ -36,9 +36,10 @@ Aşağıdaki adımlarda, Azure hesabınıza bağlanır ve bağlantılarınız i�
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
    ```
-1. Ağ yapılandırma dosyasını dışa aktarın ve görüntüleyin. Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, ağ yapılandırma dosyası **C:\azurenet dizinine**aktarılmalıdır.
+1. Bilgisayarınızda bir dizin oluşturun. Örneğin, C:\AzureVNet
+1. Ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, ağ yapılandırma dosyası **C:\azurenet dizinine**aktarılmalıdır.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-1. Dosyayı bir metin düzenleyici ile açın ve sanal ağlarınız ve sitelerinizin adlarını görüntüleyin. Bu adlar, bağlantılarınızı oluştururken kullandığınız adlar olacaktır.<br>VNet adları **Virtualnetworksite Name =** olarak listelenir.<br>Site adları **LocalNetworkSiteRef Name =** olarak listelenir
+1. Dosyayı bir metin düzenleyici ile açın ve sanal ağlarınız ve sitelerinizin adlarını görüntüleyin. Bu adlar, bağlantılarınızı oluştururken kullandığınız adlar olacaktır.<br>**VNET** adları **virtualnetworksite Name =** olarak listelenir.<br>**Site** adları **LocalNetworkSiteRef Name =** olarak listelenir

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256765"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103161"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
@@ -46,7 +46,7 @@ Birçok modern uygulamanın, özellikle JavaScript 'te, genellikle angular, yan�
 
 Aşağıdaki akış diyagramı, uygulamanın Microsoft Identity platform uç noktasından bir kod aldığı `authorize` ve belirteçleri ve siteler arası Web istekleri kullanarak belirteçleri yenilediğini, OAuth 2,0 yetkilendirme kodu yetkisini (PKI CE ile ilgili ayrıntılarla birlikte) gösterir. Yenileme belirteci her 24 saatte bir dolar ve uygulamanın başka bir kod istemesi gerekir. Erişim belirtecinin yanı sıra, `id_token` istemci uygulamasına oturum açmış kullanıcıyı temsil eden bir, genellikle aynı Flow ve/veya ayrı bir OpenID Connect isteği aracılığıyla da istenir (burada gösterilmez).
 
-![SPA uygulamaları için kod akışı](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="Tek sayfalı bir uygulama ve güvenlik belirteci hizmeti uç noktası arasındaki OAuth 2 yetkilendirme kodu akışını gösteren diyagram." border="false":::
 
 Bu senaryoyu eylemde görmek için [öğreticiye göz atın: kullanıcılar oturum açın ve kimlik doğrulama kod akışı kullanarak bir JAVASCRIPT Spa 'dan MICROSOFT Graph API 'sini çağırın](tutorial-v2-javascript-auth-code.md).
 

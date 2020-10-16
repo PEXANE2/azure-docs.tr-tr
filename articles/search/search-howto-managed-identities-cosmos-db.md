@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275294"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102702"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Yönetilen kimlik kullanarak Cosmos DB veritabanına Dizin Oluşturucu bağlantısı kurma
 
 Bu sayfada, veri kaynağı nesne bağlantı dizesinde kimlik bilgileri sağlamak yerine yönetilen kimlik kullanarak bir Azure Cosmos DB veritabanına Dizin Oluşturucu bağlantısının nasıl ayarlanacağı açıklanır.
 
 Bu özellik hakkında daha fazla bilgi edinmek için, bir dizin oluşturucunun ne olduğu ve veri kaynağınız için dizin oluşturucunun nasıl ayarlanacağı hakkında bilgi sahibi olmanız önerilir. Aşağıdaki bağlantılarda daha fazla bilgi bulabilirsiniz:
+
 * [Dizin Oluşturucu’ya genel bakış](search-indexer-overview.md)
 * [Azure Cosmos DB dizinleyici](search-howto-index-cosmosdb.md)
 
@@ -143,9 +144,8 @@ Cosmos DB verileri dizinlemeyebilirsiniz, aşağıdakileri göz önünde bulundu
 
 1. Cosmos DB hesap anahtarlarınızı kısa süre önce döndürüyorsunuz, yönetilen kimlik bağlantı dizesinin çalışması için 15 dakikaya kadar beklemeniz gerekir.
 
-1. Cosmos DB hesabının erişiminin ağ seçme ile sınırlı olup olmadığını denetleyin. Varsa, [Azure ağ güvenliği özelliklerini kullanarak veri kaynaklarına Dizin Oluşturucu erişimi](search-indexer-securing-resources.md)bölümüne bakın.
+1. Cosmos DB hesabının erişiminin ağ seçme ile sınırlı olup olmadığını denetleyin. Varsa, [Azure ağ güvenlik özellikleriyle korunan Içeriğe Dizin Oluşturucu erişimi](search-indexer-securing-resources.md)bölümüne bakın.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
-Cosmos DB Dizin oluşturucular hakkında daha fazla bilgi edinin:
 * [Azure Cosmos DB dizinleyici](search-howto-index-cosmosdb.md)

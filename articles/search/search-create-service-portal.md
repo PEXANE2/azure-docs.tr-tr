@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/05/2020
-ms.openlocfilehash: 3ccc5ab07416f65270a7bd720f1e0884027b1fe7
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057731"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102821"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
@@ -41,7 +41,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 ## <a name="find-azure-cognitive-search"></a>Azure Bilişsel Arama bulun
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
 
@@ -102,9 +102,9 @@ Azure Bilişsel Arama çoğu bölgede kullanılabilir. Desteklenen bölgelerin l
 
 Birden çok Azure hizmeti kullanıyorsanız, veri veya uygulama hizmetinizi de barındıran bir bölge seçin. Bunun yapılması, giden veriler için bant genişliği ücretlerini en aza indirir veya azaltır (hizmetler aynı bölgedeyse giden veriler için ücret alınmaz).
 
-## <a name="choose-a-pricing-tier-sku"></a>Fiyatlandırma Katmanı (SKU) seçin
+## <a name="choose-a-pricing-tier"></a>Fiyatlandırma katmanı seçin
 
-[Azure bilişsel arama şu anda birden çok fiyatlandırma katmanlarında sunulmaktadır](https://azure.microsoft.com/pricing/details/search/): ücretsiz, temel veya standart. Her katmanın kendi [kapasitesi ve sınırları](search-limits-quotas-capacity.md) vardır. Yönergeler için [Fiyatlandırma katmanı veya SKU seçme](search-sku-tier.md) bölümüne bakın.
+Azure Bilişsel Arama şu anda [birden çok fiyatlandırma katmanlarında](https://azure.microsoft.com/pricing/details/search/)sunulmaktadır: ücretsiz, temel, standart veya depolama için iyileştirilmiş. Her katmanın kendi [kapasitesi ve sınırları](search-limits-quotas-capacity.md) vardır. Bkz. rehberlik için [bir fiyatlandırma katmanı seçin](search-sku-tier.md) .
 
 Temel ve standart, üretim iş yükleri için en yaygın seçimlerdir, ancak çoğu müşteri ücretsiz hizmetle başlar. Katmanlar arasındaki temel farklılıklar bölüm boyutudur ve hızlardır ve oluşturabileceğiniz nesne sayısı için sınırlar vardır.
 

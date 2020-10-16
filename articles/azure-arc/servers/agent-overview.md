@@ -3,12 +3,12 @@ title: Bağlı makine Windows aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 248604884cf1b7592b382a3490aab60102e12faf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 344bd2c801cb21932b35bcdfdcc38cc3fa73783b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979164"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102991"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
@@ -90,7 +90,7 @@ Hizmet Etiketleri:
 
 Adresleri
 
-| Aracı kaynağı | Açıklama |
+| Aracı kaynağı | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -100,12 +100,12 @@ Adresleri
 
 Önizleme aracıları (sürüm 0,11 ve daha düşük) aşağıdaki URL 'Lere da erişim gerektirir:
 
-| Aracı kaynağı | Açıklama |
+| Aracı kaynağı | Description |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Konuk Yapılandırması|
 |`*-agentservice-prod-1.azure-automation.net`|Konuk Yapılandırması|
 
-Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft, her bir Azure hizmetini ve kullandığı IP aralıklarını içeren haftalık güncelleştirmeler yayımlar. Daha fazla bilgi için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags)gözden geçirin.
+Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft, her bir Azure hizmetini ve kullandığı IP aralıklarını içeren haftalık güncelleştirmeler yayımlar. Daha fazla bilgi için [hizmet etiketlerini](../../virtual-network/network-security-groups-overview.md#service-tags)gözden geçirin.
 
 Hizmetlerin çoğu şu anda bir hizmet etiketi kaydına sahip olmadığından, önceki tablodaki URL 'Ler hizmet etiketi IP adresi aralığı bilgilerine ek olarak gereklidir. Bu nedenle, IP adresleri değişikliğe tabidir. Güvenlik Duvarı yapılandırmanız için IP adresi aralıkları gerekliyse, tüm Azure hizmetlerine erişime izin vermek için **Azurecyüksek** hizmet etiketinin kullanılması gerekir. Bu URL 'Lerin güvenlik izlemesini veya denetimini devre dışı bırakmayın, diğer Internet trafiğinden yaptığınız gibi bunlara izin verin.
 
@@ -164,7 +164,7 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Açıklama |
+    |Klasör |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |%ProgramData%\AzureConnectedMachineAgent |Aracı yapılandırma dosyalarını içerir.|
@@ -176,21 +176,21 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 * Aşağıdaki Windows Hizmetleri, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
+    |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
     |hımds |Azure hibrit Instance Metadata Service |himds.exe |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |DscService |Konuk yapılandırma hizmeti |dsc_service.exe |In-Guest Ilkesi uygulamak için Azure 'da kullanılan Istenen durum yapılandırması (DSC v2) kod temeli.|
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
-    |Name |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Açıklama |
+    |Günlük |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -215,7 +215,7 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Açıklama |
+    |Klasör |Description |
     |-------|------------|
     |/var/seçenek/azcmagent/ |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |/seçenek/azcmagent/ |
@@ -227,14 +227,14 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Aşağıdaki Daemon 'ları, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
+    |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
     |hımdsd. hizmeti |Azure hibrit Instance Metadata Service |/opt/azcmagent/bin/himds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |DSCD. hizmeti |Konuk yapılandırma hizmeti |/Seçenek/DSC/dsc_linux_service |Bu, Azure içinde In-Guest Ilkesi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Açıklama |
+    |Günlük |Description |
     |----|------------|
     |/var/seçenek/azcmagent/log/hımds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |/var/seçenek/azcmagent/log/azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -245,7 +245,7 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur. Bu değişkenler ' de ayarlanır `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

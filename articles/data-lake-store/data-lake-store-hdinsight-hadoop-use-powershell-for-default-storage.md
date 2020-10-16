@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: db29b6743458a4a3ec87dfec9e367bef0c946a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 675f68a36963d19f42cb7c0c5d49ae8c4f0006f2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857019"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103433"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell kullanarak Azure Data Lake Storage 1. varsayılan depolama alanı olarak HDInsight kümeleri oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalını kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Azure portal kullanın](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell kullanma (varsayılan depolama için)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [PowerShell kullanma (ek depolama için)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Kaynak Yöneticisi kullan](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -285,5 +285,5 @@ Ayrıca, `hdfs dfs -put` Data Lake Storage 1. ' ye bazı dosyaları yüklemek i�
 * [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure portal: kullanmak için HDInsight kümesi oluşturma Data Lake Storage 1.](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
+[makecert]: /windows-hardware/drivers/devtest/makecert
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d585ac57a369c994df9871bf731157de7b23212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a6c2255fcba12b19f375e694a0494011aa09b0e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707637"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101871"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory varsayılan kullanıcı izinleri nelerdir?
 Azure Active Directory'de (Azure AD) tüm kullanıcılara varsayılan olarak belirli izinler verilir. Kullanıcının erişimi, Kullanıcı türünden, [rol atamalarından](active-directory-users-assign-role-azure-portal.md)ve ayrı nesnelerin sahiplerinden oluşur. Bu makalede bu varsayılan izinler ve açıklanmakta ve üye ile konuk varsayılan değerleri karşılaştırılmaktadır. Varsayılan Kullanıcı izinleri yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
@@ -26,22 +26,22 @@ Azure Active Directory'de (Azure AD) tüm kullanıcılara varsayılan olarak bel
 ## <a name="member-and-guest-users"></a>Üyeler ve konuk kullanıcılar
 Alınan varsayılan izinler kümesi, kullanıcının kiracının (Üye Kullanıcı) yerel üyesi olup olmamasına veya Kullanıcı başka bir dizinden B2B işbirliği konuğu (Konuk Kullanıcı) olarak getirilmesine bağlıdır. Konuk kullanıcıları ekleme hakkında daha fazla bilgi için bkz. [Azure AD B2B işbirliği nedir?](../external-identities/what-is-b2b.md) .
 * Üye kullanıcılar uygulama kaydedebilir, kendi profil fotoğraflarını ve cep telefonu numaralarını yönetebilir, kendi parolalarını değiştirebilir ve B2B konuklarını davet edebilirler. Ayrıca kullanıcılar dizindeki tüm bilgileri okuyabilir (birkaç özel durum haricinde). 
-* Konuk kullanıcıların kısıtlı dizin izinleri vardır. Kendi profillerini yönetebilir, kendi parolalarını değiştirebilir ve diğer kullanıcılar, gruplar ve uygulamalar hakkında bazı bilgileri alabilirler, ancak tüm dizin bilgilerini okuyamazlar. Örneğin, Konuk kullanıcılar kullanıcıları, grupları ve diğer dizin nesnelerini numaralandıramaz. Konuklar yönetici rollerine eklenerek rol kapsamındaki tüm yazma ve okuma izinlerine erişmeleri sağlanabilir. Konuklar diğer konukları da davet edebilir.
+* Konuk kullanıcıların kısıtlı dizin izinleri vardır. Kendi profillerini yönetebilir, kendi parolalarını değiştirebilir ve diğer kullanıcılar, gruplar ve uygulamalar hakkında bazı bilgileri alabilirler, ancak tüm dizin bilgilerini okuyamazlar. Örneğin, Konuk kullanıcılar tüm kullanıcıların, grupların ve diğer dizin nesnelerinin listesini numaralandıramaz. Konuklar yönetici rollerine eklenerek rol kapsamındaki tüm yazma ve okuma izinlerine erişmeleri sağlanabilir. Konuklar diğer konukları da davet edebilir.
 
 ## <a name="compare-member-and-guest-default-permissions"></a>Üye ve konuk varsayılan izinlerini karşılaştırma
 
 **Alan** | **Üye kullanıcı izinleri** | **Varsayılan Konuk Kullanıcı izinleri** | **Kısıtlı Konuk Kullanıcı izinleri (Önizleme)**
 ------------ | --------- | ---------- | ----------
-Kullanıcılar ve ilgili kişiler | <ul><li>Kullanıcıların ve kişilerin tüm genel özelliklerini okuma</li><li>Konuk davet etme<li>Kendi parolasını değiştirme<li>Kendi cep telefonu numarasını yönetme<li>Kendi fotoğrafını yönetme<li>Kendi yenileme belirteçlerini geçersiz kılma</li></ul> | <ul><li>Kendi özelliklerini okuma<li>Diğer kullanıcıların ve kişilerin görünen ad, e-posta, oturum açma adı, fotoğraf, Kullanıcı asıl adı ve Kullanıcı türü özelliklerini okuyun<li>Kendi parolasını değiştirme<li>Başka bir kullanıcıyı görünen ad, Kullanıcı asıl adı veya ObjectID (izin veriliyorsa) ile ara<li>Diğer kullanıcıların yönetim ve doğrudan rapor bilgilerini okuyun</li></ul> | <ul><li>Kendi özelliklerini okuma<li>Kendi parolasını değiştirme</li></ul>
-Gruplar | <ul><li>Güvenlik grubu oluşturma<li>Microsoft 365 grupları oluşturma<li>Grupların tüm özelliklerini okuma<li>Gizli olmayan grup üyeliklerini okuma<li>Birleştirilmiş grup için gizli Microsoft 365 grup üyeliklerini oku<li>Kullanıcının sahip olduğu grupların özelliklerini, sahipliğini ve üyeliğini yönetme<li>Sahip olunan gruplara konuk ekleme<li>Dinamik üyelik ayarlarını yönetme<li>Sahip olunan grupları silme<li>Sahip olunan Microsoft 365 gruplarını geri yükleme</li></ul> | <ul><li>Üyelik ve sahiplik (hatta katılmamış gruplar) dahil tüm gizli olmayan grupların özelliklerini okuyun<li>Birleştirilmiş gruplar için gizli Microsoft 365 grup üyeliklerini oku<li>Grupları görünen ada veya ObjectID 'ye göre ara (izin veriliyorsa)</li></ul> | İzin yok
-Uygulamalar | <ul><li>Yeni uygulama kaydetme (oluşturma)<li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma<li>Sahip olunan uygulamaların uygulama özelliklerini, atamalarını ve kimlik bilgilerini yönetme<li>Kullanıcı için uygulama parolasını oluşturma veya silme<li>Sahip olunan uygulamaları silme<li>Sahip olunan uygulamaları geri yükleme</li></ul> | <ul><li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma</li></ul> | <ul><li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma
-Cihazlar</li></ul> | <ul><li>Cihazların tüm özelliklerini okuma<li>Sahip olunan cihazların tüm özelliklerini yönetme</li></ul> | İzin yok | İzin yok
+Kullanıcılar ve ilgili kişiler | <ul><li>Tüm kullanıcıların ve kişilerin listesini listeleme<li>Kullanıcıların ve kişilerin tüm genel özelliklerini okuma</li><li>Konuk davet etme<li>Kendi parolasını değiştirme<li>Kendi cep telefonu numarasını yönetme<li>Kendi fotoğrafını yönetme<li>Kendi yenileme belirteçlerini geçersiz kılma</li></ul> | <ul><li>Kendi özelliklerini okuma<li>Diğer kullanıcıların ve kişilerin görünen ad, e-posta, oturum açma adı, fotoğraf, Kullanıcı asıl adı ve Kullanıcı türü özelliklerini okuyun<li>Kendi parolasını değiştirme<li>Başka bir kullanıcıyı görünen ad, Kullanıcı asıl adı veya ObjectID (izin veriliyorsa) ile ara<li>Diğer kullanıcıların yönetim ve doğrudan rapor bilgilerini okuyun</li></ul> | <ul><li>Kendi özelliklerini okuma<li>Kendi parolasını değiştirme</li></ul>
+Gruplar | <ul><li>Güvenlik grubu oluşturma<li>Microsoft 365 grupları oluşturma<li>Tüm grupların listesini listeleme<li>Grupların tüm özelliklerini okuma<li>Gizli olmayan grup üyeliklerini okuma<li>Birleştirilmiş grup için gizli Microsoft 365 grup üyeliklerini oku<li>Kullanıcının sahip olduğu grupların özelliklerini, sahipliğini ve üyeliğini yönetme<li>Sahip olunan gruplara konuk ekleme<li>Dinamik üyelik ayarlarını yönetme<li>Sahip olunan grupları silme<li>Sahip olunan Microsoft 365 gruplarını geri yükleme</li></ul> | <ul><li>Üyelik ve sahiplik (hatta katılmamış gruplar) dahil olmak üzere, gizli olmayan grupların özelliklerini okuyun<li>Birleştirilmiş gruplar için gizli Microsoft 365 grup üyeliklerini oku<li>Grupları görünen ada veya ObjectID 'ye göre ara (izin veriliyorsa)</li></ul> | <ul><li>Birleştirilmiş gruplar için nesne kimliğini oku<li>Bazı Microsoft 365 uygulamalarında birleştirilmiş grupların üyeliğini ve sahipliğini okuma (izin veriliyorsa)</li></ul>
+Uygulamalar | <ul><li>Yeni uygulama kaydetme (oluşturma)<li>Tüm uygulamaların listesini listeleme<li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma<li>Sahip olunan uygulamaların uygulama özelliklerini, atamalarını ve kimlik bilgilerini yönetme<li>Kullanıcı için uygulama parolasını oluşturma veya silme<li>Sahip olunan uygulamaları silme<li>Sahip olunan uygulamaları geri yükleme</li></ul> | <ul><li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma</li></ul> | <ul><li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma
+Cihazlar</li></ul> | <ul><li>Tüm cihazların listesini listeleme<li>Cihazların tüm özelliklerini okuma<li>Sahip olunan cihazların tüm özelliklerini yönetme</li></ul> | İzin yok | İzin yok
 Dizin | <ul><li>Tüm şirket bilgilerini okuma<li>Tüm etki alanlarını okuma<li>Tüm iş ortağı sözleşmelerini okuma</li></ul> | <ul><li>Şirket görünen adını oku<li>Tüm etki alanlarını okuma</li></ul> | <ul><li>Şirket görünen adını oku<li>Tüm etki alanlarını okuma</li></ul>
 Roller ve Kapsamlar | <ul><li>Tüm yönetim rollerini ve üyelikleri okuma<li>Tüm yönetim birimlerinin özelliklerini ve üyeliklerini okuma</li></ul> | İzin yok | İzin yok
 Abonelikler | <ul><li>Tüm abonelikleri okuma<li>Hizmet Planı Üyesini etkinleştirme</li></ul> | İzin yok | İzin yok
 İlkeler | <ul><li>İlkelerin tüm özelliklerini okuma<li>Sahip olunan ilkelerin tüm özelliklerini yönetme</li></ul> | İzin yok | İzin yok
 
-## <a name="to-restrict-the-default-permissions-for-member-users"></a>Üye kullanıcıların varsayılan izinlerini kısıtlama
+## <a name="restrict-member-users-default-permissions"></a>Üye kullanıcıları varsayılan izinlerini kısıtla 
 
 Üye kullanıcıları için varsayılan izinler aşağıdaki yollarla kısıtlanabilir:
 
@@ -55,18 +55,18 @@ Azure AD yönetim portalına erişimi sınırlayın | Bu seçeneğin Hayır olar
 Diğer kullanıcıları okuma olanağı | Bu ayar yalnızca PowerShell ile kullanılabilir. Bu bayrağın $false olarak ayarlanması, yöneticilerin tüm yönetici olmayan kullanıcı bilgilerini dizinden okumasını önler. Bu bayrak Exchange Online gibi diğer Microsoft hizmetlerindeki Kullanıcı bilgilerinin okunmasına engel olmaz. Bu ayar özel koşullara yöneliktir ve bu bayrağın $false olarak ayarlanması önerilmez.
 
 
-## <a name="to-restrict-the-default-permissions-for-guest-users"></a>Konuk kullanıcılar için varsayılan izinleri kısıtlamak için
+## <a name="restrict-guest-users-default-permissions"></a>Konuk kullanıcıların varsayılan izinlerini kısıtla
 
 Konuk kullanıcılar için varsayılan izinler aşağıdaki yollarla kısıtlanabilir:
 
 >[!NOTE] 
->Ziyaretçi Kullanıcı erişimi kısıtlamaları ayarı, **Konuk kullanıcılar izinlerinin sınırlı** ayardır. Bu özelliği kullanma hakkında yönergeler için, bkz. [Azure Active Directory Konuk erişim Izinlerini kısıtlama (Önizleme)](../users-groups-roles/users-restrict-guest-permissions.md).
+>Ziyaretçi **Kullanıcı erişimi kısıtlamaları** ayarı, **Konuk kullanıcılar izinlerinin sınırlı** ayardır. Bu özelliği kullanma hakkında yönergeler için, bkz. [Azure Active Directory Konuk erişim Izinlerini kısıtlama (Önizleme)](../users-groups-roles/users-restrict-guest-permissions.md).
 
 İzin | Ayar açıklaması
 ---------- | ------------
-Konuklar Kullanıcı erişimi kısıtlamaları (Önizleme) | Bu seçeneğin Konuk kullanıcılara ayarlanması, üye kullanıcılara varsayılan olarak tüm üye Kullanıcı izinlerini veren aynı erişime sahip olmalıdır.<p>Bu seçeneğin Konuk Kullanıcı erişimi olarak ayarlanması, kendi dizin nesnelerinin özellikleri ve üyelikleri ile kısıtlıdır, konuk erişimini varsayılan olarak yalnızca kendi Kullanıcı profiline kısıtlar. Kullanıcı asıl adına veya ObjectID 'ye göre arandığında bile diğer kullanıcılara erişime izin verilmez. Gruplar üyelikleri de dahil olmak üzere gruplara erişime artık izin verilmez. Bu ayar, Microsoft ekipleri gibi diğer Microsoft hizmetlerindeki gruplara erişimi engellemez. Daha fazla bilgi için bkz. [Microsoft ekipleri konuk erişimi]() .<p>Konuk kullanıcılar, bu izin ayarlarından bağımsız olarak yönetici rollerine de eklenebilir.
+Konuklar Kullanıcı erişimi kısıtlamaları (Önizleme) | Bu seçeneğin Konuk kullanıcılara ayarlanması, üye kullanıcılara varsayılan olarak tüm üye Kullanıcı izinlerini veren **aynı erişime sahip olmalıdır** .<p>Bu seçeneğin **Konuk Kullanıcı erişimi olarak ayarlanması, kendi dizin nesnelerinin özellikleri ve üyelikleri ile kısıtlıdır,** konuk erişimini varsayılan olarak yalnızca kendi Kullanıcı profiline kısıtlar. Kullanıcı asıl adına, ObjectID 'ye veya görünen ada göre arama yapıldığında bile diğer kullanıcılara erişime izin verilmez. Gruplar üyelikleri de dahil olmak üzere grupların bilgilerine erişime artık izin verilmez.<p>**Not**: Bu ayar, Microsoft ekipleri gibi bazı Microsoft 365 hizmetlerde birleştirilmiş gruplara erişimi engellemez. Daha fazla bilgi için bkz. [Microsoft ekipleri konuk erişimi]() .<p>Konuk kullanıcılar, bu izin ayarlarından bağımsız olarak yönetici rollerine de eklenebilir.
 Konuklar davet edebilir | Bu seçeneğin Evet olarak ayarlanması, konukların diğer konukları davet etmesine olanak tanır. Daha fazla bilgi için bkz. [B2B işbirliği Için temsilci davetleri](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
-Üyeler davet edebilir | Üyeler, bu seçeneğin Evet olarak ayarlanmasını davet edebilir ve dizininizin yönetici olmayan üyelerinin konukları davet etmesine izin verir. Daha fazla bilgi için bkz. [B2B işbirliği Için temsilci davetleri](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
+Üyeler davet edebilir | Bu seçeneğin Evet olarak ayarlanması, konuklarınızın yönetici olmayan üyelerine konukları davet etmesine izin verir. Daha fazla bilgi için bkz. [B2B işbirliği Için temsilci davetleri](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 Konuk davet eden rolündeki yöneticiler ve kullanıcılar davet edebilir | Bu seçeneğin Evet olarak ayarlanması, "konuk davet eden" rolündeki yöneticilerin ve kullanıcıların konukları davet etmesine izin verir. Evet olarak ayarlandığında, konuk davet eden rolündeki kullanıcılar, Üyeler ayar davet edebilmeksizin konukları davet edebilir. Daha fazla bilgi için bkz. [B2B işbirliği Için temsilci davetleri](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user) .
 
 ## <a name="object-ownership"></a>Nesne sahipliği

@@ -3,12 +3,12 @@ title: Ekiplerden Azure laboratuvarında bir VM 'ye (öğrenci görünümü) eri
 description: Ekiplerden Azure laboratuvarında bir VM 'ye (öğrenci görünümü) erişmeyi öğrenin.
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: 346f4bcd75356b0466b1eea46e1da74aa2c63784
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c786a8b3fcee57cefb551a61087d4b49ee5e93c0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043455"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102417"
 ---
 # <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>Ekiplerden Azure laboratuvarında bir VM 'ye (öğrenci görünümü) erişme
 
@@ -16,7 +16,7 @@ Takımlar içinde bir laboratuvar oluşturulduğunda, kullanıcılar takım sahi
 
 ## <a name="view-labs"></a>Laboratuvarları görüntüle
 
-Laboratuvar henüz yayınlanıyorsa veya takıma eklendikten sonra bir eşitleme henüz tetikleniyorsa, öğrencilerle benzer mesajlaşma gösterilir. ' ' Ye laboratuvar yayınlanıyorsa veya ekibe eklendikten sonra bir eşitleme henüz tetikleniyorsa, benzer mesajlaşma ekip üyelerine gösterilir.
+Laboratuvar henüz yayınlanıyorsa veya takıma eklendikten sonra bir eşitleme henüz tetikleniyorsa, benzer mesajlaşma ekibi üyelerine gösterilir.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/lab.png" alt-text="Azure Lab Services Laboratuvarı":::

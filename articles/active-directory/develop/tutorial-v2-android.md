@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a1a82d5f2a2e0b5cc9dba4e83fa1063cb6089375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbfaf52a7c5bb5e44b85513d8e2c2ec5f1cea356
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611223"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101992"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph API 'sini çağırın
 
@@ -33,7 +33,7 @@ Bu öğreticiyi tamamladığınızda, uygulamanız kişisel Microsoft hesapları
 > * Microsoft Graph API 'sini çağırmak için kod ekleme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Android Studio 3.5 +
 
@@ -102,6 +102,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
       "client_id" : "0984a7b6-bc13-4141-8b0d-8f767e136bb7",
       "authorization_user_agent" : "DEFAULT",
       "redirect_uri" : "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D",
+      "broker_redirect_uri_registered" : true,
       "account_mode" : "SINGLE",
       "authorities" : [
         {
@@ -151,7 +152,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
         jcenter()
     }
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:1.+'
+        implementation 'com.microsoft.identity.client:msal:2.+'
         implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
     }
     packagingOptions{
@@ -472,7 +473,7 @@ private void performOperationOnSignOut() {
             .show();
 }
 ```
-### <a name="layout"></a>Düzen
+### <a name="layout"></a>Layout
 
 `activity_main.xml`Düğmeleri ve metin kutularını görüntüleyen örnek dosya.
 

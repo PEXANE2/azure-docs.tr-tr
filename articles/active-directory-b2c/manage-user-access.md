@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2018
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51a66d74750afa6c46dba7fa442477e85effb2d6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387737"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102060"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Kullanıcı erişimini yönetme
 
@@ -78,7 +78,7 @@ Aşağıdaki adımlarda, kullanıcının Doğum tarihinden sonra **Agegrubunu** 
 
 4. Hiçbir hesaplama true döndürürse, hesaplama **yetişkin**döndürür.
 
-Bir uygulama, başka yöntemlerle güvenilir bir şekilde DOB veya ülke/bölge verileri toplanmışsa, bu bilgileri kullanarak uygulama kullanıcı kaydını güncelleştirmek için Graph API kullanabilir. Örneğin:
+Bir uygulama, başka yöntemlerle güvenilir bir şekilde DOB veya ülke/bölge verileri toplanmışsa, bu bilgileri kullanarak uygulama kullanıcı kaydını güncelleştirmek için Graph API kullanabilir. Örnek:
 
 - Bir kullanıcının yetişkin olduğu bilindiğinde, bir **yetişme**değeri olan **agegroup** adlı dizin özniteliğini güncelleştirin.
 - Bir kullanıcının küçük olduğu bilindiğinde, dizin özniteliği **Agegroup** değerini bir **Minor** değeri ile güncelleştirin ve **consentProvidedForMinor**olarak ayarlayın.
@@ -114,7 +114,7 @@ Aşağıdaki görüntüde önerilen Kullanıcı akışı gösterilmektedir:
 
 ![Önerilen kabul Kullanıcı akışını gösteren akış grafiği diyagramı](./media/manage-user-access/user-flow.png)
 
-Aşağıda, bir talepteki tarih saat temelli kullanım koşulları izni örneği verilmiştir:
+Aşağıda, bir talepteki Tarih temelli kullanım koşulları onayı örneği verilmiştir. `extension_termsOfUseConsentDateTime`Talep şundan eskiyse `2025-01-15T00:00:00` , `termsOfUseConsentRequired` Boole talebini denetleyerek ve kendinden onaylanan bir ekran görüntüleyerek yeni bir kabul zorlayın. 
 
 ```xml
 <ClaimsTransformations>
@@ -128,7 +128,7 @@ Aşağıda, bir talepteki tarih saat temelli kullanım koşulları izni örneği
       <InputClaim ClaimTypeReferenceId="extension_termsOfUseConsentDateTime" TransformationClaimType="termsOfUseConsentDateTime" />
     </InputClaims>
     <InputParameters>
-      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2098-01-30T23:03:45" />
+      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2025-01-15T00:00:00" />
     </InputParameters>
     <OutputClaims>
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="result" />
@@ -137,7 +137,7 @@ Aşağıda, bir talepteki tarih saat temelli kullanım koşulları izni örneği
 </ClaimsTransformations>
 ```
 
-Aşağıda, bir talepteki sürüm tabanlı kullanım koşulları onayı örneği verilmiştir:
+Aşağıda, bir talepteki sürüm tabanlı kullanım koşulları onayı örneği verilmiştir. `extension_termsOfUseConsentVersion`Talep değerine eşit değilse `V1` , `termsOfUseConsentRequired` Boole talebini denetleyerek ve kendinden onaylanan bir ekran görüntüleyerek yeni bir kabul zorlayın.
 
 ```xml
 <ClaimsTransformations>

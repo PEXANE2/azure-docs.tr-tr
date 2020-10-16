@@ -4,12 +4,12 @@ description: Bir etkinlik günlüğü uyarısı etkinleşdiğinde bir Web kancas
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 018bf7ac9c24669df798e9ba05c667dcb72d94a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ebaf7f0cc52ac131573226dfff5516581745c67
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321845"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104283"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
 Bir eylem grubu tanımının bir parçası olarak, Web kancası uç noktalarını etkinlik günlüğü uyarı bildirimlerini alacak şekilde yapılandırabilirsiniz. Web kancaları ile bu bildirimleri, işlem sonrası veya özel eylemler için diğer sistemlere yönlendirebilirsiniz. Bu makalede, bir Web kancası için HTTP POST yükünün nasıl göründüğü gösterilmektedir.
@@ -19,7 +19,7 @@ Etkinlik günlüğü uyarıları hakkında daha fazla bilgi için bkz. [Azure et
 Eylem grupları hakkında bilgi için bkz. [eylem grupları oluşturma](./action-groups.md).
 
 > [!NOTE]
-> Web kancası tümleştirmelerinize yönelik olarak, Azure Izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](https://aka.ms/commonAlertSchemaDocs)da kullanabilirsiniz. [Ortak uyarı şeması tanımları hakkında bilgi edinin.](https://aka.ms/commonAlertSchemaDefinitions)
+> Web kancası tümleştirmelerinize yönelik olarak, Azure Izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](./alerts-common-schema.md)da kullanabilirsiniz. [Ortak uyarı şeması tanımları hakkında bilgi edinin.](./alerts-common-schema-definitions.md)
 
 
 ## <a name="authenticate-the-webhook"></a>Web kancasının kimliğini doğrulama
@@ -292,4 +292,3 @@ Tüm diğer etkinlik günlüğü uyarılarıyla ilgili belirli şema ayrıntıla
 * Bir [Azure uyarısından Twilio aracılığıyla SMS göndermek için bir mantıksal uygulama kullanın](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Bu örnek, ölçüm uyarıları içindir, ancak etkinlik günlüğü uyarısıyla çalışacak şekilde değiştirilebilir.
 * Bir [Azure uyarısından bir bolluk iletisi göndermek için bir mantıksal uygulama kullanın](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Bu örnek, ölçüm uyarıları içindir, ancak etkinlik günlüğü uyarısıyla çalışacak şekilde değiştirilebilir.
 * Azure [uyarısından bir Azure kuyruğuna ileti göndermek için bir mantıksal uygulama kullanın](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Bu örnek, ölçüm uyarıları içindir, ancak etkinlik günlüğü uyarısıyla çalışacak şekilde değiştirilebilir.
-

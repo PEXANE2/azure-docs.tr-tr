@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e319cf9dfc01546607e20572c5bf4930fd974c75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191400"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104045"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Bir Azure sanal ağı içindeki VM 'lerden erişim Azure Data Lake Storage 1.
 Azure Data Lake Storage 1., genel Internet IP adresleri üzerinde çalışan bir PaaS hizmetidir. Genel Internet 'e bağlanabilecek herhangi bir sunucu, genellikle Azure Data Lake Storage 1. uç noktalara bağlanabilir. Varsayılan olarak, Azure sanal ağları 'nda bulunan tüm VM 'Ler Internet 'e erişebilir ve bu nedenle Azure Data Lake Storage 1. erişebilir. Ancak, VNET 'teki VM 'Lerin Internet erişimi olmayan şekilde yapılandırılması mümkündür. Bu tür sanal makineler için Azure Data Lake Storage 1. erişimi de kısıtlıdır. Azure sanal ağları 'nda VM 'Ler için genel Internet erişimini engelleme, aşağıdaki yaklaşımlardan herhangi biri kullanılarak yapılabilir:
@@ -46,7 +46,7 @@ Aliases:  mydatastore.azuredatalakestore.net
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>NSG kullanılarak kısıtlanan VM 'lerden bağlantı etkinleştiriliyor
-Internet 'e erişimi engellemek için bir NSG kuralı kullanıldığında, Data Lake Storage 1. IP adresine erişime izin veren başka bir NSG oluşturabilirsiniz. NSG kuralları hakkında daha fazla bilgi için bkz. [ağ güvenlik gruplarına genel bakış](../virtual-network/security-overview.md). NSG 'ler oluşturma hakkında yönergeler için bkz. [ağ güvenlik grubu oluşturma](../virtual-network/tutorial-filter-network-traffic.md).
+Internet 'e erişimi engellemek için bir NSG kuralı kullanıldığında, Data Lake Storage 1. IP adresine erişime izin veren başka bir NSG oluşturabilirsiniz. NSG kuralları hakkında daha fazla bilgi için bkz. [ağ güvenlik gruplarına genel bakış](../virtual-network/network-security-groups-overview.md). NSG 'ler oluşturma hakkında yönergeler için bkz. [ağ güvenlik grubu oluşturma](../virtual-network/tutorial-filter-network-traffic.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>UDR veya ExpressRoute kullanılarak kısıtlanan VM 'lerden bağlantı etkinleştiriliyor
 Internet 'e erişimi engellemek için UDRs veya BGP tarafından değiştirilen yollar kullanıldığında, bu alt ağlardaki VM 'Lerin Data Lake Storage 1. uç noktalarına erişebilmeleri için özel bir yolun yapılandırılması gerekir. Daha fazla bilgi için bkz. [Kullanıcı tanımlı yollara genel bakış](../virtual-network/virtual-networks-udr-overview.md). UDRs oluşturmayla ilgili yönergeler için, [Kaynak Yöneticisi UDRs oluşturma](../virtual-network/tutorial-create-route-table-powershell.md)bölümüne bakın.
@@ -57,4 +57,3 @@ Bir ExpressRoute bağlantı hattı yapılandırıldığında, şirket içi sunuc
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure Data Lake Storage 1. genel bakış](data-lake-store-overview.md)
 * [Azure Data Lake Storage 1. Nesil'de depolanan verilerin güvenliğini sağlama](data-lake-store-security-overview.md)
-

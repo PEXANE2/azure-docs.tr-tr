@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716134"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102651"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Gen1 'den Gen2 'e geçiş Azure Data Lake Storage
 
@@ -122,7 +122,7 @@ Her bir düzene daha yakından göz atalım.
  
 ### <a name="lift-and-shift-pattern"></a>Yükselt ve kaydırma stili
 
-Bu en basit modeldir.
+Bu en basit modeldir. 
 
 1. Tüm Gen1 yazma işlemlerini durdur.
 
@@ -131,6 +131,8 @@ Bu en basit modeldir.
 3. Gen2 'e giriş işlemlerini ve iş yüklerini işaret edin.
 
 4. Gen1 yetkisini alma.
+
+[Asansör ve kaydırma geçiş](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md)örneğimizde bulunan Asansör ve kaydırma deseninin örnek kodumuza göz atın.
 
 > [!div class="mx-imgBorder"]
 > ![yükselt ve kaydırma stili](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
@@ -153,6 +155,9 @@ Bu en basit modeldir.
 
 4. Gen1 yetkisini alma.
 
+[Artımlı kopyalama geçiş](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md)örneğimizde artımlı kopyalama deseninin örnek kodumuza göz atın.
+
+
 > [!div class="mx-imgBorder"]
 > ![Artımlı kopyalama kalıbı](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
@@ -174,6 +179,8 @@ Bu en basit modeldir.
 
 4. Tüm Gen1 yazma işlemlerini durdurun ve ardından Gen1 yetkisini alın.
 
+[Çift ardışık düzen geçiş örneğimizde](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md)çift ardışık düzen deseninin örnek kodumuzu inceleyin.
+
 > [!div class="mx-imgBorder"]
 > ![Çift ardışık düzen düzeni](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
@@ -192,6 +199,8 @@ Bu en basit modeldir.
 3. Tüm taşımalar tamamlandığında, tüm Gen1 yazma işlemlerini durdurun ve çift yönlü çoğaltmayı devre dışı bırakın.
 
 4. Gen1 yetkisini alma.
+
+Çift yönlü eşitleme [geçiş](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md)örneğimizde çift yönlü eşitleme deseninin örnek kodumuzu inceleyin.
 
 > [!div class="mx-imgBorder"]
 > ![Çift yönlü desenler](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212703"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102332"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
@@ -43,7 +43,7 @@ Azure sanal WAN, sanal ağlar, şube siteleri, SaaS ve PaaS uygulamaları ve kul
 
 **Şekil 2: genel aktarım ağı ve sanal WAN**
 
-Azure sanal WAN mimarisinde, sanal WAN hub 'ları, Dallarınızı, VNET 'leri ve uzak kullanıcılarınızı bağlamayı seçebileceğiniz Azure bölgelerinde sağlanır. Fiziksel şube siteleri, Premium ExpressRoute veya siteden siteye-VPN 'Ler tarafından hub 'a bağlanır, sanal ağlar VNet bağlantıları tarafından hub 'a bağlanır ve uzak kullanıcılar kullanıcı VPN (Noktadan siteye VPN 'Ler) kullanarak hub 'a doğrudan bağlanabilir. Sanal WAN Ayrıca, bir bölgedeki VNet 'in farklı bir bölgedeki sanal WAN hub 'ına bağlı olduğu bölgeler arası VNet bağlantısını destekler.
+Azure sanal WAN mimarisinde, sanal WAN hub 'ları, Dallarınızı, VNET 'leri ve uzak kullanıcılarınızı bağlamayı seçebileceğiniz Azure bölgelerinde sağlanır. Fiziksel şube siteleri, Premium veya standart ExpressRoute veya siteden siteye-VPN 'Ler tarafından hub 'a bağlanır, sanal ağlar VNet bağlantıları tarafından hub 'a bağlanır ve uzak kullanıcılar kullanıcı VPN (Noktadan siteye VPN 'Ler) kullanarak hub 'a doğrudan bağlanabilir. Sanal WAN Ayrıca, bir bölgedeki VNet 'in farklı bir bölgedeki sanal WAN hub 'ına bağlı olduğu bölgeler arası VNet bağlantısını destekler.
 
 En fazla sayıda bağlı bileşen (dal, VNet, Kullanıcı) ve daha sonra diğer bölgelerdeki alt dalları hub 'a bağlayarak bir sanal WAN 'ı oluşturabilirsiniz. Bu, kurumsal bir parmak izi genellikle birkaç uzak bağlı bileşen içeren bir bölgede olduğunda iyi bir seçenektir.  
   
@@ -87,7 +87,7 @@ Daldan VNet, Azure sanal WAN tarafından desteklenen birincil yoldur. Bu yol, da
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach ve sanal WAN
 
-ExpressRoute, şirket içi ağlarınızı Microsoft Bulut bağlamak için özel ve dayanıklı bir yoldur. Sanal WAN, Express Route bağlantı hattı bağlantılarını destekler. Bir dal sitesini Express Route ile sanal WAN 'a bağlamak 1) Premium devre 2) devresinin Global Reach etkinleştirilmiş bir konumda olması gerekir.
+ExpressRoute, şirket içi ağlarınızı Microsoft Bulut bağlamak için özel ve dayanıklı bir yoldur. Sanal WAN, Express Route bağlantı hattı bağlantılarını destekler. Bir dal sitesini Express Route ile sanal WAN 'a bağlamak 1) Premium veya standart devre 2) devresinin Global Reach etkinleştirilmiş bir konumda olması gerekir.
 
 ExpressRoute Global Reach ExpressRoute için bir eklenti özelliğidir. Global Reach ile, şirket içi ağlarınızla özel bir ağ oluşturmak için ExpressRoute bağlantı devresine bir araya getirebilirsiniz. ExpressRoute kullanarak Azure sanal WAN 'a bağlı dallar, ExpressRoute Global Reach birbirleriyle iletişim kurmasını gerektirir.
 

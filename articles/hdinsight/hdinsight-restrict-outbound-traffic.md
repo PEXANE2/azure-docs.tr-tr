@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc90389e9f600f1411699700989e38c78bee99cc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006526"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103348"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma
 
@@ -23,11 +23,11 @@ Bu makalede, Azure Güvenlik Duvarı 'nı kullanarak HDInsight kümenizdeki gide
 
 HDInsight kümeleri normalde bir sanal ağda dağıtılır. Kümede, bu sanal ağın dışındaki hizmetler üzerinde bağımlılıklar vardır.
 
-Gelen trafik gerektiren birkaç bağımlılık vardır. Gelen yönetim trafiği bir güvenlik duvarı cihazından gönderilemez. Bu trafiğin kaynak adresleri bilinmektedir ve [burada](hdinsight-management-ip-addresses.md)yayımlanır. Ayrıca, kümelerdeki gelen trafiğin güvenliğini sağlamak için bu bilgilerle ağ güvenlik grubu (NSG) kuralları da oluşturabilirsiniz.
+Gelen yönetim trafiği bir güvenlik duvarı üzerinden gönderilemez. [Burada](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)belgelendiği gibi, gelen trafik için NSG hizmet etiketlerini kullanabilirsiniz. 
 
-HDInsight giden trafik bağımlılıkları, FQDN 'Ler ile neredeyse tamamen tanımlanmıştır. Bunların arkasında statik IP adresleri yok. Statik adreslerin olmaması, ağ güvenlik gruplarının (NSG 'ler) bir kümeden giden trafiği kilitleyemeyeceği anlamına gelir. Adresler, en çok bir kez değişir ve geçerli ad çözümlemesi ve kullanımı temel alınarak kuralları ayarlayamamıştır.
+HDInsight giden trafik bağımlılıkları, FQDN 'Ler ile neredeyse tamamen tanımlanmıştır. Bunların arkasında statik IP adresleri yok. Statik adreslerin olmaması, ağ güvenlik gruplarının (NSG 'ler) bir kümeden giden trafiği kilitleyemeyeceği anlamına gelir. IP adresleri, en çok bir kez değişir ve geçerli ad çözümlemesi ve kullanımı temel alınarak kuralları ayarlayamamıştır.
 
-Etki alanı adlarına göre giden trafiği denetleyesağlayan bir güvenlik duvarı ile giden adresleri güvenli hale getirin. Azure Güvenlik Duvarı, giden trafiği hedef veya [FQDN ETIKETLERININ](../firewall/fqdn-tags.md)FQDN 'sine göre kısıtlar.
+FQDN 'Ler temelinde giden trafiği denetleyesağlayan bir güvenlik duvarı ile giden adresleri güvenli hale getirin. Azure Güvenlik Duvarı, giden trafiği hedef veya [FQDN ETIKETLERININ](../firewall/fqdn-tags.md)FQDN 'sine göre kısıtlar.
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>HDInsight ile Azure Güvenlik duvarını yapılandırma
 
@@ -63,23 +63,23 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
     | Özellik|  Değer|
     |---|---|
-    |Adı| FwAppRule|
+    |Ad| FwAppRule|
     |Öncelik|200|
     |Eylem|İzin Ver|
 
     **FQDN etiketleri bölümü**
 
-    | Adı | Kaynak adres | FQDN etiketi | Notlar |
+    | Name | Kaynak adres | FQDN etiketi | Notlar |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate ve HDInsight | HDI Hizmetleri için gerekli |
 
     **Hedef FQDN bölümü**
 
-    | Adı | Kaynak adresler | Protokol: bağlantı noktası | Hedef FQDN 'ler | Notlar |
+    | Name | Kaynak adresler | Protokol: bağlantı noktası | Hedef FQDN 'ler | Notlar |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
-    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | `storage_account_name`Gerçek depolama hesabı adınızla değiştirin. Kümeniz, ile desteklenir ve ardından, için bir kural ekleyin. YALNıZCA HTTPS bağlantılarını kullanmak için depolama hesabında ["güvenli aktarım gerekli"](../storage/common/storage-require-secure-transfer.md) özelliğinin etkinleştirildiğinden emin olun. |
+    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | `storage_account_name`Gerçek depolama hesabı adınızla değiştirin. YALNıZCA HTTPS bağlantılarını kullanmak için depolama hesabında ["güvenli aktarım gerekli"](../storage/common/storage-require-secure-transfer.md) özelliğinin etkinleştirildiğinden emin olun. Depolama hesaplarına erişmek için özel uç nokta kullanıyorsanız, bu adım gerekli değildir ve depolama trafiği güvenlik duvarından iletilmez.|
 
    ![Başlık: uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -97,25 +97,16 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
     | Özellik|  Değer|
     |---|---|
-    |Adı| FwNetRule|
+    |Ad| FwNetRule|
     |Öncelik|200|
     |Eylem|İzin Ver|
 
-    **IP adresleri bölümü**
-
-    | Adı | Protokol | Kaynak adresler | Hedef adresler | Hedef bağlantı noktaları | Notlar |
-    | --- | --- | --- | --- | --- | --- |
-    | Rule_1 | UDP | * | * | 123 | Zaman hizmeti |
-    | Rule_2 | Herhangi biri | * | DC_IP_Address_1, DC_IP_Address_2 | * | Kurumsal Güvenlik Paketi (ESP) kullanıyorsanız, IP adresleri bölümüne, ESP kümeleri için AAD-DS ile iletişime izin veren bir ağ kuralı ekleyin. Etki alanı denetleyicilerinin IP adreslerini portaldaki AAD-DS bölümünde bulabilirsiniz |
-    | Rule_3 | TCP | * | Data Lake Storage hesabınızın IP adresi | * | Azure Data Lake Storage kullanıyorsanız, ADLS 1. ve Gen2 ile ilgili bir SNı sorunu gidermek için IP adresleri bölümüne bir ağ kuralı ekleyebilirsiniz. Bu seçenek, trafiği güvenlik duvarıyla yönlendirmeyecektir. Bu, büyük veri yükleri için daha yüksek maliyetlere neden olabilir, ancak trafik günlüğe kaydedilir ve güvenlik duvarı günlüklerinde denetlenebilir. Data Lake Storage hesabınızın IP adresini belirleme. `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`FQDN 'yi BIR IP adresine çözümlemek için gibi bir PowerShell komutu kullanabilirsiniz.|
-    | Rule_4 | TCP | * | * | 12000 | Seçim Log Analytics kullanıyorsanız, Log Analytics çalışma alanınız ile iletişimi etkinleştirmek için IP adresleri bölümünde bir ağ kuralı oluşturun. |
-
     **Hizmet etiketleri bölümü**
 
-    | Adı | Protokol | Kaynak Adresler | Hizmet Etiketleri | Hedef bağlantı noktaları | Notlar |
+    | Name | Protokol | Kaynak Adresler | Hizmet Etiketleri | Hedef bağlantı noktaları | Notlar |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_7 | TCP | * | SQL | 1433 | SQL trafiğini günlüğe kaydetmek ve denetleyeceğinizi sağlayacak SQL için hizmet etiketleri bölümünde bir ağ kuralı yapılandırın. HDInsight alt ağında SQL Server için hizmet uç noktaları yapılandırmadığınız takdirde, güvenlik duvarını atlayacak olur. |
-    | Rule_8 | TCP | * | Azure İzleyici | * | seçim Otomatik ölçeklendirme özelliğini kullanmayı planlayan müşterilerin bu kuralı eklemesi gerekir. |
+    | Rule_5 | TCP | * | SQL | 1433 | HDInsight tarafından sunulan varsayılan SQL sunucularını kullanıyorsanız SQL için SQL trafiğini günlüğe kaydederek ve denetim altına alacak olan hizmet etiketleri bölümünde bir ağ kuralı yapılandırın. HDInsight alt ağında SQL Server için hizmet uç noktaları yapılandırmadığınız takdirde, güvenlik duvarını atlayacak olur. Ambarı, Oozie, Ranger ve Hive metastroes için özel SQL Server kullanıyorsanız yalnızca kendi özel SQL sunucularınız için trafiğe izin vermeniz gerekir.|
+    | Rule_6 | TCP | * | Azure İzleyici | * | seçim Otomatik ölçeklendirme özelliğini kullanmayı planlayan müşterilerin bu kuralı eklemesi gerekir. |
     
    ![Başlık: uygulama kuralı koleksiyonu girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
@@ -125,9 +116,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
 Aşağıdaki girişlerle bir yol tablosu oluşturun:
 
-* [Sistem durumu ve yönetim hizmetlerinden](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) gelen tüm IP adresleri: bir sonraki atlama türüne sahip tüm bölgeler **.**
-
-* Kümenin [sistem durumu ve yönetim hizmetlerinden](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions) oluşturulduğu bölge IÇIN iki IP adresi: **Internet**'in bir sonraki atlama türüne sahip belirli bölgeler.
+* **Internet**'in bir sonraki atlama türü Ile [sistem durumu ve yönetim HIZMETLERINDEN](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) gelen tüm IP adresleri. Bu, genel bölgelerin 4 IP 'sini ve belirli bölgeniz için 2 IP 'yi içermelidir. Bu kural yalnızca ResourceProviderConnection *gelen*olarak ayarlandıysa gereklidir. ResourceProviderConnection *giden* olarak ayarlandıysa, bu IP 'ler UDR 'de gerekli değildir. 
 
 * 0.0.0.0/0 IP adresi için bir Sanal Gereç yolu, sonraki atlama olan Azure Güvenlik Duvarı özel IP adresiniz.
 

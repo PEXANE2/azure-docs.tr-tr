@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: uygulamalar için bir profil oluşturma-Azure portal-Azure Traffic Manager'
-description: Bu hızlı başlangıç makalesinde yüksek oranda kullanılabilir web uygulaması oluşturmak için bir Traffic Manager profili oluşturma adımlarını anlatılmaktadır.
+description: Bu hızlı başlangıç makalesinde, Azure portal kullanarak yüksek düzeyde kullanılabilir bir Web uygulaması oluşturmak için bir Traffic Manager profilinin nasıl oluşturulacağı açıklanır.
 services: traffic-manager
 author: duongau
 manager: twooley
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 10/15/2020
 ms.author: duau
-ms.openlocfilehash: 7a347d5cd72fcf955dae0aa8319632fdb43d3bf7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 45489d3500a4a744f2aeb34dc21122d180797133
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89400271"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101337"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Traffic Manager profili oluşturma
 
@@ -27,41 +27,42 @@ Bu hızlı başlangıçta, bir Web uygulamasının iki örneği hakkında bilgi 
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-
-[Azure portalında](https://portal.azure.com) oturum açın.
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıçta iki farklı Azure bölgesinde (*Doğu ABD* ve *Batı Avrupa*) dağıtılan bir Web uygulamasının iki örneğine ihtiyacınız olacaktır. Her biri, Traffic Manager için birincil ve yük devretme uç noktaları olarak görev yapar.
 
-1. Ekranın sol üst kısmında **kaynak oluştur**  >  **Web**  >  **Web uygulaması**' nı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+
+1. Ekranın sol üst kısmında **kaynak oluştur**' u seçin. **Web uygulaması** araması yapın ve **Oluştur**' u seçin.
 
 1. **Web uygulaması oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
 
-   - **Abonelik**  >  **Kaynak grubu**: **Yeni oluştur** ' u seçin ve **myResourceGroupTM1**yazın.
-   - **Örnek ayrıntıları**  >  **Ad**: *myWebAppEastUS*yazın.
-   - **Örnek ayrıntıları**  >  **Yayımla**: **kodu**seçin.
-   - **Örnek ayrıntıları**  >  **Çalışma zamanı yığını**: **ASP.net v 4.7** seçin
-   - **Örnek ayrıntıları**  >  **Işletim sistemi**: **Windows**' u seçin.
-   - **Örnek ayrıntıları**  >  **Bölge**: **Doğu ABD**seçin.
-   - **App Service planı**  >  **Windows planı (Doğu ABD)**: **Yeni oluştur** ' u seçin ve **myAppServicePlanEastUS** yazın.
-   - **App Service planı**  >  **SKU ve boyut**: **Standart S1**' i seçin.
+    | Ayar                 | Değer |
+    | ---                     | --- |
+    | Abonelik            | Aboneliğinizi seçin. |    
+    | Kaynak grubu          | **Yeni oluştur** ' u seçin ve metin kutusuna *myResourceGroupTM1* girin.|
+    | Name                    | Web uygulamanız için benzersiz bir **ad** girin. Bu örnek, *myWebAppEastUS*kullanır. |
+    | Yayımla                 | **Kod**’u seçin. |
+    | Çalışma zamanı yığını           | **ASP.net v 4.7**öğesini seçin. |
+    | İşletim Sistemi        | **Windows**' u seçin. |
+    | Bölge                  | **Doğu ABD**’yi seçin. |
+    | Windows Planı            | **Yeni oluştur** ' u seçin ve metin kutusuna *myAppServicePlanEastUS* girin. |
+    | Sku ve boyut            | **Standart S1 100 total ACU, 1,75-GB bellek ' i**seçin. |
    
-3. **İzleme** sekmesini seçin veya **İleri: izleme**' yi seçin.  **İzleme**altında Application Insights **Application Insights**  >  **Etkinleştir** ' i belirleyin **No**.
+1. **İzleme** sekmesini seçin veya **İleri: izleme**' yi seçin.  **İzleme**altında Application Insights **Application Insights**  >  **Etkinleştir** ' i belirleyin **No**.
 
-4. **Gözden geçir ve oluştur** seçeneğini belirleyin
+1. **Gözden geçir ve Oluştur '** u seçin.
 
-5. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.  Web uygulaması başarılı bir şekilde dağıttığında, varsayılan bir Web sitesi oluşturur.
+1. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.  Web uygulaması başarılı bir şekilde dağıttığında, varsayılan bir Web sitesi oluşturur.
 
-6. *MyWebAppWestEurope*adlı Ikinci bir Web uygulaması oluşturmak için adımları Izleyin. **kaynak grubu** adı *myResourceGroupTM2*, bir **bölge** *Batı Avrupa*, **myAppServicePlanWestEurope** **App Service planı** adı ve diğer tüm ayarlar *myWebAppEastUS*ile aynı.
+1. *MyWebAppWestEurope*adlı Ikinci bir Web uygulaması oluşturmak için 1-6 adımlarını izleyin. **Kaynak grubu** adı, *Batı Avrupa* **bölgesiyle** ve **App Service plan** adı **myAppServicePlanWestEurope** *' dir.* Diğer tüm ayarlar *myWebAppEastUS*ile aynıdır.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
 Uç nokta önceliğine göre Kullanıcı trafiğini yönlendiren bir Traffic Manager profili oluşturun.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur**  >  **ağ**  >  **Traffic Manager profil**' i seçin.
-2. **Oluşturma Traffic Manager profilinde**, bu ayarları girin veya seçin:
+1. Ekranın sol üst kısmında **kaynak oluştur**' u seçin. Sonra **Traffic Manager profili** araması yapın ve **Oluştur**' u seçin.
+1. **Oluşturma Traffic Manager profilinde**, bu ayarları girin veya seçin:
 
     | Ayar | Değer |
     | --------| ----- |
@@ -71,16 +72,19 @@ Uç nokta önceliğine göre Kullanıcı trafiğini yönlendiren bir Traffic Man
     | Kaynak grubu | *MyResourceGroupTM1*öğesini seçin.|
     | Konum |Bu ayar, kaynak grubunun konumunu ifade eder. Genel olarak dağıtılacak Traffic Manager profili üzerinde hiçbir etkisi yoktur.|
 
-3. **Oluştur**’u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
 
 Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu ABD* bölgesindeki web sitesini ekleyin. *Batı Avrupa* Web sitesini yük devretme uç noktası olarak ekleyin. Birincil uç nokta kullanılamadığında, trafik otomatik olarak yük devretme uç noktasına yönlendirir.
 
 1. Portalın arama çubuğunda, önceki bölümde oluşturduğunuz Traffic Manager profili adını girin.
-2. Arama sonuçlarından profili seçin.
-3. **Traffic Manager profili**' nde, **Ayarlar** bölümünde **uç noktalar**' ı seçin ve ardından **Ekle**' yi seçin.
-4. Bu ayarları girin veya seçin:
+1. Arama sonuçlarından profili seçin.
+1. **Traffic Manager profili**' nde, **Ayarlar** bölümünde **uç noktalar**' ı seçin ve ardından **Ekle**' yi seçin.
+
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="Traffic Manager profilindeki uç nokta ayarları":::
+
+1. Bu ayarları girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ------|
@@ -90,10 +94,10 @@ Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu
     | Hedef kaynak | Doğu ABD **bir App Service seçin öğesini**seçin  >  **East US**. |
     | Öncelik | **1**'i seçin. Tüm trafik sağlıklı olduğunda bu uç noktaya gider. |
 
-    ![Traffic Manager profilinize bir uç nokta eklediğiniz ekran görüntüsü.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
-
-5. **Tamam**’ı seçin.
-6. İkinci Azure bölgenize yönelik bir yük devretme uç noktası oluşturmak için bu ayarlarla 3 ve 4 numaralı adımları yineleyin:
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="Traffic Manager profilindeki uç nokta ayarları":::
+    
+1. **Tamam**’ı seçin.
+1. İkinci Azure bölgenize yönelik bir yük devretme uç noktası oluşturmak için bu ayarlarla 3 ve 4 numaralı adımları yineleyin:
 
     | Ayar | Değer |
     | ------- | ------|
@@ -103,7 +107,7 @@ Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu
     | Hedef kaynak | Batı Avrupa **bir App Service seçin öğesini**seçin  >  **West Europe**. |
     | Öncelik | **2**öğesini seçin. Birincil uç nokta sağlıksız ise tüm trafik bu yük devretme uç noktasına gider. |
 
-7. **Tamam**’ı seçin.
+1. **Tamam**’ı seçin.
 
 İki uç nokta eklemeyi tamamladığınızda, bunlar **Traffic Manager profilinde**görüntülenirler. İzleme durumlarının şimdi **çevrimiçi** olduğuna dikkat edin.
 
@@ -114,10 +118,10 @@ Bu bölümde, Traffic Manager profilinizin etki alanı adını kontrol edeceksin
 ### <a name="check-the-dns-name"></a>DNS adını denetleyin
 
 1. Portalın arama çubuğunda, önceki bölümde oluşturduğunuz **Traffic Manager profili** adını arayın.
-2. Traffic Manager profilini seçin. **Genel bakış** görüntülenir.
-3. **Traffic Manager profili** penceresinde yeni oluşturduğunuz Traffic Manager profilinin DNS adı görüntülenir.
+1. Traffic Manager profilini seçin. **Genel bakış** görüntülenir.
+1. **Traffic Manager profili** penceresinde yeni oluşturduğunuz Traffic Manager profilinin DNS adı görüntülenir.
   
-   ![Traffic Manager DNS adınızın konumunun ekran görüntüsü](./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png)
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Traffic Manager profilindeki uç nokta ayarları":::
 
 ### <a name="view-traffic-manager-in-action"></a>Traffic Manager'ın nasıl çalıştığını görün
 
@@ -126,14 +130,14 @@ Bu bölümde, Traffic Manager profilinizin etki alanı adını kontrol edeceksin
     > [!NOTE]
     > Bu hızlı başlangıç senaryosunda, tüm istekler birincil uç noktaya yönlendirir. **Öncelik 1**olarak ayarlanır.
 
-    ![Traffic Manager profilinin kullanılabilirliğini onaylamak için Web sayfasının ekran görüntüsü](./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png)
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="Traffic Manager profilindeki uç nokta ayarları":::
 
-2. Traffic Manager yük devretmeyi görüntülemek için birincil sitenizi devre dışı bırakın:
+1. Traffic Manager yük devretmeyi görüntülemek için birincil sitenizi devre dışı bırakın:
     1. Traffic Manager profili sayfasında, **genel bakış** bölümünden **Myprimaryendpoint**' i seçin.
-    2. *Myprimaryendpoint*içinde, **devre dışı**  >  **Kaydet**' i seçin.
-    3. **Myprimaryendpoint**öğesini kapatın. Durumun şimdi **devre dışı bırakıldığını** unutmayın.
-3. Web sitesini yeni bir Web tarayıcısı oturumunda görüntülemek için, önceki adımda Traffic Manager profilinizin DNS adını kopyalayın.
-4. Web uygulamasının hala kullanılabilir olduğunu doğrulayın.
+    1. *Myprimaryendpoint*içinde, **devre dışı**  >  **Kaydet**' i seçin.
+    1. **Myprimaryendpoint**öğesini kapatın. Durumun şimdi **devre dışı bırakıldığını** unutmayın.
+1. Web sitesini yeni bir Web tarayıcısı oturumunda görüntülemek için, önceki adımda Traffic Manager profilinizin DNS adını kopyalayın.
+1. Web uygulamasının hala kullanılabilir olduğunu doğrulayın.
 
 Birincil uç nokta kullanılamıyor, bu nedenle yük devretme uç noktasına yönlendirilmiştiniz.
 

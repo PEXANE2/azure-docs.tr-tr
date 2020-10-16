@@ -4,12 +4,12 @@ description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1614ac0711c6a83d7e303b5a4b6ebbdf23ba2e03
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206747"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104079"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure İşlevleri geliştirme
 
@@ -93,7 +93,7 @@ Proje şablonu seçtiğiniz dilde bir proje oluşturur ve gerekli bağımlılık
 
 Dilinize bağlı olarak, bu diğer dosyalar oluşturulur:
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * İşlevi uygulayan [HttpExample.cs sınıf kitaplığı dosyası](functions-dotnet-class-library.md#functions-class-library-project) .
 
@@ -125,7 +125,7 @@ Bu noktada, [dosyanızdaki function.jsdeğiştirerek](#add-input-and-output-bind
 
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketlerinde uygulanır. Gereken Tetikleyiciler ve bağlamalar için uzantı paketlerini yüklemeniz gerekir. Bağlama Uzantıları yükleme işlemi projenizin diline bağlıdır.
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Projenizde ihtiyaç duyduğunuz uzantı paketlerini yüklemek için, Terminal penceresinde [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın. Aşağıdaki komut blob, kuyruk ve tablo depolaması için bağlamaları uygulayan Azure Storage uzantısını yüklüyor.
 
@@ -145,7 +145,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 Bu eylemin sonuçları projenizin diline bağlıdır:
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Projenize yeni bir C# sınıf kitaplığı (. cs) dosyası eklenir.
 
@@ -161,7 +161,7 @@ Giriş ve çıkış bağlamaları ekleyerek işlevinizi genişletebilirsiniz. Ba
 
 Aşağıdaki örneklerde `outqueue` , depolama hesabının bağlantı dizesinin `MyStorageConnection` local.settings.jsüzerindeki uygulama ayarında ayarlandığı adlı bir depolama kuyruğuna bağlanır.
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Yöntem tanımına aşağıdaki parametreyi eklemek için işlev yöntemini güncelleştirin `Run` :
 
@@ -297,7 +297,7 @@ Işlevler projenizi yerel olarak çalıştırmak için aşağıdaki ek gereksini
     | Dil | Gereksinim |
     | -------- | --------- |
     | **C#** | [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI araçları](/dotnet/core/tools/?tabs=netcore2x)   |
-    | **Java** | [Java uzantısı için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 veya üzeri](https://maven.apache.org/) |
+    | **Java** | [Java uzantısı için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)<br/>[Maven 3 veya üzeri](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) önerilir|
 
@@ -410,7 +410,7 @@ Bu adımları tamamladıktan sonra, temel alınan temel araçlara yapılan çağ
 
 Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim kurmak için alanında yararlı bir grafik arabirimi sağlar. Aynı işlevsellik, komut paletinde (F1) komutlar olarak da kullanılabilir. Bu Azure Işlevleri komutları kullanılabilir:
 
-|Azure Işlevleri komutu  | Açıklama  |
+|Azure Işlevleri komutu  | Description  |
 |---------|---------|
 |**Yeni ayarlar Ekle**  |  Azure 'da yeni bir uygulama ayarı oluşturur. Daha fazla bilgi için bkz. [uygulama ayarlarını yayımlama](#publish-application-settings). Ayrıca, [Bu ayarı yerel ayarlarınıza indirmeniz](#download-settings-from-azure)gerekebilir. |
 | **Dağıtım kaynağını Yapılandır** | İşlev uygulamanızı Azure 'da yerel bir git deposuna bağlar. Daha fazla bilgi için bkz. [Azure işlevleri Için sürekli dağıtım](functions-continuous-deployment.md). |
@@ -431,7 +431,7 @@ Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim k
 | **Azure Functions Core Tools yüklemeyi veya güncelleştirmeyi** | İşlevleri yerel olarak çalıştırmak için kullanılan [Azure Functions Core Tools]yüklenir veya güncelleştirir. |
 | **Yeniden dağıtım**  | Bağlı bir git deposundan proje dosyalarını Azure 'daki belirli bir dağıtıma yeniden dağıtmanıza olanak tanır. Visual Studio Code yerel güncelleştirmeleri yeniden yayımlamak için [projenizi yeniden yayımlayın](#republish-project-files). |
 | **Ayarları yeniden adlandır** | Azure 'da var olan bir işlev uygulaması ayarının anahtar adını değiştirir. Bu komut, local.settings.jsdosyadaki ayarları etkilemez. Azure 'daki ayarları yeniden adlandırdıktan sonra, [Bu değişiklikleri yerel projeye indirmeniz](#download-settings-from-azure)gerekir. |
-| **Uygulamasını** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
+| **Yeniden başlat** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
 | **AzureWebJobsStorage ayarla**| `AzureWebJobsStorage`Uygulama ayarının değerini ayarlar. Bu ayar, Azure Işlevleri için gereklidir. Azure 'da bir işlev uygulaması oluşturulduğunda ayarlanır. |
 | **Başlangıç** | Azure 'da durdurulmuş bir işlev uygulaması başlatır. |
 | **Akış günlüklerini başlatma** | Azure 'da işlev uygulaması için akış günlüklerini başlatır. Günlük bilgilerini neredeyse gerçek zamanlı olarak görmeniz gerekiyorsa Azure 'da uzaktan sorun giderme sırasında akış günlüklerini kullanın. Daha fazla bilgi için bkz. [akış günlükleri](#streaming-logs). |

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842589"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102940"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
@@ -62,7 +62,7 @@ Microsoft, HDInsight kümelerinde aşağıdaki tabloda bulunan dört Apache hizm
 | Apache Livy | Etkin baş düğümüne | Spark | REST arabirimi üzerinde Spark kümesiyle kolay etkileşim imkanı sunar |
 
 >[!Note]
-> HDInsight Kurumsal Güvenlik Paketi (ESP) kümeleri Şu anda yalnızca bir ambarı sunucusu yüksek kullanılabilirliği sağlar.
+> HDInsight Kurumsal Güvenlik Paketi (ESP) kümeleri Şu anda yalnızca bir ambarı sunucusu yüksek kullanılabilirliği sağlar. Uygulama Zaman Çizelgesi sunucusu, Iş geçmişi sunucusu ve Livy yalnızca headnode0 üzerinde çalışıyor ve ambarı failsover olduğunda headnode1 'e yük devretmeyin. Uygulama zaman çizelgesi veritabanı, ambarı SQL Server 'da değil de headnode0 üzerinde.
 
 ### <a name="architecture"></a>Mimari
 

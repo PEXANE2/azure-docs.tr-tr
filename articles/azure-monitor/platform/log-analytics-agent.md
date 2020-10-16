@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015bd48060f47023877d8c48601770228b1500fe
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310008"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104351"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](/system-center/scom/) tarafından izlenen Windows ve Linux sanal makinelerinden telemetri toplar ve toplanan verileri Azure izleyici 'de Log Analytics çalışma alanınıza gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](../../security-center/index.yml)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler. Bu makalede Aracı, sistem ve ağ gereksinimleri ve dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
@@ -39,7 +39,7 @@ Log Analytics Aracısı için maliyet yoktur, ancak alınan veriler için ücret
 ## <a name="data-collected"></a>Toplanan veriler
 Aşağıdaki tabloda, tüm bağlı aracılardan toplanacak bir Log Analytics çalışma alanını yapılandırabileceğiniz veri türleri listelenmektedir. Diğer veri türlerini toplamak için Log Analytics aracısını kullanan Öngörüler, çözümler ve diğer çözümlerin listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../monitor-reference.md) .
 
-| Veri Kaynağı | Açıklama |
+| Veri Kaynağı | Description |
 | --- | --- |
 | [Windows olay günlükleri](data-sources-windows-events.md) | Windows olay günlüğü sistemine gönderilen bilgiler. |
 | [Syslog](data-sources-syslog.md)                     | Linux olay günlüğü sistemine gönderilen bilgiler. |
@@ -51,7 +51,7 @@ Aşağıdaki tabloda, tüm bağlı aracılardan toplanacak bir Log Analytics ça
 Log Analytics Aracısı verileri Azure Izleyici 'de bir Log Analytics çalışma alanına gönderir. Birden çok çalışma alanına ve System Center Operations Manager yönetim grubuna veri göndermek için Windows aracısının birden çok bağlantısı olabilir. Linux Aracısı, bir çalışma alanı veya yönetim grubu olmak üzere yalnızca tek bir hedefe gönderebilir.
 
 ## <a name="other-services"></a>Diğer hizmetler
-Linux ve Windows için aracı yalnızca Azure Izleyici 'ye bağlanmıyor. Azure Güvenlik Merkezi ve Azure Sentinel gibi diğer hizmetler aracıya ve bağlı Log Analytics çalışma alanına bağlıdır. Aracı Ayrıca karma Runbook Worker rolünü ve [değişiklik izleme](../../automation/change-tracking.md), [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)ve [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer hizmetleri barındırmak için Azure Otomasyonu 'nu destekler. Karma Runbook Worker rolü hakkında daha fazla bilgi için bkz. [Azure Otomasyonu karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Linux ve Windows için aracı yalnızca Azure Izleyici 'ye bağlanmıyor. Azure Güvenlik Merkezi ve Azure Sentinel gibi diğer hizmetler aracıya ve bağlı Log Analytics çalışma alanına bağlıdır. Aracı Ayrıca karma Runbook Worker rolünü ve [değişiklik izleme](../../automation/change-tracking.md), [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)ve [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer hizmetleri barındırmak için Azure Otomasyonu 'nu destekler. Karma Runbook Worker rolü hakkında daha fazla bilgi için bkz. [Azure Otomasyonu karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="workspace-and-management-group-limitations"></a>Çalışma alanı ve yönetim grubu sınırlamaları
 
@@ -148,4 +148,3 @@ Linux Aracısı için ara sunucu, yükleme sırasında veya proxy. conf yapılan
 * Windows veya Linux sisteminizden veri toplamak için kullanılabilir veri kaynaklarını anlamak üzere [veri kaynaklarını](agent-data-sources.md) gözden geçirin. 
 * Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
 * Azure Izleyici 'ye işlevsellik ekleyen ve ayrıca Log Analytics çalışma alanına veri toplayacağınız [çözümleri izleme](../insights/solutions.md) hakkında bilgi edinin.
-

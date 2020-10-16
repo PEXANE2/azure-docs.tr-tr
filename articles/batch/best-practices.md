@@ -3,12 +3,12 @@ title: Önerilen uygulamalar
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849498"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102787"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -63,7 +63,7 @@ Sanal makine yapılandırmasını kullanarak bir Azure Batch havuzu oluşturduğ
 
 ### <a name="third-party-images"></a>Üçüncü taraf görüntüleri
 
-Havuzlar, Azure Marketi 'Nde yayınlanan üçüncü taraf görüntüleri kullanılarak oluşturulabilir. Kullanıcı aboneliği modu Batch hesaplarıyla, bazı üçüncü taraf görüntülerle bir havuz oluştururken "Market satın alma uygunluğu denetimi nedeniyle ayrılamadı" hatasını görebilirsiniz. Bu hatayı çözmek için görüntünün yayımcısı tarafından ayarlanan koşulları kabul edin. [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) veya [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms)kullanarak bunu yapabilirsiniz.
+Havuzlar, Azure Marketi 'Nde yayınlanan üçüncü taraf görüntüleri kullanılarak oluşturulabilir. Kullanıcı aboneliği modu Batch hesaplarıyla, bazı üçüncü taraf görüntülerle bir havuz oluştururken "Market satın alma uygunluğu denetimi nedeniyle ayrılamadı" hatasını görebilirsiniz. Bu hatayı çözmek için görüntünün yayımcısı tarafından ayarlanan koşulları kabul edin. [Azure PowerShell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) veya [Azure CLI](/cli/azure/vm/image/terms)kullanarak bunu yapabilirsiniz.
 
 ### <a name="azure-region-dependency"></a>Azure bölge bağımlılığı
 

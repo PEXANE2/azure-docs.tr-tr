@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014571"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104113"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 
@@ -98,6 +98,10 @@ Analiz deposundaki veriler, işlem deposundaki parçaların yatay bölümlemesi 
 
 Şu anda, işlem deposundan otomatik olarak analitik depoya yayıldığında veri öğelerini dönüştüremiyoruz. Bu sınırlama tarafından engellenen senaryolarınız varsa [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)e-posta gönderin.
 
+### <a name="is-analytical-store-supported-by-terraform"></a>Termstore, Terrayform tarafından destekleniyor mu?
+
+Şu anda Teroyform analitik depo kapsayıcılarını desteklemez. Daha fazla bilgi için lütfen [Terlarform GitHub sorunlarını](https://github.com/hashicorp/terraform/issues) kontrol edin.
+
 ## <a name="analytical-time-to-live-ttl"></a>Analitik yaşam süresi (TTL)
 
 ### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>Her iki kapsayıcıda ve öğe düzeyinde desteklenen analitik veriler için TTl mi?
@@ -112,7 +116,7 @@ Evet, analitik TTL geçerli herhangi bir değere güncelleştirilebilen olabilir
 
 Tüm işlem güncelleştirmeleri ve silmeleri analitik depoya kopyalanır ancak öğe, işlem deposundan temizlendiyse, analitik depoda güncelleştirilemez. Daha fazla bilgi için bkz. [ANALITIK TTL](analytical-store-introduction.md#analytical-ttl) makalesi.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 ### <a name="what-is-the-billing-model-of-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısının faturalandırma modeli nedir?
 

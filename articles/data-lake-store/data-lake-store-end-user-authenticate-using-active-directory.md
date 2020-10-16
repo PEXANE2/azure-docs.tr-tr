@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578555"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103790"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Azure Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory ku
 
 Bu seçeneklerin her ikisi de, Data Lake Storage 1. veya Azure Data Lake Analytics yapılan her bir isteğe bağlı olan bir OAuth 2,0 belirteciyle birlikte sağlanmış olması ile sonuçlanır.
 
-Bu makalede, **Son Kullanıcı kimlik doğrulaması için bir Azure AD yerel uygulamasının**nasıl oluşturulacağı ele gösterilmektedir. Hizmetten hizmete kimlik doğrulaması için Azure AD uygulama yapılandırması yönergeleri için [Azure Active Directory kullanarak Data Lake Storage 1. Ile hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md)konusuna bakın.
+Bu makalede, **Son Kullanıcı kimlik doğrulaması için bir Azure AD yerel uygulamasının**nasıl oluşturulacağı ele gösterilmektedir. Hizmetten hizmete kimlik doğrulaması için Azure AD uygulama yapılandırması yönergeleri için [Azure Active Directory kullanarak Data Lake Storage 1. Ile hizmetten hizmete kimlik doğrulaması](./data-lake-store-service-to-service-authenticate-using-active-directory.md)konusuna bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).

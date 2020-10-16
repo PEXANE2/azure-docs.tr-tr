@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: d0f8fa313687b3bd45bd95f1c9ea864567821775
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097261"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102366"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te SQL Server 'ı kullanarak Azure Cosmos DB verileri sorgulama (Önizleme)
 
@@ -266,8 +266,10 @@ Olası hataların listesi ve sorun giderme eylemleri aşağıdaki tabloda listel
 | --- | --- |
 | Sözdizimi hataları:<br/> -' OPENROWSET ' yakınında yanlış sözdizimi<br/> - `...` tanınan bir toplu OPENROWSET sağlayıcı seçeneği değil.<br/> -Yakınında yanlış söz dizimi `...` | Olası kök nedenler<br/> -İlk parametre olarak ' CosmosDB ' kullanmıyor,<br/> -Üçüncü parametrede tanımlayıcı yerine dize sabit değeri kullanma<br/> -Üçüncü parametre (kapsayıcı adı) belirtilmiyor |
 | CosmosDB bağlantı dizesinde bir hata oluştu | -Hesap, veritabanı, anahtar belirtilmemiş <br/> -Bağlantı dizesinde tanınmayan bir seçenek vardır.<br/> -Noktalı virgül, `;` bağlantı dizesinin sonuna yerleştirilir |
-| CosmosDB yolunun çözümlenmesi ' hatalı hesap/veritabanı adı ' hatasıyla başarısız oldu | Belirtilen hesap adı veya veritabanı adı bulunamıyor. |
-| CosmosDB yolunu çözümleme, ' yanlış gizli değer ' ' gizli anahtarı null veya boş ' hatası vererek başarısız oldu | Hesap anahtarı geçerli değil veya eksik. |
+| CosmosDB yolunu çözümleme, ' yanlış hesap adı ' veya ' yanlış veritabanı adı ' hatasıyla başarısız oldu | Belirtilen hesap adı, veritabanı adı veya kapsayıcı bulunamıyor ya da analitik depolama alanı belirtilen koleksiyonda etkinleştirilmemiş|
+| CosmosDB yolu çözümlenirken ' yanlış gizli değer ' hatası ile başarısız oldu veya ' gizli dizi null veya boş ' | Hesap anahtarı geçerli değil veya eksik. |
+| `column name`Türündeki sütun `type name` dış veri türüyle uyumlu değil`type name` | ' In yan tümcesindeki belirtilen sütun türü `WITH` Cosmos DB Container türüyle eşleşmiyor. [Azure Cosmos DB, SQL tür eşlemeleri](#azure-cosmos-db-to-sql-type-mappings) veya tür kullanımı için bölümünde açıklandığı gibi, sütun türünü değiştirmeyi deneyin `VARCHAR` . |
+| Sütun `NULL` , tüm hücrelerdeki değerleri içerir. | Yan tümce içinde yanlış sütun adı veya yol ifadesi olabilir `WITH` . WHERE yan tümcesindeki sütun adı (veya sütun türü öğesinden sonra yol ifadesi) `WITH` Cosmos DB koleksiyonundaki bazı özellik adları ile eşleşmelidir. Karşılaştırma **büyük/küçük harfe duyarlıdır**  (örneğin, `productCode` ve `ProductCode` farklı özelliklerdir). |
 
 [Azure SYNAPSE geri bildirim sayfasında](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)öneriler ve sorunlar rapor edebilirsiniz.
 

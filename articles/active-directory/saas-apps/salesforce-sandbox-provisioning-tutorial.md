@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273322"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101792"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Salesforce korumalı alanını yapılandırma
 
@@ -73,15 +73,15 @@ Bu bölümün amacı, Active Directory Kullanıcı hesaplarının Salesforce kor
 
 1. Salesforce korumalı alanı güvenlik belirtecinizi almak için yeni bir sekme açın ve aynı Salesforce korumalı alanı yönetici hesabında oturum açın. Sayfanın sağ üst köşesinde, ad ' a tıklayın ve ardından **Ayarlar**' a tıklayın.
 
-     ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Otomatik Kullanıcı sağlamayı etkinleştir")
+     ![Ekran görüntüsü seçili Ayarlar bağlantısını gösterir.](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Otomatik Kullanıcı sağlamayı etkinleştir")
 
 1. Sol gezinti bölmesinde, **Kişisel bilgilerim** ' a tıklayarak ilgili bölümü genişletin ve ardından **güvenlik belirtecimi Sıfırla**' ya tıklayın.
   
-    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Otomatik Kullanıcı sağlamayı etkinleştir")
+    ![Ekran görüntüsü kişisel bilgilerim için seçili olan güvenlik belirtecinden sıfırlamayı gösterir.](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Otomatik Kullanıcı sağlamayı etkinleştir")
 
 1. **Güvenlik belirtecini Sıfırla** sayfasında **güvenlik belirtecini Sıfırla** düğmesine tıklayın.
 
-    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Otomatik Kullanıcı sağlamayı etkinleştir")
+    ![Ekran görüntüsünde, açıklayıcı metin ve güvenlik belirtecini sıfırlama seçeneği ile rest güvenlik belirteci sayfası gösterilir](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Otomatik Kullanıcı sağlamayı etkinleştir")
 
 1. Bu yönetici hesabıyla ilişkili e-posta gelen kutusunu kontrol edin. Salesforce Sandbox.com 'tan yeni güvenlik belirtecini içeren bir e-posta arayın.
 
