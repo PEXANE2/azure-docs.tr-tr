@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 95c9b6dee402bc0c2dd2cab8ef3200cfd9213d61
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 4e15ef5256c1552fc8ab7fb9bd84f15bb3433834
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126833"
+ms.locfileid: "92131369"
 ---
 # <a name="device-model-repository"></a>Cihaz modeli deposu
 
@@ -24,20 +24,20 @@ DMR, DTDL arabirimlerini cihaz ikizi modeli tanımlayıcısı (DTMı) temelinde 
 
 Microsoft, şu özelliklerle genel bir DMR barındırır:
 
-- Seçkin modeller. Microsoft, açık bir GitHub PR doğrulama iş akışı kullanarak tüm kullanılabilir arabirimleri gözden geçirir ve onaylar.
+- Seçkin modeller. Microsoft, GitHub çekme isteği (PR) doğrulama iş akışını kullanarak tüm kullanılabilir arabirimleri gözden geçirir ve onaylar.
 - Değiştirilemezlik.  Yayımlandıktan sonra bir arabirim güncelleştirilemiyor.
-- Hiper ölçek. Microsoft, güvenli ve yüksek oranda ölçeklenebilir bir uç nokta oluşturmak için gereken tüm altyapıyı sağlar.
+- Hiper ölçek. Microsoft, cihaz modellerini yayımlayabileceğiniz ve kullanabileceğiniz güvenli, ölçeklenebilir bir uç nokta oluşturmak için gerekli altyapıyı sağlar.
 
 ## <a name="custom-device-model-repository"></a>Özel cihaz modeli deposu
 
-Özel bir DMR oluşturmak için, yerel dosya sistemi veya özel HTTP Web sunucuları gibi herhangi bir depolama ortamında aynı DMR modelini kullanabilirsiniz. Özel DMR 'den, genel DMR ile aynı şekilde, DMR 'e erişmek için kullanılan temel URL 'YI değiştirerek, modelleri alabilirsiniz.
+Özel bir DMR oluşturmak için, yerel dosya sistemi veya özel HTTP Web sunucuları gibi herhangi bir depolama ortamında aynı DMR modelini kullanabilirsiniz. Özel DMR 'den, genel DMR ile aynı şekilde, DMR 'e erişmek için kullanılan temel URL 'YI değiştirerek, cihaz modellerini alabilirsiniz.
 
 > [!NOTE]
-> Genel DMR içindeki modelleri doğrulamak için kullanılan araçlar özel depolarda yeniden kullanılabilir.
+> Microsoft, genel DMR 'de cihaz modellerini doğrulamaya yönelik araçlar sağlar. Bu araçları özel depolarda yeniden kullanabilirsiniz.
 
 ## <a name="public-models"></a>Ortak modeller
 
-Model deposunda depolanan genel dijital ikizi modelleri, uygulamalarında kullanmak ve bütünleştirmek için herkes tarafından kullanılabilir. Ortak modeller, cihaz oluşturucular ve çözüm geliştiricilerinin IoT Tak ve Kullan cihaz modellerini paylaşmasını ve yeniden kullanmasına yönelik açık bir ekonomik sistemi etkinleştirir.
+Model deposunda depolanan ortak cihaz modelleri, herkesin uygulamalarında kullanması ve tümleştirilmesi için kullanılabilir. Ortak cihaz modelleri, cihaz oluşturucular ve çözüm geliştiricilerinin IoT Tak ve Kullan cihaz modellerini paylaşmasını ve yeniden kullanmasına olanak sağlayan açık bir ekonomik sistem sağlar.
 
 Model deposunda model yayımlama hakkında yönergeler için model [Yayımlama](#publish-a-model) bölümüne bakın.
 
@@ -47,7 +47,7 @@ Klasörlerdeki tüm arabirimler `dtmi` genel uç noktada da kullanılabilir [htt
 
 ### <a name="resolve-models"></a>Modelleri çözümle
 
-Bu arabirimlere programlı bir şekilde erişmek için, bir dtmı 'yi genel uç noktasını sorgulamak için kullanabileceğiniz göreli bir yola dönüştürmeniz gerekir. Aşağıdaki kod örneğinde bunun nasıl yapılacağı gösterilmektedir:
+Bu arabirimlere programlı bir şekilde erişmek için, bir DTMı 'yi genel uç noktasını sorgulamak için kullanabileceğiniz göreli bir yola dönüştürmeniz gerekir. Aşağıdaki kod örneğinde bunun nasıl yapılacağı gösterilmektedir:
 
 Bir DTMı 'yi mutlak bir yola dönüştürmek için `DtmiToPath` işlevini kullanın `IsValidDtmi` :
 
@@ -88,14 +88,14 @@ string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 1. Genel GitHub deposunun çatalını oluştur: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) .
 1. Çatallanmış depoyu kopyalayın. Değişikliklerinizin dalından yalıtılmış olmasını sağlamak için isteğe bağlı olarak yeni bir dal oluşturun `main` .
 1. Klasörü `dtmi` /dosya adı kuralını kullanarak yeni arabirimleri klasöre ekleyin. Bkz. [Add-model](#add-model) aracı.
-1. [Değişiklikleri doğrulamak için betikleri](#validate-files) kullanarak modelleri yerel olarak doğrulayın bölümü.
+1. [Değişiklikleri doğrulamak için betikler](#validate-files) bölümünü kullanarak cihaz modellerini yerel olarak doğrulayın.
 1. Değişiklikleri yerel olarak işleyin ve Çatalınıza gönderin.
-1. Çatalınızdan dalı hedefleyen bir PR oluşturun `main` . Bkz. [bir sorun veya çekme isteği belgeleri oluşturma](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) .
-1. [PR gereksinimlerini](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)gözden geçirin.
+1. Çatalınızdan dalı hedefleyen bir çekme isteği oluşturun `main` . Bkz. [bir sorun veya çekme isteği belgeleri oluşturma](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) .
+1. [Çekme isteği gereksinimlerini](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)gözden geçirin.
 
-PR, yeni gönderilen arabirimleri doğrulayan bir dizi GitHub eylemini tetikler ve çekme isteğinin tüm denetimleri karşıladığından emin olur.
+Çekme isteği, yeni gönderilen arabirimleri doğrulayan bir dizi GitHub eylemini tetikler ve çekme isteğinizin tüm denetimleri karşıladığından emin olur.
 
-Microsoft, bir çekme isteğini üç iş günü içinde tüm denetlemeler ile yanıtlar.
+Microsoft, bir çekme isteğine üç iş günü içinde tüm denetimleri vererek yanıt verir.
 
 ### <a name="add-model"></a>Model Ekle
 
@@ -109,7 +109,7 @@ Herhangi bir hata iletisi için konsol çıkışını izleyin.
 
 ### <a name="local-validation"></a>Yerel doğrulama
 
-Sorunları önceden tanılamanıza yardımcı olmak üzere PR 'yi göndermeden önce, aynı doğrulama denetimlerini yerel olarak çalıştırabilirsiniz.
+Sorunları önceden tanılamanıza yardımcı olmak üzere çekme isteğini göndermeden önce, aynı doğrulama denetimlerini yerel olarak çalıştırabilirsiniz.
 
 #### <a name="validate-files"></a>dosyaları doğrula
 
@@ -125,7 +125,7 @@ Sorunları önceden tanılamanıza yardımcı olmak üzere PR 'yi göndermeden �
 
 #### <a name="validate-models"></a>Validate-modeller
 
-Modellerinizi yerel olarak doğrulamak için [Dtdl doğrulama örneğini](https://github.com/Azure-Samples/DTDL-Validator) çalıştırabilirsiniz.
+Cihaz modellerinizi yerel olarak doğrulamak için [Dtdl doğrulama örneğini](https://github.com/Azure-Samples/DTDL-Validator) çalıştırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

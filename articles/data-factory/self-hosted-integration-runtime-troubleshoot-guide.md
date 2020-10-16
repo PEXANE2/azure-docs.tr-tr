@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: abnarain
-ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069484"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131335"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -152,7 +152,7 @@ SSL/TLS el sıkışmasıyla ilgili olayları işlerken, sertifika zinciri doğru
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Örneğin: 
+Örnek: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -615,6 +615,37 @@ Aşağıda, iyi bir senaryonun nasıl görüneceğine ilişkin bir örnek göste
 
     ![TCP 4 el sıkışma iş akışı](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
+
+### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>Yeni IP adresleriyle iletişime izin vermek üzere ağ yapılandırmasını güncelleştirmek için e-posta alınıyor
+
+#### <a name="symptoms"></a>Belirtiler
+
+Aşağıdaki e-posta bildirimi, ağ yapılandırmasını, Azure Data Factory için yeni IP adresleriyle iletişime izin verecek şekilde güncelleştirmenizi öneren, 8 Kasım 2020:
+
+   ![E-posta ile bildirim](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+
+#### <a name="resolution"></a>Çözüm
+
+Bu bildirim, şirket içinde veya bir **Azure sanal özel ağı** **üzerinde** ADF hizmetine çalışan **Integration Runtime** **giden iletişimler** içindir. Örneğin, ADF hizmetine erişmesi gereken Azure VNET 'te şirket içinde barındırılan IR veya Azure-SQL Server Integration Services (SSIS) IR 'niz varsa, bu yeni IP aralığını **ağ güvenlik grubu (NSG)** kurallarınız 'na eklemeniz gerekip gerekmediğini gözden geçirmeniz gerekir. Giden NSG kuralınız hizmet etiketi kullanıyorsa, hiçbir etkisi olmaz.
+
+#### <a name="more-details"></a>Daha fazla ayrıntı’yı seçin
+
+Bu yeni IP aralıkları, şirket içi ağ veya Azure sanal ağı 'nda ADF hizmetine iletişim kurması gereken şirket içinde barındırılan bir IR veya SSIS IR 'nin bulunduğu senaryolar için yalnızca şirket **içi güvenlik duvarınız** veya **Azure sanal özel ağından** ADF hizmetine **giden iletişim kurallarını etkiler** (bkz. bağlantı için [IP adresi için güvenlik duvarı yapılandırması](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)
+
+**Azure VPN**kullanan mevcut kullanıcılar için:
+
+1. SSIS veya Azure SSIS 'nin yapılandırıldığı özel ağınızdaki tüm giden NSG kurallarını kontrol edin. Giden kısıtlama yoksa, bunlar üzerinde hiçbir etkisi olmaz.
+1. Giden kuralı kısıtlamalarınız varsa, hizmet etiketi kullanıp kullanmadığından emin olun. Hizmet etiketi kullanıyorsanız, yeni IP aralıkları var olan hizmet etiketi altında olduğundan herhangi bir şeyi değiştirme veya ekleme gereksinimi yoktur. 
+  
+    ![Hedef denetimi](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+
+1. IP adreslerini doğrudan kural ayarınız içinde kullanırsanız, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' nda tüm IP aralıklarını ekleyin ' i işaretleyin. Yeni IP aralıklarını zaten bu dosyaya yerleştirdik. Yeni kullanıcılar için: NSG kurallarını yapılandırmak üzere belgemizdeki ilgili şirket içinde barındırılan IR veya SSIS IR yapılandırmasını izlemeniz yeterlidir.
+
+SSIS IR veya şirket içinde şirket içinde barındırılan IR **bulunan**mevcut kullanıcılar için:
+
+- Ağ altyapısı ekibiniz ile doğrulayın ve giden kuralları iletişimine yeni IP aralığı adreslerini dahil etmek gerekip gerekmediğini görüntüleyin.
+- FQDN adlarına dayalı güvenlik duvarı kuralları için, [güvenlik duvarı yapılandırması 'nda belgelenen ayarları ve IP adresi için izin verilenler listesi ayarını](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)kullandığınızda güncelleştirme gerekmez. 
+- Bazı şirket içi güvenlik duvarları hizmet etiketlerini destekler, güncelleştirilmiş Azure hizmet etiketleri yapılandırma dosyasını kullanıyorsanız başka bir değişiklik yapmanız gerekmez.
 
 ## <a name="self-hosted-ir-sharing"></a>Şirket içinde barındırılan IR paylaşımı
 

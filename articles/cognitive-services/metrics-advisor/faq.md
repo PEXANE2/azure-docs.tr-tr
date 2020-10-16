@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 42b23876761afa213b07f07b3a61e125dcf0824b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046817"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131692"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Ölçüm Danışmanı sık sorulan sorular
 
@@ -31,7 +31,7 @@ ms.locfileid: "92046817"
 
 :::image type="content" source="media/pricing.png" alt-text="Bir F0 kaynağı zaten varsa ileti":::
 
-Genel Önizleme sırasında, bir bölgede bir abonelik altında yalnızca bir ölçüm Danışmanı örneğine izin verilir.
+Genel Önizleme sırasında, bir abonelik kapsamında her bölge için yalnızca bir ölçüm Danışmanı örneği oluşturulabilir.
 
 Aynı bölgede aynı abonelik kullanılarak oluşturulmuş bir örneğiniz zaten varsa, yeni bir örnek oluşturmak için farklı bir bölge veya farklı bir abonelik deneyebilirsiniz. Ayrıca, yeni bir örnek oluşturmak için var olan bir örneği silebilirsiniz.
 
@@ -108,6 +108,40 @@ Hiçbir eşik yoksa AI tarafından desteklenen "akıllı algılama" kullanabilir
 
 Verileriniz normalde çok kararsız ve büyük bir ölçüde dalgalandığı ve çok kararlı ve hatta düz bir çizgi haline geldiğinde uyarılmak istiyorsanız, değişiklik çok küçük olduğunda bu tür veri noktalarını algılamak için "değişiklik eşiği" yapılandırılabilir.
 Ayrıntılar için lütfen [anomali algılama yapılandırmalarına](how-tos/configure-metrics.md#anomaly-detection-methods) bakın.
+
+## <a name="advanced-concepts"></a>Gelişmiş kavramlar
+
+### <a name="how-does-metric-advisor-build-an-incident-tree-for-multi-dimensional-metrics"></a>Ölçüm Danışmanı, çok boyutlu ölçümler için bir olay ağacı nasıl oluşturur?
+
+Ölçüm, boyutlara göre birden çok zaman serisine ayrılabilir. Örneğin, ölçüm `Response latency` takımın sahip olduğu tüm hizmetler için izlenir. `Service`Kategori, ölçümü zenginleştirmek için bir boyut olarak kullanılabilir, bu nedenle,, vb. olarak `Response latency` bölüneceğiz `Service1` `Service2` . Her hizmet birden fazla veri merkezinde farklı makinelere dağıtılarak, ölçüm ve ile daha fazla bölünebilir `Machine` `Data center` .
+
+|Hizmet| Veri Merkezi| Makine  | 
+|----|------|----------------   |
+| S1 |  DC1 |   M1 |
+| S1 |  DC1 |   M2 |
+| S1 |  DC2 |   M3 |
+| S1 |  DC2 |   M4 |
+| S2 |  DC1 |   M1 |
+| S2 |  DC1 |   M2 |
+| S2 |  DC2 |   M5 |
+| S2 |  DC2 |   M6 |
+| ...|      |      |
+
+Toplamın üzerinden başlayarak `Response latency` , ve ölçüsünün ayrıntılarına gidebilirsiniz `Service` `Data center` `Machine` . Ancak, hizmet sahiplerinin yolu kullanması daha mantıklı `Service`  ->  `Data center`  ->  `Machine` veya altyapı mühendislerinin yolu kullanması daha mantıklı hale gelir `Data Center`  ->  `Machine`  ->  `Service` . Hepsi, kullanıcılarınızın bireysel iş gereksinimlerine bağlıdır. 
+
+Ölçüm Danışmanı 'nda, kullanıcılar hiyerarşik topolojinin bir düğümünden detaya geçmek veya bu düğümleri toplu yapmak istedikleri yolu belirtebilir. Daha kesin olarak, hiyerarşik topoloji ağaç yapısı yerine yönlendirilmiş bir Çevrimsiz grafiktir. Aşağıdaki gibi tüm olası boyut birleşimlerinin bulunduğu tam bir hiyerarşik topoloji vardır: 
+
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="Bir F0 kaynağı zaten varsa ileti" lightbox="media/dimension-combinations-view.png":::
+
+Teorik olarak, boyutun `Service` `Ls` farklı değerleri varsa, boyutun farklı değerleri `Data center` vardır `Ldc` ve boyutun `Machine` ayrı değerleri vardır ve `Lm` `(Ls + 1) * (Ldc + 1) * (Lm + 1)` hiyerarşik topolojide boyut birleşimleri olabilir. 
+
+Ancak genellikle tüm boyut birleşimleri geçerli değildir ve bu da karmaşıklığı önemli ölçüde azaltabilir. Şu anda kullanıcılar ölçüyü kendileri topladığımızda, boyut sayısını sınırlayamıyoruz. Ölçüm Danışmanı tarafından sunulan toplama işlevini kullanmanız gerekiyorsa, boyutların sayısı 6 ' dan fazla olmamalıdır. Ancak, bir ölçüm için boyutlara göre genişletilen zaman serisinin sayısını 10.000 ' den az olacak şekilde kısıtlarız.
+
+Tanılama sayfasındaki **olay ağacı** Aracı, tüm topoloji yerine yalnızca bir anomali algılanan düğümleri gösterir. Bu, geçerli soruna odaklanmanız için size yardımcı olur. Ayrıca, ölçüm içindeki tüm anormallikleri göstermez ve bunun yerine katkılara göre en önemli bozukluklar görüntülenir. Bu şekilde, olağan dışı verilerin etkisini, kapsamını ve yayma yolunu hızla bulabiliriz. Odaklanmaları gereken anomali sayısını önemli ölçüde azaltır ve kullanıcıların önemli sorunlarını anlamalarına ve bulmalarına yardımcı olur. 
+ 
+Örneğin, bir anomali oluştuğunda, anomali `Service = S2 | Data Center = DC2 | Machine = M5` 'in sapması, `Service= S2` aynı zamanda anomali 'i tespit eden üst düğümü etkiler, ancak anomali, tüm veri merkezini `DC2` ve üzerinde tüm hizmetleri etkilemez `M5` . Olay ağacı aşağıdaki ekran görüntüsünde olduğu gibi oluşturulur, en üst anomali, üzerine yakalanır `Service = S2` ve kök neden, iki yolda de analiz edilebilir `Service = S2 | Data Center = DC2 | Machine = M5` .
+
+ :::image type="content" source="media/root-cause-paths.png" alt-text="5, bir ortak düğüm etiketlendirilerek birlikte kenarları ile bağlanmış iki farklı yol içeren köşeler etiketlendi. En üst anomali, Service = S2 üzerine yakalanır ve kök nedeni, her ikisi de Service = S2 öğesine yol açabilecek iki yol tarafından analiz edilebilir. Veri merkezi = DC2 | Makine = M5" lightbox="media/root-cause-paths.png":::
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [Ölçüm danışmanına genel bakış](overview.md)

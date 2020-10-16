@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 4ef53b2249f8ce57255c13126c9310f1c889d64f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94a84220b276edf8eaf539151964715675693dec
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855064"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131386"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma
 
@@ -46,9 +46,9 @@ Data Lake Storage 2. hem rol tabanlı erişim denetimi (RBAC) hem de POSIX benze
 
 RBAC, Azure kaynakları için kullanıcılara, gruplara ve hizmet sorumlularına izin kümelerini etkili bir şekilde uygulamak için rol atamaları kullanır. Genellikle, bu Azure kaynakları en üst düzey kaynaklarla (örneğin, Azure Blob depolama hesapları) kısıtlanır. Azure Blob depolama ve ayrıca Data Lake Storage 2., bu mekanizma dosya sistemi kaynağına genişletilmiştir.
 
-RBAC ile dosya izinleri hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
+RBAC ile dosya izinleri hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
-ACL 'lerle ilgili dosya izinleri hakkında daha fazla bilgi için bkz. [dosya ve dizinlerdeki erişim denetim listeleri](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
+ACL 'lerle ilgili dosya izinleri hakkında daha fazla bilgi için bkz. [dosya ve dizinlerdeki erişim denetim listeleri](../storage/blobs/data-lake-storage-access-control.md).
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Data Lake Storage 2. veri Nasıl yaparım? erişimi denetimi mi?
 

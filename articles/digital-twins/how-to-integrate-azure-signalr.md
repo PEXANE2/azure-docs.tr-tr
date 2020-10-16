@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fd23cab844d40f75aa0034096be1bca897d54ff6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: cba67e571370d48a04a4e95198462953acdd4d59
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108363"
+ms.locfileid: "92131556"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure Digital TWINS 'i [Azure SignalR hizmeti](../azure-signalr/sig
 
 Bu makalede açıklanan çözüm, dijital ikizi telemetri verilerini, tek bir Web sayfası veya bir mobil uygulama gibi bağlı istemcilere anında gönderebilmeniz için izin verir. Sonuç olarak, istemciler, gerçek zamanlı ölçümler ve durum, sunucu yoklamaları veya güncelleştirmeler için yeni HTTP istekleri göndermek zorunda kalmadan IoT cihazlarından güncellenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce gerçekleştirmeniz gereken önkoşullar şunlardır:
 
@@ -39,8 +39,8 @@ Azure SignalR hizmetini aşağıdaki yoldan Azure dijital TWINS 'e iliştirirsin
 ## <a name="download-the-sample-applications"></a>Örnek uygulamaları indirme
 
 İlk olarak, gerekli örnek uygulamaları indirin. Aşağıdakilerin her ikisine de ihtiyacınız olacak:
-* [**Azure dijital TWINS örnekleri**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Bu örnek, verileri bir Azure dijital TWINS örneğine taşımak Için iki Azure işlevi tutan bir *AdtSampleApp* içerir (öğreticide daha ayrıntılı bilgi edinmek için bkz. [*uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)). Ayrıca, bir IoT cihazına benzetiren, her saniye yeni bir sıcaklık değeri oluşturan bir *Devicesimülatör* örnek uygulaması da içerir. 
-    - Örnek bağlantısına gidin ve örneğin _**Azure_Digital_Twins_samples.zip**_ bir kopyasını makinenize ındırmek Için *ZIP yükle* düğmesine basın. Klasörün sıkıştırmasını açın.
+* [**Azure dijital TWINS uçtan uca örnekler**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Bu örnek, verileri bir Azure dijital TWINS örneğine taşımak Için iki Azure işlevi tutan bir *AdtSampleApp* içerir (Bu senaryo hakkında daha ayrıntılı bilgi edinmek için [*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)). Ayrıca, bir IoT cihazına benzetiren, her saniye yeni bir sıcaklık değeri oluşturan bir *Devicesimülatör* örnek uygulaması da içerir. 
+    - Örnek bağlantısına gidin ve örneğin _**Azure_Digital_Twins_end_to_end_samples.zip**_ bir kopyasını makinenize ındırmek Için *ZIP yükle* düğmesine basın. Klasörün sıkıştırmasını açın.
 * [**SignalR tümleştirmesi Web uygulaması örneği**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Bu, Azure SignalR hizmetinden Azure dijital TWINS telemetri verilerini tüketen örnek bir tepki veren Web uygulamasıdır.
     -  Örnek bağlantısına gidin ve örneğin _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_ bir kopyasını makinenize ındırmek Için *ZIP yükle* düğmesine basın. Klasörün sıkıştırmasını açın.
 
@@ -63,7 +63,7 @@ Bu bölümde, iki Azure işlevi ayarlayacaksınız:
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini) başlatın ve kod çözümünü *Azure_Digital_Twins_samples > ADTSampleApp* klasöründe açın. Ardından, işlevleri oluşturmak için aşağıdaki adımları uygulayın:
+Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini) başlatın ve kod çözümünü *Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* klasöründe açın. Ardından, işlevleri oluşturmak için aşağıdaki adımları uygulayın:
 
 1. *Samplefunctionsapp* projesinde **SignalRFunctions.cs** adlı yeni bir C# Sharp sınıfı oluşturun.
 
@@ -129,7 +129,7 @@ Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini)
     }
     ```
 
-1. Visual Studio 'nun *Paket Yöneticisi konsol* penceresinde veya makinenizde *Azure_Digital_Twins_samples \adtsampleapp\samplefunctionsapp* klasöründe herhangi bir komut penceresinde, `SignalRService` NuGet paketini projeye yüklemek için aşağıdaki komutu çalıştırın:
+1. Visual Studio 'nun *Paket Yöneticisi konsol* penceresinde veya makinenizde *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* klasöründe herhangi bir komut penceresinde, `SignalRService` NuGet paketini projeye yüklemek için aşağıdaki komutu çalıştırın:
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
@@ -145,7 +145,7 @@ Sonra, *bir uçtan uca çözüm oluşturma* öğreticisinin [ *uygulamayı Yayı
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
-1. Son olarak, aşağıdaki Azure CLı komutunu kullanarak daha önce Azure SignalR **Bağlantı dizenizi** işlevin uygulama ayarlarına ekleyin. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest)olan Azure CLI 'niz varsa [Azure Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir:
+1. Son olarak, aşağıdaki Azure CLı komutunu kullanarak daha önce Azure SignalR **Bağlantı dizenizi** işlevin uygulama ayarlarına ekleyin. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)olan Azure CLI 'niz varsa [Azure Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir:
  
     ```azurecli
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -184,7 +184,7 @@ Bu bölümde, sonucu eylem olarak görürsünüz. İlk olarak, Azure dijital TWI
 
 Uçtan uca öğretici ön eki sırasında, [cihaz simülatörünü](tutorial-end-to-end.md#configure-and-run-the-simulation) bir IoT Hub ve Azure dijital TWINS örneğiniz aracılığıyla veri gönderecek şekilde yapılandırdınız.
 
-Şimdi yapmanız gerekir, *Azure_Digital_Twins_samples > devicesimülatör > devicesimülatör. sln*' de bulunan simülatör projesini başlatmıştır. Visual Studio kullanıyorsanız, projeyi açabilir ve araç çubuğunda Bu düğmeyle çalıştırabilirsiniz:
+Şimdi yapmanız gerekir, *Azure_Digital_Twins_end_to_end_samples > devicesimülatör > devicesimülatör. sln*' de bulunan simülatör projesini başlatmıştır. Visual Studio kullanıyorsanız, projeyi açabilir ve araç çubuğunda Bu düğmeyle çalıştırabilirsiniz:
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışını IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid (ok C) ile kullanıma gösterir. Bölüm D, ok C 'deki aynı Event Grid veri akışını, ' Broadcast ' etiketli bir Azure Işlevine gösterir. ' Broadcast ', ' anlaş ' etiketli başka bir Azure işlevi ile iletişim kurar ve bilgisayar cihazlarıyla birlikte ' Broadcast ' ve ' Negotiate ' iletişim kurar.":::
 
@@ -232,7 +232,7 @@ Bu işlem, bir görsel sıcaklık ölçer görüntüleyen örnek uygulamayı ça
 
 Bu makalede oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin. 
 
-Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Kaynak grubunun kaldırılması da kaldırılır...
+Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Kaynak grubunun kaldırılması da kaldırılır...
 * Azure dijital TWINS örneği (uçtan uca öğreticiden)
 * IoT Hub ve Hub cihaz kaydı (uçtan uca öğreticiden)
 * olay Kılavuzu konusu ve ilişkili abonelikler
@@ -252,7 +252,7 @@ Azure dijital TWINS örneğinizi siliyorsanız, bu komutu kullanarak, sizin içi
 az ad app delete --id <your-application-ID>
 ```
 
-Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize (*Azure_Digital_Twins_samples.zip* ve *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) silin.
+Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize (*Azure_Digital_Twins_end_to_end_samples.zip* ve *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

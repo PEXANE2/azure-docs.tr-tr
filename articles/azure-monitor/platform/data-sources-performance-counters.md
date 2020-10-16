@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955497"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131199"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows ve Linux performansı veri kaynakları
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerinin toplanmasının yanı sıra, neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla performans sayaçlarını toplayabilir.
@@ -25,7 +25,7 @@ Yeni bir çalışma alanı için Windows veya Linux performans sayaçlarını il
 
 Windows performans sayaçları için her performans sayacı için belirli bir örnek seçebilirsiniz. Linux performans sayaçları için, seçtiğiniz her sayacın örneği, üst sayacın tüm alt sayaçları için geçerlidir. Aşağıdaki tabloda hem Linux hem de Windows performans sayaçları için kullanılabilen ortak örnekler gösterilmektedir.
 
-| Örnek adı | Açıklama |
+| Örnek adı | Description |
 | --- | --- |
 | \_Toplam |Tüm örneklerin toplamı |
 | \* |Tüm örnekler |
@@ -75,7 +75,7 @@ Toplanacak performans ölçümlerinin her nesnesi veya kategorisi yapılandırma
 
 Bu öğedeki parametreler aşağıdaki tabloda açıklanmıştır.
 
-| Parametreler | Açıklama |
+| Parametreler | Description |
 |:--|:--|
 | nesne \_ adı | Koleksiyonun nesne adı. |
 | örnek \_ Regex |  Toplanacak örnekleri tanımlayan bir *normal ifade* . Değer: `.*` tüm örnekleri belirtir. Yalnızca toplam örnek için işlemci ölçümlerini toplamak üzere \_ belirtebilirsiniz `_Total` . Yalnızca crond veya SSHD örnekleri için işlem ölçümlerini toplamak üzere şunları belirtebilirsiniz: `(crond\|sshd)` . |
@@ -156,7 +156,7 @@ Performans ölçümlerinin varsayılan yapılandırması aşağıda verilmiştir
 <source>
     type oms_omi
     object_name "Logical Disk"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 5m
 </source>
@@ -164,7 +164,7 @@ Performans ölçümlerinin varsayılan yapılandırması aşağıda verilmiştir
 <source>
     type oms_omi
     object_name "Processor"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 30s
 </source>
@@ -203,7 +203,7 @@ Performans kayıtları bir **perf** türüne sahiptir ve aşağıdaki tabloda bu
 ## <a name="log-queries-with-performance-records"></a>Performans kayıtlarıyla günlük sorguları
 Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:--- |:--- |
 | Perf |Tüm performans verileri |
 | Perf &#124; Computer = = "Bilgisayarım" |Belirli bir bilgisayardaki tüm performans verileri |

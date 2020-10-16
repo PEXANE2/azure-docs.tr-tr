@@ -9,12 +9,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6797a0f0f2d4d655bcdabe732f6b14c8f0f562
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277182"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131216"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway ile Azure Güvenlik Merkezi arasındaki tümleştirmeye genel bakış
 
@@ -44,7 +44,7 @@ Mevcut bir Application Gateway yoksa veya yeni bir tane oluşturmak istiyorsanı
 
 Mevcut bir uygulama ağ geçidiniz varsa, **mevcut çözümü kullan** altında bu seçeneği belirleyebilirsiniz.
 
-![Web uygulaması güvenlik duvarı ekleme sayfası][4]
+![Web uygulaması güvenlik duvarı ekleme sayfasının ekran görüntüsü. Mevcut çözümü kullan altında bir uygulama ağ geçidi görünür.][4]
 
 Güvenlik Merkezi aracılığıyla bir uygulama ağ geçidine Web uygulaması eklemek, kaynağı bir arka uç havuzu üyesi olarak eklemez. Bu, uygulama ağ geçidi kaynağında doğrudan yapılmalıdır.
 
@@ -62,7 +62,7 @@ Güvenlik Merkezi aracılığıyla bir uygulama ağ geçidine Web uygulaması ek
 
 Güvenlik Merkezi, bir uygulama ağ geçidine korumalı bir kaynak olarak eklenen uygulamaları izler.  Bu kaynağın sistem durumunu izler ve bir uygulama ağ geçidi tarafından korunmasını sağlar. Bir sonraki adım, sanal makinenizin özel IP, genel IP veya NIC 'sini uygulama ağ geçidinin arka uç havuzuna eklemektir. Bu işlem tamamlanana kadar, kaynak eklenene kadar **Uygulama koruma Işlemini sonlandırma** ek önerisi gösterilir.
 
-![Web uygulaması güvenlik duvarı ekleme sayfası][5]
+![Uygulama korumasını sonlandırma sayfasının, bir uygulamanın görünür olduğu ekran görüntüsü. Metin, uygulamayı korumak için hangi adımların alınacağını açıklar.][5]
 
 ## <a name="security-alerts"></a>Güvenlik uyarıları
 

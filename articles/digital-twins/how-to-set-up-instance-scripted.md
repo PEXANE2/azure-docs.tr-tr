@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047429"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132525"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -28,11 +28,11 @@ Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir
 
 ## <a name="prerequisites-download-the-script"></a>Önkoşullar: betiği Indir
 
-Örnek betik, PowerShell 'de yazılmıştır. Bu örnek bağlantıyı inceleyerek makinenize indirebileceğiniz [**Azure dijital TWINS örneklerinin**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)bir parçasıdır. Bu, söz konusu örnek bağlantısına giderek ve başlık altındaki *posta indirme* düğmesini seçmiş olursunuz.
+Örnek betik, PowerShell 'de yazılmıştır. Bu örnek bağlantıyı inceleyerek makinenize indirebileceğiniz [**Azure dijital TWINS uçtan uca örneklerinin**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)bir parçasıdır. Bu, söz konusu örnek bağlantısına giderek ve başlık altındaki *posta indirme* düğmesini seçmiş olursunuz.
 
-Bu işlem, örnek projeyi _**Azure_Digital_Twins_samples.zip**_ olarak makinenize indirir. Makinenizde bulunan klasöre gidin ve dosyaları ayıklamak için dosyayı ayıklayın.
+Bu işlem, örnek projeyi _**Azure_Digital_Twins_end_to_end_samples.zip**_ olarak makinenize indirir. Makinenizde bulunan klasöre gidin ve dosyaları ayıklamak için dosyayı ayıklayın.
 
-Sıkıştırılmış klasörde, dağıtım betiği _Azure_Digital_Twins_samples > betiklerinin > **deploy.ps1** _bulunur.
+Sıkıştırılmış klasörde, dağıtım betiği _Azure_Digital_Twins_end_to_end_samples > betiklerinin > **deploy.ps1** _bulunur.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

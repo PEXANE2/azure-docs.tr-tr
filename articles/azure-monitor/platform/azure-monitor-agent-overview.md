@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263785"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132712"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Izleyici aracısına genel bakış (Önizleme)
 Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izleme verilerini toplar ve Azure Izleyici 'ye gönderir. Bu makaleler, Azure Izleyici aracısına nasıl yükleneceğine ve veri toplamayı nasıl yapılandıracağınızı içeren bir genel bakış sağlar.
@@ -76,7 +76,7 @@ Aşağıdaki tabloda, veri toplama kurallarını kullanarak şu anda Azure Izley
 
 Azure Izleyici Aracısı verileri Azure Izleyici ölçümleri 'ne veya Azure Izleyici günlüklerini destekleyen bir Log Analytics çalışma alanına gönderir.
 
-| Veri Kaynağı | Hedefler | Açıklama |
+| Veri Kaynağı | Hedefler | Description |
 |:---|:---|:---|
 | Performans        | Azure Izleyici ölçümleri<br>Log Analytics çalışma alanı | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
 | Windows olay günlükleri | Log Analytics çalışma alanı | Windows olay günlüğü sistemine gönderilen bilgiler. |
@@ -84,7 +84,7 @@ Azure Izleyici Aracısı verileri Azure Izleyici ölçümleri 'ne veya Azure Izl
 
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
-Log Analytics Aracısı tarafından şu anda desteklenen Windows ve Linux işletim sistemi sürümlerinin bir listesi için [desteklenen işletim sistemleri](agents-overview.md#supported-operating-systems) bölümüne bakın.
+Azure Izleyici Aracısı tarafından desteklenen Windows ve Linux işletim sistemi sürümlerinin bir listesi için bkz. [desteklenen işletim sistemleri](agents-overview.md#supported-operating-systems) .
 
 
 
