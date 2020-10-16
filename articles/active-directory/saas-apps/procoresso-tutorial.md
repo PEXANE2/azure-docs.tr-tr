@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea69f1e634c66bff98462d41f3eeef19f8e15eb0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553623"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Öğretici: Procore SSO ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Procore SSO 'yu Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Procore SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -121,11 +121,11 @@ Azure AD çoklu oturum açmayı Procore SSO ile yapılandırmak için aşağıda
 
 2. Araç kutusu açılan listesinden **yönetici** ' ye tıklayarak SSO ayarları sayfasını açın.
 
-    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![Ekran görüntüsü, dizini seçili olan Procore şirket sitesini gösterir.](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. Kutulara değerleri aşağıda açıklandığı gibi yapıştırın.
 
-    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![Ekran görüntüsü kişi Ekle iletişim kutusunu gösterir.](./media/procoresso-tutorial/procore_setting_admin.png) 
 
     a. **Çoklu oturum açma veren URL 'si** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
@@ -195,11 +195,11 @@ Procore SSO tarafında bir Procore test kullanıcısı oluşturmak için lütfen
 
 2. Araç kutusu açılan listesinden **Dizin** ' e tıklayarak Şirket dizini sayfasını açın.
 
-    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![Ekran görüntüsü araç kutusundan seçilen dizine sahip Procore şirket sitesini gösterir.](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. Formu açmak için **kişi ekle** seçeneğine tıklayın ve aşağıdaki seçenekleri Uygula ' yı girin.
 
-    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/Procore_user_add.png)
+    ![Ekran görüntüsü, Kullanıcı bilgilerini girebileceğiniz Boylan oluşturmaya bir kişi ekleme hakkında bilgi gösterir.](./media/procoresso-tutorial/Procore_user_add.png)
 
     a. **Ilk ad** metin kutusuna kullanıcının Ilk adını **Britta**yazın.
 
@@ -213,11 +213,11 @@ Procore SSO tarafında bir Procore test kullanıcısı oluşturmak için lütfen
 
 4. Yeni eklenen kişinin ayrıntılarını denetleyin ve güncelleştirin.
 
-    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/Procore_user_check.png)
+    ![Ekran görüntüsü, Kullanıcı ayarlarını doğrulayabileceğiniz bir düzenleme sayfası gösterir.](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. Kullanıcı kaydını gerçekleştirmek için **Kaydet ve davet gönder** (posta ile davet et gerekliyse) veya **Kaydet** (doğrudan Kaydet) seçeneğine tıklayın.
     
-    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/Procore_user_save.png)
+    ![Ekran görüntüsü, daveti kaydedebileceğiniz ve gönderebileceğiniz geçerli proje ayarlarını gösterir.](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

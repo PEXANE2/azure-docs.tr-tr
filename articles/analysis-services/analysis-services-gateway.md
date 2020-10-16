@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016102"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107615"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma
 
@@ -30,22 +30,6 @@ Azure Analysis Services için, ilk kez ağ geçidi ile kurulum almak dört böl�
 
 - **Ağ geçidi kaynağını sunuculara bağlama** -bir ağ geçidi kaynağınız varsa, sunucuları buna bağlamaya başlayabilirsiniz. Aynı bölgede olduklarından, birden çok sunucuyu ve diğer kaynakları bağlayabilirsiniz.
 
-
-
-## <a name="how-it-works"></a>Nasıl çalışır?
-Kuruluşunuzdaki bir bilgisayara yüklediğiniz ağ geçidi, bir Windows hizmeti, Şirket **içi veri ağ geçidi**olarak çalışır. Bu yerel hizmet, Azure Service Bus aracılığıyla Ağ Geçidi Bulut Hizmeti’ne kaydedilir. Daha sonra, bir Azure aboneliği için bir şirket içi veri ağ geçidi kaynağı oluşturursunuz. Azure Analysis Services sunucularınız Azure Gateway kaynağına bağlanır. Sunucunuzdaki modellerin sorgular veya işleme için şirket içi veri kaynaklarınıza bağlanması gerektiğinde, bir sorgu ve veri akışı, ağ geçidi kaynağı, Azure Service Bus, yerel şirket içi veri ağ geçidi hizmeti ve veri kaynaklarınızı ele alır. 
-
-![Nasıl çalışır?](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
-
-Sorgular ve veri akışı:
-
-1. Bulut hizmeti, şirket içi veri kaynağı için şifrelenmiş kimlik bilgileri ile bir sorgu oluşturur. Bu sorgu daha sonra işlenmek üzere ağ geçidi sırasına gönderilir.
-2. Ağ Geçidi Bulut hizmeti sorguyu analiz eder ve isteği [Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/)gönderir.
-3. Şirket içi veri ağ geçidi, Azure Service Bus’ta bekleyen istekler olup olmadığını yoklar.
-4. Ağ geçidi sorguyu alır, kimlik bilgilerinin şifresini çözer ve bu kimlik bilgileriyle veri kaynaklarına bağlanır.
-5. Ağ geçidi, yürütme için sorguyu veri kaynağına gönderir.
-6. Sonuçlar, veri kaynağından ağ geçidine ve ardından bulut hizmetine ve sunucunuza geri gönderilir.
-
 ## <a name="installing"></a>Yükleme
 
 Azure Analysis Services ortamı için yükleme yaparken, [Azure Analysis Services için şirket içi veri ağ geçidini yükleme ve yapılandırma](analysis-services-gateway-install.md)bölümünde açıklanan adımları izlemeniz önemlidir. Bu makale Azure Analysis Services özeldir. Azure 'da şirket içi veri ağ geçidi kaynağı kurmak ve Azure Analysis Services sunucunuzu kaynağa bağlamak için gereken ek adımları içerir.
@@ -62,7 +46,7 @@ Güvenlik duvarınızdaki veri bölgenizin IP adreslerini eklemeniz gerekebilir.
 
 Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiştir.
 
-| Etki alanı adları | Giden bağlantı noktaları | Açıklama |
+| Etki alanı adları | Giden bağlantı noktaları | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |Yükleyiciyi indirmek için kullanılan HTTP. |
 | *.powerbi.com |443 |HTTPS |
@@ -76,16 +60,6 @@ Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiş
 | *.msftncsi.com |443 |Power BI hizmeti tarafından ağ geçidine erişilemiyorsa İnternet bağlantısını test etmek için kullanılır. |
 | *.microsoftonline-p.com |443 |Yapılandırmaya bağlı olarak kimlik doğrulaması için kullanılır. |
 | dc.services.visualstudio.com    |443 |Appınsights tarafından telemetri toplamak için kullanılır. |
-
-### <a name="forcing-https-communication-with-azure-service-bus"></a>Azure Service Bus ile HTTPS iletişimini zorlama
-
-Ağ geçidini, doğrudan TCP yerine HTTPS kullanarak Azure Service Bus ile iletişim kurmaya zorlayabilirsiniz; Ancak bunu yapmak performansı önemli ölçüde azaltabilir. Değerini olarak değiştirerek *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* dosyasını değiştirebilirsiniz `AutoDetect` `Https` . Bu dosya genellikle *C:\Program Files\On-premises Data Gateway*konumunda bulunur.
-
-```
-<setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
-    <value>Https</value>
-</setting>
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

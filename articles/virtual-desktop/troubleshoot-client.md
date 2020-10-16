@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88134488"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108975"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Uzak masaüstü istemcisinde sorun giderme
 
@@ -83,6 +83,20 @@ Web istemcisi kimlik bilgileri isteyip istemediğini devam ederse, şu yönergel
 3. Tarayıcı tanımlama bilgilerini temizleyin. Daha fazla bilgi için bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
 4. Tarayıcı önbelleğini temizleyin. Daha fazla bilgi için bkz. [tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU).
 5. Tarayıcınızı özel modda açın.
+
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows istemcisi Windows sanal masaüstü (klasik) akışını engelliyor
+
+Windows istemci akışı Windows sanal masaüstü (klasik) uygulamalarını göstermeyeceği şu yönergeleri izleyin:
+
+1. Koşullu erişim ilkesinin Windows sanal masaüstü (klasik) ile ilişkili uygulama kimliklerini içerip içermediği kontrol edin.
+2. Koşullu erişim ilkesinin Windows sanal masaüstü (klasik) uygulama kimlikleri hariç tüm erişimleri engellemesine izin olup olmadığını denetleyin. Bu durumda, istemcinin akışları bulmasına izin vermek için **9cdead84-a844-4324-93f2-b2e6bb768d07** uygulama kimliğini ilkeye eklemeniz gerekir.
+
+Uygulama KIMLIĞI 9cdead84-a844-4324-93f2-b2e6bb768d07 listede bulamazsanız, Windows Sanal Masaüstü kaynak sağlayıcısını kaydetmeniz gerekir. Kaynak sağlayıcısını kaydetmek için:
+
+1. Azure Portal’da oturum açın.
+2. **Aboneliğe**gidin ve aboneliğinizi seçin.
+3. Sayfanın sol tarafındaki menüde **kaynak sağlayıcısı**' nı seçin.
+4. **Microsoft. DesktopVirtualization**bulun ve seçin, sonra **yeniden kaydet**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

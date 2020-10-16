@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2018
-ms.openlocfilehash: fb8c25a49aa4cacc09ba6cd51cc859c4db036ec6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 85e1e7fbea6033fde7c5f46b2ef566672bbe1fea
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84670013"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105881"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory adlandırma kuralları
 
@@ -26,9 +26,10 @@ Aşağıdaki tabloda Data Factory yapıtlar için adlandırma kuralları verilmi
 
 | Name | Ad benzersizliği | Doğrulama denetimleri |
 |:--- |:--- |:--- |
-| Data Factory |Microsoft Azure genelinde benzersiz. Adlar, büyük/küçük harfe duyarlıdır `MyDF` ve `mydf` aynı veri fabrikasına başvurur. |<ul><li>Her veri fabrikası, tam olarak bir Azure aboneliğine bağlanır.</li><li>Nesne adları bir harf veya sayı ile başlamalıdır ve yalnızca harf, rakam ve tire (-) karakterini içerebilir.</li><li>Her tire (-) karakteri hemen önce ve ardından bir harf veya sayı gelmelidir. Kapsayıcı adlarında ardışık kesik çizgilerden izin verilmez.</li><li>Ad 3-63 karakter uzunluğunda olabilir.</li></ul> |
-| Bağlı hizmetler/veri kümeleri/işlem hatları |Bir veri fabrikasında ile benzersizdir. Adlar büyük/küçük harfe duyarlıdır. |<ul><li>Nesne adları bir harf, sayı veya alt çizgi (_) ile başlamalıdır.</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \\ "</li><li>Yalnızca bağlı hizmetlerin adlarında ve yalnızca veri kümelerinde tireler ("-") kullanılamaz.</li></ul>  |
+| Veri Fabrikası | Microsoft Azure genelinde benzersiz. Adlar, büyük/küçük harfe duyarlıdır `MyDF` ve `mydf` aynı veri fabrikasına başvurur. |<ul><li>Her veri fabrikası, tam olarak bir Azure aboneliğine bağlanır.</li><li>Nesne adları bir harf veya sayı ile başlamalıdır ve yalnızca harf, rakam ve tire (-) karakterini içerebilir.</li><li>Her tire (-) karakteri hemen önce ve ardından bir harf veya sayı gelmelidir. Kapsayıcı adlarında ardışık kesik çizgilerden izin verilmez.</li><li>Ad 3-63 karakter uzunluğunda olabilir.</li></ul> |
+| Bağlı hizmetler/veri kümeleri/işlem hatları/veri akışları | Bir veri fabrikasında ile benzersizdir. Adlar büyük/küçük harfe duyarlıdır. |<ul><li>Nesne adları bir harfle başlamalıdır.</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \\ "</li><li>Bağlı hizmetlerin, veri akışlarının ve veri kümelerinin adlarında tireler ("-") kullanılamaz.</li></ul>  |
 | Integration Runtime |Bir veri fabrikasında ile benzersizdir. Adlar büyük/küçük harfe duyarlıdır. |<ul><li>Tümleştirme çalışma zamanı adı yalnızca harf, rakam ve tire (-) karakterini içerebilir.</li><li>İlk ve son karakterlerin bir harf veya sayı olması gerekir. Her tire (-) karakteri hemen önce ve ardından bir harf veya sayı gelmelidir.</li><li>Tümleştirme çalışma zamanı adında ardışık kesik çizgilerden izin verilmez. </li></ul> |
+| Veri akışı dönüşümleri | Bir veri akışı içinde benzersiz. Adlar büyük/küçük harfe duyarlıdır | <ul><li>Veri akışı dönüştürme adları yalnızca harf ve sayı içerebilir</li><li>İlk karakter harf olmalıdır. </li></ul> |
 | Kaynak Grubu |Microsoft Azure genelinde benzersiz. Adlar büyük/küçük harfe duyarlıdır. | Daha fazla bilgi için bkz. [Azure adlandırma kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). |
 
 ## <a name="next-steps"></a>Sonraki adımlar

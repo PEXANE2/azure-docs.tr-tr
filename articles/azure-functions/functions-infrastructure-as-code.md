@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180652"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107734"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -137,7 +137,7 @@ Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 
 Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 
-| Ayar adı                 | Açıklama                                                                               | Örnek değerler                        |
+| Ayar adı                 | Description                                                                               | Örnek değerler                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Işlevlerin çalışma zamanının iç sıraya alma için kullandığı bir depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~2`                                  |
@@ -516,7 +516,7 @@ Linux uygulamaları altında bir özelliği de içermelidir `linuxFxVersion` `si
 }
 ```
 
-[Özel bir kapsayıcı görüntüsü dağıtıyorsanız](./functions-create-function-linux-custom-image.md), bunu ile belirtmeniz `linuxFxVersion` ve resminizin çekilme olanağı sağlayan yapılandırmayı [kapsayıcılar için Web App](../app-service/containers/index.yml)gibi bir yapılandırma dahil etmeniz gerekir. Ayrıca, `WEBSITES_ENABLE_APP_SERVICE_STORAGE` `false` uygulama içeriğiniz kapsayıcının kendisinde sağlandığı için olarak olarak ayarlayın:
+[Özel bir kapsayıcı görüntüsü dağıtıyorsanız](./functions-create-function-linux-custom-image.md), bunu ile belirtmeniz `linuxFxVersion` ve resminizin çekilme olanağı sağlayan yapılandırmayı [kapsayıcılar için Web App](../app-service/index.yml)gibi bir yapılandırma dahil etmeniz gerekir. Ayrıca, `WEBSITES_ENABLE_APP_SERVICE_STORAGE` `false` uygulama içeriğiniz kapsayıcının kendisinde sağlandığı için olarak olarak ayarlayın:
 
 ```json
 {
@@ -649,7 +649,7 @@ Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayar
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure portalındaki](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure portalı](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure'a Dağıt düğmesi

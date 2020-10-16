@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723869"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107972"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Izleyici 'de veri toplama kuralları (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve verilerin nereye gönderileceğini veya depolanacağını belirtir. Bu makalede, içerik ve yapısı ve bunlarla nasıl oluşturabileceğiniz ve bunlarla çalışma gibi veri toplama kurallarına genel bir bakış sunulmaktadır.
@@ -40,7 +40,7 @@ Aşağıdaki diyagramda bir veri toplama kuralının ve bunların ilişkilerinin
 ### <a name="data-source-types"></a>Veri kaynağı türleri
 Her veri kaynağının bir veri kaynağı türü vardır. Her tür, her veri kaynağı için belirtilmesi gereken benzersiz bir özellikler kümesi tanımlar. Şu anda kullanılabilir veri kaynağı türleri aşağıdaki tabloda gösterilmiştir.
 
-| Veri kaynağı türü | Açıklama | 
+| Veri kaynağı türü | Description | 
 |:---|:---|
 | uzantı | VM Uzantısı tabanlı veri kaynağı |
 | performanceCounters | Hem Windows hem de Linux için performans sayaçları |
@@ -68,7 +68,7 @@ Aşağıdaki tabloda, her bir veri toplama kuralı için geçerli olan sınırla
 Şu anda bir DCR oluşturmak için kullanılabilecek iki yöntem vardır:
 
 - Bir veri toplama kuralı oluşturmak ve bir veya daha fazla sanal makineyle ilişkilendirilmesini sağlamak için [Azure Portal kullanın](data-collection-rule-azure-monitor-agent.md) .
-- JSON 'daki veri toplama kuralını doğrudan düzenleyin ve [REST API kullanarak gönderebilirsiniz](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
+- JSON 'daki veri toplama kuralını doğrudan düzenleyin ve [REST API kullanarak gönderebilirsiniz](/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Örnek veri toplama kuralı
 Aşağıdaki örnek veri toplama kuralı, Azure Yönetim aracısına sahip sanal makineler içindir ve aşağıdaki ayrıntılara sahiptir:

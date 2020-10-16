@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627774"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108142"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Öğretici: API 'nizi dönüştürme ve koruma
 
@@ -20,7 +20,7 @@ ms.locfileid: "91627774"
 
 Bu öğretici Ayrıca Azure API Management bir hız sınırı yapılandırarak arka uç API 'niz için koruma eklemenin ne kadar kolay olduğunu gösterir. Örneğin API çağrısı oranını kısıtlamak isteyebilirsiniz, bu sayede API, geliştiriciler tarafından aşırı kullanılmaz. Daha fazla bilgi için bkz. [API Management ilkeleri](api-management-policies.md).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 :::image type="content" source="media/transform-api/api-management-management-console.png" alt-text="Portaldaki ilkeler":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 -   [Azure API Management'ta ilke kavramını](api-management-howto-policies.md) anlayın.
@@ -60,7 +60,7 @@ Bu bölümde, kullanıcılarınıza göstermek istemediğiniz HTTP üstbilgileri
 
 :::image type="content" source="media/transform-api/original-response.png" alt-text="Portaldaki ilkeler":::
 
-Görebileceğiniz gibi, yanıt **x-ASPNET-Version**ve **x-destekli** üst bilgilerini içerir.
+Görebileceğiniz gibi, yanıt **x-ASPNET-Version** ve **x-destekli** üst bilgilerini içerir.
 
 ### <a name="set-the-transformation-policy"></a>Dönüştürme ilkesi ayarlama
 
@@ -70,7 +70,7 @@ Görebileceğiniz gibi, yanıt **x-ASPNET-Version**ve **x-destekli** üst bilgil
    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Portaldaki ilkeler" border="false":::
 
 1. İmleci ** &lt; giden &gt; ** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
-1. Sağ taraftaki pencerede, **dönüştürme ilkeleri**altında, * * http üstbilgisi ayarla * * seçeneğini iki kez seçin (iki ilke parçacığı eklemek için).
+1. Sağ pencerede, **dönüştürme ilkeleri**altında, **http üst bilgisini** iki kez ayarla ' yı seçin (iki ilke parçacığı eklemek için).
 
    :::image type="content" source="media/transform-api/transform-api.png" alt-text="Portaldaki ilkeler":::
 
@@ -115,7 +115,7 @@ Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nas
 
 1.  **Tanıtım Konferansı API 'si**  >  **tüm işlemler**  >  **tasarımını**seçin.
 1.  **Gelen işlem** bölümünde, kod Düzenleyicisi ( **</>** ) simgesini seçin.
-1.  İmleci ** &lt; gelen &gt; ** öğesinin içine konumlandırın.
+1.  İmleci ** &lt; gelen &gt; ** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
 
     :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Portaldaki ilkeler" border="false":::
 

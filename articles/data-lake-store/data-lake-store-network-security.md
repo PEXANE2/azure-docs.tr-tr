@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 716e3766fdd7c1999efa12456346862a9902d7a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855710"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108720"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için sanal ağ tümleştirmesi
 
@@ -33,7 +33,7 @@ Data Lake Storage 1. Nesil için sanal ağ tümleştirmesi, erişim belirtecinde
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Data Lake Storage 1. Nesil sanal ağ tümleştirmesi senaryoları
 
-Data Lake Storage 1. Nesil sanal ağ tümleştirmesi ile Data Lake Storage 1. Nesil hesabınıza erişimi belirli sanal ağlar ve alt ağlar ile sınırlandırabilirsiniz. Hesabınız belirtilen sanal ağ alt ağına kilitlendikten sonra Azure'daki diğer sanal ağlar/VM'ler tarafından erişim sağlanamaz. Data Lake Storage 1. Nesil sanal ağ tümleştirmesi, işlev açısından [sanal ağ hizmet uç noktaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ile aynı senaryoyu etkinleştirir. İki senaryo arasındaki önemli farklar aşağıdaki bölümlerde belirtilmiştir. 
+Data Lake Storage 1. Nesil sanal ağ tümleştirmesi ile Data Lake Storage 1. Nesil hesabınıza erişimi belirli sanal ağlar ve alt ağlar ile sınırlandırabilirsiniz. Hesabınız belirtilen sanal ağ alt ağına kilitlendikten sonra Azure'daki diğer sanal ağlar/VM'ler tarafından erişim sağlanamaz. Data Lake Storage 1. Nesil sanal ağ tümleştirmesi, işlev açısından [sanal ağ hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) ile aynı senaryoyu etkinleştirir. İki senaryo arasındaki önemli farklar aşağıdaki bölümlerde belirtilmiştir. 
 
 ![Data Lake Storage 1. Nesil sanal ağ tümleştirmesi senaryo diyagramı](media/data-lake-store-network-security/scenario-diagram.png)
 
@@ -42,9 +42,9 @@ Data Lake Storage 1. Nesil sanal ağ tümleştirmesi ile Data Lake Storage 1. Ne
 
 ## <a name="optimal-routing-with-data-lake-storage-gen1-virtual-network-integration"></a>Data Lake Storage 1. Nesil sanal ağ tümleştirmesi için en uygun rota
 
-Sanal ağ hizmet uç noktalarının temel avantajlarından biri, sanal ağınızdan [en iyi rotayı](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits) kullanma seçeneğidir. Data Lake Storage 1. Nesil hesaplarında aynı rota iyileştirme adımlarını gerçekleştirebilirsiniz. Sanal ağınızdan Data Lake Storage 1. Nesil hesabınıza aşağıdaki [kullanıcı tanımlı rotaları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) kullanın.
+Sanal ağ hizmet uç noktalarının temel avantajlarından biri, sanal ağınızdan [en iyi rotayı](../virtual-network/virtual-network-service-endpoints-overview.md#key-benefits) kullanma seçeneğidir. Data Lake Storage 1. Nesil hesaplarında aynı rota iyileştirme adımlarını gerçekleştirebilirsiniz. Sanal ağınızdan Data Lake Storage 1. Nesil hesabınıza aşağıdaki [kullanıcı tanımlı rotaları](../virtual-network/virtual-networks-udr-overview.md#user-defined) kullanın.
 
-**Data Lake Storage genel IP adresi**: Hedef Data Lake Storage 1. Nesil hesaplarınız için genel IP adresini kullanın. Hesaplarınızın [DNS adlarını çözümleyerek](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity) Data Lake Storage 1. Nesil hesabınızın IP adresini tanımlayabilirsiniz. Her adres için ayrı bir giriş oluşturun.
+**Data Lake Storage genel IP adresi**: Hedef Data Lake Storage 1. Nesil hesaplarınız için genel IP adresini kullanın. Hesaplarınızın [DNS adlarını çözümleyerek](./data-lake-store-connectivity-from-vnets.md#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity) Data Lake Storage 1. Nesil hesabınızın IP adresini tanımlayabilirsiniz. Her adres için ayrı bir giriş oluşturun.
 
 ```azurecli
 # Create a route table for your resource group.
@@ -65,7 +65,7 @@ Data Lake Storage hesaplarını sanal ağ erişimiyle sınırlandırmaya ek olar
 Giden trafiği hedef hesap URL'sine göre filtrelemek için sanal ağınızda bir güvenlik duvarı çözümü kullanın. Yalnızca onaylanan Data Lake Storage 1. Nesil hesaplarına erişim izni verin.
 
 Kullanılabilen seçeneklerin bazıları şunlardır:
-- [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/overview): Sanal ağınızda bir [Azure Güvenlik Duvarı dağıtın ve yapılandırın](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal). Giden Data Lake Storage trafiğinin güvenliğini sağlayın, bilinen ve onaylı hesap URL'si ile kilitleyin.
+- [Azure Güvenlik Duvarı](../firewall/overview.md): Sanal ağınızda bir [Azure Güvenlik Duvarı dağıtın ve yapılandırın](../firewall/tutorial-firewall-deploy-portal.md). Giden Data Lake Storage trafiğinin güvenliğini sağlayın, bilinen ve onaylı hesap URL'si ile kilitleyin.
 - [Sanal ağ gereci](https://azure.microsoft.com/solutions/network-appliances/) güvenlik duvarı: Yöneticiniz yalnızca belirli ticari güvenlik duvarı satıcılarının kullanılmasına izin veriyor olabilir. Aynı işlevi gerçekleştirmek için Azure Market'te bulunan ağ sanal gereci güvenlik duvarı çözümlerinden birini kullanın.
 
 > [!NOTE]
@@ -77,7 +77,7 @@ Kullanılabilen seçeneklerin bazıları şunlardır:
  
 - Yeni bir HDInsight kümesi oluşturduğunuzda ve sanal ağ tümleştirmesi etkinleştirilmiş bir Data Lake Storage 1. Nesil hesabını seçtiğinizde bu işlem başarısız olur. Öncelikle sanal ağ kuralını devre dışı bırakmanız gerekir. Alternatif olarak Data Lake Storage hesabının **Güvenlik duvarı ve sanal ağlar** dikey penceresinde **Tüm ağlardan ve hizmetlerden erişime izin ver**'i seçebilirsiniz. Ardından, son olarak sanal ağ kuralını yeniden etkinleştirmeden önce HDInsight kümesini oluşturun veya **tüm ağlardan ve hizmetlerden erişime Izin ver**seçimini kaldırın. Daha fazla bilgi için [Özel durumlar](#exceptions) bölümüne bakın.
 
-- Data Lake Storage 1. sanal ağ tümleştirmesi, [Azure kaynakları için yönetilen kimliklerle](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)birlikte çalışmaz.
+- Data Lake Storage 1. sanal ağ tümleştirmesi, [Azure kaynakları için yönetilen kimliklerle](../active-directory/managed-identities-azure-resources/overview.md)birlikte çalışmaz.
   
 - Sanal ağ tümleştirmesi etkin Data Lake Storage 1. Nesil hesabınızdaki dosya ve klasör verilerine portaldan erişim sağlayamazsınız. Bu kısıtlamaya sanal ağ içindeki VM'lerden erişim ve Veri Gezgini kullanımı gibi etkinlikler dahildir. Hesap yönetimi etkinlikleri çalışmaya devam eder. Sanal ağ tümleştirmesi etkin Data Lake Storage hesabınızdaki dosya ve klasör verilerine portal dışı kaynaklardan erişim sağlayabilirsiniz. Bu kaynaklara SDK erişimi, PowerShell betikleri ve portaldan başlatılmayan diğer tüm Azure hizmetleri dahildir. 
 
@@ -87,7 +87,7 @@ Kullanılabilen seçeneklerin bazıları şunlardır:
 
 1.  Azure portala gidin ve hesabınızda oturum açın.
  
-2.  Aboneliğinizde [Yeni bir sanal ağ oluşturun](https://docs.microsoft.com/azure/virtual-network/quick-create-portal). İsterseniz var olan bir sanal ağa da gidebilirsiniz. Sanal ağın Data Lake Storage 1. Nesil hesabıyla aynı bölgede olması gerekir.
+2.  Aboneliğinizde [Yeni bir sanal ağ oluşturun](../virtual-network/quick-create-portal.md). İsterseniz var olan bir sanal ağa da gidebilirsiniz. Sanal ağın Data Lake Storage 1. Nesil hesabıyla aynı bölgede olması gerekir.
  
 3.  **Sanal ağ** dikey penceresinde **Hizmet uç noktaları**'nı seçin.
  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fe5c13b8c34d29be9a62717215271c10a48e9ac6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076904"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107598"
 ---
 # <a name="api-management-policies"></a>API Management ilkeleri
 Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](api-management-howto-policies.md).
@@ -79,7 +79,7 @@ Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlk
     -   [XSLT kullanarak XML dönüştürme](api-management-transformation-policies.md#XSLTransform) -istek veya yanıt gövdesinde XML 'e bir XSL dönüştürmesi uygular.
 - [Davpr tümleştirme ilkeleri](api-management-dapr-policies.md)
     - [Bir hizmete Istek gönder](api-management-dapr-policies.md#invoke) -bir davpr mikro hizmetini bulmak ve güvenilir bir şekilde iletişim kurmak Için davpr çalışma zamanı 'nı kullanır.
-    -  Yayın [/alt konuya Ileti gönder](api-management-dapr-policies.md#pubsub) -bir yayımla/abone ol ' a bir ileti yayımlamak Için davpr çalışma zamanını kullanır. yayımlama/abone olma hakkında daha fazla bilgi edinmek için bkz. yayımla-abone ol-mesajlaşma/Readme. MD).
+    -  Yayın [/alt konuya Ileti gönder](api-management-dapr-policies.md#pubsub) -bir yayımla/abone ol konusuna ileti yayımlamak Için davpr çalışma zamanı kullanır.
     -  [Çıkış bağlamasını Tetikle](api-management-dapr-policies.md#bind) -çıkış bağlaması aracılığıyla bir dış sistem çağırmak Için davpr çalışma zamanı kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar

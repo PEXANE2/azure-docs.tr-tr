@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 693a1ae8a8c84479448c2475db12d5bf1b25dbd5
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: f9d472b94b5490d00eac6d160af40c61d547534b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803509"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107496"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 
@@ -49,7 +49,7 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 | blob  | Evet |
 | boolean  | Evet |
 | counter  | Evet |
-| date  | Evet |
+| tarih  | Evet |
 | decimal  | Evet |
 | double  | Evet |
 | float  | Evet |
@@ -60,7 +60,7 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 | set  | Evet |
 | smallint  | Evet |
 | metin  | Evet |
-| saat  | Evet |
+| time  | Evet |
 | timestamp  | Evet |
 | timeuuid  | Evet |
 | tinyint  | Evet |
@@ -141,7 +141,7 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 | TOPLAMA OLUŞTUR | Hayır | 
 | ÖZEL DIZIN OLUŞTURMA (SASı) | Hayır |
 | CREATE INDEX | Evet ( [Dizin adı belirtmeden](cassandra-secondary-index.md), kümeleme anahtarlarındaki dizinler veya tam dondurulmuş koleksiyon desteklenmez) |
-| IŞLEV OLUŞTUR | Hayır |
+| CREATE FUNCTION | Hayır |
 | ANAHTAR alanı oluştur (çoğaltma ayarları yoksayıldı) | Evet |
 | GERÇEKLEŞTIRILMIŞ GÖRÜNÜM OLUŞTUR | Hayır |
 | CREATE TABLE | Evet |
@@ -151,23 +151,24 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 | Kullanıcı oluştur (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
 | DELETE | Evet |
 | SIL (IF KOŞULUNDA hafif işlemler)| Evet |
+| DISTINCT | Hayır |
 | BıRAKMA TOPLAMı | Hayır |
-| DROP IŞLEVI | Hayır |
+| DROP FUNCTION | Hayır |
 | DROP INDEX | Evet |
 | ANAHTAR UZAYıNı BıRAK | Evet |
 | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ BıRAK | Hayır |
 | ROLÜ BıRAK | Hayır |
-| TABLOYU BıRAK | Evet |
+| DROP TABLE | Evet |
 | TETIKLEYICIYI BıRAK | Hayır | 
 | BıRAKMA TÜRÜ | Evet |
 | KULLANıCıYı bırak (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
-| SEMANTIĞI | Hayır |
+| GRANT | Hayır |
 | INSERT | Evet |
 | Ekle (If koşulu ile hafif işlemler)| Evet |
 | IZINLERI LISTELE | Hayır |
 | ROLLERI LISTELE | Hayır |
 | KULLANıCıLARı LISTELEME (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
-| HEDEFINI | Hayır |
+| REVOKE | Hayır |
 | SELECT | Evet |
 | Seç (IF KOŞULUNDA hafif işlemler)| Hayır |
 | UPDATE | Evet |

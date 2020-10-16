@@ -6,25 +6,25 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508801"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108754"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Depolama Gezgini kullanarak Azure Data Lake Storage 1. kaynaklarını yönetme
 
-[Azure Data Lake Storage 1.](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) , metin veya ikili veriler gibi büyük miktarda yapılandırılmamış veriyi depolamaya yönelik bir hizmettir. HTTP veya HTTPS aracılığıyla verilere herhangi bir yerden erişebilirsiniz. Azure Depolama Gezgini Data Lake Storage 1., blob ve kuyruklar gibi diğer Azure varlıklarıyla birlikte Data Lake Storage 1. verilerine ve kaynaklara erişmenize ve bunları yönetmenize olanak sağlar. Artık farklı Azure varlıklarını aynı aracı kullanarak tek bir yerde yönetebilirsiniz.
+[Azure Data Lake Storage 1.](./data-lake-store-overview.md) , metin veya ikili veriler gibi büyük miktarda yapılandırılmamış veriyi depolamaya yönelik bir hizmettir. HTTP veya HTTPS aracılığıyla verilere herhangi bir yerden erişebilirsiniz. Azure Depolama Gezgini Data Lake Storage 1., blob ve kuyruklar gibi diğer Azure varlıklarıyla birlikte Data Lake Storage 1. verilerine ve kaynaklara erişmenize ve bunları yönetmenize olanak sağlar. Artık farklı Azure varlıklarını aynı aracı kullanarak tek bir yerde yönetebilirsiniz.
 
 Başka bir avantaj de Data Lake Storage 1. verilerini yönetmek için abonelik iznine sahip olmanız gerekmez. Depolama Gezgini, bir kullanıcı izin verdiği sürece, Data Lake Storage 1. yolunu **yerel ve bağlı** düğüme ekleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial).
-* Data Lake Storage 1. hesabı. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+* Data Lake Storage 1. hesabı. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](./data-lake-store-get-started-portal.md).
 
 ## <a name="install-storage-explorer"></a>Depolama Gezgini’ni yükleme
 
@@ -195,7 +195,7 @@ Bir URL’niz varsa, URL’yi Dosya Gezgini’nde veya tarayıcıda adres yoluna
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [En son Depolama Gezgini yayın notlarını ve videolarını](https://www.storageexplorer.com) görüntüleyin.
-* [Azure Depolama Gezgini Azure Cosmos DB yönetmeyi](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)öğrenin.
-* [Depolama Gezgini kullanmaya başlayın](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Azure Data Lake Storage 1. kullanmaya başlayın](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
+* [Azure Depolama Gezgini Azure Cosmos DB yönetmeyi](../cosmos-db/storage-explorer.md)öğrenin.
+* [Depolama Gezgini kullanmaya başlayın](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+* [Azure Data Lake Storage 1. kullanmaya başlayın](./data-lake-store-overview.md).
 * [Azure Depolama Gezgini’nde Azure Cosmos DB’yi kullanma hakkındaki YouTube videosunu](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) izleyin.

@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e10afa9293bbebbb68a6fc3eae4bc3f75813ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192824"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106833"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. güvenlik
 
@@ -31,7 +31,7 @@ Kimlik doğrulaması, Kullanıcı Data Lake Storage 1. veya Data Lake Storage 1.
 Her Azure aboneliği, bir Azure Active Directory örneğiyle ilişkilendirilebilir. Yalnızca Azure Active Directory hizmetinizde tanımlanan kullanıcılar ve hizmet kimlikleri Data Lake Storage 1. hesabınıza Azure portal, komut satırı araçlarını veya kuruluşunuzun Data Lake Storage 1. SDK kullanarak oluşturduğu istemci uygulamalarını kullanarak erişebilir. Merkezi erişim denetimi mekanizması olarak Azure Active Directory kullanmanın temel avantajları şunlardır:
 
 * Basitleştirilmiş kimlik yaşam döngüsü yönetimi. Bir kullanıcının veya hizmetin kimliği (hizmet sorumlusu kimliği), dizindeki hesabı silerek veya devre dışı bırakarak hızlı bir şekilde oluşturulabilir ve hızlı bir şekilde iptal edilebilir.
-* Multi-Factor Authentication. [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , Kullanıcı oturum açma işlemleri ve işlemler için ek bir güvenlik katmanı sağlar.
+* Multi-Factor Authentication. [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) , Kullanıcı oturum açma işlemleri ve işlemler için ek bir güvenlik katmanı sağlar.
 * OAuth veya OpenID gibi standart bir açık protokol aracılığıyla herhangi bir istemciden kimlik doğrulaması.
 * Kurumsal Dizin Hizmetleri ve bulut kimlik sağlayıcılarıyla Federasyon.
 
@@ -52,7 +52,7 @@ Roller hesap yönetimi için atanmış olsa da, bazı rollerin verilere erişimi
 
 | Roller | Yönetim hakları | Veri erişim hakları | Açıklama |
 | --- | --- | --- | --- |
-| Atanan rol yok |Yok |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
+| Atanan rol yok |Hiçbiri |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
 | Sahip |Tümü |Tümü |Sahip rolü bir süper kullanıcı. Bu rol her şeyi yönetebilir ve verilere tam erişim sağlayabilir. |
 | Okuyucu |Salt okunur |ACL 'ye tabidir |Okuyucu rolü, hesap yönetimiyle ilgili her şeyi görüntüleyebilir, örneğin hangi rolün atandığı kullanıcı. Okuyucu rolü herhangi bir değişiklik yapamaz. |
 | Katılımcı |Rol Ekle ve Kaldır dışında tümü |ACL 'ye tabidir |Katkıda bulunan rolü, bir hesabın dağıtım ve uyarı oluşturma ve yönetme gibi bazı yönlerini yönetebilir. Katkıda bulunan rolü rol ekleyemez veya kaldıramaz. |

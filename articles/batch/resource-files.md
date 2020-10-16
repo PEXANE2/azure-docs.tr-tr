@@ -3,12 +3,12 @@ title: Kaynak dosyalarını oluşturma ve kullanma
 description: Çeşitli giriş kaynaklarından Batch kaynak dosyaları oluşturmayı öğrenin. Bu makalede, bunları bir VM 'ye oluşturma ve bunlara yerleştirme hakkında bazı yaygın yöntemler ele alınmaktadır.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230951"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109298"
 ---
 # <a name="creating-and-using-resource-files"></a>Kaynak dosyalarını oluşturma ve kullanma
 
@@ -61,7 +61,7 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Bir SAS URL 'SI oluşturmanın alternatifi, Azure Blob depolama alanındaki bir kapsayıcıya ve bloblarına anonim, genel okuma erişimi sağlamak için kullanılır. Bunu yaparak, hesap anahtarınızı paylaşmadan ve SAS gerekmeden bu kaynaklara salt okuma erişimi verebilirsiniz. Genel okuma erişimi, genellikle belirli Blobların anonim okuma erişimi için her zaman kullanılabilir olmasını istediğiniz senaryolar için kullanılır. Bu senaryo çözümünüze uygunsa, blob verilerinize erişimi yönetme hakkında daha fazla bilgi edinmek için [bloblara anonim erişim](../storage/blobs/storage-manage-access-to-resources.md) makalesine bakın.
+Bir SAS URL 'SI oluşturmanın alternatifi, Azure Blob depolama alanındaki bir kapsayıcıya ve bloblarına anonim, genel okuma erişimi sağlamak için kullanılır. Bunu yaparak, hesap anahtarınızı paylaşmadan ve SAS gerekmeden bu kaynaklara salt okuma erişimi verebilirsiniz. Genel okuma erişimi, genellikle belirli Blobların anonim okuma erişimi için her zaman kullanılabilir olmasını istediğiniz senaryolar için kullanılır. Bu senaryo çözümünüze uygunsa, blob verilerinize erişimi yönetme hakkında daha fazla bilgi edinmek için [bloblara anonim erişim](../storage/blobs/anonymous-read-access-configure.md) makalesine bakın.
 
 ### <a name="storage-container-name"></a>Depolama kapsayıcısı adı
 

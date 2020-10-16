@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5236a3be9f8908d886274764dfc0c0da5b3565bc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77462114"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104487"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları genel bakış
 
@@ -38,7 +38,7 @@ Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Di�
 [core tools]: ./functions-run-local.md
 [Uzantı paketi]: ./functions-bindings-register.md#extension-bundles
 [NuGet paketi]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http
-[Uzantılarınızı güncelleştirme]: ./install-update-binding-extensions-manual.md
+[Uzantılarınızı güncelleştirme]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>İşlevler 1.x

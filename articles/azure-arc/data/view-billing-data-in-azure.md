@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5335442c7ffcdca950ba0e9c5f3b6bc9e4be9f63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760315"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108159"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Faturalama verilerini Azure 'a yükleyin ve Azure portal görüntüleyin
 
@@ -30,7 +30,7 @@ Gelecekte, Azure Arc etkin veri hizmetlerinizi çalıştırabileceğiniz iki mod
 - **Dolaylı olarak bağlı** -Azure 'a doğrudan bağlantı yoktur. Veriler yalnızca bir dışarı aktarma/karşıya yükleme işlemi aracılığıyla Azure 'a gönderilir. Tüm Azure Arc veri Hizmetleri dağıtımları bu modda bugün önizleme aşamasında çalışır.
 - **Doğrudan** bağlantı-bu modda, Azure Arc etkinleştirilmiş Kubernetes hizmetinde, Azure Arc etkin veri hizmetlerinin çalıştığı Kubernetes kümesi arasında doğrudan bir bağlantı sağlamak için bir bağımlılık olacaktır. Bu, daha fazla özelliği etkinleştirir ve Azure Arc etkin veri hizmetlerinizi Azure PaaS 'deki veri hizmetlerinizi yönettiğiniz gibi yönetmek için Azure portal ve Azure CLı 'yi de kullanmanıza imkan tanır.  Bu bağlantı modu henüz önizlemede kullanılamıyor, ancak yakında kullanıma sunulacak.
 
-[Bağlantı modları](https://docs.microsoft.com/azure/azure-arc/data/connectivity)arasındaki fark hakkında daha fazla bilgi edinebilirsiniz.
+[Bağlantı modları](./connectivity.md)arasındaki fark hakkında daha fazla bilgi edinebilirsiniz.
 
 Dolaylı olarak bağlanılan modda faturalandırma verileri, Azure Arc veri denetleyicisi 'nden güvenli bir dosyaya düzenli aralıklarla dışarı aktarılabilir ve sonra Azure 'a yüklenir ve işlenir.  Yaklaşan doğrudan bağlı modda faturalandırma verileri, hizmetlerinizin maliyetlerine neredeyse gerçek zamanlı bir görünüm kazandırmak için yaklaşık 1/saat Azure 'a otomatik olarak gönderilir. Verileri dolaylı olarak bağlı moddaki dışa ve karşıya yükleme işlemi, komut dosyaları kullanılarak da otomatikleştirilebilir veya sizin için bunu yapacağız bir hizmet derleyebilir.
 

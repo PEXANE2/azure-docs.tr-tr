@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949859"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107836"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
@@ -101,19 +101,18 @@ Beceri <sup>başına en fazla</sup> 30 yetenek.
 > [!NOTE]
 > [Dizin sınırları](#index-limits)bölümünde belirtildiği gibi, Dizin oluşturucular, karmaşık türler () ile birlikte en son GA API sürümü ile başlayarak her belge için tüm karmaşık koleksiyonlarda 3000 öğelerin üst sınırını da uygular `2019-05-06` . Yani, Dizin oluşturucuyu önceki bir API sürümüyle oluşturduysanız bu sınıra tabi olmayacaktır. En yüksek uyumluluğu korumak için, önceki bir API sürümüyle oluşturulmuş ve daha sonra bir API sürümüyle veya daha sonraki bir sürümle güncelleştirilmiş bir Dizin Oluşturucu, `2019-05-06` sınırlara **dahil** edilmez. Müşteriler çok büyük karmaşık koleksiyonlara sahip olmanın olumsuz etkisinin farkında olmalıdır (daha önce belirtildiği gibi) ve en son GA API sürümüyle yeni Dizin oluşturucular oluşturmanız önerilir.
 
-### <a name="shared-private-link-resource-limits"></a>Paylaşılan özel bağlantı kaynağı sınırları
+## <a name="shared-private-link-resource-limits"></a>Paylaşılan özel bağlantı kaynağı sınırları
 
-> [!NOTE]
-> Dizin oluşturucular, [Bu nasıl yapılır kılavuzunda](search-indexer-howto-access-private.md) açıklandığı gibi [paylaşılan özel bağlantı kaynağı API 'si](/rest/api/searchmanagement/sharedprivatelinkresources) aracılığıyla yönetilen özel uç noktalar üzerinden kaynaklara güvenli bir şekilde erişebilir.
+Dizin oluşturucular, [paylaşılan özel bağlantı kaynağı API 'si](/rest/api/searchmanagement/sharedprivatelinkresources)aracılığıyla yönetilen [Özel uç noktalar üzerinden](search-indexer-howto-access-private.md) diğer Azure kaynaklarına erişebilir. Bu bölümde, bu özellik ile ilişkili sınırlar açıklanmaktadır.
 
 | Kaynak | Ücretsiz | Temel | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Özel uç nokta Dizin Oluşturucu desteği | Hayır | Yes | Yes | Yes | Yes | Hayır | Yes | Yes |
-| Beceri<sup>1</sup> ile Dizin oluşturucular için özel uç nokta desteği | Hayır | Hayır | Hayır | Yes | Yes | Hayır | Yes | Yes |
+| Özel uç nokta Dizin Oluşturucu desteği | Hayır | Evet | Evet | Evet | Evet | Hayır | Evet | Evet |
+| Beceri<sup>1</sup> ile Dizin oluşturucular için özel uç nokta desteği | Hayır | Hayır | Hayır | Evet | Evet | Hayır | Evet | Evet |
 | En fazla özel uç noktalar | YOK | 10 veya 30 | 100 | 400 | 400 | YOK | 20 | 20 |
 | En fazla farklı kaynak türü<sup>2</sup> | YOK | 4 | 7 | 15 | 15 | YOK | 4 | 4 |
 
-<sup>1</sup> AI zenginleştirme ve resim analizi, yoğun bir şekilde tüketilir ve kullanılabilir işlem gücü orantısız tüketilecektir ve bu nedenle, daha düşük arama hizmeti katmanları özel ortamda çalışmak üzere ayarlandığında, arama hizmetinin performansı ve kararlılığı olumsuz etkileyebilir.
+<sup>1</sup> AI zenginleştirme ve görüntü analizi yoğun bir şekilde yoğun ve orantısız miktarları kullanılabilir işlem gücü kullanıyor. Bu nedenle, arama hizmetinin performansının ve kararlılığının olumsuz yönde etkilenmemesi için, özel bağlantılar daha düşük katmanlarda devre dışı bırakılır.
 
 <sup>2</sup> farklı kaynak türü sayısı, `groupId` kaynağın durumu ne olursa olsun, belirli bir arama hizmeti için tüm paylaşılan özel bağlantı kaynaklarında kullanılan benzersiz değer sayısı olarak hesaplanır.
 

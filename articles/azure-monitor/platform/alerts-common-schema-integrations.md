@@ -4,12 +4,12 @@ description: Tüm uyarılarınızı işlemek için ortak uyarı şemasıyla yara
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322100"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108890"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Ortak uyarı şemasını Logic Apps ile tümleştirme
 
@@ -17,10 +17,10 @@ Bu makalede, tüm uyarılarınızı işlemek için ortak uyarı şemasının kul
 
 ## <a name="overview"></a>Genel Bakış
 
-[Ortak uyarı şeması](https://aka.ms/commonAlertSchemaDocs) , tüm farklı uyarı türlerinizin genelinde standartlaştırılmış ve GENIŞLETILEBILIR bir JSON şeması sağlar. Ortak uyarı şeması, yararlanılabilir programlı olarak Web kancaları, runbook 'lar ve Logic Apps aracılığıyla yararlıdır. Bu makalede, tüm uyarılarınızı işlemek için tek bir Logic App 'in nasıl yazıldığı gösterilmektedir. Aynı ilkeler diğer programlama yöntemlerine de uygulanabilir. Bu makalede açıklanan mantıksal uygulama, [' Essential ' alanları](alerts-common-schema-definitions.md#essentials)için iyi tanımlanmış değişkenler oluşturur ve ayrıca [Uyarı türüne](alerts-common-schema-definitions.md#alert-context) özgü mantığı nasıl işleyebileceğinizi açıklar.
+[Ortak uyarı şeması](./alerts-common-schema.md) , tüm farklı uyarı türlerinizin genelinde standartlaştırılmış ve GENIŞLETILEBILIR bir JSON şeması sağlar. Ortak uyarı şeması, yararlanılabilir programlı olarak Web kancaları, runbook 'lar ve Logic Apps aracılığıyla yararlıdır. Bu makalede, tüm uyarılarınızı işlemek için tek bir Logic App 'in nasıl yazıldığı gösterilmektedir. Aynı ilkeler diğer programlama yöntemlerine de uygulanabilir. Bu makalede açıklanan mantıksal uygulama, [' Essential ' alanları](alerts-common-schema-definitions.md#essentials)için iyi tanımlanmış değişkenler oluşturur ve ayrıca [Uyarı türüne](alerts-common-schema-definitions.md#alert-context) özgü mantığı nasıl işleyebileceğinizi açıklar.
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu makalede, okuyucunun öğrenildiği varsayılmaktadır 
 * Uyarı kurallarını ayarlama ([ölçüm](./alerts-metric.md), [günlük](./alerts-log.md), [etkinlik günlüğü](./alerts-activity-log.md))
@@ -138,5 +138,4 @@ Bu makalede, okuyucunun öğrenildiği varsayılmaktadır
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Eylem grupları hakkında daha fazla bilgi edinin](./action-groups.md).
-* [Ortak uyarı şeması hakkında daha fazla bilgi edinin](https://aka.ms/commonAlertSchemaDocs).
-
+* [Ortak uyarı şeması hakkında daha fazla bilgi edinin](./alerts-common-schema.md).

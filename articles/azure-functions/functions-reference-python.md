@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642206"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108431"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -295,21 +295,38 @@ Bu işlevde, `name` sorgu parametresinin değeri, `params` [HttpRequest] nesnesi
 
 Benzer şekilde, `status_code` `headers` döndürülen [HttpResponse] nesnesindeki yanıt iletisi için ve kullanabilirsiniz.
 
-## <a name="scaling-and-concurrency"></a>Ölçeklendirme ve eşzamanlılık
+## <a name="scaling-and-performance"></a>Ölçeklendirme ve performans
 
-Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Python için ek konak örnekleri oluşturur. İşlevler, iletilerin yaşı ve QueueTrigger için sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik (Kullanıcı tarafından yapılandırılamaz) eşikleri kullanır. Daha fazla bilgi için bkz. [Tüketim ve Premium planların nasıl çalıştığı](functions-scale.md#how-the-consumption-and-premium-plans-work).
+İşlevlerinizin nasıl çalıştığını ve bu performansın, işlev uygulamanızın nasıl ölçeklendirileceğini anlamak önemlidir. Yüksek performanslı uygulamalar tasarlarken bu özellikle önemlidir. Aşağıda, işlevler uygulamalarınızı tasarlarken, yazarken ve yapılandırırken göz önünde bulundurmanız gereken birkaç etken verilmiştir.
 
-Bu ölçeklendirme davranışı birçok uygulama için yeterlidir. Ancak, aşağıdaki özelliklere sahip uygulamalar etkin şekilde ölçeklenmeyebilir:
+### <a name="horizontal-scaling"></a>Yatay ölçeklendirme
+Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Python için ek konak örnekleri oluşturur. İşlevler, iletilerin yaşı ve QueueTrigger için sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik eşikleri kullanır. Bu eşikler Kullanıcı tarafından yapılandırılabilir değildir. Daha fazla bilgi için bkz. [Tüketim ve Premium planların nasıl çalıştığı](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-- Uygulamanın birçok eşzamanlı çağırma işlemesi gerekir.
-- Uygulama çok sayıda g/ç olayını işler.
-- Uygulama g/ç bağlıydı.
+### <a name="improving-throughput-performance"></a>Verimlilik performansını artırma
 
-Bu gibi durumlarda, zaman uyumsuz desenler ve birden çok dil çalışan işlemi kullanarak performansı daha da artırabilirsiniz.
+Performansı iyileştirmeye yönelik bir anahtar, uygulamanızın kaynakları nasıl kullandığını ve işlev uygulamanızı uygun şekilde nasıl yapılandırabileceğini anlayacaktır.
 
-### <a name="async"></a>Zaman Uyumsuz
+#### <a name="understanding-your-workload"></a>İş yükünüzü anlama
 
-Python tek iş parçacıklı bir çalışma zamanı olduğundan, Python için bir konak örneği bir seferde yalnızca bir işlev çağrısını işleyebilir. Çok sayıda g/ç olayını işleyen ve/veya g/ç bağlantılı uygulamalar için, işlevleri zaman uyumsuz olarak çalıştırarak performansı artırabilirsiniz.
+Varsayılan yapılandırma, Azure Işlevleri uygulamalarının çoğu için uygundur. Ancak, iş yükü profilinize göre yapılandırma uygulayarak uygulamalarınızın aktarım hızı performansını artırabilirsiniz. İlk adım, çalıştırdığınız iş yükünün türünü anlamaktır.
+
+|| G/ç bağlantılı iş yükü | CPU ile bağlantılı iş yükü |
+|--| -- | -- |
+|İşlev uygulaması özellikleri| <ul><li>Uygulamanın birçok eşzamanlı çağırma işlemesi gerekiyor.</li> <li> Uygulama, ağ çağrıları ve disk okuma/yazma gibi çok sayıda g/ç olayını işler.</li> </ul>| <ul><li>Uygulama, görüntü yeniden boyutlandırma gibi uzun süre çalışan hesaplamalar yapar.</li> <li>Uygulama veri dönüşümünü yapar.</li> </ul> |
+|Örnekler| <ul><li>Web API'leri</li><ul> | <ul><li>Veri işleme</li><li> Makine öğrenimi çıkarımı</li><ul>|
+
+ 
+> [!NOTE]
+>  Gerçek dünya işlevleri iş yükü çoğunlukla g/ç ve CPU sınırının bir karışımından büyük olduğundan, iş yükünün gerçekçi üretim yükleri altında profilini oluşturmanızı öneririz.
+
+
+#### <a name="performance-specific-configurations"></a>Performansa özgü yapılandırma
+
+İşlev uygulamanızın iş yükü profilini öğrendikten sonra, işlevlerinizin aktarım hızını artırmak için kullanabileceğiniz yapılandırma işlemleri aşağıda verilmiştir.
+
+##### <a name="async"></a>Zaman Uyumsuz
+
+[Python tek iş parçacıklı bir çalışma zamanı](https://wiki.python.org/moin/GlobalInterpreterLock)olduğundan, Python için bir konak örneği bir seferde yalnızca bir işlev çağrısını işleyebilir. Çok sayıda g/ç olayını işleyen ve/veya g/ç bağlantılı uygulamalar için, işlevleri zaman uyumsuz olarak çalıştırarak performansı önemli ölçüde artırabilirsiniz.
 
 Bir işlevi zaman uyumsuz olarak çalıştırmak için, `async def` işlevi zaman uyumsuz [CIO](https://docs.python.org/3/library/asyncio.html) ile doğrudan çalıştıran ifadesini kullanın:
 
@@ -317,6 +334,21 @@ Bir işlevi zaman uyumsuz olarak çalıştırmak için, `async def` işlevi zama
 async def main():
     await some_nonblocking_socket_io_op()
 ```
+[Aiohttp](https://pypi.org/project/aiohttp/) http ISTEMCISINI kullanan http tetikleyicisine sahip bir işleve örnek aşağıda verilmiştir:
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
+
 
 Anahtar sözcüğü olmayan bir işlev, `async` zaman uyumsuz CIO iş parçacığı havuzunda otomatik olarak çalıştırılır:
 
@@ -327,17 +359,31 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>Birden çok dil çalışan işlemi kullanma
+İşlevleri zaman uyumsuz olarak çalıştırmanın tam avantajlarından yararlanmak için, kodunuzda kullanılan g/ç işlemi/kitaplığı, zaman uyumsuz olarak uygulanmanız gerekir. Zaman uyumsuz olarak tanımlanan işlevlerde zaman uyumlu g/ç işlemlerinin kullanılması genel **performansı düşürebilir.**
+
+Zaman uyumsuz model uygulayan istemci kitaplıklarına birkaç örnek aşağıda verilmiştir:
+- [aiohttp](https://pypi.org/project/aiohttp/) -zaman uyumsuz CIO için http istemcisi/sunucusu 
+- Ağ bağlantısıyla çalışmak için API-üst düzey zaman uyumsuz/await-Ready basit temelleri [akışlar](https://docs.python.org/3/library/asyncio-stream.html)
+- [Inus kuyruğu](https://pypi.org/project/janus/) -iş parçacığı için güvenli zaman uyumsuz CIO-Python kuyruğu
+- [pyzmq](https://pypi.org/project/pyzmq/) -ZeroMQ için Python bağlamaları
+ 
+
+##### <a name="use-multiple-language-worker-processes"></a>Birden çok dil çalışan işlemi kullanma
 
 Varsayılan olarak, her Işlev ana bilgisayar örneği tek bir dil çalışan işlemine sahiptir. [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) uygulama ayarını kullanarak konak başına çalışan işlem sayısını (10 ' a kadar) artırabilirsiniz. Azure Işlevleri daha sonra bu çalışanlar genelinde aynı anda eşzamanlı işlev etkinleştirmeleri dağıtmaya çalışır.
 
+CPU 'ya bağlanan uygulamalar için, dil çalışanı sayısını, işlev uygulaması başına kullanılabilir çekirdek sayısıyla aynı veya ondan daha yüksek olacak şekilde ayarlamanız gerekir. Daha fazla bilgi edinmek için bkz. [kullanılabilir örnek SKU 'ları](functions-premium-plan.md#available-instance-skus). 
+
+G/ç bağlantılı uygulamalar, kullanılabilir çekirdek sayısının ötesinde çalışan işlem sayısını arttırmadan da yararlanabilir. Çalışan sayısını çok yüksek olarak ayarlamanın, gereken bağlam anahtarlarının sayısı arttığı için genel performansı etkilediğini aklınızda bulundurun. 
+
 FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölçeklenmesi sırasında oluşturduğu her bir konak için geçerlidir.
+
 
 ## <a name="context"></a>Bağlam
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin.
 
-Örneğin:
+Örnek:
 
 ```python
 import azure.functions

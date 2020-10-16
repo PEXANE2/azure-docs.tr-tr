@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de4962326a06080ff2bf81954cf85d3b6bbfefd5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552352"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104793"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Öğretici: Printix ile tümleştirme Azure Active Directory
 
@@ -61,19 +61,19 @@ Printix 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden
 
 1. **Kurumsal uygulamalar**'a gidin. Ardından **tüm uygulamalara**gidin.
 
-    ![Uygulamalar][2]
+    ![Ekran görüntüsü, tüm uygulamalar seçiliyken Yönet altında seçilen Azure portal kurumsal uygulamaları gösterir.][2]
     
 1. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
-    ![Uygulamalar][3]
+    ![Ekran görüntüsü yeni seçili uygulamayı gösterir.][3]
 
 1. Arama kutusuna **Printix**yazın.
 
-    ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/tutorial_printix_search.png)
+    ![Ekran görüntüsü, galeriye Ekle iletişim kutusunda Printix aramasını gösterir.](./media/printix-tutorial/tutorial_printix_search.png)
 
 1. Sonuçlar panelinde, **Printix**' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-    ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
+    ![Ekran görüntüsü Printix seçeneğinin seçili olduğunu gösterir.](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 Bu bölümde, "Britta Simon" adlı bir test kullanıcısına göre Printix ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
@@ -98,15 +98,15 @@ Bu bölümde, Azure AD Azure portal 'de çoklu oturum açmayı etkinleştirin ve
 
 1. Azure portal, **Printix** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' ya tıklayın.
 
-    ![Tek Sign-On yapılandırma][4]
+    ![Ekran görüntüsünde, Azure portal Yönet altında çoklu oturum açma gösterilmektedir.][4]
 
 1. Çoklu oturum **açma iletişim kutusunda** , çoklu oturum açmayı etkinleştirmek için **SAML tabanlı oturum açma** olarak **mod** ' u seçin.
  
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_samlbase.png)
+    ![Ekran görüntüsü SAML tabanlı oturum açma modunun seçili olduğunu gösterir.](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
 1. **Printix etki alanı ve URL 'ler** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_url.png)
+    ![Ekran görüntüsü, oturum açma için U R L 'yi belirtebileceğiniz Printix etki alanı ve URL 'Ler bölümünü gösterir.](./media/printix-tutorial/tutorial_printix_url.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.printix.net`
 
@@ -115,33 +115,33 @@ Bu bölümde, Azure AD Azure portal 'de çoklu oturum açmayı etkinleştirin ve
  
 1. **SAML Imzalama sertifikası** bölümünde **metadata XML** ' e tıklayın ve ardından meta veri dosyasını bilgisayarınıza kaydedin.
 
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_certificate.png) 
+    ![Ekran görüntüsü, bir sertifikayı indirebileceğiniz SAML Imzalama sertifikası bölmesini gösterir.](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
 1. **Kaydet** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_general_400.png)
+    ![Kaydet düğmesini gösteren ekran görüntüsü.](./media/printix-tutorial/tutorial_general_400.png)
 
 1. Yönetici olarak Printix kiracınızda oturum açın.
 
 1. Üstteki menüden sağ üst köşedeki simgeye tıklayın ve "**kimlik doğrulaması**" seçeneğini belirleyin.
    
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_06.png)
+    ![Ekran görüntüsü, menüden kimlik doğrulamanın seçili olduğunu gösterir.](./media/printix-tutorial/tutorial_printix_06.png)
 
 1. **Kurulum** sekmesinde **Azure/Office 365 kimlik doğrulamasını etkinleştir** ' i seçin.
    
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_07.png)
+    ![Ekran görüntüsü, Azure/Office 365 kimlik doğrulamasını etkinleştir ' i seçebileceğiniz Printix.net sayfasını gösterir.](./media/printix-tutorial/tutorial_printix_07.png)
 
 1. **Azure** sekmesinde, Federasyon meta verileri URL 'Sini "**Federasyon meta verileri belgesi**" metin kutusuna girin. 
 
     Azure AD 'den [Printix destek ekibine](mailto:support@printix.net)indirdiğiniz meta veri xml dosyasını ekleyin. Ardından, XML dosyasını karşıya yükler ve bir Federasyon meta veri URL 'SI sağlar.
    
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_08.png)
+    ![Ekran görüntüsü, Federasyon meta veri belgesi belirtebileceğiniz Printix.net sayfasını gösterir.](./media/printix-tutorial/tutorial_printix_08.png)
    
 1. "**Test**" düğmesine tıklayın ve test başarılı olduysa "**Tamam**" düğmesine tıklayın.
    
      Azure Active Directory sayfası, **Test** düğmesine tıklandıktan sonra gösterilir. "Test başarılı oldu" burada Azure test hesabınızın kimlik bilgilerini girdikten sonra bir "ayarlar test edildi" iletisi açılır. Ardından **Tamam** düğmesine tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_09.png)
+    ![Ekran görüntüsü testin sonuçlarını gösterir.](./media/printix-tutorial/tutorial_printix_09.png)
 
 1. "**Kimlik doğrulama**" sayfasında **Kaydet** düğmesine tıklayın.
 
@@ -159,19 +159,19 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 1. **Azure Portal**, sol gezinti bölmesinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/create_aaduser_01.png) 
+    ![Ekran görüntüsünde, oluşturulacak adı ve Kullanıcı adını gösterir.](./media/printix-tutorial/create_aaduser_01.png) 
 
 1. Kullanıcıların listesini göstermek için **Kullanıcılar ve gruplar** ' a gidin ve **tüm kullanıcılar**' a tıklayın.
     
-    ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/create_aaduser_02.png) 
+    ![Ekran görüntüsü Azure portal Azure A D simgesini gösterir.](./media/printix-tutorial/create_aaduser_02.png) 
 
 1. **Kullanıcı** iletişim kutusunu açmak için iletişim kutusunun üst kısmındaki **Ekle** ' ye tıklayın.
  
-    ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/create_aaduser_03.png) 
+    ![Ekran görüntüsü, tüm kullanıcılar seçiliyken Yönet menüsünden seçilen kullanıcıları ve grupları gösterir.](./media/printix-tutorial/create_aaduser_03.png) 
 
 1. **Kullanıcı** iletişim sayfasında, aşağıdaki adımları uygulayın:
  
-    ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/create_aaduser_04.png) 
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı iletişim kutusunu gösterir.](./media/printix-tutorial/create_aaduser_04.png) 
 
     a. **Ad** metin kutusuna **Brittasıon**yazın.
 
@@ -195,25 +195,25 @@ Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz yoksa Printix er
 
 Bu bölümde, Printtix 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
-![Kullanıcı ata][200] 
+![Ekran görüntüsü varsayılan erişimi olan bir kullanıcıyı gösterir.][200] 
 
 **Printix 'e Britta Simon atamak için aşağıdaki adımları uygulayın:**
 
 1. Azure portal, uygulamalar görünümünü açın ve ardından dizin görünümüne gidip **Kurumsal uygulamalar** ' a gidin ve ardından **tüm uygulamalar**' a tıklayın.
 
-    ![Kullanıcı ata][201] 
+    ![Ekran görüntüsü, tüm uygulamalar seçiliyken Yönet altında seçilen kurumsal uygulamaları gösterir.][201] 
 
 1. Uygulamalar listesinde, **Printix**' i seçin.
 
-    ![Tek Sign-On yapılandırma](./media/printix-tutorial/tutorial_printix_app.png) 
+    ![Ekran görüntüsü, Printix ' i seçebileceğiniz uygulama listesini gösterir.](./media/printix-tutorial/tutorial_printix_app.png) 
 
 1. Soldaki menüde **Kullanıcılar ve gruplar**' a tıklayın.
 
-    ![Kullanıcı ata][202] 
+    ![Ekran görüntüsü Yönet menüsünden seçilen kullanıcıları ve grupları gösterir.][202] 
 
 1. **Ekle** düğmesine tıklayın. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı ata][203]
+    ![Ekran görüntüsü Ekle düğmesini ve Kullanıcı ve grupları seçebileceğiniz atama Ekle sayfasını gösterir.][203]
 
 1. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' u seçin.
 

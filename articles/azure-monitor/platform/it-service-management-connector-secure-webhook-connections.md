@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328862"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107768"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Güvenli dışarı aktarma kullanarak Azure 'dan ıTSM araçlarına bağlanma
 
@@ -51,7 +51,7 @@ Güvenli dışarı aktarma, BMC Helix destekler. Tümleştirmenin bazı avantajl
 
 * **Daha iyi kimlik doğrulaması**: Azure AD, genellikle ısmc 'da oluşan zaman aşımları olmadan daha güvenli kimlik doğrulaması sağlar.
 * **ITSM aracında çözümlenen uyarılar**: ölçüm uyarıları "tetiklenir" ve "çözümlendi" durumlarını uygular. Koşul karşılandığında, uyarı durumu "tetiklenir" olur. Koşul artık karşılanmazsa, uyarı durumu "çözüldü" olur. ISMC 'da, uyarılar otomatik olarak çözümlenemiyor. Güvenli dışarı aktarma sayesinde, çözümlenen durum ıTSM aracına akar ve bu nedenle otomatik olarak güncelleştirilir.
-* **[Ortak uyarı şeması](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)**: ısmc 'da, uyarı yükünün şeması, uyarı türüne göre farklılık gösterir. Güvenli dışarı aktarma bölümünde tüm uyarı türleri için ortak bir şema vardır. Bu ortak şema tüm uyarı türleri için CI 'yi içerir. Tüm Uyarı türleri CI 'yi CMDB ile bağlayabilecektir.
+* **[Ortak uyarı şeması](./alerts-common-schema.md)**: ısmc 'da, uyarı yükünün şeması, uyarı türüne göre farklılık gösterir. Güvenli dışarı aktarma bölümünde tüm uyarı türleri için ortak bir şema vardır. Bu ortak şema tüm uyarı türleri için CI 'yi içerir. Tüm Uyarı türleri CI 'yi CMDB ile bağlayabilecektir.
 
 ITSM Bağlayıcısı aracını şu adımlarla kullanmaya başlayın:
 
@@ -63,7 +63,7 @@ ITSM Bağlayıcısı aracını şu adımlarla kullanmaya başlayın:
 
 Uygulamayı Azure AD 'ye kaydetmek için şu adımları izleyin:
 
-1. [Microsoft Identity platformu ile uygulama kaydetme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)bölümündeki adımları izleyin.
+1. [Microsoft Identity platformu ile uygulama kaydetme](../../active-directory/develop/quickstart-register-app.md)bölümündeki adımları izleyin.
 1. Azure AD 'de **uygulamayı kullanıma**sunma ' yı seçin.
 1. **Uygulama kimliği URI 'si**için **Ayarla** ' yı seçin.
 
@@ -75,7 +75,7 @@ Uygulamayı Azure AD 'ye kaydetmek için şu adımları izleyin:
 Uygulamanız Azure AD 'ye kaydedildikten sonra, işlem gruplarındaki güvenli Web kancası eylemini kullanarak ıTSM aracınız üzerinde Azure uyarılarını temel alan iş öğeleri oluşturabilirsiniz.
 
 Eylem grupları, Azure uyarıları için eylemleri tetiklemenin modüler ve yeniden kullanılabilir bir yolunu sağlar. İşlem gruplarını, ölçüm uyarıları, etkinlik günlüğü uyarıları ve Azure portal Azure Log Analytics uyarıları ile birlikte kullanabilirsiniz.
-Eylem grupları hakkında daha fazla bilgi edinmek için [Azure Portal eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)konusuna bakın.
+Eylem grupları hakkında daha fazla bilgi edinmek için [Azure Portal eylem grupları oluşturma ve yönetme](./action-groups.md)konusuna bakın.
 
 BMC Helix ortamında aşağıdaki yordamı kullanın:
 
@@ -89,7 +89,7 @@ Bir eyleme Web kancası eklemek için güvenli Web kancası için aşağıdaki y
 
 1. [Azure Portal](https://portal.azure.com/), **izleme**' yi arayıp seçin. **İzleyici** bölmesi tüm izleme ayarlarınızı ve verilerinizi tek bir görünümde birleştirir.
 1. **Uyarıları**  >  **Yönet eylemler**' i seçin.
-1. [Eylem grubu Ekle](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)' yi seçin ve alanları girin.
+1. [Eylem grubu Ekle](./action-groups.md#create-an-action-group-by-using-the-azure-portal)' yi seçin ve alanları girin.
 1. **Eylem grubu adı** kutusuna bir ad girin ve **kısa ad** kutusuna bir ad girin. Bu eylem grubu kullanılarak bildirim gönderildiğinde tam grup adı yerine kısa ad kullanılır.
 1. **Güvenli Web kancasını**seçin.
 1. Şu ayrıntıları seçin:
@@ -140,4 +140,4 @@ Aşağıdaki önkoşulları karşılatığınızdan emin olun:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure uyarılarından ıTSM iş öğeleri oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)
+* [Azure uyarılarından ıTSM iş öğeleri oluşturma](./itsmc-overview.md)
