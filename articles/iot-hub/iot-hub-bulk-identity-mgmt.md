@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d53e0cb92ead0d60ae335e95903cd69ae2700140
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003873"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142810"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub cihaz kimliklerinizi toplu olarak içeri ve dışarı aktarma
 
@@ -27,7 +27,7 @@ Her IoT Hub 'ında, hizmette cihaz başına kaynaklar oluşturmak için kullanab
 
 **Registrymanager** sınıfı, **Iş** çerçevesini kullanan **Exportdevicesasync** ve **ımportdevicesasync** yöntemlerini içerir. Bu yöntemler, IoT Hub kimlik kayıt defterinin tamamını dışa aktarmanıza, içeri aktarmanızı ve eşitlemenize olanak tanır.
 
-Bu konu, bir IoT Hub 'ının kimlik kayıt defterine ve aygıtlara toplu içeri aktarma ve dışarı aktarma işlemleri gerçekleştirmek için **Registrymanager** sınıfının ve **iş** sisteminin kullanımını tartışır. Ayrıca, Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak bir veya daha fazla IoT Hub 'ı için insan müdahalesi gerektirmeden tam zamanında sağlama olanağı sağlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [sağlama hizmeti belgeleri](/azure/iot-dps).
+Bu konu, bir IoT Hub 'ının kimlik kayıt defterine ve aygıtlara toplu içeri aktarma ve dışarı aktarma işlemleri gerçekleştirmek için **Registrymanager** sınıfının ve **iş** sisteminin kullanımını tartışır. Ayrıca, Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak bir veya daha fazla IoT Hub 'ı için insan müdahalesi gerektirmeden tam zamanında sağlama olanağı sağlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [sağlama hizmeti belgeleri](../iot-dps/index.yml).
 
 ## <a name="what-are-jobs"></a>İşler nedir?
 
@@ -262,7 +262,7 @@ Kimlik kayıt defterinizde aşağıdaki toplu işlemleri gerçekleştirmek için
 
 Cihaz başına içeri aktarma işlemini denetlemek için her bir cihaz için serileştirme verilerini içeri aktarma ' da isteğe bağlı **ImportMode** özelliğini kullanın. **ImportMode** özelliği aşağıdaki seçeneklere sahiptir:
 
-| ImportMode | Açıklama |
+| ImportMode | Description |
 | --- | --- |
 | **createOrUpdate** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, varolan bilgilerin, **ETag** değeriyle ilgili olarak girilen giriş verileriyle üzerine yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
 | **oluşturma** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, günlük dosyasına bir hata yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
@@ -399,7 +399,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>Kapsayıcı SAS URI 'sini al
 
-Aşağıdaki kod örneğinde bir blob kapsayıcısı için okuma, yazma ve silme izinleriyle bir [SAS URI 'si](../storage/common/storage-dotnet-shared-access-signature-part-1.md) oluşturma gösterilmektedir:
+Aşağıdaki kod örneğinde bir blob kapsayıcısı için okuma, yazma ve silme izinleriyle bir [SAS URI 'si](../storage/common/storage-sas-overview.md) oluşturma gösterilmektedir:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -438,8 +438,8 @@ Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için aşağıdaki
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
 * [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/quickstart-linux.md)
 
 Tam zamanında sağlama işlemini etkinleştirmek üzere IoT Hub cihaz sağlama hizmetini kullanarak araştırmak için, bkz.: 
 
-* [Azure IoT Hub Cihazı Sağlama Hizmeti](/azure/iot-dps)
+* [Azure IoT Hub Cihazı Sağlama Hizmeti](../iot-dps/index.yml)

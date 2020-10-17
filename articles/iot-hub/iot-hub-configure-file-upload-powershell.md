@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadc976270888499be1ed01040cc4ff00632e8e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60318470"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142264"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>PowerShell kullanarak IoT Hub dosya yüklemelerini yapılandırma
 
@@ -27,11 +27,11 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Etkin bir Azure hesabı. Hesabınız yoksa, yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
-* [Azure PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* [Azure PowerShell cmdlet 'leri](/powershell/azure/install-Az-ps).
 
-* Azure IoT Hub 'ı. IoT Hub 'ınız yoksa, bir [IoT Hub 'ı oluşturmak](iot-hub-create-through-portal.md)için [New-AzIoTHub cmdlet 'ini](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) kullanarak bir tane oluşturabilir veya portalını kullanabilirsiniz.
+* Azure IoT Hub 'ı. IoT Hub 'ınız yoksa, bir [IoT Hub 'ı oluşturmak](iot-hub-create-through-portal.md)için [New-AzIoTHub cmdlet 'ini](/powershell/module/az.iothub/new-aziothub) kullanarak bir tane oluşturabilir veya portalını kullanabilirsiniz.
 
-* Bir Azure depolama hesabı. Bir Azure depolama hesabınız yoksa, bir [depolama hesabı oluşturmak](../storage/common/storage-create-storage-account.md) Için [Azure Storage PowerShell cmdlet 'lerini](https://docs.microsoft.com/powershell/module/az.storage/) kullanarak bir tane oluşturabilir veya portalını kullanabilirsiniz
+* Bir Azure depolama hesabı. Bir Azure depolama hesabınız yoksa, bir [depolama hesabı oluşturmak](../storage/common/storage-account-create.md) Için [Azure Storage PowerShell cmdlet 'lerini](/powershell/module/az.storage/) kullanarak bir tane oluşturabilir veya portalını kullanabilirsiniz
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Oturum açın ve Azure hesabınızı ayarlayın
 
@@ -136,5 +136,5 @@ Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için bu bağlant�
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
 * [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/quickstart-linux.md)
 * [IoT çözümünüzü baştan sona güvenli hale getirin](../iot-fundamentals/iot-security-ground-up.md)

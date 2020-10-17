@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92dd191c8bfe590f6dab392ff679e5d7712ae6c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921102"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143845"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Hizmet sağlayıcıları için Azure Izleyici günlükleri
 
@@ -35,7 +35,7 @@ Bu mimaride, müşterinin kiracısında müşterinin tüm günlükleri için kul
 
 Hizmet sağlayıcı yöneticilerinin bir müşteri kiracısında bir Log Analytics çalışma alanına erişim sağlayabilmenin iki yolu vardır:
 
-- Müşteri, hizmet sağlayıcısından [Azure Active Directory Konuk Kullanıcı (B2B)](../../active-directory/b2b/what-is-b2b.md)olarak bireysel kullanıcılar ekleyebilir. Hizmet sağlayıcı yöneticilerinin, bu çalışma alanlarına erişebilmek için Azure portal her bir müşterinin dizininde oturum açması gerekir. Bu, müşterilerin her bir hizmet sağlayıcı Yöneticisi için bireysel erişimi yönetmesini de gerektirir.
+- Müşteri, hizmet sağlayıcısından [Azure Active Directory Konuk Kullanıcı (B2B)](../../active-directory/external-identities/what-is-b2b.md)olarak bireysel kullanıcılar ekleyebilir. Hizmet sağlayıcı yöneticilerinin, bu çalışma alanlarına erişebilmek için Azure portal her bir müşterinin dizininde oturum açması gerekir. Bu, müşterilerin her bir hizmet sağlayıcı Yöneticisi için bireysel erişimi yönetmesini de gerektirir.
 - Hizmet sağlayıcılar, daha fazla ölçeklenebilirlik ve esneklik sağlamak için [Azure](../../lighthouse/overview.md) açık [kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md) özelliğini kullanarak müşterinin kiracısına erişim sağlayabilir. Bu yöntemde, hizmet sağlayıcı yöneticileri hizmet sağlayıcısının kiracısındaki bir Azure AD kullanıcı grubuna dahil edilir ve bu gruba her müşteri için ekleme işlemi sırasında erişim verilir. Bu Yöneticiler daha sonra her bir müşterinin kiracısında tek tek oturum açmasını sağlamak yerine, her bir müşterinin çalışma alanına kendi hizmet sağlayıcısı kiracının içinden erişmesini sağlayabilir. Müşterilerinizin Log Analytics çalışma alanları kaynaklarına bu şekilde erişmek, müşteri tarafında gereken işi azaltır ve [Azure Izleyici çalışma kitapları](./workbooks-overview.md)gibi araçlarla aynı hizmet sağlayıcısı tarafından yönetilen birden fazla müşteriye veri toplayıp analiz etmeyi kolaylaştırır. Daha fazla bilgi için bkz. [Müşteri kaynaklarını ölçeklendirerek izleme](../../lighthouse/how-to/monitor-at-scale.md).
 
 Dağıtılmış mimarinin avantajları şunlardır:
@@ -81,7 +81,7 @@ Günlükleri merkezi bir konumda uygulamak için iki seçenek vardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak Yöneticisi şablonlarını](template-workspace-configuration.md) kullanarak çalışma alanlarının oluşturulmasını ve yapılandırılmasını otomatikleştirin
+* [Kaynak Yöneticisi şablonlarını](../samples/resource-manager-workspace.md) kullanarak çalışma alanlarının oluşturulmasını ve yapılandırılmasını otomatikleştirin
 
 * [PowerShell](./powershell-workspace-configuration.md) kullanarak çalışma alanlarının oluşturulmasını otomatikleştirme
 

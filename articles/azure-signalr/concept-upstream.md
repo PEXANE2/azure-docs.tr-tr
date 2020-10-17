@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514246"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143233"
 ---
 # <a name="upstream-settings"></a>Yukarı akış ayarları
 
@@ -34,13 +34,13 @@ Belirtilen olay gerçekleştiğinde, bir öğenin kuralları sırayla tek tek de
 
 Farklı desenleri desteklemek için URL 'YI parametreleştirebilirsiniz. Önceden tanımlanmış üç parametre vardır:
 
-|Önceden tanımlanmış parametre|Açıklama|
+|Önceden tanımlanmış parametre|Description|
 |---------|---------|
 |Hub| Hub, Azure SignalR hizmeti kavramıdır. Hub bir yalıtım birimidir. Kullanıcıların ve ileti tesliminin kapsamı bir hub ile kısıtlanır.|
 |alan| Bir kategori aşağıdaki değerlerden biri olabilir: <ul><li>**Bağlantılar**: bağlantı ömrü olayları. İstemci bağlantısı bağlandığında veya bağlantısı kesildiğinde tetiklenir. Bağlı ve bağlantısı kesilmiş olayları içerir.</li><li>**mesajlar**: istemciler bir hub yöntemi çağıryüklerken tetiklenir. **Bağlantılar** kategorisinden hariç olmak üzere diğer tüm olayları içerir.</li></ul>|
 |olay| **İletiler** kategorisi için, bir olay, istemcilerin gönderdikleri bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) hedeftir. **Bağlantılar** kategorisi için yalnızca *bağlı* ve *bağlantısı kesik* kullanılır.|
 
-Bu önceden tanımlanmış parametreler, URL modelinde kullanılabilir. Yukarı akış URL 'sini değerlendirirken Parametreler belirtilen değerle değiştirilmelidir. Örneğin: 
+Bu önceden tanımlanmış parametreler, URL modelinde kullanılabilir. Yukarı akış URL 'sini değerlendirirken Parametreler belirtilen değerle değiştirilmelidir. Örnek: 
 ```
 http://host.com/{hub}/api/{category}/{event}
 ```
@@ -88,7 +88,7 @@ Seçeneğini belirlediğinizde `ManagedIdentity` , Azure SignalR hizmetinde yön
 
 ## <a name="create-upstream-settings-via-resource-manager-template"></a>Kaynak Yöneticisi şablonu aracılığıyla yukarı akış ayarları oluşturma
 
-[Azure Resource Manager şablonu](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)kullanarak yukarı akış ayarları oluşturmak için, özelliği `upstream` özelliğindeki özelliği ayarlayın `properties` . Aşağıdaki kod parçacığında, `upstream` yukarı akış ayarlarını oluşturma ve güncelleştirme özelliğinin nasıl ayarlanacağı gösterilmektedir.
+[Azure Resource Manager şablonu](../azure-resource-manager/templates/overview.md)kullanarak yukarı akış ayarları oluşturmak için, özelliği `upstream` özelliğindeki özelliği ayarlayın `properties` . Aşağıdaki kod parçacığında, `upstream` yukarı akış ayarlarını oluşturma ve güncelleştirme özelliğinin nasıl ayarlanacağı gösterilmektedir.
 
 ```JSON
 {
@@ -145,19 +145,19 @@ Content-Type: Application/JSON
 
 İçerik türü: `application/json`
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
-|Hata |string |Kapalı bir bağlantının hata iletisi. Bağlantılar hata olmadan kapatıldığında boştur.|
+|Hata |dize |Kapalı bir bağlantının hata iletisi. Bağlantılar hata olmadan kapatıldığında boştur.|
 
 #### <a name="invocation-message"></a>Çağırma iletisi
 
 İçerik türü: `application/json` veya `application/x-msgpack`
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
-|Invocationıd |string | Bir çağrı iletisini temsil eden isteğe bağlı bir dize. [Etkinleştirmeleri](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)içindeki ayrıntıları bulun.|
-|Hedef |string | Olay ile aynı ve bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)hedefle aynı. |
-|Bağımsız değişkenler |Nesne dizisi |İçinde başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi `Target` . |
+|Invocationıd |dize | Bir çağrı iletisini temsil eden isteğe bağlı bir dize. [Etkinleştirmeleri](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)içindeki ayrıntıları bulun.|
+|Hedef |dize | Olay ile aynı ve bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)hedefle aynı. |
+|Arguments |Nesne dizisi |İçinde başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi `Target` . |
 
 ### <a name="signature"></a>İmza
 

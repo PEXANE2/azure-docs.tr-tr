@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 4ac748c606d8ec3c8ba754c34d9c9e7512344a83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b44e15e4592de5e874ee50ebd390940e8ab16a22
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292749"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92157932"
 ---
 ## <a name="configure-the-sample-project"></a>Örnek projeyi yapılandırma
 
 Ardından, Azure dijital TWINS örneğinizle etkileşime girebilen bir örnek istemci uygulaması ayarlayın.
 
-Daha önce [*Azure dijital TWINS örneklerinden*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) indirdiğiniz bir dosya için makinenizde gezinme yapın (daha önce yapmadıysanız dosyayı ayıklayın.)
+Daha önce [*Azure dijital TWINS uçtan uca örnekleri*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) (ve henüz yapmadıysanız) için makinenizde daha önce indirdiğiniz dosyaya gidin.
 
 Klasörün içindeyken _AdtSampleApp_adresine gidin. Visual Studio 2019 ' de _**AdtE2ESample. sln**_ 'yi açın. 
 
