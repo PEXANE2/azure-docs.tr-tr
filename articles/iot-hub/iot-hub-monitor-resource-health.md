@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fec74938adea4058041766a5c28c5a5200aa189e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438415"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146563"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub durumunu izleyin ve sorunları hızla tanılayın
 
@@ -36,7 +36,7 @@ IoT Hub, IoT kaynaklarınızın durumunu anlamak için kullanabileceğiniz kendi
 
 Azure Izleyici, Azure kaynakları için tanılama bilgileri sağlar. Bu, IoT Hub 'ınız içinde gerçekleşen işlemleri izleyebilmeniz anlamına gelir.
 
-Azure Monitor 'un izleyen belirli ölçümler ve olaylar hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md) ve [Azure tanılama günlükleri için desteklenen hizmetler, şemalar ve Kategoriler](../azure-monitor/platform/diagnostic-logs-schema.md).
+Azure Monitor 'un izleyen belirli ölçümler ve olaylar hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md) ve [Azure tanılama günlükleri için desteklenen hizmetler, şemalar ve Kategoriler](../azure-monitor/platform/resource-logs-schema.md).
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -122,7 +122,7 @@ Cihaz kimliği işlemler kategorisi, IoT Hub 'ının kimlik kayıt defterinde bi
 
 #### <a name="routes"></a>Yollar
 
-[İleti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) kategorisi, IoT Hub tarafından algılanan ileti yolu değerlendirmesi ve uç nokta durumu sırasında oluşan hataları izler. Bu kategori, şunlar gibi olayları içerir:
+[İleti yönlendirme](./iot-hub-devguide-messages-d2c.md) kategorisi, IoT Hub tarafından algılanan ileti yolu değerlendirmesi ve uç nokta durumu sırasında oluşan hataları izler. Bu kategori, şunlar gibi olayları içerir:
 
 * Bir kural "tanımsız" olarak değerlendirilir,
 * IoT Hub bir uç noktayı ölü olarak işaretler veya
@@ -352,7 +352,7 @@ IoT Hub, geçerli izleme özellikleri içeren bir ileti IoT Hub geldiğinde bu g
 
 Burada, `durationMs` IoT Hub saatinin cihaz saatiyle eşitlenmiş olmaması ve bu nedenle bir süre hesaplamasının yanıltıcı olması için hesaplanmaz. `properties`Cihazdan buluta gecikme süresini yakalamak için bölümündeki zaman damgalarını kullanarak mantık yazma öneririz.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Tamsayı | Cihazdan buluta iletinin bayt cinsinden boyutu |
 | **deviceId** | ASCII 7 bit alfasayısal karakter dizesi | Cihazın kimliği |
@@ -386,7 +386,7 @@ IoT Hub, geçerli izleme özellikleri içeren ileti iç veya yerleşik Olay Hub 
 
 `properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Dize | True veya false, IoT Hub ileti yönlendirmenin etkin olup olmadığını gösterir |
 | **Parentspanıd** | Dize | Bu durumda D2C ileti izlemesi olacak üst iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
@@ -418,7 +418,7 @@ IoT Hub [yönlendirme](iot-hub-devguide-messages-d2c.md) etkinken ve ileti bir [
 
 `properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Uçnoktaadı** | Dize | Yönlendirme uç noktasının adı |
 | **endpointType** | Dize | Yönlendirme uç noktasının türü |

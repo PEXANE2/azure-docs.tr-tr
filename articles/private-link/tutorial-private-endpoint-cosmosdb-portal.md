@@ -1,24 +1,24 @@
 ---
 title: 'Öğretici: Azure özel uç noktası kullanarak bir Azure Cosmos hesabına bağlanma'
 titleSuffix: Azure Private Link
-description: Bir Azure Cosmos hesabına özel olarak bağlanmak için Azure özel uç noktası ile çalışmaya başlayın.
+description: Bir Azure Cosmos hesabına özel olarak bağlanmak için Azure özel uç noktasını kullanarak Bu öğreticiye başlayın.
 author: asudbring
 ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 8b38c72efff5b76392d23837696c340e3cfb58de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd534fff5bfc56dbc4040db016563b06bef6d047
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91844293"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145693"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir Azure Cosmos hesabına bağlanma
 
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel olarak özel bağlantı kaynaklarıyla iletişim kurmasını sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir sanal ağ ve savunma ana bilgisayarı oluşturun.
@@ -28,9 +28,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
+## <a name="prerequisites"></a>Önkoşullar
+
+* Bir Azure aboneliği
+
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-virtual-network-and-bastion-host"></a>Sanal ağ ve savunma Konağı oluşturma
 
@@ -49,7 +53,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Kaynak Grubu   | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Region           | **Doğu ABD** seçin |
+    | Bölge           | **Doğu ABD** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -100,7 +104,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm 'yi** girin |
-    | Region | **Doğu ABD** seçin |
+    | Bölge | **Doğu ABD** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
     | Azure Spot örneği | **Hayır** seçin |
@@ -123,7 +127,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | NIC ağ güvenlik grubu | **Temel**|
     | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
    
-5. **Gözden geçir ve oluştur**’u seçin. 
+5. **Gözden geçir + oluştur**’u seçin. 
   
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -250,7 +254,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 11. **Azure depolama 'Ya Bağlan** ekranında **iptal**' i seçin.
 
-12. Depolama Gezgini ' de sağ fare **Cosmos DB hesaplar** ' a tıklayıp **Cosmos DB Bağlan**' ı seçin.
+12. Depolama Gezgini **Cosmos DB hesaplar** ' da sağ fare düğmesini seçin ve **Cosmos DB Bağlan**' ı seçin.
 
 13. Varsayılan **SQL** ' **i Select API**altında bırakın.
 

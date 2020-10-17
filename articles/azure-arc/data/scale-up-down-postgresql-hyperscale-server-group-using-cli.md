@@ -9,18 +9,18 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285324"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148052"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>CLı (azdata veya kubectl) kullanarak PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu ölçeğini artırma ve azaltma
 
 
 
-Bir sunucu grubunun özelliklerini veya tanımını değiştirmeniz gerekebilecek durumlar vardır. Örneğin:
+Bir sunucu grubunun özelliklerini veya tanımını değiştirmeniz gerekebilecek durumlar vardır. Örnek:
 
 - Düzenleyicinin veya çalışan düğümlerinin kullandığı sanal çekirdekler sayısının ölçeğini artırma veya azaltma
 - Düzenleyicinin veya çalışan düğümlerinin kullandığı belleğin ölçeğini artırma veya azaltma
@@ -126,7 +126,7 @@ Bu, sizi, yapılandırmayı gezinebileceğiniz ve değiştirebileceğiniz VI dü
 > [!CAUTION]
 > Yapılandırmayı nasıl düzenleyebileceğinizi göstermek için bir örnek aşağıda verilmiştir. Yapılandırmayı güncelleştirmeden önce, parametreleri Kubernetes kümesinin kabul edilebilir değerlerine ayarladığınızdan emin olun.
 
-Örneğin:
+Örnek:
 - Min sanal çekirdek = 2-> scheduling\default\resources\requests\cpu
 - Maksimum sanal çekirdek = 4-> scheduling\default\resources\limits\cpu
 - En az bellek = 512Mb-> scheduling\default\resources\requests\cpu
@@ -185,5 +185,4 @@ Sunucu grubunun ölçeğini genişletmek için aynı komutu yürütür, ancak ö
 
 - [PostgreSQL için Azure Veritabanı Hiper Ölçek sunucu grubunuzun ölçeğini genişletme](scale-out-postgresql-hyperscale-server-group.md)
 - [Depolama yapılandırması ve Kubernetes depolama kavramları](storage-configuration.md)
-- [Kalıcı birim taleplerini genişletme](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes kaynak modeli](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

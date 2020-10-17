@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4a02fc8a04da658b3b6cbbb41e57114d6c4a0527
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d01808eac854e0a694608fc963bd97b035d29ac8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231495"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146181"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics için Azure Güvenlik temeli
 
@@ -412,7 +412,7 @@ Azure AD Privileged Identity Management ve Azure Resource Manager kullanarak tam
 
 * [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-* [Role-Based Access Control Yönet](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure rol tabanlı erişim denetimini yönetme](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
 
 * [Güvenlik duvarı kuralları](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
 
@@ -460,7 +460,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Rehberlik**: kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
-* [Azure RBAC 'yi yönetme](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure RBAC 'yi yönetme](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

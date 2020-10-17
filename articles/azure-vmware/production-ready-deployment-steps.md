@@ -2,22 +2,23 @@
 title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/16/2020
+ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055095"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147986"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
-Bu makalede, dağıtım sırasında kullanılan verileri tanımlamak ve toplamak için planlama işlemi sağlıyoruz. Dağıtım sırasında bilgileri belgelemek ve kolay başvuru almak için [dağıtım öncesi denetim listesini kullanın](pre-deployment-checklist.md) .  
+Bu makalede, dağıtım sırasında kullanılan verileri tanımlamak ve toplamak için planlama işlemi sağlıyoruz. Dağıtımınızı planlarken, dağıtım sırasında kolay başvuru için topladığınız bilgileri belgelediğinizden emin olun.
 
 Bu hızlı başlangıç işlemlerine, sanal makineler (VM 'Ler) ve geçiş için üretime hazırlı bir ortama neden olur. 
 
 >[!IMPORTANT]
->Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz. Daha fazla bilgi için bkz. [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md). 
+>Azure VMware Çözüm kaynağınızı oluşturmadan önce, düğümlerinizin ayrılmasını sağlamak üzere bir destek bileti göndermek için [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md) makalesini izleyin. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz. 
+
 
 ## <a name="subscription"></a>Abonelik
 

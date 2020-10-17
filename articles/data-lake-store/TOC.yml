@@ -22,6 +22,13 @@
       href: data-lake-store-get-started-powershell.md
     - name: Azure CLI’yı kullanma
       href: data-lake-store-get-started-cli-2.0.md
+- name: Kavramlar
+  items:
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Nasıl yapılır
   items:
     - name: Verileri yükleme ve taşıma

@@ -80,6 +80,10 @@
           href: redirect-overview.md
         - name: HTTP üst bilgilerini ve URL’sini yeniden yazma
           href: rewrite-http-headers-url.md
+        - name: Güvenlik
+          items:
+            - name: Güvenlik temeli
+              href: security-baseline.md
     - name: SSL
       items:
         - name: SSL sonlandırması ve uçtan uca SSL

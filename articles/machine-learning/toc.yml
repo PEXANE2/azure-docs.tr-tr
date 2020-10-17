@@ -152,13 +152,31 @@
       href: concept-onnx.md
     - name: ML işlem hatları
       href: concept-ml-pipelines.md
-    - name: Kurumsal kullanıma hazır olma ve güvenlik
+    - name: Güvenlik
       items:
         - name: Kurumsal güvenliğe genel bakış
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: Güvenlik temeli
           href: security-baseline.md
+    - name: Sorumlu makine öğrenmesi
+      items:
+        - name: Sorumlu makine öğrenmesine genel bakış
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: Model yorumlanabilirliği
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Machine Learning’de eşitlik
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: Değişiklik Gizliliği
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Güvenlik
+      items:
         - name: Kimlik ve erişim yönetimi
           items:
             - name: Kimlik doğrulamasını ayarlama
@@ -212,22 +230,6 @@
         - name: Uyumluluğu denetleme ve yönetme
           href: how-to-integrate-azure-policy.md
           displayName: policy
-    - name: Sorumlu makine öğrenmesi
-      items:
-        - name: Sorumlu makine öğrenmesine genel bakış
-          displayName: 'responsible,ml'
-          href: concept-responsible-ml.md
-        - name: Model yorumlanabilirliği
-          displayName: explainability
-          href: how-to-machine-learning-interpretability.md
-        - name: Machine Learning’de eşitlik
-          displayName: fairness
-          href: concept-fairness-ml.md
-        - name: Değişiklik Gizliliği
-          displayName: 'differential,privacy'
-          href: concept-differential-privacy.md
-- name: Nasıl yapılır kılavuzları
-  items:
     - name: Çalışma alanlarını oluşturma ve yönetme
       items:
         - name: Azure portalı kullanma

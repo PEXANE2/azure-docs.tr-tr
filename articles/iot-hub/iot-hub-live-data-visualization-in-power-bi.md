@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84634510"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146775"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Azure IoT Hub Power BI kullanarak gerçek zamanlı algılayıcı verilerini görselleştirin
 
@@ -140,9 +140,9 @@ Stream Analytics işinde **genel bakış**' ı seçin ve şimdi Başlat **' ı s
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Verileri görselleştirmek için Power BI raporu oluşturma ve yayımlama
 
-Aşağıdaki adımlarda Power BI hizmeti kullanarak rapor oluşturma ve yayımlama işlemleri gösterilmektedir. Power BI içinde "yeni görünüm" i kullanmak istiyorsanız, bazı değişikliklerle bu adımları izleyebilirsiniz. Farkları ve "yeni görünüm" içinde nasıl gidebileceğinizi anlamak için [Power BI hizmeti ' yeni görünüm '](https://docs.microsoft.com/power-bi/consumer/service-new-look)bölümüne bakın.
+Aşağıdaki adımlarda Power BI hizmeti kullanarak rapor oluşturma ve yayımlama işlemleri gösterilmektedir. Power BI içinde "yeni görünüm" i kullanmak istiyorsanız, bazı değişikliklerle bu adımları izleyebilirsiniz. Farkları ve "yeni görünüm" içinde nasıl gidebileceğinizi anlamak için [Power BI hizmeti ' yeni görünüm '](/power-bi/consumer/service-new-look)bölümüne bakın.
 
-1. Örnek uygulamanın cihazınızda çalıştığından emin olun. Aksi takdirde, [cihazınızı kurulum](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started)bölümündeki öğreticilere başvurabilirsiniz.
+1. Örnek uygulamanın cihazınızda çalıştığından emin olun. Aksi takdirde, [cihazınızı kurulum](./iot-hub-raspberry-pi-kit-node-get-started.md)bölümündeki öğreticilere başvurabilirsiniz.
 
 2. [Power BI](https://powerbi.microsoft.com/en-us/) hesabınızda oturum açın.
 

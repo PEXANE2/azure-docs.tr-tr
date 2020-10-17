@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eed12593168975b1dfda6e51b07b256cbd0c246
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004077"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145803"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics kullanarak avro verilerini sorgulama
 
@@ -171,7 +171,7 @@ Bu bölümde, verileri diğer depolara veya veri depolarına kolayca yerleştire
 
 Bu öğreticide, Azure IoT Hub iletileri Azure hizmetlerine verimli bir şekilde yönlendirmek için avro verilerinin nasıl sorgulanalınacağını öğrendiniz.
 
-IoT Hub kullanan uçtan uca çözümlerin tamamını örnekler için bkz. [Azure IoT Çözüm Hızlandırıcıları belgeleri](/azure/iot-accelerators).
+IoT Hub kullanan uçtan uca çözümlerin tamamını örnekler için bkz. [Azure IoT Çözüm Hızlandırıcıları belgeleri](../iot-accelerators/index.yml).
 
 IoT Hub çözümleri geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.
 

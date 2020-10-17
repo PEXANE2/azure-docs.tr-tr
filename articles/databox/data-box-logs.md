@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498812"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147937"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box ve Azure Data Box Heavy içeri aktarma siparişiniz için izleme ve olay günlüğü
 
@@ -23,7 +23,7 @@ Aşağıdaki tabloda Data Box veya Data Box Heavy içeri aktarma sırası adıml
 
 | Data Box içeri aktarma siparişi aşaması       | İzlenecek ve denetlenecek araç                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Sipariş oluşturma               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order)                                                    |
+| Sipariş oluşturma               | [Azure RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order)                                                    |
 | Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)                                              |
 | Cihaza veri kopyalama        | Veri kopyası için [ *error.xml* dosyalarını görüntüle](#view-error-log-during-data-copy)                                                             |
@@ -47,7 +47,7 @@ Erişimi bir siparişle kısıtlamak için şunları yapabilirsiniz:
 - Bir rolü bir sıra düzeyinde atayın. Kullanıcı yalnızca, roller tarafından tanımlanan yalnızca bu Data Box sipariş ve başka hiçbir şey ile etkileşim kurmak üzere bu izinlere sahiptir.
 - Kaynak grubu düzeyinde bir rol atama, kullanıcının bir kaynak grubundaki tüm Data Box emirlerine erişimi vardır.
 
-Önerilen RBAC kullanımı hakkında daha fazla bilgi için bkz. [Azure RBAC Için en iyi uygulamalar](../role-based-access-control/best-practices.md).
+Önerilen Azure RBAC kullanımı hakkında daha fazla bilgi için bkz. [Azure RBAC Için en iyi uygulamalar](../role-based-access-control/best-practices.md).
 
 ## <a name="track-the-order"></a>Siparişi izleme
 

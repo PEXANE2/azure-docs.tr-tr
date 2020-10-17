@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
-ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21d8f513ea0f749f0318b9bc5926a746f840505b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024974"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147824"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLI’yı kullanarak otomatik IoT cihazı ve modül yönetimi
 
@@ -36,7 +36,7 @@ Yapılandırma oluşturulduktan ve sonra beş dakikalık aralıklarla otomatik y
 
 * Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-using-cli.md) . 
 
-* Ortamınızdaki [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) . Azure CLı sürümünüz en azından 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az –-version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar. 
+* Ortamınızdaki [Azure CLI](/cli/azure/install-azure-cli) . Azure CLı sürümünüz en azından 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az –-version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar. 
 
 * [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-cli).
 
@@ -105,7 +105,7 @@ Otomatik modül yapılandırması çok benzer şekilde davranır, ancak `moduleC
 }
 ```
 
-Modüller için ölçüm sorguları Ayrıca cihaz sorgularına benzerdir, ancak ' den ' ı seçersiniz `moduleId` `devices.modules` . Örneğin: 
+Modüller için ölçüm sorguları Ayrıca cihaz sorgularına benzerdir, ancak ' den ' ı seçersiniz `moduleId` `devices.modules` . Örnek: 
 
 ```json
 {
@@ -235,8 +235,8 @@ Bu makalede IoT cihazlarını ölçeklendirerek nasıl yapılandıracağınızı
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
 * [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/quickstart-linux.md)
 
 Tam zamanında sağlama işlemini etkinleştirmek üzere IoT Hub cihaz sağlama hizmetini kullanarak araştırmak için, bkz.: 
 
-* [Azure IoT Hub Cihazı Sağlama Hizmeti](/azure/iot-dps)
+* [Azure IoT Hub Cihazı Sağlama Hizmeti](../iot-dps/index.yml)

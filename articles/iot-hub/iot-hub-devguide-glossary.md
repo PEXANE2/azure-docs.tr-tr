@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023475"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147773"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub terimlerin sözlüğü
 
@@ -28,19 +28,19 @@ Bu makalede IoT Hub makalelerinde kullanılan yaygın terimlerin bazıları list
 
 ## <a name="automatic-device-management"></a>Otomatik Cihaz Yönetimi
 
-Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filliklerini tümüyle yaşam döngülerine göre yönetmenin yinelenen ve karmaşık görevlerinin çoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve IoT Hub cihazları kapsama geldiğinde güncelleştirme sağlayabilirsiniz.  [Otomatik cihaz yapılandırmalarının](iot-hub-auto-device-config.md) ve [IoT Edge otomatik dağıtımlarından](../iot-edge/how-to-deploy-at-scale.md)oluşur.
+Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filliklerini tümüyle yaşam döngülerine göre yönetmenin yinelenen ve karmaşık görevlerinin çoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve IoT Hub cihazları kapsama geldiğinde güncelleştirme sağlayabilirsiniz.  [Otomatik cihaz yapılandırmalarının](./iot-hub-automatic-device-management.md) ve [IoT Edge otomatik dağıtımlarından](../iot-edge/how-to-deploy-at-scale.md)oluşur.
 
 ## <a name="automatic-device-configuration"></a>Otomatik cihaz yapılandırması
 
-Çözüm arka ucu, bir dizi [cihaz WINS](#device-twin) kümesine istenen özellikleri atamak ve sistem ölçümleri ve özel ölçümler kullanarak rapor durumu için [otomatik cihaz yapılandırması](iot-hub-auto-device-config.md) kullanabilir. 
+Çözüm arka ucu, bir dizi [cihaz WINS](#device-twin) kümesine istenen özellikleri atamak ve sistem ölçümleri ve özel ölçümler kullanarak rapor durumu için [otomatik cihaz yapılandırması](./iot-hub-automatic-device-management.md) kullanabilir. 
 
 ## <a name="azure-classic-cli"></a>Azure klasik CLI
 
-[Klasik Azure CLI](../cli-install-nodejs.md) , Microsoft Azure Kaynak oluşturmak ve yönetmek için platformlar arası, açık kaynaklı, kabuk tabanlı bir komut aracıdır. CLı 'nın bu sürümü yalnızca klasik dağıtımlar için kullanılmalıdır.
+[Klasik Azure CLI](/cli/azure/install-classic-cli) , Microsoft Azure Kaynak oluşturmak ve yönetmek için platformlar arası, açık kaynaklı, kabuk tabanlı bir komut aracıdır. CLı 'nın bu sürümü yalnızca klasik dağıtımlar için kullanılmalıdır.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) , Microsoft Azure Kaynak oluşturmak ve yönetmek için platformlar arası, açık kaynaklı, kabuk tabanlı bir komut aracıdır.
+[Azure CLI](/cli/azure/install-az-cli2) , Microsoft Azure Kaynak oluşturmak ve yönetmek için platformlar arası, açık kaynaklı, kabuk tabanlı bir komut aracıdır.
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT cihaz SDK 'Ları
 
@@ -72,7 +72,7 @@ Bir IoT Hub ile etkileşime geçen [arka uç uygulamaları](#back-end-app) oluş
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 
-[Service Bus](../service-bus/index.md) , şirket içi çözümlere bulut ile bağlanmanıza yardımcı olan kurumsal mesajlaşma ve geçişli iletişim ile bulut özellikli iletişim sağlar. Bazı IoT Hub öğreticileri Service Bus [kuyrukları](../service-bus-messaging/service-bus-messaging-overview.md)kullanır.
+[Service Bus](../service-bus-messaging/index.yml) , şirket içi çözümlere bulut ile bağlanmanıza yardımcı olan kurumsal mesajlaşma ve geçişli iletişim ile bulut özellikli iletişim sağlar. Bazı IoT Hub öğreticileri Service Bus [kuyrukları](../service-bus-messaging/service-bus-messaging-overview.md)kullanır.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -96,7 +96,7 @@ IoT Hub 'ından bağlı bir cihaza gönderilen iletileri ifade eder. Genellikle,
 
 ## <a name="configuration"></a>Yapılandırma
 
-[Otomatik cihaz yapılandırması](iot-hub-auto-device-config.md)bağlamında IoT Hub içindeki bir yapılandırma, bir dizi cihaz için istenen yapılandırmayı tanımlar ve durum ve ilerlemeyi raporlamak için bir dizi ölçüm sağlar.
+[Otomatik cihaz yapılandırması](./iot-hub-automatic-device-management.md)bağlamında IoT Hub içindeki bir yapılandırma, bir dizi cihaz için istenen yapılandırmayı tanımlar ve durum ve ilerlemeyi raporlamak için bir dizi ölçüm sağlar.
 
 ## <a name="connection-string"></a>Bağlantı dizesi
 
@@ -164,7 +164,7 @@ Cihaz yönetimi, IoT çözümünüzdeki planlama, sağlama, yapılandırma, izle
 
 ## <a name="device-rest-api"></a>Cihaz REST API
 
-Bir IoT Hub 'ına cihazdan buluta iletiler göndermek ve bir IoT Hub 'ından [buluttan cihaza](#cloud-to-device) iletileri almak için bir cihazdan cihaz [REST API](https://docs.microsoft.com/rest/api/iothub/device) kullanabilirsiniz. Genellikle, IoT Hub öğreticilerde gösterildiği gibi daha yüksek düzey [cihaz SDK 'lardan](#azure-iot-device-sdks) birini kullanmanız gerekir.
+Bir IoT Hub 'ına cihazdan buluta iletiler göndermek ve bir IoT Hub 'ından [buluttan cihaza](#cloud-to-device) iletileri almak için bir cihazdan cihaz [REST API](/rest/api/iothub/device) kullanabilirsiniz. Genellikle, IoT Hub öğreticilerde gösterildiği gibi daha yüksek düzey [cihaz SDK 'lardan](#azure-iot-device-sdks) birini kullanmanız gerekir.
 
 ## <a name="device-provisioning"></a>Cihaz sağlama
 
@@ -184,7 +184,7 @@ IoT Hub 'ı, uygulamalarınızın IoT Hub 'ına bağlanmasını sağlayan birden
 
 ## <a name="event-hubs-service"></a>Event Hubs hizmeti
 
-[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) , saniyede milyonlarca olayı alabilen, yüksek oranda ölçeklenebilir bir veri giriş hizmetidir. Hizmet, bağlı cihazlarınız ve uygulamalarınız tarafından üretilen büyük miktarda verileri işlemenizi ve çözümlemenize olanak sağlar. IoT Hub hizmetiyle bir karşılaştırma için bkz. [azure IoT Hub ve azure Event Hubs karşılaştırması](iot-hub-compare-event-hubs.md).
+[Event Hubs](../event-hubs/event-hubs-about.md) , saniyede milyonlarca olayı alabilen, yüksek oranda ölçeklenebilir bir veri giriş hizmetidir. Hizmet, bağlı cihazlarınız ve uygulamalarınız tarafından üretilen büyük miktarda verileri işlemenizi ve çözümlemenize olanak sağlar. IoT Hub hizmetiyle bir karşılaştırma için bkz. [azure IoT Hub ve azure Event Hubs karşılaştırması](iot-hub-compare-event-hubs.md).
 
 ## <a name="event-hub-compatible-endpoint"></a>Olay Hub 'ı ile uyumlu uç nokta
 
@@ -226,7 +226,7 @@ IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir ve gü
 
 ## <a name="iot-hub-resource-rest-api"></a>Kaynak REST API IoT Hub
 
-Hub oluşturma, güncelleştirme ve silme gibi işlemleri gerçekleştirmek için [Azure aboneliğinizdeki](#subscription) IoT Hub 'larını yönetmek üzere [IoT Hub kaynak REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) kullanabilirsiniz.
+Hub oluşturma, güncelleştirme ve silme gibi işlemleri gerçekleştirmek için [Azure aboneliğinizdeki](#subscription) IoT Hub 'larını yönetmek üzere [IoT Hub kaynak REST API](/rest/api/iothub/iothubresource) kullanabilirsiniz.
 
 ## <a name="iot-solution-accelerators"></a>IoT çözüm hızlandırıcıları
 
@@ -304,7 +304,7 @@ SASL PLAIN, AMQP protokolünün güvenlik belirteçlerini aktarmak için kulland
 
 ## <a name="service-rest-api"></a>Hizmet REST API'si
 
-Cihazlarınızı yönetmek için çözüm arka ucundan [hizmet REST API](https://docs.microsoft.com/rest/api/iothub/service/configuration) kullanabilirsiniz. API, [cihaz ikizi](#device-twin) özelliklerini alıp güncelleştirmenizi, [doğrudan Yöntemler](#direct-method)çağırmayı ve [işleri](#job)zamanlamayı sağlar. Genellikle, IoT Hub öğreticilerde gösterildiği gibi daha yüksek düzey [hizmet SDK 'lardan](#azure-iot-service-sdks) birini kullanmanız gerekir.
+Cihazlarınızı yönetmek için çözüm arka ucundan [hizmet REST API](/rest/api/iothub/service/configuration) kullanabilirsiniz. API, [cihaz ikizi](#device-twin) özelliklerini alıp güncelleştirmenizi, [doğrudan Yöntemler](#direct-method)çağırmayı ve [işleri](#job)zamanlamayı sağlar. Genellikle, IoT Hub öğreticilerde gösterildiği gibi daha yüksek düzey [hizmet SDK 'lardan](#azure-iot-service-sdks) birini kullanmanız gerekir.
 
 ## <a name="shared-access-signature"></a>Paylaşılan erişim imzası
 

@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 0e10afa9293bbebbb68a6fc3eae4bc3f75813ad0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106833"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146324"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. güvenlik
 
@@ -42,7 +42,7 @@ Azure Active Directory bir kullanıcının kimliğini doğruladıktan sonra, kul
 * Hesap yönetimi için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)
 * Depodaki verilere erişmek için POSIX ACL 'SI
 
-### <a name="rbac-for-account-management"></a>Hesap yönetimi için RBAC
+### <a name="azure-rbac-for-account-management"></a>Hesap yönetimi için Azure RBAC
 
 Dört temel rol, varsayılan olarak Data Lake Storage 1. için tanımlanmıştır. Roller, Azure portal, PowerShell cmdlet 'leri ve REST API 'Leri aracılığıyla Data Lake Storage 1. hesapta farklı işlemlere izin verir. Sahip ve katkıda bulunan rolleri, hesapta çeşitli yönetim işlevleri gerçekleştirebilir. Okuyucu rolünü yalnızca hesap yönetimi verilerini görüntüleyen kullanıcılara atayabilirsiniz.
 

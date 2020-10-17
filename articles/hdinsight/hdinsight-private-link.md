@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: c51b99ed04357cdebaabbde2b2bd0400adcfef30
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134188"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147908"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight kümelerini özel bağlantıyla güvenli hale getirme ve yalıtma (Önizleme)
 
@@ -56,7 +56,7 @@ Varsayılan olarak devre dışı bırakılan özel bağlantı, bir kümeyi oluş
 
 `privateLink` *Etkin*olarak ayarlandığında, iç [Standart yük dengeleyiciler](../load-balancer/load-balancer-overview.md) (SLB) oluşturulur ve her SLB Için bir Azure özel bağlantı hizmeti sağlanır. Özel bağlantı hizmeti, HDInsight kümesine özel uç noktalardan erişmenizi sağlar.
 
-Standart yük dengeleyiciler, temel yük dengeleyiciler gibi genel giden NAT 'yi otomatik olarak sağlamaz. Giden bağımlılıklar için [sanal ağ NAT](../virtual-network/nat-overview.md) veya bir [güvenlik DUVARı](./hdinsight-restrict-outbound-traffic.md)gibi kendi NAT çözümünüzü sağlamanız gerekir. HDInsight kümenizin giden bağımlılıklarına hala erişmesi gerekiyor. Bu giden bağımlılıklara izin verilmiyorsa, küme oluşturma başarısız olabilir.
+Standart yük dengeleyiciler, temel yük dengeleyiciler gibi [genel gıden NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) 'yi otomatik olarak sağlamaz. Giden bağımlılıklar için [sanal ağ NAT](../virtual-network/nat-overview.md) veya bir [güvenlik DUVARı](./hdinsight-restrict-outbound-traffic.md)gibi kendi NAT çözümünüzü sağlamanız gerekir. HDInsight kümenizin giden bağımlılıklarına hala erişmesi gerekiyor. Bu giden bağımlılıklara izin verilmiyorsa, küme oluşturma başarısız olabilir.
 
 ### <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 

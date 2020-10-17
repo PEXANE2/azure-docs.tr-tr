@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81680714"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146649"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler
 
@@ -22,7 +22,7 @@ ms.locfileid: "81680714"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) , şirket içi ve bulut hizmetlerinde, bir veya daha fazla kuruluşta ve çeşitli protokollerde iş akışlarını düzenlemenize yardımcı olabilir. Mantıksal uygulama tetikleyici ile başlar ve ardından koşullar ve yineleyiciler gibi yerleşik denetimler kullanılarak sıralanbilen bir veya daha fazla eylem gelir. Bu esneklik, IoT izleme senaryoları için ideal bir IoT çözümü Logic Apps sağlar. Örneğin, bir IoT Hub uç noktasındaki bir cihazdan telemetri verilerinin varışı, bir Azure Storage blob 'undaki verileri ambara yönelik mantıksal uygulama iş akışlarını başlatabilir, veri anormallarını uyarmak için e-posta uyarıları gönderebilir, bir cihaz hata bildirirse bir teknisyen ziyaret edebilir ve bu şekilde devam eder.
+[Azure Logic Apps](../logic-apps/index.yml) , şirket içi ve bulut hizmetlerinde, bir veya daha fazla kuruluşta ve çeşitli protokollerde iş akışlarını düzenlemenize yardımcı olabilir. Mantıksal uygulama tetikleyici ile başlar ve ardından koşullar ve yineleyiciler gibi yerleşik denetimler kullanılarak sıralanbilen bir veya daha fazla eylem gelir. Bu esneklik, IoT izleme senaryoları için ideal bir IoT çözümü Logic Apps sağlar. Örneğin, bir IoT Hub uç noktasındaki bir cihazdan telemetri verilerinin varışı, bir Azure Storage blob 'undaki verileri ambara yönelik mantıksal uygulama iş akışlarını başlatabilir, veri anormallarını uyarmak için e-posta uyarıları gönderebilir, bir cihaz hata bildirirse bir teknisyen ziyaret edebilir ve bu şekilde devam eder.
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
@@ -104,7 +104,7 @@ Service Bus ad alanı ve kuyruğu oluşturun. Bu konunun ilerleyen kısımların
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>IoT Hub 'ınıza özel bir uç nokta ve yönlendirme kuralı ekleme
 
-IoT Hub 'ınıza Service Bus kuyruğu için özel bir uç nokta ekleyin ve bir sıcaklık uyarısı içeren iletileri, mantıksal uygulamanız tarafından alınacakları uç noktaya yönlendirmek için bir ileti yönlendirme kuralı oluşturun. Yönlendirme kuralı, `temperatureAlert = "true"` `temperatureAlert` cihaz üzerinde çalışan istemci kodu tarafından ayarlanan uygulama özelliğinin değerine bağlı olarak iletileri iletmek için bir yönlendirme sorgusu kullanır. Daha fazla bilgi için bkz. [ileti özelliklerine göre ileti yönlendirme sorgusu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
+IoT Hub 'ınıza Service Bus kuyruğu için özel bir uç nokta ekleyin ve bir sıcaklık uyarısı içeren iletileri, mantıksal uygulamanız tarafından alınacakları uç noktaya yönlendirmek için bir ileti yönlendirme kuralı oluşturun. Yönlendirme kuralı, `temperatureAlert = "true"` `temperatureAlert` cihaz üzerinde çalışan istemci kodu tarafından ayarlanan uygulama özelliğinin değerine bağlı olarak iletileri iletmek için bir yönlendirme sorgusu kullanır. Daha fazla bilgi için bkz. [ileti özelliklerine göre ileti yönlendirme sorgusu](./iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-properties).
 
 ### <a name="add-a-custom-endpoint"></a>Özel uç nokta ekleme
 

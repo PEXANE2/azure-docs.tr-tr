@@ -4,12 +4,12 @@ description: Bu makalede, Azure Iletişim hizmetlerinin Event Grid olay kaynağ�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mikben
-ms.openlocfilehash: fb37dfe9927c02711f4ab1b01cd89247059b27f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f84146a0513d02484f8f84560e04a977fb3ef373
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347578"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145831"
 ---
 # <a name="azure-communication-services-as-an-event-grid-source"></a>Event Grid kaynağı olarak Azure Iletişim Hizmetleri
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Iletişim Hizmetleri olayları için özellikler ve şema sa�
 
 ### <a name="available-event-types"></a>Kullanılabilir olay türleri
 
-Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) kullanır. 
+Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](./concepts.md#event-subscriptions) kullanır. 
 
 Azure Iletişim Hizmetleri aşağıdaki olay türlerini yayar:
 
@@ -45,7 +45,7 @@ Azure Iletişim Hizmetleri aşağıdaki olay türlerini yayar:
 
 ## <a name="event-subjects"></a>Olay konuları
 
-`subject`Tüm Iletişim Hizmetleri olaylarının alanı, olay tarafından hedeflenen Kullanıcı, telefon numarası veya varlığı tanımlar. Ortak ön ekler basit [Event Grid filtrelemeye](https://docs.microsoft.com/azure/event-grid/event-filtering)izin vermek için kullanılır.
+`subject`Tüm Iletişim Hizmetleri olaylarının alanı, olay tarafından hedeflenen Kullanıcı, telefon numarası veya varlığı tanımlar. Ortak ön ekler basit [Event Grid filtrelemeye](./event-filtering.md)izin vermek için kullanılır.
 
 | Konu öneki                              | İletişim hizmeti varlığı |
 | ------------------------------------------- | ---------------------------- |
@@ -345,6 +345,6 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event Grid giriş için bkz. [Event Grid nedir?](https://docs.microsoft.com/azure/event-grid/overview)
-* Azure Event Grid kavramlara giriş için bkz. [Event Grid kavramlar nelerdir?](https://docs.microsoft.com/azure/event-grid/concepts)
-* Azure Event Grid sistem konuları hakkında giriş için, [Azure Event Grid Içindeki sistem konularına](https://docs.microsoft.com/azure/event-grid/system-topics) bakın.
+* Azure Event Grid giriş için bkz. [Event Grid nedir?](./overview.md)
+* Azure Event Grid kavramlara giriş için bkz. [Event Grid kavramlar nelerdir?](./concepts.md)
+* Azure Event Grid sistem konuları hakkında giriş için, [Azure Event Grid Içindeki sistem konularına](./system-topics.md) bakın.
