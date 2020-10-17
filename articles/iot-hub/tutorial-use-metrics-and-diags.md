@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019139"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149195"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 
@@ -190,7 +190,7 @@ Artık iletilerin hub 'a ne zaman gönderileceğini izlemek için bazı ölçüm
 
 Portalda hub 'a gidin. **Kaynak grupları**' na tıklayın, *contosoresources*' i ve sonra IoT Hub *ContosoTestHub*' yi seçin 
 
-IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/data-collection#metrics) geçirilmedi; [Klasik uyarılar](/azure/azure-monitor/platform/alerts-classic.overview)kullanmanız gerekir.
+IoT Hub henüz [Azure izleyici ölçümlerine](../azure-monitor/platform/data-platform.md#metrics) geçirilmedi; [Klasik uyarılar](../azure-monitor/platform/alerts-classic.overview.md)kullanmanız gerekir.
 
 1. **İzleme**altında **Uyarılar** ' a tıklayın, ana uyarı ekranını gösterir. 
 
@@ -369,7 +369,7 @@ Tanılama günlüklerinizi blob depolamaya aktarılacak şekilde ayarlarsınız.
 
 Bu öğreticide oluşturduğunuz tüm kaynakları kaldırmak için kaynak grubunu silin. Bu eylem grubun içerdiği tüm kaynakları siler. Bu durumda, IoT Hub, depolama hesabı ve kaynak grubunun kendisini kaldırır. Panoya sabitlenmiş ölçümler varsa, her birinin sağ üst köşesindeki üç noktaya tıklayarak ve **Kaldır**' ı seçerek bunları el ile kaldırmanız gerekir.
 
-Kaynak grubunu kaldırmak için [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanın.
+Kaynak grubunu kaldırmak için [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanın.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

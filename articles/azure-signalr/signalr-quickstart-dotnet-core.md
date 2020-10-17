@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874025"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151004"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Hızlı başlangıç: SignalR hizmetini kullanarak sohbet odası oluşturma
 
-Azure SignalR Hizmeti, geliştiricilerin gerçek zamanlı özelliklerle web uygulamalarını kolayca derlemesine yardımcı olan bir Azure hizmetidir. Bu hizmet başlangıçta [ASP.NET Core 2,1 Için SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)tabanlıdır, ancak bundan sonra daha sonra sürümleri desteklemektedir.
+Azure SignalR Hizmeti, geliştiricilerin gerçek zamanlı özelliklerle web uygulamalarını kolayca derlemesine yardımcı olan bir Azure hizmetidir. Bu hizmet başlangıçta [ASP.NET Core 2,1 Için SignalR](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)tabanlıdır, ancak bundan sonra daha sonra sürümleri desteklemektedir.
 
 Bu makalede Azure SignalR Hizmeti ile çalışmaya başlama işlemi gösterilmektedir. Bu hızlı başlangıçta, bir ASP.NET Core MVC web uygulaması kullanarak bir sohbet uygulaması oluşturacaksınız. Bu uygulama, gerçek zamanlı içerik güncelleştirmelerini etkinleştirmek üzere Azure SignalR Hizmeti kaynağınızla bağlantı kuracaktır. Web uygulamasını yerel olarak barındıracak ve birden çok tarayıcı istemcisine bağlanırsınız. Her istemci, diğer tüm istemcilere içerik güncelleştirmeleri gönderebilecektir. 
 
@@ -27,7 +27,7 @@ Bu öğreticinin kodu [AzureSignalR-samples GitHub deposundan](https://github.co
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
 * [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) GitHub deposunu indirin veya kopyalayın. 
@@ -42,7 +42,7 @@ Bu öğreticinin kodu [AzureSignalR-samples GitHub deposundan](https://github.co
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core web uygulaması oluşturma
 
-Bu bölümde, bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core komut satırı arabirimini (CLI)](https://docs.microsoft.com/dotnet/core/tools/) kullanacaksınız. Visual Studio üzerinden .NET Core CLI kullanmanın avantajı, Windows, macOS ve Linux platformları genelinde kullanılabilir hale gelir. 
+Bu bölümde, bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core komut satırı arabirimini (CLI)](/dotnet/core/tools/) kullanacaksınız. Visual Studio üzerinden .NET Core CLI kullanmanın avantajı, Windows, macOS ve Linux platformları genelinde kullanılabilir hale gelir. 
 
 1. Projeniz için bir klasör oluşturun. Bu hızlı başlangıç, *E:\Testing\chattest* klasörünü kullanır.
 
@@ -56,7 +56,7 @@ Bu bölümde, bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.N
 
 ## <a name="add-secret-manager-to-the-project"></a>Projeye Gizli Dizi Yöneticisi ekleme
 
-Bu bölümde, projenize [gizli yönetici aracını](https://docs.microsoft.com/aspnet/core/security/app-secrets) ekleyeceksiniz. Gizli dizi Yöneticisi Aracı, geliştirme çalışması için hassas verileri proje ağacınızdaki dışında depolar. Bu yaklaşım, kaynak kodundaki uygulama gizli anahtarlarının yanlışlıkla paylaşılmasını önlemeye yardımcı olur.
+Bu bölümde, projenize [gizli yönetici aracını](/aspnet/core/security/app-secrets) ekleyeceksiniz. Gizli dizi Yöneticisi Aracı, geliştirme çalışması için hassas verileri proje ağacınızdaki dışında depolar. Bu yaklaşım, kaynak kodundaki uygulama gizli anahtarlarının yanlışlıkla paylaşılmasını önlemeye yardımcı olur.
 
 1. *.csproj* dosyanızı açın. *Microsoft.Extensions.SecretManager.Tools* öğesini dahil etmek için bir `DotNetCliToolReference` öğesi ekleyin. Ayrıca `UserSecretsId` , *chattest. csproj*için aşağıdaki kodda gösterildiği gibi bir öğesi ekleyin ve dosyayı kaydedin.
 
@@ -107,12 +107,13 @@ Bu bölümde, projenize [gizli yönetici aracını](https://docs.microsoft.com/a
     Bu gizli dizi Yapılandırma API 'siyle erişilir. İki nokta (:) yapılandırma adında, desteklenen tüm platformlarda Yapılandırma API 'SI ile birlikte kullanılır. Bkz. [ortama göre yapılandırma](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. *Startup.cs* dosyasını açın ve `AddSignalR()` yöntemini çağırarak `ConfigureServices` yöntemini Azure SignalR Hizmeti’ni kullanacak şekilde güncelleştirin:
+4. *Startup.cs* 'i açın ve `ConfigureServices` ve yöntemlerini çağırarak Azure SignalR hizmetini kullanmak üzere yöntemi güncelleştirin `AddSignalR()` `AddAzureSignalR()` :
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAzureSignalR();
+        services.AddSignalR()
+                .AddAzureSignalR();
     }
     ```
 
@@ -325,7 +326,7 @@ Bağlantı başarılı olursa, o bağlantı `bindConnectionMessage` konumuna ge�
 
 ## <a name="add-a-development-runtime-profile"></a>Geliştirme çalışma zamanı profili ekleme
 
-Bu bölümde, ASP.NET Core için bir geliştirme çalışma zamanı ortamı ekleyeceksiniz. Daha fazla bilgi için bkz. [ASP.NET Core birden çok ortamla çalışma](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
+Bu bölümde, ASP.NET Core için bir geliştirme çalışma zamanı ortamı ekleyeceksiniz. Daha fazla bilgi için bkz. [ASP.NET Core birden çok ortamla çalışma](/aspnet/core/fundamentals/environments).
 
 1. Projenizde *Özellikler* adlı bir klasör oluşturun.
 

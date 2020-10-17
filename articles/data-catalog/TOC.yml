@@ -68,7 +68,7 @@
     - name: Azure Veri Kataloğu için klavye kısayolları
       href: data-catalog-keyboard-shortcuts.md
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
+      href: /answers/topics/azure-data-catalog.html
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: Fiyatlandırma hesaplayıcı

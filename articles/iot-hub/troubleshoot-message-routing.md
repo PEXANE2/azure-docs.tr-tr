@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 871a4c7d99fc44cf9868f19e41560e6e7a2e22f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84be56ae372f8a902b12c06f9ce93c1f7210dc5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793327"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150577"
 ---
 # <a name="troubleshooting-message-routing"></a>İleti yönlendirme sorunlarını giderme
 
@@ -42,7 +42,7 @@ Yönlendirme ile ilgili tüm [IoT Hub ölçümlerinin](iot-hub-devguide-endpoint
 Yönlendirme ve uç nokta [işlemleri](#operation-names) hakkında daha fazla bilgi edinmek veya sorunları daha fazla anlamak için hataları ve ilgili [hata kodunu](#common-error-codes) belirlemek için **yollar** [tanılama günlüklerini](iot-hub-monitor-resource-health.md#routes) inceleyin. Örneğin, günlükteki **RouteEvaluationError** işlem adı ileti biçimindeki bir sorun nedeniyle yolun değerlendirilmediğini belirtir. Sorunu azaltmak için, belirli [işlem adları](#operation-names) için belirtilen ipuçlarını kullanın. Bir olay bir hata olarak günlüğe kaydedildiğinde, bu işlem, değerlendirmenin neden başarısız olduğuna ilişkin daha fazla bilgi de sağlar. Örneğin, işlem adı **EndpointUnhealthy**ise, 403004 [hata kodları](#common-error-codes) uç noktanın boş olduğunu gösterir.
 
 #### <a name="the-health-of-the-endpoint"></a>Uç noktanın sistem durumu
-Uç noktaların [sistem durumunu](iot-hub-devguide-endpoints.md#custom-endpoints) almak Için [uç nokta durumunu Al](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) REST API kullanın. *Uç nokta durumunu Al* API 'si Ayrıca, bir iletinin uç noktaya başarıyla gönderildiği son [bilinen hata](#last-known-errors-for-iot-hub-routing-endpoints), bilinen son hata zamanı ve bu uç nokta için bir gönderme girişiminin en son gönderilme zamanı hakkında bilgiler sağlar. [Bilinen son bilinen hata](#last-known-errors-for-iot-hub-routing-endpoints)için sunulan olası risk azaltma ' yı kullanın.
+Uç noktaların [sistem durumunu](iot-hub-devguide-endpoints.md#custom-endpoints) almak Için [uç nokta durumunu Al](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) REST API kullanın. *Uç nokta durumunu Al* API 'si Ayrıca, bir iletinin uç noktaya başarıyla gönderildiği son [bilinen hata](#last-known-errors-for-iot-hub-routing-endpoints), bilinen son hata zamanı ve bu uç nokta için bir gönderme girişiminin en son gönderilme zamanı hakkında bilgiler sağlar. [Bilinen son bilinen hata](#last-known-errors-for-iot-hub-routing-endpoints)için sunulan olası risk azaltma ' yı kullanın.
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>Yerleşik uç noktada iletileri almayı aniden durdurdum
 
@@ -52,9 +52,9 @@ Bu sorunu gidermek için aşağıdakileri çözümleyin.
 Bir yol oluşturulduktan sonra, bu uç nokta için bir yol oluşturulmadığı takdirde veriler yerleşik uç noktaya akar. Yeni bir yol eklenirse, iletilerin yerleşik uç noktaya akışa devam ettiğinden emin olmak için, *Olaylar* uç noktasına bir yol yapılandırın. 
 
 #### <a name="was-the-fallback-route-disabled"></a>Geri dönüş rotası devre dışı bırakıldı mi?
-Geri dönüş yolu, var olan yolların herhangi birine (iletiler/olaylar) [Event Hubs](https://docs.microsoft.com/azure/event-hubs/)ile uyumlu olan herhangi bir mevcut [Event Hubs](iot-hub-devguide-messages-read-builtin.md) rotadaki sorgu koşullarını karşılamayan tüm iletileri gönderir. İleti yönlendirme açıksa, geri dönüş yolu özelliğini etkinleştirebilirsiniz. Yerleşik uç noktaya bir yol yoksa ve bir geri dönüş yolu etkinleştirilirse, yalnızca rotalardaki sorgu koşullarına uymamaları, yerleşik uç noktaya gönderilir. Ayrıca, mevcut tüm yollar silinirse, tüm verileri yerleşik uç noktada almak için geri dönüş yolunun etkinleştirilmesi gerekir.
+Geri dönüş yolu, var olan yolların herhangi birine (iletiler/olaylar) [Event Hubs](../event-hubs/index.yml)ile uyumlu olan herhangi bir mevcut [Event Hubs](iot-hub-devguide-messages-read-builtin.md) rotadaki sorgu koşullarını karşılamayan tüm iletileri gönderir. İleti yönlendirme açıksa, geri dönüş yolu özelliğini etkinleştirebilirsiniz. Yerleşik uç noktaya bir yol yoksa ve bir geri dönüş yolu etkinleştirilirse, yalnızca rotalardaki sorgu koşullarına uymamaları, yerleşik uç noktaya gönderilir. Ayrıca, mevcut tüm yollar silinirse, tüm verileri yerleşik uç noktada almak için geri dönüş yolunun etkinleştirilmesi gerekir.
 
-Azure portal >Ileti yönlendirme dikey penceresinde geri dönüş yolunu etkinleştirebilir/devre dışı bırakabilirsiniz. Ayrıca, geri dönüş yolu için özel bir uç nokta kullanmak üzere [Fallbackrouteproperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) için Azure Resource Manager de kullanabilirsiniz.
+Azure portal >Ileti yönlendirme dikey penceresinde geri dönüş yolunu etkinleştirebilir/devre dışı bırakabilirsiniz. Ayrıca, geri dönüş yolu için özel bir uç nokta kullanmak üzere [Fallbackrouteproperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) için Azure Resource Manager de kullanabilirsiniz.
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>IoT Hub yönlendirme uç noktaları için bilinen son hatalar
 

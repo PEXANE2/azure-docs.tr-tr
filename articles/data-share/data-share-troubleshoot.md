@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/02/2020
-ms.openlocfilehash: 620fe1e693a177123e166220ab94bbd74c4826ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1b61b643ea4b195878a1d12fc1ac4bb7fef23027
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761541"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151360"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Veri Paylaşımı'nda sık karşılaşılan sorunları giderme 
 
@@ -61,12 +61,20 @@ Azure veri deposundan ilk kez veri paylaşıyorsanız veya alıyorsanız, genell
 SQL tabanlı paylaşım ek izinler gerektirir. Ayrıntılı önkoşul listesi için bkz. [SQL kaynaklarından paylaşma](how-to-share-from-sql.md) .
 
 ## <a name="snapshot-failed"></a>Anlık görüntü başarısız oldu
-Çeşitli nedenlerden dolayı anlık görüntü başarısız olabilir. Anlık görüntünün başlangıç saatine ve sonra her bir veri kümesinin durumuna tıklayarak ayrıntılı hata iletisi bulabilirsiniz. Aşağıda, anlık görüntünün başarısız olmasının nedenleri verilmiştir:
+Çeşitli nedenlerden dolayı anlık görüntü başarısız olabilir. Anlık görüntünün başlangıç saatine ve sonra her bir veri kümesinin durumuna tıklayarak ayrıntılı hata iletisi bulabilirsiniz. Anlık görüntünün başarısız olmasının yaygın nedenlerinden bazıları aşağıda verilmiştir:
 
 * Veri paylaşımının, kaynak veri deposundan okuma veya hedef veri deposuna yazma izni yok. Ayrıntılı izin gereksinimleri için [Roller ve gereksinimlere](concepts-roles-permissions.md) bakın. İlk kez bir anlık görüntü çekiyorsunuz, veri paylaşımının kaynağı için Azure veri deposuna erişim verilmesi birkaç dakika sürebilir. Birkaç dakika bekleyip yeniden deneyin.
 * Kaynak veya hedef veri deposuna yönelik veri paylaşımının bağlantısı güvenlik duvarı tarafından engelleniyor.
 * Paylaşılan veri kümesi veya kaynak ya da hedef veri deposu silinir.
-* SQL paylaşımı için, veri türleri anlık görüntü işlemi veya hedef veri deposu tarafından desteklenmez. Ayrıntılar için [SQL kaynaklarından paylaşma](how-to-share-from-sql.md#supported-data-types) bölümüne bakın.
+
+SQL kaynakları için, anlık görüntü hatalarının ek nedenleri aşağıda verilmiştir. 
+
+* Veri paylaşma izni verilecek kaynak veya hedef SQL betiği çalışmıyor veya Azure Active Directory kimlik doğrulaması yerine SQL kimlik doğrulaması kullanılarak çalıştırıldı.  
+* Kaynak veya hedef SQL veri deposu duraklatıldı.
+* SQL veri türleri anlık görüntü işlemi veya hedef veri deposu tarafından desteklenmiyor. Ayrıntılar için [SQL kaynaklarından paylaşma](how-to-share-from-sql.md#supported-data-types) bölümüne bakın.
+* Kaynak veya hedef SQL veri deposu diğer süreçler tarafından kilitlidir. Azure veri paylaşımında, kaynak ve hedef SQL veri deposuna kilit uygulanmaz. Ancak, kaynak ve hedef SQL veri deposundaki mevcut kilitler anlık görüntü hatasına neden olur.
+* Hedef SQL tablosuna bir yabancı anahtar kısıtlaması tarafından başvuruluyor. Anlık görüntü sırasında, aynı ada sahip bir hedef tablo varsa, Azure veri paylaşımında tablo bırakılır ve yeni bir tablo oluşturulur. Hedef SQL tablosuna bir yabancı anahtar kısıtlaması başvuruluyorsa tablo bırakılamaz.
+* Hedef CSV dosyası oluşturuldu, ancak veriler Excel 'de okunamıyor. Bu durum, kaynak SQL tablosu Ingilizce olmayan karakterler içeren veriler içerdiğinde meydana gelebilir. Excel 'de ' veri al ' sekmesini seçin ve CSV dosyasını seçin, dosya kaynağı 65001: Unicode (UTF-8) ve yükleme verileri ' ni seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

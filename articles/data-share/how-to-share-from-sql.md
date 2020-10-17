@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/02/2020
-ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761932"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150379"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Veritabanı ve Azure Synapse Analytics'ten veri paylaşma ve alma
 
@@ -77,7 +77,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
     | Abonelik | Aboneliğiniz | Veri paylaşma hesabınız için kullanmak istediğiniz Azure aboneliğini seçin.|
     | Kaynak grubu | *test-resource-group* | Mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. |
     | Konum | *Doğu ABD 2* | Veri paylaşma hesabınız için bir bölge seçin.
-    | Adı | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
+    | Name | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
     | | |
 
 1. Veri paylaşma hesabınızı sağlamak için **gözden geçir + oluştur**' u seçin ve **Oluştur** ' a tıklayın. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer. 
@@ -244,7 +244,7 @@ SQL kaynağından veri paylaştığınızda aşağıdaki eşleme, anlık görün
 | ikili |Byte [] |
 | bit |Boole |
 | char |Dize, Char [] |
-| date |DateTime |
+| tarih |DateTime |
 | Tarih saat |DateTime |
 | datetime2 |DateTime |
 | Türünde |DateTimeOffset |
@@ -265,7 +265,7 @@ SQL kaynağından veri paylaştığınızda aşağıdaki eşleme, anlık görün
 | küçük para |Ondalık |
 | sql_variant |Nesne |
 | metin |Dize, Char [] |
-| saat |TimeSpan |
+| time |TimeSpan |
 | timestamp |Byte [] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |
@@ -277,7 +277,23 @@ SQL kaynağından veri paylaştığınızda aşağıdaki eşleme, anlık görün
 > 1. Ondalık geçici türle eşlenen veri türleri için şu anda anlık görüntü, 28 ' ye kadar duyarlık destekler. 28 ' den büyük bir duyarlık gerektiren verileriniz varsa, bir dizeye dönüştürmeyi düşünün. 
 > 1.  Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e paylaşıyorsanız, tüm veri türleri desteklenmez. Ayrıntılar için [SYNAPSE SQL havuzundaki tablo veri türleri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) bölümüne bakın. 
 
+## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted veya dinamik veri maskeleme
+Şu anda Azure veri paylaşımında Always Encrypted yapılandırılmış Azure SQL veritabanlarını desteklemez. 
+
+Dinamik veri maskeleme içeren kaynak SQL tablolarında, veriler alıcı tarafında maskeli olarak görünür.
+
+## <a name="sql-snapshot-performance"></a>SQL anlık görüntü performansı
+SQL Snapshot performansı bir dizi faktörden etkilenir. Her zaman kendi performans testinizi uygulamanız önerilir. Aşağıda, performansı etkileyen bazı örnek faktörler verilmiştir.
+
+* Kaynak ve hedef SQL veri deposunun donanım yapılandırması (ör. Vçekirdekler, bellek, DWU). 
+* Kaynak ve hedef veri depolarına eşzamanlı erişim. Aynı SQL veri deposundan birden çok tablo ve görünüm paylaşıyorsanız veya aynı SQL veri deposuna birden fazla tablo ve görünüm alıyorsanız, performans etkilenecektir.   
+* Kaynak ve hedef veri depolarının konumu. 
+
+## <a name="troubleshoot-sql-snapshot-failure"></a>SQL Snapshot hatası sorunlarını giderme
+Anlık görüntü hatasının en yaygın nedeni, veri paylaşımının kaynak veya hedef veri deposu için izni olmaması olabilir. Kaynak veya hedef SQL veri deposuna veri paylaşma izni vermek için, Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanına bağlanırken, belirtilen SQL betiğini çalıştırmanız gerekir. Ek SQL anlık görüntü hatası sorunlarını gidermek için, bkz. [sorun giderme anlık görüntü hatası](data-share-troubleshoot.md#snapshot-failed).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure veri paylaşma hizmeti 'ni kullanarak depolama hesabından nasıl veri alacağınızı ve verilerin alınacağını öğrendiniz. Diğer veri kaynaklarından paylaşım hakkında daha fazla bilgi edinmek için [desteklenen veri depolarına](supported-data-stores.md)devam edin.
+Azure veri paylaşma hizmeti 'ni kullanarak SQL kaynaklarından verileri paylaşmayı ve almayı öğrendiniz. Diğer veri kaynaklarından paylaşım hakkında daha fazla bilgi edinmek için [desteklenen veri depolarına](supported-data-stores.md)devam edin.
+
+
 

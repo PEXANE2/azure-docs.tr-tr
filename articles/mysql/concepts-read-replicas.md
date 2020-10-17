@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126677"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151178"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -128,6 +128,26 @@ Bir çoğaltmaya yük devretmek istediğinizde,
     
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
+## <a name="global-transaction-identifier-gtid"></a>Genel işlem tanımlayıcısı (GTıD)
+
+Genel işlem tanımlayıcısı (GTıD), bir kaynak sunucuda yürütülen her işlemle oluşturulmuş benzersiz bir tanımlayıcıdır ve MySQL için Azure veritabanı 'nda varsayılan olarak KAPALıDıR. GTıD, 5,7 ve 8,0 sürümlerinde ve yalnızca 16 TB 'a kadar depolamayı destekleyen sunucularda desteklenir. GTıD hakkında daha fazla bilgi edinmek ve nasıl kullanılacağı hakkında daha fazla bilgi edinmek için, MySQL 'in [gtıd belgeleriyle çoğaltma](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) bölümüne bakın.
+
+MySQL iki tür işlemi destekler: GTıD işlemleri (GTıD ile tanımlanır) ve anonim işlemler (ayrılmış bir GTıD 'ye sahip değil)
+
+Aşağıdaki sunucu parametreleri GTıD 'yi yapılandırmak için kullanılabilir: 
+
+|**Sunucu parametresi**|**Açıklama**|**Varsayılan değer**|**Değerler**|
+|--|--|--|--|
+|`gtid_mode`|İşlemleri tanımlamak için Gtıds 'nin kullanıldığını gösterir. Modlar arasındaki değişiklikler, her seferinde artan düzende (örn. bir adım yapılabilir) gerçekleştirilebilir. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Hem yeni hem de çoğaltma işlemleri anonim olmalıdır <br> `OFF_PERMISSIVE`: Yeni işlemler anonimdir. Çoğaltılan işlemler anonim ya da GTıD işlemleri olabilir. <br> `ON_PERMISSIVE`: Yeni işlemler GTıD işlemlerdir. Çoğaltılan işlemler anonim ya da GTıD işlemleri olabilir. <br> `ON`: Hem yeni hem de çoğaltılan işlemler GTıD işlemleri olmalıdır.|
+|`enforce_gtid_consistency`|Yalnızca işlemsel olarak güvenli bir şekilde oturum açılabilen deyimlerin yürütülmesine izin vererek GTıD tutarlılığını zorlar. Bu değer, `ON` gtıd çoğaltmasını etkinleştirmeden önce olarak ayarlanmalıdır. |`OFF`|`OFF`: Tüm işlemlerin GTıD tutarlılığını ihlal edebileceği şekilde izin verilir.  <br> `ON`: Hiçbir işlemin GTıD tutarlılığını ihlal etme izni yok. <br> `WARN`: Tüm işlemlere GTıD tutarlılığı ihlal etmek için izin verilir, ancak bir uyarı oluşturulur. | 
+
+> [!NOTE]
+> GTıD etkinleştirildikten sonra, yeniden kapatamaz. GTıD 'yi kapatmanız gerekiyorsa lütfen desteğe başvurun. 
+
+GTıD 'yi etkinleştirmek ve tutarlılık davranışını yapılandırmak için `gtid_mode` `enforce_gtid_consistency` [Azure Portal](howto-server-parameters.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)veya [PowerShell](howto-configure-server-parameters-using-powershell.md)'i kullanarak ve sunucu parametrelerini güncelleştirin.
+
+Bir kaynak sunucuda (= on) GTıD etkinse `gtid_mode` , yeni oluşturulan çoğaltmalarda de gtıd etkinleştirilir ve gtıd çoğaltmasını kullanılır. Çoğaltmanın tutarlı kalmasını sağlamak için `gtid_mode` kaynak veya çoğaltma sunucuları üzerinde güncelleştirme yapılamaz.
+
 ## <a name="considerations-and-limitations"></a>Önemli noktalar ve sınırlamalar
 
 ### <a name="pricing-tiers"></a>Fiyatlandırma katmanları
@@ -178,9 +198,18 @@ Aşağıdaki sunucu parametreleri hem kaynak hem de çoğaltma sunucularında ki
 
 Kaynak sunucuda yukarıdaki parametrelerden birini güncelleştirmek için lütfen çoğaltma sunucularını silin, ana bilgisayardaki parametre değerini güncelleştirin ve çoğaltmaları yeniden oluşturun.
 
+### <a name="gtid"></a>GTıD
+
+GTıD desteklenir:
+- MySQL sürümleri 5,7 ve 8,0 
+- 16 TB 'a kadar depolamayı destekleyen sunucular. 16 TB depolamayı destekleyen bölgelerin tam listesi için [fiyatlandırma katmanı](concepts-pricing-tiers.md#storage) makalesine başvurun. 
+
+GTıD varsayılan olarak KAPALıDıR. GTıD etkinleştirildikten sonra, yeniden kapatamaz. GTıD 'yi kapatmanız gerekiyorsa lütfen desteğe başvurun. 
+
+Bir kaynak sunucuda GTıD etkinse, yeni oluşturulan çoğaltmalarda de GTıD etkinleştirilir ve GTıD çoğaltmasını kullanacaktır. Çoğaltmanın tutarlı kalmasını sağlamak için `gtid_mode` kaynak veya çoğaltma sunucuları üzerinde güncelleştirme yapılamaz.
+
 ### <a name="other"></a>Diğer
 
-- Genel işlem tanımlayıcıları (GTıD) desteklenmez.
 - Bir çoğaltmanın çoğaltmasını oluşturma desteklenmiyor.
 - Bellek içi tablolar çoğaltmaların eşitlenmemiş hale gelmesine neden olabilir. Bu, MySQL Çoğaltma teknolojisinin bir sınırlamasıdır. Daha fazla bilgi için [MySQL Reference belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) daha fazla bilgi edinin.
 - Kaynak sunucu tablolarının birincil anahtarlara sahip olduğundan emin olun. Birincil anahtarların olmaması, kaynak ve çoğaltmalar arasında çoğaltma gecikmesine neden olabilir.

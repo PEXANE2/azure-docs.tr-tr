@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f2e17e99208d076d05132638b5161a284b73986f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018636"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150141"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağı ile tümleştirme
 
-Bu makalede Azure App Service VNet tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanır. [Azure sanal ağ][VNETOverview] (VNet) Ile, Azure kaynaklarınızın çoğunu internet 'e yönlendirilemeyen bir ağa yerleştirebilirsiniz. VNet tümleştirme özelliği, uygulamalarınızın bir sanal ağ içindeki veya VNet aracılığıyla kaynaklara erişmesine olanak sağlar. VNet tümleştirmesi, uygulamalarınıza özel olarak erişilmesine izin vermez.
+Bu makalede Azure App Service VNet tümleştirme özelliği ve [Azure App Service](./overview.md)uygulamalarla nasıl ayarlanacağı açıklanır. [Azure sanal ağ][VNETOverview] (VNet) Ile, Azure kaynaklarınızın çoğunu internet 'e yönlendirilemeyen bir ağa yerleştirebilirsiniz. VNet tümleştirme özelliği, uygulamalarınızın bir sanal ağ içindeki veya VNet aracılığıyla kaynaklara erişmesine olanak sağlar. VNet tümleştirmesi, uygulamalarınıza özel olarak erişilmesine izin vermez.
 
 Azure App Service, VNet tümleştirme özelliği üzerinde iki çeşitle sahiptir:
 

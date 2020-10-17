@@ -80,6 +80,10 @@
       href: concepts/event-handling.md
     - name: Bildirimler
       href: concepts/notifications.md
+    - name: Günlüğe kaydetme ve tanılama
+      href: concepts/logging-and-diagnostics.md
+    - name: Ölçümler
+      href: concepts/metrics.md
 - name: Örnekler
   items:
     - name: Grup araması hero örneği

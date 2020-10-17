@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: d104e0f1f2c6a978a5fce2c046a36e50a7056970
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90853b5ff769b710c6c95e4f6e62b3a4aa19fadf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928509"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151074"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Azure SignalR Hizmeti ile ASP.NET Core SignalR uygulamalarını ölçeklendirme
 
 ## <a name="developing-signalr-apps"></a>SignalR uygulamaları geliştirme
 
-Şu anda web uygulamalarınızla birlikte kullanabileceğiniz [iki SignalR sürümü](https://docs.microsoft.com/aspnet/core/signalr/version-differences) mevcuttur: ASP.NET için SignalR ve en yeni sürüm olan ASP.NET Core SignalR. Azure SignalR Hizmeti, ASP.NET Core SignalR’yi temel alan, yönetilen bir Azure hizmetidir.
+Şu anda web uygulamalarınızla birlikte kullanabileceğiniz [iki SignalR sürümü](/aspnet/core/signalr/version-differences) mevcuttur: ASP.NET için SignalR ve en yeni sürüm olan ASP.NET Core SignalR. Azure SignalR Hizmeti, ASP.NET Core SignalR’yi temel alan, yönetilen bir Azure hizmetidir.
 
 ASP.NET Core SignalR, önceki sürümün yeniden üretimidir. Sonuç olarak ASP.NET Core SignalR, önceki SignalR sürümüyle geriye dönük olarak uyumlu değildir. API’ler ve davranışlar farklıdır. ASP.NET Core SignalR SDK’sı, .NET Standard’ı hedef alır; bu nedenle .NET Framework ile hala kullanabilirsiniz. Ancak, eski API’ler yerine yenilerini kullanmanız gerekir. SignalR kullanıyor ve ASP.NET Core SignalR’ye veya Azure SignalR Hizmeti’ne geçmek istiyorsanız, kodunuzu API’lerdeki farklılıkları işleyecek şekilde değiştirmeniz gerekir.
 
-Azure SignalR Hizmeti ile, ASP.NET Core SignalR’nin sunucu tarafı bileşeni Azure’da barındırılır. Ancak, teknoloji ASP.NET Core temel alınarak oluşturulduğu için gerçek web uygulamanızı birden fazla platform (Windows, Linux ve MacOS) üzerinde çalıştırırken [Azure App Service](../app-service/overview.md), [IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index), [Nginx](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx), [Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache), [Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index) ile barındırabilirsiniz. Ayrıca, işleminizin içinde kendi kendine barındırmayı da kullanabilirsiniz.
+Azure SignalR Hizmeti ile, ASP.NET Core SignalR’nin sunucu tarafı bileşeni Azure’da barındırılır. Ancak, teknoloji ASP.NET Core temel alınarak oluşturulduğu için gerçek web uygulamanızı birden fazla platform (Windows, Linux ve MacOS) üzerinde çalıştırırken [Azure App Service](../app-service/overview.md), [IIS](/aspnet/core/host-and-deploy/iis/index), [Nginx](/aspnet/core/host-and-deploy/linux-nginx), [Apache](/aspnet/core/host-and-deploy/linux-apache), [Docker](/aspnet/core/host-and-deploy/docker/index) ile barındırabilirsiniz. Ayrıca, işleminizin içinde kendi kendine barındırmayı da kullanabilirsiniz.
 
 Uygulamanızın amaçları arasında web istemcilerine gerçek zamanlı içerik güncelleştirmeleri uygulamak için en son işlevleri desteklemek, birden fazla platform üzerinde çalışmak (Azure, Windows, Linux ve MacOS) ve farklı ortamlarda barındırmak varsa, Azure SignalR Hizmetinden yararlanmak en iyi seçim olacaktır.
 
@@ -34,7 +34,7 @@ Azure SignalR Hizmeti’ni kullanmanın başlıca nedenlerinden biri kolaylık s
 
 Ayrıca, gerçek zamanlı içerik güncelleştirmelerini desteklemek için WebSockets genellikle tercih edilen yöntemdir. Bununla birlikte, çok sayıda kalıcı WebSocket bağlantısı ile yük dengelemesi yapmak, ölçeği artırdıkça çözülmesi karmaşık bir sorun haline gelir. Yaygın sorunlar şunlardan yararlanır: DNS yük dengelemesi, donanım yük dengeleyicileri ve yazılım yük dengelemesi. Azure SignalR Hizmeti bu sorunu sizin için halleder.
 
-Geçerli olabilecek başka bir neden ise gerçekten bir web uygulaması barındırmak zorunda olmamanızdır. Web uygulamanızın mantığı, [Sunucusuz bilgi işlem](https://azure.microsoft.com/overview/serverless-computing/)’den yararlanabilir. Örneğin, kodunuz yalnızca [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/) tetikleyicileri ile isteğe bağlı olarak barındırılıyor ve yürütülüyor olabilir. Kodunuz yalnızca isteğe bağlı olarak çalıştığından ve istemcilerle uzun bağlantılar sürdürmediğinden bu senaryo aldatıcı olabilir. Azure SignalR Hizmeti, bağlantıları zaten yönettiği için bu durumu sizin yerinize çözebilir. Daha fazla ayrıntı için bkz. [SignalR Hizmetini Azure İşlevleri ile kullanmaya genel bakış](signalr-concept-azure-functions.md).
+Geçerli olabilecek başka bir neden ise gerçekten bir web uygulaması barındırmak zorunda olmamanızdır. Web uygulamanızın mantığı, [Sunucusuz bilgi işlem](https://azure.microsoft.com/overview/serverless-computing/)’den yararlanabilir. Örneğin, kodunuz yalnızca [Azure İşlevleri](../azure-functions/index.yml) tetikleyicileri ile isteğe bağlı olarak barındırılıyor ve yürütülüyor olabilir. Kodunuz yalnızca isteğe bağlı olarak çalıştığından ve istemcilerle uzun bağlantılar sürdürmediğinden bu senaryo aldatıcı olabilir. Azure SignalR Hizmeti, bağlantıları zaten yönettiği için bu durumu sizin yerinize çözebilir. Daha fazla ayrıntı için bkz. [SignalR Hizmetini Azure İşlevleri ile kullanmaya genel bakış](signalr-concept-azure-functions.md).
 
 ## <a name="how-does-it-scale"></a>Nasıl ölçeklendirilir?
 

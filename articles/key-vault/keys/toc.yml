@@ -15,6 +15,8 @@
       href: quick-create-portal.md
     - name: Python
       href: quick-create-python.md
+    - name: ARM şablonu
+      href: quick-create-template.md
 - name: Öğreticiler
   items:
     - name: HSM korumalı anahtarları içeri aktarma (genel bakış)

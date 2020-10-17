@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89292988"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150799"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
@@ -82,16 +82,18 @@ Aşağıdaki tabloda her güvenlik çözümü türü için kaynakların bağlant
 |  | [Yoldaki şifreleme](./encryption-in-transit.md) özelliğinin, küme içi ILETIŞIM için TLS ve IPSec kullanmak üzere etkinleştirildiğinden emin olun. | Müşteri |
 |  | Azure depolama şifrelemesi için [müşteri tarafından yönetilen anahtarları](../../storage/common/storage-encryption-keys-portal.md) yapılandırma | Müşteri |
 |  | [Müşteri kasayı](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) kullanarak Azure desteği ile verilerinize erişimi denetleme | Müşteri |
-| Uygulama ve ara yazılım güvenliği | AAD-DS ile tümleştirme ve [kimlik doğrulamasını yapılandırma](apache-domain-joined-configure-using-azure-adds.md) | Müşteri |
+| Uygulama ve ara yazılım güvenliği | AAD-DS ile tümleştirme ve [ESP yapılandırma](apache-domain-joined-configure-using-azure-adds.md) veya [OAuth kimlik doğrulaması için Hib](identity-broker.md) kullanma| Müşteri |
 |  | [Apache Ranger yetkilendirme](apache-domain-joined-run-hive.md) ilkelerini yapılandırma | Müşteri |
 |  | [Azure izleyici günlüklerini](../hdinsight-hadoop-oms-log-analytics-tutorial.md) kullanma | Müşteri |
 | İşletim sistemi güvenliği | En son güvenli temel görüntüyle kümeler oluşturun | Müşteri |
 |  | Düzenli aralıklarla [Işletim sistemi düzeltme eki uygulama](../hdinsight-os-patching.md) | Müşteri |
+|  | [VM 'ler Için CMK disk şifrelemesi](../disk-encryption.md) sağlayın | Müşteri |
 | Ağ güvenliği | [Sanal ağ](../hdinsight-plan-virtual-network-deployment.md) yapılandırma |
-|  | [Gelen ağ güvenlik grubu (NSG) kurallarını](../control-network-traffic.md) yapılandırma | Müşteri |
+|  | [Gelen ağ güvenlik grubu (NSG) kurallarını](../control-network-traffic.md) veya [özel bağlantıyı](../hdinsight-private-link.md) yapılandırma | Müşteri |
 |  | Güvenlik duvarıyla [giden trafik kısıtlamasını](../hdinsight-restrict-outbound-traffic.md) yapılandırma | Müşteri |
-| Sanallaştırılmış altyapı | Yok | HDInsight (bulut sağlayıcısı) |
-| Fiziksel altyapı güvenliği | Yok | HDInsight (bulut sağlayıcısı) |
+|  | Küme düğümleri arasındaki [geçişte IPSec şifrelemesini](encryption-in-transit.md) yapılandırma | Müşteri |
+| Sanallaştırılmış altyapı | YOK | HDInsight (bulut sağlayıcısı) |
+| Fiziksel altyapı güvenliği | YOK | HDInsight (bulut sağlayıcısı) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

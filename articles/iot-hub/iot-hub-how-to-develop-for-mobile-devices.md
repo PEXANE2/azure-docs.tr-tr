@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
-ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883089"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151647"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK 'larını kullanarak mobil cihazlar için geliştirme
 
-Nesnelerin İnterneti işlemler, farklı yetenek: sensörler, mikro denetleyiciler, akıllı cihazlar, endüstriyel ağ geçitleri ve hatta mobil cihazlar içeren çok çeşitli cihazlara başvurabilir.  Mobil cihaz, cihazdan buluta telemetri gönderen ve bulut tarafından yönetilen bir IoT cihazı olabilir.  Ayrıca, diğer IoT cihazlarını yöneten bir arka uç hizmeti uygulaması çalıştıran cihaz olabilir.  Her iki durumda da, mobil cihazlar için çalışan uygulamalar geliştirmek üzere [Azure IoT Hub SDK 'ları](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) kullanılabilir.  
+Nesnelerin İnterneti işlemler, farklı yetenek: sensörler, mikro denetleyiciler, akıllı cihazlar, endüstriyel ağ geçitleri ve hatta mobil cihazlar içeren çok çeşitli cihazlara başvurabilir.  Mobil cihaz, cihazdan buluta telemetri gönderen ve bulut tarafından yönetilen bir IoT cihazı olabilir.  Ayrıca, diğer IoT cihazlarını yöneten bir arka uç hizmeti uygulaması çalıştıran cihaz olabilir.  Her iki durumda da, mobil cihazlar için çalışan uygulamalar geliştirmek üzere [Azure IoT Hub SDK 'ları](./iot-hub-devguide-sdks.md) kullanılabilir.  
 
 ## <a name="develop-for-native-ios-platform"></a>Yerel iOS platformu için geliştirme
 
@@ -52,5 +52,5 @@ Bu belge, Gradle ve Android Studio kullanarak bir Android cihazında cihaz uygul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [IoT Hub REST API başvurusu](https://docs.microsoft.com/rest/api/iothub/)
+* [IoT Hub REST API başvurusu](/rest/api/iothub/)
 * [Azure IoT C SDK kaynak kodu](https://github.com/Azure/azure-iot-sdk-c)

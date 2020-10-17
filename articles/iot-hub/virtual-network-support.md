@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3deffe6f1dbffcaae5676b8ddf3c0fc2dc934401
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613909"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149082"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -224,7 +224,7 @@ Artık özel Service Bus uç noktanız, hub 'ın sistem tarafından atanan kimli
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>Karşıya dosya yükleme için depolama hesaplarına çıkış bağlantısı
 
-IoT Hub dosya karşıya yükleme özelliği, cihazların müşteriye ait bir depolama hesabına dosya yüklemesine olanak tanır. Karşıya dosya yüklemeye izin vermek için, hem cihazların hem de IoT Hub depolama hesabına bağlantısı olması gerekir. Depolama hesabında güvenlik duvarı kısıtlamaları varsa, cihazların bağlantı kazanmak için desteklenen depolama hesabının mekanizmasından ( [Özel uç noktalar](../private-link/create-private-endpoint-storage-portal.md), [hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)veya [doğrudan güvenlik duvarı yapılandırması](../storage/common/storage-network-security.md)dahil) birini kullanması gerekir. Benzer şekilde, depolama hesabında güvenlik duvarı kısıtlamaları varsa, IoT Hub, güvenilen Microsoft Hizmetleri özel durumu aracılığıyla depolama kaynağına erişmek üzere yapılandırılmalıdır. Bu amaçla, IoT Hub yönetilen bir kimliğe sahip olmalıdır. Yönetilen bir kimlik sağlandıktan sonra, depolama hesabınıza erişmek için hub 'ın kaynak kimliğine RBAC izni vermek üzere aşağıdaki adımları izleyin.
+IoT Hub dosya karşıya yükleme özelliği, cihazların müşteriye ait bir depolama hesabına dosya yüklemesine olanak tanır. Karşıya dosya yüklemeye izin vermek için, hem cihazların hem de IoT Hub depolama hesabına bağlantısı olması gerekir. Depolama hesabında güvenlik duvarı kısıtlamaları varsa, cihazların bağlantı kazanmak için desteklenen depolama hesabının mekanizmasından ( [Özel uç noktalar](../private-link/tutorial-private-endpoint-storage-portal.md), [hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)veya [doğrudan güvenlik duvarı yapılandırması](../storage/common/storage-network-security.md)dahil) birini kullanması gerekir. Benzer şekilde, depolama hesabında güvenlik duvarı kısıtlamaları varsa, IoT Hub, güvenilen Microsoft Hizmetleri özel durumu aracılığıyla depolama kaynağına erişmek üzere yapılandırılmalıdır. Bu amaçla, IoT Hub yönetilen bir kimliğe sahip olmalıdır. Yönetilen bir kimlik sağlandıktan sonra, depolama hesabınıza erişmek için hub 'ın kaynak kimliğine RBAC izni vermek üzere aşağıdaki adımları izleyin.
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -252,7 +252,7 @@ Bu işlevsellik IoT Hub depolama hesabına bağlantı gerektirir. Güvenlik duva
 
 3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
-Artık toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için [içeri aktarma dışarı aktarma işleri oluşturmak](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) üzere Azure IoT REST API 'lerini kullanabilirsiniz. `storageAuthenticationType="identityBased"` `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` Depolama hesabınızın giriş ve çıkış URL 'leri sırasıyla, istek gövdesine ve kullanmanız gerekir.
+Artık toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için [içeri aktarma dışarı aktarma işleri oluşturmak](/rest/api/iothub/service/jobs/getimportexportjobs) üzere Azure IoT REST API 'lerini kullanabilirsiniz. `storageAuthenticationType="identityBased"` `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` Depolama hesabınızın giriş ve çıkış URL 'leri sırasıyla, istek gövdesine ve kullanmanız gerekir.
 
 Azure IoT Hub SDK 'Ları Ayrıca hizmet istemcisinin kayıt defteri yöneticisinde bu işlevselliği destekler. Aşağıdaki kod parçacığında, C# SDK 'SıNı kullanarak bir içeri aktarma işinin veya dışarı aktarma işinin nasıl başlatılacağı gösterilmektedir.
 
@@ -295,4 +295,4 @@ IoT Hub özellikler hakkında daha fazla bilgi edinmek için aşağıdaki bağla
 
 * [İleti yönlendirme](./iot-hub-devguide-messages-d2c.md)
 * [Karşıya dosya yükleme](./iot-hub-devguide-file-upload.md)
-* [Toplu cihaz içeri/dışarı aktarma](./iot-hub-bulk-identity-mgmt.md) 
+* [Toplu cihaz içeri/dışarı aktarma](./iot-hub-bulk-identity-mgmt.md)

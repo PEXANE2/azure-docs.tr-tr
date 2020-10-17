@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e9a776aad966bb74e22f6d7fb8d66530e4b4db92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255206"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150232"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>App Service ortamları ile katmanlı güvenlik mimarisi uygulama
 App Service ortamları bir sanal ağa dağıtılan yalıtılmış bir çalışma zamanı ortamı sağladığından, geliştiriciler her fiziksel uygulama katmanı için farklı düzeylerde ağ erişimi sağlayan katmanlı bir güvenlik mimarisi oluşturabilir.
@@ -115,7 +115,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 NSG alt ağa uygulandıktan sonra, yalnızca üç yukarı akış App Service ortamı ve API arka ucu içeren App Service Ortamı "apıai" ortamına çağrı yapılmasına izin verilir.
 
 ## <a name="additional-links-and-information"></a>Ek bağlantılar ve bilgiler
-[Ağ güvenlik grupları](../../virtual-network/security-overview.md)hakkında bilgi.
+[Ağ güvenlik grupları](../../virtual-network/network-security-groups-overview.md)hakkında bilgi.
 
 [Gıden IP adreslerini][NetworkArchitecture] ve App Service ortamlarını anlama.
 

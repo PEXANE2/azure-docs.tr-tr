@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 7f3f5177e084693c45bed1088a4e1d091be100ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83ec4d09389d91c2dd427c9840885c0b829eafb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688917"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150338"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx Internal errors
 
@@ -37,4 +37,4 @@ IoT Hub isteğiniz, 500 ve/veya bazı "sunucu hatası" sıralaması ile başlaya
 
 ## <a name="solution"></a>Çözüm
 
-500 xxx hata sorunlarını azaltmak için cihazdan yeniden deneme yapın. [Yeniden denemeleri otomatik olarak yönetmek](./iot-hub-reliability-features-in-sdks.md#connection-and-retry)Için [Azure IoT SDK](./iot-hub-devguide-sdks.md)'larının en son sürümünü kullandığınızdan emin olun. Geçici hata işleme ve yeniden denemeler için en iyi yöntem için bkz. [geçici hata işleme](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults).  Sorun devam ederse, IoT Hub bilinen bir sorun olup olmadığını görmek için [kaynak durumu](./iot-hub-monitor-resource-health.md#use-azure-resource-health) ve [Azure durumunu](https://status.azure.com/) kontrol edin. [El ile yük devretme özelliğini](./tutorial-manual-failover.md)de kullanabilirsiniz. Bilinen bir sorun yoksa ve sorun devam ederse, daha fazla araştırma için [desteğe başvurun](https://azure.microsoft.com/support/options/) .
+500 xxx hata sorunlarını azaltmak için cihazdan yeniden deneme yapın. [Yeniden denemeleri otomatik olarak yönetmek](./iot-hub-reliability-features-in-sdks.md#connection-and-retry)Için [Azure IoT SDK](./iot-hub-devguide-sdks.md)'larının en son sürümünü kullandığınızdan emin olun. Geçici hata işleme ve yeniden denemeler için en iyi yöntem için bkz. [geçici hata işleme](/azure/architecture/best-practices/transient-faults).  Sorun devam ederse, IoT Hub bilinen bir sorun olup olmadığını görmek için [kaynak durumu](./iot-hub-monitor-resource-health.md#use-azure-resource-health) ve [Azure durumunu](https://status.azure.com/) kontrol edin. [El ile yük devretme özelliğini](./tutorial-manual-failover.md)de kullanabilirsiniz. Bilinen bir sorun yoksa ve sorun devam ederse, daha fazla araştırma için [desteğe başvurun](https://azure.microsoft.com/support/options/) .

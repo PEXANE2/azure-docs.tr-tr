@@ -4,12 +4,12 @@ description: Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530395"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150877"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 
@@ -71,11 +71,11 @@ Uç noktanıza Azure AD erişim denetimi sağlamak için:
     |---------|-------------|
     | Rol | **Sahip**, **katkıda bulunan**veya **Reader**' ı seçin.
     | Şunlara erişim ata: | **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
-    | Seç | Eklemek istediğiniz kullanıcı, Grup veya hizmet sorumlusu için arama yapın.
+    | Şunu seçin: | Eklemek istediğiniz kullanıcı, Grup veya hizmet sorumlusu için arama yapın.
 
 1. Rol atamasını eklemek için **Kaydet** ' i seçin.
 
-Azure AD erişim denetimi hakkında daha fazla bilgi için bkz [. RBAC kullanarak Azure kaynaklarına erişimi yönetme ve Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+Azure AD erişim denetimi hakkında daha fazla bilgi için bkz [. Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)
 
 Azure AD kimlik doğrulamasını kullanarak bağlanma hakkında daha fazla bilgi için bkz. [AAD kimlik doğrulaması kullanarak düğümünüz bağlama](configure-aad.md).
 

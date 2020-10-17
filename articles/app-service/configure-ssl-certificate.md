@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420889"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149078"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
@@ -145,8 +145,8 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 | Kaynak grubu | Öneri olarak, App Service sertifikanız ile aynı kaynak grubunu seçin. |
 | Konum | App Service uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Bilgi için bkz. [Azure Key Vault fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/key-vault/). |
-| Erişim ilkeleri| , Kasa kaynaklarına yönelik olan uygulamaları ve izin verilen erişimi tanımlar. Daha sonra, [Key Vault erişim Ilkesi atama](/azure/key-vault/general/assign-access-policy-portal)içindeki adımları izleyerek yapılandırabilirsiniz. |
-| Sanal ağ erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. Daha sonra yapılandırma [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](/azure/key-vault/general/network-security) içindeki adımları izleyerek yapılandırabilirsiniz |
+| Erişim ilkeleri| , Kasa kaynaklarına yönelik olan uygulamaları ve izin verilen erişimi tanımlar. Daha sonra, [Key Vault erişim Ilkesi atama](../key-vault/general/assign-access-policy-portal.md)içindeki adımları izleyerek yapılandırabilirsiniz. |
+| Sanal ağ erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. Daha sonra yapılandırma [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](../key-vault/general/network-security.md) içindeki adımları izleyerek yapılandırabilirsiniz |
 
 Kasayı seçtikten sonra **Key Vault deposu** sayfasını kapatın. **1. Adım: Store** seçeneğinde başarılı olması için yeşil bir onay işareti gösterilmelidir. Sonraki adımda sayfayı açık tutun.
 
@@ -189,7 +189,7 @@ Yeni satın aldığınız sertifikayı seçin ve **Tamam**' ı seçin.
 Sertifikalarınızı yönetmek için Azure Key Vault kullanıyorsanız, [gereksinimleri karşılayan](#private-certificate-requirements)sürece Key Vault bir PKCS12 sertifikasını App Service 'e aktarabilirsiniz.
 
 ### <a name="authorize-app-service-to-read-from-the-vault"></a>App Service kasadan okumak üzere yetkilendir
-Varsayılan olarak App Service kaynak sağlayıcısı Key Vault erişimine sahip değildir. Bir sertifika dağıtımı için Key Vault kullanabilmeniz için, [anahtar kasasında kaynak sağlayıcısına okuma erişimi yetkisi](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)vermeniz gerekir. 
+Varsayılan olarak App Service kaynak sağlayıcısı Key Vault erişimine sahip değildir. Bir sertifika dağıtımı için Key Vault kullanabilmeniz için, [anahtar kasasında kaynak sağlayıcısına okuma erişimi yetkisi](../key-vault/general/assign-access-policy-cli.md)vermeniz gerekir. 
 
 `abfa0a7c-a6b6-4736-8310-5855508787cd`  , App Service için kaynak sağlayıcısı hizmet asıl adıdır ve tüm Azure abonelikleri için aynıdır. Azure Kamu bulut ortamı için `6a02c803-dafd-4136-b4c3-5a6f318b4714` kaynak sağlayıcısı hizmet sorumlusu adı olarak kullanın.
 

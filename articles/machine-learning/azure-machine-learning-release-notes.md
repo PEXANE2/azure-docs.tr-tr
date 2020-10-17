@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996754"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139364"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -27,38 +27,19 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
 ### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Python v 1.16.0 için SDK Azure Machine Learning
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **Azure-CLI-ml**
-    + AKSWebservice ve AKSEndpoints artık Pod düzeyi CPU ve bellek kaynağı sınırlarını desteklemektedir. Bu isteğe bağlı sınırlar, 1 ile tanımlanabilir. `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` Ve yöntemi 2 içindeki ayar ve parametreler `AKSWebservice.deploy_configuration()` . `--cpu-cores-limit` `--memory-gb-limit` Geçerli CLI çağrılarında ayarlama ve bayraklar 3 ' dir. `cpuLimit` `memoryInGBLimit` `containerResourceRequirements` Dağıtım yapılandırması. JSON/. yml dosyalarının ayarı ve Içindeki ayarları, Kubernetes kaynakları ve limitleri hakkında daha fazla bilgi şurada bulunabilir:https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
-  + **azureml-contrib-interpret**
-    + APNs-yorumlama, azureml-açıkla-model, azureml-contrib-yorumlama ve azureml-tensorboard için karşıya yükleme hatasına neden olan paket açıklamalarını çözme
-  + **azureml-contrib-k8s**
-    + ArcKubernetes işlem ekleme desteği eklendi
-  + **azureml-contrib-mir**
-    + AKSWebservice ve AKSEndpoints artık Pod düzeyi CPU ve bellek kaynağı sınırlarını desteklemektedir. Bu isteğe bağlı sınırlar, 1 ile tanımlanabilir. `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` Ve yöntemi 2 içindeki ayar ve parametreler `AKSWebservice.deploy_configuration()` . `--cpu-cores-limit` `--memory-gb-limit` Geçerli CLI çağrılarında ayarlama ve bayraklar 3 ' dir. `cpuLimit` `memoryInGBLimit` `containerResourceRequirements` Dağıtım yapılandırması. JSON/. yml dosyalarının ayarı ve Içindeki ayarları, Kubernetes kaynakları ve limitleri hakkında daha fazla bilgi şurada bulunabilir:https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
-  + **azureml-contrib-sunucu**
-    + AKSWebservice ve AKSEndpoints artık Pod düzeyi CPU ve bellek kaynağı sınırlarını desteklemektedir. Bu isteğe bağlı sınırlar, 1 ile tanımlanabilir. `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` Ve yöntemi 2 içindeki ayar ve parametreler `AKSWebservice.deploy_configuration()` . `--cpu-cores-limit` `--memory-gb-limit` Geçerli CLI çağrılarında ayarlama ve bayraklar 3 ' dir. `cpuLimit` `memoryInGBLimit` `containerResourceRequirements` Dağıtım yapılandırması. JSON/. yml dosyalarının ayarı ve Içindeki ayarları, Kubernetes kaynakları ve limitleri hakkında daha fazla bilgi şurada bulunabilir:https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + AKSWebservice ve AKSEndpoints artık Pod düzeyi CPU ve bellek kaynağı sınırlarını desteklemektedir. Bu isteğe bağlı sınırlar, `--cpu-cores-limit` `--memory-gb-limit` uygulanabilir CLI çağrılarında ayarı ve bayrakları tarafından kullanılabilir
   + **azureml-core**
     + Azureml-Core doğrudan bağımlılıklarının ana sürümlerini sabitleme
-    + AKSWebservice ve AKSEndpoints artık Pod düzeyi CPU ve bellek kaynağı sınırlarını desteklemektedir. Kubernetes kaynakları ve limitleri hakkında daha fazla bilgiyi şurada bulabilirsiniz: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + AKSWebservice ve AKSEndpoints artık Pod düzeyi CPU ve bellek kaynağı sınırlarını desteklemektedir. [Kubernetes kaynakları ve limitleri](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) hakkında daha fazla bilgi
     + Tek tek satırların günlüğe kaydedilmesini sağlamak için run.log_table güncelleştirildi.
-    + Çalışma alanında bir `Run.get(workspace, run_id)` `Workspace.get_run(run_id)` çalışmayı almak için yalnızca çalışma alanı eklenen örnek yöntemi kullanılarak bir çalıştırmayı almak için statik yöntem eklendi
+    + `Run.get(workspace, run_id)`Yalnızca çalışma alanı kullanarak bir çalıştırma almak için statik yöntem eklendi 
+    + `Workspace.get_run(run_id)`Çalışma alanı içindeki bir çalışmayı almak için örnek yöntemi eklendi
     + Çalıştırma yapılandırması ' nda komut özelliği, kullanıcıların betik & bağımsız değişkenleri yerine komut göndermesini sağlar.
-  + **azureml-dataprep-yerel**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` resmi olarak Python 3,8 desteği.
-  + **azureml-açıkla-model**
-    + APNs-yorumlama, azureml-açıkla-model, azureml-contrib-yorumlama ve azureml-tensorboard için karşıya yükleme hatasına neden olan paket açıklamalarını çözme
   + **azureml-interpret**
     + azureml-yorumlama içinde düzeltilen açıklama istemci is_raw bayrağı davranışı
-    + APNs-yorumlama, azureml-açıkla-model, azureml-contrib-yorumlama ve azureml-tensorboard için karşıya yükleme hatasına neden olan paket açıklamalarını çözme
-  + **azureml-pipeline-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` resmi olarak Python 3,8 desteği.
   + **azureml-SDK**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` resmi olarak Python 3,8 desteği.
-  + **azureml-tensorboard**
-    + APNs-yorumlama, azureml-açıkla-model, azureml-contrib-yorumlama ve azureml-tensorboard için karşıya yükleme hatasına neden olan paket açıklamalarını çözme
-  + **azureml-eğitme**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` resmi olarak Python 3,8 desteği.
+    + `azureml-sdk` resmi olarak Python 3,8 desteği.
   + **azureml-train-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` resmi olarak Python 3,8 desteği.
     + TensorFlow 2,3 seçkin ortamı ekleniyor
     + Çalıştırma yapılandırması ' nda komut özelliği, kullanıcıların betik & bağımsız değişkenleri yerine komut göndermesini sağlar.
   + **azureml-widgets**
@@ -97,7 +78,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Eski databricks Not defterleri kaldırıldı.
   + **azureml-tensorboard**
     + azureml-yorumlama, azureml-açıkla-model, azureml-contrib-yorumlama ve azureml-tensorboard için Pypı paket açıklamalarını çözme
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + görselleştirme panosu, azureml-contrib-yorumlama paketinden kaldırıldı, açıklama istemcisi azureml-yorumlama paketine taşındı ve azureml, iyileştirilmiş API 'yi yansıtacak şekilde güncelleştirildi.
   + **azureml-widgets**
     + görselleştirme panosu, azureml-contrib-yorumlama paketinden kaldırıldı, açıklama istemcisi azureml-yorumlama paketine taşındı ve azureml, iyileştirilmiş API 'yi yansıtacak şekilde güncelleştirildi.
@@ -186,7 +167,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Geliştirilmiş `PipelineOutputAbstractDataset.register` belgeler.
   + **azureml-train-automl-client**
     + Yükseltilmiş oto ml bağımlılıkları: `scikit-learn` (Now 0.22.1), (şimdi `pandas` 0.25.1), `numpy` (Now 1.18.2).
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Yükseltilmiş oto ml bağımlılıkları: `scikit-learn` (Now 0.22.1), (şimdi `pandas` 0.25.1), `numpy` (Now 1.18.2).
   + **azureml-train-core**
     + Kullanıcılar artık bir hiper sürücü yapılandırması oluştururken geçerli bir hyperparameter_sampling arg sağlamalıdır. Ayrıca, hyperdriverunconfig için belgeler, kullanıcıları HyperDriveRunConfig ' i kullanımdan kaldırma hakkında bilgilendirmek üzere düzenlendi.
@@ -315,7 +296,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Konsola yazdırılan yineleme süresi düzeltildi. Daha önce, yineleme süresi bazen çalışma bitiş saati eksi çalıştırma oluşturma süresi olarak yazdırılmıştır. Çalışma bitiş saati eksi çalıştırma başlangıç zamanına eşit olarak düzeltildi.
     + Otomatik ml kullanırken, bir yol otomatik Mlconfig nesnesine geçirilir ve zaten mevcut değilse otomatik olarak oluşturulur.
     + Kullanıcılar artık parametresini kullanarak tahmin görevleri için bir zaman serisi frekansı belirtebilir `freq` .
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + En iyi model açıklamaları başarısız olduğunda, geliştirilmiş konsol çıkışı.
     + "Backlist_models" giriş parametresi "blocked_models" olarak yeniden adlandırıldı.
       + "Whitelist_models" giriş parametresi "allowed_models" olarak yeniden adlandırıldı.
@@ -368,7 +349,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     +  `load_yaml()`Kullanıcıların, yapılandırma geri kalanı ile veya ayrı bir dosyada ortamları satır içinde tanımlamasını sağlamak Için ParallelRunConfig 'e destek eklendi
   + **azureml-tren-oto ml-Client**.
     + , `enable_cache` Oto Mlconfig 'in bir parçası olarak belirtme özelliği kaldırıldı
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + BERT ile çok işlemli, çok GPU dağıtılmış bir şekilde sınırlı kullanılabilirlik eklendi.
     + ADB tabanlı otomatik makine öğrenimi çalıştırmaları içinde uyumsuz paketlere yönelik hata işleme eklendi.
   + **azureml-widgets**
@@ -439,7 +420,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Uzaktan işlem hedefinde bir oto ml denemesi gerçekleştirirken azureml_automl. log ' ın oluşturulmamasına veya eksik Günlükler oluşmasına neden olan bir hatayı düzeltir.
     + İmletilmiş sınıflarla sınıflandırma veri kümeleri için, özellik Sweeper, alt örneklenen veriler için bu değeri belirlerse, ağırlık dengelemesi, sınıflandırma görevinin performansını belirli bir eşiğin arttıran, ağırlık dengelemesi uygulayacağız.
     + Parallel ml çalıştırmaları artık paralel çalıştırma adımının alt çalıştırması olarak işaretlenir.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Hizmet Kullanıcı hatası oluşturursa UserErrorException 'yı yükseltmek için, oto ml çalıştırma davranışı değiştirildi
     + Parallel ml çalıştırmaları artık paralel çalıştırma adımının alt çalıştırması olarak işaretlenir.
 
@@ -500,7 +481,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Otomatikleştirilmiş ML 'de BERT gibi derin öğrenme transformatörü modelleri için birden çok dil desteği ekleyin.
     + Kullanım dışı lag_length parametresini belgelerden kaldırın.
     + Tahmin parametreleri belgeleri geliştirildi. Lag_length parametresi kullanım dışı bırakıldı.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Prophet modeli içeren, oto ml Prophet ve Ensembled modelleriyle ilgili açıklamaları etkinleştirme.
     + Azureml-tren-oto ml-* paketlerine yönelik belgeler.
   + **azureml-train-core**
@@ -607,7 +588,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Uzaktan işlem sırasında eğitilen phrophet ve xgboost modelleriyle kısıtlamalar kaldırılıyor.
     + `azureml-train-automl-runtime` ve `azureml-automl-runtime` için,, ve için bağımlılıklar güncelleştirildi `pytorch` `scipy` `cudatoolkit` . Artık `pytorch==1.4.0` , ve ' yi destekliyoruz `scipy>=1.0.0,<=1.3.1` `cudatoolkit==10.1.243` .
     + Kullanıcılara tahmin oluşturmak için sırasında geride özellikleri ekleme izni veren işlevsellik eklenmiştir.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Oto ml 'de geliştirilmiş günlük
     + Veri hazırlığı özel durumları için ayrıntılı hata işleme eklendi
     + Uzaktan işlem sırasında eğitilen phrophet ve xgboost modelleriyle kısıtlamalar kaldırılıyor.
@@ -690,7 +671,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Belge, Cmlconfig için düzeltir.
     + Oto Mlconfig içinde cv_split_indices girişte veri türü denetimleri zorlanıyor.
     + Show_output başarısız olan oto ml çalıştırmalarının sorunu düzeltildi
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Model indirme zaman aşımını başarıyla iade durumundan çıkarılan yineleme sırasında bir hatayı düzeltme.
   + **azureml-train-core**
     + Azureml. DNN. nccl sınıfında yazım hatası 'ı düzeltir.
@@ -720,7 +701,7 @@ Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine 
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     
-| Web tabanlı araç  |     Açıklama  |
+| Web tabanlı araç  |     Description  |
 |---|---|
 | Azure ML Studio Not defterleri   |     Not defteri dosyaları için birinci sınıf yazma ve Azure ML Python SDK 'da bulunan tüm işlemleri destekleme. | 
 
@@ -792,7 +773,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Erken durdurulduğunda gerileme düzeltildi
     + Giriş verileri için geçerli bir tür olarak kullanımdan kaldırılan azureml. dprep. Dataflow.
     +  Varsayılan oto denemesi süresi altı güne kadar değiştiriliyor.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Eğitim sonrası işlemleri etrafında ek telemetri eklendi.
     + seyrek bir oto uçtan uca desteğe eklendi
   + **azureml-opendatasets**
@@ -952,7 +933,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Öğesini `AutoMLStep` öğesine taşıdı `azureml-pipeline-steps package` . İçinde kullanım `AutoMLStep` dışı `azureml-train-automl-runtime` .
   + **azureml-train-automl-client**
     + Belirli paketlerin uzak çalışmalerdeki yanlış sürümlere yüklenebildiği bir sorun düzeltildi.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Uzak çalışmadaki sıklık algılamasıyla ilgili sorun düzeltildi
     + Öğesini `AutoMLStep` öğesine taşıdı `azureml-pipeline-steps package` . İçinde kullanım `AutoMLStep` dışı `azureml-train-automl-runtime` .
   + **azureml-train-core**
@@ -992,7 +973,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + , TensorFlow 2,0 desteği için azureml-tensorboard güncelleştirildi
   + **azureml-train-automl-client**
     + Özel uygulanabilirlik yapılandırmasını filtreleyen sorunu geçersiz kılan sabit Korturizationconfig.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + , `AutoMLStep` Paketin içine taşınır `azureml-pipeline-steps` . İçinde kullanım `AutoMLStep` dışı `azureml-train-automl-runtime` .
   + **azureml-train-core**
     + PyTorch Estimator 'da PyTorch sürüm 1,4 ' i destekleme
@@ -1052,7 +1033,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Shap 0.33.0 ve yorumlayın-Community 0,4. * olarak güncelleştirildi
   + **azureml-interpret**
     + Shap 0.33.0 ve yorumlayın-Community 0,4. * olarak güncelleştirildi
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Hem ikili hem de birden çok Lass sınıflandırması için bir sınıflandırma ölçümü olarak Matthews bağıntı katsayısı eklendi.
     + Koddan ön işleme bayrağını kullanımdan kaldırma ve değişen özellikler, varsayılan olarak açık hale getirildi
 
@@ -1167,7 +1148,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
   + **azureml-train-automl-client**
     + Herhangi bir makine öğrenimi bağımlılığı yerel olarak yüklemeye gerek kalmadan, oto ml denemeleri göndermek için bir ince istemci eklenmiştir.
     + Uzak çalışmalarındaki otomatik olarak algılanan lags, pencere boyutları ve maxhayvan Horizons sabit günlüğü.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Makine öğrenimi ve çalışma zamanı bileşenlerini istemciden yalıtmak için yeni bir oto ml paketi eklendi.
   + **azureml-contrib-tren-rl**
     + SDK 'da pekiştirmeye dayalı Learning desteği eklendi.
@@ -1232,7 +1213,7 @@ Studio 'dan veri kümeleri, işlem hatları, modeller, uç noktaları ve daha fa
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
-| Web tabanlı araç | Açıklama | 
+| Web tabanlı araç | Description | 
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | 
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | 

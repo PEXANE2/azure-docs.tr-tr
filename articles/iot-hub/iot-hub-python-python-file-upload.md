@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 988077a8a14339dea51bc36fdf6405b0f2f549ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019470"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139311"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub (Python) ile cihazınızdan buluta dosya yükleme
 
@@ -36,7 +36,7 @@ Bu öğreticinin sonunda, Python konsol uygulamasını çalıştırırsınız:
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
@@ -109,7 +109,7 @@ Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturac
             return (False, ex)
     ```
 
-    Bu işlev, bir [Azure. Storage. blob. BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)başlatmak için KULLANDıĞı bir URL oluşturmak üzere kendisine geçirilen *blob_info* yapısını ayrıştırır. Daha sonra bu istemciyi kullanarak dosyanızı Azure Blob depolama alanına yükler.
+    Bu işlev, bir [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)başlatmak için KULLANDıĞı bir URL oluşturmak üzere kendisine geçirilen *blob_info* yapısını ayrıştırır. Daha sonra bu istemciyi kullanarak dosyanızı Azure Blob depolama alanına yükler.
 
 1. İstemcisini bağlamak ve dosyayı karşıya yüklemek için aşağıdaki kodu ekleyin:
 
@@ -209,6 +209,6 @@ Bu öğreticide, cihazların dosya karşıya yüklemelerini basitleştirmek içi
 
 Aşağıdaki bağlantılarla Azure Blob depolama hakkında daha fazla bilgi edinin:
 
-* [Azure Blob depolama belgeleri](https://docs.microsoft.com/azure/storage/blobs/)
+* [Azure Blob depolama belgeleri](../storage/blobs/index.yml)
 
-* [Python API belgeleri için Azure Blob depolama](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Python API belgeleri için Azure Blob depolama](/python/api/overview/azure/storage-blob-readme?view=azure-python)

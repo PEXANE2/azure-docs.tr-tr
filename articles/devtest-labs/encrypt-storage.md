@@ -3,12 +3,12 @@ title: Azure DevTest Labs laboratuvar tarafından kullanılan bir Azure Depolama
 description: Azure DevTest Labs laboratuvar tarafından kullanılan Azure depolama 'nın şifrelenmesini nasıl yapılandıracağınızı öğrenin
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87433598"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149314"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'da laboratuvar tarafından kullanılan Azure depolama alanını şifreleyin
 Azure DevTest Labs ' de oluşturulan her laboratuvar, ilişkili bir Azure depolama hesabıyla oluşturulur. Depolama hesabı aşağıdaki amaçlar için kullanılır: 
@@ -36,13 +36,13 @@ Azure DevTest Labs ' de oluşturulan her laboratuvar, ilişkili bir Azure depola
 ## <a name="encrypt-the-lab-storage-account"></a>Laboratuvar depolama hesabını şifreleyin
 Azure depolama, bulutta kalıcı olduğunda verilerinizi otomatik olarak şifreler. Azure depolama şifrelemesi verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md).
 
-Laboratuvar depolama hesabındaki veriler, **Microsoft tarafından yönetilen bir anahtarla**şifrelenir. Verilerinizin şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarlarınız ile şifrelemeyi yönetebilirsiniz. Laboratuvarın depolama hesabı için kendi anahtarlarınız ile şifrelemeyi yönetmeyi seçerseniz, blob depolamada ve Azure dosyalarında verileri şifrelemek/şifrelerini çözmek için Azure Key Vault ile **müşteri tarafından yönetilen bir anahtar** belirtebilirsiniz. Müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../storage/common/encryption-customer-managed-keys.md).
+Laboratuvar depolama hesabındaki veriler, **Microsoft tarafından yönetilen bir anahtarla**şifrelenir. Verilerinizin şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarlarınız ile şifrelemeyi yönetebilirsiniz. Laboratuvarın depolama hesabı için kendi anahtarlarınız ile şifrelemeyi yönetmeyi seçerseniz, blob depolamada ve Azure dosyalarında verileri şifrelemek/şifrelerini çözmek için Azure Key Vault ile **müşteri tarafından yönetilen bir anahtar** belirtebilirsiniz. Müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../storage/common/customer-managed-keys-overview.md).
 
 Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarların nasıl yapılandırılacağını öğrenmek için aşağıdaki makalelere bakın: 
 
-- [Azure portalındaki](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
+- [Azure portalındaki](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 
 ## <a name="manage-the-azure-blob-storage-life-cycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
@@ -101,8 +101,6 @@ Yapıtlar uygulanırken, ilgili yapıt sonuçlarının boyutu, laboratuvar VM 'l
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarların nasıl yapılandırılacağını öğrenmek için aşağıdaki makalelere bakın: 
 
-- [Azure portalındaki](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
-
-
+- [Azure portalındaki](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)

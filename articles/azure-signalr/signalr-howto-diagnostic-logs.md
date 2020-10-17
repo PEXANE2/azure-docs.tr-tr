@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85132032"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151068"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR hizmeti için kaynak günlükleri
 
@@ -20,8 +20,8 @@ Bu öğreticide, Azure SignalR hizmeti için kaynak günlüklerinin, nasıl ayar
 ## <a name="prerequisites"></a>Önkoşullar
 Kaynak günlüklerini etkinleştirmek için, günlük verilerinizi depolamak üzere bir yere ihtiyacınız vardır. Bu öğretici, Azure depolama ve Log Analytics kullanır.
 
-* [Azure depolama](../azure-monitor/platform/resource-logs-collect-storage.md) -ilke denetimi, statik analiz veya yedekleme için kaynak günlüklerini tutar.
-* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) -bir Azure kaynağı tarafından oluşturulan ham günlüklerin analizine izin veren esnek bir günlük araması ve Analiz Aracı.
+* [Azure depolama](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) -ilke denetimi, statik analiz veya yedekleme için kaynak günlüklerini tutar.
+* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) -bir Azure kaynağı tarafından oluşturulan ham günlüklerin analizine izin veren esnek bir günlük araması ve Analiz Aracı.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Azure SignalR hizmeti için kaynak günlüklerini ayarlama
 
@@ -70,7 +70,7 @@ Arşiv günlüğü JSON dizeleri aşağıdaki tablolarda listelenen öğeleri i�
 
 Ad | Açıklama
 ------- | -------
-saat | Olay saatini günlüğe kaydet
+time | Olay saatini günlüğe kaydet
 düzey | Olay düzeyini günlüğe kaydet
 resourceId | Azure SignalR hizmetinizin kaynak KIMLIĞI
 location | Azure SignalR hizmetinizin konumu
@@ -162,7 +162,7 @@ Ve arasındaki fark `ConnectionAborted` , `ConnectionEnded` `ConnectionEnded` is
 
 Durdurma nedenleri aşağıdaki tabloda listelenmiştir:
 
-Neden | Açıklama
+Neden | Description
 ------- | ------- 
 Bağlantı sayısı sınıra ulaşır | Bağlantı sayısı geçerli fiyat katmanınızın sınırına ulaşır. Hizmet birimi ölçeğini azaltmayı göz önünde bulundurun
 Uygulama sunucusu bağlantıyı kapattı | App Server abortion tetikler. Beklenen bir abortion olarak kabul edilebilir

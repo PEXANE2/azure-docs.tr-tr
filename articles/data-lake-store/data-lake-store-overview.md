@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage 1. nedir? | Microsoft Belgeleri
+title: Azure Data Lake Storage 1. Nesil nedir? | Microsoft Belgeleri
 description: Data Lake Storage 1. (daha önce Azure Data Lake Store olarak bilinirdi) ve diğer veri depoları üzerinde sağladığı değeri genel bakış
 services: data-lake-store
 author: twooley
@@ -7,14 +7,14 @@ ms.service: data-lake-store
 ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52c00359fb4e759d9517dee958e31c00feb2b33e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85508563"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149241"
 ---
-# <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. nedir?
+# <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil nedir?
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
@@ -60,7 +60,7 @@ Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory (Azure A
 
 | Özellik | Açıklama |
 | --- | --- |
-| Kimlik Doğrulaması |Data Lake Storage 1., Data Lake Storage 1. depolanan tüm veriler için kimlik ve erişim yönetimi için Azure AD ile tümleşir. Tümleştirme nedeniyle, çok faktörlü kimlik doğrulaması, koşullu erişim, rol tabanlı erişim denetimi, uygulama kullanımı izleme, güvenlik izleme ve uyarı gibi tüm Azure AD özelliklerinden faydaların Data Lake Storage 1.. Data Lake Storage 1., REST arabirimi içinde kimlik doğrulaması için OAuth 2,0 protokolünü destekler. [Data Lake Storage 1. kimlik doğrulaması](data-lakes-store-authentication-using-azure-active-directory.md)' na bakın.|
+| Kimlik Doğrulaması |Data Lake Storage 1., Data Lake Storage 1. depolanan tüm veriler için kimlik ve erişim yönetimi için Azure AD ile tümleşir. Tümleştirme nedeniyle, çok faktörlü kimlik doğrulaması, koşullu erişim, Azure rol tabanlı erişim denetimi, uygulama kullanımı izleme, güvenlik izleme ve uyarı gibi tüm Azure AD özelliklerinden faydaların Data Lake Storage 1.. Data Lake Storage 1., REST arabirimi içinde kimlik doğrulaması için OAuth 2,0 protokolünü destekler. [Data Lake Storage 1. kimlik doğrulaması](data-lakes-store-authentication-using-azure-active-directory.md)' na bakın.|
 | Erişim denetimi |Data Lake Storage 1., Webdapterprotocol tarafından sunulan POSIX stili izinleri destekleyerek erişim denetimi sağlar. ACL 'Leri kök klasörde, alt klasörlerde ve tek tek dosyalarda etkinleştirebilirsiniz. ACL 'Lerin Data Lake Storage 1. bağlamında nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Data Lake Storage 1. Access Control](data-lake-store-access-control.md). |
 | Şifreleme |Data Lake Storage 1., hesapta depolanan veriler için de şifreleme sağlar. Data Lake Storage 1. bir hesap oluştururken şifreleme ayarlarını belirtirsiniz. Verilerinizin şifrelenmesini veya şifrelemeyi kabul etmesinin tercih edilebilir. Daha fazla bilgi için bkz. [Data Lake Storage 1. şifreleme](data-lake-store-encryption.md). Şifrelemeyle ilgili yapılandırma sağlama hakkında yönergeler için, bkz. [Azure Portal kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md). |
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98d94e9544e75f762d4532101a92d14106d6a575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b56824e386709bd330339f1f6acfd2812e040de
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931803"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150930"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: kamera resimlerde Azure hizmet logolarını tanıma
 
@@ -104,7 +104,7 @@ Sonra *Source\visualprovision\appsettings.cs* dosyasını açın ve `ComputerVis
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Uygulamanın Azure aboneliğinize hizmet dağıtması için bir Azure hizmet sorumlusu hesabının olması gerekir. Hizmet sorumlusu, rol tabanlı erişim denetimi kullanarak bir uygulamaya belirli izinler atamanıza olanak tanır. Daha fazla bilgi edinmek için bkz. [hizmet sorumluları Kılavuzu](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
+Uygulamanın Azure aboneliğinize hizmet dağıtması için bir Azure hizmet sorumlusu hesabının olması gerekir. Hizmet sorumlusu, Azure rol tabanlı erişim denetimi kullanarak bir uygulamaya belirli izinler atamanıza olanak tanır. Daha fazla bilgi edinmek için bkz. [hizmet sorumluları Kılavuzu](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
 
 Burada gösterildiği gibi Azure Cloud Shell veya Azure CLı kullanarak bir hizmet sorumlusu oluşturabilirsiniz. Başlamak için oturum açın ve kullanmak istediğiniz aboneliği seçin.
 

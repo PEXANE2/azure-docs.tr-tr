@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 10/02/2020
-ms.openlocfilehash: d63cec0e0697a15efe7f15be5f6f0daaa6d6a372
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: ac528d1cfb74221a7398e390cedda08df4ea4508
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761531"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151409"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
@@ -54,7 +54,7 @@ Bu, Kullanıcı Azure portal aracılığıyla veri kümesi eklerken ve Kullanıc
 
 Alternatif olarak, Kullanıcı Azure veri deposunun sahibine sahip olabilir. veri paylaşımının kaynak yönetilen kimliğini Azure veri deposuna el ile ekleyin. Bu eylemin veri paylaşma kaynağı başına yalnızca bir kez gerçekleştirilmesi gerekir.
 
-Veri paylaşımının yönetilen kimliği için bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
+Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluşturmak için aşağıdaki adımları izleyin.  
 
 1. Azure veri deposuna gidin.
 1. **Access Control (IAM)** seçeneğini belirleyin.
@@ -63,7 +63,9 @@ Veri paylaşımının yönetilen kimliği için bir rol ataması oluşturmak iç
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
 1. *Kaydet*’e tıklayın.
 
-SQL tabanlı kaynaklarda, yukarıdaki adımlara ek olarak SQL veritabanı 'nda Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıya *db_datareader* izni verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [verilerinizi paylaşma](share-your-data.md) öğreticisinde bulunabilir. 
+Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri paylaşıyorsanız, [REST API kullanarak Azure rol atamaları ekleme veya kaldırma ' ya](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
+
+SQL tabanlı kaynaklar için SQL kullanıcısının SQL veritabanı 'nda Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader* izni verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
 
 ### <a name="data-consumer"></a>Veri tüketicisi
 Veri almak için, tüketici veri paylaşımının kaynağına ait yönetilen kimliğin hedef Azure veri deposuna erişim verilmesi gerekir. Örneğin, depolama hesabı durumunda, veri paylaşımının kaynak tarafından yönetilen kimliği, Depolama Blobu veri katılımcısı rolüne sahiptir. 
@@ -72,7 +74,7 @@ Kullanıcı Azure portal aracılığıyla bir hedef veri deposu belirtiyorsa ve 
 
 Alternatif olarak, Kullanıcı Azure veri deposunun sahibine sahip olabilir. veri paylaşımının kaynak yönetilen kimliğini Azure veri deposuna el ile ekleyin. Bu eylemin veri paylaşma kaynağı başına yalnızca bir kez gerçekleştirilmesi gerekir.
 
-Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
+Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluşturmak için aşağıdaki adımları izleyin. 
 
 1. Azure veri deposuna gidin.
 1. **Access Control (IAM)** seçeneğini belirleyin.
@@ -81,11 +83,9 @@ Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluştur
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
 1. *Kaydet*’e tıklayın.
 
-SQL tabanlı hedefte, yukarıdaki adımlara ek olarak SQL veritabanı 'nda Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izin verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşulların yanı sıra örnek bir betik de [kabul et ve Al](subscribe-to-data-share.md) öğreticisinde bulunabilir. 
+Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri alıyorsanız, [REST API kullanarak Azure rol atamaları Ekle veya Kaldır](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)' a başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
 
-REST API 'Leri kullanarak verileri paylaşıyorsanız, bu rol atamalarını el ile oluşturmanız gerekir. 
-
-Rol ataması ekleme hakkında daha fazla bilgi edinmek için [Bu belgeye](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)bakın. 
+SQL tabanlı hedef için, SQL veritabanı Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip SQL veritabanı 'nda bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izin verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
 
 ## <a name="resource-provider-registration"></a>Kaynak sağlayıcısı kaydı 
 
@@ -102,6 +102,8 @@ Microsoft. DataShare kaynak sağlayıcısını Azure aboneliğinize kaydetmek i�
 1. **Kaynak sağlayıcıları**' na tıklayın.
 1. Microsoft. DataShare için arama yapın.
 1. **Kaydet**’e tıklayın.
+ 
+Kaynak sağlayıcısı hakkında daha fazla bilgi edinmek için [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

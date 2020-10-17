@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ef8b3865b0914c0d06ff69d20396f1ff368642bc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102736"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150418"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Özel bir uç nokta üzerinden Dizin Oluşturucu bağlantıları (Azure Bilişsel Arama)
 
@@ -33,7 +33,7 @@ Azure Bilişsel Arama, yönetim REST API aracılığıyla Azure Bilişsel Arama 
 
 Bazı kaynaklara yönelik özel uç nokta bağlantıları `2020-08-01-Preview` , yalnızca aşağıdaki tablodaki "Önizleme" etiketiyle belirtilen arama YÖNETIMI API 'sinin (veya üzeri) önizleme sürümü ile oluşturulabilir. Önizleme veya genel kullanıma sunulan API sürümü (veya üzeri) kullanılarak "Önizleme" etiketi olmayan kaynaklar oluşturulabilir `2020-08-01` .
 
-Azure Bilişsel Arama giden özel uç noktaların oluşturulabilmesi için Azure kaynaklarının listesi aşağıda verilmiştir. `groupId` Aşağıdaki tabloda listelenen bir paylaşılan özel bağlantı kaynağı oluşturmak için API 'de tam olarak (büyük/küçük harfe duyarlı) kullanılması gerekir.
+Azure Bilişsel Arama giden özel uç noktaların oluşturulabilmesi için Azure kaynaklarının listesi aşağıda verilmiştir. `groupId`Aşağıdaki tabloda listelenen değerlerin, bir paylaşılan özel bağlantı kaynağı oluşturmak IÇIN API 'de tam olarak yazılmış (büyük/küçük harfe duyarlı) olarak kullanılması gerekir.
 
 | Azure Kaynağı | Grup Kimliği |
 | --- | --- |
@@ -47,7 +47,7 @@ Azure Bilişsel Arama giden özel uç noktaların oluşturulabilmesi için Azure
 
 Giden özel uç nokta bağlantılarının desteklendiği Azure kaynakları listesi, [desteklenen API listesi](/rest/api/searchmanagement/privatelinkresources/listsupported)kullanılarak da sorgulanabilir.
 
-Bu makalede, REST API çağrılarını göstermek için [Armclient](https://github.com/projectkudu/ARMClient) ve [Postman](https://www.postman.com/) karışımı kullanılır.
+Bu makalenin geri kalanında, REST API çağrılarını göstermek için [Armclient](https://github.com/projectkudu/ARMClient) ve [Postman](https://www.postman.com/) karışımı kullanılır.
 
 > [!NOTE]
 > Bu makalede, arama hizmeti adının, abonelik KIMLIĞI __00000000-0000-0000-0000-000000000000__olan bir aboneliğin __contoso__ kaynak grubunda var olan __contoso-arama__ olduğunu varsayalım. Bu arama hizmetinin kaynak KIMLIĞI `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`

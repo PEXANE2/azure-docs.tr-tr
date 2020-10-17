@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68736283"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151452"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Veri Kataloğu terminolojisi
 
@@ -39,7 +39,7 @@ Yapısal meta veriler, bir veri varlığının yapısını açıklayan bir veri 
 
 ## <a name="descriptive-metadata"></a>Açıklayıcı meta veriler
 
-Açıklayıcı meta veriler, bir veri varlığının amacını veya amacını tanımlayan meta verileridir. Genellikle, Azure Veri Kataloğu Portalı kullanılarak Katalog kullanıcıları tarafından açıklayıcı meta veriler eklenir, ancak kayıt sırasında veri kaynağından da ayıklanamaz. Örneğin, Azure Veri Kataloğu kayıt aracı, SQL Server Analysis Services ve SQL Server Reporting Services içindeki Description özelliğinden ve bu özellikler değerlerle doldurulduğu takdirde SQL Server veritabanlarındaki [MS_Description genişletilmiş özelliğinden](https://technet.microsoft.com/library/ms190243.aspx) açıklamaları ayıklar.
+Açıklayıcı meta veriler, bir veri varlığının amacını veya amacını tanımlayan meta verileridir. Genellikle, Azure Veri Kataloğu Portalı kullanılarak Katalog kullanıcıları tarafından açıklayıcı meta veriler eklenir, ancak kayıt sırasında veri kaynağından da ayıklanamaz. Örneğin, Azure Veri Kataloğu kayıt aracı, SQL Server Analysis Services ve SQL Server Reporting Services içindeki Description özelliğinden ve bu özellikler değerlerle doldurulduğu takdirde SQL Server veritabanlarındaki [MS_Description genişletilmiş özelliğinden](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)) açıklamaları ayıklar.
 
 ## <a name="request-access"></a>Erişim izni isteme
 
@@ -86,4 +86,4 @@ Kayıt, veri varlığı meta verilerini bir veri kaynağından ayıklayarak Azur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hızlı başlangıç: Azure Veri Kataloğu oluşturma](data-catalog-get-started.md) 
+[Hızlı başlangıç: Azure Veri Kataloğu oluşturma](data-catalog-get-started.md)
