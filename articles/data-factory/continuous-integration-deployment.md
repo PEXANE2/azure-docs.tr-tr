@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1836e6fc1c29e74bceba62bbeb40ce9cc5831895
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616916"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147440"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -305,7 +305,7 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
 ```
 Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bölündüğü hakkında bir açıklama aşağıda verilmiştir.
 
-#### <a name="pipelines"></a>İşlem hatları
+#### <a name="pipelines"></a>Pipelines
     
 * Yoldaki herhangi bir özellik `activities/typeProperties/waitTimeInSeconds` parametrelenir. Bir işlem hattındaki (örneğin, etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, `waitTimeInSeconds` `Wait` varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
 * Benzer şekilde, adlı bir özellik `headers` (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.
@@ -656,7 +656,7 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
     - Data Factory varlıkları birbirlerine bağlıdır. Örneğin, tetikler, işlem hatlarına ve işlem hatları, veri kümelerine ve diğer işlem hattına bağlıdır. Bir kaynak alt kümesinin seçmeli olarak yayımlanması beklenmeyen davranışlara ve hatalara neden olabilir.
     - Seçmeli yayımlamaya ihtiyacınız olduğunda nadir olarak bir düzeltme kullanmayı düşünün. Daha fazla bilgi için bkz. [Düzeltme üretim ortamı](#hotfix-production-environment).
 
-- Azure Data Factory ekibi, bir veri fabrikasında bireysel varlıklara (ardışık düzen, veri kümeleri vb.) RBAC denetimleri atamayı önermez. Örneğin, bir geliştiricinin bir işlem hattına veya veri kümesine erişimi varsa, veri fabrikasındaki tüm işlem hatlarına veya veri kümelerine erişebilmeleri gerekir. Bir veri fabrikası içinde birçok RBAC rolü uygulamanız gerektiğini düşünüyorsanız, ikinci bir veri fabrikası dağıtmaya bakın.
+- Azure Data Factory ekibi, bir veri fabrikasında tek tek varlıklara (ardışık düzen, veri kümeleri vb.) Azure RBAC denetimleri atamayı önermez. Örneğin, bir geliştiricinin bir işlem hattına veya veri kümesine erişimi varsa, veri fabrikasındaki tüm işlem hatlarına veya veri kümelerine erişebilmeleri gerekir. Bir veri fabrikası içinde birçok Azure rolü uygulamanız gerektiğini düşünüyorsanız, ikinci bir veri fabrikası dağıtmaya bakın.
 
 -   Özel dallardan yayımlayamazsınız.
 
@@ -675,7 +675,7 @@ Dağıtım sonrası betiği çalıştırırken, **betik bağımsız değişkenle
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
-![Azure PowerShell görev](media/continuous-integration-deployment/continuous-integration-image11.png)
+![Azure PowerShell görevi](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 Dağıtım öncesi ve sonrası için kullanılabilecek komut dosyası aşağıda verilmiştir. Silinen kaynaklar ve kaynak başvuruları için BT hesapları.
 

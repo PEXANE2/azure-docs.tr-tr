@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397309"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151960"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Veri Kataloğu hakkında sık sorulan sorular
 Bu makale, Azure Veri Kataloğu hizmetiyle ilgili sık sorulan soruların yanıtlarını sağlar.
@@ -87,7 +87,7 @@ Belirli özellikler veri kaynağından veri kaynağına farklılık gösterir, a
 >
 
 > [!NOTE]
-> Birinci sınıf **Açıklama** özelliğine sahip SQL Server Analysis Services gibi veri kaynakları Için, Veri Kataloğu veri kaynağı kayıt aracı bu özellik değerini ayıklar. Birinci sınıf **Açıklama** özelliği olmayan *Şirket içi* SQL Server Ilişkisel veritabanları için, Veri Kataloğu veri kaynağı kayıt aracı, değeri nesneler ve sütunlar için **MS_Description** genişletilmiş özelliğinden ayıklar. Bu özellik SQL Azure için desteklenmiyor. Daha fazla bilgi için bkz. [veritabanı nesnelerinde genişletilmiş özellikleri kullanma](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Birinci sınıf **Açıklama** özelliğine sahip SQL Server Analysis Services gibi veri kaynakları Için, Veri Kataloğu veri kaynağı kayıt aracı bu özellik değerini ayıklar. Birinci sınıf **Açıklama** özelliği olmayan *Şirket içi* SQL Server Ilişkisel veritabanları için, Veri Kataloğu veri kaynağı kayıt aracı, değeri nesneler ve sütunlar için **MS_Description** genişletilmiş özelliğinden ayıklar. Bu özellik SQL Azure için desteklenmiyor. Daha fazla bilgi için bkz. [veritabanı nesnelerinde genişletilmiş özellikleri kullanma](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)).
 >
 >
 
@@ -122,7 +122,7 @@ Veri Kataloğu, karma veri kaynağı bulma çözümü sunmak için hem bulut hem
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>Kaydoldum veri kaynaklarından daha fazla veya daha zengin meta veri ayıklayabilir miyim?
 Veri Kataloğu 'nun yeteneklerini genişletmek için etkin bir şekilde çalışıyoruz. Kayıt sırasında veri kaynağından ayıklanan ek meta verilere sahip olmak istiyorsanız, [Azure geri bildirim forumlarındaki veri kataloğunda](https://feedback.azure.com/forums/906052-data-catalog)bu işlemi önerin (veya zaten önerildiyse). 
 
-Bu meta verilerin veri kaynağı kayıt aracı tarafından ayıklanmayan veri kaynakları için sütun/şema meta verilerini, önizlemeleri veya veri profillerini eklemek isterseniz, bu meta verileri eklemek için veri kataloğu API 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure veri kataloğu REST API](https://docs.microsoft.com/rest/api/datacatalog/).
+Bu meta verilerin veri kaynağı kayıt aracı tarafından ayıklanmayan veri kaynakları için sütun/şema meta verilerini, önizlemeleri veya veri profillerini eklemek isterseniz, bu meta verileri eklemek için veri kataloğu API 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure veri kataloğu REST API](/rest/api/datacatalog/).
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Yalnızca belirli kişilerin bulabilmesi için kayıtlı veri varlıklarının görünürlüğünü kısıtlamak Nasıl yaparım? misiniz?
 Veri kataloğunda veri varlıkları ' nı seçin ve ardından **Sahipliği Al** düğmesine tıklayın. Veri kataloğunda veri varlıklarının sahipleri, tüm kullanıcıların sahip olan varlıkları bulmasına izin vermek veya görünürlüğü belirli kullanıcılarla kısıtlayabilmesi için görünürlük ayarlarını değiştirebilir. Daha fazla bilgi için bkz. [Azure Veri Kataloğu 'nda veri varlıklarını yönetme](data-catalog-how-to-manage.md).

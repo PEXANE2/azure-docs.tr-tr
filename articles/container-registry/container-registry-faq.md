@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570519"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148520"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -37,7 +37,7 @@ Evet. Kayıt defteri oluşturmak için kullanabileceğiniz [bir şablon](https:/
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 'deki görüntüleri taramak için güvenlik güvenlik açığı var mı?
 
-Evet. [Azure Güvenlik Merkezi](../security-center/azure-container-registry-integration.md), [twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) ve [deniz mavisi](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)belgelerine bakın.
+Evet. [Azure Güvenlik Merkezi](../security-center/defender-for-container-registries-introduction.md), [twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) ve [deniz mavisi](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)belgelerine bakın.
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Kubernetes Azure Container Registry yapılandırma Nasıl yaparım??
 
@@ -259,7 +259,7 @@ Görüntü karantina Şu anda ACR 'nin önizleme özelliğidir. Yalnızca güven
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Anonim çekme erişimini etkinleştirmek Nasıl yaparım? istiyor musunuz?
 
-Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Kayıt defterinizde herhangi bir [kapsam eşlemeniz (Kullanıcı) veya belirteç kaynağınız](https://aka.ms/acr/repo-permissions) varsa, lütfen bir destek bileti oluşturmadan önce bunları silin (sistem kapsamı eşlemeleri yoksayılabilir). Genel erişimi etkinleştirmek için lütfen adresinde bir destek bileti açın https://aka.ms/acr/support/create-ticket . Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Kayıt defterinizde herhangi bir [kapsam eşlemeniz (Kullanıcı) veya belirteç kaynağınız](./container-registry-repository-scoped-permissions.md) varsa, lütfen bir destek bileti oluşturmadan önce bunları silin (sistem kapsamı eşlemeleri yoksayılabilir). Genel erişimi etkinleştirmek için lütfen adresinde bir destek bileti açın https://aka.ms/acr/support/create-ticket . Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
 
 > [!NOTE]
 > Yalnızca bilinen bir görüntüyü çekmek için gereken API 'Ler anonim olarak erişilebilir. Etiket listesi veya depo listesi gibi işlemler için başka API 'Ler anonim olarak erişilebilir değildir.
@@ -321,7 +321,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örneğin:
+1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örnek:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -443,7 +443,7 @@ Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantın
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Neden çekme veya gönderim isteği izin verilmeyen işlemle başarısız oluyor?
 
 İşlemlere izin verilmeyen bazı senaryolar aşağıda verilmiştir:
-* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](/cli/azure/acr#az-acr-update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](https://aka.ms/acr/skus) yükseltin.
+* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](/cli/azure/acr#az-acr-update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](./container-registry-skus.md) yükseltin.
 * Resim veya depo silinemeyebilir veya güncelleştirilemeyebilir. Geçerli öznitelikleri görüntülemek için [az ACR Show Repository](./container-registry-image-lock.md) komutunu kullanabilirsiniz.
 * Görüntü karantinaya alındı ise bazı işlemlere izin verilmez. [Karantina](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)hakkında daha fazla bilgi edinin.
 * Kayıt defteriniz [depolama sınırına](container-registry-skus.md#service-tier-features-and-limits)ulaşmış olabilir.
@@ -456,7 +456,7 @@ Tüm depo adlandırma kuralları için bkz. [kapsayıcı girişim dağıtım bel
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -508,10 +508,10 @@ Bu ayar komut için de geçerlidir `az acr run` .
 
 | Git hizmeti | Kaynak bağlamı | El ile derleme | Tamamlama tetikleyicisi aracılığıyla otomatik derleme |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Evet |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Evet | Evet |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Hayır |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Evet | Hayır |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Yes |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Hayır |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Hayır |
 
 ## <a name="run-error-message-troubleshooting"></a>Çalıştırma hata Iletisi sorun giderme
 

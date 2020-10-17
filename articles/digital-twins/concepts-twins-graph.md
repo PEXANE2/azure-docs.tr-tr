@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87062053"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145942"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -47,33 +47,9 @@ Aşağıda, *Oda*türünde bir ikizi örneği oluşturmak Için [Digitaltwins AP
 
 Azure Digital TWINS 'in geçerli önizlemede, ikizi oluşturulmadan önce bir ikizi öğesinin tüm özellikleri başlatılmalıdır. Bu, gerekli başlatma değerlerini sağlayan bir JSON belgesi oluşturularak yapılır.
 
-```csharp
-public Task<boolean> CreateRoom(string id, double temperature, double humidity) 
-{
-    // Define the model for the twin to be created
-    Dictionary<string, object> meta = new Dictionary<string, object>()
-    {
-      { "$model", "dtmi:com:contoso:Room;2" }
-    };
-    // Initialize the twin properties
-    Dictionary<string, object> initData = new Dictionary<string, object>()
-    {
-      { "$metadata", meta },
-      { "Temperature", temperature},
-      { "Humidity", humidity},
-    };
-    try
-    {
-      await client.DigitalTwins.AddAsync(id, initData);
-      return true;
-    }
-    catch (ErrorResponseException e)
-    {
-      Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}");
-      return false;
-    }
-}
-```
+[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+
+Bir `BasicDigitalTwin` "ikizi" nesnesindeki Özellik alanlarını doğrudan bir sözlük kullanımına alternatif olarak depolamak için adlı bir yardımcı sınıfı da kullanabilirsiniz. Yardımcı sınıfı ve kullanım örnekleri hakkında daha fazla bilgi için *nasıl yapılır: dijital TWINS yönetme*konusunun [*dijital ikizi oluşturma*](how-to-manage-twin.md#create-a-digital-twin) bölümüne bakın.
 
 ### <a name="create-relationships"></a>İlişki oluştur
 
@@ -105,7 +81,7 @@ Dijital ikizi verileri ve ilişki verileri her ikisi de JSON biçiminde depolan�
 
 JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanları görüntüler:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | `$dtId` | Dijital ikizi KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış dize |
 | `$etag` | Web sunucusu tarafından atanan standart HTTP alanı |
@@ -172,7 +148,7 @@ JSON nesnesi olarak biçimlendirilen bir dijital ikizi örneği aşağıda veril
 
 Bir JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi bir ilişki aşağıdaki alanları görüntüler:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | `$relationshipId` | Bu ilişkinin KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış bir dize. Bu dize, kaynak dijital ikizi bağlamında benzersizdir, bu da `sourceId`  +  `relationshipId` Azure dijital TWINS örneği bağlamında benzersiz anlamına gelir. |
 | `$etag` | Web sunucusu tarafından atanan standart HTTP alanı |

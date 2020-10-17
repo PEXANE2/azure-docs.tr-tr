@@ -7,6 +7,7 @@
 - name: Hızlı Başlangıçlar
   items:
     - name: ARM şablonu
+      displayName: Resource Manager
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md

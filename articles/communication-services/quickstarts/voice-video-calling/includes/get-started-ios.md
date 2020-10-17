@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 48a3972d7b7db3f0c68866f23d6deca0bbce2e35
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377091"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92157990"
 ---
 Bu hızlı başlangıçta, iOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
@@ -197,7 +197,7 @@ func endCall()
 Metin alanına bir kullanıcı KIMLIĞI sağlayarak ve **çağrıya başla** düğmesine dokunarak gıden bir VoIP çağrısı yapabilirsiniz. Çağırmak `8:echo123` sizi bir Echo bot ile bağlar, bu, başlamak ve ses cihazlarınızın çalıştığını doğrulamak için harika bir yoldur. 
 
 > [!NOTE]
-> İlk kez bir çağrı yaptığınızda sistem mikrofona erişim ister. Bir üretim uygulamasında API 'yi kullanarak `AVAudioSession` [izin durumunu denetleyin](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) ve izin verilmediği zaman uygulamanızın davranışını dikkatlice güncelleştirebilirsiniz.
+> İlk kez bir çağrı yaptığınızda sistem mikrofona erişim ister. Bir üretim uygulamasında izin `AVAudioSession` [durumunu denetlemek](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) ve izin verilmediği zaman uygulamanızın davranışını dikkatlice güncelleştirmek için API 'yi kullanmanız gerekir.
 
 ## <a name="sample-code"></a>Örnek Kod
 

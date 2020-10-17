@@ -6,12 +6,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dd0c08fa968f9d029f1b89be1183ab374f1b5348
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932405"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143637"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
 
@@ -97,7 +97,7 @@ Düzenleme moduna geçtikten sonra, çalışma kitabınızın her bir yönüyle 
 
 ![Temel kusto sorgusunun ekran görüntüsü](./media/workbooks-overview/kusto.png)
 
-Sağ taraftaki diğer **düzenleme** düğmelerine tıkladığınızda, markaşağı tabanlı [metin kutuları](workbooks-visualizations.md#text), [parametre seçimi](workbooks-parameters.md) Kullanıcı arabirimi öğeleri ve diğer [grafik/görselleştirme türleri](workbooks-visualizations.md)gibi çalışma kitaplarını oluşturan çekirdek bileşenlerin sayısı görüntülenir. 
+Sağ taraftaki diğer **düzenleme** düğmelerine tıkladığınızda, markaşağı tabanlı [metin kutuları](workbooks-text-visualizations.md), [parametre seçimi](workbooks-parameters.md) Kullanıcı arabirimi öğeleri ve diğer [grafik/görselleştirme türleri](#visualizations)gibi çalışma kitaplarını oluşturan çekirdek bileşenlerin sayısı görüntülenir. 
 
 Önceden oluşturulmuş şablonları düzenleme modunda inceleyerek, bunları gereksinimlerinize uyacak şekilde değiştirerek ve kendi özel çalışma kitabınızı kaydederek Azure Izleyici çalışma kitaplarında mümkün olan şeyler hakkında bilgi edinmek için harika bir yoldur.
 
@@ -129,5 +129,5 @@ Kendi çalışma kitabı şablonlarınızı oluşturmaya başladıktan sonra, bu
 
 ## <a name="next-step"></a>Sonraki adım
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
+* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](#visualizations) .
 * Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.

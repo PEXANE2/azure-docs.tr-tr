@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6daed4f5f1871d76da707edec00010cd27dfa8db
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087873"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142324"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLı kullanarak IoT Hub 'ı oluşturma
 
@@ -20,7 +20,7 @@ ms.locfileid: "90087873"
 
 Bu makalede, Azure CLı kullanarak IoT Hub 'ı oluşturma konusu gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır? için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -30,7 +30,7 @@ Bu nasıl yapılır? için bir Azure aboneliğine ihtiyacınız vardır. Azure a
 
 Cloud Shell kullanmak yerine Azure CLı 'yi yerel olarak çalıştırıyorsanız Azure hesabınızda oturum açmanız gerekir.
 
-Komut isteminde [oturum açma komutunu](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) çalıştırın:
+Komut isteminde [oturum açma komutunu](/cli/azure/get-started-with-azure-cli) çalıştırın:
 
    ```azurecli
    az login
@@ -42,7 +42,7 @@ Kodu kullanarak kimlik doğrulaması gerçekleştirmek için yönergeleri uygula
 
 Azure CLı kullanarak bir kaynak grubu oluşturun ve ardından bir IoT Hub 'ı ekleyin.
 
-1. Bir IoT Hub 'ı oluşturduğunuzda bir kaynak grubunda oluşturmanız gerekir. Mevcut bir kaynak grubunu kullanın veya [kaynak grubu oluşturmak için aşağıdaki komutu](https://docs.microsoft.com/cli/azure/resource) çalıştırabilirsiniz:
+1. Bir IoT Hub 'ı oluşturduğunuzda bir kaynak grubunda oluşturmanız gerekir. Mevcut bir kaynak grubunu kullanın veya [kaynak grubu oluşturmak için aşağıdaki komutu](/cli/azure/resource) çalıştırabilirsiniz:
     
    ```azurecli-interactive
    az group create --name {your resource group name} --location westus
@@ -56,7 +56,7 @@ Azure CLı kullanarak bir kaynak grubu oluşturun ve ardından bir IoT Hub 'ı e
    > ```
    >
 
-2. IoT Hub 'ınız için genel olarak benzersiz bir ad kullanarak kaynak grubunuzda [bir IoT Hub 'ı oluşturmak için aşağıdaki komutu](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) çalıştırın:
+2. IoT Hub 'ınız için genel olarak benzersiz bir ad kullanarak kaynak grubunuzda [bir IoT Hub 'ı oluşturmak için aşağıdaki komutu](/cli/azure/iot/hub#az-iot-hub-create) çalıştırın:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
@@ -70,16 +70,16 @@ Azure CLı kullanarak bir kaynak grubu oluşturun ve ardından bir IoT Hub 'ı e
 
 ## <a name="remove-an-iot-hub"></a>IoT Hub kaldırma
 
-Azure CLı kullanarak IoT Hub gibi [tek bir kaynağı silebilir](https://docs.microsoft.com/cli/azure/resource)veya bir kaynak grubunu ve tüm IoT Hub 'ları dahil tüm kaynaklarını silebilirsiniz.
+Azure CLı kullanarak IoT Hub gibi [tek bir kaynağı silebilir](/cli/azure/resource)veya bir kaynak grubunu ve tüm IoT Hub 'ları dahil tüm kaynaklarını silebilirsiniz.
 
-[Bir IoT Hub 'ını silmek](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete)için şu komutu çalıştırın:
+[Bir IoT Hub 'ını silmek](/cli/azure/iot/hub#az-iot-hub-delete)için şu komutu çalıştırın:
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-[Bir kaynak grubunu](https://docs.microsoft.com/cli/azure/group#az-group-delete) ve tüm kaynaklarını silmek için aşağıdaki komutu çalıştırın:
+[Bir kaynak grubunu](/cli/azure/group#az-group-delete) ve tüm kaynaklarını silmek için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az group delete --name {your resource group name}

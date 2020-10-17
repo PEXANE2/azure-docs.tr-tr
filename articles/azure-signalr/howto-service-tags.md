@@ -8,16 +8,16 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 8810309fef5dbbb35465a2af15d42fa8a59d5401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa97c2cb062f30b1260ec7f80f85a3caccf932f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84300179"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152319"
 ---
 # <a name="use-service-tags-for-azure-signalr-service"></a>Azure SignalR hizmeti için hizmet etiketleri kullanma
 
-[Ağ güvenlik grubunu](../virtual-network/security-overview.md#network-security-groups)yapılandırırken Azure SignalR hizmeti Için [hizmet etiketleri](../virtual-network/security-overview.md#service-tags) kullanabilirsiniz. Azure SignalR hizmeti uç noktalarına giden ağ güvenliği kuralını, sabit kod IP adreslerine sahip olmadan tanımlamanızı sağlar.
+[Ağ güvenlik grubunu](../virtual-network/network-security-groups-overview.md#network-security-groups)yapılandırırken Azure SignalR hizmeti Için [hizmet etiketleri](../virtual-network/network-security-groups-overview.md#service-tags) kullanabilirsiniz. Azure SignalR hizmeti uç noktalarına giden ağ güvenliği kuralını, sabit kod IP adreslerine sahip olmadan tanımlamanızı sağlar.
 
 Azure SignalR hizmeti bu hizmet etiketlerini yönetir. Kendi hizmet etiketinizi oluşturamaz veya var olan bir tane değiştiremezsiniz. Microsoft, hizmet etiketiyle eşleşen bu adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
@@ -46,4 +46,4 @@ Yeni bir giden ağ güvenlik kuralı ekleyerek Azure SignalR hizmetine giden tra
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ağ güvenlik grupları: hizmet etiketleri](../virtual-network/security-overview.md#security-rules)
+- [Ağ güvenlik grupları: hizmet etiketleri](../virtual-network/network-security-groups-overview.md#security-rules)
