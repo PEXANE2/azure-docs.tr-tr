@@ -11,12 +11,12 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0d3afc8d24b95f170bd22b3dc2cf29e7f97e77c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5147d6d7f1bd1fcd43835f6a66196c7642ad4ff
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839563"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151946"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 'i Azure 'a bağlama IoT Hub
 
@@ -33,7 +33,7 @@ Microsoft Azure hizmetlerinden faydalanan Nesnelerin İnterneti (IoT) çözümle
 
 Henüz bir DevKit yok mu? [Devkit simülatörünü](https://azure-samples.github.io/iot-devkit-web-simulator/) deneyin veya [bir devkit satın alın](https://aka.ms/iot-devkit-purchase).
 
-[Kod örnekleri galerisindeki](https://docs.microsoft.com/samples/browse/?term=mxchip)tüm devkit öğreticileri için kaynak kodu bulabilirsiniz.
+[Kod örnekleri galerisindeki](/samples/browse/?term=mxchip)tüm devkit öğreticileri için kaynak kodu bulabilirsiniz.
 
 ## <a name="what-you-need"></a>Gerekenler
 
@@ -66,7 +66,7 @@ DevKit 'i bilgisayarınıza bağlamak için şu adımları izleyin:
 
 Hızlı başlangıç, telemetrinin IoT Hub göndermek için önceden derlenmiş DevKit bellenimini kullanır. Çalıştırmadan önce bir IoT Hub oluşturun ve bir cihazı hub 'a kaydedersiniz.
 
-### <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+### <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -267,7 +267,7 @@ Azure portal Azure IoT Hub ve cihaz sağlamak yerine, bunu geliştirme ortamınd
 
     ![Alt seçme](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-subscription.png)
 
-1. Ardından yeni bir [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology)seçin veya oluşturun.
+1. Ardından yeni bir [kaynak grubu](../azure-resource-manager/management/overview.md#terminology)seçin veya oluşturun.
 
     ![Kaynak grubunu seçme](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-resource-group.png)
 

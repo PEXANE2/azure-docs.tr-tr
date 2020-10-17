@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87552909"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145418"
 ---
 # <a name="conditional-access-users-and-groups"></a>Koşullu erişim: kullanıcılar ve gruplar
 
-Koşullu erişim ilkesi, karar işlemindeki sinyallerden biri olarak bir kullanıcı ataması içermelidir. Kullanıcılar koşullu erişim ilkelerine dahil edilebilir veya dışlanıyor olabilir. 
+Koşullu erişim ilkesi, karar işlemindeki sinyallerden biri olarak bir kullanıcı ataması içermelidir. Kullanıcılar koşullu erişim ilkelerine dahil edilebilir veya dışlanıyor olabilir. Azure Active Directory tüm ilkeleri değerlendirir ve kullanıcıya erişim vermeden önce tüm gereksinimlerin karşılanmasını sağlar.
 
 ![Koşullu erişim tarafından yapılan kararlara sinyal olarak Kullanıcı](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
@@ -30,7 +30,7 @@ Bu kullanıcı listesi genellikle bir kuruluşun koşullu erişim ilkesinde hede
 
 Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler bulunabilir.
 
-- Yok
+- Hiçbiri
    - Hiçbir Kullanıcı seçilmedi
 - Tüm kullanıcılar
    - B2B konukları dahil dizinde bulunan tüm kullanıcılar.
@@ -73,6 +73,8 @@ Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler dışarıda tutul
 Varsayılan olarak, ilke geçerli kullanıcıyı ilkeden hariç tutmak için bir seçenek sağlar, ancak bu varsayılan, aşağıdaki görüntüde gösterildiği gibi yönetici tarafından geçersiz kılınabilir. 
 
 ![Uyarı, kendinizi kilitlemeyin!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+
+[Azure portal kilitlediyseniz ne yapmanız gerekir?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

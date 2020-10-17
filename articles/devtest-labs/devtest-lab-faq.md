@@ -3,12 +3,12 @@ title: Azure DevTest Labs SSS | Microsoft Docs
 description: Bu makalede Azure DevTest Labs hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f4c0e34242677eca6a32af4731817085be12436
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289363"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144588"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -145,7 +145,7 @@ Ayrı kaynak grubu senaryosu:
 -   DevTest Labs, aynı boyuta ait olan paylaşılan IP makineleri için bir kaynak grubu oluşturur.
 
 Ortak kaynak grubu senaryosu:
--   Tüm sanal makineler, belirttiğiniz ortak kaynak grubunda sona erdirir. [Laboratuvar için daha fazla kaynak grubu ayırması](https://aka.ms/RGControl)öğrenin.
+-   Tüm sanal makineler, belirttiğiniz ortak kaynak grubunda sona erdirir. [Laboratuvar için daha fazla kaynak grubu ayırması](./resource-group-control.md)öğrenin.
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Nasıl yaparım? DevTest Labs ortamımı genelinde bir adlandırma kuralına sahip mi?
 Geçerli kurumsal adlandırma kurallarını Azure işlemlerine genişletmek ve bunları DevTest Labs ortamında tutarlı hale getirmek isteyebilirsiniz. DevTest Labs dağıtımı yaparken, belirli başlangıç ilkelerine sahip olmanız önerilir. Bu ilkeleri, tutarlılığı zorlamak için bir merkezi betik ve JSON şablonları ile dağıtırsınız. Adlandırma ilkeleri, abonelik düzeyinde uygulanan Azure ilkeleri aracılığıyla uygulanabilir. Azure Ilkesi için JSON örnekleri için bkz. [Azure ilke örnekleri](../governance/policy/samples/index.md).
@@ -200,7 +200,7 @@ Mevcut sanal makinelerinizi DevTest Labs 'e kopyalamak için:
 Evet, sanal makinelerinize birden çok disk ekleyebilirsiniz.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>DevTest Labs tarafından desteklenen Gen 2 görüntüleri mi?
-Evet. DevTest Labs hizmeti, [Gen 2 görüntülerini](../virtual-machines/windows/generation-2.md)destekler. Ancak, bir görüntü için hem Gen 1 hem de Gen 2 sürümleri varsa, DevTest Labs VM oluştururken görüntünün yalnızca Gen 1 sürümünü gösterir. Yalnızca bir gen 2 sürümü varsa görüntüyü görürsünüz. 
+Evet. DevTest Labs hizmeti, [Gen 2 görüntülerini](../virtual-machines/generation-2.md)destekler. Ancak, bir görüntü için hem Gen 1 hem de Gen 2 sürümleri varsa, DevTest Labs VM oluştururken görüntünün yalnızca Gen 1 sürümünü gösterir. Yalnızca bir gen 2 sürümü varsa görüntüyü görürsünüz. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Sınamam için bir Windows işletim sistemi görüntüsü kullanmak istersem bir MSDN aboneliği satın almam gerekiyor mu?
 Azure 'da geliştirme veya test etme için Windows istemci işletim sistemi görüntülerini (Windows 7 veya sonraki bir sürümü) kullanmak için aşağıdaki adımlardan birini uygulayın:
@@ -277,7 +277,7 @@ Daha ayrıntılı bir açıklama için bkz. DevTest Labs 'de [özel resimleri ve
 
 Laboratuvarınız ile ilişkili hedef depolama hesabını bulmak için:
 
-1.  [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1.  [Azure portalında](https://portal.azure.com) oturum açın.
 2.  Sol taraftaki menüden **kaynak grupları**' nı seçin.
 3.  Laboratuvarınız ile ilişkili kaynak grubunu bulun ve seçin.
 4.  **Genel bakış**' ın altında, depolama hesaplarından birini seçin.

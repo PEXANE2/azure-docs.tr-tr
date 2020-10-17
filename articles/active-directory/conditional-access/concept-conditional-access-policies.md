@@ -5,26 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016136"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145358"
 ---
 # <a name="building-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
 [Koşullu erişim olan](overview.md)makalede açıklandığı gibi, koşullu erişim ilkesi **atamalar** ve **erişim denetimleri**için bir if-then deyimidir. Koşullu erişim ilkesi, kararları almak, kararlar almak ve kuruluş ilkelerini zorlamak için sinyalleri bir araya getirir.
 
-Bir kuruluş bu ilkeleri nasıl oluşturur? Ne gerekir?
+Bir kuruluş bu ilkeleri nasıl oluşturur? Ne gerekir? Nasıl uygulanır?
 
 ![Koşullu erişim (sinyaller + kararlar + zorlama = Ilkeler)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+Her zaman tek bir kullanıcı için birden fazla koşullu erişim ilkesi uygulanabilir. Bu durumda, uygulanan tüm ilkeler karşılanmalıdır. Örneğin, bir ilke çok faktörlü kimlik doğrulaması (MFA) gerektiriyorsa ve başka bir uyumlu cihaz gerektiriyorsa, MFA 'yı doldurmanız ve uyumlu bir cihaz kullanmanız gerekir. Tüm **atamalar mantıksal olarak**da kullanılır. Birden çok atama yapılandırdıysanız, bir ilkenin tetiklenmesi için tüm atamaların karşılanması gerekir.
+
+Tüm ilkeler iki aşamada zorlanır:
+
+- 1. Aşama: oturum ayrıntılarını toplama 
+   - Ağ konumu ve ilke değerlendirmesi için gerekli olacak cihaz kimliği gibi oturum ayrıntılarını toplayın. 
+   - İlke değerlendirmesinin 1. aşaması, [yalnızca rapor modundaki](concept-conditional-access-report-only.md)etkin ilkeler ve ilkeler için oluşur.
+- 2. Aşama: zorlama 
+   - Karşılanmamış tüm gereksinimleri belirlemek için 1. aşamada toplanan oturum ayrıntılarını kullanın. 
+   - Erişimi engelleyecek şekilde yapılandırılan bir ilke varsa, blok atama denetimiyle, zorlama burada durdurulur ve Kullanıcı engellenir. 
+   - İlke karşılanana kadar, kullanıcıdan, 1. aşama sırasında memnun olmayan ek izin denetimi gereksinimlerini tamamlaması istenir:  
+      - Multi-factor authentication 
+      - Onaylanan istemci uygulaması/uygulama koruma ilkesi 
+      - Yönetilen cihaz (uyumlu veya hibrit Azure AD katılımı) 
+      - Kullanım koşulları 
+      - Özel denetimler  
+   - Tüm verme denetimleri karşılandıktan sonra, oturum denetimlerini uygulama (uygulama zorlandı, Microsoft Cloud App Security ve belirteç ömrü) 
+   - İlke değerlendirmesinin 2. aşaması, etkinleştirilmiş tüm ilkeler için gerçekleşir. 
 
 ## <a name="assignments"></a>Atamalar
 

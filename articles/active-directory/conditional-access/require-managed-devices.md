@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9cdf01c9dac3c37b3af7b07adb8d202761e7640
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c650c2b828e2742df5dd92657003460bcda66a0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258651"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145107"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
@@ -24,7 +24,7 @@ Mobil ve bulut öncelikli bir dünyada Azure Active Directory (Azure AD), uygula
 
 Bu makalede, yönetilen cihazların ortamınızdaki belirli bulut uygulamalarına erişmesi için gereken koşullu erişim ilkelerini nasıl yapılandırabileceğiniz açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bulut uygulama erişimi için yönetilen cihazların gerekli olması, **Azure AD koşullu erişimi** Ile **Azure AD cihaz yönetimini** birbirine bağlalardır. Henüz bu alanlardan birini bilmiyorsanız, önce aşağıdaki konuları okumanız gerekir:
 
@@ -126,4 +126,4 @@ Windows 7, iOS, Android, macOS ve bazı üçüncü taraf web tarayıcılarında,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ortamınızda cihaz tabanlı bir koşullu erişim ilkesini yapılandırmadan önce, [Azure Active Directory Koşullu erişim için en iyi yöntemlere](best-practices.md)göz atalım.
+[Koşullu erişim ilkelerinin etkisini, yalnızca rapor modunda daha geniş bir şekilde etkinleştirmeden önce değerlendirin](concept-conditional-access-report-only.md).

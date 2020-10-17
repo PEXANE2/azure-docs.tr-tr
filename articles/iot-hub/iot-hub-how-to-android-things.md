@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d824c94a2c5751013b78c69ed5abd048c50856b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78673390"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151725"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Azure IoT SDK 'larını kullanarak Android öğeleri için geliştirme
 
-[Azure IoT Hub SDK 'ları](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) ; Windows, LINUX, OSX, mbed ve Android ve iOS gibi mobil platformlar gibi popüler platformlar için ilk katman desteği sağlar.  IoT dağıtımlarında daha fazla seçim ve esneklik sağlama taahhüdünün bir parçası olarak Java SDK 'Sı, [Android nesnelerin](https://developer.android.com/things/) platformunu da destekler.  Geliştiriciler cihaz tarafında Android şeyleri işletim sisteminin avantajlarından yararlanarak [Azure IoT Hub](about-iot-hub.md) 'yi aynı anda milyonlarca bağlı cihaza ölçeklendirebilen merkezi ileti hub 'ı olarak kullanabilir.
+[Azure IoT Hub SDK 'ları](./iot-hub-devguide-sdks.md) ; Windows, LINUX, OSX, mbed ve Android ve iOS gibi mobil platformlar gibi popüler platformlar için ilk katman desteği sağlar.  IoT dağıtımlarında daha fazla seçim ve esneklik sağlama taahhüdünün bir parçası olarak Java SDK 'Sı, [Android nesnelerin](https://developer.android.com/things/) platformunu da destekler.  Geliştiriciler cihaz tarafında Android şeyleri işletim sisteminin avantajlarından yararlanarak [Azure IoT Hub](about-iot-hub.md) 'yi aynı anda milyonlarca bağlı cihaza ölçeklendirebilen merkezi ileti hub 'ı olarak kullanabilir.
 
 Bu öğreticide, Azure IoT Java SDK 'sını kullanarak Android öğeleri üzerinde bir cihaz tarafı uygulaması oluşturma adımları özetlenmektedir.
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure IoT Java SDK 'sını kullanarak Android öğeleri üzerin
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

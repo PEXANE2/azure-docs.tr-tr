@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192647"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148723"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN ile büyük dosya indirme iyileştirmesi
 
@@ -44,10 +44,10 @@ Büyük dosyaların tesliminde bazı sorunlar vardır. İlk olarak, büyük bir 
 
 Bayt aralığı isteği hakkında daha fazla bilgi için bkz. [RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-CDN, alındıkları tüm öbekleri önbelleğe alır. Tüm dosyanın CDN önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıklarının sonraki istekleri CDN önbelleğinden sunulur. Tüm parçalar CDN 'de önbelleğe alınmamışsa, kaynaktan öbekleri istemek için önceden getirme kullanılır. Bu iyileştirme, kaynak sunucunun, bayt aralığı isteklerini destekleme özelliğine dayanır; Kaynak sunucu, bayt aralığı isteklerini desteklemiyorsa, bu iyileştirme etkili olmaz. 
+CDN, alındıkları tüm öbekleri önbelleğe alır. Tüm dosyanın CDN önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıklarının sonraki istekleri CDN önbelleğinden sunulur. Tüm parçalar CDN 'de önbelleğe alınmamışsa, kaynaktan öbekleri istemek için önceden getirme kullanılır. Bu iyileştirme, kaynak sunucunun, bayt aralığı isteklerini destekleme özelliğine dayanır; Kaynak sunucu, bayt aralığı isteklerini desteklemiyorsa, daha fazla veri indirme isteği başarısız olur. 
 
 ### <a name="conditions-for-large-file-optimization"></a>Büyük dosya iyileştirmesi için koşullar
-**Microsoft 'tan Azure CDN Standard** için büyük dosya iyileştirme özellikleri, genel Web teslim iyileştirme türünü kullandığınızda varsayılan olarak açıktır. En büyük dosya boyutu için sınır yoktur.
+En büyük dosya boyutu için sınır yoktur.
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Verizon adresinden büyük dosyaların Azure CDN teslimi için iyileştirin
@@ -110,7 +110,7 @@ Büyük dosya iyileştirmesi, genel Web tesliminden farklı varsayılan önbelle
 | Önbelleğe Alma  | Genel Web | Büyük dosya iyileştirmesi 
 --- | --- | --- 
 Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |1 gün  
-Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Yok | 1 saniye 
+Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye 
 
 ### <a name="deal-with-origin-failure"></a>Kaynak hatasıyla uğraşın
 

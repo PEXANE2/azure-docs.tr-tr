@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 49a5fd51a62dd6c90d7b1bac8d99296ddc81287f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: cff39f93f9caddfdbe48788f14b62642a373e2bf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070104"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148194"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak telefon numarası alın
 
@@ -35,13 +35,13 @@ Numaraları sağlamaya başlamak için [Azure Portal](https://portal.azure.com)i
 
 ### <a name="getting-new-phone-numbers"></a>Yeni telefon numaraları alma
 
-Kaynak menüsündeki telefon numaraları dikey penceresine gidin.
+Kaynak menüsündeki **telefon numaraları** dikey penceresine gidin.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
-`Get`Sihirbazı başlatmak için düğmeye basın. Dikey penceredeki sihirbaz, `Phone numbers` senaryonuza en uygun telefon numarasını seçmenize yardımcı olacak bir dizi soru boyunca size yol gösterir. 
+Sihirbazı başlatmak için **Al** düğmesine basın. **Telefon numaraları** dikey penceresindeki sihirbaz, senaryonuza en uygun telefon numarasını seçmenize yardımcı olacak bir dizi soru boyunca size yol gösterir. 
 
-İlk olarak `Country/region` telefon numarasını sağlamak istediğiniz yeri seçmeniz gerekir. Ülke/bölge ' yi seçtikten sonra, `use case` gereksinimlerinize en uygun paketleri seçmeniz gerekir. 
+İlk olarak, telefon numarasını sağlamak istediğiniz **ülkeyi/bölgeyi** seçmeniz gerekir. Ülke/bölge ' yi seçtikten sonra, gereksinimlerinizi en iyi şekilde karşılayacak **kullanım durumunu** seçmeniz gerekir. 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
@@ -52,24 +52,24 @@ Telefon numaranızı yapılandırmak iki adımda bölünmüştür:
 1. [Sayı türünün](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) seçimi
 2. [Sayı özelliklerinin](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services) seçimi
 
-İki telefon numarası türünden seçim yapabilirsiniz: `Geographic` , ve `Toll-free` . Bir sayı türü seçtiğinizde, özelliği seçebilirsiniz.
+İki telefon numarası türünden seçim yapabilirsiniz: **coğrafi**ve **ücretsiz.** Bir sayı türü seçtiğinizde, özelliği seçebilirsiniz.
 
-Örneğimizde, `Toll-free` ve özelliklerine sahip bir sayı türü seçtik `Outbound calling` `Inbound and Outbound SMS` .
+Bizim örneğimizde, **giden çağrı** ve **gelen ve giden SMS** özellikleriyle **ücretsiz bir sayı** türü seçtik.
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
-Buradan, `Next: Numbers` sağlamak istediğiniz telefon numaralarını özelleştirmek için sayfanın altındaki düğmeye tıklayın.
+Buradan, sağlamak istediğiniz telefon numaralarını özelleştirmek için sayfanın alt kısmındaki **Sonraki: sayılar** düğmesine tıklayın.
 
 ### <a name="customizing-phone-numbers"></a>Telefon numaralarını özelleştirme
 
-`Numbers`Sayfasında, sağlamak istediğiniz telefon numaralarını özelleştirecek.
+**Numaralar** sayfasında, sağlamak istediğiniz telefon numaralarını özelleştirecek.
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
 > [!NOTE]
-> Bu hızlı başlangıç, `Toll-free` sayı türü özelleştirme akışını gösteriyor. Sayı türünü seçtiyseniz deneyim biraz farklı olabilir `Geographic` , ancak nihai sonuç aynı olur.
+> Bu hızlı **Başlangıç, ücretsiz numara türü** özelleştirme akışını gösterir. **Coğrafi** numara türünü seçtiyseniz deneyim biraz farklı olabilir, ancak nihai sonuç aynı olur.
 
-`Area code`Kullanılabilir alan kodları listesinden öğesini seçin ve sağlamak istediğiniz miktarı girip, `Search` seçtiğiniz gereksinimleri karşılayan sayıları bulmak için tıklayın. İhtiyaçlarınızı karşılayan telefon numaraları, aylık maliyetleriyle birlikte gösterilir.
+Kullanılabilir alan kodları listesinden **alan kodunu** seçin ve sağlamak istediğiniz miktarı girin ve ardından seçilen gereksinimlerinizi karşılayan sayıları bulmak için **Ara** ' yı tıklatın. İhtiyaçlarınızı karşılayan telefon numaraları, aylık maliyetleriyle birlikte gösterilir.
 
 :::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
@@ -77,7 +77,7 @@ Buradan, `Next: Numbers` sağlamak istediğiniz telefon numaralarını özelleş
 > Kullanılabilirlik, seçtiğiniz sayı türüne, konuma ve özelliklere bağlıdır.
 > Sayılar, işlemin süresi dolmadan kısa bir süre için ayrılır. İşlemin süresi dolarsa, numaraları yeniden seçmeniz gerekir.
 
-Satın alma özetini görüntülemek ve siparişinizi yerleştirmek için `Next: Summary` sayfanın altındaki düğmeye tıklayın.
+Satın alma özetini görüntülemek ve siparişinizi yerleştirmek için sayfanın altındaki **İleri: Özet** düğmesine tıklayın.
 
 ### <a name="place-order"></a>Siparişi yerleştir
 
@@ -86,7 +86,7 @@ Satın alma özetini görüntülemek ve siparişinizi yerleştirmek için `Next:
 > [!NOTE]
 > Gösterilen fiyatlar, seçilen telefon numarasının size kira maliyetini kapsayan **aylık yinelenen ücretlerdir** . Bu görünümde yer almadığınızda, çağrılar yaptığınızda veya alırken tahakkuk eden **Kullandıkça Öde maliyetlerinden** de yer verilir. Fiyat listelerine [buradan ulaşabilirsiniz](../../concepts/pricing.md). Bu ücretler, sayı türüne ve adlı hedeflere bağlıdır. Örneğin, Seattle bölgesel numarasından New York 'daki bölgesel bir sayıya yapılan çağrı için dakika başına fiyatı ve bir UK cep telefonu numarasına aynı sayıdan yapılan bir çağrı farklı olabilir.
 
-Son olarak, `Place order` onaylamak için sayfanın alt kısmına tıklayın.
+Son olarak, onaylamak için sayfanın alt kısmındaki **siparişi yerleştir** ' e tıklayın.
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
@@ -106,11 +106,11 @@ Telefon numaralarınızı yönetmek için menüdeki telefon numaraları dikey pe
 
 ### <a name="customizing-phone-numbers"></a>Telefon numaralarını özelleştirme
 
-`Numbers`Sayfada, yapılandırmak için bir telefon numarası seçebilirsiniz.
+**Numaralar** sayfasında, yapılandırmak için bir telefon numarası seçebilirsiniz.
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
-Kullanılabilir seçeneklerden özellikleri seçin ve `Confirm` Seçiminizi uygulamak için tıklayın.
+Kullanılabilir seçeneklerden özellikleri seçin, sonra Seçiminizi uygulamak için **Onayla** ' ya tıklayın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

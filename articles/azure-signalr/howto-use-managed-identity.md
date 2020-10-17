@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094084"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152296"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR hizmeti için Yönetilen kimlikler
 
@@ -62,20 +62,20 @@ Azure SignalR hizmeti, tam olarak yönetilen bir hizmettir, bu nedenle belirteç
     - Olmamalıdır
     - Hizmet sorumlusunun uygulama (istemci) KIMLIĞI
     - Hizmet sorumlusunun uygulama KIMLIĞI URI 'SI
-    - [Azure hizmetinin kaynak KIMLIĞI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
+    - [Azure hizmetinin kaynak KIMLIĞI](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
     > Bir erişim belirtecini hizmetinize kendiniz doğruladıysanız, kaynak biçimlerinden birini seçebilirsiniz. Yalnızca **kimlik doğrulama** ayarlarındaki **kaynak** değerinin ve doğrulamanın tutarlı olduğundan emin olun. Bir veri düzlemi için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanıyorsanız, hizmet sağlayıcısının istediği kaynağı kullanmanız gerekir.
 
 ### <a name="validate-access-tokens"></a>Erişim belirteçlerini doğrula
 
-`Authorization`Başlıktaki belirteç bir [Microsoft Identity platform erişim belirtecidir](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens).
+`Authorization`Başlıktaki belirteç bir [Microsoft Identity platform erişim belirtecidir](../active-directory/develop/access-tokens.md#validating-tokens).
 
 Erişim belirteçlerini doğrulamak için uygulamanızın izleyiciyi ve imza belirteçlerini de doğrulaması gerekir. Bu, OpenID keşif belgesindeki değerlere karşı doğrulanması gerekir. Örneğin, [belgenin kiracı bağımsız sürümüne](https://login.microsoftonline.com/common/.well-known/openid-configuration)bakın.
 
-Azure Active Directory (Azure AD) ara yazılımı, erişim belirteçlerini doğrulamaya yönelik yerleşik yeteneklere sahiptir. Seçtiğiniz dilde bir tane bulmak için [örneklerimize](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) göz atabilirsiniz.
+Azure Active Directory (Azure AD) ara yazılımı, erişim belirteçlerini doğrulamaya yönelik yerleşik yeteneklere sahiptir. Seçtiğiniz dilde bir tane bulmak için [örneklerimize](../active-directory/develop/sample-v2-code.md) göz atabilirsiniz.
 
-Belirteç doğrulamanın nasıl işleneceğini gösteren kitaplıklar ve kod örnekleri sağlıyoruz. JSON Web Token (JWT) doğrulaması için kullanılabilen çeşitli açık kaynak iş ortağı kitaplıkları da vardır. Neredeyse her platform ve dil için en az bir seçenek vardır. Azure AD kimlik doğrulama kitaplıkları ve kod örnekleri hakkında daha fazla bilgi için bkz. [Microsoft Identity platform kimlik doğrulama kitaplıkları](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries).
+Belirteç doğrulamanın nasıl işleneceğini gösteren kitaplıklar ve kod örnekleri sağlıyoruz. JSON Web Token (JWT) doğrulaması için kullanılabilen çeşitli açık kaynak iş ortağı kitaplıkları da vardır. Neredeyse her platform ve dil için en az bir seçenek vardır. Azure AD kimlik doğrulama kitaplıkları ve kod örnekleri hakkında daha fazla bilgi için bkz. [Microsoft Identity platform kimlik doğrulama kitaplıkları](../active-directory/develop/reference-v2-libraries.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

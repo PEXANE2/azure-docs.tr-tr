@@ -1,30 +1,29 @@
 ---
-title: Compare Azure Content Delivery Network (CDN) ürün özelliklerini karşılaştırın | Microsoft Docs
+title: Azure Content Delivery Network (CDN) ürün özelliklerini karşılaştırın
 description: Her Azure Content Delivery Network (CDN) ürününün desteklediği özellikler hakkında bilgi edinin.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: mdgattuso
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8d8b01e8c5f4ea3054e639ecc9dd8b14bbf048b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81260522"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148727"
 ---
-# <a name="compare-azure-cdn-product-features"></a>Azure CDN ürün özelliklerini karşılaştırın
+# <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN ürün özellikleri arasındaki karşılaştırmalar nelerdir?
 
-Azure Content Delivery Network (CDN), dört ürün içerir: **Microsoft’tan Azure CDN Standart**, **Akamai’den Azure CDN Standart**, **Verizon’dan Azure CDN Standart** ve **Verizon’dan Azure CDN Premium**. **Verizon'dan Azure CDN Standart** profilinden **Verizon’dan Azure CDN Premium** profiline geçme hakkında bilgi için bkz. [Verizon'dan Azure CDN Standart profilinden Verizon’dan Azure CDN Premium profiline geçiş yapma](cdn-migrate.md). Standart Verizon 'den Premium Verizon 'e yükseltme yolu olduğunu ancak şu anda diğer ürünler arasında dönüştürme mekanizması olmadığını unutmayın.
+Azure Content Delivery Network (CDN) dört ürün içerir: 
+
+* **Microsoft 'tan Azure CDN Standart**
+* **Akamai 'ten standart Azure CDN**
+* **Verizon 'ten standart Azure CDN**
+* **Verizon 'Ten Premium Azure CDN**. 
 
 Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırılmaktadır.
 
@@ -75,8 +74,16 @@ Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırı
 | [Sıkıştırma MIME türleri](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Yalnızca varsayılan |Yapılandırılabilir |Yapılandırılabilir  |Yapılandırılabilir  |
 | Sıkıştırma kodlamaları  |gzip, brotli |gzip |gzip, söndür, bzip2, brotili  |gzip, söndür, bzip2, brotili  |
 
+## <a name="migration"></a>Geçiş
 
+**Verizon'dan Azure CDN Standart** profilinden **Verizon’dan Azure CDN Premium** profiline geçme hakkında bilgi için bkz. [Verizon'dan Azure CDN Standart profilinden Verizon’dan Azure CDN Premium profiline geçiş yapma](cdn-migrate.md). 
 
+> [!NOTE]
+> Standart Verizon 'den Premium Verizon 'e yükseltme yolu var, şu anda diğer ürünler arasında dönüştürme mekanizması yoktur.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Azure CDN](cdn-overview.md)hakkında daha fazla bilgi edinin.
 
 
 

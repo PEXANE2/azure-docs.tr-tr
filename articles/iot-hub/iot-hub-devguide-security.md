@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: c7ad38dc43280164fc9dbca5d5f2381e613dc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbe277c7451b02887ec5657b1a183fcd001d134e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281343"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148289"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -454,7 +454,7 @@ Belirteç hizmeti deseninin ana adımları şunlardır:
 4. Cihaz/modül, doğrudan IoT Hub ile belirtecini kullanır.
 
 > [!NOTE]
-> Belirteç hizmetinizde bir belirteç oluşturmak için [Sharedaccesssignaturebuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) veya Java Class [Iothubservicesastoken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) .NET sınıfını kullanabilirsiniz.
+> Belirteç hizmetinizde bir belirteç oluşturmak için [Sharedaccesssignaturebuilder](/dotnet/api/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder) veya Java Class [Iothubservicesastoken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) .NET sınıfını kullanabilirsiniz.
 
 Belirteç hizmeti, belirteç süre sonunu istendiği gibi ayarlayabilir. Belirtecin süresi sona erdiğinde, IoT Hub 'ı cihaz/modül bağlantısını mühürler. Ardından, cihaz/modülün belirteç hizmetinden yeni bir belirteç istemesi gerekir. Kısa süre sonu zamanı hem cihaz/modül hem de belirteç hizmeti üzerindeki yükü artırır.
 

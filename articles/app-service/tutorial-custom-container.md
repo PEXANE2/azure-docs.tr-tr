@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web uygulaması, Linux, Windows, Docker, kapsayıcı
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cb1aa2d922db96eff21a128eaa60363b37db9d7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312065"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152099"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Azure App Service özel yazılım geçirme
 
@@ -28,7 +28,7 @@ Bu öğreticiyi tamamlamak için:
 
 - <a href="https://hub.docker.com/" target="_blank">Docker Hub hesabı için kaydolma</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows'u yükleyin</a>.
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
 - **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra. Visual Studio 2019 zaten yüklüyse:
     - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ne tıklayarak Visual Studio 'ya en son güncelleştirmeleri yüklersiniz.
     - **Araçlar**  >  **ve Özellikler al**' a tıklayarak iş yüklerini Visual Studio 'da ekleyin.
@@ -213,7 +213,7 @@ Akışı yapılan günlükler şuna benzer:
 
 Azure App Service, hem yerleşik görüntüleri hem de özel görüntüleri barındırmak için Docker kapsayıcı teknolojisini kullanır. Yerleşik görüntülerin bir listesini görmek için, [' az WebApp List-çalışma zamanları--Linux '](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-list-runtimes)Azure CLI komutunu çalıştırın. Bu görüntüler gereksinimlerinizi karşılamadığı takdirde, özel bir görüntü oluşturup dağıtabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Gereksinimlerinize uygun bir yerleşik görüntü yoksa özel bir görüntü oluşturun

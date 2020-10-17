@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b2f9a6e13fdc39ab18a2056fab15982aa9fb0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9d544cc205d2971b2097110d8c36c5d85fa1fd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948173"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145000"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Nasıl yapılır: koşullu erişimi olan güvenilmeyen ağlardan erişim için MFA gerektirme   
 
@@ -24,12 +24,9 @@ Azure Active Directory (Azure AD) her yerden cihazlarda, uygulamalarda ve hizmet
 
 Bu makale, güvenilmeyen ağlardan erişim için MFA gerektiren bir koşullu erişim ilkesini yapılandırmak için gereken bilgileri sağlar. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır: 
-
-- Azure AD koşullu erişim 'in [temel kavramları](overview.md) 
-- Azure portal koşullu erişim ilkelerini yapılandırmaya yönelik [en iyi yöntemler](best-practices.md)
+Bu makalede, Koşullu erişimin [temel kavramlarıyla](overview.md) ilgili bilgi sahibi olduğunuz varsayılır. 
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -65,7 +62,7 @@ Güvenilir olmayan tüm konumların ne olduğunu tanımlamaya çalışmak yerine
 
 ## <a name="policy-deployment"></a>İlke dağıtımı
 
-Bu makalede açıklanan yaklaşımla birlikte, artık güvenilmeyen konumlar için bir koşullu erişim ilkesi yapılandırabilirsiniz. İlkenizin beklenildiği gibi çalıştığından emin olmak için önerilen en iyi yöntem, üretime geçmeden önce test sağlamaktır. İdeal olarak, yeni ilkenizin istendiği gibi çalışıp çalışmadığını doğrulamak için bir test kiracısı kullanın. Daha fazla bilgi için bkz. [Yeni ilke dağıtma](best-practices.md#how-should-you-deploy-a-new-policy). 
+Bu makalede açıklanan yaklaşımla birlikte, artık güvenilmeyen konumlar için bir koşullu erişim ilkesi yapılandırabilirsiniz. İlkenizin beklenildiği gibi çalıştığından emin olmak için önerilen en iyi yöntem, üretime geçmeden önce test sağlamaktır. İdeal olarak, yeni ilkenizin istendiği gibi çalışıp çalışmadığını doğrulamak için bir test kiracısı kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

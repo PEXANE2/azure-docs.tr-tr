@@ -4,12 +4,12 @@ description: Azure Container Instances 'ın kapsayıcı düzenleyicilerinden nas
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74533656"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148601"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances ve kapsayıcı yöneticileri
 
@@ -54,7 +54,7 @@ Bu makinelere ek kapsayıcılar dağıtmak yerine, kümenizdeki sanal makine say
 
 [Azure Kubernetes Service](../aks/intro-kubernetes.md) (aks) kümesindeki uygulama iş yüklerini hızla ölçeklendirmek için Azure Container Instances içinde dinamik olarak oluşturulan *sanal düğümleri* kullanabilirsiniz. Sanal düğümler, aci ve aks kümesinde çalışan Pod 'ler arasındaki ağ iletişimini sağlar. 
 
-Sanal düğümler Şu anda Linux kapsayıcı örneklerini desteklemektedir. [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) veya [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545)kullanarak sanal düğümleri kullanmaya başlayın.
+Sanal düğümler Şu anda Linux kapsayıcı örneklerini desteklemektedir. [Azure CLI](../aks/virtual-nodes-cli.md) veya [Azure Portal](../aks/virtual-nodes-portal.md)kullanarak sanal düğümleri kullanmaya başlayın.
 
 Sanal düğümler, sınırsız kapasiteye sahip bir düğüm olarak kaydederek Kubernetes [Kubelet][kubelet-doc] 'sini taklit etmek için açık kaynak [sanal Kubelet][aci-connector-k8s] kullanır. Sanal kubelet, Azure Container Instances ' de kapsayıcı grupları olarak [Pod][pod-doc] oluşturulmasını dağıtır.
 

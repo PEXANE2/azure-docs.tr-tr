@@ -4,12 +4,12 @@ description: Azure VMware çözümü özel bulutu 'nı dağıtmak için planlama
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776434"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152029"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
@@ -82,7 +82,7 @@ Azure VMware çözümünde bir NSX-T ağ kesimi oluşturmak için [Azure VMware 
 
 [Tanıtılan ağ yollarını doğrula](#verify-network-routes-advertised) adımına geri dönün. Önceki adımda oluşturduğunuz ağ segmentleri temsil eden listede ek yollar görürsünüz.  
 
-Sanal makineler için, [tanıtılan NSX-T segmentini doğrula](#verify-advertised-nsx-t-segment) bölümünde oluşturduğunuz segmentleri atamalısınız.  
+Sanal makineler için, [Azure VMware çözümünde ağ kesimi oluşturma](#create-a-network-segment-on-azure-vmware-solution) adımında oluşturduğunuz segmentleri atayacaksınız.  
 
 DNS gerekli olduğundan, hangi DNS sunucusunu kullanmak istediğinizi belirlemek.  
 

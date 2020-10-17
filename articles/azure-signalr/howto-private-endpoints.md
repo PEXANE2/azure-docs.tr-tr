@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84300207"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152339"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Azure SignalR hizmeti için özel uç noktaları kullanma
 
@@ -82,8 +82,8 @@ Azure SignalR hizmeti için özel uç noktalar için önerilen DNS bölgesi adı
 
 Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [Özel uç noktalar için DNS yapılandırması](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [Özel uç noktalar için DNS yapılandırması](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
 
@@ -198,7 +198,7 @@ Bu kısıtlama, Azure SignalR hizmeti S2 özel bir uç nokta oluşturduğunda ya
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Özel uç noktaları olan alt ağlar için Ağ Güvenlik Grubu kuralları
 
-Şu anda, [ağ güvenlik grubu](../virtual-network/security-overview.md) (NSG) kurallarını ve özel uç noktalar için Kullanıcı tanımlı yolları yapılandıramazsınız. Özel uç noktasını barındıran alt ağa uygulanan NSG kuralları özel uç noktaya uygulanır. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
+Şu anda, [ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md) (NSG) kurallarını ve özel uç noktalar için Kullanıcı tanımlı yolları yapılandıramazsınız. Özel uç noktasını barındıran alt ağa uygulanan NSG kuralları özel uç noktaya uygulanır. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

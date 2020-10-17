@@ -4,12 +4,12 @@ description: Bu makale, bir kuruluşta Azure DevTest Labs için başvuru mimaris
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367759"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144549"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Kuruluşlar için Azure DevTest Labs başvuru mimarisi
 Bu makalede, bir kuruluştaki Azure DevTest Labs göre bir çözüm dağıtmanıza yardımcı olacak başvuru mimarisi sunulmaktadır. Şunları içerir:
@@ -30,7 +30,7 @@ Başvuru mimarisinin temel öğeleri şunlardır:
     - Buluta taşınamayacak şirket içi verileriniz var.
     - Laboratuvarın sanal makinelerini şirket içi etki alanına katılmayı tercih edersiniz.
     - Güvenlik/uyumluluk için şirket içi bir güvenlik duvarı aracılığıyla bulut ortamının içindeki ve olmayan tüm ağ trafiğini zorlamak istiyorsunuz.
-- **Ağ güvenlik grupları**: kaynak ve hedef IP adreslerine bağlı olarak bulut ortamıyla (veya bulut ortamında) trafiği kısıtlayan yaygın bir yolu, bir [ağ güvenlik grubu](../virtual-network/security-overview.md)kullanmaktır. Örneğin, yalnızca şirket ağından laboratuvar ağlarına giden trafiğe izin vermek istersiniz.
+- **Ağ güvenlik grupları**: kaynak ve hedef IP adreslerine bağlı olarak bulut ortamıyla (veya bulut ortamında) trafiği kısıtlayan yaygın bir yolu, bir [ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md)kullanmaktır. Örneğin, yalnızca şirket ağından laboratuvar ağlarına giden trafiğe izin vermek istersiniz.
 - **Uzak Masaüstü Ağ Geçidi**: kuruluşlar, genellikle şirket güvenlik duvarında giden uzak masaüstü bağlantılarını engeller. DevTest Labs 'de bulut tabanlı ortama bağlantıyı etkinleştirmek için çeşitli seçenekler vardır; örneğin:
   - Bir [Uzak Masaüstü Ağ Geçidi](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)kullanın ve ağ geçidi yük DENGELEYICININ statik IP adresine izin verin.
   - [Tüm gelen RDP trafiğini](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) ExpressRoute/sıteden siteye VPN bağlantısı üzerinden yönlendirin. Bu işlevsellik, kuruluşlar bir DevTest Labs dağıtımı planlarken yaygın bir noktadır.

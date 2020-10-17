@@ -293,7 +293,7 @@
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
                 - name: Resource Manager şablonu
-                  href: platform/template-workspace-configuration.md
+                  href: ./samples/resource-manager-workspace.md
             - name: Çalışma alanını silme ve kurtarma
               href: platform/delete-workspace.md
             - name: Erişimi yönetme

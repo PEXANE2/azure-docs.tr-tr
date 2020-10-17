@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085918"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145406"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -52,7 +52,7 @@ Azure AD kullanım koşulları aşağıdaki yeteneklere sahiptir:
 - Uyumluluk ve denetim için kullanım koşulları etkinlik günlüğünü görüntüleyin.
 - [Microsoft Graph API 'leri](/graph/api/resources/agreement?view=graph-rest-beta) kullanarak kullanım koşulları oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kullanım koşulları 'nı kullanmak ve yapılandırmak için şunları yapmanız gerekir:
 
@@ -117,7 +117,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
    ![İlke şablonu seçmek için koşullu erişim açılan listesi](./media/terms-of-use/conditional-access-templates.png)
 
-   | Şablon | Açıklama |
+   | Şablon | Description |
    | --- | --- |
    | **Tüm konuklar için bulut uygulamalarına erişim** | Tüm konuklar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra, oturum açmanız ve oturum açmanız gerekebilir. |
    | **Tüm kullanıcılar için bulut uygulamalarına erişim** | Tüm kullanıcılar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra, oturumunuzu kapatıp oturum açmanız gerekecektir. |
@@ -255,10 +255,10 @@ Desteklenen platformların ve yazılımların listesi aşağıda verilmiştir.
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Diğer |
 > | --- | --- | --- | --- | --- |
-> | **Yerel uygulama** | Evet | Evet | Evet |  |
-> | **Microsoft Edge** | Evet | Evet | Evet |  |
-> | **Internet Explorer** | Evet | Evet | Evet |  |
-> | **Chrome (uzantısıyla)** | Evet | Evet | Evet |  |
+> | **Yerel uygulama** | Yes | Yes | Yes |  |
+> | **Microsoft Edge** | Yes | Yes | Yes |  |
+> | **Internet Explorer** | Yes | Yes | Yes |  |
+> | **Chrome (uzantısıyla)** | Yes | Yes | Yes |  |
 
 Cihaz başına kullanım koşulları aşağıdaki kısıtlamalara sahiptir:
 
@@ -392,4 +392,3 @@ A: Kullanım koşulları kimlik doğrulaması için aşağıdaki uç noktaları 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilecek kullanım koşullarını gerektir](require-tou.md)
-- [Azure Active Directory 'de koşullu erişim için en iyi yöntemler](best-practices.md)

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/02/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 520a7649942fc5186d32020853b98297ef8b34d7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978114"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152115"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux üzerinde SAP HANA genişleme sisteminin yüksek kullanılabilirliği 
 
@@ -152,7 +152,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
 
     d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `inter` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hsr` .  
     
-    e. **Kaydet**'i seçin. 
+    e. **Kaydet**’i seçin. 
  
     f. Kalan sanal makineler için b ile e arasındaki adımları yineleyin (bizim örneğimizde,  **Hana-S1-DB2**, **Hana-S1-DB3**, **Hana-S2-DB1**, **Hana-S2-DB2** ve **Hana-S2-DB3**).
  
@@ -219,6 +219,9 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
       1. **Tamam**’ı seçin.
 
+   > [!IMPORTANT]
+   > Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.    
+   
    > [!Note]
    > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 

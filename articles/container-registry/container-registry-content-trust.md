@@ -3,12 +3,12 @@ title: İmzalı görüntüleri yönetme
 description: Azure Container Registry 'niz için içerik güvenini etkinleştirmeyi ve imzalı görüntüleri gönderme ve çekme hakkında bilgi edinin. İçerik güveni Docker içerik güvenini uygular ve Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: cfe337a0f46e37ed616664e8e0645e319bcfb519
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409173"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148574"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry'de içerik güveni
 
@@ -86,7 +86,7 @@ Bu örnekte, `AcrImageSigner` rol: "hizmet sorumlusu" adlı bir hizmet sorumlusu
 
 ![Azure portal ACR görüntü imzalama izinleri verme][content-trust-02-portal]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLI kullanarak bir kullanıcıya imzalama izni vermek için kullanıcıya `AcrImageSigner` rolünü atayın ve kapsamını kayıt defterinizle sınırlandırın. Komut biçimi şu şekildedir:
 
@@ -115,7 +115,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>`, hizmet sorumlusunun **appId**, **objectId** veya **servicePrincipalNames** değerlerinden biri olabilir. Hizmet sorumluları veya Azure Container Registry ile çalışma hakkında daha fazla bilgi için bkz. [Hizmet sorumlularıyla Azure Container Registry kimlik doğrulaması](container-registry-auth-service-principal.md).
 
 > [!IMPORTANT]
-> Herhangi bir rol değişikliği yapıldıktan sonra, `az acr login` yeni rollerin etkili olabilmesi Için Azure CLI yerel kimlik belirtecini yenilemek üzere ' yi çalıştırın. Bir kimlik için rolleri doğrulama hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak Azure kaynaklarına erişimi yönetme](../role-based-access-control/role-assignments-cli.md) ve [Azure RBAC sorunlarını giderme](../role-based-access-control/troubleshooting.md).
+> Herhangi bir rol değişikliği yapıldıktan sonra, `az acr login` yeni rollerin etkili olabilmesi Için Azure CLI yerel kimlik belirtecini yenilemek üzere ' yi çalıştırın. Bir kimlik için rolleri doğrulama hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-cli.md) ve [Azure RBAC sorunlarını giderme](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Güvenilen görüntü gönderme
 

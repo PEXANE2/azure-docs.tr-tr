@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462046"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152148"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -35,7 +35,7 @@ IoT Hub için dağıtılmış izlemeyi etkinleştirmek aşağıdakileri yapabilm
 
 Bu makalede, dağıtılmış izleme ile [C Için Azure IoT cihaz SDK 'sını](iot-hub-device-sdk-c-intro.md) kullanırsınız. Diğer SDK 'lar için dağıtılmış izleme desteği hala devam ediyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Dağıtılmış izlemenin önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 
@@ -93,7 +93,7 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 ### <a name="clone-the-source-code-and-initialize"></a>Kaynak kodunu kopyala ve Başlat
 
-1. Visual Studio 2019 için ["C++ Ile masaüstü geliştirme" iş yükünü](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) yükler. Visual Studio 2017 ve 2015 de desteklenir.
+1. Visual Studio 2019 için ["C++ Ile masaüstü geliştirme" iş yükünü](/cpp/build/vscpp-step-0-installation?view=vs-2019) yükler. Visual Studio 2017 ve 2015 de desteklenir.
 
 1. [CMake](https://cmake.org/)'i yükler. `PATH`Bir komut isteminden yazarak olduğunuzdan emin olun `cmake -version` .
 
@@ -115,7 +115,7 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
     cmake ..
     ```
 
-    `cmake`C++ derleyicinizi bulamazsa, yukarıdaki komutu çalıştırırken derleme hataları alabilirsiniz. Bu durumda bu komutu [Visual Studio komut isteminde](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) çalıştırmayı deneyin. 
+    `cmake`C++ derleyicinizi bulamazsa, yukarıdaki komutu çalıştırırken derleme hataları alabilirsiniz. Bu durumda bu komutu [Visual Studio komut isteminde](/dotnet/framework/tools/developer-command-prompt-for-vs) çalıştırmayı deneyin. 
 
     Derleme başarılı olduktan sonra, son birkaç çıkış satırı aşağıdaki çıkışa benzer olacaktır:
 
@@ -234,7 +234,7 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
 ### <a name="bulk-update-for-multiple-devices"></a>Birden çok cihaz için toplu güncelleştirme
 
-Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını güncelleştirmek için [otomatik cihaz yapılandırması](iot-hub-auto-device-config.md)'nı kullanın. Bu ikizi şemasını izlediğinizden emin olun:
+Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını güncelleştirmek için [otomatik cihaz yapılandırması](./iot-hub-automatic-device-management.md)'nı kullanın. Bu ikizi şemasını izlediğinizden emin olun:
 
 ```json
 {
@@ -252,7 +252,7 @@ Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını g
 | Öğe adı | Gerekli | Tür | Açıklama |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve üzerinde `2` . |
-| `sampling_rate` | Evet | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
+| `sampling_rate` | Yes | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
 
 ## <a name="query-and-visualize"></a>Sorgulama ve görselleştirme
 
@@ -260,7 +260,7 @@ Bir IoT Hub tarafından günlüğe kaydedilen tüm izlemeleri görmek için Tan�
 
 ### <a name="query-using-log-analytics"></a>Log Analytics kullanarak sorgulama
 
-[Tanılama günlükleri ile Log Analytics](../azure-monitor/platform/resource-logs-collect-storage.md)ayarladıysanız, kategoride Günlükler arayarak sorgulayın `DistributedTracing` . Örneğin, bu sorgu günlüğe kaydedilen tüm izlemeleri gösterir:
+[Tanılama günlükleri ile Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)ayarladıysanız, kategoride Günlükler arayarak sorgulayın `DistributedTracing` . Örneğin, bu sorgu günlüğe kaydedilen tüm izlemeleri gösterir:
 
 ```Kusto
 // All distributed traces 
@@ -282,7 +282,7 @@ Farklı türlerdeki günlükleri anlamak için bkz. [Azure IoT Hub tanılama gü
 
 ### <a name="application-map"></a>Uygulama Eşlemesi
 
-IoT iletilerinin akışını görselleştirmek için uygulama Haritası örnek uygulamasını ayarlayın. Örnek uygulama, dağıtılmış izleme günlüklerini bir Azure Işlevi ve bir olay hub 'ı kullanarak [uygulama haritasına](../application-insights/app-insights-app-map.md) gönderir.
+IoT iletilerinin akışını görselleştirmek için uygulama Haritası örnek uygulamasını ayarlayın. Örnek uygulama, dağıtılmış izleme günlüklerini bir Azure Işlevi ve bir olay hub 'ı kullanarak [uygulama haritasına](../azure-monitor/app/app-map.md) gönderir.
 
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">GitHub 'da örneği alın</a>
@@ -295,11 +295,11 @@ Aşağıdaki görüntüde, üç yönlendirme uç noktası ile uygulama haritası
 
 ### <a name="context"></a>Bağlam
 
-Kendi [başvuru mimarimiz](https://aka.ms/iotrefarchitecture) (yalnızca İngilizce) dahil olmak üzere birçok IoT çözümü, genellikle [mikro hizmet mimarisinin](https://docs.microsoft.com/azure/architecture/microservices/)bir türevini izler. IoT çözümü daha karmaşık bir şekilde artdıkça, bir düzine veya daha fazla mikro hizmet kullanarak sonlandırın. Bu mikro hizmetler Azure 'dan gelebilir veya olmayabilir. IoT iletilerinin bırakılmasını veya yavaşlamasını zor hale gelebileceği işaret. Örneğin, 5 farklı Azure hizmeti ve 1500 etkin cihaz kullanan bir IoT çözümünüz vardır. Her cihaz 10 cihazdan buluta ileti/saniye gönderir (Toplam 15.000 ileti/saniye), ancak Web uygulamanızın yalnızca 10.000 mesaj/saniye gördüğü fark edersiniz. Sorun nerede? Fiprimi nasıl bulabilirim?
+Kendi [başvuru mimarimiz](https://aka.ms/iotrefarchitecture) (yalnızca İngilizce) dahil olmak üzere birçok IoT çözümü, genellikle [mikro hizmet mimarisinin](/azure/architecture/microservices/)bir türevini izler. IoT çözümü daha karmaşık bir şekilde artdıkça, bir düzine veya daha fazla mikro hizmet kullanarak sonlandırın. Bu mikro hizmetler Azure 'dan gelebilir veya olmayabilir. IoT iletilerinin bırakılmasını veya yavaşlamasını zor hale gelebileceği işaret. Örneğin, 5 farklı Azure hizmeti ve 1500 etkin cihaz kullanan bir IoT çözümünüz vardır. Her cihaz 10 cihazdan buluta ileti/saniye gönderir (Toplam 15.000 ileti/saniye), ancak Web uygulamanızın yalnızca 10.000 mesaj/saniye gördüğü fark edersiniz. Sorun nerede? Fiprimi nasıl bulabilirim?
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Mikro hizmet mimarisinde dağıtılmış izleme deseninin
 
-Farklı hizmetlerde bir IoT iletisinin akışını yeniden oluşturmak için, her hizmet iletiyi benzersiz bir şekilde tanımlayan bir *BAĞıNTı kimliği* yaymalıdır. Merkezi bir sistemde toplandıktan sonra bağıntı kimlikleri ileti akışını görmenizi sağlar. Bu yönteme [Dağıtılmış izleme deseninin](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing)adı verilir.
+Farklı hizmetlerde bir IoT iletisinin akışını yeniden oluşturmak için, her hizmet iletiyi benzersiz bir şekilde tanımlayan bir *BAĞıNTı kimliği* yaymalıdır. Merkezi bir sistemde toplandıktan sonra bağıntı kimlikleri ileti akışını görmenizi sağlar. Bu yönteme [Dağıtılmış izleme deseninin](/azure/architecture/microservices/logging-monitoring#distributed-tracing)adı verilir.
 
 Microsoft, dağıtılmış izlemenin daha geniş benimsemesini desteklemek için [Dağıtılmış izleme Için W3C standart teklifine](https://w3c.github.io/trace-context/)katkıda bulunur.
 
@@ -328,5 +328,5 @@ Etkinleştirildikten sonra, IoT Hub için dağıtılmış izleme desteği şu ak
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Mikro hizmetlerde genel dağıtılmış izleme deseninin daha fazla bilgi edinmek için bkz. [mikro hizmet mimarisi deseninin: dağıtılmış izleme](https://microservices.io/patterns/observability/distributed-tracing.html).
-- Dağıtılmış izleme ayarlarını çok sayıda cihaza uygulayacak şekilde yapılandırmayı ayarlamak için bkz. [IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](iot-hub-auto-device-config.md).
+- Dağıtılmış izleme ayarlarını çok sayıda cihaza uygulayacak şekilde yapılandırmayı ayarlamak için bkz. [IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](./iot-hub-automatic-device-management.md).
 - Azure Izleyici hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici nedir?](../azure-monitor/overview.md).

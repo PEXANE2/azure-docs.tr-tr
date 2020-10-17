@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072280"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152222"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT cihaz SDK 'Ları platform desteği
 
@@ -74,7 +74,7 @@ Yalnızca Python sürüm 3.5.3 veya üzeri zaman uyumsuz API 'Leri destekliyorsa
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 Masaüstü ve sunucu SKU 'Ları   | .NET Core 2,1, .NET Framework 4.5.1 veya .NET Framework 4,7 |
 
-.NET SDK, [Azure cihaz Aracısı](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) veya [UWP uygulamalarıyla ILETIŞIM kurmak için RPC kullanan özel bir NTService](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/)ile Windows IoT Core ile de kullanılabilir.
+.NET SDK, [Azure cihaz Aracısı](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) veya [UWP uygulamalarıyla ILETIŞIM kurmak için RPC kullanan özel bir NTService](/samples/microsoft/windows-iotcore-samples/ntservice-rpc/)ile Windows IoT Core ile de kullanılabilir.
 
 ### <a name="nodejs-sdk"></a>Node.js SDK'sı
 
@@ -124,7 +124,7 @@ IoT Hub cihaz SDK 'larından birini kullanmıyorsanız, desteklenen bir iletişi
 
 ## <a name="support-and-other-resources"></a>Destek ve diğer kaynaklar
 
-Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, aşağıda özetlenen desteği aramak için birkaç yol vardır. Tüm Destek seçenekleriniz hakkında tam bilgi için lütfen bkz. [Azure IoT desteği ve yardım seçenekleri](https://aka.ms/iothelp). 
+Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, aşağıda özetlenen desteği aramak için birkaç yol vardır. Tüm Destek seçenekleriniz hakkında tam bilgi için lütfen bkz. [Azure IoT desteği ve yardım seçenekleri](../iot-fundamentals/iot-support-help.md). 
 
 **Hataları raporlama** – cihaz SDK 'lerinde hatalar ilgili GitHub projesinin sorunlar sayfasında bildirilebilir. Düzeltmeler, ' deki projeden ürün güncelleştirmelerinde hızlı bir şekilde yapılır.
 
@@ -138,7 +138,7 @@ Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, aşa
 
 * [Azure IoT Hub Python SDK sorunları](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**Teknik sorular** : hem [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html) hem de *Azure-ıot-SDK*etiketini kullanarak [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) Teknik sorular sorabilirsiniz.
+**Teknik sorular** : hem [Microsoft Q&A](/answers/topics/azure-iot-sdk.html) hem de *Azure-ıot-SDK*etiketini kullanarak [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) Teknik sorular sorabilirsiniz.
 
 **Microsoft müşteri destek ekibi** – [Destek planına](https://azure.microsoft.com/support/plans/) sahip olan kullanıcılar, doğrudan [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)yeni bir destek isteği oluşturarak Microsoft müşteri destek ekibine geçebilir.
 

@@ -5,12 +5,12 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84336051fc3d653fbe73f650f2fc2badb2ec58da
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326465"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148934"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
 Bu makalede, Azure Event Grid ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
@@ -23,7 +23,7 @@ Bu makalede, Azure Event Grid ile aşağıdaki güvenlik özelliklerinin nasıl 
 ## <a name="service-tags"></a>Hizmet etiketleri
 Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](../virtual-network/service-tags-overview.md).
 
-[Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules)   veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak*veya hedef alanındaki hizmet etiketi adını (örneğin, **AzureEventGrid**) belirterek    *destination*   , karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
+[Ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules)   veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak*veya hedef alanındaki hizmet etiketi adını (örneğin, **AzureEventGrid**) belirterek    *destination*   , karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
 
 | Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|
@@ -83,10 +83,10 @@ Aşağıdaki tabloda özel uç nokta bağlantısının çeşitli durumları ve y
 
 | Bağlantı durumu   |  Başarıyla Yayımla (Evet/Hayır) |
 | ------------------ | -------------------------------|
-| Onaylandı           | Evet                            |
-| Reddedildi           | Hayır                             |
-| Beklemede            | Hayır                             |
-| Bağlantı kesildi       | Hayır                             |
+| Onaylandı           | Yes                            |
+| Reddedildi           | No                             |
+| Beklemede            | No                             |
+| Bağlantı kesildi       | No                             |
 
 Yayımlamanın başarılı olması için özel uç nokta bağlantı durumunun **onaylanması**gerekir. Bir bağlantı reddedilirse, Azure portal kullanılarak onaylanamaz. Tek olasılık, bağlantıyı silmek ve bunun yerine yeni bir tane oluşturmaktır.
 

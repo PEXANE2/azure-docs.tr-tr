@@ -4,12 +4,12 @@ description: Azure Batch hizmet kaynaklarını yönetmek üzere Azure CLI’daki
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055520"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144757"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch kaynaklarını Azure CLI ile yönetme
 
@@ -79,7 +79,7 @@ Batch hesabınızla kimlik doğrulamasından geçmek için kullanabileceğiniz i
     
     Önceki bölümde anlatıldığı şekilde Azure'da etkileşimli olarak oturum açtığınızda kimlik bilgileriniz önbelleğe alınır ve Azure CLI bu kimlik bilgilerini kullanarak Batch hesabınızda oturum açabilir. Azure'da hizmet sorumlusu kullanarak oturum açarsanız o kimlik bilgileri de Batch hesabınıza oturum açmak için kullanılır.
 
-    Azure AD'nin avantajlarından biri rol tabanlı erişim denetimine (RBAC) sahip olmasıdır. RBAC sayesinde kullanıcı erişimi hesap anahtarına sahip olma durumuna göre değil kendisine atanan role göre belirlenir. Hesap anahtarlarını yönetmek yerine Azure rollerini yönetebilir ve Azure AD 'nin erişim ve kimlik doğrulamasına izin verebilirsiniz.  
+    Azure AD 'nin bir avantajı, Azure rol tabanlı erişim denetimi (Azure RBAC) sunuyor. Azure RBAC ile kullanıcının erişimi, hesap anahtarlarına sahip olup olmamaları değil, kendilerine atanan rolüne bağlıdır. Hesap anahtarlarını yönetmek yerine Azure rollerini yönetebilir ve Azure AD 'nin erişim ve kimlik doğrulamasına izin verebilirsiniz.  
 
      Azure AD ile Batch hesabınızda oturum açmak için [az batch account login](/cli/azure/batch/account#az-batch-account-login) komutunu çağırın: 
 
@@ -141,7 +141,7 @@ Batch hizmetini bir `list` işlemiyle sorguladığınızda döndürülen veri mi
 
 Aşağıdaki tabloda Batch hizmeti tarafından desteklenen OData yan tümceleri listelenmiştir:
 
-| Yan Tümce | Açıklama |
+| Yan Tümce | Description |
 |---|---|
 | `--select-clause [select-clause]` | Her varlık için bir özellik alt kümesi döndürür. |
 | `--filter-clause [filter-clause]` | Yalnızca belirtilen OData ifadesiyle eşleşen varlıklar döndürür. |

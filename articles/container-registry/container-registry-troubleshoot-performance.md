@@ -3,12 +3,12 @@ title: Kayıt defteri performansı sorunlarını giderme
 description: Bir kayıt defterinin performansı ile ilgili genel sorunların belirtileri, nedenleri ve çözümlenmesi
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 414e3a92b8ebd4ff58528fc5e9ec4794471bd775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227538"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148404"
 ---
 # <a name="troubleshoot-registry-performance"></a>Kayıt defteri performansı sorunlarını giderme
 
@@ -80,7 +80,7 @@ Coğrafi olarak çoğaltılan bir kayıt defteriyle ilgili sorunları gidermek i
 
 ### <a name="configure-dns-for-geo-replicated-registry"></a>Coğrafi olarak çoğaltılan kayıt defteri için DNS yapılandırma
 
-Coğrafi olarak çoğaltılan bir kayıt defterindeki çekme işlemleri yavaş görünüyorsa, istemcideki DNS yapılandırması coğrafi olarak uzak bir DNS sunucusuna çözümleyebilir. Bu durumda, Traffic Manager DNS sunucusuna ağ yakın, ancak istemciden uzak olan bir çoğaltmaya yönlendirme istekleri olabilir. `nslookup` `dig` Kayıt defteri isteklerini yönlendirdiğini Traffic Manager çoğaltmayı öğrenmek için veya (Linux üzerinde) gibi bir araç çalıştırın. Örneğin:
+Coğrafi olarak çoğaltılan bir kayıt defterindeki çekme işlemleri yavaş görünüyorsa, istemcideki DNS yapılandırması coğrafi olarak uzak bir DNS sunucusuna çözümleyebilir. Bu durumda, Traffic Manager DNS sunucusuna ağ yakın, ancak istemciden uzak olan bir çoğaltmaya yönlendirme istekleri olabilir. `nslookup` `dig` Kayıt defteri isteklerini yönlendirdiğini Traffic Manager çoğaltmayı öğrenmek için veya (Linux üzerinde) gibi bir araç çalıştırın. Örnek:
 
 ```console
 nslookup myregistry.azurecr.io
@@ -115,7 +115,5 @@ Sorununuzu burada çözemezseniz, aşağıdaki seçeneklere bakın.
   * [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md)
   * [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
 * [Topluluk desteği](https://azure.microsoft.com/support/community/) seçenekleri
-* [Microsoft Soru-Cevap](https://docs.microsoft.com/answers/products/)
+* [Microsoft Soru-Cevap](/answers/products/)
 * [Destek bileti açma](https://azure.microsoft.com/support/create-ticket/)
-
-

@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398332"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151881"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -52,7 +52,7 @@ Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı h
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: işletim sistemlerinden güvenlik günlüklerini toplama
 **Rehberlik:** Azure DevTest Labs sanal makineler (VM) oluşturulur ve müşteriye aittir. Bu nedenle, bu, kuruluşun izleme sorumluluğudur. İşlem işletim sistemini izlemek için Azure Güvenlik Merkezi 'ni kullanabilirsiniz. İşletim sisteminden Güvenlik Merkezi tarafından toplanan veriler işletim sistemi türü ve sürümü, işletim sistemi (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açan kullanıcı içerir. Log Analytics Aracısı Ayrıca kilitlenme bilgi döküm dosyalarını da toplar.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın: 
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
 - [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/learn/quick-collect-azurevm.md)
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../security-center/security-center-enable-data-collection.md)
@@ -73,7 +73,7 @@ Daha fazla bilgi için şu makaleye bakın: [günlük tutma parametrelerini ayar
 ### <a name="26-monitor-and-review-logs"></a>2,6: günlükleri izleme ve gözden geçirme
 **Rehberlik:** Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve Azure DevTest Labs için toplanabilecek etkinlik günlüğü verilerine göre birçok diğer öngörü sağlamak için Log Analytics sorguları çalıştırın.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/diagnostic-settings.md)
 - [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/platform/activity-log.md)
@@ -264,7 +264,7 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
 **Rehberlik:** Gizli bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için etiketleri kullanın.
 
-- [Etiketler oluşturma ve kullanma](../azure-resource-manager/resource-group-using-tags.md)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
@@ -273,10 +273,10 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 **Rehberlik:** Geliştirme, test ve üretim için ayrı abonelikler veya yönetim grupları uygulayın. Azure DevTest Labs örneklerin sanal ağ/alt ağ ile ayrılması ve uygun şekilde etiketlenmesi gerekir. 
 
-- [Ek Azure abonelikleri oluşturma](../billing/billing-create-subscription.md)
-- [Yönetim grupları oluşturma](../governance/management-groups/create.md)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
+- [Yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 - [DevTest Labs için sanal ağ yapılandırma](devtest-lab-configure-vnet.md)
-- [Etiketler oluşturma ve kullanma](../azure-resource-manager/resource-group-using-tags.md)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 - [DevTest Labs için Etiketler oluşturma ve kullanma](devtest-lab-add-tag.md)
 
 **Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
@@ -380,7 +380,7 @@ Microsoft, Azure DevTest Labs destekleyen temel kaynaklarda güvenlik açığı 
 **Rehberlik:** DevTest Labs içinde barındırılan Windows ve Linux sanal makinelerinize en son güvenlik güncelleştirmelerinin yüklendiğinden emin olmak için Azure Güncelleştirme Yönetimi kullanın. Windows VM 'Leri için Windows Update etkinleştirildiğinden ve otomatik olarak güncelleştirilecek şekilde ayarlandığından emin olun. Bu ayar şu anda DevTest Labs aracılığıyla yapılandırma için kullanılamaz, ancak Laboratuvar Yöneticisi/abonelik Yöneticisi bu ayarı aboneliklerindeki temel alınan işlem VM 'lerinde yapılandırabilir. 
 
 - [Azure 'da VM 'Ler için Güncelleştirme Yönetimi Yapılandırma](../automation/update-management/update-mgmt-overview.md)
-- [Güvenlik Merkezi tarafından izlenen Azure Güvenlik ilkelerini anlama](../security-center/security-center-policy-definitions.md)
+- [Güvenlik Merkezi tarafından izlenen Azure Güvenlik ilkelerini anlama](../security-center/policy-reference.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
@@ -444,7 +444,7 @@ Abonelik Yöneticisi olarak, DevTest Labs VM 'Leri için güncelleştirmeleri ve
 **Rehberlik:** Labs ve laboratuvara ilgili kaynakları düzenlemek ve izlemek için etiketleme, yönetim grupları ve ayrı abonelikler ve uygun yerlerde farklı laboratuvarlar kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların abonelikten hızlıca silindiğinden emin olun.
 
 - [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
-- [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 - [DevTest Labs kullanarak laboratuvar oluşturma](devtest-lab-create-lab.md)
 - [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 - [Laboratuvar için etiketleri yapılandırma](devtest-lab-add-tag.md)
@@ -517,7 +517,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 Aşağıdaki makalelere bakın: 
 - [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/not-allowed-resource-types.md)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/index.md)
 
 **Azure Güvenlik Merkezi izleme:** Yes
 
@@ -559,7 +559,7 @@ Aşağıdaki makalelere bakın:
 - [DevTest Labs için sanal ağı yapılandırma](devtest-lab-configure-vnet.md)
 - [Azure Güvenlik Duvarı 'na genel bakış](../firewall/overview.md)
 - [Web uygulaması güvenlik duvarına genel bakış](../web-application-firewall/overview.md)
-- [Ağ güvenliğine genel bakış](../virtual-network/security-overview.md)
+- [Ağ güvenliğine genel bakış](../virtual-network/network-security-groups-overview.md)
 - [Azure sanal ağına genel bakış]()
 - [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../governance/management-groups/overview.md)
 - [Abonelik kararı kılavuzu](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -617,7 +617,7 @@ Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli b
 
 Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntüleri Microsoft tarafından yönetilir ve sürdürülür.
 
-- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation/automation-dsc-overview.md)
 - [Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 - [DevTest Labs 'de görüntü fabrikası oluşturma](image-factory-create.md)
@@ -629,8 +629,8 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Azure kaynaklarının yapılandırmasını güvenli bir şekilde depolayın
 **Rehberlik:** Kodunuzu özel Azure ilkeleri, Azure Resource Manager şablonları ve Istenen durum yapılandırması betikleri gibi güvenli bir şekilde depolamak ve yönetmek için Azure DevOps kullanın. Azure DevOps 'da yönettiğiniz kaynaklara erişmek için, Azure DevOps ile tümleşikse, belirli kullanıcılar, yerleşik güvenlik grupları veya Azure Active Directory (Azure AD) içinde tanımlanan gruplar için izin verebilir veya vermeyebilirsiniz.
 
-- [Git öğreticisi Azure Repos](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [İzinler ve gruplar hakkında](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Git öğreticisi Azure Repos](/azure/devops/repos/git/gitworkflow)
+- [İzinler ve gruplar hakkında](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Azure DevTest Labs ile Azure DevOps iş akışı arasında tümleştirme](devtest-lab-dev-ops.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
@@ -681,7 +681,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: işletim sistemleri için otomatik yapılandırma izlemeyi Uygula
 **Rehberlik:** Kapsayıcılar için işletim sistemi ve Docker ayarlarına yönelik temel taramalar gerçekleştirmek üzere Azure Güvenlik Merkezi 'ni kullanın.
 
-- [Azure Güvenlik Merkezi'ndeki kapsayıcı önerilerini anlama](../security-center/security-center-container-recommendations.md)
+- [Azure Güvenlik Merkezi'ndeki kapsayıcı önerilerini anlama](../security-center/container-security.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
@@ -692,7 +692,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 
 - [DevTest Labs 'de Azure Resource Manager ortamları dağıtmak için yönetilen kimlik yapılandırma](use-managed-identities-environments.md)
 - [DevTest Labs 'de sanal makineleri dağıtmak için yönetilen kimlik yapılandırma](enable-managed-identities-lab-vms.md)
-- [Anahtar Kasası oluşturma](../key-vault/quick-create-portal.md)
+- [Anahtar Kasası oluşturma](../key-vault/secrets/quick-create-portal.md)
 - [Key Vault kimlik doğrulaması yapma](../key-vault/general/authentication.md)
 - [Key Vault erişim ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 

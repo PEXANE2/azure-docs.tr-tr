@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072314"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152124"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
 Azure IoT Hub, Azure Event Grid ile tümleştirilerek diğer hizmetlere olay bildirimleri göndermenizi ve aşağı akış işlemleri tetiklemenizi sağlar. Kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde yanıt vermek için, iş uygulamalarınızı IoT Hub olaylarını dinleyecek şekilde yapılandırın.Örneğin, bir veritabanını güncelleştiren, bir iş bileti oluşturan ve IoT Hub’ınıza yeni bir IoT cihazı her kaydedildiğinde bir e-posta bildirimi gönderen bir uygulama oluşturun.
 
-[Azure Event Grid](../event-grid/overview.md) , yayımlama-abonelik modeli kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid Azure [işlevleri](../azure-functions/functions-overview.md) ve [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)gibi Azure hizmetleri için yerleşik desteğe sahiptir ve Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](../event-grid/overview.md).
+[Azure Event Grid](../event-grid/overview.md) , yayımlama-abonelik modeli kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid Azure [işlevleri](../azure-functions/functions-overview.md) ve [Azure Logic Apps](../logic-apps/logic-apps-overview.md)gibi Azure hizmetleri için yerleşik desteğe sahiptir ve Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](../event-grid/overview.md).
 
 ![Azure Event Grid mimarisi](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -184,13 +184,13 @@ IoT olaylarının konusu şu biçimi kullanır:
 devices/{deviceId}
 ```
 
-Event Grid Ayrıca, veri içeriği de dahil olmak üzere her bir olayın özniteliklerine filtrelemeye izin verir. Bu, telemetri iletisinin temel içeriğini hangi olayların dağıttığı seçmenizi sağlar. Örnekleri görüntülemek için lütfen [Gelişmiş filtreleme](../event-grid/event-filtering.md#advanced-filtering) bölümüne bakın. Telemetri ileti gövdesinde filtreleme için, kod [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya göre **UTF-8** olarak ayarlamanız gerekir. Bu özelliklerin her ikisi de büyük/küçük harfe duyarlıdır.
+Event Grid Ayrıca, veri içeriği de dahil olmak üzere her bir olayın özniteliklerine filtrelemeye izin verir. Bu, telemetri iletisinin temel içeriğini hangi olayların dağıttığı seçmenizi sağlar. Örnekleri görüntülemek için lütfen [Gelişmiş filtreleme](../event-grid/event-filtering.md#advanced-filtering) bölümüne bakın. Telemetri ileti gövdesinde filtreleme için, kod [sistemi özelliklerinde](./iot-hub-devguide-routing-query-syntax.md#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya göre **UTF-8** olarak ayarlamanız gerekir. Bu özelliklerin her ikisi de büyük/küçük harfe duyarlıdır.
 
 DeviceConnected, DeviceConnected, DeviceCreated ve DeviceDeleted gibi telemetri olmayan olaylar için, abonelik oluşturulurken Event Grid filtrelemesi kullanılabilir. Telemetri olayları için, Event Grid ' deki filtrelemeye ek olarak, kullanıcılar da ileti yönlendirme sorgusu üzerinden cihaz iksi, ileti özellikleri ve gövdesinde filtre uygulayabilir. 
 
 Telemetri olaylarına Event Grid aracılığıyla abone olduğunuzda IoT Hub, veri kaynağı türü cihaz iletilerini Event Grid göndermek için varsayılan bir ileti yolu oluşturur. İleti yönlendirme hakkında daha fazla bilgi için bkz. [IoT Hub Message Routing](iot-hub-devguide-messages-d2c.md). Bu yol, portalda IoT Hub > Ileti yönlendirme altında görünür. Telemetri olayları için oluşturulan örnek aboneliklerin sayısından bağımsız olarak Event Grid yalnızca bir yol oluşturulur. Bu nedenle, farklı filtrelerle birkaç aboneliğe ihtiyacınız varsa, bu sorgularda veya işlecini aynı rotada kullanabilirsiniz. Yolun oluşturulması ve silinmesi, Event Grid aracılığıyla telemetri olaylarının abonelikle denetlenir. IoT Hub Ileti yönlendirmeyi kullanarak Event Grid için bir yol oluşturamaz veya silemezsiniz.
 
-Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirme sorgunuzu](iot-hub-devguide-routing-query-syntax.md)güncelleştirebilirsiniz. Yönlendirme sorgusunun ileti gövdesine yalnızca gövde JSON olduğunda uygulanabileceğini unutmayın. İleti [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya de **UTF-8** olarak ayarlamanız gerekir.
+Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirme sorgunuzu](iot-hub-devguide-routing-query-syntax.md)güncelleştirebilirsiniz. Yönlendirme sorgusunun ileti gövdesine yalnızca gövde JSON olduğunda uygulanabileceğini unutmayın. İleti [sistemi özelliklerinde](./iot-hub-devguide-routing-query-syntax.md#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya de **UTF-8** olarak ayarlamanız gerekir.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Cihazla bağlandı ve cihaz bağlantısı kesildi olaylarına ilişkin sınırlamalar
 

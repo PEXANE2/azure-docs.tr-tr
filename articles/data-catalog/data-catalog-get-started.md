@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88118799"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151997"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Hızlı başlangıç: Azure Veri Kataloğu oluşturma
 
@@ -24,7 +24,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!Note]
-> Azure Güvenlik gereksinimleri nedeniyle, Azure Veri Kataloğu, Aktarım Katmanı Güvenliği (TLS) 1,2 ' i içerir. TLS 1,0 ve TLS 1,1 devre dışı bırakıldı. Makineniz TLS 1,2 için güncellenmemişse kayıt aracını çalıştırırken hatalarla karşılaşabilirsiniz. Makinenizi TLS 1,2 için güncelleştirmek üzere bkz. [Aktarım katmanı güvenliğini etkinleştirme (1,2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
+> Azure Güvenlik gereksinimleri nedeniyle, Azure Veri Kataloğu, Aktarım Katmanı Güvenliği (TLS) 1,2 ' i içerir. TLS 1,0 ve TLS 1,1 devre dışı bırakıldı. Makineniz TLS 1,2 için güncellenmemişse kayıt aracını çalıştırırken hatalarla karşılaşabilirsiniz. Makinenizi TLS 1,2 için güncelleştirmek üzere bkz. [Aktarım katmanı güvenliğini etkinleştirme (1,2)](/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
 
 Başlamak için şunları yapmanız gerekir:
 
@@ -77,7 +77,7 @@ Bir kuruluş (Azure Active Directory etki alanı) için yalnızca bir tane veri 
 
 10. **Portal başlığı** ' nı genişletin ve Portal başlığında görüntülenecek ek metni ekleyin.
 
-    ![Azure Veri Kataloğu-portal başlığı](media/data-catalog-get-started/data-catalog-portal-title.png)
+    ![Azure veri Catalog-Portal başlığı](media/data-catalog-get-started/data-catalog-portal-title.png)
 
 11. **Ayarlar** sayfasını tamamladıktan sonra, **Yayımla** sayfasına gidin.
 

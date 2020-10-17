@@ -3,16 +3,16 @@ title: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı
 description: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı rapor etme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287286"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152202"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Birden çok laboratuvarda ve aboneliğe ilişkin Azure DevTest Labs kullanımını raporla
 
-Çoğu büyük kuruluş, kullanımdaki eğilimleri ve aykırı değerleri görselleştirerek bu kaynaklarla daha etkili olması için kaynak kullanımını izlemek ister. Kaynak kullanımına göre laboratuvar sahipleri ve yöneticileri, [kaynak kullanımını ve maliyetlerini geliştirmek](../cost-management-billing/manage/getting-started.md)için laboratuvarları özelleştirebilir. Azure DevTest Labs, kullanım desenlerine daha derin bakmak için laboratuvar başına kaynak kullanımını indirebilirsiniz. Bu kullanım desenleri, verimliliği artırmak için değişiklikleri Pinpoint 'e yardımcı olabilir. Çoğu kurum hem bireysel Laboratuvar kullanımı hem de [birden çok laboratuvarda ve aboneliğin](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)genel kullanımını ister. 
+Çoğu büyük kuruluş, kullanımdaki eğilimleri ve aykırı değerleri görselleştirerek bu kaynaklarla daha etkili olması için kaynak kullanımını izlemek ister. Kaynak kullanımına göre laboratuvar sahipleri ve yöneticileri, [kaynak kullanımını ve maliyetlerini geliştirmek](../cost-management-billing/cost-management-billing-overview.md)için laboratuvarları özelleştirebilir. Azure DevTest Labs, kullanım desenlerine daha derin bakmak için laboratuvar başına kaynak kullanımını indirebilirsiniz. Bu kullanım desenleri, verimliliği artırmak için değişiklikleri Pinpoint 'e yardımcı olabilir. Çoğu kurum hem bireysel Laboratuvar kullanımı hem de [birden çok laboratuvarda ve aboneliğin](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)genel kullanımını ister. 
 
 Bu makalede, kaynak kullanım bilgilerinin birden çok laboratuvarda ve aboneliğe nasıl işleneceği açıklanır.
 
@@ -75,7 +75,7 @@ Tek bir konum arabirimindeki kaynaklarınızı oluşturmak, bağlamak ve yönetm
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Sistem kurulduktan ve veriler uzun süreli depolamaya taşındıktan sonra, bir sonraki adım, verilerin yanıt vermesi gereken sorularla karşılaşmaktır. Örneğin: 
+Sistem kurulduktan ve veriler uzun süreli depolamaya taşındıktan sonra, bir sonraki adım, verilerin yanıt vermesi gereken sorularla karşılaşmaktır. Örnek: 
 
 -   VM boyutu kullanımı nedir?
 

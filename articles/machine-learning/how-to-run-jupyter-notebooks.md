@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d17fb9bee77aae9945c12d45a5ffff316f9d639
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460042"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144243"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 
@@ -221,6 +221,9 @@ Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler '
     conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+
+> [!NOTE]
+> Bir not defteri içinde paket yönetimi için **% PIP** veya **% Conda** Magic işlevlerini kullanın, tüm paketlere (Şu anda çalışan çekirdekte olan paketler dahil) karşılık olarak paketleri **Şu anda çalışır durumda** olan **! PIP** veya **! Conda** yerine şu anda çalışan çekirdeğe yükler
 
 [Kullanılabilir Jupyter kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 'leri yüklenebilir.
 

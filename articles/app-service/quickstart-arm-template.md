@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aad41ed1fb270acb38ec599484e137fbe5a6dceb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 173c6ff8bb4bcee7ecc40f9f277fae0e4cb8dd13
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131352"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152356"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak App Service uygulaması oluşturma
 
-Azure Resource Manager şablonu (ARM şablonu) ve Cloud Shell [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) kullanarak buluta uygulama dağıtarak [Azure App Service](overview.md) kullanmaya başlayın. Ücretsiz bir App Service katmanı kullandığınız için, bu hızlı başlangıcı tamamlamaya yönelik bir ücret ödeirsiniz.
+Azure Resource Manager şablonu (ARM şablonu) ve Cloud Shell [Azure CLI](/cli/azure/get-started-with-azure-cli) kullanarak buluta uygulama dağıtarak [Azure App Service](overview.md) kullanmaya başlayın. Ücretsiz bir App Service katmanı kullandığınız için, bu hızlı başlangıcı tamamlamaya yönelik bir ücret ödeirsiniz.
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,7 +38,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 ::: zone pivot="platform-windows"
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows) alınmıştır. Bir App Service planını ve bir App Service uygulamasını Windows üzerinde dağıtır. .NET Core, .NET Framework, PHP, Node.js ve statik HTML uygulamalarıyla uyumludur. Java için bkz. [Java uygulaması oluşturma](app-service-web-get-started-java.md).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows) alınmıştır. Bir App Service planını ve bir App Service uygulamasını Windows üzerinde dağıtır. .NET Core, .NET Framework, PHP, Node.js ve statik HTML uygulamalarıyla uyumludur. Java için bkz. [Java uygulaması oluşturma](./quickstart-java.md).
 
 :::code language="json" source="~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json":::
 
@@ -51,8 +51,8 @@ Bu şablon, kolaylık olması için önceden tanımlanmış birkaç parametre i�
 
 | Parametreler | Tür    | Varsayılan değer                | Description |
 |------------|---------|------------------------------|-------------|
-| webAppName | dize  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Uygulama adı |
-| location   | dize  | "[[resourceGroup (). Location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Uygulama bölgesi |
+| webAppName | dize  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
+| location   | dize  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
 | isteyin        | dize  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
 | language   | dize  | .net                       | Programlama dili yığını (.net, php, Node, HTML) |
 | helloWorld | boolean | Yanlış                        | Doğru = "Merhaba Dünya" uygulamasını dağıt |
@@ -72,8 +72,8 @@ Bu şablon, kolaylık olması için önceden tanımlanmış birkaç parametre i�
 
 | Parametreler | Tür    | Varsayılan değer                | Description |
 |------------|---------|------------------------------|-------------|
-| webAppName | dize  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Uygulama adı |
-| location   | dize  | "[[resourceGroup (). Location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Uygulama bölgesi |
+| webAppName | dize  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
+| location   | dize  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
 | isteyin        | dize  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
 | linuxFxVersion   | dize  | "DOTNETCORE&#124;3,0        | "Programlama dil yığını &#124; sürümü" |
 | repoUrl    | dize  | " "                          | Dış git deposu (isteğe bağlı) |
@@ -145,7 +145,7 @@ Artık gerekli olmadığında [kaynak grubunu silin](../azure-resource-manager/m
 > [MySQL ile PHP](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Java ile Azure SQL veritabanı 'na bağlanma](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Java ile Azure SQL veritabanı 'na bağlanma](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Özel etki alanı eşleme](app-service-web-tutorial-custom-domain.md)

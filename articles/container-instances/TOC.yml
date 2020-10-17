@@ -43,7 +43,7 @@
 - name: Örnekler
   items:
     - name: Kod örnekleri
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=container%20instance'
+      href: /samples/browse/?products=azure&terms=container%2binstance
     - name: Resource Manager şablonları
       href: container-instances-samples-rm.md
 - name: Kavramlar

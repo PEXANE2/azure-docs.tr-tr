@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 830052237580101d9141bbf812c050430c6269f2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057493"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144569"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -25,7 +25,7 @@ Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti 
 > * Kaynakları temizleme
 > * Sonraki adımlar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -320,13 +320,20 @@ TWINS, ilk çalıştırmadan sonra zaten mevcut olsa bile, ikinci kez oluşturul
 
 Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunları bir **ikizi grafiğine**bağlayabilirsiniz. [İkizi grafikleri](concepts-twins-graph.md) , tüm ortamınızı temsil etmek için kullanılır.
 
-İlişki oluşturabilmek için `Azure.DigitalTwins.Core.Serialization` ad alanına ihtiyacınız olacaktır. Bunu projeye bu deyimle daha önce eklediniz `using` :
+Bu kod örneği, ilişki oluşturma konusunda yardımcı olmak için `Azure.DigitalTwins.Core.Serialization` ad alanını kullanır. Bunu projeye bu deyimle daha önce eklediniz `using` :
 
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` Dijital TWINS ve ilişkilerle çalışmak için gerekli değildir; Bu, doğru biçime veri almaya yardımcı olabilecek isteğe bağlı bir ad alanıdır. Kullanmanın bazı alternatifleri şunlardır:
+>* JSON nesnesi oluşturmak için dizeleri bitiştirme
+>* `System.Text.Json`Dinamik olarak JSON nesnesi derlemek gibi BIR JSON ayrıştırıcısı kullanma
+>* C# dilinde özel türlerinizi modelleme, onları örneklendirme ve dizelerde serileştirme
+
 `Program`Sınıfına, yönteminin altına yeni bir static yöntem ekleyin `Main` :
+
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
@@ -348,7 +355,8 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Daha sonra, `Main` kodu çağırmak için yönteminin sonuna aşağıdaki kodu ekleyin `CreateRelationship` :
+Sonra, yöntemi `Main` çağırmak `CreateRelationship` ve yeni yazdığınız kodu kullanmak için yönteminin sonuna aşağıdaki kodu ekleyin:
+
 ```csharp
 // Connect the twins with relationships
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");

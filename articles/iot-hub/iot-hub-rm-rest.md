@@ -9,18 +9,18 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe143b1c172c5d89a7dba33731a378df988b4a47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89014617"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144425"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Kaynak sağlayıcısı REST API (.NET) kullanarak IoT Hub 'ı oluşturma
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Azure IoT Hub 'larını programlı bir şekilde oluşturmak ve yönetmek için [IoT Hub kaynak sağlayıcısı REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) kullanabilirsiniz. Bu öğretici, bir C# programından IoT Hub 'ı oluşturmak için IoT Hub kaynak sağlayıcısı REST API nasıl kullanacağınızı gösterir.
+Azure IoT Hub 'larını programlı bir şekilde oluşturmak ve yönetmek için [IoT Hub kaynak sağlayıcısı REST API](/rest/api/iothub/iothubresource) kullanabilirsiniz. Bu öğretici, bir C# programından IoT Hub 'ı oluşturmak için IoT Hub kaynak sağlayıcısı REST API nasıl kullanacağınızı gösterir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -30,7 +30,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Etkin bir Azure hesabı. Hesabınız yoksa, yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
-* [Azure PowerShell 1,0](https://docs.microsoft.com/powershell/azure/install-Az-ps) veya üzeri.
+* [Azure PowerShell 1,0](/powershell/azure/install-Az-ps) veya üzeri.
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -78,7 +78,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>IoT Hub 'ı oluşturmak için REST API kaynak sağlayıcısını kullanma
 
-Kaynak grubunuzda bir IoT Hub 'ı oluşturmak için [REST API IoT Hub kaynak sağlayıcısını](https://docs.microsoft.com/rest/api/iothub/iothubresource) kullanın. Ayrıca, var olan bir IoT Hub 'ında değişiklik yapmak için kaynak sağlayıcısı REST API de kullanabilirsiniz.
+Kaynak grubunuzda bir IoT Hub 'ı oluşturmak için [REST API IoT Hub kaynak sağlayıcısını](/rest/api/iothub/iothubresource) kullanın. Ayrıca, var olan bir IoT Hub 'ında değişiklik yapmak için kaynak sağlayıcısı REST API de kullanabilirsiniz.
 
 1. Program.cs 'e aşağıdaki yöntemi ekleyin:
 
@@ -175,7 +175,7 @@ Artık uygulamayı oluşturmadan ve çalıştırmadan önce **CreateIoTHub** yö
 
 Artık REST API kaynak sağlayıcısını kullanarak bir IoT Hub 'ı dağıttıysanız, daha fazla incelemek isteyebilirsiniz:
 
-* [IoT Hub kaynak sağlayıcısı REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)özellikleri hakkında bilgi edinin.
+* [IoT Hub kaynak sağlayıcısı REST API](/rest/api/iothub/iothubresource)özellikleri hakkında bilgi edinin.
 
 * Azure Resource Manager özellikleri hakkında daha fazla bilgi edinmek için [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md) konusunu okuyun.
 
@@ -187,4 +187,4 @@ IoT Hub için geliştirme hakkında daha fazla bilgi için aşağıdaki makalele
 
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/quickstart-linux.md)

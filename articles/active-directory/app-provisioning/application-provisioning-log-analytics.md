@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: d3fd553e6903951de64c301df94ea9f2fc3eb471
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132100"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145587"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Sağlamanın Azure Izleyici günlükleriyle nasıl tümleştirildiğini anlama
 
@@ -26,7 +26,7 @@ Sağlama, Azure Izleyici günlükleri ve Log Analytics ile tümleşir. Azure izl
 
 Azure izleme ve Log Analytics hakkında zaten bilgi sahibi olmanız gerekir. Aksi takdirde, hakkında bilgi edinmek için üzerine atlayın ve ardından uygulama sağlama günlükleri hakkında bilgi edinmek için geri dönün. Azure izleme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyiciye genel bakış](../../azure-monitor/overview.md). Azure Izleyici günlükleri ve Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/log-query/log-query-overview.md).
 
-Azure izleme üzerinde yapılandırıldıktan sonra, uygulama sağlama için günlükleri etkinleştirebilirsiniz. Seçeneği **Tanılama ayarları** sayfasında bulunur.
+Azure izlemeyi yapılandırdıktan sonra, uygulama sağlama için günlükleri etkinleştirebilirsiniz. Seçeneği **Tanılama ayarları** sayfasında bulunur.
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 

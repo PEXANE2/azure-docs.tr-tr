@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aded49b5b9509a75e61612e44ffa19ff377d1712
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239655"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148332"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure için Azure CLı IoT Hub cihaz yönetimi için IoT uzantısını kullanma
 
@@ -23,7 +23,7 @@ ms.locfileid: "80239655"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension) , [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)'nin özelliklerine ekleyen açık kaynaklı bir IoT uzantısıdır. Azure CLı, Azure Resource Manager ve yönetim uç noktalarıyla etkileşime yönelik komutlar içerir. Örneğin, Azure CLı kullanarak bir Azure VM veya IoT Hub 'ı oluşturabilirsiniz. CLı uzantısı, Azure hizmeti 'nin Azure CLı 'yi genişletmesine olanak tanıyarak, hizmete özgü ek yeteneklere erişmenizi sağlar. IoT uzantısı, IoT geliştiricilerine tüm IoT Hub, IoT Edge ve IoT Hub cihaz sağlama hizmeti özelliklerine yönelik komut satırı erişimi sağlar.
+[Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension) , [Azure CLI](/cli/azure/overview?view=azure-cli-latest)'nin özelliklerine ekleyen açık kaynaklı bir IoT uzantısıdır. Azure CLı, Azure Resource Manager ve yönetim uç noktalarıyla etkileşime yönelik komutlar içerir. Örneğin, Azure CLı kullanarak bir Azure VM veya IoT Hub 'ı oluşturabilirsiniz. CLı uzantısı, Azure hizmeti 'nin Azure CLı 'yi genişletmesine olanak tanıyarak, hizmete özgü ek yeteneklere erişmenizi sağlar. IoT uzantısı, IoT geliştiricilerine tüm IoT Hub, IoT Edge ve IoT Hub cihaz sağlama hizmeti özelliklerine yönelik komut satırı erişimi sağlar.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -61,7 +61,7 @@ Azure CLI ve IoT uzantısını çeşitli yönetim seçenekleriyle çalıştırı
 
 * [Python 2.7x veya Python 3.x](https://www.python.org/downloads/)
 
-* Azure CLı. Yüklemeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı sürümünüz en azından 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az –version` kullanın.
+* Azure CLı. Yüklemeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı sürümünüz en azından 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az –version` kullanın.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 

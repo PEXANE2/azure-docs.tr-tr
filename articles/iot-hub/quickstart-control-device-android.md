@@ -13,12 +13,12 @@ ms.custom:
 - devx-track-java
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 2a12c916b6f81f21574c4b9dc748a279c22f199f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bd23483997b94f16e926c2849e0879b41316fba3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87315628"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148894"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Hızlı başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme (Android)
 
@@ -52,7 +52,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Önceki hızlı başlangıcı tamamladıysanız [: bir cihazdan IoT Hub 'ına telemetri gönderin](quickstart-send-telemetry-android.md), bu adımı atlayabilir ve daha önce oluşturduğunuz IoT Hub 'ını kullanabilirsiniz.
 
@@ -140,7 +140,7 @@ Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öyk
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub’ınızdan telemetri okuma
 
-Bu bölümde, Android cihazı tarafından gönderilen iletileri izlemek için [IoT uzantısıyla](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanacaksınız.
+Bu bölümde, Android cihazı tarafından gönderilen iletileri izlemek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanacaksınız.
 
 1. Azure Cloud Shell'i kullanarak, IoT hub’ınızdan gelen iletilere bağlanmak ve bu iletileri okumak için aşağıdaki komutu çalıştırın:
 

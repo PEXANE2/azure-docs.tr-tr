@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654115"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146143"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Hızlı başlangıç: Azure veri paylaşma ve Kaynak Yöneticisi şablonlarını kullanarak veri paylaşma
 
@@ -60,7 +60,7 @@ Bu şablon, öğrenme amacıyla oluşturulur. Uygulamada, genellikle var olan bi
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-Bunun nedeni, dağıtımın, RBAC ataması sonlandırılmadan önce veri kümesini oluşturmaya çalışıyor olmasından kaynaklanır. Hata iletisine rağmen dağıtım başarılı olabilir.  [Dağıtılan kaynakları gözden geçirmeyi](#review-deployed-resources)hala öğreneceksiniz.
+Bunun nedeni, dağıtımın Azure rolü atamasının sonlandırılmadan önce veri kümesini oluşturmaya çalışıyor olmasından kaynaklanır. Hata iletisine rağmen dağıtım başarılı olabilir.  [Dağıtılan kaynakları gözden geçirmeyi](#review-deployed-resources)hala öğreneceksiniz.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 

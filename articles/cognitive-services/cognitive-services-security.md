@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326822"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152287"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
 
@@ -33,7 +33,7 @@ HTTP üzerinden sunulan bilişsel hizmetler uç noktaları, TLS 1,2 ' i zorlar. 
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Kimlik doğrulaması tartışırken, yaygın olarak karşılaşılan birkaç yanlış rastlamalar vardır. Kimlik doğrulama ve yetkilendirme genellikle bir diğeri için karıştırılır. Kimlik ayrıca güvenlik ' de bir ana bileşendir. Kimlik, bir <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">sorumlu <span class="docon docon-navigate-external x-hidden-focus"></span> </a>hakkındaki bilgilerin koleksiyonudur. Kimlik sağlayıcıları (IDP) kimlik doğrulama hizmetlerine kimlikler sağlar. Kimlik doğrulaması, bir kullanıcının kimliğini doğrulama işlemidir. Yetkilendirme, belirli bir kimlik için kaynaklara yönelik erişim haklarının ve ayrıcalıkların belirtiledir. Bilişsel hizmetler tekliflerinden bazıları rol tabanlı erişim denetimi (RBAC) içerir. RBAC, sorumluları el ile yönetme ile ilgili bazı sertifika basitleştirecek şekilde kullanılabilir. Daha fazla ayrıntı için bkz. [Azure kaynakları için rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
+Kimlik doğrulaması tartışırken, yaygın olarak karşılaşılan birkaç yanlış rastlamalar vardır. Kimlik doğrulama ve yetkilendirme genellikle bir diğeri için karıştırılır. Kimlik ayrıca güvenlik ' de bir ana bileşendir. Kimlik, bir <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">sorumlu <span class="docon docon-navigate-external x-hidden-focus"></span> </a>hakkındaki bilgilerin koleksiyonudur. Kimlik sağlayıcıları (IDP) kimlik doğrulama hizmetlerine kimlikler sağlar. Kimlik doğrulaması, bir kullanıcının kimliğini doğrulama işlemidir. Yetkilendirme, belirli bir kimlik için kaynaklara yönelik erişim haklarının ve ayrıcalıkların belirtiledir. Bilişsel hizmetler tekliflerinin birkaçı, Azure rol tabanlı erişim denetimi (Azure RBAC) içerir. Azure RBAC, sorumluları el ile yönetme ile ilgili bazı sertifika işlemlerini basitleştirmek için kullanılabilir. Daha ayrıntılı bilgi için bkz. [Azure için Azure rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
 
 Abonelik anahtarları, erişim belirteçleri ve Azure Active Directory (AAD) ile kimlik doğrulaması hakkında daha fazla bilgi için bkz. Azure bilişsel <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Hizmetler <span class="docon docon-navigate-external x-hidden-focus"></span> 'e yönelik kimlik doğrulama istekleri</a>.
 
@@ -201,12 +201,12 @@ NSString* value =
 
 Bu bilişsel hizmet için Müşteri Kasası kullanılabilir:
 
-* Çevirmen
+* Translator
 
 Aşağıdaki hizmetler için, Microsoft mühendisleri E0 katmanındaki herhangi bir müşteri verilerine erişmeyecektir: 
 
 * Language Understanding
-* Yüz
+* Yüz Tanıma
 * Content Moderator
 * Kişiselleştirme
 

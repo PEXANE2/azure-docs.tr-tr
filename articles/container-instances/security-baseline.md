@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3248085a0719628bcf7fe42253156d9652b86cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393437"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148627"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances için Azure Güvenlik temeli
 
@@ -73,7 +73,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../sec
 
 * [Azure Güvenlik duvarını dağıtma](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/threat-protection.md)
+* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
 * [Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma 'yi anlama](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -143,7 +143,7 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 * [Hizmet etiketlerini anlama ve kullanma](../virtual-network/service-tags-overview.md) 
 
-* [Uygulama güvenlik gruplarını anlama ve kullanma](../virtual-network/security-overview.md#application-security-groups)
+* [Uygulama güvenlik gruplarını anlama ve kullanma](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 * [Sanal bir ağda dağıtma-Azure Container Instances](./container-instances-vnet.md)
 
@@ -159,7 +159,7 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 * [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ağ için Azure Ilke örnekleri](/azure/governance/policy/samples/#network)
+* [Ağ için Azure Ilke örnekleri](../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint oluşturma](../governance/blueprints/create-blueprint-portal.md)
 
@@ -498,7 +498,7 @@ Hassas bilgileri depolayan veya işleyen görüntülerin izlenmesine yardımcı 
 
 * [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim grupları oluşturma](../governance/management-groups/create.md)
+* [Yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
@@ -613,7 +613,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 * [Azure Container Instances için güvenlik konuları](./container-instances-image-security.md)
 
-* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/azure-container-registry-integration.md)
+* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -652,7 +652,7 @@ Kapsayıcı görüntülerine yama yapmak için özel veya üçüncü taraf bir �
 
 * [Azure Container Instances için güvenlik konuları](./container-instances-image-security.md)
 
-* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/azure-container-registry-integration.md)
+* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -664,7 +664,7 @@ Kapsayıcı görüntülerine yama yapmak için özel veya üçüncü taraf bir �
 
 * [Azure Container Instances için güvenlik konuları](./container-instances-image-security.md)
 
-* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/azure-container-registry-integration.md)
+* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -707,7 +707,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 * [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
@@ -755,7 +755,7 @@ Anormal davranış için Azure Container Instances günlüklerini izleyin ve son
 * [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
 
 * [Azure Container Instances için güvenlik konuları](./container-instances-image-security.md)
-* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/azure-container-registry-integration.md)
+* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/defender-for-container-registries-introduction.md)
 
 
 
@@ -789,7 +789,7 @@ Anormal davranış için Azure Container Instances günlüklerini izleyin ve son
 
 * [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/index.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -825,7 +825,7 @@ Farklı Azure abonelikleri veya yönetim grupları kullanarak Azure Container In
 
 * [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim grupları oluşturma](../governance/management-groups/create.md)
+* [Yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 * [Sanal bir ağda dağıtma-Azure Container Instances](./container-instances-vnet.md)
 
@@ -900,7 +900,7 @@ Kapsayıcı görüntülerine yama yapmak için özel veya üçüncü taraf bir �
 
 * [Azure Container Instances için kapsayıcı izleme ve tarama güvenlik önerileri](./container-instances-image-security.md)
 
-* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/azure-container-registry-integration.md)
+* [Güvenlik Merkezi ile Azure Container Registry tümleştirme](../security-center/defender-for-container-registries-introduction.md)
 * [Azure Container Registry görevler için temel görüntü güncelleştirmeleri hakkında](../container-registry/container-registry-tasks-base-images.md)
 
 
@@ -1105,7 +1105,7 @@ Microsoft kötü amaçlı yazılımdan koruma, Azure hizmetlerini destekleyen te
 
 **Rehberlik**: Azure Key Vault Soft-Delete, anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için etkinleştirebilirsiniz.
 
-* [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

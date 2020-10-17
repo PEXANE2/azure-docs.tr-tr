@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87461009"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148760"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme
 
@@ -61,21 +61,19 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
    * **ReturnUrl** ve **anahtar** sorgu PARAMETRELERINE göre BIR dizenin HMAC-SHA512 olur karmasını hesaplama ([aşağıda belirtilen örnek kod]):
      
      > HMAC (**anahtar** + ' \n ' + **ReturnUrl**)
-     > 
-     > 
+
    * Yukarıdaki hesaplanmış karmayı **SIG** sorgu parametresinin değeriyle karşılaştırın. İki karma eşleşiyorsa, sonraki adıma geçin, aksi takdirde isteği reddedin.
 3. Oturum açma/kaydolma için bir istek aldığınızı doğrulayın: **işlem** sorgu parametresi "**SignIn**" olarak ayarlanacak.
 4. Kullanıcıyı oturum açmak veya kaydolmak için kullanıcı ARABIRIMI ile sunun
 5. Kullanıcı kaydolduktan sonra, API Management için bunlara karşılık gelen bir hesap oluşturmanız gerekir. API Management REST API [bir kullanıcı oluşturun] . Bunu yaparken, kullanıcı KIMLIĞINI Kullanıcı deponuzdaki aynı değere veya izlediğiniz bir KIMLIĞE ayarlamış olduğunuzdan emin olun.
 6. Kullanıcının kimliği başarıyla doğrulandığında:
    
-   * API Management ile [Çoklu oturum açma (SSO) belirteci isteme] REST API
+   * API Management ile [paylaşılan erişim belirteci isteme] REST API
    * Yukarıdaki API çağrısından aldığınız SSO URL 'sine bir returnUrl sorgu parametresi ekleyin:
      
-     > Örneğin, `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
-     > 
-     > 
-   * kullanıcıyı yukarıda üretilen URL 'ye yönlendir
+     > Örneğin, `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     
+   * Kullanıcıyı yukarıda üretilen URL 'ye yönlendir
 
 **Oturum açma** işlemine ek olarak, önceki adımları izleyerek ve aşağıdaki işlemlerden birini kullanarak hesap yönetimi de gerçekleştirebilirsiniz:
 
@@ -186,7 +184,7 @@ Temsili hakkında daha fazla bilgi için aşağıdaki videoya bakın:
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[Çoklu oturum açma (SSO) belirteci isteme]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[Paylaşılan erişim belirteci isteme]: /rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken
 [Kullanıcı Oluştur]: /rest/api/apimanagement/2019-12-01/user/createorupdate
 [abonelikler için REST API çağırma]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps

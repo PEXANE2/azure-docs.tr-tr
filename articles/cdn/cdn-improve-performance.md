@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358296"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148749"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN’de dosyaları sıkıştırarak performansı geliştirme
 Dosya sıkıştırma, dosya aktarım hızını artırmak için basit ve etkili bir yöntemdir ve bir dosyanın boyutunu sunucudan gönderilmeden önce azaltarak sayfa yükleme performansını artırır. Dosya sıkıştırma, bant genişliği maliyetlerini azaltabilir ve kullanıcılarınız için daha fazla yanıt veren bir deneyim sağlayabilir.
@@ -112,6 +112,8 @@ Bu profiller aşağıdaki sıkıştırma kodlamalarını destekler:
 İstek birden fazla sıkıştırma türünü destekliyorsa, brotli sıkıştırması önceliklidir.
 
 Bir varlık isteği gzip sıkıştırmasını belirttiğinde ve istek bir önbellek isabetsizliği ile sonuçlanırsa, Azure CDN doğrudan POP sunucusunda varlığın gzip sıkıştırmasını gerçekleştirir. Daha sonra, sıkıştırılan dosya önbellekten sunulur.
+
+Kaynak, CDN POP 'a sıkıştırılmış veri göndermek için öbekli aktarım kodlaması (CTE) kullanıyorsa, 8MB 'den büyük yanıt boyutları desteklenmez. 
 
 ### <a name="azure-cdn-from-verizon-profiles"></a>Verizon profillerden Azure CDN
 
