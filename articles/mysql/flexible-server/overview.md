@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993741"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167058"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -121,10 +121,18 @@ Hizmet MySQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumlul
 
 Azure 'da iş yükünüzü çalıştırmanın avantajlarından biri küresel erişime sahip. MySQL için Azure veritabanı esnek sunucusu şu Azure bölgelerinde bugün kullanılabilir:
 
+- West Europe
 - Kuzey Avrupa
-- Güneydoğu Asya
+- Güney Birleşik Krallık
 - Doğu ABD 2
 - Batı ABD 2
+- Central US
+- Doğu ABD
+- Orta Kanada
+- Güneydoğu Asya
+- Güney Kore - Orta
+- Doğu Japonya
+- Doğu Avustralya
 
 Yakında yeni sunucular eklemeye çalışıyoruz.
 

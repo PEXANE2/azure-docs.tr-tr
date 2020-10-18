@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
-ms.openlocfilehash: 4041b824d099edbefcc45c68163257ca69ddf7de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions
+ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995691"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164491"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
@@ -37,30 +38,42 @@ Başlamadan önce, aşağıdaki bölümlerde yer alan bilgileri anladığınızd
 >[!NOTE]
 >Bu bölümde açıklanan aşağıdaki bilgiler [hizmet eşlemesi çözümü](service-map.md)için de geçerlidir.  
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
 
 VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalışma alanını destekler:
 
-- Orta Batı ABD
-- Batı ABD
-- Batı ABD 2
-- Orta Güney ABD
-- Doğu ABD
-- Doğu ABD 2
-- Central US
-- Orta Kuzey ABD
-- US Gov az
-- US Gov VA
-- Orta Kanada
-- Güney Birleşik Krallık
-- Kuzey Avrupa
-- West Europe
-- Doğu Asya
-- Güneydoğu Asya
-- Orta Hindistan
-- Doğu Japonya
-- Doğu Avustralya
-- Güneydoğu Avustralya
+- Afrika
+  - Güney Afrika - Kuzey
+- Asya Pasifik
+  - Doğu Asya
+  - Güneydoğu Asya
+- Avustralya
+  - Doğu Avustralya
+  - Güneydoğu Avustralya
+- Azure Kamu
+  - US Gov az
+  - US Gov VA
+- Kanada
+  - Orta Kanada
+- Avrupa
+  - Kuzey Avrupa
+  - West Europe
+- Hindistan
+  - Orta Hindistan
+- Japonya
+  - Doğu Japonya
+- Birleşik Krallık
+  - Güney Birleşik Krallık
+- Birleşik Devletler
+  - Central US
+  - Doğu ABD
+  - Doğu ABD 2
+  - Orta Kuzey ABD
+  - Orta Güney ABD
+  - Orta Batı ABD
+  - Batı ABD
+  - Batı ABD 2
+
 
 >[!NOTE]
 >Azure VM 'Leri herhangi bir bölgede izleyebilirsiniz. VM 'Ler, Log Analytics çalışma alanı tarafından desteklenen bölgelerle sınırlı değildir.
@@ -94,11 +107,11 @@ VM'ler için Azure İzleyici destekleyen bağımlılık aracısının Linux dest
 ## <a name="supported-azure-arc-machines"></a>Desteklenen Azure yay makineleri
 VM'ler için Azure İzleyici, Arc uzantı hizmetinin kullanılabildiği bölgelerde Azure Arc etkin sunucuları için kullanılabilir. Arc aracısının 0,9 veya sonraki bir sürümünü çalıştırıyor olmanız gerekir.
 
-| Bağlı kaynak | Desteklenir | Açıklama |
+| Bağlı kaynak | Desteklenir | Description |
 |:--|:--|:--|
 | Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](../platform/agents-overview.md#supported-operating-systems). |
 | Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| System Center Operations Manager yönetim grubu | Hayır | |
+| System Center Operations Manager yönetim grubu | No | |
 
 ## <a name="agents"></a>Aracılar
 VM'ler için Azure İzleyici, her bir sanal makinede veya sanal makine ölçek kümesi 'nin izlenmesi için aşağıdaki iki aracısının yüklü olmasını gerektirir. Bu aracıları yüklemek ve bu aracıları çalışma alanına bağlamak, kaynağı eklemek için tek gereksinimdir.

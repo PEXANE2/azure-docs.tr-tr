@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539406"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166599"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı görselleştirme parçalarını görüntülemek için başvuru kılavuzu
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makale, özel görünümlerinizdeki kullanılabilir görselleştirme bölümlerinin ayarlarına yönelik bir başvuru kılavuzudur.
@@ -24,7 +24,7 @@ Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
 Kullanılabilir görünüm Tasarımcısı kutucuk türleri aşağıdaki tabloda açıklanmıştır:
 
-| Görünüm türü | Açıklama |
+| Görünüm türü | Description |
 |:--- |:--- |
 | [Sorgu listesi](#list-of-queries-part) |Günlük sorgularının bir listesini görüntüler. Sonuçlarını göstermek için her bir sorguyu seçebilirsiniz. |
 | [Sayı ve liste](#number-and-list-part) |Üst bilgi, bir günlük sorgusundan kayıt sayısını gösteren tek bir sayı görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |
@@ -44,7 +44,7 @@ Sonraki bölümlerde, kutucuk türleri ve özellikleri ayrıntılı olarak açı
 ## <a name="list-of-queries-part"></a>Sorgu listesi bölümü
 Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. Sonuçlarını göstermek için her bir sorguyu seçebilirsiniz. Görünüm, varsayılan olarak tek bir sorgu içerir ve ek sorgular eklemek için **+ sorgu** seçeneğini belirleyebilirsiniz.
 
-![Sorgu görünümü listesi](media/view-designer-parts/view-list-queries.png)
+![Azure Izleyici görünümü Tasarımcısı 'nda sorgu görselleştirme bölümü listesinin ekran görüntüsü.](media/view-designer-parts/view-list-queries.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
@@ -60,7 +60,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 ## <a name="number-and-list-part"></a>Sayı ve liste bölümü
 Üst bilgi, bir günlük sorgusundan kayıt sayısını gösteren tek bir sayı görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler.
 
-![Sorgu görünümü listesi](media/view-designer-parts/view-number-list.png)
+![Azure Izleyici Görünüm Tasarımcısı 'nda bulunan sayı ve liste görselleştirme bölümlerinin ekran görüntüsü.](media/view-designer-parts/view-number-list.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
@@ -81,7 +81,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
+| Name |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -112,7 +112,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
+| Name |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -153,7 +153,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
+| Name |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -185,7 +185,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
+| Name |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -203,9 +203,9 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Color |Üst bilgi için arka plan rengi. |
 | **Üst bilgi** | |
 | Görüntü |Üst bilgide görüntülenen resim dosyası. |
-| Etiketle |Üst bilgide görüntülenen metin. |
+| Etiket |Üst bilgide görüntülenen metin. |
 | **Üst bilgi** |**> bağlantısı** |
-| Etiketle |Bağlantı metni. |
+| Etiket |Bağlantı metni. |
 | Url |Bağlantının URL 'Si. |
 | **Bilgi öğeleri** | |
 | Başlık |Her öğenin başlığı için görüntülenen metin. |
@@ -246,7 +246,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
+| Name |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -282,7 +282,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
+| Name |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -352,7 +352,7 @@ Aşağıdaki tabloda eşiklerin ayarları açıklanmaktadır:
 | Ayar | Açıklama |
 |:--- |:--- |
 | Eşikleri etkinleştir |Her bir değerin solunda bir renk simgesi göstermek için bu bağlantıyı seçin. Simge, belirtilen eşiklere göre değerin sistem durumunu gösterir. |
-| Adı |Eşik değerinin adı. |
+| Name |Eşik değerinin adı. |
 | Eşik |Eşiğin değeri. Her bir liste öğesi için sistem durumu rengi, öğenin değeri tarafından aşılan en yüksek eşik değerinin rengine ayarlanır. Eşik değeri aşılmadığı takdirde, varsayılan bir renk kullanılır. |
 | Color |Eşik değerini gösteren renk. |
 

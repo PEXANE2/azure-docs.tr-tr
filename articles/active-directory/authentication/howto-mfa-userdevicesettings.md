@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7705792e58a50371a11d0b733b36ffa325681045
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2006422d3516aa67076233b0b4b9d3e7c58a7232
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968642"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166530"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme
 
@@ -36,8 +36,8 @@ Azure Multi-Factor Authentication kullanıcılarının yönetilmesine yardımcı
       > Yönetici MFA için yeniden kayıt gerektirdiğinde kullanıcının şu anda kayıtlı kimlik doğrulama yöntemleri silinmez. Bir Kullanıcı MFA için yeniden kaydolduktan sonra, güvenlik bilgilerini gözden geçirmelerini ve artık kullanılamayan önceden kaydedilmiş kimlik doğrulama yöntemlerini silmenizi öneririz.
    
    - **MFA oturumlarını Iptal etme** , kullanıcının HATıRLANAN MFA oturumlarını temizler ve cihazdaki ilke için bir sonraki ihtiyaç DUYULıŞıNDA MFA gerçekleştirmesini gerektirir.
-
-   ![Azure portal kimlik doğrulama yöntemlerini yönetin](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+   
+    :::image type="content" source="media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png" alt-text="Azure portal kimlik doğrulama yöntemlerini yönetin":::
 
 ## <a name="delete-users-existing-app-passwords"></a>Kullanıcı var olan uygulama parolalarını silme
 

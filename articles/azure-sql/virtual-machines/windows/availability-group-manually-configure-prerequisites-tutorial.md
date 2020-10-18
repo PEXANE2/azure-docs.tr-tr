@@ -14,18 +14,20 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea9c8b91237f4590d1999c99fbb356d78994390d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075714"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166905"
 ---
-# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server her zaman açık kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
+# <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Öğretici: Azure sanal makinelerinde SQL Server üzerinde kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu öğreticide, [Azure sanal makinelerinde (VM) SQL Server Always on kullanılabilirlik grubu](availability-group-manually-configure-tutorial.md)oluşturmaya yönelik önkoşulların nasıl tamamlanacağı gösterilmektedir. Önkoşulları tamamladığınızda, tek bir kaynak grubunda bir etki alanı denetleyiciniz, iki SQL Server sanal makine ve bir tanık sunucu olacaktır.
+
+Bu makale kullanılabilirlik grubu ortamını el ile yapılandırdığında, [Azure Portal](availability-group-azure-portal-configure.md), [POWERSHELL veya Azure CLI](availability-group-az-commandline-configure.md)veya [Azure hızlı başlangıç şablonlarını](availability-group-quickstart-template-configure.md) da kullanmak da mümkündür. 
 
 **Tahmini süre**: önkoşulların tamamlanması birkaç saat sürebilir. Bu sürenin çoğu sanal makine oluşturmaya harcanmıştır.
 
@@ -44,7 +46,7 @@ Bir Azure hesabınız olmalıdır. [Ücretsiz bir Azure hesabı açabilir](https
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **+** Portalda yeni bir nesne oluşturmak için seçin.
 
    ![Yeni nesne](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -60,7 +62,7 @@ Bir Azure hesabınız olmalıdır. [Ücretsiz bir Azure hesabı açabilir](https
 8. Bir konum seçin. Konum, kullanılabilirlik grubunu oluşturmak istediğiniz Azure bölgesidir. Bu makale, bir Azure konumundaki tüm kaynakları oluşturur.
 9. **Panoya sabitle** seçeneğinin işaretli olduğundan emin olun. Bu isteğe bağlı ayar, Azure portal panosuna kaynak grubu için bir kısayol koyar.
 
-   ![Kaynak grubu](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
+   ![Azure portal için kaynak grubu kısayolu](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
 
 10. Kaynak grubunu oluşturmak için **Oluştur** ' u seçin.
 
@@ -118,13 +120,13 @@ Yeni sanal ağın, **admin**adlı bir alt ağı vardır. Etki alanı denetleyici
 
     Zaten oluşturduğunuz alt ağı unutmayın.
 
-   ![Sanal ağı yapılandırma](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
+   ![Zaten oluşturduğunuz alt ağa göz önünde](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
 
 5. İkinci bir alt ağ oluşturmak için **+ alt ağ**' ı seçin.
 6. **Alt ağ ekle**sayfasında, **ad**altında **sqlsubnet** yazarak alt ağı yapılandırın. Azure otomatik olarak geçerli bir **adres aralığı**belirtir. Bu adres aralığının en az 10 adresi olduğunu doğrulayın. Bir üretim ortamında, daha fazla adres gerekebilir.
 7. **Tamam**’ı seçin.
 
-    ![Sanal ağı yapılandırma](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
+    ![Alt ağı yapılandırma](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
 Aşağıdaki tabloda ağ yapılandırma ayarları özetlenmektedir:
 
@@ -276,7 +278,7 @@ Bu sunucunun özel IP adresini aklınızda edin.
 
 3. **Özel**' i seçin ve birincil etki alanı DENETLEYICISININ özel IP adresini yazın.
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ### <a name="configure-the-second-domain-controller"></a>İkinci etki alanı denetleyicisini yapılandırma
 

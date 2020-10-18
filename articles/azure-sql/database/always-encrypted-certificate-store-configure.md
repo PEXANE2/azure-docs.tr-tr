@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444766"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164525"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Windows sertifika deposu kullanarak Always Encrypted yapılandırma
 
@@ -37,7 +37,7 @@ SQL veritabanı veya SQL yönetilen örneği için Always Encrypted ayarlamayı 
 * Veritabanı tablosu oluşturun ve sütunları şifreleyin.
 * Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide şunlar gerekir:
 
@@ -66,7 +66,7 @@ SQL Server Management Studio (SSMS) açın ve sunucuya bağlanın ya da veritaba
 
 **Yeni güvenlik duvarı kuralı** penceresi açılırsa Azure 'da oturum açın ve SSMS 'nin sizin için yeni bir güvenlik duvarı kuralı oluşturmasına izin verin.
 
-## <a name="create-a-table"></a>Bir tablo oluşturma
+## <a name="create-a-table"></a>Tablo oluşturma
 
 Bu bölümde, hasta verilerini tutacak bir tablo oluşturacaksınız. Bu, başlangıçta normal bir tablo olacaktır ve bir sonraki bölümde şifrelemeyi yapılandıracaksınız.
 
@@ -97,7 +97,7 @@ SSMS, sizin için CMK, CEK ve şifrelenmiş sütunları ayarlayarak Always Encry
 1. **Veritabanları**  >  **Clinic**  >  **tabloları**' nı genişletin.
 2. **Hastalar** tablosuna sağ tıklayın ve Always Encrypted Sihirbazı 'nı açmak Için **sütunları şifreleyin** ' ı seçin:
 
-    ![Sütunları şifreleyin](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
+    ![Şifreleme Harmanlemelerini gösteren ekran görüntüsü... Hastalar tablosunda menü seçeneği.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
 Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi**, **ana anahtar yapılandırması** (CMK), **doğrulama**ve **Özet**.
 
@@ -149,7 +149,7 @@ Always Encrypted ayarlandığına *göre,* şifrelenmiş sütunlarda *eklemeleri
 1. Visual Studio 'Yu açın ve yeni bir C# konsol uygulaması oluşturun. Projenizin **.NET Framework 4,6** veya üzeri bir sürüme ayarlandığından emin olun.
 2. Projeyi **Alwaysencryptedconsoleapp** olarak adlandırın ve **Tamam**' a tıklayın.
 
-![Yeni konsol uygulaması](./media/always-encrypted-certificate-store-configure/console-app.png)
+![Yeni adlandırılmış AlwaysEncryptedConsoleApp projesini gösteren ekran görüntüsü.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Always Encrypted etkinleştirmek için Bağlantı dizenizi değiştirin
 
@@ -510,7 +510,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 Şifrelenmiş sütunlarda herhangi bir düz metin verisi içermediğini görebilirsiniz.
 
-   ![Yeni konsol uygulaması](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
+   ![Şifrelenmiş sütunlarda şifreli verileri gösteren ekran görüntüsü.](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
 
 SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, bağlantı **sütunu şifreleme ayarı = Enabled** parametresini bağlantıya ekleyebilirsiniz.
 
@@ -518,7 +518,7 @@ SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, bağlantı **sü
 2. **Connect**  >  **Sunucuya Bağlan** penceresini açmak için**veritabanı altyapısını** bağla ' ya tıklayın ve ardından **Seçenekler**' e tıklayın.
 3. **Ek bağlantı parametreleri** ve tür **sütunu şifreleme ayarı = etkin**öğesine tıklayın.
 
-    ![Yeni konsol uygulaması](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
+    ![Kutuda sütun şifreleme ayarı = etkin olan ek bağlantı parametreleri sekmesini gösteren ekran görüntüsü.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. **Clinic** veritabanında aşağıdaki sorguyu çalıştırın.
 
     ```tsql

@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b81d3f74c20f42620ceeae08bec5d484909377a7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150418"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167483"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Özel bir uç nokta üzerinden Dizin Oluşturucu bağlantıları (Azure Bilişsel Arama)
 
@@ -23,7 +23,7 @@ Bu Dizin Oluşturucu bağlantı yöntemini kullanmak için iki gereksinim vardı
 
 + İçerik veya kod sağlayan Azure kaynağı, daha önce [Azure özel bağlantı hizmetine](https://azure.microsoft.com/services/private-link/)kayıtlı olmalıdır.
 
-+ Azure Bilişsel Arama hizmeti temel veya daha yüksek olmalıdır (ücretsiz katmanda kullanılamaz). Ayrıca, beceri olan Dizin oluşturucular için arama hizmeti S2 veya üzeri olmalıdır. Daha fazla bilgi için bkz. [hizmet limitleri](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
++ Azure Bilişsel Arama hizmeti temel veya daha yüksek olmalıdır (ücretsiz katmanda kullanılamaz). Ayrıca, dizin oluşturucuda bir beceri varsa, katmanın Standart 2 (S2) veya üzeri olması gerekir. Daha fazla bilgi için bkz. [hizmet limitleri](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
 
 ## <a name="shared-private-link-resources-management-apis"></a>Paylaşılan özel bağlantı kaynakları yönetim API 'Leri
 

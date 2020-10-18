@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293651"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165154"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Windows 10 için Tasarım Yardımcısı deneyimleri
 
@@ -70,7 +70,7 @@ Durumlar hızla değiştirilse bile, süreler Windows ekosistemi genelinde deği
 Yardımcı uygulama odağa sahip olduğunda, müşteri amacı uygulamayla etkileşime geçerek tüm ses etkinleştirme deneyimlerinin ana uygulama görünümü tarafından işlenmesi gerekir. Bu görünüm müşteri tarafından yeniden boyutlandırılabilir. Yardımcı kabuk etkileşimlerinin açıklanmasına yardımcı olmak için, bu belgenin geri kalanı contoso adlı bir mali hizmet Yardımcısı 'nın somut örneğini kullanır. Bu ve sonraki diyagramlarda, müşterinin söydiği, sağ taraftaki balonlarda yardım yanıtları ile sol taraftaki konuşma balonlarında görünür.
 
 **Uygulama içi görünüm. Ses etkinleştirme başladığında ilk durum:** 
- ![ etkinleştirmeden önce Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/initial_state.png)
+ ![ contoso finans Yardımcısı uygulamasının varsayılan tuvalinde açık olduğunu gösteren ekran görüntüsü. Sağ taraftaki bir çizgi konuşma balonu "contoso" diyor.](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
 **Uygulama içi görünüm. Başarılı bir ses etkinleştirme sonrasında, dinleme deneyimi başlar:** ![ Ses Yardımcısı dinlerken Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/listening.png)
 
@@ -108,9 +108,9 @@ Bu bölümde, müşterilerin Windows bilgisayarlarını bir dahaki sefer daha ko
 - Uygulama &quot; kullanımda ise &quot; kilit üzerinde devam edebilir. &quot;kullanımda &quot; herhangi bir giriş veya çıktı oluşturur. Örneğin, müzik veya video akışı yaparken uygulama kilidin üzerine devam edebilir. &quot;Takip et &quot; ve diğer çoklu açma iletişim kutusu adımlarının, uygulamayı kilidin üzerinde tutmaya izin verilir.
 - **Uygulamanın eksik olması üzerinde uygulama ayrıntıları** [Yukarıdaki kilit uygulama kılavuzunda](windows-voice-assistants-implementation-guide.md#closing-the-application)bulunabilir.
 
-![Etkinleştirmeden önce Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
+![Contoso finans Yardımcısı uygulamasının yukarıdaki kilit görünümünü gösteren ekran görüntüsü.](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
-![Etkinleştirmeden önce Windows 'da sesli yardımcının ekran görüntüsü](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
+![Windows kilit ekranı gösteren bir masaüstünün ekran görüntüsü.](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
 ### <a name="privacy-amp-security-considerations-above-lock"></a>&amp;Kilit üzerinde gizlilik güvenliği konuları
 

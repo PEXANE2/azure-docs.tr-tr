@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75482575"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165562"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>SOIL Moisture heatmap oluştur
 
@@ -54,7 +54,7 @@ Algılayıcı hesabınızı Azure farmınts 'e bağladıktan sonra, SOIL nemi se
 2.  **Myfarm**  >  **Cihaz Ekle**' yi seçin.
 3.  **Cihaz Ekle** penceresi görüntülenir. Grubunuz için SOIL nemi sensörlerinden bağlantılı herhangi bir cihaz seçin.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Cihaz ekleme ekranını gösteren ekran görüntüsü.](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. **Cihaz Ekle**' yi seçin.     
 
@@ -70,7 +70,7 @@ Bu adım, grubunuz için SOIL Moisture heatmap oluşturacak bir iş veya uzun s�
 6.  **SOIL Moisture** **algılayıcısı ölçüsünü**seçin alanında, eşleme için kullanmak istediğiniz ölçüyü girin.
     Algılayıcı ölçüsünü bulmak için **sensör**nemi algılayıcısı ' nı seçin. **Algılayıcı özellikleri**' nde **Ölçü adı** değerini kullanın.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![SOIL Moisture ekranını gösteren ekran görüntüsü.](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  **Haritaları oluştur**' u seçin.

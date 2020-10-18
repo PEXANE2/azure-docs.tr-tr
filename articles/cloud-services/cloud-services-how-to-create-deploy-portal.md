@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: b42c693943c41176936ac796f4586463e9af917c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076700"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164173"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Bulut hizmeti oluşturma ve dağıtma
 Azure portal bulut hizmeti oluşturmanız ve dağıtmanız için iki yol sunar: *hızlı oluşturma* ve *özel oluşturma*.
@@ -56,7 +56,7 @@ Web rollerinin veya çalışan rollerinin dağıtımlarıyla bir bulut hizmeti o
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
 2. **İşlem > kaynak oluştur ' a**tıklayın, ardından aşağı kaydırarak **bulut hizmeti**' ne tıklayın.
 
-    ![Bulut hizmetinizi yayımlayın](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![Kaynak oluşturma > Işlem altında bulut hizmeti seçeneğini vurgulayan ekran görüntüsü.](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. Yeni **bulut hizmeti** bölmesinde **DNS adı**için bir değer girin.
 4. Yeni bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
 5. Bir **konum**seçin.
@@ -74,7 +74,7 @@ Dağıtım paketiniz [sertifikaları kullanacak şekilde yapılandırıldıysa](
 2. **Sertifika**Ekle ' ye tıklayın ve ardından Sertifika **Ekle** bölmesinde **Tamam** ' a tıklayın.
 3. **Bulut hizmeti** bölmesinde **Oluştur** ' a tıklayın. Dağıtım, **hazırlık** durumuna ulaştığında, sonraki adımlara geçebilirsiniz.
 
-    ![Bulut hizmetinizi yayımlayın](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Sertifika yükleme sürecini vurgulayan ekran görüntüsü.](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Dağıtımınızın başarıyla tamamlandığını doğrulayın
 1. Bulut hizmeti örneğine tıklayın.

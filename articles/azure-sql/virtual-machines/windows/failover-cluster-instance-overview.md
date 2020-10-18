@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272536"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165269"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,8 +51,8 @@ Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin da�
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
 |**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Evet|Hayır|Evet |
-|**Azure Blob önbelleği**|Hayır|Hayır|Evet|
+|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
+|**Azure Blob önbelleği**|Hayır|Hayır|Yes|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
 
@@ -140,7 +140,7 @@ Microsoft iş ortaklarının paylaşılan depolama ve veri çoğaltma çözümle
 
 ## <a name="connectivity"></a>Bağlantı
 
-Azure sanal makinelerinde SQL Server olan yük devretme kümesi örnekleri, şu anda kümelenmiş kaynaklara sahip olan düğümden bağımsız olarak trafiği SQL Server örneğine yönlendirmek için Azure Load Balancer ile bir [dağıtılmış ağ adı (DNN)](hadr-distributed-network-name-dnn-configure.md) veya bir [sanal ağ adı (vnn)](hadr-vnn-azure-load-balancer-configure.md) kullanır. SQL Server FCı ile belirli özellikleri ve DNN 'yi kullanırken dikkate alınması gereken ek durumlar vardır. Daha fazla bilgi edinmek için [SQL Server FCI Ile DNN birlikte çalışabilirliği](failover-cluster-instance-dnn-interoperability.md) bölümüne bakın. 
+Azure sanal makinelerinde SQL Server olan yük devretme kümesi örnekleri, şu anda kümelenmiş kaynaklara sahip olan düğümden bağımsız olarak trafiği SQL Server örneğine yönlendirmek için Azure Load Balancer ile bir [dağıtılmış ağ adı (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) veya bir [sanal ağ adı (vnn)](failover-cluster-instance-vnn-azure-load-balancer-configure.md) kullanır. SQL Server FCı ile belirli özellikleri ve DNN 'yi kullanırken dikkate alınması gereken ek durumlar vardır. Daha fazla bilgi edinmek için [SQL Server FCI Ile DNN birlikte çalışabilirliği](failover-cluster-instance-dnn-interoperability.md) bölümüne bakın. 
 
 Küme bağlantı seçenekleri hakkında daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server HADR bağlantıları yönlendirme](hadr-cluster-best-practices.md#connectivity). 
 

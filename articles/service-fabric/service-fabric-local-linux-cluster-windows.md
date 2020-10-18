@@ -1,33 +1,34 @@
 ---
 title: Windows 'da Azure Service Fabric Linux kümesi ayarlama
-description: Bu makalede, Windows geliştirme makinelerinde çalışan Linux kümelerinin Service Fabric nasıl ayarlanacağı ele alınmaktadır. Bu, özellikle platformlar arası geliştirme için yararlıdır.
+description: Bu makalede, Windows geliştirme makinelerinde çalışan Linux kümelerinin Service Fabric nasıl ayarlanacağı ele alınmaktadır. Bu yaklaşım, platformlar arası geliştirme için yararlıdır.
 ms.topic: conceptual
-ms.date: 11/20/2017
-ms.openlocfilehash: 83d494d777a4a1e1586707c8848056ca8fe9780a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: e25c6adf5e5f5101025aa883ef2ff9750c113a76
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537081"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164117"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows Geliştirici makinenizde Linux Service Fabric kümesi ayarlama
 
-Bu belgede, Windows geliştirme makinelerinde yerel bir Linux Service Fabric ayarlama ele alınmaktadır. Yerel bir Linux kümesi ayarlamak, Linux kümelerine hedeflenmiş ancak bir Windows makinesinde geliştirilen uygulamaları hızlı bir şekilde test etmek için kullanışlıdır.
+Bu belgede, bir Windows geliştirme makinesinde yerel bir Linux Service Fabric kümesinin nasıl ayarlanacağı ele alınmaktadır. Yerel bir Linux kümesi ayarlamak, Linux kümelerine hedeflenmiş ancak bir Windows makinesinde geliştirilen uygulamaları hızlı bir şekilde test etmek için kullanışlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
-Linux tabanlı Service Fabric kümeleri Windows üzerinde yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış bir Docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
+## <a name="prerequisites"></a>Önkoşullar
+Linux tabanlı Service Fabric kümeleri Windows üzerinde çalışmaz, ancak platformlar arası prototipleme özelliğini etkinleştirmek için, Docker for Windows aracılığıyla dağıtılabilecek bir Linux Service Fabric tek Box kümesi Docker kapsayıcısı sağladık.
+
+Başlamadan önce şunlar gereklidir:
 
 * En az 4 GB RAM
-* [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)'ın en son sürümü
-* Docker, Linux modunda çalışıyor olmalıdır
+* [Docker for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows) en son sürümü
+* Docker, Linux kapsayıcıları modunda çalışıyor olmalıdır
 
 >[!TIP]
-> * Windows 'a Docker yüklemek için resmi Docker [belgelerinde](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) bahsedilen adımları izleyebilirsiniz. 
-> * Yüklemeyi tamamladıktan sonra, [burada](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine) anlatılan adımları izleyerek yüklemeyi doğru yaptığınızı onaylayın
-
+> Windows makinenize Docker yüklemek için [Docker belgelerindeki](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)adımları izleyin. Yükledikten sonra [yüklemenizi doğrulayın](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine).
+>
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Yerel bir kapsayıcı oluşturma ve Service Fabric’i ayarlama
-Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümesi çalıştırmak için PowerShell 'de aşağıdaki adımları gerçekleştirin:
+Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde Service Fabric bir kümesi çalıştırmak için aşağıdaki adımları çalıştırın:
 
 
 1. Ana bilgisayarınızda Docker daemon yapılandırmasını aşağıdakiyle güncelleştirin ve Docker daemon programını yeniden başlatın: 
@@ -38,33 +39,47 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    Güncelleştirme için tavsiye edilen yöntem, Docker simgesine > ayarlar > Daemon > Gelişmiş ' e gidin ve orada güncelleştirin. Sonra, değişikliklerin etkili olması için Docker Daemon programını yeniden başlatın. 
+    ' Nin güncelleştirilmesi için tavsiye edilen yol şu şekilde yapılır: 
 
-2. Service Fabric Görüntünüzü derlemek için yeni bir dizinde `Dockerfile` adlı bir dosya oluşturun:
+    * Docker simgesi > Docker motoru >
+    * Yukarıda listelenen yeni alanları ekleyin
+    * Uygulama & yeniden başlatma-Docker Daemon 'ı yeniden başlatarak değişikliklerin etkili olması için.
 
-    ```Dockerfile
-    FROM mcr.microsoft.com/service-fabric/onebox:latest
-    WORKDIR /home/ClusterDeployer
-    RUN ./setup.sh
-    #Generate the local
-    RUN locale-gen en_US.UTF-8
-    #Set environment variables
-    ENV LANG=en_US.UTF-8
-    ENV LANGUAGE=en_US:en
-    ENV LC_ALL=en_US.UTF-8
-    EXPOSE 19080 19000 80 443
-    #Start SSH before running the cluster
-    CMD /etc/init.d/ssh start && ./run.sh
+2. Kümeyi PowerShell aracılığıyla başlatın.<br/>
+    <b>Ubuntu 18,04 LTS:</b>
+    ```powershell
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
+    <b>Ubuntu 16,04 LTS:</b>
+    ```powershell
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > Varsayılan olarak bu, görüntüyü Service Fabric’in en son sürümüyle çeker. Belirli düzeltmeler için lütfen [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) sayfasını ziyaret edin.
+
+
+
+3. İsteğe bağlı: genişletilmiş Service Fabric görüntünüzü oluşturun.
+
+    Yeni bir dizinde `Dockerfile` özelleştirilmiş görüntünüzü derlemek için adlı bir dosya oluşturun:
+
     >[!NOTE]
-    >Kapsayıcınıza ek programlar veya bağımlılıklar eklemek için bu dosyayı uyarlayabilirsiniz.
+    >Kapsayıcıya ek programlar veya bağımlılıklar eklemek için, yukarıdaki görüntüyü bir Dockerfile ile uyarlayabilirsiniz.
     >Örneğin, `RUN apt-get install nodejs -y` komutu eklendiğinde, konuk yürütülebilir dosyaları olarak `nodejs` uygulamaları için destek sağlanır.
+    ```Dockerfile
+    FROM mcr.microsoft.com/service-fabric/onebox:u18
+    RUN apt-get install nodejs -y
+    EXPOSE 19080 19000 80 443
+    WORKDIR /home/ClusterDeployer
+    CMD ["./ClusterDeployer.sh"]
+    ```
     
     >[!TIP]
-    > Varsayılan olarak bu, görüntüyü Service Fabric’in en son sürümüyle çeker. Belirli düzeltmeler için lütfen [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) sayfasını ziyaret edin
+    > Varsayılan olarak bu, görüntüyü Service Fabric’in en son sürümüyle çeker. Belirli düzeltmeler için lütfen [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) sayfasını ziyaret edin.
 
-3. `Dockerfile` içinden yeniden kullanılabilir görüntünüzü derlemek için bir terminal açın ve doğrudan `Dockerfile` öğesini tutarak `cd` uygulayıp sonra şunu çalıştırın:
+    Yeniden kullanılabilir görüntünüzü içinden derlemek için, `Dockerfile` bir Terminal açın ve `cd` ardından çalıştırmak için bir Terminal açın `Dockerfile` :
 
     ```powershell 
     docker build -t mysfcluster .
@@ -73,10 +88,10 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
     >[!NOTE]
     >Bu işlem biraz zaman alır, ancak yalnızca bir kez gereklidir.
 
-4. Şimdi aşağıdakini çalıştırarak her ihtiyaç duyduğunuzda hızla yerel bir Service Fabric kopyası başlatabilirsiniz:
+    Artık, her ihtiyaç duyduğunuzda Service Fabric yerel bir kopyasını hemen başlatabilirsiniz:
 
     ```powershell 
-    docker run --name sftestcluster -d -v //var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
     ```
 
     >[!TIP]
@@ -84,21 +99,22 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
     >
     >Uygulamanız belirli bağlantı noktalarını dinliyorsa, bağlantı noktaları ek `-p` etiketleri kullanılarak belirtilmelidir. Örneğin, uygulamanız 8080 bağlantı noktasını dinliyorsa, şuradaki `-p` etiketini ekleyin:
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
+    >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-5. Kümenin başlatılması kısa bir süre sürer, aşağıdaki komutu kullanarak günlükleri görüntüleyebilir veya `http://localhost:19080` küme durumunu görüntülemek için panoya atlayabilirsiniz:
+
+4. Kümenin başlatılması kısa bir süre sürer, aşağıdaki komutu kullanarak günlükleri görüntüleyebilir veya `http://localhost:19080` küme durumunu görüntülemek için panoya atlayabilirsiniz:
 
     ```powershell 
     docker logs sftestcluster
     ```
 
-6. 5. adım başarıyla tamamlandıktan sonra, Windows 'tan bölümüne giderek ``http://localhost:19080`` Service Fabric Gezginini görebilirsiniz. Bu noktada, Windows Geliştirici makinenizden herhangi bir aracı kullanarak bu kümeye bağlanabilir ve Linux Service Fabric kümelerine hedeflenmiş uygulamayı dağıtabilirsiniz. 
+5. 4. adımda gözlemlendiği gibi, küme başarıyla dağıtıldıktan sonra, ``http://localhost:19080`` Service Fabric Explorer panosunu bulmak Için Windows makinenizden bölümüne gidebilirsiniz. Bu noktada, Windows Geliştirici makinenizden araçları kullanarak bu kümeye bağlanabilir ve Linux Service Fabric kümelerine yönelik uygulamalar dağıtabilirsiniz. 
 
     > [!NOTE]
     > Eclipse eklentisi Windows üzerinde şu anda desteklenmemektedir. 
 
-7. İşiniz bittiğinde kapsayıcıyı şu komutla durdurun ve temizleyin:
+6. İşiniz bittiğinde kapsayıcıyı bu komutla durdurup temizleyin:
 
     ```powershell 
     docker rm -f sftestcluster
@@ -108,11 +124,14 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
  
  Mac’e yönelik kapsayıcıdaki yerel küme çalıştırmaya ilişkin bilinen sınırlandırmalar aşağıda verilmiştir: 
  
- * DNS hizmeti çalışmıyor ve desteklenmiyor [Sorun No. 132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS hizmeti çalışmıyor ve şu anda kapsayıcı içinde desteklenmiyor. [Sorun #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * Kapsayıcı tabanlı uygulamaların çalıştırılması, bir Linux ana bilgisayarında SF çalıştırmayı gerektirir. İç içe kapsayıcı uygulamalar şu anda desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+* [Linux üzerinde Yeoman kullanarak ilk Service Fabric Java uygulamanızı oluşturma ve dağıtma](service-fabric-create-your-first-linux-application-with-java.md)
 * [Tutulma](./service-fabric-get-started-eclipse.md) ile çalışmaya başlama
 * Diğer [Java örneklerine](https://github.com/Azure-Samples/service-fabric-java-getting-started) göz atın
+* [Service Fabric destek seçenekleri](service-fabric-support.md) hakkında bilgi edinin
 
 
 <!-- Image references -->

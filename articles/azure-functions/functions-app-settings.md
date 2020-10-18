@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589309"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165784"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -23,7 +23,7 @@ Dosyasında ve [local.settings.json](functions-run-local.md#local-settings-file)
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights için izleme anahtarı. Ya da yalnızca birini `APPINSIGHTS_INSTRUMENTATIONKEY` kullanın `APPLICATIONINSIGHTS_CONNECTION_STRING` . Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md). 
+Application Insights için izleme anahtarı. Ya da yalnızca birini `APPINSIGHTS_INSTRUMENTATIONKEY` kullanın `APPLICATIONINSIGHTS_CONNECTION_STRING` . Application Insights bir bağımsız bulutu 'nda çalıştığında kullanın `APPLICATIONINSIGHTS_CONNECTION_STRING` . Daha fazla bilgi için bkz. [Azure işlevleri için izlemeyi yapılandırma](configure-monitoring.md). 
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -31,7 +31,12 @@ Application Insights için izleme anahtarı. Ya da yalnızca birini `APPINSIGHTS
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-Application Insights için bağlantı dizesi. `APPLICATIONINSIGHTS_CONNECTION_STRING` `APPINSIGHTS_INSTRUMENTATIONKEY` İşlev uygulamanız, bağlantı dizesi kullanılarak desteklenen eklenmiş özelleştirmeleri gerektirdiğinde kullanın. Daha fazla bilgi için bkz. [bağlantı dizeleri](../azure-monitor/app/sdk-connection-string.md). 
+Application Insights için bağlantı dizesi. `APPLICATIONINSIGHTS_CONNECTION_STRING` `APPINSIGHTS_INSTRUMENTATIONKEY` Aşağıdaki durumlarda yerine kullanın:
+
++ İşlev uygulamanız, bağlantı dizesi kullanılarak desteklenen eklenmiş özelleştirmeleri gerektirdiğinde. 
++ Application Insights örneğiniz, özel bir uç nokta gerektiren bir bağımsız bulutu 'nda çalıştığında.
+
+Daha fazla bilgi için bkz. [bağlantı dizeleri](../azure-monitor/app/sdk-connection-string.md). 
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -204,7 +209,7 @@ Daha fazla bilgi edinmek için bkz. Python geliştirici başvurusunda [özel ba�
 
 _Bu ayar şu an önizleme aşamasındadır._  
 
-Bu ayar Azure Işlevleri ölçek denetleyicisindeki günlüğü denetler. Daha fazla bilgi için bkz. [Ölçek denetleyicisi günlükleri](functions-monitoring.md#scale-controller-logs-preview).
+Bu ayar Azure Işlevleri ölçek denetleyicisindeki günlüğü denetler. Daha fazla bilgi için bkz. [Ölçek denetleyicisi günlükleri](functions-monitoring.md#scale-controller-logs).
 
 |Anahtar|Örnek değer|
 |-|-|

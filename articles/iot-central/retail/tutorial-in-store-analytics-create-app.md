@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81000255"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165681"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 
@@ -34,7 +34,7 @@ Kullanıma alma ve koşul izleme çözümünü üç bölümde geliştirebilirsin
 * Operatörlerin cihazları izlemesini ve yönetmesini sağlamak için panoyu özelleştirme
 * Mağaza yöneticilerinin analiz çalıştırmasını ve öngörüleri görselleştirmesini sağlamak için veri vermeyi yapılandırma
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure IoT Central **Mağaza içi analiz-kullanıma alma** şablonunu kullanarak bir perakende mağaza uygulaması oluşturun
 > * Uygulama ayarlarını özelleştirme
@@ -42,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihazları uygulamanıza bağlama
 > * Koşulları izlemek için kurallar ve eylemler ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici serisini tamamlayabilmeniz için şunlar gerekir:
 * Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
@@ -148,7 +148,7 @@ Uygulamanıza bir RuuviTag cihaz şablonu eklemek için:
 
 1. **Sonraki: Özelleştir**’i seçin.
 
-    ![Azure IoT Central RuuviTag algılayıcı cihaz şablonu](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
+    ![Sonraki: özelleştirme düğmesini vurgulayan ekran görüntüsü.](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
 1. **Oluştur**’u seçin. Uygulama, RuuviTag cihaz şablonunu ekler.
 
@@ -191,7 +191,7 @@ Aşağıdaki adımlarda, `humidity` RuuviTag algılayıcılar için telemetri t�
 
 1. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
 
-    ![Azure IoT Central RuuviTag cihaz şablonu özelleştirmesi](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
+    ![Özelleştirme ekranını gösteren ve Kaydet düğmesini vurgulayan ekran görüntüsü.](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
 
 Uygulamanızdaki bir cihaz şablonuna bir bulut özelliği eklemek için:
 
@@ -240,7 +240,7 @@ Bu bölümde, RuuviTag algılayıcı telemetrisine göre maksimum göreli nem d�
 
 Bir kural oluşturmak için: 
 
-1. Sol Bölmeyi genişletin.
+1. Sol bölmeyi genişletin.
 
 1. **Kurallar**' ı seçin.
 
