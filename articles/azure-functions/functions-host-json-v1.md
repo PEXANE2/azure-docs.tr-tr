@@ -3,12 +3,12 @@ title: Azure Işlevleri 1. x için başvuru host.js
 description: Azure Işlevleri için başvuru belgeleri v1 çalışma zamanı ile dosyada host.js.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81757524"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167738"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için başvuru host.js
 
@@ -136,7 +136,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
@@ -186,7 +186,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
@@ -209,7 +209,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|yanlış|Bu ayar etkinleştirildiğinde, istek işleme işlem hattının bağlantılar/iş parçacıkları/işlemler/bellek/CPU/vb gibi sistem performans sayaçlarını düzenli olarak denetlemesini sağlar. bu sayaçlardan herhangi biri yerleşik yüksek eşikten (%80%) olursa, sayaçlar normal düzeylere dönene kadar istekler 429 "çok meşgul" yanıtıyla reddedilir.|
 |maxConcurrentRequests|Sınırsız ( `-1` )|Paralel olarak yürütülecek HTTP işlevlerinin maksimum sayısı. Bu, kaynak kullanımının yönetilmesine yardımcı olabilecek eşzamanlılık denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara yol açacağından, çok fazla sistem kaynağı (bellek/CPU/yuva) kullanan bir HTTP işleviniz olabilir. Ya da bir üçüncü taraf hizmetine giden istekleri yapan bir işleviniz olabilir ve bu çağrıların hız sınırlı olması gerekir. Bu durumlarda, burada bir kısıtlama uygulanması yardımcı olabilir.|
@@ -230,7 +230,7 @@ Birden çok işlev uygulamasında bir depolama hesabı paylaşırsanız, her bir
 
 ## <a name="logger"></a>Medi
 
-Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [Context. log](functions-monitoring.md#write-logs-in-javascript-functions)tarafından yazılmış günlükler için filtrelemeyi denetler.
+Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. log](functions-reference-node.md#contextlog-method)tarafından yazılmış günlükler için filtrelemeyi denetler.
 
 ```json
 {
@@ -247,7 +247,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
 |defaultLevel|Bilgi|Dizide belirtilmeyen hiçbir kategori için `categoryLevels` , günlükleri bu düzeyde ve yukarıya Application Insights için gönderin.| 
@@ -269,7 +269,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Maxpollingınterval|60000|Sıra yoklamaları arasındaki milisaniye olarak en fazla Aralık.| 
 |visibilityTimeout|0|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur.| 
@@ -288,7 +288,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
     }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
@@ -306,7 +306,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Maxconcurrentçağrıları|16|İleti göndericisinin başlatması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` 1 olarak ayarlayın. | 
 |prefetchCount|yok|Temel alınan MessageReceiver tarafından kullanılacak varsayılan PrefetchCount.| 
@@ -328,7 +328,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
@@ -340,7 +340,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 
 *Sürüm 1. x*
 
-Bir nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları `TraceWriter` . Bkz. [C# günlüğe kaydetme](functions-reference-csharp.md#logging) ve [ günlüğe kaydetmeNode.js](functions-reference-node.md#writing-trace-output-to-the-console).
+Bir nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları `TraceWriter` . Daha fazla bilgi için bkz. [C# Logging].
 
 ```json
 {
@@ -351,7 +351,7 @@ Bir nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |consoleLevel|bilgiler|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off` , `error` , `warning` , `info` , ve `verbose` .|
 |fileLoggingMode|yalnızca Debug|Dosya günlüğü için izleme düzeyi. Seçenekler `never` , `always` , `debugOnly` .| 

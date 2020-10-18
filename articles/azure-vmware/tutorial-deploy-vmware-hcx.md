@@ -3,12 +3,12 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 69df9b6337674233e1f257cc509115d5f58d2e7f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a52b2d06e65de0d056653f12065e36d83d6d8e0c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152065"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167772"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -296,7 +296,9 @@ Artık şirket içi ve Azure VMware Çözüm SDDC arasında hizmet kafesi yapıl
 
 1. Etkinleştirilecek hizmetleri gözden geçirin ve ardından **devam**' ı seçin.  
 
-1. **Gelişmiş yapılandırma-yukarı bağlantı ağ profillerini geçersiz kıl** **devam**' ı seçin.  Yukarı bağlantı ağ profilleri, uzak sitenin Interconnect gereçlerine ulaşılmış olan ağa bağlanır.  
+1. **Gelişmiş yapılandırma-yukarı bağlantı ağ profillerini geçersiz kıl** **devam**' ı seçin.  
+
+   Yukarı bağlantı ağ profilleri, uzak sitenin Interconnect gereçlerine ulaşılmış olan ağa bağlanır.  
   
 1. **Gelişmiş yapılandırma-ağ uzantısı gereç ölçeği ölçeğini**Inceleyin ve **devam**' ı seçin. 
 

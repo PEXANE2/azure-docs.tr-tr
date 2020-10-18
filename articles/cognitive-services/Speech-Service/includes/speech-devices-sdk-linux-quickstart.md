@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: aee6e6d8ca505bfdcfd4a51e4693779f44b2b0c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8c0aef1817581e2b09297d8807676cf0049e1d3e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226300"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169071"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Linux Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Şu anda yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) destekleniyor.
 
@@ -70,7 +70,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. **Çakışan Küreler IDE başlatıcısı**' nda, **çalışma alanı** alanına yeni bir çalışma alanı dizininin adını girin. Ardından **Başlat**’ı seçin.
 
-   ![Eclipse Başlatıcısı ekran görüntüsü](../media/speech-devices-sdk/eclipse-launcher-linux.png)
+   ![Tutulma başlatıcısı 'nı gösteren ekran görüntüsü.](../media/speech-devices-sdk/eclipse-launcher-linux.png)
 
 1. Çok geçmeden Eclipse IDE ana penceresi görüntülenir. Varsa, Hoş Geldiniz ekranını kapatın.
 
@@ -161,22 +161,22 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. Konuşma cihazları SDK örnek uygulaması başlatılır ve aşağıdaki seçenekleri görüntüler:
 
-   ![Örnek konuşma cihazları SDK örnek uygulama ve Seçenekler](../media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Bir konuşma cihazları SDK örnek uygulaması ve seçenekleri gösteren ekran görüntüsü.](../media/speech-devices-sdk/java-sample-app-linux.png)
 
 1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum**başlatma ile bir başlangıç yapın  >  **Start**. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa `participants.properties` Proje klasörü **hedefi/sınıfları**içine yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription-service.md)konusuna bakın.
 
-   ![Demo konuşma dökümü uygulaması](../media/speech-devices-sdk/cts-sample-app-linux.png)
+   ![Tanıtım konuşması dökümü uygulamasını gösteren ekran görüntüsü.](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>Uygulamayı tek başına oluşturma ve çalıştırma
 
 1. **Paket Gezgini**' nde projenize sağ tıklayın. **Dışarı aktar**' ı seçin. 
 1. **Dışarı aktarma** penceresi görüntülenir. **Java** ' yı genişletin ve **Runiçin jar dosyasını** seçin ve ardından **İleri**' yi seçin.
 
-   ![Dışarı aktarma penceresinin ekran görüntüsü](../media/speech-devices-sdk/eclipse-export-linux.png) 
+   ![Dışarı aktarma penceresini gösteren ekran görüntüsü.](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
 1. **ÇALıŞTıRıLABILIR jar dosya dışarı aktarma** penceresi görüntülenir. Uygulama için bir **dışarı aktarma hedefi** seçin ve ardından **son**' u seçin.
  
-   ![Runfor JAR dosya dışarı aktarma ekran görüntüsü](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
+   ![Çalıştırılabilir JAR dosya dışarı aktarma penceresini gösteren ekran görüntüsü.](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
 1. `kws.table` `participants.properties` Bu dosyalar uygulamanın gerektirdiği için lütfen yukarıda seçilen hedef klasöre yerleştirin.
 

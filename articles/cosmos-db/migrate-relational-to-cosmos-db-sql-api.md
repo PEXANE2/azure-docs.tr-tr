@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaff5adf358c31d99df7a51305c4e3554c3259c1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023151"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166259"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Bire çok ilişkisel verileri Azure Cosmos DB SQL API hesabına geçirme
 
@@ -25,7 +25,7 @@ Yaygın olarak kullanılan bir dönüşüm, ilgili alt öğeleri tek bir JSON be
 SQL veritabanımız, siparişlerimiz ve OrderDetails içinde aşağıdaki iki tabloya sahip olduğunu varsayalım.
 
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="Sipariş Ayrıntıları" border="false" :::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü." border="false" :::
 
 Bu bire bir ilişkiyi geçiş sırasında tek bir JSON belgesiyle birleştirmek istiyoruz. Bunu yapmak için, aşağıdaki gibi "JSON IÇIN" kullanarak bir T-SQL sorgusu oluşturuyoruz:
 
@@ -48,7 +48,7 @@ FROM Orders o;
 
 Bu sorgunun sonuçları aşağıdaki gibi görünür: 
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="Sipariş Ayrıntıları" lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü." lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
 
 İdeal olarak, SQL verilerini kaynak olarak sorgulamak ve çıktıyı doğrudan doğru JSON nesneleri olarak Azure Cosmos DB havuzuna yazmak için tek bir Azure Data Factory (ADF) kopyalama etkinliği kullanmak istersiniz. Şu anda, bir kopyalama etkinliğinde gerekli JSON dönüşümünü gerçekleştirmek mümkün değildir. Yukarıdaki sorgunun sonuçlarını Azure Cosmos DB bir SQL API kapsayıcısına kopyalamaya çalışırsam, OrderDetails alanını beklenen JSON dizisi yerine belgeimizin dize özelliği olarak göreceğiz.
 
@@ -90,25 +90,25 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="Sipariş Ayrıntıları" tırnak işareti karakteri "olarak belirledik.
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü." tırnak işareti karakteri "olarak belirledik.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="Sipariş Ayrıntıları":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>Kopyalama etkinliği #2: BlobJsonToCosmos
 
 Daha sonra, ilk etkinlik tarafından oluşturulan metin dosyası için Azure Blob depolama alanına görünen ikinci kopyalama etkinliğini ekleyerek ADF işlem hattımızı değiştirdik. Metin dosyasında her JSON satırı için bir belge olarak Cosmos DB havuza eklemek üzere bunu "JSON" kaynağı olarak işler.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="Sipariş Ayrıntıları" etkinliği de ekleyeceğiz. ADF işlem hatmız şu şekilde görünür:
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü." etkinliği de ekleyeceğiz. ADF işlem hatmız şu şekilde görünür:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="Sipariş Ayrıntıları":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 Yukarıdaki işlem hattını tetikledikten sonra, her satır için bir JSON nesnesi içeren ara Azure Blob depolama konumunda oluşturulmuş bir dosya görüyoruz:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="Sipariş Ayrıntıları":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 Ayrıca, Cosmos DB koleksiyonumuza eklenmiş, doğru gömülü OrderDetails içeren siparişler belgelerini de görüyorsunuz:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="Sipariş Ayrıntıları":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -121,7 +121,7 @@ Azure Blob depolamada ara metin/JSON dosyalarını oluşturmadan verileri SQL ve
 
 İlk olarak, gerekli [SQL bağlayıcısını](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) ve [Azure Cosmos DB bağlayıcı](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) kitaplıklarını oluşturup Azure Databricks kümemize iliştirdik. Kitaplıkların yüklü olduğundan emin olmak için kümeyi yeniden başlatın.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Sipariş Ayrıntıları":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 Ardından, Scala ve Python için iki örnek sunuyoruz. 
 
@@ -144,7 +144,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Sipariş Ayrıntıları":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 Sonra, Cosmos DB veritabanı ve koleksiyonumuza bağlandık:
 
@@ -201,7 +201,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Sipariş Ayrıntıları":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 
 ### <a name="python"></a>Python
@@ -331,7 +331,7 @@ pool.map(writeOrder, orderids)
 ```
 Her iki yaklaşımda da sonda, Cosmos DB koleksiyonundaki her bir sipariş belgesinde doğru şekilde kaydedilmiş ekli OrderDetails almalıdır:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Sipariş Ayrıntıları":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Cosmos DB veri modelleme](https://docs.microsoft.com/azure/cosmos-db/modeling-data) hakkında bilgi edinin

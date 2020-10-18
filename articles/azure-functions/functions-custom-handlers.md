@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 8/18/2020
 ms.topic: article
-ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294603"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164559"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Işlevleri özel işleyiciler (Önizleme)
 
@@ -191,7 +191,7 @@ Kurala göre, işlev yanıtları anahtar/değer çiftleri olarak biçimlendirili
 | ------------- | --------- | ------------------------------------------------------------ |
 | `Outputs`     | object    | `bindings` *function.json*öğesinde dizi tarafından tanımlanan yanıt değerlerini barındırır.<br /><br />Örneğin, bir işlev "myQueueOutput" adlı bir sıra çıkış bağlaması ile yapılandırıldıysa `Outputs` adlı bir anahtar içerir `myQueueOutput` ve bu, özel işleyici tarafından kuyruğa gönderilen iletilere ayarlanır. |
 | `Logs`        | array     | İletiler, Işlev çağırma günlüklerinde görüntülenir.<br /><br />Azure 'da çalışırken iletiler Application Insights görüntülenir. |
-| `ReturnValue` | string    | function.jsdosyadaki bir çıktı yapılandırıldığında bir yanıt sağlamak için kullanılır `$return` . *function.json* |
+| `ReturnValue` | dize    | function.jsdosyadaki bir çıktı yapılandırıldığında bir yanıt sağlamak için kullanılır `$return` . *function.json* |
 
 Bu bir yanıt yükünün örneğidir.
 
@@ -566,7 +566,7 @@ Işlevler, özel işleyici işlemiyle ilgili bilgiler dahil olmak üzere ek gün
 
 Yerel olarak, Günlükler konsola yazdırılır.
 
-Azure 'da günlük iletilerini görüntülemek için [Application Insights izlemelerini sorgulayın](functions-monitoring.md#query-telemetry-data) . Uygulamanız yüksek hacimli Günlükler üretirse, Application Insights için yalnızca bir günlük iletileri alt kümesi gönderilir. Tüm iletilerin günlüğe kaydedildiğinden emin olmak için [örneklemesi devre dışı bırakın](functions-monitoring.md#configure-sampling) .
+Azure 'da günlük iletilerini görüntülemek için [Application Insights izlemelerini sorgulayın](analyze-telemetry-data.md#query-telemetry-data) . Uygulamanız yüksek hacimli Günlükler üretirse, Application Insights için yalnızca bir günlük iletileri alt kümesi gönderilir. Tüm iletilerin günlüğe kaydedildiğinden emin olmak için [örneklemesi devre dışı bırakın](configure-monitoring.md#configure-sampling) .
 
 ### <a name="test-custom-handler-in-isolation"></a>Yalıtım halinde test özel işleyicisi
 

@@ -4,12 +4,12 @@ description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak 
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612818"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167806"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio ile Azure İşlevleri geliştirme  
 
@@ -27,7 +27,7 @@ Bu makalede C# sınıf kitaplığı işlevleri geliştirmek ve bunları Azure 'D
 
 Aksi belirtilmediği takdirde, yordamlar ve örnekler Visual Studio 2019 içindir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Işlevleri araçları. Azure Işlev araçları eklemek için, Visual Studio yüklemenize **Azure geliştirme** iş yükünü dahil edin. Azure Işlevleri araçları, Visual Studio 2017 ile başlayan Azure geliştirme iş yükünde kullanılabilir.
 
@@ -229,11 +229,9 @@ Ayrıca, uygulama ayarlarını şu diğer yollarla da yönetebilirsiniz:
 
 ## <a name="monitoring-functions"></a>İzleme işlevleri
 
-İşlevlerinizin yürütülmesini izlemek için önerilen yol, işlev uygulamanızı Azure Application Insights ile tümleştirerek yapılır. Azure portal bir işlev uygulaması oluşturduğunuzda, bu tümleştirme varsayılan olarak sizin için yapılır. Ancak, Visual Studio yayımlama sırasında işlev uygulamanızı oluşturduğunuzda, Azure 'daki işlev uygulamanızda tümleştirme yapılmaz.
+İşlevlerinizin yürütülmesini izlemek için önerilen yol, işlev uygulamanızı Azure Application Insights ile tümleştirerek yapılır. Azure portal bir işlev uygulaması oluşturduğunuzda, bu tümleştirme varsayılan olarak sizin için yapılır. Ancak, Visual Studio yayımlama sırasında işlev uygulamanızı oluşturduğunuzda, Azure 'daki işlev uygulamanızda tümleştirme yapılmaz. Application Insights işlev uygulamanıza nasıl bağlayacağınızı öğrenmek için bkz. [Application Insights Tümleştirmesini Etkinleştirme](configure-monitoring.md#enable-application-insights-integration).
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
+Application Insights kullanarak izleme hakkında daha fazla bilgi edinmek için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

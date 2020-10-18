@@ -14,28 +14,29 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee249a33187c3f8776cfc8fc750590c58f74579e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360931"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168163"
 ---
-# <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Öğretici: Azure sanal makinelerinde el ile SQL Server kullanılabilirlik grubu yapılandırma
-
+# <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>Öğretici: bir kullanılabilirlik grubunu el Ile yapılandırma (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu öğreticide, Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu oluşturma gösterilmektedir. Tüm öğreticide, iki SQL sunucusunda veritabanı çoğaltmasına sahip bir kullanılabilirlik grubu oluşturulur.
+Bu öğreticide, Azure sanal makinelerinde (VM) SQL Server için her zaman açık kullanılabilirlik grubu oluşturma gösterilmektedir. Tüm öğreticide, iki SQL sunucusunda veritabanı çoğaltmasına sahip bir kullanılabilirlik grubu oluşturulur.
 
-**Tahmini süre**: Önkoşullar karşılandığında yaklaşık 30 dakika sürer.
+Bu makale kullanılabilirlik grubu ortamını el ile yapılandırdığında, [Azure Portal](availability-group-azure-portal-configure.md), [POWERSHELL veya Azure CLI](availability-group-az-commandline-configure.md)veya [Azure hızlı başlangıç şablonlarını](availability-group-quickstart-template-configure.md) da kullanmak da mümkündür. 
 
-Diyagramda, öğreticide ne derledikleriniz gösterilmektedir.
 
-![Kullanılabilirlik Grubu](./media/availability-group-manually-configure-tutorial/00-EndstateSampleNoELB.png)
+**Tahmini süre**: [Önkoşullar](availability-group-manually-configure-prerequisites-tutorial.md) karşılandığında yaklaşık 30 dakika sürer.
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Öğretici, SQL Server her zaman açık kullanılabilirlik grupları hakkında temel bilgiler sahibi olduğunuzu varsayar. Daha fazla bilgiye ihtiyacınız varsa, bkz. [Always on kullanılabilirlik gruplarına genel bakış (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
+
+Öğreticiye başlamadan önce, [Azure sanal makinelerinde her zaman açık kullanılabilirlik grupları oluşturmak için önkoşulları gerçekleştirmeniz](availability-group-manually-configure-prerequisites-tutorial.md)gerekir. Bu Önkoşullar zaten tamamlanırsa, [küme oluştur](#CreateCluster)' a atlayabilirsiniz.
 
 Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gereken önkoşullar listelenmektedir:
 
@@ -49,11 +50,8 @@ Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gere
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Yük Devretme Kümelemesi özelliği Ekle** | SQL Server örneklerin her ikisi de bu özelliği gerektirir |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Yükleme etki alanı hesabı** | -Her SQL Server yerel yönetici <br/> -SQL Server her bir örneği için SQL Server sysadmin sabit sunucu rolü üyesi  |
 
-
-Öğreticiye başlamadan önce, [Azure sanal makinelerinde her zaman açık kullanılabilirlik grupları oluşturmak için önkoşulları gerçekleştirmeniz](availability-group-manually-configure-prerequisites-tutorial.md)gerekir. Bu Önkoşullar zaten tamamlanırsa, [küme oluştur](#CreateCluster)' a atlayabilirsiniz.
-
-  >[!NOTE]
-  > Bu öğreticide sunulan adımların birçoğu artık [Azure SQL VM CLI](availability-group-az-cli-configure.md) ve [Azure hızlı başlangıç şablonlarıyla](availability-group-quickstart-template-configure.md)otomatikleştirilebilir.
+>[!NOTE]
+> Bu öğreticide sunulan adımların birçoğu artık [Azure Portal](availability-group-azure-portal-configure.md), [POWERSHELL ve az CLI](availability-group-az-cli-configure.md) ve [Azure hızlı başlangıç şablonlarıyla](availability-group-quickstart-template-configure.md)otomatikleştirilebilir.
 
 
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
@@ -139,7 +137,7 @@ Bu örnekte, Windows kümesi bir küme çekirdeği oluşturmak için bir dosya p
 
 1. **Paylaşımlar**' a sağ tıklayın ve **yeni paylaşım...** öğesini seçin.
 
-   ![Yeni paylaşma](./media/availability-group-manually-configure-tutorial/48-newshare.png)
+   ![Paylaşımlar ' a sağ tıklayın ve yeni paylaşım ' ı seçin.](./media/availability-group-manually-configure-tutorial/48-newshare.png)
 
    Paylaşım oluşturmak için **paylaşılan klasör oluşturma Sihirbazı 'nı** kullanın.
 
@@ -153,7 +151,7 @@ Bu örnekte, Windows kümesi bir küme çekirdeği oluşturmak için bir dosya p
 
 1. Kümeyi oluşturmak için kullanılan hesabın tam denetime sahip olduğundan emin olun.
 
-   ![Yeni paylaşma](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
+   ![Kümeyi oluşturmak için kullanılan hesabın tam denetime sahip olduğundan emin olun](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
 
 1. **Tamam**’ı seçin.
 
@@ -169,7 +167,7 @@ Sonra, küme çekirdeğini ayarlayın.
 
 1. **Yük devretme kümesi Yöneticisi**, kümeye sağ tıklayın, **diğer eylemler**' ın üzerine gelin ve **küme çekirdek ayarlarını yapılandır...** seçeneğini belirleyin.
 
-   ![Yeni paylaşma](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
+   ![Küme çekirdek ayarlarını yapılandır ' ı seçin](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
 
 1. **Küme çekirdeğini Yapılandırma Sihirbazı**' nda, **İleri**' yi seçin.
 
@@ -191,15 +189,15 @@ Küme çekirdek kaynakları, bir dosya paylaşma tanığı ile yapılandırılı
 
 ## <a name="enable-availability-groups"></a>Kullanılabilirlik gruplarını etkinleştir
 
-Sonra **AlwaysOn kullanılabilirlik grupları** özelliğini etkinleştirin. Her iki SQL Server üzerinde de bu adımları uygulayın.
+Sonra, **AlwaysOn kullanılabilirlik grupları** özelliğini etkinleştirin. Her iki SQL Server üzerinde de bu adımları uygulayın.
 
 1. **Başlangıç** ekranından **SQL Server Yapılandırma Yöneticisi**başlatın.
 2. Tarayıcı ağacında **SQL Server hizmetler**' i seçin, sonra **SQL Server (MSSQLSERVER)** hizmetine sağ tıklayıp **Özellikler**' i seçin.
-3. **AlwaysOn yüksek kullanılabilirlik** sekmesini seçin ve ardından aşağıdaki gibi **AlwaysOn kullanılabilirlik grupları etkinleştir**' i seçin:
+3. **AlwaysOn yüksek kullanılabilirlik** sekmesini seçin ve ardından **AlwaysOn kullanılabilirlik grupları**'nı şu şekilde etkinleştir ' i seçin:
 
-    ![AlwaysOn Kullanılabilirlik Grupları etkinleştir](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
+    ![AlwaysOn kullanılabilirlik gruplarını etkinleştir](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
 
-4. **Uygula**’yı seçin. Açılır iletişim kutusunda **Tamam ' ı** seçin.
+4. **Apply** (Uygula) seçeneğini belirleyin. Açılır iletişim kutusunda **Tamam ' ı** seçin.
 
 5. SQL Server hizmetini yeniden başlatın.
 
@@ -208,7 +206,7 @@ Diğer SQL Server bu adımları yineleyin.
 <!-----------------
 ## <a name="endpoint-firewall"></a>Open firewall for the database mirroring endpoint
 
-Each instance of SQL Server that participates in an Availability Group requires a database mirroring endpoint. This endpoint is a TCP port for the instance of SQL Server that is used to synchronize the database replicas in the Availability Groups on that instance.
+Each instance of SQL Server that participates in an availability group requires a database mirroring endpoint. This endpoint is a TCP port for the instance of SQL Server that is used to synchronize the database replicas in the availability groups on that instance.
 
 On both SQL Servers, open the firewall for the TCP port for the database mirroring endpoint.
 
@@ -242,7 +240,7 @@ Repeat these steps on the second SQL Server.
 
 1. **Paylaşımlar**' a sağ tıklayın ve **yeni paylaşım...** öğesini seçin.
 
-   ![Yeni paylaşma](./media/availability-group-manually-configure-tutorial/48-newshare.png)
+   ![Yeni paylaşma seçin](./media/availability-group-manually-configure-tutorial/48-newshare.png)
 
    Paylaşım oluşturmak için **paylaşılan klasör oluşturma Sihirbazı 'nı** kullanın.
 
@@ -256,7 +254,7 @@ Repeat these steps on the second SQL Server.
 
 1. Her iki sunucu için SQL Server ve SQL Server Agent hizmet hesaplarının tam denetime sahip olduğundan emin olun.
 
-   ![Yeni paylaşma](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
+   ![Her iki sunucu için SQL Server ve SQL Server Agent hizmet hesaplarının tam denetime sahip olduğundan emin olun.](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
 
 1. **Tamam**’ı seçin.
 
@@ -285,7 +283,7 @@ Artık aşağıdaki adımları kullanarak bir kullanılabilirlik grubu yapıland
 
     ![Yeni kullanılabilirlik grubu Başlatma Sihirbazı](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. **Giriş** sayfasında, **İleri**' yi seçin. Kullanılabilirlik grubu **adını belirtin** sayfasında, kullanılabilirlik grubu **adı**alanına kullanılabilirlik grubu için bir ad yazın. Örneğin **AG1**. **İleri**’yi seçin.
+2. **Giriş** sayfasında, **İleri**' yi seçin. Kullanılabilirlik grubu **adını belirtin** sayfasında, kullanılabilirlik grubu **adı**alanına kullanılabilirlik grubu için bir ad yazın. Örneğin, **AG1**. **İleri**’yi seçin.
 
     ![Yeni kullanılabilirlik Grubu Sihirbazı, kullanılabilirlik grubu adını belirtin](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
@@ -317,7 +315,7 @@ Artık aşağıdaki adımları kullanarak bir kullanılabilirlik grubu yapıland
    >Tam eşitleme, SQL Server ilk örneğindeki veritabanının tam yedeklemesini alır ve ikinci örneğe geri yükler. Büyük veritabanları için tam eşitleme, uzun sürebileceğinden önerilmez. Bu süreyi, veritabanının bir yedeklemesini el ile alarak ve ile geri yükleyerek azaltabilirsiniz `NO RECOVERY` . Veritabanı, `NO RECOVERY` kullanılabilirlik grubunu yapılandırmadan önce ikinci SQL Server ile zaten geri yüklenirse, **yalnızca Birleştir**' i seçin. Kullanılabilirlik grubunu yapılandırdıktan sonra yedeklemeyi almak istiyorsanız **ilk veri eşitlemesini atla**' yı seçin.
    >
 
-   ![Yeni kullanılabilirlik Grubu Sihirbazı, Ilk veri eşitlemesini seçin](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
+   ![İlk veri eşitlemesini atla ' yı seçin](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
 
 9. **Doğrulama** sayfasında, **İleri**' yi seçin. Bu sayfa aşağıdaki görüntüye benzer görünmelidir:
 
@@ -340,7 +338,7 @@ Artık aşağıdaki adımları kullanarak bir kullanılabilirlik grubu yapıland
 
    **AlwaysOn panonuz** aşağıdaki ekran görüntüsüne benzer görünmelidir:
 
-   ![Kullanılabilirlik grubu panosu](./media/availability-group-manually-configure-tutorial/78-agdashboard.png)
+   ![kullanılabilirlik grubu panosu](./media/availability-group-manually-configure-tutorial/78-agdashboard.png)
 
    Çoğaltmaları, her çoğaltmanın yük devretme modunu ve eşitleme durumunu görebilirsiniz.
 
@@ -358,6 +356,8 @@ Bu noktada, iki SQL Server örneği üzerinde çoğaltmaları olan bir kullanıl
 
 ## <a name="create-an-azure-load-balancer"></a>Azure yük dengeleyici oluşturma
 
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Azure sanal makineler 'de, bir SQL Server kullanılabilirlik grubu yük dengeleyici gerektirir. Yük dengeleyici, kullanılabilirlik grubu dinleyicilerinin ve Windows Server yük devretme kümesinin IP adreslerini barındırır. Bu bölüm Azure portal yük dengeleyicinin nasıl oluşturulacağını özetler.
 
 Azure 'daki bir yük dengeleyici Standart Load Balancer veya temel bir Load Balancer olabilir. Standart Load Balancer temel Load Balancer daha fazla özelliğe sahiptir. Kullanılabilirlik grubu için, bir kullanılabilirlik bölgesi (bir kullanılabilirlik kümesi yerine) kullanıyorsanız, Standart Load Balancer gereklidir. Yük dengeleyici SKU 'Ları arasındaki fark hakkındaki ayrıntılar için bkz. [Load Balancer SKU karşılaştırması](../../../load-balancer/skus.md).
@@ -365,7 +365,7 @@ Azure 'daki bir yük dengeleyici Standart Load Balancer veya temel bir Load Bala
 1. Azure portal, SQL sunucularınızın bulunduğu kaynak grubuna gidin ve **+ Ekle**' yi seçin.
 1. **Load Balancer**arayın. Microsoft tarafından yayınlanan yük dengeleyiciyi seçin.
 
-   ![Yük Devretme Kümesi Yöneticisi 'de kullanılabilirlik grubu](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
+   ![Microsoft tarafından yayınlanan yük dengeleyiciyi seçin](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
 
 1. **Oluştur**’u seçin.
 1. Yük Dengeleyici için aşağıdaki parametreleri yapılandırın.

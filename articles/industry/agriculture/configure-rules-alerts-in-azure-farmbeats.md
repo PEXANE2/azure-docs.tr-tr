@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 02373da114b6dc4663cd3ffc9a0780ac6a7a9e23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e6a5d414c341f482c3fddf95a2f8bb8e55a3ca2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75482991"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168554"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>Kuralları yapılandırma ve uyarıları yönetme
 
@@ -21,12 +21,12 @@ Azure Farmtempler, grubunuzda dağıtılan sensörlerden ve cihazlardan akan alg
 1. Giriş sayfasında, **kurallar**' a gidin.
 2. **Yeni kural**' ı seçin. Yeni kural penceresi görüntülenir.
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-1.png)
+    ![Yeni kural düğmesini ve yeni kural bölümünü vurgulayan ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-1.png)
 
 3. **Kural adını** ve **Kural açıklamasını** girip **Grup Seç** açılan menüsünden bir grup seçin.
 4. Grup ve **koşullar** bölümünün aynı pencerede göründüğünü seçmek için Grup adınızı yazın.  
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
+    ![Koşullar bölümünü vurgulayan ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
 
 5. **Koşullar**' da, **Ölçü**, **işleç** ve **değer**değerlerini girin.
 6. Ölçü adı ' nı **Ölçü** açılan menüsünde yazın.
@@ -34,7 +34,7 @@ Azure Farmtempler, grubunuzda dağıtılan sensörlerden ve cihazlardan akan alg
 8. **Önem derecesini**seçin.
 9. **Eylem**' de e-posta uyarılarını etkinleştirmek Için **e-posta etkin** geçiş düğmesi ' ne geçin.
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
+    ![E-posta etkin seçeneğini gösteren ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
 
 10. E-posta ile **ilgili** uyarı göndermek istediğiniz e-posta **adreslerini** ve **ek notları**girin.  
 11. Kural **durumu**' nda, kuralı etkinleştirmek veya devre dışı bırakmak için **etkin** geçiş düğmesi ' ne geçin.
@@ -53,7 +53,7 @@ Azure Farmtempler, grubunuzda dağıtılan sensörlerden ve cihazlardan akan alg
  - Koşulların listesi  
  - Kuraldan etkilenen cihaz sayısı
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/view-rule-1.png)
+    ![Kural ayrıntıları ekranını gösteren ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/view-rule-1.png)
 
 ## <a name="edit-rule"></a>Kuralı düzenleme
 
@@ -63,11 +63,11 @@ Bir kuralı düzenlemek için aşağıdaki adımları izleyin:
    Kurallar penceresi görüntülenir.
 2. Düzenlemek istediğiniz kuralı seçin.
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-action-bar-1.png)
+    ![Seçili kuralı gösteren ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-action-bar-1.png)
 
 3. Eylem çubuğundan **Düzenle** ' yi seçin, **kural düzenleme** penceresi görüntülenir.
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
+    ![Kural düzenleme ekranını gösteren ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
 
 4. **Kural adını**ve **Kural açıklamasını** değiştirip **Grup Seç** açılan menüsünden bir grup seçin.
 5. Grubu seçmek için Grup adınızı yazın ve **Koşulları** aynı pencerede görüntülenir.  
@@ -75,7 +75,7 @@ Bir kuralı düzenlemek için aşağıdaki adımları izleyin:
 7. Ölçü adı ' nı **Ölçü** açılan menüsünde yazın.
 8. Kurallara koşul eklemek/kuralları düzenlemek için **+ Koşul Ekle** ' yi seçin.
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-two-1.png)
+    ![Koşul Ekle düğmesini vurgulayan ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-two-1.png)
 
 9.  **Önem derecesini**seçin.  
 10. **Eylem**' de e-posta uyarılarını etkinleştirmek Için **e-posta etkin** geçiş düğmesi ' ne geçin.
@@ -91,11 +91,11 @@ Bir kuralın durumunu değiştirmek için şu adımları izleyin:
 1. Giriş sayfasında, sol gezinti menüsünden **kurallar** ' ı seçin. Kurallar penceresi görüntülenir.
 2. Durumunu değiştirmek istediğiniz kuralı seçin.
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/change-status-rule-action-bar-1.png)
+    ![Durumu Değiştir düğmesini gösteren ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/change-status-rule-action-bar-1.png)
 
 3. Eylem çubuğundan **Durumu Değiştir** ' i seçin. **Durumu Değiştir** penceresi görüntülenir.
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/rule-change-status-1.png)
+    ![Değişiklik durumu ekranını gösteren ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/rule-change-status-1.png)
 
 3. **Durum değiştirme** Değiştir düğmesini kullanarak kural durumunu değiştirin.
    Kuraldan etkilenecek cihaz sayısını görüntüleyebilirsiniz.
@@ -108,7 +108,7 @@ Bir kuralı silmek için şu adımları izleyin:
 1. Giriş sayfasında, sol gezinti menüsünden **kurallar** ' ı seçin. Kurallar penceresi görüntülenir.
 2. Silmek istediğiniz kuralı seçin.
 
-    ![Proje grubu ları](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-action-bar-1.png)
+    ![Sil düğmesini vurgulayan ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-action-bar-1.png)
 
 3. Eylem çubuğundan **Sil** ' i seçin.
 

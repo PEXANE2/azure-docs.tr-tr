@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: f91cdaa81e18105eb39af442ab6152bfd2888ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319716"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168151"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure'da Dayanıklı İşlevler'de Tanılama
 
@@ -99,7 +99,7 @@ Ayrıntılı düzenleme yeniden yürütme olaylarını yaymayı etkinleştirmek 
 ```
 
 > [!NOTE]
-> Application Insights telemetri, verileri çok sık yaymamak için Azure Işlevleri çalışma zamanı tarafından örneklenir. Bu, kısa bir süre içinde birçok yaşam döngüsü olayı gerçekleştiğinde izleme bilgilerinin kaybolmasına neden olabilir. [Azure Işlevleri izleme makalesinde](../functions-monitoring.md#configure-sampling) , bu davranışın nasıl yapılandırılacağı açıklanmaktadır.
+> Application Insights telemetri, verileri çok sık yaymamak için Azure Işlevleri çalışma zamanı tarafından örneklenir. Bu, kısa bir süre içinde birçok yaşam döngüsü olayı gerçekleştiğinde izleme bilgilerinin kaybolmasına neden olabilir. [Azure Işlevleri izleme makalesinde](../configure-monitoring.md#configure-sampling) , bu davranışın nasıl yapılandırılacağı açıklanmaktadır.
 
 ### <a name="single-instance-query"></a>Tek örnekli sorgu
 

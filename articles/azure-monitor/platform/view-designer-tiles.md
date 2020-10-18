@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77658515"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168520"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı kutucuklarını görüntülemek için başvuru kılavuzu
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makale, özel Görünümleriniz için kullanılabilen kutucukların ayarlarına yönelik bir başvuru kılavuzudur.
@@ -24,7 +24,7 @@ Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
 Kullanılabilir görünüm Tasarımcısı kutucukları aşağıdaki tabloda açıklanmıştır:  
 
-| Kutucuk | Açıklama |
+| Kutucuk | Description |
 |:--- |:--- |
 | [Sayı](#number-tile) |Bir sorgudaki kayıt sayısı. |
 | [İki sayı](#two-numbers-tile) |İki farklı sorgudan kayıt sayısı. |
@@ -46,7 +46,7 @@ Sonraki bölümlerde, kutucuk türleri ve özellikleri ayrıntılı olarak açı
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **Kutucuk** | |
 | Gösterge |Değerin altında görüntülenen metin. |
 | Sorgu |Çalıştırılan sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
@@ -64,7 +64,7 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **İlk kutucuk** | |
 | Gösterge |Değerin altında görüntülenen metin. |
 | Sorgu |Çalıştırılan sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
@@ -85,7 +85,7 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **Halka** | |
 | Sorgu |Halka için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. |
 | **Halka** |**> Merkezi** |
@@ -104,12 +104,12 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 ## <a name="line-chart-tile"></a>Çizgi grafik kutucuğu
 Bu kutucuk, zaman içinde günlük sorgusundan birden çok seriyi görüntüleyen bir çizgi grafiğidir. 
 
-![Çizgi grafik ve belirtme çizgisi kutucuğu](media/view-designer-tiles/tile-line-chart.png)
+![Azure Izleyici görünümü tasarımcısında çizgi grafik kutucuğunun ekran görüntüsü.](media/view-designer-tiles/tile-line-chart.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **Çizgi grafik** | |
 | Sorgu |Çizgi grafik için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü kullanmıyorsa, x ekseni saatlik aralıkları kullanır. |
 | **Çizgi grafik** |**> Y ekseni** |
@@ -125,12 +125,12 @@ Bu kutucuk, zaman içinde günlük sorgusundan birden çok seriyi görüntüleye
 ## <a name="line-chart-and-callout-tile"></a>Çizgi grafik ve belirtme çizgisi kutucuğu
 Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntüleyen ve özetlenen değere sahip bir belirtme çizgisi içeren çizgi grafik bulunur. 
 
-![Çizgi grafik ve belirtme çizgisi kutucuğu](media/view-designer-tiles/tile-line-chart-callout.png)
+![Azure Izleyici görünümü tasarımcısında çizgi grafik ve belirtme çizgisi kutucuğunun ekran görüntüsü. belirtme çizgisi, özetlenen bir değer göstererek çizgi grafiğini azaltır.](media/view-designer-tiles/tile-line-chart-callout.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **Çizgi grafik** | |
 | Sorgu |Çizgi grafik için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü kullanmıyorsa, x ekseni saatlik aralıkları kullanır. |
 | **Çizgi grafik** |**> belirtme çizgisi** |
@@ -155,7 +155,7 @@ Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntü
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | İlk grafik | |
 | Gösterge |İlk serinin belirtme çizgisinin altında görüntülenen metin. |
 | Color |İlk serideki sütunlar için kullanılan renk. |

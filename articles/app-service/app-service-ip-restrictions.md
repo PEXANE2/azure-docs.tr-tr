@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962970"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168231"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamaları
 
@@ -36,7 +36,7 @@ Uygulamanıza bir erişim kısıtlama kuralı eklemek için, menüyü kullanarak
 
 Erişim kısıtlamaları kullanıcı arabiriminden, uygulamanız için tanımlanan erişim kısıtlama kuralları listesini gözden geçirebilirsiniz.
 
-![erişim kısıtlamalarını Listele](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![Seçili uygulama için tanımlanan erişim kısıtlama kurallarının listesini gösteren Azure portal erişim kısıtlamaları ekranının ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
 Listede, uygulamanızdaki tüm geçerli kısıtlamalar gösterilir. Uygulamanızda VNet kısıtlaması varsa, tablo Microsoft. Web için hizmet uç noktalarının etkinleştirilip etkinleştirilmediğini gösterir. Uygulamanızda tanımlı kısıtlama olmadığında, uygulamanız her yerden erişilebilir olacaktır.  
 
@@ -68,11 +68,11 @@ Hizmet uç noktaları ile uygulamanızı uygulama ağ geçitleri veya diğer WAF
 
 Var olan bir erişim kısıtlama kuralını düzenlemek için herhangi bir satıra tıklayabilirsiniz. Düzenlemeler, öncelik Sıralamalı değişiklikler dahil hemen geçerlidir.
 
-![erişim kısıtlama kuralını düzenleme](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![Var olan bir erişim kısıtlama kuralına ait alanları gösteren Azure portal IP kısıtlamasını Düzenle iletişim kutusunun ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
 Bir kuralı düzenlediğinizde bir IP adresi kuralı ve bir sanal ağ kuralı arasındaki türü değiştiremezsiniz. 
 
-![erişim kısıtlama kuralını düzenleme](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![Sanal ağ kuralı ayarlarını gösteren Azure portal IP kısıtlaması Düzenle iletişim kutusunun ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
 Bir kuralı silmek için, kuraldaki **...** öğesine tıklayın ve ardından **Kaldır**' a tıklayın.
 
@@ -90,7 +90,7 @@ Kullanıcıların tek bir IP adresini veya IP adresi bloğunu açıkça engellem
 
 Uygulamanıza erişimi denetleyebilmenin yanı sıra, uygulamanız tarafından kullanılan SCM sitesine erişimi de kısıtlayabilirsiniz. SCM sitesi, Web dağıtımı uç noktasıdır ve kudu konsolundan de bulunur. Uygulamadan SCM sitesine ayrı olarak erişim kısıtlamaları atayabilir veya hem uygulama hem de SCM sitesi için aynı kümeyi kullanabilirsiniz. Uygulamanızı uygulamanızla aynı kısıtlamalara sahip olacak şekilde denetlediğinizde, her şey göz aşımına uğrar. Kutuyu boş bırakırsanız, daha önce SCM sitesinde sahip olduğunuz ayarlar uygulanır. 
 
-![erişim kısıtlamalarını Listele](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![SCM sitesi veya uygulama için hiçbir erişim kısıtlaması ayarlanmediğini gösteren Azure portal erişim kısıtlamaları ekranının ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Erişim kısıtlama kuralları programlama yoluyla düzenleme ##
 

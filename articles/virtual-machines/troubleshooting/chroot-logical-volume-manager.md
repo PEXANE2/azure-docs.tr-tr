@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361475"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167925"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM kullanıyorsa (mantıksal birim Yöneticisi) bir Linux sanal makinesi sorunlarını giderme
 
@@ -71,7 +71,7 @@ Etkilenen VM 'nin LVM 'lerini görmek için **lsblk** komutunu çalıştırın
 
 `lsblk`
 
-![Lsblk Çalıştır](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
+![Lsblk komutunun çıkışını gösteren ekran görüntüsü.](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
 Etkilenen VM 'deki LVM 'Lerin görüntülendiğini doğrulayın.
@@ -198,11 +198,11 @@ Hangi **LVS** 'nin bağlama için kullanılabilir olduğunu doğrulamak için **
 
 Tüm LVs 'ler bağlı bölümler olarak görünür olmalıdır
 
-![Gelişmiş](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Bağlı bölümler olarak görünen LVs 'yi gösteren ekran görüntüsü.](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 Yüklü **çekirdeği** sorgulama
 
-![Gelişmiş](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Yüklü çekirdeğin nasıl sorgulanalınacağını gösteren ekran görüntüsü.](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 Gerekirse **çekirdek** 
  Gelişmiş ' i kaldırın veya yükseltin ![](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)

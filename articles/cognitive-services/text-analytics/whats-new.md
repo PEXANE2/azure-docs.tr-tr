@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a85c129dd11e587a0714e92c850315101df103f0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015933"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166191"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
@@ -25,6 +25,7 @@ Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin g
 
 * Model sürümünden itibaren Yaklaşım Analizi v3. x için Hintçe desteği `2020-04-01` . 
 * `2020-09-01`V3/diller uç noktası için, artan dil algılama ve doğruluk iyileştirmeleri ekleyen model.
+* Orta Hindistan ve BAE Kuzey v3 kullanılabilirliği.
 
 ## <a name="september-2020"></a>Eylül 2020
 

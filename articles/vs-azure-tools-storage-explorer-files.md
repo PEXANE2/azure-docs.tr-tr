@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e87e3d59fec354ca3590a79accb45a74172793b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60456860"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167891"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Depolama Gezgini’ni Azure Dosya depolama ile kullanma
 
@@ -73,7 +73,7 @@ Aşağıdaki adımlar, Depolama Gezgini’ndeki bir dosya paylaşımının içer
 
 1. Ana bölmede dosya paylaşımının içeriğini gösterilir.
     
-    ![Paylaşımın içeriği](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![Paylaşımın içeriğini gösteren Depolama Gezgini bir dosya paylaşımının ana bölmesinin ekran görüntüsü.](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>Dosya paylaşımını silme
 
@@ -191,7 +191,7 @@ Aşağıdaki adımlar bir dosya paylaşımındaki dosyaları (ve klasörleri) y�
 
 1.  Ana bölmede dosya paylaşımının içeriğini gösterilir.
 
-    ![Paylaşımın içeriği](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![Depolama Gezgini 'deki dosya paylaşımı için ana bölmenin ekran görüntüsü, seçilen ilk klasörle paylaşımın içeriğini gösterir.](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  Ana bölmede dosya paylaşımının içeriğini gösterilir.
 

@@ -4,12 +4,12 @@ description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 1614ac0711c6a83d7e303b5a4b6ebbdf23ba2e03
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104079"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167908"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure İşlevleri geliştirme
 
@@ -39,7 +39,7 @@ Bu makalede, işlevleri geliştirmek ve Azure 'da yayımlamak için Azure Işlev
 > [!IMPORTANT]
 > Tek bir işlev uygulaması için yerel geliştirme ve Portal geliştirmeyi karışmayın. Yerel bir projeden bir işlev uygulamasına yayımladığınızda, dağıtım işlemi portalda geliştirdiğiniz işlevlerin üzerine yazar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Visual Studio Code için [Azure işlevleri uzantısı][Azure işlevleri uzantısını]yükleyip çalıştırmadan önce, şu gereksinimleri karşılamanız gerekir:
 
@@ -93,7 +93,7 @@ Proje şablonu seçtiğiniz dilde bir proje oluşturur ve gerekli bağımlılık
 
 Dilinize bağlı olarak, bu diğer dosyalar oluşturulur:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[,\#](#tab/csharp)
 
 * İşlevi uygulayan [HttpExample.cs sınıf kitaplığı dosyası](functions-dotnet-class-library.md#functions-class-library-project) .
 
@@ -125,7 +125,7 @@ Bu noktada, [dosyanızdaki function.jsdeğiştirerek](#add-input-and-output-bind
 
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketlerinde uygulanır. Gereken Tetikleyiciler ve bağlamalar için uzantı paketlerini yüklemeniz gerekir. Bağlama Uzantıları yükleme işlemi projenizin diline bağlıdır.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[,\#](#tab/csharp)
 
 Projenizde ihtiyaç duyduğunuz uzantı paketlerini yüklemek için, Terminal penceresinde [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın. Aşağıdaki komut blob, kuyruk ve tablo depolaması için bağlamaları uygulayan Azure Storage uzantısını yüklüyor.
 
@@ -145,7 +145,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 Bu eylemin sonuçları projenizin diline bağlıdır:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[,\#](#tab/csharp)
 
 Projenize yeni bir C# sınıf kitaplığı (. cs) dosyası eklenir.
 
@@ -161,7 +161,7 @@ Giriş ve çıkış bağlamaları ekleyerek işlevinizi genişletebilirsiniz. Ba
 
 Aşağıdaki örneklerde `outqueue` , depolama hesabının bağlantı dizesinin `MyStorageConnection` local.settings.jsüzerindeki uygulama ayarında ayarlandığı adlı bir depolama kuyruğuna bağlanır.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[,\#](#tab/csharp)
 
 Yöntem tanımına aşağıdaki parametreyi eklemek için işlev yöntemini güncelleştirin `Run` :
 
@@ -384,15 +384,13 @@ Daha fazla bilgi için bkz. [akış günlükleri](functions-monitoring.md#stream
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> Akış günlükleri, Işlevlerin yalnızca tek bir örneğini destekler. İşleviniz birden çok örneğe ölçeklenirse, diğer örneklerden alınan veriler günlük akışında gösterilmez. Application Insights [canlı ölçüm akışı](../azure-monitor/app/live-stream.md) birden fazla örneği destekler. Ayrıca, neredeyse gerçek zamanlı olarak, Akış Analizi [örneklenmiş verileri](functions-monitoring.md#configure-sampling)temel alır.
+> Akış günlükleri, Işlevlerin yalnızca tek bir örneğini destekler. İşleviniz birden çok örneğe ölçeklenirse, diğer örneklerden alınan veriler günlük akışında gösterilmez. Application Insights [canlı ölçüm akışı](../azure-monitor/app/live-stream.md) birden fazla örneği destekler. Ayrıca, neredeyse gerçek zamanlı olarak, Akış Analizi [örneklenmiş verileri](configure-monitoring.md#configure-sampling)temel alır.
 
 ### <a name="application-insights"></a>Application Insights
 
-İşlev uygulamanızı Application Insights ile tümleştirerek işlevlerinizin yürütülmesini izlemenizi öneririz. Azure portal bir işlev uygulaması oluşturduğunuzda, bu tümleştirme varsayılan olarak oluşur. Visual Studio yayımlama sırasında işlev uygulamanızı oluşturduğunuzda Application Insights kendiniz tümleştirmeniz gerekir.
+İşlev uygulamanızı Application Insights ile tümleştirerek işlevlerinizin yürütülmesini izlemenizi öneririz. Azure portal bir işlev uygulaması oluşturduğunuzda, bu tümleştirme varsayılan olarak oluşur. Visual Studio yayımlama sırasında işlev uygulamanızı oluşturduğunuzda Application Insights kendiniz tümleştirmeniz gerekir. Nasıl yapılacağını öğrenmek için bkz. [Application Insights Tümleştirmesini Etkinleştirme](configure-monitoring.md#enable-application-insights-integration).
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
+Application Insights kullanarak izleme hakkında daha fazla bilgi edinmek için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
 ## <a name="c-script-projects"></a>C \# betik projeleri
 

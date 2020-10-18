@@ -4,12 +4,12 @@ description: Statik bağlantı istemcileri kullanarak Azure Işlevlerinde perfor
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106102"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168316"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Işlevlerinde bağlantıları yönetme
 
@@ -21,11 +21,11 @@ Bir işlev uygulaması bir [korumalı alan ortamında](https://github.com/projec
 
 Bu sınır örnek başına. Ölçek denetleyicisi daha fazla isteği işlemek için [işlev uygulama örnekleri eklerse](functions-scale.md#how-the-consumption-and-premium-plans-work) , her örneğin bağımsız bir bağlantı sınırı vardır. Bu, genel bağlantı sınırı olmadığı anlamına gelir ve tüm etkin örneklerde 600 ' den çok etkin bağlantınız olabilir.
 
-Sorun giderirken, işlev uygulamanız için Application Insights etkinleştirdiğinizden emin olun. Application Insights, yürütme gibi işlev uygulamalarınız için ölçümleri görüntülemenize olanak sağlar. Daha fazla bilgi için bkz. [Application Insights Telemetriyi görüntüleme](functions-monitoring.md#view-telemetry-in-application-insights).  
+Sorun giderirken, işlev uygulamanız için Application Insights etkinleştirdiğinizden emin olun. Application Insights, yürütme gibi işlev uygulamalarınız için ölçümleri görüntülemenize olanak sağlar. Daha fazla bilgi için bkz. [Application Insights Telemetriyi görüntüleme](analyze-telemetry-data.md#view-telemetry-in-application-insights).  
 
 ## <a name="static-clients"></a>Statik istemciler
 
-Gerekenden daha fazla bağlantı tutmaya kaçınmak için, her bir işlev çağrısında yeni bir tane oluşturmak yerine istemci örneklerini yeniden kullanın. İşlevinizi yazmak isteyebileceğiniz herhangi bir dil için istemci bağlantılarını yeniden kullanmanızı öneririz. Örneğin, [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1), [Documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient)ve Azure Storage istemcileri gibi .NET istemcileri, tek bir statik istemci kullanırsanız bağlantıları yönetebilir.
+Gerekenden daha fazla bağlantı tutmaya kaçınmak için, her bir işlev çağrısında yeni bir tane oluşturmak yerine istemci örneklerini yeniden kullanın. İşlevinizi yazmak isteyebileceğiniz herhangi bir dil için istemci bağlantılarını yeniden kullanmanızı öneririz. Örneğin, [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true), [Documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient)ve Azure Storage istemcileri gibi .NET istemcileri, tek bir statik istemci kullanırsanız bağlantıları yönetebilir.
 
 Azure Işlevleri uygulamasında hizmete özel bir istemci kullanırken izlenecek bazı yönergeler aşağıda verilmiştir:
 
@@ -39,7 +39,7 @@ Bu bölümde, işlev kodunuzda istemcileri oluşturmak ve kullanmak için en iyi
 
 ### <a name="httpclient-example-c"></a>HttpClient örneği (C#)
 
-Statik bir [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) örneği oluşturan C# işlev kodu örneği aşağıda verilmiştir:
+Statik bir [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) örneği oluşturan C# işlev kodu örneği aşağıda verilmiştir:
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +52,7 @@ public static async Task Run(string input)
 }
 ```
 
-.NET 'teki [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) hakkında sık sorulan sorular "İstemcimin atılmalıdır mi?" Genel olarak, `IDisposable` bunları kullanarak işiniz bittiğinde uygulayan nesneleri atıyorsunuz. Ancak, işlev sona erdiğinde bu işlemi yapmadığınızda, bir statik istemciyi atmayın. Statik istemcinin uygulamanızın süresini gerçek zamanlı olarak istiyor.
+.NET 'teki [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) hakkında sık sorulan sorular "İstemcimin atılmalıdır mi?" Genel olarak, `IDisposable` bunları kullanarak işiniz bittiğinde uygulayan nesneleri atıyorsunuz. Ancak, işlev sona erdiğinde bu işlemi yapmadığınızda, bir statik istemciyi atmayın. Statik istemcinin uygulamanızın süresini gerçek zamanlı olarak istiyor.
 
 ### <a name="http-agent-examples-javascript"></a>HTTP Aracısı örnekleri (JavaScript)
 
@@ -143,10 +143,10 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient bağlantıları
 
-İşlev kodunuz, bir SQL ilişkisel veritabanına bağlantı kurmak için SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) için .NET Framework veri sağlayıcısı kullanabilir. Bu aynı zamanda, [Entity Framework](/ef/ef6/)gibi ADO.NET kullanan veri çerçeveleri için temel sağlayıcıdır. [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) ve [documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient) bağlantılarından farklı olarak, ADO.NET varsayılan olarak bağlantı havuzu uygular. Ancak hala bağlantı dışında çalışmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [SQL Server bağlantı havuzu (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
+İşlev kodunuz, bir SQL ilişkisel veritabanına bağlantı kurmak için SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) için .NET Framework veri sağlayıcısı kullanabilir. Bu aynı zamanda, [Entity Framework](/ef/ef6/)gibi ADO.NET kullanan veri çerçeveleri için temel sağlayıcıdır. [HttpClient](/dotnet/api/system.net.http.httpclient) ve [documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient) bağlantılarından farklı olarak, ADO.NET varsayılan olarak bağlantı havuzu uygular. Ancak hala bağlantı dışında çalışmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [SQL Server bağlantı havuzu (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Entity Framework gibi bazı veri çerçeveleri, genellikle bir yapılandırma dosyasının **connectionStrings** bölümünden bağlantı dizelerini alır. Bu durumda, işlev uygulaması ayarlarınızın **bağlantı dizeleri** koleksiyonuna ve yerel projenizdeki [local.settings.jsdosyasına](functions-run-local.md#local-settings-file) açıkça SQL veritabanı bağlantı dizelerini eklemeniz gerekir. İşlev kodunuzda [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) 'ın bir örneğini oluşturuyorsanız, bağlantı dizesi değerini diğer Bağlantılarınızdaki **uygulama ayarlarında** depolamanız gerekir.
+> Entity Framework gibi bazı veri çerçeveleri, genellikle bir yapılandırma dosyasının **connectionStrings** bölümünden bağlantı dizelerini alır. Bu durumda, işlev uygulaması ayarlarınızın **bağlantı dizeleri** koleksiyonuna ve yerel projenizdeki [local.settings.jsdosyasına](functions-run-local.md#local-settings-file) açıkça SQL veritabanı bağlantı dizelerini eklemeniz gerekir. İşlev kodunuzda [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 'ın bir örneğini oluşturuyorsanız, bağlantı dizesi değerini diğer Bağlantılarınızdaki **uygulama ayarlarında** depolamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

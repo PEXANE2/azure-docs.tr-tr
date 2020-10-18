@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a654454c1ef3d5ea1ff7e6eb525bb153f7875c1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430727"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168214"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Geliştirici portalı sayfalarının stilini özelleştirme
 
@@ -31,13 +31,13 @@ Azure API Management geliştirici portalını özelleştirmenin en yaygın üç 
 
 Bu makalede, eski **Geliştirici** portalının sayfalarında öğelerin stilini özelleştirmeyi ve değişikliklerinizi görüntülemeyi öğreneceksiniz.
 
-![stili özelleştir](./media/modify-developer-portal-style/developer_portal.png)
+![Eski Geliştirici Portalında ayarlarınızı değiştirdiğiniz konumu gösteren ekran görüntüsü.](./media/modify-developer-portal-style/developer_portal.png)
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -49,7 +49,7 @@ Bu makalede, eski **Geliştirici** portalının sayfalarında öğelerin stilini
 2. **Genel bakış** penceresinin en üstündeki **Geliştirici Portalı (eski)** düğmesine tıklayın.
 3. Ekranın sol üst tarafında, iki boya fırçasından oluşan bir simge görürsünüz. Portal özelleştirme menüsünü açmak için bu simgenin üzerine gelin.
 
-    ![stili özelleştir](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+    ![İki boya fırçasından oluşan simgeyi vurgulayan ekran görüntüsü.](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
 4. Stil özelleştirme bölmesini açmak için menüden **Stiller**’i seçin.
 
     **Stilleri**’i kullanarak özelleştirebileceğiniz tüm öğeler sayfada görüntülenir

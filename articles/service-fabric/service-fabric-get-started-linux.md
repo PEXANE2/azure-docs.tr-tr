@@ -2,31 +2,29 @@
 title: Linux üzerinde geliştirme ortamınızı ayarlama
 description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra uygulama derlemek için hazır hale gelirsiniz.
 ms.topic: conceptual
-ms.date: 2/23/2018
+ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250003"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168418"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
-Linux geliştirme makinenizde [Azure Service Fabric uygulamaları](service-fabric-application-model.md) dağıtıp çalıştırmak için çalışma zamanını ve ortak SDK'yı yükleyin. Ayrıca isteğe bağlı Java ve .NET Core geliştirme SDK'larını yükleyebilirsiniz. 
+Linux geliştirme makinenizde (Azure Service Fabric uygulamaları) [Service-Fabric-Application-model.md] dağıtmak ve çalıştırmak için çalışma zamanını ve ortak SDK 'Yı yüklemelisiniz. Ayrıca isteğe bağlı Java ve .NET Core geliştirme SDK'larını yükleyebilirsiniz. 
 
-Bu makaledeki adımlarda, Linux’a yerel olarak yükleme yaptığınız veya Service Fabric OneBox kapsayıcı görüntüsünü (`mcr.microsoft.com/service-fabric/onebox:latest`) kullandığınız varsayılır.
+Bu makaledeki adımlarda, Linux 'ta yerel olarak yüklediğiniz veya (Service Fabric OneBox kapsayıcı görüntüsü) [] (örn.) kullandığınızda varsayılmaktadır https://hub.docker.com/_/microsoft-service-fabric-onebox `mcr.microsoft.com/service-fabric/onebox:u18` .
 
-Linux için Windows Alt Sistemine SDK ve Service Fabric çalışma zamanının yüklenmesi desteklenmez. Desteklenen Azure Service Fabric komut satırı arabirimiyle (CLI) bulutta veya şirket içinde başka herhangi bir yerde barındırılan Service Fabric varlıklarını yönetebilirsiniz. CLI'yi yükleme hakkında bilgi için bkz. [Service Fabric CLI'sini ayarlama](./service-fabric-cli.md).
+Bulutta veya şirket içinde barındırılan Service Fabric varlıklarını Azure Service Fabric komut satırı arabirimi (CLı) ile yönetebilirsiniz. CLI'yi yükleme hakkında bilgi için bkz. [Service Fabric CLI'sini ayarlama](./service-fabric-cli.md).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme için şu işletim sistemi sürümleri desteklenir.
 
@@ -42,9 +40,17 @@ Geliştirme için şu işletim sistemi sürümleri desteklenir.
 
 ## <a name="installation-methods"></a>Yükleme yöntemleri
 
-### <a name="script-installation-ubuntu"></a>Betikle yüklemesi (Ubuntu)
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 
-Kolaylık açısından, Service Fabric çalışma zamanını ve Service Fabric ortak SDK'sını **sfctl** CLI ile birlikte yüklemek için bir betik sağlanmıştır. Sonraki bölümde yer alan el ile yükleme adımlarını çalıştırın. Neyin yüklendiğini ve ilişkili lisansları görürsünüz. Betiği çalıştırdığınızda yüklenen yazılıma ait tüm lisans şartlarını kabul ettiğiniz varsayılır.
+# <a name="ubuntu"></a>[Ubuntu](#tab/sdksetupubuntu)
+
+## <a name="update-your-apt-sources"></a>APT kaynaklarınızı güncelleştirme
+SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla yüklemek için, öncelikle Advanced Packaging Tool (APT) kaynaklarınızı güncelleştirmelisiniz.
+
+## <a name="script-installation"></a>Betikle yükleme
+
+Kolaylık sağlaması için, Service Fabric çalışma zamanını ve Service Fabric ortak SDK 'sını, [ **sfctl** CLI](service-fabric-cli.md)ile birlikte yüklemek için bir komut dosyası sağlanır. Betiği çalıştırdığınızda yüklenen yazılıma ait tüm lisans şartlarını kabul ettiğiniz varsayılır. Alternatif olarak, ilgili lisansların yanı sıra ilişkili lisansların de bulunduğu sonraki bölümde [el ile yükleme](#manual-installation) adımlarını çalıştırabilirsiniz.
 
 Betik başarılı bir şekilde çalıştırıldıktan sonra [Yerel kümeyi ayarlama](#set-up-a-local-cluster) bölümüne geçebilirsiniz.
 
@@ -52,13 +58,8 @@ Betik başarılı bir şekilde çalıştırıldıktan sonra [Yerel kümeyi ayarl
 sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
 ```
 
-### <a name="manual-installation"></a>El ile yükleme
+## <a name="manual-installation"></a>El ile yükleme
 Service Fabric çalışma zamanı ve ortak SDK'yı el ile yüklemek için bu kılavuzdaki adımları izleyin.
-
-## <a name="update-your-apt-sources-or-yum-repositories"></a>APT kaynaklarınızı veya Yum depolarınızı güncelleştirme
-SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla yüklemek için, öncelikle Advanced Packaging Tool (APT) kaynaklarınızı güncelleştirmelisiniz.
-
-### <a name="ubuntu"></a>Ubuntu
 
 1. Bir terminal açın.
 
@@ -100,8 +101,30 @@ SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla y�
     sudo apt-get update
     ```
 
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>Yerel küme için Service Fabric SDK'sını yükleme ve ayarlama
 
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric önizleme desteği)
+Kaynaklarınızı güncelleştirdikten sonra SDK’yı yükleyebilirsiniz. Service Fabric SDK paketini yükleyin, yüklemeyi onaylayın ve lisans sözleşmesini kabul edin.
+
+### <a name="ubuntu"></a>Ubuntu
+
+```bash
+sudo apt-get install servicefabricsdkcommon
+```
+
+> [!TIP]
+>   Aşağıdaki komutlar, Service Fabric paketlerine yönelik lisansı kabul etme işlemini otomatik hale getirir:
+>   ```bash
+>   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
+>   ```
+
+# <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
+
+## <a name="update-your-yum-repositories"></a>VUM depolarınızı güncelleştirme
+Asum komut satırı aracı aracılığıyla SDK ve ilişkili çalışma zamanı paketini yüklemek için, önce paket kaynaklarınızı güncelleştirmeniz gerekir.
+
+## <a name="manual-installation-rhel"></a>El ile yükleme (RHEL)
+Service Fabric çalışma zamanı ve ortak SDK'yı el ile yüklemek için bu kılavuzdaki adımları izleyin.
 
 1. Bir terminal açın.
 2. Extra Packages for Enterprise Linux’u (EPEL) indirip yükleyin.
@@ -129,50 +152,69 @@ SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla y�
     sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
     ```
 
-6. .NET SDK'sını yükleyin.
-
-    ```bash
-    yum install rh-dotnet20 -y
-    ```
-
-## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>Yerel küme için Service Fabric SDK'sını yükleme ve ayarlama
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster-rhel"></a>Yerel küme için Service Fabric SDK 'sını (RHEL) kurma ve kurma
 
 Kaynaklarınızı güncelleştirdikten sonra SDK’yı yükleyebilirsiniz. Service Fabric SDK paketini yükleyin, yüklemeyi onaylayın ve lisans sözleşmesini kabul edin.
-
-### <a name="ubuntu"></a>Ubuntu
-
-```bash
-sudo apt-get install servicefabricsdkcommon
-```
-
-> [!TIP]
->   Aşağıdaki komutlar, Service Fabric paketlerine yönelik lisansı kabul etme işlemini otomatik hale getirir:
->   ```bash
->   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
->   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
->   ```
-
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric önizleme desteği)
 
 ```bash
 sudo yum install servicefabricsdkcommon
 ```
 
+---
+
+## <a name="included-packages"></a>Dahil edilen paketler
 SDK yüklemesiyle birlikte gelen Service Fabric çalışma zamanı, aşağıdaki tabloda yer alan paketleri içerir. 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-**Ubuntu** | 2.0.0 | AzulJDK 1,8 | Npm’de örtük | en son |
+**Ubuntu** | 2.0.7 | AzulJDK 1,8 | Npm’de örtük | en son |
 **RHEL** | - | OpenJDK 1.8 | Npm’de örtük | en son |
 
 ## <a name="set-up-a-local-cluster"></a>Yerel küme oluşturma
-Yükleme tamamlandıktan sonra yerel bir küme başlatın.
+1. Geliştirme için yerel bir Service Fabric kümesi başlatın.
+
+# <a name="container-based-local-cluster"></a>[Kapsayıcı tabanlı yerel küme](#tab/localclusteroneboxcontainer)
+
+[Küme Service Fabric](https://hub.docker.com/r/microsoft/service-fabric-onebox/)kapsayıcı tabanlı bir kutu başlatın.
+
+1. Docker Kapsayıcıları dağıtabilmek için Moby 'yi yükler.
+    ```bash
+    sudo apt-get install moby-engine moby-cli -y
+    ```
+2. Aşağıdaki ayarlarla, ana bilgisayarınızda Docker Daemon yapılandırmasını güncelleştirin ve Docker Daemon programını yeniden başlatın. Ayrıntılar: [IPv6 desteğini etkinleştir](https://docs.docker.com/config/daemon/ipv6/)
+
+    ```json
+    {
+        "ipv6": true,
+        "fixed-cidr-v6": "fd00::/64"
+    }
+    ```
+
+3. Kümeyi başlatın.<br/>
+    <b>Ubuntu 18,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
+    ```
+
+    <b>Ubuntu 16,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > Varsayılan olarak bu, görüntüyü Service Fabric’in en son sürümüyle çeker. Belirli düzeltmeler için lütfen [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) sayfasını ziyaret edin.
+
+# <a name="local-cluster"></a>[Yerel küme](#tab/localcluster)
+
+Yukarıdaki adımları kullanarak SDK 'Yı yükledikten sonra yerel bir küme başlatın.
 
 1. Küme kurulum betiğini çalıştırın.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+
+---
 
 2. Bir Web tarayıcısı açın ve **Service Fabric Explorer** () sayfasına gidin `http://localhost:19080/Explorer` . Küme başlatıldığında, Service Fabric Explorer panosunu görürsünüz. Kümenin tamamen ayarlanması birkaç dakika sürebilir. Tarayıcınız URL’yi açamazsa veya Service Fabric Explorer sistemin hazır olduğunu göstermezse, birkaç dakika bekleyip tekrar deneyin.
 
@@ -217,9 +259,9 @@ Service Fabric, Yeoman şablon oluşturucuları kullanarak terminalden Service F
 
 Oluşturucuları yükledikten sonra, sırasıyla `yo azuresfguest` ve `yo azuresfcontainer` komutlarını çalıştırarak konuk yürütülebilir dosyasını veya kapsayıcı hizmetlerini oluşturun.
 
-## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 ile geliştirmeyi ayarlama
+## <a name="set-up-net-core-31-development"></a>.NET Core 3,1 geliştirmeyi ayarlama
 
-[C# Service Fabric uygulamaları oluşturmaya](service-fabric-create-your-first-linux-application-with-csharp.md) başlamak amacıyla [Ubuntu için .NET Core 2.0 SDK'sını](https://www.microsoft.com/net/core#linuxubuntu) yükleyin. NuGet.org, şu anda önizleme aşamasında olan .NET Core 2.0 Service Fabric uygulamalarının paketlerini barındırır.
+[C# Service Fabric uygulamaları oluşturmaya](service-fabric-create-your-first-linux-application-with-csharp.md)başlamak Için [Ubuntu için .NET Core 3,1 SDK 'sını](https://www.microsoft.com/net/core#linuxubuntu) yükler. .NET Core Service Fabric uygulamaları için paketler NuGet.org üzerinde barındırılır.
 
 ## <a name="set-up-java-development"></a>Java ile geliştirmeyi ayarlama
 

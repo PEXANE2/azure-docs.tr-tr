@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a5f92e0092d3e20db25b519fec46e6018dd543
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514908"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168027"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple üzerinde barındırılan dosya paylaşımları için Azure Site Recovery kullanan otomatik olağanüstü durum kurtarma çözümü
 
@@ -294,7 +294,7 @@ Sınama yük devretmesi sırasında Active Directory özgü hususlar için [ACTI
 1. Azure Portal, dosya sunucusu VM 'si için oluşturulan **Kurtarma Hizmetleri** Kasası &gt; **kurtarma planları (Site Recovery)** &gt; **recoveryplan_name** ' nı seçin.
 1. Kurtarma planı dikey penceresinde, **daha** &gt; **Planlı Yük devretme**' ya tıklayın.  
 
-   ![Kurtarma planı](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
+   ![Planlı Yük devretme ve yük devretme seçeneklerini vurgulayan ekran görüntüsü.](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. **Planlı Yük devretmeyi Onayla** dikey penceresinde, kaynak ve hedef konumları seçin ve hedef ağ ' ı seçin ve ✓ onay simgesine tıklayarak yük devretme sürecini başlatın.
 1. Çoğaltma sanal makineleri oluşturulduktan sonra, bir tamamlama bekleme durumunda yer alırlar. Yük devretmeyi yürütmek için **Yürüt** ' e tıklayın.
 1. Çoğaltma tamamlandıktan sonra, sanal makineler ikincil konumda başlatılır.

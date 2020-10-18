@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 51310b1569982e0b71f39dede0d4d7dbefd1a3c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 49840c2591bc1a991920b00aec020d4f652c9a50
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975544"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168401"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -241,7 +241,7 @@ API | Açıklama | Sunulan sürüm
 
 Örnek API 'SI, sanal makine, ağ ve depolama dahil olmak üzere VM örnekleri için önemli meta verileri kullanıma sunar. Aşağıdaki kategorilere örnek/işlem aracılığıyla erişilebilir:
 
-Veriler | Açıklama | Sunulan sürüm
+Veriler | Description | Sunulan sürüm
 -----|-------------|-----------------------
 azEnvironment | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 customData | Bu özellik şu anda devre dışı. Bu belge kullanılabilir hale geldiğinde güncelleştirilecek | 2019-02-01
@@ -435,7 +435,7 @@ Azure ortamının bulutu ve değerleri aşağıda listelenmiştir.
 
 Ağ meta verileri, örnek API 'sinin bir parçasıdır. Aşağıdaki ağ kategorileri, örnek/ağ uç noktası üzerinden kullanılabilir.
 
-Veriler | Açıklama | Sunulan sürüm
+Veriler | Description | Sunulan sürüm
 -----|-------------|-----------------------
 IPv4/Privateıpaddress | VM 'nin yerel IPv4 adresi | 2017-04-02
 IPv4/Publicıpaddress | VM 'nin genel IPv4 adresi | 2017-04-02
@@ -503,7 +503,7 @@ Bir sanal makinenin depolama profili üç kategoriye ayrılmıştır: görüntü
 
 Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağıdaki bilgileri içerir:
 
-Veriler    | Açıklama
+Veriler    | Description
 --------|-----------------
 kimlik      | Kaynak kimliği
 teklif   | Platform veya Market görüntüsü teklifi
@@ -513,7 +513,7 @@ sürüm | Platform veya Market görüntüsünün sürümü
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
-Veriler    | Açıklama
+Veriler    | Description
 --------|-----------------
 önbelleği | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -529,7 +529,7 @@ Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
 
 Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her veri diski nesnesi şu bilgileri içerir:
 
-Veriler    | Açıklama
+Veriler    | Description
 --------|-----------------
 önbelleği | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -690,7 +690,7 @@ Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UT
 İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. SANAL makineye özgü bazı ayrıntılarla birlikte imzalama için kullanılan sertifikayı içerir. ARM VM 'Leri için buna VMID, SKU, nonce, SubscriptionID, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri dahildir. Plan bilgileri yalnızca Azure Market görüntüleri için doldurulur. Klasik (ARM olmayan) VM 'Ler için yalnızca VMID 'nin doldurulması garanti edilir. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 Belge aşağıdaki alanları içerir:
 
-Veriler | Açıklama
+Veriler | Description
 -----|------------
 nonce | İsteğe bağlı olarak istekle birlikte sağlanmış bir dize. Bir nonce sağlanmazsa, geçerli UTC zaman damgası kullanılır
 plan | [Azure Marketi görüntü planı](/rest/api/compute/virtualmachines/createorupdate#plan). Plan kimliğini (adı), ürün görüntüsünü veya teklifi (ürün) ve yayımcı kimliğini (yayımcı) içerir.
@@ -732,7 +732,7 @@ Add-Type -AssemblyName System.Security
 $signedCms = New-Object -TypeName System.Security.Cryptography.Pkcs.SignedCms
 $signedCms.Decode($signature);
 $content = [System.Text.Encoding]::UTF8.GetString($signedCms.ContentInfo.Content)
-Write-Host "Attested data: " $conten
+Write-Host "Attested data: " $content
 $json = $content | ConvertFrom-Json
 # Do additional validation here
 ```

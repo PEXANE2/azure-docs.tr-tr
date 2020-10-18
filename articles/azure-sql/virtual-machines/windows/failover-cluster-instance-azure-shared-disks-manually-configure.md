@@ -1,5 +1,5 @@
 ---
-title: Azure Paylaşılan disklerle bir FCı oluşturma (Önizleme)
+title: Azure Paylaşılan disklerle bir FCı oluşturma
 description: Azure sanal makinelerinde SQL Server bir yük devretme kümesi örneği (FCı) oluşturmak için Azure Paylaşılan diskleri kullanın.
 services: virtual-machines
 documentationCenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6e32f183709aca8a78f8448f2d6e6b63a77f2133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272659"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168248"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,14 +28,14 @@ Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan di
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 - Azure aboneliği. [Ücretsiz](https://azure.microsoft.com/free/)olarak kullanmaya başlayın. 
 - [İki veya daha fazla Windows Azure sanal makinesi](failover-cluster-instance-prepare-vm.md). [Kullanılabilirlik kümeleri](../../../virtual-machines/windows/tutorial-availability-sets.md) ve [yakınlık yerleştirme grupları](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPG 'ler) her ikisi de desteklenir. Bir PPG kullanırsanız, tüm düğümlerin aynı grupta mevcut olması gerekir.
 - Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir hesap.
-- En son [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)sürümü. 
+- En son [PowerShell](/powershell/azure/install-az-ps)sürümü. 
 
 
 ## <a name="add-azure-shared-disk"></a>Azure Paylaşılan diski ekleme
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Bağlantı yapılandırma 
 
-Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 CU2 uygulamazsanız + ve Windows Server 2016 (veya üzeri) kullanıyorsanız, [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) özelliğinin önizlemesini yapabilirsiniz. 
+Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 CU2 uygulamazsanız (veya üzeri) ve Windows Server 2016 (veya üzeri) kullanıyorsanız, bunun yerine [dağıtılmış ağ adı](failover-cluster-instance-distributed-network-name-dnn-configure.md) özelliğini kullanabilirsiniz. 
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -221,12 +221,13 @@ Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ort
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce yapmadıysanız, bir [sanal ağ adı ve bir Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) veya [dağıtılmış ağ adı (DNN)](hadr-distributed-network-name-dnn-configure.md)ile FCI 'nize bağlantı yapılandırın. 
+Daha önce yapmadıysanız, bir [sanal ağ adı ve bir Azure yük dengeleyici](failover-cluster-instance-vnn-azure-load-balancer-configure.md) veya [dağıtılmış ağ adı (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md)ile FCI 'nize bağlantı yapılandırın. 
+
 
 Azure paylaşılan diskler sizin için uygun FCı depolama çözümü değilse, bunun yerine [Premium dosya paylaşımlarını](failover-cluster-instance-premium-file-share-manually-configure.md) veya [depolama alanları doğrudan](failover-cluster-instance-storage-spaces-direct-manually-configure.md) kullanarak FCI 'nizi oluşturmayı düşünün. 
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde SQL Server ve [küme yapılandırması en iyi yöntemleri](hadr-cluster-best-practices.md) [ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış.
 
-Daha fazla bilgi için bkz.: 
+Daha fazla bilgi için bkz. 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

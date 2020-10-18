@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f22473d4a865e2925ecbfe74d68811c12f7c26d7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107530"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168095"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Işlevleri için Azure Güvenlik temeli
 
@@ -315,7 +315,7 @@ Günlük, performans ve hata verilerini toplamak için Azure Işlevleri uygulama
 
 - [Azure Işlevleri için tanılama ayarlarını etkinleştirme](./functions-monitor-log-analytics.md)
 
-- [Azure Işlevleri için Application Insights etkinleştirme](./functions-monitoring.md#enable-application-insights-integration)
+- [Azure Işlevleri için Application Insights etkinleştirme](./configure-monitoring.md#enable-application-insights-integration)
 
 - [Azure 'da uyarı oluşturma](../azure-monitor/learn/tutorial-response.md)
 
@@ -369,7 +369,7 @@ Günlük, performans ve hata verilerini toplamak için Azure Işlevleri uygulama
 
 **Kılavuz**: Azure işlevlerine denetim düzlemi erişimi, Azure ACTIVE DIRECTORY (ad) ile denetlenir. Azure AD varsayılan parola kavramına sahip değildir.
 
-Veri düzlemi erişimi, yetkilendirme anahtarları, ağ kısıtlamaları ve AAD kimlik doğrulaması dahil olmak üzere çeşitli yollarla denetlenebilir. Yetkilendirme anahtarları, Azure Işlevleri HTTP uç noktalarınıza bağlanan istemciler tarafından kullanılır ve herhangi bir zamanda yeniden oluşturulabilir. Bu anahtarlar varsayılan olarak yeni HTTP uç noktaları için oluşturulur.
+Veri düzlemi erişimi, yetkilendirme anahtarları, ağ kısıtlamaları ve bir Azure AD kimliğinin doğrulanması dahil olmak üzere çeşitli yollarla denetlenebilir. Yetkilendirme anahtarları, Azure Işlevleri HTTP uç noktalarınıza bağlanan istemciler tarafından kullanılır ve herhangi bir zamanda yeniden oluşturulabilir. Bu anahtarlar varsayılan olarak yeni HTTP uç noktaları için oluşturulur.
 
 Birden çok dağıtım yöntemi, bir dizi oluşturulan kimlik bilgilerinden faydalanabilir işlev uygulamaları için kullanılabilir. Uygulamanız için kullanılacak dağıtım yöntemlerini gözden geçirin.
 
@@ -463,7 +463,7 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 - [Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma](../app-service/configure-authentication-provider-aad.md)
 
-- [AAD örneği oluşturma ve yapılandırma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Azure AD örneği oluşturma ve yapılandırma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

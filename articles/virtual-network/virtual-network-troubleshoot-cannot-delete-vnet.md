@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131666"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167823"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Sorun giderme: Azure 'da bir sanal ağ silinemedi
 
@@ -48,7 +48,7 @@ Klasik sanal ağlar için Azure portal klasik sanal ağın **genel bakış** say
 
 Sanal ağlar için, sanal ağın **genel bakış** sayfasına gidin. Sanal ağ geçidi için **bağlı cihazları** denetleyin.
 
-![Bağlı cihazı denetleme](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Azure portal bir sanal ağ için bağlı cihazların listesinin ekran görüntüsü. Sanal ağ geçidi listede vurgulanır.](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
 Ağ geçidini kaldırabilmeniz için önce ağ geçidinde **bağlantı** nesnelerini kaldırın. 
 
@@ -56,7 +56,7 @@ Ağ geçidini kaldırabilmeniz için önce ağ geçidinde **bağlantı** nesnele
 
 Sanal ağın **genel bakış** sayfasına gidin. Uygulama ağ geçidi için **bağlı cihazları** denetleyin.
 
-![Bağlı cihazı denetleme](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Azure portal bir sanal ağ için bağlı cihazların listesinin ekran görüntüsü. Uygulama ağ geçidi listede vurgulanır.](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 Bir uygulama ağ geçidi varsa, sanal ağı silebilmeniz için önce onu kaldırmanız gerekir.
 
@@ -64,7 +64,7 @@ Bir uygulama ağ geçidi varsa, sanal ağı silebilmeniz için önce onu kaldır
 
 Active Directory Etki Alanı hizmeti etkin ve sanal ağa bağlıysa, bu sanal ağı silemezsiniz. 
 
-![Bağlı cihazı denetleme](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Azure portal Azure AD Domain Services ekranının ekran görüntüsü. Sanal ağ/alt ağ alanında kullanılabilir seçeneği vurgulanır.](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 Hizmeti devre dışı bırakmak için [Azure Portal kullanarak Azure Active Directory Domain Services devre dışı bırak](../active-directory-domain-services/delete-aadds.md)' a bakın.
 
