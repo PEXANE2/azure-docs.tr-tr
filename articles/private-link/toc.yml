@@ -1,4 +1,4 @@
-- name: Azure Özel Bağlantı Belgeleri
+- name: Özel Bağlantı Belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -24,6 +24,7 @@
     - name: Özel Bağlantı hizmeti oluşturma - ARM şablonu
       displayName: Resource Manager
       href: create-private-link-service-template.md
+  expanded: true
 - name: Öğreticiler
   items:
     - name: Bir depolama hesabına bağlanma
@@ -62,7 +63,7 @@
           href: troubleshoot-private-link-connectivity.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

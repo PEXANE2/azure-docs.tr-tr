@@ -193,7 +193,7 @@
       items:
         - name: Cihaz simülatörü hizmeti
           href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
-        - name: Azure Digital Twins örnekleri
+        - name: Azure Digital Twins uçtan uca örnekleri
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins gezgini (örnek)
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
@@ -201,10 +201,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DPS ve IoT Hub tümleştirmesi örneği
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: Logic Apps bağlayıcısı için Azure Digital Twins özel Swagger’lar
-          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: SignalR tümleştirme örneği
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+        - name: Logic Apps bağlayıcısı için Azure Digital Twins özel Swagger’lar
+          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: Azure araçları
       items:
         - name: Azure Cloud Shell

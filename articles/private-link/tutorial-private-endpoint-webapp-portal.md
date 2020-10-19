@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 4b12c71390a6b03de2f6f6a4bd79707cbc357dfe
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6d4d9fd901337b9c05c7d7d7f271974273e9fe37
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169048"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170075"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir Web uygulamasına bağlanma
 
@@ -206,7 +206,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi özel uç nokta ge
 
 7. Bağlandıktan sonra sunucuda Windows PowerShell 'i açın.
 
-8. `nslookup <webapp-name>.azurewebsites.net` yazın. **\<webapp-name>** Önceki adımlarda oluşturduğunuz depolama hesabının adıyla değiştirin.  Aşağıda görüntülene benzer bir ileti alacaksınız:
+8. `nslookup <webapp-name>.azurewebsites.net` yazın. **\<webapp-name>** Önceki adımlarda oluşturduğunuz Web uygulamasının adıyla değiştirin.  Aşağıda görüntülene benzer bir ileti alacaksınız:
 
     ```powershell
     Server:  UnKnown

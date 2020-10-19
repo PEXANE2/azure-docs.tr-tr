@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9a93602327b5c5294d6c17c1804c04c6603dcf37
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9ebf07a5125995e66297d89643845b54aad246b8
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999883"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170305"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>IoT Central uygulama için Node.js cihaz SDK 'sını kullanarak X. 509.440 sertifikalarıyla cihazları bağlama
 
@@ -20,7 +20,7 @@ IoT Central, bir cihaz ve uygulamanız arasındaki iletişimin güvenliğini sa�
 
 Bu makalede, genellikle üretim ortamında kullanılan X. 509.440- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) kayıtlarını kullanmanın iki yolu ve [bireysel](how-to-connect-devices-x509.md#use-an-individual-enrollment) kayıtlar test için yararlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanızın (Node.js)](./tutorial-connect-device-nodejs.md) öğreticisine bağlama işleminin tamamlanması.
 - [Git](https://git-scm.com/download/).
@@ -50,12 +50,15 @@ Bu bölümde, bir cihazı kayıt grubunun sertifikasından türetilmiş bir sert
     npm install
     ```
 
-1. Bir kök sertifika oluşturun ve betiği çalıştırarak bir cihaz sertifikası türetebilirsiniz. Sertifika adı için yalnızca küçük harfli alfasayısal karakterler ve kısa çizgiler kullandığınızdan emin olun:
+1. Bir kök sertifika oluşturun ve betiği çalıştırarak bir cihaz sertifikası türetirsiniz:
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
+
+    > [!TIP]
+    > Bir cihaz KIMLIĞI harfler, rakamlar ve `-` karakteri içerebilir.
 
 Bu komutlar, her biri kök ve cihaz sertifikası için üç dosya üretir
 

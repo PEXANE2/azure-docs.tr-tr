@@ -92,6 +92,8 @@
     - name: Sorunları kendi kendine tanılama ve çözme
       href: spring-cloud-howto-self-diagnose-solve.md
     - name: İzleme
+    - name: Rol ve izinler oluşturma
+      href: spring-cloud-howto-permissions.md
       items:
         - name: Dağıtılmış izleme ve Uygulama İçgörüleri
           href: spring-cloud-tutorial-distributed-tracing.md

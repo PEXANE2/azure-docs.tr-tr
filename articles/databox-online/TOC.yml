@@ -34,7 +34,11 @@
     - name: Kavramlar
       items:
         - name: Gereksinimleri inceleme
-          href: azure-stack-edge-gpu-system-requirements.md
+          items:
+            - name: Azure Stack Edge için
+              href: azure-stack-edge-gpu-system-requirements.md
+            - name: Azure Stack Edge Blob depolama alanı için
+              href: azure-stack-edge-gpu-system-requirements-rest.md
         - name: Sınırları anlama
           href: azure-stack-edge-limits.md
         - name: Güvenliğe genel bakış

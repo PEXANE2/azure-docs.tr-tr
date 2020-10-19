@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3fc10c9601deb66c8fb6182d5943011f1ef185ce
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126850"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170060"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanma
 
@@ -113,7 +113,7 @@ Bir güvenlik ihlali varsa veya birincil sertifikanız süresi dolacak şekilde 
 
 ### <a name="register-and-connect-devices"></a>Cihazları kaydetme ve bağlama
 
-X. 509.440 sertifikalarını kullanarak cihazları toplu bağlamak için, önce [cihaz kimliklerini ve cihaz adlarını içeri aktarmak](howto-manage-devices.md#import-devices)üzere bir CSV dosyası kullanarak uygulamanıza cihazları kaydedin. Cihaz kimliklerinin hepsi küçük olmalıdır.
+X. 509.440 sertifikalarını kullanarak cihazları toplu bağlamak için, önce [cihaz kimliklerini ve cihaz adlarını içeri aktarmak](howto-manage-devices.md#import-devices)üzere bir CSV dosyası kullanarak uygulamanıza cihazları kaydedin. Bir cihaz KIMLIĞI harfler, rakamlar ve `-` karakteri içerebilir.
 
 X. 509.952 kayıt grubunuza yüklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için X. 509.440 yaprak sertifikaları oluşturun. Yaprak sertifikalarındaki değer olarak **CIHAZ kimliğini** kullanın `CNAME` . Cihaz kodunuz, uygulamanız için **kimlik kapsamı** değeri, **cihaz kimliği**ve karşılık gelen cihaz sertifikası gerektirir.
 
@@ -149,7 +149,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="X. 509.952 kayıt grubu Ekle ekran görüntüsü":::
 
-1. `az iot central device compute-device-key`CIHAZ SAS anahtarlarını oluşturmak için komutunu kullanın. Önceki adımda grup birincil anahtarını kullanın. Cihaz kimlikleri küçük harf olmalıdır:
+1. `az iot central device compute-device-key`CIHAZ SAS anahtarlarını oluşturmak için komutunu kullanın. Önceki adımda grup birincil anahtarını kullanın. Cihaz KIMLIĞI harf, sayı ve `-` karakter içerebilir:
 
     ```azurecli
     az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
@@ -170,7 +170,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
 1. [Bir kayıt grubu oluşturun](#create-an-enrollment-group) ve ardından IoT Central uygulamanıza [bir kök veya ara X. 509.440 sertifikası ekleyin ve doğrulayın](#add-and-verify-a-root-or-intermediate-x509-certificate) .
 
-1. IoT Central uygulamanıza eklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için yaprak sertifikaları oluşturun. Yaprak sertifikalarda, büyük/küçük harf cihaz kimliklerini kullanın `CNAME` .
+1. IoT Central uygulamanıza eklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için yaprak sertifikaları oluşturun. Cihaz kimliklerini, yaprak sertifikalarda olduğu gibi kullanın `CNAME` . Bir cihaz KIMLIĞI harfler, rakamlar ve `-` karakteri içerebilir.
 
 1. OEM, cihaz KIMLIĞI, oluşturulan yaprak X. 509.440 sertifikası ve uygulama **kimliği kapsam** değeri olan her bir cihazı yanıp sönmez.
 
@@ -185,7 +185,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Ayrı kayıt tabanlı cihaz bağlantısı
 
-Her biri kendi kimlik doğrulama kimlik bilgilerine sahip olan cihazları bağlayan müşteriler için bireysel kayıtları kullanın. Tek bir kayıt, bağlanmasına izin verilen tek bir cihaz için bir giriştir. Bireysel kayıtlar, bir X. 509.440 yaprak sertifikası veya SAS belirteçleri (fiziksel veya sanal Güvenilir Platform modülünden) kanıtlama mekanizmaları olarak kullanabilir. Tek bir kayıtta bulunan cihaz KIMLIĞI (kayıt KIMLIĞI olarak da bilinir) alfasayısal, küçük harf ve kısa çizgi içerebilir. Daha fazla bilgi için bkz. [DPS bireysel kayıt](../../iot-dps/concepts-service.md#individual-enrollment).
+Her biri kendi kimlik doğrulama kimlik bilgilerine sahip olan cihazları bağlayan müşteriler için bireysel kayıtları kullanın. Tek bir kayıt, bağlanmasına izin verilen tek bir cihaz için bir giriştir. Bireysel kayıtlar, bir X. 509.440 yaprak sertifikası veya SAS belirteçleri (fiziksel veya sanal Güvenilir Platform modülünden) kanıtlama mekanizmaları olarak kullanabilir. Tek bir kayıt içindeki cihaz KIMLIĞI (kayıt KIMLIĞI olarak da bilinir) bir cihaz KIMLIĞI, harf, sayı ve `-` karakter içerebilir. Daha fazla bilgi için bkz. [DPS bireysel kayıt](../../iot-dps/concepts-service.md#individual-enrollment).
 
 > [!NOTE]
 > Bir cihaz için tek bir kayıt oluşturduğunuzda, IoT Central uygulamanızdaki varsayılan grup kayıt seçeneklerine göre önceliklidir.
