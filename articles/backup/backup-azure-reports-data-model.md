@@ -3,12 +3,12 @@ title: Azure Backup tanılama olayları için veri modeli
 description: Bu veri modeli, Log Analytics (LA) ' a tanılama olayları göndermenin kaynağa özgü moda başvurdadır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569586"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173972"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup tanılama olayları için veri modeli
 
@@ -57,7 +57,7 @@ Bu tablo, kasa ve yedekleme öğeleri gibi temel yedekleme varlıkları hakkınd
 | SecondaryBackupProtectionState    | Metin          | Yedekleme öğesi için ikincil korumanın etkinleştirilip etkinleştirilmediği  |
 | Durum                             | Metin          | Yedekleme öğesi nesnesinin durumu. Örneğin, etkin, silindi |
 | StorageReplicationType            | Metin          | Kasa için depolama çoğaltma türü. Örneğin, Geoyedekli |
-| kaynak grubundaki                    | Metin          | Verilerin toplandığı kaynağın abonelik tanımlayıcısı (örneğin, kurtarma hizmetleri Kasası) |
+| SubscriptionId                    | Metin          | Verilerin toplandığı kaynağın abonelik tanımlayıcısı (örneğin, kurtarma hizmetleri Kasası) |
 | VaultName                         | Metin          | Kasanın adı                                            |
 | VaultTags                         | Metin          | Kasa kaynağıyla ilişkili Etiketler                    |
 | Vaultuniqueıd                     | Metin          | Kasanın benzersiz tanımlayıcısı                             |
@@ -162,7 +162,7 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 | Diffbackupdayısoftheweek         | Metin           | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri için haftanın günleri |
 | DiffBackupFormat                | Metin           | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemelerinin biçimi   |
 | DiffBackupRetentionDuration     | Ondalık Sayı | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri bekletme süresi |
-| DiffBackupTime                  | Süre           | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi     |
+| DiffBackupTime                  | Saat           | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi     |
 | LogBackupFrequency              | Ondalık Sayı | SQL için günlük yedeklemeleri sıklığı                            |
 | LogBackupRetentionDuration      | Ondalık Sayı | Azure VM yedeklemesi 'nde SQL için günlük yedeklemeleri bekletme süresi |
 | MonthlyRetentionDaysOfTheMonth  | Metin           | Aylık bekletme yapılandırıldığında ayın haftası.  Örneğin, Ilk, son |
@@ -239,7 +239,7 @@ Yukarıdaki tablolardaki her kaydın ilişkili bir **Işlem adı**vardır. Işle
 | AddonAzureBackupPolicy | İlke |  Bir yedekleme ve bekletme ilkesinin tüm ayrıntılarını içeren bir kaydı temsil eder. Örneğin, KIMLIK, ad, bekletme ayarları, vb. |
 | AddonAzureBackupPolicy | Poliyassociation | Bir yedekleme öğesi ile buna uygulanan yedekleme ilkesi arasındaki eşlemeyi temsil eder. |   
 
-Genellikle, analiz için gerekli tüm alanları almak için farklı tablolar ve aynı tablonun parçası olan (Işlem adına göre farklılaştırılan) farklı kayıt kümeleri arasında birleştirmeler gerçekleştirmeniz gerekecektir. Başlamak için [örnek sorgulara](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries) bakın. 
+Genellikle, analiz için gerekli tüm alanları almak için farklı tablolar ve aynı tablonun parçası olan (Işlem adına göre farklılaştırılan) farklı kayıt kümeleri arasında birleştirmeler gerçekleştirmeniz gerekecektir. Başlamak için [örnek sorgulara](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries) bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

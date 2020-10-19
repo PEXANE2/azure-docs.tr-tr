@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fd48ff8dd0f4fa44206f6636f869d4ea3f959ae5
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132525"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174178"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -57,10 +57,10 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
 
 1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
 
-4. Komutu Cloud Shell penceresine göndererek betiği çalıştırın `./deploy.ps1` . (Cloud Shell yapıştırılacağını geri çek, Windows ve Linux 'ta **CTRL + SHIFT + v** veya MacOS 'ta **cmd + SHIFT + v** kullanabilirsiniz. Sağ tıklama menüsünü de kullanabilirsiniz.)
+4. Komut dosyasını, `./deploy.ps1` uygulama kaydı kurulumu 'nu içeren anahtarla Cloud Shell penceresine göndererek çalıştırın. Aşağıdaki komutu kopyalayabilir (Cloud Shell yapıştırmak için çağırır, Windows ve Linux 'ta **CTRL + SHIFT + v** ' i veya MacOS 'ta **cmd + SHIFT + v** ' yi kullanabilirsiniz. Sağ tıklama menüsünü de kullanabilirsiniz.
 
     ```azurecli
-    ./deploy.ps1
+    ./deploy.ps1 -RegisterAadApp
     ```
 
     Komut dosyası otomatik kurulum adımları üzerinden çalışırken, aşağıdaki değerleri geçirmeniz istenir:

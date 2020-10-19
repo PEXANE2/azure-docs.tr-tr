@@ -4,12 +4,12 @@ description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000388"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173922"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
@@ -61,11 +61,13 @@ Artımlı anlık görüntüler, anlık kurtarma için kullanılan sanal makineni
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 Azure portal, **anlık geri yükleme** bölümünün altında **VM yedekleme ilkesi** bölmesine eklenen bir alanı görebilirsiniz. Belirli bir yedekleme ilkesiyle ilişkili tüm VM 'Ler için **VM yedekleme ilkesi** bölmesinden anlık görüntü saklama süresini değiştirebilirsiniz.
 
 ![Anında geri yükleme özelliği](./media/backup-azure-vms/instant-restore-capability.png)
 
-### <a name="using-powershell"></a>PowerShell’i kullanma
+### <a name="using-powershell"></a>PowerShell'i kullanma
 
 >[!NOTE]
 > Az PowerShell Version 1.6.0 onenlerden itibaren, PowerShell kullanarak ilkede anlık geri yükleme anlık görüntü bekletme süresini güncelleştirebilirsiniz

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448535"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174153"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve kurtarma
 
@@ -112,6 +112,9 @@ Bir çalışma alanını silmek için en az *Log Analytics katkıda bulunan* izi
 * Bir hata iletisi alırsanız, *Bu çalışma alanı adı zaten kullanımda* veya bir çalışma alanı oluştururken *çakışıyor* olabilir:
   * Çalışma alanı adı, kuruluşunuzdaki birisi veya diğer müşteri tarafından kullanılabilir değil.
   * Çalışma alanı son 14 gün içinde silindi ve bu ad, geçici silme dönemi için ayrılmış olarak tutuldu. Geçici silme işlemini geçersiz kılmak ve aynı ada sahip yeni bir çalışma alanı oluşturmak için çalışma alanınızı kalıcı olarak silmek üzere, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:<br>
-     1. Çalışma alanınızı [kurtarın](#recover-workspace) .
-     2. Çalışma alanınızı [kalıcı olarak silin](#permanent-workspace-delete) .
-     3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.
+    1. Çalışma alanınızı [kurtarın](#recover-workspace) .
+    2. Çalışma alanınızı [kalıcı olarak silin](#permanent-workspace-delete) .
+    3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.
+* *Kaynak bulunamadığını*gösteren bir 204 yanıt kodu görürseniz, neden çalışma alanını silme işlemini kullanmayı ardışık olarak deniyor olabilir. 204 boş bir yanıt olduğundan, genellikle kaynağın bulunmadığı anlamına gelir; bu nedenle silme işlemi hiçbir şey yapılmadan tamamlanır.
+  Silme çağrısı arka uçta başarıyla tamamlandıktan sonra, çalışma alanını geri yükleyebilir ve daha önce önerilen yöntemlerden birindeki kalıcı silme işlemini tamamlayabilirsiniz.
+

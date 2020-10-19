@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7d5dd7d2d0aa3d10f439b5cf3604e2d595456f86
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048466"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172260"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -170,7 +170,7 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 | `fr-CH` <sup>Yeni</sup> | Fransızca (İsviçre) | Kadın | `fr-CH-ArianeNeural` | Genel |
 | `fr-FR` | Fransızca (Fransa) | Kadın | `fr-FR-DeniseNeural` | Genel |
 | `fr-FR` <sup>Yeni</sup> | Fransızca (Fransa) | Erkek | `fr-FR-HenriNeural` | Genel |
-| `he-IL` <sup>Yeni</sup> | İbranice (ısareal) | Kadın | `he-IL-HilaNeural` | Genel |
+| `he-IL` <sup>Yeni</sup> | İbranice (Israil) | Kadın | `he-IL-HilaNeural` | Genel |
 | `hi-IN` | Hintçe (Hindistan) | Kadın | `hi-IN-SwaraNeural` | Genel |
 | `hr-HR` <sup>Yeni</sup> | Hırvatça (Hırvatistan) | Kadın | `hr-HR-GabrijelaNeural` | Genel |
 | `hu-HU` <sup>Yeni</sup> | Macarca (Macaristan) | Kadın | `hu-HU-NoemiNeural` | Genel |

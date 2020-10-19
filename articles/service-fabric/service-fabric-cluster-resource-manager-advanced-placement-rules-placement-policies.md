@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e27c6661c34ab6d177feec11f8e9ec891987ab48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005760"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172792"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric Hizmetleri için yerleştirme ilkeleri
 Yerleştirme ilkeleri, hizmet yerleşimini bazı belirli, daha az yaygın senaryolarda yönetmek için kullanılabilecek ek kurallardır. Bu senaryolara örnek olarak şunlar verilebilir:
@@ -20,6 +20,7 @@ Yerleştirme ilkeleri, hizmet yerleşimini bazı belirli, daha az yaygın senary
 - Ortamınız, çok sayıda coğrafi veya yasal denetim ya da uygulamanız gereken ilke sınırlarına sahip olduğunuz başka bir durum için birden fazla alanı kapsar
 - Büyük uzakların veya daha az güvenilir ağ bağlantılarının kullanımı nedeniyle iletişim performansı veya gecikme sorunları vardır
 - Belirli iş yüklerini, diğer iş yükleriyle veya müşterilere yakınlık duyacak şekilde en iyi çaba olarak tutmanız gerekir
+- Tek bir düğümde bir bölümün birden çok durum bilgisiz örneğine ihtiyacınız var
 
 Bu gereksinimlerin çoğu kümenin hata etki alanları olarak temsil edilen fiziksel düzenine göre hizalanır. 
 
@@ -29,6 +30,7 @@ Bu senaryolara yönelik yardım eden gelişmiş yerleştirme ilkeleri şunlardı
 2. Gerekli etki alanları
 3. Tercih edilen etki alanları
 4. Çoğaltma paketlemeye izin vermeme
+5. Düğümde birden çok durum bilgisiz örneğine izin ver
 
 Aşağıdaki denetimlerin çoğu düğüm özellikleri ve yerleştirme kısıtlamaları aracılığıyla yapılandırılabilir, ancak bazıları daha karmaşıktır. Şeyleri daha kolay hale getirmek için Service Fabric kümesi Kaynak Yöneticisi bu ek yerleştirme ilkeleri sağlar. Yerleştirme ilkeleri, adlandırılmış hizmet örneği temelinde yapılandırılır. Ayrıca, dinamik olarak da güncelleştirilemeyebilir.
 
@@ -122,6 +124,42 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 Şimdi, coğrafi olarak yayılmayan bir kümedeki hizmetler için bu yapılandırmaların kullanılması mümkün midir? Ancak harika bir neden yoktur. Senaryolar gerektirmedikleri takdirde gerekli, geçersiz ve tercih edilen etki alanı yapılandırmalarının önlenebilir olması gerekir. Belirli bir iş yükünü tek bir raf içinde çalışacak şekilde zorlamaya ya da yerel kümenizin bazı segmentini başka bir şekilde tercih etmeye çalışmak herhangi bir anlamlı yapmaz. Farklı donanım yapılandırmalarının hata etki alanlarına yayılması ve normal yerleştirme kısıtlamaları ve düğüm özellikleri aracılığıyla işlenmesi gerekir.
+
+## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>Tek düğümdeki bir bölümün birden çok durum bilgisi olmayan örneğinin yerleştirilmesi
+**Allowmultiplestatelessınstancesonnode** yerleştirme ilkesi, tek bir düğümdeki bir bölümün birden çok durum bilgisi olmayan örneğinin yerleştirilmesine izin verir. Varsayılan olarak, tek bir bölümün birden çok örneği bir düğüme yerleştirilemez. Bir-1 hizmeti olsa da, belirli bir adlandırılmış hizmet için kümedeki düğüm sayısının ötesinde örnek sayısını ölçeklendirmek mümkün değildir. Bu yerleştirme ilkesi, bu kısıtlamayı kaldırır ve InstanceCount 'un düğüm sayısından daha yüksek olarak belirtilmesini sağlar.
+
+"" Gibi bir sistem durumu iletisi görüyorsanız `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion` , bu koşula veya bunun gibi bir duruma ulaşmış olursunuz. 
+
+`AllowMultipleStatelessInstancesOnNode`Hizmette ilke belirtilerek, InstanceCount, kümedeki düğümlerin sayısından daha fazla ayarlanabilir.
+
+Kod:
+
+```csharp
+ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription allowMultipleInstances = new ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription();
+serviceDescription.PlacementPolicies.Add(allowMultipleInstances);
+```
+
+PowerShell:
+
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless –PartitionSchemeSingleton –PlacementPolicy @(“AllowMultipleStatelessInstancesOnNode”) -InstanceCount 10 -ServicePackageActivationMode ExclusiveProcess 
+```
+
+> [!NOTE]
+> Yerleştirme ilkesi Şu anda önizleme aşamasındadır ve `EnableUnsupportedPreviewFeatures` küme ayarlarının arkasında. Bu, şimdilik bir önizleme özelliği olduğundan, Preview config 'in ayarlanması kümenin sürümüne/sürümünden alınmasını engeller. Diğer bir deyişle, özelliği denemek için yeni bir küme oluşturmanız gerekir.
+>
+
+> [!NOTE]
+> Şu anda ilke yalnızca ExclusiveProcess [hizmet paketi etkinleştirme modu](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)Ile durum bilgisi olmayan hizmetler için desteklenir.
+>
+
+> [!WARNING]
+> İlke, statik bağlantı noktası uç noktaları ile kullanıldığında desteklenmez. Aynı düğümdeki birden çok örnek aynı bağlantı noktasına bağlamaya çalıştığı ve gelmediğinden, birlikte her ikisi de birlikte kullanılması sağlıksız bir kümeye yol açabilir. 
+>
+
+> [!NOTE]
+> Bu yerleştirme ilkesiyle yüksek bir [Minınstancecount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) değeri kullanılması, takılı uygulama yükseltmelerine yol açabilir. Örneğin, beş düğümlü bir kümeniz varsa ve InstanceCount = 10 ' u ayarladıysanız, her düğümde iki örneğe sahip olursunuz. Minınstancecount = 9 ' u ayarlarsanız, denenen bir uygulama yükseltmesi takılmasına sahip olabilir; Minınstancecount = 8 ile bu kaçınılabilir.
+>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Hizmetleri yapılandırma hakkında daha fazla bilgi için [Hizmetleri yapılandırma hakkında bilgi edinin](service-fabric-cluster-resource-manager-configure-services.md)

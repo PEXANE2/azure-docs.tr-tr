@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 5d17fb9bee77aae9945c12d45a5ffff316f9d639
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 94c67be39ddd9f52087fa4632e239a8e85930886
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144243"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171477"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 
@@ -119,7 +119,7 @@ Kod yazarken, IntelliSense 'i tetiklemek için Ctrl + Space tuşlarını kullan�
 
 > [!IMPORTANT]
 > Toplama özelliği şu anda genel önizlemededir.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bir not defteri oluşturma sırasında, genellikle veri araştırma veya hata ayıklama için kullandığınız hücrelerle birlikte sona erdir demektir. *Toplama* özelliği, bu yabancı hücreler olmadan temiz bir not defteri oluşturmanıza yardımcı olur.
 
@@ -223,7 +223,7 @@ Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler '
     ```
 
 > [!NOTE]
-> Bir not defteri içinde paket yönetimi için **% PIP** veya **% Conda** Magic işlevlerini kullanın, tüm paketlere (Şu anda çalışan çekirdekte olan paketler dahil) karşılık olarak paketleri **Şu anda çalışır durumda** olan **! PIP** veya **! Conda** yerine şu anda çalışan çekirdeğe yükler
+> Bir not defteri içinde paket yönetimi için **% PIP** veya **% Conda** Magic işlevlerini kullanarak paketleri, tüm paketlere (Şu anda çalışan çekirdeklerdeki paketler dahil), tüm paketlere başvuran **! PIP** veya **! Conda** yerine **çalışmakta olan çekirdeğe**otomatik olarak yükler.
 
 [Kullanılabilir Jupyter kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 'leri yüklenebilir.
 

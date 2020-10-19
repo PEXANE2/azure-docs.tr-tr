@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerinde SQL Server yedeklenirken
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5126159f2f9e5761b5f6a073972935101bc03210
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946357"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174052"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 'lerinde SQL Server yedekleme için destek matrisi
 
@@ -41,7 +41,7 @@ Azure Backup, Microsoft Azure bulut platformunda barındırılan Azure VM 'lerin
 * Tüm yedekleme türleri (tam/fark/günlük) ve kurtarma modelleri (basit/tam/toplu günlüğe kaydedilir) desteklenir.
 * Tam ve kopya- **salt okuma** veritabanları için yalnızca tam yedekleme türleri desteklenir.
 * Yedekleme ilkesinde Kullanıcı tarafından açıkça etkinleştirildiyse SQL yerel sıkıştırması desteklenir. Azure Backup, Kullanıcı tarafından ayarlandığı şekilde bu denetimin değerine bağlı olarak, örnek düzeyi varsayılan değerlerini COMPRESSION/NO_COMPRESSION yan tümcesiyle geçersiz kılar.
-* TDE etkin veritabanı yedeklemesi desteklenir. Bir TDE şifreli veritabanını başka bir SQL Server geri yüklemek için öncelikle [sertifikayı hedef sunucuya geri yüklemeniz](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)gerekir. SQL Server 2016 ve daha yeni sürümler için TDE özellikli veritabanları için yedekleme sıkıştırması, [burada](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)açıklandığı gibi daha düşük aktarım boyutunda mevcuttur.
+* TDE etkin veritabanı yedeklemesi desteklenir. Bir TDE şifreli veritabanını başka bir SQL Server geri yüklemek için öncelikle [sertifikayı hedef sunucuya geri yüklemeniz](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)gerekir. SQL Server 2016 ve daha yeni sürümler için TDE özellikli veritabanları için yedekleme sıkıştırması, [burada](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)açıklandığı gibi daha düşük aktarım boyutunda mevcuttur.
 * Yansıtma veritabanları ve veritabanı anlık görüntüleri için yedekleme ve geri yükleme işlemleri desteklenmez.
 * SQL Server **Yük devretme kümesi örneği (FCı)** desteklenmez.
 * Tek başına SQL Server örneğinizi veya SQL Always on kullanılabilirlik grubunu yedeklemek için birden fazla yedekleme çözümü kullanmak yedekleme hatasına neden olabilir. Bunu yapmaktan kaçının. Bir kullanılabilirlik grubunun iki düğümünü aynı veya farklı çözümlerle tek tek yedeklemek, yedekleme hatasına da neden olabilir.

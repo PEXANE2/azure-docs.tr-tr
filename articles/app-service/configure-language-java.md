@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ed511f25132ea6bb766736804a5257ad7f6eff0a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149056"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171584"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service için bir Java uygulaması yapılandırma
 
@@ -692,11 +692,15 @@ App Service, kullanıcıların Java 8 veya Java 11 gibi birincil sürümünü ve
 
 İkincil sürümü sabitlemeyi seçerseniz, sitedeki JVM ikincil sürümünü düzenli olarak güncelleştirmeniz gerekir. Uygulamanızın daha yeni alt sürümde çalıştığından emin olmak için, hazırlama yuvası oluşturun ve hazırlama sitesindeki ikincil sürümü artırın. Uygulamanın yeni ikincil sürümde doğru şekilde çalıştığını onayladıktan sonra hazırlama ve üretim yuvalarını değiştirebilirsiniz.
 
+## <a name="jboss-eap-hardware-options"></a>Jpatron EAP donanım seçenekleri
+
+Jpatron EAP yalnızca Premium ve yalıtılmış donanım seçeneklerinde kullanılabilir. Genel Önizleme sırasında ücretsiz, paylaşılan, temel veya Standart katmanda bir Jpatron EAP sitesi oluşturan müşteriler, beklenmeyen davranışları önlemek için Premium veya yalıtılmış donanım katmanına kadar ölçeklendirmelidir.
+
 ## <a name="java-runtime-statement-of-support"></a>Java Runtime desteği
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK sürümleri ve bakım
 
-Azure 'un desteklenen Java Geliştirme Seti (JDK), [Azul sistemleri](https://www.azul.com/)aracılığıyla bir [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dili olarak sunulmaktadır. Azul Zulu kurumsal Derlemeleriyle OpenJDK, Azure için OpenJDK ve Microsoft ve Azul sistemleri tarafından desteklenen Azure Stack için ücretsiz, çok platformlu, üretime hazırlı bir dağıtımıdır. Java SE uygulamalarını oluşturmak ve çalıştırmak için gereken tüm bileşenleri içerir. JDK 'yi [Java JDK yüklemesinden](/azure/developer/java/fundamentals/java-jdk-long-term-support)yükleyebilirsiniz.
+Azure 'un desteklenen Java Geliştirme Seti (JDK), [Azul sistemleri](https://www.azul.com/)aracılığıyla bir [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dili olarak sunulmaktadır. Azul Zulu kurumsal Derlemeleriyle OpenJDK, Azure için OpenJDK ve Microsoft ve Azul sistemleri tarafından desteklenen Azure Stack için ücretsiz, çok platformlu, üretime hazırlı bir dağıtımıdır. Java SE uygulamalarını oluşturmak ve çalıştırmak için gereken tüm bileşenleri içerir. JDK 'yi [Java JDK yüklemesinden](https://aka.ms/azure-jdks)yükleyebilirsiniz.
 
 Ana sürüm güncelleştirmeleri, Azure App Service yeni çalışma zamanı seçenekleri aracılığıyla sağlanacaktır. Müşteriler, App Service dağıtımını yapılandırarak ve ana güncelleştirmenin ihtiyaçlarını karşıladığından sorumlu olduğundan, bu yeni Java sürümlerine güncelleştirir.
 

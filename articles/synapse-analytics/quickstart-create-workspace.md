@@ -5,16 +5,16 @@ services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: overview
+ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bc7bcc3ee5de7ba72885462a410da718387825fa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9780a2adb60c690abda6880157252aaa0c562f18
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088899"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171772"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Hızlı başlangıç: SYNAPSE çalışma alanı oluşturma
 Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturma adımları açıklanmaktadır.

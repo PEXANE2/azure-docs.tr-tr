@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056727"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172842"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -24,7 +24,7 @@ Bir VM oluşturduğunuzda, [desteklenen işletim sistemlerini](backup-support-ma
 ### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>İlk yedeklemenin tamamlanması neden uzun sürüyor?
 
 İlk yedekleme her zaman tam bir yedeklemedir ve verilerin boyutuna ve yedeklemenin ne zaman işleneceğini temel alır. <br>
-Yedekleme performansını geliştirmek için bkz. [yedekleme en iyi uygulamaları](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [Yedekleme konuları](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) ve [yedekleme performansı](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+Yedekleme performansını geliştirmek için bkz. [yedekleme en iyi uygulamaları](./backup-azure-vms-introduction.md#best-practices); [Yedekleme konuları](./backup-azure-vms-introduction.md#backup-and-restore-considerations) ve [yedekleme performansı](./backup-azure-vms-introduction.md#backup-performance)<br>
 Artımlı yedeklemeler için toplam yedekleme süresi 24 saatten daha az olsa da aynı durum ilk yedekleme için geçerli olmayabilir.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Yedekleme maliyeti VM maliyetine dahil mi?
@@ -109,7 +109,7 @@ Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçm
 
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Yönetilen kimlikler, yedekleme sırasında bir kiracı değişikliği gerçekleşirse saklanır mi?
 
-[Kiracı değişikliği](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) gerçekleşirse, yedeklemelerin yeniden çalışması için [yönetilen kimlikleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
+[Kiracı değişikliği](/azure/devops/organizations/accounts/change-azure-ad-connection) gerçekleşirse, yedeklemelerin yeniden çalışması için [yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/overview.md) devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 
 ## <a name="restore"></a>Geri Yükleme
 
@@ -207,6 +207,6 @@ Evet, portaldan aynı yedekleme ilkesiyle ilişkilendirilebilen 100 VM sınırla
 
 Şu anda, bekletme ayarlarını, VM 'ye atanan yedekleme ilkesini temel alarak bir yedekleme öğesi (VM) düzeyinde görüntüleyebilirsiniz.
 
-Yedeklemeleriniz için bekletme ayarlarını görüntülemenin bir yolu, Azure portal VM 'niz için yedekleme öğesi [panosuna](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) gitmeye yöneliktir. Yedekleme ilkesinin bağlantısını seçmek, sanal makine ile ilişkili günlük, haftalık, aylık ve yıllık bekletme noktalarının saklama süresini görüntülemenize yardımcı olur.
+Yedeklemeleriniz için bekletme ayarlarını görüntülemenin bir yolu, Azure portal VM 'niz için yedekleme öğesi [panosuna](./backup-azure-manage-vms.md#view-vms-on-the-dashboard) gitmeye yöneliktir. Yedekleme ilkesinin bağlantısını seçmek, sanal makine ile ilişkili günlük, haftalık, aylık ve yıllık bekletme noktalarının saklama süresini görüntülemenize yardımcı olur.
 
-Ayrıca, tek bir cam bölmesinde tüm VM 'lerinizin bekletme ayarlarını görüntülemek için [yedekleme Gezgini](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) ' ni de kullanabilirsiniz. Herhangi bir kurtarma hizmetleri kasasından yedekleme Gezgini ' ne gidin, **yedekleme öğeleri** sekmesine gidin ve Gelişmiş görünümü seçerek her bir VM için ayrıntılı bekletme bilgilerini görüntüleyin.
+Ayrıca, tek bir cam bölmesinde tüm VM 'lerinizin bekletme ayarlarını görüntülemek için [yedekleme Gezgini](./monitor-azure-backup-with-backup-explorer.md) ' ni de kullanabilirsiniz. Herhangi bir kurtarma hizmetleri kasasından yedekleme Gezgini ' ne gidin, **yedekleme öğeleri** sekmesine gidin ve Gelişmiş görünümü seçerek her bir VM için ayrıntılı bekletme bilgilerini görüntüleyin.

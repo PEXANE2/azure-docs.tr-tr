@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614011"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173277"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -45,7 +45,7 @@ Kasaların aşağıdaki özellikleri vardır:
 - Kasadaki verilerin artıklık için nasıl çoğaltılacağı belirtirsiniz:
   - **Yerel olarak yedekli depolama (LRS)**: bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#locally-redundant-storage).
   - **Coğrafi olarak yedekli depolama (GRS)**: bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - Bölgesel olarak **yedekli depolama (ZRS)**: verileri [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)çoğaltır, bu da verileri, aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti altına alır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - Bölgesel olarak **yedekli depolama (ZRS)**: verileri [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md#availability-zones)çoğaltır, bu da verileri, aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti altına alır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Varsayılan olarak, kurtarma hizmetleri kasaları GRS kullanır.
 
 Kurtarma Hizmetleri kasaları aşağıdaki ek özelliklere sahiptir:
@@ -98,10 +98,10 @@ Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler ö
 
 **Özellik** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green]
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green]
-Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green]
-Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
+Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
+Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)

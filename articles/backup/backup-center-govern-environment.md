@@ -3,12 +3,12 @@ title: Yedekleme Merkezi'ni kullanarak tüm yedeklemelerinizi idare etme
 description: Tüm kaynaklarınızın yedekleme merkezi ile yedekleme açısından uyumlu olduğundan emin olmak için Azure ortamınızı nasıl yöneteceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614354"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173797"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>Yedekleme Merkezi'ni kullanarak tüm yedeklemelerinizi idare etme
 
@@ -26,15 +26,15 @@ Yedekleme merkezi, tüm kaynaklarınızın yedekleme açısından uyumlu olduğu
 
 ## <a name="azure-policies-for-backup"></a>Yedekleme için Azure Ilkeleri
 
-Yedekleme için kullanılabilen tüm [Azure ilkelerini](https://docs.microsoft.com/azure/governance/policy/overview) görüntülemek için yedekleme menü öğesi **için Azure ilkeleri** ' ni seçin. Bu, abonelikleriniz ve kaynak gruplarınız için kullanılabilir olan [yedekleme için yerleşik ve özel Azure ilke tanımlarının](policy-reference.md) tümünü görüntüler.
+Yedekleme için kullanılabilen tüm [Azure ilkelerini](../governance/policy/overview.md) görüntülemek için yedekleme menü öğesi **için Azure ilkeleri** ' ni seçin. Bu, abonelikleriniz ve kaynak gruplarınız için kullanılabilir olan [yedekleme için yerleşik ve özel Azure ilke tanımlarının](policy-reference.md) tümünü görüntüler.
 
-Tanımlardan herhangi birini seçmek, ilkeyi bir kapsama [atamanıza](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) izin verir.
+Tanımlardan herhangi birini seçmek, ilkeyi bir kapsama [atamanıza](../governance/policy/tutorials/create-and-manage.md#assign-a-policy) izin verir.
 
 ![Azure Ilke tanımlarını seçin](./media/backup-center-govern-environment/azure-policy-definitions.png)
 
 ## <a name="backup-compliance"></a>Yedekleme uyumluluğu
 
-Yedekleme uyumluluğu menü öğesine tıkladığınızda kaynaklarınızın [uyumluluğunu](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) , Azure ortamınıza atadığınız çeşitli yerleşik ilkelere göre görüntülemenize yardımcı olur. Tüm ilkelerle uyumlu olan kaynakların yüzdesini ve bir veya daha fazla uyumlu olmayan kaynağa sahip ilkeleri görüntüleyebilirsiniz.
+Yedekleme uyumluluğu menü öğesine tıkladığınızda kaynaklarınızın [uyumluluğunu](../governance/policy/how-to/get-compliance-data.md) , Azure ortamınıza atadığınız çeşitli yerleşik ilkelere göre görüntülemenize yardımcı olur. Tüm ilkelerle uyumlu olan kaynakların yüzdesini ve bir veya daha fazla uyumlu olmayan kaynağa sahip ilkeleri görüntüleyebilirsiniz.
 
 ![Yedekleme uyumluluğunu görüntüleme](./media/backup-center-govern-environment/azure-policy-compliance.png)
 

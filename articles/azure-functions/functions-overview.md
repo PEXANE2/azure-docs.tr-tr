@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0583b68df603b04d47ac6104f0cf127b3c4bedd0
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "77621014"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173712"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure İşlevleri'ne giriş
 
@@ -19,7 +19,7 @@ Azure Işlevleri, uygulama altyapısı hakkında endişelenmeden küçük kod pa
 
 Bir işlev, belirli bir olay türü tarafından "tetiklenir". [Desteklenen Tetikleyiciler](./functions-triggers-bindings.md) , verilerdeki değişikliklere yanıt vermeyi, iletilere yanıt vermeyi, bir zamanlamaya göre çalışmayı veya bir http isteğinin sonucunu içerir.
 
-Her zaman doğrudan bir hizmetlere yönelik olarak kodlarken, diğer hizmetlerle tümleştirme, bağlamalar kullanılarak basitleştirilmiştir. Bağlamalar, [çok çeşitli Azure ve üçüncü taraf hizmetlere yönelik bildirime dayalı erişim](./functions-triggers-bindings.md)sağlar.
+Yalnızca sayısız hizmetlerine yönelik olarak doğrudan kod gönderebilirsiniz, ancak diğer hizmetlerle tümleştirme, bağlamalar kullanılarak kolaylaştırılmıştır. Bağlamalar, [çok çeşitli Azure ve üçüncü taraf hizmetlere yönelik bildirime dayalı erişim](./functions-triggers-bindings.md)sağlar.
 
 ## <a name="features"></a>Özellikler
 

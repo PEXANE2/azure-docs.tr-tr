@@ -3,12 +3,12 @@ title: MABS sunucusunu yedekleme
 description: Microsoft Azure Backup sunucusunu (MABS) nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: de62f0f57273ad7bd77df917d909627819165adb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946880"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172121"
 ---
 # <a name="back-up-the-mabs-server"></a>MABS sunucusunu yedekleme
 
@@ -184,9 +184,9 @@ MABS sunucusu çalışmaya devam ediyorsa ve depolama havuzu bozulmadan (örn. M
 
 MABS veritabanını, MABS 'tan bağımsız olarak yerel SQL Server yedekleme ile yerel bir diske yedekleyebilirsiniz.
 
-- SQL Server yedekleme ile ilgili [genel bilgi](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) edinin.
+- SQL Server yedekleme ile ilgili [genel bilgi](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) edinin.
 
-- SQL Server'ı buluta yedekleme hakkında[daha fazla bilgi edinin](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) .
+- SQL Server'ı buluta yedekleme hakkında[daha fazla bilgi edinin](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) .
 
 ## <a name="back-up-to-a-share-protected-by-mabs"></a>MABS tarafından korunan bir paylaşıma yedekleme
 
@@ -238,9 +238,9 @@ Bu yedekleme seçeneği, MABS veritabanını bir paylaşıma yedeklemek için ye
 
 MABS veritabanını, SQL Server yerel yedekleme kullanarak diğer SQL Server veritabanı gibi yedekleyebilirsiniz.
 
-- SQL Server yedekleme ile ilgili [genel bilgi](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) edinin.
+- SQL Server yedekleme ile ilgili [genel bilgi](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) edinin.
 
-- SQL Server'ı buluta yedekleme hakkında[daha fazla bilgi edinin](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) .
+- SQL Server'ı buluta yedekleme hakkında[daha fazla bilgi edinin](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) .
 
 ### <a name="recover-the-mabs-database"></a>MABS veritabanını kurtarma
 

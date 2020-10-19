@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını geri yükleme
 description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yedeklenen SQL Server veritabanlarının nasıl geri yükleneceği açıklanmaktadır. Veritabanlarınızı ikincil bir bölgeye geri yüklemek için çapraz bölge geri yükleme özelliğini de kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbafd179f4b2f4e91a4bf19da41ffc14e4775e5c
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985436"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172173"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını geri yükleme
 
@@ -30,7 +30,7 @@ Bir veritabanını geri yüklemeden önce aşağıdakileri göz önünde bulabil
 - Veritabanını aynı Azure bölgesindeki bir SQL Server örneğine geri yükleyebilirsiniz.
 - Hedef sunucu, kaynakla aynı kasada kayıtlı olmalıdır.
 - Bir TDE şifreli veritabanını başka bir SQL Server geri yüklemek için öncelikle [sertifikayı hedef sunucuya geri yüklemeniz](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)gerekir.
-- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) etkin veritabanlarının [dosya olarak geri yükle](#restore-as-files) seçeneği kullanılarak geri yüklenmesi gerekir.
+- [CDC](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) etkin veritabanlarının [dosya olarak geri yükle](#restore-as-files) seçeneği kullanılarak geri yüklenmesi gerekir.
 - "Ana" veritabanını geri yüklemeden önce, **-ı AzureWorkloadBackup**başlangıç seçeneğini kullanarak SQL Server örneğini tek kullanıcılı modda başlatın.
   - **-D** değeri, istemcinin adıdır.
   - Bağlantıyı yalnızca belirtilen istemci adı açabilir.

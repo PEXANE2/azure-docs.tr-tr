@@ -4,12 +4,12 @@ description: Azure Backup hizmetine genel bir bakış sağlar ve iş süreklili�
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 72dee7bbcaa730f12af3ee323157fa92f6694603
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 537605498fe166b24bd4e24673cfa1542bc449ea
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968334"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172480"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -46,7 +46,7 @@ Azure Backup, bu önemli avantajları sunar:
 - **Birden çok depolama seçeneği** Azure Backup depolama/verilerinizi yüksek oranda kullanılabilir tutmak için iki tür çoğaltma sunar.
   - [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) verilerinizi üç kez çoğaltır (verilerinizin üç kopyasını oluşturur) bir veri merkezinde bulunan bir depolama ölçek birimi. Verilerin tüm kopyaları aynı bölgenin içinde yer alır. LRS, verilerinizi yerel donanım hatalarına karşı korumak için düşük maliyetli bir seçenektir.
   - [Coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) , varsayılan ve önerilen çoğaltma seçeneğidir. GRS, verilerinizi ikincil bir bölgeye (kaynak verilerin birincil konumundan yüzlerce kilometre uzakta) kopyalar. GRS 'nin maliyeti LRS 'den fazladır, ancak bölgesel bir kesinti olsa bile, verileriniz için GRS daha yüksek düzeyde dayanıklılık sağlar.
-  - Bölgesel olarak [yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) , verilerinizi [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)çoğaltır, bu da aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti ediyor. ZRS 'nin kapalı kalma süresi yoktur. Bu nedenle, [veri](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)ve kapalı kalma süresi olmaması gereken kritik iş yükleriniz, ZRS 'de yedeklenebilir.
+  - Bölgesel olarak [yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) , verilerinizi [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md#availability-zones)çoğaltır, bu da aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti ediyor. ZRS 'nin kapalı kalma süresi yoktur. Bu nedenle, [veri](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)ve kapalı kalma süresi olmaması gereken kritik iş yükleriniz, ZRS 'de yedeklenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Uzun süreli saklama (Önizleme) ile PostgreSQL için Azure veritab
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093897"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173589"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Uzun süreli saklama ile PostgreSQL için Azure veritabanı yedekleme (Önizleme)
 
@@ -244,7 +244,7 @@ Bu bölüm, Azure Backup ile Azure PostgreSQL veritabanlarını yedeklemeye yön
 
 Yedeklemek veya geri yüklemek istediğiniz PG sunucusuna Yedekleme Kasası MSI **okuma** erişimi verin:
 
-PostgreSQL veritabanına güvenli bağlantı kurmak için Azure Backup [yönetilen hizmet kimliği (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kimlik doğrulama modelini kullanır. Bu, yedekleme kasasının yalnızca Kullanıcı tarafından açıkça izin verilen kaynaklara erişim sahibi olacağı anlamına gelir.
+PostgreSQL veritabanına güvenli bağlantı kurmak için Azure Backup [yönetilen hizmet kimliği (MSI)](../active-directory/managed-identities-azure-resources/overview.md) kimlik doğrulama modelini kullanır. Bu, yedekleme kasasının yalnızca Kullanıcı tarafından açıkça izin verilen kaynaklara erişim sahibi olacağı anlamına gelir.
 
 Bir sistem MSI, oluşturma sırasında kasaya otomatik olarak atanır. Bu kasaya, veritabanlarını yedeklemek istediğiniz PostgreSQL sunucularına erişim sağlamanız gerekir.
 
@@ -308,7 +308,7 @@ Sunucu görünümünde **Azure hizmetlerine erişime Izin ver** bayrağını etk
 
     ![Depolama Blobu veri katılımcısı rolü ata](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
 
-1. Alternatif olarak, geri yüklemekte olduğunuz belirli kapsayıcıya, Azure CLı [az role atama Create](https://docs.microsoft.com/cli/azure/role/assignment) komutunu kullanarak ayrıntılı izinler verin.
+1. Alternatif olarak, geri yüklemekte olduğunuz belirli kapsayıcıya, Azure CLı [az role atama Create](/cli/azure/role/assignment) komutunu kullanarak ayrıntılı izinler verin.
 
     ```azurecli
     az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id

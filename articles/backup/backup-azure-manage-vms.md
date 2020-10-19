@@ -3,12 +3,12 @@ title: Azure VM yedeklemelerini yönetme ve izleme
 description: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme ve izleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2052d80428af89862b5348943b446f1b800ab36f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145442"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174094"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
@@ -24,6 +24,8 @@ Azure portal, kurtarma hizmetleri Kasası panosu, aşağıdakiler de dahil olmak
 , Panoyu kullanarak ve tek tek VM 'lere giderek, yedeklemeleri yönetebilirsiniz. Makine yedeklemelerini başlatmak için panoda kasayı açın.
 
 ![Kaydırıcı ile tam pano görünümü](./media/backup-azure-manage-vms/bottom-slider.png)
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="view-vms-on-the-dashboard"></a>Panodaki VM 'Leri görüntüleme
 

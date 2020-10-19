@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 64264028706c1493f687f032a7ec39e69188bd45
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044207"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171908"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge dağıtımlarından günlükleri alma
 
@@ -65,17 +65,17 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 
 | Ad | Tür | Açıklama |
 |-|-|-|
-| schemaVersion | dize | Ayarla `1.0` |
+| schemaVersion | string | Ayarla `1.0` |
 | öğeler | JSON dizisi | `id`Ve tanımlama gruplarını içeren bir dizi `filter` . |
-| ID | dize | Modül adını sağlayan bir normal ifade. Bir Edge cihazında birden çok modülle eşleşir. [.Net normal ifade](/dotnet/standard/base-types/regular-expressions) biçimi bekleniyor. |
+| ID | string | Modül adını sağlayan bir normal ifade. Bir Edge cihazında birden çok modülle eşleşir. [.Net normal ifade](/dotnet/standard/base-types/regular-expressions) biçimi bekleniyor. |
 | filtre | JSON bölümü | Kayıt düzeninde normal ifadeyle eşleşen modüller için uygulanacak günlük filtreleri `id` . |
 | Connect | tamsayı | En son 'den başlayarak almak için geçmişte bulunan günlük satırı sayısı. Seçim. |
 | getirildikten | tamsayı | Yalnızca bu kez bir süre (1 d, 90 m, 2 gün 3 saat 2 dakika), rfc3339 zaman damgası veya UNIX zaman damgası olarak günlükleri geri döndürür.  `tail`Ve `since` belirtilirse, Günlükler `since` önce değeri kullanılarak alınır. Sonra `tail` değer sonuca uygulanır ve nihai sonuç döndürülür. Seçim. |
 | Until | tamsayı | Yalnızca bir rfc3339 zaman damgası, UNIX zaman damgası veya süre (1 d, 90 m, 2 gün 3 saat 2 dakika) olarak belirtilen süreden önceki günlükleri döndürür. Seçim. |
 | günlük düzeyi | tamsayı | Günlük satırlarını belirtilen günlük düzeyinden küçük veya buna eşit olarak filtreleyin. Günlük satırları önerilen günlük biçimini izlemelidir ve [Syslog önem düzeyi](https://en.wikipedia.org/wiki/Syslog#Severity_level) standardını kullanmalıdır. Seçim. |
-| Regex | dize | [.Net normal ifadeler](/dotnet/standard/base-types/regular-expressions) biçimini kullanarak belirtilen normal ifadeyle eşleşen içeriğe sahip olan günlük satırlarını filtreleyin. Seçim. |
-| encoding | dize | `gzip` veya `none`. `none` varsayılan değerdir. |
-| contentType | dize | `json` veya `text`. `text` varsayılan değerdir. |
+| Regex | string | [.Net normal ifadeler](/dotnet/standard/base-types/regular-expressions) biçimini kullanarak belirtilen normal ifadeyle eşleşen içeriğe sahip olan günlük satırlarını filtreleyin. Seçim. |
+| encoding | string | `gzip` veya `none`. `none` varsayılan değerdir. |
+| contentType | string | `json` veya `text`. `text` varsayılan değerdir. |
 
 > [!NOTE]
 > Günlük içeriği, şu anda 128 KB olan doğrudan yöntemlerin yanıt boyutu sınırını aşarsa, yanıt bir hata döndürür.
@@ -180,9 +180,9 @@ Günlükleri karşıya yükleme başarılı bir isteği, **"durum": 200** ve ard
 
 | Ad | Tür | Açıklama |
 |-|-|-|
-| durum | dize | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
-| message | dize | Hata olduğunda ileti, aksi halde boş dize. |
-| correlationId | dize   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
+| durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
+| message | string | Hata olduğunda ileti, aksi halde boş dize. |
+| correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
 Örnek:
 
@@ -275,7 +275,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 
 | Ad | Tür | Açıklama |
 |-|-|-|
-| schemaVersion | dize | Ayarla `1.0` |
+| schemaVersion | string | Ayarla `1.0` |
 | sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim Imzası URL 'SI](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 | getirildikten | tamsayı | Yalnızca bu kez bir süre (1 d, 90 m, 2 gün 3 saat 2 dakika), rfc3339 zaman damgası veya UNIX zaman damgası olarak günlükleri geri döndürür. Seçim. |
 | Until | tamsayı | Yalnızca bir rfc3339 zaman damgası, UNIX zaman damgası veya süre (1 d, 90 m, 2 gün 3 saat 2 dakika) olarak belirtilen süreden önceki günlükleri döndürür. Seçim. |
@@ -296,9 +296,9 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
 
 | Ad | Tür | Açıklama |
 |-|-|-|
-| durum | dize | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
-| message | dize | Hata olduğunda ileti, aksi halde boş dize. |
-| correlationId | dize   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
+| durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
+| message | string | Hata olduğunda ileti, aksi halde boş dize. |
+| correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
 Örnek:
 
@@ -354,9 +354,9 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
 
 | Ad | Tür | Açıklama |
 |-|-|-|
-| durum | dize | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
-| message | dize | Hata olduğunda ileti, aksi halde boş dize. |
-| correlationId | dize   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
+| durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
+| message | string | Hata olduğunda ileti, aksi halde boş dize. |
+| correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
 Örnek:
 
@@ -370,7 +370,7 @@ az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <
 '
 ```
 
-Azure portal, `UploadModuleLogs` GUID 'yi bilgilerinizi doldurduktan sonra Yöntem adı ve AŞAĞıDAKI JSON yükünün bulunduğu yöntemi çağırın:
+Azure portal, `GetTaskStatus` GUID 'yi bilgilerinizi doldurduktan sonra Yöntem adı ve AŞAĞıDAKI JSON yükünün bulunduğu yöntemi çağırın:
 
 ```json
     {

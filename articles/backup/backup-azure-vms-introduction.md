@@ -3,12 +3,12 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30d27f3f9c559fd149bd45f303127e0eec40b878
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371516"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173846"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -51,7 +51,7 @@ Azure Backup ile Azure VM 'Leri yedeklerken, sanal makineler Depolama Hizmeti Ş
 
 **Şifreleme** | **Ayrıntılar** | **Destek**
 --- | --- | ---
-**SSE** | SSE ile Azure Storage, verileri depolamadan önce otomatik olarak şifreleyerek, bekleyen şifreleme sağlar. Azure Storage, verileri almadan önce de verilerin şifresini çözer. Azure Backup iki tür Depolama Hizmeti Şifrelemesi sahip VM 'lerin yedeklerini destekler:<li> **Anahtar, platform tarafından yönetilen anahtarlarla SSE**: Bu şifreleme, sanal makinelerinizdeki tüm diskler için varsayılan olarak kullanılır. Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)bakın.<li> **Müşteri tarafından yönetilen anahtarlarla SSE**. CMK ile diskleri şifrelemek için kullanılan anahtarları yönetirsiniz. Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)bakın. | Azure Backup, Azure VM 'lerinin Rest şifrelemesi için SSE kullanır.
+**SSE** | SSE ile Azure Storage, verileri depolamadan önce otomatik olarak şifreleyerek, bekleyen şifreleme sağlar. Azure Storage, verileri almadan önce de verilerin şifresini çözer. Azure Backup iki tür Depolama Hizmeti Şifrelemesi sahip VM 'lerin yedeklerini destekler:<li> **Anahtar, platform tarafından yönetilen anahtarlarla SSE**: Bu şifreleme, sanal makinelerinizdeki tüm diskler için varsayılan olarak kullanılır. Daha fazla bilgi için [buraya](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)bakın.<li> **Müşteri tarafından yönetilen anahtarlarla SSE**. CMK ile diskleri şifrelemek için kullanılan anahtarları yönetirsiniz. Daha fazla bilgi için [buraya](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)bakın. | Azure Backup, Azure VM 'lerinin Rest şifrelemesi için SSE kullanır.
 **Azure Disk Şifrelemesi** | Azure disk şifrelemesi, hem işletim sistemini hem de Azure VM 'Leri için veri disklerini şifreler.<br/><br/> Azure disk şifrelemesi, bir anahtar kasasında gizli dizi olarak korunmuş olan BitLocker şifreleme anahtarları (BEKs) ile tümleşir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. | Azure Backup, yalnızca BEKs ile şifrelenen yönetilen ve yönetilmeyen Azure VM 'lerinin yedeklenmesini destekler, ya da KEKs ile birlikte BEKs.<br/><br/> Hem BEKs hem de KEKs yedeklenir ve şifrelenir.<br/><br/> KEKs ve BEKs yedeklendiği için, gerekli izinlere sahip kullanıcılar anahtarları ve gizli dizileri gerekirse anahtar kasasına geri yükleyebilir. Bu kullanıcılar şifreli VM 'yi de kurtarabilir.<br/><br/> Şifrelenmiş anahtarlar ve gizlilikler yetkisiz kullanıcılar veya Azure tarafından okunamaz.
 
 Yönetilen ve yönetilmeyen Azure VM 'Leri için yedekleme, yalnızca BEKs ile şifrelenen VM 'Leri veya KEKs ile birlikte BEKs ile şifrelenmiş VM 'Leri destekler.
@@ -113,7 +113,7 @@ Bu yaygın senaryolar toplam geri yükleme süresini etkileyebilir:
 - Toplam geri yükleme süresi, saniye başına giriş/çıkış işlemlerine (ıOPS) ve depolama hesabının aktarım hızına bağlıdır.
 - Hedef depolama hesabı diğer uygulama okuma ve yazma işlemleriyle birlikte yüklenirse toplam geri yükleme süresi etkilenebilir. Geri yükleme işlemini geliştirmek için, diğer uygulama verileriyle yüklenmeyen bir depolama hesabı seçin.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 VM yedekleme yapılandırması sırasında aşağıdaki yöntemleri uygulamanız önerilir:
 

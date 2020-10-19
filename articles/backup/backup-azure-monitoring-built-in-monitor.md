@@ -4,16 +4,18 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377412"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174008"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
 Azure Backup, yedekleme gereksinimine ve altyapı topolojisine (Şirket içi vs Azure) göre birden çok yedekleme çözümü sağlar. Herhangi bir yedekleme kullanıcısı veya Yöneticisi, tüm çözümlerde neler olduğunu ve önemli senaryolarda bildirilmesi beklendiğini görmelidir. Bu makalede, Azure Backup hizmeti tarafından sunulan izleme ve bildirim özellikleri ayrıntılı olarak açıklanır.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Kurtarma Hizmetleri kasasındaki yedekleme Işleri
 
@@ -36,6 +38,9 @@ System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (M
 > Azure VM 'Leri içindeki SQL ve SAP HANA yedeklemeleri gibi Azure iş yükleri çok fazla sayıda yedekleme işine sahiptir. Örneğin, günlük yedeklemeleri her 15 dakikada bir çalıştırılabilir. Bu nedenle, bu tür VERITABANı iş yükleri için yalnızca Kullanıcı tarafından tetiklenen işlemler görüntülenir. Zamanlanan yedekleme işlemleri görüntülenmiyor.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Kurtarma Hizmetleri kasasındaki yedekleme uyarıları
+
+> [!NOTE]
+> Uyarıları kasaların tamamında görüntüleme işlemi şu anda yedekleme merkezi 'nde desteklenmiyor. Bu kasadaki uyarıları görüntülemek için tek bir kasaya gitmeniz gerekir.
 
 Uyarılar, kullanıcıların ilgili eylemi yapabilmesi için bilgilendirildikleri senaryolara yöneliktir. **Yedekleme uyarıları** bölümü Azure Backup hizmeti tarafından oluşturulan uyarıları gösterir. Bu uyarılar hizmet tarafından tanımlanır ve Kullanıcı özel uyarı oluşturamaz.
 

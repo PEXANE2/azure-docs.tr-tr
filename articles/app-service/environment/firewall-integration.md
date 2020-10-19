@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 782074fc491c0b5e03ced36563bafa8679e78330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8acd0a6992c26266f20aaf46dd225a9fff9d6974
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264669"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172019"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
@@ -117,7 +117,7 @@ Aşağıdaki bilgiler yalnızca Azure Güvenlik Duvarı dışında bir güvenlik
 | Uç Noktası |
 |----------|
 | Azure SQL |
-| Azure Storage |
+| Azure Depolama |
 | Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
@@ -226,6 +226,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 |rteventservice.trafficmanager.net:443 |
 |ctldl.windowsupdate.com:80 |
 |ctldl.windowsupdate.com:443 |
+|global-dsms.dsms.core.windows.net:443 |
 
 #### <a name="wildcard-httphttps-dependencies"></a>Joker karakter HTTP/HTTPS bağımlılıkları 
 
@@ -288,7 +289,7 @@ Linux, US Gov bölgelerinde kullanılamaz ve bu nedenle isteğe bağlı bir yap�
 | Uç Noktası |
 |----------|
 | Azure SQL |
-| Azure Storage |
+| Azure Depolama |
 | Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
@@ -429,6 +430,7 @@ Linux, US Gov bölgelerinde kullanılamaz ve bu nedenle isteğe bağlı bir yap�
 |www.microsoft.com:443 |
 |www.msftconnecttest.com:443 |
 |www.thawte.com:443 |
+|global-dsms.dsms.core.usgovcloudapi.net:443 |
 
 <!--Image references-->
 [1]: ./media/firewall-integration/firewall-apprule.png

@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797726"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171491"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
 Bu makalede, [Azure statik Web Apps](overview.md)bir [Hugo](https://gohugo.io/) Web uygulaması oluşturma ve dağıtma gösterilmektedir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenize olanak tanıyan, ilişkili GitHub eylemlerine sahip yeni bir Azure statik Web uygulamasıdır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/).
 - GitHub hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://github.com/join).
@@ -150,6 +150,37 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 1. Yeni oluşturulan Azure statik Web Apps kaynağının Azure portal _genel bakış_ penceresinde, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın.
 
    :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
+
+#### <a name="custom-hugo-version"></a>Özel Kugo sürümü
+
+Statik bir Web uygulaması oluşturduğunuzda, uygulama için yayımlama yapılandırma ayarlarını içeren bir [iş akışı dosyası](./github-actions-workflow.md) oluşturulur. Bölümünde için bir değer sağlayarak iş akışı dosyasında belirli bir Hugo sürümünü belirleyebilirsiniz `HUGO_VERSION` `env` . Aşağıdaki örnek yapılandırmasında, set Hugo 'nun belirli bir sürüme nasıl ayarlanacağı gösterilmektedir.
+
+```yaml
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "api" # Api source code path - optional
+          app_artifact_location: "public" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+        env:
+          HUGO_VERSION: 0.58.0
+```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

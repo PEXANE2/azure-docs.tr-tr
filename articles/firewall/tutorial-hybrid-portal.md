@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 03/24/2020
+ms.date: 10/19/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 523bde67d3c2afef8837cb70e9a41462617a34a2
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84750692"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171409"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma
 
@@ -29,7 +29,7 @@ Bu öğretici için üç sanal ağ oluşturursunuz:
 
 ![Hibrit ağda güvenlik duvarı](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Değişkenleri tanımlama
@@ -75,11 +75,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. Azure Portal giriş sayfasında **kaynak grupları**  >  **Ekle**' yi seçin.
-3. **Kaynak grubu adı**Için, **FW-karma-test**yazın.
-4. **Abonelik** bölümünde aboneliğinizi seçin.
-5. **Bölge**için **Doğu ABD**' yi seçin. Daha sonra oluşturduğunuz tüm kaynakların aynı konumda olması gerekir.
-6. **Gözden geçir + oluştur**' u seçin.
-7. **Oluştur**’u seçin.
+3. **Abonelik** bölümünde aboneliğinizi seçin.
+1. **Kaynak grubu adı**Için, **FW-karma-test**yazın.
+2. **Bölge**Için **(US) Doğu ABD**seçin. Daha sonra oluşturduğunuz tüm kaynakların aynı konumda olması gerekir.
+3. **Gözden geçir + oluştur**' u seçin.
+4. **Oluştur**’u seçin.
 
 Şimdi VNet 'i oluşturun:
 
@@ -88,47 +88,55 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. **Ağ**altında **sanal ağ**' ı seçin.
-4. **Ad**için **VNET-hub**yazın.
-5. **Adres alanı**için **10.5.0.0/16**yazın.
-6. **Abonelik** bölümünde aboneliğinizi seçin.
 7. **Kaynak grubu**Için, **FW-karma-test**' i seçin.
-8. **Konum**için **Doğu ABD**' yi seçin.
-9. **Alt ağ** bölümünde **Ad** alanına **AzureFirewallSubnet** yazın. Güvenlik duvarı bu alt ağda yer alacaktır ve alt ağ adının **mutlaka** AzureFirewallSubnet olması gerekir.
-10. **Adres aralığı**için **10.5.0.0/26**yazın. 
-11. Diğer varsayılan ayarları kabul edin ve **Oluştur**' u seçin.
+1. **Ad**için **VNET-hub**yazın.
+2. **İleri ' yi seçin: IP adresleri**.
+3. **IPv4 adres alanı**için **10.5.0.0/16**yazın.
+6. **Alt ağ adı**altında **varsayılan**' ı seçin.
+7. AzureFirewallSubnet **ad** türü **AzureFirewallSubnet**için. Güvenlik duvarı bu alt ağda yer alacaktır ve alt ağ adının **mutlaka** AzureFirewallSubnet olması gerekir.
+8. **Adres aralığı**için **10.5.0.0/26**yazın. 
+9. **Kaydet**’i seçin.
+10. **Gözden geçir ve oluştur**’u seçin.
+11. **Oluştur**’u seçin.
 
 ## <a name="create-the-spoke-virtual-network"></a>Bağlı bileşen sanal ağını oluşturma
 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
-2. **Ağ**altında **sanal ağ**' ı seçin.
-4. **Ad**için **VNET-kol**yazın.
-5. **Adres alanı**için **10.6.0.0/16**yazın.
-6. **Abonelik** bölümünde aboneliğinizi seçin.
+2. **Ağ**bölümünde **sanal ağ**' ı seçin.
 7. **Kaynak grubu**Için, **FW-karma-test**' i seçin.
-8. **Konum** alanında önceden kullandığınız konumu seçin.
-9. **Alt ağ** altında, **Ad** için **SN-Workload** yazın.
-10. **Adres aralığı**için **10.6.0.0/24**yazın.
-11. Diğer varsayılan ayarları kabul edin ve **Oluştur**' u seçin.
+1. **Ad**için **VNET-kol**yazın.
+2. **Bölge**Için **(US) Doğu ABD**seçin.
+3. **İleri ' yi seçin: IP adresleri**.
+4. **IPv4 adres alanı**için **10.6.0.0/16**yazın.
+6. **Alt ağ adı**altında **varsayılan**' ı seçin.
+7. **ad** türü **sn-iş yükü**için.
+8. **Adres aralığı**için **10.6.0.0/24**yazın. 
+9. **Kaydet**’i seçin.
+10. **Gözden geçir ve oluştur**’u seçin.
+11. **Oluştur**’u seçin.
 
 ## <a name="create-the-on-premises-virtual-network"></a>Şirket içi sanal ağı oluşturma
 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
-2. **Ağ**altında **sanal ağ**' ı seçin.
-4. **Ad**için **VNET-onpred**yazın.
-5. **Adres alanı** için **192.168.0.0/16** yazın.
-6. **Abonelik** bölümünde aboneliğinizi seçin.
+2. **Ağ**bölümünde **sanal ağ**' ı seçin.
 7. **Kaynak grubu**Için, **FW-karma-test**' i seçin.
-8. **Konum** alanında önceden kullandığınız konumu seçin.
-9. **Alt ağ**altında, **ad** türü **sn-Corp**için.
-10. **Adres aralığı** için **192.168.1.0/24** yazın.
-11. Diğer varsayılan ayarları kabul edin ve **Oluştur**' u seçin.
+1. **Ad**için **VNET-onpred**yazın.
+2. **Bölge**Için **(US) Doğu ABD**seçin.
+3. **İleri ' yi seçin: IP adresleri**
+4. **IPv4 adres alanı**için **192.168.0.0/16**yazın.
+5. **Alt ağ adı**altında **varsayılan**' ı seçin.
+7. **ad** türü **sn-Corp**için.
+8. **Adres aralığı** için **192.168.1.0/24** yazın. 
+9. **Kaydet**’i seçin.
+10. **Gözden geçir ve oluştur**’u seçin.
+11. **Oluştur**’u seçin.
 
 Şimdi ağ geçidi için ikinci bir alt ağ oluşturun.
 
 1. **VNET-Onpreb** sayfasında **alt ağlar**' ı seçin.
 2. **+ Alt ağ**' ı seçin.
 3. **Ad**Için **gatewaysubnet**yazın.
-4. **Adres aralığı (CIDR bloğu)** için **192.168.2.0/24**yazın.
+4. **Alt ağ adres aralığı** için **192.168.2.0/24**yazın.
 5. **Tamam**’ı seçin.
 
 ## <a name="configure-and-deploy-the-firewall"></a>Güvenlik duvarını yapılandırma ve dağıtma
@@ -136,19 +144,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Şimdi güvenlik duvarını güvenlik duvarı hub 'ı sanal ağına dağıtın.
 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
-2. Sol sütunda **ağ iletişimi**' ni seçin ve ardından **güvenlik duvarı**' nı seçin.
+2. Sol sütunda **ağ iletişimi**' ni seçin ve sonra **güvenlik duvarı**' nı seçin.
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
 
    |Ayar  |Değer  |
    |---------|---------|
    |Abonelik     |\<your subscription\>|
    |Kaynak grubu     |**FW-karma-test** |
-   |Adı     |**AzFW01**|
-   |Konum     |Önceden kullandığınız konumu seçin|
+   |Name     |**AzFW01**|
+   |Bölge     |**Doğu ABD**|
    |Bir sanal ağ seçin     |**Mevcut olanı kullan**:<br> **VNet-hub**|
-   |Genel IP adresi     |Yeni oluştur: <br>**Ad**  -  **FW-PIP**. |
+   |Genel IP adresi     |Yeni ekle: <br>**FW-PIP**. |
 
-5. **Gözden geçir ve oluştur**’u seçin.
+5. **Gözden geçir + oluştur**’u seçin.
 6. Özeti gözden geçirin ve ardından güvenlik duvarını oluşturmak için **Oluştur** ' u seçin.
 
    Bu, dağıtılması birkaç dakika sürer.
@@ -169,8 +177,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 7. **Protokol** alanında **TCP**'yi seçin.
 8. **Kaynak türü**için **IP adresi**' ni seçin.
 9. **Kaynak**için **192.168.1.0/24**yazın.
-10. **Hedef adres**için **10.6.0.0/16** yazın
-11. **Hedef bağlantı noktaları**için **80**yazın.
+10. **Hedef türü**için **IP adresi**' ni seçin.
+11. **Hedef adres**için **10.6.0.0/16** yazın
+12. **Hedef bağlantı noktaları**için **80**yazın.
 
 Şimdi RDP trafiğine izin vermek için bir kural ekleyin.
 
@@ -180,9 +189,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 2. **Protokol** alanında **TCP**'yi seçin.
 3. **Kaynak türü**için **IP adresi**' ni seçin.
 4. **Kaynak**için **192.168.1.0/24**yazın.
-5. **Hedef adres**için **10.6.0.0/16** yazın
-6. **Hedef bağlantı noktaları**için **3389**yazın.
-7. **Add (Ekle)** seçeneğini belirleyin.
+5. **Hedef türü**için **IP adresi**' ni seçin.
+6. **Hedef adres**için **10.6.0.0/16** yazın
+7. **Hedef bağlantı noktaları**için **3389**yazın.
+8. **Ekle**’yi seçin.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>VPN ağ geçitlerini oluşturma ve bağlama
 
@@ -193,7 +203,7 @@ Hub ve şirket içi sanal ağlar VPN ağ geçitleri aracılığıyla bağlanır.
 Şimdi hub sanal ağı için VPN ağ geçidini oluşturun. Ağdan ağa yapılandırma, RouteBased bir VpnType gerektirir. VPN ağ geçidinin oluşturulması, seçili VPN ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir.
 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
-2. Arama metin kutusuna **sanal ağ geçidi** yazın ve **ENTER**tuşuna basın.
+2. Arama metin kutusuna **sanal ağ geçidi**yazın.
 3. **Sanal ağ geçidi**' ni seçin ve **Oluştur**' u seçin.
 4. **Ad**için **GW-hub**yazın.
 5. **Bölge**için, daha önce kullandığınız bölgeyi seçin.
@@ -230,7 +240,7 @@ Bu adımda, hub sanal ağından şirket içi sanal ağa bağlantı oluşturursun
 
 1. **İlt-hibrit-test** kaynak grubunu açın ve **GW-hub** ağ geçidini seçin.
 2. Sol sütundaki **Bağlantılar** ' ı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. Bağlantı adı, **hub-Onpree**yazın.
 5. **Bağlantı türü**için **VNET-VNET** ' i seçin.
 6. **İkinci sanal ağ geçidi**için **GW-onpred**öğesini seçin.
@@ -241,8 +251,8 @@ Bu adımda, hub sanal ağından şirket içi sanal ağa bağlantı oluşturursun
 
 1. ILT- **hibrit-test** kaynak grubunu açın ve **GW-onprea** Gateway ' i seçin.
 2. Sol sütundaki **Bağlantılar** ' ı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
-4. Bağlantı adı, **Onpree-hub**' ı yazın.
+3. **Ekle**’yi seçin.
+4. Bağlantı adı için **Onpree-hub**' ı yazın.
 5. **Bağlantı türü**için **VNET-VNET** ' i seçin.
 6. **İkinci sanal ağ geçidi**için **GW-hub**' ı seçin.
 7. **Paylaşılan anahtar (PSK)** için **AzureA1b2C3**yazın.
@@ -261,7 +271,7 @@ Artık hub ve bağlı bileşen sanal ağlarını eşler.
 
 1. **İlt-hibrit-test** kaynak grubunu açın ve **VNET hub** sanal ağını seçin.
 2. Sol sütunda, eşlemeler ' i **seçin.**
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. **Ad**Için **hubtokol**yazın.
 5. **Sanal ağ**için **VNET-bağlı bileşen** ' i seçin
 6. Sanal ağ hub 'ından VNet hub 'ına eşleme adı için **Spoketohub**yazın.
@@ -289,27 +299,27 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
 4. **Oluştur**’u seçin.
-5. Ad için **UDR-hub-kol**yazın.
 6. Kaynak grubu için **FW-karma-test** ' i seçin.
-8. **Konum** alanında önceden kullandığınız konumu seçin.
-9. **Oluştur**’u seçin.
-10. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
-11. Sol sütundaki **rotalar** ' ı seçin.
-12. **Add (Ekle)** seçeneğini belirleyin.
-13. Yol adı için, uzak **bileşene**yazın.
-14. Adres ön eki için **10.6.0.0/16**yazın.
-15. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
-16. Sonraki atlama adresi için, daha önce not ettiğiniz güvenlik duvarının özel IP adresini yazın.
-17. **Tamam**’ı seçin.
+8. **Bölge**için, daha önce kullandığınız konumu seçin.
+1. Ad için **UDR-hub-kol**yazın.
+9. **Gözden geçir + oluştur**' u seçin.
+10. **Oluştur**’u seçin.
+11. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
+12. Sol sütundaki **rotalar** ' ı seçin.
+13. **Ekle**’yi seçin.
+14. Yol adı için, uzak **bileşene**yazın.
+15. Adres ön eki için **10.6.0.0/16**yazın.
+16. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
+17. Sonraki atlama adresi için, daha önce not ettiğiniz güvenlik duvarının özel IP adresini yazın.
+18. **Tamam**’ı seçin.
 
 Şimdi rota alt ağıyla ilişkilendirin.
 
 1. **UDR-hub-bağlı bileşen-yollar** sayfasında, **alt ağlar**' ı seçin.
 2. **İlişkilendir**' i seçin.
-3. **Bir sanal ağ seçin**' i seçin.
-4. **VNET hub 'ı**seçin.
-5. **Gatewaysubnet**öğesini seçin.
-6. **Tamam**’ı seçin.
+3. **Sanal ağ**altında **VNET-hub**' ı seçin.
+1. **Alt ağ**altında **gatewaysubnet**' i seçin.
+2. **Tamam**’ı seçin.
 
 Şimdi, bağlı olan alt ağdan varsayılan yolu oluşturun.
 
@@ -317,28 +327,28 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
 5. **Oluştur**’u seçin.
-6. Ad için **UDR-DG**yazın.
 7. Kaynak grubu için **FW-karma-test** ' i seçin.
-8. **Konum** alanında önceden kullandığınız konumu seçin.
-4. **Sanal ağ geçidi yol yayma**Için **devre dışı**' yı seçin.
-1. **Oluştur**’u seçin.
-2. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
-3. Sol sütundaki **rotalar** ' ı seçin.
-4. **Add (Ekle)** seçeneğini belirleyin.
-5. Yol adı için, **Tohub**yazın.
-6. Adres ön eki için **0.0.0.0/0**yazın.
-7. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
-8. Sonraki atlama adresi için, daha önce not ettiğiniz güvenlik duvarının özel IP adresini yazın.
-9. **Tamam**’ı seçin.
+8. **Bölge**için, daha önce kullandığınız konumu seçin.
+1. Ad için **UDR-DG**yazın.
+4. **Ağ geçidi yolunu yayma**için **Hayır**' ı seçin.
+5. **Gözden geçir + oluştur**' u seçin.
+6. **Oluştur**’u seçin.
+7. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
+8. Sol sütundaki **rotalar** ' ı seçin.
+9. **Ekle**’yi seçin.
+10. Yol adı için, **Tohub**yazın.
+11. Adres ön eki için **0.0.0.0/0**yazın.
+12. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
+13. Sonraki atlama adresi için, daha önce not ettiğiniz güvenlik duvarının özel IP adresini yazın.
+14. **Tamam**’ı seçin.
 
 Şimdi rota alt ağıyla ilişkilendirin.
 
 1. **UDR-DG-Routes** sayfasında **alt ağlar**' ı seçin.
 2. **İlişkilendir**' i seçin.
-3. **Bir sanal ağ seçin**' i seçin.
-4. **VNET-bağlı bileşen**' i seçin.
-5. **Sn-Iş yükü**seçin.
-6. **Tamam**’ı seçin.
+3. **Sanal ağ**altında, **VNET-bağlı bileşen**' i seçin.
+1. **Alt ağ**altında **sn-iş yükü**öğesini seçin.
+2. **Tamam**’ı seçin.
 
 ## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
@@ -354,15 +364,15 @@ Genel IP adresi olmadan IIS çalıştıran, bağlı olan sanal ağda bir sanal m
     - **Kaynak grubu** - **ILT-hibrit-test**' i seçin.
     - **Sanal makine adı**: *VM-ışınsal-01*.
     - **Bölge** -daha önce kullandığınız bölge.
-    - **Kullanıcı adı**: *azureuser*.
-    - **Parola**: *Azure123456!*
+    - **Kullanıcı adı**: \<type a user name\> .
+    - **Parola**: \<type a password\>
+4. **Ortak gelen bağlantı noktaları**için **Seçili bağlantı noktalarına izin ver**' i seçin ve ardından **http (80)** ve **RDP (3389)** öğesini seçin.
 4. **İleri ' yi seçin: diskler**.
 5. Varsayılanları kabul edin ve **İleri ' yi seçin: ağ**.
 6. Sanal ağ için **VNET-ışınsal** ve alt ağ **sn-iş yükü**' ı seçin.
-7. **Genel IP**için **hiçbiri**' ni seçin.
-8. **Ortak gelen bağlantı noktaları**için **Seçili bağlantı noktalarına izin ver**' i seçin ve ardından **http (80)** ve **RDP (3389)** öğesini seçin.
+7. **Genel IP**için **hiçbiri**' ni seçin. 
 9. Ileri 'yi seçin **: yönetim**.
-10. **Önyükleme tanılaması**için **kapalı**' yı seçin.
+10. **Önyükleme tanılaması**Için **devre dışı bırak**' ı seçin.
 11. **Gözden geçir + oluştur**' u seçin, Özet sayfasında ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
 ### <a name="install-iis"></a>IIS yükleme
@@ -392,14 +402,14 @@ Bu, Uzak Masaüstü kullanarak genel IP adresine bağlanmak için kullandığın
     - **Kaynak grubu** -mevcut ' ı seçin ve ardından **FW-karma-test**' i seçin.
     - **Sanal makine adı**  -  *VM-Onpred*.
     - **Bölge** -daha önce kullandığınız bölge.
-    - **Kullanıcı adı**: *azureuser*.
-    - **Parola**: *Azure123456!*.
+    - **Kullanıcı adı**: \<type a user name\> .
+    - **Parola**: \<type a user password\> .
+7. **Ortak gelen bağlantı noktaları**için **Seçili bağlantı noktalarına izin ver**' i seçin ve ardından **RDP (3389)** öğesini seçin
 4. **İleri ' yi seçin: diskler**.
 5. Varsayılanları kabul edin ve **İleri ' yi seçin: ağ**.
 6. Sanal ağ için **VNET-Onpred** ve alt ağ **sn-Corp**' ı seçin.
-7. **Ortak gelen bağlantı noktaları**için **Seçili bağlantı noktalarına izin ver**' i seçin ve ardından **RDP (3389)** öğesini seçin
 8. Ileri 'yi seçin **: yönetim**.
-9. **Önyükleme tanılaması**için **kapalı**' yı seçin.
+10. **Önyükleme tanılaması**Için **devre dışı bırak**' ı seçin.
 10. **Gözden geçir + oluştur**' u seçin, Özet sayfasında ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
 ## <a name="test-the-firewall"></a>Güvenlik duvarını test etme

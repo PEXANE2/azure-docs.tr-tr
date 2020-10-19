@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 4ba7ec73ac70723e21b6acad571d62d14edd250a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89bad470d5ead43b79e3691343b53fff796f7abc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828127"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172786"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma
 
@@ -39,20 +39,28 @@ Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantı
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Özel uç nokta kullanan bir çalışma alanı oluşturma
 
-Özel bir uç nokta ile çalışma alanı oluşturmak için aşağıdaki yöntemlerden birini kullanın:
+Özel bir uç nokta ile çalışma alanı oluşturmak için aşağıdaki yöntemlerden birini kullanın. Bu yöntemlerin her biri, __var olan bir sanal ağ gerektirir__:
 
 > [!TIP]
-> Azure Resource Manager şablonu gerekirse yeni bir sanal ağ oluşturabilir. Diğer yöntemlerin hepsi var olan bir sanal ağ gerektirir.
-
-# <a name="resource-manager-template"></a>[Kaynak Yöneticisi şablonu](#tab/azure-resource-manager)
-
-' Deki Azure Resource Manager şablonu, [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) özel bir uç nokta ve sanal ağ ile bir çalışma alanı oluşturmanın kolay bir yolunu sağlar.
-
-Özel uç noktalar dahil bu şablonu kullanma hakkında daha fazla bilgi için bkz. [Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma](how-to-create-workspace-template.md).
+> Aynı anda bir çalışma alanı, Özel uç nokta ve sanal ağ oluşturmak isterseniz, [Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma](how-to-create-workspace-template.md)konusuna bakın.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma alanı oluşturmak için [çalışma alanı. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) Ile kullanılabilen [privateendpointconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) sınıfını sağlar. Bu sınıf, var olan bir sanal ağ gerektirir.
+
+```python
+from azureml.core import Workspace
+from azureml.core import PrivateEndPointConfig
+
+pe = PrivateEndPointConfig(name='myprivateendpoint', vnet_name='myvnet', vnet_subnet_name='default')
+ws = Workspace.create(name='myworkspace',
+    subscription_id='<my-subscription-id>',
+    resource_group='myresourcegroup',
+    location='eastus2',
+    private_endpoint_config=pe,
+    private_endpoint_auto_approval=True,
+    show_output=True)
+```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -67,6 +75,78 @@ Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma a
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure Machine Learning Studio 'daki __ağ__ sekmesi özel bir uç nokta yapılandırmanıza olanak tanır. Ancak, var olan bir sanal ağ gerektirir. Daha fazla bilgi için bkz. [portalda çalışma alanları oluşturma](how-to-manage-workspace.md).
+
+---
+
+## <a name="add-a-private-endpoint-to-a-workspace"></a>Çalışma alanına özel uç nokta ekleme
+
+Mevcut bir çalışma alanına özel bir uç nokta eklemek için aşağıdaki yöntemlerden birini kullanın:
+
+> [!IMPORTANT]
+>
+> İçinde özel uç noktasını oluşturmak için var olan bir sanal ağınız olmalıdır. Özel uç nokta eklemeden önce [Özel uç noktalar için ağ ilkelerini de devre dışı bırakmanız](../private-link/disable-private-endpoint-network-policy.md) gerekir.
+
+> [!WARNING]
+>
+> Bu çalışma alanıyla ilişkili mevcut bir işlem hedefi varsa ve bunlar aynı sanal ağ Tha 'nin arkasında değilse, Özel uç nokta içinde oluşturulur ve çalışmaz.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+from azureml.core import Workspace
+from azureml.core import PrivateEndPointConfig
+
+pe = PrivateEndPointConfig(name='myprivateendpoint', vnet_name='myvnet', vnet_subnet_name='default')
+ws = Workspace.from_config()
+ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approval=True, show_output=True)
+```
+
+Bu örnekte kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi için bkz. [Privateendpointconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) ve [Workspace.add_private_endpoint](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-).
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Private-Endpoint Add](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) komutunu sağlar.
+
+```azurecli
+az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
+```
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Portaldaki Azure Machine Learning çalışma alanından __Özel uç nokta bağlantıları__ ' nı seçin ve __+ Özel uç nokta__' ı seçin. Yeni bir özel uç nokta oluşturmak için alanlarını kullanın.
+
+* __Bölgeyi__seçerken, sanal ağınızla aynı bölgeyi seçin. 
+* __Kaynak türünü__seçerken __Microsoft. MachineLearningServices/çalışma alanlarını__kullanın. 
+* __Kaynağı__ çalışma alanınızın adı olarak ayarlayın.
+
+Son olarak, Özel uç noktayı oluşturmak için __Oluştur__ ' u seçin.
+
+---
+
+## <a name="remove-a-private-endpoint"></a>Özel uç noktayı kaldırma
+
+Bir çalışma alanından özel bir uç noktayı kaldırmak için aşağıdaki yöntemlerden birini kullanın:
+
+# <a name="python"></a>[Python](#tab/python)
+
+Özel bir uç noktayı kaldırmak için [Workspace.delete_private_endpoint_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) kullanın.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+# get the connection name
+_, _, connection_name = ws.get_details()['privateEndpointConnections'][0]['id'].rpartition('/')
+ws.delete_private_endpoint_connection(private_endpoint_connection_name=connection_name)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Private-Endpoint Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) komutunu sağlar.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Portaldaki Azure Machine Learning çalışma alanından __Özel uç nokta bağlantıları__' nı seçin ve ardından kaldırmak istediğiniz uç noktayı seçin. Son olarak __Kaldır__' ı seçin.
 
 ---
 

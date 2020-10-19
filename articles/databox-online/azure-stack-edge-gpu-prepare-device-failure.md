@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 0d36a09b67e110551470f3908800e77c35b1e3be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7c7caf6c01c2e7ea9aaf141a2597ef338735d3d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91844014"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173599"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>Azure Stack Edge Pro GPU cihaz hatası için hazırlanma
 
@@ -66,7 +66,8 @@ Aşağıdaki üçüncü taraf veri koruma çözümleri, yerel SMB veya NFS payla
 | Üçüncü taraf yazılım           | Çözüme başvuru                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | https://www.cohesity.com/solution/cloud/azure/ <br> Ayrıntılar için Cohesity başvurun.          |
-| Veritas                        | Ayrıntılar için VERITAS ile iletişim kurun.   |
+| Commvault                      | https://www.commvault.com/azure <br> Ayrıntılar için, Commkasaya başvurun.          |
+| Veritas                        | http://veritas.com/azure <br> Ayrıntılar için VERITAS ile iletişim kurun.   |
 
 
 ## <a name="protect-files-and-folders-on-vms"></a>VM 'lerde dosya ve klasörleri koruma
@@ -78,7 +79,8 @@ Azure Stack Edge, cihazda dağıtılan VM 'lerde bulunan verileri korumak için 
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Azure Backup için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı | Windows        | [MARS aracısı hakkında](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows, Linux | [Microsoft Azure tümleştirme, yedekleme ve kurtarma çözümü kısa](https://www.cohesity.com/solution/cloud/azure) <br>Ayrıntılar için Cohesity başvurun.                          |
-| Veritas                 | Windows, Linux | Ayrıntılar için VERITAS ile iletişim kurun.                    |
+| Commvault               | Windows, Linux | https://www.commvault.com/azure <br>Ayrıntılar için, Commkasaya başvurun.                          |
+| Veritas                 | Windows, Linux | http://veritas.com/azure <br> Ayrıntılar için VERITAS ile iletişim kurun.                    |
 
 
 

@@ -5,22 +5,22 @@ services: synapse-analytics
 author: manojraheja
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: overview
+ms.subservice: workspace
 ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7412e595d3ae0604f57467701852743b737a591a
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ee9d137973bfa4eeb28bc6526437e76e781f3199
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132202"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172280"
 ---
 # <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Apache Spark kullanarak Azure Veri Gezgini bağlanma
 
 Bu makalede, SYNAPSE Studio 'dan Azure SYNAPSE Analytics için Apache Spark bir Azure Veri Gezgini veritabanına nasıl erişebileceğiniz açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Veri Gezgini kümesi ve veritabanı oluşturun](/azure/data-explorer/create-cluster-database-portal).
 * Mevcut bir Azure SYNAPSE Analytics çalışma alanına sahip veya [hızlı başlangıç: Azure SYNAPSE çalışma alanı oluşturma](./quickstart-create-workspace.md)bölümündeki adımları izleyerek yeni bir çalışma alanı oluşturun.
