@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433917"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214932"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeni Uygulama kayıtları deneyimi
 
@@ -53,13 +53,13 @@ Azure AD B2C Uygulama kayıtları deneyimi, herhangi bir Azure AD kiracısı iç
 ## <a name="new-supported-account-types"></a>Yeni desteklenen hesap türleri
 
 Yeni deneyimde, aşağıdaki seçeneklerden bir destek hesabı türü seçersiniz:
-- Yalnızca bu kuruluş dizinindeki hesaplar.
-- Herhangi bir kuruluş dizinindeki (herhangi bir Azure AD dizini – Multitenant) hesaplar.
-- Herhangi bir kuruluş dizini veya herhangi bir kimlik sağlayıcısı içindeki hesaplar. Azure AD B2C kullanıcıları kimlik doğrulaması için.
+- Yalnızca bu kuruluş dizinindeki hesaplar
+- Herhangi bir kuruluş dizinindeki (herhangi bir Azure AD dizini – Multitenant) hesaplar
+- Herhangi bir kimlik sağlayıcısındaki veya kuruluş dizinindeki hesaplar (Kullanıcı akışlara sahip kullanıcıların kimliğini doğrulamak için)
 
 Farklı hesap türlerini anlamak için, oluşturma deneyiminde seçmeme **Yardım** et ' i seçin.
 
-Eski deneyimde uygulamalar her zaman müşteriye yönelik uygulamalar olarak oluşturulmuştur. Bu uygulamalar için, hesap türü **herhangi bir kuruluş dizininde veya herhangi bir kimlik sağlayıcısında hesaplar olarak ayarlanır. Azure AD B2C kullanıcıları kimlik doğrulaması için**.
+Eski deneyimde uygulamalar her zaman müşteriye yönelik uygulamalar olarak oluşturulmuştur. Bu uygulamalar için, hesap türü **herhangi bir kimlik sağlayıcısında veya kuruluş dizininde (Kullanıcı akışları olan kullanıcıların kimliğini doğrulamak için) hesaplar**olarak ayarlanır.
 > [!NOTE]
 > Bu uygulama için kullanıcıların kimliğini doğrulamak üzere Kullanıcı akışlarını Azure AD B2C çalıştırabilmek için bu seçenek gereklidir. [Kullanıcı akışlarla kullanım için bir uygulamayı kaydetmeyi öğrenin.](tutorial-register-applications.md)
 
@@ -96,13 +96,12 @@ Yeni deneyimde **anahtarlar**yerine, sertifikaları ve gizli dizileri yönetmek 
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C kiracılarda geçerli değil Özellikler
 Aşağıdaki Azure AD uygulama kayıt özellikleri Azure AD B2C kiracılarda geçerli değildir veya kullanılabilir değildir:
-- **Roller ve yöneticiler** -bu, Azure AD B2C için geçerli olmayan Azure AD Premium P1 veya P2 lisansı gerektirir.
+- **Roller ve yöneticiler** -Azure AD B2C için şu anda kullanılamıyor.
 - **Marka** -UI/UX özelleştirmesi, **Şirket markası** deneyiminde veya bir Kullanıcı akışının parçası olarak yapılandırılmıştır. [Azure Active Directory B2C içinde Kullanıcı arabirimini özelleştirmeyi](customize-ui-overview.md)öğrenin.
 - **Yayımcı etki alanı doğrulaması** -uygulamanız, doğrulanmış bir etki alanı olmayan *. onmicrosoft.com*tarihinde kaydedilir. Ayrıca, yayımcı etki alanı birincil olarak Kullanıcı izni vermek için kullanılır ve bu, Kullanıcı kimlik doğrulaması için Azure AD B2C uygulamalar için geçerlidir. [Yayımcı etki alanı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
 - **Belirteç yapılandırması** -belirteç, bir uygulama yerine Kullanıcı akışının bir parçası olarak yapılandırılır.
 - **Hızlı başlangıç** deneyimi şu anda Azure AD B2C kiracılar için kullanılamaz.
-- **Tümleştirme Yardımcısı** dikey penceresi şu anda Azure AD B2C kiracılar için kullanılamaz.
-
+<!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
 
 ## <a name="limitations"></a>Sınırlamalar
 Yeni deneyim aşağıdaki sınırlamalara sahiptir:

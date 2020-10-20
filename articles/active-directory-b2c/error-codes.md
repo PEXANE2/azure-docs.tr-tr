@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664860"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215442"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Hata kodları: Azure Active Directory B2C
 
@@ -61,6 +61,7 @@ Aşağıdaki hatalar Azure Active Directory B2C hizmeti tarafından döndürüle
 | `AADB2C90055` | {0}İstekte belirtilen ' ' kapsamının ' ' gibi bir kaynak belirtmesi gerekir https://example.com/calendar.read . |
 | `AADB2C90057` | Belirtilen uygulama OAuth örtük akışına izin verecek şekilde yapılandırılmadı. |
 | `AADB2C90058` | Belirtilen uygulama, ortak istemcilere izin verecek şekilde yapılandırılmadı. |
+| `AADB2C99059` | Sağlanan istek bir code_challenge sunmalıdır. Yetkilendirme kodu akışını kullanan tek sayfalı uygulamalar için gereklidir.| 
 | `AADB2C90067` | ' ' Post kapatma yeniden yönlendirme URI 'sinin {0} biçimi geçersiz. ' ' Gibi bir https tabanlı URL belirtin https://example.com/return veya yerel istemciler için ' urn: ietf: WG: OAuth: 2.0: OOB ' IETF yerel ISTEMCI URI 'sini kullanın. |
 | `AADB2C90068` | Belirtilen ' ' KIMLIĞINE sahip uygulama {0} Bu hizmette geçerli değil. Lütfen B2C portalı aracılığıyla oluşturulan bir uygulamayı kullanın ve yeniden deneyin. |
 | `AADB2C90075` | {0}' ' Adımında belirtilen talep değişimi ' ', {1} ' {2} ' kodu ve ' ' nedeniyle http hata yanıtı döndürdü {3} . |

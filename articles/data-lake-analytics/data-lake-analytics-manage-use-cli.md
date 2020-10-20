@@ -1,17 +1,15 @@
 ---
 title: Azure CLı kullanarak Azure Data Lake Analytics yönetme
 description: Bu makalede Data Lake Analytics işleri, veri kaynaklarını & kullanıcıları yönetmek için Azure CLı 'nin nasıl kullanılacağı açıklanır.
-services: data-lake-analytics
-ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19b471d85a52fe38b72ad55847d022fb56b3c4f0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320855"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220933"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak Azure Data Lake Analytics yönetme
 
@@ -19,18 +17,17 @@ ms.locfileid: "91320855"
 
 Azure CLı kullanarak Azure Data Lake Analytics hesaplarını, veri kaynaklarını, kullanıcıları ve işleri yönetmeyi öğrenin. Diğer araçları kullanarak yönetim konularını görmek için yukarıdaki sekmeye tıklayın.
 
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir:
 
-* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+- Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* Azure CLI. Bkz. [Azure CLI'yı yükleme ve yapılandırma](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Azure CLI. Bkz. [Azure CLI'yı yükleme ve yapılandırma](/cli/azure/install-azure-cli).
 
-  * Bu demoyu tamamlamak için **yayın öncesi sürüm** [Azure CLI araçlarını](https://github.com/MicrosoftBigData/AzureDataLake/releases) indirip yükleyin.
+  - Bu demoyu tamamlamak için **yayın öncesi sürüm** [Azure CLI araçlarını](https://github.com/MicrosoftBigData/AzureDataLake/releases) indirip yükleyin.
 
-* Komutunu kullanarak kimlik doğrulaması yapın `az login` ve kullanmak istediğiniz aboneliği seçin. Bir iş veya okul hesabı kullanarak kimlik doğrulama gerçekleştirme konusunda daha fazla bilgi için bkz. [Azure CLI'dan Azure aboneliğine bağlanma](/cli/azure/authenticate-azure-cli).
+- Komutunu kullanarak kimlik doğrulaması yapın `az login` ve kullanmak istediğiniz aboneliği seçin. Bir iş veya okul hesabı kullanarak kimlik doğrulama gerçekleştirme konusunda daha fazla bilgi için bkz. [Azure CLI'dan Azure aboneliğine bağlanma](/cli/azure/authenticate-azure-cli).
 
    ```azurecli
    az login
@@ -46,11 +43,11 @@ Bu öğreticiye başlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir
 
 ## <a name="manage-accounts"></a>Hesapları yönetme
 
-Herhangi bir Data Lake Analytics işini çalıştırmadan önce bir Data Lake Analytics hesabınız olması gerekir. Azure HDInsight 'tan farklı olarak, bir iş çalıştırmayan bir analiz hesabı için ödeme yapmazsınız. Yalnızca bir iş çalıştığı zaman için ödeme yaparsınız.  Daha fazla bilgi için bkz. [Azure Data Lake Analytics genel bakış](data-lake-analytics-overview.md).  
+Herhangi bir Data Lake Analytics işini çalıştırmadan önce bir Data Lake Analytics hesabınız olması gerekir. Azure HDInsight 'tan farklı olarak, bir iş çalıştırmayan bir analiz hesabı için ödeme yapmazsınız. Yalnızca bir iş çalıştığı zaman için ödeme yaparsınız.  Daha fazla bilgi için bkz. [Azure Data Lake Analytics genel bakış](data-lake-analytics-overview.md).
 
 ### <a name="create-accounts"></a>Hesap oluşturma
 
-Data Lake bir hesap oluşturmak için aşağıdaki komutu çalıştırın, 
+Data Lake bir hesap oluşturmak için aşağıdaki komutu çalıştırın,
 
    ```azurecli
    az dla account create --account "<Data Lake Analytics account name>" --location "<Location Name>" --resource-group "<Resource Group Name>" --default-data-lake-store "<Data Lake Store account name>"
@@ -88,10 +85,10 @@ Belirli bir kaynak grubu içindeki Data Lake Analytics hesaplarını listeleme
 
 Data Lake Analytics Şu anda aşağıdaki iki veri kaynağını desteklemektedir:
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Depolama](../storage/common/storage-introduction.md)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+- [Azure Depolama](../storage/common/storage-introduction.md)
 
-Bir analiz hesabı oluşturduğunuzda, bir Azure Data Lake Storage hesabını varsayılan depolama hesabı olacak şekilde atamanız gerekir. Varsayılan Data Lake depolama hesabı, iş meta verilerini ve iş denetim günlüklerini depolamak için kullanılır. Bir analiz hesabı oluşturduktan sonra, ek Data Lake Storage hesapları ve/veya Azure depolama hesabı ekleyebilirsiniz. 
+Bir analiz hesabı oluşturduğunuzda, bir Azure Data Lake Storage hesabını varsayılan depolama hesabı olacak şekilde atamanız gerekir. Varsayılan Data Lake depolama hesabı, iş meta verilerini ve iş denetim günlüklerini depolamak için kullanılır. Bir analiz hesabı oluşturduktan sonra, ek Data Lake Storage hesapları ve/veya Azure depolama hesabı ekleyebilirsiniz.
 
 ### <a name="find-the-default-data-lake-store-account"></a>Varsayılan Data Lake Store hesabını bulun
 
@@ -127,7 +124,7 @@ Var olan bir BLOB depolama hesabı anahtarını güncelleştirmek için:
    az dla account blob-storage update --access-key "<New Blob Storage Account Key>" --account "<Data Lake Analytics account name>" --storage-account-name "<Data Lake Store account name>"
    ```
 
-### <a name="list-data-sources"></a>Veri kaynaklarını listeleyin:
+### <a name="list-data-sources"></a>Veri kaynaklarını listeleme
 
 Data Lake Store hesaplarını listelemek için:
 
@@ -143,7 +140,7 @@ BLOB depolama hesabını listelemek için:
 
 !["DataLakeStoreAccounts:" bilgileri vurgulanmış şekilde Azure C L I 'yi gösteren ekran görüntüsü.](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
-### <a name="delete-data-sources"></a>Veri kaynaklarını Sil:
+### <a name="delete-data-sources"></a>Veri kaynaklarını silme
 
 Bir Data Lake Store hesabını silmek için:
 
@@ -185,6 +182,7 @@ Bir iş oluşturabilmeniz için önce bir Data Lake Analytics hesabınızın olm
 >    ```
 
 ### <a name="cancel-jobs"></a>İşleri iptal et
+
 İş KIMLIĞINI bulmak için List komutunu kullanın ve ardından işlemi iptal etmek için iptal 'i kullanın.
 
    ```azurecli
@@ -212,7 +210,8 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
-* [Azure portal kullanarak Data Lake Analytics kullanmaya başlama](data-lake-analytics-get-started-portal.md)
-* [Azure portal kullanarak Azure Data Lake Analytics yönetme](data-lake-analytics-manage-use-portal.md)
-* [Azure portal kullanarak Azure Data Lake Analytics işleri izleme ve sorunlarını giderme](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+- [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
+- [Azure portal kullanarak Data Lake Analytics kullanmaya başlama](data-lake-analytics-get-started-portal.md)
+- [Azure portal kullanarak Azure Data Lake Analytics yönetme](data-lake-analytics-manage-use-portal.md)
+- [Azure portal kullanarak Azure Data Lake Analytics işleri izleme ve sorunlarını giderme](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

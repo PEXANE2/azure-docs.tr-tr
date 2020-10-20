@@ -94,25 +94,24 @@
     - name: İzleme
     - name: Rol ve izinler oluşturma
       href: spring-cloud-howto-permissions.md
-      items:
-        - name: Dağıtılmış izleme ve Uygulama İçgörüleri
-          href: spring-cloud-tutorial-distributed-tracing.md
-        - name: Günlükleri ve ölçümleri analiz etme
-          href: diagnostic-services.md
-        - name: Günlüklerin gerçek zamanlı akışı
-          href: spring-cloud-howto-log-streaming.md
-    - name: DevOps Dağıtımı
-      items:
-        - name: Azure DevOps ile CI/CD
-          href: spring-cloud-howto-cicd.md
-        - name: GitHub Actions ile CI/CD
-          href: spring-cloud-howto-github-actions.md
-        - name: GitHub Actions'da Key Vault ile Kimlik Doğrulaması
-          href: spring-cloud-github-actions-key-vault.md
-    - name: Sorun giderme
-      items:
-        - name: Sorun Giderme Kılavuzu
-          href: spring-cloud-troubleshoot.md
+    - name: Dağıtılmış izleme ve Uygulama İçgörüleri
+      href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Günlükleri ve ölçümleri analiz etme
+      href: diagnostic-services.md
+    - name: Günlüklerin gerçek zamanlı akışı
+      href: spring-cloud-howto-log-streaming.md
+- name: DevOps Dağıtımı
+  items:
+    - name: Azure DevOps ile CI/CD
+      href: spring-cloud-howto-cicd.md
+    - name: GitHub Actions ile CI/CD
+      href: spring-cloud-howto-github-actions.md
+    - name: GitHub Actions'da Key Vault ile Kimlik Doğrulaması
+      href: spring-cloud-github-actions-key-vault.md
+- name: Sorun giderme
+  items:
+    - name: Sorun Giderme Kılavuzu
+      href: spring-cloud-troubleshoot.md
 - name: Başvuru
   items:
     - name: Azure CLI Eklentisi

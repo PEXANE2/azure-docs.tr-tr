@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: 5181ceb7d5959436b704202fd3179773c9654679
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417489"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220491"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Tablo depolama alanına veya oradan veri kopyalama
 
@@ -222,7 +222,7 @@ Verileri Azure tablosuna kopyalamak için, veri kümesinin Type özelliğini **A
 
 Azure tablosu gibi şema içermeyen veri depoları için, Data Factory şemayı aşağıdaki yollarla bir şekilde algılar:
 
-* Kopyalama etkinliğinde sütun eşlemeyi belirtirseniz, verileri almak için kaynak tarafı sütun listesini kullanın Data Factory. Bu durumda, bir satır bir sütun için değer içermiyorsa, için null değer sağlanır.
+* Kopyalama etkinliğinde sütun eşlemeyi belirtirseniz Data Factory verileri almak için kaynak tarafı sütun listesini kullanır. Bu durumda, bir satır bir sütun için değer içermiyorsa, için null değer sağlanır.
 * Kopyalama etkinliğinde sütun eşlemeyi belirtmezseniz, verileri verilerdeki ilk satırı kullanarak şemayı Data Factory. Bu durumda, ilk satır tam şemayı içermiyorsa (ör. bazı sütunlarda null değer varsa), kopyalama işleminin sonucunda bazı sütunlar kaçırılacaktır.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
@@ -236,7 +236,7 @@ Azure tablosundan veri kopyalamak için kopyalama etkinliğindeki kaynak türün
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının Type özelliği **AzureTableSource**olarak ayarlanmalıdır. |Evet |
-| azureTableSourceQuery |Verileri okumak için özel tablo depolama sorgusunu kullanın. Aşağıdaki bölümdeki örneklere bakın. |Hayır |
+| azureTableSourceQuery |Verileri okumak için özel tablo depolama sorgusunu kullanın.<br/>Kaynak sorgu, `$filter` Azure Tablo Depolaması tarafından desteklenen sorgu seçeneğinden doğrudan bir haritadır, [Bu belgedeki](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-query-options)söz dizimi hakkında daha fazla bilgi edinin ve aşağıdaki [azureTableSourceQuery örnekler bölümündeki](#azuretablesourcequery-examples)örneklere bakın. |Hayır |
 | azureTableSourceIgnoreTableNotFound |Tablonun özel durumunun mevcut olup olmayacağını gösterir.<br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. |Hayır |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery örnekleri
