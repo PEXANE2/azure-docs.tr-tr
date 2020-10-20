@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772728"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017021"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
 
@@ -134,7 +134,7 @@ Evet. Bağlı bir iş ortağı kimliği değiştirilebilir, eklenebilir veya kal
 
 Her müşteri kiracısı için iş ortağı kimliği ve hesap arasında bağlantı oluşturulur. Her müşteri kiracısında iş ortağı kimliğini bağlayın.
 
-Ancak, Azure Lighthouse üzerinden müşteri kaynaklarını yönetiyorsanız müşteri kaynaklarına erişimi olan bir hesabı kullanarak hizmet sağlayıcı kiracınızda bağlantı oluşturmanız gerekir. Daha fazla bilgi için bkz. [İş ortağı kimliğinizi, temsilci atanan kaynaklarda iş ortağı kredisi kazandıracak şekilde bağlama](../../lighthouse/how-to/partner-earned-credit.md).
+Ancak, Azure Lighthouse üzerinden müşteri kaynaklarını yönetiyorsanız müşteri kaynaklarına erişimi olan bir hesabı kullanarak hizmet sağlayıcı kiracınızda bağlantı oluşturmanız gerekir. Daha fazla bilgi için bkz. [İş ortağı kimliğinizi, temsilci atanan kaynaklardaki etkinizi izleyecek şekilde bağlama](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Diğer iş ortakları veya müşteriler, iş ortağı kimliğine bağlantıyı düzenleyebilir ya da kaldırabilir mi?**
 
@@ -164,7 +164,7 @@ Evet, Azure Stack için iş ortağı kimliğinizi bağlayabilirsiniz.
 
 [Azure Market’te bir yönetilen hizmet teklifi yayımlayarak](../../lighthouse/how-to/publish-managed-services-offers.md) müşterileri Azure’da atanan kaynak yönetimine eklerseniz, MPN kimliğiniz otomatik olarak ilişkilendirilir.
 
-Müşterileri [Azure Resource Manager şablonları dağıtarak eklerseniz](../../lighthouse/how-to/onboard-customer.md), MPN kimliğinizi eklenmiş aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirmeniz gerekir. Bunu her bir müşteri kiracısında değil, hizmet sağlayıcısı kiracınızda yapmanız gerektiğini unutmayın. Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanızı, bunu MPN kimliğinizle ilişkilendirmenizi ve sonra [iş ortağı tarafından kazanılan krediye uygun bir Azure yerleşik rolüyle](/partner-center/azure-roles-perms-pec) eklediğiniz her müşteriye erişim vermenizi öneririz. Daha fazla bilgi için bkz. [İş ortağı kimliğinizi, temsilci atanan kaynaklarda iş ortağı kredisi kazandıracak şekilde bağlama](../../lighthouse/how-to/partner-earned-credit.md).
+Müşterileri [Azure Resource Manager şablonları dağıtarak eklerseniz](../../lighthouse/how-to/onboard-customer.md), MPN kimliğinizi eklenmiş aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirmeniz gerekir. Bunu her bir müşteri kiracısında değil, hizmet sağlayıcısı kiracınızda yapmanız gerektiğini unutmayın. Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanızı, bunu MPN kimliğinizle ilişkilendirmenizi ve sonra [iş ortağı tarafından kazanılan krediye uygun bir Azure yerleşik rolüyle](/partner-center/azure-roles-perms-pec) eklediğiniz her müşteriye erişim vermenizi öneririz. Daha fazla bilgi için bkz. [İş ortağı kimliğinizi, temsilci atanan kaynaklardaki etkinizi izleyecek şekilde bağlama](../../lighthouse/how-to/partner-earned-credit.md).
 
 **İş Ortağı Yönetici Bağlantısını (PAL) Müşterime nasıl açıklayabilirim?**
 

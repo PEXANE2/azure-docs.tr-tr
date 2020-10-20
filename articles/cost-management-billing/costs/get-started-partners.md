@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372264"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827581"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -151,9 +151,11 @@ Bir aboneliğin maliyetlerini görüntülemek için müşterinin Azure kiracıs�
 
 Abonelik ve kaynak grubu Azure RBAC kapsamları için maliyet analizi, bütçeler ve uyarılar, kullandıkça öde fiyatını temel alan maliyetler üzerinden kullanılabilir.
 
-Azure RBAC kapsamlarındaki ayrılmış örneklere ait amorti edilmiş görünümler ve gerçek maliyetler sıfır olarak görünür. Ayrılmış örnek maliyetleri yalnızca satın alma işleminin gerçekleştirildiği faturalama kapsamlarında gösterilir.
+Azure RBAC kapsamlarındaki ayrılmış örneklere ait amorti edilmiş görünümler ve gerçek maliyetler sıfır olarak görünür. Ayrılmış örnekler ve Market ücretleri gibi yetkilendirmelere yönelik satın alma maliyetleri, yalnızca satın alma işlemlerinin yapıldığı iş ortağının kiracısındaki faturalama kapsamlarında gösterilir.
 
 Görünümde gösterilen maliyetleri hesaplamak için kullanılan perakende fiyatları, tüm müşteriler için Azure Fiyatlandırma Hesaplayıcısı’nda gösterilen fiyatlarla aynıdır. Gösterilen fiyatlar, iş ortağının sahip olabileceği İş Ortağı Tarafından Kazanılmış Krediler, Katman İndirimleri, Genel Hizmet indirimleri gibi indirimleri veya kredileri içermez.
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Maliyet analizindeki maliyetleri analiz etme
 

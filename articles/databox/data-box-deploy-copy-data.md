@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 4dbae9d08a4adf250c9317b392d80f8e04c53d56
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766306"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951018"
 ---
 ::: zone target="docs"
 
@@ -116,14 +116,14 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsiniz. Verileri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
 * Verilerin uygun dosya biçimine karşılık gelen paylaşımlara kopyalandığından emin olun. Örneğin blok blobu verilerinin blok blobu paylaşımına kopyalanması gerekir. VHD'leri sayfa blobuna kopyalayın. Veri biçimi uygun paylaşım türüyle eşleşmiyorsa verilerin Azure'a yüklenmesi başarısız olur.
+* Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *kök* klasörüne doğrudan kopyalayamazsınız.
 * Veri kopyalama sırasında veri boyutunun [Azure depolama hesabı boyut sınırları](data-box-limits.md#azure-storage-account-size-limits) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun.
-* Data Box tarafından yüklenen verilerin Data Box haricinde başka bir uygulama tarafından da yüklenmesi durumunda yükleme işinde hata oluşabilir ve veri bozulması yaşanabilir.
+* Azure Dosyalar’a veri aktarırken meta verileri (ACL’ler, zaman damgaları ve dosya öznitelikleri) korumak istiyorsanız [Azure Data Box ile dosya ACL’lerini, özniteliklerini ve zaman damgalarını koruma](data-box-file-acls-preservation.md) başlıklı makaledeki yönergeleri izleyin  
+* Data Box tarafından karşıya yüklenmekte olan veriler aynı zamanda Data Box’ın dışındaki başka bir uygulama tarafından da karşıya yükleniyorsa bu, karşıya yükleme işleminin başarısız olmasına ve verilerin bozulmasına yol açabilir.
 * Şunları öneririz:
   * SMB ve NFS'yi aynı anda kullanmayın.
   * Aynı verileri Azure'da aynı son hedefe kopyalayın.
-
   Böyle durumlarda nihai sonucu kestirmek mümkün olmayabilir.
-* Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
 
 > [!IMPORTANT]
 > Data Box'ın verilerinizi Azure Depolama'ya aktardığını onaylayana kadar kaynak verilerinizin bir kopyasına sahip olduğunuzdan emin olun.
