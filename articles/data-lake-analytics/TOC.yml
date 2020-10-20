@@ -68,7 +68,7 @@
             - name: Temel Bilgiler
               href: data-lake-analytics-u-sql-get-started.md
             - name: Dil başvurusu
-              href: 'https://docs.microsoft.com/u-sql/'
+              href: /u-sql/
             - name: Katalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: Kullanıcı tanımlı işleçler
@@ -152,26 +152,26 @@
     - name: Node.js
       href: 'https://www.npmjs.com/package/azure-arm-datalake-analytics'
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python'
+      href: /python/api/overview/azure/data-lake-analytics
     - name: REST
       href: /rest/api/datalakeanalytics/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.datalakeanalytics/allversions
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/dla'
+      href: /cli/azure/dla
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Data Lake Blogu
-      href: 'https://blogs.msdn.microsoft.com/azuredatalake/'
+      href: /archive/blogs/azuredatalake/
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Değişiklikleri isteme
       href: 'https://feedback.azure.com/forums/327234-data-lake'
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-lake-analytics.html'
+      href: /answers/topics/azure-data-lake-analytics.html
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/data-lake-analytics/'
     - name: Fiyatlandırma hesaplayıcı
