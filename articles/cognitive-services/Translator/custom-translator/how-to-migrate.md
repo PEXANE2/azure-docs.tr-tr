@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537995"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220882"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma alanını ve projelerini özel çevirmene geçirme
 
@@ -55,7 +55,7 @@ Bir projeyi geçirmek için:
 
 3. Uygun proje için "geçir" bağlantısına tıklayın.
 
-    ![Hub 'dan geçiş yapma](media/how-to/how-to-migrate-from-hub.png)
+    ![Seçili proje için geçiş düğmesini vurgulayan ekran görüntüsü.](media/how-to/how-to-migrate-from-hub.png)
 
 4. Geçiş bağlantısına bastıktan sonra, aşağıdakileri sağlayan bir form görüntülenir:
    * Özel çevirmende aktarmak istediğiniz çalışma alanını belirtin
@@ -76,7 +76,7 @@ Tek bir projeyi geçirmeye ek olarak, çalışma alanındaki başarılı değiş
 
 3. "Ayarlar" sayfasında "çalışma alanı verilerini özel çevirmene geçir" düğmesine tıklayın.
 
-    ![Hub 'dan geçiş yapma](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![Çalışma alanı verilerini özel çeviriciye Geçir seçeneğini vurgulayan ekran görüntüsü.](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. Sonraki sayfada, bu iki seçenekten birini seçin:
 

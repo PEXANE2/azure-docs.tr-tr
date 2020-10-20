@@ -6,29 +6,30 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ce7ffc66e0b6164b2e4ca9725b3f26403292a4a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80754681"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220780"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Öğretici: kümenin Ağ ayarlarını yapılandırma
 
-Yeni oluşturulan bir Azure FXT Edge filigran kümesini kullanmadan önce, iş akışınız için çeşitli ağ ayarlarını denetlemeniz ve özelleştirmeniz gerekir. 
+Yeni oluşturulan bir Azure FXT Edge filigran kümesini kullanmadan önce, iş akışınız için çeşitli ağ ayarlarını denetlemeniz ve özelleştirmeniz gerekir.
 
-Bu öğreticide, yeni bir küme için ayarlamanız gerekebilecek ağ ayarları açıklanmaktadır. 
+Bu öğreticide, yeni bir küme için ayarlamanız gerekebilecek ağ ayarları açıklanmaktadır.
 
-Şunları öğreneceksiniz: 
+Şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Küme oluşturulduktan sonra hangi ağ ayarlarının güncellenmesi gerekebilir
-> * Hangi Azure FXT Edge filigran kullanım örnekleri bir AD sunucusu veya DNS sunucusu gerektiriyor 
+> * Hangi Azure FXT Edge filigran kullanım örnekleri bir AD sunucusu veya DNS sunucusu gerektiriyor
 > * İstemci isteklerinin yükünü otomatik olarak FXT kümesine dengelemek için hepsini bir kez deneme DNS (RRDNS) yapılandırma
 
 Bu adımları tamamlamak için gereken süre, sisteminizde kaç yapılandırma değişikliğini gerekli hale göre değişir:
 
-* Yalnızca öğreticiyi okumanız ve birkaç ayarı denetlemeniz gerekiyorsa, 10 ila 15 dakika sürer. 
+* Yalnızca öğreticiyi okumanız ve birkaç ayarı denetlemeniz gerekiyorsa, 10 ila 15 dakika sürer.
 * Hepsini bir kez deneme DNS 'yi yapılandırmanız gerekiyorsa, bu görev bir saat veya daha fazla sürebilir.
 
 ## <a name="adjust-network-settings"></a>Ağ ayarlarını ayarla
@@ -78,20 +79,20 @@ Sertifikaları kümeye yüklemeniz gerekiyorsa, **küme**  >  **sertifikaları**
 
 Küme yönetimi iletişimini şifrelemek için, **Cluster**  >  Yönetim TLS için kullanılacak sertifikayı seçmek üzere küme**genel kurulum** ayarları sayfasını kullanın.
 
-> [!Note] 
-> Bulut hizmeti erişim anahtarları, **bulut kimlik bilgileri** yapılandırma sayfası kullanılarak depolanır. Yukarıdaki [çekirdek dosyalayıcı ekleme](fxt-add-storage.md#add-a-core-filer) bölümü bir örnek gösterir; Ayrıntılar için küme yapılandırma kılavuzu [bulut kimlik bilgileri](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) bölümünü okuyun. 
+> [!Note]
+> Bulut hizmeti erişim anahtarları, **bulut kimlik bilgileri** yapılandırma sayfası kullanılarak depolanır. Yukarıdaki [çekirdek dosyalayıcı ekleme](fxt-add-storage.md#add-a-core-filer) bölümü bir örnek gösterir; Ayrıntılar için küme yapılandırma kılavuzu [bulut kimlik bilgileri](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) bölümünü okuyun.
 
 ## <a name="configure-dns-for-load-balancing"></a>Yük Dengeleme için DNS yapılandırma
 
-Bu bölümde, istemci yükünü FXT Edge Filer kümenizdeki istemciye yönelik tüm IP adresleri arasında dağıtmak üzere bir hepsini bir kez deneme DNS (RRDNS) sistemi yapılandırmanın temelleri açıklanmaktadır. 
+Bu bölümde, istemci yükünü FXT Edge Filer kümenizdeki istemciye yönelik tüm IP adresleri arasında dağıtmak üzere bir hepsini bir kez deneme DNS (RRDNS) sistemi yapılandırmanın temelleri açıklanmaktadır.
 
 ### <a name="decide-whether-or-not-to-use-dns"></a>DNS kullanılıp kullanılmayacağını belirleyin
 
-Yük Dengeleme her zaman önerilir, ancak DNS 'yi her zaman kullanmanız gerekmez. Örneğin, bazı tür istemci iş akışlarıyla, kümeyi bağlandıklarında istemciler arasında küme IP adreslerini eşit olarak atamak için bir komut dosyası kullanmayı daha anlamlı hale getirir. Bazı yöntemler [kümeyi bağlama](fxt-mount-clients.md)bölümünde açıklanmaktadır. 
+Yük Dengeleme her zaman önerilir, ancak DNS 'yi her zaman kullanmanız gerekmez. Örneğin, bazı tür istemci iş akışlarıyla, kümeyi bağlandıklarında istemciler arasında küme IP adreslerini eşit olarak atamak için bir komut dosyası kullanmayı daha anlamlı hale getirir. Bazı yöntemler [kümeyi bağlama](fxt-mount-clients.md)bölümünde açıklanmaktadır.
 
-Bir DNS sunucusunun kullanılıp kullanılmayacağını saptarken şunları göz önünde bulundurun: 
+Bir DNS sunucusunun kullanılıp kullanılmayacağını saptarken şunları göz önünde bulundurun:
 
-* Sisteme yalnızca NFS istemcileri eriştiğinde DNS gerekli değildir. Sayısal IP adresleri kullanarak tüm ağ adreslerini belirtmek mümkündür. 
+* Sisteme yalnızca NFS istemcileri eriştiğinde DNS gerekli değildir. Sayısal IP adresleri kullanarak tüm ağ adreslerini belirtmek mümkündür.
 
 * Sisteminiz SMB (CIFS) erişimini destekliyorsa, DNS gerekir, çünkü Active Directory sunucusu için bir DNS etki alanı belirtmeniz gerekir.
 
@@ -110,7 +111,7 @@ Sol tarafta bir küme vServer gösterilir ve IP adresleri ortadaki ve sağ taraf
 
 Her bir istemciye yönelik IP adresinin, küme tarafından iç kullanım için benzersiz bir adı olmalıdır. (Bu diyagramda istemci IP 'Leri, açıklık için VS1-Client-IP-* olarak adlandırılır, ancak üretimde, istemci * gibi daha kısa bir ad kullanmanız gerekir.)
 
-İstemciler, sanal sunucu adını sunucu bağımsız değişkeni olarak kullanarak kümeyi bağlayabilir. 
+İstemciler, sanal sunucu adını sunucu bağımsız değişkeni olarak kullanarak kümeyi bağlayabilir.
 
 ``named.conf``Sanal sunucunuza sorgular için döngüsel sıra ayarlamak üzere DNS sunucunuzun dosyasını değiştirin. Bu seçenek, tüm kullanılabilir değerlerin üzerinden kaydırılmasını sağlar. Aşağıdakine benzer bir ifade ekleyin:
 
@@ -136,7 +137,7 @@ update add 11.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-11.example.com
 update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 ```
 
-### <a name="enable-dns-in-the-cluster"></a>Kümede DNS 'yi etkinleştirme 
+### <a name="enable-dns-in-the-cluster"></a>Kümede DNS 'yi etkinleştirme
 
 **Kümenin**  >  **Yönetim ağ** ayarları sayfasında kullandığı DNS sunucusunu belirtin. Bu sayfadaki ayarlar şunlardır:
 
@@ -148,8 +149,8 @@ Daha fazla ayrıntı için, küme yapılandırma kılavuzundaki [DNS ayarların�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu, Azure FXT Edge Filer kümesi için son temel yapılandırma adımıdır. 
+Bu, Azure FXT Edge Filer kümesi için son temel yapılandırma adımıdır.
 
 * [Donanım durumunu izlemek](fxt-monitor.md)Için sistemin LED 'leri ve diğer göstergeleri hakkında bilgi edinin.
-* İstemcilerin [, kümeyi bağlama](fxt-mount-clients.md)bölümünde FXT Edge Filer kümesini nasıl bağlayabilmelidir hakkında daha fazla bilgi edinin. 
-* Bir FXT Edge filigran kümesini çalıştırma ve yönetme hakkında daha fazla bilgi için bkz. [küme yapılandırma kılavuzu](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html). 
+* İstemcilerin [, kümeyi bağlama](fxt-mount-clients.md)bölümünde FXT Edge Filer kümesini nasıl bağlayabilmelidir hakkında daha fazla bilgi edinin.
+* Bir FXT Edge filigran kümesini çalıştırma ve yönetme hakkında daha fazla bilgi için bkz. [küme yapılandırma kılavuzu](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html).

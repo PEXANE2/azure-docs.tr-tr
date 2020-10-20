@@ -1,36 +1,33 @@
 ---
 title: SSIS kullanarak Azure Data Lake Analytics U-SQL işleri zamanlama
 description: Satır içi betik veya U-SQL sorgu dosyalarından U-SQL işlerini zamanlamak için SQL Server Integration Services nasıl kullanacağınızı öğrenin.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318713"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221460"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services kullanarak U-SQL işlerini zamanlama (SSIS)
 
 Bu belgede, SQL Server tümleştirme hizmeti 'ni (SSIS) kullanarak U-SQL işlerini nasıl düzenleyeceğinizi ve oluşturacağınızı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-[Tümleştirme Hizmetleri Için Azure Özellik paketi](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) , Azure Data Lake Analytics hizmetine bağlanmasına yardımcı olan [Azure Data Lake Analytics görevi](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017) ve [Azure Data Lake Analytics bağlantı yöneticisini](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017) sağlar. Bu görevi kullanmak için, ' yi yüklediğinizden emin olun:
+[Tümleştirme Hizmetleri Için Azure Özellik paketi](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud) , Azure Data Lake Analytics hizmetine bağlanmasına yardımcı olan [Azure Data Lake Analytics görevi](/sql/integration-services/control-flow/azure-data-lake-analytics-task) ve [Azure Data Lake Analytics bağlantı yöneticisini](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager) sağlar. Bu görevi kullanmak için, ' yi yüklediğinizden emin olun:
 
-- [Visual Studio için SQL Server Veri Araçları indirin ve yükleyin (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)
-- [Tümleştirme Hizmetleri için Azure Feature Pack 'i (SSIS) yükler](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017)
+- [Visual Studio için SQL Server Veri Araçları indirin ve yükleyin (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)
+- [Tümleştirme Hizmetleri için Azure Feature Pack 'i (SSIS) yükler](/sql/integration-services/azure-feature-pack-for-integration-services-ssis)
 
 ## <a name="azure-data-lake-analytics-task"></a>Azure Data Lake Analytics görev
 
 Azure Data Lake Analytics görevi, kullanıcıların U-SQL işlerini Azure Data Lake Analytics hesabına göndermesine izin verir. 
 
-[Azure Data Lake Analytics görevi yapılandırmayı öğrenin](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
+[Azure Data Lake Analytics görevi yapılandırmayı öğrenin](/sql/integration-services/control-flow/azure-data-lake-analytics-task).
 
 ![SSIS 'de Azure Data Lake Analytics görevi](./media/data-lake-analytics-schedule-jobs-ssis/data-lake-analytics-azure-data-lake-analytics-task-in-ssis.png)
 
@@ -61,13 +58,13 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store dosya sistemi görevini yapılandırma
 
 1. **Işlemi** **Copyfromadls**olarak ayarlayın.
-2. **AzureDataLakeConnection**kurma [Azure Data Lake Store bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017)hakkında daha fazla bilgi edinin.
+2. **AzureDataLakeConnection**kurma [Azure Data Lake Store bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)hakkında daha fazla bilgi edinin.
 3. **AzureDataLakeDirectory**ayarlayın. U-SQL komut dosyalarınızı depolayan klasöre işaret edin. Azure Data Lake Store hesabı kök klasörüyle ilişkili göreli yolu kullanın.
 4. **Hedefi** , indirilen U-SQL betiklerini önbelleğe alan bir klasöre ayarlayın. Bu klasör yolu, U-SQL işi gönderimi için Foreach döngü kapsayıcısında kullanılacaktır. 
 
 ![Azure Data Lake Store dosya sistemi görevini yapılandırma](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
 
-[Azure Data Lake Store dosya sistemi görevi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-store-file-system-task?view=sql-server-2017).
+[Azure Data Lake Store dosya sistemi görevi hakkında daha fazla bilgi edinin](/sql/integration-services/control-flow/azure-data-lake-store-file-system-task).
 
 ### <a name="configure-foreach-loop-container"></a>Foreach döngüsü kapsayıcısını Yapılandır
 
@@ -102,9 +99,9 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
        ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
-3. **AzureDataLakeAnalyticsConnection** ' i, işleri göndermek istediğiniz Azure Data Lake Analytics hesaba ayarlayın. [Azure Data Lake Analytics bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)hakkında daha fazla bilgi edinin.
+3. **AzureDataLakeAnalyticsConnection** ' i, işleri göndermek istediğiniz Azure Data Lake Analytics hesaba ayarlayın. [Azure Data Lake Analytics bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager)hakkında daha fazla bilgi edinin.
 
-4. Diğer iş yapılandırmasını ayarlayın. [Daha Fazla Bilgi Edinin](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
+4. Diğer iş yapılandırmasını ayarlayın. [Daha Fazla Bilgi Edinin](/sql/integration-services/control-flow/azure-data-lake-analytics-task).
 
 5. U-SQL iş adını dinamik olarak ayarlamak için **ifadeler** kullanın:
 
@@ -117,7 +114,7 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 Azure Feature Pack 'te Azure **BLOB Indirme görevini** kullanarak, Azure Blob depolamada U-SQL dosyalarını kullanabilirsiniz. Bu yaklaşım, bulutta betikleri kullanmanıza izin vermez.
 
-Bu adımlar [Senaryo 2 ile benzerdir: Azure Data Lake Store Içindeki U-SQL dosyalarını kullanın](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Azure Data Lake Store dosya sistemi görevini Azure Blob Indirme göreviyle değiştirin. [Azure Blob Indirme görevi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Bu adımlar [Senaryo 2 ile benzerdir: Azure Data Lake Store Içindeki U-SQL dosyalarını kullanın](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Azure Data Lake Store dosya sistemi görevini Azure Blob Indirme göreviyle değiştirin. [Azure Blob Indirme görevi hakkında daha fazla bilgi edinin](/sql/integration-services/control-flow/azure-blob-download-task).
 
 Denetim akışı aşağıdaki gibidir.
 
@@ -162,10 +159,10 @@ Bazı durumlarda, U-SQL betiğinden U-SQL değişken değerini dinamik olarak ay
 - Giriş ve çıkış dosyası yolu değişkenlerini geçerli tarih ve saate göre dinamik olarak ayarlayın.
 - Saklı yordamlar için parametresini ayarlayın.
 
-[U-SQL betiği için parametreleri ayarlama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
+[U-SQL betiği için parametreleri ayarlama hakkında daha fazla bilgi edinin](/sql/integration-services/control-flow/azure-data-lake-analytics-task#parameter-mapping-page-configuration).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure’da SSIS paketlerini çalıştırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
-- [Tümleştirme Hizmetleri için Azure Özellik paketi (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
-- [Azure Data Factory kullanarak U-SQL işlerini zamanlama](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
+- [Azure’da SSIS paketlerini çalıştırma](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
+- [Tümleştirme Hizmetleri için Azure Özellik paketi (SSIS)](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#scenario-managing-data-in-the-cloud)
+- [Azure Data Factory kullanarak U-SQL işlerini zamanlama](../data-factory/transform-data-using-data-lake-analytics.md)

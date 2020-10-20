@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0899132f308c7069395738140b35b138571483d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509694"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220865"
 ---
 # <a name="view-system-test-results"></a>Sistem test sonuçlarını görüntüleme
 
@@ -70,12 +70,12 @@ Dağıtım istemek için:
 
 2. Başarılı bir eğitilen modelde, dağıtılmamışsa "Dağıt" düğmesi görüntülenir.
 
-    ![Modeli dağıt](media/how-to/how-to-deploy-model.png)
+    ![Bir modelin dağıtılması için dağıt düğmesini vurgulayan ekran görüntüsü.](media/how-to/how-to-deploy-model.png)
 
 3.  Dağıt ' a tıklayın.
 4.  Modelinizin **dağıtılmasını istediğiniz** bölge (ler) i seçin ve Kaydet ' e tıklayın. Birden çok bölge için **Dağıtılmış** ' ı seçebilirsiniz.
 
-    ![Modeli dağıt](media/how-to/how-to-deploy-model-regions.png)
+    ![Bir modelin dağıtımını veya dağıtımını geri dağıtmayı gösteren ekran görüntüsü.](media/how-to/how-to-deploy-model-regions.png)
 
 5.  Modelinizin durumunu "durum" sütununda görüntüleyebilirsiniz.
 
@@ -90,7 +90,7 @@ Dağıtım ayarlarını güncelleştirmek için:
 
 2. Başarıyla dağıtılan bir model için bir **güncelleştirme** düğmesi gösterir.
 
-    ![Modeli dağıt](media/how-to/how-to-update-undeploy-model.png)
+    ![Dağıtım ayarlarını güncelleştirmek için Güncelleştir düğmesini vurgulayan ekran görüntüsü.](media/how-to/how-to-update-undeploy-model.png)
 
 3.  **Güncelleştir**’i seçin.
 4.  Modelinizin dağıtılmasını veya dağıtılmasını istediğiniz bölge (ler) i için **dağıtılan** veya **dağıtılan** ' ı seçin ve ardından **Kaydet**' e tıklayın.

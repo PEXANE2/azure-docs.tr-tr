@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 63a79df8e540e88d0f1e3f4c5b8d339ff03c877f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2db64a950569e4a96a9a87bb86a5397a17b4f2ba
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854299"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214949"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -47,7 +47,8 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 
 | Örnek | Açıklama |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. |
+| [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek, PKI CE ile yetkilendirme kodu akışını kullanır. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnekler örtük akışı kullanır.|
 
 ## <a name="saml-test-application"></a>SAML test uygulaması
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ac528d1cfb74221a7398e390cedda08df4ea4508
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151409"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220508"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
@@ -63,7 +63,7 @@ Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluştur
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
 1. *Kaydet*’e tıklayın.
 
-Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri paylaşıyorsanız, [REST API kullanarak Azure rol atamaları ekleme veya kaldırma ' ya](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
+Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri paylaşıyorsanız, [REST API kullanarak Azure rol atamaları ekleme veya kaldırma ' ya](../role-based-access-control/role-assignments-rest.md)başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
 
 SQL tabanlı kaynaklar için SQL kullanıcısının SQL veritabanı 'nda Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader* izni verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
 
@@ -83,7 +83,7 @@ Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluştur
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
 1. *Kaydet*’e tıklayın.
 
-Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri alıyorsanız, [REST API kullanarak Azure rol atamaları Ekle veya Kaldır](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)' a başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
+Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri alıyorsanız, [REST API kullanarak Azure rol atamaları Ekle veya Kaldır](../role-based-access-control/role-assignments-rest.md)' a başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
 
 SQL tabanlı hedef için, SQL veritabanı Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip SQL veritabanı 'nda bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izin verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
 
@@ -103,7 +103,7 @@ Microsoft. DataShare kaynak sağlayıcısını Azure aboneliğinize kaydetmek i�
 1. Microsoft. DataShare için arama yapın.
 1. **Kaydet**’e tıklayın.
  
-Kaynak sağlayıcısı hakkında daha fazla bilgi edinmek için [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)' ne bakın.
+Kaynak sağlayıcısı hakkında daha fazla bilgi edinmek için [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md)' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

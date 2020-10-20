@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 645a0d21fc25cb45914eed02e023a0076c457ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4343a5e185fdfe96e1e3298b0fc3fe6719f3a4a2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116307"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215850"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak çok kiracılı Azure Active Directory için oturum açma ayarlayın
 
@@ -32,12 +32,12 @@ Bu makalede, Azure AD B2C içindeki [özel ilkeleri](custom-policy-overview.md) 
 
 Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleştirmek için, uygulamayı kurumsal Azure AD kiracısında kaydetmeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kuruluşunuzun Azure AD kiracınızı içeren dizini kullandığınızdan emin olun (örneğin, contoso.com). Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından kiracınızı içeren dizini seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
 1. Uygulamanız için bir **ad** girin. Örneğin, `Azure AD B2C App`.
-1. Bu uygulama için **herhangi bir kuruluş dizininde hesaplar '** ı seçin.
+1. Bu uygulama için **herhangi bir kuruluş dizininde (herhangi bir Azure ad dizini – Multitenant) hesaplar '** ı seçin.
 1. **Yeniden yönlendirme URI 'si**Için, **Web**'in değerini kabul edin ve aşağıdaki URL 'yi tüm küçük harflerle, burada `your-B2C-tenant-name` Azure AD B2C kiracınızın adıyla birlikte girin.
 
     ```
@@ -147,7 +147,7 @@ Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ek
 
 Geçerli belirteç verenler listesini güncelleştirmeniz ve erişimi, oturum açabilen Azure AD kiracı kullanıcıları 'nın belirli bir listesiyle kısıtlamanız gerekir.
 
-Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi şuna benzerdir; `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` burada `your-tenant` Azure AD kiracı adınız bulunur. Örneğin:
+Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi şuna benzerdir; `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` burada `your-tenant` Azure AD kiracı adınız bulunur. Örnek:
 
 `https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 

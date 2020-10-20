@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7a143f99eca73e0620e24ac5d93141ddb7d99e6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258444"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215969"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçlere genel bakış
 
@@ -31,7 +31,7 @@ Aşağıdaki belirteçler Azure AD B2C ile iletişim için kullanılır:
 
 - *Kimlik belirteci* -uygulamanızdaki kullanıcıları tanımlamak için kullanabileceğiniz talepleri IÇEREN bir JWT. Bu belirteç, aynı uygulamanın veya hizmetin iki bileşeni arasındaki iletişim için HTTP isteklerinde güvenli bir şekilde gönderilir. Bir KIMLIK belirtecindeki talepleri, uygun gördüğünüz şekilde kullanabilirsiniz. Bunlar, genellikle hesap bilgilerini göstermek veya bir uygulamada erişim denetimi kararları almak için kullanılır. KIMLIK belirteçleri imzalanır, ancak şifrelenmez. Uygulamanız veya API 'niz bir KIMLIK belirteci aldığında, belirtecin gerçek olduğunu kanıtlamak için imzayı doğrulaması gerekir. Uygulamanızın veya API 'nizin geçerli olduğunu kanıtlamak için, belirteçteki bazı talepleri de doğrulaması gerekir. Senaryo gereksinimlerine bağlı olarak, bir uygulama tarafından doğrulanan talepler farklılık gösterebilir, ancak uygulamanız her senaryo için bazı ortak talep doğrulamaları gerçekleştirmelidir.
 - *Erişim belirteci* -API 'lerinize verilen izinleri tanımlamak için kullanabileceğiniz talepleri IÇEREN bir JWT. Erişim belirteçleri imzalanır, ancak şifrelenmez. Erişim belirteçleri, API 'lere ve kaynak sunuculara erişim sağlamak için kullanılır.  API 'niz bir erişim belirteci aldığında, belirtecin gerçek olduğunu kanıtlamak için imzayı doğrulaması gerekir. Ayrıca, API 'nizin geçerli olduğunu kanıtlamak için belirteçteki bazı talepleri doğrulaması gerekir. Senaryo gereksinimlerine bağlı olarak, bir uygulama tarafından doğrulanan talepler farklılık gösterebilir, ancak uygulamanız her senaryo için bazı ortak talep doğrulamaları gerçekleştirmelidir.
-- *Belirteç yenileme* -yenileme belirteçleri, bir OAuth 2,0 AKıŞıNDAKI yeni kimlik belirteçlerini ve erişim belirteçlerini almak için kullanılır. Bu kullanıcılar, uygulamanıza, kullanıcılar adına bu kullanıcılarla etkileşime gerek kalmadan, kaynaklara uzun süreli erişim sağlar. Yenileme belirteçleri uygulamanızda anlaşılmaz. Bunlar Azure AD B2C tarafından verilir ve yalnızca Azure AD B2C tarafından incelenebilir ve yorumlanamaz. Bunlar uzun süreli olmakla birlikte, uygulamanız belirli bir süre için yenileme belirtecinin son olacağı beklentisiyle yazılmamalıdır. Yenileme belirteçleri, çeşitli nedenlerle herhangi bir anda geçersiz kılınabilir. Uygulamanızın yenileme belirtecinin geçerli olup olmadığını bilmek için tek yol, Azure AD B2C bir belirteç isteği yaparak kullanmayı denemenin denenme yoludur. Yeni bir belirteç için yenileme belirteci kullandığınızda, belirteç yanıtında yeni bir yenileme belirteci alırsınız. Yeni yenileme belirtecini kaydedin. İstekte daha önce kullandığınız yenileme belirtecinin yerini alır. Bu eylem, yenileme belirteçlerinizin olabildiğince uzun süre geçerli kalmasını sağlamaya yardımcı olur.
+- *Belirteç yenileme* -yenileme belirteçleri, bir OAuth 2,0 AKıŞıNDAKI yeni kimlik belirteçlerini ve erişim belirteçlerini almak için kullanılır. Bu kullanıcılar, uygulamanıza, kullanıcılar adına bu kullanıcılarla etkileşime gerek kalmadan, kaynaklara uzun süreli erişim sağlar. Yenileme belirteçleri uygulamanızda anlaşılmaz. Bunlar Azure AD B2C tarafından verilir ve yalnızca Azure AD B2C tarafından incelenebilir ve yorumlanamaz. Bunlar uzun süreli olmakla birlikte, uygulamanız belirli bir süre için yenileme belirtecinin son olacağı beklentisiyle yazılmamalıdır. Yenileme belirteçleri, çeşitli nedenlerle herhangi bir anda geçersiz kılınabilir. Uygulamanızın yenileme belirtecinin geçerli olup olmadığını bilmek için tek yol, Azure AD B2C bir belirteç isteği yaparak kullanmayı denemenin denenme yoludur. Yeni bir belirteç için yenileme belirteci kullandığınızda, belirteç yanıtında yeni bir yenileme belirteci alırsınız. Yeni yenileme belirtecini kaydedin. İstekte daha önce kullandığınız yenileme belirtecinin yerini alır. Bu eylem, yenileme belirteçlerinizin olabildiğince uzun süre geçerli kalmasını sağlamaya yardımcı olur. PKI CE ile yetkilendirme kodu akışını kullanan tek sayfalı uygulamaların her zaman 24 saat yenileme belirteci ömrü olduğunu unutmayın. [Tarayıcıda belirteçleri yenileme güvenlik etkileri hakkında daha fazla bilgi edinin](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
 
 ## <a name="endpoints"></a>Uç Noktalar
 
@@ -50,7 +50,7 @@ KIMLIK belirteçlerdeki talepler belirli bir sırada döndürülmez. Yeni talepl
 
 Aşağıdaki tabloda, KIMLIK belirteçleri ve Azure AD B2C tarafından verilen erişim belirteçlerinde bekleneceğiniz talepler listelenmektedir.
 
-| Adı | İste | Örnek değer | Açıklama |
+| Ad | İste | Örnek değer | Açıklama |
 | ---- | ----- | ------------- | ----------- |
 | Hedef kitle | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Belirtecin amaçlanan alıcısını tanımlar. Azure AD B2C için hedef kitle uygulama KIMLIĞIDIR. Uygulamanız bu değeri doğrulamalıdır ve eşleşmezse belirteci reddeder. Hedef kitle, kaynak ile eşanlamlıdır. |
 | Veren | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) belirler. Ayrıca, kullanıcının kimliğinin doğrulandığı dizini tanımlar. Uygulamanızın, uygun uç noktadan geldiğinden emin olmak için veren talebini doğrulaması gerekir. |

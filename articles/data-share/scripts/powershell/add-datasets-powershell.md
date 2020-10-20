@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell betiği: bir Azure veri paylaşımında blob veri kümesi ekleme | Microsoft Docs'
+title: 'PowerShell betiği: bir Azure veri paylaşımında blob veri kümesi ekleme'
 description: Bu PowerShell betiği var olan bir paylaşıma blob veri kümesi ekler.
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 95a10b112c9f6448c437f20ee95f808632a31d2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f2a2dded0b9c817e0700f4f93782d3b5c11ac3f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307310"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221392"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>Azure 'da veri paylaşma oluşturmak için PowerShell 'i kullanma
 
@@ -44,11 +42,11 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [New-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | Veri paylaşımında bir veri kümesi ekler. |
+| [New-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset) | Veri paylaşımında bir veri kümesi ekler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).
 
 Ek Azure veri paylaşımının PowerShell betiği örnekleri, [Azure veri paylaşımında PowerShell örnekleri](../../samples-powershell.md)bölümünde bulunabilir.

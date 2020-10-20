@@ -977,7 +977,7 @@
                   href: virtual-machines/windows/backup-restore.md
                 - name: Yedekleme için Azure Depolama
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
-                - name: AlwaysOn kullanılabilirlik grubu
+                - name: Kullanılabilirlik grubu (KG)
                   href: virtual-machines/windows/availability-group-overview.md
                 - name: Yük devretme kümesi örneği
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
@@ -1054,28 +1054,40 @@
                       href: virtual-machines/windows/automated-backup.md
                     - name: Otomatik yedekleme (SQL 2014)
                       href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: AlwaysOn kullanılabilirlik grubu
+                - name: Kullanılabilirlik grubu (KG)
                   items:
-                    - name: Azure portal
-                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
-                    - name: PowerShell veya Az CLI
-                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
-                    - name: Azure Hızlı Başlangıç şablonları
-                      href: virtual-machines/windows/availability-group-quickstart-template-configure.md
-                    - name: Birden çok bölge
-                      href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
-                    - name: Etki alanından bağımsız (çalışma grubu)
-                      href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
-                    - name: El ile yapılandırma
+                    - name: KG oluşturma
                       items:
-                        - name: Ön koşullar
-                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
-                        - name: Öğretici
-                          href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
-                        - name: Yük dengeleyici - Azure portalı
-                          href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
-                        - name: Yük dengeleyici - Azure PowerShell
-                          href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                        - name: Azure portal
+                          href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                        - name: PowerShell veya Az CLI
+                          href: virtual-machines/windows/availability-group-az-commandline-configure.md
+                        - name: Azure Hızlı Başlangıç şablonları
+                          href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                        - name: Birden çok bölge
+                          href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                        - name: Etki alanından bağımsız (çalışma grubu)
+                          href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
+                        - name: El ile yapılandırma
+                          items:
+                            - name: Ön koşullar
+                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
+                            - name: Öğretici
+                              href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                            - name: Yük dengeleyici - Azure portalı
+                              href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+                            - name: Yük dengeleyici - Azure PowerShell
+                              href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                    - name: Bağlantı yapılandırma
+                      items:
+                        - name: VNN dinleyicisi
+                          displayName: virtual network name
+                          href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
+                        - name: DNN dinleyicisi
+                          displayName: distributed network name
+                          href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
+                        - name: DNN birlikte çalışabilirliği
+                          href: virtual-machines/windows/availability-group-dnn-interoperability.md
                 - name: Yük devretme kümesi örneği (FCI)
                   items:
                     - name: VM’yi FCI için hazırlama
@@ -1088,16 +1100,14 @@
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
                         - name: Premium dosya paylaşımı (Win2012+)
                           href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
-                    - name: Dağıtılmış Ağ Adı (DNN)
+                    - name: Bağlantı yapılandırma
                       items:
-                        - name: FCI için DNN oluşturma
-                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: FCI DNN ve SQL Server özellikleri
+                        - name: Sanal ağ adı (VNN)
+                          href: virtual-machines/windows/failover-cluster-instance-vnn-azure-load-balancer-configure.md
+                        - name: Dağıtılmış ağ adı (DNN)
+                          href: virtual-machines/windows/failover-cluster-instance-distributed-network-name-dnn-configure.md
+                        - name: DNN birlikte çalışabilirliği
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
-                - name: Bağlantı yapılandırma
-                  items:
-                    - name: Sanal Ağ Adı (VNN)
-                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: Başvuru
           items:
             - name: Azure PowerShell

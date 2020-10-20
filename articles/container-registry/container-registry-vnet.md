@@ -3,12 +3,12 @@ title: Hizmet uç noktası kullanarak erişimi kısıtlama
 description: Azure sanal ağındaki bir hizmet uç noktasını kullanarak bir Azure Container Registry 'ye erişimi kısıtlayın. Hizmet uç noktası erişimi, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488685"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215510"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Bir Azure sanal ağında hizmet uç noktası kullanarak bir kapsayıcı kayıt defterine erişimi kısıtlama
 
@@ -31,13 +31,13 @@ Bir kayıt defteri hizmet uç noktası yapılandırmak **Premium** kapsayıcı k
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için Azure CLı sürüm 2.0.58 veya üzeri gereklidir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
 
 * Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi örnek bir görüntü gönderin `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
 
-* Farklı bir Azure aboneliğindeki bir hizmet uç noktası kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydedin. Örneğin:
+* Farklı bir Azure aboneliğindeki bir hizmet uç noktası kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydedin. Örnek:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -49,13 +49,11 @@ Bir kayıt defteri hizmet uç noktası yapılandırmak **Premium** kapsayıcı k
 
 ## <a name="configure-network-access-for-registry"></a>Kayıt defteri için ağ erişimini yapılandırma
 
-Bu bölümde, kapsayıcı kayıt defterinizi Azure sanal ağındaki bir alt ağdan erişime izin verecek şekilde yapılandırın. Azure CLı ve Azure portal ile eşdeğer adımlar sağlanır.
+Bu bölümde, kapsayıcı kayıt defterinizi Azure sanal ağındaki bir alt ağdan erişime izin verecek şekilde yapılandırın. Azure CLı kullanılarak adımlar sağlanmaktadır.
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>Bir sanal ağ üzerinden erişime izin ver-CLı
+### <a name="add-a-service-endpoint-to-a-subnet"></a>Bir alt ağa hizmet uç noktası ekleme
 
-#### <a name="add-a-service-endpoint-to-a-subnet"></a>Bir alt ağa hizmet uç noktası ekleme
-
-Bir VM oluşturduğunuzda, Azure varsayılan olarak aynı kaynak grubunda bir sanal ağ oluşturur. Sanal ağın adı, sanal makinenin adını temel alır. Örneğin, *Mydockervm*sanal makinenizi adlandırdıysanız, varsayılan sanal ağ adı Mydockervmvnet adlı bir alt ağ ile Mydockervmvnet *olur.* *myDockerVMVNET* Bunu Azure portal veya [az Network VNET List][az-network-vnet-list] komutunu kullanarak doğrulayın:
+Bir VM oluşturduğunuzda, Azure varsayılan olarak aynı kaynak grubunda bir sanal ağ oluşturur. Sanal ağın adı, sanal makinenin adını temel alır. Örneğin, *Mydockervm*sanal makinenizi adlandırdıysanız, varsayılan sanal ağ adı Mydockervmvnet adlı bir alt ağ ile Mydockervmvnet *olur.* *myDockerVMVNET* [Az Network VNET List][az-network-vnet-list] komutunu kullanarak bunu doğrulayın:
 
 ```azurecli
 az network vnet list \
@@ -101,7 +99,7 @@ az network vnet subnet show \
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>Kayıt defteri için varsayılan ağ erişimini değiştirme
+### <a name="change-default-network-access-to-registry"></a>Kayıt defteri için varsayılan ağ erişimini değiştirme
 
 Varsayılan olarak, bir Azure Container Registry, herhangi bir ağdaki konaklardan gelen bağlantılara izin verir. Seçilen bir ağa erişimi sınırlandırmak için, varsayılan eylemi erişimi Reddet olarak değiştirin. Kayıt defterinizin adını şu [az ACR Update][az-acr-update] komutunda değiştirin:
 
@@ -109,7 +107,7 @@ Varsayılan olarak, bir Azure Container Registry, herhangi bir ağdaki konaklard
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>Kayıt defterine ağ kuralı ekle
+### <a name="add-network-rule-to-registry"></a>Kayıt defterine ağ kuralı ekle
 
 Kayıt defterinize VM 'nin alt ağından erişime izin veren bir ağ kuralı eklemek için [az ACR Network-Rule Add][az-acr-network-rule-add] komutunu kullanın. Aşağıdaki komutta, kapsayıcı kayıt defterinin adını ve alt ağın kaynak KIMLIĞINI değiştirin: 
 
@@ -143,11 +141,9 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 
 ## <a name="restore-default-registry-access"></a>Varsayılan kayıt defteri erişimini geri yükle
 
-Kayıt defterini varsayılan olarak erişime izin verecek şekilde geri yüklemek için, yapılandırılmış tüm ağ kurallarını kaldırın. Ardından, varsayılan eylemi erişime izin verecek şekilde ayarlayın. Azure CLı ve Azure portal ile eşdeğer adımlar sağlanır.
+Kayıt defterini varsayılan olarak erişime izin verecek şekilde geri yüklemek için, yapılandırılmış tüm ağ kurallarını kaldırın. Ardından, varsayılan eylemi erişime izin verecek şekilde ayarlayın. 
 
-### <a name="restore-default-registry-access---cli"></a>Varsayılan kayıt defteri erişimini geri yükleme-CLı
-
-#### <a name="remove-network-rules"></a>Ağ kurallarını kaldır
+### <a name="remove-network-rules"></a>Ağ kurallarını kaldır
 
 Kayıt defteriniz için yapılandırılmış ağ kurallarının bir listesini görmek için şu [az ACR Network-Rule List][az-acr-network-rule-list] komutunu çalıştırın:
 
@@ -155,7 +151,7 @@ Kayıt defteriniz için yapılandırılmış ağ kurallarının bir listesini g�
 az acr network-rule list --name mycontainerregistry 
 ```
 
-Yapılandırılan her kural için [az ACR Network-Rule Remove][az-acr-network-rule-remove] komutunu çalıştırarak kaldırın. Örneğin:
+Yapılandırılan her kural için [az ACR Network-Rule Remove][az-acr-network-rule-remove] komutunu çalıştırarak kaldırın. Örnek:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -166,7 +162,7 @@ az acr network-rule remove \
   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="allow-access"></a>Erişime izin ver
+### <a name="allow-access"></a>Erişime izin ver
 
 Kayıt defterinizin adını şu [az ACR Update][az-acr-update] komutunda değiştirin:
 ```azurecli
@@ -180,8 +176,6 @@ Tüm Azure kaynaklarını aynı kaynak grubunda oluşturduysanız ve artık gere
 ```azurecli
 az group delete --name myResourceGroup
 ```
-
-Portalda kaynaklarınızı temizlemek için myResourceGroup kaynak grubuna gidin. Kaynak grubu yüklendikten sonra kaynak grubunu **Sil** ' e tıklayarak kaynak grubunu ve burada depolanan kaynakları kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

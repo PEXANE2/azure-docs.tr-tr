@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 9/29/2020
+ms.date: 10/19/2020
 ms.author: b-juche
-ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461487"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217057"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 Kerberos şifrelemesini yapılandırma
 
@@ -75,7 +75,7 @@ NFSv 4.1 Kerberos yapılandırması, Active Directory iki bilgisayar hesabı olu
 * SMB paylaşımları için bir bilgisayar hesabı
 * NFSv 4.1 için bir bilgisayar hesabı--bu hesabı öneki ile tanımlayabilirsiniz `NFS-` . 
 
-İlk NFSv 4.1 Kerberos birimini oluşturduktan sonra, aşağıdaki PowerShell komutunu kullanarak şifreleme türünü veya bilgisayar hesabını ayarlayın:
+İlk NFSv 4.1 Kerberos birimini oluşturduktan sonra, aşağıdaki PowerShell komutunu kullanarak bilgisayar hesabı için şifreleme türünü ayarlayın:
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -89,18 +89,18 @@ NFS istemcisini yapılandırmak için [Azure NetApp FILES NFS Istemcisi yapılan
 
 2. Yönergeleri göstermek için birimden **bağlama yönergeleri** ' ni seçin.
 
-    Örneğin: 
+    Örnek: 
 
     ![Kerberos birimleri için bağlama yönergeleri](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 
 3. Yeni birim için dizin (bağlama noktası) oluşturun.  
 
 4. Bilgisayar hesabı için varsayılan şifreleme türünü AES 256 olarak ayarlayın:  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * Her bilgisayar hesabı için bu komutu yalnızca bir kez çalıştırmanız gerekir.
     * Bu komutu, bir etki alanı denetleyicisinden veya [rsat](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) yüklü bir bilgisayardan çalıştırabilirsiniz. 
-    * `$COMPUTERACCOUNT`Değişkeni, Kerberos birimini dağıtırken Active Directory oluşturulan bilgisayar hesabıdır. Bu, ön eki olan hesaptır `NFS-` . 
+    * `$NFSCOMPUTERACCOUNT`Değişkeni, Kerberos birimini dağıtırken Active Directory oluşturulan bilgisayar hesabıdır. Bu, ön eki olan hesaptır `NFS-` . 
     * `$ANFSERVICEACCOUNT`Değişken, bilgisayar hesabının oluşturulduğu kuruluş birimi üzerinde atanmış denetimleri olan ayrıcalıksız bir Active Directory kullanıcı hesabıdır. 
 
 5. Birimi konağa bağlayın: 

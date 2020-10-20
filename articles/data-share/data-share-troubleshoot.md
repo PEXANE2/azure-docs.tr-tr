@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: 1b61b643ea4b195878a1d12fc1ac4bb7fef23027
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151360"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220467"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Veri Paylaşımı'nda sık karşılaşılan sorunları giderme 
 
@@ -34,7 +34,7 @@ Bunun nedeni şunlar olabilir:
     1. **Microsoft.DataShare** araması yapın
     1. **Kaydet**'e tıklayın 
 
-    Bu adımları tamamlayabilmeniz için Azure aboneliği için [Azure katılımcısı rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olmanız gerekir. 
+    Bu adımları tamamlayabilmeniz için Azure aboneliği için [Azure katılımcısı rolüne](../role-based-access-control/built-in-roles.md#contributor) sahip olmanız gerekir. 
 
 * **Davet Azure oturum açma e-postanız yerine e-posta diğer adınıza gönderilir.** Azure Veri Paylaşımı hizmetini kaydettiyseniz veya Azure kiracısında zaten bir Veri Paylaşımı kaynağı oluşturduysanız ama hala daveti göremiyorsanız, bunun nedeni sağlayıcının Azure oturum açma e-posta adresiniz yerine e-posta diğer adınızı girmiş olması olabilir. Veri sağlayıcınıza başvurun ve daveti e-posta diğer adınıza değil Azure oturum açma e-posta adresinize gönderdiğinden emin olun.
 
@@ -81,4 +81,3 @@ SQL kaynakları için, anlık görüntü hatalarının ek nedenleri aşağıda v
 Verileri paylaşmaya nasıl başlayacağınızı öğrenmek için [verilerinizi paylaşma](share-your-data.md) öğreticiye geçin. 
 
 Veri alma hakkında bilgi edinmek için, [verileri kabul etme ve alma](subscribe-to-data-share.md) öğreticisine geçin.
-
