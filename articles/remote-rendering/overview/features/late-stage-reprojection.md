@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893212"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205651"
 ---
 # <a name="late-stage-reprojection"></a>Geç aşama yeniden projeksiyonu
 
@@ -46,7 +46,7 @@ Planar LSR, sağlanan düzleme yakın olan nesneleri en iyi şekilde yeniden pro
 
 ### <a name="configure-planar-lsr-in-unity"></a>Unity 'de planar LSR yapılandırma
 
-Düzlem parametreleri, her kareyi ile sağlamanız gereken *odak noktası*olarak adlandırılan bir öğesinden türetilir `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Ayrıntılar için bkz. [Unity Focus POINT API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) . Bir odak noktası ayarlamazsanız, sizin için bir geri dönüş seçilir. Ancak otomatik geri dönüş, genellikle sonuçları daha iyi halleyen sonuçlara yol açar.
+Düzlem parametreleri, her kareyi ile sağlamanız gereken *odak noktası*olarak adlandırılan bir öğesinden türetilir `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Ayrıntılar için bkz. [Unity Focus POINT API](/windows/mixed-reality/focus-point-in-unity) . Bir odak noktası ayarlamazsanız, sizin için bir geri dönüş seçilir. Ancak otomatik geri dönüş, genellikle sonuçları daha iyi halleyen sonuçlara yol açar.
 
 Odak noktasını kendiniz hesaplayabilirsiniz, ancak bu işlem, uzak Işleme ana bilgisayarı tarafından hesaplanabilecek şekilde mantıklı olabilir. Bunu `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` elde etmek için çağırın. Odak noktasını ifade etmek için bir koordinat çerçevesi sağlamanız istenir. Çoğu durumda, sonucu yalnızca buradan sağlamak isteyeceksiniz `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` .
 

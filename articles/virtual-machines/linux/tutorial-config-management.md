@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 451b651be8036feb272d4444d00608bb61c1e438
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87445808"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204495"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Linux sanal makinesini güncelleştirme
 
-Azure [değişiklik izleme](../../automation/change-tracking.md) , değişiklikleri kolayca tanımlamanızı ve [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md) Azure Linux sanal makinelerinize yönelik işletim sistemi güncelleştirmelerini yönetmenizi sağlar.
+Azure [değişiklik izleme](../../automation/change-tracking/overview.md) , değişiklikleri kolayca tanımlamanızı ve [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md) Azure Linux sanal makinelerinize yönelik işletim sistemi güncelleştirmelerini yönetmenizi sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Linux güncelleştirmelerini yönetme

@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977570"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206093"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>IoT çözümleri oluşturmak için hangi Azure teknolojilerini ve hizmetlerini kullanabilirsiniz?
 
@@ -61,7 +61,7 @@ Sıfırdan bir IoT çözümü oluşturmak veya IoT Central veya çözüm Hızlan
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) , IoT iş yükünüzün parçalarını Azure bulut hizmetinizdeki cihazlarınıza devretebilmenizi sağlar. IoT Edge çözümünüzde gecikme süresini azaltabilir, cihazlarınızın bulutla değiş tokuşunu azaltabilir ve çevrimdışı senaryolara olanak sağlayabilir. IoT Edge cihazlarını IoT Central ve bazı çözüm hızlandırıcılarından yönetebilirsiniz.
 
-[Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) , internet 'e bağlı cihazlara yönelik yerleşik iletişim ve güvenlik özellikleriyle güvenli, üst düzey bir uygulama platformudur. Güvenli mikro denetleyici birimini, özel bir Linux tabanlı işletim sistemini ve sürekli ve yenilenebilir güvenlik sağlayan bulut tabanlı bir güvenlik hizmetini içerir.
+[Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) , internet 'e bağlı cihazlara yönelik yerleşik iletişim ve güvenlik özellikleriyle güvenli, üst düzey bir uygulama platformudur. Güvenli mikro denetleyici birimini, özel bir Linux tabanlı işletim sistemini ve sürekli ve yenilenebilir güvenlik sağlayan bulut tabanlı bir güvenlik hizmetini içerir.
 
 ### <a name="cloud-connectivity"></a>Bulut bağlantısı
 
@@ -76,7 +76,7 @@ IoT Hub, çözüm Hızlandırıcıların temel bir bileşenidir ve bunu kullanar
 
 ### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>Fiziksel ve dijital Worl 'ler arasındaki boşluğun köprülemesi
 
-[Azure dijital TWINS](../digital-twins/about-digital-twins.md) , fiziksel bir ortamı modellemenize olanak tanıyan bir IoT hizmetidir. Kişiler, boşluklar ve cihazlar arasındaki ilişkileri modellemek için bir uzamsal zeka grafiği kullanır. Dijital ve fiziksel çalışma LDS genelinde verileri birlikte ilişkilendirerek, bağlamsal olarak uyumlu çözümler oluşturabilirsiniz.
+[Azure dijital TWINS](../digital-twins/overview.md) , fiziksel bir ortamı modellemenize olanak tanıyan bir IoT hizmetidir. Kişiler, boşluklar ve cihazlar arasındaki ilişkileri modellemek için bir uzamsal zeka grafiği kullanır. Dijital ve fiziksel çalışma LDS genelinde verileri birlikte ilişkilendirerek, bağlamsal olarak uyumlu çözümler oluşturabilirsiniz.
 
 IoT Central, gerçek dünyada cihazları ve verileri, kullanıcıların bu bağlı cihazları izlemelerine ve yönetmesine olanak tanıyan dijital modellerle eşitleyecek şekilde dijital TWINS kullanır.
 
@@ -84,7 +84,7 @@ IoT Central, gerçek dünyada cihazları ve verileri, kullanıcıların bu bağl
 
 IoT cihazları genellikle sensörlerden sıcaklık okumaları gibi büyük miktarlarda zaman serisi verileri oluşturur. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) , IoT Hub 'ına bağlanabilir, cihazlarınızdan telemetri akışını okuyabilir, bu verileri saklayabilir ve bunu sorgulayabilir ve görselleştirmenize olanak tanır.
 
-[Azure Maps](/azure/azure-maps) , Web ve mobil uygulamalara doğru coğrafi içerik sağlamak için yeni eşleme verilerini kullanan Jeo-uzamsal hizmetler topluluğudur. Uygulamalarınızı oluşturmak için REST API, Web tabanlı bir JavaScript denetimi veya bir Android SDK kullanabilirsiniz.
+[Azure Maps](../azure-maps/index.yml) , Web ve mobil uygulamalara doğru coğrafi içerik sağlamak için yeni eşleme verilerini kullanan Jeo-uzamsal hizmetler topluluğudur. Uygulamalarınızı oluşturmak için REST API, Web tabanlı bir JavaScript denetimi veya bir Android SDK kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

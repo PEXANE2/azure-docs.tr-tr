@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 848894518077ca41d3166570bf0dc39914f1c439
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5fb00fb6382bb53f40ad63a95c880c47f91cae2f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131165"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201673"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -47,18 +47,17 @@ Azure dijital TWINS ile çalışmanın ilk adımı, bir **Azure dijital TWINS ö
 
 Ayrıca, ADT Explorer 'ın bilgisayarınızda çalışması ve Azure dijital TWINS örneğine erişmesi için izinler ayarlayacaksınız. Bu, örneğinizi ve verilerini araştırmak için örnek uygulamayı kullanmanıza imkan sağlar.
 
-### <a name="set-up-azure-digital-twins-instance"></a>Azure dijital TWINS örneğini ayarlama
+### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Azure dijital TWINS örneği ve uygulama kaydı ayarlama
 
-İlk olarak, bir Azure dijital TWINS örneği ve onunla çalışabilmeniz için gereken kimlik doğrulamasını ayarlayın. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)konusundaki yönergeleri izleyin. Tercih ettiğiniz deneyiminize bağlı olarak, [Azure Portal](how-to-set-up-instance-portal.md), [clı](how-to-set-up-instance-cli.md)veya [Otomatik Cloud Shell dağıtım betiği örneği](how-to-set-up-instance-scripted.md)için kurulum makalesine sunulur. Yönergelerin tüm sürümleri, her adımı başarıyla tamamlayıp tamamlamadığınızı ve yeni örneğinizi kullanmaya başlamaya hazırlamış olduğunuzu doğrulamaya yönelik adımları da içerir.
+İlk olarak, **bir Azure dijital TWINS örneği** ve onunla çalışabilmeniz için gereken kimlik doğrulamasını ayarlayın. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)konusundaki yönergeleri izleyin. Tercih ettiğiniz deneyiminize bağlı olarak, [Azure Portal](how-to-set-up-instance-portal.md), [clı](how-to-set-up-instance-cli.md)veya [Otomatik Cloud Shell dağıtım betiği örneği](how-to-set-up-instance-scripted.md)için kurulum makalesine sunulur. Yönergelerin tüm sürümleri, her adımı başarıyla tamamlayıp tamamlamadığınızı ve yeni örneğinizi kullanmaya başlamaya hazırlamış olduğunuzu doğrulamaya yönelik adımları da içerir.
+* Azure dijital TWINS örneğinizi ayarladıktan sonra, örneğin **_ana bilgisayar adına_** ([portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) ihtiyacınız olacaktır.
 
-Bu hızlı başlangıçta, örneğinizi ayarlarken aşağıdaki değerlere ihtiyaç duyarsınız. Bu değerleri yeniden toplamanız gerekiyorsa, [Azure Portal](https://portal.azure.com)için kurulum makalesindeki ilgili bölümlere aşağıdaki bağlantıları kullanın.
-* Azure Digital TWINS örnek **_ana bilgisayar adı_** ([portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure AD uygulama kayıt **_uygulaması (istemci) kimliği_** ([portalda bul](how-to-set-up-instance-portal.md#collect-important-values))
-* Azure AD uygulama kayıt **_dizini (kiracı) kimliği_** ([portalda bul](how-to-set-up-instance-portal.md#collect-important-values))
+ADT Explorer uygulamasının kimliğini doğrulamak için, bir **uygulama kaydı**da ayarlamanız gerekir. Bunu ayarlamak için [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md) ' daki yönergeleri izleyin. 
+* Uygulama kaydınız olduktan sonra, kaydın **_uygulama (istemci) kimliği_** ve **_Dizin (kiracı) kimliği_** gerekir ([bunları portalda bulabilirsiniz](how-to-create-app-registration.md#collect-client-id-and-tenant-id).
 
 ### <a name="set-adt-explorer-permissions"></a>ADT gezgin izinlerini ayarla
 
-Daha sonra, oluşturduğunuz Azure dijital TWINS örneğini, yerel olarak barındırılan bir Web uygulaması olan ADT Explorer ile çalışacak şekilde hazırlayın. Azure portal [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) sayfasını ziyaret edin ve listeden uygulama kaydlarınızın adını seçin.
+Daha sonra, oluşturduğunuz Azure dijital TWINS örneğini, yerel olarak barındırılan bir Web uygulaması olan ADT Explorer ile çalışacak şekilde hazırlayın. Azure portal [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) sayfasını ziyaret edin ve listeden önceki bölümde oluşturduğunuz **uygulama** kaydlarınızın adını seçin.
 
 Kayıt menüsünden *kimlik doğrulaması* ' nı seçin ve *+ Platform Ekle*' ye basın.
 

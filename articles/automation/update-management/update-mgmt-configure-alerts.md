@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için uyarı oluşturma
 description: Bu makalede, Azure uyarılarını güncelleştirme değerlendirmelerinin veya dağıtımların durumu hakkında bilgilendirmek üzere nasıl yapılandıracağınız açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f832f0359bd8f9caf13008939f482b440faa1a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976996"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203186"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Güncelleştirme Yönetimi için uyarı oluşturma
 
@@ -86,3 +86,8 @@ Uyarılarınız yapılandırıldıktan sonra, birden çok uyarı arasında kulla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Azure izleyici 'de uyarılar](../../azure-monitor/platform/alerts-overview.md)hakkında daha fazla bilgi edinin.
+
+* Log Analytics çalışma alanından verileri almak ve analiz etmek için [günlük sorguları](../../azure-monitor/log-query/log-query-overview.md) hakkında bilgi edinin.
+
+* [Azure Izleyici günlükleri ile kullanımı ve maliyetleri](../../azure-monitor/platform/manage-cost-storage.md) yönetme, veri saklama dönemini değiştirerek maliyetlerinizi nasıl denetleyeceğinizi ve veri kullanımınızın nasıl analiz edileceğini ve uyarılanacağını açıklar.

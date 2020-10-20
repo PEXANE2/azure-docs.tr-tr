@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 05/12/2020
-ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033260"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204920"
 ---
 # <a name="co-sell-option-in-partner-center"></a>İş Ortağı Merkezi’nde ortak satış seçeneği
 
@@ -36,7 +36,7 @@ Iş Ortağı Merkezi 'ndeki ortak satış seçeneği, bazı teklif türleri içi
 
 ## <a name="listing"></a>Liste
 
-Ortak satış listeleri, Microsoft satış ekiplerinin çözümünüzü daha geniş bir hedef kitleye pazarlamasını sağlar.
+Ortak satış listeleri, Microsoft satış ekiplerinin çözümünüzü daha geniş bir hedef kitleye pazarlamasını sağlar. *(Tüm alanlar gereklidir.)*
 
 - Teklifinizin oluşturulduğu, genişlettiği veya tümleştirildiği Microsoft platformlarını seçin.
 - Teklifinizin hedeflediği piyasa segmentlerini seçin.
@@ -58,26 +58,26 @@ Ortak satış listeleri, Microsoft satış ekiplerinin çözümünüzü daha gen
 
 Çözüm bölgeleri, çözümünüzü daha da tanımlamaya yardımcı olur.
 
-Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz. Her çözüm alanı için en fazla iki çözüm alt alanı seçebilirsiniz. Birden çok alt kategori seçmek için, `Ctrl` anahtarı (Windows üzerinde) veya komut anahtarını (Mac OS) kullanın.
+Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz. Her çözüm alanı için en fazla iki çözüm alt alanı seçebilirsiniz. Birden çok alt kategori seçmek için, `Ctrl` anahtarı (Windows üzerinde) veya komut anahtarını (macOS 'ta) kullanın.
 
 ## <a name="documents"></a>Belgeler
 
-Microsoft 'un teklifiniz hakkında daha fazla bilgi edinmek ve müşteri gereksinimleriniz için uygun olduğunu değerlendirmek için kullanacağı yardımcı belgeler sağlama seçeneğiniz vardır. Aşağıdaki tabloda listelenen tüm belgeler isteğe bağlıdır.
+Microsoft 'un teklifiniz hakkında daha fazla bilgi edinmek ve müşteri gereksinimleriniz için uygun olduğunu değerlendirmek için kullanacağı yardımcı belgeler sağlama seçeneğiniz vardır.
 
 | **Belgeler**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| *Müşteri tek çağrı cihazı* | Tekliflerinizin müşteri için Ready açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemenize ve müşterinin hazır olmasını sağlamaya yardımcı olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> Iş Ortağı Merkezi 'nde kullanılabilen ilgili şablonlardan birini kullanın: <br> <ul> <li> Tek sayfalayıcı şablonu Microsoft Azure </li> <li> Microsoft Dynamics 365 1-sayfalayıcı şablonu </li> <li> Microsoft 365 1-sayfalayıcı şablonu </li> <li> Windows 10 1-sayfalayıcı şablonu </li> </ul> |
-| *Müşteri sunumu* | Çözümünüzü ve değer teklifini aralıklı olarak kaydırarak slayt destesi. Teklifinizin müşteri için hazırlandığından emin olduktan sonra, Microsoft satış takımları, her iki şirketin da bir Birleşik çözüm dağıtmakta olduğu değeri ifade etmek için sunuyu müşterilerle paylaşabilir. Sunu, çözümünüzün ne yaptığını, BT 'nin müşterilere nasıl yardımcı olduğunu, çözüm için hangi sektörlerin olduğunu ve rakip çözümlerle nasıl karşılaştırdığını kapsamalıdır. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın.|
+| *Müşteri tek çağrı cihazı (gerekli)* | Tekliflerinizin müşteri için Ready açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemenize ve müşterinin hazır olmasını sağlamaya yardımcı olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> Iş Ortağı Merkezi 'nde kullanılabilen ilgili şablonlardan birini kullanın: <br> <ul> <li> Tek sayfalayıcı şablonu Microsoft Azure </li> <li> Microsoft Dynamics 365 1-sayfalayıcı şablonu </li> <li> Microsoft 365 1-sayfalayıcı şablonu </li> <li> Windows 10 1-sayfalayıcı şablonu </li> </ul> |
+| *Müşteri sunumu (gerekli)* | Çözümünüzü ve değer teklifini aralıklı olarak kaydırarak slayt destesi. Teklifinizin müşteri için hazırlandığından emin olduktan sonra, Microsoft satış takımları, her iki şirketin da bir Birleşik çözüm dağıtmakta olduğu değeri ifade etmek için sunuyu müşterilerle paylaşabilir. Sunu, çözümünüzün ne yaptığını, BT 'nin müşterilere nasıl yardımcı olduğunu, çözüm için hangi sektörlerin olduğunu ve rakip çözümlerle nasıl karşılaştırdığını kapsamalıdır. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın.|
 | *Müşteri örnek olay incelemesi* | Bu bilgiler, siz ve Microsoft 'un bu çözümü önceki durumlarda nasıl başarıyla dağıttığından oluşan potansiyel bir müşteriyi gösterir. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın. |
-| *Doğrulanabilen müşteri WINS (isteğe bağlı)* | Çözümünüz dağıtıldıktan sonra müşteri başarılarını belirli örneklere örnekler. |
-| *Kanal aralığı destesi (isteğe bağlı)* | Tekliflerinizi satmaya yönelik olarak, kanal satıcılarının çözümünüz hakkında daha fazla bilgi edinmelerini ve satış ekiplerini hazırlamalarını sağlayacak bilgiler içeren bir slayt destesi. Genellikle bir Asansör aralığı, hedef müşteriler hakkında bilgiler, müşterilere Sorulacak sorular, iletişim noktaları ve videoların, belgelerin ve destek bilgilerinin bağlantıları bulunur. |
+| *Doğrulanabilen müşteri WINS* | Çözümünüz dağıtıldıktan sonra müşteri başarılarını belirli örneklere örnekler. |
+| *Kanal aralığı destesi* | Tekliflerinizi satmaya yönelik olarak, kanal satıcılarının çözümünüz hakkında daha fazla bilgi edinmelerini ve satış ekiplerini hazırlamalarını sağlayacak bilgiler içeren bir slayt destesi. Genellikle bir Asansör aralığı, hedef müşteriler hakkında bilgiler, müşterilere Sorulacak sorular, iletişim noktaları ve videoların, belgelerin ve destek bilgilerinin bağlantıları bulunur. |
 | *Başvuru mimarisi diyagramları* | İş ortağı tarafından oluşturulan IP 'yi, Microsoft bulut hizmetleriyle ilişkisi ve IP ortak satış programının teknik gereksinimlerini karşıladığı modeli gösteren bir belge. |
 | *Diğer belgeler* | İsteğe bağlı olarak, Microsoft satış ekiplerine ve kanal satıcılarına, çözümünüz, kuruluşunuz ve/veya farklılar hakkında daha fazla bilgi edinmenize yardımcı olmak için beş adede kadar ek belge veya video yükleyebilirsiniz. |
 | *Dış başvuru URL 'SI* | Microsoft satış ekiplerinin ve kanal satıcılarınızın çözümünüz hakkında daha fazla bilgi sağlayabildiği ürün sitesinin bağlantısı. |
 
 ## <a name="contacts"></a>Kişiler
 
-İletişim bilgileriniz, Microsoft satış ekiplerinin ve kanal satıcılarının kuruluşunuzdaki uygun kaynaktan ek bilgi istemesine olanak tanır. İletişim bilgileri tüm Microsoft satış ekiplerinde kullanılabilir. Teklifinizi CSP programında kullanılabilir hale getirmek isterseniz, bu iletişim bilgileri de Kanal satıcıları tarafından kullanılabilir.
+İletişim bilgileriniz, Microsoft satış ekiplerinin ve kanal satıcılarının kuruluşunuzdaki uygun kaynaktan ek bilgi istemesine olanak tanır. İletişim bilgileri tüm Microsoft satış ekiplerinde kullanılabilir. *(Ortak satış programı için teklifinizin kullanılabildiği her Coğrafya Için bir kişi gereklidir.)* Teklifinizi CSP programında kullanılabilir hale getirmek isterseniz, bu iletişim bilgileri de Kanal satıcıları tarafından kullanılabilir.
 
 Iş Ortağı Merkezi 'nden CSV şablonunu indirerek, her satırı ilgili bilgilerle doldurarak ve bu CSV dosyasını içeri aktararak kişilerinizi sağlayabilirsiniz. Bir CSV dosyasının içe aktarılması, mevcut kişilerin üzerine yazacak.
 

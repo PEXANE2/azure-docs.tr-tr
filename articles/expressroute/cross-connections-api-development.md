@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397857"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202489"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute çapraz geçiş API 'leri geliştirme ve Tümleştirme
 
@@ -30,7 +30,7 @@ ExpressRouteCrossConnections kaynağına geçmesinin avantajları:
 
 * ExpressRoute iş ortakları için gelecekteki tüm geliştirmeler ExpressRouteCrossConnection kaynağında kullanıma sunulacaktır.
 
-* İş ortakları, expressRouteCrossConnection kaynağına [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
+* İş ortakları, expressRouteCrossConnection kaynağına [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
 
 * ExpressRouteCrossConnection kaynağı, ExpressRoute bağlantılarında sorun gidermeye yardımcı olabilecek API 'Ler sunar. Buna ARP tablosu, BGP yol tablosu Özeti ve BGP yol tablosu ayrıntıları dahildir. Bu özellik klasik dağıtım API 'Leri tarafından desteklenmez.
 
@@ -51,7 +51,7 @@ Test eşleme konumları: kukla cihazlar ve bağlantı noktaları, varsayılan ol
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. expressRouteCrossConnections API 'sine erişmek için Dev_Provider aboneliğini kaydedin
 
-ExpressRouteCrossConnections API 'sine erişebilmek için iş ortağı aboneliğinin **Microsoft. Network kaynak sağlayıcısına**kaydedilmesi gerekir. Kayıt işlemini gerçekleştirmek için [Azure kaynak sağlayıcıları ve türleri](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) makalesindeki adımları izleyin.
+ExpressRouteCrossConnections API 'sine erişebilmek için iş ortağı aboneliğinin **Microsoft. Network kaynak sağlayıcısına**kaydedilmesi gerekir. Kayıt işlemini gerçekleştirmek için [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) makalesindeki adımları izleyin.
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. Azure Resource Manager REST API çağrılarının kimlik doğrulamasını ayarlama
 
@@ -59,8 +59,8 @@ ExpressRouteCrossConnections API 'sine erişebilmek için iş ortağı aboneliğ
 
 Kimlik doğrulama işlemi iki ana adımdan oluşur:
 
-1. [Istemcisini kaydedin](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad).
-2. [Erişim Isteği oluşturun](https://docs.microsoft.com/rest/api/azure/#create-the-request).
+1. [Istemcisini kaydedin](/rest/api/azure/#register-your-client-application-with-azure-ad).
+2. [Erişim Isteği oluşturun](/rest/api/azure/#create-the-request).
 
 ### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. istemci uygulamasına ağ katılımcısı izni sağlayın
 
@@ -76,12 +76,12 @@ Kimlik doğrulaması başarıyla yapılandırıldıktan sonra, Dev_Provider_Sub 
 
 ### <a name="5-develop"></a>5. geliştirme
 
-[Expressroutecrossconnections API 'sinde](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections)geliştirme yapın.
+[Expressroutecrossconnections API 'sinde](/rest/api/expressroute/expressroutecrossconnections)geliştirme yapın.
 
 ## <a name="rest-api"></a>REST API
 
-REST API belgeler için bkz. [ExpressRoute çapraz bağlantıları REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) .
+REST API belgeler için bkz. [ExpressRoute çapraz bağlantıları REST API](/rest/api/expressroute/expressroutecrossconnections) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm ExpressRoute REST API 'Leri hakkında daha fazla bilgi için bkz. [ExpressRoute REST API 'leri](https://docs.microsoft.com/rest/api/expressroute/).
+Tüm ExpressRoute REST API 'Leri hakkında daha fazla bilgi için bkz. [ExpressRoute REST API 'leri](/rest/api/expressroute/).

@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a3325592c2085034473163cb886ba2b8b416a30
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91652457"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205838"
 ---
-# <a name="quickstart-convert-a-model-for-rendering"></a>Hızlı başlangıç: bir modeli işleme için dönüştürme
+# <a name="quickstart-convert-a-model-for-rendering"></a>Hızlı başlangıç: Modeli işlenmek üzere dönüştürme
 
 [Hızlı başlangıç: Unity ile model işleme](render-model.md), bir yerleşik modeli Işlemek için Unity örnek projesini nasıl kullanacağınızı öğrendiniz. Bu kılavuzda kendi modellerinizi nasıl dönüştürebileceğiniz gösterilmektedir.
 
@@ -27,7 +27,7 @@ ms.locfileid: "91652457"
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Hızlı başlangıç: Unity ile model işleme](render-model.md)
-* Azure PowerShell 'yi [(belgeler)](https://docs.microsoft.com/powershell/azure/)
+* Azure PowerShell 'yi [(belgeler)](/powershell/azure/)
   * Yönetici haklarıyla bir PowerShell açın
   * Çalışmaz `Install-Module -Name Az -AllowClobber`
 
@@ -166,7 +166,7 @@ Connect-AzAccount
 ```
 
 > [!NOTE]
-> Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
+> Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
 
 `azure-remote-rendering\Scripts`Dizine geçin ve dönüştürme betiğini çalıştırın:
 

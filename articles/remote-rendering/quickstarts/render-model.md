@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88509374"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207232"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Hızlı başlangıç: Unity ile model Işleme
 
@@ -18,7 +18,7 @@ Bu hızlı başlangıçta, yerleşik bir modeli Azure uzaktan Işleme (ARR) hizm
 
 ARR API 'SI ile ilgili ayrıntılarla karşılaşmayacağız veya yeni bir Unity projesi nasıl ayarlanır? Bu konular [öğreticide ele alınmıştır: uzaktan işlenmiş modelleri görüntüleme](../tutorials/unity/view-remote-models/view-remote-models.md).
 
-Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
+Bu hızlı başlangıçta şunları yapmayı öğreneceksiniz:
 > [!div class="checklist"]
 >
 >* Yerel geliştirme ortamınızı ayarlama
@@ -33,7 +33,7 @@ Aşağıdaki yazılım yüklü olmalıdır:
 
 * Windows SDK 10.0.18362.0 [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * Visual Studio 2019 ' un en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Karma gerçeklik Için Visual Studio Araçları](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
+* [Karma gerçeklik Için Visual Studio Araçları](/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
   * **C++ ile masaüstü geliştirme**
   * **Evrensel Windows Platformu (UWP) geliştirme**
 * GIT [(İndir)](https://git-scm.com/downloads)
@@ -111,7 +111,7 @@ Dönüşümleri eşitlemek için **Şimdi Eşitle** ' ye tıklayın ya da **her 
 Sonraki hızlı başlangıçta, özgün boyutunda uzaktan işlenmiş modeli görüntülemek için örneği bir HoloLens 'e dağıtacağız.
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: Unity örneğini HoloLens 'e dağıtma](deploy-to-hololens.md)
+> [Hızlı Başlangıç: Unity örneğini HoloLens’e dağıtma](deploy-to-hololens.md)
 
 Alternatif olarak, örnek bir masaüstü BILGISAYARA da dağıtılabilir.
 

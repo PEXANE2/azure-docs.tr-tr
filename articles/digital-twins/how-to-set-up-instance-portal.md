@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047412"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205515"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -24,7 +24,8 @@ Bu makalenin bu sürümü, Azure portal kullanarak bu adımları el ile tek tek 
 * CLı kullanarak bu adımları el ile yapmak için, bu makalenin CLı sürümüne bakın: [*nasıl yapılır: bir örnek ve kimlik doğrulaması (CLI) ayarlama*](how-to-set-up-instance-cli.md).
 * Bir dağıtım betiği örneği kullanarak otomatikleştirilmiş bir kurulum aracılığıyla çalıştırmak için, bu makalenin betikleştirilmiş sürümüne bakın: [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama (komut dosyalı)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Azure dijital TWINS örneğini oluşturma
 
@@ -94,72 +95,7 @@ Ayrıntıları girmeyi tamamladığınızda *Kaydet* düğmesine basın.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
 
-Artık bir Azure dijital TWINS örneğiniz var ve bunu yönetmek için izinler atandı. Daha sonra, bir istemci uygulamasının bu uygulamaya erişmesi için izinleri ayarlayacaksınız.
-
-## <a name="set-up-access-permissions-for-client-applications"></a>İstemci uygulamaları için erişim izinlerini ayarlama
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-Azure portal [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) giderek başlayın (Bu bağlantıyı kullanabilir veya Portal arama çubuğundan bulabilirsiniz). Hizmet menüsünden *uygulama kayıtları* ' i ve sonra *+ Yeni kayıt*' ı seçin.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
-Aşağıdaki *uygulama kaydet* sayfasında, istenen değerleri girin:
-* **Ad**: kayıt ile Ilişkilendirilecek BIR Azure AD uygulama görünen adı
-* **Desteklenen hesap türleri**: *yalnızca bu kuruluş dizinindeki hesapları seçin (yalnızca varsayılan dizin-tek kiracı)*
-* **Yeniden yönlendirme URI 'si**: Azure AD uygulaması Için BIR *Azure AD uygulama yanıt URL 'si* . İçin *genel bir istemci/yerel (mobil & Masaüstü)* URI 'si ekleyin `http://localhost` .
-
-İşiniz bittiğinde *Kaydet* düğmesine basın.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
-Kayıt kurulumu tamamlandığında, Portal sizi ayrıntılar sayfasına yönlendirecektir.
-
-### <a name="provide-azure-digital-twins-api-permission"></a>Azure dijital TWINS API 'SI izni sağlama
-
-Daha sonra, temel izinlerle oluşturduğunuz uygulama kaydını Azure dijital TWINS API 'Leri için yapılandırın.
-
-Uygulama kaydınız için portal sayfasında, menüden *API izinleri* ' ni seçin. Aşağıdaki izinler sayfasında *+ Izin Ekle* düğmesine basın.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
-Aşağıdaki *API Izinleri iste* sayfasında *Kuruluşumun kullandığı API* 'lere geçin ve *Azure dijital TWINS*için arama yapın. Azure dijital TWINS API 'Leri için izin atamaya devam etmek için arama sonuçlarından _**Azure dijital TWINS**_ ' i seçin.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
->[!NOTE]
-> Aboneliğiniz, hizmetin önceki genel önizlemesinden (2020 Temmuz 'dan önce) mevcut bir Azure dijital TWINS örneğine sahip olmaya devam ediyorsa, bunun yerine _**Azure akıllı boşluklar hizmetini**_ arayıp seçmeniz gerekir. Bu, aynı API kümesi için daha eski bir addır ( *uygulamanın (istemci) kimliğinin* yukarıdaki ekran görüntüsünde aynı olduğuna dikkat edin) ve deneyiminiz bu adımın ötesinde değiştirilmez.
-> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
-Ardından, bu API 'Lere verilecek izinleri seçersiniz. **Oku (1)** iznini genişletin ve bu uygulama kayıt okuyucuyu ve yazıcı izinlerini vermek için *Read. Write* yazan kutusunu işaretleyin.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
-Bittiğinde *Izinleri Ekle* düğmesine basın.
-
-### <a name="verify-success"></a>Başarıyı doğrula
-
-*API izinleri* sayfasına geri döndüğünüzde, Azure Digital TWINS için okuma/yazma izinlerini yansıtan bir girdi olduğunu doğrulayın:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
-Ayrıca, API izinleri eklenirken Azure dijital TWINS bilgileriyle otomatik olarak güncellenen Azure Digital TWINS ile * ilgilimanifest.jsüzerinde*uygulama kaydı içinde olan bağlantıyı doğrulayabilirsiniz.
-
-Bunu yapmak için menüden *bildirim* ' ı seçerek uygulama kaydının bildirim kodunu görüntüleyin. Kod penceresinin en altına kaydırın ve altındaki bu alanları bulun `requiredResourceAccess` . Değerler aşağıdaki ekran görüntüsünde olanlarla eşleşmelidir:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
-### <a name="collect-important-values"></a>Önemli değerleri topla
-
-Ardından, uygulama kaydının ayrıntılarını görmek için menü çubuğundan *genel bakış* ' ı seçin:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
-
-**Sayfanızda gösterilen** *uygulama (istemci) kimliğini* ve *Dizin (kiracı) kimliğini* bir yere göz atın. Bu değerler daha sonra [Azure dijital TWINS API 'lerinde istemci uygulamasının kimliğini doğrulamak](how-to-authenticate-client.md)için gerekecektir. Bu tür uygulamalar için kod yazmak üzere bir kişi değilseniz, bu değerleri olacak kişiyle paylaşmanız gerekir.
-
-### <a name="other-possible-steps-for-your-organization"></a>Kuruluşunuz için olası diğer adımlar
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+Artık bir Azure dijital TWINS örneğiniz var ve bunu yönetmek için izinler atandı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -167,5 +103,5 @@ Azure Digital TWINS CLı komutlarını kullanarak örneğiniz için tek REST API
 * [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)
 
-Ya da bkz. istemci uygulamasının kimlik doğrulama kodunu yazarak istemci uygulamanızı örneğinizle bağlama:
+Ya da bkz. kimlik doğrulama kodu ile bir istemci uygulamasını örneğinize bağlama:
 * [*Nasıl yapılır: uygulama kimlik doğrulama kodunu yazma*](how-to-authenticate-client.md)

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c8143a19d7e18b24e202018698b37e1b2855db4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125431"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206806"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -164,7 +164,7 @@ Windows PowerShell sürüm 6.2.4 veya sonraki bir sürümün yüklü olması ger
     WSManStackVersion              3.0
 ```
 
-Sürümünüz 6.2.4 'den düşükse, Windows PowerShell sürümünüzü yükseltmeniz gerekir. Windows PowerShell 'in en son sürümünü yüklemek için bkz. [ınstall Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7).
+Sürümünüz 6.2.4 'den düşükse, Windows PowerShell sürümünüzü yükseltmeniz gerekir. Windows PowerShell 'in en son sürümünü yüklemek için bkz. [ınstall Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true).
 
 **Azure PowerShell ve Data Box modülleri 'ni yükler**
 
@@ -247,7 +247,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
     ![Sipariş Sihirbazı 'nın, doğru bilgi doldurulmuş şekilde sihirbazın temel bilgilerini gösteren ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
-    Varsayılan olarak, cihaz kilidi açma parolası, Microsoft tarafından yönetilen bir anahtar kullanılarak şifrelenir. Siparişi tamamladıktan sonra, müşteri tarafından yönetilen anahtar ekleyebilirsiniz. Müşteri tarafından yönetilen anahtar, cihazın kilidini açma parolasını korumak için bir Azure Anahtar Kasası anahtarından kendi anahtarınızı kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure Data Box için Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](data-box-customer-managed-encryption-key-portal.md).
+    Varsayılan olarak, cihaz kilidi açma parolası, Microsoft tarafından yönetilen bir anahtar kullanılarak şifrelenir. Siparişi tamamladıktan sonra, müşteri tarafından yönetilen bir anahtar ekleyebilirsiniz. Müşteri tarafından yönetilen bir anahtar, cihazınızın kilit açma parolasını korumak için bir Azure Anahtar Kasası anahtarından kendi anahtarınızı kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure Data Box için Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](data-box-customer-managed-encryption-key-portal.md).
 
 7. **Veri hedefi** sekmesinde **veri hedefi**' ni seçin.
 
@@ -273,14 +273,44 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
     **İleri ' yi seçin:** devam etmek için güvenlik.
 
-1. **Güvenlik**bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek istiyorsanız, **sırasıyla çift şifrelemeyi etkinleştir**' i seçin. 
+    **Güvenlik** ekranı, kendi cihazınızı kullanmanıza ve parola paylaşmanıza ve çift şifrelemeyi kullanmayı seçmenize olanak tanır. 
+
+    **Güvenlik** ekranındaki tüm ayarlar isteğe bağlıdır. Herhangi bir ayarı değiştirmezseniz varsayılan ayarlar uygulanır.
+
+    ![Data Box içeri aktarma sırası için güvenlik ekranı](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+
+1. Azure Data Box varsayılan olarak kullandığı sistem tarafından oluşturulan parolaları kullanmak istemiyorsanız, **kendi parolanızı getir**' i genişletin.
+
+   Sistem tarafından oluşturulan parolalar güvenlidir ve kuruluşunuz aksini gerektirmediği takdirde önerilir.
+
+   ![Genişletilmiş bir Data Box içeri aktarma sırası için kendi parola seçeneklerinizi getirin](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+
+   - Yeni cihazınız için kendi parolanızı kullanmak üzere **cihaz parolası için tercih ayarla** **' yı seçin ve**güvenlik gereksinimlerini karşılayan bir parola yazın.
+   
+     ![Data Box içeri aktarma için güvenlik ekranı, kendi cihaz parolanızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+
+   - Paylaşımlar için kendi parolalarınızı kullanmak için:
+
+     1. **Parola paylaşma için tercih ayarla**' yı seçerek, **kendi parolalarınızı kullanın** ' ı seçin ve ardından **paylaşımlar için parolalar**' ı seçin.
+     
+        ![Data Box içeri aktarma için güvenlik ekranı, kendi paylaşma parolalarınızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+
+     1. Her depolama hesabı için sırasıyla bir parola yazın. Parola, depolama hesabının tüm paylaşımlarında kullanılacaktır.
+     
+        Tüm depolama hesapları için aynı parolayı kullanmak için, **tümüne Kopyala**' yı seçin. Bitirdiğinizde **Kaydet**' i seçin.
+     
+        ![Data Box içeri aktarma sırası için paylaşma parolaları girme ekranı](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+       **Güvenlik** ekranında, parolaları değiştirmek için **parola değiştirme görünümü** ' ni kullanabilirsiniz.
+
+1. **Güvenlik**bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek Istiyorsanız, **çift şifrelemeyi genişletin (yüksek oranda güvenli ortamlar için)** ve **sıra için çift şifrelemeyi etkinleştir**' i seçin.
+
+   ![Data Box içeri aktarmaya yönelik güvenlik ekranı, bir Data Box sırası için yazılım tabanlı şifrelemeyi etkinleştirme](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    Yazılım tabanlı şifreleme, Data Box verilerin AES-256 bit şifrelemesine ek olarak gerçekleştirilir.
 
    > [!NOTE]
    > Bu seçeneğin etkinleştirilmesi, sipariş işleme ve veri kopyalamanın daha uzun sürmesiyle yapılır. Siparişinizi oluşturduktan sonra bu seçeneği değiştiremezsiniz.
-
-   ![Veri kutusu içeri aktarma için güvenlik ekranı, Çift şifreleme](media/data-box-deploy-ordered/select-data-box-import-07c.png)
 
    Ileri ' yi seçin: devam etmek için **kişi ayrıntıları** .
 
@@ -296,7 +326,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
 10. Sevkiyat ayrıntıları başarıyla doğrulandıktan sonra **Sevkiyat Adresi Ekle** ' yi seçin. **Kişi ayrıntıları** sekmesine geri dönecaksınız.
 
-11. **İletişim ayrıntılarına** geri döndüğünüzde bir veya daha fazla e-posta adresi ekleyin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
+11. **İletişim ayrıntılarına**geri döndüğünüzde bir veya daha fazla e-posta adresi ekleyin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
 
     Grup yöneticisinin ayrılması durumunda da bildirim almaya devam etmek için bir grup e-postası kullanmanız önerilir.
 
@@ -338,7 +368,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
    |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
-2. Tercih ettiğiniz veya terminalin komut isteminde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) komutunu kullanın.
+2. Komut istemindeki veya terminalinizde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) komutunu çalıştırın.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -506,7 +536,7 @@ Microsoft ardından cihazınızı hazırlar ve bölgeye uygun gönderim şirketi
 
 ### <a name="track-a-single-order"></a>Tek bir siparişi izleyin
 
-Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az databox iş göster](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show)' i çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
+Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az databox iş göster](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true)' i çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -547,7 +577,7 @@ Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az 
 
 ### <a name="list-all-orders"></a>Tüm siparişleri Listele
 
-Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [az databox iş listesi](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) ' ni çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
+Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [az databox iş listesi](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) ' ni çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
 Komut ayrıca her bir siparişin zaman damgalarını görüntüler.
 
 ```azurecli
@@ -666,7 +696,7 @@ Sipariş verdikten sonra, sipariş durumu işlendi olmadan önce herhangi bir no
 
 ### <a name="cancel-an-order"></a>Siparişi iptal etme
 
-Azure Data Box sırayı iptal etmek için [az databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel)' ı çalıştırın. Siparişi iptal etme nedeninizi belirtmeniz gerekir.
+Azure Data Box sırayı iptal etmek için [az databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true)' ı çalıştırın. Siparişi iptal etme nedeninizi belirtmeniz gerekir.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -703,7 +733,7 @@ Azure Data Box sırayı iptal etmek için [az databox Job Cancel](/cli/azure/ext
 
 ### <a name="delete-an-order"></a>Bir siparişi silme
 
-Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox Job Delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) ' i çalıştırabilirsiniz.
+Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox Job Delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) ' i çalıştırabilirsiniz.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

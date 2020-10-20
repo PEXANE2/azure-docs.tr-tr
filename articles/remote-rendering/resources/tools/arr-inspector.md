@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80680082"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204750"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector inceleme aracı
 
@@ -29,7 +29,7 @@ ARR sunucunuzun ana bilgisayar adını (bitiş `mixedreality.azure.com` ) edindi
 
 Uygulama bir HoloLens üzerinde çalışıyorsa:
 
-1. [Windows cihaz portalını](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)kullanarak HoloLens 'e erişin.
+1. [Windows cihaz portalını](/windows/mixed-reality/using-the-windows-device-portal)kullanarak HoloLens 'e erişin.
 1. *System > dosya Gezgini*' ne gidin.
 1. *Kullanıcı klasörleri \\ LocalAppData \\ [your_app] \\ AC \\ geçici*öğesine gidin.
 1. *StartArrInspector.html* 'yi bilgisayarınıza kaydedin.

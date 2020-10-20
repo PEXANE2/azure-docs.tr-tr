@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92b5685722b8a37de3945caa1305a76b3cabb8a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252638"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206246"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute izleme, ölçümler ve uyarılar
 
@@ -42,8 +42,8 @@ Bu makale, Azure Izleyici kullanarak ExpressRoute izlemeyi, ölçümleri ve uyar
 |GlobalReachBitsOutPerSecond|Trafik|<ui><li>Eşlenen devre Skey (hizmet anahtarı)</ui></li>|Global Reach|
 |AdminState|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
 |LineProtocol|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
-|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >*GlobalGlobalReachBitsInPerSecond* ve *GlobalGlobalReachBitsOutPerSecond* kullanımı yalnızca en az bir Global Reach bağlantısı kurulduysa görünür olur.
 >
@@ -70,7 +70,7 @@ Eşleme ve eşler arasında BGP 'nin gerçek zamanlı kullanılabilirliğini (bi
 
 ### <a name="arp-availability---split-by-peering"></a>ARP kullanılabilirliği-eşlemeye göre bölme  
 
-Eşler arası ve eşlerde [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) 'nin neredeyse gerçek zamanlı kullanılabilirliğini (birincil ve Ikincil ExpressRoute yönlendiricileri) görüntüleyebilirsiniz. Bu Pano, özel eşleme ARP oturumunu her iki eş arasında gösterir, ancak eşlemeler genelinde Microsoft eşlemesi için tamamlanmıştır. Varsayılan toplama (Ortalama) her iki eş üzerinde de kullanıldı.  
+Eşler arası ve eşlerde [ARP](./expressroute-troubleshooting-arp-resource-manager.md) 'nin neredeyse gerçek zamanlı kullanılabilirliğini (birincil ve Ikincil ExpressRoute yönlendiricileri) görüntüleyebilirsiniz. Bu Pano, özel eşleme ARP oturumunu her iki eş arasında gösterir, ancak eşlemeler genelinde Microsoft eşlemesi için tamamlanmıştır. Varsayılan toplama (Ortalama) her iki eş üzerinde de kullanıldı.  
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="devre ölçümleri":::
 
@@ -162,7 +162,7 @@ Ayrıca, ExpressRoute bağlantı hattı kaynağına giderek ve *Günlükler* sek
 |**Column**|**Tür**|**Açıklama**|
 | --- | --- | --- |
 |ZamanBirimi|string|PT1M (ölçüm değerleri her dakika gönderilir)|
-|Sayı|real|Genellikle 2 ' ye eşit (her MSEE her dakikada tek bir ölçüm değeri gönderir)|
+|Count|real|Genellikle 2 ' ye eşit (her MSEE her dakikada tek bir ölçüm değeri gönderir)|
 |Minimum|real|İki MSEE tarafından gönderilen iki ölçüm değeri en az|
 |Maksimum|real|İki MSEE tarafından gönderilen iki ölçüm değerinin sayısından 'ı|
 |Ortalama|real|Eşittir (en az + en fazla)/2|

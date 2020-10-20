@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 432d9656bf56b87798d6563cfd545b34c20001b6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802999"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204036"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -163,7 +163,7 @@ Azure Işlevleri üzerinde çalışırken, örneklerin de mevcut [yönergeleri](
 Ağır oluşturma yükleri olan iş yükleri için, `EnableContentResponseOnWrite` istek seçeneğini olarak ayarlayın `false` . Hizmet artık oluşturulan veya güncellenen kaynağı SDK 'ya döndürmez. Normalde, uygulama oluşturulmakta olan nesneye sahip olduğundan, hizmet tarafından döndürülmesi gerekmez. Üst bilgi değerlerine, istek ücreti gibi hala erişilebilir. İçerik yanıtının devre dışı bırakılması, SDK 'nın artık bellek ayırması veya yanıtın gövdesini serileştirilmesi gerekmediği için performansı artırmaya yardımcı olabilir. Ayrıca, performansı daha fazla kolaylaştırmak için ağ bant genişliği kullanımını azaltır.  
 
 ```csharp
-ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
+ItemRequestOptions requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
 ItemResponse<Book> itemResponse = await this.container.CreateItemAsync<Book>(book, new PartitionKey(book.pk), requestOptions);
 // Resource will be null
 itemResponse.Resource

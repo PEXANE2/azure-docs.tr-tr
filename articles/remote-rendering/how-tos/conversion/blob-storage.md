@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80681655"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206552"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Model dönüştürmesi için Azure Blob depolamayı kullanma
 
@@ -27,8 +27,8 @@ ms.locfileid: "80681655"
 
 Depolama hesabı ve BLOB kapsayıcıları oluşturma, aşağıdaki araçlardan biriyle yapılabilir:
 
-- [Azure portalındaki](https://portal.azure.com)
-- [az komut satırı](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure portalı](https://portal.azure.com)
+- [az komut satırı](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
 - SDK 'lar (C#, Python...)
 
@@ -46,13 +46,13 @@ Aşağıdaki iki yolla depolama hesabınıza Azure uzaktan Işleme erişimi vere
 
 Depolanan erişim imzaları (SAS), giriş için okuma erişimi sağlamak ve çıkış için yazma erişimi sağlamak üzere kullanılır. Her model dönüştürülürken yeni URI 'Ler oluşturmanızı öneririz. URI 'Lerin süresi bir süre sonra sona erdiğinden, daha uzun bir süre boyunca kalıcı hale getirerek uygulamanızı beklenmedik şekilde bozabilir.
 
-SAS hakkındaki ayrıntılar [SAS belgelerinde](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)bulunabilir.
+SAS hakkındaki ayrıntılar [SAS belgelerinde](../../../storage/common/storage-sas-overview.md)bulunabilir.
 
 Bir SAS URI 'SI aşağıdakilerden biri kullanılarak oluşturulabilir:
 
 - az PowerShell modülü
   - [örnek PowerShell betiklerine](../../samples/powershell-example-scripts.md) bakın
-- [az komut satırı](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az komut satırı](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
   - "paylaşılan erişim Imzasını al" kapsayıcısına sağ tıklama (okuma, giriş kapsayıcısı için erişimi listeleme, çıkış kapsayıcısı için yazma erişimi)
 - SDK 'lar (C#, Python...)
@@ -64,11 +64,11 @@ Varlık dönüştürmesinde paylaşılan erişim Imzalarının kullanılmasına 
 Bir modeli dönüştürmeye başlamak için, aşağıdaki seçeneklerden birini kullanarak karşıya yüklemeniz gerekir:
 
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) -Azure Blob Storage 'da dosyaları karşıya yüklemek/indirmek/yönetmek için uygun bir kullanıcı arabirimi
-- [Azure komut satırı](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
-- [Azure PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.2.0)
+- [Azure komut satırı](../../../storage/blobs/storage-quickstart-blobs-cli.md)
+- [Azure PowerShell modülü](/powershell/azure/install-az-ps?view=azps-2.2.0)
   - [örnek PowerShell betiklerine](../../samples/powershell-example-scripts.md) bakın
-- [Depolama SDK 'sını kullanma (Python, C#...)](https://docs.microsoft.com/azure/storage/)
-- [Azure depolama REST API 'Lerini kullanma](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
+- [Depolama SDK 'sını kullanma (Python, C#...)](../../../storage/index.yml)
+- [Azure depolama REST API 'Lerini kullanma](/rest/api/storageservices/blob-service-rest-api)
 
 Dönüştürme için verileri karşıya yükleme hakkında bir örnek için [PowerShell örnek betiklerinin](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1 bakın.
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 114a0d6f97149baad0c9e76fb359c52996820575
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958370"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207164"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache HBase kullanma
 
 Bu öğreticide, Azure HDInsight 'ta Apache HBase kümesi oluşturma, HBase tabloları oluşturma ve Apache Hive kullanarak sorgu tabloları oluşturma işlemlerinin nasıl yapılacağı gösterilmiştir.  Genel HBase bilgileri için bkz. [HDInsight HBase’e genel bakış](./apache-hbase-overview.md).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Apache HBase kümesi oluşturma
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Curl kullanarak HBase REST API’lerini kullanma
 > * Küme durumunu denetleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -207,6 +207,23 @@ Bu yordam `Contacts` , son yordamda oluşturduğunuz HBase tablosunu kullanır.
 
 1. SSH bağlantısından çıkmak için kullanın `exit` .
 
+### <a name="separate-hive-and-hbase-clusters"></a>Hive ve HBase kümelerini ayır
+
+HBase verilerine erişim için Hive sorgusunun HBase kümesinden yürütülmesi gerekmez. Hive ile birlikte gelen herhangi bir küme (Spark, Hadoop, HBase veya etkileşimli sorgu dahil), HBase verilerini sorgulamak için aşağıdaki adımlar tamamlandıysa kullanılabilir:
+
+1. Her iki küme de aynı sanal ağa ve alt ağa bağlanmalıdır
+2. `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml`HBase küme bir düğümünden Hive kümesi baş 'a kopyalama
+
+### <a name="secure-clusters"></a>Güvenli kümeler
+
+HBase verileri Ayrıca, ESP etkin HBase kullanılarak Hive ile sorgulanabilir: 
+
+1. Çok kümeli bir model takip edildiğinde her iki küme de ESP etkin olmalıdır. 
+2. Hive 'nin HBase verilerini sorgusuna izin vermek için, kullanıcının HBase `hive` Apache Ranger eklentisi aracılığıyla HBase verilerine erişim izni verildiğinden emin olun
+3. Ayrı, ESP etkin kümeler kullanılırken, `/etc/hosts` HBase küme baş içeriğinin `/etc/hosts` Hive küme baş listesine eklenmesi gerekir. 
+> [!NOTE]
+> Kümeleri ölçeklendirdikten sonra `/etc/hosts` tekrar eklenmesi gerekir
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>Curl kullanarak HBase REST API’lerini kullanma
 
 REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.org/wiki/Basic_access_authentication) ile sağlanır. Kimlik bilgilerinizin sunucuya güvenli bir şekilde gönderilmesi için istekleri her zaman Güvenli HTTP (HTTPS) kullanarak yapmalısınız.
@@ -306,7 +323,7 @@ HDInsight içinde HBase, kümelerin izlenmesi için bir Web Kullanıcı Arabirim
 
 Tutarsızlıkları önlemek için kümeyi silmeden önce HBase tablolarını devre dışı bırakmanız önerilir. HBase komutunu kullanabilirsiniz `disable 'Contacts'` . Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın.

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756628"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207096"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği oluşturma ve yönetme
 
@@ -34,7 +34,7 @@ Bu makalede şunları öğreneceksiniz:
 
 İşlem örnekleri, kuruluşların SSH bağlantı noktalarını açmasına gerek kalmadan, işleri bir [sanal ağ ortamında](how-to-secure-training-vnet.md)güvenli bir şekilde çalıştırabilir. İş kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir Docker kapsayıcısında paketleyebilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -256,6 +256,7 @@ Paketleri doğrudan Jupyter Notebook veya RStudio 'Ya yükleyebilirsiniz:
 * Python: Jupyter Notebook bir hücrede Install kodu ekleyin ve yürütün.
 
 Ya da bir terminal penceresinden yükleyebilirsiniz. Python paketlerini **python 3,6-AzureML** ortamına yükler.  R paketlerini **r** ortamına yükler.
+% PIP ve% Conda Magic işlevleri, Jupyter Not defteri oturumunda paketleri şu anda çalışan çekirdeğe otomatik olarak yükler.
 
 ## <a name="add-new-kernels"></a>Yeni çekirdekler Ekle
 

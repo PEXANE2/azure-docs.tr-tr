@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a731962f22985268093c547b09a8cd77c5b92660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8a1d48934d73f1035c6f2c4c76e56d9a0e4052
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395817"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206979"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell kullanarak bir ExpressRoute devresine sanal ağ bağlama (klasik)
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portalı](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -42,7 +42,7 @@ Bir ExpressRoute devresine en fazla 10 sanal ağ bağlayabilirsiniz. Tüm sanal 
    * [ExpressRoute](expressroute-howto-circuit-classic.md) bağlantı hattını oluşturmak için yönergeleri izleyin ve bağlantı sağlayıcınızın devreyi etkinleştirmesini sağlayın.
    * Devreniz için Azure özel eşlemesi 'nin yapılandırıldığından emin olun. Yönlendirme yönergeleri için [yönlendirmeyi yapılandırma](expressroute-howto-routing-classic.md) makalesine bakın.
    * Uçtan uca bağlantıyı etkinleştirebilmeniz için Azure özel eşlemesinin yapılandırıldığından ve ağınız ile Microsoft arasındaki BGP eşlemesinin yapıldığından emin olun.
-   * Oluşturulmuş ve tam olarak sağlanmış bir sanal ağınız ve sanal ağ geçidi olmalıdır. [ExpressRoute için sanal ağ yapılandırma](expressroute-howto-vnet-portal-classic.md)yönergelerini izleyin.
+   * Oluşturulmuş ve tam olarak sağlanmış bir sanal ağınız ve sanal ağ geçidi olmalıdır. [ExpressRoute için sanal ağ yapılandırma](./expressroute-howto-add-gateway-portal-resource-manager.md)yönergelerini izleyin.
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>En son PowerShell cmdlet 'lerini indirin
 

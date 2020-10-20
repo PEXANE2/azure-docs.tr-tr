@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25022cc70f3b6c8fc01aa556b6229ae8a6ccb82b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448864"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205099"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Windows sanal makinesini güncelleştirme
 
-Azure [değişiklik izleme](../../automation/change-tracking.md) ve [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)ile Azure 'daki Windows sanal makinelerinizdeki değişiklikleri kolayca tanımlayabilir ve bu VM 'ler için işletim sistemi güncelleştirmelerini yönetebilirsiniz.
+Azure [değişiklik izleme](../../automation/change-tracking/overview.md) ve [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)ile Azure 'daki Windows sanal makinelerinizdeki değişiklikleri kolayca tanımlayabilir ve bu VM 'ler için işletim sistemi güncelleştirmelerini yönetebilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Windows güncelleştirmelerini yönetme.

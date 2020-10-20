@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: 8ca6794024d3a6327b918eb1c369a627837e0bd0
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ec7b776f7d573ea07f010eeab81d98222102be41
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131029"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202013"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
 
@@ -37,7 +37,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 | **Desteklenen ortamlar** | Azure | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
 | **Aracı gereksinimleri**  | Hiçbiri | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
 | **Toplanan veriler** | Olay Günlükleri<br>Performans | Olay Günlükleri<br>ETW olayları<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>.NET uygulama günlükleri<br>Kilitlenme bilgi dökümleri<br>Aracı tanılama günlükleri | Olay Günlükleri<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>Öngörüler ve çözümler<br>Diğer hizmetler | İşlem bağımlılıkları<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri | Azure Storage<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
+| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri | Azure Depolama<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
 | **Hizmetler ve**<br>**özelliklerinde**<br>**Destek** | Log Analytics<br>Ölçüm gezgini | Ölçüm gezgini | VM'ler için Azure İzleyici<br>Log Analytics<br>Azure Otomasyonu<br>Azure Güvenlik Merkezi<br>Azure Sentinel | VM'ler için Azure İzleyici<br>Hizmet Eşlemesi |
 
 ### <a name="linux-agents"></a>Linux aracıları
@@ -47,7 +47,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 | **Desteklenen ortamlar** | Azure | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
 | **Aracı gereksinimleri**  | Hiçbiri | Hiçbiri | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
 | **Toplanan veriler** | Syslog<br>Performans | Syslog<br>Performans | Performans | Syslog<br>Performans| İşlem bağımlılıkları<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri | Azure Storage<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
+| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri | Azure Depolama<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
 | **Hizmetler ve**<br>**özelliklerinde**<br>**Destek** | Log Analytics<br>Ölçüm gezgini | | Ölçüm gezgini | VM'ler için Azure İzleyici<br>Log Analytics<br>Azure Otomasyonu<br>Azure Güvenlik Merkezi<br>Azure Sentinel | VM'ler için Azure İzleyici<br>Hizmet Eşlemesi |
 
 
@@ -81,8 +81,8 @@ Azure Izleyici aracısının sınırlamaları şunlardır:
 * Azure 'un içindeki veya dışındaki sanal veya fiziksel makinelerden gelen günlükleri ve performans verilerini toplayın. 
 * [Günlük sorguları](../log-query/log-query-overview.md)gibi [Azure izleyici günlükleri](data-platform-logs.md) tarafından desteklenen özelliklerden yararlanmak için bir Log Analytics çalışma alanına veri gönderin.
 * Sanal makinelerinizi ölçekli olarak izlemenize ve diğer kaynaklardaki ve dış süreçlerdeki işlem ve bağımlılıklarını izleyicmenize olanak tanıyan [VM'ler için Azure izleyici](../insights/vminsights-overview.md) kullanın.  
-* [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) veya [Azure Sentinel](../../sentinel/overview.md)kullanarak sanal makinelerinizin güvenliğini yönetin.
-* Azure sanal makinelerinizin kapsamlı bir şekilde yönetilmesini sağlamak için [Azure Otomasyonu güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md), [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md)veya [Azure Otomasyonu değişiklik izleme ve envanterini](../../automation/change-tracking.md) kullanın
+* [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) veya [Azure Sentinel](../../sentinel/overview.md)kullanarak sanal makinelerinizin güvenliğini yönetin.
+* Azure sanal makinelerinizin kapsamlı bir şekilde yönetilmesini sağlamak için [Azure Otomasyonu güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md), [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md)veya [Azure Otomasyonu değişiklik izleme ve envanterini](../../automation/change-tracking/overview.md) kullanın
 * Belirli bir hizmeti veya uygulamayı izlemek için farklı [çözümler](../monitor-reference.md#insights-and-core-solutions) kullanın.
 
 Log Analytics aracısının sınırlamaları şunlardır:

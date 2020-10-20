@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981320"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201061"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma
 
@@ -20,7 +20,7 @@ Bu makale, ExpressRoute 'ı izlemek için bir Ağ Performansı İzleyicisi uzant
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 * Çeşitli VNET 'lerde kayıp ve gecikme süresini izleyin ve Uyarılar ayarlayın
 
@@ -54,7 +54,7 @@ Abonelikte ExpressRoute bağlantı hattına olan sanal ağlar içeren bir çalı
 1. [Azure Portal](https://portal.azure.com)ExpressRoute bağlantı hattınızı hedefleyen VNET 'Leri içeren aboneliği seçin. Ardından, ' Ağ Performansı İzleyicisi ' için **Market** 'teki hizmet listesinde arama yapın. Dönüş içinde **ağ performansı İzleyicisi** sayfasını açmak için tıklayın.
 
    >[!NOTE]
-   >Yeni bir çalışma alanı oluşturabilir veya var olan bir çalışma alanını kullanabilirsiniz. Mevcut bir çalışma alanını kullanmak istiyorsanız, çalışma alanının yeni sorgu diline geçirilmiş olduğundan emin olmanız gerekir. [Daha fazla bilgi...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >Yeni bir çalışma alanı oluşturabilir veya var olan bir çalışma alanını kullanabilirsiniz. Mevcut bir çalışma alanını kullanmak istiyorsanız, çalışma alanının yeni sorgu diline geçirilmiş olduğundan emin olmanız gerekir. [Daha fazla bilgi...](../azure-monitor/log-query/log-query-overview.md)
    >
 
    ![portal](./media/how-to-npm/3.png)<br><br>
@@ -92,7 +92,7 @@ Abonelikte ExpressRoute bağlantı hattına olan sanal ağlar içeren bir çalı
 Yedeklilik için ExpressRoute bağlantısının her bir tarafına en az iki aracı yüklemenizi öneririz (örneğin, şirket içi, Azure sanal ağları). Aracının bir Windows Server 'a (2008 SP1 veya üzeri) yüklenmesi gerekir. Windows masaüstü işletim sistemi ve Linux IŞLETIM sistemini kullanarak ExpressRoute devresine izleme desteklenmez. Aracıları yüklemek için aşağıdaki adımları kullanın:
    
   >[!NOTE]
-  >SCOM tarafından gönderilen aracılar ( [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)'yı içerir), Azure 'da barındırılıyorsa konumlarını sürekli olarak algılayamayabilir. ExpressRoute izlemek için bu aracıları Azure sanal ağları 'nda kullanmanızı öneririz.
+  >SCOM tarafından gönderilen aracılar ( [MMA](/previous-versions/system-center/system-center-2012-R2/dn465154(v=sc.12))'yı içerir), Azure 'da barındırılıyorsa konumlarını sürekli olarak algılayamayabilir. ExpressRoute izlemek için bu aracıları Azure sanal ağları 'nda kullanmanızı öneririz.
   >
 
 1. ExpressRoute 'U izlemek için kullanmak istediğiniz her sunucuya aracıyı yüklemek için **kurulumu** çalıştırın. İzleme için kullandığınız sunucu, bir VM ya da şirket içi olabilir ve Internet erişimi olmalıdır. Şirket içinde en az bir aracı ve Azure 'da izlemek istediğiniz her ağ kesimine bir aracı yüklemeniz gerekir.
@@ -118,7 +118,7 @@ Yedeklilik için ExpressRoute bağlantısının her bir tarafına en az iki arac
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2,3: proxy ayarlarını yapılandırma (isteğe bağlı)
 
-Internet 'e erişmek için bir Web Proxy kullanıyorsanız, Microsoft Monitoring Agent proxy ayarlarını yapılandırmak için aşağıdaki adımları kullanın. Her sunucu için bu adımları gerçekleştirin. Yapılandırmanız gereken birden çok sunucu olması durumunda, bu işlemi otomatikleştirmek için bir betik kullanmak sizin için daha kolay olabilir. Bu durumda, [bir betik kullanarak Microsoft Monitoring Agent için proxy ayarlarını yapılandırmak için](../log-analytics/log-analytics-windows-agent.md)bölümüne bakın.
+Internet 'e erişmek için bir Web Proxy kullanıyorsanız, Microsoft Monitoring Agent proxy ayarlarını yapılandırmak için aşağıdaki adımları kullanın. Her sunucu için bu adımları gerçekleştirin. Yapılandırmanız gereken birden çok sunucu olması durumunda, bu işlemi otomatikleştirmek için bir betik kullanmak sizin için daha kolay olabilir. Bu durumda, [bir betik kullanarak Microsoft Monitoring Agent için proxy ayarlarını yapılandırmak için](../azure-monitor/platform/agent-windows.md)bölümüne bakın.
 
 Denetim Masası 'nı kullanarak Microsoft Monitoring Agent proxy ayarlarını yapılandırmak için:
 
@@ -161,7 +161,7 @@ Aracı sunucularında, yönetici ayrıcalıklarına sahip bir PowerShell pencere
 
 Azure 'daki aracı sunucularını izlemek için, yapay işlemler için NPM tarafından kullanılan bağlantı noktasında TCP trafiğine izin vermek üzere ağ güvenlik grubu (NSG) kurallarını yapılandırmanız gerekir. Varsayılan bağlantı noktası 8084 ' dir. Bu, bir Azure VM üzerinde yüklü bir izleme aracısının şirket içi izleme aracısıyla iletişim kurmasını sağlar.
 
-NSG hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/virtual-networks-create-nsg-arm-portal.md).
+NSG hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/tutorial-filter-network-traffic.md).
 
 >[!NOTE]
 >Aracıları (Şirket içi Sunucu Aracısı ve Azure Sunucu Aracısı) yüklediğinizden ve bu adımla devam etmeden önce PowerShell betiğini çalıştırdığınızdan emin olun.

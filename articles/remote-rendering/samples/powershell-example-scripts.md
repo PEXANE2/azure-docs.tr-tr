@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 32d0ebc3f37f7af4d9cdb1940f1870dbf51f86b4
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055860"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206140"
 ---
 # <a name="example-powershell-scripts"></a>Örnek PowerShell betikleri
 
@@ -25,15 +25,15 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
 > [!CAUTION]
 > REST API işlevlerinin çok sık çağrılması sunucunun başarısız olmasına neden olur ve bu da hata döndürür. Bu örnekte http hata kodu kimliği 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Örnek betikleri yürütmek için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)işlevsel kurulumuna ihtiyacınız vardır.
+Örnek betikleri yürütmek için [Azure PowerShell](/powershell/azure/)işlevsel kurulumuna ihtiyacınız vardır.
 
 1. Azure PowerShell'i yükleme:
     1. Yönetici haklarına sahip bir PowerShell penceresi açın.
     1. Çalışmaz `Install-Module -Name Az -AllowClobber`
 
-1. Betikleri çalıştırma hakkında hata alırsanız [yürütme ilkenizin](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) uygun şekilde ayarlandığından emin olun:
+1. Betikleri çalıştırma hakkında hata alırsanız [yürütme ilkenizin](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) uygun şekilde ayarlandığından emin olun:
     1. Yönetici haklarına sahip bir PowerShell penceresi açın.
     1. Çalışmaz `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
@@ -44,7 +44,7 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
     1. Şunu çalıştırın: `Connect-AzAccount` ve ekrandaki yönergeleri izleyin.
 
     > [!NOTE]
-    > Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
+    > Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
 
 1. [Azure uzaktan Işleme GithHub deposundan](https://github.com/Azure/azure-remote-rendering) *betikler* klasörünü indirin.
 
@@ -276,5 +276,5 @@ Bu dönüştürmenin dönüştürme durumunu şu şekilde alabilirsiniz:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hızlı başlangıç: Unity ile model Işleme](../quickstarts/render-model.md)
-- [Hızlı başlangıç: bir modeli işleme için dönüştürme](../quickstarts/convert-model.md)
+- [Hızlı başlangıç: Modeli işlenmek üzere dönüştürme](../quickstarts/convert-model.md)
 - [Model dönüştürme](../how-tos/conversion/model-conversion.md)

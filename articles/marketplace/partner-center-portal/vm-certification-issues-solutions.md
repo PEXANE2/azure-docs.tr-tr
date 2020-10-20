@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/14/2020
-ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/16/2020
+ms.openlocfilehash: 48a044e53602b330e43b35ce2425b4b7a90582bf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044505"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206586"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Azure Marketi için sanal makine görüntülerini sertifikalarken karşılaşılan yaygın sorunlar
 
@@ -35,7 +35,7 @@ Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde de
 - [Windows görüntüleri](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
 
 > [!Note]
-> Market 'ten alınmamış bir Linux temel görüntüsü kullanıyorsanız, ilk bölümü 2048 KB 'ye göre kaydırabilirsiniz. Bu, yeni faturalandırma bilgileri eklemek için biçimlendirilmemiş alanın kullanılmasına izin verir ve Azure 'un VM 'nizi Market 'e yayımlamasına olanak sağlar.  
+> Azure Marketi 'nden alınmamış bir Linux temel görüntüsü kullanıyorsanız, ilk bölümü 2048 KB 'ye göre kaydırabilirsiniz. Bu, yeni faturalandırma bilgileri eklemek için biçimlendirilmemiş alanın kullanılmasına izin verir ve Azure 'un VM 'nizi Azure Marketi 'ne yayımlamasına olanak sağlar.  
 
 ## <a name="vm-extension-failure"></a>VM Uzantısı hatası
 
@@ -46,7 +46,7 @@ VM uzantılarını etkinleştirmek için aşağıdakileri yapın:
 1. Linux VM 'nizi seçin.
 1. **Tanılama ayarları**' na gidin.
 1. **Depolama hesabını**güncelleştirerek taban matrislerini etkinleştirin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
    ![Konuk düzeyinde izlemeyi etkinleştir](./media/vm-certification-issues-solutions-1.png)
 
@@ -87,7 +87,7 @@ Visual Studio 'Yu veya Office lisanslı herhangi bir ürünü yüklemeye çalı�
 
 Onaylanan bir temel seçme hakkında daha fazla bilgi için bkz. [Azure sanal makine teknik varlıklarınızı oluşturma](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base).
 
-## <a name="tool-kit-test-case-execution-failed"></a>Araç seti test çalışması yürütülemedi 
+## <a name="tool-kit-test-case-execution-failed"></a>Araç seti test çalışması yürütülemedi
 
 Microsoft sertifika araç seti, test çalışmalarını çalıştırmanıza ve VHD veya görüntünüzün Azure ortamıyla uyumlu olduğunu doğrulamanıza yardımcı olabilir.
 
@@ -145,7 +145,7 @@ Aşağıdaki tabloda, test doğrulamasının bir açıklamasıyla birlikte, ara�
 |16|Windows Internet ad hizmeti|Windows Internet ad hizmeti. Bu sunucu özelliği henüz desteklenmiyor. Uygulamanın bu özelliğe bağımlı olmaması gerekir.|
 |17|Kablosuz LAN Hizmeti|Kablosuz LAN Hizmeti. Bu sunucu özelliği henüz desteklenmiyor. Uygulamanın bu özelliğe bağımlı olmaması gerekir.|
 
-Önceki test durumlarında tüm hatalarda karşılaşırsanız, çözüm için tablodaki **Açıklama** sütununa bakın. Daha fazla bilgiye ihtiyacınız varsa destek ekibine başvurun. 
+Önceki test durumlarında tüm hatalarda karşılaşırsanız, çözüm için tablodaki **Açıklama** sütununa bakın. Daha fazla bilgiye ihtiyacınız varsa destek ekibine başvurun.
 
 ## <a name="data-disk-size-verification"></a>Veri diski boyut doğrulaması
 
@@ -199,8 +199,8 @@ Bir Linux görüntüsü gönderdiğinizde, isteğiniz çekirdek sürümü sorunl
 
 Görüntünüz aşağıdaki çekirdek sürümlerinden biriyle yüklenmezse, doğru düzeltme ekleriyle güncelleştirin. Görüntü, gereken bu düzeltme ekleriyle güncelleştirildikten sonra destek ekibinin gerekli onayını iste:
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |İşletim sistemi ailesi|Sürüm|Çekirdek|
@@ -261,12 +261,12 @@ VM 'deki test çalışmalarını çalıştırırken erişim reddedildi sorunlar�
 Kendi kendine test çalışmalarının çalıştığı hesap için doğru erişimin etkinleştirilip etkinleştirilmediğini denetleyin. Erişim etkinleştirilmemişse, test çalışmalarını çalıştırmak için etkinleştirin. Erişimi etkinleştirmek istemiyorsanız, kendi test çalışması sonuçlarını destek ekibi ile paylaşabilirsiniz.
 
 ## <a name="download-failure"></a>İndirme hatası
-    
+
 Paylaşılan erişim imzası (SAS) URL 'SI kullanarak VM görüntüsünü indirdiğinizde ortaya çıkan herhangi bir sorun için aşağıdaki tabloya bakın.
 
 |Senaryo|Hata|Neden|Çözüm|
 |---|---|---|---|
-|1|Blob bulunamadı|VHD silinmiş ya da belirtilen konumdan taşınmış olabilir.|| 
+|1|Blob bulunamadı|VHD silinmiş ya da belirtilen konumdan taşınmış olabilir.||
 |2|Kullanılan blob|VHD başka bir iç işlem tarafından kullanılıyor.|Bir SAS URL 'SI kullanarak karşıdan yüklerken VHD 'nin kullanılan bir durumda olması gerekir.|
 |3|Geçersiz SAS URL 'SI|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
 |4|Geçersiz imza|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
@@ -317,7 +317,7 @@ Veri diskiyle ilgili hatalara yönelik çözümler için aşağıdaki tabloyu ku
 
 ## <a name="remote-access-issue"></a>Uzaktan erişim sorunu
 
-Windows görüntüsü için Uzak Masaüstü Protokolü (RDP) seçeneği etkinleştirilmemişse, bu hatayı alırsınız. 
+Windows görüntüsü için Uzak Masaüstü Protokolü (RDP) seçeneği etkinleştirilmemişse, bu hatayı alırsınız.
 
 Göndermeden önce Windows görüntüleri için RDP erişimini etkinleştirin.
 
@@ -334,11 +334,11 @@ Adım 2. İlk "Runshellscrıpt" seçeneğini belirleyin ve aşağıdaki komutu �
 
 Komut: "Cat/dev/null > ~/.bash_history && History-c" ![ Bash geçmiş komutu Azure Portal](./media/vm-certification-issues-solutions-4.png)
 
-3. Adım Komutu başarıyla yürüttükten sonra, sanal makineyi yeniden başlatın.
+3. adım. komutu başarıyla yürüttükten sonra VM 'yi yeniden başlatın.
 
-4. Adım: VM 'yi genelleştirin, görüntü VHD 'sini alın ve VM 'yi durdurun.
+4. adım. VM 'yi genelleştirin, görüntü VHD 'sini alın ve VM 'yi durdurun.
 
-5. Adım.     Genelleştirilmiş görüntüyü Re-Submit.
+5. Adım. Genelleştirilmiş görüntüyü Re-Submit.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Seçmeli testler için VM görüntülerinde özel durumlar (özel şablonlar) isteme
 
@@ -349,7 +349,7 @@ Aşağıdaki bölümlerde, özel durumların istendiği ana senaryolar ve özel 
 
 Özel durum senaryoları
 
-Yayımcıların bu özel durumları genellikle istemesi durumunda üç senaryo/durum vardır. 
+Yayımcıların bu özel durumları genellikle istemesi durumunda üç senaryo/durum vardır.
 
 * **Bir veya daha fazla test çalışması Için özel durum:** Yayımcılar, test çalışmaları için [Market yayımcısı destek](https://aka.ms/marketplacepublishersupport) isteği özel durumlarına ulaşabilir. 
 
@@ -357,20 +357,22 @@ Yayımcıların bu özel durumları genellikle istemesi durumunda üç senaryo/d
        Bu durumda, yayımcılar [sertifikalı test aracını](https://aka.ms/AzureCertificationTestTool) buradan indirebilir ve raporu [Market yayımcı desteği](https://aka.ms/marketplacepublishersupport) ' nde sağlayabilir
 
 
-* **Özel şablonlar:** Bazı yayımcılar VM 'Leri dağıtmak için özel bir ARM şablonu gerektiren VM görüntülerini yayımlar. Bu durumda, yayımcıların sertifika ekibi tarafından doğrulama için kullanılabilmesi için [Market yayımcı desteği](https://aka.ms/marketplacepublishersupport) ' nde özel şablonlar sağlaması istenir. 
+* **Özel şablonlar:** Bazı yayımcılar VM 'Leri dağıtmak için özel bir ARM şablonu gerektiren VM görüntülerini yayımlar.
+
+Bu durumda, yayımcıların sertifika ekibi tarafından doğrulama için kullanılabilmesi için [Market yayımcı desteği](https://aka.ms/marketplacepublishersupport) ' nde özel şablonlar sağlaması istenir.
 
 ### <a name="information-to-provide-for-exception-scenarios"></a>Özel durum senaryoları için sağlanacak bilgiler
 
 Yayımcılar, yukarıdaki senaryo için aşağıdaki ek bilgilerle özel durumlar istemek üzere [Market yayımcısındaki](https://aka.ms/marketplacepublishersupport) desteğe ulaşmalıdır:
 
-   1.   Yayımcı KIMLIĞI – Iş Ortağı Merkezi portalındaki yayımcı KIMLIĞI
-   2.   Teklif KIMLIĞI/adı – özel durumun istendiği teklif KIMLIĞI/adı 
-   3.   SKU/plan KIMLIĞI – özel durumun istendiği sanal makine teklifinin plan KIMLIĞI/SKU 'su
-   4.    Sürüm: özel durum istenen VM teklifinin sürümü
-   5.   Özel durum türü – testler, kilitli VM, özel şablonlar
-   6.   İsteğin nedeni-bu özel durumun nedeni ve dışarıda bırakılan testler hakkında bilgi 
-   7. Zaman çizelgesi-bu özel durumun istendiği Tarih 
-   8.   Ek-tüm önem bulgu belgelerini ekleyin. Kilitli VM 'Ler için, test raporunu ve özel şablonlar için ek olarak özel ARM şablonunu sağlayın. Kilitli VM 'Ler için rapor iliştirilemedi ve özel şablonlar için özel ARM şablonu, istek reddine neden olacak
+   1. Yayımcı KIMLIĞI – Iş Ortağı Merkezi portalındaki yayımcı KIMLIĞI
+   1. Teklif KIMLIĞI/adı – özel durumun istendiği teklif KIMLIĞI/adı 
+   1. SKU/plan KIMLIĞI – özel durumun istendiği sanal makine teklifinin plan KIMLIĞI/SKU 'su
+   1. Sürüm: özel durum istenen VM teklifinin sürümü
+   1. Özel durum türü – testler, kilitli VM, özel şablonlar
+   1. İsteğin nedeni-bu özel durumun nedeni ve dışarıda bırakılan testler hakkında bilgi 
+   1. Zaman çizelgesi-bu özel durumun istendiği Tarih 
+   1. Ek-tüm önem bulgu belgelerini ekleyin. Kilitli VM 'Ler için, test raporunu ve özel şablonlar için ek olarak özel ARM şablonunu sağlayın. Kilitli VM 'Ler için rapor iliştirilemedi ve özel şablonlar için özel ARM şablonu, istek reddine neden olacak
 
 ## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Bir VM teklifinde bir güvenlik açığını nasıl ele almak veya açıktan yararlanmak
 
@@ -403,7 +405,7 @@ Bu adımları tamamlayabilmeniz için, eklemek istediğiniz VM görüntüsünün
 1. **Plana genel bakış** sekmesinde, **ad** sütununda, VM 'yi eklemek istediğiniz planı seçin.
 1. **Teknik yapılandırma** sekmesinde, **VM GÖRÜNTÜLERI**altında **+ VM görüntüsü Ekle**' yi seçin.
    > [!NOTE]
-   > Bir plana tek seferde yalnızca bir VM görüntüsü ekleyebilirsiniz. Birden çok VM görüntüsü eklemek için ilk olanı yayımlayın ve sonraki VM görüntüsünü eklemeden önce _Yayımcı imza_ aşamasına gelene kadar bekleyin.
+   > Bir plana tek seferde yalnızca bir VM görüntüsü ekleyebilirsiniz. Birden çok VM görüntüsü eklemek için, bir sonraki VM görüntüsünü eklemeden önce her birini canlı yayımlayın.
 1. Görüntülenen kutulara yeni bir disk sürümü ve sanal makine görüntüsü belirtin.
 1. **Taslağı kaydet**'i seçin.
 1. VM görüntüsünü güvenlik güvenlik açığıyla birlikte kaldırmak için sonraki bölüme geçin.
@@ -425,6 +427,7 @@ VM görüntüsünü kaldırdıktan veya değiştirdikten sonra teklifi yeniden y
 1. **Gözden geçir ve Yayımla '** yı seçin.
 1. Sertifika ekibine herhangi bir bilgi sağlamanız gerekiyorsa, **sertifikayı sertifika notları** kutusuna ekleyin.
 1. **Yayımla**’yı seçin.
+1. Yayımlama durumu Yayımla aşamasına ulaştığında **canlı çalış**' ı seçin.
 
 Yayımlama süreci hakkında daha fazla bilgi için bkz. [ticari Market 'e yönelik bir teklifi İnceleme ve yayımlama](../review-publish-offer.md).
 

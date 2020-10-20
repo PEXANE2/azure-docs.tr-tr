@@ -1,18 +1,18 @@
 ---
 title: Azure tarafından atanan temsilcinin kaynak yönetimi
 description: Azure Temsilcili kaynak yönetimi, Azure Athouse 'ın önemli bir parçasıdır. Bu, hizmet sağlayıcılarının uygun olmayan kaynakları çeviklerle ve duyarlığa göre yönetmesine olanak tanır.
-ms.date: 08/12/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9a499ceda546b7ea5c71cd8c770f1a4b99001b08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163535"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203866"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimi
 
-Azure Temsilcili kaynak yönetimi, [Azure Use](../overview.md)'ın temel bileşenlerinden biridir. Azure Temsilcili kaynak yönetimi sayesinde, hizmet sağlayıcıları müşteri katılımı ve ekleme deneyimlerini basitleştirecek şekilde, yetki verilen kaynakları çeviklik ve duyarlıkla yönetdirebilir.
+Azure Temsilcili kaynak yönetimi, [Azure Use](../overview.md)'ın temel bileşenlerinden biridir. Azure Temsilcili kaynak yönetimi sayesinde, hizmet sağlayıcıları müşteri katılımı ve ekleme deneyimlerini basitleştirecek şekilde, yetki verilen kaynakları çeviklik ve duyarlıkla yönetdirebilir. Müşteriler, kiracılarına erişebilecek hizmet sağlayıcılarının denetimini korur, müşteriler kiracılarına kimlerin erişebileceklerini, erişebilecek kaynakları ve hangi eylemlerin alınacağını denetler.
 
 ## <a name="what-is-azure-delegated-resource-management"></a>Azure Temsilcili kaynak yönetimi nedir?
 
@@ -35,7 +35,8 @@ Yüksek düzeyde, Azure tarafından atanan kaynak yönetiminin nasıl çalışt�
 2. Bu erişimi belirtin ve müşteriyi Azure açık bir şekilde iki şekilde kullanabilirsiniz:
    - Müşterinin kabul edeceği [bir Azure Marketi yönetilen hizmet teklifi](../how-to/publish-managed-services-offers.md) (özel veya ortak) yayımlayın
    - Bir veya daha fazla belirli abonelik veya kaynak grubu için [Azure Resource Manager şablonunu müşterinin kiracısına dağıtma](../how-to/onboard-customer.md)
-3. Müşteri eklendi olduktan sonra yetkili kullanıcılar, yönetilen kiracınızda oturum açabilir ve tanımladığınız erişime göre belirtilen müşteri kapsamında görevler gerçekleştirebilir.
+
+3. Müşteri eklendi olduktan sonra yetkili kullanıcılar, yönetilen kiracınızda oturum açabilir ve tanımladığınız erişime göre belirtilen müşteri kapsamında görevler gerçekleştirebilir. Müşteriler, hizmet sağlayıcısı eylemlerini gözden geçirebilir ve gerekirse erişimi kaldırma seçeneğine sahip olabilir.
 
 > [!NOTE]
 > Farklı [bölgelerde](../../availability-zones/az-overview.md#regions)bulunan temsilcili kaynakları yönetebilirsiniz. Ancak, bir [Ulusal bulut](../../active-directory/develop/authentication-national-cloud.md) ve Azure genel bulutu genelinde veya iki ayrı ulusal bulutta abonelikler temsilciliğini desteklemez.

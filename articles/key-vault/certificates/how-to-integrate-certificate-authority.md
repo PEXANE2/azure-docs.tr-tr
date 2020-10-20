@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d02568dbb5dfc6b7feb38d353e1ba0ecd8ae25d6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588934"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204002"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme
 
@@ -48,7 +48,7 @@ DigiCert CertCentral hesabınızdan aşağıdaki bilgilere sahip olduğunuzdan e
 ## <a name="adding-certificate-authority-in-key-vault"></a>Key Vault sertifika yetkilisi ekleniyor 
 DigiCert CertCentral hesabından bilgi topladıktan sonra artık anahtar kasasındaki sertifika yetkilisi listesine DigiCert ekleyebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1.  DigiCert sertifika yetkilisi eklemek için, DigiCert eklemek istediğiniz anahtar kasasına gidin. 
 2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
@@ -136,8 +136,15 @@ Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlem
 
 - Keykasadan bir DigiCert joker belgesi oluşturabilir miyim? 
    Evet. Bu, DigiCert hesabınızı nasıl yapılandırdığınıza bağlıdır.
-- Bir EV sertifikası oluşturuyoruz, bunu nasıl belirttik? 
-   Bir sertifika oluştururken Gelişmiş Ilke yapılandırması ' na tıklayın ve ardından sertifika türünü belirtin. Desteklenen değerler şunlardır: OV-SSL, KD-SSL
+- DigiCert ile **ov-SSL veya KD SSL** sertifikası nasıl oluşturabilirim? 
+   Anahtar Kasası, OV ve EV SSL sertifikaları oluşturmayı destekler. Bir sertifika oluştururken Gelişmiş Ilke yapılandırması ' na tıklayın ve ardından sertifika türünü belirtin. Desteklenen değerler şunlardır: OV-SSL, KD-SSL
+   
+   DigiCert hesabınız izin veriyorsa bu tür bir sertifikayı Anahtar Kasası 'nda oluşturabilirsiniz. Bu tür bir sertifika için doğrulama, DigiCert tarafından gerçekleştirilir ve doğrulama başarısız olursa, destek ekibi çözüm konusunda en iyi şekilde yardım edebilir. Bir sertifika oluştururken subjectName ' de tanımlayarak daha fazla bilgi ekleyebilirsiniz.
+
+Örnek
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+   
 - Tümleştiricert aracılığıyla sertifika edinerek tümleştirme aracılığıyla DigiCert sertifikası oluşturmada bir gecikme süresi var mı?
    Hayır. Bir sertifika oluştururken, bu doğrulama işlemi zaman alabilir ve doğrulamanın aşağıdaki işlem DigiCert 'e bağlı olduğunu belirten bir işlemdir.
 

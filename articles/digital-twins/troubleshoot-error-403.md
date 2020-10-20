@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: bc4fbbc265bef00be27c890c3f090a49591dc415
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86fd6a5d7ca1cb9c828a4ad095720f1664b82caa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562749"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201452"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Hizmet isteği başarısız oldu. Durum: 403 (yasak)
 
@@ -29,9 +29,9 @@ Bu hata, kimlik doğrulaması gerektiren birçok hizmet isteği türünde gerçe
 
 ### <a name="cause-2"></a>Neden #2
 
-Azure dijital TWINS ile iletişim kurmak için bir istemci uygulaması kullanıyorsanız, [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) uygulama kaydı, Azure Digital TWINS hizmeti için ayarlanmış izinlere sahip olmadığından bu hata ortaya çıkabilir.
+Bir [uygulama kaydıyla](how-to-create-app-registration.md)kimlik doğrulayan Azure dijital TWINS ile iletişim kurmak için bir istemci uygulaması kullanıyorsanız, bu hata, uygulama Kaydlarınızın Azure dijital TWINS hizmeti için ayarlanmış izinlere sahip olmadığı için ortaya çıkabilir.
 
-Uygulama kaydı, Azure dijital TWINS API 'Leri için yapılandırılmış erişim izinlerinin olması gerekir. Daha sonra, istemci uygulamanızın uygulama kaydıyla ilgili kimlik doğrulaması yapıldığında, uygulama kaydının yapılandırıldığı izinler verilir.
+Uygulama kaydı, Azure dijital TWINS API 'Leri için yapılandırılmış erişim izinlerine sahip olmalıdır. Daha sonra, istemci uygulamanızın uygulama kaydıyla ilgili kimlik doğrulaması yapıldığında, uygulama kaydının yapılandırıldığı izinler verilir.
 
 ## <a name="solutions"></a>Çözümler
 
@@ -59,23 +59,33 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 Bu rol gereksinimi ve atama süreci hakkında daha fazla bilgi için bkz. *nasıl yapılır: bir örnek ve kimlik doğrulaması ayarlama (CLI veya portal)*. [ *Set up your user's access permissions* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)
 
-Bu rol ataması zaten varsa ve yine de 403 sorunuyla karşılaşırsanız, sonraki çözüme geçin.
+Bu rol ataması zaten varsa *ve* bir istemci uygulamasının kimliğini doğrulamak Için BIR Azure AD uygulama kaydı kullanıyorsanız, bu çözüm 403 sorununu gidermezse sonraki çözüme devam edebilirsiniz.
 
 ### <a name="solution-2"></a>Çözüm #2
 
-İkinci çözüm, Azure AD uygulama kaydının Azure Digital TWINS hizmeti için yapılandırılmış izinlere sahip olduğunu doğrulamadır. Bu yapılandırılmamışsa, bunları ayarlayın.
+İstemci uygulamasının kimliğini doğrulamak için bir Azure AD uygulama kaydı kullanıyorsanız, olası ikinci çözüm, uygulama kaydının Azure Digital TWINS hizmeti için yapılandırılmış izinlere sahip olduğunu doğrulamadır. Bunlar yapılandırılmazsa, bunları ayarlayın.
 
 #### <a name="check-current-setup"></a>Geçerli kurulumu denetleyin
 
-[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
+İzinlerin doğru yapılandırılıp yapılandırılmadığını denetlemek için Azure portal [Azure AD uygulama kaydına genel bakış sayfasına](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) gidin. Bu sayfaya Portal arama çubuğunda *uygulama kayıtları* arayarak ulaşabilirsiniz.
+
+Aboneliğinizde oluşturulmuş tüm uygulama kayıtlarını görmek için *tüm uygulamalar* sekmesine geçin.
+
+Listede yeni oluşturduğunuz uygulama kaydını görmeniz gerekir. Ayrıntılarını açmak için seçin.
+
+:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Azure portal Uygulama kayıtları sayfası":::
 
 İlk olarak, Azure dijital TWINS izinleri ayarlarının kayıt üzerinde doğru şekilde ayarlandığını doğrulayın. Bunu yapmak için, menü çubuğundan *bildirim* ' ı seçerek uygulama kaydının bildirim kodunu görüntüleyin. Kod penceresinin en altına kaydırın ve altındaki bu alanları bulun `requiredResourceAccess` . Değerler aşağıdaki ekran görüntüsünde olanlarla eşleşmelidir:
 
-[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Azure portal Uygulama kayıtları sayfası":::
+
+Ardından, bu uygulama kaydının Azure dijital TWINS için okuma/yazma izinleri içerdiğini doğrulamak için menü çubuğunda *API izinleri* ' ni seçin. Şöyle bir giriş görmeniz gerekir:
+
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Azure portal Uygulama kayıtları sayfası":::
 
 #### <a name="fix-issues"></a>Sorunları giderme
 
-Bunlardan herhangi biri açıklanenden farklı görünüyorsa, *nasıl yapılır: örnek ve kimlik doğrulaması (CLI veya portal) ayarlama*konusunun [ *istemci uygulamaları için erişim izinlerini ayarlama* bölümünde](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) bir uygulama kaydı ayarlama yönergelerini izleyin.
+Bunlardan herhangi biri açıklanenden farklı görünüyorsa, [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md)bölümünde uygulama kaydı ayarlama yönergelerini izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
