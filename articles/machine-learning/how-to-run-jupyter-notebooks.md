@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 94c67be39ddd9f52087fa4632e239a8e85930886
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171477"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221441"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 
@@ -108,6 +108,16 @@ Bir işlem örneğine bağlanmadan Not defterini düzenleyebilirsiniz.  Not deft
 Bir işlem örneği çalışırken, herhangi bir Python not defterinde [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)tarafından desteklenen kod tamamlamayı da kullanabilirsiniz.
 
 Ayrıca, Not defteri araç çubuğundan Jupyter veya JupyterLab ' i de başlatabilirsiniz.  Azure Machine Learning, Microsoft Desteği sınırının dışında açık kaynak ürünleri olduklarından jupi veya jupi 'nın hata ve hatalarını düzeltir.
+
+### <a name="focus-mode"></a>Odak modu
+
+Etkin sekmelerinize odaklanabilmeniz için, geçerli görünümünüzü genişletmek üzere odak modunu kullanın. Odak modu, Not defterleri dosya gezginini gizler.
+
+1. Odak modunu açmak için Terminal penceresi araç çubuğunda **odak modu**' nu seçin   . Pencere genişenize bağlı olarak, bu, araç çubuğunuza **...** menü öğesinin altında bulunabilir.
+1. Odak modundayken **Standart Görünüm '** ü seçerek standart görünüme geri dönün.
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Yeni dosya oluştur":::
+
 
 ### <a name="use-intellisense"></a>IntelliSense kullanma
 

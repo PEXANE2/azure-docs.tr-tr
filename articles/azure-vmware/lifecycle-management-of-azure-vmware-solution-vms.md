@@ -3,12 +3,12 @@ title: Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 description: Azure VMware Çözüm sanal makinelerinizin yaşam döngüsünün tüm yönlerini Microsoft Azure yerel araçlarla yönetmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950372"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216258"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 
@@ -53,8 +53,8 @@ Azure VMware Çözüm VM 'Leri MMA aracılığıyla izlenebilir (Log Analytics A
 Azure Otomasyonu 'ndaki **azure güncelleştirme yönetimi** , karma bir ortamda Windows ve Linux makineleriniz için işletim sistemi güncelleştirmelerini yönetir. Düzeltme Eki uyumluluklarını izler ve düzeltme için düzeltme eki uygulama Izleme için Azure Izleyici 'ye iletir. Azure Güncelleştirme Yönetimi, sanal makinelerinizdeki güncelleştirmelerin durumunu değerlendirmek üzere depolanan verileri kullanmak için Log Analytics çalışma alanınıza bağlanmalıdır.
 - Log Analytics Azure Güncelleştirme Yönetimi eklemek için önce [bir Azure Otomasyonu hesabı oluşturmanız](../automation/automation-create-standalone-account.md)gerekir.
 - Log Analytics çalışma alanınızı Otomasyon hesabınızla bağlamak için, bkz. [Log Analytics çalışma alanı ve Otomasyon hesabı](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
-- Sanal makinelerinize yönelik Azure Güncelleştirme Yönetimi etkinleştirmek için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](../automation/update-management/update-mgmt-enable-automation-account.md).
-- Azure Güncelleştirme Yönetimi VM 'Leri ekledikten sonra, [güncelleştirmeleri sanal makinelere dağıtabilir ve sonuçları gözden](../automation/update-management/update-mgmt-deploy-updates.md)geçirebilirsiniz. 
+- Sanal makinelerinize yönelik Azure Güncelleştirme Yönetimi etkinleştirmek için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](../automation/update-management/enable-from-automation-account.md).
+- Azure Güncelleştirme Yönetimi VM 'Leri ekledikten sonra, [güncelleştirmeleri sanal makinelere dağıtabilir ve sonuçları gözden](../automation/update-management/deploy-updates.md)geçirebilirsiniz. 
 
 **Azure Güvenlik Merkezi** , bulutta ve şirket içinde hibrit iş yükleriniz genelinde gelişmiş tehdit koruması sağlar. Bu işlem, Azure VMware Çözüm VM 'lerinin güvenlik açığını değerlendirir ve gerektiğinde uyarı yükseltir. Bu güvenlik uyarıları, çözüm için Azure Izleyici 'ye iletilebilir.
 - Azure Güvenlik Merkezi dağıtım gerektirmez. Daha fazla bilgi için bkz. [sanal makineler Için desteklenen özelliklerin](../security-center/security-center-services.md)listesi.

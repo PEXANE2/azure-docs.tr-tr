@@ -3,14 +3,13 @@ title: Azure Işlevlerinde akış yürütme günlükleri
 description: boşluk dahil 115-145 karakter. Bu özet, arama sonucunda görüntülenir.
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.service: azure-functions
-ms.custom: can-be-multiple-comma-separated
-ms.openlocfilehash: e2e4bdb2c1adf53fabf593a4f0c84873786ca32a
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: contperfq2
+ms.openlocfilehash: 61756afb5111da3d5573e967a6ca13f25354aef5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168953"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216105"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Azure Işlevlerinde akış yürütme günlüklerini etkinleştirme
 
@@ -54,7 +53,7 @@ Application Insights ' de **canlı ölçüm akışı**' ı seçin. [Örneklenir 
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure/install-azure-cli)kullanarak akış günlüklerini etkinleştirebilirsiniz. Oturum açmak için aşağıdaki komutları kullanın, aboneliğinizi seçin ve günlük dosyalarını akışla açın:
 

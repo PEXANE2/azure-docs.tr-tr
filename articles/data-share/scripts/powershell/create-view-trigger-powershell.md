@@ -1,20 +1,17 @@
 ---
-title: 'PowerShell betiği: Azure veri paylaşımının anlık görüntü Tetikleyicileri oluşturma ve görüntüleme | Microsoft Docs'
+title: 'PowerShell betiği: Azure veri paylaşımında anlık görüntü Tetikleyicileri oluşturma ve görüntüleme'
 description: Bu PowerShell betiği, paylaşılan anlık görüntü Tetikleyicileri oluşturur ve alır.
-services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 31d9754ddd9e9dfd0cca258901a6c8ab2c4a9cdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05b70641873ab352ca92ac199d99c05b2fe0f4e6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497174"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221307"
 ---
 # <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>Anlık görüntü Tetikleyicileri oluşturmak ve paylaşmak için PowerShell 'i kullanma
 
@@ -47,12 +44,12 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [New-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger?view=azps-2.6.0) | Bir paylaşma anlık görüntü tetikleyicisi oluşturun. |
-| [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Bir paylaşma eşitlemesinin eşitleme ayarlarını alır. |
+| [New-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger) | Bir paylaşma anlık görüntü tetikleyicisi oluşturun. |
+| [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting) | Bir paylaşma eşitlemesinin eşitleme ayarlarını alır. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).
 
 Ek Azure veri paylaşımının PowerShell betiği örnekleri, [Azure veri paylaşımında PowerShell örnekleri](../../samples-powershell.md)bölümünde bulunabilir.

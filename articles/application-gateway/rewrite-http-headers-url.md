@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281200"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216683"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP üstbilgilerini ve URL 'YI Application Gateway yeniden yazın
 
@@ -50,7 +50,7 @@ Application Gateway URL yeniden yazma özelliği ile şunları yapabilirsiniz:
 
 Azure portal kullanarak URL 'YI Application Gateway yeniden yazmayı öğrenmek için [buraya](rewrite-url-portal.md)bakın.
 
-![görüntü](./media/rewrite-http-headers-url/url-rewrite-overview.png)
+![Application Gateway bir URL 'YI yeniden yazma işlemini açıklayan diyagram.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
 > URL yeniden yazma özelliği önizlemededir ve yalnızca Application Gateway Standard_v2 ve WAF_v2 SKU 'SU için kullanılabilir. Üretim ortamında kullanılması önerilmez. Önizlemeler hakkında daha fazla bilgi edinmek için [buradaki kullanım koşullarına](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.

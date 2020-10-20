@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 40cf46746587cbd221bd958ccb528c9e40cf18bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299429"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217567"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -55,7 +55,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
 1. Günlük uyarıları, iki [**Ölçü**](alerts-unified-log.md#measure)türüne göre olabilir:
     1. **Sonuç sayısı** -sorgu tarafından döndürülen kayıt sayısı.
-    1. **Ölçüm ölçümü**  -  Seçilen ifade ve [bin ()](/azure/kusto/query/binfunction) seçimine göre gruplanmış özetleme kullanılarak hesaplanan *Toplam değer* . Örneğin:
+    1. **Ölçüm ölçümü**  -  Seçilen ifade ve [bin ()](/azure/kusto/query/binfunction) seçimine göre gruplanmış özetleme kullanılarak hesaplanan *Toplam değer* . Örnek:
 
     ```Kusto
     // Reported errors
@@ -201,7 +201,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
     > [!NOTE]
     > Günlük uyarı kuralları şu anda [durum bilgisiz ve çözümlenmiyor](alerts-unified-log.md#state-and-resolving-alerts).
 
-1. Kuralları düzenlemek için üstteki çubukta **Kuralları Yönet** düğmesini seçin:
+1. Kuralları düzenlemek için üstteki çubukta **Uyarı kurallarını yönet** düğmesini seçin:
 
     ![ Uyarı kurallarını yönet](media/alerts-log/manage-alert-rules.png)
 

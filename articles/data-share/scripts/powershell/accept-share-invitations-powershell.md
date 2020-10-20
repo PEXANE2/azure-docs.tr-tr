@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell betiği: bir Azure veri paylaşımından daveti kabul etme | Microsoft Docs'
+title: 'PowerShell betiği: bir Azure veri paylaşımından daveti kabul etme'
 description: Bu PowerShell betiği, var olan bir veri paylaşımından davetleri kabul eder.
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 246e3550650dfd458b4aeecda3b5b7733e49f017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24091bafac7ad5c558b975d52064f12715b3d622
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307340"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221409"
 ---
 # <a name="use-powershell-to-accept-a-data-share-invitation"></a>PowerShell kullanarak veri paylaşma davetini kabul etme
 
@@ -42,13 +40,12 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Get-Azdatasharedavetini](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Gönderilen veri paylaşma davetlerini alın ve listeleyin. |
-| [New-AzDataShareSubscription](/powershell/module/az.datashare/get-azdatasharesubscription?view=azps-2.6.0) | Veri paylaşma aboneliği oluşturun. |
+| [Get-Azdatasharedavetini](/powershell/module/az.datashare/get-azdatashareinvitation) | Gönderilen veri paylaşma davetlerini alın ve listeleyin. |
+| [New-AzDataShareSubscription](/powershell/module/az.datashare/get-azdatasharesubscription) | Veri paylaşma aboneliği oluşturun. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).
 
 Ek Azure veri paylaşımının PowerShell betiği örnekleri, [Azure veri paylaşımında PowerShell örnekleri](../../samples-powershell.md)bölümünde bulunabilir.
-

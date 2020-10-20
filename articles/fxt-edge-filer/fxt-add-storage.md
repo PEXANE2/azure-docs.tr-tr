@@ -6,42 +6,43 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79239220"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217533"
 ---
-# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Öğretici: arka uç depolama ekleme ve sanal ad alanını yapılandırma 
+# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Öğretici: arka uç depolama ekleme ve sanal ad alanını yapılandırma
 
-Bu öğreticide, önbelleğiniz için arka uç depolamanın nasıl ekleneceği ve istemciye yönelik sanal FileSystem 'ın nasıl ayarlanacağı açıklanmaktadır. 
+Bu öğreticide, önbelleğiniz için arka uç depolamanın nasıl ekleneceği ve istemciye yönelik sanal FileSystem 'ın nasıl ayarlanacağı açıklanmaktadır.
 
-Küme, veri istemcileri isteğine erişmek ve değişiklikleri önbellekten daha kalıcı olarak depolamak için arka uç depolama sistemlerine bağlanır. 
+Küme, veri istemcileri isteğine erişmek ve değişiklikleri önbellekten daha kalıcı olarak depolamak için arka uç depolama sistemlerine bağlanır.
 
-Ad alanı, istemci tarafı iş akışlarını değiştirmeden arka uç depolamayı takas etmenize olanak tanıyan, istemciye dönük sahte FileSystem ' dır. 
+Ad alanı, istemci tarafı iş akışlarını değiştirmeden arka uç depolamayı takas etmenize olanak tanıyan, istemciye dönük sahte FileSystem ' dır.
 
-Bu öğreticide şunları öğreneceksiniz: 
+Bu öğreticide şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure FXT Edge Filer kümesine arka uç depolama ekleme 
+>
+> * Azure FXT Edge Filer kümesine arka uç depolama ekleme
 > * Depolama için istemciye yönelik yolu tanımlama
 
 ## <a name="about-back-end-storage"></a>Arka uç depolama hakkında
 
 Azure FXT Edge dosyalayıcı kümesi, bir arka uç depolama sistemini FXT kümesine bağlamak için bir *çekirdek dosyalayıcı* tanımı kullanır.
 
-Azure FXT Edge Filer, birçok popüler NAS donanım sistemiyle uyumludur ve Azure Blob veya diğer bulut depolamadaki boş kapsayıcıları kullanabilir. 
+Azure FXT Edge Filer, birçok popüler NAS donanım sistemiyle uyumludur ve Azure Blob veya diğer bulut depolamadaki boş kapsayıcıları kullanabilir.
 
 FXT işletim sisteminin, bulut depolama birimindeki tüm verileri tamamen yönetebilmesi için, eklendiğinde, bulut depolama kapsayıcıları boş olmalıdır. Kapsayıcıyı kümeye bir çekirdek taşıma olarak ekledikten sonra, mevcut verilerinizi bulut kapsayıcısına taşıyabilirsiniz.
 
 Sisteminize bir çekirdek filigran eklemek için Denetim Masası 'nı kullanın.
 
 > [!NOTE]
-> 
+>
 > Amazon AWS veya Google Cloud Storage 'ı kullanmak istiyorsanız, bir FlashCloud<sup>TM</sup> özellik lisansı yüklemelisiniz. Bir lisans anahtarı için Microsoft temsilcinizle iletişim kurun ve ardından [özellik lisansları eklemek veya kaldırmak](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/install_licenses.html#install-licenses)için eski yapılandırma kılavuzundaki yönergeleri izleyin.
-> 
-> Azure Blob depolama desteği, Azure FXT Edge Filer yazılım lisansına dahildir. 
+>
+> Azure Blob depolama desteği, Azure FXT Edge Filer yazılım lisansına dahildir.
 
 Çekirdek filerleri ekleme hakkında daha ayrıntılı bilgi için, küme yapılandırma kılavuzunun şu bölümlerini okuyun:
 
@@ -59,7 +60,7 @@ Bir çekirdek fili ekledikten sonra, ayarlarını çekirdek Filer ayrıntıları
 
 ![Çekirdek Dosyasıları yönetme sayfasındaki çekirdek dosyasıları listesinin üzerindeki Oluştur düğmesine tıklanın](media/fxt-cluster-config/create-core-filer-button.png)
 
-**Yeni çekirdek fili ekleme** Sihirbazı, arka uç depolama alanınızı bağlayan bir çekirdek film oluşturma sürecinde size yol gösterir. Küme yapılandırma kılavuzunda, işlemin adım adım açıklamaları vardır. Bu, NFS/NAS depolama ve bulut depolama için farklıdır (bağlantılar yukarıda bulunur). 
+**Yeni çekirdek fili ekleme** Sihirbazı, arka uç depolama alanınızı bağlayan bir çekirdek film oluşturma sürecinde size yol gösterir. Küme yapılandırma kılavuzunda, işlemin adım adım açıklamaları vardır. Bu, NFS/NAS depolama ve bulut depolama için farklıdır (bağlantılar yukarıda bulunur).
 
 Alt görevler şunları içerir:
 
@@ -71,15 +72,15 @@ Alt görevler şunları içerir:
 
 * NAS Core filers için tam etki alanı adını (FQDN) veya IP adresini belirtin. FQDN tüm çekirdek dosyasıları için önerilir ve SMB erişimi için gereklidir.
 
-* Önbellek ilkesi seçin-sihirbazın ikinci sayfasında, yeni çekirdek filme için kullanılabilir önbellek ilkeleri listelenir. Ayrıntılar için, [küme yapılandırma kılavuzunun önbellek ilkeleri bölümünü](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html)okuyun. 
+* Önbellek ilkesi seçin-sihirbazın ikinci sayfasında, yeni çekirdek filme için kullanılabilir önbellek ilkeleri listelenir. Ayrıntılar için, [küme yapılandırma kılavuzunun önbellek ilkeleri bölümünü](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html)okuyun.
 
   ![Donanım NAS yeni çekirdek filleyici sihirbazının ikinci sayfası; Önbellek Ilkesi açılır menüsü, birkaç devre dışı seçeneği ve üç geçerli önbellek ilkesi seçeneğini (atlama, okuma önbelleği ve okuma/yazma önbelleği) gösteren açıktır.](media/fxt-cluster-config/new-nas-choose-cache-policy.png)
 
 * Bulut depolama için, diğer parametrelerin yanı sıra bulut hizmetini ve erişim kimlik bilgilerini belirtmeniz gerekir. Ayrıntılar için, küme yapılandırma kılavuzunda [bulut hizmeti ve protokol](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) makalesini okuyun.
 
-  ![Yeni çekirdek filme sihirbazında bulut çekirdeği dosyalayıcı bilgileri](media/fxt-cluster-config/new-core-filer-cloud3.png) 
+  ![Yeni çekirdek filme sihirbazında bulut çekirdeği dosyalayıcı bilgileri](media/fxt-cluster-config/new-core-filer-cloud3.png)
   
-  Bu küme için bulut erişim kimlik bilgileri zaten eklediyseniz listede görünürler. **Küme**  >  **bulutu kimlik bilgileri** ayarları sayfasında kimlik bilgilerini güncelleştirin ve ekleyin. 
+  Bu küme için bulut erişim kimlik bilgileri zaten eklediyseniz listede görünürler. **Küme**  >  **bulutu kimlik bilgileri** ayarları sayfasında kimlik bilgilerini güncelleştirin ve ekleyin.
 
 Sihirbazda gerekli tüm ayarları doldurduktan sonra değişikliği göndermek için, **Film Ekle** düğmesine tıklayın.
 
@@ -91,14 +92,14 @@ Bu ekran görüntüsündeki çekirdek filme 'de vServer eksik. Çekirdek filmci 
 
 ## <a name="configure-the-namespace"></a>Ad alanını yapılandırma
 
-Azure FXT Edge Filer kümesi, farklı arka uç sistemlerinde depolanan verilere istemci erişimini kolaylaştıran *küme ad alanı* adlı bir sanal dosya sistemi oluşturur. İstemciler sanal bir yol kullanarak dosya istebildiğinden, depolama sistemleri istemci iş akışını değiştirmek zorunda kalmadan eklenebilir veya değiştirilebilir. 
+Azure FXT Edge Filer kümesi, farklı arka uç sistemlerinde depolanan verilere istemci erişimini kolaylaştıran *küme ad alanı* adlı bir sanal dosya sistemi oluşturur. İstemciler sanal bir yol kullanarak dosya istebildiğinden, depolama sistemleri istemci iş akışını değiştirmek zorunda kalmadan eklenebilir veya değiştirilebilir.
 
-Küme ad alanı Ayrıca benzer bir dosya yapısında bulut ve NAS depolama sistemleri sunmanıza olanak tanır. 
+Küme ad alanı Ayrıca benzer bir dosya yapısında bulut ve NAS depolama sistemleri sunmanıza olanak tanır.
 
-Kümenin vservers, ad alanını korur ve istemcilere içerik sağlar. Küme ad alanını oluşturmak için iki adım vardır: 
+Kümenin vservers, ad alanını korur ve istemcilere içerik sağlar. Küme ad alanını oluşturmak için iki adım vardır:
 
-1. VServer oluştur 
-1. Arka uç depolama sistemleri ve istemciye yönelik dosya sistemi yolları arasında ardımları ayarlama 
+1. VServer oluştur
+1. Arka uç depolama sistemleri ve istemciye yönelik dosya sistemi yolları arasında ardımları ayarlama
 
 ### <a name="create-a-vserver"></a>VServer oluştur
 
@@ -109,7 +110,7 @@ VServers, istemci ile kümenin çekirdek dosyasıları arasında verilerin nası
 * Vservers, çekirdek dosyalayıcı dışa aktarma ilkeleri ve Kullanıcı kimlik doğrulama sistemleri dahil olmak üzere dosya erişim denetimlerini uygular
 * Sanal sunucular SMB altyapısı sağlar
 
-Bir küme vServer 'ı yapılandırmaya başlamadan önce, bağlantılı belgeleri okuyun ve ad alanı ve vservers 'ı anlamak için Microsoft temsilcinize başvurun. VLAN 'Lar kullanıyorsanız, vServer 'ı oluşturmadan önce [bunları oluşturun](fxt-configure-network.md#adjust-network-settings) . 
+Bir küme vServer 'ı yapılandırmaya başlamadan önce, bağlantılı belgeleri okuyun ve ad alanı ve vservers 'ı anlamak için Microsoft temsilcinize başvurun. VLAN 'Lar kullanıyorsanız, vServer 'ı oluşturmadan önce [bunları oluşturun](fxt-configure-network.md#adjust-network-settings) .
 
 Küme yapılandırma kılavuzunun bu bölümleri, FXT vServer ve genel ad alanı özellikleri hakkında bilgi almanıza yardımcı olur:
 
@@ -117,7 +118,7 @@ Küme yapılandırma kılavuzunun bu bölümleri, FXT vServer ve genel ad alanı
 * [Genel ad alanı kullanma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)
 * [VServer oluşturma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver)
 
-Kümeniz için en az bir vServer gerekir. 
+Kümeniz için en az bir vServer gerekir.
 
 Yeni bir vServer oluşturmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
@@ -129,7 +130,7 @@ Yeni bir vServer oluşturmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
 * Ağınızda VLAN 'Lar varsa, bu vServer için kullanılacak VLAN
 
-**VServer**  >  Yeni bir vServer oluşturmak için vServer**vservers ayarlarını yönet** sayfasını kullanın. Ayrıntılar için küme yapılandırma kılavuzunda [bir VServer oluşturma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) konusunu okuyun. 
+**VServer**  >  Yeni bir vServer oluşturmak için vServer**vservers ayarlarını yönet** sayfasını kullanın. Ayrıntılar için küme yapılandırma kılavuzunda [bir VServer oluşturma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) konusunu okuyun.
 
 ![Yeni bir sanal sunucu oluşturmaya yönelik açılır pencere](media/fxt-cluster-config/new-vserver.png)
 
@@ -154,7 +155,6 @@ Hem vServer hem de bir çekirdek filinize sahip olduktan sonra, istemcilerin çe
 İkinci olarak, **VServer**  >  Bu vServer aracılığıyla erişildiğinde, özelleştirilmiş ilkeyi çekirdek filinize dışarı aktarmalara uygulamak için vServer**ilke dışa aktarma** sayfasını kullanın.
 
 Ayrıntılar için [çekirdek Filer dışarı aktarımlarının erişimini denetleyen](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) küme yapılandırma kılavuzu makalesini okuyun.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

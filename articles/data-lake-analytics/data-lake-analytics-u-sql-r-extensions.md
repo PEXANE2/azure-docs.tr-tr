@@ -1,17 +1,16 @@
 ---
 title: U-SQL betiklerini Azure Data Lake Analytics R ile Genişlet
 description: Azure Data Lake Analytics kullanarak U-SQL betiklerinizde R kodu çalıştırmayı öğrenin. R kodunu satır içi veya dosyalardan başvuru olarak ekleyin.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab28ba1bb6185f5f0ab90df99f0abea7895b1bf4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87127409"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218009"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>U-SQL betiklerini Azure Data Lake Analytics R Code ile genişletme
 
@@ -212,4 +211,4 @@ OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 
 * [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
 * [Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme](data-lake-analytics-data-lake-tools-get-started.md)
-* [Azure Data Lake Analytics işleri için U-SQL pencere işlevlerini kullanma](data-lake-analytics-use-window-functions.md)
+* [Azure Data Lake Analytics işleri için U-SQL pencere işlevlerini kullanma](./data-lake-analytics-u-sql-get-started.md)

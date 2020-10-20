@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1cfe27fd5c63bc4c1436982212b91e07f54aedb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85801929"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217397"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 
@@ -30,6 +30,12 @@ Load Balancer bağlantısı kullanılamadığında en yaygın belirtiler aşağ�
 - Load Balancer arkasındaki VM 'Ler yapılandırılmış bağlantı noktasındaki trafiğe yanıt vermiyor
 
 Arka uç VM 'lerine dış istemciler yük dengeleyiciye geldiğinde, istemcilerin IP adresi iletişim için kullanılacaktır. İstemcilerin IP adresinin NSG izin verilenler listesine eklendiğinden emin olun. 
+
+## <a name="symptom-no-outbound-connectivity-from-standard-internal-load-balancers-ilb"></a>Belirti: Standart iç yük dengeleyiciler (ıLB) ile giden bağlantı yok
+
+**Doğrulama ve çözümleme**
+
+Standart ılbs 'ler **Varsayılan olarak güvenlidir**. *Gizli* genel IP adresi aracılığıyla internet 'e bağlanmasına izin verilen temel ılbs. Bu, IP adresi statik olmadığı veya sahip olduğunuz NSG 'ler aracılığıyla kilitlendiği için üretim iş yükleri için recommened değildir. Kısa bir süre önce temel ıLB 'den standart bir ıLB 'ye taşındıysanız IP 'yi NSG 'ler aracılığıyla kilitleyen [yalnızca giden](egress-only.md) yapılandırma yoluyla açık bir IP oluşturmalısınız. 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Belirti: Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor
 Arka uç sunucularının yük dengeleyici kümesine katılması için, araştırma denetimini geçmesi gerekir. Sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer araştırmalarını anlama](load-balancer-custom-probe-overview.md). 

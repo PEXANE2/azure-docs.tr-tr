@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a532418ebc5cab08b06f8dde87e8126bf8e96ffe
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577858"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217176"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -118,7 +118,7 @@ Azure Defender uyarıları, güvenlik merkezi 'nin Uyarılar sayfasında, kayna�
 
 1. Uyarılar, her birindeki ayrıntılı düzeltme adımları ve araştırma bilgileri ile kendine dahil olmak üzere tasarlanmıştır. Daha geniş bir görünüm için diğer Azure Güvenlik Merkezi ve Azure Sentinel özelliklerini kullanarak daha fazla araştırma yapabilirsiniz:
 
-    * Daha fazla araştırmalar için SQL Server denetim özelliğini etkinleştirin. Azure Sentinel kullanıcısı kullanıyorsanız, Windows Güvenlik günlüğü etkinliklerinden SQL denetim günlüklerini Sentinel 'e yükleyebilir ve zengin araştırma deneyiminden yararlanabilirsiniz. [SQL Server denetimi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15).
+    * Daha fazla araştırmalar için SQL Server denetim özelliğini etkinleştirin. Azure Sentinel kullanıcısı kullanıyorsanız, Windows Güvenlik günlüğü etkinliklerinden SQL denetim günlüklerini Sentinel 'e yükleyebilir ve zengin araştırma deneyiminden yararlanabilirsiniz. [SQL Server denetimi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15&preserve-view=true).
     * Güvenlik duruşunuzu geliştirmek için, her uyarıda belirtilen ana makine için Güvenlik Merkezi 'nin önerilerini kullanın. Bu, gelecekteki saldırılardan riskleri azaltır. 
 
     [Uyarıları yönetme ve uyarıları yanıtlama hakkında daha fazla bilgi edinin](security-center-managing-and-responding-alerts.md).
@@ -129,6 +129,6 @@ Azure Defender uyarıları, güvenlik merkezi 'nin Uyarılar sayfasında, kayna�
 İlgili malzemeler için aşağıdaki makaleye bakın:
 
 - [SQL veritabanı ve Azure SYNAPSE Analytics için güvenlik uyarıları (eski adıyla SQL veri ambarı)](alerts-reference.md#alerts-sql-db-and-warehouse)
-- [Güvenlik uyarıları için e-posta bildirimleri ayarlama](security-center-provide-security-contact-details.md)
+- [Güvenlik uyarıları için e-posta bildirimlerini ayarlama](security-center-provide-security-contact-details.md)
 - [Azure Sentinel hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/sentinel/)
 - [Azure Güvenlik Merkezi 'nin veri güvenliği paketi](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
