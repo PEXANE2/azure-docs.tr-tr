@@ -6,17 +6,17 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269735"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201129"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Otomasyon görevleri (Önizleme) oluşturarak Azure kaynaklarını yönetme ve maliyetleri izleme
 
 > [!IMPORTANT]
-> Bu özellik genel önizlemede, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik genel önizleme aşamasındadır, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Azure kaynaklarını](../azure-resource-manager/management/overview.md#terminology) daha kolay bir şekilde yönetmenize yardımcı olmak için, kaynak türüne bağlı olarak kullanılabilirlik açısından değişen Otomasyon görev şablonlarını kullanarak belirli bir kaynak veya kaynak grubu için otomatik yönetim görevleri oluşturabilirsiniz. Örneğin, bir [Azure depolama hesabı](../storage/common/storage-account-overview.md)için, size bu depolama hesabı için aylık maliyeti gönderen bir Otomasyon görevi ayarlayabilirsiniz. Bir [Azure sanal makinesi](https://azure.microsoft.com/services/virtual-machines/)için, bu sanal makineyi önceden tanımlanmış bir zamanlamaya göre etkinleştiren veya kapatan bir Otomasyon görevi oluşturabilirsiniz.
 
@@ -47,9 +47,9 @@ Bu makalede, aşağıdaki görevlerin nasıl tamamlanacağı gösterilmektedir:
 
 Şu anda yalnızca kaynak düzeyinde bir Otomasyon görevi oluşturabilir, görevin çalışma geçmişini görüntüleyebilir ve görevin temel alınan mantıksal uygulama iş akışını düzenleyerek [Azure Logic Apps](../logic-apps/logic-apps-overview.md) hizmeti tarafından desteklenir. Otomasyon görevleri, [Azure Otomasyonu](../automation/automation-intro.md)'ndan daha basit ve hafif.
 
-Azure Otomasyonu, karşılaştırmaya göre Azure ve Azure dışı ortamlarınızda tutarlı Yönetimi destekleyen bulut tabanlı bir Otomasyon ve yapılandırma hizmetidir. Hizmet, [runbook 'lar](../automation/automation-runbook-execution.md), [değişiklik izleme ve stok](../automation/change-tracking.md), güncelleştirme yönetimi, paylaşılan yetenekler ve heterojen özelliklerle [işlemleri yönetmek için işlem otomasyonu](../automation/automation-intro.md#process-automation) 'nu kapsar. Otomasyon, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında komple denetim sağlar.
+Azure Otomasyonu, karşılaştırmaya göre Azure ve Azure dışı ortamlarınızda tutarlı Yönetimi destekleyen bulut tabanlı bir Otomasyon ve yapılandırma hizmetidir. Hizmet, [runbook 'lar](../automation/automation-runbook-execution.md), [değişiklik izleme ve stok](../automation/change-tracking/overview.md), güncelleştirme yönetimi, paylaşılan yetenekler ve heterojen özelliklerle [işlemleri yönetmek için işlem otomasyonu](../automation/automation-intro.md#process-automation) 'nu kapsar. Otomasyon, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında komple denetim sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
