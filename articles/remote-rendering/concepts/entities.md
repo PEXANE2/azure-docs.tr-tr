@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfcfa4c5ed57489c56ebf845d238198944150a96
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613921"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202897"
 ---
 # <a name="entities"></a>Varlıklar
 
@@ -139,10 +139,10 @@ Nesne herhangi bir meta veri tutmasa bile sorgu başarılı olur.
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# varlık sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
-* [C# RemoteManager. CreateEntity ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
-* [C++ varlık sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
-* [C++ RemoteManager:: CreateEntity ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
+* [C# varlık sınıfı](/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# RemoteManager. CreateEntity ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C++ varlık sınıfı](/cpp/api/remote-rendering/entity)
+* [C++ RemoteManager:: CreateEntity ()](/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

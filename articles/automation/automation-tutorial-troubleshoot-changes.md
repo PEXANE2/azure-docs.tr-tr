@@ -7,12 +7,12 @@ keywords: değişiklik, izleme, değişiklik izleme, stok, Otomasyon
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c440f27dcbd4ac509adea83d5c3085488cb488
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530548"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204266"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM 'deki değişikliklerle ilgili sorunları giderme
 
@@ -238,4 +238,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Daha fazla bilgi edinmek için Değişiklik İzleme ve envanter özelliğine genel bakış ' a geçin.
 
 > [!div class="nextstepaction"]
-> [Değişiklik İzleme ve envantere genel bakış](./change-tracking.md)
+> [Değişiklik İzleme ve envantere genel bakış](change-tracking/overview.md)

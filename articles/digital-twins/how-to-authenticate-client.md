@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bb35b81a287179900485c7190a57c492cfc39203
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d71a7535c40d240b6c9bf53cff906f12b4b8b5df
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043043"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204308"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
@@ -105,9 +105,9 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 [Interactivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) yöntemi etkileşimli uygulamalara yöneliktir ve kimlik doğrulaması için bir Web tarayıcısı getirir. Bunu, `DefaultAzureCredential` etkileşimli kimlik doğrulaması gerektiren durumlarda kullanabilirsiniz.
 
-Etkileşimli tarayıcı kimlik bilgilerini kullanmak için Azure dijital TWINS API 'Leri için izinlere sahip bir **uygulama kaydına** ihtiyacınız olacaktır. Bu uygulama kaydını ayarlama adımları için *nasıl yapılır: örnek ve kimlik doğrulaması*oluşturma konusunun [*istemci uygulamaları Için erişim izinlerini ayarlama*](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) bölümüne bakın. Uygulama kaydı kurulduktan sonra...
-* Uygulama kaydının *uygulama (istemci) kimliği*
-* Uygulama kaydının *Dizin (kiracı) kimliği*
+Etkileşimli tarayıcı kimlik bilgilerini kullanmak için Azure dijital TWINS API 'Leri için izinlere sahip bir **uygulama kaydına** ihtiyacınız olacaktır. Bu uygulama kaydını ayarlama adımları için bkz. [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md). Uygulama kaydı kurulduktan sonra...
+* Uygulama kaydının *uygulama (istemci) kimliği* ([bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* Uygulama kaydının *Dizin (kiracı) kimliği* ([bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Azure dijital TWINS örneğinin URL 'SI ([bulunacak yönergeler](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Kullanılarak kimliği doğrulanmış SDK istemcisi oluşturma kodu örneği aşağıda verilmiştir `InteractiveBrowserCredential` .

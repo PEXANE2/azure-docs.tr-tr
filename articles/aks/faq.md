@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 9506b3430775f137c09fe3d155b203cdcbd14783
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d46b3ba9e3df5e2b3600db2be2a41789fed5242f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070563"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207980"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -193,7 +193,7 @@ AKS, bu tür bir yapılandırmaya ve kurtarmaya yönelik esnekliği mekanizmalar
 
 ## <a name="can-i-use-custom-vm-extensions"></a>Özel VM uzantılarını kullanabilir miyim?
 
-Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklenmez. Özel bileşenleri yüklemek için, vb. Lütfen Kubernetes API 'Leri ve mekanizmalarından yararlanın. Örneğin, gerekli bileşenleri yüklemek için DaemonSets 'ten yararlanın.
+Hayır, AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklenmez. Özel bileşenleri yüklemek için, vb. Lütfen Kubernetes API 'Leri ve mekanizmalarından yararlanın. Örneğin, gerekli bileşenleri yüklemek için DaemonSets 'ten yararlanın.
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS, tüm müşteri verilerini kümenin bölgesi dışında depolıyor mu?
 

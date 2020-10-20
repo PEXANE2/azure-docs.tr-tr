@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88892669"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207283"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Hızlı başlangıç: HoloLens 'e yerel C++ örneği dağıtma
 
 Bu hızlı başlangıçta, yerel C++ öğretici uygulamasının bir HoloLens 2 ' de nasıl dağıtılacağı ve çalıştırılacağı ele alınmaktadır.
 
-Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
+Bu hızlı başlangıçta şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -32,7 +32,7 @@ Aşağıdaki yazılım yüklü olmalıdır:
 
 * Windows SDK 10.0.18362.0 [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * Visual Studio 2019 ' un en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Karma gerçeklik Için Visual Studio Araçları](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
+* [Karma gerçeklik Için Visual Studio Araçları](/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
   * **C++ ile masaüstü geliştirme**
   * **Evrensel Windows Platformu (UWP) geliştirme**
 * GIT [(İndir)](https://git-scm.com/downloads)
@@ -87,9 +87,9 @@ Artık uygulama derlenebilir.
 
 ## <a name="launch-the-application"></a>Uygulamayı başlatma
 
-1. HoloLens 'i bir USB kablosu ile BILGISAYARıNıZA bağlayın.
+1. HoloLens'i USB kablosuyla bilgisayarınıza bağlayın.
 1. HoloLens 'i açın ve Başlat menüsü görünene kadar bekleyin.
-1. Visual Studio 'da hata ayıklayıcıyı başlatın (F5). Uygulamayı cihaza otomatik olarak dağıtır.
+1. Visual Studio'da Hata Ayıklayıcı'yı başlatın (F5). Bu, uygulamayı otomatik olarak cihaza dağıtır.
 
 Örnek uygulama, geçerli uygulama durumu hakkında sizi bilgilendiren bir metin paneli görünmelidir. Başlangıç saatinde durum yeni bir oturum başlatıyor veya mevcut bir oturuma bağlanıyor. Model yüklemesi tamamlandıktan sonra, yerleşik motor modeli, baş konumundayken hemen görünür. Bir şekilde, altyapı modeli yerel olarak işlenen dönen küple düzgün şekilde etkileşim kurar.
 

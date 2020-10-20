@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5eb204da12b3c3405d52382285b5d75363f266cf
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: bb78a60b911823da96c52a104a3e06ecfc634da6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875503"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92210773"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak konuşmacı tanıma için temel tasarım düzenlerini öğrenirsiniz; örneğin:
 
@@ -24,7 +24,7 @@ Konuşma tanıma kavramlarının üst düzey bir görünümü için bkz. [genel 
 
 Örnek koda doğrudan atlamak istiyorsanız GitHub 'da [JavaScript hızlı başlangıç örneklerine](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/fa6428a0837779cbeae172688e0286625e340942/quickstart/javascript/node/speaker-recognition) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
@@ -84,7 +84,7 @@ Ses dosyalarını konuşma hizmeti tarafından kullanılmak üzere akışlara ok
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="helpers":::
 
-Bu işlevde, [audioconfig](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) nesnesi oluşturmak Için [audioınputstream. createpushstream](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?view=azure-node-latest#createpushstream-audiostreamformat-) ve [Audioconfig. fromstreaminput](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) yöntemlerini kullanırsınız. Bu `AudioConfig` nesne bir ses akışını temsil eder. `AudioConfig`Aşağıdaki görevler sırasında, bu nesnelerden birkaçını kullanacaksınız.
+Bu işlevde, [audioconfig](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) nesnesi oluşturmak Için [audioınputstream. createpushstream](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioinputstream?view=azure-node-latest&preserve-view=true#createpushstream-audiostreamformat-) ve [Audioconfig. fromstreaminput](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true#fromstreaminput-audioinputstream---pullaudioinputstreamcallback-) yöntemlerini kullanırsınız. Bu `AudioConfig` nesne bir ses akışını temsil eder. `AudioConfig`Aşağıdaki görevler sırasında, bu nesnelerden birkaçını kullanacaksınız.
 
 ## <a name="text-dependent-verification"></a>Metne bağımlı doğrulama
 
@@ -96,7 +96,7 @@ Konuşmacı Doğrulama, konuşmacının bilinen veya **kayıtlı** bir sesle eş
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_dependent_verification":::
 
-Bu işlev, [Voiceprofileclient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) yöntemiyle bir [voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) nesnesi oluşturur. Üç [tür](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?view=azure-node-latest) vardır `VoiceProfile` :
+Bu işlev, [Voiceprofileclient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) yöntemiyle bir [voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) nesnesi oluşturur. Üç [tür](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofiletype?view=azure-node-latest&preserve-view=true) vardır `VoiceProfile` :
 
 - TextIndependentIdentification
 - Textdependentdoğrulaması
@@ -104,7 +104,7 @@ Bu işlev, [Voiceprofileclient. createProfileAsync](https://docs.microsoft.com/j
 
 Bu durumda, ' `VoiceProfileType.TextDependentVerification` ye geçitirsiniz `VoiceProfileClient.createProfileAsync` .
 
-Sonra, ileri ' yi ve sonra tanımlayacaksınız iki yardımcı işlevi `AddEnrollmentsToTextDependentProfile` çağırabilirsiniz `SpeakerVerify` . Son olarak, profili kaldırmak için [Voiceprofileclient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) ' i çağırın.
+Sonra, ileri ' yi ve sonra tanımlayacaksınız iki yardımcı işlevi `AddEnrollmentsToTextDependentProfile` çağırabilirsiniz `SpeakerVerify` . Son olarak, profili kaldırmak için [Voiceprofileclient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) ' i çağırın.
 
 ### <a name="addenrollmentstotextdependentprofile-function"></a>AddEnrollmentsToTextDependentProfile işlevi
 
@@ -112,7 +112,7 @@ Bir ses profilini kaydetmek için aşağıdaki işlevi tanımlayın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_dependent":::
 
-Bu işlevde, `GetAudioConfigFromFile` daha önce tanımladığınız işlevi, `AudioConfig` Ses örneklerinden nesneler oluşturmak için çağırır. Bu ses örnekleri "My Voice My Passport, beni Doğrula" gibi bir parola içerir. Daha sonra bu ses örneklerini [Voiceprofileclient. Kayıtprofileasync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) yöntemini kullanarak kaydedin.
+Bu işlevde, `GetAudioConfigFromFile` daha önce tanımladığınız işlevi, `AudioConfig` Ses örneklerinden nesneler oluşturmak için çağırır. Bu ses örnekleri "My Voice My Passport, beni Doğrula" gibi bir parola içerir. Daha sonra bu ses örneklerini [Voiceprofileclient. Kayıtprofileasync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) yöntemini kullanarak kaydedin.
 
 ### <a name="speakerverify-function"></a>Hoparlörkerverify işlevi
 
@@ -120,9 +120,9 @@ Bu işlevde, `GetAudioConfigFromFile` daha önce tanımladığınız işlevi, `A
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_verify":::
 
-Bu işlevde, daha önce oluşturduğunuz [Voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) nesnesini geçirerek [Speakerlıtemicationmodel. fromprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest#fromprofile-voiceprofile-) yöntemiyle bir [hoparlörkerdoğrulamaları icationmodel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest) nesnesi oluşturacaksınız.
+Bu işlevde, daha önce oluşturduğunuz [Voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) nesnesini geçirerek [Speakerlıtemicationmodel. fromprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest&preserve-view=true#fromprofile-voiceprofile-) yöntemiyle bir [hoparlörkerdoğrulamaları icationmodel](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerverificationmodel?view=azure-node-latest&preserve-view=true) nesnesi oluşturacaksınız.
 
-Ardından, daha önce kaydettiğiniz ses örnekleriyle aynı parolayı içeren bir ses örneğini doğrulamak için [SpeechRecognizer. recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) yöntemini çağırın. `SpeechRecognizer.recognizeOnceAsync` özelliği 0,0-1,0 ' y i değişen bir benzerlik puanı içeren bir [Hoparlörkerrecognitionresult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest) nesnesi döndürür `score` . `SpeakerRecognitionResult`Nesnesi `reason` [resultreason](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?view=azure-node-latest)türünde bir özellik de içerir. Doğrulama başarılı olduysa, `reason` özelliğin değeri olmalıdır `RecognizedSpeaker` .
+Ardından, daha önce kaydettiğiniz ses örnekleriyle aynı parolayı içeren bir ses örneğini doğrulamak için [SpeechRecognizer. recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) yöntemini çağırın. `SpeechRecognizer.recognizeOnceAsync` özelliği 0,0-1,0 ' y i değişen bir benzerlik puanı içeren bir [Hoparlörkerrecognitionresult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest&preserve-view=true) nesnesi döndürür `score` . `SpeakerRecognitionResult`Nesnesi `reason` [resultreason](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/resultreason?view=azure-node-latest&preserve-view=true)türünde bir özellik de içerir. Doğrulama başarılı olduysa, `reason` özelliğin değeri olmalıdır `RecognizedSpeaker` .
 
 ## <a name="text-independent-verification"></a>Metnin bağımsız doğrulaması
 
@@ -137,11 +137,11 @@ Ardından, daha önce kaydettiğiniz ses örnekleriyle aynı parolayı içeren b
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_verification":::
 
-İşlevi gibi `TextDependentVerification` , bu işlev, [Voiceprofileclient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) yöntemiyle bir [voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) nesnesi oluşturur.
+İşlevi gibi `TextDependentVerification` , bu işlev, [Voiceprofileclient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) yöntemiyle bir [voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) nesnesi oluşturur.
 
 Bu durumda, ' `VoiceProfileType.TextIndependentVerification` ye geçitirsiniz `createProfileAsync` .
 
-Ardından, daha sonra `AddEnrollmentsToTextIndependentProfile` tanımladığınız ve daha önce tanımladığınız iki yardımcı işlevi çağırabilirsiniz: `SpeakerVerify` Son olarak, profili kaldırmak için [Voiceprofileclient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) ' i çağırın.
+Ardından, daha sonra `AddEnrollmentsToTextIndependentProfile` tanımladığınız ve daha önce tanımladığınız iki yardımcı işlevi çağırabilirsiniz: `SpeakerVerify` Son olarak, profili kaldırmak için [Voiceprofileclient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) ' i çağırın.
 
 ### <a name="addenrollmentstotextindependentprofile"></a>AddEnrollmentsToTextIndependentProfile
 
@@ -149,7 +149,7 @@ Bir ses profilini kaydetmek için aşağıdaki işlevi tanımlayın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="add_enrollments_independent":::
 
-Bu işlevde, `GetAudioConfigFromFile` daha önce tanımladığınız işlevi, `AudioConfig` Ses örneklerinden nesneler oluşturmak için çağırır. Daha sonra bu ses örneklerini [Voiceprofileclient. Kayıtprofileasync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) yöntemini kullanarak kaydedin.
+Bu işlevde, `GetAudioConfigFromFile` daha önce tanımladığınız işlevi, `AudioConfig` Ses örneklerinden nesneler oluşturmak için çağırır. Daha sonra bu ses örneklerini [Voiceprofileclient. Kayıtprofileasync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#enrollprofileasync-voiceprofile--audioconfig---e--voiceprofileenrollmentresult-----void---e--string-----void-) yöntemini kullanarak kaydedin.
 
 ## <a name="speaker-identification"></a>Konuşmacı belirleme
 
@@ -161,11 +161,11 @@ Konuşmacı kimliği, belirli bir kayıtlı ses grubundan **kimin** konuşduğun
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="text_independent_indentification":::
 
-`TextDependentVerification`Ve işlevleri gibi `TextIndependentVerification` , bu Işlev, [Voiceprofileclient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) yöntemiyle bir [voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) nesnesi oluşturur.
+`TextDependentVerification`Ve işlevleri gibi `TextIndependentVerification` , bu Işlev, [Voiceprofileclient. createProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#createprofileasync-voiceprofiletype--string---e--voiceprofile-----void---e--string-----void-) yöntemiyle bir [voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) nesnesi oluşturur.
 
 Bu durumda, ' `VoiceProfileType.TextIndependentIdentification` ye geçitirsiniz `VoiceProfileClient.createProfileAsync` .
 
-Daha sonra, daha `AddEnrollmentsToTextIndependentProfile` önce tanımladığınız ve daha sonra tanımlayacağımız iki yardımcı işlevi çağırabilirsiniz: `SpeakerIdentify` Son olarak, profili kaldırmak için [Voiceprofileclient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) ' i çağırın.
+Daha sonra, daha `AddEnrollmentsToTextIndependentProfile` önce tanımladığınız ve daha sonra tanımlayacağımız iki yardımcı işlevi çağırabilirsiniz: `SpeakerIdentify` Son olarak, profili kaldırmak için [Voiceprofileclient. deleteProfileAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true#deleteprofileasync-voiceprofile---response--voiceprofileresult-----void---e--string-----void-) ' i çağırın.
 
 ### <a name="speakeridentify-function"></a>Hoparlörkerbelirlenmesi işlevi
 
@@ -173,10 +173,10 @@ Daha sonra, daha `AddEnrollmentsToTextIndependentProfile` önce tanımladığın
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="speaker_identify":::
 
-Bu işlevde, daha önce oluşturduğunuz [Voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest) nesnesini geçirerek [Speakerıdencertificate. fromprofiles](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest#fromprofiles-voiceprofile---) yöntemiyle birlikte bir [hoparlörkerationcertificate](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest) oluşturacaksınız.
+Bu işlevde, daha önce oluşturduğunuz [Voiceprofile](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofile?view=azure-node-latest&preserve-view=true) nesnesini geçirerek [Speakerıdencertificate. fromprofiles](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest&preserve-view=true#fromprofiles-voiceprofile---) yöntemiyle birlikte bir [hoparlörkerationcertificate](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakeridentificationmodel?view=azure-node-latest&preserve-view=true) oluşturacaksınız.
 
-Ardından, [SpeechRecognizer. recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) yöntemini çağırır ve bir ses örneğine geçitirsiniz.
-`SpeechRecognizer.recognizeOnceAsync` oluşturmak için kullandığınız nesnelere göre bu ses örneğinin sesini belirlemeyi dener `VoiceProfile` `SpeakerIdentificationModel` . Özelliği eşleştirmeyi tanımlayan bir [Speakerrecognıtionresult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest) nesnesi döndürür; `profileId` `VoiceProfile` ancak özellik, 0,0-1,0 ' y i `score` değişen bir benzerlik puanı içerir.
+Ardından, [SpeechRecognizer. recognizeOnceAsync](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-) yöntemini çağırır ve bir ses örneğine geçitirsiniz.
+`SpeechRecognizer.recognizeOnceAsync` oluşturmak için kullandığınız nesnelere göre bu ses örneğinin sesini belirlemeyi dener `VoiceProfile` `SpeakerIdentificationModel` . Özelliği eşleştirmeyi tanımlayan bir [Speakerrecognıtionresult](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speakerrecognitionresult?view=azure-node-latest&preserve-view=true) nesnesi döndürür; `profileId` `VoiceProfile` ancak özellik, 0,0-1,0 ' y i `score` değişen bir benzerlik puanı içerir.
 
 ## <a name="main-function"></a>Main işlevi
 
@@ -184,4 +184,4 @@ Son olarak, `main` işlevi aşağıdaki gibi tanımlayın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/speech/speaker-recognition.js" id="main":::
 
-Bu işlev, Ses profilleri oluşturmak, kaydetmek ve silmek için kullanılan bir [Voiceprofileclient](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest) nesnesi oluşturur. Ardından daha önce tanımladığınız işlevleri çağırır.
+Bu işlev, Ses profilleri oluşturmak, kaydetmek ve silmek için kullanılan bir [Voiceprofileclient](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest&preserve-view=true) nesnesi oluşturur. Ardından daha önce tanımladığınız işlevleri çağırır.
