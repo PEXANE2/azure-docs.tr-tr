@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264f0e59e2c43ca92fc5209b8613282a0b0fca37
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822403"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203781"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -22,8 +22,9 @@ Veri kümelerinin benzersiz ömürleri vardır. Yaşam döngüsünün başların
 
 Yaşam döngüsü yönetimi ilkesi şunları yapmanızı sağlar:
 
-- Performansı ve maliyeti iyileştirmek için Blobları daha soğuk bir depolama katmanına (seyrek erişimli, sık erişimli, arşiv veya seyrek erişimli) geçiş
-- Bloblarını son kullanım ömrü sonunda silin
+- Performans için optimize etmek üzere erişiliyorsa seyrek erişimli bloblardan sık erişimli 'e geçiş 
+- Maliyet için optimize etmek üzere bir süre boyunca erişilmesi veya değiştirilmemişse, geçiş Blobları, blob sürümleri ve BLOB anlık görüntüleri daha soğuk bir depolama katmanına (seyrek erişimli, sık erişimli ve arşiv için sık erişimli)
+- Bloblarını, blob sürümlerini ve BLOB anlık görüntülerini, kullanım ömrü sonunda silin
 - Depolama hesabı düzeyinde günde bir kez çalıştırılacak kuralları tanımlama
 - Kuralları kapsayıcılara veya Blobların bir alt kümesine uygulama (ad öneklerini veya [blob dizini etiketlerini](storage-manage-find-blobs.md) filtre olarak kullanarak)
 
@@ -33,7 +34,7 @@ Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman
 
 ## <a name="availability-and-pricing"></a>Kullanılabilirlik ve fiyatlandırma
 
-Yaşam döngüsü yönetimi özelliği, Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları için tüm Azure bölgelerinde kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
+Yaşam döngüsü yönetimi özelliği, Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları, Premium Blok Blobu depolama hesapları ve Azure Data Lake Storage 2. hesapları için tüm Azure bölgelerinde kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
 
 Yaşam döngüsü yönetimi özelliği ücretsizdir. Müşteriler, [BLOB katmanı](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API çağrıları kümesi için normal işlem maliyeti üzerinden ücretlendirilir. Silme işlemi ücretsizdir. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Blok Blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
@@ -250,29 +251,41 @@ Aşağıdaki örnek kural, içinde bulunan ve ile başlayan nesneler üzerinde e
 - Katman blobu son değişiklikten sonra 30 gün sonra seyrek erişimli katmana
 - Son değişiklikten sonra katman blobu 90 gün sonra arşiv katmanı
 - Son değişiklikten sonra blob 2.555 gün (yedi yıl) silme
-- Anlık görüntü oluşturulduktan 90 gün sonra blob anlık görüntülerini Sil
+- Önceki blob sürümlerini silme sonrasında 90 gün sonra
 
 ```json
 {
   "rules": [
     {
-      "name": "ruleFoo",
       "enabled": true,
+      "name": "rulefoo",
       "type": "Lifecycle",
       "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
         "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          "version": {
+            "delete": {
+              "daysAfterCreationGreaterThan": 90
+            }
           },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "baseBlob": {
+            "tierToCool": {
+              "daysAfterModificationGreaterThan": 30
+            },
+            "tierToArchive": {
+              "daysAfterModificationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterModificationGreaterThan": 2555
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "container1/foo"
+          ]
         }
       }
     }
@@ -288,7 +301,7 @@ Filtreler aşağıdakileri içerir:
 
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın ve destekler `blockBlob` `appendBlob` . İçin yalnızca silme desteklenir `appendBlob` , set Tier desteklenmez. | Evet |
+| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın ve destekler `blockBlob` `appendBlob` . İçin yalnızca silme desteklenir `appendBlob` , set Tier desteklenmez. | Yes |
 | prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
 | blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
 
@@ -299,24 +312,24 @@ Filtreler aşağıdakileri içerir:
 
 İşlemler, çalışma koşulu karşılandığında filtrelenmiş bloblara uygulanır.
 
-Yaşam döngüsü yönetimi, Blobları ve silme işlemini ve BLOB anlık görüntülerinin silinmesini destekler. Bloblarda veya blob anlık görüntülerinde her kural için en az bir eylem tanımlayın.
+Yaşam döngüsü yönetimi, Blobları, önceki blob sürümlerini ve BLOB anlık görüntülerini katmanlamayı ve silmeyi destekler. Temel Bloblar, önceki blob sürümleri veya blob anlık görüntüleri üzerinde her kural için en az bir eylem tanımlayın.
 
-| Eylem                      | Temel blob                                   | Anlık Görüntü      |
-|-----------------------------|---------------------------------------------|---------------|
-| tierToCool                  | Şu anda sık erişimli bir katmanda blob 'ları destekle         | Desteklenmez |
-| Enableoto Tiertohotfromcool | Şu anda seyrek erişimli bir katmanda destek Blobları        | Desteklenmez |
-| tierToArchive               | Şu anda sık erişimli veya seyrek erişimli bir katmanda blob 'ları destekleme | Desteklenmez |
-| delete                      | Ve için desteklenir `blockBlob``appendBlob`  | Desteklenir     |
+| Eylem                      | Temel blob                                  | Anlık Görüntü      | Sürüm
+|-----------------------------|--------------------------------------------|---------------|---------------|
+| tierToCool                  | İçin desteklenir `blockBlob`                  | Desteklenir     | Desteklenir     |
+| Enableoto Tiertohotfromcool | İçin desteklenir `blockBlob`                  | Desteklenmez | Desteklenmez |
+| tierToArchive               | İçin desteklenir `blockBlob`                  | Desteklenir     | Desteklenir     |
+| delete                      | Ve için desteklenir `blockBlob``appendBlob` | Desteklenir     | Desteklenir     |
 
 >[!NOTE]
 >Aynı blob üzerinde birden fazla eylem tanımlarsanız, yaşam döngüsü yönetimi Blobun en az maliyetli eylemi uygular. Örneğin eylem, `delete` eylemden daha fazla `tierToArchive` . Eylem `tierToArchive` eylemden daha fazla `tierToCool` .
 
-Çalışma koşulları yaşa göre yapılır. Temel Bloblar, yaşı izlemek için son değiştirme süresini kullanır ve BLOB anlık görüntüleri, yaşı izlemek için anlık görüntü oluşturma süresini kullanır.
+Çalışma koşulları yaşa göre yapılır. Temel blob 'lar son değiştirme süresini kullanır, blob sürümleri sürüm oluşturma süresini kullanır ve BLOB anlık görüntüleri, yaşı izlemek için anlık görüntü oluşturma süresi kullanır.
 
 | Eylem çalıştırma koşulu               | Koşul değeri                          | Açıklama                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Yaşı gün olarak gösteren tamsayı değeri | Temel blob eylemleri için koşul                                              |
-| daysAfterCreationGreaterThan       | Yaşı gün olarak gösteren tamsayı değeri | Blob anlık görüntü eylemleri için koşul                                          |
+| daysAfterCreationGreaterThan       | Yaşı gün olarak gösteren tamsayı değeri | Blob sürümü ve BLOB anlık görüntü eylemleri için koşul                         |
 | daysAfterLastAccessTimeGreaterThan | Yaşı gün olarak gösteren tamsayı değeri | Önizle Son erişim zamanı etkinleştirildiğinde temel blob eylemlerine yönelik koşul |
 
 ## <a name="examples"></a>Örnekler
@@ -509,26 +522,35 @@ Bazı verilerin yalnızca silinmek üzere işaretlenmişse zaman aşımına uğr
 }
 ```
 
-### <a name="delete-old-snapshots"></a>Eski anlık görüntüleri Sil
+### <a name="manage-versions"></a>Sürümleri yönetme
 
-Düzenli aralıklarla değiştirilen ve erişilen veriler için, anlık görüntüler genellikle verilerin eski sürümlerini izlemek için kullanılır. Anlık görüntü yaşı temelinde eski anlık görüntüleri silen bir ilke oluşturabilirsiniz. Anlık görüntü yaşı, anlık görüntü oluşturma süresi hesaplanarak belirlenir. Bu ilke kuralı `activedata` , anlık görüntü oluşturulduktan sonra 90 gün veya daha eski kapsayıcı içindeki Blok Blobu anlık görüntülerini siler.
+Düzenli olarak değiştirilen ve erişilen veriler için, bir nesnenin önceki sürümlerini otomatik olarak sürdürmek üzere blob Storage sürümü oluşturmayı etkinleştirebilirsiniz. Daha önceki sürümleri katmana veya silmeye yönelik bir ilke oluşturabilirsiniz. Sürüm yaşı, sürüm oluşturma saati hesaplanarak belirlenir. Bu ilke kuralı `activedata` , kapsayıcıda sürüm oluşturulduktan sonra, seyrek erişimli katmana 90 gün veya daha eski olan önceki sürümleri katmanlar ve 365 gün ya da daha eski sürümleri siler.
 
 ```json
 {
   "rules": [
     {
-      "name": "snapshotRule",
       "enabled": true,
+      "name": "versionrule",
       "type": "Lifecycle",
-    "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "activedata" ]
-        },
+      "definition": {
         "actions": {
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "version": {
+            "tierToCool": {
+              "daysAfterCreationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterCreationGreaterThan": 365
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "activedata"
+          ]
         }
       }
     }

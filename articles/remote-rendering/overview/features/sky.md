@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a193fdf82ed5e9a785c6c01db4931fb05e9aaac7
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613753"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205753"
 ---
 # <a name="sky-reflections"></a>Gökyüzü yansımaları
 
@@ -138,8 +138,8 @@ Azure uzaktan Işleme, her zaman kullanılabilir olan birkaç yerleşik ortam ha
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# RemoteManager. ufuk Reflectionsettings özelliği](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
-* [C++ RemoteManager:: ufuk Reflectionsettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
+* [C# RemoteManager. ufuk Reflectionsettings özelliği](/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C++ RemoteManager:: ufuk Reflectionsettings ()](/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

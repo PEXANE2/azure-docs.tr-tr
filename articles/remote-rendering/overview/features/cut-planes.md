@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 468d21abc861e905472d1d15405b1c8ba9e5be74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8905fbdcfc03f2683698cca57ab6c066e77863
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904871"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205940"
 ---
 # <a name="cut-planes"></a>Düzlemleri kesme
 
@@ -75,8 +75,8 @@ Filtreleme, kesilmiş düzlem tarafındaki bir bit maskesi ve geometri üzerinde
 
 | Düzlem filtresi maskesini kes | Geometri filtresi maskesi  | Mantıksal bir sonuç `AND` | Kesme düzlemi geometriyi etkiler mi?  |
 |--------------------|-------------------|-------------------|:----------------------------:|
-| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Evet |
-| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Evet |
+| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Yes |
+| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Yes |
 | (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | Hayır |
 | (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | Hayır |
 
@@ -94,8 +94,8 @@ Her etkin kesilen düzlem, işleme sırasında küçük bir maliyet doğurur. Ge
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# CutPlaneComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
-* [C++ CutPlaneComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/cutplanecomponent)
+* [C# CutPlaneComponent sınıfı](/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
+* [C++ CutPlaneComponent sınıfı](/cpp/api/remote-rendering/cutplanecomponent)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

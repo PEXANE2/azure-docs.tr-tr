@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 831e72610690753a62c04b51e277110653e0d2c9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107683"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204342"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning için Azure Güvenlik temeli
 
@@ -721,7 +721,7 @@ Artık gerekli olmadığında Azure kaynaklarını kaldırın.
 
 - [Dosya bütünlüğü Izlemeyi kullanma](../security-center/security-center-file-integrity-monitoring.md)
 
-- [Azure Otomasyonu Değişiklik İzleme ve envanterini anlayın](../automation/change-tracking.md)
+- [Azure Otomasyonu Değişiklik İzleme ve envanterini anlayın](../automation/change-tracking/overview.md)
 
 - [Azure sanal makine envanterini etkinleştirme](../automation/automation-tutorial-installed-software.md)
 
@@ -820,7 +820,7 @@ Azure Machine Learning işi izlemek için Git depolarını tamamen destekler; de
 
 - [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -834,7 +834,7 @@ Azure Machine Learning, farklı işlem kaynakları ve hatta kendi işlem kaynakl
 
 - [Azure Güvenlik Merkezi önerilerini izleme](../security-center/security-center-recommendations.md)
 
-- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
 - [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation/automation-dsc-overview.md)
 

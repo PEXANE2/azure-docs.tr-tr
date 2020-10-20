@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2ddce7e2f073914e9393eabf12e8b0f4ef347828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49027899d66a2192cc311fb4dba66e441155b527
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613648"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206858"
 ---
 # <a name="scene-lighting"></a>Sahne aydınlatması
 
@@ -72,14 +72,14 @@ Hafif kaynakların işleme performansı üzerinde önemli bir etkisi vardır. Bu
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# LightComponentBase sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
-* [C# PointLightComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
-* [C# SpotLightComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
-* [C# DirectionalLightComponent sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
-* [C++ LightComponentBase sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/lightcomponentbase)
-* [C++ PointLightComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/pointlightcomponent)
-* [C++ SpotLightComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/spotlightcomponent)
-* [C++ DirectionalLightComponent sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/directionallightcomponent)
+* [C# LightComponentBase sınıfı](/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [C# PointLightComponent sınıfı](/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [C# SpotLightComponent sınıfı](/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [C# DirectionalLightComponent sınıfı](/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [C++ LightComponentBase sınıfı](/cpp/api/remote-rendering/lightcomponentbase)
+* [C++ PointLightComponent sınıfı](/cpp/api/remote-rendering/pointlightcomponent)
+* [C++ SpotLightComponent sınıfı](/cpp/api/remote-rendering/spotlightcomponent)
+* [C++ DirectionalLightComponent sınıfı](/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

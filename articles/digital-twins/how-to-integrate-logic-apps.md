@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 21e72e63dae2c52d04aca0cd11971fe5cd23fb47
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097533"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207555"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Özel bağlayıcı kullanarak Logic Apps tümleştirme
 
@@ -26,7 +26,7 @@ Azure dijital TWINS 'in Şu anda Logic Apps için Sertifikalı (önceden oluştu
 
 Bu makalede, bir Azure dijital TWINS örneğine Logic Apps bağlamak için kullanılabilecek **özel bir bağlayıcı oluşturmak** için [Azure Portal](https://portal.azure.com) kullanacaksınız. Daha sonra bu bağlantıyı bir örnek senaryo için kullanan **bir mantıksal uygulama oluşturacaksınız** . Bu, bir Zamanlayıcı tarafından tetiklenen olayların Azure dijital TWINS örneğindeki bir ikizi otomatik olarak güncelleştirilmesini sağlayacaktır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce ** [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun** .
 [Azure Portal](https://portal.azure.com) bu hesapla oturum açın. 
@@ -40,16 +40,15 @@ Azure aboneliğiniz yoksa başlamadan önce ** [ücretsiz bir hesap](https://azu
 
 Bu makaledeki Logic Apps bir Azure dijital TWINS örneğini bağlamak için **Azure Digital TWINS örneğinin** zaten ayarlanmış olması gerekir. 
 
-İlk olarak, bir Azure dijital TWINS örneği ve onunla çalışabilmeniz için gereken kimlik doğrulamasını ayarlayın. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)konusundaki yönergeleri izleyin. Tercih ettiğiniz deneyiminize bağlı olarak, [Azure Portal](how-to-set-up-instance-portal.md), [clı](how-to-set-up-instance-cli.md)veya [Otomatik Cloud Shell dağıtım betiği örneği](how-to-set-up-instance-scripted.md)için kurulum makalesine sunulur. Yönergelerin tüm sürümleri, her adımı başarıyla tamamlayıp tamamlamadığınızı ve yeni örneğinizi kullanmaya başlamaya hazırlamış olduğunuzu doğrulamaya yönelik adımları da içerir.
+İlk olarak, **bir Azure dijital TWINS örneği** ve onunla çalışabilmeniz için gereken kimlik doğrulamasını ayarlayın. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)konusundaki yönergeleri izleyin. Tercih ettiğiniz deneyiminize bağlı olarak, [Azure Portal](how-to-set-up-instance-portal.md), [clı](how-to-set-up-instance-cli.md)veya [Otomatik Cloud Shell dağıtım betiği örneği](how-to-set-up-instance-scripted.md)için kurulum makalesine sunulur. Yönergelerin tüm sürümleri, her adımı başarıyla tamamlayıp tamamlamadığınızı ve yeni örneğinizi kullanmaya başlamaya hazırlamış olduğunuzu doğrulamaya yönelik adımları da içerir.
+* Azure dijital TWINS örneğinizi ayarladıktan sonra, örneğin **_ana bilgisayar adı_** ([Azure Portal bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) gerekir.
 
-Bu öğreticide, örneğinizi ayarlarken birkaç değere ihtiyacınız olacaktır. Bu değerleri yeniden toplamanız gerekiyorsa, [Azure Portal](https://portal.azure.com)için kurulum makalesindeki ilgili bölümlere aşağıdaki bağlantıları kullanın.
-* Azure Digital TWINS örnek **_ana bilgisayar adı_** ([portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure AD uygulama kayıt **_uygulaması (istemci) kimliği_** ([portalda bul](how-to-set-up-instance-portal.md#collect-important-values))
-* Azure AD uygulama kayıt **_dizini (kiracı) kimliği_** ([portalda bul](how-to-set-up-instance-portal.md#collect-important-values))
+ADT Explorer uygulamasının kimliğini doğrulamak için, bir **uygulama kaydı**da ayarlamanız gerekir. Bunu ayarlamak için [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md) ' daki yönergeleri izleyin. 
+* Uygulama kaydınız olduktan sonra kaydın **_uygulama (istemci) kimliği_** ve **_Dizin (kiracı) kimliği_** ([Azure Portal bul](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) gerekir.
 
 ### <a name="get-app-registration-client-secret"></a>Uygulama kaydı istemci gizliliğini al
 
-Ayrıca, Azure AD uygulama kaydınız için bir **_istemci gizli anahtarı_** oluşturmanız gerekir. Bunu yapmak için, Azure portal [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda bulabilirsiniz). Ayrıntılarını açmak için listeden kaydınızı seçin. 
+Ayrıca, Azure AD uygulama kaydınız için bir **_istemci gizli anahtarı_** oluşturmanız gerekir. Bunu yapmak için, Azure portal [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda bulabilirsiniz). Ayrıntılarını açmak için listeden önceki bölümde oluşturduğunuz kaydınızı seçin. 
 
 Kayıt menüsündeki *Sertifikalar ve gizli* dizileri vurun ve *+ yeni istemci parolası*' nı seçin.
 

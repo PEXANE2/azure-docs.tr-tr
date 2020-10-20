@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff6d064b6bfabbd8a648c23b5648aae9b12a11d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510938"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207504"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Öğretici: ticari özellikli bir Azure uzaktan Işleme uygulaması oluşturma
 
@@ -23,7 +23,7 @@ Bu öğreticide şunları öğrenirsiniz:
 > * Oturum yükleme süresi etrafında Kullanıcı deneyimini iyileştirme
 > * Ağ gecikmesi ile ilgili önemli noktalar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici [öğretici: Azure uzaktan işleme ve model depolamanın güvenliğini sağlama](../security/security.md).
 
@@ -35,8 +35,8 @@ Bu modül size ticari uygulamanız için göz önünde bulundurmanız gerekebile
 
 Sistemlerin genelinde mimari en iyi uygulamalarına yönelik kapsamlı bir genel bakış için şu adresi ziyaret edin:
 
-* [Azure Mimari Merkezi](https://docs.microsoft.com/azure/architecture/)
-* [Azure geliştiricileri için Başlarken Kılavuzu](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)
+* [Azure Mimari Merkezi](/azure/architecture/)
+* [Azure geliştiricileri için Başlarken Kılavuzu](../../../../guides/developer/azure-developer-guide.md)
 
 ## <a name="analytics"></a>Analiz
 
@@ -54,7 +54,7 @@ Azure, bunu başarmak için kaynak etiketleme adlı bir hizmet sunarak Azure uza
 
 Kaynak adlandırma ve etiketleme hakkında daha fazla bilgi için başlamak için iyi bir yer vardır:
 
-* [Kaynak adlandırma ve etiketleme karar Kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+* [Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
 
 ### <a name="diagnostics"></a>Tanılama
 
@@ -62,9 +62,9 @@ Windows için olay Izleme (ETW) ve olay Izleme günlüğü (ETL) gibi güçlü a
 
 Daha fazla bilgi için şu adresi ziyaret edin:
 
-* [Istemci tarafı performans Izlemeleri oluşturma](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
-* [Windows için olay Izleme (ETW) verilerini toplama](https://docs.microsoft.com/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
-* [Windows cihaz portalını kullanma: günlüğe kaydetme](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
+* [Istemci tarafı performans Izlemeleri oluşturma](../../../how-tos/performance-tracing.md)
+* [Windows için olay Izleme (ETW) verilerini toplama](/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
+* [Windows cihaz portalını kullanma: günlüğe kaydetme](/windows/mixed-reality/using-the-windows-device-portal)
 
 ### <a name="usage-analysis"></a>Kullanım Analizi
 
@@ -72,7 +72,7 @@ Azure Application Insights, kişilerin Azure uzaktan Işleme uygulamanızı nas�
 
 Daha fazla bilgi için şu adresi ziyaret edin:
 
-* [Application Insights ile kullanım Analizi](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)
+* [Application Insights ile kullanım Analizi](../../../../azure-monitor/app/usage-overview.md)
 
 ## <a name="fast-startup-time-strategies"></a>Hızlı başlangıç zamanı stratejileri
 
@@ -102,7 +102,7 @@ Bu strateji aynı zamanda *Standart* ve *Premium* oturumlardaki iki tür arasın
 
 Azure uzaktan Işleme oturumları hakkında daha fazla bilgi için şu işlemleri inceleyin:
 
-* [Remote Rendering Oturumları](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
+* [Remote Rendering Oturumları](../../../concepts/sessions.md)
 
 ## <a name="standard-vs-premium-server-size-routing-strategies"></a>Standart ve Premium sunucu boyut yönlendirme stratejileri
 
@@ -164,9 +164,9 @@ Diğer örneklerde, özellikle çok sayıda katılımcı olduğu ve sistem, orta
 Ağ Analizi hakkında daha fazla bilgi için şu görünümü görüntüleyin:
 
 * [Azure Depolama Blobu Indirme hızı testi](https://www.azurespeed.com/Azure/Download)
-* [Azure ağ gidiş dönüş gecikme süresi Istatistikleri](https://docs.microsoft.com/azure/networking/azure-network-latency)
-* [Sunucu tarafı performans Izlemeleri](https://docs.microsoft.com/azure/remote-rendering/overview/features/performance-queries)
-* [İstemci tarafı performans Izlemeleri](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
+* [Azure ağ gidiş dönüş gecikme süresi Istatistikleri](../../../../networking/azure-network-latency.md)
+* [Sunucu tarafı performans Izlemeleri](../../../overview/features/performance-queries.md)
+* [İstemci tarafı performans Izlemeleri](../../../how-tos/performance-tracing.md)
 
 ## <a name="collaboration-considerations"></a>İşbirliği konuları
 
@@ -192,8 +192,8 @@ Ancak, bir eğitim kullanım örneği gibi sürekli olarak kullanılacak 3B varl
 
 Daha fazla bilgi için:
 
-* [Karma Gerçeklik 'te paylaşılan deneyimler](https://docs.microsoft.com/windows/mixed-reality/shared-experiences-in-mixed-reality)
-* [Azure depolama artıklığı](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Karma Gerçeklik 'te paylaşılan deneyimler](/windows/mixed-reality/shared-experiences-in-mixed-reality)
+* [Azure depolama artıklığı](../../../../storage/common/storage-redundancy.md)
 
 ## <a name="managing-model-access"></a>Model erişimini yönetme
 
@@ -230,7 +230,7 @@ Bu yaklaşım, daha önce görüntülenmiş olan 3B varlıklar arasındaki iliş
 Daha fazla bilgi için:
 
 * [OneDrive 'dan Azure 'a depolama çoğaltması için Microsoft Power otomatikleştirir şablonu](https://flow.microsoft.com/galleries/public/templates/2f90b5d3-029b-4e2e-ad37-1c0fe6d187fe/when-a-file-is-uploaded-to-onedrive-copy-it-to-azure-storage-container/)
-* [OneDrive dosya depolama API 'sine genel bakış](https://docs.microsoft.com/graph/onedrive-concept-overview)
+* [OneDrive dosya depolama API 'sine genel bakış](/graph/onedrive-concept-overview)
 
 ### <a name="direct-cad-access"></a>Doğrudan CAD erişimi
 
@@ -255,7 +255,7 @@ Birçok kurumsal istemci, Azure Stack güvenlik nedenleriyle kendi Azure hesapla
 Daha fazla bilgi için:
 
 * [Azure Market](https://azure.microsoft.com/marketplace/)
-* [Öğretici: market 'te Azure yönetilen uygulamaları yayımlama](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/publish-marketplace-app)
+* [Öğretici: market 'te Azure yönetilen uygulamaları yayımlama](../../../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>Güvenlik
 
@@ -277,6 +277,6 @@ Kimlik doğrulaması için, ARR kimlik doğrulaması ve oturum yönetiminin olab
 
 Daha fazla bilgi için:
 
-* [Azure AD hizmeti kimlik doğrulaması](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-service-authentication)
+* [Azure AD hizmeti kimlik doğrulaması](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [Azure ile güvenlik duruşunuzu güçlendirin](https://azure.microsoft.com/overview/security/)
 * [Bulut güvenliği](https://azure.microsoft.com/product-categories/security/)

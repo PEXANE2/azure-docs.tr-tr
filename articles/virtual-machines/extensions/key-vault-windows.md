@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2595c79c024ea7583f6c6a263dcf4f6034ba6df9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 741f1ba60a5824654737558d9d977333d3911f45
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072297"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201690"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -87,18 +87,18 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
-| yayımcı | Microsoft.Azure.KeyVault | dize |
-| tür | KeyVaultForWindows | dize |
+| apiVersion | 2019-07-01 | tarih |
+| yayımcı | Microsoft.Azure.KeyVault | string |
+| tür | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| Pollingınterinterval bileşenleri | 3600 | dize |
-| certificateStoreName | MY | dize |
+| Pollingınterinterval bileşenleri | 3600 | string |
+| certificateStoreName | MY | string |
 | Linkonyenilemeye | yanlış | boolean |
-| certificateStoreLocation  | LocalMachine veya CurrentUser (büyük/küçük harfe duyarlı) | dize |
+| certificateStoreLocation  | LocalMachine veya CurrentUser (büyük/küçük harfe duyarlı) | string |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
-| Msıendpoint | http://169.254.169.254/metadata/identity | dize |
-| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | dize |
+| Msıendpoint | http://169.254.169.254/metadata/identity | string |
+| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
 
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
@@ -222,6 +222,11 @@ Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
 ### <a name="troubleshoot"></a>Sorun giderme
 
 Uzantı dağıtımlarının durumuyla ilgili veriler, Azure portal alabilir ve Azure PowerShell kullanılarak elde edilebilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure PowerShell kullanarak aşağıdaki komutu çalıştırın.
+
+### <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+
+* Ayarlayabilmeniz için observedCertificates sayısında bir sınır var mı?
+  Hayır, Key Vault VM uzantısının observedCertificates sayısı üzerinde sınırı yok.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell

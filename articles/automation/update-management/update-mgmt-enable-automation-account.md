@@ -2,15 +2,15 @@
 title: Otomasyon hesabından Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede bir Otomasyon hesabından Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
-ms.date: 09/09/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b46bd1e30efff81748389ef62c46410479fb4b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669502"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206637"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Otomasyon hesabından Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -19,7 +19,7 @@ Bu makalede, [Azure Arc etkin sunucularla](../../azure-arc/servers/overview.md) 
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
@@ -65,14 +65,14 @@ Güncelleştirme Yönetimi etkinleştirilmesi için, çalışma alanınıza zate
 
     ![Kayıtlı aramalar](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. Çalışma alanına rapor veren tüm kullanılabilir makineler için Güncelleştirme Yönetimi etkinleştirmek üzere makineleri Yönet sayfasında **kullanılabilir tüm makinelerde etkinleştir** ' i seçin. Bu eylem, tek tek makineleri eklemek için denetimi devre dışı bırakır. Bu görev, raporlayan makinelerin tüm adlarını çalışma alanına kayıtlı bilgisayar grubu arama sorgusuna ekler `MicrosoftDefaultComputerGroup` . Seçildiğinde, bu eylem **makineleri Yönet** düğmesini devre dışı bırakır.
+3. Çalışma alanına rapor veren tüm kullanılabilir makineler için Güncelleştirme Yönetimi etkinleştirmek üzere makineleri Yönet sayfasında **kullanılabilir tüm makinelerde etkinleştir** ' i seçin. Bu eylem, tek başına makineleri eklemek için denetimi devre dışı bırakır ve çalışma alanına raporlayan tüm makineleri, bilgisayar grubu kayıtlı arama sorgusuna ekler `MicrosoftDefaultComputerGroup` . Seçildiğinde, bu eylem **makineleri Yönet** seçeneğini devre dışı bırakır.
 
-4. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kaydedilen arama ve kapsam yapılandırmasını çalışma alanından siler ve özelliğin, şu anda veya gelecekte olan tüm Azure dışı makineleri, çalışma alanına rapor olarak içermesini sağlar. Seçildiğinde, bu eylem, kullanılabilir kapsam yapılandırması olmadığından **makineleri Yönet** düğmesini kalıcı olarak devre dışı bırakır.
+4. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kaydedilen arama ve kapsam yapılandırmasını çalışma alanından siler ve özelliğin, şu anda veya gelecekte olan tüm Azure dışı makineleri, çalışma alanına rapor olarak içermesini sağlar. Seçildiğinde, bu eylem, kullanılabilir kapsam yapılandırması olmadığından, **makineleri Yönet** seçeneğini kalıcı olarak devre dışı bırakır.
 
     > [!NOTE]
-    > Bu seçenek Log Analytics içindeki kayıtlı aramaları ve kapsam yapılandırmasını sildiği için, bu seçeneği seçmeden önce Log Analytics çalışma alanındaki tüm silme kilitlerini kaldırmak önemlidir. Bunu yapmazsanız, bu seçenek yapılandırmaların kaldırılmasına neden olur ve bunları el ile kaldırmanız gerekir.
+    > Bu seçenek Log Analytics içindeki kayıtlı arama ve kapsam yapılandırmasını sildiği için, bu seçeneği seçmeden önce Log Analytics çalışma alanındaki tüm silme kilitlerini kaldırmak önemlidir. Bunu yapmazsanız, bu seçenek yapılandırmaların kaldırılmasına neden olur ve bunları el ile kaldırmanız gerekir.
 
-5. Gerekirse, ilk kaydedilmiş arama sorgusunu yeniden ekleyerek kapsam yapılandırmalarının geri eklenmesini sağlayabilirsiniz. Daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](update-mgmt-scope-configuration.md).
+5. Gerekirse, ilk kaydedilmiş arama sorgusunu yeniden ekleyerek kapsam yapılandırmasını geri ekleyebilirsiniz. Daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](update-mgmt-scope-configuration.md).
 
 6. Bir veya daha fazla makine için özelliği etkinleştirmek üzere **Seçili makinelerde etkinleştir** ' i seçin ve her makinenin yanındaki **Ekle** ' yi seçin. Bu görev, seçilen makine adlarını, bu özellik için bilgisayar grubu kayıtlı arama sorgusuna ekler.
 

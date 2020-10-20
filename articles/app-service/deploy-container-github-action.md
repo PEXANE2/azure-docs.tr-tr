@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: d6f66993b0fb7f97c551f4fbcb305111cfb2097e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150278"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203203"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
@@ -84,7 +84,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 JSON çıktısının içeriğini gizli değişkeninin değeri olarak yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
 
 ```yaml
 - uses: azure/login@v1
@@ -100,7 +100,7 @@ Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure otu
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Parolayı adlandırın `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örnek:
+GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örneğin:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -114,7 +114,7 @@ GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azu
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
 
 ```yaml
 - uses: azure/login@v1
@@ -190,15 +190,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>App Service kapsayıcısına dağıtma
 
-Görüntünüzü App Service özel bir kapsayıcıya dağıtmak için `azure/webapps-deploy@v2` eylemini kullanın. Bu eylem beş parametreye sahiptir:
+Görüntünüzü App Service özel bir kapsayıcıya dağıtmak için `azure/webapps-deploy@v2` eylemini kullanın. Bu eylem yedi parametreye sahiptir:
 
 | **Parametre**  | **Açıklama**  |
 |---------|---------|
 | **uygulama adı** | Istenir App Service uygulamasının adı | 
-| **Yayımlama profili** | Seçim Web Dağıtımı gizli dizileri ile profil dosyası içeriğini yayımlama |
-| **yansımasını** | Tam kapsayıcı görüntüsü adı. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok Kapsayıcılı senaryo için birden çok kapsayıcı görüntüsü adı sağlanıyor (çok satırlı ayrılmış) |
+| **Yayımlama profili** | Seçim Web Apps (Windows ve Linux) ve Web uygulaması kapsayıcıları (Linux) için geçerlidir. Çoklu kapsayıcı senaryosu desteklenmiyor. \*Web dağıtımı gizli dizileri ile profil (. publishsettings) dosya içeriğini yayımlama | 
 | **yuva adı** | Seçim Üretim yuvası dışında mevcut bir yuva girin |
-| **yapılandırma-dosya** | Seçim Docker-Compose dosyasının yolu |
+| **leyebilir** | Seçim Yalnızca Web uygulaması için geçerlidir: paket veya klasör yolu. \*. zip, \* . war, \* . jar veya dağıtılacak bir klasör |
+| **yansımasını** | Istenir Yalnızca Web uygulaması kapsayıcıları için geçerlidir: tamamen nitelenmiş kapsayıcı görüntüsü adını belirtin. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok kapsayıcılı bir uygulama için birden çok kapsayıcı görüntüsü adı sağlanmış olabilir (çok satırlı ayrılmış) |
+| **yapılandırma-dosya** | Seçim Yalnızca Web uygulaması kapsayıcıları için geçerlidir: Docker-Compose dosyanın yolu. Tam olarak nitelenmiş bir yol olmalıdır veya varsayılan çalışma dizinine göre değişir. Çok Kapsayıcılı uygulamalar için gereklidir. |
+| **başlangıç-komut** | Seçim Başlangıç komutunu girin. For ex. DotNet Run veya DotNet filename.dll |
 
 # <a name="publish-profile"></a>[Profili Yayımla](#tab/publish-profile)
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: duau
-ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566407"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202166"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct hakkında
 
@@ -39,7 +39,7 @@ ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydol
 | --- | --- |
 | Mevcut altyapıya hızlı ekleme ve bağlantı sağlamak için hizmet sağlayıcılarını kullanır | 100 Gbps/10 Gbps altyapısı ve tüm katmanların tam yönetimi gerekir
 | Ethernet ve MPLS dahil yüzlerce sağlayıcı ile tümleşir | Düzenlenen sektörler ve çok büyük veri alımı için doğrudan/ayrılmış kapasite |
-| 50 Mbps 'den 10 Gbps 'ye devre SKU 'Ları | Müşteri, 100 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> Müşteri, 10 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| 50 Mbps 'den 10 Gbps 'ye devre SKU 'Ları | Müşteri, 100 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> Müşteri, 10 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir:<ul><li>1 Gb/sn</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 | Tek kiracı için iyileştirildi | Birden çok iş birimi ve birden çok iş ortamı ile tek bir kiracı için iyileştirildi
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute doğrudan devreleri
@@ -57,7 +57,7 @@ ExpressRoute Direct, Azure depolama ve diğer büyük veri Hizmetleri için geni
 | **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
 | --- | --- |
 | **Abone olunan bant genişliği**: 200 Gbps | **Abone olunan bant genişliği**: 20 Gbps |
-| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gb/sn</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 
@@ -73,7 +73,7 @@ ExpressRoute Direct, Azure depolama ve diğer büyük veri Hizmetleri için geni
     * Microsoft tarafından belirtilen VLAN KIMLIğINE bağlı olarak dış VLAN etiketi (STAG) eklenmelidir ve *yalnızca QinQ üzerinde geçerlidir*
     * Bağlantı noktası ve cihaz başına birden çok BGP oturumu (VLAN) desteklemelidir
     * IPv4 ve IPv6 bağlantısı. *IPv6 için ek bir alt arabirim oluşturulmaz. IPv6 adresi var olan alt arabirime eklenecektir*. 
-    * İsteğe bağlı: ExpressRoute devrelerinde tüm özel eşlemelerde varsayılan olarak yapılandırılan [çift yönlü Iletme algılaması (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) desteği
+    * İsteğe bağlı: ExpressRoute devrelerinde tüm özel eşlemelerde varsayılan olarak yapılandırılan [çift yönlü Iletme algılaması (BFD)](./expressroute-bfd.md) desteği
 
 ## <a name="vlan-tagging"></a>VLAN etiketleme
 

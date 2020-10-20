@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42b86cadefea41bc438c8f2e91c5eaa86af172b0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055223"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204980"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory 'de Konuk erişim izinlerini (Önizleme) kısıtlama
 
@@ -139,14 +139,15 @@ Destekleniyorsa, deneyimin beklendiği gibi olduğu anlamına gelir; Özellikle,
 - Teams
 - Outlook (OWA)
 - SharePoint
+- Ekiplerde Planner
+- Planner Web uygulaması
 
 ### <a name="services-currently-not-supported"></a>Hizmetler şu anda desteklenmiyor
 
 Geçerli destek olmadan hizmet yeni Konuk kısıtlama ayarıyla uyumluluk sorunlarına sahip olabilir.
 
 - Formlar
-- Ekiplerde Planner
-- Planner uygulaması
+- Planner mobil uygulaması
 - Project
 - Yammer
 
@@ -157,7 +158,7 @@ Soru | Yanıt
 Bu izinler nereye uygulanır? | Bu dizin düzeyi izinleri Microsoft Graph, PowerShell V2, Azure portal ve uygulamalarım portalı dahil olmak üzere Azure AD Hizmetleri ve portalları arasında zorlanır. İşbirliği senaryolarına yönelik Microsoft 365 grupları kullanan Microsoft 365 Hizmetleri, özellikle de Outlook, Microsoft ekipleri ve SharePoint 'i de etkilemiştir.
 Uygulamamın portalının hangi parçaları bu özellik tarafından etkilenecek? | Uygulamalarım portalındaki gruplar işlevi bu yeni izinleri kabul eder. Bu, gruplar listesini ve grup üyeliklerini uygulamamda görüntülemek için tüm yolları içerir. Grup kutucuğu kullanılabilirliğine hiçbir değişiklik yapılmadı. Grup kutucuğu kullanılabilirliği, Azure yönetim portalındaki mevcut Grup ayarı tarafından hala denetlenmektedir.
 Bu izinler SharePoint veya Microsoft ekipleri Konuk ayarlarını geçersiz kılar mi? | Hayır. Mevcut ayarlar, bu uygulamalardaki deneyimi ve erişimi yine de denetler. Örneğin, SharePoint 'te sorunlar görürseniz, dış paylaşım ayarlarınızı iki kez kontrol edin.
-Planner ve Yammer 'daki bilinen uyumluluk sorunları nelerdir? | <li>İzinler ' Restricted ' olarak ayarlandığında, Planner uygulamasında oturum açan veya Microsoft ekiplerinde planlayıcıya erişen konuklara, planlarına veya herhangi bir göreve erişemez.<li>İzinler ' Restricted ' olarak ayarlandığında, Yammer 'da oturum açan konuklar gruptan ayrılamayacaktır.
+Planner ve Yammer 'daki bilinen uyumluluk sorunları nelerdir? | <li>İzinler ' Restricted ' olarak ayarlandığında, Planner mobil uygulamasında oturum açan konuklara planlara veya herhangi bir göreve erişemeyecektir.<li>İzinler ' Restricted ' olarak ayarlandığında, Yammer 'da oturum açan konuklar gruptan ayrılamayacaktır.
 Kiracımda var olan konuk izinlerim değiştirilsin mi? | Geçerli ayarlarınızda değişiklik yapılmadı. Mevcut ayarlarınızla geriye dönük uyumluluk sağlıyoruz. Ne zaman değişiklik yapmak istediğinize karar verirsiniz.
 Bu izinler varsayılan olarak ayarlanacaktır mi? | Hayır. Mevcut varsayılan izinler değişmeden kalır. İsteğe bağlı olarak izinleri daha kısıtlayıcı olarak ayarlayabilirsiniz.
 Bu özellik için herhangi bir lisans gereksinimi var mı? | Hayır, bu özellikle yeni lisanslama gereksinimi yoktur.

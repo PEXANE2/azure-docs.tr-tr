@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: duau
-ms.openlocfilehash: 1be507f3676a5531855e3a8deb6801b1a5cb8e74
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1835377f4690097c8390957bf7d897242ba7aace
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166805"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208065"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Öğretici: Traffic Manager 'de öncelik trafiği yönlendirme yöntemini yapılandırma
 
@@ -98,7 +98,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Traffic Manager profiliniz çalışmaya başladıktan sonra, yetkili DNS sunucunuzdaki DNS kaydını düzenleyerek şirket etki alanı adınızı Traffic Manager etki alanı adına getirin.
 
-## <a name="clean-up-resource"></a>Kaynağı temizle
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Traffic Manager profile artık ihtiyacınız yoksa, profili bulun ve **Profili Sil**' i seçin.
 

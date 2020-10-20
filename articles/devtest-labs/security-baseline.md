@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151881"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207300"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -493,7 +493,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 **Rehberlik:** Azure Otomasyonu, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında tamamen denetim sağlar. Abonelik Yöneticisi olarak, DevTest Labs 'de barındırılan VM 'lerde yüklü tüm yazılımları tanımlamak için Değişiklik İzleme kullanabilirsiniz. Kendi işleminizi uygulayabilir veya yetkisiz yazılımı kaldırmak için Azure Otomasyonu durum yapılandırması ' nı kullanabilirsiniz.
 
 - [Azure Otomasyonu’na giriş](../automation/automation-intro.md)
-- [Değişiklik İzleme çözümü ile ortamınızdaki değişiklikleri izleyin](../automation/change-tracking.md)
+- [Değişiklik İzleme çözümü ile ortamınızdaki değişiklikleri izleyin](../automation/change-tracking/overview.md)
 - [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation/automation-dsc-overview.md)
 
 **Azure Güvenlik Merkezi izleme:** Kullanılamıyor
@@ -581,7 +581,7 @@ Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli b
 - [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 - [Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 - [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
-- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
@@ -591,7 +591,7 @@ Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli b
 **Rehberlik:** DevTest Labs 'nin bir parçası olarak oluşturulan tüm temeldeki işlem kaynaklarında güvenlik yapılandırmalarının bakımını yapmak için Azure Güvenlik Merkezi önerilerini kullanın. Ayrıca, kuruluşunuz tarafından istenen işletim sisteminin güvenlik yapılandırmasını oluşturmak için özel işletim sistemi görüntülerini veya Azure Automation durum yapılandırması veya DevTest Labs yapılarını kullanabilirsiniz.
 
 - [Azure Güvenlik Merkezi önerilerini izleme](../security-center/security-center-recommendations.md)
-- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 - [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation/automation-dsc-overview.md)
 - [Bir VHD 'YI karşıya yükleyin ve Azure 'da yeni Windows VM 'Leri oluşturmak için kullanın](../virtual-machines/windows/upload-generalized-managed.md)
 - [Azure CLı ile özel diskten bir Linux VM oluşturma](../virtual-machines/linux/upload-vhd.md)

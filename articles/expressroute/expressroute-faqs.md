@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: a862b978d7737d3d1c301d090012576f64a3ddda
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150742"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202217"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -80,12 +80,12 @@ ExpressRoute çeşitli türlerde hizmetler için [üç yönlendirme etki alanın
 
 ### <a name="microsoft-peering"></a>Microsoft eşlemesi
 
-ExpressRoute devreniz Azure Microsoft eşlemesi için etkinleştirilirse, devre üzerinden Azure 'da kullanılan [genel IP adresi aralıklarına](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) erişebilirsiniz. Azure Microsoft eşlemesi Şu anda Azure 'da barındırılan hizmetlere erişim sağlar (devrenizin SKU 'suna bağlı olarak coğrafi kısıtlamalarla). Belirli bir hizmet için kullanılabilirliği doğrulamak üzere bu hizmetin belgelerini denetleyerek, bu hizmet için yayımlanmış bir Aralık olup olmadığını görebilirsiniz. Ardından, hedef hizmetin IP aralıklarını bulun ve [Azure IP aralıkları ve hizmet etiketleri – genel bulut XML dosyasında](https://www.microsoft.com/download/details.aspx?id=56519)listelenen aralıklardan karşılaştırın. Alternatif olarak, açıklama için söz konusu hizmet için bir destek bileti açabilirsiniz.
+ExpressRoute devreniz Azure Microsoft eşlemesi için etkinleştirilirse, devre üzerinden Azure 'da kullanılan [genel IP adresi aralıklarına](../virtual-network/public-ip-addresses.md#public-ip-addresses) erişebilirsiniz. Azure Microsoft eşlemesi Şu anda Azure 'da barındırılan hizmetlere erişim sağlar (devrenizin SKU 'suna bağlı olarak coğrafi kısıtlamalarla). Belirli bir hizmet için kullanılabilirliği doğrulamak üzere bu hizmetin belgelerini denetleyerek, bu hizmet için yayımlanmış bir Aralık olup olmadığını görebilirsiniz. Ardından, hedef hizmetin IP aralıklarını bulun ve [Azure IP aralıkları ve hizmet etiketleri – genel bulut XML dosyasında](https://www.microsoft.com/download/details.aspx?id=56519)listelenen aralıklardan karşılaştırın. Alternatif olarak, açıklama için söz konusu hizmet için bir destek bileti açabilirsiniz.
 
 **Destek**
 
 * [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
-* Power BI-Azure bölgesel bir topluluk aracılığıyla kullanılabilir Power BI kiracınızın bölgesini bulma hakkında bilgi için [buraya](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) bakın.
+* Power BI-Azure bölgesel bir topluluk aracılığıyla kullanılabilir Power BI kiracınızın bölgesini bulma hakkında bilgi için [buraya](/power-bi/service-admin-where-is-my-tenant-located) bakın.
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure küresel hizmetler topluluğu)
 * IaaS için Azure genel IP adresleri (sanal makineler, sanal ağ geçitleri, yük dengeleyiciler vb.)  
@@ -118,7 +118,7 @@ Microsoft, belirtilen ' tanıtılan genel ön eklerin ' ve ' eşdüzey ASN ' (ve
 Dynamics 365 ve Common Data Service (CD) ortamları Azure üzerinde barındırılır ve bu nedenle müşteriler Azure kaynakları için temeldeki ExpressRoute desteğinden faydalanır. Yönlendirici filtreniz, Dynamics 365/CD ortamlarınızın barındırıldığı Azure bölgelerini içeriyorsa, hizmet uç noktalarına bağlanabilirsiniz.
 
 > [!NOTE]
-> ExpressRoute bağlantı hattı aynı [geopolitik bölgede](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)dağıtılmışsa Azure ExpressRoute üzerinden Dynamics 365 bağlantısı Için [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) gerekli **değildir** .
+> ExpressRoute bağlantı hattı aynı [geopolitik bölgede](./expressroute-locations-providers.md#expressroute-locations)dağıtılmışsa Azure ExpressRoute üzerinden Dynamics 365 bağlantısı Için [ExpressRoute Premium](#expressroute-premium) gerekli **değildir** .
 
 ## <a name="data-and-connections"></a>Veriler ve bağlantılar
 
@@ -152,15 +152,15 @@ Evet. Her bir ExpressRoute bağlantı hattı, yüksek kullanılabilirlik sağlam
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Özel eşleme üzerinde artıklık Nasıl yaparım? mi?
 
-Farklı eşleme konumlarından veya aynı eşleme konumundan en fazla dört bağlantı olan birden fazla ExpressRoute devresi, tek bir devrenin kullanılamaz hale gelmesi durumunda yüksek kullanılabilirlik sağlamak için aynı sanal ağa bağlanabilir. Ardından, belirli bir devreyi tercih etmek üzere yerel bağlantılardan birine [daha yüksek ağırlıklar atayabilirsiniz](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) . Müşterilerin tek hata noktalarından kaçınmak için en az iki ExpressRoute devrenini kurulumu önemle önerilir. 
+Farklı eşleme konumlarından veya aynı eşleme konumundan en fazla dört bağlantı olan birden fazla ExpressRoute devresi, tek bir devrenin kullanılamaz hale gelmesi durumunda yüksek kullanılabilirlik sağlamak için aynı sanal ağa bağlanabilir. Ardından, belirli bir devreyi tercih etmek üzere yerel bağlantılardan birine [daha yüksek ağırlıklar atayabilirsiniz](./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection) . Müşterilerin tek hata noktalarından kaçınmak için en az iki ExpressRoute devrenini kurulumu önemle önerilir. 
 
-Yüksek [kullanılabilirlik ve olağanüstü](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) durum kurtarma için tasarlamak üzere [buraya](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) bakın.  
+Yüksek [kullanılabilirlik ve olağanüstü](./designing-for-disaster-recovery-with-expressroute-privatepeering.md) durum kurtarma için tasarlamak üzere [buraya](./designing-for-high-availability-with-expressroute.md) bakın.  
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Microsoft eşlemesiyle yedeklilik nasıl uygulanır?
 
-Müşteriler, Azure depolama veya Azure SQL gibi Azure genel hizmetlerine erişmek için Microsoft eşlemesi kullanırken ve tek hata noktalarından kaçınmak üzere farklı eşleme konumlarında birden çok devreler Microsoft 365 için Microsoft eşlemesi kullanan müşteriler tarafından kesinlikle önerilir. Müşteriler her iki devrede aynı öneki verebilir ve şirket içi yolu belirlemede farklı ön [bekleyen olarak](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) kullanabilir ya da farklı ön ekleri duyurur.
+Müşteriler, Azure depolama veya Azure SQL gibi Azure genel hizmetlerine erişmek için Microsoft eşlemesi kullanırken ve tek hata noktalarından kaçınmak üzere farklı eşleme konumlarında birden çok devreler Microsoft 365 için Microsoft eşlemesi kullanan müşteriler tarafından kesinlikle önerilir. Müşteriler her iki devrede aynı öneki verebilir ve şirket içi yolu belirlemede farklı ön [bekleyen olarak](./expressroute-optimize-routing.md#solution-use-as-path-prepending) kullanabilir ya da farklı ön ekleri duyurur.
 
-Yüksek kullanılabilirlik için tasarlamak üzere [buraya](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) bakın.
+Yüksek kullanılabilirlik için tasarlamak üzere [buraya](./designing-for-high-availability-with-expressroute.md) bakın.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>ExpressRoute 'a bağlı bir sanal ağ üzerinde yüksek kullanılabilirlik Nasıl yaparım? emin misiniz?
 
@@ -170,7 +170,7 @@ Aynı eşleme konumunda en fazla dört ExpressRoute devresine sanal ağınıza b
 
 Şirket içinden Azure 'a giden yolun ExpressRoute bağlantı hattınızdan her zaman tercih edildiğini sağlamak için yönlendiricilerinizde *yerel tercih* özniteliğini uygulamanız gerekir.
 
-Daha [fazla ayrıntı IÇIN](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) BGP yolu seçimi ve ortak yönlendirici yapılandırması bölümüne bakın. 
+Daha [fazla ayrıntı IÇIN](./expressroute-optimize-routing.md#path-selection-on-microsoft-and-public-peerings) BGP yolu seçimi ve ortak yönlendirici yapılandırması bölümüne bakın. 
 
 ### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>Bir bulut Exchange 'de birlikte bulundurmadığım ve hizmet sağlayıcımın noktadan noktaya bağlantı sağladığından, şirket içi ağ ile Microsoft arasında iki fiziksel bağlantı sipariş etmem gerekir mi?
 
@@ -384,7 +384,7 @@ Bilgi için bkz. [ExpressRoute iş ortakları ve konumları](expressroute-locati
 Evet. Ağınız için ExpressRoute yapılandırılmış olsa bile, hizmet uç noktalarına Microsoft 365 Internet üzerinden erişilebilir. Konumunuzda bulunan ağ, ExpressRoute aracılığıyla Microsoft 365 hizmetlerine bağlanmak üzere yapılandırılmışsa lütfen kuruluşunuzun ağ ekibine başvurun.
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>Azure ExpressRoute üzerinde Microsoft 365 ağ trafiği için yüksek kullanılabilirliği nasıl planlayabilirim?
-[Azure ExpressRoute Ile yüksek kullanılabilirlik ve yük devretme](https://aka.ms/erhighavailability) önerilerine bakın
+[Azure ExpressRoute Ile yüksek kullanılabilirlik ve yük devretme](/microsoft-365/enterprise/network-planning-with-expressroute) önerilerine bakın
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Azure US kamu ExpressRoute devresi üzerinden Office 365 ABD kamu topluluğu (GCC) hizmetlerine erişebilir miyim?
 
@@ -422,5 +422,4 @@ Mevcut bağlantı hattı Microsoft 365 ön ekleri tanıtımak için devam edecek
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>ExpressRoute Hizmeti müşteri verilerini depolar mı?
 
-Hayır. 
-
+Hayır.

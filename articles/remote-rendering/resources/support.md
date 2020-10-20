@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a05216fd44a64c037561662009987615f5657a8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84782526"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207181"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Azure uzaktan Işleme desteği seçenekleri
 
@@ -56,7 +56,7 @@ Geri bildirim sağlamak için, Azure uzaktan Işleme için bir fikir veya öneri
 
 ## <a name="microsoft-qa"></a>Microsoft Soru-Cevap
 
-Microsoft mühendisleri, Azure en değerli uzmanlar (MVP) veya uzman topluluğumuza ait teknik ürün sorularınız hakkında hızlı ve güvenilir yanıtlar için, Azure 'un topluluk desteği için tercih edilen hedefi olan [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html)'da bize katılın.
+Microsoft mühendisleri, Azure en değerli uzmanlar (MVP) veya uzman topluluğumuza ait teknik ürün sorularınız hakkında hızlı ve güvenilir yanıtlar için, Azure 'un topluluk desteği için tercih edilen hedefi olan [Microsoft Q&A](/answers/topics/azure-remote-rendering.html)'da bize katılın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

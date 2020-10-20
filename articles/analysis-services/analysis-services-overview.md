@@ -4,16 +4,16 @@ description: Bulutta kurumsal düzeyde veri modelleri sağlayan, tam olarak yön
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 11ab4e0404b7ebc8620cd1eb54edae9bb861e46b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018806"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201520"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -71,7 +71,7 @@ Bu katman, kullanıcı eşzamanlılığının elastik olmasını gerektiren ve h
 |S9v2 <sup> [1](#naar)</sup>    |    1280    |    400     |
 
 <a name="naar">1</a> -tüm bölgelerde kullanılamaz.   
-<a name="rec">2</a> -v2 önerilir.
+<a name="rec">2</a> -S8 ve S9 [kullanım dışıdır](https://azure.microsoft.com/updates/azure-s8-and-s9-analysis-services-skus-retiring-on-31-august-2023/). v2 önerilir. 
 
 ## <a name="availability-by-region"></a>Bölgelere göre kullanılabilirlik
 
@@ -85,7 +85,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Orta Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Doğu ABD     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Doğu ABD 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Doğu ABD 2     |     S8, S9, S8v2, S9v2   |    1    |
+|Doğu ABD 2     |     S8v2, S9v2   |    1    |
 |Orta Kuzey ABD     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Kuzey ABD     |     S8v2, S9v2    |    1     |
 |Central US     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -93,9 +93,9 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Batı ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|Batı ABD     |    S8, S9, S8v2, S9v2   |    2  |
+|Batı ABD     |    S8v2, S9v2   |    2  |
 |Batı ABD 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|Batı ABD 2    |    S8, S9, S8v2, S9v2  |    1     |
+|Batı ABD 2    |    S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europe
 
@@ -105,17 +105,18 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
 |Güney Birleşik Krallık     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |West Europe     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|West Europe    |   S8, S9, S8v2, S9v2  |  1  |
+|West Europe    |   S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asya Pasifik 
 
 |Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Doğu Avustralya     |    S8, S9, S8v2, S9v2    |    1     |
+|Doğu Avustralya     |    S8v2, S9v2    |    1     |
 |Avustralya Güneydoğu     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Doğu Japonya     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
+|Güneydoğu Asya     |     S8v2, S9v2     |   1      |
 |Batı Hindistan     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Gereksinimlerinize göre ölçeklendirin
@@ -163,11 +164,11 @@ Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenli
 
 Sunucu düzeyinde Analysis Services, güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve Server-Side şifreleme sağlar. Veri modeli düzeyinde, Kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik, verilerinizin güvende olduğundan ve yalnızca bunu gördüğü kullanıcılar tarafından görülendiğinden emin olmanızı sağlar.
 
-### <a name="firewall"></a>Güvenlik Duvarı
+### <a name="firewall"></a>Güvenlik duvarı
 
 Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, güvenlik duvarı koruması yeni sunucular için etkin değildir. Önerilen güvenlik duvarı koruması etkinleştirilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 Kullanıcı kimlik doğrulaması, [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) tarafından işlenir. Kullanıcılar oturum açarken veritabanına rol tabanlı erişim ile bir kuruluş hesabı kimliği kullanır. Kullanıcı kimlikleri, sunucunun içinde bulunduğu abonelik için varsayılan Azure Active Directory’nin üyesi olmalıdır. Daha fazla bilgi için bkz. [Kimlik doğrulaması ve izinler](analysis-services-manage-users.md).
 

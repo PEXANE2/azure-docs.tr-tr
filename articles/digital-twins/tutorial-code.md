@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 830052237580101d9141bbf812c050430c6269f2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144569"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201366"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -104,40 +104,21 @@ Daha sonra, bazı işlevleri doldurmanız için bu dosyaya kod ekleyeceksiniz.
 
 Uygulamanızın yapması gereken ilk şey, Azure dijital TWINS hizmetinde kimlik doğrulaması gerçekleştirir. Ardından, SDK işlevlerine erişmek için bir hizmet istemci sınıfı oluşturabilirsiniz.
 
-Kimlik doğrulamak için üç parça bilgi gerekir:
-* Aboneliğiniz için *Dizin (kiracı) kimliği*
-* Daha önce Azure Digital TWINS örneğini ayarlarken oluşturulan *uygulama (istemci) kimliği*
-* Azure dijital TWINS örneğinizin *ana bilgisayar adı*
+Kimlik doğrulamak için, Azure dijital TWINS örneğinizin *ana bilgisayar adına* ihtiyacınız vardır.
 
->[!TIP]
-> *Dizin (kiracı) kimliğinizi*bilmiyorsanız bu komutu [Azure Cloud Shell](https://shell.azure.com)' de çalıştırarak edinebilirsiniz:
-> 
-> ```azurecli
-> az account show --query tenantId
-> ```
-
-*Program.cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure dijital TWINS örneğiniz *ana bilgisayar adı*, `clientId` *Uygulama Kimliğiniz*ve `tenantId` *Dizin kimliğiniz*olarak ayarlayın.
+*Program.cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına*ayarlayın.
 
 ```csharp
-string clientId = "<your-application-ID>";
-string tenantId = "<your-directory-ID>";
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+var credential = new DefaultAzureCredential();
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 Console.WriteLine($"Service client created – ready to go");
 ```
 
 Dosyayı kaydedin. 
 
-Bu örneğin etkileşimli bir tarayıcı kimlik bilgisi kullandığını unutmayın:
-```csharp
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-```
-
-Bu kimlik bilgisi türü tarayıcı penceresinin açılmasını sağlar ve Azure kimlik bilgilerinizi vermenizi ister. 
-
 >[!NOTE]
-> Diğer kimlik bilgileri türleri hakkında daha fazla bilgi için [Microsoft Identity platform kimlik doğrulama kitaplıkları](../active-directory/develop/reference-v2-libraries.md)belgelerine bakın.
+> Bu örnek, `DefaultAzureCredential` kimlik doğrulaması için bir kullanır. Diğer kimlik bilgileri türleri hakkında daha fazla bilgi için, bkz. [Microsoft Identity platform kimlik doğrulama kitaplıkları](../active-directory/develop/reference-v2-libraries.md)veya [istemci uygulamalarının kimlik doğrulaması](how-to-authenticate-client.md)Ile Ilgili Azure dijital TWINS makalesi.
 
 Komut pencerenizde şu komutla kodu çalıştırın: 
 
@@ -463,11 +444,10 @@ namespace minimal
         {
             Console.WriteLine("Hello World!");
             
-            string clientId = "<your-application-ID>";
-            string tenantId = "<your-directory-ID>";
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-            var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+            
+            var credential = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
             Console.WriteLine($"Service client created – ready to go");
 
             Console.WriteLine();

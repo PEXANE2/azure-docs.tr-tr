@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
-ms.openlocfilehash: a5829399b70871903c8eb433b95e0cb09e5d2c60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398095"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202557"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute ortak eşlemesini oluşturma ve yönetme
 
@@ -30,7 +30,7 @@ Bu makale, bir ExpressRoute devresi için ortak eşleme Yönlendirme yapılandı
 
 ## <a name="connectivity"></a>Bağlantı
 
-Bağlantı, WAN 'dan Microsoft Azure hizmetlerine her zaman başlatılır. Microsoft Azure hizmetler, bu yönlendirme etki alanı üzerinden ağınıza bağlantı başlatamaz. ExpressRoute devreniz Azure genel eşleme için etkinleştirildiyse, devre üzerinden [Azure 'da kullanılan genel IP aralıklarına](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) erişebilirsiniz.
+Bağlantı, WAN 'dan Microsoft Azure hizmetlerine her zaman başlatılır. Microsoft Azure hizmetler, bu yönlendirme etki alanı üzerinden ağınıza bağlantı başlatamaz. ExpressRoute devreniz Azure genel eşleme için etkinleştirildiyse, devre üzerinden [Azure 'da kullanılan genel IP aralıklarına](../virtual-network/public-ip-addresses.md#public-ip-addresses) erişebilirsiniz.
 
 Ortak eşleme etkinleştirildikten sonra, çoğu Azure hizmetine bağlanabilirsiniz. Yolların tanıtıldığı Hizmetleri seçmeli olarak seçmenizi vermedik.
 
@@ -60,7 +60,7 @@ Belirli bir hizmet için kullanılabilirliği doğrulamak üzere bu hizmetin bel
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Azure genel eşleme, her BGP oturumuyla ilişkili 1 NAT IP adresine sahiptir. 2 ' den fazla NAT IP adresi için Microsoft eşlemesi ' ne geçin. Microsoft eşleme, kendi NAT ayırmalarınızı yapılandırmanıza ve seçmeli ön ek tanıtımları için yol filtrelerini kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Microsoft eşlemesi 'Ne taşıma](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
+> Azure genel eşleme, her BGP oturumuyla ilişkili 1 NAT IP adresine sahiptir. 2 ' den fazla NAT IP adresi için Microsoft eşlemesi ' ne geçin. Microsoft eşleme, kendi NAT ayırmalarınızı yapılandırmanıza ve seçmeli ön ek tanıtımları için yol filtrelerini kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Microsoft eşlemesi 'Ne taşıma](./how-to-move-peering.md).
 >
 
 ## <a name="custom-route-filters"></a>Özel yol filtreleri

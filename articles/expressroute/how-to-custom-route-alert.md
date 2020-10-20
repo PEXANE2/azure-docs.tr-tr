@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b812a727a555f8c4c95389f2ba0cc5ccea2f608a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766671"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205568"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
 
@@ -42,7 +42,7 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 * [Azure Logic Apps](../logic-apps/logic-apps-overview.md)hakkında bilgi sahibisiniz.
 
-* Azure PowerShell kullanma hakkında bilgi sahibisiniz. ExpressRoute Gateway 'de ağ öneklerini toplamak için Azure PowerShell gereklidir. Genel olarak Azure PowerShell hakkında daha fazla bilgi için [Azure PowerShell belgelerine](https://docs.microsoft.com/powershell/azure/?view=azps-4.1.0)bakın.
+* Azure PowerShell kullanma hakkında bilgi sahibisiniz. ExpressRoute Gateway 'de ağ öneklerini toplamak için Azure PowerShell gereklidir. Genel olarak Azure PowerShell hakkında daha fazla bilgi için [Azure PowerShell belgelerine](/powershell/azure/?view=azps-4.1.0)bakın.
 
 ### <a name="notes-and-limitations"></a><a name="limitations"></a>Notlar ve sınırlamalar
 
@@ -257,7 +257,7 @@ PowerShell betiğini çalıştırdığınızda bir değer listesi toplanır:
 
 * Durum ayrıntılı açıklaması için uyarı iletisi (Tamam, uyarı, uyarı)
 
-PowerShell betiği, toplanan bilgileri bir JSON çıktısına dönüştürür. Runbook, bilgileri istemciye iletmek için çıkış akışı olarak PowerShell cmdlet 'i [yazma çıkışı](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  kullanır.
+PowerShell betiği, toplanan bilgileri bir JSON çıktısına dönüştürür. Runbook, bilgileri istemciye iletmek için çıkış akışı olarak PowerShell cmdlet 'i [yazma çıkışı](/powershell/module/Microsoft.PowerShell.Utility/Write-Output)  kullanır.
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. runbook 'u doğrulama
 

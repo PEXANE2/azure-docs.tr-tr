@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ecd4330381db1f63a40e9ba5ff63108c6fa78fe
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187243"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205617"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Değişiklik İzleme ve Stok özelliği sorunlarını giderme
 
-Bu makalede, Azure Otomasyonu Değişiklik İzleme ve envanter sorunlarını giderme ve çözme işlemleri açıklanmaktadır. Değişiklik İzleme ve envanter hakkında genel bilgi için bkz. [değişiklik izleme ve envantere genel bakış](../change-tracking.md).
+Bu makalede, Azure Otomasyonu Değişiklik İzleme ve envanter sorunlarını giderme ve çözme işlemleri açıklanmaktadır. Değişiklik İzleme ve envanter hakkında genel bilgi için bkz. [değişiklik izleme ve envantere genel bakış](../change-tracking/overview.md).
 
 ## <a name="windows"></a>Windows
 
@@ -108,11 +108,11 @@ Bu sorunu giderme hakkında daha fazla bilgi için bkz. [sorun: herhangi bir Lin
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Linux için Log Analytics Aracısı doğru yapılandırılmamış
 
-Linux için Log Analytics Aracısı, OMS günlük Toplayıcı Aracı kullanılarak günlük ve komut satırı çıkış koleksiyonu için doğru şekilde yapılandırılmamış olabilir. Bkz. [değişiklik izleme ve envantere genel bakış](../change-tracking.md).
+Linux için Log Analytics Aracısı, OMS günlük Toplayıcı Aracı kullanılarak günlük ve komut satırı çıkış koleksiyonu için doğru şekilde yapılandırılmamış olabilir. Bkz. [değişiklik izleme ve envantere genel bakış](../change-tracking/overview.md).
 
 ##### <a name="fim-conflicts"></a>FIM çakışmaları
 
-Azure Güvenlik Merkezi 'nin FIM özelliği, Linux dosyalarınızın bütünlüğünü yanlış şekilde doğruluyor olabilir. FIM 'nin çalışır durumda olduğunu ve Linux dosya izleme için doğru şekilde yapılandırıldığını doğrulayın. Bkz. [değişiklik izleme ve envantere genel bakış](../change-tracking.md).
+Azure Güvenlik Merkezi 'nin FIM özelliği, Linux dosyalarınızın bütünlüğünü yanlış şekilde doğruluyor olabilir. FIM 'nin çalışır durumda olduğunu ve Linux dosya izleme için doğru şekilde yapılandırıldığını doğrulayın. Bkz. [değişiklik izleme ve envantere genel bakış](../change-tracking/overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
