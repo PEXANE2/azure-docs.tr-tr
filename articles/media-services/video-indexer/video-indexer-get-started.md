@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 10/19/2020
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85130764"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219809"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Hızlı başlangıç: nasıl kaydolun ve ilk videonuzu karşıya yükleyebilirsiniz
 
@@ -39,24 +39,28 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 ### <a name="upload-a-video"></a>Karşıya video yükleme
 
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
-2. Karşıya video yüklemek için **Karşıya Yükle** düğme veya bağlantısına basın.
+1. Karşıya video yüklemek için **Karşıya Yükle** düğme veya bağlantısına basın.
 
     > [!NOTE]
     > Videonun adı 80 karakterden büyük olmamalıdır.
 
-    ![Karşıya Yükleme](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Karşıya yükle":::
+1. Videonuz karşıya yüklendikten sonra Video Indexer videoyu dizinlemeye ve analiz etmeye başlar. İlerleme durumunu görürsünüz. 
 
-    Videonuz karşıya yüklendikten sonra Video Indexer videoyu dizinlemeye ve analiz etmeye başlar.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Karşıya yükle":::
+1. Video Indexer çözümlendikten sonra, videonuza bağlantı içeren bir e-posta alacaksınız ve videonuzda nelerin bulunmuştur ilgili kısa bir açıklama alırsınız. Örneğin: insanlar, konuşulan ve yazılı sözcükler, konular ve adlandırılmış varlıklar.
+1. Daha sonra videonuzu kitaplık listesinde bulabilir ve farklı işlemler yapabilirsiniz. Örneğin: arama, yeniden dizin, düzenleme.
 
-    ![Karşıya yüklendi](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Video Indexer analizi tamamladıktan sonra videonuzun bağlantısını ve videonuzda neler bulunduğunun kısa bir açıklamasını içeren bir bildirim alırsınız. Örnek: kişiler, konular, OCR’ler.
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Karşıya yükle":::
+ 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 Daha fazla ayrıntı için bkz. [videoları karşıya yükleme ve Dizin](upload-index-videos.md) .
 
-Bir videoyu karşıya yükleyip dizinledikten sonra, videonun öngörülerini görmek için [video Indexer](video-indexer-view-edit.md) Web sitesini veya [video Indexer geliştirici portalını](video-indexer-use-apis.md) kullanmaya başlayabilirsiniz. 
+Bir videoyu karşıya yükleyip dizinledikten sonra, videonun öngörülerini görmek için [video Indexer Web sitesini](video-indexer-view-edit.md) veya [video Indexer geliştirici portalını](video-indexer-use-apis.md) kullanmaya başlayabilirsiniz. 
 
 [API 'Leri kullanmaya başlama](video-indexer-use-apis.md)
 

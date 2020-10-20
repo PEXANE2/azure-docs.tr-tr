@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 2604a1608f21d7239db755027e15b8198fb3f9f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f3a58d3a7470867ab23249bbd645289e010ad89
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81791653"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92223169"
 ---
 ### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
 
@@ -31,7 +31,7 @@ ms.locfileid: "81791653"
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |maxBatchSize|10|Alma döngüsü başına alınan en yüksek olay sayısı.|
-|prefetchCount|300|Temel tarafından kullanılan varsayılan önceden getirme sayısı `EventProcessorHost` .|
+|prefetchCount|300|Temel tarafından kullanılan varsayılan önceden getirme sayısı `EventProcessorHost` . İzin verilen en düşük değer 10 ' dur.|
 |Batchcheckpointflik|1|Bir EventHub imleç denetim noktası oluşturmadan önce işlenecek olay toplu işlemlerinin sayısı.|
 
 > [!NOTE]
@@ -57,4 +57,3 @@ ms.locfileid: "81791653"
 
 > [!NOTE]
 > Azure Işlevleri 1. x ' teki host.jsbaşvurusu için bkz. [ Azure işlevleri için başvuruhost.js, 1. x](../articles/azure-functions/functions-host-json-v1.md).
-

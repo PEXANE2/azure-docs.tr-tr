@@ -3,14 +3,23 @@ title: Azure Red Hat OpenShift v3. x ' i kapsayıcılar için Azure Izleyici ile
 description: Bu makalede, Azure Red Hat OpenShift sürüm 3 ve üzerinde barındırılan Azure Izleyici ile bir Kubernetes kümesi izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 4e1770944fa1917bc94dfbf1a3daa0708593e356
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994568"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216377"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift v3 'i kapsayıcılar için Azure Izleyici ile yapılandırma 
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift v3 'i kapsayıcılar için Azure Izleyici ile yapılandırma
+
+>[!IMPORTANT]
+> Azure Red Hat OpenShift 3,11, 2022 Haziran tarihinde kullanımdan kaldırılacaktır.
+>
+> Ekim 2020 itibariyle, artık yeni 3,11 kümeleri oluşturamayacak.
+> Mevcut 3,11 kümeleri, 2022 Haziran 'a kadar çalışmaya devam eder, ancak bu tarihten sonra daha fazla desteklenmeyecektir.
+>
+> [Azure Red Hat OpenShift 4 kümesi oluşturmak](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster)için bu kılavuzu izleyin.
+> Belirli sorularınız varsa [lütfen bizimle iletişime geçin](mailto:aro-feedback@microsoft.com).
 
 Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, benzer bir izleme deneyimi elde etmek için [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) sürüm 3 ve sürüm 3 ' ün en son desteklenen sürümünde barındırılan Kubernetes kümelerinin izlenmesini nasıl etkinleştireceğinizi açıklanmaktadır.
 

@@ -3,12 +3,12 @@ title: SQL Server Azure 'a DPM iş yükü olarak yedekleme
 description: Azure Backup hizmetini kullanarak SQL Server veritabanlarını yedeklemeye giriş
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254593"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218094"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server Azure 'a DPM iş yükü olarak yedekleme
 
@@ -23,7 +23,8 @@ SQL Server bir veritabanını Azure 'a yedeklemek ve Azure 'dan kurtarmak için:
 1. Veritabanını Azure 'dan kurtarın.
 
 >[!NOTE]
->DPM 2019 UR2, küme paylaşılan birimleri 'ni (CSV) kullanarak SQL Server yük devretme kümesi örneklerini (FCı) destekler.
+>DPM 2019 UR2, küme paylaşılan birimleri 'ni (CSV) kullanarak SQL Server yük devretme kümesi örneklerini (FCı) destekler.<br><br>
+>[SQL Server yük devretme kümesi örneğinin Azure 'da depolama alanları doğrudan](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure) ve [SQL Server yük devretme kümesi örneği ile Azure Paylaşılan disklerle](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure) korunması bu özellikle desteklenir. Azure VM 'lerinde dağıtılan SQL FCı örneğini korumak için DPM sunucusunun Azure sanal makinesine dağıtılması gerekir. 
 
 ## <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
 

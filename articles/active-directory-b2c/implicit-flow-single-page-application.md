@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fb1750996f40db6d76db30cd1c3bc07186660159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44300771ce6471c97dcd582884995395daae4995
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201863"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215493"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OAuth 2,0 örtük akışını kullanarak tek sayfalı oturum açma
 
@@ -26,7 +26,9 @@ Birçok modern uygulamanın, birincil olarak JavaScript 'te yazılmış tek sayf
 - Birçok yetkilendirme sunucusu ve kimlik sağlayıcısı, çıkış noktaları arası kaynak paylaşımı (CORS) isteklerini desteklemez.
 - Tam sayfa tarayıcı yeniden yönlendirmeleri, uygulamanın dışında yeniden yönlendirilir ve Kullanıcı deneyimine sahip olabilir.
 
-Bu uygulamaları desteklemek için Azure Active Directory B2C (Azure AD B2C) OAuth 2,0 örtük akışını kullanır. OAuth 2,0 yetkilendirmesi dolaylı verme akışı, [oauth 2,0 belirtiminin 4,2 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. Örtük akışta, uygulama herhangi bir sunucudan sunucuya Exchange olmadan belirteçleri doğrudan Azure Active Directory (Azure AD) yetkilendirme uç noktasından alır. Tüm kimlik doğrulama mantığı ve oturum işleme, tam olarak JavaScript istemcisinde veya bir sayfa yeniden yönlendirme ya da bir açılır kutu ile yapılır.
+Tek sayfalı uygulamaları desteklemeye yönelik önerilen yöntem, [OAuth 2,0 yetkilendirme kodu akışsıdır (PKI CE ile)](./authorization-code-flow.md).
+
+[MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)gibi bazı çerçeveler yalnızca örtük izin akışını destekler. Bu durumlarda Azure Active Directory B2C (Azure AD B2C), OAuth 2,0 yetkilendirmesi dolaylı verme akışını destekler. Thee akışı, [OAuth 2,0 belirtiminin 4,2 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. Örtük akışta, uygulama herhangi bir sunucudan sunucuya Exchange olmadan belirteçleri doğrudan Azure Active Directory (Azure AD) yetkilendirme uç noktasından alır. Tüm kimlik doğrulama mantığı ve oturum işleme, tam olarak JavaScript istemcisinde veya bir sayfa yeniden yönlendirme ya da bir açılır kutu ile yapılır.
 
 Azure AD B2C, standart OAuth 2,0 örtük akışını basit kimlik doğrulamasından ve yetkilendirmeye genişletir. Azure AD B2C, [ilke parametresini](user-flow-overview.md)tanıtır. İlke parametresiyle, uygulamanıza kaydolma, oturum açma ve profil yönetimi Kullanıcı akışları gibi ilkeler eklemek için OAuth 2,0 kullanabilirsiniz. Bu makaledeki örnek HTTP isteklerinde, **{Tenant}. onmicrosoft. com** örnek olarak kullanılır. `{tenant}`Varsa kiracınızın adıyla değiştirin ve ayrıca bir Kullanıcı akışı oluşturduysanız.
 
@@ -129,7 +131,7 @@ Bir KIMLIK belirtecini imzalamak için kullanılan Kullanıcı akışının (ve 
 Meta veri belgesini OpenID Connect meta veri uç noktasından aldıktan sonra, KIMLIK belirtecinin imzasını doğrulamak için RSA-256 ortak anahtarlarını (bu uç noktada bulunur) kullanabilirsiniz. Bu uç noktada, her biri bir tarafından tanımlanan herhangi bir zamanda listelenmiş birden fazla anahtar olabilir `kid` . Üst bilgisi `id_token` de bir talep içerir `kid` . Bu, KIMLIK belirtecini imzalamak için bu anahtarların hangisinin kullanıldığını belirtir. [Belirteçleri doğrulama](tokens-overview.md)hakkında bilgi edinmek dahil daha fazla bilgi için [Azure AD B2C belirteç başvurusuna](tokens-overview.md)bakın.
 <!--TODO: Improve the information on this-->
 
-KIMLIK belirtecinin imzasını doğruladıktan sonra, birkaç talep doğrulama gerektirir. Örneğin:
+KIMLIK belirtecinin imzasını doğruladıktan sonra, birkaç talep doğrulama gerektirir. Örnek:
 
 * Belirteç yeniden `nonce` yürütme saldırılarını önleme talebini doğrulayın. Değeri, oturum açma isteğinde belirtidikleriniz olmalıdır.
 * `aud`Kimlik belirtecinin uygulamanız için verildiğinden emin olmak için talebi doğrulayın. Değeri uygulamanızın uygulama KIMLIĞI olmalıdır.
@@ -223,7 +225,7 @@ KIMLIK belirteçleri ve erişim belirteçlerinin her ikisi de kısa bir süre so
 ## <a name="send-a-sign-out-request"></a>Oturum kapatma isteği gönder
 Kullanıcıyı uygulamadan dışarı imzalamak istediğinizde oturumu kapatmak için kullanıcıyı Azure AD 'ye yönlendirin. Kullanıcıyı yeniden yönlendirmezseniz, Azure AD ile geçerli bir çoklu oturum açma oturumu olduğundan, kimlik bilgilerini tekrar girmeden uygulamanıza yeniden kimlik doğrulaması yapabiliyor olabilirler.
 
-Kullanıcıyı, `end_session_endpoint` [kimlik belirtecini doğrulama](#validate-the-id-token)bölümünde açıklanan OpenID Connect meta veri belgesinde listelenen öğesine yeniden yönlendirebilirsiniz. Örneğin:
+Kullanıcıyı, `end_session_endpoint` [kimlik belirtecini doğrulama](#validate-the-id-token)bölümünde açıklanan OpenID Connect meta veri belgesinde listelenen öğesine yeniden yönlendirebilirsiniz. Örnek:
 
 ```http
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F

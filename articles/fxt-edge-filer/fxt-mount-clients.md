@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9ee50c146271106e2b9c693702827b2e1b52199
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86231361"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219556"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Öğretici: kümeyi bağlama
 
@@ -20,6 +20,7 @@ Bu öğreticide, NFS istemcilerini Azure FXT Edge Filer kümesine bağlama öğr
 Bu öğretici öğretir:
 
 > [!div class="checklist"]
+>
 > * İstemciye yönelik IP adresleri aralığı genelinde Yük Dengeleme istemcilerinin stratejileri
 > * İstemciye yönelik bir IP adresinden ve ad alanı birleşimden bir bağlama yolu oluşturma
 > * Bağlama komutunda kullanılacak bağımsız değişkenler

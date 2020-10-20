@@ -120,6 +120,7 @@
                   href: container-registry-repository-scoped-permissions.md
             - name: Azure rol tabanlı erişim denetimi
               href: container-registry-roles.md
+              displayName: 'permissions, authorization'
             - name: İçerik güveni
               href: container-registry-content-trust.md
             - name: Güvenlik Merkezi ile resim tarama

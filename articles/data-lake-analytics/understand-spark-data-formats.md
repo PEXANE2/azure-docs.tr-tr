@@ -6,16 +6,16 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
-ms.openlocfilehash: bff8c89dcdcbb7c319e04e5e7518985badf5a5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399914186ce9de62ef46b682c8d4a6e51426cc26
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132322"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221120"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>U-SQL ve Spark veri biçimleri arasındaki farkları anlayın
 
-[Azure Databricks](../azure-databricks/what-is-azure-databricks.md) veya [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md)kullanmak istiyorsanız, [Azure Data Lake Storage 1.](../data-lake-store/data-lake-store-overview.md) verilerinizi [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md)'e geçirmeniz önerilir.
+[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) veya [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md)kullanmak istiyorsanız, [Azure Data Lake Storage 1.](../data-lake-store/data-lake-store-overview.md) verilerinizi [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md)'e geçirmeniz önerilir.
 
 Dosyalarınızı taşımaya ek olarak, c-SQL tablolarında depolanacak ve Spark tarafından erişilebilen verilerinizi de yapmak isteyeceksiniz.
 
@@ -26,13 +26,13 @@ Dosyalarda depolanan veriler çeşitli yollarla taşınabilir:
 - [Azure Data Lake Storage 1.](../data-lake-store/data-lake-store-overview.md) hesabındaki verileri [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md) hesabına kopyalamak için bir [Azure Data Factory](../data-factory/introduction.md) işlem hattı yazın.
 - [Azure Data Lake Storage 1.](../data-lake-store/data-lake-store-overview.md) hesabından verileri okuyan bir Spark işi yazın ve [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md) hesabına yazar. Özgün dosya biçimini korumanız gerekmiyorsa, kullanım ihtimaline bağlı olarak, Parquet gibi farklı bir biçimde yazmak isteyebilirsiniz.
 
-[Büyük veri analizi çözümlerinizi Azure Data Lake Storage 1. ' den Azure Data Lake Storage 2. sürümüne yükseltme](../storage/blobs/data-lake-storage-upgrade.md) makalesini incelemenizi öneririz
+[Büyük veri analizi çözümlerinizi Azure Data Lake Storage 1. ' den Azure Data Lake Storage 2. sürümüne yükseltme](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md) makalesini incelemenizi öneririz
 
 ## <a name="move-data-stored-in-u-sql-tables"></a>U-SQL tablolarında depolanan verileri taşıma
 
 U-SQL tabloları Spark tarafından anlaşılamıyor. U-SQL tablolarında depolanan verileriniz varsa, tablo verilerini çıkaran ve Spark 'ın anlayacağı bir biçimde kaydeden bir U-SQL işini çalıştıracaksınız. En uygun biçim, Hive meta veri deposu klasör düzeninden sonra bir dizi Parquet dosyası oluşturmaktır.
 
-Çıktı, yerleşik Parquet outputter ile U-SQL ' i n içinde ve bölüm klasörlerini oluşturmak için dosya kümeleriyle dinamik çıkış bölümleme kullanılarak elde edilebilir. [Her zamankinden daha fazla dosya işleyin ve Parquet kullanımı](https://blogs.msdn.microsoft.com/azuredatalake/2018/06/11/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) , bu tür Spark tüketilebilir verilerin nasıl oluşturulacağı hakkında bir örnek sağlar.
+Çıktı, yerleşik Parquet outputter ile U-SQL ' i n içinde ve bölüm klasörlerini oluşturmak için dosya kümeleriyle dinamik çıkış bölümleme kullanılarak elde edilebilir. [Her zamankinden daha fazla dosya işleyin ve Parquet kullanımı](/archive/blogs/azuredatalake/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) , bu tür Spark tüketilebilir verilerin nasıl oluşturulacağı hakkında bir örnek sağlar.
 
 Bu dönüşümden sonra, [Azure Data Lake Storage 1. dosyalarında depolanan verileri taşıma](#move-data-stored-in-azure-data-lake-storage-gen1-files)bölümünde özetlenen verileri kopyalayın.
 
@@ -47,8 +47,8 @@ Bu dönüşümden sonra, [Azure Data Lake Storage 1. dosyalarında depolanan ver
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [U-SQL geliştiricileri için Spark kod kavramlarını anlama](understand-spark-code-concepts.md)
-- [Büyük veri analizi Çözümlerinizi Azure Data Lake Storage 1. Azure Data Lake Storage 2. ' dan yükseltin](../storage/blobs/data-lake-storage-upgrade.md)
-- [Apache Spark için .NET](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [Büyük veri analizi Çözümlerinizi Azure Data Lake Storage 1. Azure Data Lake Storage 2. ' dan yükseltin](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
+- [Apache Spark için .NET](/dotnet/spark/what-is-apache-spark-dotnet)
 - [Azure Data Factory Spark etkinliğini kullanarak verileri dönüştürme](../data-factory/transform-data-using-spark.md)
 - [Azure Data Factory Hadoop Hive etkinliğini kullanarak verileri dönüştürme](../data-factory/transform-data-using-hadoop-hive.md)
 - [Azure HDInsight’ta Apache Spark nedir?](../hdinsight/spark/apache-spark-overview.md)

@@ -3,32 +3,25 @@ title: Ekiplerden Azure laboratuvarında bir VM 'ye (öğrenci görünümü) eri
 description: Ekiplerden Azure laboratuvarında bir VM 'ye (öğrenci görünümü) erişmeyi öğrenin.
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: c786a8b3fcee57cefb551a61087d4b49ee5e93c0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 31195cc7c8b4bc0e579f8aeb9107b14229dd8877
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102417"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218281"
 ---
 # <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>Ekiplerden Azure laboratuvarında bir VM 'ye (öğrenci görünümü) erişme
 
-Takımlar içinde bir laboratuvar oluşturulduğunda, kullanıcılar takım sahibi tarafından sağlanan tüm VM 'Leri görüntüleyebilir ve erişebilirler. Laboratuvar yayımlandıktan ve VM 'Ler oluşturulduktan sonra, kullanıcılar otomatik olarak laboratuvara kaydedilir ve Azure Lab Services ilk oturum açmada bir VM atanır. Örneğin, takımda **Azure Lab Services** uygulama içeren sekmeye erişirken. 
-
-## <a name="view-labs"></a>Laboratuvarları görüntüle
-
-Laboratuvar henüz yayınlanıyorsa veya takıma eklendikten sonra bir eşitleme henüz tetikleniyorsa, benzer mesajlaşma ekibi üyelerine gösterilir.
-
-> [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/lab.png" alt-text="Azure Lab Services Laboratuvarı":::
+Takımlar içinde bir laboratuvar oluşturulduğunda, kullanıcılar takım sahibi tarafından sağlanan tüm VM 'Leri görüntüleyebilir ve erişebilirler. Laboratuvar yayımlandıktan ve VM 'Ler oluşturulduktan sonra, kullanıcılar otomatik olarak laboratuvara kaydedilir ve Azure Lab Services ilk oturum açmada bir VM atanır. Kullanıcılar, **Azure Lab Services** uygulama içeren sekmeyi seçerek sanal makineye atanan VM 'leri görüntüleyebilir ve bunlara erişebilir.
 
 Laboratuvar henüz yayınlanıyorsa veya takıma eklendikten sonra bir eşitleme henüz tetikleniyorsa, öğrencilerle benzer mesajlaşma gösterilir.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/not-published-lab.png" alt-text="Azure Lab Services Laboratuvarı":::
+> :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/not-published-lab.png" alt-text="Azure Lab Services Laboratuvarı yayımlanmadı":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Takımlara genel bakış içinde Azure Lab Services kullanma](lab-services-within-teams-overview.md)
 - [Çalışmaya başlayın ve takımlar içinde laboratuvar oluşturun](how-to-get-started-create-lab-within-teams.md)

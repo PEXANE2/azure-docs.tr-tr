@@ -2,7 +2,6 @@
 title: Azure Güvenlik Merkezi uyarıları şemaları
 description: Bu makalede, Azure Güvenlik Merkezi tarafından güvenlik uyarıları için kullanılan farklı şemalar açıklanmaktadır.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901338"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220678"
 ---
 # <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
 
@@ -68,7 +67,7 @@ Azure Sentinel hakkında daha fazla bilgi için [belgelerine](https://docs.micro
 
 
 
-### <a name="azure-activity-log"></a>[Azure etkinlik günlüğü](#tab/schema-activitylog)
+### <a name="azure-activity-log"></a>[Azure Etkinlik Günlüğü](#tab/schema-activitylog)
 
 Azure Güvenlik Merkezi, Azure etkinlik günlüğünde oluşturulan güvenlik uyarılarını olaylar olarak denetler.
 
@@ -173,7 +172,7 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 
 Microsoft Graph, Microsoft 365 veri ve zeka ağ geçidindir. Microsoft 365, Windows 10 ve Enterprise Mobility + Security çok fazla miktarda veriye erişmek için kullanabileceğiniz Birleşik bir programlama modeli sağlar. Milyonlarca kullanıcıyla etkileşime geçen kuruluşlar ve tüketiciler için uygulama derlemek üzere Microsoft Graph içindeki çok sayıda veriyi kullanın.
 
-MS Graph 'e gönderilen güvenlik uyarıları için şema ve JSON temsili [Microsoft Graph belgelerinde](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)bulunabilir.
+MS Graph 'e gönderilen güvenlik uyarıları için şema ve JSON temsili [Microsoft Graph belgelerinde](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true)bulunabilir.
 
 ---
 
