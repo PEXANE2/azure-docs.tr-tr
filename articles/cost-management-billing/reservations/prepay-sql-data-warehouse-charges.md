@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ca83760f09ea29ba0b21a0f7177dd3f3188c44cd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686148"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151523"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Ayrılmış kapasiteyle Azure Synapse Analytics ücretlerinde maliyet tasarrufu sağlayın
 
@@ -27,7 +27,7 @@ Ayrılmış kapasitenin süresi dolduğunda Azure Synapse Analytics örnekleri �
 
 Fiyatlandırma bilgileri için bkz. [Azure Synapse Analytics ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-[Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) Azure Synapse Analytics ayrılmış kapasitesi satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](monthly-payments-reservations.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için:
+[Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) Azure Synapse Analytics ayrılmış kapasitesi satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](./prepare-buy-reservation.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için:
 
 - En az bir kurumsal veya Kullandıkça Öde aboneliği için sahip rolüne sahip olmanız gerekir.
 - Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ayar devre dışı bırakılırsa EA Yöneticisi olmanız gerekir.

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: 2ca4affaeae7f19cf3c913b5dfcf89a04e5bc628
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 32c0779f4086574aeaf8d38ea675f80fbd2c1ec7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026799"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132236"
 ---
 # <a name="troubleshoot-mca-billing-issues-with-usage-file-pivot-tables"></a>Kullanım dosyası özet tabloları ile MCA faturalama sorunlarını giderme
 
@@ -27,13 +27,13 @@ Bu makale, kullanım dosyalarınızdaki özet tablolarını kullanarak Microsoft
 
 Kullanım dosyalarınızdaki bilgilerden faydalanarak, kullanım sorunlarını daha iyi anlayıp tanılayabilirsiniz. Kullanım dosyaları, virgülle ayrılmış (CSV) biçimde oluşturulur. Kullanım bilgilerinin yer aldığı CSV dosyalarının boyutu büyük olabileceğinden, Excel gibi bir elektronik tablo uygulamasında özet tablolar olarak yönetilip görüntülenmeleri daha kolaydır. Bu makaledeki örneklerde Excel tercih edilmiştir, ancak siz dilediğiniz elektronik tablo uygulamasını kullanabilirsiniz.
 
-Yalnızca Faturalama profili sahipleri, Katkıda Bulunanlar, Okuyucular veya Fatura Yöneticileri kullanım dosyalarını indirebilir. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmeniz için kullanımı indirme](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-your-microsoft-customer-agreement). 
+Yalnızca Faturalama profili sahipleri, Katkıda Bulunanlar, Okuyucular veya Fatura Yöneticileri kullanım dosyalarını indirebilir. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmeniz için kullanımı indirme](./download-azure-invoice-daily-usage-date.md#download-usage-for-your-microsoft-customer-agreement). 
 
 ## <a name="get-the-data-and-format-it"></a>Verileri alma ve biçimlendirme
 
 Azure kullanım dosyaları CSV biçiminde olduğundan, verileri Excel’de kullanılacak şekilde hazırlamanız gerekir. Verileri tablo olarak biçimlendirmek için aşağıdaki adımlardan yararlanın.
 
-1. [Azure portalda kullanımı indirme](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-in-azure-portal) sayfasındaki yönergeleri izleyerek kullanım dosyasını indirin.
+1. [Azure portalda kullanımı indirme](./download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal) sayfasındaki yönergeleri izleyerek kullanım dosyasını indirin.
 1. Dosyayı Excel'de açın.
 1. Biçimlendirilmemiş veriler aşağıdaki örneğe benzer.  
     :::image type="content" source="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" alt-text="Biçimlendirilmemiş verilerin gösterildiği örnek" lightbox="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" :::

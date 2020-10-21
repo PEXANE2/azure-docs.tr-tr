@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5340d6124ae4fdc669a30458b9e58cf4c86d6746
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684669"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150082"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Kurumsal Anlaşma faturanızı anlama
 
@@ -436,7 +436,7 @@ Power BI ile ilgili sorunlar için [Power BI destek ekibine](https://support.pow
 
 ### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Kaynak etiketlerim neden raporlarımda görünmüyor?
 
-Kaynak etiketleri Azure portalında yönetilir. [Azure portalından](https://portal.azure.com) Azure abonelik ekibiyle iletişime geçebilirsiniz. [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) makalesindeki adımları izleyin.
+Kaynak etiketleri Azure portalında yönetilir. [Azure portalından](https://portal.azure.com) Azure abonelik ekibiyle iletişime geçebilirsiniz. [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md) makalesindeki adımları izleyin.
 
 ### <a name="why-does-my-resource-rate-change-every-day"></a>Kaynak ücretim neden her gün değişiyor?
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301457"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341694"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>SSS-Azure Güvenlik Merkezi ile ilgili genel sorular
 
@@ -62,7 +62,7 @@ Güvenlik ilkesi yapılandırma hakkında bilgi edinmek için bkz. [Azure Güven
 Azure Güvenlik Merkezi, Azure kaynaklarınızın güvenlik durumunu analiz eder. Olası güvenlik açıkları tanımlandığında, öneriler oluşturulur. Öneriler, gerekli denetimi yapılandırma sürecinde size yol gösterir. Örnekler şunlardır:
 
 * Kötü amaçlı yazılımdan koruma sağlama kötü amaçlı yazılımları tanımanıza ve kaldırmanıza yardımcı olur
-* Sanal makinelere trafiği denetlemek için [ağ güvenlik grupları](../virtual-network/security-overview.md) ve kuralları
+* Sanal makinelere trafiği denetlemek için [ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md) ve kuralları
 * Web uygulamalarınızı hedefleyen saldırılara karşı savunmasına yardımcı olmak için bir Web uygulaması güvenlik duvarı sağlama
 * Eksik sistem güncelleştirmelerini dağıtma
 * Önerilen taban çizgileriyle eşleşmeyen işletim sistemi yapılandırmalarını ele alma

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766839"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125346"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ Veri kopyalama işlemi tamamlandıktan sonra verilerinizi doğrulamaya geçebili
 
 Verileri kopyalamak için Split Copy aracını kullanmadıysanız verilerinizi doğrulamanız gerekir. Verileri doğrulamak için aşağıdaki adımları uygulayın.
 
-1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın. Bu yalnızca Windows ortamında kullanılabilir. Linux kullanıcılarının diske kopyalanan kaynak verilerinin [önkoşulları](https://docs.microsoft.com/azure/databox/data-box-disk-limits) karşıladığını doğrulaması gerekir.
+1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın. Bu yalnızca Windows ortamında kullanılabilir. Linux kullanıcılarının diske kopyalanan kaynak verilerinin [önkoşulları](./data-box-disk-limits.md) karşıladığını doğrulaması gerekir.
     
     ![Data Box Diski doğrulama aracı çıktısı](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -335,6 +335,6 @@ Verilerinizi doğrulamak için aşağıdaki adımları uygulayın.
 1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın.
 2. Dosyalarınızı doğrulamak ve sağlama toplamları oluşturmak için 2. seçeneği kullanın. Bu adım verilerinizin boyutuna bağlı olarak uzun sürebilir. Doğrulama ve sağlama toplamı alma sırasında herhangi bir hata olursa size bildirilir ve hata günlüklerine bir bağlantı sunulur.
 
-    Veri doğrulama hakkında daha fazla bilgi için bkz. [Verileri doğrulama](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Doğrulama sırasında hatalarla karşılaşırsanız bkz. [. doğrulama hatalarını giderme](data-box-disk-troubleshoot.md).
+    Veri doğrulama hakkında daha fazla bilgi için bkz. [Verileri doğrulama](#validate-data). Doğrulama sırasında hatalarla karşılaşırsanız bkz. [. doğrulama hatalarını giderme](data-box-disk-troubleshoot.md).
 
 ::: zone-end

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441483"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341847"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS-veri toplama, aracılar ve çalışma alanları hakkında sorular
 
@@ -43,7 +43,7 @@ Fiyatlandırma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlan
 
 ## <a name="what-is-the-log-analytics-agent"></a>Log Analytics Aracısı nedir?
 
-Azure Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için [Log Analytics aracısına](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) bağlıdır. Bu, Azure İzleyici hizmeti tarafından kullanılan aracıdır. 
+Azure Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için [Log Analytics aracısına](../azure-monitor/platform/log-analytics-agent.md) bağlıdır. Bu, Azure İzleyici hizmeti tarafından kullanılan aracıdır. 
 
 Aracı bazen Microsoft Monitoring Agent (veya "MMA") olarak adlandırılır. 
 
@@ -66,7 +66,7 @@ Windows veya Linux IaaS VM 'Leri şu durumlarda niteler:
 
 - Log Analytics Aracısı uzantısı Şu anda VM 'de yüklü değil.
 - VM çalışıyor durumunda.
-- Windows veya Linux [Azure sanal makine Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) yüklendi.
+- Windows veya Linux [Azure sanal makine Aracısı](../virtual-machines/extensions/agent-windows.md) yüklendi.
 - VM, Web uygulaması güvenlik duvarı veya yeni nesil güvenlik duvarı gibi bir gereç olarak kullanılmaz.
 
 
@@ -88,7 +88,7 @@ Varsayılan çalışma alanının konumu, Azure bölgenize bağlıdır:
 
 ## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics Aracısı tarafından hangi veriler toplanır?
 
-Aracı tarafından izlenen uygulamaların ve hizmetlerin tam listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services).
+Aracı tarafından izlenen uygulamaların ve hizmetlerin tam listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../azure-monitor/monitor-reference.md#azure-services).
 
 > [!IMPORTANT]
 > Azure Güvenlik Duvarı gibi bazı hizmetlerde günlüğe kaydetmeyi etkinleştirdiyseniz ve günlüğe kaydedilecek bir geveze kaynağı seçtiyseniz (örneğin, günlüğü *verbose*olarak ayarlamak), Log Analytics çalışma alanı depolama gereksinimlerinizin önemli etkilerini görebilirsiniz. 

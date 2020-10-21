@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e778538efe97266eb73f85e8548a9cd5ca1f53c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972518"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341320"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning ınvenli bir ortamın güvenliğini sağlama
 
@@ -119,11 +119,11 @@ Oluşturma işlemi tamamlandığında, bir sanal ağın arkasındaki AKS kümesi
 
 AKS kümesinden ve sanal ağa giden trafiği yalıtmak için iki yaklaşım vardır:
 
-* __Özel aks kümesi__: Bu yaklaşım, VNET içindeki aks kümesi için özel bir uç nokta oluşturmak üzere Azure özel bağlantısını kullanır.
-* __Iç AKS yük dengeleyici__: Bu yaklaşım, küme için yük dengeleyiciyi VNET 'teki BIR iç IP adresini kullanacak şekilde yapılandırır.
+* __Özel AKS kümesi__: Bu yaklaşım, dağıtım/yönetim işlemleri için kümeyle iletişimin güvenliğini sağlamak üzere Azure özel bağlantısını kullanır.
+* __Iç aks yük dengeleyici__: Bu yaklaşım, sanal ağ içinde özel bir IP kullanmak üzere dağıtımlarınız için uç noktayı yapılandırır.
 
 > [!WARNING]
-> Her iki yapılandırma de aynı hedefe ulaşmanın farklı yollarıdır (sanal ağ içindeki AKS kümesine gelen trafiğin güvenliğini sağlama). **Bir veya diğerini kullanın, ancak ikisini**birden kullanmayın.
+> **Özel AKS veya iç yük dengeleyici kullanın, ancak ikisini birden**kullanmayın.
 
 ### <a name="private-aks-cluster"></a>Özel AKS kümesi
 

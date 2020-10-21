@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220678"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341949"
 ---
 # <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
 
@@ -24,9 +24,9 @@ Aboneliğiniz Azure Defender 'ı etkinleştirmişse Güvenlik Merkezi, kaynaklar
 
 Bu güvenlik uyarılarını Azure Güvenlik Merkezi 'nin **tehdit koruması** sayfalarında veya gibi dış araçlarla görüntüleyebilirsiniz:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) -Microsoft 'un bulutu-NATIVE SIEM. Sentinel Bağlayıcısı, Azure Güvenlik Merkezi 'ndeki uyarıları alır ve Azure Sentinel için [Log Analytics çalışma alanına](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) gönderir.
-- Üçüncü taraf Sıems- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)'a veri göndermek Için Güvenlik Merkezi 'nin [sürekli dışarı aktarma](continuous-export.md) araçları 'nı kullanın. Ardından, Olay Hub 'ınızı verilerinizi bir üçüncü taraf SıEM ile tümleştirin.
-- [REST API](https://docs.microsoft.com/rest/api/securitycenter/) -uyarılara erişmek için REST API kullanıyorsanız, [çevrimiçi uyarılar API 'si belgelerine](https://docs.microsoft.com/rest/api/securitycenter/alerts)bakın.
+- [Azure Sentinel](../sentinel/index.yml) -Microsoft 'un bulutu-NATIVE SIEM. Sentinel Bağlayıcısı, Azure Güvenlik Merkezi 'ndeki uyarıları alır ve Azure Sentinel için [Log Analytics çalışma alanına](../azure-monitor/learn/quick-create-workspace.md) gönderir.
+- Üçüncü taraf Sıems- [Azure Event Hubs](../event-hubs/index.yml)'a veri göndermek Için Güvenlik Merkezi 'nin [sürekli dışarı aktarma](continuous-export.md) araçları 'nı kullanın. Ardından, Olay Hub 'ınızı verilerinizi bir üçüncü taraf SıEM ile tümleştirin.
+- [REST API](/rest/api/securitycenter/) -uyarılara erişmek için REST API kullanıyorsanız, [çevrimiçi uyarılar API 'si belgelerine](/rest/api/securitycenter/alerts)bakın.
 
 Uyarıları tüketmek için herhangi bir programlama yöntemi kullanıyorsanız, sizin için uygun olan alanları bulmak için doğru şemaya ihtiyacınız olacaktır. Ayrıca, bir olay hub 'ına veriyorsanız veya genel HTTP bağlayıcılarıyla Iş akışı Otomasyonu tetiklemeye çalışıyorsanız, JSON nesnelerini doğru şekilde ayrıştırmak için şemaları kullanın.
 
@@ -60,7 +60,7 @@ Sentinel Bağlayıcısı, Azure Güvenlik Merkezi 'ndeki uyarıları alır ve Az
 
 Güvenlik Merkezi uyarılarını kullanarak bir Sentinel Case veya olay oluşturmak için aşağıda gösterilen uyarıların şemasına ihtiyacınız vardır. 
 
-Azure Sentinel hakkında daha fazla bilgi için [belgelerine](https://docs.microsoft.com/azure/sentinel/)bakın.
+Azure Sentinel hakkında daha fazla bilgi için [belgelerine](../sentinel/index.yml)bakın.
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -172,7 +172,7 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 
 Microsoft Graph, Microsoft 365 veri ve zeka ağ geçidindir. Microsoft 365, Windows 10 ve Enterprise Mobility + Security çok fazla miktarda veriye erişmek için kullanabileceğiniz Birleşik bir programlama modeli sağlar. Milyonlarca kullanıcıyla etkileşime geçen kuruluşlar ve tüketiciler için uygulama derlemek üzere Microsoft Graph içindeki çok sayıda veriyi kullanın.
 
-MS Graph 'e gönderilen güvenlik uyarıları için şema ve JSON temsili [Microsoft Graph belgelerinde](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true)bulunabilir.
+MS Graph 'e gönderilen güvenlik uyarıları için şema ve JSON temsili [Microsoft Graph belgelerinde](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0)bulunabilir.
 
 ---
 
@@ -183,7 +183,7 @@ Bu makalede, Azure Güvenlik Merkezi 'nin tehdit koruması araçlarının güven
 
 Dışındaki güvenlik merkezi 'nden güvenlik uyarılarına erişme yolları hakkında daha fazla bilgi için aşağıdaki sayfalara bakın:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) -Microsoft 'un bulutu-NATIVE SIEM
-- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) -Microsoft 'un tam olarak yönetilen, gerçek zamanlı veri alma hizmeti
+- [Azure Sentinel](../sentinel/index.yml) -Microsoft 'un bulutu-NATIVE SIEM
+- [Azure Event Hubs](../event-hubs/index.yml) -Microsoft 'un tam olarak yönetilen, gerçek zamanlı veri alma hizmeti
 - Güvenlik Merkezi 'nin [sürekli dışarı aktarma özelliği](continuous-export.md)
-- [Log Analytics çalışma alanları](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) -Azure izleyici, günlük verilerini, veri ve yapılandırma bilgilerini içeren bir kapsayıcı olan bir Log Analytics çalışma alanında depolar
+- [Log Analytics çalışma alanları](../azure-monitor/learn/quick-create-workspace.md) -Azure izleyici, günlük verilerini, veri ve yapılandırma bilgilerini içeren bir kapsayıcı olan bir Log Analytics çalışma alanında depolar

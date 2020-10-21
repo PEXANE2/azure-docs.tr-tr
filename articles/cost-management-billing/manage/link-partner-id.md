@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017021"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132559"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
 
@@ -25,13 +25,13 @@ PAL, Microsoft’un Azure müşteri başarısını artıran iş ortaklarını be
 
 Siz iş ortağı kimliğinizi bağlamadan önce müşteriniz aşağıdaki seçeneklerden birini kullanarak Azure kaynaklarına erişmenizi sağlamalıdır:
 
-- **Konuk kullanıcı**: Müşteriniz, sizi konuk kullanıcı olarak ekleyip Azure rolleri atayabilir. Daha fazla bilgi için bkz. [Başka bir dizinden konuk kullanıcılar ekleme](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Konuk kullanıcı**: Müşteriniz, sizi konuk kullanıcı olarak ekleyip Azure rolleri atayabilir. Daha fazla bilgi için bkz. [Başka bir dizinden konuk kullanıcılar ekleme](../../active-directory/external-identities/what-is-b2b.md).
 
 - **Dizin hesabı**: Müşteriniz, kendi dizininde sizin için bir kullanıcı hesabı oluşturabilir ve Azure rolü atayabilir.
 
 - **Hizmet sorumlusu**: Müşteriniz, kendi dizininde kuruluşunuzdan bir uygulama veya betik ekleyebilir ve Azure rolü atayabilir. Uygulamanın veya betiğin kimliği, hizmet sorumlusu olarak bilinir.
 
-- **Azure Lighthouse**: Müşteriniz bir aboneliği (veya kaynak grubunu) temsilci olarak atayarak kullanıcılarınızın kiracınızda bunun üzerinde çalışmasını sağlayabilir. Daha fazla bilgi için bkz. [Azure’da atanan kaynak yönetimi](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
+- **Azure Lighthouse**: Müşteriniz bir aboneliği (veya kaynak grubunu) temsilci olarak atayarak kullanıcılarınızın kiracınızda bunun üzerinde çalışmasını sağlayabilir. Daha fazla bilgi için bkz. [Azure’da atanan kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md).
 
 ## <a name="link-to-a-partner-id"></a>İş ortağı kimliğine bağlantı
 
@@ -55,7 +55,7 @@ Müşterinin kaynaklarına erişiminiz olduğunda, Microsoft İş Ortağı Ağı
 
 1. [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) PowerShell modülünü yükleyin.
 
-2. Kullanıcı hesabı veya hizmet sorumlusu ile müşterinin kiracısında oturum açın. Daha fazla bilgi için bkz [PowerShell ile oturum açma](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+2. Kullanıcı hesabı veya hizmet sorumlusu ile müşterinin kiracısında oturum açın. Daha fazla bilgi için bkz [PowerShell ile oturum açma](/powershell/azure/authenticate-azureps).
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -89,7 +89,7 @@ C:\> remove-AzManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ```
 
-2. Kullanıcı hesabı veya hizmet sorumlusu ile müşterinin kiracısında oturum açın. Daha fazla bilgi için bkz. [Azure CLI ile oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Kullanıcı hesabı veya hizmet sorumlusu ile müşterinin kiracısında oturum açın. Daha fazla bilgi için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
@@ -152,9 +152,9 @@ Bulut Ürün Performansı raporlaması, İş Ortağı Merkezinde [İçgörüleri
 
 Aşağıdaki nedenlerle raporlarda müşteriyi göremezsiniz
 
-1. Bağlantılı kullanıcı hesabının herhangi bir müşterinin Azure aboneliğinde veya kaynağında [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) yoktur.
+1. Bağlantılı kullanıcı hesabının herhangi bir müşterinin Azure aboneliğinde veya kaynağında [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) yoktur.
 
-2. Kullanıcının [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) erişimine sahip olduğu Azure aboneliğinde herhangi bir kullanım yoktur.
+2. Kullanıcının [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) erişimine sahip olduğu Azure aboneliğinde herhangi bir kullanım yoktur.
 
 **İş ortağı kimliği bağlantısı, Azure Stack ile çalışır mı?**
 

@@ -8,20 +8,20 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448386"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341898"
 ---
-# <a name="using-custom-security-policies"></a>Özel güvenlik ilkeleri kullanma
+# <a name="using-custom-security-policies"></a>Özel güvenlik ilkelerini kullanma
 
 Azure Güvenlik Merkezi, sistem ve ortamınızın güvenliğini sağlamaya yardımcı olmak için güvenlik önerileri oluşturur. Bu öneriler, tüm müşterilere sağlanan genel, varsayılan güvenlik ilkesine dahil olan sektör en iyi uygulamalarına dayalıdır. Ayrıca, güvenlik merkezi 'nin sektör ve mevzuat standartları hakkında bilgi edinmeleri de gelebilir.
 
 Bu özellikle kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortamınız oluşturduğunuz ilkeleri izmazsa öneriler alacaksınız. Oluşturmakta olduğunuz özel girişimler, mevzuata uygunluk panosundaki yerleşik girişimlerle birlikte görünür ve bu da [yasal uyumluluğun geliştirilmesi](security-center-compliance-dashboard.md)öğreticide açıklanmıştır.
 
-[Azure ilkesi belgelerinde](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location)açıklandığı gibi, özel girişimleriniz için bir konum belirttiğinizde, bir yönetim grubu veya abonelik olması gerekir. 
+[Azure ilkesi belgelerinde](../governance/policy/concepts/definition-structure.md#definition-location)açıklandığı gibi, özel girişimleriniz için bir konum belirttiğinizde, bir yönetim grubu veya abonelik olması gerekir. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Aboneliğinize özel bir girişim eklemek için 
 
@@ -136,7 +136,7 @@ Meta veri/securityCenter özelliği de dahil olmak üzere özel ilkeye bir örne
 }
   ```
 
-SecurityCenter özelliğini kullanmanın başka bir örneği için [REST API belgelerinin bu bölümüne](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)bakın.
+SecurityCenter özelliğini kullanmanın başka bir örneği için [REST API belgelerinin bu bölümüne](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -146,4 +146,4 @@ Bu makalede, özel güvenlik ilkeleri oluşturmayı öğrendiniz.
 Diğer ilgili malzemeler için aşağıdaki makalelere bakın: 
 
 - [Güvenlik ilkelerine genel bakış](tutorial-security-policy.md)
-- [Yerleşik güvenlik ilkelerinin listesi](security-center-policy-definitions.md)
+- [Yerleşik güvenlik ilkelerinin listesi](./policy-reference.md)

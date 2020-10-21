@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: c8ab6f51daf18802b83508a3e1bbd5af3ee59799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50180984423b7c6d2921234a3502495016c4df5c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91337086"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150102"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure maliyetlerin yönetmeyi planlama
 
@@ -24,7 +24,7 @@ Bu makale Azure maliyetlerinizi yönetme planına başlamanıza yardımcı olur.
 - Hizmet eklemeden önce [fiyat hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) veya Azure fiyat listesini kullanarak ya da Azure portalında hizmet eklerken tahmini maliyetler alın.
 - [Bütçeler](../costs/tutorial-acm-create-budgets.md), [uyarılar](../costs/cost-mgt-alerts-monitor-usage-spending.md) ve [maliyet analizi](../costs/quick-acm-cost-analysis.md) ile maliyetleri izleyin.
 - Faturanızdaki ücretleri [ayrıntılı kullanım dosyaları](../manage/download-azure-invoice-daily-usage-date.md) ile karşılaştırarak gözden geçirin.
-- [Fatura](https://docs.microsoft.com/rest/api/billing/) ve [tüketim](https://docs.microsoft.com/rest/api/consumption/) API’lerini kullanarak fatura ve maliyet verilerini kendi raporlama sisteminizle tümleştirin.
+- [Fatura](/rest/api/billing/) ve [tüketim](/rest/api/consumption/) API’lerini kullanarak fatura ve maliyet verilerini kendi raporlama sisteminizle tümleştirin.
 - Kurumsal Anlaşma (EA), Bulut Çözümü Sağlayıcısı (CSP) ve Azure Sponsorluğu müşterilerine yönelik ek kaynakları ve araçları kullanın.
 - [Ücretsiz Azure hesabı](../manage/create-free-services.md) ile sunulan [en popüler Azure hizmetlerinden bazılarını 12 ay boyunca ücretsiz](https://azure.microsoft.com/free/) kullanın. Aşağıda listelenen önerilere birlikte, bkz. [Ücretsiz hesap için ücret yansıtılmasını önleme](../manage/avoid-charges-free-account.md).
 
@@ -125,7 +125,7 @@ Maliyet tasarrufu sağlayan Danışmanı önerileri hakkında kılavuzlu bir ö�
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Fatura ve tüketim API'leriyle tümleştirme
 
-Fatura ve maliyet verilerini program aracılığıyla almak için Azure [fatura](https://docs.microsoft.com/rest/api/billing/) ve [tüketim](https://docs.microsoft.com/rest/api/consumption/) API’lerini kullanın. RateCard API'si ve Kullanım API'sini birlikte kullanarak faturalandırılan kullanımınızı alabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Azure kaynak kullanımınızla ilgili içgörüler edinin](../manage/usage-rate-card-overview.md).
+Fatura ve maliyet verilerini program aracılığıyla almak için Azure [fatura](/rest/api/billing/) ve [tüketim](/rest/api/consumption/) API’lerini kullanın. RateCard API'si ve Kullanım API'sini birlikte kullanarak faturalandırılan kullanımınızı alabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Azure kaynak kullanımınızla ilgili içgörüler edinin](../manage/usage-rate-card-overview.md).
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Ek kaynaklar ve özel durumlar
 

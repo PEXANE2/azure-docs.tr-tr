@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372366"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132304"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -180,7 +180,7 @@ Aşağıdaki kapsamlar, Microsoft Müşteri Sözleşmesi kapsamındaki müşteri
 
 Doğrudan iş ortağının Azure kiracısında bulunan ödeme hesapları, faturalama profilleri ve müşteriler ile ilgili maliyetleri yönetme ve görüntüleme işlemleri yalnızca *Genel yönetici* ve *Yönetici aracısı* rolleri tarafından gerçekleştirilebilir. İş ortağı merkezi rolleri hakkında daha fazla bilgi için bkz. [Kullanıcı rollerini ve izinlerini atama](/partner-center/permissions-overview).
 
-Azure Maliyet Yönetimi, CSP iş ortağı müşterilerini yalnızca Microsoft Müşteri Sözleşmesi'ne sahip olmaları durumunda destekler. Henüz bir Microsoft Müşteri Sözleşmesi’ne sahip olmayan desteklenen CSP müşterileri için bkz. [İş Ortağı Merkezi](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Azure Maliyet Yönetimi, CSP iş ortağı müşterilerini yalnızca Microsoft Müşteri Sözleşmesi'ne sahip olmaları durumunda destekler. Henüz bir Microsoft Müşteri Sözleşmesi’ne sahip olmayan desteklenen CSP müşterileri için bkz. [İş Ortağı Merkezi](/azure/cloud-solution-provider/overview/partner-center-overview).
 
 CSP kapsamlarındaki yönetim grupları Maliyet Yönetimi tarafından desteklenmez. CSP aboneliğiniz varsa ve maliyet analizinde bir yönetim grubuna kapsam belirliyorsanız şuna benzer bir hata görürsünüz:
 

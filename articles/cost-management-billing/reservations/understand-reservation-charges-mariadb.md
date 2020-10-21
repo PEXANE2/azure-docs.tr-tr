@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be2dd4235883601b0b13c5783e4c7c7c106c20e9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0691ec320b62ed212235a63dacedcf3ec38a23ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682034"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151462"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanına rezervasyon indiriminin uygulanması
 
@@ -30,7 +30,7 @@ MariaDB için Azure Veritabanı ayrılmış kapasitesi indirimi, çalışan Mari
 
 Aşağıdaki örneklerde, satın aldığınız çekirdek sayısına ve çalıştırılma zamanına bağlı olarak MariaDB için Azure Veritabanı ayrılmış kapasite indiriminin nasıl uygulanacağı gösterilmektedir.
 
-* **Örnek 1**: 8 sanal çekirdek için MariaDB için Azure Veritabanı ayrılmış kapasitesi satın alabilirsiniz. Rezervasyonun diğer öznitelikleriyle eşleşen 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsanız MariaDB sunucusu işlem kullanımınızın 8 sanal çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve 8 sanal çekirdek MariaDB sunucusu işlem kullanımı için bir saatlik indirimden faydalanırsınız.
+**Örnek 1**: 8 sanal çekirdek için MariaDB için Azure Veritabanı ayrılmış kapasitesi satın alabilirsiniz. Rezervasyonun diğer öznitelikleriyle eşleşen 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsanız MariaDB sunucusu işlem kullanımınızın 8 sanal çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve 8 sanal çekirdek MariaDB sunucusu işlem kullanımı için bir saatlik indirimden faydalanırsınız.
 
 Bu örneklerin geri kalan kısmında satın aldığınız MariaDB için Azure Veritabanı ayrılmış kapasitesinin 16 sanal çekirdekli MariaDB için Azure Veritabanı için olduğunu ve diğer rezervasyon özniteliklerinin çalışan MariaDB sunucuları ile eşleştiğini kabul edelim.
 
@@ -40,7 +40,7 @@ Bu örneklerin geri kalan kısmında satın aldığınız MariaDB için Azure Ve
 
 * **Örnek 4**: Saat 13:00 ile 13:45 arasında 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca işlem kullanımına uygulanır.
 
-Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
+Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](./understand-reserved-instance-usage-ea.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950746"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341932"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Varlık envanteri ve yönetim araçlarıyla kaynaklarınızı bulun ve yönetin
 
@@ -43,7 +43,7 @@ Bu aracın varlık yönetimi olanakları önemli ölçüde artar ve büyümeye d
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Tüm kullanıcılar|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -68,22 +68,22 @@ Envanter sayfası aşağıdaki araçları sağlar:
     ![Stokun dışarı aktarma seçenekleri](./media/asset-inventory/inventory-export-options.png)
 
     > [!TIP]
-    > KQL belgeleri, dil için &quot;fikir" almak için bazı basit sorgularla birlikte bazı örnek verilerle birlikte bir veritabanı sağlar. [Bu KQL öğreticisinde daha fazla bilgi edinin](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+    > KQL belgeleri, dil için &quot;fikir" almak için bazı basit sorgularla birlikte bazı örnek verilerle birlikte bir veritabanı sağlar. [Bu KQL öğreticisinde daha fazla bilgi edinin](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
 - **Varlık yönetimi seçenekleri** -envanter, karmaşık bulma sorguları gerçekleştirmenize olanak tanır. Sorgularınızla eşleşen kaynakları bulduğunuz stok, şu gibi işlemler için kısayollar sağlar:
 
     - Filtrelenmiş kaynaklara Etiketler atama-etiketlemek istediğiniz kaynakların yanındaki onay kutularını seçin.
     - Yeni sunucuları güvenlik merkezi 'ne **ekleme-Azure dışı sunucular Ekle** araç çubuğu düğmesini kullanın.
-    - Azure Logic Apps iş yüklerini otomatikleştirme-bir veya daha fazla kaynak üzerinde bir mantıksal uygulama çalıştırmak için **mantıksal uygulama tetikleme** düğmesini kullanın. Mantıksal uygulamalarınızın önceden hazırlanması ve ilgili Tetikleyici türünü (HTTP isteği) kabul etmesi gerekir. [Logic Apps hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+    - Azure Logic Apps iş yüklerini otomatikleştirme-bir veya daha fazla kaynak üzerinde bir mantıksal uygulama çalıştırmak için **mantıksal uygulama tetikleme** düğmesini kullanın. Mantıksal uygulamalarınızın önceden hazırlanması ve ilgili Tetikleyici türünü (HTTP isteği) kabul etmesi gerekir. [Logic Apps hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Varlık envanteri nasıl çalışır?
 
-Varlık envanteri, güvenlik merkezi 'nin güvenlik sonrası verilerini birden çok aboneliğe sorgulama yeteneği sağlayan bir Azure hizmeti olan [Azure Kaynak Grafiği 'ni (arg)](https://docs.microsoft.com/azure/governance/resource-graph/)kullanır.
+Varlık envanteri, güvenlik merkezi 'nin güvenlik sonrası verilerini birden çok aboneliğe sorgulama yeteneği sağlayan bir Azure hizmeti olan [Azure Kaynak Grafiği 'ni (arg)](../governance/resource-graph/index.yml)kullanır.
 
 Bağımsız değişken, ölçeklendirerek sorgulama özelliği sayesinde etkili kaynak araştırması sağlamak üzere tasarlanmıştır.
 
-Varlık envanteri, [kusto sorgu dilini (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)kullanarak, diğer kaynak özellikleriyle ASC verileri çapraz bir şekilde vererek derin Öngörüler elde edebilir.
+Varlık envanteri, [kusto sorgu dilini (KQL)](/azure/data-explorer/kusto/query/)kullanarak, diğer kaynak özellikleriyle ASC verileri çapraz bir şekilde vererek derin Öngörüler elde edebilir.
 
 
 ## <a name="how-to-use-asset-inventory"></a>Varlık envanterini kullanma
@@ -201,5 +201,5 @@ Bu makalede, Azure Güvenlik Merkezi 'nin varlık Envanteri sayfası açıklanma
 
 İlgili araçlar hakkında daha fazla bilgi için aşağıdaki sayfalara bakın:
 
-- [Azure Kaynak Grafiği (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-- [Kusto Sorgu Dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Azure Kaynak Grafiği (ARG)](../governance/resource-graph/index.yml)
+- [Kusto Sorgu Dili (KQL)](/azure/data-explorer/kusto/query/)
