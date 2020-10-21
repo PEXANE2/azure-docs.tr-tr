@@ -1,25 +1,27 @@
 ---
-title: Azure Cosmos DB için Azure CLı örnekleri
-description: Azure Cosmos DB için Azure CLı örnekleri
+title: Azure Cosmos DB Core (SQL) API 'SI için Azure CLı örnekleri
+description: Azure Cosmos DB Core (SQL) API 'SI için Azure CLı örnekleri
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 58460dffad3d44090644a544f4082b7727ece3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5ed9af0c133f746f5761d6c41a5fdb9f25589ac
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840345"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276378"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure CLI örnekleri
+# <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Azure Cosmos DB Core (SQL) API 'SI için Azure CLı örnekleri
 
 Aşağıdaki tablo, Azure Cosmos DB’ye yönelik örnek Azure CLI betiklerinin bağlantılarını içerir. API 'ye özel örneklere gitmek için sağdaki bağlantıları kullanın. Ortak örnekler tüm API 'lerde aynıdır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](/cli/azure/cosmosdb)bulunabilir. Azure Cosmos DB CLı betik örnekleri, [Azure Cosmos DB CLI GitHub deposunda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)da bulunabilir.
 
-Bu örnekler için Azure CLı sürüm 2.9.1 veya üzeri gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli)
+Bu örnekler için Azure CLı sürüm 2.12.1 veya üzeri gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli)
+
+Diğer API 'Ler için Azure CLı örnekleri için bkz. [Cassandra Için CLI örnekleri](cli-samples-cassandra.md), [MONGODB API için](cli-samples-mongodb.md)CLI örnekleri, [Gremlin için](cli-samples-gremlin.md)CLI örnekleri, [tablo için CLI](cli-samples-table.md) örnekleri
 
 ## <a name="common-samples"></a>Ortak örnekler
 
@@ -42,44 +44,4 @@ Bu örnekler tüm Azure Cosmos DB API 'Leri için geçerlidir
 | [Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, veritabanı ve kapsayıcısı oluşturma](scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Çekirdek (SQL) API 'SI için otomatik ölçeklendirmeyi olan bir Azure Cosmos DB hesabı, veritabanı ve kapsayıcı oluşturur. |
 | [Aktarım hızı işlemleri](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanı ve kapsayıcıda, otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
 | [Kaynakları silinmeye karşı kilitle](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
-|||
-
-## <a name="mongodb-api-samples"></a>MongoDB API örnekleri
-
-|Görev | Açıklama |
-|---|---|
-| [Azure Cosmos hesabı, veritabanı ve koleksiyonu oluşturma](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| MongoDB API 'SI için bir Azure Cosmos DB hesabı, veritabanı ve koleksiyonu oluşturur. |
-| [Paylaşılan verimlilik içeren bir Azure Cosmos hesabı, otomatik ölçeklendirme ve iki koleksiyon ile veritabanı oluşturma](scripts/cli/mongodb/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| MongoDB API 'SI için paylaşılan iş hızına sahip bir Azure Cosmos DB hesap, otomatik ölçeklendirme ve iki koleksiyon içeren bir veritabanı oluşturur. |
-| [Aktarım hızı işlemleri](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve koleksiyonda bulunan otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
-| [Kaynakları silinmeye karşı kilitle](scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
-|||
-
-## <a name="cassandra-api-samples"></a>Cassandra API örnekleri
-
-|Görev | Açıklama |
-|---|---|
-| [Azure Cosmos hesabı, anahtar alanı ve tablo oluşturma](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API için Azure Cosmos DB bir hesap, anahtar uzayı ve tablo oluşturur. |
-| [Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, anahtar alanı ve tablo oluşturma](scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API için otomatik ölçeklendirmeyi içeren Azure Cosmos DB bir hesap, anahtar uzayı ve tablo oluşturur. |
-| [Aktarım hızı işlemleri](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Anahtar alanı ve tablodaki otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
-| [Kaynakları silinmeye karşı kilitle](scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
-|||
-
-## <a name="gremlin-api-samples"></a>Gremlin API örnekleri
-
-|Görev | Açıklama |
-|---|---|
-| [Azure Cosmos hesabı, veritabanı ve grafik oluşturma](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API için bir Azure Cosmos DB hesabı, veritabanı ve grafik oluşturur. |
-| [Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, veritabanı ve grafik oluşturma](scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API için otomatik ölçeklendirmeyi olan bir Azure Cosmos DB hesabı, veritabanı ve grafik oluşturur. |
-| [Aktarım hızı işlemleri](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve grafikte otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
-| [Kaynakları silinmeye karşı kilitle](scripts/cli/gremlin/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
-|||
-
-## <a name="table-api-samples"></a>Tablo API'si örnekleri
-
-|Görev | Açıklama |
-|---|---|
-| [Azure Cosmos hesabı ve tablosu oluşturma](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Tablo API'si için bir Azure Cosmos DB hesabı ve tablo oluşturur. |
-| [Otomatik ölçeklendirme ile bir Azure Cosmos hesabı ve tablosu oluşturma](scripts/cli/table/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Tablo API'si için otomatik ölçeklendirmeyi olan bir Azure Cosmos DB hesabı ve tablo oluşturur. |
-| [Aktarım hızı işlemleri](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir tablodaki otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
-| [Kaynakları silinmeye karşı kilitle](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
 |||

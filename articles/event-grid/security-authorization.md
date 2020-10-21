@@ -3,16 +3,18 @@ title: Azure Event Grid güvenlik ve kimlik doğrulaması
 description: Azure Event Grid ve kavramlarını açıklar.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 09317b310a5934d27b82d265ec7f9b276135f882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8220e0f913a16cc32b4598ecb3836cc892ea83fd
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119098"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318545"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid kaynaklarına erişimi yetkilendirme
-Azure Event Grid, farklı kullanıcılara verilen erişim düzeyini, olay abonelikleri listeleme, yenilerini oluşturma ve anahtar oluşturma gibi çeşitli yönetim işlemlerini yapmak için denetlemenizi sağlar. Event Grid, Azure 'un rol tabanlı erişim denetimi 'ni (RBAC) kullanır.
+Azure Event Grid, farklı kullanıcılara verilen erişim düzeyini, olay abonelikleri listeleme, yenilerini oluşturma ve anahtar oluşturma gibi çeşitli **yönetim işlemlerini** yapmak için denetlemenizi sağlar. Event Grid, Azure 'un rol tabanlı erişim denetimi 'ni (RBAC) kullanır.
 
+> [!NOTE]
+> EventGrid, Event Grid konularına veya etki alanlarına olayları yayımlamak için RBAC 'yi desteklemez. Olayları yayınlayan istemcilerin kimliğini doğrulamak için bir paylaşılan erişim Imzası (SAS) anahtarı veya belirteci kullanın. Daha fazla bilgi için bkz. [Yayımlama Istemcilerinin kimlik doğrulaması](security-authenticate-publishing-clients.md). 
 
 ## <a name="operation-types"></a>İşlem türleri
 

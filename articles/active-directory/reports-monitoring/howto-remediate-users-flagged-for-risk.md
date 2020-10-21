@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600509"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308954"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında riskli olarak işaretlenmiş kullanıcıları düzeltme
 
@@ -60,7 +60,7 @@ Microsoft 365 Yönetim merkezinde **risk raporları için Işaretlenen kullanıc
 Etkilenen hesapları düzeltmeye ve ortamınızın güvenliğini sağlamaya yardımcı olmak için aşağıdaki eylemleri gerçekleştirin:
 
 1.  Multi-Factor Authentication ve self servis parola sıfırlama için [doğru bilgileri doğrulayın](https://aka.ms/MFAValid) . 
-2.  Tüm kullanıcılar için [Multi-Factor Authentication 'ı etkinleştirin](https://aka.ms/MFAuth) . 
+2.  Tüm kullanıcılar için [Multi-Factor Authentication 'ı etkinleştirin](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication) . 
 3.  Aşağıdaki adımları otomatik olarak gerçekleştirmek için, etkilenen her hesap için bu [Düzeltme betiğini](https://aka.ms/remediate) kullanın: 
 
     a. Hesabı güvenli hale getirmek ve etkin oturumları sonlandırmak için parolayı sıfırlayın.
@@ -85,8 +85,8 @@ Etkilenen hesapları düzeltmeye ve ortamınızın güvenliğini sağlamaya yard
 
 Ayrıca şunları yapmalısınız:
 
-- [Olağandışı etkinlikleri ele](https://aka.ms/fixaccount)almak için bu kılavuzu okuyun ve uygulayın. 
-- Kiracınızdaki etkinliği çözümlemenize yardımcı olması için [Denetim ardışık düzenini etkinleştirin](https://aka.ms/improvesecurity) . Tamamlandıktan sonra, denetim depolduğunuz etkinlik günlükleri ile doldurma başlar. Bu noktada, [güvenlik ve Uyumluluk Merkezi 'nin arama ve araştırma kaynağı](https://aka.ms/sccsearch)' ndan da yararlanabilirsiniz. 
+- [Olağandışı etkinlikleri ele](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account)almak için bu kılavuzu okuyun ve uygulayın. 
+- Kiracınızdaki etkinliği çözümlemenize yardımcı olması için [Denetim ardışık düzenini etkinleştirin](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability) . Tamamlandıktan sonra, denetim depolduğunuz etkinlik günlükleri ile doldurma başlar. Bu noktada, [güvenlik ve Uyumluluk Merkezi 'nin arama ve araştırma kaynağı](https://aka.ms/sccsearch)' ndan da yararlanabilirsiniz. 
 - Tüm posta kutularınız için temsilci izinlerini ve posta iletme kurallarını gözden geçirin. Bu görevi gerçekleştirmek için bu [PowerShell betiğini](https://aka.ms/delegateforwardrules) kullanabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 10/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6adb06f22013e68987f3315d52e3594fba63907
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87115529"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309021"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de erişim belirteci isteme
 
@@ -50,10 +50,15 @@ Aşağıdaki örnekte URL'de kodlanmış kapsamlar gösterilir:
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-İstemci uygulamanıza sağlanandan daha fazla kapsam isterseniz, en az bir izin verildiğinde çağrı başarılı olur. Sonuçta elde edilen erişim belirtecinde **scp** beyanı yalnızca başarılı bir şekilde verilmiş izinlerle doldurulur. OpenID Connect standardı çeşitli özel kapsam değerlerini belirtir. Aşağıdaki kapsamlar kullanıcının profiline erişme iznini temsil eder:
+İstemci uygulamanıza sağlanandan daha fazla kapsam isterseniz, en az bir izin verildiğinde çağrı başarılı olur. Sonuçta elde edilen erişim belirtecinde **scp** beyanı yalnızca başarılı bir şekilde verilmiş izinlerle doldurulur. 
+
+### <a name="openid-connect-scopes"></a>OpenID Connect kapsamları
+
+OpenID Connect standardı çeşitli özel kapsam değerlerini belirtir. Aşağıdaki kapsamlar kullanıcının profiline erişme iznini temsil eder:
 
 - **openid** - Kimlik belirteci ister.
 - **offline_access** - [Auth Code akışlarını](authorization-code-flow.md) kullanarak yenileme belirteci ister.
+- **00000000-0000-0000-0000-000000000000** -kapsam olarak istemci kimliğini kullanmak, uygulamanızın aynı istemci kimliğiyle temsil edilen kendi hizmetinize veya Web API 'niz için kullanılabilecek bir erişim belirteci gerektiğini gösterir.
 
 `/authorize` isteğindeki **response_type** parametresi `token` içeriyorsa, **scope** parametresi verilecek `openid` ve `offline_access` dışında en az bir kaynak kapsamı içermelidir. Aksi takdirde `/authorize` isteği başarısız olur.
 

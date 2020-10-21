@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f278f0713280dde27d6c3892b4d1f1557d17ecb4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d38f10e5a4f2562825ed2374317602b0640894ae
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215952"
+ms.locfileid: "92275881"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Öğretici: bir Web uygulamasını Azure Active Directory B2C kaydetme
 
@@ -26,9 +26,9 @@ ms.locfileid: "92215952"
 "Web uygulaması", sunucuda uygulama mantığının çoğunu gerçekleştiren geleneksel bir Web uygulamasını ifade eder. Bunlar ASP.NET Core, Maven (Java), Flask (Python) ve Express (Node.js) gibi çerçeveler kullanılarak oluşturulabilir.
 
 > [!IMPORTANT]
-> Bunun yerine **tek sayfalı bir uygulama ("Spa")** kullanıyorsanız (ör. angular, Vue veya yanıt verme kullanarak), [tek sayfalı bir uygulamayı kaydetmeyi](tutorial-register-spa.md)öğrenin.
+> Bunun yerine tek sayfalı bir uygulama ("SPA") kullanıyorsanız (ör. angular, Vue veya yanıt verme kullanarak), [tek sayfalı bir uygulamayı kaydetmeyi](tutorial-register-spa.md)öğrenin.
 > 
-> Bunun yerine **yerel bir uygulama** kullanıyorsanız (ör. IOS, Android, mobil & Masaüstü), [yerel bir istemci uygulamasını nasıl kaydedeceğinizi](add-native-application.md)öğrenin.
+> Bunun yerine yerel bir uygulama kullanıyorsanız (ör. iOS, Android, mobil & Masaüstü), [yerel bir istemci uygulamasını nasıl kaydedeceğinizi](add-native-application.md)öğrenin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -67,13 +67,11 @@ Bir Web uygulamasını Azure AD B2C kiracınıza kaydetmek için yeni Birleşik 
 1. **Uygulamalar (eski)** öğesini seçin ve ardından **Ekle**' yi seçin.
 1. Uygulama için bir ad girin. Örneğin, *WebApp1*.
 1. **İçerme Web uygulaması/Web API 'si**için **Evet**' i seçin.
-1. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Örneğin, bunu yerel olarak dinlemek için ayarlayabilirsiniz `https://localhost:44316` . Bağlantı noktası numarasını henüz bilmiyorsanız, bir yer tutucu değeri girip daha sonra değiştirebilirsiniz.
+1. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Örneğin, bunu yerel olarak dinlemek için ayarlayabilirsiniz `http://localhost:5000` . İstediğiniz zaman kayıtlı uygulamalarınıza yeniden yönlendirme URI 'Leri ekleyebilir ve bunları değiştirebilirsiniz.
 
-    Bu öğreticide olduğu gibi test amacıyla, `https://jwt.ms` İnceleme için bir belirtecin içeriğini görüntüleyen olarak ayarlayabilirsiniz. Bu öğreticide, **yanıt URL** 'sini olarak ayarlayın `https://jwt.ms` .
+    Yeniden yönlendirme URI 'Leri için aşağıdaki kısıtlamalar geçerlidir:
 
-    Yanıt URL 'Leri için aşağıdaki kısıtlamalar geçerlidir:
-
-    * Yanıt URL 'SI, şemayla başlamalıdır `https` .
+    * Yanıt URL 'SI, `https` kullanmadıkça, şemayla başlamalıdır `localhost` .
     * Yanıt URL 'SI, büyük/küçük harfe duyarlıdır. Büyük/küçük harf durumu, çalışan uygulamanızın URL yolu ile aynı olmalıdır. Örneğin, uygulamanız yolunun bir parçası olarak içeriyorsa `.../abc/response-oidc` , `.../ABC/response-oidc` yanıt URL 'sinde belirtmeyin. Web tarayıcısı yollara büyük/küçük harfe duyarlı olarak davrandığı için, bununla ilişkili tanımlama bilgileri, `.../abc/response-oidc` büyük/küçük harfe eşleşmeyen URL 'ye yönlendiriliyorsa dışlanamaz `.../ABC/response-oidc` .
 
 1. Uygulama kaydını tamamlayabilmeniz için **Oluştur** ' u seçin.

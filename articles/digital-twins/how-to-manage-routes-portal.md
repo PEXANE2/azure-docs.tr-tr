@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d60297ba3bf16eac496703635ec8faf647c7f94
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252842"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279371"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
 
@@ -117,6 +117,14 @@ Sonra, _Kaydet_' i vurarak uç noktanızı oluşturun.
 Uç nokta oluşturma işlemi başarısız olursa, hata iletisini gözlemleyin ve birkaç dakika sonra yeniden deneyin.
 
 Artık Service Bus konu başlığı altında, _ad_ alanında belirtilen ad altında Azure dijital TWINS 'in içinde bir uç nokta olarak sunulmaktadır. Genellikle bu adı, [Bu makalede daha sonra](#event-routes)oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
+
+### <a name="create-an-endpoint-with-dead-lettering"></a>Etkin olmayan bir uç nokta oluşturma
+
+Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak**olarak bilinir.
+
+Etkin olmayan bir uç nokta oluşturmak için, Azure portal yerine uç noktanızı oluşturmak için [ARM API 'lerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanmanız gerekir.
+
+Bunu API 'lerle nasıl yapacağınız hakkında yönergeler için, bu makalenin [*API 'leri ve CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) sürümüne bakın.
 
 ## <a name="event-routes"></a>Olay yolları
 

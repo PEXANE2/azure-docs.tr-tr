@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145974"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282246"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -83,7 +83,7 @@ await client.CreateEventRoute("routeName", er);
 
 1. İlk olarak, bir `EventRoute` nesne oluşturulur ve Oluşturucu bir uç noktanın adını alır. Bu `endpointName` alan, bir olay hub 'ı, Event Grid veya Service Bus gibi bir uç noktayı tanımlar. Bu uç noktaların aboneliğinizde oluşturulması ve bu kayıt çağrısını yapmadan önce denetim düzlemi API 'Leri kullanılarak Azure Digital TWINS 'e eklenmesi gerekir.
 
-2. Olay Yönlendirme nesnesi Ayrıca, bu yolu izleyen olay türlerini kısıtlamak için kullanılabilecek bir [**filtre**](./how-to-manage-routes-apis-cli.md#filter-events) alanına sahiptir. Bir filtresi `true` , ek filtre olmadan rotayı etkinleştirilir (bir filtre `false` yolu devre dışı bırakır). 
+2. Olay Yönlendirme nesnesi Ayrıca, bu yolu izleyen olay türlerini kısıtlamak için kullanılabilecek bir [**filtre**](how-to-manage-routes-apis-cli.md#filter-events) alanına sahiptir. Bir filtresi `true` , ek filtre olmadan rotayı etkinleştirilir (bir filtre `false` yolu devre dışı bırakır). 
 
 3. Bu olay yolu nesnesi daha sonra `CreateEventRoute` yol için bir adla birlikte öğesine geçirilir.
 
@@ -93,18 +93,19 @@ await client.CreateEventRoute("routeName", er);
 Rotalar [Azure Digital TWINS CLI](how-to-use-cli.md)kullanılarak da oluşturulabilir.
 
 ## <a name="dead-letter-events"></a>Atılacak mektup olayları
+
 Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak**olarak bilinir. **Aşağıdaki koşullardan biri** karşılandığında Azure dijital TWINS, bir olayı atılacak. 
 
-- Etkinlik, yaşam süresi aralığında teslim edilmemiş
-- Olayı teslim etmeye yönelik denemeler sayısı sınırı aştı
+* Etkinlik, yaşam süresi aralığında teslim edilmemiş
+* Olayı teslim etmeye yönelik denemeler sayısı sınırı aştı
 
-Koşullardan biri karşılanıyorsa, olay bırakılır veya atılacak.  Varsayılan olarak, her uç nokta, atılacak noktaları **yapmaz** . Bunu etkinleştirmek için, uç noktayı oluştururken teslim edilmemiş olayları tutmak üzere bir depolama hesabı belirtmeniz gerekir. Teslimleri çözümlemek için bu depolama hesabından olay çekebilirsiniz.
+Koşullardan biri karşılanıyorsa, olay bırakılır veya atılacak. Varsayılan olarak, her uç nokta, atılacak noktaları **yapmaz** . Bunu etkinleştirmek için, uç noktayı oluştururken teslim edilmemiş olayları tutmak üzere bir depolama hesabı belirtmeniz gerekir. Daha sonra teslimleri çözümlemek için bu depolama hesabından olay çekebilirsiniz.
 
 Atılacak mektup konumunu ayarlamadan önce, kapsayıcısı olan bir depolama hesabınız olmalıdır. Uç nokta oluştururken bu kapsayıcının URL 'sini sağlarsınız. Atılacak mektup, bir SAS belirtecine sahip kapsayıcı URL 'SI olarak sağlanır. Bu belirteç yalnızca `write` depolama hesabındaki hedef kapsayıcı için izne ihtiyaç duyuyor. Tamamen oluşturulmuş URL şu biçimde olacaktır: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
 SAS belirteçleri hakkında daha fazla bilgi edinmek için bkz. [ *paylaşılan erişim IMZALARı (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-Bir atılacak mektubu ayarlama hakkında bilgi edinmek için bkz. [*nasıl yapılır: Azure dijital TWINS 'de uç noktaları ve yolları yönetme (API 'ler ve CLI)*](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
+Kullanım dışı bir uç nokta ayarlamayı öğrenmek için bkz. [*nasıl yapılır: Azure dijital TWINS 'de uç noktaları ve yolları yönetme (API 'ler ve CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 
 ### <a name="types-of-event-messages"></a>Olay iletilerinin türleri
 

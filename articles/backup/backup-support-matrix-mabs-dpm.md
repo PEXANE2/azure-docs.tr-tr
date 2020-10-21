@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332704"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276967"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -60,7 +60,7 @@ DPM/MABS, aşağıdaki tabloda özetlenen şekilde dağıtılabilir.
 
 **Dağıtım** | **Destek** | **Ayrıntılar**
 --- | --- | ---
-**Şirket içinde dağıtıldı** | Fiziksel sunucu<br/><br/>Hyper-V VM<br/><br/> VMware VM | DPM/MABS bir VMware VM olarak yüklenirse, yalnızca bu VM 'lerde çalışan VMware VM 'lerini ve iş yüklerini yedekler.
+**Şirket içinde dağıtıldı** | Fiziksel sunucu<br/><br/>Hyper-V VM<br/><br/> VMware VM | Daha fazla ayrıntı için [koruma matrisine](backup-mabs-protection-matrix.md) bakın. 
 **Azure Stack VM olarak dağıtıldı** | Yalnızca MABS | DPM, Azure Stack VM 'Leri yedeklemek için kullanılamaz.
 **Azure VM olarak dağıtıldı** | Bu VM 'lerde çalışan Azure sanal makinelerini ve iş yüklerini korur | Azure 'da çalışan DPM/MABS, şirket içi makineleri yedekleyebilir.
 

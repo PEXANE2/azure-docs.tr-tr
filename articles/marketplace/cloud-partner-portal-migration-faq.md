@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369918"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281404"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -78,7 +78,7 @@ Iş Ortağı Merkezi 'nde desteklenen teklif türleri için tüm teklifler, duru
 | Teklif türü <img src="" width=150px>| Iş Ortağı Merkezi 'ne taşındı mi? <img src="" width=100px>| Sonraki adımlar |
 | --- | --- | --- |
 | SaaS | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Ticari Market 'te yeni bir SaaS teklifi oluşturma](partner-center-portal/create-new-saas-offer.md)hakkında daha fazla bilgi edinin. |
-| Sanal Makine | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Azure [Market 'Te Azure sanal makine teklifi oluşturma hakkında](partner-center-portal/azure-vm-create-offer.md)daha fazla bilgi edinin. |
+| Sanal Makine | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Azure [Market 'Te Azure sanal makine teklifi oluşturma hakkında](azure-vm-create.md)daha fazla bilgi edinin. |
 | Azure uygulaması | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Uygulama teklifi oluşturma](partner-center-portal/create-new-azure-apps-offer.md)hakkında daha fazla bilgi edinin. |
 | Dynamics 365 Business Central | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
 | PowerApps & müşteri katılımı için Dynamics 365 | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Daha fazla bilgi edinmek [Için Dynamics 365 for Customer Engagement & PowerApps teklifini oluşturun](partner-center-portal/create-new-customer-engagement-offer.md). |
@@ -155,16 +155,16 @@ Bazı marka değişiklikleri olduğunu fark edeceksiniz. Örneğin, *SKU 'Lar* I
 
 Ayrıca, daha önce **Market** veya **storefront details**  (danışmanlık hizmeti, Power BI uygulaması) bulut iş ortağı portalı sayfalarında önceden verdiğiniz bilgiler artık Iş Ortağı Merkezi 'nde **teklif listesi** sayfasında toplanır:
 
-[![Ekran görüntüsü Iş Ortağı Merkezi teklif listesi sayfasını gösterir.](media/cpp-pc-faq/offer-listing.png "Iş Ortağı Merkezi teklif listesi sayfasını gösterir")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[! [Ekran görüntüsü Iş Ortağı Merkezi teklif listesi sayfasını gösterir.] (Media/cpp-PC-SSS/offer-listing.png](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 SKU 'Lar için daha önce Bulut İş Ortağı Portalı tek bir sayfada verdiğiniz bilgiler artık Iş Ortağı Merkezi 'nin çeşitli sayfalarında toplanabilecek:
 
-- Plan ayarlama sayfası
+- Plan kurulum sayfası
 - Plan listeleme sayfası
 - Plan kullanılabilirlik sayfası
 - Teknik yapılandırma sayfasını aşağıda gösterildiği gibi planlayın:
 
-![! [Ekran görüntüsü Iş ortağı merkezi teknik yapılandırma sayfasını gösterir.] (Media/cpp-PC-SSS/technical-configuration.png "Iş ortağı merkezi teknik yapılandırma sayfasını gösterir")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+[![Iş ortağı merkezi teknik yapılandırma sayfasını gösterir.](media/cpp-pc-faq/technical-configuration.png)](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 Teklif KIMLIĞINIZ artık teklifin sol gezinti çubuğunda gösteriliyor:
 

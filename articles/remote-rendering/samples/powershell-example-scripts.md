@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32d0ebc3f37f7af4d9cdb1940f1870dbf51f86b4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206140"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279007"
 ---
 # <a name="example-powershell-scripts"></a>Örnek PowerShell betikleri
 
@@ -22,10 +22,13 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
 
 [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , hizmetin REST API 'leriyle etkileşim kurmak için *Scripts* klasöründeki örnek betikleri içerir. Bu makalede kullanımları açıklanmaktadır.
 
+> [!TIP]
+> Ayrıca, [ARRT adlı bir kullanıcı arabirimi tabanlı araç](azure-remote-rendering-asset-tool.md) vardır ve bu hizmetle etkileşim kurmak için, komut dosyalarının kullanılmasına uygun bir alternatiftir. ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT ekran görüntüsü")
+
 > [!CAUTION]
 > REST API işlevlerinin çok sık çağrılması sunucunun başarısız olmasına neden olur ve bu da hata döndürür. Bu örnekte http hata kodu kimliği 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Örnek betikleri yürütmek için [Azure PowerShell](/powershell/azure/)işlevsel kurulumuna ihtiyacınız vardır.
 
@@ -46,7 +49,7 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
     > [!NOTE]
     > Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
 
-1. [Azure uzaktan Işleme GithHub deposundan](https://github.com/Azure/azure-remote-rendering) *betikler* klasörünü indirin.
+1. *Betikler* klasörünü [Azure uzaktan işleme GitHub deposundan](https://github.com/Azure/azure-remote-rendering)indirin.
 
 ## <a name="configuration-file"></a>Yapılandırma dosyası
 

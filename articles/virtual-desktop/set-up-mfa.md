@@ -1,28 +1,28 @@
 ---
-title: Windows sanal masaüstü için Azure Multi-Factor Authentication ayarlama-Azure
-description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure Multi-Factor Authentication ayarlama.
+title: Windows sanal masaüstü için Azure çok faktörlü kimlik doğrulamasını ayarlama-Azure
+description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure çok faktörlü kimlik doğrulamasını ayarlama.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 10/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108992"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312660"
 ---
-# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için Multi-Factor Authentication'ı etkinleştirme
+# <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure çok faktörlü kimlik doğrulamasını etkinleştirme
 
 >[!IMPORTANT]
 > Bu sayfayı Windows sanal masaüstü (klasik) belgelerinden ziyaret ediyorsanız, işiniz bittiğinde [Windows sanal masaüstü (klasik) belgelerine döntığınızdan](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) emin olun.
 
 Windows sanal masaüstü için Windows istemcisi, Windows sanal masaüstünü yerel makineli tümleştirmeyle ilgili mükemmel bir seçenektir. Ancak, Windows sanal masaüstü hesabınızı Windows Istemcisi olarak yapılandırdığınızda, kendinizi ve kullanıcılarınızın güvenliğini sağlamak için uygulamanız gereken bazı ölçüler vardır.
 
-İlk kez oturum açtığınızda, istemci kullanıcı adınızı, parolanızı ve Azure MFA 'yı ister. Bundan sonra, bir sonraki oturum açışınızda istemci, Azure Active Directory (AD) Kurumsal uygulamanızdan belirtecinizi hatırlayacaktır. **Beni anımsa**' yı seçtiğinizde kullanıcılarınız, kimlik bilgilerini yeniden girmeye gerek kalmadan istemciyi yeniden başlattıktan sonra oturum açabilirler.
+İlk kez oturum açtığınızda, istemci kullanıcı adınızı, parolanızı ve Azure çok faktörlü kimlik doğrulamasını ister. Bundan sonra, bir sonraki oturum açışınızda istemci, Azure Active Directory (AD) Kurumsal uygulamanızdan belirtecinizi hatırlayacaktır. Oturum Ana bilgisayarı için kimlik bilgileri isteminde **Beni anımsa** ' yı seçtiğinizde kullanıcılarınız, kimlik bilgilerini yeniden girmeye gerek kalmadan istemciyi yeniden başlattıktan sonra oturum açabilirler.
 
-Kimlik bilgilerini hatırlarken, kurumsal senaryolarda veya kişisel cihazlarda dağıtımları daha az güvenli hale da olabilir. Kullanıcılarınızı korumak için, istemcinin Azure Multi-Factor Authentication (MFA) kimlik bilgilerini sormayı sürdürdüğünden emin olmanız gerekir. Bu makalede, Windows sanal masaüstü için koşullu erişim ilkesinin bu ayarı etkinleştirmek üzere nasıl yapılandırılacağı gösterilir.
+Kimlik bilgilerini hatırlarken, kurumsal senaryolarda veya kişisel cihazlarda dağıtımları daha az güvenli hale da olabilir. Kullanıcılarınızı korumak için, istemcinin Azure çok faktörlü kimlik doğrulama kimlik bilgilerini daha sık sormayı sürdürdüğünden emin olabilirsiniz. Bu makalede, Windows sanal masaüstü için koşullu erişim ilkesinin bu ayarı etkinleştirmek üzere nasıl yapılandırılacağı gösterilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -30,14 +30,14 @@ Başlamak için yapmanız gerekenler şunlardır:
 
 - Kullanıcılara Azure Active Directory Premium P1 veya P2 içeren bir lisans atayın.
 - Kullanıcılarınız Grup üyeleri olarak atanmış bir Azure Active Directory grubu.
-- Tüm kullanıcılarınız için Azure MFA 'yı etkinleştirin. Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [bir kullanıcı için iki adımlı doğrulama gerektirme](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
+- Tüm kullanıcılarınız için Azure çok faktörlü kimlik doğrulamasını etkinleştirin. Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [bir kullanıcı için iki adımlı doğrulama gerektirme](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
 
 > [!NOTE]
-> Aşağıdaki ayar [Windows Sanal Masaüstü Web istemcisi](https://rdweb.wvd.microsoft.com/webclient/index.html)için de geçerlidir.
+> Aşağıdaki ayar [Windows Sanal Masaüstü Web istemcisi](https://rdweb.wvd.microsoft.com/arm/webclient/index.html)için de geçerlidir.
 
 ## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması gerektiren bir koşullu erişim ilkesi oluşturmak için şu adımları uygulayın:
+Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması gerektiren bir koşullu erişim ilkesi oluşturmak için aşağıdaki adımları uygulayın:
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 2. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
@@ -63,7 +63,7 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
         Bundan sonra, 10. adıma gidin.
 
    >[!IMPORTANT]
-   > Windows sanal masaüstü Azure Resource Manager sağlayıcısı (50e95039-B200-4007-bc97-8d5790743a63) adlı uygulamayı seçmeyin. Bu uygulama yalnızca kullanıcı akışını almak için kullanılır ve MFA 'ya sahip olmamalıdır.
+   > Windows sanal masaüstü Azure Resource Manager sağlayıcısı (50e95039-B200-4007-bc97-8d5790743a63) adlı uygulamayı seçmeyin. Bu uygulama yalnızca kullanıcı akışını almak için kullanılır ve çok faktörlü kimlik doğrulamasına sahip olmamalıdır.
    > 
    > Windows sanal masaüstü 'Nü (klasik) kullanıyorsanız, koşullu erişim ilkesi tüm erişimi engelliyorsa ve yalnızca Windows sanal masaüstü uygulama kimliklerini dışlayıp, bu hatayı, ilkeye 9cdead84-a844-4324-93f2-b2e6bb768d07 uygulama KIMLIĞINI ekleyerek çözebilirsiniz. Bu uygulama KIMLIĞI eklenmediğinden Windows sanal masaüstü (klasik) kaynaklarının akış keşfi engellenir.
 
@@ -85,7 +85,7 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
     >Seçmek istediğiniz uygulamanın uygulama KIMLIĞINI bulmak için **Kurumsal uygulamalar** ' a gidin ve uygulama türü açılan menüsünde **Microsoft uygulamaları** ' nı seçin.
 
 12. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
-13. **Erişim denetimleri**  >  **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri **1** ve birimi **saat**olarak ayarlayın ve ardından **Seç**' i seçin.
+13. **Erişim denetimleri**  >  **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri istemler arasında istediğiniz zamana ayarlayın ve ardından **Seç**' i seçin. Örneğin, bir bağlantı en son bir saat sonra başlatıldığında, değeri **1** ' e ve birim- **saat**olarak ayarlamak için çok faktörlü kimlik doğrulaması gerekir.
 14. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 15. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
 

@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ae5632f2495ac5916ac8c86666e973c34d1b789
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215238"
+ms.locfileid: "92275277"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OAuth 2,0 yetkilendirme kodu akışı
 
@@ -24,7 +24,7 @@ Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihazda yükl
 
 OAuth 2,0 yetkilendirme kodu akışı, [oauth 2,0 belirtiminin 4,1 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. Web uygulamaları, tek sayfalı uygulamalar ve yerel olarak yüklenen uygulamalar dahil olmak üzere çoğu [uygulama türünde](application-types.md)kimlik doğrulama ve yetkilendirme için kullanabilirsiniz. OAuth 2,0 yetkilendirme kodu akışını, bir [yetkilendirme sunucusu](protocols-overview.md)tarafından güvenliği sağlanmış olan kaynaklara erişmek için kullanılabilecek, uygulamalarınıza yönelik erişim belirteçlerini ve yenileme belirteçlerini güvenli bir şekilde almak için kullanabilirsiniz.  Yenileme belirteci, erişim belirtecinin süresi dolduktan sonra, genellikle bir saatten sonra istemcinin yeni erişim (ve yenileme) belirteçleri almasına izin verir.
 
-<!-- This article focuses on the **public clients** OAuth 2.0 authorization code flow. A public client is any client application that cannot be trusted to securely maintain the integrity of a secret password. This includes single-page applications, mobile apps, desktop applications, and essentially any application that runs on a device and needs to get access tokens. -->
+Bu makale, **genel istemciler** OAuth 2,0 yetkilendirme kodu akışına odaklanır. Ortak istemci, gizli bir parolanın bütünlüğünü güvenli bir şekilde korumak için güvenilir olmayan tüm istemci uygulamasıdır. Bu, tek sayfalı uygulamaları, mobil uygulamaları, masaüstü uygulamaları ve aslında bir sunucuda çalıştırmayan tüm uygulamaları içerir.
 
 > [!NOTE]
 > Azure AD B2C kullanarak bir Web uygulamasına kimlik yönetimi eklemek için, OAuth 2,0 yerine [OpenID Connect](openid-connect.md) kullanın.
@@ -39,15 +39,9 @@ Bu makaledeki HTTP isteklerini denemek için:
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Tek sayfalı uygulamalar için yeniden yönlendirme URI kurulumu gerekli
 
-Tek sayfalı uygulamalar için yetkilendirme kodu akışı, bazı ek kurulum gerektirir.  Yeniden yönlendirme URI 'nizi CORS için etkin olarak işaretlemek üzere [tek sayfalı uygulamanızı oluşturmaya](tutorial-register-spa.md) yönelik yönergeleri izleyin. CORS 'yi etkinleştirmek üzere var olan bir yeniden yönlendirme URI 'sini güncelleştirmek için, bildirim düzenleyicisini açın ve `type` yeniden YÖNLENDIRME URI 'nizin alanını `spa` bölümünde olarak ayarlayın `replyUrlsWithType` . Ayrıca, kimlik doğrulama sekmesinin "Web" bölümünde yeniden yönlendirme URI 'sine tıklayıp, yetkilendirme kodu akışını kullanarak geçirmek istediğiniz URI 'Leri seçebilirsiniz.
+Tek sayfalı uygulamalar için yetkilendirme kodu akışı, bazı ek kurulum gerektirir.  Yeniden yönlendirme URI 'nizi CORS için etkin olarak işaretlemek üzere [tek sayfalı uygulamanızı oluşturmaya](tutorial-register-spa.md) yönelik yönergeleri izleyin. CORS 'yi etkinleştirmek üzere var olan bir yeniden yönlendirme URI 'sini güncelleştirmek için, **uygulama kaydının** **kimlik doğrulama** sekmesinin "Web" bölümünde geçiş istemine tıklayabilirsiniz. Alternatif olarak, **uygulama kayıtları bildirim düzenleyicisini** açabilir ve `type` yeniden yönlendirme URI 'si alanını bölümünde olarak ayarlayabilirsiniz `spa` `replyUrlsWithType` .
 
 `spa`Yeniden yönlendirme türü, örtük akışla geriye dönük olarak uyumludur. Belirteçleri almak için örtük akışı kullanan uygulamalar, `spa` yeniden YÖNLENDIRME URI 'sine sorun olmadan geçebilir ve dolaylı akışı kullanmaya devam edebilir.
-
-Yetkilendirme kodu akışını kullanmaya çalışırsanız ve şu hatayı görebilirsiniz:
-
-`access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
-
-Ardından, uygulama kaydınızı ziyaret etmeniz ve uygulamanız için yeniden yönlendirme URI 'sini yazmak üzere güncelleştirmeniz gerekir `spa` .
 
 ## <a name="1-get-an-authorization-code"></a>1. bir yetkilendirme kodu alın
 Yetkilendirme kodu akışı, kullanıcıyı uç noktaya yönlendiren istemciyle başlar `/authorize` . Bu, akışın kullanıcının işlem yapacağı etkileşimli kısmıdır. Bu istekte istemci, `scope` kullanıcıdan almaları gereken izinleri parametrede gösterir. Aşağıdaki üç örnek (okunabilirlik için satır sonları ile) her biri farklı bir Kullanıcı akışı kullanır.

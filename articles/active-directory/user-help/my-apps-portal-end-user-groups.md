@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798083"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277487"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uygulamalarım portalınızdaki gruplar bilgilerini güncelleştirme
 
-İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve uygulamalarınız ve gruplarınız için **erişim gözden geçirmeleri** gerçekleştirebilirsiniz. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
+Kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntülemek ve başlatmak, profil ve hesap bilgilerinizin bazılarını güncelleştirmek ve uygulamalarınız **ve gruplarınız için** **erişim gözden geçirmeleri** gerçekleştirmek için, iş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanabilirsiniz. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -44,13 +44,11 @@ Yöneticiniz, **gruplar** kutucuğunu görüntüleme izni verdiyse şunları yap
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
-    ![Uygulamalarım portalındaki uygulamalar sayfası](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![Uygulamalarım portalındaki uygulamalar sayfası](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. Grup ile ilgili bilgilerinizi görmek için **gruplar** kutucuğunu seçin.
+3. **Uygulamalarım** menüsünü aşağı çekin ve **gruplarımı** seçerek grup ile ilgili bilgilerinizi görüntüleyin.
 
-    ![Sahip ve üye grupları olan gruplar sayfası](media/my-apps-portal/my-apps-portal-groups-page.png)
-
-4. İzinlerinize bağlı olarak, **gruplar** sayfasını kullanarak şunları yapabilirsiniz:
+4. İzinlerinize bağlı olarak, **Gruplarım** sayfasını kullanarak şunları yapabilirsiniz:
 
     - **Sahip olduğunuz grupları gözden geçirin.** **Sahip olduğunuz gruplardan** , kuruluşunuz dahilinde sahip olduğunuz tüm gruplar hakkındaki bilgileri görüntüleyin. Belirli bir grup adının seçilmesi, Grup hakkında Grup türü, üye sayısı, JOIN ilkesi ve etkin Üyeler listesi dahil olmak üzere daha fazla ayrıntı sağlar.
 

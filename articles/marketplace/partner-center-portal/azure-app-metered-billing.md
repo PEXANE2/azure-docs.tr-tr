@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320060"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280453"
 ---
 # <a name="managed-application-metered-billing"></a>Yönetilen uygulama ölçümlü faturalandırma 
 
@@ -67,7 +67,7 @@ Fatura boyutları, bir teklif için tüm planlar arasında paylaşılır. Bazı 
 Boyutun kendisini tanımlayan öznitelikler, bir teklif için tüm planlar arasında paylaşılır. Teklifi yayımlamadan önce, herhangi bir planın bağlamından bu özniteliklerde yapılan bir değişiklik, tüm planlar genelinde boyut tanımını etkiler. Teklifi yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir. Öznitelikler şunlardır:
 
 * Tanımlayıcı
-* Adı
+* Ad
 * Ölçü birimi
 
 Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre farklı değerlere sahip olabilir.  Planı yayımlamadan önce, bu değerleri düzenleyebilirsiniz ve yalnızca bu plan etkilenecektir. Planı yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir. Öznitelikler şunlardır:
@@ -93,7 +93,7 @@ Market ölçüm hizmeti ile kullanılan bir boyut, müşterinin hizmet için nas
 Bir teklif bir boyutla yayımlandıktan sonra, bu boyut için teklif düzeyi ayrıntıları artık değiştirilemez:
 
 * Tanımlayıcı
-* Adı
+* Ad
 * Ölçü birimi
 
 Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirilemez:
@@ -109,7 +109,7 @@ Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirileme
 
 Tek bir teklif için yapılandırılabilecek maksimum boyut sayısı 18 benzersiz boyutlardır.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 Aşağıdaki sorunlardan birine sahipseniz bir destek bileti açabilirsiniz.
 
@@ -117,7 +117,7 @@ Aşağıdaki sorunlardan birine sahipseniz bir destek bileti açabilirsiniz.
 * Arka taraftaki bir hata veya hata nedeniyle ilerletilen bir sorun (örn. yanlış kullanım olayı).
 * Ölçümlenen faturalandırmayla ilgili diğer sorunlar.
 
-Yayımcı desteği seçeneklerini anlamak ve Microsoft ile destek bileti açmak için [Iş Ortağı Merkezi 'ndeki ticari Market programına yönelik destek](./support.md) bölümündeki yönergeleri izleyin.
+Yayımcı desteği seçeneklerini anlamak ve Microsoft ile destek bileti açmak için [Iş Ortağı Merkezi 'ndeki ticari Market programına yönelik destek](../support.md) bölümündeki yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
