@@ -55,6 +55,8 @@
               href: how-to-set-up-instance-portal.md
         - name: Uygulama kimlik doğrulaması kodu yazma
           href: how-to-authenticate-client.md
+        - name: Uygulama kaydı oluşturma
+          href: how-to-create-app-registration.md
         - name: Bir örneği farklı bir bölgeye taşıma
           href: how-to-move-regions.md
     - name: Tasarım modelleri

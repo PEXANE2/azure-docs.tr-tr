@@ -31,6 +31,9 @@
     - name: Şema kaynak kilitleriyle yeni kaynakları koruma
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: 'Learn: Azure Blueprints kullanarak birden fazla aboneliği yönetme'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: Örnekler
   items:
     - name: Dizin oluşturma
@@ -259,7 +262,7 @@
   href: ./troubleshoot/general.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: /powershell/module/az.blueprint/#blueprint

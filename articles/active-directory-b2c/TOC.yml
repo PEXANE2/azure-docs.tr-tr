@@ -101,8 +101,10 @@
   items:
     - name: Uygulama tümleştirmesi
       items:
-        - name: Bir uygulamayı kaydetme
+        - name: Web uygulaması kaydetme
           href: tutorial-register-applications.md
+        - name: Tek sayfalı uygulama (SPA) kaydetme
+          href: tutorial-register-spa.md
         - name: SAML hizmet sağlayıcısını kaydetme
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'

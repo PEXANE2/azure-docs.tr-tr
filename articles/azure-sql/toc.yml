@@ -263,6 +263,8 @@
           items:
             - name: Sunucu düzeyinde IP güvenlik duvarı kuralları
               href: database/firewall-create-server-level-portal-quickstart.md
+        - name: GitHub Actions
+          href: database/connect-github-actions-sql-db.md
     - name: Öğreticiler
       items:
         - name: Veritabanı tasarlama

@@ -229,6 +229,8 @@
   items:
     - name: Amaç tanıma belgeleri
       href: index-intent-recognition.yml
+    - name: Amaç tanımaya genel bakış
+      href: intent-recognition.md
     - name: Amaç tanıma hızlı başlangıcı
       href: quickstarts/intent-recognition.md
     - name: Nasıl yapılır kılavuzları

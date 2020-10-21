@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 2508846e5dd2fcc96aade9ce64b599bb4154de00
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203390"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327782"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure It işleçleri için kullanmaya başlayın
 
@@ -140,7 +140,7 @@ Azure, dünyanın dört bir yanındaki birçok bölgede genel olarak kullanılab
 
 Azure kullanmanın avantajlarından biri, uygulamalarınızı dünyanın dört bir yanındaki çeşitli veri merkezlerine dağıtabileceğiniz bir avantajdır. Seçtiğiniz bölge, uygulamanızın performansını etkileyebilir. Ağ isteklerindeki gecikmeyi azaltmak için müşterilerinizin en yakınına daha yakın bir bölge seçmek en iyisidir. Ayrıca, belirli ülkelerde/bölgelerde uygulamanızı dağıtmaya yönelik yasal gereksinimleri karşılamak için bir bölge seçebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal, Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için kullanılabilen Web tabanlı bir uygulamadır. Azure portal [Portal.Azure.com](https://portal.azure.com)adresinde bulunur. Bu, Azure kaynaklarını yönetmeye yönelik özelleştirilebilir bir Pano ve araç içerir. Ayrıca faturalandırma ve abonelik bilgileri de sağlar. Daha fazla bilgi için bkz. [Microsoft Azure Portal genel bakış](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) ve [Azure kaynaklarını Portal üzerinden yönetme](../../azure-resource-manager/management/manage-resources-portal.md).
 
@@ -198,9 +198,9 @@ Kredi miktarını aşarsanız, hizmetiniz bir sonraki ay başlamadan devre dış
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Azure aboneliğine yönetici erişimi verme
 
-RBAC 'de izin atamak için kullanabileceğiniz çeşitli yerleşik roller vardır. Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik kapsamında bu rolü [sahip](../../role-based-access-control/built-in-roles.md#owner) rolüne atayın. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir.
+Azure RBAC, izin atamak için kullanabileceğiniz çeşitli yerleşik roller içerir. Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik kapsamında bu rolü [sahip](../../role-based-access-control/built-in-roles.md#owner) rolüne atayın. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir.
 
-Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Azure portal fatura bilgilerini görüntüleme
 
@@ -238,7 +238,7 @@ Resource Manager çeşitli avantajlar sunar:
 
 - Doğru sırayla dağıtılmalarını sağlamak için kaynaklarınız arasındaki bağımlılıkları tanımlayabilirsiniz.
 
-- RBAC, yönetim platformuyla yerel olarak tümleştirildiği için, kaynak grubunuzdaki tüm hizmetlere erişim denetimi uygulayabilirsiniz.
+- Azure RBAC, yönetim platformuyla yerel olarak tümleştirildiği için, kaynak grubunuzdaki tüm hizmetlere erişim denetimi uygulayabilirsiniz.
 
 - Aboneliğinizdeki tüm kaynakları mantıksal olarak düzenlemek için kaynaklara Etiketler uygulayabilirsiniz.
 
@@ -286,7 +286,7 @@ Herhangi bir metin düzenleyicisinde Kaynak Yöneticisi şablonlar oluşturabili
 
 Son olarak, varolan kaynak gruplarını Azure portal yeniden kullanılabilir bir şablona dönüştürebilirsiniz. Bu, var olan bir kaynak grubunun dağıtılabilir bir şablonunu oluşturmak veya yalnızca temeldeki JSON 'u incelemek istiyorsanız yararlı olabilir. Bir kaynak grubunu dışarı aktarmak için, kaynak grubunun ayarlarından **Otomasyon betiği** düğmesini seçin.
 
-## <a name="security-of-azure-resources-rbac"></a>Azure kaynaklarının güvenliği (RBAC)
+## <a name="security-of-azure-resources-azure-rbac"></a>Azure kaynaklarının güvenliği (Azure RBAC)
 
 Belirli bir kapsamdaki Kullanıcı hesaplarına işletimsel erişim izni verebilirsiniz: abonelik, kaynak grubu veya tek kaynak. Bu, bir kaynak kümesini bir sanal makine ve tüm ilgili kaynaklar gibi bir kaynak grubuna dağıtabileceğiniz ve belirli bir kullanıcı veya gruba izin verdiğiniz anlamına gelir. Bu yaklaşım, erişimi yalnızca hedef kaynak grubuna ait kaynaklarla sınırlandırır. Ayrıca, sanal makine veya sanal ağ gibi tek bir kaynağa erişim izni verebilirsiniz.
 
@@ -306,7 +306,7 @@ Erişim vermek için kullanıcıya veya kullanıcı grubuna bir rol atarsınız.
 
 - **Depolama hesabı katılımcısı**: Bu role sahip bir Kullanıcı, depolama hesaplarını yönetebilir ancak depolama hesaplarına erişimi yönetemez.
 
-Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Sanal Makineler
 

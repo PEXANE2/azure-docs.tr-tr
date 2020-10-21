@@ -4,12 +4,12 @@ description: Bu makalede, paylaşılan erişim imzalarını kullanarak Event Hub
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270109"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332442"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Event Hubs kaynaklarına erişimin kimliğini doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere verdiğiniz erişim türü üzerinde ayrıntılı denetim sağlar. SAS içinde ayarlayabileceğiniz bazı denetimler aşağıda verilmiştir: 
@@ -183,7 +183,7 @@ Her Event Hubs istemciye, istemciye yüklenen benzersiz bir belirteç atanır. B
 
 Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler aynı anahtarla imzalanır. İstemciler, istemcilerin bu belirteçleri üretmelerini önleyen anahtardan haberdar değildir. İstemciler, süreleri dolana kadar aynı belirteçlerde çalışır.
 
-Örneğin, yalnızca Event Hubs göndermek/yayımlamak üzere kapsamı belirlenmiş yetkilendirme kurallarını tanımlamak için bir gönderme yetkilendirme kuralı tanımlamanız gerekir. Bu, bir ad alanı düzeyinde yapılabilir veya belirli bir varlığa (Olay Hub 'ları örneği veya konu başlığı) daha ayrıntılı kapsam sağlayabilir. Bir istemci veya bu tür ayrıntılı erişim kapsamına sahip bir uygulama Event Hubs yayımcı olarak adlandırılır. Bunu yapmak için şu adımları uygulayın:
+Örneğin, yalnızca Event Hubs göndermek/yayımlamak üzere kapsamı belirlenmiş yetkilendirme kurallarını tanımlamak için bir gönderme yetkilendirme kuralı tanımlamanız gerekir. Bu, bir ad alanı düzeyinde yapılabilir veya belirli bir varlığa (Olay Hub 'ları örneği veya konu başlığı) daha ayrıntılı kapsam sağlayabilir. Bir istemci veya bu tür ayrıntılı erişim kapsamına sahip bir uygulama Event Hubs yayımcı olarak adlandırılır. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. Kendisine **gönderme** kapsamını atamak için yayımlamak istediğiniz VARLıKTA bir SAS anahtarı oluşturun. Daha fazla bilgi için bkz. [paylaşılan erişim yetkilendirme ilkeleri](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
 2. Adım içinde oluşturulan anahtarı kullanarak belirli bir yayımcının süre sonu zamanına sahip bir SAS belirteci oluşturun.
@@ -222,7 +222,7 @@ Event Hubs üreticileri tarafından oluşturulan verilerden kullanılan arka uç
 Aşağıdaki makalelere bakın:
 
 - [SAS kullanarak yetkilendirme](authenticate-shared-access-signature.md)
-- [Rol tabanlı erişim denetimi (RBAC) kullanarak yetkilendirme](authenticate-shared-access-signature.md)
+- [Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak yetkilendirme](authenticate-shared-access-signature.md)
 - [Event Hubs hakkında daha fazla bilgi edinin](event-hubs-about.md)
 
 Aşağıdaki ilgili makalelere bakın:

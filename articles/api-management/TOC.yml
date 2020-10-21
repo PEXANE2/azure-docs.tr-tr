@@ -80,6 +80,8 @@
       href: self-hosted-gateway-overview.md
     - name: Gözlemlenebilirlik
       href: observability.md
+    - name: ARM şablonlarını kullanarak CI/CD
+      href: devops-api-development-templates.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: API’leri tanımlama

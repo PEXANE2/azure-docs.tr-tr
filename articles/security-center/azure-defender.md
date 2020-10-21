@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576872"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331694"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 'a giriş
 
@@ -36,13 +36,14 @@ Azure Defender 'ı Azure Güvenlik Merkezi 'nin **fiyatlandırma ve ayarlar** al
 - [App Service için Azure Defender](defender-for-app-service-introduction.md)
 - [Depolama için Azure Defender](defender-for-storage-introduction.md)
 - [SQL için Azure Defender](defender-for-sql-introduction.md)
-- [IoT için Azure Defender](defender-for-iot-introduction.md)
 - [Kubernetes için Azure Defender](defender-for-kubernetes-introduction.md)
 - [Kapsayıcı kayıt defterleri için Azure Defender](defender-for-container-registries-introduction.md)
 - [Key Vault için Azure Defender](defender-for-key-vault-introduction.md)
 
 Bu planların her biri, güvenlik merkezi belgelerinde ayrı olarak açıklanmıştır.
 
+> [!TIP]
+> IoT için Azure Defender (Önizleme), ayrı bir üründür. [IoT Için Azure Defender (Önizleme) ile ilgili](../defender-for-iot/overview.md)tüm ayrıntıları bulacaksınız. 
 
 ## <a name="hybrid-cloud-protection"></a>Karma bulut koruması
 
@@ -50,7 +51,6 @@ Ayrıca Azure ortamınızı erteler, hibrit bulut ortamınıza Azure Defender ol
 
 - Azure olmayan sunucularınızı koruyun
 - Diğer bulutlardaki sanal makinelerinizi koruyun (AWS ve GCP gibi)
-- IoT cihazlarınızı koruyun
 
 En önemli şeylere odaklanabilmeniz için, özelleştirilmiş tehdit zekasından, özel ortamınıza göre öncelikli uyarılar alırsınız.
 

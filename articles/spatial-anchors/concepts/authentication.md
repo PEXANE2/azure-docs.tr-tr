@@ -1,6 +1,6 @@
 ---
 title: Kimlik doğrulaması ve yetkilendirme
-description: Bir uygulama veya hizmetin Azure uzamsal bağlayıcıların kimliğini doğrulayabileceği çeşitli yollar ve Azure uzamsal Tutturucuların erişimini geçit halinde denetleyebilmeniz gereken denetim düzeylerini öğrenin.
+description: Bir uygulama veya hizmetin Azure uzamsal bağlayıcıların kimliğini doğrulayabileceği çeşitli yollar ve uzamsal Tutturucuların erişimini geçit halinde denetleyebilmeniz gereken denetim düzeylerini öğrenin.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,41 +9,41 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 133b565bc54feaf49a2fec9dd0056ca8e7ef43f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 715e09eaf6ca379261d619fe02ad81a69a519d3e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857733"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328547"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
-Bu bölümde, uygulamanızın veya Web hizmetinizin Azure uzamsal bağlayıcılarını kimlik doğrulaması yapma ve Azure Directory 'de (Azure AD) Role-Based Access Control kullanarak uzamsal bağlayıcı hesaplarınıza erişimi denetlemek için kullanabileceğiniz çeşitli yollar ele alınacaktır.
+Bu makalede, uygulamanızın veya Web hizmetinizin Azure uzamsal bağlayıcılarının kimliğini doğrulayabilmeniz için çeşitli yollar öğreneceksiniz. Ayrıca, uzamsal bağlayıcı hesaplarınıza erişimi denetlemek için Azure Active Directory (Azure AD) içinde rol tabanlı erişim denetimi kullanma yolları hakkında bilgi edineceksiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
 ![Azure uzamsal Tutturucuların kimlik doğrulamasına genel bakış gösteren diyagram.](./media/spatial-anchors-authentication-overview.png)
 
-Belirli bir Azure uzamsal çıpası hesabına erişmek için, istemcilerin öncelikle Azure Karma Gerçeklik güvenlik belirteci hizmeti 'nden (STS) bir erişim belirteci alması gerekir. STS 'den 24 saat içinde alınan belirteçler ve hesap üzerinde yetkilendirme kararları almak için uzamsal bağlayıcı hizmetleri bilgilerini içerir ve yalnızca yetkili sorumluların bu hesaba erişebildiğinden emin olun.
+Belirli bir Azure uzamsal çıpası hesabına erişmek için, istemcilerin öncelikle Azure Karma Gerçeklik güvenlik belirteci hizmeti 'nden (STS) bir erişim belirteci alması gerekir. STS 'den edinilen belirteçlerin ömrü 24 saattir. Bu kişiler, uzamsal bağlayıcı hizmetlerinin hesapta yetkilendirme kararları almak için kullandığı ve yalnızca yetkili sorumluların hesaba erişebildiğinden emin olmak için kullandıkları bilgileri içerirler.
 
-Erişim belirteçleri, hesap anahtarlarından ya da Azure AD tarafından verilen belirteçlerden Exchange 'de elde edilebilir.
+Erişim belirteçleri, Azure AD tarafından verilen hesap anahtarları veya belirteçler için Exchange 'de elde edilebilir.
 
-Hesap anahtarları, Azure uzamsal bağlayıcı hizmetini kullanmaya hızlı bir şekilde başlamanızı sağlar; Ancak, uygulamanızı üretime dağıtmadan önce Azure AD tabanlı kimlik doğrulaması kullanmak için uygulamanızı güncelleştirmeniz önerilir.
+Hesap anahtarları, Azure uzamsal bağlayıcı hizmetini kullanmaya hızlıca başlamanıza olanak tanır. Ancak uygulamanızı üretime dağıtmadan önce Azure AD kimlik doğrulamasını kullanmak için uygulamanızı güncelleştirmeniz önerilir.
 
-Azure AD kimlik doğrulaması belirteçleri iki şekilde elde edilebilir:
+Azure AD kimlik doğrulama belirteçlerini iki şekilde edinebilirsiniz:
 
-- Kurumsal bir uygulama oluşturuyorsanız ve şirketiniz kimlik sistemi olarak Azure AD kullanıyorsa, uygulamanızda Kullanıcı tabanlı Azure AD kimlik doğrulamasını kullanabilir ve var olan Azure AD güvenlik gruplarınızı kullanarak uzamsal bağlayıcı hesaplarınız için veya doğrudan kuruluşunuzdaki kullanıcılara erişim izni verebilirsiniz.
-- Aksi takdirde, uygulamanızı destekleyen bir Web hizmetinden Azure AD belirteçlerini edinmeniz önerilir. Destekleyici Web hizmeti kullanmak, üretim uygulamaları için önerilen kimlik doğrulama yöntemidir. Bu, istemci uygulamanızda Azure uzamsal Tutturucuların kimlik bilgilerinin gömülmesini önler.
+- Kurumsal bir uygulama oluşturuyorsanız ve şirketiniz kimlik sistemi olarak Azure AD kullanıyorsa, uygulamanızda Kullanıcı tabanlı Azure AD kimlik doğrulamasını kullanabilirsiniz. Daha sonra mevcut Azure AD güvenlik gruplarınızı kullanarak uzamsal bağlayıcı hesaplarınıza erişim izni verirsiniz. Ayrıca, kuruluşunuzdaki kullanıcılara doğrudan erişim izni verebilirsiniz.
+- Aksi takdirde, Azure AD belirteçlerini uygulamanızı destekleyen bir Web hizmetinden edinmenizi öneririz. Bu yöntemi üretim uygulamaları için öneririz, çünkü istemci uygulamanızda Azure uzamsal bağlantılarına erişim için kimlik bilgilerini gömmenizi önleyebilirsiniz.
 
 ## <a name="account-keys"></a>Hesap anahtarları
 
-Azure uzamsal Çıpaları hesabınıza erişim için hesap anahtarlarının kullanılması, kullanmaya başlamanın en kolay yoludur. Hesap anahtarlarınızı Azure portal bulacaksınız. Hesabınıza gidin ve "anahtarlar" sekmesini seçin.
+Başlamak için en kolay yol, Azure uzamsal bağlayıcı hesabınıza erişim için hesap anahtarlarını kullanmaktır. Azure portal hesap anahtarlarınızı alabilirsiniz. Hesabınıza gidin ve **anahtarlar** sekmesini seçin:
 
-!["Birincil anahtar" vurgulanmış "Kopyala" düğmesine sahip "anahtarlar" sayfasını gösteren ekran görüntüsü.](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![Vurgulanan birincil anahtar için Kopyala düğmesi ile anahtarlar sekmesini gösteren ekran görüntüsü.](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
-Her ikisi de uzamsal bağlayıcı hesabına erişim için aynı anda geçerli olan iki anahtar kullanılabilir hale getirilir. Hesaba erişmek için kullandığınız anahtarı düzenli olarak güncelleştirmeniz önerilir; iki ayrı geçerli anahtarın olması, bu tür güncelleştirmeleri kapalı kalma süresi olmadan etkinleştirir; yalnızca birincil anahtarı ve ikincil anahtarı güncelleştirmeniz gerekir.
+İki anahtar mevcuttur. Her ikisi de uzamsal bağlayıcı hesabına erişim için aynı anda geçerlidir. Hesaba erişmek için kullandığınız anahtarı düzenli olarak güncelleştirmeniz önerilir. İki ayrı geçerli anahtarın olması, bu güncelleştirmelerin kesinti olmadan yapılmasını mümkün değildir. Birincil anahtarı ve ikincil anahtarı alternatif olarak güncelleştirmeniz yeterlidir.
 
-SDK, hesap anahtarları ile kimlik doğrulaması için yerleşik desteğe sahiptir; yalnızca cloudSession nesneniz üzerinde AccountKey özelliğini ayarlamanız gerekir.
+SDK, hesap anahtarları aracılığıyla kimlik doğrulaması için yerleşik desteğe sahiptir. Yalnızca `AccountKey` nesneniz üzerinde özelliğini ayarlamanız gerekir `cloudSession` :
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -51,7 +51,7 @@ SDK, hesap anahtarları ile kimlik doğrulaması için yerleşik desteğe sahipt
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 ```
 
-# <a name="objc"></a>[ObjC](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accountKey = @"MyAccountKey";
@@ -76,7 +76,7 @@ auto configuration = cloudSession_->Configuration();
 configuration->AccountKey(R"(MyAccountKey)");
 ```
 
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="cwinrt"></a>[C++/WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -85,40 +85,42 @@ configuration.AccountKey(LR"(MyAccountKey)");
 
 ---
 
-Bu işlem yapıldıktan sonra SDK, bir erişim belirtecinin hesap anahtarının değişimini ve uygulamanız için gerekli belirteçlerin önbelleğe alınmasını idare eder.
+Bu özelliği ayarladıktan sonra SDK, bir erişim belirtecinin hesap anahtarının değişimini ve uygulamanız için gerekli belirteçlerin önbelleğe alınmasını işler.
 
 > [!WARNING]
-> Hesap anahtarlarının kullanımı hızlı bir şekilde taslak için önerilir, ancak yalnızca geliştirme/prototip oluşturma sırasında önerilir. Uygulamanızı, içindeki bir ekli hesap anahtarını kullanarak üretime göndermemelidir ve bunun yerine, ileri listelenen kullanıcı tabanlı veya hizmet tabanlı Azure AD kimlik doğrulama yaklaşımlarını kullanın.
+> Yalnızca geliştirme/prototip yazma sırasında, hızlı ekleme için hesap anahtarlarını kullanmanızı öneririz. Uygulamanızı, içindeki eklenmiş bir hesap anahtarıyla üretime göndermek için önerilmez. Bunun yerine, daha sonra açıklanan Kullanıcı tabanlı veya hizmet tabanlı Azure AD kimlik doğrulaması yaklaşımlarını kullanın.
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD Kullanıcı kimlik doğrulaması
 
-Kullanıcıları Azure Active Directory hedefleyen uygulamalar için, önerilen yaklaşım Kullanıcı için bir Azure AD belirteci kullanmaktır ve bu, [msal kitaplığını](../../active-directory/develop/msal-overview.md)kullanarak elde edebilirsiniz. [Uygulamayı kaydetme hızlı](../../active-directory/develop/quickstart-register-app.md)başlangıcı ' nı içeren aşağıdaki adımları izlemeniz gerekir:
+Azure Active Directory kullanıcıları hedefleyen uygulamalar için, Kullanıcı için bir Azure AD belirteci kullanmanızı öneririz. Bu belirteci [msal](../../active-directory/develop/msal-overview.md)kullanarak elde edebilirsiniz. [Bir uygulamayı kaydetmeye yönelik hızlı başlangıç](../../active-directory/develop/quickstart-register-app.md)içindeki adımları izleyin ve şunları yapın:
 
-1. Azure portal yapılandırma
-    1.    Uygulamanızı Azure AD 'ye **yerel uygulama**olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz ve uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
-        1.  **API izinleri** sekmesine geçiş yap
-        2.  **Izin Ekle** seçeneğini belirleyin
-            1.  **Kuruluşumun kullandığı API 'ler** altında **karma gerçeklik kaynak sağlayıcısını** seçin
-            2.  **Temsilci izinleri** seçin
-            3.  **Mixedreality** altında **mixedreality. SignIn** kutusunu işaretleyin
-            4.  **Izin Ekle** seçeneğini belirleyin
-        3.  **Yönetici Izni ver** ' i seçin
-    2.    Uygulamanıza veya kullanıcılarınıza kaynağınızın erişimini verin:
-        1.    Azure portal içindeki uzamsal bağlayıcılarınızın kaynağına gidin
-        2.    **Erişim denetimi (IAM)** sekmesine geçiş yap
-        3.    **Rol ataması Ekle** ' ye basın
-            1.    [Rol seç](#role-based-access-control)
-            2.    **Seç** alanında, erişim atamak istediğiniz kullanıcı, Grup veya uygulama (lar) ı ve uygulamanın adını girin.
-            3.    **Kaydet**'e tıklayın.
-2. Kodunuzda:
-    1.    MSAL içinde **ISTEMCI kimliği** ve **redirecturi** PARAMETRELERI olarak kendi Azure AD uygulamanızın **uygulama kimliği** ve **yeniden yönlendirme URI** 'sini kullandığınızdan emin olun
-    2.    Kiracı bilgilerini ayarla:
-        1.    Uygulamanız **yalnızca Kuruluşumu**destekliyorsa, bu DEĞERI **kiracı kimliğiniz** veya **kiracı adınızla** değiştirin (örneğin, contoso.Microsoft.com)
-        2.    Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri **kuruluşlar** ile değiştirin
-        3.    Uygulamanız **tüm Microsoft hesabı kullanıcıları**destekliyorsa, bu değeri **ortak** ile değiştirin
-    3.    Belirteç isteğiniz üzerinde, **kapsamı** "" olarak ayarlayın https://sts.mixedreality.azure.com//.default . Bu kapsam, Azure AD 'ye, uygulamanızın karma gerçeklik güvenlik belirteci hizmeti (STS) için bir belirteç istediğini gösterir.
+**Azure portalında**
+1.    Uygulamanızı Azure AD 'ye yerel bir uygulama olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz gerekir. Ayrıca, uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
+1.  **API izinleri** sekmesine gidin.
+2.  **Izin Ekle**' yi seçin.
+    1.  **Kuruluşumun kullandığı API** 'Lerde **karma gerçeklik kaynak sağlayıcısını** seçin.
+    2.  **Temsilci izinleri**seçin.
+    3.  **Mixedreality**altında **mixedreality. SignIn** ' ı seçin.
+    4.  **Izin Ekle**' yi seçin.
+3.  **Yönetici Izni ver**' i seçin.
+    
+2. Uygulamanıza veya kullanıcılarınıza kaynağınızın erişimini verin:
+   1.    Azure portal uzamsal bağlayıcılarınızın kaynağına gidin.
+   2.    **Erişim denetimi (IAM)** sekmesine gidin.
+   3.    **Rol ataması ekle**’yi seçin.
+   1.    [Bir rol seçin](#role-based-access-control).
+   2.    **Seç** kutusunda, erişim atamak istediğiniz kullanıcıların, grupların ve/veya uygulamaların adlarını girin.
+   3.    **Kaydet**’i seçin.
 
-Bu şekilde, uygulamanız MSAL bir Azure AD belirteci ile elde edilebilir. Bu Azure AD belirtecini, bulut oturumu yapılandırma nesneniz üzerinde **Authenticationtoken** olarak ayarlayabilirsiniz.
+**Kodunuzda**
+1.    MSAL ' de **ISTEMCI kimliği** ve **redirecturı** PARAMETRELERI için kendi Azure AD uygulamanızın uygulama KIMLIĞI ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun.
+2.    Kiracı bilgilerini ayarla:
+        1.    Uygulamanız **yalnızca Kuruluşumu**destekliyorsa, bu DEĞERI **kiracı kimliğiniz** veya **kiracı adınızla**değiştirin. Örneğin, contoso.microsoft.com.
+        2.    Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri **kuruluşlar**ile değiştirin.
+        3.    Uygulamanız **tüm Microsoft hesabı kullanıcıları**destekliyorsa, bu değeri **ortak**ile değiştirin.
+3.    Belirteç isteğiniz üzerinde, **kapsamını** olarak ayarlayın **https://sts.mixedreality.azure.com//.default** . Bu kapsam, Azure AD 'ye, uygulamanızın karma gerçeklik güvenlik belirteci hizmeti (STS) için bir belirteç istediğini gösterir.
+
+Bu adımları tamamladıktan sonra, uygulamanız MSAL bir Azure AD belirteci ile elde edebilmelidir. Bu Azure AD belirtecini, `authenticationToken` bulut oturumu yapılandırma nesneniz üzerinde olarak ayarlayabilirsiniz:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -126,7 +128,7 @@ Bu şekilde, uygulamanız MSAL bir Azure AD belirteci ile elde edilebilir. Bu Az
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
 ```
 
-# <a name="objc"></a>[ObjC](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 _cloudSession.configuration.authenticationToken = @"MyAuthenticationToken";
@@ -151,7 +153,7 @@ auto configuration = cloudSession_->Configuration();
 configuration->AuthenticationToken(R"(MyAuthenticationToken)");
 ```
 
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="cwinrt"></a>[C++/WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -162,34 +164,42 @@ configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
 
 ## <a name="azure-ad-service-authentication"></a>Azure AD hizmeti kimlik doğrulaması
 
-Azure uzamsal Bağlayıcılarından üretime yönelik uygulamaları dağıtmak için önerilen seçenek, kimlik doğrulama isteklerini Broker 'ın bulunduğu bir arka uç hizmetten faydalanır. Genel şema, bu diyagramda açıklandığı gibi olmalıdır:
+Azure uzamsal çıpası kullanan uygulamaları üretime dağıtmak için, kimlik doğrulama isteklerini Broker 'lara sahip bir arka uç hizmeti kullanmanızı öneririz. İşleme genel bir bakış aşağıda verilmiştir:
 
-![Azure uzamsal Tutturucuların kimlik doğrulamasına genel bakış](./media/spatial-anchors-aad-authentication.png)
+![Azure uzamsal Tutturucuların kimlik doğrulamasına genel bakış sağlayan diyagram.](./media/spatial-anchors-aad-authentication.png)
 
-Burada, uygulamanızın arka uç hizmetinde kimlik doğrulaması yapmak için kendi mekanizmasını (örneğin: Microsoft hesabı, PlayFab, Facebook, Google ID, Özel Kullanıcı adı/parola vb.) kullandığı varsayılır. Kullanıcılarınızın arka uç hizmetinize kimlik doğrulaması yapıldıktan sonra, bu hizmet bir Azure AD belirtecini alabilir, Azure uzamsal Tutturucuların erişim belirteci için Exchange 'e geri dönebilir ve bunu istemci uygulamanıza geri döndürebilir.
+Burada, uygulamanızın arka uç hizmetinde kimlik doğrulaması yapmak için kendi mekanizmasını kullandığı varsayılır. (Örneğin, bir Microsoft hesabı, PlayFab, Facebook, Google ID veya özel Kullanıcı adı ve parola.)  Kullanıcılarınızın arka uç hizmetinize kimlik doğrulamasından geçtikten sonra, bu hizmet bir Azure AD belirtecini alabilir, Azure uzamsal Tutturucuların erişim belirteci için Exchange 'e geri döndürebilir ve istemci uygulamanıza geri geri dönebilir.
 
-Azure AD erişim belirteci [msal kitaplığı](../../active-directory/develop/msal-overview.md)kullanılarak alınır. [Uygulamayı kaydetme hızlı](../../active-directory/develop/quickstart-register-app.md)başlangıcı ' nı içeren aşağıdaki adımları izlemeniz gerekir:
+Azure AD erişim belirteci [msal](../../active-directory/develop/msal-overview.md)aracılığıyla alınır. [Uygulamayı kaydetme hızlı](../../active-directory/develop/quickstart-register-app.md)başlangıcı bölümündeki adımları izleyerek şunları yapın:
 
-1.    Azure portal yapılandırma:
-    1.    Uygulamanızı Azure AD 'ye kaydedin:
-        1.    Azure portal ' de **Azure Active Directory**' a gidin ve **uygulama kayıtları** ' nı seçin.
-        2.    **Yeni uygulama kaydı** seçin
-        3.    Uygulamanızın adını girin, uygulama türü olarak **Web uygulaması/API** ' yi seçin ve hizmetinizin kimlik doğrulama URL 'sini girin. Sonra **Oluştur**' a basın.
-        4.    Bu uygulamada, **Ayarlar**' a, sonra da **Sertifikalar ve gizlilikler** sekmesini seçin. Yeni bir istemci parolası oluşturun, bir süre seçin ve **Ekle**'ye basın. Web hizmetinizin koduna dahil etmeniz gerekeceğinden gizli anahtar değerini kaydettiğinizden emin olun.
-    2.    Uygulamanıza ve/veya kullanıcılarınızın kaynağına erişmesine izin verin:
-        1.    Azure portal içindeki uzamsal bağlayıcılarınızın kaynağına gidin
-        2.    **Erişim denetimi (IAM)** sekmesine geçiş yap
-        3.    **Rol ataması Ekle** ' ye basın
-        1.    [Rol seç](#role-based-access-control)
-        2.    **Seç** alanına, oluşturduğunuz ve erişim atamak istediğiniz uygulama (lar) ın adını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydetmeniz ve ayrı bir role atamanız gerekir. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
-        3.    Not- **atanan erişimi** **eklemek istediğiniz rol atama** seçimini "Azure AD Kullanıcı, Grup veya hizmet sorumlusu" olarak ayarlayın.
-    3.    **Kaydet**'e tıklayın.
-2.    Kodunuzda (Note: GitHub ' da bulunan hizmet örneğini kullanabilirsiniz):
-    1.    MSAL ' de istemci KIMLIĞI, gizli anahtar ve Redirecturı parametreleri olarak kendi Azure AD uygulamanızın uygulama KIMLIĞI, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun
-    2.    Kiracı KIMLIĞINI, MSAL ' deki yetkili parametresinde bulunan Azure kiracı KIMLIĞINIZLE belirleyin.
-    3.    Belirteç isteğiniz içinde, **kapsamı** "" olarak ayarlayın https://sts.mixedreality.azure.com//.default
+**Azure portalında**
+1.    Uygulamanızı Azure AD 'ye kaydedin:
+        1.    Azure portal **Azure Active Directory**' i seçin ve **uygulama kayıtları**' yı seçin.
+        2.    **Yeni kayıt**seçeneğini belirleyin.
+        3.    Uygulamanızın adını girin, uygulama türü olarak **Web uygulaması/API** ' yi seçin ve hizmetinizin kimlik doğrulama URL 'sini girin. **Oluştur**’u seçin.
+4.    Uygulamada, **Ayarlar**' ı seçin ve ardından **Sertifikalar ve gizlilikler** sekmesini seçin. Yeni bir istemci parolası oluşturun, bir süre seçin ve ardından **Ekle**' yi seçin. Gizli anahtar değerini kaydettiğinizden emin olun. Web hizmetinizin koduna dahil etmeniz gerekir.
+2.    Uygulamanıza ve/veya kullanıcılarınızın kaynağına erişmesine izin verin:
+        1.    Azure portal uzamsal bağlayıcılarınızın kaynağına gidin.
+        2.    **Erişim denetimi (IAM)** sekmesine gidin.
+        3.    **Rol ataması ekle**’yi seçin.
+        1.    [Bir rol seçin](#role-based-access-control).
+        2.    **Seç** kutusunda, erişim atamak istediğiniz uygulamaların adını veya adlarını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydedin ve her birine ayrı bir rol atayın. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
+        
+              > [!NOTE] 
+              > **Rol ataması Ekle** bölmesinde, **erişim ata**' da **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
+    
+      3.    **Kaydet**’i seçin.
+    
+**Kodunuzda** 
 
-Bu şekilde, arka uç hizmetiniz bir Azure AD belirteci alabilir. Daha sonra, istemciye geri dönecektir için bunu bir MR belirteci için değiş tokuş edebilir. Bir MR belirtecini almak için Azure AD belirtecinin kullanılması bir REST çağrısıyla yapılır. Örnek bir çağrı aşağıda verilmiştir:
+>[!NOTE] 
+> GitHub 'da bulunan hizmet örneğini kullanabilirsiniz.
+
+1.    MSAL ' de **ISTEMCI kimliği**, **gizli anahtar**ve **redirecturı** parametreleri olarak kendi Azure AD uygulamanızın uygulama kimliği, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun.
+2.    Kiracı KIMLIĞINI MSAL ' deki **yetkili** parametresinde kendı Azure AD kiracı kimliğiniz olarak ayarlayın.
+3.    Belirteç isteğiniz üzerinde, **kapsamını** olarak ayarlayın **https://sts.mixedreality.azure.com//.default** .
+
+Bu adımları tamamladıktan sonra, arka uç hizmetiniz bir Azure AD belirtecini alabilir. Daha sonra, istemciye geri dönecektir için bunu bir MR belirteci için değiş tokuş edebilir. Bir MR belirtecini almak için Azure AD belirtecinin kullanılması bir REST çağrısıyla yapılır. Örnek bir çağrı aşağıda verilmiştir:
 
 ```
 GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
@@ -206,11 +216,11 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 {"AccessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MzYyMTk5ZTI2NjQxOGU4ZjE3MThlM2IyMThjZTIxIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmMGFiNWIyMy0wMmUxLTQ1MTQtOWEzNC0xNzkzMTA1NTc4NzAiLCJjYWkiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJ0aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJhaWQiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJhYW8iOi0xLCJhcHIiOiJlYXN0dXMyIiwicmlkIjoiL3N1YnNjcmlwdGlvbnMvNzIzOTdlN2EtNzA4NC00ODJhLTg3MzktNjM5Y2RmNTMxNTI0L3Jlc291cmNlR3JvdXBzL3NhbXBsZV9yZXNvdXJjZV9ncm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1peGVkUmVhbGl0eS9TcGF0aWFsQW5jaG9yc0FjY291bnRzL2RlbW9fYWNjb3VudCIsIm5iZiI6MTU0NDU0NzkwMywiZXhwIjoxNTQ0NjM0MzAzLCJpYXQiOjE1NDQ1NDc5MDMsImlzcyI6Imh0dHBzOi8vbXJjLWF1dGgtcHJvZC50cmFmZmljbWFuYWdlci5uZXQvIiwiYXVkIjoiaHR0cHM6Ly9tcmMtYW5jaG9yLXByb2QudHJhZmZpY21hbmFnZXIubmV0LyJ9.BFdyCX9UJj0i4W3OudmNUiuaGgVrlPasNM-5VqXdNAExD8acFJnHdvSf6uLiVvPiQwY1atYyPbOnLYhEbIcxNX-YAfZ-xyxCKYb3g_dbxU2w8nX3zDz_X3XqLL8Uha-rkapKbnNgxq4GjM-EBMCill2Svluf9crDmO-SmJbxqIaWzLmlUufQMWg_r8JG7RLseK6ntUDRyDgkF4ex515l2RWqQx7cw874raKgUO4qlx0cpBAB8cRtGHC-3fA7rZPM7UQQpm-BC3suXqRgROTzrKqfn_g-qTW4jAKBIXYG7iDefV2rGMRgem06YH_bDnpkgUa1UgJRRTckkBuLkO2FvA"}
 ```
 
-Yetkilendirme üstbilgisinin şu şekilde biçimlendirildiği konum: `Bearer <Azure_AD_token>`
+Yetkilendirme üst bilgisi şu şekilde biçimlendirilir: `Bearer <Azure_AD_token>`
 
-Ve yanıt, MR belirtecini düz metin olarak içerir.
+Yanıt, MR belirtecini düz metin olarak içerir.
 
-Daha sonra bu MR belirteci istemciye döndürülür. İstemci uygulamanız daha sonra bunu, bulut oturumu yapılandırmasında erişim belirteci olarak ayarlayabilir.
+Daha sonra bu MR belirteci istemciye döndürülür. İstemci uygulamanız daha sonra bunu, bulut oturumu yapılandırmasında erişim belirteci olarak ayarlayabilir:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -218,7 +228,7 @@ Daha sonra bu MR belirteci istemciye döndürülür. İstemci uygulamanız daha 
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";
 ```
 
-# <a name="objc"></a>[ObjC](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accessToken = @"MyAccessToken";
@@ -243,7 +253,7 @@ auto configuration = cloudSession_->Configuration();
 configuration->AccessToken(R"(MyAccessToken)");
 ```
 
-# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="cwinrt"></a>[C++/WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -254,15 +264,15 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Hizmetinizin uygulamalara, hizmetlerine veya Azure AD kullanıcılarına verilen erişim düzeyini denetlemeye yardımcı olmak için, Azure uzamsal bağlayıcı hesaplarınıza göre gereken şekilde atamanız için aşağıdaki roller oluşturulmuştur:
+Hizmetinizin uygulamalarına, hizmetlerine veya Azure AD kullanıcılarına verilen erişim düzeyini denetlemenize yardımcı olması için, bu önceden mevcut rolleri Azure uzamsal bağlayıcı hesaplarınıza göre gerektiği gibi atayabilirsiniz:
 
-- **Uzamsal Tutturucuların hesap sahibi**: Bu role sahip uygulamalar veya kullanıcılar uzamsal bağlayıcı oluşturabilir, bunları sorgulayabilir ve silebilir. Hesap anahtarlarını kullanarak hesabınızda kimlik doğrulaması yaptığınızda, **uzamsal bağlayıcı hesabı sahibi** rolü kimliği doğrulanmış sorumluya atanır.
-- **Uzamsal Tutturucuların hesabı katılımcısı**: Bu role sahip uygulamalar veya kullanıcılar uzamsal bağlayıcı oluşturabilir, bunları sorgulayabilir, ancak bunları silemez.
-- **Uzamsal Tutturucuların hesap okuyucusu**: Bu role sahip uygulamalar veya kullanıcılar yalnızca uzamsal bağlayıcıları sorgulayabilir, ancak yenilerini oluşturamaz, varolanları silebilir veya uzamsal bağlayıcılarında meta verileri güncelleştiremez. Bu genellikle bazı kullanıcıların ortamı seçtirilen uygulamalar için kullanılır, diğerleri ise yalnızca daha önce bu ortama yerleştirilmiş olan bağlantıları geri çekebilirler.
+- **Uzamsal bağlayıcı hesap sahibi**. Bu role sahip uygulamalar veya kullanıcılar uzamsal bağlayıcı oluşturabilir, bunları sorgulayabilir ve silebilir. Hesap anahtarlarını kullanarak hesabınızda kimlik doğrulaması yaptığınızda, uzamsal bağlayıcı hesabı sahibi rolü kimliği doğrulanmış sorumluya atanır.
+- **Uzamsal bağlayıcı hesabı katılımcısı**. Bu role sahip uygulamalar veya kullanıcılar kendileri için uzamsal bağlayıcı ve sorgu oluşturabilir, ancak bunları silemez.
+- **Uzamsal bağlayıcı hesap okuyucu**. Bu role sahip uygulamalar veya kullanıcılar yalnızca uzamsal bağlantıları sorgulayabilir. Yenilerini oluşturamazlar, var olanları silemez veya meta verileri güncelleştiremez. Bu rol genellikle, bazı kullanıcıların ortamı seçmekte olduğu ancak diğerlerinin ortamda daha önce yer aldığı bağlantıları geri çekebileceği uygulamalar için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure uzamsal bağlayıcılarla ilk uygulamanızı oluşturun.
+Azure uzamsal bağlayıcılarla ilk uygulamanızı oluşturun:
 
 > [!div class="nextstepaction"]
 > [Unity (HoloLens)](../quickstarts/get-started-unity-hololens.md)

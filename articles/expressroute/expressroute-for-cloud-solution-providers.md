@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 31660d13fe69d393a19167eaea8a69bfb6260467
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202081"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330045"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Bulut Çözüm Sağlayıcıları (CSP) için ExpressRoute
 Microsoft, geleneksel satıcılar veya dağıtımcıların (CSP), yeni hizmetler geliştirmeye yatırım yapmaya gerek kalmadan müşterileriniz için hızlı bir şekilde yeni hizmetler ve çözümler sağlayabilmesi amacıyla hiper ölçekli hizmetler sağlar. Bulut Çözüm Sağlayıcısının (CSP) bu hizmetleri doğrudan yönetebilmesini sağlamak için Microsoft, CSP’nin Microsoft Azure kaynaklarını müşterilerinizin adına yönetebilmesine olanak sağlayan programlar ve API’ler sunar. Bu kaynaklardan biri de ExpressRoute’dur. ExpressRoute, CSP’nin var olan Azure hizmetlerine bağlanmasına olanak sağlar. ExpressRoute, Azure 'daki hizmetlere yönelik yüksek hızlı bir özel iletişim bağlantıdır. 
@@ -60,7 +60,7 @@ Bu bağlantı senaryosu, müşterinin doğrudan veya müşteri tarafından kısm
 
 Bu iki seçenek arasındaki seçimler, müşterinizin ihtiyaçlarına ve Azure hizmetleri sağlamak için geçerli gereksinimlerinize göre yapılır. Bu modellere ve ilişkili rol tabanlı erişim denetimine, ağlara ve kimlik tasarımı desenlerine ilişkin ayrıntılar aşağıdaki linklerde ele alınmaktadır:
 
-* **Azure rol tabanlı erişim denetimi (Azure RBAC)** – RBAC Azure Active Directory tabanlıdır.  Azure RBAC hakkında daha fazla bilgi için [buraya](../role-based-access-control/role-assignments-portal.md)bakın.
+* **Azure rol tabanlı erişim denetimi (Azure RBAC)** – azure RBAC Azure Active Directory tabanlıdır.  Azure RBAC hakkında daha fazla bilgi için [buraya](../role-based-access-control/role-assignments-portal.md)bakın.
 * **Ağlar** – Microsoft Azure’da ağlarla ilgili çeşitli konuları kapsar.
 * **Azure Active Directory (Azure AD)** – Azure ad, Microsoft Azure ve üçüncü taraf SaaS uygulamaları için kimlik yönetimini sağlar. Azure AD hakkında daha fazla bilgi için [buraya](https://azure.microsoft.com/documentation/services/active-directory/)bakın.  
 

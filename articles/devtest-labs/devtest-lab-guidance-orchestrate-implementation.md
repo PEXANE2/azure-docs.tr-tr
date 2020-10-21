@@ -4,12 +4,12 @@ description: Bu makalede, kuruluşunuzda Azure DevTest Labs uygulanmasını düz
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0438445f99a22ed9fd239156044d6b3f6b477edc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480856"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330623"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Azure DevTest Labs uygulanmasını düzenleme
 Bu makalede Azure DevTest Labs hızlı dağıtım ve uygulama için önerilen bir yaklaşım sunulmaktadır. Aşağıdaki görüntüde, çeşitli sektör gereksinimlerini ve senaryolarını desteklemeye yönelik esnekliği gözlemlerken, genel işlemi öngörülü rehberlik olarak vurgulamaktadır.
@@ -36,7 +36,7 @@ Ağ topolojisi yerleştirildikten sonra, ilk/pilot laboratuvar aşağıdaki adı
 
 1. İlk DevTest Labs ortamı oluşturun.
 2. Laboratuvar ile kullanım için izin verilen VM görüntülerini ve boyutlarını belirleme. Özel görüntülerin DevTest Labs ile kullanılmak üzere Azure 'a yüklenip yüklenemeyeceğine karar verin.
-3. Laboratuvar (Laboratuvar sahipleri ve laboratuar kullanıcıları) için ilk rol temel erişim denetimleri (RBAC) oluşturarak laboratuvara güvenli erişim. DevTest Labs ile kimlik için Azure Active Directory ile eşitlenmiş Active Directory hesaplarını kullanmanızı öneririz.
+3. Laboratuvar (Laboratuvar sahipleri ve laboratuar kullanıcıları) için ilk Azure rol tabanlı erişim denetimi (Azure RBAC) oluşturarak laboratuvara güvenli erişim. DevTest Labs ile kimlik için Azure Active Directory ile eşitlenmiş Active Directory hesaplarını kullanmanızı öneririz.
 4. Planlar, maliyet yönetimi, çakışan VM 'Ler, özel görüntüler veya formüller gibi ilkeleri kullanmak için DevTest Labs 'i yapılandırın.
 5. Azure Repos/git gibi bir çevrimiçi depo oluşturun.
 6. Ortak veya özel depoların ya da ikisinin birleşiminin kullanımına karar verin. Dağıtım ve uzun süreli sürdürülebilirlik için JSON şablonlarını düzenleyin.

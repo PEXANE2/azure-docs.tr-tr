@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 39f893e9375970ff4bb6e3cfa2c93ceea48ec896
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84195684"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331813"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Hızlı başlangıç: Azure portal & Azure veritabanı geçiş hizmeti ile karma mod örneği oluşturma
 
@@ -75,7 +75,7 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
 
          ![Geçiş hizmeti oluşturma-temel bilgiler](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
-4. **Gözden geçir ve oluştur**’u seçin.
+4. **Gözden geçir + oluştur**’u seçin.
 
 5. **Gözden geçir + oluştur** sekmesinde, koşulları gözden geçirin, belirtilen diğer bilgileri doğrulayın ve ardından **Oluştur**' u seçin.
 
@@ -184,7 +184,7 @@ Azure veritabanı geçiş hizmeti karma çalışanını Azure portal aracılığ
 Bu betik, Kullanıcı ortamda gerekli tüm izinlere zaten sahip olduğunda hızlı prototipleme için tasarlanmıştır. Üretim ortamınızda, uyumlu olduğunu ve sertifikayı farklı gereksinimlere sahip olabileceğini unutmayın, bu nedenle komut dosyası başarısız olabilir.
 
 > [!IMPORTANT]
-> Bu betik, Azure veritabanı geçiş hizmeti 'nin karma modda var olan bir örneği olduğunu ve kullanılan Azure hesabının kiracıda bir Uyarps oluşturma ve abonelikte RBAC 'yi değiştirme izinlerine sahip olduğunu varsayar.
+> Bu betik, Azure veritabanı geçiş hizmeti 'nin karma modda var olan bir örneği olduğunu ve kullanılan Azure hesabının kiracıda bir Uyarps oluşturma ve abonelik üzerinde Azure RBAC 'yi değiştirme izinlerine sahip olduğunu varsayar.
 
 Komut dosyasının en üstündeki parametreleri doldurup bir yönetici PowerShell örneğinden betiği çalıştırın.
 

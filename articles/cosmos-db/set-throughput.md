@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8cca75f7071b8b9c8d1108b82ebf8f7049ec316a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282576"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331830"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 
@@ -96,7 +96,7 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 
 Bir Azure Cosmos kapsayıcısı veya veritabanı oluşturduktan sonra, sağlanan aktarım hızını güncelleştirebilirsiniz. Veritabanı veya kapsayıcıda yapılandırabileceğiniz en fazla sağlanan aktarım hızı için bir sınır yoktur.
 
-### <a name="current-provisioned-throughput"></a>Geçerli sağlanan aktarım hızı
+### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a> Geçerli sağlanan aktarım hızı
 
 Azure portal bir kapsayıcının veya veritabanının sağlanan verimini veya SDK 'Ları kullanarak elde edebilirsiniz:
 
@@ -135,6 +135,14 @@ Azure portal veya SDK 'Ları kullanarak bir kapsayıcının veya veritabanının
 * , Java SDK 'sında [Throughputresponse. ısıncepsonbitiriliyor ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) .
 
 [Azure izleyici ölçümlerini](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) , kaynak üzerinde sağlanan üretilen Iş (ru/s) ve depolamanın geçmişini görüntülemek için kullanabilirsiniz.
+
+## <a name="high-storage--low-throughput-program"></a><a id="high-storage-low-throughput-program"></a> Yüksek depolama/düşük aktarım hızı programı
+
+Yukarıdaki [geçerli sağlama üretilen iş](#current-provisioned-throughput) bölümünde açıklandığı gibi, bir kapsayıcı veya veritabanı üzerinde sağlayabileceğiniz en düşük aktarım hızı, bir dizi etkene bağlıdır. Bunlardan biri, depolama birimi başına 10 RU/sn 'lik en düşük aktarım hızını zorladığından, şu anda depolanan veri miktarıdır Azure Cosmos DB.
+
+Bu, büyük miktarlarda veri depolamanız gereken ancak karşılaştırmada düşük aktarım hızı gereksinimlerinin olduğu durumlarda sorun olabilir. Bu senaryolara daha iyi uyum sağlamak için, Azure Cosmos DB GB başına RU/sn kısıtlamasını uygun hesaplarda 10 ' dan 1 ' e azaltan **"yüksek depolama/düşük aktarım hızı" programı** getirmiştir.
+
+Şu anda hesabınızda 1 TB 'den fazla veri içeren en az 1 kapsayıcı veya paylaşılan işleme veritabanınız olması gerekir. Bu programa katılın ve tam uygunluğu değerlendirin, [Bu anketi](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)doldurmanız gerekir. Azure Cosmos DB takım daha sonra ilerlemeniz ve ekleme işlemine devam eder.
 
 ## <a name="comparison-of-models"></a>Modellerin karşılaştırması
 Bu tabloda bir veritabanında ve bir kapsayıcı üzerinde standart (el ile) aktarım hızı sağlama arasındaki bir karşılaştırma gösterilmektedir. 

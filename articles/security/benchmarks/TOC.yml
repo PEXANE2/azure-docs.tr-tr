@@ -125,6 +125,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: Batch güvenlik temeli
       href: ../../batch/security-baseline.md
+    - name: Cloud Shell güvenlik temeli
+      href: ../../cloud-shell/security-baseline.md
     - name: Bilişsel Hizmetler güvenlik temeli
       href: ../../cognitive-services/security-baseline.md
     - name: Container Instances güvenlik temeli

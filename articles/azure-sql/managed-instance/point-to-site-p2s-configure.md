@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617698"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331915"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Hızlı başlangıç: şirket içi Azure SQL yönetilen örneği ile noktadan siteye bağlantı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -83,16 +83,16 @@ Bu hızlı başlangıç:
 1. Şirket içi istemci bilgisayarınızda **ağ & Internet** 'Te bulunan **VPN** 'ye gidin ve bu VNET Ile bağlantı kurmak için SQL yönetilen örnek Sanal ağınızı seçin. Aşağıdaki görüntüde VNet, **Mynewvnet**olarak adlandırılmıştır.
 
     ![VPN bağlantısı](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. **Bağlan**'ı seçin.
+2. **Bağlan**’ı seçin.
 3. İletişim kutusunda **Bağlan**' ı seçin.
 
-    ![VPN bağlantısı](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+    ![Bağlan düğmesini vurgulayan ekran görüntüsü.](./media/point-to-site-p2s-configure/vpn-connection2.png)  
 4. Bağlantı Yöneticisi 'nin yol tablonuzu güncelleştirmek için yükseltilmiş ayrıcalıklara ihtiyacı olması istendiğinde **devam**' ı seçin.
 5. Devam etmek için Kullanıcı hesabı denetimi iletişim kutusunda **Evet** ' i seçin.
 
    SQL yönetilen örnek VNet 'iniz için bir VPN bağlantısı oluşturdunuz.
 
-    ![VPN bağlantısı](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![Bağlantınızı kurduktan sonra bağlı iletiyi vurgulayan ekran görüntüsü.](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>SSMS ile bağlanma
 

@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs kaynaklarına erişimi yetkilendirmek
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fc35387f4ac28ad4dd28bea0013bcdf1e1e9f02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85323185"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332391"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Azure Event Hubs'a erişimi yetkilendirme
 Bir olay hub 'ından olayları/verileri her yayımladığınızda veya kullandığınızda, istemciniz Event Hubs kaynaklara erişmeye çalışıyor. Güvenli bir kaynağa yönelik her isteğin, hizmetin verileri yayımlamak/kullanmak için gerekli izinlere sahip olduğundan emin olmak için yetkilendirilmiş olması gerekir. 
@@ -23,7 +23,7 @@ Azure Event Hubs, güvenli kaynaklara erişimi yetkilendirmek için aşağıdaki
 > Bu makale hem Event Hubs hem de [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) senaryolar için geçerlidir. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Event Hubs kaynakları için Azure Active Directory (Azure AD) tümleştirmesi, bir istemcinin kaynaklara erişimi üzerinde ayrıntılı denetim için rol tabanlı erişim denetimi (RBAC) sağlar. Rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç, bir Event Hubs kaynağına erişim isteğine yetki vermek için kullanılabilir.
+Event Hubs kaynakları için Azure Active Directory (Azure AD) tümleştirmesi, bir istemcinin kaynaklara erişimi üzerinde ayrıntılı denetim için Azure rol tabanlı erişim denetimi (Azure RBAC) sağlar. Güvenlik sorumlusuna, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek izinler vermek için Azure RBAC kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç, bir Event Hubs kaynağına erişim isteğine yetki vermek için kullanılabilir.
 
 Azure AD ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -40,7 +40,7 @@ Varsayılan olarak, tüm Event Hubs kaynakları güvenlidir ve yalnızca hesap s
 SAS kullanarak yetkilendirme hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirme](authorize-access-shared-access-signature.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- GitHub deponuzda yayınlanan [RBAC örneklerini](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) gözden geçirin. 
+- GitHub deponuzda yayınlanan [Azure RBAC örneklerini](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) inceleyin. 
 - Aşağıdaki makalelere bakın:
     - [Azure Active Directory kullanarak bir uygulamadan Azure Event Hubs istek kimliklerini doğrulama](authenticate-application.md)
     - [Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama](authenticate-managed-identity.md)

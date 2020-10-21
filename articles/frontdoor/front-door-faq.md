@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2020
+ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: c7a5a02a063f90953982d42fe9c7d2c6dc199b2a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282280"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331592"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -161,6 +161,10 @@ Azure ön kapısı (AFD), trafiği yönlendirmek için genel IP veya genel olara
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Kural, ön kapı kuralları altyapısına eklendikten sonra etkili olması için ne kadar sürer?
 
 Kural Altyapısı yapılandırması, bir güncelleştirmeyi tamamlamaya yaklaşık 10 ila 15 dakika sürer. Güncelleştirme tamamlandıktan hemen sonra kuralın etkin olmasını sağlayabilirsiniz. 
+
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-vice-versa"></a>Ön kapı Profilimin arkasındaki Azure CDN yapılandırabilir miyim veya bunun tersini yapabilir miyim?
+
+Azure ön kapısı ve Azure CDN, her iki hizmet de isteklere yanıt vermediğinde aynı Azure Edge sitelerini kullandığından birlikte yapılandırılamaz. 
 
 ## <a name="performance"></a>Performans
 

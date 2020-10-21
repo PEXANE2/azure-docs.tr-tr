@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: efee261478cdc8b9b5349ef4c69ab5fc250315c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc12d1359ab7b6f664326cd3be448b79809c53e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619469"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332204"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Kiracı SaaS düzenine göre uygulama kullanarak yeni kiracılar sağlayın ve kataloglayın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Bir kiracı için uygulama dağıttığınızda, uygulama ve veritabanı, kirac�
 
 Her kiracının uygulaması ve veritabanı tamamen yalıtılarak, kiracılar arasında çeşitli yönetim ve analiz senaryoları çalışabilir.  Örneğin, uygulamanın yeni bir sürümü için bir şema değişikliği uygulamak her kiracı veritabanının şemasında değişiklik yapılmasını gerektirir. Raporlama ve analiz senaryoları, dağıtıldığı yere bakılmaksızın tüm kiracı veritabanlarına erişim de gerektirebilir.
 
-   ![Uygulama-kiracı başına desenler](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
+   ![Kiracı kataloğunun kiracı başına uygulama düzenine göre nasıl kullanılacağını gösteren diyagram.](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
 
 Kiracı kataloğu, kiracı tanımlayıcısı ile kiracı veritabanı arasında bir eşleme tutarken bir tanımlayıcının sunucu ve veritabanı adına çözümlenmesine izin verir.  Wingtip SaaS uygulamasında, kiracı tanıtıcısı, diğer şemalar kullanılabilse de kiracı adının karması olarak hesaplanır.  Tek başına uygulamaların bağlantıları yönetmesi için kataloğa ihtiyacı olmasa da, Katalog diğer eylemlerin bir kiracı veritabanı kümesine kapsamını atamak için kullanılabilir. Örneğin, elastik sorgu, çapraz kiracı raporlama için sorguların dağıtıldığı veritabanları kümesini tespit etmek üzere kataloğunu kullanabilir.
 

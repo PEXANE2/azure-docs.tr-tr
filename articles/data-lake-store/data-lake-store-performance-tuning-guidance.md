@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 4c9cb1d0496fe05c208cfd446a51cbf4ef8e8d4e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108618"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332527"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Performans için Azure Data Lake Storage 1. ayarlama
 
@@ -25,7 +25,7 @@ Data Lake Storage 1., tüm analiz senaryosu için gerekli aktarım hızını sa�
 
 Kaynak sistemden Data Lake Storage 1. verileri alırken, kaynak donanımın, kaynak ağ donanımının ve Data Lake Storage 1. ağ bağlantısının performans sorunu olduğunu göz önünde bulundurmanız önemlidir.
 
-![Data Lake Storage 1. performans](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
+![Kaynak donanımın, kaynak ağ donanımının ve Data Lake Storage 1. ağ bağlantısının performans sorunu olduğunu gösteren diyagram.](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
 Veri hareketinin bu faktörlerden etkilenmemesini sağlamak önemlidir.
 
@@ -43,11 +43,11 @@ Kaynak donanım ve ağ bağlantısı performans sorunlarını giderdikten sonra,
 
 | Araç          | Ayarlar | Daha fazla ayrıntı                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Bağlantısının](./data-lake-store-get-started-powershell.md) |
-| AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantısının](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -a (Eşleyici) | [Bağlantısının](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| Paralellkopyalar | [Bağlantısının](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantısının](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Bağlantı](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantı](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -a (Eşleyici) | [Bağlantı](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| Paralellkopyalar | [Bağlantı](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantı](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 
@@ -100,7 +100,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Kümeyi daha fazla düğüm ve/veya daha büyük boyutlu VM 'Ler ile çalıştırın.** Daha büyük bir küme, aşağıdaki resimde gösterildiği gibi daha fazla YARN kapsayıcısı çalıştırmanızı sağlar.
 
-![Data Lake Storage 1. performans](./media/data-lake-store-performance-tuning-guidance/VM.png)
+![Daha fazla YARN kapsayıcısı kullanımını gösteren diyagram.](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
 **Daha fazla ağ bant genişliğine sahip VM 'Leri kullanın.** Data Lake Storage 1. aktarım hızına kıyasla daha az ağ bant genişliği varsa, ağ bant genişliği miktarı bir performans sorunu olabilir. Farklı VM 'Lerde farklı ağ bant genişliği boyutları olacaktır. Olası en büyük ağ bant genişliğine sahip bir VM türü seçin.
 
@@ -108,7 +108,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Daha küçük YARN kapsayıcıları kullanın.** Aynı miktarda kaynakla daha fazla kapsayıcı oluşturmak için her bir YARN kapsayıcısının boyutunu küçültün.
 
-![Data Lake Storage 1. performans](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+![Daha küçük YARN kapsayıcıları kullanımını gösteren diyagram.](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
 İş yükünüze bağlı olarak, gereken en az YARN kapsayıcı boyutu her zaman olacaktır. Çok küçük bir kapsayıcı seçerseniz, işleriniz bellek dışı sorunlara çalışacaktır. Genellikle YARN kapsayıcıları 1 GB 'tan küçük olmamalıdır. 3 GB YARN kapsayıcıları görmek yaygındır. Bazı iş yükleri için daha büyük YARN kapsayıcıları gerekebilir.
 
@@ -118,7 +118,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Tüm kullanılabilir kapsayıcıları kullanın.** Tüm kaynakların kullanılabilmesi için kullanılabilir kapsayıcı sayısına eşit veya daha büyük olacak görev sayısını ayarlayın.
 
-![Data Lake Storage 1. performans](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+![Kullanılabilir tüm kapsayıcıların kullanımını gösteren diyagram.](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
 **Başarısız görevler maliyetlidir.** Her görevin işlemek için büyük miktarda veri varsa, bir görevin başarısızlığı pahalı bir yeniden denemeye neden olur. Bu nedenle, her biri az miktarda veri işleyen daha fazla görev oluşturmak daha iyidir.
 

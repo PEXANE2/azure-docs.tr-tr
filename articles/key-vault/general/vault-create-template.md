@@ -1,6 +1,6 @@
 ---
-title: Azure kılavuzu-Azure Resource Manager şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkesi oluşturma | Microsoft Docs
-description: Azure Resource Manager şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkelerinin nasıl oluşturulacağını gösterir.
+title: ARM şablonunu kullanarak bir Azure Anahtar Kasası ve kasa erişim ilkesi oluşturma
+description: Bu makalede, bir Azure Resource Manager şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkelerinin nasıl oluşturulacağı gösterilmektedir.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,29 +10,29 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cf19561005fe2e98b7b5cf6812ff9224fd9474dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804409"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282322"
 ---
-# <a name="how-to-create-azure-key-vault-and-vault-access-policy-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure Key Vault ve kasa erişim ilkesi oluşturma
+# <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkesi oluşturma
 
-[Azure Key Vault](../general/overview.md) , anahtarlar, parolalar, sertifikalar ve diğer gizli diziler gibi gizli dizileri için güvenli bir depo sağlayan bir bulut hizmetidir. Bu kılavuz, bir Anahtar Kasası oluşturmak için bir Azure Resource Manager şablonu dağıtma işlemine odaklanır (ARM şablonu).
+[Azure Key Vault](../general/overview.md) anahtarlar, parolalar ve sertifikalar gibi gizli dizileri için güvenli bir depo sağlayan bir bulut hizmetidir. Bu makalede bir Anahtar Kasası oluşturmak için bir Azure Resource Manager şablonu dağıtma işlemi açıklanmaktadır (ARM şablonu).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaleyi gerçekleştirmek için:
+Bu makaledeki adımları gerçekleştirmek için:
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
-## <a name="create-key-vault-resource-manager-template"></a>Key Vault Kaynak Yöneticisi şablonu oluştur
+## <a name="create-a-key-vault-resource-manager-template"></a>Key Vault Kaynak Yöneticisi şablonu oluşturma
 
-Aşağıdaki şablonda Anahtar Kasası oluşturmanın temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir.
+Aşağıdaki şablonda, Anahtar Kasası oluşturmanın temel bir yolu gösterilmektedir. Şablonda bazı değerler belirtilmiştir.
 
 ```json
 {
@@ -87,11 +87,11 @@ Aşağıdaki şablonda Anahtar Kasası oluşturmanın temel bir yolu gösterilme
 Key Vault şablon ayarları hakkında daha fazla bilgi için bkz. [Key Vault ARM şablonu başvurusu](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults).
 
 > [!IMPORTANT]
-> Şablon yeniden dağıtılırsa, anahtar kasasındaki mevcut erişim ilkelerini geçersiz kılar. `accessPolicies`Anahtar kasasına erişimi gevleşmemek için özelliği mevcut erişim ilkeleriyle doldurmanız önerilir. 
+> Bir şablon yeniden dağıtılırsa, anahtar kasasındaki mevcut erişim ilkelerinin üzerine yazılacak. `accessPolicies`Anahtar kasasına erişimin kaybedilmesini önlemek için özelliği mevcut erişim ilkeleriyle doldurmanıza önerilir. 
 
-## <a name="add-access-policy-to-key-vault-resource-manager-template"></a>Key Vault Kaynak Yöneticisi şablonuna erişim ilkesi Ekle
+## <a name="add-an-access-policy-to-a-key-vault-resource-manager-template"></a>Key Vault Kaynak Yöneticisi şablonuna erişim ilkesi ekleme
 
-Tüm Anahtar Kasası şablonunu yeniden dağıtmanız gerekmeden, mevcut anahtar kasasına erişim ilkeleri dağıtabilirsiniz. Aşağıdaki şablonda, erişim ilkeleri oluşturmanın temel bir yolu gösterilmektedir.
+Tüm Anahtar Kasası şablonunu yeniden dağıtmaya gerek kalmadan, mevcut bir anahtar kasasına erişim ilkeleri dağıtabilirsiniz. Aşağıdaki şablonda erişim ilkeleri oluşturmanın temel bir yolu gösterilmektedir:
 
 ```json
 {
@@ -160,23 +160,23 @@ Tüm Anahtar Kasası şablonunu yeniden dağıtmanız gerekmeden, mevcut anahtar
 }
 
 ```
-Key Vault şablon ayarları hakkında daha fazla bilgi için bkz. [Key Vault ARM şablonu başvurusu](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
+Key Vault şablonu ayarları hakkında daha fazla bilgi için bkz. [Key Vault ARM şablonu başvurusu](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
-## <a name="other-available-key-vault-resource-manager-templates"></a>Diğer kullanılabilir Key Vault Kaynak Yöneticisi şablonları
+## <a name="more-key-vault-resource-manager-templates"></a>Daha fazla Key Vault Kaynak Yöneticisi şablonu
 
 Key Vault nesneleri için kullanılabilen diğer Kaynak Yöneticisi şablonları vardır:
 
 | Gizli Diziler | Anahtarlar | Sertifikalar |
 |--|--|--|
-|[Hızlı Başlangıç](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<br>[Başvuru](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|Yok|Yok|
+|<ul><li>[Hızlı Başlangıç](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[Başvuru](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|Yok|Yok|
 
-Burada bulabileceğiniz daha fazla Key Vault şablonu: [Key Vault Kaynak Yöneticisi başvurusu](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)
+Daha fazla Key Vault şablonu buradan bulabilirsiniz: [Key Vault Kaynak Yöneticisi başvurusu](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions).
 
 ## <a name="deploy-the-templates"></a>Şablonları dağıtma
 
-Aşağıdaki kılavuzda yer alarak, ' Düzenleyicinizde kendi şablonunuzu derleme ' seçeneğini kullanarak yukarıdaki şablonları dağıtmak için Azure portal kullanabilirsiniz: [kaynakları özel şablondan dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)
+Yukarıdaki şablonları, burada açıklandığı gibi **Düzenleyici 'de kendi şablonunuzu oluşturma** seçeneğini kullanarak dağıtmak için Azure Portal kullanabilirsiniz: [kaynakları özel bir şablondan dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template).
 
-Ayrıca, yukarıdaki şablonları dosyalara kaydedebilir ve aşağıdaki komutları kullanabilirsiniz:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
+Ayrıca, önceki şablonları dosyalara kaydedebilir ve şu komutları kullanabilirsiniz:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
@@ -188,7 +188,7 @@ az group deployment create --resource-group ExampleGroup --template-file key-vau
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Devam etmeyi ve sonraki hızlı başlangıç ve öğreticilerde çalışmayı planlıyorsanız, bu kaynakları yerinde bırakabilirsiniz. Kaynaklara artık gerek kalmadığında, anahtar kasasını ve ilgili kaynakları silen kaynak grubunu silin. Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silmek için aşağıdaki adımları kullanın.
+Sonraki hızlı başlangıç ve öğreticilerle devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakabilirsiniz. Kaynaklara daha fazla ihtiyaç duymazsanız, kaynak grubunu silin. Grubu silerseniz, anahtar kasası ve ilgili kaynaklar da silinir. Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silmek için şu adımları uygulayın:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -211,12 +211,12 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="resources"></a>Kaynaklar
 
-- [Azure Key Vault genel bakışını](../general/overview.md) okuyun
-- [Azure Resource Manager](../../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
-- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault
+- [Azure Key Vault genel bakışını](../general/overview.md)okuyun.
+- [Azure Resource Manager](../../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinin.
+- [En iyi Azure Key Vault uygulamaları](../general/best-practices.md)inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Anahtar kasasına güvenli erişim](secure-your-key-vault.md)
 - [Anahtar kasasında kimlik doğrulama](authentication.md)
-- [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)
+- [Azure Key Vault Geliştirici Kılavuzu](developers-guide.md)

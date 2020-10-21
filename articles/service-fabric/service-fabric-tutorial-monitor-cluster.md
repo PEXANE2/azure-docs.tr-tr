@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020125"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332000"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure 'da bir Service Fabric kümesini Izleme
 
@@ -36,7 +36,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -57,7 +57,7 @@ Kaynak **Servicefabric (hayal fomsworkspace)** öğesini seçin.
 
 **Genel bakış** bölümünde, Service Fabric için de dahil olmak üzere her bir çözümün etkin olduğu bir grafik biçiminde kutucukları görürsünüz. Service Fabric Analytics çözümüne devam etmek için **Service Fabric** grafiğine tıklayın.
 
-![Service Fabric çözümü](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![Service Fabric grafiğini gösteren ekran görüntüsü.](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 Aşağıdaki görüntüde Service Fabric Analytics çözümünün giriş sayfası gösterilmektedir. Bu giriş sayfası, kümenizde neler olduğunu bir anlık görüntü görünümü sağlar.
 

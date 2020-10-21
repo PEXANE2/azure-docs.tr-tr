@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs (Önizleme) tarafından sağlanan şe
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938806"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330504"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs’da Azure Şema Kayıt Defteri (Önizleme)
 Birçok olay akışı ve mesajlaşma senaryosunda, olay veya ileti yükü, Apache avro gibi şema odaklı bir biçim kullanılarak serileştirilmiş veya serisi kaldırılan yapılandırılmış verileri içerir. Gönderenlerin ve alıcıların her ikisi de JSON şeması ile bir şema belgesiyle verilerin bütünlüğünü doğrulamak isteyebilir. Şema temelli biçimler için, şemanın ileti tüketicisi tarafından kullanılabilir olması, tüketicinin verileri seri durumdan çıkarabilmesi için bir önkoşuldur. 
@@ -50,8 +50,8 @@ Aşağıdaki görüntüde Event Hubs şema kayıt defterinin bilgi akışı gös
 ## <a name="standard-vs-dedicated-limits"></a>Standart ve adanmış sınırlar
 Event Hubs standart ve ayrılmış katmanları için aynı ve farklı olan sınırlar için (örneğin, bir ad alanındaki şema gruplarının sayısı), bkz. [şema kayıt defteri sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations)
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
-Şema kayıt defterine programlı bir şekilde erişirken, Azure Active Directory (Azure AD) bir uygulamayı kaydetmeniz ve uygulamanın güvenlik sorumlusunu rol tabanlı erişim denetimi (RBAC) rollerinden birine eklemeniz gerekir:
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
+Şema kayıt defterine programlı bir şekilde erişirken, Azure Active Directory (Azure AD) bir uygulamayı kaydetmeniz ve uygulamanın güvenlik sorumlusunu Azure rol tabanlı erişim denetimi (Azure RBAC) rollerinden birine eklemeniz gerekir:
 
 | Rol | Açıklama | 
 | ---- | ----------- | 

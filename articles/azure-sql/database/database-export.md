@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
-ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e62a7d9b9beb8ecdfaabdd44fdd547dd78d38f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443801"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328201"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC dosyasına aktarma-Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -48,7 +48,7 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir veritabanını dışarı aktarmak için veritabanınızın sayfasını açın ve araç çubuğunda **dışarı aktar** ' a tıklayın.
 
-   ![Veritabanı dışarı aktarma](./media/database-export/database-export1.png)
+   ![Dışarı Aktar düğmesini vurgulayan ekran görüntüsü.](./media/database-export/database-export1.png)
 
 2. BACPAC dosya adını belirtin, var olan bir Azure Depolama hesabını ve dışarı aktarma kapsayıcısını seçin ve ardından kaynak veritabanına erişim için uygun kimlik bilgilerini sağlayın. Azure Yöneticisi, Azure SQL veritabanı veya Azure SQL yönetilen örneği üzerinde yönetici izinlerine sahip olmadığı için Azure yöneticisi olsanız bile bir SQL **Server yönetici oturumu** açmanız gerekir.
 
