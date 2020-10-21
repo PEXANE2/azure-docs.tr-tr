@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi 'nde güvenli puan
+title: Azure Güvenlik Merkezi'nde güvenlik puanı
 description: Azure Güvenlik Merkezi 'nin güvenli puanı ve güvenlik denetimlerinin açıklaması
 services: security-center
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4897c1b54eff5eb06e0ef49f0c74e261f5a9687e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268273"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281291"
 ---
-# <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenli puan
+# <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
 ## <a name="introduction-to-secure-score"></a>Güvenli puana giriş
 
@@ -57,7 +57,7 @@ Güvenlik Merkezi, puanınızı portalda göze çarpacak şekilde görüntüler:
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>REST API güvenli puanınızı alın
 
-Puanınızı [güvenli Puanlama API 'si](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (Şu anda önizleme aşamasında) aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için **güvenli puanlar** API 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için **güvenli puan denetimleri** API 'sini de kullanabilirsiniz.
+Puanınızı güvenli Puanlama API 'SI (Şu anda önizleme aşamasında) aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için [güvenli puanlar API](https://docs.microsoft.com/rest/api/securitycenter/securescores) 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için [güvenli puan DENETIMLERI API](https://docs.microsoft.com/rest/api/securitycenter/securescorecontrols) 'sini de kullanabilirsiniz.
 
 ![API aracılığıyla tek bir güvenli puan alma](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -156,7 +156,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Yetkisiz ağ erişimini kısıtla (maks. puan 4)</p></strong>Kuruluş içindeki uç noktalar, sanal ağınızdan desteklenen Azure hizmetlerine doğrudan bağlantı sağlar. Bir alt ağdaki sanal makineler tüm kaynaklarla iletişim kurabilir. Bir alt ağ içindeki kaynaklarla ve bu kaynaklardan gelen iletişimi sınırlandırmak için bir ağ güvenlik grubu oluşturun ve alt ağ ile ilişkilendirin. Kuruluşlar, gelen ve giden kurallar oluşturarak yetkisiz trafiğe karşı sınırlayabilir ve koruyabilir.</td>
-    <td class="tg-lboi"; width=55%>- Sanal makinenizde IP iletimi devre dışı bırakılmalıdır<br>- Yetkili IP aralıkları, Kubernetes hizmetlerinde tanımlanmalıdır (Önizleme)<br>- Kullanım DıŞı Uygulama hizmetlerine erişim kısıtlı olmalıdır (Önizleme)<br>- Kullanım DıŞı IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır<br>- Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>- CORS, her kaynağın API uygulamanıza erişmesine izin vermemelidir<br>- CORS, her kaynağın İşlev Uygulaması erişmesine izin vermemelidir<br>- CORS, her kaynağın Web uygulamanıza erişmesine izin vermemelidir<br>- API uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>- İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>- Web uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>- Internet 'e yönelik VM 'lerle izin veren ağ güvenlik grupları için erişim kısıtlanması gerekir<br>- Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır<br>- Kubernetes için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır (Önizleme)<br>- Kapsayıcılar yalnızca izin verilen bağlantı noktalarında dinleme yapılmalıdır (Önizleme)<br>- Hizmetlerin yalnızca izin verilen bağlantı noktalarını dinlemesi gerekir (Önizleme)<br>- Konak ağ ve bağlantı noktalarının kullanımı sınırlandırılmalıdır (Önizleme)</td>
+    <td class="tg-lboi"; width=55%>- Sanal makinenizde IP iletimi devre dışı bırakılmalıdır<br>- Yetkili IP aralıkları, Kubernetes hizmetlerinde tanımlanmalıdır (Önizleme)<br>- Kullanım DıŞı Uygulama hizmetlerine erişim kısıtlı olmalıdır (Önizleme)<br>- Kullanım DıŞı IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır<br>- Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>- CORS, her kaynağın API uygulamanıza erişmesine izin vermemelidir<br>- CORS, her kaynağın İşlev Uygulaması erişmesine izin vermemelidir<br>- CORS, her kaynağın Web uygulamanıza erişmesine izin vermemelidir<br>- API uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>- İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>- Web uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>- Internet 'e yönelik VM 'lerle izin veren ağ güvenlik grupları için erişim kısıtlanması gerekir<br>- Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır<br>- Kubernetes için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır (Önizleme)<br>- Kapsayıcılar yalnızca izin verilen bağlantı noktalarında dinleme yapılmalıdır (Önizleme)<br>- Hizmetlerin yalnızca izin verilen bağlantı noktalarını dinlemesi gerekir (Önizleme)<br>- Konak ağ ve bağlantı noktalarının kullanımı sınırlandırılmalıdır (Önizleme)<br>- Sanal ağlar Azure Güvenlik Duvarı (Önizleme) ile korunmalıdır</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Uyarlamalı uygulama denetimi Uygula (en fazla skor 3)</p></strong>Uyarlamalı uygulama denetimi (AAC), Azure ve Azure dışı makinelerde hangi uygulamaların çalıştırılacağını denetlemenize olanak tanıyan akıllı, otomatik, uçtan uca bir çözümdür. Ayrıca makinelerinizi kötü amaçlı yazılımlara karşı sağlamlaştırmanıza de yardımcı olur.<br>Güvenlik Merkezi, bir makine grubu için bilinen güvenli uygulamaların bir listesini oluşturmak üzere makine öğrenimini kullanır.<br>Onaylanan uygulama listesine yönelik bu yenilikçi yaklaşım, yönetim karmaşıklığı olmadan güvenlik avantajlarını sağlar.<br>AAC, özellikle belirli bir uygulama kümesini çalıştırması gereken amaç oluşturulmuş sunucular için geçerlidir.</td>

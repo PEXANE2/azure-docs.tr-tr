@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979686"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282860"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıyın
 
@@ -39,10 +39,12 @@ Otomasyon Hesabınızın bağlantısını kaldırmak için önce kaldırılması
 - Azure Güvenlik Merkezi
 
 >[!IMPORTANT]
-> **Azure Sentinel müşterileri:**
+> **Azure Sentinel müşterileri**
 > - Bir çalışma alanına dağıtıldıktan sonra, Azure Sentinel bu çalışma alanının diğer kaynak gruplarına veya aboneliklerine taşınmasını **desteklememektedir** . 
->
->   Çalışma alanını zaten taşıdıysanız, **analiz** altındaki tüm etkin kuralları devre dışı bırakın ve beş dakika sonra yeniden etkinleştirin. Bu durum çoğu durumda etkili olmalıdır, ancak yeniden yinelemek için, bu, sizin sorumluluğunuzdadır ve riski size aittir.
+> - Çalışma alanını zaten taşıdıysanız, **analiz** altındaki tüm etkin kuralları devre dışı bırakın ve beş dakika sonra yeniden etkinleştirin. Bu durum çoğu durumda etkili olmalıdır, ancak yeniden yinelemek için, bu, sizin sorumluluğunuzdadır ve riski size aittir.
+> 
+> **Uyarılar**
+> - İzinler, çalışma alanının Azure Kaynak KIMLIĞINE dayalıdır ve çalışma alanı taşıma ile değiştiği için, taşıma sonrasında tüm uyarıların yeniden oluşturulması gerekir. 
 
 ### <a name="delete-solutions-in-azure-portal"></a>Azure portal çözümleri silme
 Azure portal kullanarak çözümleri kaldırmak için aşağıdaki yordamı kullanın:

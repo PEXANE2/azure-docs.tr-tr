@@ -930,7 +930,7 @@
     - name: Sürüm notları
       href: release-notes.md
     - name: Örnek kod
-      href: 'https://aka.ms/servicefabricsamples'
+      href: /samples/browse/?products=azure
     - name: Destek seçenekleri
       href: service-fabric-support.md
     - name: Service Fabric sürümleri

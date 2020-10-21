@@ -1,44 +1,119 @@
 ---
-title: Azure Cosmos DB okuma ve yazma maliyetini en iyi duruma getirme
-description: Bu makalede, veriler üzerinde okuma ve yazma işlemleri gerçekleştirirken Azure Cosmos DB maliyetlerinin nasıl azaltılacağı açıklanmaktadır.
+title: Azure Cosmos DB isteklerinizin maliyetini en iyi duruma getirme
+description: Bu makalede, Azure Cosmos DB istek verirken maliyetlerin nasıl iyileştirileceği açıklanır.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2020
-ms.openlocfilehash: 38084bf30df2a597e7a7bc46ba4c52cf371c3c7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 58b57bd592ec0b302724f9339c0e0d48fed42d15
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318258"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281175"
 ---
-# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Azure Cosmos DB 'de okuma ve yazma maliyetlerini iyileştirin
+# <a name="optimize-request-cost-in-azure-cosmos-db"></a>Azure Cosmos DB istek maliyetini iyileştirme
 
-Bu makalede Azure Cosmos DB verileri okumak ve yazmak için gereken maliyetin nasıl hesaplandığı açıklanır. Okuma işlemleri [, nokta okumaları ve sorgular](sql-query-getting-started.md)içerir. Yazma işlemleri, öğelerin INSERT, Replace, DELETE ve upsert öğelerini içerir.  
+Bu makalede okuma ve yazma isteklerinin [Istek birimlerine](request-units.md) nasıl çevireceği ve bu isteklerin maliyetinin nasıl iyileştirileceği açıklanır. Okuma işlemleri, nokta okumaları ve sorgular içerir. Yazma işlemleri, öğelerin INSERT, Replace, DELETE ve upsert öğelerini içerir.
 
-## <a name="cost-of-reads-and-writes"></a>Okuma ve yazma maliyeti
+Azure Cosmos DB, bir kapsayıcı içindeki öğelerde çalışan zengin bir veritabanı işlemleri kümesi sunar. Bu işlemlerden her biriyle ilişkilendirilmiş maliyet, işlemi tamamlamak için gereken CPU, GÇ ve belleğe göre değişiklik gösterir. Donanım kaynaklarını düşünmek ve yönetmek yerine bir istek birimi (RU), bir isteğe yönelik çeşitli veritabanı işlemlerini gerçekleştirmek için gereken kaynaklar için tek bir ölçü olarak düşünebilirsiniz.
 
-Azure Cosmos DB, sağlanan aktarım hızı modeli kullanılarak üretilen iş ve gecikme süresi bakımından öngörülebilir performansı güvence altına alır. Sağlanan aktarım hızı, saniye başına [Istek birimi](request-units.md) veya ru/sn cinsinden temsil edilir. Istek birimi (RU), bir isteği gerçekleştirmek için gerekli olan CPU, bellek, GÇ vb. işlem kaynakları üzerinde mantıksal bir soyutlamadır. Sağlanan aktarım hızı (ru), öngörülebilir aktarım hızı ve gecikme süresi sağlamak için kapsayıcı veya veritabanınıza ayrılır. Sağlanan aktarım hızı, Azure Cosmos DB her ölçekte öngörülebilir ve tutarlı performans, garantili düşük gecikme süresi ve yüksek kullanılabilirlik sağlamasına olanak sağlar. İstek birimleri, bir uygulamanın ihtiyacı olan kaynak sayısını kolaylaştıran normalleştirilmiş para birimini temsil eder.
+## <a name="measuring-the-ru-charge-of-a-request"></a>Bir isteğin RU ücretlendirmesini ölçme
 
-Okuma ve yazma işlemleri arasında istek birimlerini farklılaştırmayı düşünmek zorunda değilsiniz. İstek birimlerinin Birleşik para birimi modeli, birbirinin yerine, hem okuma hem de yazma işlemleri için aynı verimlilik kapasitesini kullanır. Aşağıdaki tabloda, 1 KB ve 100 KB boyutundaki öğeler için RU/s bakımından nokta okuma ve yazma işlemlerinin maliyeti gösterilmektedir.
+Gerçek maliyetlerini anlamak ve ayrıca iyileştirmelerin verimliliğini değerlendirmek için isteklerinizin RU ücretini ölçmek önemlidir. Bu maliyeti Azure portal kullanarak veya SDK 'lardan biri aracılığıyla Azure Cosmos DB geri gönderilen yanıtı inceleyerek getirebilirsiniz. Bunun nasıl elde edilebileceği hakkında ayrıntılı yönergeler için bkz. [istek birimi ücreti bulma Azure Cosmos DB](find-request-unit-charge.md) .
 
-|**Öğe boyutu**  |**Bir noktanın okunan maliyeti** |**Bir yazma maliyeti**|
-|---------|---------|---------|
-|1 KB |1 RU |5 ru |
-|100 KB |10 RU |50 ru |
+## <a name="reading-data-point-reads-and-queries"></a>Veri okuma: nokta okuma ve sorguları
 
-Boyut maliyetlerinde 1 KB olan bir öğe için bir nokta okuma işlemi yapmak bir RU. 1 KB 'lik maliyette beş ru olan bir öğe yazılıyor. Okuma ve yazma maliyetleri, varsayılan oturum [tutarlılığı düzeyi](consistency-levels.md)kullanılırken geçerlidir.  Ru 'daki hususlar şunlardır: öğe boyutu, özellik sayısı, veri tutarlılığı, dizinli özellikler, dizin oluşturma ve sorgu desenleri.
+Azure Cosmos DB içindeki okuma işlemleri, genellikle aşağıdaki gibi, RU tüketimine göre daha hızlı/en verimli ve daha az verimlidir.  
 
-[Nokta okuma](sql-query-getting-started.md) maliyeti, sorgulardan önemli ölçüde daha az ru. Noktadan farklı olarak, sorguların aksine, sorgu altyapısını kullanmak gerekmez. Sorgu RU ücreti Sorgunun karmaşıklığına ve sorgu altyapısının yüklemek için gereken öğe sayısına bağlıdır.
+* Nokta okuma (tek öğe KIMLIĞINDE ve bölüm anahtarında anahtar/değer araması).
+* Tek bir bölüm anahtarı içinde bir filtre yan tümcesi ile sorgulayın.
+* Herhangi bir özellikte eşitlik veya Aralık filtresi yan tümcesi olmadan sorgu.
+* Filtre olmadan sorgulayın.
 
-## <a name="optimize-the-cost-of-writes-and-reads"></a>Yazma ve okuma maliyetlerini iyileştirin
+### <a name="role-of-the-consistency-level"></a>Tutarlılık düzeyinin rolü
 
-Yazma işlemleri gerçekleştirdiğinizde, saniye başına gereken yazma sayısını desteklemek için yeterli kapasite sağlamanız gerekir. Yazma işlemini gerçekleştirmeden önce SDK, Portal, CLı kullanarak sağlanan aktarım hızını artırabilir ve ardından yazma işlemleri tamamlandıktan sonra aktarım hızını azaltabilirsiniz. Yazma dönemi için üretilen iş hacmi, belirtilen veriler için gereken en düşük aktarım hızı ve başka iş yükünün çalışmadığı varsayılarak ekleme iş yükü için gereken aktarım hızı olur.
+**Güçlü** veya **sınırlanmış stalet** [tutarlılık düzeylerini](consistency-levels.md)kullanırken, herhangi bir okuma IŞLEMININ (okuma veya sorgulama) ru maliyeti iki katına çıkar.
 
-Diğer iş yüklerini eşzamanlı olarak çalıştırıyorsanız (örneğin, sorgu/okuma/güncelleştirme/silme), bu işlemler için gereken ek istek birimlerini de eklemeniz gerekir. Yazma işlemleri hız sınırlıysa, Azure Cosmos DB SDK 'Ları kullanarak yeniden deneme/geri alma ilkesini özelleştirebilirsiniz. Örneğin, küçük bir isteklerin hız sınırlı olana kadar yükü artırabilirsiniz. Oran sınırı oluşursa, istemci uygulama, belirtilen yeniden deneme aralığı için hız sınırlama isteklerinde yeniden kapatılmalıdır. Yazmaları yeniden denemeden önce, denemeler arasındaki en az bir zaman aralığı miktarına sahip olmalısınız. Yeniden deneme ilkesi desteği, SQL .NET, Java, Node.js ve Python SDK 'larına ve .NET Core SDK 'larının desteklenen tüm sürümlerine dahildir.
+### <a name="point-reads"></a>Nokta okuma
 
-Ayrıca, [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)kullanarak desteklenen kaynak veri mağazalarından Azure Cosmos DB Azure Cosmos DB veya verileri toplu olarak ekleyebilirsiniz. Azure Data Factory, veri yazarken en iyi performansı sağlamak için Azure Cosmos DB toplu API ile yerel olarak tümleştirilir.
+Bir nokta okuma (kullanılan tutarlılık düzeyinin yanı sıra) için RU ücreti etkileyen tek etken, alınan öğenin boyutudur. Aşağıdaki tabloda, boyutu 1 KB ve 100 KB olan öğeler için, nokta okumalarının RU maliyeti gösterilmektedir.
+
+| **Öğe boyutu** | **Bir noktanın okunan maliyeti** |
+| --- | --- |
+| 1 KB | 1 RU |
+| 100 KB | 10 RU |
+
+Nokta okuma (öğe KIMLIĞINDE anahtar/değer aramaları) en etkili okuma türü olduğundan, mümkün olduğunda öğe KIMLIĞINIZIN anlamlı bir değere sahip olduğundan emin olmanız gerekir. bu sayede öğelerinizi bir nokta okuma (sorgu yerine) ile getirebilirsiniz.
+
+### <a name="queries"></a>Sorgular
+
+Sorgular için istek birimleri, bir dizi etkene bağımlıdır. Örneğin, yüklenen/döndürülen Azure Cosmos öğelerinin sayısı, dizinde yapılan arama sayısı, sorgu derleme süresi vb. ayrıntılar. Azure Cosmos DB aynı verilerde yürütüldüğü sırada aynı sorgunun her zaman aynı sayıda istek birimi de tekrarlayarak yineleme yürütmelerinin aynısını kullanmasını güvence altına alır. Sorgu yürütme ölçümlerini kullanan sorgu profili, istek birimlerinin nasıl harcandığına ilişkin iyi bir fikir verir.  
+
+Bazı durumlarda, sorgular kullanılabilir ru 'yı temel alarak mümkün olduğunca hızlı çalışacağı için bir dizi 200 ve 429 yanıt ve çok sayıda sorgu üzerinde değişken istek birimleri görebilirsiniz. Sunucu ve istemci arasında birden fazla sayfaya/gidiş dönüşe bir sorgu yürütme kesmesi görebilirsiniz. Örneğin, 10.000 öğe, her biri bu sayfada gerçekleştirilen hesaplamayı temel alarak ücretlendirilen birden çok sayfa olarak döndürülebilir. Bu sayfalar arasında toplama yaptığınızda, tüm sorgu için alacağınız aynı ru sayısını almalısınız.
+
+#### <a name="metrics-for-troubleshooting-queries"></a>Sorgu sorunlarını giderme ölçümleri
+
+Sorgular (Kullanıcı tanımlı işlevler dahil) tarafından tüketilen performans ve aktarım hızı genellikle işlev gövdesine bağımlıdır. Sorgu yürütmesinin UDF 'de ne kadar zaman harcandığını ve tüketilen saat sayısını bulmanın en kolay yolu, sorgu ölçümlerini etkinleştirir. .NET SDK kullanıyorsanız, SDK tarafından döndürülen örnek sorgu ölçümleri aşağıda verilmiştir:
+
+```bash
+Retrieved Document Count                 :               1              
+Retrieved Document Size                  :           9,963 bytes        
+Output Document Count                    :               1              
+Output Document Size                     :          10,012 bytes        
+Index Utilization                        :          100.00 %            
+Total Query Execution Time               :            0.48 milliseconds 
+  Query Preparation Times 
+    Query Compilation Time               :            0.07 milliseconds 
+    Logical Plan Build Time              :            0.03 milliseconds 
+    Physical Plan Build Time             :            0.05 milliseconds 
+    Query Optimization Time              :            0.00 milliseconds 
+  Index Lookup Time                      :            0.06 milliseconds 
+  Document Load Time                     :            0.03 milliseconds 
+  Runtime Execution Times 
+    Query Engine Execution Time          :            0.03 milliseconds 
+    System Function Execution Time       :            0.00 milliseconds 
+    User-defined Function Execution Time :            0.00 milliseconds 
+  Document Write Time                    :            0.00 milliseconds 
+  Client Side Metrics 
+    Retry Count                          :               1              
+    Request Charge                       :            3.19 RUs  
+```
+
+#### <a name="best-practices-to-cost-optimize-queries"></a>Sorguları iyileştirmek için en iyi uygulamalar 
+
+Aşağıdaki en iyi yöntemleri maliyet için iyileştirirken göz önünde bulundurun:
+
+* **Birden çok varlık türünü birlikte bulundurma**
+
+   Birden çok varlık türünü tek veya daha küçük bir kapsayıcı içinde bulundurmanıza çalışın. Bu yöntem, yalnızca bir fiyatlandırma perspektifinden değil, sorgu yürütme ve işlemler için de avantaj verir. Sorgular tek bir kapsayıcıya kapsamlandırılır; saklı yordamlar/Tetikleyiciler aracılığıyla birden çok kayıt üzerinde Atomik işlemler, tek bir kapsayıcı içindeki bir bölüm anahtarının kapsamına alınır. Aynı kapsayıcı içindeki varlıkları birlikte bulundurma, kayıtlar arasındaki ilişkileri çözümlemek için ağ gidiş dönüş sayısını azaltabilir. Bu nedenle, uçtan uca performansı artırarak, daha büyük bir veri kümesi için birden çok kayıt üzerinde atomik işlemleri sağlar ve sonuç olarak maliyetleri düşürür. Tek veya daha küçük bir kapsayıcı içinde birden çok varlık türünü birlikte bulundurma senaryosunda, genellikle var olan bir uygulamayı geçiriyorsanız ve herhangi bir kod değişikliği yapmak istemediğiniz için, daha sonra veritabanı düzeyinde sağlama üretilen işi göz önünde bulundurmanız gerekir.  
+
+* **Düşük istek birimleri/ikinci kullanım için ölçme ve ayarlama**
+
+   Bir sorgunun karmaşıklığı, bir işlem için kaç tane istek birimi (ru) tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu. Tüm bu faktörler, sorgu işlemlerinin maliyetini etkiler. 
+
+Azure Cosmos DB, sağlanan aktarım hızı modeli kullanılarak üretilen iş ve gecikme açısından öngörülebilir bir performans sağlar. Sağlanan aktarım hızı, saniye başına [Istek birimi](request-units.md) veya ru/sn cinsinden temsil edilir. Istek birimi (RU), bir isteği gerçekleştirmek için gerekli olan CPU, bellek, GÇ vb. işlem kaynakları üzerinde mantıksal bir soyutlamadır. Sağlanan aktarım hızı (ru), öngörülebilir aktarım hızı ve gecikme süresi sağlamak için kapsayıcı veya veritabanınıza ayrılır. Sağlanan aktarım hızı, Azure Cosmos DB her ölçekte öngörülebilir ve tutarlı performans, garantili düşük gecikme süresi ve yüksek kullanılabilirlik sağlamasına olanak sağlar. İstek birimleri, bir uygulamanın ihtiyacı olan kaynak sayısını kolaylaştıran normalleştirilmiş para birimini temsil eder.
+
+İstek üstbilgisinde döndürülen istek ücreti, belirli bir sorgunun maliyetini gösterir. Örneğin, bir sorgu 1000 1 KB 'lik öğeler döndürürse, işlemin maliyeti 1000 ' dir. Bu nedenle, bir saniye içinde sunucu, sonraki istekleri sınırlayan orandan önce yalnızca iki istek için geçerlidir. Daha fazla bilgi için bkz. [İstek birimleri](request-units.md) makalesi ve istek birimi hesaplayıcısı.
+
+## <a name="writing-data"></a>Veri yazma
+
+Bir öğe yazma ile ilgili RU maliyeti şunlara bağlıdır:
+
+- Öğe boyutu.
+- [Dizin oluşturma ilkesinin](index-policy.md) kapsadığı ve dizine alınması gereken özellik sayısı.
+
+5 ru 'ın üzerinde dizin maliyetlerine 5 ' ten az özellik içeren 1 KB 'lık öğe ekleniyor. Aynı öğeyi eklemek için gereken ücret, bir öğe maliyetlerini iki kez değiştirme.
+
+### <a name="optimizing-writes"></a>Yazmaları iyileştirme
+
+Yazma işlemlerinin RU maliyetini en iyi hale getirmenin en iyi yolu, öğelerinizi ve dizine alınan özelliklerin sayısını doğru olarak boyutlandırmanız.
+
+- Azure Cosmos DB çok büyük öğelerin depolanması, yüksek RU ücretlerine neden olur ve bir anti-model olarak kabul edilebilir. Özellikle, ikili içeriği veya üzerinde sorgu yapmanız gerekmeyen büyük parça metin öbeklerini saklamayın. En iyi uygulama, bu tür verilerin [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md) alanına yerleştirilme ve Azure Cosmos DB yazdığınız öğedeki bir başvuruyu (veya bağlantıyı) bir blob 'a depolamanızı kullanmaktır.
+- Dizin oluşturma ilkenizi yalnızca sorgular filtrelemeniz için en iyi duruma getirme, yazma işlemlerinizin kullandığı ru 'da büyük bir farklılık yapabilir. Yeni bir kapsayıcı oluştururken, varsayılan dizin oluşturma ilkesi, öğelerinizde bulunan her özelliği ve her özelliği dizine ekler. Bu, geliştirme etkinlikleri için iyi bir varsayılan olsa da, üretim sırasında veya iş yükünüz önemli trafik almaya başladığında [Dizin oluşturma ilkenizi](how-to-manage-indexing-policy.md) yeniden değerlendirmek ve özelleştirmek kesinlikle önerilir.
+
+Verilerin toplu olarak içe alımı gerçekleştirirken, bu tür işlemlerin RU tüketimini iyileştirmek üzere tasarlandığından [Azure Cosmos DB toplu yürütücü kitaplığı](bulk-executor-overview.md) kullanılması da önerilir. İsteğe bağlı olarak, aynı kitaplıkta oluşturulan [Azure Data Factory](../data-factory/introduction.md) de kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -48,5 +123,5 @@ Daha sonra, aşağıdaki makalelerle Azure Cosmos DB maliyet iyileştirmesi hakk
 * [Azure Cosmos DB Faturanızı Anlama](understand-your-bill.md) hakkında daha fazla bilgi edinin
 * [Verimlilik maliyetini iyileştirme](optimize-cost-throughput.md) hakkında daha fazla bilgi edinin
 * [Depolama maliyetini iyileştirme](optimize-cost-storage.md) hakkında daha fazla bilgi edinin
-* [Sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
 * [Çok bölgeli Azure Cosmos hesaplarının maliyetini En Iyi duruma getirme](optimize-cost-regions.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB ayrılmış kapasite](cosmos-db-reserved-capacity.md) hakkında daha fazla bilgi edinin

@@ -163,6 +163,8 @@
               href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
 - name: Kaynaklar
   items:
+    - name: Destek ve yardım seçenekleri
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Bölgesel Kullanılabilirlik
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Uyumluluk
@@ -171,10 +173,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fiyatlandırma ve limitler
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
     - name: Arama
       href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
     - name: Blog

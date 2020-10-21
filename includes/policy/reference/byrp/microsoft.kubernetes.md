@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6c853667a95cd3688948f71d83866092bd207051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdae84f8df7f838186175d78219e9205daf09c37
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859257"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310875"
 ---
-|Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Ad<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Kubernetes kümesine giler dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Bu ilke, kümelerin tanımlanan git deposundan Truth kaynaklarını almasını sağlamak için Kubernetes kümelerine bir ' sourceControlConfiguration ' dağıtır. Bu ilkeyi kullanma hakkında yönergeler için, adresini ziyaret edin [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |DeployIfNotExists |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |
 |[Kubernetes kümesinde ayrıcalıklı kapsayıcılara izin verme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Bu ilke bir Kubernetes kümesinde ayrıcalıklı kapsayıcılar oluşturulmasına izin vermiyor. Bu ilke, Kubernetes hizmeti (AKS) için genel kullanıma sunulmuştur ve AKS altyapısı ve Azure Arc etkin Kubernetes için Önizleme. Bu ilkeyi kullanma hakkında yönergeler için, adresini ziyaret edin [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |Denetim, reddetme, devre dışı |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |

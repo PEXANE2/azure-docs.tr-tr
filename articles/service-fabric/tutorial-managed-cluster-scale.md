@@ -3,12 +3,12 @@ title: Service Fabric yönetilen kümenin ölçeğini genişletme (Önizleme)
 description: Bu öğreticide, Service Fabric yönetilen bir kümenin düğüm türünü nasıl ölçeklendireceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: a6777743932f3cc73db973c4d9935d4b5827700b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01b299744d462496296884211eff08b7a9c64687
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410465"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316133"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>Öğretici: Service Fabric yönetilen bir kümeyi genişletme (Önizleme)
 
@@ -25,10 +25,10 @@ Serinin bu bölümü aşağıdaki konuları içerir:
 > [!div class="checklist"]
 > * Service Fabric yönetilen bir küme düğümünü ölçeklendirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Service Fabric yönetilen bir küme (bkz. [*yönetilen küme dağıtma*](tutorial-managed-cluster-deploy.md)).
-* [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) veya üzeri (bkz. [*Install Azure PowerShell*](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.7.0&preserve-view=true)).
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) veya üzeri (bkz. [*Install Azure PowerShell*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0)).
 
 ## <a name="scale-a-service-fabric-managed-cluster"></a>Service Fabric yönetilen bir kümeyi ölçeklendirme
 Örnek sayısını, ölçeklendirmek istediğiniz düğüm türündeki düğümlerin sayısını artırmak veya azaltmak için değiştirin. Düğüm türü adlarını, küme dağıtımınızdaki veya Service Fabric Explorer Azure Resource Manager şablonunda (ARM şablonunda) bulabilirsiniz.  

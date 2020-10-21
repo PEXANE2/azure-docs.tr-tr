@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930960"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317442"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer bileşenleri
 
 Azure Load Balancer bazı önemli bileşenleri içerir. Bu bileşenler, aboneliğinizdeki aracılığıyla yapılandırılabilir:
 
 * Azure portal
-* Azure CLI
+* Azure CLI’si
 * Azure PowerShell
 * Resource Manager Şablonları
 
@@ -130,6 +130,7 @@ Temel yük dengeleyici giden kuralları desteklemez.
 
 ## <a name="limitations"></a>Sınırlamalar
 
+- Load Balancer [sınırları](https://aka.ms/lblimits) hakkında bilgi edinin 
 - Yük dengeleyici, belirli TCP veya UDP protokolleri için yük dengeleme ve bağlantı noktası iletme sağlar. Yük Dengeleme kuralları ve gelen NAT kuralları TCP ve UDP 'yi destekler, ancak ıCMP dahil diğer IP protokollerini desteklemez.
 - Bir arka uç VM 'den bir iç Load Balancer ön uca giden akış başarısız olur.
 - Yük dengeleyici kuralı iki sanal ağı yayılamaz.  Ön uçların ve arka uç örneklerinin aynı sanal ağda bulunması gerekir.  
