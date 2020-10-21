@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9b2c5b24b88dd51596dfb5bd8b5f397419ca6e4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e72bd04bb41537546191b8ceb320c0722bd10146
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215204"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340300"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak SSO ve belirteç özelleştirmesini yönetme
 
@@ -90,6 +90,45 @@ BasePolicy öğesi ve bağlı olan taraf dosyasının RelyingParty öğesi aras�
 
 > [!NOTE]
 > PKI CE ile yetkilendirme kodu akışını kullanan tek sayfalı uygulamalarda, her zaman 24 saat için yenileme belirteci ömrü vardır. [Tarayıcıda belirteçleri yenileme güvenlik etkileri hakkında daha fazla bilgi edinin](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+
+## <a name="provide-optional-claims-to-your-app"></a>Uygulamanıza isteğe bağlı talepler sağlama
+
+[Bağlı olan taraf ilkesi teknik profili](relyingparty.md#technicalprofile) çıkış talepleri, bir uygulamaya döndürülen değerlerdir. Çıkış taleplerini eklemek, başarılı bir Kullanıcı yolculuğuna sonra bu talepleri belirtece dönüştürür ve uygulamaya gönderilir. İstenen talepleri bir çıkış talebi olarak eklemek için bağlı olan taraf bölümündeki teknik profil öğesini değiştirin.
+
+1. Özel ilke dosyanızı açın. Örneğin, SignUpOrSignin.xml.
+1. Outputclaim öğesini bulun. Belirtece dahil edilmesini istediğiniz OutputClaim 'i ekleyin. 
+1. Çıkış talebi özniteliklerini ayarlayın. 
+
+Aşağıdaki örnek `accountBalance` talebi ekler. Accountbakiye talebi, uygulamaya bir bakiye olarak gönderilir. 
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <!--Add the optional claims here-->
+      <OutputClaim ClaimTypeReferenceId="accountBalance" DefaultValue="" PartnerClaimType="balance" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+OutputClaim öğesi aşağıdaki öznitelikleri içerir:
+
+  - **ClaimTypeReferenceId** -ilke dosyası veya üst Ilke dosyasında [Claimsschema](claimsschema.md) bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı.
+  - **Partnerclaimtype** -belirteçteki talebin adını değiştirmenize izin verir. 
+  - **DefaultValue** -varsayılan değer. Varsayılan değeri, kiracı KIMLIĞI gibi bir [talep çözümleyici](claim-resolver-overview.md)olarak da ayarlayabilirsiniz.
+  - **Alwaysusedefaultvalue** -varsayılan değerin kullanımını zorunlu kılın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: c580dd26c64a27b88b4416e85da101b78782013e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076989"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339722"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -52,7 +52,7 @@ Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürüt�
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
-|Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](https://docs.microsoft.com/azure/azure-arc/) makineleri|
+|Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](../azure-arc/index.yml) makineleri|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve **okuyucu** rolleri hem grupları hem de bilinen güvenli uygulamaların listesini görüntüleyebilir<br>**Katkıda bulunan** ve **Güvenlik yönetici** rolleri, grupları ve bilinen güvenli uygulamaların listesini düzenleyebilir|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
@@ -85,7 +85,7 @@ Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesi
     - **Öneri yok** -tanımlı bir uygulama listesi olmayan ve özelliği desteklemeyen makineler. Makineniz aşağıdaki nedenlerle bu sekmede olabilir:
       - Log Analytics Aracısı eksik
       - Log Analytics Aracısı olayları göndermiyor
-      - Bu, bir GPO veya yerel güvenlik ilkesi tarafından etkinleştirilen önceden var olan [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) ilkesi olan bir Windows makinesidir
+      - Bu, bir GPO veya yerel güvenlik ilkesi tarafından etkinleştirilen önceden var olan [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) ilkesi olan bir Windows makinesidir
 
       > [!TIP]
       > Güvenlik Merkezi 'nin makine grubu başına benzersiz önerilerini tanımlamak için en az iki haftalık veri olması gerekir. Kısa süre önce oluşturulmuş olan veya Azure Defender ile yalnızca son etkinleştirilen aboneliklere ait olan makineler, **öneri yok** sekmesi altında görünür.
@@ -224,7 +224,7 @@ Bir makineyi bir gruptan diğerine taşıdığınızda, uygulanan uygulama denet
 
 Uyarlamalı uygulama denetimlerinizi program aracılığıyla 'yi yönetmek için REST API kullanın. 
 
-Tam API belgesi [burada](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols)bulunur.
+Tam API belgesi [burada](/rest/api/securitycenter/adaptiveapplicationcontrols)bulunur.
 
 REST API kullanılabilen işlevlerden bazıları:
 
@@ -245,5 +245,5 @@ REST API kullanılabilen işlevlerden bazıları:
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi 'ni kullanarak Azure 'da ve Azure dışı makinelerde çalışan uygulamaların izin verilenler listesini nasıl tanımlayacağınızı öğrendiniz. Bazı güvenlik merkezi iş yükü koruma özellikleri hakkında daha fazla bilgi edinmek için bkz.:
 
-* [Tam zamanında (JıT) VM erişimini anlama](just-in-time-explained.md)
+* [Tam zamanında (JIT) VM erişimini anlama](just-in-time-explained.md)
 * [Azure Kubernetes kümelerinizin güvenliğini sağlama](defender-for-kubernetes-introduction.md)

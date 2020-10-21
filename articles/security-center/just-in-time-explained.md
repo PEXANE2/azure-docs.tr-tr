@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449002"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340028"
 ---
-# <a name="understanding-just-in-time-jit-vm-access"></a>Tam zamanında (JıT) VM erişimini anlama
+# <a name="understanding-just-in-time-jit-vm-access"></a>Tam zamanında (JIT) VM erişimini anlama
 
 Bu sayfada, Azure Güvenlik Merkezi 'nin tam zamanında (JıT) VM erişimi özelliğinin arkasındaki ilkeler ve önerinin arkasındaki mantık açıklanmaktadır.
 
@@ -40,14 +40,14 @@ Bu dikarma 'yı çözümlemek için Azure Güvenlik Merkezi JıT sunar. JıT ile
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>Ağ güvenlik grupları ve Azure Güvenlik Duvarı ile JıT nasıl çalışır?
 
-Tam zamanında VM erişimini etkinleştirdiğinizde, gelen trafiğin engelleneceğini sanal makine üzerindeki bağlantı noktalarını seçebilirsiniz. Güvenlik Merkezi, [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) ve [Azure Güvenlik duvarı kurallarında](https://docs.microsoft.com/azure/firewall/rule-processing)seçtiğiniz bağlantı noktalarınız için "tüm gelen trafiği reddetme" kurallarının mevcut olmasını sağlar. Bu kurallar, Azure sanal makinelerinizdeki yönetim bağlantı noktalarıyla erişimi kısıtlar ve saldırılardan savunmalarını sağlar. 
+Tam zamanında VM erişimini etkinleştirdiğinizde, gelen trafiğin engelleneceğini sanal makine üzerindeki bağlantı noktalarını seçebilirsiniz. Güvenlik Merkezi, [ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) ve [Azure Güvenlik duvarı kurallarında](../firewall/rule-processing.md)seçtiğiniz bağlantı noktalarınız için "tüm gelen trafiği reddetme" kurallarının mevcut olmasını sağlar. Bu kurallar, Azure sanal makinelerinizdeki yönetim bağlantı noktalarıyla erişimi kısıtlar ve saldırılardan savunmalarını sağlar. 
 
 Seçilen bağlantı noktaları için başka kurallar zaten varsa, bu mevcut kurallar yeni "tüm gelen trafiği reddetme" kuralları üzerinden önceliklidir. Seçilen bağlantı noktalarında mevcut bir kural yoksa, yeni kurallar NSG ve Azure Güvenlik Duvarı 'nda en üst önceliğe sahip olacaktır.
 
-Bir Kullanıcı bir VM 'ye erişim istediğinde, güvenlik merkezi kullanıcının bu VM için [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) izinlerine sahip olduğunu denetler. İstek onaylanırsa, Güvenlik Merkezi, belirtilen IP adresinden (veya aralığından) seçilen bağlantı noktalarına gelen trafiğe izin vermek için NSG 'ler ve Azure Güvenlik duvarını yapılandırır. Sürenin süresi dolduktan sonra, güvenlik merkezi NSG 'leri önceki durumlarına geri yükler. Zaten kurulan bağlantılar kesintiye uğramaz.
+Bir Kullanıcı bir VM 'ye erişim istediğinde, güvenlik merkezi kullanıcının bu VM için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) izinlerine sahip olduğunu denetler. İstek onaylanırsa, Güvenlik Merkezi, belirtilen IP adresinden (veya aralığından) seçilen bağlantı noktalarına gelen trafiğe izin vermek için NSG 'ler ve Azure Güvenlik duvarını yapılandırır. Sürenin süresi dolduktan sonra, güvenlik merkezi NSG 'leri önceki durumlarına geri yükler. Zaten kurulan bağlantılar kesintiye uğramaz.
 
 > [!NOTE]
-> JıT, Azure [güvenlik duvarı Yöneticisi](https://docs.microsoft.com/azure/firewall-manager/overview)tarafından denetlenen Azure Güvenlik duvarları tarafından korunan VM 'leri desteklemez.
+> JıT, Azure [güvenlik duvarı Yöneticisi](../firewall-manager/overview.md)tarafından denetlenen Azure Güvenlik duvarları tarafından korunan VM 'leri desteklemez.
 
 
 

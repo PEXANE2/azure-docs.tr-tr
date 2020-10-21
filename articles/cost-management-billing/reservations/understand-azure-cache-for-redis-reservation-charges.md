@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4b5f77742d3b2611fd7baf5880b9f8fed047aa86
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213263"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147315"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Redis için Azure Cache’e rezervasyon indiriminin nasıl uygulandığını öğrenme
 
-Bir Redis için Azure Cache ayrılmış kapasitesi satın aldığınızda, rezervasyonun öznitelikleriyle ve miktarıyla eşleşen SQL Veritabanlarına otomatik olarak rezervasyon indirimi uygulanır. Rezervasyon yalnızca Redis için Azure Cache işlem maliyetlerini kapsar. Depolama ve ağ iletişimi için normal fiyatlarla ücretlendirilirsiniz. Ayrılmış kapasite yalnızca [premium katmanı](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis) önbellekler için sunulur.
+Bir Redis için Azure Cache ayrılmış kapasitesi satın aldığınızda, rezervasyonun öznitelikleriyle ve miktarıyla eşleşen SQL Veritabanlarına otomatik olarak rezervasyon indirimi uygulanır. Rezervasyon yalnızca Redis için Azure Cache işlem maliyetlerini kapsar. Depolama ve ağ iletişimi için normal fiyatlarla ücretlendirilirsiniz. Ayrılmış kapasite yalnızca [premium katmanı](//azure/azure-cache-for-redis/quickstart-create-redis) önbellekler için sunulur.
 
 ## <a name="how-reservation-discount-is-applied"></a>Rezervasyon indiriminin uygulanması
 
@@ -30,7 +30,7 @@ Redis için Azure Cache ayrılmış kapasite indirimi, önbelleklerinize saatlik
 
 Aşağıdaki örneklerde, satın aldığınız önbellek sayısına ve çalıştırma zamanına bağlı olarak Redis için Azure Cache ayrılmış kapasite indiriminin nasıl uygulandığı gösterilmektedir.
 
-* **Örnek 1**: 6 GB’lık önbellek için Redis için Azure Cache ayrılmış kapasitesi satın aldığınızı varsayalım. Rezervasyonun diğer öznitelikleriyle eşleşen 13 GB’lık önbellek çalıştırıyorsanız Redis için Azure Cache işlem kullanımınızın 7 GB’ı için kullandıkça öde fiyatı üzerinden ücretlendirilir ve 6 GB önbellek işlem kullanımı için bir saatlik rezervasyon indirimi elde edersiniz.
+**Örnek 1**: 6 GB’lık önbellek için Redis için Azure Cache ayrılmış kapasitesi satın aldığınızı varsayalım. Rezervasyonun diğer öznitelikleriyle eşleşen 13 GB’lık önbellek çalıştırıyorsanız Redis için Azure Cache işlem kullanımınızın 7 GB’ı için kullandıkça öde fiyatı üzerinden ücretlendirilir ve 6 GB önbellek işlem kullanımı için bir saatlik rezervasyon indirimi elde edersiniz.
 
 Bu örneklerin geri kalanında, satın aldığınız Redis için Azure Cache ayrılmış kapasitesinin 26 GB önbellek için olduğunu ve rezervasyon özniteliklerinin çalışan önbellek ile eşleştiğini varsayalım.
 
@@ -40,7 +40,7 @@ Bu örneklerin geri kalanında, satın aldığınız Redis için Azure Cache ayr
 
 * **Örnek 4**: 13.00 - 13.45 arasında bir 26 GB’lık önbellek çalıştırdığınızı varsayalım. 13.30 - 14.00 arasında farklı bir 26 GB’lık önbellek çalıştırdığınızı da varsayalım. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca işlem kullanımına uygulanır.
 
-Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](/azure/billing/billing-understand-reserved-instance-usage-ea).
+Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](./understand-reserved-instance-usage-ea.md).
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

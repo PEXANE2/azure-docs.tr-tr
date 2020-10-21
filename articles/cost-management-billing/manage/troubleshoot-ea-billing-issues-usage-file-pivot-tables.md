@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: a30f85ae1b65321a25ee93239374d2a8aae26769
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b32bb979176af8a8a3751db8edf9c129caf1002e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026682"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131998"
 ---
 # <a name="troubleshoot-ea-billing-issues-with-usage-file-pivot-tables"></a>Kullanım dosyası özet tabloları ile EA faturalama sorunlarını giderme
 
@@ -33,7 +33,7 @@ Yalnızca EA yöneticileri, Hesap Sahipleri ve Departman Yöneticileri kullanım
 
 Azure kullanım dosyaları CSV biçiminde olduğundan, verileri Excel’de kullanılacak şekilde hazırlamanız gerekir. Verileri tablo olarak biçimlendirmek için aşağıdaki adımlardan yararlanın.
 
-1. [EA müşterileri için kullanımı indirme](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-ea-customers) sayfasındaki yönergeleri kullanarak Tüm Ücretler (kullanım ve satın almalar) dahil Kullanım Ayrıntıları Sürüm 2’yi İndirin.
+1. [EA müşterileri için kullanımı indirme](./download-azure-invoice-daily-usage-date.md#download-usage-for-ea-customers) sayfasındaki yönergeleri kullanarak Tüm Ücretler (kullanım ve satın almalar) dahil Kullanım Ayrıntıları Sürüm 2’yi İndirin.
 1. Dosyayı Excel'de açın.
 1. Biçimlendirilmemiş veriler aşağıdaki örneğe benzer.  
     :::image type="content" source="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" alt-text="Biçimlendirilmemiş verilerin Excel’de gösterildiği örnek" lightbox="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" :::

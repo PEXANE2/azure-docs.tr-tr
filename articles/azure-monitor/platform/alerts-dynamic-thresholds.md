@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81261083"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340096"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Izleyici 'de dinamik eşiklerle ölçüm uyarıları
 
@@ -98,7 +98,7 @@ Yeterli ölçüm verileri olan mevcut kaynaklar için dinamik eşikler, uyarıla
 
 ## <a name="dynamic-thresholds-best-practices"></a>Dinamik eşikler en iyi uygulamaları
 
-Dinamik eşikler, Azure Izleyici 'deki herhangi bir platforma veya özel ölçüme uygulanabilir ve ayrıca ortak uygulama ve altyapı ölçümleri için de ayarlanmıştır.
+Dinamik eşikler, Azure Izleyici 'deki çoğu platforma ve özel ölçümlere uygulanabilir ve ayrıca ortak uygulama ve altyapı ölçümleri için de ayarlanmıştır.
 Aşağıdaki öğeler, dinamik eşikler kullanarak bu ölçülerden bazılarının uyarılarını yapılandırma konusunda en iyi uygulamalardan oluşan deneyimlerdir.
 
 ### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Sanal makine CPU yüzdesi ölçümlerinde dinamik eşikler

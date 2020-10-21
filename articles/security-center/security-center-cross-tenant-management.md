@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68338341d47b8fa15d0bd88ea23e951210105fc4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84782821"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340793"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Güvenlik Merkezi 'nde çapraz Kiracı Yönetimi
 
@@ -57,4 +57,4 @@ Bu makalede, çapraz kiracı yönetiminin güvenlik merkezi 'nde nasıl çalış
 
 * [Azure Güvenlik Merkezi ile güvenlik duruşunuzu güçlendirin](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu nasıl izleyeceğinizi öğrenin.
 * [Azure Güvenlik Merkezi hakkında SSS](faq-general.md) -hizmeti kullanma hakkında sık sorulan soruları bulun.
-* [Kurumsal senaryolarda Azure ışıklı kullanımı hakkında bilgi edinin](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) -Azure açık thouse 'ın birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini nasıl basitleştireceğinizi öğrenin.
+* [Kurumsal senaryolarda Azure ışıklı kullanımı hakkında bilgi edinin](../lighthouse/concepts/enterprise.md) -Azure açık thouse 'ın birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini nasıl basitleştireceğinizi öğrenin.

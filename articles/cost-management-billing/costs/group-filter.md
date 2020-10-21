@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 82e542eafe1578a969c4348fe7562ba1da106e2c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ac9828ca61009eb3ee39412169b2b454b9ecbd00
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683411"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131879"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>Maliyet analizinde gruplandırma ve filtreleme seçenekleri
 
@@ -49,10 +49,10 @@ Aşağıdaki tabloda, Maliyet analizindeki en yaygın kullanılan gruplandırma 
 | **Hizmet adı** veya **Ölçüm kategorisi** | Maliyetleri Azure hizmetine göre ayırmanızı sağlar. | Satın alma işlemleri ve Market kullanımı **Geçerli değil** veya **atanmamış** şeklinde gösterilir. |
 | **Hizmet katmanı** veya **Ölçüm alt kategorisi** | Maliyetleri Azure kullanım ölçümü alt sınıflandırmasına göre ayırmanızı sağlar. | Satın alma işlemleri ve Market kullanımı **Geçerli değil** veya **atanmamış** şeklinde gösterilir. |
 | **Abonelik** | Maliyetleri Azure aboneliğine ve bağlantılı AWS hesabına göre ayırmanızı sağlar. | Satın alma işlemleri ve kiracı kaynakları **Geçerli değil** şeklinde gösterilebilir. |
-| **Tag** | Maliyetleri belirli bir etiket anahtarına ait etiket değerlerine göre ayırmanızı sağlar. | Etiketler; satın alma işlemleri, aboneliklerle ilişkilendirilmemiş olan kiracı kaynakları, kaynak grubuna dağıtılmamış abonelik kaynakları veya klasik kaynaklar için kullanılamaz. Bazı hizmetler kullanım verilerinde etiket içermez. [Kaynak türlerine göre etiket desteği](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support) hakkında daha fazla bilgi edinin. |
+| **Tag** | Maliyetleri belirli bir etiket anahtarına ait etiket değerlerine göre ayırmanızı sağlar. | Etiketler; satın alma işlemleri, aboneliklerle ilişkilendirilmemiş olan kiracı kaynakları, kaynak grubuna dağıtılmamış abonelik kaynakları veya klasik kaynaklar için kullanılamaz. Bazı hizmetler kullanım verilerinde etiket içermez. [Kaynak türlerine göre etiket desteği](../../azure-resource-manager/management/tag-support.md) hakkında daha fazla bilgi edinin. |
 
 Terimler hakkında daha fazla bilgi için bkz. [Azure kullanımı ve ücretleri dosyasında kullanılan terimleri anlama](../understand/understand-usage.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Maliyet analizini başlatın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis).
+- [Maliyet analizini başlatın](./quick-acm-cost-analysis.md).
