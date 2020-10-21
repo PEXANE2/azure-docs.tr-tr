@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/31/2020
 ms.author: mjbrown
-ms.openlocfilehash: c882b16733b19619f5df5d4e9e0c440a6711c1fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab4313f02d233b3eac33b7da202fca559bffa147
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87506511"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281938"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB Tablo API'si için tabloları listeleme ve edinme
 
@@ -48,5 +48,3 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
-
-Ek Azure Cosmos DB PowerShell betiği örnekleri, [Azure Cosmos DB PowerShell betiklerinde](../../../powershell-samples.md) bulunabilir.

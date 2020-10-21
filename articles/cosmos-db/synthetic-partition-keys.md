@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a50de7154bd768f5cc4c25062ec3ce05c0f37328
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75441213"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279849"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Yapay bölüm anahtarı oluşturma
 
@@ -58,7 +58,7 @@ Bu stratejiyle, yazma işlemleri bölüm anahtarı değerleri ve bölümler aras
 
 Aşağıdaki makalelerde bölümlendirme kavramı hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Mantıksal bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
+* [Mantıksal bölümler](partitioning-overview.md)hakkında daha fazla bilgi edinin.
 * [Azure Cosmos kapsayıcılarında ve veritabanlarında işleme sağlama](set-throughput.md)hakkında daha fazla bilgi edinin.
 * [Azure Cosmos kapsayıcısında üretilen iş sağlama](how-to-provision-container-throughput.md)hakkında bilgi edinin.
 * [Azure Cosmos veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md)hakkında bilgi edinin.

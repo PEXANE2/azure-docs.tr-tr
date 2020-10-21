@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938432"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313141"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB-tek sunuculu Azure DB 'yi PostgreSQL için Azure DB 'ye geçirme-Azure portal aracılığıyla DMS kullanarak tek sunuculu bir çevrimiçi
 
@@ -258,7 +258,18 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 * **Geçişi çalıştır**'ı seçin.
 
-    Geçiş etkinliği penceresi görünür ve **devam eden yedekleme**olarak göstermek Için etkinliğin **durumu** güncellemelidir.
+Geçiş etkinliği penceresi görünür ve **devam eden yedekleme**olarak göstermek Için etkinliğin **durumu** güncellemelidir. PostgreSQL için Azure DB 9,5 veya 9,6 ' den yükseltirken aşağıdaki hatayla karşılaşabilirsiniz:
+
+**Bir senaryo bilinmeyen bir hata bildirdi. 28000: "40.121.141.121" konağından çoğaltma bağlantısı için pg_hba. conf girdisi yok, Kullanıcı "SR"**
+
+Bunun nedeni, PostgreSQL 'in gerekli mantıksal çoğaltma yapıtları oluşturmak için uygun ayrıcalıklara sahip olmaması olabilir. Gerekli ayrıcalıkları etkinleştirmek için şunları yapabilirsiniz:
+
+1. Geçirme/yükseltme yapmaya çalıştığınız PostgreSQL için kaynak Azure DB sunucusu için "bağlantı güvenliği" ayarlarını açın.
+2. "_Replrule" ile biten bir ada sahip yeni bir güvenlik duvarı kuralı ekleyin ve hata iletisinden IP adresini başlangıç IP 'si ve bitiş IP 'si alanlarına ekleyin. Yukarıdaki hata örneği için-
+> Güvenlik duvarı kuralı adı = sr_replrule; Başlangıç IP 'si = 40.121.141.121; Bitiş IP 'si = 40.121.141.121
+
+3. Kaydet ' e tıklayın ve değişikliğin tamamlanmasını sağlayın. 
+4. DMS etkinliğini yeniden deneyin. 
 
 ## <a name="monitor-the-migration"></a>Geçişi izleme
 

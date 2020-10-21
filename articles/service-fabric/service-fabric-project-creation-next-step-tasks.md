@@ -3,12 +3,12 @@ title: Proje oluşturma sonraki adımları Service Fabric
 description: Visual Studio 'da yeni oluşturduğunuz uygulama projesi hakkında bilgi edinin.  Öğreticileri kullanarak hizmetler oluşturmayı ve Service Fabric için hizmet geliştirme hakkında daha fazla bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01a69016e0c299fba0365fab5332b572fd2ca87a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75349408"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314465"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric uygulamanız ve sonraki adımlar
 Azure Service Fabric uygulamanız oluşturuldu. Bu makalede, deneyebileceğiniz bazı öğreticiler, projenizin makeof, ilgilendiğiniz daha fazla bilgi ve olası sonraki adımlar açıklanmaktadır.
@@ -24,7 +24,7 @@ Ya da aşağıdaki ilerm-kılavuzlarına birini deneyin ve ilk kez oluşturun...
 - [Windows üzerinde Konuk yürütülebilir hizmeti](quickstart-guest-app.md) 
 - [Windows kapsayıcı uygulaması](service-fabric-get-started-containers.md) 
 
-Ayrıca, [örnek uygulamalarımızı](https://aka.ms/servicefabricsamples)de denemeyebilirsiniz.
+Ayrıca, [örnek uygulamalarımızı](/samples/browse/?products=azure)de denemeyebilirsiniz.
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Sorularınız veya geri bildiriminiz mi var?  Bir sorun bildirmek mı gerekiyor?
 [Yaygın soruları](service-fabric-common-questions.md) okuyun ve Service Fabric neler yapabileceğini ve nasıl kullanılacağını öğrenin.
@@ -62,5 +62,3 @@ Diğer platformlarda olduğu gibi, bir Service Fabric uygulama genellikle şu a�
 - [Azure 'da bir Windows kümesi oluşturun](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)ile dağıtılmış uygulamalar ve fiziksel düzen dahil olmak üzere kümenizi görselleştirin.
 - [Hizmetlerinizi sürüm ve yükseltme](service-fabric-application-upgrade-tutorial.md)
-
-

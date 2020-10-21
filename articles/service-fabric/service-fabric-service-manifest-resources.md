@@ -4,15 +4,15 @@ description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bild
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017599"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313578"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 Service Fabric uygulamalar ve hizmetler, bildirim dosyaları kullanılarak tanımlanır ve sürümü oluşturulur. ServiceManifest.xml ve ApplicationManifest.xml daha yüksek düzeyde bir genel bakış için bkz. [Service Fabric uygulama ve hizmet bildirimleri](service-fabric-application-and-service-manifests.md).
 
 Hizmet bildirimi, derlenen kodu değiştirmeden, hizmet tarafından kullanılan kaynakların bildirilmesini veya değiştirilmesini sağlar. Service Fabric, hizmet için uç nokta kaynaklarının yapılandırılmasını destekler. Hizmet bildiriminde belirtilen kaynaklara erişimi, uygulama bildirimindeki SecurityGroup aracılığıyla denetlenebilir. Kaynak bildirimi, bu kaynakların dağıtım zamanında değiştirilmesini sağlar, yani hizmetin yeni bir yapılandırma mekanizması tanıtılmasına gerek kalmaz. ServiceManifest.xml dosyası için şema tanımı, *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*'e YÖNELIK Service Fabric SDK ve araçlarla yüklenir ve [servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
@@ -158,7 +158,7 @@ Bir HTTPS uç noktası için gereken yapılandırmayı gösteren örnek bir Appl
 
 Linux kümeleri için **My mağazam** , **/var/lib/sfcerts**klasörünü varsayılan olarak alır.
 
-HTTPS uç noktası kullanan tam bir uygulama örneği için bkz. [Kestrel kullanarak bir ASP.NET Core Web API ön uç HIZMETINE HTTPS uç noktası ekleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest).
+HTTPS uç noktası kullanan tam bir uygulama örneği için bkz. [Kestrel kullanarak bir ASP.NET Core Web API ön uç HIZMETINE HTTPS uç noktası ekleme](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest).
 
 ## <a name="port-acling-for-http-endpoints"></a>HTTP uç noktaları için bağlantı noktası
 Service Fabric otomatik olarak varsayılan olarak belirtilen ACL HTTP uç noktaları olur. Bir uç noktanın kendisiyle ilişkili bir [Securityaccesspolicy](service-fabric-assign-policy-to-endpoint.md) yoksa ve Service Fabric yönetici ayrıcalıklarına sahip bir hesap kullanılarak çalışacak şekilde yapılandırıldıysa, **otomatik olarak erişim yapmaz.**

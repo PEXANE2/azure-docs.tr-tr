@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB içinde doğru üretilen iş teklifini seçme
+title: Azure Cosmos DB el ile ve otomatik ölçeklendirmeyi arasından seçme
 description: İş yükünüz için standart (el ile) sağlanan aktarım hızı ve otomatik ölçeklendirme sağlanan aktarım hızını seçme hakkında bilgi edinin.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365238fd70e2e098e5a228ee71d5b9e0e584c71
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605207"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279803"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Standart (el ile) ve otomatik ölçeklendirme sağlanan aktarım hızını seçme 
 
@@ -54,17 +54,82 @@ Standart (el ile) sağlanan aktarım hızını kullanarak mevcut bir uygulamanı
 
 İlk olarak, veritabanınızın veya kapsayıcının [normalleştirilmiş istek birimi tüketim ölçüsünü](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) bulun. Normalleştirilmiş kullanım, şu anda standart (el ile) sağlanan aktarım hızını kullanmakta olduğunuz bir ölçüdür. Sayının %100 ' e yakın olması, sağlanan RU/s 'nizi tamamen kullanıyorsunuz. Ölçüm hakkında [daha fazla bilgi edinin](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) .
 
-Ardından, normalleştirilmiş kullanımın zaman içinde nasıl değiştiğini saptayın. Normalleştirilmiş kullanımlarınızın değişken olduğunu veya öngörülemeyen olduğunu görürseniz, veritabanınızda veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirmeyi düşünün. Buna karşılık, kararlı ve öngörülebilir hale gelir ve standart (el ile) sağlanan aktarım hızı üzerinde kalan ' ı inceleyin. 
+Ardından, normalleştirilmiş kullanımın zaman içinde nasıl değiştiğini saptayın. Her saat için en yüksek normalleştirilmiş kullanımı bulun. Ardından, ortalama normalleştirilmiş kullanımı her saat boyunca hesaplayın. Ortalama kullanımlarınızın %66 ' den küçük olduğunu görürseniz, veritabanınızda veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirmeyi düşünün. Buna karşılık, ortalama kullanım %66 ' den büyükse, standart (el ile) sağlanan aktarım hızı üzerinde kalması önerilir.
+
+> [!TIP]
+> Hesabınız çok bölgeli yazmaları kullanacak şekilde yapılandırıldıysa ve birden fazla bölge içeriyorsa, 100 RU/sn başına ücret, hem el ile hem de otomatik ölçeklendirme için aynıdır. Yani, otomatik ölçeklendirmeyi etkinleştirme, kullanımın ne olursa olsun ek ücret alınmaz. Sonuç olarak, yalnızca uygulamanızın ölçeklendirilen RU/sn için ödeme yapma tasarruflarından yararlanmak amacıyla, birden fazla bölgeniz olduğunda otomatik ölçeklendirmeyi çok bölgeli bir şekilde kullanmak her zaman önerilir. Çok bölgeli yazmalar ve bir bölgeniz varsa, otomatik ölçeklendirmeyi maliyet tasarruflarına neden olup olmadığını anlamak için Ortalama kullanımı kullanın. 
+
+#### <a name="examples"></a>Örnekler
+
+İki farklı örnek iş yüküne göz atalım ve el ile veya otomatik ölçeklendirme işleme için uygun olup olmadığını analiz edelim. Genel yaklaşımı göstermek için, el ile ve otomatik ölçeklendirme kullanma arasındaki maliyet farkını belirlemede üç saatlik geçmişi analiz edeceğiz. Üretim iş yükleri için, RU/s kullanımının bir modelini oluşturmak üzere 7 ila 30 gün geçmiş (veya varsa daha uzun) kullanılması önerilir.
+
+> [!NOTE]
+> Bu belgede gösterilen tüm örnekler, ABD 'deki devlet dışı bir bölgede dağıtılan bir Azure Cosmos hesabının fiyatını temel alır. Fiyatlandırma ve hesaplama, kullandığınız bölgeye bağlı olarak farklılık gösterir, en son fiyatlandırma bilgileri için Azure Cosmos DB [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
+
+Varsayımlar:
+- Şu anda 30.000 RU/sn 'nin el ile üretilen iş hızına ihtiyacımız olduğunu varsayalım. 
+- Bölgemiz tek bölgeli yazmalar ile yapılandırılır, tek bölge. Birden çok bölgemiz varsa, saatlik maliyetten bölge sayısını çarpacağız.
+- Tek bölgeli yazma hesaplarında el ile ($0,008 ABD/saat başına 100 RU/sn başına ABD Doları) ve otomatik ölçeklendirme işleme $0,012 (saat başına ABD 100 doları) için genel fiyatlandırma ücretleri kullanın. Ayrıntılar için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/) . 
+
+#### <a name="example-1-variable-workload-autoscale-recommended"></a>Örnek 1: değişken iş yükü (otomatik ölçeklendirme önerilir)
+
+İlk olarak, normalleştirilmiş RU tüketimine göz atacağız. Bu iş yükünün değişken trafiği vardır ve %6 ' dan %100 ' e kadar normalleştirilmiş RU tüketimine sahiptir. Tahmin edilmesi zor olan, az sayıda saat için %100 oranında zaman zaman ani artışlar vardır. 
+
+:::image type="content" source="media/how-to-choose-offer/variable-workload_use_autoscale.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
+
+30.000 RU/s el ile üretilen iş üretimini ve otomatik ölçeklendirme en yüksek RU/sn ayarını 30.000 (3000-30.000 RU/s arasında ölçekler) için sağlama maliyetini karşılaştıralım. 
+
+Şimdi geçmişi analiz edelim. Aşağıdaki tabloda açıklanan kullanım olduğunu varsayalım. Bu üç saat boyunca ortalama kullanım %39 ' dir. Normalleştirilmiş RU tüketiminin %66 ' den küçük bir ortalama olduğu için, otomatik ölçeklendirme kullanarak tasarruf ederiz. 
+
+Saat 1 ' de, %6 kullanım olduğunda otomatik ölçeklendirmeyi, en az RU/sn 'nin saat başına en az %10 ' luk için faturalandırılyacağını unutmayın. Otomatik ölçeklendirme maliyeti belirli saatlerde el ile üretilen iş maliyetinden daha yüksek olabilir, ancak ortalama kullanım tüm saatlerde %66 ' den az olduğunda otomatik ölçeklendirme, genel olarak olacaktır.
+
+|  | Kullanım |Faturalandırılan otomatik ölçeklendirme RU/s  |Seçenek 1: El Ile 30.000 RU/sn  | Seçenek 2: otomatik ölçeklendirme 3000-30.000 RU/s |
+|---------|---------|---------|---------|---------|
+|Saat 1  | %6  |     3000  |  30.000 * 0,008/100 = $2,40        |   3000 * 0,012/100 = $0,36      |
+|Saat 2  | %100  |     30.000    |  30.000 * 0,008/100 = $2,40       |  30.000 * 0,012/100 = $3,60      |
+|Saat 3 |  üst  |     3300    |  30.000 * 0,008/100 = $2,40       |    3300 * 0,012/100 = $0,40     |
+|**Toplam**   |  |        |  $7,20       |    $4,36 (%39 tasarruf)    |
+
+#### <a name="example-2-steady-workload-manual-throughput-recommended"></a>Örnek 2: sürekli iş yükü (el ile üretilen işlem önerilir)
+
+Bu iş yükünün %72 ile %100 arasında normalleştirilmiş RU tüketimine sahip sürekli trafiği vardır. Sağlanan 30.000 RU/sn ile, 21.600 ila 30.000 RU/s arasında tüketiyoruz demektir.
+
+:::image type="content" source="media/how-to-choose-offer/steady_workload_use_manual_throughput.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
+
+30.000 RU/s el ile üretilen iş üretimini ve otomatik ölçeklendirme en yüksek RU/sn ayarını 30.000 (3000-30.000 RU/s arasında ölçekler) için sağlama maliyetini karşılaştıralım.
+
+Tabloda açıklandığı gibi kullanım geçmişimiz olduğunu varsayalım. Bu üç saat boyunca ortalama kullanımımız %88 ' dir. Normalleştirilmiş RU tüketiminin %66 ' den büyük bir ortalamalar olduğundan, el ile üretilen iş kullanarak tasarruf ederiz.
+
+Genel olarak, bir ayda tüm 730 saat boyunca ortalama kullanım %66 ' den büyükse, el ile üretilen iş kullanarak tasarruf ederiz. 
+
+|  | Kullanım |Faturalandırılan otomatik ölçeklendirme RU/s  |Seçenek 1: El Ile 30.000 RU/sn  | Seçenek 2: otomatik ölçeklendirme 3000-30.000 RU/s |
+|---------|---------|---------|---------|---------|
+|Saat 1  | %72  |     21.600   |  30.000 * 0,008/100 = $2,40        |   21600 * 0,012/100 = $2,59      |
+|Saat 2  | %93  |     28.000    |  30.000 * 0,008/100 = $2,40       |  28.000 * 0,012/100 = $3,36       |
+|Saat 3 |  %100  |     30.000    |  30.000 * 0,008/100 = $2,40       |    30.000 * 0,012/100 = $3,60     |
+|**Toplam**   |  |        |  $7,20       |    $9,55     |
 
 > [!TIP]
 > Standart (el ile) aktarım hızı sayesinde, otomatik ölçeklendirme 'ye geçtiğinizde kullanabileceğiniz gerçek RU/s 'yi tahmin etmek için normalleştirilmiş kullanım ölçümünü kullanabilirsiniz. Şu anda sağlanan standart (el ile) RU/s ile, zaman içinde normalleştirilmiş kullanımı çarpın. Örneğin, 5000 RU/s 'yi sağladıysanız ve normalleştirilmiş kullanım %90 ise, RU/s kullanımı 0,9 * 5000 = 4500 RU/s ' dir. Trafik deseninin değişken olduğunu, ancak siz veya sağlanmış olduğunu görürseniz, otomatik ölçeklendirmeyi etkinleştirmek ve sonra otomatik ölçeklendirme en büyük RU/s ayarını uygun şekilde değiştirmek isteyebilirsiniz.
+
+#### <a name="how-to-calculate-average-utilization"></a>Ortalama kullanımı hesaplama
+En yüksek RU/sn için bir saat içinde ölçeklendirilmiş olan faturaları otomatik ölçeklendirme. Zamana göre normalleştirilmiş RU tüketimini analiz edilirken, ortalamayı hesaplarken saat başına en yüksek kullanımı kullanmak önemlidir. 
+
+Tüm saatlerde en yüksek kullanımın ortalamasını hesaplamak için:
+1. Noramon RU tüketim ölçümünde **toplamayı** **en yüksek**olarak ayarlayın.
+1. 1 saat **ayrıntı düzeyini** seçin.
+1. **Grafik seçenekleri**' ne gidin.
+1. Çubuk grafik seçeneğini belirleyin. 
+1. **Paylaşma**bölümünde **Excel 'e indir** seçeneğini belirleyin. Oluşturulan elektronik tablodan, her saat içindeki ortalama kullanımı hesaplayın. 
+
+:::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
 
 ## <a name="measure-and-monitor-your-usage"></a>Kullanımınızı ölçme ve izleme
 Zaman içinde, üretilen iş türünü seçtikten sonra uygulamanızı izlemeniz ve gereken ayarlamaları yapmanız gerekir. 
 
 Otomatik ölçeklendirme kullanırken, sağlanan otomatik ölçeklendirme en fazla RU/sn (**Otomatik ölçeklendirme en fazla aktarım hızı**) ve sistem şu anda ölçeklendirildi (**sağlanan aktarım hızı**) için Azure izleyici 'yi kullanın. Aşağıda, otomatik ölçeklendirme kullanan bir değişkene veya öngörülemeyen iş yüküne bir örnek verilmiştir. Herhangi bir trafik olmadığında, sistem RU/s 'yi en fazla RU/sn 'nin en az %10 ' u, bu örnekte sırasıyla 5000 RU/s ve 50.000 RU/s olacak şekilde ölçeklendirir. 
 
-:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Otomatik ölçeklendirme kullanan iş yükü örneği":::
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
 
 > [!NOTE]
 > Standart (el ile) sağlanan aktarım hızını kullandığınızda, **sağlanan aktarım hızı** ölçümü, bir kullanıcının ayarlamış olduğu şeyleri gösterir. Otomatik ölçeklendirme üretilen işi kullandığınızda bu ölçüm, sistemin Şu anda ölçeklendirmekte olduğu RU/s 'yi ifade eder.

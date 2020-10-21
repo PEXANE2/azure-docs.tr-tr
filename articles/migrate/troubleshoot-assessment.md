@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576600"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314751"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -26,11 +26,11 @@ Değerlendirme hazırlık sorunlarını aşağıdaki şekilde giderin:
 **Konuda** | **Düzeltme**
 --- | ---
 Desteklenmeyen önyükleme türü | Azure, EFı önyükleme türü olan VM 'Leri desteklemez. Geçiş çalıştırmadan önce önyükleme türünü BIOS 'a dönüştürmeniz önerilir. <br/><br/>Bu sanal makinelerin geçişini yönetmek için Azure geçişi sunucu geçişini kullanabilirsiniz. Geçiş sırasında VM 'nin önyükleme türünü BIOS 'a dönüştürür.
-Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](https://aka.ms/WSosstatement)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.
-Desteklenmeyen Windows işletim sistemi | Azure yalnızca [Seçili Windows işletim sistemi sürümlerini](https://aka.ms/WSosstatement)destekler. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün.
-Koşullu olarak onaylama Linux işletim sistemi | Azure yalnızca [Seçili Linux işletim sistemleri sürümlerini](../virtual-machines/linux/endorsed-distros.md)onaylar. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün. Ayrıca daha fazla ayrıntı için [buraya](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) başvurun.
+Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](/troubleshoot/azure/virtual-machines/server-software-support)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.
+Desteklenmeyen Windows işletim sistemi | Azure yalnızca [Seçili Windows işletim sistemi sürümlerini](/troubleshoot/azure/virtual-machines/server-software-support)destekler. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün.
+Koşullu olarak onaylama Linux işletim sistemi | Azure yalnızca [Seçili Linux işletim sistemleri sürümlerini](../virtual-machines/linux/endorsed-distros.md)onaylar. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün. Ayrıca daha fazla ayrıntı için [buraya](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) başvurun.
 Hazırlanmamış Linux işletim sistemi | Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. Azure 'a geçiş yapmadan önce, [onaylı bir Linux sürümüne](../virtual-machines/linux/endorsed-distros.md) yükseltmeyi düşünün.
-Bilinmeyen işletim sistemi | VM 'nin işletim sistemi vCenter Server içinde "Other" olarak belirtilmiştir. Bu davranış, Azure geçişi 'nin VM 'nin Azure 'un hazır olduğunu doğrulamasını engeller. Makineyi geçirmeden önce işletim sisteminin Azure tarafından [desteklendiğinden](https://aka.ms/azureoslist) emin olun.
+Bilinmeyen işletim sistemi | VM 'nin işletim sistemi vCenter Server içinde "Other" olarak belirtilmiştir. Bu davranış, Azure geçişi 'nin VM 'nin Azure 'un hazır olduğunu doğrulamasını engeller. Makineyi geçirmeden önce işletim sisteminin Azure tarafından [desteklendiğinden](./migrate-support-matrix-vmware-migration.md#azure-vm-requirements) emin olun.
 Desteklenmeyen bit sürümü | 32 bitlik bir işletim sistemi olan VM 'Ler Azure 'da önbaşlatılabilir, ancak Azure 'a geçmeden önce 64 bit 'e yükseltmeniz önerilir.
 Microsoft Visual Studio aboneliği gerektirir | Makine, yalnızca bir Visual Studio aboneliği aracılığıyla desteklenen bir Windows istemci işletim sistemi çalıştırıyor.
 Gerekli depolama performansı için VM bulunamadı | Makine için gereken depolama performansı (saniye başına giriş/çıkış işlemi [ıOPS] ve üretilen iş), Azure VM desteğini aşıyor. Geçişten önce makinenin depolama gereksinimlerini azaltın.
@@ -61,7 +61,7 @@ VMware ve Hyper-V VM 'lerinde sunucu değerlendirmesi, sunucu değerlendirmesind
 - Bu Aralık, BT 'nin şirket içi VM 'lerde yüklü Linux IŞLETIM sisteminin ikincil sürümünü algılamasını önler.
 - Örneğin, RHEL 6,10 için şu anda sunucu değerlendirmesi, işletim sistemi sürümü olarak yalnızca RHEL 6 ' ı algılar. Bunun nedeni, Hyper-V ana bilgisayarının vCenter Server ar, Linux VM işletim sistemleri için çekirdek sürümü sağlamasunmamalıdır.
 -  Azure, Linux 'un yalnızca belirli sürümlerini sağladığından, Linux VM 'Leri Şu anda sunucu değerlendirmesi için koşullu olarak kullanılabilir olarak işaretlendi.
-- [Azure Linux desteğini](https://aka.ms/migrate/selfhost/azureendorseddistros)inceleyerek, ŞIRKET içi VM 'de çalışan Linux Işletim sisteminin Azure 'da olup olmadığını belirleyebilirsiniz.
+- [Azure Linux desteğini](../virtual-machines/linux/endorsed-distros.md)inceleyerek, ŞIRKET içi VM 'de çalışan Linux Işletim sisteminin Azure 'da olup olmadığını belirleyebilirsiniz.
 -  Doğrulanan dağıtımı doğruladıktan sonra bu uyarıyı yoksayabilirsiniz.
 
 Bu boşluk, VMware VM 'lerinde [uygulama bulma](./how-to-discover-applications.md) etkinleştirilerek çözülebilir. Sunucu Değerlendirmesi, sağlanan konuk kimlik bilgilerini kullanarak VM’de algılanan işletim sistemini kullanır. Bu işletim sistemi verileri, hem Windows hem de Linux VM 'lerinde doğru IŞLETIM sistemi bilgilerini tanımlar.
@@ -107,7 +107,7 @@ Not - Performans sayaçlarından biri eksikse, Azure Geçişi: Sunucu Değerlend
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Değerlendirmemin güvenilirlik derecesi neden düşük?
 
-"Performans tabanlı" değerlendirmeler için güvenilirlik derecesi, değerlendirmeyi hesaplarken gereken [kullanılabilir veri noktaları](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) yüzdesi temelinde hesaplanır. Değerlendirme güvenilirlik derecesinin düşük olmasının nedenlerini aşağıda bulunabilirsiniz:
+"Performans tabanlı" değerlendirmeler için güvenilirlik derecesi, değerlendirmeyi hesaplarken gereken [kullanılabilir veri noktaları](./concepts-assessment-calculation.md#ratings) yüzdesi temelinde hesaplanır. Değerlendirme güvenilirlik derecesinin düşük olmasının nedenlerini aşağıda bulunabilirsiniz:
 
 - Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin değerlendirmeyi bir hafta olarak ayarlanmış performans süresiyle oluşturuyorsanız, toplanacak tüm veri noktalarının keşfini başlattıktan sonra en az bir hafta beklemeniz gerekir. Süreyi bekleyemiyorsanız, performans süresini daha kısa olacak şekilde değiştirin ve değerlendirmeyi 'Yeniden Hesaplayın'.
  
@@ -115,7 +115,7 @@ Not - Performans sayaçlarından biri eksikse, Azure Geçişi: Sunucu Değerlend
 
 - Sunucu Değerlendirmesi'nde bulma işlemi başlatıldıktan sonra birkaç VM oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturuyorsanız, ancak yalnızca bir hafta önce ortamda birkaç sanal makine oluşturulduysa. Bu durumda, sürenin tamamında yeni VM'lerin performans verileri sağlanmaz ve güvenilirlik derecesi düşük olabilir.
 
-Güvenilirlik derecesi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based).
+Güvenilirlik derecesi hakkında [daha fazla bilgi edinin](./concepts-assessment-calculation.md#confidence-ratings-performance-based).
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>İşletim sistemi lisansı bir Azure VM değerlendirmesine dahil midir?
 
@@ -126,7 +126,7 @@ Azure geçişi sunucu değerlendirmesi Şu anda yalnızca Windows makineler içi
 Sunucu Değerlendirmesi şirket içi makinelerin performans verilerini sürekli toplar ve bunları Azure’da VM SKU'su ile disk SKU'su önermek için kullanır. Performans tabanlı verilerin nasıl toplandığını [öğrenin](concepts-assessment-calculation.md#calculate-sizing-performance-based) .
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Değerlendirmem neden ayrılmış örneklerin, VM çalışma süresinin ve Iskontonun (%) bir birleşimi ile oluşturulduğunu belirten bir uyarı gösteriyor?
-' Ayrılmış örnekler ' seçtiğinizde, ' Discount (%) ' ve ' VM çalışma süresi ' özellikleri geçerli değil. Değerlendirmenizi bu özelliklerin geçersiz bir birleşimiyle oluşturulduğundan, Düzenle ve yeniden hesapla düğmeleri devre dışı bırakılır. Lütfen yeni bir değerlendirme oluşturun. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2131554).
+' Ayrılmış örnekler ' seçtiğinizde, ' Discount (%) ' ve ' VM çalışma süresi ' özellikleri geçerli değil. Değerlendirmenizi bu özelliklerin geçersiz bir birleşimiyle oluşturulduğundan, Düzenle ve yeniden hesapla düğmeleri devre dışı bırakılır. Lütfen yeni bir değerlendirme oluşturun. [Daha fazla bilgi edinin](./concepts-assessment-calculation.md#whats-an-assessment).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Fiziksel sunucularım üzerinde bazı ağ bağdaştırıcılarının performans verilerini görmüyorum
 
@@ -161,7 +161,7 @@ Windows VM 'Leri için:
 
     ![MMA durumu](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komutlarının başarılı olduğundan emin olun. Daha fazla sorun giderme kılavuzuna [bakın.](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)
+Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komutlarının başarılı olduğundan emin olun. Daha fazla sorun giderme kılavuzuna [bakın.](../azure-monitor/insights/service-map.md#post-installation-issues)
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 

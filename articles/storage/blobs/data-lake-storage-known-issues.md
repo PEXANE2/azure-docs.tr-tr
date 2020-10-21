@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fee5427981cbd2c04a5ee88500a1aee77e2e5ffd
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876133"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282202"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -92,7 +92,11 @@ REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri ç
 
 Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verildiyse, ACL 'lerin bu kapsayıcıya veya o kapsayıcıdaki dosyalara hiçbir etkisi olmaz.
 
-## <a name="premium-performance-blockblobstorage-storage-accounts"></a>Premium-performans BlockBlobStorage depolama hesapları
+### <a name="diagnostic-logs"></a>Tanılama günlükleri
+
+Saklama günlerinin ayarı henüz desteklenmiyor, ancak Azure Depolama Gezgini, REST veya SDK gibi desteklenen bir aracı kullanarak günlükleri el ile silebilirsiniz.
+
+## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Premium performanslı blok Blobstorage depolama hesaplarına özgü sorunlar
 
 ### <a name="diagnostic-logs"></a>Tanılama günlükleri
 
@@ -108,8 +112,6 @@ Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumG
 #Enable logging
 Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
 ```
-
-Saklama günlerinin ayarı henüz desteklenmiyor, ancak Azure Depolama Gezgini, REST veya SDK gibi desteklenen bir aracı kullanarak günlükleri el ile silebilirsiniz.
 
 ### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
 

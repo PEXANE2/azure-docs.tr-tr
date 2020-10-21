@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056166"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319718"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -215,7 +215,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 - Değişiklik KIMLIĞI özniteliğini benzersiz tanımlayıcı olarak kullanabilirsiniz. Bu örneğin, ürün desteğiyle etkileşim kurarken faydalı olur.
 
-- Şu anda bir CSV dosyası olarak sağlama verileri indirme seçeneği yoktur, ancak [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)kullanarak verileri dışarı aktarabilirsiniz.
+- Şu anda bir CSV dosyası olarak sağlama verileri indirme seçeneği yoktur, ancak [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta)kullanarak verileri dışarı aktarabilirsiniz.
 
 - Kapsamda olmayan kullanıcılar için Atlanan olayları görebilirsiniz. Özellikle eşitleme kapsamı tüm kullanıcılar ve gruplar olarak ayarlandığında bu beklenmektedir. Hizmetimiz, Kiracıdaki tüm nesneleri, kapsam dışı olsalar da değerlendirmeyecektir. 
 
@@ -245,10 +245,10 @@ Sağlama günlüklerinde bulabileceğiniz hataların nasıl çözümleneceğini 
 |DuplicateSourceEntries | Yapılandırılmış eşleşen özniteliklerle birden fazla kullanıcı bulunduğundan işlem tamamlanamadı. Yinelenen kullanıcıyı kaldırın ya da öznitelik eşlemelerinizi [burada](../app-provisioning/customize-application-attributes.md)açıklandığı gibi yeniden yapılandırın.|
 |Importatlandı | Her kullanıcı değerlendirildiğinde, kullanıcıyı kaynak sistemden içeri aktarmayı deneiyoruz. Bu hata genellikle, içeri aktarılan Kullanıcı öznitelik eşlemelerinizde tanımlanan eşleşen özellik eksikse oluşur. Eşleşen öznitelik için Kullanıcı nesnesinde bir değer olmadan kapsam, eşleme veya dışarı aktarma değişikliklerini değerlendiremedik. Not, bu hatanın varlığı kullanıcının kapsam içinde olduğunu göstermez, ancak kullanıcı için kapsamları henüz değerlendirdik.|
 |Entrysynchronizationatlandı | Sağlama Hizmeti, kaynak sistemi başarıyla sorguladı ve kullanıcıyı tanımladı. Kullanıcı üzerinde başka bir eylem yapılmadı ve bunlar atlandı. Atlama, kullanıcının kapsam dışına çıkmasına veya daha fazla değişiklik gerekmeden hedef sistemde zaten mevcut olan kullanıcıdan kaynaklanıyor olabilir.|
-|Systemforcrossdomainıdentitymanagementmultipleentriesınresponse| Kullanıcı veya Grup almak için bir GET isteği gerçekleştirirken, yanıtta birden çok kullanıcı veya grup aldık. Yanıtta yalnızca bir kullanıcı veya grup almayı bekliyorduk. [Örneğin](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group), bir grubu almak ve üyeleri hariç tutmak için bir filtre sağlamak üzere bir get ISTEğI ve SCIM uç noktanız üyeleri döndürürse, bu hatayı oluşturacağız.|
+|Systemforcrossdomainıdentitymanagementmultipleentriesınresponse| Kullanıcı veya Grup almak için bir GET isteği gerçekleştirirken, yanıtta birden çok kullanıcı veya grup aldık. Yanıtta yalnızca bir kullanıcı veya grup almayı bekliyorduk. [Örneğin](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group), bir grubu almak ve üyeleri hariç tutmak için bir filtre sağlamak üzere bir get ISTEğI ve SCIM uç noktanız üyeleri döndürürse, bu hatayı oluşturacağız.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Kullanıcı hazırlama durumunu denetleme](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](../app-provisioning/application-provisioning-config-problem.md)
-* [Sağlama günlükleri Graph API 'SI](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [Sağlama günlükleri Graph API 'SI](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

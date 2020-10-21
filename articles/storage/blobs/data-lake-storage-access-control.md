@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 188c30a79074b819c5785cf5560f5843a3fcf6b4
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131624"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320468"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetim listeleri (ACL 'Ler)
 
@@ -326,6 +326,11 @@ OID görüntülenir.
 
 Hizmet sorumlusu için doğru OID 'ye sahip olduğunuzda, OID 'yi eklemek ve OID için uygun izinleri atamak için Depolama Gezgini **erişimi yönet** sayfasına gidin. **Kaydet**’i seçtiğinizden emin olun.
 
+### <a name="can-i-set-the-acl-of-a-container"></a>Kapsayıcının ACL 'sini ayarlayabilir miyim?
+
+Hayır. Kapsayıcıda ACL yok. Ancak, kapsayıcının kök dizininin ACL 'sini ayarlayabilirsiniz. Her kapsayıcının bir kök dizini vardır ve kapsayıcı ile aynı adı paylaşır. Örneğin, kapsayıcı adlandırılmışsa `my-container` kök dizin olarak adlandırılır `myContainer/` . 
+
+Azure depolama REST API, [set CONTAINER ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)adlı bir işlem içeriyor, ancak bu Işlem kapsayıcının ACL 'sini veya bir kapsayıcının kök dizinini ayarlamak için kullanılamaz. Bunun yerine, bir kapsayıcıdaki Blobların [herkese açık](anonymous-read-access-configure.md)bir şekilde erişilebildiğini göstermek için bu işlem kullanılır. 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX erişim denetimi modeli hakkında daha fazla bilgiyi nereden bulabilirim?
 

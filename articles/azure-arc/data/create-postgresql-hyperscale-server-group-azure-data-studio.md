@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2007d8f0c558d35c0507b6e12bce6d6777fad52
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273016"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310910"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure Data Studio kullanarak Azure Arc etkin PostgreSQL hiper ölçeği oluşturma
 
@@ -62,7 +62,7 @@ OpenShift 'te SCCs hakkında daha fazla ayrıntı için lütfen [OpenShift belge
 1. Bağlantılar sekmesinde, sol üstteki üç noktaya tıklayın ve "yeni dağıtım" seçeneğini belirleyin.
 1. Dağıtım seçenekleri ' nden **PostgreSQL hiper ölçek sunucu grubu-Azure Arc** ' ı seçin.
     >[!NOTE]
-    > Henüz `azdata` yüklü değilse, CLI 'yi buraya yüklemelisiniz.
+    > [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]Şu anda yüklü değilse, buraya yüklenmesi istenebilir.
 1. Gizlilik ve lisans koşullarını kabul edin ve en altta **Seç** ' e tıklayın.
 1. Dağıtım PostgreSQL hiper ölçek sunucu grubu-Azure yay dikey penceresinde aşağıdaki bilgileri girin:
    - Sunucu grubu için bir ad girin

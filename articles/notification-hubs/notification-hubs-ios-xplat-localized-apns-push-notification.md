@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4bc392cb6d499d967656358e920f46e261af2906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a78d3a76e2b13a120e9e744e181c95bfcb330f27
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87030343"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313904"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS 'a yerelleştirilmiş anında iletme bildirimleri gönderme
 
@@ -44,7 +44,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * .NET konsol uygulamasından yerelleştirilmiş şablon bildirimleri gönder
 > * Cihazdan yerelleştirilmiş şablon bildirimleri gönder
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 [Son haberleri göndermek için Notification Hubs kullanır], farklı haber kategorilerine yönelik bildirimlere abone olmak için **Etiketler** kullanan bir uygulama derlediniz. Ancak birçok uygulama, birden çok pazarda hedef ve yerelleştirme gerektirir. Bu, bildirimlerin içeriklerinin kendileri için yerelleştirilmiş olması ve doğru cihaz kümesine teslim edilmesi anlamına gelir. Bu öğreticide, yerelleştirilmiş son haberler bildirimlerini kolayca sunmak için Notification Hubs **şablon** özelliğinin nasıl kullanılacağı gösterilmektedir.
 
@@ -73,7 +73,7 @@ Ardından cihazların doğru özelliğe başvuran bir şablonla kaydolmanızı s
 
 Şablonlar hakkında daha fazla bilgi için bkz. [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md) makalesi.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Belirli iOS cihazlarına anında iletme bildirimlerini](notification-hubs-ios-xplat-segmented-apns-push-notification.md) doldurun ve bu öğretici doğrudan bu kodla oluşturulduğundan kodun kullanılabilir olmasını sağlayabilirsiniz.
 * Visual Studio 2019 isteğe bağlıdır.
@@ -289,6 +289,6 @@ Bu öğreticide iOS cihazlarına yerelleştirilmiş bildirimler gönderdiniz. İ
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [JavaScript and HTML]: ../get-started-with-push-js.md
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for iOS]: /previous-versions/azure/reference/dn223264(v=azure.100)

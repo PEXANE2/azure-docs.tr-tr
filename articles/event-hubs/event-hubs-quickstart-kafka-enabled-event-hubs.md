@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Kafka protokolünü kullanarak Azure Event Hubs il
 description: "Hızlı başlangıç: Bu makalede, Kafka Protokolü ve API 'Leri kullanılarak Azure Event Hubs 'da nasıl akış yapılacağı hakkında bilgiler sağlanmaktadır."
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 612a7515c14b77569b34c91d9b43413353b4d0e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e87d9b1e4a444695d64dc6acfa0e29f7b72e37f2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90061556"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319346"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Hızlı başlangıç: Kafka protokolünü kullanarak Event Hubs veri akışı
 Bu hızlı başlangıçta, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Event Hubs nasıl akışının yapılacağı gösterilmektedir. Uygulamalarınızda yalnızca bir yapılandırma değişikliği ile Event Hubs konuşabilmek için üreticileri ve tüketicilerinizi nasıl kullanacağınızı öğrenirsiniz. 
@@ -16,13 +16,13 @@ Bu hızlı başlangıçta, protokol istemcilerinizi değiştirmeden veya kendi k
 > [!NOTE]
 > Bu örnek [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) 'da kullanılabilir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki önkoşulların karşılandığından emin olun:
 
 * [Apache Kafka için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) makalesini okuyun.
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
-* [Java Development Kit (JDK) 1.7 +](https://aka.ms/azure-jdks).
+* [Java Development Kit (JDK) 1.7 +](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * Bir Maven ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html).
 * [Git](https://www.git-scm.com/)
 
@@ -103,4 +103,4 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
 Event Hubs Kafka kümenizin olayları varsa, bu olayları artık tüketiciden almaya başlarsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Event Hubs nasıl akışa alınacağını öğrendiniz. Daha fazla bilgi için bkz. [Azure Event Hubs için Apache Kafka Geliştirici Kılavuzu](apache-kafka-developer-guide.md). 
+Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Event Hubs nasıl akışa alınacağını öğrendiniz. Daha fazla bilgi için bkz. [Azure Event Hubs için Apache Kafka Geliştirici Kılavuzu](apache-kafka-developer-guide.md).

@@ -3,12 +3,12 @@ title: Azure Event Hubs için ağ güvenliği
 description: Bu makalede özel uç noktalardan erişimin nasıl yapılandırılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ae6cbdc8258cde9bb2da961cb452f996f0797cfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02a3a3436c354f7a9c817298d0ce887e33d8016a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767788"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318491"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs için ağ güvenliği 
 Bu makalede, Azure Event Hubs ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanır: 
@@ -22,7 +22,7 @@ Bu makalede, Azure Event Hubs ile aşağıdaki güvenlik özelliklerinin nasıl 
 ## <a name="service-tags"></a>Hizmet etiketleri
 Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](../virtual-network/service-tags-overview.md).
 
-[Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules)   veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak*veya hedef alanındaki hizmet etiketi adını (örneğin, **EventHub**) belirterek    *destination*   , karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
+[Ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules)   veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak*veya hedef alanındaki hizmet etiketi adını (örneğin, **EventHub**) belirterek    *destination*   , karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
 
 | Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
