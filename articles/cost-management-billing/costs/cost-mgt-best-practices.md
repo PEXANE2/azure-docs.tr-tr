@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4dd22427038bc7c4052ee714c3ec3ce45d7a1837
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689159"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132831"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 
@@ -126,7 +126,7 @@ Daha fazla bilgi için bkz. [Azure fiyatlandırma hesaplayıcısı](https://azur
 
 Azure Geçişi, kuruluşunuzun şirket içindeki veri merkezlerinde çalışan iş yüklerini değerlendiren hizmettir. Bu hizmet, Azure'da oluşturacağınız çözümle ilgili ihtiyaçlarınız konusunda size yol gösterebilir. Azure Geçişi ilk olarak şirket içi ortamdaki makinelerinizi analiz eder ve geçişin mümkün olup olmadığını belirler. Daha sonra performansı en üst düzeye çıkarmak için Azure'daki VM boyutlarıyla ilgili önerilerde bulunur. Son olarak Azure tabanlı çözüm için bir tahmini maliyet çıkarır.
 
-Daha fazla bilgi için bkz. [Azure Geçişi](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
+Daha fazla bilgi için bkz. [Azure Geçişi](../../migrate/migrate-services-overview.md).
 
 ## <a name="analyze-and-manage-your-costs"></a>Maliyetlerinizi analiz etme ve yönetme
 

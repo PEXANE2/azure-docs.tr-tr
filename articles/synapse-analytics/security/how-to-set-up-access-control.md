@@ -9,14 +9,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260164"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341558"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
+# <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme) 
 
 Bu makalede, etkinlikleri denetlemek ve verilere erişmek için rolleri ve erişim denetimini nasıl kullanacağınızı öğretir. Bu yönergeleri izleyerek, Azure SYNAPSE Analytics 'teki erişim denetimi basitleştirilmiştir. Yalnızca üç güvenlik grubundan birine Kullanıcı ekleyip kaldırmanız gerekir.
 
@@ -31,12 +31,12 @@ Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşa�
   - Azure SYNAPSE Analytics Yöneticisi için Apache Spark
 - Azure Data Lake Storage Gen 2 ' deki veriler için erişim denetimi (ADLSGEN2).
 - SYNAPSE SQL ve Spark veritabanları için erişim denetimi
-
+- 
 ## <a name="steps-to-secure-a-synapse-workspace"></a>SYNAPSE çalışma alanını güvenli hale getirme adımları
 
 Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları dilediğiniz adlarla değiştirin.
 
-|Ayar | Örnek değer | Açıklama |
+|Ayar | Örnek değer | Description |
 | :------ | :-------------- | :---------- |
 | **SYNAPSE çalışma alanı** | WS1 |  SYNAPSE çalışma alanının sahip olacağı ad. |
 | **ADLSGEN2 hesabı** | STG1 | Çalışma alanınız ile kullanılacak ADLS hesabı. |
@@ -71,11 +71,12 @@ Depolama bilgileriniz hakkında bu bilgileri tanımla:
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. Adım: SYNAPSE çalışma alanınızı oluşturma ve yapılandırma
 
-Azure portal, bir Synapse çalışma alanı oluşturun:
+ Azure portal, bir Synapse çalışma alanı oluşturun:
 
+- Aboneliğinizi seçin
+- Kaynak grubunuzu seçin- **sahip** rolü atadığınız bir kaynak grubuna erişiminizin olması gerekir.
 - Çalışma alanını WS1 olarak adlandırın
-- Depolama hesabı için STG1 seçin
-- "FileSystem" olarak kullanılmakta olan kapsayıcı için CNT1 seçin.
+- Depolama hesabı için STG1 öğesini seçin. "FileSystem" olarak kullanılmakta olan kapsayıcı için CNT1 seçin.
 - WS1 'i SYNAPSE Studio 'da aç
 - **Manage**  >  Aşağıdaki SYNAPSE rollerine güvenlik grupları atamak**Access Control** Yönet ' i seçin.
   - SYNAPSE çalışma alanı yöneticilerine **WS1 \_ wsadmins** atama

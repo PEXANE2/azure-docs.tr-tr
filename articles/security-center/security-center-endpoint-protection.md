@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 8cc12ba40b6722f75e4f3f4e8ce7023a0523c278
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219675"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341422"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
 
@@ -29,9 +29,9 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](secur
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Güvenlik Merkezi, [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps&preserve-view=true) çalıştırıldığında ve Result **amserviceenabled** olduğunda **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir.
+* Güvenlik Merkezi, [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) çalıştırıldığında ve Result **amserviceenabled** olduğunda **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir.
 
-* Güvenlik Merkezi, [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps&preserve-view=true) çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
+* Güvenlik Merkezi, [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
 
   * Aşağıdaki özelliklerden herhangi biri false şeklindedir:
 

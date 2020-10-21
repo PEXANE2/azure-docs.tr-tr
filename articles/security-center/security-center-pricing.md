@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d6c3fff3ed265cb910388a2c9456b8a3f9d63c8b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 01d7d29e9fffff3be2c98c0ec52c01774439e3f7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281191"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341197"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber saldırılarına karşı hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -71,4 +71,4 @@ Bu makalede, Güvenlik Merkezi için fiyatlandırmaya sunulmuştur. İlgili malz
 
 - [Azure iş yükü maliyetlerinizi iyileştirme](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)
 - [Seçtiğiniz para birimi ve bölgenize göre fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/security-center/)
-- Maliyetlerinizi yönetmek ve bir çözüm için toplanan veri miktarını belirli bir aracı kümesiyle sınırlayarak sınırlamak isteyebilirsiniz. [Çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md) , çözüme bir kapsam uygulamanıza ve çalışma alanındaki bilgisayarların bir alt kümesini hedeflemenizi sağlar. Çözüm hedefleme kullanıyorsanız, güvenlik merkezi çalışma alanını bir çözüme sahip değil olarak listeler.
+- Maliyetlerinizi yönetmek ve bir çözüm için toplanan veri miktarını belirli bir aracı kümesiyle sınırlayarak sınırlamak isteyebilirsiniz. [Çözüm hedefleme](../azure-monitor/insights/solution-targeting.md) , çözüme bir kapsam uygulamanıza ve çalışma alanındaki bilgisayarların bir alt kümesini hedeflemenizi sağlar. Çözüm hedefleme kullanıyorsanız, güvenlik merkezi çalışma alanını bir çözüme sahip değil olarak listeler.

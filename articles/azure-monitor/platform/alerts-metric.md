@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065871"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342170"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -43,11 +43,11 @@ Aşağıdaki yordamda Azure portal bir ölçüm uyarısı kuralının nasıl olu
 8. Ölçümün boyutları varsa, bir Boyutlar tablosu görürsünüz. Her boyut için bir veya daha fazla değer seçin.
     - Görüntülenen boyut değerleri, son üç gündeki ölçüm verilerini temel alır.
     - Aradığınız boyut değeri görüntülenmiyorsa, özel bir değer eklemek için "+" düğmesine tıklayın.
-    - Boyutlardan herhangi biri için de **seçim \* ** yapabilirsiniz. **Seç \* ** seçimi dinamik olarak bir boyut için geçerli ve gelecekteki değerlere ölçeklendirecektir.
+    - Boyutlardan herhangi biri için ** \* öğesini de seçebilirsiniz. * _*Seç \* *_ seçimi dinamik olarak bir boyut için geçerli ve gelecekteki değerlere ölçeklendirecektir.
 
     Ölçüm uyarısı kuralı, seçilen tüm değer birleşimlerinin koşulunu değerlendirir. [Çok boyutlu ölçümlerde uyarı oluşturma hakkında daha fazla bilgi edinin](alerts-metric-overview.md).
 
-9. **Eşik** türü, **işleç**ve **toplama türünü**seçin. Bu, ölçüm uyarı kuralının değerlendileceğini belirten mantığı belirleyecek.
+9. _*Threshold** tür, **işleç**ve **toplama türünü**seçin. Bu, ölçüm uyarı kuralının değerlendileceğini belirten mantığı belirleyecek.
     - **Statik** eşik kullanıyorsanız, bir **eşik değeri**tanımlamaya devam edin. Ölçüm grafiği ne kadar makul bir eşik olabileceğini belirlemenize yardımcı olabilir.
     - **Dinamik** eşik kullanıyorsanız, **eşik duyarlılığını**tanımlamaya devam edin. Ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler. [Dinamik eşikler durum türü ve duyarlılık seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md).
 
@@ -154,8 +154,8 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Resource Manager şablonları kullanarak ölçüm uyarıları oluşturun](./alerts-metric-create-templates.md).
-- [Ölçüm uyarılarının nasıl çalıştığını anlayın](alerts-metric-overview.md).
-- [Dinamik Eşik koşulu ile ölçüm uyarılarının nasıl çalıştığını anlayın](alerts-dynamic-thresholds.md).
+- [Azure Resource Manager şablonları kullanarak ölçüm uyarıları oluşturma](./alerts-metric-create-templates.md)
+- [Ölçüm uyarılarının nasıl çalıştığını anlama](alerts-metric-overview.md)
+- [Ölçüm durumunun dinamik eşiklerle nasıl çalıştığını anlayın](alerts-dynamic-thresholds.md)
 - [Ölçüm uyarıları için Web kancası şemasını anlayın](./alerts-metric-near-real-time.md#payload-schema)
-
+- [Ölçüm uyarılarında sorun giderme sorunları](alerts-troubleshoot-metric.md)

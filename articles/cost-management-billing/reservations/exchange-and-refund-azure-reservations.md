@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 553652832f3f4ce84a0a141455551e4977215184
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 32db8396a687428c668a9b8a4213b50986614083
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684431"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150123"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Rezervasyonları için self servis değişimler ve para iadeleri
 
@@ -21,7 +21,7 @@ Azure Ayrılmış Sanal Makine Örnekleri, değişen ihtiyaçlarınızın karş�
 Self servis değişim ve iptal özelliği US Government Kurumsal Anlaşma müşterileri tarafından kullanılamaz. Kullandıkça Öde ve Bulut Çözümü Sağlayıcısı (CSP) da dahil olmak üzere diğer US Government abonelik türleri desteklenir.
 
 > [!NOTE]
-> - **Mevcut rezervasyonu değiştirmek veya para iadesi almak için Rezervasyon Siparişi üzerinde sahip erişiminiz olmalıdır**. [Rezervasyonu yönetebilecek kullanıcıları ekleyebilir veya değiştirebilirsiniz](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - **Mevcut rezervasyonu değiştirmek veya para iadesi almak için Rezervasyon Siparişi üzerinde sahip erişiminiz olmalıdır**. [Rezervasyonu yönetebilecek kullanıcıları ekleyebilir veya değiştirebilirsiniz](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 > - Microsoft şu anda rezervasyon para iadelerinde erken sonlandırma ücretlerini almamaktadır. Gelecekte yapılacak para iadelerinde ücretleri alabiliriz. Şu anda bu ücretin etkinleştirileceği tarihi belirlemedik.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Mevcut rezervasyonu değiştirme veya rezervasyon için para iadesi alma

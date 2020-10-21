@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: d2d098c3a80bbbdb8c9fb64b25cc5967ee693046
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371414"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132372"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
@@ -26,7 +26,7 @@ Bu makalede Azure aboneliklerini Bulut Çözümü Sağlayıcıları (CSP) iş or
 İstek onaylandıktan sonra CSP, müşterilerine birleştirilmiş fatura sunabilir. CSP'lerin abonelikleri aktarması hakkında daha fazla bilgi için bkz. [MPA hesabınız için Azure aboneliklerinin fatura sahipliğini alma](mpa-request-ownership.md).
 
 >[!IMPORTANT]
-> EA aboneliğini CSP iş ortağına aktardıktan sonra, daha önce EA aboneliğine uygulanan tüm kota artışları varsayılan değere sıfırlanır. Abonelik aktarımından sonra kota artışı gerekiyorsa, CSP sağlayıcınızın [kota artışı](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests) isteği göndermesini sağlayabilirsiniz. 
+> EA aboneliğini CSP iş ortağına aktardıktan sonra, daha önce EA aboneliğine uygulanan tüm kota artışları varsayılan değere sıfırlanır. Abonelik aktarımından sonra kota artışı gerekiyorsa, CSP sağlayıcınızın [kota artışı](../../azure-portal/supportability/regional-quota-requests.md) isteği göndermesini sağlayabilirsiniz. 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>CSP iş ortağına diğer aboneliklerin aktarılması
 
@@ -42,7 +42,7 @@ Diğer Azure aboneliklerini CSP iş ortağına aktarmak isteyen abonenin kaynak 
 1. Başlamadan önce tüm Azure kaynaklarının kaynak abonelikten hedef aboneliğe taşınabileceğini [doğrulayın](/rest/api/resources/resources/validatemoveresources).  
     Bazı Azure kaynakları farklı aboneliklere taşınamaz. Taşınabilecek Azure kaynaklarının tam listesini görüntülemek için bkz. [Kaynaklar için taşıma işlemi desteği](../../azure-resource-manager/management/move-support-resources.md).
     > [!IMPORTANT]
-    >  - Azure CSP yalnızca Azure Resource Manager kaynaklarını destekler. Kaynak abonelikte Azure klasik dağıtım modeli kullanılarak oluşturulan Azure kaynağı varsa geçişten önce [Azure Resource Manager](https://docs.microsoft.com/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm)'a geçirilmesi gerekir. Web sayfasını görüntülemek için iş ortağı olmanız gerekir.
+    >  - Azure CSP yalnızca Azure Resource Manager kaynaklarını destekler. Kaynak abonelikte Azure klasik dağıtım modeli kullanılarak oluşturulan Azure kaynağı varsa geçişten önce [Azure Resource Manager](/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm)'a geçirilmesi gerekir. Web sayfasını görüntülemek için iş ortağı olmanız gerekir.
 
 1. Kaynak abonelik hizmetlerinin tümünün Azure Resource Manager modelini kullandığını doğrulayın. Daha sonra [Azure Kaynağını Taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md) bölümünü kullanarak kaynak abonelikteki kaynakları hedef aboneliğe aktarın.
     > [!IMPORTANT]

@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 20a9fb6a158134ffc18dc5bbb7eddd34d2b79562
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e51363ff2f3782b77288f9dc1fcb8e59e9ffe0c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682017"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151800"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma rezervasyon maliyetlerini ve kullanımını alma
 
@@ -55,7 +55,7 @@ Azure kullanım verilerinde sağlanan diğer bilgiler değişmiştir:
 - Term - 12 ay veya 36 ay.
 - RINormalizationRatio - AdditionalInfo altında sağlanır. Rezervasyonun kullanım kaydına uygulanma oranıdır. Rezervasyonunuzda örnek boyutu esnekliği etkinleştirildiyse diğer boyutlara da uygulanabilir. Değer, kullanım kaydı için rezervasyonun uygulanma oranını gösterir.
 
-[Bkz. alan tanımı](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[Bkz. alan tanımı](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>API'yi kullanarak Azure tüketim ve rezervasyon kullanımı verilerini alma
 
@@ -71,7 +71,7 @@ Aşağıda örnek bir Kullanım Ayrıntıları API’si çağrısı verilmiştir
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-{enrollmentId} ve {billingPeriodId} hakkında daha fazla bilgi için bkz. [Kullanım Ayrıntıları – Liste](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API makalesine bakın.
+{enrollmentId} ve {billingPeriodId} hakkında daha fazla bilgi için bkz. [Kullanım Ayrıntıları – Liste](/rest/api/consumption/usagedetails/list) API makalesine bakın.
 
 Aşağıdaki tabloda verilen ölçüm ve filtre bilgileri yaygın rezervasyon sorunlarını çözmeye yardımcı olabilir.
 

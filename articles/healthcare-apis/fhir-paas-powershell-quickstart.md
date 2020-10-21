@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: cavoeg
-ms.openlocfilehash: 07221e0cf8feeef48de27a84450c28b08d22e0d3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cb50f2ae98dab1e64e01498e0913d1932e455cd
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217499"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339416"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak FHıR için Azure API dağıtma
 
@@ -68,7 +68,10 @@ Remove-AzResourceGroup -Name myResourceGroupName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıç kılavuzunda, FHıR için Azure API 'sini aboneliğinize dağıttınız. FHıR için Azure API 'niz üzerinde ek ayarlar ayarlamak için, ek ayarlar nasıl yapılır Kılavuzu ' na ilerleyin.
+Bu hızlı başlangıç kılavuzunda, FHıR için Azure API 'sini aboneliğinize dağıttınız. FHıR için Azure API 'niz üzerinde ek ayarlar ayarlamak için, ek ayarlar nasıl yapılır Kılavuzu ' na ilerleyin. FHıR için Azure API 'yi kullanmaya başlamaya hazırsanız, uygulamaları kaydetme hakkında daha fazla bilgi edinin.
 
 >[!div class="nextstepaction"]
 >[FHıR için Azure API 'de ek ayarlar](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[Uygulamaları kaydetme genel bakış](fhir-app-registration.md)

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f701e41c62336bcd7638360a27a0fb4c3ce3ec7d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 71561f6ecdde09f259e54260e7bab4dcc0e85c98
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686675"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132644"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>Ödeme hesabınızı Azure portalında görüntüleme sorunlarını giderme
 
@@ -59,7 +59,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 Sorunları gidermeye yardımcı olması için aşağıdaki faturalandırma ve abonelik makalelerini okuyun.
 
-- [Reddedilen kart](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Abonelikte oturum açma sorunları](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Abonelik bulunamadı](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Kurumsal maliyet görünümü devre dışı](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Reddedilen kart](./troubleshoot-declined-card.md)
+- [Abonelikte oturum açma sorunları](./troubleshoot-sign-in-issue.md)
+- [Abonelik bulunamadı](./no-subscriptions-found.md)
+- [Kurumsal maliyet görünümü devre dışı](./enterprise-mgmt-grp-troubleshoot-cost-view.md)

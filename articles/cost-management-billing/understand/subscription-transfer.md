@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 237565a7b72c3317e2c443f86965634ed7c9942c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91337085"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149383"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Azure aboneliğimin fatura sahipliğini aktarma hakkında
 
@@ -63,7 +63,7 @@ Azure portalında abonelik aktarımı aşağıda listelenen abonelik türleri i�
 
 ## <a name="resources-transferred-with-subscriptions"></a>Aboneliklerle aktarılan kaynaklar
 
-Sanal Makineler, diskler ve web siteleri gibi tüm kaynaklarınız yeni hesaba aktarılır. Öte yandan aboneliği başka bir Azure AD kiracısındaki bir hesaba aktarırsanız abonelikteki hiçbir [yönetici rolü](../manage/add-change-subscription-administrator.md) ve [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) aktarılmaz. Ayrıca, [uygulama kayıtları](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) ve kiracıya özgü diğer hizmetler abonelikle birlikte aktarılmaz.
+Sanal Makineler, diskler ve web siteleri gibi tüm kaynaklarınız yeni hesaba aktarılır. Öte yandan aboneliği başka bir Azure AD kiracısındaki bir hesaba aktarırsanız abonelikteki hiçbir [yönetici rolü](../manage/add-change-subscription-administrator.md) ve [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) aktarılmaz. Ayrıca, [uygulama kayıtları](../../active-directory/develop/quickstart-register-app.md) ve kiracıya özgü diğer hizmetler abonelikle birlikte aktarılmaz.
 
 ## <a name="transfer-account-ownership-to-another-countryregion"></a>Hesap sahipliğini başka bir ülkeye/bölgeye aktarma
 
@@ -99,7 +99,7 @@ Abonelikteki kaynaklara erişmek için Azure rol atamalarına sahip olan kullan�
 Aktarım sırasında [Azure rol](../../role-based-access-control/role-assignments-portal.md) atamaları kaldırılsa bile, ilk sahip hesabındaki kullanıcılar aşağıdaki gibi diğer güvenlik mekanizmaları üzerinden aboneliğe erişmeye devam edebilir:
 
 * Abonelik kaynaklarına kullanıcı yöneticisi hakları veren yönetim sertifikaları. Daha fazla bilgi için bkz. [Azure için Yönetim Sertifikası Oluşturma ve Karşıya Yükleme](../../cloud-services/cloud-services-certs-create.md).
-* Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-create-storage-account.md).
+* Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-account-create.md).
 * Azure Sanal Makineleri gibi hizmetler için Uzaktan Erişim kimlik bilgileri.
 
 Alıcının kaynaklara erişimi kısıtlaması gerekiyorsa hizmetle ilişkili tüm gizli dizileri güncelleştirmesi faydalı olabilir. Kaynakların çoğu güncelleştirilebilir. [Azure portalda](https://portal.azure.com) oturum açın ve Merkez menüsünde **Tüm kaynaklar**'ı seçin. Sonra, kaynağı seçin. Kaynak sayfasında **Ayarlar**'ı seçin. Orada mevcut gizli dizileri görüntüleyebilir ve güncelleştirebilirsiniz.
