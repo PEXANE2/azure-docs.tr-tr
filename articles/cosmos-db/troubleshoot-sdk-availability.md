@@ -3,17 +3,17 @@ title: Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirli
 description: Çoklu bölgesel ortamlarda çalışırken Azure Cosmos SDK kullanılabilirlik davranışı hakkında bilgi edinin.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743973"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319375"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirliğini tanılama ve sorunlarını giderme
 
@@ -34,7 +34,7 @@ Bölgesel tercihi ayarladığınızda, istemci aşağıdaki tabloda belirtildiğ
 | Tek bir yazma bölgesi | Tercih edilen bölge | Birincil bölge  |
 | Birden çok yazma bölgesi | Tercih edilen bölge | Tercih edilen bölge  |
 
-Tercih edilen bölge ayarlamazsanız:
+**Tercih edilen bölge AYARLAMAZSANıZ**SDK istemcisi varsayılan olarak birincil bölgeye ayarlanır:
 
 |Hesap türü |Okumalar |Yazmalar |
 |------------------------|--|--|
@@ -44,7 +44,9 @@ Tercih edilen bölge ayarlamazsanız:
 > [!NOTE]
 > Birincil bölge, [Azure Cosmos hesap bölgesi listesindeki](distribute-data-globally.md) ilk bölgeyi ifade eder
 
-Aşağıdaki senaryolardan herhangi biri gerçekleştiğinde, Azure Cosmos SDK 'sını kullanan istemci günlükleri kullanıma sunar ve **işlem tanılama bilgilerinin**bir parçası olarak yeniden deneme bilgilerini içerir:
+Normal koşullarda, SDK istemcisi tercih edilen bölgeye (bölgesel bir tercih ayarlandıysa) veya birincil bölgeye (hiçbir tercih ayarlanmamışsa) bağlanır ve aşağıdaki senaryolardan herhangi biri gerçekleşmediği takdirde işlemler bu bölgeyle sınırlandıralınacaktır.
+
+Bu durumlarda, Azure Cosmos SDK 'sını kullanan istemci günlükleri kullanıma sunar ve **işlem tanılama bilgilerinin**bir parçası olarak yeniden deneme bilgilerini içerir:
 
 * .NET v2 SDK 'daki yanıtlarda *Requestdiagnosticsstring* özelliği.
 * .NET v3 SDK 'daki yanıtlar ve özel durumlar için *Tanılama* özelliği.
@@ -66,7 +68,7 @@ Bir bölgeyi kaldırır ve daha sonra yeniden hesaba eklerseniz, eklenen bölgen
 
 İstemcisini tercihen Azure Cosmos hesabının sahip olmadığı bir bölgeye bağlamak üzere yapılandırırsanız, tercih edilen bölge yok sayılır. Bu bölgeyi daha sonra eklerseniz, istemci bunu algılar ve kalıcı olarak bu bölgeye geçer.
 
-## <a name="failover-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Tek bir yazma bölgesi hesabındaki yazma bölgesinin yükünü devretme
+## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Tek bir yazma bölgesi hesabındaki yazma bölgesinin yükünü devreder
 
 Geçerli yazma bölgesinin yük devretmesini başlatırsanız, sonraki yazma isteği bilinen bir arka uç yanıtıyla başarısız olur. Bu yanıt algılandığında, istemci yeni yazma bölgesini öğrenmekte olan hesabı sorgular ve geçerli işlemi yeniden denemeye devam eder ve gelecekteki tüm yazma işlemlerini yeni bölgeye kalıcı olarak yönlendirir.
 
@@ -76,7 +78,7 @@ Hesap tek bir yazma bölgedeyse ve bir yazma işlemi sırasında bölgesel kesin
 
 ## <a name="session-consistency-guarantees"></a>Oturum tutarlılığı garantisi
 
-[Oturum tutarlılığı](consistency-levels.md#guarantees-associated-with-consistency-levels)kullanılırken, istemcinin kendi yazma işlemlerini okuyabileceğinizin garantisi vardır. Okuma bölgesi tercihinin yazma bölgesinden farklı olduğu tek bir yazma bölgesi hesabında, kullanıcının bir yazma yaptığını ve yerel bir bölgeden okuma yaparken, yerel bölge henüz veri çoğaltmasını (hafif kısıtlama hızı kısıtlaması) almamış olabilir. Bu gibi durumlarda SDK, okuma işleminde belirli bir hatayı algılar ve oturum tutarlılığını sağlamak için hub bölgesindeki okumayı yeniden dener.
+[Oturum tutarlılığı](consistency-levels.md#guarantees-associated-with-consistency-levels)kullanılırken, istemcinin kendi yazma işlemlerini okuyabileceğinizin garantisi vardır. Okuma bölgesi tercihinin yazma bölgesinden farklı olduğu tek bir yazma bölgesi hesabında, kullanıcının bir yazma yaptığını ve yerel bir bölgeden okuma yaparken, yerel bölge henüz veri çoğaltmasını (hafif kısıtlama hızı kısıtlaması) almamış olabilir. Bu gibi durumlarda SDK, okuma işleminde belirli bir hatayı algılar ve oturum tutarlılığını sağlamak için birincil bölgedeki okumayı yeniden dener.
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>TCP protokolünde geçici bağlantı sorunları
 

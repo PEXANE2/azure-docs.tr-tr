@@ -3,12 +3,12 @@ title: Azure geçiş 'de Hyper-V değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile Hyper-V değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cc96915380a464f02df5806337a06f022ecbbf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318186"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311324"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V değerlendirmesi için destek matrisi
 
@@ -83,4 +83,4 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hyper-V VM değerlendirmesi için hazırlanma](tutorial-prepare-hyper-v.md)
+[Hyper-V VM değerlendirmesi için hazırlanma](./tutorial-discover-hyper-v.md)

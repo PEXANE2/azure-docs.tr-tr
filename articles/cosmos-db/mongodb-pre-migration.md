@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: jasonh
-ms.openlocfilehash: 01bfff6db7827218dafa539b8bc2c7ce0a7869f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad56bf0295efca45ee958e1ce135d79ed850d62
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409655"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277592"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine veri geçişleri için geçiş öncesi adımlar
 
@@ -36,7 +36,7 @@ Aşağıda, MongoDB için Azure Cosmos DB API 'SI hakkında özel özellikler ve
 
 - **Esnek kapasite**: belirli bir koleksiyon veya veritabanının kapasitesi herhangi bir zamanda değişebilir. Bu, veritabanının iş yükünüzün verimlilik gereksinimlerini esnek sağlamasına izin verir.
 
-- **Otomatik**parçalama: Azure Cosmos DB yalnızca parça (veya bölüm anahtarı) gerektiren bir otomatik bölümlendirme sistemi sağlar. [Otomatik bölümleme mekanizması](partition-data.md) tüm Azure Cosmos DB API 'lerinde paylaşılır ve kesintisiz veriler ve yatay dağıtım aracılığıyla ölçeklendirilmesine olanak tanır.
+- **Otomatik**parçalama: Azure Cosmos DB yalnızca parça (veya bölüm anahtarı) gerektiren bir otomatik bölümlendirme sistemi sağlar. [Otomatik bölümleme mekanizması](partitioning-overview.md) tüm Azure Cosmos DB API 'lerinde paylaşılır ve kesintisiz veriler ve yatay dağıtım aracılığıyla ölçeklendirilmesine olanak tanır.
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>MongoDB için Azure Cosmos DB API 'SI için geçiş seçenekleri
 
@@ -88,7 +88,7 @@ Azure Cosmos DB tarafından sunulan dizin oluşturma özellikleri, bileşik dizi
 ## <a name="next-steps"></a>Sonraki adımlar
 * [MongoDB verilerinizi veritabanı geçiş hizmetini kullanarak Cosmos DB geçirin.](../dms/tutorial-mongodb-cosmos-db.md) 
 * [Azure Cosmos kapsayıcılarında ve veritabanlarında üretilen iş sağlama](set-throughput.md)
-* [Azure Cosmos DB'de bölümleme](partition-data.md)
+* [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
 * [Azure Cosmos DB genel dağıtım](distribute-data-globally.md)
 * [Azure Cosmos DB’de dizin oluşturma](index-overview.md)
 * [Azure Cosmos DB'de İstek birimleri](request-units.md)

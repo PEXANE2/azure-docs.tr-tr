@@ -6,14 +6,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 93d9ce50a451221c86f5336107dba30695af159f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91355372"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282159"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure DNS bir bölge ve kayıt oluşturma
 
@@ -31,6 +31,14 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 Tüm Portal adımları için [Azure Portal](https://portal.azure.com)oturum açın.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
+
+Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-dns-zone"></a>DNS bölgesi oluşturma
 
@@ -89,7 +97,7 @@ Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözü
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Örnek:
+   Örneğin:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.

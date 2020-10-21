@@ -3,12 +3,12 @@ title: Apache Kafka için Akka akışlarını kullanma-Azure Event Hubs | Micros
 description: Bu makalede, Azure Olay Hub 'ına Akka akışlarını bağlama hakkında bilgi sağlanır.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 1fbbeef37c4cbdd52d2127c5242474ac46e42d25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43f0c359af6f699ce3e7c19948d706c09adeba70
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061708"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316333"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs ile Akka Streams’i kullanma
 
@@ -30,7 +30,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğu
 
 * [Apache Kafka için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) makalesini okuyun. 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
-* [Java Development Kit (JDK) 1.8+](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.8+](/azure/developer/java/fundamentals/java-jdk-long-term-support)
     * Ubuntu’da JDK’yi yüklemek için `apt-get install default-jdk` komutunu çalıştırın.
     * JAVA_HOME ortam değişkenini JDK’nin yüklü olduğu klasöre işaret edecek şekilde ayarladığınızdan emin olun.
 * Maven ikili Arşivi [indirme](https://maven.apache.org/download.cgi) ve [yükleme](https://maven.apache.org/install.html)

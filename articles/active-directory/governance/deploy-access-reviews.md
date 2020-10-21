@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b218f4c94e33d4a91b3981c66d3ac052c6caf7e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306574"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318122"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
 
@@ -87,7 +87,7 @@ Ortamınızdaki erişim Incelemelerini dağıtmaya yönelik stratejiyi öğrenme
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, doğru paydaşları ve proje rollerinin açık [olduğundan emin olun](https://aka.ms/deploymentplans) .
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, doğru paydaşları ve proje rollerinin açık [olduğundan emin olun](../fundamentals/active-directory-deployment-plans.md) .
 
 Erişim gözden geçirmeleriyle, büyük olasılıkla kuruluşunuzun içindeki aşağıdaki ekiplerden temsilcileriniz olabilir:
 
@@ -182,7 +182,7 @@ Kuruluşunuzun kaynaklarını Azure AD ile tümleştirdikten sonra (örneğin, k
 
 * Grup [üyeliği](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD ile eşitlenmiş veya Microsoft ekipleri dahil olmak üzere Azure AD 'de veya Microsoft 365 ile oluşturulmuş).
 
-* Kaynakları (gruplar, uygulamalar ve siteler), erişimi yönetmek için tek bir pakete gruplayan [erişim paketi](/azure/active-directory/governance/entitlement-management-overview) .
+* Kaynakları (gruplar, uygulamalar ve siteler), erişimi yönetmek için tek bir pakete gruplayan [erişim paketi](./entitlement-management-overview.md) .
 
 * Privileged Identity Management ' de tanımlanan [Azure AD rolleri ve Azure Kaynak rolleri](../privileged-identity-management/pim-resource-roles-assign-roles.md) .
 
@@ -244,7 +244,7 @@ Bir erişim gözden geçirme ilkesi oluşturmak için aşağıdaki bilgilere sah
 | Bileşen| Değer |
 | - | - |
 | **Gözden geçirilecek kaynaklar**| Microsoft Dynamics 'e erişim |
-| **İnceleme sıklığı**| Aylık olarak |
+| **İnceleme sıklığı**| Aylık |
 | **Kim tarafından incelenmektedir**| Dynamics iş grubu program yöneticileri |
 | **Bildirim**| Diğer ada gözden geçirmesinden önce 24 saat e-posta Dynamics-Pms<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
 | **Zaman çizelgesi**| bildirimden 48 saat |
@@ -448,7 +448,7 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure AD r
 
 ![Azure A D rollerinin "üyeliği gözden geçirme" listesini gösteren ekran görüntüsü.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
-Aşağıdaki bağlantılardaki yönergeleri izleyin:
+Aşağıdaki bağlantılarda yer alan yönergeleri izleyin:
 
 | Nasıl yapılır makaleleri | Açıklama |
 | - | - |
@@ -463,7 +463,7 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure Kayn
 
 ![Azure AD rollerini gözden geçirme](./media/deploy-access-review/9-review-azure-roles-picker.png)
 
-Aşağıdaki bağlantılardaki yönergeleri izleyin:
+Aşağıdaki bağlantılarda yer alan yönergeleri izleyin:
 
 | Nasıl yapılır makaleleri| Açıklama |
 | - | -|
@@ -518,4 +518,3 @@ Aşağıdaki ilgili teknolojiler hakkında bilgi edinin.
 * [Azure AD yetkilendirme yönetimi nedir?](entitlement-management-overview.md)
 
 * [Azure AD Privileged Identity Management nedir?](../privileged-identity-management/pim-configure.md)
-

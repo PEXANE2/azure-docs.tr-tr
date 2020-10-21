@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567596"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277963"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 'de otomatik ölçeklendirme sağlanan aktarım hızı hakkında sık sorulan sorular
 
@@ -125,7 +125,7 @@ Otomatik ölçeklendirme ile TTL işlemleri RU/s ölçeklendirmeyi etkilemez. TT
 - Saat 1: T = 2: kapsayıcı, 1 saniye içinde 1000 RU kullanan istekleri almaya başlar. Ayrıca, olması gereken TTL 'nin 200 ' luk bir yanı da vardır. Faturalanabilir RU/s hala 1000 RU/sn 'dir. TTLs ne zaman meydana geldiğinde bağımsız olarak, otomatik ölçeklendirme ölçekleme mantığını etkilemez.
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>En büyük RU/s ve fiziksel bölümler arasındaki eşleme nedir?
-En büyük RU/s 'yi ilk seçtiğinizde Azure Cosmos DB sağlayacak: en fazla RU/s/10.000 RU/s = fiziksel bölüm sayısı. Her [fiziksel bölüm](partition-data.md#physical-partitions) , 10.000 ru/sn ve 50 GB depolama alanı destekleyebilir. Depolama boyutu büyüdükçe Azure Cosmos DB, depolama artışını işlemek için bölümleri daha fazla fiziksel bölüm eklemek üzere otomatik olarak böler veya depolama [ilişkili sınırı aşarsa](#what-is-the-storage-limit-associated-with-each-max-rus-option)en büyük ru/sn 'yi arttırır. 
+En büyük RU/s 'yi ilk seçtiğinizde Azure Cosmos DB sağlayacak: en fazla RU/s/10.000 RU/s = fiziksel bölüm sayısı. Her [fiziksel bölüm](partitioning-overview.md#physical-partitions) , 10.000 ru/sn ve 50 GB depolama alanı destekleyebilir. Depolama boyutu büyüdükçe Azure Cosmos DB, depolama artışını işlemek için bölümleri daha fazla fiziksel bölüm eklemek üzere otomatik olarak böler veya depolama [ilişkili sınırı aşarsa](#what-is-the-storage-limit-associated-with-each-max-rus-option)en büyük ru/sn 'yi arttırır. 
 
 Veritabanının veya kapsayıcının en fazla RU/sn değeri, tüm fiziksel bölümlerde eşit olarak bölünür. Bu nedenle, tek bir fiziksel bölümün her biri için ölçeklenebilen toplam verimlilik: veritabanı veya kapsayıcı/# fiziksel bölüm için en fazla RU/sn. 
 
@@ -147,5 +147,5 @@ Evet. 429 hatalarını görmenizin iki farklı nedeni olabilir. İlk olarak, gen
 
 * [Azure Cosmos DB veritabanında veya kapsayıcıda otomatik ölçeklendirmeyi nasıl etkinleştireceğinizi](how-to-provision-autoscale-throughput.md)öğrenin.
 * [Otomatik ölçeklendirme ile sağlanan aktarım hızının avantajları](provision-throughput-autoscale.md#benefits-of-autoscale)hakkında bilgi edinin.
-* [Mantıksal ve fiziksel bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
+* [Mantıksal ve fiziksel bölümler](partitioning-overview.md)hakkında daha fazla bilgi edinin.
                         

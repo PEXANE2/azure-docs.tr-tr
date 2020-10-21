@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804206"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276103"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB sayfalandırma
 
@@ -21,7 +21,7 @@ Azure Cosmos DB, sorgularda birden fazla sonuç sayfası olabilir. Bu belgede so
 
 Bazen sorgu sonuçları birden çok sayfaya bölünecektir. Her sayfanın sonuçları ayrı bir sorgu yürütmesi tarafından oluşturulur. Sorgu sonuçları tek bir yürütmede döndürülmediğinde, Azure Cosmos DB sonuçları otomatik olarak birden çok sayfaya bölecektir.
 
-Bir sorgu tarafından döndürülen en fazla öğe sayısını ayarlayarak belirtebilirsiniz `MaxItemCount` . , `MaxItemCount` İstek başına belirtilir ve sorgu altyapısının bu sayıda öğe veya daha az dönecesini garanti eder. `MaxItemCount` `-1` Sorgu yürütme başına sonuç sayısı için bir sınır koymak istemiyorsanız, öğesini olarak ayarlayabilirsiniz.
+Bir sorgu tarafından döndürülen en fazla öğe sayısını ayarlayarak belirtebilirsiniz `MaxItemCount` . , `MaxItemCount` İstek başına belirtilir ve sorgu altyapısının bu öğe sayısını veya daha az sayıda dönemeyeceğini söyler. `MaxItemCount` `-1` Sorgu yürütme başına sonuç sayısı için bir sınır koymak istemiyorsanız, öğesini olarak ayarlayabilirsiniz.
 
 Ayrıca, sorgu altyapısının sorgu sonuçlarını birden çok sayfaya bölünmesi gerekebilecek başka nedenler de vardır. Bu modüller şunlardır:
 

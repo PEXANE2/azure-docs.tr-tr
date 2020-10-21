@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151d5f083fe0e945b330d65095c908be93e3330f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252893"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316390"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Öğretici: Bir web uygulaması için özel etki alanında DNS kaydı oluşturma 
 
@@ -38,12 +38,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Web uygulamanıza özel ana bilgisayar adları ekleyin
 > * Özel ana bilgisayar adlarını test etme
 
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -56,6 +53,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    2. Bölgenizi Azure DNS'ye devretmek için [DNS etki alanı devretme](dns-delegate-domain-azure-dns.md) sayfasındaki adımları izleyin.
 
 Bölge oluşturduktan ve Azure DNS'ye devrettikten sonra özel etki alanınız için kayıt oluşturabilirsiniz.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-a-record-and-txt-record"></a>A kaydı ve TXT kaydı oluşturma
 

@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024869"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311149"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Azure API Management örneğiniz için özel bir etki alanı adı yapılandırma
 
@@ -29,7 +29,7 @@ Azure API Management hizmet örneği oluşturduğunuzda, Azure bu alt etki alan�
 > [!WARNING]
 > Uygulamalarının güvenliğini geliştirmek için sertifika sabitleme kullanmak isteyen müşterilerin, varsayılan sertifikayı değil, yönettikleri özel bir etki alanı adı ve sertifika kullanması gerekir. Bunun yerine varsayılan sertifikayı sabitletirecek müşteriler, denetolmadıkları sertifikanın özelliklerine, bu önerilen bir uygulama değildir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -50,10 +50,10 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     Özel bir etki alanı adı atayabilmeniz için birkaç uç nokta vardır. Şu anda aşağıdaki uç noktalar kullanılabilir:
 
     - **Ağ geçidi** (varsayılan: `<apim-service-name>.azure-api.net` ),
-    - **Portal** (varsayılan: `<apim-service-name>.portal.azure-api.net` ),
+    - **Geliştirici Portalı (eski)** (varsayılan: `<apim-service-name>.portal.azure-api.net` ),
+    - **Geliştirici Portalı** (varsayılan: `<apim-service-name>.developer.azure-api.net` ).
     - **Yönetim** (varsayılan: `<apim-service-name>.management.azure-api.net` ),
     - **SCM** (varsayılan: `<apim-service-name>.scm.azure-api.net` ),
-    - **Newportal** (varsayılan: `<apim-service-name>.developer.azure-api.net` ).
 
     > [!NOTE]
     > Yalnızca **ağ geçidi** uç noktası, tüketim katmanında yapılandırma için kullanılabilir.

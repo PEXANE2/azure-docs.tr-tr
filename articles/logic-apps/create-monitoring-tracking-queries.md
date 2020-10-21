@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090408"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309922"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Logic Apps için Azure Izleyici günlüklerinde izleme ve izleme sorguları görüntüleyin ve oluşturun
 
-[Azure izleyici günlüklerinden](../azure-monitor/log-query/log-query-overview.md) sonuçları üreten temel sorguları görüntüleyebilir ve belirli ölçütleriniz temelinde sonuçları filtreleyen sorgular oluşturabilirsiniz. Örneğin, belirli bir değişim denetim numarasına göre iletileri bulabilirsiniz. Sorgular, farklı sonuçları görüntülemek istiyorsanız düzenleyebileceğiniz [kusto sorgu dilini](https://aka.ms/LogAnalyticsLanguageReference)kullanır. Daha fazla bilgi için bkz. [Azure izleyici günlük sorguları](../azure-monitor/log-query/query-language.md).
+[Azure izleyici günlüklerinden](../azure-monitor/log-query/log-query-overview.md) sonuçları üreten temel sorguları görüntüleyebilir ve belirli ölçütleriniz temelinde sonuçları filtreleyen sorgular oluşturabilirsiniz. Örneğin, belirli bir değişim denetim numarasına göre iletileri bulabilirsiniz. Sorgular, farklı sonuçları görüntülemek istiyorsanız düzenleyebileceğiniz [kusto sorgu dilini](/azure/data-explorer/kusto/query/)kullanır. Daha fazla bilgi için bkz. [Azure izleyici günlük sorguları](/azure/data-explorer/kusto/query/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Log Analytics çalışma alanı. Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/learn/quick-create-workspace.md)öğrenin.
 
@@ -59,7 +59,7 @@ Belirli özellikleri veya değerleri temel alarak sonuçları bulmak veya filtre
 
      !["Logic Apps B2B" çözümü önceden oluşturulmuş sorgularla başlayın](./media/create-monitoring-tracking-queries/b2b-prebuilt-queries.png)
 
-   * Boş bir sorgudan başlamak için sorgu Düzenleyicisi 'nde sorgunuz için [kusto sorgu dilini](../azure-monitor/log-query/query-language.md) yazmaya başlayın.
+   * Boş bir sorgudan başlamak için sorgu Düzenleyicisi 'nde sorgunuz için [kusto sorgu dilini](/azure/data-explorer/kusto/query/) yazmaya başlayın.
 
      ![Boş sorguyla başla](./media/create-monitoring-tracking-queries/create-query-from-blank.png)
 

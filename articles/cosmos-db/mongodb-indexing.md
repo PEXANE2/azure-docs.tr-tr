@@ -9,12 +9,12 @@ ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324420"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282378"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
@@ -50,7 +50,7 @@ Aşağıdaki örnekte gösterildiği gibi, aynı anda birden çok alanda etkili 
 
 `db.coll.find().sort({name:1,age:1})`
 
-Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. Aşağıda bir örnek verilmiştir:
+Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. İşte bir örnek:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -324,7 +324,7 @@ Dizin ilerleme durumu ayrıntıları geçerli dizin işleminin ilerleme yüzdesi
 
 Yeni Dizin eklenirken kullanılabilirliği okuma etkisi yoktur. Sorgular, Dizin dönüştürme işlemi tamamlandıktan sonra yalnızca yeni dizinleri kullanacaktır. Dizin dönüştürmesi sırasında, sorgu altyapısı var olan dizinleri kullanmaya devam eder, bu nedenle dizinleme değişikliğini başlatmadan önce gözlemlediğiniz şekilde, dizin oluşturma dönüştürmesi sırasında benzer okuma performansını gözlemleyeceksiniz. Yeni dizinler eklenirken tamamlanmamış veya tutarsız sorgu sonuçlarının de riski yoktur.
 
-Dizinler kaldırılırken ve hemen çalışan sorgular, bırakılan dizinlerde filtreleri varsa, Dizin dönüştürmesi bitene kadar sonuçlar tutarsız ve tamamlanmamış olabilir. Dizinleri kaldırırsanız sorgu altyapısı, bu yeni kaldırılan dizinlerde sorgular filtreladığında tutarlı veya tamamlanmamış sonuçları garanti etmez. Çoğu geliştirici dizinleri bırakamaz ve sonra bu durum, uygulamada, bu durumun olası bir durumdur.
+Dizinler kaldırılırken ve hemen çalışan sorgular, bırakılan dizinlerde filtreleri varsa, Dizin dönüştürmesi bitene kadar sonuçlar tutarsız ve tamamlanmamış olabilir. Dizinleri kaldırırsanız sorgu altyapısı, bu yeni kaldırılan dizinlerde sorgular filtreladığında tutarlı veya tamamlanmamış sonuçlar sağlamaz. Çoğu geliştirici dizinleri bırakamaz ve sonra bu durum, uygulamada, bu durumun olası bir durumdur.
 
 > [!NOTE]
 > [Dizin ilerlemesini izleyebilirsiniz](#track-index-progress).

@@ -5,17 +5,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 8cca75f7071b8b9c8d1108b82ebf8f7049ec316a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777786"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282576"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 
-Azure Cosmos DB, veritabanlarınızda ve kapsayıcılarınızda sağlanan aktarım hızını ayarlamanıza olanak sağlar. İki tür sağlanan aktarım hızı, standart (el ile) veya otomatik ölçeklendirme. Bu makaleler, sağlanan iş üretiminin nasıl çalıştığına ilişkin bir genel bakış sunar. 
+Azure Cosmos DB, veritabanlarınızda ve kapsayıcılarınızda sağlanan aktarım hızını ayarlamanıza olanak sağlar. İki tür sağlanan aktarım hızı, standart (el ile) veya otomatik ölçeklendirme. Bu makale, sağlanan iş üretiminin nasıl çalıştığına ilişkin bir genel bakış sunar. 
 
 Azure Cosmos veritabanı bir dizi kapsayıcı için yönetim birimidir. Veritabanı şemadan bağımsız bir dizi kapsayıcıdan oluşur. Azure Cosmos kapsayıcısı hem aktarım hızı hem de depolama alanı için ölçeklenebilirlik birimidir. Bir kapsayıcı Azure bölgesinin içindeki bir dizi makine arasında dikey olarak bölümlenir ve Azure Cosmos hesabınızla ilişkilendirilmiş tüm Azure bölgelerine dağıtılır.
 
@@ -34,9 +34,9 @@ Bir kapsayıcı için sağlanan aktarım hızı, fiziksel bölümleri arasında 
 
 Bir mantıksal bölümde çalışan iş yükü, temeldeki fiziksel bölüme ayrılan aktarım hızına kıyasla daha fazla tüketir, işlemlerinizin hız sınırlı olması mümkündür. Bir mantıksal bölüm, diğer bölüm anahtarı değerlerinden daha fazla istek talep ediyorsa, _etkin bölüm_ olarak bilinen özellikler oluşur.
 
-Oran sınırlaması gerçekleştiğinde, tüm kapsayıcı için sağlanan aktarım hızını artırabilir ya da işlemleri yeniden deneyebilirsiniz. Ayrıca, depolama ve istek birimini eşit bir şekilde dağıtan bir bölüm anahtarı seçtiğinizden emin olmanız gerekir. Bölümlendirme hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümlendirme ve yatay ölçeklendirme](partition-data.md).
+Oran sınırlaması gerçekleştiğinde, tüm kapsayıcı için sağlanan aktarım hızını artırabilir ya da işlemleri yeniden deneyebilirsiniz. Ayrıca, depolama ve istek birimini eşit bir şekilde dağıtan bir bölüm anahtarı seçtiğinizden emin olmanız gerekir. Bölümlendirme hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümlendirme ve yatay ölçeklendirme](partitioning-overview.md).
 
-Kapsayıcı için garantili performans istediğinizde, kapsayıcı ayrıntı düzeyinde aktarım hızı yapılandırmanızı öneririz.
+Kapsayıcı için tahmin edilebilir performans istediğinizde, kapsayıcı ayrıntı düzeyinde aktarım hızı yapılandırmanızı öneririz.
 
 Aşağıdaki görüntüde bir fiziksel bölümün bir kapsayıcının bir veya daha fazla mantıksal bölümünü nasıl barındırdığı gösterilmektedir:
 
@@ -49,7 +49,7 @@ Aşağıdaki görüntüde bir fiziksel bölümün bir kapsayıcının bir veya d
 
 Azure Cosmos veritabanında üretilen iş sağladığınızda, aktarım hızı veritabanında tüm kapsayıcılar (paylaşılan veritabanı kapsayıcıları olarak adlandırılır) arasında paylaşılır. Tek istisna, veritabanındaki belirli kapsayıcılarda sağlanan bir aktarım hızı belirttiğinizde gerçekleşir. Veritabanı düzeyinde sağlanan aktarım hızını kapsayıcı genelinde paylaşmak, bir makine kümesinde bir veritabanını barındırmakla benzerdir. Bir veritabanı içindeki tüm kapsayıcılar bir makinede kullanılabilir kaynakları paylaştığından, doğal olarak herhangi bir kapsayıcı üzerinde öngörülebilir bir performans almaz. Bir veritabanında sağlanan üretilen işi yapılandırma hakkında bilgi edinmek için bkz. [Azure Cosmos veritabanında sağlanan aktarım hızını yapılandırma](how-to-provision-database-throughput.md). Bir veritabanında otomatik ölçeklendirme verimini yapılandırma hakkında bilgi edinmek için bkz. [Otomatik ölçeklendirme Işleme sağlama](how-to-provision-autoscale-throughput.md).
 
-Azure Cosmos veritabanında üretilen iş oluşturma, bu veritabanı için her zaman sağlanan aktarım hızını almanızı garanti eder. Veritabanı içindeki tüm kapsayıcılar sağlanan üretilen işi paylaştığından, Azure Cosmos DB söz konusu veritabanındaki belirli bir kapsayıcı için öngörülebilir bir işlem garantisi sağlamaz. Belirli bir kapsayıcının alabileceği aktarım hızı bölümü şu şekilde değişir:
+Veritabanı içindeki tüm kapsayıcılar sağlanan üretilen işi paylaştığından, Azure Cosmos DB söz konusu veritabanındaki belirli bir kapsayıcı için öngörülebilir bir işlem garantisi sağlamaz. Belirli bir kapsayıcının alabileceği aktarım hızı bölümü şu şekilde değişir:
 
 * Kapsayıcı sayısı.
 * Çeşitli kapsayıcılar için bölüm anahtarlarının seçimi.
@@ -63,9 +63,9 @@ Aşağıdaki örneklerde veritabanı düzeyinde üretilen işi sağlamak için n
 
 * Bir sanal makine kümesinde veya şirket içi fiziksel sunuculardan Azure Cosmos DB için barındırılan MongoDB veya Cassandra gibi bir NoSQL veritabanını geçirdiğinizde, bir kapsayıcı kümesi genelinde bir veritabanının sağlanan aktarım hızını paylaşmanız yararlı olur. Azure Cosmos veritabanınızda yapılandırılan üretilen iş üretimini, MongoDB veya Cassandra kümenizin işlem kapasitesinden daha fazla maliyetli, daha düşük maliyetli ve elastik bir eşdeğer olarak düşünün.  
 
-Sağlanan aktarım hızı ile bir veritabanı içinde oluşturulan tüm kapsayıcılar bir [bölüm anahtarıyla](partition-data.md)oluşturulmalıdır. Belirli bir zamanda, bir veritabanı içindeki bir kapsayıcıya ayrılan üretilen iş, o kapsayıcının tüm mantıksal bölümlerine dağıtılır. Bir veritabanında yapılandırılmış sağlanan aktarım hızını paylaşan kapsayıcılara sahipseniz, üretilen işi belirli bir kapsayıcıya veya mantıksal bölüme seçmeli olarak uygulayamazsınız. 
+Sağlanan aktarım hızı ile bir veritabanı içinde oluşturulan tüm kapsayıcılar bir [bölüm anahtarıyla](partitioning-overview.md)oluşturulmalıdır. Belirli bir zamanda, bir veritabanı içindeki bir kapsayıcıya ayrılan üretilen iş, o kapsayıcının tüm mantıksal bölümlerine dağıtılır. Bir veritabanında yapılandırılmış sağlanan aktarım hızını paylaşan kapsayıcılara sahipseniz, üretilen işi belirli bir kapsayıcıya veya mantıksal bölüme seçmeli olarak uygulayamazsınız. 
 
-Mantıksal bir bölümdeki iş yükü, belirli bir mantıksal bölüme ayrılan aktarım hızına göre daha fazla tüketir, işlemlerinizin hızı sınırlıdır. Oran sınırlaması gerçekleştiğinde, veritabanının tamamı için üretilen işi artırabilir veya işlemleri yeniden deneyebilirsiniz. Bölümlendirme hakkında daha fazla bilgi için bkz. [mantıksal bölümler](partition-data.md).
+Mantıksal bir bölümdeki iş yükü, belirli bir mantıksal bölüme ayrılan aktarım hızına göre daha fazla tüketir, işlemlerinizin hızı sınırlıdır. Oran sınırlaması gerçekleştiğinde, veritabanının tamamı için üretilen işi artırabilir veya işlemleri yeniden deneyebilirsiniz. Bölümlendirme hakkında daha fazla bilgi için bkz. [mantıksal bölümler](partitioning-overview.md).
 
 Paylaşılan aktarım hızı veritabanındaki kapsayıcılar, söz konusu veritabanına ayrılmış olan aktarım hızını (RU/sn) paylaşır. Veritabanında en az 400 RU/sn hızında en çok dört kapsayıcınız olabilir. Standart (el ile) sağlanan aktarım hızı sayesinde, ilk dört değerden sonraki her yeni kapsayıcı için ek olarak 100 RU/sn gerekir. Örneğin sekiz kapsayıcılı bir paylaşılan aktarım hızı veritabanınız varsa, veritabanındaki en düşük RU/sn 800 RU/sn olacaktır. Otomatik ölçeklendirme sağlanan aktarım hızı sayesinde, bir veritabanında en fazla %4000 RU/sn (400-4000 RU/sn arasında ölçekleme) ile en fazla 25 kapsayıcı olabilir.
 
@@ -82,7 +82,7 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 İki modeli birleştirebilirsiniz. Hem veritabanında hem de kapsayıcıda sağlama aktarımına izin verilir. Aşağıdaki örnek, bir Azure Cosmos veritabanı ve bir kapsayıcı üzerinde standart (el ile) sağlanan işleme sağlamayı gösterir:
 
 * *"K"* ru 'nin sağlanan standart (el ile) üretilen iş hızına sahip *Z* adlı bir Azure Cosmos veritabanı oluşturabilirsiniz. 
-* Sonra, veritabanı içinde *A*, *B*, *C*, *D*ve *E* adlı beş kapsayıcı oluşturun. B kapsayıcısını oluştururken, **Bu kapsayıcı seçeneği için adanmış üretilen iş üretimini sağlamayı** etkinleştirdiğinizden emin olun ve bu kapsayıcıda *"P"* ru sağlanan aktarım hızını açık olarak yapılandırın. Yalnızca veritabanı ve kapsayıcı oluştururken paylaşılan ve ayrılmış iş üretimini yapılandırabileceğinizi unutmayın. 
+* Sonra, veritabanı içinde *A*, *B*, *C*, *D*ve *E* adlı beş kapsayıcı oluşturun. B kapsayıcısını oluştururken, **Bu kapsayıcı seçeneği için adanmış üretilen iş üretimini sağlamayı** etkinleştirdiğinizden emin olun ve bu kapsayıcıda *"P"* ru sağlanan aktarım hızını açık olarak yapılandırın. Yalnızca veritabanı ve kapsayıcı oluştururken paylaşılan ve ayrılmış aktarım hızını yapılandırabilirsiniz. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Bir kapsayıcının bir veya daha fazla mantıksal bölümünü barındıran fiziksel bölüm":::
 
@@ -94,22 +94,47 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>Bir veritabanında veya kapsayıcıda üretilen işi güncelleştirme
 
-Bir Azure Cosmos kapsayıcısı veya veritabanı oluşturduktan sonra, sağlanan aktarım hızını güncelleştirebilirsiniz. Veritabanı veya kapsayıcıda yapılandırabileceğiniz en fazla sağlanan aktarım hızı için bir sınır yoktur. 
+Bir Azure Cosmos kapsayıcısı veya veritabanı oluşturduktan sonra, sağlanan aktarım hızını güncelleştirebilirsiniz. Veritabanı veya kapsayıcıda yapılandırabileceğiniz en fazla sağlanan aktarım hızı için bir sınır yoktur.
 
-Bir veritabanı veya kapsayıcının [En düşük sağlanan verimini](concepts-limits.md#storage-and-database-operations) tahmin etmek için, en yüksek değeri bulun:
+### <a name="current-provisioned-throughput"></a>Geçerli sağlanan aktarım hızı
+
+Azure portal bir kapsayıcının veya veritabanının sağlanan verimini veya SDK 'Ları kullanarak elde edebilirsiniz:
+
+* .NET SDK üzerinde [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) .
+* [Cosmoscontainer. Readüretilen Iş](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true) Java SDK 'sı.
+
+Bu yöntemlerin yanıtı, kapsayıcı veya veritabanı için [sağlanan en düşük üretilen işi](concepts-limits.md#storage-and-database-operations) de içerir:
+
+* .NET SDK 'da [Throughputresponse. Minüretilen iş](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) .
+* , Java SDK 'sında [Throughputresponse. Getminüretilen iş](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true) .
+
+Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir. Ancak genellikle en yüksek değer:
 
 * 400 RU/sn 
 * GB cinsinden geçerli depolama alanı * 10 RU/sn
 * Veritabanı veya kapsayıcı/100 üzerinde sağlanan en yüksek RU/sn
 * Kapsayıcı sayısı * 100 RU/sn (yalnızca paylaşılan üretilen iş veritabanı)
 
-Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir. [Azure izleyici ölçümlerini](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) , kaynak üzerinde sağlanan üretilen Iş (ru/s) ve depolamanın geçmişini görüntülemek için kullanabilirsiniz.
+### <a name="changing-the-provisioned-throughput"></a>Sağlanan aktarım hızını değiştirme
 
-SDK 'Ları kullanarak bir kapsayıcının veya veritabanının en düşük aktarım hızını alabilir veya Azure portal değeri görüntüleyebilirsiniz. .NET SDK 'yı kullanırken [kapsayıcı. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) yöntemi sağlanan üretilen iş değerini ölçeklendirmenizi sağlar. Java SDK 'sını kullanırken [Cosmoscontainer. Replaceprovisionedüretilen Iş verimlilik](sql-api-java-sdk-samples.md) yöntemi sağlanan aktarım hızı değerini ölçeklendirmenize olanak tanır.
+Azure portal veya SDK 'Ları kullanarak bir kapsayıcının veya veritabanının sağlanan verimini ölçeklendirebilirsiniz:
 
-.NET SDK kullanırken [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) yöntemi, bir kapsayıcının veya veritabanının en düşük verimini elde etmenizi sağlar. 
+* .NET SDK üzerinde [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) .
+* Java SDK 'sında [Cosmoscontainer. Replaceverimini](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) .
 
-Bir kapsayıcının veya veritabanının sağlanan verimini istediğiniz zaman ölçeklendirebilirsiniz. Aktarım hızını artırmak için bir ölçeklendirme işlemi gerçekleştirildiğinde, sistem görevlerinin gerekli kaynakları sağlaması nedeniyle daha uzun zaman alabilir. Azure portal veya SDK 'Ları kullanarak program aracılığıyla ölçek işleminin durumunu kontrol edebilirsiniz. .NET SDK kullanırken, yöntemini kullanarak ölçeklendirme işleminin durumunu alabilirsiniz `Container.ReadThroughputAsync` .
+**Sağlanan aktarım hızını azalttıktan**sonra [En düşük düzeyde](#current-provisioned-throughput)yapabileceksiniz.
+
+**Sağlanan aktarım hızını artırdıysanız**, çoğu zaman işlem anında gerçekleşir. Bununla birlikte, sistem görevlerinin gerekli kaynakları sağlaması nedeniyle işlemin uzun sürebileceği durumlar vardır. Bu durumda, bu işlem devam ederken sağlanan aktarım hızını değiştirme girişimi, başka bir ölçeklendirme işleminin devam ettiğini belirten bir hata iletisiyle HTTP 423 yanıtı verir.
+
+> [!NOTE]
+> Sağlanan aktarım hızı için büyük bir artış gerektiren çok büyük bir alım iş yükü planlıyorsanız, ölçeklendirme işleminin SLA olmadığını ve önceki paragrafta belirtildiği gibi, artışın büyük olduğu zaman uzun sürebileceğini aklınızda bulundurun. İş yükü başlamadan önce planı planlamak ve ölçeklendirmeyi başlatmak isteyebilirsiniz ve ilerleme durumunu denetlemek için aşağıdaki yöntemleri kullanın.
+
+[Geçerli sağlanan üretilen işi](#current-provisioned-throughput) okuyarak ve kullanarak ölçeklendirme ilerlemesini programlı bir şekilde denetleyebilirsiniz:
+
+* [IBir .NET SDK 'Da Throughputresponse. ısıncepcepbitiriliyor](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) .
+* , Java SDK 'sında [Throughputresponse. ısıncepsonbitiriliyor ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) .
+
+[Azure izleyici ölçümlerini](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) , kaynak üzerinde sağlanan üretilen Iş (ru/s) ve depolamanın geçmişini görüntülemek için kullanabilirsiniz.
 
 ## <a name="comparison-of-models"></a>Modellerin karşılaştırması
 Bu tabloda bir veritabanında ve bir kapsayıcı üzerinde standart (el ile) aktarım hızı sağlama arasındaki bir karşılaştırma gösterilmektedir. 
@@ -126,7 +151,7 @@ Bu tabloda bir veritabanında ve bir kapsayıcı üzerinde standart (el ile) akt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Mantıksal bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
+* [Mantıksal bölümler](partitioning-overview.md)hakkında daha fazla bilgi edinin.
 * [Azure Cosmos kapsayıcısında standart (el ile) sağlama](how-to-provision-container-throughput.md)hakkında bilgi edinin.
 * [Azure Cosmos veritabanında standart (el ile) aktarım hızı sağlamayı](how-to-provision-database-throughput.md)öğrenin.
 * [Azure Cosmos veritabanı veya kapsayıcısı üzerinde otomatik ölçeklendirme işleme sağlamayı](how-to-provision-autoscale-throughput.md)öğrenin.

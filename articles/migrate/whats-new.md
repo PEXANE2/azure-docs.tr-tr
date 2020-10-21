@@ -4,12 +4,12 @@ description: Azure geçişi hizmetindeki yenilikler ve son güncelleştirmeler h
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: a36e73496b07df18c61b07df9d90992c0ab399ce
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b03f3a7e10aa42f3393ecc22cb74f4e565587032
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124668"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314571"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
@@ -36,7 +36,7 @@ ms.locfileid: "92124668"
 
 ## <a name="update-june-2020"></a>Güncelleştirme (Haziran 2020)
 
-- Şirket içi VMware VM 'lerini [Azure VMware çözümüne (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) geçirme değerlendirmeleri artık desteklenmektedir. [Daha fazla bilgi edinin](how-to-create-azure-vmware-solution-assessment.md)
+- Şirket içi VMware VM 'lerini [Azure VMware çözümüne (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) geçirme değerlendirmeleri artık desteklenmektedir. [Daha fazla bilgi edinin](how-to-create-azure-vmware-solution-assessment.md)
 - Fiziksel sunucu keşfi için gereç üzerinde birden çok kimlik bilgisi desteği.
 - Kiracı kısıtlamasının yapılandırıldığı kiracı için gerecden Azure oturum açmaya izin verme desteği.
 
@@ -104,4 +104,4 @@ Azure geçişi 'nin önceki sürümünü kullanıyorsanız (yalnızca şirket i�
 
 - Azure Geçişi fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/azure-migrate/).
 - Azure Geçişi hakkında [sık sorulan soruları gözden geçirin](resources-faq.md).
-- [VMware VM](tutorial-assess-vmware.md) 'Leri ve [Hyper-V VM](tutorial-assess-hyper-v.md)'lerini değerlendirmek için öğreticilerimizi deneyin.
+- [VMware VM](./tutorial-assess-vmware-azure-vm.md) 'Leri ve [Hyper-V VM](tutorial-assess-hyper-v.md)'lerini değerlendirmek için öğreticilerimizi deneyin.

@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile GCP VM 'lerinin Azure 'a nasıl ge�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 5bee73c6bbad9eef91e867b55ffde453a4012914
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2caebb5dda87a34d003f7f2bd208fff427c98431
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108584"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315876"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) sanal makinelerini Azure 'a bulma, değerlendirme ve geçirme
 
@@ -367,7 +367,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
     - Site Recovery ile Azure sanal makinelerini ikincil bölgeye çoğaltarak iş yüklerinin çalışmaya devam etmesini ve sürekli kullanılabilir olmasını sağlayın. [Daha fazla bilgi edinin](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Daha fazla güvenlik için:
     - Azure Güvenlik Merkezi ile gelen trafik erişimini kilitleme ve sınırlayın [-tam zamanında yönetim](../security-center/security-center-just-in-time.md).
-    - [Ağ Güvenlik Grupları](../virtual-network/security-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
+    - [Ağ Güvenlik Grupları](../virtual-network/network-security-groups-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
     - [Azure Disk Şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)’ni dağıtarak disklerin güvenliğinin sağlanmasına yardımcı olun ve verileri hırsızlık ve yetkisiz erişime karşı koruyun.
     - [IaaS kaynaklarının güvenliğini sağlama](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) hakkında daha fazla bilgi edinin ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)’ni ziyaret edin.
 - İzleme ve yönetim için:

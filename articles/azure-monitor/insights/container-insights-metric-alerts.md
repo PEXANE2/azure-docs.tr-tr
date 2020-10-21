@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyici 'den ölçüm uyarıları
 description: Bu makalede, Azure Izleyici 'de genel önizlemede bulunan kapsayıcılar için sunulan önerilen ölçüm uyarıları incelenir.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 7d9e6cb9a89dfe65777f8bcf507186e24d38a422
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619959"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308636"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den önerilen ölçüm uyarıları (Önizleme)
 
@@ -45,6 +45,7 @@ Başlamadan önce, aşağıdakileri onaylayın:
 |Ortalama kapsayıcı çalışma kümesi belleği yüzdesi |Kapsayıcı başına kullanılan ortalama çalışma kümesi belleğini hesaplar.|Kapsayıcı başına ortalama çalışma kümesi bellek kullanımı %95 ' den büyük olduğunda. |
 |Ortalama CPU % |Düğüm başına kullanılan ortalama CPU 'YU hesaplar. |Ortalama düğüm CPU kullanımı %80 ' den büyük olduğunda |
 |Ortalama Disk kullanımı% |Bir düğüm için Ortalama disk kullanımını hesaplar.|Bir düğüm için disk kullanımı %80 ' den büyükse. |
+|Ortalama kalıcı Birim kullanımı% |Pod başına ortalama BD kullanımını hesaplar. |Pod başına ortalama BD kullanımı %80 ' den büyük olduğunda.|
 |Ortalama çalışma kümesi belleği yüzdesi |Bir düğüm için Ortalama çalışma kümesi belleğini hesaplar. |Bir düğüm için Ortalama çalışma kümesi belleği %80 ' den fazla olduğunda. |
 |Kapsayıcı sayısı yeniden başlatılıyor |Yeniden başlatma kapsayıcısı sayısını hesaplar. | Kapsayıcı yeniden başlatmalar 0 ' dan büyük olduğunda. |
 |Hatalı Pod sayıları |Hatalı durumda bir pod varsa hesaplar.|Başarısız durumundaki bir dizi dizin 0 ' dan büyük olduğunda. |
@@ -75,6 +76,8 @@ Aşağıdaki uyarı tabanlı ölçümler, diğer ölçümler ile karşılaştır
 
 * CPU, bellek RSS ve bellek çalışma kümesi değerleri yapılandırılan eşiği aştığında (varsayılan eşik %95), *Cpuexceededpercentage*, *memoryrssexceededpercentage*ve *Memoryworkingsetexceededpercentage* ölçümleri gönderilir. Bu eşikler, karşılık gelen uyarı kuralı için belirtilen uyarı koşulu eşiğini dışlıyor. Anlamı, bu ölçümleri toplamak ve [Ölçüm Gezgini](../platform/metrics-getting-started.md)' nden çözümlemek istiyorsanız, eşiği uyarı eşiğinden daha düşük bir değere yapılandırmanızı öneririz. Kapsayıcı kaynak kullanımı eşikleri için koleksiyon ayarlarıyla ilişkili yapılandırma, bölümünde ConfigMaps dosyasında geçersiz kılınabilir `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . ConfigMap yapılandırma dosyanızı yapılandırma ile ilgili ayrıntılar için, [alertable ölçümleri ConfigMaps](#configure-alertable-metrics-in-configmaps) bölümüne bakın.
 
+* kalıcı Birim kullanımı yüzdesi yapılandırılan eşiği aştığında, *Pvusageexceededpercentage* ölçümü gönderilir (varsayılan eşik %60 ' dir.) Bu eşik, karşılık gelen uyarı kuralı için belirtilen uyarı koşulu eşiğini dışlıyor. Anlamı, bu ölçümleri toplamak ve [Ölçüm Gezgini](../platform/metrics-getting-started.md)' nden çözümlemek istiyorsanız, eşiği uyarı eşiğinden daha düşük bir değere yapılandırmanızı öneririz. Kalıcı Birim kullanımı eşikleri için koleksiyon ayarlarıyla ilişkili yapılandırma, bölümünde ConfigMaps dosyasında geçersiz kılınabilir `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . ConfigMap yapılandırma dosyanızı yapılandırma ile ilgili ayrıntılar için, [alertable ölçümleri ConfigMaps](#configure-alertable-metrics-in-configmaps) bölümüne bakın. *Kuto-System* ad alanındaki talepler ile kalıcı birim ölçümleri koleksiyonu varsayılan olarak dışlanır. Bu ad alanında toplamayı etkinleştirmek için `[metric_collection_settings.collect_kube_system_pv_metrics]` ConfigMap dosyasındaki bölümünü kullanın. Ayrıntılar için [ölçüm koleksiyonu ayarlarını](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings) görüntüleyin.
+
 ## <a name="metrics-collected"></a>Toplanan ölçümler
 
 Aşağıdaki ölçümler, aksi belirtilmediği sürece, bu özelliğin bir parçası olarak etkinleştirilir ve toplanır:
@@ -97,6 +100,7 @@ Aşağıdaki ölçümler, aksi belirtilmediği sürece, bu özelliğin bir parç
 |Öngörüler. kapsayıcı/kapsayıcılar |cpuExceededPercentage |Kapsayıcı adı, denetleyici adı, Kubernetes ad alanı, Pod adı ve kullanıcı yapılandırılabilir eşiğini (varsayılan olarak 95,0) aşan kapsayıcılar için CPU kullanım yüzdesi.<br> Toplanıyor  |
 |Öngörüler. kapsayıcı/kapsayıcılar |memoryRssExceededPercentage |Kapsayıcı adı, denetleyici adı, Kubernetes ad alanı, Pod adı ve kullanıcı yapılandırılabilir eşiğini (varsayılan olarak 95,0) aşan kapsayıcılar için bellek RSS yüzdesi.|
 |Öngörüler. kapsayıcı/kapsayıcılar |memoryWorkingSetExceededPercentage |Kapsayıcı adı, denetleyici adı, Kubernetes ad alanı, Pod adı ve kullanıcı yapılandırılabilir eşiğini (varsayılan olarak 95,0) aşan kapsayıcılar için bellek çalışma kümesi yüzdesi.|
+|Öngörüler. kapsayıcı/persistentvolumes |pvUsageExceededPercentage |Talep adına, Kubernetes ad alanına, birim adına, Pod adına ve düğüm adına göre kullanıcı yapılandırılabilir eşiğini (varsayılan olarak 60,0) aşan kalıcı birimler için BD kullanım yüzdesi.
 
 ## <a name="enable-alert-rules"></a>Uyarı kurallarını etkinleştir
 
@@ -207,29 +211,40 @@ Etkin kurallar için oluşturulan uyarıları görüntülemek için **Önerilen 
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>ConfigMaps 'ta alertable ölçümlerini yapılandırma
 
-ConfigMap yapılandırma dosyanızı varsayılan kapsayıcı kaynak kullanımı eşiklerini geçersiz kılmak üzere yapılandırmak için aşağıdaki adımları gerçekleştirin. Bu adımlar yalnızca aşağıdaki alertable ölçümleri için geçerlidir.
+ConfigMap yapılandırma dosyanızı varsayılan kullanım eşiklerini geçersiz kılmak üzere yapılandırmak için aşağıdaki adımları uygulayın. Bu adımlar yalnızca aşağıdaki alertable ölçümleri için geçerlidir:
 
 * *cpuExceededPercentage*
 * *memoryRssExceededPercentage*
 * *memoryWorkingSetExceededPercentage*
+* *pvUsageExceededPercentage*
 
-1. Bölümünde ConfigMap YAML dosyasını düzenleyin `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` .
+1. Veya bölümünün altındaki ConfigMap YAML dosyasını düzenleyin `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` .
 
-2. *Cpuexceededpercentage* eşiğini %90 olarak değiştirmek ve bu ölçümün karşılanması ve aşılması durumunda bu metriğin toplanmasını başlamak için aşağıdaki örneği kullanarak configmap dosyasını yapılandırın.
+   - *Cpuexceededpercentage* eşiğini %90 olarak değiştirmek ve bu metriğin karşılandığı ve aşılması durumunda bu ölçümün toplanmasını başlamak için aşağıdaki örneği kullanarak configmap dosyasını yapılandırın:
 
-    ```
-    container_cpu_threshold_percentage = 90.0
-    # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
-    container_memory_rss_threshold_percentage = 95.0
-    # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
-    container_memory_working_set_threshold_percentage = 95.0
-    ```
+     ```
+     [alertable_metrics_configuration_settings.container_resource_utilization_thresholds]
+         # Threshold for container cpu, metric will be sent only when cpu utilization exceeds or becomes equal to the following percentage
+         container_cpu_threshold_percentage = 90.0
+         # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
+         container_memory_rss_threshold_percentage = 95.0
+         # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
+         container_memory_working_set_threshold_percentage = 95.0
+     ```
 
-3. Şu kubectl komutunu çalıştırın: `kubectl apply -f <configmap_yaml_file.yaml>` .
+   - *Pvusageexceededpercentage* eşiğini %80 olarak değiştirmek ve bu metriğin karşılandıktan ve aşılması durumunda bu ölçümün toplanmasını başlamak için aşağıdaki örneği kullanarak configmap dosyasını yapılandırın:
+
+     ```
+     [alertable_metrics_configuration_settings.pv_utilization_thresholds]
+         # Threshold for persistent volume usage bytes, metric will be sent only when persistent volume utilization exceeds or becomes equal to the following percentage
+         pv_usage_threshold_percentage = 80.0
+     ```
+
+2. Şu kubectl komutunu çalıştırın: `kubectl apply -f <configmap_yaml_file.yaml>` .
 
     Örnek: `kubectl apply -f container-azm-ms-agentconfig.yaml`.
 
-Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonucu içerir: `configmap "container-azm-ms-agentconfig" created` .
+Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için bir sıralı yeniden başlatma işlemi. Tüm yeniden başlatmaları aynı anda yoktur. Yeniden başlatmalar tamamlandığında, aşağıdaki örneğe benzer ve sonucu içeren bir ileti görüntülenir: `configmap "container-azm-ms-agentconfig" created` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

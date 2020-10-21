@@ -4,12 +4,12 @@ description: Bu makalede Azure geçişi ile AWS VM 'lerinin Azure 'a nasıl geç
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62bfad2cc92e7af61a10360878ebaa3093897e97
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651834"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310733"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
 
@@ -40,7 +40,7 @@ Azure 'a geçirmeden önce, bir VM bulma ve geçiş değerlendirmesi gerçekleş
 
 Bir değerlendirmeyi aşağıdaki şekilde ayarlayın:
 
-1. Azure 'u ayarlamak ve AWS VM 'lerinizi bir değerlendirme için hazırlamak üzere [öğreticiyi](./tutorial-prepare-physical.md) izleyin. Şunlara dikkat edin:
+1. Azure 'u ayarlamak ve AWS VM 'lerinizi bir değerlendirme için hazırlamak üzere [öğreticiyi](./tutorial-discover-physical.md) izleyin. Şunlara dikkat edin:
 
     - Azure geçişi AWS örneklerini keşfederken parola kimlik doğrulamasını kullanır. AWS örnekleri varsayılan olarak parola kimlik doğrulamasını desteklemez. Örneği keşfedebilmeniz için önce parola kimlik doğrulamasını etkinleştirmeniz gerekir.
         - Windows makineleri için WinRM bağlantı noktası 5985 (HTTP) izin verin. Bu, uzak WMI çağrılarına izin verir.
@@ -61,7 +61,7 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 - Geçirmek istediğiniz AWS VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. AWS VM 'Leri, geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini ve çekirdek sürümlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Linux sanal makinelerinize yönelik işletim sistemi ve çekirdek sürümlerini denetlemek için *hostnamectl* veya *uname-a* gibi standart komutları kullanabilirsiniz.  Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi (yük devretme testi) gerçekleştirmenizi öneririz.
 - AWS sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
@@ -370,7 +370,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
     - Site Recovery ile Azure sanal makinelerini ikincil bölgeye çoğaltarak iş yüklerinin çalışmaya devam etmesini ve sürekli kullanılabilir olmasını sağlayın. [Daha fazla bilgi edinin](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Daha fazla güvenlik için:
     - Azure Güvenlik Merkezi ile gelen trafik erişimini kilitleme ve sınırlayın [-tam zamanında yönetim](../security-center/security-center-just-in-time.md).
-    - [Ağ Güvenlik Grupları](../virtual-network/security-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
+    - [Ağ Güvenlik Grupları](../virtual-network/network-security-groups-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
     - [Azure Disk Şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)’ni dağıtarak disklerin güvenliğinin sağlanmasına yardımcı olun ve verileri hırsızlık ve yetkisiz erişime karşı koruyun.
     - [IaaS kaynaklarının güvenliğini sağlama](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) hakkında daha fazla bilgi edinin ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)’ni ziyaret edin.
 - İzleme ve yönetim için:

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3990f9533aa6746011b1f070139b39ec884711c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcb971cd0bd0addd3190e2a3a5f9c6740494b7fd
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305935"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318957"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Airstack 'i yapılandırma
 
@@ -89,7 +89,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Airstack 'i yapılandırmadan �
 Bu bölümde Azure AD sağlama hizmetini kullanarak Airstack 'te kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan ve/veya gruplarını yapılandırma adımları adım adım kılavuzluk eder.
 
 > [!TIP]
-> Airstack [Çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial)sunulan yönergeleri Izleyerek uçak YıĞıNı için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
+> Airstack [Çoklu oturum açma öğreticisinde](./airstack-tutorial.md)sunulan yönergeleri Izleyerek uçak YıĞıNı için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
 
 ### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Azure AD 'de Airstack için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -153,4 +153,3 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
-

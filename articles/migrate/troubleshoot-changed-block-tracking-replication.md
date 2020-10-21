@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871198"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314725"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Aracısız VMware VM geçişinde çoğaltma sorunlarını giderme
 
@@ -90,7 +90,7 @@ Verileri Azure 'a çoğaltmaya çalışan bileşen çalışmıyor veya yanıt ve
     
     **Performans kıyaslama testini çalıştırma adımları:**
     
-      1. AzCopy [indirin](https://go.microsoft.com/fwlink/?linkid=2138966)
+      1. AzCopy [indirin](../storage/common/storage-use-azcopy-v10.md)
         
       2. Kaynak grubundaki gereç depolama hesabını bulun. Depolama hesabı, migrategwsa öğesine benzeyen bir ada sahiptir \* \* \* \* \* \* \* \* \* \* . Bu, Yukarıdaki komutta [account] parametresinin değeridir.
         
@@ -170,7 +170,7 @@ Olası nedenler şunlardır:
     
     **Performans kıyaslama testini çalıştırma adımları:**
     
-      1. AzCopy [indirin](https://go.microsoft.com/fwlink/?linkid=2138966)
+      1. AzCopy [indirin](../storage/common/storage-use-azcopy-v10.md)
         
       2. Kaynak grubundaki gereç depolama hesabını bulun. Depolama hesabı, migratelsa benzer bir ada sahiptir \* \* \* \* \* \* \* \* \* \* . Bu, Yukarıdaki komutta [account] parametresinin değeridir.
         
@@ -295,4 +295,4 @@ Bu, NFC ana bilgisayar arabelleğinin belleği tükendiğinde gerçekleşir. Bu 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-VM çoğaltmaya devam edin ve [test geçişi](https://go.microsoft.com/fwlink/?linkid=2139333)gerçekleştirin.
+VM çoğaltmaya devam edin ve [test geçişi](./tutorial-migrate-vmware.md#run-a-test-migration)gerçekleştirin.

@@ -5,15 +5,15 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8fdf78c0a3dd2f7a130d827751ce93c5539575df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df180f0aefc817004e99d63998d000498c4d15aa
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87502968"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310160"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure özel DNS bölgesi oluşturma
 
@@ -21,13 +21,7 @@ Bu hızlı başlangıç, Azure CLı kullanarak ilk özel DNS bölgenizi ve kayd�
 
 DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınıza özel bir DNS bölgesi yayımlamak için, bölgedeki kayıtları çözümlemesine izin verilen sanal ağların listesini belirtirsiniz.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
 
-Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
-
-> [!div class="checklist"]
-> * Özel bir DNS bölgesi oluşturma
-> * Test amaçlı sanal makineleri oluşturma
-> * Ek bir DNS kaydı oluşturma
-> * Özel bölgeyi test etme
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -145,7 +139,7 @@ Artık **Private.contoso.com** özel bölgeniz için ad çözümlemesini test ed
 Ad çözümlemesini test etmek için ping komutunu kullanabilirsiniz. Bunun için iki sanal makinedeki güvenlik duvarını da gelen ICMP paketlerine izin verecek şekilde yapılandırmanız gerekir.
 
 1. myVM01 adlı sanal makineye bağlanın, yönetici ayrıcalıklarıyla bir Windows PowerShell penceresi açın.
-2. Aşağıdaki komutu çalıştırın:
+2. Şu komutu çalıştırın:
 
    ```powershell
    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -203,7 +197,7 @@ myVM02 için yineleyin.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Tüm kaynakları silme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu hızlı başlangıçta oluşturulan kaynakları silmek için **MyAzureResourceGroup** kaynak grubunu silin.
 

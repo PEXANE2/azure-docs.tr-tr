@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e041ed67513a9be79c45f9fb4d1658d9d44aeeac
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: bffaca9db9a6ecefc9870a2e39ba86640d70b945
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123088"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281727"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB için API 'sini kullanarak .NET Web uygulaması oluşturma 
 
@@ -27,7 +27,7 @@ ms.locfileid: "92123088"
 > * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve bu sayede belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturabilir ve sorgulayabilirsiniz. 
+Azure Cosmos DB, Microsoft 'un herhangi bir ölçekte açık API 'Leri olan hızlı NoSQL veritabanıdır. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve bu sayede belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturabilir ve sorgulayabilirsiniz. 
 
 Bu hızlı başlangıçta, [MongoDB için Azure Cosmos DB API 'si](mongodb-introduction.md)Ile Cosmos hesabının nasıl oluşturulacağı gösterilmektedir. Daha sonra [MongoDB .net sürücüsü](https://docs.mongodb.com/ecosystem/drivers/csharp/)kullanılarak oluşturulan bir görev listesi Web uygulaması derleyip dağıtacaksınız.
 

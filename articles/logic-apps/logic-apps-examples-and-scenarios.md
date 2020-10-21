@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090289"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317387"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps için genel senaryolar, örnekler, öğreticiler ve izlenecek yollar
 
@@ -117,7 +117,7 @@ Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilm
 * [B2B kurumsal Tümleştirmeler için tümleştirme hesapları oluşturma ve yönetme](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Azure Logic Apps tümleştirme hizmeti ortamını (ıSE) yönetme](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>İzleme
+### <a name="monitor"></a>İzleyici
 
 * [Azure Logic Apps için çalışma durumunu izleme, tetikleyici geçmişini gözden geçirme ve uyarı ayarlama](../logic-apps/monitor-logic-apps.md)
 * [Azure Izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama](../logic-apps/monitor-logic-apps-log-analytics.md)
@@ -126,7 +126,7 @@ Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilm
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>İçerik türlerini, dönüştürmeleri ve dönüştürmeleri işleme
 
-Azure Logic Apps [iş akışı tanımlama dilindeki](https://aka.ms/logicappsdocs)birçok işlevi kullanarak birden çok içerik türüne erişebilir, dönüşüm ve dönüştürme yapabilirsiniz. Örneğin, `@json()` ve `@xml()` iş akışı ifadeleriyle bir STRING, JSON ve XML arasında dönüştürme yapabilirsiniz. Logic Apps altyapısı, hizmetler arasında kayıpsız bir biçimde içerik aktarımını desteklemek için içerik türlerini korur.
+Azure Logic Apps [iş akışı tanımlama dilindeki](./logic-apps-workflow-definition-language.md)birçok işlevi kullanarak birden çok içerik türüne erişebilir, dönüşüm ve dönüştürme yapabilirsiniz. Örneğin, `@json()` ve `@xml()` iş akışı ifadeleriyle bir STRING, JSON ve XML arasında dönüştürme yapabilirsiniz. Logic Apps altyapısı, hizmetler arasında kayıpsız bir biçimde içerik aktarımını desteklemek için içerik türlerini korur.
 
 * , Ve gibi [Azure Logic Apps içerik türlerini işleme](../logic-apps/logic-apps-content-type.md). `application/` `application/octet-stream``multipart/formdata`
 * [Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu](../logic-apps/workflow-definition-language-functions-reference.md)

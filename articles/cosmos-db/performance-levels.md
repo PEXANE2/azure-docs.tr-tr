@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fd7431b19ed21ee9cf76b6c2fe190b3f31cacf6
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020890"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281054"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1, S2 ve S3 performans düzeyleri kullanımdan kaldırılıyor
 
@@ -82,7 +82,7 @@ Bu durumların her birinde, koleksiyonu geçirdikten sonra, verimlilik düzeyini
 
 ## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>20 GB 'den fazla depolamaya ihtiyacım varsa ne yapmalıyım?
 
-S1, S2 veya S3 performans düzeyine sahip bir koleksiyonunuz olsun ya da hepsi 20 GB depolama alanı bulunan tek bir bölüm koleksiyonuna sahipseniz, verilerinizi neredeyse sınırsız depolama alanı olan bölümlenmiş bir koleksiyona geçirmek için Azure Cosmos DB veri geçiş aracı ' nı kullanabilirsiniz. Bölümlenmiş bir koleksiyonun avantajları hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](sql-api-partition-data.md). 
+S1, S2 veya S3 performans düzeyine sahip bir koleksiyonunuz olsun ya da hepsi 20 GB depolama alanı bulunan tek bir bölüm koleksiyonuna sahipseniz, verilerinizi neredeyse sınırsız depolama alanı olan bölümlenmiş bir koleksiyona geçirmek için Azure Cosmos DB veri geçiş aracı ' nı kullanabilirsiniz. Bölümlenmiş bir koleksiyonun avantajları hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](partitioning-overview.md). 
 
 <a name="change-before"></a>
 
@@ -132,6 +132,6 @@ EA müşterileri, geçerli sözleşmesinin sonuna kadar fiyat korumalı olacakt�
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Cosmos DB, fiyatlandırma ve verileri yönetme hakkında daha fazla bilgi edinmek için şu kaynakları bulun:
 
-1.  [Cosmos DB verileri bölümleme](sql-api-partition-data.md). Tek bölümlü kapsayıcı ve bölümlenmiş kapsayıcılar arasındaki farkı anlayın ve sorunsuz ölçeklendirmek için bölümleme stratejisi uygulama ipuçları.
+1.  [Cosmos DB verileri bölümleme](partitioning-overview.md). Tek bölümlü kapsayıcı ve bölümlenmiş kapsayıcılar arasındaki farkı anlayın ve sorunsuz ölçeklendirmek için bölümleme stratejisi uygulama ipuçları.
 2.  [Cosmos DB fiyatlandırması](https://azure.microsoft.com/pricing/details/cosmos-db/). Sağlama verimi ve depolama alanı kullanma maliyeti hakkında bilgi edinin.
 3.  [İstek birimleri](request-units.md). Örneğin okuma, yazma, sorgulama gibi farklı işlem türleri için üretilen iş kullanımını anlayın.

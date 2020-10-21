@@ -7,19 +7,19 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: f56c3bd2d302fc7163fa8c05c595891f191c6a11
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3219fe3507af1c6020ad3a7d84782847dbb57ae
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91568446"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275098"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB: Tablo API’sine Giriş
 
 [Azure Cosmos DB](introduction.md), Azure Tablo depolaması için yazılmış olan ve aşağıdaki gibi üst düzey özelliklere ihtiyaç duyan uygulamalar için Tablo API'sini sunar:
 
 * [Anahtar genel dağıtımı](distribute-data-globally.md).
-* Dünya genelinde [adanmış aktarım hızı](partition-data.md).
+* Dünya genelinde [adanmış aktarım hızı](partitioning-overview.md).
 * 99 yüzdebirlikte tek basamaklı milisaniyelik gecikme süresi.
 * Garantili yüksek kullanılabilirlik.
 * Otomatik ikincil dizin oluşturma.
@@ -43,7 +43,7 @@ Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikli�
 | Fiyatlandırma | Depolama açısından iyileştirilmiş. | Aktarım hızı açısından iyileştirilmiş. |
 | SLA’lar | çoğaltma stratejisine bağlı olarak% 99,9% 99,99 oranında kullanılabilirlik. | % 99,999, tek bölgede hesapta kullanılabilirliği ve% 99,99 yazma kullanılabilirliği ve çok bölgeli hesaplarda% 99,999 yazma kullanılabilirliği. Kullanılabilirlik, gecikme süresi, aktarım hızı ve tutarlılığı kapsayan [kapsamlı SLA 'lar](https://azure.microsoft.com/support/legal/sla/cosmos-db/) . |
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [Azure portalındaki](https://portal.azure.com) yeni Azure Cosmos DB hesabı. Ardından [.NET kullanarak Tablo API'sı için hızlı başlangıç](create-table-dotnet.md) makalemizi inceleyin. 
 
