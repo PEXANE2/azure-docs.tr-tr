@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: d0234ca04b772e4ff5127ef9dd896b49141febfb
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f12919cd35441c6c198269e2f79c705c1d304acd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167568"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278818"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API bölümleniyor
 
@@ -25,7 +25,7 @@ Geliştirici perspektifinden bölümlendirme, yerel [Apache Cassandra](https://c
 
 ## <a name="differences-between-apache-cassandra-and-azure-cosmos-db"></a>Apache Cassandra ve Azure Cosmos DB arasındaki farklar
 
-Azure Cosmos DB, bölümlerin depolandığı her makinenin kendisi [fiziksel bölüm](partition-data.md#physical-partitions)olarak adlandırılır. Fiziksel bölüm bir sanal makineye oturum, ayrılmış bir işlem birimi veya fiziksel kaynak kümesi. Bu işlem biriminde depolanan her bölüm, Azure Cosmos DB bir [mantıksal bölüm](partition-data.md#logical-partitions) olarak adlandırılır. Apache Cassandra hakkında zaten bilgi sahibiyseniz, mantıksal bölümleri Cassandra 'daki normal bölümlerin olduğu şekilde düşünebilirsiniz. 
+Azure Cosmos DB, bölümlerin depolandığı her makinenin kendisi [fiziksel bölüm](partitioning-overview.md#physical-partitions)olarak adlandırılır. Fiziksel bölüm bir sanal makineye oturum, ayrılmış bir işlem birimi veya fiziksel kaynak kümesi. Bu işlem biriminde depolanan her bölüm, Azure Cosmos DB bir [mantıksal bölüm](partitioning-overview.md#logical-partitions) olarak adlandırılır. Apache Cassandra hakkında zaten bilgi sahibiyseniz, mantıksal bölümleri Cassandra 'daki normal bölümlerin olduğu şekilde düşünebilirsiniz. 
 
 Apache Cassandra, bir bölümde depolanabilecek verilerin boyutuyla ilgili 100 MB 'lik bir sınır önerir. Azure Cosmos DB Cassandra API, mantıksal bölüm başına en fazla 20 GB ve fiziksel bölüm başına en çok 30 veri sağlar. Azure Cosmos DB ' de, Apache Cassandra 'dan farklı olarak, fiziksel bölümde bulunan işlem kapasitesi, [İstek birimleri](request-units.md)adlı tek bir ölçüm kullanılarak ifade edilir ve bu da iş yükünüzü, çekirdekler, bellek veya IOPS yerine saniye başına istek (okuma veya yazma) açısından düşünmenize olanak tanır. Bu, her bir isteğin maliyetini anladıktan sonra Kapasite planlamasını daha basit hale getirir. Her fiziksel bölüm, en fazla 10000 ru işlem kullanabilir. Cassandra API ' deki [elastik ölçekte](manage-scale-cassandra.md) makalemizi okuyarak ölçeklenebilirlik seçenekleri hakkında daha fazla bilgi edinebilirsiniz. 
 
@@ -112,6 +112,6 @@ CREATE TABLE uprofile.user (
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB bölümünde bölümlendirme ve yatay ölçeklendirme](partition-data.md)hakkında bilgi edinin.
+* [Azure Cosmos DB bölümünde bölümlendirme ve yatay ölçeklendirme](partitioning-overview.md)hakkında bilgi edinin.
 * [Azure Cosmos DB 'de sağlanan aktarım hızı](request-units.md)hakkında bilgi edinin.
 * [Azure Cosmos DB 'de küresel dağıtım](distribute-data-globally.md)hakkında bilgi edinin.

@@ -3,12 +3,12 @@ title: Azure Service Fabric hakkında daha fazla bilgi
 description: Azure Service Fabric 'nin temel kavramları ve ana alanlarıyla ilgili bilgi edinin. Service Fabric genişletilmiş bir genel bakış sağlar ve mikro hizmetlerin nasıl oluşturulacağını açıklar.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f4e0ea03b631773f96ca4645d44b9fe28d89da9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836709"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319819"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric hakkında bilgi edinmek istiyor musunuz?
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur.  Service Fabric, ancak büyük bir yüzey alanına sahiptir ve öğrenilmesi çok önemlidir.  Bu makalede bir Service Fabric Özeti ve temel kavramlar, programlama modelleri, uygulama yaşam döngüsü, test, kümeler ve sistem durumu izleme açıklanmaktadır. Bir giriş ve mikro hizmetler oluşturmak için Service Fabric nasıl kullanılabileceği hakkında [genel bakış](service-fabric-overview.md) ve [mikro hizmetler nelerdir?](service-fabric-overview-microservices.md) makalesini okuyun. Bu makale kapsamlı bir içerik listesi içermez, ancak Service Fabric her alanı için genel bakış ve başlangıç makalelerine bağlantı sağlar. 
@@ -75,7 +75,7 @@ Varsayılan olarak, Service Fabric Hizmetleri işlem olarak dağıtır ve etkinl
 ### <a name="reliable-actors"></a>Reliable Actors
 Reliable Services üzerine inşa edilen [güvenilir aktör](service-fabric-reliable-actors-introduction.md) çerçevesi, aktör tasarım düzenine göre sanal aktör modelini uygulayan bir uygulama çerçevesidir. Güvenilir aktör çerçevesi, aktör olarak adlandırılan tek iş parçacıklı yürütme ile bağımsız işlem ve durum birimleri kullanır. Güvenilir aktör çerçevesi, aktörler ve önceden ayarlanmış durum kalıcılığı ve genişleme yapılandırmalarına yönelik yerleşik iletişim sağlar.
 
-### <a name="aspnet-core"></a>ASP.NET Çekirdeği
+### <a name="aspnet-core"></a>ASP.NET Core
 Service Fabric Web ve API uygulamaları oluşturmak için birinci sınıf programlama modeli olarak [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) tümleştirilir.  ASP.NET Core, Service Fabric iki farklı şekilde kullanılabilir:
 
 - Konuk yürütülebilir dosyası olarak barındırılır. Bu, birincil olarak, mevcut ASP.NET Core uygulamalarını kod değişikliği olmadan Service Fabric üzerinde çalıştırmak için kullanılır.
@@ -189,7 +189,7 @@ Bu üç alanı kapsayan birden fazla ürün mevcuttur ve her biri için farklı 
 * [Hizmetleri izlemeyi ve tanılamayı](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)öğrenin. 
 * [Uygulamalarınızı ve hizmetlerinizi test](service-fabric-testability-overview.md)etme hakkında bilgi edinin.
 * [Küme kaynaklarını yönetmeyi ve](service-fabric-cluster-resource-manager-introduction.md)düzenlemeyi öğrenin.
-* [Service Fabric örneklerine](https://aka.ms/servicefabricsamples)bakın.
+* [Service Fabric örneklerine](/samples/browse/?products=azure)bakın.
 * [Service Fabric destek seçenekleri](service-fabric-support.md)hakkında bilgi edinin.
 * Makaleler ve duyurular için [ekip blogunu](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) okuyun.
 

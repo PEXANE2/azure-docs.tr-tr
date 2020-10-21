@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e844904f236e9d81404a3481af9349ac8881085
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761167"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310446"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus için Azure Güvenlik temeli
 
@@ -62,7 +62,7 @@ Azure Güvenlik Merkezi 'ni kullanın ve Azure 'daki Service Bus kaynaklarınız
 
 - [DDoS korumasını yapılandırma](../virtual-network/manage-ddos-protection.md)
 
-- [Azure Güvenlik Merkezi tümleşik tehdit bilgileri](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Güvenlik Merkezi tümleşik tehdit bilgileri](../security-center/azure-defender.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -111,7 +111,7 @@ Ayrıca, yerleşik tanımlar kuruluşunuzun ihtiyaçlarına uygun değilse özel
 
 - [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Service Bus ad alanı için Azure yerleşik Ilkesi](/azure/service-bus-messaging/policy-samples#azure-service-bus-messaging)
+- [Service Bus ad alanı için Azure yerleşik Ilkesi](./policy-reference.md#azure-service-bus-messaging)
 
 - [Ağ için Azure Ilke örnekleri](../governance/policy/samples/built-in-policies.md#network)
 
@@ -129,7 +129,7 @@ Tüm kaynakların etiketlerle oluşturulmasını ve mevcut etiketlenmemiş kayna
 
 Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzerinde arama yapabilir veya eylemler gerçekleştirebilirsiniz. 
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags) 
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md) 
 
 - [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md) 
 
@@ -143,7 +143,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Service Bus ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -177,7 +177,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 - [Azure Service Bus için tanılama ayarlarını etkinleştirme](service-bus-diagnostic-logs.md)
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -231,9 +231,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 - [Azure Service Bus için yerleşik roller](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
-- [Azure AD 'de PowerShell ile dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -311,7 +311,7 @@ Ayrıca, yerleşik tanımlar kuruluşunuzun ihtiyaçlarına uygun değilse özel
 
 **Rehberlik**: ortamda şüpheli veya güvenli olmayan etkinliklerin ne zaman oluştuğunu algılamak için Azure Active Directory güvenlik raporları ve izleme kullanın. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi 'ni kullanın.
 
-- [Riskli etkinlik için işaretlenen Azure AD kullanıcılarını belirleme](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Riskli etkinlik için işaretlenen Azure AD kullanıcılarını belirleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Güvenlik Merkezi 'nde kullanıcıların kimlik ve erişim etkinliğini izleme](../security-center/security-center-identity-access.md)
 
@@ -347,7 +347,7 @@ Ayrıca, yerleşik tanımlar kuruluşunuzun ihtiyaçlarına uygun değilse özel
 
 Ek olarak, Service Bus ad uzayının paylaşılan erişim imzasını düzenli olarak döndürün.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure kimlik erişimi Incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
@@ -363,7 +363,7 @@ Ek olarak, Service Bus ad uzayının paylaşılan erişim imzasını düzenli ol
 
 Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. Ardından Azure Izleyici 'de günlüklerde gerçekleşen belirli eylemler için istenen günlük uyarılarını yapılandırabilirsiniz.
 
-- [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure Active Directory kullanarak Service Bus kaynaklarına erişim yetkisi verme](authenticate-application.md)
 
@@ -375,7 +375,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: Service Bus etkin kaynaklarla ilgili şüpheli eylemler için otomatik yanıtları yapılandırmak üzere Azure Active Directory kimlik koruması ve risk algılama özelliklerini kullanın. Kuruluşunuzun güvenlik yanıtlarını uygulamak için Azure Sentinel aracılığıyla otomatikleştirilmiş yanıtları etkinleştirmeniz gerekir.
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -403,7 +403,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olmak için Service Bus ilişkili kaynaklarda Etiketler kullanın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -413,11 +413,11 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve yönetim grupları uygulayın. Service Bus ad alanları, Özel uç noktaları yapılandırılmış ve uygun şekilde etiketlenerek sanal ağlarla ayrılmalıdır.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 - [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
@@ -437,7 +437,7 @@ Microsoft, Azure Service Bus için temel altyapıyı yönetir ve müşteri veril
 
 - [Özel uç noktalar aracılığıyla Azure Service Bus ad alanlarına erişime izin ver](private-link-service.md)
 
-- [Ağ güvenlik gruplarını ve hizmet etiketlerini anlayın](/azure/virtual-network/security-overview)
+- [Ağ güvenlik gruplarını ve hizmet etiketlerini anlayın](../virtual-network/network-security-groups-overview.md)
 
 - [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
@@ -507,7 +507,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 - [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -527,11 +527,11 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Rehberlik**: Azure Service Bus ad alanlarını ve ilgili kaynakları düzenlemek ve izlemek için uygun yerlerde etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -574,7 +574,7 @@ Ayrıca, yerleşik tanımlar kuruluşunuzun ihtiyaçlarına uygun değilse özel
 
 - [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/index.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -603,9 +603,9 @@ Ayrıca, yerleşik tanımlar kuruluşunuzun ihtiyaçlarına uygun değilse özel
 
 Konfigürasyonları denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. ServiceBus" ad alanındaki Azure Ilke diğer adlarını kullanın.
 
-- [Service Bus için Azure yerleşik ilkeleri ](/azure/service-bus-messaging/policy-samples)
+- [Service Bus için Azure yerleşik ilkeleri ](./policy-reference.md)
 
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -653,7 +653,7 @@ Konfigürasyonları denetlemek veya zorlamak üzere özel ilkeler oluşturmak i�
 
 - [Service Bus için müşteri tarafından yönetilen anahtarları yapılandırma](configure-customer-managed-key.md)
 
-- [Key Vault oluşturma](/azure/key-vault/quick-create-portal)
+- [Key Vault oluşturma](../key-vault/secrets/quick-create-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -731,7 +731,7 @@ Aşağıdaki PowerShell komutuyla Key Vault Sırlarınızın düzenli otomatik y
 
 - [Bekleyen Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma](configure-customer-managed-key.md)
 
-- [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -741,7 +741,7 @@ Aşağıdaki PowerShell komutuyla Key Vault Sırlarınızın düzenli otomatik y
 
 **Rehberlik**: anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin. Azure Service Bus, müşteri tarafından yönetilen anahtarların geçici silme işlemi yapması ve bu şekilde temizlenmesidir.
 
-- [Key Vault 'da geçici silme özelliğini etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault 'da geçici silme özelliğini etkinleştirme](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [Anahtarlar içeren bir Anahtar Kasası ayarlama](../event-hubs/configure-customer-managed-key.md)
 
@@ -775,7 +775,7 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md) 
 
-- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -843,5 +843,5 @@ Azure kaynaklarınızı korumaya yönelik güvenlik uyarılarına ve önerilerin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik kıyaslaması](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik kıyaslaması](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

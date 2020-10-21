@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
-ms.openlocfilehash: 70dbceb51ed030124d1b793d77c6bc287da91065
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e31150a15996d9c6e77c772e6d703a39adfa91f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81687635"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278915"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API’sine giriş
 
@@ -31,7 +31,7 @@ Cassandra API, Cassandra sorgu dili (CQL), Cassandra tabanlı araçlar (csqlsh g
 
 **Mevcut kodu ve araçları kullanma olanağı**: Azure Cosmos DB, mevcut Cassandra SDK’ları ve araçları ile kablo protokolü düzeyinde uyumluluk sunar. Bu uyumluluk, küçük değişikliklerle Azure Cosmos DB Cassandra API’si ile mevcut kod tabanınızı kullanabilmenizi sağlar.
 
-**Aktarım hızı ve depolama esnekliği**: Azure Cosmos DB, tüm bölgelerde garantili aktarım hızı sağlar ve Azure portal, PowerShell veya CLI işlemleriyle sağlanan aktarım hızını ölçeklendirebilir. Öngörülebilir performansla gerekirse, tablolarınızın depolama ve aktarım hızını [ölçeklendiresnek](manage-scale-cassandra.md) .
+**Aktarım hızı ve depolama**esnekliği: Azure Cosmos DB tüm bölgelerde işleme sağlar ve sağlanan aktarım hızını Azure Portal, POWERSHELL veya CLI işlemleriyle ölçeklendirebilir. Öngörülebilir performansla gerekirse, tablolarınızın depolama ve aktarım hızını [ölçeklendiresnek](manage-scale-cassandra.md) .
 
 **Genel dağıtım ve kullanılabilirlik**: Azure Cosmos DB, tüm Azure bölgelerinde verileri genel olarak dağıtma olanağı sağlar ve bir yandan düşük gecikme süreli veri erişimini ve yüksek kullanılabilirliği sağlarken diğer yandan yerel olarak verileri sunar. Azure Cosmos DB, ek işletim yükü getirmeden bir bölge içinde %99,99 gibi yüksek kullanılabilirlik ve bölgeler arasında %99,999'luk okuma ve yazma kullanılabilirliği sağlar. [Verileri genel olarak dağıtma](distribute-data-globally.md) makalesinden daha fazla bilgi edinin. 
 

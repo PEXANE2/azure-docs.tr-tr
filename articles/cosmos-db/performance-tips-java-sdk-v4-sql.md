@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43206fbc956602ddaf189f45648cf8a44a3dd143
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258306"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277321"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 
@@ -38,18 +38,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 * **Bağlantı modu: doğrudan modu kullan**
 <a id="direct-connection"></a>
     
-    İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. Bağlantı modu, istemcisini yapılandırmak için kullanılabilen bir anahtar yapılandırma ayarıdır. Java SDK 'Sı v4 Azure Cosmos DB için kullanılabilen iki bağlantı modu şunlardır:  
-
-    * Doğrudan mod (varsayılan)      
-    * Ağ geçidi modu
-
-    Bu bağlantı modları temelde, veri düzleminin istek gösteren yolu-belge okuma ve yazma işlemlerini, istemci makinenizden Azure Cosmos DB arka uçta bölümlere alma. Genellikle doğrudan modu, en iyi performans için tercih edilen seçenektir. istemcinin TCP bağlantılarını Azure Cosmos DB arka uçtaki bölümlerle doğrudan açmasına olanak sağlar ve istekleri doğrudan bir aracı olmadan *doğrudan*gönderebilirsiniz. Buna karşılık, ağ geçidi modunda, istemciniz tarafından yapılan istekler, Azure Cosmos DB Ön uçtaki "ağ geçidi" sunucusuna yönlendirilir ve bu da isteklerinizi Azure Cosmos DB arka uçta uygun bölümlere (ler) gönderir. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun Azure Cosmos DB, verilerin her okunışında veya her yazıldığında ek bir ağ atlaması (bölüm için istemci ağ geçidine ve ağ geçidine) içerir. Bu nedenle, daha az ağ atlaması nedeniyle doğrudan mod daha iyi performans sunar.
-
-    Veri düzlemi istekleri için bağlantı modu, aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemleri kullanılarak Azure Cosmos db istemci Oluşturucusu 'nda yapılandırılır. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için*directconnectionconfig* , *gatewaymode ()* için *gatewayconnectionconfig* .)
+    Java SDK varsayılan bağlantı modu doğrudan ' dir. İstemci oluşturucusunda bağlantı modunu aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemlerini kullanarak yapılandırabilirsiniz. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için*directconnectionconfig* , gatewaymode için *gatewayconnectionconfig* *()*.). Farklı bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı modları](sql-sdk-connection-modes.md) makalesine bakın.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -67,7 +60,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -135,7 +128,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -276,7 +269,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Nokta yazma performansını geliştirmek için, aşağıda gösterildiği gibi, nokta yazma API çağrısındaki öğe bölüm anahtarını belirtin:
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -292,7 +285,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     yalnızca öğe örneğini sağlamak yerine aşağıda gösterildiği gibi:
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -333,7 +326,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, bu işlemler tarafından tüketilen istek birimi sayısını ölçmek üzere [x-MS-Request-şarj](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini inceleyin. Ayrıca, Resourceres, FeedResponse içindeki eşdeğer Requestücretözelliğine de bakabilirsiniz \<T> \<T> .
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -372,4 +365,4 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamanızı ölçek ve yüksek performans için tasarlama hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](partition-data.md).
+Uygulamanızı ölçek ve yüksek performans için tasarlama hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](partitioning-overview.md).

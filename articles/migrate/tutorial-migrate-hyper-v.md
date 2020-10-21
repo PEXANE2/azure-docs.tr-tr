@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: fbf436f501ef2d21dcd3394e61a40d354376efb9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 84f04d2f1f8c9b54a1f2a2a13cc97954ac5add90
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979096"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308544"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -22,7 +22,7 @@ Bu öğretici, makinelerin Azure 'a nasıl değerlendirileceğini ve geçirilece
 > [!NOTE]
 > Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir, böylece bir kavram kanıtı hızlı bir şekilde ayarlayabilmenizi sağlayabilirsiniz. Öğreticiler mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. 
 
- Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure geçişi: sunucu geçiş aracı 'nı ekleyin.
@@ -151,7 +151,7 @@ Azure geçişi projesinde çoğaltmakta olduğunuz ilk VM ise Azure geçişi: su
 - **Service Bus**: Azure geçişi: sunucu geçişi, yüklemeye çoğaltma düzenleme iletileri göndermek için Service Bus kullanır.
 - **Ağ geçidi depolama hesabı**: Azure geçişi: sunucu geçişi, çoğaltılan VM 'ler hakkında durum bilgilerini depolamak için ağ geçidi depolama hesabını kullanır.
 - **Günlük depolama hesabı**: Azure geçişi gereci, VM 'ler için çoğaltma günlüklerini bir günlük depolama hesabına yükler. Azure geçişi, çoğaltma bilgilerini çoğaltma tarafından yönetilen disklere uygular.
-- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır. Hyper-V VM değerlendirmesi ve geçişi için [Azure hazırlandığınızda](tutorial-prepare-hyper-v.md#prepare-azure) , anahtar kasasının depolama hesabına erişmesi için gereken izinleri ayarlamış olmanız gerekir. 
+- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır. Hyper-V VM değerlendirmesi ve geçişi için [Azure hazırlandığınızda](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) , anahtar kasasının depolama hesabına erişmesi için gereken izinleri ayarlamış olmanız gerekir. 
 
 
 ## <a name="track-and-monitor"></a>İzleme ve izleme
@@ -232,7 +232,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
     - Site Recovery ile Azure sanal makinelerini ikincil bölgeye çoğaltarak iş yüklerinin çalışmaya devam etmesini ve sürekli kullanılabilir olmasını sağlayın. [Daha fazla bilgi edinin](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Daha fazla güvenlik için:
     - Azure Güvenlik Merkezi ile gelen trafik erişimini kilitleme ve sınırlayın [-tam zamanında yönetim](../security-center/security-center-just-in-time.md).
-    - [Ağ Güvenlik Grupları](../virtual-network/security-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
+    - [Ağ Güvenlik Grupları](../virtual-network/network-security-groups-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
     - [Azure Disk Şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)’ni dağıtarak disklerin güvenliğinin sağlanmasına yardımcı olun ve verileri hırsızlık ve yetkisiz erişime karşı koruyun.
     - [IaaS kaynaklarının güvenliğini sağlama](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) hakkında daha fazla bilgi edinin ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)’ni ziyaret edin.
 - İzleme ve yönetim için:

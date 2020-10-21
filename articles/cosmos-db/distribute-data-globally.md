@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570183"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278766"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB ile verilerinizi küresel ölçekte dağıtma
 
 Günümüzde uygulamaların çok kısa sürede yanıt vermesi ve her zaman açık olması beklenmektedir. Düşük gecikme süresi ve yüksek kullanılabilirlik düzeylerine erişmek için bu uygulamaların örneklerinin kullanıcılara yakın veri merkezlerine dağıtılması gerekir. Bu uygulamalar genellikle birden çok veri merkezinde dağıtılır ve global olarak dağıtılır. Genel olarak dağıtılmış uygulamalar, uygulamaların kullanıcılarına yakın olan veri kopyalarında çalışmasına olanak tanımak için verileri dünyanın her yerinde saydam olarak çoğaltabilen veritabanlarına ihtiyaç duyar. 
 
-Azure Cosmos DB, düşük gecikme süresi, esnek verimlilik, veri tutarlılığı için iyi tanımlanmış semantik ve yüksek kullanılabilirlik sağlamak üzere tasarlanan küresel olarak dağıtılmış bir veritabanı hizmetidir. Kısacası, uygulamanızın dünyanın her yerinden garantili hızlı yanıt süresine ihtiyacı varsa, her zaman çevrimiçi olması gerekiyorsa ve verimlilik ve depolama için sınırsız ve esnek ölçeklenebilirlik gerektiriyorsa, uygulamanızı Azure Cosmos DB oluşturmalısınız.
+Azure Cosmos DB, düşük gecikme süresi, esnek verimlilik, veri tutarlılığı için iyi tanımlanmış semantik ve yüksek kullanılabilirlik sağlamak üzere tasarlanan küresel olarak dağıtılmış bir veritabanı hizmetidir. Kısacası, uygulamanızın dünyanın her yerinden hızlı yanıt süresine ihtiyacı varsa, her zaman çevrimiçi olması gerekiyorsa ve verimlilik ve depolama için sınırsız ve esnek ölçeklenebilirlik gerektiriyorsa, uygulamanızı Azure Cosmos DB oluşturmalısınız.
 
 Veritabanlarınızı küresel olarak dağıtmak ve Azure bölgelerinde kullanılabilir olacak şekilde yapılandırabilirsiniz. Gecikme süresini azaltmak için, verileri kullanıcılarınızın bulunduğu yere yakın konuma koyun. Gerekli bölgelerin seçilmesi, uygulamanızın küresel erişime ve kullanıcılarınızın bulunduğu yere bağlıdır. Cosmos DB, verileri, Cosmos hesabınızla ilişkili tüm bölgelere şeffaf olarak çoğaltır. Bu, genel olarak dağıtılmış Azure Cosmos veritabanınızın ve, uygulamanızın yerel olarak okuyabilmesini ve yazabilme kapsayıcılarınızın tek bir sistem görüntüsünü sağlar. 
 
@@ -29,7 +29,7 @@ Azure Cosmos DB, hesabınızla ilişkili bölgeleri dilediğiniz zaman ekleyebil
 
 **Genel etkin-etkin uygulamalar oluşturun.** No, çok bölgeli yazma çoğaltma protokolü ile her bölge yazma ve okuma işlemlerini destekler. Çok bölgeli yazma özelliği de şunları sunar:
 
-- Sınırsız elastik yazma ve okuma ölçeklenebilirliği. 
+- Sınırsız elastik yazma ve okuma ölçeklenebilirliği.
 - dünyanın her yerindeki% 99,999 okuma ve yazma kullanılabilirliği.
 - %99 ' luk yüzdede 10 milisaniyeden kısa bir süre içinde sunulan garantili okuma ve yazma işlemleri.
 
@@ -41,7 +41,7 @@ Azure Cosmos DB çoklu barındırmalı API 'Leri kullanarak, uygulamanız en yak
 
 **Bölgesel kesintiler sırasında iş devamlılığını koruyun.** Azure Cosmos DB, bölgesel bir kesinti sırasında [otomatik yük devretmeyi](how-to-manage-database-account.md#automatic-failover) destekler. Bölgesel bir kesinti sırasında, Azure Cosmos DB gecikme süresi, kullanılabilirliği, tutarlılığı ve üretilen iş SLA 'larını korumaya devam eder. Tüm uygulamanızın yüksek oranda kullanılabilir olduğundan emin olmak için Cosmos DB, bölgesel bir kesinti benzetimi yapmak üzere el ile yük devretme API 'SI sunar. Bu API 'yi kullanarak normal iş sürekliliği ayrıntılarına sahip olabilirsiniz.
 
-**Okuma ve yazma performansını küresel olarak ölçeklendirin.** Her bölgenin yazılabilir olmasını ve esnek ölçek okuma ve yazma işlemlerini dünyanın dört bir yanındaki yazmalarını sağlayabilirsiniz. Uygulamanızın bir Azure Cosmos veritabanında veya bir kapsayıcısının yapılandırdığı aktarım hızı, Azure Cosmos hesabınızla ilişkili tüm bölgelerde teslim edilmesi garanti edilir. Sağlanan aktarım hızı, [Mali olarak desteklenen SLA 'lara](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)göre garanti edilir.
+**Okuma ve yazma performansını küresel olarak ölçeklendirin.** Her bölgenin yazılabilir olmasını ve esnek ölçek okuma ve yazma işlemlerini dünyanın dört bir yanındaki yazmalarını sağlayabilirsiniz. Uygulamanızın bir Azure Cosmos veritabanı üzerinde yapılandırdığı üretilen iş hacmi veya bir kapsayıcı Azure Cosmos hesabınızla ilişkili tüm bölgelerde sağlanıyor. Sağlanan aktarım hızı, [Mali olarak desteklenen SLA 'lara](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)göre garanti edilir.
 
 **İyi tanımlanmış birkaç tutarlılık modeli arasından seçim yapın.** Azure Cosmos DB çoğaltma protokolü, beş iyi tanımlanmış, pratik ve sezgisel tutarlılık modelleri sunar. Her modelde tutarlılık ve performans arasında bir zorunluluğunu getirir bulunur. Bu tutarlılık modellerini kolayca, küresel olarak dağıtılmış uygulamalar oluşturmak için kullanın.
 

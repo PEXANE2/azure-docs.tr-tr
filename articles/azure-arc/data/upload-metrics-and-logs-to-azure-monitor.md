@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: cda123adb667b4c857e05ce53d603e328e995766
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 869bfcb87aa4846674db233c4268e9269929cd04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108176"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320173"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Kullanım verilerini, ölçümleri ve günlükleri Azure Izleyici 'ye yükleme
 
@@ -25,7 +25,7 @@ Düzenli olarak, faturalama amaçları, ölçümleri izlemek ve günlükleri Azu
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure CLı (az) ve Azure Data CLı (azdata) yüklü olmalıdır.  [Araçları yükler](./install-client-tools.md).
+Azure CLı (az) ve yüklü olması gerekir [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .  [Araçları yükler](./install-client-tools.md).
 
 Verileri Azure 'a yüklemeden önce, Azure aboneliğinizin kayıtlı Microsoft. AzureData kaynak sağlayıcısına sahip olduğundan emin olmanız gerekir.
 
@@ -45,7 +45,7 @@ az provider register -n Microsoft.AzureData --wait
 
 Envanter ve kaynak kullanımı gibi kullanım bilgileri aşağıdaki iki adımlı şekilde Azure 'a yüklenebilir:
 
-1. Aşağıdaki gibi kullanım verilerini komutunu kullanarak dışarı aktarın ```azdata export``` :
+1. Aşağıdaki gibi kullanım verilerini komutunu kullanarak dışarı aktarın `azdata export` :
 
    ```console
    #login to the data controller and enter the values at the prompt
@@ -56,7 +56,7 @@ Envanter ve kaynak kullanımı gibi kullanım bilgileri aşağıdaki iki adıml�
    ```
    Bu komut `usage.json` , veri denetleyicisinde oluşturulan SQL yönetilen örnekler ve PostgreSQL hiper ölçek örnekleri vb. gibi tüm Azure Arc etkin veri kaynaklarını içeren bir dosya oluşturur.
 
-2. Komutu kullanarak kullanım verilerini karşıya yükleme ```azdata upload```
+2. Komutu kullanarak kullanım verilerini karşıya yükleme `azdata upload`
 
    > [!NOTE]
    > Karşıya yüklemeyi çalıştırmadan önce lütfen Azure Arc veri denetleyicisini oluşturduktan sonra en az 24 saat bekleyin

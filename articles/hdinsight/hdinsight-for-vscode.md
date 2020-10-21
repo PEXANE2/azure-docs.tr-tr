@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 04/07/2020
+ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c9a610eb30b33adb82cebda74e99c37f84dacf9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530162"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319410"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -35,7 +35,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 Önkoşulları karşıladıktan sonra, aşağıdaki adımları izleyerek Visual Studio Code için Spark & Hive araçları 'nı yükleyebilirsiniz:
 
-1. Visual Studio Code’u açın.
+1. Visual Studio Code'u açın.
 
 2. Menü çubuğundan **Görünüm**  >  **uzantıları**' na gidin.
 
@@ -75,7 +75,7 @@ Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure
 
 1. Menü çubuğundan, **görüntüleme**  >  **komut paleti...**' a gidin ve **Azure: oturum aç**' ı girin:
 
-    ![Visual Studio Code oturum açma için Spark & Hive araçları](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+   ![Visual Studio Code oturum açma için Spark & Hive araçları](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
 2. Azure 'da oturum açmak için oturum açma yönergelerini izleyin. Bağlandıktan sonra, Azure hesabınızın adı Visual Studio Code penceresinin altındaki durum çubuğunda görüntülenir.  
 
@@ -115,8 +115,10 @@ Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure
 3. Genel Livy uç noktasını girin. Örneğin: http \: //10.172.41.42:18080.
 
 4. Yetkilendirme türü **temel** veya **yok**' u seçin.  **Temel**' i seçerseniz:  
-    &emsp;a. Ambarı Kullanıcı adınızı girin; **yönetici**varsayılandır.  
-    &emsp;kenarı. Ambarı parolanızı girin.
+   
+   1. Ambarı Kullanıcı adınızı girin; **yönetici**varsayılandır.  
+
+   2. Ambarı parolanızı girin.
 
 5. Doğrulama için **Çıkış** görünümünü gözden geçirin.
 
@@ -128,7 +130,7 @@ Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure
 
 3. **Çıktı** görünümünü gözden geçirin. Bu görünüm, bağlantılı kümenizi (veya kümelerinizi) ve Azure aboneliğinizdeki tüm kümeleri gösterir:
 
-    ![Varsayılan küme yapılandırması ayarlama](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   ![Varsayılan küme yapılandırması ayarlama](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="set-the-default-cluster"></a>Varsayılan kümeyi ayarlama
 
@@ -154,9 +156,9 @@ Visual Studio Code için Spark & Hive araçları ile, kümelerinize etkileşimli
 
 3. Aşağıdaki kodu kopyalayıp Hive dosyanıza yapıştırın ve kaydedin:
 
-    ```hiveql
-    SELECT * FROM hivesampletable;
-    ```
+   ```hiveql
+   SELECT * FROM hivesampletable;
+   ```
 
 4. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
 
@@ -166,9 +168,9 @@ Visual Studio Code için Spark & Hive araçları ile, kümelerinize etkileşimli
 
    ![Etkileşimli Apache Hive sorgu sonucu](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
-    - **Sonuçlar** paneli: tüm sonucu bir CSV, JSON veya Excel dosyası olarak yerel bir yola kaydedebilir veya yalnızca birden çok satır seçebilirsiniz.
+   - **Sonuçlar** paneli: tüm sonucu bir CSV, JSON veya Excel dosyası olarak yerel bir yola kaydedebilir veya yalnızca birden çok satır seçebilirsiniz.
 
-    - **İletiler** paneli: bir **satır** numarası seçtiğinizde, çalışan betiğin ilk satırına atlar.
+   - **İletiler** paneli: bir **satır** numarası seçtiğinizde, çalışan betiğin ilk satırına atlar.
 
 ## <a name="submit-interactive-pyspark-queries"></a>Etkileşimli PySpark sorguları gönder
 
@@ -197,7 +199,7 @@ Sorguları göndermek için PySpark etkileşimli komutunu kullanarak şu adımla
         print(sortedCollection[i])
    ```
 
-4. PySpark çekirdeğini yüklemeye yönelik istem pencerenin sağ alt köşesinde görüntülenir. PySpark yüklemelerine devam etmek için, **yükleme** düğmesine tıklayabilirsiniz; veya **Atla** düğmesine tıklayarak bu adımı atlayın.
+4. PySpark/SYNAPSE Pyspark çekirdeğini yüklemek için istem pencerenin sağ alt köşesinde görüntülenir. PySpark/SYNAPSE Pyspark yüklemelerine devam etmek için, **yükleme** düğmesine tıklayabilirsiniz; veya **Atla** düğmesine tıklayarak bu adımı atlayın.
 
    ![Ekran görüntüsünde, PySpark yüklemesini atlama seçeneği gösterilmektedir.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
@@ -206,52 +208,65 @@ Sorguları göndermek için PySpark etkileşimli komutunu kullanarak şu adımla
     ![Ekran görüntüsünde, Pyspark yüklemesinin atlanmasını etkinleştirme seçeneği gösterilir.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. Yükleme adım 4 ' te başarılı olursa, pencerenin sağ alt köşesinde "PySpark başarıyla yüklendi" ileti kutusu görüntülenir. Pencereyi yeniden yüklemek için **yeniden yükle** düğmesine tıklayın.
-    ![pyspark başarıyla yüklendi](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
+   ![pyspark başarıyla yüklendi](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-8. Tüm kodu seçin, betik düzenleyicisine sağ tıklayın ve **Spark: Pyspark Interactive** ' i seçerek sorguyu gönderebilirsiniz. Ya da Ctrl + alt + ı kısayolunu kullanın.
+7. Menü çubuğundan **görüntüle**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Python: Select yorumlayıcı ' yı seçerek Jupyter sunucusunu başlatın**.
+
+   ![jupyıter sunucusunu başlatmak için yorumlayıcı 'yı seçin](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
+
+8. Aşağıdaki Python seçeneğini belirleyin.
+
+   ![aşağıdaki seçeneği seçin](./media/hdinsight-for-vscode/choose-the-below-option.png)
+    
+9. Menü çubuğundan **Görünüm**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Geliştirici: yeniden yükle penceresini**girin.
+
+   ![pencereyi yeniden yükle](./media/hdinsight-for-vscode/reload-window.png)
+
+10. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
+
+11. Tüm kodu seçin, komut dosyası düzenleyicisine sağ tıklayın ve **Spark: PySpark Interactive/SYNAPSE: Pyspark Interactive** ' i seçerek sorguyu gönderebilirsiniz. 
 
     ![pyspark etkileşimli bağlam menüsü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-9. Varsayılan bir küme belirtmediyse kümeyi seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. PySpark öğesine tıklayarak çekirdeği **Pyspark**olarak değiştirin ve kod başarıyla çalıştırılır. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize olanak tanır:
+12. Varsayılan bir küme belirtmediyse kümeyi seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. PySpark 'a tıklayarak çekirdeği **pyspark/SYNAPSE Pyspark**olarak değiştirin ve kod başarıyla çalıştırılır. SYNAPSE Pyspark çekirdeğine geçmek istiyorsanız, Azure portal otomatik ayarların devre dışı bırakılması önerilir. Aksi takdirde, kümeyi uyandırması ve ilk kez kullanılmak üzere SYNAPSE çekirdeğini ayarlamanız uzun sürebilir. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize izin verir:
 
-   ![pyspark etkileşimli Python etkileşimli penceresi](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
+    ![pyspark etkileşimli Python etkileşimli penceresi](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-10. **%% Info**girin ve sonra iş bilgilerini görüntülemek için SHIFT + enter tuşlarına basın (isteğe bağlı):
+13. **%% Info**girin ve sonra iş bilgilerini görüntülemek için SHIFT + enter tuşlarına basın (isteğe bağlı):
 
     ![pyspark etkileşimli görüntüleme işi bilgileri](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
 Araç **Spark SQL** sorgusunu da destekler:
 
-   ![pyspark etkileşimli görünüm sonucu](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
+  ![pyspark etkileşimli görünüm sonucu](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
 
 
 ### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>% #% Açıklaması kullanarak Kopyala dosyasında etkileşimli sorgu gerçekleştir
 
 1. **#%%** Not defteri deneyimi almak için, Kopyala kodundan önce ekleyin.
 
-    ![% # Ekle](./media/hdinsight-for-vscode/run-cell.png)
+   ![% # Ekle](./media/hdinsight-for-vscode/run-cell.png)
 
-2. **Hücreyi Çalıştır**' a tıklayın. Birkaç dakika sonra Python etkileşimli sonuçları yeni bir sekmede görüntülenir.
+2. **Hücreyi Çalıştır**' a tıklayın. Birkaç dakika sonra Python etkileşimli sonuçları yeni bir sekmede görüntülenir. PySpark 'a tıklayarak çekirdeği PySpark/SYNAPSE PySpark olarak değiştirin, sonra **hücreyi yeniden çalıştır** ' a tıklayın ve kod başarıyla çalıştırılır.
 
    ![hücre sonuçlarını Çalıştır](./media/hdinsight-for-vscode/run-cell-get-results.png)
-
-   > [!NOTE]  
-   > Çekirdek veya ayarlar olduğunda, **Python: Jupyter sunucu komutunu başlatmak Için yorumlayıcı** ' yı seçin, **IPython çekirdeğini yeniden başlatın**ve ardından vscode 'u yeniden yükleyin, bu, çözülebilir.
 
 ## <a name="leverage-ipynb-support-from-python-extension"></a>Python uzantısı 'ndan ıPYNB desteğinden yararlanın
 
 1. Komut paletinden bir Jupyter Notebook komutuyla veya çalışma alanınızda yeni bir. ipynb dosyası oluşturarak oluşturabilirsiniz. Daha fazla bilgi için bkz. [Visual Studio Code Jupyıter Not defterleri Ile çalışma](https://code.visualstudio.com/docs/python/jupyter-support)
 
-2. PySpark öğesine tıklayarak çekirdeği **Pyspark**olarak değiştirin ve ardından **hücre Çalıştır**' a tıklayarak bir süre sonra sonuç görüntülenir.
+2. **Hücreyi Çalıştır** düğmesine tıklayın, **varsayılan Spark havuzunu** (bir not defteri 'ni açmadan önce her seferinde varsayılan kümeyi/havuzu ayarlamayı kesinlikle önerilir) ve ardından pencereyi **yeniden yükle** ' yi ayarlamak için istemleri izleyin.
+
+   ![Varsayılan Spark havuzunu ayarlama ve yeniden yükleme](./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png)
+
+3. Bkz. PySpark **/SYNAPSE pyspark**ve sonra **hücreyi Çalıştır**' a tıklayarak bir süre sonra, sonuç görüntülenir.
 
    ![ipynb sonuçlarını Çalıştır](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
 
 > [!NOTE]
->
->MS-Python >= 2020.5.78807 sürümü bu extentıon üzerinde desteklenmiyor, [bilinen bir sorundur](#known-issues).
+> MS-Python >= 2020.5.78807 sürümü bu extentıon üzerinde desteklenmiyor, [bilinen bir sorundur](#known-issues).
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark Batch işini gönder
 
@@ -261,36 +276,36 @@ Araç **Spark SQL** sorgusunu da destekler:
 
 3. Aşağıdaki kodu kopyalayıp betik dosyasına yapıştırın:
 
-    ```python
-    from __future__ import print_function
-    import sys
-    from operator import add
-    from pyspark.sql import SparkSession
-    if __name__ == "__main__":
-        spark = SparkSession\
-            .builder\
-            .appName("PythonWordCount")\
-            .getOrCreate()
-    
-        lines = spark.read.text('/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv').rdd.map(lambda r: r[0])
-        counts = lines.flatMap(lambda x: x.split(' '))\
-                    .map(lambda x: (x, 1))\
-                    .reduceByKey(add)
-        output = counts.collect()
-        for (word, count) in output:
-            print("%s: %i" % (word, count))
-        spark.stop()
-    ```
+   ```python
+   from __future__ import print_function
+   import sys
+   from operator import add
+   from pyspark.sql import SparkSession
+   if __name__ == "__main__":
+       spark = SparkSession\
+           .builder\
+           .appName("PythonWordCount")\
+           .getOrCreate()
+   
+       lines = spark.read.text('/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv').rdd.map(lambda r: r[0])
+       counts = lines.flatMap(lambda x: x.split(' '))\
+                  .map(lambda x: (x, 1))\
+                   .reduceByKey(add)
+       output = counts.collect()
+       for (word, count) in output:
+           print("%s: %i" % (word, count))
+       spark.stop()
+   ```
 
 4. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
 
-5. Betik düzenleyicisine sağ tıklayın ve **Spark: Pyspark Batch**' i seçin veya Ctrl + Alt + H klavye kısayolunu kullanın.
+5. Betik düzenleyicisine sağ tıklayın ve **Spark: Pyspark Batch**veya * * SYNAPSE: pyspark Batch * * * öğesini seçin.
 
-6. PySpark işinizi göndermek için bir küme seçin:
+6. PySpark işinizi göndermek için bir küme/Spark havuzu seçin:
 
    ![Python işi sonuç çıkışını gönder](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Bir Python işi gönderdikten sonra, gönderim günlükleri Visual Studio Code **Çıkış** penceresinde görüntülenir. Spark Kullanıcı arabirimi URL 'SI ve Yarn UI URL 'SI de gösterilir. İşi durumunu izlemek için URL 'YI bir Web tarayıcısında açabilirsiniz.
+Bir Python işi gönderdikten sonra, gönderim günlükleri Visual Studio Code **Çıkış** penceresinde görüntülenir. Spark Kullanıcı arabirimi URL 'SI ve Yarn UI URL 'SI de gösterilir. Toplu işi bir Apache Spark havuzuna gönderirseniz, Spark geçmişi Kullanıcı arabirimi URL 'SI ve Spark Iş uygulaması kullanıcı arabirimi URL 'SI de gösterilir. İşi durumunu izlemek için URL 'YI bir Web tarayıcısında açabilirsiniz.
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity broker (HIB) ile tümleştirme
 
@@ -306,62 +321,66 @@ Etkileşimli bir PySpark işi çalıştırmak için, KIMLIK broker (HIB) ile HDI
 
 PySpark toplu işi çalıştırmak için, KIMLIK broker (HIB) ile HDInsight ESP kümesine iş göndermek için normal adımları izleyebilirsiniz. Daha fazla yönerge için [PySpark toplu Işi gönderme](#submit-pyspark-batch-job) bölümüne bakın.
 
-
 ## <a name="apache-livy-configuration"></a>Apache Livy yapılandırması
 
 [Apache Livy](https://livy.incubator.apache.org/) yapılandırması desteklenir. Bunu, çalışma alanı klasöründeki **.VSCode\settings.jsdosya üzerinde** yapılandırabilirsiniz. Şu anda, Livy yapılandırma yalnızca Python betiğini destekliyor. Daha fazla bilgi için bkz. [Livy Benioku](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**Livy yapılandırması tetiklenmesi**
 
-Yöntem 1  
+### <a name="method-1"></a>Yöntem 1  
+
 1. Menü çubuğundan **Dosya**  >  **tercihleri**  >  **ayarları**' na gidin.
 2. **Arama ayarları** kutusuna **HDInsight Iş gönderimi: Livy conf**yazın.  
 3. İlgili arama sonucu için **üzerinde settings.jsDüzenle** ' yi seçin.
 
-Yöntem 2 bir dosya gönderir ve `.vscode` klasörün otomatik olarak iş klasörüne eklendiğinden emin olun. **.vscode\settings.jsaçık '** i seçerek Livy yapılandırmasını görebilirsiniz.
+### <a name="method-2"></a>2. Yöntem
 
-+ Proje ayarları:
+Bir dosya gönderir ve `.vscode` klasörün otomatik olarak iş klasörüne eklendiğinden emin olun. **.vscode\settings.jsaçık '** i seçerek Livy yapılandırmasını görebilirsiniz.
 
-    ![HDInsight Apache Livy yapılandırması](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
+- Proje ayarları:
 
-    >[!NOTE]
-    >**Drivermemory** ve **executormemory** ayarları için değeri ve birimi ayarlayın. Örneğin: 1G veya 1024m.
+  ![HDInsight Apache Livy yapılandırması](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
-+ Desteklenen Livy yapılandırması:
+  >[!NOTE]
+  >**Drivermemory** ve **executormemory** ayarları için değeri ve birimi ayarlayın. Örneğin: 1G veya 1024m.
 
-    **/Toplu Iş sonrası** İstek gövdesi
+- Desteklenen Livy yapılandırması:
 
-    | name | açıklama | tür |
-    | --- | --- | --- |
-    |  dosyası | Yürütülecek uygulamayı içeren dosya | Yol (gerekli) |
-    | proxyUser | İşi çalıştırırken taklit edilecek Kullanıcı | Dize |
-    | Sınıf | Uygulama Java/Spark ana sınıfı | Dize |
-    | args | Uygulama için komut satırı bağımsız değişkenleri | Dizelerin listesi |
-    | jar dosyaları dışındaki | Bu oturumda kullanılacak jars | Dizelerin listesi | 
-    | pyFiles | Bu oturumda kullanılacak Python dosyaları | Dizelerin listesi |
-    | files | Bu oturumda kullanılacak dosyalar | Dizelerin listesi |
-    | driverMemory | Sürücü işlemi için kullanılacak bellek miktarı | Dize |
-    | Driverçekirdekler | Sürücü işlemi için kullanılacak çekirdek sayısı | int |
-    | Yürütişbelleği | Yürütücü işlemi başına kullanılacak bellek miktarı | Dize |
-    | Executorçekirdekler | Her yürütücü için kullanılacak çekirdek sayısı | int |
-    | numExecutors | Bu oturum için başlatılacak yürüticilerinin sayısı | int |
-    | Arşivi | Bu oturumda kullanılacak Arşivler | Dizelerin listesi |
-    | kuyruk | Gönderilecek YARN kuyruğunun adı| Dize |
-    | name | Bu oturumun adı | Dize |
-    | conf | Spark yapılandırma özellikleri | Anahtar = Val eşlemesi |
+  **/Toplu iş SONRASı**
+  
+  **İstek gövdesi**
 
-    Yanıt gövdesi oluşturulan Batch nesnesi.
+  | name | açıklama | tür |
+  | --- | --- | --- |
+  |  dosyası | Yürütülecek uygulamayı içeren dosya | Yol (gerekli) |
+  | proxyUser | İşi çalıştırırken taklit edilecek Kullanıcı | Dize |
+  | Sınıf | Uygulama Java/Spark ana sınıfı | Dize |
+  | args | Uygulama için komut satırı bağımsız değişkenleri | Dizelerin listesi |
+  | jar dosyaları dışındaki | Bu oturumda kullanılacak jars | Dizelerin listesi | 
+  | pyFiles | Bu oturumda kullanılacak Python dosyaları | Dizelerin listesi |
+  | files | Bu oturumda kullanılacak dosyalar | Dizelerin listesi |
+  | driverMemory | Sürücü işlemi için kullanılacak bellek miktarı | Dize |
+  | Driverçekirdekler | Sürücü işlemi için kullanılacak çekirdek sayısı | int |
+  | Yürütişbelleği | Yürütücü işlemi başına kullanılacak bellek miktarı | Dize |
+  | Executorçekirdekler | Her yürütücü için kullanılacak çekirdek sayısı | int |
+  | numExecutors | Bu oturum için başlatılacak yürüticilerinin sayısı | int |
+  | Arşivi | Bu oturumda kullanılacak Arşivler | Dizelerin listesi |
+  | kuyruk | Gönderilecek YARN kuyruğunun adı| Dize |
+  | name | Bu oturumun adı | Dize |
+  | conf | Spark yapılandırma özellikleri | Anahtar = Val eşlemesi |
 
-    | name | açıklama | tür |
-    | --- | ---| --- |
-    | ID | Oturum Kimliği | int |
-    | appId | Bu oturumun uygulama KIMLIĞI | Dize |
-    | appInfo | Ayrıntılı uygulama bilgileri | Anahtar = Val eşlemesi |
-    | açmasını | Günlük satırları | Dizelerin listesi |
-    | state |Toplu iş durumu | Dize |
+  **Yanıt gövdesi** Oluşturulan Batch nesnesi.
 
-    > [!NOTE]
-    > Atanan Livy yapılandırması, betiği gönderdiğinizde çıkış bölmesinde görüntülenir.
+  | name | açıklama | tür |
+  | --- | ---| --- |
+  | ID | Oturum Kimliği | int |
+  | appId | Bu oturumun uygulama KIMLIĞI | Dize |
+  | appInfo | Ayrıntılı uygulama bilgileri | Anahtar = Val eşlemesi |
+  | açmasını | Günlük satırları | Dizelerin listesi |
+  | state |Toplu iş durumu | Dize |
+
+  > [!NOTE]
+  > Atanan Livy yapılandırması, betiği gönderdiğinizde çıkış bölmesinde görüntülenir.
 
 ## <a name="integrate-with-azure-hdinsight-from-explorer"></a>Gezgin 'den Azure HDInsight ile tümleştirme
 
@@ -388,15 +407,16 @@ Doğrudan **Azure HDInsight** Gezgini aracılığıyla kümelerinizde Hive tablo
    Tüm sonucu bir CSV, JSON veya Excel dosyası olarak yerel bir yola kaydedebilir veya yalnızca birden fazla satır seçebilirsiniz.
 
 - ILETILER bölmesi
-   1. Tablodaki satır sayısı 100 ' den büyükse şu iletiyi görürsünüz: "Hive tablosu için ilk 100 satır görüntülenir."
-   2. Tablodaki satır sayısı 100 ' den az veya bu değere eşit olduğunda şu iletiyi görürsünüz: "60 satır Hive tablosu için görüntülenir."
-   3. Tabloda içerik yoksa şu iletiyi görürsünüz: " `0 rows are displayed for Hive table.` "
 
-        >[!NOTE]
-        >
-        >Linux 'ta, kopyalama tablosu verilerini etkinleştirmek için xclip ' i de yüklersiniz.
-        >
-        >![Linux 'ta Visual Studio Code için Spark & Hive](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
+  1. Tablodaki satır sayısı 100 ' den büyükse şu iletiyi görürsünüz: "Hive tablosu için ilk 100 satır görüntülenir."
+  2. Tablodaki satır sayısı 100 ' den az veya bu değere eşit olduğunda şu iletiyi görürsünüz: "60 satır Hive tablosu için görüntülenir."
+  3. Tabloda içerik yoksa şu iletiyi görürsünüz: " `0 rows are displayed for Hive table.` "
+
+     >[!NOTE]
+     >
+     >Linux 'ta, kopyalama tablosu verilerini etkinleştirmek için xclip ' i de yüklersiniz.
+     >
+     >![Linux 'ta Visual Studio Code için Spark & Hive](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
 
 ## <a name="additional-features"></a>Ek özellikler
 
@@ -413,7 +433,7 @@ Visual Studio Code için Spark & Hive aşağıdaki özellikleri de destekler:
 
 ## <a name="reader-only-role"></a>Yalnızca okuyucu rolü
 
-Küme için yalnızca okuyucu rolü atanan kullanıcılar, HDInsight kümesine iş gönderemez ve Hive veritabanını görüntüleyemez. Rolünüzü [Azure Portal](https://ms.portal.azure.com/) [**HDInsight kümesi işlecine**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) yükseltmek için küme yöneticisine başvurun. Geçerli bir ambarı kimlik bilgileriniz varsa, aşağıdaki kılavuzu kullanarak kümeyi el ile bağlayabilirsiniz.
+Küme için yalnızca okuyucu rolü atanan kullanıcılar, HDInsight kümesine iş gönderemez ve Hive veritabanını görüntüleyemez. Rolünüzü [Azure Portal](https://portal.azure.com/) [**HDInsight kümesi işlecine**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) yükseltmek için küme yöneticisine başvurun. Geçerli bir ambarı kimlik bilgileriniz varsa, aşağıdaki kılavuzu kullanarak kümeyi el ile bağlayabilirsiniz.
 
 ### <a name="browse-the-hdinsight-cluster"></a>HDInsight kümesine gözatın  
 
@@ -432,11 +452,11 @@ Bir HDInsight kümesini genişletmek için Azure HDInsight Gezginini seçtiğini
 
    ![Visual Studio Code parola için Spark & Hive araçları](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png)
 
-  > [!NOTE]
-  >
-  >`Spark / Hive: List Cluster`Bağlantılı kümeyi denetlemek için ' i kullanabilirsiniz:
-  >
-  >![Visual Studio Code okuyucusu bağlantılı için Spark & Hive araçları](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   > [!NOTE]
+   >
+   >`Spark / Hive: List Cluster`Bağlantılı kümeyi denetlemek için ' i kullanabilirsiniz:
+   >
+   >![Visual Studio Code okuyucusu bağlantılı için Spark & Hive araçları](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
@@ -467,6 +487,7 @@ Data Lake Storage 2. kullanarak bir HDInsight kümesine iş gönderme. Azure hes
 Menü çubuğundan **Görünüm**  >  **komut paleti**' ne gidin ve **Azure: oturumu Kapat**' ı girin.
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
+
 ### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>MS-Python >= 2020.5.78807 sürümü bu uzantı üzerinde desteklenmiyor 
 
 "Jupyter not defteriyle bağlantı kurulamadı." Python sürümü >= 2020.5.78807 için bilinen bir sorundur. Bu sorundan kaçınmak için kullanıcıların MS-Python **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** sürümünü kullanması önerilir.

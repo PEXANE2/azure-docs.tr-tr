@@ -17,12 +17,12 @@ ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 994fe6c5005eeeab1399091dca5f72024fdd7262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812599"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319746"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
@@ -35,7 +35,7 @@ Raporlama mimarisi aşağıdaki bileşenlerden oluşur:
 - **Etkinlik** 
     - **Oturum açma** işlemleri – [oturum açma işlemleri raporu](concept-sign-ins.md) , yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinliklerinin kullanımı hakkında bilgi sağlar.
     - **Denetim günlükleri** - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. Denetim günlüklerine örnek olarak, Azure AD 'de Kullanıcı, uygulama, Grup, rol ve ilke ekleme veya kaldırma gibi herhangi bir kaynak üzerinde yapılan değişiklikler bulunur.
-    - **Sağlama günlükleri**  -  [Sağlama günlükleri](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) , müşterilerin, ServiceNow 'da bir grup oluşturma veya Workday 'den içeri aktarılan bir kullanıcı gibi sağlama hizmeti tarafından etkinlikleri izlemelerine olanak tanır. 
+    - **Sağlama günlükleri**  -  [Sağlama günlükleri](./concept-provisioning-logs.md) , müşterilerin, ServiceNow 'da bir grup oluşturma veya Workday 'den içeri aktarılan bir kullanıcı gibi sağlama hizmeti tarafından etkinlikleri izlemelerine olanak tanır. 
 - **Güvenlik** 
     - **Riskli oturum** açma işlemleri- [riskli oturum](../identity-protection/overview-identity-protection.md) açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir. 
     - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](../identity-protection/overview-identity-protection.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
@@ -117,7 +117,7 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - Tümü
 - AdministrativeUnit
 - ApplicationManagement
-- Kimlik Doğrulaması
+- Kimlik doğrulaması
 - Yetkilendirme
 - İletişim
 - Cihaz

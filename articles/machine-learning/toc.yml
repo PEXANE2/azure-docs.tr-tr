@@ -520,9 +520,6 @@
           href: how-to-debug-pipelines.md
         - name: İşlem hattı verilerine yönelik günlükleri Application Insights’a kaydetme
           href: how-to-log-pipelines-application-insights.md
-        - name: Paralel çalıştırma adımını kullanma
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-use-parallel-run-step.md
         - name: Paralel çalıştırma adımında hata ayıklama ve sorun giderme
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md

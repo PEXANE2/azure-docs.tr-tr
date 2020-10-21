@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047650"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311669"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -19,7 +19,7 @@ Bu makalede, Azure dijital TWINS ile ilişkili bilinen sorunlar hakkında bilgi 
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>"400 istemci hatası: Cloud Shell içinde bozuk Istek"
 
-Cloud Shell Komutları zaman zaman "400 Istemci hatası: URL için hatalı Istek: http://localhost:50342/oauth2/token " ve ardından tam yığın izleme tarafından hata vererek başarısız olabilir.
+' Da çalışan Cloud Shell komutları *https://shell.azure.com* zaman zaman "400 Istemci hatası: URL Için hatalı istek: http://localhost:50342/oauth2/token " ve ardından tam yığın izleme tarafından hata vererek başarısız olabilir.
 
 Azure dijital TWINS için özellikle bu, aşağıdaki komut gruplarını etkiler:
 * `az dt route`
@@ -30,7 +30,11 @@ Azure dijital TWINS için özellikle bu, aşağıdaki komut gruplarını etkiler
 
 Bu, `az login` Cloud Shell komutu yeniden çalıştırarak ve sonraki oturum açma adımlarını tamamlayarak çözülebilir. Bundan sonra, komutunu yeniden çalıştırmanız gerekir.
 
-Azure CLı komutlarını yerel olarak çalıştırabilmeniz için, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi makinenize yüklemek alternatif bir çözümdür. Yerel CLı bu sorunla karşılaşmaz.
+Alternatif olarak, Azure portal Cloud Shell bölmesini açabilir ve Cloud Shell işinizi buradan tamamlayabilirsiniz:
+
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="' Cloud Shell ' simgesi vurgulanmış Azure portal görünümü ve Portal penceresinin alt kısmında görünen Cloud Shell":::
+
+Son olarak, Azure CLı komutlarını yerel olarak çalıştırabilmeniz için başka bir çözüm, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi makinenize yüklemektir. Yerel CLı bu sorunla karşılaşmaz.
 
 ### <a name="possible-causes"></a>Olası nedenler
 

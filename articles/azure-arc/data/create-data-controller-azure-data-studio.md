@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208c9b4172719b876766f0c4d07a17caa24bfd63
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273152"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310961"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio veri denetleyicisi oluşturma
 
@@ -25,7 +25,7 @@ Dağıtım Sihirbazı ve Not defterleri aracılığıyla Azure Data Studio kulla
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Kubernetes kümesine erişmeniz ve kubeconfig dosyanızı, dağıtmak istediğiniz Kubernetes kümesine işaret etmek üzere yapılandırmış olmanız gerekir.
-- **Azure Arc** ve **Azure Data CLI**adlı Azure Data Studio uzantıları **Azure Data Studio** dahil [istemci araçlarını yüklemeniz](install-client-tools.md) gerekir.
+- **Azure Arc** ve adlı Azure Data Studio uzantıları **Azure Data Studio** dahil [istemci araçlarını yüklemeniz](install-client-tools.md) gerekir **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** .
 - Azure Data Studio 'de Azure 'da oturum açmanız gerekir.  Bunu yapmak için: CTRL/Command + SHIFT + P yazarak komut metni penceresini açın ve **Azure**yazın.  **Azure: oturum aç '** ı seçin.   Panelde, bir Azure hesabı eklemek için sağ üst köşedeki + simgesine tıklayın.
 
 ## <a name="use-the-deployment-wizard-to-create-azure-arc-data-controller"></a>Azure Arc veri denetleyicisi oluşturmak için Dağıtım Sihirbazı 'nı kullanma

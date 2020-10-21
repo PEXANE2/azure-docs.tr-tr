@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273050"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310913"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc veri denetleyicisi oluşturma
 
@@ -26,7 +26,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 
 Şu anda, Kubernetes Hizmetleri ve dağıtımların desteklenen listesi şunlardır:
 
-- Azure Kubernetes Hizmeti (AKS)
+- Azure Kubernetes Service (AKS)
 - Azure Stack 'de Azure Kubernetes hizmet altyapısı (AKS motoru)
 - Azure Stack CI üzerinde Azure Kubernetes hizmeti
 - Azure RedHat OpenShift (ARO)
@@ -65,7 +65,7 @@ Azure Arc veri denetleyicisi oluşturmak için birden çok seçenek vardır:
 > **Yalnızca bir şeyi denemek mi istiyorsunuz?**  
 > Azure Kubernetes Service (AKS), AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ile hızlıca çalışmaya başlayın!
 > 
-- [Azure Data CLı ile veri denetleyicisi oluşturma (azveri)](create-data-controller-using-azdata.md)
+- [İle veri denetleyicisi oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Azure Data Studio bir veri denetleyicisi oluşturma](create-data-controller-azure-data-studio.md)
 - [Azure Data Studio bir Jupyter Not defteri aracılığıyla Azure portal bir veri denetleyicisi oluşturun](create-data-controller-resource-in-azure-portal.md)
 - [Kubectl veya OC gibi Kubernetes araçlarıyla veri denetleyicisi oluşturma](create-data-controller-using-kubernetes-native-tools.md)

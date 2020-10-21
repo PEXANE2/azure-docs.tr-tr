@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729007"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319833"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric yönetilen kümeler hakkında sık sorulan sorular
 
@@ -41,7 +41,7 @@ SLA geçerli Service Fabric kaynak modelinden değişiklik yapmaz.
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Temel ve standart SKU kümesi arasındaki fark nedir?
 
-Temel bir SKU kümesi, yapılandırmaların çoğunun Service Fabric kaynak sağlayıcısı tarafından sağlandığı anlamına gelir. Temel SKU kümelerinin test ve üretim öncesi ortamları için kullanılması amaçlanmıştır. Standart SKU kümesi, kullanıcıların, kendi ihtiyaçlarını karşılamak için kümeyi yapılandırmasına olanak sağlar. Daha fazla bilgi için bkz. [Service Fabric yönetilen küme SKU 'ları](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) .
+Temel bir SKU kümesi, yapılandırmaların çoğunun Service Fabric kaynak sağlayıcısı tarafından sağlandığı anlamına gelir. Temel SKU kümelerinin test ve üretim öncesi ortamları için kullanılması amaçlanmıştır. Standart SKU kümesi, kullanıcıların, kendi ihtiyaçlarını karşılamak için kümeyi yapılandırmasına olanak sağlar. Daha fazla bilgi için bkz. [Service Fabric yönetilen küme SKU 'ları](./overview-managed-cluster.md#service-fabric-managed-cluster-skus) .
 
 ## <a name="cluster-deployment-and-management"></a>Küme dağıtımı ve yönetimi
 
@@ -66,7 +66,7 @@ Otomatik ölçeklendirme Şu anda önizlemede kullanılamıyor.
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Service Fabric yönetilen kümeler için yerel bir geliştirme deneyimi var mı?
 
-Yerel geliştirme deneyimi, mevcut Service Fabric kümelerinden değişmeden kalır. Daha fazla bilgi için bkz. yerel geliştirme deneyimi hakkında daha fazla bilgi için bkz. [.NET uygulaması oluşturma](https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-dotnet) .
+Yerel geliştirme deneyimi, mevcut Service Fabric kümelerinden değişmeden kalır. Daha fazla bilgi için bkz. yerel geliştirme deneyimi hakkında daha fazla bilgi için bkz. [.NET uygulaması oluşturma](./service-fabric-quickstart-dotnet.md) .
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>Uygulamalarımı bir Azure Resource Manager kaynağı olarak dağıtabilir miyim?
 
