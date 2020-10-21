@@ -105,30 +105,38 @@
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure Kapsayıcısı teklifi oluşturma
               href: partner-center-portal/create-azure-container-offer.md
-    - name: Azure sanal makine teklifleri
+    - name: Azure sanal makine teklifi
       items:
-        - name: Sanal makine teklifi planlama
+        - name: VM teklifi planlama
           href: marketplace-virtual-machines.md
-        - name: Sanal makine teklifi oluşturma ve yayımlama
+        - name: VM teklifi oluşturma ve yayımlama
           items:
-            - name: Azure sanal makine teklifi oluşturma
-              href: partner-center-portal/azure-vm-create-offer.md
-            - name: Azure VM teknik varlığı oluşturma
+            - name: VM teknik varlıkları oluşturma
               items:
-                - name: Sanal makine sertifikasyon sorunları
-                  href: partner-center-portal/vm-certification-issues-solutions.md
-                - name: Azure VM teknik varlığı oluşturma
-                  href: partner-center-portal/create-azure-vm-technical-asset.md
-                - name: Azure VM teknik varlığı oluşturma hakkında SSS
-                  href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: VHD’den dağıtılan sanal makineyi test etme
-                  href: partner-center-portal/azure-vm-image-certification.md
-                - name: SAS URI’si
-                  items:
-                    - name: SAS URI'si alma
-                      href: partner-center-portal/get-sas-uri.md
-                    - name: SAS URI’si hakkında SSS
-                      href: partner-center-portal/common-sas-uri-issues.md
+                - name: Onaylanan bir temelden VM oluşturma
+                  href: azure-vm-create-using-approved-base.md
+                - name: Kendi görüntünüzü kullanarak VM oluşturma
+                  href: azure-vm-create-using-own-image.md
+                - name: VM görüntüsünü test etme
+                  href: azure-vm-image-test.md
+                - name: SAS URI'si alma
+                  href: azure-vm-get-sas-uri.md
+                - name: SAS hata iletileri
+                  href: azure-vm-sas-failure-messages.md
+                - name: VM oluşturma hakkında SSS
+                  href: azure-vm-create-faq.md
+                - name: VM sertifikasyonu sorunlarını giderme
+                  href: azure-vm-create-certification-faq.md
+            - name: VM teklifi oluşturma
+              href: azure-vm-create.md
+            - name: VM teklifi özelliklerini yapılandırma
+              href: azure-vm-create-properties.md
+            - name: VM teklifi girişini yapılandırma
+              href: azure-vm-create-listing.md
+            - name: VM planları oluşturma
+              href: azure-vm-create-plans.md
+            - name: Önizleme hedef kitlesi ekleme
+              href: azure-vm-create-preview.md
     - name: Danışmanlık hizmetleri
       items:
         - name: Danışmanlık hizmeti teklifi planlama
@@ -329,7 +337,7 @@
     - name: Teknik ve yayımlama ofis saatleri
       href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: İş Ortağı Merkezi destek seçenekleri
-      href: partner-center-portal/support.md
+      href: support.md
     - name: İş Ortağı Merkezi duyuruları
       href: /partner-center/announcements
     - name: Microsoft İş Ortağı Topluluğu

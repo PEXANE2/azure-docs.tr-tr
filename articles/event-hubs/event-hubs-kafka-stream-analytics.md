@@ -3,12 +3,12 @@ title: Azure Event Hubs-Işlem Apache Kafka olayları
 description: "Öğretici: Bu makalede Azure Stream Analytics kullanılarak Olay Hub 'ları aracılığıyla alınan Kafka olaylarının nasıl işlenmesi gösterilmektedir."
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531296"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319388"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Stream Analytics kullanarak Event Hubs olaylar için Işlem Apache Kafka 
 Bu makalede, verilerin Event Hubs ' a akışını ve Azure Stream Analytics nasıl işleyeceğini gösterir. Aşağıdaki adımlarda size yol gösterir: 
@@ -20,12 +20,12 @@ Bu makalede, verilerin Event Hubs ' a akışını ve Azure Stream Analytics nas�
 Bir olay hub 'ı tarafından kullanıma sunulan Kafka uç noktasını kullandığınızda protokol istemcilerinizi değiştirmeniz veya kendi kümelerinizi çalıştırmanız gerekmez. Azure Event Hubs [Apache Kafka sürüm 1.0](https://kafka.apache.org/10/documentation.html)’ı destekler. ve üzeri. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki önkoşulların karşılandığından emin olun:
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
-* [Java Development Kit (JDK) 1.7 +](https://aka.ms/azure-jdks).
+* [Java Development Kit (JDK) 1.7 +](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * Bir Maven ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html).
 * [Git](https://www.git-scm.com/)
 * Bir **Azure depolama hesabı**. Yoksa, devam etmeden önce [bir tane oluşturun](../storage/common/storage-account-create.md) . Bu izlenecek yolda Stream Analytics işi, çıktı verilerini bir Azure Blob depolama alanında depolar. 
@@ -171,4 +171,4 @@ Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Event Hubs nasıl akışa alınacağını öğrendiniz. Apache Kafka Event Hubs hakkında daha fazla bilgi edinmek için bkz. [Azure için geliştirici kılavuzu Apache Kafka Event Hubs](apache-kafka-developer-guide.md). 
+Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Event Hubs nasıl akışa alınacağını öğrendiniz. Apache Kafka Event Hubs hakkında daha fazla bilgi edinmek için bkz. [Azure için geliştirici kılavuzu Apache Kafka Event Hubs](apache-kafka-developer-guide.md).

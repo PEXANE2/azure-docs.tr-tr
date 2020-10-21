@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d02568dbb5dfc6b7feb38d353e1ba0ecd8ae25d6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204002"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327425"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme
 
@@ -27,7 +27,7 @@ Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertif
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gerekir.
 * Bir Anahtar Kasası. Mevcut bir anahtar kasasını kullanabilir veya şu hızlı başlangıçlardan birindeki adımları izleyerek yeni bir tane oluşturabilirsiniz:
@@ -48,13 +48,13 @@ DigiCert CertCentral hesabınızdan aşağıdaki bilgilere sahip olduğunuzdan e
 ## <a name="adding-certificate-authority-in-key-vault"></a>Key Vault sertifika yetkilisi ekleniyor 
 DigiCert CertCentral hesabından bilgi topladıktan sonra artık anahtar kasasındaki sertifika yetkilisi listesine DigiCert ekleyebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1.  DigiCert sertifika yetkilisi eklemek için, DigiCert eklemek istediğiniz anahtar kasasına gidin. 
 2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
-3.  **Sertifika yetkilileri** sekmesini seçin. ![ Sertifika Özellikleri](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
+3.  **Sertifika yetkilileri** sekmesini seçin. ![ sertifika yetkililerini seçin](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
 4.  **Ekle** seçeneğini belirleyin.
- ![Sertifika Özellikleri](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
+ ![Sertifika Yetkilisi Ekle](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  **Sertifika yetkilisi oluştur** ekranında aşağıdaki değerleri seçin:
     -   **Ad**: tanımlayıcı veren bir ad ekleyin. Örnek Digiccertca
     -   **Sağlayıcı**: menüden DigiCert öğesini seçin.
@@ -101,24 +101,22 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 - **Hesap kimliği** değişkenini tanımla
 - **Kuruluş kimliği** değişkenini tanımla
 - **API anahtar** değişkenini tanımla
-- **Verenin ad** değişkenini tanımlayın
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
-$issuerName = "DigiCertCA"
 ```
 
-4. **Veren**ayarla. Bu işlem, anahtar kasasında bir sertifika yetkilisi olarak DigiCert ekler.
+4. **Veren**ayarla. Bu işlem, anahtar kasasında bir sertifika yetkilisi olarak DigiCert ekler. Parametreler hakkında daha fazla bilgi edinmek için [buradan okuyun](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
 ```azurepowershell-interactive
-Set-AzureKeyVaultCertificateIssuer -VaultName $vaultName -IssuerName $issuerName -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org
+Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
 5. **Sertifika Için Ilke ayarlanıyor ve** DigiCert 'den doğrudan Key Vault içinde sertifika verme.
 
 ```azurepowershell-interactive
-$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName DigiCertCA -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
+$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
@@ -128,7 +126,7 @@ Sertifika artık bu tümleştirme aracılığıyla belirtilen Key Vault içindek
 
 Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifika için DigiCert hata iletisini gözden geçirmek üzere **sertifika işlemini** görüntüleme adımına geçin.
 
- ![Sertifika Özellikleri](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+ ![Sertifika işlemi](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
 

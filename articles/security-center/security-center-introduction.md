@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742086"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332017"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -120,10 +120,6 @@ Güvenlik Merkezi, deneme yanılma saldırıları ile olan pozlamayı sınırlam
 ### <a name="protect-data-services"></a>Veri hizmetlerini koruma
 
 Güvenlik Merkezi, Azure SQL 'de verilerinizin otomatik sınıflandırmasını gerçekleştirmenize yardımcı olan özellikleri içerir. Ayrıca Azure SQL ve depolama hizmetleri 'ndeki olası güvenlik açıklarına yönelik değerlendirmeler alabilir ve bunların nasıl azaltılacağını önerirsiniz.
-
-### <a name="protect-iot-and-hybrid-cloud-workloads"></a>IoT ve hibrit bulut iş yüklerini koruma
-
-IoT için Defender (Nesnelerin İnterneti), uçtan, şirket içinde, Azure 'da ve diğer bulutlarda çalışan iş yükleri arasında birleştirilmiş görünürlük ve denetim, uyarlamalı tehdit önleme ve akıllı tehdit koruması ve yanıt sunarak karma iş yükü korumasını basitleştirir. Daha fazla bilgi için bkz. [IoT Için Defender](../defender-for-iot/index.yml).
 
 ## <a name="get-secure-faster"></a>Daha hızlı bir şekilde güvende edin
 

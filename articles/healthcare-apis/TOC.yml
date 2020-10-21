@@ -9,21 +9,17 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: FHIR için Azure API'sini dağıtma - Portal
-      href: fhir-paas-portal-quickstart.md
-    - name: FHIR için Azure API'sini dağıtma - PowerShell
-      href: fhir-paas-powershell-quickstart.md
-    - name: FHIR için Azure API'sini dağıtma - CLI
-      href: fhir-paas-cli-quickstart.md
-    - name: FHIR için Azure API'sini dağıtma - ARM şablonu
-      href: fhir-paas-arm-template-quickstart.md
-      displayName: deploy azure resource manager template
-    - name: Azure için FHIR Sunucusu'nu dağıtma - Portal
-      href: fhir-oss-portal-quickstart.md
-    - name: Azure için FHIR Sunucusu'nu dağıtma - PowerShell
-      href: fhir-oss-powershell-quickstart.md
-    - name: Azure için FHIR Sunucusu'nu dağıtma - CLI
-      href: fhir-oss-cli-quickstart.md
+    - name: FHIR için Azure API'sini dağıtma
+      expanded: false
+      items:
+        - name: Portalı kullanma
+          href: fhir-paas-portal-quickstart.md
+        - name: PowerShell'i kullanma
+          href: fhir-paas-powershell-quickstart.md
+        - name: CLI kullanma
+          href: fhir-paas-cli-quickstart.md
+        - name: ARM şablonunu kullanma
+          href: fhir-paas-arm-template-quickstart.md
     - name: FHIR için Azure IoT Bağlayıcısı dağıtma (önizleme) - Portal
       href: iot-fhir-portal-quickstart.md
 - name: Öğreticiler
@@ -93,6 +89,8 @@
       href: find-identity-object-ids.md
     - name: FHIR® için Azure API üzerinde Tanılama Günlüğüne Kaydetmeyi etkinleştirme
       href: enable-diagnostic-logging.md
+    - name: Tanılama ayarları aracılığıyla FHIR için Azure IoT Bağlayıcısı (önizleme) ölçümlerini dışarı aktarma
+      href: iot-metrics-diagnostics-export.md
     - name: FHIR için Azure API'sine yönelik belirteç alma - CLI
       href: get-healthcare-apis-access-token-cli.md
     - name: FHIR için Azure IoT Bağlayıcısı’ndaki sorunları giderme (önizleme)

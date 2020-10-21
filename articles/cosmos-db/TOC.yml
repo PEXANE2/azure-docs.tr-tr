@@ -4,7 +4,7 @@
   items:
     - name: Azure Cosmos DB’ye hoş geldiniz
       href: introduction.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Cosmos DB kaynaklarını oluşturma
@@ -86,7 +86,7 @@
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
-      href: resource-manager-samples.md
+      href: templates-samples-sql.md
 - name: Kavramlar
   items:
     - name: NoSQL ile ilişkisel veritabanlarının karşılaştırması
@@ -99,31 +99,17 @@
         - name: Tutarlılık düzeyleri
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: consistency-levels.md
-        - name: Doğru tutarlılık düzeyini seçme
-          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
-          href: consistency-levels-choosing.md
-        - name: Tutarlılık düzeyleri ve Azure Cosmos DB API’leri
-          href: consistency-levels-across-apis.md
-        - name: 'Tutarlılık, kullanılabilirlik ve performans dengeleri'
-          href: consistency-levels-tradeoffs.md
         - name: Yüksek kullanılabilirlik
           href: high-availability.md
-        - name: Sağlanan aktarım hızını küresel olarak ölçeklendirme
-          displayName: 'request units, RUs, RU'
-          href: scaling-throughput.md
         - name: Çakışma türleri ve çözme ilkeleri
           displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: Genel dağıtım - başlık altında
           href: global-dist-under-the-hood.md
-        - name: Bölgesel varlık
-          href: regional-presence.md
     - name: Bölümleme
       items:
-        - name: Bölümlemeye genel bakış
-          href: partitioning-overview.md
         - name: Bölümleme ve yatay ölçeklendirme
-          href: partition-data.md
+          href: partitioning-overview.md
         - name: Yapay bölüm anahtarı
           href: synthetic-partition-keys.md
     - name: Kapasite
@@ -389,6 +375,9 @@
                     - name: LTRIM
                       displayName: 'LTRIM, left trim, built-in functions'
                       href: sql-query-ltrim.md
+                    - name: REGEXMATCH
+                      displayName: 'REGEXMATCH, built-in functions'
+                      href: sql-query-regexmatch.md
                     - name: REPLACE
                       displayName: 'REPLACE, built-in functions'
                       href: sql-query-replace.md
@@ -486,13 +475,11 @@
         - name: LINQ to SQL
           displayName: 'linq, .NET'
           href: sql-query-linq-to-sql.md
-    - name: Azure Cosmos hesabıyla çalışma
-      href: account-overview.md
+    - name: Azure Cosmos DB kaynak modeli
+      displayName: 'collection, document'
+      href: account-databases-containers-items.md
     - name: Kapsayıcılar ve öğeler
       items:
-        - name: 'Veritabanları, kapsayıcılar ve öğelerle çalışma'
-          displayName: 'collection, document'
-          href: databases-containers-items.md
         - name: Belge verilerini modelleme
           displayName: document
           href: modeling-data.md
@@ -564,12 +551,11 @@
         - name: Sağlanan aktarım hızı maliyetini iyileştirme
           displayName: 'request units, RUs, RU'
           href: optimize-cost-throughput.md
-        - name: Sorgu maliyetini iyileştirme
-          href: optimize-cost-queries.md
+        - name: İstek maliyetini iyileştirme
+          displayName: 'request, cost, read, write, query, queries, RUs, RU'
+          href: optimize-cost-reads-writes.md
         - name: Depolama maliyetini iyileştirme
           href: optimize-cost-storage.md
-        - name: Okuma ve yazma işlemlerinin maliyetini iyileştirme
-          href: optimize-cost-reads-writes.md
         - name: Birden çok bölgenin maliyetini iyileştirme
           href: optimize-cost-regions.md
         - name: Geliştirme/test maliyetini iyileştirme
@@ -586,11 +572,6 @@
         - name: Veri erişiminin güvenliğini sağlama
           displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
-        - name: IP güvenlik duvarı
-          href: firewall-support.md
-        - name: Sanal ağlardan erişme
-          displayName: service endpoint
-          href: vnet-service-endpoint.md
         - name: Hizmet etiketleri
           href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Rol tabanlı erişim denetimi
@@ -605,8 +586,6 @@
           href: security-baseline.md
     - name: Kurumsal kullanıma hazır olma
       items:
-        - name: Çevrimiçi yedekleme ve isteğe bağlı geri yükleme
-          href: online-backup-and-restore.md
         - name: Uyumluluk
           href: compliance.md
         - name: Azure İlkesi desteği
@@ -663,6 +642,8 @@
               href: cassandra-partitioning.md
             - name: İkincil Dizinler
               href: cassandra-secondary-index.md
+            - name: Tutarlılık düzeylerini eşleme
+              href: cassandra-consistency.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Cassandra API’ye geçirme
@@ -675,6 +656,14 @@
                   href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Akışı değiştirme
               href: cassandra-change-feed.md
+            - name: Kapsayıcı oluşturma - Cassandra API
+              href: how-to-create-container-cassandra.md
+            - name: Sağlama aktarım hızı - Cassandra API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-cassandra.md
+            - name: İstek birimi ücreti bul
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-cassandra.md
             - name: Mağaza ve Spring Verilerini yönetme
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra ve Spark
@@ -700,12 +689,12 @@
                 - name: Tablo verilerini kopyalama
                   href: cassandra-spark-table-copy-ops.md
             - name: Resource Manager şablonlarını kullanarak yönetme
-              href: manage-cassandra-with-resource-manager.md
+              href: templates-samples-cassandra.md
               displayName: ARM
             - name: PowerShell kullanarak yönetme
-              href: powershell-samples.md
+              href: powershell-samples-cassandra.md
             - name: Azure CLI kullanarak yönetme
-              href: cli-samples.md
+              href: cli-samples-cassandra.md
     - name: MongoDB API’si
       items:
         - name: Genel Bakış
@@ -760,6 +749,8 @@
               href: mongodb-feature-support.md
             - name: SSS
               href: mongodb-api-faq.md
+            - name: Tutarlılık düzeylerini eşleme
+              href: mongodb-consistency.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: MongoDB API’sine geçirme
@@ -793,18 +784,28 @@
               href: mongodb-change-streams.md
             - name: Veri dizinlemeyi yönetme
               href: mongodb-indexing.md
+            - name: Kapsayıcı oluşturma - MongoDB API
+              href: how-to-create-container-mongodb.md
+            - name: Sağlama aktarım hızı - MongoDB API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-mongodb.md
+            - name: İstek birimi ücreti bul
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-mongodb.md
+            - name: Sorgu performansı sorunlarını giderme
+              href: mongodb-troubleshoot-query.md
             - name: Mağaza ve Spring Verilerini yönetme
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: MongoDB uzantı komutları
               href: mongodb-custom-commands.md
               displayName: custom commands
             - name: Resource Manager şablonlarını kullanarak yönetme
-              href: manage-mongodb-with-resource-manager.md
+              href: templates-samples-mongodb.md
               displayName: ARM
             - name: PowerShell kullanarak yönetme
-              href: powershell-samples.md
+              href: powershell-samples-mongodb.md
             - name: Azure CLI kullanarak yönetme
-              href: cli-samples.md
+              href: cli-samples-mongodb.md
             - name: Yaygın sorunları giderme
               href: mongodb-troubleshoot.md
     - name: Gremlin API
@@ -838,6 +839,10 @@
           items:
             - name: SSS
               href: gremlin-api-faq.md
+            - name: Yanıt üst bilgileri
+              href: gremlin-headers.md
+            - name: Sınırlar
+              href: gremlin-limits.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Graf verileri modellemesi
@@ -848,6 +853,14 @@
               href: bulk-executor-graph-dotnet.md
             - name: Gremlin sorgularını iyileştirme
               href: graph-execution-profile.md
+            - name: Kapsayıcı oluşturma - Gremlin API
+              href: how-to-create-container-gremlin.md
+            - name: Sağlama aktarım hızı - Gremlin API
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-gremlin.md
+            - name: İstek birimi ücreti bul
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-gremlin.md
             - name: Kaynak belirteçlerini kullanma
               href: how-to-use-resource-tokens-gremlin.md
             - name: Bölgesel uç noktaları kullanma
@@ -859,12 +872,12 @@
             - name: Mağaza ve Spring Verilerini yönetme
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Resource Manager şablonlarını kullanarak yönetme
-              href: manage-gremlin-with-resource-manager.md
+              href: templates-samples-gremlin.md
               displayName: ARM
             - name: PowerShell kullanarak yönetme
-              href: powershell-samples.md
+              href: powershell-samples-gremlin.md
             - name: Azure CLI kullanarak yönetme
-              href: cli-samples.md
+              href: cli-samples-gremlin.md
         - name: Başvuru
           items:
             - name: Yanıt Üst Bilgileri
@@ -927,15 +940,20 @@
           items:
             - name: Tablo API’si ile uygulama oluşturma
               href: table-support.md
+            - name: Kapsayıcı oluşturma - Tablo API'si
+              href: how-to-create-container-table.md
+            - name: İstek birimi ücreti bul
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-table.md
             - name: Tablo depolama tasarım kılavuzu
               href: table-storage-design-guide.md
             - name: Resource Manager şablonlarını kullanarak yönetme
-              href: manage-table-with-resource-manager.md
+              href: templates-samples-table.md
               displayName: ARM
             - name: PowerShell kullanarak yönetme
-              href: powershell-samples.md
+              href: powershell-samples-table.md
             - name: Azure CLI kullanarak yönetme
-              href: cli-samples.md
+              href: cli-samples-table.md
         - name: Başvuru
           items:
             - name: .NET
@@ -971,7 +989,7 @@
         - name: Azure CLI’yı kullanma
           href: manage-with-cli.md
         - name: Resource Manager şablonlarını kullanma
-          href: manage-sql-with-resource-manager.md
+          href: manage-with-templates.md
           displayName: ARM
         - name: Bölgeler arasında taşıma
           href: how-to-move-regions.md
@@ -1018,7 +1036,7 @@
               href: storage-explorer.md
             - name: Azure Cosmos gezginini kullanarak verilerle çalışma
               href: data-explorer.md
-        - name: Bir kapsayıcı oluşturma
+        - name: Kapsayıcı oluşturma - SQL API’si
           href: how-to-create-container.md
         - name: Büyük bölüm anahtarıyla kapsayıcı oluşturma
           href: large-partition-keys.md
@@ -1038,6 +1056,8 @@
           href: how-to-define-unique-keys.md
     - name: Performans
       items:
+        - name: Bağlantı modları
+          href: sql-sdk-connection-modes.md
         - name: Sorgu
           items:
             - name: Sorgu yürütme ölçümlerini alma
@@ -1102,16 +1122,12 @@
               href: troubleshoot-java-async-sdk.md
     - name: Değişiklik Akışı
       items:
-        - name: Azure Cosmos DB Tetikleyicisi günlükleri
-          href: how-to-configure-cosmos-db-trigger-logs.md
-        - name: Azure Cosmos DB Tetikleyici bağlantı ilkesi
-          href: how-to-configure-cosmos-db-trigger-connection-policy.md
+        - name: Azure Cosmos DB Tetikleyici gelişmiş yapılandırma
+          href: how-to-configure-cosmos-db-trigger.md
         - name: Birden Fazla Azure Cosmos DB Tetikleyicisi
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB Tetikleyicileriyle İlgili Sorunları Giderme
           href: troubleshoot-changefeed-functions.md
-        - name: Değişiklik akışı işlemcisi başlangıç zamanı
-          href: how-to-configure-change-feed-start-time.md
         - name: Değişiklik akışı tahmin aracını kullanma
           href: how-to-use-change-feed-estimator.md
         - name: Değişiklik akışı işlemci kitaplığından geçiş
@@ -1180,8 +1196,8 @@
           href: how-to-setup-cmk.md
     - name: Kurumsal kullanıma hazır olma
       items:
-        - name: Verileri bir yedeklemeden geri yükleme
-          href: how-to-backup-and-restore.md
+        - name: Çevrimiçi yedekleme ve isteğe bağlı geri yükleme
+          href: online-backup-and-restore.md
         - name: Kota artışı isteme
           href: create-support-request-quota-increase.md
     - name: İzleme

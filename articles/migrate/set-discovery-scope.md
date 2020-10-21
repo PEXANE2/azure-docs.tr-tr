@@ -3,12 +3,12 @@ title: Azure geçişi ile VMware VM keşfi kapsamını ayarlama
 description: Azure geçişi ile VMware VM değerlendirmesi ve geçişi için bulma kapsamının nasıl ayarlanacağını açıklar.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919735"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314038"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>VMware VM 'Leri için bulma kapsamını ayarlama
 
@@ -21,7 +21,7 @@ Gereci ayarlarken vCenter Server bağlanır ve bulmayı başlatır. Gereci vCent
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Azure geçişi 'nin bulma için kullandığı bir vCenter Kullanıcı hesabı ayarlamadıysanız, artık [değerlendirme](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) veya [aracısız geçiş](tutorial-prepare-vmware.md#assign-permissions-to-an-account)için bunu yapın.
+Azure geçişi 'nin bulma için kullandığı bir vCenter Kullanıcı hesabı ayarlamadıysanız, artık [değerlendirme](./tutorial-discover-vmware.md#prepare-vmware) veya [aracısız geçiş](./migrate-support-matrix-vmware-migration.md#agentless-migration)için bunu yapın.
 
 
 ## <a name="assign-permissions-and-roles"></a>İzin ve rol atama

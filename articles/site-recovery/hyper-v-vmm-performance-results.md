@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73663182"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327646"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>İkincil siteye Hyper-V çoğaltması için test sonuçları
 
@@ -47,7 +47,7 @@ Testin amacı, Site Recovery kararlı durum çoğaltması sırasında nasıl ger
 * Hyper-V çoğaltma, izleme için ıOPS yükünü en aza indirmek üzere kendi kendine korunan bellek önbelleğini kullanır. Yazma işlemlerini bellekte depoladığında depolar ve günlüğü kurtarma sitesine gönderilmeden önce günlük dosyasına boşaltır. Bir disk temizleme işlemi, yazmaları önceden belirlenmiş bir sınıra ulaşıyorsa da oluşur.
 * Aşağıdaki grafikte, çoğaltma için sabit durum ıOPS ek yükü gösterilmektedir. Çoğaltma nedeniyle ıOPS ek yükünün %5 ' ün üzerinde olduğunu görebiliriz. Bu, oldukça düşüktür.
 
-  ![Birincil sonuçlar](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![Çoğaltma için sabit durum ıOPS ek yükünü gösteren grafik.](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 Hyper-V çoğaltma, disk performansını iyileştirmek için birincil sunucuda bellek kullanır. Aşağıdaki grafikte gösterildiği gibi, birincil kümedeki tüm sunuculardaki bellek ek yükü marguinal olur. Gösterilen bellek yükü, Hyper-V sunucusundaki toplam yüklü bellekle karşılaştırıldığında çoğaltma tarafından kullanılan bellek yüzdesidir.
 
@@ -55,20 +55,20 @@ Hyper-V çoğaltma, disk performansını iyileştirmek için birincil sunucuda b
 
 Hyper-V çoğaltmasında en düşük CPU ek yükü vardır. Grafikte gösterildiği gibi, çoğaltma ek yükü% 2-3 aralığındadır.
 
-![Birincil sonuçlar](./media/hyper-v-vmm-performance-results/IC744915.png)
+![Çoğaltma ek yükünü gösteren grafik% 2-3 aralığındadır.](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>İkincil sunucu performansı
 
 Hyper-V çoğaltma, depolama işlemlerinin sayısını iyileştirmek için kurtarma sunucusunda az miktarda bellek kullanır. Grafik, kurtarma sunucusundaki bellek kullanımını özetler. Gösterilen bellek yükü, Hyper-V sunucusundaki toplam yüklü bellekle karşılaştırıldığında çoğaltma tarafından kullanılan bellek yüzdesidir.
 
-![İkincil sonuçlar](./media/hyper-v-vmm-performance-results/IC744916.png)
+![Kurtarma sunucusundaki bellek kullanımını özetleyen grafik.](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 Kurtarma sitesindeki g/ç işlemlerinin miktarı, birincil sitede yazma işlemi sayısı işlevidir. Birincil sitedeki toplam g/ç işlemleri ve yazma işlemleri ile karşılaştırıldığında, kurtarma sitesindeki toplam g/ç işlemlerine göz atalım. Grafiklerde, kurtarma sitesindeki toplam ıOPS 'nin olduğunu gösterir
 
 * Birincil üzerinde yazma ıOPS 1,5 ' dir.
 * Birincil sitedeki toplam ıOPS 'nin %37 ' i.
 
-![İkincil sonuçlar](./media/hyper-v-vmm-performance-results/IC744917.png)
+![Birincil ve ikincil sitelerde ıOPS 'nin karşılaştırmasını gösteren grafik.](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![İkincil sonuçlar](./media/hyper-v-vmm-performance-results/IC744918.png)
 
@@ -109,7 +109,7 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 | Sunucu | RAM | Model | İşlemci | İşlemci sayısı | NIC | Yazılım |
 | --- | --- | --- | --- | --- | --- | --- |
 | Kümedeki Hyper-V sunucuları: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V rolü |
-| VMM Sunucusu |2 | | |2 |1 Gbps |Windows Server veritabanı 2012 R2 (x64) + VMM 2012 R2 |
+| VMM Sunucusu |2 | | |2 |1 Gb/sn |Windows Server veritabanı 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>İkincil site
 
@@ -123,7 +123,7 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 | Kümedeki Hyper-V sunucuları: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5-2630 0 \@ 2.30 GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V rolü |
 | ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V rolü |
 | ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V rolü |
-| VMM Sunucusu |2 | | |2 |1 Gbps |Windows Server veritabanı 2012 R2 (x64) + VMM 2012 R2 |
+| VMM Sunucusu |2 | | |2 |1 Gb/sn |Windows Server veritabanı 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Sunucu iş yükleri
 

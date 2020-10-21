@@ -647,6 +647,8 @@
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: IoT Hub ile Apache Kafka kullanma
               href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: Confluent Şema Kayıt Defteri
+              href: ./kafka/schema-registry.md
             - name: Akış işlem hatları oluşturma
               items:
                 - name: 'Apache Spark, Apache Kafka ve Azure Cosmos DB'
@@ -845,6 +847,8 @@
               href: ./hdinsight-troubleshoot-hive.md
             - name: Apache Hive günlükleri Baş düğümdeki tüm disk alanını kaplıyor
               href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
+            - name: Hive için güvenlik seçenekleri
+              href: ./interactive-query/hdinsight-security-options-for-hive.md
 - name: ML Services
   items:
     - name: Genel Bakış

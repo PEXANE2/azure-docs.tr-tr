@@ -1,237 +1,256 @@
 ---
-title: Hızlı başlangıç-Azure 'da özel uç noktaları yönetme
-description: Bu hızlı başlangıçta Azure portal kullanarak özel uç nokta oluşturmayı öğrenin
+title: Hızlı başlangıç-Azure portal kullanarak özel uç nokta oluşturma
+description: Azure portal kullanarak özel uç nokta oluşturmayı öğrenmek için bu hızlı başlangıcı kullanın.
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.date: 09/16/2019
+ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: ef6d49c9046ba04bbac40ec9bf555e12d2faa8f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3deeca4635f33b63a6e0bcecc0c829d3df88e352
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84021713"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327523"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel uç nokta oluşturma
+# <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel uç nokta oluşturma
 
-Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, bir Azure sanal ağında, Azure portal kullanarak bir Azure özel uç noktası içeren mantıksal bir SQL Server olan bir VM oluşturmayı öğreneceksiniz. Daha sonra, VM 'den SQL veritabanına güvenli bir şekilde erişebilirsiniz.
+Azure Web uygulamasına güvenli bir şekilde bağlanmak için özel bir uç nokta kullanarak Azure özel bağlantısı ile çalışmaya başlayın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Bu hızlı başlangıçta, bir Azure Web uygulaması için özel bir uç nokta oluşturacak ve özel bağlantıyı test etmek için bir sanal makine dağıtacaksınız.  
 
+Özel uç noktalar Azure SQL ve Azure depolama gibi farklı türlerde Azure hizmetleri için oluşturulabilir.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure aboneliğinizde dağıtılan **PremiumV2 katmanı** veya daha yüksek bir App Service planına sahip bir Azure Web uygulaması.  
+    * Daha fazla bilgi ve bir örnek için bkz. [hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma](../app-service/quickstart-dotnetcore.md). 
+    * Web uygulaması ve uç nokta oluşturma hakkında ayrıntılı bir öğretici için bkz. [öğretici: Azure özel uç nokta kullanarak bir Web uygulamasına bağlanma](tutorial-private-endpoint-webapp-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="create-a-vm"></a>VM oluşturma
-Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi barındırmak için sanal ağ ve alt ağ oluşturacaksınız (Bu örnekteki Azure 'da bir SQL Server).
+## <a name="create-a-virtual-network-and-bastion-host"></a>Sanal ağ ve savunma Konağı oluşturma
 
-## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
+Bu bölümde, bir sanal ağ, alt ağ ve savunma ana bilgisayarı oluşturacaksınız. 
 
-Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi barındırmak için bir sanal ağ ve alt ağ oluşturacaksınız.
+Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenli bir şekilde bağlanmak için kullanılacaktır.
 
-Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
+1. Ekranın sol üst kısmındaki **Kaynak oluştur > Ağ > Sanal ağ** seçeneğini belirleyin veya arama kutusuna **Sanal ağ** yazarak arama yapın.
 
-| Parametre                   | Değer                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroup |
-| **\<virtual-network-name>** | myVirtualNetwork          |
-| **\<region-name>**          | Orta Batı ABD    |
-| **\<IPv4-address-space>**   | 10.1.0.0/16          |
-| **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 10.1.0.0/24          |
+2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+    | **Ayar**          | **Değer**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Proje ayrıntıları**  |                                                                 |
+    | Abonelik     | Azure aboneliğinizi seçin                                  |
+    | Kaynak Grubu   | **Createprivateendpointqs-RG** seçin |
+    | **Örnek ayrıntıları** |                                                                 |
+    | Name             | **Myvnet** girin                                    |
+    | Bölge           | **\<your-web-app-region>** seçeneğini belirleyin. </br> Web uygulamanızın dağıtıldığı bölgeyi seçin.|
 
-### <a name="create-virtual-machine"></a>Sanal makine oluştur
+3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
-1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin.
+4. **IP adresleri** sekmesinde şu bilgileri girin:
 
-1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | IPv4 adres alanı | **10.1.0.0/16** girin |
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | **PROJE AYRıNTıLARı** | |
-    | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
-    | **ÖRNEK AYRıNTıLARı** |  |
-    | Sanal makine adı | *Myvm*' i girin. |
-    | Region | **WestCentralUS**öğesini seçin. |
-    | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
-    | Görüntü | **Windows Server 2019 Datacenter**öğesini seçin. |
-    | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
-    | **YÖNETİCİ HESABI** |  |
-    | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
-    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
-    | Parolayı Onayla | Parolayı yeniden girin. |
-    | **GELEN BAĞLANTI NOKTASI KURALLARI** |  |
-    | Genel gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
-    | **TASARRUF EDİN** |  |
-    | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
-    |||
+5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
 
-1. **İleri ' yi seçin: diskler**.
+6. **Alt ağı Düzenle**' de şu bilgileri girin:
 
-1. **Sanal makine oluştur - Diskler** bölümünde varsayılan değerleri değiştirmeyin ve **Sonraki: Ağ** seçeneğini belirleyin.
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Alt ağ adı | **Mysubnet** girin |
+    | Alt ağ adres aralığı | **10.1.0.0/24** girin |
 
-1. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
+7. **Kaydet**’i seçin.
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | Sanal ağ | Varsayılan **MyVirtualNetwork**bırakın.  |
-    | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
-    | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
-    | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
-    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
-    | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
-    |||
+8. **Güvenlik** sekmesini seçin.
+
+9. **Bastionhost**altında **Etkinleştir**' i seçin. Bu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Savunma adı | **Mybastionhost** girin |
+    | AzureBastionSubnet adres alanı | **10.1.1.0/24** girin |
+    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad**Için **Mybastionıp**girin. </br> **Tamam**’ı seçin. |
 
 
-1. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
+8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
 
-1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
+9. **Oluştur**’u seçin.
 
-## <a name="create-a-logical-sql-server"></a>Mantıksal SQL Server oluştur
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-Bu bölümde, Azure 'da bir mantıksal SQL Server oluşturacaksınız. 
+Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine oluşturacaksınız.
 
-1. Ekranın sol üst tarafında Azure Portal **kaynak**  >  **veritabanları**oluştur  >  **SQL veritabanı**' nı seçin.
+1. Portalın sol üst tarafında, **kaynak oluştur**  >  **işlem**  >  **sanal makinesi** ' ni seçin veya arama kutusunda **sanal makine** ara ' yı seçin.
+   
+2. **Sanal makine oluştur**' da **temel bilgiler** sekmesinde değerleri yazın veya seçin:
 
-1. **SQL veritabanı oluşturma-temel**bilgiler bölümünde, bu bilgileri girin veya seçin:
+    | Ayar | Değer                                          |
+    |-----------------------|----------------------------------|
+    | **Proje ayrıntıları** |  |
+    | Abonelik | Azure aboneliğinizi seçin |
+    | Kaynak Grubu | **Createprivateendpointqs-RG** seçin |
+    | **Örnek ayrıntıları** |  |
+    | Sanal makine adı | **Myvm 'yi** girin |
+    | Bölge | **\<your-web-app-region>** seçeneğini belirleyin. </br> Web uygulamanızın dağıtıldığı bölgeyi seçin. |
+    | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
+    | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
+    | Azure Spot örneği | **Hayır** seçin |
+    | Boyut | VM boyutunu seçin veya varsayılan ayarı yapın |
+    | **Yönetici hesabı** |  |
+    | Kullanıcı adı | Kullanıcı adı girin |
+    | Parola | Parola girin |
+    | Parolayı onayla | Parolayı yeniden girin |
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | **Veritabanı ayrıntıları** | |
-    | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
-    | **ÖRNEK AYRıNTıLARı** |  |
-    | Veritabanı adı  | *MyDatabase*yazın. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
-    |||
-5. **Sunucu**' da, **Yeni oluştur**' u seçin. 
-6. **Yeni sunucu**' da bu bilgileri girin veya seçin:
+3. **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin.
+  
+4. Ağ sekmesinde, şunu seçin veya girin:
 
     | Ayar | Değer |
-    | ------- | ----- |
-    |Sunucu adı  | *Sunucum*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun.|
-    | Sunucu yöneticisi oturumu açma| Tercih etmek için bir yönetici adı girin. |
-    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 8 karakter uzunluğunda olmalı ve tanımlanan gereksinimleri karşılamalıdır. |
-    | Konum | SQL Server bulunmasını istediğiniz bir Azure bölgesi seçin. |
-    
-7. **Tamam**’ı seçin. 
-8. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
-9. Doğrulama başarılı iletisini gördüğünüzde **Oluştur**’u seçin. 
-10. Doğrulama başarılı iletisini gördüğünüzde Oluştur’u seçin. 
+    |-|-|
+    | **Ağ arabirimi** |  |
+    | Sanal ağ | **myVNet** |
+    | Alt ağ | **mySubnet** |
+    | Genel IP | **Hiçbiri** seçeneğini belirtin. |
+    | NIC ağ güvenlik grubu | **Temel**|
+    | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
+   
+5. **Gözden geçir + oluştur**’u seçin. 
+  
+6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
-## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
+## <a name="create-a-private-endpoint"></a>Özel Uç Nokta oluşturma
 
-Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokta ekleyeceksiniz. 
+Bu bölümde, Önkoşullar bölümünde oluşturduğunuz Web uygulaması için özel bir uç nokta oluşturacaksınız.
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **özel bağlantı merkezi (Önizleme)** öğesini seçin.
-2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
-1. **Özel uç nokta oluştur (Önizleme)-temel**bilgiler için, bu bilgileri girin veya seçin:
+1. Portaldaki ekranın sol üst kısmında, **kaynak oluştur**  >  **ağ**  >  **özel bağlantısı**' nı seçin veya arama kutusuna **özel bağlantı**girin.
+
+2. **Oluştur**’u seçin.
+
+3. **Özel bağlantı merkezi**'nde, sol taraftaki menüden **Özel uç noktalar** ' ı seçin.
+
+4. **Özel uç noktalarında** **+ Ekle**' yi seçin.
+
+5. **Özel uç nokta oluştur**' un **temel bilgiler** sekmesinde, girin veya bu bilgileri seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
-    | **ÖRNEK AYRıNTıLARı** |  |
-    | Name | *myPrivateEndpoint* değerini girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
-    |Region|**WestCentralUS**öğesini seçin.|
-    |||
-5. **Sonraki: kaynak**' ı seçin.
-6. **Özel uç nokta oluştur-kaynak**bölümünde bu bilgileri girin veya seçin:
+    | Kaynak grubu | **Createprivateendpointqs-RG**öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz.|
+    | **Örnek ayrıntıları** |  |
+    | Name  | **myPrivateEndpoint** değerini girin. |
+    | Bölge | **\<your-web-app-region>** seçeneğini belirleyin. </br> Web uygulamanızın dağıtıldığı bölgeyi seçin. |
+
+6. Sayfanın alt kısmındaki **kaynak** sekmesini veya **Sonraki: kaynak** düğmesini seçin.
+    
+7. **Kaynak**bölümünde, bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    |Bağlantı yöntemi  | Dizinimde bir Azure kaynağına bağlan ' ı seçin.|
-    | Abonelik| Aboneliğinizi seçin. |
-    | Kaynak türü | **Microsoft. SQL/Servers**' ı seçin. |
-    | Kaynak |*Sunucum* seçin|
-    |Hedef alt kaynak |*SqlServer* seçin|
-    |||
-7. Ileri 'yi seçin **: yapılandırma**.
-8. **Özel uç nokta (Önizleme) oluştur-yapılandırma**' da bu bilgileri girin veya seçin:
+    | Bağlantı yöntemi | **Dizinimde bir Azure kaynağına bağlan '** ı seçin. |
+    | Abonelik | Aboneliğinizi seçin. |
+    | Kaynak türü | **Microsoft. Web/Sites**öğesini seçin. |
+    | Kaynak | **\<your-web-app-name>** seçeneğini belirleyin. </br> Önkoşullarda oluşturduğunuz Web uygulamasının adını seçin. |
+    | Hedef alt kaynak | **Siteleri**seçin. |
+
+8. Ekranın alt kısmındaki **yapılandırma** sekmesini veya **Sonraki: yapılandırma** düğmesini seçin.
+
+9. **Yapılandırma**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    |**AĞ**| |
-    | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
-    | Alt ağ | *Mysubnet*öğesini seçin. |
-    |**ÖZEL DNS TÜMLEŞTİRMESİ**||
-    |Özel DNS bölgesi ile tümleştirme |**Evet** seçeneğini belirleyin. |
-    |Özel DNS Bölgesi |Seçin *(yeni) Privatelink. Database. Windows. net* |
-    |||
+    | **Ağ** |  |
+    | Sanal ağ | **Myvnet**' i seçin. |
+    | Alt ağ | **Mysubnet**öğesini seçin. |
+    | **Özel DNS tümleştirme** |  |
+    | Özel DNS bölgesi ile tümleştirme | Varsayılan değerini **Evet**olarak bırakın. |
+    | Abonelik | Aboneliğinizi seçin. |
+    | Özel DNS bölgeleri | Varsayılan **(New) Privatelink.azurewebsites.net**bırakın.
+    
 
-1. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
-2. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin. 
- 
-## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Uzak Masaüstü (RDP) kullanarak sanal makineye bağlanma
+13. **Gözden geçir ve oluştur**’u seçin.
 
+14. **Oluştur**’u seçin.
 
-**Myvm**'yi oluşturduktan sonra Internet 'ten şu şekilde bağlanın: 
+## <a name="test-connectivity-to-private-endpoint"></a>Özel uç nokta ile bağlantıyı sına
 
-1. Portalın arama çubuğuna *myVm* değerini girin.
+Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi özel uç nokta genelinde Web uygulamasına bağlamak için kullanacaksınız.
 
-1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
+1. Sol taraftaki Gezinti bölmesinde **kaynak grupları** ' nı seçin.
 
-1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+2. **Createprivateendpointqs-RG**öğesini seçin.
 
-1. *İndirilen. rdp* dosyasını açın.
+3. **Myvm**' yi seçin.
 
-    1. İstendiğinde **Bağlan**’ı seçin.
+4. **Myvm**için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
-    1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
+5. Mavi **kullanımı** savunma düğmesini seçin.
 
-        > [!NOTE]
-        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+6. Sanal makine oluşturma sırasında girdiğiniz kullanıcı adını ve parolayı girin.
 
-1. **Tamam**’ı seçin.
+7. Bağlandıktan sonra sunucuda Windows PowerShell 'i açın.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
+8. `nslookup <your-webapp-name>.azurewebsites.net` yazın. **\<your-webapp-name>** Önceki adımlarda oluşturduğunuz Web uygulamasının adıyla değiştirin.  Aşağıda görüntülene benzer bir ileti alacaksınız:
 
-1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
-
-## <a name="access-sql-database-privately-from-the-vm"></a>SQL veritabanına özel olarak VM 'den erişin
-
-1. *Myvm*uzak masaüstünde PowerShell ' i açın.
-
-2. `nslookup myserver.database.windows.net` yazın. 
-
-    Şuna benzer bir ileti alırsınız:
-    ```azurepowershell
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
+
     Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
-    Address:  10.0.0.5
-    Aliases:   myserver.database.windows.net
+    Name:    mywebapp8675.privatelink.azurewebsites.net
+    Address:  10.1.0.5
+    Aliases:  mywebapp8675.azurewebsites.net
     ```
-3. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)'i yükler.
 
-4. **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
+    Web uygulaması adı için **10.1.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | Sunucu türü| **Veritabanı Altyapısı**’nı seçin.|
-    | Sunucu adı| *Myserver.Database.Windows.net* seçin |
-    | Kullanıcı adı | username@servernameSQL Server oluşturma sırasında belirtilen kullanıcı adını girin. |
-    |Parola |SQL Server oluşturma sırasında girilen bir parolayı girin. |
-    |Parolayı unutmayın|**Evet** seçeneğini belirleyin.|
-    |||
-1. **Bağlan**'ı seçin.
-2. Sol menüden veritabanlarına gözatamazsınız.
-3. I MyDatabase 'ten bilgi oluşturun veya sorgulayın.
-4. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
+11. **Myvm**'e yönelik savunma bağlantısı ' nda Internet Explorer 'ı açın.
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme 
-Özel uç nokta, SQL Server ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin: 
-1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* yazın ve arama sonuçlarından *myresourcegroup* öğesini seçin. 
-2. **Kaynak grubunu sil**'i seçin. 
-3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
+12. Web uygulamanızın URL 'sini girin, **https:// \<your-webapp-name> . azurewebsites.net**.
+
+13. Uygulamanız dağıtılmamışsa varsayılan Web uygulaması sayfasını alacaksınız:
+
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Varsayılan Web uygulaması sayfası." border="true":::
+
+18. **Myvm**bağlantısını kapatın.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu uygulamayı kullanmaya devam etmeyecekecekseniz, sanal ağ, sanal makine ve Web uygulamasını aşağıdaki adımlarla silin:
+
+1. Sol taraftaki menüden **kaynak grupları**' nı seçin.
+
+2. **Createprivateendpointqs-RG**öğesini seçin.
+
+3. **Kaynak grubunu sil**'i seçin.
+
+4. **Kaynak grubu adını türüne** **Createprivateendpointqs-RG** girin.
+
+5. **Sil**’i seçin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir sanal ağ, bir mantıksal SQL Server ve özel erişim için özel bir uç nokta üzerinde bir VM oluşturdunuz. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak SQL veritabanına güvenli bir şekilde iletilecaksınız. Özel uç noktalar hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](private-endpoint-overview.md).
+Bu hızlı başlangıçta şunu oluşturdunuz:
+
+* Sanal ağ ve savunma Konağı.
+* Sanal makine.
+* Bir Azure Web uygulaması için özel uç nokta.
+
+Özel uç nokta genelinde Web uygulamasıyla güvenli bir şekilde bağlantıyı test etmek için sanal makineyi kullandınız.
+
+
+
+Özel bir uç noktayı destekleyen hizmetler hakkında daha fazla bilgi için bkz.:
+> [!div class="nextstepaction"]
+> [Özel bağlantı kullanılabilirliği](private-link-overview.md#availability)

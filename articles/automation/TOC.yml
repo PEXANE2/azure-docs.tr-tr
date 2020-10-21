@@ -193,29 +193,33 @@
         - name: Değişiklik izleme ve envanter
           items:
             - name: Genel Bakış
-              href: change-tracking.md
+              href: change-tracking/overview.md
             - name: Bağlı Log Analytics çalışma alanı için bölgeleri destekleme
               href: how-to/region-mappings.md
             - name: Etkinleştirme
               items:
-                - name: Azure portalından Değişiklik İzleme ve Stok özelliğini etkinleştirme
-                  href: automation-enable-changes-from-browse.md
-                - name: Azure VM’den Değişiklik İzleme ve Stok özelliğini etkinleştirme
-                  href: automation-enable-changes-from-vm.md
-                - name: Otomasyon hesabından Değişiklik İzleme ve Stok özelliğini etkinleştirme
-                  href: automation-enable-changes-from-auto-acct.md
-                - name: Runbook’tan Değişiklik İzleme ve Stok özelliğini etkinleştirme
-                  href: automation-enable-changes-from-runbook.md
+                - name: Azure portaldan etkinleştirme
+                  href: change-tracking/enable-from-portal.md
+                - name: Azure VM’sinden etkinleştirme
+                  href: change-tracking/enable-from-vm.md
+                - name: Otomasyon hesabından etkinleştirme
+                  href: change-tracking/enable-from-automation-account.md
+                - name: Runbook’tan etkinleştirme
+                  href: change-tracking/enable-from-runbook.md
             - name: Değişiklik izlemeyi ve envanteri yönetme
-              href: change-tracking-file-contents.md
+              href: change-tracking/manage-change-tracking.md
             - name: VM’lerden stok koleksiyonunu yönetme
-              href: automation-vm-inventory.md
+              href: change-tracking/manage-inventory-vms.md
             - name: Kapsam yapılandırmalarıyla çalışma
-              href: automation-scope-configurations-change-tracking.md
-            - name: Çalışma alanının Otomasyon hesabından bağlantısını kaldırma
-              href: automation-unlink-workspace-change-tracking.md
-            - name: Değişiklik İzleme ve Stok özelliğinden VM’leri kaldırma
-              href: automation-remove-vms-from-change-tracking.md
+              href: change-tracking/manage-scope-configurations.md
+            - name: Uyarıları yapılandırma
+              href: change-tracking/configure-alerts.md
+            - name: Devre Dışı Bırak
+              items:
+                - name: Değişiklik İzleme ve Envanter’i kaldırma
+                  href: change-tracking/remove-feature.md
+                - name: Değişiklik İzleme ve Stok özelliğinden VM’leri kaldırma
+                  href: change-tracking/remove-vms-from-change-tracking.md
             - name: Sorun giderme
               items:
                 - name: Özellik dağıtımı sorunlarını giderme
@@ -239,49 +243,49 @@
     - name: Güncelleştirme Yönetimi
       items:
         - name: Genel Bakış
-          href: update-management/update-mgmt-overview.md
+          href: update-management/overview.md
         - name: Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
           href: how-to/region-mappings.md
         - name: Etkinleştirme
           items:
-            - name: Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi’ni etkinleştirme
-              href: update-management/update-mgmt-enable-template.md
-            - name: Azure portalından Güncelleştirme Yönetimi’ni etkinleştirme
-              href: update-management/update-mgmt-enable-portal.md
-            - name: Azure VM’den Güncelleştirme Yönetimi’ni etkinleştirme
-              href: update-management/update-mgmt-enable-vm.md
-            - name: Otomasyon hesabından Güncelleştirme Yönetimi’ni etkinleştirme
-              href: update-management/update-mgmt-enable-automation-account.md
-            - name: Runbook’tan Güncelleştirme Yönetimi’ni etkinleştirme
-              href: update-management/update-mgmt-enable-runbook.md
+            - name: Azure Resource Manager şablonu kullanarak etkinleştirme
+              href: update-management/enable-from-template.md
+            - name: Azure portaldan etkinleştirme
+              href: update-management/enable-from-portal.md
+            - name: Azure VM’sinden etkinleştirme
+              href: update-management/enable-from-vm.md
+            - name: Otomasyon hesabından etkinleştirme
+              href: update-management/enable-from-automation-account.md
+            - name: Runbook’tan etkinleştirme
+              href: update-management/enable-from-runbook.md
         - name: Sanal makineleriniz için güncelleştirmeleri yönetme
           items:
             - name: başlarken
-              href: update-management/update-mgmt-manage-updates-for-vm.md
+              href: update-management/manage-updates-for-vm.md
             - name: Uyumluluğu değerlendirme
-              href: update-management/update-mgmt-view-update-assessments.md
+              href: update-management/view-update-assessments.md
             - name: Güncelleştirmeleri dağıtma ve durumu gözden geçirme
-              href: update-management/update-mgmt-deploy-updates.md
+              href: update-management/deploy-updates.md
             - name: Ön betikleri ve son betikleri kullanma
-              href: update-management/update-mgmt-pre-post-scripts.md
+              href: update-management/pre-post-scripts.md
             - name: Uyarı yapılandırma
-              href: update-management/update-mgmt-configure-alerts.md
+              href: update-management/configure-alerts.md
         - name: Configuration Manager ile tümleştirme
-          href: update-management/update-mgmt-mecmintegration.md
+          href: update-management/mecmintegration.md
         - name: Windows Update istemcisini yapılandırma
-          href: update-management/update-mgmt-configure-wuagent.md
+          href: update-management/configure-wuagent.md
         - name: Dinamik gruplar kullanma
-          href: update-management/update-mgmt-groups.md
+          href: update-management/configure-groups.md
         - name: Güncelleştirme Yönetimi günlüklerini sorgulama
-          href: update-management/update-mgmt-query-logs.md
+          href: update-management/query-logs.md
         - name: Kapsam yapılandırmalarıyla çalışma
-          href: update-management/update-mgmt-scope-configuration.md
+          href: update-management/scope-configuration.md
         - name: Devre Dışı Bırak
           items:
             - name: Güncelleştirme Yönetimi'ni Kaldırma
-              href: update-management/update-mgmt-remove-feature.md
+              href: update-management/remove-feature.md
             - name: VM’leri Güncelleştirme Yönetimi'nden kaldırma
-              href: update-management/update-mgmt-remove-vms.md
+              href: update-management/remove-vms.md
         - name: Sorun giderme
           items:
             - name: Özellik dağıtımı sorunlarını giderme

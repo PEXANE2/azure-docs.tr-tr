@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 1e395e4e73f6c140d81189f1abbccca8c064f757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee440c77ec94a7c3e61c37e589aa5ef23031ca7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616661"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332425"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL veritabanı, Azure SYNAPSE Analytics, Data Factory ve Power BI SaaS analizlerini keşfet
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ Sonra ayıklanan veriler dönüştürülür ve bir [yıldız-şema](https://www.
 
 Merkezi ve boyut tabloları birlikte verimli analitik işleme sağlar. Bu öğreticide kullanılan yıldız şeması aşağıdaki görüntüde görüntülenir:
 
-![Mimari Tureoverview](./media/saas-tenancy-tenant-analytics-adf/starschematables.JPG)
+![Bu öğreticide kullanılan yıldız şemasını gösteren diyagram.](./media/saas-tenancy-tenant-analytics-adf/starschematables.JPG)
 
 Son olarak, yıldız şeması tabloları sorgulanır. Sorgu sonuçları, kiracı davranışı ve uygulamanın kullanımıyla ilgili öngörüleri vurgulamak için Power BI kullanılarak görsel olarak görüntülenir. Bu yıldız şeması ile, şu şekilde kullanıma sunan sorguları çalıştırırsınız:
 

@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 390dba92091a9e419bcd7a8f0e8e83f65597305e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7687a7a625fb11dcf3438bab9df62c4021d20e81
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045338"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331898"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -20,7 +20,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 
 **Dağıtım** |  **Destek**
 --- | ---
-**Azure portalı** | Destekleniyor.
+**Azure Portal** | Destekleniyor.
 **PowerShell** | Destekleniyor. [Daha fazla bilgi edinin](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
@@ -108,61 +108,62 @@ Deyi 7 | Tüm 7 desteğini içerir. *x* sürümleri [desteklenen çekirdek sür�
 Debian 8 | Tüm 8 desteğini içerir. *x* sürümleri [desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 9 | 9,13 için 9,1 desteğini içerir. De, 9,0 desteklenmez. [Desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5  [(desteklenen çekirdek sürümleri)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 15 | 15 ve 15 SP1. [(Desteklenen çekirdek sürümleri)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 15 | 15, SP1, SP2[(desteklenen çekirdek sürümleri)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Makine, SP3 ile SP4'E çoğaltma için yükseltme desteklenmez. Çoğaltılan bir makine yükseltildiyse, çoğaltmayı devre dışı bırakmanız ve yükseltmeden sonra çoğaltmayı yeniden etkinleştirmeniz gerekir.
 SUSE Linux Enterprise Server 11 | MADAN
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/)  <br/> Red Hat uyumlu çekirdek veya ayırıcı kurumsal çekirdek sürümü 3, 4 & 5 (UEK3, UEK4, UEK5) çalıştırılıyor<br/><br/>8.1<br/>Tüm uı3.10.0 çekirdekler ve RedHat çekirdekleri üzerinde çalışma <=-1062. * [9,36](https://support.microsoft.com/help/4578241/) [9,35](https://support.microsoft.com/help/4573888/) desteklenir
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/)  <br/> Red Hat uyumlu çekirdek veya ayırıcı kurumsal çekirdek sürümü 3, 4 & 5 (UEK3, UEK4, UEK5) çalıştırılıyor<br/><br/>8.1<br/>Tüm uı3.10.0 çekirdekler ve RedHat çekirdekleri üzerinde çalışma <=-1062. * [9,36](https://support.microsoft.com/help/4578241/) [9,35](https://support.microsoft.com/help/4573888/) desteklenir
 
-* * Note: 30 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
+* * Note: 15 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen Ubuntu çekirdek sürümleri
 
 **Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-14,04 LTS | [9,33](https://support.microsoft.com/help/4564347/),[9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/)| 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
+14,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/)| 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
 |||
+16,04 LTS | [9,38](https://support.microsoft.com/help/4590304/) | 4.4.0-21-Generic-4.4.0-190-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-118-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1096-Azure|
 16,04 LTS | [9,37](https://support.microsoft.com/help/4582666/) | 4.4.0-21-Generic-4.4.0--Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-115-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1093-Azure </br> 4.4.0-190-Generic, 4.15.0-117-Generic, 4.15.0-118-Generic, 4.15.0-1095-Azure, 4.15.0-1096-Azure ile 9,37 sık düzeltme eki düzeltme eki * *|
 16,04 LTS | [9,36](https://support.microsoft.com/help/4578241/)| 4.4.0-21-Generic-4.4.0-187-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-112-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1092-Azure |
 16,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.4.0-21-Genel-4.4.0-184-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-106-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1089-Azure</br> 4.15.0-107-Generic, 4.4.0--Generic & 4.15.0-1091-Azure ile 9,35 sık düzeltme eki düzeltme eki * * |
-16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-Genel-4.4.0-178-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Generic-4.15.0-99-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1082-Azure </br> 4.15.0-101-Generic & 4.4.0-179-Generic-9,33 sık düzeltme eki uygulama * *|
 |||
+18,04 LTS | [9,38](https://support.microsoft.com/help/4590304/) | 4.15.0-20-Genel-4.15.0-118-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-61-Generic </br> 5.3.0-19-Generic-5.3.0-67-Generic </br> 5.4.0-37-Generic to 5.4.0-48-Generic</br> 4.15.0-1009-Azure-4.15.0-1096-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1035-Azure </br> 5.4.0-1020-Azure-5.4.0-1026-Azure|
 18,04 LTS | [9,37](https://support.microsoft.com/help/4582666/) | 4.15.0-20-Generic ila 4.15.0-115-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-60-Generic </br> 5.3.0-19-Generic-5.3.0-66-Generic </br> 5.4.0-37-Generic to 5.4.0-45-Generic</br> 4.15.0-1009-Azure-4.15.0-1093-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1035-Azure </br> 5.4.0-1020-Azure ile 5.4.0-1023-Azure</br> 4.15.0-117-Generic, 4.15.0-118-Generic, 5.0.0-61-Generic, 5.3.0-67-Generic, 5.4.0-47-Generic, 5.4.0-48-Generic, 4.15.0-1095-Azure, 4.15.0-1096-Azure, 5.4.0-1025-Azure, 5.4.0-1026-Azure ile 9,37 Hot düzeltmesini Düzeltme Eki|
 18,04 LTS | [9,36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-Genel-4.15.0-112-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-58-Generic </br> 5.3.0-19-Generic-5.3.0-65-Generic </br> 5.4.0-37-Generic to 5.4.0-42-Generic</br> 4.15.0-1009-Azure-4.15.0-1092-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1032-Azure </br> 5.4.0-1020-Azure-5.4.0-1022-Azure </br> 5.0.0-60-Generic & 5.3.0-1035-Azure 9,36 sık düzeltme eki uygulama * *|
 18,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-Genel-4.15.0-108-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-52-Generic </br> 5.3.0-19-Generic-5.3.0-61-Generic </br> 4.15.0-1009-Azure-4.15.0-1089-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1031-Azure </br> 4.15.0-109-Generic, 5.0.0-53-Generic, 5.3.0-62-Generic, 4.15.0-1091-Azure & 5.3.0-1032-Azure 9,35 Hot düzeltme eki uygulama * *|
-18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-Generic ila 4.15.0-99-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-47-Generic </br> 5.3.0-19-Generic-5.3.0-51-Generic </br> 4.15.0-1009-Azure-4.15.0-1082-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1020-Azure </br> 4.15.0-101-Generic, 5.0.0-48-Generic, 5.3.0-1022-Azure & 5.3.0-53-Generic ile 9,33 sık düzeltme eki uygulama|
 |||
+20,04 LTS |[9,38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-Generic to 5.4.0-48 </br> -Generic 5.4.0-1010-Azure-5.4.0-1026-Azure
 20,04 LTS |[9,37](https://support.microsoft.com/help/4582666/) | 5.4.0-26-Generic-5.4.0-45 </br> -Generic 5.4.0-1010-Azure ile 5.4.0-1023-Azure </br> 5.4.0-47-Generic, 5.4.0-48-Generic, 5.4.0-1025-Azure, 5.4.0-1026-Azure ile 9,37 sık düzeltme eki düzeltme eki * *
 20,04 LTS |[9,36](https://support.microsoft.com/help/4578241/) | 5.4.0-26-Generic to 5.4.0-42 </br> -Generic 5.4.0-1010-Azure-5.4.0-1022-Azure
 
-* * Note: 30 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
+* * Note: 15 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen de, çekirdek sürümleri
 
 **Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-Deyi 7 | [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/) | 3.2.0-4-AMD64-3.2.0-6-AMD64, 3.16.0 -0. BPO. 4-AMD64 |
+Deyi 7 |  [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/) | 3.2.0-4-AMD64-3.2.0-6-AMD64, 3.16.0 -0. BPO. 4-AMD64 |
 |||
-Debian 8 | [9,35](https://support.microsoft.com/help/4573888/, ), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/) | 3.16.0-4-AMD64 ila 3.16.0-11-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
-Debian 8 | [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
+Debian 8 | [9,35](https://support.microsoft.com/help/4573888/, ), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/) | 3.16.0-4-AMD64 ila 3.16.0-11-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
+Debian 8 | [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
 |||
+De, 9,1 | [9,38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-AMD64-4.9.0-13-AMD64 </br> 4.19.0 -0. BPO. 1-AMD64 ila 4.19.0 -0. BPO. 11-AMD64 </br> 4.19.0 -0. BPO. 1-Cloud-AMD64 ila 4.19.0 -0. BPO. 11-Cloud-AMD64 </br> 
 De, 9,1 | [9,37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-AMD64-4.9.0-13-AMD64, 4.19.0 -0. BPO. 6-AMD64 ila 4.19.0 -0. BPO. 10-AMD64, 4.19.0 -0. BPO. 6-Cloud-AMD64 ila 4.19.0 -0. BPO. 10-Cloud-AMD64
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen SUSE Linux Enterprise Server 12 çekirdek sürümü
 
 **Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,38](https://support.microsoft.com/help/4590304/) | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.43-Azure </br> 4.12.14-16,7-Azure to 4.12.14-16.28-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/) | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.43-Azure </br> 4.12.14-16,7-Azure to 4.12.14-16.22-Azure </br> 4.12.14-16.25-Azure, 4.12.14-16.28-Azure ile 9,37 sık Düzeltme Eki|
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.43-Azure </br> 4.12.14-16,7-Azure to 4.12.14-16.19-Azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,33](https://support.microsoft.com/help/4564347/) [9,35](https://support.microsoft.com/help/4573888/) | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.34-Azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | 9,33 sık düzeltme eki uygulama | Tüm [hisse SENEDI SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.34-Azure </br> 4.12.14-16,7-Azure to 4.12.14-16.13-Azure  |
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen SUSE Linux Enterprise Server 15 çekirdek sürümü
 
 **Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 15, SP1, SP2 | [9,38](https://support.microsoft.com/help/4590304/)  | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.44-Azure </br> 5.3.18-16-Azure </br> 5.3.18-18.5-Azure-5.3.18-18.18-Azure
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/)  | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.38-Azure </br> 4.12.14-8.41-Azure, 4.12.14-8.44-Azure ile 9,37 sık Düzeltme Eki
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/)  | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.33-Azure 
-|SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,33](https://support.microsoft.com/help/4564347/) | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.30-Azure |
 
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Çoğaltılan makineler-Linux dosya sistemi/Konuk depolama
@@ -188,7 +189,7 @@ Azure galeri görüntüleri-üçüncü taraf yayımlandı | Desteklenir | VM des
 Özel görüntüler-üçüncü taraf yayımlandı | Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
 Site Recovery kullanılarak geçirilen VM 'Ler | Desteklenir | Site Recovery kullanılarak Azure 'a bir VMware VM veya fiziksel makine geçirilirse, makinede çalışan Mobility hizmetinin eski sürümünü kaldırmanız ve makineyi başka bir Azure bölgesine çoğaltmadan önce yeniden başlatmanız gerekir.
 RBAC ilkeleri | Desteklenmez | VM 'lerde rol tabanlı erişim denetimi (RBAC) ilkeleri hedef bölgedeki yük devretme VM 'sine çoğaltılmaz.
-Uzantılar | Desteklenmez | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
+Uzantıları | Desteklenmez | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
 Yakınlık yerleştirme grupları | Desteklenir | Bir yakınlık yerleşimi grubunda bulunan sanal makineler, Site Recovery kullanılarak korunabilir.
 
 

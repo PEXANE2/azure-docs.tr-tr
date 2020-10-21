@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053635"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314663"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme
 
@@ -23,7 +23,7 @@ ms.locfileid: "88053635"
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> Bu eşleme yalnızca alt etki alanları için geçerlidir (örneğin: `www.contoso.com` ). Web uç noktanızın kök etki alanında kullanılabilir olmasını istiyorsanız (örneğin: `contoso.com` ), Azure CDN kullanmanız gerekir. Rehberlik için, bu makalenin [https özellikli özel etki alanı eşleştirme](#enable-https) bölümüne bakın. Bu makalenin bu bölümüne, özel etki alanınızı kök etki alanını etkinleştirmek üzere gittiğinden, HTTPS 'yi etkinleştirmek için bu bölümdeki adım isteğe bağlıdır. 
+> Bu eşleme yalnızca alt etki alanları için geçerlidir (örneğin: `www.contoso.com` ). Web uç noktanızın kök etki alanında kullanılabilir olmasını istiyorsanız (örneğin: `contoso.com` ), Azure CDN kullanmanız gerekir. Rehberlik için, bu makalenin [https özellikli özel etki alanı eşleştirme](#enable-https) bölümüne bakın. Özel etki alanınızı kök etki alanını etkinleştirmek için bu makalenin bu bölümüne gittiğinden, HTTPS 'yi etkinleştirmek için bu bölümün içindeki adım isteğe bağlıdır. 
 
 <a id="enable-http"></a>
 

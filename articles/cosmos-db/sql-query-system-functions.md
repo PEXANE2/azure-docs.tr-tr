@@ -4,15 +4,15 @@ description: Azure Cosmos DB içinde yerleşik ve Kullanıcı tanımlı SQL sist
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 10/15/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18fdab8f4aa90e993f6802508c13a78565b9fa6e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870539"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279917"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Sistem işlevleri (Azure Cosmos DB)
 
@@ -24,7 +24,7 @@ ms.locfileid: "74870539"
 |[Tarih ve saat işlevleri](sql-query-date-time-functions.md)|Tarih ve saat işlevleri, geçerli UTC Tarih ve saatini iki şekilde almanızı sağlar; değeri, milisaniye cinsinden UNIX dönemi olan sayısal bir zaman damgası veya ISO 8601 biçimine uygun bir dize olarak. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
 |[Matematik işlevleri](sql-query-mathematical-functions.md)|Matematik işlevlerinin her biri, genellikle bağımsız değişken olarak sunulan giriş değerlerine göre bir hesaplama gerçekleştirir ve sayısal bir değer döndürür. | [ABS](sql-query-abs.md), [Acos](sql-query-acos.md), [asin](sql-query-asin.md), [atan](sql-query-atan.md), [ATN2](sql-query-atn2.md), [tavan](sql-query-ceiling.md), [cos](sql-query-cos.md), [COT](sql-query-cot.md), [derece](sql-query-degrees.md), [Exp](sql-query-exp.md), [Floor](sql-query-floor.md), [log](sql-query-log.md), [log10](sql-query-log10.md), [PI](sql-query-pi.md), [üs](sql-query-power.md), [radyan](sql-query-radians.md), [S_SAYI_ÜRET](sql-query-rand.md), [round](sql-query-round.md), [SIGN](sql-query-sign.md), [sın](sql-query-sin.md), [sqrt](sql-query-sqrt.md), [kare](sql-query-square.md), [tan](sql-query-tan.md), [TRUNC](sql-query-trunc.md) |
 |[Uzamsal işlevler](sql-query-spatial-functions.md)|Uzamsal işlevler, uzamsal nesne giriş değerinde bir işlem gerçekleştirir ve sayısal veya Boole değeri döndürür. | [ST_DISTANCE](sql-query-st-distance.md), [ST_INTERSECTS](sql-query-st-intersects.md), [ST_ISVALID](sql-query-st-isvalid.md), [ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md), [ST_WITHIN](sql-query-st-within.md) |
-|[Dize işlevleri](sql-query-string-functions.md)|Dize işlevleri bir dize giriş değerinde bir işlem gerçekleştirir ve dize, sayısal veya Boole değeri döndürür. | [Concat](sql-query-concat.md), [CONTAINS](sql-query-contains.md), [EndsWith](sql-query-endswith.md), [INDEX_OF](sql-query-index-of.md), [Left](sql-query-left.md), [length](sql-query-length.md), [Lower](sql-query-lower.md), [LTrim](sql-query-ltrim.md), [Replace](sql-query-replace.md), [Çoğalt](sql-query-replicate.md), [ters](sql-query-reverse.md), [RIGHT](sql-query-right.md), [RTrim](sql-query-rtrim.md), [StartsWith](sql-query-startswith.md), [stringtoarray](sql-query-stringtoarray.md) [TRIM](sql-query-trim.md), stringtoboolean, [stringtonull](sql-query-stringtonull.md), [strtonumber](sql-query-stringtonumber.md) [StringToBoolean](sql-query-stringtoboolean.md), [stringtoobject](sql-query-stringtoobject.md), [STRING](sql-query-substring.md) [ToString](sql-query-tostring.md) [UPPER](sql-query-upper.md) |
+|[Dize işlevleri](sql-query-string-functions.md)|Dize işlevleri bir dize giriş değerinde bir işlem gerçekleştirir ve dize, sayısal veya Boole değeri döndürür. | [Concat](sql-query-concat.md), [CONTAINS](sql-query-contains.md), [EndsWith](sql-query-endswith.md), [INDEX_OF](sql-query-index-of.md), [Left](sql-query-left.md), [length](sql-query-length.md), [Lower](sql-query-lower.md), [LTrim](sql-query-ltrim.md), [regexmatch](sql-query-regexmatch.md)[Replace](sql-query-replace.md), [REPLICATE](sql-query-replicate.md), [Reverse](sql-query-reverse.md), [RIGHT](sql-query-right.md), [RTrim](sql-query-rtrim.md), [StartsWith](sql-query-startswith.md), [stringtoarray](sql-query-stringtoarray.md), [stringtoboolean](sql-query-stringtoboolean.md), [stringtonull](sql-query-stringtonull.md), [strtonumber](sql-query-stringtonumber.md) [,](sql-query-tostring.md)stringtoobject, [STRING](sql-query-substring.md) [StringToObject](sql-query-stringtoobject.md) [TRIM](sql-query-trim.md) [UPPER](sql-query-upper.md) |
 |[Tür denetimi işlevleri](sql-query-type-checking-functions.md)|Tür denetimi işlevleri SQL sorguları içindeki bir ifadenin türünü kontrol etmeniz için izin verir. | [IS_ARRAY](sql-query-is-array.md), [IS_BOOL](sql-query-is-bool.md), [IS_DEFINED](sql-query-is-defined.md), [IS_NULL](sql-query-is-null.md), [IS_NUMBER](sql-query-is-number.md), [IS_OBJECT](sql-query-is-object.md), [IS_PRIMITIVE](sql-query-is-primitive.md), [IS_STRING](sql-query-is-string.md) |
 
 ## <a name="built-in-versus-user-defined-functions-udfs"></a>Yerleşik ve Kullanıcı tanımlı Işlevler (UDF 'ler)

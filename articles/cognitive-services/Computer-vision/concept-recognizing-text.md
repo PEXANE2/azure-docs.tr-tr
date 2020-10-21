@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 32759ed59e280980abdced46c29390e00ee7229c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973283"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331711"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -37,7 +37,7 @@ Görüntü İşleme [okuma API](https://westcentralus.dev.cognitive.microsoft.co
 * PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
 
 ### <a name="read-32-preview-allows-selecting-pages"></a>Okuma 3,2 önizlemesi, sayfa (ler) i seçmeyi sağlar
-[Okuma 3,2 Önizleme API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)ile, büyük çok sayfalı belgeler için, yalnızca bu sayfalardan metin ayıklamak üzere belirli sayfa numaralarını veya sayfa aralıklarını giriş parametresi olarak sağlayabilirsiniz. Bu, isteğe bağlı dil parametresine ek olarak yeni bir giriş parametresidir.
+[Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)ile, büyük çok sayfalı belgeler için, yalnızca bu sayfalardan metin ayıklamak üzere belirli sayfa numaralarını veya sayfa aralıklarını giriş parametresi olarak sağlayabilirsiniz. Bu, isteğe bağlı dil parametresine ek olarak yeni bir giriş parametresidir.
 
 > [!NOTE]
 > **Dil girişi** 
@@ -50,7 +50,7 @@ Okuma API 'sinin [okuma çağrısı](https://westcentralus.dev.cognitive.microso
 
 |Yanıt üst bilgisi| Sonuç URL 'SI |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/vision/v3.2/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/vision/v3.1/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 > [!NOTE]
 > **Faturalandırma** 
@@ -63,7 +63,7 @@ Okuma API 'sinin [okuma çağrısı](https://westcentralus.dev.cognitive.microso
 
 |Alan| Tür | Olası değerler |
 |:-----|:----:|:----|
-|durum | dize | notStarted: işlem başlatılmamış. |
+|durum | string | notStarted: işlem başlatılmamış. |
 | |  | çalışıyor: işlem işleniyor. |
 | |  | başarısız: işlem başarısız oldu. |
 | |  | başarılı: işlem başarılı oldu. |
@@ -129,23 +129,17 @@ Başarılı bir JSON yanıtı örneğine bakın:
 }
 ```
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Okuma 3,2 Preview metin satırı stili ekler (yalnızca Latin dilleri)
-[Okuma 3,2 Önizleme API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) , her metin satırının yazdırma veya el yazısı stili olup olmadığı, Güvenirlik puanı ile birlikte bir **Görünüm** nesnesi verir. Bu özellik yalnızca Latin dilleri için desteklenir.
+[Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) , her metin satırının yazdırma veya el yazısı stili olup olmadığı, Güvenirlik puanı ile birlikte bir **Görünüm** nesnesi verir. Bu özellik yalnızca Latin dilleri için desteklenir.
 
-```json
-  "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.836
-            }
-```
-[Görüntü işleme OCR SDK 'sı hızlı](./quickstarts-sdk/client-library.md) başlangıçlarını kullanmaya başlayın ve [okuma REST API hızlı](./QuickStarts/CSharp-hand-text.md) başlangıçlarını kullanarak, kuruluşunuzda OCR özelliklerini tümleştirmaya başlayabilirsiniz.
+[Görüntü işleme OCR SDK 'sı hızlı](./quickstarts-sdk/client-library.md) başlangıçlarını okuyun ve [okuma REST API hızlı](./QuickStarts/CSharp-hand-text.md) başlangıçlarını kullanarak, kuruluşunuzda OCR özelliklerini tümleştirmaya başlayabilirsiniz.
 
 ## <a name="supported-languages-for-print-text"></a>Yazdırma metni için desteklenen diller
-[Read 3,2 API 'Si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe dillerde yazdırılmış metnin ayıklanmasından sonra desteklenir.
+[Okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) , yazdırılan metnin Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe dillerde ayıklanmasından sonra desteklenir.
 
 OCR destekli dillerin tam listesi için [desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) bölümüne bakın.
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Okuma 3,2 Preview Basitleştirilmiş Çince ve Japonca ekler
-[Okuma 3,2 API genel önizlemesi](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) , Basitleştirilmiş Çince ve Japonca desteği ekler. Senaryonuz daha fazla dil desteklemelidir gerektiriyorsa, [OCR API 'si](#ocr-api) bölümüne bakın. 
+[Okuma 3,2 API genel önizlemesi](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) , Basitleştirilmiş Çince ve Japonca desteği ekler. Senaryonuz daha fazla dil desteklemelidir gerektiriyorsa, [OCR API 'si](#ocr-api) bölümüne bakın. 
 
 ## <a name="supported-languages-for-handwritten-text"></a>El yazısı metin için desteklenen diller
 Okuma işlemi şu anda yalnızca Ingilizce dilinde el yazısı metinleri ayıklamayı desteklemektedir.
@@ -154,7 +148,7 @@ Okuma işlemi şu anda yalnızca Ingilizce dilinde el yazısı metinleri ayıkla
 [3. x okuma REST API](./QuickStarts/CSharp-hand-text.md) , çoğu müşteri için tercih edilen seçenektir ve bu, kullanıma hazır hale getirerek tümleştirme ve hızlı üretkenlik açısından çok daha hızlı bir şekilde sağlanır. Müşterilerinizin gereksinimlerine odaklanmanız durumunda Azure ve Görüntü İşleme Hizmeti tanıtıcı ölçeği, performansı, veri güvenliği ve uyumluluk gereksinimlerini karşılamanız gerekir.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Docker kapsayıcılarıyla şirket içinde dağıtma
-[Okuma 2,0 Docker kapsayıcısı (Önizleme)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) , yeni OCR özelliklerini kendi yerel ortamınızda dağıtmanıza olanak sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.
+[Docker kapsayıcısını oku (Önizleme)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) , yeni OCR özelliklerini kendi yerel ortamınızda dağıtmanıza olanak sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.
 
 ## <a name="example-outputs"></a>Örnek çıktılar
 
@@ -201,7 +195,7 @@ Tüm bilişsel hizmetlerde olduğu gibi, okuma/OCR hizmetlerini kullanan gelişt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- C#, Java, JavaScript veya Python 'da [görüntü işleme okuma 3,0 SDK hızlı](./quickstarts-sdk/client-library.md) başlangıçlarını kullanmaya başlayın.
-- REST API 'Lerinin nasıl kullanılacağını öğrenmek için C#, Java, JavaScript veya Python 'da [3,1 REST API hızlı](./QuickStarts/CSharp-hand-text.md) başlangıçlarını kullanın.
-- [Okuma 3,1 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)hakkında bilgi edinin.
-- Basitleştirilmiş Çince ve Japonca desteğiyle ilgili [REST API 3,2 okuma genel önizlemesi](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) hakkında bilgi edinin.
+- C#, Java, JavaScript veya Python 'da [okuma SDK 'sı hızlı](./quickstarts-sdk/client-library.md) başlangıçlarını görüntü işleme kullanmaya başlayın.
+- REST API 'Lerinin nasıl kullanılacağını öğrenmek için C#, Java, JavaScript veya Python 'da [okuma REST API hızlı](./QuickStarts/CSharp-hand-text.md) başlangıçlarını kullanın.
+- [Okuma REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)hakkında bilgi edinin.
+- Basitleştirilmiş Çince ve Japonca desteğiyle ilgili [REST API 3,2 okuma genel önizlemesi](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) hakkında bilgi edinin.

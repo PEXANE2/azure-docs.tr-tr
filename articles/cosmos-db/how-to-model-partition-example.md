@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 91589a88712b093acfbb88df146074ad91ba0ea2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168384"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277985"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Gerçek dünyadan bir örnek kullanarak Azure Cosmos DB'de verileri modelleme ve bölümleme
 
@@ -327,7 +327,7 @@ Bu saklı yordam, post 'un KIMLIĞINI ve yeni açıklamanın gövdesini parametr
 - Gönderi yerini alır
 - yeni açıklamayı ekler
 
-Saklı yordamlar atomik işlem olarak yürütüldüğü için, değerinin `commentCount` ve gerçek açıklama sayısının her zaman eşitlenmiş durumda kalacakları garanti edilir.
+Saklı yordamlar atomik işlem olarak yürütüldüğü için, değeri `commentCount` ve gerçek açıklama sayısı her zaman eşitlenmiş durumda kalır.
 
 Arttırmak için yeni beğeni eklerken benzer bir saklı yordam çağırdık `likeCount` .
 
@@ -586,6 +586,6 @@ Diğer kapsayıcılara güncelleştirmeleri dağıtmak için kullandığımız d
 
 Pratik veri modelleme ve bölümleme 'a giriş sonrasında, ele aldığımız kavramları gözden geçirmek için aşağıdaki makalelere göz atın:
 
-- [Veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md)
+- [Veritabanları, kapsayıcılar ve öğelerle çalışma](account-databases-containers-items.md)
 - [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
 - [Azure Cosmos DB akışı değiştirme](change-feed.md)

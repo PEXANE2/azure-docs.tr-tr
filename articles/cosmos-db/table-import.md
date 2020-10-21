@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cf47c3b6af89ff3ff431d18d0bda2144427ec34
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85557629"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329415"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Verilerinizi Azure Cosmos DB Tablo API'si hesabına geçirme
 
@@ -68,11 +68,11 @@ Azure Tablo Depolama veya Tablo API önizlemesini geçişin kaynağı olarak tan
 
 Azure Tablo depolamadan içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın ve **depolama hesapları**  >  **Hesap**  >  **erişim anahtarları**' na tıklayın ve sonra **bağlantı dizesini**kopyalamak için Kopyala düğmesini kullanın.
 
-:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="HBase kaynağı seçeneklerinin ekran görüntüsü":::
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="> hesabı > erişim tuşları seçeneklerini gösteren ve Kopyala düğmesini vurgulayan bir ekran görüntüsü.":::
 
 Azure Cosmos db tablo API'si (Önizleme) hesabından içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın, **Azure Cosmos DB**  >  **hesabı**  >  **bağlantı dizesi** ' ne tıklayın ve Kopyala düğmesini kullanarak **bağlantı dizesini**kopyalayın.
 
-:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="HBase kaynağı seçeneklerinin ekran görüntüsü":::
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="> hesabı > erişim tuşları seçeneklerini gösteren ve Kopyala düğmesini vurgulayan bir ekran görüntüsü.":::
 
 [Azure Tablo Depolama komutu örneği](#azure-table-storage)
 
