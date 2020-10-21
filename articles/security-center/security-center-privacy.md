@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585983"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342238"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki kullanıcı verilerini yönetme
 Bu makalede, Azure Güvenlik Merkezi 'nde Kullanıcı verilerini nasıl yönetebileceğinizi gösteren bilgiler sağlanmaktadır. Kullanıcı verilerini yönetmek, verilere erişme, verileri silme veya dışa aktarma olanağını içerir.
@@ -87,7 +87,7 @@ Hesap Yöneticisi uyarı ayrıntılarını şu şekilde dışarı aktarabilir:
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Daha fazla bilgi için bkz. [güvenlik uyarılarını edinme (KOLEKSIYONU al)](https://msdn.microsoft.com/library/mt704050.aspx).
+Daha fazla bilgi için bkz. [güvenlik uyarılarını edinme (KOLEKSIYONU al)](/previous-versions/azure/reference/mt704050(v=azure.100)).
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Onay olmadan profil oluşturma veya pazarlama için kişisel verilerin kullanımını kısıtlama
 Bir güvenlik merkezi kullanıcısı, [güvenlik iletişim verilerini](security-center-provide-security-contact-details.md)silerek devre dışı bırakabilirsiniz.

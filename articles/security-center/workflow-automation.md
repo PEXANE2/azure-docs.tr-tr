@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b713977d811411ea2ccd7dfa22c7757321ecd7aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b3fb116c4eb16e4280e2f71873e88dccff278
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712298"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92344041"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>İş akışı otomasyonu ile uyarılara ve önerilere otomatik yanıtlar oluşturma
 
 Her güvenlik programı, olay yanıtı için birden çok iş akışı içerir. Bu işlemler ilgili hissedarları bildirmeyi, bir değişiklik yönetimi işlemini başlatmayı ve belirli düzeltme adımlarını uygulamayı içerebilir. Güvenlik uzmanları, yaptığınız gibi bu yordamların pek çok adımını otomatikleştirmenizi önerir. Otomasyon ek yükü azaltır. Ayrıca işlem adımlarının hızlı, tutarlı bir şekilde ve önceden tanımlanmış gereksinimlerinize göre hızla yapılmasını sağlayarak güvenliği geliştirebilir.
 
-Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği açıklanır. Bu özellik güvenlik uyarıları ve önerileri üzerinde Logic Apps tetiklenebilir. Örneğin, bir uyarı oluştuğunda Güvenlik Merkezi 'nin belirli bir kullanıcıyı e-posta ile e-posta olarak istemeniz gerekebilir. Ayrıca, [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)kullanarak Logic Apps oluşturmayı öğreneceksiniz.
+Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği açıklanır. Bu özellik güvenlik uyarıları ve önerileri üzerinde Logic Apps tetiklenebilir. Örneğin, bir uyarı oluştuğunda Güvenlik Merkezi 'nin belirli bir kullanıcıyı e-posta ile e-posta olarak istemeniz gerekebilir. Ayrıca, [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanarak Logic Apps oluşturmayı öğreneceksiniz.
 
 > [!NOTE]
 > Daha önce kenar çubuğunda playbooks (Önizleme) görünümünü kullandıysanız, yeni iş akışı Otomasyonu sayfasında genişletilmiş işlevlerle aynı özellikleri bulacaksınız.
@@ -32,8 +32,8 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|Ücretsiz|
-|Gerekli roller ve izinler:|Kaynak grubundaki **Güvenlik Yöneticisi rolü** veya **sahibi**<br>Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır<br><br>Azure Logic Apps iş akışlarıyla çalışmak için aşağıdaki Logic Apps rollere/izinlere de sahip olmanız gerekir:<br> - [Mantıksal uygulama işleci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) izinleri gerekiyor veya mantıksal uygulama okuma/tetikleme erişimi (Bu rol, mantıksal uygulamalar oluşturamaz veya düzenleyemez; yalnızca var olanları *Çalıştır* )<br> - Mantıksal uygulama oluşturma ve değiştirme için [mantıksal uygulama katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) izinleri gereklidir<br>Logic App bağlayıcıları kullanmak istiyorsanız, ilgili hizmetlerinde oturum açmak için ek kimlik bilgilerine ihtiyacınız olabilir (örneğin, Outlook/takımlar/bolluk örnekleri)|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Gerekli roller ve izinler:|Kaynak grubundaki **Güvenlik Yöneticisi rolü** veya **sahibi**<br>Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır<br><br>Azure Logic Apps iş akışlarıyla çalışmak için aşağıdaki Logic Apps rollere/izinlere de sahip olmanız gerekir:<br> - [Mantıksal uygulama işleci](../role-based-access-control/built-in-roles.md#logic-app-operator) izinleri gerekiyor veya mantıksal uygulama okuma/tetikleme erişimi (Bu rol, mantıksal uygulamalar oluşturamaz veya düzenleyemez; yalnızca var olanları *Çalıştır* )<br> - Mantıksal uygulama oluşturma ve değiştirme için [mantıksal uygulama katılımcısı](../role-based-access-control/built-in-roles.md#logic-app-contributor) izinleri gereklidir<br>Logic App bağlayıcıları kullanmak istiyorsanız, ilgili hizmetlerinde oturum açmak için ek kimlik bilgilerine ihtiyacınız olabilir (örneğin, Outlook/takımlar/bolluk örnekleri)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -109,9 +109,9 @@ Bu makalede Logic Apps oluşturma, güvenlik merkezi 'nde yürütmesini otomatik
 
 İlgili malzemeler için bkz.: 
 
-- [Bir güvenlik yanıtını otomatikleştirmek için iş akışı Otomasyonu 'nu kullanma hakkında Microsoft Learn modülü](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
+- [Bir güvenlik yanıtını otomatikleştirmek için iş akışı Otomasyonu 'nu kullanma hakkında Microsoft Learn modülü](/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure Güvenlik Merkezi'nde güvenlik önerileri](security-center-recommendations.md)
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](security-center-alerts-overview.md)
-- [Azure Logic Apps hakkında](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
-- [Logic Apps bağlayıcıları](https://docs.microsoft.com/connectors/)
-- [İş akışı Otomasyonu veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)
+- [Azure Logic Apps hakkında](../logic-apps/logic-apps-overview.md)
+- [Logic Apps bağlayıcıları](/connectors/)
+- [İş akışı otomasyonu veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)

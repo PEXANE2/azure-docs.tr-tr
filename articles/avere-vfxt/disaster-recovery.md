@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75966660"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342255"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Azure için avere vFXT için olağanüstü durum kurtarma Kılavuzu
 
@@ -117,7 +117,7 @@ Azure kümesi için bir avere vFXT 'den yedekleme kapsayıcısına erişmek içi
 * Azure için avere vFXT ayarlarını özelleştirme hakkında daha fazla bilgi için, [küme ayarlamayı](avere-vfxt-tuning.md)okuyun.
 * Azure 'da olağanüstü durum kurtarma ve dayanıklı uygulamalar oluşturma hakkında daha fazla bilgi edinin:
 
-  * [Azure dayanıklılık teknik kılavuzu](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-  * [Bölge genelinde hizmet kesintisinden kurtarma](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
-  * [Azure uygulamaları için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](<https://docs.microsoft.com/azure/resiliency/resiliency-disaster-recovery-high-availability-azure-applications>)
+  * [Azure dayanıklılık teknik kılavuzu](/azure/architecture/framework/resiliency/overview)
+  * [Bölge genelinde hizmet kesintisinden kurtarma](/azure/architecture/resiliency/recovery-loss-azure-region)
+  * [Azure uygulamaları için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

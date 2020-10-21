@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436000"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342221"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>SSS-Sanal makineler hakkında sorular
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Hangi tür sanal makineler destekleniyor?
 
-İzleme ve öneriler, hem klasik hem de [Kaynak Yöneticisi dağıtım modelleri](../azure-classic-rm.md)kullanılarak oluşturulan sanal makineler (VM) için kullanılabilir.
+İzleme ve öneriler, hem klasik hem de [Kaynak Yöneticisi dağıtım modelleri](/azure/security-center/./azure-resource-manager/management/deployment-models)kullanılarak oluşturulan sanal makineler (VM) için kullanılabilir.
 
 Desteklenen platformların listesi için bkz. [Azure Güvenlik Merkezi 'Nde desteklenen platformlar](security-center-os-coverage.md) .
 
@@ -51,7 +51,7 @@ Güvenlik açıkları, güncelleştirmeler ve sorunlar için Güvenlik Merkezi t
 Güvenlik Merkezi genellikle her saat yeni verileri tarar ve önerileri buna göre yeniler. 
 
 > [!NOTE]
-> Güvenlik Merkezi, veri toplamak ve depolamak için Log Analytics aracısını kullanır. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi platform geçişi](security-center-platform-migration.md).
+> Güvenlik Merkezi, veri toplamak ve depolamak için Log Analytics aracısını kullanır. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi platform geçişi](./security-center-enable-data-collection.md).
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>"VM Aracısı eksik mı?" iletisini neden alıyorum?

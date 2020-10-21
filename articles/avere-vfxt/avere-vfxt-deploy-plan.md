@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272799"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342408"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT sisteminizi planlama
 
@@ -75,8 +75,8 @@ Avere vFXT kümenizin ağ altyapısını planlarken aşağıdaki yönergeleri iz
   |----------|-----------|----------|
   | Kaynak grubu | Boşsa, Evet | Boş olmalıdır|
   | Depolama hesabı | Küme oluşturulduktan sonra var olan bir blob kapsayıcısını bağlıyorsanız **Evet** <br/>  Küme oluşturma sırasında yeni bir blob kapsayıcısı oluşturulmaksam **Hayır** | Mevcut blob kapsayıcısı boş olmalıdır <br/> &nbsp; |
-  | Sanal ağ | Evet | Yeni bir Azure Blob kapsayıcısı oluşturulana bir depolama hizmeti uç noktası içermelidir |
-  | Alt ağ | Evet | Diğer kaynakları içeremez |
+  | Sanal ağ | Yes | Yeni bir Azure Blob kapsayıcısı oluşturulana bir depolama hizmeti uç noktası içermelidir |
+  | Alt ağ | Yes | Diğer kaynakları içeremez |
 
 ## <a name="ip-address-requirements"></a>IP adresi gereksinimleri
 
@@ -109,7 +109,7 @@ Her vFXT düğümü aynı olacaktır. Diğer bir deyişle, üç düğümlü bir 
 
 Düğüm başına disk önbelleği yapılandırılabilir ve 1000 GB 'den 8000 GB 'a Rage olabilir. düğüm başına 4 TB, Standard_E32s_v3 düğümleri için önerilen önbellek boyutudur.
 
-Bu VM 'Ler hakkında daha fazla bilgi için Microsoft Azure belgeleri okuyun: [bellek için iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+Bu VM 'Ler hakkında daha fazla bilgi için Microsoft Azure belgeleri okuyun: [bellek için iyileştirilmiş sanal makine boyutları](../virtual-machines/sizes-memory.md)
 
 ## <a name="account-quota"></a>Hesap kotası
 

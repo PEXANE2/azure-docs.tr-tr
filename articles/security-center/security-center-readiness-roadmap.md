@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38e1fc7f062908f8c4a4b9aa903ca09dd7fb9ea5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314496"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342340"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Güvenlik Merkezi hazırlığı yol haritası
 Bu belge, Azure Güvenlik Merkezi ile çalışmaya başlamanıza yardımcı olacak bir hazırlık yol haritası sağlar.
@@ -59,9 +59,9 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 Güvenlik uyarılarını yönetmenize ve kaynaklarınızı korumanıza yardımcı olması için aşağıdaki kaynakları kullanın.
 
 Makaleler    
-- [Azure Güvenlik Merkezi 'nde güvenlik durumu izleme](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-- [Azure Güvenlik Merkezi'nde ağınızı koruma](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-- [Azure Güvenlik Merkezi'nde Azure SQL hizmetini ve verilerini koruma](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [Azure Güvenlik Merkezi 'nde güvenlik durumu izleme](./security-center-monitoring.md)
+- [Azure Güvenlik Merkezi'nde ağınızı koruma](./security-center-network-recommendations.md)
+- [Azure Güvenlik Merkezi'nde Azure SQL hizmetini ve verilerini koruma](./security-center-remediate-recommendations.md)
 
 
 Video    
@@ -77,7 +77,7 @@ Videolar
 * [Yeni nesil güvenlik işlemi ve araştırma ile tehditlere hızlı yanıt verme](https://youtu.be/e8iFCz5RM4g)
 
 Makaleler    
-* [Olay yanıtı için Azure Güvenlik Merkezi’ni kullanma](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
+* [Olay yanıtı için Azure Güvenlik Merkezi’ni kullanma](./tutorial-security-incident.md)
 * [Iş akışı otomasyonu ile yanıtı otomatikleştirin](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Gelişmiş bulut savunması
@@ -91,8 +91,8 @@ Videolar
 * [Azure Güvenlik Merkezi - Uyarlamalı Uygulama Denetimleri](https://youtu.be/wWWekI1Y9ck)
 
 Makaleler    
-* [Tam zamanında sanal makine erişimini yönetme](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
-* [Azure Güvenlik Merkezi'ndeki Uyarlamalı Uygulama Denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Tam zamanında sanal makine erişimini yönetme](./security-center-just-in-time.md)
+* [Azure Güvenlik Merkezi'ndeki Uyarlamalı Uygulama Denetimleri](./security-center-adaptive-application.md)
 
 ## <a name="hands-on-activities"></a>Uygulamalı etkinlikler
 
@@ -101,17 +101,17 @@ Makaleler
 * [Azure Güvenlik Merkezi Playbook: Güvenlik Uyarıları](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
-* [Güvenlik Merkezi Belgeleri Sayfası](https://docs.microsoft.com/azure/security-center/)
-* [Güvenlik Merkezi REST API’si Belgeleri Sayfası](https://msdn.microsoft.com/library/mt704034.aspx)
-* [Azure Güvenlik Merkezi hakkında sık sorulan sorular (SSS)](https://docs.microsoft.com/azure/security-center/security-center-faq)
+* [Güvenlik Merkezi Belgeleri Sayfası](./index.yml)
+* [Güvenlik Merkezi REST API’si Belgeleri Sayfası](/previous-versions/azure/reference/mt704034(v=azure.100))
+* [Azure Güvenlik Merkezi hakkında sık sorulan sorular (SSS)](./faq-general.md)
 * [Güvenlik Merkezi Fiyatlandırma Sayfası](https://azure.microsoft.com/pricing/details/security-center/)
-* [Kimlik güvenliği için en iyi uygulamalar](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
-* [Ağ güvenliği için en iyi uygulamalar](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
-* [PaaS önerileri](https://docs.microsoft.com/azure/security/security-paas-deployments)
+* [Kimlik güvenliği için en iyi uygulamalar](../security/fundamentals/identity-management-best-practices.md)
+* [Ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md)
+* [PaaS önerileri](../security/fundamentals/paas-deployments.md)
 * [Uyumluluk](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Log Analytics müşterileri artık, karma bulut iş yüklerini korumak için Azure Güvenlik Merkezi 'ni kullanabilir](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Log Analytics müşterileri artık, karma bulut iş yüklerini korumak için Azure Güvenlik Merkezi 'ni kullanabilir](/archive/blogs/msoms/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads)
 
 ## <a name="community-resources"></a>Topluluk Kaynakları
 
 * [Güvenlik Merkezi UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Soru-cevap Güvenlik Merkezi için bir sayfa&](https://docs.microsoft.com/answers/topics/azure-security-center.html)
+* [Soru-cevap Güvenlik Merkezi için bir sayfa&](/answers/topics/azure-security-center.html)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945762"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342289"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
@@ -33,7 +33,7 @@ Azure Güvenlik Merkezi, seçtiğiniz ilkelere göre güvenlik önerilerini sağ
 
 Güvenlik Merkezi güvenlik ilkeleriyle çalışma için aşağıdaki seçenekleri sunar:
 
-* **Yerleşik varsayılan Ilkeyi görüntüleyin ve düzenleyin** -Güvenlik Merkezi 'ni etkinleştirdiğinizde, tüm güvenlik merkezi kayıtlı aboneliklerine ' ASC default ' adlı yerleşik bir girişim otomatik olarak atanır. Bu girişimi özelleştirmek için, içindeki ilkeleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz. Kullanıma hazır seçenekleri anlamak için [yerleşik güvenlik ilkeleri](security-center-policy-definitions.md) listesine bakın.
+* **Yerleşik varsayılan Ilkeyi görüntüleyin ve düzenleyin** -Güvenlik Merkezi 'ni etkinleştirdiğinizde, tüm güvenlik merkezi kayıtlı aboneliklerine ' ASC default ' adlı yerleşik bir girişim otomatik olarak atanır. Bu girişimi özelleştirmek için, içindeki ilkeleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz. Kullanıma hazır seçenekleri anlamak için [yerleşik güvenlik ilkeleri](./policy-reference.md) listesine bakın.
 
 * **Kendi özel Ilkelerinizi ekleyin** -aboneliğinize uygulanan güvenlik girişimlerini özelleştirmek istiyorsanız, bunu Güvenlik Merkezi içinde yapabilirsiniz. Daha sonra, makineleriniz oluşturduğunuz ilkeleri izleyememesi durumunda öneriler alacaksınız. Özel ilkeler oluşturma ve atama hakkında yönergeler için bkz. [özel güvenlik Ilkeleri kullanma](custom-security-policies.md).
 
@@ -132,7 +132,7 @@ Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyum
 
    ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/disable-policy.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
    > [!NOTE]
    > İlke devre dışı bırakma değişikliklerinin etkili olması 12 saate kadar sürebilir.

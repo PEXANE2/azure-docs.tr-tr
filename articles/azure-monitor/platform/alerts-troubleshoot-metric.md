@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102162"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342136"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -228,7 +228,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 Ölçüm uyarısı kuralı oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 
 - Uyarı kuralının hedef kaynağında Oku izni
-- Uyarı kuralının oluşturulduğu kaynak grubu üzerinde yazma izni (Azure portal uyarı kuralı oluşturuyorsanız, uyarı kuralı hedef kaynağın bulunduğu aynı kaynak grubunda oluşturulur)
+- Uyarı kuralının oluşturulduğu kaynak grubu üzerinde yazma izni (Azure portal uyarı kuralı oluşturuyorsanız, uyarı kuralı hedef kaynağın bulunduğu aynı kaynak grubunda varsayılan olarak oluşturulur)
 - Uyarı kuralıyla ilişkili tüm eylem grupları üzerinde okuma izni (varsa)
 
 
@@ -250,7 +250,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örnek:
+Örneğin:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

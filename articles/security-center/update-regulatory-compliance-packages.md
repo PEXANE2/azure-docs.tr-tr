@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 5e32aa8491e18a66a3e8b90f065e6b785d1e3bd9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106272"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342204"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzda standartlar kümesini özelleştirme
 
@@ -41,7 +41,7 @@ Microsoft ayrıca yasal düzenleme standartlarını de izler ve zaman içindeki 
 
 NıST SP 800-53 R4, SWIFT CSP CSCF-V2020, UK resmi ve UK NHS, Kanada Federal PBMM ve Azure CIS 1.1.0 (yeni) gibi standartları ekleyerek Azure CIS 1.1.0 'in daha kapsamlı bir gösterimidir. 
 
-Ayrıca, genel uyumluluk çerçevelerine göre güvenlik ve uyum için en iyi uygulamalar için Microsoft tarafından yazılmış, Azure 'a özgü yönergeler olan **Azure Güvenlik kıyaslaması**ekleyebilirsiniz. ([Azure Güvenlik kıyaslaması hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/security/benchmarks/introduction).)
+Ayrıca, genel uyumluluk çerçevelerine göre güvenlik ve uyum için en iyi uygulamalar için Microsoft tarafından yazılmış, Azure 'a özgü yönergeler olan **Azure Güvenlik kıyaslaması**ekleyebilirsiniz. ([Azure Güvenlik kıyaslaması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).)
 
 Panoda kullanılabilir hale geldiğinde ek standartlar desteklenecektir. 
 
@@ -116,6 +116,6 @@ Bu makalede, ek standartlarla uyumluluğunuzu izlemek için **uyumluluk paketler
 
 Diğer ilgili malzemeler için aşağıdaki makalelere bakın: 
 
-- [Azure Güvenlik Karşılaştırması](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md)
 - [Güvenlik Merkezi mevzuata uyumluluğu panosu](security-center-compliance-dashboard.md)
 - [Güvenlik ilkeleriyle çalışma](tutorial-security-policy.md)

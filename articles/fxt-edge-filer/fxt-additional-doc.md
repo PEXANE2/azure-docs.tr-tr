@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: f2f40d2ac6652b2b7c968a428961a9bd7f7b4288
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6be5e9bda27ddff157eda10bbb695dfacaecda7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217516"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342272"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Azure FXT Edge Filer için ek belgeler
 
@@ -19,7 +19,7 @@ Bu docs.microsoft.com Web sitesinin dışındaki bazı kaynaklar Microsoft Azure
 
 ## <a name="avere-vfxt-for-azure-cache-documentation"></a>Azure önbellek belgeleri için avere vFXT
 
-[Azure Için avere vFXT](https://docs.microsoft.com/azure/avere-vfxt/) , Microsoft Azure içindeki sanal düğümleri kullanan benzer bir küme önbelleği ürünüdür. Azure portal ile oluşturulur, ancak Azure FXT Edge Filer donanım önbelleği ile aynı denetim masası yapılandırma yazılımını kullanır.
+[Azure Için avere vFXT](../avere-vfxt/index.yml) , Microsoft Azure içindeki sanal düğümleri kullanan benzer bir küme önbelleği ürünüdür. Azure portal ile oluşturulur, ancak Azure FXT Edge Filer donanım önbelleği ile aynı denetim masası yapılandırma yazılımını kullanır.
 
 ## <a name="legacy-hardware-documentation"></a>Eski donanım belgeleri
 

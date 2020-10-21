@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 026425c78934209a2d258d50a5c7f51feeebd63b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275392"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342153"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -42,10 +42,10 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yayın durumu:                  | Genel olarak kullanılabilir (GA)                                                                                                                                                                                                                                                                                      |
 | Fiyat                        | [Sunucular Için Azure Defender](security-center-pricing.md) gerekir                                                                                                                                                                                                                                             |
-| Desteklenen platformlar:            | ![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
+| Desteklenen platformlar:            | ![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
 | Desteklenen Windows sürümleri:  | Uç nokta için Defender, Windows 10 1703 (ve üzeri) ve Windows Server 2019 ' de yerleşik olarak bulunur.<br>Güvenlik Merkezi, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler.<br>Bu tümleştirme kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı. |
 | Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi**veya **abonelik katılımcısı**                         |
-| Larının                         | ![Evet](./media/icons/yes-icon.png) Ticari bulutlar.<br>![Hayır](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
+| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar.<br>![No](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -81,7 +81,7 @@ Konumu yapılandırdıktan sonra değiştiremezsiniz. Verilerinizi başka bir ko
     > [!NOTE]
     > Azure Arc etkin makinelerinizi korumak için [hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)' daki yönergeleri kullanın.
 
-1. Sunucularınızdaki uç noktalar için Microsoft Defender 'ı zaten lisanslandırdıysanız ve dağıttıysanız, yerleşik [Windows sunucularında](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)açıklanan yordamı kullanarak kaldırın.
+1. Sunucularınızdaki uç noktalar için Microsoft Defender 'ı zaten lisanslandırdıysanız ve dağıttıysanız, yerleşik [Windows sunucularında](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)açıklanan yordamı kullanarak kaldırın.
 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
 1. Değiştirmek istediğiniz aboneliği seçin.
 1. **Tehdit algılamayı**seçin.
@@ -94,11 +94,11 @@ Konumu yapılandırdıktan sonra değiştiremezsiniz. Verilerinizi başka bir ko
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Endpoint Portal için Microsoft Defender 'a erişme
 
-1. Kullanıcı hesabının gerekli izinlere sahip olduğundan emin olun. [Daha fazla bilgi edinin](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
+1. Kullanıcı hesabının gerekli izinlere sahip olduğundan emin olun. [Daha fazla bilgi edinin](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
-1. Anonim trafiği engelleyen bir ara sunucuya veya güvenlik duvarına sahip olup olmadığınızı denetleyin. Endpoint algılayıcı için Defender, sistem bağlamından bağlanır, bu nedenle anonim trafiğe izin verilmelidir. Endpoint Portal için Defender 'a yönelik kaldırma erişimini sağlamak için [proxy sunucusundaki hizmet URL 'lerine erişimi etkinleştirme](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)konusundaki yönergeleri izleyin.
+1. Anonim trafiği engelleyen bir ara sunucuya veya güvenlik duvarına sahip olup olmadığınızı denetleyin. Endpoint algılayıcı için Defender, sistem bağlamından bağlanır, bu nedenle anonim trafiğe izin verilmelidir. Endpoint Portal için Defender 'a yönelik kaldırma erişimini sağlamak için [proxy sunucusundaki hizmet URL 'lerine erişimi etkinleştirme](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)konusundaki yönergeleri izleyin.
 
-1. [Microsoft Defender Güvenlik Merkezi portalını](https://securitycenter.windows.com/)açın. Portalın Özellikler ve simgeler hakkında daha fazla bilgi için bkz. [Microsoft Defender Güvenlik Merkezi portalına genel bakış](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/portal-overview). 
+1. [Microsoft Defender Güvenlik Merkezi portalını](https://securitycenter.windows.com/)açın. Portalın Özellikler ve simgeler hakkında daha fazla bilgi için bkz. [Microsoft Defender Güvenlik Merkezi portalına genel bakış](/windows/security/threat-protection/microsoft-defender-atp/portal-overview). 
 
 ## <a name="send-a-test-alert"></a>Test uyarısı gönder
 
@@ -128,7 +128,7 @@ Uç nokta için Defender, **sunucular Için Azure Defender**ile ek bir ücret ö
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Üçüncü taraf bir EDR aracından geçiş Nasıl yaparım? misiniz?
 
-Microsoft 'a ait olmayan bir uç nokta çözümüyle geçiş için tam yönergeler, uç nokta için Microsoft Defender belgelerinde bulunabilir: [geçişe genel bakış](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).
+Microsoft 'a ait olmayan bir uç nokta çözümüyle geçiş için tam yönergeler, uç nokta için Microsoft Defender belgelerinde bulunabilir: [geçişe genel bakış](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).
   
 
 

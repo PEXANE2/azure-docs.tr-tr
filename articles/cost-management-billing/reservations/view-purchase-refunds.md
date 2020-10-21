@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d9e5269468f7cd4571e7ae686af7f1ef159b4ef3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b986aa2bfce203be85adbcde8e2966c167bf7ca1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681711"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151767"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>Rezervasyon satın alma ve iade işlemlerini görüntüleme
 
@@ -39,11 +39,11 @@ Kurumsal kayıt veya Microsoft Müşteri Sözleşmesi faturalama yöneticileri, 
 
 [![Rezervasyon işlemlerini gösteren örnek](./media/view-purchase-refunds/power-bi-reservation-transactions.png)](./media/view-purchase-refunds/power-bi-reservation-transactions.png#lightbox)
 
-Daha fazla bilgi için bkz. [Kurumsal Anlaşmalar için Azure Maliyet Yönetimi Power BI Uygulaması](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app).
+Daha fazla bilgi için bkz. [Kurumsal Anlaşmalar için Azure Maliyet Yönetimi Power BI Uygulaması](../costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md).
 
 ## <a name="use-apis-to-get-reservation-transactions"></a>Rezervasyon işlemlerini almak için API’leri kullanma
 
-Kurumsal Anlaşma (EA) ve Microsoft Müşteri Sözleşmesi kullanıcıları, [Rezervasyon İşlemleri - Liste API](https://docs.microsoft.com/rest/api/consumption/reservationtransactions/list)’sini kullanarak rezervasyon işlemleri verilerini alabilir.
+Kurumsal Anlaşma (EA) ve Microsoft Müşteri Sözleşmesi kullanıcıları, [Rezervasyon İşlemleri - Liste API](/rest/api/consumption/reservationtransactions/list)’sini kullanarak rezervasyon işlemleri verilerini alabilir.
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
