@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4dbae9d08a4adf250c9317b392d80f8e04c53d56
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 9427ec4530ac249d5b8059d04fc85f1183c0081c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951018"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123900"
 ---
 ::: zone target="docs"
 
@@ -105,7 +105,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
 
     **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
     
-Bir Linux istemcisi kullanıyorsanız, SMB paylaşımını bağlamak için aşağıdaki komutu kullanın. Aşağıdaki "vers" parametresi, Linux ana bilgisayarınızın desteklediği SMB sürümüdür. Aşağıdaki komutta verilen uygun sürümü takın. Data Box’ın desteklediği SMB sürümleri için bkz. [Linux istemcileri için desteklenen dosya sistemleri](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
+Bir Linux istemcisi kullanıyorsanız, SMB paylaşımını bağlamak için aşağıdaki komutu kullanın. Aşağıdaki "vers" parametresi, Linux ana bilgisayarınızın desteklediği SMB sürümüdür. Aşağıdaki komutta verilen uygun sürümü takın. Data Box’ın desteklediği SMB sürümleri için bkz. [Linux istemcileri için desteklenen dosya sistemleri](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 
 
 ```console
 sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox
@@ -131,7 +131,7 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
 SMB paylaşımına bağlandıktan sonra verileri kopyalamaya başlayın. Verilerinizi kopyalamak için Robocopy gibi SMB uyumlu herhangi bir dosya kopyalama aracını kullanabilirsiniz. Robocopy ile birden fazla kopyalama işlemini başlatabilirsiniz. Aşağıdaki komutu kullanın:
 
 ```console
-robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
+robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
 ```
 
 Öznitelikler aşağıdaki tabloda açıklanmıştır.

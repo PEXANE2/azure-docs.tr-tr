@@ -341,7 +341,7 @@
                       href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
         - name: Çok cihazlı konuşma
           items:
-            - name: Genel Bakış
+            - name: Genel bakış
               items:
                 - name: Çok cihazlı konuşma nedir?
                   href: multi-device-conversation.md
@@ -580,9 +580,8 @@
       href: how-to-migrate-from-translator-speech-api.md
 - name: Kaynaklar
   items:
-    - name: Destek
-      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
-      href: support.md
+    - name: Destek ve yardım seçenekleri
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger belgeleri
       href: swagger-documentation.md
     - name: Bağımsız Bulutlar

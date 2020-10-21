@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: c6bb335ad7783c180ceeaafde955d6ac9dcb8799
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d156887416fb9a587c9690c3b275229e91f1dbe
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280135"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339807"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -93,7 +93,7 @@ Her güvenlik programı, olay yanıtı için birden çok iş akışı içerir. B
 
 İş akışlarınızı çalıştırmaya yönelik otomatik ve el ile güvenlik merkezi özellikleri hakkında daha fazla bilgi için bkz. [iş akışı Otomasyonu](workflow-automation.md).
 
-[Logic Apps oluşturma](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)hakkında daha fazla bilgi edinin.
+[Logic Apps oluşturma](../logic-apps/logic-apps-overview.md)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure Güvenlik Merkezi 'Ni Windows Yönetim Merkezi ile tümleştirme
@@ -214,7 +214,7 @@ Günümüzde, güvenlik merkezi 'nde müşterilerin Azure Logic Apps kullanarak 
 
 İş akışlarınızı çalıştırmaya yönelik otomatik ve el ile güvenlik merkezi özellikleri hakkında daha fazla bilgi için bkz. [iş akışı Otomasyonu](workflow-automation.md).
 
-Logic Apps oluşturma hakkında bilgi edinmek için bkz. [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Logic Apps oluşturma hakkında bilgi edinmek için bkz. [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 
 ### <a name="quick-fix-for-bulk-resources-generally-available"></a>Toplu kaynaklar için hızlı düzelme genel kullanıma sunuldu
@@ -270,9 +270,9 @@ Sanal makinelere yüklenen uygulamalar, genellikle sanal makine ihlaline neden o
 
 Azure Güvenlik Merkezi 'nin tehdit koruması ve IaaS VM 'lerinde çalıştırılan SQL DB değerlendirmesi için destek artık önizleme aşamasındadır.
 
-[Güvenlik açığı değerlendirmesi](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) olası veritabanı güvenlik açıklarını keşfetmenizi ve izlemenizi sağlamanın yanı sıra bunları gidermeye yardımcı olan yapılandırması kolay bir hizmettir. Azure güvenli puanınızın bir parçası olarak güvenlik duruşunuzu görünürlük sağlar ve güvenlik sorunlarını giderme ve veritabanınızın geliştirilmesine yönelik adımları içerir.
+[Güvenlik açığı değerlendirmesi](../azure-sql/database/sql-vulnerability-assessment.md) olası veritabanı güvenlik açıklarını keşfetmenizi ve izlemenizi sağlamanın yanı sıra bunları gidermeye yardımcı olan yapılandırması kolay bir hizmettir. Azure güvenli puanınızın bir parçası olarak güvenlik duruşunuzu görünürlük sağlar ve güvenlik sorunlarını giderme ve veritabanınızın geliştirilmesine yönelik adımları içerir.
 
-[Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) , SQL Server 'a erişmeye veya yararlanmaya yönelik olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar. Veritabanınızı sürekli şüpheli etkinlikler için izler ve anormal veritabanı erişim desenlerinde eyleme dayalı güvenlik uyarıları sağlar. Bu uyarılar, tehdidi araştırmak ve azaltmak için şüpheli etkinlik ayrıntılarını ve önerilen eylemleri sağlar.
+[Gelişmiş tehdit koruması](../azure-sql/database/threat-detection-overview.md) , SQL Server 'a erişmeye veya yararlanmaya yönelik olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar. Veritabanınızı sürekli şüpheli etkinlikler için izler ve anormal veritabanı erişim desenlerinde eyleme dayalı güvenlik uyarıları sağlar. Bu uyarılar, tehdidi araştırmak ve azaltmak için şüpheli etkinlik ayrıntılarını ve önerilen eylemleri sağlar.
 
 
 ### <a name="support-for-custom-policies-preview"></a>Özel ilkeler desteği (Önizleme)
@@ -346,7 +346,7 @@ VM 'niz için JıT 'i etkinleştirdiğinizde, korunacak bağlantı noktalarını
 
 İstekleri Azure etkinlik günlüğünde günlüğe kaydedilir, böylelikle erişimi kolayca izleyebilir ve denetleyebilirsiniz. Tam zamanında sayfası, JIT etkin olan VM 'Leri ve JıT 'in önerildiği VM 'Leri hızlı bir şekilde belirlemenize de yardımcı olur.
 
-[Azure Güvenlik Duvarı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/firewall/overview).
+[Azure Güvenlik Duvarı hakkında daha fazla bilgi edinin](../firewall/overview.md).
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>Güvenlik duruşunuzu (Önizleme) artırmak için tek tıklama düzeltmesi

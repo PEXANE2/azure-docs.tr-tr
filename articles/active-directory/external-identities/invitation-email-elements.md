@@ -5,28 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439837"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340638"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B işbirliği davetiyesi e-postası öğeleri-Azure Active Directory
 
 Davet e-postaları, Azure AD 'de B2B işbirliği kullanıcıları olarak iş ortaklarını panoda getirecek kritik bir bileşendir. [B2B işbirliğiyle birini davet etmek için bir e-posta göndermeniz gerekli olmasa](add-user-without-invite.md)da, bunu yapmanız, kullanıcıya, davetinizi kabul edip etmemeyi öğrenmek için gereken tüm bilgileri verir. Ayrıca, kaynaklara geri dönmeleri gerektiğinde gelecekte her zaman başvurabileceği bir bağlantı sağlar.
 
 ![B2B davet e-postasını gösteren ekran görüntüsü](media/invitation-email-elements/invitation-email.png)
-
-> [!NOTE]
-> Bu yeni e-posta şablonu hala tüm kiracılara alındı, bu nedenle bazı kiracılar hala eski bir tasarım kullanıyor. 2020 Mayıs 'un sonuna kadar tüm kiracılardan davetiye bu şablonu kullanacaktır.
 
 ## <a name="explaining-the-email"></a>E-postayı açıklayan
 
@@ -52,17 +49,11 @@ E-posta, kullanıcıya kimlik avı hakkında kısa bir uyarıyla başlar ve yaln
 
 ![E-postadaki kimlik avı uyarısı görüntüsü](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>Davet eden kişinin bilgileri
+### <a name="inviters-information-and-invitation-message"></a>Davet eden kişinin bilgileri ve davet iletisi
 
-E-posta, davet eden ve daveti gönderdikleri kuruluş hakkındaki bilgileri içerir. Bu, gönderenin adı ve e-posta adresinin yanı sıra kuruluşla ilişkili ad ve birincil etki alanını da içerir. Bu bilgilerin tümü, davetinin daveti kabul etme konusunda bilinçli bir karar vermesini sağlamaya yardımcı olmalıdır.
+E-posta, daveti gönderen kuruluşla ilişkili ad ve birincil etki alanını içerir. Bu bilgiler, davetinin daveti kabul etme konusunda bilinçli bir karar vermesini sağlamaya yardımcı olmalıdır. Davet eden, [bir konuk kullanıcıyı Dizin, Grup veya uygulamaya davet](add-users-administrator.md) ettikleri ya da [davet API 'sini kullandıklarında](customize-invitation-api.md), davetinin bir parçası olarak bir ileti içeriyorsa, ileti e-postanın ana bölümünde vurgulanır. Ayrıca, davet eden kişinin adı ve profil görüntüsü bir tane ayarlandıklarında de bulunur. İletinin kendisi bir metin alanıdır, bu nedenle güvenlik nedenleriyle, HTML etiketlerini işlemez.
 
-![E-postadaki davet eden bilgilerin görüntüsü](media/invitation-email-elements/inviters-information.png)
-
-### <a name="invitation-message"></a>Davet iletisi
-
-Davet eden, [bir konuk kullanıcıyı Dizin, Grup veya uygulamaya davet](add-users-administrator.md) ettikleri ya da [davet API 'sini kullandıklarında](customize-invitation-api.md), davetinin bir parçası olarak bir ileti içeriyorsa, ileti e-postanın ana bölümünde vurgulanır. Ayrıca, davet eden kişinin adı ve profil görüntüsü bir tane ayarlandıklarında de bulunur. İletinin kendisi bir metin alanıdır, bu nedenle güvenlik nedenleriyle, HTML etiketlerini işlemez.
-
-![E-postadaki davet iletisi görüntüsü](media/invitation-email-elements/invitation-message.png)
+![E-postadaki davet iletisi görüntüsü](media/invitation-email-elements/invitation-message-inviters-info.png)
 
 ### <a name="accept-button-and-redirect-url"></a>Kabul et düğmesi ve yönlendirme URL 'SI
 

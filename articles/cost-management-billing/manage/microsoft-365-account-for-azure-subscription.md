@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eb266680cc514b1e2d70e510ed65e9a7790c0260
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 255fbe4036c83618dd0131b262d13709ab7f9c2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370343"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131896"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-microsoft-365-account"></a>Microsoft 365 hesabınızla Azure aboneliğine kaydolma
 
-Microsoft 365 aboneliğiniz varsa, Azure aboneliği oluşturmak için Microsoft 365 hesabınızı kullanabilirsiniz. Microsoft 365 kullanıcı adı ve parolanızı kullanarak [Azure portalında](https://portal.azure.com/) oturum açın. Sanal makineleri ayarlamak veya diğer Azure hizmetlerini kullanmak istiyorsanız, bir Azure aboneliğine kaydolmanız gerekir. Azure aboneliğinizi başkalarıyla paylaşabilir ve [Azure aboneliğinize ve kaynaklarınıza erişimi yönetmek için Azure rol tabanlı erişim denetimini (Azure RBAC) kullanabilirsiniz](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Microsoft 365 aboneliğiniz varsa, Azure aboneliği oluşturmak için Microsoft 365 hesabınızı kullanabilirsiniz. Microsoft 365 kullanıcı adı ve parolanızı kullanarak [Azure portalında](https://portal.azure.com/) oturum açın. Sanal makineleri ayarlamak veya diğer Azure hizmetlerini kullanmak istiyorsanız, bir Azure aboneliğine kaydolmanız gerekir. Azure aboneliğinizi başkalarıyla paylaşabilir ve [Azure aboneliğinize ve kaynaklarınıza erişimi yönetmek için Azure rol tabanlı erişim denetimini (Azure RBAC) kullanabilirsiniz](../../role-based-access-control/role-assignments-portal.md).
 
 Zaten bir Microsoft 365 hesabınız ve Azure aboneliğiniz varsa bkz. [Microsoft 365 kiracısını Azure aboneliği ile ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -57,4 +57,4 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure aboneliğinizi başkalarıyla paylaşın ve [Azure aboneliğinize ve kaynaklarınıza erişimi yönetmek için Azure rol tabanlı erişim denetimini (Azure RBAC) kullanın](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+- Azure aboneliğinizi başkalarıyla paylaşın ve [Azure aboneliğinize ve kaynaklarınıza erişimi yönetmek için Azure rol tabanlı erişim denetimini (Azure RBAC) kullanın](../../role-based-access-control/role-assignments-portal.md).

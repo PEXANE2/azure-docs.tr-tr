@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971617"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340827"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde uyarı doğrulama
 Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılandırılıp yapılandırılmadığını doğrulamayı öğrenmenize yardımcı olur.
@@ -36,7 +36,7 @@ Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının sa
 1. 5-10 dakika bekleyin ve Güvenlik Merkezi Uyarılarını açın. Bir uyarı görüntülenmelidir.
 
 > [!NOTE]
-> Windows için bu test uyarısını gözden geçirirken, alan **bağımsız değişkenlerinin denetim etkin** **olduğundan emin olun.** **Yanlış**ise, komut satırı bağımsız değişken denetimini etkinleştirmeniz gerekir. Etkinleştirmek için aşağıdaki komutu kullanın:
+> Windows için bu test uyarısını gözden geçirirken, alan **bağımsız değişkenlerinin denetim etkin** **olduğundan emin olun.** **Yanlış**ise, komut satırı bağımsız değişken denetimini etkinleştirmeniz gerekir. Etkinleştirmek için şu komutu kullanın: 
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
@@ -65,7 +65,7 @@ Kubernetes düğümlerini ve kümelerini erteleme hakkında daha fazla bilgi iç
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede uyarıları doğrulama işlemine giriş yaptınız. Artık bu doğrulama hakkında bilgi sahibi olduğunuza göre, aşağıdaki makaleleri deneyebilirsiniz:
 
-* [Azure Güvenlik Merkezi 'nde tehdit algılamayı Azure Key Vault doğrulama](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
+* [Azure Güvenlik Merkezi'nde Azure Key Vault Tehdit Algılamasını Doğrulama](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -Güvenlik Merkezi 'nde uyarıları yönetme ve güvenlik olaylarına yanıt verme hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
-* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını anlama](security-center-alerts-type.md) -farklı güvenlik uyarısı türleri hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını anlama](./security-center-alerts-overview.md) -farklı güvenlik uyarısı türleri hakkında bilgi edinin.

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 0ecf3e5f30ee38c0d60c77df3d6aae3ad90930e9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332346"
+ms.locfileid: "92342323"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ağ Ilkelerine genel bakış
 
@@ -154,7 +154,7 @@ Azure portalını açın. Kümenizin öngörülerine bir kez "çalışma kitapla
 Çalışma kitabını (aşağıdaki resimler) görüntülemenin yanı sıra, Öngörüler bölümünde "Günlükler" içindeki Prometheus ölçümlerini de doğrudan sorgulayabilirsiniz. Örneğin, bu sorgu toplanmakta olan tüm ölçümleri döndürür.
 | Zaman üretilen > önce (5h) | Burada ad "npm_" içerir
 
-Ayrıca ölçümler için Log Analytics doğrudan sorgulama yapabilirsiniz. Log Analytics sorguları kullanmaya başlama hakkında daha fazla bilgi edinin] (https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
+Ayrıca ölçümler için Log Analytics doğrudan sorgulama yapabilirsiniz. [Log Analytics sorguları Ile çalışmaya](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) başlama hakkında daha fazla bilgi edinin 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Grafana panosunda görüntüleme
 Grafana sunucunuzu kurun ve [burada](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)açıklandığı gibi bir Log Analytics veri kaynağı yapılandırın. Daha sonra, [Grafana panosunu Grafana Laboratuvarlarınızı Log Analytics arka ucu ile](https://grafana.com/grafana/dashboards/10956) içeri aktarın.

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611311"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340317"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -74,9 +74,9 @@ Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Erişim denetimi rollerini hesabınıza ekleyin
 
-Azure HPC Cache, Azure Blob depolama hedeflerine yönelik depolama hesabınıza erişmek üzere Önbellek hizmetini yetkilendirmek için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) kullanır.
+Azure HPC Cache, Azure Blob depolama hedeflerine yönelik depolama hesabınıza erişmek üzere Önbellek hizmetini yetkilendirmek için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../role-based-access-control/index.yml) kullanır.
 
-Depolama hesabı sahibi, "HPC Cache kaynak sağlayıcısı" kullanıcısı için rol [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) ve [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) ' nı açıkça eklemesi gerekir.
+Depolama hesabı sahibi, "HPC Cache kaynak sağlayıcısı" kullanıcısı için rol [depolama hesabı katılımcısı](../role-based-access-control/built-in-roles.md#storage-account-contributor) ve [Depolama Blobu veri katılımcısı](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) ' nı açıkça eklemesi gerekir.
 
 Bunu zaman içinde yapabilir veya bir BLOB depolama hedefi eklediğiniz sayfada bir bağlantıya tıklayarak yapabilirsiniz. Rol ayarlarının Azure ortamından yayılması beş dakika sürebileceğini unutmayın. bu nedenle, bir depolama hedefi oluşturmadan önce roller eklendikten sonra birkaç dakika beklemeniz gerekir.
 
