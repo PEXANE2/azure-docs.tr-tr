@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 93cf29651110356023752f2377c9a0fc358982a7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4b072257d49011819fe19d6e2901560df43b26dc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203066"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275557"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning sahip kaynaklara yönelik kotaları yönetme & artırma
 
@@ -177,7 +177,7 @@ Bu senaryolar için bir kesinti istemek üzere aşağıdaki adımları kullanın
     | ----- | ----- |
     | Sorun türü | Teknik |
     | Hizmet | Hizmetlerim. Açılan listede __Machine Learning__ ' yi seçin. |
-    | Sorun türü | Çalışma alanı kurulumu, SDK ve CLı |
+    | Sorun türü | Çalışma alanı yapılandırması ve güvenliği |
     | Sorun alt türü | Özel uç nokta ve Özel DNS bölge kesintisi isteği |
 
 2. __Ayrıntılar__ bölümünde, kullanmak istediğiniz Azure bölgesini ve kullanmayı planladığınız senaryoyu sağlamak için __Açıklama__ alanını kullanın. Birden çok abonelik için kota artışı istemeniz gerekiyorsa, bu alandaki abonelik kimliklerini de listeleyin.

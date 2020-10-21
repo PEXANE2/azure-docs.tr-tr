@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d25cdce2670de64fecc8590a2f5f833c10d2df69
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421297"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315997"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Azure kanıtlama ayarlama
 
@@ -23,7 +23,7 @@ PowerShell Galerisi, kullanım dışı Aktarım Katmanı Güvenliği (TLS) 1,0 v
 - Uyarı: ' ' paket kaynağı çözümlenemedi https://www.powershellgallery.com/api/v2
 - PackageManagement\Install-Package: belirtilen arama ölçütleri ve modül adı için eşleşme bulunamadı 
 
-PowerShell Galerisi etkileşim kurmaya devam etmek için, Install-Module komutlarından önce aşağıdaki komutu çalıştırın
+PowerShell Galerisi etkileşim kurmaya devam etmek için Install-Module komutlarından önce aşağıdaki komutu çalıştırın
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
@@ -81,7 +81,7 @@ Tüm az modüllerin yüklü sürümünü doğrulamak için aşağıdaki komutu �
 ```powershell
 Get-InstalledModule
 ```
-Sürümler en düşük gereksinimle eşleşmez, Update-Module komutlarını çalıştırın.
+Sürümler en düşük gereksinimle eşleşmez Update-Module komutları çalıştırın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -137,7 +137,7 @@ New-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationReso
 
 PolicySignersCertificateFile örnek için bkz. [ilke imzalayan sertifika örnekleri](policy-signer-examples.md).
 
-Get-AzAttestation, Status ve AttestURI gibi kanıtlama sağlayıcısı özelliklerini alır. AttestURI ' yi daha sonra gerekli olacağı için bir yere göz atın.
+Get-AzAttestation durum ve AttestURI gibi kanıtlama sağlayıcısı özelliklerini alır. AttestURI ' yi daha sonra gerekli olacağı için bir yere göz atın.
 
 ```azurepowershell
 Get-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup  
@@ -179,16 +179,16 @@ Bu izin, "okuyucu" (joker karakter izinleri) veya "kanıtlama okuyucusu" gibi bi
 
 Aşağıdaki PowerShell cmdlet 'leri bir kanıtlama sağlayıcısı için ilke yönetimi sağlar (bir seferde bir t).
 
-Get-AzAttestationPolicy, belirtilen t için geçerli ilkeyi döndürür. Cmdlet, ilkeyi ilkenin hem metin hem de JWT biçiminde görüntüler.
+Get-AzAttestationPolicy belirtilen t için geçerli ilkeyi döndürür. Cmdlet, ilkeyi ilkenin hem metin hem de JWT biçiminde görüntüler.
 
 ```powershell
 $teeType = "<tee Type>"
 Get-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
 ```
 
-Desteklenen t türleri "sgxenclave" ve "vbsenclave".
+Desteklenen t türleri şunlardır "SgxEnclave", "OpenEnclave" ve "VbsEnclave".
 
-Set-AttestationPolicy belirtilen t için yeni bir ilke ayarlar. Cmdlet, ilkeyi metin veya JWT biçiminde kabul eder ve PolicyFormat parametresi tarafından denetlenir. PolicyFormat için varsayılan değer "Text" değeridir. 
+Set-AttestationPolicy, belirtilen t için yeni bir ilke ayarlar. Cmdlet, ilkeyi metin veya JWT biçiminde kabul eder ve PolicyFormat parametresi tarafından denetlenir. PolicyFormat için varsayılan değer "Text" değeridir. 
 
 ```powershell
 $policyFormat = "<policy format>"
@@ -202,7 +202,7 @@ JWT biçimindeki kanıtlama ilkesi, "AttestationPolicy" adlı bir talep içermel
 
 İlke örnekleri için bkz. [kanıtlama ilkesi örnekleri](policy-examples.md).
 
-Reset-AzAttestationPolicy belirtilen t için ilkeyi varsayılan olarak sıfırlar.
+Reset-AzAttestationPolicy, belirtilen t için ilkeyi varsayılan olarak sıfırlar.
 
 ```powershell
 Reset-AzAttestationPolicy -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 08abd9ff1134415e47923f22e753691225fc23b8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f32bc444ba753f48955de4a4c16bde8dfb7a05fc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164729"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316642"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "92164729"
 
 Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek ve çalıştırmak için Service Fabric çalışma zamanını, SDK'yı ve araçları yükleyin. Ayrıca, SDK 'da bulunan [Windows PowerShell betiklerinin yürütülmesini de etkinleştirmeniz](#enable-powershell-script-execution) gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="supported-operating-system-versions"></a>Desteklenen işletim sistemi sürümleri
 
@@ -94,7 +94,7 @@ Artık geliştirme ortamınızı ayarlamayı tamamladığınıza göre, uygulama
 
 * [Uygulama oluşturmayı, dağıtmayı ve yönetmeyi öğrenin](service-fabric-tutorial-create-dotnet-app.md)
 * [Programlama modelleri hakkında bilgi edinin: Reliable Services ve Reliable Actors](service-fabric-choose-framework.md)
-* [GitHub'da Service Fabric kod örneklerine bakın](https://aka.ms/servicefabricsamples)
+* [GitHub'da Service Fabric kod örneklerine bakın](/samples/browse/?products=azure)
 * [Service Fabric Explorer kullanarak kümenizi görselleştirme](service-fabric-visualizing-your-cluster.md)
 * [Windows üzerinde Linux geliştirme ortamı hazırlama](service-fabric-local-linux-cluster-windows.md)
 * [Service Fabric destek seçenekleri](service-fabric-support.md) hakkında bilgi edinin

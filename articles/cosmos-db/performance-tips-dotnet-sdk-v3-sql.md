@@ -4,15 +4,15 @@ description: Azure Cosmos DB .NET v3 SDK performansını artırmaya yardımcı o
 author: j82w
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 432d9656bf56b87798d6563cfd545b34c20001b6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204036"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277307"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -67,32 +67,7 @@ Yüksek aktarım hızı düzeylerinde veya saniyede 50.000 Istek birimi (RU/sn) 
 
 **Bağlantı ilkesi: doğrudan bağlantı modunu kullan**
 
-İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de gözlemlenen istemci tarafı gecikme süresi için önemli performans etkilerine sahiptir. İstemci bağlantı ilkesini yapılandırmak için iki anahtar yapılandırma ayarı vardır: bağlantı *modu* ve bağlantı *Protokolü*. Kullanılabilir iki bağlantı modu şunlardır:
-
-   * Doğrudan mod (varsayılan)
-
-     Doğrudan mod, TCP protokolü ile bağlantıyı destekler ve [Microsoft. Azure. Cosmos/. net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3)kullanıyorsanız varsayılan bağlantı modudur. Doğrudan mod daha iyi performans sağlar ve ağ geçidi modundan daha az ağ atlaması gerektirir.
-
-   * Ağ geçidi modu
-      
-     Uygulamanız sıkı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçenektir. 
-     
-     Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin Azure Cosmos DB her okunışında veya üzerine yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, daha az ağ atlaması olduğundan doğrudan mod daha iyi performans sunar. Ayrıca, sınırlı sayıda soket bağlantısı olan ortamlarda uygulamalar çalıştırdığınızda ağ geçidi bağlantı modunu da öneririz.
-
-     Azure Işlevlerinde SDK kullandığınızda, özellikle [Tüketim planında](../azure-functions/functions-scale.md#consumption-plan), [bağlantılardaki geçerli limitlerin](../azure-functions/manage-connections.md)farkında olun. Bu durumda, Azure Işlevleri uygulamanızdaki diğer HTTP tabanlı istemcilerle de çalışıyorsanız ağ geçidi modu daha iyi olabilir.
-     
-TCP protokolünü doğrudan modda kullandığınızda, ağ geçidi bağlantı noktalarına ek olarak, Azure Cosmos DB dinamik TCP bağlantı noktalarını kullandığından 10000 ile 20000 arasında bağlantı noktasının açık olduğundan emin olmanız gerekir. [Özel uç noktalar](./how-to-configure-private-endpoints.md)üzerinde doğrudan mod kullandığınızda, 0 ila 65535 arasındaki TCP bağlantı noktalarının tam aralığının açık olması gerekir. Bağlantı noktaları, standart Azure VM yapılandırması için varsayılan olarak açıktır. Bu bağlantı noktaları açık değilse ve TCP kullanmaya çalışırsanız, bir "503 Hizmet kullanılamıyor" hatası alırsınız. 
-
-Aşağıdaki tabloda, çeşitli API 'Ler ve her API için kullanılan hizmet bağlantı noktaları için kullanılabilen bağlantı modları gösterilmektedir:
-
-|Bağlantı modu  |Desteklenen Protokol  |Desteklenen SDK 'lar  |API/hizmet bağlantı noktası  |
-|---------|---------|---------|---------|
-|Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br><br> 10250 numaralı bağlantı noktası, coğrafi çoğaltma olmadan MongoDB örneği için varsayılan Azure Cosmos DB API 'sine eşlenir ve 10255 ve 10256 numaralı bağlantı noktaları coğrafi çoğaltma ile örneğe eşlenir.   |
-|Direct    |     TCP    |  .NET SDK    | Ortak/hizmet uç noktaları kullandığınızda: 10000 ile 20000 arasında bağlantı noktaları<br><br>Özel uç noktaları kullandığınızda: 0 ila 65535 aralığındaki bağlantı noktaları |
-
-Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. TCP protokolü ilk kimlik doğrulaması ve trafiği şifrelemek için Aktarım Katmanı Güvenliği 'ni (TLS) kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
-
-SDK V3 için, içinde örneğini oluştururken bağlantı modunu yapılandırırsınız `CosmosClient` `CosmosClientOptions` . Doğrudan modunun varsayılan olduğunu unutmayın.
+.NET v3 SDK varsayılan bağlantı modu doğrudan. ' De örneği oluştururken bağlantı modunu yapılandırırsınız `CosmosClient` `CosmosClientOptions` .  Farklı bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı modları](sql-sdk-connection-modes.md) makalesine bakın.
 
 ```csharp
 string connectionString = "<your-account-connection-string>";
@@ -102,10 +77,6 @@ new CosmosClientOptions
     ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
 });
 ```
-
-TCP yalnızca doğrudan modunda desteklendiğinden, ağ geçidi modunu kullanıyorsanız, HTTPS protokolü her zaman ağ geçidiyle iletişim kurmak için kullanılır.
-
-:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Farklı bağlantı modları ve protokollerle Azure Cosmos DB bağlantı kurun." border="false":::
 
 **Kısa ömürlü bağlantı noktası tükenmesi**
 
@@ -126,7 +97,7 @@ Mümkün olduğunda, Azure Cosmos DB veritabanıyla aynı bölgedeki Azure Cosmo
 
 Çağıran uygulamanın sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde bulunduğundan emin olarak olası en düşük gecikme süresini alabilirsiniz. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Farklı bağlantı modları ve protokollerle Azure Cosmos DB bağlantı kurun." border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Aynı bölgedeki istemcileri birlikte bulun." border="false":::
 
    <a id="increase-threads"></a>
 
@@ -287,4 +258,4 @@ Belirtilen bir işlemin istek ücreti (yani, istek işleme maliyeti) doğrudan b
 ## <a name="next-steps"></a>Sonraki adımlar
 Birkaç istemci makinede yüksek performanslı senaryolar için Azure Cosmos DB değerlendirmek üzere kullanılan örnek bir uygulama için bkz. [Azure Cosmos DB Ile performans ve ölçek testi](performance-testing.md).
 
-Uygulamanızı ölçek ve yüksek performans için tasarlama hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](partition-data.md).
+Uygulamanızı ölçek ve yüksek performans için tasarlama hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](partitioning-overview.md).

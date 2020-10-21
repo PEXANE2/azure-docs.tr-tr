@@ -2,14 +2,14 @@
 title: Ölçümler için Azure Izleyicisini güncelleştirme | Microsoft Docs
 description: Bu makalede, toplu ölçümler üzerinde araştırmayı ve uyarı vermeyi destekleyen özel ölçümler özelliğini etkinleştirmek üzere kapsayıcılar için Azure Izleyicisini nasıl güncelleştireceğinizi açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a94f250c83fbd2779620376087a83b8851e583e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618154"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309444"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Kapsayıcılar için Azure İzleyici'yi ölçümleri etkinleştirecek şekilde güncelleştirme
 
@@ -26,6 +26,7 @@ Bu özelliğin bir parçası olarak aşağıdaki ölçümler etkinleştirilmişt
 | Öngörüler. kapsayıcı/düğümler | Cpuusagemiliçekirdekler, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | *Düğüm* ölçümleri olarak *ana bilgisayarı* bir boyut olarak içerirler. Ayrıca şunları içerir<br> *ana bilgisayar* boyutu için değer olarak düğümün adı. |
 | Öngörüler. kapsayıcı/pods | Pod Count, completedJobsCount, restartingContainerCount, oomKilledContainerCount, Pod Readypercentage | *Pod* ölçümleri olarak, Boyutlar-ControllerName, Kubernetes ad alanı, ad, aşama olarak aşağıdakileri içerirler. |
 | Öngörüler. kapsayıcı/kapsayıcılar | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
+| Öngörüler. kapsayıcı/persistentvolumes | pvUsageExceededPercentage | |
 
 Bu yeni özellikleri desteklemek için sürüme yeni bir kapsayıcı aracı eklenmiştir. **Microsoft/OMS: ciprod05262020** for aks ve Version **Microsoft/OMS: Ciprod09252020** for Azure Arc, Kubernetes kümeleri için. Yeni AKS dağıtımları otomatik olarak bu yapılandırma değişikliğini ve yeteneklerini içerir. Kümenizi bu özelliği destekleyecek şekilde güncelleştirmek Azure portal, Azure PowerShell veya Azure CLı ile gerçekleştirilebilir. Azure PowerShell ve CLı ile. Bu küme başına veya aboneliğinizdeki tüm kümeler için etkinleştirebilirsiniz.
 

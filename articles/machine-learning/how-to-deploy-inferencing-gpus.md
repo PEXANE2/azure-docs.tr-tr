@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 0fda407a916ca43ed36fa567374752bbb7a49a80
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9a18b35ce974aebb38f8f58b892fd93b94f5e3c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998959"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314796"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
 
@@ -26,7 +26,7 @@ Bu makalede, GPU özellikli bir modeli bir Web hizmeti olarak dağıtmak için A
 Çıkarım veya model Puanlama, dağıtılan modelin tahminleri yapmak için kullanıldığı aşamadır. CPU yerine GPU 'Ları kullanmak, yüksek bir paralelleştirilebilir hesaplama üzerinde performans avantajları sunar.
 
 > [!IMPORTANT]
-> Web hizmeti dağıtımları için GPU çıkarımı yalnızca Azure Kubernetes hizmetinde desteklenir. __Makine öğrenimi ardışık düzeni__kullanan çıkarım için, GPU 'lar yalnızca Azure Machine Learning işlem sırasında desteklenir. ML işlem hatlarını kullanma hakkında daha fazla bilgi için bkz. [Batch tahminleri çalıştırma](how-to-use-parallel-run-step.md). 
+> Web hizmeti dağıtımları için GPU çıkarımı yalnızca Azure Kubernetes hizmetinde desteklenir. __Makine öğrenimi ardışık düzeni__kullanan çıkarım için, GPU 'lar yalnızca Azure Machine Learning işlem sırasında desteklenir. ML işlem hatlarını kullanma hakkında daha fazla bilgi için bkz. [öğretici: Batch Puanlama için Azure Machine Learning işlem hattı oluşturma](tutorial-pipeline-batch-scoring-classification.md). 
 
 > [!TIP]
 > Bu makaledeki kod parçacıkları bir TensorFlow modeli kullanmasına karşın, bilgileri GPU 'ları destekleyen herhangi bir Machine Learning çerçevesine uygulayabilirsiniz.

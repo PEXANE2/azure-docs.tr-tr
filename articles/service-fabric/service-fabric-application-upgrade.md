@@ -3,18 +3,18 @@ title: Uygulama yükseltmesini Service Fabric
 description: Bu makalede, yükseltme modlarını seçme ve sistem durumu denetimleri gerçekleştirme dahil olmak üzere Service Fabric uygulamasını yükseltmeye yönelik bir giriş sunulmaktadır.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: cb0c1c0049957244b94b59707b70e47dc53f6c9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eecd923b009ecbe9f4e607ad57a99b3f20955b9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067520"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309844"
 ---
 # <a name="service-fabric-application-upgrade"></a>Uygulama yükseltmesini Service Fabric
 Azure Service Fabric uygulaması, bir hizmet koleksiyonudur. Yükseltme sırasında, Service Fabric yeni [uygulama bildirimini](service-fabric-application-and-service-manifests.md) önceki sürümle karşılaştırır ve uygulamadaki hangi hizmetlerin güncelleştirme gerektirdiğini belirler. Service Fabric, hizmet bildirimlerinde sürüm numaralarını önceki sürümdeki sürüm numaralarıyla karşılaştırır. Bir hizmet değiştirilmemiştir, bu hizmet yükseltilmemiştir.
 
 > [!NOTE]
-> [Applicationparameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)'lar bir uygulama yükseltmesinde korunmaz. Geçerli uygulama parametrelerini korumak için Kullanıcı öncelikle parametreleri almalıdır ve bunları aşağıdaki gibi yükseltme API 'SI çağrısına iletmelidir:
+> [Applicationparameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)'lar bir uygulama yükseltmesinde korunmaz. Geçerli uygulama parametrelerini korumak için Kullanıcı öncelikle parametreleri almalıdır ve bunları aşağıdaki gibi yükseltme API 'SI çağrısına iletmelidir:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters

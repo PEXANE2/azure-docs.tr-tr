@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261265"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276119"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısını sorgulama
 
@@ -19,7 +19,7 @@ Bu makalede, Azure Cosmos DB bir kapsayıcının (koleksiyon, grafik veya tablo)
 
 ## <a name="in-partition-query"></a>Bölüm içi sorgu
 
-Kapsayıcılardan veri sorguladığınızda, sorguda bir bölüm anahtarı filtresi belirtilmişse Azure Cosmos DB sorgu otomatik olarak optimize eder. Sorguyu, filtrede belirtilen bölüm anahtarı değerlerine karşılık gelen [fiziksel bölümlere](partition-data.md#physical-partitions) yönlendirir.
+Kapsayıcılardan veri sorguladığınızda, sorguda bir bölüm anahtarı filtresi belirtilmişse Azure Cosmos DB sorgu otomatik olarak optimize eder. Sorguyu, filtrede belirtilen bölüm anahtarı değerlerine karşılık gelen [fiziksel bölümlere](partitioning-overview.md#physical-partitions) yönlendirir.
 
 Örneğin, aşağıdaki sorguyu üzerinde bir eşitlik filtresiyle göz önünde bulundurun `DeviceId` . Bu sorguyu üzerinde bölümlenen bir kapsayıcıda çalıştırırsanız `DeviceId` , bu sorgu tek bir fiziksel bölüme filtre uygulanır.
 
@@ -61,7 +61,7 @@ Aşağıdaki parametreleri ayarlayarak paralel sorgu yürütme işlemini yönete
 
 - **MaxBufferedItemCount**: Sorgu gecikme süresiyle istemci tarafı bellek kullanımı arasında denge kurar. Bu seçenek atlanırsa veya-1 ' e ayarlanırsa, SDK paralel sorgu yürütme sırasında arabelleğe alınan öğe sayısını yönetir.
 
-Azure Cosmos DB, bölümler arası sorguları paralel hale getirmek özelliği nedeniyle, sistemin [fiziksel bölümler](partition-data.md#physical-partitions)eklemesi sırasında sorgu gecikmesi genellikle iyi ölçeklenecektir. Ancak, toplam fiziksel bölüm sayısı arttıkça RU ücreti önemli ölçüde artar.
+Azure Cosmos DB, bölümler arası sorguları paralel hale getirmek özelliği nedeniyle, sistemin [fiziksel bölümler](partitioning-overview.md#physical-partitions)eklemesi sırasında sorgu gecikmesi genellikle iyi ölçeklenecektir. Ancak, toplam fiziksel bölüm sayısı arttıkça RU ücreti önemli ölçüde artar.
 
 Bir çapraz bölüm sorgusu çalıştırdığınızda, aslında ayrı ayrı fiziksel bölüm başına ayrı bir sorgu oluşturursunuz. Çapraz bölümleme sorguları sorguları, varsa dizini kullanır, ancak bunlar, Bölüm içi sorgularda neredeyse verimli değildir.
 

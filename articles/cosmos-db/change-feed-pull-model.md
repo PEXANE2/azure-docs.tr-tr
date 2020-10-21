@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59f1231e2edf3277898ff57d8e6f8da42ee057ca
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015645"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276978"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB akış çekme modelini değiştirme
 
@@ -112,7 +112,7 @@ Bu, Kapsayıcınız için aralıkların bir listesinin nasıl alınacağını g�
 IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 ```
 
-Kapsayıcınız için FeedRanges listesini aldığınızda, `FeedRange` [fiziksel bölüm](partition-data.md#physical-partitions)başına bir tane elde edersiniz.
+Kapsayıcınız için FeedRanges listesini aldığınızda, `FeedRange` [fiziksel bölüm](partitioning-overview.md#physical-partitions)başına bir tane elde edersiniz.
 
 Bir kullanarak `FeedRange` , `FeedIterator` birden fazla makinede veya iş parçacığında değişiklik akışı işlemesini paralel hale getirmek için bir oluşturabilirsiniz. Tüm kapsayıcı veya tek bir bölüm anahtarı için nasıl elde eteceğinize ilişkin bir önceki örneğin aksine `FeedIterator` , akış aralıklarını kullanarak değişiklik akışını paralel olarak işleyebilen birden fazla Feediterler elde edebilirsiniz.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: 6aa960837a3bfc7f8a04ca1f554fb10d635c2ea2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91349212"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275615"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yüksek oranda kullanılabilir küresel bir Web uygulaması için ön kapı oluşturma
 
@@ -26,7 +26,7 @@ Yüksek oranda kullanılabilir ve yüksek performanslı bir genel Web uygulamas�
 
 Ön kapı, Web trafiğini bir arka uç havuzundaki belirli kaynaklara yönlendirir. Ön uç etki alanını tanımladınız, bir arka uç havuzuna kaynak ekleyecek ve bir yönlendirme kuralı oluşturacaksınız. Bu makalede, iki Web uygulaması kaynağına sahip bir arka uç havuzunun basit bir yapılandırması ve varsayılan yol eşleştirme "/*" kullanılarak tek bir yönlendirme kuralı kullanılmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure CLı yerel olarak veya Azure Cloud Shell yüklendi
@@ -46,7 +46,7 @@ Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. Var olan bir 
 
 Bu hızlı başlangıçta iki kaynak grubu gerekir. Biri *Orta ABD* ve ikincisi *Orta Güney ABD*.
 
-[Az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)ile bir kaynak grubu oluşturun:
+[Az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)ile bir kaynak grubu oluşturun:
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ Henüz bir Web uygulamanız yoksa, iki örnek Web uygulaması kurmak için aşa�
 
 Web uygulamalarını oluşturabilmeniz için, biri *Orta ABD* ve ikincisi *Orta Güney ABD*olmak üzere iki App Service planına ihtiyacınız olacaktır.
 
-[Az appservice plan Create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true)ile App Service planları oluşturun:
+[Az appservice plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true)ile App Service planları oluşturun:
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 Aşağıdaki komutlar çalıştırıldığında, önceki adımda bulunan App Service planlarının her birinde bir Web uygulaması oluşturulur. Web uygulaması adlarının genel olarak benzersiz olması gerekir.
 
-[Az WebApp Create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true)ile Web uygulaması oluşturun:
+[Az WebApp Create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true)ile Web uygulaması oluşturun:
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ Bir sonraki adımda ön kapıyı dağıtırken arka uç adreslerini tanımlayabi
 
 Aşağıdaki adımları izleyerek varsayılan Yük Dengeleme ayarları, sistem durumu araştırması ve yönlendirme kuralları ile temel bir ön kapı oluşturun:
 
-[Az Network ön kapı Create](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true)Ile ön kapı oluşturun:
+[Az Network ön kapı Create](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true)Ile ön kapı oluşturun:
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ Bir Web tarayıcısı açın ve komutlardan al ana bilgisayar adını girin. Ön
 
 Ön kapıda oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında her iki kaynak grubunu da silin. Kaynak grubunu sildiğinizde, ön kapıyı ve ilgili tüm kaynakları da silersiniz. 
 
-Kaynak grubunu silmek için [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true)kullanın:
+Kaynak grubunu silmek için [az Group Delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true)kullanın:
 
 ```azurecli-interactive
 az group delete \

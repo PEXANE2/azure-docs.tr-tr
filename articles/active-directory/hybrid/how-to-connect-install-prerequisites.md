@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662161"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276956"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -46,6 +46,14 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 * Azure AD tarafından kullanılan etki alanı denetleyicisi yazılabilir olmalıdır. Salt bir okuma etki alanı denetleyicisi (RODC) kullanılması *desteklenmez*ve Azure AD Connect herhangi bir yazma yeniden yönlendirmeyi izlemiyor.
 * "Noktalı" kullanarak şirket içi ormanları veya etki alanlarını kullanma (ad bir nokta içerir ".") NetBIOS adları *desteklenmez*.
 * [Active Directory geri dönüşüm kutusu 'nu etkinleştirmenizi](how-to-connect-sync-recycle-bin.md)öneririz.
+
+### <a name="powershell-execution-policy"></a>PowerShell yürütme ilkesi
+Azure Active Directory Connect, yüklemesinin bir parçası olarak imzalı PowerShell betikleri çalıştırır. PowerShell yürütme ilkesinin betikleri çalıştırmaya izin verdiğinden emin olun.
+
+Yükleme sırasında önerilen yürütme ilkesi "RemoteSigned" dır.
+
+PowerShell yürütme ilkesini ayarlama hakkında daha fazla bilgi için bkz. [set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect sunucusu
 Azure AD Connect sunucusu kritik kimlik verileri içerir. Bu sunucuya yönetim erişiminin düzgün bir şekilde güvenliğinin sağlanması önemlidir. [Ayrıcalıklı erişimin güvenliğini sağlama](/windows-server/identity/securing-privileged-access/securing-privileged-access)konusundaki yönergeleri izleyin. 

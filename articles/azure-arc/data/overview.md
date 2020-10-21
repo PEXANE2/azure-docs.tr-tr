@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948141"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316979"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Azure Arc etkin veri Hizmetleri (Önizleme) nedir?
 
@@ -41,7 +41,7 @@ Azure Arc Ayrıca, hızlı dağıtım ve ölçek açısından otomasyon gibi di�
 
 ## <a name="unified-management"></a>Birleşik yönetim
 
-Azure portal, Azure Data Studio ve Azure veri CLı gibi tanıdık araçları kullanarak artık Azure Arc ile dağıtılan tüm veri varlıklarınızın Birleşik bir görünümünü elde edebilirsiniz. Yalnızca ortamınızda ve Azure 'da çeşitli ilişkisel veritabanlarını görüntüleyebiliyor ve yönetebileceksiniz, ayrıca temel altyapı kapasitesini ve sistem durumunu çözümlemek için Kubernetes API 'Lerinden Günlükler ve telemetri alabilirsiniz. Yerelleştirilmiş Log Analytics ve performans izlemenin yanı sıra, artık tüm emlak konusunda kapsamlı operasyonel içgörüler için Azure Izleyici 'den yararlanabilirsiniz.
+Azure portal, Azure Data Studio ve gibi tanıdık araçları kullanarak [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] artık Azure Arc ile dağıtılan tüm veri varlıklarınızın Birleşik bir görünümünü elde edebilirsiniz. Yalnızca ortamınızda ve Azure 'da çeşitli ilişkisel veritabanlarını görüntüleyebiliyor ve yönetebileceksiniz, ayrıca temel altyapı kapasitesini ve sistem durumunu çözümlemek için Kubernetes API 'Lerinden Günlükler ve telemetri alabilirsiniz. Yerelleştirilmiş Log Analytics ve performans izlemenin yanı sıra, artık tüm emlak konusunda kapsamlı operasyonel içgörüler için Azure Izleyici 'den yararlanabilirsiniz.
 
 ## <a name="disconnected-scenario-support"></a>Bağlantısı kesik senaryo desteği
 

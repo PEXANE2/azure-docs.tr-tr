@@ -44,10 +44,6 @@
         - name: Azure Veri Gezgini'nden paylaşma
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: İzleme
-      href: how-to-monitor.md
-    - name: Sorun giderme
-      href: data-share-troubleshoot.md
     - name: Veri kümeleri ekleme
       href: how-to-add-datasets.md
     - name: Veri kümesi eşlemelerini yapılandırma
@@ -58,10 +54,14 @@
       href: how-to-delete-invitation.md
     - name: Paylaşım aboneliğini iptal etme
       href: how-to-revoke-share-subscription.md
+    - name: İzleyici
+      href: how-to-monitor.md
     - name: Güvenlik
       href: security.md
     - name: Olağanüstü durum kurtarma
       href: disaster-recovery.md
+    - name: Sorun giderme
+      href: data-share-troubleshoot.md
 - name: Başvuru
   items:
     - name: .NET

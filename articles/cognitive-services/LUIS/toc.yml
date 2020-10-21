@@ -402,6 +402,8 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: Kaynaklar
   items:
+    - name: Destek ve yardım seçenekleri
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: Kod örnekleri
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: Bölgesel kullanılabilirlik
@@ -425,10 +427,6 @@
     - name: Sanal ağları yapılandırma
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/LUIS'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
     - name: Arama
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog

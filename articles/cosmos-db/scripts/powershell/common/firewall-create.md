@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: f01e8e818a1b3cf4f999afa1e0801b2341ede2bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 143b79a0e65d842daae84fb7565c0caa64e3b68a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87506781"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276161"
 ---
 # <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>IP güvenlik duvarıyla Azure Cosmos DB hesap oluşturma
 
@@ -49,5 +49,3 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
-
-Ek Azure Cosmos DB PowerShell betiği örnekleri, [Azure Cosmos DB PowerShell betiklerinde](../../../powershell-samples.md) bulunabilir.

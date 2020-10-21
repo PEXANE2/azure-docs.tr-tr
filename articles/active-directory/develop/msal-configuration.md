@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88854911"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275601"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası
 
@@ -34,6 +34,7 @@ Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tab
 |-----------|------------|-------------|-------|
 | `client_id` | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
 | `redirect_uri`   | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
+| `broker_redirect_uri_registered` | Boole | Hayır | Olası değerler: `true` , `false` |
 | `authorities` | Listele\<Authority> | Hayır | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
 | `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası değerler: `DEFAULT` , `BROWSER` , `WEBVIEW` |
 | `http` | HttpConfiguration | Hayır | `HttpUrlConnection` `connect_timeout` Ve yapılandırın`read_timeout` |
@@ -46,6 +47,10 @@ Uygulamanızı kaydettirdiğiniz sırada oluşturulan istemci KIMLIĞI veya uygu
 ### <a name="redirect_uri"></a>redirect_uri
 
 Uygulamanızı kaydettirdiğiniz sırada kaydettiğiniz yeniden yönlendirme URI 'SI. Yeniden yönlendirme URI 'SI bir aracı uygulamasına ise, aracı uygulamanız için doğru yeniden yönlendirme URI 'SI biçimini kullandığınızdan emin olmak için [ortak istemci uygulamaları Için yeniden YÖNLENDIRME URI](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) 'sine bakın.
+
+### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
+
+Aracılı kimlik doğrulamasını kullanmak istiyorsanız, `broker_redirect_uri_registered` özelliği olarak ayarlanmalıdır `true` . Aracılı bir kimlik doğrulama senaryosunda, uygulama, [ortak istemci uygulamaları Için yeniden yönlendirme URI 'si](msal-client-application-configuration.md#redirect-uri-for-public-client-apps)içinde açıklandığı gibi aracıyla konuşmak için doğru biçimde değilse, uygulama YENIDEN yönlendirme URI 'nizi doğrular ve başlatıldığında bir özel durum oluşturur.
 
 ### <a name="authorities"></a>Kaynakça
 
@@ -98,6 +103,7 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 > MSAL içinde yetkili doğrulaması etkinleştirilemiyor ve devre dışı bırakılamaz.
 > Yetkililer, yapılandırma yoluyla belirtilen veya Microsoft tarafından meta veriler aracılığıyla bilinen geliştiriciler olarak sizin için bilinmektedir.
 > MSAL, bilinmeyen bir yetkiliye belirteç isteği alırsa, bir `MsalClientException` tür `UnknownAuthority` sonuçları vardır.
+> Aracılı kimlik doğrulaması Azure AD B2C için çalışmıyor.
 
 #### <a name="authority-properties"></a>Yetkili özellikleri
 
