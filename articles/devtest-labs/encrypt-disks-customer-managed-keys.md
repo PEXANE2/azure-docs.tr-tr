@@ -3,12 +3,12 @@ title: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kull
 description: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifrelemeyi öğrenin.
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc29f8cf924bca6c757843ae8b7062757ff61bf
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489853"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329551"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifreleyin
 Sunucu tarafı şifreleme (SSE) verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. SSE, Azure 'da (işletim sistemi ve veri diskleri) yönetilen disklerde depolanan verilerinizi otomatik olarak buluta kalıcı hale getirerek varsayılan olarak şifreler. Azure 'da [disk şifrelemesi](../virtual-machines/windows/disk-encryption.md) hakkında daha fazla bilgi edinin. 

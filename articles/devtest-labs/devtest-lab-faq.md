@@ -3,18 +3,18 @@ title: Azure DevTest Labs SSS | Microsoft Docs
 description: Bu makalede Azure DevTest Labs hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 6f4c0e34242677eca6a32af4731817085be12436
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144588"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328394"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
 
 ## <a name="blog-post"></a>Blog gönderisi
-DevTest Labs ekip blogumuz, 20 Mart 2019 itibariyle kullanımdan kaldırılmıştır. 
+DevTest Labs ekip blogumuz, 20 Mart 2019 itibariyle kullanımdan kaldırılmıştır. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Özellik güncelleştirmelerini Şu anda nereden izleyebilirim?
 Bu andan itibaren, Azure bloguna ve Azure güncelleştirmelerine yönelik özellik güncelleştirmelerini ve bilgilendirici blog yayınlarını naklettireceğiz. Bu blog gönderileri Ayrıca gerektiğinde belgelerimize bağlanır.
@@ -22,7 +22,7 @@ Bu andan itibaren, Azure bloguna ve Azure güncelleştirmelerine yönelik özell
 DevTest Labs 'de yeni özellikler hakkında bilgi sahibi olmak için DevTest [Labs Azure bloguna](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) ve [DevTest Labs Azure güncelleştirmelerine](https://azure.microsoft.com/updates/?product=devtest-lab) abone olun.
 
 ### <a name="what-happens-to-the-existing-blog-posts"></a>Var olan blog gönderilerine ne olur?
-Şu anda var olan blog gönderilerini (kesinti güncelleştirmeleri hariç) [DevTest Labs belgelerimize](devtest-lab-overview.md)geçirmeye çalışıyoruz. MSDN blogu kullanım dışı olduğunda, DevTest Labs için belgelere genel bakış sayfasına yönlendirilir. Yeniden yönlendirildikten sonra ' filtre ölçütü ' başlığında Aradığınız makaleyi arayabilirsiniz. Tüm gönderilerini henüz geçirdik, ancak bu ayın sonuna kadar gerçekleştirilmelidir. 
+Şu anda var olan blog gönderilerini (kesinti güncelleştirmeleri hariç) [DevTest Labs belgelerimize](devtest-lab-overview.md)geçirmeye çalışıyoruz. MSDN blogu kullanım dışı olduğunda, DevTest Labs için belgelere genel bakış sayfasına yönlendirilir. Yeniden yönlendirildikten sonra ' filtre ölçütü ' başlığında Aradığınız makaleyi arayabilirsiniz. Tüm gönderilerini henüz geçirdik, ancak bu ayın sonuna kadar gerçekleştirilmelidir. 
 
 
 ### <a name="where-do-i-see-outage-updates"></a>Kesinti güncelleştirmelerini nereden görüyorum?
@@ -68,7 +68,7 @@ DevTest Labs ücretsiz bir hizmettir. Laboratuvar oluşturma ve DevTest Labs 'de
 ## <a name="security"></a>Güvenlik
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>DevTest Labs 'deki farklı güvenlik düzeyleri nelerdir?
-Güvenlik erişimi Role-Based Access Control (RBAC) tarafından belirlenir. Erişimin nasıl çalıştığını öğrenmek için, RBAC tarafından tanımlanan bir izin, rol ve kapsam arasındaki farkları öğrenmenize yardımcı olur.
+Güvenlik erişimi, Azure rol tabanlı erişim denetimi (Azure RBAC) tarafından belirlenir. Erişimin nasıl çalıştığını öğrenmek için, Azure RBAC tarafından tanımlanan bir izin, rol ve kapsam arasındaki farkları öğrenmenize yardımcı olur.
 
 - **İzin**: izin, belirli bir eyleme tanımlı bir erişimdir. Örneğin, bir izin tüm sanal makinelere okunabilir.
 - **Rol**: rol, gruplandırılabilen ve bir kullanıcıya atanabilecek bir izinler kümesidir. Örneğin, abonelik sahibi rolüne sahip bir kullanıcının abonelik içindeki tüm kaynaklara erişimi vardır.
@@ -83,7 +83,7 @@ Ayrıca, DevTest Labs 'de özel roller de oluşturabilirsiniz. DevTest Labs 'de 
 
 Kapsamlar hiyerarşik olduğundan, bir kullanıcının belirli bir kapsamda izinleri olduğunda, kullanıcıya kapsamdaki her alt düzey kapsamda bu izinler otomatik olarak verilir. Örneğin, bir kullanıcıya abonelik sahibi rolü atanırsa, kullanıcının bir abonelikteki tüm kaynaklara erişimi vardır. Bu kaynaklar VM 'Leri, sanal ağları ve laboratuvarları içerir. Abonelik sahibi, laboratuvar sahibinin rolünü otomatik olarak devralır. Ancak, tersi doğru değildir. Laboratuvar sahibinin, abonelik düzeyinden daha düşük bir kapsam olan bir laboratuvara erişimi vardır. Bu nedenle, bir laboratuvar sahibi VM 'Leri, sanal ağları veya laboratuvar dışındaki diğer kaynakları göremez.
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Geliştirici/test işlerini yapabilirken yönetebilmemesini sağlamak için DevTest Labs Ortamlarım için rol tabanlı erişim denetimi tanımlama Nasıl yaparım?.
+### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Geliştirici/test işlerini yapabilirken yönetebilmemesini sağlamak için DevTest Labs Ortamlarım için Azure rol tabanlı erişim denetimi Nasıl yaparım? tanımlayın?
 Geniş bir düzen mevcuttur, ancak ayrıntı kuruluşunuza bağlıdır.
 
 Merkezi olarak yalnızca gerekli olan nedir ve proje ve uygulama ekiplerinin gerekli denetim düzeyine sahip olmasını sağlar. Genellikle, bu, aboneliğin sahibi olduğu ve ağ yapılandırması gibi çekirdek BT işlevlerini işleyeceği anlamına gelir. Bir abonelik için **sahip** kümesi küçük olmalıdır. Bu sahipler, ihtiyacınız olduğunda ek sahipleri aday yapabilir veya "genel IP yok" gibi abonelik düzeyinde ilkeler uygulayabilir.
@@ -92,7 +92,7 @@ Katman1 veya katman 2 desteği gibi bir abonelik genelinde erişim gerektiren ku
 
 DevTest Labs kaynağı, proje/uygulama takımına yakın olan sahiplere ait olmalıdır. Bunun nedeni, makineler ve gerekli yazılımlar için gereksinimlerini anladıkları içindir. Çoğu kuruluşta, bu DevTest Labs kaynağının sahibi genellikle proje/geliştirme lideridir. Bu sahip, Laboratuvar ortamındaki kullanıcıları ve ilkeleri yönetebilir ve DevTest Labs ortamındaki tüm VM 'Leri yönetebilir.
 
-Proje/uygulama ekibi üyeleri **DevTest Labs kullanıcıları** rolüne eklenmelidir. Bu kullanıcılar sanal makineler oluşturabilir (Laboratuvar ve abonelik düzeyindeki ilkelerle birlikte). Bunlar, kendi sanal makinelerini de yönetebilir. Diğer kullanıcılara ait sanal makineleri yönetemez.
+Proje/uygulama ekibi üyeleri **DevTest Labs Kullanıcı** rolüne eklenmelidir. Bu kullanıcılar sanal makineler oluşturabilir (Laboratuvar ve abonelik düzeyindeki ilkelerle birlikte). Bunlar, kendi sanal makinelerini de yönetebilir. Diğer kullanıcılara ait sanal makineleri yönetemez.
 
 Daha fazla bilgi için bkz. [Azure Kurumsal yapı iskelesi – seçkin abonelik idare belgeleri](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
 

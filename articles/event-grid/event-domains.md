@@ -3,12 +3,12 @@ title: Azure Event Grid içindeki olay etki alanları
 description: Bu makalede, çeşitli iş kuruluşlarınız, müşterileriniz veya uygulamalarınız için özel olayların akışını yönetmek üzere olay etki alanlarının nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86114372"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328836"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid yönetmek için olay etki alanlarını anlama
 
@@ -37,13 +37,13 @@ Ayrıca, size tüm müşteri olaylarınızı yayımlayabilmeniz için tek bir u�
 
 ## <a name="access-management"></a>Erişim yönetimi
 
-Bir etki alanı ile, Azure 'un rol tabanlı erişim denetimi (RBAC) aracılığıyla her konu üzerinde ince bir yetkilendirme ve kimlik doğrulama denetimi edinirsiniz. Uygulamanızdaki her bir kiracıyı yalnızca erişim vermek istediğiniz konularda kısıtlamak için bu rolleri kullanabilirsiniz.
+Bir etki alanı ile Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla her konu üzerinde ince bir yetkilendirme ve kimlik doğrulama denetimi edinirsiniz. Uygulamanızdaki her bir kiracıyı yalnızca erişim vermek istediğiniz konularda kısıtlamak için bu rolleri kullanabilirsiniz.
 
-Olay etki alanlarında RBAC, Event Grid ve Azure 'un geri kalanında aynı şekilde [yönetilen erişim denetimi](security-authorization.md) ile çalışmaktadır. Olay etki alanlarında özel rol tanımları oluşturmak ve zorlamak için RBAC kullanın.
+Olay etki alanlarında Azure RBAC, Event Grid ve Azure 'un geri kalanında aynı şekilde [yönetilen erişim denetimi](security-authorization.md) ile çalışmaktadır. Azure RBAC kullanarak olay etki alanlarında özel rol tanımları oluşturun ve uygulayın.
 
 ### <a name="built-in-roles"></a>Yerleşik roller
 
-Event Grid, RBAC 'nin olay etki alanlarıyla çalışmaya daha kolay hale getirmek için iki yerleşik rol tanımına sahiptir. Bu roller **Eventgrid Olayaboneliğine katkıda bulunan (Önizleme)** ve **Eventgrid eventsubscription Reader (Önizleme)**. Bu rolleri, olay etki alanındaki konulara abone olmaları gereken kullanıcılara atarsınız. Rol atamasını yalnızca kullanıcıların abone olmaları gereken konuya göre kapsamınız.
+Event Grid, Azure RBAC 'nin olay etki alanlarıyla çalışmaya daha kolay hale getirmek için iki yerleşik rol tanımına sahiptir. Bu roller **Eventgrid Olayaboneliğine katkıda bulunan (Önizleme)** ve **Eventgrid eventsubscription Reader (Önizleme)**. Bu rolleri, olay etki alanındaki konulara abone olmaları gereken kullanıcılara atarsınız. Rol atamasını yalnızca kullanıcıların abone olmaları gereken konuya göre kapsamınız.
 
 Bu roller hakkında daha fazla bilgi için bkz. [Event Grid Için yerleşik roller](security-authorization.md#built-in-roles).
 

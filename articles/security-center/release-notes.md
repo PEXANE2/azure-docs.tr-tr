@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a93ba674e82da090eb2b7c8805880f6e79d7e5d7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 565282b2da5383c1d3471337f64588f97157a79c
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280221"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328683"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -172,7 +172,6 @@ Eylül ayında güncelleştirmeler şunları içerir:
 - [Kaynağı öneriden muaf tutma](#exempt-a-resource-from-a-recommendation)
 - [Güvenlik Merkezi 'ndeki AWS ve GCP bağlayıcıları, çok bulut deneyimi getirir](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
 - [Kubernetes iş yükü koruma önerisi paketi](#kubernetes-workload-protection-recommendation-bundle)
-- [IoT için Azure Defender 'daki IoT tehdit koruması geliştirmeleri](#iot-threat-protection-enhancements-in-azure-defender-for-iot)
 - [Güvenlik açığı değerlendirmesi bulguları artık sürekli dışarı aktarma için kullanılabilir](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
 - [Yeni kaynaklar oluştururken öneriler zorlanarak güvenlik yapılandırması yapılandırmalarını engelleyin](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
 - [Ağ güvenlik grubu önerileri geliştirildi](#network-security-group-recommendations-improved)
@@ -201,7 +200,6 @@ Azure Defender 'ı Azure Güvenlik Merkezi 'nin **fiyatlandırma ve ayarlar** al
 - [App Service için Azure Defender](defender-for-app-service-introduction.md)
 - [Depolama için Azure Defender](defender-for-storage-introduction.md)
 - [SQL için Azure Defender](defender-for-sql-introduction.md)
-- [IoT için Azure Defender](defender-for-iot-introduction.md)
 - [Key Vault için Azure Defender](defender-for-key-vault-introduction.md)
 - [Kubernetes için Azure Defender](defender-for-kubernetes-introduction.md)
 - [Kapsayıcı kayıt defterleri için Azure Defender](defender-for-container-registries-introduction.md)
@@ -293,13 +291,6 @@ AKS kümenizdeki Kubernetes için Azure Ilkesi eklentisini yüklediğinizde, Kub
 Örneğin, ayrıcalıklı kapsayıcıların oluşturulmaması ve ileride yapılacak istekleri engellenemeyeceksiniz.
 
 [Kubernetes giriş denetimini kullanan Iş yükü koruma en iyi uygulamaları](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)hakkında daha fazla bilgi edinin.
-
-
-### <a name="iot-threat-protection-enhancements-in-azure-defender-for-iot"></a>IoT için Azure Defender 'daki IoT tehdit koruması geliştirmeleri
-
-IoT için Azure Defender, Six Agentless teknolojisinin eklenmesiyle ilgili daha fazla tehdit koruması özelliği sunar. Bu, üretim, yönetim sistemleri (BMS), yaşam bilimleri, enerji ve su yardımcı programları, yağ & gaz ve lojistik gibi operasyonel teknoloji (OT) ortamlarında kullanılan yönetilmeyen brownfield cihazlarına yönelik güvenlik korumalarını getirir.
-
-[IoT Için Azure Defender 'A giriş](defender-for-iot-introduction.md)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Güvenlik açığı değerlendirmesi bulguları artık sürekli dışarı aktarma için kullanılabilir

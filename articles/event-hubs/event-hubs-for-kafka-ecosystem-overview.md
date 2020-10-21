@@ -3,12 +3,12 @@ title: Apache Kafka App 'ten Olay Hub 'ı kullanma-Azure Event Hubs | Microsoft 
 description: Bu makalede, Azure Event Hubs tarafından Apache Kafka desteği hakkında bilgi sağlanır.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 95534d32bdf34d44a11b31c2476c153272717941
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2b101adf173f3d623bb85d811ba5832020313f14
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319839"
+ms.locfileid: "92327306"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka uygulamalardan Azure Event Hubs kullanma
 Event Hubs, kendi Apache Kafka kümenizi çalıştırmaya alternatif olarak, mevcut Apache Kafka istemci uygulamaları tarafından kullanılabilen Apache Kafka® üretici ve tüketici API 'Leri ile uyumlu bir uç nokta sağlar. Event Hubs, sürüm 1,0 ve üzeri sürümlerde Apache Kafka üreticisi ve tüketici API 'Lerini destekler.
@@ -60,7 +60,7 @@ Azure Event Hubs, güvenli kaynaklarınıza erişim yetkisi vermek için birden 
 - Paylaşılan erişim imzası (SAS)
 
 #### <a name="oauth-20"></a>OAuth 2.0
-Event Hubs, **OAuth 2,0** uyumlu merkezi bir yetkilendirme sunucusu sağlayan Azure Active Directory (Azure AD) ile tümleşir. Azure AD ile, istemci kimliklerinize ayrıntılı izinler vermek için rol tabanlı erişim denetimi 'ni (RBAC) kullanabilirsiniz. Bu özelliği, mekanizmaya yönelik protokol ve **Oauthtaşıyıcı** için **SASL_SSL** belirterek, Kafka istemcileriniz ile kullanabilirsiniz. Erişimin kapsamını belirlemek için Azure rolleri ve düzeyleri hakkında daha fazla bilgi için bkz. [Azure AD ile erişim yetkisi verme](authorize-access-azure-active-directory.md).
+Event Hubs, **OAuth 2,0** uyumlu merkezi bir yetkilendirme sunucusu sağlayan Azure Active Directory (Azure AD) ile tümleşir. Azure AD ile, istemci kimliklerinize ayrıntılı izinler vermek için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanabilirsiniz. Bu özelliği, mekanizmaya yönelik protokol ve **Oauthtaşıyıcı** için **SASL_SSL** belirterek, Kafka istemcileriniz ile kullanabilirsiniz. Erişimin kapsamını belirlemek için Azure rolleri ve düzeyleri hakkında daha fazla bilgi için bkz. [Azure AD ile erişim yetkisi verme](authorize-access-azure-active-directory.md).
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093

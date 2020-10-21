@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 92dcb1e75d43a946b9b6a238aaa360ec3d84dbb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b381e2dbdbfd30d10f37637b30bcdfbab8ed99a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619636"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331949"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Parçalı bir çok kiracılı Azure SQL veritabanı kullanarak bir SaaS uygulamasında yeni kiracılar sağlama ve kataloglandırın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -150,7 +150,7 @@ Aşağıda adım adım iş akışının temel öğeleri verilmiştir:
 - **Kiracı adını bir katalog uzantısı tablosuna ekleyin**: mekan adı katalogdaki kiracılar tablosuna eklenir.  Bu ek, Katalog veritabanının uygulamaya özgü ek verileri destekleyecek şekilde nasıl uzatımda olduğunu gösterir.
 - **Yeni kiracı Için olayları aç sayfası**: *Bushsollow maves* olayları sayfası tarayıcıda açılır.
 
-   ![etkinlikler](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![Yeni bir kiracının Olaylar sayfasını gösteren ekran görüntüsü.](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>Hata ayıklayıcı adımları
 
@@ -163,7 +163,7 @@ Wingtip uygulamasının paylaşılan bir veritabanında yeni kiracı sağlamayı
 
 2. İmlecinizi satır 38 ' de istediğiniz yere yerleştirerek bir kesme noktası ekleyin: *New-Tenant '* ve ardından **F9**tuşuna basın.
 
-   ![kesme noktası](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
+   ![Yeni kiracı içeren çizgiyi vurgulayan ekran görüntüsü.](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
 3. **F5**tuşuna basarak betiği çalıştırın.
 

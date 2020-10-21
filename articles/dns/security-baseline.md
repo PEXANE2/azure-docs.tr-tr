@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f107741dc3e601d0a46c295932a745c99dadb96d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225675"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328085"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS için Azure Güvenlik temeli
 
@@ -102,7 +102,7 @@ Azure DNS, DNS bölgesi katkıda bulunan rolünün yanı sıra bölge düzeyi ve
 
 - [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-- [Azure DNS 'de Azure RBAC 'yi anlama](dns-protect-zones-recordsets.md#role-based-access-control)
+- [Azure DNS 'de Azure RBAC 'yi anlama](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -260,13 +260,13 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: kaynaklara erişimi yönetmek için Azure RBAC kullanma
 
-**Kılavuz**: azure Role-Based Access Control (Azure RBAC), Azure kullanıcıları, grupları ve kaynakları için ayrıntılı erişim yönetimine izin verebilir. Azure RBAC ile, kullanıcıların ihtiyaç duyduğu erişim düzeyine izin verebilirsiniz. 
+**Kılavuz**: Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kullanıcıları, grupları ve kaynakları için ayrıntılı erişim yönetimine izin vermez. Azure RBAC ile, kullanıcıların ihtiyaç duyduğu erişim düzeyine izin verebilirsiniz. 
 
 Azure DNS, DNS bölgesi katkıda bulunan rolünün yanı sıra bölge düzeyi ve kayıt kümesi düzeyi Azure RBAC ' i de vardır. Daha ayrıntılı denetim sağlamak için kendi özel Azure rollerinizi oluşturmak da mümkündür.
 
 - [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
-- [Azure DNS 'de Azure RBAC 'yi anlama](dns-protect-zones-recordsets.md#role-based-access-control)
+- [Azure DNS 'de Azure RBAC 'yi anlama](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Azure 'da Azure RBAC 'yi anlama Özel DNS](dns-protect-private-zones-recordsets.md)
 

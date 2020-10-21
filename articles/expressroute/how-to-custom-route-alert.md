@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: b812a727a555f8c4c95389f2ba0cc5ccea2f608a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b1b93110c3dba38dadf7079fc24ba12e81793c02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205568"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329858"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
 
@@ -58,7 +58,7 @@ Azure portal bir Otomasyon hesabı oluşturduğunuzda, otomatik olarak bir [Fark
 
 * Azure AD 'de uygulama için bir hizmet sorumlusu hesabı oluşturur.
 
-* Kullanımdaki Azure aboneliğine katkıda bulunan rolünü (RBAC) atar. Bu rol runbook 'ları kullanarak Azure Resource Manager kaynaklarını yönetir.
+* , Kullanımdaki Azure aboneliğine katkıda bulunan rolünü (Azure RBAC) atar. Bu rol runbook 'ları kullanarak Azure Resource Manager kaynaklarını yönetir.
 
 Bir Otomasyon hesabı oluşturmak için ayrıcalıkların ve izinlerinizin olması gerekir. Bilgi için, bkz. [Otomasyon hesabı oluşturmak için gereken izinler](../automation/automation-create-standalone-account.md#permissions-required-to-create-an-automation-account).
 

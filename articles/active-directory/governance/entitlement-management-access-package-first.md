@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c578d9df8c008d73460801547e6b9361e60baa8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597506"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318011"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
 
@@ -42,9 +42,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-Ayrıca, Microsoft Graph kullanarak programlı bir şekilde erişim paketi oluşturabilirsiniz. Programlı olarak bir erişim paketi oluşturmayı gösteren bir öğretici için bkz. [Yetkilendirme yönetim API 'si](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
+Ayrıca, Microsoft Graph kullanarak programlı bir şekilde erişim paketi oluşturabilirsiniz. Programlı olarak bir erişim paketi oluşturmayı gösteren bir öğretici için bkz. [Yetkilendirme yönetim API 'si](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD Yetkilendirme Yönetimi 'ni kullanmak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
@@ -67,7 +67,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
 1. Aşağıdaki iki kullanıcıyı oluşturun veya yapılandırın. Bu adları veya farklı adları kullanabilirsiniz. **Admin1** Şu anda oturum açmış olduğunuz Kullanıcı olabilir.
 
-    | Name | Dizin rolü |
+    | Ad | Dizin rolü |
     | --- | --- |
     | **Admin1** | Genel yönetici<br/>-veya-<br/>Kullanıcı yöneticisi |
     | **Requestor1** | Kullanıcı |
@@ -270,4 +270,4 @@ Bu adımda, yaptığınız değişiklikleri kaldırır ve **pazarlama kampanyas�
 
 Yetkilendirme Yönetimi 'ndeki yaygın senaryo adımları hakkında bilgi edinmek için sonraki makaleye ilerleyin.
 > [!div class="nextstepaction"]
-> [Genel senaryolar](entitlement-management-scenarios.md)
+> [Yaygın senaryolar](entitlement-management-scenarios.md)

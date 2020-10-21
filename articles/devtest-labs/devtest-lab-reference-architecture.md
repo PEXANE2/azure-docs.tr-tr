@@ -4,12 +4,12 @@ description: Bu makale, bir kuruluşta Azure DevTest Labs için başvuru mimaris
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 29f739c2fb9dd1cc58bf6c400eeee1bebb6243c2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144549"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328853"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Kuruluşlar için Azure DevTest Labs başvuru mimarisi
 Bu makalede, bir kuruluştaki Azure DevTest Labs göre bir çözüm dağıtmanıza yardımcı olacak başvuru mimarisi sunulmaktadır. Şunları içerir:
@@ -24,7 +24,7 @@ Bu makalede, bir kuruluştaki Azure DevTest Labs göre bir çözüm dağıtmanı
 Başvuru mimarisinin temel öğeleri şunlardır:
 
 - **Azure Active Directory (Azure AD)**: DevTest Labs [kimlik YÖNETIMI için Azure ad hizmetini](../active-directory/fundamentals/active-directory-whatis.md)kullanır. Kullanıcılara DevTest Labs tabanlı bir ortama erişim verdiğinizde, bu iki temel yönü göz önünde bulundurun:
-    - **Kaynak yönetimi**: kaynakları yönetmek için Azure Portal erişim sağlar (sanal makineler oluşturun; ortam oluşturma; başlatma, durdurma, yeniden başlatma, silme ve yapıları uygulama; vb.). Kaynak yönetimi, Azure 'da rol tabanlı erişim denetimi (RBAC) kullanılarak yapılır. Kullanıcılara roller atarsınız ve kaynak ve erişim düzeyi izinlerini ayarlarsınız.
+    - **Kaynak yönetimi**: kaynakları yönetmek için Azure Portal erişim sağlar (sanal makineler oluşturun; ortam oluşturma; başlatma, durdurma, yeniden başlatma, silme ve yapıları uygulama; vb.). Kaynak yönetimi, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılarak yapılır. Kullanıcılara roller atarsınız ve kaynak ve erişim düzeyi izinlerini ayarlarsınız.
     - **Sanal makineler (ağ düzeyi)**: Varsayılan yapılandırmada, sanal makineler yerel bir yönetici hesabı kullanır. Kullanılabilir bir etki alanı ([Azure AD Domain Services](../active-directory-domain-services/overview.md), şirket içi etki alanı veya bulut tabanlı etki alanı) varsa, makineler etki alanına katılabilir. Kullanıcılar, VM 'lere bağlanmak için etki alanı tabanlı kimliklerini kullanabilir.
 - **Şirket içi bağlantı**: mimari diyagramımızda [ExpressRoute](../expressroute/expressroute-introduction.md) kullanılır. Ancak [siteden sıteye VPN](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)de kullanabilirsiniz. DevTest Labs için ExpressRoute gerekli olmasa da genellikle kuruluşlarda kullanılır. ExpressRoute yalnızca şirket kaynaklarına erişmeniz gerekiyorsa gereklidir. Yaygın senaryolar şunlardır:
     - Buluta taşınamayacak şirket içi verileriniz var.
@@ -59,7 +59,7 @@ DevTest Labs, tek bir laboratuvarda çalışmak için harika bir yönetim kullan
 
 DevTest Labs 'in aynı şekilde yönetilen temel Azure kaynaklarını kullandığını unutmayın: ağ, diskler, işlem, vb. Örneğin, Azure Ilkesi laboratuarda oluşturulan sanal makinelere uygulanır. Azure Güvenlik Merkezi, VM uyumluluğunu rapor edebilir. Azure Backup hizmeti, laboratuvardaki VM 'Ler için düzenli yedeklemeler sağlayabilir.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 Azure DevTest Labs Azure 'da mevcut kaynakları (işlem, ağ vb.) kullanır. Bu nedenle, platformda yerleşik olarak bulunan güvenlik özelliklerinden otomatik olarak yararlanır. Örneğin, gelen Uzak Masaüstü bağlantılarının yalnızca kurumsal ağdan kaynaklanacak olması için, Uzak Masaüstü ağ geçidinde bulunan sanal ağa bir ağ güvenlik grubu eklemeniz yeterlidir. Tek ek güvenlik değerlendirmesi, laboratuvarları gündelik bir şekilde kullanan takım üyelerine verdiğiniz izinlerin düzeyidir. En yaygın izinler [ *sahip* ve *Kullanıcı*](devtest-lab-add-devtest-user.md). Bu roller hakkında daha fazla bilgi için, bkz. [Azure DevTest Labs sahip ve Kullanıcı ekleme](devtest-lab-add-devtest-user.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802234"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329262"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -41,6 +41,9 @@ Azure Izleyici özel bağlantı kapsamı bir veya daha fazla özel bitiş noktas
 ## <a name="planning-based-on-your-network"></a>Ağınızı temel alan planlama
 
 AMPLS kaynaklarınızı ayarlamadan önce ağ yalıtımı gereksinimlerinizi göz önünde bulundurun. Sanal ağlarınızın genel İnternet 'e erişimini ve Azure Izleyici kaynaklarınızın (yani Application Insights bileşenleri ve Log Analytics çalışma alanlarının) erişim kısıtlamalarını değerlendirin.
+
+> [!NOTE]
+> Hub ve bağlı ağ ağları ya da eşlenmiş ağların herhangi bir topolojisi, hub (ana) VNet ve her VNet üzerinde özel bir bağlantı kurmak yerine, ilgili Azure Izleyici kaynakları arasında özel bir bağlantı kurmak için kullanılabilir. Bu, özellikle bu ağlar tarafından kullanılan Azure Izleyici kaynakları paylaşılmışsa bu şekilde anlamlıdır. Ancak, her VNet 'in ayrı bir izleme kaynakları kümesine erişmesine izin vermek istiyorsanız, her ağ için adanmış bir AMPLS 'e özel bir bağlantı oluşturun.
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>Hangi sanal ağların özel bir bağlantıya bağlanması gerektiğini değerlendirin
 

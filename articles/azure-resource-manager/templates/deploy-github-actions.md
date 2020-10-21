@@ -4,12 +4,12 @@ description: GitHub eylemleri kullanılarak Azure Resource Manager şablonların
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure,subject-armqs
-ms.openlocfilehash: b5852a65b4ed3c7cc73352fed37eeff035f8563c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106799"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282846"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak Azure Resource Manager şablonları dağıtma
 
@@ -40,13 +40,19 @@ Dosya iki bölümden oluşur:
 
 [Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) komutuyla bir [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) veya **deneyin** düğmesini seçerek çalıştırın.
 
+Henüz bir tane yoksa bir kaynak grubu oluşturun. 
+
+```azurecli-interactive
+    az group create -n {MyResourceGroup}
+```
+
 Yer tutucusunu `myApp` uygulamanızın adıyla değiştirin. 
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
+   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyla değiştirin. Çıktı, aşağıda gösterilene benzer App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. Bu JSON nesnesini daha sonra kopyalayın.
+Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyla değiştirin. Çıktı, aşağıda gösterilene benzer App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. Bu JSON nesnesini daha sonra kopyalayın. Yalnızca `clientId` ,, `clientSecret` `subscriptionId` ve değerlerine sahip bölümlere ihtiyacınız olacaktır `tenantId` . 
 
 ```output 
   {
@@ -73,9 +79,9 @@ Azure kimlik bilgileriniz, kaynak grubunuz ve abonelikleriniz için gizli dizile
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
-1. Adlı başka bir gizli dizi oluşturun `AZURE_RG` . Kaynak grubunuzun adını gizli dizi değer alanına ekleyin. 
+1. Adlı başka bir gizli dizi oluşturun `AZURE_RG` . Kaynak grubunuzun adını gizli dizi değeri alanına ekleyin (örnek: `myResourceGroup` ). 
 
-1. Adlı ek bir gizli dizi oluşturun `AZURE_SUBSCRIPTION` . Abonelik KIMLIĞINIZI gizli dizi değeri alanına ekleyin. 
+1. Adlı ek bir gizli dizi oluşturun `AZURE_SUBSCRIPTION` . Abonelik KIMLIĞINIZI gizli dizi değeri alanına ekleyin (örnek: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
 
 ## <a name="add-resource-manager-template"></a>Kaynak Yöneticisi şablonu Ekle
 
@@ -114,17 +120,19 @@ Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan i
             creds: ${{ secrets.AZURE_CREDENTIALS }}
      
           # Deploy ARM template
-        - uses: azure/arm-deploy@v1
         - name: Run ARM deploy
+          uses: azure/arm-deploy@v1
           with:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS
+            parameters: storageAccountType=Standard_LRS 
         
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
+    > [!NOTE]
+    > ARM dağıtımı eyleminde bunun yerine bir JSON biçim parametreleri dosyası belirtebilirsiniz (örnek: `.azuredeploy.parameters.json` ).  
 
     İş akışı dosyasının ilk bölümü şunları içerir:
 

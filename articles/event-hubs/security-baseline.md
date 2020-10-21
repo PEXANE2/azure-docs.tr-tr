@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f47e9cb93b90c8a2401d1dfe6c0ff7800b0bcf27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 007409d755da2d879297b4b898663dcbd9fd6d7f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401138"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329636"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs için Azure Güvenlik temeli
 
@@ -397,7 +397,7 @@ Azure 'da adlandırılmış konumlar nasıl yapılandırılır: https://docs.mic
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Rehberlik**: Event Hubs gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Bu, yönetim duyarlı kaynaklara rol tabanlı erişim denetimi (RBAC) sağlar.
+**Rehberlik**: Event Hubs gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Bu, Azure rol tabanlı erişim denetimi (Azure RBAC) ile yönetici duyarlı kaynaklara izin verir.
 
  Azure AD örneği oluşturma ve yapılandırma: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -539,9 +539,9 @@ Azure 'da müşteri veri korumasını anlayın: https://docs.microsoft.com/azure
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure ACTIVE DIRECTORY (ad) kullanmayı destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir kullanıcı veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz.
+**Rehberlik**: Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure ACTIVE DIRECTORY (ad) kullanmayı destekler. Azure AD ile, bir kullanıcı veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanabilirsiniz.
 
-Azure AD RBAC ve Azure Event Hubs için kullanılabilir rolleri anlayın: https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+Azure RBAC ve Azure Event Hubs için kullanılabilir rolleri anlayın: https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

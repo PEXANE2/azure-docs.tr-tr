@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 19c09bd03a3d1eb3b16f69b9a605a4ccb763030a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8076b417c8043a4f6796ccca0e67db79360ede73
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619551"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331677"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı Analizi-tek kiracılı uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -95,7 +95,7 @@ Aşağıdaki adımlarda, **tenantanalytics**adlı analiz deposunu dağıtırsın
 
 Uygulamayı dağıttığınıza ve ilgi çekici kiracı verileriyle doldurduktan sonra, oturum açma = *Geliştirici*, parola = *P \@ ssword1*kullanarak **tenants1-DPT- &lt; user &gt; ** ve **Catalog-DPT- &lt; user &gt; ** sunucularını bağlamak için [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kullanın. Daha fazla bilgi için bkz. [giriş öğreticisi](../../sql-database/saas-dbpertenant-wingtip-app-overview.md) .
 
-![Mimari Tureoverview](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
+![SQL Server bağlanmak için gereken bilgileri gösteren ekran görüntüsü.](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 Nesne Gezgini, aşağıdaki adımları gerçekleştirin:
 
@@ -110,7 +110,7 @@ Analiz deposu düğümünü genişleterek SSMS Nesne Gezgini aşağıdaki verita
 - Yıldız şeması tabloları **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**ve **dim_Dates**.
 - Saklı yordam, yıldız şeması tablolarını ham veri tablolarından doldurmak için kullanılır.
 
-![Mimari Tureoverview](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
+![SSMS Nesne Gezgini gösterilen veritabanı öğelerinin ekran görüntüsü.](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Veri ayıklama 
 

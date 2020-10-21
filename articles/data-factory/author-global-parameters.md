@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20bb77711833a1a17082e25e31d4a2e14db5bf9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567545"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328207"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure Data Factory genel parametreler
 
@@ -52,7 +52,7 @@ Sürekli tümleştirme ve dağıtım çözümünüzde genel parametreleri tümle
 
 ![ARM şablonuna Ekle](media/author-global-parameters/include-arm-template.png)
 
-ARM şablonuna genel parametreler eklemek, müşteri tarafından yönetilen anahtar veya diğer ortamlarda git yapılandırması gibi diğer fabrika düzeyindeki ayarları geçersiz kılabileceğiniz bir fabrika düzeyi ayarı ekler. Bu ayarları, UıAT veya PROD gibi yükseltilmiş bir ortamda etkinleştirdiyseniz, genel parametreleri aşağıda vurgulanan adımlarda bir PowerShell betiği aracılığıyla dağıtmanız daha iyidir.
+ARM şablonuna genel parametreler eklemek, müşteri tarafından yönetilen anahtar veya diğer ortamlarda git yapılandırması gibi diğer fabrika düzeyindeki ayarları geçersiz kılacak bir fabrika düzeyi ayarı ekler. Bu ayarları, UıAT veya PROD gibi yükseltilmiş bir ortamda etkinleştirdiyseniz, genel parametreleri aşağıda vurgulanan adımlarda bir PowerShell betiği aracılığıyla dağıtmanız daha iyidir.
 
 ### <a name="deploying-using-powershell"></a>PowerShell kullanarak dağıtma
 

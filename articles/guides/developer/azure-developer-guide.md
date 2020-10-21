@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 17474b4f38ccc6f43e664042b1218a8c253718e5
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 770c9f7d677f739781db6290fa0c43e410761d17
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203424"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327827"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -158,7 +158,7 @@ Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
   >
   > **Kullanmaya başlayın**: [Linux üzerinde App Service Için özel bir Docker görüntüsü kullanın](../../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux).
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Yalnızca uygulamalarınızı kimin kullandığını ve ayrıca Kaynaklarınıza yetkisiz erişimi engellemek için çok önemlidir. Azure, uygulama istemcilerinizin kimliğini doğrulamak için çeşitli yollar sağlar.
 
@@ -233,7 +233,7 @@ Azure, uygulamalarınızı ve hizmetlerinizi komut satırından yönetmenin iki 
 
 -   [Azure PowerShell](/powershell/azure/): Windows PowerShell kullanarak Azure kaynaklarını yönetmenizi sağlayan cmdlet 'ler içeren bir modül kümesi sağlar.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 [Azure Portal](https://portal.azure.com) Web tabanlı bir uygulamadır. Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için Azure portal kullanabilirsiniz. Şunları içerir:
 
@@ -281,7 +281,7 @@ Bir Azure aboneliği oluşturmak veya bunlarla çalışmak için bir Azure hesab
 
 Her Azure aboneliği bir Azure AD örneğiyle güven ilişkisine sahiptir. Bu; Azure aboneliğinin kullanıcılar, hizmetler ve cihazlar için kimlik doğrulaması yapmak üzere bu dizine güvendiği anlamına gelir. Birden çok abonelik aynı dizine güvenebilir ancak bir abonelik yalnızca bir dizine güvenir. Daha fazla bilgi edinmek için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkilendirilmesi](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Ayrıca, *Kullanıcılar*olarak da bilinen tek Azure hesap kimliklerini tanımlamak IÇIN Azure AD 'de *grupları* tanımlayabilirsiniz. Kullanıcı gruplarının oluşturulması, rol tabanlı erişim denetimi (RBAC) kullanarak bir abonelikteki kaynaklara erişimi yönetmenin iyi bir yoludur. Grup oluşturma hakkında bilgi edinmek için bkz. [Azure Active Directory Preview 'da Grup oluşturma](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Ayrıca, [PowerShell kullanarak](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)gruplar oluşturabilir ve yönetebilirsiniz.
+Ayrıca, *Kullanıcılar*olarak da bilinen tek Azure hesap kimliklerini tanımlamak IÇIN Azure AD 'de *grupları* tanımlayabilirsiniz. Kullanıcı gruplarının oluşturulması, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak bir abonelikteki kaynaklara erişimi yönetmenin iyi bir yoludur. Grup oluşturma hakkında bilgi edinmek için bkz. [Azure Active Directory Preview 'da Grup oluşturma](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Ayrıca, [PowerShell kullanarak](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)gruplar oluşturabilir ve yönetebilirsiniz.
 
 ### <a name="manage-your-subscriptions"></a>Aboneliklerinizi yönetme
 
@@ -297,11 +297,11 @@ Azure Kaynak Gezgini, aboneliğinizde önceden oluşturduğunuz kaynakları gör
 
 Azure kaynaklarına erişime izin verildiğinde, kullanıcılara belirli bir görevi yapmak için gereken en az ayrıcalığı sağlamak her zaman en iyi uygulamadır.
 
-- **Rol tabanlı erişim denetimi (RBAC)**: Azure 'da, belirli bir kapsamdaki Kullanıcı hesaplarına (sorumlular) erişim izni verebilirsiniz: abonelik, kaynak grubu veya ayrı kaynaklar. RBAC, kaynakları bir kaynak grubuna dağıtmanızı ve belirli bir kullanıcıya veya gruba izin vermenizi sağlar. Ayrıca, erişimi yalnızca hedef kaynak grubuna ait kaynaklarla sınırlandırmanıza da olanak tanır. Ayrıca, sanal makine veya sanal ağ gibi tek bir kaynağa erişim izni verebilirsiniz. Erişim vermek için Kullanıcı, Grup veya hizmet sorumlusuna bir rol atarsınız. Önceden tanımlanmış birçok rol vardır ve kendi özel rollerinizi de tanımlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
+- **Azure rol tabanlı erişim denetimi (Azure RBAC)**: Azure 'da, belirli bir kapsamdaki Kullanıcı hesaplarına (sorumlular) erişim izni verebilirsiniz: abonelik, kaynak grubu veya ayrı kaynaklar. Azure RBAC, kaynakları bir kaynak grubuna dağıtmanızı ve belirli bir kullanıcıya veya gruba izin vermenizi sağlar. Ayrıca, erişimi yalnızca hedef kaynak grubuna ait kaynaklarla sınırlandırmanıza da olanak tanır. Ayrıca, sanal makine veya sanal ağ gibi tek bir kaynağa erişim izni verebilirsiniz. Erişim vermek için Kullanıcı, Grup veya hizmet sorumlusuna bir rol atarsınız. Önceden tanımlanmış birçok rol vardır ve kendi özel rollerinizi de tanımlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
 
   > **Ne zaman kullanılır**: kullanıcılar ve gruplar için ayrıntılı erişim yönetimine ihtiyacınız olduğunda veya bir kullanıcıya abonelik sahibi yapmanız gerektiğinde.
   >
-  > **Kullanmaya**başlayın: daha fazla bilgi için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+  > **Kullanmaya**başlayın: daha fazla bilgi edinmek için bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 - **Hizmet sorumlusu nesneleri**: Kullanıcı sorumluları ve gruplarına erişim sağlamaya birlikte, hizmet sorumlusu için de aynı erişimi verebilirsiniz.
 
@@ -313,7 +313,7 @@ Azure Resource Manager, tek tek kaynaklara özel Etiketler atamanıza olanak tan
 
 * Portalda
 * Azure Resource Manager şablonunda
-* REST API’sini kullanma
+* REST API’yi kullanma
 * Azure CLI'yı kullanma
 * PowerShell'i kullanma
 

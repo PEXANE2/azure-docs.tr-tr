@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574288"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330011"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>Modellerdeki IoT Tak Çalıştır bileşenleri
 
@@ -69,7 +69,7 @@ Model KIMLIĞI, aşağıdaki ekran görüntüsünde gösterildiği gibi bir Devi
 Bileşenleri olmayan bir DTDL modeli, tek bir telemetri, özellik ve komut kümesine sahip bir cihaz veya IoT Edge modülü için kullanışlı bir basitleştiripdir. Bileşenleri kullanmayan bir model, var olan bir cihazı veya modülü IoT Tak ve Kullan cihazı veya modülü olarak geçirmeyi kolaylaştırır. herhangi bir bileşen tanımlamaya gerek kalmadan gerçek cihazınızı veya modülünüzü açıklayan bir DTDL modeli oluşturursunuz.
 
 > [!TIP]
-> Modül bir cihaz [Module] (..) olabilir. /iot-hub/iot-hub-devguide-Module-Twins.MD veya [IoT Edge modülü](../iot-edge/about-iot-edge.md).
+> Modül bir cihaz [modülü](../iot-hub/iot-hub-devguide-module-twins.md) veya [IoT Edge modülü](../iot-edge/about-iot-edge.md)olabilir.
 
 ## <a name="multiple-components"></a>Birden çok bileşen
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f69c39992b5c3826eb0126414a44c009a20e03cd
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a96042045eaab440d099f96782c020067eedfa18
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207385"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282114"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H serisi ve N serisi VM’lerdeki bilinen sorunlar
 
@@ -42,7 +42,7 @@ Bu ' Cloud-init on Ubuntu ile yinelenen MAC, bilinen bir sorundur. Geçici çöz
       ethernets:
         eth0:
           dhcp4: true
-        version: 2
+      version: 2
     EOF
     ```
 

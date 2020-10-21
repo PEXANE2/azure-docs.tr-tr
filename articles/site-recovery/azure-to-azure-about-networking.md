@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 525ab34bb9edff737686a88d7a8e664500282555
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320522"
+ms.locfileid: "92332051"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
@@ -29,7 +29,7 @@ Site Recovery [Bu senaryo](azure-to-azure-architecture.md)için olağanüstü du
 
 Aşağıdaki diyagramda, Azure VM 'lerde çalışan uygulamalar için tipik bir Azure ortamı gösterilmektedir:
 
-![müşteri-ortam](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Azure VM 'lerde çalışan uygulamalar için tipik bir Azure ortamını gösteren diyagram.](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 Azure ExpressRoute veya şirket içi ağınızdan Azure 'a bir VPN bağlantısı kullanıyorsanız, ortam aşağıdaki gibidir:
 

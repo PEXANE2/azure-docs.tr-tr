@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: d92dad445b1aeace24dc0af7d95289f5535a5680
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281818"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329041"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Bir sanal makine teklifini planlayın
 
@@ -23,10 +23,7 @@ Başlamadan önce, [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluştur
 
 ### <a name="technical-fundamentals"></a>Teknik temel bilgiler
 
-Teklifleri tasarlama, oluşturma ve test etme işlemi zaman alır ve hem Azure platformunda hem de teklifinizi oluşturmak için kullanılan teknolojilerde uzmanlık gerektirir. Mühendislik takımınız aşağıdaki Microsoft teknolojileriyle bir çalışma bilgisine sahip olmalıdır:
-
-- [Azure uygulamalarının tasarımı ve mimarisi](https://azure.microsoft.com/solutions/architecture/)
-- [Azure sanal makineleri](https://azure.microsoft.com/services/virtual-machines/), [Azure depolama](https://azure.microsoft.com/services/?filter=storage#storage)ve [Azure ağı](https://azure.microsoft.com/services/?filter=networking#networking)
+Teklifleri tasarlama, oluşturma ve test etme işlemi zaman alır ve hem Azure platformunda hem de teklifinizi oluşturmak için kullanılan teknolojilerde uzmanlık gerektirir. Mühendislik ekibinizde [Azure sanal makineleri](https://azure.microsoft.com/services/virtual-machines/), [Azure depolama](https://azure.microsoft.com/services/?filter=storage#storage)ve [Azure ağı](https://azure.microsoft.com/services/?filter=networking#networking)ile Azure [uygulamalarının tasarımı ve mimarisiyle](https://azure.microsoft.com/solutions/architecture/)ilgili bir bilgiye sahip olmanız gerekir. Şu ek teknik kaynaklara bakın: 
 
 - Öğreticiler
   - [Linux VM'leri](../virtual-machines/linux/tutorial-manage-vm.md)
@@ -40,9 +37,17 @@ Teklifleri tasarlama, oluşturma ve test etme işlemi zaman alır ve hem Azure p
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 
+VM teklifleri aşağıdaki teknik gereksinimlere sahiptir:
+
+- Bir işletim sistemi sanal sabit diski (VHD) hazırlamanız gerekir. Veri diski VHD 'leri isteğe bağlıdır. Bu, aşağıda daha ayrıntılı olarak açıklanmıştır.
+- Müşteri teklifinizi dilediğiniz zaman iptal edebilir.
+- Teklifiniz için en az bir plan oluşturmanız gerekir. Planınız, seçtiğiniz [lisanslama seçeneğine](#licensing-options) göre fiyatlandırılır.
+   > [!IMPORTANT]
+   > Bir plandaki her sanal makine görüntüsünün aynı sayıda veri diski olmalıdır.
+
 VM iki bileşen içerir:
 
-- **İşletim sistemi sanal sabit diski (VHD)** – teklifinizle birlikte dağıtılan işletim sistemini ve çözümü içerir. VHD 'yi hazırlama işlemi, bir Linux, Windows-veya özel tabanlı VM olmasına bağlı olarak farklılık gösterir.
+- **İşletim VHD 'si** : teklifinizle birlikte dağıtılan işletim sistemini ve çözümü içerir. VHD 'yi hazırlama işlemi, bir Linux, Windows-veya özel tabanlı VM olmasına bağlı olarak farklılık gösterir.
 - **Veri diski VHD** 'leri (isteğe bağlı) – bir VM için ayrılmış, kalıcı depolama. Kalıcı bilgileri depolamak için işletim sistemi VHD 'sini (örneğin, C: sürücüsü) kullanmayın. 
     - En fazla 16 veri diski ekleyebilirsiniz.
     - Disk boş olsa bile, veri diski başına bir VHD kullanın.
@@ -50,13 +55,7 @@ VM iki bileşen içerir:
     > [!NOTE]
     > Kullandığınız işletim sisteminden bağımsız olarak yalnızca çözüm için gereken en az sayıda veri diski ekleyin. Müşteriler, dağıtım sırasında bir görüntünün parçası olan diskleri kaldıramaz, ancak dağıtım sırasında veya sonrasında her zaman disk ekleyebilirler.
 
-VM teklifleri aşağıdaki teknik gereksinimlere sahiptir:
-
-- Bir işletim sistemi sanal sabit diski (VHD) hazırlamanız gerekir. Veri diski VHD 'leri isteğe bağlıdır.
-- Müşteri teklifinizi dilediğiniz zaman iptal edebilir.
-- Teklifiniz için en az bir plan oluşturmanız gerekir. Planınız, seçtiğiniz [lisanslama seçeneğine](#licensing-options) göre fiyatlandırılır.
-   > [!IMPORTANT]
-   > Bir plandaki her sanal makine görüntüsünün aynı sayıda veri diski olmalıdır.
+Teknik varlıklarınızı hazırlama hakkında ayrıntılı yönergeler için bkz. [onaylanan temel kullanarak sanal makine oluşturma](azure-vm-create-using-approved-base.md) veya [kendi görüntünüzü kullanarak bir sanal makine oluşturma](azure-vm-create-using-own-image.md).
 
 ## <a name="preview-audience"></a>İzleyiciyi Önizle
 
@@ -134,5 +133,6 @@ Iş Ortağı Merkezi 'nde teklifinizi oluştururken, **CSP aracılığıyla yeni
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Azure Marketi 'nde sanal makine teklifi oluşturma](azure-vm-create.md)
 - [Onaylanan bir temel kullanarak bir sanal makine oluşturun](azure-vm-create-using-approved-base.md) veya [kendi görüntünüzü kullanarak bir sanal makine oluşturun](azure-vm-create-using-own-image.md).
 - [En iyi teklif listeleme deneyimleri](gtm-offer-listing-best-practices.md)

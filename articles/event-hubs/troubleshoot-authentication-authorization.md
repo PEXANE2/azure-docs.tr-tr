@@ -3,12 +3,12 @@ title: Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
 description: Bu makale, Azure Event Hubs kimlik doğrulama ve yetkilendirme sorunlarını giderme hakkında bilgi sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566237"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329619"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
 [Bağlantı sorunlarını giderme](troubleshooting-guide.md) makalesinde, Azure Event Hubs bağlantı sorunlarını gidermeye yönelik ipuçları verilmektedir. Bu makalede, Azure Event Hubs kimlik doğrulama ve yetkilendirme sorunlarını gidermeye yönelik ipuçları ve öneriler sağlanmaktadır. 
@@ -21,7 +21,7 @@ Azure Event Hubs kimlik doğrulaması yapmak ve yetkilendirmek için Azure Activ
 - Gönderme erişimi için [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) .
 - Alma erişimi için [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) .
 
-Şema kayıt defteri yerleşik rolleri için bkz. [şema kayıt defteri rolleri](schema-registry-overview.md#role-based-access-control).
+Şema kayıt defteri yerleşik rolleri için bkz. [şema kayıt defteri rolleri](schema-registry-overview.md#azure-role-based-access-control).
 
 ### <a name="resource-scopes"></a>Kaynak kapsamları
 - **Tüketici grubu**: Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde bir güvenlik sorumlusuna Azure rolü atanmasını desteklemez. 
@@ -30,7 +30,7 @@ Azure Event Hubs kimlik doğrulaması yapmak ve yetkilendirmek için Azure Activ
 - **Kaynak grubu**: rol atama, kaynak grubu altındaki tüm Event Hubs kaynaklarına uygulanır.
 - **Abonelik**: rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Event Hubs kaynaklara uygulanır.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Event Hubs kaynaklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama](authenticate-application.md)
 - [Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme](authorize-access-azure-active-directory.md)
@@ -43,7 +43,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 - Anahtarın süresi dolmuşsa emin olun. Süre sonundan önce SAS 'yı yenilemeniz önerilir. İstemci ile Event Hubs hizmet düğümleri arasında saat çarpıklığı varsa, istemci onu yeniden oluşturmadan önce kimlik doğrulama belirtecinin kullanım süresini dolabilirler. Geçerli uygulama hesapları saati 5 dakikaya kadar eğit, diğer bir deyişle istemci süresi dolmadan 5 dakika önce bu belirteci yeniler. Bu nedenle, saat çarpıklığı 5 dakikadan büyükse, istemci aralıklı kimlik doğrulama başarısızlıklarını gözlemleyebilirsiniz.
 - **SAS başlangıç zamanı** **Şu anda**olarak ayarlandıysa, saat farkı (farklı makinelerde geçerli zaman farkları) nedeniyle ilk birkaç dakika boyunca aralıklı hatalarla karşılaşabilirsiniz. Başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın veya hiç ayarlanmayın. Aynı genellikle süre sonu zamanı için de geçerlidir. 
 
-Daha fazla bilgi için aşağıdaki makalelere bakın: 
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
 - [Paylaşılan erişim imzalarını (SAS) kullanarak kimlik doğrulaması](authenticate-shared-access-signature.md)yapın. 
 - [Paylaşılan erişim Imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirme](authorize-access-shared-access-signature.md)

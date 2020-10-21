@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 652299ebb98f685a16871cf4e944608a471d8df2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 96d759f0f722e332eb25e049fd336c784eb99789
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279094"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332085"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -64,7 +64,7 @@ Konuyu oluşturduktan sonra, aşağıdaki [Azure dijital TWıNS CLI komutuyla](h
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Şimdi, olay Kılavuzu konusu bağımsız değişkenle belirtilen ad altında Azure dijital TWINS 'in içindeki bir uç nokta olarak sunulmaktadır `--endpoint-name` . Genellikle bu adı, Azure Digital TWINS hizmet API 'sini kullanarak [Bu makalenin ilerleyen kısımlarında](#event-routes-with-apis-and-the-c-sdk) oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
+Şimdi, olay Kılavuzu konusu bağımsız değişkenle belirtilen ad altında Azure dijital TWINS 'in içindeki bir uç nokta olarak sunulmaktadır `--endpoint-name` . Genellikle bu adı, Azure Digital TWINS hizmet API 'sini kullanarak [Bu makalenin ilerleyen kısımlarında](#create-an-event-route) oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
 
 ### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>Event Hubs veya Service Bus uç noktası oluşturma
 
@@ -150,7 +150,7 @@ Aşağıda, bir [ikizi Create bildirimi](how-to-interpret-event-data.md#digital-
 }
 ```
 
-## <a name="event-routes-with-apis-and-the-c-sdk"></a>Olay yolları (API 'Ler ve C# SDK 'Sı ile)
+## <a name="create-an-event-route"></a>Olay yolu oluşturma
 
 Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **olay yolu**tanımlamanız gerekir. Azure dijital TWINS **Eventroutes API 'leri** , geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını bir şekilde yönetmesine olanak tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [*: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md).
 
@@ -163,7 +163,7 @@ Bu bölümdeki örnekler [.net (C#) SDK 'sını](https://www.nuget.org/packages/
 >
 > Bu akışı komut dosyası olarak belirlerseniz, uç nokta hizmeti 'nin yönlendirme kurulumuna geçmeden önce dağıtımı tamamlaması için 2-3 dakika boyunca bir süre oluşturarak bu işlemi hesaba eklemek isteyebilirsiniz.
 
-### <a name="create-an-event-route"></a>Olay yolu oluşturma
+### <a name="creation-code-with-apis-and-the-c-sdk"></a>API 'Ler ve C# SDK ile oluşturma kodu
 
 Olay yolları [veri düzlemi API 'leri](how-to-use-apis-sdks.md#overview-data-plane-apis)kullanılarak tanımlanır. 
 
@@ -217,7 +217,7 @@ catch (RequestFailedException e)
 }
 ```
 
-### <a name="filter-events"></a>Olayları filtreleme
+## <a name="filter-events"></a>Olayları filtreleme
 
 Bitiş noktaları, filtrelemeden Azure dijital TWINS 'ten çeşitli olaylar alır:
 * Azure Digital TWINS hizmet API 'SI kullanılarak [dijital TWINS](concepts-twins-graph.md) tarafından tetiklenen telemetri
