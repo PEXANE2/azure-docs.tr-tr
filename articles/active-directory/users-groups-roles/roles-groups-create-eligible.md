@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07dc11877b38e830d90f544f1d7524b378bf5902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f14960f98a4257b0c8f920915327661cd8b867c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053761"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310400"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Azure Active Directory rol atanabilir Grup oluşturma
 
-Yalnızca ' ıttobletorole ' özelliği true olarak ayarlanmış bir gruba bir rol atayabilir ya da Azure AD portalında Azure **ad rolleri** ile oluşturulmuş bir gruba bir rol atanabilir. Bu Grup özniteliği, grubun Azure Active Directory (Azure AD) bir role atanabileceği bir grup oluşturur. Bu makalede, bu özel Grup türünün nasıl oluşturulacağı açıklanır. **Note:** Iastifbletorole özelliği true olarak ayarlanan bir grup dinamik üyelik türünde olamaz. Daha fazla bilgi için bkz. [Azure AD rol atamalarını yönetmek için Grup kullanma](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept).
+Yalnızca ' ıttobletorole ' özelliği true olarak ayarlanmış bir gruba bir rol atayabilir ya da Azure AD portalında Azure **ad rolleri** ile oluşturulmuş bir gruba bir rol atanabilir. Bu Grup özniteliği, grubun Azure Active Directory (Azure AD) bir role atanabileceği bir grup oluşturur. Bu makalede, bu özel Grup türünün nasıl oluşturulacağı açıklanır. **Note:** Iastifbletorole özelliği true olarak ayarlanan bir grup dinamik üyelik türünde olamaz. Daha fazla bilgi için bkz. [Azure AD rol atamalarını yönetmek için Grup kullanma](./roles-groups-concept.md).
 
 ## <a name="using-azure-ad-admin-center"></a>Azure AD Yönetim Merkezi 'ni kullanma
 
@@ -46,7 +46,7 @@ Yalnızca ' ıttobletorole ' özelliği true olarak ayarlanmış bir gruba bir r
 
 Grup, kendisine atamış olabileceğiniz rollerle oluşturulur.
 
-## <a name="using-powershell"></a>PowerShell’i kullanma
+## <a name="using-powershell"></a>PowerShell'i kullanma
 
 ### <a name="install-the-azure-ad-preview-module"></a>Azure AD önizleme modülünü yükler
 

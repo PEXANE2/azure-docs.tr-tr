@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801333"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281057"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
 
@@ -26,7 +26,7 @@ Veritabanlarında veya kapsayıcılarda verim sağlayabilirsiniz. Her strateji, 
 
 * Bir veritabanında üretilen iş temin ediyorsanız, bu veritabanındaki koleksiyonlar/tablolar/grafikler için tüm kapsayıcılar yük temelinde aktarım hızını paylaşabilir. Veritabanı düzeyinde ayrılan aktarım hızı, belirli bir kapsayıcı kümesindeki iş yüküne bağlı olarak eşit olarak paylaşılır.
 
-* Bir kapsayıcıda üretilen iş temin ediyorsanız, bu kapsayıcı için SLA tarafından desteklenen verimlilik garanti edilir. Mantıksal bölüm anahtarı seçimi, bir kapsayıcının tüm mantıksal bölümlerinde yük dağıtımı için çok önemlidir. Daha fazla ayrıntı için bkz. [bölümlendirme](partitioning-overview.md) ve [yatay ölçeklendirme](partition-data.md) makaleleri.
+* Bir kapsayıcıda üretilen iş temin ediyorsanız, bu kapsayıcı için SLA tarafından desteklenen verimlilik garanti edilir. Mantıksal bölüm anahtarı seçimi, bir kapsayıcının tüm mantıksal bölümlerinde yük dağıtımı için çok önemlidir. Daha fazla ayrıntı için bkz. [bölümlendirme](partitioning-overview.md) ve [yatay ölçeklendirme](partitioning-overview.md) makaleleri.
 
 Aşağıda, sağlanan bir verimlilik stratejisine karar vermek için bazı yönergeler verilmiştir:
 

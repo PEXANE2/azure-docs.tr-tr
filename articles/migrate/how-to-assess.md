@@ -3,12 +3,12 @@ title: Azure geçişi 'nde değerlendirme araçları ekleme
 description: Azure geçişi 'nde değerlendirme araçları eklemeyi öğrenin.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dee9ec2210bf6e04255b07cf641ced6807c8b5a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86122124"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317358"
 ---
 # <a name="add-assessment-tools"></a>Değerlendirme araçları ekleme
 
@@ -60,4 +60,4 @@ Bu makalede, [Azure geçişi](./migrate-services-overview.md)'nde değerlendirme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[VMware](tutorial-prepare-vmware.md) VM 'Leri, [Hyper-V](tutorial-prepare-hyper-v.md)veya [fiziksel sunucular](tutorial-prepare-physical.md) için Azure geçişi sunucu değerlendirmesini kullanarak bir değerlendirme deneyin
+[VMware](./tutorial-discover-vmware.md) VM 'Leri, [Hyper-V](./tutorial-discover-hyper-v.md)veya [fiziksel sunucular](./tutorial-discover-physical.md) için Azure geçişi sunucu değerlendirmesini kullanarak bir değerlendirme deneyin

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 9454dd8d1d6648396980f5148384d2e0119e0dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39c890e9e6634413947a96b1ddac608ee44bd9a0
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612991"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327408"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -73,7 +73,7 @@ Azure sanal ağları ve DNS sunucusu konfigürasyonları hakkında daha fazla bi
 
 * Önbellek örneğinin sanal ağ arabirimlerini (NIC 'ler) oluşturabiliyor olması gerekir. Önbelleği oluşturan kullanıcının, NIC 'ler oluşturmak için abonelikte yeterli ayrıcalıklara sahip olması gerekir.
 
-* BLOB depolama kullanılıyorsa, Azure HPC önbelleğinin depolama hesabınıza erişmesi için yetkilendirmeye ihtiyacı vardır. Blob depolamaya önbellek erişimi sağlamak için rol tabanlı erişim denetimi (RBAC) kullanın. İki rol gereklidir: depolama hesabı katılımcısı ve Depolama Blobu veri katılımcısı.
+* BLOB depolama kullanılıyorsa, Azure HPC önbelleğinin depolama hesabınıza erişmesi için yetkilendirmeye ihtiyacı vardır. BLOB depolama verilerinize önbellek erişimi sağlamak için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanın. İki rol gereklidir: depolama hesabı katılımcısı ve Depolama Blobu veri katılımcısı.
 
   Rolleri eklemek için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) bölümündeki yönergeleri izleyin.
 

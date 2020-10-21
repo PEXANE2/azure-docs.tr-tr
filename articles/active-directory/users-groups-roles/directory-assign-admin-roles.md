@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ea814f3f855758895a5a887b944e5f760edb5e9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 93b2bdef6ddacb08a49a974fe1e74ac47e21150e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057799"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313175"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -80,7 +80,7 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 [Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale verebilir.
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >* Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >* Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -142,7 +142,7 @@ Bu role sahip olan kullanıcılar Microsoft 365 Uyumluluk Merkezi 'nde uyumluluk
 
 ### <a name="compliance-data-administrator"></a>[Uyumluluk verileri Yöneticisi](#compliance-data-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, Microsoft 365 Uyumluluk Merkezi, Microsoft 365 Yönetim Merkezi ve Azure 'da verileri izleme iznine sahiptir. Kullanıcılar ayrıca Exchange Yönetim Merkezi, uyumluluk Yöneticisi ve takımlar & Skype Kurumsal Yönetim Merkezi 'nde uyumluluk verilerini izleyebilir ve Azure ve Microsoft 365 için destek biletleri oluşturabilir. [Bu belgede](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) , uyumluluk Yöneticisi ve uyumluluk veri Yöneticisi arasındaki farklara ilişkin ayrıntılar bulunur.
+Bu role sahip olan kullanıcılar, Microsoft 365 Uyumluluk Merkezi, Microsoft 365 Yönetim Merkezi ve Azure 'da verileri izleme iznine sahiptir. Kullanıcılar ayrıca Exchange Yönetim Merkezi, uyumluluk Yöneticisi ve takımlar & Skype Kurumsal Yönetim Merkezi 'nde uyumluluk verilerini izleyebilir ve Azure ve Microsoft 365 için destek biletleri oluşturabilir. [Bu belgede](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) , uyumluluk Yöneticisi ve uyumluluk veri Yöneticisi arasındaki farklara ilişkin ayrıntılar bulunur.
 
 İçinde | Yapılabilir
 ----- | ----------
@@ -260,7 +260,7 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 * Rapor okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve yardım masası yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir yardım masası Yöneticisi, bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -500,7 +500,7 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 | Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Grup Yöneticisi<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Parola Yöneticisi<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
 
 > [!IMPORTANT]
->  Microsoft. Directory/Users/Password/Update iznine sahip herhangi bir yerleşik veya özel role sahip kullanıcılar, Azure Active Directory içindeki ve dışındaki önemli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+>  Microsoft. Directory/Users/Password/Update iznine sahip herhangi bir yerleşik veya özel role sahip kullanıcılar, Azure Active Directory içindeki ve dışındaki önemli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve Kullanıcı yöneticilerine başka bir yerde izin verilmez. Bu yoldan, bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.

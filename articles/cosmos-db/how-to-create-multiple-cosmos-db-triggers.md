@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019989"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279630"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Cosmos DB için birden çok Azure Işlevleri tetikleyicisi oluşturun
 
@@ -24,7 +24,7 @@ Bu makalede Cosmos DB için birden çok Azure İşlevleri tetikleyicisini parale
 
 [Azure işlevleri](../azure-functions/functions-overview.md)ile sunucusuz mimariler oluştururken, büyük uzun süre çalışan işlevler yerine birlikte çalışan küçük işlev kümeleri oluşturmanız [önerilir](../azure-functions/functions-best-practices.md#avoid-long-running-functions) .
 
-[Cosmos DB Için Azure işlevleri tetikleyicisini](./change-feed-functions.md)kullanarak olay tabanlı sunucusuz akışlar oluştururken, belirli bir [Azure Cosmos kapsayıcısında](./databases-containers-items.md#azure-cosmos-containers)yeni bir olay olduğunda birden çok işlem yapmak istediğiniz senaryoya göre çalışacaktır. Tetiklemek istediğiniz eylemler diğerinden bağımsız ise, ideal çözüm, her **işlem için Cosmos DB her bir Azure işlevi tetikleyicisi oluşturmak** , böylece tüm değişiklikleri aynı Azure Cosmos kapsayıcısında dinlemek olacaktır.
+[Cosmos DB Için Azure işlevleri tetikleyicisini](./change-feed-functions.md)kullanarak olay tabanlı sunucusuz akışlar oluştururken, belirli bir [Azure Cosmos kapsayıcısında](./account-databases-containers-items.md#azure-cosmos-containers)yeni bir olay olduğunda birden çok işlem yapmak istediğiniz senaryoya göre çalışacaktır. Tetiklemek istediğiniz eylemler diğerinden bağımsız ise, ideal çözüm, her **işlem için Cosmos DB her bir Azure işlevi tetikleyicisi oluşturmak** , böylece tüm değişiklikleri aynı Azure Cosmos kapsayıcısında dinlemek olacaktır.
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Birden çok tetikleyici için kapsayıcıları iyileştirme
 

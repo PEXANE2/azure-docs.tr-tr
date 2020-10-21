@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7a07a42e208cb0f6fe91f6a65777fd28155106a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e43f2e9897293cb4d5bc25b6ef95252a28628401
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330596"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279601"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeylerini yönetme
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Cosmos DB ' de tutarlılık düzeylerinin nasıl yönetilece�
 
 [Varsayılan tutarlılık düzeyi](consistency-levels.md) , istemcilerin varsayılan olarak kullandığı tutarlılık düzeyidir.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet**' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
 
@@ -95,7 +95,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
 ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-# <a name="async"></a>[Eş](#tab/api-async)
+# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -111,7 +111,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
 ### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Java v2 SDK 'Ları
 
-# <a name="async"></a>[Eş](#tab/api-async)
+# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
 Async Java v2 SDK (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
@@ -196,7 +196,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 
 ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-# <a name="async"></a>[Eş](#tab/api-async)
+# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -212,7 +212,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 
 ### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>Java v2 SDK 'Ları
 
-# <a name="async"></a>[Eş](#tab/api-async)
+# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
 Async Java v2 SDK (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
@@ -288,8 +288,9 @@ Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine gör
 Veri çakışmalarını yönetme veya Azure Cosmos DB bir sonraki anahtar kavramına geçme hakkında daha fazla bilgi edinin. Aşağıdaki makalelere bakın:
 
 * [Azure Cosmos DB 'deki tutarlılık düzeyleri](consistency-levels.md)
-* [Bölgeler arasındaki çakışmaları yönetme](how-to-manage-conflicts.md)
 * [Bölümleme ve veri dağıtımı](partition-data.md)
+* [Bölgeler arasındaki çakışmaları yönetme](how-to-manage-conflicts.md)
+* [Bölümleme ve veri dağıtımı](partitioning-overview.md)
 * [Modern dağıtılmış veritabanı sistemleri tasarımında tutarlılık avantajları](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Yüksek kullanılabilirlik](high-availability.md)
 * [SLA Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

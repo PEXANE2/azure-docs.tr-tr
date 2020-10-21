@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f45a1481661aa350815560d795ab7411f99545
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979495"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317836"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yaygın senaryolar
 
@@ -154,7 +154,7 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 
 ## <a name="programmatic-administration"></a>Programlı yönetim
 
-Ayrıca, Microsoft Graph kullanarak erişim paketlerini, katalogları, ilkeleri, istekleri ve atamaları yönetebilirsiniz.  Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı `EntitlementManagement.ReadWrite.All` , [YETKILENDIRME yönetimi API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta )'sini çağırabilir.
+Ayrıca, Microsoft Graph kullanarak erişim paketlerini, katalogları, ilkeleri, istekleri ve atamaları yönetebilirsiniz.  Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı `EntitlementManagement.ReadWrite.All` , [YETKILENDIRME yönetimi API](/graph/tutorial-access-package-api?view=graph-rest-beta)'sini çağırabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570817"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314515"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Kubernetes web panosuna erişme
 
@@ -102,7 +102,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>Panoda oturum açma (Kubernetes 1.16 +)
 
 > [!IMPORTANT]
-> [Kubernetes panosu](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) veya Kubernetes v 1.16 + ' nin v 1.10.1 itibariyle, [Bu sürümdeki bir güvenlik düzeltme](https://github.com/kubernetes/dashboard/pull/3400)nedeniyle kaynakları almak için "Kubernetes-Dashboard" hizmet hesabı artık kullanılmıyor. Sonuç olarak, kimlik doğrulama bilgileri olmayan istekler 401 Yetkisiz bir hata döndürür. Bir hizmet hesabından alınan bir taşıyıcı belirteci, bu [Kubernetes panosu örneğinde](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)olduğu gibi hala kullanılabilir, ancak bu, eski sürümlere kıyasla Pano eklentisinin oturum açma akışını etkiler.
+> [Kubernetes panosu](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) veya Kubernetes v 1.16 + ' nin v 1.10.1 itibariyle, [Bu sürümdeki bir güvenlik düzeltme](https://github.com/kubernetes/dashboard/pull/3400)nedeniyle kaynakları almak için "Kubernetes-Dashboard" hizmet hesabı artık kullanılmıyor. Sonuç olarak, kimlik doğrulama bilgileri olmayan istekler [401 Yetkisiz bir hata](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998)döndürür. Bir hizmet hesabından alınan bir taşıyıcı belirteci, bu [Kubernetes panosu örneğinde](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)olduğu gibi hala kullanılabilir, ancak bu, eski sürümlere kıyasla Pano eklentisinin oturum açma akışını etkiler.
 >
 >1,16 ' dan önceki bir sürümü hala çalıştırırsanız, "Kubernetes-Dashboard" hizmet hesabına izin verebilir, ancak bu **önerilmez**:
 > ```console

@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87366730"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282476"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
 
@@ -33,7 +33,7 @@ Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı �
 
 * Azure Cosmos DB belge içinde bir "ID" alanı vardır; Couşbase, demet 'nin bir parçası olarak KIMLIĞE sahiptir. "KIMLIK" alanı bölüm genelinde benzersizdir.
 
-* Bölümlendirme veya parçalama tekniğini kullanarak Azure Cosmos DB ölçeklendirir. Yani, verileri birden çok parça/bölüme böler. Bu bölümler/parçalar, sağladığınız bölüm anahtarı özelliği temel alınarak oluşturulur. Okuma ve yazma işlemlerini iyileştirmek ya da çok iyileştirilmiş okuma/yazma işlemleri için bölüm anahtarını seçebilirsiniz. Daha fazla bilgi için [bölümlendirme](./partition-data.md) makalesine bakın.
+* Bölümlendirme veya parçalama tekniğini kullanarak Azure Cosmos DB ölçeklendirir. Yani, verileri birden çok parça/bölüme böler. Bu bölümler/parçalar, sağladığınız bölüm anahtarı özelliği temel alınarak oluşturulur. Okuma ve yazma işlemlerini iyileştirmek ya da çok iyileştirilmiş okuma/yazma işlemleri için bölüm anahtarını seçebilirsiniz. Daha fazla bilgi için [bölümlendirme](./partitioning-overview.md) makalesine bakın.
 
 * Azure Cosmos DB, koleksiyon adı zaten mevcut olduğundan üst düzey hiyerarşinin koleksiyonu belirtmek için gerekli değildir. Bu özellik, JSON yapısını çok daha kolay hale getirir. Aşağıdaki örnek, Couşbase ve Azure Cosmos DB arasında veri modelinde farkları gösteren bir örnektir:
 

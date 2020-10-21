@@ -3,12 +3,12 @@ title: Azure geçişi ile şirket içi sunuculardaki uygulamaları, rolleri ve �
 description: Azure geçişi sunucu değerlendirmesi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulmayı öğrenin.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118656"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315206"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rolleri ve özellikleri bul
 
@@ -46,7 +46,7 @@ Gereç dağıtıldıktan ve kimlik bilgilerini sağladıysanız, Gereç VM meta 
 
 ## <a name="verify-permissions"></a>İzinleri doğrulama
 
-Bulma ve değerlendirme için [vCenter Server salt okunurdur bir hesap oluşturdunuz](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) . Salt okuma hesabının, **sanal makineler**  >  **Konuk işlemleri**için etkin olması gerekir ve bu, uygulama bulma için VM ile etkileşime geçebilir.
+Bulma ve değerlendirme için [vCenter Server salt okunurdur bir hesap oluşturdunuz](./tutorial-discover-vmware.md#prepare-vmware) . Salt okuma hesabının, **sanal makineler**  >  **Konuk işlemleri**için etkin olması gerekir ve bu, uygulama bulma için VM ile etkileşime geçebilir.
 
 ### <a name="add-the-user-account-to-the-appliance"></a>Kullanıcı hesabını gereç 'e ekleme
 

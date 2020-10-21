@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393c58334f4a1bead7e089d0a64b2d165b67401d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70279448"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317171"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda Hyper-V VM 'yi değerlendirin
 
@@ -30,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 
 
 > [!NOTE]
-> Ölçeği değerlendirmek için birkaç VM 'yi değerlendirmek üzere kavram kanıtı denemek istiyorsanız, [öğretici serimizi](tutorial-prepare-hyper-v.md) izleyin
+> Ölçeği değerlendirmek için birkaç VM 'yi değerlendirmek üzere kavram kanıtı denemek istiyorsanız, [öğretici serimizi](./tutorial-discover-hyper-v.md) izleyin
 
 ## <a name="plan-for-assessment"></a>Değerlendirme planı
 
@@ -66,7 +66,7 @@ Sunucu değerlendirmesi için Azure ve Hyper-V ' i hazırlayın.
 2. Azure hesabınız için Azure geçişi ile etkileşime geçmek üzere izinleri ayarlama
 3. Hyper-V konakları ve VM 'Leri hazırlama
 
-Bu ayarları yapılandırmak için [Bu öğreticideki](tutorial-prepare-hyper-v.md) yönergeleri izleyin.
+Bu ayarları yapılandırmak için [Bu öğreticideki](./tutorial-discover-hyper-v.md) yönergeleri izleyin.
 
 ## <a name="create-a-project"></a>Proje oluşturma
 
