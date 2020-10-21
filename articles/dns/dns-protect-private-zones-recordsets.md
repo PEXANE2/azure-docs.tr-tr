@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 738d62d60ad06431bd77cd99343fc8835c4c5685
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363231"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330181"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Özel DNS bölgelerini ve kayıtlarını koruma
 
@@ -22,9 +22,9 @@ ms.locfileid: "91363231"
 
 Bu makalede Azure DNS, özel DNS bölgelerinizi ve kayıtlarınızı bu değişikliklere karşı korumanıza nasıl olanak sağladığını açıklamaktadır.  [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) ve [kaynak kilitleri](../azure-resource-manager/management/lock-resources.md)Azure Resource Manager tarafından sunulan iki güçlü menkul Özellik uygulayacağız.
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
-Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kullanıcıları, grupları ve kaynakları için ayrıntılı erişim yönetimine izin vermez. RBAC ile, kullanıcıların ihtiyaç duyduğu erişim düzeyine izin verebilirsiniz. RBAC 'nin erişimi yönetmenize nasıl yardımcı olduğu hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md).
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kullanıcıları, grupları ve kaynakları için ayrıntılı erişim yönetimine izin vermez. Azure RBAC ile, kullanıcıların ihtiyaç duyduğu erişim düzeyine izin verebilirsiniz. Azure RBAC 'nin erişimi yönetmenize nasıl yardımcı olduğu hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md).
 
 ### <a name="the-private-dns-zone-contributor-role"></a>Özel DNS bölgesi katılımcısı rolü
 
@@ -32,11 +32,11 @@ Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kullanıcıları, grupla
 
 *Myprivatedns* kaynak grubu, contoso Corporation için beş bölge içerir. Bu kaynak grubuna DNS Yöneticisi Özel DNS bölge katılımcısı izinleri verilmesi, bu DNS bölgeleri üzerinde tam denetim sağlar. Gereksiz izinler verilmesini önler. DNS Yöneticisi sanal makineleri oluşturamaz veya durdurabilir.
 
-RBAC izinlerini atamak için en kolay yol [Azure Portal](../role-based-access-control/role-assignments-portal.md)kullanmaktır.  
+Azure RBAC izinlerini atamak için en kolay yol [Azure Portal](../role-based-access-control/role-assignments-portal.md)kullanmaktır.  
 
 Kaynak grubu için **erişim denetimi 'ni (IAM)** açın, **Ekle**' yi seçin, sonra **özel DNS bölgesi katılımcısı** rolünü seçin. İzin vermek için gerekli kullanıcıları veya grupları seçin.
 
-![Azure portal aracılığıyla kaynak grubu düzeyi RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
+![Kaynak grubu düzeyi Azure portal aracılığıyla Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
 İzinler, [Azure PowerShell kullanılarak da verilebilir](../role-based-access-control/role-assignments-powershell.md):
 
@@ -61,15 +61,15 @@ az role assignment create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="private-zone-level-rbac"></a>Özel bölge düzeyi RBAC
+### <a name="private-zone-level-azure-rbac"></a>Özel bölge düzeyi Azure RBAC
 
 Azure RBAC kuralları bir aboneliğe, bir kaynak grubuna veya tek bir kaynağa uygulanabilir. Bu kaynak tek bir DNS bölgesi veya tek bir kayıt kümesi olabilir.
 
 Örneğin, *Myprivatedns* kaynak grubu *Private.contoso.com* bölgesini ve bir alt bölge *Customers.Private.contoso.com*içerir. CNAME kayıtları her müşteri hesabı için oluşturulur. CNAME kayıtlarını yönetmek için kullanılan yönetici hesabına, *Customers.Private.contoso.com* bölgesinde kayıt oluşturmak için izinler atanır. Hesap yalnızca *Customers.Private.contoso.com* yönetebilir.
 
-Bölge düzeyinde RBAC izinleri Azure portal aracılığıyla verilebilir.  Bölge için **erişim denetimi (IAM)** açın, **Ekle**' yi seçin, sonra **özel DNS bölgesi katılımcısı** rolünü seçin. İzin vermek için gerekli kullanıcıları veya grupları seçin.
+Bölge düzeyinde Azure RBAC izinleri Azure portal aracılığıyla verilebilir.  Bölge için **erişim denetimi (IAM)** açın, **Ekle**' yi seçin, sonra **özel DNS bölgesi katılımcısı** rolünü seçin. İzin vermek için gerekli kullanıcıları veya grupları seçin.
 
-![Azure portal ile DNS bölge düzeyi RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
+![Azure portal aracılığıyla DNS bölge düzeyi Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
 İzinler, [Azure PowerShell kullanılarak da verilebilir](../role-based-access-control/role-assignments-powershell.md):
 
@@ -96,17 +96,17 @@ az role assignment create \
 --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/privateDnsZones/<zone name>/"
 ```
 
-### <a name="record-set-level-rbac"></a>Kayıt kümesi düzeyi RBAC
+### <a name="record-set-level-azure-rbac"></a>Kayıt kümesi düzeyi Azure RBAC
 
 İzinler, kayıt kümesi düzeyinde uygulanır.  Kullanıcıya ihtiyaç duydukları girişlere denetim verilir ve başka bir değişiklik yapamaz.
 
-Kayıt kümesi düzeyi RBAC izinleri, kayıt kümesi sayfasındaki **Access Control (IAM)** düğmesi kullanılarak Azure Portal aracılığıyla yapılandırılabilir:
+Kayıt kümesi düzeyi Azure RBAC izinleri, kayıt kümesi sayfasındaki **Access Control (IAM)** düğmesini kullanarak Azure Portal aracılığıyla yapılandırılabilir:
 
 ![Ekran görüntüsünde Access Control (M A) düğmesi gösterilir.](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
 ![Ekran görüntüsü rol ataması ekle seçili Access Control gösterir.](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
-Kayıt kümesi düzeyi RBAC izinleri, [Azure PowerShell kullanılarak da verilebilir](../role-based-access-control/role-assignments-powershell.md):
+Kayıt kümesi düzeyi Azure RBAC izinleri, [Azure PowerShell kullanılarak da verilebilir](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell-interactive
 # Grant permissions to a specific record set
@@ -188,7 +188,7 @@ az role create -inputfile <file path>
 
 Daha sonra bu makalede açıklandığı gibi, rol yerleşik rollerle aynı şekilde atanabilir.
 
-Özel roller oluşturma, yönetme ve atama hakkında daha fazla bilgi için bkz. [Azure RBAC 'de özel roller](../role-based-access-control/custom-roles.md).
+Özel roller oluşturma, yönetme ve atama hakkında daha fazla bilgi için bkz. [Azure özel roller](../role-based-access-control/custom-roles.md).
 
 ## <a name="resource-locks"></a>Kaynak kilitleri
 
@@ -287,5 +287,5 @@ Aynı anda, DNS bölgesi korumasına yönelik derinlemesine savunma yaklaşımı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* RBAC ile çalışma hakkında daha fazla bilgi için, [Azure Portal erişim yönetimiyle çalışmaya başlama](../role-based-access-control/overview.md)bölümüne bakın.
+* Azure RBAC ile çalışma hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md).
 * Kaynak kilitleri ile çalışma hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).

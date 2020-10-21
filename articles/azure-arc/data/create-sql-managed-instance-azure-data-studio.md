@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4c1d4d83ad3c39bab8058ad29662891fe3678a1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311538"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320311"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Azure Data Studio kullanarak SQL yönetilen örneği oluşturma-Azure Arc
 
@@ -49,7 +49,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - Bağlantılar sekmesinde, sol üstteki üç noktaya tıklayın ve "yeni dağıtım" seçeneğini belirleyin.
 - Dağıtım seçenekleri ' nden **Azure SQL yönetilen örneği-Azure Arc** ' ı seçin. 
   > [!NOTE]
-  > Şu anda yüklü değilse azdata CLı 'yı buraya kurmanız istenebilir.
+  > [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]Şu anda yüklü değilse, buraya yüklenmesi istenebilir.
 - Gizlilik ve lisans koşullarını kabul edin ve en altta **Seç** ' e tıklayın.
 
 

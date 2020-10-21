@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217397"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314807"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 
@@ -157,6 +157,17 @@ Bir destek durumu açmaya karar verirseniz daha hızlı bir çözüm için aşa�
 - Araştırma bağlantı noktası yanıtını test etmek için VNet içindeki arka uç VM 'lerinden birini kullanın (örnek: Psping 10.0.0.4:3389) ve sonuçları kaydedin. 
 - Bu ping testlerinde bir yanıt alınmıyorsa, PsPing komutunu çalıştırırken, arka uç VM 'sinde ve VNet test VM 'de eşzamanlı bir Netsh izlemesi çalıştırın ve ardından Netsh izlemesini durdurun. 
  
+## <a name="symptom-load-balancer-in-failed-state"></a>Belirti: başarısız durumda Load Balancer 
+
+**Çözünürlük**
+
+- Hatalı durumda olan kaynağı tanımladıktan sonra, [Azure Kaynak Gezgini](https://resources.azure.com/) ' a gidin ve kaynağı bu durumda TANIIN. 
+- Sağ taraftaki üst köşedeki oku/yaz ' a geçiş yapın.
+- Kaynak başarısız durumunda Düzenle ' ye tıklayın.
+- Sağlama durumunun başarılı olarak güncelleştirildiğinden emin olmak için Al ' a ve ardından GET ' e tıklayın.
+- Kaynak başarısız durumda olduğundan diğer eylemlerle devam edebilirsiniz.
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yukarıdaki adımlar sorunu çözmezse, bir [destek bileti](https://azure.microsoft.com/support/options/)açın.

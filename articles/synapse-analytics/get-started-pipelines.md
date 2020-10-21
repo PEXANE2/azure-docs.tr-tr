@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 277d7860b89e20b088010b65b6fb8d202b1a9e5d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 42d2ac6cf6592f8e22b0a66aee84c3436d466572
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167007"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329892"
 ---
 # <a name="orchestrate-with-pipelines"></a>İşlem hatları ile düzenleme
 
@@ -28,7 +28,7 @@ Azure SYNAPSE 'te çok çeşitli görevleri düzenleyebilirsiniz.
 1. SYNAPSE Studio 'da **tümleştirin** hub 'a gidin.
 1. **+**  >  Yeni bir işlem hattı oluşturmak için işlem **hattı** ' nı seçin.
 1. **Geliştirme** merkezine gidin ve daha önce oluşturduğunuz not defterlerinden birini seçin.
-1. Bu Not defterini ardışık düzene sürükleyin.
+1. Bu Not defterini işlem hattına sürükleyin (**Not**: işlem hattınızdan çalışırken [belgede](https://docs.microsoft.com/azure/synapse-analytics/spark/synapse-spark-sql-pool-import-export#transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace) belirtilen şekilde, not defterine içeri aktarma modülleri ekleyin)
 1. İşlem hattında, yeni **tetikleyici Ekle**  >  **/Düzenle**' yi seçin.
 1. **Tetikleyiciyi seçin**' de, **Yeni**' yi seçin ve **yinelemeyi** "her 1 saat" olarak ayarlayın.
 1. **Tamam**’ı seçin. 

@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: daf3b6c36b191f52f0d7ac7638ef59695325f541
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078553"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327340"
 ---
-# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Öğretici: bir Azure savunma ana bilgisayarı oluşturma ve bir tarayıcıdan Windows VM 'ye bağlanma
+# <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Öğretici: bir tarayıcı aracılığıyla savunma yapılandırma ve Windows VM 'ye bağlanma
 
 Bu öğreticide, Azure savunma ve Azure portal kullanarak tarayıcınız aracılığıyla bir sanal makineye nasıl bağlanabilmeniz gösterilmektedir. Azure portal, sanal ağınıza savunma dağıtırsınız. Savunma 'yı dağıttıktan sonra, Azure portal kullanarak bir VM 'ye özel IP adresi aracılığıyla bağlanırsınız. VM 'nizin genel bir IP adresi veya özel bir yazılıma ihtiyacı yoktur. Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal makineler için kullanılabilir. Azure savunma hakkında daha fazla bilgi için bkz. [Azure](bastion-overview.md)savunma nedir?.
 
@@ -26,7 +26,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir sanal ağ.
 * Sanal ağdaki bir Windows sanal makinesi.
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Savunma Konağı oluşturma
 

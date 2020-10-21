@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542297"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330402"
 ---
 # <a name="execute-r-script-module"></a>R betik modülünü Yürüt
 
@@ -194,11 +194,11 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
     > [!NOTE]
     > Varolan R kodunun bir tasarımcı işlem hattında çalıştırmak için küçük değişikliklere ihtiyacı vardır. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri, tasarımcıda kullanılan veri ve sütun türlerinden bazı yollarla da farklılık gösterir.
 
-    Betiğinizin 16 KB 'den büyük olması durumunda, CommandLine gibi hataların *16597 karakter sınırını aşması*Için **betik paketi** bağlantı noktasını kullanın. 
+1. Betiğinizin 16 KB 'den büyük olması durumunda, CommandLine gibi hataların *16597 karakter sınırını aşması*Için **betik paketi** bağlantı noktasını kullanın. 
     
     1. Betiği ve diğer özel kaynakları bir ZIP dosyasına paketleyin.
     1. Zip dosyasını bir **dosya veri kümesi** olarak Studio 'ya yükleyin. 
-    1. Veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül bölmesinde veri *kümeleri* listesinden sürükleyin. 
+    1. Veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül bölmesinde bulunan *veri kümeleri* listesinden sürükleyin. 
     1. Veri kümesi modülünü, **R betiği yürütme** modülünün **betik paketi** bağlantı noktasına bağlayın.
     
     Komut dosyası paketindeki betiği tüketmek için örnek kod aşağıda verilmiştir:

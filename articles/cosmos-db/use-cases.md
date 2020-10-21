@@ -6,15 +6,16 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af49a7bec68c30e4ded576a8d84eac850eb745f8
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114274"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331371"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB için yaygın kullanım örnekleri
-Bu makalede Azure Cosmos DB yönelik birkaç yaygın kullanım durumuna genel bakış sunulmaktadır.  Bu makaledeki öneriler, Cosmos DB uygulamanızı geliştirirken başlangıç noktası olarak görev yapar.   
+
+Bu makalede Azure Cosmos DB yönelik birkaç yaygın kullanım durumuna genel bakış sunulmaktadır.  Bu makaledeki öneriler, Cosmos DB uygulamanızı geliştirirken başlangıç noktası olarak görev yapar.
 
 Bu makaleyi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz: 
 
@@ -24,7 +25,8 @@ Bu makaleyi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
 * Web ve mobil uygulamalar için Azure Cosmos DB kullanmanın avantajları nelerdir?
 
 ## <a name="introduction"></a>Giriş
-[Azure Cosmos DB](../cosmos-db/introduction.md) , Microsoft 'un genel olarak dağıtılmış veritabanı hizmetidir. Hizmet, müşterilerin herhangi bir sayıda coğrafi bölgede esnek (ve bağımsız olarak) işleme ve depolamayı ölçeklendirmesine izin verecek şekilde tasarlanmıştır. Azure Cosmos DB, günümüzde Market, gecikme süresi, kullanılabilirlik ve tutarlılık dahil olmak üzere kapsamlı [hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/cosmos-db/) sunan ilk genel olarak dağıtılmış veritabanı hizmetidir. 
+
+[Azure Cosmos DB](../cosmos-db/introduction.md) , Microsoft 'un herhangi bir ölçekte açık API 'leri olan hızlı NoSQL veritabanıdır. Hizmet, müşterilerin herhangi bir sayıda coğrafi bölgede esnek (ve bağımsız olarak) işleme ve depolamayı ölçeklendirmesine izin verecek şekilde tasarlanmıştır. Azure Cosmos DB, günümüzde Market, gecikme süresi, kullanılabilirlik ve tutarlılık dahil olmak üzere kapsamlı [hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/cosmos-db/) sunan ilk genel olarak dağıtılmış veritabanı hizmetidir.
 
 Azure Cosmos DB, çok çeşitli uygulamalarda ve kullanım durumlarında kullanılan küresel bir dağıtılmış, çok modelli veritabanıdır. En az milisaniyelik yanıt süreleriyle ihtiyacı olan ve hızlı ve küresel olarak ölçeklendirilmesi gereken [sunucusuz](https://azure.com/serverless) bir uygulama için iyi bir seçimdir. Birden çok veri modelini (anahtar-değer, belge, grafik ve sütun) ve veri erişimi için [Azure Cosmos DB, MongoDB](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md)ve [tablo API 'si](table-introduction.md) yerel olarak ve genişletilebilir bir şekilde bir çok API 'yi destekler. 
 
@@ -40,6 +42,7 @@ Aşağıda, genel Ambition ile yüksek performanslı uygulamalar için iyi uygun
 Bu öznitelikler, az yanıt süresi gerektiren Web, mobil, oyun ve IoT uygulamalarında faydalıdır ve çok büyük miktarlarda okuma ve yazma işlemlerini ele almanız gerekir.
 
 ## <a name="iot-and-telematics"></a>IoT ve telematik
+
 IoT kullanım örnekleri, verileri alma, işleme ve depolama gibi bazı desenleri yaygın olarak paylaşır.  İlk olarak, bu sistemlerin çeşitli yerel ayarlara ait cihaz sensörlerinden veri alımı gerekir. Ardından, bu sistemler gerçek zamanlı içgörüler elde etmek için akış verilerini işler ve analiz eder. Veriler daha sonra Batch Analytics için soğuk depolamaya arşivlenir. Microsoft Azure, Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification Hub, Azure Machine Learning, Azure HDInsight ve Power BI gibi IoT kullanım durumları için uygulanabilen zengin hizmetler sunar. 
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT başvuru mimarisi" border="false":::

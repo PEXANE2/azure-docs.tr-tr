@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 912b4966312d8925f70deeed99042d2701641f49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 587fe536e860f3039bfd3a2d2c1e3c76cb40e4d5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801520"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278458"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Öğretici: Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturma
 
@@ -45,7 +45,7 @@ Zamanınız yok mu? Endişelenmeyin! Eksiksiz çözümü [GitHub](https://github
 
 Şimdi başlayalım!
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin bir Azure hesabı. Bir aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 
@@ -117,7 +117,7 @@ Harika! Kurulumu tamamladığımıza göre, biraz kod yazmaya başlayalım. Bu �
     ```
 
    > [!NOTE]
-   > Önceki .NET SDK sürümü hakkında bilginiz varsa *, hüküm ve* *belge*hakkında bilgi sahibi olabilirsiniz. Azure Cosmos DB birden çok API modelini desteklediğinden, .NET SDK 'nın 3,0 sürümü genel terimler *kapsayıcısını* ve *öğesini*kullanır. *Kapsayıcı* bir koleksiyon, grafik veya tablo olabilir. Bir *öğe* bir belge, Kenar/köşe veya satır olabilir ve bir kapsayıcı içindeki içeriktir. Daha fazla bilgi için bkz. [Azure Cosmos DB veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md).
+   > Önceki .NET SDK sürümü hakkında bilginiz varsa *, hüküm ve* *belge*hakkında bilgi sahibi olabilirsiniz. Azure Cosmos DB birden çok API modelini desteklediğinden, .NET SDK 'nın 3,0 sürümü genel terimler *kapsayıcısını* ve *öğesini*kullanır. *Kapsayıcı* bir koleksiyon, grafik veya tablo olabilir. Bir *öğe* bir belge, Kenar/köşe veya satır olabilir ve bir kapsayıcı içindeki içeriktir. Daha fazla bilgi için bkz. [Azure Cosmos DB veritabanları, kapsayıcılar ve öğelerle çalışma](account-databases-containers-items.md).
 
 1. [Azure portalını](https://portal.azure.com) açın. Azure Cosmos DB hesabınızı bulun ve ardından **anahtarlar**' ı seçin.
 
@@ -260,7 +260,7 @@ Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir k
 1. Uygulamanızı çalıştırmak için F5 ' i seçin.
 
    > [!NOTE]
-   > Bir "503 hizmeti kullanılamayan özel durum" hatası alırsanız, doğrudan bağlantı modu için gerekli [bağlantı noktaları](performance-tips.md#networking) güvenlik duvarı tarafından engelleniyor olabilir. Bu sorunu onarmak için gerekli bağlantı noktalarını açın ya da aşağıdaki kodda gösterildiği gibi ağ geçidi modu bağlantısını kullanın:
+   > Bir "503 hizmeti kullanılamayan özel durum" hatası alırsanız, doğrudan bağlantı modu için gerekli [bağlantı noktaları](sql-sdk-connection-modes.md#service-port-ranges) güvenlik duvarı tarafından engelleniyor olabilir. Bu sorunu onarmak için gerekli bağlantı noktalarını açın ya da aşağıdaki kodda gösterildiği gibi ağ geçidi modu bağlantısını kullanın:
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()

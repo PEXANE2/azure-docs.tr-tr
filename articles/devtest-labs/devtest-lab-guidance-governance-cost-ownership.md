@@ -4,12 +4,12 @@ description: Bu makalede, ortamınızdaki maliyeti iyileştirmenize ve sahipliğ
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476266"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328275"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure DevTest Labs altyapı yönetimi-maliyeti ve sahipliği yönetme
 Geliştirme ve test ortamlarınızı oluşturmayı düşünmenizde, maliyet ve sahiplik birincil kaygılardır. Bu bölümde, ücretlerinizi iyileştirmek ve ortamınızda sahipliği hizalamak için size yardımcı olacak bilgiler bulabilirsiniz.
@@ -34,9 +34,9 @@ Yalnızca etkin Visual Studio aboneleri (Standart abonelikler, yıllık bulut ab
 
 DevTest teklifini kullanmaya karar verirseniz, bu avantajın yalnızca geliştirme ve uygulamalarınızın test edilmesine yönelik olduğunu unutmayın. Abonelik içindeki kullanım, Azure DevOps ve HockeyApp kullanımı dışında mali olarak desteklenen bir SLA 'yı taşımaz.
 
-## <a name="define-a-role-based-access-across-your-organization"></a>Kuruluşunuz genelinde rol tabanlı bir erişim tanımlayın
+## <a name="define-role-based-access-across-your-organization"></a>Kuruluşunuz genelinde rol tabanlı erişim tanımlayın
 ### <a name="question"></a>Soru
-Geliştirici/test işlerini yapabilirken yönetebilmemesini sağlamak için DevTest Labs Ortamlarım için rol tabanlı erişim denetimi tanımlama Nasıl yaparım?. 
+Geliştirici/test işlerini yapabilirken yönetebilmemesini sağlamak için DevTest Labs Ortamlarım için Azure rol tabanlı erişim denetimi Nasıl yaparım? tanımlayın? 
 
 ### <a name="answer"></a>Yanıt
 Geniş bir düzen mevcuttur, ancak ayrıntı kuruluşunuza bağlıdır.

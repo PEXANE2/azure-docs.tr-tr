@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 5fb00fb6382bb53f40ad63a95c880c47f91cae2f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201673"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331575"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -31,7 +31,7 @@ Hızlı başlangıç aşağıdaki önemli adımları içerir:
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. Henüz bir tane yoksa, şimdi **[ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** .
 
@@ -53,7 +53,7 @@ Ayrıca, ADT Explorer 'ın bilgisayarınızda çalışması ve Azure dijital TWI
 * Azure dijital TWINS örneğinizi ayarladıktan sonra, örneğin **_ana bilgisayar adına_** ([portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) ihtiyacınız olacaktır.
 
 ADT Explorer uygulamasının kimliğini doğrulamak için, bir **uygulama kaydı**da ayarlamanız gerekir. Bunu ayarlamak için [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md) ' daki yönergeleri izleyin. 
-* Uygulama kaydınız olduktan sonra, kaydın **_uygulama (istemci) kimliği_** ve **_Dizin (kiracı) kimliği_** gerekir ([bunları portalda bulabilirsiniz](how-to-create-app-registration.md#collect-client-id-and-tenant-id).
+* Bir uygulama kaydınız olduktan sonra, kaydın **_uygulama (istemci) kimliği_** ve **_Dizin (kiracı) kimliği_** ([bunları portalda bulun](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) gerekir.
 
 ### <a name="set-adt-explorer-permissions"></a>ADT gezgin izinlerini ayarla
 

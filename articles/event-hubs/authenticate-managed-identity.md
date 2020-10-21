@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs kaynaklarına erişmek için Azure Ac
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23fc0a59f9accc70c69c1096c1a15f1313ee2e0
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010027"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332459"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 Azure Event Hubs, [Azure kaynakları için yönetilen kimliklerle](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. Azure kaynakları için Yönetilen kimlikler, Azure sanal makinelerinde (VM), Işlev uygulamalarında, sanal makine ölçek kümelerinde ve diğer hizmetlerde çalışan uygulamalardan Azure AD kimlik bilgilerini kullanarak Event Hubs kaynaklarına erişim yetkisi verebilir. Azure AD kimlik doğrulamasıyla birlikte Azure kaynakları için Yönetilen kimlikler kullanarak, kimlik bilgilerini bulutta çalışan uygulamalarınızla depolamaktan kaçınabilirsiniz.
@@ -26,7 +26,7 @@ VM 'nizden Event Hubs kaynaklarını yetkilendirmek üzere Azure kaynakları iç
 - [Azure Resource Manager istemci kitaplıkları](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Azure AD 'de yönetilen bir kimliğe izin verme
-Uygulamanızdaki yönetilen bir kimlikle Event Hubs hizmetine bir istek yetkilendirmek için, önce bu yönetilen kimlik için rol tabanlı erişim denetimi (RBAC) ayarlarını yapılandırın. Azure Event Hubs Event Hubs gönderme ve okuma izinlerini çevreleyen Azure rollerini tanımlar. Azure rolü yönetilen bir kimliğe atandığında, yönetilen kimliğe uygun kapsamda Event Hubs verilerine erişim verilir.
+Uygulamanızdaki yönetilen bir kimlikle Event Hubs hizmetine bir istek yetkilendirmek için, önce bu yönetilen kimlik için Azure rol tabanlı erişim denetimi (Azure RBAC) ayarlarını yapılandırın. Azure Event Hubs Event Hubs gönderme ve okuma izinlerini çevreleyen Azure rollerini tanımlar. Azure rolü yönetilen bir kimliğe atandığında, yönetilen kimliğe uygun kapsamda Event Hubs verilerine erişim verilir.
 
 Azure rolleri atama hakkında daha fazla bilgi için bkz. [Event Hubs kaynaklara erişim için Azure Active Directory kimlik doğrulaması](authorize-access-azure-active-directory.md).
 

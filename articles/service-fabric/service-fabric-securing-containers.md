@@ -4,17 +4,17 @@ description: Sertifika dosyalarını Service Fabric bir kapsayıcı hizmetine ak
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219882a3f7f6db665f1ec311098ef53464773b71
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050752"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313691"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric çalıştıran bir kapsayıcıya bir sertifika dosyasını içeri aktarma
 
 > [!NOTE]
-> Azure üzerinde çalışan Service Fabric kümeleri için, bir kapsayıcı içinden uygulama sertifikaları sağlamak üzere [Service Fabric uygulama tarafından yönetilen kimlik](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) kullanılması önerilir. Yönetilen kimlik, hizmet düzeyinde gizli dizi ve sertifika yalıtımı sağlar ve uygulama sertifikası sağlamasının altyapının iş akışı yerine uygulamanın iş akışının bir parçası olmasını sağlar. CertificateRef mekanizması gelecek bir sürümde kullanım dışı olacaktır.
+> Azure üzerinde çalışan Service Fabric kümeleri için, bir kapsayıcı içinden uygulama sertifikaları sağlamak üzere [Service Fabric uygulama tarafından yönetilen kimlik](./concepts-managed-identity.md) kullanılması önerilir. Yönetilen kimlik, hizmet düzeyinde gizli dizi ve sertifika yalıtımı sağlar ve uygulama sertifikası sağlamasının altyapının iş akışı yerine uygulamanın iş akışının bir parçası olmasını sağlar. CertificateRef mekanizması gelecek bir sürümde kullanım dışı olacaktır.
 
 Bir sertifika belirterek kapsayıcı hizmetlerinizi güvenli hale getirebilirsiniz. Service Fabric, bir kapsayıcı içindeki hizmetler için bir Windows veya Linux kümesindeki düğümlere yüklenmiş bir sertifikaya (sürüm 5,7 veya üzeri) erişmek için bir mekanizma sağlar. Sertifikanın, kümenin tüm düğümlerinde LocalMachine altındaki bir sertifika deposunda yüklü olması gerekir. Sertifikaya karşılık gelen özel anahtar kullanılabilir, erişilebilir ve Windows-dışarı aktarılabilir olmalıdır. Aşağıdaki kod parçacığında gösterildiği gibi, sertifika bilgileri etiket altındaki uygulama bildiriminde verilmiştir `ContainerHostPolicies` :
 

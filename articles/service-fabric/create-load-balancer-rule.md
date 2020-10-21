@@ -3,12 +3,12 @@ title: Küme için Azure Load Balancer kuralı oluşturma
 description: Azure Service Fabric kümeniz için bağlantı noktaları açmak üzere bir Azure Load Balancer yapılandırın.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259043"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319895"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric kümesi için bağlantı noktası açma
 
@@ -34,7 +34,7 @@ Load Balancer kuralı oluşturmak için aşağıdaki bilgileri toplamanız gerek
 - Dış bağlantı noktası.
 - İç bağlantı noktası.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 Yalnızca **Azure CLI**ile yük dengeleyici kuralı oluşturmak için tek bir komut alır. Yeni bir kural oluşturmak için yalnızca yük dengeleyici ve kaynak grubunun adını bilmeniz gerekir.
 
 >[!NOTE]
@@ -60,7 +60,7 @@ Azure CLı komutu, aşağıdaki tabloda açıklanan birkaç parametreye sahiptir
 
 
 >[!NOTE]
->Azure CLı ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [Azure CLI ile yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-cli.md).
+>Azure CLı ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [Azure CLI ile yük dengeleyici oluşturma](../load-balancer/quickstart-load-balancer-standard-internal-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 Komutuyla ilgili `New-AzLoadBalancerRuleConfig` olarak, `-FrontendPort` Yük dengeleyicinin dış bağlantılar için sunduğu bağlantı noktasını temsil eder ve `-BackendPort` Service Fabric uygulamasının dinlediği bağlantı noktasını temsil eder.
 
 >[!NOTE]
->PowerShell ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [PowerShell ile yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).
+>PowerShell ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [PowerShell ile yük dengeleyici oluşturma](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
