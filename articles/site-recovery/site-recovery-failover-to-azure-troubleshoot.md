@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355049"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371996"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware sanal makinesi veya fiziksel makineden Azure'a yük devretme hatalarını giderme
 
@@ -55,7 +55,7 @@ Azure 'da herhangi bir makineyi getirmek için, Azure ortamı bazı sürücüler
     Bu, hidrasyon gerekliyse aşağıdaki sonucu verir:
 
     ```output
-    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
     This system doesn't meet no-hydration requirement.
     ```
@@ -168,7 +168,7 @@ Bu sorunu çözmek için:
 
 2. Önceki komutların çıktısı, http_proxy veya https_proxy ayarlarının tanımlandığını gösteriyorsa, yapılandırma sunucusu ile ana hedef iletişimlerinin engelini kaldırmak için aşağıdaki yöntemlerden birini kullanın:
    
-   - [PsExec aracını](https://aka.ms/PsExec)indirin.
+   - [PsExec aracını](/sysinternals/downloads/psexec)indirin.
    - Aracı kullanarak sistem Kullanıcı bağlamına erişin ve proxy adresinin yapılandırılıp yapılandırılmadığını saptayın. 
    - Proxy yapılandırıldıysa, PsExec aracını kullanarak bir sistem kullanıcı bağlamında IE 'yi açın.
   

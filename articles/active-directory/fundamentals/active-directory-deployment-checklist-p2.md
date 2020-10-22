@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318418"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371911"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özellik dağıtım kılavuzu
 
@@ -43,8 +43,8 @@ Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan vey
 
 | Görev | Ayrıntı | Gerekli lisans |
 | ---- | ------ | ---------------- |
-| [Birden fazla genel yönetici belirleyin](../users-groups-roles/directory-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. | Azure AD Ücretsiz |
-| [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. | Azure AD Ücretsiz |
+| [Birden fazla genel yönetici belirleyin](../roles/security-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. | Azure AD Ücretsiz |
+| [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../roles/permissions-reference.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. | Azure AD Ücretsiz |
 | [Yönetici rolü kullanımını izlemek için Privileged Identity Management etkinleştir](../privileged-identity-management/pim-getting-started.md) | Yönetim rolü kullanımını izlemeye başlamak için Privileged Identity Management etkinleştirin. | Azure AD Premium P2 |
 | [Self servis parola sıfırlamayı dağıtma](../authentication/howto-sspr-deployment.md) | Personelin yönetici denetimi olarak sizin oluşturduğunuz ilkeleri kullanarak kendi parolalarını sıfırlamasına izin vererek parola sıfırlama için Yardım Masası çağrılarını azaltın. | |
 | [Kuruluşa özgü özel yasaklanmış parola listesi oluşturma](../authentication/tutorial-configure-custom-password-protection.md) | Kullanıcıların, kuruluşunuzun veya bölgenizdeki ortak sözcükleri veya tümceleri içeren parolalar oluşturmasını engelleyin. | |
@@ -69,7 +69,7 @@ Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve e
 | [Parola karması eşitlemesini Uygula](../hybrid/how-to-connect-password-hash-synchronization.md) | Parola değişikliklerinin çoğaltılmasını, hatalı parola algılamayı ve düzeltmesini ve sızdırılan kimlik bilgisi raporlamasını sağlamak için parola karmalarını eşitler. | Azure AD Ücretsiz |
 | [Parola geri yazmayı Uygula](../authentication/tutorial-enable-sspr-writeback.md) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. | Azure AD Premium P1 |
 | [Azure AD Connect Health Uygula](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Azure AD Connect sunucularınız, AD FS sunucularınız ve etki alanı denetleyicileriniz için anahtar sistem durumu istatistiklerinin izlenmesini etkinleştirin. | Azure AD Premium P1 |
-| [Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama](../users-groups-roles/licensing-groups-assign.md) | Kullanıcı başına ayar yerine gruba göre özellikleri etkinleştiren veya devre dışı bırakan lisanslama grupları oluşturarak zaman ve çaba tasarrufu yapın. | |
+| [Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama](../enterprise-users/licensing-groups-assign.md) | Kullanıcı başına ayar yerine gruba göre özellikleri etkinleştiren veya devre dışı bırakan lisanslama grupları oluşturarak zaman ve çaba tasarrufu yapın. | |
 | [Konuk Kullanıcı erişimi için bir plan oluşturun](../external-identities/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerini kullanarak uygulamalarınızda ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. | [Azure AD B2B Lisanslama Kılavuzu](../external-identities/licensing-guidance.md) |
 | [Cihaz yönetimi stratejisine karar verme](../devices/overview.md) | Kuruluşunuzun cihazlara yönelik olarak izin vermesini belirleyin. Vs katılımını kaydetme, kendi cihazını ve şirket tarafından sağlanmış olan cihazları alın. | |
 | [Kuruluşunuzda Iş için Windows Hello 'Yu dağıtma](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello kullanarak passwordless kimlik doğrulaması için hazırlanma | |
@@ -93,7 +93,7 @@ Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve e
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management kullanımını zorunlu kıl](../privileged-identity-management/pim-security-wizard.md) | Yönetim rollerini normal günden günlük Kullanıcı hesaplarından kaldırın. Yönetici kullanıcıları, bir Multi-Factor Authentication denetimini tamamladıktan sonra, bir iş gerekçe sağlayarak veya belirlenen onaylayanlardan onay isteyerek, rollerinin kullanımını uygun hale getirin. | Azure AD Premium P2 |
 | [PıM 'de Azure AD dizin rolleri için erişim gözden geçirmeyi tamamlar](../privileged-identity-management/pim-how-to-start-security-review.md) | Kuruluşunuzun ilkelerine bağlı olarak yönetim erişimini gözden geçirmek için bir erişim gözden geçirme ilkesi oluşturmak üzere güvenlik ve liderlik ekipleriyle birlikte çalışın. | Azure AD Premium P2 |
-| [Dinamik grup üyeliği ilkeleri uygulama](../users-groups-roles/groups-dynamic-membership.md) | Kullanıcıları, kendi özniteliklerine (veya gerçeği kaynağına) göre otomatik olarak gruplara atamak için dinamik grupları kullanın (örneğin, departman, başlık, bölge ve diğer öznitelikler). |  |
+| [Dinamik grup üyeliği ilkeleri uygulama](../enterprise-users/groups-dynamic-membership.md) | Kullanıcıları, kendi özniteliklerine (veya gerçeği kaynağına) göre otomatik olarak gruplara atamak için dinamik grupları kullanın (örneğin, departman, başlık, bölge ve diğer öznitelikler). |  |
 | [Grup tabanlı uygulama sağlamayı Uygula](../manage-apps/what-is-access-management.md) | Kullanıcıları SaaS uygulamalarına otomatik olarak sağlamak için grup tabanlı erişim yönetimi sağlamayı kullanın. |  |
 | [Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](../app-provisioning/user-provisioning.md) | Yetkisiz erişimi engellemek için, çalışan hesabı yaşam döngünüzün el ile yapılan adımları kaldırın. Truth (IK sistem) kaynağınızdan Azure AD 'ye kimlikler eşitler. |  |
 

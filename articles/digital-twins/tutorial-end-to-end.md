@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e7d966aa5aa4b5a498c80cab26686411dd586185
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5ac3d76d8c80947b820d195b9727d1fe50d32899
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044607"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372353"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -445,12 +445,6 @@ Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları sil
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azure AD uygulama kaydını silin:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 Son olarak, indirdiğiniz proje örnek klasörünü yerel makinenize silin.

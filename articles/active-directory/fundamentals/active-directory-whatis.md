@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d66e8b15b7af73517a7f838186821248bffeccc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bfc5126c0cce89502b0f1d8b17c06519f338fe52
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89566118"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370857"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
@@ -73,7 +73,7 @@ Azure AD lisansınızı seçtikten sonra, kuruluşunuz için aşağıdaki özell
 |Koşullu Erişim|Bulut uygulamalarınıza erişimi yönetin. Daha fazla bilgi için bkz. [Azure AD koşullu erişim belgeleri](../conditional-access/index.yml).|
 |Aygıt Yönetimi|Buluttaki veya şirket içindeki cihazlarınızın kurumsal verilerinize erişimini yönetin. Daha fazla bilgi için bkz. [Azure AD cihaz yönetimi belgeleri](../devices/index.yml).|
 |Etki alanı hizmetleri|Azure sanal makinelerini etki alanı denetleyicileri kullanmadan bir etki alanına ekleyin. Daha fazla bilgi için bkz. [Azure AD Domain Services belgeleri](../../active-directory-domain-services/index.yml).|
-|Kurumsal kullanıcılar|Grupları ve yönetici rollerini kullanarak lisans atamasını yönetin, uygulamalara erişin ve temsilcileri ayarlayın. Daha fazla bilgi için bkz. [Kullanıcı yönetimi belgelerini Azure Active Directory](../users-groups-roles/index.yml).|
+|Kurumsal kullanıcılar|Grupları ve yönetici rollerini kullanarak lisans atamasını yönetin, uygulamalara erişin ve temsilcileri ayarlayın. Daha fazla bilgi için bkz. [Kullanıcı yönetimi belgelerini Azure Active Directory](../enterprise-users/index.yml).|
 |Karma kimlik|Konumdan (bulut veya şirket içi) bağımsız olarak tüm kaynaklarda kimlik doğrulaması ve yetkilendirme için tek bir kullanıcı kimliği sağlamak üzere Azure Active Directory Connect ve Connect Health kullanın. Daha fazla bilgi için bkz. [karma kimlik belgeleri](../hybrid/index.yml).|
 |Kimlik idaresi|Kuruluşunuzun kimliğini çalışan, iş ortağı, satıcı, hizmet ve uygulama erişim denetimleri aracılığıyla yönetin. Ayrıca, erişim gözden geçirmeleri gerçekleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure AD Identity idare belgeleri](../governance/identity-governance-overview.md) ve [Azure AD erişim İncelemeleri](../governance/access-reviews-overview.md).|
 |Kimlik koruması|Kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarını tespit edin, şüpheli eylemlere yanıt vermek için ilkeleri yapılandırın ve ardından bunları çözmek için uygun işlemleri gerçekleştirin. Daha fazla bilgi için bkz. [Azure AD kimlik koruması](../identity-protection/index.yml).|
@@ -93,7 +93,7 @@ Azure AD ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden 
 |Hesap Yöneticisi|Bu klasik abonelik Yöneticisi rolü, kavramsal olarak bir aboneliğin fatura sahibidir. Bu rolün [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) erişimi vardır ve bir hesaptaki tüm abonelikleri yönetmenizi sağlar. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Hizmet Yöneticisi|Bu klasik abonelik Yöneticisi rolü, erişim dahil olmak üzere tüm Azure kaynaklarını yönetmenizi sağlar. Bu rol, abonelik kapsamında sahip rolü atanan bir kullanıcıya eşdeğer erişime sahiptir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Sahip|Bu rol, erişim de dahil olmak üzere tüm Azure kaynaklarını yönetmenize yardımcı olur. Bu rol, Azure kaynaklarına ayrıntılı erişim yönetimi sağlayan Azure rol tabanlı erişim denetimi (Azure RBAC) adlı yeni bir yetkilendirme sistemi üzerine kurulmuştur. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Azure AD Genel yöneticisi|Bu yönetici rolü, Azure AD kiracısı tarafından oluşturulan çoğuna 'e otomatik olarak atanır. Genel Yöneticiler, Azure AD 'ye yönelik tüm yönetim işlevlerini ve Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi sürümü gibi Azure AD 'ye federe Hizmetleri gerçekleştirebilir. Birden çok genel yöneticisi olabilir, ancak yalnızca genel Yöneticiler yönetici rollerini (diğer genel yöneticileri atama dahil) kullanıcılara atayabilirler. Bu yönetici rolünün Azure portal genel yönetici olarak adlandırıldığına, ancak Microsoft Graph API ve Azure AD PowerShell 'de **Şirket Yöneticisi** olarak adlandırıldığına bakın. çeşitli yönetici rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md).|
+|Azure AD Genel yöneticisi|Bu yönetici rolü, Azure AD kiracısı tarafından oluşturulan çoğuna 'e otomatik olarak atanır. Genel Yöneticiler, Azure AD 'ye yönelik tüm yönetim işlevlerini ve Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi sürümü gibi Azure AD 'ye federe Hizmetleri gerçekleştirebilir. Birden çok genel yöneticisi olabilir, ancak yalnızca genel Yöneticiler yönetici rollerini (diğer genel yöneticileri atama dahil) kullanıcılara atayabilirler. Bu yönetici rolünün Azure portal genel yönetici olarak adlandırıldığına, ancak Microsoft Graph API ve Azure AD PowerShell 'de **Şirket Yöneticisi** olarak adlandırıldığına bakın. çeşitli yönetici rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolü izinleri](../roles/permissions-reference.md).|
 |Azure aboneliği| Azure bulut hizmetleri için ödeme yapmak üzere kullanılır. Birçok aboneliğiniz olabilir ve bunlar kredi kartıyla bağlantılıdır.|
 |Azure kiracısı| Kuruluşunuz, Microsoft Azure, Microsoft Intune veya Microsoft 365 gibi bir Microsoft bulut hizmeti aboneliğine kaydolduğunda otomatik olarak oluşturulan adanmış ve güvenilir bir Azure AD örneğidir. Azure kiracısı tek kuruluşu temsil eder.|
 |Tek kiracılı| Ayrılmış bir ortamdaki diğer hizmetlere erişen Azure kiracılar tek kiracı olarak kabul edilir.|

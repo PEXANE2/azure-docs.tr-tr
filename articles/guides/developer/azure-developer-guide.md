@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 770c9f7d677f739781db6290fa0c43e410761d17
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327827"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372217"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -281,7 +281,7 @@ Bir Azure aboneliği oluşturmak veya bunlarla çalışmak için bir Azure hesab
 
 Her Azure aboneliği bir Azure AD örneğiyle güven ilişkisine sahiptir. Bu; Azure aboneliğinin kullanıcılar, hizmetler ve cihazlar için kimlik doğrulaması yapmak üzere bu dizine güvendiği anlamına gelir. Birden çok abonelik aynı dizine güvenebilir ancak bir abonelik yalnızca bir dizine güvenir. Daha fazla bilgi edinmek için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkilendirilmesi](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Ayrıca, *Kullanıcılar*olarak da bilinen tek Azure hesap kimliklerini tanımlamak IÇIN Azure AD 'de *grupları* tanımlayabilirsiniz. Kullanıcı gruplarının oluşturulması, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak bir abonelikteki kaynaklara erişimi yönetmenin iyi bir yoludur. Grup oluşturma hakkında bilgi edinmek için bkz. [Azure Active Directory Preview 'da Grup oluşturma](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Ayrıca, [PowerShell kullanarak](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)gruplar oluşturabilir ve yönetebilirsiniz.
+Ayrıca, *Kullanıcılar*olarak da bilinen tek Azure hesap kimliklerini tanımlamak IÇIN Azure AD 'de *grupları* tanımlayabilirsiniz. Kullanıcı gruplarının oluşturulması, rol tabanlı erişim denetimi (RBAC) kullanarak bir abonelikteki kaynaklara erişimi yönetmenin iyi bir yoludur. Grup oluşturma hakkında bilgi edinmek için bkz. [Azure Active Directory Preview 'da Grup oluşturma](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Ayrıca, [PowerShell kullanarak](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)gruplar oluşturabilir ve yönetebilirsiniz.
 
 ### <a name="manage-your-subscriptions"></a>Aboneliklerinizi yönetme
 
@@ -315,7 +315,7 @@ Azure Resource Manager, tek tek kaynaklara özel Etiketler atamanıza olanak tan
 * Azure Resource Manager şablonunda
 * REST API’yi kullanma
 * Azure CLI'yı kullanma
-* PowerShell'i kullanma
+* PowerShell’i kullanma
 
 Her kaynağa birden çok etiket atayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../../azure-resource-manager/management/tag-resources.md).
 

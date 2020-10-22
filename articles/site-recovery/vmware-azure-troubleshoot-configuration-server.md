@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113080"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371962"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Yapılandırma sunucusu sorunlarını giderme
 
@@ -63,7 +63,7 @@ Bu hata, hizmet, Mobility aracısını yüklerken ve yapılandırma sunucusuna k
 
 VCenter bulma başarısızlıklarını çözümlemek için, vCenter Server 'ı atlama listesi proxy 'si ayarlarına ekleyin. 
 
-- Sistem Kullanıcı içeriğine erişmek için PsExec aracını [buradan](https://aka.ms/PsExec) indirin.
+- Sistem Kullanıcı içeriğine erişmek için PsExec aracını [buradan](/sysinternals/downloads/psexec) indirin.
 - Aşağıdaki komut satırı PsExec-s-i "%ProgramFiles%\Internet Explorer\iexplore.exe" komut satırını çalıştırarak Internet Explorer 'ı sistem Kullanıcı içeriğinde açın
 - IE 'de proxy ayarları ekleyin ve tmanssvc hizmetini yeniden başlatın.
 - DRA proxy ayarlarını yapılandırmak için CD C:\Program Files\Microsoft Azure Site Recovery sağlayıcısı 'nı çalıştırın
@@ -163,16 +163,16 @@ Yapılandırma sunucusu yükseltmesi, bazı hizmetler durdurulduğunda başarıs
 Sorunu belirlemek için yapılandırma sunucusunda C:\ProgramData\ASRSetupLogs\ CX_TP_InstallLogFile adresine gidin. Aşağıdaki hataları bulursanız, sorunu gidermek için aşağıdaki adımları kullanın: 
 
 ```output
-2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-2018-06-28 14:28:12.944   Stopping svagents service.
-2018-06-28 14:31:32.949   Unable to stop svagents service.
-2018-06-28 14:31:32.949   Stopping svagents service.
-2018-06-28 14:34:52.960   Unable to stop svagents service.
-2018-06-28 14:34:52.960   Stopping svagents service.
-2018-06-28 14:38:12.971   Unable to stop svagents service.
-2018-06-28 14:38:12.971   Rolling back the install changes.
-2018-06-28 14:38:12.971   Upgrade has failed.
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
 ```
 
 Bu sorunu çözmek için:
@@ -194,7 +194,7 @@ Yapılandırma sunucusunu güncelleştirmek için [Birleşik kurulumu](service-u
 
 Sorunu çözmek için Azure portal oturum açın ve aşağıdakilerden birini yapın:
 
-- AAD 'de uygulama geliştirici rolü isteyin. Uygulama geliştirici rolü hakkında daha fazla bilgi için [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
+- AAD 'de uygulama geliştirici rolü isteyin. Uygulama geliştirici rolü hakkında daha fazla bilgi için [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/roles/permissions-reference.md)bölümüne bakın.
 - **Kullanıcının uygulama bayrağını oluşturbildiğini** , AAD 'de *true* olarak ayarlandığını doğrulayın. Daha fazla bilgi için bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>İşlem sunucusu/ana hedef, yapılandırma sunucusu ile iletişim kuramıyor 
@@ -258,4 +258,3 @@ Bu sorun, sistem saati yanlış olduğunda meydana gelebilir.
 Bu sorunu çözmek için:
 
 Bilgisayarda doğru zamanı ayarlayın ve oturum açma işlemini yeniden deneyin. 
- 

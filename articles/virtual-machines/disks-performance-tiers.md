@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939026"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359688"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Yönetilen diskler için performans katmanları (Önizleme)
 
@@ -42,19 +42,19 @@ Cihazınız değiştikçe faturanızı değişiklikleriniz. Örneğin, bir P10 d
 | 512 GiB | P20 | P30, P40, P50 |
 | 1 TiB | P30 | P40, P50 |
 | 2 TiB | P40 | P50 |
-| 4 TiB | P50 | Hiçbiri |
+| 4 TiB | P50 | Yok |
 | 8 TiB | P60 |  P70, P80 |
 | 16 TiB | P70 | P80 |
-| 32 TiB | P80 | Hiçbiri |
+| 32 TiB | P80 | Yok |
 
 Fatura bilgileri için bkz. [yönetilen disk fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
 - Bu özellik şu anda yalnızca Premium SSD 'Ler için destekleniyor.
-- Diskin katmanını değiştirebilmek için diski çalışan bir VM 'den ayırmanız gerekir.
+- Diskin katmanını değiştirmeden önce VM 'nizi serbest bırakabilir veya diski çalışan bir VM 'den ayırmanız gerekir.
 - P60, P70 ve P80 performans katmanlarının kullanılması 4.096 GiB veya üzeri disklerle kısıtlıdır.
-- Bir diskin performans katmanı, her 24 saatte bir yalnızca bir kez değiştirilebilir.
+- Bir diskin performans katmanı, her 24 saatte bir yalnızca bir kez indirgenir.
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
