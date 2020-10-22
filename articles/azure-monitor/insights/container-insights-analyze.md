@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Kubernetes izleme | Microsoft Doc
 description: Bu makalede, bir Kubernetes kümesinin, kapsayıcılar için Azure Izleyici ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994768"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368766"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansınızı izleyin
 
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, çok küme görünümünde izlenen bir kümenin sistem dur
 | |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
 |**Sistem Pod**| | |
 | |Sağlam |%100 |
-| |Uyarı |YOK |
+| |Uyarı |Yok |
 | |Kritik |<% 100 |
 | |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
 |**Node** | | |
@@ -290,6 +290,10 @@ Durum alanındaki simgeler, aşağıdaki tabloda açıklandığı gibi, pods 'ni
 | ![Son bildirilen çalışan durum simgesi](./media/container-insights-analyze/containers-grey-icon.png) | Son bildirilen, ancak 30 dakikadan uzun bir süredir yanıt vermemiş|
 | ![Sonlandırılan durum simgesi](./media/container-insights-analyze/containers-terminated-icon.png) | Başarıyla durduruldu veya durdurulamadı|
 | ![Başarısız durum simgesi](./media/container-insights-analyze/containers-failed-icon.png) | Başarısız durum |
+
+## <a name="monitor-and-visualize-network-configurations"></a>Ağ yapılandırmasını izleme ve görselleştirme
+Azure ağ Ilkesi Yöneticisi, ağ yapılandırmalarınızı izlemenize ve daha iyi anlamanıza imkan tanıyan bilgilendirici Prometheus ölçümlerini içerir. Azure portal veya Grafana laboratuvarlarında yerleşik görselleştirmeler sağlar. Ayrıntılar için bkz. [Azure NPM Ile ağ yapılandırmasını izleme ve görselleştirme](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm).
+
 
 ## <a name="workbooks"></a>Çalışma Kitapları
 

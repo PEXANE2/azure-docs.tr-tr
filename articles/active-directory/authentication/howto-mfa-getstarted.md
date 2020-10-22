@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d3d03f46e3948d1134c442f93af2e8f274dcd256
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964478"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366488"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication dağıtımı planlayın
 
@@ -226,7 +226,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 MFA ve diğer denetimlerin ne zaman gerekli olacağını belirleyen koşullu erişim ilkesi stratejinizi planlamak için, [Genel koşullu erişim ilkelerine](../conditional-access/concept-conditional-access-policy-common.md)bakın.
 
-Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [Kiracınızda iki veya daha fazla acil durum erişim hesabı oluşturarak](../users-groups-roles/directory-emergency-access.md) ve bunları koşullu erişim ilkenize dışlayarak, bu yanlışlıkla yönetici erişimi eksikliğinden etkilerini azaltabilirsiniz.
+Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [Kiracınızda iki veya daha fazla acil durum erişim hesabı oluşturarak](../roles/security-emergency-access.md) ve bunları koşullu erişim ilkenize dışlayarak, bu yanlışlıkla yönetici erişimi eksikliğinden etkilerini azaltabilirsiniz.
 
 ### <a name="create-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
@@ -250,7 +250,7 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
     * **Seç**’e tıklayın.
 1. **Oturum** bölümünü atlayın.
 1. **Ilkeyi etkinleştir** **' i açık**yap olarak ayarlayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Şirket içi sistemlerle tümleştirmeyi planlayın
 
@@ -357,7 +357,7 @@ Azure MFA raporları
 
 Azure Multi-Factor Authentication Azure portal aracılığıyla rapor sağlar:
 
-| Rapor | Konum | Açıklama |
+| Rapor | Konum | Description |
 | --- | --- | --- |
 | Kullanım ve sahtekarlık uyarıları | Azure AD > oturum açma işlemleri | Genel kullanım, Kullanıcı Özeti ve kullanıcı ayrıntıları hakkında bilgi sağlar; Ayrıca, belirtilen tarih aralığı boyunca gönderilen sahtekarlık uyarılarının geçmişi. |
 

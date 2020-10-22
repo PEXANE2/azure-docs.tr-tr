@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
-ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069688"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367984"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Recovery ile Ağ Güvenlik Grupları
 
-Ağ güvenlik grupları, ağ trafiğini bir sanal ağ içindeki kaynaklarla sınırlamak için kullanılır. Bir [ağ güvenlik grubu (NSG)](../virtual-network/security-overview.md#network-security-groups) , kaynak veya hedef IP adresi, bağlantı noktası ve protokole göre gelen veya giden ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir.
+Ağ güvenlik grupları, ağ trafiğini bir sanal ağ içindeki kaynaklarla sınırlamak için kullanılır. Bir [ağ güvenlik grubu (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) , kaynak veya hedef IP adresi, bağlantı noktası ve protokole göre gelen veya giden ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir.
 
 Kaynak Yöneticisi dağıtım modeli altında, NSG 'ler alt ağlarla veya tek tek ağ arabirimleriyle ilişkilendirilebilir. Bir NSG bir alt ağ ile ilişkilendirildiğinde kurallar alt ağa bağlı tüm kaynaklar için geçerli olur. Ayrıca, bir NSG 'yi zaten ilişkili bir NSG 'ye sahip bir alt ağ içindeki bireysel ağ arabirimleriyle ilişkilendirerek, trafik daha da kısıtlanabilir.
 
@@ -37,7 +37,7 @@ Bu örnekte, gelen trafik için NSG alt ağı ilk olarak değerlendirilir. Alt a
 
 Bu, ayrıntılı güvenlik kuralı uygulaması için izin verir. Örneğin, bir alt ağ altındaki birkaç uygulama VM 'lerine (ön uç VM 'Ler gibi) gelen internet erişimine izin vermek, ancak gelen internet erişimini diğer VM 'lere (veritabanı ve diğer arka uç VM 'Ler gibi) kısıtlamak isteyebilirsiniz. Bu durumda, alt ağ NSG 'de daha fazla bir kuralınız olabilir, internet trafiğine izin verebilir ve VM NSG 'ye erişimi reddeterek belirli VM 'lere erişimi kısıtlayabilirsiniz. Bu, giden trafik için de uygulanabilir.
 
-Bu tür NSG yapılandırmalarının kurulması sırasında, [güvenlik kurallarına](../virtual-network/security-overview.md#security-rules)doğru önceliklerin uygulandığından emin olun. Kurallar öncelik sırasına göre işleme alınır ve düşük rakamlı kurallar daha yüksek önceliğe sahip olduğundan yüksek rakamlı kurallardan önce uygulanır. Trafik bir kuralla eşleştiğinde işlem durur. Bunun sonucunda yüksek önceliğe sahip olan kurallarla aynı özniteliklere sahip olan önceliği daha düşük olan (yüksek rakamlı) kurallar işleme alınmaz.
+Bu tür NSG yapılandırmalarının kurulması sırasında, [güvenlik kurallarına](../virtual-network/network-security-groups-overview.md#security-rules)doğru önceliklerin uygulandığından emin olun. Kurallar öncelik sırasına göre işleme alınır ve düşük rakamlı kurallar daha yüksek önceliğe sahip olduğundan yüksek rakamlı kurallardan önce uygulanır. Trafik bir kuralla eşleştiğinde işlem durur. Bunun sonucunda yüksek önceliğe sahip olan kurallarla aynı özniteliklere sahip olan önceliği daha düşük olan (yüksek rakamlı) kurallar işleme alınmaz.
 
 Her zaman ağ güvenlik gruplarının hem bir ağ arabirimine hem de alt ağa uygulandığının farkında olmayabilirsiniz. Bir ağ arabirimine yönelik [etkin güvenlik kurallarını](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) görüntüleyerek, bir ağ arabirimine uygulanan Toplam kuralları doğrulayabilirsiniz. Ayrıca, bir ağ arabiriminden veya bu arabirimden iletişime izin verilip verilmediğini öğrenmek için [Azure Ağ İzleyicisi](../network-watcher/network-watcher-monitoring-overview.md) 'nde [IP akışı doğrulama](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) özelliğini de kullanabilirsiniz. Bu araç iletişime izin verilip verilmediğini ve trafiğe izin veren veya onu reddeden ağ güvenlik kuralının hangisi olduğunu belirler.
 
@@ -72,7 +72,7 @@ Daha önce açıklanan [Örnek senaryoya](concepts-network-security-group-with-s
 NSG 'ler oluşturulup yapılandırıldıktan sonra, betikte NSG ilişkilendirmelerini ve yük devretme sonrası VM bağlantısını doğrulamak için bir [Yük devretme testi](azure-to-azure-tutorial-dr-drill.md) çalıştırmayı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
--    [Ağ güvenlik grupları](../virtual-network/security-overview.md#network-security-groups)hakkında daha fazla bilgi edinin.
--    NSG [güvenlik kuralları](../virtual-network/security-overview.md#security-rules)hakkında daha fazla bilgi edinin.
+-    [Ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md#network-security-groups)hakkında daha fazla bilgi edinin.
+-    NSG [güvenlik kuralları](../virtual-network/network-security-groups-overview.md#security-rules)hakkında daha fazla bilgi edinin.
 -    NSG için [geçerli güvenlik kuralları](../virtual-network/diagnose-network-traffic-filter-problem.md) hakkında daha fazla bilgi edinin.
 -    Uygulama yük devretmesini otomatikleştirmek için [kurtarma planları](site-recovery-create-recovery-plans.md) hakkında daha fazla bilgi edinin.

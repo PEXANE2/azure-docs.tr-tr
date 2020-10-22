@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104402"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367746"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -157,7 +157,7 @@ Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (W
 2. Azure AD uygulamanızı kullanmak için eylem gruplarını etkinleştirin.
 
     > [!NOTE]
-    > Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) bir üyesi olmanız gerekir.
+    > Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](../../active-directory/roles/permissions-reference.md#available-roles) bir üyesi olmanız gerekir.
     
     - PowerShell betiğinin Connect-AzureAD çağrısını Azure AD kiracı KIMLIĞINIZI kullanacak şekilde değiştirin.
     - PowerShell betiğinin değişken $myAzureADApplicationObjectId Azure AD uygulamanızın nesne KIMLIĞINI kullanacak şekilde değiştirin.

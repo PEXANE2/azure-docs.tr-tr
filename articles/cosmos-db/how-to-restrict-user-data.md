@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 869513d5a668544b2aa8afb13bb56e8293788b06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570646"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368732"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Azure Cosmos DB veri işlemlerine Kullanıcı erişimini kısıtlama
 
 Azure Cosmos DB, veritabanı hizmetiyle etkileşimlerinizi doğrulamak için iki yol vardır:
 
 - Azure portal etkileşim kurarken Azure Active Directory kimliğinizi kullanarak
-- API 'Ler ve SDK 'lardan çağrı verirken Azure Cosmos DB [anahtarlarını](secure-access-to-data.md#primary-keys) veya [kaynak belirteçlerini](secure-access-to-data.md#resource-tokens) kullanma.
+- API 'Ler ve SDK 'lardan çağrı verirken Azure Cosmos DB [anahtarlarını](database-security.md#primary-keys) veya [kaynak belirteçlerini](secure-access-to-data.md#resource-tokens) kullanma.
 
 Her bir kimlik doğrulama yöntemi, bazı çakışmada farklı işlem kümelerine erişim sağlar:
 

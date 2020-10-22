@@ -10,16 +10,16 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "89401206"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Mevcut bir VPN Ağ Geçidi bağlantısı ile bir VNet 'e siteden siteye bağlantı ekleme
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasik)](vpn-gateway-multi-site.md)
 >
 > 
@@ -62,7 +62,7 @@ Aşağıdaki öğeleri doğrulayın:
      ![Bağlantı sayfası ekle](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Bağlantı sayfası ekle")<br>
 
 ## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>Bölüm 2-yerel ağ geçidi ekleme
-1. **Yerel ağ geçidi** ' ne tıklayın ***yerel ağ geçidi seçin***. Bu, **yerel ağ geçidi Seç** sayfasını açar.
+1. **Yerel ağ geçidi** ' ne tıklayın ** _yerel ağ geçidi seçin_*_. Bu, _* yerel ağ geçidini Seç sayfasını açar** .
    
     ![Yerel ağ geçidi seçin](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Yerel ağ geçidi seçin")<br>
 2. **Yeni oluştur** ' **a tıklayarak Yerel ağ geçidi oluştur** sayfasını açın.
