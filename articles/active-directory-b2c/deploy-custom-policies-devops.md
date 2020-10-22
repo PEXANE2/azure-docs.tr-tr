@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 411fa207323a9bff6cfcc3b17769203c444dd844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388689"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363938"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
 
@@ -31,9 +31,9 @@ Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleşt
 > [!IMPORTANT]
 > Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda Microsoft Graph API uç noktasında kullanılabilen **Önizleme** işlemlerini kullanıyor `/beta` . Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [B2C ıEF Ilke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolüyle dizindeki bir kullanıcı için [Azure AD B2C kiracı](tutorial-create-tenant.md)ve kimlik bilgileri
+* [B2C ıEF Ilke Yöneticisi](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) rolüyle dizindeki bir kullanıcı için [Azure AD B2C kiracı](tutorial-create-tenant.md)ve kimlik bilgileri
 * Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)
 * [Yönetim uygulaması](microsoft-graph-get-started.md) kiracınızda Microsoft Graph API izin *ilkesi. ReadWrite. TrustFramework* ile kaydedildi
 * [Azure Işlem hattı](https://azure.microsoft.com/services/devops/pipelines/)ve bir [Azure DevOps Services projesine][devops-create-project] erişim
@@ -151,7 +151,7 @@ Sonra, bir ilke dosyası dağıtmak için bir görev ekleyin.
     * **Görev sürümü**: 2. *
     * **Görünen ad**: Bu görevin karşıya yüklenmesi gereken ilkenin adı. Örneğin, *B2C_1A_TrustFrameworkBase*.
     * **Tür**: dosya yolu
-    * **Betik yolu**: üç noktayı (***...***) seçin, *betikler* klasörüne gidin ve *DeployToB2C.ps1* dosyasını seçin.
+    * **Betik yolu**: üç noktayı seçin (**_..._* _) _Scripts * klasörüne gidin ve *DeployToB2C.ps1* dosyasını seçin.
     * **Değişkenlerinden**
 
         **Bağımsız değişkenler**için aşağıdaki değerleri girin. `{alias-name}`Önceki bölümde belirttiğiniz diğer adla değiştirin.
