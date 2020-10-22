@@ -105,12 +105,22 @@
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure Kapsayıcısı teklifi oluşturma
               href: partner-center-portal/create-azure-container-offer.md
-    - name: Azure sanal makine teklifi
+    - name: Azure sanal makine teklifleri
       items:
         - name: VM teklifi planlama
           href: marketplace-virtual-machines.md
         - name: VM teklifi oluşturma ve yayımlama
           items:
+            - name: VM teklifi oluşturma
+              href: azure-vm-create.md
+            - name: VM teklifi özelliklerini yapılandırma
+              href: azure-vm-create-properties.md
+            - name: VM teklifi girişini yapılandırma
+              href: azure-vm-create-listing.md
+            - name: VM planları oluşturma
+              href: azure-vm-create-plans.md
+            - name: Önizleme hedef kitlesi ekleme
+              href: azure-vm-create-preview.md
             - name: VM teknik varlıkları oluşturma
               items:
                 - name: Onaylanan bir temelden VM oluşturma
@@ -127,16 +137,6 @@
                   href: azure-vm-create-faq.md
                 - name: VM sertifikasyonu sorunlarını giderme
                   href: azure-vm-create-certification-faq.md
-            - name: VM teklifi oluşturma
-              href: azure-vm-create.md
-            - name: VM teklifi özelliklerini yapılandırma
-              href: azure-vm-create-properties.md
-            - name: VM teklifi girişini yapılandırma
-              href: azure-vm-create-listing.md
-            - name: VM planları oluşturma
-              href: azure-vm-create-plans.md
-            - name: Önizleme hedef kitlesi ekleme
-              href: azure-vm-create-preview.md
     - name: Danışmanlık hizmetleri
       items:
         - name: Danışmanlık hizmeti teklifi planlama

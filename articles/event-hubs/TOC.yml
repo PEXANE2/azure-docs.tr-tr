@@ -115,8 +115,6 @@
               href: authenticate-shared-access-signature.md
         - name: Ağ güvenliği
           href: network-security.md
-        - name: Yerleşik güvenlik denetimleri
-          href: event-hubs-security-controls.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

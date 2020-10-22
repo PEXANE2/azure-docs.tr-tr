@@ -148,8 +148,6 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric Kümesi güvenliği
           href: service-fabric-cluster-security.md
-        - name: Yerleşik güvenlik denetimleri
-          href: service-fabric-security-controls.md
         - name: Service Fabric’te sertifika tabanlı kimlik doğrulaması
           href: cluster-security-certificates.md
         - name: Service Fabric’te sertifika yönetimi

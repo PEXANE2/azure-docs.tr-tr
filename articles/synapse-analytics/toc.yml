@@ -44,8 +44,6 @@
       href: quickstart-create-workspace-powershell.md
     - name: Şablonla dağıtma
       href: quickstart-deployment-template-workspaces.md
-    - name: Synapse Studio’yu kullanma
-      href: quickstart-synapse-studio.md
     - name: Power BI çalışma alanına bağlanma
       href: quickstart-power-bi.md
     - name: Havuz oluşturma

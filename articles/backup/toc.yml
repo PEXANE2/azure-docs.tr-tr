@@ -406,8 +406,6 @@
           href: backup-encryption.md
         - name: Müşteri tarafından yönetilen anahtarları kullanarak şifreleme
           href: encryption-at-rest-with-cmk.md
-        - name: Yerleşik güvenlik denetimleri
-          href: backup-security-controls.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

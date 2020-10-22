@@ -203,8 +203,6 @@
           href: disk-encryption-overview.md
         - name: Azure güvenlik temeli
           href: security-baseline.md
-        - name: Yerleşik güvenlik denetimleri
-          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: İzleme
       href: ../azure-monitor/insights/monitor-vm-azure.md

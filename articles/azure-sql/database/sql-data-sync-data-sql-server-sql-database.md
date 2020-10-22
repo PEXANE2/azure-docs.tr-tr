@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: d888266ae13b500abc5b03fa6a699c9f34b782a6
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173559"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371760"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -81,7 +81,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | | Data Sync | İşlem Çoğaltması |
 |---|---|---|
 | **Avantajlar** | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
-| **Dezavantajlar** | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
+| **Dezavantajlar** | -5 En düşük eşitlemeler arasındaki sıklık<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
 ## <a name="get-started"></a>başlarken 
 
@@ -135,9 +135,9 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 - Birincil anahtar şu veri türlerine sahip olamaz: sql_variant, binary, varbinary, Image, XML.
 - Aşağıdaki veri türlerini birincil anahtar olarak kullanırken dikkatli olun, çünkü desteklenen duyarlık yalnızca ikinci-saat, DateTime, datetime2, DateTimeOffset olur.
 - Nesnelerin (veritabanları, tablolar ve sütunlar) adları, yazdırılabilir karakterler (.), sol köşeli ayraç ([) veya sağ köşeli ayraç (]) içeremez.
+- Tablo adı yazdırılabilir karakterler içeremez:! " # $ % ' ( ) * + -
 - Azure Active Directory kimlik doğrulaması desteklenmiyor.
 - Aynı ada sahip ancak farklı bir şemaya sahip tablolar varsa (örneğin, dbo. Customers ve Sales. Customers) yalnızca bir tablo eşitlemeye eklenebilir.
-- Tablo adında, ASCII değeri '-' değerinden küçük veya buna eşit olan karakterler bulunamaz.
 - User-Defined veri türlerine sahip sütunlar desteklenmez
 - Sunucuları farklı abonelikler arasında taşımak desteklenmez. 
 
@@ -150,7 +150,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örnek:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
 
 - Hesaplanan sütunlar.
 - Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.
@@ -166,7 +166,7 @@ Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları e�
 | Bir eşitleme grubundaki tablolar                                          | 500                    | Birden çok eşitleme grubu oluşturma |
 | Bir eşitleme grubundaki tablodaki sütunlar                              | 1000                   |                             |
 | Tablodaki veri satırı boyutu                                        | 24 MB                  |                             |
-| En az eşitleme aralığı                                           | 5 dakika              |                             |
+| En düşük eşitleme sıklığı aralığı                                 | 5 dakika              |                             |
 
 > [!NOTE]
 > Yalnızca bir eşitleme grubu varsa, tek bir eşitleme grubunda 30 ' a kadar uç nokta olabilir. Birden fazla eşitleme grubu varsa, tüm eşitleme gruplarındaki bitiş noktalarının toplam sayısı 30 ' u aşamaz. Bir veritabanı birden çok eşitleme grubuna aitse, birden fazla uç nokta olarak sayılır.

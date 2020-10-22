@@ -93,7 +93,7 @@
 - name: Başvurular
   items:
     - name: REST API belgeleri
-      href: 'https://docs.microsoft.com/rest/api/azure/'
+      href: 'https://docs.microsoft.com/rest/api/communication/'
     - name: Arama kitaplığı (Android/Java)
       href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
     - name: Arama kitaplığı (JS)

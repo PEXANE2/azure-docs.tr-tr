@@ -95,6 +95,10 @@
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Ağlar arası bağlantı
       href: cross-network-connectivity.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Güvenlik öznitelikleri
       href: expressroute-security-controls.md
     - name: ExpressRoute üzerinden BFD
@@ -269,5 +273,3 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: Genel eşlemeyi oluşturma ve değiştirme
           href: about-public-peering.md
-    - name: Güvenlik temeli
-      href: security-baseline.md

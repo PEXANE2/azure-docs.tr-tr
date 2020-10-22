@@ -1,5 +1,5 @@
 - name: CloudSimple tarafından sunulan VMware Çözümü
-  href: /azure/vmware-cloudsimple
+  href: ./index.md
   items:
     - name: Genel Bakış
       items:
