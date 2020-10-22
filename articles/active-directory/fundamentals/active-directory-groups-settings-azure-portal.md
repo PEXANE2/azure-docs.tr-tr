@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797534"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369140"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Active Directory kullanarak Grup bilgilerinizi düzenleme
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) kullanarak, adını, açıklamasını veya üy
     
     - **Üyelik türü.** Üyelik türünü değiştirin. Kullanılabilir çeşitli üyelik türleri hakkında daha fazla bilgi için bkz. [nasıl yapılır: temel Grup oluşturma ve Azure Active Directory portalını kullanarak üye ekleme](active-directory-groups-create-azure-portal.md).
     
-    - **Nesne KIMLIĞI.** Nesne KIMLIĞINI değiştiremezsiniz, ancak gruba ait PowerShell komutlarınız için kullanmak üzere kopyalayabilirsiniz. PowerShell cmdlet 'leri kullanma hakkında daha fazla bilgi için bkz. [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet 'leri](../users-groups-roles/groups-settings-v2-cmdlets.md).
+    - **Nesne KIMLIĞI.** Nesne KIMLIĞINI değiştiremezsiniz, ancak gruba ait PowerShell komutlarınız için kullanmak üzere kopyalayabilirsiniz. PowerShell cmdlet 'leri kullanma hakkında daha fazla bilgi için bkz. [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet 'leri](../enterprise-users/groups-settings-v2-cmdlets.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
@@ -64,7 +64,7 @@ Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
 
 - [Gruba üye ekleme veya gruptan üye kaldırma](active-directory-groups-members-azure-portal.md)
 
-- [Bir gruptaki kullanıcılar için dinamik kuralları yönetme](../users-groups-roles/groups-create-rule.md)
+- [Bir gruptaki kullanıcılar için dinamik kuralları yönetme](../enterprise-users/groups-create-rule.md)
 
 - [Bir grubun üyeliklerini yönetme](active-directory-groups-membership-azure-portal.md)
 

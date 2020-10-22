@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499764"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369412"
 ---
 # <a name="troubleshoot-the-process-server"></a>İşlem sunucusunda sorun giderme
 
@@ -54,11 +54,11 @@ Sorun gidermenin ilk adımı, işlem sunucusunun sistem durumunu ve durumunu den
 ![Sağlam][green] | Yok  | İşlem sunucusu bağlandı ve sağlıklı.
 ![Uyarı][yellow] | Belirtilen hizmetler çalışmıyor. | 1. hizmetlerin çalıştığını denetleyin.<br/> 2. hizmetler beklendiği gibi çalışıyorsa, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 ![Uyarı][yellow]  | Son 15 dakika boyunca %80 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
-![Kritik][red] |  Son 15 dakika boyunca %95 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
+![Kritik][red] |  Son 15 dakika boyunca %95 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](./site-recovery-deployment-planner.md) çalıştırın.
 ![Uyarı][yellow] | Son 15 dakika boyunca bellek kullanımı >% 80. |  1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. uyarıyla ilişkili yönergeleri izleyin.<br/> 4. sorun devam ederse, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
-![Kritik][red] | Son 15 dakika boyunca bellek kullanımı >% 95. | 1. yeni makineler eklemeyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı düşünün.<br/> 2. uyarıyla ilişkili yönergeleri izleyin.<br/> 3.4. Sorun devam ederse, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltma sorunlarını [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
+![Kritik][red] | Son 15 dakika boyunca bellek kullanımı >% 95. | 1. yeni makineler eklemeyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı düşünün.<br/> 2. uyarıyla ilişkili yönergeleri izleyin.<br/> 3.4. Sorun devam ederse, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltma sorunlarını [dağıtım planlayıcısı](./site-recovery-deployment-planner.md) çalıştırın.
 ![Uyarı][yellow] | Son 15 dakika boyunca %30 < önbellek klasörü boş alanı. | 1. yeni makineler eklemeyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı düşünün.<br/>2. işlem sunucusunu kullanan VM sayısının [yönergelere](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalandığını denetleyin.<br/> 3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
-![Kritik][red] |  Son 15 dakika için < boş alan %25 | 1. bu sorun için uyarıyla ilişkili yönergeleri izleyin.<br/> 2.3. [Bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 3. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
+![Kritik][red] |  Son 15 dakika için < boş alan %25 | 1. bu sorun için uyarıyla ilişkili yönergeleri izleyin.<br/> 2.3. [Bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 3. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](./site-recovery-deployment-planner.md) çalıştırın.
 ![Kritik][red] | 15 dakika veya daha fazlası için işlem sunucusundan sinyal yok. Tmansvs hizmeti yapılandırma sunucusuyla iletişim kurmuyor. | 1) işlem sunucusunun çalışır ve çalışıyor olduğunu denetleyin.<br/> 2. tmassvc 'in işlem sunucusunda çalışıp çalışmadığını denetleyin.<br/> 3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 
 

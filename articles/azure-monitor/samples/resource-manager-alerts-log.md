@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f3e965b1141bb7cf49b191c828b7dd0f3ed3fba8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 623ad70572683103edb0a824830be6bbba6c8c35
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278371"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369055"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarısı kuralları için şablon örnekleri Kaynak Yöneticisi
 Bu makale, Azure Izleyici 'de günlük sorgusu uyarıları oluşturmak ve yapılandırmak için [Azure Resource Manager şablonlarının](../../azure-resource-manager/templates/template-syntax.md) örneklerini içerir. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
@@ -36,7 +36,7 @@ Aşağıdaki örnek, bir [dizi sonuç uyarı kuralı](../platform/alerts-unified
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Resource ID of the Log Analytisc workspace."
+                "description": "Resource ID of the Log Analytics workspace."
             }
         },
         "location": {

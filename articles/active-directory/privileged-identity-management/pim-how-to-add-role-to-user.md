@@ -13,16 +13,16 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69884b9e07172e9b25f4c14884be8713da23cbdb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533851"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369837"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri atama
 
-Azure Active Directory (Azure AD) ile genel yönetici **kalıcı** Azure AD yönetici rolü atamaları yapabilir. Bu rol atamaları [Azure Portal](../users-groups-roles/directory-assign-admin-roles.md) veya [PowerShell komutları](/powershell/module/azuread#directory_roles)kullanılarak oluşturulabilir.
+Azure Active Directory (Azure AD) ile genel yönetici **kalıcı** Azure AD yönetici rolü atamaları yapabilir. Bu rol atamaları [Azure Portal](../roles/permissions-reference.md) veya [PowerShell komutları](/powershell/module/azuread#directory_roles)kullanılarak oluşturulabilir.
 
 Azure AD Privileged Identity Management (PıM) hizmeti, ayrıcalıklı rol yöneticilerinin kalıcı yönetici rolü atamaları yapmasına de olanak tanır. Ayrıca, ayrıcalıklı rol yöneticileri, kullanıcıların Azure AD yönetici rollerine **uygun** olmasını sağlayabilir. Uygun bir yönetici, bu rolü gerektiğinde etkinleştirebilir ve sonra izinlerinin süresi bittiğinde sona erer.
 
@@ -30,7 +30,7 @@ Azure AD Privileged Identity Management (PıM) hizmeti, ayrıcalıklı rol yöne
 
 2019 Kasım 'Dan başlayarak Privileged Identity Management Azure AD rolleri bölümü, Azure Kaynak rolleri deneyimleriyle eşleşen yeni bir sürüme güncelleştiriliyor. Bu, ek özellikleri [ve var olan API üzerinde yapılan değişiklikleri](azure-ad-roles-features.md#api-changes)de oluşturur. Yeni sürüm kullanıma sunulurken, bu makalede izlediğiniz yordamlar Şu anda sahip olduğunuz Privileged Identity Management sürümüne bağlıdır. Hangi Privileged Identity Management sürümünü istediğinizi öğrenmek için bu bölümdeki adımları izleyin. Privileged Identity Management Sürümünüzü öğrendikten sonra bu makaledeki sürümle eşleşen yordamları seçebilirsiniz.
 
-1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolünde olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Ayrıcalıklı rol yöneticisi](../roles/permissions-reference.md#privileged-role-administrator) rolünde olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
 
   [![Azure AD > Privileged Identity Management seçin.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -41,7 +41,7 @@ Azure AD Privileged Identity Management (PıM) hizmeti, ayrıcalıklı rol yöne
 
 Bir kullanıcıyı Azure AD yöneticisi rolüne uygun hale getirmek için bu adımları izleyin.
 
-1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolünün üyesi olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Ayrıcalıklı rol yöneticisi](../roles/permissions-reference.md#privileged-role-administrator) rolünün üyesi olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 
     Privileged Identity Management yönetmek için başka bir yöneticiye erişim verme hakkında daha fazla bilgi için bkz. [Privileged Identity Management yönetmek için diğer yöneticilere erişim verme](pim-how-to-give-access-to-pim.md).
 
@@ -77,7 +77,7 @@ Bir kullanıcıyı Azure AD yöneticisi rolüne uygun hale getirmek için bu ad�
 
 ## <a name="assign-a-role-with-restricted-scope"></a>Kısıtlanmış kapsama sahip bir rol atama
 
-Belirli roller için, verilen izinlerin kapsamı, tek bir yönetici birimi, hizmet sorumlusu veya uygulamayla kısıtlanabilir. Bu yordam bir yönetim birimi kapsamına sahip bir rol atarken bir örnektir. Yönetim birimi aracılığıyla kapsamı destekleyen rollerin listesi için bkz. [bir yönetim birimine kapsamlı roller atama](../users-groups-roles/roles-admin-units-assign-roles.md). Bu özellik şu anda Azure AD kuruluşları için kullanıma alınıyor.
+Belirli roller için, verilen izinlerin kapsamı, tek bir yönetici birimi, hizmet sorumlusu veya uygulamayla kısıtlanabilir. Bu yordam bir yönetim birimi kapsamına sahip bir rol atarken bir örnektir. Yönetim birimi aracılığıyla kapsamı destekleyen rollerin listesi için bkz. [bir yönetim birimine kapsamlı roller atama](../roles/admin-units-assign-roles.md). Bu özellik şu anda Azure AD kuruluşları için kullanıma alınıyor.
 
 1. [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) ayrıcalıklı rol yöneticisi izinleriyle oturum açın.
 
@@ -97,7 +97,7 @@ Belirli roller için, verilen izinlerin kapsamı, tek bir yönetici birimi, hizm
    - Rol kapsamını seçin (Bu durumda yönetim birimleri)
    - Kapsam için bir yönetim birimi seçin
 
-Yönetim birimleri oluşturma hakkında daha fazla bilgi için bkz. [yönetim birimleri ekleme ve kaldırma](../users-groups-roles/roles-admin-units-manage.md).
+Yönetim birimleri oluşturma hakkında daha fazla bilgi için bkz. [yönetim birimleri ekleme ve kaldırma](../roles/admin-units-manage.md).
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Var olan bir rol atamasını güncelleştirme veya kaldırma
 

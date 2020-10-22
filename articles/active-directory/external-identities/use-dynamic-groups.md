@@ -11,19 +11,19 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b21f14bc6f80445d1119f34d24281d764fff38c8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87909951"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369174"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dinamik Gruplar ve Azure Active Directory B2B işbirliği
 
 ## <a name="what-are-dynamic-groups"></a>Dinamik Gruplar nelerdir?
 Azure Active Directory (Azure AD) için güvenlik grubu üyeliğinin dinamik yapılandırması [Azure Portal](https://portal.azure.com)kullanılabilir. Yöneticiler, Azure AD 'de oluşturulan grupları Kullanıcı özniteliklerine (userType, departmanı veya ülke/bölge gibi) göre doldurmak için kurallar ayarlayabilir. Üyeler, özniteliklerine göre otomatik olarak bir güvenlik grubuna eklenebilir veya kaldırılabilir. Bu gruplar, uygulamalara veya bulut kaynaklarına (SharePoint siteleri, belgeler) erişim sağlayabilir ve üyelere lisans atayabilir. [Azure Active Directory Içindeki adanmış gruplarda](../active-directory-accessmanagement-dedicated-groups.md)dinamik gruplar hakkında daha fazla bilgi edinin.
 
-Dinamik gruplar oluşturmak ve kullanmak için uygun [Azure AD Premium P1 veya P2 lisansı](https://azure.microsoft.com/pricing/details/active-directory/) gerekir. [Azure Active Directory içindeki dinamik grup üyeliği için öznitelik tabanlı kurallar oluşturma](../users-groups-roles/groups-dynamic-membership.md)makalesindeki daha fazla bilgi edinin.
+Dinamik gruplar oluşturmak ve kullanmak için uygun [Azure AD Premium P1 veya P2 lisansı](https://azure.microsoft.com/pricing/details/active-directory/) gerekir. [Azure Active Directory içindeki dinamik grup üyeliği için öznitelik tabanlı kurallar oluşturma](../enterprise-users/groups-dynamic-membership.md)makalesindeki daha fazla bilgi edinin.
 
 ## <a name="creating-an-all-users-dynamic-group"></a>"Tüm kullanıcılar" dinamik grubu oluşturma
 Bir üyelik kuralı kullanarak bir kiracının içindeki tüm kullanıcıları içeren bir grup oluşturabilirsiniz. Kullanıcılar gelecekte kiracıya eklendiğinde veya kiracıdan çıkarıldığında grubun üyeliği otomatik olarak ayarlanır.

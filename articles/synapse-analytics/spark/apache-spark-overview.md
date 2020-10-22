@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3c269f07c177d99e46dcc343b80979835b429b68
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87498931"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369361"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark
 
@@ -45,7 +45,7 @@ Azure 'daki Spark havuzları, tam olarak yönetilen bir Spark hizmeti sunar. SYN
 
 Azure SYNAPSE 'te Spark havuzları, havuzlarda varsayılan olarak bulunan aşağıdaki bileşenleri içerir.
 
-- [Spark Core](https://spark.apache.org/docs/latest/). Spark Core, Spark SQL, GraphX ve MLlib içerir.
+- [Spark Core](https://spark.apache.org/docs/2.4.5/). Spark Core, Spark SQL, GraphX ve MLlib içerir.
 - [Anaconda](https://docs.continuum.io/anaconda/)
 - [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
 - [Nteryasası Not defteri](https://nteract.io/)
@@ -81,7 +81,7 @@ SYNAPSE Analytics 'te Apache Spark hakkında daha fazla bilgi edinmek için aşa
 - [Hızlı başlangıç: Azure 'da Spark havuzu oluşturma SYNAPSE](../quickstart-create-apache-spark-pool-portal.md)
 - [Hızlı başlangıç: Apache Spark Not defteri oluşturma](../quickstart-apache-spark-notebook.md)
 - [Öğretici: Apache Spark kullanarak makine öğrenimi](./apache-spark-machine-learning-mllib-notebook.md)
-- [Resmi belgeleri Apache Spark](https://spark.apache.org/docs/latest/)
+- [Resmi belgeleri Apache Spark](https://spark.apache.org/docs/2.4.5/)
 
 > [!NOTE]
 > Bazı resmi Apache Spark belgeleri Spark konsolunu kullanmaya dayanır, bu Azure SYNAPSE Spark üzerinde kullanılamaz, bunun yerine not defteri veya IntelliJ deneyimlerini kullanın
