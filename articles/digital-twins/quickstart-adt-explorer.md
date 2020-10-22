@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 09d5ece0afdd5abe3da5ebdeb6a7ae290e1ccf3d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331575"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372336"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -319,6 +319,12 @@ Bu hızlı başlangıçta çalışmayı kaydırmak için, önce çalışan konso
 Azure dijital TWINS öğreticilerine devam etmeyi planlıyorsanız, bu hızlı başlangıçta kullanılan örnek bu makaleler için yeniden kullanılabilir ve bunu kaldırmanız gerekmez.
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
+
+Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azure Active Directory Uygulama kaydını silin:
+
+```azurecli
+az ad app delete --id <your-application-ID>
+```
 
 Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize silin (_**Azure_Digital_Twins__ADT__explorer**_ ve _**Azure_Digital_Twins_end_to_end_samples**_). Hem daraltılmış hem de daraltılmış sürümleri silmeniz gerekebilir.
 

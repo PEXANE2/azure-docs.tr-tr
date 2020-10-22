@@ -5,6 +5,8 @@
   items:
     - name: Uygulama sağlama nedir?
       href: user-provisioning.md
+    - name: Docs’taki yenilikler?
+      href: whats-new-docs.md
 - name: Öğreticiler
   expanded: true
   items:
