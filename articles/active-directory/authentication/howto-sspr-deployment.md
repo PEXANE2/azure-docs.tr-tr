@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657226"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363734"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
@@ -105,7 +105,7 @@ Kullanıcılar parolayı sıfırlamak için [parola sıfırlama portalına](http
 
 Note: [Parola karması eşitlemesi (PHS)](../hybrid/whatis-phs.md) devre dışı bırakılmış kullanıcılar IÇIN, SSPR parolaları yalnızca şirket içi Active Directory depolar.
 
-### <a name="best-practices"></a>Önerilen uygulamalar
+### <a name="best-practices"></a>En iyi uygulamalar
 
 Kullanıcıların, kuruluştaki başka bir popüler uygulama veya hizmetle birlikte SSPR 'yi dağıtarak hızla kaydolmaya yardımcı olabilirsiniz. Bu eylem, büyük bir oturum açma hacmi oluşturur ve kayıt işlemini yeniden dener.
 
@@ -154,14 +154,14 @@ SSPR 'yi önerilen değerlerle birlikte etkinleştirmek için aşağıdaki ayarl
 | **SSPR özellikleri** | Self servis parola sıfırlama etkin | Pilot için **Seçili** grup ve **üretim için** |
 | **Kimlik doğrulama yöntemleri** | Kaydolmak için gereken kimlik doğrulama yöntemleri | Sıfırlama için her zaman 1 daha fazla |
 |   | Sıfırlamak için gereken kimlik doğrulama yöntemleri | Bir veya iki |
-| **Kaydını** | Kullanıcılardan oturum açarken kaydolmalarını iste | Evet |
+| **Kaydını** | Kullanıcılardan oturum açarken kaydolmalarını iste | Yes |
 |   | Kullanıcıların kimlik doğrulaması bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı | 90 – 180 gün |
-| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Evet |
-|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Evet |
-| **Özelleştirme** | Yardım masası bağlantısını Özelleştir | Evet |
+| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Yes |
+|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Yes |
+| **Özelleştirme** | Yardım masası bağlantısını Özelleştir | Yes |
 |   | Özel yardım masası e-postası veya URL 'SI | Destek sitesi veya e-posta adresi |
-| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Evet |
-|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Evet |
+| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Yes |
+|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Yes |
 
 ### <a name="sspr-properties"></a>SSPR özellikleri
 
@@ -254,7 +254,7 @@ SSPR genellikle kullanıcı sorunları oluşturmadığından, oluşabilecek soru
 
 Destek takımınızın başarısını etkinleştirmek için, kullanıcılarınızın aldığınız sorulara dayalı bir SSS oluşturabilirsiniz. İşte birkaç örnek:
 
-| Senaryolar| Açıklama |
+| Senaryolar| Description |
 | - | - |
 | Kullanıcının kayıtlı bir kimlik doğrulama yöntemi yok| Kullanıcı parolasını sıfırlamaya çalışıyor ancak kaydoldukları kimlik doğrulama yöntemlerinden hiçbirine sahip değil (örnek: kendi cep telefonlarını evde ve e-postaya erişemez) |
 | Kullanıcı Office veya cep telefonunda bir metin veya çağrı almıyor| Kullanıcı, kimliğini metin veya çağrı yoluyla doğrulamaya çalışıyor ancak bir metin/çağrı almıyor. |
@@ -313,7 +313,7 @@ Azure AD, denetimler ve raporlar aracılığıyla SSPR performanstan ilgili ek b
 SSPR performansını ölçmek için Azure portal önceden oluşturulmuş raporları kullanabilirsiniz. Uygun şekilde lisanslandıysanız özel sorgular da oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure AD parola yönetimi Için raporlama seçenekleri](./howto-sspr-reporting.md)
 
 > [!NOTE]
->  [Genel yönetici](../users-groups-roles/directory-assign-admin-roles.md)olmanız ve bu verilerin kuruluşunuz için toplanması için kabul etmeniz gerekir. Kabul etmek için, Raporlama sekmesini veya Azure portalındaki denetim günlüklerini en az bir kez ziyaret etmeniz gerekir. Bu durumda, veriler kuruluşunuz için toplanmaz.
+>  [Genel yönetici](../roles/permissions-reference.md)olmanız ve bu verilerin kuruluşunuz için toplanması için kabul etmeniz gerekir. Kabul etmek için, Raporlama sekmesini veya Azure portalındaki denetim günlüklerini en az bir kez ziyaret etmeniz gerekir. Bu durumda, veriler kuruluşunuz için toplanmaz.
 
 Kayıt ve parola sıfırlama için denetim günlükleri 30 gün boyunca kullanılabilir. Kuruluşunuzun içindeki güvenlik denetimi daha uzun bekletme gerektiriyorsa, günlüklerin [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), splunk veya arctıma gıbı bır SIEM aracına aktarılması ve kullanılması gerekir.
 

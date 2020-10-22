@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070393"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363666"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
@@ -79,10 +79,10 @@ Bulut HR uygulamasını Azure AD Kullanıcı sağlama tümleştirmesi olarak yap
 
 Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azure AD 'ye sağlanan her kullanıcı için geçerli Azure AD Premium P1 veya daha yüksek bir abonelik lisansı gerekir. Bulut HR uygulamasına ait hatalı sayıda lisans, Kullanıcı sağlama sırasında hatalara yol açabilir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-- Azure AD Connect sağlama aracısını yapılandırmak için Azure AD [karma kimlik yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  .
-- Azure portal sağlama uygulamasını yapılandırmak için Azure AD [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) rolü
+- Azure AD Connect sağlama aracısını yapılandırmak için Azure AD [karma kimlik yöneticisi](../roles/permissions-reference.md#hybrid-identity-administrator)  .
+- Azure portal sağlama uygulamasını yapılandırmak için Azure AD [Uygulama Yöneticisi](../roles/permissions-reference.md#application-administrator) rolü
 - Bulut HR uygulamasının test ve üretim örneği.
 - Bulut HR uygulamasındaki Yönetici izinleri bir sistem tümleştirme kullanıcısı oluşturur ve test amacıyla çalışan verilerini test etmek için değişiklikler yapar.
 - Active Directory Kullanıcı sağlaması için, Azure AD Connect sağlama aracısını barındırmak üzere .NET 4.7.1 + Runtime ile Windows Server 2012 veya üstünü çalıştıran bir sunucu gerekir
@@ -110,7 +110,7 @@ Aşağıdaki örnek, genel karma ortamlar için uçtan uca Kullanıcı sağlama 
 
 #### <a name="description-of-workflow"></a>İş akışının açıklaması
 
-Diyagramda aşağıdaki anahtar adımları belirtilmiştir:  
+Diyagramda aşağıdaki anahtar adımları belirtilmiştir:  
 
 1. **HR ekibi** , bulut HR uygulama kiracısında işlemleri gerçekleştirir.
 2. **Azure AD sağlama hizmeti** , bulut HR App kiracısından zamanlanan döngüleri çalıştırır ve Active Directory eşitleme için işlenmesi gereken değişiklikleri belirler.

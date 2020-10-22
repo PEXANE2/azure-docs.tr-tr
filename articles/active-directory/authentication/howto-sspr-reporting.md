@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92b9d3c51a9240b7dfc0f8e815735f0e1ecd4dd3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968319"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363615"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD parola yönetimi için raporlama seçenekleri
 
@@ -27,7 +27,7 @@ Dağıtımdan sonra, birçok kuruluş, kendi kendine parola sıfırlama (SSPR) h
 Aşağıdaki sorular [Azure Portal](https://portal.azure.com/)var olan raporlar tarafından yanıtlanabilmelidir:
 
 > [!NOTE]
-> [Genel yönetici](../users-groups-roles/directory-assign-admin-roles.md)olmanız ve bu verilerin kuruluşunuz adına toplanması için kabul etmeniz gerekir. Kabul etmek için **Raporlama** sekmesini veya denetim günlüklerini en az bir kez ziyaret etmeniz gerekir. Bu durumda, veriler kuruluşunuz için toplanmaz.
+> [Genel yönetici](../roles/permissions-reference.md)olmanız ve bu verilerin kuruluşunuz adına toplanması için kabul etmeniz gerekir. Kabul etmek için **Raporlama** sekmesini veya denetim günlüklerini en az bir kez ziyaret etmeniz gerekir. Bu durumda, veriler kuruluşunuz için toplanmaz.
 >
 
 * Parola sıfırlama için kaç kişi kaydettirildi?

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107819"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364125"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -135,7 +135,7 @@ Kullanıcıların, Kullanıcı uyumsuzluklıkları azaltmak, destek birimini en 
 
 Azure AD PıM 'yi etkinleştirin, ardından Yönetici rolleri atanmış kullanıcıları görüntüleyin ve bu rollerdeki gereksiz hesapları kaldırın. Kalan ayrıcalıklı kullanıcılar için bunları kalıcı 'dan uygun hale taşıyın. Son olarak, bu ayrıcalıklı rollere erişim kazanmak istediklerinde, gerekli değişiklik denetimiyle bu şekilde güvenli bir şekilde yapabilecekleri konusunda emin olmak için uygun ilkeler oluşturun.
 
-Ayrıcalıklı hesap işleminizi dağıtmanın bir parçası olarak, kendinizi kilitlerseniz Azure AD 'ye erişiminizin devam ettiğinden emin olmak için [en iyi iki acil durum hesabı oluşturmak için en iyi](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) uygulamayı izleyin.
+Ayrıcalıklı hesap işleminizi dağıtmanın bir parçası olarak, kendinizi kilitlerseniz Azure AD 'ye erişiminizin devam ettiğinden emin olmak için [en iyi iki acil durum hesabı oluşturmak için en iyi](../../active-directory/roles/security-planning.md) uygulamayı izleyin.
 
 ## <a name="step-3---automate-threat-response"></a>3. adım-tehdit yanıtını otomatikleştirin
 
@@ -193,7 +193,7 @@ Azure AD 'nin [self servis parola sıfırlama (SSPR)](../../active-directory/aut
 
 ### <a name="implement-self-service-group-and-application-access"></a>Self Servis grubunu ve uygulama erişimini Uygula
 
-Azure AD, yönetici olmayan kaynaklara erişimi, güvenlik grupları, Microsoft 365 grupları, uygulama rolleri ve erişim paketi kataloglarının kullanımını yönetme olanağı sağlar.  [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md) , Grup sahiplerinin bir yönetim rolü atanmasına gerek kalmadan kendi gruplarını yönetmesine olanak sağlar. Kullanıcılar, isteklerini işlemek için yöneticilere güvenmek zorunda kalmadan Microsoft 365 grupları oluşturup yönetebilir ve kullanılmayan gruplar otomatik olarak sona erer.  [Azure AD Yetkilendirme Yönetimi](../../active-directory/governance/entitlement-management-overview.md) , kapsamlı erişim isteği iş akışlarıyla ve otomatik süre dolduktan sonra temsilciyi ve görünürlüğü daha da sunar.  Yönetici olmayan kullanıcılar için kendi erişim paketlerini, sahip oldukları gruplar, takımlar, uygulamalar ve SharePoint Online siteleri için, çalışanların yöneticileri ve iş ortağı sponsorlarını onaylayan olarak yapılandırma dahil olmak üzere, erişimi onaylaması gereken özel ilkelerle birlikte yapılandırabilirsiniz.
+Azure AD, yönetici olmayan kaynaklara erişimi, güvenlik grupları, Microsoft 365 grupları, uygulama rolleri ve erişim paketi kataloglarının kullanımını yönetme olanağı sağlar.  [Self servis grup yönetimi](../../active-directory/enterprise-users/groups-self-service-management.md) , Grup sahiplerinin bir yönetim rolü atanmasına gerek kalmadan kendi gruplarını yönetmesine olanak sağlar. Kullanıcılar, isteklerini işlemek için yöneticilere güvenmek zorunda kalmadan Microsoft 365 grupları oluşturup yönetebilir ve kullanılmayan gruplar otomatik olarak sona erer.  [Azure AD Yetkilendirme Yönetimi](../../active-directory/governance/entitlement-management-overview.md) , kapsamlı erişim isteği iş akışlarıyla ve otomatik süre dolduktan sonra temsilciyi ve görünürlüğü daha da sunar.  Yönetici olmayan kullanıcılar için kendi erişim paketlerini, sahip oldukları gruplar, takımlar, uygulamalar ve SharePoint Online siteleri için, çalışanların yöneticileri ve iş ortağı sponsorlarını onaylayan olarak yapılandırma dahil olmak üzere, erişimi onaylaması gereken özel ilkelerle birlikte yapılandırabilirsiniz.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri uygulama
 

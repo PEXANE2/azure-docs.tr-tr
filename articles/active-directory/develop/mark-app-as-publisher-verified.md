@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258345"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363462"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Uygulamanızı yayımcısı doğrulandı olarak işaretleme
 
@@ -42,7 +42,7 @@ Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla a
 
 1. Yayımcı doğrulanmış olarak işaretlemek istediğiniz uygulamalarda ve Iş Ortağı Merkezi 'nde MPN hesabında değişiklik yapma yetkisi olan bir kuruluş (Azure AD) hesabına [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) 'ı kullanarak oturum açtığınızdan emin olun.
 
-    - Azure AD 'de bu kullanıcı şu [rollerden](../users-groups-roles/directory-assign-admin-roles.md)birine üye olmalıdır: uygulama Yöneticisi, bulut uygulaması Yöneticisi, genel yönetici. 
+    - Azure AD 'de bu kullanıcı şu [rollerden](../roles/permissions-reference.md)birine üye olmalıdır: uygulama Yöneticisi, bulut uygulaması Yöneticisi, genel yönetici. 
 
     - Iş Ortağı Merkezi 'nde bu kullanıcının şu [rollere](/partner-center/permissions-overview)sahip olması gerekir: MPN Yöneticisi, hesaplar Yöneticisi veya genel yönetici (Bu, Azure AD 'de ana kopyalı bir paylaşılan roldür). 
 
