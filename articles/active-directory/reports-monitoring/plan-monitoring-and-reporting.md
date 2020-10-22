@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311233"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362408"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory raporlama ve izleme dağıtımını planlayın
 
@@ -99,7 +99,7 @@ Raporlama ve izleme, iş gereksinimlerinizi karşılamak, kullanım desenleriyle
 * İş ihtiyaçlarını karşılamak için iyi
 * Uygulanamaz
 
-|Alan |Açıklama |
+|Alan |Description |
 |-|-|
 |Bekletme| **30 günden uzun süre bekletmesi günlüğe kaydedilir**. Yasal veya iş gereksinimleri nedeniyle, Denetim günlüklerini depolamak ve Azure AD 'de oturum açmak 30 günden daha uzun bir süre için gereklidir. |
 |Analiz| **Günlüklerin aranabilir olması gerekir**. Depolanan günlüklerin Analitik araçlarla aranabilir olması gerekir. |
@@ -151,7 +151,7 @@ Aşağıdaki roller Azure AD raporlarını okuyabilir:
 
 * Rapor Okuyucusu
 
-[Azure AD Yönetim rolleri](../users-groups-roles/directory-assign-admin-roles.md)hakkında daha fazla bilgi edinin.
+[Azure AD Yönetim rolleri](../roles/permissions-reference.md)hakkında daha fazla bilgi edinin.
 
 *Hesap güvenliğinin tehlikeye düşmesi riskini azaltmak Için her zaman en az ayrıcalık kavramını uygulayın*. Kuruluşunuzun güvenliğini sağlamak için [Privileged Identity Management](../privileged-identity-management/pim-configure.md) uygulamayı düşünün.
 

@@ -4,12 +4,12 @@ description: Azure Site Recovery ile VM 'Leri/fiziksel sunucuları Azure 'a devr
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6737f64773f91ede1631d42cd7f28c7d961c0454
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317897"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368630"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinden Azure’a yük devretme çalıştırma
 
@@ -127,8 +127,8 @@ RDP veya SSH kullanarak yük devretmeden sonra oluşturulan Azure VM 'lerine ba�
 
 **Yük devretme** | **Konum** | **Eylemler**
 --- | --- | ---
-**Windows çalıştıran Azure VM** | Yük devretmeden sonra Azure VM |  VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının, RDP bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM 'nin ekran görüntüsünü doğrulamak için **önyükleme tanılamalarını** denetleyin.<br/><br/> Bağlanamıyorsanız, sanal makinenin çalıştığından emin olun ve bu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)gözden geçirin.
-**Linux çalıştıran Azure VM** | Yük devretmeden sonra Azure VM | Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının SSH bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> VM 'nin ekran görüntüsü için **önyükleme tanılamayı** denetleyin.<br/><br/>
+**Windows çalıştıran Azure VM** | Yük devretmeden sonra Azure VM |  VM için bir [ortak IP adresi ekleyin](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr).<br/><br/> Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının, RDP bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM 'nin ekran görüntüsünü doğrulamak için **önyükleme tanılamalarını** denetleyin.<br/><br/> Bağlanamıyorsanız, sanal makinenin çalıştığından emin olun ve bu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)gözden geçirin.
+**Linux çalıştıran Azure VM** | Yük devretmeden sonra Azure VM | Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının SSH bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM için bir [ortak IP adresi ekleyin](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr).<br/><br/> VM 'nin ekran görüntüsü için **önyükleme tanılamayı** denetleyin.<br/><br/>
 
 Yük devretme sonrasında karşılaştığınız bağlantı sorunlarını gidermek için [burada](site-recovery-failover-to-azure-troubleshoot.md) anlatılan adımları izleyin.
 
@@ -149,4 +149,3 @@ Yük devretmesini tamamladıktan sonra, Azure sanal makinelerini şirket içi si
 - VMware yeniden koruma ve yeniden çalışma için [hazırlanma](vmware-azure-reprotect.md) .
 - [Yeniden başarısız oldu](hyper-v-azure-failback.md) Hyper-V VM 'Leri.
 - Fiziksel sunucular için yük devretme ve yeniden çalışma işlemi [hakkında bilgi edinin](physical-to-azure-failover-failback.md) .
-

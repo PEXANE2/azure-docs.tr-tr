@@ -3,12 +3,12 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için bir VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 607ff3cb04002883b49b4c5bc37d312cbb83c8e5
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: c78eae11497702054bb54b5980228fd0a3962577
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173635"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367780"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -64,7 +64,9 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
 * Şirket içi ve Azure VMware çözümü SDDC ExpressRoute devreleri arasında [Azure expressroute Global Reach](tutorial-expressroute-global-reach-private-cloud.md) yapılandırın.
 
-* Şirket içi bileşenler ve Azure VMware çözümü SDDC arasındaki iletişim için gereken tüm bağlantı noktaları açık olmalıdır. Daha fazla bilgi için bkz. [VMware HCX belgeleri](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html).
+* Şirket içi bileşenler ve Azure VMware çözümü SDDC arasındaki iletişim için [gereken tüm bağlantı noktaları](https://ports.vmware.com/home/VMware-HCX) açık olmalıdır.
+
+Daha fazla bilgi için bkz. [VMware HCX belgeleri](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html).
 
 
 ### <a name="ip-addresses"></a>IP adresleri
@@ -73,13 +75,13 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
    
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>VMware HCX bağlayıcı OVA 'yı şirket içinde dağıtma
 
->[!NOTE]
->Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağlayıcı OVA 'yı indirmeniz gerekir. 
+> [!NOTE]
+> Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağlayıcı OVA 'yı indirmeniz gerekir. 
 
 1. Bir tarayıcı penceresi açın, 443 numaralı bağlantı noktasındaki Azure VMware Çözüm HCX Yöneticisi ' nde `https://x.x.x.9` **cloudadmin** Kullanıcı kimlik bilgileriyle oturum açın ve ardından **destek**bölümüne gidin.
 
-   >[!TIP]
-   >Azure VMware çözümünde HCX bulut yöneticisinin IP adresini göz önünde edin. IP adresini belirlemek için, Azure VMware Çözüm bölmesinde bağlantıyı **Yönet**' e gidin  >  **Connectivity** ve ardından **HCX** sekmesini seçin. 
+   > [!TIP]
+   > Azure VMware çözümünde HCX bulut yöneticisinin IP adresini göz önünde edin. IP adresini belirlemek için, Azure VMware Çözüm bölmesinde bağlantıyı **Yönet**' e gidin  >  **Connectivity** ve ardından **HCX** sekmesini seçin. 
    >
    >VCenter parolası, özel bulutu ayarlarken tanımlanmıştır.
 
@@ -102,8 +104,8 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
 1. **İleri**' yi seçin, yapılandırmayı doğrulayın ve sonra HCX BAĞLAYıCı ova 'yı dağıtmak için **son** ' u seçin.
      
-   >[!NOTE]
-   >Genellikle, dağıtmakta olduğunuz VMware HCX Bağlayıcısı, kümenin yönetim ağı üzerine dağıtılır.  
+   > [!NOTE]
+   > Genellikle, dağıtmakta olduğunuz VMware HCX Bağlayıcısı, kümenin yönetim ağı üzerine dağıtılır.  
    
    > [!IMPORTANT]
    > Sanal Gereci el ile açmanız gerekebilir.  Bu durumda, sonraki adıma geçmeden önce 10-15 dakika bekleyin.
@@ -171,7 +173,7 @@ Azure VMware çözümünde VMware HCX bulut yöneticisini, veri merkezinizdeki V
 1. Daha önce not ettiğiniz uzak HCX URL 'sini veya IP adresini, Azure VMware Çözüm cloudadmin@vsphere.local Kullanıcı adı ' nı ve parolayı girin. Ardından **Bağlan**'ı seçin.
 
    > [!NOTE]
-   > Uzak HCX URL 'SI, yönetim ağının ". 9" adresi olan Azure VMware çözümünüz özel bulutunuzun HCX bulut Yöneticisi IP adresidir. Örneğin, vCenter 'niz 192.168.4.2 ise, HCX URL 'niz 192.168.4.9 olur.
+   > Bir site çiftini başarıyla oluşturmak için, HCX bağlayıcısının 443 numaralı bağlantı noktası üzerinden HCX Cloud Manager IP 'nize yönlendirilebilmesi gerekir.
    >
    > Parola, vCenter 'da oturum açmak için kullandığınız parolayla aynıdır. Bu parolayı ilk dağıtım ekranında tanımladınız.
 
@@ -272,6 +274,13 @@ Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: Işlem profi
 
 Artık şirket içi ve Azure VMware Çözüm SDDC arasında bir hizmet ağı yapılandırma zamanı.
 
+   > [!NOTE]
+   > Azure VMware çözümü ile başarılı bir şekilde hizmet ağı kurmak için:
+   >
+   > UDP 500/4500 bağlantı noktaları, şirket içi HCX bağlayıcı tanımlı ' yukarı bağlantı ' ağ profili adresiniz ve Azure VMware çözümü HCX bulutu ' yukarı ağ profili adresleri arasında açıktır.
+   >
+   > [HCX gereken bağlantı noktalarını](https://ports.vmware.com/home/VMware-HCX)gözden geçirdiğinizden emin olun.
+
 1. **Altyapı**altında, **Interconnect**  >  **Service kafesi**  >  **hizmet ağı oluştur**' u seçin.    
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-service-mesh.png" alt-text="OVF şablonuna göz atma ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/create-service-mesh.png":::
@@ -351,3 +360,4 @@ HCX kullanma hakkında daha fazla bilgi için VMware teknik belgelerine gidin:
 
 * [VMware HCX belgeleri](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [VMware HCX Ile sanal makineler geçiriliyor](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* [HCX gereken bağlantı noktaları](https://ports.vmware.com/home/VMware-HCX)

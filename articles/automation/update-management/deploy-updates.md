@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için güncelleştirme dağı
 description: Bu makalede, güncelleştirme dağıtımlarının nasıl planlanmakta ve bunların durumlarını incelemesinin nasıl yapılacağı açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 10/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8b9b3df024839007a349d3a412de4a70ff3a1cd2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223008"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369717"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
@@ -54,12 +54,12 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
     > [!NOTE]
     > Bir Azure VM veya Arc etkin sunucu seçtiyseniz bu seçenek kullanılamaz. İşletim sistemi otomatik olarak tanımlanır.
 
-5. **Güncelleştirilecek gruplar (Önizleme)** bölgesinde, dağıtımınıza dahil etmek üzere Azure VM 'lerin dinamik bir grubunu derlemek için aboneliği, kaynak gruplarını, konumları ve etiketleri birleştiren bir sorgu tanımlayın. Daha fazla bilgi için bkz. [güncelleştirme yönetimi ile dinamik grupları kullanma](configure-groups.md).
+5. Güncelleştirme bölgesi **grupları** ' nda, dağıtımınıza dahil etmek üzere Azure VM 'lerin dinamik bir grubunu derlemek için aboneliği, kaynak gruplarını, konumları ve etiketleri birleştiren bir sorgu tanımlayın. Daha fazla bilgi için bkz. [güncelleştirme yönetimi ile dinamik grupları kullanma](configure-groups.md).
 
     > [!NOTE]
     > Bir Azure VM veya Arc etkin sunucu seçtiyseniz bu seçenek kullanılamaz. Makine, zamanlanan dağıtım için otomatik olarak hedeflenir.
 
-6. **Güncelleştirilecek makineler** bölümünde, açılan menüden kaydedilmiş bir arama, içeri aktarılan bir grup seçin ya da **makineleri** seçin ve tek tek makineleri seçin. Bu seçenekle, her makine için Log Analytics aracısının hazır olduğunu görebilirsiniz. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md). Zamanlanmış bir güncelleştirme dağıtımında en fazla 500 makine ekleyebilirsiniz.
+6. **Güncelleştirilecek makineler** bölümünde, açılan menüden kaydedilmiş bir arama, içeri aktarılan bir grup seçin ya da **makineleri** seçin ve tek tek makineleri seçin. Bu seçenekle, her makine için Log Analytics aracısının hazır olduğunu görebilirsiniz. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md). Zamanlanmış bir güncelleştirme dağıtımında en fazla 1000 makine ekleyebilirsiniz.
 
     > [!NOTE]
     > Bir Azure VM veya Arc etkin sunucu seçtiyseniz bu seçenek kullanılamaz. Makine, zamanlanan dağıtım için otomatik olarak hedeflenir.
@@ -83,7 +83,7 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
 
 10. Dağıtımın bir kez mi gerçekleşeceğini, yoksa yinelenen bir zamanlamayı mı kullandığını belirtmek için **yinelemeyi** kullanın, sonra **Tamam**' ı seçin.
 
-11. **Ön betikler + betikleri sonrası (Önizleme)** bölgesinde, dağıtımdan önce ve sonra çalıştırılacak betikleri seçin. Daha fazla bilgi için bkz. [betikleri ve son betikleri yönetme](pre-post-scripts.md).
+11. **Ön betikler + betikleri sonrası** bölgesinde, dağıtımdan önce ve sonra çalıştırılacak betikleri seçin. Daha fazla bilgi için bkz. [betikleri ve son betikleri yönetme](pre-post-scripts.md).
 
 12. Güncelleştirmelerin yüklenmesi için izin verilen süreyi belirtmek için **bakım penceresi (dakika)** alanını kullanın. Bakım penceresi belirtirken aşağıdaki ayrıntıları göz önünde bulundurun:
 
@@ -111,7 +111,7 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
     > [!NOTE]
     > Seçili bir yay etkin sunucu için dağıtım zamanlamasını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin.
 
-15. Durum panosu açılır. Oluşturduğunuz dağıtım zamanlamasını göstermek için **dağıtım zamanlamaları** ' nı seçin.
+15. Durum panosu açılır. Oluşturduğunuz dağıtım zamanlamasını göstermek için **dağıtım zamanlamaları** ' nı seçin. En fazla 500 zamanlama listelenir. 500 ' den fazla zamanlama varsa ve tam listeyi gözden geçirmek istiyorsanız, bkz. sürüm 2019-06-01 veya üstünü kullanarak [yazılım güncelleştirme konfigürasyonları-list](/rest/api/automation/softwareupdateconfigurations/list) REST API yöntemi.
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>Program aracılığıyla bir güncelleştirme dağıtımı zamanlama
 

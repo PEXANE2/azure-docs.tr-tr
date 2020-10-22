@@ -3,12 +3,12 @@ title: Özelliklere genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs özellikleri ve terminolojisi hakkında ayrıntılar sağlanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ebf4e928cadfc87f52fc10b27f9c8419d11a8f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936240"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369650"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -33,7 +33,9 @@ Bir olay hub 'ına veri gönderen herhangi bir varlık bir olay üreticisi veya 
 
 ### <a name="publishing-an-event"></a>Olay yayımlama
 
-AMQP 1,0, Kafka 1,0 (ve üzeri) veya HTTPS aracılığıyla bir olay yayımlayabilirsiniz. Event Hubs, .NET istemcilerinden gelen bir olay hub 'ına olay yayımlamaya yönelik [istemci kitaplıkları ve sınıflar](./event-hubs-dotnet-framework-getstarted-send.md) sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (olay verileri örneği), tek bir olay veya toplu iş olmasına bakılmaksızın 1 MB 'lik bir sınıra sahiptir. Bu eşikten daha büyük yayımlama olayları hata ile sonuçlanır. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
+AMQP 1,0, Kafka 1,0 (ve üzeri) veya HTTPS aracılığıyla bir olay yayımlayabilirsiniz. Event Hubs hizmeti, olayları bir olay hub 'ına yayımlamak için [REST API](https://docs.microsoft.com/rest/api/eventhub/) ve [.net](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [JavaScript](event-hubs-node-get-started-send.md)ve [Go](event-hubs-go-get-started-send.md) istemci kitaplıkları sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. 
+
+Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (olay verileri örneği), tek bir olay veya toplu iş olmasına bakılmaksızın 1 MB 'lik bir sınıra sahiptir. Bu eşikten daha büyük yayımlama olayları hata ile sonuçlanır. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
 
 AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. AMQP, oturum başlatırken daha yüksek ağ maliyetlerine sahiptir, ancak HTTPS her istek için ek TLS yükü gerektirir. Daha sık yayımcılar için AMQP daha yüksek performans sunar.
 

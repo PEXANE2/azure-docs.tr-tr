@@ -3,12 +3,12 @@ title: Azure Site Recovery ile VMware olağanüstü durum kurtarma hakkında sı
 description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin olağanüstü durum kurtarma hakkında sık sorulan soruların yanıtlarını alın.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89054980"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359807"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
 
@@ -75,7 +75,7 @@ Site Recovery ISO 27001:2013 ve 27018, HIPAA ve DPA için sertifikalıdır. Bu, 
 
 Site Recovery kullanırken maliyetleri tahmin etmek için [fiyatlandırma hesaplayıcısını](https://aka.ms/asr_pricing_calculator) kullanın.
 
-Maliyetlerin ayrıntılı bir tahmini için, [VMware](https://aka.ms/siterecovery_deployment_planner) için dağıtım planlayıcısı aracını çalıştırın ve [maliyet tahmini raporunu](https://aka.ms/asr_DP_costreport)kullanın.
+Maliyetlerin ayrıntılı bir tahmini için, [VMware](./site-recovery-deployment-planner.md) için dağıtım planlayıcısı aracını çalıştırın ve [maliyet tahmini raporunu](./site-recovery-vmware-deployment-planner-cost-estimation.md)kullanın.
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Depolama alanı veya doğrudan yönetilen disklere çoğaltma arasında maliyet farkı var mı?
 
@@ -114,7 +114,7 @@ Site Recovery, şirket içi VMware VM 'lerini ve fiziksel sunucuları Azure 'da 
 
 Hayır. Azure portal Mart 2019 ' den başlayarak, yalnızca Azure yönetilen disklere çoğaltabilirsiniz.
 
-Yeni VM 'lerin bir depolama hesabına çoğaltılması yalnızca PowerShell ([az. RecoveryServices Module Version 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) veya REST API (sürüm 2018-01-10 veya 2016-08-10) kullanılarak kullanılabilir. PowerShell komutlarını kullanarak çoğaltmayı ayarlamayı [öğrenin](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) .
+Yeni VM 'lerin bir depolama hesabına çoğaltılması yalnızca PowerShell ([az. RecoveryServices Module Version 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) veya REST API (sürüm 2018-01-10 veya 2016-08-10) kullanılarak kullanılabilir. PowerShell komutlarını kullanarak çoğaltmayı ayarlamayı [öğrenin](./vmware-azure-disaster-recovery-powershell.md) .
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Yönetilen disklere çoğaltılmasının avantajları nelerdir?
 
@@ -190,7 +190,7 @@ Site Recovery, 5 dakikada bir çökme ile tutarlı kurtarma noktaları oluşturu
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mobility Hizmetleri Aracısı veya yapılandırma sunucusu sürümm eski ve yükseltme başarısız oldu. Ne yapmalıyım?
 
-Site Recovery, N-4 destek modelini izler. Çok eski sürümlerden yükseltme hakkında [daha fazla bilgi edinin](https://aka.ms/asr_support_statement) .
+Site Recovery, N-4 destek modelini izler. Çok eski sürümlerden yükseltme hakkında [daha fazla bilgi edinin](./service-updates-how-to.md#support-statement-for-azure-site-recovery) .
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>Azure Site Recovery için sürüm notlarını ve güncelleştirme paketlerini nerede bulabilirim?
 
@@ -198,11 +198,11 @@ Site Recovery, N-4 destek modelini izler. Çok eski sürümlerden yükseltme hak
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>Azure 'a olağanüstü durum kurtarma için yükseltme bilgilerini nerede bulabilirim?
 
-[Yükseltme hakkında bilgi edinin](https://aka.ms/asr_vmware_upgrades).
+[Yükseltme hakkında bilgi edinin](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Her yükseltme için kaynak makineleri yeniden başlatmem gerekir mi?
 
-Yeniden başlatma önerilir, ancak her yükseltme için zorunlu değildir. [Daha fazla bilgi edinin](https://aka.ms/asr_vmware_upgrades).
+Yeniden başlatma önerilir, ancak her yükseltme için zorunlu değildir. [Daha fazla bilgi edinin](./service-updates-how-to.md#reboot-after-mobility-service-upgrade).
 
 ## <a name="configuration-server"></a>Yapılandırma Sunucusu
 
@@ -246,7 +246,7 @@ Yapılandırma sunucusunu güncelleştirmeyi [öğrenin](vmware-azure-manage-con
 
 - En son güncelleştirme bilgilerini [Azure Updates sayfasında](https://azure.microsoft.com/updates/?product=site-recovery)bulabilirsiniz.
 - Portaldan en son sürümü indirebilirsiniz. Ya da, yapılandırma sunucusunun en son sürümünü doğrudan [Microsoft Yükleme Merkezi](https://aka.ms/asrconfigurationserver)' nden indirebilirsiniz.
-- Sürümünüz geçerli sürümden daha eski dört sürümden eskiyse, Yükseltme Kılavuzu için [destek bildirimine](https://aka.ms/asr_support_statement) bakın.
+- Sürümünüz geçerli sürümden daha eski dört sürümden eskiyse, Yükseltme Kılavuzu için [destek bildirimine](./service-updates-how-to.md#support-statement-for-azure-site-recovery) bakın.
 
 ### <a name="should-i-back-up-the-configuration-server"></a>Yapılandırma sunucusunu yedeklemem gerekir mi?
 

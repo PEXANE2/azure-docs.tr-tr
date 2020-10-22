@@ -3,12 +3,12 @@ title: Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 1747e770da420a3448e97628806733459fe07a49
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951545"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366998"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes kümeleri için Azure İlkesi'ni anlama
 
@@ -80,7 +80,7 @@ Aşağıdaki öneri yalnızca AKS ve Azure Ilkesi eklentisi için geçerlidir:
 
 - `CriticalAddonsOnly`Gatekeeper pods 'yi zamanlamak için Taint ile sistem düğüm havuzunu kullanın. Daha fazla bilgi için bkz. [sistem düğüm havuzlarını kullanma](../../../aks/use-system-pools.md#system-and-user-node-pools).
 - AKS kümelerinizdeki giden trafiği güvenli hale getirin. Daha fazla bilgi için bkz. [küme düğümleri Için denetim çıkış trafiği](../../../aks/limit-egress-traffic.md).
-- Küme `aad-pod-identity` etkinleştirilmişse, düğüm tarafından yönetilen kimlik (NMI) Pod, Azure örnek meta veri uç noktasına yapılan çağrıları ele almak için düğümlerin Iptables 'larını değiştirir. Bu yapılandırma, Pod kullanılmasa bile meta veri uç noktasına yapılan her türlü isteğin NMI tarafından yakalanmasıdır `aad-pod-identity` . AzurePodIdentityException CRD, `aad-pod-identity` CRD 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan meta veri uç noktasına yapılan tüm isteklerin NMI içinde herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir. `kubernetes.azure.com/managedby: aks` _Kuto-System_ ad alanındaki etiketli sistem KÖKLERI `aad-pod-identity` , AzurePodIdentityException CRD 'yi yapılandırarak içinde dışlanmalıdır. Daha fazla bilgi için bkz. [belirli bir pod veya uygulama için AAD-Pod kimliğini devre dışı bırakma](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+- Küme `aad-pod-identity` etkinleştirilmişse, düğüm tarafından yönetilen kimlik (NMI) Pod, Azure örnek meta veri uç noktasına yapılan çağrıları ele almak için düğümlerin Iptables 'larını değiştirir. Bu yapılandırma, Pod kullanılmasa bile meta veri uç noktasına yapılan her türlü isteğin NMI tarafından yakalanmasıdır `aad-pod-identity` . AzurePodIdentityException CRD, `aad-pod-identity` CRD 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan meta veri uç noktasına yapılan tüm isteklerin NMI içinde herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir. `kubernetes.azure.com/managedby: aks` _Kuto-System_ ad alanındaki etiketli sistem KÖKLERI `aad-pod-identity` , AzurePodIdentityException CRD 'yi yapılandırarak içinde dışlanmalıdır. Daha fazla bilgi için bkz. [belirli bir pod veya uygulama için AAD-Pod kimliğini devre dışı bırakma](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Bir özel durum yapılandırmak için, [MIC özel durum YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)'yi yükler.
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>AKS için Azure Ilke eklentisini yükler
@@ -436,7 +436,7 @@ Her 15 dakikada bir eklenti, kümenin tam taramasını çağırır. Kümede değ
 > [!NOTE]
 > Kubernetes kümeleriniz için Azure Ilkesindeki her uyumluluk raporu, son 45 dakika içindeki tüm ihlalleri içerir. Zaman damgası, bir ihlalin ne zaman oluştuğunu gösterir.
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Bir Kubernetes denetleyicisi/kapsayıcısı olarak, _Azure-Policy_ ve _Gatekeeper_ Pod, Kubernetes kümesinde Günlükler tutar. Günlükler, Kubernetes kümesinin **Öngörüler** sayfasında gösterilebilir.
 Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici Ile Kubernetes küme Performansınızı izleme](../../../azure-monitor/insights/container-insights-analyze.md).

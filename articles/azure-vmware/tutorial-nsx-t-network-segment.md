@@ -3,16 +3,16 @@ title: Öğretici-Azure VMware çözümünde NSX-T ağ kesimi oluşturma
 description: VCenter 'da VM 'Ler için kullanılan NSX-T ağ kesimlerini oluşturmayı öğrenin
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 780cac15efc043b9ae44b77af1234adca3fec5a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f88f186d2af10bcc114d64920a3ac489ef7be54f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254542"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367678"
 ---
 # <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>Öğretici: Azure VMware çözümünde NSX-T ağ kesimi oluşturma
 
-NSX-T Manager 'da oluşturulan ağ kesimleri, vCenter 'daki sanal makineler (VM) için ağlar olarak kullanılır. VCenter 'da oluşturulan VM 'Ler NSX-T içinde oluşturulan ağ kesimlerine yerleştirilir ve vCenter 'da görünür.
+VCenter 'da oluşturulan sanal makineler (VM) NSX-T içinde oluşturulan ağ kesimlerine yerleştirilir ve vCenter 'da görünür.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -21,9 +21,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Yeni bir ağ kesimi Ekle
 > * VCenter 'daki yeni ağ kesimini gözlemleyin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için vCenter ve NSX-T Manager yönetim arabirimlerine erişimi olan bir Azure VMware çözümü özel bulutu gereklidir. Daha fazla bilgi için bkz. [Azure 'Da VMware özel bulutunuz için ağı yapılandırma](tutorial-configure-networking.md) öğreticisi.
+VCenter ve NSX-T Manager yönetim arabirimlerine erişimi olan bir Azure VMware çözümü özel buluta sahip olmanız gerekir. Daha fazla bilgi için bkz. [ağ Iletişimini yapılandırma](tutorial-configure-networking.md) öğreticisi.
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>NSX-T içinde bir ağ kesimi sağlama
 
@@ -71,7 +71,7 @@ Bu öğreticiyi tamamlayabilmeniz için vCenter ve NSX-T Manager yönetim arabir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, vCenter 'daki VM 'Ler için kullanılan NSX-T ağ kesimlerini oluşturdunuz. Artık [Azure VMware çözümünde VM 'leri dağıtmak için bir Içerik kitaplığı oluşturabilir](deploy-vm-content-library.md) ve bu öğreticide oluşturduğunuz ağda bir VM sağlayabilirsiniz.
+Bu öğreticide, vCenter 'daki VM 'Ler için kullanılan NSX-T ağ kesimlerini oluşturdunuz. Artık [Azure VMware çözümünde VM dağıtmak için bir Içerik kitaplığı oluşturabilirsiniz](deploy-vm-content-library.md). Ayrıca, bu öğreticide oluşturduğunuz ağda bir VM sağlayabilirsiniz.
 
 Aksi takdirde, Azure VMware çözümünde özel bir buluta nasıl ExpressRoute Global Reach eşleme oluşturulacağını öğrenmek için sonraki öğreticiye geçin.
 

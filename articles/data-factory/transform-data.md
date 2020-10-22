@@ -1,6 +1,6 @@
 ---
 title: Verileri dönüştürme
-description: Hadoop, Machine Learning veya Azure Data Lake Analytics kullanarak Azure Data Factory verileri dönüştürün veya verileri işleyin.
+description: Hadoop, Azure Machine Learning Studio (klasik) veya Azure Data Lake Analytics kullanarak Azure Data Factory verileri dönüştürün veya verileri işleyin.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442794"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368868"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory'de veri dönüştürme
 
@@ -26,7 +26,7 @@ ms.locfileid: "89442794"
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight akışı](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [Machine Learning](transform-data-using-machine-learning.md) 
+> * [Azure Machine Learning Studio (klasik)](transform-data-using-machine-learning.md) 
 > * [Saklı yordam](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
 > * [Databricks Not defteri](transform-data-databricks-notebook.md)
@@ -70,12 +70,12 @@ Bir Data Factory işlem hattının HDInsight akış etkinliği, kendi kendinize 
 ### <a name="hdinsight-spark-activity"></a>HDInsight Spark etkinliği
 Bir Data Factory işlem hattının HDInsight Spark etkinliği kendi HDInsight kümenizdeki Spark programlarını yürütür. Ayrıntılar için bkz. [Azure Data Factory Spark programlarını çağırma](transform-data-using-spark.md). 
 
-### <a name="machine-learning-activities"></a>Machine Learning etkinlikleri
-Azure Data Factory, tahmine dayalı analiz için yayımlanmış bir Azure Machine Learning Web hizmeti kullanan işlem hatlarını kolayca oluşturmanızı sağlar. [Toplu yürütme etkinliğini](transform-data-using-machine-learning.md) bir Azure Data Factory işlem hattında kullanarak, toplu işteki verilerde tahmine dayalı hale getirmek için bir Machine Learning Web hizmeti çağırabilirsiniz.
+### <a name="azure-machine-learning-studio-classic-activities"></a>Azure Machine Learning Studio (klasik) etkinlikleri
+Azure Data Factory, tahmine dayalı analiz için yayımlanmış bir Azure Machine Learning Studio (klasik) Web hizmeti kullanan işlem hatlarını kolayca oluşturmanızı sağlar. [Toplu yürütme etkinliğini](transform-data-using-machine-learning.md) bir Azure Data Factory işlem hattında kullanarak, toplu işteki verilerde tahmine dayalı hale getirmek Için bir Studio (klasik) Web hizmeti çağırabilirsiniz.
 
-Zaman içinde, Machine Learning Puanlama denemeleri 'un tahmine dayalı modellerinin yeni giriş veri kümeleri kullanılarak geri çekilmesi gerekir. Yeniden eğitim ile işiniz bittiğinde, Puanlama Web hizmetini geri çekme Machine Learning modeliyle güncelleştirmek istersiniz. Web hizmetini yeni eğitilen modelle güncelleştirmek için [kaynak güncelleştirme etkinliğini](update-machine-learning-models.md) kullanabilirsiniz.  
+Zaman içinde, Studio (klasik) Puanlama denemeleri 'in tahmine dayalı modellerinin yeni giriş veri kümeleri kullanılarak geri çekilmesi gerekir. Yeniden eğitim ' i tamamladıktan sonra, Puanlama Web hizmetini geri çekme makinesi öğrenimi modeliyle güncelleştirmek istersiniz. Web hizmetini yeni eğitilen modelle güncelleştirmek için [kaynak güncelleştirme etkinliğini](update-machine-learning-models.md) kullanabilirsiniz.  
 
-Bu Machine Learning etkinlikleri hakkında daha fazla bilgi için bkz. [Machine Learning etkinlikleri kullanma](transform-data-using-machine-learning.md) . 
+Bu Studio (klasik) etkinlikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) etkinliklerini kullanma](transform-data-using-machine-learning.md) . 
 
 ### <a name="stored-procedure-activity"></a>Saklı yordam etkinliği
 Aşağıdaki veri depolarından birinde saklı yordam çağırmak için bir Data Factory Işlem hattındaki SQL Server saklı yordam etkinliğini kullanabilirsiniz: Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), kuruluşunuzda veya bir Azure VM 'de SQL Server veritabanı. Ayrıntılar için bkz. [saklı yordam etkinliği](transform-data-using-stored-procedure.md) makalesi.  

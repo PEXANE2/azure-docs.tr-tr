@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 91c12c497c69781c4d51ff13f638db0811d45566
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19e103d5243412a57244c15eaa30c6df29723c53
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91820886"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92347259"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Bilişsel hizmetler hesapları veri şifrelemeyi etkinleştirmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2bdd0062-9d75-436e-89df-487dd8e4b3c7) |Bu ilke, veri şifrelemesini kullanmayan bilişsel hizmetler hesabını denetler. Depolama alanı olan her bilişsel Hizmetler hesabı için, müşteri tarafından yönetilen veya Microsoft tarafından yönetilen anahtar ile veri şifrelemeyi etkinleştirmeniz gerekir. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_Encryption_Audit.json) |
 |[Bilişsel hizmetler hesapları, müşteri tarafından yönetilen anahtarla veri şifrelemeyi etkinleştirmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d) |Müşteri tarafından yönetilen anahtarlar, bilişsel hizmetler 'de depolanan veriler için şifreleme anahtarlarınızı yönetmenizi sağlayarak gelişmiş veri koruması sağlar. Bu, genellikle uyumluluk gereksinimlerini karşılamak için gereklidir. |Denetim, reddetme, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_CustomerManagedKey_Audit.json) |

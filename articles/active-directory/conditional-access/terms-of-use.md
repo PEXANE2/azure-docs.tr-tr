@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3781a87bde283de3b798f840274db1dd5ea3ac7e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145406"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366505"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -44,7 +44,7 @@ Azure AD kullanım koşulları aşağıdaki yeteneklere sahiptir:
 - Azure Multi-Factor Authentication 'de (MFA) güvenlik bilgilerini kaydetmeden önce çalışanların veya konukların kullanım koşullarınızı kabul etmesini gerektir.
 - Çalışanların Azure AD self servis parola sıfırlama (SSPR) içinde güvenlik bilgilerini kaydetmeden önce kullanım koşullarınızı kabul etmesini gerektir.
 - Kuruluşunuzdaki tüm kullanıcılar için genel kullanım koşullarını sunun.
-- Kullanıcı özniteliklerine (örn.) göre belirli kullanım koşulları sunun. doktorlarla hemşirelere ya da yurtiçi ve uluslararası çalışanlara, [dinamik grupları](../users-groups-roles/groups-dynamic-membership.md) kullanarak) sunun.
+- Kullanıcı özniteliklerine (örn.) göre belirli kullanım koşulları sunun. doktorlarla hemşirelere ya da yurtiçi ve uluslararası çalışanlara, [dinamik grupları](../enterprise-users/groups-dynamic-membership.md) kullanarak) sunun.
 - Salesforce gibi yüksek iş etkisi uygulamalarına erişirken belirli kullanım koşullarını sunun.
 - Farklı dillerdeki kullanım koşullarını sunun.
 - Kullanım koşullarınızı kimlerin sahip olduğunu veya kabul etmemiş listesini listeleyin.
@@ -52,7 +52,7 @@ Azure AD kullanım koşulları aşağıdaki yeteneklere sahiptir:
 - Uyumluluk ve denetim için kullanım koşulları etkinlik günlüğünü görüntüleyin.
 - [Microsoft Graph API 'leri](/graph/api/resources/agreement?view=graph-rest-beta) kullanarak kullanım koşulları oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD kullanım koşulları 'nı kullanmak ve yapılandırmak için şunları yapmanız gerekir:
 
@@ -94,8 +94,8 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
    | Başlangıç tarihi | Frequency | Sonuç |
    | --- | --- | --- |
-   | Bugünün tarihi  | Aylık olarak | Bugünden itibaren, kullanıcılar kullanım koşullarını kabul etmeli ve sonra her ay yeniden kabul etmelidir. |
-   | Gelecekteki Tarih  | Aylık olarak | Bugünden itibaren, kullanıcıların kullanım koşullarını kabul etmesi gerekir. Gelecek tarih gerçekleştiğinde, yarışma süreleri sona erer ve kullanıcılar her ay yeniden kabul etmelidir.  |
+   | Bugünün tarihi  | Aylık | Bugünden itibaren, kullanıcılar kullanım koşullarını kabul etmeli ve sonra her ay yeniden kabul etmelidir. |
+   | Gelecekteki Tarih  | Aylık | Bugünden itibaren, kullanıcıların kullanım koşullarını kabul etmesi gerekir. Gelecek tarih gerçekleştiğinde, yarışma süreleri sona erer ve kullanıcılar her ay yeniden kabul etmelidir.  |
 
    Örneğin, tarihinden itibaren süre sonu ' nu **1 Ocak** ve sıklık olarak **ayda**bir olarak ayarlarsanız, iki kullanıcı için süre sonu oluşma sıklığı aşağıda verilmiştir:
 

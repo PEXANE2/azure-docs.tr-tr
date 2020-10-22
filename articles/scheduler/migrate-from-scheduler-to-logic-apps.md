@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532162"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368273"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler işlerini Azure Logic Apps’e geçirme
 
@@ -133,7 +133,7 @@ Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal u
 
 ## <a name="cancel-a-one-time-job"></a>Tek seferlik bir işi iptal etme
 
-Logic Apps, her bir defalık iş tek bir mantıksal uygulama çalıştırma örneği olarak yürütülür. Tek seferlik bir işi iptal etmek için, Logic Apps REST API [Iş akışı çalıştırmalarını kullanabilirsiniz-iptal](https://docs.microsoft.com/rest/api/logic/workflowruns/cancel) ' i kullanabilirsiniz. Tetikleyiciye bir çağrı gönderdiğinizde, [iş akışı çalıştırma kimliğini](#workflow-run-id)sağlayın.
+Logic Apps, her bir defalık iş tek bir mantıksal uygulama çalıştırma örneği olarak yürütülür. Tek seferlik bir işi iptal etmek için, Logic Apps REST API [Iş akışı çalıştırmalarını kullanabilirsiniz-iptal](/rest/api/logic/workflowruns/cancel) ' i kullanabilirsiniz. Tetikleyiciye bir çağrı gönderdiğinizde, [iş akışı çalıştırma kimliğini](#workflow-run-id)sağlayın.
 
 ## <a name="schedule-recurring-jobs"></a>Yinelenen işleri zamanlama
 
@@ -220,7 +220,7 @@ Y **: her**Scheduler işi benzersizdir, bu nedenle tek boyutlu bir-All aracı yo
 **S**: Zamanlayıcı işlerinizin geçirilmesi için nereden destek alabilirim? <br>
 Y: destek almanın bazı yolları aşağıda **verilmiştir:**
 
-**Azure portalındaki**
+**Azure Portal**
 
 Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik destek isteği oluşturabilirsiniz. Aksi takdirde, farklı bir destek seçeneği belirleyebilirsiniz.
 
@@ -239,7 +239,7 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
 
 **Topluluk**
 
-* [Microsoft Q&Azure Logic Apps için soru sayfası](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
+* [Microsoft Q&Azure Logic Apps için soru sayfası](/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>Sonraki adımlar
