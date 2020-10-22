@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efca190f3dad1c0a323aa56ffd68b8b2597b5862
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317521"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370228"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
 Bu makalede, Azure AD Connect ile Azure AD arasındaki bağlantının nasıl çalıştığı ve bağlantı sorunlarını nasıl giderebileceğiniz açıklanır. Bu sorunlar büyük olasılıkla ara sunucu içeren bir ortamda görülebilir.
@@ -44,7 +44,7 @@ Proxy sunucusunda gerekli URL 'Lerin açılması da gerekir. Resmi liste, [Offic
 
 Bu URL 'Lerde, her bir Azure AD 'ye bağlanabilmek için aşağıdaki tablo, tam olarak en düşük üyeliktir. Bu liste, parola geri yazma veya Azure AD Connect Health gibi isteğe bağlı özellikler içermez. İlk yapılandırma için sorun gidermeye yardımcı olmak üzere burada belgelenmiştir.
 
-| URL | Bağlantı noktası | Açıklama |
+| URL | Bağlantı noktası | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
 | \*. verisign.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
@@ -113,7 +113,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Azure AD'ye Bağlanma**
 
-| Süre | URL |
+| Saat | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Yapılandır**
 
-| Süre | URL |
+| Saat | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **İlk eşitleme**
 
-| Süre | URL |
+| Saat | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
@@ -186,7 +186,7 @@ Kimlik doğrulaması başarılı oldu, ancak Azure AD PowerShell 'de bir kimlik 
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Azure AD Genel yönetici rolü gerekli
-Kullanıcının kimliği başarıyla doğrulandı. Ancak kullanıcıya genel yönetici rolü atanmaz. Kullanıcıya [genel yönetici rolü atayabilirsiniz](../users-groups-roles/directory-assign-admin-roles.md) .
+Kullanıcının kimliği başarıyla doğrulandı. Ancak kullanıcıya genel yönetici rolü atanmaz. Kullanıcıya [genel yönetici rolü atayabilirsiniz](../roles/permissions-reference.md) .
 
 <div id="privileged-identity-management">
 <!--

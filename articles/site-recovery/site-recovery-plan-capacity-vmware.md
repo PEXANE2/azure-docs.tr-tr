@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135445"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368035"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için kapasiteyi ve ölçeklendirmeyi planlayın
 
@@ -20,7 +20,7 @@ ms.locfileid: "86135445"
 
 ## <a name="how-do-i-start-capacity-planning"></a>Nasıl yaparım? kapasite planlaması başlatılsın mı?
 
-Azure Site Recovery altyapı gereksinimleri hakkında bilgi edinmek için, VMware çoğaltması için [Azure Site Recovery dağıtım planlayıcısı](https://aka.ms/asr-deployment-planner-doc) çalıştırarak çoğaltma ortamınız hakkında bilgi toplayın. Daha fazla bilgi için bkz. [VMware Için Azure 'a Site Recovery dağıtım planlayıcısı hakkında](site-recovery-deployment-planner.md). 
+Azure Site Recovery altyapı gereksinimleri hakkında bilgi edinmek için, VMware çoğaltması için [Azure Site Recovery dağıtım planlayıcısı](./site-recovery-deployment-planner.md) çalıştırarak çoğaltma ortamınız hakkında bilgi toplayın. Daha fazla bilgi için bkz. [VMware Için Azure 'a Site Recovery dağıtım planlayıcısı hakkında](site-recovery-deployment-planner.md). 
 
 Site Recovery Dağıtım Planlayıcısı, uyumlu ve uyumsuz VM 'Ler, VM başına disk ve disk başına veri dalgalanması hakkında tüm bilgileri içeren bir rapor sağlar. Araç ayrıca hedef RPO ve başarılı çoğaltma ve yük devretme testi için gereken Azure altyapısını karşılamak için ağ bant genişliği gereksinimlerini özetler.
 
@@ -92,7 +92,7 @@ Sunucularınızı ölçeklendirmeniz, genişleme veya genişleme modeli için te
 
     ![Azure Backup özellikleri iletişim kutusunun ekran görüntüsü](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-Ayrıca, azaltma ayarı için [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) cmdlet'ini de kullanabilirsiniz. Aşağıda bir örnek verilmiştir:
+Ayrıca, azaltma ayarı için [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) cmdlet'ini de kullanabilirsiniz. İşte bir örnek:
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c20bbd3ab02cd1eccd00e2d36c14eebf2f63205
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319742"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360334"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
@@ -62,3 +62,8 @@ Azure [Arc üzerinde Azure SQL yönetilen örneği oluşturma](create-sql-manage
 - Postgres hiper ölçek çalışan düğümlerinin sayısını _azaltma_ desteklenmiyor.
 - Azure Arc veri denetleyicisi ve veritabanı örnekleri ile Azure Stack hub 'ında Azure Kubernetes hizmet altyapısı 'nı (AKS motoru) kullanıyorsanız, daha yeni bir Kubernetes sürümüne yükseltme desteklenmez. Kubernetes kümesini yükseltmeden önce Azure Arc veri denetleyicisi 'ni ve tüm veritabanı örneklerini kaldırın.
 - Önizleme, Postgres sürüm 11 altyapısı için yedekleme/geri yükleme özelliğini desteklemez. Yalnızca Postgres sürüm 12 için yedekleme/geri yüklemeyi destekler.
+- Azure Kubernetes hizmeti (AKS), [birden çok kullanılabilirlik bölgesini](../../aks/availability-zones.md) kapsayan kümeler Şu anda Azure Arc etkin veri Hizmetleri için desteklenmiyor. Bu sorundan kaçınmak için, Azure portal ' de AKS kümesi oluşturduğunuzda, bölgelerin kullanılabildiği bir bölgeyi seçerseniz seçim denetiminden tüm bölgeleri temizleyin. Aşağıdaki resme bakın:
+
+   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Hiçbirini belirtmek için her bir bölgenin onay kutularını temizleyin.":::
+
+  

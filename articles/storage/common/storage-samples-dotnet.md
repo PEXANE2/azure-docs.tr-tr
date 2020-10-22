@@ -3,16 +3,16 @@ title: .NET kullanarak Azure Storage örnekleri | Microsoft Docs
 description: Azure depolama için örnek kod ve uygulamaları görüntüleyin, indirin ve çalıştırın. .NET depolama istemci kitaplıklarını kullanarak blob, kuyruk, tablo ve dosya kullanmaya başlama örneklerini bulun.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 760fedd94ef682b183eede1215186de973e9a216
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81010503"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359790"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>V12 .NET istemci kitaplıklarını kullanan Azure depolama örnekleri
 
@@ -336,4 +336,5 @@ Diğer dillere yönelik örnekler hakkında bilgi için:
 * Java: [Java kullanan Azure depolama örnekleri](storage-samples-java.md)
 * Python: [Python kullanan Azure depolama örnekleri](storage-samples-python.md)
 * JavaScript/Node.js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
+* C++: [c++ kullanan Azure depolama örnekleri](storage-samples-c-plus-plus.md)
 * Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)

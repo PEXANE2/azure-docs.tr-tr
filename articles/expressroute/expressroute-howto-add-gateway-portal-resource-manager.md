@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "91761842"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Ağ geçidi alt ağı oluşturun.
 > - Sanal Ağ Geçidi oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değerleri temel alarak bir sanal ağ kullanır. Bu listeyi örnek adımlarımızda kullanırız. Bir başvuru olarak kullanmak için listeyi kopyalayabilir ve değerleri kendi değerlerinizle değiştirin.
 
@@ -72,7 +72,7 @@ Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azu
     | Abonelik | Doğru aboneliğin seçildiğini doğrulayın. |
     | Kaynak Grubu | Sanal ağı seçtikten sonra kaynak grubu otomatik olarak seçilir. | 
     | Name | Ağ geçidinizi adlandırın. Bu, bir ağ geçidi alt ağını adlandırmayla aynı değildir. Bu, oluşturmakta olduğunuz ağ geçidi nesnesinin adıdır.|
-    | Region | **Bölge** alanını, sanal ağınızın bulunduğu konuma işaret etmek üzere değiştirin. Konum, sanal ağınızın bulunduğu bölgeyi işaret ettikten sonra, sanal ağ ' sanal ağ seçin ' açılır listesinde görünmez. |
+    | Bölge | **Bölge** alanını, sanal ağınızın bulunduğu konuma işaret etmek üzere değiştirin. Konum, sanal ağınızın bulunduğu bölgeyi işaret ettikten sonra, sanal ağ ' sanal ağ seçin ' açılır listesinde görünmez. |
     | Ağ geçidi türü | **ExpressRoute** seçin|
     | SKU | Açılan listeden ağ geçidi SKU 'sunu seçin. |
     | Sanal ağ | *Testvnet*' i seçin. |

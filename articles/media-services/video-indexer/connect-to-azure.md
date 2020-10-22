@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 24b41a77985cac13e829d69ff77a4bf14fb40389
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164814"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371384"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
@@ -33,7 +33,7 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
 
 * Azure Active Directory (Azure AD) etki alanı.
 
-    Azure AD etki alanınız yoksa, Azure aboneliğinizle bu etki alanını oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de özel etki alanı adlarını yönetme](../../active-directory/users-groups-roles/domains-manage.md)
+    Azure AD etki alanınız yoksa, Azure aboneliğinizle bu etki alanını oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de özel etki alanı adlarını yönetme](../../active-directory/enterprise-users/domains-manage.md)
 
 * Azure AD etki alanındaki bir **Uygulama Yöneticisi** rolüyle bir kullanıcı. Video Indexer hesabınızı Azure 'a bağlarken bu üyeyi kullanacaksınız.
 

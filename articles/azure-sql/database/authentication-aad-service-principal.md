@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d24c824782bdc6530b78450fc55a879a511ddc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88516631"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367695"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL ile hizmet sorumlusu Azure Active Directory
 
@@ -74,12 +74,12 @@ Bir Azure AD uygulaması adına SQL veritabanı ve Azure SYNAPSE 'de Azure AD ne
     > [!NOTE]
     > Sunucu kimliği, CLı komutları kullanılarak da atanabilir. Daha fazla bilgi için bkz. [az SQL Server Create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) ve [az SQL Server Update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update).
 
-2. Oluşturulan veya sunucuya atanan sunucu kimliği için Azure AD [**Dizin okuyucularına**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) izin verin.
+2. Oluşturulan veya sunucuya atanan sunucu kimliği için Azure AD [**Dizin okuyucularına**](../../active-directory/roles/permissions-reference.md#directory-readers) izin verin.
     - Bu izni vermek için, aşağıdaki makalede kullanılabilen SQL yönetilen örneği için kullanılan açıklamayı izleyin: [Azure AD yöneticisi sağlama (SQL yönetilen örneği)](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
     - Bu izni veren Azure AD kullanıcısının Azure AD **genel Yöneticisi** veya **ayrıcalıklı roller Yöneticisi** rolünün bir parçası olması gerekir.
 
 > [!IMPORTANT]
-> 1 ve 2. adımlar yukarıdaki sırada yürütülmelidir. İlk olarak, sunucu kimliğini oluşturun veya atayın ve ardından [**Dizin okuyucuları**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) iznini vererek. Bu adımlardan birini atlayarak veya her ikisi de Azure AD uygulaması adına Azure SQL 'de Azure AD nesne oluşturma sırasında bir yürütme hatasına neden olur. Azure AD uygulaması adına bir Azure AD kullanıcısı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure AD uygulamaları kullanarak Azure AD kullanıcıları oluşturma](authentication-aad-service-principal-tutorial.md).
+> 1 ve 2. adımlar yukarıdaki sırada yürütülmelidir. İlk olarak, sunucu kimliğini oluşturun veya atayın ve ardından [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) iznini vererek. Bu adımlardan birini atlayarak veya her ikisi de Azure AD uygulaması adına Azure SQL 'de Azure AD nesne oluşturma sırasında bir yürütme hatasına neden olur. Azure AD uygulaması adına bir Azure AD kullanıcısı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure AD uygulamaları kullanarak Azure AD kullanıcıları oluşturma](authentication-aad-service-principal-tutorial.md).
 >
 > **Genel önizlemede**, **Dizin OKUYUCULARı** rolünü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen kimliği bu grubun bir üyesi olarak ekleyebilir, bu da bir **genel yönetici** veya **ayrıcalıklı roller yöneticisinin** **Dizin okuyucuları** rolünü vermesi gereksinimini atlar. Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 

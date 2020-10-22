@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: fec52caa3cb7565a86a6c50d300fe448b6518457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51de1ab26318a02381ed95f00eadcc4e892f2f57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320077"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371639"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>İş Ortağı Merkezi 'ne Azure uygulamaları eklemek için iş ortağı merkezi gönderme API 'SI
 
@@ -29,7 +29,7 @@ Azure ürünleri için Iş Ortağı Merkezi API 'sini kullanmak üzere ihtiyacı
 
 Iş Ortağı Merkezi gönderme API 'sini çağırmak için kod yazmaya başlamadan önce, aşağıdaki önkoşulları tamamladığınızdan emin olun.
 
-- Siz (veya kuruluşunuzun) bir Azure AD dizinine sahip olmanız ve dizin için [genel yönetici](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) izninizin olması gerekir. Zaten Microsoft 'tan Microsoft 365 veya diğer iş hizmetlerini kullanıyorsanız, zaten Azure AD dizininiz vardır. Aksi takdirde, ek ücret ödemeden [Iş Ortağı Merkezi 'nde yeni bir Azure ad oluşturabilirsiniz](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) .
+- Siz (veya kuruluşunuzun) bir Azure AD dizinine sahip olmanız ve dizin için [genel yönetici](../../active-directory/roles/permissions-reference.md) izninizin olması gerekir. Zaten Microsoft 'tan Microsoft 365 veya diğer iş hizmetlerini kullanıyorsanız, zaten Azure AD dizininiz vardır. Aksi takdirde, ek ücret ödemeden [Iş Ortağı Merkezi 'nde yeni bir Azure ad oluşturabilirsiniz](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) .
 
 - [Bir Azure AD uygulamasını Iş Ortağı Merkezi hesabınızla ilişkilendirmeli](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) ve kiracı kimliğinizi, istemci kimliğini ve anahtarınızı edinmeniz gerekir. Microsoft Store gönderme API 'SI çağrılarında kullanacağınız bir Azure AD erişim belirteci edinmek için bu değerlere ihtiyacınız vardır.
 

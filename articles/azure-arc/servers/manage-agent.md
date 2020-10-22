@@ -1,14 +1,14 @@
 ---
 title: Azure Arc etkin sunucular Aracısı 'nı yönetme
 description: Bu makalede, Azure Arc etkin sunucular bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: af020d0ca586b950b444f2a3149ad207b5696050
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108941"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371435"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
@@ -138,7 +138,7 @@ Paketlerin yüklenmesi ve kaldırılması gibi, [yıum](https://access.redhat.co
     zypper update
     ```
 
-Paketlerin yüklenmesi ve kaldırılması gibi [zypper](https://en.opensuse.org/Portal:Zypper) komutunun eylemleri `/var/log/zypper.log` günlük dosyasında günlüğe kaydedilir. 
+Paketlerin yüklenmesi ve kaldırılması gibi [zypper](https://en.opensuse.org/Portal:Zypper) komutunun eylemleri `/var/log/zypper.log` günlük dosyasında günlüğe kaydedilir.
 
 ## <a name="about-the-azcmagent-tool"></a>Azcmagent aracı hakkında
 
@@ -148,9 +148,11 @@ Azcmagent Aracı (Azcmagent.exe), yükleme sırasında Azure Arc etkin sunucular
 
 * **Bağlantıyı kes** -makinenin Azure Arc bağlantısını kesmek için
 
-* **Yeniden bağlan** -bağlantısı kesilen bir makineyi Azure yaya yeniden bağlamak için
+* Aracıda bir sorunu gidermeye yardımcı olabilecek aracı durumunu ve yapılandırma özelliklerini (kaynak grubu adı, abonelik KIMLIĞI, sürüm vb. **) görüntüleyin.** `-j`Sonuçları JSON biçiminde çıkarmak için parametresini ekleyin.
 
-* Aracıda bir sorunu gidermeye yardımcı olabilecek aracı durumunu ve yapılandırma özelliklerini (kaynak grubu adı, abonelik KIMLIĞI, sürüm vb. **) görüntüleyin.**
+* **Günlükler** -sorun giderme sırasında size yardımcı olmak için günlükleri içeren geçerli dizinde bir. zip dosyası oluşturur.
+
+* **Sürüm** -bağlı makine Aracısı sürümünü gösterir.
 
 * **-h veya--help** -kullanılabilir komut satırı parametrelerini gösterir
 
@@ -158,7 +160,7 @@ Azcmagent Aracı (Azcmagent.exe), yükleme sırasında Azure Arc etkin sunucular
 
 * **-v veya--verbose** -ayrıntılı günlüğü etkinleştir
 
-Etkileşimli olarak oturum açtığınızda bir **bağlanma**, **bağlantısını kesme**ve el ile **yeniden bağlanma** gerçekleştirebilir veya birden çok aracı eklemek için kullandığınız hizmet sorumlusunu veya Microsoft Identity Platform [erişim belirtecini](../../active-directory/develop/access-tokens.md)kullanarak otomatik hale getirebilirsiniz. Makineyi Azure Arc etkin sunucularla kaydetmek için bir hizmet sorumlusu kullanmıyorsanız, hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
+Etkileşimli olarak oturum açtığınızda bir **bağlantı** ve **bağlantı kesmeyi** el ile gerçekleştirebilir veya birden çok aracı eklemek için kullandığınız hizmet sorumlusunu veya bir Microsoft Identity Platform [erişim belirteci](../../active-directory/develop/access-tokens.md)kullanarak otomatik hale getirebilirsiniz. Makineyi Azure Arc etkin sunucularla kaydetmek için bir hizmet sorumlusu kullanmıyorsanız, hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
 
 >[!NOTE]
 >**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
@@ -198,28 +200,7 @@ Erişim belirteci kullanarak bağlantıyı kesmek için aşağıdaki komutu çal
 
 Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) bağlantıyı kesmek için aşağıdaki komutu çalıştırın:
 
-`azcmagent disconnect --tenant-id <tenantID>`
-
-### <a name="reconnect"></a>Yeniden bağlan
-
-> [!WARNING]
-> `reconnect`Komut kullanım dışıdır ve kullanılmamalıdır. Komut gelecekteki bir aracı sürümünde kaldırılacak ve mevcut aracılar yeniden bağlanma isteğini tamamlayamayacak. Bunun yerine makinenizin [bağlantısını kesip](#disconnect) yeniden [bağlayın](#connect) .
-
-Bu parametre, zaten kayıtlı veya bağlı olan makinenin Azure Arc etkin sunucularıyla yeniden bağlanmasını ister. Bu, makinenin süresi en az 45 gün, sertifikanın süresi dolduğunda gerekli olabilir. Bu parametre, bu makineyi temsil eden Azure Resource Manager kaynağına karşılık gelen yeni kimlik bilgilerini almak için belirtilen kimlik doğrulama seçeneklerini kullanır.
-
-Bu komut, [Azure bağlı makine ekleme](agent-overview.md#required-permissions) rolünden daha yüksek ayrıcalıklar gerektirir.
-
-Hizmet sorumlusu kullanarak yeniden bağlanmak için aşağıdaki komutu çalıştırın:
-
-`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
-
-Erişim belirteci kullanarak yeniden bağlanmak için aşağıdaki komutu çalıştırın:
-
-`azcmagent reconnect --access-token <accessToken>`
-
-Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) yeniden bağlanmak için aşağıdaki komutu çalıştırın:
-
-`azcmagent reconnect --tenant-id <tenantID>`
+`azcmagent disconnect`
 
 ## <a name="remove-the-agent"></a>Aracıyı Kaldırma
 

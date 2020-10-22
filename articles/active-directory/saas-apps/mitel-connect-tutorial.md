@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: dae9db6dd20ef4346050be73250c7a10f7a449ec
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 044ee51fb7ff675af0fb97224313c388c4cbeac1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940696"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Öğretici: Mitel Micyüksek Connect veya CloudLink platformuyla Azure Active Directory tümleştirme
 
@@ -204,7 +204,7 @@ Bu bölümde, Mitel Connect 'e erişim vererek Azure çoklu oturum açma özelli
 
 Bu bölümde, Mictta Simon adlı bir kullanıcıyı, Micyüksek bağlantı hesabınızda oluşturursunuz. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-Mitel Hesap portalına Kullanıcı ekleme hakkında daha fazla bilgi için Mitel Bilgi Bankası 'nda [Kullanıcı ekleme](https://oneview.mitel.com/s/article/Adding-a-User-092815) makalesine bakın.
+Mitel Hesap portalına Kullanıcı ekleme hakkında daha fazla bilgi için Mitel Bilgi Bankası 'nda [Kullanıcı ekleme](https://shoretelcommunity.force.com/s/article/Adding-Users-092815) makalesine bakın.
 
 Aşağıdaki ayrıntılarla, Micyüksek Connect hesabınızda bir kullanıcı oluşturun:
 

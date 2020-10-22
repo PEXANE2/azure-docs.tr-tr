@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f420f66e1db6efc6a0aa43cb88f26687839f0d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321523"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370976"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory idare işlemleri başvuru kılavuzu
 
@@ -49,7 +49,7 @@ Listenizi gözden geçirdikten sonra, sahibi eksik olan görevler için bir sahi
 
 #### <a name="owner-recommended-reading"></a>Sahibi tarafından önerilen okuma
 
-- [Azure Active Directory’de yönetici rolü atama](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory’de yönetici rolü atama](../roles/permissions-reference.md)
 - [Azure’da idare](../../governance/index.yml)
 
 ### <a name="configuration-changes-testing"></a>Yapılandırma değişiklikleri testi
@@ -66,7 +66,7 @@ Bir paralel test kiracısında bir değişikliği dağıtmak için kullanıcıla
 |Yeni bir özellik kullanıma alınıyor|Özellik, bir hedef kullanıcı kümesine yönelik kullanıma almayı destekliyorsa, pilot kullanıcıları belirleyin ve derleyin. Örneğin, self servis parola sıfırlama ve Multi-Factor Authentication belirli kullanıcıları veya grupları hedefleyebilir.|
 |Şirket içi kimlik sağlayıcısından (IDP) bir uygulamayı Azure AD 'ye Active Directory, örneğin, Azure AD 'ye ver|Uygulama, örneğin Salesforce gibi birden çok IDP yapılandırmasını destekliyorsa, değişiklik penceresi sırasında Azure AD 'yi yapılandırın ve test edin (uygulamanın HRD sayfasını sağlaması durumunda). Uygulama birden çok IDPs 'yi desteklemiyorsa, bir değişiklik denetim penceresi ve program kapalı kalma süresi sırasında testi zamanlayın.|
 |Dinamik grup kurallarını Güncelleştir|Yeni kurala sahip bir paralel dinamik grup oluşturun. Hesaplanan sonuca göre karşılaştırın, örneğin, PowerShell 'i aynı koşulla çalıştırın.<br>Test başarılı olursa, eski grubun kullanıldığı yerleri (mümkünse) değiştirin.|
-|Ürün lisanslarını geçirme|[Azure Active Directory bir lisanslı gruptaki tek bir kullanıcı için lisansı değiştirme](../users-groups-roles/licensing-groups-change-licenses.md)bölümüne bakın.|
+|Ürün lisanslarını geçirme|[Azure Active Directory bir lisanslı gruptaki tek bir kullanıcı için lisansı değiştirme](../enterprise-users/licensing-groups-change-licenses.md)bölümüne bakın.|
 |Yetkilendirme, verme, MFA gibi AD FS kuralları değiştirme|Kullanıcı alt kümesini hedeflemek için grup talebi kullanın.|
 |AD FS kimlik doğrulama deneyimini veya benzer Grup genelinde değişiklikleri değiştirme|Aynı ana bilgisayar adına sahip bir paralel grup oluşturun, yapılandırma değişikliklerini uygulayın, Konaklar dosyası, NLB yönlendirme kuralları veya benzer yönlendirme kullanarak istemcilerden test edin.<br>Hedef platform HOSTS dosyalarını (örneğin, mobil cihazlar) desteklemiyorsa, Denetim değişikliği.|
 
@@ -92,9 +92,9 @@ Yalnızca gerekli olan süre boyunca gerekli olan kaynaklarla sınırlı dış k
 
 ### <a name="privileged-account-usage"></a>Ayrıcalıklı hesap kullanımı
 
-Saldırganlar genellikle hassas verilere ve sistemlere hızla erişim kazanmak için yönetici hesaplarını ve ayrıcalıklı erişim 'in diğer öğelerini hedefler.Ayrıcalıklı rollerine sahip olan kullanıcılar zaman içinde birikme eğilimiyle, yönetici erişiminin düzenli olarak incelenmesi ve yönetilmesi ve Azure AD ve Azure kaynaklarına tam zamanında ayrıcalıklı erişim sağlamak önemlidir.
+Saldırganlar genellikle hassas verilere ve sistemlere hızla erişim kazanmak için yönetici hesaplarını ve ayrıcalıklı erişim 'in diğer öğelerini hedefler. Ayrıcalıklı rollerine sahip olan kullanıcılar zaman içinde birikme eğilimiyle, yönetici erişiminin düzenli olarak incelenmesi ve yönetilmesi ve Azure AD ve Azure kaynaklarına tam zamanında ayrıcalıklı erişim sağlamak önemlidir.
 
-Kuruluşunuzda ayrıcalıklı hesapları yönetmek için herhangi bir işlem yoksa veya şu anda hizmet ve kaynakları yönetmek için kendi normal kullanıcı hesaplarını kullanan yöneticileriniz varsa, örneğin normal günlük etkinlikler için bir tane olmak üzere ayrı hesapları kullanmaya başlamanız gerekir. diğer bir deyişle, ayrıcalıklı erişim için ve MFA ile yapılandırılır. Daha sonra, kuruluşunuzun bir Azure AD Premium P2 aboneliği varsa, hemen [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) dağıtmanız gerekir. Aynı belirteçte Ayrıca, bu ayrıcalıklı hesapları gözden geçirmeniz ve uygunsa [daha az ayrıcalıklı roller atamanız](../users-groups-roles/directory-admin-roles-secure.md) gerekir.
+Kuruluşunuzda ayrıcalıklı hesapları yönetmek için herhangi bir işlem yoksa veya şu anda hizmet ve kaynakları yönetmek için kendi normal kullanıcı hesaplarını kullanan yöneticileriniz varsa, örneğin normal günlük etkinlikler için bir tane olmak üzere ayrı hesapları kullanmaya başlamanız gerekir. diğer bir deyişle, ayrıcalıklı erişim için ve MFA ile yapılandırılır. Daha sonra, kuruluşunuzun bir Azure AD Premium P2 aboneliği varsa, hemen [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) dağıtmanız gerekir. Aynı belirteçte Ayrıca, bu ayrıcalıklı hesapları gözden geçirmeniz ve uygunsa [daha az ayrıcalıklı roller atamanız](../roles/security-planning.md) gerekir.
 
 Ayrıcalıklı hesap yönetiminin uygulanması gereken başka bir yönü, bu hesaplar için el ile veya [otomatik olarak PIM aracılığıyla](../privileged-identity-management/pim-how-to-perform-security-review.md) [erişim gözden geçirmeleri](../governance/access-reviews-overview.md) tanımlıyor.
 
@@ -104,12 +104,12 @@ Ayrıcalıklı hesap yönetiminin uygulanması gereken başka bir yönü, bu hes
 
 ### <a name="emergency-access-accounts"></a>Acil durum erişim hesapları
 
-Kuruluşlar, şunun gibi kimlik doğrulama kesintileri gibi durumlarda Azure AD 'yi yönetmeye hazırlanmaya hazır olmak için [acil durum hesapları](../users-groups-roles/directory-emergency-access.md) oluşturmalıdır:
+Kuruluşlar, şunun gibi kimlik doğrulama kesintileri gibi durumlarda Azure AD 'yi yönetmeye hazırlanmaya hazır olmak için [acil durum hesapları](../roles/security-emergency-access.md) oluşturmalıdır:
 
 - Kimlik doğrulama altyapılarının kesinti bileşenleri (AD FS, şirket içi AD, MFA hizmeti)
 - Yönetim personeli cirosu
 
-Mevcut bireysel bir kullanıcının hesabını yönetici olarak oturum açmanıza veya etkinleştiremediği için kiracınızın yanlışlıkla kilitlenmemesini engellemek için, iki veya daha fazla acil durum hesabı oluşturmanız ve [Microsoft 'un en iyi yöntemleri](../users-groups-roles/directory-admin-roles-secure.md) ve çıkış [camı yordamlarına](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency)göre uygulandığından ve hizalandıklarından emin olmanız gerekir.
+Mevcut bireysel bir kullanıcının hesabını yönetici olarak oturum açmanıza veya etkinleştiremediği için kiracınızın yanlışlıkla kilitlenmemesini engellemek için, iki veya daha fazla acil durum hesabı oluşturmanız ve [Microsoft 'un en iyi yöntemleri](../roles/security-planning.md) ve çıkış [camı yordamlarına](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency)göre uygulandığından ve hizalandıklarından emin olmanız gerekir.
 
 ### <a name="privileged-access-to-azure-ea-portal"></a>Azure EA portalına ayrıcalıklı erişim
 
@@ -119,7 +119,7 @@ Açık olması için, EA Portalı Yetkilendirme düzeyi Şu anda "karma mod" ola
 
 #### <a name="privileged-access-recommended-reading"></a>Ayrıcalıklı erişimin okunması önerilir
 
-- [Azure Active Directory'deki yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory'deki yönetici rolü izinleri](../roles/permissions-reference.md)
 
 ## <a name="entitlement-management"></a>Yetkilendirme yönetimi
 

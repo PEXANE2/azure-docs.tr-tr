@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f8987a8daccc012f9d6da53e46fe7c4e8b43ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146349"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359841"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect için topolojiler
 Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede hem desteklenen hem de desteklenmeyen yapılandırmalar bulunur.
@@ -142,7 +142,7 @@ Farklı veri merkezlerinde birden çok yedekleme kullanmak istediğinizde birden
 
 ## <a name="multiple-azure-ad-tenants"></a>Birden çok Azure AD kiracısından
 Bir kuruluş için Azure AD 'de tek bir kiracının olması önerilir.
-Birden çok Azure AD kiracılarını kullanmayı planlayabilmeniz için önce [Azure AD 'de yönetim birimleri yönetimi](../users-groups-roles/directory-administrative-units.md)makalesine bakın. Tek bir kiracıyı kullanabileceğiniz yaygın senaryolar ele alınmaktadır.
+Birden çok Azure AD kiracılarını kullanmayı planlayabilmeniz için önce [Azure AD 'de yönetim birimleri yönetimi](../roles/administrative-units.md)makalesine bakın. Tek bir kiracıyı kullanabileceğiniz yaygın senaryolar ele alınmaktadır.
 
 ![Birden çok orman ve birden çok kiracı için topoloji](./media/plan-connect-topologies/multiforestmultidirectory.png)
 
@@ -168,7 +168,7 @@ Bu topoloji, aksi takdirde desteklenen senaryolarda aşağıdaki kısıtlamalara
 * Windows 10 cihazları yalnızca bir Azure AD kiracısı ile ilişkilendirilebilir.
 * Parola karması eşitleme ve doğrudan kimlik doğrulama için çoklu oturum açma (SSO) seçeneği yalnızca bir Azure AD kiracısı ile kullanılabilir.
 
-Birbirini dışlayan bir nesne kümesinin gereksinimi geri yazma için de geçerlidir. Tek bir şirket içi yapılandırma varsaydıklarından, bazı geri yazma özellikleri bu topolojide desteklenmez. Bu özellikler şunlardır:
+Birbirini dışlayan bir nesne kümesinin gereksinimi geri yazma için de geçerlidir. Tek bir şirket içi yapılandırma varsaydıklarından, bazı geri yazma özellikleri bu topolojide desteklenmez. Bu özellikler şunları içerir:
 
 * Varsayılan yapılandırma ile grup geri yazma.
 * Cihaz geri yazma.

@@ -3,12 +3,12 @@ title: Karma makineleri Azure 'a ölçeklendirmeye bağlama
 description: Bu makalede, hizmet sorumlusu kullanarak Azure Arc etkin sunucularını kullanarak makineleri Azure 'a bağlamayı öğreneceksiniz.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: d789061c741b8a0da2edabcb56a67898ea28ec90
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f71bbc46ccac533db39176363f206ab033e60316
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108924"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360130"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Karma makineleri Azure 'a ölçeklendirmeye bağlama
 
@@ -16,7 +16,7 @@ Gereksinimlerinize bağlı olarak çeşitli esnek seçeneklerle ortamınızda bi
 
 Bağlı makine aracısını yüklemeye ve yapılandırmaya yönelik yükleme yöntemleri, kullandığınız otomatik metodun makinelerde yönetici izinlerine sahip olmasını gerektirir. Linux 'ta, kök hesabı ve Windows üzerinde yerel Yöneticiler grubunun bir üyesi olarak.
 
-Başlamadan önce, [önkoşulları](agent-overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun.
+Başlamadan önce, [önkoşulları](agent-overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun. Desteklenen bölgeler ve diğer ilgili konular hakkında daha fazla bilgi için bkz. [desteklenen Azure bölgeleri](overview.md#supported-regions).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

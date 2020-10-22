@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597619"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368328"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Bu makalede, Azure portal kullanarak rollerin nasıl atanacağı açıklanır.
 
-Azure Active Directory ' de yönetici rolleri atamanız gerekiyorsa, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
+Azure Active Directory ' de yönetici rolleri atamanız gerekiyorsa, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](../active-directory/roles/manage-roles-portal.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -118,7 +118,7 @@ Bu makalenin önceki kısımlarında açıklandığı gibi, **Access Control (IA
 > [!IMPORTANT]
 > Bu alternatif adımları kullanan yönetilen bir kimlik için rol ataması eklemek Şu anda önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 

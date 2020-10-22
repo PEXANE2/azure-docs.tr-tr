@@ -4,16 +4,16 @@ description: Azure depolama için örnek kod ve uygulamaları görüntüleyin, i
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e3cd6be0da7c6d9401945293283de874c7cd866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322236"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359773"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>V12 Java istemci kitaplıklarını kullanan Azure depolama örnekleri
 
@@ -74,7 +74,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
       [Kapsayıcı istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L57)
    :::column-end:::
    :::column span="":::
-      [Bir kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L64)
+      [Kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L64)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -453,4 +453,5 @@ Diğer dillere yönelik örnekler hakkında bilgi için:
 * .NET: [.NET kullanan Azure depolama örnekleri](storage-samples-dotnet.md)
 * Python: [Python kullanan Azure depolama örnekleri](storage-samples-python.md)
 * JavaScript/Node.js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
+* C++: [c++ kullanan Azure depolama örnekleri](storage-samples-c-plus-plus.md)
 * Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)

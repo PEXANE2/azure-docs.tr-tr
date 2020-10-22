@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aa8d08dde3cf2dbfb5cb1e819ba9941aea4e387
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5be746b73cef37826be36b13c6f491b8ef6ad809
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203713"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359025"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -58,12 +58,13 @@ Veri düzlemi API 'Lerini kullanmak için:
    - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview)görüntüleyebilirsiniz.
    - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
-* **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
-   - paketi NPM 'den görüntüleyebilir ve yükleyebilirsiniz: [JavaScript Için Azure Azure Digital TWINS istemci kitaplığı](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
-   - [SDK başvuru belgelerini](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)görüntüleyebilirsiniz.
 * **Java** SDK 'sını kullanabilirsiniz. Java SDK 'sını kullanmak için...
    - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - SDK kaynağını GitHub 'da bulabilirsiniz: [Java Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - [SDK başvuru belgelerini](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) görüntüleyebilirsiniz
+* **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
+   - paketi NPM 'den görüntüleyebilir ve yükleyebilirsiniz: [JavaScript Için Azure Azure Digital TWINS istemci kitaplığı](https://www.npmjs.com/package/@azure/digital-twins).
+   - [SDK başvuru belgelerini](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)görüntüleyebilirsiniz.
 * Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [*Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
 
 [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek Tarih düzlemi API 'leri de uygulayabilirsiniz.

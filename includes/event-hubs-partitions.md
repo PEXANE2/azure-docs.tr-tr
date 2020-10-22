@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc7c86ff1df48f9ce96769098f7aab76d33c8822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd2d3b46ec339328e0d0889a722d39070104953
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68481594"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92346867"
 ---
 Event Hubs her bir tüketicinin ileti akışında yalnızca belirli bir alt küme ya da bölümü okuduğu bölünmüş bir tüketici modeli aracılığıyla ileti akışı sağlar. Bu model, olay işleme için yatay ölçek sağlar ve kuyruklar ile konularda kullanılamayan diğer akış odaklı özellikleri sunar.
 
 Bölüm bir olay hub'ında tutulan olayların sıralı dizisidir. Yeni olaylar geldikçe dizinin sonuna eklenir. Bölüm bir "yürütme günlüğü" olarak düşünülebilir.
 
-![Event Hubs](./media/event-hubs-partitions/partition.png)
+![Daha eski olaylar için daha eski olan olayları görüntüleyen diyagram.](./media/event-hubs-partitions/partition.png)
 
 Event Hubs, Olay Hub 'ındaki tüm bölümler için geçerli olan yapılandırılmış bir saklama süresi verilerini korur. Olayların süresi saat bazında dolar; bunları açıkça silemezsiniz. Bölümler birbirinden bağımsız olup kendi veri dizisini içerdiğinden genellikle farklı hızlarda büyürler.
 
