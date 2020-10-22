@@ -51,8 +51,6 @@
               href: ./database/security-controls-policy.md
             - name: Güvenlik temeli
               href: database/security-baseline.md
-            - name: Güvenlik öznitelikleri
-              href: database/security-controls.md
             - name: SQL için Azure Defender
               href: database/azure-defender-for-sql.md
             - name: Gelişmiş Tehdit Koruması
@@ -627,7 +625,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -940,7 +938,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance

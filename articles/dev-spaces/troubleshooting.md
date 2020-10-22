@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 5d8bf69d456bca2a88b8aa2031d5ef0ba20f7c30
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 42551443fb5af1bd3f783c33f708b231eea68907
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979130"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364176"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -52,13 +52,13 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Denetleyici adı uzunluğu nedeniyle denetleyici oluşturma başarısız oldu
 
-Azure Dev Spaces denetleyicisinin adı 31 karakterden uzun olamaz. Bir AKS kümesinde dev alanlarını etkinleştirdiğinizde veya bir denetleyici oluşturduğunuzda denetleyicinin adı 31 karakteri aşarsa bir hata alırsınız. Örnek:
+Azure Dev Spaces denetleyicisinin adı 31 karakterden uzun olamaz. Bir AKS kümesinde dev alanlarını etkinleştirdiğinizde veya bir denetleyici oluşturduğunuzda denetleyicinin adı 31 karakteri aşarsa bir hata alırsınız. Örneğin:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Bu sorunu onarmak için alternatif ada sahip bir denetleyici oluşturun. Örnek:
+Bu sorunu onarmak için alternatif ada sahip bir denetleyici oluşturun. Örneğin:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -162,7 +162,7 @@ Aynı AKS kümesinde hem HELI komutları hem de dev Spaces komutlarının kullan
 
 Azure Dev Spaces, projenizdeki belirli bir _Dockerfile_ 'ı işaret etmek için yapılandırılabilir. Kapsayıcınız derlemek istediğiniz _dockerfile_ ' ı Azure dev Spaces görünürse, hangi dockerfile 'ın kullanılacağını açıkça Azure dev Spaces söylemeniz gerekebilir. 
 
-Bu sorunu gidermeye yönelik Azure Dev Spaces, projenizde oluşturulan _azds. YAML_ dosyasını açın. Güncelleştirme *yapılandırması: geliştirme: oluşturma: dockerfile* kullanmak Istediğiniz dockerfile 'ı işaret etmek için. Örnek:
+Bu sorunu gidermeye yönelik Azure Dev Spaces, projenizde oluşturulan _azds. YAML_ dosyasını açın. Güncelleştirme *yapılandırması: geliştirme: oluşturma: dockerfile* kullanmak Istediğiniz dockerfile 'ı işaret etmek için. Örneğin:
 
 ```yaml
 ...
@@ -209,7 +209,7 @@ install:
 
 Hizmet kodunuz başlatılamıyorsa bu hatayla karşılaşabilirsiniz. Nedeni genellikle kullanıcı kodudur. Daha fazla tanılama bilgisi edinmek için, hizmetinizi başlatırken daha ayrıntılı günlük kaydını etkinleştirin.
 
-Komut satırından, `--verbose` daha ayrıntılı günlüğe kaydetmeyi etkinleştirmek için öğesini kullanın. Ayrıca, kullanarak bir çıktı biçimi de belirtebilirsiniz `--output` . Örnek:
+Komut satırından, `--verbose` daha ayrıntılı günlüğe kaydetmeyi etkinleştirmek için öğesini kullanın. Ayrıca, kullanarak bir çıktı biçimi de belirtebilirsiniz `--output` . Örneğin:
 
 ```cmd
 azds up --verbose --output json
@@ -278,7 +278,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 
 Azure Dev Spaces hizmetler kümede çalışır ve küme dışında Azure Dev Spaces arka uç hizmetleriyle konuşmak için kümenin yönetilen kimliğini kullanır. Pod yönetilen kimliği yüklendiğinde, kümenin düğümlerinde, yönetilen kimlik kimlik bilgileri için tüm çağrıları [kümeye yüklenmiş bir düğüm yönetilen kimliği (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)yeniden yönlendirmek üzere, ağ kuralları yapılandırılır. Bu NMI DaemonSet, çağıran Pod 'yi tanımlar ve pod 'ın istenen yönetilen kimliğe erişmek için uygun şekilde etiketlenmesini sağlar. Azure Dev Spaces, bir kümede Pod tarafından yönetilen kimliğin yüklü olup olmadığını algılayamaz ve Azure Dev Spaces hizmetlerin kümenin yönetilen kimliğine erişmesine izin vermek için gerekli yapılandırmayı gerçekleştiremez. Azure Dev Spaces Hizmetleri kümenin yönetilen kimliğine erişmek üzere yapılandırılmadığından, NMI DaemonSet, yönetilen kimlik için bir Azure AD belirteci almasına ve Azure Dev Spaces arka uç hizmetleriyle iletişim kuramamasına izin vermez.
 
-Bu sorunu onarmak için, *azds-Injector-Web kancası* Için bir [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) uygulayın ve yönetilen kimliğe erişmek üzere Azure dev Spaces tarafından işaretlenmiş bir şekilde güncelleştirin.
+Bu sorunu onarmak için, *azds-Injector-Web kancası* Için bir [AzurePodIdentityException](https://azure.github.io/aad-pod-identity/docs/configure/application_exception) uygulayın ve yönetilen kimliğe erişmek üzere Azure dev Spaces tarafından işaretlenmiş bir şekilde güncelleştirin.
 
 *Webkancaexception. YAML* adlı bir dosya oluşturun ve aşağıdaki YAML tanımını kopyalayın:
 
@@ -320,7 +320,7 @@ Yönetilen kimliğin ayrıntılarını listelemek için, AKS kümeniz için aşa
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-Yukarıdaki komut, yönetilen kimliğin *ClientID* ve *RESOURCEID* değerini verir. Örnek:
+Yukarıdaki komut, yönetilen kimliğin *ClientID* ve *RESOURCEID* değerini verir. Örneğin:
 
 ```json
 {
@@ -361,7 +361,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-*AzureIdentity* ve *AzureIdentityBinding* nesnelerini dağıttıktan sonra, *aadpodidbinding: My-Label-Value* etiketli tüm iş yükleri kümenin yönetilen kimliğine erişebilir. Bu etiketi ekleyin ve herhangi bir geliştirme alanında çalışan tüm iş yüklerini yeniden dağıtın. Örnek:
+*AzureIdentity* ve *AzureIdentityBinding* nesnelerini dağıttıktan sonra, *aadpodidbinding: My-Label-Value* etiketli tüm iş yükleri kümenin yönetilen kimliğine erişebilir. Bu etiketi ekleyin ve herhangi bir geliştirme alanında çalışan tüm iş yüklerini yeniden dağıtın. Örneğin:
 
 ```yaml
 apiVersion: apps/v1
@@ -445,7 +445,7 @@ Bu sorunu düzeltmek için:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Yetkilendirme hatası "Microsoft. DevSpaces/Register/Action"
 
-Azure Dev Spaces yönetmek için Azure aboneliğinizde *sahip* veya *katkıda bulunan* erişime ihtiyacınız vardır. Dev alanlarını yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *sahip* veya *katkıda bulunan* erişiminiz yoksa bir yetkilendirme hatası görebilirsiniz. Örnek:
+Azure Dev Spaces yönetmek için Azure aboneliğinizde *sahip* veya *katkıda bulunan* erişime ihtiyacınız vardır. Dev alanlarını yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *sahip* veya *katkıda bulunan* erişiminiz yoksa bir yetkilendirme hatası görebilirsiniz. Örneğin:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
