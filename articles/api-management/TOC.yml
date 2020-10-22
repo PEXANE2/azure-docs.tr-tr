@@ -62,8 +62,6 @@
       items:
         - name: Güvenlik temeli
           href: security-baseline.md
-        - name: Yerleşik güvenlik denetimleri
-          href: api-management-security-controls.md
     - name: Abonelikler
       href: api-management-subscriptions.md
     - name: Sürümler
@@ -160,6 +158,8 @@
       items:
         - name: Geliştirici portalını anlama
           href: api-management-howto-developer-portal.md
+        - name: Kullanım dışı bırakılan portaldan yeni geliştirici portalına geçiş
+          href: developer-portal-deprecated-migration.md
         - name: Azure AD ile kimlik doğrulaması
           href: api-management-howto-aad.md
         - name: Azure AD B2C ile kimlik doğrulaması
@@ -170,13 +170,13 @@
           href: api-management-howto-configure-notifications.md
         - name: Konsolda OAuth desteğini etkinleştirme
           href: api-management-howto-oauth2.md
-        - name: Eski portal - portalı özelleştirme
+        - name: Kullanımdan kaldırılan portal - portalı özelleştirme
           href: api-management-customize-styles.md
-        - name: Eski portalı - sayfaları ve düzenleri değiştirme
+        - name: Kullanımdan kaldırılan portal - sayfaları ve düzenleri değiştirme
           href: api-management-modify-content-layout.md
-        - name: Eski portal - şablonları özelleştirme
+        - name: Kullanımdan kaldırılan portal - şablonlarla özelleştirme
           href: api-management-developer-portal-templates.md
-    - name: Eski portal şablonları
+    - name: Kullanımdan kaldırılan portal şablonları
       items:
         - name: Veri modeli başvurusu
           href: api-management-template-data-model-reference.md

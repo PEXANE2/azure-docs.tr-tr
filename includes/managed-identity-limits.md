@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: active-directory
 author: daveba
 ms.service: active-directory
@@ -9,14 +9,14 @@ ms.topic: include
 ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: dc7849e52b3e00c87d271ee8aef8788d816dff7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e5885e076222cd23ba127f3be41c1218f327ca0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971027"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379722"
 ---
-- Her yönetilen kimlik, [Azure ad hizmeti sınırları ve kısıtlamaları](../articles/active-directory/users-groups-roles/directory-service-limits-restrictions.md)bölümünde açıklandığı gibi BIR Azure AD kiracısındaki nesne kotası sınırına doğru sayılır.
+- Her yönetilen kimlik, [Azure ad hizmeti sınırları ve kısıtlamaları](../articles/active-directory/enterprise-users/directory-service-limits-restrictions.md)bölümünde açıklandığı gibi BIR Azure AD kiracısındaki nesne kotası sınırına doğru sayılır.
 -   Yönetilen kimliklerin oluşturulabilen hız Aşağıdaki sınırlara sahiptir:
 
     1. Azure bölgesi başına Azure AD kiracısı: 20 saniye başına 200 oluşturma işlemi.
