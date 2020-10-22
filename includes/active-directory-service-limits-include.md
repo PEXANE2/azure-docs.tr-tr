@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: active-directory
 author: curtand
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 49d0d3e8665e0e80b1626c180300611149eff23f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 819a897e2a785991378ce4b6cb19194665b569f0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90005998"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363411"
 ---
 Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamalarını ve diğer hizmet sınırlarını burada bulabilirsiniz.
 
@@ -21,7 +21,7 @@ Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamaların
 | --- | --- |
 | Kiracılar | Tek bir kullanıcı üye veya konuk olarak en fazla 500 Azure AD kiracılarına ait olabilir.<br/>Tek bir Kullanıcı, en fazla 200 dizin oluşturabilir. |
 | Etki Alanları | En fazla 900 yönetilen etki alanı adı ekleyebilirsiniz. Tüm etki alanlarınızı şirket içi Active Directory ile Federasyon için ayarlarsanız, her kiracıya 450 'den fazla etki alanı adı ekleyebilirsiniz. |
-|Kaynaklar |<ul><li>Varsayılan olarak Azure Active Directory ücretsiz sürümü kullanıcıları tarafından tek bir kiracıya en fazla 50.000 Azure AD kaynağı oluşturulabilir. En az bir doğrulanmış etki alanınız varsa, kuruluşunuz için varsayılan Azure AD hizmet kotası 300.000 Azure AD kaynaklarına genişletilir. Bu hizmet sınırı, Azure AD fiyatlandırma sayfasında 500.000 kaynağın fiyatlandırma katmanı limiti ile ilişkili değildir. Varsayılan kotanın ötesine geçmek için Microsoft Desteği başvurmanız gerekir.</li><li>Yönetici olmayan bir Kullanıcı 250 taneden fazla Azure AD kaynağı oluşturabilir. Hem etkin kaynaklar hem de geri yüklenebilecek silinen kaynaklar bu kotaya doğru sayılır. Yalnızca 30 günden daha kısa bir süre önce silinen Azure AD kaynakları geri yüklemek için kullanılabilir. 30 gün boyunca bir çeyrekte bu kotaya doğru sayımı geri yüklemek için artık kullanılamayan Azure AD kaynakları silindi. Normal görevleri çerçevesinde bu kotayı sürekli olarak aşmaları muhtemel olan geliştiricileriniz varsa, sınırsız sayıda uygulama kaydı oluşturma izniyle [özel bir rol oluşturabilir ve atayabilirsiniz](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md) .</li></ul> |
+|Kaynaklar |<ul><li>Varsayılan olarak Azure Active Directory ücretsiz sürümü kullanıcıları tarafından tek bir kiracıya en fazla 50.000 Azure AD kaynağı oluşturulabilir. En az bir doğrulanmış etki alanınız varsa, kuruluşunuz için varsayılan Azure AD hizmet kotası 300.000 Azure AD kaynaklarına genişletilir. Bu hizmet sınırı, Azure AD fiyatlandırma sayfasında 500.000 kaynağın fiyatlandırma katmanı limiti ile ilişkili değildir. Varsayılan kotanın ötesine geçmek için Microsoft Desteği başvurmanız gerekir.</li><li>Yönetici olmayan bir Kullanıcı 250 taneden fazla Azure AD kaynağı oluşturabilir. Hem etkin kaynaklar hem de geri yüklenebilecek silinen kaynaklar bu kotaya doğru sayılır. Yalnızca 30 günden daha kısa bir süre önce silinen Azure AD kaynakları geri yüklemek için kullanılabilir. 30 gün boyunca bir çeyrekte bu kotaya doğru sayımı geri yüklemek için artık kullanılamayan Azure AD kaynakları silindi. Normal görevleri çerçevesinde bu kotayı sürekli olarak aşmaları muhtemel olan geliştiricileriniz varsa, sınırsız sayıda uygulama kaydı oluşturma izniyle [özel bir rol oluşturabilir ve atayabilirsiniz](../articles/active-directory/roles/quickstart-app-registration-limits.md) .</li></ul> |
 | Şema uzantıları |<ul><li>Dize türü uzantılar en fazla 256 karakter olabilir. </li><li>İkili tür uzantılar 256 bayt ile sınırlıdır.</li><li>Tek bir Azure AD kaynağına yalnızca 100 uzantı değeri, *Tüm* türler ve *Tüm* uygulamalar arasında yazılabilir.</li><li>Dize türü veya ikili tür tek değerli özniteliklerle yalnızca User, Group, TenantDetail, Device, Application ve ServicePrincipal varlıkları uzatılabilir.</li><li>Şema uzantıları yalnızca Graph API'si 1.21 önizleme sürümünde kullanılabilir. Bir uzantıyı kaydetmek için uygulamaya yazma erişimi verilmelidir.</li></ul> |
 | Uygulamalar |Tek bir uygulamanın sahibi en fazla 100 kullanıcı olabilir. |
 |Uygulama bildirimi |Uygulama bildiriminde en fazla 1200 giriş eklenebilir. |

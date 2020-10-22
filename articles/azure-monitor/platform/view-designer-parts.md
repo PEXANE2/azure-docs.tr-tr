@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92166599"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı görselleştirme parçalarını görüntülemek için başvuru kılavuzu
@@ -203,9 +203,9 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Color |Üst bilgi için arka plan rengi. |
 | **Üst bilgi** | |
 | Görüntü |Üst bilgide görüntülenen resim dosyası. |
-| Etiket |Üst bilgide görüntülenen metin. |
+| Etiketle |Üst bilgide görüntülenen metin. |
 | **Üst bilgi** |**> bağlantısı** |
-| Etiket |Bağlantı metni. |
+| Etiketle |Bağlantı metni. |
 | Url |Bağlantının URL 'Si. |
 | **Bilgi öğeleri** | |
 | Başlık |Her öğenin başlığı için görüntülenen metin. |
