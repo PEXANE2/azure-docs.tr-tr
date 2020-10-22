@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 5a6fb2c1c539c5b8e353f5c3720cb9d001dcbbc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f9b6e0250acb53899ab0443a62db7c9cc51f992
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277963"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370109"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL için Azure Active Directory Directory okuyucuları rolü
 
@@ -23,9 +23,9 @@ ms.locfileid: "91277963"
 > [!NOTE]
 > Bu makaledeki bu özellik **genel önizlemede**.
 
-Azure Active Directory (Azure AD), [Azure Active Directory (Önizleme) içindeki rol atamalarını yönetmek için bulut grupları kullanarak](../../active-directory/users-groups-roles/roles-groups-concept.md)tanıtılmıştır. Bu, Azure AD rollerinin gruplara atanmasını sağlar.
+Azure Active Directory (Azure AD), [Azure Active Directory (Önizleme) içindeki rol atamalarını yönetmek için bulut grupları kullanarak](../../active-directory/roles/groups-concept.md)tanıtılmıştır. Bu, Azure AD rollerinin gruplara atanmasını sağlar.
 
-Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics için [yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) etkinleştirilirken, Azure AD [**Dizin okuyucuları**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) rolü, [Azure AD Graph API](../../active-directory/develop/active-directory-graph-api.md)okuma erişimine izin vermek için kimliğe atanmalıdır. SQL Database ve Azure SYNAPSE yönetilen kimliği sunucu kimliği olarak adlandırılır. SQL yönetilen örneğinin yönetilen kimliği, yönetilen örnek kimliği olarak adlandırılır ve örnek oluşturulduğunda otomatik olarak atanır. SQL veritabanı veya Azure SYNAPSE 'a sunucu kimliği atama hakkında daha fazla bilgi için bkz. [Azure AD kullanıcıları oluşturmak için hizmet sorumlularını etkinleştirme](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
+Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics için [yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) etkinleştirilirken, Azure AD [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) rolü, [Azure AD Graph API](../../active-directory/develop/active-directory-graph-api.md)okuma erişimine izin vermek için kimliğe atanmalıdır. SQL Database ve Azure SYNAPSE yönetilen kimliği sunucu kimliği olarak adlandırılır. SQL yönetilen örneğinin yönetilen kimliği, yönetilen örnek kimliği olarak adlandırılır ve örnek oluşturulduğunda otomatik olarak atanır. SQL veritabanı veya Azure SYNAPSE 'a sunucu kimliği atama hakkında daha fazla bilgi için bkz. [Azure AD kullanıcıları oluşturmak için hizmet sorumlularını etkinleştirme](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
 
 **Dizin okuyucuları** rolü şunları yapmak için gereklidir:
 
@@ -37,7 +37,7 @@ Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytic
 
 ## <a name="assigning-the-directory-readers-role"></a>Dizin okuyucuları rolünü atama
 
-[**Dizin okuyucuları**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) rolünü bir kimliğe atamak Için, [genel yönetici](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) veya [ayrıcalıklı rol yöneticisi](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) izinlerine sahip bir kullanıcı gereklidir. Genellikle SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'ı yöneten veya dağıtan kullanıcıların bu yüksek ayrıcalıklı rollere erişimi olmayabilir. Bu, genellikle planlanmamış Azure SQL kaynakları oluşturan kullanıcılar için karmaşıklıklara neden olabilir veya büyük kuruluşlarda genellikle erişilemeyen son derece ayrıcalıklı rol üyelerinden yardım almanız gerekir.
+[**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) rolünü bir kimliğe atamak Için, [genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) veya [ayrıcalıklı rol yöneticisi](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) izinlerine sahip bir kullanıcı gereklidir. Genellikle SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'ı yöneten veya dağıtan kullanıcıların bu yüksek ayrıcalıklı rollere erişimi olmayabilir. Bu, genellikle planlanmamış Azure SQL kaynakları oluşturan kullanıcılar için karmaşıklıklara neden olabilir veya büyük kuruluşlarda genellikle erişilemeyen son derece ayrıcalıklı rol üyelerinden yardım almanız gerekir.
 
 [Yönetilen örnek için bir Azure AD yöneticisi](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)ayarlamadan önce, SQL yönetilen örneği Için, **Dizin okuyucular** rolü yönetilen örnek kimliğine atanmalıdır. 
 
@@ -45,7 +45,7 @@ Mantıksal sunucu için bir Azure AD yöneticisi ayarlanırken SQL veritabanı v
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>Dizin okuyucuları rolünü bir Azure AD grubuna verme
 
-Şu anda **genel önizlemede**, artık [genel yönetici](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) veya [AYRıCALıKLı rol yöneticisi](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bir Azure AD grubu oluşturabilir ve [**Dizin okuyucuları**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) iznini gruba atayabilir. Bu, bu grubun üyeleri için Azure AD Graph API erişimine izin verir. Bunlara ek olarak, bu grubun sahibi olan Azure AD kullanıcıları, Azure SQL mantıksal sunucularının kimlikleri dahil olmak üzere bu grup için yeni üyeler atamaya izin verilir.
+Şu anda **genel önizlemede**, artık [genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) veya [AYRıCALıKLı rol yöneticisi](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) bir Azure AD grubu oluşturabilir ve [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) iznini gruba atayabilir. Bu, bu grubun üyeleri için Azure AD Graph API erişimine izin verir. Bunlara ek olarak, bu grubun sahibi olan Azure AD kullanıcıları, Azure SQL mantıksal sunucularının kimlikleri dahil olmak üzere bu grup için yeni üyeler atamaya izin verilir.
 
 Bu çözüm, bir grup oluşturmak ve kullanıcıları tek seferlik bir etkinlik olarak atamak için yüksek ayrıcalıklı bir Kullanıcı (genel yönetici veya ayrıcalıklı rol yöneticisi) gerektirir, ancak Azure AD grubu sahipleri ileri doğru Üyeler atayabilecektir. Bu, gelecekte Azure AD kiracısındaki tüm SQL veritabanlarını, SQL yönetilen örnekleri veya Azure SYNAPSE sunucularını yapılandırmak için yüksek ayrıcalıklı bir kullanıcının dahil olması gereğini ortadan kaldırır.
 

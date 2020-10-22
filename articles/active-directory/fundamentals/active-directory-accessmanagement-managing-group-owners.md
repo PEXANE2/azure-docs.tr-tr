@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2847678c78aec4a287427463a9aeeb8bd82c6771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969923"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371945"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Active Directory Grup sahiplerini ekleme veya kaldırma
 Azure Active Directory (Azure AD) grupları, Grup sahiplerine aittir ve yönetilir. Grup sahipleri Kullanıcı veya hizmet sorumluları olabilir ve üyeliği dahil olmak üzere grubu yönetebilir. Yalnızca var olan Grup sahipleri veya grupları-Yöneticiler, Grup sahipleri atayabilir. Grup sahiplerinin grubun üyesi olması gerekmez.
@@ -63,10 +63,10 @@ Azure AD 'yi kullanarak bir kullanıcıyı gruptan kaldırın.
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Active Directory grupları ile kaynaklara erişimi yönetme](active-directory-manage-groups.md)
 
-- [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](../users-groups-roles/groups-settings-cmdlets.md)
+- [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](../enterprise-users/groups-settings-cmdlets.md)
 
-- [Tümleşik bir SaaS uygulamasına erişim atamak için grupları kullanma](../users-groups-roles/groups-saasapps.md)
+- [Tümleşik bir SaaS uygulamasına erişim atamak için grupları kullanma](../enterprise-users/groups-saasapps.md)
 
 - [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](../hybrid/whatis-hybrid-identity.md)
 
-- [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](../enterprise-users/groups-settings-v2-cmdlets.md)

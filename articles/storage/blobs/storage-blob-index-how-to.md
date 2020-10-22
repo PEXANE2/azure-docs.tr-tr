@@ -1,64 +1,70 @@
 ---
-title: Azure Blob depolamada verileri yönetmek ve bulmak için blob dizini etiketlerini kullanma
+title: Blob dizini etiketlerini kullanarak Azure Blob Storage 'da verileri yönetme ve bulma
 description: Blob nesnelerini kategorilere ayırmak, yönetmek ve sorgulamak için blob Dizin etiketlerinin nasıl kullanılacağına ilişkin örneklere bakın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 10/19/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.reviewer: hux
+ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 175c9efd02665bf0212d7078a2ec2767ed1be6b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 159252cf850fd59f40d1b59e592153f50d7cb813
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850991"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371979"
 ---
-# <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Azure Blob depolama 'daki verileri yönetmek ve bulmak için blob Dizin etiketlerini (Önizleme) kullanın
+# <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Blob Dizin etiketlerini (Önizleme) kullanarak Azure Blob depolamada verileri yönetme ve bulma
 
-Blob dizin etiketleri, anahtar-değer etiketi özniteliklerinin kullanıldığı Depolama hesabınızdaki verileri kategorilere ayırın. Bu Etiketler otomatik olarak dizinlenir ve verileri kolayca bulmak için sorgulanabilir çok boyutlu bir dizin olarak gösterilir. Bu makalede blob Dizin etiketlerini kullanarak verileri ayarlama, alma ve bulma işlemlerinin nasıl yapılacağı gösterilir.
-
-Blob dizini özelliği hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
+Blob dizin etiketleri, anahtar-değer etiketi özniteliklerini kullanarak Depolama hesabınızdaki verileri kategorilere ayırın. Bu Etiketler otomatik olarak dizinlenir ve verileri kolayca bulmak için aranabilir çok boyutlu bir dizin olarak sunulur. Bu makalede blob Dizin etiketlerini kullanarak verileri ayarlama, alma ve bulma işlemlerinin nasıl yapılacağı gösterilir.
 
 > [!NOTE]
-> Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
+> Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-- Abonelik, blob dizini önizlemesine erişim için kaydedildi ve onaylandı
+
+- Blob dizini önizlemesine erişim için kaydedilen ve onaylanan bir Azure aboneliği
 - [Azure Portal](https://portal.azure.com/) erişim
 
 # <a name="net"></a>[.NET](#tab/net)
-Blob dizini genel önizlemede olduğundan, .NET depolama paketi önizleme NuGet akışında serbest bırakılır. Bu kitaplık, şu anda ve resmi olduğunda değişir. 
+
+Blob dizini önizlemede olduğu için, .NET depolama paketi önizleme NuGet akışında serbest bırakılır. Bu kitaplık, önizleme döneminde değiştirilebilir.
 
 1. .NET için Azure Blob Storage istemci kitaplığı V12 kullanmaya başlamak için Visual Studio projenizi ayarlayın. Daha fazla bilgi için bkz. [.net hızlı başlangıç](storage-quickstart-blobs-dotnet.md)
 
-2. NuGet Paket Yöneticisi ' nde, **Azure. Storage. blobu** paketini bulun ve **12.7.0-Preview. 1** sürümünü veya daha yeni sürümünü projenize uygulayın. Komutunu da çalıştırabilirsiniz ```Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1```
+2. NuGet Paket Yöneticisi ' nde, **Azure. Storage. blobu** paketini bulun ve **12.7.0-Preview. 1** sürümünü veya daha yeni sürümünü projenize uygulayın. PowerShell komutunu da çalıştırabilirsiniz: `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
 
    Nasıl yapılacağını öğrenmek için bkz. [paket bulma ve yüklemeyi oluşturma](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 
 3. Aşağıdaki using deyimlerini, kod dosyanızın en üstüne ekleyin.
-```csharp
-using Azure;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using Azure.Storage.Blobs.Specialized;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-```
+
+    ```csharp
+    using Azure;
+    using Azure.Storage.Blobs;
+    using Azure.Storage.Blobs.Models;
+    using Azure.Storage.Blobs.Specialized;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    ```
+
 ---
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Dizin etiketlerine sahip yeni bir blobu karşıya yükleme
+
+Dizin etiketleriyle yeni bir blobu karşıya yüklemek, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)tarafından gerçekleştirilebilir. Bunlara ek olarak, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) iznine sahip kullanıcılar bu işlemi gerçekleştirebilir.
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin 
 
 2. **BLOB hizmeti**altındaki **kapsayıcılar** seçeneğine gidin, kapsayıcınızı seçin
 
-3. Karşıya yükleme dikey penceresini açmak **için karşıya yükle düğmesini seçin** ve Blok Blobu olarak karşıya yüklenecek dosyayı bulmak için yerel dosya sisteminize gidin.
+3. Bir Blok Blobu olarak karşıya yüklenecek dosyayı bulmak için **karşıya yükle** düğmesini seçin ve yerel dosya sisteminize gidin.
 
 4. **Gelişmiş** açılan listeyi genişletin ve **blob dizini etiketleri** bölümüne gidin
 
@@ -66,7 +72,7 @@ using System.Threading.Tasks;
 
 6. Blobu karşıya yüklemek için **karşıya yükle** düğmesini seçin
 
-![Blob dizini etiketleriyle veri yükleme](media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -107,13 +113,18 @@ static async Task BlobIndexTagsOnCreate()
 ---
 
 ## <a name="get-set-and-update-blob-index-tags"></a>Blob dizini etiketlerini al, ayarla ve Güncelleştir
+
+Blob dizini etiketlerini alma, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)tarafından gerçekleştirilebilir. Bunlara ek olarak, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) iznine sahip kullanıcılar bu işlemi gerçekleştirebilir.
+
+Blob dizini etiketlerini ayarlama ve güncelleştirme, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)tarafından gerçekleştirilebilir. Bunlara ek olarak, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) iznine sahip kullanıcılar bu işlemi gerçekleştirebilir.
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin 
 
 2. **BLOB hizmeti**altındaki **kapsayıcılar** seçeneğine gidin, kapsayıcınızı seçin
 
-3. Seçili kapsayıcı içindeki blob 'ların listesinden istediğiniz blobu seçin
+3. Seçili kapsayıcı içindeki blob 'lar listesinden blobu seçin
 
 4. Blob Genel Bakış sekmesi, blob **Dizin etiketleri** dahil olmak üzere Blobun özelliklerini görüntüler
 
@@ -121,9 +132,10 @@ static async Task BlobIndexTagsOnCreate()
 
 6. Bloba ilgili tüm güncelleştirmeleri onaylamak için **Kaydet** düğmesini seçin
 
-![Nesnelerde blob Dizin etiketlerini al, ayarla, Güncelleştir ve Sil](media/storage-blob-index-concepts/blob-index-get-set-tags.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
 
 # <a name="net"></a>[.NET](#tab/net)
+
 ```csharp
 static async Task BlobIndexTagsExample()
    {
@@ -181,9 +193,11 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Blob dizini etiketleriyle verileri filtreleme ve bulma
 
+Blob dizini etiketlerine göre arama ve filtreleme, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)tarafından gerçekleştirilebilir. Bunlara ek olarak, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) iznine sahip kullanıcılar bu işlemi gerçekleştirebilir.
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal içinde, blob dizini etiketleri filtresi, `@container` parametreyi seçtiğiniz kapsayıcının kapsamına otomatik olarak uygular. Tüm depolama hesabınızda etiketlendirilmiş verileri filtrelemek ve bulmak istiyorsanız lütfen REST API, SDK 'larımızı veya araçlarınızı kullanın.
+Azure portal içinde, blob dizini etiketleri filtresi, `@container` parametreyi seçtiğiniz kapsayıcının kapsamına otomatik olarak uygular. Tüm depolama hesabınızda etiketlendirilmiş verileri filtrelemek ve bulmak istiyorsanız REST API, SDK 'larımızı veya araçlarınızı kullanın.
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin. 
 
@@ -195,9 +209,10 @@ Azure portal içinde, blob dizini etiketleri filtresi, `@container` parametreyi 
 
 5. Ek etiket filtreleri eklemek için **blob dizini Etiketleri filtre** düğmesini seçin (10 ' a kadar)
 
-![Blob Dizin etiketlerini kullanarak etiketli nesneleri filtreleme ve bulma](media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
 
 # <a name="net"></a>[.NET](#tab/net)
+
 ```csharp
 static async Task FindBlobsByTagsExample()
    {
@@ -286,18 +301,23 @@ static async Task FindBlobsByTagsExample()
 
 3. *Kural Ekle* ' yi seçin ve ardından eylem kümesi form alanlarını doldurun
 
-4. Önek eşleşmesi için isteğe bağlı Filtre Ekle ve blob dizini eşleşmesi için **filtre** kümesi seçin ![ yaşam döngüsü yönetimi için blob dizini etiketi filtreleri ekleyin](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. Önek eşleşmesi ve blob dizini eşleşmesi için isteğe bağlı filtre eklemek üzere **filtre** ayarla ' yı seçin
 
-5. Blob dizini Etiketleri filtre örneği ile kural ayarları yaşam döngüsü yönetim kuralını gözden geçirmek için **gözden geçir + Ekle** ' yi seçin ![](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
+
+5. Kural ayarlarını gözden geçirmek için **gözden geçir + Ekle** ' yi seçin
+
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
 
 6. Yeni kuralı yaşam döngüsü yönetimi ilkesine uygulamak için **Ekle** ' yi seçin
 
 # <a name="net"></a>[.NET](#tab/net)
-[Yaşam döngüsü yönetimi](storage-lifecycle-management-concepts.md) ilkeleri, her depolama hesabı için denetim düzlemi düzeyinde uygulanır. .NET için, bir yaşam döngüsü yönetim kuralı içindeki blob dizini eşleşme filtresinden faydalanmak için [Microsoft Azure Management Storage Library sürüm 16.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) veya üstünü yüklemeyi gerçekleştirin.
+
+[Yaşam döngüsü yönetimi](storage-lifecycle-management-concepts.md) ilkeleri, her depolama hesabı için denetim düzlemi düzeyinde uygulanır. .NET için [Microsoft Azure Management Storage kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) sürüm 16.0.0 veya üstünü yüklemelisiniz.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- - Blob dizini hakkında daha fazla bilgi için bkz. [BLOB diziniyle Azure Blob depolama üzerinde verileri yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md )
- - Yaşam döngüsü yönetimi hakkında daha fazla bilgi edinin. Bkz [. Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)
+ - Blob dizini etiketleri hakkında daha fazla bilgi için bkz. [blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md )
+ - Yaşam döngüsü yönetimi hakkında daha fazla bilgi [için bkz. Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705376"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370211"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure Active Directory ile güvenli kimliklere hızla yanıt verme
 
@@ -61,7 +61,7 @@ Azure AD Ücretsiz, Office 365 veya Microsoft 365 uygulama müşterilerinin Kull
 | [SaaS uygulamalarından Kullanıcı hazırlama ve sağlamayı kaldırma Işlemini otomatikleştirme](../app-provisioning/user-provisioning.md) (varsa) | Kullanıcıların erişmesi gereken bulut (SaaS) uygulamalarında Kullanıcı kimliklerini ve rolleri otomatik olarak oluşturun. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir ve kuruluşunuzun güvenliğini artırır. |
 | [Güvenli karma erişimi etkinleştir: mevcut uygulama teslim denetleyicileri ve ağlarla (varsa) eski uygulamaları güvenli hale](../manage-apps/secure-hybrid-access.md) getirin | Mevcut uygulama teslim denetleyicinize veya ağınıza Azure AD 'ye bağlanarak şirket içi ve bulut eski kimlik doğrulama uygulamalarınızı yayımlayın ve koruyun. |
 | [Self servis parola sıfırlamayı etkinleştir](../authentication/tutorial-enable-sspr.md) (yalnızca bulut hesapları için geçerlidir) | Bu özellik, bir Kullanıcı cihazlarındaki veya bir uygulamada oturum açarken yardım masası çağrılarını ve üretkenlik kaybını azaltır. |
-| [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. |
+| [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../roles/permissions-reference.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. |
 | [Microsoft 'un parola kılavuzunu etkinleştir](https://www.microsoft.com/research/publication/password-guidance/) | Kullanıcıların bir küme zamanlaması üzerinde parolalarını değiştirmesini, karmaşıklık gereksinimlerini devre dışı bırakmayı ve kullanıcılarınızın parolalarını anımsamasını ve bunları güvenli bir şekilde tutmasını sağlama gereğini durdur. |
 
 
@@ -90,8 +90,8 @@ Aşağıdaki tablo, aşağıdaki lisans abonelikleriyle ilgili önemli eylemleri
 | [SaaS uygulamalarından Kullanıcı hazırlama ve sağlamayı kaldırma Işlemini otomatikleştirme](../app-provisioning/user-provisioning.md) (varsa) | Kullanıcıların erişmesi gereken bulut (SaaS) uygulamalarında Kullanıcı kimliklerini ve rolleri otomatik olarak oluşturun. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir ve kuruluşunuzun güvenliğini artırır. |
 | [Koşullu erişimi etkinleştirme – cihaz tabanlı](../conditional-access/require-managed-devices.md) | Cihaz tabanlı koşullu erişimle güvenlik ve kullanıcı deneyimlerini geliştirebilirsiniz. Bu adım, kullanıcıların yalnızca güvenlik ve uyumluluk standartlarınızı karşılayan cihazlardan erişmesini sağlar. Bu cihazlar yönetilen cihazlar olarak da bilinir. Yönetilen cihazlar Intune ile uyumlu veya hibrit Azure AD 'ye katılmış cihazlar olabilir. |
 | [Parola korumasını etkinleştir](../authentication/howto-password-ban-bad-on-premises-deploy.md) | Kullanıcıların zayıf ve kolay parolaların tahmin etmesini koruyun. |
-| [Birden fazla genel yönetici belirleyin](../users-groups-roles/directory-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. Cam hesapları kesme bir acil durumda hizmete erişebildiğinizden emin olun. |
-| [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. |
+| [Birden fazla genel yönetici belirleyin](../roles/security-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. Cam hesapları kesme bir acil durumda hizmete erişebildiğinizden emin olun. |
+| [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../roles/permissions-reference.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. |
 | [Microsoft 'un parola kılavuzunu etkinleştir](https://www.microsoft.com/research/publication/password-guidance/) | Kullanıcıların bir küme zamanlaması üzerinde parolalarını değiştirmesini, karmaşıklık gereksinimlerini devre dışı bırakmayı ve kullanıcılarınızın parolalarını anımsamasını ve bunları güvenli bir şekilde tutmasını sağlama gereğini durdur. |
 | [Konuk Kullanıcı erişimi için bir plan oluşturun](../external-identities/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerle uygulama ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. |
 
@@ -122,8 +122,8 @@ Aşağıdaki tablo, aşağıdaki lisans abonelikleriyle ilgili önemli eylemleri
 | [SaaS uygulamalarından Kullanıcı hazırlama ve sağlamayı kaldırma Işlemini otomatikleştirme](../app-provisioning/user-provisioning.md) (varsa) | Kullanıcıların erişmesi gereken bulut (SaaS) uygulamalarında Kullanıcı kimliklerini ve rolleri otomatik olarak oluşturun. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir ve kuruluşunuzun güvenliğini artırır. |
 | [Koşullu erişimi etkinleştirme – cihaz tabanlı](../conditional-access/require-managed-devices.md) | Cihaz tabanlı koşullu erişimle güvenlik ve kullanıcı deneyimlerini geliştirebilirsiniz. Bu adım, kullanıcıların yalnızca güvenlik ve uyumluluk standartlarınızı karşılayan cihazlardan erişmesini sağlar. Bu cihazlar yönetilen cihazlar olarak da bilinir. Yönetilen cihazlar Intune ile uyumlu veya hibrit Azure AD 'ye katılmış cihazlar olabilir. |
 | [Parola korumasını etkinleştir](../authentication/howto-password-ban-bad-on-premises-deploy.md) | Kullanıcıların zayıf ve kolay parolaların tahmin etmesini koruyun. |
-| [Birden fazla genel yönetici belirleyin](../users-groups-roles/directory-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. Cam hesapları kesme bir acil durumda hizmete erişebildiğinizden emin olun. |
-| [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. |
+| [Birden fazla genel yönetici belirleyin](../roles/security-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. Cam hesapları kesme bir acil durumda hizmete erişebildiğinizden emin olun. |
+| [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../roles/permissions-reference.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. |
 | [Microsoft 'un parola kılavuzunu etkinleştir](https://www.microsoft.com/research/publication/password-guidance/) | Kullanıcıların bir küme zamanlaması üzerinde parolalarını değiştirmesini, karmaşıklık gereksinimlerini devre dışı bırakmayı ve kullanıcılarınızın parolalarını anımsamasını ve bunları güvenli bir şekilde tutmasını sağlama gereğini durdur. |
 | [Konuk Kullanıcı erişimi için bir plan oluşturun](../external-identities/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerle uygulama ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. |
 | [Privileged Identity Management etkinleştir](../privileged-identity-management/pim-configure.md) | , Kuruluşunuzdaki önemli kaynaklara erişimi yönetmenizi, denetlemenizi ve izlemenizi sağlar. böylece Yöneticiler yalnızca gerektiğinde ve onay ile erişime sahiptir |

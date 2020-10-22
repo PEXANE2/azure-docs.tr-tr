@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310913"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372302"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc veri denetleyicisi oluşturma
 
@@ -39,7 +39,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 > * Kubernetes 'in desteklenen en düşük sürümü v 1.14.
 > * Ortamınız ve Azure arasında hangi bağlantının gerekli olduğunu anlamak için [bağlantı gereksinimlerine](connectivity.md) bakın.
 > * Kalıcı depolama alanınızı yapılandırmaya ilişkin ayrıntıları öğrenmek için [depolama yapılandırma kılavuzu](storage-configuration.md) ' na bakın.
-> * Azure Kubernetes hizmetini kullanıyorsanız, kümenizin çalışan düğümü VM 'sinin boyutu en az **Standard_D8s_v3** olmalıdır ve **Premium diskleri kullanmalıdır.** 
+> * Azure Kubernetes hizmetini kullanıyorsanız, kümenizin çalışan düğümü VM 'sinin boyutu en az **Standard_D8s_v3** olmalıdır ve **Premium diskleri kullanmalıdır.** Küme birden çok kullanılabilirlik bölgesini kapsamamalıdır. 
 > * Başka bir Kubernetes dağıtımı veya hizmeti kullanıyorsanız, Kubernetes düğümlerinizin tümünde en az 8 GB RAM ve 4 çekirdek ve toplam 32 GB RAM kapasiteye sahip olduğunuzdan emin olmanız gerekir. Örneğin, 32 GB RAM ve 4 çekirdekte 1 düğüme sahip olabilirsiniz veya her biri 16 GB RAM ve 4 çekirdeğe sahip 2 düğüme sahip olabilirsiniz.
 
 > [!NOTE]

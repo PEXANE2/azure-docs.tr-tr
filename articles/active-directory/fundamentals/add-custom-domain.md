@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321183"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370874"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme
 
@@ -104,9 +104,9 @@ Azure AD özel bir etki alanı adını doğrulayamıyorum, aşağıdaki önerile
 
   Kayıt, kaydedici sitesinde güncelleyemiyorum, girişi ekleme ve doğru doğrulama izinleri olan biriyle girişi paylaşabilirsiniz.
 
-- **Etki alanı adının zaten başka bir dizinde kullanımda olmadığından emin olun.** Bir etki alanı adı yalnızca tek bir dizinde doğrulanabilir. Etki alanı adınız Şu anda başka bir dizinde doğrulanırsa, yeni dizinde da doğrulanamaz. Bu çoğaltma sorununu çözmek için, etki alanı adını eski dizinden silmeniz gerekir. Etki alanı adlarını silme hakkında daha fazla bilgi için bkz. [özel etki alanı adlarını yönetme](../users-groups-roles/domains-manage.md).
+- **Etki alanı adının zaten başka bir dizinde kullanımda olmadığından emin olun.** Bir etki alanı adı yalnızca tek bir dizinde doğrulanabilir. Etki alanı adınız Şu anda başka bir dizinde doğrulanırsa, yeni dizinde da doğrulanamaz. Bu çoğaltma sorununu çözmek için, etki alanı adını eski dizinden silmeniz gerekir. Etki alanı adlarını silme hakkında daha fazla bilgi için bkz. [özel etki alanı adlarını yönetme](../enterprise-users/domains-manage.md).
 
-- **Yönetilmeyen Power BI kiracılarınız olmadığından emin olun.** Kullanıcılarınız self servis kayıt aracılığıyla Power BI etkinleştiriyorsa ve kuruluşunuz için yönetilmeyen bir kiracı oluşturup, PowerShell kullanarak yönetimi bir iç veya dış yönetici olarak almanız gerekir. Daha fazla bilgi için bkz. [Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma](../users-groups-roles/domains-admin-takeover.md).
+- **Yönetilmeyen Power BI kiracılarınız olmadığından emin olun.** Kullanıcılarınız self servis kayıt aracılığıyla Power BI etkinleştiriyorsa ve kuruluşunuz için yönetilmeyen bir kiracı oluşturup, PowerShell kullanarak yönetimi bir iç veya dış yönetici olarak almanız gerekir. Daha fazla bilgi için bkz. [Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma](../enterprise-users/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -114,6 +114,6 @@ Azure AD özel bir etki alanı adını doğrulayamıyorum, aşağıdaki önerile
 
 - Etki alanınızı Kullanıcı ekleyin. Daha fazla bilgi için bkz. [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
 
-- Azure AD 'de etki alanı adı bilgilerinizi yönetin. Daha fazla bilgi için bkz. [özel etki alanı adlarını yönetme](../users-groups-roles/domains-manage.md).
+- Azure AD 'de etki alanı adı bilgilerinizi yönetin. Daha fazla bilgi için bkz. [özel etki alanı adlarını yönetme](../enterprise-users/domains-manage.md).
 
 - Azure Active Directory birlikte kullanmak istediğiniz Windows Server 'ın şirket içi sürümleri varsa, bkz. Şirket [içi dizinlerinizi Azure Active Directory Ile tümleştirme](../hybrid/whatis-hybrid-identity.md).

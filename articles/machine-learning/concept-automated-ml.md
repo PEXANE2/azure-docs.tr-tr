@@ -1,5 +1,5 @@
 ---
-title: Otomatikleştirilen ML/otomatik ml nedir?
+title: Otomatikleştirilen ML nedir? AutoML
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning, sizin için otomatik olarak bir algoritma seçebilir ve sizin modelinize yönelik en iyi algoritmayı seçmek için sağladığınız parametreleri ve ölçütleri kullanarak size zaman kazandırmak için bir model oluşturabilirsiniz.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 4908f66dbc699a449b7b94febac8133bacc9f669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49c3e5602834576e8d3de86ac7d6683f9b6f7b89
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760978"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367525"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -116,7 +116,7 @@ Otomatik makine öğrenimi denemeleri için, korleştirme otomatik olarak uygula
 
 Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir. Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
 
-|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Açıklama |
+|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ortalama ve ölçeklendirerek birim sapması arasındaki özellikleri standartlaştırın  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Her bir özelliği sütuna en düşük ve en yüksek düzeyde ölçeklendirerek özellikleri dönüştürür  |
@@ -158,15 +158,15 @@ Otomatik ML için Web arabirimi her zaman uzak bir [işlem hedefi](concept-compu
 İşlem hedefini seçerken şu faktörleri göz önünde bulundurun:
 
  * **Yerel bir Işlem seçin**: senaryonuz küçük veriler ve kısa traıns (örneğin, alt çalışma başına birkaç dakika) kullanan ilk araştırmalar veya tanıtımlar hakkında ise, yerel bilgisayarınızdaki eğitim daha iyi bir seçim olabilir.  Kurulum süresi yoktur, altyapı kaynakları (bilgisayarınız veya VM) doğrudan kullanılabilir.
- * **Bir uzak ml işlem kümesi**seçin: daha büyük veri kümeleriyle eğitim yapıyorsanız, daha uzun bir süre olması gereken modeller oluştururken, uzaktan işlem çok daha iyi uçtan uca zaman performansına sahiptir çünkü bu, `AutoML` kümenin düğümlerinde paralel hale getirmek. Uzaktan bir işlem sırasında, iç altyapının başlangıç zamanı, alt çalışma başına 1,5 dakika, ek olarak VM 'Ler henüz çalışır durumda değilse küme altyapısı için de ek dakika ekler.
+ * **Bir uzak ml işlem kümesi seçin**: daha büyük veri kümeleriyle eğitim yapıyorsanız, daha uzun bir süre olması gereken modeller oluştururken, uzaktan işlem çok daha iyi uçtan uca zaman performansına sahiptir çünkü bu, `AutoML` kümenin düğümlerinde paralel hale getirmek. Uzaktan bir işlem sırasında, iç altyapının başlangıç zamanı, alt çalışma başına 1,5 dakika, ek olarak VM 'Ler henüz çalışır durumda değilse küme altyapısı için de ek dakika ekler.
 
 ### <a name="pros-and-cons"></a>Profesyonelleri ve dezavantajları
 Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz önünde bulundurun.
 
 |  | Profesyonelleri (avantajlar)  |Dezavantajlara (Handicap)  |
 |---------|---------|---------|---------|
-|**Yerel işlem hedefi** |  <li> Ortam başlatma zamanı yok   | <li>  Özelliklerin alt kümesi<li>  Paralel hale getirmek çalışma yapılamıyor <li> Büyük veriler için daha kötüsü. <li>Eğitim sırasında veri akışı yok <li>  DNN tabanlı bir özellik yok <li> Yalnızca Python SDK |
-|**Uzak ML işlem kümeleri**|  <li> Tüm özellikler kümesi <li> Paralel hale getirmek alt çalıştırmaları <li>   Büyük veri desteği<li>  DNN tabanlı featurleştirme <li>  İsteğe bağlı işlem kümesi dinamik ölçeklenebilirliği <li> Kod yok deneyim (Web UI) Ayrıca kullanılabilir  |  <li> Küme düğümleri için başlangıç zamanı <li> Her alt çalıştırma için başlangıç saati    |
+|**Yerel işlem hedefi** |  <li> Ortam başlangıç zamanı yok   | <li>  Özelliklerin alt kümesi<li>  Paralel hale getirmek çalışma yapılamıyor <li> Büyük veriler için daha kötüsü. <li>Eğitim sırasında veri akışı yok <li>  DNN tabanlı bir özellik yok <li> Yalnızca Python SDK |
+|**Uzak ML işlem kümeleri**|  <li> Tüm özellikler kümesi <li> Paralel hale getirmek alt çalıştırmaları <li>   Büyük veri desteği<li>  DNN tabanlı featurleştirme <li>  İsteğe bağlı işlem kümesi dinamik ölçeklenebilirliği <li> Kod yok deneyim (Web UI) Ayrıca kullanılabilir  |  <li> Küme düğümleri için başlangıç saati <li> Her alt çalıştırma için başlangıç saati    |
 
 ### <a name="feature-availability"></a>Özellik kullanılabilirliği 
 
@@ -219,7 +219,7 @@ Aşağıdaki ayarlar otomatik ML denemenizi yapılandırmanıza olanak tanır.
 |**Verileri tren/doğrulama kümelerine Böl**| ✓|✓
 |**ML görevlerini destekler: sınıflandırma, regresyon ve tahmin**| ✓| ✓
 |**Birincil ölçüme göre iyileştirir**| ✓| ✓
-|**İşlem hedefi olarak AML 'yi destekler** | ✓|✓
+|**Azure ML 'yi işlem hedefi olarak destekler** | ✓|✓
 |**Tahmin ufku, hedef lags & sıralı pencereyi yapılandırma**|✓|✓
 |**Çıkış ölçütünü ayarla** |✓|✓ 
 |**Eşzamanlı yinelemeleri ayarla**| ✓|✓

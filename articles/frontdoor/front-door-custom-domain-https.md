@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6db01531a34e936c59e5aa01a5c37f3a2ccf7345
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277708"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368341"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
 
@@ -134,6 +134,11 @@ Azure Key Vault hesabınızdaki sertifikalara erişmek için Azure ön kapısın
     - Abonelik kimliğiniz için anahtar kasası hesapları. 
     - Seçilen anahtar kasası altındaki sertifikalar (gizli diziler). 
     - Kullanılabilir sertifika sürümleri. 
+
+> [!NOTE]
+> Sertifika sürümünün boş bırakılması şu şekilde olur:
+> - Sertifikanın en son sürümü seçili.
+> - Key Vault sertifikanın daha yeni bir sürümü kullanılabilir olduğunda, sertifikaların otomatik olarak en son sürüme dönmesi.
  
 5. Kendi sertifikanızı kullanıyorsanız etki alanı doğrulaması gerekmez. [Yayılma için bekleme](#wait-for-propagation) adımına geçin.
 
