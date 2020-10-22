@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332051"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370449"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
@@ -62,9 +62,9 @@ login.microsoftonline.com | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve 
 Giden bağlantıyı denetlemek için NSG kullanılırken, bu hizmet etiketlerine izin verilmesi gerekir.
 
 - Kaynak bölgesindeki depolama hesapları için:
-    - Kaynak bölge için bir [depolama hizmeti etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
+    - Kaynak bölge için bir [depolama hizmeti etiketi](../virtual-network/network-security-groups-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
     - Bu adreslere, verilerin VM 'den önbellek depolama hesabına yazılabilmeleri için izin verin.
-- AAD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturma
+- AAD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/network-security-groups-overview.md#service-tags) tabanlı NSG kuralı oluşturma
 - Hedef bölge için Site Recovery izlemeye erişime izin veren bir EventsHub hizmeti etiketi tabanlı NSG kuralı oluşturun.
 - Herhangi bir bölgedeki Site Recovery hizmetine erişime izin vermek için bir Azuresterecoçok hizmet etiketi tabanlı NSG kuralı oluşturun.
 - AzureKeyVault Service etiketi tabanlı bir NSG kuralı oluşturun. Bu, yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir.

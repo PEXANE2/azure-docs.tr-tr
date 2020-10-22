@@ -2,13 +2,13 @@
 title: Azure Event Hubs kaynaklarına erişmek için bir uygulamanın kimliğini doğrulama
 description: Bu makale, Azure Event Hubs kaynaklarına erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama hakkında bilgi sağlar
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 50c697e5c430b72f8d5da393e90f1db7ff6d48a1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.date: 10/21/2020
+ms.openlocfilehash: 6eac2ef362705ecb68212166f8b691ac969a40ff
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332493"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359943"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama
 Microsoft Azure, Azure Active Directory (Azure AD) tabanlı kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Event Hubs kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı `https://eventhubs.azure.net/` (Kafka istemcileri için, belirteç istemek için kaynak `https://<namespace>.servicebus.windows.net` ). Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama Azure Event Hubs kaynaklarına istek yetkilendirmek için erişim belirtecini kullanabilir.
@@ -29,34 +29,6 @@ Azure, Azure AD ve OAuth kullanarak Event Hubs verilerine erişim yetkilendirmek
 
 > [!IMPORTANT]
 > Önizleme sürümümüzü, sahip veya katkıda bulunan rolüne Event Hubs veri erişimi ayrıcalıkları eklemeyi destekliyoruz. Bununla birlikte, sahip ve katkıda bulunan rolü için veri erişimi ayrıcalıkları artık onaylanmaz. Sahip veya katkıda bulunan rolü kullanıyorsanız, Azure Event Hubs veri sahibi rolünü kullanarak geçiş yapın.
-
-## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal kullanarak Azure rolleri atama  
-Azure RBAC ve Azure portal kullanarak Azure kaynaklarına erişimi yönetme hakkında daha fazla bilgi edinmek için [Bu makaleye](..//role-based-access-control/role-assignments-portal.md)bakın. 
-
-Bir rol ataması için uygun kapsamı belirledikten sonra, Azure portal bu kaynağa gidin. Kaynak için erişim denetimi (ıAM) ayarlarını görüntüleyin ve rol atamalarını yönetmek için aşağıdaki yönergeleri izleyin:
-
-> [!NOTE]
-> Aşağıda açıklanan adımlar, Event Hubs ad alanları altında Olay Hub 'ınıza bir rol atar, ancak herhangi bir Event Hubs kaynağına kapsamlı bir rol atamak için aynı adımları izleyebilirsiniz.
-
-1. [Azure Portal](https://portal.azure.com/), Event Hubs ad alanına gidin.
-2. **Genel bakış** sayfasında, rol atamak istediğiniz olay hub 'ını seçin.
-
-    ![Olay Hub 'ınızı seçin](./media/authenticate-application/select-event-hub.png)
-1. Olay Hub 'ı için erişim denetimi ayarlarını göstermek üzere **Access Control (IAM)** öğesini seçin. 
-1. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin. Araç çubuğunda **Ekle** düğmesini seçin ve ardından **rol ataması Ekle**' yi seçin. 
-
-    ![Araç çubuğuna düğme Ekle](./media/authenticate-application/role-assignments-add-button.png)
-1. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın:
-    1. Atamak istediğiniz **Event Hubs rolünü** seçin. 
-    1. Rolü atamak istediğiniz **güvenlik sorumlusunu** (Kullanıcı, Grup, hizmet sorumlusu) bulmak için arama yapın.
-    1. Rol atamasını kaydetmek için **Kaydet** ' i seçin. 
-
-        ![Bir kullanıcıya rol atama](./media/authenticate-application/assign-role-to-user.png)
-    4. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde Azure-Users 'ın Azure Event Hubs veri sahibi rolünde olduğu gösterilmektedir. 
-        
-        ![Listedeki Kullanıcı](./media/authenticate-application/user-in-list.png)
-
-Event Hubs ad alanına, kaynak grubuna veya aboneliğe kapsamlı bir rol atamak için de benzer adımları izleyebilirsiniz. Rolü ve kapsamını tanımladıktan sonra bu davranışı [Bu GitHub konumundaki](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)örneklerle test edebilirsiniz.
 
 
 ## <a name="authenticate-from-an-application"></a>Uygulamadan kimlik doğrulaması yapma
@@ -93,6 +65,30 @@ Uygulamanın bir belirteç istenirken kimliğini kanıtlamak için bir istemci p
 1. Yeni Gizliliğin değerini hemen güvenli bir konuma kopyalayın. Fill değeri size yalnızca bir kez görüntülenir.
 
     ![Gizli anahtar](./media/authenticate-application/client-secret.png)
+
+
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal kullanarak Azure rolleri atama  
+Uygulamayı kaydettikten sonra, uygulamanın hizmet sorumlusunu [Azure Için derleme rolleri Event Hubs](#built-in-roles-for-azure-event-hubs) bölümünde açıklanan Event Hubs BIR Azure AD rolüne atarsınız. 
+
+1. [Azure Portal](https://portal.azure.com/), Event Hubs ad alanına gidin.
+2. **Genel bakış** sayfasında, rol atamak istediğiniz olay hub 'ını seçin.
+
+    ![Olay Hub 'ınızı seçin](./media/authenticate-application/select-event-hub.png)
+1. Olay Hub 'ı için erişim denetimi ayarlarını göstermek üzere **Access Control (IAM)** öğesini seçin. 
+1. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin. Araç çubuğunda **Ekle** düğmesini seçin ve ardından **rol ataması Ekle**' yi seçin. 
+
+    ![Araç çubuğuna düğme Ekle](./media/authenticate-application/role-assignments-add-button.png)
+1. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın:
+    1. Atamak istediğiniz **Event Hubs rolünü** seçin. 
+    1. Rolü atamak istediğiniz **güvenlik sorumlusunu** (Kullanıcı, Grup, hizmet sorumlusu) bulmak için arama yapın. Listeden **kayıtlı uygulamayı** seçin. 
+    1. Rol atamasını kaydetmek için **Kaydet** ' i seçin. 
+
+        ![Bir kullanıcıya rol atama](./media/authenticate-application/assign-role-to-user.png)
+    4. **Rol atamaları** sekmesine geçin ve rol atamasını onaylayın. Örneğin, aşağıdaki görüntüde **MyWebApp** 'nin **Azure Event Hubs veri gönderici** rolünde olduğu gösterilmektedir. 
+        
+        ![Listedeki Kullanıcı](./media/authenticate-application/user-in-list.png)
+
+Event Hubs ad alanına, kaynak grubuna veya aboneliğe kapsamlı bir rol atamak için de benzer adımları izleyebilirsiniz. Rolü ve kapsamını tanımladıktan sonra bu davranışı [Bu GitHub konumundaki](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)örneklerle test edebilirsiniz. Azure RBAC ve Azure portal kullanarak Azure kaynaklarına erişimi yönetme hakkında daha fazla bilgi edinmek için [Bu makaleye](..//role-based-access-control/role-assignments-portal.md)bakın. 
 
 
 ### <a name="client-libraries-for-token-acquisition"></a>Belirteç alımı için istemci kitaplıkları  

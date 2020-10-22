@@ -3,52 +3,53 @@ title: Azure VMware çözümü ayrılmış örneği ile maliyetleri kaydetme
 description: Azure VMware çözümü için ayrılmış bir örnek satın almayı öğrenin.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bac2497c637a301c7ce8cbc44fc6945c3ef43b06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951426"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370687"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware çözümü ile maliyetleri kaydetme
 
-Ayrılmış bir Azure VMware çözümü örneğine kaydetme yaptığınızda para tasarrufu sağlayabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan Azure VMware Çözüm ana bilgisayarlarının sayısına otomatik olarak uygulanır. İndirimleri almak için ayrılmış bir konağa bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca kullanımınızın işlem parçasını kapsar ve yazılım lisanslama maliyetlerini içerir. Bkz. [Azure VMware çözümüne genel bakış](introduction.md).
+[Azure VMware çözümünün](introduction.md)ayrılmış bir örneğine kayıt yaptığınızda para tasarrufu yapın. Rezervasyon indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan Azure VMware Çözüm konaklarına otomatik olarak uygulanır. İndirimleri almak için ayrılmış bir konağa bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca kullanımınızın işlem parçasını kapsar ve yazılım lisanslama maliyetlerini içerir. 
+
 
 ## <a name="purchase-restriction-considerations"></a>Satın alma kısıtlaması konuları
 
 Ayrılmış örnekler bazı özel durumlarla birlikte kullanılabilir.
 
--   **Bulutlar**   -Ayırmalar yalnızca [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) sayfasında listelenen bölgelerde kullanılabilir.
+-   **Bulutlar** -ayırmalar yalnızca [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) sayfasında listelenen bölgelerde kullanılabilir.
 
--   **Yetersiz kota**   -Tek/paylaşılan bir abonelik kapsamındaki bir ayırma, yeni ayrılmış örnek için abonelikte kullanılabilir Konaklar kotasına sahip olmalıdır. Bu sorunu çözmek için [Kota artışı isteği oluşturabilirsiniz](enable-azure-vmware-solution.md) .
+-   **Yetersiz kota** -tek/paylaşılan bir aboneliğe kapsamlı bir ayırma, yeni ayrılmış örnek için abonelikte kullanılabilir Konaklar kotasına sahip olmalıdır. Bu sorunu çözmek için [Kota artışı isteği oluşturabilirsiniz](enable-azure-vmware-solution.md) .
 
--   **Teklif uygunluğu**-Microsoft Ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md)gerekir   .
+-   **Teklif uygunluğu**-Microsoft Ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
 
--   **Kapasite kısıtlamaları**   Nadir koşullarda Azure, bir bölgedeki düşük kapasiteden dolayı Azure VMware Çözüm Konağı SKU 'Ları için yeni ayırmalar satın almayı sınırlandırır.
+-   **Kapasite kısıtlamaları** -nadir koşullarda Azure, bir bölgedeki düşük kapasiteden dolayı Azure VMware Çözüm Konağı SKU 'ları için yeni rezervasyonların satın alınmasını sınırlandırır.
 
 ## <a name="buy-a-reservation"></a>Ayırma satın alma
 
-Azure VMware Çözüm ana bilgisayar örneğinin ayrılmış bir örneğini [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)satın alabilirsiniz.
+Azure VMware Çözüm ana bilgisayar örneğinin ayrılmış bir örneğini [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)satın alabilirsiniz.
 
-Rezervasyon için [veya aylık ödemeler](../cost-management-billing/reservations/prepare-buy-reservation.md)için ödeme yapın.
+[Peşin olarak veya aylık ödemelerle](../cost-management-billing/reservations/prepare-buy-reservation.md) rezervasyon ödemesi yapın.
 
 Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın almak için geçerlidir:
 
 -   En az bir EA aboneliği veya Kullandıkça Öde tarifesine sahip bir abonelik için sahip rolünde olmanız gerekir.
 
--   EA abonelikleri için, **ayrılmış örnekler Ekle**   seçeneğinin [EA portalında](https://ea.azure.com/)etkinleştirilmiş olması gerekir. Veya, bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
+-   EA abonelikleri için, **ayrılmış örnekler Ekle** seçeneğinin [EA portalında](https://ea.azure.com/)etkinleştirilmiş olması gerekir. Veya, bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
 
 Örnek satın almak için:
 
-1.  [Azure Portal](https://portal.azure.com/)oturum açın.
+1. [Azure portalda](https://portal.azure.com/) oturum açın.
 
-2.  **Tüm hizmet**ayırmaları ' ni seçin   >  **Reservations**.
+2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 
-3.  **Ekle**   ' yi seçerek yeni bir ayırma satın alın ve ardından **Azure VMware çözümü**' ni seçin.
+3. **Ekle** ' yi seçerek yeni bir ayırma satın alın ve ardından **Azure VMware çözümü**' ni seçin.
 
-4. Gerekli alanları doldurun. Ayırma iskontosunu almak için, seçtiğiniz özniteliklerle eşleşen Azure VMware Çözüm Konakları çalıştırılıyor. İskontoyu alan Azure VMware Çözüm ana bilgisayarlarının gerçek sayısı, seçilen kapsama ve miktara göre değişir.
+4. Gerekli alanları girin. Özniteliklerle eşleşen Azure VMware Çözüm Konakları çalıştırıldığında, rezervasyon iskontosunu almak için nitelendir ' ı seçersiniz. Seçili kapsama ve miktara bağlı olarak iskontoyu alan Azure VMware Çözüm ana bilgisayarlarınızı 'nın gerçek sayısı.
 
-   EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle seçeneğini**kullanabilirsiniz   . Bu seçenek diğer abonelik türleri için kullanılamaz.
+   EA anlaşmanız varsa, daha fazla örnek eklemek için **daha fazla ek ekle seçeneğini** kullanabilirsiniz. Bu seçenek diğer abonelik türleri için kullanılamaz.
 
    | Alan        |  Açıklama |
    | ------------ | ------------ |
@@ -59,11 +60,14 @@ Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın alma
    | Süre         | Bir yıl veya üç yıl.  |
    | Miktar     | Ayırma içinde satın alınan örneklerin sayısı. Bu miktar, fatura iskontosunu elde eden, çalışan Azure VMware Çözüm ana bilgisayarlarının sayısıdır.    |
 
-## <a name="usage-data-and-reservation-utilization"></a>Kullanım verileri ve ayırma kullanımı
+## <a name="usage-data-and-reservation-usage"></a>Kullanım verileri ve ayırma kullanımı
 
-Kullanım verileriniz, kullanım için sıfır geçerli fiyata sahip olup rezervasyon indirimi alır. Hangi Azure VMware Çözüm örneğinin her rezervasyon için rezervasyon iskontosunu aldığını görebilirsiniz.
+Rezervasyon indirimi alan kullanımınızın etkin bir fiyatı vardır. Hangi Azure VMware Çözüm örneğinin her rezervasyon için rezervasyon iskontosunu aldığını görebilirsiniz.
 
-Rezervasyon iskontolarının kullanım verilerinde nasıl göründüğü hakkında daha fazla bilgi edinmek ve bir EA müşterisiyseniz, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlayın](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md). Tek bir aboneliğiniz varsa, bkz. [Kullandıkça Öde aboneliğiniz Için Azure ayırma kullanımını anlayın](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
+Kullanım verilerinde rezervasyon iskontolarının nasıl göründüğü hakkında daha fazla bilgi için:
+
+- EA müşterileri için bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+- Bireysel abonelikler için bkz. [Kullandıkça Öde aboneliğiniz Için Azure rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
 ## <a name="change-a-reservation-after-purchase"></a>Satın alma işleminden sonra rezervasyonu değiştirme
 
@@ -85,8 +89,8 @@ Ayrıca, bir ayırmayı daha küçük parçalara bölebilir veya rezervasyonlar�
 > - Miktar
 > - Süre
 >
->Ancak, *exchange*   değişiklik yapmak istiyorsanız bir rezervasyon alışverişi yapabilirsiniz.
+>Ancak, değişiklik yapmak istiyorsanız bir rezervasyon *alışverişi* yapabilirsiniz.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).

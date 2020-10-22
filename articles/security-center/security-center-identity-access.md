@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341271"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371078"
 ---
 # <a name="monitor-identity-and-access"></a>Kimlik ve erişimi izleme
 
@@ -56,7 +56,7 @@ Güvenlik Merkezi 'nin kimlik ve erişim korumalarının bazı sınırlamaları 
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-Factor Authentication (MFA) ve Azure Active Directory 
 
-MFA 'nın etkinleştirilmesi [Azure Active Directory (ad) kiracı izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)gerektirir.
+MFA 'nın etkinleştirilmesi [Azure Active Directory (ad) kiracı izinleri](../active-directory/roles/permissions-reference.md)gerektirir.
 
 - AD 'nin Premium bir sürümüne sahipseniz, [koşullu erişim](../active-directory/conditional-access/concept-conditional-access-policy-common.md)kullanarak MFA 'yı etkinleştirin.
 - AD ücretsiz sürüm kullanıyorsanız, [Azure Active Directory belgelerinde](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)açıklandığı şekilde **güvenlik varsayılanlarını** etkinleştirin.

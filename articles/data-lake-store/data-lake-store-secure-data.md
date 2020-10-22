@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149282"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370704"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de depolanan verilerin güvenliğini sağlama
 Azure Data Lake Storage 1. içindeki verilerin güvenliğini sağlamak, üç adımlı bir yaklaşımdır.  Hem Azure rol tabanlı erişim denetimi (Azure RBAC) hem de erişim denetim listeleri (ACL 'Ler), kullanıcılar ve güvenlik grupları için verilere erişimi tam olarak etkinleştirecek şekilde ayarlanmalıdır.
@@ -29,7 +29,7 @@ Azure Data Lake Storage 1. içindeki verilerin güvenliğini sağlamak, üç ad�
 
 Bu makale, yukarıdaki görevleri gerçekleştirmek için Azure portal nasıl kullanılacağına ilişkin yönergeler sağlar. Data Lake Storage 1. hesap ve veri düzeyinde güvenliği nasıl uygulayan hakkında ayrıntılı bilgi için, bkz. [Azure Data Lake Storage 1. güvenlik](data-lake-store-security-overview.md). ACL 'Lerin Data Lake Storage 1. nasıl uygulandığı hakkında ayrıntılı bilgi için, bkz. [Data Lake Storage 1. Access Control genel bakış](data-lake-store-access-control.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -39,7 +39,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 Azure AD güvenlik grupları oluşturma ve gruba kullanıcı ekleme hakkında yönergeler için, bkz. [Azure Active Directory güvenlik gruplarını yönetme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 > [!NOTE] 
-> Azure portal kullanarak, hem kullanıcıları hem de diğer grupları Azure AD 'deki bir gruba ekleyebilirsiniz. Bununla birlikte, bir gruba hizmet sorumlusu eklemek için [Azure AD 'Nin PowerShell modülünü](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)kullanın.
+> Azure portal kullanarak, hem kullanıcıları hem de diğer grupları Azure AD 'deki bir gruba ekleyebilirsiniz. Bununla birlikte, bir gruba hizmet sorumlusu eklemek için [Azure AD 'Nin PowerShell modülünü](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)kullanın.
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: b1b93110c3dba38dadf7079fc24ba12e81793c02
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a960150d68cf2f939e206321a20d98b0e4080313
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329858"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371503"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
 
@@ -70,7 +70,7 @@ Farklı Çalıştır izinleriyle bir Otomasyon hesabı oluşturun. Yönergeler i
 
 ### <a name="2-assign-the-run-as-account-a-role"></a><a name="about"></a>2. Farklı Çalıştır hesabına rol atama
 
-Varsayılan olarak, **katılımcı** rolü, **Farklı Çalıştır** hesabınız tarafından kullanılan hizmet sorumlusuna atanır. Hizmet sorumlusuna atanmış varsayılan rolü tutabilir veya [yerleşik bir rol](../role-based-access-control/built-in-roles.md) (örneğin, okuyucu) veya [özel bir rol](../active-directory/users-groups-roles/roles-create-custom.md)atayarak izinleri kısıtlayabilirsiniz.
+Varsayılan olarak, **katılımcı** rolü, **Farklı Çalıştır** hesabınız tarafından kullanılan hizmet sorumlusuna atanır. Hizmet sorumlusuna atanmış varsayılan rolü tutabilir veya [yerleşik bir rol](../role-based-access-control/built-in-roles.md) (örneğin, okuyucu) veya [özel bir rol](../active-directory/roles/custom-create.md)atayarak izinleri kısıtlayabilirsiniz.
 
  Farklı Çalıştır hesabınız tarafından kullanılan hizmet sorumlusuna atanacak rolü öğrenmek için aşağıdaki adımları kullanın:
 

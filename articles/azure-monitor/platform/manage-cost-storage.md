@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 3783c3dea67ebb9a77486d18bf80e67b85292744
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6a14ef6f75d5939501c6bd8ca84620a7a5619a54
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144174"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369072"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -243,7 +243,7 @@ Başlamanıza başlamak için, işlevi kullanarak tabloyu sorgulayan uyarının 
 - Hedef: Log Analytics kaynağını seçin
 - Ölçütlere 
    - Sinyal adı: özel günlük araması
-   - Arama sorgusu: `_LogOperation | where Detail has 'OverQuota'`
+   - Arama sorgusu: `_LogOperation | where Category == "Ingestion" | where Operation == "Ingestion rate" | where Level == "Warning"`
    - Temel alan: sonuç sayısı
    - Koşul: büyüktür
    - Eşik: 0
@@ -600,9 +600,9 @@ Son 24 saat içinde alınan faturalandırılabilir veri hacmi 50 GB 'den büyük
 - **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
 - **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
    - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
-   - **Sorgunun aranacağı sorgu** `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Farklı bir ETN istiyorsanız 
+   - **Sorgunun aranacağı sorgu** `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . İsterseniz farklı bir 
    - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
-   - *1440* dakikalık **süre** ve her *1440* **dakikadaki Uyarı sıklığı** , günde bir kez çalıştırılır.
+   - Günde bir kez çalıştırmak için *1440* dakikalık ve **Uyarı sıklığının** her *1440* dakikada bir **zaman aralığı** .
 - **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
    - *24 saat içinde 50 GB 'tan büyük faturalandırılabilir veri hacmi* **adı**
    - **Önem derecesi**: *Uyarı*

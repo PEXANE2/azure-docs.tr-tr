@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797246"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370925"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme
 Profil resmi, işe özel bilgiler ve Azure Active Directory (Azure AD) kullanarak bazı ayarlar dahil olmak üzere Kullanıcı profili bilgilerini ekleyin. Yeni Kullanıcı ekleme hakkında daha fazla bilgi için bkz. [Azure Active Directory Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
@@ -66,4 +66,4 @@ Kullanıcılarınızın profillerini güncelleştirdikten sonra, aşağıdaki te
 
 - [Temel bir grup oluşturma ve üye ekleme](active-directory-groups-create-azure-portal.md)
 
-Ya da temsilciler atama, ilkeleri kullanma ve Kullanıcı hesaplarını paylaşma gibi diğer kullanıcı yönetim görevlerini de gerçekleştirebilirsiniz. Diğer kullanılabilir eylemler hakkında daha fazla bilgi için bkz. [Kullanıcı yönetimi belgelerini Azure Active Directory](../users-groups-roles/index.yml).
+Ya da temsilciler atama, ilkeleri kullanma ve Kullanıcı hesaplarını paylaşma gibi diğer kullanıcı yönetim görevlerini de gerçekleştirebilirsiniz. Diğer kullanılabilir eylemler hakkında daha fazla bilgi için bkz. [Kullanıcı yönetimi belgelerini Azure Active Directory](../enterprise-users/index.yml).

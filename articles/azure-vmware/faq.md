@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bdc0bdb5966445fe98b2f65bce552fe6dca493ea
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078944"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368987"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -45,7 +45,7 @@ Belirli tümleştirmeler ve kullanım durumları, büyük/küçük harf esasına
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>Şirket içi ortamlardan vSphere VM 'lerini Azure VMware Çözüm özel bulutlarına geçirebilir miyim?
 
-Evet. Standart çapraz vCenter [vMotion gereksinimleri](https://kb.vmware.com/s/article/210695) karşılanıyorsa VM 'leri özel bir buluta TAŞıMAK için VM geçişi ve vMotion kullanılabilir.
+Evet. Standart çapraz vCenter [vMotion gereksinimleri](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) karşılanıyorsa VM 'leri özel bir buluta TAŞıMAK için VM geçişi ve vMotion kullanılabilir.
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>Şirket içi ortamlarda gerekli olan belirli bir vSphere sürümü mi?
 
@@ -277,7 +277,7 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrıl
    Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
 
 <!-- LINKS - external -->
-[kb2106952]: https://kb.vmware.com/s/article/2106952
+[kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522
 
 <!-- LINKS - internal -->
 [Access and Identity Concepts]: concepts-identity.md

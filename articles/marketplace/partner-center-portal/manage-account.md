@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d794716fe1f4717acbabfd90643b72c682e475bc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400698"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370602"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
 
@@ -170,7 +170,7 @@ Tüm Iş ortağı merkezi kullanıcılarının (gruplar ve Azure AD uygulamalar�
 
 ### <a name="create-new-users"></a>Yeni Kullanıcı Oluştur
 
-Yeni Kullanıcı hesapları oluşturmak için [**genel yönetici**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) izinlerine sahip bir hesabınız olması gerekir.
+Yeni Kullanıcı hesapları oluşturmak için [**genel yönetici**](../../active-directory/roles/permissions-reference.md) izinlerine sahip bir hesabınız olması gerekir.
 
 1. **Kullanıcılara** ( **Hesap ayarları**altında) gidin, **Kullanıcı Ekle**' yi seçin ve ardından **Yeni Kullanıcı oluştur**' u seçin.
 1. Her yeni kullanıcı için bir ad, son ad ve Kullanıcı adı girin. 
@@ -184,7 +184,7 @@ Yeni Kullanıcı hesapları oluşturmak için [**genel yönetici**](../../active
 
 ### <a name="invite-new-users-by-email"></a>Yeni kullanıcıları e-posta ile davet et
 
-Şirket iş hesabınızın (Azure AD kiracısı) bir parçası olmayan kullanıcıları e-posta ile davet etmek için, [**genel yönetici**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) izinlerine sahip bir hesabınız olmalıdır.
+Şirket iş hesabınızın (Azure AD kiracısı) bir parçası olmayan kullanıcıları e-posta ile davet etmek için, [**genel yönetici**](../../active-directory/roles/permissions-reference.md) izinlerine sahip bir hesabınız olmalıdır.
 
 1. **Kullanıcılara** ( **Hesap ayarları**altında) gidin, **Kullanıcı Ekle**' yi seçin ve ardından **kullanıcıları e-postayla davet et**' i seçin
 2. Virgülle veya noktalı virgülle ayırarak bir veya daha fazla e-posta adresi (en fazla 10) girin.
@@ -204,7 +204,7 @@ Bir kullanıcıyı iş hesabınızdan (Azure AD kiracısı) kaldırmak için **k
 
 ### <a name="change-a-user-password"></a>Kullanıcı parolasını değiştirme
 
-Kullanıcılarınızın, parolasını değiştirmesi gerekiyorsa, Kullanıcı hesabı oluştururken **parola kurtarma e-postası** sağlanmışsa, bunları kendileri yapabilir. Ayrıca, aşağıdaki adımları izleyerek bir kullanıcının parolasını güncelleştirebilirsiniz. Şirket iş hesabınızdaki (Azure AD kiracısı) bir kullanıcının parolasını değiştirmek için, [**genel yönetici**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) izinlerine sahip bir hesapta oturum açmış olmanız gerekir. Bu işlem, kullanıcının Azure AD kiracınızdaki parolasını, Iş Ortağı Merkezi 'ne erişmek için kullandıkları parolayı değiştirecek şekilde değiştirir.
+Kullanıcılarınızın, parolasını değiştirmesi gerekiyorsa, Kullanıcı hesabı oluştururken **parola kurtarma e-postası** sağlanmışsa, bunları kendileri yapabilir. Ayrıca, aşağıdaki adımları izleyerek bir kullanıcının parolasını güncelleştirebilirsiniz. Şirket iş hesabınızdaki (Azure AD kiracısı) bir kullanıcının parolasını değiştirmek için, [**genel yönetici**](../../active-directory/roles/permissions-reference.md) izinlerine sahip bir hesapta oturum açmış olmanız gerekir. Bu işlem, kullanıcının Azure AD kiracınızdaki parolasını, Iş Ortağı Merkezi 'ne erişmek için kullandıkları parolayı değiştirecek şekilde değiştirir.
 
 1. **Kullanıcılar** sayfasından ( **Hesap ayarları**altında), düzenlemek istediğiniz kullanıcı hesabının adını seçin.
 2. Sayfanın alt kısmındaki **Parolayı Sıfırla** düğmesini seçin.

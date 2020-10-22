@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 7013c8ed338e727dd79a3845ff3b85749c0f5cee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e937f6c79e52aa7a75f6e222f195e1428dd16033
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836097"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371027"
 ---
 # <a name="virtual-network-tap"></a>Sanal ağ TAP
 > [!IMPORTANT]
@@ -38,7 +38,7 @@ Bir sanal ağ TAP 'ı oluşturmadan önce, önizlemeye kaydettiğiniz bir onay e
 
 Ağ arabirimlerinde yapılandırma uygulamak için kullandığınız hesapların [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tablodan gerekli eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
 
-| Eylem | Adı |
+| Eylem | Name |
 |---|---|
 | Microsoft. Network/virtualNetworkTaps/* | Bir sanal ağ dokunma kaynağı oluşturmak, güncelleştirmek, okumak ve silmek için gereklidir |
 | Microsoft. Network/NetworkInterfaces/Read | TAP 'ın yapılandırıldığı ağ arabirimi kaynağını okumak için gereklidir |
@@ -65,7 +65,7 @@ Ağ arabirimlerinde yapılandırma uygulamak için kullandığınız hesapların
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Riveryatak Steelmerkezi AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
-- [RSA Nettanık® platformu](https://www.rsa.com/azure)
+- [RSA Nettanık® platformu](https://www.rsa.com/content/dam/en/solution-brief/rsa-netwitness-platform-overview-for-federal-agencies.pdf)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
 

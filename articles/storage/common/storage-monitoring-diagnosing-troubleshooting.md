@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854566"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370483"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -217,7 +217,7 @@ Depolama günlüğü, Azure Depolama hesabınızdaki depolama isteklerinin sunuc
 İstemci ve sunucunun değiş tokuş olduğu veriler ve temel alınan ağ koşulları hakkında ayrıntılı bilgi sağlamak için istemci ile sunucu arasındaki trafiği yakalayabilirsiniz. Faydalı ağ günlüğü araçları şunları içerir:
 
 * [Fiddler](https://www.telerik.com/fiddler) , http ve https istek ve yanıt iletilerinin üst bilgilerini ve yük verilerini incelemenize olanak tanıyan, ücretsiz bir Web hata ayıklama proxy 'si. Daha fazla bilgi için bkz. [ek 1: http ve HTTPS trafiğini yakalamak Için Fiddler kullanma](#appendix-1).
-* [Microsoft Ağ İzleyicisi (Netmon)](https://cnet-downloads.com/network-monitor) ve [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan ücretsiz ağ protokol çözümleyicileri vardır. Wireshark hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma](#appendix-2)".
+* [Microsoft Ağ İzleyicisi (Netmon)](https://download.cnet.com/s/network-monitor/) ve [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan ücretsiz ağ protokol çözümleyicileri vardır. Wireshark hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma](#appendix-2)".
 * İstemci Makinenizin ağ üzerinden Azure depolama hizmetine bağlanıp bağlanamamasını denetlemek için temel bir bağlantı testi gerçekleştirmek istiyorsanız, bu işlemi istemcisinde standart **ping** aracını kullanarak yapamazsınız. Ancak, bağlantı denetlemek için [ **tcpıng** aracını](https://www.elifulkerson.com/projects/tcping.php) kullanabilirsiniz.
 
 Çoğu durumda, depolama günlüğü ve depolama Istemci kitaplığı 'ndaki günlük verileri bir sorunu tanılamak için yeterli olacaktır, ancak bazı senaryolarda bu ağ günlüğü araçlarının sağlayabilecek daha ayrıntılı bilgilere ihtiyacınız olabilir. Örneğin, HTTP ve HTTPS iletilerini görüntülemek için Fiddler kullanılması, depolama hizmetlerinden ve istemci uygulamasının depolama işlemlerini nasıl yeniden deneyeceğini incelemenize olanak tanıyan üst bilgi ve yük verilerini görüntülemenize olanak sağlar. Wireshark gibi protokol çözümleyicileri, paket düzeyinde çalışır ve kayıp paketleri ve bağlantı sorunlarını gidermenize olanak sağlayan TCP verilerini görüntülemenize olanak sağlar. 

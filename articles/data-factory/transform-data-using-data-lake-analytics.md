@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: f99bc5b07f3749fac28f60d28b040a7e0682971b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab5a76a9734ca879e468a1921554f91680be8339
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522423"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370670"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics üzerinde U-SQL betikleri çalıştırarak verileri işleme 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -38,11 +38,11 @@ Aşağıdaki tabloda JSON tanımında kullanılan genel özellikler için açık
 
 | Özellik                 | Açıklama                              | Gerekli                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **türüyle**                 | Type özelliği: **AzureDataLakeAnalytics**olarak ayarlanmalıdır. | Evet                                      |
-| **Adı**          | Azure Data Lake Analytics hesap adı.  | Evet                                      |
-| **Datalakeanaliz Ticsurı** | Azure Data Lake Analytics URI 'SI.           | Hayır                                       |
-| **SubscriptionID**       | Azure abonelik KIMLIĞI                    | Hayır                                       |
-| **resourceGroupName**    | Azure kaynak grubu adı                | Hayır                                       |
+| **türüyle**                 | Type özelliği: **AzureDataLakeAnalytics**olarak ayarlanmalıdır. | Yes                                      |
+| **accountName**          | Azure Data Lake Analytics hesap adı.  | Yes                                      |
+| **Datalakeanaliz Ticsurı** | Azure Data Lake Analytics URI 'SI.           | No                                       |
+| **SubscriptionID**       | Azure abonelik KIMLIĞI                    | No                                       |
+| **resourceGroupName**    | Azure kaynak grubu adı                | No                                       |
 
 ### <a name="service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulaması
 Azure Data Lake Analytics bağlı hizmeti, Azure Data Lake Analytics hizmetine bağlanmak için bir hizmet sorumlusu kimlik doğrulaması gerektirir. Hizmet sorumlusu kimlik doğrulamasını kullanmak için Azure Active Directory (Azure AD) ' a bir uygulama varlığı kaydedin ve bu kullanıcıya hem Data Lake Analytics hem de kullandığı Data Lake Store erişim izni verin. Ayrıntılı adımlar için bkz. [hizmetten hizmete kimlik doğrulaması](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Bağlı hizmeti tanımlamak için kullandığınız aşağıdaki değerleri unutmayın:
@@ -57,9 +57,9 @@ Aşağıdaki özellikleri belirterek hizmet sorumlusu kimlik doğrulamasını ku
 
 | Özellik                | Açıklama                              | Gerekli |
 | :---------------------- | :--------------------------------------- | :------- |
-| **Serviceprincipalıd**  | Uygulamanın istemci KIMLIĞINI belirtin.     | Evet      |
-| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin.           | Evet      |
-| **tenant**              | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet      |
+| **Serviceprincipalıd**  | Uygulamanın istemci KIMLIĞINI belirtin.     | Yes      |
+| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin.           | Yes      |
+| **tenant**              | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Yes      |
 
 **Örnek: hizmet sorumlusu kimlik doğrulaması**
 ```json
@@ -121,17 +121,17 @@ Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamala
 
 | Özellik            | Açıklama                              | Gerekli |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | İşlem hattındaki etkinliğin adı     | Evet      |
-| açıklama         | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| tür                | Data Lake Analytics U-SQL etkinliği için etkinlik türü  **Datalakeanalsu-SQL**' dir. | Evet      |
-| linkedServiceName   | Azure Data Lake Analytics bağlı hizmet. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.  |Evet       |
-| scriptPath          | U-SQL betiğini içeren klasörün yolu. Dosyanın adı büyük/küçük harfe duyarlıdır. | Evet      |
-| scriptLinkedService | Komut dosyasını içeren **Azure Data Lake Store** veya **Azure depolama alanını** Data Factory 'ye bağlayan bağlantılı hizmet | Evet      |
-| Analyticsunits | İşi çalıştırmak için eşzamanlı olarak kullanılan en fazla düğüm sayısı. | Hayır       |
-| Priority            | Önce kuyruğa alınan tüm işlerin ne kadar önce çalıştırılacağını belirler. Sayı ne kadar düşükse öncelik o kadar yüksektir. | Hayır       |
-| parameters          | U-SQL betiğine geçirilecek parametreler.    | Hayır       |
-| runtimeVersion      | Kullanılacak U-SQL altyapısının çalışma zamanı sürümü. | Hayır       |
-| compilationMode     | <p>U-SQL derleme modu. Şu değerlerden biri olmalıdır: **anlam:** yalnızca anlam denetimleri ve gerekli sağlamlık denetimleri gerçekleştirin, **tam:** sözdizimi denetimi, iyileştirme, kod oluşturma, vb., **tekbox** gibi tam derlemeyi gerçekleştirin: tam derlemeyi, TargetType ' ın tekbox ayarıyla birlikte gerçekleştirin. Bu özellik için bir değer belirtmezseniz, sunucu en uygun derleme modunu belirler. | Hayır |
+| name                | İşlem hattındaki etkinliğin adı     | Yes      |
+| açıklama         | Etkinliğin ne yaptığını açıklayan metin.  | No       |
+| tür                | Data Lake Analytics U-SQL etkinliği için etkinlik türü  **Datalakeanalsu-SQL**' dir. | Yes      |
+| linkedServiceName   | Azure Data Lake Analytics bağlı hizmet. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.  |Yes       |
+| scriptPath          | U-SQL betiğini içeren klasörün yolu. Dosyanın adı büyük/küçük harfe duyarlıdır. | Yes      |
+| scriptLinkedService | Komut dosyasını içeren **Azure Data Lake Store** veya **Azure depolama alanını** Data Factory 'ye bağlayan bağlantılı hizmet | Yes      |
+| Analyticsunits | İşi çalıştırmak için eşzamanlı olarak kullanılan en fazla düğüm sayısı. | No       |
+| Priority            | Önce kuyruğa alınan tüm işlerin ne kadar önce çalıştırılacağını belirler. Sayı ne kadar düşükse öncelik o kadar yüksektir. | No       |
+| parameters          | U-SQL betiğine geçirilecek parametreler.    | No       |
+| runtimeVersion      | Kullanılacak U-SQL altyapısının çalışma zamanı sürümü. | No       |
+| compilationMode     | <p>U-SQL derleme modu. Şu değerlerden biri olmalıdır: **anlam:** yalnızca anlam denetimleri ve gerekli sağlamlık denetimleri gerçekleştirin, **tam:** sözdizimi denetimi, iyileştirme, kod oluşturma, vb., **tekbox** gibi tam derlemeyi gerçekleştirin: tam derlemeyi, TargetType ' ın tekbox ayarıyla birlikte gerçekleştirin. Bu özellik için bir değer belirtmezseniz, sunucu en uygun derleme modunu belirler. | No |
 
 Betik tanımı için [SearchLogProcessing.txt](#sample-u-sql-script) bakın. 
 
@@ -198,5 +198,5 @@ Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıd
 * [Hadoop akışı etkinliği](transform-data-using-hadoop-streaming.md)
 * [Spark etkinliği](transform-data-using-spark.md)
 * [.NET özel etkinliği](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning Batch yürütme etkinliği](transform-data-using-machine-learning.md)
+* [Azure Machine Learning Studio (klasik) Batch yürütme etkinliği](transform-data-using-machine-learning.md)
 * [Saklı yordam etkinliği](transform-data-using-stored-procedure.md)

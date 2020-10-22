@@ -3,12 +3,12 @@ title: Azure Site Recovery kullanarak Azure Stack VM 'Leri Azure 'a çoğaltma |
 description: Azure Site Recovery hizmetiyle Azure Stack VM 'Ler için Azure 'da olağanüstü durum kurtarmayı ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448964"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370534"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
 
@@ -186,7 +186,7 @@ Başlamadan önce, başlamadan önce saatin sanal makinede [bir saat sunucusuyla
 > [!NOTE]
 > Yapılandırma sunucusu da komut satırından yüklenebilir. [Daha fazla bilgi edinin](physical-manage-configuration-server.md#install-from-the-command-line).
 >
-> Hesap adının portalda görünmesi 15 dakika veya daha fazla sürebilir. Hemen güncelleştirmek için **yapılandırma sunucuları**  >  ***sunucu adı***  >  **yenileme sunucusu**' nu seçin.
+> Hesap adının portalda görünmesi 15 dakika veya daha fazla sürebilir. Hemen güncelleştirmek için **yapılandırma sunucuları**  >  **_sunucu adı_*_ > _* Refresh Server**' ı seçin.
 
 ## <a name="step-4-set-up-the-target-environment"></a>4. Adım: hedef ortamı ayarlama
 
@@ -314,7 +314,7 @@ Ardından yük devretmeyi aşağıdaki gibi çalıştırın:
 
 ### <a name="fail-back-to-azure-stack"></a>Azure Stack yeniden başarısız oldu
 
-Birincil siteniz tekrar çalışır duruma geldiğinde Azure 'dan Azure Stack 'e geri dönebilirsiniz. Bunu yapmak için [burada](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)listelenen adımları izleyin.
+Birincil siteniz tekrar çalışır duruma geldiğinde Azure 'dan Azure Stack 'e geri dönebilirsiniz. Bunu yapmak için [burada](/azure-stack/operator/site-recovery-failback?view=azs-2005)listelenen adımları izleyin.
 
 ## <a name="conclusion"></a>Sonuç
 
@@ -323,4 +323,3 @@ Bu makalede Azure Stack VM 'Leri Azure 'a çoğalttık. Çoğaltma yerinde oldu�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yeniden başarısız olduktan sonra, sanal makineyi yeniden koruyabilir ve bunu yapmak Için tekrar Azure 'a çoğaltmaya başlayabilirsiniz. Bu makaledeki adımları tekrarlayın.
-
