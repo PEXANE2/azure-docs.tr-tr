@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8dbd4d8deccd42d6fcc391eab1e57df7514401
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d1dda465dd675e0f5f519f86289df2621be0b9bb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114339"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367865"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>Azure Active Directory ile SCıM eşitlemesi
 
@@ -26,14 +26,14 @@ Etki alanları arası kimlik yönetimi (SCıM) sistemi, kimlik alanları ve BT s
 
 SCıM iki uç noktanın standartlaştırılmış bir tanımıdır:/Users ' uç noktası ve/groups uç noktası. Nesneleri oluşturmak, güncelleştirmek ve silmek için ortak REST fiillerini kullanır. Ayrıca grup adı, Kullanıcı adı, ad, soyadı ve e-posta gibi ortak öznitelikler için önceden tanımlanmış bir şema kullanır. Bir SCıM 2,0 REST API sunan uygulamalar, Özel Kullanıcı yönetimi API 'Leri veya ürünleriyle çalışma durumunu azaltabilir veya ortadan kaldırabilir. Örneğin, herhangi bir SCıM uyumlu istemci, yeni bir kullanıcı girişi oluşturmak için/Users uç noktasına bir JSON nesnesinin HTTP GÖNDERISINI yapabilir. Aynı temel eylemler için biraz farklı bir API sağlamak yerine, SCıM standardına uyan uygulamalar, önceden var olan istemcilerden, araçlardan ve koddan hemen faydalanabilir. 
 
-## <a name="use-when"></a>Şu durumlarda kullanın: 
+## <a name="use-when"></a>Şu durumlarda kullanın: 
 
 Kullanıcı bilgilerini bir HCM sisteminden Azure AD 'ye ve Windows Server Active Directory ' e otomatik olarak sağlamak ve gerekirse hedef sistemleri hedeflemek istiyorsunuz. 
 
 ![mimari diyagram](./media/authentication-patterns/scim-auth.png)
 
 
-## <a name="components-ofsystem"></a>Sistem bileşenleri 
+## <a name="components-of-system"></a>Sistem bileşenleri 
 
 * **HCM sistemi**: çalışan yaşam döngüsü boyunca HR işlemlerini destekleyen ve otomatikleştiren ınsan sermaye yönetimi sürecini ve uygulamalarını etkinleştiren uygulamalar ve teknolojiler. 
 
@@ -43,7 +43,7 @@ Kullanıcı bilgilerini bir HCM sisteminden Azure AD 'ye ve Windows Server Activ
 
 * **Hedef sistem**: Kullanıcı ve grupların otomatik olarak sağlanmasını sağlamak için SCIM uç noktası olan ve Azure AD sağlama ile birlikte çalışarak uygulama veya sistem.  
 
-## <a name="implementscimwith-azure-ad"></a>Azure AD ile SCıM 'i uygulama 
+## <a name="implement-scim-with-azure-ad"></a>Azure AD ile SCıM 'i uygulama 
 
 * [Azure AD 'de sağlama nasıl yapılır? ](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)
 
@@ -51,5 +51,5 @@ Kullanıcı bilgilerini bir HCM sisteminden Azure AD 'ye ve Windows Server Activ
 
 * [Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın  ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)
 
-* [SCıM 2,0 Azure AD sağlama hizmeti 'nin protokol uyumluluğu](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groupsapplication-provisioning-config-problem-scim-compatibility)
+* [SCıM 2,0 Azure AD sağlama hizmeti 'nin protokol uyumluluğu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)
 

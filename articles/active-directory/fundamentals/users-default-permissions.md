@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6c2255fcba12b19f375e694a0494011aa09b0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 019501eef0857c9dc7cd7f63a656eccf61608f1b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101871"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367831"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory varsayılan kullanıcı izinleri nelerdir?
 Azure Active Directory'de (Azure AD) tüm kullanıcılara varsayılan olarak belirli izinler verilir. Kullanıcının erişimi, Kullanıcı türünden, [rol atamalarından](active-directory-users-assign-role-azure-portal.md)ve ayrı nesnelerin sahiplerinden oluşur. Bu makalede bu varsayılan izinler ve açıklanmakta ve üye ile konuk varsayılan değerleri karşılaştırılmaktadır. Varsayılan Kullanıcı izinleri yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
@@ -48,19 +48,18 @@ Abonelikler | <ul><li>Tüm abonelikleri okuma<li>Hizmet Planı Üyesini etkinle�
 İzin | Ayar açıklaması
 ---------- | ------------
 Kullanıcılar uygulamayı kaydedebilir | Bu seçeneğin Hayır olarak ayarlanması, kullanıcıların uygulama kaydı oluşturmasını engeller. Daha sonra bu özellik, uygulama geliştirici rolüne eklenerek belirli kişilere geri verilebilir.
-Kullanıcıların iş veya okul hesabını LinkedIn ile bağlanmasına izin ver | Bu seçeneğin Hayır olarak ayarlanması, kullanıcıların iş veya okul hesabını LinkedIn hesabıyla bağlanmalarını engeller. Daha fazla bilgi için bkz. [LinkedIn hesap bağlantıları veri paylaşımı ve onayı](../users-groups-roles/linkedin-user-consent.md).
-Güvenlik grubu oluşturma olanağı | Bu seçenek Hayır olarak ayarlanırsa kullanıcılar güvenlik grubu oluşturamaz. Genel Yöneticiler ve Kullanıcı yöneticileri güvenlik grupları oluşturmaya devam edebilir. Nasıl yapılacağını öğrenmek için bkz. [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](../users-groups-roles/groups-settings-cmdlets.md).
-Microsoft 365 grupları oluşturma olanağı | Bu seçeneğin Hayır olarak ayarlanması, kullanıcıların Microsoft 365 grupları oluşturmasını engeller. Bu seçeneğin bazılarına ayarlanması, bazı Kullanıcı kümesinin Microsoft 365 grupları oluşturmasına izin verir. Genel Yöneticiler ve Kullanıcı yöneticileri yine de Microsoft 365 grupları oluşturabiliyor. Nasıl yapılacağını öğrenmek için bkz. [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](../users-groups-roles/groups-settings-cmdlets.md).
+Kullanıcıların iş veya okul hesabını LinkedIn ile bağlanmasına izin ver | Bu seçeneğin Hayır olarak ayarlanması, kullanıcıların iş veya okul hesabını LinkedIn hesabıyla bağlanmalarını engeller. Daha fazla bilgi için bkz. [LinkedIn hesap bağlantıları veri paylaşımı ve onayı](../enterprise-users/linkedin-user-consent.md).
+Güvenlik grubu oluşturma olanağı | Bu seçenek Hayır olarak ayarlanırsa kullanıcılar güvenlik grubu oluşturamaz. Genel Yöneticiler ve Kullanıcı yöneticileri güvenlik grupları oluşturmaya devam edebilir. Nasıl yapılacağını öğrenmek için bkz. [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](../enterprise-users/groups-settings-cmdlets.md).
+Microsoft 365 grupları oluşturma olanağı | Bu seçeneğin Hayır olarak ayarlanması, kullanıcıların Microsoft 365 grupları oluşturmasını engeller. Bu seçeneğin bazılarına ayarlanması, bazı Kullanıcı kümesinin Microsoft 365 grupları oluşturmasına izin verir. Genel Yöneticiler ve Kullanıcı yöneticileri yine de Microsoft 365 grupları oluşturabiliyor. Nasıl yapılacağını öğrenmek için bkz. [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](../enterprise-users/groups-settings-cmdlets.md).
 Azure AD yönetim portalına erişimi sınırlayın | Bu seçeneğin Hayır olarak ayarlanması, yönetici olmayanların Azure AD kaynaklarını okuyup yönetmek için Azure AD yönetim portalını kullanmasını sağlar. Evet seçeneği, yönetici olmayanların yönetim portalındaki tüm Azure AD verilerine erişmesini kısıtlar.<p>**Not**: Bu ayar, PowerShell veya Visual Studio gibi diğer Istemcileri kullanarak Azure AD verilerine erişimi kısıtlamaz. Evet olarak ayarlandığında, belirli bir yönetici olmayan kullanıcıya izin vermek Için, Azure AD yönetim portalını kullanma özelliği, Dizin Okuyucular rolü gibi herhangi bir yönetim rolü atar.<p>Bu rol, üye kullanıcıların varsayılan olarak sahip olduğu temel dizin bilgilerinin okunmasına izin verir (konuklar ve hizmet sorumluları değildir).
 Diğer kullanıcıları okuma olanağı | Bu ayar yalnızca PowerShell ile kullanılabilir. Bu bayrağın $false olarak ayarlanması, yöneticilerin tüm yönetici olmayan kullanıcı bilgilerini dizinden okumasını önler. Bu bayrak Exchange Online gibi diğer Microsoft hizmetlerindeki Kullanıcı bilgilerinin okunmasına engel olmaz. Bu ayar özel koşullara yöneliktir ve bu bayrağın $false olarak ayarlanması önerilmez.
-
 
 ## <a name="restrict-guest-users-default-permissions"></a>Konuk kullanıcıların varsayılan izinlerini kısıtla
 
 Konuk kullanıcılar için varsayılan izinler aşağıdaki yollarla kısıtlanabilir:
 
->[!NOTE] 
->Ziyaretçi **Kullanıcı erişimi kısıtlamaları** ayarı, **Konuk kullanıcılar izinlerinin sınırlı** ayardır. Bu özelliği kullanma hakkında yönergeler için, bkz. [Azure Active Directory Konuk erişim Izinlerini kısıtlama (Önizleme)](../users-groups-roles/users-restrict-guest-permissions.md).
+>[!NOTE]
+>Ziyaretçi Kullanıcı erişimi kısıtlamaları ayarı, **Konuk kullanıcılar izinlerinin sınırlı** ayardır. Bu özelliği kullanma hakkında yönergeler için, bkz. [Azure Active Directory Konuk erişim Izinlerini kısıtlama (Önizleme)](../enterprise-users/users-restrict-guest-permissions.md).
 
 İzin | Ayar açıklaması
 ---------- | ------------
@@ -143,7 +142,7 @@ Kullanıcılar, sahip olduğu gruplar üzerinde aşağıdaki eylemleri gerçekle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Guests Kullanıcı erişimi kısıtlamaları ayarı hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Konuk erişim Izinlerini kısıtlama (Önizleme)](../users-groups-roles/users-restrict-guest-permissions.md).
+* Guests Kullanıcı erişimi kısıtlamaları ayarı hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Konuk erişim Izinlerini kısıtlama (Önizleme)](../enterprise-users/users-restrict-guest-permissions.md).
 * Azure AD yönetici rolleri atama hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory yönetici rollerine Kullanıcı atama](active-directory-users-assign-role-azure-portal.md)
 * Microsoft Azure'da kaynak erişiminin nasıl denetlendiği konusunda daha fazla bilgi için bkz. [Azure'da kaynak erişimini anlama](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Azure Active Directory ile Azure aboneliğinizin arasındaki ilişki hakkında bilgi için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkisi](active-directory-how-subscriptions-associated-directory.md)

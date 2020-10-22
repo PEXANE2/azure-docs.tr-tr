@@ -9,12 +9,12 @@ ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a74240e3f116121c0aaddd11c186e6e674ea26a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78898595"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368188"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler 'da işler için gelişmiş zamanlamalar ve Yinelenmeler oluşturma
 
@@ -54,11 +54,11 @@ Bu makalede daha sonra bu senaryolar daha ayrıntılı olarak açıklanmaktadır
 
 [Azure Scheduler REST API](/rest/api/scheduler)temel bir zamanlama oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Kaynak Yöneticisi REST API Kaydet işlemini](https://docs.microsoft.com/rest/api/resources/providers)kullanarak Azure aboneliğinizi bir kaynak sağlayıcısına kaydedin. Azure Zamanlayıcı hizmeti için sağlayıcı adı **Microsoft. Scheduler**' dır. 
+1. [Kaynak Yöneticisi REST API Kaydet işlemini](/rest/api/resources/providers)kullanarak Azure aboneliğinizi bir kaynak sağlayıcısına kaydedin. Azure Zamanlayıcı hizmeti için sağlayıcı adı **Microsoft. Scheduler**' dır. 
 
-1. Zamanlayıcı REST API [iş koleksiyonları Için oluşturma veya güncelleştirme işlemini](https://docs.microsoft.com/rest/api/scheduler/jobcollections) kullanarak bir iş koleksiyonu oluşturun. 
+1. Zamanlayıcı REST API [iş koleksiyonları Için oluşturma veya güncelleştirme işlemini](/rest/api/scheduler/jobcollections) kullanarak bir iş koleksiyonu oluşturun. 
 
-1. [İşler Için oluşturma veya güncelleştirme işlemini](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate)kullanarak bir iş oluşturun. 
+1. [İşler Için oluşturma veya güncelleştirme işlemini](/rest/api/scheduler/jobs/createorupdate)kullanarak bir iş oluşturun. 
 
 ## <a name="job-schema-elements"></a>İş şeması öğeleri
 
@@ -66,13 +66,13 @@ Bu tablo, işler için Yinelenmeler ve zamanlamalar ayarlarken kullanabileceğin
 
 | Öğe | Gerekli | Açıklama | 
 |---------|----------|-------------|
-| **startTime** | Hayır | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin ilk olarak temel bir zamanlamaya göre ne zaman başlayacağını belirten bir tarih saat dizesi değeri. <p>Karmaşık zamanlamalar için iş **StartTime**değerinden önce başlamaz. | 
-| **yinelemeyi** | Hayır | İşin çalıştığı zaman için yineleme kuralları. **Yinelenme** nesnesi şu öğeleri destekler: **Sıklık**, **Interval**, **zamanlama**, **sayı**ve **bitişsaati**. <p>**Yineleme** öğesini kullanırsanız **Sıklık** öğesini de kullanmanız gerekir, diğer **yineleme** öğeleri isteğe bağlıdır. |
+| **startTime** | No | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin ilk olarak temel bir zamanlamaya göre ne zaman başlayacağını belirten bir tarih saat dizesi değeri. <p>Karmaşık zamanlamalar için iş **StartTime**değerinden önce başlamaz. | 
+| **yinelemeyi** | No | İşin çalıştığı zaman için yineleme kuralları. **Yinelenme** nesnesi şu öğeleri destekler: **Sıklık**, **Interval**, **zamanlama**, **sayı**ve **bitişsaati**. <p>**Yineleme** öğesini kullanırsanız **Sıklık** öğesini de kullanmanız gerekir, diğer **yineleme** öğeleri isteğe bağlıdır. |
 | **frequency** | Evet, **yinelenme** kullandığınızda | Oluşum arasındaki zaman birimi ve bu değerleri destekler: "Minute", "Hour", "Day", "Week", "month" ve "Year" | 
-| **interval** | Hayır | **Sıklık**temelinde oluşum arasındaki zaman birimi sayısını belirleyen pozitif bir tamsayı. <p>Örneğin, **Aralık** 10, **Sıklık** ise "Week" ise, iş her 10 haftada bir yinelenir. <p>Her bir sıklık için en fazla Aralık sayısı aşağıda verilmiştir: <p>-18 ay <br>-78 hafta <br>-548 gün <br>-Saat ve dakika için Aralık 1 <= <*aralığı*> <= 1000 olur. | 
-| **çizelgesini** | Hayır | Belirtilen dakika işaretleri, saat işaretleri, haftanın günleri ve ayın günleri temelinde tekrardaki değişiklikleri tanımlar | 
-| **biriktirme** | Hayır | İşin bitmeden önce kaç kez çalışacağını belirten pozitif bir tamsayı. <p>Örneğin, günlük iş **sayısı** 7 olarak ayarlandığında ve başlangıç tarihi Pazartesi ise, iş Pazar günü çalışmayı sonlandırır. Başlangıç tarihi zaten geçmişse, ilk çalıştırma oluşturma zamanından hesaplanır. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. | 
-| **endTime** | Hayır | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin çalışmayı ne zaman durdurduğunu belirten bir tarih veya tarih saat dizesi değeri. Geçmişte olan **bitişsaati** için bir değer ayarlayabilirsiniz. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. |
+| **interval** | No | **Sıklık**temelinde oluşum arasındaki zaman birimi sayısını belirleyen pozitif bir tamsayı. <p>Örneğin, **Aralık** 10, **Sıklık** ise "Week" ise, iş her 10 haftada bir yinelenir. <p>Her bir sıklık için en fazla Aralık sayısı aşağıda verilmiştir: <p>-18 ay <br>-78 hafta <br>-548 gün <br>-Saat ve dakika için Aralık 1 <= <*aralığı*> <= 1000 olur. | 
+| **çizelgesini** | No | Belirtilen dakika işaretleri, saat işaretleri, haftanın günleri ve ayın günleri temelinde tekrardaki değişiklikleri tanımlar | 
+| **biriktirme** | No | İşin bitmeden önce kaç kez çalışacağını belirten pozitif bir tamsayı. <p>Örneğin, günlük iş **sayısı** 7 olarak ayarlandığında ve başlangıç tarihi Pazartesi ise, iş Pazar günü çalışmayı sonlandırır. Başlangıç tarihi zaten geçmişse, ilk çalıştırma oluşturma zamanından hesaplanır. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. | 
+| **endTime** | No | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin çalışmayı ne zaman durdurduğunu belirten bir tarih veya tarih saat dizesi değeri. Geçmişte olan **bitişsaati** için bir değer ayarlayabilirsiniz. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. |
 |||| 
 
 Örneğin, bu JSON şeması bir iş için temel bir zamanlamayı ve yinelemeyi açıklar: 
@@ -160,7 +160,7 @@ Birden fazla zamanlama öğesi belirtirseniz, değerlendirme sırası en büyük
 
 Aşağıdaki tabloda schedule öğeleri ayrıntılı bir şekilde açıklanmıştır:
 
-| JSON adı | Açıklama | Geçerli değerler |
+| JSON adı | Description | Geçerli değerler |
 |:--- |:--- |:--- |
 | **dakika** |İşin çalıştırıldığı saatin dakikası. |Tamsayılar dizisi. |
 | **saatlerinin** |İşin çalıştırıldığı günün saati. |Tamsayılar dizisi. |
@@ -174,7 +174,7 @@ Aşağıdaki örneklerde çeşitli yinelenme zamanlamaları gösterilmektedir. �
 
 Bu zamanlamalar, **aralığın** 1 olarak ayarlandığını varsayar\. Örnekler Ayrıca **zamanlamaya**göre değerler için doğru **Sıklık** değerlerini de varsayar. Örneğin, "gün" **sıklığını** kullanamazsınız ve **zamanlamaya**göre bir **monthdays** değişikliği yapamazsınız. Bu kısıtlamaları makalenin önceki kısımlarında anlatmaktadır.
 
-| Örnek | Açıklama |
+| Örnek | Description |
 |:--- |:--- |
 | `{"hours":[5]}` |Her gün 5 saat sonra çalıştırın.<br /><br />Zamanlayıcı, her bir değeri "dakikalar" içinde her bir değerle eşler, her bir değer, her bir değeri "dakika", her biri ile, işin çalıştığı tüm zamanların bir listesini oluşturur. |
 | `{"minutes":[15], "hours":[5]}` |Her gün 05.15'te çalıştır. |

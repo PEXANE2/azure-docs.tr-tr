@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de Kubernetes ana düğümü için
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 79ed9308488725d9be0c839bbd04b6783bbbd85a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1089cb4ea52efaa545478ced053a921728a894ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076394"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368460"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme
 
@@ -37,9 +37,11 @@ Azure Izleyici günlükleri Azure portal etkinleştirilir ve yönetilir. AKS kü
 
 Kubernetes tarafından yazılan girdilerin yanı sıra, projenizin denetim günlükleri de AKS girdilerini de içermelidir.
 
-Denetim günlükleri, *Kuto-Audit-admin* ve *Kuto-Audit*olmak üzere iki kategoriye kaydedilir. *Kuin-Audit* kategorisi, *Get*, *list*, *Create*, *Update*, *Delete*, *Patch*ve *Post*gibi her denetim olayının tüm denetim günlüğü verilerini içerir.
+Denetim günlükleri üç kategoriye kaydedilir: *kual-Audit*, *kuin-Audit-admin*ve *Guard*.
 
-*Kuin-Audit-admin* kategorisi, *kuin-Audit* günlük kategorisinin bir alt kümesidir. *Kuto-Audit-admin* , günlükteki *Get* ve *list* denetim olaylarını dışlayarak günlük sayısını önemli ölçüde azaltır.
+- *Kuin-Audit* kategorisi, *Get*, *list*, *Create*, *Update*, *Delete*, *Patch*ve *Post*gibi her denetim olayının tüm denetim günlüğü verilerini içerir.
+- *Kuin-Audit-admin* kategorisi, *kuin-Audit* günlük kategorisinin bir alt kümesidir. *Kuto-Audit-admin* , günlükteki *Get* ve *list* denetim olaylarını dışlayarak günlük sayısını önemli ölçüde azaltır.
+- *Koruma* kategorisi, Azure AD ve Azure RBAC denetimleri ile yönetilir. Yönetilen Azure AD için: içindeki belirteci, Kullanıcı bilgilerini dışarı. Azure RBAC için: içindeki ve giden erişim gözden geçirmeleri.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS kümesinde bir test Pod 'u zamanlama
 
@@ -75,7 +77,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Toplanan günlükleri görüntüle
 
-Tanılama günlüklerinin etkinleştirilmesi ve gösterilmesi birkaç dakika sürebilir.
+Tanılama günlüklerinin etkinleştirilmesi ve görünmesi 10 dakikaya kadar sürebilir.
 
 > [!NOTE]
 > Uyumluluk veya başka amaçlar için tüm denetim günlüğü verilerine ihtiyacınız varsa, bunu toplayın ve BLOB depolama gibi ucuz depolamada saklayın. İzleme ve uyarı amaçlarıyla anlamlı bir denetim günlüğü verileri kümesi toplamak ve kaydetmek için *kuin-Audit-admin* günlük kategorisini kullanın.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801809"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366692"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -65,15 +65,15 @@ Azure AD 'den bir SaaS uygulamasına giden sağlama için, [Kullanıcı veya gru
 
 * **Gruplandıran.** Bir Azure AD Premium lisans planıyla, bir SaaS uygulamasına erişim atamak için grupları kullanabilirsiniz. Ardından, sağlama kapsamı **yalnızca atanmış kullanıcıları ve grupları Eşitle**olarak AYARLANDıĞıNDA Azure AD sağlama hizmeti, uygulamaya atanan bir grubun üyesi olup olmadıkları temel alınarak kullanıcıları sağlar veya serbest bırakılır. Uygulama, Grup nesnelerini desteklemediği takdirde grup nesnesinin kendisi tarafından sağlanmamıştır. Uygulamanıza atanan grupların "SecurityEnabled" özelliği "true" olarak ayarlanmış olduğundan emin olun.
 
-* **Dinamik Gruplar.** Azure AD Kullanıcı sağlama hizmeti, [dinamik gruplardaki](../users-groups-roles/groups-create-rule.md)kullanıcıları okuyabilir ve sağlayabilir. Bu uyarıları ve önerileri göz önünde bulundurun:
+* **Dinamik Gruplar.** Azure AD Kullanıcı sağlama hizmeti, [dinamik gruplardaki](../enterprise-users/groups-create-rule.md)kullanıcıları okuyabilir ve sağlayabilir. Bu uyarıları ve önerileri göz önünde bulundurun:
 
   * Dinamik Gruplar, Azure AD 'den SaaS uygulamalarına kadar uçtan uca sağlamanın performansını etkileyebilir.
 
-  * Bir SaaS uygulamasında, dinamik bir gruptaki bir kullanıcının ne kadar hızlı sağlandığını veya sağlanması gerektiğini, dinamik grubun üyelik değişikliklerini ne kadar hızlı değerlendirebileceğinizi gösterir. Dinamik bir grubun işleme durumunu denetleme hakkında daha fazla bilgi için bkz. [bir üyelik kuralı için işleme durumunu denetleme](../users-groups-roles/groups-create-rule.md).
+  * Bir SaaS uygulamasında, dinamik bir gruptaki bir kullanıcının ne kadar hızlı sağlandığını veya sağlanması gerektiğini, dinamik grubun üyelik değişikliklerini ne kadar hızlı değerlendirebileceğinizi gösterir. Dinamik bir grubun işleme durumunu denetleme hakkında daha fazla bilgi için bkz. [bir üyelik kuralı için işleme durumunu denetleme](../enterprise-users/groups-create-rule.md).
 
   * Bir kullanıcı dinamik gruptaki üyeliği kaybettiğinde, bu, bir sağlama olayı olarak kabul edilir. Dinamik Gruplar için kurallar oluştururken bu senaryoyu göz önünde bulundurun.
 
-* **İç içe gruplar.** Azure AD Kullanıcı sağlama hizmeti iç içe gruplardaki kullanıcıları okuyamıyor veya sağlayamaz. Hizmet yalnızca açıkça atanan bir grubun hemen üyesi olan kullanıcıları okuyabilir ve sağlayabilir. "Uygulamalara grup tabanlı atamalar" da bu sınırlama çoklu oturum açmayı da etkiler (bkz. [SaaS uygulamalarına erişimi yönetmek için Grup kullanma](../users-groups-roles/groups-saasapps.md)). Bunun yerine, sağlanması gereken kullanıcıları içeren gruplarda doğrudan atayın veya başka bir şekilde [kapsamı](define-conditional-rules-for-provisioning-user-accounts.md) yoktur.
+* **İç içe gruplar.** Azure AD Kullanıcı sağlama hizmeti iç içe gruplardaki kullanıcıları okuyamıyor veya sağlayamaz. Hizmet yalnızca açıkça atanan bir grubun hemen üyesi olan kullanıcıları okuyabilir ve sağlayabilir. "Uygulamalara grup tabanlı atamalar" da bu sınırlama çoklu oturum açmayı da etkiler (bkz. [SaaS uygulamalarına erişimi yönetmek için Grup kullanma](../enterprise-users/groups-saasapps.md)). Bunun yerine, sağlanması gereken kullanıcıları içeren gruplarda doğrudan atayın veya başka bir şekilde [kapsamı](define-conditional-rules-for-provisioning-user-accounts.md) yoktur.
 
 ### <a name="attribute-based-scoping"></a>Öznitelik tabanlı kapsam 
 
@@ -184,12 +184,12 @@ Uygulamanız için *etkin* olan eşlemeye sahip olduğunuzdan emin olun. Uygulam
 
 Aşağıdaki senaryolar bir devre dışı bırakma veya silme tetikleyecektir: 
 * Bir Kullanıcı Azure AD 'de geçici olarak silinir (geri dönüşüm kutusu/AccountEnabled özelliği false olarak ayarlanır).
-    Azure AD 'de bir Kullanıcı silindikten 30 gün sonra, bu kullanıcılar kiracıdan kalıcı olarak silinir. Bu noktada, sağlama hizmeti uygulamada kullanıcıyı kalıcı olarak silmek için bir SILME isteği gönderir. 30 günlük pencerede herhangi bir zamanda, uygulamayı [kalıcı olarak el ile silebilirsiniz](../fundamentals/active-directory-users-restore.md). Bu, uygulamaya bir silme isteği gönderir.
+    Azure AD 'de bir Kullanıcı silindikten 30 gün sonra, bu kullanıcılar kiracıdan kalıcı olarak silinir. Bu noktada, sağlama hizmeti uygulamada kullanıcıyı kalıcı olarak silmek için bir SILME isteği gönderir. 30 günlük pencerede herhangi bir zamanda, uygulamayı [kalıcı olarak el ile silebilirsiniz](../fundamentals/active-directory-users-restore.md). Bu, uygulamaya bir silme isteği gönderir.
 * Kullanıcı, Azure AD 'deki geri dönüşüm kutusu 'ndan kalıcı olarak silinir/kaldırılır.
 * Bir Kullanıcı bir uygulamadan atanmaz.
 * Kullanıcı kapsamdan kapsam dışına gider (artık kapsam filtresini geçirmez).
     
-Varsayılan olarak, Azure AD sağlama hizmeti, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Bu varsayılan davranışı geçersiz kılmak istiyorsanız, [kapsam dışı silme işlemlerini atlamak](skip-out-of-scope-deletions.md) için bir bayrak ayarlayabilirsiniz.
+Varsayılan olarak, Azure AD sağlama hizmeti, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Bu varsayılan davranışı geçersiz kılmak istiyorsanız, [kapsam dışı silme işlemlerini atlamak](skip-out-of-scope-deletions.md) için bir bayrak ayarlayabilirsiniz.
 
 Yukarıdaki dört olaydan biri meydana gelirse ve hedef uygulama geçici silme işlemini desteklemiyorsa, sağlama hizmeti kullanıcıyı uygulamadan kalıcı olarak silmek için bir SILME isteği gönderir.
 
