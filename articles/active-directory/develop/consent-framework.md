@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.openlocfilehash: a5e53c29c41b3c4a5a2dd1f421e128231aa5eec3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327560"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366097"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory onay çerçevesi
 
@@ -49,7 +49,7 @@ Aşağıdaki adımlarda, onay deneyiminin hem uygulama geliştiricisi hem de Kul
 
 1. Kullanıcı onay verdikten sonra uygulamanıza bir erişim belirteci ve yenileme belirteci almak için kullanılan bir yetkilendirme kodu döndürülür. Bu akış hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md).
 
-1. Yönetici olarak, kiracınızdaki tüm kullanıcılar adına bir uygulamanın temsilci izinlerini de kabul edebilirsiniz. Yönetici onayı, izin iletişim kutusunun Kiracıdaki her kullanıcı için görünmesini engeller ve yönetici rolüne sahip kullanıcılar tarafından [Azure Portal](https://portal.azure.com) yapılabilir. Hangi Yönetici rollerinin temsilci izinleri onaylamasına izin verebileceğini öğrenmek için bkz. [Azure AD 'de yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md).
+1. Yönetici olarak, kiracınızdaki tüm kullanıcılar adına bir uygulamanın temsilci izinlerini de kabul edebilirsiniz. Yönetici onayı, izin iletişim kutusunun Kiracıdaki her kullanıcı için görünmesini engeller ve yönetici rolüne sahip kullanıcılar tarafından [Azure Portal](https://portal.azure.com) yapılabilir. Hangi Yönetici rollerinin temsilci izinleri onaylamasına izin verebileceğini öğrenmek için bkz. [Azure AD 'de yönetici rolü izinleri](../roles/permissions-reference.md).
 
     **Uygulamanın temsilci izinlerini kabul etmek için**
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 735f838ad4532b140eddcb4ce1ced24fba9a81be
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797316"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369123"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory gruplarını kullanarak uygulama ve kaynak erişimini yönetme
 Azure Active Directory (Azure AD), bulut tabanlı uygulamalarınıza, şirket içi uygulamalarınıza ve kaynaklarınıza erişimi yönetmek için grupları kullanmanıza olanak sağlar. Kaynaklarınız, Azure AD 'deki roller aracılığıyla nesneleri yönetme izinleri ya da hizmet olarak yazılım (SaaS) uygulamaları, Azure Hizmetleri, SharePoint siteleri ve şirket içi kaynaklar gibi kuruluş dışında, Azure AD kuruluşunun bir parçası olabilir.
@@ -43,7 +43,7 @@ Kullanıcılarınıza kaynak erişim hakları atamak için dört yol vardır:
 
 - **Grup ataması.** Kaynak sahibi, kaynağa bir Azure AD grubu atar ve bu, tüm grup üyelerine kaynak erişimini otomatik olarak verir. Grup üyeliği hem Grup sahibi hem de kaynak sahibi tarafından yönetilir ve bu, sahip tarafından gruba üye ekleme veya kaldırma izni verir. Grup üyeliğini ekleme veya kaldırma hakkında daha fazla bilgi için, bkz. [nasıl yapılır: başka bir gruptan grup ekleme veya kaldırma Azure Active Directory portalını kullanma](active-directory-groups-membership-azure-portal.md). 
 
-- **Kural tabanlı atama.** Kaynak sahibi bir grup oluşturur ve belirli bir kaynağa hangi kullanıcıların atandığını tanımlamak için bir kural kullanır. Kural, bireysel kullanıcılara atanmış öznitelikleri temel alır. Kaynak sahibi kuralı yönetir, kaynağa erişim izni vermek için hangi özniteliklerin ve değerlerin gerekli olduğunu belirler. Daha fazla bilgi için bkz. [dinamik grup oluşturma ve durumu denetleme](../users-groups-roles/groups-create-rule.md).
+- **Kural tabanlı atama.** Kaynak sahibi bir grup oluşturur ve belirli bir kaynağa hangi kullanıcıların atandığını tanımlamak için bir kural kullanır. Kural, bireysel kullanıcılara atanmış öznitelikleri temel alır. Kaynak sahibi kuralı yönetir, kaynağa erişim izni vermek için hangi özniteliklerin ve değerlerin gerekli olduğunu belirler. Daha fazla bilgi için bkz. [dinamik grup oluşturma ve durumu denetleme](../enterprise-users/groups-create-rule.md).
 
     Ayrıca, dinamik grupları oluşturma ve kullanma hakkında hızlı bir açıklama için bu kısa videoyu Izleyebilirsiniz:
 
@@ -56,13 +56,13 @@ Kullanıcılarınıza kaynak erişim hakları atamak için dört yol vardır:
 ## <a name="can-users-join-groups-without-being-assigned"></a>Kullanıcılara atamadan gruplara katılabilirler mi?
 Grup sahibi kullanıcıların, kendilerine atamak yerine kendi gruplarını bulmasına izin verebilir. Sahibi ayrıca grubu, onay gerektiren tüm kullanıcıları otomatik olarak kabul edecek şekilde ayarlayabilir.
 
-Bir Kullanıcı bir gruba katılmayı istediğinde, istek grup sahibine iletilir. Gerekirse, sahibi isteği onaylayabilir ve kullanıcıya grup üyeliği bildirilir. Ancak, birden çok sahipleriniz varsa ve bunlardan biri onaylarsa, Kullanıcı bilgilendirilir ancak gruba eklenmez. Kullanıcılarınızın gruplara katılmasına izin isteme hakkında daha fazla bilgi ve yönergeler için bkz. [Azure AD ayarlama, kullanıcıların gruplara katılması isteyebilmeleri](../users-groups-roles/groups-self-service-management.md) için
+Bir Kullanıcı bir gruba katılmayı istediğinde, istek grup sahibine iletilir. Gerekirse, sahibi isteği onaylayabilir ve kullanıcıya grup üyeliği bildirilir. Ancak, birden çok sahipleriniz varsa ve bunlardan biri onaylarsa, Kullanıcı bilgilendirilir ancak gruba eklenmez. Kullanıcılarınızın gruplara katılmasına izin isteme hakkında daha fazla bilgi ve yönergeler için bkz. [Azure AD ayarlama, kullanıcıların gruplara katılması isteyebilmeleri](../enterprise-users/groups-self-service-management.md) için
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık grupları kullanarak yönetime erişim için bir giriş bitolduğunuza göre, kaynak ve uygulamalarınızı yönetmeye başlayabilirsiniz.
 
-- [Azure Active Directory kullanarak yeni bir grup oluşturma](active-directory-groups-create-azure-portal.md) veya [PowerShell cmdlet 'lerini kullanarak yeni bir grup oluşturma ve yönetme](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Azure Active Directory kullanarak yeni bir grup oluşturma](active-directory-groups-create-azure-portal.md) veya [PowerShell cmdlet 'lerini kullanarak yeni bir grup oluşturma ve yönetme](../enterprise-users/groups-settings-v2-cmdlets.md)
 
-- [Tümleşik bir SaaS uygulamasına erişim atamak için grupları kullanma](../users-groups-roles/groups-saasapps.md)
+- [Tümleşik bir SaaS uygulamasına erişim atamak için grupları kullanma](../enterprise-users/groups-saasapps.md)
 
 - [Azure AD Connect kullanarak bir şirket içi grubu Azure ile eşitleme](../hybrid/whatis-hybrid-identity.md)

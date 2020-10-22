@@ -16,18 +16,18 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361913"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368392"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal kullanarak dış Konuk kullanıcılar için Azure rol atamaları ekleme veya kaldırma
 
 [Azure rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , büyük kuruluşlar için daha iyi güvenlik yönetimine olanak sağlar ve ortamınızda belirli kaynaklara erişmesi gereken, ancak tüm altyapıya ya da faturalandırma ile ilgili kapsamların olması gerekmeyen dış ortak, satıcı veya freelancers ile çalışan küçük ve orta ölçekli işletmeler için daha iyi güvenlik yönetimi sağlar. Dış Konuk kullanıcılarıyla işbirliği yapmak için [Azure ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md) ' deki özellikleri kullanabilir ve yalnızca konuk kullanıcıların ortamınızda ihtiyaç duyduğu izinleri vermek IÇIN Azure RBAC 'yi kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
@@ -183,7 +183,7 @@ Konuk kullanıcıların kısıtlı dizin izinleri vardır. Örneğin, Konuk kull
 
 ![Konuk Kullanıcı, bir dizindeki kullanıcılara gözatamıyorum](./media/role-assignments-external-users/directory-no-users.png)
 
-Konuk kullanıcının dizinde ek ayrıcalıkları olması gerekiyorsa, Konuk kullanıcıya bir dizin rolü atayabilirsiniz. Aslında bir Konuk kullanıcının dizininiz için tam okuma erişimine sahip olmasını istiyorsanız, Konuk kullanıcıyı Azure AD 'de [Dizin okuyucuları](../active-directory/users-groups-roles/directory-assign-admin-roles.md) rolüne ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kiracınızdaki iş ortağı kuruluşlarından kullanıcılara Izin verme](../active-directory/b2b/add-guest-to-role.md).
+Konuk kullanıcının dizinde ek ayrıcalıkları olması gerekiyorsa, Konuk kullanıcıya bir dizin rolü atayabilirsiniz. Aslında bir Konuk kullanıcının dizininiz için tam okuma erişimine sahip olmasını istiyorsanız, Konuk kullanıcıyı Azure AD 'de [Dizin okuyucuları](../active-directory/roles/permissions-reference.md) rolüne ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kiracınızdaki iş ortağı kuruluşlarından kullanıcılara Izin verme](../active-directory/b2b/add-guest-to-role.md).
 
 ![Dizin okuyucuları rolü atama](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,11 +193,11 @@ Konuk kullanıcıların kısıtlı dizin izinleri vardır. Konuk Kullanıcı bir
 
 ![Konuk Kullanıcı, rol atamak için güvenlik sorumlularına gözatamez](./media/role-assignments-external-users/directory-no-browse.png)
 
-Konuk Kullanıcı, bir kişinin dizinde tam oturum açma adını biliyorsa, erişim izni verebilir. Aslında bir Konuk kullanıcının dizininiz için tam okuma erişimine sahip olmasını istiyorsanız, Konuk kullanıcıyı Azure AD 'de [Dizin okuyucuları](../active-directory/users-groups-roles/directory-assign-admin-roles.md) rolüne ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kiracınızdaki iş ortağı kuruluşlarından kullanıcılara Izin verme](../active-directory/b2b/add-guest-to-role.md).
+Konuk Kullanıcı, bir kişinin dizinde tam oturum açma adını biliyorsa, erişim izni verebilir. Aslında bir Konuk kullanıcının dizininiz için tam okuma erişimine sahip olmasını istiyorsanız, Konuk kullanıcıyı Azure AD 'de [Dizin okuyucuları](../active-directory/roles/permissions-reference.md) rolüne ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kiracınızdaki iş ortağı kuruluşlarından kullanıcılara Izin verme](../active-directory/b2b/add-guest-to-role.md).
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Konuk Kullanıcı, uygulamaları kaydedemiyor veya hizmet sorumluları oluşturamıyor
 
-Konuk kullanıcıların kısıtlı dizin izinleri vardır. Konuk kullanıcının uygulama kaydedebilmesi veya hizmet sorumluları oluşturması gerekiyorsa, Konuk kullanıcıyı Azure AD 'de [uygulama geliştirici](../active-directory/users-groups-roles/directory-assign-admin-roles.md) rolüne ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kiracınızdaki iş ortağı kuruluşlarından kullanıcılara Izin verme](../active-directory/b2b/add-guest-to-role.md).
+Konuk kullanıcıların kısıtlı dizin izinleri vardır. Konuk kullanıcının uygulama kaydedebilmesi veya hizmet sorumluları oluşturması gerekiyorsa, Konuk kullanıcıyı Azure AD 'de [uygulama geliştirici](../active-directory/roles/permissions-reference.md) rolüne ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kiracınızdaki iş ortağı kuruluşlarından kullanıcılara Izin verme](../active-directory/b2b/add-guest-to-role.md).
 
 ![Konuk Kullanıcı, uygulamaları kaydedemiyor](./media/role-assignments-external-users/directory-access-denied.png)
 

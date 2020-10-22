@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: fa9f58f7d94396e3b26c6e05f52c210c980bc30a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c101cb4eca246ee68a30ba3499981c589c564f92
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149125"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368664"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
@@ -20,7 +20,7 @@ ms.locfileid: "92149125"
 
 Bu öğreticide, gizli dizileri Kubernetes pods 'ye bağlamak için gizli dizi kapsayıcısı depolama arabirimi (CSı) sürücüsünü kullanarak Azure anahtar kasanızdan gizli dizi ve gizli dizi bilgileri alabilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Hizmet sorumlusu oluşturun veya yönetilen kimlikleri kullanın.
@@ -185,6 +185,7 @@ Hizmet sorumlusu kullanıyorsanız, anahtar kasanıza erişmek ve gizli dizileri
 1. Gizli dizileri almak için hizmet sorumlusu izinleri verin:
     ```azurecli
     az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
+    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
     ```
 
 1. Artık hizmet sorumlunuzu anahtar kasaınızdan gizli dizileri okuma izinleriyle yapılandırdık. **$AZURE _CLIENT_SECRET** , hizmet sorumlunun parolasıdır. Bir Kubernetes gizli anahtarı olarak, hizmet sorumlusu kimlik bilgilerinizi gizli dizi olarak ekleyin:
@@ -237,6 +238,7 @@ Yönetilen kimlikler kullanıyorsanız, oluşturduğunuz AKS kümesine belirli r
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
+    az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
     ```
 
 ## <a name="deploy-your-pod-with-mounted-secrets-from-your-key-vault"></a>Ana kasanızdan bağlı gizli dizileri kullanarak Pod 'nizi dağıtın
@@ -309,8 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:
-          name: secrets-store-creds 
+        nodePublishSecretRef:           # Only required when using service principal mode
+          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 Pod 'nizi dağıtmak için aşağıdaki komutu çalıştırın:

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: c841c96326f636e16f3b4f86fcb88a0962011c0f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976840"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367610"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Stack Edge ile tümleştirme Azure Key Vault 
 
@@ -22,7 +22,7 @@ Azure Key Vault, gizli yönetim için Azure Stack Edge kaynağıyla tümleşikti
 
 ## <a name="about-key-vault-and-azure-stack-edge"></a>Anahtar Kasası ve Azure Stack Edge hakkında
 
-Azure Key Vault bulut hizmeti belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri güvenli bir şekilde depolamak ve bu erişimi denetlemek için kullanılır. Key Vault Ayrıca, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. 
+Azure Key Vault bulut hizmeti belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri güvenli bir şekilde depolamak ve bu erişimi denetlemek için kullanılır. Key Vault Ayrıca, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. İzin verilen işlemler ve karşılık gelen ücretler hakkında daha fazla bilgi için bkz. [Azure Key Vault fiyatlandırması](https://azure.microsoft.com/pricing/details/key-vault/).
 
 Azure Stack Edge hizmeti için kullanılan sırların biri kanal bütünlüğü anahtarıdır (CIK). Bu anahtar, sırlarınızı şifrelemenizi sağlar. Anahtar Kasası tümleştirmesiyle, CıK, anahtar kasasında güvenli bir şekilde depolanır. Daha fazla bilgi için bkz. [gizli dizileri ve anahtarları güvenli bir şekilde depolayın](../key-vault/general/overview.md#securely-store-secrets-and-keys).
 
@@ -44,6 +44,8 @@ Etkinleştirme anahtarı oluşturma işlemi sırasında Azure Stack Edge kaynağ
 - Varsayılan anahtar adını kabul edebilir veya Anahtar Kasası için özel bir ad belirtebilirsiniz. Anahtar Kasası adı 3 ile 24 karakter uzunluğunda olmalıdır. Zaten kullanımda olan bir Anahtar Kasası kullanamazsınız. <!--The MSI is then used to authenticate to key vault to retrieve secrets.--> 
 
     ![Azure Stack Edge kaynağı oluşturma sırasında MSI oluşturuldu](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+
+- Azure Anahtar Kasası 'na gitmek için Azure Stack Edge kaynağınızın **özelliklerine** gidin ve Anahtar Kasası adını seçin. 
 
 - Yanlışlıkla silinmeye engel olmak için anahtar kasasında bir kaynak kilidi etkindir. Yanlışlıkla silme işlemi varsa anahtar kasasının 90 gün içinde geri yüklenmesine izin veren anahtar kasasında geçici silme de etkinleştirilir. Daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/soft-delete-overview.md)
 

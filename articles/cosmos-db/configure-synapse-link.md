@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dee5a56f309dab8f09a598219f6302c88f4308e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757852"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370721"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nı yapılandırma ve kullanma (Önizleme)
 
@@ -218,9 +218,6 @@ SYNAPSE Spark ile sorgulama hakkında [analitik depo makalesindeki sorgu Azure C
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> SYNAPSE SQL sunucusuz kullanarak analitik depoyu sorgulama
 
 SYNAPSE SQL sunucusuz (daha önce **isteğe bağlı SQL**olarak adlandırılan bir önizleme özelliği), Azure SYNAPSE bağlantısı ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri sorgulamanızı ve çözümlemenize olanak tanır. İşlemsel iş yüklerinizin performansını etkilemeden verileri neredeyse gerçek zamanlı olarak analiz edebilirsiniz. Analitik depodan veri sorgulama ve T-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar. Daha fazla bilgi için bkz. [SYNAPSE SQL sunucusuz makalesini kullanarak analitik depoyu sorgulama](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
-
-> [!NOTE]
-> SYNAPSE SQL sunucusuz ile Azure Cosmos DB analitik deposunun kullanılması şu anda geçitli önizleme aşamasındadır. Erişim istemek için [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)ulaşın.
 
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Power BI verileri analiz etmek ve görselleştirmek için SYNAPSE SQL sunucusuz kullanın
 

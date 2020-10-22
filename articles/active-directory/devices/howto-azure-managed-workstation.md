@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a56cd23494f65b1c74e44868496855c6e4a32bf7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269565"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365825"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Güvenli, Azure tarafından yönetilen bir iş istasyonu dağıtma
 
@@ -31,18 +31,18 @@ Artık [güvenli iş istasyonlarını anladığınıza](concept-azure-managed-wo
 
 | Profil | Düşük | Gelişmiş | Yüksek | Özelleştirilmiş | Korunmalıdır | Yalıtılmış |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Azure AD 'de Kullanıcı | Evet | Evet | Evet | Evet | Evet | Evet |
-| Intune tarafından yönetilen | Evet | Evet | Evet | Evet | Evet | Evet |
-| Cihaz-Azure AD kayıtlı | Evet |  |  |  |  | |   |
-| Cihaz-Azure AD 'ye katılmış |   | Evet | Evet | Evet | Evet | Evet |
-| Intune güvenlik temeli uygulandı |   | Evet <br> Leştirilmiş | Evet <br> (HighSecurity) | Evet <br> (NCSC) | Evet <br> Korunmalıdır | NA |
-| Donanım, güvenli Windows 10 standartlarına karşılıyor |   | Evet | Evet | Evet | Evet | Evet |
-| Microsoft Defender ATP etkin |   | Evet  | Evet | Evet | Evet | Evet |
-| Yönetici haklarının kaldırılması |   |   | Evet  | Evet | Evet | Evet |
-| Microsoft Autopilot kullanarak dağıtım |   |   | Evet  | Evet | Evet | Evet |
-| Yalnızca Intune tarafından yüklenen uygulamalar |   |   |   | Evet | Evet |Evet |
-| Onaylanan listeyle kısıtlanan URL 'Ler |   |   |   | Evet | Evet |Evet |
-| Internet engellendi (gelen/giden) |   |   |   |  |  |Evet |
+| Azure AD 'de Kullanıcı | Yes | Yes | Yes | Yes | Yes | Yes |
+| Intune tarafından yönetilen | Yes | Yes | Yes | Yes | Yes | Yes |
+| Cihaz-Azure AD kayıtlı | Yes |  |  |  |  | |   |
+| Cihaz-Azure AD 'ye katılmış |   | Yes | Yes | Yes | Yes | Yes |
+| Intune güvenlik temeli uygulandı |   | Yes <br> Leştirilmiş | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Korunmalıdır | NA |
+| Donanım, güvenli Windows 10 standartlarına karşılıyor |   | Yes | Yes | Yes | Yes | Yes |
+| Microsoft Defender ATP etkin |   | Yes  | Yes | Yes | Yes | Yes |
+| Yönetici haklarının kaldırılması |   |   | Yes  | Yes | Yes | Yes |
+| Microsoft Autopilot kullanarak dağıtım |   |   | Yes  | Yes | Yes | Yes |
+| Yalnızca Intune tarafından yüklenen uygulamalar |   |   |   | Yes | Yes |Yes |
+| Onaylanan listeyle kısıtlanan URL 'Ler |   |   |   | Yes | Yes |Yes |
+| Internet engellendi (gelen/giden) |   |   |   |  |  |Yes |
 
 > [!NOTE]
 > Güvenli iş istasyonu Kılavuzu **cihazlarında** profiller ve ilkeler atanır. Kullanıcılara doğrudan ilke uygulanmayacak, cihaz paylaşımının (paylaşılan cihazlar) etkin olmasını sağlar. Güvenli bir iş istasyonu dağıtımınızda paylaşılmadığı veya ayrı kullanıcı ilkeleri gerekliyse, Kullanıcı ilkesi profillerinin atanması Kullanıcı ve cihaza atanabilir. 
@@ -51,11 +51,11 @@ Artık [güvenli iş istasyonlarını anladığınıza](concept-azure-managed-wo
 
 Bu kılavuzda ele alınan kavramlar, Microsoft 365 Kurumsal E5 veya denk bir SKU olduğunu varsayar. Bu kılavuzdaki önerilerden bazıları, daha düşük SKU 'Lar ile uygulanabilir. Daha fazla bilgi için bkz. [Microsoft 365 Kurumsal lisanslama](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise).
 
-Lisans sağlamayı otomatik hale getirmek için kullanıcılarınız için [grup tabanlı lisanslamayı](../users-groups-roles/licensing-groups-assign.md) göz önünde bulundurun.
+Lisans sağlamayı otomatik hale getirmek için kullanıcılarınız için [grup tabanlı lisanslamayı](../enterprise-users/licensing-groups-assign.md) göz önünde bulundurun.
 
 ## <a name="azure-active-directory-configuration"></a>Azure Active Directory yapılandırması
 
-Azure Active Directory (Azure AD), yönetici iş istasyonlarınız için kullanıcıları, grupları ve aygıtları yönetir. [Yönetici hesabıyla](../users-groups-roles/directory-assign-admin-roles.md)kimlik hizmetlerini ve özellikleri etkinleştirin.
+Azure Active Directory (Azure AD), yönetici iş istasyonlarınız için kullanıcıları, grupları ve aygıtları yönetir. [Yönetici hesabıyla](../roles/permissions-reference.md)kimlik hizmetlerini ve özellikleri etkinleştirin.
 
 Güvenli iş istasyonu yönetici hesabını oluşturduğunuzda, hesabı geçerli iş istasyonunuzda kullanıma sunun. Bu ilk yapılandırmayı ve tüm genel yapılandırmayı yapmak için bilinen bir güvenli cihaz kullandığınızdan emin olun. İlk seferlik deneyimin saldırıya maruz kalma olasılığını azaltmak için, [kötü amaçlı yazılımdan bulaşmaları önleme kılavuzunu](/windows/security/threat-protection/intelligence/prevent-malware-infection)takip etmeyi göz önünde bulundurun.
 
@@ -77,7 +77,7 @@ Sonra iki grup oluşturursunuz: iş istasyonu kullanıcıları ve iş istasyonu 
 
 Azure Portal **Azure Active Directory**  >  **gruplar**  >  **Yeni Grup**' a gidin.
 
-1. İş istasyonu kullanıcıları grubu için, kullanıcılara lisansların sağlanması otomatik hale getirmek üzere [grup tabanlı lisanslama](../users-groups-roles/licensing-groups-assign.md) yapılandırmak isteyebilirsiniz.
+1. İş istasyonu kullanıcıları grubu için, kullanıcılara lisansların sağlanması otomatik hale getirmek üzere [grup tabanlı lisanslama](../enterprise-users/licensing-groups-assign.md) yapılandırmak isteyebilirsiniz.
 1. İş istasyonu kullanıcıları grubu için şunu girin:
 
    * **Grup türü** -güvenlik
@@ -131,7 +131,7 @@ Bu adımlar, Intune ile herhangi bir cihazı yönetmenizi sağlar. Daha fazla bi
 
 #### <a name="azure-ad-conditional-access"></a>Azure AD Koşullu Erişim
 
-Azure AD koşullu erişimi, ayrıcalıklı yönetim görevlerinin uyumlu cihazlarla kısıtlanmasını sağlamaya yardımcı olabilir. **Güvenli Iş Istasyonu kullanıcıları** grubunun önceden tanımlanmış üyeleri, bulut uygulamalarında oturum açarken Multi-Factor Authentication gerçekleştirmek için gereklidir. En iyi uygulama, acil durum erişim hesaplarını ilkeden dışlayamazsınız. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md).
+Azure AD koşullu erişimi, ayrıcalıklı yönetim görevlerinin uyumlu cihazlarla kısıtlanmasını sağlamaya yardımcı olabilir. **Güvenli Iş Istasyonu kullanıcıları** grubunun önceden tanımlanmış üyeleri, bulut uygulamalarında oturum açarken Multi-Factor Authentication gerçekleştirmek için gereklidir. En iyi uygulama, acil durum erişim hesaplarını ilkeden dışlayamazsınız. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişim hesaplarını yönetme](../roles/security-emergency-access.md).
 
 ## <a name="intune-configuration"></a>Intune yapılandırması
 
@@ -308,7 +308,7 @@ Dağıtımı özel hazırlıklar gerektiren Windows 32-bit uygulamaları veya di
 
 ### <a name="conditional-access-only-allowing-secured-workstation-ability-to-access-azure-portal"></a>Koşullu erişim yalnızca güvenliği sağlanmış iş istasyonu erişimine izin verir Azure portal
 
-Azure AD, Azure bulut yönetim portalınıza kimlerin erişebileceğini yönetme ve kısıtlama özelliği sunar. [Koşullu erişimin](../conditional-access/overview.md) etkinleştirilmesi yalnızca güvenli iş istasyonunuzun kaynakları yönetmesini veya değiştirebileceğini güvence altına alacak. [Acil durum erişim](../users-groups-roles/directory-emergency-access.md) işlevinin yalnızca olağanüstü durumlar ve ilke aracılığıyla yönetilen hesap için kullanılması gerekiyorsa, göz önünde bulundurmanız gereken bu özelliği dağıtmaktan çok önemlidir.
+Azure AD, Azure bulut yönetim portalınıza kimlerin erişebileceğini yönetme ve kısıtlama özelliği sunar. [Koşullu erişimin](../conditional-access/overview.md) etkinleştirilmesi yalnızca güvenli iş istasyonunuzun kaynakları yönetmesini veya değiştirebileceğini güvence altına alacak. [Acil durum erişim](../roles/security-emergency-access.md) işlevinin yalnızca olağanüstü durumlar ve ilke aracılığıyla yönetilen hesap için kullanılması gerekiyorsa, göz önünde bulundurmanız gereken bu özelliği dağıtmaktan çok önemlidir.
 
 > [!NOTE]
 > Bir Kullanıcı grubu oluşturmanız ve koşullu erişim ilkesini atlayabileceği acil durum kullanıcısını eklemeniz gerekir. Bizim örneğimizde **acil durum Kahcam** adlı bir güvenlik grubu sunuyoruz

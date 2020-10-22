@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135347"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366674"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server bulma hatalarıyla ilgili sorunları giderme
 
@@ -54,7 +54,7 @@ Bu sorunla karşılaşıldığında aşağıdaki durumlar oluşur:
 
 Bu sorunu çözmek için:
 
-[PsExec aracını](https://aka.ms/PsExec)indirin. 
+[PsExec aracını](/sysinternals/downloads/psexec)indirin. 
 
 Sistem Kullanıcı bağlamına erişmek ve proxy adresinin yapılandırılıp yapılandırılmadığını öğrenmek için PsExec aracını kullanın. Ardından aşağıdaki yordamları kullanarak atlama listesine vCenter ekleyebilirsiniz.
 
@@ -81,4 +81,4 @@ DRA proxy yapılandırması için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[VMware VM olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 
+[VMware VM olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)
