@@ -1,16 +1,16 @@
 ---
 author: baanders
-description: temel bir Azure dijital TWINS örneği ve uygulama kaydı Temizleme için dosya ekleme
+description: temel bir Azure dijital TWINS örneğini temizlemek için ekleme dosyası
 ms.service: digital-twins
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: baanders
-ms.openlocfilehash: e8f167555434338416381aaf8978a3d551686fb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e095a7b286a8860535d6b58fa93098735b30c87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606621"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372335"
 ---
 Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin.
 
@@ -23,10 +23,4 @@ Bir Azure Cloud Shell açın ve kaynak grubunu ve içerdiği her şeyi silmek i�
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azure Active Directory Uygulama kaydını silin:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```

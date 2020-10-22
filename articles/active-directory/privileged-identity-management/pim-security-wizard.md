@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534446"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372438"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD rolleri için bulma ve Öngörüler (Önizleme) (eski adıyla Güvenlik Sihirbazı)
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) kuruluşunuzda Privileged Identity Management 
 
 Kuruluşunuz Privileged Identity Management kullanmaya başlamadan önce, tüm rol atamaları kalıcıdır. Kullanıcılar, ayrıcalıklarına gerek duymadığı durumlarda bile her zaman kendilerine atanan rollerdir. Önceki Güvenlik Sihirbazı 'Nın yerini alan bulma ve Öngörüler (Önizleme), ayrıcalıklı rollerin bir listesini ve şu anda bu rollerdeki Kullanıcı sayısını gösterir. Bir veya daha fazla bilginiz yoksa atanan kullanıcılar hakkında daha fazla bilgi edinmek için, bir rolün atamalarını listeleyebilirsiniz.
 
-: heavy_check_mark: **Microsoft** , genel yönetici rolüne kalıcı olarak atanmış iki kesme camı hesabını tutmanızı önerir. Bu hesapların, [Azure AD 'de acil durum erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)bölümünde açıklandığı gibi, oturum açmak için normal yönetim hesaplarınızla aynı Multi-Factor Authentication mekanizmasına gerek olmadığından emin olun.
+: heavy_check_mark: **Microsoft** , genel yönetici rolüne kalıcı olarak atanmış iki kesme camı hesabını tutmanızı önerir. Bu hesapların, [Azure AD 'de acil durum erişim hesaplarını yönetme](../roles/security-emergency-access.md)bölümünde açıklandığı gibi, oturum açmak için normal yönetim hesaplarınızla aynı Multi-Factor Authentication mekanizmasına gerek olmadığından emin olun.
 
 Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype veya Outlook.com gibi Microsoft hizmetlerinde oturum açmak için kullandıkları bir hesap) varsa rol atamalarını kalıcı tutun. Rol atamasını etkinleştirmek üzere Microsoft hesabı olan bir kullanıcı için Multi-Factor Authentication gerekirse, Kullanıcı kilitlenir.
 

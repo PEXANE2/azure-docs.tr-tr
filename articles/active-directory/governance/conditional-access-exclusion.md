@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783697"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362731"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure AD erişim incelemelerini kullanın
 
@@ -38,7 +38,7 @@ Başka bir örnek olarak, kullanıcıların kiracılarına erişmesine izin verm
 
 ![Koşullu erişimde adlandırılmış konumlar](./media/conditional-access-exclusion/named-locations.png)
 
-Ne yazık ki, bazı kullanıcılar hala bu engellenen ülkelerde/bölgelerde oturum açmak için geçerli bir neden olabilir. Örneğin, kullanıcılar iş için seyahat ediyor ve şirket kaynaklarına erişmesi gerekiyor. Bu durumda, bu ülkeleri/bölgeleri engellemeye yönelik koşullu erişim ilkesi, ilkeden çıkarılan kullanıcılar için bir bulut güvenlik grubu kullanabilir. Seyahat sırasında erişmesi gereken kullanıcılar, [Azure AD Self Servis Grup Yönetimi](../users-groups-roles/groups-self-service-management.md)'ni kullanarak kendilerini gruba ekleyebilir.
+Ne yazık ki, bazı kullanıcılar hala bu engellenen ülkelerde/bölgelerde oturum açmak için geçerli bir neden olabilir. Örneğin, kullanıcılar iş için seyahat ediyor ve şirket kaynaklarına erişmesi gerekiyor. Bu durumda, bu ülkeleri/bölgeleri engellemeye yönelik koşullu erişim ilkesi, ilkeden çıkarılan kullanıcılar için bir bulut güvenlik grubu kullanabilir. Seyahat sırasında erişmesi gereken kullanıcılar, [Azure AD Self Servis Grup Yönetimi](../enterprise-users/groups-self-service-management.md)'ni kullanarak kendilerini gruba ekleyebilir.
 
 Diğer bir örnek [, kullanıcılarınızın büyük çoğunluğu için eski kimlik doğrulamasını engelleyen](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)koşullu erişim ilkeniz olabilir. Ancak, Office 2010 veya IMAP/SMTP/POP tabanlı istemciler aracılığıyla kaynaklarınıza erişmek için eski kimlik doğrulama yöntemlerini kullanması gereken bazı kullanıcılarınız varsa, bu kullanıcıları eski kimlik doğrulama yöntemlerini engelleyen ilkeden dışlayabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3dd5898518a9788a7079ab903b6f88b9f82989
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827531"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371214"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı 
 
@@ -56,7 +56,7 @@ Bir Azure tümleştirme çalışma zamanı şunları yapabilir:
 
 - Azure 'da veri akışları çalıştırma 
 - Bulut veri depoları arasında kopyalama etkinliğini Çalıştır
-- Şu dönüştürme etkinliklerini genel ağa gönderme: Databricks Not defteri/jar/Python etkinliği, HDInsight Hive etkinliği, HDInsight Pig Activity, HDInsight MapReduce etkinliği, HDInsight Spark etkinliği, HDInsight akış etkinliği, Machine Learning Batch yürütme etkinliği, Machine Learning güncelleştirme kaynak etkinlikleri, saklı yordam etkinliği, Data Lake Analytics U-SQL etkinliği, .NET özel etkinliği, Web etkinliği, arama etkinliği ve meta veri alma etkinliği.
+- Aşağıdaki dönüşüm etkinliklerini genel ağa gönderme: Databricks Not defteri/jar/Python etkinliği, HDInsight Hive etkinliği, HDInsight Pig Activity, HDInsight MapReduce etkinliği, HDInsight Spark etkinliği, HDInsight akış etkinliği, Azure Machine Learning Studio (klasik) toplu yürütme etkinliği, Azure Machine Learning Studio (klasik) güncelleştirme kaynak etkinlikleri, saklı yordam etkinliği, Data Lake Analytics U-SQL etkinliği, .NET özel etkinliği, Web etkinliği, arama etkinliği ve meta veri alma etkinliği.
 
 ### <a name="azure-ir-network-environment"></a>Azure IR ağ ortamı
 
@@ -79,7 +79,7 @@ Azure IR oluşturma ve yapılandırma hakkında daha fazla bilgi için bkz. [Azu
 Kendinden konak IR şu özelliklere sahiptir:
 
 - Bulut veri depoları ve özel ağdaki veri deposu arasında kopyalama etkinliği çalıştırma.
-- Şirket içi veya Azure sanal ağı 'ndaki işlem kaynaklarına karşı aşağıdaki dönüşüm etkinliklerini gönderme: HDInsight Hive etkinliği (BYOC-Kendi kümenizi getir), HDInsight Pig Activity (BYOC), HDInsight MapReduce Activity (BYOC), HDInsight Spark Activity (BYOC), HDInsight akış etkinliği (BYOC), Machine Learning Batch yürütme etkinliği, Machine Learning güncelleştirme kaynak etkinlikleri, saklı yordam etkinliği, Data Lake Analytics U-SQL etkinliği, özel etkinlik (Azure Batch üzerinde çalışır) , Arama etkinliği ve meta verileri Al etkinliği.
+- Şirket içi veya Azure sanal ağı 'ndaki işlem kaynaklarına karşı aşağıdaki dönüşüm etkinliklerini gönderme: HDInsight Hive etkinliği (BYOC-Kendi kümenizi getir), HDInsight Pig Activity (BYOC), HDInsight MapReduce Activity (BYOC), HDInsight Spark Activity (BYOC), HDInsight akış etkinliği (BYOC), Azure Machine Learning Studio (klasik) toplu yürütme etkinliği, Azure Machine Learning Studio (klasik) güncelleştirme kaynak etkinlikleri, saklı yordam etkinliği, Data Lake Analytics U-SQL etkinliği , Özel etkinlik (Azure Batch çalışır), arama etkinliği ve meta verileri Al etkinliği.
 
 > [!NOTE] 
 > Şirket içinde barındırılan tümleştirme çalışma zamanını, SAP HANA, MySQL vb. gibi kendi sürücüsünü getir gerektiren veri depolarını desteklemek için kullanın.  Daha fazla bilgi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

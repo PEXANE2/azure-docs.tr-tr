@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361917"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362578"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Öğretici: Log Analytics Sihirbazı 'nı yapılandırma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Hızlı başlangıç şablonunu kullanarak özel çalışma kitabı oluşturma
 > * Varolan çalışma kitabı şablonuna sorgu ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - En az bir P1 lisanslı Yöneticisi olan bir Azure aboneliği. Azure aboneliğiniz yoksa, [ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -45,7 +45,7 @@ Bu makalelerle ilgili bilgi edinin:
 
 - [Etkinlik günlüklerini Log Analytics ile tümleştirme](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure AD 'de acil durum erişim hesabını yönetme](../users-groups-roles/directory-emergency-access.md)
+- [Azure AD 'de acil durum erişim hesabını yönetme](../roles/security-emergency-access.md)
 
 - [KQL hızlı başvurusu](/azure/data-explorer/kql-quick-reference)
 
@@ -96,11 +96,11 @@ Bir Log Analytics çalışma alanının yapılandırılması iki ana adımdan ol
 
 7. **Azure Active Directory** aratın.
 
-    ![Azure etkin Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 8. **İzleme** bölümünde **Tanılama ayarı**' na tıklayın.
 
-    ![Azure etkin Firectory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
 9. **Tanılama ayarları** sayfasında, **Tanılama ayarı Ekle**' ye tıklayın.
 
@@ -128,7 +128,7 @@ Bu yordam, **kusto sorgu dili (KQL)** kullanılarak sorguların nasıl çalışt
 
 2. **Azure Active Directory** aratın.
 
-    ![Azure etkin Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **İzleme** bölümünde **Günlükler**' e tıklayın.
 
@@ -210,7 +210,7 @@ Bu yordamda, breakcam hesabı kullanıldığında nasıl uyarı gönderileceğin
 
 2. **Azure Active Directory** aratın.
 
-    ![Azure etkin Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **İzleme** bölümünde **Günlükler**' e tıklayın.
 
@@ -301,7 +301,7 @@ Bu yordamda, hızlı başlangıç şablonunu kullanarak nasıl yeni bir çalış
 
 2. **Azure Active Directory** aratın.
 
-    ![Azure etkin Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **İzleme** bölümünde, **çalışma kitapları**' nı tıklatın.
 
@@ -353,7 +353,7 @@ Bu yordam, var olan bir çalışma kitabı şablonuna nasıl sorgu ekleneceğini
 
 2. **Azure Active Directory** aratın.
 
-    ![Azure etkin Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **İzleme** bölümünde, **çalışma kitapları**' nı tıklatın.
 
