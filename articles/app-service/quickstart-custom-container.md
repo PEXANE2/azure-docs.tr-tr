@@ -3,16 +3,16 @@ title: 'Hızlı başlangıç: App Service özel kapsayıcı çalıştırma'
 description: İlk özel kapsayıcınızı dağıtarak Azure App Service kapsayıcılar ile çalışmaya başlayın.
 author: msangapu-msft
 ms.author: msangapu
-ms.date: 08/28/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 3191552421091bc0a2c4e6855c0271c142af1882
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1411491906e763a52ee1b6a66df1dea183b91973
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152364"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425870"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure 'da özel kapsayıcı çalıştırma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, bir Windows görüntüsünde ASP.NET uygulamasının 
 > Windows kapsayıcılarındaki App Service önizleme aşamasındadır.
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -184,7 +184,7 @@ Ya da diğer kaynaklara göz atın:
 ::: zone pivot="container-linux"
 Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node.js ve diğerleri gibi diller desteğiyle önceden tanımlanmış uygulama yığınları sağlar. Ayrıca web uygulamanızı Azure’da zaten tanımlı olmayan bir uygulama yığınında çalıştırmak için özel bir Docker görüntüsü de kullanabilirsiniz. Bu hızlı başlangıçta, bir [Azure Container Registry](../container-registry/index.yml) (ACR) App Service bir görüntünün nasıl dağıtılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir [Azure hesabı](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)

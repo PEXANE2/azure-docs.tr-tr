@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 6b179dd2662bf6fa545ea44b723671f1499b9e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589019"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427019"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault için izleme ve uyarma
 
@@ -53,7 +53,7 @@ ms.locfileid: "88589019"
 3. **İzleme** altındaki **ölçümleri** seçin 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-1.png)
+> ![Izleme bölümü altındaki ölçümler seçeneğini vurgulayan ekran görüntüsü.](../media/alert-1.png)
 
 4. Grafiğin başlığını panonuzda görmek istediğiniz şekilde güncelleştirin. 
 5. Kapsamı seçin. Bu örnekte tek bir Anahtar Kasası seçeceğiz. 
@@ -61,7 +61,7 @@ ms.locfileid: "88589019"
 7. Zaman aralığını son 24 saat olarak güncelleştirin ve zaman parçalı yapısını 1 dakika olarak güncelleştirin. 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-2.png)
+> ![Genel kasa kullanılabilirliği ölçüsünü gösteren ekran görüntüsü.](../media/alert-2.png)
 
 8. Kasa doygunluğu ve hizmet API 'SI gecikme ölçümleri için yukarıdaki adımları tekrarlayın. Ölçümleri bir panoya kaydetmek için **panoya sabitle ' yi** seçin. 
 
@@ -71,19 +71,19 @@ ms.locfileid: "88589019"
 9. Anahtar kasasındaki tüm işlem türlerini izlemek için, **Total SERVICE API Isabetlerinin** ölçüsünü kullanın ve **etkinlik türüne göre bölmeyi Uygula** ' yı seçin.
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-3.png)
+> ![Bölmeyi Uygula düğmesini gösteren ekran görüntüsü.](../media/alert-3.png)
 
 10. Anahtar kasasındaki hata kodlarını izlemek için, **toplam hizmet API 'Si sonuçları** ölçümünü kullanın ve **etkinlik türüne göre bölmeyi Uygula** ' yı seçin.
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-4.png)
+> ![Seçilen Total Service API sonuçları ölçümünü gösteren ekran görüntüsü.](../media/alert-4.png)
 
 Artık şuna benzeyen bir panonuz olacak. Her kutucuğun sağ üst köşesinde 3 noktaya tıklayabilirsiniz ve kutucukları gerektiği gibi yeniden düzenleyebilir ve yeniden boyutlandırabilirsiniz. 
 
 Panoyu kaydettikten ve yayımladıktan sonra Azure aboneliğinizde yeni bir kaynak oluşturur. "Paylaşılan Pano" öğesini arayarak dilediğiniz zaman görebilirsiniz. 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-5.png)
+> ![Yayınlanan panoyu gösteren ekran görüntüsü.](../media/alert-5.png)
 
 ## <a name="how-to-configure-alerts-on-your-key-vault"></a>Key Vault uyarıları yapılandırma 
 
@@ -101,20 +101,20 @@ Eylem grubu, bildirimlerin ve özelliklerin yapılandırılabilir bir listesidir
 3. **Işlemleri Yönet** ' i seçin
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-6.png)
+> ![Eylemleri Yönet düğmesini vurgulayan ekran görüntüsü.](../media/alert-6.png)
 
 4. **+ Eylem grubu Ekle** ' yi seçin
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-7.png)
+> ![+ Eylem grubu Ekle düğmesini vurgulayan ekran görüntüsü.](../media/alert-7.png)
 
 5. Eylem grubunuz için **eylem türünü** seçin. Bu örnekte, bir e-posta uyarısı oluşturacağız.
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-8.png)
+> ![Bir eylem grubu eklemek için gereken alanları vurgulayan ekran görüntüsü.](../media/alert-8.png)
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-9.png)
+> ![E-posta veya SMS ileti uyarısı eklemek için gerekenleri gösteren ekran görüntüsü.](../media/alert-9.png)
 
 6. Sayfanın altından **Tamam**’a tıklayın. Bir eylem grubunu başarıyla oluşturdunuz. 
 
@@ -125,12 +125,12 @@ Bir eylem grubu yapılandırdığınıza göre, Anahtar Kasası uyarı eşikleri
 1. Azure portal Anahtar Kasası kaynağını seçin ve **izleme** altında **uyarıları** seçin
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-10.png)
+> ![Izleme bölümü altında uyarılar menü seçeneğini gösteren ekran görüntüsü.](../media/alert-10.png)
 
 2. **Yeni uyarı kuralı** Seç
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-11.png)
+> ![+ Yeni uyarı kuralı düğmesini gösteren ekran görüntüsü.](../media/alert-11.png)
 
 3. Uyarı kuralınızın kapsamını seçin. Tek bir kasa veya birden çok seçim yapabilirsiniz. 
 
@@ -138,7 +138,7 @@ Bir eylem grubu yapılandırdığınıza göre, Anahtar Kasası uyarı eşikleri
 > Uyarılarınızın kapsamı için birden çok kasa seçerken, tüm seçili kasaların aynı bölgede olması gerektiğini unutmayın. Farklı bölgelerde kasaların ayrı uyarı kuralları yapılandırmanız gerekecektir. 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-12.png)
+> ![Kasanın nasıl kullanılabileceğini gösteren ekran görüntüsü.](../media/alert-12.png)
 
 4. Uyarılarınız için koşulları seçin. Aşağıdaki sinyallerden herhangi birini seçebilir ve uyarı için mantığınızı tanımlayabilirsiniz. Key Vault takım aşağıdaki uyarı eşiklerini yapılandırmayı öneriyor. 
 
@@ -149,13 +149,13 @@ Bir eylem grubu yapılandırdığınıza göre, Anahtar Kasası uyarı eşikleri
     + Ortalamanın üstünde toplam hata kodları (Dinamik Eşik) 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-13.png)
+> ![Uyarılar için koşulları seçtiğiniz yeri gösteren ekran görüntüsü.](../media/alert-13.png)
 
 ### <a name="example-1-configuring-a-static-alert-threshold-for-latency"></a>Örnek 1: gecikme için statik bir uyarı eşiği yapılandırma
 
 Sinyal adı olarak **genel hizmet API 'Si gecikmesini** seçin
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-14.png)
+> ![Genel hizmet API 'SI gecikme sinyali adını gösteren ekran görüntüsü.](../media/alert-14.png)
 
 Lütfen aşağıdaki yapılandırma parametrelerine bakın.
 
@@ -168,14 +168,14 @@ Lütfen aşağıdaki yapılandırma parametrelerine bakın.
 + **Bitti** 'yi seçin  
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-15.png)
+> ![Yapılandırılan uyarı mantığını vurgulayan ekran görüntüsü.](../media/alert-15.png)
 
 ### <a name="example-2-configuring-a-dynamic-alert-threshold-for-vault-saturation"></a>Örnek 2: kasa doygunluğu için dinamik bir uyarı eşiği yapılandırma 
 
 Dinamik bir uyarı kullandığınızda, seçtiğiniz anahtar kasasının geçmiş verilerini görebilirsiniz. Mavi alan, anahtar kasaınızın ortalama kullanımını temsil eder. Kırmızı alanda, uyarı yapılandırmasındaki diğer ölçütler sağlandığında bir uyarının tetiklendiği ani artışlar gösterilmektedir. Kırmızı noktalar, uyarı ölçütlerinin toplanmış zaman penceresinde karşılandığı ihlallerin örneklerini gösterir. Belirlenen süre içinde belirli bir sayıdaki ihlalden sonra tetiklemek üzere bir uyarı ayarlayabilirsiniz. Geçmiş verileri dahil etmek istemiyorsanız, Gelişmiş ayarlarda aşağıdaki eski verileri dışarıda bırakma seçeneği vardır. 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-16.png)
+> ![Genel kasa doygunluğunun grafiğini gösteren ekran görüntüsü.](../media/alert-16.png)
 
 Lütfen aşağıdaki yapılandırma parametrelerine bakın.
 
@@ -194,12 +194,12 @@ Lütfen aşağıdaki yapılandırma parametrelerine bakın.
 5. Yapılandırdığınız eylem grubunu ekleyin
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-18.png)
+> ![Bir eylem grubunun nasıl ekleneceğini gösteren ekran görüntüsü.](../media/alert-18.png)
 
 6. Uyarıyı etkinleştirme ve önem derecesi atama
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-19.png)
+> ![Uyarının nerede etkinleştirileceğini ve önem derecesi atanacağını gösteren ekran görüntüsü.](../media/alert-19.png)
 
 7. Uyarı oluşturma 
 
@@ -211,4 +211,4 @@ Tebrikler, artık bir izleme panosunu başarıyla oluşturdunuz ve anahtar kasan
 ### <a name="example-email-alert"></a>Örnek e-posta uyarısı 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal ekran görüntüsü](../media/alert-20.png)
+> ![Bir e-posta uyarısını yapılandırmak için gereken bilgileri vurgulayan ekran görüntüsü.](../media/alert-20.png)

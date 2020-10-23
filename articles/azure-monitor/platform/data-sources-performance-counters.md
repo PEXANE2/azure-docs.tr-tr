@@ -1,25 +1,28 @@
 ---
-title: Azure Izleyici 'de performans sayaçlarını toplayın ve çözümleyin | Microsoft Docs
+title: Azure Izleyici 'de Log Analytics Agent ile Windows ve Linux performans verileri kaynaklarını toplayın
 description: Performans sayaçları, Windows ve Linux aracılarındaki performansı çözümlemek için Azure Izleyici tarafından toplanır.  Bu makalede, hem Windows hem de Linux aracıları için performans sayaçları koleksiyonunun nasıl yapılandırılacağı, bunların ayrıntılarının çalışma alanında saklandıkları ve Azure portal nasıl çözümleneceği açıklanır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/21/2020
+ms.openlocfilehash: 71fc3f457338796289c2f6ac54f3bc713a91cc29
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131199"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461371"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows ve Linux performansı veri kaynakları
-Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerinin toplanmasının yanı sıra, neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla performans sayaçlarını toplayabilir.
+# <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics Agent ile Windows ve Linux performans verileri kaynaklarını toplayın
+Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerini toplamaya ek olarak neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla Log Analytics aracılarından performans sayaçlarını toplayabilir.
+
+> [!IMPORTANT]
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](log-analytics-agent.md) performans verilerinin toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
 
 ![Performans sayaçları](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Performans sayaçlarını yapılandırma
-[Gelişmiş ayarlar 'Daki veri menüsünden](agent-data-sources.md#configuring-data-sources)performans sayaçlarını yapılandırın.
+Log Analytics çalışma alanı için [Gelişmiş ayarlar 'Daki veri menüsünden](agent-data-sources.md#configuring-data-sources) performans sayaçlarını yapılandırın.
 
 Yeni bir çalışma alanı için Windows veya Linux performans sayaçlarını ilk kez yapılandırdığınızda, birkaç ortak sayacı hızlı bir şekilde oluşturma seçeneği sunulur.  Her birinin yanında bir onay kutusu görüntülenir.  Başlangıçta oluşturulmasını istediğiniz tüm sayaçların işaretli olduğundan emin olun ve ardından **Seçili performans sayaçlarını Ekle**' ye tıklayın.
 

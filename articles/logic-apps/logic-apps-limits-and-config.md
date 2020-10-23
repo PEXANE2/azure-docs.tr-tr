@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 16dab7897fc41a97a8607df5a03281582377e1e4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 05881791d495770167b271e20de173e6679f39d9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424072"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440663"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -48,7 +48,7 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 | Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | Çalıştırma süresi | 90 gün | 366 gün | Çalıştırma süresi, bir çalıştırmanın başlangıç saati kullanılarak hesaplanır. |
-| Depolama alanında çalışma geçmişi tutma | 90 gün | 366 gün | Bir çalıştırma tamamlandığında veya zaman aşımına uğrarsa, çalışma geçmişi saklama işlemi her zaman iş akışı ayarı tarafından *geçerli zamanda* belirtilen çalışma başlangıç zamanı ve sınırı kullanılarak hesaplanır, [**geçmiş tutma Işlemini gün olarak çalıştırın**](#change-retention). Bu ayarı değiştirirseniz, önceki sınır ne olursa olsun, *geçerli* sınır her zaman bekletme hesaplaması için kullanılır. Bir çalıştırmanın süresi geçerli sınırı aştığında, çalıştırma çalışma geçmişinden kaldırılır. <p><p>Örneğin, 90 günden 30 güne kadar olan bekletme limitini azaltdığınızı varsayalım. Bir 60 günlük eski çalıştırma, çalışma geçmişinden kaldırılır. Bekletme süresini 30 günden 60 güne kadar artırırsanız, 20 günlük eski bir çalıştırma, çalışma geçmişinde başka bir 40 gün boyunca kalır. <p><p>90 gün olan varsayılan sınırı değiştirmek için bkz. [depolamada çalışma geçmişi bekletmesini değiştirme](#change-retention). |
+| Depolama alanında çalışma geçmişi tutma | 90 gün | 366 gün | Bir çalıştırmanın süresi geçerli çalışma geçmişi saklama sınırını aşarsa, çalışma, depolama alanındaki çalıştırma geçmişinden kaldırılır. Çalıştırmanın tamamlanması veya zaman aşımına uğrayıp, çalıştırma geçmişi saklama, iş akışı ayarında belirtilen başlangıç saati ve geçerli sınır kullanılarak her zaman hesaplanır, [**geçmiş tutma işlemini gün olarak çalıştırın**](#change-retention). Önceki sınıra bakılmaksızın, geçerli sınır, saklama hesaplaması için her zaman kullanılır. <p><p>Varsayılan sınırı değiştirmek ve daha fazla bilgi için bkz. [depolamada çalışma geçmişi bekletmesini değiştirme](#change-retention). Maksimum limiti artırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) . |
 | En az yinelenme aralığı | 1 saniye | 1 saniye ||
 | En fazla yinelenme aralığı | 500 gün | 500 gün ||
 |||||
@@ -57,11 +57,17 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 ### <a name="change-run-history-retention-in-storage"></a>Depolama alanında çalışma geçmişi bekletmesini değiştirme
 
-Depolama alanında çalışma geçmişi saklama için varsayılan sınırı değiştirmek üzere aşağıdaki adımları izleyin. Maksimum limiti artırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
+Depolama alanında çalışma geçmişi saklama için varsayılan sınırı değiştirmek üzere aşağıdaki adımları izleyin.
 
-> [!NOTE]
-> Çok kiracılı Azure 'da mantıksal uygulamalar için, 90 günlük varsayılan sınır, üst limitle aynıdır. Bu değeri yalnızca azaltabilirsiniz.
-> Bir tümleştirme hizmeti ortamındaki Logic Apps için 90 günlük varsayılan sınırı azaltabilir veya artırabilirsiniz.
+* Çok kiracılı Azure 'da mantıksal uygulamalar için, 90 günlük varsayılan sınır, üst limitle aynıdır. Bu değeri yalnızca azaltabilirsiniz.
+
+* Bir tümleştirme hizmeti ortamındaki Logic Apps için 90 günlük varsayılan sınırı azaltabilir veya artırabilirsiniz.
+
+Örneğin, 90 günden 30 güne kadar olan bekletme limitini azaltdığınızı varsayalım. Bir 60 günlük eski çalıştırma, çalışma geçmişinden kaldırılır. Bekletme süresini 30 günden 60 güne kadar artırırsanız, 20 günlük eski bir çalıştırma, çalışma geçmişinde başka bir 40 gün boyunca kalır. 
+
+
+> [!IMPORTANT]
+> Çalıştırma geçmişinin kaybedilmesini önlemek için, bekletme sınırının *her zaman* çalıştırmanın en uzun süresinden daha fazla olduğundan emin olun. Aksi takdirde, çalıştırma geçmişi kaybolur.
 
 1. [Azure Portal](https://portal.azure.com) arama kutusunda **Logic Apps**' i bulun ve seçin.
 

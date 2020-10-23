@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee8c7cf2b34d5923f84bf9b9ba3cf5b10034e3e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652066"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458060"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makale, Kullanıcı parolalarınızı şirket içi Active Directory örneğinden bulut tabanlı Azure Active Directory (Azure AD) örneğine eşitlemeniz için gereken bilgileri sağlar.
@@ -63,7 +63,7 @@ Aşağıdaki bölümde, parola karma eşitlemesinin Active Directory ile Azure A
 > [!NOTE]
 > Özgün MD4 karması Azure AD 'ye aktarılmaz. Bunun yerine, özgün MD4 karmasının SHA256 karması iletilir. Sonuç olarak, Azure AD 'de depolanan karma değer elde edilmişse, şirket içi bir karma geçişi saldırısında kullanılamaz.
 
-### <a name="security-considerations"></a>Güvenlik konuları
+### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Parolaları eşitlerken, parolanızın düz metin sürümü Parola karması eşitleme özelliğine, Azure AD 'ye veya ilişkili hizmetlerden herhangi birine gösterilmez.
 
@@ -109,7 +109,7 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Etkinleştirildikten sonra Azure AD, PasswordPolicies özniteliğinden değeri kaldırmak için eşitlenmiş her kullanıcıya gitmez `DisablePasswordExpiration` . Bunun yerine, `None` Kullanıcı şirket ıçı ad 'de parolasını değiştirdiklerinde, her kullanıcı için bir sonraki parola eşitlemesi sırasında değeri olarak ayarlanır.  
+Etkinleştirildikten sonra Azure AD, PasswordPolicies özniteliğinden değeri kaldırmak için eşitlenmiş her kullanıcıya gitmez `DisablePasswordExpiration` . Bunun yerine, bu `DisablePasswordExpiration` değer, her kullanıcı için sonraki parola karması eşitlemesi sırasında, şirket ıçı ad 'de sonraki parola değişikliğinden sonra PasswordPolicies 'tan kaldırılır.
 
 Parola karma eşitlemesi etkinleştirilmeden önce Enforcechoparlör Passwordpolicyforpasswordsyncedusers ' ı etkinleştirmeniz önerilir, böylece parola karmalarının ilk eşitlenmesi, `DisablePasswordExpiration` Kullanıcılar Için PasswordPolicies özniteliğine değeri eklemez.
 

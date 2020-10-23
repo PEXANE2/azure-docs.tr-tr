@@ -7,16 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6ee1c70ec02af2a24f7867a6e6b06593361612b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bccf2b9a3dfe42ca439a45eb1e35cfaff58d0208
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083126"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426951"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Zeppelin 'i Hive ambarı Bağlayıcısı ile tümleştirme
 
 HDInsight Spark kümeleri, farklı yorumlayıcılara sahip Apache Zeppelin not defterlerini içerir. Bu makalede, Hive ambar Bağlayıcısı 'nı kullanarak Spark 'tan Hive tablolarına erişmek için yalnızca Livy Yorumlayıcısına odaklanacağız.
+
+> [!NOTE]
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste*teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="prerequisite"></a>Önkoşul
 
