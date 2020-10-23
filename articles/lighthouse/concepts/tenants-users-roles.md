@@ -3,12 +3,12 @@ title: Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
 description: Azure Active Directory kiracılar, kullanıcılar ve roller kavramlarını ve bunların Azure Use senaryolarında nasıl kullanılabileceğini anlayın.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dae09ddd7760af1663e0329eb646c8956dff3ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399253"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424114"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
 
@@ -22,7 +22,7 @@ Seçtiğiniz ekleme yöntemine ne olursa *yetkilendirmeler*tanımlamanız gereke
 
 ## <a name="role-support-for-azure-lighthouse"></a>Azure ışıklı kullanım için rol desteği
 
-Bir yetkilendirme tanımlarken, her kullanıcı hesabına [rol tabanlı erişim denetimi (RBAC) yerleşik rollerinin](../../role-based-access-control/built-in-roles.md)biri atanmalıdır. Özel roller ve [Klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
+Bir yetkilendirme tanımlarken, her kullanıcı hesabına [Azure yerleşik rollerinin](../../role-based-access-control/built-in-roles.md)biri atanmalıdır. Özel roller ve [Klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
 
 Aşağıdaki özel durumlarla birlikte, tüm [yerleşik roller](../../role-based-access-control/built-in-roles.md) Şu anda Azure Kathouse ile desteklenmektedir:
 

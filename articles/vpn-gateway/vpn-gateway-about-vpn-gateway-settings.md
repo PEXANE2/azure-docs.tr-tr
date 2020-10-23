@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94ad0a05dafe2c405b1b9cb62242675aa54c4432
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976221"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424375"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN Gateway yapılandırma ayarları hakkında
 
@@ -53,11 +53,11 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Ağ Geçidi SKU 'SU yapılandırma
 
-#### <a name="azure-portal"></a>Azure portal
+**Azure portalı**
 
 Kaynak Yöneticisi sanal ağ geçidi oluşturmak için Azure portal kullanırsanız, açılan menüyü kullanarak ağ geçidi SKU 'sunu seçebilirsiniz. Size sunulan seçenekler, seçtiğiniz ağ geçidi türü ve VPN türüne karşılık gelir.
 
-#### <a name="powershell"></a>PowerShell
+**PowerShell**
 
 Aşağıdaki PowerShell örneği, `-GatewaySku` VpnGw1 olarak belirtir. Bir ağ geçidi oluşturmak için PowerShell 'i kullanırken, önce IP yapılandırmasını oluşturmanız ve ardından başvurmak için bir değişken kullanmanız gerekir. Bu örnekte, yapılandırma değişkeni $gwipconfig.
 
@@ -67,7 +67,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -82,6 +82,12 @@ VPN Gateway 'niz varsa ve farklı bir ağ geçidi SKU 'SU kullanmak istiyorsanı
 3. Temel/standart/HighPerformance SKU 'larından VpnGw SKU **'larına yeniden boyutlandırılamaz** . Bunun yerine yeni SKU 'Lara [geçiş](#change) yapmanız gerekir.
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>Bir ağ geçidini yeniden boyutlandırmak için
+
+**Azure portalı**
+
+[!INCLUDE [Resize a SKU - portal](../../includes/vpn-gateway-resize-gw-portal-include.md)]
+
+**PowerShell**
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369717"
+ms.locfileid: "92426409"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
@@ -111,7 +111,7 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
     > [!NOTE]
     > Seçili bir yay etkin sunucu için dağıtım zamanlamasını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin.
 
-15. Durum panosu açılır. Oluşturduğunuz dağıtım zamanlamasını göstermek için **dağıtım zamanlamaları** ' nı seçin. En fazla 500 zamanlama listelenir. 500 ' den fazla zamanlama varsa ve tam listeyi gözden geçirmek istiyorsanız, bkz. sürüm 2019-06-01 veya üstünü kullanarak [yazılım güncelleştirme konfigürasyonları-list](/rest/api/automation/softwareupdateconfigurations/list) REST API yöntemi.
+15. Durum panosu açılır. Oluşturduğunuz dağıtım zamanlamasını göstermek için **dağıtım zamanlamaları** ' nı seçin. En fazla 500 zamanlama listelenir. 500 ' den fazla zamanlama varsa ve tam listeyi gözden geçirmek istiyorsanız, [yazılım güncelleştirme yapılandırması-liste](/rest/api/automation/softwareupdateconfigurations/list) REST API yöntemine bakın. API sürüm 2019-06-01 veya üstünü belirtin.
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>Program aracılığıyla bir güncelleştirme dağıtımı zamanlama
 

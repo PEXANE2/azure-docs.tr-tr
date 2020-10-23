@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: b033e141d176db839e897ac4add738a4a799de99
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c9b47dd720271fe782ce9562d2216eca881756ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315940"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424142"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -160,7 +160,7 @@ Destek istekleri:
 Tüm senaryolarla, lütfen aşağıdaki geçerli sınırlamalara dikkat edin:
 
 - Azure Resource Manager tarafından işlenen istekler, Azure ışıklı kullanımı kullanılarak gerçekleştirilebilir. Bu isteklerin işlem URI 'Leri ile başlar `https://management.azure.com` . Ancak, bir kaynak türü örneği tarafından işlenen istekler (Key Vault gizli dizi erişimi veya depolama veri erişimi gibi) Azure ınthouse ile desteklenmez. Bu isteklerin işlem URI 'Leri genellikle örneğiniz için benzersiz olan bir adresle başlar, örneğin `https://myaccount.blob.core.windows.net` veya `https://mykeyvault.vault.azure.net/` . İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır.
-- Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](../../role-based-access-control/built-in-roles.md)kullanması gerekir. Tüm yerleşik roller Şu anda, sahip veya izin içeren yerleşik roller hariç Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) . Kullanıcı erişimi yönetici rolü yalnızca [yönetilen kimliklere rol atama](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)konusunda sınırlı kullanım için desteklenir.  Özel roller ve [Klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
+- Rol atamaları [Azure yerleşik rollerini](../../role-based-access-control/built-in-roles.md)kullanmalıdır. Tüm yerleşik roller Şu anda, sahip veya izin içeren yerleşik roller hariç Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) . Kullanıcı erişimi yönetici rolü yalnızca [yönetilen kimliklere rol atama](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)konusunda sınırlı kullanım için desteklenir.  Özel roller ve [Klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
 - Azure Databricks kullanan abonelikler ekleyebilirsiniz, ancak yönetme kiracısındaki kullanıcılar şu anda bir temsilci olan abonelikte Azure Databricks çalışma alanlarını başlatamaz.
 - Kaynak kilitleri olan abonelikler ve kaynak grupları ekleyebilirsiniz, ancak bu kilitler yönetim kiracısındaki kullanıcılar tarafından gerçekleştirilen eylemlerin gerçekleştirilmesini engellemez. Azure tarafından yönetilen uygulamalar veya Azure şemaları (sistem tarafından atanan reddetme atamaları) tarafından oluşturulanlar gibi sistem tarafından yönetilen kaynakları koruyan [atamaları reddetme](../../role-based-access-control/deny-assignments.md) , yönetim kiracısındaki kullanıcıların bu kaynaklara göre davranmasını önler; Bununla birlikte, müşteri kiracısındaki kullanıcılar kendi reddetme atamalarını oluşturamaz (Kullanıcı tarafından atanan reddetme atamaları).
 

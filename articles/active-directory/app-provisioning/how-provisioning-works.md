@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: contperfq2
+ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366692"
+ms.locfileid: "92424657"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -179,6 +180,8 @@ Güncelleştirmeler onay kutusunu seçtiğinizden emin olun.
 
 Uygulamanız için *etkin* olan eşlemeye sahip olduğunuzdan emin olun. Uygulama galerisinden bir uygulama kullanıyorsanız, eşleme biraz farklı olabilir. Galeri uygulamaları için varsayılan/çıkış eşlemesini kullandığınızdan emin olun.
 
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="Kullanıcıyı devre dışı bırakma" lightbox="./media/how-provisioning-works/disable-user.png":::
+
 
 **Bir kullanıcıyı silmek için uygulamanızı yapılandırma**
 
@@ -188,7 +191,9 @@ Aşağıdaki senaryolar bir devre dışı bırakma veya silme tetikleyecektir:
 * Kullanıcı, Azure AD 'deki geri dönüşüm kutusu 'ndan kalıcı olarak silinir/kaldırılır.
 * Bir Kullanıcı bir uygulamadan atanmaz.
 * Kullanıcı kapsamdan kapsam dışına gider (artık kapsam filtresini geçirmez).
-    
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Kullanıcıyı devre dışı bırakma" lightbox="./media/how-provisioning-works/delete-user.png":::
+
 Varsayılan olarak, Azure AD sağlama hizmeti, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Bu varsayılan davranışı geçersiz kılmak istiyorsanız, [kapsam dışı silme işlemlerini atlamak](skip-out-of-scope-deletions.md) için bir bayrak ayarlayabilirsiniz.
 
 Yukarıdaki dört olaydan biri meydana gelirse ve hedef uygulama geçici silme işlemini desteklemiyorsa, sağlama hizmeti kullanıcıyı uygulamadan kalıcı olarak silmek için bir SILME isteği gönderir.

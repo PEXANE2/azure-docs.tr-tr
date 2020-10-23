@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9f4947fe379f19593d06ba9efb6bfc43c397e9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333452"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424396"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için yakınlaştırmayı yapılandırma
 
@@ -152,6 +152,7 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 
 ## <a name="change-log"></a>Değişiklik günlüğü
 * 05/14/2020-e-postalar [Type EQ "Work"] özniteliği için eklenen GÜNCELLEŞTIRME işlemleri için destek.
+* 10/20/2020-var olan "Pro" ve "Corp" rollerini değiştirmek için "lisanslı" ve "on-Pred" iki yeni rol için destek eklendi. "Pro" ve "Corp" rollerinin desteği gelecekte kaldırılacak.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

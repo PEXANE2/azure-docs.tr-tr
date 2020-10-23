@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002185"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428056"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo Depolama tablo tasarım kılavuzu: Ölçeklenebilir ve yüksek performanslı tablolar
 
@@ -476,7 +476,7 @@ Ayrı bölümlerde veya ayrı tablolarda farklı değerler kullanarak her varlı
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 Tablo depolama, ve değerlerini kullanarak varlıkları otomatik olarak dizinler `PartitionKey` `RowKey` . Bu, bir istemci uygulamanın bu değerleri kullanarak bir varlığı etkin bir şekilde almasını sağlar. Örneğin, aşağıdaki tablo yapısını kullanarak, bir istemci uygulaması departman adını ve çalışan KIMLIĞINI ( `PartitionKey` ve değerlerini) kullanarak tek bir çalışan varlığını almak için bir nokta sorgusu kullanabilir `RowKey` . Ayrıca, bir istemci her bir departman içindeki çalışan KIMLIĞINE göre sıralanmış varlıkları alabilir.  
 
-[9] :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik"::: tuşlarına
 
 Ayrıca, e-posta adresi gibi başka bir özelliğin değerine bağlı olarak bir çalışan varlığı bulabilmek istiyorsanız, bir eşleşme bulmak için daha az verimli bir bölüm taraması kullanmanız gerekir. Bunun nedeni tablo depolamanın ikincil dizinler sağlamadır. Ayrıca, bir çalışan listesini Order 'dan farklı bir sırada sıralanmış olarak isteme seçeneği yoktur `RowKey` .  
 

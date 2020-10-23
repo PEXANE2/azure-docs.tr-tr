@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1ebbbfed3b3a39e43986a385be87d65d70b175
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885170"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427273"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,7 +62,7 @@ Aksi belirtilmedikçe, ilgili hedefi veya gereksinimi elde etmek için her böl�
 
 Burada listelenen öneriler ve en iyi uygulamalar güncelleştirilmeye devam ediyor. Bu makalenin altındaki **geri bildirim** bağlantısını kullanarak bu belge için giriş veya herhangi bir düzeltme sağlayın.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulama
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı ve SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:
 
@@ -791,12 +791,14 @@ Bugün, Azure SQL veritabanı ve SQL yönetilen örneği, veri çıkarma tehditl
 
 - Azure, yerleşik yüksek kullanılabilirlik sunar: [SQL veritabanı ve SQL yönetilen örneği Ile yüksek kullanılabilirlik](high-availability-sla.md)
 
-- İş Açısından Kritik katmanı, yük devretme grupları, çoklu kullanılabilirlik alanları, tam ve fark günlüğü yedeklemeleri ve varsayılan olarak etkin olan noktadan sonra geri yükleme yedeklemelerini içerir:  
-  - [Yüksek kullanılabilirlik-bölge yedekli yapılandırma](high-availability-sla.md#zone-redundant-configuration)
+- İş Açısından Kritik katmanı, varsayılan olarak etkinleştirilen yük devretme gruplarını, tam ve fark günlüğü yedeklemelerini ve zaman içindeki geri yükleme yedeklemelerini içerir:  
   - [Otomatik yedeklemeler](automated-backups-overview.md)
   - [Otomatik veritabanı yedeklemeleri kullanarak bir veritabanını kurtarma-zaman içinde geri yükleme](recovery-using-backups.md#point-in-time-restore)
 
-- Farklı Azure coğrafyalar genelindeki otomatik yük devretme grupları gibi ek iş sürekliliği özellikleri, burada açıklandığı gibi yapılandırılabilir: [iş sürekliliği 'ne genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- Farklı Azure coğrafyalar 'larda bölge yedekli yapılandırma ve otomatik yük devretme grupları gibi ek iş sürekliliği özellikleri yapılandırılabilir: 
+    - [Premium & İş Açısından Kritik hizmet katmanları için yüksek kullanılabilirlik-bölge yedekli yapılandırma](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
+    - [Genel Amaçlı hizmet katmanı için yüksek kullanılabilirlik-bölge yedekli yapılandırma](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+    - [İş sürekliliği 'ne genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 44dac73f4e51214dbc41e8663dd44550dc9549f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97f5bd1718c7612ce330ee27ee64f9ad885591b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715390"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425828"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Kuyruk depolama için güvenlik önerileri
 
@@ -65,5 +65,5 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure güvenlik belgeleri](https://docs.microsoft.com//azure/security/)
-- [Güvenli Geliştirme belgeleri](https://docs.microsoft.com/azure/security/develop/).
+- [Azure güvenlik belgeleri](/azure/security/)
+- [Güvenli Geliştirme belgeleri](/azure/security/develop/).

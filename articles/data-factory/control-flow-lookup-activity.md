@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044080"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425688"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
 
@@ -72,7 +72,7 @@ yalnızca FirstRow | Yalnızca ilk satırın mi yoksa tüm satırların mi dönd
 
 Arama sonucu, `output` etkinlik çalıştırma sonucunun bölümünde döndürülür.
 
-* **, `firstRowOnly` `true` (Varsayılan) olarak ayarlandığında**, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Arama sonucu sabit bir `firstRow` anahtar altında. Sonraki etkinlikteki sonucu kullanmak için, öğesinin stilini kullanın  `@{activity('LookupActivity').output.firstRow.table` .
+* **, `firstRowOnly` `true` (Varsayılan) olarak ayarlandığında**, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Arama sonucu sabit bir `firstRow` anahtar altında. Sonraki etkinlikteki sonucu kullanmak için, öğesinin stilini kullanın  `@{activity('LookupActivity').output.firstRow.table}` .
 
     ```json
     {

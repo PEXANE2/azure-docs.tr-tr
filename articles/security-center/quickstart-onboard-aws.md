@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449045"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428101"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -42,7 +42,7 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 |Yayın durumu:|Önizleme|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -118,9 +118,12 @@ AWS sistem yöneticisi, AWS kaynaklarınızın tamamında görevleri otomatikle�
 - [Amazon EC2 Linux örneklerine SSI Aracısı yükleme ve yapılandırma](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-agent.html)
 
 
-### <a name="step-4-create-a-service-principal-for-onboarding-at-scale"></a>4. Adım: Ölçekte ekleme için bir hizmet sorumlusu oluşturma
+### <a name="step-4-complete-azure-arc-prerequisites"></a>4. Adım: Azure Arc önkoşullarını doldurun
+1. Uygun [Azure kaynakları sağlayıcılarının](../azure-arc/servers/agent-overview.md#register-azure-resource-providers) kayıtlı olduğundan emin olun:
+    - Microsoft. HybridCompute
+    - Microsoft. GuestConfiguration
 
-Ekleme için kullanmak istediğiniz abonelikte **sahip** olarak, [ölçekte ekleme Için hizmet sorumlusu oluşturma](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bölümünde açıklandığı gibi, Azure Arc ekleme için bir hizmet sorumlusu oluşturun
+1. Ölçekte ekleme için bir hizmet sorumlusu oluşturun. Ekleme için kullanmak istediğiniz abonelikte **sahip** olarak, [ölçekte ekleme Için hizmet sorumlusu oluşturma](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)bölümünde açıklandığı gibi, Azure Arc ekleme için bir hizmet sorumlusu oluşturun.
 
 
 ### <a name="step-5-connect-aws-to-security-center"></a>5. Adım. AWS 'yi güvenlik merkezine bağlama
@@ -132,7 +135,8 @@ Ekleme için kullanmak istediğiniz abonelikte **sahip** olarak, [ölçekte ekle
     1. Bağlayıcı için bir **görünen ad** girin.
     1. Aboneliğin doğru olduğunu onaylayın. Bu, bağlayıcı ve AWS Güvenlik Merkezi önerilerini içerecek olan abonelikdir.
     1. 2. adımda seçtiğiniz kimlik doğrulama seçeneğine bağlı olarak [. AWS 'de Güvenlik Merkezi için kimlik doğrulamasını ayarlama](#step-2-set-up-authentication-for-security-center-in-aws):
-        - **Rol varsay** ' ı seçin ve [güvenlik MERKEZI için bir IAM rolü oluşturma](#create-an-iam-role-for-security-center) :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi"::: yapıştırın.
+        - **Rolü varsay** ' ı seçin ve [güvenlik MERKEZI için bir IAM rolü oluşturun](#create-an-iam-role-for-security-center)ve Arn 'yi yapıştırın.
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi":::
 
             VEYA
 
@@ -143,12 +147,12 @@ Ekleme için kullanmak istediğiniz abonelikte **sahip** olarak, [ölçekte ekle
     Güvenlik Merkezi, bağlı AWS hesabındaki EC2 örneklerini bulur ve bunları Azure yaya eklemek için SSD kullanır. 
 
     > [!TIP]
-    > Desteklenen işletim sistemlerinin listesi aşağıdaki SSS bölümünde verilmiştir.
+    > Desteklenen işletim sistemlerinin listesi için bkz. [EC2 örnekleri Için hangi işletim sistemleri destekleniyor?](#what-operating-systems-for-my-ec2-instances-are-supported) SSS.
 
     1. Bulunan AWS EC2s 'nin seçili abonelikte eklendi olacağı **kaynak grubunu** ve **Azure bölgesini** seçin.
     1. Burada açıklandığı gibi, Azure Arc için **hizmet sorumlusu kimliği** ve **hizmet sorumlusu istemci gizli anahtarı** ' nı, [ölçekte ekleme için bir hizmet sorumlusu oluşturun](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
     1. Makine bir ara sunucu üzerinden İnternet 'e bağlanıyorsa, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullandığı ad ve bağlantı noktası numarasını belirtin. Değeri şu biçimde girin ```http://<proxyURL>:<proxyport>```
-    1. **Gözden geçir ve oluştur**’u seçin.
+    1. **Gözden geçir + oluştur**’u seçin.
 
         Özet bilgilerini gözden geçirin
 

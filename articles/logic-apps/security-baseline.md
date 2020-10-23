@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1846a6d94b81a907ac05fe92151c860aab457292
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9630919b71afd0219a2e82a86e0f89106e8a0ac2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315833"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424065"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps için Azure Güvenlik temeli
 
@@ -182,7 +182,7 @@ Kötü amaçlı trafiği algılamak ve/veya reddetmek için kuruluşunuzun ağ s
 
 - DDoS koruma standardı etkinleştirilmelidir
 
-Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBAC) ve ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
+Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve ilkeler gibi temel ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
 
 - [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -578,7 +578,7 @@ Bir Azure sanal ağındaki kaynaklara doğrudan erişmesi gereken Logic Apps iç
 
 ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Seçiminiz, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp alamayacağını belirler.
 
-Ayrıca, ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure kaynaklarına erişimi, Azure Active Directory rol tabanlı erişim denetimi aracılığıyla denetleyebilirsiniz.
+Ayrıca, ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla Azure kaynaklarına erişimi denetleyebilirsiniz.
 
 - [Logic Apps için bağlayıcıları anlayın](../connectors/apis-list.md)
 
@@ -644,9 +644,9 @@ Microsoft, Azure Logic Apps için temel altyapıyı yönetir ve müşteri verile
 
 **Sorumluluk**: paylaşılan
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: mantıksal uygulamaları yönetme, düzenleme ve görüntüleme gibi belirli görevleri yalnızca belirli kullanıcıların veya grupların çalıştırmasına izin verebilirsiniz. İzinlerini denetlemek için, Azure aboneliğinizdeki üyelere özelleştirilmiş veya yerleşik roller atayabilmeniz için Azure Role-Based Access Control (RBAC) kullanın:
+**Rehberlik**: mantıksal uygulamaları yönetme, düzenleme ve görüntüleme gibi belirli görevleri yalnızca belirli kullanıcıların veya grupların çalıştırmasına izin verebilirsiniz. İzinlerini denetlemek için, Azure aboneliğinizdeki üyelere özelleştirilmiş veya yerleşik roller atayabilmeniz için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın:
 
 - Mantıksal uygulama katılımcısı: mantıksal uygulamaları yönetmenizi sağlar, ancak bunlara erişimi değiştiremezsiniz.
 - Logic App operatörü: Logic Apps 'i okumanızı, etkinleştirmenizi ve devre dışı bırakmanızı sağlar, ancak bunları düzenleyemez veya güncelleştiremezsiniz.
@@ -883,7 +883,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 **Rehberlik**: iş işlemlerinde gerekli olan, ancak kuruluşa daha fazla risk doğurabilecek Logic Apps ilgili kaynaklar, kendi sanal makinesi ve/veya sanal ağı içinde yalıtılmalı ve bir Azure Güvenlik Duvarı veya ağ güvenlik grubuyla yeterince güvenli hale getirilir.
 
-İş işlemleri için gerekli olan, ancak kuruluş için daha yüksek risk doğurabilecek Logic Apps, belirli izinlere ve RBAC sınırlarına sahip ayrı kaynak grupları aracılığıyla mümkün olan her yerde yalıtılmalıdır.
+İş işlemleri için gerekli olan, ancak kuruluş için daha yüksek risk doğurabilecek Logic Apps, belirli izinlere ve Azure RBAC sınırlarına sahip ayrı kaynak grupları aracılığıyla mümkün olan her yerde yalıtılmalıdır.
 
 - [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md) 
 
@@ -891,7 +891,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 - [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md) 
 
-- [RBAC aracılığıyla Logic Apps erişimi güvenli hale getirme](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+- [Azure RBAC aracılığıyla Logic Apps erişimi güvenli hale getirme](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

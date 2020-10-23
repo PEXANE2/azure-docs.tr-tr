@@ -3,12 +3,12 @@ title: Yönetici Kılavuzu Azure Lab Services | Microsoft Docs
 description: Bu kılavuz, Azure Lab Services kullanarak laboratuvar hesapları oluşturan ve yöneten yöneticilere yardımcı olur.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 380676b22fc27b5f62c40112457c42a04b4bf955
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371418"
+ms.locfileid: "92425309"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services Yönetici Kılavuzu
 Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yöneticileri, genellikle okulunuzun laboratuvar hesabını ayarlamaktan sorumludur. Laboratuvar hesabı kurulduktan sonra, Yöneticiler veya eğitimciler laboratuvar hesabı içinde bulunan derslik laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarına ve bunları oluşturmaya yönelik kılavuza yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
@@ -178,7 +178,7 @@ Yöneticiler veya laboratuvar oluşturucuları bir sınıf Laboratuvarı oluştu
 
 ## <a name="manage-identity"></a>Kimliği Yönet
 
-[Azure 'un rol tabanlı erişim denetimini](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve sınıf laboratuvarlarına erişim sağlamak için aşağıdaki roller atanabilir:
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve sınıf laboratuvarlarına erişim sağlamak için aşağıdaki roller atanabilir:
 
 - **Laboratuvar hesap sahibi**
 

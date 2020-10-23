@@ -10,23 +10,23 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 14e4cd141094763d37a1309572bb4da4efb3f7ce
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378112"
+ms.locfileid: "92428030"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
-Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir.
+Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Uygulama yönetimi hizmeti yenilikleri hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
 
 ## <a name="september-2020"></a>Eylül 2020
 
 ### <a name="new-articles"></a>Yeni makaleler
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için OıDC tabanlı çoklu oturum açma (SSO) ayarlama](add-application-portal-setup-oidc-sso.md)
 - [Hızlı başlangıç: Azure AD 'yi kimlik sağlayıcısı olarak kullanan bir uygulamaya Kullanıcı atama](add-application-portal-assign-users.md)
-- [Yenilikler nelerdir?](whats-new-docs.md)
+- [Docs’taki yenilikler?](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler

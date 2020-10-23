@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 3ea413c3879f61f735290717d06a132048169971
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939211"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426698"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -34,12 +34,12 @@ Ek kaynaklar:
 * [API başvuru belgeleri](/dotnet/api/azure.storage.queues)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Örnekler](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure depolama hesabı- [depolama hesabı oluşturma](/azure/storage/common/storage-quickstart-create-account)
 * İşletim sisteminiz için geçerli [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Çalışma zamanını değil, SDK 'Yı aldığınızdan emin olun.
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -77,7 +77,7 @@ Proje dizininden:
 1. *Program.cs* dosyasını Düzenleyicinizde açın
 1. İfadeyi Kaldır `Console.WriteLine("Hello World!");`
 1. `using`Yönergeler ekleme
-1. `Main` [Zaman uyumsuz kodu desteklemek](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main) için yöntem bildirimini güncelleştirme
+1. `Main` [Zaman uyumsuz kodu desteklemek](/dotnet/csharp/whats-new/csharp-7#async-main) için yöntem bildirimini güncelleştirme
 
 
 
@@ -334,7 +334,7 @@ Bu hızlı başlangıçta, bir kuyruk oluşturmayı ve zaman uyumsuz .NET kodu k
 Öğreticiler, örnekler, hızlı ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [.NET ve .NET Core geliştiricileri için Azure](https://docs.microsoft.com/dotnet/azure/)
+> [.NET ve .NET Core geliştiricileri için Azure](/dotnet/azure/)
 
 * Daha fazla bilgi edinmek için bkz. [.net Için Azure depolama kitaplıkları](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage).
 * Daha fazla Azure kuyruk depolama örnek uygulaması görmek için [Azure kuyruk depolama v12 .NET istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)geçin.

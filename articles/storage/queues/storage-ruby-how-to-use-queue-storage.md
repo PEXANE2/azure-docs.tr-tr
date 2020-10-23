@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: c29b864fb3a547599f32c00c9e8c27cbdb0e0a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb7619500cc142eca52ca0a1a6e0b670e6b8f51a
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459615"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425466"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby’den Kuyruk depolama kullanma
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -29,7 +29,7 @@ Kapsanan senaryolar sıra iletilerini **ekleme**, göz **atma**, **alma**ve **si
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Ruby uygulaması oluşturma
-Ruby uygulaması oluşturun. Yönergeler için bkz. [Linux üzerinde App Service Ruby uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/quickstart-ruby).
+Ruby uygulaması oluşturun. Yönergeler için bkz. [Linux üzerinde App Service Ruby uygulaması oluşturma](/azure/app-service/quickstart-ruby).
 
 ## <a name="configure-your-application-to-access-storage"></a>Uygulamanızı depolamaya erişecek şekilde yapılandırma
 Azure Storage 'ı kullanmak için, depolama REST hizmetleriyle iletişim kuran bir dizi kullanışlı kitaplık içeren Ruby Azure paketini indirmeniz ve kullanmanız gerekir.
@@ -151,7 +151,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>Sonraki Adımlar
 Sıra depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.
 
-* [Azure depolama ekibi blogu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/) ' nu ziyaret edin
+* [Azure depolama ekibi blogu](/archive/blogs/windowsazurestorage/) ' nu ziyaret edin
 * GitHub 'da [Ruby deposu Için Azure SDK 'sını](https://github.com/WindowsAzure/azure-sdk-for-ruby) ziyaret edin
 
 Bu makalede ele alınan Azure kuyruğu hizmeti ve [Service Bus kuyrukları kullanma](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) makalesinde açıklanan kuyruklar Azure Service Bus bir karşılaştırma için bkz. [azure kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) benzerlikler

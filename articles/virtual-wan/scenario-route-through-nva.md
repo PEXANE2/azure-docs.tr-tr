@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976249"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424760"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Senaryo: trafiği bir NVA üzerinden yönlendirme
 
@@ -41,16 +41,16 @@ Aşağıdaki bağlantı matrisi, bu senaryoda desteklenen akışları özetler:
 
 | Kaynak             | Hedef:|   *NVA tekerlek*|*NVA sanal ağları*|*NVA dışı VNET 'ler*|*Dallar*|
 |---|---|---|---|---|---|
-| **NVA tekerlek**   | &#8594; | 0/0 UDR  |  Eşleme |   0/0 UDR    |  0/0 UDR  |
-| **NVA sanal ağları**    | &#8594; |   Statik |      X   |        X     |      X    |
-| **NVA dışı VNET 'ler**| &#8594; |   Statik |      X   |        X     |      X    |
-| **Dallar**     | &#8594; |   Statik |      X   |        X     |      X    |
+| **NVA tekerlek**   | &#8594; | NVA VNet üzerinden | Eşleme | NVA VNet üzerinden | NVA VNet üzerinden |
+| **NVA sanal ağları**    | &#8594; | Eşleme | Direct | Direct | Direct |
+| **NVA dışı VNET 'ler**| &#8594; | NVA VNet üzerinden | Direct | Direct | Direct |
+| **Dallar**     | &#8594; | NVA VNet üzerinden | Direct | Direct | Direct |
 
-Bağlantı matrisindeki hücrelerin her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları) belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, tablodaki sütun başlıkları) öğrenip öğrenmediğini tanımlar. "X", bağlantının sanal WAN tarafından yerel olarak sağlandığı ve "static" anlamına gelir, bu da bağlantının statik yollar kullanılarak sanal WAN tarafından sağlandığı anlamına gelir. Aşağıdaki topluluklara bir göz atın:
+Bağlantı matrisindeki her bir hücre, VNet veya dalın (akışın "Kimden" tarafı, tablodaki satır başlıkları) bir hedef VNet veya dal (akışın "to" tarafı, tablodaki sütun üst bilgileri) ile iletişim kurar. "Doğrudan", bağlantının sanal WAN tarafından yerel olarak sağlandığı anlamına gelir, "eşleme", bağlantının VNet 'teki bir User-Defined yolu tarafından sağlandığı anlamına gelir, "NVA VNet üzerinden" bağlantısı, bağlantının NVA VNet 'te dağıtılan NVA 'nın altına geçtiği anlamına gelir. Aşağıdaki topluluklara bir göz atın:
 
 * NVA ışınsal 'ler sanal WAN tarafından yönetilmez. Sonuç olarak, diğer VNET 'ler veya dallarla iletişim kurdukları mekanizmalar Kullanıcı tarafından korunur. NVA VNet bağlantısı, VNet eşlemesi tarafından sağlanır ve bir sonraki atlama, Internet bağlantısını, diğer bağlı şubelere ve dallara kapsamalıdır, NVA 'ya işaret eden 0.0.0.0/0 için varsayılan rota
 * NVA VNET 'ler, kendi NVA bağlı kuruluşları hakkında bilgilendirir, ancak diğer NVA sanal ağlarına bağlı NVA ışınsal 'ler hakkında bilgi sahibi olur. Örneğin, Tablo 1 ' de VNET 2, VNET 5 ve VNet 6 gibi diğer bağlı bileşen (VNet 7 ve VNet 8) hakkında bilgi sahibi değildir. Diğer bağlı bileşen öneklerini NVA VNET 'lere eklemek için bir statik yol gerekir
-* Benzer şekilde, dallar ve NVA olmayan VNET 'ler, NVA 'lar VWAN hub 'larına bağlı olmadığından, her NVA bağlı ağı hakkında bilgi vermez. Sonuç olarak, burada statik yollar da gerekecektir.
+* Benzer şekilde, dallar ve NVA olmayan VNET 'ler, NVA bağlı bilgileri sanal WAN hub 'larına bağlı olmadığından, her NVA ana ağı hakkında bilgi vermez. Sonuç olarak, burada statik yollar da gerekecektir.
 
 NVA ışınsal 'ler sanal WAN tarafından yönetilmediği hesaba katılarak, diğer tüm satırlar aynı bağlantı modelini gösterir. Sonuç olarak, tek bir yol tablosu (varsayılan bir) şunları yapacaktır:
 
@@ -69,14 +69,14 @@ Ancak, bu senaryoda hangi statik yolların yapılandırılacağını düşünmem
 
 Bu şekilde, NVA VNet 'in arkasındaki NVA ışınsal 'ler arasında trafik göndermek için varsayılan tabloda ihtiyaç duyduğumuz statik yollar aşağıdaki gibidir:
 
-| Açıklama | Yol tablosu | Statik yol              |
+| Description | Yol tablosu | Statik yol              |
 | ----------- | ----------- | ------------------------- |
 | VNet 2       | Varsayılan     | 10.2.0.0/16-> eastusconn |
 | VNet 4       | Varsayılan     | 10.4.0.0/16-> weconn     |
 
 Artık sanal WAN, paketlerin gönderileceği bağlantıyı bilir, ancak bağlantının bu paketleri alırken ne yapılacağını bilmesi gerekir: bağlantı yolu tablolarının kullanıldığı yer. Burada, bu yolların NVA sanal ağları (VNet 2 ve VNet 4) tarafından içeri aktarılan yolların üzerinde tercih olduğundan emin olmak için daha kısa ön ekleri (daha uzun/16 yerine/24) kullanacağız:
 
-| Açıklama | Bağlantı | Statik yol            |
+| Description | Bağlantı | Statik yol            |
 | ----------- | ---------- | ----------------------- |
 | VNet 5       | eastusconn | 10.2.1.0/24-> 10.2.0.5 |
 | VNet 6       | eastusconn | 10.2.2.0/24-> 10.2.0.5 |

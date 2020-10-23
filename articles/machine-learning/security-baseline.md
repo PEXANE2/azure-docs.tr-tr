@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb403e2d1b11391ca3917478955dc282a174ae88
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204342"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426307"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning için Azure Güvenlik temeli
 
@@ -303,13 +303,13 @@ Azure Machine Learning, farklı işlem kaynakları ve hatta kendi işlem kaynakl
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
-**Rehberlik**: rol tabanlı erişim denetimi 'NI (RBAC) yapılandırmak ve Azure Machine Learning kaynaklarında stoku sürdürmek için Azure Portal bir kaynak için kimlik ve erişim yönetimi sekmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz.
+**Kılavuz**: Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) yapılandırmak ve Azure Machine Learning kaynaklarında envanteri sürdürmek için Azure Portal bir kaynak için kimlik ve erişim yönetimi sekmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz.
 
-Azure Machine Learning, Azure Machine Learning ortak yönetim senaryoları için yerleşik RBAC sağlar. Azure Active Directory (Azure AD) ' de bir profili olan bir kişi, Azure Machine Learning kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu RBAC rollerini kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir.
+Azure Machine Learning, Azure Machine Learning ortak yönetim senaryoları için yerleşik roller sağlar. Azure Active Directory (Azure AD) içinde bir profili olan bir kişi, Azure Machine Learning kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu rolleri kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir.
 
 Ayrıca, yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü de kullanabilirsiniz.
 
-- [Azure Machine Learning 'de rol tabanlı erişim denetimini anlama](how-to-assign-roles.md)
+- [Azure Machine Learning 'de Azure rol tabanlı erişim denetimini anlama](how-to-assign-roles.md)
 
 - [PowerShell ile Azure Active Directory dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -902,13 +902,13 @@ Azure Machine Learning işi izlemek için Git depolarını tamamen destekler; de
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
 
-**Rehberlik**: Azure Machine Learning, farklı işlem kaynakları genelinde ve hatta kendi işlem kaynaklarınız üzerinde değişen desteğe sahiptir. Kuruluşunuza ait işlem kaynakları için, yalnızca yetkili kullanıcıların özel görüntülerinize erişebildiğinden emin olmak için Azure rol tabanlı erişim denetimi 'ni (RBAC) kullanın. Azure Paylaşılan görüntü Galerisi 'ni kullanarak, görüntülerinizi kuruluşunuzdaki farklı kullanıcılara, hizmet sorumlularına veya Azure AD gruplarına paylaşabilirsiniz. Kapsayıcı görüntülerini Azure Container Registry depolayın ve yalnızca yetkili kullanıcıların erişimi olduğundan emin olmak için RBAC kullanın.
+**Rehberlik**: Azure Machine Learning, farklı işlem kaynakları genelinde ve hatta kendi işlem kaynaklarınız üzerinde değişen desteğe sahiptir. Kuruluşunuza ait işlem kaynakları için, yalnızca yetkili kullanıcıların özel görüntülerinize erişebildiğinden emin olmak için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanın. Azure Paylaşılan görüntü Galerisi 'ni kullanarak, görüntülerinizi kuruluşunuzdaki farklı kullanıcılara, hizmet sorumlularına veya Azure AD gruplarına paylaşabilirsiniz. Kapsayıcı görüntülerini Azure Container Registry depolayın ve yalnızca yetkili kullanıcıların erişimi olduğundan emin olmak için Azure RBAC kullanın.
 
-- [Azure 'da RBAC 'yi anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Azure RBAC 'yi anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [Container Registry için RBAC 'yi anlayın](../container-registry/container-registry-roles.md)
+- [Container Registry için Azure RBAC 'nı anlama](../container-registry/container-registry-roles.md)
 
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [Paylaşılan görüntü galerisine genel bakış](../virtual-machines/windows/shared-image-galleries.md)
 
@@ -1088,7 +1088,7 @@ Azure Machine Learning, farklı işlem kaynakları ve hatta kendi işlem kaynakl
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Rehberlik**: şirket içi yedekleme için, bekleyen şifreleme, Azure 'a yedeklerken sağladığınız parola kullanılarak sağlanır. Yedeklemeleri ve müşteri tarafından yönetilen anahtarları korumak için rol tabanlı erişim denetimi kullanın. 
+**Rehberlik**: şirket içi yedekleme için, bekleyen şifreleme, Azure 'a yedeklerken sağladığınız parola kullanılarak sağlanır. Yedeklemeleri ve müşteri tarafından yönetilen anahtarları korumak için Azure rol tabanlı erişim denetimi kullanın. 
 
 Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault ' de geçici silme ve Temizleme korumasını etkinleştirin. Yedeklemeleri depolamak için Azure depolama kullanılıyorsa, Bloblar veya blob anlık görüntüleri silindiğinde verilerinizi kaydetmek ve kurtarmak için geçici silme özelliğini etkinleştirin.
  

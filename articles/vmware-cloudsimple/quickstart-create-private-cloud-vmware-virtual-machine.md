@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140862"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427775"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Özel bulutunuzda VMware sanal makineleri oluşturma
 
@@ -58,37 +58,37 @@ VCenter 'a erişmek için CloudSimple portalından başlatın. Giriş sayfasınd
 1. VCenter 'da **konaklar ve kümeler** simgesine tıklayın.
 
 2. **Iş yükü** ' na sağ tıklayın ve **Yeni sanal makine**' yi seçin.
-    ![Yeni VM](media/vcvm01.png)
+    ![Yeni sanal makine menü seçeneğini vurgulayan ekran görüntüsü.](media/vcvm01.png)
 
 3. **Yeni sanal makine oluştur** ' u seçin ve **İleri**' ye tıklayın.
-    ![Yeni VM](media/vcvm02.png)
+    ![Yeni sanal makine oluştur seçeneğini vurgulayan ekran görüntüsü.](media/vcvm02.png)
 
 4. Makineyi adlandırın, **Iş yükü VM** 'sinin konumunu seçin ve **İleri**' ye tıklayın.
-    ![Yeni VM](media/vcvm03.png)
+    ![Iş yükü VM 'Leri seçeneğini vurgulayan ekran görüntüsü.](media/vcvm03.png)
 
 5. **Iş yükü** işlem kaynağını seçin ve **İleri**' ye tıklayın.
-    ![Yeni VM](media/vcvm04.png)
+    ![Iş yükü işlem kaynağını vurgulayan ekran görüntüsü.](media/vcvm04.png)
 
 6. **Vsandatastore** ' i seçin ve **İleri**' ye tıklayın.
-    ![Yeni VM](media/vcvm05.png)
+    ![VsanDatastore seçeneğini vurgulayan ekran görüntüsü.](media/vcvm05.png)
 
 7. Varsayılan ESXi 6,5 uyumluluğu seçimini koruyun ve **İleri**' ye tıklayın.
-    ![Yeni VM](media/vcvm06.png)
+    ![Seçili ESXi 6,5 uyumluluk seçeneğini gösteren ekran görüntüsü.](media/vcvm06.png)
 
 8. Oluşturmakta olduğunuz VM için ISO Konuk işletim sistemini seçin ve **İleri**' ye tıklayın.
-    ![Yeni VM](media/vcvm07.png)
+    ![VM için ISO 'nun GUESE işletim sisteminin nasıl seçdiğinin gösterildiği ekran görüntüsü.](media/vcvm07.png)
 
 9. Sabit disk ve ağ seçeneklerini belirleyin. Yeni CD/DVD sürücüsü için, **veri deposu ISO dosyası**' nı seçin.  Genel IP adresinden bu VM 'ye giden trafiğe izin vermek istiyorsanız, ağı **VM-1**olarak seçin.
-    ![Yeni VM](media/vcvm08.png)
+    ![Veri deposu ISO dosyasını seçtiğinizde vurguların bulunduğu ekran görüntüsü.](media/vcvm08.png)
 
 10. Bir seçim penceresi açılır. Daha önce ISOs ve Şablonlar klasörüne yüklediğiniz dosyayı seçin ve **Tamam**' a tıklayın.
     ![Yeni VM](media/vcvm10.png)
 
 11. Ayarları gözden geçirin ve VM 'yi oluşturmak için **Tamam** ' ı tıklatın.
-    ![Yeni VM](media/vcvm11.png)
+    ![Ayarları incelemenizi gösteren ekran görüntüsü.](media/vcvm11.png)
 
 VM artık Iş yükü işlem kaynaklarına eklenir ve kullanıma hazırdır. 
-![Yeni VM](media/vcvm12.png)
+![Iş yükü işlem kaynaklarına eklenen VM 'yi gösteren ekran görüntüsü.](media/vcvm12.png)
 
 Temel kurulum artık tamamlanmıştır. Şirket içi VM altyapınızı kullanmaya benzer şekilde, özel bulutunuzu kullanmaya başlayabilirsiniz.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77087133"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424674"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple özel bulutunuz için bir VPN bağlantısı yapılandırma
 
@@ -63,7 +63,7 @@ Aşağıdaki örnekte, **viscosity istemcisi**kullanılarak bağlantı içeri ak
 
 4. Kullanmak istediğiniz protokol için OpenVPN yapılandırma dosyasını (. ovpn) seçin ve **Aç**' a tıklayın.
 
-    ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![Seçebileceğiniz OpenVPN yapılandırma dosyalarını vurgulayan ekran görüntüsü.](media/import-p2s-vpn-config-choose-ovpn.png)
 
 Bağlantı artık viscosity menüsünde görüntülenir.
 
@@ -71,7 +71,7 @@ Bağlantı artık viscosity menüsünde görüntülenir.
 
 Viscosity OpenVPN istemcisini kullanarak VPN 'ye bağlanmak için, menüden bağlantıyı seçin. Menü simgesi, bağlantının oluşturulduğuna işaret etmek için güncellenir.
 
-![VPN](media/vis03.png)
+![CloudSimple VPN bağlantı durumunu gösteren ekran görüntüsü.](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>Birden çok özel bulutlara bağlanma
 

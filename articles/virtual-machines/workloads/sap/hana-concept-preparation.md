@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70101252"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424257"
 ---
 # <a name="disaster-recovery-principles"></a>Olağanüstü durum kurtarma ilkeleri
 
@@ -68,7 +68,7 @@ Sonraki adım, ikinci SAP HANA örneğini, TST HANA örneğini çalıştırdığ
 - DR Azure bölgesindeki HANA büyük örnek biriminde yeni yüklenen SAP HANA örneğini durdurun.
 - Bu PRD birimlerini çıkarın ve Azure hizmet yönetiminde SAP HANA başvurun. Depolama çoğaltma hedefi olarak çalışırken erişilebilir olmadıkları için birimler birime bağlı kalamazlar.  
 
-![Çoğaltma kurulmadan önce DR Kurulum adımı](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Üretim Azure bölgesindeki PRD birimleri ve DR Azure bölgesindeki PRD birimleri arasındaki çoğaltma ilişkisini gösteren diyagram.](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 İşlemler ekibi, üretim Azure bölgesindeki PRD birimleri ve DR Azure bölgesindeki PRD birimleri arasındaki çoğaltma ilişkisini belirler.
 

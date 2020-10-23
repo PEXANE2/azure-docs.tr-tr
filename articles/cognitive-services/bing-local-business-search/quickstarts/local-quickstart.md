@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 05/12/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3102742d19e7e0dffa6135c9267f51b1231dafc8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: db0b93533822de3e5cb7e16e99b9f3fb4f8a7f9d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90970466"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426242"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Hızlı başlangıç: C 'de Bing yerel Iş Arama API 'sine bir sorgu gönderme #
 
@@ -24,7 +24,7 @@ Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek gönderme hakk
 
 Bu örnek uygulama, bir arama sorgusu için API 'den gelen yerel yanıt verilerini alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Herhangi bir [Visual Studio 2019](https://www.visualstudio.com/downloads/)sürümü.
@@ -73,8 +73,8 @@ namespace localSearch
     class Program
     {
         // **********************************************
-        // *** Update or verify the following values. ***
-        // **********************************************
+        // **_ Update or verify the following values. _*_
+        // _*********************************************
 
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "enter key here";

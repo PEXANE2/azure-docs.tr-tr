@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 460d1c33dcd5284067d14d5d6efa9da9b5b182ae
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779319"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92438787"
 ---
 Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
@@ -321,4 +321,4 @@ Uygulama artık araç çubuğunda "uygulama Çalıştır" düğmesi kullanılara
 
 ## <a name="sample-code"></a>Örnek Kod
 
-Örnek uygulamayı [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) 'dan indirebilirsiniz
+Örnek uygulamayı [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) 'dan indirebilirsiniz
