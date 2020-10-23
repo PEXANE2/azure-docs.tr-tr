@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: a2c1ba8feb933be7c4970f061dd5acdc1ef68a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70c77caebfd8f9bfd36c7384255cf7b66416a379
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91775465"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454992"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Öğretici: Darwinbox ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,9 +25,9 @@ Bu öğreticide, Darwinbox 'ı Azure Active Directory (Azure AD) ile tümleştir
 * Azure AD 'de, Darwinbox erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak Darwinbox 'a oturum açmalarına izin vermek.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -131,13 +131,13 @@ Bu bölümde, Darwinbox 'a erişim vererek Azure çoklu oturum açma özelliğin
 
 ### <a name="create-darwinbox-test-user"></a>Darwinbox test kullanıcısı oluştur
 
-Bu bölümde, Darwinbox 'da B. Simon adlı bir Kullanıcı oluşturacaksınız. Darwinbox platformunda kullanıcıları eklemek için [darwinbox destek ekibi](https://darwinbox.com/contact-us.php) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Darwinbox 'da B. Simon adlı bir Kullanıcı oluşturacaksınız. Darwinbox platformunda kullanıcıları eklemek için [darwinbox destek ekibi](https://darwinbox.com/contact-us.php) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Darwinbox kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Darwinbox 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Darwinbox kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Darwinbox 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="test-sso-for-darwinbox-mobile"></a>Darwinbox için test SSO 'SU (mobil)
 
@@ -163,11 +163,10 @@ Erişim panelinde Darwinbox kutucuğuna tıkladığınızda, SSO 'yu ayarladığ
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile Darwinbox kullanmayı deneyin](https://aad.portal.azure.com/)
-

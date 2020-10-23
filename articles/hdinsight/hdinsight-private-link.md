@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147908"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426386"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight kümelerini özel bağlantıyla güvenli hale getirme ve yalıtma (Önizleme)
 
@@ -59,6 +59,8 @@ Varsayılan olarak devre dışı bırakılan özel bağlantı, bir kümeyi oluş
 Standart yük dengeleyiciler, temel yük dengeleyiciler gibi [genel gıden NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) 'yi otomatik olarak sağlamaz. Giden bağımlılıklar için [sanal ağ NAT](../virtual-network/nat-overview.md) veya bir [güvenlik DUVARı](./hdinsight-restrict-outbound-traffic.md)gibi kendi NAT çözümünüzü sağlamanız gerekir. HDInsight kümenizin giden bağımlılıklarına hala erişmesi gerekiyor. Bu giden bağımlılıklara izin verilmiyorsa, küme oluşturma başarısız olabilir.
 
 ### <a name="prepare-your-environment"></a>Ortamınızı hazırlama
+
+Özel bağlantı hizmetlerinin başarıyla oluşturulması için [özel bağlantı hizmeti için ağ ilkelerini açıkça devre dışı bırakmanız](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)gerekir.
 
 Aşağıdaki diyagramda bir küme oluşturmadan önce gereken ağ yapılandırması örneği gösterilmektedir. Bu örnekte, tüm giden trafik UDR kullanılarak Azure Güvenlik Duvarı 'na [zorlanır](../firewall/forced-tunneling.md) ve bir küme oluşturmadan önce güvenlik duvarında gerekli giden bağımlılıkların "izin verildi" olması gerekir. Kurumsal Güvenlik Paketi kümeler için, Azure Active Directory Domain Services ağ bağlantısı VNet eşlemesi tarafından sağlanarak yapılabilir.
 

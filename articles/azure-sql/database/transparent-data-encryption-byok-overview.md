@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602678"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441139"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Azure SQL veritabanı ve Azure SYNAPSE Analytics için, TDE koruyucusu sunucu d�
 > Müşteri tarafından yönetilen TDE kullanmaya başlamak isteyen hizmet tarafından yönetilen TDE kullanan bu işlemler için veriler, geçiş işlemi sırasında şifrelenmiş olarak kalır ve veritabanı dosyalarının kapalı kalması veya yeniden şifrelenmesi gerekmez. Hizmet tarafından yönetilen anahtardan müşterinin yönettiği bir anahtara geçiş yapmak, hızlı ve çevrimiçi bir işlem olan DEK ' ın yeniden şifrelenmesini gerektirir.
 
 > [!NOTE]
-> Azure SQL müşterilerinin bekleyen verilerin iki katmanını kullanmasını sağlamak için platform tarafından yönetilen anahtarlarla altyapı şifrelemesi (AES-256 şifreleme algoritması kullanılarak) kullanıma alınıyor. Bu, zaten mevcut olan, müşteri tarafından yönetilen anahtarlarla birlikte, bekleyen bir şifreleme katmanını de sağlar. Şu anda müşterilerin bu özelliğe erişim istemesi gerekir. Bu özellik ile ilgileniyorsanız, iletişim kurun AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
+> Azure SQL müşterilerinin bekleyen verilerin iki katmanını kullanmasını sağlamak için platform tarafından yönetilen anahtarlarla altyapı şifrelemesi (AES-256 şifreleme algoritması kullanılarak) kullanıma alınıyor. Bu, zaten mevcut olan, müşteri tarafından yönetilen anahtarlarla birlikte, bekleyen bir şifreleme katmanını de sağlar. Azure SQL veritabanı ve yönetilen örnek için, altyapı şifrelemesi açık olduğunda, ana veritabanı ve diğer sistem veritabanları dahil olmak üzere tüm veritabanları şifrelenir. Şu anda müşterilerin bu özelliğe erişim istemesi gerekir. Bu özellik ile ilgileniyorsanız, iletişim kurun AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Müşteri tarafından yönetilen TDE 'nın avantajları
 

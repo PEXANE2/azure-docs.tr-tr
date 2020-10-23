@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 516989e37e8c9eb0c4ab35ea6add4f5b6526ee6d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.custom: contperfq2
+ms.openlocfilehash: 59e00d2bb47826bb4bfa381c42db551f44d84b71
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893467"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427591"
 ---
 # <a name="manage-app-consent-policies"></a>Uygulama onayı ilkelerini yönetme
 
@@ -129,7 +130,7 @@ Uygulama izni ilkesi oluşturulduktan sonra, bu ilkeye yönelik [Kullanıcı ona
 
 Aşağıdaki tabloda, uygulama izin ilkeleri için desteklenen koşulların listesi verilmiştir.
 
-| Koşul | Açıklama|
+| Koşul | Description|
 |:---------------|:----------|
 | PermissionClassification | Verilen iznin [izin sınıflandırması](configure-permission-classifications.md) veya "tümü", herhangi bir izin sınıflandırmasıyla (sınıflandırılmamış izinler dahil) eşleşir. Varsayılan değer "All" dır. |
 | PermissionType | Verilen iznin izin türü. Temsilci izinleri için uygulama izinleri (örn. uygulama rolleri) veya "temsilci" için "uygulama" kullanın. <br><br>**Not**: "delegatedUserConsentable" DEĞERI, API yayımcısı tarafından yönetici onayı gerektirecek şekilde yapılandırılmamış izin verilen izinleri belirtir — bu değer yerleşik izin verme ilkelerinde kullanılabilir, ancak özel izin verme ilkelerinde kullanılamaz. Gereklidir. |

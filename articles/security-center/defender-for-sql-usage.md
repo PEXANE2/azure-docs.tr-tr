@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: aee886e4e5ccaa3e07851ba839532f47c0a46ef8
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342051"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461541"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -49,7 +49,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Adım 1. SQL sunucunuzun ana bilgisayarında Log Analytics aracısını sağlayın:
 
 - **Azure VM 'de SQL Server** -SQL makineniz BIR Azure VM üzerinde barındırılıyorsa, [otomatik olarak Log Analytics aracısını](security-center-enable-data-collection.md#workspace-configuration)sağlayabilirsiniz. Alternatif olarak, [Azure Stack sanal makinelerinizi](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)eklemek için el ile gerçekleştirilen prosedürü izleyebilirsiniz.
-- **Azure arc SQL Server** -SQL Server bir [Azure yay](../azure-arc/index.yml) makinesinde barındırılıyorsa, güvenlik merkezi önerisi "Log Analytics Aracısı Windows tabanlı Azure yay makinelerinize (önizleme) yüklenmelidir" Log Analytics aracıyı dağıtabilirsiniz. Alternatif olarak, [Azure Arc belgelerindeki](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)el ile gerçekleştirilen yordamı izleyebilirsiniz.
+- **Azure arc SQL Server** -SQL Server [Azure Arc](../azure-arc/index.yml) etkin sunucuları tarafından yönetiliyorsa, güvenlik merkezi önerisi "Log Analytics Aracısı Windows tabanlı Azure yay makinelerinize (önizleme) yüklenmelidir" Log Analytics aracıyı dağıtabilirsiniz. Alternatif olarak, [Azure Arc belgelerinde](../azure-arc/servers/manage-vm-extensions.md)açıklanan yükleme yöntemlerini de izleyebilirsiniz.
 
 - **Şirket içi SQL Server** -SQL Server Azure Arc olmadan şirket Içi bir Windows makinesinde barındırılıyorsa, Azure 'a bağlamak için iki seçeneğiniz vardır:
     

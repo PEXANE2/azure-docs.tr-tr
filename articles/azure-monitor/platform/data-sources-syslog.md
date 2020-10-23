@@ -1,20 +1,23 @@
 ---
-title: Azure Izleyici 'de syslog iletilerini toplayın ve çözümleyin | Microsoft Docs
+title: Azure Izleyici 'de Log Analytics Agent ile Syslog veri kaynaklarını toplama
 description: Syslog, Linux için ortak olan bir olay günlüğü protokolüdür. Bu makalede, oluşturdukları kayıtların Log Analytics ve ayrıntılarında Syslog iletilerinin toplanmasını yapılandırma açıklanmaktadır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/22/2019
-ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 2d86983c8ed6c738e4b4e96d8d291dee4dc4d87d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322321"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440629"
 ---
-# <a name="syslog-data-sources-in-azure-monitor"></a>Azure İzleyici'de Syslog veri kaynakları
+# <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Log Analytics aracısıyla Syslog veri kaynaklarını toplama
 Syslog, Linux için ortak olan bir olay günlüğü protokolüdür. Uygulamalar yerel makinede depolanabilecek veya bir Syslog toplayıcısına teslim edilen iletileri gönderir. Linux için Log Analytics Aracısı yüklendiğinde, iletileri aracıya iletmek için yerel Syslog Daemon programını yapılandırır. Aracı daha sonra iletiyi ilgili kaydın oluşturulduğu Azure Izleyici 'ye gönderir.  
+
+> [!IMPORTANT]
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](log-analytics-agent.md) Syslog olaylarının toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
 
 > [!NOTE]
 > Azure Izleyici, rsyslog veya Syslog-ng tarafından gönderilen iletilerin toplanmasını destekler; burada rsyslog varsayılan Daemon olur. Red Hat Enterprise Linux, CentOS ve Oracle Linux sürümünün (sysklog) sürüm 5 ' te bulunan varsayılan Syslog Daemon, Syslog olay koleksiyonu için desteklenmez. Bu dağıtımların bu sürümünden Syslog verileri toplamak için [rsyslog arka plan programı](http://rsyslog.com) yüklenmeli ve sysklog ' ı değiştirecek şekilde yapılandırılmalıdır.
@@ -45,7 +48,7 @@ Diğer herhangi bir tesis için, Azure Izleyici 'de [özel bir günlük veri kay
 Linux için Log Analytics Aracısı yalnızca kendi yapılandırmasında belirtilen tesisler ve önem derecelerine sahip olayları toplar. Azure portal aracılığıyla Syslog 'yi yapılandırabilir veya Linux aracılarınızda yapılandırma dosyalarını yönetebilirsiniz.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Azure portal Syslog 'ı yapılandırma
-[Gelişmiş ayarlar 'Daki veri menüsünde](agent-data-sources.md#configuring-data-sources)Syslog 'ı yapılandırın. Bu yapılandırma, her bir Linux aracısının yapılandırma dosyasına dağıtılır.
+Log Analytics çalışma alanı için [Gelişmiş ayarlar 'Daki veri menüsünden](agent-data-sources.md#configuring-data-sources) Syslog 'ı yapılandırın. Bu yapılandırma, her bir Linux aracısının yapılandırma dosyasına dağıtılır.
 
 İlk olarak, **aşağıdaki yapılandırmayı Makinelerime Uygula** seçeneğini belirleyip adını yazıp öğesini tıklayarak yeni bir tesis ekleyebilirsiniz **+** . Her tesis için yalnızca seçili önem derecelerine sahip iletiler toplanacaktır.  Toplamak istediğiniz belirli bir tesis için önem derecelerine göz atın. İletileri filtrelemek için herhangi bir ek ölçüt sağlamazsanız.
 
@@ -219,7 +222,7 @@ Syslog kayıtları bir **Syslog** türüne sahiptir ve aşağıdaki tabloda bulu
 ## <a name="log-queries-with-syslog-records"></a>Syslog kayıtlarıyla günlük sorguları
 Aşağıdaki tabloda, syslog kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:--- |:--- |
 | Syslog |Tüm syslogs 'lar. |
 | Syslog &#124; WHERE ıitylevel = = "Error" |Tüm Syslog kayıtları hata önem derecesine sahip. |

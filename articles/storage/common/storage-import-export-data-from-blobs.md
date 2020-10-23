@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbef5ce3ba7675aff88df654a5ba6572c38adbe
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441886"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440748"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
@@ -36,6 +36,8 @@ Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi olu
     - [BIR DHL hesabı oluşturun](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>1. Adım: dışarı aktarma işi oluşturma
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
 
@@ -100,6 +102,83 @@ Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımlar�
 
     - Dışarı aktarma işi oluşturmayı gerçekleştirmek için **Tamam** ' ı tıklatın.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımları kullanın.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Bir iş oluşturma
+
+1. [Az Import-Export](/cli/azure/ext/import-export/import-export) uzantısını eklemek için [az Extension Add](/cli/azure/extension#az_extension_add) komutunu kullanın:
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. Diskleri alabileceğiniz konumların bir listesini almak için [az Import-Export location List](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) komutunu kullanın:
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. Mevcut depolama hesabınızı kullanan bir dışarı aktarma işi oluşturmak için aşağıdaki [az Import-Export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) komutunu çalıştırın:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name Myexportjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --export blob-path=/ \
+        --type Export \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --storage-account myssdocsstorage
+    ```
+
+    > [!TIP]
+    > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
+
+   Bu iş, Depolama hesabınızdaki tüm Blobları dışa aktarır. Bu değeri **--Export**ile değiştirerek dışarı aktarma için bir blob belirtebilirsiniz:
+
+    ```azurecli
+    --export blob-path=$root/logo.bmp
+    ```
+
+   Bu parametre değeri, kök kapsayıcısında *logo.bmp* adlı blobu dışarı aktarır.
+
+   Ayrıca, bir kapsayıcıda önek kullanarak tüm Blobları seçme seçeneğiniz de vardır. Bu değeri **--Export ile**değiştirin:
+
+    ```azurecli
+    blob-path-prefix=/myiecontainer
+    ```
+
+   Daha fazla bilgi için bkz. [geçerli blob yolları örnekleri](#examples-of-valid-blob-paths).
+
+   > [!NOTE]
+   > Dışarı aktarılacak blob veri kopyalama sırasında kullanılıyorsa, Azure Içeri/dışarı aktarma hizmeti Blobun anlık görüntüsünü alır ve anlık görüntüyü kopyalar.
+
+1. Kaynak grubu myierg için tüm işleri görmek üzere [az Import-Export List](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) komutunu kullanın:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. İşinizi güncelleştirmek veya işinizi iptal etmek için [az Import-Export Update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) komutunu çalıştırın:
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
+
 <!--## (Optional) Step 2: -->
 
 ## <a name="step-2-ship-the-drives"></a>2. Adım: sürücüleri gönderme
@@ -153,7 +232,7 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
     Parametreler aşağıdaki tabloda açıklanmıştır:
 
-    |Komut satırı parametresi|Açıklama|  
+    |Komut satırı parametresi|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|  
@@ -207,7 +286,7 @@ Number of drives needed:        3
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

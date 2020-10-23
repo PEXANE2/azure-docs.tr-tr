@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b27b378a09c3de9596b4db45afa6ebb4d7c4d163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1680eab345cd78f13860249d6cc0f97c52e56e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550393"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Öğretici: pahalı olarak çözümlenemeyen Azure Active Directory tümleştirme
 
@@ -27,10 +27,10 @@ Azure AD ile pahalı hale ayrıştırılamayan tümleştirme, aşağıdaki avant
 * Kullanıcılarınızın Azure AD hesaplarıyla pahalı bir şekilde (çoklu oturum açma) erişilebilir olması için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini, pahalı olmayan bir şekilde yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -177,18 +177,18 @@ Bu bölümde, Azure 'un çoklu oturum açma özelliğini kullanarak, önceden pa
 
 ### <a name="create-insperity-expensable-test-user"></a>Ucuz bir test kullanıcısı oluşturma
 
-Bu bölümde, çok fazla pahalı bir kullanıcı olarak Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları, pahalı olmayan bir platformda eklemek için, ucuz olan [pahalı destek ekibi](https://www.insperity.com/products/expense-management/support/express/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, çok fazla pahalı bir kullanıcı olarak Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları, pahalı olmayan bir platformda eklemek için, ucuz olan [pahalı destek ekibi](https://www.insperity.com/products/expense-management/support/express/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde, daha fazla pahalı olabilecek Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız pahalı bir şekilde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde, daha fazla pahalı olabilecek Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız pahalı bir şekilde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 41aabeeeb151a6e2cf3c52dbfa2075c55f86989f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c163b7325cb4e039ddcfee95a39b82b4cb258b3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427302"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461303"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı'nı kullanarak Azure'ı ITSM araçlarına bağlama
 
@@ -107,10 +107,9 @@ ITSM araçlarınızı önceden doldurduktan sonra bağlantı oluşturmak için a
    ITSM Bağlayıcısı çözümünü kullanarak Azure uyarılarından iş öğeleri oluşturabilir, Log Analytics uyarılar ve Log Analytics günlük kayıtları oluşturabilirsiniz.
 
 ## <a name="template-definitions"></a>Şablon tanımları
-   ITSM aracı tarafından tanımlanan şablonları kullanılabilecek **Iş öğesi** türleri vardır.
-Şablonları kullanmak, müşterinin eylem grubunun bir parçası olarak tanımlanan sabit değerlere göre otomatik olarak doldurulacak alanları tanımlamasını sağlar. Bu tanım ıTSSM aracında yapılır.
-Bu durumlarda "özel şablon kullan" onay kutusu, müşterinin, eylem grubunun bir parçası olarak tanımlanan sabit değerlere göre otomatik olarak doldurulacak kutudan çıkış yapmalarına olanak tanır.
-   
+   ITSM aracı tarafından tanımlanan şablonları kullanılabilecek Iş öğesi türleri vardır.
+Şablonları kullanmak, müşterinin eylem grubunun bir parçası olarak tanımlanan sabit değerlere göre otomatik olarak doldurulacak alanları tanımlamasını sağlar. Şablonların tanımı ıTSSM aracında yapılır.
+      
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Azure uyarılarından ıTSM iş öğeleri oluşturma
 
 ITSM bağlantınız oluşturulduktan sonra, **Işlem gruplarındaki** **ıtssm eylemini** kullanarak ITSM aracınız üzerinde Azure uyarılarını temel alan iş öğeleri oluşturabilirsiniz.
@@ -139,7 +138,7 @@ Aşağıdaki yordamı kullanın:
 
 6. Açılır menüden **Iş öğesi** türünü seçin.
 
-7. Mevcut bir şablonu kullanmayı seçin veya ortak şablonu kullanın ve ıTSM ürününüzün gerektirdiği alanları girin.
+7. Sabit değerlerle Box alanlarını dolduracak şekilde, "özel şablon kullan" onay kutusunu işaretlemeniz, aksi takdirde, açılan listeden var olan bir [şablonu](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) kullanmayı seçin ve şablon alanlarını sabit değerlerle doldurun.
 
 8. **Tamam**’a tıklayın.
 

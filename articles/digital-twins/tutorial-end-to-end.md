@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f76d6a5c4c891abf92b67cc51ffffab5f2a81d6b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f0d28a71e2bd6fc2006bda81fba7d7e6336c5b1c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427707"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460844"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -48,7 +48,7 @@ Senaryo aracılığıyla çalışmak için daha önce indirdiğiniz önceden yaz
 
 Yapı senaryosu *AdtSampleApp* örnek uygulaması tarafından uygulanan bileşenler şunlardır:
 * Cihaz kimlik doğrulaması 
-* [.Net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core) kullanım örnekleri ( *CommandLoop.cs*içinde bulunur)
+* [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) kullanım örnekleri ( *CommandLoop.cs*içinde bulunur)
 * Azure dijital TWINS API 'sini çağırmak için konsol arabirimi
 * *Sampleclientapp* -örnek bir Azure dijital TWINS çözümü
 * *Samplefunctionsapp* -Azure dijital TWINS grafınızı IoT Hub ve Azure dijital TWINS etkinliklerindeki telemetri sonucu olarak güncelleştiren bir Azure işlevleri uygulaması
@@ -87,7 +87,7 @@ Query
 ```
 
 >[!TIP]
-> Bu basitleştirilmiş Yöntem _**AdtE2ESample**_ projesinin bir parçası olarak sağlanır. Bu örnek kod bağlamı dışında, [sorgu API 'lerini](how-to-use-apis-sdks.md) veya [CLI komutlarını](how-to-use-cli.md)kullanarak, örneğiniz Içindeki tüm TWINS 'leri istediğiniz zaman sorgulayabilirsiniz.
+> Bu basitleştirilmiş Yöntem _**AdtE2ESample**_ projesinin bir parçası olarak sağlanır. Bu örnek kod bağlamı dışında, [sorgu API 'lerini](/rest/api/digital-twins/dataplane/query) veya [CLI komutlarını](how-to-use-cli.md)kullanarak, örneğiniz Içindeki tüm TWINS 'leri istediğiniz zaman sorgulayabilirsiniz.
 >
 > Örneğiniz için tüm dijital TWINS 'i almak için tam sorgu gövdesi aşağıda verilmiştir:
 > 

@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 6bcc4ac5561a8bdb721018aa05bf2376579b627b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/22/2020
+ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079678"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440459"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning ile yönetilen kimlikler kullanma (Önizleme)
 
@@ -29,12 +29,11 @@ Bu makalede, yönetilen kimliklerin nasıl kullanılacağını şu şekilde öğ
 
  * ACR 'ye Yönetici Kullanıcı erişimini etkinleştirmek zorunda kalmadan, Azure Machine Learning çalışma alanınız için ACR 'yi yapılandırın ve kullanın.
  * Eğitim veya çıkarım için temel görüntüleri çekmek üzere çalışma alanınıza özel bir ACR 'ye erişin.
- * Depolama erişim tuşları yerine yönetilen kimlikler kullanarak eğitim için veri kümelerine erişin.
 
 > [!IMPORTANT]
 > Azure Machine Learning ile kaynaklara erişimi denetlemek için yönetilen kimliklerin kullanılması şu anda önizleme aşamasındadır. Önizleme işlevselliği, destek veya hizmet düzeyi anlaşması garantisi olmadan "olduğu gibi" verilmiştir. Daha fazla bilgi için, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bölümüne bakın.
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 - [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md)
@@ -222,31 +221,6 @@ identity.client_id="<UAI client ID>”
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
-
-## <a name="access-training-data"></a>Eğitim verilerine erişin
-
-Daha önce açıklandığı gibi yönetilen kimliğe sahip bir Machine Learning işlem kümesi oluşturduktan sonra, bu kimliği depolama hesabı anahtarları olmadan eğitim verilerine erişmek için kullanabilirsiniz. Bu senaryo için sistem ya da Kullanıcı tarafından atanan yönetilen kimlik kullanabilirsiniz.
-
-### <a name="grant-compute-managed-identity-access-to-storage-account"></a>Depolama hesabına işlem tarafından yönetilen kimlik erişimi verme
-
-Yönetilen kimliğe, eğitim verilerinizi depoladığınız depolama hesabı üzerinde [bir okuyucu rolü verin](https://docs.microsoft.com/azure/storage/common/storage-auth-aad#assign-azure-roles-for-access-rights) .
-
-### <a name="register-data-store-with-workspace"></a>Veri deposunu çalışma alanıyla kaydetme
-
-Yönetilen kimliği atadıktan sonra, depolama kimlik bilgilerini belirtmek zorunda kalmadan bir veri deposu oluşturabilirsiniz.
-
-```python
-from azureml.core import Datastore
-
-blob_dstore = Datastore.register_azure_blob_container(workspace=workspace,
-                                                      datastore_name='my-datastore',
-                                                      container_name='my-container',
-                                                      account_name='my-storage-account')
-```
-
-### <a name="submit-training-run"></a>Eğitim çalıştırmasını gönderme
-
-Veri deposu kullanarak bir eğitim çalıştırması gönderdiğinizde, Machine Learning işlemi, verilere erişmek için yönetilen kimliğini kullanır.
 
 ## <a name="use-docker-images-for-inference"></a>Çıkarım için Docker görüntülerini kullanma
 

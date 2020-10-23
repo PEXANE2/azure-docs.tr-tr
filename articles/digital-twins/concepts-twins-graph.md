@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145942"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440850"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -39,11 +39,11 @@ Bu işlemin sonucu, bir grafikteki kenarlar (bunların ilişkileri) aracılığ�
 
 ## <a name="create-with-the-apis"></a>API 'lerle oluşturma
 
-Bu bölümde, bir istemci uygulamasından dijital TWINS ve ilişkiler oluşturmak için nasıl göründüğü gösterilmektedir. Bu kavramların her birinde nelerin üzerinde olduğuna ilişkin ek bağlam sağlamak için [Digitaltwins API 'lerini](how-to-use-apis-sdks.md)kullanan .NET kod örnekleri içerir.
+Bu bölümde, bir istemci uygulamasından dijital TWINS ve ilişkiler oluşturmak için nasıl göründüğü gösterilmektedir. Bu kavramların her birinde nelerin üzerinde olduğuna ilişkin ek bağlam sağlamak için [Digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins)kullanan .NET kod örnekleri içerir.
 
 ### <a name="create-digital-twins"></a>Dijital TWINS oluşturma
 
-Aşağıda, *Oda*türünde bir ikizi örneği oluşturmak Için [Digitaltwins API 'lerini](how-to-use-apis-sdks.md) kullanan istemci kodu kod parçacığı verilmiştir.
+Aşağıda, *Oda*türünde bir ikizi örneği oluşturmak Için [Digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan istemci kodu kod parçacığı verilmiştir.
 
 Azure Digital TWINS 'in geçerli önizlemede, ikizi oluşturulmadan önce bir ikizi öğesinin tüm özellikleri başlatılmalıdır. Bu, gerekli başlatma değerlerini sağlayan bir JSON belgesi oluşturularak yapılır.
 
@@ -53,7 +53,7 @@ Bir `BasicDigitalTwin` "ikizi" nesnesindeki Özellik alanlarını doğrudan bir 
 
 ### <a name="create-relationships"></a>İlişki oluştur
 
-Burada, *Groundfloor* adlı bir *taban*-tür dijital ikizi ve *Cafe*adlı bir *Oda*türü dijital Ikizi arasında bir ilişki oluşturmak için [digitaltwins API 'lerini](how-to-use-apis-sdks.md) kullanan bazı örnek istemci kodları verilmiştir.
+Burada, *Groundfloor* adlı bir *taban*-tür dijital ikizi ve *Cafe*adlı bir *Oda*türü dijital Ikizi arasında bir ilişki oluşturmak için [digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan bazı örnek istemci kodları verilmiştir.
 
 ```csharp
 // Create Twins, using functions similar to the previous sample

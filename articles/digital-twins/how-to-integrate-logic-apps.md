@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 54a96d1f3227cd4a66e344b63b2ecb337df31aba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427989"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461082"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Özel bağlayıcı kullanarak Logic Apps tümleştirme
 
@@ -43,7 +43,7 @@ Bu makaledeki Logic Apps bir Azure dijital TWINS örneğini bağlamak için **Az
 İlk olarak, **bir Azure dijital TWINS örneği** ve onunla çalışabilmeniz için gereken kimlik doğrulamasını ayarlayın. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)konusundaki yönergeleri izleyin. Tercih ettiğiniz deneyiminize bağlı olarak, [Azure Portal](how-to-set-up-instance-portal.md), [clı](how-to-set-up-instance-cli.md)veya [Otomatik Cloud Shell dağıtım betiği örneği](how-to-set-up-instance-scripted.md)için kurulum makalesine sunulur. Yönergelerin tüm sürümleri, her adımı başarıyla tamamlayıp tamamlamadığınızı ve yeni örneğinizi kullanmaya başlamaya hazırlamış olduğunuzu doğrulamaya yönelik adımları da içerir.
 * Azure dijital TWINS örneğinizi ayarladıktan sonra, örneğin **_ana bilgisayar adı_** ([Azure Portal bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) gerekir.
 
-ADT Explorer uygulamasının kimliğini doğrulamak için, bir **uygulama kaydı**da ayarlamanız gerekir. Bunu ayarlamak için [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md) ' daki yönergeleri izleyin. 
+Bağlayıcının kimliğini doğrulamak için, bir **uygulama kaydı**da ayarlamanız gerekir. Bunu ayarlamak için [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md) ' daki yönergeleri izleyin. 
 * Uygulama kaydınız olduktan sonra kaydın **_uygulama (istemci) kimliği_** ve **_Dizin (kiracı) kimliği_** ([Azure Portal bul](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) gerekir.
 
 ### <a name="get-app-registration-client-secret"></a>Uygulama kaydı istemci gizliliğini al
@@ -66,7 +66,7 @@ Açıklama ve süre sonu için istediğiniz değerleri girin ve *Ekle*'ye basın
 
 Bu makalede, Azure dijital TWINS örneğiniz içindeki bir ikizi güncelleştirmek için Logic Apps kullanılır. Devam etmek için, örneğinize en az bir ikizi eklemeniz gerekir. 
 
-[Digitaltwıns API 'lerini](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sını](https://www.nuget.org/packages/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)'yi kullanarak TWINS ekleyebilirsiniz. Bu yöntemleri kullanarak TWINS oluşturma hakkında ayrıntılı adımlar için bkz. [*nasıl yapılır: dijital TWINS 'ı yönetme*](how-to-manage-twin.md).
+[Digitaltwıns API 'lerini](/rest/api/digital-twins/dataplane/twins), [.net (C#) SDK 'Sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)'yi kullanarak TWINS ekleyebilirsiniz. Bu yöntemleri kullanarak TWINS oluşturma hakkında ayrıntılı adımlar için bkz. [*nasıl yapılır: dijital TWINS 'ı yönetme*](how-to-manage-twin.md).
 
 Örneğiniz içinde oluşturduğunuz bir ikizi **_IKIZI ID_** 'ye ihtiyacınız olacaktır.
 
