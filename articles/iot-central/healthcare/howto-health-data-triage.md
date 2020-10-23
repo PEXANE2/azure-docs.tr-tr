@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497055"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127089"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Öğretici: Power BI sağlayıcı panosu oluşturma
 
@@ -29,7 +29,7 @@ Temel mimari bu yapıyı izler:
 >[!div class="mx-imgBorder"] 
 >![Sağlayıcı önceliklendirme panosu](media/dashboard-architecture.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure IoT Central verileri Azure 'a aktarın Event Hubs
@@ -44,14 +44,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Azure IoT Central sürekli hasta izleme uygulaması şablonu. Henüz bir tane yoksa, [bir uygulama şablonu dağıtmak](overview-iot-central-healthcare.md)için adımları izleyebilirsiniz.
 
-* Azure [Event Hubs ad alanı ve Olay Hub 'ı](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+* Azure [Event Hubs ad alanı ve Olay Hub 'ı](../../event-hubs/event-hubs-create.md).
 
-* Olay Hub 'ınıza erişmek istediğiniz mantıksal uygulama. Mantıksal uygulamanızı Azure Event Hubs tetikleyicisiyle başlatmak için [boş bir mantıksal uygulama](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)gerekir.
+* Olay Hub 'ınıza erişmek istediğiniz mantıksal uygulama. Mantıksal uygulamanızı Azure Event Hubs tetikleyicisiyle başlatmak için [boş bir mantıksal uygulama](../../logic-apps/quickstart-create-first-logic-app-workflow.md)gerekir.
 
-* Power BI hizmeti hesabı. Henüz bir tane yoksa, [Power BI hizmeti için ücretsiz bir deneme hesabı oluşturabilirsiniz](https://app.powerbi.com/). Daha önce Power BI kullanmadıysanız, [Power BI kullanmaya başlama konusunda](https://docs.microsoft.com/power-bi/service-get-started)yararlı olabilir.
+* Power BI hizmeti hesabı. Henüz bir tane yoksa, [Power BI hizmeti için ücretsiz bir deneme hesabı oluşturabilirsiniz](https://app.powerbi.com/). Daha önce Power BI kullanmadıysanız, [Power BI kullanmaya başlama konusunda](/power-bi/service-get-started)yararlı olabilir.
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Event Hubs sürekli veri dışarı aktarma ayarlama
-İlk olarak Azure IoT Central uygulama şablonınızdan, aboneliğinizdeki Azure Olay Hub 'ına sürekli bir veri dışarı aktarma ayarlamanız gerekir. Bu işlemi, [Event Hubs dışarı aktarmak](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)Için bu Azure IoT Central öğreticisindeki adımları izleyerek yapabilirsiniz. Bu öğreticinin amaçları doğrultusunda yalnızca Telemetriyi dışa aktarmanız gerekir.
+İlk olarak Azure IoT Central uygulama şablonınızdan, aboneliğinizdeki Azure Olay Hub 'ına sürekli bir veri dışarı aktarma ayarlamanız gerekir. Bu işlemi, [Event Hubs dışarı aktarmak](../core/howto-export-data.md)Için bu Azure IoT Central öğreticisindeki adımları izleyerek yapabilirsiniz. Bu öğreticinin amaçları doğrultusunda yalnızca Telemetriyi dışa aktarmanız gerekir.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI akış veri kümesi oluşturma
 
@@ -72,10 +72,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     >[!div class="mx-imgBorder"] 
     >![Veri kümesi değerlerini girin](media/enter-dataset-values.png)
 
-Power BI veri kümeleri hakkında daha fazla bilgi edinmek için bu belgeyi [Power BI gerçek zamanlı akışta](https://docs.microsoft.com/power-bi/service-real-time-streaming)okuyabilirsiniz.
+Power BI veri kümeleri hakkında daha fazla bilgi edinmek için bu belgeyi [Power BI gerçek zamanlı akışta](/power-bi/service-real-time-streaming)okuyabilirsiniz.
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Mantıksal uygulamanızı Azure 'a bağlama Event Hubs
-Mantıksal uygulamanızı Azure Event Hubs bağlamak için, [azure Event Hubs ve Azure Logic Apps ile olay gönderme](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)konusunda bu belgede özetlenen yönergeleri izleyebilirsiniz. Önerilen bazı parametreler şunlardır:
+Mantıksal uygulamanızı Azure Event Hubs bağlamak için, [azure Event Hubs ve Azure Logic Apps ile olay gönderme](../../connectors/connectors-create-api-azure-event-hubs.md#add-event-hubs-action)konusunda bu belgede özetlenen yönergeleri izleyebilirsiniz. Önerilen bazı parametreler şunlardır:
 
 |Parametre|Değer|
 |---|---|
@@ -91,7 +91,7 @@ Bu adımın sonunda, mantıksal uygulama Tasarlayıcıınızın şöyle görünm
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Mantıksal uygulamanızdan Power BI veri akışı
 Sonraki adım, Olay Hub 'ından gelen verileri daha önce oluşturduğunuz Power BI veri kümelerine akışa almak için ayrıştıracaktır.
 
-1. Bunu yapabilmeniz için önce, cihazınızdan Olay Hub 'ına gönderilen JSON yükünü anlamanız gerekir. Bu [örnek şemaya](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) bakarak ve iletileri incelemek için [Service Bus Gezgini](https://github.com/paolosalvatori/ServiceBusExplorer) 'ni kullanarak bunu yapabilirsiniz. Sürekli hasta izleme uygulamaları kullanıyorsanız, iletileriniz şöyle görünür:
+1. Bunu yapabilmeniz için önce, cihazınızdan Olay Hub 'ına gönderilen JSON yükünü anlamanız gerekir. Bu [örnek şemaya](../core/howto-export-data.md#telemetry-format) bakarak ve iletileri incelemek için [Service Bus Gezgini](https://github.com/paolosalvatori/ServiceBusExplorer) 'ni kullanarak bunu yapabilirsiniz. Sürekli hasta izleme uygulamaları kullanıyorsanız, iletileriniz şöyle görünür:
 
 **Akıllı vitals düzeltme eki telemetrisi**
 
@@ -143,7 +143,7 @@ Sonraki adım, Olay Hub 'ından gelen verileri daha önce oluşturduğunuz Power
 
     |Parametre|Değer|
     |---|---|
-    |Adı|Arabirim adı|
+    |Ad|Arabirim adı|
     |Tür|Dize|
 
     **Kaydet**'e tıklayın. 

@@ -1,17 +1,17 @@
 ---
 title: Desteklenen sürümler-PostgreSQL için Azure veritabanı-esnek sunucu
-description: PostgreSQL için Azure veritabanı 'nda desteklenen Postgres büyük ve küçük sürümlerini açıklar-esnek sunucu.
+description: PostgreSQL için Azure veritabanı 'nda desteklenen PostgreSQL büyük ve küçük sürümlerini açıklar-esnek sunucu.
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 9d651a38361ccaa7f8788fb4a375b39b2953228b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: 334eaa88ae927ae61ebb445343494cfdce570563
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941013"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167500"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda desteklenen PostgreSQL ana sürümleri-esnek sunucu
 
@@ -22,11 +22,11 @@ PostgreSQL için Azure veritabanı-esnek sunucu şu anda aşağıdaki ana sürü
 
 ## <a name="postgresql-version-12"></a>PostgreSQL sürüm 12
 
-Geçerli küçük yayın 12,1 ' dir. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/12/static/release-12-1.html) bakın.
+Geçerli küçük yayın 12,4 ' dir. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/12/static/release-12-4.html) bakın.
 
 ## <a name="postgresql-version-11"></a>PostgreSQL sürüm 11
 
-Geçerli küçük yayın 11,8 ' dir. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/11/static/release-11-8.html) bakın.
+Geçerli küçük yayın 11,9 ' dir. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/11/static/release-11-9.html) bakın.
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL sürüm 10 ve üzeri
 
@@ -36,7 +36,7 @@ PostgreSQL için Azure veritabanı-esnek sunucu için PostgreSQL sürüm 10 ve d
 
 PostgreSQL projesi, bildirilen hataları çözmek için düzenli olarak küçük yayınlar yayınlar. PostgreSQL için Azure veritabanı, hizmetin aylık dağıtımları sırasında küçük yayınlar içeren sunucuları otomatik olarak ekler.
 
-Otomatik ana sürüm yükseltmesi henüz desteklenmiyor. Örneğin, şu anda PostgreSQL 11 ' den PostgreSQL 12 ' ye otomatik yükseltme yoktur.<!-- To upgrade to the next major version, create a [database dump and restore](howto-migrate-using-dump-and-restore.md) to a server that was created with the new engine version.-->
+Ana sürüm yükseltmesi için Otomasyon henüz desteklenmiyor. Örneğin, şu anda PostgreSQL 11 ' den PostgreSQL 12 ' ye otomatik yükseltme yoktur.<!-- To upgrade to the next major version, create a [database dump and restore](howto-migrate-using-dump-and-restore.md) to a server that was created with the new engine version.-->
 
 <!--
 ## Next steps

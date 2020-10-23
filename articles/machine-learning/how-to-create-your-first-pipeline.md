@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 8/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 9bfec8c1da0581fa7f17dd671358218f22c877c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6cbda4067e98c16ea26f3436b5f65e696549462
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708484"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370313"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
@@ -251,6 +251,18 @@ from azureml.pipeline.core import Pipeline
 pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
+### <a name="how-python-environments-work-with-pipeline-parameters"></a>Python ortamları işlem hattı parametreleriyle nasıl çalışır?
+
+Daha önce [eğitim çalıştırmasının ortamını yapılandırma](#configure-the-training-runs-environment)bölümünde anlatıldığı gibi, ortam durumu ve Python kitaplığı bağımlılıkları bir nesnesi kullanılarak belirtilir `Environment` . Genellikle, var olan `Environment` adı ve isteğe bağlı olarak bir sürümü belirterek mevcut bir ad belirtebilirsiniz:
+
+```python
+aml_run_config = RunConfiguration()
+aml_run_config.environment.name = 'MyEnvironment'
+aml_run_config.environment.version = '1.0'
+```
+
+Ancak, işlem `PipelineParameter` hattı adımlarınız için çalışma zamanında değişkenleri dinamik olarak ayarlamak üzere nesneleri kullanmayı seçerseniz, varolan bir başvuru için bu tekniği kullanamazsınız `Environment` . Bunun yerine, nesneleri kullanmak istiyorsanız `PipelineParameter` `environment` , ' ın alanını `RunConfiguration` bir nesnesine ayarlamanız gerekir `Environment` . Bu tür bir, `Environment` bunun, dış Python paketlerinin bağımlılıklarını doğru şekilde ayarlamış olduğundan emin olmak sizin sorumluluğunuzdadır.
+
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma 
 
 Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'nda oluşturulan veri kümeleri herhangi bir işlem hattı adımına giriş olarak kullanılabilir. Çıktıyı bir [Datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py&preserve-view=true), [databricksstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py&preserve-view=true)veya belirli bir veri deposuna veri yazmak isterseniz, [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true)kullanın. 
@@ -337,6 +349,8 @@ Bir işlem hattını ilk kez çalıştırdığınızda Azure Machine Learning:
 ![Bir deneme işlem hattı olarak çalıştırma diyagramı](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 Daha fazla bilgi için bkz. [deneme sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) başvurusu.
+
+## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>Çıkarımı zamanında değişen bağımsız değişkenler için işlem hattı parametrelerini kullanma
 
 ## <a name="view-results-of-a-pipeline"></a>İşlem hattının sonuçlarını görüntüleme
 

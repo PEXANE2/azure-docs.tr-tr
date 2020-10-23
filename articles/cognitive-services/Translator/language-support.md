@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568106"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282303"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -57,6 +57,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Filipino|  `fil`   |
 |Fince|   `fi`    |
 |Fransızca|    `fr`    |
+|Fransızca (Kanada)|   `fr-ca` |
 |Almanca|    `de`    |
 |Yunanca| `el`    |
 |Gucerat dili|  `gu`    |
@@ -364,6 +365,7 @@ Konuşma çevirisi, bilişsel hizmetler konuşma hizmeti ile Translator kullanı
 |İngilizce|
 |Fince|
 |Fransızca|
+|Fransızca (Kanada)|
 |Almanca|
 |Gucerat dili|
 |Hintçe|
@@ -401,6 +403,7 @@ Metni konuşmaya dönüştürün. Metin okuma, çeviri sonuçlarının duyulabil
 |İngilizce|
 |Fince|
 |Fransızca|
+|Fransızca (Kanada)|
 |Almanca|
 |Yunanca|
 |İbranice|

@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 5b86803b763039846e2101b9caf0232aafa4fa24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327472"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145860"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry PI 'yi Azure 'a bağlama IoT Hub (C)
 
@@ -81,7 +81,7 @@ Aşağıdaki öğeler isteğe bağlıdır:
 > Kod örneği sanal algılayıcı verilerini desteklediğinden bu öğeler isteğe bağlıdır.
 >
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -154,7 +154,7 @@ Algılayıcı PIN 'leri için aşağıdaki kabloyı kullanın:
 | SDI (Iğne 23F)            | SPI0 MOSI (PIN 19)     | Yeşil kablo   |
 | CS (PIN 24F)             | SPI0 CS (PIN 24)       | Mavi kablo    |
 
-Başvurunuz için [Raspberry PI 2 & 3 PIN eşlemelerini](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) görüntülemek için tıklayın.
+Başvurunuz için [Raspberry PI 2 & 3 PIN eşlemelerini](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) görüntülemek için tıklayın.
 
 BME280, Raspberry Pi 'nize başarıyla bağlandıktan sonra görüntünün altında olması gerekir.
 

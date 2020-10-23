@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983009"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147750"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
-Bu öğreticide, [hata ayıklama modunda](/visualstudio/debugger/) uzaktan veya uygulama günlüklerini ve Web sunucusu günlüklerini görüntüleyerek [App Service](https://go.microsoft.com/fwlink/?LinkId=529714)içindeki bir uygulamada hata ayıklamaya yardımcı olmak için Visual Studio Araçları 'nın nasıl kullanılacağı gösterilmektedir.
+Bu öğreticide, [hata ayıklama modunda](/visualstudio/debugger/) uzaktan veya uygulama günlüklerini ve Web sunucusu günlüklerini görüntüleyerek [App Service](./overview.md)içindeki bir uygulamada hata ayıklamaya yardımcı olmak için Visual Studio Araçları 'nın nasıl kullanılacağı gösterilmektedir.
 
 Şunları öğreneceksiniz:
 
@@ -28,7 +28,7 @@ Bu öğreticide, [hata ayıklama modunda](/visualstudio/debugger/) uzaktan veya 
 
 Visual Studio Ultimate sahipseniz, hata ayıklama için [IntelliTrace](/visualstudio/debugger/intellitrace) de kullanabilirsiniz. Bu öğreticide IntelliTrace kapsamında değildir.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
 Bu öğretici, [Azure App Service bir ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde ayarladığınız geliştirme ortamı, Web projesi ve App Service uygulamayla birlikte çalışır. WebJobs bölümleri için, [Azure Web İşleri SDK 'Sını kullanmaya başlama][GetStartedWJ]bölümünde oluşturduğunuz uygulamanın olması gerekir.
 
 Bu öğreticide gösterilen kod örnekleri bir C# MVC web uygulaması içindir, ancak sorun giderme yordamları Visual Basic ve Web Forms uygulamalar için aynıdır.
@@ -49,7 +49,7 @@ Visual Studio, [Azure Portal](https://go.microsoft.com/fwlink/?LinkId=529715)bul
    >
    >
 
-    Visual Studio 'dan Azure kaynaklarına bağlanma hakkında daha fazla bilgi için bkz. [hesapları, abonelikleri ve yönetici rollerini yönetme](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
+    Visual Studio 'dan Azure kaynaklarına bağlanma hakkında daha fazla bilgi için bkz. [hesapları, abonelikleri ve yönetici rollerini yönetme](../role-based-access-control/role-assignments-portal.md).
 2. **Sunucu Gezgini**' de **Azure** ' u genişletin ve **App Service**' ı genişletin.
 3. [Azure App Service ' de ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde oluşturduğunuz uygulamayı içeren kaynak grubunu genişletin ve ardından uygulama düğümüne sağ tıklayıp **ayarları görüntüle**' ye tıklayın.
 
@@ -125,7 +125,7 @@ Bu bölümde [, Azure App Service ' de bir ASP.NET uygulaması oluşturma](quick
     }
     ```
 
-1. Satırda [bir kesme noktası ayarlayın](https://docs.microsoft.com/visualstudio/debugger/) `ViewBag.Message` .
+1. Satırda [bir kesme noktası ayarlayın](/visualstudio/debugger/) `ViewBag.Message` .
 
 1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Yayımla**' ya tıklayın.
 
@@ -158,7 +158,7 @@ Uzaktan hata ayıklama yalnızca sürekli WebJobs ile kullanılabilir. Zamanlanm
 
 2. ContosoAdsWebJob projesinde *Functions.cs*öğesini açın.
 
-3. Yöntemdeki ilk ifadede [bir kesme noktası ayarlayın](https://docs.microsoft.com/visualstudio/debugger/) `GnerateThumbnail` .
+3. Yöntemdeki ilk ifadede [bir kesme noktası ayarlayın](/visualstudio/debugger/) `GnerateThumbnail` .
 
     ![Kesme noktası ayarla](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -223,7 +223,7 @@ Uzaktan hata ayıklama yalnızca sürekli WebJobs ile kullanılabilir. Zamanlanm
       <httpRuntime targetFramework="4.5" />
     </system.web>
     ```
-* Hata ayıklayıcının hata ayıklamak istediğiniz kodda yer almamasına fark ederseniz Yalnızca kendi kodum ayarını değiştirmeniz gerekebilir.  Daha fazla bilgi için bkz. [Visual Studio 'da yalnızca kendi kodum kullanarak yalnızca kullanıcı kodunda hata ayıklama yapılıp yapılmayacağını belirtme](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
+* Hata ayıklayıcının hata ayıklamak istediğiniz kodda yer almamasına fark ederseniz Yalnızca kendi kodum ayarını değiştirmeniz gerekebilir.  Daha fazla bilgi için bkz. [Visual Studio 'da yalnızca kendi kodum kullanarak yalnızca kullanıcı kodunda hata ayıklama yapılıp yapılmayacağını belirtme](/visualstudio/debugger/just-my-code).
 * Uzaktan hata ayıklama özelliğini etkinleştirdiğinizde ve 48 saat sonra özelliğin otomatik olarak kapatılması durumunda bir Zamanlayıcı başlatılır. Bu 48 saatlik sınır güvenlik ve performans nedenleriyle yapılır. Özelliği dilediğiniz zaman kolayca tekrar açabilirsiniz. Etkin bir şekilde hata ayıkladığınızda devre dışı bırakmanızı öneririz.
 * Hata ayıklayıcıyı yalnızca uygulama işlemini değil, herhangi bir işleme el ile ekleyebilirsiniz (w3wp.exe). Visual Studio 'da hata ayıklama modunun nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Visual Studio 'Da hata ayıklama](/visualstudio/debugger/debugging-in-visual-studio).
 
@@ -312,7 +312,7 @@ WebJobs 'larda uygulama günlükleri oluşturma hakkında daha fazla bilgi için
     ```
 
 , ' A `WebPageTraceListener` göz atarak izleme çıkışını görüntülemenize izin verir `/trace.axd` .
-1. <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace element</a> `<system.web>` Aşağıdaki örnekte olduğu gibi Web.config dosyasında bir izleme öğesi ekleyin:
+1. <a href="/previous-versions/dotnet/netframework-4.0/6915t83k(v=vs.100)">trace element</a> `<system.web>` Aşağıdaki örnekte olduğu gibi Web.config dosyasında bir izleme öğesi ekleyin:
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -463,7 +463,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production web app you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The web app (which you'll create later) should run in a region as close as possible to the browsers accessing your web app in order to minimize latency.
 3. Set the **Replication** drop-down list to **Locally redundant**.
    
-    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-create-storage-account.md).
+    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-account-create.md).
 4. Click **Create**.
 
     ![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    
@@ -582,7 +582,7 @@ Azure App Service uygulamalarla ilgili sorun giderme hakkında daha fazla bilgi 
 Belirli bir sorun giderme sorusu hakkında yardım için aşağıdaki forumlardan birinde bir iş parçacığı başlatın:
 
 * [ASP.NET sitesindeki Azure Forumu](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Microsoft Q&bir Azure Forumu](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+* [Microsoft Q&bir Azure Forumu](/answers/topics/azure-webapps.html).
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio'da Hata Ayıklama

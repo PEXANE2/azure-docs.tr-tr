@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93b2b5538df894e17449e173baa3e402d6c59654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354998"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441445"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory dil özelleştirmesi (Önizleme)
 
@@ -146,7 +146,7 @@ Chrome ve Firefox, kendi set dilleri için istek. Desteklenen bir dilise, varsay
 
 ## <a name="supported-languages"></a>Desteklenen diller
 
-Azure AD aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Azure AD tarafından sağlanır. Multi-Factor Authentication (MFA) bildirim dilleri [Azure MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)tarafından sağlanır.
+Azure AD aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Azure AD tarafından sağlanır. Multi-Factor Authentication (MFA) bildirim dilleri [Azure MFA](../authentication/concept-mfa-howitworks.md)tarafından sağlanır.
 
 | Dil              | Dil kodu | Kullanıcı akışları         | MFA bildirimleri  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

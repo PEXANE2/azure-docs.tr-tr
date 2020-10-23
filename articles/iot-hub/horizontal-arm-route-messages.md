@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7c53d720aef029d79d95cacd558c3bf9d35b4af6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89462675"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148924"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure IoT Hub ve depolama hesabı dağıtma
 
@@ -46,7 +46,7 @@ Bu bölümde, iletileri göndermek için şablonu dağıtma, sanal cihaz oluştu
 
     [![Azure 'A dağıtma](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. [IoT C# örneklerini](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)indirip sıkıştırmasını açın.
+1. [IoT C# örneklerini](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)indirip sıkıştırmasını açın.
 
 1. Bir komut penceresi açın ve IoT C# örneklerinin sıkıştırunı geri yüklediğiniz klasöre gidin. ARM-Read-Write. csproj dosyasını içeren klasörü bulun. Bu komut penceresinde ortam değişkenlerini oluşturursunuz. Anahtarları almak için [Azure portal] (] içinde oturum açın https://portal.azure.com . **Kaynak grupları** ' nı seçin ve ardından bu hızlı başlangıç için kullanılan kaynak grubunu seçin.
 
@@ -134,4 +134,4 @@ Bu hızlı başlangıç sırasında eklenen kaynakları kaldırmak için [Azure 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

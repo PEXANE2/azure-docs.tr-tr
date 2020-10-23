@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848866"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103008"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,9 +40,9 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 |**Çalışma süresi SLA 'Sı**|%99,99|%99,99|%99,99|
 |**Maksimum yedekleme saklama**|7 gün|35 gün|35 gün|
 |**CPU**|Düşük|Düşük, orta, yüksek|Orta, yüksek|
-|**IOPS (yaklaşık)**\* |DTU başına 1-5 ıOPS| DTU başına 1-5 ıOPS | DTU başına 25 ıOPS|
+|**IOPS (yaklaşık)**\* |DTU başına 1-4 ıOPS| DTU başına 1-4 ıOPS | DTU başına 25 ıOPS|
 |**GÇ gecikme süresi (yaklaşık)**|5 ms (okuma), 10 MS (yazma)|5 ms (okuma), 10 MS (yazma)|2 ms (okuma/yazma)|
-|**Columnstore dizin oluşturma** |Yok|S3 ve üzeri|Desteklenir|
+|**Columnstore dizin oluşturma** |YOK|S3 ve üzeri|Desteklenir|
 |**Bellek içi OLTP**|Yok|Yok|Desteklenir|
 
 \* Arka plan GÇ (kontrol noktası ve yavaş yazıcı) dahil olmak üzere veri dosyalarında tüm okuma ve yazma ıOPS
@@ -114,7 +114,7 @@ Veritabanı "ölçek faktörü" temelinde boyutlandırılır. Ölçek faktörü 
 
 İş yükü, aşağıdaki tabloda gösterildiği gibi dokuz işlem türünden oluşur. Her işlem, veritabanı altyapısı ve sistem donanımında belirli bir sistem özellikleri kümesini, diğer işlemlerden yüksek karşıtlığa göre vurgulamak için tasarlanmıştır. Bu yaklaşım, farklı bileşenlerin genel performansa etkilerini değerlendirmeyi kolaylaştırır. Örneğin, "okuma ağır" işlemi diskten önemli sayıda okuma işlemi üretir.
 
-| İşlem Türü | Açıklama |
+| İşlem Türü | Description |
 | --- | --- |
 | Lite 'ı oku |SEÇIN bellek içi; salt okunurdur |
 | Ortamı oku |SEÇIN genellikle bellek içi; salt okunurdur |

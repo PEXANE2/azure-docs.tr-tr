@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: joflore
-ms.openlocfilehash: 5d89f1a3d6028afb3450e0112a6081c9c706775b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962471"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275863"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -41,7 +41,7 @@ Azure 'da var olan bir SLE Linux sanal makinesi varsa, SSH kullanarak buna bağl
 
 Bir SLE Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalı](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -165,7 +165,7 @@ VM, yönetilen etki alanına kaydedildikten sonra aşağıdaki örnekte gösteri
 
 1. Samba kullanıcıları ve grupları için UID ve GID aralıklarını değiştirmek istiyorsanız, *uzman ayarları*' nı seçin.
 
-1. *NTP yapılandırması*' nı seçerek yönetilen etki ALANıNıZ için NTP zaman eşitlemesini yapılandırın. Yönetilen etki alanının IP adreslerini girin. Bu IP adresleri, *10.0.2.4* ve *10.0.2.5*gibi yönetilen etki alanınız için Azure Portal *Özellikler* penceresinde gösterilir.
+1. *NTP yapılandırması*' nı seçerek yönetilen etki alanınız Için ağ zaman Protokolü (NTP) zaman eşitlemesini yapılandırın. Yönetilen etki alanının IP adreslerini girin. Bu IP adresleri, *10.0.2.4* ve *10.0.2.5*gibi yönetilen etki alanınız için Azure Portal *Özellikler* penceresinde gösterilir.
 
 1. **Tamam** ' ı seçin ve istendiğinde etki alanına katılmayı onaylayın.
 
@@ -174,6 +174,127 @@ VM, yönetilen etki alanına kaydedildikten sonra aşağıdaki örnekte gösteri
     ![Yönetilen etki alanına bir SLE VM 'ye katdığınızda kimlik doğrulama iletişim isteminin örnek ekran görüntüsü](./media/join-suse-linux-vm/domain-join-authentication-prompt.png)
 
 Yönetilen etki alanına katıldıktan sonra masaüstü veya konsolunun görüntü yöneticisini kullanarak iş istasyonunuzdan oturum açabilirsiniz.
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>YaST komut satırı arabiriminden winbind kullanarak VM 'yi yönetilen etki alanına katma
+
+Yönetilen etki alanına **winbind** ve *yast komut satırı arabirimini*kullanarak katmak için:
+
+* Etki alanına katılarak:
+
+  ```console
+  sudo yast samba-client joindomain domain=aaddscontoso.com user=<admin> password=<admin password> machine=<(optional) machine account>
+  ```
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>Terminalden winbind kullanarak VM 'yi yönetilen etki alanına katma
+
+Yönetilen etki alanına **winbind** kullanarak katmak için ve * `samba net` komutunu*kullanın:
+
+1. Kerberos istemcisi ve Samba-winbind 'yi yükler:
+
+   ```console
+   sudo zypper in krb5-client samba-winbind
+   ```
+
+2. Yapılandırma dosyalarını düzenleyin:
+
+   * /etc/samba/SMB.exe
+   
+     ```ini
+     [global]
+         workgroup = AADDSCONTOSO
+         usershare allow guests = NO #disallow guests from sharing
+         idmap config * : backend = tdb
+         idmap config * : range = 1000000-1999999
+         idmap config AADDSCONTOSO : backend = rid
+         idmap config AADDSCONTOSO : range = 5000000-5999999
+         kerberos method = secrets and keytab
+         realm = AADDSCONTOSO.COM
+         security = ADS
+         template homedir = /home/%D/%U
+         template shell = /bin/bash
+         winbind offline logon = yes
+         winbind refresh tickets = yes
+     ```
+
+   * /etc/kronb5,conf
+   
+     ```ini
+     [libdefaults]
+         default_realm = AADDSCONTOSO.COM
+         clockskew = 300
+     [realms]
+         AADDSCONTOSO.COM = {
+             kdc = PDC.AADDSCONTOSO.COM
+             default_domain = AADDSCONTOSO.COM
+             admin_server = PDC.AADDSCONTOSO.COM
+         }
+     [domain_realm]
+         .aaddscontoso.com = AADDSCONTOSO.COM
+     [appdefaults]
+         pam = {
+             ticket_lifetime = 1d
+             renew_lifetime = 1d
+             forwardable = true
+             proxiable = false
+             minimum_uid = 1
+         }
+     ```
+
+   * /etc/Security/pam_winbind. conf
+   
+     ```ini
+     [global]
+         cached_login = yes
+         krb5_auth = yes
+         krb5_ccache_type = FILE
+         warn_pwd_expire = 14
+     ```
+
+   * /etc/nsswitch.conf
+   
+     ```ini
+     passwd: compat winbind
+     group: compat winbind
+     ```
+
+3. Azure AD ve Linux 'ta tarih ve saatin eşitlenmiş olduğunu denetleyin. Bunu, Azure AD sunucusunu NTP hizmetine ekleyerek yapabilirsiniz:
+   
+   1. Aşağıdaki satırı/etc/NTP.conf öğesine ekleyin:
+     
+      ```console
+      server aaddscontoso.com
+      ```
+
+   1. NTP hizmetini yeniden başlatın:
+     
+      ```console
+      sudo systemctl restart ntpd
+      ```
+
+4. Etki alanına katılarak:
+
+   ```console
+   sudo net ads join -U Administrator%Mypassword
+   ```
+
+5. Linux takılabilir kimlik doğrulama modüllerinde (PAM) oturum açma kaynağı olarak winbind 'yi etkinleştirin:
+
+   ```console
+   pam-config --add --winbind
+   ```
+
+6. Kullanıcıların oturum açabilmeleri için giriş dizinlerinin otomatik oluşturulmasını etkinleştirin:
+
+   ```console
+   pam-config -a --mkhomedir
+   ```
+
+7. Winbind hizmetini başlatın ve etkinleştirin:
+
+   ```console
+   sudo systemctl enable winbind
+   sudo systemctl start winbind
+   ```
 
 ## <a name="allow-password-authentication-for-ssh"></a>SSH için parola kimlik doğrulamasına izin ver
 

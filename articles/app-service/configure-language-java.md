@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976020"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171584"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service için bir Java uygulaması yapılandırma
 
@@ -691,6 +691,10 @@ Veri kaynağının Jpatron sunucusuna eklendiğini doğrulamak için, WebApp ile
 App Service, kullanıcıların Java 8 veya Java 11 gibi birincil sürümünü ve 1.8.0 _232 veya 11.0.5 gibi ikincil sürümü seçmesini sağlar. Yeni ikincil sürümler kullanılabilir hale geldiğinde, ikincil sürümün otomatik olarak güncelleştirilmesini de seçebilirsiniz. Çoğu durumda, üretim siteleri sabitlenmiş küçük JVM sürümlerini kullanmalıdır. Bu, küçük bir sürüm otomatik güncelleştirmesi sırasında beklenmeyen kesintileri engeller.
 
 İkincil sürümü sabitlemeyi seçerseniz, sitedeki JVM ikincil sürümünü düzenli olarak güncelleştirmeniz gerekir. Uygulamanızın daha yeni alt sürümde çalıştığından emin olmak için, hazırlama yuvası oluşturun ve hazırlama sitesindeki ikincil sürümü artırın. Uygulamanın yeni ikincil sürümde doğru şekilde çalıştığını onayladıktan sonra hazırlama ve üretim yuvalarını değiştirebilirsiniz.
+
+## <a name="jboss-eap-hardware-options"></a>Jpatron EAP donanım seçenekleri
+
+Jpatron EAP yalnızca Premium ve yalıtılmış donanım seçeneklerinde kullanılabilir. Genel Önizleme sırasında ücretsiz, paylaşılan, temel veya Standart katmanda bir Jpatron EAP sitesi oluşturan müşteriler, beklenmeyen davranışları önlemek için Premium veya yalıtılmış donanım katmanına kadar ölçeklendirmelidir.
 
 ## <a name="java-runtime-statement-of-support"></a>Java Runtime desteği
 

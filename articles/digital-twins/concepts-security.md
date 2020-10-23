@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015013"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331762"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
-Azure dijital TWINS güvenliği için, dağıtımınızdaki belirli veriler, kaynaklar ve eylemler üzerinde kesin erişim denetimi imkanı sunar. Bu, **rol tabanlı erişim denetimi (RBAC)** adlı ayrıntılı bir rol ve izin yönetimi stratejisi aracılığıyla yapılır. Azure için RBAC 'in genel ilkelerine [buradan](../role-based-access-control/overview.md)ulaşabilirsiniz.
+Azure dijital TWINS güvenliği için, dağıtımınızdaki belirli veriler, kaynaklar ve eylemler üzerinde kesin erişim denetimi imkanı sunar. Bunu, **Azure rol tabanlı erişim denetimi (Azure RBAC)** adlı ayrıntılı bir rol ve izin yönetimi stratejisi aracılığıyla yapar. Azure RBAC 'nin genel ilkeleri hakkında [buradan](../role-based-access-control/overview.md)bilgi edinebilirsiniz.
 
 Azure dijital TWINS, bekleyen verilerin şifrelenmesini de destekler.
 
-## <a name="granting-permissions-with-rbac"></a>RBAC ile izinler verme
+## <a name="granting-permissions-with-azure-rbac"></a>Azure RBAC ile izin verme
 
-RBAC, Azure dijital TWINS 'e [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) ile tümleştirme yoluyla sağlanır.
+Azure RBAC, [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) ile tümleştirme yoluyla Azure dijital TWINS 'e sağlanır.
 
-Bir *güvenlik sorumlusu*için, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek izinler vermek için RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
+Bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir *güvenlik sorumlusu*için izin vermek üzere Azure RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
 
 ### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
@@ -57,7 +57,7 @@ Azure, bir Azure dijital TWINS kaynağına erişimi yetkilendirmek için aşağ�
 Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. Azure RBAC belgelerindeki [*rol tanımlarını anlama*](../role-based-access-control/role-definitions.md) . Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. [*Azure özel roller*](../role-based-access-control/custom-roles.md).
 
 Rolleri iki şekilde atayabilirsiniz:
-* Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz. [*Azure RBAC kullanarak rol atamaları ekleme veya kaldırma ve Azure Portal*](../role-based-access-control/role-assignments-portal.md))
+* Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz [*. Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma*](../role-based-access-control/role-assignments-portal.md))
 * bir rol eklemek veya kaldırmak için CLı komutları aracılığıyla
 
 Bunun nasıl yapılacağı hakkında daha ayrıntılı adımlar için Azure dijital TWINS [*öğreticisinde deneyin: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
@@ -95,4 +95,4 @@ Bu hatayı çözmek için aşağıdakilerden birini yapabilirsiniz:
 
 * [*Nasıl yapılır: yazma uygulaması kimlik doğrulaması kodunda*](how-to-authenticate-client.md)istemci uygulama kodundan bu kavramlarla nasıl etkileşim kuracağınızı öğrenin.
 
-* [Azure Için RBAC](../role-based-access-control/overview.md)hakkında daha fazla bilgi edinin.
+* [Azure RBAC](../role-based-access-control/overview.md)hakkında daha fazla bilgi edinin.

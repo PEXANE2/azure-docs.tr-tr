@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a01d4137217aa594d4636f3338d3f33dc03cc836
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d7d29e9fffff3be2c98c0ec52c01774439e3f7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713751"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341197"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber saldırılarına karşı hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -32,9 +32,10 @@ Güvenlik Merkezi iki modda sunulur:
 
 - Azure **Defender on** -Azure Defender, ücretsiz modunun yeteneklerini özel ve diğer genel bulutlarda çalışan iş yüklerine genişleterek karma bulut iş yükleriniz arasında Birleşik güvenlik yönetimi ve tehdit koruması sağlar. Azure Defender 'ın bazı önemli özellikleri:
 
+    - **Uç nokta Için Microsoft Defender** -sunucular Için Azure Defender, kapsamlı uç nokta algılama ve yanıt (EDR) Için [uç nokta için Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender) içerir. Azure Defender ile Endpoint için Microsoft Defender 'ı kullanma avantajları hakkında daha fazla bilgi edinmek için [Güvenlik Merkezi 'nin tümleşik EDR çözümünü kullanın](security-center-wdatp.md).
+    - **Sanal makineler ve kapsayıcı kayıt defterleri Için güvenlik açığı taraması** -sektörün güvenlik açığı yönetimi için en gelişmiş çözümünü sağlayan tüm sanal makinelerinize kolayca bir tarayıcı dağıtın. Bulguları doğrudan güvenlik merkezi içinde görüntüleyin, araştırın ve düzeltin. 
     - **Karma güvenlik** : tüm şirket içi ve bulut iş yüklerinizde güvenliğin birleştirilmiş bir görünümünü alın. Güvenlik standartları ile uyumluluğu sağlamak için güvenlik ilkelerini uygulayın ve hibrit bulut iş yüklerinizin güvenliğini sürekli değerlendirin. Güvenlik duvarları ve diğer iş ortağı çözümleri dahil olmak üzere birden çok kaynaktan güvenlik verilerini toplayın, arayın ve çözümleyin.
     - **Tehdit koruması uyarıları** -gelişmiş davranış analizi ve Microsoft Intelligent Security Graph, gelişen Cyber saldırıları üzerinde bir uç sağlar. , Saldırıları ve sıfır günlük güvenlik açıklarını belirlemek için yerleşik davranış analizi ve makine öğrenimi özelliğinden yararlanın. Gelen saldırılar ve ihlal sonrası etkinlik için ağları, makineleri ve bulut hizmetlerini izleyin. Etkileşimli araçlar ve bağlamsal tehdit zekasıyla araştırmayı kolaylaştırın.
-    - **Sanal makineler ve kapsayıcı kayıt defterleri Için güvenlik açığı taraması** -sektörün güvenlik açığı yönetimi için en gelişmiş çözümünü sağlayan tüm sanal makinelerinize kolayca bir tarayıcı dağıtın. Bulguları doğrudan güvenlik merkezi içinde görüntüleyin, araştırın ve düzeltin. 
     - **Erişim ve uygulama denetimleri** -belirli iş yüklerinize, izin verme ve reddetme listeleri oluşturmak üzere makine öğrenimi yönetimli öneriler uygulayarak kötü amaçlı yazılımları ve diğer istenmeyen uygulamaları engelleyin. Azure VM 'lerinde yönetim bağlantı noktalarına tam zamanında, denetimli erişimle ağ saldırısı yüzeyini küçültün. Bu, deneme yanılma ve diğer ağ saldırılarına maruz kalma olasılığını önemli ölçüde azaltır.
     - **Kapsayıcı güvenlik özellikleri** -Kapsayıcılı ortamlarınızda güvenlik açığı yönetimi ve gerçek zamanlı tehdit korumasından yararlanın. **Kapsayıcı kayıt defterleri Için Azure Defender**'ı etkinleştirirken tüm özellikler etkinleştirilene kadar bu işlem 12 saat kadar sürebilir. Ücretler, bağlı kayıt defterinize gönderilen benzersiz kapsayıcı görüntülerinin sayısını temel alır. Bir görüntü bir kez tarandıktan sonra, bir kez değiştirilmediği ve bir kez itilemediği takdirde, bu yeniden ücretlendirilmezsiniz. 
 
@@ -70,4 +71,4 @@ Bu makalede, Güvenlik Merkezi için fiyatlandırmaya sunulmuştur. İlgili malz
 
 - [Azure iş yükü maliyetlerinizi iyileştirme](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)
 - [Seçtiğiniz para birimi ve bölgenize göre fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/security-center/)
-- Maliyetlerinizi yönetmek ve bir çözüm için toplanan veri miktarını belirli bir aracı kümesiyle sınırlayarak sınırlamak isteyebilirsiniz. [Çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md) , çözüme bir kapsam uygulamanıza ve çalışma alanındaki bilgisayarların bir alt kümesini hedeflemenizi sağlar. Çözüm hedefleme kullanıyorsanız, güvenlik merkezi çalışma alanını bir çözüme sahip değil olarak listeler.
+- Maliyetlerinizi yönetmek ve bir çözüm için toplanan veri miktarını belirli bir aracı kümesiyle sınırlayarak sınırlamak isteyebilirsiniz. [Çözüm hedefleme](../azure-monitor/insights/solution-targeting.md) , çözüme bir kapsam uygulamanıza ve çalışma alanındaki bilgisayarların bir alt kümesini hedeflemenizi sağlar. Çözüm hedefleme kullanıyorsanız, güvenlik merkezi çalışma alanını bir çözüme sahip değil olarak listeler.

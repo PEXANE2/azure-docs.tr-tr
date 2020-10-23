@@ -3,12 +3,12 @@ title: Azure Event Grid 'de Azure AD ile güvenli Web kancası teslimi
 description: Azure Event Grid kullanılarak Azure Active Directory korunan HTTPS uç noktalarına olayların nasıl teslim edileceğini açıklar
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.openlocfilehash: 0320e78e6b436f6ba1c0a6ca1bfec81eb974e106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd898fadf718509504d44df36572ac75050b02d6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812208"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371673"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Olayları Azure Active Directory korumalı uç noktalara yayımlama
 
@@ -26,7 +26,7 @@ Korumalı uç noktanız için bir Azure AD uygulaması oluşturarak başlayın. 
 Bu bölümde Azure AD uygulamanızı kullanmak için Event Grid nasıl etkinleştirileceği gösterilmektedir. 
 
 > [!NOTE]
-> Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) bir üyesi olmanız gerekir.
+> Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](../active-directory/roles/permissions-reference.md#available-roles) bir üyesi olmanız gerekir.
 
 ### <a name="connect-to-your-azure-tenant"></a>Azure kiracınıza bağlanın
 İlk olarak, komutunu kullanarak Azure kiracınıza bağlanın `Connect-AzureAD` . 

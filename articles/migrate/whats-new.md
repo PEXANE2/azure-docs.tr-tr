@@ -4,12 +4,12 @@ description: Azure geçişi hizmetindeki yenilikler ve son güncelleştirmeler h
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b03f3a7e10aa42f3393ecc22cb74f4e565587032
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667087"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314571"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
@@ -17,7 +17,7 @@ ms.locfileid: "91667087"
 
 ## <a name="update-september-2020"></a>Güncelleştirme (Eylül 2020)
 - Sunucuların Kullanılabilirlik Alanları geçişi artık desteklenmektedir.
-- UEFı tabanlı VM 'lerin ve fiziksel sunucuların Azure 2. nesil VM 'lere geçirilmesi artık desteklenmektedir
+- UEFı tabanlı VM 'lerin ve fiziksel sunucuların Azure 2. nesil VM 'lere geçirilmesi artık desteklenmektedir. Bu sürümle birlikte, Azure geçişi: sunucu geçiş aracı, geçiş sırasında Gen 2 VM 'den Gen 1 VM 'ye dönüştürmeyi gerçekleştirmeyecektir.
 - Farklı değerlendirme ayarları genelinde maliyetleri karşılaştırmanıza yardımcı olmak için yeni bir Azure geçişi Power BI değerlendirme Panosu kullanılabilir. Pano, Power BI panosuna eklenen değerlendirmeleri otomatik olarak oluşturan bir PowerShell yardımcı programıyla birlikte gelir. [Daha fazla bilgi edinin.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
 - Bağımlılık Analizi (aracısız), artık 1000 VM 'lerde eşzamanlı olarak çalıştırılabilir.
 - Bağımlılık Analizi (aracısız) artık PowerShell betikleri kullanılarak uygun ölçekte etkinleştirilebilir veya devre dışı bırakılabilir. [Daha fazla bilgi edinin.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
@@ -36,7 +36,7 @@ ms.locfileid: "91667087"
 
 ## <a name="update-june-2020"></a>Güncelleştirme (Haziran 2020)
 
-- Şirket içi VMware VM 'lerini [Azure VMware çözümüne (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) geçirme değerlendirmeleri artık desteklenmektedir. [Daha fazla bilgi edinin](how-to-create-azure-vmware-solution-assessment.md)
+- Şirket içi VMware VM 'lerini [Azure VMware çözümüne (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) geçirme değerlendirmeleri artık desteklenmektedir. [Daha fazla bilgi edinin](how-to-create-azure-vmware-solution-assessment.md)
 - Fiziksel sunucu keşfi için gereç üzerinde birden çok kimlik bilgisi desteği.
 - Kiracı kısıtlamasının yapılandırıldığı kiracı için gerecden Azure oturum açmaya izin verme desteği.
 
@@ -104,4 +104,4 @@ Azure geçişi 'nin önceki sürümünü kullanıyorsanız (yalnızca şirket i�
 
 - Azure Geçişi fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/azure-migrate/).
 - Azure Geçişi hakkında [sık sorulan soruları gözden geçirin](resources-faq.md).
-- [VMware VM](tutorial-assess-vmware.md) 'Leri ve [Hyper-V VM](tutorial-assess-hyper-v.md)'lerini değerlendirmek için öğreticilerimizi deneyin.
+- [VMware VM](./tutorial-assess-vmware-azure-vm.md) 'Leri ve [Hyper-V VM](tutorial-assess-hyper-v.md)'lerini değerlendirmek için öğreticilerimizi deneyin.

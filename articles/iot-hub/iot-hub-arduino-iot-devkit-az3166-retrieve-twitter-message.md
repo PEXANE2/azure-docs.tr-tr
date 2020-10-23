@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356076"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147900"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Tweet için sallayın, sallayın, Azure Işlevleri ile Twitter iletisi alın
 
@@ -23,7 +23,7 @@ Bu projede, Azure Işlevleri 'ni kullanarak bir olayı tetiklemek için hareket 
 
 ## <a name="what-you-need"></a>Gerekenler
 
-[Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) şu şekilde sona erdirin:
+[Başlarken Kılavuzunu](./iot-hub-arduino-iot-devkit-az3166-get-started.md) şu şekilde sona erdirin:
 
 * DevKit 'in Wi-Fi ' a bağlanmasını sağlar.
 * Geliştirme ortamını hazırlayın.
@@ -207,4 +207,4 @@ Başka sorunlarla karşılaşırsanız, [IoT DevKit hakkında SSS bölümüne](h
 
 Artık bir DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlamayı ve bir tweet almanızı öğrendiğinize göre, önerilen sonraki adımlar aşağıda verilmiştir:
 
-* [Azure IoT uzaktan Izleme çözüm hızlandırıcısının genel bakış](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT uzaktan Izleme çözüm hızlandırıcısının genel bakış](/azure/iot-suite/)

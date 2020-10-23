@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203516"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124178"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk sınırları
 
@@ -35,9 +35,9 @@ Bu bölümde, Data Box hizmetine uygun olarak Azure Storage hizmeti için sını
 
 Azure depolama hizmeti sınırları ve adlandırma paylaşımları, kapsayıcılar ve dosyaları için en iyi uygulamalar hakkında en son bilgiler için şuraya gidin:
 
-- [Kapsayıcıları adlandırma ve başvuru](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Paylaşımları adlandırma ve onlara başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Blok Blobları ve Sayfa Blobu kuralları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Kapsayıcıları adlandırma ve başvuru](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Paylaşımları adlandırma ve onlara başvurma](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Blok Blobları ve Sayfa Blobu kuralları](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
 > Azure depolama hizmeti sınırlarını aşan veya Azure dosyaları/blob adlandırma kurallarına uymayan herhangi bir dosya veya dizin varsa, bu dosya veya dizinlerin Data Box hizmeti aracılığıyla Azure depolama 'ya alınmaz.
@@ -64,7 +64,7 @@ Bir depolama hesabına kopyalanabilen verilerin boyutuna ilişkin sınırlar aş
 
 | Veri türü             | Varsayılan limit          |
 |--------------------------|------------------------|
-| Blok Blobu, Sayfa Blobu    | Bu limitlerle ilgili güncel bilgiler için bkz. [Azure Blob depolama ölçek hedefleri](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage), [Azure Standart depolama ölçek hedefleri](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)ve [Azure dosyaları ölçeklendirme hedefi](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets). <br /><br /> Sınırlar, Data Box Disk dahil olmak üzere tüm kaynaklardaki verileri içerir.|
+| Blok Blobu, Sayfa Blobu    | Bu limitlerle ilgili güncel bilgiler için bkz. [Azure Blob depolama ölçek hedefleri](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Azure Standart depolama ölçek hedefleri](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)ve [Azure dosyaları ölçeklendirme hedefi](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets). <br /><br /> Sınırlar, Data Box Disk dahil olmak üzere tüm kaynaklardaki verileri içerir.|
 
 
 ## <a name="azure-object-size-limits"></a>Azure nesne boyutu sınırları

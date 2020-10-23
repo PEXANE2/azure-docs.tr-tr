@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921682"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364091"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
@@ -115,7 +115,7 @@ Mobil, Web ve tek sayfalı uygulamaların çoğunluğu için en yaygın kimlik s
 
 Özel ilkeler, kimlik deneyimi çerçevesi (ıEF) düzenleme altyapısının tam gücüne erişimi kaldırır. Özel ilkeler sayesinde, Imagine 'yi kullanarak neredeyse tüm kimlik doğrulaması, Kullanıcı kaydı ve profil düzenlemesi deneyimi oluşturabilirsiniz.
 
-Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örnek:
+Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örneğin:
 
 * Diğer kimlik sağlayıcılarıyla federasyona ekleme
 * Birinci ve üçüncü taraf Multi-Factor Authentication (MFA) sorunları
@@ -215,7 +215,7 @@ Azure AD B2C, aşağıdakiler de dahil olmak üzere belirli yönetim eylemlerini
 * Kimlik deneyimi çerçevesinde (özel ilkeler) güven çerçevesi ilkeleri oluşturma ve yönetme
 * Kimlik deneyimi çerçevesinde Federasyon ve şifreleme için gizli dizileri yönetme (özel ilkeler)
 
-Azure AD B2C yönetim rolü desteği de dahil olmak üzere Azure AD rolleri hakkında daha fazla bilgi için, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
+Azure AD B2C yönetim rolü desteği de dahil olmak üzere Azure AD rolleri hakkında daha fazla bilgi için, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/roles/permissions-reference.md)bölümüne bakın.
 
 ### <a name="multi-factor-authentication-mfa"></a>Çok faktörlü kimlik doğrulaması (MFA)
 

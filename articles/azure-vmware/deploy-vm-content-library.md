@@ -3,12 +3,12 @@ title: Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı o
 description: Azure VMware Çözüm özel bulutu 'nda VM dağıtmak için bir içerik kitaplığı oluşturun.
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575802"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461694"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı oluşturma
 
@@ -92,7 +92,7 @@ Artık içerik kitaplığı oluşturulduğuna göre, bir VM 'yi özel bir bulut 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM iş yüklerini özel buluta geçirmek için karma bulut uzantısı (HCX) kullanmayı planlıyorsanız, [Azure IÇIN HCX VMware çözümünü](tutorial-deploy-vmware-hcx.md) kullanın.
+VM iş yüklerini özel buluta geçirmek için VMware HCX kullanmayı planlıyorsanız [VMware HCX 'ı dağıtma ve yapılandırma](tutorial-deploy-vmware-hcx.md) yordamını kullanın.
 
 <!-- LINKS - external-->
 

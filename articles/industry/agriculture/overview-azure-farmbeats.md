@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87439559"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331932"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure Farmtts 'ye Genel Bakış (Önizleme)
 
 Azure Farm, Azure Marketi 'nde bulunan işletmeden işletmeye yönelik bir tekliftir. Sağlayıcılar arasında belirsiz veri kümelerinin toplanmasının mümkün olduğunu belirler. Azure Farmtts, fkullanılan veri kümelerine göre yapay zeka (AI) veya Machine Learning (ML) modelleri oluşturmanıza olanak sağlar. Azure Farmcts 'yi kullanarak, büyük ölçekli işletmeler, veri mühendisinin belirsiz bir şekilde kaldırılması yerine temel değere odaklanabilir.
 
 > [!NOTE]
-> Azure Farmtts Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Farmtts, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure Farmtts destek forumu](https://aka.ms/farmbeatssupport) ' nu kullanın.
+> Azure Farmtts Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Farmtts, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure Farmtts destek forumu](https://aka.ms/farmbeatssupport) ' nu kullanın.
 
 ![Proje grubu ları](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
@@ -43,7 +43,7 @@ Datahub, genişletilebilir bir API platformu olarak tasarlanmıştır. Azure Far
 
 Azure Farmtts hızlandırıcısı, veri hub 'ının üzerine inşa edilen örnek bir Web uygulamasıdır. Hızlandırıcı hızlı geçiş-Kullanıcı arabiriminizi ve model geliştirmeyi başlatır. Azure Farmtts hızlandırıcısı, Azure Farmtts API 'Lerini kullanır. Alınan algılayıcı verilerini grafik olarak ve model çıkışları harita olarak görselleştirir. Örneğin, Hızlandırıcıyı kullanarak bir grubu hızlı bir şekilde oluşturabilir ve bu grup için kolayca bir vegetation Dizin eşlemesi ya da bir algılayıcı yerleştirme eşlemesi alabilirsiniz.
 
-## <a name="role-based-access-control-rbac"></a>Rol Tabanlı Access Control (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC)
 
 Yönetici, önceden tanımlanmış rollerden birini kullanarak Azure Farmtts için erişim kuralları tanımlayabilir. Roller, uygulamanın ne kadar kullanıcıya erişimi olduğunu ve gerçekleştirebileceği eylemleri tespit edebilir. Azure Farmtempts 'de, kullanıcılar ve iş ortakları için iki tür rol vardır.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 5344354c05547d6d2a5e2762c70a97cc4222c464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4995f813bbfe7ef368f83085cdd61ab97fa330e8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552365"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108533"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Öğretici: Qlik Sense Enterprise 'ı Azure Active Directory tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide, Qlik Sense Enterprise 'ı Azure Active Directory (Azure AD) ile
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -136,7 +136,7 @@ Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum a�
     > [!NOTE]
     > IDP meta verilerini Qlik Sense sunucusuna yüklemeden önce, Azure AD ve Qlik Sense sunucusu arasında düzgün işlem yapıldığından emin olmak için dosyanın düzenlenmesi gerekir.
 
-    ![QlikSense][qs24]
+    ![Ekran görüntüsünde, Federasyon meta verileri X M L dosyası olan bir Visual Studio Code penceresi gösterilmektedir.][qs24]
 
     a. Bir metin düzenleyicisinde Azure portal indirdiğiniz FederationMetaData.xml dosyasını açın.
 
@@ -150,19 +150,19 @@ Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum a�
 
 3. QMC 'de, **sanal proxy 'ler** menü öğesine tıklayın.
 
-    ![QlikSense][qs6]
+    ![Ekran görüntüsü, yapılandırma SISTEMI ' nden seçilen sanal proxy 'leri gösterir.][qs6]
 
 4. Ekranın alt kısmındaki **Yeni oluştur** düğmesine tıklayın.
 
-    ![QlikSense][qs7]
+    ![Ekran görüntüsü yeni oluştur seçeneğini gösterir.][qs7]
 
 5. Sanal proxy düzenleme ekranı görüntülenir.  Ekranın sağ tarafında, yapılandırma seçeneklerinin görünür hale getirilmesi için bir menü bulunur.
 
-    ![QlikSense][qs9]
+    ![Ekran görüntüsü, özelliklerden seçilen tanımlamayı gösterir.][qs9]
 
 6. Kimlik menü seçeneği işaretli olarak, Azure sanal proxy yapılandırması için tanımlama bilgilerini girin.
 
-    ![QlikSense][qs8]  
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz sanal ara sunucu kimliğini düzenleme bölümünü gösterir.][qs8]  
 
     a. **Açıklama** alanı, sanal proxy yapılandırması için kolay bir addır.  Açıklama için bir değer girin.
 
@@ -174,7 +174,7 @@ Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum a�
 
 7. Görünür yapmak için kimlik doğrulama menü seçeneğine tıklayın.  Kimlik doğrulama ekranı görüntülenir.
 
-    ![QlikSense][qs10]
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz sanal proxy kimlik doğrulaması bölümünü gösterir.][qs10]
 
     a. Anonim **erişim modu** açılan liste, anonim kullanıcıların sanal proxy aracılığıyla Qlik Sense 'a erişip erişemeyeceğini belirler.  Varsayılan seçenek anonim kullanıcı değildir.
 
@@ -196,55 +196,55 @@ Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum a�
 
 8. **Yük Dengeleme** menü seçeneğine tıklayarak görünür hale getirin.  Yük Dengeleme ekranı görüntülenir.
 
-    ![QlikSense][qs11]
+    ![Ekran görüntüsü, yük dengeleme için sanal proxy düzenleme ekranını gösterir ve yeni sunucu düğümü Ekle seçeneğini belirleyebilirsiniz.][qs11]
 
 9. **Yeni sunucu düğümü Ekle** düğmesine tıklayın, motor düğümünü veya düğümleri seçin Qlik Sense, Yük Dengeleme amaçlarıyla oturum gönderir ve **Ekle** düğmesine tıklayın.
 
-    ![QlikSense][qs12]
+    ![Ekran görüntüsü, sunucu ekleyebileceğiniz iletişim kutusunda yük dengelemeye sunucu düğümleri Ekle düğmesini gösterir.][qs12]
 
 10. Gelişmiş menü seçeneğine tıklayarak görünür hale getirin. Gelişmiş ekran görüntülenir.
 
-    ![QlikSense][qs13]
+    ![Ekran görüntüsü, sanal proxy gelişmiş ekranını Düzenle ekranını gösterir.][qs13]
 
     Konak izin listesi, Qlik Sense sunucusuna bağlanırken kabul edilen ana bilgisayar adlarını tanımlar.  **Qlik Sense sunucusuna bağlanırken kullanıcıların belirtmesi için ana bilgisayar adını girin.** Ana bilgisayar adı, https://olmadan SAML ana bilgisayar URI 'siyle aynı değerdir.
 
 11. **Uygula** düğmesine tıklayın.
 
-    ![QlikSense][qs14]
+    ![Ekran görüntüsü Uygula düğmesini gösterir.][qs14]
 
 12. Sanal ara sunucu ile bağlantılı proxy 'lerin yeniden başlatılacağını bildiren uyarı iletisini kabul etmek için Tamam ' a tıklayın.
 
-    ![QlikSense][qs15]
+    ![Ekran görüntüsü, sanal proxy 'ye değişiklikleri Uygula onay iletisini gösterir.][qs15]
 
 13. Ekranın sağ tarafında, Ilişkili öğeler menüsü görüntülenir.  **Proxy 'ler** menü seçeneğine tıklayın.
 
-    ![QlikSense][qs16]
+    ![Ekran görüntüsü Ilişkili öğelerden seçilen proxy 'Leri gösterir.][qs16]
 
 14. Proxy ekranı görünür.  Sanal proxy 'ye bir proxy bağlamak için alttaki **bağlantı** düğmesine tıklayın.
 
-    ![QlikSense][qs17]
+    ![Ekran görüntüsünde bağlantı düğmesi gösterilir.][qs17]
 
 15. Bu sanal proxy bağlantısını destekleyecek proxy düğümünü seçin ve **bağlantı** düğmesine tıklayın.  Bağlandıktan sonra proxy, ilişkili proxy 'ler altında listelenecektir.
 
-    ![QlikSense][qs18]
+    ![Ekran görüntüsü, select proxy Services 'ı gösterir.][qs18]
   
-    ![QlikSense][qs19]
+    ![Ekran görüntüsü, sanal ara sunucu ilişkili öğeler iletişim kutusunda Ilişkili proxy 'leri gösterir.][qs19]
 
 16. Yaklaşık beş ila on saniye sonra, QMC 'yi Yenile iletisi görüntülenir.  **QMC 'Yi Yenile** düğmesine tıklayın.
 
-    ![QlikSense][qs20]
+    ![Ekran görüntüsü, oturumunuzun sona erdiği iletiyi gösterir.][qs20]
 
 17. QMC yenilendiğinde, **sanal proxy** menü öğesine tıklayın. Yeni SAML sanal proxy girişi, ekrandaki tabloda listelenir.  Sanal proxy girdisinde tek tıklama.
 
-    ![QlikSense][qs51]
+    ![Ekran görüntüsü, tek bir girişi olan sanal proxy 'leri gösterir.][qs51]
 
 18. Ekranın alt kısmındaki SP meta verilerini Indir düğmesi etkinleşir.  Meta verileri bir dosyaya kaydetmek için **SP meta verilerini indir** düğmesine tıklayın.
 
-    ![QlikSense][qs52]
+    ![Ekran görüntüsünde, S P meta verilerini Indir düğmesi gösterilir.][qs52]
 
 19. SP meta veri dosyasını açın.  **EntityId** girişini ve **assertionconsumerservice** girişini gözlemleyin.  Bu değerler **tanımlayıcı**, **URL 'Yi IMZALA** ve Azure AD uygulama yapılandırmasındaki **yanıt URL** 'si ile eşdeğerdir. Bu değerleri, eşleşmeseler Azure AD uygulama yapılandırmasındaki **Qlik Sense Enterprise etki alanı ve URL 'leri** bölümüne yapıştırın, ardından Azure AD uygulaması yapılandırma Sihirbazı 'nda değiştirmeniz gerekir.
 
-    ![QlikSense][qs53]
+    ![Ekran görüntüsünde EntityId ve AssertionConsumerService adlı bir EntityDescriptor içeren bir düz metin düzenleyici gösterilmektedir.][qs53]
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Qlik Sense kurumsal test kullanıcısı oluşturma
 

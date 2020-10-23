@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760315"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206461"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Faturalama verilerini Azure 'a yükleyin ve Azure portal görüntüleyin
 
@@ -30,7 +30,7 @@ Gelecekte, Azure Arc etkin veri hizmetlerinizi çalıştırabileceğiniz iki mod
 - **Dolaylı olarak bağlı** -Azure 'a doğrudan bağlantı yoktur. Veriler yalnızca bir dışarı aktarma/karşıya yükleme işlemi aracılığıyla Azure 'a gönderilir. Tüm Azure Arc veri Hizmetleri dağıtımları bu modda bugün önizleme aşamasında çalışır.
 - **Doğrudan** bağlantı-bu modda, Azure Arc etkinleştirilmiş Kubernetes hizmetinde, Azure Arc etkin veri hizmetlerinin çalıştığı Kubernetes kümesi arasında doğrudan bir bağlantı sağlamak için bir bağımlılık olacaktır. Bu, daha fazla özelliği etkinleştirir ve Azure Arc etkin veri hizmetlerinizi Azure PaaS 'deki veri hizmetlerinizi yönettiğiniz gibi yönetmek için Azure portal ve Azure CLı 'yi de kullanmanıza imkan tanır.  Bu bağlantı modu henüz önizlemede kullanılamıyor, ancak yakında kullanıma sunulacak.
 
-[Bağlantı modları](https://docs.microsoft.com/azure/azure-arc/data/connectivity)arasındaki fark hakkında daha fazla bilgi edinebilirsiniz.
+[Bağlantı modları](./connectivity.md)arasındaki fark hakkında daha fazla bilgi edinebilirsiniz.
 
 Dolaylı olarak bağlanılan modda faturalandırma verileri, Azure Arc veri denetleyicisi 'nden güvenli bir dosyaya düzenli aralıklarla dışarı aktarılabilir ve sonra Azure 'a yüklenir ve işlenir.  Yaklaşan doğrudan bağlı modda faturalandırma verileri, hizmetlerinizin maliyetlerine neredeyse gerçek zamanlı bir görünüm kazandırmak için yaklaşık 1/saat Azure 'a otomatik olarak gönderilir. Verileri dolaylı olarak bağlı moddaki dışa ve karşıya yükleme işlemi, komut dosyaları kullanılarak da otomatikleştirilebilir veya sizin için bunu yapacağız bir hizmet derleyebilir.
 
@@ -117,7 +117,7 @@ Azure portal faturalama verilerini görüntülemek için aşağıdaki adımları
 1. Görünümün en üstündeki **kaynağa göre maliyet** düğmesine tıklayın.
 1. Kapsamınız, veri hizmeti kaynaklarınızın oluşturulduğu aboneliğe ayarlandığından emin olun.
 1. Görünümün üst kısmındaki kapsam seçicisinin yanındaki Görünüm açılan listesinden **kaynağa göre maliyet** ' i seçin.
-1. Tarih filtresinin **Bu aya** veya veri hizmeti kaynaklarınızı oluşturduğunuz zaman zamanlamalı bir zaman aralığına ayarlandığından emin olun.
+1. Tarih filtresinin **Bu aya** veya veri hizmeti kaynaklarınızı oluştururken zamanlamalı bir zaman aralığına ayarlandığından emin olun.
 1. **Add filter** **Resource type**  =  `microsoft.azuredata/<data service type>` Yalnızca bir Azure yay etkin veri hizmeti türüne filtre uygulamak istiyorsanız, kaynak türüne göre filtre eklemek için Filtre Ekle ' ye tıklayın.
 1. Şimdi oluşturulmuş ve Azure 'a yüklenen tüm kaynakların bir listesini görürsünüz. Faturalandırma ölçümü $0 olduğundan, maliyetin her zaman $0 olduğunu görürsünüz.
 
@@ -135,11 +135,11 @@ Ayrıca, bir faturalandırma dışarı aktarma işi oluşturarak **ayrıntılı*
 
 Bir faturalandırma dışarı aktarma işi ayarlamak için aşağıdaki adımları izleyin:
 
-1. Sol taraftaki dışarı aktarmalar öğesine tıklayın.
-1. Ekle’ye tıklayın.
+1. Sol taraftaki **dışarı aktarmalar** öğesine tıklayın.
+1. **Ekle**'ye tıklayın.
 1. Bir ad ve dışa aktarma sıklığı girin ve Ileri ' ye tıklayın.
-1. Yeni bir depolama hesabı oluşturmayı seçin ya da yeni bir tane oluşturun ve faturalama veri dosyalarını dışa aktarmak üzere depolama hesabı, kapsayıcı ve dizin yolunu belirtmek için formu doldurun ve Ileri ' ye tıklayın.
-1. Oluştur’a tıklayın.
+1. Yeni bir depolama hesabı oluşturmayı veya var olanı kullanmayı seçin ve faturalama veri dosyalarını dışarı aktarmak için depolama hesabı, kapsayıcı ve dizin yolunu belirtmek üzere formu doldurun ve Ileri ' ye tıklayın.
+1. **Oluştur**’a tıklayın.
 
 Faturalandırma verileri dışarı aktarma dosyaları yaklaşık 4 saat içinde kullanıma sunulacaktır ve faturalandırma dışarı aktarma işi oluşturulurken belirttiğiniz zamanlamaya göre dışarı aktarılacaktır.
 
@@ -156,7 +156,7 @@ Azure portal faturalandırma verileri dosyalarını doğrulayabilirsiniz.
 5. Yukarıdaki faturalandırma dışarı aktarma işini oluştururken belirttiğiniz kapsayıcıya tıklayın.
 6. Yukarıdaki faturalandırma dışarı aktarma işini oluştururken belirttiğiniz klasöre tıklayın.
 7. Oluşturulan klasörler ve dosyaların detayına gidin ve oluşturulan. csv dosyalarından birine tıklayın.
-8. Dosyayı yerel Indirilenler klasörünüze kaydedecek Indir düğmesine tıklayın.
+8. Dosyayı yerel Indirilenler klasörünüze kaydedecek **İndir** düğmesine tıklayın.
 9. Excel gibi bir. csv dosya görüntüleyicisini kullanarak dosyayı açın.
 10. Sonuçları yalnızca **kaynak türü**olan satırları gösterecek şekilde filtreleyin  =  `Microsoft.AzureData/<data service resource type` .
 11. Örneğin, UsageQuantity sütunundaki geçerli 24 saat döneminde kullanılan saat sayısını görürsünüz.

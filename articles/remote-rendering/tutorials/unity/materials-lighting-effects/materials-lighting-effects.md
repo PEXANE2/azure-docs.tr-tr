@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021077"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203254"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Öğretici: malzemeleri, aydınlatmayı ve etkileri Iyileştirme
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Kullanıcıya görsel geri bildirim sağlanması, herhangi bir uygulamadaki kullanıcı deneyiminin önemli bir parçasıdır. Azure uzaktan Işleme, [hiyerarşik durum geçersiz kılma işlemleri](../../../overview/features/override-hierarchical-state.md)aracılığıyla görsel geri bildirim mekanizmaları sağlar. Hiyerarşik durum geçersiz kılmaları, yerel model örneklerine eklenen bileşenlerle uygulanır. [Uzak nesne grafiğini Unity hiyerarşisinde eşitlerken](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy)bu yerel örneklerin nasıl oluşturulacağını öğrendik.
 
-İlk olarak, [**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) bileşeni etrafında bir sarmalayıcı oluşturacağız. **HierarchicalStateOverrideComponent** , uzak varlıktaki geçersiz kılmaları denetleyen yerel betiktir. [**Öğretici varlıkları**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) , sarmalayıcı oluşturmak için Genişletireceğiz **BaseEntityOverrideController**adlı bir soyut temel sınıf içerir.
+İlk olarak, [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) bileşeni etrafında bir sarmalayıcı oluşturacağız. **HierarchicalStateOverrideComponent** , uzak varlıktaki geçersiz kılmaları denetleyen yerel betiktir. [**Öğretici varlıkları**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) , sarmalayıcı oluşturmak için Genişletireceğiz **BaseEntityOverrideController**adlı bir soyut temel sınıf içerir.
 
 1. **EntityOverrideController** adlı yeni bir betik oluşturun ve içeriğini şu kodla değiştirin:
 

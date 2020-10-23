@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a98bec006a1bbb755a0c310b8e0409302c45198
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b23ee92fb691af6152d16c94dad59f0751810fc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819189"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460198"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Öğretici: Infor Retail – Information Management ile tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Infor Retail – Information Management 'ı Azure AD ile tümleştirmek aşağı
 * Kullanıcılarınızın Azure AD hesaplarıyla perakende – Information Management (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Infor Retail – Information Management ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -189,18 +189,18 @@ Bu bölümde, Infor Retail – Information Management 'a erişim vererek Azure �
 
 ### <a name="create-infor-retail--information-management-test-user"></a>Infor Retail – Information Management test kullanıcısı oluşturma
 
-Bu bölümde, Infor Retail – Information Management bölümünde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Infor Retail – Information Management platformunda kullanıcıları eklemek için [Infor Retail – Information Management destek ekibi](mailto:innovate@infor.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Infor Retail – Information Management bölümünde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Infor Retail – Information Management platformunda kullanıcıları eklemek için [Infor Retail – Information Management destek ekibi](mailto:innovate@infor.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim paneli ' nde Infor Retail – Information Management kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Infor Retail – Information Management ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim paneli ' nde Infor Retail – Information Management kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Infor Retail – Information Management ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

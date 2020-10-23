@@ -4,12 +4,12 @@ description: Bu sayfada, Azure Site Recovery hizmetine genel bir bakış sağlan
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86135229"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281880"
 ---
 # <a name="about-site-recovery"></a>Site Recovery Hakkında
 
@@ -50,7 +50,7 @@ Site Recovery, şunlar için çoğaltmayı yönetebilir:
 **Desteklenir** | **Ayrıntılar**
 --- | ---
 **Çoğaltma senaryoları** | Azure VM’leri bir Azure bölgesinden diğerine çoğaltın.<br/><br/>  Şirket içi VMware VM 'lerini, Hyper-V VM 'lerini, fiziksel sunucuları (Windows ve Linux) Azure Stack VM 'Leri Azure 'a çoğaltın.<br/><br/> AWS Windows örneklerini Azure 'a çoğaltın.<br/><br/> Şirket içi VMware VM’leri, System Center VMM tarafından yönetilen Hyper-V VM’leri ve fiziksel sunucuları ikincil siteye çoğaltın.
-**Bölgeler** | Site Recovery için [desteklenen bölgeleri](https://azure.microsoft.com/regions/services/) inceleyin. |
+**Bölgeler** | Site Recovery için [desteklenen bölgeleri](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery) inceleyin. |
 **Çoğaltılan makineler** | [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) çoğaltma, [şirket içi VMware VM’ler ve fiziksel sunucular](vmware-physical-azure-support-matrix.md#replicated-machines) ve [şirket içi Hyper-V VM’lere](hyper-v-azure-support-matrix.md#replicated-vms) yönelik çoğaltma gereksinimlerini inceleyin.
 **İş yükleri** | Çoğaltma için desteklenen bir makinede çalışan tüm iş yüklerini çoğaltabilirsiniz. Site Recovery takım, bir [dizi](site-recovery-workload.md#workload-summary)uygulama için uygulamaya özel testler de gerçekleştirmedi.
 

@@ -3,12 +3,12 @@ title: Şablonlara genel bakış
 description: Kaynak dağıtımı için Azure Resource Manager şablonları kullanma avantajlarını açıklar.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119370"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280047"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -54,7 +54,7 @@ ARM şablonlarını kullanma ve kod hizmetleri olarak diğer altyapılardan biri
 
 * **Dışarı aktarılabilir kod**: kaynak grubunun geçerli durumunu dışarı aktararak veya belirli bir dağıtım için kullanılan şablonu görüntüleyerek mevcut kaynak grubu için bir şablon alabilirsiniz. [Dışarı aktarılan şablonu](export-template-portal.md) görüntülemek şablon söz dizimi hakkında bilgi edinmek için yararlı bir yoldur.
 
-* **Yazma araçları**: şablonları [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) ve şablon aracı uzantısıyla yazabilirsiniz. IntelliSense, sözdizimi vurgulama, çevrimiçi Yardım ve diğer birçok dil işlevini edinirsiniz. Visual Studio Code ' a ek olarak, [Visual Studio 'yu](create-visual-studio-deployment-project.md)da kullanabilirsiniz.
+* **Yazma araçları**: şablonları [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) ve şablon aracı uzantısıyla yazabilirsiniz. IntelliSense, sözdizimi vurgulama, çevrimiçi Yardım ve diğer birçok dil işlevini edinirsiniz. Visual Studio Code Ayrıca, [Visual Studio 'yu](create-visual-studio-deployment-project.md)da kullanabilirsiniz.
 
 ## <a name="template-file"></a>Şablon dosyası
 

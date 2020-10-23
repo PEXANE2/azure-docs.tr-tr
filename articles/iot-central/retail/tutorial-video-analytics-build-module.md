@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873481"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124903"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Öğretici: canlı video analizi ağ geçidi modüllerini değiştirme ve derleme
 
@@ -21,15 +21,15 @@ Bu öğreticide, canlı video analizi (LVA) modülleri için IoT Edge modülü k
 
 Önceki öğreticiler, modüllerin önceden oluşturulmuş görüntülerini kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için şunlar gerekir:
 
 * [Node.js](https://nodejs.org/en/download/) ile v10 arasındaki veya üzeri
 * [Tslınt](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) uzantısı yüklü [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Docker](https://www.docker.com/products/docker-desktop) altyapısı
-* Modül sürümlerinizi barındırmak için bir [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) .
-* [Azure Media Services](https://docs.microsoft.com/azure/media-services/) hesabı. Önceki öğreticileri tamamladıysanız, daha önce oluşturduğunuz birini yeniden kullanabilirsiniz.
+* Modül sürümlerinizi barındırmak için bir [Azure Container Registry](../../container-registry/index.yml) .
+* [Azure Media Services](../../media-services/index.yml) hesabı. Önceki öğreticileri tamamladıysanız, daha önce oluşturduğunuz birini yeniden kullanabilirsiniz.
 
 ## <a name="clone-the-repository"></a>Depoyu kopyalama
 

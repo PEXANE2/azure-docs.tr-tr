@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 6831cb3f39c25eb69d16300156f456980cf57fa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: e4e680ea55988f7b3446bf72c8e800bcc51eb537
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88604812"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282057"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB'de İstek birimleri
 
@@ -38,42 +38,50 @@ Kullanmakta olduğunuz Azure Cosmos hesabının türü, kullanılan RUs 'in ücr
 
 İş yükünüz tarafından tüketilen RUs sayısını tahmin ederken aşağıdaki faktörleri göz önünde bulundurun:
 
-* **Öğe boyutu**: Öğenin boyutu arttıkça öğeyi okumak veya yazmak için tüketilen RU sayısı da artar.
+- **Öğe boyutu**: Öğenin boyutu arttıkça öğeyi okumak veya yazmak için tüketilen RU sayısı da artar.
 
-* **Öğeyi dizine alma**: Varsayılan olarak her öğe otomatik olarak dizine alınır. Kapsayıcıdaki öğelerinizden bazılarını dizine almamayı seçerseniz daha az RU tüketilir.
+- **Öğeyi dizine alma**: Varsayılan olarak her öğe otomatik olarak dizine alınır. Kapsayıcıdaki öğelerinizden bazılarını dizine almamayı seçerseniz daha az RU tüketilir.
 
-* **Öğe özelliği sayısı**: Tüm özelliklerde varsayılan olarak dizine alma seçeneğinin açık olduğunu kabul edersek, öğenin özellik sayısı arttıkça öğeyi yazmak için tüketilen RU'ların sayısı da artar.
+- **Öğe özelliği sayısı**: Tüm özelliklerde varsayılan olarak dizine alma seçeneğinin açık olduğunu kabul edersek, öğenin özellik sayısı arttıkça öğeyi yazmak için tüketilen RU'ların sayısı da artar.
 
-* **Dizinli özellikler**: Her kapsayıcıda bir dizin kuralı, varsayılan olarak hangi özelliklerin dizinli olduğunu belirler. Yazma işlemlerinin RU tüketimini azaltmak için dizinli özelliklerin sayısını sınırlayın.
+- **Dizinli özellikler**: Her kapsayıcıda bir dizin kuralı, varsayılan olarak hangi özelliklerin dizinli olduğunu belirler. Yazma işlemlerinin RU tüketimini azaltmak için dizinli özelliklerin sayısını sınırlayın.
 
-* **Veri tutarlılığı**: güçlü ve sınırlanmış stalet tutarlılık düzeyleri, diğer gevşek tutarlılık seviyelerine kıyasla okuma işlemleri gerçekleştirirken yaklaşık iki kat daha fazla tüketir.
+- **Veri tutarlılığı**: güçlü ve sınırlanmış stalet tutarlılık düzeyleri, diğer gevşek tutarlılık seviyelerine kıyasla okuma işlemleri gerçekleştirirken yaklaşık iki kat daha fazla tüketir.
 
-* **Okuma türü**: nokta okuma maliyeti, sorgulardan önemli ölçüde daha az.
+- **Okuma türü**: nokta okuma maliyeti, sorgulardan önemli ölçüde daha az.
 
-* **Sorgu kalıpları**: Sorgunun karmaşıklığı, bir işlem için tüketilen RU sayısını etkiler. Sorgu işlemlerinin maliyetini etkileyen faktörler şunlardır: 
-    
-    - Sorgu sonuçlarının sayısı
-    - Koşulların sayısı
-    - Koşulların yapısı
-    - Kullanıcı tanımlı işlevlerin sayısı
-    - Kaynak verilerin boyutu
-    - Sonuç kümesinin boyutu
-    - Projeksiyonlar
+- **Sorgu kalıpları**: Sorgunun karmaşıklığı, bir işlem için tüketilen RU sayısını etkiler. Sorgu işlemlerinin maliyetini etkileyen faktörler şunlardır: 
 
-  Azure Cosmos DB, yinelenen yürütmelerde aynı veriler üzerinde çalıştırılan aynı sorgunun her zaman aynı sayıda RU'ya mal olacağını garanti eder.
+  - Sorgu sonuçlarının sayısı
+  - Koşulların sayısı
+  - Koşulların yapısı
+  - Kullanıcı tanımlı işlevlerin sayısı
+  - Kaynak verilerin boyutu
+  - Sonuç kümesinin boyutu
+  - Projeksiyonlar
 
-* **Betik kullanımı**: sorgularda olduğu gibi, saklı yordamlar ve Tetikleyiciler, gerçekleştirilen işlemlerin karmaşıklığına göre Rus kullanır. Uygulamanızı geliştirirken, her işlemin ne kadar RU kapasitesi tükettiğini daha iyi anlamak için [istek ücreti üst bilgisini](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) inceleyin.
+  Aynı verilerde aynı sorgu, yinelenen yürütmeler üzerinde her zaman aynı ru sayısını ücretlendirilecektir.
+
+- **Betik kullanımı**: sorgularda olduğu gibi, saklı yordamlar ve Tetikleyiciler, gerçekleştirilen işlemlerin karmaşıklığına göre Rus kullanır. Uygulamanızı geliştirirken, her işlemin ne kadar RU kapasitesi tükettiğini daha iyi anlamak için [istek ücreti üst bilgisini](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) inceleyin.
+
+## <a name="request-units-and-multiple-regions"></a>İstek birimleri ve birden çok bölge
+
+Cosmos kapsayıcısı (veya veritabanı) üzerinde *' r '* ru 'yi sağlarsanız, Cosmos DB Cosmos hesabınızla ilişkili *her* bölgede *' r '* ru 'nin kullanılabilir olmasını sağlar. Belirli bir bölgeye seçmeli olarak RUs atayamazsınız. Cosmos kapsayıcısı (veya veritabanı) üzerinde sağlanan RUs, Cosmos hesabınızla ilişkili tüm bölgelerde sağlanır.
+
+Bir Cosmos kapsayıcısının *' R '* ru ile yapılandırıldığını ve Cosmos hesabıyla Ilişkilendirilmiş *' N '* bölgesi olduğunu varsayarsak, kapsayıcıda Global olarak bulunan toplam ru = *R* x *N*.
+
+[Tutarlılık modeli](consistency-levels.md) seçiminiz, aktarım hızını da etkiler. Daha gevşek tutarlılık düzeyi (örn., *oturum*, *tutarlı ön ek* ve *nihai* tutarlılık) için, daha esnek tutarlılık düzeylerine kıyasla (örn., *sınırlı stalet* veya *güçlü* tutarlılık) yaklaşık 2x okuma aktarım hızı edinebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos kapsayıcılarında ve veritabanlarında işleme sağlama](set-throughput.md)hakkında daha fazla bilgi edinin.
-* [Azure Cosmos DB sunucusuz](serverless.md)hakkında daha fazla bilgi edinin.
-* [Mantıksal bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
-* [Sağlanan aktarım hızını genel olarak ölçeklendirme](scaling-throughput.md)hakkında daha fazla bilgi edinin.
-* [Azure Cosmos kapsayıcısında üretilen iş sağlama](how-to-provision-container-throughput.md)hakkında bilgi edinin.
-* [Azure Cosmos veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md)hakkında bilgi edinin.
-* [Bir işlem için istek birimi ücreti bulmayı](find-request-unit-charge.md)öğrenin.
-* [Azure Cosmos DB ' de sağlanan üretilen iş maliyetini en uygun hale getirmeyi](optimize-cost-throughput.md)öğrenin.
-* [Azure Cosmos DB ' de okuma ve yazma maliyetini en iyileştirmeden](optimize-cost-reads-writes.md)öğrenin.
-* [Sorgu maliyetinin Azure Cosmos DB nasıl iyileştirileceği](optimize-cost-queries.md)hakkında bilgi edinin.
-* [Verimlilik izlemek için ölçümleri nasıl kullanacağınızı](use-metrics.md)öğrenin.
+- [Azure Cosmos kapsayıcılarında ve veritabanlarında işleme sağlama](set-throughput.md)hakkında daha fazla bilgi edinin.
+- [Azure Cosmos DB sunucusuz](serverless.md)hakkında daha fazla bilgi edinin.
+- [Mantıksal bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
+- [Sağlanan aktarım hızını genel olarak ölçeklendirme](scaling-throughput.md)hakkında daha fazla bilgi edinin.
+- [Azure Cosmos kapsayıcısında üretilen iş sağlama](how-to-provision-container-throughput.md)hakkında bilgi edinin.
+- [Azure Cosmos veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md)hakkında bilgi edinin.
+- [Bir işlem için istek birimi ücreti bulmayı](find-request-unit-charge.md)öğrenin.
+- [Azure Cosmos DB ' de sağlanan üretilen iş maliyetini en uygun hale getirmeyi](optimize-cost-throughput.md)öğrenin.
+- [Azure Cosmos DB ' de okuma ve yazma maliyetini en iyileştirmeden](optimize-cost-reads-writes.md)öğrenin.
+- [Sorgu maliyetinin Azure Cosmos DB nasıl iyileştirileceği](optimize-cost-queries.md)hakkında bilgi edinin.
+- [Verimlilik izlemek için ölçümleri nasıl kullanacağınızı](use-metrics.md)öğrenin.

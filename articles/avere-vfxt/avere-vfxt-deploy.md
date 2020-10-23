@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272782"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342425"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT kümesini dağıtma
 
@@ -64,7 +64,7 @@ Aşağıdaki bilgileri girin:
 
 * **Denetleyici Kullanıcı adı** -küme denetleyicisi sanal makinesinin kök kullanıcı adını ayarlayın.
 
-* **Kimlik doğrulama türü** -denetleyiciye bağlanmak için parola veya SSH ortak anahtar kimlik doğrulaması ' nı seçin. SSH ortak anahtar yöntemi önerilir; yardıma ihtiyacınız varsa [SSH anahtarlarını oluşturma ve kullanma hakkında](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) bilgi edinin.
+* **Kimlik doğrulama türü** -denetleyiciye bağlanmak için parola veya SSH ortak anahtar kimlik doğrulaması ' nı seçin. SSH ortak anahtar yöntemi önerilir; yardıma ihtiyacınız varsa [SSH anahtarlarını oluşturma ve kullanma hakkında](../virtual-machines/linux/ssh-from-windows.md) bilgi edinin.
 
 * **Parola** veya **SSH ortak anahtarı** -seçtiğiniz kimlik doğrulama türüne bağlı olarak, bir RSA ortak anahtarı veya bir parolayı bir sonraki alanlarda belirtmeniz gerekir. Bu kimlik bilgisi, daha önce sağlanmış olan kullanıcı adıyla birlikte kullanılır.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601373"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371061"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -42,13 +42,13 @@ Azure Active Directory Yönetimi, önemli işlem görevlerinin ve işlemlerin s�
 | Azure AD Kimlik Koruması risk ve güvenlik açığı raporları için işaretlenen kullanıcıları önceliklendirme ve araştır | InfoSec Işlemler ekibi |
 
 > [!NOTE]
-> Azure AD Kimlik Koruması, bir Azure AD Premium P2 lisansı gerektirir. Gereksinimlerinize uygun lisans bulmak için bkz. [Azure AD ücretsiz ve Azure AD Premium sürümlerinin genel olarak kullanılabilir özelliklerini karşılaştırma](https://azure.microsoft.com/pricing/details/active-directory/).
+> Azure AD Kimlik Koruması, bir Azure AD Premium P2 lisansı gerektirir. Gereksinimlerinize uygun lisans bulmak için bkz. [Azure AD ücretsiz ve Azure AD Premium sürümlerinin genel olarak kullanılabilir özelliklerini karşılaştırma](https://azure.microsoft.com/pricing/details/active-directory/).
 
 Listenizi gözden geçirdikten sonra, sahibi eksik olan görevler için bir sahip atamanız veya yukarıdaki önerilere göre hizalanmamış olan sahiplerin sahipliğini ayarlamanız gerekebilir.
 
 #### <a name="owner-recommended-reading"></a>Sahibi tarafından önerilen okuma
 
-- [Azure Active Directory’de yönetici rolü atama](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory’de yönetici rolü atama](../roles/permissions-reference.md)
 - [Azure’da idare](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>Kimlik bilgileri yönetimi
@@ -119,7 +119,7 @@ Tümleşik Windows kimlik doğrulaması (ıWA) veya kesintisiz tek Sign-On (SSO)
 
 ### <a name="device-trust-access-policies"></a>Cihaz güven erişimi ilkeleri
 
-Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekirdek kimliktir. Kaynaklarınızı istediğiniz zaman ve herhangi bir konumdan korumak için bir cihazın kimliğini kullanabilirsiniz.Dağıtım türü için cihazın ve hesaplama kimlik doğrulaması, güvenlik sonrası ve kullanışlarınızı şu şekilde geliştirir:
+Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekirdek kimliktir. Kaynaklarınızı istediğiniz zaman ve herhangi bir konumdan korumak için bir cihazın kimliğini kullanabilirsiniz. Dağıtım türü için cihazın ve hesaplama kimlik doğrulaması, güvenlik sonrası ve kullanışlarınızı şu şekilde geliştirir:
 
 - Örneğin, cihaz güvenildiği zaman MFA ile, örneğin, uçuşmaktan kaçınma
 - Güvenilmeyen cihazlardan erişimi engelleme
@@ -128,7 +128,7 @@ Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekird
 Aşağıdaki yöntemlerden birini kullanarak cihaz kimliklerini ve bunları Azure AD 'de yöneterek bu hedefi gerçekleştirebilirsiniz:
 
 - Kuruluşlar, cihazı yönetmek ve uyumluluk ilkelerini zorlamak, cihaz durumunu doğrulamak ve cihazın uyumlu olup olmadığına bağlı olarak koşullu erişim ilkeleri ayarlamak için [Microsoft Intune](/intune/what-is-intune) kullanabilir. Microsoft Intune iOS cihazlarını, Mac masaüstlerini (JAMF tümleştirmesi aracılığıyla), Windows Masaüstü 'nü (Windows 10 için mobil cihaz yönetimini ve Microsoft uç noktası Configuration Manager ile birlikte ortak yönetimi kullanarak) ve Android mobil cihazlarını yönetebilir.
-- [Hibrit Azure AD katılımı](../devices/hybrid-azuread-join-managed-domains.md) , Active Directory etki alanına katılmış bilgisayarlar cihazlarından oluşan bir ortamda Grup Ilkeleri veya Microsoft uç noktası Configuration Manager yönetim sağlar. Kuruluşlar, sorunsuz SSO ile PHS ya da PTA aracılığıyla yönetilen bir ortam dağıtabilir. Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız üzerindeki SSO aracılığıyla Kullanıcı üretkenliğini en üst düzeye çıkarır. bu sayede, bulut ve şirket içi kaynaklarınız için aynı anda [koşullu erişimle](../conditional-access/overview.md)erişim sağlamanıza olanak tanır   .
+- [Hibrit Azure AD katılımı](../devices/hybrid-azuread-join-managed-domains.md) , Active Directory etki alanına katılmış bilgisayarlar cihazlarından oluşan bir ortamda Grup Ilkeleri veya Microsoft uç noktası Configuration Manager yönetim sağlar. Kuruluşlar, sorunsuz SSO ile PHS ya da PTA aracılığıyla yönetilen bir ortam dağıtabilir. Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız üzerindeki SSO aracılığıyla Kullanıcı üretkenliğini en üst düzeye çıkarır. bu sayede, bulut ve şirket içi kaynaklarınız için aynı anda [koşullu erişimle](../conditional-access/overview.md) erişim sağlamanıza olanak tanır.
 
 Bulutta kayıtlı olmayan, ancak koşullu erişim ilkeleri olmadan etki alanına katılmış Windows cihazlarına veya bulutta kayıtlı olan, etki alanına katılmış Windows cihazlarınız varsa, kayıtsız cihazları kaydetmeniz ve her iki durumda da, koşullu erişim ilkeleriniz üzerinde [bir denetim olarak karma Azure AD JOIN 'i kullanmanız](../conditional-access/require-managed-devices.md) gerekir.
 
@@ -177,7 +177,7 @@ Son olarak, Azure AD uygulama galeriniz varsa ve Azure AD ile SSO 'yu destekleye
 
 ### <a name="assign-users-to-applications"></a>Uygulamalara Kullanıcı atama
 
-[Kullanıcılara uygulamalara atama](../manage-apps/assign-user-or-group-access-portal.md) , daha fazla esneklik ve ölçeğe göre yönetme olanağı sağladığından, gruplar kullanılarak en iyi şekilde eşleştirilir. Grupları kullanmanın avantajları, [öznitelik tabanlı dinamik grup üyeliği](../users-groups-roles/groups-dynamic-membership.md) ve [uygulama sahiplerine temsilciliğini](../fundamentals/active-directory-accessmanagement-managing-group-owners.md)içerir. Bu nedenle, zaten grupları kullanıyorsanız ve yönetiyorsanız yönetimi artırmak için aşağıdaki işlemleri yapmanızı öneririz:
+[Kullanıcılara uygulamalara atama](../manage-apps/assign-user-or-group-access-portal.md) , daha fazla esneklik ve ölçeğe göre yönetme olanağı sağladığından, gruplar kullanılarak en iyi şekilde eşleştirilir. Grupları kullanmanın avantajları, [öznitelik tabanlı dinamik grup üyeliği](../enterprise-users/groups-dynamic-membership.md) ve [uygulama sahiplerine temsilciliğini](../fundamentals/active-directory-accessmanagement-managing-group-owners.md)içerir. Bu nedenle, zaten grupları kullanıyorsanız ve yönetiyorsanız yönetimi artırmak için aşağıdaki işlemleri yapmanızı öneririz:
 
 - Uygulama sahiplerine Grup Yönetimi ve idare verme.
 - Uygulamaya self servis erişimine izin verin.
@@ -189,8 +189,8 @@ Son olarak, Azure AD uygulama galeriniz varsa ve Azure AD ile SSO 'yu destekleye
 #### <a name="assign-users-to-applications-recommended-reading"></a>Kullanıcıları okumak için önerilen uygulamalara atama
 
 - [Azure Active Directory bir uygulamaya Kullanıcı ve Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
-- [Azure Active Directory 'de uygulama kayıt izinleri verme](../users-groups-roles/roles-delegate-app-roles.md)
-- [Azure Active Directory gruplar için dinamik üyelik kuralları](../users-groups-roles/groups-dynamic-membership.md)
+- [Azure Active Directory 'de uygulama kayıt izinleri verme](../roles/delegate-app-roles.md)
+- [Azure Active Directory gruplar için dinamik üyelik kuralları](../enterprise-users/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>Erişim ilkeleri
 
@@ -248,7 +248,7 @@ Koşullu erişim, kuruluşunuzun güvenlik duruşunu iyileştirmek için gereken
 - **Kullanıcı BAŞıNA MFA** kullanmak yerine [MFA uygulamak](../conditional-access/plan-conditional-access.md)için koşullu erişim ilkelerini kullanın
 - Birden çok uygulama için uygulanabilecek küçük bir çekirdek ilke kümesine sahiptir
 - Boş özel durum gruplarını tanımlayın ve özel durum stratejisi sağlamak için bunları ilkelere ekleyin
-- MFA denetimleri olmadan [kesme camı](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) hesaplarını planlayın
+- MFA denetimleri olmadan [kesme camı](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency) hesaplarını planlayın
 - Microsoft 365 istemci uygulamaları genelinde (takımlar, OneDrive, Outlook vb.) tutarlı bir deneyim sağlayın. Exchange Online ve SharePoint Online gibi hizmetler için aynı denetim kümesini uygulayarak
 - İlkelere atama, bireyler değil, gruplar aracılığıyla uygulanmalıdır
 - İlkelerde kullanılan özel durum gruplarını, kullanıcıların güvenlik sonrası çıkış süresini sınırlandırmak için düzenli olarak gözden geçirin. Azure AD P2 sahibiyseniz, işlemi otomatikleştirmek için erişim gözden geçirmeleri kullanabilirsiniz
@@ -347,7 +347,7 @@ Aşağıda açık bir işletme gereksinimi yoksa kilitlenebilen Kullanıcı ve g
 - [Uygulamaları Azure Active Directory tümleştirme](../develop/quickstart-register-app.md)
 - [Azure Active Directory uygulamalar, izinler ve onay.](../develop/quickstart-register-app.md)
 - [Azure Active Directory içindeki kaynaklara erişimi yönetmek için grupları kullanma](./active-directory-manage-groups.md)
-- [Azure Active Directory içinde self servis uygulama erişim yönetimini ayarlama](../users-groups-roles/groups-self-service-management.md)
+- [Azure Active Directory içinde self servis uygulama erişim yönetimini ayarlama](../enterprise-users/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>Beklenmeyen konumlardan gelen trafik
 

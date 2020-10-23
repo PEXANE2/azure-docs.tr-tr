@@ -1,29 +1,29 @@
 ---
-title: İlkeyi Kod iş akışları olarak tasarklama
+title: Azure Ilkesini kod iş akışları olarak tasarlama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598221"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320606"
 ---
-# <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
+# <a name="design-azure-policy-as-code-workflows"></a>Azure Ilkesini kod iş akışları olarak tasarlama
 
 Bulut yönetimi ile yolculukta ilerleyerek, Azure portal her bir ilke tanımını veya çeşitli SDK 'Ları, kurumsal ölçekte daha yönetilebilir ve yinelenebilir olacak şekilde el ile yönetmeyi tercih edersiniz. Sistemleri bulutta ölçeklendirerek yönetmek için hakim yaklaşımlardan ikisi şunlardır:
 
 - Kod olarak altyapı: ortamınızı tanımlayan içeriği, Azure Resource Manager şablonlarından her şeyi (ARM şablonları) Azure Ilke tanımlarına kaynak kodu olarak kabul eden uygulama.
 - DevOps: son kullanıcılarımıza sürekli değer teslimi sağlayan kişiler, süreç ve ürünlerin birleşimi.
 
-Kod olarak ilke, bu fikirlerin birleşimidir. Temelde, ilke tanımlarınızı kaynak denetiminde tutun, her değişiklik yapıldığında, test edin ve bu değişikliği doğrulayın. Bununla birlikte, kod veya DevOps ile altyapıyla ilke katılımı olması gerekmez.
+Kod olarak Azure Ilkesi, bu fikirlerin birleşimidir. Temelde, ilke tanımlarınızı kaynak denetiminde tutun, her değişiklik yapıldığında, test edin ve bu değişikliği doğrulayın. Bununla birlikte, kod veya DevOps ile altyapıyla ilke katılımı olması gerekmez.
 
 Doğrulama adımı aynı zamanda diğer sürekli tümleştirme veya sürekli dağıtım iş akışlarının bir bileşeni olmalıdır. Örnek olarak bir uygulama ortamının veya sanal altyapının dağıtımı sayılabilir. Azure Ilke doğrulamasını derleme ve dağıtım sürecinin erken bir bileşeni yaparak, uygulama ve operasyon ekipleri, değişikliklerin uyumsuz olup olmadığı ve üretimde dağıtmaya çalıştıkları durumlarda bulur.
 
 ## <a name="definitions-and-foundational-information"></a>Tanımlar ve temel bilgiler
 
-Ilke ayrıntılarını kod iş akışı olarak almadan önce aşağıdaki tanımları ve örnekleri gözden geçirin:
+Kod iş akışı olarak Azure Ilkesi ayrıntılarına geçmeden önce, aşağıdaki tanımları ve örnekleri gözden geçirin:
 
 - [İlke tanımı](./definition-structure.md)
 - [Girişim tanımı](./initiative-definition-structure.md)
@@ -43,10 +43,10 @@ Ayrıca, var olan tanımlarınızı ve atamalarınızı kaynak kodu yönetim ort
 
 ## <a name="workflow-overview"></a>İş akışına genel bakış
 
-Kod olarak Ilkenin önerilen genel iş akışı şu diyagram gibi görünür:
+Kod olarak Azure Ilkesinin önerilen genel iş akışı şu diyagram gibi görünür:
 
-:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Ilkeyi, dağıtım için Oluştur ' dan test edilecek kod iş akışı kutuları olarak gösteren diyagram." border="false":::
-   Ilkeyi kod iş akışı kutuları olarak gösteren diyagram. İlke ve girişim tanımlarının oluşturulması için oluşturma içerir. Test, zorlama modu devre dışı olan atamayı kapsıyor. Uyumluluk durumu için bir ağ geçidi denetimi, izin verme ve kaynakları düzeltme atamalarına göre daha sonra yapılır.  Dağıtım, atama modu etkinken atamanın güncelleştirilmesini içerir.
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Azure Ilkesini, oluşturma ' dan dağıtılacak test ' den kod iş akışı kutuları olarak gösteren diyagram." border="false":::
+   Azure Ilkesini kod iş akışı kutuları olarak gösteren diyagram. İlke ve girişim tanımlarının oluşturulması için oluşturma içerir. Test, zorlama modu devre dışı olan atamayı kapsıyor. Uyumluluk durumu için bir ağ geçidi denetimi, izin verme ve kaynakları düzeltme atamalarına göre daha sonra yapılır.  Dağıtım, atama modu etkinken atamanın güncelleştirilmesini içerir.
 :::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>İlke tanımları oluşturma ve güncelleştirme
@@ -56,22 +56,19 @@ Kod olarak Ilkenin önerilen genel iş akışı şu diyagram gibi görünür:
 ```text
 .
 |
-|- policies/  ________________________ # Root folder for policies
+|- policies/  ________________________ # Root folder for policy resources
 |  |- policy1/  ______________________ # Subfolder for a policy
 |     |- policy.json _________________ # Policy definition
 |     |- policy.parameters.json ______ # Policy definition of parameters
 |     |- policy.rules.json ___________ # Policy rule
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
-|
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy definition
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy definition
 |  |- policy2/  ______________________ # Subfolder for a policy
 |     |- policy.json _________________ # Policy definition
 |     |- policy.parameters.json ______ # Policy definition of parameters
 |     |- policy.rules.json ___________ # Policy rule
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy definition
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy definition
 |
 ```
 
@@ -89,17 +86,15 @@ Benzer şekilde, girişimlerin kendi JSON dosyası ve aynı klasörde depolanmas
 |     |- policyset.json ______________ # Initiative definition
 |     |- policyset.definitions.json __ # Initiative list of policies
 |     |- policyset.parameters.json ___ # Initiative definition of parameters
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy initiative
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy initiative
 |
 |  |- init2/ _________________________ # Subfolder for an initiative
 |     |- policyset.json ______________ # Initiative definition
 |     |- policyset.definitions.json __ # Initiative list of policies
 |     |- policyset.parameters.json ___ # Initiative definition of parameters
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy initiative
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy initiative
 |
 ```
 
@@ -114,7 +109,7 @@ Atama, kaynak oluşturma ve güncelleştirmelerin engellenmemesi, ancak mevcut k
 > [!NOTE]
 > Zorlama modu yararlı olsa da, çeşitli koşullarda bir ilke tanımının kapsamlı bir şekilde test edilmesine yönelik bir değişiklik değildir. İlke tanımı, ile test edilmelidir `PUT` ve `PATCH` REST API çağrılarınız, uyumlu ve uyumlu olmayan kaynaklar ve uç durumları, kaynakta eksik bir özellik gibi.
 
-Atama dağıtıldıktan sonra, yeni atama için [uyumluluk verilerini almak](../how-to/get-compliance-data.md) üzere ilke SDK 'Sını veya [Azure Ilke uyumluluk taraması GitHub eylemini](https://github.com/marketplace/actions/azure-policy-compliance-scan) kullanın. İlkeleri ve atamaları test etmek için kullanılan ortamda hem uyumlu hem de uyumlu olmayan kaynaklar olmalıdır.
+Atama dağıtıldıktan sonra, yeni atamaya yönelik [uyumluluk verilerini almak](../how-to/get-compliance-data.md) Için Azure ilke SDK 'Sını, [Azure Ilke uyumluluk taraması GitHub eylemini](https://github.com/marketplace/actions/azure-policy-compliance-scan)veya [Azure Pipelines güvenlik ve uyumluluk değerlendirmesi görevini](/azure/devops/pipelines/tasks/deploy/azure-policy) kullanın. İlkeleri ve atamaları test etmek için kullanılan ortamda hem uyumlu hem de uyumlu olmayan kaynaklar olmalıdır.
 Kod için iyi bir birim testi gibi, kaynakların beklenen şekilde olduğunu ve yanlış pozitif veya yanlış-negatifler olduğunu test etmek istersiniz. Test edin ve yalnızca beklediğiniz kadar doğrulandıysanız, ilkeden beklenmedik ve tanımlanamayan etki olabilir. Daha fazla bilgi için bkz. [Yeni bir Azure ilke tanımının etkisini değerlendirme](./evaluate-impact.md).
 
 ### <a name="enable-remediation-tasks"></a>Düzeltme görevlerini etkinleştir
@@ -138,13 +133,13 @@ Tüm doğrulama kapıları tamamlandıktan sonra, _etkin_' ın **Enforcementmode
 
 ## <a name="process-integrated-evaluations"></a>İşlem tümleşik değerlendirmeleri
 
-Kod olarak Ilke için genel iş akışı, bir ortamda bir ortama ilke ve girişim geliştirme ve dağıtmaya yöneliktir. Ancak, ilke değerlendirmesi Azure 'da uygulama dağıtma veya altyapı oluşturmak için ARM şablonları çalıştırma gibi kaynakları dağıtan veya oluşturan herhangi bir iş akışı için dağıtım sürecinin bir parçası olmalıdır.
+Kod olarak Azure Ilkesi için genel iş akışı, bir ortamda bir ortama ilke ve girişim geliştirme ve dağıtmaya yöneliktir. Ancak, ilke değerlendirmesi Azure 'da uygulama dağıtma veya altyapı oluşturmak için ARM şablonları çalıştırma gibi kaynakları dağıtan veya oluşturan herhangi bir iş akışı için dağıtım sürecinin bir parçası olmalıdır.
 
 Bu durumlarda, uygulama veya altyapı dağıtımı bir test aboneliğine veya kaynak grubuna gerçekleştirildikten sonra, bu kapsam için ilke değerlendirmesi yapılmalıdır. bu kapsam, var olan tüm ilke ve girişimlerin doğrulanmasını denetlemelidir. Bu tür bir ortamda **Enforcementmode** _devre dışı bırakılmış_ olarak yapılandırılabilirler ancak, bir uygulama veya altyapı dağıtımının ilke tanımlarının erken ihlal edildiğini erken bilmek yararlı olur. Bu ilke değerlendirmesi bu iş akışlarında bir adım olmalıdır ve uyumlu olmayan kaynaklar oluşturan dağıtımlar başarısız olur.
 
 ## <a name="review"></a>Gözden geçirme
 
-Bu makalede kod olarak Ilke için genel iş akışı ve ayrıca ilke değerlendirmesi diğer dağıtım iş akışlarının parçası olmalıdır. Bu iş akışı, tetikleyicilere göre betikleştirilmiş adımları ve otomasyonu destekleyen herhangi bir ortamda kullanılabilir.
+Bu makalede, kod olarak Azure Ilkesi için genel iş akışı ve ayrıca ilke değerlendirmesi diğer dağıtım iş akışlarının parçası olmalıdır. Bu iş akışı, tetikleyicilere göre betikleştirilmiş adımları ve otomasyonu destekleyen herhangi bir ortamda kullanılabilir. Bu iş akışını GitHub 'da kullanmaya yönelik bir öğretici için bkz. [öğretici: Azure Ilkesini GitHub Ile kod olarak uygulama](../tutorials/policy-as-code-github.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

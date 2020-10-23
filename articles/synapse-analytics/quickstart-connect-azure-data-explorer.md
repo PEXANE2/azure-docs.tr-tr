@@ -1,81 +1,82 @@
 ---
-title: 'Hızlı başlangıç: Azure Veri Gezgini bir Synapse çalışma alanına bağlama'
-description: Azure SYNAPSE kullanarak bir Azure Veri Gezgini kümesini bir Synapse çalışma alanına bağlama Apache Spark
+title: 'Hızlı başlangıç: Azure Veri Gezgini Azure SYNAPSE Analytics çalışma alanına bağlama'
+description: Azure SYNAPSE Analytics için Apache Spark kullanarak bir Azure Veri Gezgini kümesini Azure SYNAPSE Analytics çalışma alanına bağlayın.
 services: synapse-analytics
 author: manojraheja
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: overview
+ms.subservice: workspace
 ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99ccc2f4d7e3adbba704f784025abfdfa8b96f52
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ee9d137973bfa4eeb28bc6526437e76e781f3199
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090667"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172280"
 ---
-# <a name="connect-to-azure-data-explorer-using-synapse-apache-spark"></a>Apache Spark SYNAPSE kullanarak Azure Veri Gezgini bağlanma
+# <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Apache Spark kullanarak Azure Veri Gezgini bağlanma
 
-Bu makalede, SYNAPSE Apache Spark ile SYNAPSE Studio 'dan Azure Veri Gezgini veritabanlarına nasıl erişebileceğiniz açıklanır. 
+Bu makalede, SYNAPSE Studio 'dan Azure SYNAPSE Analytics için Apache Spark bir Azure Veri Gezgini veritabanına nasıl erişebileceğiniz açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Veri Gezgini kümesi ve veritabanı oluşturun](/azure/data-explorer/create-cluster-database-portal).
-* Bu [hızlı](./quickstart-create-workspace.md) başlangıcı izleyerek var olan SYNAPSE çalışma alanı veya yeni bir çalışma alanı oluştur 
-* Mevcut SYNAPSE Apache Spark havuzu veya bu [hızlı](./quickstart-create-apache-spark-pool-portal.md) başlangıcı izleyerek yeni bir havuz oluştur
-* [Azure AD uygulaması sağlayarak Azure AD uygulaması oluşturun.](/azure/data-explorer/kusto/management/access-control/how-to-provision-aad-app)
-* Azure AD uygulamanıza [azure Veri Gezgini veritabanı Izinlerini yönetin](/azure/data-explorer/manage-database-permissions) ve sonra veritabanınıza erişin
+* Mevcut bir Azure SYNAPSE Analytics çalışma alanına sahip veya [hızlı başlangıç: Azure SYNAPSE çalışma alanı oluşturma](./quickstart-create-workspace.md)bölümündeki adımları izleyerek yeni bir çalışma alanı oluşturun.
+* Mevcut bir Apache Spark havuzuna sahip veya [hızlı başlangıç: Azure Portal kullanarak Apache Spark havuzu oluşturma](./quickstart-create-apache-spark-pool-portal.md)bölümündeki adımları izleyerek yeni bir havuz oluşturun.
+* [Bir Azure AD uygulaması sağlayarak Azure Active Directory (Azure AD) uygulaması oluşturun](/azure/data-explorer/kusto/management/access-control/how-to-provision-aad-app).
+* Azure [Veri Gezgini veritabanı Izinlerini yönetme](/azure/data-explorer/manage-database-permissions)bölümündeki adımları IZLEYEREK Azure AD uygulamanıza veritabanınıza erişim izni verin.
 
-## <a name="navigate-to-synapse-studio"></a>SYNAPSE Studio 'ya gidin
+## <a name="go-to-synapse-studio"></a>SYNAPSE Studio 'ya git
 
-Bir Synapse çalışma alanından **Launch SYNAPSE Studio 'yu**seçin. SYNAPSE Studio giriş sayfasında, verileri **Nesne Gezgini verileri** **seçin.**
+Azure SYNAPSE çalışma alanından **Launch SYNAPSE Studio 'yu**seçin. SYNAPSE Studio giriş sayfasında veri **Nesne Gezgini**gitmek için **veri** ' yi seçin.
 
-## <a name="connect-an-azure-data-explorer-database-to-a-synapse-workspace"></a>Azure Veri Gezgini veritabanını bir Synapse çalışma alanına bağlama
+## <a name="connect-an-azure-data-explorer-database-to-an-azure-synapse-workspace"></a>Azure Veri Gezgini veritabanını Azure SYNAPSE çalışma alanına bağlama
 
-Azure Veri Gezgini veritabanını bir çalışma alanına bağlamak, bağlantılı hizmet aracılığıyla yapılır. Azure Data, bağlı hizmeti araştır, kullanıcıların Azure SYNAPSE Analytics için Apache Spark verilere gözatmasına, okumasına ve yazmasına ve bir işlem hattında tümleştirme işlerini çalıştırmasına olanak sağlar.
+Bir Azure Veri Gezgini veritabanını bir çalışma alanına bağlamak, bağlı bir hizmet aracılığıyla yapılır. Azure Veri Gezgini bağlantılı bir hizmetle, Azure SYNAPSE için Apache Spark verilere göz atabilir ve bu verileri okuyabilir ve yazabilirsiniz. Ayrıca, tümleştirme işlerini bir ardışık düzen içinde de çalıştırabilirsiniz.
 
 Veri Nesne Gezgini, bir Azure Veri Gezgini kümesini doğrudan bağlamak için aşağıdaki adımları izleyin:
 
-1. **+** Verilerin yakınında simge Seç
-2. Dış verilere **Bağlan** ' ı seçin
-3. **Azure Veri Gezgini seçin (kusto)**
-5. **Devam**'ı seçin
-6. Bağlı hizmeti adlandırın. Ad Nesne Gezgini görüntülenir ve veritabanına bağlanmak için SYNAPSE çalışma zamanları tarafından kullanılır. Kolay bir ad kullanmanızı öneririz
-7. Aboneliğinizden Azure Data keşfet kümesini seçin veya URI 'yi girin.
-8. "Hizmet sorumlusu KIMLIĞI" ve "hizmet sorumlusu anahtarını" girin (Bu hizmet sorumlusunun, okuma işlemi için veritabanında görünüm erişiminin olduğundan ve verilerin içe inmek için erişim izni olduğundan emin olun)
-9. Azure Veri Gezgini veritabanı adını girin
-10. Doğru izinlere sahip olduğunuzdan emin olmak için **Bağlantıyı Sına** ' ya tıklayın
-11. **Oluştur**’u seçin
+1. **+** **Verilerin**yakınında bulunan simgeyi seçin.
+1. Dış verilere bağlanmak için **Bağlan** ' ı seçin.
+1. **Azure Veri Gezgini (kusto)** seçeneğini belirleyin.
+1. **Devam**’ı seçin.
+1. Bağlı hizmeti adlandırmak için kolay bir ad kullanın. Ad, veri Nesne Gezgini görünür ve Azure SYNAPSE çalışma zamanları tarafından veritabanına bağlanmak için kullanılır.
+1. Aboneliğinizden Azure Veri Gezgini kümesini seçin veya URI 'yi girin.
+1. **Hizmet sorumlusu kimliği** ve **hizmet sorumlusu anahtarını**girin. Bu hizmet sorumlusunun veritabanına okuma işlemi için görünüm erişiminin ve verilerin içe alımı için erişim izni olduğundan emin olun.
+1. Azure Veri Gezgini veritabanı adını girin.
+1. Doğru izinlere sahip olduğunuzdan emin olmak için **Bağlantıyı Sına** ' yı seçin.
+1. **Oluştur**’u seçin.
 
-    ![Yeni Bağlı Hizmet](./media/quickstart-connect-azure-data-explorer/003-new-linked-service.png)
+    ![Yeni bir bağlı hizmet gösteren ekran görüntüsü.](./media/quickstart-connect-azure-data-explorer/003-new-linked-service.png)
 
     > [!NOTE]
-    > Seçim Sınama bağlantısı yazma erişimini doğrulamaz, hizmet sorumlusu kimliğinizin Azure Veri Gezgini veritabanına yazma erişimi olduğundan emin olun.
+    > Seçim **Sınama bağlantısı** yazma erişimini doğrulamaz. Hizmet sorumlusu KIMLIĞINIZIN Azure Veri Gezgini veritabanına yazma erişimi olduğundan emin olun.
 
-12. Azure Veri Gezgini kümeleri ve veritabanları, Azure Veri Gezgini bölümündeki  **bağlantılı** sekmenin altında görünür. 
+1. Azure Veri Gezgini kümeleri ve veritabanları, **azure Veri Gezgini** bölümünün altındaki **bağlı** sekmede görüntülenir.
 
-    ![Kümelere gözatamıyorum](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
+    ![Kümelere göz atmayı gösteren ekran görüntüsü.](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
 
-    > [!NOTE] 
-    > Geçerli sürümde, veritabanı nesneleri Azure Veri Gezgini veritabanlarında AAD hesabınızın izinlerine göre doldurulur. Apache Spark not defterlerini veya tümleştirme işlerini çalıştırdığınızda, bağlantı hizmetindeki kimlik bilgileri kullanılır (Yani hizmet sorumlusu).
-
+    > [!NOTE]
+    > Geçerli sürümde, veritabanı nesneleri Azure Veri Gezgini veritabanlarında Azure AD hesabınızın izinlerine göre doldurulur. Apache Spark not defterlerini veya tümleştirme işlerini çalıştırdığınızda, bağlantı hizmetindeki kimlik bilgileri kullanılır (örneğin, hizmet sorumlusu).
 
 ## <a name="quickly-interact-with-code-generated-actions"></a>Kod tarafından oluşturulan eylemlerle hızlıca etkileşim kurun
 
-* Bir veritabanına veya tabloya sağ tıkladığınızda, verileri okumak, veri yazmak, verileri Azure Veri Gezgini 'ye aktarmak için örnek bir Spark Not defteri tetiklenecek hareketlerle ilgili bir listeniz olacaktır. 
-    [![Yeni örnek Not defterleri](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png)](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png#lightbox)
+Bir veritabanına veya tabloya sağ tıkladığınızda, örnek Spark Not Defterleri listesi görüntülenir. Azure Veri Gezgini 'de verileri okumak, yazmak veya akışa almak için bir seçenek belirleyin.
 
-* Veri okuma hakkında bir örnek aşağıda verilmiştir. Not defterini Spark havuzunuza eklendi ve [ ![ Yeni bir not defteri oku](./media/quickstart-connect-azure-data-explorer/006-read-data.png)](./media/quickstart-connect-azure-data-explorer/006-read-data.png#lightbox)
+[![Yeni örnek not defterlerini gösteren ekran görüntüsü.](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png)](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png#lightbox)
 
-   > [!NOTE] 
-   > İlk kez yürütmenin Spark oturumunun başlatılması üç dakikadan fazla sürebilir. Sonraki yürütmeler önemli ölçüde daha hızlı olacaktır.  
+Veri okuma hakkında bir örnek aşağıda verilmiştir. Not defterini Spark havuzunuza ekleyin ve hücreyi çalıştırın.
 
+[![Yeni bir okuma Not defteri gösteren ekran görüntüsü.](./media/quickstart-connect-azure-data-explorer/006-read-data.png)](./media/quickstart-connect-azure-data-explorer/006-read-data.png#lightbox)
+
+   > [!NOTE]
+   > İlk çalıştırma, Spark oturumunun başlatılması üç dakikadan uzun sürebilir. Sonraki yürütmeler önemli ölçüde daha hızlı olacaktır.
 
 ## <a name="limitations"></a>Sınırlamalar
-Azure Veri Gezgini Bağlayıcısı Şu anda Azure SYNAPSE Managed VNET ile desteklenmiyor.
 
+Azure Veri Gezgini Bağlayıcısı Şu anda Azure SYNAPSE yönetilen sanal ağları ile desteklenmemektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

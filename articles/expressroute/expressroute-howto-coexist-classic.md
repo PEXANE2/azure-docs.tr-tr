@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
-ms.openlocfilehash: 4cc96a8183e07a17ae880549cdc2b8bdca516322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70407d726b697dd6c4dfb6777cf6c445092d3b73
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651505"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206334"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Birlikte bulunan ExpressRoute bağlantıları ile Siteden Siteye bağlantıları yapılandırma (klasik)
 > [!div class="op_single_selector"]
@@ -85,7 +85,7 @@ Bir arada var olabilen bağlantılar yapılandırmak için seçebileceğiniz iki
 Bu yordamda, bir VNet oluşturma ve bir arada var olabilen Siteden Siteye ve ExpressRoute bağlantıları oluşturma adım adım açıklanmıştır.
 
 1. Azure PowerShell cmdlet’lerinin en yeni sürümünü yüklemeniz gerekir. PowerShell cmdlet'lerini yükleme hakkında daha fazla bilgi için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/). Bu yapılandırma için kullanacağınız cmdlet'lerin tanıdıklarınızdan biraz farklı olabileceğini unutmayın. Bu yönergelerde belirtilen cmdlet'leri kullandığınızdan emin olun. 
-2. Sanal ağınız için bir şema oluşturun. Yapılandırma şeması hakkında daha fazla bilgi için bkz. [Azure Virtual Network yapılandırma şeması](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+2. Sanal ağınız için bir şema oluşturun. Yapılandırma şeması hakkında daha fazla bilgi için bkz. [Azure Virtual Network yapılandırma şeması](/previous-versions/azure/reference/jj157100(v=azure.100)).
    
     Şemanızı oluşturduğunuzda, aşağıdaki değerleri kullandığınızdan emin olun:
    
@@ -229,7 +229,7 @@ Ağ geçidi alt ağı /27 veya daha büyükse ve sanal ağ ExpressRoute üzerind
 4. Ağ yapılandırma dosyası şemasını ağ geçidi alt ağı /27 veya daha kısa bir önek (örneğin /26 veya /25) olacak şekilde düzenleyin. Aşağıdaki örneğe bakın. 
    
    > [!NOTE]
-   > Sanal ağınızda ağ geçidi alt ağı boyutunu artırmak için yeterli IP adresi kalmadıysa, daha fazla IP adresi alanı eklemeniz gerekir. Yapılandırma şeması hakkında daha fazla bilgi için bkz. [Azure Virtual Network yapılandırma şeması](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+   > Sanal ağınızda ağ geçidi alt ağı boyutunu artırmak için yeterli IP adresi kalmadıysa, daha fazla IP adresi alanı eklemeniz gerekir. Yapılandırma şeması hakkında daha fazla bilgi için bkz. [Azure Virtual Network yapılandırma şeması](/previous-versions/azure/reference/jj157100(v=azure.100)).
    > 
    > 
    
@@ -253,4 +253,3 @@ Ağ geçidi alt ağı /27 veya daha büyükse ve sanal ağ ExpressRoute üzerind
 
 ## <a name="next-steps"></a>Sonraki adımlar
 ExpressRoute hakkında daha fazla bilgi için bkz. [EXPRESSROUTE SSS](expressroute-faqs.md)
-

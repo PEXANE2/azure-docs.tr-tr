@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: e4598cb1d54fbbeb09e3bc5f58f0cce949b3c848
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 404fc887cf40ee5d88b2824e8d2324d103226973
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073810"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164372"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -64,7 +64,7 @@ Uygulama, tablolar oluşturmak ve verilere erişmek için Entity Framework Code 
 
 Bir kullanıcı görüntü yüklediğinde bir web rolünde çalışan ön uç görüntüyü bir [Azure blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)’a depolar ve reklam bilgilerini blob’u işaret eden bir URL ile birlikte veritabanına depolar. Aynı zamanda bir Azure kuyruğuna ileti yazar. Bir çalışan rolünde çalışan arka uç işlemi, kuyruğu yeni iletiler için düzenli olarak yoklar. Yeni bir ileti görüntülendiğinde çalışan rolü bu görüntü için bir küçük resim oluşturur ve küçük resim URL'si veritabanı alanını bu reklam için güncelleştirir. Aşağıdaki diyagramda uygulama bölümlerinin nasıl etkileşim kurduğu gösterilmektedir.
 
-![Contoso Ads mimarisi](./media/cloud-services-dotnet-get-started/apparchitecture.png)
+![Uygulamanın bölümlerinin nasıl etkileşime gireceğini gösteren diyagram.](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
@@ -217,7 +217,7 @@ Web rolü için bir [Web.config dönüşümü](https://www.asp.net/mvc/tutorials
 6. Bağlantı dizesini (çevresindeki soru işaretleri olmadan) çalışan rolünü yapılandırmaya yönelik aşağıdaki adımlarda kullanılmak üzere seçip kopyalayın.
 7. **Çözüm Gezgini**’nde bulut hizmeti projesindeki **Roller** altında **ContosoAdsWorker**’a ve ardından **Özellikler**’e tıklayın.
 
-    ![Rol özellikleri](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
+    ![Özellikler menü seçeneğini vurgulayan ekran görüntüsü.](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
 8. **Ayarlar** sekmesine tıklayın.
 9. **Hizmet Yapılandırması**’nı **Bulut** olarak değiştirin.
 10. `ContosoAdsDbConnectionString` ayarı için **Değer** alanını seçin ve ardından öğreticinin önceki bölümünde kopyaladığınız bağlantı dizesini yapıştırın.
@@ -378,7 +378,7 @@ Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı 
 2. Yaptığınız değişiklikleri kaydedin.
 3. ContosoAdsCloudService projesinde **Roller** altındaki ContosoAdsWeb öğesine sağ tıklayın ve ardından **Özellikler**’e tıklayın.
 
-    ![Rol özellikleri](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Roller altında Özellikler menü seçeneğini vurgulayan ekran görüntüsü.](./media/cloud-services-dotnet-get-started/roleproperties.png)
 4. **Contosoadsweb [rol]** özellikleri penceresinde, **Ayarlar** sekmesine tıklayın ve ardından **Ayar ekle**' ye tıklayın.
 
     **Hizmet Yapılandırma** ayarını **Tüm Yapılandırmalar** olarak bırakın.

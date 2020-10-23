@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 49248575cb10f3df746b9ba484244e4702fb5d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fee95a435b477639fe2b98cf2c9cbf500df5941
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369017"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310012"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -95,11 +95,11 @@ ISE 'nizin erişilebilir olduğundan ve bu ıSE 'deki mantıksal uygulamaların 
    > [!NOTE]
    > Bu yaklaşımı, senaryolarınız erişmesi gereken IP adresi sayısını sınırlandırmaya gerektirdiğinde tek bir ıSE için kullanabilirsiniz. Güvenlik duvarının veya sanal ağ gerecinin ek maliyetlerinin senaryonuz için anlamlı olup olmadığını göz önünde bulundurun. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-firewall/)hakkında daha fazla bilgi edinin.
 
-* Herhangi bir kısıtlama olmadan yeni bir Azure sanal ağı ve alt ağı oluşturduysanız, alt ağlardaki trafiği denetlemek için sanal ağınızda [ağ güvenlik grupları (NSG 'ler)](../virtual-network/security-overview.md#network-security-groups) ayarlamanıza gerek yoktur.
+* Herhangi bir kısıtlama olmadan yeni bir Azure sanal ağı ve alt ağı oluşturduysanız, alt ağlardaki trafiği denetlemek için sanal ağınızda [ağ güvenlik grupları (NSG 'ler)](../virtual-network/network-security-groups-overview.md#network-security-groups) ayarlamanıza gerek yoktur.
 
-* Mevcut bir sanal ağ için, *isteğe bağlı olarak* ağ [trafiğini filtrelemek](../virtual-network/tutorial-filter-network-traffic.md)için [ağ güvenlik grupları (NSG 'ler)](../virtual-network/security-overview.md#network-security-groups) ayarlayabilirsiniz. Bu rotaya gitmek istiyorsanız veya zaten NSG 'ler kullanıyorsanız, [Bu tabloda açıklanan bağlantı noktalarını](#network-ports-for-ise) bu NSG 'ler için açtığınız emin olun.
+* Mevcut bir sanal ağ için, *isteğe bağlı olarak* ağ [trafiğini filtrelemek](../virtual-network/tutorial-filter-network-traffic.md)için [ağ güvenlik grupları (NSG 'ler)](../virtual-network/network-security-groups-overview.md#network-security-groups) ayarlayabilirsiniz. Bu rotaya gitmek istiyorsanız veya zaten NSG 'ler kullanıyorsanız, [Bu tabloda açıklanan bağlantı noktalarını](#network-ports-for-ise) bu NSG 'ler için açtığınız emin olun.
 
-  [NSG güvenlik kurallarını](../virtual-network/security-overview.md#security-rules)ayarlarken, hem **TCP** hem *de* **UDP** protokollerini kullanmanız gerekir, aksi **durumda her protokol** için ayrı kurallar oluşturmanız gerekmez. NSG güvenlik kuralları, bu bağlantı noktalarına erişmesi gereken IP adresleri için açmanız gereken bağlantı noktalarını anlatmaktadır. Bu uç noktalar arasındaki tüm güvenlik duvarlarının, yönlendiricilerin veya diğer öğelerin bu IP adresleriyle erişilebilir olan bağlantı noktalarını da tutduğundan emin olun.
+  [NSG güvenlik kurallarını](../virtual-network/network-security-groups-overview.md#security-rules)ayarlarken, hem **TCP** hem *de* **UDP** protokollerini kullanmanız gerekir, aksi **durumda her protokol** için ayrı kurallar oluşturmanız gerekmez. NSG güvenlik kuralları, bu bağlantı noktalarına erişmesi gereken IP adresleri için açmanız gereken bağlantı noktalarını anlatmaktadır. Bu uç noktalar arasındaki tüm güvenlik duvarlarının, yönlendiricilerin veya diğer öğelerin bu IP adresleriyle erişilebilir olan bağlantı noktalarını da tutduğundan emin olun.
 
 * Internet 'e yönelik trafiği yeniden yönlendirmek için güvenlik duvarınız aracılığıyla Zorlamalı tünel ayarlarsanız, [ek Zorlamalı tünel gereksinimlerini](#forced-tunneling)gözden geçirin.
 

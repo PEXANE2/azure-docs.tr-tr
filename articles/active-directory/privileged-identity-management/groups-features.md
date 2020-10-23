@@ -16,16 +16,16 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6709d7589ebf4c82ec25c6b7a79fa31a305839
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 30724edafdee0c04f0c8b004ce335072b4ce0fd4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87506949"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367457"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>Ayrıcalıklı erişim için yönetim özellikleri Azure AD grupları (Önizleme)
 
-Privileged Identity Management (PıM) ' de, artık ayrıcalıklı erişim gruplarının üyeliği veya sahipliği için uygunluk atayabilirsiniz. Bu önizlemeden başlayarak bulut gruplarına Azure Active Directory (Azure AD) yerleşik roller atayabilir ve grup üyesini ve sahip uygunluk ve etkinleştirmeyi yönetmek için PıM kullanabilirsiniz. Azure AD 'de rol atanabilir gruplar hakkında daha fazla bilgi için bkz. [Azure Active Directory (Önizleme) içinde rol atamalarını yönetmek için bulut gruplarını kullanma](../users-groups-roles/roles-groups-concept.md).
+Privileged Identity Management (PıM) ' de, artık ayrıcalıklı erişim gruplarının üyeliği veya sahipliği için uygunluk atayabilirsiniz. Bu önizlemeden başlayarak bulut gruplarına Azure Active Directory (Azure AD) yerleşik roller atayabilir ve grup üyesini ve sahip uygunluk ve etkinleştirmeyi yönetmek için PıM kullanabilirsiniz. Azure AD 'de rol atanabilir gruplar hakkında daha fazla bilgi için bkz. [Azure Active Directory (Önizleme) içinde rol atamalarını yönetmek için bulut gruplarını kullanma](../roles/groups-concept.md).
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>Atanabilir her bir rol için farklı ilkeler gerektir
 

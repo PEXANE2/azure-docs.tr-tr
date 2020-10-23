@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400426"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428394"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Çalışanı ile ilgili sorunları giderme
 
@@ -46,7 +46,7 @@ Olası nedenler şunlardır:
 
 #### <a name="resolution"></a>Çözüm
 
-Bilgisayarın 443 numaralı bağlantı noktasında ***. Azure-Automation.net** 'ye giden erişimi olduğunu doğrulayın.
+443 numaralı bağlantı noktasında bilgisayarın ** \* . Azure-Automation.net** 'e giden erişimi olduğunu doğrulayın.
 
 Karma runbook çalışanı çalıştıran bilgisayarların, çalışan bu özelliği barındıracak şekilde yapılandırmadan önce en düşük donanım gereksinimlerini karşılaması gerekir. Runbook 'lar ve kullandıkları arka plan işlemi, sistemin aşırı kullanılmasına ve runbook iş gecikmeleri veya zaman aşımları oluşmasına neden olabilir.
 
@@ -226,7 +226,7 @@ PowerShell 'de aşağıdaki komutu girerek aracının çalıştığını doğrul
 
 #### <a name="cause"></a>Nedeni
 
-Bu sorunun nedeni, proxy 'niz veya ağ güvenlik duvarınız Microsoft Azure ile iletişimi engelliyor olabilir. Bilgisayarın 443 numaralı bağlantı noktasında ***. Azure-Automation.net** 'ye giden erişimi olduğunu doğrulayın.
+Bu sorunun nedeni, proxy 'niz veya ağ güvenlik duvarınız Microsoft Azure ile iletişimi engelliyor olabilir. 443 numaralı bağlantı noktasında bilgisayarın ** \* . Azure-Automation.net** 'e giden erişimi olduğunu doğrulayın.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -293,7 +293,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="scenario-you-cant-add-a-hybrid-runbook-worker"></a><a name="already-registered"></a>Senaryo: karma Runbook Worker ekleyemezsiniz
+### <a name="scenario-you-cant-add-a-windows-hybrid-runbook-worker"></a><a name="already-registered"></a>Senaryo: bir Windows karma Runbook Worker ekleyemezsiniz
 
 #### <a name="issue"></a>Sorun
 
@@ -312,6 +312,46 @@ Bu sorun, makinenin farklı bir Otomasyon hesabıyla zaten kayıtlı olması vey
 Bu sorunu çözmek için, aşağıdaki kayıt defteri anahtarını kaldırın, yeniden başlatın `HealthService` ve `Add-HybridRunbookWorker` cmdlet 'i yeniden deneyin.
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
+
+### <a name="scenario-you-cant-add-a-linux-hybrid-runbook-worker"></a><a name="already-registered"></a>Senaryo: Linux karma Runbook Worker ekleyemezsiniz
+
+#### <a name="issue"></a>Sorun
+
+Python betiğini kullanarak bir karma Runbook Worker eklemeye çalıştığınızda şu iletiyi alırsınız `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` :
+
+```error
+Unable to register, an existing worker was found. Please deregister any existing worker and try again.
+```
+
+Ayrıca, Python betiği kullanılarak karma Runbook Worker kaydı silinmeye çalışılıyor `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` :
+
+```error
+Failed to deregister worker. [response_status=404]
+```
+
+#### <a name="cause"></a>Nedeni
+
+Bu sorun, makine farklı bir Otomasyon hesabıyla kayıtlıysa, Azure hibrit çalışan grubu silinmişse veya karma runbook çalışanını bir makineden kaldırdıktan sonra yeniden eklemeye çalışırsanız meydana gelebilir.
+
+#### <a name="resolution"></a>Çözüm
+
+Bu sorunu çözmek için:
+
+1. Aracıyı kaldırın `sudo sh onboard_agent.sh --purge` .
+
+1. Şu komutları çalıştırın:
+
+   ```
+   sudo mv -f /home/nxautomation/state/worker.conf /home/nxautomation/state/worker.conf_old
+   sudo mv -f /home/nxautomation/state/worker_diy.crt /home/nxautomation/state/worker_diy.crt_old
+   sudo mv -f /home/nxautomation/state/worker_diy.key /home/nxautomation/state/worker_diy.key_old
+   ```
+
+1. Aracıyı yeniden ekleyin `sudo sh onboard_agent.sh -w <workspace id> -s <workspace key> -d opinsights.azure.com` .
+
+1. Klasörün `/opt/microsoft/omsconfig/modules/nxOMSAutomationWorker` doldurulmasını bekleyin.
+
+1. `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register`Python betiğini yeniden deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: duau
-ms.openlocfilehash: 12ace8dff58d3d747bf17260950d2b91e31b398a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 649174e59c3e58b4675393ce665cf765016d5551
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395171"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331558"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute bağlantı hatlarını klasikten Resource Manager dağıtım modeline taşıma
 Bu makale, bir Azure ExpressRoute bağlantı hattını klasikten Azure Resource Manager dağıtım modeline taşmanın ne anlama geldiği hakkında genel bir bakış sağlar.
@@ -85,7 +85,7 @@ Bu bölümde ExpressRoute bağlantı hatları için desteklenen durumlar açıkl
 Bu bölümde ExpressRoute bağlantı hatları için desteklenmeyen durumlar açıklanmaktadır:
 
 * Klasik dağıtım modelinden bir ExpressRoute bağlantı hattının yaşam döngüsünü yönetme.
-* Klasik dağıtım modeli için rol tabanlı Access Control (RBAC) desteği. Klasik dağıtım modelinde bağlantı hattına yönelik RBAC denetimleri gerçekleştiremezsiniz. Abonelikteki tüm yöneticiler/yardımcı yöneticiler bağlantı hattına sanal ağları bağlayabilir veya bağlantılarını kaldırabilir.
+* Klasik dağıtım modeli için Azure rol tabanlı erişim denetimi (Azure RBAC) desteği. Klasik dağıtım modelindeki bir devreye göre Azure RBAC denetimleri gerçekleştiremezsiniz. Abonelikteki tüm yöneticiler/yardımcı yöneticiler bağlantı hattına sanal ağları bağlayabilir veya bağlantılarını kaldırabilir.
 
 ## <a name="configuration"></a>Yapılandırma
 [Bir ExpressRoute bağlantı hattını klasikten Resource Manager dağıtım modeline taşıma](expressroute-howto-move-arm.md) konusunda açıklanan yönergeleri izleyin.

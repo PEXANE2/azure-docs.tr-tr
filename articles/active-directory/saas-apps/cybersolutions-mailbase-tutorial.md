@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: aa45494e9870daee079eed4fe92867f64c3c791e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a1bed217f12646687654f37145a4a796d0487a1
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90057396"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455009"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cybersolutions-mailbasecmss"></a>Öğretici: Sisolution MAILBASEΣ \ CMSS ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Sibsolution MAILBASEΣ \ CMSS 'yi Azure Active Directory (Azure
 * Kullanıcılarınızın Azure AD hesaplarıyla Sibsolution MAILBASEΣ \ CMSS 'de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -125,7 +125,7 @@ Bu bölümde, MAILBASEΣ \ CMSS Sibsolution 'a erişim vererek Azure çoklu otur
 
 ### <a name="create-cybersolutions-mailbase-test-user"></a>CyberSolutions MAILBASE test kullanıcısı oluşturma
 
-Bu bölümde, CyberSolutions MAILBASEΣ \ CMSS içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Cybersolutions MAILBASEΣ \ CMSS platformunda kullanıcıları eklemek için [SIBSOLUTION MAILBASEΣ \ CMSS destek ekibi](mailto:tech@cybersolutions.co.jp) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, CyberSolutions MAILBASEΣ \ CMSS içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Cybersolutions MAILBASEΣ \ CMSS platformunda kullanıcıları eklemek için [SIBSOLUTION MAILBASEΣ \ CMSS destek ekibi](mailto:tech@cybersolutions.co.jp) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -141,9 +141,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız CYBERSOLUTIONS MAILBASEΣ \ CMSS ' de otomatik olarak oturum açmış olmanız gerekir 
 
-Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim paneli 'nde CyberSolutions MAILBASEΣ \ CMSS kutucuğuna tıkladığınızda, SP modunda yapılandırılmışsa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız CyberSolutions MAILBASEΣ \ CMSS ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim paneli 'nde CyberSolutions MAILBASEΣ \ CMSS kutucuğuna tıkladığınızda, SP modunda yapılandırılmışsa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız CyberSolutions MAILBASEΣ \ CMSS ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-CyberSolutions MAILBASEΣ \ CMSS 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+CyberSolutions MAILBASEΣ \ CMSS 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

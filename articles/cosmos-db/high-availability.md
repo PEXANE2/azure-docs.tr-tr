@@ -4,29 +4,43 @@ description: Bu makalede, Azure Cosmos DB yüksek kullanılabilirlik sağladığ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 3b9d1c8c6271d689b022a069de8e3392c0662dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85f358d205a4a14874e520efdace5345de837588
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826883"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276262"
 ---
-# <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik nasıl sağlanır? 
+# <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik sağlama
 
-Azure Cosmos DB, verilerinizi Azure Cosmos hesabınızla ilişkili tüm Azure bölgelerinde saydam olarak çoğaltır. Azure Cosmos DB, aşağıdaki görüntüde gösterildiği gibi verileriniz için birden çok yedeklik katmanı kullanır:
+Azure Cosmos DB, iki temel şekilde yüksek kullanılabilirlik sağlar. İlk olarak, Azure Cosmos DB verileri Cosmos hesabı içinde yapılandırılan bölgelerde çoğaltır. İkincisi, Azure Cosmos DB bir bölgedeki verilerin 4 çoğaltmasını korur.
+
+Azure Cosmos DB, küresel olarak dağıtılmış bir veritabanı hizmetidir ve Azure 'da temel bir hizmettir. Varsayılan olarak, [Azure 'un kullanılabildiği tüm bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all)kullanılabilir. Azure Cosmos hesabınızla istediğiniz sayıda Azure bölgesini ilişkilendirebilirsiniz ve verileriniz otomatik olarak ve saydam olarak çoğaltılır. İstediğiniz zaman Azure Cosmos hesabınıza bir bölge ekleyebilir veya kaldırabilirsiniz. Cosmos DB, müşteriler tarafından kullanılabilen beş farklı Azure bulut ortamında kullanılabilir:
+
+* Genel olarak kullanılabilen **Azure genel** bulutu.
+
+* **Azure Çin 21Vianet** , Microsoft ve 21Vianet arasındaki, ülkenin en büyük İnternet sağlayıcılarından biri Çin 'deki benzersiz bir iş ortaklığı aracılığıyla sunulmaktadır.
+
+* **Azure Almanya** , bir veri güvenliği modeli altında hizmetler sağlar ve bu da, Almanya veri güvenliği olarak davranan, Deutsche Telekod 'nin bir yan kuruluşu olan T-Systems International GmbH denetimi altındaki Almanya 'da kalmaya devam eder.
+
+* **Azure Kamu** , ABD kamu kurumlarına ve iş ortaklarına Birleşik Devletler dört bölgede kullanılabilir.
+
+* **Savunma Bakanlığı (DOD) Için Azure Kamu** , ABD savunma Bakanlığı Birleşik Devletler iki bölgede sunulmaktadır.
+
+Bir bölge içinde Azure Cosmos DB, aşağıdaki görüntüde gösterildiği gibi verilerinizin fiziksel bölümlere çoğaltma olarak dört kopyasını tutar:
 
 :::image type="content" source="./media/high-availability/cosmosdb-data-redundancy.png" alt-text="Fiziksel bölümlendirme" border="false":::
 
-- Azure Cosmos kapsayıcıları içindeki veriler [yatay olarak bölümlenmiştir](partitioning-overview.md).
+* Azure Cosmos kapsayıcıları içindeki veriler [yatay olarak bölümlenmiştir](partitioning-overview.md).
 
-- Bölüm kümesi, birden çok çoğaltma kümesi koleksiyonudur. Her bölge içinde, her bölüm çoğaltılan ve çoğalan çoğalma işlemi tarafından kaydedilmiş tüm yazmaları olan bir çoğaltma kümesi tarafından korunur. Çoğaltmalar, çok sayıda 10-20 hata etki alanı üzerinden dağıtılır.
+* Bölüm kümesi, birden çok çoğaltma kümesi koleksiyonudur. Her bölge içinde, her bölüm çoğaltılan ve çoğalan çoğalma işlemi tarafından kaydedilmiş tüm yazmaları olan bir çoğaltma kümesi tarafından korunur. Çoğaltmalar, çok sayıda 10-20 hata etki alanı üzerinden dağıtılır.
 
-- Tüm bölgelerde her bölüm çoğaltılır. Her bölge, bir Azure Cosmos kapsayıcısının tüm veri bölümlerini içerir ve yazma işlemlerini kabul edebilir ve okumaları sunabilir.  
+* Tüm bölgelerde her bölüm çoğaltılır. Her bölge, bir Azure Cosmos kapsayıcısının tüm veri bölümlerini içerir ve yazma işlemlerini kabul edebilir ve okumaları sunabilir.  
 
-Azure Cosmos hesabınız *N* Azure bölgelerinde dağıtılırsa, tüm verilerinizin en az *n* x 4 kopyası olacaktır. Genellikle 2 ' den fazla bölgede bulunan bir Azure Cosmos hesabına sahip olmanız, uygulamanızın kullanılabilirliğini iyileştirir ve ilişkili bölgeler arasında düşük gecikme süresi sağlar. 
+Azure Cosmos hesabınız *N* Azure bölgelerinde dağıtılırsa, tüm verilerinizin en az *n* x 4 kopyası olacaktır. 2 ' den fazla bölgede bir Azure Cosmos hesabı olması, uygulamanızın kullanılabilirliğini iyileştirir ve ilişkili bölgeler arasında düşük gecikme süresi sağlar.
 
 ## <a name="slas-for-availability"></a>Kullanılabilirlik için SLA 'Lar
 
@@ -44,30 +58,38 @@ Küresel olarak dağıtılmış bir veritabanı olarak, Azure Cosmos DB aktarım
 
 Bölgesel kesintiden nadir durumlar için Azure Cosmos DB veritabanınızın her zaman yüksek oranda kullanılabilir olduğundan emin olur. Aşağıdaki ayrıntılar, Azure Cosmos hesap yapılandırmanıza bağlı olarak kesinti sırasında Azure Cosmos DB davranışını yakalar:
 
-- Azure Cosmos DB, istemciye bir yazma işlemi alınmadan önce, veriler yazma işlemlerini kabul eden bölge içindeki çoğaltmaların bir çekirdeği tarafından işlenir.
+* Azure Cosmos DB, istemciye bir yazma işlemi alınmadan önce, veriler yazma işlemlerini kabul eden bölge içindeki çoğaltmaların bir çekirdeği tarafından işlenir. Daha ayrıntılı bilgi için bkz. [tutarlılık düzeyleri ve aktarım hızı](consistency-levels-tradeoffs.md#consistency-levels-and-throughput)
 
-- Birden fazla yazma bölgesiyle yapılandırılan çok bölgeli hesaplar, yazma ve okuma işlemleri için yüksek oranda kullanılabilir olacaktır. Bölgesel yük devretme işlemleri anında yapılır ve uygulamadan herhangi bir değişiklik gerektirmez.
+* Birden fazla yazma bölgesiyle yapılandırılan çok bölgeli hesaplar, yazma ve okuma işlemleri için yüksek oranda kullanılabilir olacaktır. Bölgesel yük devretme işlemleri Azure Cosmos DB istemcisinde algılanır ve işlenir. Bunlar da anlık ve uygulamadan herhangi bir değişiklik gerektirmez.
 
-- Tek bölgeli hesaplar, bölgesel kesintiden sonraki kullanılabilirliği kaybedebilir. Her zaman yüksek kullanılabilirlik sağlamak için Azure Cosmos hesabınızla **en az iki bölge** (tercihen, en az iki yazma bölgesi) ayarlamanız önerilir.
+* Tek bölgeli hesaplar, bölgesel kesintiden sonraki kullanılabilirliği kaybedebilir. Her zaman yüksek kullanılabilirlik sağlamak için Azure Cosmos hesabınızla **en az iki bölge** (tercihen, en az iki yazma bölgesi) ayarlamanız önerilir.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-write-region-outage"></a>Tek bir yazma bölgesi olan çok bölgeli hesaplar (bölge kesintisi yazma)
 
-- Yazma bölgesi kesintisi sırasında, Azure Cosmos hesabı, Azure Cosmos hesabında **otomatik yük devretmeyi etkinleştir** seçeneği yapılandırıldığında, ikincil bölgeyi otomatik olarak yeni birincil yazma bölgesi olacak şekilde yükseltir. Etkinleştirildiğinde, yük devretme, belirlediğiniz bölge önceliği sırasına göre başka bir bölgeye yapılır.
-- Daha önce etkilenen bölge yeniden çevrimiçi olduğunda, bölge başarısız olduğunda çoğaltılmamış olan tüm yazma verileri, [Çakışma akışı](how-to-manage-conflicts.md#read-from-conflict-feed)aracılığıyla kullanılabilir hale getirilir. Uygulamalar, çakışmalar akışını okuyabilir, uygulamaya özgü mantığa göre çakışmaları çözümleyebilir ve güncelleştirilmiş verileri uygun şekilde Azure Cosmos kapsayıcısına geri yazabilir.
-- Daha önce etkilenen yazma bölgesi kurtarıldıktan sonra otomatik olarak bir okuma bölgesi olarak kullanılabilir hale gelir. Kurtarılan bölgeye yazma bölgesi olarak dönebilirsiniz. [PowerShell, Azure CLI veya Azure Portal](how-to-manage-database-account.md#manual-failover)kullanarak bölgeleri değiştirebilirsiniz. Bir **veri veya kullanılabilirlik kaybı** , yazma bölgesini değiştirmeden veya sonra, uygulamanız yüksek oranda kullanılabilir olmaya devam eder.
+* Yazma bölgesi kesintisi sırasında, Azure Cosmos hesabı, Azure Cosmos hesabında **otomatik yük devretmeyi etkinleştir** seçeneği yapılandırıldığında, ikincil bölgeyi otomatik olarak yeni birincil yazma bölgesi olacak şekilde yükseltir. Etkinleştirildiğinde, yük devretme, belirlediğiniz bölge önceliği sırasına göre başka bir bölgeye yapılır.
+
+* Daha önce etkilenen bölge yeniden çevrimiçi olduğunda, bölge başarısız olduğunda çoğaltılmamış olan tüm yazma verileri, [Çakışma akışı](how-to-manage-conflicts.md#read-from-conflict-feed)aracılığıyla kullanılabilir hale getirilir. Uygulamalar, çakışmalar akışını okuyabilir, uygulamaya özgü mantığa göre çakışmaları çözümleyebilir ve güncelleştirilmiş verileri uygun şekilde Azure Cosmos kapsayıcısına geri yazabilir.
+
+* Daha önce etkilenen yazma bölgesi kurtarıldıktan sonra otomatik olarak bir okuma bölgesi olarak kullanılabilir hale gelir. Kurtarılan bölgeye yazma bölgesi olarak dönebilirsiniz. [PowerShell, Azure CLI veya Azure Portal](how-to-manage-database-account.md#manual-failover)kullanarak bölgeleri değiştirebilirsiniz. Bir **veri veya kullanılabilirlik kaybı** , yazma bölgesini değiştirmeden veya sonra, uygulamanız yüksek oranda kullanılabilir olmaya devam eder.
 
 > [!IMPORTANT]
-> **Otomatik yük devretmeyi etkinleştirmek**için üretim iş yükleri Için kullanılan Azure Cosmos hesaplarını yapılandırmanız önemle tavsiye edilir. El ile yük devretme, yük devretme sırasında veri kaybı olmadığından emin olmak için bir tutarlılık denetimini tamamlamaya yönelik ikincil ve birincil yazma bölgesi arasında bağlantı gerektirir. Birincil bölge kullanılamaz durumdaysa, bu tutarlılık denetimi tamamlanamaz ve el ile yük devretme başarısız olur ve bu da yazma kullanılabilirliği kaybı ile sonuçlanır.
+> **Otomatik yük devretmeyi etkinleştirmek**için üretim iş yükleri Için kullanılan Azure Cosmos hesaplarını yapılandırmanız önemle tavsiye edilir. El ile yük devretme, yük devretme sırasında veri kaybı olmadığından emin olmak için bir tutarlılık denetimini tamamlamaya yönelik ikincil ve birincil yazma bölgesi arasında bağlantı gerektirir. Birincil bölge kullanılamaz durumdaysa, bu tutarlılık denetimi tamamlanamaz ve el ile yük devretme başarısız olur ve bu durum, bölgesel kesinti süresi boyunca yazma kullanılabilirliği kaybı ile sonuçlanır.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Tek bir yazma bölgesi olan çok bölgeli hesaplar (okuma bölgesi kesintisi)
 
-- Bir okuma bölgesi kesintisi sırasında, herhangi bir tutarlılık düzeyi veya üç veya daha fazla okuma bölgesi ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma ve yazma işlemleri için yüksek oranda kullanılabilir olmaya devam edecektir.
-- İki veya daha az okuma bölgesi (okuma & yazma bölgesini içerir) ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma bölgesi kesintisi sırasında okuma yazma kullanılabilirliğini kaybeder.
-- Etkilenen bölgenin bağlantısı otomatik olarak kesilir ve çevrimdışı olarak işaretlenir. [Azure Cosmos DB SDK 'ları](sql-api-sdk-dotnet.md) , okuma çağrılarını tercih edilen bölge listesindeki bir sonraki kullanılabilir bölgeye yönlendirir.
-- Tercih edilen bölge listesindeki bölgelerin hiçbiri kullanılabilir durumda değilse çağrılar otomatik olarak geçerli yazma bölgesine döner.
-- Okuma bölgesi kesintisi 'nı işlemek için uygulama kodunuzda değişiklik yapılması gerekmez. Etkilenen okuma bölgesi yeniden çevrimiçi olduğunda, otomatik olarak geçerli yazma bölgesiyle eşitlenir ve okuma isteklerine hizmeti sağlamak için yeniden kullanılabilir hale gelir.
-- Sonraki okumalar kurtarılan bölgeye yönlendirilir ve bunun için uygulamanızın kodunda değişiklik yapılması gerekmez. Daha önce başarısız olan bir bölgenin yük devretmesi ve yeniden katılması sırasında, uyumluluk garantisi Azure Cosmos DB tarafından kabul edilir.
-- Azure bölgesinin kalıcı olarak kurtarılabilir olduğu nadir ve talihsiz olayında bile, çok bölgeli Azure Cosmos hesabınız *güçlü* tutarlılık ile yapılandırıldıysa veri kaybı olmaz. Kalıcı ve kurtarılabilir bir yazma bölgesi durumunda, sınırlı stalet tutarlılığı ile yapılandırılmış çok bölgeli bir Azure Cosmos hesabı olan potansiyel veri kaybı penceresi, K = 100000 güncelleştirmelerinin ve T = 5 dakikadan kısa bir süre içinde (*k* veya *t*) kısıtlanmıştır. Oturum, tutarlı ön ek ve nihai tutarlılık seviyeleri için, olası veri kaybı penceresi en fazla 15 dakika sınırlı olur. Azure Cosmos DB için RTO ve RPO hedefleri hakkında daha fazla bilgi için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](consistency-levels-tradeoffs.md#rto)
+* Bir okuma bölgesi kesintisi sırasında, herhangi bir tutarlılık düzeyi veya üç veya daha fazla okuma bölgesi ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma ve yazma işlemleri için yüksek oranda kullanılabilir olmaya devam edecektir.
+
+* İki veya daha az okuma bölgesi (okuma & yazma bölgesini içerir) ile güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma bölgesi kesintisi sırasında okuma yazma kullanılabilirliğini kaybeder.
+
+* Etkilenen bölgenin bağlantısı otomatik olarak kesilir ve çevrimdışı olarak işaretlenir. [Azure Cosmos DB SDK 'ları](sql-api-sdk-dotnet.md) , okuma çağrılarını tercih edilen bölge listesindeki bir sonraki kullanılabilir bölgeye yönlendirir.
+
+* Tercih edilen bölge listesindeki bölgelerin hiçbiri kullanılabilir durumda değilse çağrılar otomatik olarak geçerli yazma bölgesine döner.
+
+* Okuma bölgesi kesintisi 'nı işlemek için uygulama kodunuzda değişiklik yapılması gerekmez. Etkilenen okuma bölgesi yeniden çevrimiçi olduğunda, otomatik olarak geçerli yazma bölgesiyle eşitlenir ve okuma isteklerine hizmeti sağlamak için yeniden kullanılabilir hale gelir.
+
+* Sonraki okumalar kurtarılan bölgeye yönlendirilir ve bunun için uygulamanızın kodunda değişiklik yapılması gerekmez. Daha önce başarısız olan bir bölgenin yük devretmesi ve yeniden katılması sırasında, uyumluluk garantisi Azure Cosmos DB tarafından kabul edilir.
+
+* Azure bölgesinin kalıcı olarak kurtarılabilir olduğu nadir ve talihsiz olayında bile, çok bölgeli Azure Cosmos hesabınız *güçlü* tutarlılık ile yapılandırıldıysa veri kaybı olmaz. Kalıcı ve kurtarılabilir bir yazma bölgesi durumunda, sınırlı stalet tutarlılığı ile yapılandırılmış çok bölgeli bir Azure Cosmos hesabı olan potansiyel veri kaybı penceresi, K = 100000 güncelleştirmelerinin ve T = 5 dakikadan kısa bir süre içinde (*k* veya *t*) kısıtlanmıştır. Oturum, tutarlı ön ek ve nihai tutarlılık seviyeleri için, olası veri kaybı penceresi en fazla 15 dakika sınırlı olur. Azure Cosmos DB için RTO ve RPO hedefleri hakkında daha fazla bilgi için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="availability-zone-support"></a>Kullanılabilirlik alanı desteği
 
@@ -101,48 +123,40 @@ Aşağıdaki tabloda çeşitli hesap yapılandırmalarının yüksek kullanılab
 
 Yeni veya mevcut Azure Cosmos hesaplarına bölge eklerken bölge yedekliliği etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge yedekliliği etkinleştirmek için `isZoneRedundant` bayrağını `true` belirli bir konum için ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell kod parçacığı "Güneydoğu Asya" bölgesi için bölge yedekliliği sunar:
 
-```powershell
-$locations = @(
-    @{ "locationName"="Southeast Asia"; "failoverPriority"=0; "isZoneRedundant"= "true" },
-    @{ "locationName"="East US"; "failoverPriority"=1; "isZoneRedundant"= "true" }
-)
-```
+Kullanılabilirlik Alanları şu şekilde etkinleştirilebilir:
 
-Aşağıdaki komut, "EastUS" ve "WestUS2" bölgeleri için bölge artıklığını nasıl etkinleştireceğinizi göstermektedir:
+* [Azure portalındaki](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 
-```azurecli-interactive
-az cosmosdb create \
-  --name mycosmosdbaccount \
-  --resource-group myResourceGroup \
-  --kind GlobalDocumentDB \
-  --default-consistency-level Session \
-  --locations regionName=EastUS failoverPriority=0 isZoneRedundant=True \
-  --locations regionName=WestUS2 failoverPriority=1 isZoneRedundant=True
-```
+* [Azure PowerShell](manage-with-powershell.md#create-account)
 
-Azure Cosmos hesabı oluştururken Azure portal kullanarak Kullanılabilirlik Alanları etkinleştirebilirsiniz. Bir hesap oluşturduğunuzda, **coğrafi yedeklilik**, **çok bölgeli yazmaları**etkinleştirdiğinizden emin olun ve kullanılabilirlik alanları desteklendiği bir bölge seçin:
+* [Azure CLI](manage-with-cli.md#add-or-remove-regions)
 
-:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Fiziksel bölümlendirme"::: 
+* [Azure Resource Manager şablonları](manage-sql-with-resource-manager.md)
 
 ## <a name="building-highly-available-applications"></a>Yüksek oranda kullanılabilir uygulamalar oluşturma
 
-- Bu olaylar sırasında [Azure Cosmos SDK](troubleshoot-sdk-availability.md) 'larının beklenen davranışını gözden geçirin ve bunu etkileyen yapılandırma vardır.
+* Bu olaylar sırasında [Azure Cosmos SDK](troubleshoot-sdk-availability.md) 'larının beklenen davranışını gözden geçirin ve bunu etkileyen yapılandırma vardır.
 
-- Yüksek yazma ve okuma kullanılabilirliği sağlamak için Azure Cosmos hesabınızı, birden çok yazma bölgesi ile en az iki bölgeye yaymak üzere yapılandırın. Bu yapılandırma, SLA 'Lar tarafından desteklenen hem okuma hem de yazma işlemleri için en yüksek kullanılabilirlik, en düşük gecikme süresi ve en iyi ölçeklenebilirlik sağlar. Daha fazla bilgi edinmek için bkz. [Azure Cosmos hesabınızı birden çok yazma bölgesi ile yapılandırma](tutorial-global-distribution-sql-api.md).
+* Yüksek yazma ve okuma kullanılabilirliği sağlamak için Azure Cosmos hesabınızı, birden çok yazma bölgesi ile en az iki bölgeye yaymak üzere yapılandırın. Bu yapılandırma, SLA 'Lar tarafından desteklenen hem okuma hem de yazma işlemleri için en yüksek kullanılabilirlik, en düşük gecikme süresi ve en iyi ölçeklenebilirlik sağlar. Daha fazla bilgi edinmek için bkz. [Azure Cosmos hesabınızı birden çok yazma bölgesi ile yapılandırma](tutorial-global-distribution-sql-api.md).
 
-- Tek bir yazma bölgesiyle yapılandırılan çok bölgeli Azure Cosmos hesapları için, [Azure CLI veya Azure Portal kullanarak otomatik yük devretmeyi etkinleştirin](how-to-manage-database-account.md#automatic-failover). Otomatik yük devretmeyi etkinleştirdikten sonra, bölgesel bir olağanüstü durum olduğunda Cosmos DB hesabınıza otomatik olarak yük devreder.  
+* Tek bir yazma bölgesiyle yapılandırılan çok bölgeli Azure Cosmos hesapları için, [Azure CLI veya Azure Portal kullanarak otomatik yük devretmeyi etkinleştirin](how-to-manage-database-account.md#automatic-failover). Otomatik yük devretmeyi etkinleştirdikten sonra, bölgesel bir olağanüstü durum olduğunda Cosmos DB hesabınıza otomatik olarak yük devreder.  
 
-- Azure Cosmos hesabınız yüksek oranda kullanılabilir olsa bile, uygulamanız yüksek oranda kullanılabilir kalacak şekilde doğru şekilde tasarlanmayabilir. Uygulama test veya olağanüstü durum kurtarma (DR) detaylarının bir parçası olarak uygulamanızın uçtan uca yüksek kullanılabilirliğini test etmek için, hesapta otomatik yük devretmeyi geçici olarak devre dışı bırakın, [PowerShell, Azure CLI veya Azure Portal kullanarak el ile yük devretmeyi](how-to-manage-database-account.md#manual-failover)çağırın, sonra uygulamanızın yük devretmesini izleyin. Tamamlandıktan sonra, birincil bölgeye yeniden yük devreder ve hesap için otomatik yük devretmeyi geri yükleyebilirsiniz.
+* Azure Cosmos hesabınız yüksek oranda kullanılabilir olsa bile, uygulamanız yüksek oranda kullanılabilir kalacak şekilde doğru şekilde tasarlanmayabilir. Uygulama test veya olağanüstü durum kurtarma (DR) detaylarının bir parçası olarak uygulamanızın uçtan uca yüksek kullanılabilirliğini test etmek için, hesapta otomatik yük devretmeyi geçici olarak devre dışı bırakın, [PowerShell, Azure CLI veya Azure Portal kullanarak el ile yük devretmeyi](how-to-manage-database-account.md#manual-failover)çağırın, sonra uygulamanızın yük devretmesini izleyin. Tamamlandıktan sonra, birincil bölgeye yeniden yük devreder ve hesap için otomatik yük devretmeyi geri yükleyebilirsiniz.
 
-- Küresel olarak dağıtılmış bir veritabanı ortamında, bölge genelinde bir kesinti olması durumunda tutarlılık düzeyi ve veri dayanıklılığı arasında doğrudan bir ilişki vardır. İş sürekliliği planınızı geliştirirken, kesintiye uğratan bir olaydan sonra uygulamanın tam olarak kurtarmadan önce kabul edilebilir en uzun süreyi anlamanız gerekir. Uygulamanın tam olarak kurtarılması için gereken süre, kurtarma zamanı hedefi (RTO) olarak bilinir. Ayrıca, uygulamanın, kesintiye uğratan bir olaydan sonra kurtarılırken kabul edebildiği en son veri güncelleştirme süresini de anlamanız gerekir. Kaybetmeyi göze alabileceğiniz güncelleştirme süresi kurtarma noktası hedefini (RPO) olarak bilinir. RPO ve RTO Azure Cosmos DB için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](consistency-levels-tradeoffs.md#rto)
+* Küresel olarak dağıtılmış bir veritabanı ortamında, bölge genelinde bir kesinti olması durumunda tutarlılık düzeyi ve veri dayanıklılığı arasında doğrudan bir ilişki vardır. İş sürekliliği planınızı geliştirirken, kesintiye uğratan bir olaydan sonra uygulamanın tam olarak kurtarmadan önce kabul edilebilir en uzun süreyi anlamanız gerekir. Uygulamanın tam olarak kurtarılması için gereken süre, kurtarma zamanı hedefi (RTO) olarak bilinir. Ayrıca, uygulamanın, kesintiye uğratan bir olaydan sonra kurtarılırken kabul edebildiği en son veri güncelleştirme süresini de anlamanız gerekir. Kaybetmeyi göze alabileceğiniz güncelleştirme süresi kurtarma noktası hedefini (RPO) olarak bilinir. RPO ve RTO Azure Cosmos DB için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha sonra aşağıdaki makaleleri okuyabilirsiniz:
 
-- [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
-- [Sağlanan aktarım hızını küresel olarak ölçeklendirme](scaling-throughput.md)
-- [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
-- [Azure Cosmos DB'deki tutarlılık düzeyleri](consistency-levels.md)
-- [Cosmos hesabınızı birden çok yazma bölgesi ile yapılandırma](how-to-multi-master.md)
-- [Multiregional ortamlarında SDK davranışı](troubleshoot-sdk-availability.md)
+* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
+
+* [Sağlanan aktarım hızını küresel olarak ölçeklendirme](scaling-throughput.md)
+
+* [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
+
+* [Azure Cosmos DB'deki tutarlılık düzeyleri](consistency-levels.md)
+
+* [Cosmos hesabınızı birden çok yazma bölgesi ile yapılandırma](how-to-multi-master.md)
+
+* [Çoklu bölgesel ortamlarda SDK davranışı](troubleshoot-sdk-availability.md)

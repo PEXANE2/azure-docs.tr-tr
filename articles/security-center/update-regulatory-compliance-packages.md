@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi mevzuat uyumluluk panonuzda dinamik mevzuata uyumluluğu izlemeye güncelleştirme | Microsoft Docs
-description: Yasal uyumluluk paketlerinizi güncelleştirme
+title: Azure Güvenlik Merkezi 'nde mevzuat uyumluluk panosunu kullanma
+description: Güvenlik Merkezi 'ndeki mevzuat uyumluluk panosundan mevzuat standartları ekleme ve kaldırma hakkında bilgi edinin
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078111"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342204"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzda standartlar kümesini özelleştirme
 
@@ -41,7 +41,7 @@ Microsoft ayrıca yasal düzenleme standartlarını de izler ve zaman içindeki 
 
 NıST SP 800-53 R4, SWIFT CSP CSCF-V2020, UK resmi ve UK NHS, Kanada Federal PBMM ve Azure CIS 1.1.0 (yeni) gibi standartları ekleyerek Azure CIS 1.1.0 'in daha kapsamlı bir gösterimidir. 
 
-Ayrıca, genel uyumluluk çerçevelerine göre güvenlik ve uyum için en iyi uygulamalar için Microsoft tarafından yazılmış, Azure 'a özgü yönergeler olan **Azure Güvenlik kıyaslaması**ekleyebilirsiniz. ([Azure Güvenlik kıyaslaması hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/security/benchmarks/introduction).)
+Ayrıca, genel uyumluluk çerçevelerine göre güvenlik ve uyum için en iyi uygulamalar için Microsoft tarafından yazılmış, Azure 'a özgü yönergeler olan **Azure Güvenlik kıyaslaması**ekleyebilirsiniz. ([Azure Güvenlik kıyaslaması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).)
 
 Panoda kullanılabilir hale geldiğinde ek standartlar desteklenecektir. 
 
@@ -116,6 +116,6 @@ Bu makalede, ek standartlarla uyumluluğunuzu izlemek için **uyumluluk paketler
 
 Diğer ilgili malzemeler için aşağıdaki makalelere bakın: 
 
-- [Azure Güvenlik Karşılaştırması](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md)
 - [Güvenlik Merkezi mevzuata uyumluluğu panosu](security-center-compliance-dashboard.md)
 - [Güvenlik ilkeleriyle çalışma](tutorial-security-policy.md)

@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 08/14/2020
-ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: f3ecf8ef22d3f1d66b7148b809475a830c7e9f13
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259022"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318588"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Veri Paylaşımı'nda desteklenen veri depoları
 
@@ -28,8 +28,8 @@ Aşağıdaki tabloda, Azure veri paylaşımında desteklenen veri kaynaklarını
 | Azure Blob depolama |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Veritabanı |Genel Önizleme | |
-| Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) |Genel Önizleme | |
+| Azure SQL Veritabanı |✓ | |
+| Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) |✓ | |
 | Azure Veri Gezgini | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Veri deposu destek matrisi

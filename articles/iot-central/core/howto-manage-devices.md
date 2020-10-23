@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperfq2
-ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850107"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170340"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda cihazları yönetme
 
@@ -60,7 +60,7 @@ Azure IoT Central uygulamanıza bir cihaz eklemek için:
 
 Çok sayıda cihazı uygulamanıza bağlamak için, cihazları bir CSV dosyasından toplu içeri aktarabilirsiniz. CSV dosyası aşağıdaki sütunlara ve üstbilgilere sahip olmalıdır:
 
-* **IOTC_DeviceID** -cihaz kimliği tümüyle küçük harfle yazılmalıdır.
+* **IOTC_DeviceID** -cihaz kimliği harfler, rakamlar ve `-` karakter içerebilir.
 * **IOTC_DeviceName** -bu sütun isteğe bağlıdır.
 
 Uygulamanızdaki cihazları toplu olarak kaydetmek için:

@@ -4,12 +4,12 @@ description: Azure Container Instances için güvenli görüntü ve gizli dizile
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922243"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148666"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances için güvenlik konuları
 
@@ -34,7 +34,7 @@ Genel olarak kullanılabilir bir kapsayıcı görüntüsü güvenliği garanti e
 
 Özel bir kayıt defterinde kapsayıcı görüntülerini taramak ve olası güvenlik açıklarını belirlemek için çözümlerden yararlanın. Farklı çözümlerin sağladığı tehdit algılama derinliğini anlamak önemlidir.
 
-Örneğin, Azure Container Registry bir kayıt defterine gönderilen tüm Linux görüntülerini otomatik olarak taramak için isteğe bağlı olarak [Azure Güvenlik Merkezi ile tümleşir](../security-center/azure-container-registry-integration.md) . Azure Güvenlik Merkezi 'nin tümleşik Qualys tarayıcısı, görüntü güvenlik açıklarını algılar, bunları sınıflandırır ve düzeltme kılavuzu sağlar.
+Örneğin, Azure Container Registry bir kayıt defterine gönderilen tüm Linux görüntülerini otomatik olarak taramak için isteğe bağlı olarak [Azure Güvenlik Merkezi ile tümleşir](../security-center/defender-for-container-registries-introduction.md) . Azure Güvenlik Merkezi 'nin tümleşik Qualys tarayıcısı, görüntü güvenlik açıklarını algılar, bunları sınıflandırır ve düzeltme kılavuzu sağlar.
 
 [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) ve [deniz mavisi güvenlik](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) gibi güvenlik izleme ve görüntü tarama çözümleri de Azure Marketi aracılığıyla sunulmaktadır.  
 
@@ -117,7 +117,7 @@ Her türlü BT ortamında olduğu gibi, tüm şüpheli veya kötü amaçlı etki
 
 * [Kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) , Azure Kubernetes Service (aks) üzerinde barındırılan Kubernetes ortamlarına dağıtılan iş yüklerinizin performansını izler. Kapsayıcılar için Azure Izleyici, ölçüm API 'SI aracılığıyla Kubernetes 'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğüne sahip olmanızı sağlar. 
 
-* [Azure Kapsayıcı izleme çözümü](../azure-monitor/insights/containers.md) , diğer Docker ve Windows kapsayıcı konaklarının tek bir konumda görüntülemenize ve yönetilmesine yardımcı olur. Örneğin:
+* [Azure Kapsayıcı izleme çözümü](../azure-monitor/insights/containers.md) , diğer Docker ve Windows kapsayıcı konaklarının tek bir konumda görüntülemenize ve yönetilmesine yardımcı olur. Örnek:
 
   * Kapsayıcılarla kullanılan komutları gösteren ayrıntılı denetim bilgilerini görüntüleyin. 
   * Docker veya Windows konaklarını uzaktan görüntülemek zorunda kalmadan merkezi günlükleri görüntüleyip arayarak kapsayıcılarla ilgili sorunları giderin.  
@@ -138,7 +138,7 @@ Dosyalar, ağ ve kapsayıcılarınızın erişebileceği diğer kaynaklar gibi k
 
 Kubernetes kümeniz, kapsayıcı kayıt defteriniz ve kapsayıcı görüntüleriniz dahil olmak üzere kapsayıcı ekosisteminize yönetim erişiminin doğru bir denetim izini saklayın. Bu Günlükler, denetim amaçlarıyla gerekli olabilir ve herhangi bir güvenlik olayından sonra Forli kanıt olarak yararlı olacaktır. Azure çözümleri şunları içerir:
 
-* Azure [Kubernetes Service 'In Azure Güvenlik Merkezi Ile tümleştirilmesi](../security-center/azure-kubernetes-service-integration.md) , küme ortamının güvenlik yapılandırmasını izlemek ve güvenlik önerileri oluşturmak için
+* Azure [Kubernetes Service 'In Azure Güvenlik Merkezi Ile tümleştirilmesi](../security-center/defender-for-kubernetes-introduction.md) , küme ortamının güvenlik yapılandırmasını izlemek ve güvenlik önerileri oluşturmak için
 * [Azure Kapsayıcı Izleme çözümü](../azure-monitor/insights/containers.md)
 * [Azure Container Instances](container-instances-log-analytics.md) ve [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) için kaynak günlükleri
 

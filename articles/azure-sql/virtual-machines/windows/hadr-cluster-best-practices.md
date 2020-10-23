@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317030"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167959"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi yöntemleri (Azure VM'leri üzerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,8 +45,6 @@ Aşağıdaki tabloda, bir Azure VM ile kullanılması önerilen sırada kullanı
 ||[Disk tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Bulut tanığı](/windows-server/failover-clustering/deploy-cloud-witness)  |[Dosya paylaşımı tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**Desteklenen işletim sistemi**| Tümü |Windows Server 2016 +| Tümü|
-
-
 
 
 ### <a name="disk-witness"></a>Disk tanığı
@@ -84,26 +82,27 @@ Başlamak için bkz. [dosya paylaşma tanığını yapılandırma](/windows-serv
 
 ## <a name="connectivity"></a>Bağlantı
 
-Geleneksel bir şirket içi ağ ortamında, SQL Server yük devretme kümesi örneği tek bir bilgisayarda çalışan tek bir SQL Server örneği olarak görünür. Yük devretme kümesi örneği düğümünden düğüme yük devrettiğinden, örnek için sanal ağ adı (VNN) Birleşik bir bağlantı noktası sağlar ve uygulamaların hangi düğümün etkin olduğunu bilmeksizin SQL Server örneğine bağlanmasına izin verir. Yük devretme gerçekleştiğinde, sanal ağ adı yeni etkin düğümüne başladıktan sonra kaydedilir. Bu işlem, SQL Server bağlanan istemci veya uygulama için saydamdır ve bu, hata sırasında istemci veya uygulamanın karşılaştığı kapalı kalma süresini en aza indirir. 
+Geleneksel bir şirket içi ağ ortamında, SQL Server yük devretme kümesi örneği tek bir bilgisayarda çalışan tek bir SQL Server örneği olarak görünür. Yük devretme kümesi örneği düğümünden düğüme yük devrettiğinden, örnek için sanal ağ adı (VNN) Birleşik bir bağlantı noktası sağlar ve uygulamaların hangi düğümün etkin olduğunu bilmeksizin SQL Server örneğine bağlanmasına izin verir. Yük devretme gerçekleştiğinde, sanal ağ adı yeni etkin düğümüne başladıktan sonra kaydedilir. Bu işlem, SQL Server bağlanan istemci veya uygulama için saydamdır ve bu, hata sırasında istemci veya uygulamanın karşılaştığı kapalı kalma süresini en aza indirir. Benzer şekilde, kullanılabilirlik grubu dinleyicisi trafiği uygun çoğaltmaya yönlendirmek için bir VNN kullanır. 
 
-Trafiği, Azure VM 'lerinde SQL Server yük devretme kümesi örneğinin VNN 'e yönlendirmek için Azure Load Balancer veya dağıtılmış ağ adı (DNN) ile bir VNN kullanın. DNN özelliği şu anda yalnızca Windows Server 2016 (veya üzeri) bir sanal makinede SQL Server 2019 CU2 UYGULAMAZSANıZ ve üzeri sürümlerde kullanılabilir. 
+Trafiği, Azure VM 'lerinde SQL Server yük devretme kümesi örneğinin VNN 'ağıyla yönlendirmek veya bir kullanılabilirlik grubundaki mevcut VNN dinleyicisini değiştirmek için Azure Load Balancer veya dağıtılmış ağ adı (DNN) ile bir VNN kullanın. 
+
 
 Aşağıdaki tabloda HADR bağlantısı Supportability karşılaştırılır: 
 
 | |**Sanal Ağ Adı (VNN)**  |**Dağıtılmış Ağ Adı (DNN)**  |
 |---------|---------|---------|
-|**En düşük işletim sistemi sürümü**| Tümü | Tümü |
-|**En düşük SQL Server sürümü** |Tümü |SQL Server 2019 CU2 UYGULAMAZSANıZ|
-|**Desteklenen HADR çözümü** | Yük devretme kümesi örneği <br/> Kullanılabilirlik grubu | Yük devretme kümesi örneği|
+|**En düşük işletim sistemi sürümü**| Tümü | Windows Server 2016 |
+|**En düşük SQL Server sürümü** |Tümü |SQL Server 2019 CU2 UYGULAMAZSANıZ (FCı için)<br/> SQL Server 2019 CU8 (AG için)|
+|**Desteklenen HADR çözümü** | Yük devretme kümesi örneği <br/> Kullanılabilirlik grubu | Yük devretme kümesi örneği <br/> Kullanılabilirlik grubu|
 
 
 ### <a name="virtual-network-name-vnn"></a>Sanal Ağ Adı (VNN)
 
-Sanal IP erişim noktası Azure 'da farklı çalıştığından, trafiği FCı düğümlerinin IP adresine yönlendirmek için [Azure Load Balancer](../../../load-balancer/index.yml) yapılandırmanız gerekir. Azure sanal makinelerinde, yük dengeleyici kümelenmiş SQL Server kaynaklarının kullandığı VNN için IP adresini tutar. Yük dengeleyici ön uca gelen gelen akışları dağıtır ve ardından bu trafiği arka uç havuzu tarafından tanımlanan örneklere yönlendirir. Trafik akışını, Yük Dengeleme kurallarını ve sistem durumu araştırmalarını kullanarak yapılandırırsınız. SQL Server FCı ile arka uç havuzu örnekleri, SQL Server çalıştıran Azure sanal makinelerdir. 
+Sanal IP erişim noktası Azure 'da farklı çalıştığından, trafiği FCı düğümlerinin veya kullanılabilirlik grubu dinleyicisinin IP adresine yönlendirmek için [Azure Load Balancer](../../../load-balancer/index.yml) yapılandırmanız gerekir. Azure sanal makinelerinde, yük dengeleyici kümelenmiş SQL Server kaynaklarının kullandığı VNN için IP adresini tutar. Yük dengeleyici ön uca gelen gelen akışları dağıtır ve ardından bu trafiği arka uç havuzu tarafından tanımlanan örneklere yönlendirir. Trafik akışını, Yük Dengeleme kurallarını ve sistem durumu araştırmalarını kullanarak yapılandırırsınız. SQL Server FCı ile arka uç havuzu örnekleri, SQL Server çalıştıran Azure sanal makinelerdir. 
 
 Yük dengeleyiciyi kullanırken hafif bir yük devretme gecikmesi vardır, çünkü durum araştırma iletken canlı bir şekilde varsayılan olarak her 10 saniyede bir kontrol eder. 
 
-Başlamak için, [FCI için Azure Load Balancer yapılandırmayı](hadr-vnn-azure-load-balancer-configure.md)öğrenin. 
+Başlamak için, [Yük devretme kümesi örneği](failover-cluster-instance-vnn-azure-load-balancer-configure.md) veya bir [kullanılabilirlik grubu](availability-group-vnn-azure-load-balancer-configure.md) için Azure Load Balancer yapılandırmayı öğrenin
 
 **Desteklenen işletim sistemi**: tümü   
 **Desteklenen SQL sürümü**: tümü   
@@ -112,22 +111,22 @@ Başlamak için, [FCI için Azure Load Balancer yapılandırmayı](hadr-vnn-azur
 
 ### <a name="distributed-network-name-dnn"></a>Dağıtılmış Ağ Adı (DNN)
 
-Dağıtılmış ağ adı, SQL Server 2019 CU2 UYGULAMAZSANıZ için yeni bir Azure özelliğidir. DNN, SQL Server istemcilerinin yük dengeleyici kullanmadan SQL Server yük devretme kümesi örneğine bağlanması için alternatif bir yol sağlar. 
+Dağıtılmış ağ adı, SQL Server 2019 için yeni bir Azure özelliğidir. DNN, SQL Server istemcilerinin yük dengeleyici kullanmadan SQL Server yük devretme kümesi örneğine veya kullanılabilirlik grubuna bağlanmasını sağlamak için alternatif bir yol sağlar. 
 
-DNN kaynağı oluşturulduğunda, küme DNS adını kümedeki tüm düğümlerin IP adresleriyle bağlar. SQL istemcisi, yük devretme kümesi örneğinin çalışmakta olduğu düğümü bulmak için bu listedeki her bir IP adresine bağlanmaya çalışır. Bağlantı dizesinde belirterek, bu işlemi hızlandırabilirsiniz `MultiSubnetFailover=True` . Bu ayar, sağlayıcının tüm IP adreslerini paralel olarak denemesini söyler, böylece istemci FCı 'ye anında bağlanabilir. 
+DNN kaynağı oluşturulduğunda, küme DNS adını kümedeki tüm düğümlerin IP adresleriyle bağlar. SQL istemcisi Bağlanılacak kaynağı bulmak için bu listedeki her bir IP adresine bağlanmaya çalışır.  Bağlantı dizesinde belirterek, bu işlemi hızlandırabilirsiniz `MultiSubnetFailover=True` . Bu ayar, sağlayıcının tüm IP adreslerini paralel olarak denemesini söyler, böylece istemci FCı veya dinleyiciye anında bağlanabilir. 
 
 Mümkün olduğunda bir yük dengeleyicide dağıtılmış ağ adı önerilir: 
 - Artık yük dengeleyici kaynağını sürdürmek zorunda kaldıklarından, uçtan uca çözüm daha sağlamdır. 
 - Yük dengeleyici araştırmalarının ortadan kaldırılması yük devretme süresini en aza indirir. 
-- DNN, yük devretme kümesi örneğinin Azure VM 'lerinde SQL Server sağlama ve yönetimini basitleştirir. 
+- DNN, yük devretme kümesi örneği veya kullanılabilirlik grubu dinleyicisinin Azure VM 'lerinde SQL Server sağlamasını ve yönetimini basitleştirir. 
 
-Çoğu SQL Server Özellik FCı ile saydam şekilde çalışır. Bu gibi durumlarda, var olan VNN DNS adını DNN DNS adıyla değiştirebilir veya DNN değerini var olan VNN DNS adıyla ayarlamanız yeterlidir. Ancak, bazı sunucu tarafı bileşenleri, VNN adını DNN adıyla eşleyen bir ağ diğer adı gerektirir. Belirli durumlar, sunucu tarafı yapılandırmasında belirli URL 'Leri tanımlarken olduğu gibi DNN DNS adının açık kullanımını gerektirebilir. 
+Çoğu SQL Server Özellik DNN kullanılırken, FCı ve kullanılabilirlik gruplarıyla saydam şekilde çalışır, ancak özel bir değerlendirme gerektirebilecek bazı özellikler vardır. Daha fazla bilgi için bkz. [FCI ve DNN birlikte çalışabilirlik](failover-cluster-instance-dnn-interoperability.md) ve [AG ve DNN birlikte çalışabilirliği](availability-group-dnn-interoperability.md) . 
 
-Başlamak için bir [FCI için DNN kaynağını yapılandırmayı](hadr-distributed-network-name-dnn-configure.md)öğrenin. 
+Başlamak için, [bir yük devretme kümesi örneği](failover-cluster-instance-distributed-network-name-dnn-configure.md) veya bir [kullanılabilirlik grubu](availability-group-distributed-network-name-dnn-listener-configure.md) için dağıtılmış ağ adı kaynağı yapılandırmayı öğrenin
 
 **Desteklenen işletim sistemi**: Windows Server 2016 ve üzeri   
-**Desteklenen SQL sürümü**: SQL Server 2019 ve üzeri   
-**Desteklenen HADR çözümü**: yalnızca yük devretme kümesi örneği
+**Desteklenen SQL sürümü**: SQL Server 2019 CU2 uygulamazsanız (FCI) ve SQL Server 2019 CU8 (AG)   
+**Desteklenen HADR çözümü**: yük devretme kümesi örneği ve kullanılabilirlik grubu   
 
 
 ## <a name="limitations"></a>Sınırlamalar
@@ -146,5 +145,5 @@ Azure sanal makinelerde, kümelenmiş paylaşılan birimlerde Windows Server 201
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çözümünüz için uygun en iyi uygulamaları belirledikten sonra, [FCI için SQL Server VM hazırlanarak](failover-cluster-instance-prepare-vm.md)başlayın. Ayrıca, [Azure CLI](availability-group-az-cli-configure.md)veya [Azure hızlı başlangıç şablonlarını](availability-group-quickstart-template-configure.md)kullanarak kullanılabilirlik grubunuzu de oluşturabilirsiniz. 
+Çözümünüz için uygun en iyi uygulamaları belirledikten sonra, [SQL Server VM FCI için hazırlarken](failover-cluster-instance-prepare-vm.md) veya [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](availability-group-az-cli-configure.md)veya [Azure hızlı başlangıç şablonlarını](availability-group-quickstart-template-configure.md)kullanarak kullanılabilirlik grubunuzu oluşturarak başlayın. 
 

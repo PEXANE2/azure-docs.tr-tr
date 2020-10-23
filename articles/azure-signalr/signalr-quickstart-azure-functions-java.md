@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: ab13c9494ee04d112cec93af9efaab43705297bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fac992ba0d6be945fcb3184d27394ff58d98c44c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319529"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151022"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Hızlı başlangıç: Java kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma
 
@@ -102,6 +102,6 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 Bu hızlı başlangıçta, Maven kullanarak gerçek zamanlı sunucusuz bir uygulama oluşturup çalıştırdınız. Ardından, sıfırdan Java Azure Işlevleri oluşturma hakkında bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Java ve Maven ile ilk işlevinizi oluşturma](../azure-functions/functions-create-first-java-maven.md)
+> [Java ve Maven ile ilk işlevinizi oluşturma](../azure-functions/functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java%252cprogramming-language-java)
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjava)

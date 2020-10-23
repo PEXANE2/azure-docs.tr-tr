@@ -1,23 +1,23 @@
 ---
-title: Fiyatlandırma Katmanı veya SKU seçin
+title: Fiyatlandırma katmanı seçin
 titleSuffix: Azure Cognitive Search
-description: "Azure Bilişsel Arama, bu SKU 'Larda sağlanabilir: ücretsiz, temel ve standart ve standart, çeşitli kaynak yapılandırmalarında ve kapasite düzeylerinde kullanılabilir."
+description: 'Azure Bilişsel Arama şu katmanlarda sağlanabilir: ücretsiz, temel ve standart ve standart, çeşitli kaynak yapılandırmalarında ve kapasite düzeylerinde kullanılabilir.'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948094"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101282"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
-Bir Azure Bilişsel Arama hizmeti oluşturduğunuzda, hizmet ömrü boyunca düzeltilen bir fiyatlandırma katmanında (veya SKU) bir [kaynak oluşturulur](search-create-service-portal.md) . Katmanlar ücretsiz, temel, standart ve depolama için Iyileştirilmiş. Standart ve depolama için Iyileştirilmiş çeşitli yapılandırmalarda ve kapasitelerde kullanılabilir.
+Bir Azure Bilişsel Arama hizmeti oluşturduğunuzda, fiyatlandırma katmanında hizmetin kullanım ömrü boyunca düzeltilen bir [kaynak oluşturulur](search-create-service-portal.md) . Katmanlar ücretsiz, temel, standart ve depolama için Iyileştirilmiş. Standart ve depolama için Iyileştirilmiş çeşitli yapılandırmalarda ve kapasitelerde kullanılabilir.
 
 Çoğu müşteri, hizmeti değerlendirebilmeleri için ücretsiz katmanla başlar. Değerlendirme sonrası, geliştirme ve üretim dağıtımları için daha yüksek katmanlardan birinde ikinci bir hizmet oluşturmak yaygındır.
 
@@ -27,15 +27,15 @@ Aşağıdaki tabloda katman ile ilgili özellik kısıtlamaları açıklanmaktad
 
 | Özellik | Sınırlamalar |
 |---------|-------------|
-| [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz. |
+| [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz.  |
 | [Yapay zeka zenginleştirme](search-security-manage-encryption-keys.md) | Ücretsiz katmanda çalışır, ancak önerilmez. |
 | [Müşteri tarafından yönetilen şifreleme anahtarları](search-security-manage-encryption-keys.md) | Ücretsiz katmanda kullanılamaz. |
 | [IP güvenlik duvarı erişimi](service-configure-firewall.md) | Ücretsiz katmanda kullanılamaz. |
-| [Azure özel bağlantısı ile tümleştirme](service-create-private-endpoint.md) | Ücretsiz katmanda kullanılamaz. |
+| [Özel uç nokta (Azure özel bağlantısı ile tümleştirme)](service-create-private-endpoint.md) | Bir arama hizmetine gelen bağlantılar için ücretsiz katmanda kullanılamaz. Diğer Azure kaynaklarına yönelik Dizin oluşturucular tarafından giden bağlantılar için ücretsiz veya S3 HD 'de kullanılamaz. Becerileri kullanan Dizin oluşturucular için, ücretsiz, temel, S1 veya S3 HD ' de kullanılamaz.|
 
 Birçok özellik, ücretsiz olarak da dahil olmak üzere her katmanda mevcuttur, ancak yeterli kapasiteye sahip olmadığınız takdirde Kaynak yoğunluklu Özellikler iyi çalışmayabilir. Örneğin, [AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına uğrar uzun süreli yetenekler içerir.
 
-## <a name="tiers-skus"></a>Katmanlar (SKU 'Lar)
+## <a name="tiers"></a>Katmanlar
 
 Katmanlar şu şekilde farklılaştırılabilir:
 
@@ -158,7 +158,7 @@ Bir dizinin boyutunu öğrenmek için [bir tane oluşturmanız](search-what-is-a
 Tam metin arama için, birincil veri yapısı, kaynak verilerden farklı özelliklere sahip olan [ters bir dizin](https://en.wikipedia.org/wiki/Inverted_index) yapısıdır. Ters bir dizin için boyut ve karmaşıklık, içeriğe göre belirlenir, bu, içinde yer alan veri miktarına göre değildir. Yüksek artıklığa sahip büyük bir veri kaynağı, yüksek oranda değişken içerik içeren küçük bir veri kümesinden daha küçük bir dizin oluşmasına neden olabilir. Bu nedenle, özgün veri kümesinin boyutuna bağlı olarak dizin boyutunu çıkarsmak nadiren mümkündür.
 
 > [!NOTE] 
-> Dizinler ve depolama için gelecekteki ihtiyaçları tahmin etmek de tahmin etmek gibi görünse de bunun yapılması gerekir. Bir katmanın kapasitesi çok düşük olursa, daha yüksek bir katmanda yeni bir hizmet sağlamanız ve ardından [dizinlerinizi yeniden yüklemeniz](search-howto-reindex.md)gerekir. Bir hizmetin bir SKU 'dan diğerine yerinde yükseltilmesi gerekmez.
+> Dizinler ve depolama için gelecekteki ihtiyaçları tahmin etmek de tahmin etmek gibi görünse de bunun yapılması gerekir. Bir katmanın kapasitesi çok düşük olursa, daha yüksek bir katmanda yeni bir hizmet sağlamanız ve ardından [dizinlerinizi yeniden yüklemeniz](search-howto-reindex.md)gerekir. Bir hizmetin bir katmandan diğerine yerinde yükseltilmesi yoktur.
 >
 
 ### <a name="estimate-with-the-free-tier"></a>Ücretsiz katman ile tahmin edin

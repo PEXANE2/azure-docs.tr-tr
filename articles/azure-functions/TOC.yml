@@ -141,6 +141,9 @@
           displayName: 'secure, ssl'
         - name: Güvenlik temeli
           href: security-baseline.md
+    - name: İzleme
+      href: functions-monitoring.md
+      displayName: 'App Insights, Application Insights, logs, logging'
     - name: Tanılama
       href: functions-diagnostics.md
     - name: Tüketim planı maliyetleri
@@ -282,11 +285,18 @@
           href: functions-geo-disaster-recovery.md
     - name: İzleme
       items:
-        - name: İzleme işlevleri
-          href: functions-monitoring.md
+        - name: İzlemeyi yapılandırma
+          href: configure-monitoring.md
           displayName: 'App Insights, Application Insights, logs, logging'
-        - name: Günlükleri analiz etme
+        - name: Telemetri verilerini analiz etme
+          href: analyze-telemetry-data.md
+          displayName: 'App Insights, Application Insights, Kusto'
+        - name: Akış günlükleri
+          href: streaming-logs.md
+          displayName: monitoring
+        - name: Tanılama günlükleri
           href: functions-monitor-log-analytics.md
+          displayName: 'Azure Monitor, Kusto, Log Analytics, metrics'
     - name: Güvenlik
       items:
         - name: SSL sertifikası ekleme
@@ -494,7 +504,16 @@
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: Table Storage
-          href: functions-bindings-storage-table.md
+          items:
+            - name: Genel Bakış
+              href: functions-bindings-storage-table.md
+              displayName: Table storage
+            - name: Girdi
+              href: functions-bindings-storage-table-input.md
+              displayName: Table storage
+            - name: Çıktı
+              href: functions-bindings-storage-table-output.md
+              displayName: Table storage
         - name: Zamanlayıcı
           href: functions-bindings-timer.md
         - name: Twilio

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001646"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317217"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -121,7 +121,7 @@ Windows Server 2012 R2 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure içi
 Windows Server 2012 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure için hazır
 Windows Server 2008 R2 ve tüm SPs 'ler | Azure tam destek sağlar.| Azure için hazır
 Windows Server 2008 (32-bit ve 64-bit) | Azure tam destek sağlar. | Azure için hazır
-Windows Server 2003, 2003 R2 | Destek dışı ve Azure 'da destek için [özel bir destek sözleşmesi (CSA)](https://aka.ms/WSosstatement) gerekiyor. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeyi düşünün.
+Windows Server 2003, 2003 R2 | Destek dışı ve Azure 'da destek için [özel bir destek sözleşmesi (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) gerekiyor. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeyi düşünün.
 Windows 2000, 98, 95, NT, 3,1, MS-DOS | Destek dışı. Makine Azure 'da önbaşlatılabilir, ancak Azure tarafından bir işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz önerilir.
 Windows Istemcisi 7, 8 ve 10 | Azure [yalnızca Visual Studio aboneliği](../virtual-machines/windows/client-images.md) için destek sağlar. | Azure için koşullu olarak hazır
 Windows 10 Pro masaüstü | Azure, [çok kiracılı barındırma haklarıyla](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) destek sağlar. | Azure için koşullu olarak hazır

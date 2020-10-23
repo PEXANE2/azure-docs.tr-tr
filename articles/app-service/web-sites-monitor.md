@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 327abb2e67f21c2893fc652b0e30c640980914c2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c4e9a66e6bd6b94d8397429769d7718b3e9c555d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044539"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148116"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
+[Azure App Service](./overview.md) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
 
 Azure portal, bir uygulama için *kotaları* ve *ölçümleri* gözden geçirebilir ve App Service planı ve *uyarıları* ve *Otomatik ölçeklendirme* kuralları tabanlı ölçümleri ayarlayabilirsiniz.
 
@@ -31,7 +31,7 @@ Uygulama *temel*, *Standart*veya *Premium* bir planda barındırılıyorsa, kull
 
 Ücretsiz veya paylaşılan uygulamalar için kotalar şunlardır:
 
-| Kota | Açıklama |
+| Kota | Description |
 | --- | --- |
 | **CPU (kısa)** | Bu uygulama için, 5 dakikalık bir aralıkta izin verilen CPU miktarı. Bu kota her beş dakikada bir sıfırlanır. |
 | **CPU (gün)** | Bu uygulama için bir günde izin verilen toplam CPU miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |

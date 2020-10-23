@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054823"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102485"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma
 
@@ -105,7 +105,7 @@ Bu bölümde, hub 'ınız ile VNet arasında eşleme bağlantısı oluşturursun
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Devrenizi hub Gateway 'e bağlama
 
-Ağ Geçidi oluşturulduktan sonra, bir [ExpressRoute devresini](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) buna bağlayabilirsiniz. ExpressRoute Global Reach-desteklenen konumlarda bulunan ExpressRoute standart veya Premium devreleri bir sanal WAN ExpressRoute Gateway 'e bağlanabilir ve tüm sanal WAN geçiş yeteneklerini (VPN-VPN, VPN ve ExpressRoute aktarımı) tadını çıkarabilirsiniz. Global Reach olmayan konumlarda bulunan ExpressRoute standart ve Premium devreleri Azure kaynaklarına bağlanabilir, ancak sanal WAN geçiş yeteneklerini kullanamaz. ExpressRoute yerel, Azure sanal WAN ile desteklenmez.
+Ağ Geçidi oluşturulduktan sonra, bir [ExpressRoute devresini](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) buna bağlayabilirsiniz. ExpressRoute Global Reach-desteklenen konumlarda bulunan ExpressRoute standart veya Premium devreleri bir sanal WAN ExpressRoute Gateway 'e bağlanabilir ve tüm sanal WAN geçiş yeteneklerini (VPN-VPN, VPN ve ExpressRoute aktarımı) tadını çıkarabilirsiniz. Global Reach olmayan konumlarda bulunan ExpressRoute standart ve Premium devreleri Azure kaynaklarına bağlanabilir, ancak sanal WAN geçiş yeteneklerini kullanamaz. Sanal bir WAN hub 'ına bağlı olan bağlı olan sanal ağlar sanal WAN hub ile aynı bölgede yer aldığı sürece ExpressRoute Local, Azure sanal WAN 'ları ile desteklenir.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Devresine hub Gateway 'e bağlamak için
 

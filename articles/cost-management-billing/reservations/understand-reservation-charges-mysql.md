@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4ef19b1fc8f0d503f1a35c60afd1faec2a548ca4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5cb4e3dd4145319361a2494ee346c0d2696edf45
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682000"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148305"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanına rezervasyon indiriminin uygulanması
 
@@ -30,7 +30,7 @@ MySQL için Azure Veritabanı ayrılmış kapasitesi indirimi, çalışan MySQL 
 
 Aşağıdaki örneklerde, satın aldığınız çekirdek sayısına ve çalıştırılma zamanına bağlı olarak MySQL için Azure Veritabanı ayrılmış kapasite indiriminin nasıl uygulanacağı gösterilmektedir.
 
-* **Örnek 1**: 8 sanal çekirdek için MySQL için Azure Veritabanı ayrılmış kapasitesi satın alabilirsiniz. Rezervasyonun diğer öznitelikleriyle eşleşen 16 sanal çekirdekli MySQL için Azure Veritabanı sunucusu çalıştırıyorsanız MySQL sunucusu işlem kullanımınızın 8 sanal çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve 8 sanal çekirdek MySQL sunucusu işlem kullanımı için bir saatlik indirimden faydalanırsınız.</br>
+**Örnek 1**: 8 sanal çekirdek için MySQL için Azure Veritabanı ayrılmış kapasitesi satın alabilirsiniz. Rezervasyonun diğer öznitelikleriyle eşleşen 16 sanal çekirdekli MySQL için Azure Veritabanı sunucusu çalıştırıyorsanız MySQL sunucusu işlem kullanımınızın 8 sanal çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve 8 sanal çekirdek MySQL sunucusu işlem kullanımı için bir saatlik indirimden faydalanırsınız.</br>
 
 Bu örneklerin geri kalan kısmında satın aldığınız MySQL için Azure Veritabanı ayrılmış kapasitesinin 16 sanal çekirdekli MySQL için Azure Veritabanı için olduğunu ve diğer rezervasyon özniteliklerinin çalışan MySQL sunucuları ile eşleştiğini kabul edelim.
 
@@ -40,7 +40,7 @@ Bu örneklerin geri kalan kısmında satın aldığınız MySQL için Azure Veri
 
 * **Örnek 4**: Saat 13:00 ile 13:45 arasında 16 sanal çekirdekli MySQL için Azure Veritabanı sunucusu çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli MySQL için Azure Veritabanı sunucusu çalıştırıyorsunuz. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca işlem kullanımına uygulanır.
 
-Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
+Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](./understand-reserved-instance-usage-ea.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

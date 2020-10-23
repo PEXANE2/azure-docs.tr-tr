@@ -3,12 +3,12 @@ title: Kullanmaya başlayın ve takımlar içinde Azure Lab Services Laboratuvar
 description: Nasıl başlacağınızı ve takımlar içinde Azure Lab Services Laboratuvarı oluşturmayı öğrenin.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 4f8c0e2c5f7b75990460b0a1812d4fec3a758259
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092146"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217091"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Kullanmaya başlayın ve takımlar içinde Laboratuvar Hizmetleri Laboratuvarı oluşturun
 
@@ -24,6 +24,9 @@ Ekipler içinde Azure Lab Services kullanırken tipik iş akışı burada verilm
 1. [Laboratuvar hesabı Oluşturucusu, diğer kullanıcıları](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role) **Laboratuvar Oluşturucu** rolüne ekler. Örneğin, laboratuvar hesabı oluşturan/yönetici laboratuvar **Oluşturucu** rolüne eğitimciler ekler; böylece, sınıfları için laboratuvarları oluşturabilirler.
 1. Daha sonra, eğitimciler Create Labs, şablon VM 'yi önceden yapılandırır ve ekipteki herkese VM 'yi sağlamak üzere Laboratuvarı yayımlar.
 1. Laboratuvar yayımlandıktan sonra, Azure Lab Services için ilk oturum açmada ekip üyeliği listesinde herkese bir sanal makine atanır (SSO) veya [Labs Web sitesine](https://labs.azure.com)erişerek **Azure Lab Services** uygulama içeren sekmeye tıklayın. Böylece kullanıcılar VM 'yi kullanarak iş ve ev ödevini yapabilir.
+
+> [!IMPORTANT]
+> Azure Lab Services ekipler yalnızca laboratuvar hesapları ekiplerle aynı kiracıda oluşturulmuşsa kullanılabilir.
 
 ## <a name="add-azure-lab-services-app-as-a-tab-to-a-team"></a>Takıma bir sekme olarak Azure Lab Services uygulaması ekleme
 

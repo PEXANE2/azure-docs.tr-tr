@@ -3,12 +3,12 @@ title: DevTest Labs kavramları | Microsoft Docs
 description: DevTest Labs 'in temel kavramlarını ve Azure sanal makinelerini oluşturmayı, yönetmeyi ve izlemeyi nasıl kolaylaştırabileceğinizi öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b184f835ee99d47ddb843e5b02136299c26bfcdc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283852"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327867"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs kavramları
 ## <a name="overview"></a>Genel Bakış
@@ -56,7 +56,7 @@ Formüller sayesinde, temel görüntü, VM boyutu, sanal ağ ve yapıtlar gibi a
 CAPS, laboratuvarınızda çöp durumunu en aza indirecek bir mekanizmadır. Örneğin, Kullanıcı başına veya bir laboratuvarda oluşturulabilecek VM sayısını kısıtlamak için bir sınır belirleyebilirsiniz.
 
 ## <a name="security-levels"></a>Güvenlik düzeyleri
-Güvenlik erişimi, Azure rol tabanlı erişim denetimi (Azure RBAC) tarafından belirlenir. Erişimin nasıl çalıştığını anlamak için, bir izin, rol ve RBAC tarafından tanımlanan bir kapsam arasındaki farkları anlamanıza yardımcı olur.
+Güvenlik erişimi, Azure rol tabanlı erişim denetimi (Azure RBAC) tarafından belirlenir. Erişimin nasıl çalıştığını anlamak için, bir izin, rol ve Azure RBAC tarafından tanımlanan bir kapsam arasındaki farkları anlamanıza yardımcı olur.
 
 * İzin-bir izin, belirli bir eyleme (örneğin, tüm sanal makinelere yönelik okuma erişimi) tanımlı bir erişimdir.
 * Rol-rol, gruplandırılabilen ve bir kullanıcıya atanabilecek bir izinler kümesidir. Örneğin, *abonelik sahibi* rolü bir abonelik içindeki tüm kaynaklara erişebilir.

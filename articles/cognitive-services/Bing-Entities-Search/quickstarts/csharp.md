@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99f2197732a332e860af421f46d1049c2388043c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936835"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221239"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Hızlı başlangıç: C kullanarak Bing Varlık Arama REST API arama isteği gönderme #
 
@@ -28,21 +28,20 @@ Bu uygulama C# dilinde yazılsa da, API birçok programlama dili ile uyumlu olan
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
-
-- NuGet paketi olarak kullanılabilen [Json.NET](https://www.newtonsoft.com/json) çerçevesi. NuGet paketini Visual Studio 'ya yüklemek için:
-
-   1. **Çözüm Gezgini**' de projenize sağ tıklayın.
-   2. **NuGet Paketlerini Yönet**' i seçin.
-   3. Araması yapın ve * üzerindeNewtonsoft.Js*seçin ve ardından paketi yükler.
-
-- Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
+- Ya da Linux veya MacOS kullanıyorsanız, [Visual Studio Code](https://code.visualstudio.com/) ve [.NET Core](/dotnet/core/install/macos) kullanarak bu hızlı başlangıcı izleyebilirsiniz.
+- [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/dotnet)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. Ardından, aşağıdaki ad alanlarını ana kod dosyasına ekleyin:
+1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. 
+1. NuGet paketine [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) ekleyin.
+    1. **Çözüm Gezgini**' de projenize sağ tıklayın.
+    2. **NuGet Paketlerini Yönet**' i seçin.
+    3. Araması yapın ve * üzerindeNewtonsoft.Js*seçin ve ardından paketi yükler.
+1. Ardından, aşağıdaki ad alanlarını ana kod dosyasına ekleyin:
     
     ```csharp
     using Newtonsoft.Json;

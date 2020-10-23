@@ -9,18 +9,18 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527148"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132814"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
 Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kültürünü planlamanıza ve güçlendirmenize yardımcı olur. Bütçeleri kullanarak belirli bir dönem içinde kullandığınız veya abone olduğunuz Azure hizmetlerini takip edebilirsiniz. Bütçeler, maliyetleri önceden yönetmek için diğer kullanıcıları harcamaları konusunda bilgilendirmenize ve zaman içindeki harcamayı izlemenize yardımcı olur. Oluşturduğunuz bütçe eşikleri aşıldığında yalnızca bildirimler tetiklenir. Kaynaklarınızın hiçbiri etkilenmez ve tüketiminiz durdurulmaz. Bütçeleri kullanarak maliyet analizi sırasında harcamaları karşılaştırabilir ve izleyebilirsiniz.
 
-Maliyet ve kullanım verileri genellikle 8-24 saat içinde kullanıma sunulur ve bütçeler 12-14 saatte bir bu maliyetlere göre değerlendirilir. [Maliyet ve kullanım verileri güncelleştirmelerinin](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention) özelliklerini öğrendiğinizden emin olun. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle değerlendirmeyi izleyen bir saat içinde gönderilir.
+Maliyet ve kullanım verileri genellikle 8-24 saat içinde kullanıma sunulur ve bütçeler 12-14 saatte bir bu maliyetlere göre değerlendirilir. [Maliyet ve kullanım verileri güncelleştirmelerinin](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) özelliklerini öğrendiğinizden emin olun. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle değerlendirmeyi izleyen bir saat içinde gönderilir.
 
 Gelecekte bir son kullanma tarihi seçtiğinizde bütçeler, dönem sonunda (ay, üç ay veya yıl) otomatik olarak aynı bütçe tutarına geri döner. Aynı bütçe tutarına geri döndükleri için bütçedeki para birimlerinin ilerleyen dönemlerde farklı olması halinde ayrı bütçeler oluşturmanız gerekir.
 
@@ -72,7 +72,7 @@ Aşağıdaki Azure izinleri veya kapsamları abonelik başına kullanıcı ve gr
 - Katkıda bulunan ve Maliyet Yönetimi katkıda bulunanı - Kendi bütçelerini oluşturabilir, değiştirebilir veya silebilir. Başkaları tarafından oluşturulan bütçelerin miktarlarını değiştirebilir.
 - Okuyucu ve Maliyet Yönetimi okuyucusu - İzin verilen bütçeleri görüntüleyebilir.
 
-Maliyet Yönetimi verilerine izin atama hakkında daha fazla bilgi için bkz. [Maliyet Yönetimi verilerine erişim atama](../../cost-management/assign-access-acm-data.md).
+Maliyet Yönetimi verilerine izin atama hakkında daha fazla bilgi için bkz. [Maliyet Yönetimi verilerine erişim atama](./assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -104,7 +104,7 @@ Bütçede şu ana kadar seçtiğiniz alanlara bağlı olarak, bütçeniz için k
 
 Bütçe tutarını yapılandırdıktan sonra bütçe uyarılarını yapılandırmak için **İleri**'yi seçin. Bütçeler için en az bir maliyet eşiği (bütçe yüzdesi) ve buna karşılık gelen bir e-posta adresi gerekir. İsteğe bağlı olarak tek bir bütçeye en fazla beş eşik ve beş e-posta adresi ekleyebilirsiniz. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle değerlendirmeyi izleyen bir saat içinde gönderilir.
 
-E-posta almak istiyorsanız, e-postaların önemsiz e-posta klasörünüze gitmemesi için azure-noreply@microsoft.com adresini onaylı gönderenler listenize ekleyin. Bildirimleri hakkında daha fazla bilgi için, bkz. [Maliyeti uyarılarını kullanma](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
+E-posta almak istiyorsanız, e-postaların önemsiz e-posta klasörünüze gitmemesi için azure-noreply@microsoft.com adresini onaylı gönderenler listenize ekleyin. Bildirimleri hakkında daha fazla bilgi için, bkz. [Maliyeti uyarılarını kullanma](./cost-mgt-alerts-monitor-usage-spending.md).
 
 Aşağıdaki örnekte, bütçenin %90'ına ulaşıldığında bir e-posta uyarısı oluşturulmuştur. Bütçeler API'si ile bütçe oluşturduğunuzda kullanıcılara uyarı gönderilmesi için roller de atayabilirsiniz. Kişilere rol atama işlemi Azure portalında gerçekleştirilemez. Azure Bütçeler API'si hakkında daha fazla bilgi için bkz. [Bütçeler API'si](/rest/api/consumption/budgets). Farklı bir dilde yazılmış bir e-posta uyarısı göndermek istiyorsanız bkz. [Bütçe uyarısı e-postaları için desteklenen yerel ayarlar](manage-automation.md#supported-locales-for-budget-alert-emails).
 
@@ -112,7 +112,7 @@ Uyarı sınırları, sağladığınız bütçe eşiğinin %0,01’i ile %1000'i 
 
 ![Uyarı koşullarını gösteren örnek](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Bir bütçe oluşturulduktan sonra maliyet analizi bölümünde gösterilir. Bütçenizin harcama eğilimiyle karşılaştırmalı olarak görüntülenmesi, [maliyetlerinizi ve harcamalarınızı analiz etmeye](../../cost-management/quick-acm-cost-analysis.md) başladığınızda kullanacağınız ilk adımlardan biridir.
+Bir bütçe oluşturulduktan sonra maliyet analizi bölümünde gösterilir. Bütçenizin harcama eğilimiyle karşılaştırmalı olarak görüntülenmesi, [maliyetlerinizi ve harcamalarınızı analiz etmeye](./quick-acm-cost-analysis.md) başladığınızda kullanacağınız ilk adımlardan biridir.
 
 ![Maliyet analizinde gösterilen örnek bütçe ve harcama](./media/tutorial-acm-create-budgets/cost-analysis.png)
 

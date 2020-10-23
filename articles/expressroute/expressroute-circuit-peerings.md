@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566509"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202353"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute devreleri ve eşleme
 
@@ -70,7 +70,7 @@ Her eşleme ayrı BGP oturumları gerektirir (her bir eşleme türü için bir �
 
 ## <a name="expressroute-health"></a><a name="health"></a>ExpressRoute durumu
 
-ExpressRoute devreleri, [ağ performansı İzleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) kullanarak, sanal ağlar ve bant genişliği kullanımı için kullanılabilir.
+ExpressRoute devreleri, [ağ performansı İzleyicisi](../networking/network-monitoring-overview.md) (NPM) kullanarak, sanal ağlar ve bant genişliği kullanımı için kullanılabilir.
 
 NPM, Azure özel eşleme ve Microsoft eşleme sistem durumunu izler. Daha fazla bilgi için [gönderimize](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) göz atın.
 

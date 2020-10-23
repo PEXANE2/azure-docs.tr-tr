@@ -5,7 +5,7 @@
   items:
     - name: Yüz Tanıma hizmeti nedir?
       href: Overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: İstemci kitaplığını kullanma
       href: Quickstarts/client-libraries.md
@@ -89,6 +89,8 @@
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: Kaynaklar
   items:
+    - name: Destek ve yardım seçenekleri
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
     - name: Örnekler
       items:
         - name: Yüz Tanıma örnekleri

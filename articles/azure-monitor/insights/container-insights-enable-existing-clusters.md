@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti (AKS) kümesini aboneliğinizde zaten dağ
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994502"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165409"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Azure Kubernetes Service (AKS) kümesinin izlenmesini etkinleştirme zaten dağıtıldı
 
@@ -17,7 +17,7 @@ Bu makalede, aboneliğinizde zaten dağıtılmış olan [Azure Kubernetes hizmet
 
 Desteklenen yöntemlerden birini kullanarak zaten dağıtılmış bir AKS kümesinin izlenmesini etkinleştirebilirsiniz:
 
-* Azure CLI
+* Azure CLI’si
 * Terraform
 * [Azure Izleyici 'den](#enable-from-azure-monitor-in-the-portal) veya Azure Portal [doğrudan aks kümesinden](#enable-directly-from-aks-cluster-in-the-portal)
 * [Azure Resource Manager şablonuyla](#enable-using-an-azure-resource-manager-template) , Azure PowerShell cmdlet 'Ini `New-AzResourceGroupDeployment` veya Azure CLI ile birlikte.
@@ -132,12 +132,10 @@ Azure portal doğrudan AKS kümelerinizin birinden izlemeyi etkinleştirmek içi
 2. Kaynak listesinde **kapsayıcılar**yazmaya başlayın.  Liste, girişinizi temel alarak filtreler.
 
 3. **Kubernetes Hizmetleri**' ni seçin.
+    
+4. Kubernetes hizmetleri listesinde bir hizmet seçin.
 
-    ![Kubernetes Services bağlantısı](./media/container-insights-onboard/portal-search-containers-01.png)
-
-4. Kapsayıcılar listesinde bir kapsayıcı seçin.
-
-5. Kapsayıcıya Genel Bakış sayfasında, **Izleme kapsayıcıları**' nı seçin.
+5. Kubernetes hizmetine genel bakış sayfasında, **izleme-Öngörüler**' i seçin.
 
 6. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte var olan bir Log Analytics çalışma alanınız varsa, açılan listeden seçin.
     Liste, varsayılan çalışma alanını ve AKS kapsayıcısının abonelikte dağıtıldığı konumu önceden seçer.

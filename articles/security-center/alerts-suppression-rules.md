@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448475"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342102"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender 'dan uyarıları gösterme
 
@@ -26,7 +26,7 @@ Bu sayfada, Azure Defender 'daki hatalı pozitif durumları veya diğer istenmey
 |Yayın durumu:|Önizleme|
 |Fiyat|Ücretsiz<br>(Çoğu güvenlik uyarısı yalnızca Azure Defender ile kullanılabilir)|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** ve **sahibi** kuralları oluşturabilir/silebilir.<br>**Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -47,18 +47,18 @@ Gizleme kurallarınız, uyarıların otomatik olarak hangi ölçütlere göre ka
 
 :::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="Uyarı gizleme kuralı oluştur":::
 
-## <a name="create-a-suppression-rule"></a>Gizleme kuralı oluşturma
+## <a name="create-a-suppression-rule"></a>Engelleme kuralı oluşturma
 
-İstenmeyen güvenlik uyarılarını bastırmak için kurallar oluşturabileceğiniz birkaç yol vardır:
+İstenmeyen güvenlik uyarılarını engellemek için kurallar oluşturmanın birkaç yolu vardır:
 
-- Yönetim grubu düzeyinde uyarıları gizlemek için Azure Ilkesi 'ni kullanın
-- Uyarıları abonelik düzeyinde gizlemek için, aşağıda açıklandığı gibi Azure portal veya REST API kullanabilirsiniz
+- Uyarıları yönetim grubu düzeyinde engellemek için Azure İlkesi'ni kullanın
+- Uyarıları abonelik düzeyinde engellemek için, aşağıda açıklandığı gibi Azure portal veya REST API kullanabilirsiniz
 
 Gizleme kuralları yalnızca seçili aboneliklerde zaten tetiklenen uyarıları kapatabilir.
 
 Azure portal doğrudan bir kural oluşturmak için:
 
-1. Güvenlik Merkezi 'nin güvenlik uyarıları sayfasından:
+1. Güvenlik Merkezi'nin güvenlik uyarıları sayfasından:
 
     - Artık görmek istemediğiniz belirli uyarıyı bulun ve uyarının üç nokta menüsünden (...) **gizleme kuralı oluştur**' u seçin:
 
@@ -77,10 +77,10 @@ Azure portal doğrudan bir kural oluşturmak için:
 
     [![Kural oluşturma bölmesinin gizleme](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
 1. Kuralın ayrıntılarını girin:
-    - **Ad** -kural için bir ad. Kural adları bir harf veya sayı ile başlamalı, 2 ila 50 karakter arasında olmalıdır ve tire (-) veya alt çizgi (_) dışında bir sembol içermemelidir. 
+    - **Ad** -kural için bir ad. Kural adları bir harf veya sayı ile başlamalı, 2 ila 50 karakter uzunluğunda olmalı ve tire (-) ya da alt çizgi (_) dışında bir simge içermemelidir. 
     - **Durum** -etkin veya devre dışı.
     - **Neden** -gereksinimlerinizi karşılamıyorsa, yerleşik nedenlerden birini veya ' diğer ' seçeneğini belirleyin.
-    - **Sona erme tarihi** -kuralın bitiş tarihi ve saati. Kurallar, altı aya kadar çalışabilir.
+    - **Sona erme tarihi** -kuralın bitiş tarihi ve saati. Kurallar en fazla altı ay çalıştırılabilir.
 1. İsteğe bağlı olarak, bu kural etkin olduğunda kaç uyarı kapatılacağını görmek için **Benzetim** düğmesini kullanarak kuralı test edin.
 1. Kuralı kaydedin. 
 
@@ -139,7 +139,7 @@ REST API kuralları gizleme için ilgili HTTP yöntemleri şunlardır:
 
 - **Sil**: varolan bir kuralı siler (ancak tarafından zaten kapatılan uyarıların durumunu değiştirmez).
 
-Tam ayrıntılar ve kullanım örnekleri için [API belgelerine](https://docs.microsoft.com/rest/api/securitycenter/)bakın. 
+Tam ayrıntılar ve kullanım örnekleri için [API belgelerine](/rest/api/securitycenter/)bakın. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

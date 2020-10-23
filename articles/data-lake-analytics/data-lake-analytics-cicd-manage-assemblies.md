@@ -6,12 +6,12 @@ ms.author: liud
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
-ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e88616f45c69d33234aa35333e0d82ad8cc59bb6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132152"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219369"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>CI/CD ardışık düzeninde U-SQL derlemelerini yönetmeye yönelik en iyi yöntemler
 
@@ -19,40 +19,43 @@ Bu makalede, U-SQL derleme kaynak kodunu yeni tanıtılan U-SQL veritabanı proj
 
 ## <a name="use-the-u-sql-database-project-to-manage-assembly-source-code"></a>Derleme kaynak kodunu yönetmek için U-SQL veritabanı projesini kullanma
 
-[U-SQL veritabanı projesi](data-lake-analytics-data-lake-tools-develop-usql-database.md) , Visual Studio 'da, geliştiricilerin U-SQL veritabanlarını hızlı ve kolay bir şekilde geliştirmesine, yönetmesine ve dağıtmasına yardımcı olan bir proje türüdür. U-SQL veritabanı projesi ile tüm U-SQL veritabanı nesnelerini (kimlik bilgileri hariç) yönetebilirsiniz. 
+[U-SQL veritabanı projesi](data-lake-analytics-data-lake-tools-develop-usql-database.md) , Visual Studio 'da, geliştiricilerin U-SQL veritabanlarını hızlı ve kolay bir şekilde geliştirmesine, yönetmesine ve dağıtmasına yardımcı olan bir proje türüdür. U-SQL veritabanı projesi ile tüm U-SQL veritabanı nesnelerini (kimlik bilgileri hariç) yönetebilirsiniz.
 
 C# derleme kaynak kodunu ve derleme kaydı DDL U-SQL betiklerini yönetmek için şunu kullanın:
 
-* Derleme kaydı U-SQL betiklerini yönetmek için u-SQL veritabanı projesi.
-* C# kaynak kodunu ve Kullanıcı tanımlı operatörler, işlevleri ve aggreg'leri (UDOs, UDF 'ler ve Udag 'ler) yönetmek için sınıf kitaplığı (U-SQL uygulaması Için).
-* Sınıf kitaplığı projesine başvurmak için U-SQL veritabanı projesi. 
+- Derleme kaydı U-SQL betiklerini yönetmek için u-SQL veritabanı projesi.
+- C# kaynak kodunu ve Kullanıcı tanımlı operatörler, işlevleri ve aggreg'leri (UDOs, UDF 'ler ve Udag 'ler) yönetmek için sınıf kitaplığı (U-SQL uygulaması Için).
+- Sınıf kitaplığı projesine başvurmak için U-SQL veritabanı projesi.
 
 Bir U-SQL veritabanı projesi, bir sınıf kitaplığına (U-SQL uygulaması Için) başvurabilir. Bu sınıf kitaplığı (U-SQL uygulaması Için) projesinde başvurulan C# kaynak kodunu kullanarak U-SQL veritabanında kayıtlı derlemeler oluşturabilirsiniz.
 
 Projeler oluşturmak ve başvurular eklemek için bu adımları izleyin.
+
 1. **Dosya**  >  **Yeni**proje ' ye tıklayarak bir sınıf kitaplığı (U-SQL uygulaması için) projesi oluşturun  >  **Project**. Proje **Azure Data Lake > U-SQL** düğümü altındadır.
 
    ![Visual Studio için Data Lake araçları--C# sınıf kitaplığı projesi oluşturma](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
+
 1. Kullanıcı tanımlı C# kodunuzu sınıf kitaplığı (U-SQL uygulaması Için) projesine ekleyin.
 
 1. **Dosya**  >  **Yeni**proje ' ye tıklayarak bir U-SQL projesi oluşturun  >  **Project**. Proje **Azure Data Lake**  >  **U-SQL** düğümü altındadır.
 
    ![Visual Studio için Data Lake araçları--U-SQL veritabanı projesi oluşturma](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
+
 1. U-SQL veritabanı projesi için C# sınıf kitaplığı projesine bir başvuru ekleyin.
 
-    ![Visual Studio için Data Lake araçları--U-SQL veritabanı proje başvurusu ekleme](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference.png) 
+   ![Visual Studio için Data Lake araçları-başvuru Ekle](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference.png)
 
-    ![Visual Studio için Data Lake araçları--U-SQL veritabanı proje başvurusu ekleme](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
+   ![Visual Studio için Data Lake araçları-U-SQL veritabanı proje başvurusu ekleme](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
 
-5. Projeye sağ tıklayıp **Yeni öğe Ekle**' yi seçerek U-SQL veritabanı projesinde bir derleme betiği oluşturun.
+1. Projeye sağ tıklayıp **Yeni öğe Ekle**' yi seçerek U-SQL veritabanı projesinde bir derleme betiği oluşturun.
 
    ![Visual Studio için Data Lake araçları--derleme betiği Ekle](media/data-lake-analytics-cicd-manage-assemblies/add-assembly-script.png)
 
 1. Derleme betiğini derleme Tasarım görünümünde açın. **Başvurudan derleme oluştur** açılan menüsünden başvurulan derlemeyi seçin.
 
-    ![Visual Studio için Data Lake araçları--derlemeden derleme oluştur](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
+   ![Visual Studio için Data Lake araçları--derlemeden derleme oluştur](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-7. Varsa, **yönetilen bağımlılıklar** ve **ek dosyalar**ekleyin. Ek dosyalar eklediğinizde, araç, derlemeleri yerel makinenizde ve derleme makinesinde daha sonra bulamediğinden emin olmak için göreli yolu kullanır.
+1. Varsa, **yönetilen bağımlılıklar** ve **ek dosyalar**ekleyin. Ek dosyalar eklediğinizde, araç, derlemeleri yerel makinenizde ve derleme makinesinde daha sonra bulamediğinden emin olmak için göreli yolu kullanır.
 
 En alttaki düzenleyici penceresinde ** \@ _DeployTempDirectory** , Aracı yapı çıkış klasörüne işaret eden önceden tanımlanmış bir değişkendir. Yapı çıktı klasörü altında, her derlemenin derleme adıyla adlı bir alt klasörü vardır. Tüm dll 'Ler ve ek dosyalar bu alt klasörde bulunur.
 
@@ -62,7 +65,7 @@ U-SQL veritabanı projesi için derleme çıktısı bir U-SQL veritabanı dağı
 
 ## <a name="deploy-a-u-sql-database"></a>U-SQL veritabanı dağıtma
 
-`.usqldbpack`Paket, bir yerel hesaba veya Azure Data Lake Analytics hesabına dağıtılabilir. Visual Studio 'Yu veya dağıtım SDK 'sını kullanın. 
+`.usqldbpack`Paket, bir yerel hesaba veya Azure Data Lake Analytics hesabına dağıtılabilir. Visual Studio 'Yu veya dağıtım SDK 'sını kullanın.
 
 ### <a name="deploy-a-u-sql-database-in-visual-studio"></a>Visual Studio 'da bir U-SQL veritabanı dağıtma
 
@@ -70,15 +73,19 @@ Bir u-SQL veritabanı projesi ya da Visual Studio 'da bir paket kullanarak bir U
 
 #### <a name="deploy-by-using-a-u-sql-database-project"></a>U-SQL veritabanı projesi kullanarak dağıtma
 
-1.  U-SQL veritabanı projesine sağ tıklayın ve ardından **Dağıt**' ı seçin.
-2.  **U-SQL veritabanı dağıtma** sihirbazında, veritabanını dağıtmak Istediğiniz **ADLA hesabını** seçin. Hem yerel hesaplar hem de ADLA hesapları desteklenir.
-3.  **Veritabanı kaynağı** otomatik olarak doldurulur. Projenin derleme çıkış klasöründeki. ustodbpack paketini işaret eder.
-4.  Veritabanı oluşturmak için **veritabanı adında** bir ad girin. Hedef Azure Data Lake Analytics hesabında aynı ada sahip bir veritabanı zaten varsa, veritabanı projesinde tanımlanan tüm nesneler veritabanı yeniden oluşturulmadan oluşturulur.
-5.  U-SQL veritabanını dağıtmak için **Gönder**' i seçin. Derlemeler ve ek dosyalar gibi tüm kaynaklar karşıya yüklenir. Tüm DDL deyimlerini içeren bir U-SQL işi gönderilir.
+1. U-SQL veritabanı projesine sağ tıklayın ve ardından **Dağıt**' ı seçin.
 
-    ![Visual Studio için Data Lake araçları--U-SQL veritabanı projesini dağıtma](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project.png)
+1. **U-SQL veritabanı dağıtma** sihirbazında, veritabanını dağıtmak Istediğiniz **ADLA hesabını** seçin. Hem yerel hesaplar hem de ADLA hesapları desteklenir.
 
-    ![Visual Studio için Data Lake araçları--U-SQL veritabanı proje Sihirbazı 'nı dağıtma](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project-wizard.png)
+1. **Veritabanı kaynağı** otomatik olarak doldurulur. Projenin derleme çıkış klasöründeki. ustodbpack paketini işaret eder.
+
+1. Veritabanı oluşturmak için **veritabanı adında** bir ad girin. Hedef Azure Data Lake Analytics hesabında aynı ada sahip bir veritabanı zaten varsa, veritabanı projesinde tanımlanan tüm nesneler veritabanı yeniden oluşturulmadan oluşturulur.
+
+1. U-SQL veritabanını dağıtmak için **Gönder**' i seçin. Derlemeler ve ek dosyalar gibi tüm kaynaklar karşıya yüklenir. Tüm DDL deyimlerini içeren bir U-SQL işi gönderilir.
+
+   ![Visual Studio için Data Lake araçları--U-SQL veritabanı projesini dağıtma](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project.png)
+
+   ![Visual Studio için Data Lake araçları--U-SQL veritabanı proje Sihirbazı 'nı dağıtma](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project-wizard.png)
 
 ### <a name="deploy-a-u-sql-database-in-azure-devops"></a>Azure DevOps 'da bir U-SQL veritabanı dağıtma
 
@@ -88,6 +95,6 @@ Azure DevOps 'da, U-SQL veritabanı yenilemesi için bir Otomasyon işlem hattı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Lake Analytics için CI/CD işlem hattı ayarlama](data-lake-analytics-cicd-overview.md)
-* [Azure Data Lake Analytics kodunuzu test etme](data-lake-analytics-cicd-test.md)
-* [Yerel makinenizde U-SQL betiğini çalıştırma](data-lake-analytics-data-lake-tools-local-run.md)
+- [Azure Data Lake Analytics için CI/CD işlem hattı ayarlama](data-lake-analytics-cicd-overview.md)
+- [Azure Data Lake Analytics kodunuzu test etme](data-lake-analytics-cicd-test.md)
+- [Yerel makinenizde U-SQL betiğini çalıştırma](data-lake-analytics-data-lake-tools-local-run.md)

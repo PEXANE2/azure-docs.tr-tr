@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 63497553f7cec2edf3c77ba8690dda2b15d104be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324735"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148349"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT Hub ile cihaz yönetimine genel bakış
 
@@ -78,7 +78,7 @@ Bu beş aşamanın her birinde, tam bir çözüm sağlamak için yerine getirilm
   
     *Daha fazla okuma*:
     * [Cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
-    * [IoT cihazlarını ölçekli olarak yapılandırma ve izleme](iot-hub-auto-device-config.md)
+    * [IoT cihazlarını ölçekli olarak yapılandırma ve izleme](./iot-hub-automatic-device-management.md)
     * [IoT çözümünde cihaz yapılandırması için en iyi uygulamalar](iot-hub-configuration-best-practices.md)
 
 * **İzleme**: Operatörleri dikkat gerektirebilecek sorunlar konusunda uyarmak için genel cihaz koleksiyonu durumunu ve devam eden işlemlerin durumunu izler.  Cihazların gerçek zamanlı çalışma koşullarını ve güncelleştirme işlemlerinin durumunu raporlamasına olanak tanımak üzere cihaz ikisi uygulayın. Cihaz ikizi sorgularını kullanarak en acil sorunları ortaya çıkaran güçlü pano raporları oluşturun.
@@ -86,7 +86,7 @@ Bu beş aşamanın her birinde, tam bir çözüm sağlamak için yerine getirilm
     *Daha fazla okuma*: 
     * [Cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
     * [Cihaz TWINS, işler ve ileti yönlendirme için sorgu dili IoT Hub](iot-hub-devguide-query-language.md)
-    * [IoT cihazlarını ölçekli olarak yapılandırma ve izleme](iot-hub-auto-device-config.md)
+    * [IoT cihazlarını ölçekli olarak yapılandırma ve izleme](./iot-hub-automatic-device-management.md)
     * [IoT çözümünde cihaz yapılandırması için en iyi uygulamalar](iot-hub-configuration-best-practices.md)
 
 * **Devre dışı bırak**: bir hata, yükseltme döngüsü veya hizmet yaşam süresinin sonunda cihazları değiştirin veya yetkisini alın.  Fiziksel cihaz değiştiriliyorsa cihaz bilgilerini korumak veya kullanım dışı bırakılıyorsa cihaz bilgilerini arşivlemek için cihaz ikizini kullanın. Cihaz kimliklerini ve kimlik bilgilerini güvenli bir şekilde iptal etmek için IoT Hub kimlik kayıt defterini kullanın.

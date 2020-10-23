@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686505"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132338"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure aboneliği oturum açma sorunlarını giderme
 
 Bu kılavuz, Azure portalında veya Azure hesap merkezinde oturum açamama sorunlarının çözülmesine yardımcı olur.
 
 > [!NOTE]
-> Yeni bir Azure hesabına kaydolmayla ilgili sorun yaşıyorsanız bkz. [Azure aboneliğine kaydolma sorunlarını giderme](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up).
+> Yeni bir Azure hesabına kaydolmayla ilgili sorun yaşıyorsanız bkz. [Azure aboneliğine kaydolma sorunlarını giderme](./troubleshoot-azure-sign-up.md).
 
 ## <a name="page-hangs-in-the-loading-status"></a>Sayfa, yükleme durumunda yanıt vermemeye başlıyor
 
@@ -66,7 +66,7 @@ Yanlış dizinde seçim yaptıysanız veya hesabınız yeterli izinlere sahip de
 Bu sorunu düzeltmek için:
 
 - Sağ üst köşede hesabınızı seçerek doğru Azure dizininin seçildiğini doğrulayın.
-- Doğru Azure dizini seçili olduğu halde hata iletisini almaya devam ediyorsanız hesabınızın [Sahip olarak eklenmesini](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator) sağlayın.
+- Doğru Azure dizini seçili olduğu halde hata iletisini almaya devam ediyorsanız hesabınızın [Sahip olarak eklenmesini](./add-change-subscription-administrator.md) sağlayın.
 
 **Senaryo 2:** [Azure Hesap Merkezi](https://account.windowsazure.com/Subscriptions)’nde oturum açarken hata alıyorsunuz
 
@@ -80,11 +80,11 @@ Kullandığınız hesabın Hesap Yöneticisi olup olmadığını denetleyin. Hes
 
 Azure Faturalama ve Abonelikler için diğer sorun giderme makaleleri
 
-- [Reddedilen kart](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Abonelik kaydı sorunları](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [Abonelik bulunamadı](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Kurumsal maliyet görünümü devre dışı](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Azure Faturalama belgeleri](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Reddedilen kart](./troubleshoot-declined-card.md)
+- [Abonelik kaydı sorunları](./troubleshoot-azure-sign-up.md)
+- [Abonelik bulunamadı](./no-subscriptions-found.md)
+- [Kurumsal maliyet görünümü devre dışı](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Azure Faturalama belgeleri](../index.yml)
 
 ## <a name="contact-us-for-help"></a>Yardım için bizimle iletişim kurun
 

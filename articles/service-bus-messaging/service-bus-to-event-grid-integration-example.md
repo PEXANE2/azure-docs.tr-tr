@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f64c8155724a1306f5074a9164bcf97391dfbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7f177b8738fdaf8d0975877d9af094b6f0a49a9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000354"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328156"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Öğretici: Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına yanıt verme
 Bu öğreticide, Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına nasıl yanıt verileceğini öğreneceksiniz. 
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Event Grid aracılığıyla işlev ve ad alanını bağlama
 > * Azure İşlevleri’ni kullanarak ileti alma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 
@@ -96,7 +96,7 @@ Aşağıdaki adımları izleyerek bir mantıksal uygulamayı Azure Service Bus v
         ![Logic Apps Tasarımcısı-paylaşılan erişim anahtarını seçin](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     8. **Konuyu** ve **aboneliğinizi**seçin. 
     
-        ![Logic Apps tasarımcı-Service Bus konu ve aboneliğinizi seçin](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+        ![Konuyu ve aboneliğinizi seçtiğiniz yeri gösteren ekran görüntüsü.](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
 7. **+ Yeni adım**' ı seçin ve aşağıdaki adımları uygulayın: 
     1. **Service Bus**'ı seçin.
     2. Eylem listesinden **bir konu aboneliğindeki Iletiyi doldurun '** ı seçin. 

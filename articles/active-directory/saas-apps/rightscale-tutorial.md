@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f071a66fef632afe9e54fecfa253e4604679baa2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553402"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Öğretici: RightScale ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ RightScale 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini RightScale ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -99,11 +99,11 @@ Azure AD çoklu oturum açmayı RightScale ile yapılandırmak için aşağıdak
 
 4. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım yapması gerekmez.
 
-    ![Etki alanı ve URL 'Lerin sağ ölçeğini çoklu oturum açma bilgileri](common/preintegrated.png)
+    ![Ekran görüntüsü temel SAML Yapılandırması sayfasını gösterir.](common/preintegrated.png)
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Etki alanı ve URL 'Lerin sağ ölçeğini çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://login.rightscale.com/`
 
@@ -127,32 +127,31 @@ Azure AD çoklu oturum açmayı RightScale ile yapılandırmak için aşağıdak
 
 2. Üstteki menüde, **Ayarlar** sekmesine tıklayın ve **Çoklu oturum açma**' yı seçin.
 
-    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![Ekran görüntüsü, ayarlardan tek Sign-On seçili olduğunu gösterir.](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
 3. **SAML kimlik sağlayıcılarınızı**eklemek için **Yeni** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![Ekran görüntüsü, bir SAML kimlik sağlayıcısı eklemek için seçilen yeni düğmeleri gösterir.](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. **Görünen ad**metin kutusuna şirketinizin adını girin.
 
-    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![Ekran görüntüsünde bir görünen ad girin.](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. **Bir keşif ipucu kullanarak sağ ölçekte BAŞLATıLAN SSO 'Ya Izin ver** ' i seçin ve aşağıdaki metin kutusunda **etki alanı adınızı** girin.
 
-    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Ekran görüntüsü, bir oturum açma yöntemini belirtebileceğiniz yeri gösterir.](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. Azure portal kopyaladığınız **oturum açma URL 'si** değerini, RightScale IÇINDEKI **SAML SSO uç noktasına** yapıştırın.
 
-    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Ekran görüntüsü, bir SAML S S uç noktasını girebileceğiniz yeri gösterir.](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. Azure portal kopyaladığınız **Azure AD tanımlayıcısının** değerini, RightScale Içindeki **SAML EntityId** 'ye yapıştırın.
 
-    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Ekran görüntüsünde, bir SAML Entity ı 'yi girebileceğiniz konum gösterilir.](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. Azure portal 'den indirdiğiniz sertifikayı karşıya yüklemek için **tarayıcı** düğmesine tıklayın.
 
-
-    ![Tek Sign-On yapılandırma](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![Ekran görüntüsü, SAML Imzalama sertifikanızı belirtebileceğiniz yeri gösterir.](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. **Kaydet**’e tıklayın.
 

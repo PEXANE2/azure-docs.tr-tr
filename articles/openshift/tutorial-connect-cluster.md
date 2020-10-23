@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 132a9b7ad3eef17f4ca27fb76a0c05f94c82fd37
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469125"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428272"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesine bağlanma
 
@@ -63,7 +63,7 @@ Konsol URL 'sini bir tarayıcıda başlatın ve kimlik bilgilerini kullanarak ot
 
 OpenShift Web konsolunda oturum **açtıktan sonra, üzerine tıklayın.** sağ üst köşedeki ve ardından **komut satırı araçlarında**. Makinenize uygun yayını indirin.
 
-![Azure Red Hat OpenShift oturum açma ekranı](media/aro4-download-cli.png)
+![' İ seçtiğinizde listedeki komut satırı araçları seçeneğini vurgulayan ekran görüntüsü simgesini seçerek gezinti bölmesini daraltın.](media/aro4-download-cli.png)
 
 Ayrıca, makinenizde makinenize uygun olan CLı 'nın en son sürümünü yükleyebilirsiniz <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 

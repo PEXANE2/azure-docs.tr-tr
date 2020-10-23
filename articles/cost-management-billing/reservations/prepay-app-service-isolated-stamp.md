@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c80ed02e137ea092bae1346260dba71cd417bed9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688938"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151535"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Ayrılmış kapasite ile Azure App Service Yalıtılmış Damga Pulu Ücreti maliyetlerinden tasarruf etme
 
@@ -39,7 +39,7 @@ Damga pulu üzerinde bir veya daha fazla Windows çalışanınız varsa Windows 
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Yalıtılmış Damga Pulu ayrılmış kapasitesi satın alma
 
-[Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) Yalıtılmış Damga Pulu ayrılmış kapasitesi satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](monthly-payments-reservations.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için, en az bir kurumsal abonelik için sahip rolüne veya kullandıkça öde fiyatlarına tabi bireysel bir aboneliğe sahip olmanız gerekir.
+[Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) Yalıtılmış Damga Pulu ayrılmış kapasitesi satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](./prepare-buy-reservation.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için, en az bir kurumsal abonelik için sahip rolüne veya kullandıkça öde fiyatlarına tabi bireysel bir aboneliğe sahip olmanız gerekir.
 
 - Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Veya ayar devre dışı bırakılırsa EA Yöneticisi olmanız gerekir.
 - Bulut Çözümü Sağlayıcısı (CSP) programı için yalnızca yönetici aracılar veya satış temsilcileri, Azure Synapse Analytics ayrılmış kapasitesi satın alabilir.

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3394156b073df54d6582dc43571137b21df29cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfc9745fc4684a7b0d8f7da7e63149a6fe50f6d2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968948"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331847"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>V2. x okuma sürümünden v3. x ' e yükseltme
 
@@ -27,11 +27,12 @@ Geçiş yaptığınız 3. x sürümünü temel alan API yolundaki **Sürüm dize
 
 |Ürün türü| Sürüm | 3. x API yolundaki sürüm dizesi |
 |:-----|:----|:----|
-|Hizmet | 3,0 okuyun | **v3.0** |
-|Kapsayıcı | 3,0 önizlemesini okuyun | **v3.0** |
-|Hizmet/kapsayıcı | 3,1 önizlemesini okuyun | **v 3.1-Önizleme. 2** |
+|Hizmet | 3,0 veya 3,1 ' i okuyun | **v 3.0** veya **v 3.1** sırasıyla |
+|Hizmet | 3,2 önizlemesini okuyun | **v 3.2-Önizleme. 1** |
+|Kapsayıcı | 3,0 önizlemesini okuyun veya 3,1 Önizleme makalesini okuyun | **v 3.0** veya **v 3.1-Önizleme. 2** sırasıyla |
 
-Ardından aşağıdaki bölümleri kullanarak işlemlerinizi daraltın ve API yolunuzda **Sürüm dizesini** tablodaki değerle değiştirin. Örneğin, **okuma v 3.1 Önizleme** bulutu ve kapsayıcı sürümleri IÇIN, API yolunu **https://{Endpoint}/Vision/v 3.1-Önizleme. 2/Read/Analyze [? Language]** olarak güncelleştirin.
+
+Ardından aşağıdaki bölümleri kullanarak işlemlerinizi daraltın ve API yolunuzda **Sürüm dizesini** tablodaki değerle değiştirin. Örneğin, **okuma v 3.2 Önizleme** bulutu ve kapsayıcı sürümleri IÇIN, API yolunu **https://{Endpoint}/Vision/v 3.2-Preview. 1/okuma/çözümleme [? Language]** olarak güncelleştirin.
 
 ## <a name="servicecontainer"></a>Hizmet/kapsayıcı
 

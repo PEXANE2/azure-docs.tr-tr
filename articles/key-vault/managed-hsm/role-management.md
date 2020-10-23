@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818024"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149100"
 ---
 # <a name="managed-hsm-role-management"></a>Yönetilen HSM rol yönetimi
 
@@ -70,7 +70,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 `az keyvault role assignment list`Rol atamalarını listelemek için kullanın.
 
-Tüm kullanıcılar için kapsam/(hiçbir kapsam belirtilmediğinde varsayılan) tüm rol atamaları (varsayılan olarak--atane belirtildiğinde)
+Tüm kullanıcılar için kapsam/(hiçbir kapsam belirtilmediğinde varsayılan) tüm rol atamaları (--atane belirtildiğinde varsayılan)
 
 ```azurecli-interactive
 az keyvault role assignment list --hsm-name ContosoMHSM

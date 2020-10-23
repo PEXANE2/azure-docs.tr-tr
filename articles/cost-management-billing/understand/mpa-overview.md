@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4dff56db9f1450ff7eb2a2b9ca6f4ca648e2ac38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447942"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150088"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft İş Ortağı Sözleşmesi ödeme hesabınızı kullanmaya başlama
 
@@ -29,7 +29,7 @@ Aşağıdaki diyagramda faturalama hesabıyla faturalama profilleri, müşterile
 
 ![Microsoft İş Ortağı Sözleşmesi faturalama hiyerarşisini gösteren diyagram](./media/mpa-overview/mpa-hierarchy.svg)
 
-Kuruluşunuzda **Genel Yönetici** ve **Yönetici Aracıları** rolüne sahip olan kullanıcılar ödeme hesaplarını, faturalama profillerini ve müşterileri yönetebilir. Daha fazla bilgi için bkz. [İş Ortağı Merkezi - Kullanıcı rollerini ve izinleri atama](https://docs.microsoft.com/partner-center/permissions-overview).
+Kuruluşunuzda **Genel Yönetici** ve **Yönetici Aracıları** rolüne sahip olan kullanıcılar ödeme hesaplarını, faturalama profillerini ve müşterileri yönetebilir. Daha fazla bilgi için bkz. [İş Ortağı Merkezi - Kullanıcı rollerini ve izinleri atama](/partner-center/permissions-overview).
 
 ## <a name="billing-profiles"></a>Faturalama profilleri
 
@@ -47,7 +47,7 @@ Microsoft Müşteri Sözleşmesini kabul etmiş ve bir Azure Planı olan müşte
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Maliyet görünürlüğü sağlamak için ilkeyi etkinleştirme
 
-Müşterilerin kuruluşlarındaki kullanıcıların, Azure tüketimine yönelik Kullandıkça Öde tarifesinde maliyeti görüntüleyip çözümleyebilmesi için ilkeyi uygulayın. İlke varsayılan olarak devre dışıdır ve kullanıcılar maliyeti görüntüleyemez. Etkinleştirildikten sonra, bir abonelikte uygun [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) erişimine sahip olan kullanıcılar abonelik maliyetini görüntüleyebilir ve analiz edebilir.
+Müşterilerin kuruluşlarındaki kullanıcıların, Azure tüketimine yönelik Kullandıkça Öde tarifesinde maliyeti görüntüleyip çözümleyebilmesi için ilkeyi uygulayın. İlke varsayılan olarak devre dışıdır ve kullanıcılar maliyeti görüntüleyemez. Etkinleştirildikten sonra, bir abonelikte uygun [Azure RBAC](../../role-based-access-control/overview.md) erişimine sahip olan kullanıcılar abonelik maliyetini görüntüleyebilir ve analiz edebilir.
 
 İlkeyi etkinleştirmek için:
 
@@ -69,7 +69,7 @@ Müşterilerin kuruluşlarındaki kullanıcıların, Azure tüketimine yönelik 
 
 ## <a name="resellers"></a>Kurumsal bayiler
 
-CSP [iki katmanlı modelindeki](https://docs.microsoft.com/partner-center) dolaylı sağlayıcılar Azure portalında müşteriler için abonelik oluştururken bir kurumsal bayi seçebilir. Oluşturma sonrasında, kurumsal bayiye göre filtrelenmiş abonelik listesini görüntüleyebilir ve Azure maliyet analizinde kurumsal bayiye göre müşterinin maliyetini analiz edebilir.
+CSP [iki katmanlı modelindeki](/partner-center) dolaylı sağlayıcılar Azure portalında müşteriler için abonelik oluştururken bir kurumsal bayi seçebilir. Oluşturma sonrasında, kurumsal bayiye göre filtrelenmiş abonelik listesini görüntüleyebilir ve Azure maliyet analizinde kurumsal bayiye göre müşterinin maliyetini analiz edebilir.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft İş Ortağı Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
@@ -83,5 +83,5 @@ Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [
 Ödeme hesabınız hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Microsoft İş Ortağı Sözleşmesi için ek Azure aboneliği oluşturma](../manage/create-subscription.md)
-- [Azure Faturalama API'lerini](https://docs.microsoft.com/rest/api/billing/) kullanarak faturalama verilerini kendi raporlama sisteminizle tümleştirme
-- [İş ortakları için Azure Maliyet Yönetimi hızlı başlangıcı](https://go.microsoft.com/fwlink/?linkid=2106482)
+- [Azure Faturalama API'lerini](/rest/api/billing/) kullanarak faturalama verilerini kendi raporlama sisteminizle tümleştirme
+- [İş ortakları için Azure Maliyet Yönetimi hızlı başlangıcı](../costs/get-started-partners.md)

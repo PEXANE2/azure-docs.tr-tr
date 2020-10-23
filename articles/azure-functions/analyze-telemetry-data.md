@@ -1,0 +1,123 @@
+---
+title: Application Insights 'de Azure Işlevleri telemetrisini çözümleyin
+description: Tarafından toplanan ve Azure Application Insights 'de depolanan Azure Işlevleri telemetri verilerini görüntülemeyi ve sorgulamayı öğrenin.
+ms.topic: how-to
+ms.date: 10/14/2020
+ms.custom: contperfq2
+ms.openlocfilehash: 9091d59cbc3a4cf841e28505531c89c83e705c46
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217312"
+---
+# <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights 'de Azure Işlevleri telemetrisini çözümleyin 
+
+Azure Işlevleri, işlev uygulamalarınızı izlemenizi daha iyi hale getirebilmeniz için Application Insights ile tümleşir. Application Insights, uygulamanızın günlüklere yazdığı bilgiler dahil olmak üzere, işlev uygulamanız tarafından oluşturulan telemetri verilerini toplar. Application Insights tümleştirme, genellikle işlev uygulamanız oluşturulduğunda etkinleştirilir. İşlev uygulamanızda izleme anahtarı ayarlanmamışsa, önce [Application Insights tümleştirmesini etkinleştirmeniz](configure-monitoring.md#enable-application-insights-integration)gerekir. 
+
+Varsayılan olarak, işlev uygulamanızdan toplanan veriler Application Insights depolanır. [Azure Portal](https://portal.azure.com), Application Insights telemetri verilerinizin kapsamlı bir görselleştirme kümesini sağlar. Hata günlükleri ve sorgu olayları ve ölçümleri detaylarına gidebilirsiniz. Bu makalede, toplanan verilerinizi görüntüleme ve sorgulama hakkında temel örnekler sağlanmaktadır. İşlev uygulaması verilerinizi Application Insights araştırma hakkında daha fazla bilgi edinmek için bkz. [Application Insights nedir?](../azure-monitor/app/app-insights-overview.md). 
+
+Veri saklama ve potansiyel depolama maliyetleri hakkında daha fazla bilgi için, bkz. [Application Insights veri toplama, bekletme ve depolama](../azure-monitor/app/data-retention-privacy.md).   
+
+## <a name="viewing-telemetry-in-monitor-tab"></a>Izleme sekmesinde Telemetriyi görüntüleme
+
+[Application Insights tümleştirme etkin](configure-monitoring.md#enable-application-insights-integration)olduğunda, telemetri verilerini **izleyici** sekmesinde görüntüleyebilirsiniz.
+
+1. İşlev uygulaması sayfasında, Application Insights yapılandırıldıktan sonra en az bir kez çalışan bir işlev seçin. Ardından, sol bölmeden **izleyici** ' yi seçin. İşlev etkinleştirmeleri listesi görünene kadar düzenli aralıklarla **Yenile** ' yi seçin.
+
+   ![Etkinleştirmeleri listesi](media/functions-monitoring/monitor-tab-ai-invocations.png)
+
+    > [!NOTE]
+    > Telemetri istemcisi sunucuya iletilmek üzere verileri toplu olarak işlerken listenin görünmesi beş dakikaya kadar sürebilir. Gecikme [canlı ölçüm akışı](../azure-monitor/app/live-stream.md)uygulanmaz. Bu hizmet, sayfayı yüklediğinizde Işlevler ana bilgisayarına bağlanır, bu nedenle Günlükler doğrudan sayfaya akışlanır.
+
+1. Belirli bir işlev çağrısının günlüklerini görmek için, bu çağrının **Tarih (UTC)** sütunu bağlantısını seçin. Bu çağrının günlüğe kaydetme çıktısı yeni bir sayfada görüntülenir.
+
+   ![Çağırma ayrıntıları](media/functions-monitoring/invocation-details-ai.png)
+
+1. Azure günlüğünde Azure Izleyici günlük verilerini alan sorgunun kaynağını görüntülemek için **Application Insights Içinde Çalıştır '** ı seçin. Aboneliğinizde Azure Log Analytics 'yi ilk kez kullanıyorsanız etkinleştirmeniz istenir.
+
+1. Log Analytics etkinleştirdikten sonra, aşağıdaki sorgu görüntülenir. Sorgu sonuçlarının son 30 güne () sınırlı olduğunu `where timestamp > ago(30d)` ve sonuçların 20 ' den fazla satır () olmadığını görebilirsiniz `take 20` . Buna karşılık, işlevinizin çağırma ayrıntıları listesi, son 30 gün için sınır olmadan olur.
+
+   ![Application Insights Analytics çağırma listesi](media/functions-monitoring/ai-analytics-invocation-list.png)
+
+Daha fazla bilgi için bu makalenin ilerleyen kısımlarında yer alarak [telemetri verilerini sorgulama](#query-telemetry-data) bölümüne bakın.
+
+## <a name="view-telemetry-in-application-insights"></a>Application Insights telemetri görüntüleme
+
+[Azure Portal](https://portal.azure.com)bir işlev uygulamasından Application Insights açmak için:
+
+1. Portalda işlev uygulamanıza gidin.
+
+1. Sol sayfada **Ayarlar** altında **Application Insights** ' ı seçin. 
+
+1. Aboneliğiniz ile Application Insights ilk kez kullanıyorsanız etkinleştirmeniz istenir. Bunu yapmak için **Application Insights aç**' ı seçin ve ardından sonraki sayfada **Uygula** ' yı seçin.
+
+![İşlev uygulamasına genel bakış sayfasından Application Insights açın](media/functions-monitoring/ai-link.png)
+
+Application Insights kullanma hakkında daha fazla bilgi için [Application Insights belgelerine](/azure/application-insights/)bakın. Bu bölümde Application Insights verilerin nasıl görüntüleneceği hakkında bazı örnekler gösterilmektedir. Application Insights zaten hakkında bilginiz varsa [telemetri verilerini yapılandırma ve özelleştirme hakkındaki bölümlere](configure-monitoring.md#configure-log-levels)doğrudan gidebilirsiniz.
+
+![Application Insights Genel Bakış sekmesi](media/functions-monitoring/metrics-explorer.png)
+
+Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hataları değerlendirirken yararlı olabilir:
+
+| Araştır | Açıklama |
+| ---- | ----------- |
+| **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
+| **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu performans verileri, işlevlerin temeldeki kaynaklarınızın gerisinde olduğu durumlarda hata ayıklama senaryolarında yararlı olabilir. |
+| **[Ölçümler](../azure-monitor/platform/metrics-charts.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
+| **[Canlı ölçümler    ](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
+
+## <a name="query-telemetry-data"></a>Telemetri verilerini sorgulama
+
+[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) , bir veritabanındaki tablo biçimindeki tüm telemetri verilerine erişmenizi sağlar. Analytics verileri ayıklamak, işlemek ve görselleştirmek için bir sorgu dili sağlar. 
+
+Günlüğe kaydedilen olayları incelemek veya sorgulamak için **günlükleri** seçin.
+
+![Analiz örneği](media/functions-monitoring/analytics-traces.png)
+
+Son 30 dakika içinde çalışan başına isteklerin dağılımını gösteren bir sorgu örneği aşağıda verilmiştir.
+
+<pre>
+requests
+| where timestamp > ago(30m) 
+| summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
+| render timechart
+</pre>
+
+Kullanılabilir tablolar, sol taraftaki **şema** sekmesinde gösterilir. İşlev etkinleştirmeleri tarafından oluşturulan verileri aşağıdaki tablolarda bulabilirsiniz:
+
+| Tablo | Açıklama |
+| ----- | ----------- |
+| **lerin** | Çalışma zamanı ve izleme tarafından işlev kodınızdan oluşturulan Günlükler. |
+| **istekler** | Her işlev çağrısı için bir istek. |
+| **larý** | Çalışma zamanı tarafından oluşturulan özel durumlar. |
+| **customMetrics** | Başarılı ve başarısız çağırma sayısı, başarı oranı ve süre. |
+| **customEvents** | Çalışma zamanı tarafından izlenen olaylar, örneğin: bir işlevi tetikleyen HTTP istekleri. |
+| **performanceCounters** | İşlevlerin üzerinde çalıştığı sunucuların performansı hakkında bilgiler. |
+
+Diğer tablolar, kullanılabilirlik testleri, istemci ve tarayıcı telemetri içindir. Verilere veri eklemek için özel telemetri uygulayabilirsiniz.
+
+Her tablo içinde IŞLEVLERE özgü verilerden bazıları bir `customDimensions` alandır.  Örneğin, aşağıdaki sorgu günlük düzeyine sahip tüm izlemeleri alır `Error` .
+
+<pre>
+traces 
+| where customDimensions.LogLevel == "Error"
+</pre>
+
+Çalışma zamanı `customDimensions.LogLevel` ve alanlarını sağlar `customDimensions.Category` . İşlev kodunuzda yazdığınız günlüklerde ek alanlar sağlayabilirsiniz. C# ' deki bir örnek için bkz. .NET sınıf kitaplığı geliştirici kılavuzunda [yapılandırılmış günlüğe kaydetme](functions-dotnet-class-library.md#structured-logging) .
+
+## <a name="consumption-plan-specific-metrics"></a>Tüketim planına özgü ölçümler
+
+Bir [Tüketim planında](functions-scale.md#consumption-plan)çalışırken, tek bir işlev yürütmenin yürütme *ücreti* *GB saniye*cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md)etme.
+
+Aşağıdaki telemetri sorguları, tüketim planında çalışan işlevlerin maliyetini etkileyen ölçümlere özgüdür.
+
+[!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure Işlevlerini izleme hakkında daha fazla bilgi edinin:
+
++ [Azure İşlevlerini İzleme](functions-monitoring.md)
++ [Azure Işlevleri için izlemeyi yapılandırma](configure-monitoring.md)
+

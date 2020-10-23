@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine yedekleme çözümünü kullanarak 
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271384"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174104"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 
@@ -185,7 +185,7 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 
 Bu komutları çalıştırdığınızda görürsünüz `"diskExclusionProperties": null` .
 
-## <a name="using-powershell"></a>PowerShell’i kullanma
+## <a name="using-powershell"></a>PowerShell'i kullanma
 
 Azure PowerShell sürüm 3.7.0 veya üstünü kullandığınızdan emin olun.
 
@@ -241,6 +241,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 
 ## <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 Azure portal kullanarak, dahil edilen ve dışlanan diskleri VM yedeklemesi ayrıntıları bölmesinden ve yedekleme işi ayrıntıları bölmesinden görüntüleyebilirsiniz.  Geri yükleme sırasında, ' den geri yüklenecek kurtarma noktasını seçtiğinizde, bu kurtarma noktasındaki yedeklenen diskleri görüntüleyebilirsiniz.
 
 Burada, portaldaki bir sanal makine için dahil edilen ve dışlanan diskleri VM yedekleme ayrıntıları bölmesinden görüntüleyebilirsiniz:
@@ -288,7 +290,7 @@ Seçmeli diskler Yedekleme işlevselliği, klasik sanal makineler ve şifrelenmi
 
 Şu anda Azure VM yedeklemesi, Ultra disklere veya bunlara bağlı paylaşılan disklere sahip VM 'Leri desteklemez. Seçmeli disk yedeklemesi bu gibi durumlarda kullanılamaz ve bu durumda diski hariç tutabilir ve VM 'yi yedekler.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Azure sanal makine yedeklemesi, [burada](https://azure.microsoft.com/pricing/details/backup/)ayrıntılı olarak açıklanan mevcut fiyatlandırma modelini izler.
 

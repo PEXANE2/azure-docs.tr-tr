@@ -3,12 +3,12 @@ title: Rest 'te uygulama kaynağınızı şifreleyin
 description: Azure Storage 'da uygulama verilerinizi şifreleyin ve paket dosyası olarak dağıtın.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282339"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108040"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak uygulama verilerinizi Rest 'te şifreleyin
 
@@ -22,7 +22,7 @@ ms.locfileid: "87282339"
 
 ### <a name="create-an-azure-storage-account"></a>Azure Depolama hesabı oluşturma
 
-İlk olarak, [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md) ve [müşterinin yönettiği anahtarlarla şifreleyin](../storage/common/encryption-customer-managed-keys.md). Depolama hesabı oluşturulduktan sonra, paket dosyalarını karşıya yüklemek için [Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) kullanın.
+İlk olarak, [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md) ve [müşterinin yönettiği anahtarlarla şifreleyin](../storage/common/customer-managed-keys-overview.md). Depolama hesabı oluşturulduktan sonra, paket dosyalarını karşıya yüklemek için [Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) kullanın.
 
 Sonra, [SAS oluşturmak](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer)için Depolama Gezgini kullanın. 
 

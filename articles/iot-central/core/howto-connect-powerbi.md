@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081007"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123346"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central verilerinizi Power BI panosunda görselleştirin ve çözümleyin
 
@@ -27,7 +27,7 @@ IoT cihazlarınızın performansını izlemek için güçlü bir Power BI panosu
 - Belirli cihazlar tarafından gönderilen verilere filtre uygula
 - Bir tabloda en son telemetri verilerini görüntüleme
 
-Bu çözüm, [sürekli veri dışa aktarma](howto-export-data-blob-storage.md) Azure Blob Storage hesabınızdan verileri okuyan bir işlem hattı oluşturur. İşlem hattı, verileri işlemek ve dönüştürmek için Azure Işlevleri, Azure Data Factory ve Azure SQL veritabanı 'nı kullanır. verileri, bir PBIX dosyası olarak yüklediğiniz bir Power BI raporunda görselleştirebilir ve çözümleyebilirsiniz. Tüm kaynaklar Azure aboneliğinizde oluşturulur, böylece her bileşeni gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
+Bu çözüm, [sürekli veri dışa aktarma](./howto-export-data.md) Azure Blob Storage hesabınızdan verileri okuyan bir işlem hattı oluşturur. İşlem hattı, verileri işlemek ve dönüştürmek için Azure Işlevleri, Azure Data Factory ve Azure SQL veritabanı 'nı kullanır. verileri, bir PBIX dosyası olarak yüklediğiniz bir Power BI raporunda görselleştirebilir ve çözümleyebilirsiniz. Tüm kaynaklar Azure aboneliğinizde oluşturulur, böylece her bileşeni gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,7 +43,7 @@ Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir 
 - Power BI Pro (panoyu başkalarıyla paylaşmak istiyorsanız).
 
 > [!NOTE]
-> Sürüm 2 IoT Central uygulaması kullanıyorsanız, bkz. Azure IoT Central verilerinizi önceki sürümler belge sitesinde [bir Power BI panosunda görselleştirme ve çözümleme](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-connect-powerbi) .
+> Sürüm 2 IoT Central uygulaması kullanıyorsanız, bkz. Azure IoT Central verilerinizi önceki sürümler belge sitesinde [bir Power BI panosunda görselleştirme ve çözümleme](/previous-versions/azure/iot-central/core/howto-connect-powerbi) .
 
 ## <a name="install"></a>Yükleme
 

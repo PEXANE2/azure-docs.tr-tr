@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ile içeri aktarılan bir CSV dosy
 description: Azure geçişi sunucu değerlendirmesi ' nde içeri aktarılan CSV dosyası kullanarak Azure 'a geçiş için şirket içi sunucuların nasıl keşfedileceğini açıklar
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604232"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308382"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Öğretici: içeri aktarılan bir CSV dosyası kullanarak sunucuları değerlendirme
 
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Tek bir CSV dosyasında ve bir Azure geçişi projesinde en fazla 20.000 sunucu ekleyebilirsiniz. 
 - CSV dosyasında belirtilen işletim sistemi adları, [desteklenen adları](#supported-operating-system-names)içermelidir ve bu adlara uymalıdır.
@@ -203,4 +203,4 @@ Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
 > * Azure geçişi projesi oluşturma 
-> * İçeri aktarılan bir CSV dosyası kullanan sunucular bulundu. Şimdi, [Azure VM 'Lerine VMware VM geçişi](tutorial-assess-vmware.md)için bir değerlendirme çalıştırın.
+> * İçeri aktarılan bir CSV dosyası kullanan sunucular bulundu. Şimdi, [Azure VM 'Lerine VMware VM geçişi](./tutorial-assess-vmware-azure-vm.md)için bir değerlendirme çalıştırın.

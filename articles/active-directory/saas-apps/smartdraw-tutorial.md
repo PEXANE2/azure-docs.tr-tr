@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f99993792c2d5f4300025f26d8409207382553d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b4387252be7e0b76f6e0733d6fd4f95d39e2f0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527630"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125961"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Öğretici: SmartDraw ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, SmartDraw 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. SmartDraw uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -152,11 +152,11 @@ Bu bölümde, SmartDraw erişimi vererek Azure çoklu oturum açma özelliğini 
 
 1. SmartDraw lisansınızı yönetme bölümünde **Çoklu oturum açma** seçeneğine tıklayın.
 
-    ![SmartDraw yapılandırması](./media/smartdraw-tutorial/configure01.png)
+    ![Ekran görüntüsünde, çoklu oturum açma seçeneğini seçebileceğiniz SmartDraw lisansınızı yönetme iletişim kutusu gösterilir.](./media/smartdraw-tutorial/configure01.png)
 
 1. Yapılandırma sayfasında, aşağıdaki adımları uygulayın:
 
-    ![SmartDraw yapılandırması](./media/smartdraw-tutorial/configure02.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz yapılandırma sayfasını gösterir.](./media/smartdraw-tutorial/configure02.png)
 
     a. **Etki alanınız (Acme.com gibi)** metin kutusunda, etki alanınızı yazın.
 

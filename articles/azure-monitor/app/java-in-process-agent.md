@@ -3,12 +3,12 @@ title: Tüm ortamlarda Java uygulamalarını izleme-Azure Izleyici Application I
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1182813c0b79d43c2c264482629ad97f23683a49
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370043"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215289"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
 
@@ -114,8 +114,8 @@ Ayrıntılar için bkz. [3,0 genel önizleme: yapılandırma seçenekleri](./jav
 ### <a name="logs"></a>Günlükler
 
 * Java. util. Logging
-* Log4J
-* DOLAYıSıYLA SLF4J/Logback
+* Log4J (MDC özellikleri dahil)
+* DOLAYıSıYLA SLF4J/Logback (MDC özellikleri dahil)
 
 ### <a name="metrics"></a>Ölçümler
 
@@ -137,7 +137,7 @@ Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebilece
 | **Özel olaylar**   |            |                     |  Evet    |
 | **Özel ölçümler**  |  Evet       |                     |  Evet    |
 | **Bağımlılıklar**    |            |                     |  Evet    |
-| **Özel Durumlar**      |            |  Evet                |  Evet    |
+| **Özel durumlar**      |            |  Evet                |  Evet    |
 | **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
 | **İstekler**        |            |                     |  Evet    |
 | **İzlemeler**          |            |  Evet                |  Evet    |
@@ -211,7 +211,7 @@ Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 En sevdiğiniz günlük çatısı aracılığıyla özel özel durum telemetrisi gönderebilirsiniz.
 
 Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:

@@ -3,15 +3,15 @@ title: Azure Kaynak bilgilerini görüntüleme ve filtreleme
 description: Azure kaynaklarınızı daha iyi anlamak için bilgileri filtreleyin ve farklı görünümler kullanın.
 author: mgblythe
 ms.service: azure-portal
-ms.topic: quickstart
+ms.topic: how-to
 ms.author: mblythe
 ms.date: 09/11/2020
-ms.openlocfilehash: 3b9783e7f452b38292c784d44ddb60672e150961
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f6185e1c4042110f446337c1b2c2904fefdae7a9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650416"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280245"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure Kaynak bilgilerini görüntüleme ve filtreleme
 
@@ -45,7 +45,7 @@ Seçtiğiniz filtreleri ve sütunları içeren görünümleri kaydedebilirsiniz.
 
 ## <a name="summarize-resources-with-visuals"></a>Görsellerle kaynakları özetleme
 
-Şimdiye kadar baktığı Görünümler _liste görünümlerdik_, ancak görselleri içeren _Özet görünümler_ de vardır. Bu görünümleri, görünümleri listeleyebilir gibi kaydedebilir ve kullanabilirsiniz. Filtreler iki tür görünüm arasında kalır. Aşağıda gösterilen **konum** görünümü gibi standart görünümlerin yanı sıra, sanal makinelerin **durum** görünümü gibi belirli hizmetlerle ilgili görünümler de vardır.
+Şimdiye kadar baktığı Görünümler _liste görünümlerdik_, ancak görselleri içeren _Özet görünümler_ de vardır. Bu görünümleri, görünümleri listeleyebilir gibi kaydedebilir ve kullanabilirsiniz. Filtreler iki tür görünüm arasında kalır. Aşağıda gösterilen **konum** görünümü gibi standart görünümlerin yanı sıra, Azure Storage **durum** görünümü gibi belirli hizmetlerle ilgili görünümler de vardır.
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Tüm kaynakların Azure portal görünümü":::
 

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89271597"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309781"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C 'da kimlik koruması ve koşullu erişim ayarlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "89271597"
 
 Kimlik koruması, Azure AD B2C kiracınız için sürekli risk algılama sağlar. Azure AD B2C kiracı fiyatlandırma katmanınız Premium P2 ise, ayrıntılı kimlik koruması risk olaylarını Azure portal görebilirsiniz. Ayrıca, eylemleri tespit etmek ve kuruluş ilkelerini zorlamak için bu risk algılamalarını temel alan [koşullu erişim](../active-directory/conditional-access/overview.md) ilkelerini de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure AD B2C kiracınızın [bir Azure AD aboneliğine bağlı](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)olması gerekir.
 - Azure AD B2C Premium P2, oturum açma ve Kullanıcı risk tabanlı koşullu erişim kullanımı için gereklidir. Gerekirse, [Azure AD B2C fiyatlandırma katmanınızı Premium P2 olarak değiştirin](https://aka.ms/exid-pricing-tier). 
@@ -41,10 +41,12 @@ Aşağıdaki risk algılamaları Şu anda Azure AD B2C için desteklenmektedir:
 |Risk algılama türü  |Açıklama  |
 |---------|---------|
 | Olağandışı yolculuk     | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın.        |
-|Anonim IP adresi     | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Leri)        |
+|Anonim IP adresi     | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler).        |
+|Kötü amaçlı yazılım bağlı IP adresi     | Kötü amaçlı yazılımdan bağlantılı bir IP adresinden oturum açın.         |
 |Bilinmeyen oturum açma özellikleri     | Belirtilen kullanıcı için son gördüğdiğimiz özelliklerle oturum açın.        |
-|Kötü amaçlı yazılım bağlı IP adresi     | Kötü amaçlı yazılımdan bağlantılı IP adresinden oturum açın         |
-|Azure AD tehdit bilgileri     | Microsoft 'un dahili ve dış tehdit bilgileri kaynakları, bilinen bir saldırı modelini tanımladı        |
+|Yönetici tarafından onaylanan Kullanıcı güvenliği aşılmış    | Bir yönetici, kullanıcının güvenliğinin aşıldığını belirtti.             |
+|Parola spreyi     | Parola spreyi saldırısında oturum açın.      |
+|Azure AD tehdit bilgileri     | Microsoft 'un dahili ve dış tehdit bilgileri kaynakları, bilinen bir saldırı modelini tanımladı.        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>Azure AD B2C kiracınız için risk olaylarını görüntüleme
 

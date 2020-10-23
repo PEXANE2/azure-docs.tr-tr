@@ -1,30 +1,27 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 010/17/2018
+ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0694003e2eb5005186f5c7ad450533437955d82
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67673548"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217981"
 ---
 Azure portalında, bağlantıya giderek klasik bir Sanal Ağ VPN Ağ Geçidi bağlantısının durumunu görüntüleyebilirsiniz. Aşağıdaki adımlarda, bağlantınıza gitmek ve doğrulamak için bir yol gösterilmiştir.
 
-1. [Azure portal](https://portal.azure.com)’da, **Tüm kaynaklar**’a tıklayın ve klasik sanal ağınıza gidin.
-2. Sanal ağ dikey penceresinde **Genel Bakış**’a tıklayarak dikey pencerenin **VPN bağlantıları** bölümüne erişin.
-3. VPN bağlantıları grafiğinde siteye tıklayın.
+1. [Azure Portal](https://portal.azure.com), **tüm kaynaklar** ' a tıklayın ve klasik sanal ağınıza (VNet) gidin.
+1. Sanal ağ sayfasında, görmek istediğiniz bağlantı türünü seçin. Örneğin, **siteden siteye bağlantılar**.
 
-    ![Yerel site](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "yerel site")
-4. **Siteden siteye VPN bağlantıları** dikey penceresinde sitenize ilişkin bilgileri görüntüleyin.
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png" alt-text="Yerel site" lightbox="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png":::
+1. **Siteden siteye bağlantılar** sayfasında, **ad**' ın altında, görüntülemek istediğiniz site bağlantısını seçin.
 
-    ![Bağlantı durumu](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Bağlantı durumu")
-5. Bağlantı hakkında daha fazla bilgi görüntülemek için bağlantının adına tıklayarak **Siteden Siteye VPN Bağlantısı** dikey penceresini açın.
-
-    ![Bağlantı durumu daha](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Bağlantı durumu daha fazla bilgi")
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/name.png" alt-text="Yerel site":::
+1. **Özellikler** sayfasında, bağlantıyla ilgili bilgileri görüntüleyin.

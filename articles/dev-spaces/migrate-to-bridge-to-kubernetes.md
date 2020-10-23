@@ -1,16 +1,16 @@
 ---
 title: Kubernetes Köprüsü’ne geçiş
 services: azure-dev-spaces
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 description: Azure Dev Spaces, Kubernetes 'e köprülemek için geçiş işlemini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Kubernetes ile Köprü oluşturma
-ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044709"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329807"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Kubernetes Köprüsü’ne geçiş
 
@@ -46,26 +46,26 @@ Kubernetes 'in Azure Dev Spaces ve Köprüsü benzer özelliklere sahiptir ve ay
 | Azure Kubernetes Service | 15 Azure bölgesinde | Herhangi bir AKS hizmet bölgesi    |
 | **Güvenlik** |
 | Kümenizde güvenlik erişimi gerekiyor  | AKS kümesi Katılımcısı  | Kubernetes RBAC-dağıtım güncelleştirmesi   |
-| Geliştirme bilgisayarınızda güvenlik erişimi gerekli  | YOK  | Yerel yönetici/sudo   |
+| Geliştirme bilgisayarınızda güvenlik erişimi gerekli  | Yok  | Yerel yönetici/sudo   |
 | **Stillerin** |
-| Kubernetes ve Docker yapılarından bağımsız  | Hayır  | Yes   |
-| Değişiklikleri otomatik geri alma, hata ayıklama sonrası  | Hayır  | Yes   |
-| **Ortamlar** |
-| Visual Studio 2019 ile birlikte çalışma  | Yes  | Yes   |
-| Visual Studio Code ile birlikte çalışma  | Yes  | Yes   |
-| CLı ile birlikte çalışma  | Yes  | Hayır   |
+| Kubernetes ve Docker yapılarından bağımsız  | Hayır  | Evet   |
+| Değişiklikleri otomatik geri alma, hata ayıklama sonrası  | Hayır  | Evet   |
+| **Desteklenen Istemci araçları** |
+| Visual Studio 2019 ile birlikte çalışma  | Evet  | Evet   |
+| Visual Studio Code ile birlikte çalışma  | Evet  | Evet   |
+| CLı ile birlikte çalışma  | Evet  | Hayır   |
 | **İşletim sistemi uyumluluğu** |
-| Windows 10 ' da geçerlidir  | Yes  | Yes  |
-| Linux üzerinde çalışma  | Yes  | Yes  |
-| MacOS 'ta çalışma  | Yes  | Yes  |
+| Windows 10 ' da geçerlidir  | Evet  | Evet  |
+| Linux üzerinde çalışma  | Evet  | Evet  |
+| MacOS 'ta çalışma  | Evet  | Evet  |
 | **Özellikler** |
-| Geliştirici yalıtımı veya takım geliştirme  | Yes  | Yes  |
-| Ortam değişkenlerinin seçmeli olarak üzerine yaz  | Hayır  | Yes  |
-| Dockerfile ve Held grafiğinin oluşturulması  | Yes  | Hayır  |
-| Kubernetes 'e kalıcı kod dağıtımı  | Yes  | Hayır  |
-| Bir Kubernetes Pod 'da uzaktan hata ayıklama  | Yes  | Hayır  |
-| Yerel hata ayıklama, Kubernetes 'e bağlanıldı  | Hayır  | Yes  |
-| Aynı iş istasyonunda aynı anda birden fazla hizmetin hatalarını ayıklama  | Yes  | Yes  |
+| Geliştirici yalıtımı veya takım geliştirme  | Evet  | Evet  |
+| Ortam değişkenlerinin seçmeli olarak üzerine yaz  | Hayır  | Evet  |
+| Dockerfile ve Held grafiğinin oluşturulması  | Evet  | Hayır  |
+| Kubernetes 'e kalıcı kod dağıtımı  | Evet  | Hayır  |
+| Bir Kubernetes Pod 'da uzaktan hata ayıklama  | Evet  | Hayır  |
+| Yerel hata ayıklama, Kubernetes 'e bağlanıldı  | Hayır  | Evet  |
+| Aynı iş istasyonunda aynı anda birden fazla hizmetin hatalarını ayıklama  | Evet  | Evet  |
 
 ## <a name="kubernetes-inner-loop-development"></a>Kubernetes iç döngüsü geliştirme
 

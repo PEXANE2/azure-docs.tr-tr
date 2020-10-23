@@ -7,46 +7,40 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/30/2018
+ms.date: 10/15/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 69096e5f650a131c5af7ec4da60b7cbca225a56f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e328caa80a0e63f68f2563bc91a6405341ad064e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116609"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102077"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Multi-Factor Authentication 'ı etkinleştirme
 
 Azure Active Directory B2C (Azure AD B2C), uygulamalarınızda kayıt ve oturum açma deneyimlerine ikinci bir güvenlik katmanı ekleyebilmeniz için doğrudan [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) ile tümleşir. Multi-Factor Authentication 'ı tek bir kod satırı yazmadan etkinleştirirsiniz. Zaten kaydolma ve oturum açma Kullanıcı akışları oluşturduysanız, çok faktörlü kimlik doğrulamasını yine de etkinleştirebilirsiniz.
 
-Bu özellik, uygulamaların aşağıdakiler gibi senaryoları işlemesine yardımcı olur:
+Bu özellik, uygulamaların aşağıdaki gibi senaryoları işlemesine yardımcı olur:
 
 - Bir uygulamaya erişmek için Multi-Factor Authentication gerekmez, ancak başka bir uygulamaya erişmesi gerekir. Örneğin, müşteri, sosyal veya yerel hesapla otomatik bir sigorta uygulamasında oturum açabilir, ancak aynı dizinde kayıtlı olan ev sigortası uygulamasına erişmeden önce telefon numarasını doğrulamalıdır.
 - Genel olarak bir uygulamaya erişmek için Multi-Factor Authentication gerekmez, ancak bunun içindeki hassas bölümlere erişmesi gerekir. Örneğin, müşteri, sosyal veya yerel hesap içeren bir bankacılık uygulamasında oturum açabilir ve hesap bakiyesini denetleyebilir, ancak bir hat aktarımını denemeden önce telefon numarasını doğrulamanız gerekir.
 
 ## <a name="set-multi-factor-authentication"></a>Multi-Factor Authentication 'ı ayarlama
 
-Bir Kullanıcı akışı oluşturduğunuzda, çok faktörlü kimlik doğrulamasını etkinleştirme seçeneğiniz vardır.
-
-![Multi-Factor Authentication 'ı ayarlama](./media/custom-policy-multi-factor-authentication/add-policy.png)
-
-**Çok faktörlü kimlik doğrulamasını** **etkin**olarak ayarlayın.
+1. [Azure portalda](https://portal.azure.com) oturum açma
+1. Azure AD B2C kiracınızı içeren dizini seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. **Kullanıcı akışları ' nı**seçin.
+1. MFA 'yı etkinleştirmek istediğiniz kullanıcı akışını seçin. Örneğin, *B2C_1_signinsignup*.
+1. **Özellikler**’i seçin.
+1. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini**seçin ve ardından **MFA zorlaması** altında **her zaman açık**veya ** [koşullu](conditional-access-user-flow.md) (önerilen)** seçeneğini belirleyin. Koşullu [erişim ilkesi](conditional-access-identity-protection-setup.md) ilkesi oluşturun ve ilkenin uygulanmasını istediğiniz uygulamaları belirtin. 
+1. Kaydet’i seçin. MFA artık bu kullanıcı akışı için etkinleştirilmiştir.
 
 Deneyimi doğrulamak için **Kullanıcı akışını Çalıştır** ' i kullanabilirsiniz. Aşağıdaki senaryoyu onaylayın:
 
 Multi-Factor Authentication adımı gerçekleşmeden önce kiracınızda bir müşteri hesabı oluşturulur. Adım sırasında müşterinin bir telefon numarası sağlaması ve doğrulanması istenir. Doğrulama başarılı olursa telefon numarası daha sonra kullanılmak üzere hesaba iliştirilir. Müşteri iptal ediyor veya devre dışı olsa bile, çok faktörlü kimlik doğrulaması etkin olan bir sonraki oturum açma sırasında müşterinin bir telefon numarasını doğrulaması istenebilir.
 
-## <a name="add-multi-factor-authentication"></a>Multi-Factor Authentication ekleme
-
-Multi-Factor Authentication 'ı daha önce oluşturduğunuz bir Kullanıcı akışında etkinleştirmek mümkündür.
-
-Multi-Factor Authentication 'ı etkinleştirmek için:
-
-1. Kullanıcı akışını açın ve ardından **Özellikler**' i seçin.
-2. **Çok faktörlü kimlik doğrulaması**' nın yanındaki **etkin**' i seçin.
-3. Sayfanın üst kısmından **Kaydet**'e tıklayın.
 
 

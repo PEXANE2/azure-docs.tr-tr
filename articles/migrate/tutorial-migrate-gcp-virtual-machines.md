@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile GCP VM 'lerinin Azure 'a nasıl ge�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cd3bf225c6de0401aaa625cf3bb037b3beb58a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2caebb5dda87a34d003f7f2bd208fff427c98431
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716623"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315876"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) sanal makinelerini Azure 'a bulma, değerlendirme ve geçirme
 
@@ -58,7 +58,7 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 - Geçirmek istediğiniz GCP VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. GCP VM 'Leri geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini ve çekirdek sürümlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Linux sanal makinelerinize yönelik işletim sistemi ve çekirdek sürümlerini denetlemek için *hostnamectl* veya *uname-a* gibi standart komutları kullanabilirsiniz.  Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi gerçekleştirmenizi öneririz.
 - GCP sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
@@ -367,7 +367,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
     - Site Recovery ile Azure sanal makinelerini ikincil bölgeye çoğaltarak iş yüklerinin çalışmaya devam etmesini ve sürekli kullanılabilir olmasını sağlayın. [Daha fazla bilgi edinin](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Daha fazla güvenlik için:
     - Azure Güvenlik Merkezi ile gelen trafik erişimini kilitleme ve sınırlayın [-tam zamanında yönetim](../security-center/security-center-just-in-time.md).
-    - [Ağ Güvenlik Grupları](../virtual-network/security-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
+    - [Ağ Güvenlik Grupları](../virtual-network/network-security-groups-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
     - [Azure Disk Şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)’ni dağıtarak disklerin güvenliğinin sağlanmasına yardımcı olun ve verileri hırsızlık ve yetkisiz erişime karşı koruyun.
     - [IaaS kaynaklarının güvenliğini sağlama](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) hakkında daha fazla bilgi edinin ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)’ni ziyaret edin.
 - İzleme ve yönetim için:
@@ -399,7 +399,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 **Cevap:** EC2 VM 'lerinizi Azure 'a geçirmeden önce bu değişiklikleri yapmanız gerekebilir:
 
 - VM sağlama için Cloud-init kullanıyorsanız, VM 'yi Azure 'a çoğaltmadan önce VM üzerinde Cloud-init devre dışı bırakmak isteyebilirsiniz. VM üzerinde Cloud-init tarafından gerçekleştirilen sağlama adımları GCP 'ye özgü olabilir ve Azure 'a geçişten sonra geçerli olmayacaktır.  
-- Kullandığınız işletim sistemi için gerekli herhangi bir değişiklik olup olmadığını öğrenmek için [Önkoşullar](#prerequisites) bölümünü gözden geçirin
+- Azure 'a geçirmeden önce işletim sistemi için gerekli herhangi bir değişiklik olup olmadığını öğrenmek için [Önkoşullar](#prerequisites) bölümünü gözden geçirin.
 - Son geçişten önce her zaman bir test geçişi çalıştırmanızı öneririz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar

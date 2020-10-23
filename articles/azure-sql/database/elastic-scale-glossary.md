@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362623"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330470"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastik veritabanı araçları sözlüğü
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Parça **haritasını Listele**: parçalama anahtarlarının ayrı ayrı eşlend
 
 **Çok kiracılı** ve **tek kiracılı**: Bu, tek kiracılı bir veritabanını ve çok kiracılı bir veritabanını gösterir:
 
-![Tek ve çok kiracılı veritabanları](./media/elastic-scale-glossary/multi-single-simple.png)
+![Tek kiracılı bir veritabanını ve çok kiracılı veritabanını gösteren ekran görüntüsü.](./media/elastic-scale-glossary/multi-single-simple.png)
 
 Parçalı tek ve çok kiracılı veritabanlarının temsili **aşağıda verilmiştir.** 
 

@@ -21,7 +21,7 @@
           href: quick-create-template.md
 - name: Kavramlar
   items:
-    - name: Rol tabanlı erişim denetimi ile panoları paylaşma
+    - name: Azure rol tabanlı erişim denetimi ile panoları paylaşma
       href: azure-portal-dashboard-share-access.md
     - name: Program aracılığıyla Azure panoları oluşturma
       href: azure-portal-dashboards-create-programmatically.md

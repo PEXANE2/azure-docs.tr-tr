@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87985623"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201792"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Model dönüştürme REST API’yi kullanma
 
@@ -54,7 +54,7 @@ JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürü
 #### <a name="request-body"></a>İstek gövdesi
 
 > [!NOTE]
-> `input.folderPath`Azure 'da dönüştürmeyi gerçekleştirmek için altındaki her şey alınacaktır. `input.folderPath`Belirtilmemişse, kapsayıcının tüm içeriği alınacaktır. Alınan tüm Bloblar ve klasörler [geçerli Windows dosya adlarına](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)sahip olmalıdır.
+> `input.folderPath`Azure 'da dönüştürmeyi gerçekleştirmek için altındaki her şey alınacaktır. `input.folderPath`Belirtilmemişse, kapsayıcının tüm içeriği alınacaktır. Alınan tüm Bloblar ve klasörler [geçerli Windows dosya adlarına](/windows/win32/fileio/naming-a-file#naming-conventions)sahip olmalıdır.
 
 ```json
 {
@@ -91,7 +91,7 @@ JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürü
 > Bu SAS URI belirteçleri, tam URI değil, sorgu dizeleridir. 
 
 > [!NOTE]
-> `input.folderPath`Azure 'da dönüştürmeyi gerçekleştirmek için altındaki her şey alınacaktır. `input.folderPath`Belirtilmemişse, kapsayıcının tüm içeriği alınacaktır. Alınan tüm Bloblar ve klasörler [geçerli Windows dosya adlarına](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)sahip olmalıdır.
+> `input.folderPath`Azure 'da dönüştürmeyi gerçekleştirmek için altındaki her şey alınacaktır. `input.folderPath`Belirtilmemişse, kapsayıcının tüm içeriği alınacaktır. Alınan tüm Bloblar ve klasörler [geçerli Windows dosya adlarına](/windows/win32/fileio/naming-a-file#naming-conventions)sahip olmalıdır.
 
 ```json
 {

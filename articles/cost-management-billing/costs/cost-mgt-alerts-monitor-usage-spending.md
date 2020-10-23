@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531347"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131913"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Maliyet uyarılarını kullanarak kullanımı ve harcamayı izleme
 
@@ -21,7 +21,7 @@ Bu makale Maliyet Yönetimi uyarılarını kullanarak Azure kullanımınızı ve
 
 ## <a name="budget-alerts"></a>Bütçe uyarıları
 
-Bütçe uyarıları, kullanım veya maliyet temelinde harcama, [bütçenin uyarı koşulunda](tutorial-acm-create-budgets.md) tanımlanan tutara ulaştığında veya onu aştığında size bilgi verir. Maliyet Yönetimi bütçeleri, Azure portalı veya [Azure Tüketim](https://docs.microsoft.com/rest/api/consumption) API'si aracılığıyla oluşturulur.
+Bütçe uyarıları, kullanım veya maliyet temelinde harcama, [bütçenin uyarı koşulunda](tutorial-acm-create-budgets.md) tanımlanan tutara ulaştığında veya onu aştığında size bilgi verir. Maliyet Yönetimi bütçeleri, Azure portalı veya [Azure Tüketim](/rest/api/consumption) API'si aracılığıyla oluşturulur.
 
 Azure portalında bütçeler maliyete göre tanımlanır. Azure Tüketim API'sini kullanarak bütçeleri maliyete veya tüketim kullanımına göre tanımlayabilirsiniz. Bütçe uyarıları hem maliyet hem de kullanım tabanlı bütçeleri destekler. Bütçe uyarıları, ilgili koşullar karşılandığında otomatik olarak oluşturulur. Tüm maliyet uyarılarını Azure portalında görüntüleyebilirsiniz. Oluşturulan uyarılar, maliyet uyarılarında gösterilir. Ayrıca bütçenin uyarı alıcıları listesindeki kişilere e-posta da gönderilir.
 

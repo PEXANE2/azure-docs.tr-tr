@@ -3,12 +3,12 @@ title: Azure geçişi sunucu geçişi hakkında sık sorulan sorular
 description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanma hakkında sık sorulan sorulara yanıtlar alın.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275549"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315245"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
@@ -34,8 +34,8 @@ Azure geçişi: sunucu geçiş aracı, UEFı tabanlı makineleri Azure 2. nesil 
 | SUSE Linux Enterprise Server 15 SP1                     | E                                                                                                                                         | E                              | E                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | E                                                                                                                                         | E                              | E                                                          |
 | Ubuntu Server 16,04, 18,04, 19,04, 19,10                | E                                                                                                                                         | E                              | E                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | E<br>                 _RHEL 8. x [el ile hazırlık](https://go.microsoft.com/fwlink/?linkid=2143939) gerektiriyor_   | E                              | E                                                          |
-| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | E<br>_Sent OS 8. x [el ile hazırlık](https://go.microsoft.com/fwlink/?linkid=2143939) gerektirir_ | E                              | E                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | E<br>                 _RHEL 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektiriyor_   | E                              | E                                                          |
+| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | E<br>_Sent OS 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektirir_ | E                              | E                                                          |
 | Oracle Linux 7,7, 7,7-CI                                |  E                                                                                                                                        | E                              | E                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Olağanüstü durum kurtarma senaryoları için Azure geçişi tarafından oluşturulan Kurtarma Hizmetleri kasasını kullanabilir miyim?
@@ -43,11 +43,11 @@ Olağanüstü durum kurtarma senaryoları için Azure geçişi tarafından oluş
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Aracı tabanlı geçişler için çoğaltma gerecini nereye yüklemeliyim?
 
-Çoğaltma gereci adanmış bir makineye yüklenmelidir. Çoğaltma gereci, çoğaltmak istediğiniz bir kaynak makineye veya daha önce yüklemiş olduğunuz Azure geçişi bulma ve değerlendirme gerecine yüklenmelidir. Daha fazla ayrıntı için [öğreticiyi](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) izleyin.
+Çoğaltma gereci adanmış bir makineye yüklenmelidir. Çoğaltma gereci, çoğaltmak istediğiniz bir kaynak makineye veya daha önce yüklemiş olduğunuz Azure geçişi bulma ve değerlendirme gerecine yüklenmelidir. Daha fazla ayrıntı için [öğreticiyi](./tutorial-migrate-physical-virtual-machines.md) izleyin.
 
 ## <a name="how-can-i-migrate-my-aws-ec2-instances-to-azure"></a>AWS EC2 örneklerimi Azure 'a nasıl geçirebilirim?
 
-AWS EC2 örneklerinizi Azure 'a eklemek, değerlendirmek ve geçirmek için bu [makaleyi](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines) gözden geçirin.
+AWS EC2 örneklerinizi Azure 'a eklemek, değerlendirmek ve geçirmek için bu [makaleyi](./tutorial-migrate-aws-virtual-machines.md) gözden geçirin.
 
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>Amazon Linux Işletim sistemini çalıştıran AWS VM 'Leri geçirebilir miyim?
 
@@ -79,18 +79,18 @@ Seçili geçiş seçeneği ne olursa olsun, Azure geçişi kullanarak bir sunucu
 Geçiş seçeneğinde karar verirken göz önünde bulundurmanız gereken bazı noktalar aşağıda verilmiştir.
 
 **Aracısız geçişler** , geçirilmekte olan kaynak VM 'lere/sunuculara herhangi bir yazılımın (aracıların) dağıtılmasını gerektirmez. Aracısız seçeneği, sanallaştırma sağlayıcısı tarafından sunulan işlevlerle tümleştirerek çoğaltmayı düzenler.
-Aracısız çoğaltma seçenekleri [VMware VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) 'Leri ve [Hyper-V VM 'leri](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)için kullanılabilir.
+Aracısız çoğaltma seçenekleri [VMware VM](./tutorial-migrate-vmware.md) 'Leri ve [Hyper-V VM 'leri](./tutorial-migrate-hyper-v.md)için kullanılabilir.
 
 **Aracı tabanlı geçişler** , geçirilecek kaynak VM 'lere/makinelere Azure geçiş yazılımının (aracıların) yüklenmesini gerektirir. Aracı tabanlı seçenek, çoğaltma işlevselliğine yönelik sanallaştırma platformuna bağlı değildir ve bu nedenle, x86/x64 mimarisi çalıştıran herhangi bir sunucu ve aracı tabanlı çoğaltma yöntemi tarafından desteklenen bir işletim sistemi sürümü ile kullanılabilir.
 
-Aracı tabanlı geçiş seçeneği, [VMware VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent)'leri, [Hyper-V VM 'leri](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), [fiziksel sunucular](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), [AWS üzerinde](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines)çalışan VM 'ler, GCP üzerinde çalışan sanal makineler veya farklı bir sanallaştırma sağlayıcısında çalışan VM 'ler için kullanılabilir. Aracı tabanlı geçiş, makinelerinizi geçiş amacına göre fiziksel sunucu olarak değerlendirir.
+Aracı tabanlı geçiş seçeneği, [VMware VM](./tutorial-migrate-vmware-agent.md)'leri, [Hyper-V VM 'leri](./tutorial-migrate-physical-virtual-machines.md), [fiziksel sunucular](./tutorial-migrate-physical-virtual-machines.md), [AWS üzerinde](./tutorial-migrate-aws-virtual-machines.md)çalışan VM 'ler, GCP üzerinde çalışan sanal makineler veya farklı bir sanallaştırma sağlayıcısında çalışan VM 'ler için kullanılabilir. Aracı tabanlı geçiş, makinelerinizi geçiş amacına göre fiziksel sunucu olarak değerlendirir.
 
 Aracısız geçiş, desteklenen senaryolar (VMWare ve Hyper-V) için aracı tabanlı çoğaltma seçeneklerine ek kolaylık ve kolaylık sağlarken, aşağıdaki kullanım örnekleri için aracı tabanlı senaryoyu kullanmayı düşünebilirsiniz:
 
 - IOPS kısıtlanmış ortam: aracısız çoğaltma, anlık görüntüler kullanır ve depolama ıOPS/bant genişliği kullanır. Ortamınızda depolamada/ıOPS üzerinde kısıtlamalar varsa, aracı tabanlı geçiş yöntemini öneririz.
 - VCenter Server yoksa, VMware VM 'lerinizi fiziksel sunucu olarak kabul edebilir ve aracı tabanlı geçiş iş akışını kullanabilirsiniz.
 
-Daha fazla bilgi edinmek için, VMware geçişleri için geçiş seçeneklerini karşılaştırmak üzere bu [makaleyi](https://docs.microsoft.com/azure/migrate/server-migrate-overview) gözden geçirin.
+Daha fazla bilgi edinmek için, VMware geçişleri için geçiş seçeneklerini karşılaştırmak üzere bu [makaleyi](./server-migrate-overview.md) gözden geçirin.
 
 ## <a name="how-does-agentless-migration-work"></a>Aracısız geçiş nasıl çalışır?
 
@@ -101,13 +101,13 @@ Aracısız çoğaltma seçeneği, sanallaştırma sağlayıcısı (VMware, Hyper
 Bir sanal makine için çoğaltma yapılandırıldığında, önce ilk çoğaltma aşamasından geçer. İlk çoğaltma sırasında, bir VM anlık görüntüsü alınır ve anlık görüntü disklerinden verilerin tam kopyası aboneliğinizdeki yönetilen disklere çoğaltılır. Sanal makine için ilk çoğaltma işlemi tamamlandıktan sonra, çoğaltma işlemi artımlı çoğaltma (Delta çoğaltma) aşamasına geçiş yapar. Artımlı çoğaltma aşamasında, son tamamlanan çoğaltma döngüsünden bu yana gerçekleşen veri değişiklikleri düzenli aralıklarla çoğaltılır ve çoğaltma tarafından yönetilen disklere uygulandıktan sonra çoğaltma, VM 'deki değişikliklerle eşitlenmiş şekilde devam ediyor. VMware sanal makineleri söz konusu olduğunda, çoğaltma döngüleri arasındaki değişiklikleri izlemek için VMware değiştirilmiş blok izleme teknolojisi kullanılır. Çoğaltma döngüsünün başlangıcında, geçerli anlık görüntü ile son başarıyla çoğaltılan anlık görüntü arasındaki değişiklikleri almak için bir VM anlık görüntüsü alınır ve değiştirilmiş blok izleme kullanılır. Bu şekilde, sanal makine için çoğaltmayı eşitlenmiş halde tutmak üzere yalnızca son tamamlanan çoğaltma döngüsünün çoğaltılmasından bu yana değiştirilen verilerin çoğaltılması gerekir. Her çoğaltma döngüsünün sonunda, anlık görüntü serbest bırakılır ve sanal makine için anlık görüntü birleştirme gerçekleştirilir. Benzer şekilde, Hyper-V sanal makineleri söz konusu olduğunda, ardışık çoğaltma döngüleri arasındaki değişiklikleri izlemek için Hyper-V çoğaltma değişikliği izleme motoru kullanılır.
 Çoğaltma işlemini çoğaltılan bir sanal makinede gerçekleştirdiğinizde, şirket içi sanal makineyi kapatıp, sıfır veri kaybı sağlamak için bir son artımlı çoğaltma gerçekleştirebilirsiniz. Geçiş seçeneğini gerçekleştirirken, sanal makineye karşılık gelen çoğaltma tarafından yönetilen diskler, Azure 'da sanal makine oluşturmak için kullanılır.
 
-Başlamak için, [VMware aracısız geçişi](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) ve [Hyper-V aracısız geçiş](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v) öğreticilerine bakın.
+Başlamak için, [VMware aracısız geçişi](./tutorial-migrate-vmware.md) ve [Hyper-V aracısız geçiş](./tutorial-migrate-hyper-v.md) öğreticilerine bakın.
 
 ## <a name="how-does-agent-based-migration-work"></a>Aracı tabanlı geçiş nasıl çalışır?
 
 VMware sanal makineleri ve Hyper-V sanal makineleri için aracısız geçiş seçeneklerine ek olarak, sunucu geçiş aracı fiziksel sunucularda çalışan Windows ve Linux sunucularını geçirmek ya da VMware, Hyper-V, AWS, Google Cloud Platform vb. üzerinde x86/x64 sanal makineleri olarak çalıştırmak için aracı tabanlı bir geçiş seçeneği sağlar.
 
-Aracı tabanlı geçiş yöntemi, sunucu verilerini Azure 'a çoğaltmak için geçirilmekte olan sunucuda yüklü aracı yazılımını kullanır. Çoğaltma işlemi, aracının çoğaltma verileri çoğaltma gereci veya yapılandırma sunucusu (veya genişleme Işlem sunucusu) adlı ayrılmış bir çoğaltma sunucusuna aktardığı bir yük boşaltma mimarisi kullanır. Aracı tabanlı geçiş seçeneğinin nasıl çalıştığı hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture) . 
+Aracı tabanlı geçiş yöntemi, sunucu verilerini Azure 'a çoğaltmak için geçirilmekte olan sunucuda yüklü aracı yazılımını kullanır. Çoğaltma işlemi, aracının çoğaltma verileri çoğaltma gereci veya yapılandırma sunucusu (veya genişleme Işlem sunucusu) adlı ayrılmış bir çoğaltma sunucusuna aktardığı bir yük boşaltma mimarisi kullanır. Aracı tabanlı geçiş seçeneğinin nasıl çalıştığı hakkında [daha fazla bilgi edinin](./agent-based-migration-architecture.md) . 
 
 Note: çoğaltma gereci Azure geçişi bulma gerecinden farklıdır ve ayrı/ayrılmış bir makineye yüklenmelidir.
 
@@ -127,7 +127,7 @@ Aşağıdaki formülü kullanarak aracısız VMware VM geçişi için gereken ba
 
 ### <a name="agent-based-vmware-vm-migration"></a>Aracı tabanlı VMware VM geçişi
 
-Aracı tabanlı bir çoğaltma yöntemi için, dağıtım planlayıcısı ortamın veri dalgalanma göre profilini oluşturup gerekli bant genişliği gereksinimini tahmin etmenize yardımcı olabilir. Daha fazla bilgi edinmek için bu [makaleyi](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture#plan-vmware-deployment)görüntüleyin. 
+Aracı tabanlı bir çoğaltma yöntemi için, dağıtım planlayıcısı ortamın veri dalgalanma göre profilini oluşturup gerekli bant genişliği gereksinimini tahmin etmenize yardımcı olabilir. Daha fazla bilgi edinmek için bu [makaleyi](./agent-based-migration-architecture.md#plan-vmware-deployment)görüntüleyin. 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltması için Azure geçişi aracı 'nı kullanarak çoğaltma Nasıl yaparım? kısıtlaması yapılsın mı?  
 
@@ -153,10 +153,10 @@ Sonraki çoğaltma döngüsünü zamanlamaya yönelik formül (önceki bir döne
 
 ## <a name="how-do-i-migrate-windows-server-2003-running-on-vmwarehyper-v-to-azure"></a>Nasıl yaparım? VMware/Hyper-V üzerinde çalışan Windows Server 2003 ' i Azure 'a geçirin.
 
-[Windows Server 2003 genişletilmiş desteği](https://go.microsoft.com/fwlink/?linkid=2140400) 14 Temmuz 2015 tarihinde sona erdi.  Azure destek ekibi, Azure 'da Windows Server 2003 ' i çalıştırmaya yönelik sorunları gidermeye yardımcı olmaya devam etmektedir. Ancak, bu destek, işletim sistemi düzeyinde sorun giderme veya düzeltme eki gerektirmeyen sorunlarla sınırlıdır.
+[Windows Server 2003 genişletilmiş desteği](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support) 14 Temmuz 2015 tarihinde sona erdi.  Azure destek ekibi, Azure 'da Windows Server 2003 ' i çalıştırmaya yönelik sorunları gidermeye yardımcı olmaya devam etmektedir. Ancak, bu destek, işletim sistemi düzeyinde sorun giderme veya düzeltme eki gerektirmeyen sorunlarla sınırlıdır.
 Uygulamalarınızı Windows Server 'ın daha yeni bir sürümünü çalıştıran Azure örneklerine geçirmek, Azure bulutunun esnekliğini ve güvenilirliğini etkili bir şekilde kullandığınızdan emin olmak için önerilen yaklaşımdır.
 
-Bununla birlikte, Windows Server 2003 ' ı Azure 'a geçirmeyi hala tercih ediyorsanız, Windows Server 'ın VMware veya Hyper-V ' d e çalışan bir VM olması durumunda Azure geçişi: sunucu geçiş aracı 'nı kullanarak Windows Server [2003 makinelerinizi geçişe hazırlamak](https://go.microsoft.com/fwlink/?linkid=2140302)için bu makaleyi gözden geçirin.
+Bununla birlikte, Windows Server 2003 ' ı Azure 'a geçirmeyi hala tercih ediyorsanız, Windows Server 'ın VMware veya Hyper-V ' d e çalışan bir VM olması durumunda Azure geçişi: sunucu geçiş aracı 'nı kullanarak Windows Server [2003 makinelerinizi geçişe hazırlamak](./prepare-windows-server-2003-migration.md)için bu makaleyi gözden geçirin.
 
 ## <a name="what-is-the-difference-between-the-test-migration-and-migrate-operations"></a>Test geçişi ve geçiş işlemleri arasındaki fark nedir?
 

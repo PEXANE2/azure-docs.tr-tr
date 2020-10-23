@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/25/2020
+ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 172e684c6edbab4d7d47c8cf78e35ae38de3a0af
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85412592"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461796"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Metin Analizi API'si sürüm 3. x ' e geçirin
 
@@ -33,7 +33,12 @@ Metin Analizi API'si sürüm 2,1 kullanıyorsanız, bu makale uygulamanızı 3. 
 
 ### <a name="rest-api"></a>REST API
 
-Uygulamanız REST API kullanıyorsa, istek bitiş noktasını, yaklaşım analizi için v3 uç noktasına güncelleştirin. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` . Ayrıca, [JSON yanıtında](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)döndürülen yaklaşım etiketlerini kullanmak için uygulamayı güncelleştirmeniz gerekir. 
+Uygulamanız REST API kullanıyorsa, istek bitiş noktasını, yaklaşım analizi için v3 uç noktasına güncelleştirin. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` . Ayrıca, [API 'nin yanıtında](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)döndürülen yaklaşım etiketlerini kullanmak için uygulamayı güncelleştirmeniz gerekir. 
+
+JSON yanıtının örnekleri için başvuru belgelerine bakın.
+* [Sürüm 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+* [Sürüm 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
+* [Sürüm 3,1-Önizleme](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
 
 ### <a name="client-libraries"></a>İstemci kitaplıkları
 
@@ -60,7 +65,12 @@ Varlık Bağlama
 HI
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
-Ayrıca, [JSON yanıtında](how-tos/text-analytics-how-to-entity-linking.md#view-results)döndürülen [varlık kategorilerini](named-entity-types.md) kullanmak için uygulamanızı güncelleştirmeniz gerekir.
+Ayrıca, [API 'nin yanıtında](how-tos/text-analytics-how-to-entity-linking.md#view-results)döndürülen [varlık kategorilerini](named-entity-types.md) kullanmak için uygulamanızı güncelleştirmeniz gerekecektir.
+
+JSON yanıtının örnekleri için başvuru belgelerine bakın.
+* [Sürüm 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+* [Sürüm 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
+* [Sürüm 3,1-Önizleme](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>İstemci kitaplıkları
 
@@ -77,14 +87,19 @@ Dil algılama özelliği, uç nokta sürümünün dışında v3 'de değişmemi�
 
 ### <a name="rest-api"></a>REST API
 
-Uygulamanızda REST API kullanılıyorsa, dil algılama için istek uç noktasını v3 uç noktasına güncelleştirin. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` . Ayrıca, `ConfidenceScore` `score` [JSON yanıtında](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)yerine kullanmak üzere uygulamayı güncelleştirmeniz gerekecektir. 
+Uygulamanızda REST API kullanılıyorsa, dil algılama için istek uç noktasını v3 uç noktasına güncelleştirin. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` . Ayrıca, `ConfidenceScore` `score` [API 'nin yanıtı](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)yerine kullanmak üzere uygulamayı güncelleştirmeniz gerekecektir. 
+
+JSON yanıtının örnekleri için başvuru belgelerine bakın.
+* [Sürüm 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
+* [Sürüm 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
+* [Sürüm 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
 
 ### <a name="client-libraries"></a>İstemci kitaplıkları
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
 
-#### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Anahtar ifade ayıklama](#tab/key-phrase-extraction)
 
 ## <a name="feature-changes"></a>Özellik değişiklikleri 
 
@@ -96,6 +111,11 @@ Anahtar tümceciği ayıklama özelliği, uç nokta sürümü dışındaki v3 'd
 
 Uygulamanız REST API kullanıyorsa, anahtar tümceciği ayıklama için istek uç noktasını v3 uç noktasına güncelleştirin. Örnek: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
 
+JSON yanıtının örnekleri için başvuru belgelerine bakın.
+* [Sürüm 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
+* [Sürüm 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) 
+* [Sürüm 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/KeyPhrases)
+
 ### <a name="client-libraries"></a>İstemci kitaplıkları
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
@@ -105,7 +125,6 @@ Uygulamanız REST API kullanıyorsa, anahtar tümceciği ayıklama için istek u
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Metin Analizi API'si v2 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/)
 * [Metin Analizi API'si nedir?](overview.md)
 * [Dil desteği](language-support.md)
 * [Model sürümü oluşturma](concepts/model-versioning.md)

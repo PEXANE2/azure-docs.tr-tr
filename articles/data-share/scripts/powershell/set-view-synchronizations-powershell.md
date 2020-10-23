@@ -1,22 +1,19 @@
 ---
-title: 'PowerShell betiği: Azure veri paylaşımının sistem ayarlarını ayarlama ve görüntüleme | Microsoft Docs'
+title: 'PowerShell betiği: Azure veri paylaşma eşitleme ayarlarını ayarlama ve görüntüleme'
 description: Bu PowerShell betiği, paylaşma eşitleme ayarlarını ayarlar ve alır.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 0ced66c1d3023b7edb3220b45e24d3eb54098df8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 401754436739e5594c0d7baac6507f9d9984fc31
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512495"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221290"
 ---
-# <a name="use-powershell-to-set-azure-data-share-sychronization-settings"></a>Azure veri paylaşımının eşitleme ayarlarını yapmak için PowerShell 'i kullanma
+# <a name="use-powershell-to-set-azure-data-share-synchronization-settings"></a>Azure veri paylaşımının eşitleme ayarlarını yapmak için PowerShell 'i kullanma
 
 Bu PowerShell betiği, paylaşma eşitleme ayarlarını ayarlar ve alır.
 
@@ -48,12 +45,12 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [New-Azdatasharesynitizationsetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | Bir paylaşma eşitlemesi oluşturun. |
-| [Get-Azdatasharesynitizationsetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Bir paylaşma eşitlemesinin eşitleme ayarlarını alır. |
+| [New-Azdatasharesynitizationsetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting) | Bir paylaşma eşitlemesi oluşturun. |
+| [Get-Azdatasharesynitizationsetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting) | Bir paylaşma eşitlemesinin eşitleme ayarlarını alır. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).
 
 Ek Azure veri paylaşımının PowerShell betiği örnekleri, [Azure veri paylaşımında PowerShell örnekleri](../../samples-powershell.md)bölümünde bulunabilir.

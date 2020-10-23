@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268834"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218988"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -72,15 +72,15 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 > Videonun adı 80 karakterden uzun olamaz.
 
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
-2. Karşıya video yüklemek için **Karşıya Yükle** düğme veya bağlantısına basın.
+1. Karşıya video yüklemek için **Karşıya Yükle** düğme veya bağlantısına basın.
 
-    ![Karşıya Yükleme](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Karşıya yükle":::
+1. Videonuz karşıya yüklendikten sonra Video Indexer videoyu dizinlemeye ve analiz etmeye başlar.
 
-    Videonuz karşıya yüklendikten sonra Video Indexer videoyu dizinlemeye ve analiz etmeye başlar.
-
-    ![Karşıya yüklendi](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Video Indexer analizi tamamladıktan sonra videonuzun bağlantısını ve videonuzda neler bulunduğunun kısa bir açıklamasını içeren bir bildirim alırsınız. Örnek: kişiler, konular, OCR’ler.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Karşıya yükle":::
+1. Video Indexer çözümlendikten sonra, videonuza bağlantı içeren bir e-posta alacaksınız ve videonuzda nelerin bulunmuştur ilgili kısa bir açıklama alırsınız. Örnek: kişiler, konular, OCR’ler.
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>API ile karşıya yükleme ve Dizin
 
@@ -176,7 +176,7 @@ Bu kodu geliştirme platformunuza kopyaladıktan sonra iki parametre sağlamanı
     API anahtarınızı almak için şu akışa gidin:
 
     * https://api-portal.videoindexer.ai/ sayfasına gidin
-    * Oturum aç
+    * Oturum açma
     * **Ürünler**  ->  **Yetkilendirme**  ->  **Yetkilendirme aboneliğine** git
     * **Birincil anahtarı** Kopyala
 * Video URL 'SI: endekslenecek video/ses dosyasının URL 'SI. URL bir medya dosyasına yönlendirmelidir (HTML sayfaları desteklenmez). Dosya, URI'nin parçası olarak sunulan bir erişim belirteci tarafından korunabilir ve dosyayı sunan uç noktanın güvenliği TLS 1.2 veya üzeri bir sürümle sağlanmalıdır. URL’nin kodlanması gerekir.

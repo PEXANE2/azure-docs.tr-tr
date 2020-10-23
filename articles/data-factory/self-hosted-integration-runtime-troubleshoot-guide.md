@@ -2,17 +2,17 @@
 title: Azure Data Factory içinde şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 description: Azure Data Factory ' de şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme hakkında bilgi edinin.
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/14/2020
-ms.author: abnarain
-ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.author: lle
+ms.openlocfilehash: d35dd94c8aa264c9b4dd679d3b50f3783acb2fde
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069484"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427240"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -615,6 +615,40 @@ Aşağıda, iyi bir senaryonun nasıl görüneceğine ilişkin bir örnek göste
 
     ![TCP 4 el sıkışma iş akışı](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
+
+### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>Yeni IP adresleriyle iletişime izin vermek üzere ağ yapılandırmasını güncelleştirmek için e-posta alınıyor
+
+#### <a name="email-notification-from-microsoft"></a>Microsoft 'tan e-posta bildirimi
+
+Aşağıdaki e-posta bildirimi, ağ yapılandırmasını, Azure Data Factory için yeni IP adresleriyle iletişime izin verecek şekilde güncelleştirmenizi öneren, 8 Kasım 2020:
+
+   ![E-posta ile bildirim](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+
+#### <a name="how-to-determine-if-you-are-impacted-by-this-notification"></a>Bu bildirimden etkilenip etkilenmediğinizi belirleme
+
+Bu bildirim aşağıdaki senaryoları etkiler:
+##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>Senaryo 1: Şirket güvenlik duvarının arkasındaki şirket içinde çalışan, şirket içinde barındırılan Integration Runtime giden iletişim
+Etkilenip etkilenmediğinizi belirleme:
+- Bu belgede açıklanan yaklaşımı kullanarak FQDN adlarına dayalı güvenlik duvarı kuralları tanımlıyorsanız, güvenlik duvarı [yapılandırması ve IP adresi için izin verilenler listesi ayarları](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)konusunda etkilenmiş olursunuz.
+- Ancak şirket güvenlik duvarınızdaki giden IP 'Leri açık bir şekilde listelemek istiyorsanız bu sorundan etkilenmiş olursunuz.
+
+Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak üzere ağ altyapınızı güncelleştirmek için ağ altyapısı ekibinize bildirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
+
+##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>Senaryo 2: müşteri tarafından yönetilen Azure sanal ağı içindeki bir Azure VM üzerinde çalışan kendinden konak Integration Runtime giden iletişim
+Etkilenip etkilenmediğinizi belirleme:
+- Özel ağınızda kendi kendine barındırılan Integration Runtime içeren giden NSG kurallarınız olup olmadığını denetleyin. Giden kısıtlama yoksa, hiçbir etkisi olmaz.
+- Giden kuralı kısıtlamalarınız varsa, hizmet etiketi kullanıp kullanmadığından emin olun. Hizmet etiketi kullanıyorsanız, yeni IP aralıkları var olan hizmet etiketi altında olduğundan herhangi bir şeyi değiştirme veya ekleme gereksinimi yoktur. 
+ ![Hedef denetimi](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+- Ancak, giden IP adreslerini Azure sanal ağındaki NSG kuralları ayarınız üzerinde açık bir şekilde listeediyorsanız etkilenmiş olursunuz.
+
+Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak için, ağ altyapısı ekibinize Azure sanal ağ yapılandırmanızda NSG kurallarını güncelleştirme konusunda bilgilendirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
+
+##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Senaryo 3: müşteri tarafından yönetilen Azure sanal ağı 'nda SSIS Integration Runtime giden iletişim
+- Özel ağınızda SSIS Integration Runtime içeren herhangi bir giden NSG kuralı olup olmadığınızı denetleyin. Giden kısıtlama yoksa, hiçbir etkisi olmaz.
+- Giden kuralı kısıtlamalarınız varsa, hizmet etiketi kullanıp kullanmadığından emin olun. Hizmet etiketi kullanıyorsanız, yeni IP aralıkları var olan hizmet etiketi altında olduğundan herhangi bir şeyi değiştirme veya ekleme gereksinimi yoktur.
+- Ancak, giden IP adresini Azure sanal ağındaki NSG kuralları ayarınız üzerinde açık bir şekilde listelemek istiyorsanız bu sorundan etkilenmiş olursunuz.
+
+Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak için, ağ altyapısı ekibinize Azure sanal ağ yapılandırmanızda NSG kurallarını güncelleştirme konusunda bilgilendirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
 
 ## <a name="self-hosted-ir-sharing"></a>Şirket içinde barındırılan IR paylaşımı
 

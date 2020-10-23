@@ -89,6 +89,9 @@
     - name: Jupyter Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: Örnek depo
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: Tasarımcı örnekleri ve veri kümeleri
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
@@ -152,13 +155,31 @@
       href: concept-onnx.md
     - name: ML işlem hatları
       href: concept-ml-pipelines.md
-    - name: Kurumsal kullanıma hazır olma ve güvenlik
+    - name: Güvenlik
       items:
         - name: Kurumsal güvenliğe genel bakış
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: Güvenlik temeli
           href: security-baseline.md
+    - name: Sorumlu makine öğrenmesi
+      items:
+        - name: Sorumlu makine öğrenmesine genel bakış
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: Model yorumlanabilirliği
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Machine Learning’de eşitlik
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: Değişiklik Gizliliği
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Güvenlik
+      items:
         - name: Kimlik ve erişim yönetimi
           items:
             - name: Kimlik doğrulamasını ayarlama
@@ -212,22 +233,6 @@
         - name: Uyumluluğu denetleme ve yönetme
           href: how-to-integrate-azure-policy.md
           displayName: policy
-    - name: Sorumlu makine öğrenmesi
-      items:
-        - name: Sorumlu makine öğrenmesine genel bakış
-          displayName: 'responsible,ml'
-          href: concept-responsible-ml.md
-        - name: Model yorumlanabilirliği
-          displayName: explainability
-          href: how-to-machine-learning-interpretability.md
-        - name: Machine Learning’de eşitlik
-          displayName: fairness
-          href: concept-fairness-ml.md
-        - name: Değişiklik Gizliliği
-          displayName: 'differential,privacy'
-          href: concept-differential-privacy.md
-- name: Nasıl yapılır kılavuzları
-  items:
     - name: Çalışma alanlarını oluşturma ve yönetme
       items:
         - name: Azure portalı kullanma
@@ -515,9 +520,6 @@
           href: how-to-debug-pipelines.md
         - name: İşlem hattı verilerine yönelik günlükleri Application Insights’a kaydetme
           href: how-to-log-pipelines-application-insights.md
-        - name: Paralel çalıştırma adımını kullanma
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-use-parallel-run-step.md
         - name: Paralel çalıştırma adımında hata ayıklama ve sorun giderme
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md

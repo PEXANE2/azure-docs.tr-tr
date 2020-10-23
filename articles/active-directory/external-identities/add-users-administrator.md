@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969294f264e6744e893322864eed85e02c615126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b503c7494d1b5e1821718fab5577bca88be65169
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87910326"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442295"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure portal Azure Active Directory B2B işbirliği kullanıcıları ekleyin
 
@@ -25,7 +25,7 @@ Sınırlı yönetici dizin rollerinin herhangi birini atayan bir kullanıcı ola
 Bir konuk kullanıcıyı dizine ekledikten sonra, Konuk kullanıcıyı paylaşılan bir uygulamaya doğrudan bir bağlantı gönderebilirsiniz veya Konuk Kullanıcı davet e-postasında kullanım URL 'sini tıklatabilir. Kullanım süreci hakkında daha fazla bilgi için bkz. [B2B işbirliği daveti](redemption-experience.md)kullanım.
 
 > [!IMPORTANT]
-> Kuruluşunuzun gizlilik bildiriminin URL 'sini eklemek için [nasıl yapılır: kuruluşunuzun gizlilik Azure Active Directory bilgilerini ekleme](https://aka.ms/adprivacystatement) bölümündeki adımları izlemeniz gerekir. İlk davet kullanım sürecinin bir parçası olarak, davet edilen bir kullanıcının devam etmesi için Gizlilik koşullarınızı onaylaması gerekir. 
+> Kuruluşunuzun gizlilik bildiriminin URL 'sini eklemek için [nasıl yapılır: kuruluşunuzun gizlilik Azure Active Directory bilgilerini ekleme](../fundamentals/active-directory-properties-area.md) bölümündeki adımları izlemeniz gerekir. İlk davet kullanım sürecinin bir parçası olarak, davet edilen bir kullanıcının devam etmesi için Gizlilik koşullarınızı onaylaması gerekir. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -124,4 +124,3 @@ Bir Konuk Kullanıcı henüz davetini henüz kullanmıyorsanız, davet e-postas�
 
 - Azure olmayan AD yöneticilerinin B2B Konuk kullanıcıları nasıl ekleyebileceğinizi öğrenmek için bkz. [bilgi ÇALıŞANLARı B2B işbirliği kullanıcılarını nasıl ekler?](add-users-information-worker.md)
 - Davet e-postası hakkında daha fazla bilgi için [B2B işbirliği davetiyesi e-postası öğelerine](invitation-email-elements.md)bakın.
-

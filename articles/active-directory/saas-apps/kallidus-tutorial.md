@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/05/2019
 ms.author: jeedes
-ms.openlocfilehash: b743043d7a7c211ad024b2c1f2fe51f807c50beb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8401589d804a9f1a89820a357495cb703e7a542
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546870"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459229"
 ---
 # <a name="tutorial-integrate-kallidus-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Kallilıya tümleştirin
 
@@ -26,9 +26,9 @@ Bu öğreticide, Kallilıya Azure Active Directory (Azure AD) ile birlikte nası
 * Kullanıcılarınızın Azure AD hesaplarıyla kalıp için otomatik olarak oturum açma olanağı sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -120,16 +120,16 @@ Bu bölümde, Kallilıya erişim izni vererek Azure çoklu oturum açma özelli�
 
 ### <a name="create-kallidus-test-user"></a>Kallibir test kullanıcısı oluşturma
 
-Bu bölümde, Kallilıya 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kallimahkeme platformunda kullanıcıları eklemek için [kalli, destek ekibi](https://kallidus.zendesk.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Kallilıya 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kallimahkeme platformunda kullanıcıları eklemek için [kalli, destek ekibi](https://kallidus.zendesk.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde Kallitıo kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız kalda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Kallitıo kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız kalda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)

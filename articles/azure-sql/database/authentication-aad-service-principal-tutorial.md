@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 453821e99f53a90a076ff13f010f2031a055cbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444177"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367729"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Öğretici: Azure AD uygulamalarını kullanarak Azure AD kullanıcıları oluşturma
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Azure SQL veritabanı 'nda hizmet sorumlusu kullanıcısı oluşturma
 > - Azure AD hizmet sorumlusu kullanıcısını kullanarak SQL veritabanı 'nda farklı bir Azure AD kullanıcısı oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Mevcut bir [Azure SQL veritabanı](single-database-create-quickstart.md) veya [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) dağıtımı. Bu öğretici için çalışan bir SQL veritabanınız olduğunu varsayıyoruz.
 - Zaten var olan bir Azure Active Directory erişim.
@@ -65,7 +65,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     Daha fazla bilgi için bkz. [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) komutu.
 
     > [!IMPORTANT]
-    > Azure SQL mantıksal sunucusu için bir Azure AD kimliği ayarlandıysa, kimliğe [**Dizin okuyucular**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) izni verilmesi gerekir. Aşağıdaki bölümde bu adımla gezineceğiz. Azure AD kimlik doğrulaması çalışmayı durduracaktır, bu **adımı atlayın.**
+    > Azure SQL mantıksal sunucusu için bir Azure AD kimliği ayarlandıysa, kimliğe [**Dizin okuyucular**](../../active-directory/roles/permissions-reference.md#directory-readers) izni verilmesi gerekir. Aşağıdaki bölümde bu adımla gezineceğiz. Azure AD kimlik doğrulaması çalışmayı durduracaktır, bu **adımı atlayın.**
 
     - Geçmişte yeni bir SQL Server oluşturma parametresi ile [New-azsqlserver](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) komutunu kullandıysanız `AssignIdentity` , bu özelliği Azure dokusunda etkinleştirmek Için daha sonra [set-azsqlserver](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) komutunu ayrı bir komut olarak yürütmeniz gerekecektir.
 
@@ -287,7 +287,7 @@ Azure AD 'de bir hizmet sorumlusu oluşturulduktan sonra, kullanıcıyı SQL ver
     GO
     ```
 
-    Benzer bir çıktı görmeniz gerekir:
+    Şuna benzer bir çıktı görmeniz gerekir:
 
     ```output
     name    type    type_desc   appId

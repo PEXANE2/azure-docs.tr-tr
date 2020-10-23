@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9318ce7d73f2d05dde6815a0ded4269510760251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 388c0db11c38f3dcdb9c4452b8d7283b2e811885
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441995"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108703"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage 1. diğer Azure hizmetleriyle tümleştirme
 Azure Data Lake Storage 1., daha geniş bir senaryoyu etkinleştirmek için diğer Azure hizmetleriyle birlikte kullanılabilir. Aşağıdaki makalede Data Lake Storage 1. ile tümleştirilebilen hizmetler listelenmektedir.
@@ -51,7 +51,7 @@ Verileri analiz etmek ve görselleştirmek için bir Data Lake Storage 1. hesab�
 Verileri kuruluş genelinde bulunabilir hale getirmek için Azure Veri Kataloğu 'na Data Lake Storage 1. verileri kaydedebilirsiniz. Daha fazla bilgi için bkz. [Azure Veri Kataloğu 'nda Data Lake Storage 1. verileri kaydetme](data-lake-store-with-data-catalog.md).
 
 ## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) ile Data Lake Storage 1. kullanma
-SSIS ' de Data Lake Storage 1. bağlantı yöneticisini kullanarak bir SSIS paketini Data Lake Storage 1. bağlayabilirsiniz. Daha fazla bilgi için bkz. [SSIS ile Data Lake Storage 1. kullanma](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
+SSIS ' de Data Lake Storage 1. bağlantı yöneticisini kullanarak bir SSIS paketini Data Lake Storage 1. bağlayabilirsiniz. Daha fazla bilgi için bkz. [SSIS ile Data Lake Storage 1. kullanma](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 
 ## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Data Lake Storage 1. kullanma
 PolyBase 'i kullanarak Data Lake Storage 1. Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yükleyebilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics ile Data Lake Storage 1. kullanma](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
@@ -62,5 +62,4 @@ Azure Event Hubs tarafından alınan verileri arşivlemek ve yakalamak için Azu
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure Data Lake Storage 1. genel bakış](data-lake-store-overview.md)
 * [Portalı kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)
-* [PowerShell kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-powershell.md)  
-
+* [PowerShell kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-powershell.md)

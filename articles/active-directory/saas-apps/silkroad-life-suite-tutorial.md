@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 49dd333454f0eb92f5fb0dddc40390ec1baa91c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a40d4c82391f8f8cb55374c8c2d02bee5bf24ae4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525603"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Öğretici: SilkRoad yaşam paketiyle Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ SilkRoad yaşam paketini Azure AD ile tümleştirmek aşağıdaki avantajları s
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini SilkRoad yaşam paketiyle birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -104,15 +104,15 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
 
     a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
-    ![image](common/upload-metadata.png)
+    ![Ekran görüntüsünde, meta veri dosyası yükleme bağlantısıyla temel SAML yapılandırması gösterilir.](common/upload-metadata.png)
 
     b. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Ekran görüntüsünde bir dosyayı seçip karşıya yükleyebileceğiniz bir iletişim kutusu gösterilir.](common/browse-upload-metadata.png)
 
     c. Meta veri dosyası başarıyla karşıya yüklendikten sonra **tanımlayıcı** ve **yanıt URL** değerleri temel SAML yapılandırması bölümünde otomatik olarak doldurulur:
 
-    ![image](common/sp-identifier-reply.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/sp-identifier-reply.png)
 
     > [!Note]
     > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak almıyorsanız, değerleri gereksinimlerinize göre el ile girin.
@@ -161,23 +161,23 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
 
 1. **Hizmet sağlayıcısına**gidin ve ardından **Federasyon ayrıntıları**' na tıklayın.
 
-    ![Azure AD tek Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
+    ![Ekran görüntüsü, hizmet sağlayıcısından seçilen Federasyon ayrıntılarını gösterir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
 1. **Federasyon meta verilerini indir**' e tıklayın ve ardından meta veri dosyasını bilgisayarınıza kaydedin. Azure portal **temel SAML yapılandırması** bölümünde **hizmet sağlayıcı meta** verileri olarak indirilen Federasyon meta verilerini kullanın.
 
-    ![Azure AD tek Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
+    ![Ekran görüntüsü Federasyon meta verilerini Indir bağlantısını gösterir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
 1. **Silkroad** uygulamanızda **kimlik doğrulama kaynakları**' na tıklayın.
 
-    ![Azure AD tek Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
+    ![Ekran görüntüsü, seçilen kimlik doğrulama kaynaklarını gösterir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
 
 1. **Kimlik doğrulama kaynağı Ekle**' ye tıklayın.
 
-    ![Azure AD tek Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
+    ![Ekran görüntüsü, kimlik doğrulama kaynağı Ekle bağlantısını gösterir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
 
 1. **Kimlik doğrulama kaynağı Ekle** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Azure AD tek Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
+    ![Ekran görüntüsünde, dosya verilerini kullanarak kimlik sağlayıcısı oluştur düğmesi seçili olarak kimlik doğrulama kaynağı ekleme gösterilmektedir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
   
     a. **Seçenek 2-meta veri dosyası**altında, Azure Portal indirilen meta veri dosyasını karşıya yüklemek Için, **Araştır** ' a tıklayın.
   
@@ -185,11 +185,11 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
 
 1. **Kimlik doğrulama kaynakları** bölümünde, **Düzenle**' ye tıklayın.
 
-    ![Azure AD tek Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
+    ![Ekran görüntüsü, düzenleme seçeneği belirlenmiş olan kimlik doğrulama kaynaklarını gösterir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
 
 1. **Kimlik doğrulama kaynağını Düzenle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    ![Azure AD tek Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama kaynağını Düzenle iletişim kutusunu gösterir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
 
     a. **Etkin**olarak **Evet**' i seçin.
 
@@ -209,7 +209,7 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
 
 1. Diğer tüm kimlik doğrulama kaynaklarını devre dışı bırakın.
 
-    ![Azure AD tek Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
+    ![Ekran görüntüsü, diğer kaynakları devre dışı bırakabileceğiniz kimlik doğrulama kaynaklarını gösterir. ](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 

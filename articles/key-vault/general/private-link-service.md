@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07be83527fa781f87ed1de06fa41bd6d08ee9dc4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585840"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426572"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
 
@@ -51,7 +51,7 @@ Anahtar Kasası temel bilgilerini yapılandırdıktan sonra, ağ sekmesini seçi
 1. Ağ sekmesinde Özel uç nokta radyo düğmesini seçin.
 1. Özel uç nokta eklemek için "+ Ekle" düğmesine tıklayın.
 
-    ![Görüntü](../media/private-link-service-1.png)
+    ![Bir Anahtar Kasası oluştururken ilk ekranı gösteren ekran görüntüsü.](../media/private-link-service-1.png)
  
 1. Özel uç nokta oluştur dikey penceresinin "konum" alanında, sanal ağınızın bulunduğu bölgeyi seçin. 
 1. "Ad" alanında, bu özel uç noktayı tanımlamanızı sağlayacak açıklayıcı bir ad oluşturun. 
@@ -59,7 +59,7 @@ Anahtar Kasası temel bilgilerini yapılandırdıktan sonra, ağ sekmesini seçi
 1. "Özel bölge DNS ile tümleştirin" seçeneğini değiştirmeden bırakın.  
 1. "Tamam" ı seçin.
 
-    ![Görüntü](../media/private-link-service-8.png)
+    ![Özel bir uç nokta yapılandırmak için önemli olan alanları gösteren ekran görüntüsü.](../media/private-link-service-8.png)
  
 Artık yapılandırılmış özel uç noktayı görebileceksiniz. Artık bu özel uç noktayı silme ve düzenleme seçeneğiniz vardır. "Gözden geçir + oluştur" düğmesini seçin ve Anahtar Kasası oluşturun. Dağıtımın tamamlanması 5-10 dakika sürer. 
 
@@ -74,12 +74,10 @@ Zaten bir anahtar kasanız varsa, aşağıdaki adımları izleyerek bir özel ba
 1. Sayfanın üst kısmındaki özel uç nokta bağlantıları sekmesini seçin
 1. Sayfanın üst kısmındaki "+ özel uç nokta" düğmesini seçin.
 
-    ![Görüntü ](../media/private-link-service-3.png) ![ resmi](../media/private-link-service-4.png)
+    ![+ Özel uç nokta düğmesini gösteren ekran görüntüsü.](../media/private-link-service-3.png)
+    ![Özel uç nokta oluşturma ekranını gösteren ekran görüntüsü.](../media/private-link-service-4.png)
 
 Bu dikey pencereyi kullanarak, içindeki herhangi bir Azure kaynağı için özel bir uç nokta oluşturmayı tercih edebilirsiniz. Açılır menüleri kullanarak bir kaynak türü seçebilir ve dizininizdeki bir kaynağı seçebilir ya da kaynak KIMLIĞI kullanarak herhangi bir Azure kaynağına bağlanabilirsiniz. "Özel bölge DNS ile tümleştirin" seçeneğini değiştirmeden bırakın.  
-
-![Görüntü ](../media/private-link-service-3.png)
- ![ resmi](../media/private-link-service-4.png)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>CLı kullanarak Key Vault özel bağlantı bağlantısı kurma
 

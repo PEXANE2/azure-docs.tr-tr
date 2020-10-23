@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021442"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151673"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
-Dayanıklı bir IoT çözümünü uygulamaya yönelik ilk adım olarak mimarlar, geliştiriciler ve iş sahipleri oluşturmakta oldukları çözümlerin çalışma süresi hedeflerini tanımlamalıdır. Bu hedefler, öncelikle her senaryo için belirli iş hedeflerine göre tanımlanabilir. Bu bağlamda, [Azure Iş sürekliliği Technical Guidance](https://docs.microsoft.com/azure/architecture/resiliency/) makalesinde iş sürekliliği ve olağanüstü durum kurtarma hakkında bilgi almanıza yardımcı olacak genel bir çerçeve açıklanmaktadır. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) sayfası, yüksek KULLANıLABILIRLIK (ha) ve olağanüstü durum kurtarma (Dr) sağlamak için Azure uygulamalarına yönelik stratejiler hakkında mimari yönergeler sağlar.
+Dayanıklı bir IoT çözümünü uygulamaya yönelik ilk adım olarak mimarlar, geliştiriciler ve iş sahipleri oluşturmakta oldukları çözümlerin çalışma süresi hedeflerini tanımlamalıdır. Bu hedefler, öncelikle her senaryo için belirli iş hedeflerine göre tanımlanabilir. Bu bağlamda, [Azure Iş sürekliliği Technical Guidance](/azure/architecture/resiliency/) makalesinde iş sürekliliği ve olağanüstü durum kurtarma hakkında bilgi almanıza yardımcı olacak genel bir çerçeve açıklanmaktadır. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](/azure/architecture/reliability/disaster-recovery) sayfası, yüksek KULLANıLABILIRLIK (ha) ve olağanüstü durum kurtarma (Dr) sağlamak için Azure uygulamalarına yönelik stratejiler hakkında mimari yönergeler sağlar.
 
 Bu makalede, özellikle IoT Hub hizmeti tarafından sunulan HA ve DR özellikleri ele alınmaktadır. Bu makalede ele alınan geniş bölgeler şunlardır:
 
@@ -64,7 +64,7 @@ IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka
 >
 > - Yerleşik olaylar uç noktasına bağlanmak için Azure Işlevleri veya Azure Stream Analytics kullanıyorsanız, **yeniden başlatma**gerçekleştirmeniz gerekebilir. Bunun nedeni yük devretme sırasında önceki uzaklıklar artık geçerli değildir.
 >
-> - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama, yönlendirme uç noktası olarak](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
+> - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama, yönlendirme uç noktası olarak](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft tarafından başlatılan yük devretme
 
@@ -134,9 +134,9 @@ Bu makalede sunulan HA/DR seçeneklerinin Özeti, çözümünüz için uygun ola
 
 | HA/DR seçeneği | RTO | RPO | El ile müdahale gerektiriyor mu? | Uygulama karmaşıklığı | Ek maliyet etkisi|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Yok|Yok|
-| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Yok|
-| Çapraz bölge HA |< 1 dk|Özel HA çözümünüzün çoğaltma sıklığına bağlıdır|Hayır|Yüksek|> 1x, 1 IoT Hub 'ın maliyeti|
+| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|No|Hiçbiri|Hiçbiri|
+| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Yes|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Hiçbiri|
+| Çapraz bölge HA |< 1 dk|Özel HA çözümünüzün çoğaltma sıklığına bağlıdır|No|Yüksek|> 1x, 1 IoT Hub 'ın maliyeti|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

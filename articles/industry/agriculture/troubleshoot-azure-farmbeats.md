@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc2eb7ecb7f0587c065aac1cfb57cfae10b732ac
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797947"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168299"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats sorunlarını giderme
 
@@ -174,7 +174,7 @@ Bir cihazı silerken, aşağıdaki genel hata senaryolarından biriyle karşıla
 
 Zaten erişim verdiyseniz ve bu hataya sahipseniz, sayfayı yenileyerek yeniden deneyin. Hata devam ederse, hata iletisi/günlükleri ile bizimle iletişim kurun.
 
-![Proje Farmtları](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![Yetkilendirme hatasını gösteren ekran görüntüsü.](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
 ### <a name="accelerator-issues"></a>Hızlandırıcı sorunları  
 
@@ -293,7 +293,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 6. Sol bölmede, **BLOB kapsayıcıları**' nı seçin ve ardından Azure Data Factory günlükleri için **iş günlükleri** ' ni veya App Service Günlükler için **appınsights günlüklerini** seçin.
 7. **Yükle** ' yi seçin ve günlükleri makinenizde yerel bir klasöre indirin.
 
-    ![Proje Farmtları](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
+    ![İndirilen günlük dosyalarını gösteren ekran görüntüsü.](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Hızlandırıcı için Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
@@ -327,26 +327,26 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 > [!NOTE]
 > Kaynak grubu içindeki hizmetlerin etiketlerini görüntülemek için, "Sütunları Düzenle" seçeneğine tıklayın ve kaynak grubu görünümüne "Etiketler" ekleyin
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Proje Farmtları":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
 
 3. Veri fabrikasının Genel Bakış sayfasında **Yazar ve izleyici**' ye tıklayın. Tarayıcınızda yeni bir sekme açılır. **Monitöre** tıklayın
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Proje Farmtları":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
 
 4. Hava durumu işi yürütmesinin parçası olan işlem hattı çalıştırmalarının bir listesini görürsünüz. Günlüklerini toplamak istediğiniz Işe tıklayın
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Proje Farmtları":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
 
 5. İşlem hattı Genel Bakış sayfasında, etkinlik çalıştırmalarının listesini görürsünüz. Günlükleri toplamak istediğiniz etkinliklerin çalıştırma kimliklerini bir yere unutmayın
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Proje Farmtları":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
 
 6. Azure portal ' de Farmrekts kaynak grubunuza dönün ve **datahublogs-xxxx** adlı depolama hesabına tıklayın
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Proje Farmtları":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
 
 7. **Kapsayıcılar**  ->  **adfjobs**' a tıklayın. Arama kutusuna, yukarıdaki 5. adımda not ettiğiniz iş çalıştırma KIMLIĞINI girin.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Proje Farmtları":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
 
 8. Arama sonucu, işle ilgili günlüklere sahip olan klasörü içerir. Sorunu gidermek için günlükleri indirin ve yardım almak üzere gönderin farmbeatssupport@microsoft.com .

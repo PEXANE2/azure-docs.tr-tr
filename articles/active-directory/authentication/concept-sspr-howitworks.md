@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a4e540ff6a81be8afa769d93b0649e0fce49882
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965106"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363683"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -227,7 +227,7 @@ SSPR Active Directory ' de yönetici tarafından başlatılan parola sıfırlama
 Parola sıfırlama ve değiştirme, tüm işletmeler arası (B2B) yapılandırmalarda tam olarak desteklenmektedir. B2B Kullanıcı parolası sıfırlama, aşağıdaki üç durumda desteklenir:
 
 * **Mevcut bir Azure AD kiracısına sahip bir iş ortağı kuruluştan kullanıcılar**: ile iş ortağınız olan kuruluşun mevcut BIR Azure AD kiracısı varsa, bu kiracıda hangi parola sıfırlama ilkelerinin etkin olduğunu dikkate aldık. Parola sıfırlamanın çalışması için, iş ortağı kuruluşun yalnızca Azure AD SSPR 'nin etkinleştirildiğinden emin olması gerekir. Microsoft 365 müşterileri için ek ücret alınmaz.
-* Self Servis kaydolma ile kaydolan **Kullanıcılar** : ile iş ortağınız olan kuruluş, bir kiracıya ulaşmak için [self servis kaydolma](../users-groups-roles/directory-self-service-signup.md) özelliğini kullandıysanız, parolaları kayıtlı e-posta ile sıfırlayacağız.
+* Self Servis kaydolma ile kaydolan **Kullanıcılar** : ile iş ortağınız olan kuruluş, bir kiracıya ulaşmak için [self servis kaydolma](../enterprise-users/directory-self-service-signup.md) özelliğini kullandıysanız, parolaları kayıtlı e-posta ile sıfırlayacağız.
 * **B2B kullanıcıları**: yenı [Azure AD B2B özellikleri](../external-identities/what-is-b2b.md) KULLANıLARAK oluşturulan tüm yeni B2B kullanıcıları parolalarını, davet işlemi sırasında kayıtlı olan e-posta ile de sıfırlayabilir.
 
 Bu senaryoyu test etmek için, https://passwordreset.microsoftonline.com Bu iş ortağı kullanıcılarından birine gidin. Alternatif bir e-posta veya kimlik doğrulama e-postası tanımlanmışsa, parola sıfırlama beklendiği gibi çalışmaktadır.

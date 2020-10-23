@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494494"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147950"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box için izleme ve olay günlüğü oluşturma ve Azure Data Box Heavy siparişleri dışarı aktarma
 
@@ -25,7 +25,7 @@ Aşağıdaki tabloda, Data Box dışa aktarma sırası adımlarının bir özeti
 
 | Data Box dışarı aktarma siparişi aşaması       | İzlenecek ve denetlenecek araç                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Sipariş oluşturma               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order) <br> [Ayrıntılı günlüğü sırayla etkinleştirin](#enable-verbose-log-in-the-order)                                                    |
+| Sipariş oluşturma               | [Azure RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order) <br> [Ayrıntılı günlüğü sırayla etkinleştirin](#enable-verbose-log-in-the-order)                                                    |
 | Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)              |
 | Cihazdan veri kopyalama        | [Kopyalama günlüklerini gözden geçirme](#copy-log) <br> Verileri kopyalayabilmeniz için önce [ayrıntılı günlükleri gözden geçirin](#verbose-log)            |
@@ -46,7 +46,7 @@ Erişimi bir siparişle kısıtlamak için şunları yapabilirsiniz:
 - Bir rolü bir sıra düzeyinde atayın. Kullanıcı yalnızca, roller tarafından tanımlanan yalnızca bu Data Box sipariş ve başka hiçbir şey ile etkileşim kurmak üzere bu izinlere sahiptir.
 - Kaynak grubu düzeyinde bir rol atama, kullanıcının bir kaynak grubundaki tüm Data Box emirlerine erişimi vardır.
 
-Önerilen RBAC kullanımı hakkında daha fazla bilgi için bkz. [Azure RBAC Için en iyi uygulamalar](../role-based-access-control/best-practices.md).
+Önerilen Azure RBAC kullanımı hakkında daha fazla bilgi için bkz. [Azure RBAC Için en iyi uygulamalar](../role-based-access-control/best-practices.md).
 
 ## <a name="enable-verbose-log-in-the-order"></a>Ayrıntılı günlüğü sırayla etkinleştirin
 
@@ -122,14 +122,14 @@ Burada, *kopyalama günlüğünde* hatalar olduğunda ve bazı dosyaların Azure
 </CopyLog>    
 ```
 
-Bu dosyaları dışarı aktarmak için aşağıdaki seçenekleriniz vardır: 
+Bu dosyaları dışarı aktarmak için aşağıdaki seçenekleri kullanabilirsiniz: 
 
-- Ağ üzerinden kopyalanamayan dosyaları aktarabilirsiniz. 
-- Veri boyutunuz kullanılabilir cihaz kapasitesinden büyükse kısmi bir kopya oluşur ve kopyalanamayan tüm dosyalar bu günlükte listelenir. Bu günlüğü, yeni bir Data Box sıra oluşturmak ve sonra bu dosyaların üzerine kopyalamak için giriş XML 'i olarak kullanabilirsiniz.
+- Kopyalanamayan dosyaları ağ üzerinden aktarabilirsiniz. 
+- Veri boyutunuz kullanılabilir cihaz kapasitesinden büyükse kısmi kopyalama gerçekleşir ve kopyalanamayan tüm dosyalar bu günlükte listelenir. Bu günlüğü, yeni bir Data Box siparişi oluşturmak ve daha sonra bu dosyaları kopyalamak için giriş XML dosyası olarak kullanabilirsiniz.
 
 ### <a name="verbose-log"></a>Ayrıntılı günlük
 
-*Ayrıntılı günlük* , Azure depolama hesabından başarıyla aktarılmış olan tüm dosyaların bir listesini içerir. Günlük Ayrıca dosya boyutu ve sağlama toplamı hesaplamasını içerir.
+*Ayrıntılı günlük*, Azure Depolama hesabından başarıyla dışarı aktarılmış tüm dosyaların bir listesini içerir. Günlük ayrıca dosya boyutu ve sağlama toplamı hesaplamasını da içerir.
 
 Ayrıntılı günlük bilgileri aşağıdaki biçimde bulunur:
 

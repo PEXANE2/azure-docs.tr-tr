@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 6da91248c197eae12fbc59f2da8c5294d95117b6
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058123"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173840"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -129,9 +129,9 @@ Doğrulamak için, ***sistem ve Olay Görüntüleyicisi uygulama günlükleri***
 
 Çözüm:
 
-* Yükü VM disklerinde dağıtmak için olanaklar olup olmadığını denetleyin. Bu, tek disklerdeki yükü azaltır. [Depolama düzeyinde tanılama ölçümlerini etkinleştirerek IOPS azaltmasını kontrol](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)edebilirsiniz.
+* Yükü VM disklerinde dağıtmak için olanaklar olup olmadığını denetleyin. Bu, tek disklerdeki yükü azaltır. [Depolama düzeyinde tanılama ölçümlerini etkinleştirerek IOPS azaltmasını kontrol](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)edebilirsiniz.
 * VM üzerindeki yük en düşük düzeyde olduğunda, yedekleme ilkesini yoğun saatlerde yedeklemeler gerçekleştirmek üzere değiştirin.
-* Azure disklerini, daha yüksek IOPS 'yi destekleyecek şekilde yükseltin. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+* Azure disklerini, daha yüksek IOPS 'yi destekleyecek şekilde yükseltin. [Daha fazla bilgi edinin](../virtual-machines/disks-types.md)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - VSS (Birim Gölge Kopyası) hizmeti hatalı durumda olduğundan anlık görüntü işlemi başarısız oldu
 
@@ -157,15 +157,15 @@ Hata kodu: UserErrorSkuNotAvailable hata iletisi: seçili VM boyutu kullanılabi
 
 Bu hata, geri yükleme işlemi sırasında seçilen VM boyutu desteklenmeyen bir boyut olduğu için oluşur. <br>
 
-Bu sorunu çözmek için geri yükleme işlemi sırasında [diskleri geri yükle](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) seçeneğini kullanın. [PowerShell cmdlet 'lerini](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)kullanarak [kullanılabilir desteklenen VM BOYUTLARı](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) listesinden bir VM oluşturmak için bu diskleri kullanın.
+Bu sorunu çözmek için geri yükleme işlemi sırasında [diskleri geri yükle](./backup-azure-arm-restore-vms.md#restore-disks) seçeneğini kullanın. [PowerShell cmdlet 'lerini](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks)kullanarak [kullanılabilir desteklenen VM BOYUTLARı](./backup-support-matrix-iaas.md#vm-compute-support) listesinden bir VM oluşturmak için bu diskleri kullanın.
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported-VM oluşturma, Pazar yeri satın alma isteği olmadığı için başarısız oldu
 
 Hata kodu: UserErrorMarketPlaceVMNotSupported hata iletisi: Pazar yeri satın alma isteği mevcut olmadığından VM oluşturma başarısız oldu.
 
-Azure Backup, Azure Marketi 'nde bulunan VM 'lerin yedeklenmesini ve geri yüklenmesini destekler. Bu hata, Azure Marketi 'nde artık kullanılamayan bir VM 'yi (belirli bir plan/yayımcı ayarı ile) geri yüklemeye çalıştığınızda oluşur. [daha fazla bilgi edinin](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal).
+Azure Backup, Azure Marketi 'nde bulunan VM 'lerin yedeklenmesini ve geri yüklenmesini destekler. Bu hata, Azure Marketi 'nde artık kullanılamayan bir VM 'yi (belirli bir plan/yayımcı ayarı ile) geri yüklemeye çalıştığınızda oluşur. [daha fazla bilgi edinin](/legal/marketplace/participation-policy#offering-suspension-and-removal).
 
-* Bu sorunu çözmek için geri yükleme işlemi sırasında [diskleri geri yükle](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) seçeneğini kullanın ve ardından sanal makineye karşılık gelen en son Market BILGILERINI kullanarak VM oluşturmak için [POWERSHELL](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) veya [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) cmdlet 'lerini kullanın.
+* Bu sorunu çözmek için geri yükleme işlemi sırasında [diskleri geri yükle](./backup-azure-arm-restore-vms.md#restore-disks) seçeneğini kullanın ve ardından sanal makineye karşılık gelen en son Market BILGILERINI kullanarak VM oluşturmak için [POWERSHELL](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) veya [Azure CLI](./tutorial-restore-disk.md) cmdlet 'lerini kullanın.
 * Yayımcının Market bilgisi yoksa, verilerinizi almak için veri disklerini kullanabilir ve bunları mevcut bir VM 'ye ekleyebilirsiniz.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-yedekleme uzantısı için yapılandırma ayrıştırılırken hata oluştu
@@ -321,9 +321,19 @@ Hata kodu: UserErrorRequestDisallowedByPolicy <BR> Hata iletisi: VM 'de anlık g
 
 Geri yükleme sonrasında, disklerin çevrimdışı olduğunu fark edersiniz:
 
-* Betiğin yürütüldüğü makinenin işletim sistemi gereksinimlerini karşıladığını doğrulayın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
-* Aynı kaynağa geri yüklemediğinizden emin olun, [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
+* Betiğin yürütüldüğü makinenin işletim sistemi gereksinimlerini karşıladığını doğrulayın. [Daha fazla bilgi edinin](./backup-azure-restore-files-from-vm.md#system-requirements).  
+* Aynı kaynağa geri yüklemediğinizden emin olun, [daha fazla bilgi edinin](./backup-azure-restore-files-from-vm.md#original-backed-up-machine-versus-another-machine).
 
+### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>Usererrorınstantrpnotfound-VM 'nin anlık görüntüsü bulunamadığı için geri yükleme başarısız oldu
+
+Hata kodu: Usererrorınstantrpnotfound <br>
+Hata iletisi: VM 'nin anlık görüntüsü bulunamadığı için geri yükleme başarısız oldu. Anlık görüntü silinmiş olabilir, lütfen kontrol edin.<br>
+
+Bu hata, kasaya aktarılmayan ve anlık görüntü aşamasında silinen bir kurtarma noktasından geri yükleme yapmaya çalıştığınızda oluşur. 
+<br>
+Bu sorunu çözmek için, VM 'yi farklı bir geri yükleme noktasından geri yüklemeyi deneyin.<br>
+
+#### <a name="common-errors"></a>Sık karşılaşılan hatalar 
 | Hata ayrıntıları | Geçici çözüm |
 | --- | --- |
 | Geri yükleme, bir bulut iç hatasıyla başarısız oldu. |<ol><li>Geri yüklemeye çalıştığınız bulut hizmeti DNS ayarları ile yapılandırılmış. Şunları kontrol edebilirsiniz: <br>**$Deployment = Get-AzureDeployment-ServiceName "HizmetAdı"-yuva "üretim" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>**Adres** yapılandırıldıysa DNS ayarları yapılandırılır.<br> <li>Geri yüklemeye çalıştığınız bulut hizmeti **ReservedIP**ile yapılandırılmış ve bulut hizmetindeki mevcut VM 'ler durdurulmuş durumda. Aşağıdaki PowerShell cmdlet 'lerini kullanarak bir bulut hizmeti 'nin bir IP 'yi ayırmış olduğunu kontrol edebilirsiniz: **$Deployment = Get-AzureDeployment-ServiceName "HizmetAdı"-slot "üretim" $DEP. Rezervedipname**. <br><li>Aşağıdaki özel ağ yapılandırmalarına sahip bir sanal makineyi aynı bulut hizmetine geri yüklemeye çalışıyorsunuz: <ul><li>Yük dengeleyici yapılandırması, iç ve dış kapsamındaki sanal makineler.<li>Birden çok ayrılmış IP 'ye sahip sanal makineler. <li>Birden çok NIC içeren sanal makineler. </ul><li>Kullanıcı arabiriminde yeni bir bulut hizmeti seçin veya özel ağ yapılandırmalarına sahip VM 'Ler için [geri yükleme konularına](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) bakın.</ol> |

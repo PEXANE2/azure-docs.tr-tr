@@ -92,8 +92,6 @@
       href: terms-of-use.md
     - name: Oturum açma sıklığı ve tarayıcı kalıcılık denetimleri
       href: howto-conditional-access-session-lifetime.md
-    - name: En iyi uygulamalar
-      href: best-practices.md
     - name: Sorun giderme
       items:
         - name: Oturum açma sorunlarını giderme

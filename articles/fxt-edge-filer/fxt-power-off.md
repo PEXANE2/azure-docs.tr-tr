@@ -6,22 +6,22 @@ ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01c34304ac0e3e7faa42611758d77893e149a2f8
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184882"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218740"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Azure FXT Edge Filer donanımını güvenle kapatma
 
 Tek bir düğüme geçiş yapmak için fiziksel güç düğmesini kullanabilseniz de, birimi normal koşullarda kapatmak için kullanmamalısınız.
 
-Bir Azure FXT Edge Filer düğümü bir kümenin parçası olarak kullanıldıktan sonra, donanımı kapatmak için küme Denetim Masası yazılımını kullanmanız gerekir. 
+Bir Azure FXT Edge Filer düğümü bir kümenin parçası olarak kullanıldıktan sonra, donanımı kapatmak için küme Denetim Masası yazılımını kullanmanız gerekir.
 
-> [!NOTE] 
+> [!NOTE]
 > Olası veri kaybını veya bozulmasını önlemek için, her zaman Denetim Masası yazılımını kullanarak bir Azure FXT Edge filu 'ni kapatın. Microsoft Müşteri Hizmetleri ve destek ile ilgili olarak belirtilmedikçe, kapatma için fiziksel güç düğmesini kullanmayın.
-> 
+>
 > Elektrik acil bir durumda, güç bağlantılarının bağlantısını kesin veya veri merkezinizi elektrik bağlantısı kesme mekanizmasını kullanın.
 
 ## <a name="shut-down-a-node-from-the-control-panel"></a>Denetim masasından bir düğümü kapatma
@@ -30,7 +30,7 @@ Azure FXT Edge Filer düğümünü güvenle kapatmak için bu yönergeleri izley
 
 1. Küme denetim masasında oturum açın. ( [Ayarlar sayfalarında açık](fxt-cluster-create.md#open-the-settings-pages)olan yönergeler)
 1. **Ayarlar** sekmesine tıklayın ve ardından **cluster**  >  **FXT düğümleri** sayfasını yükleyin.
-1. Küme düğümleri listesinde, kapatmak istediğiniz bir tane bulun. **Eylemler** sütununda, **Güç aşağı** düğmesine tıklayın. 
+1. Küme düğümleri listesinde, kapatmak istediğiniz bir tane bulun. **Eylemler** sütununda, **Güç aşağı** düğmesine tıklayın.
 1. Birkaç dakika bekleyin. Düğüm kapanır ve devre dışı bırakılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar

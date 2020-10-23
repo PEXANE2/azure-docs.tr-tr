@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 2c949447635ccdf4cf36acec43a09c1104b9fdd4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91943875"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280022"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -53,7 +53,7 @@ Güvenlik işlemleri takımınızın Microsoft 'un Azure olay bildirimlerini ald
 Azure kayıt portalında, yönetici iletişim bilgilerinin güvenlik işlemlerine bildirimde bulunan ayrıntıları içerdiğinden emin olabilirsiniz. İletişim bilgileri, bir e-posta adresi ve telefon numarasıdır.
 
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure aboneliklerini yönetim gruplarında düzenleme
-Kuruluşunuzun çok sayıda aboneliği varsa, söz konusu aboneliklerde erişimi, ilkeleri ve uyumluluğu yönetmek için verimli bir yönteme ihtiyacınız olabilir. [Azure Yönetim grupları](/azure/governance/management-groups/create) , aboneliklerdeki bir kapsam düzeyi sağlar. Abonelikleri yönetim grupları adlı kapsayıcılara düzenler ve idare koşullarınızı yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır.
+Kuruluşunuzun çok sayıda aboneliği varsa, söz konusu aboneliklerde erişimi, ilkeleri ve uyumluluğu yönetmek için verimli bir yönteme ihtiyacınız olabilir. [Azure Yönetim grupları](/azure/governance/management-groups/create) , aboneliklerdeki bir kapsam düzeyi sağlar. Abonelikleri yönetim grubu adlı kapsayıcılarda düzenler ve idare koşullarınızı yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır.
 
 Bir dizinde yönetim gruplarının ve aboneliklerinin esnek bir yapısını oluşturabilirsiniz. Her dizine kök yönetim grubu adlı tek bir en üst düzey yönetim grubu verilir. Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu kök yönetim grubunun altındadır. Kök yönetim grubu, genel ilkelerin ve Azure rol atamalarının dizin düzeyinde uygulanmasını sağlar.
 
@@ -122,7 +122,7 @@ Internet güvenliği (CIS) denetimlerinin merkezini temel alan güvenli puan, ku
 **Ayrıntı**: [Azure izleyici 'yi kullanarak veri toplayın ve dışarı aktarın](/azure/azure-monitor/overview#integrate-and-export-data). Bu uygulama, güvenlik olay araştırmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlı olur. Azure Sentinel kullanıyorsanız, bkz. [veri kaynaklarını bağlama](../../sentinel/connect-data-sources.md).
 
 **En iyi yöntem**: uç nokta algılama ve yanıt (EDR) yeteneklerini saldırı araştırmanıza tümleştirerek, araştırma ve işleme işlemlerinizi hızlandırın ve hatalı pozitif sonuçları azaltabilirsiniz.   
-**Ayrıntı**: Güvenlik Merkezi güvenlik Ilkeniz aracılığıyla [Microsoft Defender ATP tümleştirmesini etkinleştirin](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) . Tehdit ve olay yanıtı için Azure Sentinel kullanmayı göz önünde bulundurun.
+**Ayrıntı**: Güvenlik Merkezi güvenlik Ilkeniz aracılığıyla [uç nokta tümleştirmesi Için Microsoft Defender 'ı etkinleştirme](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) . Tehdit ve olay yanıtı için Azure Sentinel kullanmayı göz önünde bulundurun.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Uçtan uca senaryo tabanlı ağ izlemeyi izleme
 Müşteriler, ağ kaynaklarını bir sanal ağ, ExpressRoute, Application Gateway ve yük dengeleyiciler gibi birleştirerek Azure 'da uçtan uca bir ağ oluşturur. İzleme, ağ kaynaklarının her birinde kullanılabilir.

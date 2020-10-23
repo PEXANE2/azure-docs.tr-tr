@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedeklem
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506636"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171465"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -437,7 +437,7 @@ Azure VM zaten yedeklendiyse, koruma ilkesini değiştirerek yedeklenecek veya d
 > [!IMPORTANT]
 > Yukarıdaki istek gövdesi her zaman, dışlanacak veya dahil edilecek veri disklerinin son kopyasıdır. Bu, önceki yapılandırmaya *eklemez* . Örneğin: korumayı ilk olarak "veri diski 1 hariç tut" olarak güncelleştirip "veri diski hariç tut" ile tekrarlarsanız, sonraki yedeklemelerde *yalnızca veri diski 2 hariç tutulur* ve veri diski 1 dahil edilir. Bu, sonraki yedeklemelere dahil edilecek/hariç tutulacak her zaman son liste olur.
 
-Dışlanan veya dahil edilen disklerin güncel listesini almak için [burada](https://docs.microsoft.com/rest/api/backup/protecteditems/get)bahsedilen korumalı öğe bilgilerini alın. Yanıt, veri diski LUN 'Ları listesini sağlar ve dahil edilip edilmediğini belirtir.
+Dışlanan veya dahil edilen disklerin güncel listesini almak için [burada](/rest/api/backup/protecteditems/get)bahsedilen korumalı öğe bilgilerini alın. Yanıt, veri diski LUN 'Ları listesini sağlar ve dahil edilip edilmediğini belirtir.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Korumayı durdurun, ancak mevcut verileri koruyun
 

@@ -4,12 +4,12 @@ description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) ve DPM (Data Pr
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324952"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172586"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Sunucusu ve DPM-SSS
 
@@ -39,7 +39,7 @@ Buluta korunan veri kaynakları olan DPM sunucuları için (güncelleştirme pak
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Virüsten koruma yazılımı için dışlamaları yapılandırmaya yönelik öneriler var mı?
 
-Evet, virüsten koruma dışlamayı yapılandırmak önerilir. DPM için dışlamaları için bkz. [DPM sunucusunda virüsten koruma yazılımı çalıştırma](https://docs.microsoft.com/system-center/dpm/run-antivirus-server). MABS için dışlamaları için bkz. [mabs sunucusu için virüsten koruma yapılandırma](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
+Evet, virüsten koruma dışlamayı yapılandırmak önerilir. DPM için dışlamaları için bkz. [DPM sunucusunda virüsten koruma yazılımı çalıştırma](/system-center/dpm/run-antivirus-server). MABS için dışlamaları için bkz. [mabs sunucusu için virüsten koruma yapılandırma](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware ve Hyper-V yedeklemesi
 

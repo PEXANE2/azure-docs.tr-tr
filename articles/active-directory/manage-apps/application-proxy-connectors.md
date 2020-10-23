@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 923b83b388b58313e9613f0f8b71f266dcbeb028
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319835"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282132"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama
 
@@ -161,8 +161,11 @@ Bir bağlayıcı birkaç ay için hizmete bağlı değilse, sertifikaları günc
 
 ```
 Import-module AppProxyPSModule
-Register-AppProxyConnector
+Register-AppProxyConnector -EnvironmentName "AzureCloud"
 ```
+
+Kamu için kullanın `-EnvironmentName "AzureUSGovernment"` . Daha ayrıntılı bilgi için bkz. [Azure Kamu Bulutu Için aracı 'Nı yükler](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
+
 Sertifikayı doğrulama ve sorun giderme hakkında daha fazla bilgi edinmek için bkz. [uygulama proxy 'si güven sertifikası Için makine ve arka uç bileşenleri desteğini doğrulayın](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate).
 
 ## <a name="under-the-hood"></a>Başlık altında

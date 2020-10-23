@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585942"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440527"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault yedekleme
 
@@ -31,6 +31,9 @@ Gizli dizileri yanlışlıkla veya kötü amaçlı olarak silmeye karşı koruma
 
 ## <a name="limitations"></a>Sınırlamalar
 
+> [!IMPORTANT]
+> Key Vault, bir anahtar, gizli dizi ya da sertifika nesnesinin 500 ' den fazla sürümünü yedekleme olanağını desteklemez. Anahtar, gizli dizi ya da sertifika nesnesi yedeklenmeye çalışılması hataya neden olabilir. Bir anahtar, gizli dizi ya da sertifikanın önceki sürümlerini silmek mümkün değildir.
+
 Key Vault Şu anda tek bir işlemde tüm anahtar kasasını yedeklemek için bir yol sağlamıyor. Bir anahtar kasasının otomatik yedeklemesini yapmak için bu belgede listelenen komutları kullanma girişimleri hatalara neden olabilir ve Microsoft veya Azure Key Vault ekibi tarafından desteklenmez. 
 
 Ayrıca aşağıdaki sonuçları göz önünde bulundurun:
@@ -43,7 +46,7 @@ Ayrıca aşağıdaki sonuçları göz önünde bulundurun:
 
 Gizli dizi, anahtar veya sertifika gibi bir Anahtar Kasası nesnesini yedeklerken, yedekleme işlemi nesneyi şifreli bir blob olarak indirir. Bu Blobun Azure dışından şifresi çözülemiyor. Bu bloba kullanılabilir verileri almak için, blobu aynı Azure aboneliği ve [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)içindeki bir anahtar kasasında geri yüklemeniz gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir Anahtar Kasası nesnesini yedeklemek için, şunları yapmanız gerekir: 
 

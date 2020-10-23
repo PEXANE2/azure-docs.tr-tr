@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54fb11598dc794248c1aae81734b548341c0eee6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400341"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369480"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
@@ -102,7 +102,7 @@ Daha fazla bilgi için bkz. [Azure AD Connect eşitleme ile parola karması eşi
 > Kritik hesapların hangi dizinlerde yer alacağı ve kullanılan yönetici iş istasyonunun yeni bulut hizmetleri veya mevcut süreçler tarafından yönetilip yönetilmeyeceğini seçmeniz gerekir. Var olan yönetim ve kimlik sağlama işlemlerinin kullanılması bazı riskleri azaltabilir, ancak aynı zamanda bir saldırganın şirket içi bir hesabı tehlikeye atması ve buluta özetleme riskini de oluşturabilir. Farklı roller (örneğin, BT yöneticileri ile iş birimi yöneticileri) için farklı bir strateji kullanmak isteyebilirsiniz. İki seçenek sunulur. İlk seçenek, şirket içi Active Directory örneğiniz ile eşitlenmemiş Azure AD hesapları oluşturmaktır. Yönetici iş istasyonunuza Azure AD 'ye katılarak Microsoft Intune kullanarak yönetebilir ve düzeltme eki uygulayabilirsiniz. İkinci seçenek, şirket içi Active Directory örneğiniz ile eşitleme yaparak var olan yönetici hesaplarını kullanmaktır. Active Directory etki alanında yönetim ve güvenlik için mevcut iş istasyonlarını kullanın.
 
 ## <a name="manage-connected-tenants"></a>Bağlı kiracılar yönetme
-Güvenlik kuruluşunuz, riski değerlendirmek ve kuruluşunuzun ilkelerine ve herhangi bir mevzuat gereksinimlerine uyulmadığını belirlemek için görünürlüğe ihtiyaç duyuyor. Güvenlik kuruluşunuzun üretim ortamınıza ve ağa bağlı tüm aboneliklerde görünürlüğe sahip olduğundan emin olmanız gerekir ( [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) veya [siteden siteye VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)aracılığıyla). Azure AD 'deki [genel yönetici/Şirket Yöneticisi](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) , [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüne erişimi yükseltebilir ve ortamınıza bağlı tüm abonelikleri ve yönetilen grupları görebilir.
+Güvenlik kuruluşunuz, riski değerlendirmek ve kuruluşunuzun ilkelerine ve herhangi bir mevzuat gereksinimlerine uyulmadığını belirlemek için görünürlüğe ihtiyaç duyuyor. Güvenlik kuruluşunuzun üretim ortamınıza ve ağa bağlı tüm aboneliklerde görünürlüğe sahip olduğundan emin olmanız gerekir ( [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) veya [siteden siteye VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)aracılığıyla). Azure AD 'deki [genel yönetici/Şirket Yöneticisi](../../active-directory/roles/permissions-reference.md#company-administrator-permissions) , [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüne erişimi yükseltebilir ve ortamınıza bağlı tüm abonelikleri ve yönetilen grupları görebilir.
 
 , Ve güvenlik grubunuzun ortamınıza bağlı tüm abonelikleri veya Yönetim gruplarını görüntüleyebileceğini sağlamak için [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek üzere erişimi yükseltme](../../role-based-access-control/elevate-access-global-admin.md) bölümüne bakın. Riskleri değerlendirdikten sonra bu yükseltilmiş erişimi kaldırmalısınız.
 

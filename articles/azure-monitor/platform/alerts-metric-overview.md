@@ -4,12 +4,12 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3581c1f1660527bfbf2ae598349e30001962b1b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578079"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342187"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -166,7 +166,7 @@ Birden çok kaynağı izleyen ölçüm uyarısı kuralları oluşturmak, tek bir
 
 ## <a name="typical-latency"></a>Tipik gecikme süresi
 
-Ölçüm uyarıları için genellikle uyarı kuralı sıklığını 1 dak olarak ayarlarsanız 5 dakika boyunca bildirim alacaksınız. Bildirim sistemleri için ağır yük durumunda daha uzun bir gecikme görebilirsiniz.
+Ölçüm uyarıları için uyarı kuralı sıklığını 1 dk olarak ayarlarsanız genellikle 5 dakikanın altında bildirim alırsınız. Bildirim sistemlerinde ağır yüklenme durumlarında gecikme süresi uzayabilir.
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Ölçüm uyarıları için desteklenen kaynak türleri
 
@@ -179,4 +179,5 @@ Desteklenen kaynak türlerinin tam listesini bu [makalede](./alerts-metric-near-
 - [Azure Resource Manager şablonlarını kullanarak ölçüm uyarılarını dağıtmayı öğrenin](./alerts-metric-create-templates.md)
 - [Eylem grupları hakkında daha fazla bilgi edinin](action-groups.md)
 - [Dinamik eşikler durum türü hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md)
+- [Ölçüm uyarılarında sorun giderme sorunları hakkında daha fazla bilgi edinin](alerts-troubleshoot-metric.md)
 

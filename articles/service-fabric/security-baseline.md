@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ea96b1bd1b1d661bb835e7bb48d58ce4c3e118
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227721"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309146"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric için Azure Güvenlik temeli
 
@@ -78,7 +78,7 @@ Azure Web uygulaması güvenlik duvarını (WAF), gelen trafiğin ek incelemesi 
 
 * [DDoS korumasını yapılandırma](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/threat-protection.md)
+* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -488,7 +488,7 @@ AAD Kullanıcı hesapları için Tanılama ayarları oluşturarak, Denetim günl
 
 * [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
@@ -572,7 +572,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 * [Azure 'da bekleyen şifrelemeyi anlama](../security/fundamentals/encryption-atrest.md)
 
-* [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](../storage/common/storage-encryption-keys-portal.md)
+* [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 * [Windows 'da Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme](./service-fabric-enable-azure-disk-encryption-windows.md)
 
@@ -608,7 +608,7 @@ Ağ cihazlarında ve Web uygulamalarında güvenlik açığı değerlendirmeleri
 
 * [Service Fabric kümelerinde ı, kontrollü Chaos](./service-fabric-controlled-chaos.md)
 
-* [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -698,7 +698,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 * [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
@@ -1042,7 +1042,7 @@ Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault içinde
 
 * [Azure Depolama bekleyen verileri şifreleme](../storage/common/storage-service-encryption.md)
 
-* [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850920"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460196"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Infor CloudSuite 'i yapılandırma
 
@@ -103,7 +103,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Infor CloudSuite 'i yapılandı
 Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan CloudSuite içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> Infor [Cloudsuite çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)belirtilen yönergeleri Izleyerek, Infor CLOUDSUITE için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Infor [Cloudsuite çoklu oturum açma öğreticisinde](./infor-cloud-suite-tutorial.md)belirtilen yönergeleri Izleyerek, Infor CLOUDSUITE için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 > [!NOTE]
 > CloudSuite 'in SCıM uç noktası hakkında daha fazla bilgi edinmek için [buna](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#)bakın.

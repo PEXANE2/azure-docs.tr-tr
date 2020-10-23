@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246699"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207402"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric yedeklemeyi geri yükleme
 
@@ -190,6 +190,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 Geri yüklemenin ilerlemesini TrackRestoreProgress ile izleyebilirsiniz.
 
+> [!NOTE]
+> Bölümü geri yüklemek için PowerShell kullanılırken, BackupLocation ' $ ' varsa, ' ~ ' kullanarak kaçış
+>
+
 ### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer kullanma
 Service Fabric Explorer bir geri yükleme tetikleyebilirsiniz. Service Fabric Explorer ayarlarında gelişmiş modun etkinleştirildiğinden emin olun.
 1. İstediğiniz bölümleri seçin ve Eylemler ' e tıklayın. 
@@ -250,6 +254,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ```
 
 Geri yükleme ilerlemesini TrackRestoreProgress kullanarak izleyebilirsiniz.
+
+> [!NOTE]
+> Bölümü geri yüklemek için PowerShell kullanılırken, BackupLocation ' $ ' varsa, ' ~ ' kullanarak kaçış
+>
 
 ## <a name="track-restore-progress"></a>Geri yükleme ilerlemesini izleme
 

@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567443"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172454"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -30,6 +30,8 @@ Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/log-query/g
 - Müşterilerinizin aboneliklerine temsilci erişimi olan bir [Azure](../lighthouse/index.yml) açık Kullanıcı kullanıyorsanız, tüm kiracılarınızdaki raporları görüntülemek için Azure açık thouse ile bu raporları kullanabilirsiniz.
 - Şu anda, veriler en fazla 100 Log Analytics çalışma alanı (kiracılar arasında) üzerinde yedekleme raporlarında görüntülenebilir.
 - Şu anda raporlarda görüntülenmeyen günlük yedekleme işleri verileri.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="get-started"></a>başlarken
 

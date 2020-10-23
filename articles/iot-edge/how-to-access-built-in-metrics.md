@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df904e183d3f77751d86d0cefab5423d753f146b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979905"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341575"
 ---
-# <a name="access-built-in-metrics"></a>Yerleşik ölçümlere erişin
+# <a name="access-built-in-metrics"></a>Yerleşik ölçümlere erişme
 
 IoT Edge çalışma zamanı bileşenleri, IoT Edge hub ve IoT Edge Aracısı, [Prometheus Exposition biçiminde](https://prometheus.io/docs/instrumenting/exposition_formats/)yerleşik ölçümler üretir. Bir IoT Edge cihazının durumunu izlemek ve anlamak için bu ölçümlere uzaktan erişin.
 
-Sürüm 1.0.10 itibariyle, varsayılan olarak,, **Edgehub** ve **edgeagent** modüllerinin (ve) **bağlantı noktası 9600** ' de otomatik olarak gösterilir `http://edgeHub:9600/metrics` `http://edgeAgent:9600/metics` . Varsayılan olarak ana bilgisayara eşlenmiş bağlantı noktaları değildir.
+Sürüm 1.0.10 itibariyle, varsayılan olarak,, **Edgehub** ve **edgeagent** modüllerinin (ve) **bağlantı noktası 9600** ' de otomatik olarak gösterilir `http://edgeHub:9600/metrics` `http://edgeAgent:9600/metrics` . Varsayılan olarak ana bilgisayara eşlenmiş bağlantı noktaları değildir.
 
 Ölçüm bağlantı noktası modülünü görüntüleyerek ve eşleştirerek, ana bilgisayardan ölçümlere erişin `createOptions` . Aşağıdaki örnekte, varsayılan ölçüm bağlantı noktası, konaktaki 9601 numaralı bağlantı noktasıyla eşlenir:
 
 ```
 {
   "ExposedPorts": {
-    "9600/tcp": {},
+    "9600/tcp": {}
   },
   "HostConfig": {
     "PortBindings": {
@@ -50,7 +50,7 @@ Hem edgeHub hem de edgeAgent 'ın ölçüm uç noktalarını eşlerken farklı v
 
 Ölçümler, toplanmakta olan ölçümün yapısını belirlemede yardımcı olacak Etiketler içerir. Tüm ölçümler aşağıdaki etiketleri içerir:
 
-| Etiket | Açıklama |
+| Etiket | Description |
 |-|-|
 | ıothub | Cihazın konuştuğu hub |
 | edge_device | Geçerli cihazın KIMLIĞI |
@@ -62,7 +62,7 @@ Yerleşik histogram ve Özet ölçümler için sunulan quantiles, 0,1, 0,5, 0,9 
 
 **Edgehub** modülü aşağıdaki ölçümleri üretir:
 
-| Name | Boyutlar | Açıklama |
+| Name | Boyutlar | Description |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (işlem kaynağı)<br> `id` (modül KIMLIĞI) | Tür: sayaç<br> Toplam GetTwin çağrısı sayısı |
 | `edgehub_messages_received_total` | `route_output` (gönderilen iletiyi çıkar)<br> `id` | Tür: sayaç<br> İstemcilerden alınan toplam ileti sayısı |
@@ -85,7 +85,7 @@ Yerleşik histogram ve Özet ölçümler için sunulan quantiles, 0,1, 0,5, 0,9 
 
 **Edgeagent** modülü aşağıdaki ölçümleri üretir:
 
-| Name | Boyutlar | Açıklama |
+| Name | Boyutlar | Description |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Tür: ölçer<br> Modülün dağıtımda belirtildiği ve çalışır durumda olduğu süre miktarı |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Tür: ölçer<br> Modülün dağıtımda belirtildiği zaman miktarı |

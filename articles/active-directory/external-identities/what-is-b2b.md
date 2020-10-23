@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7104040e73679b6563b02aba47698b8eac2b7a56
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87926731"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441394"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B’de konuk kullanıcı erişimi nedir?
 
@@ -74,8 +74,8 @@ Uygulama sahiplerinin, Microsoft uygulaması olsun olmasın, paylaşmak istedikl
 
 Dış iş ortaklarınızı, kuruluşunuzun ihtiyaçlarına göre özelleştirilmiş yollarla Pano 'ya taşıyın.
 
-- [Dış kullanıcılara erişimi yöneten](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) 'ni kullanın.
-- Ekleme deneyimlerinizi özelleştirmek için [B2B işbirliği davetiyesi API 'lerini](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) kullanın.
+- [Dış kullanıcılara erişimi yöneten](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](../governance/entitlement-management-overview.md) 'ni kullanın.
+- Ekleme deneyimlerinizi özelleştirmek için [B2B işbirliği davetiyesi API 'lerini](/graph/api/resources/invitation) kullanın.
 
 ## <a name="integrate-with-identity-providers"></a>Kimlik sağlayıcılarıyla tümleştirin
 

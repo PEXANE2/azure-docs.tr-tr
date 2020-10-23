@@ -5,16 +5,16 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: a53390dee8eb504f92e66bb3573814bd411be0b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b91c3d59a5a37457d67fdfbc646334fccb331df5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358986"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104810"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Uyarı ve akıllı grup durumlarını yönetme
 
-Azure Izleyici 'deki uyarılar artık bir [uyarı durumuna ve bir izleyici koşuluna](https://aka.ms/azure-alerts-overview) sahiptir ve benzer şekilde akıllı gruplar [akıllı grup durumuna](https://aka.ms/smart-groups)sahiptir. Durum üzerinde yapılan değişiklikler artık ilgili uyarıyla veya akıllı grupla ilişkili geçmiş olarak yakalanır. Bu makalede, hem uyarı hem de akıllı grup için durumu değiştirme sürecinde size yol gösterilir.
+Azure Izleyici 'deki uyarılar artık bir [uyarı durumuna ve bir izleyici koşuluna](./alerts-overview.md) sahiptir ve benzer şekilde akıllı gruplar [akıllı grup durumuna](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)sahiptir. Durum üzerinde yapılan değişiklikler artık ilgili uyarıyla veya akıllı grupla ilişkili geçmiş olarak yakalanır. Bu makalede, hem uyarı hem de akıllı grup için durumu değiştirme sürecinde size yol gösterilir.
 
 ## <a name="change-the-state-of-an-alert"></a>Bir uyarının durumunu değiştirme
 
@@ -46,4 +46,3 @@ Azure Izleyici 'deki uyarılar artık bir [uyarı durumuna ve bir izleyici koşu
 
 1. Bu işlem tamamlandıktan sonra, durum değişikliği ilgili akıllı grubun geçmişine kaydedilir. Bu, ilgili ayrıntılar sayfası açılarak ve geçmiş bölümü denetlenirken görüntülenebilir.     
 ![Ekran görüntüsü, akıllı grup için değişiklik geçmişini gösterir.](./media/alerts-managing-alert-states/state-sg-history.jpg)
-

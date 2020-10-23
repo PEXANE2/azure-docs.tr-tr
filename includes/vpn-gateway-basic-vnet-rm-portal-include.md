@@ -1,27 +1,20 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/27/2020
+ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89052475"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92328459"
 ---
-Aşağıdaki adımları izleyerek Kaynak Yöneticisi dağıtım modeliyle ve Azure portal bir sanal ağ oluşturabilirsiniz. Sanal ağlar hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](../articles/virtual-network/virtual-networks-overview.md).
-
->[!NOTE]
->Bir şirket içi mimarinin parçası olarak bir sanal ağ kullanırken, bu sanal ağ için özel olarak kullanabileceğiniz bir IP adresi aralığı almak için şirket içi ağ yöneticinizle birlikte koordine ettiğinizden emin olun. VPN bağlantısının her iki tarafında da yinelenen adres aralığı varsa, trafik beklenmedik bir şekilde yönlendirme yapılır. Ayrıca, bu sanal ağı başka bir sanal ağa bağlamak istiyorsanız, adres alanı diğer sanal ağla çakışamaz. Ağ yapılandırmanızı uygun şekilde planlayın.
->
->
-
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Arama kaynakları, hizmet ve belgeler (G +/)**' de *sanal ağ*yazın.
 

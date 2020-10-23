@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: a03b7bd63385b7cc16e4dafb5cd12ccd212dc959
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ad3287651716580aaf6ab8c5e819fd92a70e695d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089392"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144111"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Operationalınsights API sürümü kullanımdan kaldırma
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için API 'YI devre dışı bırakma konusunda en az 12 ay önceden bildirim sağlar. **Operationalınsights** kaynak sağlayıcısı API 'leri için yeni bir sürüm (2020-08-01) yayımladık ve 31 Ekim 2023 TARIHINDE önceki API sürümlerini devre dışı bırakacağız.
@@ -69,4 +69,4 @@ Kullandığınız yapılandırma yöntemine bağlı olarak, **rest** isteklerind
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Operationalınsights çalışma alanı API 'sine yönelik başvuruya](https://docs.microsoft.com/rest/api/loganalytics/workspaces)bakın.
+- [Operationalınsights çalışma alanı API 'sine yönelik başvuruya](/rest/api/loganalytics/workspaces)bakın.

@@ -11,20 +11,20 @@ ms.date: 02/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 157f01008636c61d95d479c396cf82d833b3b44d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259671"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275277"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OAuth 2,0 yetkilendirme kodu akışı
 
-Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihazda yüklü olan uygulamalarda OAuth 2,0 yetkilendirme kodu yetkisini kullanabilirsiniz. OAuth 2,0 Azure Active Directory B2C (Azure AD B2C) uygulamasını kullanarak, mobil ve Masaüstü uygulamalarınıza kaydolma, oturum açma ve diğer kimlik yönetimi görevlerini ekleyebilirsiniz. Bu makale, dilden bağımsızdır. Makalesinde, herhangi bir açık kaynak kitaplığı kullanmadan HTTP iletilerinin nasıl gönderileceğini ve alınacağını anladık.
+Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihazda yüklü olan uygulamalarda OAuth 2,0 yetkilendirme kodu yetkisini kullanabilirsiniz. OAuth 2,0 Azure Active Directory B2C (Azure AD B2C) uygulamasını kullanarak, tek sayfalı, mobil ve Masaüstü uygulamalarınıza kaydolma, oturum açma ve diğer kimlik yönetimi görevlerini ekleyebilirsiniz. Bu makale, dilden bağımsızdır. Makalesinde, herhangi bir açık kaynak kitaplığı kullanmadan HTTP iletilerinin nasıl gönderileceğini ve alınacağını anladık. Mümkün olduğunda desteklenen Microsoft kimlik doğrulama kitaplıklarını (MSAL) kullanmanızı öneririz. [Msal kullanan örnek uygulamalara](code-samples.md)göz atın.
 
-OAuth 2,0 yetkilendirme kodu akışı, [oauth 2,0 belirtiminin 4,1 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. Web uygulamaları ve yerel olarak yüklenen uygulamalar dahil olmak üzere çoğu [uygulama türünde](application-types.md)kimlik doğrulama ve yetkilendirme için kullanabilirsiniz. OAuth 2,0 yetkilendirme kodu akışını, bir [yetkilendirme sunucusu](protocols-overview.md)tarafından güvenliği sağlanmış olan kaynaklara erişmek için kullanılabilecek, uygulamalarınıza yönelik erişim belirteçlerini ve yenileme belirteçlerini güvenli bir şekilde almak için kullanabilirsiniz.  Yenileme belirteci, erişim belirtecinin süresi dolduktan sonra, genellikle bir saatten sonra istemcinin yeni erişim (ve yenileme) belirteçleri almasına izin verir.
+OAuth 2,0 yetkilendirme kodu akışı, [oauth 2,0 belirtiminin 4,1 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. Web uygulamaları, tek sayfalı uygulamalar ve yerel olarak yüklenen uygulamalar dahil olmak üzere çoğu [uygulama türünde](application-types.md)kimlik doğrulama ve yetkilendirme için kullanabilirsiniz. OAuth 2,0 yetkilendirme kodu akışını, bir [yetkilendirme sunucusu](protocols-overview.md)tarafından güvenliği sağlanmış olan kaynaklara erişmek için kullanılabilecek, uygulamalarınıza yönelik erişim belirteçlerini ve yenileme belirteçlerini güvenli bir şekilde almak için kullanabilirsiniz.  Yenileme belirteci, erişim belirtecinin süresi dolduktan sonra, genellikle bir saatten sonra istemcinin yeni erişim (ve yenileme) belirteçleri almasına izin verir.
 
-Bu makale, **genel istemciler** OAuth 2,0 yetkilendirme kodu akışına odaklanır. Ortak istemci, gizli bir parolanın bütünlüğünü güvenli bir şekilde korumak için güvenilir olmayan tüm istemci uygulamasıdır. Bu, mobil uygulamaları, masaüstü uygulamaları ve temelde bir cihazda çalışan ve erişim belirteçleri alması gereken tüm uygulamaları içerir.
+Bu makale, **genel istemciler** OAuth 2,0 yetkilendirme kodu akışına odaklanır. Ortak istemci, gizli bir parolanın bütünlüğünü güvenli bir şekilde korumak için güvenilir olmayan tüm istemci uygulamasıdır. Bu, tek sayfalı uygulamaları, mobil uygulamaları, masaüstü uygulamaları ve aslında bir sunucuda çalıştırmayan tüm uygulamaları içerir.
 
 > [!NOTE]
 > Azure AD B2C kullanarak bir Web uygulamasına kimlik yönetimi eklemek için, OAuth 2,0 yerine [OpenID Connect](openid-connect.md) kullanın.
@@ -36,6 +36,12 @@ Bu makaledeki HTTP isteklerini denemek için:
 1. `{tenant}`Azure AD B2C kiracınızın adıyla değiştirin.
 1. `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`Daha önce Azure AD B2C kiracınıza kaydettiğiniz uygulamanın uygulama kimliğiyle değiştirin.
 1. `{policy}`Kiracınızda oluşturduğunuz bir ilkenin adıyla değiştirin (örneğin,) `b2c_1_sign_in` .
+
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Tek sayfalı uygulamalar için yeniden yönlendirme URI kurulumu gerekli
+
+Tek sayfalı uygulamalar için yetkilendirme kodu akışı, bazı ek kurulum gerektirir.  Yeniden yönlendirme URI 'nizi CORS için etkin olarak işaretlemek üzere [tek sayfalı uygulamanızı oluşturmaya](tutorial-register-spa.md) yönelik yönergeleri izleyin. CORS 'yi etkinleştirmek üzere var olan bir yeniden yönlendirme URI 'sini güncelleştirmek için, **uygulama kaydının** **kimlik doğrulama** sekmesinin "Web" bölümünde geçiş istemine tıklayabilirsiniz. Alternatif olarak, **uygulama kayıtları bildirim düzenleyicisini** açabilir ve `type` yeniden yönlendirme URI 'si alanını bölümünde olarak ayarlayabilirsiniz `spa` `replyUrlsWithType` .
+
+`spa`Yeniden yönlendirme türü, örtük akışla geriye dönük olarak uyumludur. Belirteçleri almak için örtük akışı kullanan uygulamalar, `spa` yeniden YÖNLENDIRME URI 'sine sorun olmadan geçebilir ve dolaylı akışı kullanmaya devam edebilir.
 
 ## <a name="1-get-an-authorization-code"></a>1. bir yetkilendirme kodu alın
 Yetkilendirme kodu akışı, kullanıcıyı uç noktaya yönlendiren istemciyle başlar `/authorize` . Bu, akışın kullanıcının işlem yapacağı etkileşimli kısmıdır. Bu istekte istemci, `scope` kullanıcıdan almaları gereken izinleri parametrede gösterir. Aşağıdaki üç örnek (okunabilirlik için satır sonları ile) her biri farklı bir Kullanıcı akışı kullanır.
@@ -49,8 +55,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_mode=query
 &scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
 ```
-
 
 | Parametre | Gerekli mi? | Açıklama |
 | --- | --- | --- |
@@ -63,8 +70,8 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_mode |Önerilen |Elde edilen yetkilendirme kodunu uygulamanıza geri göndermek için kullandığınız yöntem. `query`, `form_post` Veya olabilir `fragment` . |
 | state |Önerilen |İstekte bulunan, kullanmak istediğiniz herhangi bir içerik dizesi olabilecek bir değer. Genellikle, siteler arası istek sahteciliği saldırıları engellemek için rastgele oluşturulmuş benzersiz bir değer kullanılır. Durum Ayrıca, kimlik doğrulama isteği gerçekleştirilmeden önce kullanıcının uygulamasındaki durumu hakkında bilgi kodlamak için de kullanılır. Örneğin, kullanıcının açık olduğu sayfa veya yürütülmekte olan Kullanıcı akışı. |
 | isteme |İsteğe Bağlı |Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer, `login` kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlayan olur. Çoklu oturum açma etkili olmayacaktır. |
-| code_challenge  | İsteğe Bağlı | Kod değişimi (PKCE) için kanıt anahtarı aracılığıyla yetkilendirme kodu yetkisini güvenli hale getirmek için kullanılır. Dahil ise gereklidir `code_challenge_method` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
-| code_challenge_method | İsteğe Bağlı | Parametresi için öğesini kodlamak için kullanılan yöntem `code_verifier` `code_challenge` . Aşağıdaki değerlerden biri olabilir:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Dışlanmazsa, varsa `code_challenge` düz metin olarak kabul edilir `code_challenge` . Azure AD B2C hem hem de destekler `plain` `S256` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge  | Önerilen/gerekli | Kod değişimi (PKCE) için kanıt anahtarı aracılığıyla yetkilendirme kodu yetkisini güvenli hale getirmek için kullanılır. Dahil ise gereklidir `code_challenge_method` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). Bu artık, Web Apps gibi tüm uygulama türleri için yerel uygulamalar, maça 'Lar ve gizli istemciler için önerilir. | 
+| `code_challenge_method` | Önerilen/gerekli | Parametresi için öğesini kodlamak için kullanılan yöntem `code_verifier` `code_challenge` . Bu *SHOULD* olmalıdır `S256` , ancak `plain` BIR nedenden dolayı istemcinin SHA256 destekleyememelidir. <br/><br/>Dışlanmazsa, varsa `code_challenge` düz metin olarak kabul edilir `code_challenge` . Microsoft Identity platform hem hem de destekler `plain` `S256` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). Bu [, yetkilendirme kodu akışını kullanan tek sayfalı uygulamalar](tutorial-register-spa.md)için gereklidir.|
 
 Bu noktada kullanıcıdan Kullanıcı akışının iş akışını tamamlaması istenir. Bu, kullanıcının Kullanıcı adını ve parolasını girmesini, sosyal kimlikle oturum açmasını, dizin için kaydolmasını veya başka birçok adımı de içerebilir. Kullanıcı eylemleri, Kullanıcı akışının nasıl tanımlandığına bağlıdır.
 
@@ -98,7 +105,7 @@ error=access_denied
 | error_description |Kimlik doğrulama hatasının temel nedenini belirlemenize yardımcı olabilecek belirli bir hata iletisi. |
 | state |Yukarıdaki tabloda bulunan tam açıklamaya bakın. İsteğe bir `state` parametre dahil ise, yanıtta aynı değer görünmelidir. Uygulamanın, `state` istek ve yanıt değerlerinin özdeş olduğunu doğrulaması gerekir. |
 
-## <a name="2-get-a-token"></a>2. bir belirteç alın
+## <a name="2-get-an-access-token"></a>2. erişim belirteci al
 Artık bir yetkilendirme kodu edindiniz, `code` uç noktaya BIR post isteği göndererek hedeflenen kaynağa belirteç için öğesini kullanabilirsiniz `/token` . Azure AD B2C, istek içinde kapsamlarını belirterek diğer API 'ler için her zamanki gibi [erişim belirteçleri isteyebilirsiniz](access-tokens.md#request-a-token) .
 
 Ayrıca, uygulamanın istemci KIMLIĞINI istenen kapsam olarak kullanma kuralına göre uygulamanızın kendi arka uç Web API 'SI için bir erişim belirteci isteyebilirsiniz (Bu, "hedef kitle" olarak bu istemci KIMLIĞINE sahip bir erişim belirtecine neden olur):
@@ -108,8 +115,7 @@ POST https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0
 
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
-
+grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 ```
 
 | Parametre | Gerekli mi? | Açıklama |
@@ -122,7 +128,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | scope |Önerilen |Kapsamların boşlukla ayrılmış listesi. Tek bir kapsam değeri, Azure AD 'ye, İstenen izinlerin her ikisi de belirtir. İstemci KIMLIĞINI kapsam olarak kullanmak, uygulamanızın aynı istemci KIMLIĞIYLE temsil edilen kendi hizmetinize veya Web API 'niz için kullanılabilecek bir erişim belirteci gerektiğini gösterir.  `offline_access`Kapsam, uygulamanızın kaynaklara uzun süreli erişim için yenileme belirteci gerektiğini gösterir.  Ayrıca, `openid` Azure AD B2C BIR kimlik belirteci istemek için kapsamını da kullanabilirsiniz. |
 | kod |Gerekli |Akışın ilk baındaki elde ettiğiniz yetkilendirme kodu. |
 | redirect_uri |Gerekli |Yetkilendirme kodunu aldığınız uygulamanın yeniden yönlendirme URI 'SI. |
-| code_verifier | İsteğe Bağlı | Authorization_code elde etmek için kullanılan aynı code_verifier. Yetkilendirme kodu verme isteğinde PKCE kullanılmışsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
+| code_verifier | Önerilen | Authorization_code elde etmek için kullanılan aynı code_verifier. Yetkilendirme kodu verme isteğinde PKCE kullanılmışsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
 
 Başarılı bir belirteç yanıtı şuna benzer:
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ba51c96e3195f75a0ccf49baded67737f4665615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 485b14f85d68290c5447c885b9bc4974318f7952
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077747"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103739"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 
@@ -36,7 +36,7 @@ Bir Azure Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri d
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Bu makalede, Azure hesabı kimlik bilgilerinizi girmeniz istendiğinde Data Lake Storage 1. daha basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake Storage 1. hesaba ve dosya sistemine yönelik erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, son kullanıcı kimlik doğrulaması veya hizmetten hizmete kimlik doğrulama olan Data Lake Storage 1. kimlik doğrulaması için başka yaklaşımlar vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md) bölümlerine göz atın.
+Bu makalede, Azure hesabı kimlik bilgilerinizi girmeniz istendiğinde Data Lake Storage 1. daha basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake Storage 1. hesaba ve dosya sistemine yönelik erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, son kullanıcı kimlik doğrulaması veya hizmetten hizmete kimlik doğrulama olan Data Lake Storage 1. kimlik doğrulaması için başka yaklaşımlar vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](./data-lake-store-service-to-service-authenticate-using-active-directory.md) bölümlerine göz atın.
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
 

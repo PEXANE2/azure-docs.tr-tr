@@ -1,25 +1,25 @@
 ---
-title: Kimlik Doğrulaması
+title: Kimlik doğrulama
 description: Kimlik doğrulamanın nasıl çalıştığını açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 8f3b144a7790c3122d59d27183b3037998ddadd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565850"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427465"
 ---
 # <a name="configure-authentication"></a>Kimlik doğrulamasını yapılandırma
 
-Azure uzaktan Işleme, [Azure uzamsal bağlayıcı (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp)ile aynı kimlik doğrulama mekanizmasını kullanır. İstemcilerin REST API 'Leri başarıyla çağırmak için aşağıdakilerden *birini* ayarlaması gerekir:
+Azure uzaktan Işleme, [Azure uzamsal bağlayıcı (ASA)](../../spatial-anchors/concepts/authentication.md?tabs=csharp)ile aynı kimlik doğrulama mekanizmasını kullanır. İstemcilerin REST API 'Leri başarıyla çağırmak için aşağıdakilerden *birini* ayarlaması gerekir:
 
 * **Accountkey**: Azure Portal uzaktan işleme hesabının "anahtarlar" sekmesinde elde edilebilir. Hesap anahtarları yalnızca geliştirme/prototipleme için önerilir.
     ![Hesap Kimliği](./media/azure-account-primary-key.png)
 
-* **Authenticationtoken**: [msal kitaplığı](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)kullanılarak elde edilebilir bir Azure AD belirtecidir. Kullanıcı kimlik bilgilerini kabul etmek için kullanılabilen birden çok farklı akış vardır ve bu kimlik bilgilerini bir erişim belirteci almak için kullanabilirsiniz.
+* **Authenticationtoken**: [msal kitaplığı](../../active-directory/develop/msal-overview.md)kullanılarak elde edilebilir bir Azure AD belirtecidir. Kullanıcı kimlik bilgilerini kabul etmek için kullanılabilen birden çok farklı akış vardır ve bu kimlik bilgilerini bir erişim belirteci almak için kullanabilirsiniz.
 
 * **Mraccesstoken**: Azure Karma Gerçeklik güvenlik belirteci hizmeti 'NDEN (STS) elde EDILEBILIR bir Mr belirtecidir. `https://sts.mixedreality.azure.com`Aşağıdaki çağrıya benzer BIR Rest çağrısı kullanılarak uç noktadan alınır:
 
@@ -44,11 +44,11 @@ Azure uzaktan Işleme, [Azure uzamsal bağlayıcı (ASA)](https://docs.microsoft
 
 Yalnızca geliştirme sırasında hızlı prototipleme için hesap anahtarları önerilir. Uygulamanızda ekli bir hesap anahtarı kullanarak uygulamanızı üretime göndermemelidir. Önerilen yaklaşım, Kullanıcı tabanlı veya hizmet tabanlı bir Azure AD kimlik doğrulaması yaklaşımını kullanmaktır.
 
- Azure AD kimlik doğrulaması, Azure [uzamsal bağlayıcı (ASA)](https://docs.microsoft.com/azure/spatial-anchors/) hizmeti 'nın [Azure AD Kullanıcı kimlik doğrulaması](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) bölümünde açıklanmaktadır.
+ Azure AD kimlik doğrulaması, Azure [uzamsal bağlayıcı (ASA)](../../spatial-anchors/index.yml) hizmeti 'nın [Azure AD Kullanıcı kimlik doğrulaması](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication) bölümünde açıklanmaktadır.
 
  Daha fazla bilgi için bkz [. Öğretici: Azure uzaktan işleme ve model depolama-Azure Active Directory kimlik doğrulamasının güvenliğini sağlama](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
 Hizmetinize verilen erişim düzeyini denetlemeye yardımcı olmak için, rol tabanlı erişim verirken aşağıdaki rolleri kullanın:
 

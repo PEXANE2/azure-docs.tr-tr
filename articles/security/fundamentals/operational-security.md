@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5decd3e222af11c402cbff4585532a0cf22282e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543342"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168061"
 ---
 # <a name="azure-operational-security"></a>Azure operasyonel güvenlik
 ## <a name="introduction"></a>Giriş
@@ -81,7 +81,7 @@ Azure Izleyici günlüklerinin temel işlevleri, Azure 'da çalışan bir dizi h
 Bu yöntem, çeşitli kaynaklardan gelen verileri birleştirerek Azure hizmetinizdeki verileri mevcut şirket içi ortamınızdan birleştirebilmenizi sağlar. Ayrıca, veri toplama işlemini veriler üzerinde gerçekleştirilen eylemden ayırarak tüm eylemlerin her tür veri üzerinde kullanılabilmesini mümkün kılar.
 
 
-![Azure İzleyici günlükleri](./media/operational-security/azure-operational-security-fig2.png)
+![Çeşitli kaynaklardan veri birleştirmeyi gösteren diyagram, böylece Azure hizmetinizdeki verileri mevcut şirket içi ortamınızla birleştirebilirsiniz.](./media/operational-security/azure-operational-security-fig2.png)
 
 Azure Izleyici hizmeti, aşağıdaki yöntemleri kullanarak bulut tabanlı verilerinizi güvenli bir şekilde yönetir:
 -   veri ayırma

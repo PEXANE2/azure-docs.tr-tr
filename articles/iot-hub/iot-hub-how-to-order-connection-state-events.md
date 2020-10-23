@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356205"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147269"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure Cosmos DB'yi kullanarak Azure IoT Hub cihaz bağlantısı olaylarını sıralama
 
@@ -21,7 +21,7 @@ Azure Event Grid, etkinlik tabanlı uygulamalar oluşturmanıza ve iş çözüml
 
 Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük sayıyı belirlemek için dize karşılaştırma kullanabilirsiniz. Dizeyi onaltılı olarak dönüştürüyorsanız sayı 256 bitlik bir sayı olacaktır. Sıra numarası kesinlikle artıyor ve en son olay diğer olaylardan daha yüksek bir sayıya sahip olacaktır. Bu, sık kullanılan cihaz bağlantısı ve bağlantınız varsa ve Azure Event Grid etkinlik sıralamasını desteklemediğinden bir aşağı akış eylemini tetiklemek için yalnızca en son olayın kullanılmasını sağlamak istiyorsanız kullanışlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir Azure hesabı. Bir [hesabınız yoksa ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -29,7 +29,7 @@ Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük say�
 
 * Veritabanınızdaki bir koleksiyon. İzlenecek yol için [koleksiyon ekleme](../cosmos-db/create-sql-api-java.md#add-a-container) bölümüne bakın. Koleksiyonunuzu oluştururken `/id` bölüm anahtarı için kullanın.
 
-* Azure'da bir IoT Hub'ı. Henüz oluşturmadıysanız, yönergeler için bkz. [IoT Hub'ı kullanmaya başlama](iot-hub-csharp-csharp-getstarted.md).
+* Azure'da bir IoT Hub'ı. Henüz oluşturmadıysanız, yönergeler için bkz. [IoT Hub'ı kullanmaya başlama](./quickstart-send-telemetry-dotnet.md).
 
 ## <a name="create-a-stored-procedure"></a>Saklı yordam oluşturma
 
@@ -335,7 +335,7 @@ Yürütülen saklı yordamın sonuçlarını Cosmos DB belgenizde görebilirsini
 
 ## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
 
-[Azure Portal](https://portal.azure.com)kullanmak yerine, IoT Hub ADıMLARı Azure CLI kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)için Azure CLI sayfalarına bakın.
+[Azure Portal](https://portal.azure.com)kullanmak yerine, IoT Hub ADıMLARı Azure CLI kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)için Azure CLI sayfalarına bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -361,7 +361,7 @@ Mantıksal uygulamanızda yapılan çalışmayı kaybetmek istemiyorsanız, bunu
 
 7. **Sil**’i seçin.
 
-Azure portal bir Azure Cosmos DB hesabını kaldırmak için hesap adına sağ tıklayın ve **Hesabı Sil**' e tıklayın. [Azure Cosmos DB hesabı silme](https://docs.microsoft.com/azure/cosmos-db/manage-account)hakkında ayrıntılı yönergeler için bkz..
+Azure portal bir Azure Cosmos DB hesabını kaldırmak için hesap adına sağ tıklayın ve **Hesabı Sil**' e tıklayın. [Azure Cosmos DB hesabı silme](../cosmos-db/how-to-manage-database-account.md)hakkında ayrıntılı yönergeler için bkz..
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

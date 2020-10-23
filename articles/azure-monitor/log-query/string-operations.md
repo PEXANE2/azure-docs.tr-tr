@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/16/2018
-ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 7838f9f1febcab073633dbb4af011e99acbe22d3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75397463"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310288"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki dizelerle çalışma
 
@@ -74,8 +74,8 @@ print @"C:\backslash\not\escaped\with @ prefix"
 `!startswith_cs`  |Sağ taraftaki, sol taraftaki bir başlangıç alt dizisi değildir|Evet        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |Sağ taraftaki sol taraftaki bir kapanış alt dizisi|Hayır             |`"Fabrikam" endswith "Kam"`
 `!endswith`    |Sağ taraftaki, sol taraftaki bir kapanış alt dizisi değildir|Hayır         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Sağ taraftaki sol taraftaki bir kapanış alt dizisi|Evet             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Sağ taraftaki, sol taraftaki bir kapanış alt dizisi değildir|Evet         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Sağ taraftaki sol taraftaki bir kapanış alt dizisi|Evet             |`"Fabrikam" endswith_cs "kam"`
+`!endswith_cs`    |Sağ taraftaki, sol taraftaki bir kapanış alt dizisi değildir|Evet         |`"Fabrikam" !endswith_cs "brik"`
 `matches regex`|Sol taraftaki, sağ taraftaki bir eşleşme içeriyor        |Evet           |`"Fabrikam" matches regex "b.*k"`
 `in`           |Öğelerin birine eşittir       |Evet           |`"abc" in ("123", "345", "abc")`
 `!in`          |Öğelerin hiçbirine eşit değildir   |Evet           |`"bca" !in ("123", "345", "abc")`
@@ -95,7 +95,7 @@ countof(text, search [, kind])
 - `search` -Düz dize veya metin içinde eşleştirilecek normal ifade.
 - `kind` - _normal_  |  _Regex_ (varsayılan: normal).
 
-### <a name="returns"></a>Döndürülenler
+### <a name="returns"></a>Döndürülen
 
 Arama dizesinin kapsayıcıda eşleştirileme sayısı. Regex eşleştirirken düz dize eşleşmeleri çakışmayabilir.
 
@@ -137,7 +137,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` -Aranacak dize.
 - `typeLiteral` -İsteğe bağlı bir tür değişmez değeri (örneğin, typeof (Long)). Sağlanmışsa ayıklanan alt dize bu türe dönüştürülür.
 
-### <a name="returns"></a>Döndürülenler
+### <a name="returns"></a>Döndürülen
 Belirtilen yakalama grubu captureGroup ile eşleşen alt dize, isteğe bağlı olarak typeLiteral 'a dönüştürüldü.
 Eşleşme yoksa veya tür dönüştürme başarısız olursa, null değeri döndürün.
 
@@ -243,7 +243,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` -Eşleşen Regex ile yapılan eşleştirenlerin yerini değiştirme. Tüm eşleştirmeye başvurmak için \ 0, sonraki yakalama grupları için \ 2 vb. ilk yakalama grubu için \ 1 kullanın.
 - `input_text` -Aranacak giriş dizesi.
 
-### <a name="returns"></a>Döndürülenler
+### <a name="returns"></a>Döndürülen
 Yeniden yazma değerlendirmelerinde Regex tüm eşleşmelerini değiştirdikten sonraki metin. Eşleşmeler çakışmıyor.
 
 ### <a name="examples"></a>Örnekler

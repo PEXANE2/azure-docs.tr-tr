@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdd59d078da1df021b7e23ec858ba7305f72cfa1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683904"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164219"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Farmtts için olağanüstü durum kurtarma
 
@@ -45,18 +45,18 @@ Yük devretmeyi başlatabilir ve depolanan verileri kurtarabilirsiniz, bu, yukar
 Geri yüklenen Cosmos DB erişim anahtarını kopyalayın ve yeni Farmrets veri hub 'ını Key Vault güncelleştirin.
 
 
-  ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
+  ![Erişim anahtarının kopyasının nereden alınacağını vurgulayan bir ekran görüntüsü.](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Geri yüklenen Cosmos DB URL 'sini kopyalayın ve yeni Farmrets Datahub App Service yapılandırmasında güncelleştirin. Artık yeni Farmtts dağıtımında Cosmos DB hesabını silebilirsiniz.
 
-  ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/configuration.png)
+  ![Geri yüklenen Cosmos DB URL 'sinin nereye kopyalanacağını gösteren ekran görüntüsü.](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Depolama hesabını yapılandırma
 
 Geri yüklenen depolama hesabının erişim anahtarını kopyalayın ve yeni Farmrets veri hub 'ında Key Vault güncelleştirin.
 
-![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
+![Geri yüklenen depolama hesabının erişim anahtarının nereye kopyalanacağını gösteren ekran görüntüsü.](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Yeni Farmtts Batch VM yapılandırma dosyasında depolama hesabı adını güncelleştirdiğinizden emin olun.

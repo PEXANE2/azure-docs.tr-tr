@@ -28,6 +28,11 @@
     - name: Yönetim grubu oluşturma - REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
+- name: Öğreticiler
+  items:
+    - name: 'Learn: Abonelik idare stratejisi oluşturma'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:
@@ -37,7 +42,7 @@
       href: ./how-to/protect-resource-hierarchy.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/account/management-group
     - name: Azure PowerShell
       href: /powershell/module/az.resources/#resources

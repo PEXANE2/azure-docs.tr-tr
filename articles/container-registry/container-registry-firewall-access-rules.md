@@ -3,12 +3,12 @@ title: Güvenlik Duvarı erişim kuralları
 description: ("Beyaz listeye") REST API ve veri uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırın.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246988"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148506"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
@@ -113,7 +113,7 @@ Erişime izin vermeniz gereken ACR REST uç nokta IP aralıklarını bulmak içi
 
 ## <a name="allow-access-by-service-tag"></a>Hizmet etiketine göre erişime izin ver
 
-Bir Azure sanal ağında, sanal makine gibi bir kaynaktan bir kapsayıcı kayıt defterine giden trafiği filtrelemek için ağ güvenlik kurallarını kullanın. Azure ağ kurallarının oluşturulmasını basitleştirmek için **AzureContainerRegistry** [Service etiketini](../virtual-network/security-overview.md#service-tags)kullanın. Hizmet etiketi, bir Azure hizmetine küresel olarak veya Azure bölgesine erişmek için bir IP adresi ön eki grubunu temsil eder. Adresler değiştiğinde etiket otomatik olarak güncelleştirilir. 
+Bir Azure sanal ağında, sanal makine gibi bir kaynaktan bir kapsayıcı kayıt defterine giden trafiği filtrelemek için ağ güvenlik kurallarını kullanın. Azure ağ kurallarının oluşturulmasını basitleştirmek için **AzureContainerRegistry** [Service etiketini](../virtual-network/network-security-groups-overview.md#service-tags)kullanın. Hizmet etiketi, bir Azure hizmetine küresel olarak veya Azure bölgesine erişmek için bir IP adresi ön eki grubunu temsil eder. Adresler değiştiğinde etiket otomatik olarak güncelleştirilir. 
 
 Örneğin, Azure Container Registry 'ye giden trafiğe izin vermek için hedef **AzureContainerRegistry** ile giden ağ güvenlik grubu kuralı oluşturun. Yalnızca belirli bir bölgedeki hizmet etiketine erişime izin vermek için, bölgeyi şu biçimde belirtin: **AzureContainerRegistry**. [*bölge adı*].
 
@@ -139,7 +139,7 @@ Veri uç noktası veya uç noktalar portalda görüntülenir.
 
 :::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Portalda adanmış veri uç noktaları":::
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı kullanarak veri uç noktalarını etkinleştirmek için Azure CLı sürüm 2.4.0 veya üstünü kullanın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
@@ -183,7 +183,7 @@ Bir güvenlik duvarının arkasındaki Microsoft Container Registry (MCR) öğes
 
 * [Ağ güvenliği için En Iyi Azure uygulamaları](../security/fundamentals/network-best-practices.md) hakkında bilgi edinin
 
-* Azure sanal ağındaki [güvenlik grupları](../virtual-network/security-overview.md) hakkında daha fazla bilgi edinin
+* Azure sanal ağındaki [güvenlik grupları](../virtual-network/network-security-groups-overview.md) hakkında daha fazla bilgi edinin
 
 * Bir kapsayıcı kayıt defteri için [özel bağlantı](container-registry-private-link.md) ayarlama hakkında daha fazla bilgi edinin
 

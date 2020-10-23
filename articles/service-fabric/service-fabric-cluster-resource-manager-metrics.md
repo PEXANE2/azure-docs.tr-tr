@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005658"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172998"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Ölçümlerle Service Fabric kaynak tüketimini yönetme ve yükleme
 *Ölçümler* , hizmetlerinizin önem verdiği ve kümedeki düğümler tarafından sağlandığı kaynaklardır. Bir ölçüm, hizmetlerinizin performansını artırmak veya izlemek için yönetmek istediğiniz her şey olur. Örneğin, hizmetinizin aşırı yüklenmiş olup olmadığını bilmeniz için bellek tüketimini izleyebilirsiniz. Başka bir kullanım, daha iyi performans sağlamak için, belleğin daha az kısıtlandığı yerde hizmetin hareket etmeyeceğini anlayabilir.
@@ -29,7 +29,7 @@ Bellek, disk ve CPU kullanımı gibi şeyler, ölçüm örnekleridir. Bu ölçü
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Yüksek |
 | ReplicaCount |0 |1 |1 |Orta |
-| Sayı |1 |1 |1 |Düşük |
+| Count |1 |1 |1 |Düşük |
 
 
 Temel iş yükleri için varsayılan ölçümler, kümede işin daha iyi bir dağıtımını sağlar. Aşağıdaki örnekte, iki hizmet oluşturduğumuz ve dengeleme için varsayılan ölçümleri temel alarak ne olacağını görelim. İlk hizmet, üç bölümden oluşan ve üç bölümlü bir hedef çoğaltma kümesi boyutu ile durum bilgisi olan bir hizmettir. İkinci hizmet, bir bölüm ve örnek sayısı üç olan durum bilgisi olmayan bir hizmettir.
@@ -136,14 +136,15 @@ Anımsatıcı olarak: yalnızca varsayılan ölçümleri kullanmak istiyorsanız
 Şimdi bu ayarların her birini daha ayrıntılı bir şekilde inceleyelim ve etkilediği davranış hakkında konuşalım.
 
 ## <a name="load"></a>Yükleme
-Ölçümlerin tanımlanmasıyla bir bütün yük temsil edilir. *Yük* , belirli bir düğümdeki bazı hizmet örneği veya çoğaltma tarafından tüketilen bir metriğin ne kadarının tüketildiğini yükler. Yükleme, neredeyse her noktada yapılandırılabilir. Örneğin:
+Ölçümlerin tanımlanmasıyla bir bütün yük temsil edilir. *Yük* , belirli bir düğümdeki bazı hizmet örneği veya çoğaltma tarafından tüketilen bir metriğin ne kadarının tüketildiğini yükler. Yükleme, neredeyse her noktada yapılandırılabilir. Örnek:
 
-  - Yükleme, bir hizmet oluşturulduğunda tanımlanabilir. Bu, _varsayılan yükleme_olarak adlandırılır.
-  - Hizmet oluşturulduktan sonra bir hizmetin varsayılan yükleri dahil ölçüm bilgileri güncelleştirilir. Bu, _bir hizmetin güncelleştirilmesi_olarak adlandırılır. 
-  - Belirli bir bölümün yükleri bu hizmet için varsayılan değerlere sıfırlanabilir. Bu, _bölüm yükünü sıfırlama_olarak adlandırılır.
-  - Yük, çalışma zamanında dinamik olarak hizmet başına nesne başına bildirilebilir. Buna _Raporlama yükü_denir. 
-  
-Bu stratejilerin hepsi ömrü boyunca aynı hizmet içinde kullanılabilir. 
+  - Yükleme, bir hizmet oluşturulduğunda tanımlanabilir. Bu tür yük yapılandırması _varsayılan yükleme_olarak adlandırılır.
+  - Hizmet için varsayılan yüklemeler dahil ölçüm bilgileri, hizmet oluşturulduktan sonra güncelleştirilebilen olabilir. Bu ölçüm güncelleştirmesi _bir hizmet güncelleştirilerek_yapılır.
+  - Belirli bir bölümün yükleri bu hizmet için varsayılan değerlere sıfırlanabilir. Bu ölçüm güncelleştirmesi, _bölüm yükünü sıfırlama_olarak adlandırılır.
+  - Yük, çalışma zamanında dinamik olarak bir hizmet nesnesi başına rapor edilebilir. Bu ölçüm güncelleştirmesine _Raporlama yükü_denir.
+  - Bölümün çoğaltmaları veya örnekleri için yük, yapı API çağrısı aracılığıyla yük değerleriyle de yapılandırılabilir. Bu ölçüm güncelleştirmesine _bir bölüm için raporlama yükü_denir.
+
+Bu stratejilerin hepsi ömrü boyunca aynı hizmet içinde kullanılabilir.
 
 ## <a name="default-load"></a>Varsayılan yükleme
 *Varsayılan Yük* , bu hizmetin her bir hizmet nesnesi (durum bilgisiz örneği veya durum bilgisi olmayan çoğaltma) tarafından tükettiği ölçüdür. Küme Kaynak Yöneticisi, bu numarayı, bir dinamik yük raporu gibi diğer bilgileri alıncaya kadar hizmet nesnesinin yükü için kullanır. Daha basit hizmetler için, varsayılan yükleme statik bir tanımdır. Varsayılan yükleme hiçbir şekilde güncellenmez ve hizmetin kullanım süresi boyunca kullanılır. Varsayılan Yüklemeler, belirli miktardaki kaynakların farklı iş yüklerine ayrılmasının ve değişmediğinden basit kapasite planlama senaryolarında harika bir şekilde çalışmaktadır.
@@ -175,6 +176,67 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 ```
 
 Bir hizmet, oluşturma sırasında kendisi için tanımlanan ölçümleri rapor edebilir. Bir hizmet, kullanılmak üzere yapılandırılmadığı bir ölçüm için yük bildirirse Service Fabric, bu raporu yoksayar. Aynı anda geçerli olan başka ölçümler varsa, bu raporlar kabul edilir. Hizmet kodu, sahip olduğu tüm ölçümleri ölçebilir ve rapor verebilir ve işleçler hizmet kodunu değiştirmek zorunda kalmadan kullanılacak ölçüm yapılandırmasını belirtebilir. 
+
+## <a name="reporting-load-for-a-partition"></a>Bölüm için rapor yükleme
+Önceki bölümde, hizmet çoğaltmalarının veya örneklerinin rapor yükünün nasıl çalıştığı açıklanmaktadır. Load komutunu FabricClient ile dinamik olarak rapor etmek için ek bir seçenek mevcuttur. Bir bölüm için yük raporlama yaparken, bir seferde birden çok bölüm rapor edebilirsiniz.
+
+Bu raporlar, çoğaltmalardan veya örneklerden gelen yükleme raporlarının tam olarak aynı şekilde kullanılacaktır. Bildirilen değerler, yeni yükleme değerleri, çoğaltma veya örnek tarafından bildirilene veya bir bölüm için yeni bir yükleme değeri raporlanana kadar geçerli olacaktır.
+
+Bu API ile, kümedeki yükü güncelleştirmek için birden çok yol vardır:
+
+  - Durum bilgisi olan bir hizmet bölümü, birincil çoğaltma yükünü güncelleştirebilir.
+  - Hem durum bilgisi olmayan hem de durum bilgisi olan hizmetler, tüm ikincil çoğaltmalarının veya örneklerinin yükünü güncelleştirebilir.
+  - Hem durum bilgisi olmayan hem de durum bilgisi olan hizmetler bir düğümdeki belirli bir çoğaltmanın veya örneğin yükünü güncelleştirebilir.
+
+Aynı zamanda her bölüm için bu güncelleştirmelerden herhangi birini birleştirmek mümkündür.
+
+Birden çok bölüm için yükleme yüklemeleri, tek bir API çağrısıyla yapılabilir ve bu durumda çıktı her bölüm için bir yanıt içerecektir. Bölüm güncelleştirmesi herhangi bir nedenle başarıyla uygulanmadıysa, bu bölüm için güncelleştirmeler atlanır ve hedeflenen bir bölüm için karşılık gelen hata kodu sağlanır:
+
+  - PartitionNotFound-belirtilen bölüm KIMLIĞI yok.
+  - ReconfigurationPending-bölüm şu anda yeniden yapılandırıyor.
+  - Invalidforstatelessservices-durum bilgisiz hizmetine ait olan bir bölüm için birincil çoğaltmanın yükünü değiştirme girişiminde bulunuldu.
+  - Replicayok notexist-belirtilen düğümde Ikincil çoğaltma veya örnek yok.
+  - InvalidOperation-iki durumda gerçekleşebilir: sistem uygulamasına ait olan veya tahmin edilen yükü güncelleştiren bir bölümün yükünü güncelleştirme etkin değil.
+
+Bu hatalardan bazıları döndürülürse, belirli bir bölümün girişini güncelleştirebilir ve belirli bir bölüm için güncelleştirmeyi yeniden deneyebilirsiniz.
+
+Kod:
+
+```csharp
+Guid partitionId = Guid.Parse("53df3d7f-5471-403b-b736-bde6ad584f42");
+string metricName0 = "CustomMetricName0";
+List<MetricLoadDescription> newPrimaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 100)
+};
+
+string nodeName0 = "NodeName0";
+List<MetricLoadDescription> newSpecificSecondaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 200)
+};
+
+OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
+    await this.FabricClient.UpdatePartitionLoadAsync(
+        new UpdatePartitionLoadQueryDescription
+        {
+            PartitionMetricLoadDescriptionList = new List<PartitionMetricLoadDescription>()
+            {
+                new PartitionMetricLoadDescription(
+                    partitionId,
+                    newPrimaryReplicaLoads,
+                    new List<MetricLoadDescription>(),
+                    new List<ReplicaMetricLoadDescription>()
+                    {
+                        new ReplicaMetricLoadDescription(nodeName0, newSpecificSecondaryReplicaLoads)
+                    })
+            }
+        },
+        this.Timeout,
+        cancellationToken);
+```
+
+Bu örnekte, _53df3d7f-5471-403b-B736-bde6ad584f42_bölümünde bildirilen son yükün güncelleştirilmesini gerçekleştirirsiniz. Ölçüm _CustomMetricName0_ için birincil çoğaltma yükü 100 değeriyle güncelleştirilir. Aynı zamanda, _NodeName0_düğümünde bulunan belirli bir ikincil çoğaltma için aynı ölçüm için yük, 200 değeriyle güncelleştirilir.
 
 ### <a name="updating-a-services-metric-configuration"></a>Hizmetin ölçüm yapılandırmasını güncelleştirme
 Hizmetle ilişkili ölçümlerin listesi ve bu ölçümlerin özellikleri, hizmet canlı olduğu sürece dinamik olarak güncellenebilir. Bu, deneme ve esneklik sağlar. Bunun yararlı olması için bazı örnekler şunlardır:

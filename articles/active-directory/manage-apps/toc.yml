@@ -61,6 +61,8 @@
           href: plan-sso-deployment.md
         - name: Çoklu oturum açma seçenekleri
           href: sso-options.md
+        - name: OIDC tabanlı SSO
+          href: configure-oidc-single-sign-on.md
         - name: SAML tabanlı SSO
           href: configure-saml-single-sign-on.md
         - name: Parola tabanlı SSO
@@ -218,6 +220,8 @@
           href: troubleshoot-password-based-sso.md
         - name: SAML tabanlı çoklu oturum açma sorunlarını giderme
           href: troubleshoot-saml-based-sso.md
+        - name: SAML tabanlı çoklu oturum açma hatalarını ayıklama
+          href: debug-saml-sso-issues.md
         - name: Kullanıcı oturum açma sorunlarını giderme
           items:
             - name: Beklenmeyen izin alma istemi
@@ -230,12 +234,8 @@
               href: application-sign-in-problem-application-error.md
             - name: Microsoft uygulamasında oturum açma sorunu
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: Federasyonda çoklu oturum açma sorunu - galeri dışındaki uygulama
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: Federasyonda çoklu oturum açma sorunu - galeri uygulaması
+            - name: Çoklu oturum açma ile ilgili sorunlar
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: Özel geliştirilmiş uygulama ile ilgili sorun
-              href: application-sign-in-problem-custom-dev.md
         - name: Şirket içi uygulamalarda sorun giderme
           items:
             - name: Uygulama Ara Sunucusu sorunlarını giderme

@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 72532029b2d9258dba7dea82bb5c5fc8b2673300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24e56736e0d033420f9aaf976b0fb7d9727c1a5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536231"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143226"
 ---
 # <a name="configure-network-access-control"></a>Ağ erişim denetimini yapılandırma
 
@@ -62,4 +62,4 @@ Azure SignalR hizmeti için ağ erişim denetimini Azure portal aracılığıyla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure özel bağlantısı](/azure/private-link/private-link-overview)hakkında daha fazla bilgi edinin.
+[Azure özel bağlantısı](../private-link/private-link-overview.md)hakkında daha fazla bilgi edinin.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626488"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279226"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Öğretici: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızla ölçeklendirme ve koruma
 
@@ -36,10 +36,10 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Bu öğreticideki yönergeler, Azure CLı 'yi kullanır. Azure CLı 'yı kullanmaya başlamak için [Bu Kılavuzu görüntüleyin](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true) .
+- Bu öğreticideki yönergeler, Azure CLı 'yi kullanır. Azure CLı 'yı kullanmaya başlamak için [Bu Kılavuzu görüntüleyin](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest) .
 
   > [!TIP] 
-  > Azure CLı 'yı kullanmaya başlamak için kolay ve hızlı bir yol [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+  > Azure CLı 'yı kullanmaya başlamak için kolay ve hızlı bir yol [Azure Cloud Shell](../cloud-shell/quickstart.md).
 
 - `front-door`Uzantının Azure CLI 'ye eklendiğinden emin olun:
 
@@ -48,7 +48,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
    ```
 
 > [!NOTE] 
-> Bu öğreticide kullanılan komutlar hakkında daha fazla bilgi için bkz. [ön kapı Için Azure CLI başvurusu](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true).
+> Bu öğreticide kullanılan komutlar hakkında daha fazla bilgi için bkz. [ön kapı Için Azure CLI başvurusu](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest).
 
 ## <a name="create-an-azure-front-door-resource"></a>Azure ön kapı kaynağı oluşturma
 
@@ -62,7 +62,7 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 `--name`: Azure ön kapısının adı.
 
-`--resource-group`: Bu Azure ön kapısı kaynağını yerleştirmek istediğiniz kaynak grubu. Kaynak grupları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kaynak gruplarını yönetme](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
+`--resource-group`: Bu Azure ön kapısı kaynağını yerleştirmek istediğiniz kaynak grubu. Kaynak grupları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kaynak gruplarını yönetme](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 Bu komutu çalıştırdığınızda aldığınız yanıtta, anahtarı bulun `hostName` . Daha sonraki bir adımda bu değere ihtiyacınız olacaktır. , `hostName` Oluşturduğunuz Azure ön kapısının DNS adıdır.
 
@@ -130,21 +130,21 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 Web uygulamanızın özel etki alanı adı, müşterilerin uygulamanıza başvurmak için kullandığı bir addır. Örneğin, www.contoso.com. Başlangıçta, bu özel etki alanı adı, Azure ön kapısına sunulmadan önce çalıştığı konuma işaret ediyor. Uygulamanın önüne Azure ön kapısı ve WAF ekledikten sonra, bu özel etki alanına karşılık gelen DNS girişi, Azure ön kapısına işaret etmelidir. Bu değişikliği, DNS sunucunuzdaki girişi, `hostName` Azure ön kapısının oluşturulduğu sırada not ettiğiniz Azure ön kapısına yeniden tanımlayarak yapabilirsiniz.
 
-DNS kayıtlarınızı güncelleştirmek için özel adımlar, DNS hizmet sağlayıcınıza göre değişir. DNS adınızı barındırmak için Azure DNS kullanırsanız, [DNS kaydını güncelleştirme](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) ve Azure ön kapısına işaret eden adımlar için belgelere başvurabilirsiniz `hostName` . 
+DNS kayıtlarınızı güncelleştirmek için özel adımlar, DNS hizmet sağlayıcınıza göre değişir. DNS adınızı barındırmak için Azure DNS kullanırsanız, [DNS kaydını güncelleştirme](../dns/dns-operations-recordsets-cli.md) ve Azure ön kapısına işaret eden adımlar için belgelere başvurabilirsiniz `hostName` . 
 
-Müşterilerinizin bölge tepesinde kullanarak Web sitenize (örneğin, contoso.com) sahip olup olmadığına dikkat etmeniz önemli bir şeydir. Bu durumda, DNS adınızı barındırmak için Azure DNS ve [diğer ad kayıt türünü](https://docs.microsoft.com/azure/dns/dns-alias) kullanmanız gerekir. 
+Müşterilerinizin bölge tepesinde kullanarak Web sitenize (örneğin, contoso.com) sahip olup olmadığına dikkat etmeniz önemli bir şeydir. Bu durumda, DNS adınızı barındırmak için Azure DNS ve [diğer ad kayıt türünü](../dns/dns-alias.md) kullanmanız gerekir. 
 
-Ayrıca, bu eşlemenin farkında olması için [özel etki alanını eklemek](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) üzere Azure ön kapı yapılandırmanızı güncelleştirmeniz gerekir.
+Ayrıca, bu eşlemenin farkında olması için [özel etki alanını eklemek](./front-door-custom-domain.md) üzere Azure ön kapı yapılandırmanızı güncelleştirmeniz gerekir.
 
-Son olarak, Web uygulamanıza erişmek için özel bir etki alanı kullanıyorsanız ve HTTPS protokolünü etkinleştirmek istiyorsanız. [Özel etki alanınız için sertifikaları Azure ön kapısına](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)göre belirlemeniz gerekir. 
+Son olarak, Web uygulamanıza erişmek için özel bir etki alanı kullanıyorsanız ve HTTPS protokolünü etkinleştirmek istiyorsanız. [Özel etki alanınız için sertifikaları Azure ön kapısına](./front-door-custom-domain-https.md)göre belirlemeniz gerekir. 
 
 ## <a name="lock-down-your-web-application"></a>Web uygulamanızı kilitleme
 
-Yalnızca Azure ön kapısının Web uygulamanızla iletişim kurabildiğinden emin olmanızı öneririz. Bunun yapılması, hiçbir birinin Azure ön kapı korumasını atlayamayacağını ve uygulamanıza doğrudan erişmesini sağlamaya devam edebilir. Bu kilidi başarmak için, [arka ucumun erişimini yalnızca Azure ön kapısına nasıl yaparım?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
+Yalnızca Azure ön kapısının Web uygulamanızla iletişim kurabildiğinden emin olmanızı öneririz. Bunun yapılması, hiçbir birinin Azure ön kapı korumasını atlayamayacağını ve uygulamanıza doğrudan erişmesini sağlamaya devam edebilir. Bu kilidi başarmak için, [arka ucumun erişimini yalnızca Azure ön kapısına nasıl yaparım?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide kullanılan kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) komutunu kullanarak kaynak grubunu, ön kapıyı ve WAF ilkesini kaldırın:
+Bu öğreticide kullanılan kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) komutunu kullanarak kaynak grubunu, ön kapıyı ve WAF ilkesini kaldırın:
 
 ```azurecli-interactive
   az group delete \

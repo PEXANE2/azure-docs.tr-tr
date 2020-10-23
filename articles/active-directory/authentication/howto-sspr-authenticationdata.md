@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cba2517f536c9044ad15c628c793529f93b988ce
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966500"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165017"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Azure Active Directory self servis parola sıfırlama için Kullanıcı kimlik doğrulaması iletişim bilgilerini önceden doldur (SSPR)
 
@@ -48,16 +48,14 @@ Kullanıcı cep telefonu numarasını doğruladıktan sonra, Azure AD 'de **kiml
 
 ## <a name="authentication-contact-info"></a>Kimlik doğrulaması iletişim bilgileri
 
-Azure portal bir Azure AD kullanıcısının **kimlik doğrulama yöntemleri** sayfasında, bir genel yönetici, aşağıdaki örnekte gösterildiği gibi, kimlik doğrulama iletişim bilgilerini el ile ayarlayabilir:
+Azure portal bir Azure AD kullanıcısının **kimlik doğrulama yöntemleri** sayfasında, bir genel yönetici, kimlik doğrulama iletişim bilgilerini el ile ayarlayabilir. Aşağıdaki örnek ekran görüntüsünde gösterildiği gibi, *kullanılabilir kimlik doğrulama yöntemleri* bölümünde mevcut yöntemleri gözden geçirebilir veya **+ kimlik doğrulama yöntemleri ekleyebilirsiniz**:
 
-![Azure AD 'de bir kullanıcının kimlik doğrulaması iletişim bilgileri][Contact]
+:::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="Azure portal kimlik doğrulama yöntemlerini yönetin":::
 
 Bu kimlik doğrulaması iletişim bilgileri için aşağıdaki noktalar geçerlidir:
 
 * *Telefon* alanı doldurulmuşsa ve SSPR ilkesinde *cep telefonu* etkinleştirilmişse, Kullanıcı bu numarayı parola sıfırlama kaydı sayfasında ve parola sıfırlama iş akışı sırasında görür.
-* *Alternatif telefon* alanı parola sıfırlama için kullanılmaz.
 * *E* -posta alanı doldurulmuşsa ve SSPR Ilkesinde *e-posta* etkinse, Kullanıcı bu e-postayı parola sıfırlama kaydı sayfasında ve parola sıfırlama iş akışı sırasında görür.
-* *Diğer e-posta* alanı doldurulmuşsa ve SSPR Ilkesinde *e-posta* etkinse, Kullanıcı bu e-postayı parola sıfırlama kaydı sayfasında görmez, ancak parola sıfırlama iş akışı sırasında görürler.
 
 ## <a name="security-questions-and-answers"></a>Güvenlik soruları ve yanıtları
 
@@ -169,5 +167,3 @@ Kimlik doğrulama iletişim bilgileri kullanıcılar için önceden dolduruldukt
 
 > [!div class="nextstepaction"]
 > [Azure AD self servis parola sıfırlamayı etkinleştirme](tutorial-enable-sspr.md)
-
-[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "Genel Yöneticiler, kullanıcının kimlik doğrulama iletişim bilgilerini değiştirebilir"

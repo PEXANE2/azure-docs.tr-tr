@@ -5,20 +5,20 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f46ad0d45967f94191732f472b44a47de930a3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ffc9c2ee17862497d3fd986da8e003f7a497056
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855362"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107292"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Öğretici: portalı kullanarak bir ExpressRoute devresine sanal ağ bağlama
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portalı](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -27,7 +27,7 @@ ms.locfileid: "91855362"
 
 Bu öğretici, Azure portal kullanarak bir sanal ağı Azure ExpressRoute bağlantı hattını bağlamak için bir bağlantı oluşturmanıza yardımcı olur. Azure ExpressRoute bağlantı hattına bağlandığınız sanal ağlar aynı abonelikte ya da başka bir aboneliğin parçası olabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > - Sanal bir ağı aynı abonelikte bir devreye bağlama.
 > - Sanal bir ağı farklı bir abonelikteki bir devreye bağlayın.
@@ -63,11 +63,19 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/express-route-circuit.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
-2. Artık sanal ağ geçidinizin ExpressRoute Devrenize bağlamak için bir bağlantı sağlamaya başlayabilirsiniz. Bağlantı **Ekle ' yi seçerek**  >  **Add** **bağlantı ekle** sayfasını açın ve değerleri yapılandırın.
+1. Artık sanal ağ geçidinizin ExpressRoute Devrenize bağlamak için bir bağlantı sağlamaya başlayabilirsiniz. Bağlantı **Ekle ' yi seçerek**  >  **Add** **bağlantı ekle** sayfasını açın.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
-3. Bağlantınız başarıyla yapılandırıldıktan sonra bağlantı nesneniz bağlantı bilgilerini gösterir.
+1. Bağlantı için bir ad girin ve ardından Ileri ' yi seçin **: ayarlar >**.
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
+
+1. Devreye bağlamak istediğiniz sanal ağa ait ağ geçidini seçin ve **gözden geçir + oluştur**' u seçin. Sonra doğrulama tamamlandıktan sonra **Oluştur** ' u seçin.
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
+
+1. Bağlantınız başarıyla yapılandırıldıktan sonra bağlantı nesneniz bağlantı bilgilerini gösterir.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
@@ -109,7 +117,13 @@ Devre sahibi, sanal ağ geçitlerini ExpressRoute devresine bağlamak için bir 
 
 **Bir bağlantı yetkilendirmesini silmek için**
 
-Bağlantınız için sayfadaki **Sil** simgesini seçerek bir bağlantıyı silebilirsiniz.
+Bağlantınızın yetkilendirme anahtarının **Sil** simgesini seçerek bir bağlantıyı silebilirsiniz.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
+
+Bağlantıyı silmek ve yetkilendirme anahtarını sürdürmek istiyorsanız, bağlantı devresinin bağlantı sayfasından bağlantıyı silebilirsiniz.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
 ### <a name="circuit-user-operations"></a>Devre Kullanıcı işlemleri
 
@@ -117,31 +131,33 @@ Devre kullanıcısının, devre sahibinden kaynak KIMLIĞI ve yetkilendirme anah
 
 **Bir bağlantı yetkilendirmesini kullanma**
 
-1. **+ Yeni** düğmesini seçin.
+1. **+ Kaynak oluştur** düğmesini seçin. **Bağlantı** araması yapın ve **Oluştur**' u seçin.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
-2. Market 'te **"bağlantı"** araması yapın, seçin ve **Oluştur**' u seçin.
+1. *Bağlantı türünün* **ExpressRoute**olarak ayarlandığından emin olun. *Kaynak grubunu* ve *konumu*seçin ve ardından temel bilgiler sayfasında **Tamam** ' ı seçin.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/search-connection.png" alt-text="ExpressRoute devresi ekran görüntüsü" olarak ayarlandığından emin olun.
-4. Ayrıntıları girin ve ardından temel bilgiler sayfasında **Tamam** ' ı seçin.
+    > [!NOTE]
+    > Konum, bağlantısını oluşturduğunuz sanal ağ geçidi konumuyla aynı *olmalıdır* .
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
-5. **Ayarlar** sayfasında, **sanal ağ geçidini** seçin ve **Yetkilendirmeyi** kullan onay kutusunu işaretleyin.
-6. **Yetkilendirme anahtarını** ve **eş bağlantı devre URI** 'sini girin ve bağlantıya bir ad verin. **Tamam**’ı seçin. **Eş devre URI 'si** , ExpressRoute bağlantı HATTıNıN kaynak kimliğidir (ExpressRoute devresinin Özellikler ayar bölmesinde bulabilirsiniz).
+1. **Ayarlar** sayfasında, *sanal ağ geçidini* seçin ve **Yetkilendirmeyi** kullan onay kutusunu işaretleyin. *Yetkilendirme anahtarını* ve *eş bağlantı devre URI* 'sini girin ve bağlantıya bir ad verin. **Tamam**’ı seçin. 
+ 
+    > [!NOTE]
+    > *Eş devre URI 'si* , ExpressRoute bağlantı HATTıNıN kaynak kimliğidir (ExpressRoute devresinin Özellikler ayar bölmesinde bulabilirsiniz).
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
-7. **Özet** sayfasındaki bilgileri gözden geçirin ve **Tamam**' ı seçin.
+1. **Özet** sayfasındaki bilgileri gözden geçirin ve **Tamam**' ı seçin.
 
-**Bir bağlantı yetkilendirmesini serbest bırakmak için**
-
-ExpressRoute bağlantı hattını sanal ağa bağlayan bağlantıyı silerek bir yetkilendirmeyi serbest bırakabilirsiniz.
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bağlantınız için sayfadaki **Sil** simgesini seçerek bir bağlantıyı silebilir ve sanal ağınızın bir ExpressRoute bağlantı hattına bağlantısını kaldırabilirsiniz.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

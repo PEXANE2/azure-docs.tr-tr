@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
-ms.openlocfilehash: 5671be5e54a9bb789e349a4da6d0f1809807d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401427"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206297"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Genel eşlemeden Microsoft eşlemesine geçiş yapma
 
@@ -31,7 +31,7 @@ Microsoft eşlemesiyle bağlantı kurmak için NAT ayarlamanız ve yönetmeniz g
 > [!Warning]
 > Microsoft'a tanıtılan NAT IP havuzu İnternet'e tanıtılmamalıdır. Bu, diğer Microsoft hizmetlerine bağlantıyı keser.
 
-Microsoft eşlemesini yapılandırmadan önce asimetrik yönlendirme uyarıları için [birden çok ağ yoluyla asimetrik yönlendirmeye](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) bakın.
+Microsoft eşlemesini yapılandırmadan önce asimetrik yönlendirme uyarıları için [birden çok ağ yoluyla asimetrik yönlendirmeye](./expressroute-asymmetric-routing.md) bakın.
 
 * Ortak eşleme kullanıyorsanız ve şu anda [Azure depolama](../storage/common/storage-network-security.md) veya [Azure SQL veritabanı](../azure-sql/database/vnet-service-endpoint-rule-overview.md)'na erışmek için kullanılan genel IP adresleri için IP ağ kurallarına sahipseniz, MICROSOFT EŞLEMESIYLE yapılandırılmış NAT IP havuzunun Azure depolama hesabı veya Azure SQL hesabı için genel IP adresleri listesine eklendiğinden emin olmanız gerekir.<br>
 * Kapalı kalma süresi olmadan Microsoft eşlemesine geçiş yapmak için, bu makaledeki adımları sunuldukları sırada kullanın.

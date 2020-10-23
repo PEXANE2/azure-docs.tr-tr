@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825429"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370432"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -62,7 +62,7 @@ Hedef kaynakları aşağıdaki şekilde yönetebilirsiniz:
 
 Azure VM çoğaltmasını etkinleştirdiğinizde, varsayılan olarak Site Recovery tabloda özetlenen varsayılan ayarlarla yeni bir çoğaltma ilkesi oluşturur.
 
-**İlke ayarı** | **Ayrıntılar** | **Varsayılanını**
+**İlke ayarı** | **Ayrıntılar** | **Varsayılan**
 --- | --- | ---
 **Kurtarma noktası bekletme** | Site Recovery kurtarma noktalarını ne kadar süreyle tutacağını belirtir | 24 saat
 **Uygulamayla tutarlı anlık görüntü sıklığı** | Site Recovery ne sıklıkta uygulamayla tutarlı bir anlık görüntü alır. | Her dört saatte bir
@@ -167,11 +167,11 @@ HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine
 
 #### <a name="control-access-with-nsg-rules"></a>NSG kurallarıyla erişimi denetleme
 
-[NSG kurallarını](../virtual-network/security-overview.md)kullanarak Azure ağlarına/alt ağlarına ağ trafiğini FILTRELEYEREK VM bağlantısını kontrol ederseniz, aşağıdaki gereksinimleri dikkate alın:
+[NSG kurallarını](../virtual-network/network-security-groups-overview.md)kullanarak Azure ağlarına/alt ağlarına ağ trafiğini FILTRELEYEREK VM bağlantısını kontrol ederseniz, aşağıdaki gereksinimleri dikkate alın:
 
 - Kaynak Azure bölgesinin NSG kuralları, çoğaltma trafiği için giden erişime izin verilmelidir.
 - Bir test ortamında, üretim ortamına girmeden önce kurallar oluşturmanızı öneririz.
-- Tek tek IP adreslerine izin vermek yerine [hizmet etiketlerini](../virtual-network/security-overview.md#service-tags) kullanın.
+- Tek tek IP adreslerine izin vermek yerine [hizmet etiketlerini](../virtual-network/network-security-groups-overview.md#service-tags) kullanın.
     - Hizmet etiketleri, güvenlik kuralları oluştururken karmaşıklığı en aza indirmek için birlikte toplanan bir IP adresi önekleri grubunu temsil eder.
     - Microsoft, zaman içinde hizmet etiketlerini otomatik olarak güncelleştirir. 
  

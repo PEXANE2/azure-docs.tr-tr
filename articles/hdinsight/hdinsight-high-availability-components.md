@@ -7,22 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d0405df1863ee47374242ba4fba5b845711d3a1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842589"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424520"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
 Analiz bileşenleriniz için en uygun düzeylerde kullanılabilirlik sağlamak amacıyla, HDInsight, önemli hizmetlerin yüksek kullanılabilirliğini sağlamak için benzersiz bir mimariye geliştirilmiştir. Bu mimarinin bazı bileşenleri, Microsoft tarafından otomatik yük devretme sağlamak üzere geliştirilmiştir. Diğer bileşenler, belirli hizmetleri desteklemek için dağıtılan standart Apache bileşenleridir. Bu makalede, HDInsight 'ta HA hizmeti modelinin mimarisi, HDInsight 'ın HA Hizmetleri için yük devretmeyi nasıl desteklediği ve diğer hizmet kesintilerinden kurtarmak için en iyi uygulamalar açıklanmaktadır.
- 
+
 > [!NOTE]
-> Sapma ücretsiz iletişim
->
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
->
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı*dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="high-availability-infrastructure"></a>Yüksek kullanılabilirlik altyapısı
 
@@ -62,7 +59,7 @@ Microsoft, HDInsight kümelerinde aşağıdaki tabloda bulunan dört Apache hizm
 | Apache Livy | Etkin baş düğümüne | Spark | REST arabirimi üzerinde Spark kümesiyle kolay etkileşim imkanı sunar |
 
 >[!Note]
-> HDInsight Kurumsal Güvenlik Paketi (ESP) kümeleri Şu anda yalnızca bir ambarı sunucusu yüksek kullanılabilirliği sağlar.
+> HDInsight Kurumsal Güvenlik Paketi (ESP) kümeleri Şu anda yalnızca bir ambarı sunucusu yüksek kullanılabilirliği sağlar. Uygulama Zaman Çizelgesi sunucusu, Iş geçmişi sunucusu ve Livy yalnızca headnode0 üzerinde çalışıyor ve ambarı failsover olduğunda headnode1 'e yük devretmeyin. Uygulama zaman çizelgesi veritabanı, ambarı SQL Server 'da değil de headnode0 üzerinde.
 
 ### <a name="architecture"></a>Mimari
 

@@ -45,6 +45,8 @@
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
 - name: Kaynaklar
   items:
+    - name: Destek ve yardım seçenekleri
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
     - name: Fiyatlandırma
       href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: Bölgesel Kullanılabilirlik

@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893782"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331745"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Bir kural hiyerarşisi tanımlamak için Azure Güvenlik Duvarı ilkesini kullanma
 
@@ -21,7 +21,7 @@ Güvenlik yöneticilerinin güvenlik duvarlarını yönetmesi ve şirket içi ve
 Azure Güvenlik duvarı ilkesi, bir kural hiyerarşisi tanımlamanızı ve uyumluluğu zorlamanıza izin verir:
 
 - Bir alt uygulama takım ilkesinin üst kısmında merkezi bir temel ilkenin kaplaması için hiyerarşik bir yapı sağlar. Temel ilkenin önceliği daha yüksektir ve alt ilkeden önce çalışır.
-- Yanlışlıkla temel ilke kaldırmayı engellemek için özel bir rol tabanlı erişim denetimi (RBAC) tanımı kullanın ve bir abonelik veya kaynak grubu içindeki kural koleksiyonu gruplarına seçmeli erişim sağlayın. 
+- Yanlışlıkla temel ilke kaldırmayı engellemek ve bir abonelik veya kaynak grubu içindeki kural koleksiyonu gruplarına seçmeli erişim sağlamak için bir Azure özel rol tanımı kullanın. 
 
 ## <a name="solution-overview"></a>Çözüme genel bakış
 
@@ -153,7 +153,7 @@ Diğer güvenlik duvarı ilkeleri için bu yordamı tekrarlayın.
 
 ### <a name="summary"></a>Özet
 
-Özel RBAC ile güvenlik duvarı Ilkesi artık güvenlik duvarı ilke kuralı koleksiyon gruplarına seçmeli erişim sağlar.
+Özel rollere sahip güvenlik duvarı Ilkesi artık güvenlik duvarı ilke kuralı koleksiyon gruplarına seçmeli erişim sağlar.
 
 Kullanıcıların şunları yapmak için izinleri yoktur:
 - Azure Güvenlik duvarını veya güvenlik duvarı ilkesini silin.

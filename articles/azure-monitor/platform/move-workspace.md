@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979686"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372285"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıyın
 
@@ -39,10 +39,21 @@ Otomasyon Hesabınızın bağlantısını kaldırmak için önce kaldırılması
 - Azure Güvenlik Merkezi
 
 >[!IMPORTANT]
-> **Azure Sentinel müşterileri:**
-> - Bir çalışma alanına dağıtıldıktan sonra, Azure Sentinel bu çalışma alanının diğer kaynak gruplarına veya aboneliklerine taşınmasını **desteklememektedir** . 
+> **Azure Sentinel müşterileri**
+> - Şu anda, Azure Sentinel bir çalışma alanına dağıtıldıktan sonra, çalışma alanını başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez. 
+> - Çalışma alanını zaten taşıdıysanız, **analiz** altındaki tüm etkin kuralları devre dışı bırakın ve beş dakika sonra yeniden etkinleştirin. Bu, çoğu durumda etkili bir çözüm olması gerekir, ancak yeniden yinelemek için, bu, sizin sorumluluğunuzdadır ve riski size aittir.
+> 
+> **Uyarıları yeniden oluşturma**
+> - İzinler çalışma alanının Azure Kaynak KIMLIĞINI temel aldığı ve bu sayede çalışma alanı taşıma sırasında yapılan değişiklikler olduğundan, tüm uyarıların bir taşıma işleminden sonra yeniden oluşturulması gerekir.
 >
->   Çalışma alanını zaten taşıdıysanız, **analiz** altındaki tüm etkin kuralları devre dışı bırakın ve beş dakika sonra yeniden etkinleştirin. Bu durum çoğu durumda etkili olmalıdır, ancak yeniden yinelemek için, bu, sizin sorumluluğunuzdadır ve riski size aittir.
+> **Kaynak yollarını Güncelleştir**
+> - Çalışma alanı taşıdıktan sonra, çalışma alanına işaret eden tüm Azure veya dış kaynaklar, yeni kaynak hedef yolunu işaret etmek üzere incelenmeli ve güncelleştirilir.
+> 
+>   *Örnekler:*
+>   - [Azure Izleyici uyarı kuralları](alerts-resource-move.md)
+>   - Üçüncü taraf uygulamalar
+>   - Özel betik oluşturma
+>
 
 ### <a name="delete-solutions-in-azure-portal"></a>Azure portal çözümleri silme
 Azure portal kullanarak çözümleri kaldırmak için aşağıdaki yordamı kullanın:

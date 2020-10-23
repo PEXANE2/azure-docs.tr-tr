@@ -7,12 +7,13 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: device-developer
+ms.openlocfilehash: 6438b938dc007e8d157f6549b3ed164cd2a723e8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322458"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424468"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdan gelen verilerin Azure IoT Central'da gösterilmemesi sorununu giderme
 
@@ -34,9 +35,9 @@ Bu bölüm, verilerinizin IoT Central ulaşmadığını belirlemenize yardımcı
 
 Daha önce yapmadıysanız, `az cli` Aracı ve `azure-iot` uzantıyı yükleyebilirsiniz.
 
-' Nin nasıl yükleneceğini öğrenmek için `az cli` bkz. [Azure CLI 'yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+' Nin nasıl yükleneceğini öğrenmek için `az cli` bkz. [Azure CLI 'yı yüklemek](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Uzantıyı [yüklemek](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) için `azure-iot` Şu komutu çalıştırın:
+Uzantıyı [yüklemek](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) için `azure-iot` Şu komutu çalıştırın:
 
 ```cmd/bash
 az extension add --name azure-iot
@@ -129,7 +130,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Cihaz sağlama durumu | Açıklama | Olası risk azaltma |
+| Cihaz sağlama durumu | Description | Olası risk azaltma |
 | - | - | - |
 | Sağlanan | Anında tanınabilir sorun yoktur. | Yok |
 | Kaydedildi | Cihaz henüz IoT Central bağlanmadı. | Bağlantı sorunları için cihaz günlüklerinizi denetleyin. |
@@ -149,13 +150,13 @@ Aşağıdaki tablolarda, genel hata kodları ve hafifletmek için olası eylemle
 
 Kimlik doğrulama akışla ilgili sorunlar görüyorsanız:
 
-| Hata kodu | Açıklama | Olası risk azaltma |
+| Hata kodu | Description | Olası risk azaltma |
 | - | - | - |
 | 400 | İsteğin gövdesi geçerli değil. Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor. | Kanıtlama akışının bir parçası olarak doğru istek gövdesini gönderdiğinizden emin olun veya bir cihaz SDK 'Sı kullanın. |
 | 401 | Yetkilendirme belirteci doğrulanamıyor. Örneğin, süresi sona ermiştir veya isteğin URI 'sine uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | Cihazınızın doğru kimlik bilgilerine sahip olduğundan emin olun. |
 | 404 | Cihaz sağlama hizmeti örneği veya kayıt gibi bir kaynak yok. | [Müşteri desteği ile Bilet dosyası oluşturma](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 412 | `ETag`İstekteki, `ETag` RFC7232 başına mevcut kaynak ile eşleşmiyor. | [Müşteri desteği ile Bilet dosyası oluşturma](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 429 | İşlemler, hizmet tarafından kısıtlanıyor. Belirli hizmet limitleri için bkz. [cihaz sağlama hizmeti sınırlarını IoT Hub](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | İleti sıklığını azaltın, sorumlulukları daha fazla cihaz arasında ayırın. |
+| 429 | İşlemler, hizmet tarafından kısıtlanıyor. Belirli hizmet limitleri için bkz. [cihaz sağlama hizmeti sınırlarını IoT Hub](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | İleti sıklığını azaltın, sorumlulukları daha fazla cihaz arasında ayırın. |
 | 500 | Bir iç hata oluştu. | Size daha fazla yardımcı olup olmadığını görmek için [müşteri desteğiyle bir bilet dosyası](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) yapın. |
 
 ## <a name="payload-shape-issues"></a>Yük şekli sorunları

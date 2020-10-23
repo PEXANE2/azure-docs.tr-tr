@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c43c8a0b9fdf30b5ce5ae6ecbf123b563099ff6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337951"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148786"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -28,7 +28,7 @@ Bu örneği Mxyonga IoT DevKit WiFi bilgilerini ve algılayıcı durumlarını i
 
 ## <a name="what-you-need"></a>Gerekenler
 
-- [Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)izleyerek geliştirme ortamınızı ayarlayın.
+- [Başlarken Kılavuzunu](./iot-hub-arduino-iot-devkit-az3166-get-started.md)izleyerek geliştirme ortamınızı ayarlayın.
 
 - GitBash Terminal pencerenize (veya başka bir git komut satırı arabiriminden) aşağıdaki komutları yazın:
 
@@ -114,4 +114,4 @@ Nasıl yapılacağını öğrendiniz:
 - Bir Mxyonga IoT DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlayın.
 - Devkit 'in RGB 'nin rengini algılaması ve denetlemek için Azure IoT cihaz ikizlerini işlevini kullanın.
 
-Önerilen sonraki adım aşağıda verilmiştir: [Azure IoT uzaktan izleme çözüm hızlandırıcısının genel bakış](https://docs.microsoft.com/azure/iot-suite/)
+Önerilen sonraki adım aşağıda verilmiştir: [Azure IoT uzaktan izleme çözüm hızlandırıcısının genel bakış](/azure/iot-suite/)

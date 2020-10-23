@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: fd470180e17bd64990c1e657a6614fc2e0ef71d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e9ad28b14a51432fd9ccd32d1a155eaff2e190
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335033"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427145"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Yüksek kullanılabilirlik çözümü, hatalar nedeniyle kaydedilmiş verilerin 
 
 SQL veritabanı ve SQL yönetilen örneği her ikisi de SQL Server veritabanı altyapısının ve Windows işletim sisteminin en son kararlı sürümünde çalışır ve çoğu kullanıcı, yükseltmelerin sürekli olarak gerçekleştirildiğini fark etmez.
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Temel, standart ve Genel Amaçlı hizmet katmanı kullanılabilirliği
+## <a name="basic-standard-and-general-purpose-service-tier-locally-redundant-availability"></a>Temel, standart ve Genel Amaçlı hizmet katmanı yerel olarak yedekli kullanılabilirlik
 
 Temel, standart ve Genel Amaçlı hizmet katmanları hem sunucusuz hem de sağlanan işlem için standart kullanılabilirlik mimarisinden yararlanır. Aşağıdaki şekilde, ayrılmış işlem ve Depolama katmanlarına sahip dört farklı düğüm gösterilmektedir.
 
@@ -46,7 +46,26 @@ Standart kullanılabilirlik modeli iki katman içerir:
 
 Veritabanı altyapısı veya işletim sistemi yükseltildiğinde ya da bir hata algılandığında, Azure Service Fabric durum bilgisiz `sqlservr.exe` işlemi yeterli boş kapasiteye sahip başka bir durum bilgisi olmayan işlem düğümüne taşıyacaktır. Azure Blob depolama alanındaki veriler taşımadan etkilenmez ve veri/günlük dosyaları yeni başlatılmış `sqlservr.exe` işleme eklenir. Bu işlem% 99,99 kullanılabilirliği garanti eder, ancak yeni `sqlservr.exe` işlem soğuk önbellek ile başladığından bu yana yoğun bir iş yükü geçiş sırasında bazı performans düşüşüne neden olabilir.
 
-## <a name="premium-and-business-critical-service-tier-availability"></a>Premium ve İş Açısından Kritik hizmet katmanı kullanılabilirliği
+## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Genel Amaçlı hizmet katmanı bölgesi gereksiz kullanılabilirliği (Önizleme)
+
+Genel amaçlı hizmet katmanının bölge yedekli yapılandırması, [Azure Availability Zones](../../availability-zones/az-overview.md)   veritabanlarını bir Azure bölgesindeki birden çok fiziksel konumda çoğaltmak için Azure kullanılabilirlik alanları kullanır.Bölge artıklığı ' nı seçerek, yeni ve mevcut genel amaçlı tek veritabanlarınızı ve esnek havuzlarınızı, uygulama mantığındaki herhangi bir değişiklik yapmadan çok daha büyük bir veri merkezi kesintileri dahil olmak üzere çok daha büyük bir başarısızlık kümesiyle esnek hale getirebilirsiniz.
+
+Genel amaçlı katmanın bölge yedekli yapılandırması iki katmana sahiptir:  
+
+- ZRS PFS 'de depolanan veritabanı dosyaları (. mdf/. ldf) ile durum bilgisi olan bir veri katmanı (bölgesel olarak yedekli [depolama Premium dosya paylaşımında](../../storage/files/storage-how-to-create-premium-fileshare.md)). Bölgesel olarak [yedekli depolamayı](../../storage/common/storage-redundancy.md) kullanarak, veri ve günlük dosyaları, fiziksel olarak yalıtılmış üç Azure kullanılabilirlik alanı arasında zaman uyumlu olarak kopyalanır.
+- sqlservr.exe sürecini çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler (örneğin, eklenen SSD üzerinde model veritabanları, bağlı SSD üzerinde model veritabanları, ve bellek olarak plan önbelleği, arabellek havuzu ve columnstore havuzu) içeren durum bilgisiz işlem katmanı. Bu durum bilgisiz düğüm, sqlservr.exe Başlatan, düğümün sistem durumunu denetleyen ve gerekirse başka bir düğüme yük devretme gerçekleştiren Azure Service Fabric tarafından çalıştırılır. Bölgesel olarak yedekli genel amaçlı veritabanlarında, yedek kapasiteye sahip düğümler diğer Kullanılabilirlik Alanları yük devretme için kullanıma hazırdır.
+
+Genel amaçlı hizmet katmanı için yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diyagramda gösterilmiştir:
+
+![Genel amaçlı bölge yedekli yapılandırması](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
+
+> [!IMPORTANT]
+> Bölge yedekli veritabanlarını destekleyen bölgeler hakkında güncel bilgiler için bkz. [bölgeye göre Hizmetler desteği](../../availability-zones/az-region.md). Bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bu özellik SQL yönetilen örneği 'nde kullanılamaz.
+
+> [!NOTE]
+> 80 sanal çekirdek boyutundaki Genel Amaçlı veritabanları, bölgesel olarak yedekli yapılandırma ile performans düşüşü yaşayabilir. Yedekleme, geri yükleme, veritabanı kopyalama ve coğrafi-DR ilişkilerini ayarlama gibi işlemler, 1 TB 'den büyük tek veritabanları için daha yavaş performans yaşayabilir. 
+
+## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Premium ve İş Açısından Kritik hizmet katmanı yerel olarak yedekli kullanılabilirlik
 
 Premium ve İş Açısından Kritik hizmet katmanları, işlem kaynaklarını ( `sqlservr.exe` işlem) ve depolamayı (yerel olarak bağlı SSD) tek bir düğümde tümleştiren Premium kullanılabilirlik modelinden yararlanır. Yüksek kullanılabilirlik, üç-dört düğümlü küme oluştururken hem işlem hem de depolamanın ek düğümlere çoğaltılmasıyla elde edilir.
 
@@ -55,6 +74,23 @@ Premium ve İş Açısından Kritik hizmet katmanları, işlem kaynaklarını ( 
 Temel alınan veritabanı dosyaları (. mdf/. ldf), iş yükünüze çok düşük gecikmeli GÇ sağlamak üzere eklenmiş SSD depolama alanına yerleştirilir. Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer bir teknoloji kullanılarak uygulanır. Küme, okuma/yazma müşteri iş yükleri için erişilebilen tek bir birincil çoğaltma ve verilerin kopyalarını içeren üç ikincil çoğaltma (işlem ve depolama) içerir. Birincil düğüm değişiklikleri sürekli olarak ikincil düğümlere gönderir ve her bir işlem gerçekleştirilmeden önce verilerin en az bir ikincil çoğaltmayla eşitlenmesini sağlar. Bu işlem, birincil düğüm herhangi bir nedenden dolayı kilitlenirse, her zaman yük devretmek için tamamen eşitlenmiş bir düğüm vardır. Yük devretme işlemi Azure Service Fabric tarafından başlatılır. İkincil çoğaltma yeni birincil düğüm olduktan sonra, kümede yeterli düğüm (çekirdek kümesi) olduğundan emin olmak için başka bir ikincil çoğaltma oluşturulur. Yük devretme işlemi tamamlandıktan sonra Azure SQL bağlantıları otomatik olarak yeni birincil düğüme yönlendirilir.
 
 Ek bir avantaj olarak Premium kullanılabilirlik modeli, salt okunurdur Azure SQL bağlantılarını ikincil çoğaltmalardan birine yeniden yönlendirebilme özelliği içerir. Bu özelliğe [okuma ölçeği](read-scale-out.md)genişletme denir. Birincil çoğaltmadan, analitik iş yükleri gibi salt okuma işlemlerini yük dışı bırakmak için ek ücret olmadan %100 ek işlem kapasitesi sağlar.
+
+## <a name="premium-and-business-critical-service-tier-zone-redundant-availability"></a>Premium ve İş Açısından Kritik hizmet katmanı bölgesi gereksiz kullanılabilirliği 
+
+Varsayılan olarak, Premium kullanılabilirlik modeli için düğümlerin kümesi aynı veri merkezinde oluşturulur. [Azure kullanılabilirlik alanları](../../availability-zones/az-overview.md)tanıtımı Ile SQL veritabanı, iş açısından kritik veritabanının farklı çoğaltmalarını aynı bölgedeki farklı kullanılabilirlik bölgelerine yerleştirebilir. Tek bir başarısızlık noktasını ortadan kaldırmak için, denetim halkası aynı zamanda birden çok bölgede üç ağ geçidi halkaları (GW) olarak da yinelenir. Belirli bir ağ geçidi halkası yönlendirmesi [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) (ATM) tarafından denetlenir. Premium veya İş Açısından Kritik hizmet katmanlarında bölge yedekli yapılandırma ek veritabanı yedekliliği oluşturmadığından, ek ücret ödemeden etkinleştirebilirsiniz. Bölgesel olarak yedekli bir yapılandırma seçerek, Premium veya İş Açısından Kritik veritabanlarınızı, uygulama mantığındaki herhangi bir değişiklik yapmadan çok daha büyük bir veri merkezi kesintileri dahil olmak üzere çok daha büyük bir başarısızlık kümesine dayanıklı hale getirebilirsiniz. Ayrıca, mevcut Premium veya İş Açısından Kritik veritabanlarını veya havuzları bölge yedekli yapılandırmasına de dönüştürebilirsiniz.
+
+Bölge yedekli veritabanlarının aralarında biraz uzaklıktan farklı veri merkezlerinde çoğaltmaları olduğundan, artan ağ gecikmesi çalışma süresini artırabilir ve böylece bazı OLTP iş yüklerinin performansını etkileyebilir. Bölge artıklığı ayarını devre dışı bırakarak her zaman tek bölge yapılandırmasına dönebilirsiniz. Bu işlem, normal hizmet katmanı yükseltmesine benzer bir çevrimiçi işlemdir. İşlemin sonunda, veritabanı veya havuz, bölge yedekli halkadan tek bir bölge halkaine geçirilir veya tam tersi de geçerlidir.
+
+> [!IMPORTANT]
+> Bölgesel olarak yedekli veritabanları ve elastik havuzlar Şu anda yalnızca Seç bölgelerinde Premium ve İş Açısından Kritik hizmet katmanlarında desteklenir. İş Açısından Kritik katmanını kullanırken, bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bölge yedekli veritabanlarını destekleyen bölgeler hakkında güncel bilgiler için bkz. [bölgeye göre Hizmetler desteği](../../availability-zones/az-region.md).
+
+> [!NOTE]
+> Bu özellik SQL yönetilen örneği 'nde kullanılamaz.
+
+Yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diyagram tarafından gösterilmiştir:
+
+![yüksek kullanılabilirlik mimarisi bölgesi yedekli](./media/high-availability-sla/zone-redundant-business-critical-service-tier.png)
+
 
 ## <a name="hyperscale-service-tier-availability"></a>Hiper ölçek hizmet katmanı kullanılabilirliği
 
@@ -73,21 +109,6 @@ Tüm hiperölçek katmanlarında işlem düğümleri Azure Service Fabric üzeri
 
 Hiper ölçekte yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Hyperscale 'de veritabanı yüksek kullanılabilirliği](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale).
 
-## <a name="zone-redundant-configuration"></a>Bölge yedekli yapılandırma
-
-Varsayılan olarak, Premium kullanılabilirlik modeli için düğümlerin kümesi aynı veri merkezinde oluşturulur. [Azure kullanılabilirlik alanları](../../availability-zones/az-overview.md)tanıtımı Ile SQL veritabanı, iş açısından kritik veritabanının farklı çoğaltmalarını aynı bölgedeki farklı kullanılabilirlik bölgelerine yerleştirebilir. Tek bir başarısızlık noktasını ortadan kaldırmak için, denetim halkası aynı zamanda birden çok bölgede üç ağ geçidi halkaları (GW) olarak da yinelenir. Belirli bir ağ geçidi halkası yönlendirmesi [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) (ATM) tarafından denetlenir. Premium veya İş Açısından Kritik hizmet katmanlarında bölge yedekli yapılandırma ek veritabanı yedekliliği oluşturmadığından, ek ücret ödemeden etkinleştirebilirsiniz. Bölgesel olarak yedekli bir yapılandırma seçerek, Premium veya İş Açısından Kritik veritabanlarınızı, uygulama mantığındaki herhangi bir değişiklik yapmadan çok daha büyük bir veri merkezi kesintileri dahil olmak üzere çok daha büyük bir başarısızlık kümesine dayanıklı hale getirebilirsiniz. Ayrıca, mevcut Premium veya İş Açısından Kritik veritabanlarını veya havuzları bölge yedekli yapılandırmasına de dönüştürebilirsiniz.
-
-Bölge yedekli veritabanlarının aralarında biraz uzaklıktan farklı veri merkezlerinde çoğaltmaları olduğundan, artan ağ gecikmesi çalışma süresini artırabilir ve böylece bazı OLTP iş yüklerinin performansını etkileyebilir. Bölge artıklığı ayarını devre dışı bırakarak her zaman tek bölge yapılandırmasına dönebilirsiniz. Bu işlem, normal hizmet katmanı yükseltmesine benzer bir çevrimiçi işlemdir. İşlemin sonunda, veritabanı veya havuz, bölge yedekli halkadan tek bir bölge halkaine geçirilir veya tam tersi de geçerlidir.
-
-> [!IMPORTANT]
-> Bölgesel olarak yedekli veritabanları ve elastik havuzlar Şu anda yalnızca Seç bölgelerinde Premium ve İş Açısından Kritik hizmet katmanlarında desteklenir. İş Açısından Kritik katmanını kullanırken, bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bölge yedekli veritabanlarını destekleyen bölgeler hakkında güncel bilgiler için bkz. [bölgeye göre Hizmetler desteği](../../availability-zones/az-region.md).
-
-> [!NOTE]
-> Bu özellik SQL yönetilen örneği 'nde kullanılamaz.
-
-Yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diyagram tarafından gösterilmiştir:
-
-![yüksek kullanılabilirlik mimarisi bölgesi yedekli](./media/high-availability-sla/zone-redundant-business-critical-service-tier.png)
 
 ## <a name="accelerated-database-recovery-adr"></a>Hızlandırılmış veritabanı kurtarma (ADR)
 

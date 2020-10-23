@@ -4,16 +4,16 @@ description: IoT Hub için aşağı akış cihazlarının veya yaprak cihazları
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046732"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151386"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -21,13 +21,13 @@ Saydam bir ağ geçidi senaryosunda, aşağı akış cihazları (bazen yaprak ci
 
 Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım vardır. Bu makalede ikinci adım ele alınmaktadır:
 
-1. Aşağı akış cihazlarının güvenli bir şekilde bağlanabilmesi için ağ geçidi cihazını sunucu olarak yapılandırın. Ağ geçidini, aşağı akış aygıtlarından ileti alacak şekilde ayarlayın ve bunları uygun hedefe yönlendirin. Daha fazla bilgi için bkz. bir [IoT Edge cihazını saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md).
+1. Aşağı akış cihazlarının güvenli bir şekilde bağlanabilmesi için ağ geçidi cihazını sunucu olarak yapılandırın. Ağ geçidini, aşağı akış aygıtlarından ileti alacak şekilde ayarlayın ve bunları uygun hedefe yönlendirin. Bu adımlar için bkz. bir [IoT Edge cihazı, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md).
 2. **IoT Hub ile kimlik doğrulayabilmesi için aşağı akış cihazı için bir cihaz kimliği oluşturun. Ağ Geçidi cihazından ileti göndermek için aşağı akış cihazını yapılandırın.**
-3. Aşağı akış cihazını ağ geçidi cihazına bağlayın ve ileti göndermeye başlayın. Daha fazla bilgi için bkz. bir [aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md).
+3. Aşağı akış cihazını ağ geçidi cihazına bağlayın ve ileti göndermeye başlayın. Bu adımlar için bkz. bir [aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md).
 
 Aşağı akış cihazları şu üç yöntemden birini kullanarak IoT Hub kimlik doğrulaması yapabilir: simetrik anahtarlar (bazen paylaşılan erişim anahtarları olarak adlandırılır), X. 509.440 otomatik olarak imzalanan sertifikalar veya X. 509.440 sertifika yetkilisi (CA) imzalı sertifikalar. Kimlik doğrulama adımları, ağ geçidi ilişkisini bildirmek için küçük farklılıklar ile, IoT Edge olmayan bir cihazı IoT Hub kurmak için kullanılan adımlara benzerdir.
 
-Bu makaledeki adımlarda el ile cihaz sağlama gösterilmektedir. Azure IoT Hub cihaz sağlama hizmeti (DPS) ile otomatik olarak aşağı akış cihazları sağlama desteklenmez.
+Azure IoT Hub cihaz sağlama hizmeti (DPS) ile otomatik olarak aşağı akış cihazları sağlama desteklenmez.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,10 +42,16 @@ Bu makale, *ağ geçidi ana bilgisayar adına* birkaç noktada başvurur. Ağ ge
 Aşağı akış cihazınızın IoT Hub kimlik doğrulamasını nasıl istediğinizi seçin:
 
 * [Simetrik anahtar kimlik doğrulaması](#symmetric-key-authentication): IoT Hub, aşağı akış cihazına yerleştirdiğiniz bir anahtar oluşturur. Cihazın kimlik doğrulaması yapıldığında, IoT Hub iki anahtarın eşleşip eşleşmediğini denetler. Simetrik anahtar kimlik doğrulaması kullanmak için ek sertifikalar oluşturmanız gerekmez.
+
+  Bu yöntem, bir geliştirme veya test senaryosunda ağ geçitlerini test ediyorsanız çalışmaya başlamak daha hızlıdır.
+
 * [X. 509.440 otomatik olarak imzalanan kimlik doğrulaması](#x509-self-signed-authentication): parmak izini, cihazın X. 509.440 sertifikasından IoT Hub ile paylaştığınız için bazen parmak izi kimlik doğrulaması olarak adlandırılır.
+
+  Üretim senaryolarındaki cihazlar için sertifika kimlik doğrulaması önerilir.
+
 * [X. 509.440 CA-imzalı kimlik doğrulaması](#x509-ca-signed-authentication): IoT Hub IÇIN kök CA sertifikasını karşıya yükleyin. Cihazlar, kimlik doğrulaması için X. 509.440 sertifikasını sunmuşsa, IoT Hub aynı kök CA sertifikası tarafından imzalanan bir güven zincirine ait olduğunu denetler.
 
-Cihazınızı bu üç yöntemden biriyle kaydettikten sonra, aşağı akış cihazınız için [bağlantı dizesini almak ve değiştirmek](#retrieve-and-modify-connection-string) üzere bir sonraki bölüme geçin.
+  Üretim senaryolarındaki cihazlar için sertifika kimlik doğrulaması önerilir.
 
 ### <a name="symmetric-key-authentication"></a>Simetrik anahtar kimlik doğrulaması
 
@@ -59,17 +65,15 @@ Yeni cihaz kimliğini oluşturduğunuzda, aşağıdaki bilgileri sağlayın:
 
 * Kimlik doğrulama türü olarak **simetrik anahtar** ' ı seçin.
 
-* **Bir üst cihaz ayarla** ' yı seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Bu adım, aşağı akış cihazınız için [çevrimdışı yetenekleri](offline-capabilities.md) sunar. Üst öğeyi daha sonra dilediğiniz zaman değiştirebilirsiniz.
+* **Bir üst cihaz ayarla** ' yı seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Üst öğeyi daha sonra dilediğiniz zaman değiştirebilirsiniz.
 
    ![Portalda simetrik anahtar kimlik doğrulaması ile cihaz KIMLIĞI oluşturma](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
-Aynı işlemi gerçekleştirmek için [Azure CLI Için IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) da kullanabilirsiniz. Aşağıdaki örnek, simetrik anahtar kimlik doğrulaması ile yeni bir IoT cihazı oluşturur ve bir üst cihaz atar:
+Aynı işlemi gerçekleştirmek için [Azure CLI Için IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) da kullanabilirsiniz. Aşağıdaki örnek, simetrik anahtar kimlik doğrulaması ile yeni bir IoT cihazı oluşturmak ve bir üst cihazı atamak için [az IoT Hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutunu kullanır:
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
-
-Cihaz oluşturma ve üst/alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutları için başvuru içeriği.
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
 
@@ -104,7 +108,7 @@ X. 509.440 otomatik imzalı kimlik doğrulaması için bazen parmak izi kimlik d
    * Cihaz sertifikalarınızın konu adıyla eşleşen **CIHAZ kimliğini** sağlayın.
    * Kimlik doğrulama türü olarak **X. 509.440 otomatik olarak imzalanan** ' ı seçin.
    * Cihazınızın birincil ve ikincil sertifikalarından kopyaladığınız onaltılık dizeleri yapıştırın.
-   * **Bir üst cihaz ayarla** ' yı seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Bir aşağı akış cihazının X. 509.440 kimlik doğrulaması için bir üst cihaz gereklidir.
+   * **Bir üst cihaz ayarla** ' yı seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Üst öğeyi daha sonra dilediğiniz zaman değiştirebilirsiniz.
 
    ![Portalda X. 509.440 otomatik imzalı kimlik doğrulaması ile cihaz KIMLIĞI oluşturma](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
 
@@ -120,13 +124,11 @@ X. 509.440 otomatik imzalı kimlik doğrulaması için bazen parmak izi kimlik d
    * Java: [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509. Kopyala](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) da kullanabilirsiniz. Aşağıdaki örnek, X. 509.440 otomatik imzalı kimlik doğrulaması ile yeni bir IoT cihazı oluşturur ve bir üst cihaz atar:
+Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) da kullanabilirsiniz. Aşağıdaki örnek, X. 509.440 otomatik imzalı kimlik doğrulaması ile yeni bir IoT cihazı oluşturmak için [az IoT Hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutunu kullanır ve bir üst cihaz atar:
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
-
-Cihaz oluşturma, sertifika oluşturma ve üst ve alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutları için başvuru içeriği.
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
 
@@ -150,7 +152,7 @@ Bu bölüm, [Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama](../iot-h
 
    1. Yeni bir cihaz ekleyin. **CIHAZ kimliği**için küçük harfli bir ad girin ve **X. 509.440 CA imzalı**kimlik doğrulama türünü seçin.
 
-   2. Bir üst cihaz ayarlayın. Aşağı akış cihazları için **bir üst cihaz ayarla** ' yı seçin ve IoT Hub bağlantısını sağlayacak IoT Edge ağ geçidi cihazını seçin.
+   2. Bir üst cihaz ayarlayın. **Bir üst cihaz ayarla** ' yı seçin ve IoT Hub bağlantısını sağlayacak IoT Edge ağ geçidi cihazını seçin.
 
 4. Aşağı akış cihazınız için bir sertifika zinciri oluşturun. IoT Hub için karşıya yüklediğiniz aynı kök CA sertifikasını kullanın ve bu zinciri oluşturun. Portalda cihaz kimliğinize verdiğiniz küçük harfli cihaz KIMLIĞINI kullanın.
 
@@ -166,13 +168,11 @@ Bu bölüm, [Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama](../iot-h
    * Java: [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509. Kopyala](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) da kullanabilirsiniz. Aşağıdaki örnek, X. 509.952 CA imzalı kimlik doğrulaması ile yeni bir IoT cihazı oluşturur ve bir üst cihaz atar:
+Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) da kullanabilirsiniz. Aşağıdaki örnek, X. 509.952 CA imzalı kimlik doğrulaması ile yeni bir IoT cihazı oluşturmak için [az IoT Hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutunu kullanır ve bir üst cihaz atar:
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
-
-Daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutları IÇIN Azure CLI başvuru içeriği.
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
 
@@ -213,4 +213,4 @@ Bu değiştirilmiş bağlantı dizesini, saydam ağ geçidi serisinin bir sonrak
 
 Bu noktada, IoT Hub 'ınıza kayıtlı ve saydam bir ağ geçidi olarak yapılandırılmış bir IoT Edge cihazınız vardır. IoT Hub 'ınıza kayıtlı ve ağ geçidi cihazını işaret eden bir aşağı akış cihazınız da vardır.
 
-Bu makaledeki adımlar IoT Hub kimlik doğrulaması için aşağı akış cihazınızı ayarlar. Sonra, ağ geçidi cihazına güvenmek ve güvenli bir şekilde bağlanmak için aşağı akış cihazınızı yapılandırmanız gerekir. Saydam ağ geçidi serisinde bir sonraki makaleye devam edin, [bir aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlayın](how-to-connect-downstream-device.md).
+Sonra, ağ geçidi cihazına güvenmek ve güvenli bir şekilde bağlanmak için aşağı akış cihazınızı yapılandırmanız gerekir. Saydam ağ geçidi serisinde bir sonraki makaleye devam edin, [bir aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlayın](how-to-connect-downstream-device.md).

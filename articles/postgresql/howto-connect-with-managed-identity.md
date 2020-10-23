@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1b9603e43541ec1a364e4653caeeafc751f7e4f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d801499360bd05cee4c01aefd873337303017f3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012101"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427516"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Yönetilen Kimlik ile PostgreSQL için Azure Veritabanı'na bağlanma
 
@@ -27,7 +27,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](../../articles/active-directory/managed-identities-azure-resources/overview.md) inceleyin. Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../articles/role-based-access-control/role-assignments-portal.md).
+- Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa, [Azure abonelik kaynaklarınıza erişimi yönetmek için bkz. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanma](../../articles/role-based-access-control/role-assignments-portal.md).
 - Yönetilen kimlik kullanarak veritabanınıza erişmek için kullanmak istediğiniz bir Azure VM 'si (örneğin, Ubuntu Linux çalıştıran) gerekir
 - [Azure AD kimlik doğrulaması](howto-configure-sign-in-aad-authentication.md) yapılandırılmış bir PostgreSQL veritabanı sunucusu Için Azure veritabanı gerekir
 - C# örneğini izlemek için ilk olarak [c# ile bağlanma](connect-csharp.md) kılavuzunu tamamlayın

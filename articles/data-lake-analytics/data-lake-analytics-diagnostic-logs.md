@@ -1,16 +1,15 @@
 ---
 title: Azure Data Lake Analytics için tanılama günlüklerini etkinleştirme ve görüntüleme
 description: Azure Data Lake Analytics için tanılama günlüklerini ayarlamayı ve erişmeyi öğrenin
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: f1f4320f0bfb924883eb7ae4807dcb714cd89983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331939"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221018"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics’te tanılama günlüklerine erişim
 
@@ -128,7 +127,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| saat |Dize |Günlüğün zaman damgası (UTC) |
+| time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
 | category |Dize |Günlük kategorisi. Örneğin, **istekler**. |
 | operationName |Dize |Günlüğe kaydedilen işlemin adı. Örneğin, Getaggregısjobhistory. |
@@ -178,7 +177,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| saat |Dize |Günlüğün zaman damgası (UTC) |
+| time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
 | category |Dize |Günlük kategorisi. Örneğin, **Denetim**. |
 | operationName |Dize |Günlüğe kaydedilen işlemin adı. Örneğin, Jobgönderildi. |

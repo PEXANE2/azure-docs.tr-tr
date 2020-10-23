@@ -1,25 +1,25 @@
 ---
 title: Dizin Oluşturucu IP aralıklarına erişime izin ver
 titleSuffix: Azure Cognitive Search
-description: Dizin oluşturucularının erişim sahibi olması için IP Güvenlik Duvarı kurallarının nasıl ayarlanacağını anlatan yönergeler.
+description: Azure Bilişsel Arama Dizin Oluşturucu tarafından veri erişimine izin vermek için IP güvenlik duvarı kurallarını yapılandırın.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0be69b72cc068d017202b0694e24fb4573172dba
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950202"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101401"
 ---
-# <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>Dizin Oluşturucu erişimini etkinleştirmek için IP güvenlik duvarı kuralları ayarlama
+# <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>Dizin Oluşturucu bağlantılarına izin vermek için IP güvenlik duvarı kurallarını yapılandırma (Azure Bilişsel Arama)
 
-Azure kaynaklarında, depolama hesapları, Cosmos DB hesapları ve Azure SQL Server 'lar gibi IP güvenlik duvarı kuralları, yalnızca belirli IP aralıklarından gelen trafiğe verilere erişim izni verir.
+Azure kaynaklarında, depolama hesapları, Cosmos DB hesapları ve Azure SQL Server 'Lar gibi IP güvenlik duvarı kuralları, yalnızca belirli IP aralıklarından gelen trafiğe verilere erişim izni verir.
 
-Bu makalede, Azure Bilişsel Arama dizin oluşturucularının verilere güvenli bir şekilde erişebilmesi için bir depolama hesabı için Azure portal aracılığıyla IP kurallarının nasıl yapılandırılacağı açıklanır. Depolama alanına özel olarak, bu kılavuz, verilere erişimi güvenli hale getirmek için IP güvenlik duvarı kuralları sunan diğer Azure kaynaklarına doğrudan çevrilebilir.
+Bu makalede, Azure Bilişsel Arama dizin oluşturucularının verilere güvenli bir şekilde erişebilmesi için bir depolama hesabı için Azure portal aracılığıyla IP kurallarının nasıl yapılandırılacağı açıklanır. Azure depolama 'ya özgü olsa da yaklaşım, verilere erişimi güvenli hale getirmek için IP güvenlik duvarı kuralları kullanan diğer Azure kaynakları için de geçerlidir.
 
 > [!NOTE]
 > Depolama hesabı için IP güvenlik duvarı kuralları yalnızca depolama hesabı ve arama hizmeti farklı bölgelerde olduğunda geçerlidir. Kurulumlarınız buna izin veriyorsa, [güvenilir hizmet özel durum seçeneğini](search-indexer-howto-access-trusted-service-exception.md)kullanmanızı öneririz.
@@ -30,7 +30,7 @@ Arama hizmetinizin tam etki alanı adını (FQDN) alın. Bu, şöyle görünecek
 
    ![Hizmet FQDN 'SI al](media\search-indexer-howto-secure-access\search-service-portal.png "Hizmet FQDN 'SI al")
 
-Arama hizmetinin IP adresi, `nslookup` FQDN 'nin bir (veya a) gerçekleştirerek elde edilebilir `ping` . Bu, güvenlik duvarı kurallarına eklenecek IP adreslerinden biri olacaktır.
+Arama hizmetinin IP adresi, `nslookup` FQDN 'nin bir (veya a) gerçekleştirerek elde edilebilir `ping` . Aşağıdaki örnekte, Azure Storage güvenlik duvarında gelen bir kurala "10.50.10.50" ekleyeceksiniz.
 
 ```azurepowershell
 
@@ -45,6 +45,8 @@ Aliases:  contoso.search.windows.net
 ```
 
 ## <a name="get-the-ip-address-ranges-for-azurecognitivesearch-service-tag"></a>"Azurecognivesearch" hizmet etiketi için IP adresi aralıklarını al
+
+Ek IP adresleri, dizin oluşturucunun [çok kiracılı yürütme ortamından](search-indexer-securing-resources.md#indexer-execution-environment)kaynaklanan istekler için kullanılır. Bu IP adresi aralığını hizmet etiketinden alabilirsiniz.
 
 Hizmet etiketi için IP adresi aralıkları `AzureCognitiveSearch` [bulma API 'si (Önizleme)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) veya [indirilebilir JSON dosyası](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)aracılığıyla elde edilebilir.
 
@@ -75,20 +77,18 @@ Arama hizmetinin Orta Batı ABD olduğu kabul edildiğinde JSON dosyasından, ç
 
 ## <a name="add-the-ip-address-ranges-to-ip-firewall-rules"></a>IP adresi aralıklarını IP güvenlik duvarı kurallarına ekleme
 
-Bir depolama hesabının güvenlik duvarı kuralına IP adres aralıklarını eklemenin en kolay yolu Azure portal aracılığıyla yapılır. Portalda depolama hesabını bulun ve "**güvenlik duvarları ve sanal ağlar**" sekmesine gidin.
+Bir depolama hesabının güvenlik duvarı kuralına IP adres aralıklarını eklemenin en kolay yolu Azure portal aracılığıyla yapılır. Portalda depolama hesabını bulun ve **güvenlik duvarları ve sanal ağlar** sekmesine gidin.
 
    ![Güvenlik Duvarı ve sanal ağlar](media\search-indexer-howto-secure-access\storage-firewall.png "Güvenlik Duvarı ve sanal ağlar")
 
-Daha önce alınan üç IP adresini (1. arama hizmeti IP 'si için 1, `AzureCognitiveSearch` hizmet etiketi için 2) adres aralığında ekleyin ve "**Kaydet**" e tıklayın
+Daha önce alınan üç IP adresini (1. arama hizmeti IP 'si için 1, `AzureCognitiveSearch` hizmet etiketi için 2) adres aralığında ekleyin ve **Kaydet**' i seçin.
 
    ![Güvenlik Duvarı IP kuralları](media\search-indexer-howto-secure-access\storage-firewall-ip.png "Güvenlik Duvarı IP kuralları")
 
-Güvenlik duvarı kuralları, depolama hesabındaki verilere erişebilecek dizin oluşturucularının güncelleştirilmesini sağlamak için 5-10 dakika sürer.
+Güvenlik duvarı kuralları, güncelleştirildikten sonra 5-10 dakika sürer ve bu, dizin oluşturucularının depolama hesabındaki verilere erişebilmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Dizinlerin erişimine izin vermek için iki IP adresi kümesini nasıl alacağınız bilineceğimize göre, bazı ortak veri kaynakları için IP güvenlik duvarı kurallarını güncelleştirmek üzere aşağıdaki bağlantıları kullanın.
-
 - [Azure Storage güvenlik duvarlarını yapılandırma](../storage/common/storage-network-security.md)
-- [CosmosDB için IP güvenlik duvarını yapılandırma](../cosmos-db/firewall-support.md)
+- [Cosmos DB için IP güvenlik duvarını yapılandırma](../cosmos-db/firewall-support.md)
 - [Azure SQL Server için IP güvenlik duvarını yapılandırma](../azure-sql/database/firewall-configure.md)

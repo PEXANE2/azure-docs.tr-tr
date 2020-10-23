@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc06f7c75e27d831994b97b97f3d20bb34c3a6c5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847488"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167942"
 ---
 # <a name="manage-farms"></a>Grupları yönetme
 
@@ -25,7 +25,7 @@ Aşağıdaki adımları kullanın:
 
     Örnek görüntü aşağıda verilmiştir:
 
-    ![Proje grubu ları](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![Gruplar sayfasını gösteren ekran görüntüsü.](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
 2. **Grup Oluştur** ' u seçin **ve ad**, **kırpı** ve **Adres**sağlayın.
@@ -33,14 +33,14 @@ Aşağıdaki adımları kullanın:
 
 Aşağıda, bir grup sınırı tanımlamanın iki yolu verilmiştir:
 
-1. **Haritada işaretle**: harita denetim aracını kullanarak grubun sınırını çizin ve işaretleyin. Sınırları işaretlemek için,  ![ Proje grubu ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) ve tam sınırları işaretler.
+1. **Haritada işaretle**: harita denetim aracını kullanarak grubun sınırını çizin ve işaretleyin. Sınırları işaretlemek için,  ![ haritada sınırları çizme kalem simgesini gösteren ekran görüntüsü ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) ve tam sınırları işaretleyin.
 
-    ![Proje grubu ları](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![Bir haritada çizilen sınırları gösteren ekran görüntüsü.](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
 2. **Geojson kodunu Yapıştır**: geojson, JAVASCRIPT nesne GÖSTERIMI (JSON) kullanarak coğrafi veri yapılarını kodlamaya yönelik bir biçimdir. Bu seçenek, Grup sınırlarını işaretlemek için GeoJSON dizesinin girilebileceği bir metin kutusu görüntüler. Ayrıca, GeoJSON.io adresinden coğrafi JSON kodu da oluşturabilirsiniz.
 Bilgileri doldurmaya yardımcı olması için araç ipuçlarını kullanın.
 
-    ![Proje grubu ları](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![Grup Oluştur ekranında GeoJson kodunu Yapıştır seçeneğinin vurgualdığı ekran görüntüsü.](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
 3.  Bir grup oluşturmak için **Gönder** ' i seçin. **Gruplar** sayfasında yeni bir grup oluşturulur ve görüntülenir.
 
@@ -71,7 +71,7 @@ Grup listesi sayfası oluşturulan grupların bir listesini görüntüler. Liste
 1.  Grup ayrıntılarını silmek için listeden bir grup seçin.
 2.  Grubu silmek için **Grubu Sil** ' i seçin.
 
-    ![Proje grubu ları](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![Grup silme ekranını gösteren ve Sil düğmesini vurgulayan ekran görüntüsü.](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
     > Bir grubu sildiğinizde, grupla ilişkili cihazlar ve haritalar silinmez. Cihazla ve eşlemlerle ilişkili tüm grup bilgileri ilgili olmaz. Cihaz, telemetri ve haritaları Farmtts hizmetinden görüntülemeye devam edebilirsiniz.

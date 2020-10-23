@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
-ms.openlocfilehash: a2ac8a84b4df4a241665e7f4269803908733ca82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249918"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316665"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code için Service Fabric
 
@@ -42,7 +42,7 @@ Tüm ortamlarda aşağıdaki önkoşulların yüklü olması gerekir.
 
 Java geliştirmesi için aşağıdaki önkoşulların yüklü olması gerekir:
 
-* [Java SDK 'sı](https://aka.ms/azure-jdks) (sürüm 1,8)
+* [Java SDK 'sı](/azure/developer/java/fundamentals/java-jdk-long-term-support) (sürüm 1,8)
 * [Gradle](https://gradle.org/install/)
 * [Java vs Code uzantısı Için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Java hizmetlerinde hata ayıklamak için gereklidir. Java hizmetleri 'nde hata ayıklama yalnızca Linux 'ta desteklenir. VS Code ve uzantıyı arayarak ya da VS Code marketinden, **etkinlik çubuğundaki** uzantılar simgesine tıklayarak yükleyebilirsiniz.
 

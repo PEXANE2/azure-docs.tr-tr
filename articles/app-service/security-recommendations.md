@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9f8fba617eb0274a8db7adc5d36c6ff50be10924
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09dbe0fbefb8b90b4c4e1ddef57abf3b13856183
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761388"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148078"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service için güvenlik önerileri
 
@@ -56,7 +56,7 @@ Bu makale Azure App Service için güvenlik önerileri içerir. Bu önerilerin u
 
 | Öneri | Yorumlar |
 |-|-|
-|Azure Güvenlik Merkezi Standart katmanını kullanın | [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction) , Azure App Service ile yerel olarak tümleşiktir. Değerlendirme çalıştırabilir ve güvenlik önerileri sağlayabilir. |
+|Azure Güvenlik Merkezi Standart katmanını kullanın | [Azure Güvenlik Merkezi](../security-center/defender-for-app-service-introduction.md) , Azure App Service ile yerel olarak tümleşiktir. Değerlendirme çalıştırabilir ve güvenlik önerileri sağlayabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

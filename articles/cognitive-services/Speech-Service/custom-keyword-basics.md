@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667702"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166463"
 ---
 # <a name="get-started-with-custom-keyword"></a>Özel Anahtar Sözcük ile çalışmaya başlama
 
 Bu hızlı başlangıçta, konuşma Studio ve konuşma SDK 'sını kullanarak özel anahtar sözcüklerle çalışmanın temellerini öğreneceksiniz. Anahtar sözcüğü, ürününüzün ses özellikli olmasını sağlayan bir kelime veya kısa bir tümceciktir. Anahtar sözcük modellerini, konuşma Studio 'da oluşturursunuz ve ardından, uygulamalarınızda konuşma SDK 'Sı ile kullandığınız bir model dosyasını dışarı aktarabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. Henüz bir aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free). SDK 'yı almak için platformunuzun [Install Guide](quickstarts/setup-platform.md) bölümüne bakın.
 
@@ -54,7 +54,7 @@ Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. H
 
 1. Portal, anahtar kelime için aday söylenişleri oluşturur. Oynat düğmelerine tıklayarak her bir adayı dinleyin ve yanlış olan herhangi bir söylenin yanındaki denetimleri kaldırın. Yalnızca güzel Söylenişler denetlendikten sonra, anahtar sözcük modelini oluşturmaya başlamak için **eğitme** ' ye tıklayın. 
 
-    ![Anahtar keliinizi gözden geçirin](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    ![Doğru pronounciations seçtiğiniz yeri gösteren ekran görüntüsü.](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
 1. Modelin oluşturulması otuz dakika kadar sürebilir. Model tamamlandığında anahtar sözcük listesi **Işlemden** **başarılı** olarak değişecektir. Sonra dosyayı indirebilirsiniz.
 

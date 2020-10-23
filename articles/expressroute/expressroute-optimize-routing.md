@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653392"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204886"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute Yönlendirmeyi En iyi Duruma Getirme
 Birden çok ExpressRoute bağlantı hattına sahip olduğunuzda, Microsoft'a bağlanmak için birden fazla yolunuz vardır. Sonuç olarak, yetersiz yönlendirme olabilir, diğer bir deyişle, trafiğinizin Microsoft’a ulaşması ve Microsoft’un ağınıza ulaşması daha uzun bir yol alabilir. Ne kadar uzun ağ yolu, o kadar yüksek gecikme. Gecikmenin uygulama performansı ve kullanıcı deneyimi üzerinde doğrudan etkisi vardır. Bu makale, bu sorunu gösterir ve standart yönlendirme teknolojilerini kullanarak yönlendirmenin nasıl iyileştirileceğini açıklar.
@@ -64,7 +64,7 @@ Her iki ofis kullanıcıları için yönlendirmeyi en iyi hale getirmek için, h
 >
 
 ## <a name="suboptimal-routing-from-microsoft-to-customer"></a>Microsoft'tan müşteriye yetersiz yönlendirme
-Burada Microsoft bağlantılarının ağınıza ulaşmasına için daha uzun bir yol aldığı başka bir örnek gösterilmektedir. Bu durumda, [karma bir ortamda](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx) şirket içi Exchange sunucularını ve Exchange Online kullanın. Ofisleriniz bir WAN’a bağlıdır. İki ExpressRoute bağlantı hattı aracılığıyla her iki ofisinizdeki şirket için sunucuların öneklerini Microsoft’a tanıtırsınız. Exchange Online, posta kutusu geçişi gibi durumlarda şirket içi sunuculara bağlantılar başlatır. Ne yazık ki, Los Angeles ofisinizin bağlantısı batı yakasına dönerken tüm kıtadan geçmeden önce ABD Doğu’daki ExpressRoute bağlantı hattına yönlendirilir. Sorunun nedeni birinciye benzemektedir. Herhangi bir ipucu olmadan, Microsoft ağı hangi müşteri önekinin ABD Doğu'ya veya ABD Batı’ya yakın olduğunu bildiremez. Los Angeles’taki ofisiniz için yanlış yolu seçmiş olabilirsiniz.
+Burada Microsoft bağlantılarının ağınıza ulaşmasına için daha uzun bir yol aldığı başka bir örnek gösterilmektedir. Bu durumda, [karma bir ortamda](/exchange/exchange-hybrid) şirket içi Exchange sunucularını ve Exchange Online kullanın. Ofisleriniz bir WAN’a bağlıdır. İki ExpressRoute bağlantı hattı aracılığıyla her iki ofisinizdeki şirket için sunucuların öneklerini Microsoft’a tanıtırsınız. Exchange Online, posta kutusu geçişi gibi durumlarda şirket içi sunuculara bağlantılar başlatır. Ne yazık ki, Los Angeles ofisinizin bağlantısı batı yakasına dönerken tüm kıtadan geçmeden önce ABD Doğu’daki ExpressRoute bağlantı hattına yönlendirilir. Sorunun nedeni birinciye benzemektedir. Herhangi bir ipucu olmadan, Microsoft ağı hangi müşteri önekinin ABD Doğu'ya veya ABD Batı’ya yakın olduğunu bildiremez. Los Angeles’taki ofisiniz için yanlış yolu seçmiş olabilirsiniz.
 
 ![ExpressRoute Vaka 2: Microsoft'tan müşteriye yetersiz yönlendirme](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 

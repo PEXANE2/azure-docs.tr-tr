@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096343"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370449"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
@@ -29,7 +29,7 @@ Site Recovery [Bu senaryo](azure-to-azure-architecture.md)için olağanüstü du
 
 Aşağıdaki diyagramda, Azure VM 'lerde çalışan uygulamalar için tipik bir Azure ortamı gösterilmektedir:
 
-![müşteri-ortam](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Azure VM 'lerde çalışan uygulamalar için tipik bir Azure ortamını gösteren diyagram.](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 Azure ExpressRoute veya şirket içi ağınızdan Azure 'a bir VPN bağlantısı kullanıyorsanız, ortam aşağıdaki gibidir:
 
@@ -41,8 +41,8 @@ Genellikle, ağlar güvenlik duvarları ve ağ güvenlik grupları (NSG 'ler) ku
 > Ağ bağlantısını denetlemek için kimliği doğrulanmış bir proxy kullanmak Site Recovery tarafından desteklenmez ve çoğaltma etkinleştirilemez.
 
 >[!NOTE]
-> Giden bağlantıyı denetlemek için IP adresi tabanlı filtreleme gerçekleştirilmemelidir.
-> Giden bağlantıyı denetlemek için Azure Site Recovery IP adresleri Azure yönlendirme tablosuna eklenmemelidir.
+>- Giden bağlantıyı denetlemek için IP adresi tabanlı filtreleme gerçekleştirilmemelidir.
+>- Giden bağlantıyı denetlemek için Azure Site Recovery IP adresleri Azure yönlendirme tablosuna eklenmemelidir.
 
 ## <a name="outbound-connectivity-for-urls"></a>URL'ler için giden bağlantı
 
@@ -62,9 +62,9 @@ login.microsoftonline.com | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve 
 Giden bağlantıyı denetlemek için NSG kullanılırken, bu hizmet etiketlerine izin verilmesi gerekir.
 
 - Kaynak bölgesindeki depolama hesapları için:
-    - Kaynak bölge için bir [depolama hizmeti etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
+    - Kaynak bölge için bir [depolama hizmeti etiketi](../virtual-network/network-security-groups-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
     - Bu adreslere, verilerin VM 'den önbellek depolama hesabına yazılabilmeleri için izin verin.
-- AAD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturma
+- AAD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/network-security-groups-overview.md#service-tags) tabanlı NSG kuralı oluşturma
 - Hedef bölge için Site Recovery izlemeye erişime izin veren bir EventsHub hizmeti etiketi tabanlı NSG kuralı oluşturun.
 - Herhangi bir bölgedeki Site Recovery hizmetine erişime izin vermek için bir Azuresterecoçok hizmet etiketi tabanlı NSG kuralı oluşturun.
 - AzureKeyVault Service etiketi tabanlı bir NSG kuralı oluşturun. Bu, yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir.

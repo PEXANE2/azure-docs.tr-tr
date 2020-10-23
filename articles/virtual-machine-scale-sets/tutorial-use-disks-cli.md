@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 5dedee5e9ef4d036305a545201afc03d90750189
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7e9e1fa567ae282a4472fa728e53e720bf8ff6f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568327"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367933"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 Sanal makine ölçek kümeleri, sanal makine örneğinin işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir ölçek kümesi oluştururken ve yönetirken, beklenen iş yüküne uygun disk boyutu ve yapılandırmasını seçmek önemlidir. Bu öğretici, sanal makine disklerinin oluşturulmasını ve yönetilmesini kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -76,7 +76,7 @@ Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüks
 ## <a name="create-and-attach-disks"></a>Disk oluşturma ve ekleme
 Bir ölçek kümesi oluştururken veya mevcut bir ölçek kümesi ile diskler oluşturabilir ve ekleyebilirsiniz.
 
-API sürümü itibariyle `2019-07-01` , bir sanal makine ölçek kümesindeki işletim sistemi diskinin boyutunu [Storageprofile. OSDisk. diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) özelliği ile ayarlayabilirsiniz. Sağlamaktan sonra, tüm alanı kullanmak için diski genişletmeniz veya yeniden bölümlemeniz gerekebilir. [Diski burada genişletme](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os)hakkında daha fazla bilgi edinin.
+API sürümü itibariyle `2019-07-01` , bir sanal makine ölçek kümesindeki işletim sistemi diskinin boyutunu [Storageprofile. OSDisk. diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) özelliği ile ayarlayabilirsiniz. Sağlamaktan sonra, tüm alanı kullanmak için diski genişletmeniz veya yeniden bölümlemeniz gerekebilir. [Diski burada genişletme](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os)hakkında daha fazla bilgi edinin.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Ölçek kümesi oluşturulurken diskler ekleme
 Öncelikle, [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Bu örnekte, *eastus* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturulur.

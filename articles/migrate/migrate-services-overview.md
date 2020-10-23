@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti hakkında bilgi edinin.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 48447959f0a60baf8802a9939612bf0d536c2557
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86122090"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314760"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -80,7 +80,7 @@ Sunucu değerlendirmesi, şirket içinde dağıttığınız basit bir [Azure ge�
 
 Azure geçişi: sunucu geçiş aracı, Azure 'a geçiş yapmanıza yardımcı olur:
 
-**Geçiremezsiniz** | **Ayrıntılar**
+**Geçiş** | **Ayrıntılar**
 --- | ---
 Şirket içi VMware sanal makineleri | Aracısız veya aracı tabanlı geçiş kullanarak VM 'Leri Azure 'a geçirin.<br/><br/> Aracısız geçiş için sunucu geçişi, şirket içinde dağıttığınız bir Azure geçiş gereci kullanır. Sunucu değerlendirmesi için kullandığınız gereç türü vardır.<br/><br/> Sunucu değerlendirmesi, aracı tabanlı geçiş için bir çoğaltma gereci kullanır.
 Şirket içi Hyper-V VM'leri | VM 'Leri Azure 'a geçirin.<br/><br/> Sunucu değerlendirmesi, geçiş için Hyper-V konağına yüklenen sağlayıcı aracılarını kullanır.
@@ -124,5 +124,5 @@ Azure geçişi hizmetinin iki sürümü vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [VMware VM](tutorial-prepare-vmware.md)'leri, [Hyper-V VM](tutorial-prepare-hyper-v.md)'lerini veya [fiziksel sunucuları](tutorial-prepare-physical.md)değerlendirmek için öğreticilerimizi deneyin.
+- [VMware VM](./tutorial-discover-vmware.md)'leri, [Hyper-V VM](./tutorial-discover-hyper-v.md)'lerini veya [fiziksel sunucuları](./tutorial-discover-physical.md)değerlendirmek için öğreticilerimizi deneyin.
 - Azure Geçişi hakkında [sık sorulan soruları gözden geçirin](resources-faq.md).

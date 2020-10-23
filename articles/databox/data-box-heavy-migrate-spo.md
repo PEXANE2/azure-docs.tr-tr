@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396867"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127123"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Dosya paylaşma içeriğinizi SharePoint Online 'a geçirmek için Azure Data Box Heavy kullanın
 
@@ -21,9 +21,9 @@ Dosya paylaşma içeriğinizi SharePoint Online ve OneDrive 'a kolayca geçirmek
 
 Microsoft Azure Data Box, bir cihazı Microsoft Azure portal sipariş etmenizi sağlayan bir hizmettir. Daha sonra, sunucularınızdan veri terabayta cihazdan cihaza kopyalayabilirsiniz. Microsoft 'a geri sevk ettikten sonra Verileriniz Azure 'a kopyalanır. Aktarmayı planladığınız verilerin boyutuna bağlı olarak şunları seçebilirsiniz:
 
-- Küçük ve orta ölçekli veri kümelerine yönelik sipariş başına 35-TB kullanılabilir kapasiteye sahip [Data Box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) .
-- Orta-büyük veri kümeleri için cihaz başına 80-TB kullanılabilir kapasiteye sahip [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) .
-- Büyük veri kümeleri için cihaz başına 770-TB kullanılabilir kapasiteye sahip [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) .
+- Küçük ve orta ölçekli veri kümelerine yönelik sipariş başına 35-TB kullanılabilir kapasiteye sahip [Data Box disk](./data-box-disk-overview.md) .
+- Orta-büyük veri kümeleri için cihaz başına 80-TB kullanılabilir kapasiteye sahip [Data Box](./data-box-overview.md) .
+- Büyük veri kümeleri için cihaz başına 770-TB kullanılabilir kapasiteye sahip [Data Box Heavy](./data-box-heavy-overview.md) .
 
 Bu makalede, dosya paylaşma içeriğinizi SharePoint Online 'a geçirmek için Data Box Heavy kullanma hakkında bilgi edinirsiniz.
 
@@ -37,7 +37,7 @@ Bu makalede, dosya paylaşma içeriğinizi SharePoint Online 'a geçirmek için 
 
 ### <a name="for-sharepoint-online"></a>SharePoint Online için
 
-- [SharePoint Geçiş Aracı (SPMT) Için en düşük gereksinimleri](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)gözden geçirin.
+- [SharePoint Geçiş Aracı (SPMT) Için en düşük gereksinimleri](/sharepointmigration/how-to-use-the-sharepoint-migration-tool)gözden geçirin.
 
 ## <a name="workflow-overview"></a>İş akışına genel bakış
 
@@ -84,7 +84,7 @@ En iyi performans ve bağlantı için bir Azure sanal makinesi (VM) oluşturman�
 3. [SharePoint geçiş aracını indirin](https://spmtreleasescus.blob.core.windows.net/install/default.htm) ve Azure VM 'nize yükleyin.
 4. SharePoint geçiş aracını başlatın. **Oturum aç** ' a tıklayın ve iş veya okul hesabınız için Kullanıcı adını ve parolayı girin.
 5. **Verileriniz nerede**olduğu sorulduğunda **dosya paylaşma**' yı seçin. Verilerinizin bulunduğu Azure dosya paylaşımınızın yolunu girin.
-6. Hedef konumunuz dahil olmak üzere, kalan istemleri normal olarak izleyin. Daha fazla bilgi için, [SharePoint Geçiş Aracı 'nı kullanma](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)sayfasına gidin.
+6. Hedef konumunuz dahil olmak üzere, kalan istemleri normal olarak izleyin. Daha fazla bilgi için, [SharePoint Geçiş Aracı 'nı kullanma](/sharepointmigration/how-to-use-the-sharepoint-migration-tool)sayfasına gidin.
 
 > [!IMPORTANT]
 > - Verilerin SharePoint Online 'a alındığı hız, verilerinizin zaten Azure 'da olmasına bakılmaksızın çeşitli faktörlerden etkilenir. Bu faktörleri anlamak, geçişinizin verimliliğini planlayıp en üst düzeye çıkarmanıza yardımcı olur.  Daha fazla bilgi için [SharePoint Online ve OneDrive geçiş hızına](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed)gidin.

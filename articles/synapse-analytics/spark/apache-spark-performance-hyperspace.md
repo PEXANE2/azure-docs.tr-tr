@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1833a606f3dbbc9826858bac4f3ba056b5b7ad8a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249374"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369871"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Derin: Apache Spark için bir dizin oluşturma alt sistemi
 
@@ -410,7 +410,7 @@ FROM T
 WHERE Y = 2
 ```
 
-X bir dizin sütunu olabilir ve Y dahil bir sütun olabilir.
+Y bir dizin sütunu olabilir ve X dahil edilen bir sütun olabilir.
 
 :::zone pivot = "programming-language-scala"
 

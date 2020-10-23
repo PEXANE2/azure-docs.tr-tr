@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: cad92ef376a14805049772cd0bfdbac04309f6c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c083f4576e123ea14d837ed3915c56d18d84623
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185832"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207572"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>Sanal makinelerinize hangi yazılımın yüklendiğini öğrenin
 
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Yüklü olan yazılımları görüntüleme
 > * Yüklü olan yazılımların stok günlüklerinde arama yapma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -151,4 +151,4 @@ Bu öğreticide yazılım envanterini görüntüleme hakkında daha fazla öğre
 Daha fazla bilgi edinmek için Değişiklik İzleme ve envanter özelliğine genel bakış ' a geçin.
 
 > [!div class="nextstepaction"]
-> [Değişiklik İzleme ve envantere genel bakış](change-tracking.md)
+> [Değişiklik İzleme ve envantere genel bakış](change-tracking/overview.md)

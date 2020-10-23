@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309498"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151982"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
 Language Understanding (LUSıS) sözlüğü, LUO hizmeti ile çalışırken karşılaşabileceğiniz terimleri açıklar.
@@ -96,7 +96,7 @@ Sınıflandırıcı, bir girişin hangi kategoriye veya sınıfa uyduğunu tahmi
 
 ## <a name="collaborator"></a>İşbirlikçi
 
-Ortak çalışan, kavramsal olarak aynı şeyi [yapar.](#contributor) Bir sahip, ortak çalışan e-posta adresini Azure rol tabanlı erişim denetimi (Azure RBAC) ile denetlenen bir uygulamaya eklediğinde ortak çalışan erişimi verilir. Ortak çalışanları hala kullanıyorsanız, LUSıS hesabınızı geçirmeniz ve RBAC ile katılımcıları yönetmek için LUSıS yazma kaynaklarını kullanmanız gerekir.
+Ortak çalışan, kavramsal olarak aynı şeyi [yapar.](#contributor) Bir sahip, ortak çalışan e-posta adresini Azure rol tabanlı erişim denetimi (Azure RBAC) ile denetlenen bir uygulamaya eklediğinde ortak çalışan erişimi verilir. Ortak çalışanları hala kullanıyorsanız, LUSıS hesabınızı geçirmeniz ve Azure RBAC ile katılımcıları yönetmek için LUSıS yazma kaynaklarını kullanmanız gerekir.
 
 ## <a name="contributor"></a>Katılımcı
 

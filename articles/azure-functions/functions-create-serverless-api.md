@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083030"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104759"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Işlevlerinde bir HTTP uç noktasını özelleştirme
 
 Bu makalede, Azure Işlevlerinin yüksek düzeyde ölçeklenebilir API 'Ler oluşturmanıza nasıl izin verdiğini öğrenirsiniz. Azure Işlevleri, Node.js, C# ve daha fazlasını içeren çeşitli dillerde bir uç nokta yazmayı kolaylaştıran yerleşik HTTP Tetikleyicileri ve bağlamaları koleksiyonuyla birlikte gelir. Bu makalede, API tasarımınızda belirli eylemleri işlemek üzere bir HTTP tetikleyicisi özelleştireceksiniz. Ayrıca, Azure İşlev Proxy'leri ile tümleştirerek ve sahte API 'Ler ayarlayarak API 'nizi büyümeye hazırlarsınız. Bu görevler, Işlevlerin sunucusuz işlem ortamının üzerinde gerçekleştirilir. bu nedenle, kaynakları ölçeklendirmeniz gerekmez; API mantığınıza odaklanmanız yeterlidir.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -37,7 +37,7 @@ Varsayılan olarak HTTP tetikleyici işleviniz herhangi bir HTTP yöntemini kabu
 
 1. Aşağıdaki tabloda belirtildiği gibi HTTP tetikleyici ayarlarını kullanın.
 
-    | Alan | Örnek değer | Açıklama |
+    | Alan | Örnek değer | Description |
     |---|---|---|
     | Yol şablonu | /hello | Bu işlevi çağırmak için kullanılacak yolu belirler |
     | Yetkilendirme düzeyi | Anonim | İsteğe bağlı: İşlevinizi API anahtarı olmadan erişilebilir duruma getirir |
@@ -75,7 +75,7 @@ Sonraki bölümde, API 'nizi bir ara sunucu üzerinden sunacağız. Azure İşle
 Proxy, herhangi bir HTTP kaynağına yönlendirme yapabilir, örneğin:
 - Azure İşlevleri 
 - [Azure App Service](../app-service/overview.md)'teki API uygulamaları
-- [Linux App Service](../app-service/containers/app-service-linux-intro.md)'teki Docker kapsayıcıları
+- [Linux App Service](../app-service/overview.md#app-service-on-linux)'teki Docker kapsayıcıları
 - Barındırılan herhangi bir API
 
 Proxy'ler hakkında daha fazla bilgi için bkz. [Azure İşlev Proxy'leri ile çalışma].

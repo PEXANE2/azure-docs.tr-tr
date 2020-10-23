@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0a69784be3b03b030ef599037b57c2c20ea2c6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317438"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454686"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için DocuSign 'ı yapılandırma
 
@@ -35,7 +35,7 @@ Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim ala
 
 Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların DocuSign uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları DocuSign uygulamanıza atayabilirsiniz:
 
-[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>DocuSign 'e Kullanıcı atamaya yönelik önemli ipuçları
 
@@ -93,6 +93,12 @@ Bu bölümün amacı, Kullanıcı hesaplarının Active Directory Kullanıcı ta
 Kullanıcılar ve Gruplar bölümünde DocuSign 'a atanan tüm kullanıcıların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve kaynak hazırlama uygulamanızın sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izleyebilirsiniz.
 
 Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+
+## <a name="troubleshooting-tips"></a>Sorun Giderme İpuçları
+* Docusign içindeki bir kullanıcı için rol veya izin profili sağlamak, [anahtar](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) ve [Tekapproleatama](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) işlevleri kullanılarak öznitelik eşlemelerinizde bir ifade kullanılarak gerçekleştirilebilir. Örneğin, aşağıdaki ifade, bir Kullanıcı Azure AD 'de atanan "DS Yöneticisi" rolüne sahip olduğunda "8032066" KIMLIĞINI sağlayacak. Kullanıcıya Azure AD tarafında bir rol atanmamışsa hiçbir izin profili sağlamacaktır. KIMLIK, DocuSign [portalından](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)alınabilir.
+
+Switch (Singleapprotaatama ([Approtaatamalar]), "", "8032066", "DS admin")
+
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

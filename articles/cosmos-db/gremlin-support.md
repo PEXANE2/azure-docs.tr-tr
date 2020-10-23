@@ -1,23 +1,24 @@
 ---
-title: Azure Cosmos DB Gremlin desteği
-description: Apache TinkerPop’un Gremlin dili hakkında bilgi edinin. Azure Cosmos DB’de kullanılabilen özellikleri ve adımları öğrenin
-author: jasonwhowell
+title: Inkerpop özellikleriyle Azure Cosmos DB Gremlin desteği ve uyumluluğu
+description: Apache TinkerPop’un Gremlin dili hakkında bilgi edinin. Azure Cosmos DB ve TinkerPop grafik Altyapısı uyumluluk farkları ' nda hangi özellik ve adımların kullanılabildiğini öğrenin.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 04/23/2020
-ms.author: jasonh
-ms.openlocfilehash: 2629cfc40a9f3c0745df78d9a22883be8476beb9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.author: sngun
+ms.openlocfilehash: f435185d0f00d8f64425e3f2b7081e0ee9a393ce
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409753"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276219"
 ---
-# <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin grafik desteği
-Azure Cosmos DB, [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)olarak bilinen [Apache tinkerpop 'un](https://tinkerpop.apache.org) grafik çapraz geçiş dilini destekler. Grafik varlıkları (köşeler ve kenarlar) oluşturmak, bu varlıkların içindeki özellikleri değiştirmek, sorgu ve geçiş işlemleri gerçekleştirmek ve varlıkları silmek için Gremlin dilini kullanabilirsiniz. 
+# <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Inkerpop özellikleriyle Azure Cosmos DB Gremlin Graph desteği ve uyumluluğu
 
-Bu makalede, Gremlin için hızlı bir yol sunuyoruz ve Gremlin API tarafından desteklenen Gremlin özelliklerini listeliyoruz.
+Azure Cosmos DB, [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)olarak bilinen [Apache tinkerpop 'un](https://tinkerpop.apache.org) grafik çapraz geçiş dilini destekler. Grafik varlıkları (köşeler ve kenarlar) oluşturmak, bu varlıkların içindeki özellikleri değiştirmek, sorgu ve geçiş işlemleri gerçekleştirmek ve varlıkları silmek için Gremlin dilini kullanabilirsiniz.
+
+Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) geçiş adımları belirtimini yakından izler, ancak uygulamada Azure Cosmos DB özgü farklılıklar vardır. Bu makalede, Gremlin için hızlı bir yol sunuyoruz ve Gremlin API tarafından desteklenen Gremlin özelliklerini listeliyoruz.
 
 ## <a name="compatible-client-libraries"></a>Uyumlu istemci kitaplıkları
 
@@ -33,6 +34,7 @@ Aşağıdaki tabloda Azure Cosmos DB’ye karşı kullanabileceğiniz popüler G
 | [Gremlin konsolu](https://tinkerpop.apache.org/downloads.html) | [TinkerPop belgeleri](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gremlin konsolunu kullanarak Grafik oluşturma](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="supported-graph-objects"></a>Desteklenen grafik nesneleri
+
 TinkerPop, çeşitli grafik teknolojilerini kapsayan bir standarttır. Bu nedenle bir grafik sağlayıcısı tarafından sağlanan özellikleri tanımlamaya yönelik standart bir terminolojisi vardır. Azure Cosmos DB kalıcı, yüksek eşzamanlılığa sahip, birden çok sunucu ve kümeye ayrılabilen yazılabilir bir grafik veritabanı sağlar. 
 
 Aşağıdaki tabloda Azure Cosmos DB tarafından uygulanan TinkerPop özellikleri listelenmektedir: 
@@ -114,6 +116,7 @@ Her bir özellik, bir dizi içinde birden çok değer depolayabilir.
 | `value` | Özelliğin değeri
 
 ## <a name="gremlin-steps"></a>Gremlin adımları
+
 Şimdi de Azure Cosmos DB tarafından desteklenen Gremlin adımlarına bakalım. Gremlin hakkında eksiksiz bir başvuru için bkz. [TinkerPop başvurusu](https://tinkerpop.apache.org/docs/3.3.2/reference).
 
 | adım | Açıklama | TinkerPop 3.2 Belgeleri |
@@ -162,6 +165,61 @@ Her bir özellik, bir dizi içinde birden çok değer depolayabilir.
 
 Azure Cosmos DB tarafından sağlanan, yazma için iyileştirilmiş altyapı, köşe ve kenarlar içindeki tüm özelliklerin dizinlerinin otomatik olarak oluşturulmasını varsayılan olarak destekler. Bu nedenle herhangi bir özellik üzerindeki sorgulu filtreler, aralık sorguları, sıralama veya toplamalar dizinden işlenir ve etkin bir biçimde sunulur. Azure Cosmos DB’de dizin oluşturmanın işleyişi hakkında daha fazla bilgi için [schema-agnostic dizin oluşturma](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) makalemizi okuyun.
 
+## <a name="behavior-differences"></a>Davranış farklılıkları
+
+* Azure Cosmos DB Graph Engine, ınkerpop Gremlin 'ın derinliği ilk kez olacak şekilde, ***ilk*** çapraz geçişi çalıştırır. Bu davranış, Cosmos DB benzer şekilde yatay ölçeklenebilir sistemde daha iyi performans elde eder.
+
+## <a name="unsupported-features"></a>Desteklenmeyen özellikler
+
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** graf dolaşma işlemlerine yönelik programlama dilinden bağımsız bir belirtimdir. Cosmos DB Graph henüz desteklemiyor. `GremlinClient.SubmitAsync()`Geçişi bir metin dizesi olarak kullanın ve geçirin.
+
+* ***`property(set, 'xyz', 1)`*** kardinalite kümesi bugün desteklenmiyor. Bunun yerine `property(list, 'xyz', 1)` kullanın. Daha fazla bilgi için bkz. [ınkerpop Ile köşe özellikleri](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+
+* *** `match()` Adım*** Şu anda kullanılamıyor. Bu adım bildirime dayalı sorgulama özellikleri sağlar.
+
+* Köşelerin veya kenarlardaki ***Özellikler olarak nesneler*** desteklenmez. Özellikler yalnızca temel türler veya diziler olabilir.
+
+* ***Dizi özelliklerine*** `order().by(<array property>)` göre sıralama desteklenmez. Yalnızca temel türlere göre sıralama desteklenir.
+
+* ***Ilkel olmayan JSON türleri*** desteklenmez. `string`, `number` Veya türlerini kullanın `true` / `false` . `null` değerler desteklenmez. 
+
+* ***GraphSONv3*** seri hale getirici Şu anda desteklenmiyor. `GraphSONv2`Bağlantı yapılandırmasındaki serileştirici, okuyucu ve yazıcı sınıflarını kullanın. Azure Cosmos DB Gremlin API tarafından döndürülen sonuçlar GraphSON biçimiyle aynı biçimde değil. 
+
+* **Lambda ifadeleri ve işlevleri** Şu anda desteklenmemektedir. Bu,, `.map{<expression>}` `.by{<expression>}` ve `.filter{<expression>}` işlevlerini içerir. Daha fazla bilgi edinmek ve Gremlin adımlarını kullanarak bunları yeniden yazmayı öğrenmek için [Lambdalar hakkında bir nota](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)bakın.
+
+* Sistemin dağıtılmış doğası nedeniyle ***işlemler*** desteklenmiyor.  Gremlin hesabında uygun tutarlılık modelini "kendi yazınızla okumak" üzere yapılandırın ve çakışan yazmaları çözümlemek için iyimser eşzamanlılık kullanın.
+
+## <a name="known-limitations"></a>Bilinen sınırlamalar
+
+* **Orta çapraz geçiş `.V()` adımlarıyla Gremlin sorguları için dizin kullanımı**: Şu anda, `.V()` bir geçiş geçişinin yalnızca ilk çağrısı, bu dizine iliştirilmiş tüm filtre ve koşullara çözüm sağlamak için dizini kullanır. Sonraki çağrılar dizine danışmayacak, bu da sorgunun gecikmesini ve maliyetini artırabilir.
+    
+    Varsayılan dizin oluşturma varsayılırsa, adımla başlayan tipik bir okunan Gremlin sorgusu, `.V()` `.has()` `.where()` sorgu maliyetini ve performansını iyileştirmek için veya gibi ilgili filtreleme adımlarında parametreleri kullanacaktır. Örneğin:
+
+    ```java
+    g.V().has('category', 'A')
+    ```
+
+    Ancak, `.V()` Gremlin sorgusuna birden fazla adım eklendiğinde, sorgu verilerinin çözümlenmesi en iyi durumda olmayabilir. Örnek olarak aşağıdaki sorguyu gerçekleştirin:
+
+    ```java
+    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+    ```
+
+    Bu sorgu, adlandırılan özelliklerine göre iki köşe grubu döndürür `category` . Bu durumda, yalnızca ilk çağrı, `g.V().has('category', 'A')` özelliklerinin değerlerine göre köşeleri çözümlemek için dizini kullanır.
+
+    Bu sorguya yönelik bir geçici çözüm, ve gibi subtraversal adımlarını kullanmaktır `.map()` `union()` . Bu, aşağıda belirtilen şekilde belirlenir:
+
+    ```java
+    // Query workaround using .map()
+    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+
+    // Query workaround using .union()
+    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+    ```
+
+    [Gremlin `executionProfile()` adımını](graph-execution-profile.md)kullanarak sorguların performansını gözden geçirebilirsiniz.
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [SDK’larımızı kullanarak](create-graph-dotnet.md) bir grafik uygulaması oluşturmaya başlayın 
 * Azure Cosmos DB’de [grafik desteği](graph-introduction.md) hakkında daha fazla bilgi edinin

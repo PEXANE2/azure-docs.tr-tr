@@ -1,19 +1,19 @@
 ---
 title: Güvenli bağlantı için özel uç nokta oluşturma
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama hizmetine güvenli bağlantı için bir sanal ağda özel uç nokta ayarlama
+description: Azure Bilişsel Arama hizmetine güvenli bağlantı için bir sanal ağda özel uç nokta ayarlayın.
 manager: nitinme
 author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935764"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280397"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Bilişsel Arama güvenli bağlantısı için özel uç nokta oluşturma
 
@@ -46,7 +46,7 @@ Bu bölümde, arama hizmetinizin özel uç noktasına erişmek için kullanılac
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*yazın ve **Tamam** ' ı seçin. |
-    | Adı | *MyVirtualNetwork* girin |
+    | Ad | *MyVirtualNetwork* girin |
     | Bölge | İstediğiniz bölgeyi seçin |
     |||
 
@@ -152,10 +152,16 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     ||
 
+   > [!NOTE]
+   > IPv4 adresleri [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) biçiminde ifade edilebilir. [RFC 1918](https://tools.ietf.org/html/rfc1918)' de açıklandığı gibi, özel ağ IÇIN ayrılan IP aralığını kullanmaktan kaçınmaya özen gösterin:
+   >
+   > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
+   > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
+   > - `192.168.0.0 - 192.168.255.255 (192.168/16 prefix)`
+
 1. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
 1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin. 
-
 
 ## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
@@ -181,7 +187,6 @@ VM *myvm* ' yi indirip şu şekilde bağlayın:
 1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
-
 
 ## <a name="test-connections"></a>Sınama bağlantıları
 

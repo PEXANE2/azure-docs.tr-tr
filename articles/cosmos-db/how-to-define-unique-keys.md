@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
-description: Azure portal, PowerShell, .net, Java ve çeşitli diğer SDK 'Ları kullanarak bir Azure Cosmos kapsayıcısı için nasıl benzersiz anahtarlar tanımlanacağını öğrenin.
+description: Azure Cosmos kapsayıcısı için Azure portal, PowerShell, .NET, Java ve diğer diğer SDK 'Ları kullanarak nasıl benzersiz anahtar tanımlanacağını öğrenin.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: b275703e0f5952be9ab052a789b64d2ea171922c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 968ae8e582587564f1e268f16c18cf6d562d4333
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330545"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279542"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
 
@@ -36,7 +36,7 @@ Bu makalede, Azure Cosmos kapsayıcısı oluştururken [benzersiz anahtarları](
 
     :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Azure portal 'de benzersiz anahtar kısıtlama girişinin ekran görüntüsü":::
 
-## <a name="use-powershell"></a>PowerShell 'i kullanma
+## <a name="use-powershell"></a>PowerShell kullanma
 
 Benzersiz anahtarlarla bir kapsayıcı oluşturmak için bkz. [benzersiz anahtar ve TTL Ile Azure Cosmos kapsayıcısı oluşturma](manage-with-powershell.md#create-container-unique-key-ttl)
 
@@ -151,5 +151,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bölümlendirme](partition-data.md) hakkında daha fazla bilgi edinin
+- [Bölümlendirme](partitioning-overview.md) hakkında daha fazla bilgi edinin
 - [Dizin oluşturmanın nasıl çalıştığını](index-overview.md) keşfet

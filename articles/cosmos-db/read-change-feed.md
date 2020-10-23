@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 58db7dcade7567d632fb405b31c4ff7bdbc6e71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018978"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282069"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB değişiklik akışını okuma
 
@@ -39,7 +39,7 @@ Anında iletme modelinin kullanılması, değişiklik akışından okunması iç
 
 ### <a name="azure-functions"></a>Azure İşlevleri
 
-Yalnızca değişiklik akışını kullanmaya başladıysanız, Azure Işlevleri en basit seçenektir. Kolaylık nedeniyle, çoğu akış kullanım örnekleri için de önerilen seçenektir. Azure Cosmos DB için bir Azure Işlevleri tetikleyicisi oluşturduğunuzda Bağlanılacak kapsayıcıyı seçersiniz ve kapsayıcıda her değişiklik yapıldığında Azure Işlevi tetiklenir. Azure Işlevleri arka planda değişiklik akışı işlemcisini kullandığından, kapsayıcının [bölümlerinde](partition-data.md)değişiklik işlemeyi otomatik olarak paralelleştirin.
+Yalnızca değişiklik akışını kullanmaya başladıysanız, Azure Işlevleri en basit seçenektir. Kolaylık nedeniyle, çoğu akış kullanım örnekleri için de önerilen seçenektir. Azure Cosmos DB için bir Azure Işlevleri tetikleyicisi oluşturduğunuzda Bağlanılacak kapsayıcıyı seçersiniz ve kapsayıcıda her değişiklik yapıldığında Azure Işlevi tetiklenir. Azure Işlevleri arka planda değişiklik akışı işlemcisini kullandığından, kapsayıcının [bölümlerinde](partitioning-overview.md)değişiklik işlemeyi otomatik olarak paralelleştirin.
 
 Azure Işlevleri ile geliştirme, kolay bir deneyimdir ve değişiklik akışı işlemcisini kendi kendinize dağıtmaktan daha hızlı olabilir. Tetikleyiciler, Azure Işlevleri Portalı kullanılarak veya SDK 'lar kullanılarak programlı bir şekilde oluşturulabilir. Visual Studio ve VS Code Azure Işlevleri yazmak için destek sağlar ve platformlar arası geliştirme için Azure Işlevleri CLı 'yi de kullanabilirsiniz. Masaüstünüzdeki kodu yazabilir ve hata ayıklamanıza ve sonra işlevi tek bir tıklama ile dağıtmanıza de tıklayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama](serverless-computing-database.md) ve [Azure işlevleri Ile değişiklik akışını kullanma](change-feed-functions.md) makaleleri.
 

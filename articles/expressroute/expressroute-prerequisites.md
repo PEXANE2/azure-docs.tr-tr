@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569637"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204801"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute önkoşulları ve denetim listesi
 ExpressRoute kullanarak Microsoft bulut hizmetlerine bağlanmak için, aşağıdaki bölümlerde listelenen gereksinimlerin karşılanmış olduğunu doğrulamanız gerekir.
@@ -34,14 +34,14 @@ ExpressRoute kullanarak Microsoft bulut hizmetlerine bağlanmak için, aşağıd
 * **Yönlendirme**: Microsoft bulut nasıl bağlanadığınıza bağlı olarak, siz veya sağlayıcınızın [yönlendirme etkı alanları](expressroute-circuit-peerings.md)için BGP oturumlarını ayarlaması ve yönetmesi gerekir. Bazı Ethernet bağlantı sağlayıcıları veya bulut Exchange sağlayıcıları, değer ekleme hizmeti olarak BGP yönetimi sunabilir.
 * **NAT**: Microsoft genel IP adreslerini sadece Microsoft eşleme yoluyla kabul eder. Şirket içi ağınızda özel IP adresleri kullanıyorsanız, siz veya sağlayıcınızın [NAT kullanarak](expressroute-nat.md)özel IP ADRESLERINI genel IP adreslerine çevirmesi gerekir.
 * **QoS**: Skype Kurumsal’da farklı QoS davranışları gerektiren çeşitli hizmetler (ör. ses, video, mesaj) vardır. [Qos gereksinimleri](expressroute-qos.md)ne siz ve sağlayıcınız tarafından uyulmalıdır.
-* **Ağ Güvenliği**: ExpressRoute ile Microsoft Bulut'a bağlanırken [ağ güvenliğine](../best-practices-network-security.md) dikkat edin.
+* **Ağ Güvenliği**: ExpressRoute ile Microsoft Bulut'a bağlanırken [ağ güvenliğine](/azure/cloud-adoption-framework/reference/networking-vdc) dikkat edin.
 
 ## <a name="microsoft-365"></a>Microsoft 365
 ExpressRoute üzerinde Microsoft 365 etkinleştirmeyi planlıyorsanız, Microsoft 365 gereksinimler hakkında daha fazla bilgi için aşağıdaki belgeleri gözden geçirin.
 
 * [Microsoft 365 için Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [Microsoft 365 için ExpressRoute ile yönlendirme](/microsoft-365/enterprise/routing-with-expressroute)
-* [ExpressRoute ile yüksek kullanılabilirlik ve yük devretme](https://aka.ms/erhighavailability)
+* [ExpressRoute ile yüksek kullanılabilirlik ve yük devretme](/microsoft-365/enterprise/network-planning-with-expressroute)
 * [Microsoft 365 URL 'Leri ve IP adresi aralıkları](/microsoft-365/enterprise/urls-and-ip-address-ranges)
 * [Microsoft 365 için ağ planlama ve performans ayarlaması](/microsoft-365/enterprise/network-planning-and-performance)
 * [Microsoft 365 için ağ ve geçiş planlaması](/microsoft-365/enterprise/network-and-migration-planning)

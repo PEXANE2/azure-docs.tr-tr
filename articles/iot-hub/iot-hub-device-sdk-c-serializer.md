@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81767018"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152237"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C için Azure IoT cihaz SDK 'Sı – serileştirici hakkında daha fazla bilgi
 
@@ -28,7 +28,7 @@ Son olarak, makale, ileti ve özellik işleme gibi önceki makalelerde ele alın
 
 Bu makalede açıklanan her şey, **serileştirici** SDK örneklerine dayalıdır. Birlikte izlemek isterseniz, C için Azure IoT cihaz SDK 'sına eklenen **SimpleSample \_ AMQP** ve **SimpleSample \_ http** uygulamalarına bakın.
 
-C GitHub deposu [**Için Azure IoT CIHAZ SDK**](https://github.com/Azure/azure-iot-sdk-c) 'sını bulabilir ve [c API başvurusunda](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)API 'nin ayrıntılarını görüntüleyebilirsiniz.
+C GitHub deposu [**Için Azure IoT CIHAZ SDK**](https://github.com/Azure/azure-iot-sdk-c) 'sını bulabilir ve [c API başvurusunda](/azure/iot-hub/iot-c-sdk-ref/)API 'nin ayrıntılarını görüntüleyebilirsiniz.
 
 ## <a name="the-modeling-language"></a>Modelleme dili
 
@@ -65,7 +65,7 @@ Bu örnekte gösterilmediğinden, SDK tarafından desteklenen ek veri türleri d
 
 Aşağıdaki veri türleri, **serileştirici** kitaplığı ile oluşturulan modellerde desteklenir:
 
-| Tür | Açıklama |
+| Tür | Description |
 | --- | --- |
 | double |çift duyarlık kayan nokta sayısı |
 | int |32 bit tamsayı |
@@ -670,4 +670,4 @@ Bu Ayrıca, **C Için Azure IoT cihaz SDK 'sı**ile uygulamaların nasıl geliş
 
 IoT Hub için geliştirme hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 
-IoT Hub yeteneklerini daha fazla incelemek için bkz. [Azure IoT Edge ile uç CIHAZLARA AI dağıtma](../iot-edge/tutorial-simulate-device-linux.md).
+IoT Hub yeteneklerini daha fazla incelemek için bkz. [Azure IoT Edge ile uç CIHAZLARA AI dağıtma](../iot-edge/quickstart-linux.md).

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409621"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279846"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB Gremlin API 'sine giriş
 
@@ -48,7 +48,7 @@ Azure Cosmos DB Gremlin API 'nin sunduğu farklı özellikler şunlardır:
 
   Azure Cosmos DB, veritabanı ve makine kaynaklarını yönetme ihtiyacını ortadan kaldırır. Birçok mevcut grafik veritabanı platformu, altyapısının kısıtlamalarına bağlanır ve genellikle çalışmasını sağlamak için yüksek düzeyde bakım gerektirir. 
   
-  Tam olarak yönetilen bir hizmet olarak, Cosmos DB sanal makineleri yönetme, çalışma zamanı yazılımlarını güncelleştirme, parçalama veya çoğaltmayı yönetme veya karmaşık veri katmanı yükseltmeleriyle işleme gereksinimini ortadan kaldırır. Tüm grafikler otomatik olarak yedeklenir ve bölgesel arızalara karşı korunur. Bu garanti, geliştiricilerin grafik veritabanlarını çalıştırmak ve yönetmek yerine uygulama değeri sunmaya odaklanmasını sağlar. 
+  Tam olarak yönetilen bir hizmet olarak, Cosmos DB sanal makineleri yönetme, çalışma zamanı yazılımlarını güncelleştirme, parçalama veya çoğaltmayı yönetme veya karmaşık veri katmanı yükseltmeleriyle işleme gereksinimini ortadan kaldırır. Tüm grafikler otomatik olarak yedeklenir ve bölgesel arızalara karşı korunur. Bu, geliştiricilerin grafik veritabanlarını çalıştırmak ve yönetmek yerine uygulama değeri sunmaya odaklanmasını sağlar. 
 
 * **Otomatik dizin oluşturma**
 

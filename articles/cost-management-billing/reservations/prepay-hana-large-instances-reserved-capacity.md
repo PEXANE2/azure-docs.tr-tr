@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 44f7ce657ea9341779e15f6e4817e8fae1515e47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685978"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151501"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Azure rezervasyonuyla SAP HANA Büyük Örnekleri’nden tasarruf etme
 
@@ -32,15 +32,15 @@ HLI SKU'su, ayrılmış kapasite satın alma işlemine geçmeden önce sağlanma
 - HANA ayrılmış kapasitesi için paylaşılan bir rezervasyon kapsamınız olamaz. Rezervasyon kapsamını bölemez, birleştiremez veya güncelleştiremezsiniz.
 - Ayrılmış kapasite API çağrılarını kullanarak bir kerede tek bir HLI satın alabilirsiniz. Ek miktarlar satın almak için ek API çağrıları yapın.
 
-Azure portalında veya [REST API](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase)'yi kullanarak ayrılmış kapasite satın alabilirsiniz.
+Azure portalında veya [REST API](/rest/api/reserved-vm-instances/reservationorder/purchase)'yi kullanarak ayrılmış kapasite satın alabilirsiniz.
 
 ## <a name="buy-a-hana-large-instance-reservation"></a>HANA Büyük Örnekleri rezervasyonu satın alma
 
-Aşağıdaki bilgileri kullanarak [Rezervasyon Siparişi REST API'leriyle](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase) bir HLI rezervasyonu satın alabilirsiniz.
+Aşağıdaki bilgileri kullanarak [Rezervasyon Siparişi REST API'leriyle](/rest/api/reserved-vm-instances/reservationorder/purchase) bir HLI rezervasyonu satın alabilirsiniz.
 
 ### <a name="get-the-reservation-order-and-price"></a>Rezervasyon siparişini ve fiyatını alma
 
-İlk olarak, [Hesaplanan Fiyat](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/calculate) API'sini kullanarak sağlanan HANA Büyük Örnekleri SKU'su için rezervasyon siparişini ve fiyatını alın.
+İlk olarak, [Hesaplanan Fiyat](/rest/api/reserved-vm-instances/reservationorder/calculate) API'sini kullanarak sağlanan HANA Büyük Örnekleri SKU'su için rezervasyon siparişini ve fiyatını alın.
 
 Aşağıdaki örnekte PowerShell ile REST API çağrıları yapmak için [armclient](https://github.com/projectkudu/ARMClient) kullanılır. Rezervasyon siparişi ile Hesaplanan Fiyat API'si isteğinin ve istek gövdesinin nasıl görünmesi gerektiği aşağıda gösterilmiştir:
 
@@ -220,7 +220,7 @@ Aşağıdaki bilgilerde çeşitli rezervasyon alanlarının anlamı açıklanmı
 
   **SKU** HLI SKU'sunun adı. Şuna benzer: `SAP_HANA_On_Azure_<SKUname>`.
 
-  **Konum** Kullanılabilir HLI bölgeleri. Kullanılabilir bölgeler için bkz. [Azure üzerinde SAP HANA (Büyük Örnekler) için SKU'lar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus). Konum dizesinin biçimini almak için [konum alma API'si çağrısını](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations#locationlistresult) kullanın.
+  **Konum** Kullanılabilir HLI bölgeleri. Kullanılabilir bölgeler için bkz. [Azure üzerinde SAP HANA (Büyük Örnekler) için SKU'lar](../../virtual-machines/workloads/sap/hana-available-skus.md). Konum dizesinin biçimini almak için [konum alma API'si çağrısını](/rest/api/resources/subscriptions/listlocations#locationlistresult) kullanın.
 
   **Ayrılmış Kaynak türü** `SapHana`
 
@@ -248,5 +248,5 @@ location. You can also go to https://aka.ms/corequotaincrease to learn about quo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Postman ve cURL ile Azure REST API'lerini çağırma](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman).
-- Kullanılabilir SKU listesi ve bölgeler için bkz. [Azure üzerinde SAP HANA (Büyük Örnekler) için SKU'lar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus).
+- [Postman ve cURL ile Azure REST API'lerini çağırma](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman).
+- Kullanılabilir SKU listesi ve bölgeler için bkz. [Azure üzerinde SAP HANA (Büyük Örnekler) için SKU'lar](../../virtual-machines/workloads/sap/hana-available-skus.md).

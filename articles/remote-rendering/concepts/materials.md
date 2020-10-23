@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8f3a0d0ec79624fb709bb80b8392e2ad8d6f7ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dca22303edc3b75625df88dac98557c6a2e6162
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613864"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202861"
 ---
 # <a name="materials"></a>Malzemeler
 
@@ -84,14 +84,14 @@ void SetMaterialColorToGreen(ApiHandle<Material> material)
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# malzeme sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.material)
-* [C# colormalzemeler sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
-* [C# pbrmalzemeler sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C# RemoteManager. Createmalzemesi ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
-* [C++ malzeme sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/material)
-* [C++ Colormalzemeler sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
-* [C++ Pbrmalzemeler sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
-* [C++ RemoteManager:: Createmateryal()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C# malzeme sınıfı](/dotnet/api/microsoft.azure.remoterendering.material)
+* [C# colormalzemeler sınıfı](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# pbrmalzemeler sınıfı](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager. Createmalzemesi ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ malzeme sınıfı](/cpp/api/remote-rendering/material)
+* [C++ Colormalzemeler sınıfı](/cpp/api/remote-rendering/colormaterial)
+* [C++ Pbrmalzemeler sınıfı](/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager:: Createmateryal()](/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

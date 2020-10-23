@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181723"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372472"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Self Servis uygulama erişimini kullanma
 
@@ -67,4 +67,4 @@ Bu onaylar yalnızca tek onay iş akışlarını destekler, yani birden çok ona
 -   Self Servis uygulama erişimi son zamanlarda yapılandırıldıysa, self servis erişim değişikliklerinin görünmediği anlamak için birkaç dakika sonra kullanıcının uygulamalarıma yeniden oturum açmayı deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Self servis grup yönetimi için Azure Active Directory'yi ayarlama](../users-groups-roles/groups-self-service-management.md)
+[Self servis grup yönetimi için Azure Active Directory'yi ayarlama](../enterprise-users/groups-self-service-management.md)

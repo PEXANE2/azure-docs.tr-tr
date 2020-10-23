@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9be94183fc34c2dbee3503d21e2e643d5296a82b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962998"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461133"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
 
@@ -25,12 +25,14 @@ ms.locfileid: "91962998"
 > links to our Hero Sample repo need to be updated when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [Bu örnek GitHub ' da kullanılabilir.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+
+
 Azure Iletişim Hizmetleri **grubu sohbeti Hero örneği** , Iletişim Hizmetleri sohbet Web istemci kitaplığı 'nın bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini gösterir.
 
 Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan önce örneğin nasıl çalıştığını öğreneceksiniz. Daha sonra Azure Iletişim Hizmetleri kaynaklarınızı kullanarak örneği Azure 'a dağıtırsınız.
 
-> [!IMPORTANT]
-> [GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -107,7 +109,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 ## <a name="next-steps"></a>Sonraki adımlar
 
 >[!div class="nextstepaction"] 
->[GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+>[GitHub 'dan örneği indirin](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 

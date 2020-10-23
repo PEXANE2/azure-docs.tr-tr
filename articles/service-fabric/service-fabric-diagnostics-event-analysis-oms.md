@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257662"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329568"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile olay Analizi ve görselleştirme
  Azure Izleyici günlükleri, bulutta barındırılan uygulama ve hizmetlerden Telemetriyi toplayıp analiz eder ve kullanılabilirlik ve performansını en üst düzeye çıkarmanıza yardımcı olacak analiz araçları sağlar. Bu makalede, Azure Izleyici günlüklerinde sorguların nasıl çalıştırılacağı özetlenmektedir ve kümenizde neler olduğunu gidermeye yönelik bilgiler verilmektedir. Aşağıdaki sık sorulan sorular giderilmiştir:
@@ -42,7 +42,7 @@ Kaynak **Servicefabric \<nameOfOMSWorkspace\> **' i seçin.
 
 Aşağıdaki görüntüde Service Fabric Analytics çözümünün giriş sayfası gösterilmektedir. Bu giriş sayfası, kümenizde neler olduğunu bir anlık görüntü görünümü sağlar.
 
-![Service Fabric çözümü](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Service Fabric Analytics çözümünün ana sayfasını gösteren ekran görüntüsü.](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
  Küme oluşturma sonrasında tanılamayı etkinleştirdiyseniz, için olayları görebilirsiniz 
 

@@ -141,7 +141,7 @@
           href: app/data-retention-privacy.md
     - name: Uyarılar
       items:
-        - name: Genel Bakış
+        - name: Genel bakış
           href: platform/alerts-overview.md
         - name: Ölçüm uyarıları
           href: platform/alerts-metric-overview.md
@@ -204,7 +204,7 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: Genel Bakış
+        - name: Genel bakış
           displayname: 'Log Analytics, log query, log queries, query, queries'
           href: log-query/log-query-overview.md
         - name: Öğretici
@@ -292,8 +292,8 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
-                - name: Resource Manager şablonu
-                  href: platform/template-workspace-configuration.md
+            - name: Çalışma alanını izleme
+              href: platform/monitor-workspace.md
             - name: Çalışma alanını silme ve kurtarma
               href: platform/delete-workspace.md
             - name: Erişimi yönetme
@@ -404,7 +404,7 @@
               href: insights/solution-agenthealth.md
         - name: Azure Tanılama uzantısı
           items:
-            - name: Genel Bakış
+            - name: Genel bakış
               href: platform/diagnostics-extension-overview.md
             - name: Windows
               displayname: diagnostics extension

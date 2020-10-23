@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24ec674c35a4e218c105febf6471ae8427f3c1c3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531036"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125739"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>MySQL için Azure veritabanı altyapısı Çift şifreleme
 
@@ -20,7 +20,7 @@ MySQL için Azure veritabanı, Microsoft 'un yönetilen anahtarlarını kullanar
 Altyapı çift şifrelemesi, hizmet tarafından yönetilen anahtarlar kullanılarak ikinci bir şifreleme katmanı ekler. FIPS 140-2 tarafından doğrulanan şifreleme modülünü, farklı bir şifreleme algoritması kullanır. Bu, bekleyen veriler için ek bir koruma katmanı sağlar. Altyapı çift şifrelemede kullanılan anahtar, MySQL için Azure veritabanı hizmeti tarafından da yönetilir. Ek şifreleme katmanı performans etkisine sahip olabileceği için altyapı çift şifrelemesi varsayılan olarak etkinleştirilmemiştir.
 
 > [!NOTE]
-> Bu özellik, MySQL için Azure veritabanı 'nın "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Bu özellik yalnızca PostgreSQL için Azure veritabanı 'nda "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarında desteklenir.
 
 Altyapı katmanı şifrelemesi, depolama cihazına veya ağ kablolarına en yakın katmanda uygulanma avantajına sahiptir. MySQL için Azure veritabanı, hizmet tarafından yönetilen anahtarlar kullanılarak iki şifreleme katmanını uygular. Hizmet katmanında Teknik olarak yine de devam ediyor olsa da, bekleyen verileri depolayan donanıma çok yakın. İsteğe bağlı olarak, sağlanan MySQL sunucusu için [müşteri tarafından yönetilen anahtarı](concepts-data-encryption-mysql.md) kullanarak bekleyen veri şifrelemeyi etkinleştirebilirsiniz. 
 

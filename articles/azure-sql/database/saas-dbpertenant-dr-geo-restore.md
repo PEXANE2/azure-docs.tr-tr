@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619047"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330113"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Bir çok kiracılı SaaS uygulamasını veritabanı yedeklemelerinden kurtarmak için coğrafi geri yükleme kullanın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -184,7 +184,7 @@ Uygulamanın dağıtıldığı bölgede bir kesinti olduğunu düşünün ve kur
 
 3. Kurtarma işleminin durumunu PowerShell penceresinde izleyin.
 
-    ![Kurtarma işlemi](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![Kurtarma işleminin durumunu izleyebileceğiniz PowerShell penceresini gösteren ekran görüntüsü.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > Kurtarma işlerinin kodunu araştırmak için,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\RecoveryJobs klasöründeki PowerShell betiklerini inceleyin.
@@ -202,7 +202,7 @@ Uygulama uç noktası Traffic Manager devre dışı bırakılsa da, uygulama kul
 
   * Kiracı çevrimdışıyken bir kiracının Olaylar sayfasını açarsanız, sayfada kiracı çevrimdışı bildirimi görüntülenir. Örneğin, contoso Concert Salı çevrimdışıysa, şunu açmayı deneyin http://events.wingtip-dpt.&lt ; user &gt; . trafficmanager.net/contosoconcerthall.
 
-    ![Kurtarma işlemi](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![Çevrimdışı Olaylar sayfasını gösteren ekran görüntüsü.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Kurtarma bölgesinde yeni bir kiracı sağlayın
 Kiracı veritabanları geri yüklenmeden önce bile, kurtarma bölgesinde yeni kiracılar sağlayabilirsiniz. Kurtarma bölgesinde sağlanan yeni kiracı veritabanları, kurtarılan veritabanlarıyla daha sonra yeniden boyar.   

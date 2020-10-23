@@ -168,6 +168,7 @@
         - name: İş hazırlığı ve tamamlama görevleri
           href: batch-job-prep-release.md
         - name: Eşzamanlı düğüm görevleri
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: Görev bağımlılıkları
           href: batch-task-dependencies.md
@@ -236,7 +237,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

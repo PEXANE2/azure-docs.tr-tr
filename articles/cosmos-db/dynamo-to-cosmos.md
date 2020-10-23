@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 167d1f21a2eb7ea4c685b5bbbb5d8d64fcc1367e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261877"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278695"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Uygulamanızı Amazon DynamoDB konumundan Azure Cosmos DB geçirin
 
@@ -144,7 +144,7 @@ client_documentDB = new CosmosClient("your connectionstring from the Azure porta
 
 Azure Cosmos DB, bağlantınızı iyileştirmek için aşağıdaki seçenekleri kullanabilirsiniz:
 
-* **Connectionmode** -Azure Cosmos DB hizmetindeki veri düğümlerine bağlanmak için doğrudan bağlantı modunu kullanın. Ağ Geçidi modunu yalnızca mantıksal adresleri başlatmak ve önbelleğe almak ve güncelleştirmelerde yenilemek için kullanın. Daha fazla ayrıntı için [bağlantı modları](performance-tips.md#networking) makalesine bakın.
+* **Connectionmode** -Azure Cosmos DB hizmetindeki veri düğümlerine bağlanmak için doğrudan bağlantı modunu kullanın. Ağ Geçidi modunu yalnızca mantıksal adresleri başlatmak ve önbelleğe almak ve güncelleştirmelerde yenilemek için kullanın. Daha fazla ayrıntı için [bağlantı modları](sql-sdk-connection-modes.md) makalesine bakın.
 
 * **ApplicationRegion** -Bu seçenek, Azure Cosmos DB etkileşimde bulunmak için kullanılan tercih edilen coğrafi olarak çoğaltılan bölgeyi ayarlamak için kullanılır. Daha fazla bilgi edinmek için bkz. [genel dağıtım](distribute-data-globally.md) makalesi.
 

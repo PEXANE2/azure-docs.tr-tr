@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 3d15f4039da85dfa926e7bc9ab96b2c48965d5f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f23efa8d0439422fef685480ed270dce6e78a204
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658795"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366862"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Özel uç noktaları kullanarak şirket içi makineleri çoğaltma
 
@@ -123,7 +123,7 @@ Azure depolama 'ya özel bir uç nokta kullanabilirsiniz. Depolama erişimi içi
 > [!NOTE]
 > Depolama için özel uç noktalar yalnızca Genel Amaçlı v2 depolama hesaplarında oluşturulabilir. Fiyatlandırma bilgileri için bkz. [Azure sayfa Blobları fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
-Özel bir uç nokta ile bir depolama hesabı oluşturmak için [özel depolama oluşturma kılavuzunu](../private-link/create-private-endpoint-storage-portal.md#create-your-private-endpoint) izleyin. **Özel DNS bölgesiyle tümleştirin**altında **Evet** ' i seçtiğinizden emin olun. Var olan bir DNS bölgesi seçin veya yeni bir tane oluşturun.
+Özel bir uç nokta ile bir depolama hesabı oluşturmak için [özel depolama oluşturma kılavuzunu](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint) izleyin. **Özel DNS bölgesiyle tümleştirin**altında **Evet** ' i seçtiğinizden emin olun. Var olan bir DNS bölgesi seçin veya yeni bir tane oluşturun.
 
 ### <a name="grant-required-permissions-to-the-vault"></a>Kasaya gerekli izinleri verme
 

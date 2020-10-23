@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bfe1109640f158b92f54b945d314ac65a93ddc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403560"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107921"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure İzleyici'de günlük verileri alım süresi
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Genellikle günlük verilerinin toplandıktan sonra kullanılabilir hale gelmesi için geçen süre hakkında sık sorulan sorular vardır. Bu makalede, bu gecikmeyi etkileyen farklı faktörler açıklanmaktadır.
@@ -57,7 +57,7 @@ Bazı çözümler, verileri bir aracıdan toplamaz ve ek gecikme sunan bir kolek
 Koleksiyon sıklığını belirlemede her çözüm için belgelere bakın.
 
 ### <a name="pipeline-process-time"></a>Ardışık düzen-işlem süresi
-Günlük kayıtları Azure Izleyici ardışık düzenine alındıktan sonra ( [_TimeReceived](log-standard-properties.md#_timereceived) özelliğinde tanımlandığı gibi), kiracı yalıtımı sağlamak ve verilerin kaybolmamasını sağlamak için geçici depolamaya yazılır. Bu işlem genellikle 5-15 saniye ekler. Bazı yönetim çözümleri, verileri toplamak ve veri akışı sırasında Öngörüler türetmek için daha ağır algoritmalar uygular. Örneğin, ağ performansı Izleme, 3 dakikalık aralıklarla gelen verileri toplar, etkin olarak 3 dakikalık gecikme süresi ekler. Gecikme ekleyen başka bir işlem, özel günlükleri işleyen işlemdir. Bazı durumlarda bu işlem, aracıdan dosyalardan toplanan günlüklere birkaç dakika gecikme süresi ekleyebilir.
+Günlük kayıtları Azure Izleyici ardışık düzenine alındıktan sonra ( [_TimeReceived](./log-standard-columns.md#_timereceived) özelliğinde tanımlandığı gibi), kiracı yalıtımı sağlamak ve verilerin kaybolmamasını sağlamak için geçici depolamaya yazılır. Bu işlem genellikle 5-15 saniye ekler. Bazı yönetim çözümleri, verileri toplamak ve veri akışı sırasında Öngörüler türetmek için daha ağır algoritmalar uygular. Örneğin, ağ performansı Izleme, 3 dakikalık aralıklarla gelen verileri toplar, etkin olarak 3 dakikalık gecikme süresi ekler. Gecikme ekleyen başka bir işlem, özel günlükleri işleyen işlemdir. Bazı durumlarda bu işlem, aracıdan dosyalardan toplanan günlüklere birkaç dakika gecikme süresi ekleyebilir.
 
 ### <a name="new-custom-data-types-provisioning"></a>Yeni özel veri türleri sağlama
 [Özel bir günlük](data-sources-custom-logs.md) veya [Veri Toplayıcı API](data-collector-api.md)'sinden yeni bir tür özel veri oluşturulduğunda, sistem ayrılmış bir depolama kapsayıcısı oluşturur. Ek süre gerektiren bu tek seferlik işlem yalnızca bu veri türüyle ilk kez karşılaşıldığında gerçekleştirilir.
@@ -77,8 +77,8 @@ Alım süresi farklı koşullarda farklı kaynaklar için farklılık gösterebi
 
 | Adım | Özellik veya Işlev | Yorumlar |
 |:---|:---|:---|
-| Veri kaynağında oluşturulan kayıt | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _TimeReceived ile aynı saate ayarlanır. |
-| Azure Izleyici alma uç noktası tarafından alınan kayıt | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| Veri kaynağında oluşturulan kayıt | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _TimeReceived ile aynı saate ayarlanır. |
+| Azure Izleyici alma uç noktası tarafından alınan kayıt | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
 | Kayıt, çalışma alanında depolandı ve sorgular için kullanılabilir | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Alma gecikmesi gecikme gecikmeleri
@@ -143,4 +143,3 @@ Heartbeat
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Izleyici için [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) makalesini okuyun.
-

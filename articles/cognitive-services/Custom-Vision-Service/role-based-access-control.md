@@ -1,7 +1,7 @@
 ---
-title: Rol tabanlı erişim denetimi-Özel Görüntü İşleme
+title: Azure rol tabanlı erişim denetimi-Özel Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Özel Görüntü İşleme projeleriniz için rol tabanlı erişim denetimini nasıl yapılandıracağınız gösterilir.
+description: Bu makalede, Özel Görüntü İşleme projeleriniz için Azure rol tabanlı erişim denetimini nasıl yapılandıracağınız gösterilir.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096946a1a63c0826381875cd3ce4eaf0129a85df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826932"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146376"
 ---
-# <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+# <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
-Özel Görüntü İşleme, Azure kaynaklarına bireysel erişimi yönetmeye yönelik bir yetkilendirme sistemi olan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. RBAC kullanarak, farklı takım üyelerine Özel Görüntü İşleme projeleriniz için farklı düzeylerde izinler atarsınız. RBAC hakkında daha fazla bilgi için bkz. [Azure RBAC belgeleri](https://docs.microsoft.com/azure/role-based-access-control/).
+Özel Görüntü İşleme, Azure kaynaklarına bireysel erişimi yönetmeye yönelik bir yetkilendirme sistemi olan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. Azure RBAC kullanarak, farklı takım üyelerine Özel Görüntü İşleme projeleriniz için farklı düzeylerde izinler atarsınız. Azure RBAC hakkında daha fazla bilgi için bkz. [Azure RBAC belgeleri](https://docs.microsoft.com/azure/role-based-access-control/).
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>Özel Görüntü İşleme kaynağına rol ataması Ekle
 
@@ -27,7 +27,7 @@ Azure RBAC, bir Özel Görüntü İşleme kaynağına atanabilir. Bir Azure kayn
 1. [Azure portalda](https://ms.portal.azure.com/)**Tüm hizmetler**’i seçin. 
 1. Ardından bilişsel **Hizmetler**' i seçin ve özel özel görüntü işleme eğitim kaynağına gidin.
    > [!NOTE]
-   > Ayrıca tüm kaynak grupları, abonelikler veya yönetim grupları için RBAC ayarlayabilirsiniz. İstenen kapsam düzeyini seçip istenen öğeye (örneğin, **kaynak grupları** ' nı seçip istediğiniz kaynak grubunuza tıklayarak) gidip bunu yapın.
+   > Azure RBAC 'yi tüm kaynak grupları, abonelikler veya yönetim grupları için de ayarlayabilirsiniz. İstenen kapsam düzeyini seçip istenen öğeye (örneğin, **kaynak grupları** ' nı seçip istediğiniz kaynak grubunuza tıklayarak) gidip bunu yapın.
 1. Sol gezinti bölmesinde **erişim denetimi (IAM)** seçeneğini belirleyin.
 1. Bu kapsamın rol atamalarını görüntülemek için **rol atamaları** sekmesini seçin.
 1. **Add**  ->  **Rol Ekle ataması**Ekle ' yi seçin.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958370"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370330"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache HBase kullanma
 
@@ -207,9 +207,51 @@ Bu yordam `Contacts` , son yordamda oluşturduğunuz HBase tablosunu kullanır.
 
 1. SSH bağlantısından çıkmak için kullanın `exit` .
 
+### <a name="separate-hive-and-hbase-clusters"></a>Hive ve HBase kümelerini ayır
+
+HBase verilerine erişim için Hive sorgusunun HBase kümesinden yürütülmesi gerekmez. Hive ile birlikte gelen herhangi bir küme (Spark, Hadoop, HBase veya etkileşimli sorgu dahil), HBase verilerini sorgulamak için aşağıdaki adımlar tamamlandıysa kullanılabilir:
+
+1. Her iki küme de aynı sanal ağa ve alt ağa bağlanmalıdır
+2. `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml`HBase küme bir düğümünden Hive kümesi baş 'a kopyalama
+
+### <a name="secure-clusters"></a>Güvenli kümeler
+
+HBase verileri Ayrıca, ESP etkin HBase kullanılarak Hive ile sorgulanabilir: 
+
+1. Çok kümeli bir model takip edildiğinde her iki küme de ESP etkin olmalıdır. 
+2. Hive 'nin HBase verilerini sorgusuna izin vermek için, kullanıcının HBase `hive` Apache Ranger eklentisi aracılığıyla HBase verilerine erişim izni verildiğinden emin olun
+3. Ayrı, ESP etkin kümeler kullanılırken, `/etc/hosts` HBase küme baş içeriğinin `/etc/hosts` Hive küme baş listesine eklenmesi gerekir. 
+> [!NOTE]
+> Kümeleri ölçeklendirdikten sonra `/etc/hosts` tekrar eklenmesi gerekir
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>Curl kullanarak HBase REST API’lerini kullanma
 
 REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.org/wiki/Basic_access_authentication) ile sağlanır. Kimlik bilgilerinizin sunucuya güvenli bir şekilde gönderilmesi için istekleri her zaman Güvenli HTTP (HTTPS) kullanarak yapmalısınız.
+
+1. HDInsight kümesinde HBase REST API 'Lerini etkinleştirmek için, **komut dosyası eylemi** bölümüne aşağıdaki özel başlatma betiğini ekleyin. Kümeyi oluştururken veya küme oluşturulduktan sonra başlangıç betiğini ekleyebilirsiniz. **Düğüm türü**için, betiğin yalnızca HBase bölge sunucularında yürütüldüğünden emin olmak Için **bölge sunucuları** ' nı seçin.
+
+
+    ```bash
+    #! /bin/bash
+
+    THIS_MACHINE=`hostname`
+
+    if [[ $THIS_MACHINE != wn* ]]
+    then
+        printf 'Script to be executed only on worker nodes'
+        exit 0
+    fi
+
+    RESULT=`pgrep -f RESTServer`
+    if [[ -z $RESULT ]]
+    then
+        echo "Applying mitigation; starting REST Server"
+        sudo python /usr/lib/python2.7/dist-packages/hdinsight_hbrest/HbaseRestAgent.py
+    else
+        echo "Rest server already running"
+        exit 0
+    fi
+    ```
 
 1. Kullanım kolaylığı için ortam değişkenini ayarlayın. `MYPASSWORD`Küme oturum açma parolasıyla değiştirerek aşağıdaki komutları düzenleyin. `MYCLUSTERNAME`Değerini HBase kümenizin adıyla değiştirin. Ardından komutları girin.
 
@@ -306,7 +348,7 @@ HDInsight içinde HBase, kümelerin izlenmesi için bir Web Kullanıcı Arabirim
 
 Tutarsızlıkları önlemek için kümeyi silmeden önce HBase tablolarını devre dışı bırakmanız önerilir. HBase komutunu kullanabilirsiniz `disable 'Contacts'` . Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın.

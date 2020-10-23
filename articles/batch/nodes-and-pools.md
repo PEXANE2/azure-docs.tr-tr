@@ -2,13 +2,13 @@
 title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385764"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371452"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -26,7 +26,7 @@ Batch içindeki tüm işlem düğümleri ayrıca şunları içerir:
 
 - Standart bir [klasör yapısı](files-and-directories.md) ve görevlere göre başvurulabilen ilişkili [ortam değişkenleri](jobs-and-tasks.md).
 - Erişimi denetlemek için yapılandırılan **Güvenlik Duvarı** ayarları.
-- Hem Windows (Uzak Masaüstü Protokolü (RDP)) hem de Linux (Güvenli Kabuk (SSH)) düğümlerine [uzaktan erişim](error-handling.md#connect-to-compute-nodes).
+- Hem Windows (Uzak Masaüstü Protokolü (RDP)) hem de Linux (Secure Shell (SSH)) düğümlerine [Uzaktan erişim](error-handling.md#connect-to-compute-nodes) ( [havuzunuzu uzaktan erişim devre dışı olarak oluşturmadığınız](pool-endpoint-configuration.md)müddetçe).
 
 Varsayılan olarak, düğümler birbirleriyle iletişim kurabilir, ancak aynı havuzun parçası olmayan sanal makinelerle iletişim kuramaz. Düğümlerin diğer sanal makinelerle veya şirket içi bir ağla güvenli bir şekilde iletişim kurmasına izin vermek için, havuzu [bir Azure sanal ağı (VNet) alt ağında](batch-virtual-network.md)sağlayabilirsiniz. Bunu yaptığınızda, düğümlerine genel IP adreslerinden erişebilirsiniz. Bu genel IP adresleri Batch tarafından oluşturulur ve havuzun ömrü boyunca değişebilir. Ayrıca, denetlediğiniz [statik genel IP adreslerine sahip bir havuz oluşturabilir](create-pool-public-ip.md) ve bu sayede beklenmedik şekilde değişmemesini sağlayabilirsiniz.
 

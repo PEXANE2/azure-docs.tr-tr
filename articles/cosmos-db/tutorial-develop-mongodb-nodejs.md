@@ -10,18 +10,18 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 992111f6b28356d5220e27a80068acdaf80b4055
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75444694"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280505"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma
 
 Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB çekirdekli genel dağıtım ve yatay ölçek özelliğinden yararlanan belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturmanızı ve sorgulamanızı sağlar. 
+Azure Cosmos DB, Microsoft 'un herhangi bir ölçekte açık API 'Leri olan hızlı NoSQL veritabanıdır. SLA ile desteklenen hız ve kullanılabilirlik, otomatik ve anında ölçeklenebilirlik ve birçok NoSQL altyapısı için açık kaynak API 'Ler sayesinde modern uygulamalar geliştirmenize olanak tanır.
 
 Bu çok bölümlü öğretici aşağıdaki görevleri içerir:
 

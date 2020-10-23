@@ -67,6 +67,8 @@
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma REST
           href: stream-files-tutorial-with-rest.md
+        - name: Media Services ile müşteri tarafından yönetilen anahtarlar
+          href: tutorial-byok.md
     - name: CLI
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma CLI
@@ -175,6 +177,8 @@
         - name: Dinamik şifreleme ve anahtar teslimi
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
+        - name: Müşteri tarafından yönetilen anahtarlar
+          href: concept-use-customer-managed-keys-byok.md
         - name: Çoklu DRM sisteminin tasarımı
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md

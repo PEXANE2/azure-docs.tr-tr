@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6f484277ee940c63888fff068739598dd553b515
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048466"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440902"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -141,8 +141,8 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 | `ar-EG` | Arapça (Mısır) | Kadın | `ar-EG-SalmaNeural` | Genel |
 | `ar-SA` | Arapça (Suudi Arabistan) | Kadın | `ar-SA-ZariyahNeural` | Genel |
 | `bg-BG` <sup>Yeni</sup> | Bulgarca (Bulgary) | Kadın | `bg-BG-KalinaNeural` | Genel |
-| `ca-ES` | Katalanca (Ispanya) | Kadın | `ca-ES-AlbaNeural` | Genel |
-| `cs-CZ` <sup>Yeni</sup> | Çekçe (Çek)  | Kadın | `cs-CZ-VlastaNeural` | Genel |
+| `ca-ES` | Katalanca (İspanya) | Kadın | `ca-ES-AlbaNeural` | Genel |
+| `cs-CZ` <sup>Yeni</sup> | Çekçe (Çek) | Kadın | `cs-CZ-VlastaNeural` | Genel |
 | `da-DK` | Danca (Danimarka) | Kadın | `da-DK-ChristelNeural` | Genel |
 | `de-AT` <sup>Yeni</sup> | Almanca (Avusturya) | Kadın | `de-AT-IngridNeural` | Genel |
 | `de-CH` <sup>Yeni</sup> | Almanca (İsviçre) | Kadın | `de-CH-LeniNeural` | Genel |
@@ -150,18 +150,18 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 | `de-DE` <sup>Yeni</sup> | Almanca (Almanya) | Erkek | `de-DE-ConradNeural` | Genel |
 | `el-GR` <sup>Yeni</sup> | Yunanca (Yunanistan) | Kadın | `el-GR-AthinaNeural` | Genel |
 | `en-AU` | İngilizce (Avustralya) | Kadın | `en-AU-NatashaNeural` | Genel |
-| `en-AU` <sup>Yeni</sup> | Avustralya (Avustralya) | Erkek | `en-AU-WilliamNeural` | Genel |
+| `en-AU` <sup>Yeni</sup> | İngilizce (Avustralya) | Erkek | `en-AU-WilliamNeural` | Genel |
 | `en-CA` | İngilizce (Kanada) | Kadın | `en-CA-ClaraNeural` | Genel |
-| `en-GB` | İngilizce (Birleşik Krallık) | Kadın | `en-GB-LibbyNeural` | Genel |
-| `en-GB` | İngilizce (Birleşik Krallık) | Kadın | `en-GB-MiaNeural` | Genel |
+| `en-GB` | İngilizce (İngiltere) | Kadın | `en-GB-LibbyNeural` | Genel |
+| `en-GB` | İngilizce (İngiltere) | Kadın | `en-GB-MiaNeural` | Genel |
 | `en-GB` <sup>Yeni</sup> | İngilizce (İngiltere) | Erkek | `en-GB-RyanNeural` | Genel |
-| `en-IE` <sup>Yeni</sup> | İrlanda Ingilizce (Irlanda) | Kadın | `en-IE-EmilyNeural` | Genel |
+| `en-IE` <sup>Yeni</sup> | İngilizce (İrlanda) | Kadın | `en-IE-EmilyNeural` | Genel |
 | `en-IN` | İngilizce (Hindistan) | Kadın | `en-IN-NeerjaNeural` | Genel |
-| `en-US` | İngilizce (Birleşik Devletler) | Kadın | `en-US-AriaNeural` | Genel, birden çok ses stili mevcuttur |
-| `en-US` | İngilizce (Birleşik Devletler) | Erkek | `en-US-GuyNeural` | Genel |
-| `en-US` <sup>Yeni</sup> | İngilizce (Birleşik Devletler) | Kadın | `en-US-JennyNeural` | Genel, birden çok ses stili mevcuttur |
-| `es-ES` | İspanyolca (Ispanya) | Kadın | `es-ES-ElviraNeural` | Genel |
-| `es-ES` <sup>Yeni</sup> | İspanyolca (Ispanya) | Erkek | `es-ES-AlvaroNeural` | Genel |
+| `en-US` | İngilizce (ABD) | Kadın | `en-US-AriaNeural` | Genel, birden çok ses stili mevcuttur |
+| `en-US` | İngilizce (ABD) | Erkek | `en-US-GuyNeural` | Genel |
+| `en-US` <sup>Yeni</sup> | İngilizce (ABD) | Kadın | `en-US-JennyNeural` | Genel, birden çok ses stili mevcuttur |
+| `es-ES` | İspanyolca (İspanya) | Kadın | `es-ES-ElviraNeural` | Genel |
+| `es-ES` <sup>Yeni</sup> | İspanyolca (İspanya) | Erkek | `es-ES-AlvaroNeural` | Genel |
 | `es-MX` | İspanyolca (Meksika) | Kadın | `es-MX-DaliaNeural` | Genel |
 | `es-MX` <sup>Yeni</sup> | İspanyolca (Meksika) | Erkek | `es-MX-JorgeNeural` | Genel |
 | `fi-FI` | Fince (Finlandiya) | Kadın | `fi-FI-NooraNeural` | Genel |
@@ -170,33 +170,33 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 | `fr-CH` <sup>Yeni</sup> | Fransızca (İsviçre) | Kadın | `fr-CH-ArianeNeural` | Genel |
 | `fr-FR` | Fransızca (Fransa) | Kadın | `fr-FR-DeniseNeural` | Genel |
 | `fr-FR` <sup>Yeni</sup> | Fransızca (Fransa) | Erkek | `fr-FR-HenriNeural` | Genel |
-| `he-IL` <sup>Yeni</sup> | İbranice (ısareal) | Kadın | `he-IL-HilaNeural` | Genel |
+| `he-IL` <sup>Yeni</sup> | İbranice (Israil) | Kadın | `he-IL-HilaNeural` | Genel |
 | `hi-IN` | Hintçe (Hindistan) | Kadın | `hi-IN-SwaraNeural` | Genel |
 | `hr-HR` <sup>Yeni</sup> | Hırvatça (Hırvatistan) | Kadın | `hr-HR-GabrijelaNeural` | Genel |
 | `hu-HU` <sup>Yeni</sup> | Macarca (Macaristan) | Kadın | `hu-HU-NoemiNeural` | Genel |
-| `id-ID` <sup>Yeni</sup> | Bahasa Endonezya dili (Endonezya) | Erkek | `id-ID-ArdiNeural` | Genel |
-| `it-IT` | İtalyanca (Italya) | Kadın | `it-IT-ElsaNeural` | Genel |
+| `id-ID` <sup>Yeni</sup> | Endonezce (Endonezya) | Erkek | `id-ID-ArdiNeural` | Genel |
+| `it-IT` | İtalyanca (İtalya) | Kadın | `it-IT-ElsaNeural` | Genel |
 | `it-IT` <sup>Yeni</sup> | İtalyanca (İtalya) | Kadın | `it-IT-IsabellaNeural` | Genel |
 | `it-IT` <sup>Yeni</sup> | İtalyanca (İtalya) | Erkek | `it-IT-DiegoNeural` | Genel |
 | `ja-JP` | Japonca (Japonya) | Kadın | `ja-JP-NanamiNeural` | Genel |
 | `ja-JP` <sup>Yeni</sup> | Japonca (Japonya) | Erkek | `ja-JP-KeitaNeural` | Genel |
-| `ko-KR` | Kore dili (Kore) | Kadın | `ko-KR-SunHiNeural` | Genel |
+| `ko-KR` | Korece (Kore) | Kadın | `ko-KR-SunHiNeural` | Genel |
 | `ko-KR` <sup>Yeni</sup> | Korece (Kore) | Erkek | `ko-KR-InJoonNeural` | Genel |
 | `ms-MY` <sup>Yeni</sup> | Malayca (Malezya) | Kadın | `ms-MY-YasminNeural` | Genel |
 | `nb-NO` | Norveççe, Bokmål (Norveç) | Kadın | `nb-NO-IselinNeural` | Genel |
-| `nl-NL` | Hollanda dili (Hollanda) | Kadın | `nl-NL-ColetteNeural` | Genel |
+| `nl-NL` | Felemenkçe (Hollanda) | Kadın | `nl-NL-ColetteNeural` | Genel |
 | `pl-PL` | Lehçe (Polonya) | Kadın | `pl-PL-ZofiaNeural` | Genel |
 | `pt-BR` | Portekizce (Brezilya) | Kadın | `pt-BR-FranciscaNeural` | Genel, birden çok ses stili mevcuttur |
-| `pt-BR` <sup>Yeni</sup> | Brezilya Portekizcesi Portekizce (Brezilya) | Erkek | `pt-BR-AntonioNeural` | Genel |
+| `pt-BR` <sup>Yeni</sup> | Portekizce (Brezilya) | Erkek | `pt-BR-AntonioNeural` | Genel |
 | `pt-PT` | Portekizce (Portekiz) | Kadın | `pt-PT-FernandaNeural` | Genel |
 | `ro-RO` <sup>Yeni</sup> | Rumence (Romanya) | Kadın | `ro-RO-AlinaNeural` | Genel |
 | `ru-RU` | Rusça (Rusya) | Kadın | `ru-RU-DariyaNeural` | Genel |
 | `sk-SK` <sup>Yeni</sup> | Slovakça (Slovakya) | Kadın | `sk-SK-ViktoriaNeural` | Genel |
 | `sl-SI` <sup>Yeni</sup> | Slovence (Slovenya) | Kadın | `sl-SI-PetraNeural` | Genel |
-| `sv-SE` | İsveççe (Isveç) | Kadın | `sv-SE-HilleviNeural` | Genel |
+| `sv-SE` | İsveççe (İsviçre) | Kadın | `sv-SE-HilleviNeural` | Genel |
 | `ta-IN` <sup>Yeni</sup> | Tamil dili (Hindistan) | Kadın | `ta-IN-PallaviNeural` | Genel |
 | `te-IN` <sup>Yeni</sup> | Telugu dili (Hindistan) | Kadın | `te-IN-ShrutiNeural` | Genel |
-| `th-TH` | Tay dili (Tayland) | Kadın | `th-TH-AcharaNeural` | Genel |
+| `th-TH` | Tayca (Tayland) | Kadın | `th-TH-AcharaNeural` | Genel |
 | `th-TH` <sup>Yeni</sup> | Tayca (Tayland) | Kadın | `th-TH-PremwadeeNeural` | Genel |
 | `tr-TR` | Türkçe (Türkiye) | Kadın | `tr-TR-EmelNeural` | Genel |
 | `vi-VN` <sup>Yeni</sup> | Vietnamca (Vietnam) | Kadın | `vi-VN-HoaiMyNeural` | Genel |
@@ -206,7 +206,6 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 | `zh-CN` | Mandarin (Basitleştirilmiş Çince, Çin) | Erkek | `zh-CN-YunyeNeural` | Öykü anlatımı için iyileştirildi |
 | `zh-HK` | Cantonetıcı (Geleneksel Çince, Hong Kong) | Kadın | `zh-HK-HiuGaaiNeural` | Genel |
 | `zh-TW` | Mandarin (Geleneksel Çince, Tayvan) | Kadın | `zh-TW-HsiaoYuNeural` | Genel |
-
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`Ses olarak değiştirildi `en-US-AriaNeural` . Daha önce "Jessa" kullandıysanız, "Aria" öğesine dönüştürün.

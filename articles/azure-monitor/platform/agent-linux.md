@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013755"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332510"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler
 Bu makalede, aşağıdaki yöntemleri kullanarak Linux bilgisayarlarına Log Analytics aracısını yükleme hakkında ayrıntılı bilgi verilmektedir:
@@ -43,9 +43,11 @@ Log Analytics Aracısı tarafından desteklenen Linux dağıtımların listesi i
 >[!NOTE]
 >Şu anda desteklenmeyen ve destek modelimize hizalanmayan bir veya daha fazla sürümü kullanıyorsanız, bu depoyu çatalla, Microsoft destek 'in aracılı aracı sürümleriyle ilgili yardım sağlamayamayacak olduğunu bildiren bu depoyu çatallandırmanızı öneririz.
 
-### <a name="python-2-requirement"></a>Python 2 gereksinimi
+### <a name="python-requirement"></a>Python gereksinimi
 
- Log Analytics Aracısı Python 2 gerektirir. Sanal makineniz, varsayılan olarak Python 2 ' yi içermeyen bir demi kullanıyorsa, bunu kurmanız gerekir. Aşağıdaki örnek komutlar farklı distros üzerinde Python 2 ' ye yüklenir.
+Aracı sürümü 1.13.27 'den başlayarak, Linux Aracısı hem Python 2 hem de 3 ' ü destekleyecektir. Her zaman en son aracıyı kullanmanızı öneririz. 
+
+Aracının eski bir sürümünü kullanıyorsanız, sanal makinenin varsayılan olarak Python 2 ' yi kullanması gerekir. Sanal makineniz, varsayılan olarak Python 2 ' yi içermeyen bir demi kullanıyorsa, bunu kurmanız gerekir. Aşağıdaki örnek komutlar farklı distros üzerinde Python 2 ' ye yüklenir.
 
  - Red hat, CentOS, Oracle: `yum install -y python2`
  - Ubuntu, debir: `apt-get install -y python2`
@@ -71,7 +73,7 @@ OMS aracısının Linux için özelleştirme desteği sınırlıdır.
 Aşağıdakiler şu anda desteklenmektedir: 
 - FIPS
 
-Aşağıdakiler planlanmaktadır ancak henüz desteklenmemektedir:
+Aşağıdakiler göz önünde bulundurulmalıdır ancak henüz desteklenmemektedir:
 - CI
 - SELINUX
 
@@ -81,7 +83,7 @@ Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için dest
 
 Aşağıdaki tabloda, aracının yükleneceği [desteklenen Linux destekleri](#supported-operating-systems) için gereken paketler vurgulanmıştır.
 
-|Gerekli paket |Açıklama |En düşük sürüm |
+|Gerekli paket |Description |En düşük sürüm |
 |-----------------|------------|----------------|
 |GLIBC |    GNU C Kitaplığı | 2.5-12 
 |Openssl    | OpenSSL kitaplıkları | 1.0. x veya 1.1. x |

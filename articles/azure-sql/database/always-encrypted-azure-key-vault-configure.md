@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 98ba8c54b1754d6384dfcedb86e6c4889e52cb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26bac8115a64d78ce64bc400f98fb26cb929ba4d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444838"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164508"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault kullanarak Always Encrypted yapılandırma 
 
@@ -37,7 +37,7 @@ Bu makaledeki adımları izleyin ve Azure SQL veritabanı veya SQL yönetilen ö
 - Veritabanı tablosu oluşturun ve sütunları şifreleyin.
 - Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 
 - Bir Azure hesabı ve aboneliği Bir hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
@@ -118,7 +118,7 @@ SQL Server Management Studio (SSMS) açın ve sunucuya bağlanın ya da veritaba
 
 **Yeni güvenlik duvarı kuralı** penceresi açılırsa Azure 'da oturum açın ve SSMS 'nin sizin için yeni bir güvenlik duvarı kuralı oluşturmasına izin verin.
 
-## <a name="create-a-table"></a>Bir tablo oluşturma
+## <a name="create-a-table"></a>Tablo oluşturma
 
 Bu bölümde, hasta verilerini tutacak bir tablo oluşturacaksınız. Başlangıçta şifrelenmemiştir; bir sonraki bölümde şifrelemeyi yapılandıracaksınız.
 
@@ -149,7 +149,7 @@ SSMS, sütun ana anahtarı, sütun şifreleme anahtarı ve şifreli sütunları 
 1. **Veritabanları**  >  **Clinic**  >  **tabloları**' nı genişletin.
 2. **Hastalar** tablosuna sağ tıklayın ve Always Encrypted Sihirbazı 'nı açmak Için **sütunları şifreleyin** ' ı seçin:
 
-    ![Sütunları şifreleyin](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
+    ![Şifrelenmiş sütunları vurgulayan ekran görüntüsü... menü seçeneği.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
 Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi**, **ana anahtar yapılandırması**, **doğrulama**ve **Özet**.
 
@@ -574,7 +574,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 Şifrelenmiş sütunlarda herhangi bir düz metin verisi içermediğini görebilirsiniz.
 
-   ![Yeni konsol uygulaması](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
+   ![Şifrelenmiş sütunların herhangi bir düz metin verisi içermediğini gösteren ekran görüntüsü.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
 SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, önce kullanıcının Azure Key Vault uygun izinlere sahip olduğundan emin olmanız gerekir: *Get*, *unwrapKey*ve *Verify*. Ayrıntılı bilgi için bkz. [sütun ana anahtarları oluşturma ve depolama (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
@@ -584,7 +584,7 @@ Ardından, bağlantınız sırasında *şifreleme ayarı = etkin* parametresini 
 2. **Connect**  >  **Sunucuya Bağlan** penceresini açmak için**veritabanı altyapısına** Bağlan ' a tıklayın ve **Seçenekler**' e tıklayın.
 3. **Ek bağlantı parametreleri** ve tür **sütunu şifreleme ayarı = etkin**öğesine tıklayın.
 
-    ![Yeni konsol uygulaması](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
+    ![Ek düzeltme parametreleri sekmesini gösteren ekran görüntüsü.](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
 
 4. Clinic veritabanında aşağıdaki sorguyu çalıştırın.
 

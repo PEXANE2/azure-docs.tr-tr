@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 61804aaf65a97485e2b2b5bb4869c335a14ce812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7c9935d7e0d6bb2d457aa4c08f9b2b3e5fa910
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513567"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218706"
 ---
 # <a name="disaster-recovery-for-azure-data-share"></a>Azure veri paylaşımında olağanüstü durum kurtarma
 
@@ -29,13 +29,9 @@ Veri tüketicileri, DR amaçları için boşta olan etkin bir Share aboneliğine
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-- [İş sürekliliği ve olağanüstü durum kurtarma](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
-- [BCDR stratejinize yüksek düzeyde kullanılabilirlik ekleme](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
+- [İş sürekliliği ve olağanüstü durum kurtarma](../best-practices-availability-paired-regions.md)
+- [BCDR stratejinize yüksek düzeyde kullanılabilirlik ekleme](/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Verileri paylaşmaya nasıl başlayacağınızı öğrenmek için [verilerinizi paylaşma](share-your-data.md) öğreticiye geçin.
-
-
-
-

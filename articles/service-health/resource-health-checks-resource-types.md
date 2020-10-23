@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bbc7b03a508c9b156de039b4f8706f5063fd23b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447058"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316114"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -51,7 +51,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/DomainNames
 |Yürütülen denetimler|
 |---|
-|<ul><li>Üretim yuvası dağıtımı tüm rol örneklerinde sağlıklı mı?</li><li>Rol tüm sanal makine örneklerinde sağlıklı mı?</li><li>Bulut hizmeti rolü içindeki her VM 'nin sistem durumu nedir?</li><li>Platform veya müşteri tarafından başlatılan işlem nedeniyle VM durumu değişikliği mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li><li>Yürütülen denetimler hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services)</li></ul>|
+|<ul><li>Üretim yuvası dağıtımı tüm rol örneklerinde sağlıklı mı?</li><li>Rol tüm sanal makine örneklerinde sağlıklı mı?</li><li>Bulut hizmeti rolü içindeki her VM 'nin sistem durumu nedir?</li><li>Platform veya müşteri tarafından başlatılan işlem nedeniyle VM durumu değişikliği mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li><li>Yürütülen denetimler hakkında [daha fazla bilgi edinin](../cloud-services/resource-health-for-cloud-services.md)</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. biliveservices/hesapları
 |Yürütülen denetimler|
@@ -257,4 +257,4 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="next-steps"></a>Sonraki Adımlar
 -  Bkz. [Azure hizmet durumu panosuna giriş](service-health-overview.md) ve bunlarla ilgili daha fazla bilgi Için [Azure Kaynak durumu giriş](resource-health-overview.md) . 
 -  [Azure Kaynak Durumu hakkında sık sorulan sorular](resource-health-faq.md)
-- Sistem durumu sorunları hakkında bildirim almak için uyarıları ayarlayın. Daha fazla bilgi için bkz. [hizmet durumu olayları Için uyarıları yapılandırma](./alerts-activity-log-service-notifications-portal.md). 
+- Sistem durumu sorunları hakkında bildirim almak için uyarıları ayarlayın. Daha fazla bilgi için bkz. [hizmet durumu olayları Için uyarıları yapılandırma](./alerts-activity-log-service-notifications-portal.md).

@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684720"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132389"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API’leri kullanarak abonelik faturalamasını gözden geçirme
 
@@ -32,7 +32,7 @@ Authorization: Bearer
 
 `{subscriptionID}` parametresi gereklidir ve hedef aboneliği belirtir.
 
-`{billingPeriod}` parametresi gereklidir ve geçerli bir [faturalama dönemini](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) belirtir.
+`{billingPeriod}` parametresi gereklidir ve geçerli bir [faturalama dönemini](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) belirtir.
 
 `${startDate}` ve `${endDate}` parametresi, bu örnek için gereklidir, ancak uç nokta için isteğe bağlıdır. Tarih aralığını YYYY-AA-GG biçiminde dize olarak belirtir (örnekler: `'20180501'` ve `'20180615'`).
 
@@ -41,7 +41,7 @@ Aşağıdaki üstbilgiler gereklidir:
 |İstek üst bilgisi|Açıklama|
 |--------------------|-----------------|
 |*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|
-|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) ayarlayın. |
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](/rest/api/azure/#authorization-code-grant-interactive-clients) ayarlayın. |
 
 ## <a name="response"></a>Yanıt
 
@@ -85,7 +85,7 @@ Başarılı yanıt için, hesabınızın ayrıntılı maliyetlerinin listesini i
 |**meterDetails** | Kullanımla ilgili ayrıntılı bilgiler. |
 |**nextLink**| Bu ayarlandığında, ayrıntılar için sonraki “sayfanın” URL’sini belirtir. Sayfa son sayfa olduğunda boştur. |
 
-Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması için bkz. [Kullanım ayrıntılarını listeleme](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy).
+Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması için bkz. [Kullanım ayrıntılarını listeleme](/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy).
 
 Diğer durum kodları, hata koşullarını belirtir. Bu durumlarda yanıt nesnesi, isteğin neden başarısız olduğunu açıklar.
 
@@ -101,6 +101,6 @@ Diğer durum kodları, hata koşullarını belirtir. Bu durumlarda yanıt nesnes
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Kurumsal raporlamaya genel bakış](https://docs.microsoft.com/azure/billing/billing-enterprise-api) bölümünü gözden geçirin
-- [Kurumsal Faturalama REST API](https://docs.microsoft.com/rest/api/billing/)’yi araştırın
-- [Azure REST API’yi kullanmaya başlayın](https://docs.microsoft.com/rest/api/azure/)
+- [Kurumsal raporlamaya genel bakış](./enterprise-api.md) bölümünü gözden geçirin
+- [Kurumsal Faturalama REST API](/rest/api/billing/)’yi araştırın
+- [Azure REST API’yi kullanmaya başlayın](/rest/api/azure/)

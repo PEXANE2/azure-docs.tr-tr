@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/22/2019
 ms.author: chrupa
-ms.openlocfilehash: edc337849b53cb8e818114d3dd100d30cf00b895
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 556cc7fb5f735346a35903840501cf8f8e1be033
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84872067"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372183"
 ---
 # <a name="partner-ecosystem-for-azure-api-for-fhir"></a>FHıR için Azure API iş ortağı ekosistemi
 FHıR için Azure API 'nin tüm Azure müşterilerine genel kullanıma sunulduğuna yönelik olarak kullanıma sunulduğu heyecanlıyız. Hizmetimiz ile derlemenize yönelik çözümler hakkında daha fazla heyecanlıyız.  
@@ -25,7 +25,7 @@ FHıR için Azure API 'SI etrafında yerleşik olarak bulunan uçtan uca bir ç�
 |------------------|--------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | Madalya            | Geçersiz tanımlama, eski-FHıR dönüştürme  | ABD                         | [İletişim](http://www.medal.com/)                                                                                           |
 | Rhapsody         | Eski-FHıR dönüştürme                     | ABD, Avustralya, Yeni Zelanda | [İletişim](https://rhapsody.health/contact-us)                                                                                          |
-| ınterfaceware    | Eski-FHıR dönüştürme                     | ABD, Kanada                 | [İletişim](https://www.interfaceware.com/contact.html)                                                                                  |
+| ınterfaceware    | Eski-FHıR dönüştürme                     | ABD, Kanada                 | [İletişim](https://www.interfaceware.com/contact)                                                                                  |
 | Dari çözümleri | Uygulama geliştirme, Sistem Tümleştirici | ABD                         | [İletişim](https://www.darenasolutions.com/contact)                                                                                     |
 | NewWave          | Uygulama geliştirme, Sistem Tümleştirici | ABD                         | [İletişim](https://newwave.io/get-in-touch/)                                                                                            |
 | Davpasoft         | Uygulama geliştirme, Sistem Tümleştirici | ABD, Kanada                 | [İletişim](https://www.dapasoft.com/contact-us/)                                                                                        |

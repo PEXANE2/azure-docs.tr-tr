@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715930"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167704"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -22,7 +22,7 @@ Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetim
 
 - Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemelisiniz:
 
@@ -131,8 +131,8 @@ Kendi günlük sağlayıcınıza ihtiyacınız varsa, bir özel türü [`ILogger
 Application Insights, Azure Işlevleri tarafından otomatik olarak eklenir.
 
 > [!WARNING]
-> - `AddApplicationInsightsTelemetry()`Ortam tarafından sunulan hizmetlerle çakışan Hizmetleri kaydederken hizmetler koleksiyonuna eklemeyin.
-> - Kendi kendinize kaydolmayın `TelemetryConfiguration` veya `TelemetryClient` yerleşik Application Insights işlevlerini kullanıyorsanız. Kendi örneğinizi yapılandırmanız gerekirse `TelemetryClient` , `TelemetryConfiguration` [Azure işlevlerini izle](./functions-monitoring.md#version-2x-and-later-2)bölümünde gösterildiği gibi eklenmiş şekilde bir tane oluşturun.
+> - `AddApplicationInsightsTelemetry()`Ortam tarafından sunulan hizmetlerle çakışan Hizmetleri kaydeden hizmetler koleksiyonuna eklemeyin.
+> - Kendi kendinize kaydolmayın `TelemetryConfiguration` veya `TelemetryClient` yerleşik Application Insights işlevini kullanıyorsanız. Kendi örneğinizi yapılandırmanız gerekiyorsa `TelemetryClient` , `TelemetryConfiguration` [C# işlevlerinde günlük özel telemetri](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)bölümünde gösterildiği gibi eklenen ile bir tane oluşturun.
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> ve ıloggerfactory
 
@@ -186,7 +186,7 @@ Aşağıdaki örnek `host.json` dosya günlük filtresini ekler.
 
 İşlev Konağı birçok hizmeti kaydeder. Aşağıdaki hizmetler uygulamanızda bir bağımlılık olarak ele alınır:
 
-|Hizmet Türü|Ömür|Açıklama|
+|Hizmet Türü|Ömür|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Adet|Çalışma zamanı yapılandırması|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Adet|Konak örneğinin KIMLIĞINI sağlamaktan sorumlu|
@@ -287,7 +287,7 @@ namespace MyNamespace
 }
 ```
 
-Özelliğine yapılandırma sağlayıcıları ekleyin `ConfigurationBuilder` `IFunctionsConfigurationBuilder` . Yapılandırma sağlayıcılarını kullanma hakkında daha fazla bilgi için [ASP.NET Core yapılandırma](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)konusuna bakın.
+Özelliğine yapılandırma sağlayıcıları ekleyin `ConfigurationBuilder` `IFunctionsConfigurationBuilder` . Yapılandırma sağlayıcılarını kullanma hakkında daha fazla bilgi için [ASP.NET Core yapılandırma](/aspnet/core/fundamentals/configuration/#configuration-providers)konusuna bakın.
 
 `FunctionsHostBuilderContext`, Öğesinden elde edilir `IFunctionsConfigurationBuilder.GetContext()` . Bu bağlamı, geçerli ortam adını almak ve işlev uygulama klasörünüzdeki yapılandırma dosyalarının konumunu çözümlemek için kullanın.
 

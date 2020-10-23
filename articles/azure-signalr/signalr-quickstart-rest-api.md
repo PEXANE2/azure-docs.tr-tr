@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 85cda8458dca4ce24fed9433af1527f49a2393ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89050514"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150983"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Hızlı Başlangıç: Konsol uygulamasından gerçek zamanlı iletiler yayımlama
 
@@ -64,7 +64,7 @@ Ayrıca Azure SignalR Hizmeti ile kimlik doğrulaması için nasıl bir erişim 
 
 ### <a name="build-the-executable-file"></a>Yürütülebilir dosyayı derleme
 
-Örnek olarak macOS osx.10.13-x64 kullanıyoruz. Nasıl diğer platformlar için derleyeceğiniz hakkında [başvuru](https://docs.microsoft.com/dotnet/core/rid-catalog) belgeleri bulabilirsiniz.
+Örnek olarak macOS osx.10.13-x64 kullanıyoruz. Nasıl diğer platformlar için derleyeceğiniz hakkında [başvuru](/dotnet/core/rid-catalog) belgeleri bulabilirsiniz.
 
 ```bash
 cd AzureSignalR-samples/samples/Serverless/
@@ -202,7 +202,7 @@ API Sürümü | API HTTP Yöntemi | İstek URL’si
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
 
-Yanıt Durum Kodu | Açıklama
+Yanıt Durum Kodu | Description
 ---|---
 `200` | Kullanıcı var
 `404` | Kullanıcı yok
@@ -252,7 +252,7 @@ API Sürümü | API HTTP Yöntemi | İstek URL’si
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
-Yanıt Durum Kodu | Açıklama
+Yanıt Durum Kodu | Description
 ---|---
 `200` | Hizmet Iyi
 `5xx` | Hizmet hatası

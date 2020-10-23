@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760878"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371741"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 
@@ -29,20 +29,7 @@ Azure Cosmos DB, kullanıcıların kimliğini doğrulamak ve veri ve kaynakları
 
 ## <a name="primary-keys"></a>Birincil anahtarlar
 
-Birincil anahtarlar, veritabanı hesabının tüm yönetim kaynaklarına erişim sağlar. Birincil anahtarlar:
-
-- Hesaplara, veritabanlarına, kullanıcılara ve izinlere erişim sağlayın. 
-- Kapsayıcılara ve belgelere parçalı erişim sağlamak için kullanılamaz.
-- , Bir hesabın oluşturulması sırasında oluşturulur.
-- Herhangi bir zamanda yeniden oluşturulabilir.
-
-Her hesap iki birincil anahtardan oluşur: birincil anahtar ve ikincil anahtar. Çift anahtarların amacı, hesap ve verilerinize sürekli erişim sağlamak için, anahtarları yeniden oluşturmak veya almak için kullanılır.
-
-Cosmos DB hesabının iki birincil anahtarına ek olarak, iki salt okunurdur. Salt okunurdur bu anahtarlar yalnızca hesapta okuma işlemlerine izin verir. Salt okuma anahtarları okuma izni kaynaklarına erişim sağlamaz.
-
-Birincil, ikincil, salt okuma ve okuma-yazma birincil anahtarları Azure portal kullanılarak alınabilir ve yeniden oluşturulabilir. Yönergeler için bkz. [erişim anahtarlarını görüntüleme, kopyalama ve yeniden](manage-with-cli.md#regenerate-account-key)oluşturma.
-
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine erişim denetimi (ıAM)":::
+Birincil anahtarlar, veritabanı hesabının tüm yönetim kaynaklarına erişim sağlar. Her hesap iki birincil anahtardan oluşur: birincil anahtar ve ikincil anahtar. Çift anahtarların amacı, hesap ve verilerinize sürekli erişim sağlamak için, anahtarları yeniden oluşturmak veya almak için kullanılır. Birincil anahtarlar hakkında daha fazla bilgi için bkz. [veritabanı güvenlik](database-security.md#primary-keys) makalesi.
 
 ### <a name="key-rotation"></a>Anahtar döndürme<a id="key-rotation"></a>
 
@@ -51,10 +38,10 @@ Birincil anahtarınızı döndürme işlemi basittir.
 1. İkincil anahtarınızı almak için Azure portal gidin.
 2. Birincil anahtarınızı uygulamanızdaki ikincil anahtarınızla değiştirin. Tüm dağıtımlardaki tüm Cosmos DB istemcilerinin hemen yeniden başlatıldığından ve güncelleştirilmiş anahtarın kullanılmasına başlayadığınızdan emin olun.
 3. Azure portal birincil anahtarı döndürün.
-4. Yeni birincil anahtarın tüm kaynaklara karşı çalışıp çalışmadığını doğrulayın. Anahtar döndürme işlemi, Cosmos DB hesabının boyutuna bağlı olarak bir dakikadan kısa bir süreden saate kadar olan her yerde olabilir.
+4. Yeni birincil anahtarın tüm kaynaklara karşı çalışıp çalışmadığını doğrulayın. Anahtar döndürme işlemi, Cosmos DB hesabının boyutuna bağlı olarak bir dakikadan daha kısa bir sürede bir zaman alabilir.
 5. İkincil anahtarı yeni birincil anahtarla değiştirin.
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine erişim denetimi (ıAM)" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine birincil anahtar döndürme" border="false":::
 
 ### <a name="code-sample-to-use-a-primary-key"></a>Birincil anahtar kullanmak için kod örneği
 
@@ -102,13 +89,13 @@ Kaynak belirteçlerinin istendiği, üretibildiği ve istemcilere teslim edilece
 7. Telefon uygulaması, kaynak belirteci tarafından tanımlanan izinlerle ve kaynak belirtecinin izin verdiği aralığa göre Cosmos DB kaynaklarına doğrudan erişmek için kaynak belirtecini kullanmaya devam edebilir.
 8. Kaynak belirtecinin süresi dolmuşsa, sonraki istekler 401 Yetkisiz bir özel durum alır.  Bu noktada, telefon uygulaması kimliği yeniden oluşturur ve yeni bir kaynak belirteci ister.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine erişim denetimi (ıAM)" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine birincil anahtar döndürme" border="false":::
 
-Kaynak belirteci oluşturma ve yönetimi, yerel Cosmos DB istemci kitaplıkları tarafından gerçekleştirilir; Ancak REST kullanırsanız istek/kimlik doğrulama üst bilgilerini oluşturmanız gerekir. REST için kimlik doğrulama üstbilgileri oluşturma hakkında daha fazla bilgi için, bkz. [Access Control Cosmos DB kaynakları](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) veya [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) veya [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)'mız için kaynak kodu.
+Kaynak belirteci oluşturma ve yönetimi, yerel Cosmos DB istemci kitaplıkları tarafından işlenir; Ancak REST kullanırsanız istek/kimlik doğrulama üst bilgilerini oluşturmanız gerekir. REST için kimlik doğrulama üstbilgileri oluşturma hakkında daha fazla bilgi için, bkz. [Access Control Cosmos DB kaynakları](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) veya [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) veya [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)'mız için kaynak kodu.
 
 Kaynak belirteçleri oluşturmak için kullanılan bir orta katman hizmeti örneği için, bkz. [Resourcetokenbroker uygulaması](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
-## <a name="users"></a>Kullanıcılarına<a id="users"></a>
+## <a name="users"></a>Kullanıcılar<a id="users"></a>
 
 Azure Cosmos DB kullanıcılar bir Cosmos veritabanıyla ilişkilendirilir.  Her veritabanı sıfır veya daha fazla Kullanıcı Cosmos DB içerebilir. Aşağıdaki kod örneği, [.NET SDK v3 Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement)kullanarak Cosmos DB bir kullanıcının nasıl oluşturulacağını göstermektedir.
 

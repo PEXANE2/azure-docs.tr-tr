@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84169daa28fc394254ddce211a96d4a462f78cbd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819383"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441870"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
 
@@ -29,7 +29,7 @@ Konuk kullanıcıları iş ortağı kuruluşlarınızdan Azure AD 'ye davet etme
 Aşağıdakilerden her ikisini de yapmanız gerekir:
 
 - [SAML tabanlı çoklu oturum açma yapılandırma](../manage-apps/configure-saml-single-sign-on.md)başlığı altında açıklandığı gibi, uygulamayı SAML kullanarak tümleştirin. **Oturum açma URL 'si** değeri için ne kullanacağınızı aklınızda olduğunuzdan emin olun.
--  Şirket içi uygulamayı, kimlik doğrulama kaynağı olarak yapılandırılmış **Azure Active Directory** birlikte yayımlamak için Azure AD uygulama ara sunucusu kullanın. Yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](../manage-apps/application-proxy-publish-azure-portal.md). 
+-  Şirket içi uygulamayı, kimlik doğrulama kaynağı olarak yapılandırılmış **Azure Active Directory** birlikte yayımlamak için Azure AD uygulama ara sunucusu kullanın. Yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](../manage-apps/application-proxy-add-on-premises-application.md). 
 
    **Iç URL** ayarını yapılandırdığınızda, Galeri dışı uygulama şablonunda belirttiğiniz oturum açma URL 'sini kullanın. Bu şekilde, kullanıcılar uygulamaya kuruluş sınırının dışından erişebilir. Uygulama proxy 'Si, şirket içi uygulama için SAML çoklu oturum açma işlemini gerçekleştirir.
  
@@ -39,11 +39,11 @@ Aşağıdakilerden her ikisini de yapmanız gerekir:
 
 B2B kullanıcılarına, tümleşik Windows kimlik doğrulaması ve Kerberos kısıtlı temsilcisiyle güvenliği sağlanmış şirket içi uygulamalara erişim sağlamak için aşağıdaki bileşenlere ihtiyacınız vardır:
 
-- **Azure AD uygulama ara sunucusu aracılığıyla kimlik doğrulaması**. B2B kullanıcılarının şirket içi uygulamada kimlik doğrulaması yapabilmesi gerekir. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için bkz. [uygulama proxy 'si ile çalışmaya başlama ve](../manage-apps/application-proxy-enable.md) [Azure AD uygulama ara sunucusu kullanarak](../manage-apps/application-proxy-publish-azure-portal.md)bağlayıcı ve uygulama yayımlama.
+- **Azure AD uygulama ara sunucusu aracılığıyla kimlik doğrulaması**. B2B kullanıcılarının şirket içi uygulamada kimlik doğrulaması yapabilmesi gerekir. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için bkz. [uygulama proxy 'si ile çalışmaya başlama ve](../manage-apps/application-proxy-add-on-premises-application.md) [Azure AD uygulama ara sunucusu kullanarak](../manage-apps/application-proxy-add-on-premises-application.md)bağlayıcı ve uygulama yayımlama.
 - **Şirket içi dizindeki BIR B2B Kullanıcı nesnesi aracılığıyla yetkilendirme**. Uygulamanın kullanıcı erişim denetimleri gerçekleştirebilmesi ve doğru kaynaklara erişim izni vermesi gerekir. IWA ve KCD, bu yetkilendirmeyi tamamlaması için şirket içi Windows Server Active Directory bir kullanıcı nesnesi gerektirir. [KCD ile çoklu oturum açma konusunda](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)açıklandığı gibi, uygulama proxy 'si, kullanıcının kimliğine bürünmesi ve uygulamaya Kerberos belirteci alması için bu kullanıcı nesnesine ihtiyaç duyuyor. 
 
    > [!NOTE]
-   > Azure AD Uygulama Ara Sunucusu yapılandırdığınızda, **yetkili oturum açma kimliğinin** IWA çoklu oturum açma için **Kullanıcı asıl adı** (varsayılan) olarak ayarlandığından emin olun.
+   > Azure AD Uygulama Ara Sunucusu yapılandırdığınızda, tümleşik Windows kimlik doğrulaması (ıWA) için çoklu oturum açma yapılandırmasında, **temsilci oturum açma kimliğinin** **Kullanıcı asıl adı** (varsayılan) olarak ayarlandığından emin olun.
 
    B2B Kullanıcı senaryosunda, şirket içi dizinde yetkilendirme için gerekli olan Konuk kullanıcı nesnelerini oluşturmak için kullanabileceğiniz iki yöntem vardır:
 
@@ -71,7 +71,7 @@ Aşağıdaki diyagramda, B2B kullanıcılarına şirket içi ıWA ve KCD uygulam
 
 ### <a name="create-b2b-guest-user-objects-through-mim"></a>MıM aracılığıyla B2B Konuk Kullanıcı nesneleri oluşturma
 
-MıM 2016 hizmet paketi 1 ' i ve MıM Yönetim Aracısı 'nı şirket içi dizinde Konuk Kullanıcı nesneleri oluşturmak üzere Microsoft Graph için kullanma hakkında bilgi için bkz. Azure [uygulama proxy 'si ile Microsoft Identity Manager (MIM) 2016 SP1 Ile Azure AD işletmeden işletmeye (B2B) işbirliği](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
+MıM 2016 hizmet paketi 1 ' i ve MıM Yönetim Aracısı 'nı şirket içi dizinde Konuk Kullanıcı nesneleri oluşturmak üzere Microsoft Graph için kullanma hakkında bilgi için bkz. Azure [uygulama proxy 'si ile Microsoft Identity Manager (MIM) 2016 SP1 Ile Azure AD işletmeden işletmeye (B2B) işbirliği](/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
 
 ### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Betik aracılığıyla B2B Konuk Kullanıcı nesneleri oluşturma (Önizleme)
 
@@ -90,4 +90,3 @@ Betiği kullanmadan önce, ilişkili Readme dosyasındaki önkoşulları ve öne
 - [Karma kuruluşlar için B2B işbirliği Azure Active Directory](hybrid-organizations.md)
 
 - Azure AD Connect genel bir bakış için bkz. Şirket [içi dizinlerinizi Azure Active Directory Ile tümleştirme](../hybrid/whatis-hybrid-identity.md).
-

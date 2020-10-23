@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.openlocfilehash: c953297d4e66f737250451b9a5f42ce7f45dd2e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40b8ff2fa32ae64b1857da4b7e4ef0cb997e4285
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821251"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92450637"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>Öğretici: en iyi çalışmalarla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile en iyi çalışmaları t�
 * Kullanıcılarınızın Azure AD hesaplarıyla birlikte çalışmak üzere otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -91,9 +91,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1.  **İmzalama**   seçeneklerini gereksiniminize göre değiştirmek Için, **Edit**    **SAML imzalama sertifikası**iletişim kutusunu açmak için Düzenle düğmesine tıklayın   .
+1. **İmzalama** seçeneklerini gereksiniminize göre değiştirmek Için, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-     ![image](common/edit-certificate.png)
+     ![image](common/edit-certificate.png)
 
      !["Düzenle" düğmesi seçiliyken "S A M L Imzalama sertifikası" iletişim kutusunu gösteren ekran görüntüsü.](./media/freshworks-tutorial/response.png)
 
@@ -139,7 +139,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak En Iyi şekilde 
 
 1. Yeni bir Web tarayıcı penceresi açın ve yeni bir yönetici olarak, yeni bir şirket sitesinde oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-2. Menünün sol tarafında **güvenlik**   simgesine tıklayın ve ardından **Çoklu oturum açma** seçeneğini işaretleyin ve **kimlik doğrulama yöntemleri**altında **SAML SSO** 'yu seçin.
+2. Menünün sol tarafında **güvenlik** simgesine tıklayın ve ardından **Çoklu oturum açma** seçeneğini Işaretleyin ve **KIMLIK doğrulama yöntemleri**altında **SAML SSO** 'yu seçin.
 
     !["Çoklu oturum açma" seçeneği açık ve "S A M L s S O" seçiliyken "güvenlik-kimlik doğrulama yöntemleri" bölümünü gösteren ekran görüntüsü.](./media/freshworks-tutorial/configure01.png)
 
@@ -159,21 +159,20 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak En Iyi şekilde 
 
 ### <a name="create-freshworks-test-user"></a>Yalnızca bir test kullanıcısı oluştur
 
-Bu bölümde, En Iyi şekilde çalışması için B. Simon adlı bir Kullanıcı oluşturacaksınız. En güncel kullanıcıları [istemci destek ekibi](mailto:support@freshworks.com) ile çalışarak, kullanıcıları en iyi çalışma platformunda ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir. 
+Bu bölümde, En Iyi şekilde çalışması için B. Simon adlı bir Kullanıcı oluşturacaksınız. En güncel kullanıcıları [istemci destek ekibi](mailto:support@freshworks.com) ile çalışarak, kullanıcıları en iyi çalışma platformunda ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde otomatik olarak çalışma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız otomatik olarak çalışır durumda oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde otomatik olarak çalışma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız otomatik olarak çalışır durumda oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile En Iyi şekilde çalışma yapmayı deneyin](https://aad.portal.azure.com/)
-

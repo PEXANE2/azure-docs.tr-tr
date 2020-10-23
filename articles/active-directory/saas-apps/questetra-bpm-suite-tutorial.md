@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 11a6df348ae623ccf75e61bc1abbb5e28c832237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 943aba9c25df6cd279dc651cfad343a6509c069b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548983"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Öğretici: Sorgtetra BPM Suite ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Sorgtetra BPM Suite 'i Azure AD ile tümleştirmek aşağıdaki avantajları sa�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Sorgıntra BPM Suite ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -128,11 +128,11 @@ Azure AD 'de, Sorgtetra BPM Suite ile çoklu oturum açmayı yapılandırmak iç
 
 2. Üstteki menüde **sistem ayarları**' na tıklayın. 
    
-    ![Azure AD tek Sign-On][10]
+    ![Ekran görüntüsü, Sorgtetra BPM Suite şirket sitesinden seçilen sistem ayarlarını gösterir.][10]
 
 3. **Singlesignonsaml** sayfasını açmak için **SSO (SAML)**' ye tıklayın. 
    
-    ![Azure AD tek Sign-On][11]
+    ![Ekran görüntüsü seçili olan S (SAML) ' u gösterir.][11]
 
 4. **Sorgtetra BPM Suite** şirket sitenizde, **SP bilgileri** bölümünde aşağıdaki adımları uygulayın:
 

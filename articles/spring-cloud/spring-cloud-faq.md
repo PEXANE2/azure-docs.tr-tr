@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 48a2f7f6587d22c34e240fb3e784eb980c81b6b3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094016"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419845"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -106,7 +106,7 @@ Azure CLı kullanarak Spring Cloud 'ın tanılama ayarlarını silebilirsiniz:
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure Spring Cloud 'da hangi Java çalışma zamanı sürümleri desteklenir?
 
-Azure Spring Cloud, en son Derlemelerle Java LTS sürümlerini destekler, şu anda 2020 Haziran, Java 8 derleme 252 ve Java 11 derleme 7 destekleniyor. Bkz [. Azure için JDK 'yi ve Azure Stack yüklemeyi](/azure/developer/java/fundamentals/java-jdk-install)
+Azure yay bulutu, en son derlemeler ile Java LTS sürümlerini destekler, şu anda 2020 Haziran, Java 8 ve Java 11 desteklenir. Bkz [. Azure için JDK 'yi ve Azure Stack yüklemeyi](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>Bu Java çalışma zamanlarını kim derlediniz?
 

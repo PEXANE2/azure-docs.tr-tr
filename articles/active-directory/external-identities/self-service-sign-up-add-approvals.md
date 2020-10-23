@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d2ff176d7569f6f67c8f0dd37e0073314a07289
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165267"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441632"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Self Servis kaydolma 'ya özel bir onay iş akışı ekleme
 
@@ -29,7 +29,7 @@ Bu makale, bir onay sistemiyle nasıl tümleştirileceğini gösteren bir örnek
 
 ## <a name="register-an-application-for-your-approval-system"></a>Onay sisteminiz için bir uygulamayı kaydetme
 
-Azure AD 'de kimlik doğrulaması yapabilmek ve Kullanıcı oluşturma iznine sahip olmak için onay sisteminizi Azure AD kiracınızda bir uygulama olarak kaydetmeniz gerekir. [Microsoft Graph için kimlik doğrulama ve yetkilendirme temelleri](https://docs.microsoft.com/graph/auth/auth-concepts)hakkında daha fazla bilgi edinin.
+Azure AD 'de kimlik doğrulaması yapabilmek ve Kullanıcı oluşturma iznine sahip olmak için onay sisteminizi Azure AD kiracınızda bir uygulama olarak kaydetmeniz gerekir. [Microsoft Graph için kimlik doğrulama ve yetkilendirme temelleri](/graph/auth/auth-concepts)hakkında daha fazla bilgi edinin.
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
 2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
@@ -263,14 +263,14 @@ Content-type: application/json
 
 ## <a name="user-account-creation-after-manual-approval"></a>El ile onayladıktan sonra Kullanıcı hesabı oluşturma
 
-El ile onay aldıktan sonra, özel onay sistemi [Microsoft Graph](https://docs.microsoft.com/graph/use-the-api)kullanarak bir [Kullanıcı](https://docs.microsoft.com/graph/azuread-users-concept-overview) hesabı oluşturur. Onay sisteminizin Kullanıcı hesabını sağlama yolu, Kullanıcı tarafından kullanılan kimlik sağlayıcısına bağlıdır.
+El ile onay aldıktan sonra, özel onay sistemi [Microsoft Graph](/graph/use-the-api)kullanarak bir [Kullanıcı](/graph/azuread-users-concept-overview) hesabı oluşturur. Onay sisteminizin Kullanıcı hesabını sağlama yolu, Kullanıcı tarafından kullanılan kimlik sağlayıcısına bağlıdır.
 
 ### <a name="for-a-federated-google-or-facebook-user"></a>Federe bir Google veya Facebook kullanıcısı için
 
 > [!IMPORTANT]
 > Onay sistemi `identities` , `identities[0]` `identities[0].issuer` `identities[0].issuer` Bu yöntemi kullanmak için açıkça bu ve ' Facebook ' veya ' Google ' değerine eşit olup olmadığını denetlemelidir.
 
-Kullanıcılarınız bir Google veya Facebook hesabıyla oturum açmışsa, [Kullanıcı oluşturma API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)'sini kullanabilirsiniz.
+Kullanıcılarınız bir Google veya Facebook hesabıyla oturum açmışsa, [Kullanıcı oluşturma API](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0)'sini kullanabilirsiniz.
 
 1. Onay sistemi kullanımları Kullanıcı akışından gelen HTTP isteğini alır.
 
@@ -320,17 +320,17 @@ Content-type: application/json
 
 | Parametre                                           | Gerekli | Açıklama                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Evet      | , `email` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Evet      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
-| posta                                                | Evet      | `email`API 'ye gönderilen talebe denktir.                                                                                                               |
-| userType                                            | Evet      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
-| lerinizde                                          | Evet      | Federal kimlik bilgileri.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Hayır       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Hayır       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
+| userPrincipalName                                   | Yes      | , `email` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
+| posta                                                | Yes      | `email`API 'ye gönderilen talebe denktir.                                                                                                               |
+| userType                                            | Yes      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
+| lerinizde                                          | Yes      | Federal kimlik bilgileri.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | No       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Federe Azure Active Directory Kullanıcı için
 
-Bir Kullanıcı bir federasyon Azure Active Directory hesabıyla oturum açarsa, kullanıcıyı oluşturmak için [davet API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0) 'sini ve isteğe bağlı olarak Kullanıcı [güncelleştirme API](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0) 'sini kullanıcıya daha fazla öznitelik atamak için kullanmalısınız.
+Bir Kullanıcı bir federasyon Azure Active Directory hesabıyla oturum açarsa, kullanıcıyı oluşturmak için [davet API](/graph/api/invitation-post?view=graph-rest-1.0) 'sini ve isteğe bağlı olarak Kullanıcı [güncelleştirme API](/graph/api/user-update?view=graph-rest-1.0) 'sini kullanıcıya daha fazla öznitelik atamak için kullanmalısınız.
 
 1. Onay sistemi, Kullanıcı akışından gelen HTTP isteğini alır.
 
@@ -389,4 +389,4 @@ Content-type: application/json
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure işlevi hızlı başlangıç örneklerimize](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)başlayın.
-- [El ile onay örneğiyle Konuk kullanıcılar için self servis kaydolma](code-samples-self-service-sign-up.md#custom-approval-workflows)işlemini kullanıma alın. 
+- [El ile onay örneğiyle Konuk kullanıcılar için self servis kaydolma](code-samples-self-service-sign-up.md#custom-approval-workflows)işlemini kullanıma alın.

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd73ac372a21a32eac0c742a7f0f525db2d1a4fe
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78301020"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169080"
 ---
 ## <a name="prepare-your-web-app"></a>Web uygulamanızı hazırlama
 
@@ -31,7 +31,7 @@ ms.locfileid: "78301020"
 
 **Uygulama hizmetleri** sayfasında, Web uygulamanızın adını seçin.
 
-![Azure uygulamasına portal gezintisi](./media/app-service-ssl-prepare-app/select-app.png)
+![Listedeki ilk uygulamayla vurgulanan tüm Web uygulamalarının listesini gösteren Azure portal App Services sayfasının ekran görüntüsü.](./media/app-service-ssl-prepare-app/select-app.png)
 
 Web uygulamanızın yönetim sayfasına ulaştınız.  
 

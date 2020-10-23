@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273232"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107581"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio panoları
 
-[Azure Data Studio](https://aka.ms/azuredatastudio) , Azure Arc kaynaklarınızla ilgili bilgileri görüntülemek için Azure Portal benzer bir deneyim sağlar.  Bu görünümlere **panolar** denir ve Azure Portal belirli bir kaynak hakkında neleri görebileceğinize benzer bir düzen ve seçeneklere sahip olursunuz, ancak Azure 'a yönelik bir bağlantınız olmadığı durumlarda bu bilgileri ortamınızda yerel olarak görme esnekliği sağlar.
+[Azure Data Studio](/sql/azure-data-studio/what-is) , Azure Arc kaynaklarınızla ilgili bilgileri görüntülemek için Azure Portal benzer bir deneyim sağlar.  Bu görünümlere **panolar** denir ve Azure Portal belirli bir kaynak hakkında neleri görebileceğinize benzer bir düzen ve seçeneklere sahip olursunuz, ancak Azure 'a yönelik bir bağlantınız olmadığı durumlarda bu bilgileri ortamınızda yerel olarak görme esnekliği sağlar.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "91273232"
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-- [Azure Data Studio](https://aka.ms/getazuredatastudio) indir
+- [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) indir
 - Azure Arc uzantısı yüklendi
 
 ### <a name="determine-the-data-controller-server-api-endpoint-url"></a>Data Controller Server API uç nokta URL 'sini belirleme
@@ -57,7 +57,7 @@ Yük dengeleyici türü kullanıyorsanız, dış IP adresini ve bağlantı nokta
 https://<ip address>:<port>
 
 Example:
-https://52.;154.152.24:30080
+https://52.154.152.24:30080
 ```
 
 Bir sonraki adımda kullanacağınız için IP adresinizi göz önünde bulabilirsiniz.

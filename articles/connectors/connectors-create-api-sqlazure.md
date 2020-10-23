@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326788"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426605"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak bir SQL veritabanı için iş akışlarını otomatikleştirme
 
@@ -67,14 +67,17 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 ### <a name="connect-to-azure-sql-database-or-managed-instance"></a>Azure SQL veritabanı veya yönetilen örnek 'e bağlanma
 
+Şirket içi veri ağ geçidini veya tümleştirme hizmeti ortamını kullanmadan bir Azure SQL yönetilen örneğine erişmek için [Azure SQL yönetilen örneği üzerinde genel uç noktasını ayarlamanız](../azure-sql/managed-instance/public-endpoint-configure.md)gerekir. Genel uç nokta 3342 bağlantı noktasını kullanır, bu nedenle mantıksal uygulamanızdan bağlantıyı oluştururken bu bağlantı noktası numarasını belirttiğinizden emin olun.
+
+
 İlk kez bir [SQL tetikleyicisi](#add-sql-trigger) ya da [SQL eylemi](#add-sql-action)eklediğinizde ve daha önce veritabanınıza bir bağlantı oluşturmadıysanız, şu adımları gerçekleştirmeniz istenir:
 
 1. **Kimlik doğrulama türü**Için, Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde gerekli ve etkinleştirilmiş olan kimlik doğrulamasını seçin:
 
-   | Kimlik Doğrulaması | Açıklama |
+   | Kimlik doğrulama | Description |
    |----------------|-------------|
    | [**Azure AD Tümleşik**](../azure-sql/database/authentication-aad-overview.md) | -Hem ıSE hem de ıSE SQL Server bağlayıcısını destekler. <p><p>-Azure Active Directory (Azure AD) içinde veritabanınıza erişimi olan geçerli bir kimlik gerektirir. <p>Daha fazla bilgi için şu konulara bakın: <p>- [Azure SQL güvenliğine genel bakış-kimlik doğrulama](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL kimlik doğrulaması ve yetkilendirmesi için veritabanı erişimini yetkilendir](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-Azure AD Tümleşik kimlik doğrulaması](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server kimlik doğrulaması**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Hem ıSE hem de ıSE SQL Server bağlayıcısını destekler. <p><p>-Veritabanınıza oluşturulup depolanan geçerli bir Kullanıcı adı ve güçlü bir parola gerektirir. <p>Daha fazla bilgi için şu konulara bakın: <p>- [Azure SQL güvenliğine genel bakış-kimlik doğrulama](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL kimlik doğrulaması ve yetkilendirmesi için veritabanı erişimini yetkilendir](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server Kimlik Doğrulaması**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Hem ıSE hem de ıSE SQL Server bağlayıcısını destekler. <p><p>-Veritabanınıza oluşturulup depolanan geçerli bir Kullanıcı adı ve güçlü bir parola gerektirir. <p>Daha fazla bilgi için şu konulara bakın: <p>- [Azure SQL güvenliğine genel bakış-kimlik doğrulama](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL kimlik doğrulaması ve yetkilendirmesi için veritabanı erişimini yetkilendir](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Bu örnek **Azure AD Tümleşik**ile devam eder:
@@ -88,8 +91,8 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
    | **Sunucu adı** | Yes | SQL sunucunuzun adresi, örneğin, `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Veritabanı adı** | Evet | SQL veritabanınızın adı, örneğin `Fabrikam-Azure-SQL-DB` |
-   | **Tablo adı** | Evet | Kullanmak istediğiniz tablo, örneğin, `SalesLT.Customer` |
+   | **Veritabanı adı** | Yes | SQL veritabanınızın adı, örneğin `Fabrikam-Azure-SQL-DB` |
+   | **Tablo adı** | Yes | Kullanmak istediğiniz tablo, örneğin, `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -115,10 +118,10 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 1. **Kimlik doğrulama türü**için, gerekli olan ve SQL Server etkin olan kimlik doğrulamasını seçin:
 
-   | Kimlik Doğrulaması | Açıklama |
+   | Kimlik doğrulama | Description |
    |----------------|-------------|
    | [**Windows Kimlik Doğrulaması**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -Çok kiracılı Azure veya bir ıSE kullanıp kullanmadığına bakılmaksızın, bağlantınız için daha önce Azure 'da oluşturulmuş bir veri ağ geçidi kaynağı gerektiren yalnızca ıSE SQL Server bağlayıcısını destekler. <p><p>-Windows hesabınız aracılığıyla kimliğinizi doğrulamak için geçerli bir Windows Kullanıcı adı ve parola gerektirir. <p>Daha fazla bilgi için bkz. [Windows kimlik doğrulaması](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
-   | [**SQL Server kimlik doğrulaması**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Hem ıSE hem de ıSE SQL Server bağlayıcısını destekler. <p><p>-SQL Server oluşturulup depolanan geçerli bir Kullanıcı adı ve güçlü bir parola gerektirir. <p>Daha fazla bilgi için [SQL Server kimlik doğrulaması](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)konusuna bakın. |
+   | [**SQL Server Kimlik Doğrulaması**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Hem ıSE hem de ıSE SQL Server bağlayıcısını destekler. <p><p>-SQL Server oluşturulup depolanan geçerli bir Kullanıcı adı ve güçlü bir parola gerektirir. <p>Daha fazla bilgi için [SQL Server kimlik doğrulaması](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)konusuna bakın. |
    |||
 
    Bu örnek, **Windows kimlik doğrulamasıyla**devam eder:
@@ -129,10 +132,10 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **SQL Server adı** | Evet | SQL sunucunuzun adresi, örneğin, `Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL veritabanı adı** | Evet | SQL Server veritabanınızın adı, örneğin `Fabrikam-Azure-SQL-DB` |
-   | **Kullanıcı adı** | Evet | SQL Server ve veritabanı için Kullanıcı adınız |
-   | **Parola** | Evet | SQL Server ve veritabanı için parolanız |
+   | **SQL Server adı** | Yes | SQL sunucunuzun adresi, örneğin, `Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL veritabanı adı** | Yes | SQL Server veritabanınızın adı, örneğin `Fabrikam-Azure-SQL-DB` |
+   | **Kullanıcı adı** | Yes | SQL Server ve veritabanı için Kullanıcı adınız |
+   | **Parola** | Yes | SQL Server ve veritabanı için parolanız |
    | **Abonelik** |  Evet, Windows kimlik doğrulaması için | Daha önce Azure 'da oluşturduğunuz veri ağ geçidi kaynağı için Azure aboneliği |
    | **Bağlantı ağ geçidi** | Evet, Windows kimlik doğrulaması için | Daha önce Azure 'da oluşturduğunuz veri ağ geçidi kaynağının adı <p><p>**İpucu**: ağ geçidiniz listede görünmüyorsa, [ağ geçidinizin](../logic-apps/logic-apps-gateway-connection.md)doğru şekilde ayarlandığından emin olun. |
    |||
@@ -211,19 +214,16 @@ Bu örnekte, mantıksal uygulama [yinelenme tetikleyicisiyle](../connectors/conn
 
 Bazen, bağlayıcının tüm sonuçları aynı anda döndürmemesi veya sonuç kümelerinizin boyutu ve yapısı üzerinde daha iyi denetim sağlamak istiyorsanız sonuç kümeleriyle çalışmanız gerekir. Bu tür büyük sonuç kümelerini işleyebilmeniz için bazı yollar şunlardır:
 
-* Sonuçları daha küçük kümeler olarak yönetmenize yardımcı olmak için *sayfalandırma*'yı açın. Daha fazla bilgi için bkz. [sayfalandırma kullanarak toplu verileri, kayıtları ve öğeleri edinme](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
+* Sonuçları daha küçük kümeler olarak yönetmenize yardımcı olmak için *sayfalandırma*'yı açın. Daha fazla bilgi için bkz. [sayfalandırma kullanarak toplu verileri, kayıtları ve öğeleri edinme](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Daha fazla bilgi için bkz. [Logic Apps ile toplu veri aktarımı Için SQL sayfalandırma](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
 
-* Sonuçları istediğiniz şekilde düzenleyen bir saklı yordam oluşturun.
+* Sonuçları istediğiniz şekilde düzenleyen bir [*saklı yordam*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) oluşturun. SQL Bağlayıcısı, SQL veritabanı tablolarıyla çalışan iş görevlerini daha kolay otomatikleştirebilmeniz için Azure Logic Apps kullanarak erişebileceğiniz birçok arka uç özelliği sağlar.
 
   Birden çok satır alırken veya eklerken, mantıksal uygulamanız bu [sınırlar](../logic-apps/logic-apps-limits-and-config.md)dahilinde bir [*until döngüsü*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) kullanarak bu satırları yineleyebilir. Ancak, mantıksal uygulamanızın kayıt kümeleriyle birlikte çalışması gerektiğinde, büyük bir deyişle, binlerce veya milyonlarca satır olmak üzere veritabanına yapılan çağrılardan elde edilen maliyetleri en aza indirmek istersiniz.
 
-  Sonuçları istediğiniz şekilde düzenlemek için, SQL örneğiniz içinde çalışan bir [*saklı yordam*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) oluşturabilir ve **Select-order by** ifadesini kullanabilirsiniz. Bu çözüm, sonuçlarınızın boyutu ve yapısı üzerinde daha fazla denetim sağlar. Mantıksal uygulamanız, SQL Server bağlayıcısının **saklı yordamı Çalıştır** eylemini kullanarak saklı yordamı çağırır.
+  Sonuçları istediğiniz şekilde düzenlemek için, SQL örneğiniz içinde çalışan bir saklı yordam oluşturabilir ve **Select-order by** ifadesini kullanabilirsiniz. Bu çözüm, sonuçlarınızın boyutu ve yapısı üzerinde daha fazla denetim sağlar. Mantıksal uygulamanız, SQL Server bağlayıcısının **saklı yordamı Çalıştır** eylemini kullanarak saklı yordamı çağırır. Daha fazla bilgi için bkz. [Select-order by yan tümcesi](/sql/t-sql/queries/select-order-by-clause-transact-sql).
 
-  Daha fazla çözüm ayrıntısı için şu makalelere bakın:
-
-  * [Logic Apps ile toplu veri aktarımı için SQL sayfalandırma](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
-
-  * [SELECT-ORDER BY yan tümcesi](/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  > [!NOTE]
+  > Bu bağlayıcıyla, saklı bir yordamın yürütülmesi [2 dakikalık bir zaman aşımı sınırı](/connectors/sql/#known-issues-and-limitations)ile sınırlıdır. Bir hata üreten bazı saklı yordamlar bu sınırdan sonra işlem ve tamamen sonlanmasından daha uzun sürebilir `504 TIMEOUT` . Aslında, uzun süre çalışan bazı işlemler, bu amaçla açıkça saklı yordamlar olarak kodlanır. Bu yordamları Azure Logic Apps ' den çağırmak, bu zaman aşımı sınırı nedeniyle sorun oluşturabilir. SQL Bağlayıcısı bir zaman uyumsuz modu yerel olarak desteklememesine karşın, [Azure elastik Iş Aracısı](../azure-sql/database/elastic-jobs-overview.md)'nı kullanarak bir SQL tamamlama tetikleyicisi, yerel SQL geçişli sorgu, durum tablosu ve sunucu tarafı işleri kullanarak bu modun benzetimini yapabilirsiniz.
 
 ### <a name="handle-dynamic-bulk-data"></a>Dinamik toplu verileri işle
 
@@ -248,6 +248,16 @@ SQL Server bağlayıcısını kullanarak bir saklı yordamı çağırdığınız
 
 1. JSON içerik özelliklerine başvurmak için, dinamik içerik listesinin görünmesi için bu özelliklere başvurmak istediğiniz düzenleme kutularının içine tıklayın. Listede, [**JSON başlığını Ayrıştır**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) başlığı altında istediğiniz JSON içerik özellikleri için veri belirteçlerini seçin.
 
+## <a name="troubleshoot-problems"></a>Sorunları giderme
+
+* Bağlantı sorunları yaygın olarak ortaya çıkabilir. bu nedenle, bu tür sorunları gidermek ve çözmek için [SQL Server bağlantı hatalarını çözme](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)konusunu gözden geçirin. İşte bazı örnekler:
+
+  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+
 ## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
 
 Bu bağlayıcının Tetikleyicileri, eylemleri ve limitleri hakkında teknik bilgi için, Swagger açıklasından oluşturulan [bağlayıcının başvuru sayfasına](/connectors/sql/)bakın.
@@ -255,4 +265,3 @@ Bu bağlayıcının Tetikleyicileri, eylemleri ve limitleri hakkında teknik bil
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Logic Apps için diğer bağlayıcılar](../connectors/apis-list.md) hakkında bilgi edinin
-

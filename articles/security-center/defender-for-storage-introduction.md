@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577824"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341983"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Depolama için Azure Defender 'a giriş
 
@@ -27,8 +27,8 @@ Bu koruma katmanı, güvenlik uzmanı olmanıza gerek *kalmadan* tehditleri sağ
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**Depolama Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Korumalı Depolama türleri:|[BLOB depolama](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage 2. Nesil](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Korumalı Depolama türleri:|[Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Dosyaları](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage 2. Nesil](../storage/blobs/data-lake-storage-introduction.md)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -66,6 +66,6 @@ Bu makalede, depolama için Azure Defender hakkında bilgi edindiniz.
 İlgili malzemeler için aşağıdaki makalelere bakın: 
 
 - Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmadığı veya Güvenlik Merkezi tarafından farklı bir güvenlik ürününden alınıp alınmayacağı, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için [uyarıları BIR SıEM 'ye aktarma](continuous-export.md)konusundaki yönergeleri izleyin.
-- [Depolama için gelişmiş Defender 'ı etkinleştirme](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Depolama için gelişmiş Defender 'ı etkinleştirme](../storage/common/azure-defender-storage-configure.md)
 - [Depolama uyarıları için Azure Defender listesi](alerts-reference.md#alerts-azurestorage)
 - [Microsoft 'un tehdit bilgileri özellikleri](https://go.microsoft.com/fwlink/?linkid=2128684)

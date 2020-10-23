@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 928737608ae3e3e44b352724713a284ff9a45da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941751"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202965"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Iletişim hizmetlerinde kimlik doğrulama
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, Azure Iletişim Hizmetleri istemci kitaplıkları tarafın
 
 Her yetkilendirme seçeneği kısaca aşağıda açıklanmıştır:
 
-- SMS ve yönetim işlemleri için anahtar kimlik doğrulamasına **erişin** . Erişim anahtarı kimlik doğrulaması, güvenilir bir hizmet ortamında çalışan uygulamalar için uygundur. Bir erişim anahtarı ile kimlik doğrulamak için, bir istemci, [karma tabanlı bir yöntem kimlik doğrulama kodu (HMAC)](https://en.wikipedia.org/wiki/HMAC) oluşturur ve `Authorization` her http isteğinin üstbilgisine dahil eder. Daha fazla bilgi için bkz. [erişim anahtarı Ile kimlik doğrulama](#authenticate-with-an-access-key).
+- SMS ve yönetim işlemleri için anahtar kimlik doğrulamasına **erişin** . Erişim anahtarı kimlik doğrulaması, güvenilir bir hizmet ortamında çalışan uygulamalar için uygundur. Bir erişim anahtarı ile kimlik doğrulamak için, bir istemci, [karma tabanlı bir ileti kimlik doğrulama kodu (HMAC)](https://en.wikipedia.org/wiki/HMAC) oluşturur ve `Authorization` her http isteğinin üst bilgisine dahil eder. Daha fazla bilgi için bkz. [erişim anahtarı Ile kimlik doğrulama](#authenticate-with-an-access-key).
 - Sohbet için **Kullanıcı erişim belirteci** kimlik doğrulaması ve çağırma. Kullanıcı erişim belirteçleri, istemci uygulamalarınızın doğrudan Azure Iletişim hizmetlerinde kimlik doğrulamasını sağlar. Bu belirteçler, oluşturduğunuz sunucu tarafı belirteç sağlama hizmetinde oluşturulur. Daha sonra, sohbeti başlatmak ve istemci kitaplıklarını çağırmak için belirteci kullanan istemci cihazlara sağlanırlar. Daha fazla bilgi için bkz. [Kullanıcı erişim belirteci Ile kimlik doğrulama](#authenticate-with-a-user-access-token).
 
 ## <a name="authenticate-with-an-access-key"></a>Erişim anahtarı ile kimlik doğrulama
@@ -192,5 +192,5 @@ CommunicationUserCredential credential = new CommunicationUserCredential(tokenRe
 > [!div class="nextstepaction"]
 > [Kullanıcı erişim belirteçleri oluşturma](../quickstarts/access-tokens.md)
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [İstemci ve sunucu mimarisi hakkında bilgi edinin](../concepts/client-and-server-architecture.md)

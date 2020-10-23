@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0cc9fd5836371a925be531de773ea9c2e276c0eb
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90970436"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127361"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>IoT Central ile enerji sektörü çözümleri oluşturma 
 
@@ -66,6 +66,6 @@ Uygulamayı dağıttıktan sonra, aşağıdaki panoda gösterildiği gibi, sanal
 ## <a name="next-steps"></a>Sonraki adımlar
 Enerji çözümü oluşturmaya başlamak için:
 * Ücretsiz uygulama şablonları oluşturun: [Akıllı Ölçüm uygulaması](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [güneş paneli uygulaması](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* [Akıllı ölçüm izleme uygulaması kavramları](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app) hakkında bilgi edinin
-* [Güneş paneli izleme uygulaması kavramları](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app) hakkında bilgi edinin
-* [IoT Central platformu](https://docs.microsoft.com/azure/iot-central/) hakkında bilgi edinin
+* [Akıllı ölçüm izleme uygulaması kavramları](./concept-iot-central-smart-meter-app.md) hakkında bilgi edinin
+* [Güneş paneli izleme uygulaması kavramları](./concept-iot-central-solar-panel-app.md) hakkında bilgi edinin
+* [IoT Central platformu](../index.yml) hakkında bilgi edinin

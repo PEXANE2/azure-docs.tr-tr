@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84295431"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215423"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C kullanılabilecek uygulama türleri
-
+ 
 Azure Active Directory B2C (Azure AD B2C), çeşitli modern uygulama mimarilerinin kimlik doğrulamasını destekler. Bunların tümü [OAuth 2.0](protocols-overview.md) veya [OpenID Connect](protocols-overview.md) endüstri standardı protokollerine dayalıdır. Bu makalede, tercih ettiğiniz dil veya platformdan bağımsız olarak oluşturabileceğiniz uygulama türleri açıklanmaktadır. Uygulama oluşturmaya başlamadan önce üst düzey senaryoları anlamanıza da yardımcı olur.
 
 Azure AD B2C kullanan her uygulamanın [Azure Portal](https://portal.azure.com/)kullanılarak [Azure AD B2C kiracınızda](tutorial-create-tenant.md) kayıtlı olması gerekir. Uygulama kayıt işlemi, değerleri toplar ve atar, örneğin:
@@ -75,6 +75,26 @@ Bu senaryoyu eylemde görmek için [Başlarken bölümümüzde](overview.md)Web 
 
 Basit oturum açmayı kolaylaştırmanın yanı sıra, bir Web sunucusu uygulamasının bir arka uç Web hizmetine erişmesi de gerekebilir. Bu durumda, Web uygulaması biraz farklı bir [OpenID Connect akışı](openid-connect.md) gerçekleştirebilir ve yetkilendirme kodları ve yenileme belirteçleri kullanarak belirteçleri alabilir. Bu senaryo, aşağıdaki [Web API'leri bölümünde](#web-apis) belirtilmiştir.
 
+## <a name="single-page-applications"></a>Tek sayfalı uygulamalar
+Birçok modern web uygulaması, istemci tarafı tek sayfalı uygulamalar ("maça 'Lar") olarak oluşturulmuştur. Geliştiriciler bunları JavaScript veya angular, Vue ve tepki verme gibi bir SPA çerçevesi kullanarak yazar. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir.
+
+Azure AD B2C, tek sayfalı uygulamaların kullanıcılara oturum açmasını ve arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri almasını sağlamak için **iki** seçenek sunar:
+
+### <a name="authorization-code-flow-with-pkce"></a>Yetkilendirme kodu akışı (PKCE ile)
+- [OAuth 2,0 yetkilendirme kodu akışı (PKCE ile)](./authorization-code-flow.md). Yetkilendirme kodu akışı, uygulamanın **kimlik** belirteçleri için bir yetkilendirme kodu gönderip, korunan API 'leri aramak için gereken kimliği doğrulanmış kullanıcı ve **erişim** belirteçlerini temsil etmesine olanak tanır. Buna ek olarak, kullanıcılar adına bu kullanıcılarla etkileşime gerek kalmadan kaynaklara uzun süreli erişim sağlayan **yenileme** belirteçlerini döndürür. 
+
+Bu, **Önerilen** yaklaşımdır. Sınırlı ömür yenileme belirteçlerinin olması, uygulamanızın Safari ıOP gibi [modern tarayıcı tanımlama bilgisi gizlilik kısıtlamalarına](../active-directory/develop/reference-third-party-cookies-spas.md)uyum sağlamasına yardımcı olur.
+
+Bu akıştan faydalanmak için, uygulamanız [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)gibi onu destekleyen bir kimlik doğrulama kitaplığı kullanabilir.
+
+<!-- ![Single-page applications-auth](./media/tutorial-single-page-app/spa-app-auth.svg) -->
+![Tek sayfalı uygulamalar-kimlik doğrulama](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
+
+### <a name="implicit-grant-flow"></a>Örtük verme akışı
+- [OAuth 2,0 örtük akış](implicit-flow-single-page-application.md). [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)gibi bazı çerçeveler yalnızca örtük izin akışını destekler. Örtük verme akışı, uygulamanın **kimlik** ve **erişim** belirteçleri almasına izin verir. Yetkilendirme kodu akışından farklı olarak, örtük verme akışı bir **yenileme belirteci**döndürmez. 
+
+Bu kimlik doğrulama akışı, elektron ve tepki verme gibi platformlar arası JavaScript çerçeveleri kullanan uygulama senaryoları içermez. Bu senaryolar, yerel platformlarla etkileşim için daha fazla yetenek gerektirir.
+
 ## <a name="web-apis"></a>Web API'leri
 
 Uygulamanızın tekrar Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Azure AD B2C kullanabilirsiniz. Web API’leri belirteçleri kullanarak gelen HTTP isteklerinin kimliğini doğrulama yoluyla verilerinin güvenliğini sağlamak üzere OAuth 2.0 kullanabilir. Web API'si çağıranı, HTTP isteğinin yetkilendirme üst bilgisine bir belirteç ekler:
@@ -85,7 +105,7 @@ Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
 Accept: application/json
 ...
-```
+``` 
 
 Web API'si daha sonra, API çağıranının kimliğini doğrulamak ve belirteçte kodlanmış taleplerden çağıran hakkında bilgi ayıklamak için belirteci kullanabilir. [Azure AD B2C belirteç başvurusunda](tokens-overview.md) bir uygulama için kullanılabilir talepler ve belirteç türleri hakkında bilgi edinin.
 

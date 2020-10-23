@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 17e3e8dca1c03f9783c0ca94350bb8a4ba5aca64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 737c7e61a7ae0573ca6de0d6daa8288313f70741
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941371"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201911"
 ---
 # <a name="securing-azure-sql-edge"></a>Azure SQL Edge güvenliğini sağlama
 
@@ -38,7 +38,7 @@ Azure SQL Edge ağ protokolleri ve TDS uç noktaları hakkında daha fazla bilgi
 
 ## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme 
 
-### <a name="authentication"></a>Kimlik Doğrulaması  
+### <a name="authentication"></a>Kimlik doğrulaması  
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL Edge Şu anda yalnızca `SQL Authentication` mekanizmayı desteklemektedir.
 
 - *SQL kimlik doğrulaması*:
@@ -92,8 +92,8 @@ Azure SQL ve Microsoft SQL Server benzer şekilde, Azure SQL Edge, nesne ve bağ
 
 Azure SQL Edge güvenlik en iyi uygulamaları, güvenli istemci uygulamalarının yazılmasını içerir. İstemci uygulamalarının Ağ katmanında güvenli hale getirilmesine yardımcı olma hakkında daha fazla bilgi için bkz. [Istemci ağ yapılandırması](https://docs.microsoft.com/sql/database-engine/configure-windows/client-network-configuration).
 
-### <a name="sql-server-security-catalog-views-and-functions"></a>SQL Server Güvenlik Kataloğu görünümleri ve işlevleri  
- Güvenlik bilgileri, performans ve yardımcı için iyileştirilmiş çeşitli görünümlerde ve işlevlerde kullanıma sunulur. Aşağıdaki tabloda güvenlik görünümleri ve işlevleri hakkında bilgiler yer almaktadır.  
+### <a name="security-catalog-views-and-functions"></a>Güvenlik Kataloğu görünümleri ve işlevleri  
+Güvenlik bilgileri, performans ve yardımcı için iyileştirilmiş çeşitli görünümlerde ve işlevlerde kullanıma sunulur. Aşağıdaki tabloda, Azure SQL Edge 'deki güvenlik görünümleri ve işlevleri hakkında bilgiler yer almaktadır.  
   
 |İşlevler ve görünümler|Bağlantılar|  
 |---------------------------|---------|  

@@ -3,12 +3,12 @@ title: Azure sanal makine değerlendirmelerinde Azure geçişi sunucu değerlend
 description: Azure geçişi sunucu değerlendirmesinde değerlendirmeler hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275532"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319326"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Sunucu değerlendirmesi genel bakış (Azure VM 'lerine geçiş)
 
@@ -54,7 +54,7 @@ Bir değerlendirme çalıştırmak için birkaç yol vardır.
 
 Gereç makine bulmayı başlattıktan sonra, değerlendirmek istediğiniz makineleri bir gruba toplayıp değerlendirme türü **Azure VM**olan grup için bir değerlendirme çalıştırabilirsiniz.
 
-Bu adımları denemek için [VMware](tutorial-prepare-vmware.md), [Hyper-V](tutorial-prepare-hyper-v.md)veya [fiziksel sunucular](tutorial-prepare-physical.md) için öğreticilerimizi izleyin.
+Bu adımları denemek için [VMware](./tutorial-discover-vmware.md), [Hyper-V](./tutorial-discover-hyper-v.md)veya [fiziksel sunucular](./tutorial-discover-physical.md) için öğreticilerimizi izleyin.
 
 ## <a name="how-do-i-assess-with-imported-data"></a>İçeri aktarılan verilerle Nasıl yaparım? değerlendirin?
 
@@ -173,7 +173,7 @@ Windows Server 2012 R2 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure içi
 Windows Server 2012 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure için hazırlayın.
 Tüm SPs 'ler ile Windows Server 2008 R2 | Azure tam destek sağlar.| Azure için hazırlayın.
 Windows Server 2008 (32-bit ve 64-bit) | Azure tam destek sağlar. | Azure için hazırlayın.
-Windows Server 2003 ve Windows Server 2003 R2 | Bu işletim sistemleri destek son tarihlerini geçti ve Azure 'da destek için [özel bir destek sözleşmesine (CSA)](https://aka.ms/WSosstatement) ihtiyaç duyuyor. | Azure için koşullu olarak hazırlanın. Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz göz önünde bulundurun.
+Windows Server 2003 ve Windows Server 2003 R2 | Bu işletim sistemleri destek son tarihlerini geçti ve Azure 'da destek için [özel bir destek sözleşmesine (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) ihtiyaç duyuyor. | Azure için koşullu olarak hazırlanın. Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz göz önünde bulundurun.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3,1 ve MS-DOS | Bu işletim sistemleri destek son tarihlerini geçti. Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. | Azure için koşullu olarak hazırlanın. Azure 'a geçiş yapmadan önce işletim sistemini yükseltmenizi öneririz.
 Windows 7, Windows 8 ve Windows 10 | Azure [yalnızca bir Visual Studio aboneliği](../virtual-machines/windows/client-images.md) için destek sağlar. | Azure için koşullu olarak hazırlanın.
 Windows 10 Pro | Azure, [çok kiracılı barındırma haklarıyla](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) destek sağlar. | Azure için koşullu olarak hazırlanın.
@@ -297,6 +297,6 @@ Boyutlandırma önerileri tamamlandıktan sonra, Azure geçişi 'ndeki bir Azure
 
 Değerlendirme oluşturmak için en iyi uygulamaları [gözden geçirin](best-practices-assessment.md) . 
 
-- [VMware VM 'leri](tutorial-prepare-vmware.md), [Hyper-V VM 'leri](tutorial-prepare-hyper-v.md)ve [fiziksel sunucular](tutorial-prepare-physical.md)için değerlendirme çalıştırma hakkında bilgi edinin.
-- [BIR CSV dosyası ile içeri aktarılan](tutorial-assess-import.md)sunucuları değerlendirme hakkında bilgi edinin.
+- [VMware VM 'leri](./tutorial-discover-vmware.md), [Hyper-V VM 'leri](./tutorial-discover-hyper-v.md)ve [fiziksel sunucular](./tutorial-discover-physical.md)için değerlendirme çalıştırma hakkında bilgi edinin.
+- [BIR CSV dosyası ile içeri aktarılan](./tutorial-discover-import.md)sunucuları değerlendirme hakkında bilgi edinin.
 - [Bağımlılık görselleştirmesini](concepts-dependency-visualization.md)ayarlama hakkında bilgi edinin.

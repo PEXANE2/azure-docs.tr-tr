@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319087"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425800"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Konuşma kapsayıcıları için Batch işleme seti
 
@@ -75,9 +75,8 @@ Batch istemcisi, bir uç noktanın kullanılamaz hale geldiğini (örneğin, bir
 > [!NOTE] 
 > * Bu örnek `/my_nfs` yapılandırma dosyası ve girişler, çıktılar ve Günlükler dizinleri için aynı dizini () kullanır. Bu klasörler için barındırılan veya NFS bağlı dizinleri kullanabilirsiniz.
 > * İstemcisini ile çalıştırmak, `–h` kullanılabilir komut satırı parametrelerini ve bunların varsayılan değerlerini listeler. 
+> * Toplu işlem kapsayıcısı yalnızca Linux üzerinde desteklenir.
 
-
-#### <a name="linux"></a>[Linux](#tab/linux)
 `run`Kapsayıcıyı başlatmak Için Docker komutunu kullanın. Bu, kapsayıcı içinde etkileşimli bir kabuk başlatacak.
 
 ```Docker
@@ -95,17 +94,6 @@ Batch istemcisini ve kapsayıcısını tek bir komutta çalıştırmak için:
 ```Docker
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-Batch istemcisini ve kapsayıcısını tek bir komutta çalıştırmak için:
-
-```Docker
-docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
-
-```
-
----
 
 
 İstemci çalışmaya başlayacak. Bir ses dosyası önceki bir çalıştırmaya zaten eklenmiş ise, istemci dosyayı otomatik olarak atlar. Dosyalar, geçici hatalar oluşursa otomatik yeniden denemeye gönderilir ve istemcisini yeniden denemek istediğiniz hataları ayırt edebilirsiniz. Bir döküm hatası durumunda, istemci, devam etmeden devam eder ve devam etmeden yeniden deneyebilir.  
@@ -163,7 +151,7 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 
 ---
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 > [!NOTE]
 > Batch istemcisi çok büyük alırsa *Run. log* dosyasının üzerine düzenli olarak yazılabilir.

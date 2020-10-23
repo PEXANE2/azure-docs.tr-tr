@@ -3,16 +3,25 @@ title: Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma | Microsoft Docs
 description: Bu makalede, Azure Red Hat OpenShift kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815445"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216547"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma 
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma
 
-Azure Red Hat OpenShift sürüm 3. x kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istediğinize karar verirseniz, kapsayıcıyı kapsayıcılar için Azure Izleyici ile izlemeyi durdurabilirsiniz. Bu makalede, belirtilen Azure Resource Manager şablonu kullanılarak bunun nasıl yapılacağı gösterilmektedir. 
+>[!IMPORTANT]
+> Azure Red Hat OpenShift 3,11, 2022 Haziran tarihinde kullanımdan kaldırılacaktır.
+>
+> Ekim 2020 itibariyle, artık yeni 3,11 kümeleri oluşturamayacak.
+> Mevcut 3,11 kümeleri, 2022 Haziran 'a kadar çalışmaya devam eder, ancak bu tarihten sonra daha fazla desteklenmeyecektir.
+>
+> [Azure Red Hat OpenShift 4 kümesi oluşturmak](../../openshift/tutorial-create-cluster.md)için bu kılavuzu izleyin.
+> Belirli sorularınız varsa [lütfen bizimle iletişime geçin](mailto:aro-feedback@microsoft.com).
+
+Azure Red Hat OpenShift sürüm 3. x kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istediğinize karar verirseniz, kapsayıcıyı kapsayıcılar için Azure Izleyici ile izlemeyi durdurabilirsiniz. Bu makalede, belirtilen Azure Resource Manager şablonu kullanılarak bunun nasıl yapılacağı gösterilmektedir.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 

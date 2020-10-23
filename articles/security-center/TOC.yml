@@ -44,8 +44,6 @@
         - name: SQL için Azure Defender
           displayName: database
           href: defender-for-sql-introduction.md
-        - name: IoT için Azure Defender
-          href: defender-for-iot-introduction.md
         - name: Key Vault için Azure Defender
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
@@ -191,6 +189,9 @@
             - name: Tam zamanında erişimi yönetme
               displayName: 'jit, management'
               href: security-center-just-in-time.md
+        - name: Tümleşik Uç Nokta için Microsoft Defender lisansını kullanma
+          displayName: 'ATP, mdatp, wdatp'
+          href: security-center-wdatp.md
         - name: Uyarlamalı uygulama denetimlerini yönetme
           href: security-center-adaptive-application.md
         - name: Dosya bütünlüğünü izlemeyi kullanma
@@ -201,8 +202,6 @@
               href: security-center-file-integrity-monitoring-baselines.md
         - name: Uyarlamalı ağ sağlamlaştırmayı yönetme
           href: security-center-adaptive-network-hardening.md
-        - name: Microsoft Defender ATP ile tümleştirme
-          href: security-center-wdatp.md
         - name: Docker konaklarınızı sağlamlaştırma
           displayName: containers
           href: harden-docker-hosts.md
@@ -254,7 +253,7 @@
 - name: Başvuru
   items:
     - name: REST API'leri
-      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+      href: /rest/api/securitycenter/
     - name: Azure Güvenlik Merkezi hakkında SSS
       items:
         - name: Genel sorular
@@ -282,9 +281,9 @@
     - name: Kullanıcı verilerini yönetme
       href: security-center-privacy.md
     - name: IoT için Azure Defender belgeleri
-      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
+      href: /azure/asc-for-iot/
     - name: Azure güvenlik belgeleri
-      href: /azure/security/
+      href: ../security/index.yml
     - name: Azure güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Hazırlık Yol Haritası

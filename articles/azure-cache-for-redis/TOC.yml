@@ -59,6 +59,8 @@
       href: cache-best-practices.md
     - name: Güvenlik
       items:
+        - name: Ağ yalıtımı seçenekleri
+          href: cache-network-isolation.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

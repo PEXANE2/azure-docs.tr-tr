@@ -1,69 +1,138 @@
 ---
-title: Azure Marketi 'nde sanal makine teklifleri için Yayımlama Kılavuzu
-description: Bu makalede, Azure Marketi 'nden dağıtılması için bir sanal makine ve yazılım ücretsiz deneme sürümü yayımlama gereksinimleri açıklanmaktadır.
+title: Bir sanal makine teklifi planlayın-Microsoft ticari Market
+description: Bu makalede, Azure Marketi 'ne bir sanal makine teklifi yayımlama gereksinimleri açıklanmaktadır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 09/04/2020
-ms.openlocfilehash: cc6b040731cbeb7271d7a7c0de1c32fa2d007013
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484197"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329041"
 ---
-# <a name="publishing-guide-for-virtual-machine-offers"></a>Sanal makine teklifleri için Yayımlama Kılavuzu
+# <a name="how-to-plan-a-virtual-machine-offer"></a>Bir sanal makine teklifini planlayın
 
-Sanal makine (VM) görüntülerini yayımlama, bir çözümü Azure Marketi 'Nde yayımlamanın ana yöntemlerinden biridir. Bu teklif türü için gereksinimleri anlamak için bu kılavuzu kullanın. 
+Bu makalede, ticari Market 'e bir sanal makine (VM) teklifi yayımlamaya yönelik farklı seçenekler ve gereksinimler açıklanmaktadır. VM teklifleri, Azure Marketi aracılığıyla dağıtılan ve faturalandırılan transactable tekliflerdir.
 
-Sanal makine teklifleri, Azure Marketi aracılığıyla dağıtılan ve faturalandırılan işlem teklifleridir. Kullanıcının gördüğü listeleme seçeneği *Şimdi alın*.
+Başlamadan önce, [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ve hesabınızın ticari Market programına kaydedildiğinden emin olun.
 
-## <a name="free-trial"></a>Ücretsiz deneme sürümü 
+### <a name="technical-fundamentals"></a>Teknik temel bilgiler
 
-Teklifinizi test etmek üzere kullanıcıları düzenlemek için, kendi lisansını getir (KLG) Faturalandırma modelini kullanırken sınırlı süreli yazılım lisanslarına erişin. 
+Teklifleri tasarlama, oluşturma ve test etme işlemi zaman alır ve hem Azure platformunda hem de teklifinizi oluşturmak için kullanılan teknolojilerde uzmanlık gerektirir. Mühendislik ekibinizde [Azure sanal makineleri](https://azure.microsoft.com/services/virtual-machines/), [Azure depolama](https://azure.microsoft.com/services/?filter=storage#storage)ve [Azure ağı](https://azure.microsoft.com/services/?filter=networking#networking)ile Azure [uygulamalarının tasarımı ve mimarisiyle](https://azure.microsoft.com/solutions/architecture/)ilgili bir bilgiye sahip olmanız gerekir. Şu ek teknik kaynaklara bakın: 
 
-## <a name="test-drive"></a>Sınama sürücüsü
+- Öğreticiler
+  - [Linux VM'leri](../virtual-machines/linux/tutorial-manage-vm.md)
+  - [Windows VM'leri](../virtual-machines/windows/tutorial-manage-vm.md)
 
-Hizmet olarak altyapı (IaaS) veya hizmet olarak yazılım (SaaS) uygulamaları aracılığıyla bir veya daha fazla sanal makine dağıtabilirsiniz. *Test sürücüsü* yayımlama seçeneğinin bir avantajı, bir sanal makinenin veya tüm çözümünün iş ortağı tarafından barındırılan bir Kılavuzlu tura göre otomatik olarak kurulumu. Bir sınama sürücüsü, müşterilerinizin VM 'Leri hiçbir ek ücret ödemeden değerlendirmelerini sağlar. Deneme deneyimiyle birlikte çalışmak için müşterinin mevcut bir Azure müşterisi olması gerekmez. 
+- Örnekler
+  - [Linux VM 'Ler için Azure CLı örnekleri](../virtual-machines/linux/cli-samples.md)
+  - [Linux sanal makineleri için Azure PowerShell](../virtual-machines/linux/powershell-samples.md)
+  - [Windows VM 'Leri için Azure CLı örnekleri](../virtual-machines/windows/cli-samples.md)
+  - [Windows VM 'Leri için Azure PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
 
-Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](what-is-test-drive.md)
+## <a name="technical-requirements"></a>Teknik gereksinimler
 
-|Gereksinimler  |Ayrıntılar |
-|---------|---------|
-| Azure Market uygulamanız var   |  IaaS veya SaaS aracılığıyla bir veya daha fazla sanal makine.      |
+VM teklifleri aşağıdaki teknik gereksinimlere sahiptir:
 
-## <a name="interactive-demo"></a>Etkileşimli tanıtım
+- Bir işletim sistemi sanal sabit diski (VHD) hazırlamanız gerekir. Veri diski VHD 'leri isteğe bağlıdır. Bu, aşağıda daha ayrıntılı olarak açıklanmıştır.
+- Müşteri teklifinizi dilediğiniz zaman iptal edebilir.
+- Teklifiniz için en az bir plan oluşturmanız gerekir. Planınız, seçtiğiniz [lisanslama seçeneğine](#licensing-options) göre fiyatlandırılır.
+   > [!IMPORTANT]
+   > Bir plandaki her sanal makine görüntüsünün aynı sayıda veri diski olmalıdır.
 
-Bu teklifle, etkileşimli bir tanıtım kullanarak müşterilerinize çözümünüze yönelik kılavuzlu bir deneyim verirsiniz. Etkileşimli Tanıtım yayımlama seçeneğinin avantajı, karmaşık çözümünüz için karmaşık bir kurulum sağlamak zorunda kalmadan bir deneme deneyimi sunabilmeniz sağlamaktır. 
+VM iki bileşen içerir:
 
-## <a name="virtual-machine-offer"></a>Sanal makine teklifi
+- **İşletim VHD 'si** : teklifinizle birlikte dağıtılan işletim sistemini ve çözümü içerir. VHD 'yi hazırlama işlemi, bir Linux, Windows-veya özel tabanlı VM olmasına bağlı olarak farklılık gösterir.
+- **Veri diski VHD** 'leri (isteğe bağlı) – bir VM için ayrılmış, kalıcı depolama. Kalıcı bilgileri depolamak için işletim sistemi VHD 'sini (örneğin, C: sürücüsü) kullanmayın. 
+    - En fazla 16 veri diski ekleyebilirsiniz.
+    - Disk boş olsa bile, veri diski başına bir VHD kullanın.
 
-Müşterinizle ilişkili aboneliğe bir Sanal Gereç dağıtırken *sanal makine* teklif türünü kullanın. VM 'Ler, Kullandıkça Öde veya kendi lisansını getir (KLG) lisanslama modellerini kullanarak tam olarak ticari olarak etkinleştirilmiştir. Microsoft, ticari işlemi barındırır ve müşterinizin adına fatura alır. Müşteri ile Microsoft arasında, kurumsal sözleşmeler dahil tercih edilen ödeme ilişkilerini kullanmanın avantajını elde edersiniz.
+    > [!NOTE]
+    > Kullandığınız işletim sisteminden bağımsız olarak yalnızca çözüm için gereken en az sayıda veri diski ekleyin. Müşteriler, dağıtım sırasında bir görüntünün parçası olan diskleri kaldıramaz, ancak dağıtım sırasında veya sonrasında her zaman disk ekleyebilirler.
+
+Teknik varlıklarınızı hazırlama hakkında ayrıntılı yönergeler için bkz. [onaylanan temel kullanarak sanal makine oluşturma](azure-vm-create-using-approved-base.md) veya [kendi görüntünüzü kullanarak bir sanal makine oluşturma](azure-vm-create-using-own-image.md).
+
+## <a name="preview-audience"></a>İzleyiciyi Önizle
+
+Önizleme hedef kitlesi, canlı yayımlamadan önce uçtan uca işlevselliği test etmek üzere Azure Marketi 'nde canlı yayımlamadan önce sanal makine teklifinizin erişimine erişebilir. **Izleyiciyi Önizle** sayfasında, sınırlı bir önizleme hedef kitlesi tanımlayabilirsiniz. 
 
 > [!NOTE]
-> Şu anda, bir Kurumsal Anlaşma ilişkili parasal taahhütler, VM 'nizin Azure kullanımında kullanılabilir, ancak yazılım lisans ücretlerine karşı kullanılamaz.  
-> 
+> Önizleme hedef kitlesi özel bir plandan farklıdır. Özel bir plan yalnızca seçtiğiniz belirli bir hedef kitle için kullanılabilir hale getirir. Bu, belirli müşterilerle özel bir plana anlaşma yapmanızı sağlar. Daha fazla bilgi için sonraki bölüme bakın: planlar.
+
+Davetleri Microsoft hesabı (MSA) veya Azure Active Directory (Azure AD) e-posta adreslerine gönderebilirsiniz. 10 ' a kadar e-posta adresi ekleyin veya bir. csv dosyası ile 20 ' ye kadar içeri aktarın. Teklifiniz zaten canlı ise, teklifiniz için herhangi bir değişikliği veya güncelleştirmeyi test etmek üzere bir önizleme hedef kitlesi tanımlayabilirsiniz.
+
+## <a name="plans-and-pricing"></a>Planlar ve fiyatlandırma
+
+VM teklifleri için en az bir plan gereklidir. Bir plan, çözüm kapsamını ve sınırlarını ve ilişkili fiyatlandırmayı tanımlar. Müşterilerinizin farklı teknik ve lisanslama seçeneklerine ek olarak ücretsiz denemelerdeki ve ücretsiz denemeler sunmak için teklifiniz için birden çok plan oluşturabilirsiniz. Fiyatlandırma modelleri, ücretsiz denemeler ve özel planlar dahil olmak üzere planlar hakkında genel rehberlik teklifleri için bkz. [planlar ve fiyatlandırma](plans-pricing.md) . 
+
+VM 'Ler, Kullandıkça Öde veya kendi lisansını getir (KLG) lisanslama modellerini kullanarak tam olarak ticari olarak etkinleştirilmiştir. Microsoft, ticari işlemi barındırır ve müşterinizin adına fatura alır. Müşteri ile Microsoft arasında, kurumsal sözleşmeler dahil tercih edilen ödeme ilişkilerini kullanmanın avantajını elde edersiniz. Daha fazla bilgi için bkz. [ticari Market Transact özellikleri](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations).
+
 > [!NOTE]
-> Görüntüyü ve fiyatlandırmayı özel bir teklif olarak yayımlayarak, sanal makinenizin bulma ve dağıtımını belirli bir müşteri kümesiyle kısıtlayabilirsiniz. Özel teklifler, en yakın müşterileriniz için özel teklifler oluşturma ve özelleştirilmiş yazılım ve koşulları sunma imkanını açar. Özelleştirilmiş terimler, özel fiyatlandırma ve koşullara sahip alan ve sınırlı yayın yazılımına erken erişim dahil olmak üzere çeşitli senaryolar vurgulamanızı sağlar. Özel teklifler, bu ayrıntılarla yeni bir plan oluşturarak belirli fiyatları veya ürünleri sınırlı bir müşteri kümesine vermenizi sağlar.  
->
-> Daha fazla bilgi için bkz. [Azure Marketi 'Ndeki özel teklifler](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
+> Bir Kurumsal Anlaşma ilişkili parasal taahhütler, VM 'nizin Azure kullanımında kullanılabilir, ancak yazılım lisans ücretlerine karşı kullanılamaz.
 
-| Gereksinim | Ayrıntılar |  
-|:--- |:--- | 
-| Faturalandırma ve ölçüm | SANAL makinenizin KLG veya Kullandıkça Öde aylık faturalandırmasını desteklemesi gerekir. |  
-| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. VHD oluşturma hakkında daha fazla bilgi için bkz. <ul> <li>[Azure 'da desteklenen Linux dağıtımları](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 'ler için).</li> <li>[Azure ile uyumlu bır VHD oluşturun](./partner-center-portal/azure-vm-create-offer.md) (Windows VHD 'ler için).</li> </ul> |  
+### <a name="licensing-options"></a>Lisanslama seçenekleri
 
->[!Note]
->Bulut çözümü sağlayıcısı (CSP) iş ortağı kanalı kabul etme artık kullanılabilir. Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için bkz. [Cloud Solution Providers](./cloud-solution-providers.md).
+Yeni bir VM teklifi yayımlamaya hazırlanırken, hangi lisans seçeneğinin seçileceğine karar vermeniz gerekir. Bu, daha sonra teklifinizi Iş Ortağı Merkezi 'nde oluştururken sağlamanız gereken ek bilgileri saptayacaktır.
+
+Bunlar VM teklifleri için kullanılabilir lisanslama seçenekleridir:
+
+| Lisans seçeneği | İşlem işlemi |
+| --- | --- |
+| Ücretsiz deneme sürümü | Müşterilerinize bir adet, üç veya altı aylık ücretsiz deneme sürümü sunun. |
+| Sınama sürücüsü | Bu seçenek, müşterilerinizin VM 'Leri hiçbir ek ücret ödemeden değerlendirmelerini sağlar. Deneme deneyimiyle iletişim kurmak için mevcut bir Azure müşterisi olması gerekmez. Ayrıntılar için bkz. [test sürücüsü nedir?](https://docs.microsoft.com/azure/marketplace/what-is-test-drive) |
+| KLG | Kendi lisansını getir seçeneği, müşterilerinizin mevcut yazılım lisanslarını Azure 'a getirmelerini sağlar.\* |
+| Kullanım tabanlı | Kullandıkça Öde olarak da bilinen bu seçenek, müşterilerinizin saat başına ödeme yapmayı sağlar. |
+| Etkileşimli tanıtım  | Etkileşimli bir tanıtım kullanarak müşterilerinize çözümünüze yönelik kılavuzlu bir deneyim sunun. Avantajı, karmaşık çözümünüz için karmaşık bir kurulum sağlamak zorunda kalmadan bir deneme deneyimi sunabilmeniz sağlamaktır. |
+|
+
+\* Yayımcı olarak, yazılım lisans işleminin sipariş, tamamlama, ölçüm, faturalandırma, faturalama, ödeme ve koleksiyon dahil olmak üzere tüm yönlerini destekliyoruz.
+
+Aşağıdaki örnekte, Azure Marketi 'nde kullanım tabanlı fiyatlandırmaya sahip bir VM teklifi gösterilmektedir.
+
+:::image type="content" source="media/vm/sample-offer-screen.png" alt-text="Örnek VM teklifi ekranı.":::
+
+### <a name="private-plans"></a>Özel planlar
+
+Görüntüyü ve fiyatlandırmayı özel bir plan olarak yayımlayarak, sanal makinenizin bulma ve dağıtımını belirli bir müşteri kümesiyle kısıtlayabilirsiniz. Özel planlar, en yakın müşterileriniz için özel teklifler oluşturma ve özelleştirilmiş yazılım ve hüküm sunma imkanını açar. Özelleştirilmiş terimler, özel fiyatlandırma ve koşullara sahip alan ve sınırlı yayın yazılımına erken erişim dahil olmak üzere çeşitli senaryolar vurgulamanızı sağlar. Özel planlar, belirli fiyatları veya ürünleri sınırlı bir müşteri kümesine vermenizi sağlar.
+
+Daha fazla bilgi için bkz. [Azure Marketi 'nde](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace) [ticari Market teklifleri ve özel teklifler için planlar ve fiyatlandırma](plans-pricing.md) .
+
+## <a name="test-drives"></a>Test sürüşleri
+
+VM 'niz için bir test sürücüsünü etkinleştirmeyi seçebilirsiniz. Test sürücüleri, müşterilere sabit sayıda saat boyunca önceden yapılandırılmış bir ortama erişim sağlar. Herhangi bir yayımlama seçeneği için test sürücüleri etkinleştirebilirsiniz, ancak bu özellik ek gereksinimlere sahiptir. Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](what-is-test-drive.md). Farklı türlerde test sürücüleri yapılandırma hakkında daha fazla bilgi için bkz. [Test Drive Technical Configuration](test-drive-technical-configuration.md).
+
+> [!TIP]
+> Bir test sürücüsü, [ücretsiz deneme](plans-pricing.md#free-trials)sürümünden farklıdır. Bir sınama sürücüsü, ücretsiz deneme veya her ikisini birden sağlayabilirsiniz. Bunlar her ikisi de müşterilerinizi sabit bir süre için sağlar. Ancak, bir sınama sürücüsü Ayrıca, ürününüzün temel özelliklerine ve avantajlarına yönelik uygulamalı, kendinden kılavuzlu bir tura sahip olan gerçek hayatta bir uygulama senaryosunda gösterilmekte olan avantajlı bir geliştirme içerir.
+
+## <a name="customer-leads"></a>Müşteri liderleri
+
+Müşteri bilgilerini toplamak için teklifinizi müşteri ilişkileri yönetimi (CRM) sisteminize bağlamanız gerekir. Müşterinin, bilgilerini paylaşması için izin istenir. Teklif adı, KIMLIĞI ve çevrimiçi mağazalarla birlikte bu müşteri ayrıntıları, yapılandırdığınız CRM sistemine gönderilir. Ticari Market, Azure tablosu kullanma veya Power otomatikleştirmeyi kullanarak bir HTTPS uç noktası yapılandırma seçeneğiyle birlikte çeşitli CRM sistemlerini destekler.
+
+Teklif oluşturma sırasında veya sonrasında bir CRM bağlantısını dilediğiniz zaman ekleyebilir veya değiştirebilirsiniz. Ayrıntılı kılavuz için bkz. [ticari Market teklifinizin müşteri adayları](partner-center-portal/commercial-marketplace-get-customer-leads.md).
+
+## <a name="legal-contracts"></a>Yasal sözleşmeler
+
+Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için, Microsoft, ticari Market 'teki tekliflerinizi kullanabileceğiniz standart bir sözleşme sunar. Yazılımınızı standart sözleşme kapsamında sunışınızda, müşterilerin yalnızca bir kez okuyup kabul etmesi ve özel hüküm ve koşullar oluşturmanız gerekmez.
+
+Standart sözleşmeyi kullanmayı seçerseniz, standart sözleşmeye genel değişiklik koşullarını ve en fazla 10 özel değişikliği ekleme seçeneğiniz vardır. Standart sözleşme yerine kendi hüküm ve koşullarınızı da kullanabilirsiniz. Bu ayrıntıları **Özellikler** sayfasında yöneteceksiniz. Ayrıntılı bilgi için bkz. [Microsoft Commercial Market Için standart sözleşme](standard-contract.md).
+
+> [!NOTE]
+> Ticari Market için standart sözleşmeyi kullanarak bir teklifi yayımladıktan sonra, kendi özel hüküm ve koşullarınızı kullanamazsınız. Bu bir "veya" senaryosudur. Çözümünüzü standart sözleşme kapsamında ya da kendi hüküm ve koşullarınız için sunun. Standart sözleşmenin şartlarını değiştirmek istiyorsanız, standart sözleşme değişiklikleri aracılığıyla bunu yapabilirsiniz.
+
+## <a name="cloud-solution-providers"></a>Bulut Çözüm Sağlayıcıları
+
+Iş Ortağı Merkezi 'nde teklifinizi oluştururken, **CSP aracılığıyla yeniden satışın** olduğunu görürsünüz. Bu seçenek, Microsoft Bulut çözüm sağlayıcıları (CSP) programının parçası olan iş ortaklarının sanal makineyi bir paketlenmiş teklifin parçası olarak yeniden satmasını sağlar. Kendi lisansını getir (KLG) planları otomatik olarak programa kabul edilir. KLG olmayan planlarınızı kabul etmek de tercih edebilirsiniz. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md) . 
+
+> [!NOTE]
+> Bulut çözümü sağlayıcısı (CSP) iş ortağı kanalı kabul etme artık kullanılabilir. Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için bkz. [**Cloud Solution Providers**](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Henüz yapmadıysanız, [Azure Marketi ile bulut işletmenizi nasıl büyütireceğinizi](https://azuremarketplace.microsoft.com/sell)öğrenin.
-
-Iş Ortağı Merkezi 'nde çalışmaya kaydolmak ve başlamak için:
-
-- Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi ' nde oturum açın](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-- Daha fazla bilgi için bkz. [Sanal Makine teklifi oluşturma](./partner-center-portal/azure-vm-create-offer.md) .
+- [Azure Marketi 'nde sanal makine teklifi oluşturma](azure-vm-create.md)
+- [Onaylanan bir temel kullanarak bir sanal makine oluşturun](azure-vm-create-using-approved-base.md) veya [kendi görüntünüzü kullanarak bir sanal makine oluşturun](azure-vm-create-using-own-image.md).
+- [En iyi teklif listeleme deneyimleri](gtm-offer-listing-best-practices.md)

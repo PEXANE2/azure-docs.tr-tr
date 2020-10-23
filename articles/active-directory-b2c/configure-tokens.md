@@ -7,29 +7,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49a5ff61e5f7a17005561e0729a9b0fcb0f954d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67bc9d6b35d4841999721a00592a6bbe23bff10f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389573"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340232"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçleri yapılandırma
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [bir belirtecin yaşam süresini ve uyumluluğunu](tokens-overview.md) yapılandırmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
+Kullanıcıların uygulamanıza kaydolmasını ve oturum açmasını sağlamak için [bir kullanıcı akışı oluşturun](tutorial-create-user-flows.md).
 
 ## <a name="configure-jwt-token-lifetime"></a>JWT belirteci ömrünü yapılandırma
 
 Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
@@ -41,6 +41,9 @@ Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz
 
 8. **Kaydet**’e tıklayın.
 
+> [!NOTE]
+> PKI CE ile yetkilendirme kodu akışını kullanan tek sayfalı uygulamalarda, her zaman 24 saat için yenileme belirteci ömrü vardır. [Tarayıcıda belirteçleri yenileme güvenlik etkileri hakkında daha fazla bilgi edinin](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+
 ## <a name="configure-jwt-token-compatibility"></a>JWT belirteci uyumluluğunu yapılandırma
 
 1. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
@@ -51,6 +54,17 @@ Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz
     ![Azure portal belirteç uyumluluk özelliği ayarları](./media/configure-tokens/token-compatibility.png)
 
 5. **Kaydet**’e tıklayın.
+
+## <a name="provide-optional-claims-to-your-app"></a>Uygulamanıza isteğe bağlı talepler sağlama
+
+Uygulama talepleri, uygulamaya döndürülen değerlerdir. Kullanıcı akışınızı istenen talepleri içerecek şekilde güncelleştirin.
+
+1. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
+1. Daha önce oluşturduğunuz kullanıcı akışını açın.
+1. **Uygulama talepleri**’ni seçin.
+1. Uygulamanıza geri göndermek istediğiniz talepleri ve öznitelikleri seçin.
+1. **Kaydet**’e tıklayın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

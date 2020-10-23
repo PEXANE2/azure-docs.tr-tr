@@ -3,17 +3,17 @@ title: Python kullanarak Azure Storage örnekleri | Microsoft Docs
 description: Azure depolama için örnek kod ve uygulamaları görüntüleyin, indirin ve çalıştırın. Python depolama istemci kitaplıklarını kullanarak Bloblar, kuyruklar, tablolar ve dosyalar için çalışmaya başlama örneklerini bulun.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d1bfd146729a4a0ef94099a0ad79972517b4f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f57fa1b668cacdaaceb2026f9e5d7fff0cc56d7f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848197"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371367"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>V12 Python istemci kitaplıklarını kullanan Azure depolama örnekleri
 
@@ -594,4 +594,5 @@ Diğer dillere yönelik örnekler hakkında bilgi için:
 * .NET: [.NET kullanan Azure depolama örnekleri](storage-samples-dotnet.md)
 * Java: [Java kullanan Azure depolama örnekleri](storage-samples-java.md)
 * JavaScript/Node.js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
+* C++: [c++ kullanan Azure depolama örnekleri](storage-samples-c-plus-plus.md)
 * Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)

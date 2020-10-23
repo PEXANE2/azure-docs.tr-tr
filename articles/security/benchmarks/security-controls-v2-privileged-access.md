@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758379"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367491"
 ---
 # <a name="security-control-v2-privileged-access"></a>Güvenlik denetimi v2: ayrıcalıklı erişim
 
@@ -34,11 +34,11 @@ Note: özel rolleri atanmış belirli ayrıcalıklı izinlerle kullanıyorsanız
 
 Azure kaynaklarına ve Azure AD 'ye Azure AD Privileged Identity Management (PıM) kullanarak tam zamanında (JıT) ayrıcalıklı erişim sağlayabilirsiniz. JıT, ayrıcalıklı görevleri yalnızca kullanıcılara ihtiyaç duyduklarından gerçekleştirmek için geçici izinler verir. PıM Ayrıca, Azure AD kuruluşunuzda şüpheli veya güvenli olmayan bir etkinlik olduğunda güvenlik uyarıları oluşturabilir.
 
-- [Azure AD 'de yönetici rolü izinleri](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 'de yönetici rolü izinleri](../../active-directory/roles/permissions-reference.md)
 
 - [Azure Privileged Identity Management güvenlik uyarılarını kullanma](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)
+- [Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama](../../active-directory/roles/security-planning.md)
 
 **Sorumluluk**: müşteri
 
@@ -50,7 +50,7 @@ Azure kaynaklarına ve Azure AD 'ye Azure AD Privileged Identity Management (Pı
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Güvenlik İşlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Güvenlik Işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 ## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: iş açısından kritik sistemlere yönetici erişimini kısıtlama
 
@@ -114,7 +114,7 @@ Note: bazı Azure Hizmetleri, Azure AD aracılığıyla yönetilmeyen yerel kull
 Yanlışlıkla Azure AD kuruluşunuzun dışına kilitlenmesini engellemek için, normal yönetim hesapları kullanılmazsa erişim için bir acil durum erişim hesabı ayarlayın. Acil durum erişim hesapları genellikle yüksek ayrıcalıklı olur ve belirli kişilere atanmamalıdır. Acil durum erişim hesapları, normal yönetim hesaplarının kullanılabileceği acil durum veya "cam camı" senaryolarıyla sınırlıdır.
 Acil durum erişim hesapları için kimlik bilgilerinin (parola, sertifika veya akıllı kart gibi) güvenli tutulduğundan ve yalnızca bir acil durumda bunları kullanma yetkisine sahip olan bireyler için bilindiğinden emin olmanız gerekir.
 
-- [Azure AD 'de acil durum erişim hesaplarını yönetme](../../active-directory/users-groups-roles/directory-emergency-access.md)
+- [Azure AD 'de acil durum erişim hesaplarını yönetme](../../active-directory/roles/security-emergency-access.md)
 
 **Sorumluluk**: müşteri
 

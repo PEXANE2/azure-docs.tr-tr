@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575189"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205328"
 ---
 # <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
 
@@ -258,7 +258,7 @@ Bellek bir sorun oluşturacaksa, oluşturucuyu [derinlik tabanlı kompozisyon mo
 ### <a name="texture-sizes"></a>Doku boyutları
 
 Senaryonun türüne bağlı olarak, doku verileri miktarı, ağ verileri için kullanılan belleği engelleyebilir. Photogrammetri modelleri adaylardır.
-Dönüştürme yapılandırması, dokuları otomatik olarak ölçeklendirmek için bir yol sağlamaz. Gerekirse, doku ölçeklendirmesinin bir istemci tarafı ön işleme adımı olarak yapılması gerekir. Dönüştürme adımı ancak uygun bir [doku sıkıştırma biçimi](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)seçer:
+Dönüştürme yapılandırması, dokuları otomatik olarak ölçeklendirmek için bir yol sağlamaz. Gerekirse, doku ölçeklendirmesinin bir istemci tarafı ön işleme adımı olarak yapılması gerekir. Dönüştürme adımı ancak uygun bir [doku sıkıştırma biçimi](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)seçer:
 
 * `BC1` donuk renk dokuları için
 * `BC7` alfa kanallı kaynak renk dokuları için

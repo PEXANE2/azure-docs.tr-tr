@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 10/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ac5645ccbb9c926bc5ff70605dd1e5de14e823
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530002"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427608"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Data Factory kullanarak Xero 'tan veri kopyalama
 
@@ -53,18 +53,18 @@ Aşağıdaki özellikler Xero bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Xero** olarak ayarlanmalıdır | Evet |
-| connectionProperties | Xero 'e nasıl bağlanılacağını tanımlayan bir özellik grubu. | Evet |
-| ***Altında `connectionProperties` :*** | | |
-| konak | Xero sunucusunun uç noktası ( `api.xero.com` ).  | Evet |
-| authenticationType | İzin verilen değerler `OAuth_2.0` ve ' dir `OAuth_1.0` . | Evet |
-| consumerKey | Xero uygulamasıyla ilişkili tüketici anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| privateKey | Xero özel uygulamanız için oluşturulan. ped dosyasındaki özel anahtar, bkz. [ortak/özel anahtar çifti oluşturma](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). **Numbits/512 kullanılarak PrivateKey. pek oluşturmak** için `openssl genrsa -out privatekey.pem 512` , 1024 desteklenmez. . Ped dosyasındaki, Unix satır sonları (\n) dahil tüm metni ekleyin, aşağıdaki örneğe bakın.<br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| tür | Type özelliği: **Xero** olarak ayarlanmalıdır | Yes |
+| connectionProperties | Xero 'e nasıl bağlanılacağını tanımlayan bir özellik grubu. | Yes |
+| **_Altında `connectionProperties` :_*_ | | |
+| konak | Xero sunucusunun uç noktası ( `api.xero.com` ).  | Yes |
+| authenticationType | İzin verilen değerler `OAuth_2.0` ve ' dir `OAuth_1.0` . | Yes |
+| consumerKey | Xero uygulamasıyla ilişkili tüketici anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| privateKey | Xero özel uygulamanız için oluşturulan. ped dosyasındaki özel anahtar, bkz. [ortak/özel anahtar çifti oluşturma](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). _*. Numbits of 512 * kullanılarak PrivateKey. PEI oluşturun* `openssl genrsa -out privatekey.pem 512` , 1024 desteklenmez. . Ped dosyasındaki, Unix satır sonları (\n) dahil tüm metni ekleyin, aşağıdaki örneğe bakın.<br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
 | Değerine | Xero uygulamanızla ilişkili kiracı KIMLIĞI. OAuth 2,0 kimlik doğrulaması için geçerlidir.<br>[Erişim yetkiniz olan kiracıları denetlemek için](https://developer.xero.com/documentation/oauth2/auth-flow)Kiracı kimliğini nasıl alabileceğinizi öğrenin. | OAuth 2,0 kimlik doğrulaması için Evet |
-| refreshToken | Erişim belirtecinin süresi dolarsa erişim belirtecini yenilemek için kullanılan Xero uygulamasıyla ilişkili OAuth 2,0 yenileme belirteci. OAuth 2,0 kimlik doğrulaması için geçerlidir. [Bu makaleden](https://developer.xero.com/documentation/oauth2/auth-flow)yenileme belirtecini alma hakkında bilgi edinin.<br>Yenileme belirtecinin zaman aşımına uğramayacağı. Yenileme belirteci almak için [offline_access kapsamını](https://developer.xero.com/documentation/oauth2/scopes)istemeniz gerekir.<br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | OAuth 2,0 kimlik doğrulaması için Evet |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usehostdoğrulaması | TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşmesi için Sunucu sertifikasında ana bilgisayar adının gerekli olup olmadığını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| refreshToken | OAuth 2,0 kimlik doğrulaması için geçerlidir.<br/>OAuth 2,0 yenileme belirteci, Xero uygulamasıyla ilişkilendirilir ve erişim belirtecini yenilemek için kullanılır; erişim belirtecinin süresi 30 dakika sonra dolar. Xero yetkilendirme akışının nasıl çalıştığını ve [Bu makaleden](https://developer.xero.com/documentation/oauth2/auth-flow)yenileme belirtecini nasıl alabileceğinizi öğrenin. Yenileme belirteci almak için [offline_access kapsamını](https://developer.xero.com/documentation/oauth2/scopes)istemeniz gerekir. <br/>**Kısıtlamayı öğrenin**: Note Xero, erişim belirteci yenilemesi için kullanıldıktan sonra yenileme belirtecini sıfırlar. Çalışan iş yükü için, her bir kopyalama etkinliği çalıştırılmadan önce, ADF 'nin kullanması için geçerli bir yenileme belirteci ayarlamanız gerekir.<br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | OAuth 2,0 kimlik doğrulaması için Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usehostdoğrulaması | TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşmesi için Sunucu sertifikasında ana bilgisayar adının gerekli olup olmadığını belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
 **Örnek: OAuth 2,0 kimlik doğrulaması**
 
@@ -143,7 +143,7 @@ Xero öğesinden veri kopyalamak için, veri kümesinin Type özelliğini **Xero
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **XeroObject** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **XeroObject** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -173,7 +173,7 @@ Xero adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **XeroSource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **XeroSource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Contacts"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

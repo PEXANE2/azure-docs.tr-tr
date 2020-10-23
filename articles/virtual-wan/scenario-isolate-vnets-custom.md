@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 12bc99d24472780f87a6b2a83befdbbf12944860
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267729"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461830"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Senaryo: sanal ağlar için özel yalıtım
 
@@ -25,11 +25,11 @@ Kaç tane yol tablosunun gerekli olacağını anlamak için bir bağlantı matri
 
 | Kaynak | Hedef:| *Mavi VNET 'ler* | *Kırmızı VNET 'ler* | *Dallar*|
 |---|---|---|---|---|
-| **Mavi VNET 'ler** |   &#8594;|      X        |               |       X      |
-| **Kırmızı VNET 'ler**  |   &#8594;|              |       X       |       X      |
-| **Dallar**   |   &#8594;|     X        |       X       |       X      |
+| **Mavi VNET 'ler** |   &#8594;|   Direct     |           |  Direct |
+| **Kırmızı VNET 'ler**  |   &#8594;|              |   Direct  |  Direct |
+| **Dallar**   |   &#8594;|   Direct     |   Direct  |  Direct |
 
-Önceki tablodaki hücrelerin her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, tablodaki sütun üst bilgileri) öğrenip bir "X" bağlantısının sanal WAN tarafından sağlandığı anlamına gelir.
+Önceki tablodaki hücrelerin her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) bir hedefle (akışın "to" tarafı, italik olan sütun üst bilgileri) iletişim kuracağını açıklar. Bu senaryoda, güvenlik duvarı veya ağ sanal gereçleri yoktur, bu nedenle iletişimler doğrudan sanal WAN üzerinden akar (Bu nedenle tablodaki "doğrudan" sözcüğü).
 
 Farklı satır desenlerinin sayısı, bu senaryoda ihtiyacımız olacak yol tablolarının sayısı olacaktır. Bu durumda, sanal ağlar için **RT_BLUE** ve **RT_RED** çağıracağız üç yol yolu tablosu ve dallar için **varsayılan** . Dalların her zaman varsayılan yönlendirme tablosuyla ilişkilendirilmesi gerektiğini unutmayın.
 

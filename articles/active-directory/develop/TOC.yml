@@ -36,7 +36,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Çekirdeği
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -75,6 +75,8 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: Blazor WebAssembly
+          href: tutorial-blazor-webassembly.md
         - name: JavaScript - Kimlik doğrulaması kod akışı
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript - Örtük akış
@@ -123,6 +125,9 @@
       href: authentication-flows-app-scenarios.md
     - name: Kimlik platformu en iyi yöntemleri
       href: identity-platform-integration-checklist.md
+    - name: Mobil cihazda çoklu oturum açma (SSO)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
     - name: Uygulama senaryoları
       displayName: App scenarios
       items:
@@ -291,10 +296,8 @@
           items:
             - name: Hesaplar ve kiracı profilleri
               href: accounts-overview.md
-            - name: Yetkilendirme aracıları
-              href: authorization-agents.md
-            - name: Aracıyla kimlik doğrulama
-              href: brokered-auth.md
+            - name: MSAL Android ile SSO
+              href: msal-android-single-sign-on.md
             - name: Azure AD B2C ile tümleştirme
               href: msal-android-b2c.md
             - name: MSAL.Android’e geçiş
@@ -474,7 +477,7 @@
       items:
         - name: Genel Bakış
           href: authentication-national-cloud.md
-        - name: Kimlik Doğrulaması
+        - name: Kimlik doğrulaması
           href: msal-national-cloud.md
     - name: Otomatik kullanıcı sağlama (SCIM)
       items:

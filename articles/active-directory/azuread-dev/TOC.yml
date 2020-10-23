@@ -97,8 +97,6 @@
               href: howto-v1-enable-sso-android.md
             - name: iOS’te SSO etkinleştirme
               href: howto-v1-enable-sso-ios.md
-            - name: SAML tabanlı SSO hata ayıklama
-              href: howto-v1-debug-saml-sso-issues.md
         - name: Talepleri yapılandırma
           items:
             - name: Rol taleplerini yapılandırma

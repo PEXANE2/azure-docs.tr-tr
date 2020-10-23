@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658505"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359841"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect için topolojiler
 Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede hem desteklenen hem de desteklenmeyen yapılandırmalar bulunur.
@@ -29,16 +29,16 @@ Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme 
 
 Makalede resimler için gösterge aşağıda verilmiştir:
 
-| Açıklama | Sembol |
+| Description | Sembol |
 | --- | --- |
-| Şirket içi Active Directory ormanı |![Şirket içi Active Directory ormanı](./media/plan-connect-topologies/LegendAD1.png) |
-| Filtrelenmiş içeri aktarma ile şirket içi Active Directory |![Filtrelenmiş içeri aktarma ile Active Directory](./media/plan-connect-topologies/LegendAD2.png) |
-| Azure AD Connect eşitleme sunucusu |![Azure AD Connect eşitleme sunucusu](./media/plan-connect-topologies/LegendSync1.png) |
-| "Hazırlama modu" Azure AD Connect eşitleme sunucusu |!["Hazırlama modu" Azure AD Connect eşitleme sunucusu](./media/plan-connect-topologies/LegendSync2.png) |
-| Forefront Identity Manager (FIM) 2010 veya Microsoft Identity Manager (MıM) 2016 ile GALSync |![FIM 2010 veya MıM 2016 ile GALSync](./media/plan-connect-topologies/LegendSync3.png) |
-| Azure AD Connect eşitleme sunucusu, ayrıntılı |![Azure AD Connect eşitleme sunucusu, ayrıntılı](./media/plan-connect-topologies/LegendSync4.png) |
-| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
-| Desteklenmeyen senaryo |![Desteklenmeyen senaryo](./media/plan-connect-topologies/LegendUnsupported.png) |
+| Şirket içi Active Directory ormanı |![Şirket içi Active Directory ormanı](./media/plan-connect-topologies/legendad1.png) |
+| Filtrelenmiş içeri aktarma ile şirket içi Active Directory |![Filtrelenmiş içeri aktarma ile Active Directory](./media/plan-connect-topologies/legendad2.png) |
+| Azure AD Connect eşitleme sunucusu |![Azure AD Connect eşitleme sunucusu](./media/plan-connect-topologies/legendsync1.png) |
+| "Hazırlama modu" Azure AD Connect eşitleme sunucusu |!["Hazırlama modu" Azure AD Connect eşitleme sunucusu](./media/plan-connect-topologies/legendsync2.png) |
+| Forefront Identity Manager (FIM) 2010 veya Microsoft Identity Manager (MıM) 2016 ile GALSync |![FIM 2010 veya MıM 2016 ile GALSync](./media/plan-connect-topologies/legendsync3.png) |
+| Azure AD Connect eşitleme sunucusu, ayrıntılı |![Azure AD Connect eşitleme sunucusu, ayrıntılı](./media/plan-connect-topologies/legendsync4.png) |
+| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/legendaad.png) |
+| Desteklenmeyen senaryo |![Desteklenmeyen senaryo](./media/plan-connect-topologies/legendunsupported.png) |
 
 
 > [!IMPORTANT]
@@ -46,17 +46,17 @@ Makalede resimler için gösterge aşağıda verilmiştir:
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Tek orman, tek Azure AD kiracısı
-![Tek bir orman ve tek bir kiracı için topoloji](./media/plan-connect-topologies/SingleForestSingleDirectory.png)
+![Tek bir orman ve tek bir kiracı için topoloji](./media/plan-connect-topologies/singleforestsingledirectory.png)
 
 En yaygın topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracısı içeren tek bir şirket içi ormandır. Azure AD kimlik doğrulaması için Parola karması eşitleme kullanılır. Azure AD Connect Express yüklemesi yalnızca bu topolojiyi destekler.
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Tek orman, birden çok eşitleme sunucusu tek bir Azure AD kiracısına
-![Tek bir orman için desteklenmeyen ve filtrelenmiş topoloji](./media/plan-connect-topologies/SingleForestFilteredUnsupported.png)
+![Tek bir orman için desteklenmeyen ve filtrelenmiş topoloji](./media/plan-connect-topologies/singleforestfilteredunsupported.png)
 
 Aynı Azure AD kiracısına bağlı birden çok Azure AD Connect eşitleme sunucusunun olması, [hazırlama sunucusu](#staging-server)dışında desteklenmez. Bu sunucular, birbirini dışlayan bir nesne kümesiyle eşitlenmek üzere yapılandırılmış olsa bile desteklenmez. Ormandaki tüm etki alanlarına tek bir sunucudan ulaşamıyorsanız veya yükü çeşitli sunucularda dağıtmak istiyorsanız bu topolojiyi kabul edebilirsiniz.
 
 ## <a name="multiple-forests-single-azure-ad-tenant"></a>Birden çok orman, tek Azure AD kiracısı
-![Birden çok orman için topoloji ve tek bir kiracı](./media/plan-connect-topologies/MultiForestSingleDirectory.png)
+![Birden çok orman için topoloji ve tek bir kiracı](./media/plan-connect-topologies/multiforestsingledirectory.png)
 
 Birçok kuruluşun birden çok şirket içi Active Directory ormanlı ortamları vardır. Birden fazla şirket içi Active Directory ormanına sahip olmanın çeşitli nedenleri vardır. Tipik örnekler, hesap-kaynak ormanları ve bir birleşme veya alım sonucunu içeren tasarımlardır.
 
@@ -81,16 +81,16 @@ Ortamınız bu varsayımlara eşleşmezse, aşağıdakiler gerçekleşir:
 [Varsayılan yapılandırmayı anlamak için](concept-azure-ad-connect-sync-default-configuration.md)daha fazla ayrıntı bulabilirsiniz.
 
 ### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>Birden çok orman, birden çok eşitleme sunucusu bir Azure AD kiracısına
-![Birden çok orman ve birden çok eşitleme sunucusu için desteklenmeyen topoloji](./media/plan-connect-topologies/MultiForestMultiSyncUnsupported.png)
+![Birden çok orman ve birden çok eşitleme sunucusu için desteklenmeyen topoloji](./media/plan-connect-topologies/multiforestmultisyncunsupported.png)
 
 Tek bir Azure AD kiracısına bağlı birden fazla Azure AD Connect eşitleme sunucusu olması desteklenmez. Özel durum, [hazırlama sunucusu](#staging-server)kullanmaktır.
 
 Bu topoloji, tek bir Azure AD kiracısına bağlı **birden çok eşitleme sunucusu** tarafından aşağıdaki olandan farklıdır.
 
 ### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>Birden çok orman, tek bir eşitleme sunucusu, kullanıcılar yalnızca bir dizinde temsil edilir
-![Kullanıcıları tüm dizinlerde yalnızca bir kez temsil etme seçeneği](./media/plan-connect-topologies/MultiForestUsersOnce.png)
+![Kullanıcıları tüm dizinlerde yalnızca bir kez temsil etme seçeneği](./media/plan-connect-topologies/multiforestusersonce.png)
 
-![Birden çok ormanın ve ayrı topolojilerinin gösterimi](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
+![Birden çok ormanın ve ayrı topolojilerinin gösterimi](./media/plan-connect-topologies/multiforestseparatetopologies.png)
 
 Bu ortamda, tüm şirket içi ormanlar ayrı varlıklar olarak kabul edilir. Başka bir ormanda hiçbir Kullanıcı yok. Her ormanın kendi Exchange kuruluşu vardır ve ormanlar arasında bir GALSync yoktur. Bu topoloji, bir merger/alma işleminden sonra veya her bir işletme biriminin bağımsız olarak çalıştığı bir kuruluşta durum olabilir. Bu ormanlar Azure AD 'deki aynı kuruluşta bulunur ve birleştirilmiş bir GAL ile birlikte görüntülenir. Yukarıdaki resimde, her ormandaki her bir nesne meta veri deposunda bir kez temsil edilir ve hedef Azure AD kiracısında toplanır.
 
@@ -98,9 +98,9 @@ Bu ortamda, tüm şirket içi ormanlar ayrı varlıklar olarak kabul edilir. Ba�
 Tüm bu senaryolarda yaygın olarak, dağıtım ve güvenlik gruplarının bir Kullanıcı, kişi ve yabancı güvenlik sorumlusu (FSPs) karışımı içerebildiği bir yer vardır. FSPs 'ler, bir güvenlik grubundaki diğer ormanlardan üyeleri göstermek için Active Directory Domain Services (AD DS) ' de kullanılır. Tüm FSPs 'ler, Azure AD 'deki gerçek nesneye çözümlenir.
 
 ### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>Birden çok orman: isteğe bağlı GALSync ile tam ağ
-![Birden çok dizinde kullanıcı kimliklerinin mevcut olduğu durumlarda eşleşen posta özniteliğini kullanma seçeneği](./media/plan-connect-topologies/MultiForestUsersMail.png)
+![Birden çok dizinde kullanıcı kimliklerinin mevcut olduğu durumlarda eşleşen posta özniteliğini kullanma seçeneği](./media/plan-connect-topologies/multiforestusersmail.png)
 
-![Birden çok orman için tam ağ topolojisi](./media/plan-connect-topologies/MultiForestFullMesh.png)
+![Birden çok orman için tam ağ topolojisi](./media/plan-connect-topologies/multiforestfullmesh.png)
 
 Tam ağ topolojisi, kullanıcıların ve kaynakların herhangi bir ormanda konumlandırılabilir olmasını sağlar. Genellikle, ormanlar arasında iki yönlü güvenler vardır.
 
@@ -109,9 +109,9 @@ Exchange birden fazla ormanda mevcutsa, şirket içi bir GALSync çözümü (ist
 Bu senaryoda, kimlik nesneleri posta özniteliği aracılığıyla birleştirilir. Bir ormanda posta kutusuna sahip olan bir Kullanıcı, diğer ormanlarda bulunan kişilerle birleştirilir.
 
 ### <a name="multiple-forests-account-resource-forest"></a>Birden çok orman: hesap-kaynak ormanı
-![Birden çok dizinde kimlik bulunduğunda eşleştirme için objectSID ve msExchMasterAccountSID özniteliklerinin kullanılmasına yönelik seçenek](./media/plan-connect-topologies/MultiForestUsersObjectSID.png)
+![Birden çok dizinde kimlik bulunduğunda eşleştirme için objectSID ve msExchMasterAccountSID özniteliklerinin kullanılmasına yönelik seçenek](./media/plan-connect-topologies/multiforestusersobjectsid.png)
 
-![Hesap-birden çok orman için kaynak orman topolojisi](./media/plan-connect-topologies/MultiForestAccountResource.png)
+![Hesap-birden çok orman için kaynak orman topolojisi](./media/plan-connect-topologies/multiforestaccountresource.png)
 
 Hesap-kaynak orman topolojisinde, etkin kullanıcı hesaplarına sahip bir veya daha fazla *Hesap* ormanınızın olması gerekir. Ayrıca, devre dışı bırakılmış hesaplara sahip bir veya daha fazla *kaynak* ormanda vardır.
 
@@ -128,7 +128,7 @@ Bazı Microsoft 365 iş yükleri desteklenen topolojilerde belirli kısıtlamala
 Daha büyük bir kurumunuzda [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) özelliğini kullanmayı göz önünde bulundurmanız gerekir. Kullanıcının kaynaklarının bulunduğu veri merkezi bölgesinde tanımlamanızı sağlar.
 
 ## <a name="staging-server"></a>Hazırlama sunucusu
-![Bir topolojide hazırlama sunucusu](./media/plan-connect-topologies/MultiForestStaging.png)
+![Bir topolojide hazırlama sunucusu](./media/plan-connect-topologies/multiforeststaging.png)
 
 Azure AD Connect, *hazırlama modunda*ikinci bir sunucu yüklemeyi destekler. Bu moddaki bir sunucu, tüm bağlı dizinlerden verileri okur, ancak bağlı dizinlere herhangi bir şey yazmaz. Normal eşitleme döngüsünü kullanır ve bu nedenle kimlik verilerinin güncelleştirilmiş bir kopyasına sahiptir.
 
@@ -142,14 +142,14 @@ Farklı veri merkezlerinde birden çok yedekleme kullanmak istediğinizde birden
 
 ## <a name="multiple-azure-ad-tenants"></a>Birden çok Azure AD kiracısından
 Bir kuruluş için Azure AD 'de tek bir kiracının olması önerilir.
-Birden çok Azure AD kiracılarını kullanmayı planlayabilmeniz için önce [Azure AD 'de yönetim birimleri yönetimi](../users-groups-roles/directory-administrative-units.md)makalesine bakın. Tek bir kiracıyı kullanabileceğiniz yaygın senaryolar ele alınmaktadır.
+Birden çok Azure AD kiracılarını kullanmayı planlayabilmeniz için önce [Azure AD 'de yönetim birimleri yönetimi](../roles/administrative-units.md)makalesine bakın. Tek bir kiracıyı kullanabileceğiniz yaygın senaryolar ele alınmaktadır.
 
-![Birden çok orman ve birden çok kiracı için topoloji](./media/plan-connect-topologies/MultiForestMultiDirectory.png)
+![Birden çok orman ve birden çok kiracı için topoloji](./media/plan-connect-topologies/multiforestmultidirectory.png)
 
 Bir Azure AD Connect eşitleme sunucusu ile bir Azure AD kiracısı arasında 1:1 ilişkisi vardır. Her Azure AD kiracısı için bir Azure AD Connect eşitleme sunucusu yüklemeniz gerekir. Azure AD kiracı örnekleri tasarıma göre yalıtılmıştır. Diğer bir deyişle, bir Kiracıdaki kullanıcılar diğer Kiracıdaki kullanıcıları göremez. Bu ayrımı istiyorsanız, bu desteklenen bir yapılandırmadır. Aksi takdirde, tek Azure AD kiracı modelini kullanmanız gerekir.
 
 ### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Her nesne bir Azure AD kiracısında yalnızca bir kez
-![Tek bir orman için filtrelenmiş topoloji](./media/plan-connect-topologies/SingleForestFiltered.png)
+![Tek bir orman için filtrelenmiş topoloji](./media/plan-connect-topologies/singleforestfiltered.png)
 
 Bu topolojide, her bir Azure AD kiracısına bir Azure AD Connect eşitleme sunucusu bağlanır. Azure AD Connect eşitleme sunucuları, her birinin üzerinde çalışması için birbirini dışlayan bir nesne kümesine sahip olacak şekilde filtrelemeye yönelik olarak yapılandırılmalıdır. Örneğin, her bir sunucuyu belirli bir etki alanı veya kuruluş birimi için kapsam yapabilirsiniz.
 
@@ -161,7 +161,10 @@ Bir DNS etki alanı, yalnızca tek bir Azure AD kiracısına kaydedilebilir. Şi
 
 Bu topoloji, aksi takdirde desteklenen senaryolarda aşağıdaki kısıtlamalara sahiptir:
 
-* Azure AD kiracılarından yalnızca biri, şirket içi Active Directory örneğiyle bir Exchange hibrit karma ayarı etkinleştirebilir.
+* En fazla 5 Azure Active Directory kiracı, şirket içi Active Directory örneğiyle Exchange hibrit karma olabilir. Bu senaryo [eylül 2020 karma Yapılandırma Sihirbazı güncelleştirmesi](https://techcommunity.microsoft.com/t5/exchange-team-blog/september-2020-hybrid-configuration-wizard-update/ba-p/1687698)bölümünde açıklanmaktadır.
+* Karma Yapılandırma Sihirbazı 'Nı çalıştıran Exchange Server 2016 CU18 veya 2019 CU7 ya da üzeri olmalıdır.
+* Her bir Azure AD Connect örneği, etki alanına katılmış bir makinede çalışmalıdır.
+* Azure AD Connect, şirket içi dizininizdeki kullanıcıları filtrelemek için etki alanı/OU filtreleme seçeneği kullanılarak yapılandırılmalıdır. Bu seçeneğin kullanılması, kullanıcıların yalnızca tek bir çevrimiçi Exchange kiracısında görünmesini sağlar.
 * Windows 10 cihazları yalnızca bir Azure AD kiracısı ile ilişkilendirilebilir.
 * Parola karması eşitleme ve doğrudan kimlik doğrulama için çoklu oturum açma (SSO) seçeneği yalnızca bir Azure AD kiracısı ile kullanılabilir.
 
@@ -171,7 +174,7 @@ Birbirini dışlayan bir nesne kümesinin gereksinimi geri yazma için de geçer
 * Cihaz geri yazma.
 
 ### <a name="each-object-multiple-times-in-an-azure-ad-tenant"></a>Bir Azure AD kiracısında her bir nesne birden çok kez
-![Tek bir orman ve birden çok kiracı için desteklenmeyen topoloji](./media/plan-connect-topologies/SingleForestMultiDirectoryUnsupported.png) ![Tek bir orman ve birden çok bağlayıcı için desteklenmeyen topoloji](./media/plan-connect-topologies/SingleForestMultiConnectorsUnsupported.png)
+![Tek bir orman ve birden çok kiracı için desteklenmeyen topoloji](./media/plan-connect-topologies/singleforestmultidirectoryunsupported.png) ![Tek bir orman ve birden çok bağlayıcı için desteklenmeyen topoloji](./media/plan-connect-topologies/singleforestmulticonnectorsunsupported.png)
 
 Bu görevler desteklenmez:
 
@@ -180,7 +183,7 @@ Bu görevler desteklenmez:
 * Birden çok Azure AD kiracılarına bağlanmak için Azure AD Connect eşitlemesini değiştirin.
 
 ### <a name="galsync-by-using-writeback"></a>Geri yazma kullanarak GALSync
-![Birden çok orman ve birden çok dizin için desteklenmeyen topoloji, Azure AD 'de GALSync ile](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync1Unsupported.png) ![Birden çok orman ve birden çok dizin için desteklenmeyen topoloji, şirket içi Active Directory üzerinde GALSync ile](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync2Unsupported.png)
+![Birden çok orman ve birden çok dizin için desteklenmeyen topoloji, Azure AD 'de GALSync ile](./media/plan-connect-topologies/multiforestmultidirectorygalsync1unsupported.png) ![Birden çok orman ve birden çok dizin için desteklenmeyen topoloji, şirket içi Active Directory üzerinde GALSync ile](./media/plan-connect-topologies/multiforestmultidirectorygalsync2unsupported.png)
 
 Azure AD kiracılar tasarıma göre yalıtılmıştır. Bu görevler desteklenmez:
 
@@ -188,7 +191,7 @@ Azure AD kiracılar tasarıma göre yalıtılmıştır. Bu görevler desteklenme
 * Azure AD Connect eşitleme kullanarak kullanıcıları başka bir şirket içi Active Directory örneğine kişiler olarak dışarı aktarın.
 
 ### <a name="galsync-with-on-premises-sync-server"></a>Şirket içi eşitleme sunucusu ile GALSync
-![Birden çok orman ve birden çok dizin için topolojide GALSync](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
+![Birden çok orman ve birden çok dizin için topolojide GALSync](./media/plan-connect-topologies/multiforestmultidirectorygalsync.png)
 
 İki Exchange kuruluşu arasında kullanıcıları eşitlemek için FIM 2010 veya MıM 2016 ' i şirket içi olarak (GALSync aracılığıyla) kullanabilirsiniz. Bir kuruluştaki kullanıcılar diğer kuruluşta yabancı Kullanıcı/kişi olarak görünür. Bu farklı şirket içi Active Directory örnekleri, kendi Azure AD kiracılarıyla eşitlenebilir.
 

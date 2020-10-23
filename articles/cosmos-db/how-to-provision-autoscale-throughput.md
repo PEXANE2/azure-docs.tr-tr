@@ -1,22 +1,25 @@
 ---
-title: Azure Cosmos DB otomatik ölçeklendirme üretilen işi sağlama
-description: Azure portal, CLı, PowerShell ve diğer diğer SDK 'Ları kullanarak Azure Cosmos DB kapsayıcı ve veritabanı düzeyinde otomatik ölçeklendirme üretimi sağlamayı öğrenin.
+title: Azure Cosmos DB SQL API 'sinde otomatik ölçeklendirme üretilen işi sağlama
+description: Azure portal, CLı, PowerShell ve çeşitli diğer SDK 'Ları kullanarak Azure Cosmos DB SQL API 'sindeki kapsayıcı ve veritabanı düzeyinde otomatik ölçeklendirme üretimi sağlamayı öğrenin.
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 190289165b291edabf31320eee1328c1b0cf6205
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017150"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277827"
 ---
-# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Azure Cosmos DB veritabanında veya kapsayıcıda otomatik ölçeklendirme üretilen işi sağlama
+# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB-SQL API 'sindeki veritabanı veya kapsayıcıda otomatik ölçeklendirme performansı sağlama
 
-Bu makalede, Azure Cosmos DB bir veritabanında veya kapsayıcıda (koleksiyon, grafik veya tablo) otomatik ölçeklendirme işleme sağlama açıklanmaktadır. Tek bir kapsayıcıda otomatik ölçeklendirmeyi etkinleştirebilir veya bir veritabanında otomatik ölçeklendirme üretilen işi sağlayabilir ve veritabanındaki tüm kapsayıcılar arasında paylaşabilirsiniz.
+Bu makalede, Azure Cosmos DB SQL API 'sindeki bir veritabanı veya kapsayıcıda (koleksiyon, grafik veya tablo) otomatik ölçeklendirme işleme sağlama açıklanmaktadır. Tek bir kapsayıcıda otomatik ölçeklendirmeyi etkinleştirebilir veya bir veritabanında otomatik ölçeklendirme üretilen işi sağlayabilir ve veritabanındaki tüm kapsayıcılar arasında paylaşabilirsiniz.
+
+Farklı bir API kullanıyorsanız, üretilen işi sağlamak için [MongoDB Için API](how-to-provision-throughput-mongodb.md), [Cassandra API](how-to-provision-throughput-cassandra.md)ve [Gremlin API](how-to-provision-throughput-gremlin.md) makalelerini inceleyin.
 
 ## <a name="azure-portal"></a>Azure portal
 
@@ -52,7 +55,7 @@ Paylaşılan aktarım hızı veritabanında otomatik ölçeklendirme sağlamak i
 > [!NOTE]
 > Varolan bir veritabanı veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirdiğinizde, en fazla RU/sn için başlangıç değeri sistem tarafından belirlenir ve geçerli el ile sağlanan aktarım hızı ayarları ve depolama alanınızı temel alır. İşlem tamamlandıktan sonra gerekirse en fazla RU/sn 'yi değiştirebilirsiniz. [Daha fazla bilgi edinin.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
-## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>SQL API için .NET v3 SDK Azure Cosmos DB
+## <a name="azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET v3 SDK
 
 Otomatik ölçeklendirme kaynaklarını yönetmek için SQL API için Azure Cosmos DB .NET SDK 'sının [sürüm 3,9 veya üstünü](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) kullanın. 
 
@@ -109,7 +112,7 @@ int? currentThroughput = autoscaleContainerThroughput.Throughput;
 await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThroughput(newAutoscaleMaxThroughput));
 ```
 
-## <a name="azure-cosmos-db-java-v4-sdk-for-sql-api"></a>SQL API için Java v4 SDK Azure Cosmos DB
+## <a name="azure-cosmos-db-java-v4-sdk"></a>Azure Cosmos DB Java v4 SDK 'Sı
 
 Otomatik ölçeklendirme kaynaklarını yönetmek için SQL API için Azure Cosmos DB Java SDK 'sının [4,0 veya sonraki bir sürümünü](https://mvnrepository.com/artifact/com.azure/azure-cosmos) kullanabilirsiniz.
 
@@ -118,7 +121,7 @@ Otomatik ölçeklendirme kaynaklarını yönetmek için SQL API için Azure Cosm
 
 ### <a name="create-database-with-shared-throughput"></a>Paylaşılan verimlilik ile veritabanı oluşturma
 
-#### <a name="async"></a>[Eş](#tab/api-async)
+#### <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
 ```java
 // Create instance of CosmosClient
@@ -156,7 +159,7 @@ CosmosDatabase database = client.createDatabase(databaseName, autoscaleThroughpu
 
 ### <a name="create-container-with-dedicated-throughput"></a>Adanmış aktarım hızı ile kapsayıcı oluşturma
 
-#### <a name="async"></a>[Eş](#tab/api-async)
+#### <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
 ```java
 // Get reference to database that container will be created in
@@ -191,7 +194,7 @@ CosmosContainer container = database.createContainer(autoscaleContainerPropertie
 
 ### <a name="read-the-current-throughput-rus"></a>Geçerli aktarım hızını (RU/s) okuyun
 
-#### <a name="async"></a>[Eş](#tab/api-async)
+#### <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
 ```java
 // Get a reference to the resource
@@ -227,7 +230,7 @@ int currentThroughput = autoscaleContainerThroughput.Throughput;
 
 ### <a name="change-the-autoscale-max-throughput-rus"></a>Otomatik ölçeklendirme maksimum aktarım hızını değiştirme (RU/s)
 
-#### <a name="async"></a>[Eş](#tab/api-async)
+#### <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
 ```java
 // Change the autoscale max throughput (RU/s)
@@ -243,19 +246,11 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ---
 
-## <a name="cassandra-api"></a>Cassandra API’si
-
-Cassandra API için Azure Cosmos DB hesapları [CQL komutları](manage-scale-cassandra.md#use-autoscale), [Azure CLI](cli-samples.md), [Azure PowerShell](powershell-samples.md) veya [Azure Resource Manager şablonları](resource-manager-samples.md)kullanılarak otomatik ölçeklendirme için sağlanabilir.
-
-## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API
-
-MongoDB API 'SI için Azure Cosmos DB hesapları, [MongoDB uzantı komutları](mongodb-custom-commands.md), [Azure CLI](cli-samples.md), [Azure PowerShell](powershell-samples.md) veya [Azure Resource Manager şablonları](resource-manager-samples.md)kullanılarak otomatik ölçeklendirme için sağlanabilir.
-
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
 Azure Resource Manager şablonlar, tüm Azure Cosmos DB API 'Leri için veritabanında veya kapsayıcı düzeyindeki kaynaklarda otomatik ölçeklendirme üretilen işi sağlamak için kullanılabilir. Örnekler için [Azure Cosmos DB için bkz. Azure Resource Manager şablonları](resource-manager-samples.md) .
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı, tüm Azure Cosmos DB API 'Leri için bir veritabanı veya kapsayıcı düzeyinde bir kaynak üzerinde otomatik ölçeklendirme üretilen işi sağlamak üzere kullanılabilir. Örnekler için bkz. [Azure CLI örnekleri Azure Cosmos DB](cli-samples.md).
 

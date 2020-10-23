@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121648"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314636"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Geçişi projeleri sorunlarını giderme
 
@@ -52,7 +52,7 @@ Bir proje oluşturmayı denerseniz ve bir dağıtım hatasıyla karşılaşırsa
 - "Istekler Kullanıcı kimlik üst bilgilerini içermesi gerekir" hatasını alırsanız, bu, kuruluşun Azure Active Directory (Azure AD) kiracısına erişiminizin olmadığını gösterebilir. Bu durumda:
     - Bir Azure AD kiracısına ilk kez eklenişinizde kiracıya katılması için bir e-posta davetiyesi alırsınız.
     - Kiracıya eklenecek daveti kabul edin.
-    - E-postayı göremiyorsanız kiracıya erişimi olan bir kullanıcıyla iletişim kurun ve [daveti](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users) size yeniden göndermesini isteyin.
+    - E-postayı göremiyorsanız kiracıya erişimi olan bir kullanıcıyla iletişim kurun ve [daveti](../active-directory/external-identities/add-users-administrator.md#resend-invitations-to-guest-users) size yeniden göndermesini isteyin.
     - Davet e-postasını aldıktan sonra açın ve daveti kabul etmek için bağlantıyı seçin. Sonra, Azure portal oturumunuzu kapatın ve yeniden oturum açın. (tarayıcının yenilenmesi çalışmaz.) Daha sonra geçiş projesi oluşturmaya başlayabilirsiniz.
 
 ## <a name="how-do-i-delete-a-project"></a>Projeyi Nasıl yaparım? silme

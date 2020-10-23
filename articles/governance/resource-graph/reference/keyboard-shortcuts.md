@@ -1,15 +1,15 @@
 ---
 title: Azure Kaynak Grafiği Gezgini için Azure portal klavye kısayolları
 description: Azure portal Azure Kaynak grafik Gezgini, eylemleri gerçekleştirmenize ve gezinmenize yardımcı olmak için klavye kısayollarını destekler.
-ms.date: 08/25/2020
+ms.date: 10/21/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146445"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340130"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Kaynak Grafiği Gezgini için klavye kısayolları
 
@@ -24,7 +24,7 @@ Bu makalede, Azure portal Azure Kaynak Grafiği Gezgini sayfasında çalışan k
 |Girintiyi Artır |<kbd>CTRL</kbd> + <kbd>]</kbd> |<kbd>Cmd</kbd> + <kbd>]</kbd> |
 |Satırı aşağı taşı |<kbd>Alt</kbd> + <kbd>↓</kbd> |<kbd>Seçenek</kbd> + <kbd>↓</kbd> |
 |Satırı yukarı taşı |<kbd>Alt</kbd> + <kbd>↑</kbd> |<kbd>Seçenek</kbd> + <kbd>↑</kbd> |
-|Değiştir |<kbd>CTRL</kbd> + <kbd>F</kbd> |<kbd>Cmd</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> |
+|Değiştir |<kbd>CTRL</kbd> + <kbd>H</kbd> |<kbd>Cmd</kbd> + <kbd>H</kbd> |
 |Tümünü seç |<kbd>CTRL</kbd> + <kbd>Bir</kbd> |<kbd>Cmd</kbd> + <kbd>Bir</kbd> |
 |Aşağı seçme |<kbd>SHIFT</kbd> + <kbd>↓</kbd> |<kbd>SHIFT</kbd> + <kbd>↓</kbd> |
 |Sağ seçin |<kbd>SHIFT</kbd> + <kbd>→</kbd> |<kbd>SHIFT</kbd> + <kbd>→</kbd> |

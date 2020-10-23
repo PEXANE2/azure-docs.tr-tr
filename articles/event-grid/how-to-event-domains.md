@@ -4,12 +4,12 @@ description: Azure Event Grid ' deki büyük konu kümelerinin nasıl yönetilec
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277db97211b196c9853470c2d12cc2246a4005b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502044"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330086"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Olay etki alanlarını kullanarak konuları yönetme ve olayları yayımlama
 
@@ -79,7 +79,7 @@ Başarılı oluşturma aşağıdaki değerleri döndürür:
 
 ## <a name="manage-access-to-topics"></a>Konulara erişimi yönetin
 
-Konuların erişimini yönetme [rol ataması](../role-based-access-control/role-assignments-cli.md)aracılığıyla yapılır. Rol ataması, Azure kaynaklarındaki işlemleri belirli bir kapsamdaki yetkili kullanıcılarla sınırlamak için rol tabanlı erişim denetimi kullanır.
+Konuların erişimini yönetme [rol ataması](../role-based-access-control/role-assignments-cli.md)aracılığıyla yapılır. Rol ataması, Azure kaynaklarındaki işlemleri belirli bir kapsamdaki yetkili kullanıcılarla sınırlamak için Azure rol tabanlı erişim denetimini kullanır.
 
 Event Grid, bir etki alanı içindeki çeşitli konularda belirli kullanıcılara erişim atamak için kullanabileceğiniz iki yerleşik rol içerir. Bu roller, `EventGrid EventSubscription Contributor (Preview)` aboneliklerin oluşturulmasına ve silinmesine izin veren ve `EventGrid EventSubscription Reader (Preview)` yalnızca olay abonelikleri listesine izin veren ve ' dir.
 

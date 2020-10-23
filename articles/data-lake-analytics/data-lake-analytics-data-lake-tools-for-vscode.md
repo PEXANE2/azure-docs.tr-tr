@@ -1,18 +1,16 @@
 ---
 title: Visual Studio Code için Azure Data Lake Araçları’nı kullanma
 description: U-SQL betiklerini oluşturmak, test etmek ve çalıştırmak için Visual Studio için Azure Data Lake Araçları kodu kullanmayı öğrenin.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87126491"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221256"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Visual Studio Code için Azure Data Lake Araçları’nı kullanma
 
@@ -37,7 +35,7 @@ MacOS ve Linux için:
 
 ### <a name="to-install-azure-data-lake-tools"></a>Azure Data Lake araçları 'nı yüklemek için
 
-1. Visual Studio Code’u açın.
+1. Visual Studio Code'u açın.
 2. Sol bölmedeki **Uzantılar** ' ı seçin. Arama kutusuna **Azure Data Lake araçları** girin.
 3. **Azure Data Lake araçları**' nın yanındaki **yüklemeyi** seçin.
 
@@ -146,7 +144,7 @@ Azure Data Lake araçları birden çok özel kodu destekler. Yönergeler için, 
 
 ## <a name="work-with-assemblies"></a>Derlemelerle çalışma
 
-Derleme geliştirme hakkında bilgi için bkz. [Azure Data Lake Analytics işleri Için U-SQL derlemelerini geliştirme](data-lake-analytics-u-sql-develop-assemblies.md).
+Derleme geliştirme hakkında bilgi için bkz. [Azure Data Lake Analytics işleri Için U-SQL derlemelerini geliştirme]().
 
 Data Lake Analytics kataloğuna özel kod derlemelerini kaydetmek için Data Lake araçlarını kullanabilirsiniz.
 

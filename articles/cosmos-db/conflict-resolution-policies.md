@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69bc58e7d217bbd902a82a15333eee6df40a21c9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570109"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276335"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Birden çok yazma bölgesi kullanılırken çakışma türleri ve çözümleme ilkeleri
 
@@ -32,7 +32,7 @@ Azure Cosmos DB, yazma çakışmalarını çözmek için esnek ilke odaklı bir 
 
 * **Son yazma WINS (LWW)**: Bu çözümleme ilkesi, varsayılan olarak sistem tanımlı bir zaman damgası özelliği kullanır. Zaman eşitleme saati protokolüne dayalıdır. SQL API 'sini kullanırsanız, çakışma çözümü için kullanılacak başka bir özel sayısal Özellik (örneğin, zaman damgası kavramı) belirtebilirsiniz. Özel bir sayısal özelliği de *çakışma çözümleme yolu*olarak adlandırılır. 
 
-  Ekleme veya değiştirme işlemlerinde iki veya daha fazla öğe çakışırsa, çakışma çözümleme yolu için en yüksek değere sahip öğe kazanan olur. Birden çok öğe, çakışma çözümleme yolu için aynı sayısal değere sahip ise, sistem kazanan kişiyi belirler. Tüm bölgeler tek bir kazanan ile yakınsama ve taahhüt edilen öğenin aynı sürümüyle son olarak garanti edilir. Silme çakışmaları dahil edildiğinde, silinen sürüm her zaman ekleme veya değiştirme çakışmaları üzerinde kazanır. Çakışma çözümleme yolunun değeri ne olursa olsun bu sonuç oluşur.
+  Ekleme veya değiştirme işlemlerinde iki veya daha fazla öğe çakışırsa, çakışma çözümleme yolu için en yüksek değere sahip öğe kazanan olur. Birden çok öğe, çakışma çözümleme yolu için aynı sayısal değere sahip ise, sistem kazanan kişiyi belirler. Tüm bölgeler tek bir yarışa yakınsayacak ve yürütülen öğenin aynı sürümüyle sona acaktır. Silme çakışmaları dahil edildiğinde, silinen sürüm her zaman ekleme veya değiştirme çakışmaları üzerinde kazanır. Çakışma çözümleme yolunun değeri ne olursa olsun bu sonuç oluşur.
 
   > [!NOTE]
   > Son yazma WINS varsayılan çakışma çözümleme ilkesidir ve `_ts` Şu API 'ler için zaman damgasını kullanır: SQL, MongoDB, Cassandra, Gremlin ve Table. Özel sayısal özellik yalnızca SQL API 'SI için kullanılabilir.

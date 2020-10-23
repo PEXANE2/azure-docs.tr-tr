@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86525050"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419937"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Jeam B&R kullanarak CloudSimple özel bulutunda iş yükü VM 'lerini yedekleme
 
@@ -56,7 +56,7 @@ Yedeklenme için 30 TB 'den az olan ortamlarda CloudSimple aşağıdaki yapılan
 * Azure 'da yedekleme işleri için hedef olarak yapılandırılmış Linux tabanlı birincil yedekleme deposu.
 * `azcopy` birincil yedekleme deposundan verileri başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılır.
 
-![Temel dağıtım senaryoları](media/veeam-basicdeployment.png)
+![Temel Veead dağıtım senaryolarını gösteren diyagram.](media/veeam-basicdeployment.png)
 
 **Gelişmiş dağıtım**
 
@@ -136,7 +136,7 @@ Veead tarafından kullanılan bağlantı noktalarında ağ trafiğine izin verme
 
 Aşağıdaki tabloda bir bağlantı noktası listesi verilmiştir.
 
-| Simge | Açıklama | Simge | Açıklama |
+| Simge | Description | Simge | Description |
 | ------------ | ------------- | ------------ | ------------- |
 | Yedekleme sunucusu  | vCenter  | HTTPS/TCP  | 443 |
 | Yedekleme sunucusu <br> *Veead yedeklemesini dağıtmak için gerekli & çoğaltma bileşenleri* | Yedekleme proxy 'Si  | TCP/UDP  | 135, 137-139 ve 445 |

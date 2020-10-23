@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497191"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109162"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. verilerin şifrelenmesi
 
@@ -33,7 +33,7 @@ Yoldaki veriler (Ayrıca, hareket halinde veri olarak da bilinir) Data Lake Stor
 
 Data Lake Storage 1. için şifreleme, hesap oluşturma sırasında ayarlanır ve varsayılan olarak her zaman etkindir. Anahtarları kendiniz yönetebilir veya Data Lake Storage 1. sizin için yönetmesine izin verebilirsiniz (bu varsayılandır).
 
-Daha fazla bilgi için bkz [. Başlarken](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Daha fazla bilgi için bkz [. Başlarken](./data-lake-store-get-started-portal.md).
 
 ## <a name="how-encryption-works-in-data-lake-storage-gen1"></a>Şifreleme Data Lake Storage 1. nasıl kullanılır
 
@@ -78,7 +78,7 @@ Veri şifreleme tasarımında kullanılan üç tür anahtar vardır. Aşağıdak
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Ana Şifreleme Anahtarı | MEK          | Data Lake Storage 1. hesabı | Key Vault                              | Asimetrik | Data Lake Storage 1. veya sizin için yönetilebilir.                                                              |
 | Veri Şifreleme Anahtarı   | DEK          | Data Lake Storage 1. hesabı | Kalıcı depolama, Data Lake Storage 1. hizmeti tarafından yönetiliyor | Simetrik  | DEK, MEK ile şifrelenir. Şifrelenmiş DEK, kalıcı medyada depolanır. |
-| Blok Şifreleme Anahtarı  | BEK          | Bir veri bloğu | Yok                                         | Simetrik  | BEK, DEK’ten ve veri bloğundan türetilir.                                                      |
+| Blok Şifreleme Anahtarı  | BEK          | Bir veri bloğu | Hiçbiri                                         | Simetrik  | BEK, DEK’ten ve veri bloğundan türetilir.                                                      |
 
 Aşağıdaki diyagram bu kavramları göstermektedir:
 
@@ -105,9 +105,9 @@ Aşağıdaki diyagram bu kavramları göstermektedir:
 
 ## <a name="key-rotation"></a>Anahtar döndürme
 
-Müşteri tarafından yönetilen anahtarları kullanırken MEK’i döndürebilirsiniz. Müşteri tarafından yönetilen anahtarlarla Data Lake Storage 1. bir hesabı [ayarlamayı öğrenmek için bkz. Başlarken](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Müşteri tarafından yönetilen anahtarları kullanırken MEK’i döndürebilirsiniz. Müşteri tarafından yönetilen anahtarlarla Data Lake Storage 1. bir hesabı [ayarlamayı öğrenmek için bkz. Başlarken](./data-lake-store-get-started-portal.md).
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Data Lake Storage 1. hesabını ayarlarken kendi anahtarlarınızı kullanmayı seçtiniz. Bu seçenek, hesap oluşturulduktan sonra değiştirilemez. Aşağıdaki adımlarda, müşteri tarafından yönetilen anahtarlar kullandığınız (Key Vault'tan kendi anahtarlarınızı seçtiğiniz) varsayılır.
 
@@ -115,7 +115,7 @@ Data Lake Storage 1. hesabını ayarlarken kendi anahtarlarınızı kullanmayı 
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>Data Lake Storage 1. içinde MEK döndürme
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Data Lake Storage 1. hesabınızla ilişkili anahtarlarınızı depolayan Key Vault örneğine gidin. **Anahtarlar**’ı seçin.
 
     ![Key Vault ekran görüntüsü](./media/data-lake-store-encryption/keyvault.png)
@@ -135,4 +135,4 @@ Data Lake Storage 1. hesabını ayarlarken kendi anahtarlarınızı kullanmayı 
 Bu işlem iki dakikadan kısa sürer ve anahtar döndürme nedeniyle beklenen kapalı kalma süresi yoktur. İşlem tamamlandıktan sonra anahtarın yeni sürümü kullanılır.
 
 > [!IMPORTANT]
-> Anahtar döndürme işlemi tamamlandıktan sonra anahtarın eski sürümü artık verilerinizi şifrelemek için etkin şekilde kullanılmaz.  Ancak verilerinizin yedek kopyalarının etkilendiği nadiren de olsa karşılaşılan beklenmedik hata durumlarında veriler halen eski anahtarı kullanan bir yedeklemeden geri yüklenebilir. Verilerinizin bu tür nadir durumlarda erişilebilir olmasını sağlamak için, şifreleme anahtarınızın önceki sürümünün bir kopyasını saklayın. Olağanüstü durum kurtarma planlamanızı en iyi uygulamalar için [Data Lake Storage 1. 'deki veriler Için olağanüstü durum kurtarma Kılavuzu '](data-lake-store-disaster-recovery-guidance.md) na bakın. 
+> Anahtar döndürme işlemi tamamlandıktan sonra anahtarın eski sürümü artık verilerinizi şifrelemek için etkin şekilde kullanılmaz.  Ancak verilerinizin yedek kopyalarının etkilendiği nadiren de olsa karşılaşılan beklenmedik hata durumlarında veriler halen eski anahtarı kullanan bir yedeklemeden geri yüklenebilir. Verilerinizin bu tür nadir durumlarda erişilebilir olmasını sağlamak için, şifreleme anahtarınızın önceki sürümünün bir kopyasını saklayın. Olağanüstü durum kurtarma planlamanızı en iyi uygulamalar için [Data Lake Storage 1. 'deki veriler Için olağanüstü durum kurtarma Kılavuzu '](data-lake-store-disaster-recovery-guidance.md) na bakın.

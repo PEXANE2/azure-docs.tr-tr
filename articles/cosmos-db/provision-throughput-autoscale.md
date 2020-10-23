@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9d645a16a59e34d1915cf9febde6b1f8a789355
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570737"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282094"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Otomatik ölçeklendirme işleme ile Azure Cosmos kapsayıcıları ve veritabanları oluşturma
 
@@ -85,6 +85,6 @@ Daha fazla ayrıntı için, standart (el ile) ve otomatik ölçeklendirme veriml
 * [Otomatik ÖLÇEKLENDIRME SSS](autoscale-faq.md)'sini inceleyin.
 * [El ile ve otomatik ölçeklendirme üretimi arasından seçim](how-to-choose-offer.md)yapmayı öğrenin.
 * [Azure Cosmos veritabanı veya kapsayıcısı üzerinde otomatik ölçeklendirme işleme sağlamayı](how-to-provision-autoscale-throughput.md)öğrenin.
-* Azure Cosmos DB bölümünde [bölümlendirme](partition-data.md) hakkında daha fazla bilgi edinin.
+* Azure Cosmos DB bölümünde [bölümlendirme](partitioning-overview.md) hakkında daha fazla bilgi edinin.
 
 

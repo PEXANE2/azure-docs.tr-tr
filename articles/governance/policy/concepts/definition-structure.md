@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074269"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132491"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -116,7 +116,7 @@ Aşağıdaki kaynak sağlayıcısı modları Şu anda **Önizleme**olarak destek
 > [!NOTE]
 > Kaynak sağlayıcısı modları yalnızca yerleşik ilke tanımlarını destekler ve [muafiyetleri](./exemption-structure.md)desteklemez.
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 İsteğe bağlı `metadata` özelliği, ilke tanımıyla ilgili bilgileri depolar. Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır.
 
@@ -438,7 +438,7 @@ Bunun yerine **, adın ilk** üç karakterinin bir hataya neden olmak üzere ü�
 
 Düzeltilen ilke kuralıyla, `if()` üç karakterden kısa bir değerde bir değer almaya çalışmadan önce **adın** uzunluğunu denetler `substring()` . **Ad** çok kısaysa, bunun yerine "ABC ile başlamıyor" değeri döndürülür ve **ABC**ile karşılaştırılır. **ABC** ile başlamayan kısa bir ada sahip bir kaynak, hala ilke kuralına neden oluyor, ancak değerlendirme sırasında hataya neden olmaz.
 
-### <a name="count"></a>Sayı
+### <a name="count"></a>Count
 
 Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp karşılamadığını sayan **sayı** ifadesi kullanılarak oluşturulabilir koşullar. Yaygın senaryolar ', ' ' veya ' hiçbiri ', ' tamamen ' veya ' hiçbiri ' ' veya ' hiçbiri ' olan dizi üyelerinin koşulu karşılayıp karşılamadığını kontrol etmekte. **Count** , bir koşul ifadesi için her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesini değerlendirir ve daha sonra ifade işleciyle karşılaştırılan _doğru_ sonuçları toplar. **Count** ifadeleri, tek bir **policyrule** tanımına en fazla üç kez eklenebilir.
 
@@ -589,8 +589,8 @@ Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak bir Azure Resourc
 Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [Required] Universal ISO 8601 DateTime biçiminde dize dizesi `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
-  - **Numberofdaystoadd**: [gerekli] tamsayı-eklenecek gün sayısı.
+  - **DateTime**: [Required] Universal ISO 8601 DateTime biçiminde dize dizesi ' yyyy-mm-ddTHH: mm: ss. FFFFFFFZ'
+  - **Numberofdaystoadd**: [gerekli] tamsayı-eklenecek gün sayısı
 - `field(fieldName)`
   - **Alanadı**: [gerekli] dize-alınacak [alanın](#fields) adı
   - If koşulu tarafından değerlendirilen kaynaktaki bu alanın değerini döndürür.

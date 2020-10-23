@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070376"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363701"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -139,13 +139,13 @@ Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlul
 
 Otomatik Kullanıcı sağlamanın ilk yapılandırmasının, üretim ortamındaki tüm kullanıcılara ölçeklendirmeden önce küçük bir kullanıcı alt kümesiyle bir test ortamında olmasını öneririz. Pilot çalıştırmaya yönelik [en iyi uygulamalar](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) bölümüne bakın.
 
-#### <a name="best-practices-for-a-pilot"></a>Pilot için en iyi uygulamalar  
+#### <a name="best-practices-for-a-pilot"></a>Pilot için en iyi uygulamalar  
 
 Pilot, herkes için bir özelliği dağıtmaya başlamadan önce küçük bir grupla test etmenizi sağlar. Test etmenin bir parçası olarak, kuruluşunuzdaki her kullanım durumunun büyük bir şekilde sınandığından emin olun.
 
 İlk dalga uygulamanızda BT 'yi, kullanılabilirliği ve geri bildirim sağlayabilen ve bunları sağlayabilecek diğer uygun kullanıcıları hedefleyebilirsiniz. Kullanıcılarınıza göndereceğiniz iletişim ve yönergeleri geliştirmek ve destek personelinizin görebileceği sorun türleri hakkında Öngörüler sağlamak için bu geri bildirimi kullanın.
 
-Hedeflenmiş Grup kapsamını artırarak daha büyük Kullanıcı gruplarına dağıtımı genişletebilirsiniz. Bu, [dinamik grup üyeliği](../users-groups-roles/groups-dynamic-membership.md)aracılığıyla veya hedeflenen gruplara el ile Kullanıcı ekleyerek yapılabilir.
+Hedeflenmiş Grup kapsamını artırarak daha büyük Kullanıcı gruplarına dağıtımı genişletebilirsiniz. Bu, [dinamik grup üyeliği](../enterprise-users/groups-dynamic-membership.md)aracılığıyla veya hedeflenen gruplara el ile Kullanıcı ekleyerek yapılabilir.
 
 ## <a name="plan-application-connections-and-administration"></a>Uygulama bağlantılarını ve yönetimini planlayın
 

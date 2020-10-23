@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89615f53f62329ca37ae4a4dde301a9fae6b1202
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400511"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279730"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümlenmiş graf kullanma
 
 Azure Cosmos DB Gremlin API 'sinin temel özelliklerinden biri, büyük ölçekli grafikleri yatay ölçeklendirmeyle işleyebilme olanağıdır. Kapsayıcılar depolama ve aktarım hızı bakımından bağımsız olarak ölçeklendirebilir. Azure Cosmos DB, bir grafik verilerini depolamak için otomatik olarak ölçeklenebilen kapsayıcılar oluşturabilirsiniz. Veriler, belirtilen **bölüm anahtarına**göre otomatik olarak dengelenir.
 
-Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya saniyede 10.000 ' den fazla istek birimi (ru) ayırmak istiyorsanız **bölümlendirme gerekir** . [Azure Cosmos DB bölümleme mekanizmasından](partition-data.md) aynı genel ilkeler aşağıda açıklanan bazı grafiğe özgü iyileştirmeler ile uygulanır.
+Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya saniyede 10.000 ' den fazla istek birimi (ru) ayırmak istiyorsanız **bölümlendirme gerekir** . [Azure Cosmos DB bölümleme mekanizmasından](partitioning-overview.md) aynı genel ilkeler aşağıda açıklanan bazı grafiğe özgü iyileştirmeler ile uygulanır.
 
 :::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Grafik bölümleme." border="false":::
 
@@ -78,7 +78,7 @@ Sınırsız kapsayıcı içeren bölümlenmiş grafikleri kullanırken performan
 
 - **Mümkün olduğunda kenarları sorgularken giden yönü kullanın**. Yukarıda belirtildiği gibi, kenarlar giden yönde kaynak köşelerine göre saklanır. Bu nedenle, veriler ve sorgular bu Düzenle göz önünde bulundurularak tasarlandıysa, çapraz bölümleme sorgularına daha küçük bir şekilde geçiş şansı en aza indirilir. Aksine `in()` sorgu her zaman pahalı bir fan sorgu olacaktır.
 
-- **Verileri bölümler arasında eşit olarak dağıtan bir bölüm anahtarı seçin**. Bu karar, çözümün veri modeline bağlıdır. [Azure Cosmos DB bölümleyip ölçeklendirerek](partition-data.md)uygun bölüm anahtarı oluşturma hakkında daha fazla bilgi edinin.
+- **Verileri bölümler arasında eşit olarak dağıtan bir bölüm anahtarı seçin**. Bu karar, çözümün veri modeline bağlıdır. [Azure Cosmos DB bölümleyip ölçeklendirerek](partitioning-overview.md)uygun bölüm anahtarı oluşturma hakkında daha fazla bilgi edinin.
 
 - **Bir bölümün sınırları içinde veri almak için sorguları iyileştirin**. En iyi bölümleme stratejisi, sorgulama desenlerine hizalanır. Tek bir bölümden veri alan sorgular mümkün olan en iyi performansı sağlar.
 
@@ -86,6 +86,6 @@ Sınırsız kapsayıcı içeren bölümlenmiş grafikleri kullanırken performan
 
 Ardından, aşağıdaki makaleleri okumak için devam edebilirsiniz:
 
-* Azure Cosmos DB bölümünde [bölüm ve ölçek](partition-data.md)hakkında bilgi edinin.
+* Azure Cosmos DB bölümünde [bölüm ve ölçek](partitioning-overview.md)hakkında bilgi edinin.
 * [GREMLIN API 'de Gremlin desteği](gremlin-support.md)hakkında bilgi edinin.
 * [Gremlin API 'Sine giriş](graph-introduction.md)hakkında bilgi edinin.

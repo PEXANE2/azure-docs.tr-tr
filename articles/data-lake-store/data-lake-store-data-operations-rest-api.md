@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ce1c7df70bf10280ba642e8ce2cec4864dfbbaec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e0fb2ffa7b573ecfeda163d9ad99597ff735a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85985045"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109213"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API kullanarak Azure Data Lake Storage 1. dosya sistemi işlemleri
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "85985045"
 
 Bu makalede, Azure Data Lake Storage 1. dosya sistemi işlemlerini gerçekleştirmek için Weblerrest API 'Lerini ve Data Lake Storage 1. REST API 'Lerini nasıl kullanacağınızı öğreneceksiniz. REST API kullanarak Data Lake Storage 1. hesap yönetimi işlemlerinin nasıl gerçekleştirileceği hakkında yönergeler için [REST API kullanarak Data Lake Storage 1. hesap yönetimi işlemleri](data-lake-store-get-started-rest-api.md)konusuna bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin.
@@ -186,6 +186,5 @@ HTTP/1.1 200 OK
 * [Data Lake Storage 1. REST API kullanarak hesap yönetimi işlemleri](data-lake-store-get-started-rest-api.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure Data Lake Storage 1. REST API başvurusu](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Azure Data Lake Storage 1. REST API başvurusu](/rest/api/datalakestore/)
 * [Azure Data Lake Storage 1. uyumlu açık kaynak büyük veri uygulamaları](data-lake-store-compatible-oss-other-applications.md)
-

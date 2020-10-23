@@ -3,12 +3,12 @@ title: Azure DevTest Labs Uzak Masaüstü Ağ Geçidi kullanmak için laboratuva
 description: RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan laboratuvar VM 'lerine güvenli erişim sağlamak için Azure DevTest Labs bir laboratuvarı Uzak Masaüstü ağ geçidiyle nasıl yapılandıracağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288084"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144695"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Azure DevTest Labs ' de laboratuvarınızı Uzak Masaüstü Ağ geçidini kullanacak şekilde yapılandırma
 Azure DevTest Labs, laboratuvarınız için bir Uzak Masaüstü Ağ Geçidi yapılandırarak, RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan laboratuvar sanal makinelerine (VM 'Ler) güvenli erişim sağlayabilirsiniz. Laboratuvar, laboratuvar kullanıcılarınızın erişimi olan tüm sanal makineleri görüntülemesi ve bunlara bağlanabilmesi için merkezi bir yer sağlar. **Sanal makine** sayfasındaki **Bağlan** düğmesi, makineye bağlanmak için AÇABILECEĞINIZ makineye özel bir RDP dosyası oluşturur. Laboratuvarınızı Uzak Masaüstü ağ geçidine bağlayarak RDP bağlantısını daha da özelleştirebilir ve koruyabilirsiniz. 
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Aşağıdaki adımları kullanarak Laboratuvarı, belirteç kimlik doğrulamasını kullanacak şekilde yapılandırın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden **laboratuvarınızı**seçin.
 1. Laboratuvarın sayfasında **yapılandırma ve ilkeler**' i seçin.
@@ -79,7 +79,7 @@ Aşağıdaki adımları kullanarak Laboratuvarı, belirteç kimlik doğrulaması
 1. **Kaydet** Değişikliklerine.
 
     > [!NOTE] 
-    > **Kaydet**'e tıklayarak [Uzak Masaüstü Ağ Geçidi lisans koşullarını](https://www.microsoft.com/licensing/product-licensing/products)kabul etmiş olursunuz. Uzak ağ geçidi hakkında daha fazla bilgi için bkz. [hoş geldiniz Uzak Masaüstü Hizmetleri](https://aka.ms/rds) ve [uzak masaüstü ortamınızı dağıtma](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+    > **Kaydet**'e tıklayarak [Uzak Masaüstü Ağ Geçidi lisans koşullarını](https://www.microsoft.com/licensing/product-licensing/products)kabul etmiş olursunuz. Uzak ağ geçidi hakkında daha fazla bilgi için bkz. [hoş geldiniz Uzak Masaüstü Hizmetleri](/windows-server/remote/remote-desktop-services/Welcome-to-rds) ve [uzak masaüstü ortamınızı dağıtma](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 
 Laboratuvarı Otomasyon aracılığıyla yapılandırıyorsanız, **ağ geçidi konak adı** ve **ağ geçidi belirteci gizli** dizi ayarlarını ayarlamak için örnek bir PowerShell betiği için [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) bakın. [GitHub deposu Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) Ayrıca **ağ geçidi ana bilgisayar adı** ve **ağ geçidi belirteci gizli** ayarları ile bir laboratuvar oluşturan veya güncelleştiren bir Azure Resource Manager şablonu sağlar.
@@ -94,7 +94,7 @@ Burada yalnızca, ağ geçidinden laboratuar makinelerine ulaşmaya yönelik tra
 ## <a name="sample-to-create-a-remote-desktop-gateway"></a>Uzak Masaüstü Ağ geçidi oluşturmak için örnek
 
 > [!NOTE] 
-> Örnek şablonları kullanarak [Uzak Masaüstü Ağ Geçidi lisans koşullarını](https://www.microsoft.com/licensing/product-licensing/products)kabul etmiş olursunuz. Uzak ağ geçidi hakkında daha fazla bilgi için bkz. [hoş geldiniz Uzak Masaüstü Hizmetleri](https://aka.ms/rds) ve [uzak masaüstü ortamınızı dağıtma](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+> Örnek şablonları kullanarak [Uzak Masaüstü Ağ Geçidi lisans koşullarını](https://www.microsoft.com/licensing/product-licensing/products)kabul etmiş olursunuz. Uzak ağ geçidi hakkında daha fazla bilgi için bkz. [hoş geldiniz Uzak Masaüstü Hizmetleri](/windows-server/remote/remote-desktop-services/Welcome-to-rds) ve [uzak masaüstü ortamınızı dağıtma](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 [GitHub deposu Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) , belirteç kimlik doğrulaması ve Uzak Masaüstü Ağ geçidini DevTest Labs ile kullanmak için gereken kaynakları ayarlamaya yardımcı olmak üzere birkaç örnek sağlar. Bu örnekler, ağ geçidi makineleri, laboratuvar ayarları ve işlev uygulaması için Azure Resource Manager şablonlar içerir.
 

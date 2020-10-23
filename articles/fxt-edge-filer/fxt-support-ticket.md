@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
-ms.openlocfilehash: a6630a04f3811aae0b75bc378a66e8a05e4f8203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b23bd81f7b527f578bfd0adcedc79caed7c60fe
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650451"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217380"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Azure FXT Edge fili için bir destek bileti açın
 
@@ -21,18 +21,18 @@ Microsoft Müşteri Hizmetleri ve desteği ile bir destek bileti açmak için Az
 
 1. [Azure Portal](https://portal.azure.com/) açın ve oturum açın.
 1. Sol bölmede, en alta kaydırın ve **Yardım + Destek**' e tıklayın.
-1. **Yeni destek isteği**' ne tıklayın. 
+1. **Yeni destek isteği**' ne tıklayın.
 
    !["Yeni destek isteği" seçiliyken "yardım + destek" sayfasını gösteren ekran görüntüsü.](media/fxt-support-blank.png)
 
 1. İstek formunu doldurun.  
-    1. **Temel bilgiler** sekmesinde, **sorun türünü** seçin ``Technical`` . 
-    1. Aboneliğinizi seçin. 
-    1. **Hizmet**altında **Azure FXT Edge Filer**' ı seçin. Bulmak için **tüm hizmetler** filtre denetimine tıklamanız gerekebilir. 
-    1. Bir **Özet** girin ve **sorun türünü**seçin. 
-    ![Boş destek isteği formunun ekran görüntüsü](media/fxt-support-populated.png) 
-    1. Devam etmek için **İleri**'ye tıklayın. 
-1. **Ayrıntılar** sekmesinde, sorun ve sizinle iletişim kurma hakkında daha fazla bilgi ekleyin. Sorunla ilgili bir dosyayı karşıya yükleyebilirsiniz. 
+    1. **Temel bilgiler** sekmesinde, **sorun türünü** seçin ``Technical`` .
+    1. Aboneliğinizi seçin.
+    1. **Hizmet**altında **Azure FXT Edge Filer**' ı seçin. Bulmak için **tüm hizmetler** filtre denetimine tıklamanız gerekebilir.
+    1. Bir **Özet** girin ve **sorun türünü**seçin.
+    ![Boş destek isteği formunun ekran görüntüsü](media/fxt-support-populated.png)
+    1. Devam etmek için **İleri**'ye tıklayın.
+1. **Ayrıntılar** sekmesinde, sorun ve sizinle iletişim kurma hakkında daha fazla bilgi ekleyin. Sorunla ilgili bir dosyayı karşıya yükleyebilirsiniz.
 1. **Gözden geçir + oluştur**' da, bilgileri denetleyin ve isteğinizi göndermek için **Oluştur** düğmesine tıklayın.
 
 İsteği gönderdikten sonra, Bilet numarası içeren bir onay e-postası alacaksınız. Destek ekibi üyesi, istek hakkında sizinle iletişim kuracaktır.

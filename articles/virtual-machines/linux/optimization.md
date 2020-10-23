@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654200"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370245"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure’da Linux VM’nizi iyileştirme
 Bir Linux sanal makinesi (VM) oluşturmak, komut satırından veya portaldan kolayca yapılır. Bu öğreticide, Microsoft Azure platformunda performansını en iyi duruma getirecek şekilde ayarlamış olduğunuzdan emin olmanız gösterilmektedir. Bu konu, Ubuntu sunucu sanal makinesini kullanır, ancak aynı zamanda [kendi görüntülerinizi şablon olarak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak Linux sanal makinesi de oluşturabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu konu, zaten çalışan bir Azure aboneliğiniz olduğunu varsayar ([ücretsiz deneme kaydı](https://azure.microsoft.com/pricing/free-trial/)) ve Azure aboneliğinizde zaten bir VM sağladınız. [VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)oluşturmadan önce [az oturum açma](/cli/azure/reference-index) ile Azure ABONELIĞINIZDE en son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olduğundan ve oturum açmış olduğunuzdan emin olun.
 
 ## <a name="azure-os-disk"></a>Azure işletim sistemi diski
@@ -47,7 +47,38 @@ Varsayılan olarak, bir VM oluşturduğunuzda, Azure size bir işletim sistemi d
 ## <a name="linux-swap-partition"></a>Linux takas bölümü
 Azure VM 'niz bir Ubuntu veya CoreOS görüntüsünden ise, CustomData kullanarak Cloud-init ' e Cloud-config gönderebilirsiniz. Cloud-init kullanan [özel bir Linux görüntüsünü karşıya](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) yüklediyseniz, Cloud-init kullanarak takas bölümlerini de yapılandırırsınız.
 
-Ubuntu bulut görüntülerinde, takas bölümünü yapılandırmak için Cloud-init ' i kullanmanız gerekir. Daha fazla bilgi için bkz. [Azureswappartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
+Cloud-init tarafından sağlanan ve desteklenen tüm görüntüler için değiştirmeyi yönetmek üzere **/etc/waagent.exe** dosyasını kullanamazsınız. Görüntülerin tam listesi için bkz. [Cloud-Init kullanma](using-cloud-init.md). 
+
+Bu görüntüler için değiştirmeyi yönetmenin en kolay yolu, aşağıdaki adımları tamamlardır:
+
+1. **/Var/lib/Cloud/Scripts/per-Boot** klasöründe **create_swapfile. sh**adlı bir dosya oluşturun:
+
+   **$ sudo Touch/var/lib/Cloud/Scripts/per-Boot/create_swapfile. sh**
+
+1. Dosyasına aşağıdaki satırları ekleyin:
+
+   **$ sudo vi/var/lib/Cloud/Scripts/per-Boot/create_swapfile. sh**
+
+   ```
+   #!/bin/sh
+   if [ ! -f '/mnt/swapfile' ]; then
+   fallocate --length 2GiB /mnt/swapfile
+   chmod 600 /mnt/swapfile
+   mkswap /mnt/swapfile
+   swapon /mnt/swapfile
+   swapon -a ; fi
+   ```
+
+   > [!NOTE]
+   > Değeri gereksinimlerinize göre değiştirebilir ve kaynak diskinizdeki kullanılabilir alana bağlı olarak, kullanılan VM boyutuna göre farklılık gösterir.
+
+1. Dosyayı yürütülebilir yapın:
+
+   **$ sudo chmod + x/var/lib/Cloud/Scripts/per-Boot/create_swapfile. sh**
+
+1. Swapfile 'ı oluşturmak için, son adımdan sonra betiği çalıştırın:
+
+   **$ sudo/var/lib/Cloud/Scripts/per-Boot/.exe/create_swapfile. sh**
 
 Cloud-init desteği olmayan görüntüler için, Azure Marketi 'nden dağıtılan VM görüntülerinin IŞLETIM sistemiyle tümleştirilmiş bir VM Linux Aracısı vardır. Bu aracı, sanal makinenin çeşitli Azure hizmetleriyle etkileşime geçmesini sağlar. Azure Marketi 'nden standart bir görüntü dağıttığınız varsayılarak, Linux takas dosyası ayarlarınızı doğru şekilde yapılandırmak için aşağıdakileri yapmanız gerekir:
 

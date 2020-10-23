@@ -2,90 +2,100 @@
 title: GitHub eylemlerini kullanarak Kaynak Yöneticisi şablonları dağıtma
 description: GitHub eylemleri kullanılarak Azure Resource Manager şablonlarının nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 07/02/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: cea099088005fa91e1b3e9a793105df4796a66ee
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/13/2020
+ms.custom: github-actions-azure,subject-armqs
+ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018585"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282846"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak Azure Resource Manager şablonları dağıtma
 
-[GitHub eylemleri](https://help.github.com/en/actions) , Azure Resource Manager (ARM) şablonlarınızın depolandığı GitHub deponuzda doğrudan özel yazılım geliştirme yaşam döngüsü iş akışları oluşturmanıza olanak sağlar. Bir [iş akışı](https://help.github.com/actions/reference/workflow-syntax-for-github-actions) BIR YAML dosyası tarafından tanımlanır. İş akışları, her bir işi tek tek gerçekleştiren bir adım kümesi içeren bir veya daha fazla iş akışı içerir. Adımlar, komutları çalıştırabilir veya bir eylem kullanabilir. Kendi eylemlerinizi oluşturabilir, [GitHub topluluğu](https://github.com/marketplace?type=actions) tarafından paylaşılan eylemleri kullanabilir ve bunları gerektiği şekilde özelleştirebilirsiniz. Bu makalede, Kaynak Yöneticisi şablonlarını dağıtmak için [Azure CLI eyleminin](https://github.com/marketplace/actions/azure-cli-action) nasıl kullanılacağı gösterilmektedir.
+[GitHub eylemleri](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) , yazılım geliştirme iş akışlarınızı aynı yerde otomatik hale getirmek için GitHub 'daki bir özellik paketidir. böylece, çekme istekleri ve sorunları üzerinde kod depolar ve işbirliği yapın.
 
-Azure CLı eyleminde iki bağımlı eylem vardır:
-
-- **[Kullanıma al](https://github.com/marketplace/actions/checkout)**: iş akışının belirtilen kaynak yöneticisi şablonuna erişebilmesi için deponuza göz atın.
-- **[Azure oturum açma](https://github.com/marketplace/actions/azure-login)**: Azure kimlik bilgilerinizle oturum açın
-
-Kaynak Yöneticisi şablonu dağıtmaya yönelik temel bir iş akışında üç adım bulunabilir:
-
-1. Şablon dosyasına göz atın.
-2. Azure'da oturum açın.
-3. Kaynak Yöneticisi şablonu dağıtma
+Kaynak Yöneticisi şablonunu Azure 'a dağıtmayı otomatikleştirmek için [Azure Resource Manager şablonu dağıt eylemini](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) kullanın. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Kaynak Yöneticisi şablonlarınızı ve iş akışı dosyalarınızı depolamak için bir GitHub deposuna ihtiyacınız vardır. Bir tane oluşturmak için bkz. [Yeni bir depo oluşturma](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
+    - Kaynak Yöneticisi şablonlarınızı ve iş akışı dosyalarınızı depolamak için bir GitHub deposu. Bir tane oluşturmak için bkz. [Yeni bir depo oluşturma](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
 
-## <a name="configure-deployment-credentials"></a>Dağıtım kimlik bilgilerini yapılandırma
 
-Azure oturum açma eylemi, Azure 'da kimlik doğrulaması yapmak için bir hizmet sorumlusu kullanır. CI/CD iş akışının sorumlusu, genellikle Azure kaynaklarını dağıtmak için yerleşik katkı sahibine ihtiyaç duyuyor.
+## <a name="workflow-file-overview"></a>İş akışı dosyasına genel bakış
 
-Aşağıdaki Azure CLı betiği, bir Azure Kaynak grubunda katkıda bulunan izinlerle Azure hizmet sorumlusu oluşturmayı gösterir. Bu kaynak grubu, iş akışının Kaynak Yöneticisi şablonunuzda tanımlanan kaynakları dağıttığı yerdir.
+Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
 
-```azurecli
-$projectName="[EnterAProjectName]"
-$location="centralus"
-$resourceGroupName="${projectName}rg"
-$appName="http://${projectName}"
-$scope=$(az group create --name $resourceGroupName --location $location --query 'id')
-az ad sp create-for-rbac --name $appName --role Contributor --scopes $scope --sdk-auth
+Dosya iki bölümden oluşur:
+
+|Section  |Görevler  |
+|---------|---------|
+|**Kimlik Doğrulaması** | 1. bir hizmet sorumlusu tanımlayın. <br /> 2. GitHub gizli dizisi oluşturun. |
+|**Dağıtma** | 1. Kaynak Yöneticisi şablonunu dağıtın. |
+
+## <a name="generate-deployment-credentials"></a>Dağıtım kimlik bilgileri oluştur
+
+
+[Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) komutuyla bir [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) veya **deneyin** düğmesini seçerek çalıştırın.
+
+Henüz bir tane yoksa bir kaynak grubu oluşturun. 
+
+```azurecli-interactive
+    az group create -n {MyResourceGroup}
 ```
 
-**$ProjectName** değerini ve betikteki **$Location** özelleştirin. Kaynak grubu adı, **RG** eklenmiş proje adıdır. İş akışınızda kaynak grubu adını belirtmeniz gerekir.
+Yer tutucusunu `myApp` uygulamanızın adıyla değiştirin. 
 
-Betik şuna benzer bir JSON nesnesi çıktı:
-
-```json
-{
-   "clientId": "<GUID>",
-   "clientSecret": "<GUID>",
-   "subscriptionId": "<GUID>",
-   "tenantId": "<GUID>",
-   (...)
-}
+```azurecli-interactive
+   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-JSON çıkışını kopyalayın ve GitHub deponuzdaki bir GitHub gizli dizisi olarak depolayın. Henüz bir deponuz yoksa [Önkoşul](#prerequisites) ' i inceleyin.
+Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyla değiştirin. Çıktı, aşağıda gösterilene benzer App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. Bu JSON nesnesini daha sonra kopyalayın. Yalnızca `clientId` ,, `clientSecret` `subscriptionId` ve değerlerine sahip bölümlere ihtiyacınız olacaktır `tenantId` . 
 
-1. GitHub deponuzdan **Ayarlar** sekmesini seçin.
-1. Sol menüden **gizli** dizileri seçin.
-1. Aşağıdaki değerleri girin:
+```output 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
-    - **Ad**: AZURE_CREDENTIALS
-    - **Değer**: (JSON çıkışını Yapıştır)
-1. **Gizli dizi Ekle**' yi seçin.
+> [!IMPORTANT]
+> En az erişim sağlamak her zaman iyi bir uygulamadır. Önceki örnekteki kapsam, kaynak grubuyla sınırlandırılmıştır.
 
-İş akışında gizli adı belirtmeniz gerekir.
+
+
+## <a name="configure-the-github-secrets"></a>GitHub gizli dizilerini yapılandırma
+
+Azure kimlik bilgileriniz, kaynak grubunuz ve abonelikleriniz için gizli diziler oluşturmanız gerekir. 
+
+1. [GitHub](https://github.com/)'da deponuza gözatamazsınız.
+
+1. **Yeni gizli > > ayarlar**' ı seçin.
+
+1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
+
+1. Adlı başka bir gizli dizi oluşturun `AZURE_RG` . Kaynak grubunuzun adını gizli dizi değeri alanına ekleyin (örnek: `myResourceGroup` ). 
+
+1. Adlı ek bir gizli dizi oluşturun `AZURE_SUBSCRIPTION` . Abonelik KIMLIĞINIZI gizli dizi değeri alanına ekleyin (örnek: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
 
 ## <a name="add-resource-manager-template"></a>Kaynak Yöneticisi şablonu Ekle
 
-GitHub deposuna bir Kaynak Yöneticisi şablonu ekleyin. Bir tane yoksa, aşağıdaki şablonu kullanabilirsiniz. Şablon bir depolama hesabı oluşturur.
+GitHub deponuza bir Kaynak Yöneticisi şablonu ekleyin. Bu şablon bir depolama hesabı oluşturur.
 
 ```url
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan iş akışı örneği, şablon dosyasının **azuredeploy.js**olarak adlandırıldığını varsayar ve deponuzun kök dizininde **Şablonlar** adlı bir klasörde depolanır.
+Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan iş akışı örneği, şablon dosyasının **azuredeploy.js**olarak adlandırıldığını ve deponun kökünde depolandığını varsayar.
 
 ## <a name="create-workflow"></a>İş akışı oluştur
 
 İş akışı dosyası, deponuzın kökündeki **. GitHub/iş akışları** klasöründe depolanmalıdır. İş akışı dosyası uzantısı **. yıml** ya da **. YAML**olabilir.
-
-Bir iş akışı dosyası oluşturabilir, sonra dosyayı depoya gönderebilir/karşıya yükleyebilir ya da aşağıdaki yordamı kullanabilirsiniz:
 
 1. GitHub deponuzdan üstteki menüden **Eylemler** ' i seçin.
 1. **Yeni iş akışı**' nı seçin.
@@ -94,51 +104,40 @@ Bir iş akışı dosyası oluşturabilir, sonra dosyayı depoya gönderebilir/ka
 1. YML dosyasının içeriğini aşağıdakiler ile değiştirin:
 
     ```yml
-    name: Deploy ARM Template
-
-    on:
-      push:
-        branches:
-          - master
-        paths:
-          - ".github/workflows/deployStorageAccount.yml"
-          - "templates/azuredeploy.json"
-
+    on: [push]
+    name: Azure ARM
     jobs:
-      deploy-storage-account-template:
+      build-and-deploy:
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout source code
-            uses: actions/checkout@master
 
-          - name: Login to Azure
-            uses: azure/login@v1
-            with:
-              creds: ${{ secrets.AZURE_CREDENTIALS }}
+          # Checkout code
+        - uses: actions/checkout@master
 
-
-          - name: Deploy ARM Template
-            uses: azure/CLI@v1
-            with:
-              inlineScript: |
-                az deployment group create --resource-group myResourceGroup --template-file ./templates/azuredeploy.json
+          # Log into Azure
+        - uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+     
+          # Deploy ARM template
+        - name: Run ARM deploy
+          uses: azure/arm-deploy@v1
+          with:
+            subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+            resourceGroupName: ${{ secrets.AZURE_RG }}
+            template: ./azuredeploy.json
+            parameters: storageAccountType=Standard_LRS 
+        
+          # output containerName variable from template
+        - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
+    > [!NOTE]
+    > ARM dağıtımı eyleminde bunun yerine bir JSON biçim parametreleri dosyası belirtebilirsiniz (örnek: `.azuredeploy.parameters.json` ).  
 
-    İş akışı dosyası üç bölümden oluşur:
+    İş akışı dosyasının ilk bölümü şunları içerir:
 
     - **ad**: iş akışının adı.
     - **Açık**: iş akışını tetikleyen GitHub olaylarının adı. Ana dalda, belirtilen iki dosyadan en az birini değiştiren bir anında iletme olayı olduğunda iş akışı tetiklenir. İki dosya, iş akışı dosyası ve şablon dosyasıdır.
-
-        > [!IMPORTANT]
-        > İki dosyayı ve yollarının sizinkilerle eşleştiğini doğrulayın.
-    - **işler**: bir iş akışı çalıştırması bir veya daha fazla işin üzerinde yapılır. **Dağıt-Storage-Account-Template**adlı yalnızca bir iş vardır.  Bu işin üç adımı vardır:
-
-        - **Kaynak kodunu kullanıma alın**.
-        - **Azure 'Da oturum açın**.
-
-            > [!IMPORTANT]
-            > Gizli adı, deponuza kaydettiğiniz değerle eşleştiğini doğrulayın. Bkz. [dağıtım kimlik bilgilerini yapılandırma](#configure-deployment-credentials).
-        - **ARM şablonunu dağıtın**. **Resourcegroupname**değerini değiştirin.  [Dağıtım kimlik bilgilerini yapılandırma](#configure-deployment-credentials)bölümünde Azure CLI betiği kullandıysanız, oluşturulan kaynak grubu adı **RG** eklenmiş olan proje adıdır. **Templatelocation**değerini doğrulayın.
 
 1. **Yürütmeyi Başlat**' ı seçin.
 1. **Doğrudan ana dala kaydet**' i seçin.
@@ -148,11 +147,15 @@ Bir iş akışı dosyası oluşturabilir, sonra dosyayı depoya gönderebilir/ka
 
 ## <a name="check-workflow-status"></a>İş akışı durumunu denetle
 
-1. **Eylemler** sekmesini seçin. Listelenen bir **deployStorageAccount. yml** iş akışı görürsünüz. İş akışının yürütülmesi 1-2 dakika sürer.
+1. **Eylemler** sekmesini seçin. Listelenen bir **deployStorageAccount. yıml** iş akışı görüntülenir. İş akışını çalıştırmak için 1-2 dakika sürer.
 1. Açmak için iş akışını seçin.
-1. Sol menüden **Dağıt-depolama-hesap-şablon** (iş adı) öğesini seçin. İş, iş akışında tanımlanmıştır.
-1. Genişletmek için **ARM şablonunu dağıt** (adım adı) seçeneğini belirleyin. REST API yanıtını görebilirsiniz.
+1. Dağıtımı doğrulamak için menüden **ARM dağıtımını Çalıştır** ' ı seçin.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Kaynak grubunuz ve deponuz artık gerekmiyorsa, kaynak grubunu ve GitHub deponuzu silerek dağıttığınız kaynakları temizleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için bkz. [öğretici: Ilk ARM şablonunuzu oluşturma ve dağıtma](template-tutorial-create-first-template.md).
+> [!div class="nextstepaction"]
+> [İlk ARM şablonunuzu oluşturma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

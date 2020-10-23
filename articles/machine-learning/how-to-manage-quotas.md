@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a81af14992c8557c245ab3a1073f031a6c505084
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4b072257d49011819fe19d6e2901560df43b26dc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019401"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275557"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning sahip kaynaklara yönelik kotaları yönetme & artırma
 
@@ -177,12 +177,14 @@ Bu senaryolar için bir kesinti istemek üzere aşağıdaki adımları kullanın
     | ----- | ----- |
     | Sorun türü | Teknik |
     | Hizmet | Hizmetlerim. Açılan listede __Machine Learning__ ' yi seçin. |
-    | Sorun türü | Çalışma alanı kurulumu, SDK ve CLı |
-    | Sorun alt türü | Çalışma alanını sağlama veya yönetme sorunu |
+    | Sorun türü | Çalışma alanı yapılandırması ve güvenliği |
+    | Sorun alt türü | Özel uç nokta ve Özel DNS bölge kesintisi isteği |
 
 2. __Ayrıntılar__ bölümünde, kullanmak istediğiniz Azure bölgesini ve kullanmayı planladığınız senaryoyu sağlamak için __Açıklama__ alanını kullanın. Birden çok abonelik için kota artışı istemeniz gerekiyorsa, bu alandaki abonelik kimliklerini de listeleyin.
 
 3. İsteği oluşturmak için __Oluştur__ ' u seçin.
+
+:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Özel uç nokta ve özel DNS kota artışı isteği ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

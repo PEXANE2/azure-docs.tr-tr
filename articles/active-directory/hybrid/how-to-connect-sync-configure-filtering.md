@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319988"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457971"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
 Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Microsoft 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
@@ -127,7 +127,7 @@ Etki alanı filtresini ayarlamak için aşağıdaki adımları uygulayın:
 3.  **Eşitleme seçeneklerini Özelleştir** ' i seçin ve **İleri**' ye tıklayın.
 4.  Azure AD kimlik bilgilerinizi girin
 5.  **Bağlı dizinler** ekranında **İleri**' ye tıklayın.
-6.  **Etki alanı ve OU filtreleme sayfasında** **Yenile**' ye tıklayın.  Artık yeni etki alanları görünüyor ve silinen etki alanları kayboluyor.
+6.  **Etki alanı ve OU filtreleme sayfasında** **Yenile**' ye tıklayın.  Yeni etki alanları görüntülenir ve silinen etki alanları kaybolacaktır.
    ![Bölümler](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>Çalıştırma profillerini güncelleştirme
@@ -299,9 +299,9 @@ Aşağıdaki adımları uygulayın:
 Eşitlemeden sonra tüm değişiklikler verilmek üzere hazırlanır. Azure AD 'de değişiklikleri gerçekten yapmadan önce, tüm bu değişikliklerin doğru olduğunu doğrulamak istiyorsunuz.
 
 1. Bir komut istemi başlatın ve adresine gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. `csexport "Name of Connector" %temp%\export.xml /f:x` komutunu çalıştırın.  
+2. Şu komutu çalıştırın: `csexport "Name of Connector" %temp%\export.xml /f:x`.  
    Bağlayıcının adı, eşitleme hizmetidir. Azure AD için "contoso.com – Azure AD" benzeri bir ada sahiptir.
-3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` komutunu çalıştırın.
+3. Şu komutu çalıştırın: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
 4. Artık% TEMP% adlı, Microsoft Excel 'de incelenebilir export.csv adlı bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 5. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklediğiniz şeydir, bu adımları yeniden çalıştırın (Içeri aktar, eşitlendiğinde ve Doğrula).
 

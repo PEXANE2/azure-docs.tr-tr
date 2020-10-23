@@ -2,22 +2,21 @@
 title: İş & Iş görünümünü kullanın-Azure Data Lake Analytics
 description: Bu makalede Azure Data Lake Analytics işleri için Iş tarayıcısının ve Iş görünümünün nasıl kullanılacağı açıklanır.
 ms.service: data-lake-analytics
-ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 717ad8bfaa9ddfcfa5775654408601ca13d3a636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1e9a9df4c2ec57dfeec8cf5ddd5348228b9cc3e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282621"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218689"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için İş Tarayıcısı’nı ve İş Görünümü’nü kullanma
 Azure Data Lake Analytics hizmeti bir sorgu deposunda gönderilen işleri arşivler. Bu makalede, geçmiş iş bilgilerini bulmak için Visual Studio için Azure Data Lake Araçları ' de Iş tarayıcısını ve Iş görünümünü nasıl kullanacağınızı öğreneceksiniz. 
 
 Varsayılan olarak, Data Lake Analytics hizmeti işleri 30 gün boyunca arşivler. Süre sonu dönemi, özelleştirilmiş süre sonu ilkesi yapılandırılarak Azure portal yapılandırılabilir. Süre dolduktan sonra iş bilgilerine erişemeyeceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bkz. [Visual Studio için Data Lake araçları önkoşulları](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
 ## <a name="open-the-job-browser"></a>Iş tarayıcısını açın

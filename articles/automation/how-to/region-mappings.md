@@ -1,16 +1,16 @@
 ---
 title: Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 description: Bu makalede, bir Otomasyon hesabı ile Log Analytics çalışma alanı arasındaki desteklenen bölge eşlemeleri, Azure Otomasyonu 'nun belirli özellikleriyle ilişkili olarak açıklanmaktadır.
-ms.date: 09/03/2020
+ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440669"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207334"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
@@ -32,6 +32,7 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 |**ABD**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
+|Güneydoğu ABD|Güneydoğu ABD|
 |WestCentralUS|WestCentralUS|
 |**Kanada**||
 |Canadaorta|Canadaorta|
@@ -44,6 +45,7 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 |**Avrupa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
+|Geçiş|Geçiş|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |Usgovarizlon2<sup>2</sup>|USGovArizona|
@@ -86,5 +88,5 @@ Alternatif olarak, çalışma alanınızın içindeki Otomasyon hesabınızdan �
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Güncelleştirme yönetimi genel bakışta](../update-management/update-mgmt-overview.md)güncelleştirme yönetimi hakkında bilgi edinin.
-* [Değişiklik izleme ve envanterde genel bakış](../change-tracking.md)hakkında bilgi edinin değişiklik izleme.
+* [Değişiklik izleme ve envanterde genel bakış](../change-tracking/overview.md)hakkında bilgi edinin değişiklik izleme.
 * [VM'leri çalışma saatleri dışında Başlat/Durdur genel bakışta](../automation-solution-vm-management.md)VM'leri çalışma saatleri dışında Başlat/Durdur hakkında bilgi edinin.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329610"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319008"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide, Akamai 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 * Kullanıcılarınızın Azure AD hesaplarıyla Akamai otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-Azure Active Directory ve Akamai kurumsal uygulama erişimi tümleştirmesi, bulutta veya şirket içinde barındırılan eski uygulamalara sorunsuz erişim sağlar. Tümleşik çözüm, [Azure AD koşullu erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal), [Azure AD kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) ve [Azure AD Identity Governance](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview) uygulama değişiklikleri veya aracı yüklemesi olmadan eski uygulama erişimi için Azure Active Directory tüm modern olanaklarından faydalanmasıdır.
+Azure Active Directory ve Akamai kurumsal uygulama erişimi tümleştirmesi, bulutta veya şirket içinde barındırılan eski uygulamalara sorunsuz erişim sağlar. Tümleşik çözüm, [Azure AD koşullu erişim](../conditional-access/overview.md), [Azure AD kimlik koruması](../identity-protection/overview-identity-protection.md) ve [Azure AD Identity Governance](../governance/identity-governance-overview.md) uygulama değişiklikleri veya aracı yüklemesi olmadan eski uygulama erişimi için Azure Active Directory tüm modern olanaklarından faydalanmasıdır.
 
 Aşağıdaki görüntüde, Akamai EAA 'nın daha geniş karma güvenli erişim senaryosuna uygun olduğu açıklanmaktadır
 
@@ -84,7 +84,7 @@ Akamai EAA uygulaması, Azure AD portalında ayrı ayrı ayarlanır. Yönetici, 
 
 ![Tümleştirme senaryosu 2](./media/header-akamai-tutorial/scenario2.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -277,7 +277,7 @@ Akamai üst bilgi tabanlı kimlik doğrulaması
 
     ![Sertifika ve konum ayarlarını gösteren Akamai EAA konsolunun ekran görüntüsü.](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulama
 
 1. **Kimlik doğrulama** sekmesini seçin.
 
@@ -341,7 +341,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     ![Sertifika ve konum ayarlarını gösteren Akamai EAA konsolunun ekran görüntüsü. İlişkili bağlayıcılar USWST-CON1 olarak ayarlanmıştır.](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulama
 
 **Kaydet ' e tıklayın ve hizmetler 'e gidin**.
 
@@ -403,7 +403,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     e. Bağlayıcının konumunu belirtin ve bağlayıcıyı seçin.
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulama
 
 Kaydet ' **e tıklayın ve hizmetlere gidin**.
 
@@ -589,14 +589,14 @@ Bu bölümde, Akamai içinde B. Simon adlı bir Kullanıcı oluşturacaksınız.
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Akamai kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Akamai için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Akamai kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Akamai için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile Akamai deneyin](https://aad.portal.azure.com/)

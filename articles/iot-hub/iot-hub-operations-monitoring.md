@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 9d9824be536ca657d9213a47898ad19b0c39d8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022029"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139334"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub işlemleri izleme (kullanım dışı)
 
@@ -191,7 +191,7 @@ Bu kategori, cihaz bir dosyayı depoya yüklerken doğrudan oluşan hataları ya
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>İzleme uç noktasına Bağlan
 
-IoT Hub 'ınızdaki izleme uç noktası, Olay Hub 'ı ile uyumlu bir uç noktasıdır. Bu uç noktadan izleme iletilerini okumak için, Event Hubs ile birlikte çalışarak herhangi bir mekanizmayı kullanabilirsiniz. Aşağıdaki örnek, yüksek aktarım hızı dağıtımı için uygun olmayan temel bir okuyucu oluşturur. Event Hubs'dan iletilerin nasıl işleneceği hakkında daha fazla bilgi için [Event Hubs ile Çalışmaya Başlama](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) öğreticisine bakın.
+IoT Hub 'ınızdaki izleme uç noktası, Olay Hub 'ı ile uyumlu bir uç noktasıdır. Bu uç noktadan izleme iletilerini okumak için, Event Hubs ile birlikte çalışarak herhangi bir mekanizmayı kullanabilirsiniz. Aşağıdaki örnek, yüksek aktarım hızı dağıtımı için uygun olmayan temel bir okuyucu oluşturur. Event Hubs'dan iletilerin nasıl işleneceği hakkında daha fazla bilgi için [Event Hubs ile Çalışmaya Başlama](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) öğreticisine bakın.
 
 İzleme uç noktasına bağlanmak için bir bağlantı dizesi ve uç nokta adı gereklidir. Aşağıdaki adımlarda, portalda gerekli değerleri nasıl bulacağınız gösterilmektedir:
 
@@ -271,4 +271,4 @@ IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
 * [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
 
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/quickstart-linux.md)

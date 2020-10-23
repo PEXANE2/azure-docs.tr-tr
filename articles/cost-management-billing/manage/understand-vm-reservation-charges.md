@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ee1d9ff8145051bbbe6b65004f7f358b5fdade
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686454"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132151"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure rezervasyon indirimini sanal makinelere uygulama
 
@@ -57,7 +57,7 @@ Windows VM örneklerini çalıştırırken altyapı maliyetlerini karşılamak i
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Farklı boyutlara indirim uygulanabilir
 
-Ayrılmış VM Örneği satın alırken **Örnek boyutu esnekliği için en iyi duruma getirilmiş**’i seçtiğinizde, indirim kapsamı seçtiğiniz VM boyutuna uygulanır. Ayrıca, aynı serideki örnek boyutu esnekliği grubundaki diğer VM’lerin boyutlarına da uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Ayrılmış VM Örneği satın alırken **Örnek boyutu esnekliği için en iyi duruma getirilmiş**’i seçtiğinizde, indirim kapsamı seçtiğiniz VM boyutuna uygulanır. Ayrıca, aynı serideki örnek boyutu esnekliği grubundaki diğer VM’lerin boyutlarına da uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 
 ## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Premium depolama VM’leri premium olmayan indirimlerden yararlanamaz
 

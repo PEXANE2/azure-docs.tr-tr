@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426131"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364040"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V’den Azure’a çoğaltma ve yük devretmeye ilişkin sorunları giderme
 
@@ -29,7 +29,7 @@ Hyper-V VM 'Leri için korumayı etkinleştirdiğinizde sorunlarla karşılaşı
 4. Hyper-V-VMMS\Admin oturum açma bölümünde görünen sorunları kontrol edin. Bu günlük, **uygulama ve hizmet günlükleri**  >  **Microsoft**  >  **Windows**'da bulunur.
 5. Konuk VM 'de, WMI 'nın etkinleştirildiğini ve erişilebilir olduğunu doğrulayın.
    - Temel WMI testi [hakkında bilgi edinin](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) .
-   - [Sorun giderme](https://aka.ms/WMiTshooting) 'Ya.
+   - [Sorun giderme](/windows/win32/wmisdk/wmi-troubleshooting) 'Ya.
    - WMI betikleri ve hizmetleriyle ilgili sorunları [giderin](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) .
 6. Konuk VM 'de Integration Services 'ın en son sürümünün çalıştığından emin olun.
     - En son sürüme sahip [olup olmadığınızı denetleyin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .

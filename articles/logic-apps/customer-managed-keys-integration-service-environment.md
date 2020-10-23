@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400152"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318458"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
 
@@ -39,7 +39,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
 
 * **Geçici silme** ve **Temizleme** özellikleri etkin olan bir Azure Anahtar Kasası
 
-  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/soft-delete-overview.md) ve [müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](../storage/common/storage-encryption-keys-portal.md). Azure Key Vault yeni başladıysanız, Azure portal kullanarak veya Azure PowerShell komutu, [New-Azkeykasasını](/powershell/module/az.keyvault/new-azkeyvault)kullanarak [bir Anahtar Kasası oluşturmayı](../key-vault/secrets/quick-create-portal.md#create-a-vault) öğrenin.
+  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/soft-delete-overview.md) ve [müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](../storage/common/customer-managed-keys-configure-key-vault.md). Azure Key Vault yeni başladıysanız, Azure portal kullanarak veya Azure PowerShell komutu, [New-Azkeykasasını](/powershell/module/az.keyvault/new-azkeyvault)kullanarak [bir Anahtar Kasası oluşturmayı](../key-vault/secrets/quick-create-portal.md#create-a-vault) öğrenin.
 
 * Anahtar Kasanızda, bu özellik değerleriyle oluşturulmuş bir anahtar:
 
@@ -52,7 +52,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
 
   ![Müşteri tarafından yönetilen şifreleme anahtarınızı oluşturma](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  Daha fazla bilgi için bkz. Azure Key Vault veya Azure PowerShell komutuyla [müşteri tarafından yönetilen anahtarları yapılandırma](../storage/common/storage-encryption-keys-portal.md) , [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
+  Daha fazla bilgi için bkz. Azure Key Vault veya Azure PowerShell komutuyla [müşteri tarafından yönetilen anahtarları yapılandırma](../storage/common/customer-managed-keys-configure-key-vault.md) , [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
 
 * HTTPS PUT isteğiyle Logic Apps REST API çağırarak ıSE oluşturmak için kullanabileceğiniz bir araç. Örneğin [Postman](https://www.getpostman.com/downloads/)'ı kullanabilir veya bu görevi gerçekleştiren bir mantıksal uygulama oluşturabilirsiniz.
 
@@ -225,7 +225,7 @@ Bu görev için Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module
 
    1. **Erişim ilkeleri** bölmesi ile Işiniz bittiğinde **Kaydet**' i seçin.
 
-Daha fazla bilgi için bkz. [kimlik doğrulaması Key Vault](/azure/key-vault/general/authentication) ve [Key Vault erişim ilkesi atama](/azure/key-vault/general/assign-access-policy-portal).
+Daha fazla bilgi için bkz. [kimlik doğrulaması Key Vault](../key-vault/general/authentication.md) ve [Key Vault erişim ilkesi atama](../key-vault/general/assign-access-policy-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

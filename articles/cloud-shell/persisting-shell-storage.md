@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470145"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152268"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Dosyaları Azure Cloud Shell Sürdür
 Cloud Shell, dosyaları oturumlarda kalıcı hale getirmek için Azure dosya depolama kullanır. İlk başlangıçta Cloud Shell, dosyaları oturumlardaki kalıcı hale getirmek için yeni veya var olan bir dosya paylaşımından ilişkilendiremenizi ister.
@@ -55,7 +55,7 @@ Depolama kurulumu istemi göründüğünde, ek seçenekleri görüntülemek içi
 ![Kaynak grubu ayarı](media/persisting-shell-storage/advanced-storage.png)
 
 ## <a name="securing-storage-access"></a>Depolama erişiminin güvenliğini sağlama
-Güvenlik için, her kullanıcının kendi depolama hesabını sağlaması gerekir.  Rol tabanlı erişim denetimi (RBAC) için, kullanıcıların depolama hesabı düzeyinde katkıda bulunan erişimi veya üzeri olması gerekir.
+Güvenlik için, her kullanıcının kendi depolama hesabını sağlaması gerekir.  Azure rol tabanlı erişim denetimi (Azure RBAC) için, kullanıcıların depolama hesabı düzeyinde katkıda bulunan erişimi veya üzeri olması gerekir.
 
 Cloud Shell, bir depolama hesabında, belirtilen bir abonelikte Azure dosya paylaşımından yararlanır. Devralınan izinler nedeniyle, abonelikte yeterli erişim haklarına sahip olan kullanıcılar, abonelikte bulunan tüm depolama hesaplarına ve dosya paylaşımlarına erişebilecektir.
 

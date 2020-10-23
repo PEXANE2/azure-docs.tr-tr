@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82983083"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131845"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme
 
@@ -174,7 +174,7 @@ Azure PowerShell kullanmak istiyorsanız, bkz. [PowerShell aracılığıyla Web 
 
 Bu örnekte, *1 = 1* dizesinin girildiği alanın **Metin1**olarak adlandırıldığını görebilirsiniz.
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="Progress Telerik Fiddler Web hata ayıklayıcının ekran görüntüsü. Ham sekmesinde 1 = 1, Metin1 adından sonra görünür." border="false":::
 
 Bu, dışarıda bırakabilmeniz için bir alandır. Dışlama listeleri hakkında daha fazla bilgi edinmek için bkz. [Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri](application-gateway-waf-configuration.md#waf-exclusion-lists). Aşağıdaki dışlamayı yapılandırarak bu durumda değerlendirmeyi dışarıda bırakabilirsiniz:
 
@@ -299,7 +299,7 @@ Kullanıcı, Application Gateway gezinmek için sayısal bir IP adresi kullandı
 
 Fiddler, istek üst bilgisi adlarını bulmak için bir kez yararlı bir araçtır. Aşağıdaki ekran görüntüsünde, *Içerik türü*, *Kullanıcı-aracı*vb. dahIl olmak üzere bu GET isteğinin üst bilgilerini görebilirsiniz.
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="Progress Telerik Fiddler Web hata ayıklayıcının ekran görüntüsü. RAW sekmesi bağlantı, içerik türü ve Kullanıcı Aracısı gibi istek üst bilgisi ayrıntılarını listeler." border="false":::
 
 İstek ve yanıt üst bilgilerini görüntülemenin bir başka yolu da Chrome Geliştirici araçlarının içine bakmedir. F12 tuşuna basarak veya sağ tıklama > **Inspect**  ->  **Geliştirici Araçları**İnceleme ' ye basabilir ve **ağ** sekmesini seçebilirsiniz. bir Web sayfası yükleyin ve incelemek istediğiniz isteğe tıklayın.
 

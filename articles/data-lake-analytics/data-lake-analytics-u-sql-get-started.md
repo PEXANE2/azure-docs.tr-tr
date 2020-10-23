@@ -1,18 +1,16 @@
 ---
 title: Azure Data Lake Analytics 'de U-SQL dili ile çalışmaya başlama
 description: Azure Data Lake Analytics 'deki U-SQL dilinin temellerini öğrenin. Dosyalardan daha fazla veri eklemek, satır kümesini dönüştürmek ve verileri toplamak için değişkenleri kullanarak ilk sorgunuzu yazın.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87128854"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219930"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics 'de U-SQL ile çalışmaya başlama
 
@@ -21,7 +19,7 @@ U-SQL, herhangi bir ölçekte verileri işlemenizi sağlamak Için bildirim teme
 ## <a name="learning-resources"></a>Öğrenme kaynakları
 
 * [U-SQL öğreticisi](https://aka.ms/usqltutorial) , u-SQL dilinin büyük bir adım adım kılavuz sağlar. Bu belge, U-SQL öğrenmekle mücadele eden tüm geliştiriciler için okunmaya önerilir.
-* **U-SQL dili sözdizimi**hakkında ayrıntılı bilgi için, bkz. [u-SQL dili başvurusu](https://docs.microsoft.com/u-sql/).
+* **U-SQL dili sözdizimi**hakkında ayrıntılı bilgi için, bkz. [u-SQL dili başvurusu](/u-sql/).
 * **U-SQL tasarım FI**'sini anlamak Için, Visual Studio blog gönderisine ( [u-SQL tanıtımı), büyük veri işlemeyi kolay hale getiren bir dili](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)inceleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar

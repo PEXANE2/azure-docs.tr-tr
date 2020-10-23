@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441060"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109264"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 1. kullanma
 
@@ -48,9 +48,9 @@ Bu, uygulamalar, cihazlar, algılayıcılar vb. gibi çeşitli kaynaklarla oluş
 
 Kullanabileceğiniz araçlar aşağıda verilmiştir:
 
-* [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) -Event Hubs alınan olaylar, Azure Data Lake Storage 1. çıktısı kullanılarak Azure Data Lake Storage 1. yazılabilir.
+* [Azure Stream Analytics](../stream-analytics/stream-analytics-define-outputs.md) -Event Hubs alınan olaylar, Azure Data Lake Storage 1. çıktısı kullanılarak Azure Data Lake Storage 1. yazılabilir.
 * [Azure HDInsight fırtınası](../hdinsight/storm/apache-storm-write-data-lake-store.md) -fırtınası kümesinden Data Lake Storage 1. doğrudan veri yazabilirsiniz.
-* [Eventprocessorhost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) : Event Hubs olayları alabilir ve [Data Lake Storage 1. .net SDK](data-lake-store-get-started-net-sdk.md)kullanarak Data Lake Storage 1. yazabilirsiniz.
+* [Eventprocessorhost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) : Event Hubs olayları alabilir ve [Data Lake Storage 1. .net SDK](data-lake-store-get-started-net-sdk.md)kullanarak Data Lake Storage 1. yazabilirsiniz.
 
 ### <a name="relational-data"></a>İlişkisel veriler
 İlişkisel veritabanlarındaki verileri de kaynak olarak kullanabilirsiniz. İlişkisel veritabanları, bir süre boyunca büyük miktarlarda veri toplar ve bu da büyük bir veri işlem hattı üzerinden işlenirse önemli öngörülere sahip olabilir. Bu tür verileri Data Lake Storage 1. taşımak için aşağıdaki araçları kullanabilirsiniz.
@@ -131,4 +131,4 @@ Data Lake Storage 1. depolanan verilerin görsel sunumlarını oluşturmak için
 ![Data Lake Storage 1. verileri görselleştirme](./media/data-lake-store-data-scenarios/visualize-data.png "Data Lake Storage 1. verileri görselleştirme")
 
 * [Data Lake Storage 1. verileri Azure SYNAPSE Analytics 'e (eski ADıYLA SQL veri ambarı) taşımak için Azure Data Factory](../data-factory/copy-activity-overview.md) kullanarak başlayabilirsiniz
-* Bundan sonra, verilerin görsel temsilini oluşturmak için [Power BI Azure SYNAPSE Analytics ile tümleştirebilirsiniz](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) .
+* Bundan sonra, verilerin görsel temsilini oluşturmak için [Power BI Azure SYNAPSE Analytics ile tümleştirebilirsiniz](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) .

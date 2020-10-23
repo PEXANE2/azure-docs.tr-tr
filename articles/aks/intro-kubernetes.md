@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: f4c1e96a0603caa8e026f1968299fa24b8755a42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88003214"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167194"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS)
 
@@ -63,6 +63,12 @@ Yaşam döngüsü sürümleri hakkında daha fazla bilgi edinmek için, bkz. [AK
 AKS, GPU etkin düğüm havuzlarının oluşturulmasını destekler. Azure şu an için tekli veya çoklu GPU etkin VM'ler sunmaktadır. GPU etkin VM'ler işlemci, grafik ve görselleştirme talebi yoğun olan iş yükleri için tasarlanmıştır.
 
 Daha fazla bilgi için bkz. [AKS üzerinde GPU kullanma][aks-gpu].
+
+### <a name="confidential-computing-nodes-public-preview"></a>Gizli bilgi işlem düğümleri (Genel Önizleme)
+
+AKS, Intel SGX tabanlı gizli bilgi işlem düğüm havuzlarının (DCSv2 VM 'Ler) oluşturulmasını destekler. Gizli bilgi işlem düğümleri, kapsayıcıların bir donanım tabanlı güvenilir ve yalıtılmış yürütme ortamında (şifreleme) çalışmasına izin verir. Kanıtlama aracılığıyla kod bütünlüğü ile birleştirilmiş kapsayıcılar arasındaki yalıtım, derinlemesine savunma kapsayıcısı güvenlik stratejinize yardımcı olabilir. Gizli bilgi işlem düğümleri hem gizli kapsayıcıları (mevcut Docker uygulamaları) hem de şifreleme kullanan kapsayıcıları destekler.
+
+Daha fazla bilgi için bkz. [AKS üzerinde gizli bilgi işlem düğümleri][conf-com-node]
 
 ### <a name="storage-volume-support"></a>Depolama birimi desteği
 
@@ -143,3 +149,4 @@ Azure CLI hızlı başlangıçları ile AKS dağıtma ve yönetme hakkında daha
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
+[conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

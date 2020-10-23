@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 502717621fb9b228a818b67a09a699a2ac1713f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b451e1645061d2de1758bf02ff0f59c07a43158e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550228"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457529"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Öğretici: otomatik görev uç noktası yedeklemeyle tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Otomatik görev uç noktası yedeklemesini Azure AD ile tümleştirmek aşağıd
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik görev uç noktası yedeklemesine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini otomatik görev uç noktası yedeklemeyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -179,18 +179,18 @@ Bu bölümde, otomatik görev uç noktası yedeklemesine erişim vererek Britta 
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Otomatik görev uç noktası yedekleme testi Kullanıcı Oluştur
 
-Bu bölümde, otomatik görev uç noktası yedeklemesi 'nde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Otomatik görev uç nokta yedekleme platformunda kullanıcıları eklemek için [otomatik görev uç nokta yedekleme destek ekibi](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, otomatik görev uç noktası yedeklemesi 'nde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Otomatik görev uç nokta yedekleme platformunda kullanıcıları eklemek için [otomatik görev uç nokta yedekleme destek ekibi](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde otomatik görev uç nokta yedekleme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız otomatik görev uç noktası yedeğine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde otomatik görev uç nokta yedekleme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız otomatik görev uç noktası yedeğine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

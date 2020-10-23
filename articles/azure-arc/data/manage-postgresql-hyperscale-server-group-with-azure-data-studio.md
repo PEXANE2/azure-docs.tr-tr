@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942143"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320228"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu yönetmek için Azure Data Studio kullanın
 
@@ -28,7 +28,7 @@ Bu makalede nasıl yapılacağı açıklanır:
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Azdata, Azure Data Studio ve Azure CLı 'yı yükler](install-client-tools.md)
-- **Azure Data CLI** ve **Azure Arc** ve **PostgreSQL** uzantılarında yükleme Azure Data Studio
+- **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** Ve **Azure Arc** ve **PostgreSQL** uzantılarında Azure Data Studio yükleme
 - [Azure Arc veri denetleyicisi](create-data-controller-using-azdata.md) oluşturma
 - Azure Data Studio Başlat
 
@@ -61,9 +61,8 @@ PostgreSQL pano görünümü:
 
 Bu, bölmenin sol tarafında listelenen çeşitli panoları sunar:
 
-- **Genel bakış:** Örneğiniz hakkında ad, Azure abonelik KIMLIĞI, yapılandırma, veritabanı altyapısının sürümü, Grafana ve kibana için uç noktalar gibi özet bilgiler görüntüler...
+- **Genel bakış:** Örneğiniz hakkında ad, PostgreSQL Yönetici Kullanıcı adı, Azure abonelik KIMLIĞI, yapılandırma, veritabanı altyapısının sürümü, Grafana ve kibana için uç noktalar gibi özet bilgiler görüntüler...
 - **Bağlantı dizeleri:** Psql, Node.js, PHP, Ruby gibi PostgreSQL örneğinize bağlanmanız gerekebilecek çeşitli bağlantı dizelerini görüntüler.
-- **Özellikler:** Gölge kaynak için PostgreSQL Yönetici Kullanıcı adı, ilişkili kaynaklar grubu gibi çeşitli özellikleri görüntüler...
 - **Sorunları tanılama ve çözme:** , Sorun giderme not defterlerini genişlettiğimiz için örneğinizin sorunlarını gidermenize yardımcı olacak çeşitli kaynakları bulacağınız giriş sayfasıdır
 - **Yeni destek isteği:** , Destek hizmetlerinden genel önizleme duyurusunu Başlatan yardım isteyebilmeniz için giriş sayfasıdır.
 

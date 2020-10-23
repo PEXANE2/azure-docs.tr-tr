@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920798"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122832"
 ---
 ::: zone target = "docs"
 
@@ -124,7 +124,7 @@ Bu işlemi tamamlamak için gereken süre verilerinizin boyutuna ve verilerin ko
  
 1. Her iki 40 GB/sn veri arabirimini birbirine paralel olarak kullanarak her iki cihaz düğümüne verileri kopyalayın.
 
-    - Bir Windows ana bilgisayar kullanıyorsanız, [Robocopy](https://technet.microsoft.com/library/ee851678.aspx) gibi SMB uyumlu bir dosya kopyalama aracı kullanın.
+    - Bir Windows ana bilgisayar kullanıyorsanız, [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)) gibi SMB uyumlu bir dosya kopyalama aracı kullanın.
     - NFS konağı için, `cp` veya `rsync` komutunu kullanarak verileri kopyalayın.
 2. Cihaz üzerindeki paylaşımlara bağlanmak için şu yolu kullanın: `\\<IP address of your device>\ShareName`. Paylaşım erişimi kimlik bilgilerini almak için Data Box Heavy'nin yerel web kullanıcı arabiriminde **Bağlan ve kopyala** sayfasına gidin.
 3. Paylaşım ve klasör adlarıyla verilerin, [Azure Depolama ve Data Box Heavy hizmet limitleri](data-box-heavy-limits.md) altında açıklanan yönergelere uyduğundan emin olun.

@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 09/29/2020
-ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450130"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330384"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -120,9 +120,47 @@ Execute Python betik modülü, başlangıç noktası olarak kullanabileceğiniz 
 
     ![Python giriş eşlemesini Yürüt](media/module/python-module.png)
 
-4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi**'ne ekleyin. **Betik** paketine giriş, dosya türü veri kümesi olarak çalışma alanınıza yüklenmiş sıkıştırılmış bir dosya olmalıdır. **Veri kümesi varlık sayfasında** veri kümesini karşıya yükleyebilirsiniz. Veri kümesi modülünü, tasarımcı yazma sayfasındaki sol modül ağacındaki **veri kümeleri** listesinden sürükleyebilirsiniz. 
+4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi** bağlantı noktasına bağlayın. Ya da betiğinizin 16 KB 'den büyük olması durumunda, CommandLine gibi hataların *16597 karakter sınırını aşması*Için **betik paketi** bağlantı noktasını kullanın. 
 
-    Karşıya yüklenen sıkıştırılmış arşivde bulunan herhangi bir dosya, işlem hattı yürütmesi sırasında kullanılabilir. Arşiv bir dizin yapısı içeriyorsa, yapı korunur, ancak **src** adlı bir dizini yola eklemek zorundasınız.
+    
+    1. Betiği ve diğer özel kaynakları bir ZIP dosyasına paketleyin.
+    1. Zip dosyasını bir **dosya veri kümesi** olarak Studio 'ya yükleyin. 
+    1. Veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül bölmesinde bulunan *veri kümeleri* listesinden sürükleyin. 
+    1. Veri kümesi modülünü, **R betiği yürütme** modülünün **betik paketi** bağlantı noktasına bağlayın.
+    
+    Karşıya yüklenen sıkıştırılmış arşivde bulunan herhangi bir dosya, işlem hattı yürütmesi sırasında kullanılabilir. Arşiv bir dizin yapısı içeriyorsa, yapı korunur.
+    
+    Aşağıda, bir Python betik dosyası ve bir txt dosyası içeren bir betik paketi örneği verilmiştir:
+      
+    > [!div class="mx-imgBorder"]
+    > ![Betik paketi örneği](media/module/python-script-bundle.png)  
+
+    Aşağıdakilerin içeriği aşağıdadır `my_script.py` :
+
+    ```python
+    def my_func(dataframe1):
+    return dataframe1
+    ```
+    Aşağıda, komut dosyası grubundaki dosyaların kullanımını gösteren örnek kod verilmiştir:    
+
+    ```python
+    import pandas as pd
+    from my_script import my_func
+ 
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+ 
+        # Execution logic goes here
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+ 
+        # Test the custom defined python function
+        dataframe1 = my_func(dataframe1)
+ 
+        # Test to read custom uploaded files by relative path
+        with open('./Script Bundle/my_sample.txt', 'r') as text_file:
+            sample = text_file.read()
+    
+        return dataframe1, pd.DataFrame(columns=["Sample"], data=[[sample]])
+    ```
 
 5. **Python betiği** metin kutusuna geçerli Python betiği yazın veya yapıştırın.
 

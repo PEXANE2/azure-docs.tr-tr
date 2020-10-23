@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323734"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207419"
 ---
 # <a name="system-requirements"></a>Sistem gereksinimleri
 
 > [!IMPORTANT]
 > **Azure uzaktan işleme** Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu bölümde, *Azure uzaktan işleme* (ARR) ile çalışmak için en düşük sistem gereksinimleri listelenir.
 
@@ -80,7 +80,7 @@ Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) aşağıd
 Aşağıdaki yazılım yüklü olmalıdır:
 
 * **Visual Studio 2019** ' un en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Karma gerçeklik Için Visual Studio Araçları](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
+* [Karma gerçeklik Için Visual Studio Araçları](/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
   * **C++ ile masaüstü geliştirme**
   * **Evrensel Windows Platformu (UWP) geliştirme**
 * **Windows SDK 10.0.18362.0** [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)

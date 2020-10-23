@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: a42157223c0c9a0b326c400388ea2b564e42f7f2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088950"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147555"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Adanmış SQL havuzları ile verileri analiz etme
 
@@ -24,6 +24,7 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>NYC TAXI verilerini SQLDB1 'e yükleme
 
 1. SYNAPSE Studio 'da, **geliştirme** merkezine gidin ve yeni SQL betiği oluşturun
+1. Betiğin ' Bağlan ' bölümünde ' SQLDB1 ' havuzunu (Bu öğreticinin [1. adımında](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) oluşturulan havuz) seçin.
 1. Aşağıdaki kodu girin:
     ```
     CREATE TABLE [dbo].[Trip]

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75429148"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151653"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT Hub 'ı başka bir bölgeye kopyalama
 
@@ -385,7 +385,7 @@ Portal şimdi şablonunuzu doğrular ve kopyalanmış hub 'ınızı dağıtır. 
 
 Kopya oluşturup çalıştırdığınıza göre, tüm cihazları özgün hub 'ından kopyaya kopyalamanız gerekir. 
 
-Bunu yapmanın birden çok yolu vardır. Cihazları sağlamak için başlangıçta [cihaz sağlama hizmeti 'ni (DPS)](/azure/iot-dps/about-iot-dps)kullandınız veya hiç yapmadıysanız. Yapmadıysanız, bu zor değildir. Yapmadıysanız, bu çok karmaşık olabilir. 
+Bunu yapmanın birden çok yolu vardır. Cihazları sağlamak için başlangıçta [cihaz sağlama hizmeti 'ni (DPS)](../iot-dps/about-iot-dps.md)kullandınız veya hiç yapmadıysanız. Yapmadıysanız, bu zor değildir. Yapmadıysanız, bu çok karmaşık olabilir. 
 
 Cihazlarınızı sağlamak için DPS kullanmıyorsanız, sonraki bölümü atlayabilir ve [içeri/dışarı aktarma kullanarak cihazları yeni hub 'a taşıyabilirsiniz](#using-import-export-to-move-the-devices-to-the-new-hub).
 
@@ -601,4 +601,4 @@ Hub için IoT Hub ve geliştirme hakkında daha fazla bilgi için lütfen aşağ
 
 * [IoT Hub cihaz yönetimine genel bakış](iot-hub-device-management-overview.md)
 
-* Örnek uygulamayı dağıtmak istiyorsanız lütfen bkz. [.NET Core uygulama dağıtımı](https://docs.microsoft.com/dotnet/core/deploying/index).
+* Örnek uygulamayı dağıtmak istiyorsanız lütfen bkz. [.NET Core uygulama dağıtımı](/dotnet/core/deploying/index).

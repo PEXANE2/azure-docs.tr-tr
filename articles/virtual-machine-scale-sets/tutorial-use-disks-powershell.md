@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: bcd06ce879282ab9897d7e22006bac19a5c22b8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565097"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367983"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 
@@ -88,7 +88,7 @@ Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüks
 ## <a name="create-and-attach-disks"></a>Disk oluşturma ve ekleme
 Bir ölçek kümesi oluştururken veya mevcut bir ölçek kümesi ile diskler oluşturabilir ve ekleyebilirsiniz.
 
-API sürümü itibariyle `2019-07-01` , bir sanal makine ölçek kümesindeki işletim sistemi diskinin boyutunu [Storageprofile. OSDisk. diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) özelliği ile ayarlayabilirsiniz. Sağlamaktan sonra, tüm alanı kullanmak için diski genişletmeniz veya yeniden bölümlemeniz gerekebilir. [Diski burada genişletme](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os)hakkında daha fazla bilgi edinin.
+API sürümü itibariyle `2019-07-01` , bir sanal makine ölçek kümesindeki işletim sistemi diskinin boyutunu [Storageprofile. OSDisk. diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) özelliği ile ayarlayabilirsiniz. Sağlamaktan sonra, tüm alanı kullanmak için diski genişletmeniz veya yeniden bölümlemeniz gerekebilir. [Diski burada genişletme](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os)hakkında daha fazla bilgi edinin.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Ölçek kümesi oluşturulurken diskler ekleme
 [New-AzVmss](/powershell/module/az.compute/new-azvmss)ile bir sanal makine ölçek kümesi oluşturun. İstendiğinde, sanal makine örnekleri için bir kullanıcı adı ve parola sağlayın. Her bir sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Yük dengeleyici hem 80 numaralı TCP bağlantı noktasında trafiği dağıtmak hem de 3389 numaralı TCP bağlantı noktasında uzak masaüstü trafiğine ve 5985 numaralı TCP bağlantı noktasında PowerShell uzaktan iletişimine olanak tanımak için kurallar içerir.

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190250"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332527"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Performans için Azure Data Lake Storage 1. ayarlama
 
@@ -25,7 +25,7 @@ Data Lake Storage 1., tüm analiz senaryosu için gerekli aktarım hızını sa�
 
 Kaynak sistemden Data Lake Storage 1. verileri alırken, kaynak donanımın, kaynak ağ donanımının ve Data Lake Storage 1. ağ bağlantısının performans sorunu olduğunu göz önünde bulundurmanız önemlidir.
 
-![Data Lake Storage 1. performans](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
+![Kaynak donanımın, kaynak ağ donanımının ve Data Lake Storage 1. ağ bağlantısının performans sorunu olduğunu gösteren diyagram.](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
 Veri hareketinin bu faktörlerden etkilenmemesini sağlamak önemlidir.
 
@@ -39,15 +39,15 @@ Kaynak verileriniz ve Data Lake Storage 1. arasındaki ağ bağlantısı bazen p
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>En yüksek paralelleştirme için veri alma araçlarını yapılandırın
 
-Kaynak donanım ve ağ bağlantısı performans sorunlarını giderdikten sonra, Alım araçlarınızı yapılandırmaya hazırsınız demektir. Aşağıdaki tabloda, çeşitli popüler alım araçları için anahtar ayarları özetlenmektedir ve bunlar için ayrıntılı performans ayarlama makaleleri sağlanmaktadır. Senaryolarınız için kullanılacak araç hakkında daha fazla bilgi edinmek için bu [makaleyi](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios)ziyaret edin.
+Kaynak donanım ve ağ bağlantısı performans sorunlarını giderdikten sonra, Alım araçlarınızı yapılandırmaya hazırsınız demektir. Aşağıdaki tabloda, çeşitli popüler alım araçları için anahtar ayarları özetlenmektedir ve bunlar için ayrıntılı performans ayarlama makaleleri sağlanmaktadır. Senaryolarınız için kullanılacak araç hakkında daha fazla bilgi edinmek için bu [makaleyi](./data-lake-store-data-scenarios.md)ziyaret edin.
 
 | Araç          | Ayarlar | Daha fazla ayrıntı                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -a (Eşleyici) | [Bağlantısının](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| Paralellkopyalar | [Bağlantısının](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantısının](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Bağlantı](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantı](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -a (Eşleyici) | [Bağlantı](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| Paralellkopyalar | [Bağlantı](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantı](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 
@@ -100,7 +100,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Kümeyi daha fazla düğüm ve/veya daha büyük boyutlu VM 'Ler ile çalıştırın.** Daha büyük bir küme, aşağıdaki resimde gösterildiği gibi daha fazla YARN kapsayıcısı çalıştırmanızı sağlar.
 
-![Data Lake Storage 1. performans](./media/data-lake-store-performance-tuning-guidance/VM.png)
+![Daha fazla YARN kapsayıcısı kullanımını gösteren diyagram.](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
 **Daha fazla ağ bant genişliğine sahip VM 'Leri kullanın.** Data Lake Storage 1. aktarım hızına kıyasla daha az ağ bant genişliği varsa, ağ bant genişliği miktarı bir performans sorunu olabilir. Farklı VM 'Lerde farklı ağ bant genişliği boyutları olacaktır. Olası en büyük ağ bant genişliğine sahip bir VM türü seçin.
 
@@ -108,7 +108,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Daha küçük YARN kapsayıcıları kullanın.** Aynı miktarda kaynakla daha fazla kapsayıcı oluşturmak için her bir YARN kapsayıcısının boyutunu küçültün.
 
-![Data Lake Storage 1. performans](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+![Daha küçük YARN kapsayıcıları kullanımını gösteren diyagram.](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
 İş yükünüze bağlı olarak, gereken en az YARN kapsayıcı boyutu her zaman olacaktır. Çok küçük bir kapsayıcı seçerseniz, işleriniz bellek dışı sorunlara çalışacaktır. Genellikle YARN kapsayıcıları 1 GB 'tan küçük olmamalıdır. 3 GB YARN kapsayıcıları görmek yaygındır. Bazı iş yükleri için daha büyük YARN kapsayıcıları gerekebilir.
 
@@ -118,7 +118,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Tüm kullanılabilir kapsayıcıları kullanın.** Tüm kaynakların kullanılabilmesi için kullanılabilir kapsayıcı sayısına eşit veya daha büyük olacak görev sayısını ayarlayın.
 
-![Data Lake Storage 1. performans](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+![Kullanılabilir tüm kapsayıcıların kullanımını gösteren diyagram.](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
 **Başarısız görevler maliyetlidir.** Her görevin işlemek için büyük miktarda veri varsa, bir görevin başarısızlığı pahalı bir yeniden denemeye neden olur. Bu nedenle, her biri az miktarda veri işleyen daha fazla görev oluşturmak daha iyidir.
 

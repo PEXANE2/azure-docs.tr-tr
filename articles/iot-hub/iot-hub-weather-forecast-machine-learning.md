@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777165"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145780"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) IoT Hub 'ınızdaki algılayıcı verilerini kullanarak hava durumu tahmini
 
@@ -46,7 +46,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
   - Aboneliğiniz kapsamındaki bir Azure IoT Hub 'ı.
   - Azure IoT Hub 'ınıza ileti gönderen bir istemci uygulaması.
 - [Azure Machine Learning Studio (klasik)](https://studio.azureml.net/) hesap.
-- Bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts)olan **genel amaçlı v2** hesabı tercih edilir, ancak Azure Blob depolamayı destekleyen tüm Azure depolama hesapları da çalışacaktır.
+- Bir [Azure depolama hesabı](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts)olan **genel amaçlı v2** hesabı tercih edilir, ancak Azure Blob depolamayı destekleyen tüm Azure depolama hesapları da çalışacaktır.
 
 > [!Note]
 > Bu makale Azure Stream Analytics ve diğer ücretli hizmetleri kullanır. Verilerin Azure bölgeleri arasında aktarılması gerektiğinde Azure Stream Analytics ek ücretler tahakkuk etmelidir. Bu nedenle, kaynak grubunuzun, IoT Hub ve Azure depolama hesabınızın yanı sıra bu öğreticide daha sonra eklenen Machine Learning Studio (klasik) çalışma alanı ve Azure Stream Analytics Işinin aynı Azure bölgesinde yer aldığından emin olmak iyi bir uygulamadır. [Bölgeye göre Azure ürün kullanılabilirliği sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)Azure Machine Learning Studio (klasik) ve diğer Azure hizmetleri için bölgesel destek ' i kontrol edebilirsiniz.

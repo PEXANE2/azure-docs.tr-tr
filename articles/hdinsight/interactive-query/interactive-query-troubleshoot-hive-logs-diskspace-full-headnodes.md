@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
-ms.date: 03/05/2020
-ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/05/2020
+ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78943963"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220899"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Senaryo: Apache Hive Günlükler Azure HDInsight 'taki baş düğümlerdeki disk alanını dolduriyor
 
@@ -24,6 +24,7 @@ Apache Hive/LLAP kümesinde, istenmeyen Günlükler baş düğümlerdeki tüm di
 
 1. Baş düğümde hiç boşluk kalmadı, SSH erişimi başarısız olur.
 2. Ambarı *http hatası veriyor: 503 hizmeti kullanılamıyor*.
+3. HiveServer2 etkileşimli yeniden başlatılamadı.
 
 `ambari-agent`Sorun oluştuğunda günlükler aşağıdaki gibi görünür.
 ```
@@ -35,7 +36,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Nedeni
 
-Gelişmiş Hive-Log4J yapılandırmalarında, *Log4J. appender. RFA. Maxbackupındex* parametresi atlanır. Günlük dosyalarının sonsuz şekilde oluşturulmasına neden olur.
+Gelişmiş Hive-Log4J yapılandırmalarında, geçerli varsayılan silme zamanlaması, son değiştirilme tarihine bağlı olarak 30 günden eski dosyalar için ayarlanır.
 
 ## <a name="resolution"></a>Çözüm
 
@@ -43,30 +44,28 @@ Gelişmiş Hive-Log4J yapılandırmalarında, *Log4J. appender. RFA. Maxbackupı
 
 2. `Advanced hive-log4j`Gelişmiş ayarlar içindeki bölüme gidin.
 
-3. `log4j.appender.RFA`Parametreyi Rollingfileappınfıas olarak ayarlayın. 
+3. `appender.RFA.strategy.action.condition.age`Parametreyi tercih ettiğiniz bir yaşa ayarlayın. 14 gün için örnek: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. `log4j.appender.RFA.MaxFileSize`Ve `log4j.appender.RFA.MaxBackupIndex` aşağıdaki gibi ayarlayın.
+4. İlgili ayarları görmüyorsanız, lütfen aşağıdaki ayarları ekleyin.
+    ```
+    # automatically delete hive log
+    appender.RFA.strategy.action.type = Delete
+    appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
+    appender.RFA.strategy.action.condition.type = IfLastModified
+    appender.RFA.strategy.action.condition.age = 30D
+    appender.RFA.strategy.action.PathConditions.type = IfFileName
+    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    ```
 
-```
-log4jhive.log.maxfilesize=1024MB
-log4jhive.log.maxbackupindex=10
-
-log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-log4j.appender.RFA.File=${hive.log.dir}/${hive.log.file}
-log4j.appender.RFA.MaxFileSize=${log4jhive.log.maxfilesize}
-log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
-log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
-```
 5. `hive.root.logger` `INFO,RFA` Aşağıdaki şekilde ayarlayın. Varsayılan ayar, günlükleri çok büyük hale getiren hata AYıKLA.
 
-```
-# Define some default values that can be overridden by system properties
-hive.log.threshold=ALL
-hive.root.logger=INFO,RFA
-hive.log.dir=${java.io.tmpdir}/${user.name}
-hive.log.file=hive.log
-```
+    ```
+    # Define some default values that can be overridden by system properties
+    hive.log.threshold=ALL
+    hive.root.logger=INFO,RFA
+    hive.log.dir=${java.io.tmpdir}/${user.name}
+    hive.log.file=hive.log
+    ```
 
 6. Yapılandırmaları kaydedin ve gerekli bileşenleri yeniden başlatın.
 

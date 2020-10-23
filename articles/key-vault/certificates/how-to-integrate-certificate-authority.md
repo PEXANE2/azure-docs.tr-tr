@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588934"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327425"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme
 
@@ -27,7 +27,7 @@ Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertif
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gerekir.
 * Bir Anahtar Kasası. Mevcut bir anahtar kasasını kullanabilir veya şu hızlı başlangıçlardan birindeki adımları izleyerek yeni bir tane oluşturabilirsiniz:
@@ -52,9 +52,9 @@ DigiCert CertCentral hesabından bilgi topladıktan sonra artık anahtar kasası
 
 1.  DigiCert sertifika yetkilisi eklemek için, DigiCert eklemek istediğiniz anahtar kasasına gidin. 
 2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
-3.  **Sertifika yetkilileri** sekmesini seçin. ![ Sertifika Özellikleri](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
+3.  **Sertifika yetkilileri** sekmesini seçin. ![ sertifika yetkililerini seçin](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
 4.  **Ekle** seçeneğini belirleyin.
- ![Sertifika Özellikleri](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
+ ![Sertifika Yetkilisi Ekle](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  **Sertifika yetkilisi oluştur** ekranında aşağıdaki değerleri seçin:
     -   **Ad**: tanımlayıcı veren bir ad ekleyin. Örnek Digiccertca
     -   **Sağlayıcı**: menüden DigiCert öğesini seçin.
@@ -101,24 +101,22 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 - **Hesap kimliği** değişkenini tanımla
 - **Kuruluş kimliği** değişkenini tanımla
 - **API anahtar** değişkenini tanımla
-- **Verenin ad** değişkenini tanımlayın
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
-$issuerName = "DigiCertCA"
 ```
 
-4. **Veren**ayarla. Bu işlem, anahtar kasasında bir sertifika yetkilisi olarak DigiCert ekler.
+4. **Veren**ayarla. Bu işlem, anahtar kasasında bir sertifika yetkilisi olarak DigiCert ekler. Parametreler hakkında daha fazla bilgi edinmek için [buradan okuyun](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
 ```azurepowershell-interactive
-Set-AzureKeyVaultCertificateIssuer -VaultName $vaultName -IssuerName $issuerName -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org
+Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
 5. **Sertifika Için Ilke ayarlanıyor ve** DigiCert 'den doğrudan Key Vault içinde sertifika verme.
 
 ```azurepowershell-interactive
-$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName DigiCertCA -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
+$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
@@ -128,7 +126,7 @@ Sertifika artık bu tümleştirme aracılığıyla belirtilen Key Vault içindek
 
 Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifika için DigiCert hata iletisini gözden geçirmek üzere **sertifika işlemini** görüntüleme adımına geçin.
 
- ![Sertifika Özellikleri](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+ ![Sertifika işlemi](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
 
@@ -136,8 +134,15 @@ Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlem
 
 - Keykasadan bir DigiCert joker belgesi oluşturabilir miyim? 
    Evet. Bu, DigiCert hesabınızı nasıl yapılandırdığınıza bağlıdır.
-- Bir EV sertifikası oluşturuyoruz, bunu nasıl belirttik? 
-   Bir sertifika oluştururken Gelişmiş Ilke yapılandırması ' na tıklayın ve ardından sertifika türünü belirtin. Desteklenen değerler şunlardır: OV-SSL, KD-SSL
+- DigiCert ile **ov-SSL veya KD SSL** sertifikası nasıl oluşturabilirim? 
+   Anahtar Kasası, OV ve EV SSL sertifikaları oluşturmayı destekler. Bir sertifika oluştururken Gelişmiş Ilke yapılandırması ' na tıklayın ve ardından sertifika türünü belirtin. Desteklenen değerler şunlardır: OV-SSL, KD-SSL
+   
+   DigiCert hesabınız izin veriyorsa bu tür bir sertifikayı Anahtar Kasası 'nda oluşturabilirsiniz. Bu tür bir sertifika için doğrulama, DigiCert tarafından gerçekleştirilir ve doğrulama başarısız olursa, destek ekibi çözüm konusunda en iyi şekilde yardım edebilir. Bir sertifika oluştururken subjectName ' de tanımlayarak daha fazla bilgi ekleyebilirsiniz.
+
+Örnek
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+   
 - Tümleştiricert aracılığıyla sertifika edinerek tümleştirme aracılığıyla DigiCert sertifikası oluşturmada bir gecikme süresi var mı?
    Hayır. Bir sertifika oluştururken, bu doğrulama işlemi zaman alabilir ve doğrulamanın aşağıdaki işlem DigiCert 'e bağlı olduğunu belirten bir işlemdir.
 

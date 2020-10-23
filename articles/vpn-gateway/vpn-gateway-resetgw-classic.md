@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: c0313c74b046d4c93c8625eab8659df392041059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e39884f6d62fc43943f892aed0dac650a01d6c40
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419818"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419915"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway sıfırlama
 
@@ -40,15 +40,11 @@ Ağ geçidinizi sıfırlamadan önce aşağıdaki öğeleri doğrulayın:
 
 ## <a name="azure-portal"></a><a name="portal"></a>Azure portal
 
-Azure portal kullanarak Kaynak Yöneticisi VPN ağ geçidini sıfırlayabilirsiniz. Klasik bir ağ geçidini sıfırlamak istiyorsanız, bkz. [PowerShell](#resetclassic) adımları.
+Azure portal kullanarak Kaynak Yöneticisi VPN ağ geçidini sıfırlayabilirsiniz. Klasik bir ağ geçidini sıfırlamak istiyorsanız, [klasik dağıtım modeli](#resetclassic)için PowerShell adımlarına bakın.
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager dağıtım modeli
 
-1. [Azure Portal](https://portal.azure.com) açın ve sıfırlamak istediğiniz kaynak yöneticisi sanal ağ geçidine gidin.
-2. Sanal ağ geçidi dikey penceresinde ' Sıfırla ' seçeneğine tıklayın.
-
-   ![VPN Gateway dikey penceresini Sıfırla](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
-3. Sıfırla dikey penceresinde **Sıfırla** düğmesine tıklayın.
+[!INCLUDE [portal steps](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
 ## <a name="powershell"></a><a name="ps"></a>PowerShell
 
@@ -69,7 +65,7 @@ Bir dönüş sonucu aldığınızda, ağ geçidi sıfırlamasının başarılı 
 
 ### <a name="classic-deployment-model"></a><a name="resetclassic"></a>Klasik dağıtım modeli
 
-Bir ağ geçidini sıfırlamaya yönelik cmdlet **Reset-AzureVNetGateway**. Hizmet yönetimi için Azure PowerShell cmdlet 'lerinin yerel olarak masaüstünüze yüklenmesi gerekir. Azure Cloud Shell kullanamazsınız. Sıfırlama işlemini gerçekleştirmeden önce, [hizmet yönetimi (SM) PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)'lerinin en son sürümüne sahip olduğunuzdan emin olun. Bu komutu kullanırken, sanal ağın tam adını kullandığınızdan emin olun. Portal kullanılarak oluşturulan klasik VNET 'ler, PowerShell için gereken uzun bir ada sahiptir. ' Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml ' kullanarak uzun adı görüntüleyebilirsiniz.
+Bir ağ geçidini sıfırlamaya yönelik cmdlet **Reset-AzureVNetGateway**. Hizmet yönetimi için Azure PowerShell cmdlet 'lerinin yerel olarak masaüstünüze yüklenmesi gerekir. Azure Cloud Shell kullanamazsınız. Sıfırlama işlemini gerçekleştirmeden önce, [hizmet yönetimi (SM) PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets)'lerinin en son sürümüne sahip olduğunuzdan emin olun. Bu komutu kullanırken, sanal ağın tam adını kullandığınızdan emin olun. Portal kullanılarak oluşturulan klasik VNET 'ler, PowerShell için gereken uzun bir ada sahiptir. ' Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml ' kullanarak uzun adı görüntüleyebilirsiniz.
 
 Aşağıdaki örnek, "Group TestRG1 TestVNet1" adlı bir sanal ağ için ağ geçidini sıfırlar (Bu, portalda yalnızca "TestVNet1" olarak gösterilir):
 

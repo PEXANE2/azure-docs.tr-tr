@@ -14,12 +14,12 @@ ms.date: 08/27/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c9ba7217dfc167a06a1fea389cfc40a5e1251ca
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050208"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367814"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management dağıtma (PıM)
 
@@ -58,7 +58,7 @@ Bu bölümde Privileged Identity Management sürecinin ilgili bölümlerinin pla
 
 ## <a name="roles-that-can-be-managed-by-pim"></a>PıM tarafından yönetilebilecek roller
 
-**Azure AD rollerinin** hepsi Azure Active Directory (genel yönetici, Exchange Yöneticisi ve Güvenlik Yöneticisi gibi). [Azure Active Directory Içindeki yönetici rolü izinlerinde](../users-groups-roles/directory-assign-admin-roles.md)roller ve bunların işlevleri hakkında daha fazla bilgi edinebilirsiniz. Yöneticilerinize hangi rollerin atanacağını belirlemeye yönelik yardım için bkz. [göreve göre en az ayrıcalıklı roller](../users-groups-roles/roles-delegate-by-task.md).
+**Azure AD rollerinin** hepsi Azure Active Directory (genel yönetici, Exchange Yöneticisi ve Güvenlik Yöneticisi gibi). [Azure Active Directory Içindeki yönetici rolü izinlerinde](../roles/permissions-reference.md)roller ve bunların işlevleri hakkında daha fazla bilgi edinebilirsiniz. Yöneticilerinize hangi rollerin atanacağını belirlemeye yönelik yardım için bkz. [göreve göre en az ayrıcalıklı roller](../roles/delegate-by-task.md).
 
 **Azure rolleri** , bir Azure kaynağı, kaynak grubu, abonelik veya yönetim grubuyla bağlantılı rollerdir. Yalnızca sahip, Kullanıcı erişimi Yöneticisi ve katkıda bulunan gibi yerleşik Azure rollerine ve ayrıca [özel rollere](../../role-based-access-control/custom-roles.md)tam zamanında erişim sağlamak için PIM 'yi kullanabilirsiniz. Azure rolleri hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md).
 
@@ -78,7 +78,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Paydaşlar: Azure AD rolleri Için Privileged Identity Management
 
-| Adı | Rol | Eylem |
+| Name | Rol | Eylem |
 | --- | --- | --- |
 | Ad ve e-posta | **Kimlik mimarı veya Azure genel Yöneticisi**<br/>Kimlik Yönetimi ekibinin, bu değişikliği kuruluşunuzda temel kimlik yönetimi altyapısına nasıl hizalamayı tanımlamaya yönelik bir temsilcisidir. | SO/R/ı |
 | Ad ve e-posta | **Hizmet sahibi/satır Yöneticisi**<br/>Bir hizmetin veya bir hizmet grubunun BT sahiplerine bir temsilci. Bunlar, kararlar verirken ve takımlarına yönelik Privileged Identity Management almaya yardımcı olan bir anahtarlıyız. | SO/R/ı |
@@ -88,7 +88,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-roles"></a>Paydaşlar: Azure rolleri Için Privileged Identity Management
 
-| Adı | Rol | Eylem |
+| Name | Rol | Eylem |
 | --- | --- | --- |
 | Ad ve e-posta | **Abonelik/kaynak sahibi**<br/>Privileged Identity Management dağıtmak istediğiniz her abonelik veya kaynağın BT sahiplerine bir temsilci | SO/R/ı |
 | Ad ve e-posta | **Güvenlik sahibi**<br/>Güvenlik ekibinden, planın kuruluşunuzun güvenlik gereksinimlerini karşıladığı oturumu kapatan bir temsilcisidir. | SO/R |
@@ -111,7 +111,7 @@ Azure AD rolleri için, çoğu yöneticinin yalnızca bir veya iki özel ve daha
 
 Azure AD rolleriniz için en az ayrıcalık ilkesini uygulamak için aşağıdaki adımları izleyin.
 
-1. [Kullanılabilir Azure AD yönetici rollerini](../users-groups-roles/directory-assign-admin-roles.md#available-roles)okuyup anlayarak rollerin ayrıntı düzeyini anlayın. Siz ve takımınız Ayrıca, belirli görevler için en az ayrıcalıklı rolü açıklayan [Azure AD 'de kimlik görevine göre yönetici rollerine](../users-groups-roles/roles-delegate-by-task.md)başvurmalıdır.
+1. [Kullanılabilir Azure AD yönetici rollerini](../roles/permissions-reference.md#available-roles)okuyup anlayarak rollerin ayrıntı düzeyini anlayın. Siz ve takımınız Ayrıca, belirli görevler için en az ayrıcalıklı rolü açıklayan [Azure AD 'de kimlik görevine göre yönetici rollerine](../roles/delegate-by-task.md)başvurmalıdır.
 
 1. Kuruluşunuzda ayrıcalıklı rollere sahip olan liste. Privileged Identity Management [bulma ve öngörüleri (Önizleme)](pim-security-wizard.md) kullanarak pozlandırmayı azaltabilirsiniz.
 
@@ -200,11 +200,11 @@ Tek tek kullanıcılar yerine gruba bir rolün atanması, stratejik bir karardı
 
 #### <a name="many-users-are-assigned-to-a-role"></a>Bir role çok sayıda Kullanıcı atandı
 
-Bir role kimin atandığını ve ne zaman ihtiyaç duyduklarında bunlara göre atamalarını yönetmeyi izlemek, el ile yapıldığında zaman alabilir. Bir role bir grup atamak için, önce [bir rol atanabilir grubu oluşturun](../users-groups-roles/roles-groups-create-eligible.md) ve ardından grubu bir rol için uygun olarak atayın. Bu eylem, gruptaki herkese, rol üzerinde yükseltme için uygun olan bireysel kullanıcılarla aynı etkinleştirme sürecine konu vermez. Grup üyeleri, Privileged Identity Management etkinleştirme isteği ve onay işlemini kullanarak atamaları gruba tek tek etkinleştirir. Grup etkin değil, yalnızca kullanıcının grup üyeliği.
+Bir role kimin atandığını ve ne zaman ihtiyaç duyduklarında bunlara göre atamalarını yönetmeyi izlemek, el ile yapıldığında zaman alabilir. Bir role bir grup atamak için, önce [bir rol atanabilir grubu oluşturun](../roles/groups-create-eligible.md) ve ardından grubu bir rol için uygun olarak atayın. Bu eylem, gruptaki herkese, rol üzerinde yükseltme için uygun olan bireysel kullanıcılarla aynı etkinleştirme sürecine konu vermez. Grup üyeleri, Privileged Identity Management etkinleştirme isteği ve onay işlemini kullanarak atamaları gruba tek tek etkinleştirir. Grup etkin değil, yalnızca kullanıcının grup üyeliği.
 
 #### <a name="you-want-to-delegate-assigning-the-role"></a>Rol atama yetkisini atamak istiyorsunuz
 
-Grup sahibi, bir grubun üyeliğini yönetebilir. Azure AD rolü atanabilir gruplar için, yalnızca ayrıcalıklı rol yöneticisi, genel yönetici ve Grup sahipleri grup üyeliğini yönetebilir. Gruba yeni üyeler eklendiğinde, üye, atamanın uygun veya etkin olup olmadığı, grubun atandığı rollere erişim sağlar. Gerekli ayrıcalıkların kapsamını azaltmak üzere atanan bir rolün grup üyeliği yönetimine temsilci seçmek için Grup sahiplerini kullanın. Grubu oluştururken bir gruba sahip atama hakkında daha fazla bilgi için bkz. [Azure AD 'de rol atanabilir Grup oluşturma](../users-groups-roles/roles-groups-create-eligible.md).
+Grup sahibi, bir grubun üyeliğini yönetebilir. Azure AD rolü atanabilir gruplar için, yalnızca ayrıcalıklı rol yöneticisi, genel yönetici ve Grup sahipleri grup üyeliğini yönetebilir. Gruba yeni üyeler eklendiğinde, üye, atamanın uygun veya etkin olup olmadığı, grubun atandığı rollere erişim sağlar. Gerekli ayrıcalıkların kapsamını azaltmak üzere atanan bir rolün grup üyeliği yönetimine temsilci seçmek için Grup sahiplerini kullanın. Grubu oluştururken bir gruba sahip atama hakkında daha fazla bilgi için bkz. [Azure AD 'de rol atanabilir Grup oluşturma](../roles/groups-create-eligible.md).
 
 > [!TIP]
 > : heavy_check_mark: Microsoft, Azure AD rolü atanabilir grupları yönetim altına Privileged Identity Management göre **yapmanızı önerir** . Rol atanabilir bir grup, PıM tarafından yönetim altına alındıktan sonra ayrıcalıklı erişim grubu olarak adlandırılır. Grup üyelerini yönetebilmeniz için Grup sahiplerinin sahip rol atamasını etkinleştirmesini gerektirmek için PıM kullanın. PıM yönetimi altında grupları getirme hakkında daha fazla bilgi için bkz. [Privileged Identity Management ayrıcalıklı erişim grupları (Önizleme) getirme](groups-discover-groups.md).
@@ -214,7 +214,7 @@ Grup sahibi, bir grubun üyeliğini yönetebilir. Azure AD rolü atanabilir grup
 Privileged Identity Management tarafından yönetilecek rol listesine karar verdikten sonra, hangi kullanıcıların uygun rolü ve kalıcı olarak etkin rolü alması gerektiğine karar vermelisiniz. Uygun roller yalnızca Privileged Identity Management atanabileceği için, Azure Active Directory ve Azure kaynakları aracılığıyla atanan normal roller kalıcı olarak etkindir.
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft** , Azure AD rolleri ve Azure rolleri için, kalıcı genel yönetici rolüne sahip olması gereken, önerilen [iki kesme camı acil durum erişim hesaplarından](../users-groups-roles/directory-emergency-access.md)farklı şekilde sıfır kalıcı etkin atama yapmanızı önerir.
+> : heavy_check_mark: **Microsoft** , Azure AD rolleri ve Azure rolleri için, kalıcı genel yönetici rolüne sahip olması gereken, önerilen [iki kesme camı acil durum erişim hesaplarından](../roles/security-emergency-access.md)farklı şekilde sıfır kalıcı etkin atama yapmanızı önerir.
 
 Yöneticinin azalmasına izin verdiğimiz halde, kuruluşların bu hakkı elde etmelerini bazen zorlaştırıyor. Bu kararı verirken göz önünde bulundurmanız gereken noktalar şunlardır:
 

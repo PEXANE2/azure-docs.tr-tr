@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092533"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340538"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache için müşteri tarafından yönetilen şifreleme anahtarlarını kullanma
 
@@ -58,7 +58,7 @@ Anahtar Kasası erişim izinleri:
 
 * Azure HPC önbelleğini oluşturan kullanıcının [Key Vault katkıda bulunan rolüne](../role-based-access-control/built-in-roles.md#key-vault-contributor)eşdeğer izinlere sahip olması gerekir. Azure Key Vault ayarlamak ve yönetmek için aynı izinler gerekir.
 
-  Daha fazla bilgi için [bir anahtar kasasına güvenli erişimi](../key-vault/key-vault-secure-your-key-vault.md) okuyun.
+  Daha fazla bilgi için [bir anahtar kasasına güvenli erişimi](../key-vault/general/secure-your-key-vault.md) okuyun.
 
 ## <a name="1-set-up-azure-key-vault"></a>1. Azure Key Vault ayarla
 
@@ -66,7 +66,7 @@ Anahtar Kasası erişim izinleri:
 
 Önbellek oluşturma sırasında, önbelleğin şifrelemesi için kullanılacak bir kasa, anahtar ve anahtar sürümü belirtmeniz gerekir.
 
-Ayrıntılar için [Azure Key Vault belgelerini](../key-vault/key-vault-overview.md) okuyun.
+Ayrıntılar için [Azure Key Vault belgelerini](../key-vault/general/overview.md) okuyun.
 
 > [!NOTE]
 > Azure Key Vault aynı aboneliği kullanmalıdır ve Azure HPC önbelleğiyle aynı bölgede olmalıdır. Seçtiğiniz bölgenin [müşteri tarafından yönetilen anahtarlar özelliğini desteklediğinden](hpc-cache-overview.md#region-availability)emin olun.
@@ -92,7 +92,7 @@ Azure HPC önbelleğinizi oluştururken şifreleme anahtarı kaynağını belirt
 
 1. Bir kasa seçtikten sonra, kullanılabilir seçeneklerden ayrı anahtarı seçin veya yeni bir anahtar oluşturun. Anahtar, 2048 bitlik bir RSA anahtarı olmalıdır.
 
-1. Seçili anahtar için sürüm belirtin. [Azure Key Vault belgelerinde](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning)sürüm oluşturma hakkında daha fazla bilgi edinin.
+1. Seçili anahtar için sürüm belirtin. [Azure Key Vault belgelerinde](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)sürüm oluşturma hakkında daha fazla bilgi edinin.
 
 Belirtimlerin geri kalanı ile devam edin ve [Azure HPC önbelleği oluşturma](hpc-cache-create.md)bölümünde açıklandığı gibi önbelleği oluşturun.
 

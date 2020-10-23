@@ -37,6 +37,8 @@
       href: concepts-route-events.md
     - name: Azure Digital Twins çözümleri için güvenlik
       href: concepts-security.md
+    - name: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
+      href: concepts-high-availability-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Dağıtma
@@ -53,6 +55,8 @@
               href: how-to-set-up-instance-portal.md
         - name: Uygulama kimlik doğrulaması kodu yazma
           href: how-to-authenticate-client.md
+        - name: Uygulama kaydı oluşturma
+          href: how-to-create-app-registration.md
         - name: Bir örneği farklı bir bölgeye taşıma
           href: how-to-move-regions.md
     - name: Tasarım modelleri
@@ -130,7 +134,7 @@
             - name: Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins'
             - name: .NET (C#) SDK - NuGet
-              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1'
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/'
             - name: .NET (C#) SDK - başvuru
               href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview
             - name: .NET (C#) SDK - kaynak
@@ -161,14 +165,16 @@
               href: /dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview
             - name: .NET (C#) SDK - kaynak
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
-            - name: JavaScript SDK - npm
-              href: 'https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1'
-            - name: JavaScript SDK - başvuru
-              href: /javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest
             - name: Java SDK - Maven
               href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar'
             - name: Java SDK - başvuru
               href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview
+            - name: Java SDK - kaynak
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
+            - name: JavaScript SDK - npm
+              href: 'https://www.npmjs.com/package/@azure/digital-twins/'
+            - name: JavaScript SDK - başvuru
+              href: /javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest
     - name: Digital Twins CLI
       items:
         - name: Digital Twins CLI başvurusu
@@ -191,7 +197,7 @@
       items:
         - name: Cihaz simülatörü hizmeti
           href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
-        - name: Azure Digital Twins örnekleri
+        - name: Azure Digital Twins uçtan uca örnekleri
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins gezgini (örnek)
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
@@ -199,10 +205,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DPS ve IoT Hub tümleştirmesi örneği
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: Azure Digital Twins Özel Swagger’lar
-          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: SignalR tümleştirme örneği
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+        - name: Logic Apps bağlayıcısı için Azure Digital Twins özel Swagger’lar
+          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: Azure araçları
       items:
         - name: Azure Cloud Shell

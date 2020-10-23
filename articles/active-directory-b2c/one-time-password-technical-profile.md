@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418917"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172658"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
 
@@ -53,7 +53,7 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| tanımlayıcı | Evet | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+| tanımlayıcı | Yes | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -63,23 +63,25 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| otpGenerated | Evet | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
+| otpGenerated | Yes | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
 Kod oluşturma modunu yapılandırmak için aşağıdaki ayarlar kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . |
+| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . Bir kod sağlandığı her seferinde ( `ReuseSameCode` veya yeni bir kod kullanılarak aynı kod), kod süre sonu genişletilir.  |
 | Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
 | CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
 | NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
 | Numcodegenerationdenemeler | Hayır | Tanımlayıcı başına maksimum kod oluşturma denemesi sayısı. Belirtilmemişse, varsayılan değer 10 ' dur. |
-| İşlem | Evet | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
-| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
+| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerli olduğunda, yeni bir kod oluşturmak yerine aynı kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`.  |
+
+
 
 ### <a name="example"></a>Örnek
 
@@ -117,8 +119,8 @@ Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için yapılandı
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| tanımlayıcı | Evet | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
-| otpToVerify | Evet | Kullanıcı tarafından belirtilen doğrulama kodu. |
+| tanımlayıcı | Yes | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+| otpToVerify | Yes | Kullanıcı tarafından belirtilen doğrulama kodu. |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -128,13 +130,13 @@ Bu protokol sağlayıcısının kod doğrulaması sırasında belirtilen çıkı
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
 Aşağıdaki ayarlar, doğrulama modunu kod için kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Evet | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri

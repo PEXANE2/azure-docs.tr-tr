@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66e415cbec3b2e8c834ee02630d7f849ccf3e1e2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548907"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Öğretici: tanıma sahip Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Tanılamayı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini tanıma ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -139,15 +139,15 @@ Azure AD çoklu oturum açmayı tanıma ile yapılandırmak için aşağıdaki a
 
 2. Sağ üst köşede **menü**' ye tıklayın. **Şirket Yöneticisi**' ne gidin.
    
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![Ekran görüntüsü, Ayarlar menüsünde şirket yöneticisinin seçili olduğunu gösterir.](./media/recognize-tutorial/tutorial_recognize_000.png)
 
 3. Sol gezinti bölmesinde, **Ayarlar**' a tıklayın.
    
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![Ekran görüntüsü, gezinti sayfasından seçilen ayarları gösterir.](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. **SSO ayarları** bölümünde aşağıdaki adımları gerçekleştirin.
    
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz, S S O ayarlarını gösterir.](./media/recognize-tutorial/tutorial_recognize_002.png)
     
     a. **SSO 'Yu etkinleştirmek**için **Açık**seçeneğini belirleyin.
 
@@ -163,11 +163,11 @@ Azure AD çoklu oturum açmayı tanıma ile yapılandırmak için aşağıdaki a
 
 5. **SSO ayarları** bölümünün yanında, URL 'Yi **hizmet sağlayıcısı meta veri URL 'si**altına kopyalayın.
    
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![Ekran görüntüsünde, hizmet sağlayıcısı meta verilerini kopyalayabileceğiniz notlar gösterilir.](./media/recognize-tutorial/tutorial_recognize_003.png)
 
 6. Meta veri belgesini indirmek için boş bir tarayıcı altındaki **metadata URL bağlantısını** açın. Sonra EntityDescriptor değerini (EntityId) dosyadan kopyalayın ve Azure portal **temel SAML yapılandırmasındaki** **tanımlayıcı** metin kutusuna yapıştırın.
     
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![Ekran görüntüsü, b varlığını alabileceğiniz düz metin X M L olan bir metin kutusunu gösterir.](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 

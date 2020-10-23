@@ -3,19 +3,19 @@ title: Azure VMware çözümünde dağıtım ufku
 description: Azure VMware çözümünde VMware ufuk dağıtımı hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078893"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369021"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde dağıtım ufku 
 
 >[!NOTE]
->Bu belge, VMware ufuk ürününe odaklanır. Bu, daha önce ürün adı, ufuk 7 ' den-ufuk ' i değiştirmeden önce ufuk 7 olarak bilinir. Ufuk, bazı paylaşılan bileşenler olsa da Azure 'da ufkdan farklı bir çözümdür. Azure VMware çözümünün önemli avantajları, hem daha basit bir boyutlandırma yöntemi hem de VMware Cloud Foundation Management 'ın Azure portal tümleştirildiği bir yöntemdir.
+>Bu belge, daha önce ufku 7 olarak bilinen VMware ufuk ürününe odaklanır. Ufuk, bazı paylaşılan bileşenler olsa da Azure 'da ufkdan farklı bir çözümdür. Azure VMware çözümünün temel avantajları, hem daha basit bir boyutlandırma yöntemi hem de VMware Cloud Foundation Management 'ın Azure portal ile tümleştirilmesini içerir.
 
-[VMware ufuk](https://www.vmware.com/products/horizon.html)®, veri merkezinde çalışan ve basit ve merkezi yönetim olanağı sunan bir sanal masaüstü ve uygulamalar platformudur. Her yerden, herhangi bir cihazda son kullanıcılara sanal masaüstleri ve uygulamalar sunar. Ufuk, Windows sanal masaüstleri, Linux sanal masaüstleri, uzak masaüstü sunucusu (RDS) barındırılan uygulamalar, masaüstleri ve fiziksel makineler için bağlantı oluşturmanızı ve bunları aracıdan denetlemenizi sağlar.
+[VMware ufuk](https://www.vmware.com/products/horizon.html)®, bir sanal masaüstü ve uygulamalar platformu veri merkezinde çalışır ve basit ve merkezi yönetim sağlar. Her yerden, herhangi bir cihazda sanal masaüstleri ve uygulamalar sunar. Ufuk, Windows ve Linux sanal masaüstleri, uzak masaüstü sunucusu (RDS) barındırılan uygulamalar, masaüstleri ve fiziksel makineler için bağlantı oluşturmanızı ve bunları aracıdan denetlemenizi sağlar.
 
 Burada, Azure VMware çözümüne özellikle de dağıtım yapmak için odaklanıyoruz. VMware ufku hakkında genel bilgi için, ufku üretim belgelerine bakın:
 
@@ -27,20 +27,20 @@ Burada, Azure VMware çözümüne özellikle de dağıtım yapmak için odaklan�
 
 Ufkın Azure VMware çözümüne giriş ile Azure platformunda artık iki sanal masaüstü altyapısı (VDı) çözümü vardır. Aşağıdaki diyagramda, üst düzeyde önemli farklılıklar özetlenmektedir.
 
-:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Azure 'da Azure VMware çözümü ve ufuk bulutu arasındaki farklar" border="false":::
+:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
 
 Ufuk 8 Yayın satırındaki ufuk 2006 ve sonraki sürümler hem şirket içi dağıtımı hem de Azure VMware çözüm dağıtımını destekler. Şirket içinde desteklenen ancak Azure VMware çözümünde olmayan bazı ufku özellikleri vardır. Ufuk ekosistemindeki ek ürünler de desteklenir. Bilgi için bkz. [özellik eşliği ve birlikte çalışabilirliği](https://kb.vmware.com/s/article/80850).
 
 ## <a name="deploy-horizon-in-a-hybrid-cloud"></a>Karma bulutta ufku dağıtma
 
-Şirket içi veri merkezlerini ve Azure veri merkezlerini bağlamak için ufuk bulutu Pod mimarisi 'ni (CPA) kullandığınızda, ufuk 'i karma bir bulut ortamında dağıtabilirsiniz. CPA genellikle dağıtımınızı ölçeklendirmek, karma bir bulut oluşturmak ve Iş sürekliliği ve olağanüstü durum kurtarma için yedeklilik sağlamak için kullanılır. VMware ufuk Iş sürekliliği Kılavuzu ' nda ayrıntılı bir tartışma için bkz. [mevcut ufuk 7 ortamlarını genişletme](https://techzone.vmware.com/resource/business-continuity-vmware-horizon#_Toc41650874).
+Şirket içi ve Azure veri merkezleri arasında bağlantı sağlamak için ufuk bulutu Pod mimarisi 'ni (CPA) kullandığınızda, ufuk 'i karma bir bulut ortamında dağıtabilirsiniz. CPA dağıtımınızı ölçeklendirir, karma bir bulut oluşturur ve Iş sürekliliği ve olağanüstü durum kurtarma için yedeklilik sağlar.  Daha fazla bilgi için bkz. [mevcut ufuk 7 ortamlarını genişletme](https://techzone.vmware.com/resource/business-continuity-vmware-horizon#_Toc41650874).
 
 >[!IMPORTANT]
 >CPA, uzatılmış bir dağıtım değil; Her ufku Pod farklıdır ve tek tek konumda bulunan tüm bağlantı sunucularının tek bir konumda bulunması ve bir ağ perspektifinden aynı yayın etki alanında çalıştırılması gerekir.
 
-Şirket içi veya özel veri merkezinde olduğu gibi, ufuk bir Azure VMware Çözüm özel bulutu 'nda dağıtılabilir. Aşağıdaki bölümlerde, şirket içi ve Azure VMware çözümünde dağıtım ile ilgili önemli farklılıklar ele alınacaktır.
+Şirket içi veya özel veri merkezinde olduğu gibi, ufuk bir Azure VMware Çözüm özel bulutu 'nda dağıtılabilir. Aşağıdaki bölümlerde, şirket içi ve Azure VMware çözümünde dağıtım yaparken önemli farklılıklar ele alınacaktır.
 
-Azure özel bulutu, genellikle ufuk belgelerinde kullanılan bir terim olan VMware SDDC ile aynıdır. Bu belgenin geri kalanında Azure özel bulutu ve VMware SDDC 'de yer değiştirilebilir.
+Azure özel bulutu, genellikle ufuk belgelerinde kullanılan bir terim olan VMware SDDC ile aynıdır. Bu belgenin geri kalanı, Azure özel bulutu ve VMware SDDC 'de yer değiştirilebilir olan terimleri kullanır.
 
 Azure VMware çözümünde, abonelik lisanslarını yönetmek için ufın bulut bağlayıcısı gereklidir. Bulut bağlayıcısı, Azure sanal ağı ' nda, ufuk bağlantı sunucularıyla birlikte dağıtılabilir.
 
@@ -67,13 +67,13 @@ Müşterilerin, sınırlı bir vCenter izinleri kümesine sahip olan bulut Yöne
 
 ## <a name="horizon-on-azure-vmware-solution-deployment-architecture"></a>Azure VMware Çözüm dağıtımı mimarisinde ufuk
 
-Tipik bir ufuk mimarisi tasarımı bir pod ve blok stratejisi kullanır. Blok tek bir vCenter, ancak birden çok blok birleştirilmiş bir pod oluştur. Ufku Pod, ufku ölçeklenebilirlik sınırlarına göre belirlenen bir organizasyon birimidir. Her ufuk Pod, ayrı bir yönetim portalına sahiptir ve bu nedenle standart tasarım uygulaması, pods sayısını en aza indirmektir.
+Tipik bir ufuk mimarisi tasarımı bir pod ve blok stratejisi kullanır. Blok tek bir vCenter, ancak birden çok blok birleştirilmiş bir pod oluştur. Ufku Pod, ufku ölçeklenebilirlik sınırlarına göre belirlenen bir organizasyon birimidir. Her ufuk Pod, ayrı bir yönetim portalına sahiptir ve bu nedenle standart bir tasarım uygulaması, pods sayısını en aza indirmektir.
 
 Her bulutun kendi ağ bağlantısı düzeni vardır. VMware SDDC Networking/NSX Edge ile birlikte kullanıldığında, Azure VMware Çözüm ağı bağlantısı, Şirket içinden farklı olarak dağıtmak için benzersiz gereksinimler sunar.
 
-Her Azure özel bulutu/SDDC 4.000 masaüstü veya uygulama oturumlarını işleyebilir, bu, aşağıdakileri kabul eder:
+Her bir Azure özel bulutu ve SDDC 4.000 masaüstü veya uygulama oturumunu işleyebilir, ancak şunları kabul edebilir:
 
-* İş yükü trafiği, Logfaturalanmış görevi çalışan profilinin ile hizalanır.
+* İş yükü trafiği Logfaturalanmış görevi çalışan profiliyle hizalanır.
 
 * Kullanıcı verisi olmadan yalnızca protokol trafiği kabul edilir.
 
@@ -82,51 +82,51 @@ Her Azure özel bulutu/SDDC 4.000 masaüstü veya uygulama oturumlarını işley
 >[!NOTE]
 >İş yükü profiliniz ve gereksinimleriniz farklı olabilir ve bu nedenle sonuçlar kullanım örneğine göre farklılık gösterebilir. Kullanıcı veri birimleri, iş yükünüz bağlamında ölçek limitlerini daha düşük olabilir. Dağıtımınızı uygun şekilde boyutlandırın ve planlayın. Daha fazla bilgi için bkz. [Azure VMware Çözüm konaklarını ufku Için boyut dağıtımları](#size-azure-vmware-solution-hosts-for-horizon-deployments) bölümünde boyutlandırma yönergeleri.
 
-Azure özel bulutu/SDDC Max sınırı verildiğinde, ufuk bağlantı sunucularının ve VMware Birleşik erişim ağ geçitlerinin (UAGs) Azure sanal ağı içinde çalıştığı bir dağıtım mimarisi önerilir. Bu, her bir Azure özel bulutu/SDDC 'yi etkin bir bloğa dönüştürür. Bu, sırasıyla Azure VMware çözümünde çalışan ufkın ölçeklenebilirliğini en üst düzeye çıkarır.
+Azure özel bulutu ve SDDC Max sınırı verildiğinde, ufuk bağlantı sunucularının ve VMware Birleşik erişim ağ geçitlerinin (UAGs) Azure sanal ağı içinde çalıştığı bir dağıtım mimarisi önerilir. Her bir Azure özel bulutunu ve SDDC 'yi etkin bir bloğa dönüştürür. Sırasıyla, Azure VMware çözümünde çalışan ufkunun ölçeklenebilirliğini en üst düzeye çıkarın.
 
 Azure sanal ağından Azure özel bulutlara/SDDC 'lere bağlantı, ExpressRoute FastPath ile yapılandırılmalıdır. Aşağıdaki diyagramda temel bir ufuk Pod dağıtımı gösterilmektedir.
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Azure 'da Azure VMware çözümü ve ufuk bulutu arasındaki farklar" border="false":::
+:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde ölçeği ölçeklendirmek için ağ bağlantısı
 
-Bu bölüm, bazı ortak dağıtım örnekleri ile Azure VMware çözümünde ölçek ufuk için yüksek düzeyde ağ mimarisi yerleştirir. Odak, özellikle kritik ağ öğeleri üzerinde bulunur.
+Bu bölüm, Azure VMware çözümünde ölçeğini ölçeklendirmenize yardımcı olmak için bazı yaygın dağıtım örnekleri ile ağ mimarisini yüksek bir düzeyde düzenler. Odak, özellikle kritik ağ öğeleri üzerinde. 
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Azure VMware çözümünde tek ufku Pod
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure 'da Azure VMware çözümü ve ufuk bulutu arasındaki farklar" border="false":::
+:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
 
-Tek bir ufuk Pod, en basit iletme dağıtım senaryosudur. Bu örnekte, ABD Doğu bölgesinde yalnızca bir ufuk Pod 'ı dağıtmak istediğinize karar verirsiniz. Her özel bulut/SDDC, 4.000 masaüstü oturumlarının trafiğini yaklaşık olarak işlemek üzere tahmin edildiğinden, maksimum ufuk Pod boyutunu dağıtmak için en fazla üç özel bulut/SDDC dağıtımını planlayabilirsiniz.
+Tek bir ufku Pod, ABD Doğu bölgesinde yalnızca bir ufuk Pod 'i dağıttığınız için en basit ileri dağıtım senaryosudur.  Her özel bulut ve SDDC 4.000 masaüstü oturumlarını işleyecek şekilde tahmin edildiğinden, maksimum ufuk Pod boyutunu dağıtırsınız.  En fazla üç özel bulut/SDDC dağıtımını planlayabilirsiniz.
 
-Bu nedenle, bu örnekte, Azure sanal ağı 'nda dağıtılan ufuk altyapısı sanal makineleri (VM 'Ler) ile birlikte, iş yükünüze ve veri gereksinimlerinize göre her ufku için 12.000 oturumuna ulaşabilirsiniz. Her bir özel bulut ve SDDC ile Azure sanal ağı arasındaki bağlantı, özel bulutlar arasında Doğu Batı trafiği gerekmesiz ExpressRoute hızlı yoludur.
+Azure sanal ağı 'nda dağıtılan ufuk altyapısı sanal makineleri (VM 'Ler) sayesinde, her ufku için 12.000 oturumuna ulaşabilirsiniz. Her bir özel bulut ve SDDC ile Azure sanal ağı arasındaki bağlantı, ExpressRoute hızlı yoludur.  Özel bulutlar arasında Doğu Batı trafiği gerekli değildir. 
 
 Bu temel dağıtım örneği için temel varsayımlar şunları içerir:
 
 * Cloud Pod mimarisi 'ni (CPA) kullanarak bu yeni Pod 'a bağlamak istediğiniz şirket içi ufuk Pod 'ı yok.
 
-* Son kullanıcılar, internet üzerinden sanal masaüstlerine bağlanır (Şirket içi veri merkezi üzerinden bağlanarak).
+* Son kullanıcılar Internet üzerinden kendi sanal masaüstlerine bağlanır (Şirket içi veri merkezi aracılığıyla bağlantı kurarak).
 
-Bu temel örnekte, Azure sanal ağındaki AD etki alanı denetleyicinizi VPN veya ExpressRoute bağlantı hattı aracılığıyla şirket içi Active Directory bağlayabilirsiniz.
+Azure sanal ağ 'daki AD etki alanı denetleyicinizi, şirket içi AD ile VPN veya ExpressRoute bağlantı hattı üzerinden bağlayın.
 
-Açıklanan temel örnekteki bir çeşitleme, şirket içi kaynakların bağlantısını desteklemek olabilir. Bu, masaüstüne erişen ve sanal masaüstü uygulama trafiği oluşturan veya CPA kullanarak şirket içi ufuk Pod 'a bağlanan kullanıcılar olabilir.
+Temel örnekteki bir çeşitleme, şirket içi kaynakların bağlantısını desteklemek olabilir. Örneğin, kullanıcılar masaüstlerine erişir ve sanal masaüstü uygulama trafiği oluşturabilir veya CPA kullanarak şirket içi ufuk Pod 'a bağlanabilir.
 
-Aşağıdaki diyagramda bunu nasıl yapabileceğiniz gösterilmektedir.Şirket ağınızı Azure sanal ağına bağlamak için bir ExpressRoute gerekecektir.Ayrıca, SDDC 'den ExpressRoute 'a ve şirket içi kaynaklara bağlantı sağlayan Global Reach kullanarak Şirket ağınızı her bir özel bulut/SDDC ile bağlamanız gerekir.
+Diyagramda, şirket içi kaynaklar için bağlantının nasıl destekleyeceği gösterilmektedir. Şirket ağınıza Azure sanal ağına bağlanmak için bir ExpressRoute devresine ihtiyacınız vardır.  Ayrıca, ExpressRoute Global Reach kullanan özel bulut ve SDDC 'Ler ile kurumsal ağınızı bağlamanız gerekir.  SDDC 'den ExpressRoute devresine ve şirket içi kaynaklara bağlantı sağlar. 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Azure 'da Azure VMware çözümü ve ufuk bulutu arasındaki farklar" border="false":::
+:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Birden çok bölgede Azure VMware çözümünde birden çok ufuk
 
-Diğer bir ufuk Pod örneği için, birden çok konumda ölçeklendirme kapsamını gösteren bir örneğe bakalım.Bu örnekte, iki farklı bölgede iki ufku dağıtmakta ve CPA kullanarak bunları federasyoncukolursunuz.Ağ yapılandırması, bazı ek çapraz bölgesel bağlantılarla, önceki örneğe benzer. 
+Başka bir senaryo, birden çok sayıda ölçeğe göre ölçeklendirme yapar.  Bu senaryoda, iki adet farklı bölgede iki ufku dağıtır ve bunları CPA kullanarak federasyonlar. Bu, önceki örnekteki ağ yapılandırmasına benzer, ancak bazı ek çapraz bölgesel bağlantılarla benzerdir. 
 
-Azure Sanal Ağa gelen her bölge, diğer bölgedeki özel bulutlar/SDDC 'lere bağlamanız gerekir. böylece, CPA Federasyonu 'nin parçası olan ufuk bağlantı sunucularının yönetim altındaki tüm masaüstlerine bağlanmasına izin verilir.Bu yapılandırmaya ek özel bulutlar/SDDC 'Ler eklemek, genel olarak 24.000 oturuma ölçeklenmenize olanak tanır. 
+Her bölge için Azure Sanal Ağa gelen diğer bölgedeki özel bulutlar/SDDC 'lere bağlanırsınız. CPA Federasyonu 'nin bir parçası olan ufuk bağlantı sunucularının yönetim altındaki tüm masaüstlerine bağlanmasına izin verir. Bu yapılandırmaya ek özel bulutlar/SDDC 'Ler eklemek, genel olarak 24.000 oturuma ölçeklenmenize olanak tanır. 
 
-Bu örnekte birden çok bölge gösterilirken, aynı bölgede iki ufku dağıtmak istiyorsanız aynı ilke geçerlidir. İkinci ufuk Pod 'un *ayrı bir Azure sanal ağında*dağıtıldığından emin olmanız gerektiğini unutmayın.Son olarak, önceki tek Pod örneğinde olduğu gibi, müşteri ExpressRoute ve Global Reach kullanarak kurumsal ağınızı ve şirket içi Pod 'nizi bu çok Pod/bölge örneğine bağlayabilirsiniz.
+Aynı bölgede iki ufku dağıtırsanız aynı ilkeler geçerlidir.  İkinci ufuk Pod öğesini *ayrı bir Azure sanal ağında*dağıttığınızdan emin olun. Tek Pod örneğinde olduğu gibi, ExpressRoute ve Global Reach kullanarak kurumsal ağınızı ve şirket içi Pod 'nizi bu çok Pod/bölge örneğine bağlayabilirsiniz. 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Azure 'da Azure VMware çözümü ve ufuk bulutu arasındaki farklar" border="false":::
+:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Azure VMware Çözüm ana bilgisayarlarını ufku dağıtımları için Boyutlandır 
 
-Azure VMware Çözüm ana makinesi örneği standartlaştırılmış olduğundan, Azure VMware çözümünde çalışan bir konakta, ufkın boyutlandırma yöntemi, şirket içi günden daha basittir. Doğru ana bilgisayar boyutlandırma, VDı gereksinimlerinizi desteklemek için gereken ana bilgisayar sayısını belirlemeye yardımcı olur ve Masaüstü başına maliyeti belirlemek için merkezi bir merkezidir.
+Ufkın Azure VMware çözümünde çalışan bir konakta boyutlandırma yöntemi, şirket içi günden daha basittir.  Bunun nedeni, Azure VMware Çözüm ana bilgisayarının standartlaştırılmış olması.  Tam konak boyutlandırma, VDı gereksinimlerinizi desteklemek için gereken ana bilgisayar sayısını belirlemesine yardımcı olur.  Bu, masaüstü başına maliyet belirleme merkezidir.
 
 ### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Çözüm ana bilgisayar örneği
 
@@ -146,7 +146,7 @@ Azure VMware Çözüm ana makinesi örneği standartlaştırılmış olduğundan
 
 ### <a name="horizon-sizing-inputs"></a>Ufuk boyutlandırma girişleri
 
-Planlı iş yükünüz için aşağıdakileri öğrenin:
+Planlı iş yükünüz için toplamanız gerekenler aşağıda verilmiştir:
 
 * Eşzamanlı Masaüstü sayısı
 
@@ -156,7 +156,7 @@ Planlı iş yükünüz için aşağıdakileri öğrenin:
 
 * Masaüstü başına gereken depolama alanı
 
-Genel olarak, VDı dağıtımları CPU veya RAM kısıtlanıyor, bu etkenler ana bilgisayar boyutunu tespit eder. Performans testi ile doğrulanan günlüğe kaydetme bilgi çalışanı iş yükü türü için aşağıdaki örneği ele alalım:
+Genel olarak, VDı dağıtımları CPU veya RAM kısıtlanıyor ve bu da ana bilgisayar boyutunu belirler. Performans testi ile doğrulanan günlüğe kaydetme bilgi çalışanı iş yükü türü için aşağıdaki örneği ele alalım:
 
 * 2.000 eşzamanlı masaüstü dağıtımı
 
@@ -173,7 +173,7 @@ Bu örnekte, toplam ana bilgisayar sayısı 18 ' e kadar bir VM 'nin konak yoğu
 
 ## <a name="horizon-on-azure-vmware-solution-licensing"></a>Azure VMware Çözüm lisanslama üzerinde ufuk 
 
-Azure VMware çözümünde çalışan UFOnun genel maliyetlerinde dört bileşen vardır. 
+Azure VMware çözümünde çalışan UFOnun genel maliyetlerinde dört bileşen vardır. 
 
 ### <a name="azure-vmware-solution-capacity-cost"></a>Azure VMware Çözüm kapasitesi maliyeti
 
@@ -189,13 +189,13 @@ Azure VMware çözümüyle birlikte kullanılmak üzere, eşzamanlı kullanıcı
 
 Daha önce Azure VMware çözümünde yalnızca dağıtım ufku, daha düşük bir maliyet olduğundan ufuk abonelik lisansını kullanın.
 
-Hem Azure VMware çözümüne hem de şirket içinde, olağanüstü durum kurtarma kullanım örneği ile birlikte dağıtım yapıyorsanız, ufuk Universal Abonelik Lisansı ' nı seçin. Evrensel Lisans, şirket içi dağıtım için bir vSphere lisansı içerdiğinden daha yüksek bir maliyettir.
+Azure VMware çözümüne ve şirket içine dağıtılmışsa, olağanüstü durum kurtarma kullanım durumunda olduğu gibi, ufuk evrensel abonelik lisansını seçin. Şirket içi dağıtım için bir vSphere lisansı içerir, bu nedenle maliyeti daha yüksektir.
 
 Gereksinimlerinize göre ufku lisanslama maliyetini öğrenmek için VMware EUC Sales ekibinizle birlikte çalışın.
 
 ### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Azure sanal ağındaki ufuk altyapısı VM 'lerinin maliyeti
 
-Standart dağıtım mimarisine bağlı olarak, ufuk altyapısı VM 'Leri bağlantı sunucuları, UAGs, App Volume yöneticileri ve müşterinin Azure sanal ağında dağıtılır. Azure 'da yüksek kullanılabilirlik (HA), Microsoft SQL veya Microsoft Active Directory (AD) hizmetlerini desteklemek için ek Azure yerel örnekleri gerekir. Aşağıda, 2.000 masaüstü dağıtım örneğine göre Azure örneklerinin bir listesi verilmiştir. 
+Standart dağıtım mimarisine bağlı olarak, ufuk altyapısı VM 'Leri bağlantı sunucuları, UAGs, App Volume yöneticilerinden oluşur. Bunlar müşterinin Azure sanal ağında dağıtılır. Azure 'da yüksek kullanılabilirlik (HA), Microsoft SQL veya Microsoft Active Directory (AD) hizmetlerini desteklemek için ek Azure yerel örnekleri gerekir. Tabloda, Azure örnekleri bir 2.000-masaüstü dağıtım örneğine göre listelenir. 
 
 >[!NOTE]
 >Sorunu işleyebilmek için, bağlantı sayısı için gerekenden daha fazla sunucu dağıtın (n + 1). Bağlantı sunucusunun, UAG ve App Volumes Yöneticisi 'nin önerilen minimum örnek sayısı 2 ' dir ve gereken süre, ortamın destekleyeceği kullanıcı miktarına göre genişleyecektir.  Tek bir bağlantı sunucusu en çok 4.000 oturumu destekler, ancak en iyi yöntem olarak 2.000 önerilir. En fazla yedi bağlantı sunucusu, Pod başına toplam 12.000 etkin oturum önerisi ile pod başına desteklenir. En güncel sayılar için bkz. VMware [Bilgi Bankası makalesi VMware ufuk 7 boyutlandırma sınırları ve önerileri](https://kb.vmware.com/s/article/2150348).
@@ -210,4 +210,4 @@ Standart dağıtım mimarisine bağlı olarak, ufuk altyapısı VM 'Leri bağlan
 | MS-SQL veritabanı                  | D4sv3          | 2       | *Azure 'da SQL hizmetini kullanma seçeneği*     |
 | Windows dosya paylaşma               | D4sv3          |         | *İsteğe bağlı*                               |
 
-Altyapı VM maliyeti, \$ Yukarıdaki örnekteki 2.000-Desktop dağıtımı için ayda Kullanıcı başına 0,36 olarak ücretlendirilir. Bu örnekte, Haziran 2020 ' den itibaren Azure örnek fiyatlandırması ABD Doğu kullanılmıştır. Fiyatlandırma, bölgeye, seçili seçeneklere ve zamanlamaya göre farklılık gösterebilir.
+Altyapı VM maliyeti, \$ Yukarıdaki örnekteki 2.000-Desktop dağıtımı için ayda Kullanıcı başına 0,36 olarak ücretlendirilir. Bu örnekte ABD Doğu Azure örneği Haziran 2020 fiyatlandırması kullanılmaktadır. Fiyatlandırma, bölgeye, seçili seçeneklere ve zamanlamaya göre farklılık gösterebilir.

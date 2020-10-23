@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d898d3825fa40cbfd13337067c24cf14f9a544
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78184257"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102026"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C için kullanılabilir Microsoft Graph işlemler
 
@@ -33,6 +33,15 @@ Aşağıdaki bölümlerde yer alan her bağlantı, bu işlem için Microsoft Gra
 - [Kullanıcı silme](https://docs.microsoft.com/graph/api/user-delete)
 
 Microsoft Graph API 'siyle Azure AD B2C Kullanıcı hesaplarını yönetme hakkında daha fazla bilgi için bkz. [Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme](manage-user-accounts-graph-api.md).
+
+## <a name="user-phone-number-management"></a>Kullanıcı telefon numarası yönetimi
+
+- [Ekle](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
+- [Al](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
+- [Güncelleştirme](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
+- [Silme](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+
+Kullanıcının Microsoft Graph API 'SI ile oturum açma telefon numarasını yönetme hakkında daha fazla bilgi için bkz. [B2C kimlik doğrulama yöntemleri](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy).
 
 ## <a name="identity-providers-user-flow"></a>Kimlik sağlayıcıları (Kullanıcı akışı)
 
@@ -98,7 +107,7 @@ Microsoft Graph API 'sindeki ilke anahtarları için en üst düzey kaynak, [gü
 
 - [Uzantı özelliklerini listele](https://docs.microsoft.com/graph/api/application-list-extensionproperty)
 
-Azure AD B2C, Kullanıcı başına 100 özel öznitelik tutan bir dizin sağlar. Kullanıcı akışları için, bu uzantı özellikleri [Azure Portal kullanılarak yönetilir](custom-policy-custom-attributes.md). Özel ilkeler için Azure AD B2C, ilke uzantı özelliğine bir değer yazdığında, özelliği sizin için oluşturur.
+Azure AD B2C, Kullanıcı başına 100 özel öznitelik tutan bir dizin sağlar. Kullanıcı akışları için, bu uzantı özellikleri [Azure Portal kullanılarak yönetilir](custom-policy-custom-attributes.md). Özel ilkeler için Azure AD B2C, ilke uzantı özelliğine ilk kez bir değer yazdığında, sizin için özelliği oluşturur.
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 

@@ -79,7 +79,7 @@
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: SSS
           href: dns-faq-private.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır kılavuzları
   items:
     - name: Genel DNS
       items:

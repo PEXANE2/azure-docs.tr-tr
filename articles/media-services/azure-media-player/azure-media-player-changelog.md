@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91315091"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370585"
 ---
 # <a name="changelog"></a>Değişiklik günlüğü
 
@@ -198,7 +198,7 @@ Uygulamaları çağırmak için anlamlı bir KeyDelivery hatası döndürün
 
 ### <a name="changes"></a>Değişiklikler ###
 
-- Değişebilir [Canlı açıklamalı alt yazı] 608 ile 708 arasındaki CEA açıklamalı alt yazılar için API adı değiştirildi. Daha fazla bilgi için bkz. [CEA708 açıklamalı altyazı ayarları](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- Değişebilir [Canlı açıklamalı alt yazı] 608 ile 708 arasındaki CEA açıklamalı alt yazılar için API adı değiştirildi. Daha fazla bilgi için bkz. [CEA708 açıklamalı altyazı ayarları](/javascript/api/azuremediaplayer/cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0 (resmi sürüm) ##
 
@@ -447,7 +447,7 @@ Uygulamaları çağırmak için anlamlı bir KeyDelivery hatası döndürün
 
 - Değişebilir Oynatıcı, geçerli Chrome EME gereksinimlerine güncelleştirildi
 - Değişebilir Varsayılan techOrder yeni Tech-html5FairPlayHLS uyacak şekilde değiştirilmiştir (daha fazla bilgi için [korunan içeriğe](azure-media-player-protected-content.md) bakın)
-- Değişebilir [AzureHtml5JS] Safari 'de MPEG-Dash yürütme etkinleştirildi
+- Değişebilir [AzureHtml5JS] Safari 'de MPEG-Dash oynatma etkinleştirildi
 - Değişebilir Lerinizi Çoklu DRM örnekleri FairPlay uyacak şekilde değiştirildi
 
 ## <a name="174-official-hotfix-update"></a>1.7.4 (resmi düzeltme güncelleştirmesi) ##

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ffac4f19d50d9a386110e1b89f8f147652a2cd
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610651"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132015"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>Azure Güvenlik duvarı DNS ayarları (Önizleme)
 
@@ -57,6 +57,7 @@ DNS proxy 'yi yapılandırmak için, sanal ağ DNS sunucularınız ayarınızı 
 3. **DNS sunucuları**altında **özel** ' i seçin.
 4. Güvenlik duvarının özel IP adresini girin.
 5. **Kaydet**’i seçin.
+6. Sanal ağa bağlı olan VM 'Leri yeniden başlatarak yeni DNS sunucusu ayarları atanır. VM 'Ler yeniden başlatılana kadar geçerli DNS ayarlarını kullanmaya devam eder.
 
 #### <a name="enable-dns-proxy-preview"></a>DNS proxy 'yi etkinleştir (Önizleme)
 

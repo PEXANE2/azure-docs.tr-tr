@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82509678"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279908"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
 
@@ -24,7 +24,7 @@ JavaScript 'te saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevl
 
 * **Yordamsal Logic:** İş mantığını ifade etmek için zengin ve tanıdık arabirim sağlayan üst düzey bir programlama dili olarak JavaScript. Veriler üzerinde bir dizi karmaşık işlem gerçekleştirebilirsiniz.
 
-* **Atomik işlemler:** Azure Cosmos DB, tek bir saklı yordamda veya bir tetikleyicide gerçekleştirilen veritabanı işlemlerinin atomik olmasını güvence altına alır. Bu atomik işlevsellik, bir uygulamanın tüm işlemlerin başarılı veya hiç olmaması için ilgili işlemleri tek bir toplu işte birleştirmesine olanak tanır.
+* **Atomik işlemler:** Tek bir saklı yordamda veya bir tetikleyicide gerçekleştirilen Azure Cosmos DB veritabanı işlemleri atomik. Bu atomik işlevsellik, bir uygulamanın tüm işlemlerin başarılı veya hiç olmaması için ilgili işlemleri tek bir toplu işte birleştirmesine olanak tanır.
 
 * **Performans:** JSON verileri, JavaScript dil türü sistemine doğası gereği eşlenir. Bu eşleme, arabellek havuzundaki JSON belgelerinin geç şekilde kullanıma hazır hale getirilmesi ve bunları yürütülen koda talep üzerine getirmek gibi çeşitli iyileştirmeler sağlar. İş mantığını veritabanına aktarma ile ilgili başka performans avantajları vardır; buna şunlar dahildir:
 
@@ -55,7 +55,7 @@ Azure Cosmos DB, JavaScript çalışma zamanı veritabanı altyapısının için
 
 ### <a name="scope-of-a-transaction"></a>Bir işlemin kapsamı
 
-Saklı yordamlar bir Azure Cosmos kapsayıcısı ile ilişkilendirilir ve saklı yordam yürütme, mantıksal bir bölüm anahtarına göre kapsamlandırılır. Saklı yordamlar, yürütme sırasında işlem kapsamı için mantıksal bölümü tanımlayan bir mantıksal bölüm anahtarı değeri içermelidir. Daha fazla bilgi için bkz. [Azure Cosmos DB bölümlendirme](partition-data.md) makalesi.
+Saklı yordamlar bir Azure Cosmos kapsayıcısı ile ilişkilendirilir ve saklı yordam yürütme, mantıksal bir bölüm anahtarına göre kapsamlandırılır. Saklı yordamlar, yürütme sırasında işlem kapsamı için mantıksal bölümü tanımlayan bir mantıksal bölüm anahtarı değeri içermelidir. Daha fazla bilgi için bkz. [Azure Cosmos DB bölümlendirme](partitioning-overview.md) makalesi.
 
 ### <a name="commit-and-rollback"></a>Yürüt ve geri al
 

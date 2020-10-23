@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0dfc86503f1b3aa648cb8c7cefe14fbd123f1459
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 081eb10166ff681990af15110829030176efa3fa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047514"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207793"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (CLı) ayarlama
 
@@ -24,7 +24,9 @@ Bu makalenin bu sürümü, tek tek, CLı kullanılarak bu adımları el ile bir 
 * Azure portal kullanarak bu adımları el ile almak için, bu makalenin Portal sürümüne bakın: [*nasıl yapılır: bir örnek ve kimlik doğrulaması (portal) ayarlama*](how-to-set-up-instance-portal.md).
 * Bir dağıtım betiği örneği kullanarak otomatikleştirilmiş bir kurulum aracılığıyla çalıştırmak için, bu makalenin betikleştirilmiş sürümüne bakın: [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama (komut dosyalı)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-cloud-shell-session"></a>Cloud Shell oturum ayarlama
@@ -86,66 +88,7 @@ Bu komutun sonucu oluşturulan rol ataması hakkında bilgi verilir.
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
 
-Artık bir Azure dijital TWINS örneğiniz var ve bunu yönetmek için izinler atandı. Daha sonra, bir istemci uygulamasının bu uygulamaya erişmesi için izinleri ayarlayacaksınız.
-
-## <a name="set-up-access-permissions-for-client-applications"></a>İstemci uygulamaları için erişim izinlerini ayarlama
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-Bir uygulama kaydı oluşturmak için Azure dijital TWINS API 'Leri için kaynak kimliklerini ve API 'nin temel izinlerini sağlamanız gerekir.
-
-Çalışma dizininizde, yeni bir dosya oluşturun ve bu ayrıntıları yapılandırmak için aşağıdaki JSON kod parçacığını girin: 
-
-```json
-[{
-    "resourceAppId": "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
-    "resourceAccess": [
-     {
-       "id": "4589bd03-58cb-4e6c-b17f-b580e39652f8",
-       "type": "Scope"
-     }
-    ]
-}]
-``` 
-
-Bu dosyayı _**manifest.js**_ olarak kaydedin.
-
-> [!NOTE] 
-> `https://digitaltwins.azure.net`GUID yerine, Azure Digital TWINS kaynak uygulama kimliği için "kolay ve" insan tarafından okunabilen bir dizenin kullanılabileceği bazı konumlar vardır `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . Örneğin, bu belge genelinde birçok örnek, MSAL kitaplığı ile kimlik doğrulaması kullanır ve kolay dize bu şekilde kullanılabilir. Ancak, uygulama kaydını oluşturma adımında, KIMLIğIN GUID biçimi yukarıda gösterildiği gibi gereklidir. 
-
-Sonra bu dosyayı Cloud Shell karşıya yüklersiniz. Cloud Shell pencerenizde, "dosyaları karşıya yükle/Indir" simgesine tıklayın ve "karşıya yükle" yi seçin.
-
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Kaynak grubu ve Azure dijital TWINS örneğinin başarıyla oluşturulmasıyla Komut penceresi" düğmesine basın.
-
-Ardından, *genel istemci/yerel (mobil & Masaüstü)* yanıt URL 'si ile bir uygulama kaydı oluşturmak için aşağıdaki komutu çalıştırın `http://localhost` . Yer tutucuları gerektiği gibi değiştirin:
-
-```azurecli
-az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
-```
-
-İşte oluşturduğunuz kayıt hakkındaki bilgileri gösteren bu komutun çıktısının bir alıntısı:
-
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Kaynak grubu ve Azure dijital TWINS örneğinin başarıyla oluşturulmasıyla Komut penceresi":::
-
-### <a name="verify-success"></a>Başarıyı doğrula
-
-[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
-
-Sonra, karşıya yüklenen *manifest.js* ayarların kayıt üzerinde doğru şekilde ayarlandığını doğrulayın. Bunu yapmak için, menü çubuğundan *bildirim* ' ı seçerek uygulama kaydının bildirim kodunu görüntüleyin. Kod penceresinin alt kısmına ilerleyin ve içindeki *manifest.js* alanları arayın `requiredResourceAccess` :
-
-[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
-
-### <a name="collect-important-values"></a>Önemli değerleri topla
-
-Ardından, uygulama kaydının ayrıntılarını görmek için menü çubuğundan *genel bakış* ' ı seçin:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Kaynak grubu ve Azure dijital TWINS örneğinin başarıyla oluşturulmasıyla Komut penceresi":::
-
-**Sayfanızda gösterilen** *uygulama (istemci) kimliğini* ve *Dizin (kiracı) kimliğini* bir yere göz atın. Bu değerler daha sonra [Azure dijital TWINS API 'lerinde istemci uygulamasının kimliğini doğrulamak](how-to-authenticate-client.md)için gerekecektir. Bu tür uygulamalar için kod yazabileceksiniz, bu değerleri olacak kişiyle paylaşmanız gerekir.
-
-### <a name="other-possible-steps-for-your-organization"></a>Kuruluşunuz için olası diğer adımlar
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+Artık bir Azure dijital TWINS örneğiniz var ve bunu yönetmek için izinler atandı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -153,5 +96,5 @@ Azure Digital TWINS CLı komutlarını kullanarak örneğiniz için tek REST API
 * [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)
 
-Ya da bkz. istemci uygulamasının kimlik doğrulama kodunu yazarak istemci uygulamanızı örneğinizle bağlama:
+Ya da bkz. kimlik doğrulama kodu ile bir istemci uygulamasını örneğinize bağlama:
 * [*Nasıl yapılır: uygulama kimlik doğrulama kodunu yazma*](how-to-authenticate-client.md)

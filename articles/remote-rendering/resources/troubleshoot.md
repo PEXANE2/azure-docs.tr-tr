@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803832"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203679"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -88,7 +88,7 @@ Video kalitesi ağ kalitesiyle veya eksik h265 video codec bileşeniyle karşı 
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>MRC ile kaydedilen video, canlı deneyim kalitesini yansıtmaz
 
-Bir video, [karma gerçeklik yakalama (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)aracılığıyla HoloLens 'te kaydedilebilir. Ancak, sonuçta elde edilen videonun iki nedenden dolayı canlı deneyiminden daha kötü bir kalite vardır:
+Bir video, [karma gerçeklik yakalama (MRC)](/windows/mixed-reality/mixed-reality-capture-for-developers)aracılığıyla HoloLens 'te kaydedilebilir. Ancak, sonuçta elde edilen videonun iki nedenden dolayı canlı deneyiminden daha kötü bir kalite vardır:
 * Video kare hızı 60 Hz 'in aksine 30 Hz 'e göre belirlenir.
 * Video görüntüleri, [geç aşama yeniden projeksiyonu](../overview/features/late-stage-reprojection.md) işleme adımını etkilemez, bu nedenle video choppier gibi görünür.
 

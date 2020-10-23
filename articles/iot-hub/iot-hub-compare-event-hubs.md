@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322763"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142770"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT cihazlarını Azure 'a bağlama: IoT Hub ve Event Hubs
 
@@ -26,7 +26,7 @@ Azure, verilerinizi bulutun gücüne bağlamanıza yardımcı olacak farklı tü
 
 Azure IoT Hub, IoT cihazlarını veri toplamak ve iş öngörülerini ve Otomasyonu yönlendirmek için bağlayan bulut ağ geçidindür. Ayrıca, IoT Hub cihazlarınız ve arka uç sistemleriniz arasındaki ilişkiyi zenginleştiren özellikler içerir. İki yönlü iletişim özellikleri, cihazlardan veri alırken aynı zamanda komutları ve ilkeleri cihazlara geri gönderebilirken olduğu anlamına gelir. Örneğin, özellikleri güncelleştirmek veya cihaz yönetimi eylemlerini çağırmak için buluttan cihaza mesajlaşma 'yı kullanın. Buluttan cihaza iletişim Ayrıca, Azure IoT Edge ile uç cihazlarınıza bulut zekası göndermenizi de sağlar. IoT Hub tarafından sunulan benzersiz cihaz düzeyi kimliği, IoT çözümünüzün olası saldırılara karşı daha iyi korunmasına yardımcı olur. 
 
-Azure [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) , Azure 'un büyük veri akışı hizmetidir. Müşterilerin günde milyarlarca istek gönderebildiği, yüksek aktarım hızında veri akışı senaryoları için tasarlanmıştır. Event Hubs akışınızın ölçeğini genişletmek için bölümlenmiş bir tüketici modeli kullanır ve Azure'ın Databricks, Stream Analytics, ADLS ve HDInsight gibi büyük veri ve analiz hizmetleriyle tümleşik çalışır. Event Hubs yakalama ve otomatik Şişir gibi özelliklerle bu hizmet, büyük veri uygulamalarınızı ve çözümlerinizi destekleyecek şekilde tasarlanmıştır. Ayrıca, IoT Hub telemetri akış yolu için Event Hubs kullanır, bu nedenle IoT çözümünüz Event Hubs inanılmaz gücünden de faydalanır.
+Azure [Event Hubs](../event-hubs/event-hubs-about.md) , Azure 'un büyük veri akışı hizmetidir. Müşterilerin günde milyarlarca istek gönderebildiği, yüksek aktarım hızında veri akışı senaryoları için tasarlanmıştır. Event Hubs akışınızın ölçeğini genişletmek için bölümlenmiş bir tüketici modeli kullanır ve Azure'ın Databricks, Stream Analytics, ADLS ve HDInsight gibi büyük veri ve analiz hizmetleriyle tümleşik çalışır. Event Hubs yakalama ve otomatik Şişir gibi özelliklerle bu hizmet, büyük veri uygulamalarınızı ve çözümlerinizi destekleyecek şekilde tasarlanmıştır. Ayrıca, IoT Hub telemetri akış yolu için Event Hubs kullanır, bu nedenle IoT çözümünüz Event Hubs inanılmaz gücünden de faydalanır.
 
 Özetlemek gerekirse, her iki çözüm de büyük ölçekte veri alımı için tasarlanmıştır. Yalnızca IoT Hub, IoT cihazlarınızı Azure bulutuna bağlayan iş değerini en üst düzeye çıkarmak için tasarlanan zengin IoT 'ye özgü yetenekler sağlar.  IoT yolculuğu, veri alma senaryolarınızı desteklemek için IoT Hub başlayıp, işiniz ve teknik gereksinimleriniz için ihtiyaç duyduktan sonra tam özellikli IoT özelliklerine anında erişebilmeniz güvence altına alınır.
 

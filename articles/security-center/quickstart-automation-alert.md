@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c86561f7c677ec4a335ecb04cc0da95dad119d1e
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906355"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340980"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak belirli bir güvenlik uyarısına otomatik yanıt oluşturma (ARM şablonu)
 
@@ -64,7 +64,7 @@ Diğer Güvenlik Merkezi hızlı başlangıç şablonları için, bu [topluluğa
 
     [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
-    Bu dağıtım seçeneği hakkında daha fazla bilgi edinmek için bkz. [GitHub deposundan şablon dağıtmak için dağıtım düğmesi kullanma](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button).
+    Bu dağıtım seçeneği hakkında daha fazla bilgi edinmek için bkz. [GitHub deposundan şablon dağıtmak için dağıtım düğmesi kullanma](../azure-resource-manager/templates/deploy-to-azure-button.md).
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
@@ -94,4 +94,4 @@ Artık gerekli değilse, Azure portal kullanarak iş akışı otomasyonunu silin
 Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

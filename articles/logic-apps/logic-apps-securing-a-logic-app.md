@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2020
-ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: 159f4b2ea0cafb0b2c883cde76ddce7ddd3f1fc6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269174"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317562"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -316,14 +316,14 @@ Paylaşılan erişim Imzası (SAS) ile birlikte, mantıksal uygulamanızı çağ
 
 1. **Erişim denetimi yapılandırması**  >  **izin verilen gelen IP adresleri**altında **belirli IP aralıkları**' nı seçin.
 
-1. **Tetikleyiciler Için IP aralıkları**altında, tetikleyicinin kabul ettiği IP adresi aralıklarını belirtin.
+1. **Tetikleyiciler Için IP aralıkları** kutusu göründüğünde, tetikleyicinin kabul ettiği IP adresi aralıklarını belirtin. Geçerli bir IP aralığı şu biçimleri kullanır: *x. x. x. x/x* veya *x. x. x. x-x. x. x.* x
 
-   Geçerli bir IP aralığı şu biçimleri kullanır: *x. x. x. x/x* veya *x. x. x. x-x. x. x.* x
+   Örneğin, mantıksal uygulamanızı HTTP eylemi aracılığıyla yalnızca iç içe geçmiş bir mantıksal uygulama olarak çağrılabilir hale getirmek için, **belırlı IP aralıkları** seçeneğini kullanın ( **yalnızca diğer Logic Apps** seçeneği değil) ve üst mantıksal uygulamanın [giden IP adreslerini](../logic-apps/logic-apps-limits-and-config.md#outbound)girin.
 
-Mantıksal uygulamanızın yalnızca iç içe geçmiş bir mantıksal uygulama olarak tetikleyeceğini istiyorsanız, **Izin verilen gelen IP adresleri** listesinden **yalnızca diğer Logic Apps**' ı seçin. Bu seçenek, mantıksal uygulama kaynağınızın boş bir dizisini yazar. Bu şekilde, yalnızca Logic Apps hizmetinden (üst mantıksal uygulamalar) yapılan çağrılar iç içe geçmiş mantıksal uygulamayı tetikleyebilir.
+   Ancak, mantıksal uygulamanızı yerleşik [Azure Logic Apps eylemi](../logic-apps/logic-apps-http-endpoint.md)aracılığıyla yalnızca iç içe bir mantıksal uygulama olarak çağrılabilir hale getirmek için, bunun yerine **yalnızca diğer Logic Apps** seçeneğini belirleyin. Bu seçenek, mantıksal uygulama kaynağınızın boş bir dizisini yazar ve yalnızca diğer "ana" mantık uygulamalarından gelen çağrıların yerleşik **Azure Logic Apps** eylemi aracılığıyla iç içe mantıksal uygulamayı tetikleyebilmesine gerek duyar.
 
-> [!NOTE]
-> IP adresinden bağımsız olarak, [Logic Apps REST API: Iş akışı Tetikleyicileri-Çalıştır](/rest/api/logic/workflowtriggers/run) isteği veya API Management kullanarak istek tabanlı tetikleyicisine sahip bir mantıksal uygulamayı çalıştırmaya devam edebilirsiniz. Ancak, bu senaryo Azure REST API için de [kimlik doğrulaması](../active-directory/develop/authentication-vs-authorization.md) gerektirir. Tüm olaylar Azure denetim günlüğünde görüntülenir. Erişim denetim ilkelerini uygun şekilde ayarladığınızdan emin olun.
+   > [!NOTE]
+   > Belirttiğiniz herhangi bir IP adresi ne olursa olsun, [Logic Apps REST API: Iş akışı Tetikleyicileri-Çalıştır](/rest/api/logic/workflowtriggers/run) isteği veya API Management kullanarak istek tabanlı tetikleyicisine sahip bir mantıksal uygulamayı çalıştırmaya devam edebilirsiniz. Ancak, bu senaryo Azure REST API için de [kimlik doğrulaması](../active-directory/develop/authentication-vs-authorization.md) gerektirir. Tüm olaylar Azure denetim günlüğünde görüntülenir. Erişim denetim ilkelerini uygun şekilde ayarladığınızdan emin olun.
 
 <a name="restrict-inbound-ip-template"></a>
 
@@ -939,7 +939,7 @@ Istek Tetikleyicileri üzerinde, mantıksal uygulamanız için [Azure AD yetkile
 | **Hedef kitle** | `audience` | Evet | <*kaynaktan yetkilendirme*> | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/` |
 | **İstemci KIMLIĞI** | `clientId` | Evet | <*istemci KIMLIĞI*> | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |
 | **Kimlik bilgisi türü** | `credentialType` | Evet | Sertifika <br>veya <br>Gizli dizi | İstemcinin yetkilendirme istemek için kullandığı kimlik bilgisi türü. Bu özellik ve değer mantıksal uygulamanızın temel tanımında görünmez, ancak seçilen kimlik bilgisi türü için görüntülenen özellikleri belirler. |
-| **Gizli dizi** | `secret` | Evet, ancak yalnızca "gizli" kimlik bilgisi türü için | <*istemci parolası*> | Yetkilendirme isteğinde bulunan istemci parolası |
+| **Gizlilikle** | `secret` | Evet, ancak yalnızca "gizli" kimlik bilgisi türü için | <*istemci parolası*> | Yetkilendirme isteğinde bulunan istemci parolası |
 | **Türk** | `pfx` | Evet, ancak yalnızca "sertifika" kimlik bilgisi türü için | <*kodlanmış-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik |
 | **Parola** | `password` | Evet, ancak yalnızca "sertifika" kimlik bilgisi türü için | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
 |||||
@@ -1065,7 +1065,7 @@ Kuruluşunuz Azure Logic Apps bağlayıcılarını kullanarak belirli kaynaklara
 
   * [Azure App Service planları](../app-service/overview-hosting-plans.md)
   * [Azure İşlevleri ağ seçenekleri](../azure-functions/functions-networking-options.md)
-  * [Sanal makineler için Azure ayrılmış Konakları](../virtual-machines/windows/dedicated-hosts.md)
+  * [Sanal makineler için Azure ayrılmış Konakları](../virtual-machines/dedicated-hosts.md)
   * [Azure 'da sanal makine yalıtımı](../virtual-machines/isolation.md)
   * [Adanmış Azure hizmetlerini sanal ağlara dağıtma](../virtual-network/virtual-network-for-azure-services.md)
 

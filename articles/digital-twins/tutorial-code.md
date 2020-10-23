@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 40484521ecdc32e2e279ddf1b68ddcd4b1d7bc9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057493"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427588"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
-Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure IoT Digital ikizi istemci kitaplığı (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)kullanılarak Azure dijital TWINS hizmetine karşı programlama hakkında bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
+Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure dijital TWINS SDK 'sını (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core)kullanarak Azure dijital TWINS hizmetinde programlamaya yönelik bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
 
 > [!div class="checklist"]
 > * Projeyi ayarla
@@ -58,7 +58,7 @@ dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
-İlk bağımlılık, [.net Için Azure IoT Digital ikizi istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)' dır. İkinci bağımlılık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
+İlk bağımlılık [.net Için Azure Digital TWINS SDK 'sına](https://www.nuget.org/packages/Azure.DigitalTwins.Core)sahiptir. İkinci bağımlılık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
 Öğreticinin tamamında kullanmaya devam edebileceksiniz, komut penceresini açık tutun.
 
@@ -104,40 +104,21 @@ Daha sonra, bazı işlevleri doldurmanız için bu dosyaya kod ekleyeceksiniz.
 
 Uygulamanızın yapması gereken ilk şey, Azure dijital TWINS hizmetinde kimlik doğrulaması gerçekleştirir. Ardından, SDK işlevlerine erişmek için bir hizmet istemci sınıfı oluşturabilirsiniz.
 
-Kimlik doğrulamak için üç parça bilgi gerekir:
-* Aboneliğiniz için *Dizin (kiracı) kimliği*
-* Daha önce Azure Digital TWINS örneğini ayarlarken oluşturulan *uygulama (istemci) kimliği*
-* Azure dijital TWINS örneğinizin *ana bilgisayar adı*
+Kimlik doğrulamak için, Azure dijital TWINS örneğinizin *ana bilgisayar adına* ihtiyacınız vardır.
 
->[!TIP]
-> *Dizin (kiracı) kimliğinizi*bilmiyorsanız bu komutu [Azure Cloud Shell](https://shell.azure.com)' de çalıştırarak edinebilirsiniz:
-> 
-> ```azurecli
-> az account show --query tenantId
-> ```
-
-*Program.cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure dijital TWINS örneğiniz *ana bilgisayar adı*, `clientId` *Uygulama Kimliğiniz*ve `tenantId` *Dizin kimliğiniz*olarak ayarlayın.
+*Program.cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına*ayarlayın.
 
 ```csharp
-string clientId = "<your-application-ID>";
-string tenantId = "<your-directory-ID>";
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+var credential = new DefaultAzureCredential();
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 Console.WriteLine($"Service client created – ready to go");
 ```
 
 Dosyayı kaydedin. 
 
-Bu örneğin etkileşimli bir tarayıcı kimlik bilgisi kullandığını unutmayın:
-```csharp
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-```
-
-Bu kimlik bilgisi türü tarayıcı penceresinin açılmasını sağlar ve Azure kimlik bilgilerinizi vermenizi ister. 
-
 >[!NOTE]
-> Diğer kimlik bilgileri türleri hakkında daha fazla bilgi için [Microsoft Identity platform kimlik doğrulama kitaplıkları](../active-directory/develop/reference-v2-libraries.md)belgelerine bakın.
+> Bu örnek, `DefaultAzureCredential` kimlik doğrulaması için bir kullanır. Diğer kimlik bilgileri türleri hakkında daha fazla bilgi için, bkz. [Microsoft Identity platform kimlik doğrulama kitaplıkları](../active-directory/develop/reference-v2-libraries.md)veya [istemci uygulamalarının kimlik doğrulaması](how-to-authenticate-client.md)Ile Ilgili Azure dijital TWINS makalesi.
 
 Komut pencerenizde şu komutla kodu çalıştırın: 
 
@@ -285,12 +266,18 @@ Bu noktadan itibaren öğreticide, try/catch işleyicilerindeki hizmet yöntemle
 
 Azure dijital TWINS 'e bir model yüklediğinize göre, bu model tanımını **dijital TWINS**oluşturmak için kullanabilirsiniz. [Dijital TWINS](concepts-twins-graph.md) , bir modelin örnekleridir ve iş ortamınızdaki varlıkları, bir gruptaki sensörlerden, binadaki odaların veya bir otomobilde ışıkların bulunduğu şeyleri temsil eder. Bu bölümde, daha önce karşıya yüklediğiniz modele göre birkaç dijital TWINS oluşturulur.
 
-`using`İçinde yerleşik .net JSON serileştiricisi gerekecektir, en üst kısımdaki yeni bir ifade ekleyin `System.Text.Json` :
+`using`Bu yeni deyimleri en üste ekleyin; Bu kod örneği içinde yerleşik .net JSON serileştiricisini `System.Text.Json` ve `Serialization` [.net Için Azure Digital Twins SDK (C#) için](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) ad ALANıNı kullanır [önizleme için değiştirilen bağlantı]:
 
 ```csharp
 using System.Text.Json;
 using Azure.DigitalTwins.Core.Serialization;
 ```
+
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` Dijital TWINS ve ilişkilerle çalışmak için gerekli değildir; Bu, doğru biçime veri almaya yardımcı olabilecek isteğe bağlı bir ad alanıdır. Kullanmanın bazı alternatifleri şunlardır:
+>* JSON nesnesi oluşturmak için dizeleri bitiştirme
+>* `System.Text.Json`Dinamik olarak JSON nesnesi derlemek gibi BIR JSON ayrıştırıcısı kullanma
+>* C# dilinde özel türlerinizi modelleme, onları örneklendirme ve dizelerde serileştirme
 
 Ardından, `Main` Bu modele göre üç dijital TWINS oluşturmak ve başlatmak için yönteminin sonuna aşağıdaki kodu ekleyin.
 
@@ -320,13 +307,10 @@ TWINS, ilk çalıştırmadan sonra zaten mevcut olsa bile, ikinci kez oluşturul
 
 Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunları bir **ikizi grafiğine**bağlayabilirsiniz. [İkizi grafikleri](concepts-twins-graph.md) , tüm ortamınızı temsil etmek için kullanılır.
 
-İlişki oluşturabilmek için `Azure.DigitalTwins.Core.Serialization` ad alanına ihtiyacınız olacaktır. Bunu projeye bu deyimle daha önce eklediniz `using` :
-
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
+Bu kod örneği, ilişki oluşturma konusunda yardımcı olmak için `Azure.DigitalTwins.Core.Serialization` ad alanını kullanır. Bunu, [*dijital TWINS oluşturma*](#create-digital-twins) bölümünde daha önce projeye eklediniz.
 
 `Program`Sınıfına, yönteminin altına yeni bir static yöntem ekleyin `Main` :
+
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
@@ -348,7 +332,8 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Daha sonra, `Main` kodu çağırmak için yönteminin sonuna aşağıdaki kodu ekleyin `CreateRelationship` :
+Sonra, yöntemi `Main` çağırmak `CreateRelationship` ve yeni yazdığınız kodu kullanmak için yönteminin sonuna aşağıdaki kodu ekleyin:
+
 ```csharp
 // Connect the twins with relationships
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
@@ -455,11 +440,10 @@ namespace minimal
         {
             Console.WriteLine("Hello World!");
             
-            string clientId = "<your-application-ID>";
-            string tenantId = "<your-directory-ID>";
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-            var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+            
+            var credential = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
             Console.WriteLine($"Service client created – ready to go");
 
             Console.WriteLine();

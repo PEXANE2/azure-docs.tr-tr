@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d4ce68bdda5fbc3dfdb7396141289a58dab5bd1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84021169"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204104"
 ---
 # <a name="create-client-side-performance-traces"></a>İstemci tarafı performans izlemeleri oluşturma
 
@@ -24,7 +24,7 @@ Windows :::no-loc text="performance tracing"::: işlevselliğine yeni başladıy
 
 ### <a name="installation"></a>Yükleme
 
-ARR ile izleme yapmak için kullanılan uygulamalar, tüm Windows geliştirme için kullanılabilen genel amaçlı araçlardır. [Windows performans araç seti](https://docs.microsoft.com/windows-hardware/test/wpt/)aracılığıyla sağlanırlar. Bu araç setini almak için [Windows değerlendirme ve dağıtım seti](https://docs.microsoft.com/windows-hardware/get-started/adk-install)'ni indirin.
+ARR ile izleme yapmak için kullanılan uygulamalar, tüm Windows geliştirme için kullanılabilen genel amaçlı araçlardır. [Windows performans araç seti](/windows-hardware/test/wpt/)aracılığıyla sağlanırlar. Bu araç setini almak için [Windows değerlendirme ve dağıtım seti](/windows-hardware/get-started/adk-install)'ni indirin.
 
 ### <a name="terminology"></a>Terminoloji
 
@@ -35,13 +35,13 @@ Performans izlemeleriyle ilgili bilgi ararken, bir dizi terim boyunca kaçınıl
 * `WPR`
 * `WPA`
 
-**ETW** , [ **W**Windows için **T**bir **E-pul**kasasının](https://docs.microsoft.com/windows/win32/etw/about-event-tracing)temsil eder. Bu, Windows 'da yerleşik olarak bulunan etkili çekirdek düzeyi izleme özelliği için çok daha fazla bir addır. Bu, ETW 'yi destekleyen uygulamalar, performans sorunlarını izlemenize yardımcı olabilecek günlük eylemlerine olay yayabileceğinden *olay* izleme olarak adlandırılır. Varsayılan olarak, işletim sistemi, disk erişimleri, görev geçişleri gibi şeyler için olayları zaten yayar. ARR gibi uygulamalar, bırakılan çerçeveler, ağ gecikmesi vb. gibi özel olayları da yayar.
+**ETW** , [ **W**Windows için **T**bir **E-pul**kasasının](/windows/win32/etw/about-event-tracing)temsil eder. Bu, Windows 'da yerleşik olarak bulunan etkili çekirdek düzeyi izleme özelliği için çok daha fazla bir addır. Bu, ETW 'yi destekleyen uygulamalar, performans sorunlarını izlemenize yardımcı olabilecek günlük eylemlerine olay yayabileceğinden *olay* izleme olarak adlandırılır. Varsayılan olarak, işletim sistemi, disk erişimleri, görev geçişleri gibi şeyler için olayları zaten yayar. ARR gibi uygulamalar, bırakılan çerçeveler, ağ gecikmesi vb. gibi özel olayları da yayar.
 
 **ETL** , **E-pul**yarış/ **Çıkış oranını**temsil eder. **T** Yalnızca bir izlemenin toplanması (günlüğe kaydedilmiş) ve bu nedenle genellikle izleme verilerini depolayan dosyalar için dosya uzantısı olarak kullanıldığı anlamına gelir. Bu nedenle, bir izleme yaptığınızda genellikle bir \* . ETL dosyanız olur.
 
-**WPR** , [ **W**Windows **P**erformans **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) için temsil eder ve olay izlemelerinin kaydını başlatan ve durduran uygulamanın adıdır. WPR \* , günlüğe kaydedilecek tam olayları yapılandıran bir profil dosyası (. wprp) alır. Bu tür bir `wprp` Dosya ARR SDK ile birlikte sağlanır. Bir masaüstü BILGISAYAR üzerinde izleme yaparken, WPR 'yi doğrudan başlatabilirsiniz. HoloLens üzerinde bir izleme yaparken, genellikle bunun yerine web arabiriminden ilerleirsiniz.
+**WPR** , [ **W**Windows **P**erformans **R**ecorder](/windows-hardware/test/wpt/windows-performance-recorder) için temsil eder ve olay izlemelerinin kaydını başlatan ve durduran uygulamanın adıdır. WPR \* , günlüğe kaydedilecek tam olayları yapılandıran bir profil dosyası (. wprp) alır. Bu tür bir `wprp` Dosya ARR SDK ile birlikte sağlanır. Bir masaüstü BILGISAYAR üzerinde izleme yaparken, WPR 'yi doğrudan başlatabilirsiniz. HoloLens üzerinde bir izleme yaparken, genellikle bunun yerine web arabiriminden ilerleirsiniz.
 
-**WPA** , [ **W**Windows **P**erformans **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) IÇIN temsil eder ve. etl dosyalarını açmak için kullanılan GUI uygulamasının adı ve \* performans sorunlarını belirlemek için verileri veri aracılığıyla kullanır. WPA, verileri çeşitli ölçütlere göre sıralamanıza, verileri çeşitli yollarla görüntülemenize, ayrıntıları daha sonra görmenizi ve bilgileri ilişkilendirmenize olanak tanır.
+**WPA** , [ **W**Windows **P**erformans **A**nalyzer](/windows-hardware/test/wpt/windows-performance-analyzer) IÇIN temsil eder ve. etl dosyalarını açmak için kullanılan GUI uygulamasının adı ve \* performans sorunlarını belirlemek için verileri veri aracılığıyla kullanır. WPA, verileri çeşitli ölçütlere göre sıralamanıza, verileri çeşitli yollarla görüntülemenize, ayrıntıları daha sonra görmenizi ve bilgileri ilişkilendirmenize olanak tanır.
 
 ETL izlemeleri herhangi bir Windows cihazında (yerel bılgısayar, HoloLens, bulut sunucusu vb.) oluşturulalese de, genellikle diske kaydedilir ve bir masaüstü BILGISAYAR üzerinde WPA ile çözümlenir. ETL dosyaları, bu geliştiricilerin bir görünüme sahip olması için diğer geliştiricilere gönderilebilir. Dosya yolları ve IP adresleri gibi hassas bilgilerin ETL izlemelerinde yakalanabileceğini unutmayın. ETW 'yi iki şekilde kullanabilirsiniz: izlemeleri kaydetmek veya izlemeleri çözümlemek için. İzleme kaydı, düzenli ve en az kurulum gerektirir. Diğer yandan izlemeleri analiz etmek, hem WPA aracının hem de araştırdığınız sorunun anlaşılmasına gerek duyar. Öğrenimi WPA için genel malzeme aşağıda verilmiştir ve ayrıca, ARR 'e özgü izlemelerin nasıl yorumlanacağı konusunda yönergeler sağlanır.
 
@@ -51,7 +51,7 @@ ARR performans sorunlarını belirlemek için, gerçek performans özelliklerini
 
 ### <a name="wpr-configuration"></a>WPR yapılandırması
 
-1. [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) *Başlat menüsünden*öğesini başlatın.
+1. [:::no-loc text="Windows Performance Recorder":::](/windows-hardware/test/wpt/windows-performance-recorder) *Başlat menüsünden*öğesini başlatın.
 1. **Diğer seçenekleri** Genişlet
 1. **Profil ekle 'ye tıklayın...**
 1. *Azureremoterenderingnetworkprofil oluşturma. wprp*dosyasını seçin. Bu dosyayı, *Araçlar/ETLProfiles*altındaki ARR SDK 'sında bulabilirsiniz.
@@ -95,7 +95,7 @@ Artık doğrudan WPA 'da açabileceğiniz ya da başka birine gönderebileceğin
 
 Windows Performans Çözümleyici, ETL dosyalarını açmak ve izlemeleri denetlemek için standart bir araçtır. Bu makalede WPA 'nın nasıl çalıştığı hakkında bir açıklama. Başlamak için şu kaynaklara göz atın:
 
-* İlk genel bakış için [Tanıtım videolarını](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) izleyin.
+* İlk genel bakış için [Tanıtım videolarını](/windows-hardware/test/wpt/windows-performance-analyzer) izleyin.
 * WPA 'nın, yaygın adımları açıklayan bir *Başlangıç* sekmesi vardır. Mevcut konulara göz atın. Özellikle "verileri görüntüle" bölümünde, belirli veriler için grafik oluşturma hakkında hızlı bir giriş alırsınız.
 * [Bu web sitesi hakkında](https://randomascii.wordpress.com/2015/09/24/etw-central/)harika bilgiler vardır ancak bunların hepsi yeni başlayanlar için uygun değildir.
 

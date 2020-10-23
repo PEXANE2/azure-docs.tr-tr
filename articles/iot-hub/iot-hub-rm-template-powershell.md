@@ -8,28 +8,28 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fedadfa7e5b4ec3d7de30d0ad3ef1b1bfa0e0ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75976618"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144405"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager şablonu kullanarak IoT Hub oluşturma (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Bir Azure Resource Manager şablonu kullanarak bir IoT Hub ve bir tüketici grubu oluşturma hakkında bilgi edinin. Resource Manager şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için bkz. [Azure Resource Manager belgeleri](https://docs.microsoft.com/azure/azure-resource-manager/).
+Bir Azure Resource Manager şablonu kullanarak bir IoT Hub ve bir tüketici grubu oluşturma hakkında bilgi edinin. Resource Manager şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için bkz. [Azure Resource Manager belgeleri](../azure-resource-manager/index.yml).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Bu hızlı başlangıçta kullanılan Kaynak Yöneticisi şablonu [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/). Şablonun bir kopyası aşağıda verilmiştir:
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-Şablon, üç uç nokta (eventhub, buluttan cihaza ve mesajlaşma) ve bir tüketici grubu içeren bir Azure IoT Hub 'ı oluşturur. Daha fazla şablon örneği için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). IoT Hub şablonu şeması  [burada](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)bulunabilir.
+Şablon, üç uç nokta (eventhub, buluttan cihaza ve mesajlaşma) ve bir tüketici grubu içeren bir Azure IoT Hub 'ı oluşturur. Daha fazla şablon örneği için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). IoT Hub şablonu şeması  [burada](/azure/templates/microsoft.devices/iothub-allversions)bulunabilir.
 
 Şablon dağıtmak için çeşitli yöntemler vardır.  Bu öğreticide Azure PowerShell kullanırsınız.
 
@@ -71,11 +71,11 @@ IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
-[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
+[lnk-rest-api]: /rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/management/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-iotedge]: ../iot-edge/quickstart-linux.md

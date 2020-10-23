@@ -2,13 +2,13 @@
 title: Yönetici Kılavuzu Azure Lab Services | Microsoft Docs
 description: Bu kılavuz, Azure Lab Services kullanarak laboratuvar hesapları oluşturan ve yöneten yöneticilere yardımcı olur.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: ad3bc110d93efb5b735f77fb8a0b2af9e4f9a7cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444157"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425309"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services Yönetici Kılavuzu
 Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yöneticileri, genellikle okulunuzun laboratuvar hesabını ayarlamaktan sorumludur. Laboratuvar hesabı kurulduktan sonra, Yöneticiler veya eğitimciler laboratuvar hesabı içinde bulunan derslik laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarına ve bunları oluşturmaya yönelik kılavuza yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
@@ -144,11 +144,11 @@ Bir sınıf laboratuvarının bulunduğu konum aşağıdaki faktörlere göre fa
     > [!NOTE]
     > Laboratuvar hesabı VNet ile eşlenirse, laboratuvar **oluşturucusunun laboratuvar konumunu seçmesine Izin ver** ayarı devre dışıdır. Makalede bu ayar hakkında daha fazla bilgi bulunabilir: [Laboratuvar oluşturucunun laboratuvar için konum seçmesine Izin ver](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
     
-  - **VNet eşlenmiyor ***ve*** laboratuvar oluşturucularının laboratuvar konumunu seçmesini izin verilmiyor**
+  - * * VNet yok **_ve_*_ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
   
     Laboratuvar hesabıyla eşlenen **VNET olmadığında** *ve* [Laboratuvar oluşturucularının laboratuvar konumunu seçmesini izin verilmediği durumlarda **not** ](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), sınıf laboratuvarları, kullanılabilir VM kapasitesi olan bir bölgede otomatik olarak oluşturulur.  Özellikle Azure Lab Services, [Laboratuvar hesabıyla aynı coğrafya içinde olan bölgelerde](https://azure.microsoft.com/global-infrastructure/regions)kullanılabilirliği arar.
 
-  - **VNet eşlenmez ***ve*** laboratuvar oluşturucuları laboratuvar konumunu seçmelerine izin verilir**
+  - * * VNet eşlenmez **_ve_*_ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
        
     VNET **eşlenmez** ve laboratuvar [oluşturucuları laboratuvar konumunu seçmelerine izin verildiğinde](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), laboratuvar Oluşturucu tarafından seçilebilecek konumlar kullanılabilir kapasiteyi temel alır.
 
@@ -171,14 +171,14 @@ Yöneticiler veya laboratuvar oluşturucuları bir sınıf Laboratuvarı oluştu
 | Orta | <ul><li>4 çekirdek</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. |
 | Orta (Iç Içe sanallaştırma) | <ul><li>4 çekirdek</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.
 | Büyük | <ul><li>8 Çekirdek</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir.  Bu boyut, iç içe sanallaştırmayı da destekler. |
-| Büyük (Iç Içe sanallaştırma) | <ul><li>8 Çekirdek</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. |
+| Büyük (Iç Içe sanallaştırma) | <ul><li>8 Çekirdek</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. |
 | Küçük GPU (görselleştirme) | <ul><li>6 çekirdek</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 | Küçük GPU (Işlem) | <ul><li>6 çekirdek</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut, yapay zeka ve derin öğrenme gibi bilgisayar yoğunluklu uygulamalar için idealdir. |
 | Orta ölçekli GPU (görselleştirme) | <ul><li>12 çekirdek</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 
 ## <a name="manage-identity"></a>Kimliği Yönet
 
-[Azure 'un rol tabanlı erişim denetimini](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve sınıf laboratuvarlarına erişim sağlamak için aşağıdaki roller atanabilir:
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve sınıf laboratuvarlarına erişim sağlamak için aşağıdaki roller atanabilir:
 
 - **Laboratuvar hesap sahibi**
 

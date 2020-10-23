@@ -5,21 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3be13dade9cae45994b5f7a9d6f7479e2de6256
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514219"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460742"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Blob depolama alanına veri aktarmak için Azure Içeri/dışarı aktarma hizmetini kullanma
 
 Bu makalede, Azure Içeri/dışarı aktarma hizmeti 'ni kullanarak büyük miktarlarda verileri Azure Blob depolamaya güvenli bir şekilde aktarmak için adım adım yönergeler sağlanmaktadır. Azure Bloblarına veri aktarmak için hizmet, verilerinizi içeren şifrelenmiş disk sürücülerinin bir Azure veri merkezine sevk etmeniz gerekir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Verileri Azure Blob depolamaya aktarmak üzere bir içeri aktarma işi oluşturmadan önce, bu hizmet için aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun.
 Şunları yapmanız gerekir:
@@ -39,7 +39,7 @@ Verileri Azure Blob depolamaya aktarmak üzere bir içeri aktarma işi oluşturm
   * Dışarı aktarma işi için bir izleme numarası oluştur.
   * Her iş ayrı bir izleme numarasına sahip olmalıdır. Aynı izleme numarasına birden fazla işin eklenmesi desteklenmez.
   * Bir taşıyıcı hesabınız yoksa şuraya gidin:
-    * [FedEX hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
+    * [FedEx hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
     * [BIR DHL hesabı oluşturun](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-prepare-the-drives"></a>1. Adım: sürücüleri hazırlama
@@ -95,6 +95,8 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
 
 ## <a name="step-2-create-an-import-job"></a>2. Adım: içeri aktarma işi oluşturma
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 1. Oturum açın https://portal.azure.com/ .
@@ -142,6 +144,85 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
    * İçeri aktarma işini oluşturmak için **Tamam** ' ı tıklatın.
 
      ![İçeri aktarma işi oluşturma-4. adım](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı 'de bir içeri aktarma işi oluşturmak için aşağıdaki adımları kullanın.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Bir iş oluşturma
+
+1. [Az Import-Export](/cli/azure/ext/import-export/import-export) uzantısını eklemek için [az Extension Add](/cli/azure/extension#az_extension_add) komutunu kullanın:
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. Var olan bir kaynak grubunu kullanabilir veya bir tane oluşturabilirsiniz. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az_group_create) komutunu çalıştırın:
+
+    ```azurecli
+    az group create --name myierg --location "West US"
+    ```
+
+1. Mevcut bir depolama hesabını kullanabilir veya bir tane oluşturabilirsiniz. Bir depolama hesabı oluşturmak için [az Storage Account Create](/cli/azure/storage/account#az_storage_account_create) komutunu çalıştırın:
+
+    ```azurecli
+    az storage account create --resource-group myierg --name myssdocsstorage --https-only
+    ```
+
+1. Diskleri sevk etmek için kullanabileceğiniz konumların bir listesini almak için [az Import-Export location List](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) komutunu kullanın:
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. Bölgenize ait konumları almak için [az Import-Export konumunu göster](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) komutunu kullanın:
+
+    ```azurecli
+    az import-export location show --location "West US"
+    ```
+
+1. İçeri aktarma işi oluşturmak için aşağıdaki [az Import-Export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) komutunu çalıştırın:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name MyIEjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --drive-list bit-locker-key=439675-460165-128202-905124-487224-524332-851649-442187 \
+            drive-header-hash= drive-id=AZ31BGB1 manifest-file=\\DriveManifest.xml \
+            manifest-hash=69512026C1E8D4401816A2E5B8D7420D \
+        --type Import \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --return-shipping carrier-name=FedEx carrier-account-number=123456789 \
+        --storage-account myssdocsstorage
+    ```
+
+   > [!TIP]
+   > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
+
+1. Myierg kaynak grubu için tüm işleri görmek üzere [az Import-Export List](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) komutunu kullanın:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. İşinizi güncelleştirmek veya işinizi iptal etmek için [az Import-Export Update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) komutunu çalıştırın:
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 ## <a name="step-3-optional-configure-customer-managed-key"></a>3. adım (Isteğe bağlı): müşteri tarafından yönetilen anahtarı yapılandırın
 

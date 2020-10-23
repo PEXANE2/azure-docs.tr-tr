@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c388bd22ba20dd681997064496a90a81dabb292f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074847"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426722"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Held kullanarak Kubernetes dağıtımıyla tümleştirin
 
@@ -23,14 +23,14 @@ Yayın işlemi sırasında, HELI uygulamayı çalıştırmak için uygun yapıla
 
 Held çalıştırırken komut satırına ek YAML tabanlı yapılandırma dosyaları sağlayarak *values. YAML* içinde depolanan değerleri geçersiz kılabilirsiniz. Azure Uygulama yapılandırması, yapılandırma değerlerinin YAML dosyalarına verilmesini destekler. Bu dışarı aktarma özelliğinin dağıtımınız ile tümleştirilmesi, Kubernetes uygulamalarınızın uygulama yapılandırmasında depolanan yapılandırma değerlerinden yararlanmasını sağlar.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Held kullanarak Kubernetes 'e uygulama dağıttığınızda uygulama yapılandırmasındaki değerleri kullanın.
 > * Uygulama yapılandırmasındaki bir Key Vault başvurusunu temel alarak bir Kubernetes gizli dizisi oluşturun.
 
 Bu öğretici, Held ile Kubernetes yönetimi hakkında temel anladığını varsayar. [Azure Kubernetes hizmetinde](../aks/kubernetes-helm.md)Held ile uygulama yükleme hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı (sürüm 2.4.0 veya üzeri) yükler
@@ -231,7 +231,7 @@ else{
 
 Bir gizli dizi, **parola**, uygulama yapılandırmasında Key Vault başvuru olarak depolar da Kubernetes sırlarına eklenmiştir. 
 
-![Hızlı başlangıç uygulaması başlatma yerel](./media/kubernetes-dashboard-secrets.png)
+![Veri bölümündeki parolayı vurgulayan ekran görüntüsü.](./media/kubernetes-dashboard-secrets.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

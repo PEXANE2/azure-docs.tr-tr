@@ -1,26 +1,26 @@
 ---
-title: Azure Cosmos DB’de veritabanı aktarım hızını sağlama
-description: Azure portal, CLı, PowerShell ve çeşitli diğer SDK 'Ları kullanarak Azure Cosmos DB veritabanı düzeyinde aktarım hızı sağlamayı öğrenin.
+title: SQL API Azure Cosmos DB veritabanı üretimini sağlama
+description: Azure portal, CLı, PowerShell ve çeşitli diğer SDK 'Ları kullanarak Azure Cosmos DB SQL API 'sindeki veritabanı düzeyinde üretilen iş sağlamayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/28/2019
+ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 668aa51bdb57dc4bcde0e3a95c481bb60e3d8ed3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a67a062c06950294ec9e49e2ec69552edc4ee77a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997379"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278612"
 ---
-# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB bir veritabanında standart (el ile) aktarım hızı sağlama
+# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB-SQL API 'sinde bir veritabanında standart (el ile) aktarım hızı sağlama
 
-Bu makalede, Azure Cosmos DB bir veritabanında standart (el ile) işleme sağlama açıklanır. Tek bir [kapsayıcıya](how-to-provision-container-throughput.md) aktarım hızı sağlayabilir veya aktarım hızını veritabanına sağlayıp içindeki kapsayıcılar arasında paylaştırabilirsiniz. Kapsayıcı düzeyi ve veritabanı düzeyi işleme ne zaman kullanacağınızı öğrenmek için bkz. [kapsayıcılar ve veritabanlarında üretilen iş sağlama Için kullanım örnekleri](set-throughput.md) makalesi. Azure portal veya Azure Cosmos DB SDK 'larını kullanarak veritabanı düzeyinde aktarım hızı sağlayabilirsiniz.
+Bu makalede, Azure Cosmos DB SQL API 'sindeki bir veritabanında standart (el ile) işleme sağlama açıklanır. Tek bir [kapsayıcıya](how-to-provision-container-throughput.md) aktarım hızı sağlayabilir veya aktarım hızını veritabanına sağlayıp içindeki kapsayıcılar arasında paylaştırabilirsiniz. Kapsayıcı düzeyi ve veritabanı düzeyi işleme ne zaman kullanacağınızı öğrenmek için bkz. [kapsayıcılar ve veritabanlarında üretilen iş sağlama Için kullanım örnekleri](set-throughput.md) makalesi. Azure portal veya Azure Cosmos DB SDK 'larını kullanarak veritabanı düzeyinde aktarım hızı sağlayabilirsiniz.
+
+Farklı bir API kullanıyorsanız, üretilen işi sağlamak için [MongoDB Için API](how-to-provision-throughput-mongodb.md), [Cassandra API](how-to-provision-throughput-cassandra.md)ve [Gremlin API](how-to-provision-throughput-gremlin.md) makalelerini inceleyin.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Azure portalını kullanarak aktarım hızı sağlama
-
-### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API'si
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
@@ -29,11 +29,11 @@ Bu makalede, Azure Cosmos DB bir veritabanında standart (el ile) işleme sağla
 1. **Veri Gezgini** bölmesini açın ve **Yeni veritabanı**' nı seçin. Aşağıdaki ayrıntıları sağlayın:
 
    * Bir veritabanı KIMLIĞI girin.
-   * **Sağlama işleme**' yı seçin.
+   * **Veritabanı Işleme sağlama** seçeneğini belirleyin.
    * Bir üretilen iş girin (örneğin, 1000 ru).
    * **Tamam**’ı seçin.
 
-    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="Yeni veritabanı iletişim kutusunun ekran görüntüsü":::
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Yeni veritabanı iletişim kutusunun ekran görüntüsü":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Azure CLı veya PowerShell kullanarak verimlilik sağlama
 
@@ -45,9 +45,7 @@ Paylaşılan verimlilik içeren bir veritabanı oluşturmak için bkz.
 ## <a name="provision-throughput-using-net-sdk"></a>.NET SDK’sını kullanarak aktarım hızı sağlama
 
 > [!Note]
-> Tüm API 'Ler için üretilen iş sağlamak üzere SQL API için Cosmos SDK 'larını kullanabilirsiniz. İsteğe bağlı olarak, Cassandra API için aşağıdaki örneği de kullanabilirsiniz.
-
-### <a name="all-apis"></a><a id="dotnet-all"></a>Tüm API’ler
+> Tüm API 'Ler için üretilen iş sağlamak üzere SQL API 'SI için Azure Cosmos SDK 'larını kullanabilirsiniz. İsteğe bağlı olarak, Cassandra API için aşağıdaki örneği de kullanabilirsiniz.
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -70,15 +68,6 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 ---
 
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API’si
-
-Benzer komut, tüm CQL uyumlu sürücüler aracılığıyla yürütülebilir.
-
-```csharp
-// Create a Cassandra keyspace and provision throughput of 400 RU/s
-session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");
-```
- 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Cosmos DB ' de sağlanan aktarım hızı hakkında bilgi edinmek için aşağıdaki makalelere bakın:

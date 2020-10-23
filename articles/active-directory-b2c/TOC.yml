@@ -101,8 +101,10 @@
   items:
     - name: Uygulama tümleştirmesi
       items:
-        - name: Bir uygulamayı kaydetme
+        - name: Web uygulaması kaydetme
           href: tutorial-register-applications.md
+        - name: Tek sayfalı uygulama (SPA) kaydetme
+          href: tutorial-register-spa.md
         - name: SAML hizmet sağlayıcısını kaydetme
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
@@ -180,7 +182,7 @@
           href: basic-age-gating.md
         - name: Özel öznitelikleri tanımlama
           href: user-flow-custom-attributes.md
-        - name: API bağlayıcıları
+        - name: API bağlayıcıları (önizleme)
           items:
             - name: Genel Bakış
               href: api-connectors-overview.md

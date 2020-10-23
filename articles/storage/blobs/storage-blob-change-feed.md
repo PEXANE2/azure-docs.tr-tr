@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 105978daeb93a2e5646222ff10055ba20a1dc481
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89568243"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172897"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob depolamada akış desteğini değiştirme
 
@@ -139,7 +139,7 @@ Azure portal aracılığıyla mevcut depolama hesabınızda değişiklik akış�
 Değişiklik akışı birkaç meta veri ve günlük dosyası üretir. Bu dosyalar, depolama hesabının **$blobchangefeed** kapsayıcısında bulunur. 
 
 > [!NOTE]
-> Geçerli yayında **$blobchangefeed** kapsayıcısı Azure Depolama Gezgini veya Azure Portal görünür değil. Şu anda ListContainers API 'sini çağırdığınızda $blobchangefeed kapsayıcısını göremezsiniz, ancak Blobları görmek için Listblobları API 'sini doğrudan kapsayıcıda çağırabilirsiniz.
+> Geçerli yayında $blobchangefeed kapsayıcısı yalnızca Azure portal görünür ancak Azure Depolama Gezgini görünmez. Şu anda ListContainers API 'sini çağırdığınızda $blobchangefeed kapsayıcısını göremez, ancak Blobları görmek için Listblobları API 'sini doğrudan kapsayıcıda çağırabilirsiniz
 
 İstemci uygulamalarınız, değişiklik akışı işlemcisi SDK 'Sı ile birlikte sunulan blob değişiklik akışı işlemci kitaplığını kullanarak değişiklik akışını kullanabilir. 
 

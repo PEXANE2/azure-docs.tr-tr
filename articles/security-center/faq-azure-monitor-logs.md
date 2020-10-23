@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2854f4124a570de4fb467eb6a5d49a3214742e
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613654"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341830"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Zaten Azure Izleyici günlüklerini kullanan müşteriler için SSS<a name="existingloganalyticscust"></a>
 
@@ -26,13 +26,13 @@ ms.locfileid: "91613654"
 
 Bir VM 'de zaten bir Azure uzantısı olarak yüklü Log Analytics Aracısı varsa, güvenlik merkezi mevcut çalışma alanı bağlantısını geçersiz kılmaz. Bunun yerine, güvenlik merkezi mevcut çalışma alanını kullanır. "Güvenlik" veya "SecurityCenterFree" çözümünün, raporlama yaptığı çalışma alanına yüklenmiş olması için VM korunacaktır. 
 
-Zaten mevcut değilse, veri toplama ekranında seçilen çalışma alanına bir güvenlik merkezi çözümü yüklenir ve bu çözüm yalnızca ilgili VM 'lere uygulanır. Bir çözüm eklediğinizde, varsayılan olarak, Log Analytics çalışma alanınıza bağlı tüm Windows ve Linux aracılarına otomatik olarak dağıtılır. [Çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md) , çözümlerinizi bir kapsam uygulamanıza olanak tanır.
+Zaten mevcut değilse, veri toplama ekranında seçilen çalışma alanına bir güvenlik merkezi çözümü yüklenir ve bu çözüm yalnızca ilgili VM 'lere uygulanır. Bir çözüm eklediğinizde, varsayılan olarak, Log Analytics çalışma alanınıza bağlı tüm Windows ve Linux aracılarına otomatik olarak dağıtılır. [Çözüm hedefleme](../azure-monitor/insights/solution-targeting.md) , çözümlerinizi bir kapsam uygulamanıza olanak tanır.
 
 > [!TIP]
 > Log Analytics Aracısı doğrudan VM 'ye (Azure uzantısı olarak değil) yüklenirse, güvenlik merkezi Log Analytics Aracısı 'nı yüklemez ve güvenlik izleme sınırlı olur.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Güvenlik Merkezi, mevcut Log Analytics çalışma alanlarıma çözüm yüklesin mi? Faturalandırma etkileri nelerdir?
-Güvenlik Merkezi, bir VM 'nin oluşturduğunuz bir çalışma alanına zaten bağlı olduğunu belirlediğinde, Güvenlik Merkezi, fiyatlandırma yapılandırmanıza göre bu çalışma alanındaki çözümleri sağlar. Çözümler, [çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md)aracılığıyla yalnızca Ilgili Azure sanal makinelerine uygulanır, böylece faturalandırma aynı kalır.
+Güvenlik Merkezi, bir VM 'nin oluşturduğunuz bir çalışma alanına zaten bağlı olduğunu belirlediğinde, Güvenlik Merkezi, fiyatlandırma yapılandırmanıza göre bu çalışma alanındaki çözümleri sağlar. Çözümler, [çözüm hedefleme](../azure-monitor/insights/solution-targeting.md)aracılığıyla yalnızca Ilgili Azure sanal makinelerine uygulanır, böylece faturalandırma aynı kalır.
 
 - **Azure Defender kapalı** : Güvenlik Merkezi, çalışma alanına ' SecurityCenterFree ' çözümünü yüklüyor. Faturalandırılmaz.
 - **Azure Defender on** -Security Center, çalışma alanına ' Güvenlik ' çözümünü yüklüyor.
@@ -40,7 +40,7 @@ Güvenlik Merkezi, bir VM 'nin oluşturduğunuz bir çalışma alanına zaten ba
    ![Varsayılan çalışma alanındaki çözümler](./media/security-center-platform-migration-faq/solutions.png)
 
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Ortammda çalışma alanım zaten var, bunları güvenlik verilerini toplamak için kullanabilir miyim?
-Bir VM 'de zaten bir Azure uzantısı olarak yüklü Log Analytics Aracısı varsa, güvenlik merkezi var olan bağlı çalışma alanını kullanır. Zaten mevcut değilse, bir güvenlik merkezi çözümü çalışma alanına yüklenir ve çözüm [hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md)aracılığıyla yalnızca ilgili sanal makinelere uygulanır.
+Bir VM 'de zaten bir Azure uzantısı olarak yüklü Log Analytics Aracısı varsa, güvenlik merkezi var olan bağlı çalışma alanını kullanır. Zaten mevcut değilse, bir güvenlik merkezi çözümü çalışma alanına yüklenir ve çözüm [hedefleme](../azure-monitor/insights/solution-targeting.md)aracılığıyla yalnızca ilgili sanal makinelere uygulanır.
 
 Güvenlik Merkezi, VM 'Lere Log Analytics aracısını yüklediğinde, güvenlik merkezi mevcut bir çalışma alanına işaret yoksa Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanlarını kullanır.
 

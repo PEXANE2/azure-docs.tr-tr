@@ -11,22 +11,22 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 4e14bd6365ce53d98d6e0b0d1f2601ff3b3e59b4
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997314"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145587"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Sağlamanın Azure Izleyici günlükleriyle nasıl tümleştirildiğini anlama
 
-Sağlama, Azure Izleyici günlükleri ve Log Analytics ile tümleşir. Azure Izleme ile, pano olarak da bilinen çalışma kitaplarını oluşturma, 30 ila gün için sağlama günlüklerini depolama ve özel sorgular ve uyarılar oluşturma gibi işlemleri yapabilirsiniz. Bu makalede, sağlama günlüklerinin Azure Izleyici günlükleriyle nasıl tümleştirileceği açıklanmaktadır. Sağlama günlüklerinin genel olarak nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [sağlama günlükleri](../reports-monitoring/concept-provisioning-logs.md).
+Sağlama, Azure Izleyici günlükleri ve Log Analytics ile tümleşir. Azure izleme ile, pano olarak da bilinen çalışma kitaplarını oluşturma, 30 ila gün için sağlama günlüklerini depolama ve özel sorgular ve uyarılar oluşturma gibi işlemleri yapabilirsiniz. Bu makalede, sağlama günlüklerinin Azure Izleyici günlükleriyle nasıl tümleştirileceği açıklanmaktadır. Sağlama günlüklerinin genel olarak nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [sağlama günlükleri](../reports-monitoring/concept-provisioning-logs.md).
 
 ## <a name="enabling-provisioning-logs"></a>Sağlama günlüklerinin etkinleştirilmesi
 
-Azure Izleme ve Log Analytics hakkında zaten bilgi sahibi olmanız gerekir. Aksi takdirde, hakkında bilgi edinmek için üzerine atlayın ve ardından uygulama sağlama günlükleri hakkında bilgi edinmek için geri dönün. Azure Izleme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyiciye genel bakış](../../azure-monitor/overview.md). Azure Izleyici günlükleri ve Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/log-query/log-query-overview.md).
+Azure izleme ve Log Analytics hakkında zaten bilgi sahibi olmanız gerekir. Aksi takdirde, hakkında bilgi edinmek için üzerine atlayın ve ardından uygulama sağlama günlükleri hakkında bilgi edinmek için geri dönün. Azure izleme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyiciye genel bakış](../../azure-monitor/overview.md). Azure Izleyici günlükleri ve Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/log-query/log-query-overview.md).
 
-Azure Izleme üzerinde yapılandırıldıktan sonra, uygulama sağlama için günlükleri etkinleştirebilirsiniz. Seçeneği **Tanılama ayarları** sayfasında bulunur.
+Azure izlemeyi yapılandırdıktan sonra, uygulama sağlama için günlükleri etkinleştirebilirsiniz. Seçeneği **Tanılama ayarları** sayfasında bulunur.
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 

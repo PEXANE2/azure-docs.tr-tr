@@ -3,12 +3,12 @@ title: Özel Azure Resource Manager rolü oluşturma ve hizmet sorumlusu 'na ata
 description: Bu makalede, Azure CLı kullanarak IoT Edge üzerinde canlı video analizine yönelik özel Azure Resource Manager rol oluşturma ve hizmet sorumlusuna atama hakkında yönergeler sunulmaktadır.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526587"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425727"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Özel Azure Resource Manager rolü oluşturma ve hizmet sorumlusuna atama
 
@@ -179,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Parametreler:
 
-|Parametreler|Açıklama| 
+|Parametreler|Description| 
 |---|---|
 |--rol |Özel rol adı veya KIMLIĞI. Bizim örneğimizde: "LVAEdge kullanıcısı".|
 |--atanan e-nesne kimliği|Kullanacağınız hizmet sorumlusunun nesne KIMLIĞI.|
@@ -230,7 +230,7 @@ Sonuç şöyle görünmelidir:
 
 Bu, Özel Kullanıcı rolünü uygulamamız için kullanılan hizmet sorumlusu ile bağladığımızdan onaylanır.
 
-### <a name="test-the-service-principal-rbac"></a>Hizmet sorumlusu RBAC 'yi test etme  
+### <a name="test-the-service-principal-access-control"></a>Hizmet sorumlusu erişim denetimini test etme
 
 1. Hizmet sorumlusunu kullanarak oturum açın. Bunun için, [hizmet sorumlusu oluşturma](#create-service-principal) adımının çıktısından alabileceğiniz uygun erişim belirtecini sağlamak üzere Azure Active Directory için 3 bilgi parçasına ihtiyacımız olacak:
     1. Aadclientıd 

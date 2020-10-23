@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fc3f3fb0b6bb67239d6c1952d3e128076ce45aaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13467a51b2a06dbc0ca0ec5eadd139fde8b82ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85857196"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103501"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API kullanarak Azure Data Lake Storage 1. hesap yönetimi işlemleri
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "85857196"
 
 Bu makalede, REST API kullanarak Azure Data Lake Storage 1. hesap yönetim işlemlerini nasıl gerçekleştireceğinizi öğreneceksiniz. Hesap yönetimi işlemleri Data Lake Storage 1. hesap oluşturmayı, Data Lake Storage 1. hesabı silmeyi vb. içerir. REST API kullanarak Data Lake Storage 1. dosya sistemi işlemlerinin nasıl gerçekleştirileceği hakkında yönergeler için bkz. [REST API kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-rest-api.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * **[kıvır](https://curl.haxx.se/)**. Bu makalede, bir Data Lake Storage 1. hesabına yönelik REST API çağrılarının nasıl yapılacağını göstermek için kıvrımlı kullanılır.
@@ -36,7 +36,7 @@ Azure Active Directory'yi kullanarak kimlik doğrulaması gerçekleştirmek üze
 
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
-Bu işlem, [burada](https://docs.microsoft.com/rest/api/datalakestore/accounts/create) tanımlanan REST API çağrısını temel alır.
+Bu işlem, [burada](/rest/api/datalakestore/accounts/create) tanımlanan REST API çağrısını temel alır.
 
 Aşağıdaki cURL komutunu kullanın. **\<yourstoragegen1name>** Data Lake Storage 1. adınızla değiştirin.
 
@@ -57,7 +57,7 @@ Yukarıdaki komutta; \<`REDACTED`\> ifadesini, daha önce aldığınız yetki be
 ```
 
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabı silme
-Bu işlem, [burada](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete) tanımlanan REST API çağrısını temel alır.
+Bu işlem, [burada](/rest/api/datalakestore/accounts/delete) tanımlanan REST API çağrısını temel alır.
 
 Bir Data Lake Storage 1. hesabını silmek için aşağıdaki kıvrımlı komutunu kullanın. **\<yourstoragegen1name>** Data Lake Storage 1. hesap adınızla değiştirin.
 
@@ -77,6 +77,5 @@ HTTP/1.1 200 OK
 * [REST API kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-rest-api.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure Data Lake Storage 1. REST API başvurusu](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Azure Data Lake Storage 1. REST API başvurusu](/rest/api/datalakestore/)
 * [Azure Data Lake Storage 1. uyumlu açık kaynak büyük veri uygulamaları](data-lake-store-compatible-oss-other-applications.md)
-

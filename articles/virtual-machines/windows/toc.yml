@@ -348,8 +348,6 @@
           href: ../security-controls-policy.md
         - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
           href: security-baseline.md
-        - name: Yerleşik güvenlik denetimleri
-          href: virtual-machines-windows-security-controls.md
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Durumlar ve yaşam döngüsü
@@ -1057,7 +1055,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

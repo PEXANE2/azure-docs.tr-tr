@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 647a9792384a21dfc191371ef444cbdc098bc819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272700"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342374"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Azure için Avere vFXT hakkında SSS
 
@@ -160,7 +160,7 @@ SSD 'Lerin ayrılması ve yeniden iliştirme desteklenmez. Kaynaktaki meta veril
 
 ### <a name="does-the-system-encrypt-the-cache"></a>Sistem önbelleği şifreliyor mu?
 
-Veriler, diskler arasında şeritlenir ancak şifrelenmez. Ancak, disklerin kendisi şifrelenebilir. Daha fazla bilgi için bkz. [Azure 'da sanal makinelerde Ilkeleri güvenli hale getirme ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
+Veriler, diskler arasında şeritlenir ancak şifrelenmez. Ancak, disklerin kendisi şifrelenebilir. Daha fazla bilgi için bkz. [Azure 'da sanal makinelerde Ilkeleri güvenli hale getirme ve kullanma](../virtual-machines/security-policy.md#encryption).
 
 ## <a name="technical-networking"></a>Teknik: ağ Iletişimi
 
@@ -259,7 +259,7 @@ Hayır. Arşiv depolaması için hizmet düzeyi sözleşmesi (SLA), avere vFXT s
 
 Seyrek Erişimli Katman blob depolaması, genellikle Azure Core Filer için bir avere vFXT için önerilmez. Cool Tier, daha düşük depolama maliyetleri sunar (Daha fazla ayrıntı için bkz. [Blok Blobu fiyatlandırması](<https://azure.microsoft.com/pricing/details/storage/blobs/>) .) Veriler sıklıkla erişilip değiştirilmeyecektir veya siliniyorsa, lütfen etkin katmanı kullanmayı düşünün.
 
-[Erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) , bir vFXT Core filsi olarak Seyrek Erişimli Katman depolaması kullanmanın ne zaman yararlı olabileceğini hakkında daha fazla bilgi sağlar.
+[Erişim katmanları](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier) , bir vFXT Core filsi olarak Seyrek Erişimli Katman depolaması kullanmanın ne zaman yararlı olabileceğini hakkında daha fazla bilgi sağlar.
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>Blob kapsayıcısını şifrelemek Nasıl yaparım? mı?
 

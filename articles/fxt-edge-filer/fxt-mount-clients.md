@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86231361"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340521"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Öğretici: kümeyi bağlama
 
@@ -20,6 +20,7 @@ Bu öğreticide, NFS istemcilerini Azure FXT Edge Filer kümesine bağlama öğr
 Bu öğretici öğretir:
 
 > [!div class="checklist"]
+>
 > * İstemciye yönelik IP adresleri aralığı genelinde Yük Dengeleme istemcilerinin stratejileri
 > * İstemciye yönelik bir IP adresinden ve ad alanı birleşimden bir bağlama yolu oluşturma
 > * Bağlama komutunda kullanılacak bağımsız değişkenler
@@ -93,14 +94,14 @@ Sorunsuz bir istemci bağlama sağlamak için, bu ayarları ve bağımsız deği
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Gerekli ayarlar | Açıklama |
+| Gerekli ayarlar | Description |
 --- | ---
 ``hard`` | Azure FXT Edge Filer kümesine yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir.
 ``proto=netid`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.
 ``mountproto=netid`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
 ``retry=n`` | ``retry=30``Geçici bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
 
-| Tercih edilen ayarlar  | Açıklama |
+| Tercih edilen ayarlar  | Description |
 --- | ---
 ``nointr``            | İstemcileriniz, bu seçeneği destekleyen eski işletim sistemi çekirdekler (2008 Nisan 'tan önce) kullanıyorsa, bunu kullanın. "INTR" seçeneği varsayılandır.
 
@@ -108,6 +109,6 @@ Sorunsuz bir istemci bağlama sağlamak için, bu ayarları ve bağımsız deği
 
 İstemcileri bağladıktan sonra, iş akışınızı test edebilir ve kümeniz ile çalışmaya başlayın.
 
-Verileri yeni bir bulut çekirdeği filine taşımanız gerekiyorsa, paralel veri alma kullanarak önbellek yapısından yararlanın. Bazı stratejiler, [verileri bir vFXT kümesine taşıma](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest)bölümünde açıklanmaktadır. (Azure için avere vFXT, Azure FXT Edge filine benzer şekilde önbelleğe alma teknolojisini kullanan bulut tabanlı bir üründür.)
+Verileri yeni bir bulut çekirdeği filine taşımanız gerekiyorsa, paralel veri alma kullanarak önbellek yapısından yararlanın. Bazı stratejiler, [verileri bir vFXT kümesine taşıma](../avere-vfxt/avere-vfxt-data-ingest.md)bölümünde açıklanmaktadır. (Azure için avere vFXT, Azure FXT Edge filine benzer şekilde önbelleğe alma teknolojisini kullanan bulut tabanlı bir üründür.)
 
 Tüm donanım sorunlarını gidermeniz gerekiyorsa, [Izleme Azure FXT Edge filigran donanım durumunu](fxt-monitor.md) okuyun.

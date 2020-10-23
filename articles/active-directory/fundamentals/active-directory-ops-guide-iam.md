@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601324"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371010"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory kimlik ve erişim yönetimi işlemleri başvuru kılavuzu
 
@@ -45,7 +45,7 @@ Listenizi gözden geçirdikten sonra, sahibi eksik olan görevler için bir sahi
 
 #### <a name="assigning-owners-recommended-reading"></a>Okuma için önerilen sahipler atanıyor
 
-- [Azure Active Directory’de yönetici rolü atama](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory’de yönetici rolü atama](../roles/permissions-reference.md)
 - [Azure’da idare](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>Şirket içi kimlik eşitleme
@@ -157,13 +157,13 @@ Kullanıcılara hizmet planlarını tanımlamak için aşağıdaki yönergeleri 
 - İsteğe bağlı olarak, bir öznitelik kullanıcıları için paketleri tutacak şekilde tanımlanabilir.
 
 > [!IMPORTANT]
-> Azure AD 'de grup tabanlı lisanslama, Kullanıcı kavramını bir lisanslama hata durumunda sunmaktadır. Lisanslama hatalarıyla karşılaşırsanız, lisans atama sorunlarını hemen [belirleyip çözmeniz](../users-groups-roles/licensing-groups-resolve-problems.md) gerekir.
+> Azure AD 'de grup tabanlı lisanslama, Kullanıcı kavramını bir lisanslama hata durumunda sunmaktadır. Lisanslama hatalarıyla karşılaşırsanız, lisans atama sorunlarını hemen [belirleyip çözmeniz](../enterprise-users/licensing-groups-resolve-problems.md) gerekir.
 
 ![Otomatik olarak oluşturulan bilgisayar ekranı açıklamasının ekran görüntüsü](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Yaşam döngüsü yönetimi
 
-Şu anda [Microsoft Identity Manager](/microsoft-identity-manager/) veya üçüncü taraf sistem gibi bir aracı kullanıyorsanız, bir şirket içi altyapıya bağlı olan, var olan araçtan atamayı boşaltmanız, grup tabanlı lisans uygulamanız ve [grupları](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)temel alan bir grup yaşam döngüsü yönetimi tanımlamanız önerilir. Benzer şekilde, mevcut işleminiz kuruluştan ayrılmayan yeni çalışanlar veya çalışanlar için hesap içermiyorsa, dinamik gruplara dayalı olarak grup tabanlı lisanslama dağıtmanız ve bir grup üyeliği yaşam döngüsü tanımlamanız gerekir. Son olarak, grup tabanlı lisanslama yaşam döngüsü yönetimi olmayan şirket içi gruplara karşı dağıtılırsa, temsilci olarak sahiplik veya öznitelik tabanlı dinamik üyelik gibi özellikleri etkinleştirmek için bulut grupları kullanmayı göz önünde bulundurun.
+Şu anda [Microsoft Identity Manager](/microsoft-identity-manager/) veya üçüncü taraf sistem gibi bir aracı kullanıyorsanız, bir şirket içi altyapıya bağlı olan, var olan araçtan atamayı boşaltmanız, grup tabanlı lisans uygulamanız ve [grupları](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)temel alan bir grup yaşam döngüsü yönetimi tanımlamanız önerilir. Benzer şekilde, mevcut işleminiz kuruluştan ayrılmayan yeni çalışanlar veya çalışanlar için hesap içermiyorsa, dinamik gruplara dayalı olarak grup tabanlı lisanslama dağıtmanız ve bir grup üyeliği yaşam döngüsü tanımlamanız gerekir. Son olarak, grup tabanlı lisanslama yaşam döngüsü yönetimi olmayan şirket içi gruplara karşı dağıtılırsa, temsilci olarak sahiplik veya öznitelik tabanlı dinamik üyelik gibi özellikleri etkinleştirmek için bulut grupları kullanmayı göz önünde bulundurun.
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>"Tüm kullanıcılar" grubu ile uygulamaların atanması
 

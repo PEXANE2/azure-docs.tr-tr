@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 85b42c6a3c3c59bd8c22bcdc8954b8dd3399c454
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938432"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460980"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB-tek sunuculu Azure DB 'yi PostgreSQL için Azure DB 'ye geçirme-Azure portal aracılığıyla DMS kullanarak tek sunuculu bir çevrimiçi
+# <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB 'yi geçirme/yükseltme-tek sunucudan PostgreSQL için Azure VERITABANı-tek sunuculu, Azure portal aracılığıyla DMS kullanarak tek sunuculu bir çevrimiçi
 
 Azure veritabanı geçiş hizmeti 'ni, [PostgreSQL Için Azure veritabanı-tek sunuculu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) bir SQL örneğinden, PostgreSQL için Azure veritabanı 'nın aynı veya farklı bir sürümüne, örneğin, PostgreSQL için Azure veritabanı 'na (en az kapalı kalma süresi Ile) esnek sunucuya geçirmek için kullanabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak PostgreSQL için Azure veritabanı ile v10 arasındaki ' dan PostgreSQL için Azure veritabanı 'na (tek sunucu) ait **DVD Kiralama** örneği veritabanını geçireceğiniz.
 
@@ -47,7 +47,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 * Desteklenen geçiş ve sürüm birleşimleri için [Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumunu](https://docs.microsoft.com/azure/dms/resource-scenario-status) denetleyin. 
-* [PostgreSQL için mevcut bir Azure veritabanı](https://docs.microsoft.com/azure/postgresql/) sürüm 10 ve daha sonraki bir örnek, **DVD Kiralama** veritabanıdır. Azure veritabanı geçiş hizmeti, PostgreSQL için Azure DB 9,5 veya 9,6 geçişini desteklemez.
+* [PostgreSQL için mevcut bir Azure veritabanı](https://docs.microsoft.com/azure/postgresql/) sürüm 10 ve daha sonraki bir örnek, **DVD Kiralama** veritabanıdır. 
 
     Ayrıca, PostgreSQL için hedef Azure veritabanının, şirket içi PostgreSQL sürümüne eşit veya ondan daha yeni olması gerektiğini unutmayın. Örneğin PostgreSQL 10, PostgreSQL için Azure veritabanı 10 veya 11 ' e geçiş yapabilir, ancak PostgreSQL için Azure veritabanı 9,6 ' e geçirilemez.
 
@@ -258,7 +258,18 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 * **Geçişi çalıştır**'ı seçin.
 
-    Geçiş etkinliği penceresi görünür ve **devam eden yedekleme**olarak göstermek Için etkinliğin **durumu** güncellemelidir.
+Geçiş etkinliği penceresi görünür ve **devam eden yedekleme**olarak göstermek Için etkinliğin **durumu** güncellemelidir. PostgreSQL için Azure DB 9,5 veya 9,6 ' den yükseltirken aşağıdaki hatayla karşılaşabilirsiniz:
+
+**Bir senaryo bilinmeyen bir hata bildirdi. 28000: "40.121.141.121" konağından çoğaltma bağlantısı için pg_hba. conf girdisi yok, Kullanıcı "SR"**
+
+Bunun nedeni, PostgreSQL 'in gerekli mantıksal çoğaltma yapıtları oluşturmak için uygun ayrıcalıklara sahip olmaması olabilir. Gerekli ayrıcalıkları etkinleştirmek için şunları yapabilirsiniz:
+
+1. Geçirme/yükseltme yapmaya çalıştığınız PostgreSQL için kaynak Azure DB sunucusu için "bağlantı güvenliği" ayarlarını açın.
+2. "_Replrule" ile biten bir ada sahip yeni bir güvenlik duvarı kuralı ekleyin ve hata iletisinden IP adresini başlangıç IP 'si ve bitiş IP 'si alanlarına ekleyin. Yukarıdaki hata örneği için-
+> Güvenlik duvarı kuralı adı = sr_replrule; Başlangıç IP 'si = 40.121.141.121; Bitiş IP 'si = 40.121.141.121
+
+3. Kaydet ' e tıklayın ve değişikliğin tamamlanmasını sağlayın. 
+4. DMS etkinliğini yeniden deneyin. 
 
 ## <a name="monitor-the-migration"></a>Geçişi izleme
 

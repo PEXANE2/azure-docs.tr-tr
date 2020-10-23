@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287745"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359824"
 ---
 # <a name="deploy-a-configuration-server"></a>Yapılandırma sunucusunu dağıtma
 
@@ -26,7 +26,7 @@ VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması
 
 Yapılandırma sunucusu, belirli minimum donanım ve boyutlandırma gereksinimlerine sahip yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarlanmalıdır. Kullanışlı ve kolay dağıtım için Site Recovery, burada listelenen tüm uygulanan gereksinimleriyle uyumlu yapılandırma sunucusunu ayarlamak için indirilebilir bir açık sanallaştırma uygulaması (OVA) şablonu sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir yapılandırma sunucusu için en düşük donanım gereksinimleri aşağıdaki bölümlerde özetlenmektedir.
 
@@ -92,7 +92,7 @@ Yapılandırma sunucusunu Azure Site Recovery Hizmetleri ile kaydetmek için Azu
 Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kaydetmeden önce ekleyin. Kayıt işleminden sonra ek sunucu eklenemez.
 
 1. vSphere Client envanterinde VM’ye sağ tıklayın ve **Ayarları Düzenle**’yi seçin.
-2. **Donanım** bölümünde **Ekle** > **Ethernet Bağdaştırıcısı** seçeneğini belirleyin. Ardından **İleri**’yi seçin.
+2. **Donanım** bölümünde **Ekle** > **Ethernet Bağdaştırıcısı** seçeneğini belirleyin. Sonra **İleri**’yi seçin.
 3. Bir bağdaştırıcı türü ve ağ seçin.
 4. VM açıldığında sanal NIC 'yi bağlamak için, **oturum açma sırasında bağlan**' ı seçin. Ardından **İleri**  >  **bitiş**  >  **Tamam**' ı seçin.
 
@@ -102,7 +102,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 2. VM’de Windows Server 2016 yükleme deneyimi önyüklemesi yapılır. Lisans sözleşmesini kabul edin ve bir yönetici parolası girin.
 3. Yükleme tamamlandıktan sonra VM’de yönetici olarak oturum açın.
 4. İlk kez oturum açtığınızda, birkaç saniye içinde Azure Site Recovery yapılandırma aracı başlatılır.
-5. Yapılandırma sunucusunu Site Recovery’ye kaydetmek için kullanılacak bir ad girin. Ardından **İleri**’yi seçin.
+5. Yapılandırma sunucusunu Site Recovery’ye kaydetmek için kullanılacak bir ad girin. Sonra **İleri**’yi seçin.
 6. Araç, VM’nin Azure bağlanıp bağlanamadığını denetler. Bağlantı kurulduktan sonra Azure aboneliğinizde oturum açmak için **Oturum aç** seçeneğini belirleyin.</br>
     a. Kimlik bilgilerinin, yapılandırma sunucusunu kaydetmek istediğiniz kasaya erişim izni olmalıdır.</br>
     b. Seçilen Kullanıcı hesabının Azure 'da uygulama oluşturma izni olduğundan emin olun. Gerekli izinleri etkinleştirmek için, [izin gereksinimleri Azure Active Directory](#azure-active-directory-permission-requirements)bölümündeki yönergeleri izleyin.
@@ -166,7 +166,7 @@ Dağıtım & bağlantı sorunlarını gidermek için [sorun giderme makalemizi](
     Yapılandırma sunucusu ve işlevleri hakkında daha fazla bilgi edinmek için bkz. [VMware 'Den Azure 'a çoğaltma mimarisi](vmware-azure-architecture.md).
 * Yapılandırma sunucusunun en son sürümünü nereden bulabilirim?
 
-    Yapılandırma sunucusunu Portal üzerinden yükseltme adımları için bkz. [yapılandırma sunucusunu yükseltme](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Tüm Site Recovery bileşenlerinin nasıl yükseltileceğiyle ilgili yönergeler için, bkz. [Site Recovery hizmet güncelleştirmeleri](https://aka.ms/asr_how_to_upgrade).
+    Yapılandırma sunucusunu Portal üzerinden yükseltme adımları için bkz. [yapılandırma sunucusunu yükseltme](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Tüm Site Recovery bileşenlerinin nasıl yükseltileceğiyle ilgili yönergeler için, bkz. [Site Recovery hizmet güncelleştirmeleri](./service-updates-how-to.md).
 * Yapılandırma sunucusu için parolayı nereden indirebilirim?
 
     Parolayı indirmek için bkz. [VMware VM olağanüstü durum kurtarması için yapılandırma sunucusunu yönetme](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).

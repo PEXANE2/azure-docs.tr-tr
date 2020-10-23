@@ -4,12 +4,12 @@ description: Bu öğreticide, test için Service Fabric yönetilen bir küme da�
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410469"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316178"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Öğretici: Service Fabric yönetilen bir küme dağıtma (Önizleme)
 
@@ -29,7 +29,7 @@ Serinin bu bölümü aşağıdaki konuları içerir:
 > * Service Fabric yönetilen bir küme dağıtma
 > * Kümeye birincil düğüm türü ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -37,7 +37,7 @@ Bu öğreticiye başlamadan önce:
 
 * [SERVICE fabrıc SDK ve PowerShell modülünü](service-fabric-get-started.md)yükler.
 
-* [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) (veya üzeri) uygulamasını yükler.
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (veya üzeri) uygulamasını yükler.
 
 ## <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
 
@@ -73,7 +73,7 @@ Bu adım için aşağıdaki parametreler için kendi değerlerinizi sağlayın:
 
 * **Küme adı**: kümeniz için, *hayal fcluster*gibi benzersiz bir ad girin.
 * **Yönetici parolası**: yöneticinin, kümedeki temel alınan VM 'lerde RDP için kullanılacak bir parola girin.
-* **Istemci sertifikası parmak izi**: kümenize erişmek için kullanmak istediğiniz istemci sertifikasının parmak izini sağlayın. Bir sertifikanız yoksa, otomatik olarak imzalanan sertifika oluşturmak için [set ve bir sertifika al](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) ' ı izleyin.
+* **Istemci sertifikası parmak izi**: kümenize erişmek için kullanmak istediğiniz istemci sertifikasının parmak izini sağlayın. Bir sertifikanız yoksa, otomatik olarak imzalanan sertifika oluşturmak için [set ve bir sertifika al](../key-vault/certificates/quick-create-portal.md) ' ı izleyin.
 * **Küme SKU 'su**: dağıtılacak [Service Fabric yönetilen kümenin türünü](overview-managed-cluster.md#service-fabric-managed-cluster-skus) belirtin. *Temel* SKU kümeleri yalnızca test dağıtımları için tasarlanmıştır ve düğüm türü ekleme veya kaldırma için izin vermez.
 
 ```powershell

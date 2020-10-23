@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892986"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426535"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning sogeign bulut eşliği
 
@@ -122,7 +122,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 | İşlem kaynaklarına kök ve SSH erişimi.                                          | EVET | EVET |  |
 | Endpoint Protection, düzeltme eki uygulama ve günlüğe kaydetme dahil dağıtılan sistemlerin (örnekler, uç noktalar vb.) güvenliğini sağlama |  KıSMI|  KıSMI |VNet ve özel uç noktanın arkasındaki ACI Şu anda kullanılamıyor |                                  
 | ACı/AKS tümleştirmesinin kullanımını denetleme (devre dışı bırakma/sınırlama/kısıtlama)                    | KıSMI| KıSMI |VNet ve özel uç noktanın arkasındaki ACI Şu anda kullanılamıyor|
-| Role-Based Access Control (RBAC)-özel rol oluşturma                           | EVET | EVET |  |
+| Azure rol tabanlı erişim denetimi (Azure RBAC)-özel rol oluşturma                           | EVET | EVET |  |
 | ML hizmeti tarafından kullanılan ACR görüntülerine erişimi denetleme (Azure tarafından sağlanan/korunan/özel)  |KıSMI|  KıSMI | Azure Kamu 'da desteklenmeyen özel uç nokta ve VNet 'in arkasında ACR |
 | **Genel Machine Learning hizmeti kullanımı** |  | | |
 | Bir model oluşturmak, bu modeli eğmek, bir uç nokta olarak barındırmak ve bir WebApp aracılığıyla kullanmak için bir geliştirme ortamı kullanabilme     | EVET | EVET |  |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 2a66873d558495049c97b987dfb69bbf83b4e1d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2edaf6dd139ed4612b91d3a19c3d1398d5afdec1
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439479"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340368"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde İzinler
 
@@ -62,4 +62,4 @@ Bu makalede Güvenlik Merkezi 'nin kullanıcılara izinler atamak ve her bir rol
 - [Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md)
 - [Azure kaynaklarınızın güvenlik durumunu izleme](security-center-monitoring.md)
 - [Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md)
-- [İş ortağı güvenlik çözümlerini izleme](security-center-partner-solutions.md)
+- [İş ortağı güvenlik çözümlerini izleme](./security-center-partner-integration.md)

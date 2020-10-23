@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1a172adb54593421ef56e09c131e0ddcaee9f6e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184695"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215833"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer özellikleri
 
@@ -28,7 +28,7 @@ Bu makalede, Azure FXT Edge Filer donanım düğümlerine yönelik donanım beli
 
 ## <a name="drive-specifications"></a>Sürücü belirtimleri
 
-Sistemde, baştan erişilebilen on sürücü yuvası vardır. Doldurulan her sürücü, kapasite bilgileriyle sağ tarafta etiketlidir. 
+Sistemde, baştan erişilebilen on sürücü yuvası vardır. Doldurulan her sürücü, kapasite bilgileriyle sağ tarafta etiketlidir.
 
 Sürücü numaraları, sürücüler arasındaki alana yazdırılır. Azure FXT Edge Filsi içinde, 0. sürücü, sol üst sürücüdür ve 1. Sürücü doğrudan onun altında.
 
@@ -39,10 +39,9 @@ Sürücü numaraları, sürücüler arasındaki alana yazdırılır. Azure FXT E
 | 0, 1             | İşletim Sistemi     | 480 GB SATA SSD |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Veriler   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
 
-
 ## <a name="dimensions-and-weight"></a>Boyutlar ve ağırlık
 
-Azure FXT Edge Filer, standart 19 "ekipman rafıyla uyum sağlayacak şekilde tasarlanmıştır ve bir raf birimi yüksek (1U). 
+Azure FXT Edge Filer, standart 19 "ekipman rafıyla uyum sağlayacak şekilde tasarlanmıştır ve bir raf birimi yüksek (1U).
 
 <!-- 10x2.5 inches version -->
 
@@ -84,15 +83,15 @@ Bu bölüm, Azure FXT Edge Filer için güç derecelendirmeleri ve ölçümler s
 
 <!-- matches the Dell regulatory label exactly -->
 
-### <a name="power-and-thermal-measurements"></a>Güç ve sıcaklık ölçümleri 
+### <a name="power-and-thermal-measurements"></a>Güç ve sıcaklık ölçümleri
 
-Azure FXT Edge filigran düğümleri değişken hız fanı kullanır, bu nedenle güç sıcaklığa ve yüke bağlıdır. Yüksek yük ve yükseltilmiş çevresel sıcaklıkların belirli birleşimlerinde en fazla fan hızına erişilebilir. 
+Azure FXT Edge filigran düğümleri değişken hız fanı kullanır, bu nedenle güç sıcaklığa ve yüke bağlıdır. Yüksek yük ve yükseltilmiş çevresel sıcaklıkların belirli birleşimlerinde en fazla fan hızına erişilebilir.
 
-Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için güç tüketimi ve sıcaklık çıkış ölçümleri sağlar. 
+Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için güç tüketimi ve sıcaklık çıkış ölçümleri sağlar.
 
-| FXT 6600 güç odası sıcaklığı <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| FXT 6600 güç odası sıcaklığı <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
-| Voltaj (V) | 100 | 120 | 208 | 230 | 240 | 
+| Voltaj (V) | 100 | 120 | 208 | 230 | 240 |
 | Sıklık (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Geçerli (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Görünen güç (VA) | 502 | 499 | 499 | 506 | 518|
@@ -100,9 +99,9 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 | Gerçek güç (W) | 497 |494 | 489 | 496 | 508 |
 | Sıcaklık dağılımı (BTU/saat) |1696 | 1686 | 1669 | 1692 | 1733 |
 
-| Maksimum fan hızlarındaki FXT 6600 gücü | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| Maksimum fan hızlarındaki FXT 6600 gücü | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
-| Voltaj (V) | 100 |120 | 208 | 230 | 240| 
+| Voltaj (V) | 100 |120 | 208 | 230 | 240|
 | Sıklık (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Geçerli (A) | 5,98 | 5,01 | 2,81 | 2.55 | 2,48 |
 | Görünen güç (VA) | 598 | 601 | 584 | 587 | 595 |
@@ -110,13 +109,13 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 | Gerçek güç (W) | 592 | 595 | 573 | 575 | 583 |
 | Sıcaklık dağılımı (BTU/saat) | 2020 |2031 | 1954 | 1961 | 1990 |
 
-| FXT 6400 güç odası sıcaklığı <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz | 
+| FXT 6400 güç odası sıcaklığı <br />(22 ° C, 71,6 ° F) | 100 V, 60 Hz | 120 V, 60 Hz | 208 V, 60 Hz | 230 V, 50 Hz | 240 V, 50 Hz |
 |---------|---|---|---|---|---|
 | Voltaj (V) | 100 | 120 | 208 | 230 | 240 |
 | Sıklık (Hz) |60 | 60 | 60 | 50 | 50 |
 | Geçerli (A) | 4,63 | 3,86 | 2.24 | 2,04 | 1,94 |
 | Görünen güç (VA) | 463 | 463 | 466 | 469 | 466 |
-| Güç faktörü | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 | 
+| Güç faktörü | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 |
 | Gerçek güç (W) | 458 | 459 | 457 | 460 | 456 |
 | Sıcaklık dağılımı (BTU/saat) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -143,10 +142,10 @@ Bu bölüm, donanımın çevresel ortamı için belirtim sağlar.
 | En fazla Dew noktası         | 29 °C (84 °F)                       | 33 °C (91 °F)                 |
 | Çalışma                  | en çok 3048 ölçüm (10.000 feet), aşağıda belirtilen sıcaklık derecelendirmesi ile ilgili konular | en fazla 12.000 ölçüm (39.370 metre) |
 
-> [!NOTE] 
+> [!NOTE]
 > **Yükseklik sıcaklık sırası derecelendirmesi:** Maksimum sıcaklık 950 (3.117 ft) üzerinde 1 °C/300 milyon (1 °F/547 ft) azaltılır.
 
-### <a name="airflow-shock-and-vibration"></a>Airflow, şok ve titreşim 
+### <a name="airflow-shock-and-vibration"></a>Airflow, şok ve titreşim
 
 | Öznitelik         | Belirtim |
 |-------------------|---------------|
@@ -156,13 +155,13 @@ Bu bölüm, donanımın çevresel ortamı için belirtim sağlar.
 | Titreşim, işletimsel     | 0,26 G<sub>RMS</sub> 5 hz Ila 350 Hz rastgele         |
 | Titreşim, işlemsel olmayan | 15 dakika boyunca 1,88 G<sub>RMS</sub> 10 hz Ila 500 Hz (altı tarafta test edilmiştir)  |
 
-## <a name="safety-regulation-compliance"></a>Güvenlik düzenlemesi uyumluluğu 
+## <a name="safety-regulation-compliance"></a>Güvenlik düzenlemesi uyumluluğu
 
-Azure FXT Edge filigran, listelenen yönetmeliklere uyar. 
+Azure FXT Edge filigran, listelenen yönetmeliklere uyar.
 
-| Kategori       | Yasal belirtim | 
+| Kategori       | Yasal belirtim |
 |----------------|--------------------------|
-| Genel güvenlik | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/ıEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 | 
+| Genel güvenlik | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/ıEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 |
 | EMC            | FCC A, ıCES-003  <br>EN 55032:2012/CıSPPR 32:2012  <br>EN 55032:2015/CıSPPR 32:2015  <br>EN 55024:2010 + A1:2015/CıSPPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/ıEC 61000-3-2:2014 (sınıf D)   <br>EN 61000-3-3:2013/ıEC 61000-3-3:2013 |
 | Enerji         | Komisyon Yönetmeliği (AB) No. 617/2013  |
 | RoHS           |    EN 50581:2012   |

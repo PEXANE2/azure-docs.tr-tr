@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b68a4d0c9c33f6a7eb1a2300955e9185bd52d8fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1052ad06400eb70fe41617421b54978bddd9e50
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705478"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441377"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B işbirliği kullanıcısının özellikleri
 
@@ -104,11 +104,11 @@ Konuk kullanıcılarınıza daha fazla ayrıcalık vermek istediğiniz durumlar 
 ![Kullanıcı ayarlarındaki dış kullanıcılar seçeneğini gösteren ekran görüntüsü](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Konuk kullanıcıları Exchange genel adres listesinde görünür yapabilir miyim?
-Evet. Varsayılan olarak, Konuk nesneler kuruluşunuzun genel adres listesinde görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Ayrıntılar için bkz. **genel adres listesinde Konuk nesneleri görünür yapabilir miyim?** [Microsoft 365 gruplardaki konuk erişimini yönetme](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups).
+Evet. Varsayılan olarak, Konuk nesneler kuruluşunuzun genel adres listesinde görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Ayrıntılar için bkz. **genel adres listesinde Konuk nesneleri görünür yapabilir miyim?** [Microsoft 365 gruplardaki konuk erişimini yönetme](/office365/admin/create-groups/manage-guest-access-in-groups).
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Konuk kullanıcının e-posta adresini güncelleştirebilir miyim?
 
-Bir Konuk Kullanıcı davetinizi kabul ediyorsa ve daha sonra e-posta adreslerini değiştirmişse yeni e-posta, dizininizde Konuk kullanıcı nesnesiyle otomatik olarak eşitlenmez. Mail özelliği [MICROSOFT Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)aracılığıyla oluşturulur. Posta özelliğini Microsoft Graph API, Exchange Yönetim Merkezi veya [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)aracılığıyla güncelleştirebilirsiniz. Bu değişiklik Azure AD Konuk kullanıcı nesnesine yansıtılır.
+Bir Konuk Kullanıcı davetinizi kabul ediyorsa ve daha sonra e-posta adreslerini değiştirmişse yeni e-posta, dizininizde Konuk kullanıcı nesnesiyle otomatik olarak eşitlenmez. Mail özelliği [MICROSOFT Graph API](/graph/api/resources/user?view=graph-rest-1.0)aracılığıyla oluşturulur. Posta özelliğini Microsoft Graph API, Exchange Yönetim Merkezi veya [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)aracılığıyla güncelleştirebilirsiniz. Bu değişiklik Azure AD Konuk kullanıcı nesnesine yansıtılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

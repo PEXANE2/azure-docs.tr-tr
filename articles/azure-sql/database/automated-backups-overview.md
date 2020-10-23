@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
-ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be40cd4a0bef43d81c792fd10508014f5b886fba
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728667"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124195"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -50,7 +50,7 @@ SQL veritabanı için yedekleme depolama yedekliliği, veritabanı oluşturma s�
 > Bölgesel olarak yedekli depolama Şu anda yalnızca [belirli bölgelerde](../../storage/common/storage-redundancy.md#zone-redundant-storage)kullanılabilir. 
 
 > [!NOTE]
-> Azure SQL veritabanı için yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel önizlemede kullanılabilir. Bu özellik henüz hiper ölçek katmanı için kullanılabilir değil. 
+> Azure SQL veritabanı için yapılandırılabilir yedekleme depolama yedekliği, şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel kullanıma sunulmuştur. Bu özellik henüz hiper ölçek katmanı için kullanılabilir değil. 
 
 ### <a name="backup-usage"></a>Yedekleme kullanımı
 

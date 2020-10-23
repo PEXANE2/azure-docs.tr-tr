@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 10803a16a2ceb84e084070d899b50360446710fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55ab6b339d6cb71bf46340e458bcc93cd73e2ba9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548945"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108669"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Öğretici: QuickHelp ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Hızlı yardım 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağla
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Hızlı yardım ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -130,17 +130,17 @@ Azure AD çoklu oturum açmayı hızlı yardım ile yapılandırmak için aşağ
 
 2. Üstteki menüden **yönetici**' ye tıklayın.
    
-    ![Tek Sign-On yapılandırma][21]
+    ![Ekran görüntüsü beyin fırtınası için yönetim menü öğesini gösterir.][21]
 
 3. **Hızlı yardım Yöneticisi** menüsünde, **Ayarlar**' a tıklayın.
    
-    ![Tek Sign-On yapılandırma][22]
+    ![Ekran görüntüsü, QuickHelp yönetim menüsünden Seçili ayarları gösterir.][22]
 
 4. **Kimlik doğrulama ayarları**' na tıklayın.
 
 5. **Kimlik doğrulama ayarları** sayfasında, aşağıdaki adımları gerçekleştirin
    
-    ![Tek Sign-On yapılandırma][23]
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama ayarları sayfasını gösterir.][23]
    
     a. **SSO türü**olarak **WSFederation**' i seçin.
    

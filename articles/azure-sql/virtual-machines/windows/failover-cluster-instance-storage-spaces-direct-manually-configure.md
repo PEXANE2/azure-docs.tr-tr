@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272540"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165273"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Depolama Alanları Doğrudan (Azure VM 'lerinde SQL Server) ile bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,14 +50,14 @@ Yukarıdaki diyagramda, aynı kaynak grubundaki aşağıdaki kaynaklar gösteril
    > Bu çözümün tamamını, bir şablondan Azure 'da oluşturabilirsiniz. GitHub [Azure hızlı başlangıç şablonları](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) sayfasında bir şablon örneği bulunur. Bu örnek, belirli bir iş yükü için tasarlanmamıştır veya test edilmemiştir. Etki alanına bağlı Depolama Alanları Doğrudan depolama alanı ile bir SQL Server FCı oluşturmak için şablonu çalıştırabilirsiniz. Şablonu değerlendirebilir ve sizin amacınıza göre değiştirebilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 - Azure aboneliği. [Ücretsiz](https://azure.microsoft.com/free/)olarak kullanmaya başlayın. 
 - Bir [kullanılabilirlik kümesinde](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) [iki veya daha fazla hazırlanmış Windows Azure sanal makinesi](failover-cluster-instance-prepare-vm.md) .
 - Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir hesap.
-- En son [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)sürümü. 
+- En son [PowerShell](/powershell/azure/install-az-ps)sürümü. 
 
 
 ## <a name="add-the-windows-cluster-feature"></a>Windows küme özelliğini ekleme
@@ -164,7 +164,7 @@ Depolama Alanları Doğrudan disklerin boş olması gerekir. Bunlar bölüm veya
 
 1. [Bir birim oluşturun](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
 
-   Depolama Alanları Doğrudan, etkinleştirdiğinizde otomatik olarak bir depolama havuzu oluşturur. Artık bir birim oluşturmaya hazırsınız. PowerShell cmdlet 'i `New-Volume` , birim oluşturma işlemini otomatikleştirir. Bu işlem biçimlendirme, birimi kümeye ekleme ve CSV oluşturma işlemlerini içerir. Bu örnek, 800 gigabaytlık (GB) bir CSV oluşturur:
+   Depolama Alanları Doğrudan, etkinleştirdiğinizde otomatik olarak bir depolama havuzu oluşturur. Artık bir birim oluşturmaya hazırsınız. PowerShell cmdlet 'i `New-Volume` , birim oluşturma işlemini otomatikleştirir. Bu işlem biçimlendirme, birimi kümeye ekleme ve CSV oluşturma işlemlerini içerir. Bu örnek, 800 gigabayt (GB) CSV oluşturur:
 
    ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
@@ -233,7 +233,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Bağlantı yapılandırma 
 
-Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 ve Windows Server 2016 (veya üzeri) kullanıyorsanız, [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) özelliğinin önizlemesini yapabilirsiniz. 
+Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 CU2 uygulamazsanız (veya üzeri) ve Windows Server 2016 (veya üzeri) kullanıyorsanız, bunun yerine [dağıtılmış ağ adı](failover-cluster-instance-distributed-network-name-dnn-configure.md) özelliğini kullanabilirsiniz. 
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -243,7 +243,7 @@ Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ort
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce yapmadıysanız, bir [sanal ağ adı ve bir Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) veya [dağıtılmış ağ adı (DNN)](hadr-distributed-network-name-dnn-configure.md)ile FCI 'nize bağlantı yapılandırın. 
+Daha önce yapmadıysanız, bir [sanal ağ adı ve bir Azure yük dengeleyici](failover-cluster-instance-vnn-azure-load-balancer-configure.md) veya [dağıtılmış ağ adı (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md)ile FCI 'nize bağlantı yapılandırın. 
 
 Sizin için uygun FCı depolama çözümü değilse, bunun yerine [Azure paylaşılan diskler](failover-cluster-instance-azure-shared-disks-manually-configure.md) veya [Premium dosya paylaşımları](failover-cluster-instance-premium-file-share-manually-configure.md) kullanarak FCI 'nizi oluşturmayı düşünün. depolama alanları doğrudan 
 

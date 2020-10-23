@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85081073"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317148"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda fiziksel sunucuyu değerlendirin
 
@@ -30,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 
 
 > [!NOTE]
-> Ölçeği değerlendirmek için birkaç sunucuyu değerlendirmek üzere bir kavram kanıtı denemek istiyorsanız, [öğretici serimizi](tutorial-prepare-physical.md)izleyin.
+> Ölçeği değerlendirmek için birkaç sunucuyu değerlendirmek üzere bir kavram kanıtı denemek istiyorsanız, [öğretici serimizi](./tutorial-discover-physical.md)izleyin.
 
 ## <a name="plan-for-assessment"></a>Değerlendirme planı
 
@@ -64,7 +64,7 @@ Azure ve fiziksel sunucuları sunucu değerlendirmesi için hazırlayın.
 2. Azure hesabınız için Azure geçişi ile etkileşime geçmek üzere izinleri ayarlayın.
 3. Fiziksel sunucuları hazırlayın.
 
-Bu ayarları yapılandırmak için [Bu öğreticideki](tutorial-prepare-physical.md) yönergeleri izleyin.
+Bu ayarları yapılandırmak için [Bu öğreticideki](./tutorial-discover-physical.md) yönergeleri izleyin.
 
 ## <a name="create-a-project"></a>Proje oluşturma
 

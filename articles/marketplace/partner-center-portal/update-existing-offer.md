@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: f83f5da03d2db5354b020ce7d0c3c8d70f1830a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 810c38397981a100c2d5a68492f8a15b75cd79bd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650104"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276049"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Ticari Market 'te mevcut bir teklifi güncelleştirme
 
@@ -67,7 +67,7 @@ Planı eski fiyatla gizlemiş olduğunuza göre, bu planın güncelleştirilmiş
 
 1. Iş Ortağı Merkezi ' nde **plana genel bakış ' a**geri dönün.
 2. **Yeni plan oluştur**' u seçin. Bir **plan kimliği** ve bir **Plan adı**girip **Oluştur**' u seçin.
-1. Gizlediğiniz plandaki teknik yapılandırmayı yeniden kullanmak için, **Teknik yapılandırmayı yeniden kullan** onay kutusunu seçin. Daha fazla bilgi edinmek için [plana genel bakış](azure-vm-create-offer.md#plan-overview) konusunu okuyun.
+1. Gizlediğiniz plandaki teknik yapılandırmayı yeniden kullanmak için, **Teknik yapılandırmayı yeniden kullan** onay kutusunu seçin. Daha fazla bilgi edinmek için [BIR VM teklifi için plan oluşturma planı](../azure-vm-create-plans.md) makalesini okuyun.
     > [!IMPORTANT]
     > **Bu planı başka bir plandan teknik yapılandırmayı yeniden kullanır**' i seçerseniz, üst planı daha sonra satamazsınız. Ana planı satmaya geçmek istiyorsanız bu seçeneği kullanmayın.
 3. Yeni fiyat dahil olmak üzere yeni plan için gerekli tüm bölümleri doldurun.

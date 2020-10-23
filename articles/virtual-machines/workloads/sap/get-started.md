@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/05/2020
+ms.date: 10/19/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4a21300872e98a35ea27835385b4045921f4657
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b481a1ccf36120a30bf7c923e2d59c5782433567
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969577"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282502"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -73,15 +73,15 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 
 
 ## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>Azure hizmetlerinin SAP bileşenleriyle tümleştirilmesine yönelik belgeler
+Bu bölümde, PowerBI tümleştirmesiyle ilgili belgeleri SAP veri kaynaklarına ve SAP BW Azure Data Factory tümleştirmesini bulabilirsiniz.
 
-- [Power BI Desktop'ta SAP HANA Kullanma](/power-bi/desktop-sap-hana)
-- [DirectQuery ve SAP HANA](/power-bi/desktop-directquery-sap-hana)
-- [Power BI Desktop'ta SAP BW Bağlayıcısı'nı Kullanma](/power-bi/desktop-sap-bw-connector) 
-- [Azure Data Factory, SAP HANA ve Business Warehouse veri tümleştirmesi sunar](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 10/16/2020: [SLES 'In pacemaker Ile Azure VM 'LERINDE IBM DB2 LUW 'ın ha](./dbms-guide-ha-ibm.md)'de değiştirilmesi [Azure VM 'lerinde SAP NW için, RHEL 'nin SAP uygulamaları için](./high-availability-guide-rhel.md)ha, RHEL ÜZERINDEKI Azure VM 'lerinde [IBM DB2 LUW](./high-availability-guide-rhel-ibm-db2-luw.md), RHEL 'de Azure VM 'lerinde SAP NW [için ha](./high-availability-guide-rhel-multi-sid.md), [ANF Ile RHEL üzerindeki Azure VM 'lerinde SAP NW](./high-availability-guide-rhel-netapp-files.md)için ha [SLES for SAP UYGULAMALARı üzerinde SAP NW için ha](./high-availability-guide-suse.md), SLES [Multi-SID kılavuzundaki Azure VM 'LERINDE SAP](./high-availability-guide-suse-multi-sid.md)'ye yönelik ha, [SLES 'de Azure VM 'Lerinde SAP NW için ha SAP uygulamaları için ANF](./high-availability-guide-suse-netapp-files.md), [SLES 'de Azure VM 'lerinde NFS için ha](./high-availability-guide-suse-nfs.md), [SLES üzerinde Azure VM 'lerinde SAP HANA ha](./sap-hana-high-availability.md), [RHEL üzerinde ANF ile SAP HANA ölçeği artırma](./sap-hana-high-availability-netapp-files-red-hat.md) , [RHEL üzerinde Azure VM 'lerinde SAP HANA ha](./sap-hana-high-availability-rhel.md), [RHEL üzerindeki Azure VM 'Lerinde pacemaker Ile genişleme HSR SAP HANA](./sap-hana-high-availability-scale-out-hsr-rhel.md)wsfc ve [paylaşılan disk Ile](./sap-high-availability-infrastructure-wsfc-shared-disk.md)SAP yoks/SCS, wsfc ve [Azure Paylaşılan](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) disk ile SAP yoks/SCS için çok düzeyli ha Kılavuzu ve IKINCIL IP 'lerde Yük Dengeleme senaryolarında, kayan IP 'nin desteklenmeyen bir Ifade eklemek için çok [düzeyli ha Kılavuzu](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) için Azure altyapısını hazırlama 
+- 10/16/2020: HANA büyük örneklerde [SAP HANA yedekleme ve geri yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore) sırasında Hana büyük örneklerinin depolama anlık görüntülerini denetlemek için belgeler ekleme
+- 10/15/2020: Azure 'da SAP BusinessObjects bı platformu, Azure 'da SAP BusinessObjects [bı platformu planlama ve uygulama kılavuzu](businessobjects-deployment-guide.md) , Azure 'da [Linux Için Azure ve SAP BusinessObjects bı platform dağıtım kılavuzu](businessobjects-deployment-guide-linux.md) ' na bakın
 - 10/05/2020: [RHEL yapılandırma kılavuzunda Azure VM 'Lerinde pacemaker ile SAP HANA genişleme HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) sürümü
 - 09/30/2020: [RHEL üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability-rhel.md), ha, RHEL [üzerinde anf ile SAP HANA ölçeği artırma](./sap-hana-high-availability-netapp-files-red-hat.md) ve RHEL 8,1 yönergelerini uyarlamak için [Azure 'Da RHEL üzerinde paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md)
 - 09/29/2020: [SAP uygulamalarıyla en iyi ağ gecikme süresi Için Azure yakınlık yerleşimi grupları](./sap-proximity-placement-scenarios.md) makalesindeki PPG kullanımı etrafında kısıtlamalar ve öneriler yapılıyor 

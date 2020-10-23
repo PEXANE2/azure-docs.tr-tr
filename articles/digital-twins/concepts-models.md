@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c71a7d4737ad34c43df1aa302d9517c61ed400b2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019027"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440799"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -230,7 +230,7 @@ Genişletme arabirimi üst arabirimlerin tanımlarından hiçbirini değiştirem
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. Digitaltwınsmodel API 'Leri ile modelleri yönetme:
+Bkz. Digitaltwınmodeller API 'Leriyle modelleri yönetme:
 * [*Nasıl yapılır: özel modelleri yönetme*](how-to-manage-model.md)
 
 Ya da dijital TWINS 'in modeller temelinde nasıl oluşturulduğuna ilişkin bilgi edinin:

@@ -7,18 +7,18 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327947"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132780"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Öğretici: Azure CDN Azure portal kullanarak bir WAF ilkesi oluşturma
 
 Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve bunu Azure Content Delivery Network (CDN) üzerindeki bir uç noktaya uygulama işlemi gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAF ilkesi oluşturma
@@ -43,7 +43,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     | Kaynak grubu          |Ön kapı kaynak grubu adınızı seçin.|
     | İlke adı             |WAF ilkeniz için benzersiz bir ad girin.|
 
-   ![WAF ilkesi oluşturma](../media/waf-cdn-create-portal/basic.png)
+   :::image type="content" source="../media/waf-cdn-create-portal/basic.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
 
 3. **BIR WAF Ilkesi oluştur** sayfasının **ILIŞKILENDIRME** sekmesinde, **CDN uç noktası Ekle**' yi seçin, aşağıdaki ayarları girin ve ardından **Ekle**' yi seçin:
 
@@ -64,7 +64,7 @@ Varsayılan olarak WAF ilkesi, bir WAF ilkesi oluştururken *algılama* modundad
 
 WAF 'yi eylemde görmek için, mod ayarlarını *algılamayı* *engelleme*olarak değiştirebilirsiniz. *Önleme* modunda, varsayılan kural KÜMESI (DRS) içinde tanımlanan kurallarla eşleşen istekler engellenir ve WAF günlüklerinde günlüğe kaydedilir.
 
- ![WAF ilke modunu değiştir](../media/waf-cdn-create-portal/policy.png)
+ :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
 
 ### <a name="custom-rules"></a>Özel kurallar
 
@@ -72,17 +72,17 @@ WAF 'yi eylemde görmek için, mod ayarlarını *algılamayı* *engelleme*olarak
 
 Aşağıdaki ekran görüntüsünde, sorgu dizesinde **blok değeri varsa**bir isteği engellemek için özel bir eşleştirme kuralı gösterilmektedir.
 
-![Özel eşleştirme kuralı ekle](../media/waf-cdn-create-portal/custommatch.png)
+:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
 
 Hız sınırı kuralları için iki ek alan gerekir: aşağıdaki örnekte gösterildiği gibi **hız sınırı süresi** ve **hız sınırı eşiği (istekler)** :
 
-![Hız sınırı kuralı ekle](../media/waf-cdn-create-portal/customrate.png)
+:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
 
 ### <a name="default-rule-set-drs"></a>Varsayılan kural kümesi (DRS)
 
 Azure yönetilen varsayılan kural kümesi varsayılan olarak etkindir. Bir kural grubundaki tek bir kuralı devre dışı bırakmak için bu kural grubundaki kuralları genişletin, kural numarasının önündeki onay kutusunu seçin ve yukarıdaki sekmede **devre dışı bırak** ' ı seçin. Kural kümesindeki tek tek kuralların eylem türlerini değiştirmek için, kural numarasının önündeki onay kutusunu seçin ve ardından yukarıdaki **eylemi Değiştir** sekmesini seçin.
 
- ![WAF kural kümesini Değiştir](../media/waf-cdn-create-portal/managed2.png)
+ :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

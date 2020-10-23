@@ -5,18 +5,18 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061691"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369565"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Değişiklik verilerini yakalama için Debezium ile Azure Event Hubs (Önizleme) üzerinde Apache Kafka Connect desteğini tümleştirin
 
 **Değişiklik verilerini yakalama (CDC)** , oluşturma, güncelleştirme ve silme işlemlerine yanıt olarak veritabanı tablolarındaki satır düzeyi değişiklikleri izlemek için kullanılan bir tekniktir. [Debezium](https://debezium.io/) , farklı veritabanlarında bulunan değişiklik verilerini yakalama özelliklerini (örneğin, [PostgreSQL içinde mantıksal kod çözme](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)) oluşturan, dağıtılmış bir platformdur. Veritabanı tabloları içindeki satır düzeyi değişikliklere dokunarak [Kafka Connect bağlayıcıları](https://debezium.io/documentation/reference/1.2/connectors/index.html) kümesi sağlar ve bunları [Apache Kafka](https://kafka.apache.org/)' a gönderilen olay akışlarına dönüştürür.
 
-Bu öğretici, Azure 'da Azure [Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about?WT.mc_id=devto-blog-abhishgu) (Kafka için), [PostgreSQL için Azure DB](../postgresql/overview.md) ve debezium kullanarak Azure 'da değişiklik verilerini yakalama tabanlı sistem ayarlama konusunda size kılavuzluk eder. Azure Event Hubs PostgreSQL 'ten Kafka konularına veritabanı değişiklikleri akışı için [Debezium PostgreSQL bağlayıcısını](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) kullanır
+Bu öğretici, Azure 'da Azure [Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (Kafka için), [PostgreSQL için Azure DB](../postgresql/overview.md) ve debezium kullanarak Azure 'da değişiklik verilerini yakalama tabanlı sistem ayarlama konusunda size kılavuzluk eder. Azure Event Hubs PostgreSQL 'ten Kafka konularına veritabanı değişiklikleri akışı için [Debezium PostgreSQL bağlayıcısını](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) kullanır
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -98,6 +98,10 @@ consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModul
 
 plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka release
 ```
+
+> [!IMPORTANT]
+> `{YOUR.EVENTHUBS.CONNECTION.STRING}`Event Hubs ad alanınız için bağlantı dizesiyle değiştirin. Bağlantı dizesini alma hakkında yönergeler için bkz. [Event Hubs bağlantı dizesi alma](event-hubs-get-connection-string.md). Örnek bir yapılandırma aşağıda verilmiştir: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ### <a name="run-kafka-connect"></a>Kafka Connect'i çalıştırma
 Bu adımda, bir Kafka Connect çalışanı dağıtılmış modda yerel olarak başlatılır ve küme durumunu korumak için Event Hubs kullanılır.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c960a7b509f365ad7fd6b04267cfec6bf41c4e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542573"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Öğretici: akıllı Işe ıcılar Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Akıllı makineleri Azure AD ile tümleştirmek aşağıdaki avantajları sağla
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini akıllı Işe yönelik olarak yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açma 'yı akıllı Işe yönelik olarak yapılandırmak 
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Smartişveren etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açma 'yı akıllı Işe yönelik olarak yapılandırmak 
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Smartişveren etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
 
@@ -134,19 +134,19 @@ Azure AD çoklu oturum açma 'yı akıllı Işe yönelik olarak yapılandırmak 
 
 1. **Ayarlar/yönetici**bölümüne gidin.
 
-    ![Akıllı Işe Içeri yapılandırma](./media/smartrecruiters-tutorial/configure.png)
+    ![Ekran görüntüsünde bir menüden Ayarlar/yönetici seçili görüntülenir.](./media/smartrecruiters-tutorial/configure.png)
 
 1. **Yapılandırma** bölümünde **Web SSO**' ya tıklayın.
 
-    ![Akıllı Işe Içeri yapılandırma](./media/smartrecruiters-tutorial/configure1.png)
+    ![Ekran görüntüsü, yapılandırmadan seçilen Web S S 'yi gösterir.](./media/smartrecruiters-tutorial/configure1.png)
 
 1. **Web SSO etkinleştirme**' ye geçiş yapın.
 
-    ![Akıllı Işe Içeri yapılandırma](./media/smartrecruiters-tutorial/configure2.png)
+    ![Ekran görüntüsü Web S O denetimini etkinleştir ' i gösterir.](./media/smartrecruiters-tutorial/configure2.png)
 
 1. **Kimlik sağlayıcısı yapılandırması**' nda aşağıdaki adımları gerçekleştirin:
 
-    ![Akıllı Işe Içeri yapılandırma](./media/smartrecruiters-tutorial/configure4.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik sağlayıcısı yapılandırmasını gösterir.](./media/smartrecruiters-tutorial/configure4.png)
 
     a. **Kimlik sağlayıcısı URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 

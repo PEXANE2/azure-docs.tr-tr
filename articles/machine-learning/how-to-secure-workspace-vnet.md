@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3001b8829660f2891cb051269026bf7100a8f938
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776060"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461013"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çalışma alanının güvenliğini sağlama
 
@@ -43,12 +43,12 @@ Bu makalede, bir sanal ağda aşağıdaki çalışma alanı kaynaklarını nası
 
 + İşlem kaynaklarınızla kullanılacak mevcut bir sanal ağ ve alt ağ.
 
-+ Bir sanal ağa veya alt ağa kaynak dağıtmak için, Kullanıcı hesabınızın Azure rol tabanlı erişim denetimlerinde (RBAC) aşağıdaki eylemler için izinleri olmalıdır:
++ Bir sanal ağa veya alt ağa kaynak dağıtmak için, Kullanıcı hesabınızın Azure rol tabanlı erişim denetimi 'nde (Azure RBAC) aşağıdaki eylemler için izinleri olmalıdır:
 
     - Sanal ağ kaynağında "Microsoft. Network/virtualNetworks/JOIN/Action".
     - Alt ağ kaynağında "Microsoft. Network/virtualNetworks/subnet/JOIN/Action".
 
-    Ağ ile RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](/azure/role-based-access-control/built-in-roles#networking)
+    Ağ ile Azure RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](/azure/role-based-access-control/built-in-roles#networking)
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>Çalışma alanını özel uç noktayla güvenli hale getirin
@@ -197,7 +197,7 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
 
 1. Aşağıdaki yöntemlerden birini kullanarak, çalışma alanınızın Azure Container Registry adını bulun:
 
-    __Azure portalındaki__
+    __Azure portalı__
 
     Çalışma alanınızın genel bakış bölümünden __kayıt defteri__ değeri Azure Container Registry bağlanır.
 
@@ -281,6 +281,13 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
     ]
     }
     ```
+
+    Bu şablon, çalışma alanından ACR 'nize ağ erişimi için _özel bir uç nokta_ oluşturur. Aşağıdaki ekran görüntüsünde, bu özel uç noktanın bir örneği gösterilmektedir.
+
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="Çalışma alanı için Azure Container Registry":::
+
+    > [!IMPORTANT]
+    > Bu uç noktayı silmeyin! Yanlışlıkla silerseniz, yeni bir tane oluşturmak için bu adımda şablonu yeniden uygulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

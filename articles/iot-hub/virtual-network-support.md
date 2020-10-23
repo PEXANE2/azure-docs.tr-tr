@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613909"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427848"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -170,7 +170,7 @@ Güvenilen Microsoft ilk taraf hizmetleri özel durum özelliği ücretsizdir. S
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>Yönlendirme için depolama hesabı uç noktalarına giden çıkış bağlantısı
 
-IoT Hub, iletileri müşteriye ait bir depolama hesabına yönlendirebilir. Güvenlik duvarı kısıtlamaları olduğunda yönlendirme işlevselliğinin bir depolama hesabına erişmesine izin vermek için, IoT Hub [yönetilen bir kimliğe](#turn-on-managed-identity-for-iot-hub)sahip olması gerekir. Yönetilen bir kimlik sağlandıktan sonra, depolama hesabınıza erişmek için hub 'ın kaynak kimliğine RBAC izni vermek üzere aşağıdaki adımları izleyin.
+IoT Hub, iletileri müşteriye ait bir depolama hesabına yönlendirebilir. Güvenlik duvarı kısıtlamaları olduğunda yönlendirme işlevselliğinin bir depolama hesabına erişmesine izin vermek için, IoT Hub [yönetilen bir kimliğe](#turn-on-managed-identity-for-iot-hub)sahip olması gerekir. Yönetilen bir kimlik sağlandıktan sonra, depolama hesabınıza erişmek için hub 'ın kaynak kimliğine Azure RBAC izni vermek üzere aşağıdaki adımları izleyin.
 
 1. Azure portal, depolama hesabınızın **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
@@ -188,7 +188,7 @@ Artık özel depolama uç noktanız, hub 'ın sistem tarafından atanan kimliği
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>Yönlendirme için Olay Hub 'ları uç noktalarına giden bağlantı
 
-IoT Hub, iletileri müşteriye ait bir olay hub 'ı ad alanına yönlendirmek üzere yapılandırılabilir. Güvenlik duvarı kısıtlamaları yerinde yönlendirme işlevselliğinin bir olay hub 'ı kaynağına erişmesine izin vermek için, IoT Hub yönetilen bir kimliğe sahip olmalıdır. Yönetilen bir kimlik oluşturulduktan sonra, Olay Hub 'larınızı erişmek üzere hub 'ın kaynak kimliğine RBAC izni vermek için aşağıdaki adımları izleyin.
+IoT Hub, iletileri müşteriye ait bir olay hub 'ı ad alanına yönlendirmek üzere yapılandırılabilir. Güvenlik duvarı kısıtlamaları yerinde yönlendirme işlevselliğinin bir olay hub 'ı kaynağına erişmesine izin vermek için, IoT Hub yönetilen bir kimliğe sahip olmalıdır. Yönetilen bir kimlik oluşturulduktan sonra, Olay Hub 'larınız için Azure RBAC iznini hub 'ın kaynak kimliğine sağlamak üzere aşağıdaki adımları izleyin.
 
 1. Azure portal, Olay Hub 'ları **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
@@ -206,7 +206,7 @@ Artık özel olay hub 'larınız, hub 'ın sistem tarafından atanan kimliğini 
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>Yönlendirme için Service Bus uç noktalarına çıkış bağlantısı
 
-IoT Hub, iletileri müşteriye ait Service Bus ad alanına yönlendirmek üzere yapılandırılabilir. Güvenlik duvarı kısıtlamaları varken yönlendirme işlevselliğinin bir hizmet veri yolu kaynağına erişmesine izin vermek için, IoT Hub yönetilen bir kimliğe sahip olması gerekir. Yönetilen bir kimlik sağlandıktan sonra, hizmet veri yoluna erişmek için hub 'ın kaynak kimliğine RBAC izni vermek üzere aşağıdaki adımları izleyin.
+IoT Hub, iletileri müşteriye ait Service Bus ad alanına yönlendirmek üzere yapılandırılabilir. Güvenlik duvarı kısıtlamaları varken yönlendirme işlevselliğinin bir hizmet veri yolu kaynağına erişmesine izin vermek için, IoT Hub yönetilen bir kimliğe sahip olması gerekir. Yönetilen bir kimlik sağlandıktan sonra, hizmet veri yoluna erişmek için hub 'ın kaynak kimliğine Azure RBAC izni vermek üzere aşağıdaki adımları izleyin.
 
 1. Azure portal, hizmet veri yolu **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
@@ -224,7 +224,7 @@ Artık özel Service Bus uç noktanız, hub 'ın sistem tarafından atanan kimli
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>Karşıya dosya yükleme için depolama hesaplarına çıkış bağlantısı
 
-IoT Hub dosya karşıya yükleme özelliği, cihazların müşteriye ait bir depolama hesabına dosya yüklemesine olanak tanır. Karşıya dosya yüklemeye izin vermek için, hem cihazların hem de IoT Hub depolama hesabına bağlantısı olması gerekir. Depolama hesabında güvenlik duvarı kısıtlamaları varsa, cihazların bağlantı kazanmak için desteklenen depolama hesabının mekanizmasından ( [Özel uç noktalar](../private-link/create-private-endpoint-storage-portal.md), [hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)veya [doğrudan güvenlik duvarı yapılandırması](../storage/common/storage-network-security.md)dahil) birini kullanması gerekir. Benzer şekilde, depolama hesabında güvenlik duvarı kısıtlamaları varsa, IoT Hub, güvenilen Microsoft Hizmetleri özel durumu aracılığıyla depolama kaynağına erişmek üzere yapılandırılmalıdır. Bu amaçla, IoT Hub yönetilen bir kimliğe sahip olmalıdır. Yönetilen bir kimlik sağlandıktan sonra, depolama hesabınıza erişmek için hub 'ın kaynak kimliğine RBAC izni vermek üzere aşağıdaki adımları izleyin.
+IoT Hub dosya karşıya yükleme özelliği, cihazların müşteriye ait bir depolama hesabına dosya yüklemesine olanak tanır. Karşıya dosya yüklemeye izin vermek için, hem cihazların hem de IoT Hub depolama hesabına bağlantısı olması gerekir. Depolama hesabında güvenlik duvarı kısıtlamaları varsa, cihazların bağlantı kazanmak için desteklenen depolama hesabının mekanizmasından ( [Özel uç noktalar](../private-link/tutorial-private-endpoint-storage-portal.md), [hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)veya [doğrudan güvenlik duvarı yapılandırması](../storage/common/storage-network-security.md)dahil) birini kullanması gerekir. Benzer şekilde, depolama hesabında güvenlik duvarı kısıtlamaları varsa, IoT Hub, güvenilen Microsoft Hizmetleri özel durumu aracılığıyla depolama kaynağına erişmek üzere yapılandırılmalıdır. Bu amaçla, IoT Hub yönetilen bir kimliğe sahip olmalıdır. Yönetilen bir kimlik sağlandıktan sonra, depolama hesabınıza erişmek için hub 'ın kaynak kimliğine Azure RBAC izni vermek üzere aşağıdaki adımları izleyin.
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -244,7 +244,7 @@ IoT Hub dosya karşıya yükleme özelliği, cihazların müşteriye ait bir dep
 
 IoT Hub, cihaz bilgilerini müşteri tarafından sunulan bir depolama blobundan toplu olarak [içeri/dışarı aktarma](./iot-hub-bulk-identity-mgmt.md) işlevlerini destekler. Toplu içeri/dışarı aktarma özelliğinin işlevine izin vermek için, hem cihazların hem de IoT Hub depolama hesabına bağlantısı olması gerekir.
 
-Bu işlevsellik IoT Hub depolama hesabına bağlantı gerektirir. Güvenlik duvarı kısıtlamaları varken bir Service Bus kaynağına erişmek için, IoT Hub yönetilen bir kimliğe sahip olması gerekir. Yönetilen bir kimlik sağlandıktan sonra, hizmet veri yoluna erişmek için hub 'ın kaynak kimliğine RBAC izni vermek üzere aşağıdaki adımları izleyin.
+Bu işlevsellik IoT Hub depolama hesabına bağlantı gerektirir. Güvenlik duvarı kısıtlamaları varken bir Service Bus kaynağına erişmek için, IoT Hub yönetilen bir kimliğe sahip olması gerekir. Yönetilen bir kimlik sağlandıktan sonra, hizmet veri yoluna erişmek için hub 'ın kaynak kimliğine Azure RBAC izni vermek üzere aşağıdaki adımları izleyin.
 
 1. Azure portal, depolama hesabınızın **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
@@ -252,7 +252,7 @@ Bu işlevsellik IoT Hub depolama hesabına bağlantı gerektirir. Güvenlik duva
 
 3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
-Artık toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için [içeri aktarma dışarı aktarma işleri oluşturmak](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) üzere Azure IoT REST API 'lerini kullanabilirsiniz. `storageAuthenticationType="identityBased"` `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` Depolama hesabınızın giriş ve çıkış URL 'leri sırasıyla, istek gövdesine ve kullanmanız gerekir.
+Artık toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için [içeri aktarma dışarı aktarma işleri oluşturmak](/rest/api/iothub/service/jobs/getimportexportjobs) üzere Azure IoT REST API 'lerini kullanabilirsiniz. `storageAuthenticationType="identityBased"` `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` Depolama hesabınızın giriş ve çıkış URL 'leri sırasıyla, istek gövdesine ve kullanmanız gerekir.
 
 Azure IoT Hub SDK 'Ları Ayrıca hizmet istemcisinin kayıt defteri yöneticisinde bu işlevselliği destekler. Aşağıdaki kod parçacığında, C# SDK 'SıNı kullanarak bir içeri aktarma işinin veya dışarı aktarma işinin nasıl başlatılacağı gösterilmektedir.
 
@@ -295,4 +295,4 @@ IoT Hub özellikler hakkında daha fazla bilgi edinmek için aşağıdaki bağla
 
 * [İleti yönlendirme](./iot-hub-devguide-messages-d2c.md)
 * [Karşıya dosya yükleme](./iot-hub-devguide-file-upload.md)
-* [Toplu cihaz içeri/dışarı aktarma](./iot-hub-bulk-identity-mgmt.md) 
+* [Toplu cihaz içeri/dışarı aktarma](./iot-hub-bulk-identity-mgmt.md)

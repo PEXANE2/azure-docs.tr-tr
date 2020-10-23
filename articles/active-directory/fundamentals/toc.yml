@@ -49,6 +49,34 @@
           href: active-directory-architecture.md
         - name: Tüm uygulamalarınızı Azure AD ile tümleştirme
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Kimlik doğrulaması ve sağlama protokolleri
+          items:
+            - name: Genel Bakış
+              href: auth-sync-overview.md
+            - name: Üst bilgi tabanlı kimlik doğrulaması
+              href: auth-header-based.md
+            - name: LDAP kimlik doğrulaması
+              href: auth-ldap.md
+            - name: OAuth 2.0 kimlik doğrulaması
+              href: auth-oauth2.md
+            - name: Open ID Connect kimlik doğrulaması
+              href: auth-oidc.md
+            - name: Parola tabanlı kimlik doğrulaması
+              href: auth-password-based-sso.md
+            - name: Radius kimlik doğrulaması
+              href: auth-radius.md
+            - name: Uzak masaüstü ağ geçidi kimlik doğrulaması
+              href: auth-remote-desktop-gateway.md
+            - name: SAML kimlik doğrulaması
+              href: auth-saml.md
+            - name: Windows kimlik doğrulaması - KCD
+              href: auth-kcd.md
+            - name: Dizin eşitlemesi
+              href: sync-directory.md
+            - name: LDAP eşitlemesi
+              href: sync-ldap.md
+            - name: SCIM eşitlemesi
+              href: sync-scim.md
     - name: Dağıtım kılavuzu
       items:
         - name: 'Dağıtım 30, 90 ve sonrası'

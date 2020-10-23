@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 46c1df8a175657e20dce984d0c8825ae99170246
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c76b2c0109637ce34681d2fa5c8b29e1ff800a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761660"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364380"
 ---
 # <a name="delete-resources-from-azure"></a>Azure'dan kaynakları silme
 
@@ -63,7 +63,7 @@ Azure CLı 'yı kullanarak belirli Azure Arc etkin veri Hizmetleri kaynakların�
 
 Azure CLı kullanarak Azure 'dan SQL yönetilen örnek kaynaklarını silmek için aşağıdaki komutta yer tutucu değerlerini değiştirin ve çalıştırın.
 
-```console
+```azurecli
 az resource delete --name <sql instance name> --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group <resource group name>
 
 #Example
@@ -74,7 +74,7 @@ az resource delete --name <sql instance name> --resource-type Microsoft.AzureDat
 
 Azure CLı kullanarak Azure 'dan bir PostgreSQL hiper ölçek sunucu grubu kaynağını silmek için aşağıdaki komutta yer tutucu değerlerini değiştirin ve çalıştırın.
 
-```console
+```azurecli
 az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureData/postgresInstances --resource-group <resource group name>
 
 #Example
@@ -88,7 +88,7 @@ az resource delete --name <postgresql instance name> --resource-type Microsoft.A
 
 Azure CLı kullanarak Azure 'da bir Azure Arc veri denetleyicisini silmek için aşağıdaki komutta yer tutucu değerlerini değiştirin ve çalıştırın.
 
-```console
+```azurecli
 az resource delete --name <data controller name> --resource-type Microsoft.AzureData/dataControllers --resource-group <resource group name>
 
 #Example
@@ -97,4 +97,4 @@ az resource delete --name <data controller name> --resource-type Microsoft.Azure
 
 ### <a name="delete-a-resource-group-using-the-azure-cli"></a>Azure CLı kullanarak bir kaynak grubunu silme
 
-Ayrıca, [bir kaynak grubunu silmek](/azure/azure-resource-manager/management/delete-resource-group)IÇIN Azure CLI 'yi de kullanabilirsiniz.
+Ayrıca, [bir kaynak grubunu silmek](../../azure-resource-manager/management/delete-resource-group.md)IÇIN Azure CLI 'yi de kullanabilirsiniz.

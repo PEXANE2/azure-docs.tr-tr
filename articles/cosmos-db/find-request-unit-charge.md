@@ -1,30 +1,31 @@
 ---
-title: İstek birimi (RU) ücreti Azure Cosmos DB bulun
-description: Azure Cosmos kapsayıcısına karşı yürütülen herhangi bir işlem için istek birimi (RU) ücreti bulmayı öğrenin.
+title: Azure Cosmos DB bir SQL sorgusu için istek birimi (RU) ücreti bulma
+description: Azure Cosmos kapsayıcısına göre yürütülen SQL sorguları için istek birimi (RU) ücreti bulmayı öğrenin. RU ücretine ulaşmak için Azure portal, .NET, Java, Python ve Node.js dillerini kullanabilirsiniz.
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/01/2019
+ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23f334d28ef5045c68bb84fc0bc34e8f847fe0f9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316197"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281844"
 ---
-# <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>İstek Birim ücreti Azure Cosmos DB bulun
+# <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API 'sinde yürütülen işlemler için istek birimi ücreti bulma
 
-Bu makalede, Azure Cosmos DB bir kapsayıcıya karşı yürütülen herhangi bir işlem için [istek birimi](request-units.md) (ru) tüketimini bulmanın farklı yolları sunulmaktadır. Şu anda, bu tüketimi yalnızca Azure portal kullanarak veya SDK 'lardan biri aracılığıyla Azure Cosmos DB geri gönderilen yanıtı inceleyerek ölçebilirsiniz.
+Azure Cosmos DB SQL, MongoDB, Cassandra, Gremlin ve Table gibi birçok API 'yi destekler. Her API 'nin kendi veritabanı işlemleri kümesi vardır. Bu işlemler, karmaşık sorgulardan okuma ve yazma işlemleri için basit noktadan aralığıdır. Her veritabanı işlemi, işlemin karmaşıklığına göre sistem kaynaklarını tüketir.
 
-## <a name="sql-core-api"></a>SQL (Core) API'si
+Tüm veritabanı işlemlerinin maliyeti Azure Cosmos DB tarafından normalleştirilir ve İstek Birimi (veya kısa RU) ile ifade edilir. , Azure Cosmos DB tarafından desteklenen veritabanı işlemlerini gerçekleştirmek için gereken CPU, ıOPS ve bellek gibi sistem kaynaklarını soyutlayan bir performans para birimi olarak RUs 'yi düşünebilirsiniz. Azure Cosmos kapsayıcınızla etkileşim kurmak için hangi API'yi kullanırsanız kullanın maliyetler her zaman RU cinsinden ölçülür. Veritabanı işleminin bir yazma, işaret okuma veya sorgu olup olmadığı, maliyetler her zaman RUs cinsinden ölçülür. Daha fazla bilgi için bkz. [İstek birimleri ve BT 'nin önemli konuları](request-units.md) makalesi.
 
-SQL API 'sini kullanıyorsanız, bir Azure Cosmos kapsayıcısına karşı bir işlemin RU tüketimini bulmak için birden çok seçeneğiniz vardır.
+Bu makalede, Azure Cosmos DB SQL API 'sindeki bir kapsayıcıya karşı yürütülen herhangi bir işlem için [istek birimi](request-units.md) (ru) tüketimini bulabileceğiniz farklı yollar sunulmaktadır. Farklı bir API kullanıyorsanız, RU/s ücretine ulaşmak için bkz. [MongoDB Için API](find-request-unit-charge-mongodb.md), [Cassandra API](find-request-unit-charge-cassandra.md), [gremlin API](find-request-unit-charge-gremlin.md)ve [tablo API'si](find-request-unit-charge-table.md) makaleleri.
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+Şu anda, bu tüketimi yalnızca Azure portal kullanarak veya SDK 'lardan biri aracılığıyla Azure Cosmos DB geri gönderilen yanıtı inceleyerek ölçebilirsiniz. SQL API 'sini kullanıyorsanız, bir Azure Cosmos kapsayıcısına karşı bir işlemin RU tüketimini bulmak için birden çok seçeneğiniz vardır.
 
-Şu anda, yalnızca bir SQL sorgusu için Azure portal istek ücreti bulabilirsiniz.
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
@@ -40,7 +41,7 @@ SQL API 'sini kullanıyorsanız, bir Azure Cosmos kapsayıcısına karşı bir i
 
 :::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Azure portal bir SQL sorgu isteği ücreti ekran görüntüsü":::
 
-### <a name="use-the-net-sdk"></a>.NET SDK’yı kullanma
+## <a name="use-the-net-sdk"></a>.NET SDK’yı kullanma
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -87,7 +88,7 @@ Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Cosmos DB ' de BIR SQL 
 
 ---
 
-### <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
+## <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
 
 [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) 'dan döndürülen nesneler bir yöntemi kullanıma sunar `getRequestCharge()` :
 
@@ -117,7 +118,7 @@ feedResponse.forEach(result -> {
 
 Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Cosmos db SQL API hesabı kullanarak Java uygulaması oluşturma](create-sql-api-java.md).
 
-### <a name="use-the-nodejs-sdk"></a>Node.js SDK 'sını kullanma
+## <a name="use-the-nodejs-sdk"></a>Node.js SDK 'sını kullanma
 
 [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) 'dan döndürülen nesneler, `headers` temel alınan http API 'si tarafından döndürülen tüm üst bilgileri eşleyen bir alt nesne sunar. İstek ücreti şu anahtar altında kullanılabilir `x-ms-request-charge` :
 
@@ -152,7 +153,7 @@ while (query.hasMoreResults()) {
 
 Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Cosmos db SQL API hesabı kullanarak Node.js uygulama oluşturma](create-sql-api-nodejs.md). 
 
-### <a name="use-the-python-sdk"></a>Python SDK'yı kullanma
+## <a name="use-the-python-sdk"></a>Python SDK'yı kullanma
 
 `CosmosClient` [Python SDK](https://pypi.org/project/azure-cosmos/) 'daki nesne, `last_response_headers` yürütülen son işlem için temeldeki HTTP API 'si tarafından döndürülen tüm üstbilgileri eşleyen bir sözlük sunar. İstek ücreti şu anahtar altında kullanılabilir `x-ms-request-charge` :
 
@@ -167,143 +168,6 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
 Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Cosmos db SQL API hesabı kullanarak bir Python uygulaması oluşturma](create-sql-api-python.md). 
-
-## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API
-
-RU ücreti adlı özel bir [veritabanı komutu](https://docs.mongodb.com/manual/reference/command/) tarafından sunulur `getLastRequestStatistics` . Komutu, yürütülen son işlemin adını, istek ücretine ve süresini içeren bir belge döndürür. MongoDB için Azure Cosmos DB API kullanıyorsanız, RU ücreti almak için birden çok seçeneğiniz vardır.
-
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
-
-Şu anda yalnızca bir sorgu için Azure portal istek ücreti bulabilirsiniz.
-
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
-
-1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account) ve verilerle birlikte akışı yapın veya zaten veri içeren mevcut bir hesabı seçin.
-
-1. **Veri Gezgini** bölmesine gidin ve üzerinde çalışmak istediğiniz kapsayıcıyı seçin.
-
-1. **Yeni Sorgu**’yu seçin.
-
-1. Geçerli bir sorgu girin ve sonra **sorguyu Yürüt**' ü seçin.
-
-1. Yürüttüğünüz istek için gerçek istek ücreti göstermek üzere **sorgu istatistikleri** ' ni seçin.
-
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure portal bir SQL sorgu isteği ücreti ekran görüntüsü":::
-
-### <a name="use-the-mongodb-net-driver"></a>MongoDB .NET sürücüsünü kullanma
-
-[Resmi MongoDB .net sürücüsünü](https://docs.mongodb.com/ecosystem/drivers/csharp/)kullandığınızda, `RunCommand` yöntemini bir nesne üzerinde çağırarak komutları çalıştırabilirsiniz `IMongoDatabase` . Bu yöntem, soyut sınıfın bir uygulamasını gerektirir `Command<>` :
-
-```csharp
-class GetLastRequestStatisticsCommand : Command<Dictionary<string, object>>
-{
-    public override RenderedCommand<Dictionary<string, object>> Render(IBsonSerializerRegistry serializerRegistry)
-    {
-        return new RenderedCommand<Dictionary<string, object>>(new BsonDocument("getLastRequestStatistics", 1), serializerRegistry.GetSerializer<Dictionary<string, object>>());
-    }
-}
-
-Dictionary<string, object> stats = database.RunCommand(new GetLastRequestStatisticsCommand());
-double requestCharge = (double)stats["RequestCharge"];
-```
-
-Daha fazla bilgi için bkz. [hızlı başlangıç: MongoDB için Azure Cosmos DB API kullanarak .NET Web uygulaması oluşturma](create-mongodb-dotnet.md).
-
-### <a name="use-the-mongodb-java-driver"></a>MongoDB Java sürücüsünü kullanma
-
-
-[Resmi MongoDB Java sürücüsünü](https://mongodb.github.io/mongo-java-driver/)kullandığınızda, `runCommand` metodu bir nesne üzerinde çağırarak komutları çalıştırabilirsiniz `MongoDatabase` :
-
-```java
-Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));
-Double requestCharge = stats.getDouble("RequestCharge");
-```
-
-Daha fazla bilgi için bkz. [hızlı başlangıç: MongoDB için Azure Cosmos DB API ve Java SDK 'sı kullanarak Web uygulaması oluşturma](create-mongodb-java.md).
-
-### <a name="use-the-mongodb-nodejs-driver"></a>MongoDB Node.js sürücüsünü kullanma
-
-[Resmi MongoDB Node.js sürücüsünü](https://mongodb.github.io/node-mongodb-native/)kullandığınızda, `command` metodu bir nesne üzerinde çağırarak komutları çalıştırabilirsiniz `db` :
-
-```javascript
-db.command({ getLastRequestStatistics: 1 }, function(err, result) {
-    assert.equal(err, null);
-    const requestCharge = result['RequestCharge'];
-});
-```
-
-Daha fazla bilgi için bkz. [hızlı başlangıç: mevcut bir MongoDB Node.js Web uygulamasını Azure Cosmos DB 'ye geçirme](create-mongodb-nodejs.md).
-
-## <a name="cassandra-api"></a>Cassandra API’si
-
-Azure Cosmos DB Cassandra API karşı işlemler gerçekleştirdiğinizde RU ücreti, gelen yükünde adlı bir alan olarak döndürülür `RequestCharge` . RU ücretini almak için çeşitli seçenekleriniz vardır.
-
-### <a name="use-the-net-sdk"></a>.NET SDK’yı kullanma
-
-[.NET SDK](https://www.nuget.org/packages/CassandraCSharpDriver/)'yı kullandığınızda, `Info` bir nesnenin özelliği altında gelen yükü alabilirsiniz `RowSet` :
-
-```csharp
-RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
-double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"].Reverse().ToArray(), 0);
-```
-
-Daha fazla bilgi için bkz. [hızlı başlangıç: .NET SDK ve Azure Cosmos DB kullanarak Cassandra uygulaması oluşturma](create-cassandra-dotnet.md).
-
-### <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
-
-[Java SDK 'sını](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core)kullandığınızda, `getExecutionInfo()` yöntemi bir nesne üzerinde çağırarak gelen yükü alabilirsiniz `ResultSet` :
-
-```java
-ResultSet resultSet = session.execute("SELECT table_name FROM system_schema.tables;");
-Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("RequestCharge").getDouble();
-```
-
-Daha fazla bilgi için bkz. [hızlı başlangıç: Java SDK 'sını kullanarak Cassandra uygulaması derleme ve Azure Cosmos DB](create-cassandra-java.md).
-
-## <a name="gremlin-api"></a>Gremlin API
-
-Gremlin API 'yi kullandığınızda, bir Azure Cosmos kapsayıcısına karşı bir işlemin RU tüketimini bulmak için birden çok seçeneğiniz vardır. 
-
-### <a name="use-drivers-and-sdk"></a>Sürücüleri ve SDK 'Yı kullanma
-
-Gremlin API tarafından döndürülen üstbilgiler, şu anda Gremlin .NET ve Java SDK 'Sı tarafından ortaya çıkacak olan özel durum öznitelikleriyle eşlenir. İstek ücreti, anahtar altında kullanılabilir `x-ms-request-charge` .
-
-### <a name="use-the-net-sdk"></a>.NET SDK’yı kullanma
-
-[Gremlin.NET SDK 'sını](https://www.nuget.org/packages/Gremlin.Net/)kullandığınızda, durum öznitelikleri `StatusAttributes` nesnenin özelliği altında kullanılabilir `ResultSet<>` :
-
-```csharp
-ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;
-double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
-```
-
-Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Cosmos DB Gremlin API hesabı kullanarak .NET Framework veya çekirdek uygulama oluşturma](create-graph-dotnet.md).
-
-### <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
-
-[Gremlin Java SDK 'sını](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver)kullandığınızda, `statusAttributes()` nesne üzerinde yöntemini çağırarak durum özniteliklerini alabilirsiniz `ResultSet` :
-
-```java
-ResultSet results = client.submit("g.V().count()");
-Double requestCharge = (Double)results.statusAttributes().get().get("x-ms-request-charge");
-```
-
-Daha fazla bilgi için bkz. [hızlı başlangıç: Java SDK 'sını kullanarak Azure Cosmos DB grafik veritabanı oluşturma](create-graph-java.md).
-
-## <a name="table-api"></a>Tablo API’si
-
-Şu anda, tablo işlemleri için RU ücreti döndüren tek SDK [.NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)olur. `TableResult`Nesnesi, `RequestCharge` Azure Cosmos db tablo API'si KARŞı kullandığınızda SDK tarafından doldurulan bir özelliği kullanıma sunar:
-
-```csharp
-CloudTable tableReference = client.GetTableReference("table");
-TableResult tableResult = tableReference.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowKey")));
-if (tableResult.RequestCharge.HasValue) // would be false when using Azure Storage Tables
-{
-    double requestCharge = tableResult.RequestCharge.Value;
-}
-```
-
-Daha fazla bilgi için bkz. [hızlı başlangıç: .NET SDK ve Azure Cosmos DB kullanarak tablo API'si uygulama oluşturma](create-table-dotnet.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

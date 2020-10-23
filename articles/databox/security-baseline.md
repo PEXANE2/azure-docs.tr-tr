@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36d3fdbe05a4fac63415e34aea879a9ef576b725
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225613"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127106"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box için Azure Güvenlik temeli
 
 Azure Data Box için Azure Güvenlik temeli, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 
-Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
+Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](../security/benchmarks/overview.md)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
 
-Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Ağ güvenliği
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: sanal ağlar içindeki Azure kaynaklarını koruma
 
@@ -70,9 +70,9 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 **Rehberlik**: rehberlik: Azure Data Box tarafından kullanılan uç noktalar Microsoft tarafından yönetilir. Şirket içi sistemlerinize dağıtmak istediğiniz ek denetimlerden siz sorumlusunuz.
 
-* [Azure Data Box Güvenliği anlama](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Azure Data Box Güvenliği anlama](./data-box-security.md)
 
-* [Azure Data Box için bağlantı noktası bilgileri](https://docs.microsoft.com/azure/databox/data-box-system-requirements#port-requirements)
+* [Azure Data Box için bağlantı noktası bilgileri](./data-box-system-requirements.md#port-requirements)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -120,7 +120,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: onaylanan zaman eşitleme kaynaklarını kullanın
 
@@ -134,7 +134,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 **Kılavuz**: Data Box sıralamanıza yönelik her bir adıma karşılık gelen, sıraya erişimi denetlemek, olayları denetlemek, siparişi izlemek ve oluşturulan çeşitli günlükleri yorumlamak için birden çok eylem gerçekleştirebilirsiniz.
 
-* [Azure Data Box için izlemeyi ve olay günlüğünü anlayın](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Azure Data Box için izlemeyi ve olay günlüğünü anlayın](./data-box-logs.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -144,7 +144,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 **Kılavuz**: Data Box sıralamanıza yönelik her bir adıma karşılık gelen, sıraya erişimi denetlemek, olayları denetlemek, siparişi izlemek ve oluşturulan çeşitli günlükleri yorumlamak için birden çok eylem gerçekleştirebilirsiniz.
 
-* [Azure Data Box için izlemeyi ve olay günlüğünü anlayın](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Azure Data Box için izlemeyi ve olay günlüğünü anlayın](./data-box-logs.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -170,7 +170,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 **Kılavuz**: Data Box sıralamanıza yönelik her bir adıma karşılık gelen, sıraya erişimi denetlemek, olayları denetlemek, siparişi izlemek ve oluşturulan çeşitli günlükleri yorumlamak için birden çok eylem gerçekleştirebilirsiniz.
 
-* [Azure Data Box için izlemeyi ve olay günlüğünü anlayın](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Azure Data Box için izlemeyi ve olay günlüğünü anlayın](./data-box-logs.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -180,7 +180,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 **Kılavuz**: Data Box sıralamanıza yönelik her bir adıma karşılık gelen, sıraya erişimi denetlemek, olayları denetlemek, siparişi izlemek ve oluşturulan çeşitli günlükleri yorumlamak için birden çok eylem gerçekleştirebilirsiniz.
 
-* [Azure Data Box için izlemeyi ve olay günlüğünü anlayın](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Azure Data Box için izlemeyi ve olay günlüğünü anlayın](./data-box-logs.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -212,17 +212,17 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 ## <a name="identity-and-access-control"></a>Kimlik ve erişim denetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve erişim denetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve erişim denetimi](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
 **Rehberlik**: Azure Data Box yönetici erişimine sahip kullanıcı hesaplarının envanterini saklayın. Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırmak için, aboneliğiniz için Azure portal kimlik ve erişim denetimi (ıAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini denetleyebilirsiniz. Data Box sırasına erişimi denetlemek için çeşitli kapsamlardaki Azure rollerini ayarlayın. Bir Azure rolü, erişim türünü, okuma-yazma, salt okunurdur, okuma-yazma işlemlerini bir işlem alt kümesine belirler.
 
-* [Özel rolleri anlama](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+* [Özel rolleri anlama](../role-based-access-control/custom-roles.md)
 
-* [Çalışma kitapları için Azure RBAC yapılandırma](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Çalışma kitapları için Azure RBAC yapılandırma](../sentinel/quickstart-get-visibility.md)
 
-* [Sıraya göre erişim denetimi ayarlamayı anlayın](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Sıraya göre erişim denetimi ayarlamayı anlayın](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Güvenlik Merkezi izleme**: Hayır
 
@@ -245,9 +245,9 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 
-* [Kimlik ve erişim (Önizleme) izlemek için Azure Güvenlik Merkezi 'ni kullanma](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Kimlik ve erişim (Önizleme) izlemek için Azure Güvenlik Merkezi 'ni kullanma](../security-center/security-center-identity-access.md)
 
-* [Azure Ilkesini kullanma](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini kullanma](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -273,9 +273,9 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 **Rehberlik**: Azure Data Box siparişlerinizi oturum açmak ve yapılandırmak için Azure MULTI-Factor AUTHENTICATION (MFA) özellikli bir ayrıcalıklı erişim iş istasyonu (Paw) kullanın.
 
-* [Ayrıcalıklı Erişim İş İstasyonları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Ayrıcalıklı Erişim İş İstasyonları](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Bulut tabanlı Azure Multi-Factor Authentication dağıtımı planlama](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Bulut tabanlı Azure Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -287,9 +287,9 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın.
 
-* [Privileged Identity Management dağıtma (PıM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management dağıtma (PıM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD risk algılamalarını anlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure AD risk algılamalarını anlama](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -299,7 +299,7 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 **Rehberlik**: IP adresi aralıklarının veya ülkelerin/bölgelerin yalnızca belirli mantıksal gruplarından Azure Portal erişimine izin vermek Için, koşullu erişim adlı konum kullanın.
 
-* [Azure 'da adlandırılmış konumları yapılandırma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure 'da adlandırılmış konumları yapılandırma](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -309,7 +309,7 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 **Rehberlik**: uygun yerlerde merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Azure AD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. Azure AD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
 
-* [Azure AD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD örneği oluşturma ve yapılandırma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -321,9 +321,9 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 Data Box gereç için bu, gerçek zamanlı olarak desteklenmez. İşin sonundaki günlükleri gözden geçirebilirsiniz.
 
-* [Azure AD raporlamayı anlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
-* [Azure kimlik erişimi Incelemelerini kullanma](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure kimlik erişimi Incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -339,9 +339,9 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 Azure Data Box hizmet günlükleri Log Analytics çalışma alanına yazılmadı.
 
-* [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Yerleşik Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Yerleşik Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -351,11 +351,11 @@ Azure Data Box hizmet günlükleri Log Analytics çalışma alanına yazılmadı
 
 **Rehberlik**: denetim düzleminde hesap oturum açma davranışı sapması (örn. Azure Portal) için, otomatik yanıtları Kullanıcı kimlikleriyle ilgili şüpheli eylemler için yapılandırmak üzere Azure AD kimlik koruması ve risk algılama özelliklerini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-* [Azure AD riskli oturum açma nasıl görüntülenir](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD riskli oturum açma nasıl görüntülenir](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel 'i ekleme](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -365,7 +365,7 @@ Azure Data Box hizmet günlükleri Log Analytics çalışma alanına yazılmadı
 
 **Rehberlik**: müşteri kasası Azure Data Box için şu anda desteklenmiyor.
 
-* [Müşteri Kasası tarafından desteklenen hizmetler listesi](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Müşteri Kasası tarafından desteklenen hizmetler listesi](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -373,7 +373,7 @@ Azure Data Box hizmet günlükleri Log Analytics çalışma alanına yazılmadı
 
 ## <a name="data-protection"></a>Veri koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
 
@@ -389,7 +389,7 @@ Azure Data Box hizmet günlükleri Log Analytics çalışma alanına yazılmadı
 
 Azure 'a veri yükleme sırasında, verileri karşıya yüklemek için kullanılan Data Box Gereç ve hizmet yalıtılmıştır.
 
-* [Azure Data Box ile çalışmaya başlama](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Azure Data Box ile çalışmaya başlama](./data-box-quickstart-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -399,7 +399,7 @@ Azure 'a veri yükleme sırasında, verileri karşıya yüklemek için kullanıl
 
 **Rehberlik**: Microsoft, Azure Data Box için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır. Data Box müşteri sitesinde olduğunda, aktarılan hassas verilerin korunduğundan emin olmak için en iyi uygulamaları izleyin.
 
-* [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -409,9 +409,9 @@ Azure 'a veri yükleme sırasında, verileri karşıya yüklemek için kullanıl
 
 **Rehberlik**: Microsoft, Azure Data Box için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır. Data Box müşteri sitesinde olduğunda, aktarılan hassas verilerin korunduğundan emin olmak için en iyi uygulamaları izleyin.
 
-* [Azure Data Box veri geçişini anlama](https://docs.microsoft.com/azure/databox/data-box-faq)
+* [Azure Data Box veri geçişini anlama](./data-box-faq.md)
 
-* [Data Box güvenliğe genel bakış](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Data Box güvenliğe genel bakış](./data-box-security.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -421,7 +421,7 @@ Azure 'a veri yükleme sırasında, verileri karşıya yüklemek için kullanıl
 
 **Rehberlik**: Şu anda kullanılamıyor; veri tanımlama, sınıflandırma ve kayıp önleme özellikleri Azure Data Box için henüz kullanılamıyor. Microsoft, Azure Data Box için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını önlemek için katı denetimler uygulamıştır.
 
-* [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -431,9 +431,9 @@ Azure 'a veri yükleme sırasında, verileri karşıya yüklemek için kullanıl
 
 **Rehberlik**: Data Box bir sıra oluşturmak için aboneliğe sahip veya katkıda bulunan erişime sahip olduğunuzdan emin olun. Ayrıca, Data Box okuyucu tanımlayabilir ve kaynak düzeyinde katkıda bulunan rolleri Data Box.
 
-* [Azure Data Box kullanmaya başlama hakkında bilgi edinin](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Azure Data Box kullanmaya başlama hakkında bilgi edinin](./data-box-quickstart-portal.md)
 
-* [Erişim denetimini ayarlamayı anlama](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Erişim denetimini ayarlamayı anlama](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -443,7 +443,7 @@ Azure 'a veri yükleme sırasında, verileri karşıya yüklemek için kullanıl
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir. Microsoft, Azure Data Box için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-* [Azure müşteri verileri koruması](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure müşteri verileri koruması](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -455,9 +455,9 @@ Azure 'a veri yükleme sırasında, verileri karşıya yüklemek için kullanıl
 
 Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca, Azure Data Box cihazı bir şifreleme anahtarı aracılığıyla kilitlemek için kullanılan cihaz kilit açma anahtarını (cihaz parolası olarak da bilinir) korur. Varsayılan olarak, Data Box sıra için cihaz kilit açma anahtarı, Microsoft tarafından yönetilen bir anahtarla şifrelenir. Cihaz kilit açma anahtarı üzerinde ek denetim için, müşteri tarafından yönetilen bir anahtar da sağlayabilirsiniz. Müşteri tarafından yönetilen anahtarların bir Azure Key Vault oluşturulması ve depolanması gerekir.
 
-* [Data Box veri korumayı anlama](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Data Box veri korumayı anlama](./data-box-security.md)
 
-* [Azure Key Vault Azure Data Box için müşteri tarafından yönetilen anahtarları kullanın](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Azure Key Vault Azure Data Box için müşteri tarafından yönetilen anahtarları kullanın](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -467,7 +467,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, değişikliklerin Azure Data Box gerçekleştiği zamana ve diğer önemli veya ilgili kaynaklara yönelik uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -475,7 +475,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 ## <a name="vulnerability-management"></a>Güvenlik açığı yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
 
@@ -519,7 +519,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 ## <a name="inventory-and-asset-management"></a>Envanter ve varlık yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: otomatik varlık bulma çözümünü kullanma
 
@@ -605,7 +605,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 **Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" yapılandırarak kullanıcıların Azure Resource Manager etkileşime geçmesini sınırlamak üzere Azure koşullu erişimini yapılandırın.
 
-* [Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -629,7 +629,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 ## <a name="secure-configuration"></a>Güvenli yapılandırma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
@@ -715,7 +715,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 **Rehberlik**: müşteri tarafından yönetilen anahtarların bir Azure Key Vault oluşturulması ve depolanması gerekir.
 
-* [Azure Key Vault Azure Data Box müşteri tarafından yönetilen anahtarları kullanma](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Azure Key Vault Azure Data Box müşteri tarafından yönetilen anahtarları kullanma](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -725,7 +725,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 **Rehberlik**: uygulanamaz; Azure Data Box Yönetilen kimlikler kullanmaz.
 
-* [Yönetilen kimlikleri destekleyen Azure hizmetleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [Yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -743,7 +743,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 ## <a name="malware-defense"></a>Kötü amaçlı yazılımdan koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanma
 
@@ -773,7 +773,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 ## <a name="data-recovery"></a>Veri kurtarma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: düzenli Otomatik yedeklemeli UPS sağlayın
 
@@ -809,7 +809,7 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 ## <a name="incident-response"></a>Olay yanıtı
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: olay yanıtı kılavuzu oluşturma
 
@@ -831,9 +831,9 @@ Azure Data Box, bekleyen veriler için AES 256 bit şifrelemeyi uygular. Ayrıca
 
 Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) etiketleri kullanarak Azure kaynaklarını açıkça tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun. Olayın gerçekleştiği Azure kaynakları ve ortamının önem derecesine bağlı olarak, uyarıların düzeltilmesine öncelik vermek sizin sorumluluğunuzdadır.
 
-* [Azure Güvenlik Merkezi'nde güvenlik uyarıları](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md)
 
-* [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -853,7 +853,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 **Rehberlik**: Microsoft Güvenlik Yanıt MERKEZI (MSRC), verilerinize izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse, Microsoft tarafından sizinle iletişim kurmak için güvenlik olayı iletişim bilgileri kullanılacaktır. Sorunların çözümlendiğinden emin olmak için gerçesonra olayları gözden geçirin.
 
-* [Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -863,9 +863,9 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 **Kılavuz**: Azure kaynaklarına yönelik riskleri belirlemenize yardımcı olmak Için sürekli dışarı aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar. Azure Güvenlik Merkezi veri bağlayıcısını kullanarak uyarıları Azure Sentinel 'e akışını sağlayabilirsiniz.
 
-* [Sürekli dışarı aktarmayı yapılandırma](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Sürekli dışarı aktarmayı yapılandırma](../security-center/continuous-export.md)
 
-* [Uyarıları Azure Sentinel 'e akış](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Uyarıları Azure Sentinel 'e akış](../sentinel/connect-azure-security-center.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -875,7 +875,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 **Kılavuz**: Azure Güvenlik Merkezi 'Nde Iş akışı Otomasyonu özelliğini kullanarak, güvenlik uyarılarındaki "Logic Apps" aracılığıyla yanıtları otomatik olarak tetikleyin ve Azure kaynaklarınızı korumaya yönelik öneriler alın.
 
-* [Iş akışı otomasyonu ve Logic Apps yapılandırma](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Iş akışı otomasyonu ve Logic Apps yapılandırma](../security-center/workflow-automation.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -883,7 +883,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Sızma testleri ve red team alıştırmaları
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini gerçekleştirin ve tüm kritik güvenlik bulgularını düzeltmeye dikkat edin
 
@@ -899,5 +899,5 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik kıyaslaması](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/17/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 01fdaa95dd396e5545b65bada2a9d6410169230b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 789bd2f62673e7faf562d3a407bf2f0a4fd861bf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052469"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125501"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>Hızlı Başlangıç: Azure’dan verileri dışarı aktarmak için Azure Data Box kullanmaya başlama
 
@@ -28,7 +28,7 @@ Başlamadan önce:
 
 * Data Box hizmeti için kullandığınız aboneliğin aşağıdaki türlerden birinde olduğundan emin olun:
   * Microsoft Kurumsal Anlaşma (EA). [EA abonelikleri](https://azure.microsoft.com/pricing/enterprise-agreement/) hakkındaki yazıları okuyun.
-  * Bulut Çözümü Sağlayıcısı (CSP). [Azure CSP programı](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) hakkında daha fazla bilgi edinin.
+  * Bulut Çözümü Sağlayıcısı (CSP). [Azure CSP programı](/azure/cloud-solution-provider/overview/azure-csp-overview) hakkında daha fazla bilgi edinin.
   * Microsoft Azure Sponsorluğu. [Azure sponsorluğu programı](https://azure.microsoft.com/offers/ms-azr-0036p/) hakkında daha fazla bilgi edinin.
 
 * Data Box siparişi oluşturmak için, abonelik üzerinde sahip veya katkıda bulunan erişimine sahip olduğunuzdan emin olun.
@@ -96,7 +96,7 @@ Bu adımın tamamlanması yaklaşık 5-7 dakika sürer.
 
 Bu işlemi tamamlamak için gereken süre verilerinizin boyutuna ve ağın hızına göre değişir.
 
-1. Windows istemcisi kullanıyorsanız Robocopy gibi SMB uyumlu bir dosya kopyalama aracı kullanın. NFS konağı için, `cp` veya `rsync` komutunu kullanarak verileri kopyalayın. Robocopy kullanarak veri kopyalama hakkında daha fazla bilgi için [Robocopy](https://technet.microsoft.com/library/ee851678.aspx) adresine gidin.
+1. Windows istemcisi kullanıyorsanız Robocopy gibi SMB uyumlu bir dosya kopyalama aracı kullanın. NFS konağı için, `cp` veya `rsync` komutunu kullanarak verileri kopyalayın. Robocopy kullanarak veri kopyalama hakkında daha fazla bilgi için [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)) adresine gidin.
 2. Cihaz paylaşımlarına bağlanın ve verileri konak bilgisayara kopyalamaya başlayın.
 <!-- 1. Connect to the device shares using the path:`\\<IP address of your device>\ShareName`. To get the share access credentials, go to the **Connect & copy** page in the local web UI of the Data Box. --> 
 

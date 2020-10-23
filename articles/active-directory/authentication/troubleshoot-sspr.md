@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef46cf0947f1ea31c74a6d189b5bdf00fea44fc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963831"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363547"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Azure Active Directory içinde self servis parola sıfırlama sorunlarını giderme
 
@@ -32,7 +32,7 @@ Azure portal SSPR seçeneklerini görmeye veya yapılandırmaya yönelik sorunla
 
 Bu işlemi gerçekleştirmek için bir Azure AD lisansınız yoksa, **parola sıfırlama** menü seçeneğini göremezsiniz.
 
-Söz konusu yönetici hesabına bir lisans atamak için, [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)adımlarını izleyin.
+Söz konusu yönetici hesabına bir lisans atamak için, [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)adımlarını izleyin.
 
 ### <a name="i-dont-see-a-particular-configuration-option"></a>Belirli bir yapılandırma seçeneğini görmüyorum.
 
@@ -52,7 +52,7 @@ Azure portal SSPR raporlama ile ilgili sorunlar yaşıyorsanız, aşağıdaki so
 
 Bu, işlemi gerçekleştiren yöneticiye atanmış bir Azure AD lisansınız yoksa oluşabilir.
 
-Söz konusu yönetici hesabına bir lisans atamak için, [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)adımlarını izleyin.
+Söz konusu yönetici hesabına bir lisans atamak için, [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)adımlarını izleyin.
 
 ### <a name="user-registrations-show-multiple-times"></a>Kullanıcı kayıtları birden çok kez gösterir.
 
@@ -74,7 +74,7 @@ Azure portal, **self servis parola sıfırlama etkin** yapılandırmasını *Se�
 
 Şu anda yalnızca bir Azure AD grubu Azure portal kullanılarak SSPR için etkinleştirilebilir. SSPR 'nin daha geniş dağıtımının bir parçası olarak, iç içe gruplar desteklenir. Seçtiğiniz gruptaki (ler) kullanıcılara uygun lisansların atandığından emin olun. Bir önceki sorun giderme adımını inceleyerek SSPR 'yi gerektiği şekilde etkinleştirin.
 
-Ayrıca, yapılandırma seçeneklerini gerçekleştiren yöneticinin atanmış bir lisansı olduğundan emin olmak için sorun giderme adımlarını gözden geçirin. Söz konusu yönetici hesabına bir lisans atamak için, [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)adımlarını izleyin.
+Ayrıca, yapılandırma seçeneklerini gerçekleştiren yöneticinin atanmış bir lisansı olduğundan emin olmak için sorun giderme adımlarını gözden geçirin. Söz konusu yönetici hesabına bir lisans atamak için, [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)adımlarını izleyin.
 
 ### <a name="theres-an-error-processing-the-request"></a>İstek işlenirken bir hata oluştu.
 
@@ -87,7 +87,7 @@ Siz veya kullanıcılarınız SSPR kullanarak sorun yaşıyorsanız, aşağıdak
 | Hata | Çözüm |
 | --- | --- |
 | Parola sıfırlama için Dizin etkinleştirilmemiş. | Azure portal, **self servis parola sıfırlama etkin** yapılandırmasını *Seçili* veya *Tümü* olarak değiştirin ve ardından **Kaydet**' i seçin. |
-| Kullanıcıya atanmış bir Azure AD lisansı yok. | İstenen kullanıcıya atanmış bir Azure AD lisansınız yoksa bu durum oluşabilir. Söz konusu yönetici hesabına bir lisans atamak için, [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)adımlarını izleyin. |
+| Kullanıcıya atanmış bir Azure AD lisansı yok. | İstenen kullanıcıya atanmış bir Azure AD lisansınız yoksa bu durum oluşabilir. Söz konusu yönetici hesabına bir lisans atamak için, [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)adımlarını izleyin. |
 | Dizin, parola sıfırlama için etkinleştirildi, ancak Kullanıcı eksik veya hatalı biçimlendirilmiş kimlik doğrulama bilgilerine sahip. | Kullanıcının dizindeki dosya üzerinde doğru şekilde oluşturulmuş iletişim verilerine sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Azure AD self servis parola sıfırlama tarafından kullanılan veriler](howto-sspr-authenticationdata.md). |
 | Dizin, parola sıfırlama için etkinleştirilir, ancak ilke iki doğrulama yöntemi gerektirecek şekilde ayarlandığında, kullanıcının dosya üzerinde yalnızca bir kişi veri parçası vardır. | Kullanıcının en az iki doğru yapılandırılmış iletişim yöntemine sahip olduğundan emin olun. Bir örnek, hem cep telefonu numarası *hem* de ofis telefon numarası vardır. |
 | Dizin, parola sıfırlama için etkinleştirilir ve Kullanıcı düzgün şekilde yapılandırılır, ancak kullanıcıya ulaşılamıyor. | Bu, geçici bir hizmet hatasının sonucu veya düzgün algılayamayacağı yanlış iletişim verileri olabilir. <br> <br> Kullanıcı 10 saniye bekliyorsa, "yeniden dene" ve "yöneticinize başvurun" şeklinde bir bağlantı görüntülenir. Kullanıcı "yeniden dene" seçeneğini seçerse çağrıyı yeniden dener. Kullanıcı "yöneticinize başvurun" seçeneğini seçerse, bu kullanıcı hesabı için bir parola sıfırlama isteğinde bulunan yöneticilere bir form e-postası gönderir. |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 934953437c2d156f220d5b0a1847e16358e3bfb8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88524577"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126884"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Öğretici: Splashtop ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Karşılamaüst 'i tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Splashtop uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir, ancak **NameIdentifier** **User. UserPrincipalName**ile eşlenir. Bilet Yöneticisi uygulaması, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 1. **SAML ile çoklu oturum açmayı ayarla** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -129,31 +129,33 @@ Bu bölümde, Splashtop 'a erişim vererek Azure çoklu oturum açma özelliğin
 Bu bölümde, [Splashtop Web portalından](https://my.splashtop.com/login)yenı bir SSO yöntemi uygulamanız gerekir.
 1. Splashtop web portalında, **hesap bilgileri**  /  **ekibi** sekmesi ' ne gidin, **Çoklu oturum açma** bölümünü bulmak için aşağı kaydırın. Ardından **yenı SSO yöntemi Için Uygula**' ya tıklayın.
 
-    ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
+    ![Ekran görüntüsü, yeni S S yöntemi için Uygula ' yı seçebileceğiniz çoklu oturum açma sayfasını gösterir.](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
 1. Uygulanan penceresinde bir **SSO adı**verin. Örneğin, yeni Azure, ıDP türü olarak **Azure** ' ı seçin ve Azure Portal ' de Azure AD tanımlayıcısı ' nı ve ' de Splashtop uygulamasından kopyalanmış **Azure ad tanımlayıcısını** **ekleyin.**
 
-    ![image](media/splashtop-tutorial/azure-sso-1.png)
+    ![Ekran görüntüsü, bir ad ve diğer bilgileri girebileceğiniz S S O yöntemi için geçerlidir sayfasını gösterir.](media/splashtop-tutorial/azure-sso-1.png)
 
 1. Sertifika bilgileri için, Azure portal üzerindeki Splashtop uygulamasından indirilen CERT dosyasına sağ tıklayın, Not defteri ile düzenleyin, sonra içeriği kopyalayın ve **sertifikayı indirin (base64)** alanına yapıştırın.
 
-    ![görüntü ](media/splashtop-tutorial/cert-1.png) resmi resmi ![ ](media/splashtop-tutorial/cert-2.png) ![](media/splashtop-tutorial/azure-sso-2.png)
+    ![Ekran görüntüsü bir sertifika dosyası seçip Not defteri ile açmayı gösterir.](media/splashtop-tutorial/cert-1.png)
+    ![Ekran görüntüsü, sertifika dosyasının içeriğini gösterir.](media/splashtop-tutorial/cert-2.png)
+    ![Ekran görüntüsü sertifikayı Indir metin kutusunu gösterir.](media/splashtop-tutorial/azure-sso-2.png)
 
-1. Hepsi bu! **Kaydet** ve SPLASHTOP SSO doğrulama ekibi, doğrulama bilgileri için sizinle iletişim kuracaktır, sonra SSO yöntemini etkinleştirir.
+1. İşte bu kadar! **Kaydet** ve SPLASHTOP SSO doğrulama ekibi, doğrulama bilgileri için sizinle iletişim kuracaktır, sonra SSO yöntemini etkinleştirir.
 
 ### <a name="create-splashtop-test-user"></a>Splashtop test kullanıcısı oluşturma
 
 1. SSO yöntemi etkinleştirildikten sonra, **Çoklu oturum açma** bölümünde etkinleştirmek için lütfen yenı oluşturulan SSO metodunu denetleyin.
 
-    ![image](media/splashtop-tutorial/enable.png)
+    ![Ekran görüntüsü, yeni yöntemi etkinleştirebileceğiniz çoklu oturum açma sayfasını gösterir.](media/splashtop-tutorial/enable.png)
 
 1. Test kullanıcısını, örneğin, `B.Simon@contoso.com` Yeni oluşturulan SSO yöntemiyle Splashtop ekibinize davet edin.
 
-    ![image](media/splashtop-tutorial/invite.png)
+    ![Ekran görüntüsü, yeni yönteminizi seçebileceğiniz kullanıcıları davet et sayfasını gösterir.](media/splashtop-tutorial/invite.png)
 
 1. Ayrıca, var olan bir Splashtop hesabını bir SSO hesabı olarak değiştirebilirsiniz, bkz. [yönergeler](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 
-1. Hepsi bu! Bu SSO hesabını kullanarak, Splashtop web portalında veya Splashtop Business uygulamasında oturum açabilirsiniz.
+1. İşte bu kadar! Bu SSO hesabını kullanarak, Splashtop web portalında veya Splashtop Business uygulamasında oturum açabilirsiniz.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

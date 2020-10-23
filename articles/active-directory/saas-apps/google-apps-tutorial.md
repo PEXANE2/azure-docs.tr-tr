@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a5cb1e589481bb424507d08879da8cc1b14ff1c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707824"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448206"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Öğretici: Google Cloud (G Suite) Bağlayıcısı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide, Google Cloud (G Suite) bağlayıcısını Azure Active Director
 * Kullanıcılarınızın Azure AD hesaplarıyla Google Cloud (G Suite) bağlayıcısına otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -64,7 +64,7 @@ Bu öğreticideki adımları test etmek için aşağıdaki önerileri izlemeniz 
 
 5. **S: bir Kullanıcı Windows aracılığıyla oturum açmışsa, parola istenmeden otomatik olarak Google Cloud (G Suite) bağlayıcısının kimliğini doğrular mı?**
 
-    Y: Bu senaryoyu etkinleştirmek için iki seçenek vardır. İlk olarak, kullanıcılar [Azure Active Directory JOIN](../device-management-introduction.md)aracılığıyla Windows 10 cihazlarında oturum açabilirler. Alternatif olarak, kullanıcılar, bir [Active Directory Federasyon Hizmetleri (AD FS) (AD FS)](../hybrid/plan-connect-user-signin.md) dağıtımı aracılığıyla Azure AD 'de çoklu oturum açma için etkinleştirilen bir şirket içi Active Directory etki alanına katılmış Windows cihazlarında oturum açabilirler. Her iki seçenek de, Azure AD ve Google Cloud (G Suite) Bağlayıcısı arasında çoklu oturum açmayı etkinleştirmek için aşağıdaki öğreticideki adımları gerçekleştirmenizi gerektirir.
+    Y: Bu senaryoyu etkinleştirmek için iki seçenek vardır. İlk olarak, kullanıcılar [Azure Active Directory JOIN](../devices/overview.md)aracılığıyla Windows 10 cihazlarında oturum açabilirler. Alternatif olarak, kullanıcılar, bir [Active Directory Federasyon Hizmetleri (AD FS) (AD FS)](../hybrid/plan-connect-user-signin.md) dağıtımı aracılığıyla Azure AD 'de çoklu oturum açma için etkinleştirilen bir şirket içi Active Directory etki alanına katılmış Windows cihazlarında oturum açabilirler. Her iki seçenek de, Azure AD ve Google Cloud (G Suite) Bağlayıcısı arasında çoklu oturum açmayı etkinleştirmek için aşağıdaki öğreticideki adımları gerçekleştirmenizi gerektirir.
 
 6. **S: "geçersiz e-posta" hata iletisi aldığımda ne yapmam gerekir?**
 
@@ -82,8 +82,8 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Google Cloud (G Suite) Bağlayıcısı **SP** tarafından başlatılan SSO 'yu destekler
 
-* Google Cloud (G Suite) Bağlayıcısı [ **Otomatik** Kullanıcı sağlamayı destekler](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
-* Google Cloud (G Suite) bağlayıcısını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin bir kısmını gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Google Cloud (G Suite) Bağlayıcısı [ **Otomatik** Kullanıcı sağlamayı destekler](./google-apps-provisioning-tutorial.md)
+* Google Cloud (G Suite) bağlayıcısını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin bir kısmını gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>Galeriden Google Cloud (G Suite) bağlayıcısını ekleme
 
@@ -242,7 +242,7 @@ Bu bölümde, Google Cloud (G Suite) bağlayıcısına erişim izni vererek Azur
 
 Bu bölümün amacı, [Google Cloud (G Suite) Bağlayıcısı 'Nda](https://support.google.com/a/answer/33310?hl=en) B. Simon adlı bir Kullanıcı oluşturmaktır. Kullanıcı Google Cloud (G Suite) Bağlayıcısı 'nda el ile oluşturulduktan sonra, Kullanıcı Microsoft 365 oturum açma kimlik bilgilerini kullanarak oturum açabilir.
 
-Google Cloud (G Suite) Bağlayıcısı otomatik Kullanıcı sağlamayı da destekler. Otomatik Kullanıcı sağlamayı yapılandırmak için, önce [Google Cloud (G Suite) bağlayıcısını otomatik Kullanıcı sağlaması için yapılandırmanız](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)gerekir.
+Google Cloud (G Suite) Bağlayıcısı otomatik Kullanıcı sağlamayı da destekler. Otomatik Kullanıcı sağlamayı yapılandırmak için, önce [Google Cloud (G Suite) bağlayıcısını otomatik Kullanıcı sağlaması için yapılandırmanız](./google-apps-provisioning-tutorial.md)gerekir.
 
 > [!NOTE]
 > Azure AD 'de sağlama, çoklu oturum açmayı test etmeden önce açık bırakılmadığından, kullanıcılarınızın Google Cloud (G Suite) bağlayıcısında zaten mevcut olduğundan emin olun.
@@ -254,23 +254,23 @@ Google Cloud (G Suite) Bağlayıcısı otomatik Kullanıcı sağlamayı da deste
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Google Cloud (G Suite) bağlayıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Google Cloud (G Suite) bağlayıcısında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Google Cloud (G Suite) bağlayıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Google Cloud (G Suite) bağlayıcısında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
-- [Kullanıcı sağlamayı yapılandırma](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+- [Kullanıcı sağlamayı yapılandırma](./google-apps-provisioning-tutorial.md)
 
 - [Azure AD ile Google Cloud (G Suite) bağlayıcısını deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
 
-- [Google Cloud (G Suite) bağlayıcısını gelişmiş görünürlük ve denetimlerle koruma](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+- [Google Cloud (G Suite) bağlayıcısını gelişmiş görünürlük ve denetimlerle koruma](/cloud-app-security/protect-gsuite)
 
 <!--Image references-->
 

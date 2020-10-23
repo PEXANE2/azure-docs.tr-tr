@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e7c5db2a2c445ae740a21744a0bdfe0736c01a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85505622"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342442"
 ---
 # <a name="access-the-vfxt-cluster"></a>vFXT kümesine erişme
 
@@ -27,7 +27,7 @@ VFXT kümesi özel bir sanal ağın içinde bulunduğundan, kümenin yönetim IP
 > [!NOTE]
 > Bu makalede, küme denetleyicisinde veya kümenizin sanal ağı içindeki başka bir VM 'de genel bir IP adresi ayarlamış olduğunuz varsayılmaktadır. Bu makalede, kümeye erişmek için bu VM 'nin bir konak olarak nasıl kullanılacağı açıklanır. Sanal ağ erişimi için bir VPN veya ExpressRoute kullanıyorsanız, [avere Denetim Masası 'Na bağlanma](#connect-to-the-avere-control-panel-in-a-browser)bölümüne atlayın.
 
-Bağlanmadan önce, küme denetleyicisini oluştururken kullandığınız SSH ortak/özel anahtar çiftinin yerel makinenizde yüklü olduğundan emin olun. Yardıma ihtiyacınız varsa [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) için SSH anahtarları belgelerini okuyun. Ortak anahtar yerine bir parola kullandıysanız, bu parolayı bağlandığınızda girmeniz istenir.
+Bağlanmadan önce, küme denetleyicisini oluştururken kullandığınız SSH ortak/özel anahtar çiftinin yerel makinenizde yüklü olduğundan emin olun. Yardıma ihtiyacınız varsa [Windows](../virtual-machines/linux/ssh-from-windows.md) veya [Linux](../virtual-machines/linux/mac-create-ssh-keys.md) için SSH anahtarları belgelerini okuyun. Ortak anahtar yerine bir parola kullandıysanız, bu parolayı bağlandığınızda girmeniz istenir.
 
 ## <a name="create-an-ssh-tunnel"></a>SSH tüneli oluşturma
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249476"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368613"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark işleri (Önizleme) iyileştirme
 
@@ -77,7 +77,7 @@ Azure SYNAPSE Apache Spark Yarn [Apache HADOOP Yarn](https://hadoop.apache.org/d
 ' Bellek yetersiz ' iletilerini ele almak için şunu deneyin:
 
 * DAG yönetim karışık Les 'yi gözden geçirin. Harita-tarafı azaltma, bölüm öncesi (veya bucketize) kaynak verileri ile, tek bir karayı en üst düzeye çıkarıp gönderilen veri miktarını azaltarak azaltın.
-* `ReduceByKey` `GroupByKey` Toplamaları, Pencereleme ve diğer işlevleri sağlayan ancak sınırsız bellek sınırına sahip olan sabit bellek sınırı ile tercih edilir.
+* `ReduceByKey` `GroupByKey` Toplamaları, Pencereleme ve diğer işlevleri sağlayan ancak sınırsız bir bellek sınırına sahip olan sabit bellek sınırı ile tercih edilir.
 * `TreeReduce`Yürüticilere veya bölümlerle üzerinde daha fazla çalışmayı, yani `Reduce` sürücü üzerinde çalışmayı tercih eder.
 * Alt düzey RDD nesneleri yerine veri çerçevelerinden yararlanın.
 * "Ilk N", çeşitli toplamalar veya Pencereleme işlemleri gibi eylemleri kapsülleyen Karmaşıktürler oluşturun.
@@ -178,6 +178,6 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Apache Spark ayarlama](https://spark.apache.org/docs/latest/tuning.html)
+- [Apache Spark ayarlama](https://spark.apache.org/docs/2.4.5/tuning.html)
 - [Apache Spark Işlerinizi, çalışması için fiili olarak ayarlama](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 - [Kronyo serileştirme](https://github.com/EsotericSoftware/kryo)

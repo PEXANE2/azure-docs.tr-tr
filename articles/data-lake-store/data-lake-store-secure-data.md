@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574152"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370704"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de depolanan verilerin güvenliğini sağlama
-Azure Data Lake Storage 1. içindeki verilerin güvenliğini sağlamak, üç adımlı bir yaklaşımdır.  Hem rol tabanlı erişim denetimi (RBAC) hem de erişim denetim listeleri (ACL 'Ler), kullanıcılar ve güvenlik grupları için verilere erişimi tam olarak etkinleştirecek şekilde ayarlanmalıdır.
+Azure Data Lake Storage 1. içindeki verilerin güvenliğini sağlamak, üç adımlı bir yaklaşımdır.  Hem Azure rol tabanlı erişim denetimi (Azure RBAC) hem de erişim denetim listeleri (ACL 'Ler), kullanıcılar ve güvenlik grupları için verilere erişimi tam olarak etkinleştirecek şekilde ayarlanmalıdır.
 
 1. Azure Active Directory (Azure AD) içinde güvenlik grupları oluşturarak başlayın. Bu güvenlik grupları, Azure portal Azure rol tabanlı erişim denetimi (Azure RBAC) uygulamak için kullanılır. Daha fazla bilgi için bkz. [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
 2. Data Lake Storage 1. hesabına Azure AD güvenlik grupları atayın. Bu, portaldan veya API 'lerden yönetim işlemlerinden Data Lake Storage 1. hesabına erişimi denetler.
@@ -39,7 +39,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 Azure AD güvenlik grupları oluşturma ve gruba kullanıcı ekleme hakkında yönergeler için, bkz. [Azure Active Directory güvenlik gruplarını yönetme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 > [!NOTE] 
-> Azure portal kullanarak, hem kullanıcıları hem de diğer grupları Azure AD 'deki bir gruba ekleyebilirsiniz. Bununla birlikte, bir gruba hizmet sorumlusu eklemek için [Azure AD 'Nin PowerShell modülünü](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)kullanın.
+> Azure portal kullanarak, hem kullanıcıları hem de diğer grupları Azure AD 'deki bir gruba ekleyebilirsiniz. Bununla birlikte, bir gruba hizmet sorumlusu eklemek için [Azure AD 'Nin PowerShell modülünü](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)kullanın.
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs
@@ -68,7 +68,7 @@ Data Lake Storage 1. hesaplara Kullanıcı veya güvenlik grupları atadığın�
     Veri işlemleri için, bireysel dosya sistemi izinleri kullanıcıların neler yapabileceğini tanımlar. Bu nedenle, okuyucu rolüne sahip bir Kullanıcı yalnızca hesapla ilişkili yönetim ayarlarını görüntüleyebilir, ancak bunlara atanan dosya sistemi izinlerine göre verileri okuyabilir ve yazabilir. Data Lake Storage 1. dosya sistemi izinleri [, güvenlik grubunu, Azure Data Lake Storage 1. dosya sistemine ACL 'ler olarak ata](#filepermissions)bölümünde açıklanmaktadır.
 
     > [!IMPORTANT]
-    > Dosya sistemi erişimini yalnızca **sahip** rolü otomatik olarak etkinleştirilir. **Katkıda**bulunan, **okuyucu**ve diğer tüm roller, klasörlere ve dosyalara erişim düzeyini etkinleştirmek için ACL 'ler gerektirir.  **Sahip** rolü, ACL 'ler aracılığıyla geçersiz kılınamayan Süper Kullanıcı dosya ve klasör izinleri sağlar. RBAC ilkelerinin veri erişimiyle nasıl eşlenme hakkında daha fazla bilgi için bkz. [Hesap yönetimi Için RBAC](data-lake-store-security-overview.md#rbac-for-account-management).
+    > Dosya sistemi erişimini yalnızca **sahip** rolü otomatik olarak etkinleştirilir. **Katkıda**bulunan, **okuyucu**ve diğer tüm roller, klasörlere ve dosyalara erişim düzeyini etkinleştirmek için ACL 'ler gerektirir.  **Sahip** rolü, ACL 'ler aracılığıyla geçersiz kılınamayan Süper Kullanıcı dosya ve klasör izinleri sağlar. Azure RBAC ilkelerinin veri erişimiyle nasıl eşlenme hakkında daha fazla bilgi için bkz. [Hesap yönetimi Için Azure RBAC](data-lake-store-security-overview.md#azure-rbac-for-account-management).
 
 4. **Izin Ekle** dikey penceresinde listelenmeyen bir grup/kullanıcı eklemek istiyorsanız, bunları **Seç** metin kutusuna e-posta adresini yazarak ve ardından listeden seçerek davet edebilirsiniz.
    

@@ -6,16 +6,16 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-for-usql-developers
 ms.date: 10/15/2019
-ms.openlocfilehash: 567574e65fcc1db3ef9e8aea73c6a59be0594f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a66a82a6d2a5bb1f534ed211091793b2ab4d2a28
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132305"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221103"
 ---
 # <a name="understand-apache-spark-for-u-sql-developers"></a>U-SQL geliştiricileri için Apache Spark'ı anlama
 
-Microsoft, [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) ve [Azure HDInsight](../hdinsight/hdinsight-overview.md) gibi çeşitli analiz hizmetlerini ve Azure Data Lake Analytics destekler. Geliştiricilerden analitik işlem hatları oluştururken açık kaynaklı çözümler için açık bir tercih olduğunu duyduk. U-SQL geliştiricilerinin Apache Spark anlamalarına yardımcı olmak ve U-SQL betiklerini Apache Spark 'ye nasıl dönüştürebileceğinizi öğrenmek için bu kılavuzu oluşturduk.
+Microsoft, [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) ve [Azure HDInsight](../hdinsight/hdinsight-overview.md) gibi çeşitli analiz hizmetlerini ve Azure Data Lake Analytics destekler. Geliştiricilerden analitik işlem hatları oluştururken açık kaynaklı çözümler için açık bir tercih olduğunu duyduk. U-SQL geliştiricilerinin Apache Spark anlamalarına yardımcı olmak ve U-SQL betiklerini Apache Spark 'ye nasıl dönüştürebileceğinizi öğrenmek için bu kılavuzu oluşturduk.
 
 Uygulayabileceğiniz birçok adımı ve çeşitli alternatifleri içerir.
 
@@ -32,17 +32,17 @@ Uygulayabileceğiniz birçok adımı ve çeşitli alternatifleri içerir.
    U-SQL komut dosyalarınızı dönüştürmeden önce bir analiz hizmeti seçmeniz gerekir. Kullanılabilir bazı kullanılabilir işlem hizmetleri şunlardır:
       - [Azure Data Factory veri akışı](../data-factory/concepts-data-flow-overview.md) Veri akışlarını eşleme, veri mühendislerinin kod yazmadan bir grafik veri dönüştürme mantığı geliştirmesini sağlayan görsel olarak tasarlanan veri dönüştürmelerdir. Karmaşık Kullanıcı kodu yürütmeye uygun olmasa da, geleneksel SQL benzeri veri akışı dönüşümlerini kolayca temsil edebilirler
       - [Azure HDInsight Hive](../hdinsight/hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md) HDInsight üzerinde Apache Hive, ayıklama, dönüştürme ve yükleme (ETL) işlemlerine uygundur. Bu, U-SQL komut dosyalarınızı Apache Hive için çevileyeceğiz anlamına gelir.
-      - [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) veya [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) gibi Apache Spark ALTYAPıLARı, U-SQL komut dosyalarınızı Spark 'a çevileyeceğiz anlamına gelir. Daha fazla bilgi için bkz. [Spark veri biçimlerini anlama](understand-spark-data-formats.md)
+      - [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) veya [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) gibi Apache Spark ALTYAPıLARı, U-SQL komut dosyalarınızı Spark 'a çevileyeceğiz anlamına gelir. Daha fazla bilgi için bkz. [Spark veri biçimlerini anlama](understand-spark-data-formats.md)
 
 > [!CAUTION]
-> Hem [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) hem de [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) küme hizmetlerdir ve Azure Data Lake Analytics gibi sunucusuz işler değildir. Uygun maliyet/performans oranını almak için kümelerin nasıl sağlanacağını ve maliyetlerinizi en aza indirmek için yaşam sürelerinin nasıl yönetileceğini göz önünde bulundurmanız gerekir. Bu hizmetler, .NET dilinde yazılmış kullanıcı koduna sahip farklı performans özelliklerine sahiptir, bu nedenle sarmalayıcıları yazmanız veya kodunuzu desteklenen bir dilde yeniden yazmanız gerekecektir. Daha fazla bilgi için bkz. [Spark veri biçimlerini anlama](understand-spark-data-formats.md), [U-SQL geliştiricileri için Apache Spark kod kavramlarını anlama](understand-spark-code-concepts.md), [Apache Spark için .net](https://dotnet.microsoft.com/apps/data/spark)
+> Hem [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) hem de [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) küme hizmetlerdir ve Azure Data Lake Analytics gibi sunucusuz işler değildir. Uygun maliyet/performans oranını almak için kümelerin nasıl sağlanacağını ve maliyetlerinizi en aza indirmek için yaşam sürelerinin nasıl yönetileceğini göz önünde bulundurmanız gerekir. Bu hizmetler, .NET dilinde yazılmış kullanıcı koduna sahip farklı performans özelliklerine sahiptir, bu nedenle sarmalayıcıları yazmanız veya kodunuzu desteklenen bir dilde yeniden yazmanız gerekecektir. Daha fazla bilgi için bkz. [Spark veri biçimlerini anlama](understand-spark-data-formats.md), [U-SQL geliştiricileri için Apache Spark kod kavramlarını anlama](understand-spark-code-concepts.md), [Apache Spark için .net](https://dotnet.microsoft.com/apps/data/spark)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [U-SQL geliştiricileri için Spark veri biçimlerini anlama](understand-spark-data-formats.md)
 - [U-SQL geliştiricileri için Spark kod kavramlarını anlama](understand-spark-code-concepts.md)
-- [Büyük veri analizi Çözümlerinizi Azure Data Lake Storage 1. Azure Data Lake Storage 2. ' dan yükseltin](../storage/blobs/data-lake-storage-upgrade.md)
-- [Apache Spark için .NET](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [Büyük veri analizi Çözümlerinizi Azure Data Lake Storage 1. Azure Data Lake Storage 2. ' dan yükseltin](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
+- [Apache Spark için .NET](/dotnet/spark/what-is-apache-spark-dotnet)
 - [Azure Data Factory Hadoop Hive etkinliğini kullanarak verileri dönüştürme](../data-factory/transform-data-using-hadoop-hive.md)
 - [Azure Data Factory Spark etkinliğini kullanarak verileri dönüştürme](../data-factory/transform-data-using-spark.md)
 - [Azure HDInsight’ta Apache Spark nedir?](../hdinsight/spark/apache-spark-overview.md)

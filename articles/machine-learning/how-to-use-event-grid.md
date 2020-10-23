@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d2f600a651f44abddf4a77f2a01486fa0259f2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362525"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428426"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Uygulama, işlem veya CI/CD iş akışlarını Azure Machine Learning olaylara göre tetikleyin (Önizleme)
 
@@ -62,7 +62,7 @@ Bu olaylar Azure Event Grid aracılığıyla yayımlanır. Azure portal, PowerSh
 
 Olaylarınızı ayarlarken yalnızca belirli olay verilerini tetiklemek için filtre uygulayabilirsiniz. Aşağıdaki örnekte, çalışma durumu değişti olayları için, çalıştırma türlerine göre filtreleyebilirsiniz. Olay yalnızca ölçüt karşılandığında tetiklenir. Filtreleyebileceğiniz olay verileri hakkında bilgi edinmek için [Azure Machine Learning Event Grid şemasına](/azure/event-grid/event-schema-machine-learning) bakın. 
 
-Azure Machine Learning olaylar için abonelikler rol tabanlı erişim denetimi (RBAC) tarafından korunur. Yalnızca bir çalışma alanının [katılımcısı veya sahibi](how-to-assign-roles.md#default-roles) olay abonelikleri oluşturabilir, güncelleştirebilir ve silebilir.  Filtre, olay aboneliklerinin [oluşturulması](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) sırasında veya daha sonraki bir zamanda olay aboneliklerine uygulanabilir. 
+Azure Machine Learning olaylar için abonelikler Azure rol tabanlı erişim denetimi (Azure RBAC) tarafından korunur. Yalnızca bir çalışma alanının [katılımcısı veya sahibi](how-to-assign-roles.md#default-roles) olay abonelikleri oluşturabilir, güncelleştirebilir ve silebilir.  Filtre, olay aboneliklerinin [oluşturulması](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) sırasında veya daha sonraki bir zamanda olay aboneliklerine uygulanabilir. 
 
 
 1. Azure portal gidin, yeni bir abonelik veya mevcut bir abonelik seçin. 

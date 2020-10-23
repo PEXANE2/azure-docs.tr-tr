@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77121726"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328768"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS SSS
 
@@ -24,7 +24,7 @@ Etki alanı adı sistemi (DNS), bir Web sitesi veya hizmet adını IP adresine �
 
 Azure DNS 'daki DNS etki alanları, DNS ad sunucularının Azure küresel ağında barındırılır. Bu sistem, her DNS sorgusunun kullanılabilir en yakın DNS sunucusu tarafından yanıtlanabilmesi için tek noktaya yayın ağını kullanır. Azure DNS, etki alanınız için hızlı performans ve yüksek kullanılabilirlik sağlar.
 
-Azure DNS Azure Resource Manager tabanlıdır. Rol tabanlı erişim denetimi, denetim günlükleri ve kaynak kilitleme gibi Kaynak Yöneticisi özelliklerden Azure DNS avantajları. Azure portal, Azure PowerShell cmdlet 'leri ve platformlar arası Azure CLı aracılığıyla etki alanlarını ve kayıtları yönetebilirsiniz. Otomatik DNS yönetimi gerektiren uygulamalar, REST API ve SDK 'lar aracılığıyla hizmetle tümleştirilebilir.
+Azure DNS Azure Resource Manager tabanlıdır. Azure rol tabanlı erişim denetimi, denetim günlükleri ve kaynak kilitleme gibi Kaynak Yöneticisi özelliklerden Azure DNS avantajları. Azure portal, Azure PowerShell cmdlet 'leri ve platformlar arası Azure CLı aracılığıyla etki alanlarını ve kayıtları yönetebilirsiniz. Otomatik DNS yönetimi gerektiren uygulamalar, REST API ve SDK 'lar aracılığıyla hizmetle tümleştirilebilir.
 
 ### <a name="how-much-does-azure-dns-cost"></a>Azure DNS maliyeti ne kadar sürer?
 
@@ -177,7 +177,7 @@ Mevcut DNS kayıtlarında yapılan değişiklikler biraz daha uzun sürebilir. G
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>DNS bölgelerinizi yanlışlıkla silinmeye karşı nasıl koruyabilirim?
 
-Azure DNS, Azure Resource Manager kullanılarak yönetilir. Azure Resource Manager sağladığı erişim denetimi özelliklerinden faydaların Azure DNS. Rol tabanlı erişim denetimi, hangi kullanıcıların DNS bölgelerine ve kayıt kümelerine okuma veya yazma erişimi olduğunu denetler. Kaynak kilitleri, DNS bölgelerinin ve kayıt kümelerinin yanlışlıkla değiştirilmesini veya silinmesini engeller.
+Azure DNS, Azure Resource Manager kullanılarak yönetilir. Azure Resource Manager sağladığı erişim denetimi özelliklerinden faydaların Azure DNS. Azure rol tabanlı erişim denetimi, hangi kullanıcıların DNS bölgelerine ve kayıt kümelerine okuma veya yazma erişimi olduğunu denetlemek için kullanılabilir. Kaynak kilitleri, DNS bölgelerinin ve kayıt kümelerinin yanlışlıkla değiştirilmesini veya silinmesini engeller.
 
 Daha fazla bilgi için bkz. [DNS bölgelerini ve kayıtlarını koruma](dns-protect-zones-recordsets.md).
 

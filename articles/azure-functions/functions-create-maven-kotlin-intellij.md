@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09dd868dc9e05241943899654d7c8bb427a8f268
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87055447"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104844"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Hızlı başlangıç: Kotlin ve IntelliJ ile ilk HTTP tetiklenen işlevinizi oluşturma
 
@@ -23,7 +23,7 @@ Bu makalede, IntelliJ ıDEA ve Apache Maven ile [sunucusuz](https://azure.micros
 
 Kotlin ve IntelliJ ile bir işlev geliştirmek için aşağıdaki yazılımı yükle:
 
-- [Java geliştirici seti](https://aka.ms/azure-jdks) (JDK), sürüm 8
+- [Java geliştirici seti](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK), sürüm 8
 - [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri
 - [IntelliJ fikir](https://www.jetbrains.com/idea/download), Maven ile topluluk veya Ultimate sürümleri
 - [Azure CLI](/cli/azure)

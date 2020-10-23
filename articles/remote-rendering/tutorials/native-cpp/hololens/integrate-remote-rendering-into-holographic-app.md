@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 9457323b2642d0e7c5a623c13ec8440520bd5b8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56e889778e3b598dc4ded5f64eef20101c542b6a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88891785"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207521"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Öğretici: uzaktan Işlemeyi bir HoloLens holographic uygulamasına tümleştirme
 
@@ -33,7 +33,7 @@ Bu öğreticide şunlar gerekir:
 * Hesap bilgileriniz (Hesap KIMLIĞI, hesap anahtarı, abonelik KIMLIĞI). Hesabınız yoksa [hesap oluşturun](../../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk).
 * Visual Studio 2019 'nin en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/).
-* [Karma gerçeklik Için Visual Studio Araçları](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
+* [Karma gerçeklik Için Visual Studio Araçları](/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
   * **C++ ile masaüstü geliştirme**
   * **Evrensel Windows Platformu (UWP) geliştirme**
 * Visual Studio için Windows Mixed Reality uygulama şablonları [(indirme)](https://marketplace.visualstudio.com/items?itemName=WindowsMixedRealityteam.WindowsMixedRealityAppTemplatesVSIX).
@@ -593,4 +593,4 @@ Bu öğreticide, bir Stock **holographic App** C++/DirectX11 örneğine uzaktan 
 Kendi modelinizi dönüştürmek için aşağıdaki hızlı başlangıca başvurun:
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: bir modeli işleme için dönüştürme](../../../quickstarts/convert-model.md)
+> [Hızlı başlangıç: Modeli işlenmek üzere dönüştürme](../../../quickstarts/convert-model.md)

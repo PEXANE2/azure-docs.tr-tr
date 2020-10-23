@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b7e96934c96dd944e17a1ef1ffb51a6ee89bf4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85318918"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360011"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
 > [!NOTE]
@@ -34,7 +34,7 @@ ms.locfileid: "85318918"
 | [Çapraz AppDomain nokta net etkinlik örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Bu örnek, ADF başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan özel bir .NET etkinliği yazmanıza izin verir (örneğin, WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsv 6.0. x, vb.). |
 | [R betiği çalıştırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Bu örnek, RScript.exe çağırmak için kullanılabilecek Data Factory özel etkinliğini içerir. Bu örnek yalnızca R 'nin yüklü olduğu (isteğe bağlı olmayan) HDInsight kümeniz ile birlikte kullanılabilir. |
 | [HDInsight Hadoop kümesinde Spark işlerini çağırma](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Bu örnek, bir Spark programını çağırmak için MapReduce etkinliğinin nasıl kullanılacağını gösterir. Spark programı yalnızca bir Azure Blob kapsayıcısından diğerine veri kopyalar. |
-| [Azure Machine Learning Batch puanlama etkinliği kullanarak Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için AzureMLBatchScoringActivity 'nin nasıl kullanılacağı gösterilmektedir. |
+| [Azure Machine Learning Studio (klasik) toplu puanlama etkinliği kullanarak Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için AzureMLBatchScoringActivity 'nin nasıl kullanılacağı gösterilmektedir. |
 | [Özel etkinlik kullanan Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için özel bir .NET etkinliğinin nasıl kullanılacağı gösterilmektedir. |
 | [Azure Machine Learning için parametreli işlem hatları](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Örnek, her biri, bölge listesinin bu örneğe eklenen bir parameters.txt dosyasından geldiği farklı bir bölge parametresiyle, Puanlama ve yeniden eğitim için N işlem hattı dağıtmak üzere bir uçtan uca C# kodu sağlar. |
 | [Azure Stream Analytics işleri için başvuru verilerini yenileme](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Bu örnek, başvuru verileriyle sorguları çalıştırmak ve bir zamanlamaya göre başvuru verileri için yenilemeyi ayarlamak üzere Azure Data Factory ve Azure Stream Analytics birlikte nasıl kullanılacağını gösterir. |
@@ -46,7 +46,7 @@ ms.locfileid: "85318918"
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 GitHub üzerinde Data Factory için aşağıdaki Azure Resource Manager şablonları bulabilirsiniz.
 
-| Şablon | Açıklama |
+| Şablon | Description |
 | --- | --- |
 | [Azure Blob depolama alanından Azure SQL veritabanına kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Bu şablonu dağıtmak, verileri belirtilen Azure Blob depolamadan Azure SQL veritabanı 'na kopyalayan bir işlem hattı ile bir Azure veri fabrikası oluşturur |
 | [Salesforce 'tan Azure Blob depolamaya kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Bu şablonu dağıtmak, belirtilen Salesforce hesabından Azure Blob depolama alanına veri kopyalayan bir işlem hattına sahip bir Azure veri fabrikası oluşturur. |
@@ -75,7 +75,7 @@ Veri fabrikanıza örnek işlem hatlarını ve bunlarla ilişkili varlıkları (
     ![Data Factory dikey penceresi](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="samples-in-visual-studio"></a>Visual Studio 'da örnekler
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Bilgisayarınızda şunların yüklü olması gerekir:
 
 * Visual Studio 2013 veya Visual Studio 2015

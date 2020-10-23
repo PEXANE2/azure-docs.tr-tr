@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e515df0ff8c7cd3794efb4db567ef7146ccb7a03
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618165"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424237"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,15 +56,15 @@ SQL yönetilen örneği 'nin temel özellikleri aşağıdaki tabloda gösterilmi
 |Özellik | Açıklama|
 |---|---|
 | Sürüm/derleme SQL Server | SQL Server veritabanı altyapısı (en son kararlı) |
-| Yönetilen otomatik yedeklemeler | Evet |
-| Yerleşik örnek ve veritabanı izleme ve ölçümler | Evet |
-| Otomatik yazılım düzeltme eki uygulama | Evet |
-| En son veritabanı altyapısı özellikleri | Evet |
+| Yönetilen otomatik yedeklemeler | Yes |
+| Yerleşik örnek ve veritabanı izleme ve ölçümler | Yes |
+| Otomatik yazılım düzeltme eki uygulama | Yes |
+| En son veritabanı altyapısı özellikleri | Yes |
 | Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
-| VNet-Azure Resource Manager dağıtımı | Evet |
-| VNet-klasik dağıtım modeli | Hayır |
-| Portal desteği | Evet|
+| VNet-Azure Resource Manager dağıtımı | Yes |
+| VNet-klasik dağıtım modeli | No |
+| Portal desteği | Yes|
 | Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'in bir parçasıdır |
 | Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Yerleşik raporlama hizmeti (SSRS) | Azure VM üzerinde [Power BI sayfalandırılmış raporlar](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) veya konak SSRS 'yi kullanın. SQL yönetilen örneği SSRS 'yi bir hizmet olarak çalıştıramıyor olsa da, Azure sanal makinesine yüklenen bir raporlama sunucusu için [SSRS Katalog veritabanlarını](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) SQL Server kimlik doğrulaması kullanılarak barındırabilirler. |
@@ -96,7 +96,7 @@ Aşağıdaki listede Genel Amaçlı hizmet katmanının temel özellikleri açı
 
 - Tipik performans gereksinimlerine sahip iş uygulamalarının çoğunluğu için tasarlanmıştır
 - Yüksek performanslı Azure Blob depolama (8 TB)
-- Güvenilir Azure Blob depolama ve [azure Service Fabric](../../service-fabric/service-fabric-overview.md) temel alınarak yerleşik [yüksek kullanılabilirlik](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability)
+- Güvenilir Azure Blob depolama ve [azure Service Fabric](../../service-fabric/service-fabric-overview.md) temel alınarak yerleşik [yüksek kullanılabilirlik](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability)
 
 Daha fazla bilgi için [genel amaçlı katmanında depolama katmanı](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) ve [SQL yönetilen örneği (genel amaçlı) için depolama performansı en iyi uygulamaları ve konuları](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/)konusuna bakın.
 
@@ -110,7 +110,7 @@ Aşağıdaki listede İş Açısından Kritik hizmet katmanının temel özellik
 
 - En yüksek performans ve HA gereksinimlerine sahip iş uygulamaları için tasarlanmıştır
 - Süper hızlı yerel SSD depolama (4. nesil üzerinde en fazla 1 TB ve 5. nesil üzerinde 4 TB 'a kadar) ile birlikte gelir
-- [Always on kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) ve [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) temel alınarak yerleşik [yüksek kullanılabilirlik](../database/high-availability-sla.md#premium-and-business-critical-service-tier-availability)
+- [Always on kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) ve [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) temel alınarak yerleşik [yüksek kullanılabilirlik](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)
 - Raporlama ve diğer salt okuma iş yükleri için kullanılabilen, yerleşik ek [salt okuma veritabanı çoğaltması](../database/read-scale-out.md)
 - Yüksek performanslı gereksinimlere sahip iş yükü için kullanılabilen [bellek ıçı OLTP](../in-memory-oltp-overview.md)  
 
@@ -164,7 +164,7 @@ SQL yönetilen örneği, Azure AD ile tümleştirilmiş geleneksel SQL Server ve
 
 SQL yönetilen örneği, [Azure Active Directory tümleştirmeyle](../database/authentication-aad-overview.md)veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory, çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../database/authentication-mfa-ssms-configure.md) destekler.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulama
 
 SQL yönetilen örnek kimlik doğrulaması, kullanıcıların veritabanına bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:  
 

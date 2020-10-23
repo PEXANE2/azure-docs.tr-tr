@@ -4,19 +4,19 @@ description: PowerShell kullanarak Azure Cosmos DB Core (SQL) API kaynaklarını
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4147b9a3a5f0a249366431a4e43f924e89f9075
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840889"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281480"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB Core (SQL) API kaynaklarını yönetme
 
-Aşağıdaki kılavuzda, Cosmos hesabı, veritabanı, kapsayıcısı ve verimlilik dahil olmak üzere Azure Cosmos DB Çekirdek (SQL) API kaynaklarının yönetimi ve otomatik hale getirmek için PowerShell 'in nasıl kullanılacağı açıklanmaktadır.
+Aşağıdaki kılavuzda, Cosmos hesabı, veritabanı, kapsayıcısı ve verimlilik dahil olmak üzere Azure Cosmos DB Çekirdek (SQL) API kaynaklarının yönetimi ve otomatik hale getirmek için PowerShell 'in nasıl kullanılacağı açıklanmaktadır. Diğer API 'Ler için PowerShell cmdlet 'leri için bkz. [Cassandra Için PowerShell örnekleri](powershell-samples-cassandra.md), [MONGODB API için PowerShell](powershell-samples-mongodb.md)örnekleri, [Gremlin PowerShell](powershell-samples-gremlin.md)örnekleri, [tablo için PowerShell örnekleri](powershell-samples-table.md)
 
 > [!NOTE]
 > Bu makaledeki örneklerde [az. CosmosDB](/powershell/module/az.cosmosdb) yönetim cmdlet 'leri kullanılır. En son değişiklikler için [az. CosmosDB](/powershell/module/az.cosmosdb) API başvuru sayfasına bakın.

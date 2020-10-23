@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207160"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168197"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Giriş denetleyicisindeki yaygın soruların veya sorunların sorunlarını giderme
 
@@ -85,15 +85,15 @@ Uygulamanın başarıyla dağıtımı, AKS kümenizin üzerinde başarılı bir 
 [Cloud Shell](https://shell.azure.com/)ile birlikte Pod listesini alın: `kubectl get pods -o wide` .
 ' Test-agic-App-Pod ' adlı bir pod 'un oluşturulmasını bekledik. Bir IP adresi olur. Bu adres, AKS ile kullanılan Application Gateway sanal ağı dahilinde olmalıdır.
 
-![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
+![Listede test-agic-App-Pod içeren bir pod listesini gösteren Azure Cloud Shell Bash penceresinin ekran görüntüsü.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
 Hizmetlerin listesini al: `kubectl get services -o wide` . ' Test-agic-App-Service ' adlı bir hizmet görmemiz beklenir.
 
-![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
+![Listede test-agic-App-Pod içeren hizmetlerin listesini gösteren Azure Cloud Shell Bash penceresinin ekran görüntüsü.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
 Giriş listesini alın: `kubectl get ingress` . ' Test-agic-App-ınress ' adlı bir giriş kaynağı oluşturulması Bekleniyorduk. Kaynak, ' test.agic.contoso.com ' ana bilgisayar adına sahip olacak.
 
-![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
+![Listede test-agic-App-ınress içeren bir giriş listesini gösteren Azure Cloud Shell Bash penceresinin ekran görüntüsü.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
 Ayırımların biri AGIC olacaktır. `kubectl get pods` , biri ' giriş-Azure ' ile başlayacak olan bir pods listesini gösterir. Başarılı bir dağıtımımız olduğunu doğrulamak için bu Pod 'un tüm günlüklerini ile birlikte alın `kubectl logs <name-of-ingress-controller-pod>` . Başarılı bir dağıtım şu satırları günlüğe ekledi:
 ```
@@ -120,7 +120,7 @@ Son olarak, `cURL` Yeni dağıtılan uygulamaya http bağlantısı kurmak için 
 1. `kubectl get ingress`Application Gateway genel IP adresini almak için kullanın
 2. `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` komutunu kullanma
 
-![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
+![Azure Cloud Shell bir kıvrımlı komutu gösteren ve test uygulamasına başarıyla HTTP bağlantısı oluşturan Bash penceresinin ekran görüntüsü.](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
 Sonucu `HTTP/1.1 200 OK` , Application Gateway + AKS + AGIC sisteminin beklendiği gibi çalıştığını gösterir.
 

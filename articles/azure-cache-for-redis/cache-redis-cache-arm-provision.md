@@ -1,22 +1,22 @@
 ---
 title: Azure Resource Manager şablonu kullanarak Redsıs için Azure önbelleği dağıtma
-description: Redsıs kaynağı için bir Azure önbelleği dağıtmak üzere Azure Resource Manager şablonu kullanmayı öğrenin. Şablonlar, yaygın senaryolar için sağlanır.
+description: Redsıs kaynağı için bir Azure önbelleği dağıtmak üzere bir Azure Resource Manager şablonu (ARM şablonu) kullanmayı öğrenin. Şablonlar, yaygın senaryolar için sağlanır.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0445aeaea6f99754469d5c0e46972aef2ed667aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461247"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424217"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Reda için Azure önbelleği oluşturma
+# <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>ARM şablonunu kullanarak Redsıs için Azure önbelleği oluşturma
 
-Reda için Azure önbelleği dağıtan bir Azure Resource Manager şablonu oluşturmayı öğrenin. Önbellek, tanılama verilerini korumak için mevcut bir depolama hesabıyla birlikte kullanılabilir. Ayrıca, hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağını nasıl tanımlayacağınızı öğreneceksiniz. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şu anda, Tanılama ayarları bir abonelik için aynı bölgedeki tüm önbellekler için paylaşılır. Bölgedeki bir önbelleğin güncelleştirilmesi bölgedeki diğer tüm önbellekleri etkiler.
+Reda için Azure önbelleği dağıtan bir Azure Resource Manager şablonu (ARM şablonu) oluşturmayı öğrenin. Önbellek, tanılama verilerini korumak için mevcut bir depolama hesabıyla birlikte kullanılabilir. Ayrıca, hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağını nasıl tanımlayacağınızı öğreneceksiniz. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şu anda, Tanılama ayarları bir abonelik için aynı bölgedeki tüm önbellekler için paylaşılır. Bölgedeki bir önbelleğin güncelleştirilmesi bölgedeki diğer tüm önbellekleri etkiler.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +46,7 @@ Yeni [Premium katmanının](cache-overview.md#service-tiers) Kaynak Yöneticisi 
 * [Veri kalıcılığı olan Redsıs için Premium Azure önbelleği oluşturma](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Sanal bir ağa dağıtılan Premium Redis Cache oluşturma](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/) ve arama `Azure Cache for Redis` .
+En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/) ve _Redsıs için Azure önbelleği_araması.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -59,7 +59,7 @@ En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonlar
     * **Kaynak grubu**: yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin veya var olan bir kaynak grubunu seçin.
     * **Konum**: kaynak grubu için bir konum seçin. Depolama hesabı ve Redo önbelleğinin aynı bölgede olması gerekir. Varsayılan olarak Redsıs Cache, kaynak grubuyla aynı konumu kullanır. Bu nedenle, depolama hesabıyla aynı konumu belirtin.
     * **Redis Cache adı**: redsıs önbelleği için bir ad girin.
-    * **Mevcut tanılama depolama hesabı**: bir depolama HESABıNıN kaynak kimliğini girin. Sözdizimi **/Subscriptions/ &lt; SUBSCRIPTION ID>/resourceGroups/ &lt; kaynak grubu adı>/PROVIDERS/MICROSOFT.Storage/STORAGEACCOUNTS/ &lt; depolama hesabı adı>**' dır.
+    * **Mevcut tanılama depolama hesabı**: bir depolama HESABıNıN kaynak kimliğini girin. Söz dizimi `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>` şeklindedir.
 
     Geri kalan ayarlar için varsayılan değeri kullanın.
 1. **yukarıda belirtilen hüküm ve koşulları**ve **satın alma**seçimini kabul ediyorum ' u seçin.

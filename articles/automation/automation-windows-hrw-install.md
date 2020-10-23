@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Windows karma runbook çalışanı dağıtma
 description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızda Windows tabanlı makinelerde runbook 'lar çalıştırmak için kullanabileceğiniz bir karma Runbook Worker dağıtımı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 08/20/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a03d14fa272f5f86af1caf0ce9537bbb186d13cc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660521"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204528"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -28,7 +28,7 @@ Karma Runbook Worker rolü, rolü yüklemek ve yapılandırmak için bir Azure I
 
 Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md) gözden geçirin.
 
-Bir çalışma alanınız varsa, ancak Otomasyon hesabınıza bağlı değilse, Otomasyon özelliğinin etkinleştirilmesi, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınızda Azure Otomasyonu özelliklerinden birini etkinleştirdiğinizde, özellikle [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) veya [değişiklik izleme ve envanterinde](change-tracking.md), çalışan bileşenleri otomatik olarak aracı makinesine gönderilir.
+Bir çalışma alanınız varsa, ancak Otomasyon hesabınıza bağlı değilse, Otomasyon özelliğinin etkinleştirilmesi, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınızda Azure Otomasyonu özelliklerinden birini etkinleştirdiğinizde, özellikle [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) veya [değişiklik izleme ve envanterinde](change-tracking/overview.md), çalışan bileşenleri otomatik olarak aracı makinesine gönderilir.
 
 > [!NOTE]
 > Güncelleştirme Yönetimi veya Değişiklik İzleme ve envanter özelliği etkinleştirildiğinde Azure Otomasyonu yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı bağlamak için belirli bölgeleri destekler. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md). İki özelliği etkinleştirmeden önce, Azure Otomasyonu için [Azure fiyatlandırma](https://azure.microsoft.com/pricing/details/automation/) bilgilerini gözden geçirin.
@@ -175,7 +175,7 @@ Heartbeat
 
 Arama sonuçlarında, makineye bağlı olduğunu ve hizmete raporlanmasını belirten, makinenin sinyal kayıtlarını görmeniz gerekir. Varsayılan olarak, her aracı atanmış çalışma alanına bir sinyal kaydını iletir. Aracı yüklemesini ve kurulumunu gerçekleştirmek için aşağıdaki adımları kullanın.
 
-1. Aracı makinesini eklemek için özelliği etkinleştirin. Güncelleştirme Yönetimi ve Azure VM 'Leri için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-automation-account.md), [Azure portal göz atarak güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-portal.md), [runbook 'Tan GÜNCELLEŞTIRME YÖNETIMI etkinleştirme](update-management/update-mgmt-enable-runbook.md)veya [bir Azure VM 'den güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-vm.md). Değişiklik İzleme ve Azure VM 'Leri için bkz. [Azure VM 'Leri etkinleştirme](automation-enable-changes-from-auto-acct.md#enable-azure-vms)ve Azure dışı VM 'ler için bkz. [çalışma alanındaki makineleri etkinleştirme](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
+1. Aracı makinesini eklemek için özelliği etkinleştirin. Güncelleştirme Yönetimi ve Azure VM 'Leri için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-automation-account.md), [Azure portal göz atarak güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-portal.md), [runbook 'Tan GÜNCELLEŞTIRME YÖNETIMI etkinleştirme](update-management/update-mgmt-enable-runbook.md)veya [bir Azure VM 'den güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-vm.md). Değişiklik İzleme ve Azure VM 'Leri için bkz. [Azure VM 'Leri etkinleştirme](change-tracking/enable-from-automation-account.md#enable-azure-vms)ve Azure dışı VM 'ler için bkz. [çalışma alanındaki makineleri etkinleştirme](change-tracking/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
 2. Karma Runbook Worker sürümünü onaylamak için, `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` **Sürüm** alt klasörüne göz atarak göz atabilirsiniz.
 
@@ -214,7 +214,7 @@ Runbook 'lar, Azure Otomasyonu ortamınızda yüklü olan modüllerde tanımlana
 
 Karma Runbook Worker 'ın birincil amacı yerel kaynakları yönettiğinden, büyük olasılıkla bu kaynakları destekleyen modülleri, özellikle modülünü yüklemeniz gerekir `PowerShellGet` . Windows PowerShell modüllerini yükleme hakkında bilgi için bkz. [Windows PowerShell](/powershell/scripting/developer/windows-powershell).
 
-Yüklenen modüller, `PSModulePath` karma çalışanın otomatik olarak içe aktarabilmesi için ortam değişkeni tarafından başvurulan bir konumda olmalıdır. Daha fazla bilgi için bkz. [PSModulePath Içinde modül yüklemeleri](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+Yüklenen modüller, `PSModulePath` karma çalışanın otomatik olarak içe aktarabilmesi için ortam değişkeni tarafından başvurulan bir konumda olmalıdır. Daha fazla bilgi için bkz. [PSModulePath Içinde modül yüklemeleri](/powershell/scripting/developer/module/installing-a-powershell-module).
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>Karma runbook çalışanını şirket içi bir Windows makinesinden kaldırma
 

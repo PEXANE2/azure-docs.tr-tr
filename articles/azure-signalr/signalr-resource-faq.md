@@ -7,18 +7,18 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5d6b46e288007bc0bbac53a97b1bdd5e727b8ac8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91405131"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150953"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR hizmeti hakkında SSS
 
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Azure SignalR hizmeti üretim kullanımı için hazırlanıyor mu?
 
-Evet, hem [ASP.NET Core SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) hem de [ASP.NET SignalR](https://docs.microsoft.com/aspnet/signalr/overview/getting-started/introduction-to-signalr) desteği genel kullanıma sunuldu.
+Evet, hem [ASP.NET Core SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) hem de [ASP.NET SignalR](/aspnet/signalr/overview/getting-started/introduction-to-signalr) desteği genel kullanıma sunuldu.
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Birden çok uygulama sunucusu olduğunda, istemci iletileri tüm sunuculara mı, yoksa yalnızca biri mi gönderilir?
 
@@ -48,7 +48,7 @@ Hayır.
 
 Azure SignalR hizmeti, ASP.NET Core SignalR 'nin desteklediği üç aktarımı varsayılan olarak sağlar. Yapılandırılamaz. Azure SignalR hizmeti, tüm istemci bağlantıları için bağlantıları ve aktarımları işleyecek.
 
-İstemci tarafı taşımalarını [ASP.NET Core SignalR yapılandırmasında](https://docs.microsoft.com/aspnet/core/signalr/configuration#configure-allowed-transports-1)belgelenen şekilde yapılandırabilirsiniz.
+İstemci tarafı taşımalarını [ASP.NET Core SignalR yapılandırmasında](/aspnet/core/signalr/configuration#configure-allowed-transports-1)belgelenen şekilde yapılandırabilirsiniz.
 
 ## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-shown-in-the-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>İleti sayısı veya Azure portal gösterilen bağlantı sayısı gibi ölçümlerin anlamı nedir? Ne tür bir toplama türü seçmem gerekir?
 

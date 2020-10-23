@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715417"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149019"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
+[Azure App Service](./overview.md) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
@@ -96,11 +96,11 @@ WebDeploy bağlantı noktası ve SCM sitesine temel kimlik doğrulaması erişim
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-WebDeploy 'de yayımlama profili kimlik bilgilerinin engellendiğini onaylamak için, [Visual Studio 2019 kullanarak bir Web uygulaması yayımlamayı](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)deneyin.
+WebDeploy 'de yayımlama profili kimlik bilgilerinin engellendiğini onaylamak için, [Visual Studio 2019 kullanarak bir Web uygulaması yayımlamayı](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)deneyin.
 
 ### <a name="disable-access-to-the-api"></a>API 'ye erişimi devre dışı bırakma
 
-Önceki bölümde yer alan API, desteklenen Azure rol tabanlı erişim denetimi (Azure RBAC), [özel bir rol oluşturabileceğiniz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) ve diğer sitelerde temel kimlik doğrulamasını etkinleştiremeyecek şekilde role daha düşük öncelikli kullanıcılar atayabilecekleri anlamına gelir. Özel rolü yapılandırmak için [Bu yönergeleri izleyin](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+Önceki bölümde yer alan API, desteklenen Azure rol tabanlı erişim denetimi (Azure RBAC), [özel bir rol oluşturabileceğiniz](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) ve diğer sitelerde temel kimlik doğrulamasını etkinleştiremeyecek şekilde role daha düşük öncelikli kullanıcılar atayabilecekleri anlamına gelir. Özel rolü yapılandırmak için [Bu yönergeleri izleyin](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
 
 [Azure izleyici](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) 'yi, tüm başarılı kimlik doğrulama isteklerini denetlemek ve [Azure ilkesi](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) 'ni kullanarak aboneliğinizdeki tüm siteler için bu yapılandırmayı zorunlu kılmak için de kullanabilirsiniz.
 

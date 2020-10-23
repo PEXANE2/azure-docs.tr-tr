@@ -8,6 +8,7 @@
     - name: Desteklenen veri depoları
       href: supported-data-stores.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Paylaşılan veriler - Azure portal
       href: share-your-data-portal.md
@@ -15,7 +16,6 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Öğreticiler
-  expanded: true
   items:
     - name: Veri paylaşımı
       href: share-your-data.md
@@ -31,8 +31,6 @@
       href: concepts-pricing.md
 - name: Örnekler
   items:
-    - name: Kod örnekleri
-      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
 - name: Nasıl yapılır kılavuzları
@@ -46,10 +44,6 @@
         - name: Azure Veri Gezgini'nden paylaşma
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: İzleme
-      href: how-to-monitor.md
-    - name: Sorun giderme
-      href: data-share-troubleshoot.md
     - name: Veri kümeleri ekleme
       href: how-to-add-datasets.md
     - name: Veri kümesi eşlemelerini yapılandırma
@@ -60,24 +54,28 @@
       href: how-to-delete-invitation.md
     - name: Paylaşım aboneliğini iptal etme
       href: how-to-revoke-share-subscription.md
+    - name: İzleyici
+      href: how-to-monitor.md
     - name: Güvenlik
       href: security.md
     - name: Olağanüstü durum kurtarma
       href: disaster-recovery.md
+    - name: Sorun giderme
+      href: data-share-troubleshoot.md
 - name: Başvuru
   items:
     - name: .NET
       href: /dotnet/api/overview/azure/datashare
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
+      href: /powershell/module/az.datashare/?view=azps-2.6.0
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
+      href: /cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest
 - name: Kaynaklar
   items:
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
+      href: /answers/topics/azure-data-share.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog

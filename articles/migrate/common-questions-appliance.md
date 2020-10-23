@@ -3,12 +3,12 @@ title: Azure geçişi gereç hakkında SSS
 description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630500"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314774"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -42,7 +42,7 @@ Gereç şu şekilde dağıtılabilir:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Gereç Azure 'a nasıl bağlanır?
 
-Gereç Internet üzerinden veya Azure ExpressRoute kullanarak bağlanabilir. Bu [URL 'Lerin](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) Azure 'a bağlanmasına yönelik gereç için onaylanmış olduğundan emin olun.
+Gereç Internet üzerinden veya Azure ExpressRoute kullanarak bağlanabilir. Bu [URL 'Lerin](./migrate-appliance.md#url-access) Azure 'a bağlanmasına yönelik gereç için onaylanmış olduğundan emin olun.
 
 - Azure ExpressRoute 'u Azure geçişi çoğaltma trafiği için kullanmak üzere Microsoft eşlemesi veya var olan bir genel eşleme gerekir (genel eşleme, yeni ER oluşturmaları için kullanım dışıdır).
 - Azure ExpressRoute üzerinden (yalnızca) özel eşleme etkin olan çoğaltma desteklenmez.

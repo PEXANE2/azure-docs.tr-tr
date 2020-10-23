@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c420652a6385be2cade9723c20cff7c32a4a60b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317336"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127242"
 ---
 # <a name="storage-configuration"></a>Depolama Yapılandırması
 
@@ -238,6 +238,6 @@ Genel bulut tabanlı, yönetilen Kubernetes Hizmetleri için aşağıdaki öneri
 
 |Genel bulut hizmeti|Öneri|
 |---|---|
-|**Azure Kubernetes Service (AKS)**|Azure Kubernetes hizmeti (AKS) iki tür depolama-Azure dosyası ve Azure diski içerir. Her depolama türünde iki fiyatlandırma/performans katmanı (HDD) ve Premium (SSD) vardır. Bu nedenle, AKS içinde sunulan dört depolama sınıfı `azurefile` (Azure dosyaları standart katmanı), (Azure `azurefile-premium` dosyaları Premium katmanı), `default` (Azure diskleri standart katmanı) ve `managed-premium` (Azure diskleri Premium katmanı). Varsayılan depolama sınıfı `default` (Azure diskleri standart katmanı). Kararlarınız için bir araya getirilmeli türler ve katmanlar arasında önemli miktarda **[fiyatlandırma farkı](https://azure.microsoft.com/en-us/pricing/details/storage/)** vardır. Yüksek performanslı gereksinimlere sahip üretim iş yükleri için, `managed-premium` tüm depolama sınıfları için kullanmanızı öneririz. Geliştirme ve test iş yükleri, kavram provaları vb. bir değerlendirme için `azurefile` en az maliyetli bir seçenektir. Tüm dört seçenek, Azure 'da ağa bağlı depolama cihazlarıyla uzak, paylaşılan depolama gerektiren durumlar için kullanılabilir. [Aks depolaması](../../aks/concepts-storage.md)hakkında daha fazla bilgi edinin.|
+|**Azure Kubernetes Service (AKS)**|Azure Kubernetes hizmeti (AKS), iki tür depolama-Azure dosyası ve Azure yönetilen diski vardır. Her depolama türünde iki fiyatlandırma/performans katmanı (HDD) ve Premium (SSD) vardır. Bu nedenle, AKS içinde sunulan dört depolama sınıfı `azurefile` (Azure dosyaları standart katmanı), (Azure `azurefile-premium` dosyaları Premium katmanı), `default` (Azure diskleri standart katmanı) ve `managed-premium` (Azure diskleri Premium katmanı). Varsayılan depolama sınıfı `default` (Azure diskleri standart katmanı). Kararlarınız için bir araya getirilmeli türler ve katmanlar arasında önemli miktarda **[fiyatlandırma farkı](https://azure.microsoft.com/en-us/pricing/details/storage/)** vardır. Yüksek performanslı gereksinimlere sahip üretim iş yükleri için, `managed-premium` tüm depolama sınıfları için kullanmanızı öneririz. Geliştirme ve test iş yükleri, kavram provaları vb. bir değerlendirme için `azurefile` en az maliyetli bir seçenektir. Tüm dört seçenek, Azure 'da ağa bağlı depolama cihazlarıyla uzak, paylaşılan depolama gerektiren durumlar için kullanılabilir. [Aks depolaması](../../aks/concepts-storage.md)hakkında daha fazla bilgi edinin.|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon 'ın elastik Kubernetes hizmetinde, [EBS CSI depolama sürücüsüne](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)göre bir birincil depolama sınıfı vardır. Bu, üretim iş yükleri için önerilir. Yeni bir depolama sürücüsü- [EFS CSI depolama sürücüsü](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) vardır. Bu, BIR EKS kümesine eklenebilir, ancak şu anda bir beta aşamasıdır ve değiştirilebilir. AWS, bu depolama sürücüsünün üretim için desteklendiğini söyseler de, hala beta sürümünde ve değişikliğe tabi olduğu için kullanılması önerilmez. EBS depolama sınıfı varsayılandır ve çağırılır `gp2` . [EKS depolama](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)hakkında daha fazla bilgi edinin.|
 |**Google Kubernetes Altyapısı (GKE)**|Google Kubernetes altyapısı (GKE), `standard` [GCE kalıcı diskler](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)için kullanılan bir adet depolama sınıfına sahiptir. Tek bir tane olmak üzere varsayılan değer de vardır. GKE için doğrudan bağlı SSD 'Ler ile kullanabileceğiniz [yerel ve statik bir birim hazırlayıcı](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) olsa da, bunun beklendiği veya Google tarafından desteklenmediği için kullanılması önerilmez. [GKE depolama](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)hakkında daha fazla bilgi edinin.

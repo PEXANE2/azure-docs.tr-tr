@@ -17,12 +17,12 @@ ms.date: 09/23/2020
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347713"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319773"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory oturum açma etkinlik raporları-önizleme
 
@@ -32,8 +32,8 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
     - **Oturum açma** bilgileri – kullanıcıların, uygulamaların ve yönetilen KAYNAKLARıN Azure AD 'de oturum açıp kaynaklara erişme hakkında bilgiler.
     - **Denetim günlükleri**  -  [Denetim günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
 - **Güvenlik** 
-    - **Riskli oturum** açma işlemleri- [riskli oturum](concept-risky-sign-ins.md) açma, Kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilen oturum açma girişimine yönelik bir göstergedir.
-    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](concept-user-at-risk.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
+    - **Riskli oturum** açma işlemleri- [riskli oturum](../identity-protection/overview-identity-protection.md) açma, Kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilen oturum açma girişimine yönelik bir göstergedir.
+    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](../identity-protection/overview-identity-protection.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
 
 Azure Active Directory içindeki klasik oturum açma işlemleri raporu etkileşimli kullanıcı oturum açma bilgileri için bir genel bakış sağlar. Ayrıca, şu anda önizleme aşamasında olan üç ek oturum açma raporlarına erişebilirsiniz:
 
@@ -86,7 +86,7 @@ Oturum açma raporu dikey penceresinde şunları yapabilirsiniz:
 
 - **Hizmet sorumlusu oturum açma** işlemleri-hiçbir Kullanıcı içermeyen uygulamalar ve hizmet sorumluları tarafından oturum açılır. Bu oturum açma işlemleri sırasında, uygulama veya hizmet, kaynakların kimliğini doğrulamak veya kaynaklara erişmek için kendi adına bir kimlik bilgisi sağlar.
 
-- Azure kaynakları **Için Yönetilen kimlikler** Azure tarafından yönetilen gizli dizileri olan Azure kaynaklarında oturum açma işlemleri. Daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+- Azure kaynakları **Için Yönetilen kimlikler** Azure tarafından yönetilen gizli dizileri olan Azure kaynaklarında oturum açma işlemleri. Daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../managed-identities-azure-resources/overview.md) 
 
 
 ![Oturum açma işlemleri rapor türleri](./media/concept-all-sign-ins/sign-ins-report-types.png)
@@ -214,7 +214,7 @@ Verilerin özetleşebilmesini sağlamak için etkileşimli olmayan oturum açma 
 - Kaynak kimliği
 
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 - Bir grubun tek tek öğelerini görmek için bir düğümü genişletin.  
 
@@ -271,7 +271,7 @@ Hizmet sorumlusu oturum açma günlüklerinde verilerin özetlanmasını kolayla
 
 - Kaynak adı veya KIMLIĞI
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 - Bir grubun tek tek öğelerini görmek için bir düğümü genişletin.  
 

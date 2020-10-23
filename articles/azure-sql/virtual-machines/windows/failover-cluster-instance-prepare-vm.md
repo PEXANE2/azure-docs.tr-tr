@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272511"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164253"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Bir FCı için sanal makineleri hazırlama (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ Bu makalede, Azure sanal makinelerinin (VM 'Ler) SQL Server yük devretme kümes
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Microsoft Azure aboneliği. [Ücretsiz](https://azure.microsoft.com/free/)olarak kullanmaya başlayın. 
 - Azure sanal makinelerinde veya şirket içi bir veri merkezinde sanal ağ eşleştirmesine sahip Azure 'a genişletilmiş bir Windows etki alanı.
@@ -101,14 +101,14 @@ Kaynak sağlayıcıdan kaydolduktan sonra, SQL Server kaldırabilirsiniz. Her sa
 
 Her bir sanal makinede, SQL Server kullandığı Windows Güvenlik Duvarı TCP bağlantı noktasını açın. Varsayılan olarak, bu bağlantı noktası 1433 ' dir. Ancak, bir Azure VM dağıtımında SQL Server bağlantı noktasını değiştirebilirsiniz, bu nedenle ortamınızda kullanılan SQL Server bağlantı noktasını açın. Bu bağlantı noktası, Azure Marketi 'nden dağıtılan SQL Server görüntülerde otomatik olarak açılır. 
 
-[Yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md)kullanıyorsanız, sistem durumu araştırmasının kullandığı bağlantı noktasını da açmanız gerekir. Varsayılan olarak, bu bağlantı noktası 59999 ' dir. Ancak, yük dengeleyiciyi oluştururken belirttiğiniz herhangi bir TCP bağlantı noktası olabilir. 
+[Yük dengeleyici](failover-cluster-instance-vnn-azure-load-balancer-configure.md)kullanıyorsanız, sistem durumu araştırmasının kullandığı bağlantı noktasını da açmanız gerekir. Varsayılan olarak, bu bağlantı noktası 59999 ' dir. Ancak, yük dengeleyiciyi oluştururken belirttiğiniz herhangi bir TCP bağlantı noktası olabilir. 
 
 Bu tabloda, FCı yapılandırmanıza bağlı olarak, açmanız gerekebilecek bağlantı noktaları ayrıntılı olarak yer alır: 
 
    | Amaç | Bağlantı noktası | Notlar
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Varsayılan SQL Server örnekleri için normal bağlantı noktası. Galeriden bir görüntü kullandıysanız, bu bağlantı noktası otomatik olarak açılır. </br> </br> **Kullanan**: tüm FCI yapılandırması. |
-   | Durum yoklaması | TCP 59999 | Açık herhangi bir TCP bağlantı noktası. Yük dengeleyici [sistem durumu araştırmasını](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) ve kümeyi Bu bağlantı noktasını kullanacak şekilde yapılandırın. </br> </br> **Kullanan**: FCI yük dengeleyici. |
+   | Durum yoklaması | TCP 59999 | Açık herhangi bir TCP bağlantı noktası. Yük dengeleyici [sistem durumu araştırmasını](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) ve kümeyi Bu bağlantı noktasını kullanacak şekilde yapılandırın. </br> </br> **Kullanan**: FCI yük dengeleyici. |
    | Dosya paylaşımı | UDP 445 | Dosya paylaşma hizmetinin kullandığı bağlantı noktası. </br> </br> **Kullanan**: FCI Premium dosya paylaşımıyla. |
 
 ## <a name="join-the-domain"></a>Etki alanına katılarak

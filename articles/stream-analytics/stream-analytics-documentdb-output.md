@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b28d75e6526f27fd0076244ec32848dbf20e91e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596564"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424774"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Çıktıyı Azure Cosmos DB Azure Stream Analytics  
-Azure Stream Analytics, veri arşivlemeyi ve yapılandırılmamış JSON verilerinde düşük gecikme süreli sorguları etkinleştirerek JSON çıkışı için [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) hedefleyebilir. Bu belge, bu yapılandırmayı uygulamak için bazı en iyi yöntemleri içerir.
+Azure Stream Analytics, veri arşivlemeyi ve yapılandırılmamış JSON verilerinde düşük gecikme süreli sorguları etkinleştirerek JSON çıkışı için [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) hedefleyebilir. Bu belge, bu yapılandırmayı uygulamak için bazı en iyi yöntemleri içerir. Azure Cosmos db çıktı olarak kullanırken işinizi uyumluluk Level 1,2 olarak ayarlamanızı öneririz.
 
 Azure Cosmos DB hakkında bilgi sahibi değilseniz, kullanmaya başlamak için [Azure Cosmos DB belgelerine](https://docs.microsoft.com/azure/cosmos-db/) bakın. 
 
@@ -137,3 +137,17 @@ Stream Analytics geçici bir hata, hizmet kullanılamaz veya daraltma işlemi, A
 - NotFound (HTTP hata kodu 404)
 - Yasak (HTTP hata kodu 403)
 - BadRequest (HTTP hata kodu 400)
+
+## <a name="common-issues"></a>Genel sorunlar
+
+1. Koleksiyona benzersiz bir dizin kısıtlaması eklenir ve Stream Analytics çıkış verileri bu kısıtlamayı ihlal ediyor. Stream Analytics çıkış verilerinin benzersiz kısıtlamaları ihlal etmemesini veya kısıtlamaları kaldırmasını sağlayın. Daha fazla bilgi için bkz. [Azure Cosmos DB Içindeki benzersiz anahtar kısıtlamaları](../cosmos-db/unique-keys.md).
+
+2. `PartitionKey`Sütun yok.
+
+3. `Id`Sütun yok.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Azure Stream Analytics çıkışlarını anlayın](stream-analytics-define-outputs.md) 
+* [Azure SQL veritabanı 'na Azure Stream Analytics çıkışı](stream-analytics-sql-output-perf.md)
+* [Özel blob çıkış bölümlendirme Azure Stream Analytics](stream-analytics-custom-path-patterns-blob-storage-output.md)

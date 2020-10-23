@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055945"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441117"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -36,7 +36,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
 - Yapılandırma Şu anda yalnızca CLı veya REST istekleri kullanılarak gerçekleştirilebilir. Azure portal veya PowerShell kullanamazsınız.
-- Desteklenen tablolar şu anda aşağıdaki (#supported-Tabes) bölümünde belirtilenlerle sınırlıdır. Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, işlem başarılı olur, ancak bu tablo için hiçbir veri aktarılmaz. Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata *tablosu <tableName> çalışma alanında yok* hatasıyla başarısız olur.
+- Desteklenen tablolar şu anda aşağıdaki [desteklenen tablolar](#supported-tables) bölümünde yer aldığı sınırlandırıldı. Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, işlem başarılı olur, ancak bu tablo için hiçbir veri aktarılmaz. Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata ile başarısız olur ```Table <tableName> does not exist in the workspace.```
 - Log Analytics çalışma alanınız aşağıdakiler dışında herhangi bir bölgede olabilir:
   - İsviçre Kuzey
   - İsviçre Batı
@@ -57,7 +57,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 ## <a name="data-completeness"></a>Veri bütünlüğü
 Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumunda 30 dakikaya kadar veri göndermeyi yeniden denemeye devam edecektir. 30 dakika sonra hala kullanılamıyorsa, veriler hedef kullanılabilir olana kadar atılır.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Maliyet
 Şu anda veri dışa aktarma özelliği için ek ücret alınmaz. Veri dışa aktarma fiyatlandırması gelecekte duyurulacaktır ve faturalandırma başlamadan önce bir uyarı verilir. Bildirim süresinden sonra veri dışa aktarmayı kullanmaya devam etmeyi seçerseniz, ilgili ücret üzerinden faturalandırılırsınız.
 
 ## <a name="export-destinations"></a>Hedefleri dışarı aktar
@@ -239,7 +239,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Desteklenmeyen tablolar
 Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, yapılandırma başarılı olur, ancak bu tablo için hiçbir veri aktarılmaz. Tablo daha sonra destekleniyorsa, verileri o anda dışarıya kaydedilir.
 
-Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata *tablosu <tableName> çalışma alanında yok*hatasıyla başarısız olur.
+Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata ile başarısız olur ```Table <tableName> does not exist in the workspace.```
 
 
 ## <a name="supported-tables"></a>Desteklenen tablolar

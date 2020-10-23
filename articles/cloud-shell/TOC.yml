@@ -20,6 +20,12 @@
       items:
         - name: Yürütme planı oluşturma
           href: example-terraform-bash.md
+- name: Kavramlar
+  items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Windows kullanıcıları için PowerShell Cloud Shell

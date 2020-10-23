@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: contperfq2
+ms.openlocfilehash: 158a82b43e573e5d34ec9a44c4a47cd1126de8ed
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070206"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424586"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Öğretici-Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamayı yapılandırın
 
@@ -335,7 +336,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 *GET/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-2"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -376,7 +377,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Users al? Filter = userName EQ "varolmayan kullanıcı"*
 
-##### <a name="response"></a><a name="response-3"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-3"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -413,7 +414,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-4"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -457,7 +458,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-5"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -506,7 +507,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-14"></a>Yanıt
 
 ```json
 {
@@ -546,7 +547,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Users/5171a35d82074e068ce2 HTTP/1.1 SILME*
 
-##### <a name="response"></a><a name="response-6"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-6"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -573,7 +574,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-7"></a>Yanıt
 
 *HTTP/1.1 201 oluşturuldu*
 ```json
@@ -598,7 +599,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1 alın*
 
-##### <a name="response"></a><a name="response-8"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-8"></a>Yanıt
 *HTTP/1.1 200 TAMAM*
 ```json
 {
@@ -619,7 +620,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 ##### <a name="request"></a><a name="request-9"></a>İstek
 */Groups al? excludedAttributes = Members&Filter = displayName EQ "displayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-9"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -659,7 +660,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-10"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -682,7 +683,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-11"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -705,7 +706,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-12"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -715,7 +716,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Groups/cdb1ce18f65944079d37 HTTP/1.1 SILME*
 
-##### <a name="response"></a><a name="response-13"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-13"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -915,7 +916,7 @@ Geçerli bir taşıyıcı belirteci almak için belirteç denetleyicisine bir GE
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Kullanıcıları hazırlama ve sağlamayı kaldırma işlemlerini işleme
 
-***Örnek 1. Hizmeti eşleşen bir kullanıcı için sorgulama***
+***Örnek 1. Eşleşen bir kullanıcı için hizmeti sorgula**_
 
 Azure Active Directory `externalId` , Azure AD 'deki bir kullanıcının Mailrumuz özniteliği ile eşleşen bir öznitelik değeri olan bir kullanıcıya yönelik hizmeti sorgular. Sorgu, bu örnek gibi bir Köprü Metni Aktarım Protokolü (HTTP) isteği olarak ifade edilir. burada jbaşak, Azure Active Directory bir kullanıcının Mailtakma adı örneğidir.
 
@@ -943,12 +944,12 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 Örnek sorguda, özniteliği için verilen değere sahip olan bir kullanıcı için `externalId` , QueryAsync yöntemine geçirilen bağımsız değişkenlerin değerleri şunlardır:
 
-* parametrelere. AlternateFilters. Count: 1
+parametrelere. AlternateFilters. Count: 1
 * parametrelere. AlternateFilters. ElementAt (0). AttributePath: "externalId"
 * parametrelere. AlternateFilters. ElementAt (0). ComparisonOperator: ComparisonOperator. Equals
 * parametrelere. AlternateFilter. ElementAt (0). ComparisonValue: "jbaşak"
 
-***Örnek 2. Kullanıcı sağlama***
+***Örnek 2. Kullanıcı sağlama**_
 
 Bir kullanıcının Mailrumuz özniteliği değeriyle eşleşen bir öznitelik değeri olan bir kullanıcının Web hizmetine yönelik yanıtı, `externalId` hiçbir Kullanıcı döndürmez ve sonra hizmetin Azure Active Directory bir Kullanıcı sağlaması için Azure Active Directory istekleri.  Bu tür bir istek örneği aşağıda verilmiştir: 
 
@@ -997,7 +998,7 @@ Bir kullanıcının Mailrumuz özniteliği değeriyle eşleşen bir öznitelik d
 
 Bir Kullanıcı sağlama isteğinde, kaynak bağımsız değişkeninin değeri Microsoft. SCIM. schemas kitaplığında tanımlanan Microsoft. SCıM. Core2EnterpriseUser sınıfının bir örneğidir.  Kullanıcı sağlama isteği başarılı olursa, yöntemin uygulanması, tanımlayıcı özelliği değeri ile yeni sağlanan kullanıcının benzersiz tanımlayıcısı olarak ayarlanan Microsoft. SCıM. Core2EnterpriseUser sınıfının bir örneğini döndürmesi beklenir.  
 
-***Örnek 3. Kullanıcının geçerli durumunu sorgulama*** 
+_*_Örnek 3. Kullanıcının geçerli durumunu sorgulama_*_ 
 
 Bir SCıM tarafından alınan bir kimlik deposunda bulunan olarak bilinen bir kullanıcıyı güncelleştirmek için Azure Active Directory, bu kullanıcının geçerli durumunu hizmetten şu gibi bir istek ile isteyerek devam eder: 
 
@@ -1021,14 +1022,14 @@ Bir SCıM tarafından alınan bir kimlik deposunda bulunan olarak bilinen bir ku
 
 Bir kullanıcının geçerli durumunu alma isteği örneğinde, parametre bağımsız değişkeninin değeri olarak belirtilen nesnenin özelliklerinin değerleri aşağıdaki gibidir: 
   
-* Tanımlayıcı: "54D382A4-2050-4C03-94D1-E769F1D15682"
+_ Tanımlayıcı: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * SchemaIdentifier: "urn: IETF: params: SCIM: schemas: Extension: Enterprise: 2.0: user"
 
-***Örnek 4. Bir başvuru özniteliğinin güncelleştirileceği değeri sorgula*** 
+***Örnek 4. Güncelleştirileceği bir başvuru özniteliğinin değerini sorgula**_ 
 
 Bir başvuru özniteliği güncelleştirilürse Azure Active Directory, hizmet tarafından kullanılan kimlik deposundaki başvuru özniteliğinin geçerli değerinin Azure Active Directory ' deki bu özniteliğin değeriyle eşleşip eşleşmediğini belirleme hizmetini sorgular. Kullanıcılar için, geçerli değerin bu şekilde sorgulandığı tek özniteliği, yönetici özniteliğidir. Bir Kullanıcı nesnesinin Manager özniteliğinin Şu anda belirli bir değere sahip olup olmadığını belirleme isteğine bir örnek aşağıda verilmiştir: örnek kodda, isteğin, hizmetin sağlayıcısının QueryAsync yöntemine bir çağrıya çevrilmesi. Parametre bağımsız değişkeninin değeri olarak belirtilen nesnenin özelliklerinin değeri aşağıdaki gibidir: 
   
-* parametrelere. AlternateFilters. Count: 2
+parametrelere. AlternateFilters. Count: 2
 * parametrelere. AlternateFilters. ElementAt (x). AttributePath: "KIMLIK"
 * parametrelere. AlternateFilters. ElementAt (x). ComparisonOperator: ComparisonOperator. Equals
 * parametrelere. AlternateFilter. ElementAt (x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
@@ -1040,7 +1041,7 @@ Bir başvuru özniteliği güncelleştirilürse Azure Active Directory, hizmet t
 
 Burada, x dizininin değeri 0 olabilir ve y dizininin değeri 1 olabilir, ya da x değeri 1 olabilir ve Filter sorgu parametresinin ifadelerinin sırasına bağlı olarak y değeri 0 olabilir.   
 
-***Örnek 5. Bir kullanıcıyı güncelleştirmek için Azure AD 'den bir SCıM hizmetine istek*** 
+***Örnek 5. Bir kullanıcıyı güncelleştirmek için Azure AD 'den bir SCıM hizmetine istek**_ 
 
 Bir kullanıcıyı güncelleştirmek için bir SCıM hizmetine Azure Active Directory bir istek örneği aşağıda verilmiştir: 
 
@@ -1079,7 +1080,7 @@ Bir kullanıcıyı güncelleştirmek için bir SCıM hizmetine Azure Active Dire
 
 Bir kullanıcıyı güncelleştirme isteğine örnek olarak, Patch bağımsız değişkeninin değeri olarak girilen nesne bu özellik değerlerine sahiptir: 
   
-* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+_ ResourceIdentifier. tanımlayıcı: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: params: SCIM: schemas: Extension: Enterprise: 2.0: user"
 * (PatchRequest2 olarak PatchRequest). Operations. Count: 1
 * (PatchRequest2 olarak PatchRequest). Operations. ElementAt (0). OperationName: OperationName. Add
@@ -1088,7 +1089,7 @@ Bir kullanıcıyı güncelleştirme isteğine örnek olarak, Patch bağımsız d
 * (PatchRequest2 olarak PatchRequest). Operations. ElementAt (0). Value. ElementAt (0). Başvuru: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest2 olarak PatchRequest). Operations. ElementAt (0). Value. ElementAt (0). Değer: 2819c223-7f76-453A-919d-413861904646
 
-***Örnek 6. Bir kullanıcının sağlamasını kaldırma***
+***Örnek 6. Bir kullanıcının sağlamasını kaldırma**_
 
 Bir kullanıcının SCıM hizmeti tarafından belirtilen bir kimlik deposundan sağlamasını kaldırmak için, Azure AD şöyle bir istek gönderir:
 
@@ -1111,7 +1112,7 @@ Bir kullanıcının SCıM hizmeti tarafından belirtilen bir kimlik deposundan s
 
 ResourceIdentifier bağımsız değişkeninin değeri olarak sunulan nesne, bir kullanıcının sağlamasını kaldırma isteği örneğinde bu özellik değerlerine sahiptir: 
 
-* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+_ ResourceIdentifier. tanımlayıcı: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: params: SCIM: schemas: Extension: Enterprise: 2.0: user"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>4. Adım: SCıM uç noktanızı Azure AD SCıM istemcisiyle tümleştirme
@@ -1123,7 +1124,7 @@ Bu gereksinimlerle uyumluluk bildirimleri için uygulama sağlayıcınıza veya 
 > [!IMPORTANT]
 > Azure AD SCıM uygulaması, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuştur. Bu, kullanıcıların Azure AD ile hedef uygulama arasında sürekli olarak eşitlenmesi için tasarlanan ve çok özel bir standart işlem kümesi uyguladığı şekilde tasarlanmıştır. Azure AD SCıM istemcisinin davranışını anlamak için bu davranışları anlamak önemlidir. Daha fazla bilgi için bkz. sağlama [döngüleri: başlangıç ve artımlı](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) , [sağlama nasıl?](how-provisioning-works.md).
 
-### <a name="getting-started"></a>Kullanmaya başlama
+### <a name="getting-started"></a>Başlarken
 
 Bu makalede açıklanan SCıM profilini destekleyen uygulamalar, Azure AD uygulama galerisinde "Galeri dışı uygulama" özelliği kullanılarak Azure Active Directory bağlanabilir. Bağlantı kurulduktan sonra Azure AD, her 40 dakikada bir eşitleme işlemi çalıştırarak, atanan kullanıcılar ve gruplar için uygulamanın SCıM uç noktasını sorgular ve atama ayrıntılarına göre bunları oluşturur veya değiştirir.
 
@@ -1146,8 +1147,8 @@ Bu makalede açıklanan SCıM profilini destekleyen uygulamalar, Azure AD uygula
 7. **Kiracı URL 'si** alanına uygulamanın SCIM uç noktasının URL 'sini girin. Örnek: `https://api.contoso.com/scim/`
 8. SCıM uç noktası, Azure AD 'den başka bir verenin bir OAuth taşıyıcı belirteci gerektiriyorsa, gerekli OAuth taşıyıcı belirtecini isteğe bağlı **gizli belirteç** alanına kopyalayın. Bu alan boş bırakılırsa Azure AD, Azure AD 'den her istekle verilen bir OAuth taşıyıcı belirteci içerir. Kimlik sağlayıcısı olarak Azure AD kullanan uygulamalar, bu Azure AD veren belirtecini doğrulayabilir. 
    > [!NOTE]
-   > Bu alanı boş bırakmanız ve Azure AD tarafından oluşturulan bir belirtece güvenmamanız ***önerilmez.*** Bu seçenek öncelikle test amacıyla kullanılabilir.
-9. SCıM uç noktasına bağlanmak Azure Active Directory denemek için **Bağlantıyı Sına** ' yı seçin. Deneme başarısız olursa, hata bilgileri görüntülenir.  
+   > Bu alanı boş bırakmak ve Azure AD tarafından oluşturulan bir belirtece bağlı olmak*_için * önerilmez_*. Bu seçenek öncelikle test amacıyla kullanılabilir.
+9. SCıM uç noktasına bağlanmak Azure Active Directory denemek için _*test bağlantısı** öğesini seçin. Deneme başarısız olursa, hata bilgileri görüntülenir.  
 
     > [!NOTE]
     > **Test bağlantısı** , mevcut olmayan bir kullanıcı için SCIM uç noktasını sorgular, bu da Azure AD yapılandırmasında eşleşen özellik olarak rastgele bir GUID kullanılıyor. Beklenen doğru yanıt, boş bir SCIM ListResponse iletisi ile HTTP 200 Tamam ' dır.

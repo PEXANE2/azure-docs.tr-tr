@@ -1,22 +1,20 @@
 ---
 title: Azure Data Lake U-SQL işleri için C# kodunda hata ayıklama
 description: Bu makalede, Visual Studio için Azure Data Lake Araçları kullanarak U-SQL başarısız olan bir köşeyi nasıl ayıklayacağınız açıklanır.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131880"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218026"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Başarısız U-SQL işleri için Kullanıcı tanımlı C# kodunda hata ayıklama
 
-U-SQL, C# kullanarak bir genişletilebilirlik modeli sağlar. U-SQL betiklerine C# işlevlerini çağırmak ve SQL benzeri bildirime dayalı dilin desteklemediği analitik işlevler gerçekleştirmek kolaydır. U-SQL genişletilebilirliği hakkında daha fazla bilgi edinmek için, bkz. [u-SQL programlama kılavuzu](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+U-SQL, C# kullanarak bir genişletilebilirlik modeli sağlar. U-SQL betiklerine C# işlevlerini çağırmak ve SQL benzeri bildirime dayalı dilin desteklemediği analitik işlevler gerçekleştirmek kolaydır. U-SQL genişletilebilirliği hakkında daha fazla bilgi edinmek için, bkz. [u-SQL programlama kılavuzu](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf). 
 
 Uygulamada, herhangi bir kod hata ayıklama gerektirebilir, ancak bulut üzerinde sınırlı günlük dosyaları olan özel kodla dağıtılmış bir işin hata ayıklaması zor olabilir. [Visual Studio için Azure Data Lake araçları](https://aka.ms/adltoolsvs) , özel kodunuzda oluşan hatalarda daha kolay hata ayıklamanıza yardımcı olan **başarısız köşe hata ayıklaması**adlı bir özellik sağlar. U-SQL işi başarısız olduğunda, hizmet hata durumunu korur ve araç, hata ayıklama için bulut hatası ortamını yerel makineye indirmenize yardımcı olur. Yerel indirme, tüm giriş verileri ve Kullanıcı kodları dahil olmak üzere tüm bulut ortamını yakalar.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507684"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424686"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC 'yi yüklemek için CloudSimple özel bulutunuzu iyileştirin
 
@@ -46,14 +46,14 @@ Aşağıdaki örnek aşağıdaki tabloda tanımlanan diskleri kullanır.
 
 | Disk                                      | Amaç                                       | Paylaşılan Disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| İşletim Sistemi                                        | İşletim sistemi diski                         | Hayır          |
-| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | Hayır          |
-| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | Hayır          |
-| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | Hayır          |
-| VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Evet         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Evet         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Evet         |
-| FRA1, FRA2                                | Hızlı kurtarma alanı diskleri                      | Evet         |
+| İşletim Sistemi                                        | İşletim sistemi diski                         | No          |
+| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | No          |
+| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | No          |
+| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | No          |
+| VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Yes         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Yes         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Yes         |
+| FRA1, FRA2                                | Hızlı kurtarma alanı diskleri                      | Yes         |
 
 ![Oracle sanal makine diski yapılandırması](media/oracle-vmdk.png)
 
@@ -79,7 +79,7 @@ Her Oracle sanal makinesi konak işletim sistemi, takas, yazılım yüklemesi ve
 * Paylaşım, **paylaşım yok**olarak ayarlanır.
 * Yedeklilik, depolama üzerinde vSAN ilkeleri kullanılarak tanımlanır.  
 
-![Oracle RAC veri diski grubu yapılandırması](media/oracle-vm-os-disks.png)
+![Oracle RAC işletim sistemi disk fiziksel yapılandırmasını gösteren diyagram.](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Veri diski yapılandırması
 
@@ -148,7 +148,7 @@ Hızlı kurtarma alanı (FRA), Oracle ASM disk grubu tarafından yönetilen dosy
 * Diskler bir ASM disk grubu olarak yapılandırılmalıdır.  
 * ASM artıklığı **dış** artıklık olarak ayarlanmıştır.
 
-![Oracle RAC oylama disk grubu yapılandırması](media/oracle-vm-fra-disks.png)
+![Oracle RAC oylama disk grubu yapılandırmasını gösteren diyagram.](media/oracle-vm-fra-disks.png)
 
 ## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>CloudSimple özel bulut vSphere kümesi dağıt
 
@@ -220,7 +220,7 @@ Oracle, verileri depolamak için paylaşılan disk kullanır, günlüğü günl�
 9. Paylaşım için **birden çok yazıcı**belirtin.
 10. Sanal cihaz düğümü için adım 2 ' de oluşturulan yeni SCSI denetleyicisini seçin.
 
-    ![İlk VM 'de disk oluşturma](media/oracle-rac-new-hard-disk.png)
+    ![İlk VM 'de disk oluşturmak için gereken alanları vurgulayan ekran görüntüsü.](media/oracle-rac-new-hard-disk.png)
 
 Oracle verileri, günlükleri ve yineleme günlük dosyaları için gereken tüm yeni diskler için 2 – 10 arasındaki adımları yineleyin.
 

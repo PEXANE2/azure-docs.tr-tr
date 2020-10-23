@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91306472"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362459"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
 
@@ -58,7 +58,7 @@ Kuruluşların, Kullanıcı kimliğinin oluşturulduğu zaman bir kullanıcı i�
 
 Genellikle, iş karar mekanizmalarının onay kararlarını devreder.  Ayrıca, kullanıcıların kendilerini de içerebilir.  Örneğin, Avrupa 'daki bir şirketin pazarlama uygulamasındaki gizli müşteri verilerine erişen kullanıcıların şirket ilkelerini bilmeleri gerekir. Konuk kullanıcılar, davet edildikleri bir kuruluştaki veriler için işleme gereksinimlerini farkında olabilir.
 
-Kuruluşlar, [SIM ile tümleştirilmiş](../app-provisioning/use-scim-to-provision-users-and-groups.md) [SaaS uygulamalarına](../saas-apps/tutorial-list.md) veya uygulamalarına Kullanıcı sağlama ile bağlanmış [Dinamik Gruplar](../users-groups-roles/groups-dynamic-membership.md)gibi teknolojiler aracılığıyla erişim yaşam döngüsü işlemini otomatikleştirebilir.  Kuruluşlar ayrıca hangi [Konuk kullanıcıların şirket içi uygulamalara erişebileceğini](../external-identities/hybrid-cloud-to-on-premises.md)de denetleyebilir.  Bu erişim hakları daha sonra yinelenen [Azure AD erişim İncelemeleri](access-reviews-overview.md)kullanılarak düzenli olarak gözden geçirilebilir.   [Azure AD Yetkilendirme Yönetimi](entitlement-management-overview.md) , kullanıcıların grup ve takım üyelikleri, uygulama rolleri ve SharePoint Online rollerinin paketleri arasında nasıl erişim isteyeceğini tanımlamanızı da sağlar.
+Kuruluşlar, [SIM ile tümleştirilmiş](../app-provisioning/use-scim-to-provision-users-and-groups.md) [SaaS uygulamalarına](../saas-apps/tutorial-list.md) veya uygulamalarına Kullanıcı sağlama ile bağlanmış [Dinamik Gruplar](../enterprise-users/groups-dynamic-membership.md)gibi teknolojiler aracılığıyla erişim yaşam döngüsü işlemini otomatikleştirebilir.  Kuruluşlar ayrıca hangi [Konuk kullanıcıların şirket içi uygulamalara erişebileceğini](../external-identities/hybrid-cloud-to-on-premises.md)de denetleyebilir.  Bu erişim hakları daha sonra yinelenen [Azure AD erişim İncelemeleri](access-reviews-overview.md)kullanılarak düzenli olarak gözden geçirilebilir.   [Azure AD Yetkilendirme Yönetimi](entitlement-management-overview.md) , kullanıcıların grup ve takım üyelikleri, uygulama rolleri ve SharePoint Online rollerinin paketleri arasında nasıl erişim isteyeceğini tanımlamanızı da sağlar.
 
 Bir Kullanıcı uygulamalara erişmeye çalıştığında, Azure AD [koşullu erişim](../conditional-access/index.yml) ilkeleri uygular. Örneğin, koşullu erişim ilkeleri bir [kullanım koşulları](../conditional-access/terms-of-use.md) görüntülemeyi ve kullanıcının bir uygulamaya erişebilmek üzere [Bu koşulları kabul](../conditional-access/require-tou.md) etmesinin mümkün olmasını içerebilir.
 
@@ -100,7 +100,7 @@ Kimlik yönetimi özellikleriyle ilgili geri bildiriminiz varsa, görüşleriniz
 Her müşteri için kusursuz bir çözüm veya öneri olmasa da, aşağıdaki yapılandırma kılavuzlarında, Microsoft 'un daha güvenli ve üretken bir iş gücünün sağlanması için izlemeniz önerilen temel ilkeler de sağlanmaktadır.
 
 - [Kimlik ve cihaz erişim yapılandırmaları](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Ayrıcalıklı erişimin güvenliğini sağlama](../users-groups-roles/directory-admin-roles-secure.md)
+- [Ayrıcalıklı erişimin güvenliğini sağlama](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Ek-kimlik Idare özelliklerinde yönetmek için en az ayrıcalıklı roller
 

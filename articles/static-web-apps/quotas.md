@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6fa70eba5875c32d41fa1cfc8daf9b1cdf8f19df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 915f8675ffda0d70347905d11c7d93975b9d4526
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83599994"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132746"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede kotalar
 
@@ -26,7 +26,7 @@ Azure statik Web Apps önizlemesi için aşağıdaki kotalar mevcuttur.
 | Dahil edilen bant genişliği          | ayda 100 GB |
 | Fazla kullanım bant genişliği           | Kullanılamaz      |
 | Azure aboneliği başına uygulamalar | 10               |
-| Uygulama boyutu                    | 100 MB           |
+| Uygulama boyutu                    | 250 MB           |
 | Üretim öncesi ortamları | 1                |
 | Özel etki alanları              | 1                |
 | Yetkilendirme<br><br>Özel roller ve yönlendirme kuralları ile | En fazla 25 Son Kullanıcı davet edilen ve atanan roller |

@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306574"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362708"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
 
@@ -87,7 +87,7 @@ Ortamınızdaki erişim Incelemelerini dağıtmaya yönelik stratejiyi öğrenme
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, doğru paydaşları ve proje rollerinin açık [olduğundan emin olun](https://aka.ms/deploymentplans) .
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, doğru paydaşları ve proje rollerinin açık [olduğundan emin olun](../fundamentals/active-directory-deployment-plans.md) .
 
 Erişim gözden geçirmeleriyle, büyük olasılıkla kuruluşunuzun içindeki aşağıdaki ekiplerden temsilcileriniz olabilir:
 
@@ -182,7 +182,7 @@ Kuruluşunuzun kaynaklarını Azure AD ile tümleştirdikten sonra (örneğin, k
 
 * Grup [üyeliği](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD ile eşitlenmiş veya Microsoft ekipleri dahil olmak üzere Azure AD 'de veya Microsoft 365 ile oluşturulmuş).
 
-* Kaynakları (gruplar, uygulamalar ve siteler), erişimi yönetmek için tek bir pakete gruplayan [erişim paketi](/azure/active-directory/governance/entitlement-management-overview) .
+* Kaynakları (gruplar, uygulamalar ve siteler), erişimi yönetmek için tek bir pakete gruplayan [erişim paketi](./entitlement-management-overview.md) .
 
 * Privileged Identity Management ' de tanımlanan [Azure AD rolleri ve Azure Kaynak rolleri](../privileged-identity-management/pim-resource-roles-assign-roles.md) .
 
@@ -198,7 +198,7 @@ Erişim Incelemesi oluşturmak, yönetmek veya okumak için gereken yönetim rol
 | Erişim paketi| Genel Yönetici<p>Erişim paketi Oluşturucusu| Yalnızca genel yönetici |
 
 
-Daha fazla bilgi için [Azure Active Directory Içindeki yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
+Daha fazla bilgi için [Azure Active Directory Içindeki yönetici rolü izinleri](../roles/permissions-reference.md)bölümüne bakın.
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>Kaynağa erişimi kim olarak gözden geçilecektir?
 
@@ -244,7 +244,7 @@ Bir erişim gözden geçirme ilkesi oluşturmak için aşağıdaki bilgilere sah
 | Bileşen| Değer |
 | - | - |
 | **Gözden geçirilecek kaynaklar**| Microsoft Dynamics 'e erişim |
-| **İnceleme sıklığı**| Aylık olarak |
+| **İnceleme sıklığı**| Aylık |
 | **Kim tarafından incelenmektedir**| Dynamics iş grubu program yöneticileri |
 | **Bildirim**| Diğer ada gözden geçirmesinden önce 24 saat e-posta Dynamics-Pms<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
 | **Zaman çizelgesi**| bildirimden 48 saat |
@@ -343,7 +343,7 @@ Yanlış Üyeler gereksinimden dışlanıyorsa, dışlama potansiyel bir riski t
 
 ### <a name="review-external-users-group-memberships"></a>Dış kullanıcının grup üyeliklerini gözden geçirme
 
-El ile çalışmayı ve ilgili olası hataları en aza indirmek için, bir kullanıcının özniteliklerine göre grup üyeliği atamak üzere [dinamik grupları](../users-groups-roles/groups-create-rule.md) kullanmayı düşünün. Dış kullanıcılar için bir veya daha fazla dinamik grup oluşturmak isteyebilirsiniz. Dahili sponsor, grupta üyelik için bir gözden geçiren işlevi görebilir. 
+El ile çalışmayı ve ilgili olası hataları en aza indirmek için, bir kullanıcının özniteliklerine göre grup üyeliği atamak üzere [dinamik grupları](../enterprise-users/groups-create-rule.md) kullanmayı düşünün. Dış kullanıcılar için bir veya daha fazla dinamik grup oluşturmak isteyebilirsiniz. Dahili sponsor, grupta üyelik için bir gözden geçiren işlevi görebilir. 
 
 Note: bir erişim Incelemesinin sonucu olarak bir gruptan çıkarılan dış kullanıcılar kiracıdan silinmez. 
 
@@ -389,7 +389,7 @@ Erişim incelemeleri bir grubun üyeleri veya bir uygulamaya atanmış kullanıc
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Azure AD ve Azure Kaynak rollerinin incelenmesi Planlanın
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) , KURULUŞLARıN Azure AD 'de kaynaklara ayrıcalıklı erişimi nasıl yöneteceğini basitleştirir. Bu, hem [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) hem de [Azure kaynakları](../../role-based-access-control/built-in-roles.md) ' nda ayrıcalıklı rollerin listesini korur ve dizinin genel güvenliğini artırır.
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) , KURULUŞLARıN Azure AD 'de kaynaklara ayrıcalıklı erişimi nasıl yöneteceğini basitleştirir. Bu, hem [Azure AD](../roles/permissions-reference.md) hem de [Azure kaynakları](../../role-based-access-control/built-in-roles.md) ' nda ayrıcalıklı rollerin listesini korur ve dizinin genel güvenliğini artırır.
 
 Erişim gözden geçirmeleri, gözden geçirenlerin kullanıcıların hala bir rolde olması gerekip gerekmediğini kanıtlarına izin verir. Erişim paketlerine yönelik erişim gözden geçirmeleri gibi, Azure AD rolleri ve Azure kaynağı için yapılan incelemeler, PıM yönetici kullanıcı deneyimiyle tümleşiktir. Aşağıdaki rol atamalarını düzenli olarak gözden geçirmenizi öneririz:
 
@@ -419,7 +419,7 @@ Bir strateji ve Azure AD ile tümleştirilmiş kaynaklara erişimi gözden geçi
 
 Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin atamaları olan kullanıcıların düzenli olarak incelemelerine olanak sağlayabilir. Aşağıdaki bağlantıdaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Açıklama |
+| Nasıl yapılır makaleleri| Description |
 | - | - |
 | [Erişim Incelemeleri oluşturma](entitlement-management-access-reviews-create.md)| Erişim paketi incelemelerini etkinleştirin. |
 | [Erişim gözden geçirmeleri gerçekleştirin](entitlement-management-access-reviews-review-access.md)| Erişim paketine atanan diğer kullanıcılar için erişim gözden geçirmeleri gerçekleştirin. |
@@ -433,7 +433,7 @@ Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin ata
 
 Çalışanlar ve konuklar için gruplara ve uygulamalara erişim ihtiyacı büyük olasılıkla zaman içinde değişir. Yöneticiler, eski erişim atamalarıyla ilişkili riski azaltmak için Grup üyeleri veya uygulama erişimi için erişim İncelemeleri oluşturabilir. Aşağıdaki bağlantıdaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Açıklama |
+| Nasıl yapılır makaleleri| Description |
 | - | - |
 | [Erişim Incelemeleri oluşturma](create-access-review.md)| Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturun. |
 | [Erişim gözden geçirmeleri gerçekleştirin](perform-access-review.md)| Bir grubun veya bir uygulamaya erişimi olan kullanıcıların üyeleri için erişim gözden geçirmesi gerçekleştirin. |
@@ -448,9 +448,9 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure AD r
 
 ![Azure A D rollerinin "üyeliği gözden geçirme" listesini gösteren ekran görüntüsü.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
-Aşağıdaki bağlantılardaki yönergeleri izleyin:
+Aşağıdaki bağlantılarda yer alan yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri | Açıklama |
+| Nasıl yapılır makaleleri | Description |
 | - | - |
  [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure AD rolleri için erişim incelemeleri oluşturma |
 | [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
@@ -463,9 +463,9 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure Kayn
 
 ![Azure AD rollerini gözden geçirme](./media/deploy-access-review/9-review-azure-roles-picker.png)
 
-Aşağıdaki bağlantılardaki yönergeleri izleyin:
+Aşağıdaki bağlantılarda yer alan yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Açıklama |
+| Nasıl yapılır makaleleri| Description |
 | - | -|
 | [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure Kaynak rolleri için erişim gözden geçirmeleri oluşturma |
 | [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
@@ -518,4 +518,3 @@ Aşağıdaki ilgili teknolojiler hakkında bilgi edinin.
 * [Azure AD yetkilendirme yönetimi nedir?](entitlement-management-overview.md)
 
 * [Azure AD Privileged Identity Management nedir?](../privileged-identity-management/pim-configure.md)
-

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273050"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372302"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc veri denetleyicisi oluşturma
 
@@ -26,7 +26,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 
 Şu anda, Kubernetes Hizmetleri ve dağıtımların desteklenen listesi şunlardır:
 
-- Azure Kubernetes Hizmeti (AKS)
+- Azure Kubernetes Service (AKS)
 - Azure Stack 'de Azure Kubernetes hizmet altyapısı (AKS motoru)
 - Azure Stack CI üzerinde Azure Kubernetes hizmeti
 - Azure RedHat OpenShift (ARO)
@@ -39,7 +39,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 > * Kubernetes 'in desteklenen en düşük sürümü v 1.14.
 > * Ortamınız ve Azure arasında hangi bağlantının gerekli olduğunu anlamak için [bağlantı gereksinimlerine](connectivity.md) bakın.
 > * Kalıcı depolama alanınızı yapılandırmaya ilişkin ayrıntıları öğrenmek için [depolama yapılandırma kılavuzu](storage-configuration.md) ' na bakın.
-> * Azure Kubernetes hizmetini kullanıyorsanız, kümenizin çalışan düğümü VM 'sinin boyutu en az **Standard_D8s_v3** olmalıdır ve **Premium diskleri kullanmalıdır.** 
+> * Azure Kubernetes hizmetini kullanıyorsanız, kümenizin çalışan düğümü VM 'sinin boyutu en az **Standard_D8s_v3** olmalıdır ve **Premium diskleri kullanmalıdır.** Küme birden çok kullanılabilirlik bölgesini kapsamamalıdır. 
 > * Başka bir Kubernetes dağıtımı veya hizmeti kullanıyorsanız, Kubernetes düğümlerinizin tümünde en az 8 GB RAM ve 4 çekirdek ve toplam 32 GB RAM kapasiteye sahip olduğunuzdan emin olmanız gerekir. Örneğin, 32 GB RAM ve 4 çekirdekte 1 düğüme sahip olabilirsiniz veya her biri 16 GB RAM ve 4 çekirdeğe sahip 2 düğüme sahip olabilirsiniz.
 
 > [!NOTE]
@@ -65,7 +65,7 @@ Azure Arc veri denetleyicisi oluşturmak için birden çok seçenek vardır:
 > **Yalnızca bir şeyi denemek mi istiyorsunuz?**  
 > Azure Kubernetes Service (AKS), AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ile hızlıca çalışmaya başlayın!
 > 
-- [Azure Data CLı ile veri denetleyicisi oluşturma (azveri)](create-data-controller-using-azdata.md)
+- [İle veri denetleyicisi oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Azure Data Studio bir veri denetleyicisi oluşturma](create-data-controller-azure-data-studio.md)
 - [Azure Data Studio bir Jupyter Not defteri aracılığıyla Azure portal bir veri denetleyicisi oluşturun](create-data-controller-resource-in-azure-portal.md)
 - [Kubectl veya OC gibi Kubernetes araçlarıyla veri denetleyicisi oluşturma](create-data-controller-using-kubernetes-native-tools.md)

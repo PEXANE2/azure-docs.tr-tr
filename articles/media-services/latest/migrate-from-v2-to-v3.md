@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0cdf4699f5dc00087845ee6ca0d24ad6493c320b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017770"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426865"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
 
@@ -59,7 +59,7 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
 * Canlı çıktı, v2 API 'Lerinde program varlığından daha basittir. 
 * İyileştirilmiş RTMP desteği (artan kararlılık ve daha fazla kaynak Kodlayıcısı desteği).
 * RTMPS güvenli alma.<br/>Canlı bir olay oluşturduğunuzda 4 alma URL 'Si alırsınız. 4 içe alınan URL 'Ler neredeyse aynıdır, aynı akış belirtecine (AppID) sahiptir, yalnızca bağlantı noktası numarası bölümü farklıdır. URL 'Lerden ikisi, RTMPS için birincil ve yedeğdir.   
-* Varlıklarınız üzerinde rol tabanlı erişim denetimi (RBAC) vardır. 
+* Varlıklarınız üzerinde Azure rol tabanlı erişim denetimi (Azure RBAC) vardır. 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

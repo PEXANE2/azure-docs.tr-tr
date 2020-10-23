@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: a850e5ea851ee539c663b00ecc7f2053eae8dc34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7904efb92aa8362605f1f68ee0b39f4241339031
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87534099"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332476"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>Ödev oluşturma ve kredi ayırma
 
 Bir kurs ayarladıktan ve Microsoft Azure Eğitim Merkezi bir sınıf oluşturduktan sonra, kredi ayırabileceğiniz ve seçili öğrencileri kursa davet edecek bir atama oluşturmanız istenir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Onaylanan kredi tutarına sahip bir akademik yetki
 - Azure Eğitim Merkezi oluşturulan bir sınıf
@@ -31,7 +31,7 @@ Azure Eğitim Merkezi, _____ @ öğesinde herhangi bir e-posta adresini kabul ed
 > [!IMPORTANT]
 > İş ve okul hesapları, kuruluşun dışındaki bir etki alanından e-posta adresine izin verilip verilmeyeceğini (örneğin, etki alanına ekleme) dahil olmak üzere kendi ilkelerine tabidir student2@outlook.com @school.edu . Yeni Kullanıcı eklemeden önce bu ilkeleri denetlediğinizden emin olun.
 
-Bir iş veya okul hesabı (örneğin,), student1@school.edu eğitimci portalı veya [Azure Portal](https://portal.azure.com)rol tabanlı ERIŞIM denetimi (RBAC) olarak eklendiğinde, Azure alıcıya otomatik olarak e-posta gönderir. Bu e-posta, kullanıcının aboneliğe erişim almadan önce yeni hesabı ve Azure rolünü kabul etmesini gerektirir. Kurs öğretimi Yardımcısı (TA) veya Mesleme yapıyorsanız, aboneliğin Azure portal beklendiği gibi görüntüleyeceği şekilde bu şekilde öğrenci 'yi bilgilendirdiğinizden emin olun. E-posta şuna benzer olmalıdır:
+student1@school.eduEğitimci destekleyicisi portalındaki veya [Azure Portal](https://portal.azure.com)Azure rol tabanlı erişim denetımı (Azure RBAC) kullanılarak bir iş veya okul hesabı (örneğin,) eklendiğinde, Azure alıcıya otomatik olarak e-posta gönderir. Bu e-posta, kullanıcının aboneliğe erişim almadan önce yeni hesabı ve Azure rolünü kabul etmesini gerektirir. Kurs öğretimi Yardımcısı (TA) veya Mesleme yapıyorsanız, aboneliğin Azure portal beklendiği gibi görüntüleyeceği şekilde bu şekilde öğrenci 'yi bilgilendirdiğinizden emin olun. E-posta şuna benzer olmalıdır:
 
 :::image type="content" source="media/create-assignment-allocate-credit/azure-active-directory-get-started.png" alt-text="Azure Active Directory kullanmaya başlayın" border="false":::
 

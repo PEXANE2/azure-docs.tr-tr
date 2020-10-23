@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f3eae2a21c902b49b8e76fcb45e45577231e8b9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528643"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Öğretici: Rollbar ile tümleştirme Azure Active Directory
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açmayı Rollbar ile yapılandırmak için aşağıdaki a
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Rollbar etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusuna URL 'yi yazın:`https://saml.rollbar.com`
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı Rollbar ile yapılandırmak için aşağıdaki a
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Rollbar etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://rollbar.com/<accountname>/saml/login/azure/`
 
@@ -134,15 +134,15 @@ Azure AD çoklu oturum açmayı Rollbar ile yapılandırmak için aşağıdaki a
 
 1. Sağ üst köşedeki **profil ayarları** ' na tıklayın ve ardından **Hesap adı ayarları**' na tıklayın.
 
-    ![Yapılandırma](./media/rollbar-tutorial/general.png)
+    ![Ekran görüntüsü, profil ayarlarından seçilen hesap adı ayarlarını gösterir.](./media/rollbar-tutorial/general.png)
 
 1. GÜVENLIK altında **kimlik sağlayıcısı** ' na tıklayın.
 
-    ![Yapılandırma](./media/rollbar-tutorial/configure1.png)
+    ![Ekran görüntüsü güvenlık altında seçilen kimlik sağlayıcısını gösterir.](./media/rollbar-tutorial/configure1.png)
 
 1. **SAML kimlik sağlayıcısı** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Yapılandırma](./media/rollbar-tutorial/configure2.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML kimlik sağlayıcısını gösterir.](./media/rollbar-tutorial/configure2.png)
 
     a. **SAML kimlik sağlayıcısı** açılır listesinden **Azure** ' u seçin.
 
@@ -152,7 +152,7 @@ Azure AD çoklu oturum açmayı Rollbar ile yapılandırmak için aşağıdaki a
 
 1. Kaydet düğmesine tıkladıktan sonra ekran şöyle olacaktır:
 
-    ![Yapılandırma](./media/rollbar-tutorial/configure3.png)
+    ![Ekran görüntüsü, SAML kimlik sağlayıcısı sayfasındaki sonuçları gösterir.](./media/rollbar-tutorial/configure3.png)
 
     > [!NOTE]
     > Aşağıdaki adımı tamamlayabilmeniz için öncelikle Azure 'daki Rollbar uygulamasına bir kullanıcı olarak kendinizi eklemeniz gerekir.
@@ -233,11 +233,11 @@ Azure AD kullanıcılarının Rollbar 'te oturum açmasını sağlamak için, bu
 
 1. **Takım üyelerini davet et**' e tıklayın.
 
-    ![Kişileri davet et](./media/rollbar-tutorial/user2.png)
+    ![Ekran görüntüsü takım üyelerini davet et seçeneğinin seçili olduğunu gösterir.](./media/rollbar-tutorial/user2.png)
 
 1. Metin kutusuna, **brittasıon \@ contoso.com** gibi kullanıcının adını girin ve **Ekle/davet et**' e tıklayın.
 
-    ![Kişileri davet et](./media/rollbar-tutorial/user3.png)
+    ![Ekran görüntüsünde bir adrese sahip ekleme/davet etme üyeleri gösterilir.](./media/rollbar-tutorial/user3.png)
 
 1. Kullanıcı bir davet alır ve bunu kabul ettikten sonra sistemde oluşturulur.
 

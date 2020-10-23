@@ -6,16 +6,22 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 775aa44043e9c8900bd0c040ab603736314ea34e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e949f1ac5259ba35772ce98c2ee88e5ea66c2d84
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469992"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221171"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için bir Azure AD kiracısı oluşturma
 
-Microsoft Azure Red Hat OpenShift, kümenizin oluşturulacağı bir [Azure Active Directory (Azure AD)](../active-directory/develop/quickstart-create-new-tenant.md) kiracısı gerektirir. *Kiracı* , bir kuruluşun veya uygulama geliştiricisinin azure, Microsoft Intune veya Microsoft 365 kaydolduktan sonra Microsoft ile bir ilişki oluşturduklarında aldığı adanmış BIR Azure ad örneğidir. Her Azure AD kiracısı farklı ve diğer Azure AD kiracılarından ayrıdır ve kendi iş ve okul kimliklerine ve uygulama kayıtlarına sahiptir.
+> [!IMPORTANT]
+> Azure Red Hat Openshıft 3,11, 30 Haziran 2022 tarihinde kullanımdan kaldırılacaktır. Yeni Azure Red Hat OpenShift 3,11 kümelerinin oluşturulmasına yönelik destek, 30 Kasım 2020 ile devam eder. Aşağıdaki kullanımdan kaldırma, kalan Azure Red Hat Openshıft 3,11 kümeleri güvenlik açıklarını engellemek için kapatılacak.
+> 
+> [Azure Red Hat OpenShift 4 kümesi oluşturmak](tutorial-create-cluster.md)için bu kılavuzu izleyin.
+> Belirli sorularınız varsa [lütfen bizimle iletişime geçin](mailto:arofeedback@microsoft.com).
+
+Microsoft Azure Red Hat OpenShift, kümenizin oluşturulacağı bir [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) kiracısı gerektirir. *Kiracı* , bir kuruluşun veya uygulama geliştiricisinin azure, Microsoft Intune veya Microsoft 365 kaydolduktan sonra Microsoft ile bir ilişki oluşturduklarında aldığı adanmış BIR Azure ad örneğidir. Her Azure AD kiracısı farklı ve diğer Azure AD kiracılarından ayrıdır ve kendi iş ve okul kimliklerine ve uygulama kayıtlarına sahiptir.
 
 Zaten bir Azure AD kiracınız yoksa, bir tane oluşturmak için bu yönergeleri izleyin.
 

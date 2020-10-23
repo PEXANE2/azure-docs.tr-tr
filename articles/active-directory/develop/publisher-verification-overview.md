@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258158"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363428"
 ---
 # <a name="publisher-verification"></a>Yayımcı doğrulaması
 
@@ -49,7 +49,7 @@ Yayımcı doğrulaması için birkaç önkoşul vardır; bazıları zaten birço
 
 -  Azure AD 'de uygulama kaydında ve Iş Ortağı Merkezi 'nde MPN hesabında değişiklik yapmak için doğrulamayı gerçekleştiren kullanıcı yetkilendirilmelidir. 
 
-    -  Azure AD 'de bu kullanıcı şu [rollerden](../users-groups-roles/directory-assign-admin-roles.md)birine üye olmalıdır: uygulama Yöneticisi, bulut uygulaması Yöneticisi veya genel yönetici. 
+    -  Azure AD 'de bu kullanıcı şu [rollerden](../roles/permissions-reference.md)birine üye olmalıdır: uygulama Yöneticisi, bulut uygulaması Yöneticisi veya genel yönetici. 
 
     -  Iş Ortağı Merkezi 'nde bu kullanıcının şu [rollere](/partner-center/permissions-overview)sahip olması gerekir: MPN Yöneticisi, hesaplar Yöneticisi veya genel yönetici (Bu, Azure AD 'de ana kopyalı bir paylaşılan roldür).
     

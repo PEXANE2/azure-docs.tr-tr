@@ -1,6 +1,6 @@
 ---
-title: Mevcut şirket içi proxy sunucularıyla ve Azure AD ile çalışma | Microsoft Docs
-description: Mevcut şirket içi proxy sunucularıyla çalışmayı ele alır.
+title: Mevcut şirket içi proxy sunucularıyla ve Azure Active Directory çalışma
+description: Azure Active Directory ile mevcut şirket içi proxy sunucularıyla çalışmayı ele alır.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077518"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208014"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -114,15 +113,15 @@ Aşağıdaki URL 'Lere erişime izin ver:
 | URL | Nasıl kullanılır? |
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Bağlayıcı ile uygulama proxy 'Si bulut hizmeti arasındaki iletişim |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Bağlayıcı, sertifikaları doğrulamak için bu URL 'Leri kullanır |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | Bağlayıcı, sertifikaları doğrulamak için bu URL 'Leri kullanır. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
 
-Güvenlik duvarınız veya proxy 'niz DNS izin verilenler listelerini yapılandırmanıza izin veriyorsa, \* . msappproxy.net ve. ServiceBus.Windows.net bağlantılarına izin verebilirsiniz \* . Aksi takdirde, [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
+Güvenlik duvarınız veya proxy 'niz DNS izin verilenler listelerini yapılandırmanıza izin veriyorsa, \* . msappproxy.net ve. ServiceBus.Windows.net bağlantılarına izin verebilirsiniz \* .
 
 FQDN ile bağlantıya izin veremiyorum ve bunun yerine IP aralıklarını belirtmeniz gerekiyorsa, şu seçenekleri kullanın:
 
 * Bağlayıcının tüm hedeflere giden erişimine izin verin.
-* Bağlayıcının tüm [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com//download/details.aspx?id=41653)giden erişimine izin verin. Azure veri merkezi IP aralıkları listesini kullanmayla ilgili zorluk, haftalık olarak güncelleştirilir. Erişim kurallarınızın uygun şekilde güncelleştirildiğinden emin olmak için bir işlem yerine getirmeniz gerekir. Yalnızca IP adreslerinin bir alt kümesini kullanmak yapılandırmanızın kesintiye neden olabilir.
+* Bağlayıcının tüm Azure veri merkezi IP aralıklarına giden erişimine izin verin. Azure veri merkezi IP aralıkları listesini kullanmayla ilgili zorluk, haftalık olarak güncelleştirilir. Erişim kurallarınızın uygun şekilde güncelleştirildiğinden emin olmak için bir işlem yerine getirmeniz gerekir. Yalnızca IP adreslerinin bir alt kümesini kullanmak yapılandırmanızın kesintiye neden olabilir. En son Azure veri merkezi IP aralıklarını indirmek için şuraya gidin [https://download.microsoft.com](https://download.microsoft.com) ve "Azure IP aralıkları ve hizmet etiketleri" için arama yapın. İlgili bulutu seçtiğinizden emin olun. Örneğin, genel bulut IP aralıkları, "Azure IP aralıkları ve hizmet etiketleri – genel bulut" ile bulunabilir. ABD hükümeti bulutu, "Azure IP aralıkları ve hizmet etiketleri – US hükümeti bulutu" aranarak bulunabilir.
 
 #### <a name="proxy-authentication"></a>Proxy kimlik doğrulaması
 

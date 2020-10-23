@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097346"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330045"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Bulut Çözüm Sağlayıcıları (CSP) için ExpressRoute
 Microsoft, geleneksel satıcılar veya dağıtımcıların (CSP), yeni hizmetler geliştirmeye yatırım yapmaya gerek kalmadan müşterileriniz için hızlı bir şekilde yeni hizmetler ve çözümler sağlayabilmesi amacıyla hiper ölçekli hizmetler sağlar. Bulut Çözüm Sağlayıcısının (CSP) bu hizmetleri doğrudan yönetebilmesini sağlamak için Microsoft, CSP’nin Microsoft Azure kaynaklarını müşterilerinizin adına yönetebilmesine olanak sağlayan programlar ve API’ler sunar. Bu kaynaklardan biri de ExpressRoute’dur. ExpressRoute, CSP’nin var olan Azure hizmetlerine bağlanmasına olanak sağlar. ExpressRoute, Azure 'daki hizmetlere yönelik yüksek hızlı bir özel iletişim bağlantıdır. 
@@ -28,7 +28,7 @@ ExpressRoute, tek bir müşterinin aboneliğine bağlı olan ve birden fazla mü
 Microsoft Azure tarafından sağlanan ve müşterilerinize sunabileceğiniz hizmetlerin sayısı gün geçtikçe artıyor. ExpressRoute, Microsoft Azure ortamına yüksek hızlı düşük gecikme süresi erişimi sağlayarak size ve müşterilerinizin bu hizmetlerden yararlanmasını sağlar.
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure yönetimi
-Microsoft, kendi hizmet yönetimi sistemlerinizle programlı tümleştirme sağlayarak Azure müşteri aboneliklerini yönetmek için CSP 'Leri API 'Ler sağlar. Desteklenen yönetim özelliklerini [burada](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx) bulabilirsiniz.
+Microsoft, kendi hizmet yönetimi sistemlerinizle programlı tümleştirme sağlayarak Azure müşteri aboneliklerini yönetmek için CSP 'Leri API 'Ler sağlar. Desteklenen yönetim özelliklerini [burada](/previous-versions/windows/mt844538(v=win.10)) bulabilirsiniz.
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure kaynak yönetimi
 Müşterinizle aranızdaki sözleşmeye bağlı olarak aboneliğin nasıl yönetileceği belirlenir. CSP, kaynakların oluşturulmasını ve bakımını doğrudan yönetebilir veya müşteri, Microsoft Azure aboneliğinin kontrolünü sağlayarak Azure kaynaklarını gereksinim duydukları gibi oluşturabilir. Müşteriniz Microsoft Azure aboneliklerinde kaynak oluşturmayı yönetirse şu iki modelden birini kullanır: "doğrudan*bağlantı*" modeli veya "*doğrudan*" modeli. Bu modeller aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.  
@@ -60,7 +60,7 @@ Bu bağlantı senaryosu, müşterinin doğrudan veya müşteri tarafından kısm
 
 Bu iki seçenek arasındaki seçimler, müşterinizin ihtiyaçlarına ve Azure hizmetleri sağlamak için geçerli gereksinimlerinize göre yapılır. Bu modellere ve ilişkili rol tabanlı erişim denetimine, ağlara ve kimlik tasarımı desenlerine ilişkin ayrıntılar aşağıdaki linklerde ele alınmaktadır:
 
-* **Azure rol tabanlı erişim denetimi (Azure RBAC)** – RBAC Azure Active Directory tabanlıdır.  Azure RBAC hakkında daha fazla bilgi için [buraya](../role-based-access-control/role-assignments-portal.md)bakın.
+* **Azure rol tabanlı erişim denetimi (Azure RBAC)** – azure RBAC Azure Active Directory tabanlıdır.  Azure RBAC hakkında daha fazla bilgi için [buraya](../role-based-access-control/role-assignments-portal.md)bakın.
 * **Ağlar** – Microsoft Azure’da ağlarla ilgili çeşitli konuları kapsar.
 * **Azure Active Directory (Azure AD)** – Azure ad, Microsoft Azure ve üçüncü taraf SaaS uygulamaları için kimlik yönetimini sağlar. Azure AD hakkında daha fazla bilgi için [buraya](https://azure.microsoft.com/documentation/services/active-directory/)bakın.  
 
@@ -129,6 +129,6 @@ Bulut Çözümü Sağlayıcısı hizmeti, sizlere pahalı altyapı ve özellikle
 
 Aşağıdaki bağlantılarda ek bilgiler bulunabilir:
 
-[Azure Bulut Çözümü Sağlayıcısı programı](https://docs.microsoft.com/azure/cloud-solution-provider).  
+[Azure Bulut Çözümü Sağlayıcısı programı](/azure/cloud-solution-provider).  
 [Bir Bulut Çözümü Sağlayıcısı olmaya hazırlanma](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch).  
 [Microsoft Bulut Çözümü Sağlayıcısı kaynakları](https://partner.microsoft.com/solutions/cloud-reseller-resources).

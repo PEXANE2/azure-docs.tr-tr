@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71c84b35c001be7fafdc2df53014050ae21dec63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941559"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320197"
 ---
 # <a name="get-azure-arc-enabled-data-services-logs"></a>Azure Arc etkin veri Hizmetleri günlüklerini al
 
@@ -22,48 +22,60 @@ ms.locfileid: "90941559"
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure Arc etkin veri Hizmetleri günlüklerini almak için Azure Data CLI aracına ihtiyacınız olacaktır. [Yükleme yönergeleri](./install-client-tools.md)
+Devam etmeden önce şunları yapmanız gerekir:
 
-Azure Arc etkin veri Hizmetleri denetleyicisi hizmetinde yönetici olarak oturum açabiliyor olmanız gerekir.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Yükleme yönergeleri](./install-client-tools.md).
+* Azure Arc etkin veri Hizmetleri denetleyicisinde oturum açmak için bir yönetici hesabı.
 
 ## <a name="get-azure-arc-enabled-data-services-logs"></a>Azure Arc etkin veri Hizmetleri günlüklerini al
 
-Sorun giderme amacıyla tüm yığınların veya belirli yığınların tamamında Azure Arc 'ın etkin olduğu veri Hizmetleri günlüklerini alabilirsiniz.  Bunu, komutu gibi standart Kubernetes araçlarını kullanarak yapabilirsiniz. bu `kubectl logs` makalede, tüm günlüklerin aynı anda daha kolay bir şekilde alınacağını sağlayan Azure Data CLI aracı kullanılır.
+Sorun giderme amacıyla tüm yığınların veya belirli yığınların tamamında Azure Arc 'ın etkin olduğu veri Hizmetleri günlüklerini alabilirsiniz. Bunu, komutu gibi standart Kubernetes araçlarını kullanarak yapabilirsiniz. bu `kubectl logs` makalede [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , tüm günlüklerin tek seferde daha kolay bir şekilde alınacağını sağlayan aracı kullanacaksınız.
 
-İlk olarak, veri denetleyicisinde oturum açtığınızdan emin olun.
+1. Veri denetleyicisinde bir yönetici hesabıyla oturum açın.
 
-```console
-azdata login
-```
+   ```console
+   azdata login
+   ```
 
-Ardından günlüklerin dökümünü almak için aşağıdaki komutu çalıştırın:
-```console
-azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+2. Günlüklerin dökümünü almak için aşağıdaki komutu çalıştırın:
 
-#Example:
-#azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
-```
+   ```console
+   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```
 
-Günlük dosyaları, varsayılan olarak ' logs ' adlı bir alt dizinde geçerli çalışma dizininde oluşturulur.  Parametresini kullanarak günlük dosyalarını farklı bir dizine aktarabilirsiniz `--target-folder` .
+   Örneğin:
 
-Parametresini atlayarak dosyaları sıkıştırmayı seçebilirsiniz `--skip-compress` .
+   ```console
+   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```
 
-' I atlayarak bellek dökümlerini tetikleyip dahil edebilirsiniz `--exclude-dumps` , ancak Microsoft desteği bellek dökümlerini istemediği takdirde bu önerilmez.  Bellek dökümü almak için veri denetleyicisi ayarının `allowDumps` `true` veri denetleyicisi oluşturma zamanına ayarlanmış olması gerekir.
+Veri denetleyicisi, adlı bir alt dizinde geçerli çalışma dizininde bulunan günlük dosyalarını oluşturur `logs` . 
 
-İsteğe bağlı olarak yalnızca belirli bir pod ( `--pod` ) veya Container () için günlüklere ait günlükleri toplamaya yönelik filtreyi seçebilirsiniz `--container` .
+## <a name="options"></a>Seçenekler
 
-Ayrıca, `--resource-kind` ve parater ' ı geçirerek belirli bir özel kaynak için günlükleri toplamaya yönelik filtreyi seçebilirsiniz `--resource-name` .  `resource-kind`Parametre değeri, komutu tarafından alınabilecek özel kaynak tanımı adlarından biri olmalıdır `kubectl get customresourcedefinition` .
+`azdata arc dc debug copy-logs` çıktıyı yönetmek için aşağıdaki seçenekleri sağlar.
+
+* Günlük dosyalarını parametresini kullanarak farklı bir dizine çıktı `--target-folder` .
+* Parametreyi atlayarak dosyaları sıkıştırın `--skip-compress` .
+* ' İ atlayarak bellek dökümlerini tetikleyip dahil edin `--exclude-dumps` . Microsoft Desteği bellek dökümlerini istemediği takdirde bu yöntem önerilmez. Bellek dökümü almak için veri denetleyicisi ayarının `allowDumps` `true` veri denetleyicisi oluşturma zamanına ayarlanmış olması gerekir.
+* Yalnızca belirli bir pod ( `--pod` ) veya Container () için bir ada göre günlükleri toplamak üzere filtreleyin `--container` .
+* Ve parametresini geçirerek belirli bir özel kaynağın günlüklerini toplamak için filtreleyin `--resource-kind` `--resource-name` . `resource-kind`Parametre değeri, komut tarafından alınabilecek özel kaynak tanımı adlarından biri olmalıdır `kubectl get customresourcedefinition` .
+
+Bu parametrelerle, `<parameters>` Aşağıdaki örnekteki öğesini değiştirebilirsiniz. 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```
 
-#Example
+Örneğin:
+
+```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Klasör hiyerarşisi örneği.  Klasör hiyerarşisinin Pod ad adına ve sonra kapsayıcıya göre ve sonra kapsayıcı içindeki dizin hiyerarşisine göre düzenlendiğini unutmayın.
+Klasör hiyerarşisi örneği. Klasör hiyerarşisi Pod adı, ardından kapsayıcı ve sonra kapsayıcı içindeki dizin hiyerarşisine göre düzenlenir.
 
-```console
+```output
 <export directory>
 ├───debuglogs-arc-20200827-180403
 │   ├───bootstrapper-vl8j2
@@ -181,3 +193,7 @@ Klasör hiyerarşisi örneği.  Klasör hiyerarşisinin Pod ad adına ve sonra k
             ├───journal
             └───openvpn
 ```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[azdata yay DC hata ayıklama kopyası-Günlükler](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

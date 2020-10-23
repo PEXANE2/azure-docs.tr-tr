@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974414"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126746"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Veri dışa aktarma kullanarak IoT verilerini bulut hedeflerine dışa aktarma (eski)
 
@@ -30,7 +30,7 @@ Bu makalede, Azure IoT Central 'da veri dışarı aktarma özelliğinin nasıl k
 > [!Note]
 > Veri dışarı aktarmayı açtığınızda, bu andan itibaren yalnızca verileri alırsınız. Şu anda veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için, verilerin dışarı aktarılmasını erken açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 IoT Central uygulamanızda yönetici olmanız veya veri dışa aktarma izinlerinizin olması gerekir.
 
@@ -63,7 +63,7 @@ Dışarı aktarma hedefi olarak Service Bus seçtiğinizde, kuyruklar ve konular
 
 ' A dışa aktarılacak mevcut bir Azure depolama hesabınız yoksa, aşağıdaki adımları izleyin:
 
-1. [Azure Portal yeni bir depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)oluşturun. Yeni [Azure Blob depolama hesapları](https://aka.ms/blobdocscreatestorageaccount) veya [Azure Data Lake Storage v2 depolama hesapları](../../storage/blobs/data-lake-storage-quickstart-create-account.md)oluşturma hakkında daha fazla bilgi edinebilirsiniz. Veri dışa aktarma, yalnızca blok bloblarını destekleyen depolama hesaplarına veri yazabilir. Aşağıdaki listede, bilinen uyumlu depolama hesabı türleri gösterilmektedir:
+1. [Azure Portal yeni bir depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)oluşturun. Yeni [Azure Blob depolama hesapları](../../storage/blobs/storage-quickstart-blobs-portal.md) veya [Azure Data Lake Storage v2 depolama hesapları](../../storage/common/storage-account-create.md)oluşturma hakkında daha fazla bilgi edinebilirsiniz. Veri dışa aktarma, yalnızca blok bloblarını destekleyen depolama hesaplarına veri yazabilir. Aşağıdaki listede, bilinen uyumlu depolama hesabı türleri gösterilmektedir:
 
     |Performans katmanı|Hesap Türü|
     |-|-|
@@ -156,7 +156,7 @@ Aşağıdaki örnek, bir olay hub 'ından veya Service Bus sırasından veya kon
 
 Bu ileti gönderme cihazının cihaz KIMLIĞINI içermez.
 
-Azure Stream Analytics sorgusundaki ileti verilerinden cihaz KIMLIĞINI almak için [Getmetadatapropertyvalue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) işlevini kullanın. Bir örnek için, [Stream Analytics, Azure işlevleri ve SendGrid kullanarak azure IoT Central özel kurallarla genişletme](./howto-create-custom-rules.md)içindeki sorguya bakın.
+Azure Stream Analytics sorgusundaki ileti verilerinden cihaz KIMLIĞINI almak için [Getmetadatapropertyvalue](/stream-analytics-query/getmetadatapropertyvalue) işlevini kullanın. Bir örnek için, [Stream Analytics, Azure işlevleri ve SendGrid kullanarak azure IoT Central özel kurallarla genişletme](./howto-create-custom-rules.md)içindeki sorguya bakın.
 
 Azure Databricks veya Apache Spark çalışma alanındaki cihaz KIMLIĞINI almak için [SystemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)' i kullanın. Bir örnek için, [Azure Databricks kullanarak özel analizler Ile Azure IoT Central 'Yi genişleten](./howto-create-custom-analytics.md)Databricks çalışma alanına bakın.
 
@@ -557,7 +557,7 @@ Bu örnek anlık görüntü, blob depolamada cihaz ve özellik verilerini içere
 
 Önizleme uygulamanızda *cihazlar* ve *cihaz şablonları* akışları açık olan bir veri dışa aktarma Işlemi varsa, **30 Haziran 2020 tarihine**kadar dışarı aktarmayı güncelleştirin. Bu gereksinim, Azure Blob depolama, Azure Event Hubs ve Azure Service Bus dışarı aktarmalar için geçerlidir.
 
-1 Şubat 2020 ' den başlayarak, cihazlar ve cihaz şablonları etkin olan uygulamalardaki tüm yeni dışarı aktarımlar yukarıda açıklanan veri biçimine sahip olacaktır. Bu tarihten önce oluşturulan tüm dışarı aktarımlar, 30 Haziran 2020 ' e kadar eski veri biçiminde kalır. bu zaman, bu dışarı aktarmalar otomatik olarak yeni veri biçimine geçirilir. Yeni veri biçimi [cihaz](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [cihaz özelliği](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [cihaz bulutu özelliği](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)ve IoT Central genel API 'sindeki [cihaz şablonu](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) nesneleriyle eşleşir.
+1 Şubat 2020 ' den başlayarak, cihazlar ve cihaz şablonları etkin olan uygulamalardaki tüm yeni dışarı aktarımlar yukarıda açıklanan veri biçimine sahip olacaktır. Bu tarihten önce oluşturulan tüm dışarı aktarımlar, 30 Haziran 2020 ' e kadar eski veri biçiminde kalır. bu zaman, bu dışarı aktarmalar otomatik olarak yeni veri biçimine geçirilir. Yeni veri biçimi [cihaz](/rest/api/iotcentral/devices/get), [cihaz özelliği](/rest/api/iotcentral/devices/getproperties), [cihaz bulutu özelliği](/rest/api/iotcentral/devices/getcloudproperties)ve IoT Central genel API 'sindeki [cihaz şablonu](/rest/api/iotcentral/devicetemplates/get) nesneleriyle eşleşir.
 
 **Cihazlar**için eski veri biçimi ve yeni veri biçimi arasındaki önemli farklar şunlardır:
 - `@id` cihaz kaldırıldığında, `deviceId` olarak yeniden adlandırılır `id` 

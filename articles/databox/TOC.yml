@@ -1,5 +1,5 @@
 - name: Azure Data Box Belgeleri - Çevrimdışı Aktarım
-  href: /azure/databox
+  href: ./index.yml
   items:
     - name: Data Box
       items:
@@ -103,7 +103,7 @@
             - name: Geçiş
               items:
                 - name: SharePoint Online’a
-                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                  href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%252fazure%252fdatabox%252fcontext%252fcontext
                 - name: Azure Dosya Eşitleme’ye
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS Mağazası’ndan
@@ -231,7 +231,7 @@
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Başvuru
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: /cli/azure/ext/databox/databox
         - name: Azure PowerShell
           href: /powershell/module/az.databox

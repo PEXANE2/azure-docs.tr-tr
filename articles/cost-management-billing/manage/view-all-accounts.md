@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360710"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132134"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portalındaki faturalama hesapları ve kapsamlar
 
@@ -27,7 +27,7 @@ Azure portal aşağıdaki ödeme hesapları türünü destekler:
 
 - **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/) kaydolan belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir. Microsoft Müşteri Sözleşmesi kapsamında en fazla 20 aboneliğiniz olabilir. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mca-overview.md).
 
-- **Microsoft İş Ortağı Sözleşmesi**: Müşterilerini yeni ticaret deneyiminde yönetmelerine olanak tanımak için Bulut Çözümü Sağlayıcısı (CSP) iş ortakları için bir Microsoft İş Ortağı Sözleşmesi’ne yönelik faturalama hesabı oluşturulur. Azure portalındaki faturalama hesabını yönetmek için iş ortaklarının en az bir müşterisi olan bir [Azure planına](https://docs.microsoft.com/partner-center/purchase-azure-plan) sahip olması gerekir. Daha fazla bilgi için bkz. [Microsoft İş Ortağı Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mpa-overview.md).
+- **Microsoft İş Ortağı Sözleşmesi**: Müşterilerini yeni ticaret deneyiminde yönetmelerine olanak tanımak için Bulut Çözümü Sağlayıcısı (CSP) iş ortakları için bir Microsoft İş Ortağı Sözleşmesi’ne yönelik faturalama hesabı oluşturulur. Azure portalındaki faturalama hesabını yönetmek için iş ortaklarının en az bir müşterisi olan bir [Azure planına](/partner-center/purchase-azure-plan) sahip olması gerekir. Daha fazla bilgi için bkz. [Microsoft İş Ortağı Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mpa-overview.md).
 
 Ödeme hesabınızın türünü belirlemek için bkz. [Ödeme hesabınızın türünü denetleme](#check-the-type-of-your-account).
 

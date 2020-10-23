@@ -6,10 +6,8 @@
       href: introduction.md
 - name: Hızlı başlangıç
   items:
-    - name: Dağıtım öncesi süreç
+    - name: 0 - Dağıtımı planlama
       href: production-ready-deployment-steps.md
-    - name: Dağıtım öncesi denetim listesi
-      href: pre-deployment-checklist.md
     - name: 1 - Azure VMware Çözümü dağıtma
       href: deploy-azure-vmware-solution.md
     - name: 2 - Şirket içine bağlanma
@@ -92,6 +90,10 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: VMware Horizon dağıtma
           href: azure-vmware-solution-horizon.md
+    - name: VMware ekosistemi
+      items:
+        - name: VM’ler için yedekleme çözümleri
+          href: ecosystem-back-up-vms.md
 - name: Kaynaklar
   items:
     - name: Sorun giderme
@@ -100,3 +102,7 @@
           href: fix-deployment-provisioning-failures.md
     - name: SSS
       href: faq.md
+- name: Başvuru
+  items:
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.vmware/'

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
-ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daf4fb2ab9650c3a68b8862fd391817d5ff626b0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81730006"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147771"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT Hub 'ından buluttan cihaza iletileri gönderme
 
@@ -98,7 +98,7 @@ Gövde, her biri aşağıdaki özelliklere sahip olan JSON seri hale getirilmiş
 | EnqueuedTimeUtc    | İleti sonucunun ne zaman gerçekleştiğini belirten zaman damgası (örneğin, Merkez geri bildirim iletisini aldı veya özgün iletinin zaman aşımına uğradı) |
 | Originalmessageıd  | Bu geri bildirim bilgilerinin ilişkili olduğu buluttan cihaza mesajın *MessageID* |
 | Durum         | IoT Hub tarafından oluşturulan geri bildirim iletilerinde kullanılan gerekli bir dize: <br/> *Başarılı* <br/> *Süresi Doldu* <br/> *DeliveryCountExceeded* <br/> *Reddedildi* <br/> *Temizlenir* |
-| Açıklama        | *StatusCode* için dize değerleri |
+| Description        | *StatusCode* için dize değerleri |
 | DeviceId           | Bu geri bildirim parçasının ilişkili olduğu buluttan cihaza yönelik iletinin hedef cihazının *DeviceID* 'i |
 | Devicegenerationıd | Bu geri bildirim parçasının ilişkili olduğu buluttan cihaza ileti hedef cihazının *Devicegenerationıd 'si* |
 
@@ -147,7 +147,7 @@ Yapılandırma seçeneklerini aşağıdaki yollarla ayarlayabilirsiniz:
 
     ![Portalda, buluttan cihaza mesajlaşma için yapılandırma seçeneklerini ayarlama](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: [az IoT Hub Update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) komutunu kullanın:
+* **Azure CLI**: [az IoT Hub Update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) komutunu kullanın:
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2baccec75c7b525c0837cebd9d828dff3a79543
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979483"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150182"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma
 
@@ -18,7 +18,7 @@ ms.locfileid: "90979483"
 
 :::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Ruby on rayın ekran görüntüsü görevler başlıklı uygulama örneği.":::
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure’da PostgreSQL veritabanı oluşturma
@@ -108,7 +108,7 @@ Rails sunucusunu durdurmak için terminale `Ctrl + C` yazın.
 
 ## <a name="create-postgres-in-azure"></a>Azure'da Postgres oluşturma
 
-Bu adımda, [PostgreSQL için Azure Veritabanı](/azure/postgresql/) içinde bir Postgres veritabanı oluşturursunuz. Daha sonra, Ruby on Rails uygulamasını bu veritabanına bağlanacak şekilde yapılandırırsınız.
+Bu adımda, [PostgreSQL için Azure Veritabanı](../postgresql/index.yml) içinde bir Postgres veritabanı oluşturursunuz. Daha sonra, Ruby on Rails uygulamasını bu veritabanına bağlanacak şekilde yapılandırırsınız.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -117,7 +117,7 @@ Bu adımda, [PostgreSQL için Azure Veritabanı](/azure/postgresql/) içinde bir
 ## <a name="create-postgres-database-in-azure"></a>Azure 'da Postgres veritabanı oluşturma
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
 Bu bölümde, PostgreSQL için Azure veritabanı sunucusu ve veritabanı oluşturacaksınız. Başlamak için, `db-up` uzantıyı aşağıdaki komutla birlikte yüklemelisiniz:
 
@@ -237,7 +237,7 @@ git commit -m "database.yml updates"
 
 Uygulamanız dağıtılmaya hazırdır.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 Bu adımda, Postgres'e bağlı Rails uygulamasını Azure App Service'e dağıtırsınız.
 

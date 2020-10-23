@@ -23,6 +23,10 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
+    - name: Ağınızı hazırlama
+      href: quickstart-prepare-network-for-defender-for-iot.md
+    - name: Algılayıcı ekleme
+      href: quickstart-onboard-sensors.md
     - name: Azure RTOS için Güvenlik Modülü’nü yapılandırma
       href: quickstart-azure-rtos-security-module.md
     - name: IoT için Azure Defender’ı IoT Hub’a ekleme
@@ -63,6 +67,10 @@
       href: concept-pricing.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Algılayıcıları görüntüleme ve yönetme
+      href: how-to-deploy-view-sensors.md
+    - name: Şirket içi yönetim konsolunu dağıtma
+      href: how-to-deploy-management-console-appliance.md
     - name: Azure RTOS için Güvenlik Modülü ile çalışma
       href: how-to-azure-rtos-security-module.md
     - name: Hangi aracıyı dağıtmalıyım?
@@ -95,14 +103,16 @@
       href: how-to-investigate-device.md
     - name: Azure Sentinel’e bağlanma
       href: how-to-configure-with-sentinel.md
-    - name: Çözümünüzü özelleştirme
+    - name: Aracınızı özelleştirme
       href: how-to-customize-solution.md
 - name: Başvurular
   items:
     - name: Azure RTOS için Güvenlik Modülü API’si
       href: azure-rtos-security-module-api.md
-    - name: Sık sorulan sorular
+    - name: Sık sorulan sorular - hizmet
       href: resources-frequently-asked-questions.md
+    - name: Sık sorulan sorular - aracı
+      href: resources-agent-frequently-asked-questions.md
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: Kaynaklar

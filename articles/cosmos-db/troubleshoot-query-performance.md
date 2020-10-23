@@ -4,27 +4,27 @@ description: Azure Cosmos DB SQL sorgu sorunlarını belirlemeyi, tanılamayı v
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 09/12/2020
+ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089998"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277168"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 
-Bu makalede, Azure Cosmos DB sorgularda sorun giderme için önerilen genel bir yaklaşım gösterilmektedir. Bu makalede özetlenen adımları olası sorgu sorunlarına karşı kapsamlı bir savunma olarak düşünmemeniz durumunda, en sık karşılaşılan performans ipuçlarını buradan sunuyoruz. Azure Cosmos DB Core (SQL) API'sinde yavaş veya pahalı sorgularla ilgili sorunları gidermek için başlangıç noktası olarak bu makaleyi kullanmalısınız. Ayrıca yavaş çalışan veya önemli miktarda aktarım hızı kullanan sorguları belirlemek için [tanılama günlüklerini](cosmosdb-monitor-resource-logs.md) de kullanabilirsiniz.
+Bu makalede, Azure Cosmos DB sorgularda sorun giderme için önerilen genel bir yaklaşım gösterilmektedir. Bu makalede özetlenen adımları olası sorgu sorunlarına karşı kapsamlı bir savunma olarak düşünmemeniz durumunda, en sık karşılaşılan performans ipuçlarını buradan sunuyoruz. Azure Cosmos DB Core (SQL) API'sinde yavaş veya pahalı sorgularla ilgili sorunları gidermek için başlangıç noktası olarak bu makaleyi kullanmalısınız. Ayrıca yavaş çalışan veya önemli miktarda aktarım hızı kullanan sorguları belirlemek için [tanılama günlüklerini](cosmosdb-monitor-resource-logs.md) de kullanabilirsiniz. MongoDB için Azure Cosmos DB API kullanıyorsanız, [MongoDB sorgu sorun giderme kılavuzu için Azure Cosmos DB API 'sini](mongodb-troubleshoot-query.md) kullanmanız gerekir
 
-Azure Cosmos DB içindeki sorgu iyileştirmelerini büyük ölçüde kategorilere ayırabilirsiniz:
+Azure Cosmos DB sorgu iyileştirmeleri, genel olarak aşağıdaki gibi kategorilere ayrılmıştır:
 
 - Sorgunun Istek birimi (RU) ücretlendirmesini azaltan iyileştirmeler
 - Gecikme süresini azaltan iyileştirmeler
 
-Bir sorgunun RU ücreti düşürüyoruz, gecikme süresini de neredeyse tamamen azaltabilirsiniz.
+Bir sorgunun RU ücreti düşürüyoruz, genellikle gecikmeyi de azaltabilirsiniz.
 
 Bu makalede, [beslenme veri kümesini](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)kullanarak yeniden oluşturabileceğiniz örnekler sağlanmaktadır.
 
@@ -191,7 +191,7 @@ Dizin oluşturma ilkesi güncelleştirildi:
 
 **Ru ücreti:** 2,98 Rus
 
-Herhangi bir zamanda, yazma kullanılabilirliği veya performans üzerinde hiçbir etkisi olmadan dizin oluşturma ilkesine özellikler ekleyebilirsiniz. Dizine yeni bir özellik eklerseniz, özelliği kullanan sorgular hemen yeni kullanılabilir dizini kullanacaktır. Sorgu oluşturulurken yeni dizin kullanılır. Bu nedenle, dizin yeniden oluşturma işlemi devam ederken sorgu sonuçları tutarsız olabilir. Yeni bir özellik dizine eklendiğinde, dizin yeniden oluşturma işlemi sırasında yalnızca mevcut dizinleri kullanan sorgular etkilenmez. [Dizin dönüştürme ilerlemesini izleyebilirsiniz](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Herhangi bir zamanda, yazma veya okuma kullanılabilirliği üzerinde hiçbir etkisi olmadan dizin oluşturma ilkesine özellikler ekleyebilirsiniz. [Dizin dönüştürme ilerlemesini izleyebilirsiniz](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Hangi sistem işlevlerinin Dizin kullandığını anlayın
 
@@ -469,7 +469,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 ## <a name="optimizations-that-reduce-query-latency"></a>Sorgu gecikmesini azaltan iyileştirmeler
 
-Birçok durumda, sorgu gecikmesi hala çok yüksek olduğunda RU ücreti kabul edilebilir durumda olabilir. Aşağıdaki bölümler sorgu gecikmesini azaltmaya yönelik ipuçlarına genel bakış sunar. Aynı sorguyu aynı veri kümesinde birden çok kez çalıştırırsanız, her seferinde aynı RU ücretine sahip olur. Ancak sorgu gecikmesi sorgu yürütmeleri arasında farklılık gösterebilir.
+Birçok durumda, sorgu gecikmesi hala çok yüksek olduğunda RU ücreti kabul edilebilir durumda olabilir. Aşağıdaki bölümler sorgu gecikmesini azaltmaya yönelik ipuçlarına genel bakış sunar. Aynı sorguyu aynı veri kümesinde birden çok kez çalıştırırsanız, genellikle her seferinde aynı RU ücretine sahip olur. Ancak sorgu gecikmesi sorgu yürütmeleri arasında farklılık gösterebilir.
 
 ### <a name="improve-proximity"></a>Yakınlığı geliştirme
 

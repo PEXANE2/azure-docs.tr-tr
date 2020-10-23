@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 830e72a8de047b0219cfa0be264fad2e1f83beb2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302534"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142620"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Azure CLı kullanarak IoT Hub dosya yüklemelerini yapılandırma
 
@@ -25,17 +25,17 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Etkin bir Azure hesabı. Hesabınız yoksa, yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* Azure IoT Hub 'ı. IoT Hub 'ınız yoksa, [portalı kullanarak bir IoT Hub](iot-hub-create-through-portal.md)'ı oluşturmak veya oluşturmak için [ `az iot hub create` komutunu](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) kullanabilirsiniz.
+* Azure IoT Hub 'ı. IoT Hub 'ınız yoksa, [portalı kullanarak bir IoT Hub](iot-hub-create-through-portal.md)'ı oluşturmak veya oluşturmak için [ `az iot hub create` komutunu](/cli/azure/iot/hub#az-iot-hub-create) kullanabilirsiniz.
 
-* Azure Depolama hesabı. Azure depolama hesabınız yoksa, Azure CLı kullanarak bir tane oluşturabilirsiniz. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md).
+* Azure Depolama hesabı. Azure depolama hesabınız yoksa, Azure CLı kullanarak bir tane oluşturabilirsiniz. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Oturum açın ve Azure hesabınızı ayarlayın
 
 Azure hesabınızda oturum açın ve aboneliğinizi seçin.
 
-1. Komut isteminde [oturum açma komutunu](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) çalıştırın:
+1. Komut isteminde [oturum açma komutunu](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) çalıştırın:
 
     ```azurecli
     az login
@@ -43,7 +43,7 @@ Azure hesabınızda oturum açın ve aboneliğinizi seçin.
 
     Kodu kullanarak kimlik doğrulaması gerçekleştirmek için yönergeleri uygulayın ve bir web tarayıcısı üzerinden Azure hesabınızda oturum açın.
 
-2. Birden fazla Azure aboneliğiniz varsa Azure’da oturum açtığınızda, kimlik bilgilerinizle ilişkili tüm Azure hesaplarınıza erişim izni elde edersiniz. Kullanabileceğiniz [Azure hesaplarını listelemek için aşağıdaki komutu](https://docs.microsoft.com/cli/azure/account) kullanın:
+2. Birden fazla Azure aboneliğiniz varsa Azure’da oturum açtığınızda, kimlik bilgilerinizle ilişkili tüm Azure hesaplarınıza erişim izni elde edersiniz. Kullanabileceğiniz [Azure hesaplarını listelemek için aşağıdaki komutu](/cli/azure/account) kullanın:
 
     ```azurecli
     az account list
@@ -144,5 +144,5 @@ Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için bu bağlant�
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
 * [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/quickstart-linux.md)
 * [IoT çözümünüzü baştan sona güvenli hale getirin](../iot-fundamentals/iot-security-ground-up.md)

@@ -7,17 +7,17 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566186"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202064"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak bir ExpressRoute devresi oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure portalı](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)
@@ -25,7 +25,7 @@ ms.locfileid: "89566186"
 > * [PowerShell (klasik)](expressroute-howto-circuit-classic.md)
 >
 
-Azure PowerShell kullanarak Azure Resource Manager şablonu dağıtarak bir ExpressRoute devresi oluşturmayı öğrenin. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi belgeleri](/azure/azure-resource-manager/) ve [şablon başvurusu](/azure/templates/microsoft.network/expressroutecircuits).
+Azure PowerShell kullanarak Azure Resource Manager şablonu dağıtarak bir ExpressRoute devresi oluşturmayı öğrenin. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi belgeleri](../azure-resource-manager/index.yml) ve [şablon başvurusu](/azure/templates/microsoft.network/expressroutecircuits).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

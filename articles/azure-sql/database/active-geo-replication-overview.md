@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445054"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426331"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -83,7 +83,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 > Birincil üzerinde şema güncelleştirmeleri varsa, ikincil veritabanında günlük yeniden yürütme gecikiyor. İkinci, ikincil veritabanında bir şema kilidi gerektirir.
 
 > [!IMPORTANT]
-> Birincil ile aynı bölgede ikincil bir veritabanı oluşturmak için Coğrafi çoğaltmayı kullanabilirsiniz. Aynı bölgedeki bir salt okunurdur iş yüklerini yük dengelemek için bu ikincili kullanabilirsiniz. Ancak, aynı bölgedeki bir ikincil veritabanı ek hata esnekliği sağlamaz ve bu nedenle olağanüstü durum kurtarma için uygun bir yük devretme hedefi değildir. Ayrıca, kullanılabilirlik alanı yalıtımının garanti etmez. Kullanılabilirlik alanı yalıtımına ulaşmak için Iş açısından kritik veya Premium hizmet katmanını [bölge yedekli yapılandırmasıyla](high-availability-sla.md#zone-redundant-configuration) kullanın.
+> Birincil ile aynı bölgede ikincil bir veritabanı oluşturmak için Coğrafi çoğaltmayı kullanabilirsiniz. Aynı bölgedeki bir salt okunurdur iş yüklerini yük dengelemek için bu ikincili kullanabilirsiniz. Ancak, aynı bölgedeki bir ikincil veritabanı ek hata esnekliği sağlamaz ve bu nedenle olağanüstü durum kurtarma için uygun bir yük devretme hedefi değildir. Ayrıca, kullanılabilirlik alanı yalıtımının garanti etmez. Kullanılabilirlik alanı yalıtımına ulaşmak için Iş açısından kritik veya Premium hizmet katmanını [bölge yedekli yapılandırma](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) veya genel amaçlı hizmet katmanı [bölge yedekli yapılandırmasıyla](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) kullanın.
 >
 
 - **Planlı yük devretme**
@@ -132,7 +132,7 @@ Varsayılan olarak, ikincil öğesinin yedek depolama yedekliği birincil verita
 > Birincil üzerindeki işlem günlüğü hızı, ikincil üzerinde işlem boyutu alt sınır azalmasının ilgisiz olması nedeniyle kısıtlanmayabilir. İkincil öğe, birincili aynı veya daha yüksek bir işlem boyutuna sahip olsa bile, bu tür azaltma meydana gelebilir. Farklı türlerde günlük hızı azaltma için bekleme türleri dahil Ayrıntılar için bkz. [işlem günlüğü oranı İdaresi](resource-limits-logical-server.md#transaction-log-rate-governance).
 
 > [!NOTE]
-> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel önizlemede kullanılabilir. Önizlemede, kaynak veritabanı yerel olarak yedekli veya bölgesel olarak yedekli yedekleme yedeklemesiyle oluşturulduysa, farklı bir Azure bölgesinde ikincil bir veritabanı oluşturmak desteklenmez. 
+> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel kullanıma sunulmuştur. Kaynak veritabanı yerel olarak yedekli veya bölgesel olarak yedekli yedekleme depolama yedekliliği ile oluşturulduğunda, farklı bir Azure bölgesinde ikincil veritabanı oluşturmak desteklenmez. 
 
 SQL veritabanı işlem boyutları hakkında daha fazla bilgi için bkz. [SQL veritabanı hizmet katmanları](purchasing-models.md)nelerdir.
 

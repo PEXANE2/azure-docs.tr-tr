@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87428969"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148826"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub nedir?
 
@@ -40,7 +40,7 @@ IoT Hub, cihazlarınızın veri göndermesi için size güvenli bir iletişim ka
 
 * Cihaz erişimi üzerinde tam denetime sahip olur ve cihaz başına bağlantıları denetleyebilirsiniz.
 
-* [IoT Hub Cihazı Sağlama Hizmeti](https://docs.microsoft.com/azure/iot-dps/), cihaz ilk önyüklenirken otomatik olarak cihazları doğru IoT hub’a sağlar.
+* [IoT Hub Cihazı Sağlama Hizmeti](../iot-dps/index.yml), cihaz ilk önyüklenirken otomatik olarak cihazları doğru IoT hub’a sağlar.
 
 * Birden fazla kimlik doğrulaması türü, çeşitli cihaz özelliklerini destekler:
 
@@ -64,13 +64,13 @@ Yerleşik ileti yönlendirme işlevi size otomatik kurallara dayalı ileti yayma
 
 Eksiksiz, uçtan uca çözümler derlemek için IoT Hub’ı diğer Azure hizmetleriyle tümleştirebilirsiniz. Örneğin, aşağıdakileri kullanın:
 
-* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/): İşletmenizin önemli olaylara güvenilir, ölçeklendirilebilir ve güvenli bir şekilde tepki vermesini sağlamak için.
+* [Azure Event Grid](../event-grid/index.yml): İşletmenizin önemli olaylara güvenilir, ölçeklendirilebilir ve güvenli bir şekilde tepki vermesini sağlamak için.
 
-* [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/): İş süreçlerinizi otomatikleştirmek için.
+* [Azure Logic Apps](../logic-apps/index.yml): İş süreçlerinizi otomatikleştirmek için.
 
 * [Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md): Çözümünüze makine öğrenmesi ve yapay zeka modelleri eklemek için.
 
-* [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/): Cihazlarınızdan veri akışı üzerinde gerçek zamanlı analiz hesaplamaları çalıştırmak için.
+* [Azure Stream Analytics](../stream-analytics/index.yml): Cihazlarınızdan veri akışı üzerinde gerçek zamanlı analiz hesaplamaları çalıştırmak için.
 
 ## <a name="configure-and-control-your-devices"></a>Cihazlarınızı yapılandırma ve denetleme
 
@@ -88,7 +88,7 @@ Yerleşik işlevler dizisiyle IoT Hub’a bağlı cihazlarınızı yönetebilirs
 
 ## <a name="connect-your-devices"></a>Cihazlarınızı bağlama
 
-Cihazlarınız üzerinde çalıştırılan ve IoT Hub ile etkileşim kuran uygulamalar derlemek için [Azure IoT cihaz SDK’sı](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) kitaplıklarını kullanın. Desteklenen platformlar arasında birden çok Linux dağıtımı, Windows ve gerçek zamanlı işletim sistemleri yer alır. Desteklenen diller:
+Cihazlarınız üzerinde çalıştırılan ve IoT Hub ile etkileşim kuran uygulamalar derlemek için [Azure IoT cihaz SDK’sı](./iot-hub-devguide-sdks.md) kitaplıklarını kullanın. Desteklenen platformlar arasında birden çok Linux dağıtımı, Windows ve gerçek zamanlı işletim sistemleri yer alır. Desteklenen diller:
 
 * C
 * C#
@@ -108,7 +108,7 @@ IoT Hub ve cihaz SDK’ları, cihazları bağlamak için aşağıdaki protokolle
 
 Çözümünüz, desteklenen protokollerden birini kullanamıyorsa, özel protokolleri desteklemek için IoT Hub’ı genişletebilirsiniz:
 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)’i kullanarak, edge üzerinde protokol çevirisi gerçekleştirmek için bir alan ağ geçidi oluşturun.
+* [Azure IoT Edge](../iot-edge/index.yml)’i kullanarak, edge üzerinde protokol çevirisi gerçekleştirmek için bir alan ağ geçidi oluşturun.
 
 * Bulutta protokol çevirisi gerçekleştirmek için [Azure IoT protokolü ağ geçidini](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) özelleştirin.
 

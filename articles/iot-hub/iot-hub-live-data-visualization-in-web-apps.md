@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327574"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146674"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini bir Web uygulamasında görselleştirin
 
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT Hub 'ınıza bir tüketici grubu ekleme
 
-[Tüketici grupları](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) , uygulama ve Azure hizmetlerinin aynı Olay Hub 'ı uç noktasından bağımsız olarak verileri kullanmasını sağlayan olay akışına bağımsız görünümler sağlar. Bu bölümde, IoT Hub 'ınızın yerleşik uç noktasına, Web uygulamasının verileri okumak için kullanacağı bir tüketici grubu eklersiniz.
+[Tüketici grupları](../event-hubs/event-hubs-features.md#event-consumers) , uygulama ve Azure hizmetlerinin aynı Olay Hub 'ı uç noktasından bağımsız olarak verileri kullanmasını sağlayan olay akışına bağımsız görünümler sağlar. Bu bölümde, IoT Hub 'ınızın yerleşik uç noktasına, Web uygulamasının verileri okumak için kullanacağı bir tüketici grubu eklersiniz.
 
 IoT Hub 'ınızın yerleşik uç noktasına bir tüketici grubu eklemek için aşağıdaki komutu çalıştırın:
 
@@ -156,11 +156,11 @@ Ayrıca, konsolunda Web uygulamanızın tarayıcı istemcisine yayınlamasını 
 
 ## <a name="host-the-web-app-in-app-service"></a>Web uygulamasını App Service barındırın
 
-[Azure App Service Web Apps özelliği](https://docs.microsoft.com/azure/app-service/overview) , Web uygulamalarını barındırmak için hizmet olarak platform (PaaS) sağlar. Azure App Service barındırılan Web uygulamaları, ek güvenlik, yük dengeleme ve ölçeklenebilirlik gibi güçlü Azure özelliklerinden ve sürekli dağıtım, paket yönetimi gibi Azure ve iş ortağı DevOps çözümlerinin avantajlarından yararlanabilir. Azure App Service birçok popüler dilde geliştirilen ve Windows veya Linux altyapısına dağıtılan Web uygulamalarını destekler.
+[Azure App Service Web Apps özelliği](../app-service/overview.md) , Web uygulamalarını barındırmak için hizmet olarak platform (PaaS) sağlar. Azure App Service barındırılan Web uygulamaları, ek güvenlik, yük dengeleme ve ölçeklenebilirlik gibi güçlü Azure özelliklerinden ve sürekli dağıtım, paket yönetimi gibi Azure ve iş ortağı DevOps çözümlerinin avantajlarından yararlanabilir. Azure App Service birçok popüler dilde geliştirilen ve Windows veya Linux altyapısına dağıtılan Web uygulamalarını destekler.
 
-Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulaması hazırlarsınız ve kodunuzu buna dağıtırsınız. [Az WebApp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) belgelerinde kullanılan komutların ayrıntılarını bulabilirsiniz. Başlamadan önce, [IoT Hub 'ınıza bir kaynak grubu eklemek](#add-a-consumer-group-to-your-iot-hub), [IoT Hub 'ınız için bir hizmet bağlantı dizesi almak](#get-a-service-connection-string-for-your-iot-hub)ve [Web uygulamasını GitHub 'dan indirmek](#download-the-web-app-from-github)için adımları tamamladığınızdan emin olun.
+Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulaması hazırlarsınız ve kodunuzu buna dağıtırsınız. [Az WebApp](/cli/azure/webapp?view=azure-cli-latest) belgelerinde kullanılan komutların ayrıntılarını bulabilirsiniz. Başlamadan önce, [IoT Hub 'ınıza bir kaynak grubu eklemek](#add-a-consumer-group-to-your-iot-hub), [IoT Hub 'ınız için bir hizmet bağlantı dizesi almak](#get-a-service-connection-string-for-your-iot-hub)ve [Web uygulamasını GitHub 'dan indirmek](#download-the-web-app-from-github)için adımları tamamladığınızdan emin olun.
 
-1. [App Service planı](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) , App Service çalıştırılmak üzere barındırılan bir uygulama için bir işlem kaynakları kümesi tanımlar. Bu öğreticide, Web uygulamasını barındırmak için geliştirici/ücretsiz katmanını kullanırız. Ücretsiz katman sayesinde, Web uygulamanız diğer müşterilerin uygulamaları dahil olmak üzere diğer App Service uygulamalarla paylaşılan Windows kaynakları üzerinde çalışır. Azure Ayrıca, Linux işlem kaynaklarında Web Apps dağıtmak için App Service planlar sunmaktadır. Kullanmak istediğiniz bir App Service planınız zaten varsa, bu adımı atlayabilirsiniz.
+1. [App Service planı](../app-service/overview-hosting-plans.md) , App Service çalıştırılmak üzere barındırılan bir uygulama için bir işlem kaynakları kümesi tanımlar. Bu öğreticide, Web uygulamasını barındırmak için geliştirici/ücretsiz katmanını kullanırız. Ücretsiz katman sayesinde, Web uygulamanız diğer müşterilerin uygulamaları dahil olmak üzere diğer App Service uygulamalarla paylaşılan Windows kaynakları üzerinde çalışır. Azure Ayrıca, Linux işlem kaynaklarında Web Apps dağıtmak için App Service planlar sunmaktadır. Kullanmak istediğiniz bir App Service planınız zaten varsa, bu adımı atlayabilirsiniz.
 
    Windows ücretsiz katmanını kullanarak bir App Service planı oluşturmak için aşağıdaki komutu çalıştırın. IoT Hub 'ınızın bulunduğu kaynak grubunu kullanın. Hizmet planı adınız büyük ve küçük harf, rakam ve kısa çizgi içerebilir.
 
@@ -187,7 +187,7 @@ Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulamas�
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. Kodu App Service dağıtmak için [Kullanıcı düzeyinde dağıtım kimlik bilgilerinizi](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)kullanacaksınız. Kullanıcı düzeyi dağıtım kimlik bilgileriniz Azure kimlik bilgilerinizle farklıdır ve bir Web uygulamasına git yerel ve FTP dağıtımları için kullanılır. Bu ayarlar bir kez ayarlandıktan sonra Azure hesabınızdaki tüm aboneliklerdeki tüm App Service uygulamalarınız arasında geçerlidir. Daha önce Kullanıcı düzeyinde dağıtım kimlik bilgilerini ayarladıysanız, bunları kullanabilirsiniz.
+5. Kodu App Service dağıtmak için [Kullanıcı düzeyinde dağıtım kimlik bilgilerinizi](../app-service/deploy-configure-credentials.md)kullanacaksınız. Kullanıcı düzeyi dağıtım kimlik bilgileriniz Azure kimlik bilgilerinizle farklıdır ve bir Web uygulamasına git yerel ve FTP dağıtımları için kullanılır. Bu ayarlar bir kez ayarlandıktan sonra Azure hesabınızdaki tüm aboneliklerdeki tüm App Service uygulamalarınız arasında geçerlidir. Daha önce Kullanıcı düzeyinde dağıtım kimlik bilgilerini ayarladıysanız, bunları kullanabilirsiniz.
 
    Daha önce Kullanıcı düzeyinde dağıtım kimlik bilgilerini ayarlamadıysanız veya parolanızı hatırlayamıyorsanız, aşağıdaki komutu çalıştırın. Dağıtım Kullanıcı adınız Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için ' @ ' sembolünü içermemelidir. İstendiğinde, yeni parolanızı girip onaylayın. Parola en az sekiz karakter uzunluğunda olmalıdır ve şu üç öğeden ikisi vardır: harfler, rakamlar ve semboller.
 

@@ -4,15 +4,15 @@ description: Microsoft ticari Market tekliflerinin bir kümesi, kuruluşunuzun M
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 07/21/2020
-ms.openlocfilehash: 8a8b64bc0ed2702066a1ba280f1b40aabbcdb11b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: e5f1a70182d4b31a1bcd0a811be32bdfc55129d9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87100002"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168465"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure tüketim taahhüdü avantajı
 
@@ -27,3 +27,33 @@ Bu avantajdan yararlanmak için Azure anlaşmanız ile ilgili bir abonelik kulla
 
 > [!IMPORTANT]
 > Dışlamalar, bu Market avantajından önce imzalanan CtC anlaşmaları için uygulanabilir. Uygunluk hakkında sorularınız varsa Microsoft hesabı Executive ile iletişime geçin.
+
+## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>Kuruluşunuzun bir Azure tüketim taahhüdüne (MACC/CtC) sahip olup olmadığını belirleme
+
+Kuruluşunuzun uygun bir anlaşması olup olmadığını bilmiyorsanız, kuruluşunuzla ilişkili bir kiracı altında [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) Market deneyiminde oturum açın. Fiyatlandırma filtresi içinde **Azure avantajı uygun** seçeneğini görürseniz, uygun bir Azure tüketim taahhüdüne sahip olursunuz. Azure Marketi satın alımlarının uygun olması, doğrudan Azure Marketi aracılığıyla satın alındığında kuruluşunuzun Azure tüketim taahhüdüne katkıda bulunur.
+
+[![Azure avantaj uygun menü seçeneği.](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
+
+## <a name="determine-which-offers-are-eligible-for-azure-consumption-commitments-maccctc"></a>Hangi tekliflerin Azure tüketim taahhüdlerine uygun olduğunu belirleme (MACC/CtC)
+
+1. [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) içindeki Market deneyiminde, kuruluşunuzla ilişkili bir kiracı altında oturum açın.
+2. Kuruluşunuzun Azure tüketim taahhüdüne katkıda bulunmak için uygun olan teklifleri öğrenmek için, **Azure avantajı uygun** filtresini (Yukarıdaki görüntü) uygulayın.
+
+   > [!NOTE]
+   > Bu filtre yoksa, kuruluşunuzun uygun bir taahhüt yoktur. Bunun yanlış olduğunu düşünüyorsanız lütfen Microsoft hesabı Executive ile iletişime geçin.
+ 
+3. Teklifler, bu teklifle ilişkili yazılım/IP maliyetlerinin, kuruluşunuzda faturalandırılan tüm Azure hizmetleri üzerinde kuruluşunuzun Azure tüketim taahhüdüne katkıda bulunduğunu göstermek için **uygun olan Azure avantajına** sahip olacaktır.
+
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Azure avantajı uygun rozet.&quot;:::
+
+   > [!NOTE]
+   > Azure Marketi dağıtımı aracılığıyla kuruluşunuza faturalandırılan Microsoft Azure Hizmetleri, doğal olarak kuruluşunuzun taahhüdüne katkıda bulunur. &quot;Azure avantajı uygun" tekliflerine eklenen avantaj, üçüncü taraf satıcı tarafından geçirilen yazılım/IP maliyetlerinin de Azure Market faturanızda %100 ' de katkıda bulunur.
+
+4. Teklifi doğrudan Azure Marketi aracılığıyla satın alın/oluşturun. Microsoft, yazılım/IP maliyetleri dahil olmak üzere her fatura döneminde kuruluşunuzun Azure tüketim taahhüdüne doğru satın alma teklifinin %100 ' üne katkıda bulunur.
+
+> [!IMPORTANT]
+> Teklifler, satın alma taahhüdüne katkıda bulunmak için kuruluşunuzun Azure tüketim taahhüdü ile ilgili bir kayıt ile doğrudan Azure Marketi aracılığıyla satın alınmalıdır. Bulut çözümü sağlayıcısı (CSP) aracılığıyla satın alınan teklifler, diğer tüm satıcı kanalları veya Market 'in dışında, taahhüdünde katılım yoktur.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Kuruluşunuzun Azure Marketi 'Nden nasıl yararlanılacağı hakkında daha fazla bilgi edinmek için Microsoft Learn modülümüzü doldurun: [Azure Marketi ile bulut tedarik ve Idare Işlemlerini kolaylaştırın](https://aka.ms/cm.marketplaceprocurement).

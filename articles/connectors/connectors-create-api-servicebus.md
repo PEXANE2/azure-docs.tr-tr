@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996354"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426648"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -29,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -60,7 +60,7 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
       ![Service Bus ad alanı bağlantı dizesini Kopyala](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Bağlantı dizeniz Service Bus ad alanınız veya bir kuyruk gibi bir mesajlaşma varlığı ile ilişkili olup olmadığını doğrulamak için, parametre için bağlantı dizesini arayın `EntityPath`   . Bu parametreyi bulursanız, bağlantı dizesi belirli bir varlık içindir ve mantıksal uygulamanızla birlikte kullanılacak doğru dize değildir.
+   > Bağlantı dizeniz Service Bus ad alanınız veya bir kuyruk gibi bir mesajlaşma varlığı ile ilişkili olup olmadığını doğrulamak için, parametre için bağlantı dizesini arayın `EntityPath` . Bu parametreyi bulursanız, bağlantı dizesi belirli bir varlık içindir ve mantıksal uygulamanızla birlikte kullanılacak doğru dize değildir.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus tetikleyicisi Ekle
 
@@ -68,18 +68,22 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
-1. Arama kutusuna filtreniz olarak "Azure Service Bus" yazın. Tetikleyiciler listesinden istediğiniz tetikleyiciyi seçin.
+1. Portal arama kutusuna girin `azure service bus` . Görüntülenen tetikleyiciler listesinden istediğiniz tetikleyiciyi seçin.
 
    Örneğin, mantıksal uygulamanızı yeni bir öğe Service Bus kuyruğuna gönderildiğinde tetiklemeniz için **bir kuyrukta (otomatik olarak tamamlanır) bir ileti alındığında** ' ı seçin.
 
    ![Service Bus tetikleyicisi seçin](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   Tüm Service Bus Tetikleyicileri *uzun yoklama* tetikleyicilerinde bulunur. Bu açıklama, tetikleyicinin tetiklendiği anlamına gelir, tetikleyici tüm iletileri işler ve sonra sıra veya konu aboneliğinde daha fazla ileti görünmesi için 30 saniye bekler. 30 saniye içinde herhangi bir ileti görünmezse, tetikleyici çalıştırması atlanır. Aksi takdirde tetikleyici, kuyruk veya konu aboneliği boş olana kadar iletileri okumaya devam eder. Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirtilen yinelenme aralığına göre belirlenir.
+   Service Bus tetikleyicisi kullanırken bazı konular aşağıda verilmiştir:
 
-   Bir **veya daha fazla ileti bir sıraya ulaştığında (otomatik tamamlamayı)** tetikleyicisi gibi bazı Tetikleyiciler, bir veya daha fazla ileti döndürebilir. Bu Tetikleyiciler tetiklendiğinde, tetikleyicisinin **en yüksek ileti sayısı** özelliği tarafından belirtilen ileti sayısı arasında bir değer döndürür.
+   * Tüm Service Bus Tetikleyicileri *uzun yoklama* tetikleyicilerinde bulunur. Bu açıklama, tetikleyicinin tetiklendiği anlamına gelir, tetikleyici tüm iletileri işler ve sonra sıra veya konu aboneliğinde daha fazla ileti görünmesi için 30 saniye bekler. 30 saniye içinde herhangi bir ileti görünmezse, tetikleyici çalıştırması atlanır. Aksi takdirde tetikleyici, kuyruk veya konu aboneliği boş olana kadar iletileri okumaya devam eder. Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirtilen yinelenme aralığına göre belirlenir.
 
-    > [!NOTE]
-    > Otomatik tamamlama tetikleyicisi bir iletiyi otomatik olarak tamamlar, ancak tamamlama yalnızca bir sonraki Service Bus çağrısında gerçekleşir. Bu davranış, mantıksal uygulamanızın tasarımını etkileyebilir. Örneğin, mantıksal uygulamanız kısıtlı bir duruma girerse bu değişiklik yinelenen iletilerle sonuçlanabileceğinden, otomatik tamamlanmış tetikleyicide eşzamanlılık değişikliği yapmaktan kaçının. Eşzamanlılık denetimini değiştirmek şu koşulları oluşturur: kısıtlanmış Tetikleyiciler `WorkflowRunInProgress` kodla atlanır, tamamlama işlemi gerçekleşmez ve yoklama aralığından sonra sonraki tetikleyici çalıştırması gerçekleşir. Service Bus kilit süresini yoklama aralığından daha uzun bir değere ayarlamanız gerekir. Ancak, bu ayara rağmen mantıksal uygulamanız bir sonraki yoklama aralığında daraltılmış bir durumda kalırsa ileti yine de tamamlanmamış olabilir.
+   * Bir **veya daha fazla ileti bir sıraya ulaştığında (otomatik tamamlamayı)** tetikleyicisi gibi bazı Tetikleyiciler, bir veya daha fazla ileti döndürebilir. Bu Tetikleyiciler tetiklendiğinde, tetikleyicisinin **en yüksek ileti sayısı** özelliği tarafından belirtilen ileti sayısı arasında bir değer döndürür.
+
+     > [!NOTE]
+     > Otomatik tamamlama tetikleyicisi bir iletiyi otomatik olarak tamamlar, ancak tamamlama yalnızca bir sonraki Service Bus çağrısında gerçekleşir. Bu davranış, mantıksal uygulamanızın tasarımını etkileyebilir. Örneğin, mantıksal uygulamanız kısıtlı bir duruma girerse bu değişiklik yinelenen iletilerle sonuçlanabileceğinden, otomatik tamamlanmış tetikleyicide eşzamanlılık değişikliği yapmaktan kaçının. Eşzamanlılık denetimini değiştirmek şu koşulları oluşturur: kısıtlanmış Tetikleyiciler `WorkflowRunInProgress` kodla atlanır, tamamlama işlemi gerçekleşmez ve yoklama aralığından sonra sonraki tetikleyici çalıştırması gerçekleşir. Service Bus kilit süresini yoklama aralığından daha uzun bir değere ayarlamanız gerekir. Ancak, bu ayara rağmen mantıksal uygulamanız bir sonraki yoklama aralığında daraltılmış bir durumda kalırsa ileti yine de tamamlanmamış olabilir.
+
+   * Service Bus tetikleyicisi için [eşzamanlılık ayarını açarsanız](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) , özellik için varsayılan değer `maximumWaitingRuns` 10 ' dur. Service Bus varlığın kilit süresi ayarına ve mantıksal uygulama örneğinizin çalışma süresine göre, bu varsayılan değer çok büyük olabilir ve "kilit kayıp" özel durumuna neden olabilir. Senaryonuza en uygun değeri bulmak için, özelliği için 1 veya 2 değeri ile testi başlatın `maximumWaitingRuns` . En fazla bekleyen çalıştırma değerini değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs).
 
 1. Tetikleyiciniz ilk kez Service Bus ad alanına bağlanıyorsa, mantıksal uygulama Tasarımcısı sizden bağlantı bilgilerini isterse, bu adımları izleyin.
 
@@ -113,13 +117,13 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
 1. Eylem eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
    Ya da adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "Azure Service Bus" yazın. Eylemler listesinden istediğiniz eylemi seçin. 
+1. **Eylem seçin**altında, arama kutusuna girin `azure service bus` . Görüntülenen Eylemler listesinden istediğiniz eylemi seçin. 
 
    Bu örnek için **Ileti gönder** eylemini seçin.
 

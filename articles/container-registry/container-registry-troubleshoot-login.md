@@ -3,12 +3,12 @@ title: Kayıt defterinde oturum açma sorunlarını giderme
 description: Azure Container Registry 'de oturum açarken karşılaşılan sorunların belirtileri, nedenleri ve çözümleri
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253363"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148441"
 ---
 # <a name="troubleshoot-registry-login"></a>Kayıt defteri oturum açma sorunlarını giderme
 
@@ -95,7 +95,7 @@ Senaryonuz için kullandığınız kimlik bilgilerinin geçerliliğini denetleyi
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>Kimlik bilgilerinin kayıt defterine erişim yetkisi olduğunu onaylayın
 
-`AcrPull`Kayıt defterinden görüntüleri çekmek için RBAC rolü veya `AcrPush` görüntülerin itilmesi için rol gibi kimlik bilgileriyle ilişkili kayıt defteri izinlerini onaylayın. 
+`AcrPull`Kayıt defterinden görüntüleri çekmek için Azure rolü veya `AcrPush` görüntüleri göndermek için rol gibi kimlik bilgileriyle ilişkili kayıt defteri izinlerini onaylayın. 
 
 Azure CLı kullanarak portal 'daki bir kayıt defterine veya kayıt defteri yönetimine erişim, `Reader` Azure Resource Manager işlemleri gerçekleştirmek için en azından rolü gerektirir.
 
@@ -103,7 +103,7 @@ Rol atamaları eklemek veya kaldırmak için, sizin veya bir kayıt defteri sahi
 
 İlgili bağlantılar:
 
-* [RBAC rolleri ve izinleri-Azure Container Registry](container-registry-roles.md)
+* [Azure rolleri ve izinleri-Azure Container Registry](container-registry-roles.md)
 * [Depo kapsamlı belirteç ile oturum açma](container-registry-repository-scoped-permissions.md)
 * [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)
 * [Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)
@@ -142,7 +142,5 @@ Sorununuzu burada çözemezseniz, aşağıdaki seçeneklere bakın.
   * [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
   * [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
 * [Topluluk desteği](https://azure.microsoft.com/support/community/) seçenekleri
-* [Microsoft Soru-Cevap](https://docs.microsoft.com/answers/products/)
+* [Microsoft Soru-Cevap](/answers/products/)
 * Sağladığınız bilgilere bağlı olarak [bir destek bileti açın](https://azure.microsoft.com/support/create-ticket/) . kayıt defterinizde kimlik doğrulama hatalarıyla ilgili hızlı bir tanılama çalıştırılabilir
-
-

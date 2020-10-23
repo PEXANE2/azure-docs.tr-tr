@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9d5988f25b833480c4809ba116c48022566b7a0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758150"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458192"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Öğretici: Azure AD çoklu oturum açmayı Maverics Identity Orchestrator SAML Bağlayıcısı ile tümleştirme
 
@@ -38,7 +38,7 @@ Bu öğreticide, kimlik doğrulama ve erişim denetimi için Azure AD kullanmak 
 
 Ek yükleme ve yapılandırma yönergeleri için [Strata Web sitesine](https://www.strata.io)gidin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 - Maverics Identity Orchestrator SAML Bağlayıcısı SSO özellikli aboneliği. Maverics yazılımını edinmek için [Strata satışları](mailto:sales@strata.io)ile görüşün.
@@ -157,15 +157,15 @@ secrets:
 Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirsiniz.
 
 **Azure portalını kullanma**
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. [Yeni bir Anahtar Kasası oluşturun](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault).
-1. [Gizli dizileri anahtar kasasına ekleyin](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
-1. [Bir uygulamayı Azure AD 'ye kaydedin](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
-1. [Bir uygulamayı gizli anahtar kullanması Için yetkilendirin](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Yeni bir Anahtar Kasası oluşturun](../../key-vault/secrets/quick-create-portal.md#create-a-vault).
+1. [Gizli dizileri anahtar kasasına ekleyin](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+1. [Bir uygulamayı Azure AD 'ye kaydedin](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal).
+1. [Bir uygulamayı gizli anahtar kullanması Için yetkilendirin](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
 **Azure CLI'yi kullanma**
 
-1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)'yi açın ve aşağıdaki komutu girin:
+1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'yi açın ve aşağıdaki komutu girin:
 
     ```shell
     az login

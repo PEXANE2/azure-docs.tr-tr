@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192824"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92146324"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. güvenlik
 
@@ -31,7 +31,7 @@ Kimlik doğrulaması, Kullanıcı Data Lake Storage 1. veya Data Lake Storage 1.
 Her Azure aboneliği, bir Azure Active Directory örneğiyle ilişkilendirilebilir. Yalnızca Azure Active Directory hizmetinizde tanımlanan kullanıcılar ve hizmet kimlikleri Data Lake Storage 1. hesabınıza Azure portal, komut satırı araçlarını veya kuruluşunuzun Data Lake Storage 1. SDK kullanarak oluşturduğu istemci uygulamalarını kullanarak erişebilir. Merkezi erişim denetimi mekanizması olarak Azure Active Directory kullanmanın temel avantajları şunlardır:
 
 * Basitleştirilmiş kimlik yaşam döngüsü yönetimi. Bir kullanıcının veya hizmetin kimliği (hizmet sorumlusu kimliği), dizindeki hesabı silerek veya devre dışı bırakarak hızlı bir şekilde oluşturulabilir ve hızlı bir şekilde iptal edilebilir.
-* Multi-Factor Authentication. [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , Kullanıcı oturum açma işlemleri ve işlemler için ek bir güvenlik katmanı sağlar.
+* Multi-Factor Authentication. [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) , Kullanıcı oturum açma işlemleri ve işlemler için ek bir güvenlik katmanı sağlar.
 * OAuth veya OpenID gibi standart bir açık protokol aracılığıyla herhangi bir istemciden kimlik doğrulaması.
 * Kurumsal Dizin Hizmetleri ve bulut kimlik sağlayıcılarıyla Federasyon.
 
@@ -42,7 +42,7 @@ Azure Active Directory bir kullanıcının kimliğini doğruladıktan sonra, kul
 * Hesap yönetimi için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)
 * Depodaki verilere erişmek için POSIX ACL 'SI
 
-### <a name="rbac-for-account-management"></a>Hesap yönetimi için RBAC
+### <a name="azure-rbac-for-account-management"></a>Hesap yönetimi için Azure RBAC
 
 Dört temel rol, varsayılan olarak Data Lake Storage 1. için tanımlanmıştır. Roller, Azure portal, PowerShell cmdlet 'leri ve REST API 'Leri aracılığıyla Data Lake Storage 1. hesapta farklı işlemlere izin verir. Sahip ve katkıda bulunan rolleri, hesapta çeşitli yönetim işlevleri gerçekleştirebilir. Okuyucu rolünü yalnızca hesap yönetimi verilerini görüntüleyen kullanıcılara atayabilirsiniz.
 

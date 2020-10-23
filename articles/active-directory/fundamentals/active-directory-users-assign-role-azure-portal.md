@@ -13,25 +13,25 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321251"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370942"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory sahip kullanıcılara yönetici ve yönetici olmayan roller atama
 
 Azure Active Directory (Azure AD) ' de, kullanıcılarınızın Azure AD kaynaklarını yönetmek için izne ihtiyacı varsa, bunları gereken izinleri sağlayan bir role atamanız gerekir. Azure kaynaklarını ve hangi rollerin Azure AD kaynaklarını yöneteceği hakkında bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-Kullanılabilir Azure AD rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md). Kullanıcıları eklemek için bkz. [Azure Active Directory yeni kullanıcı ekleme](add-users-azure-active-directory.md).
+Kullanılabilir Azure AD rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolleri atama](../roles/permissions-reference.md). Kullanıcıları eklemek için bkz. [Azure Active Directory yeni kullanıcı ekleme](add-users-azure-active-directory.md).
 
 ## <a name="assign-roles"></a>Rol atama
 
 Bir kullanıcıya Azure AD rolleri atamak için ortak bir yol, bir kullanıcı için **atanan roller** sayfasıdır. Ayrıca, Kullanıcı uygunluğunu Privileged Identity Management (PıM) kullanarak bir role tam zamanında Yükseltilmek üzere de yapılandırabilirsiniz. PıM kullanma hakkında daha fazla bilgi için bkz. [Privileged Identity Management](../privileged-identity-management/index.yml).
 
 > [!Note]
-> Bir Azure AD Premium P2 lisans planınız varsa ve zaten PıM kullanıyorsanız, tüm rol yönetim görevleri [Privileged Identity Management deneyimde](../users-groups-roles/directory-manage-roles-portal.md)gerçekleştirilir. Bu özellik şu anda aynı anda yalnızca bir rol atamak için sınırlıdır. Şu anda birden çok rol seçemezsiniz ve bunları bir kullanıcıya tek seferde atayabilirsiniz.
+> Bir Azure AD Premium P2 lisans planınız varsa ve zaten PıM kullanıyorsanız, tüm rol yönetim görevleri [Privileged Identity Management deneyimde](../roles/manage-roles-portal.md)gerçekleştirilir. Bu özellik şu anda aynı anda yalnızca bir rol atamak için sınırlıdır. Şu anda birden çok rol seçemezsiniz ve bunları bir kullanıcıya tek seferde atayabilirsiniz.
 >
 > ![Zaten PıM kullanan ve Premium P2 lisansına sahip olan kullanıcılar için PıM 'de yönetilen Azure AD rolleri](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 
@@ -81,4 +81,4 @@ Rol atamasını bir kullanıcıdan kaldırmanız gerekiyorsa, bunu Ayrıca, **Y�
 
 - [Başka bir dizinden konuk kullanıcılar ekleme](../external-identities/what-is-b2b.md)
 
-Kullanıma aldığınız diğer Kullanıcı yönetimi görevleri [Azure Active Directory Kullanıcı Yönetimi belgelerinde](../users-groups-roles/index.yml)bulunabilir.
+Kullanıma aldığınız diğer Kullanıcı yönetimi görevleri [Azure Active Directory Kullanıcı Yönetimi belgelerinde](../enterprise-users/index.yml)bulunabilir.

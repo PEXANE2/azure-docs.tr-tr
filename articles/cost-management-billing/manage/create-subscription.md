@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 006c995217ced91690798ae68f04e3b6c3148228
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925054"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131964"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Ek Azure aboneliği oluşturma
 
@@ -30,7 +30,7 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 |---------|---------|
 |Kurumsal Anlaşma (EA) |  Kurumsal Anlaşma kaydında Hesap Sahibi rolü. Daha fazla bilgi için bkz. [Azure’daki Azure Kurumsal Anlaşma yönetici rollerini anlama](understand-ea-roles.md).    |
 |Microsoft Müşteri Sözleşmesi (MCA) |  Fatura bölümünde, faturalama profilinde veya ödeme hesabında sahip veya katkıda bulunan rolü. Veya fatura bölümünde Azure aboneliği oluşturucu rolü.  Daha fazla bilgi için bkz. [Abonelik faturalama rolleri ve görevi](understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
-|Microsoft İş Ortağı Sözleşmesi (MPA) |   CSP iş ortağı kuruluşunda Genel Yönetici ve Yönetici Temsilcisi rolü. Daha fazla bilgi için bkz. [İş Ortağı Merkezi - Kullanıcı rollerini ve izinleri atama](https://docs.microsoft.com/partner-center/permissions-overview).  Azure abonelikleri oluşturmak için kullanıcının iş ortağı kiracısında oturum açması gerekir.   |
+|Microsoft İş Ortağı Sözleşmesi (MPA) |   CSP iş ortağı kuruluşunda Genel Yönetici ve Yönetici Temsilcisi rolü. Daha fazla bilgi için bkz. [İş Ortağı Merkezi - Kullanıcı rollerini ve izinleri atama](/partner-center/permissions-overview).  Azure abonelikleri oluşturmak için kullanıcının iş ortağı kiracısında oturum açması gerekir.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Azure portalında abonelik oluşturma
 
@@ -79,7 +79,7 @@ Ayrıca program aracılığıyla ek abonelikler de oluşturabilirsiniz. Daha faz
 
 - [Azure aboneliği yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md)
 - [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturma](../../governance/management-groups/create.md)
+- [Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturma](../../governance/management-groups/create-management-group-portal.md)
 - [Azure için aboneliğinizi iptal etme](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.

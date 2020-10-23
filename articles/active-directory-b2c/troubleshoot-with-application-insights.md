@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993169"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132066"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights ile Azure Active Directory B2C günlüklerini toplayın
 
@@ -26,7 +26,7 @@ Bu makalede, özel ilkelerinizle ilgili sorunları tanılamanıza olanak tanıma
 Burada açıklanan ayrıntılı etkinlik günlükleri **yalnızca** özel ilkelerinizin geliştirilmesi sırasında etkinleştirilmelidir.
 
 > [!WARNING]
-> Üretimde geliştirme modunu etkinleştirmeyin. Günlükler, kimlik sağlayıcılarından ve bu kaynaklardan gönderilen tüm talepleri toplar. Geliştirici, Application Insights günlüklerinde toplanan kişisel verilerin sorumluluğunu kabul eder. Bu ayrıntılı Günlükler yalnızca, ilke **GELIŞTIRICI moduna**yerleştirildiğinde toplanır.
+> Öğesini `DeploymentMode` üretim ortamlarında olarak ayarlamayın `Developer` . Günlükler, kimlik sağlayıcılarından ve bu kaynaklardan gönderilen tüm talepleri toplar. Geliştirici, Application Insights günlüklerinde toplanan kişisel verilerin sorumluluğunu kabul eder. Bu ayrıntılı Günlükler yalnızca, ilke **GELIŞTIRICI moduna**yerleştirildiğinde toplanır.
 
 ## <a name="set-up-application-insights"></a>Application Insights ayarlama
 
@@ -58,7 +58,7 @@ Henüz bir tane yoksa, aboneliğinizde bir Application Insights örneği oluştu
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
-    * `DeveloperMode="true"` ApplicationInsights 'ın işleme işlem hattı aracılığıyla Telemetriyi hızlandırmasını söyler. Geliştirme için iyi, ancak yüksek birimlerde kısıtlanmıştır.
+    * `DeveloperMode="true"` ApplicationInsights 'ın işleme işlem hattı aracılığıyla Telemetriyi hızlandırmasını söyler. Geliştirme için iyi, ancak yüksek birimlerde kısıtlanmıştır. Üretimde öğesini `DeveloperMode` olarak ayarlayın `false` .
     * `ClientEnabled="true"` İzleme sayfası görünümü ve istemci tarafı hataları için ApplicationInsights istemci tarafı betiği gönderir. Bunları, Application Insights portalındaki **Browserzamanlamalar** tablosunda görüntüleyebilirsiniz. Ayar olarak `ClientEnabled= "true"` , sayfa betiklerine Application Insights ekler ve sayfa yüklerinin ve Ajax çağrılarının, sayımların, tarayıcı özel durumlarının ve Ajax hatalarının ayrıntılarının yanı sıra Kullanıcı ve oturum sayımlarının zamanlamalarını alırsınız. Bu alan **isteğe bağlıdır**ve varsayılan olarak olarak ayarlanır `false` .
     * `ServerEnabled="true"` Application Insights için, var olan Kullanıcıgünneyıkaydedicisi JSON 'sini özel bir olay olarak gönderir.
 
@@ -94,7 +94,7 @@ Application Insights yeni Günlükler görebilmeniz için genellikle beş dakika
 
 Günlükleri görmek için kullanabileceğiniz bir sorgu listesi aşağıda verilmiştir:
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |---------------------|--------------------|
 `traces` | Azure AD B2C tarafından oluşturulan tüm günlüklere bakın |
 `traces | where timestamp > ago(1d)` | Son gün için Azure AD B2C tarafından oluşturulan tüm günlüklere bakın
@@ -102,6 +102,31 @@ Günlükleri görmek için kullanabileceğiniz bir sorgu listesi aşağıda veri
 Girişler uzun olabilir. Daha yakından bir görünüm için CSV 'ye aktarın.
 
 Sorgulama hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="configure-application-insights-in-production"></a>Üretimde Application Insights yapılandırma
+
+Üretim ortamınızın performansını ve daha iyi kullanıcı deneyimini geliştirmek için, ilkenizi önemli olmayan iletileri yoksayacak şekilde yapılandırmak önemlidir. Application Insights yalnızca kritik hata iletileri göndermek için aşağıdaki yapılandırmayı kullanın. 
+
+1. `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) özniteliğini olarak ayarlayın `Production` . 
+
+   ```xml
+   <TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0"
+   TenantId="yourtenant.onmicrosoft.com"
+   PolicyId="B2C_1A_signup_signin"
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_signup_signin"
+   DeploymentMode="Production"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+   ```
+
+1. Sürekli ' `DeveloperMode` ın ' [JourneyInsights](relyingparty.md#journeyinsights) i olarak ayarlayın `false` .
+
+   ```xml
+   <UserJourneyBehaviors>
+     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="false" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   </UserJourneyBehaviors>
+   ```
+   
+1. İlkenizi karşıya yükleyin ve test edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

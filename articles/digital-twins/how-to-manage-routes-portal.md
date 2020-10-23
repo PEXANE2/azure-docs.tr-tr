@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b1f53226b82a5342efda8665b6a366a3a7fd310
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252842"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461422"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
 
@@ -22,7 +22,7 @@ Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) a
 
 Bu makalede, [Azure Portal](https://portal.azure.com)kullanarak uç noktalar ve rotalar oluşturma işlemi adım adım açıklanmaktadır.
 
-Ayrıca, [Eventroutes API 'leri](how-to-use-apis-sdks.md), [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile uç noktaları ve yolları da yönetebilirsiniz. Bu makalenin Portal yerine bu mekanizmaların kullanıldığı bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (API 'ler ve CLI)*](how-to-manage-routes-apis-cli.md).
+Ayrıca, uç noktaları ve yolları [olay rotaları API 'leri](/rest/api/digital-twins/dataplane/eventroutes), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile de yönetebilirsiniz. Bu makalenin Portal yerine bu mekanizmaların kullanıldığı bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (API 'ler ve CLI)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -72,7 +72,7 @@ Ayrıca, Azure dijital TWINS örneğiniz için *uç noktalar* sayfasında, geri 
 
 Uç nokta oluşturma işlemi başarısız olursa, hata iletisini gözlemleyin ve birkaç dakika sonra yeniden deneyin.
 
-Şimdi, olay Kılavuzu konusu, Azure dijital TWINS 'in içindeki bir uç nokta olarak, _ad_ alanında belirtilen ad altında kullanılabilir. Genellikle bu adı, [Bu makalede daha sonra](#event-routes)oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
+Şimdi, olay Kılavuzu konusu, Azure dijital TWINS 'in içindeki bir uç nokta olarak, _ad_ alanında belirtilen ad altında kullanılabilir. Genellikle bu adı, [Bu makalede daha sonra](#create-an-event-route)oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
 
 ### <a name="create-an-event-hubs-endpoint"></a>Event Hubs uç noktası oluşturma
 
@@ -94,7 +94,7 @@ Sonra, _Kaydet_' i vurarak uç noktanızı oluşturun.
 
 Uç nokta oluşturma işlemi başarısız olursa, hata iletisini gözlemleyin ve birkaç dakika sonra yeniden deneyin.
 
-Şimdi, Olay Hub 'ı Azure dijital TWINS 'in içindeki bir uç nokta olarak, _ad_ alanında belirtilen ad altında kullanılabilir. Genellikle bu adı, [Bu makalede daha sonra](#event-routes)oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
+Şimdi, Olay Hub 'ı Azure dijital TWINS 'in içindeki bir uç nokta olarak, _ad_ alanında belirtilen ad altında kullanılabilir. Genellikle bu adı, [Bu makalede daha sonra](#create-an-event-route)oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
 
 ### <a name="create-a-service-bus-endpoint"></a>Service Bus uç noktası oluşturma
 
@@ -116,9 +116,17 @@ Sonra, _Kaydet_' i vurarak uç noktanızı oluşturun.
 
 Uç nokta oluşturma işlemi başarısız olursa, hata iletisini gözlemleyin ve birkaç dakika sonra yeniden deneyin.
 
-Artık Service Bus konu başlığı altında, _ad_ alanında belirtilen ad altında Azure dijital TWINS 'in içinde bir uç nokta olarak sunulmaktadır. Genellikle bu adı, [Bu makalede daha sonra](#event-routes)oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
+Artık Service Bus konu başlığı altında, _ad_ alanında belirtilen ad altında Azure dijital TWINS 'in içinde bir uç nokta olarak sunulmaktadır. Genellikle bu adı, [Bu makalede daha sonra](#create-an-event-route)oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
 
-## <a name="event-routes"></a>Olay yolları
+### <a name="create-an-endpoint-with-dead-lettering"></a>Etkin olmayan bir uç nokta oluşturma
+
+Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak**olarak bilinir.
+
+Etkin olmayan bir uç nokta oluşturmak için, Azure portal yerine uç noktanızı oluşturmak için [ARM API 'lerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanmanız gerekir.
+
+Bunu API 'lerle nasıl yapacağınız hakkında yönergeler için, bu makalenin [*API 'leri ve CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) sürümüne bakın.
+
+## <a name="create-an-event-route"></a>Olay yolu oluşturma
 
 Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **olay yolu**tanımlamanız gerekir. Bu yollar, geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını üzerinde bağlantı almasına imkan tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [*: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md).
 
@@ -127,7 +135,7 @@ Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **ola
 >[!NOTE]
 >Son noktalarınızı dağıttıysanız, yeni bir olay yolu için kullanmayı denemeden **önce** bunların dağıtımını tamamladığınızı doğrulayın. Uç noktalar hazırlanmadığından yolu ayarlayamıyoruz, birkaç dakika bekleyip yeniden deneyin.
 
-### <a name="create-an-event-route"></a>Olay yolu oluşturma 
+### <a name="creation-steps-with-the-azure-portal"></a>Azure portal oluşturma adımları
 
 Bir olay yolu tanımı şu öğeleri içerir:
 * Kullanmak istediğiniz yol adı
@@ -153,7 +161,7 @@ Yolun etkinleştirilmesi için, en azından **bir olay yönlendirme filtresi de 
 
 İşiniz bittiğinde, olay rotasını oluşturmak için _Kaydet_ düğmesine basın.
 
-### <a name="filter-events"></a>Olayları filtreleme
+## <a name="filter-events"></a>Olayları filtreleme
 
 Yukarıda açıklandığı gibi, yolların bir **filtre** alanı vardır. Yolinizdeki filtre değeri ise `false` , uç noktanıza hiçbir olay gönderilmez. 
 
@@ -161,7 +169,6 @@ En az filtresini etkinleştirdikten sonra `true` uç noktalar Azure dijital TWIN
 * Azure Digital TWINS hizmet API 'SI kullanılarak [dijital TWINS](concepts-twins-graph.md) tarafından tetiklenen telemetri
 * İkizi özellik değişikliği bildirimleri, Azure dijital TWINS örneğindeki herhangi bir ikizi için özellik değişikliklerinde harekete geçirilir
 * Yaşam döngüsü olayları, TWINS veya ilişkiler oluşturulduğunda veya silindiğinde tetiklenir
-* Model değişiklik olayları, bir Azure dijital TWINS örneğinde yapılandırılan [modeller](concepts-models.md) eklendiğinde veya silindiğinde tetiklenir
 
 Daha özel bir filtre tanımlayarak gönderilmekte olan olay türlerini kısıtlayabilirsiniz.
 

@@ -1,18 +1,17 @@
 ---
 title: U-SQL işlerini yerel olarak çalıştırma-Azure Data Lake U-SQL SDK
 description: Yerel iş istasyonunuzda komut satırını ve programlama arabirimlerini kullanarak U-SQL işlerini yerel olarak çalıştırmayı ve test yapmayı öğrenin.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132424"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215544"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK ile U-SQL çalıştırma ve test etme
 
@@ -157,7 +156,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 |-ScopeCEPTempPath|temp|Akış verileri için kullanılacak geçici yol|
 |-OptFlags| |İyileştirici bayraklarının virgülle ayrılmış listesi|
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 

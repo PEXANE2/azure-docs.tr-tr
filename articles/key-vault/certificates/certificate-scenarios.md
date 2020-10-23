@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86224868"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124230"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault sertifikalarını kullanmaya başlama
 Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.
@@ -37,7 +37,7 @@ Sertifikalar, bir Key Vault sertifikası olarak birbirine bağlı üç ilişkili
 
 **Adım 1** -sertifika YETKILISI (CA) sağlayıcıları  
 -   BT Yöneticisi, PKI Yöneticisi veya CA 'larla hesapları yöneten herkes, belirli bir şirket için (örn. Contoso) Key Vault sertifikaları kullanmanın bir önkoşuludur.  
-    Aşağıdaki CA 'Lar Key Vault ile geçerli iş ortağı sağlayıcılarıdır:  
+    Aşağıdaki CA 'Lar Key Vault ile geçerli iş ortağı sağlayıcılarıdır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers)   
     -   DigiCert-Key Vault, DigiCert ile OV TLS/SSL sertifikaları sunmaktadır.  
     -   GlobalSign-Key Vault, GlobalSign ile OV TLS/SSL sertifikaları sunmaktadır.  
 

@@ -5,22 +5,39 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032977"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145092"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Koşullu Erişimle ilgili oturum açma sorunlarını giderme
 
 Bu makaledeki bilgiler, hata iletileri ve Azure AD oturum açma günlüğü kullanılarak koşullu erişimle ilgili beklenmedik oturum açma sonuçlarının giderilmesi için kullanılabilir.
+
+## <a name="select-all-consequences"></a>"Tüm" sonuçları ' nı seçin
+
+Koşullu erişim çerçevesi size harika bir yapılandırma esnekliği sağlar. Ancak harika esneklik, istenmeyen sonuçlara engel olmak için, her yapılandırma ilkesini serbest bırakmadan önce dikkatli bir şekilde incelemeniz gerektiği anlamına da gelir. Bu bağlamda, **tüm kullanıcılar/gruplar/bulut uygulamaları gibi tüm grupları**etkileyen atamalara özel dikkat etmeniz gerekir.
+
+Kuruluşlar aşağıdaki yapılandırmalardan kaçınmalıdır:
+
+**Tüm kullanıcılar için tüm bulut uygulamaları:**
+
+- **Erişimi engelle** -bu yapılandırma, tüm kuruluşunuzu engeller.
+- **Cihazın uyumlu olarak Işaretlenmesini gerektir** -cihazlarını henüz kaydetmemiş olan kullanıcılar için, bu ilke Intune portalına erişim dahil tüm erişimi engeller. Kayıtlı bir cihaz olmadan yöneticisiyseniz, bu ilke ilkeyi değiştirmek için Azure portal geri almanızı engeller.
+- **Karma Azure AD etki alanına katılmış cihaz gerektir** -Bu ilke engelleme erişimi, karma Azure AD 'ye katılmış bir cihaz yoksa kuruluşunuzdaki tüm kullanıcılar için erişimi engellemeyi de mümkün kılıyor.
+- **Uygulama koruma Ilkesi gerektir** -Intune ilkeniz yoksa, bu ilke engelleme erişimi, kuruluşunuzdaki tüm kullanıcılar için erişimi engellemeyi de mümkün değildir. Bir Intune uygulama koruma ilkesine sahip bir istemci uygulaması olmadan yöneticisiyseniz, bu ilke Intune ve Azure gibi portallara geri alma işlemi uygulamanızı engeller.
+
+**Tüm kullanıcılar, tüm bulut uygulamaları ve tüm cihaz platformları için:**
+
+- **Erişimi engelle** -bu yapılandırma, tüm kuruluşunuzu engeller.
 
 ## <a name="conditional-access-sign-in-interrupt"></a>Koşullu erişim oturum açma kesmesi
 
@@ -82,8 +99,14 @@ Olayı gönderirken, olay gönderim ayrıntılarında oturum açma olayından is
 | 53003 | BlockedByConditionalAccess |
 | 53004 | Redakupblockedduetorisk |
 
+## <a name="what-to-do-if-you-are-locked-out-of-the-azure-portal"></a>Azure portal kilitlediyseniz ne yapmanız gerekir?
+
+Bir koşullu erişim ilkesinde yanlış bir ayar nedeniyle Azure portal kilitlendiyse:
+
+- Denetim, kuruluşunuzda henüz engellenmeyen başka yöneticiler var. Azure portal erişimi olan bir yönetici, oturum açmanızı etkileyen ilkeyi devre dışı bırakabilir. 
+- Kuruluşunuzdaki yöneticilerin hiçbiri ilkeyi güncelleştirebildiğinden, bir destek isteği gönderebilirsiniz. Microsoft desteği, erişimi engelleyen koşullu erişim ilkelerini gözden geçirebilir ve onayını güncelleştirebilir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory portaldaki oturum açma etkinlik raporları](../reports-monitoring/concept-sign-ins.md)
 - [What If aracını kullanarak koşullu erişim sorunlarını giderme](troubleshoot-conditional-access-what-if.md)
-- [Azure Active Directory 'de koşullu erişim](best-practices.md) için en iyi yöntemler

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082108"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126815"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -143,8 +143,8 @@ Mobil anında iletme bildirimleri, mobil cihazlarda gördüğünüz açılır bi
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-Bu bölümü gerçekleştirmek için bir Firebase hesabı oluşturun ve bulut mesajlaşma 'yı (FCM) etkinleştirin. Firebase Cloud Messaging 'in bir Azure Notification Hub (ANH) örneğine bağlı olduğundan emin olun. Yönergeler için bkz. [Firebase 'ı Azure 'A bağlama](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
-Bu bölüm ayrıca uygulamanızı derlemek için Android Studio sürüm 3,6 veya üstünü kullandığınızı varsayar.
+Bulut mesajlaşma (FCM) ile birlikte ayarlanmış bir Firebase hesabı ve Azure Notification Hub örneğine bağlı olan Firebase bulut mesajlaşma hizmeti. Daha fazla bilgi için bkz. [Iletişim Hizmetleri bildirimleri](https://docs.microsoft.com/azure/communication-services/concepts/notifications) .
+Ayrıca öğreticide, uygulamanızı derlemek için Android Studio sürüm 3,6 veya üstünü kullandığınızı varsaymaktadır.
 
 Firebase Cloud Messaging 'ten bildirim iletileri alabilmesi için Android uygulaması için bir izin kümesi gereklidir. `AndroidManifest.xml`Dosyanızda, *<manifest... >* veya etiketinin hemen arkasına aşağıdaki izin kümesini ekleyin *</application>*
 
@@ -195,21 +195,21 @@ Belirteci almak için bu kod parçacığını ekleyin:
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            Log.w("PushNotification", "getInstanceId failed", task.getException());
                             return;
                         }
 
                         // Get new Instance ID token
                         String deviceToken = task.getResult().getToken();
                         // Log
-                        Log.d(TAG, "Device Registration token retrieved successfully");
+                        Log.d("PushNotification", "Device Registration token retrieved successfully");
                     }
                 });
 ```
 Gelen çağrı anında iletme bildirimleri için cihaz kayıt belirtecini çağıran hizmetler istemci kitaplığıyla kaydedin:
 
 ```java
-String deviceRegistrationToken = "some_token";
+String deviceRegistrationToken = "<Device Token from previous section>";
 try {
     callAgent.registerPushNotification(deviceRegistrationToken).get();
 }
@@ -226,16 +226,16 @@ Firebase Cloud Messaging 'ten yük almak için, *Firebasemessagingservice* Fireb
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private java.util.Map<String, String> pushNotificationMessageData;
+    private java.util.Map<String, String> pushNotificationMessageDataFromFCM;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("PushNotification", "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
         else {
-            pushNotificationMessageData = serializeDictionaryAsJson(remoteMessage.getData());
+            pushNotificationMessageDataFromFCM = remoteMessage.getData();
         }
     }
 }
@@ -252,10 +252,9 @@ Dosyasına aşağıdaki hizmet tanımını ekleyin `AndroidManifest.xml` <applic
         </service>
 ```
 
-Yük alındıktan sonra, `handlePushNotification` bir örnek üzerinde yöntemi çağırarak Işlenecek Iletişim Hizmetleri istemci kitaplığına geçirilebilir `CallAgent` .
+- Yük alındıktan sonra, bir *Callagent* örneği üzerinde *handlepushnotification* yöntemi çağırarak işlenecek *iletişim hizmetleri* istemci kitaplığına geçirilebilir. `CallAgent`Sınıfında yöntemi çağırarak bir örnek oluşturulur `createCallAgent(...)` `CallClient` .
 
 ```java
-java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
 try {
     callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
 }

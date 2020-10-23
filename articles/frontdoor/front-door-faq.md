@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2020
+ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819036"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331592"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -71,7 +71,7 @@ Azure ön kapısı küresel bir hizmettir ve belirli bir Azure bölgesine bağl�
 
 ### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure ön kapısının POP konumları nelerdir?
 
-Azure ön kapısının, Microsoft 'tan Azure CDN aynı POP (varlık noktası) konumları listesi vardır. Pop 'larımızın tüm listesi için, lütfen [Microsoft 'tan Azure CDN pop konumlarına](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)başvurur.
+Azure ön kapısının, Microsoft 'tan Azure CDN aynı POP (varlık noktası) konumları listesi vardır. Pop 'larımızın tüm listesi için, lütfen [Microsoft 'tan Azure CDN pop konumlarına](../cdn/cdn-pop-locations.md)başvurur.
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure ön kapısı, Uygulamam için adanmış bir dağıtım mi yoksa müşteriler arasında mi paylaşılıyor?
 
@@ -91,9 +91,9 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
 
 - Arka uçlarınızın IP adresini, Azure ön kapısından gelen trafiği ve yalnızca Azure 'un altyapı hizmetlerini kabul edecek şekilde yapılandırın. Arka ucunuzu hızlandırma için aşağıdaki IP ayrıntılarına bakın:
  
-    - Ön kapıdaki IPv4 arka uç IP adresi aralığı için [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519) bölümündeki *azurefrontkapısı. arka* uç bölümüne bakın veya [ağ güvenlik gruplarında](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) *azurefrontkapısı. arka uç* hizmet etiketini de kullanabilirsiniz.
+    - Ön kapıdaki IPv4 arka uç IP adresi aralığı için [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519) bölümündeki *azurefrontkapısı. arka* uç bölümüne bakın veya [ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules) *azurefrontkapısı. arka uç* hizmet etiketini de kullanabilirsiniz.
     - Hizmet etiketinde kapsanan ön kapıdaki **IPv6** arka uç IP alanı, Azure IP aralıkları json dosyasında listelenmez. Açık IPv6 adres aralığı arıyorsanız şu anda şu şekilde sınırlıdır `2a01:111:2050::/44`
-    - Sanallaştırılmış ana bilgisayar IP adresleri aracılığıyla Azure 'un [temel altyapı hizmetleri](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) : `168.63.129.16` ve `169.254.169.254`
+    - Sanallaştırılmış ana bilgisayar IP adresleri aracılığıyla Azure 'un [temel altyapı hizmetleri](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) : `168.63.129.16` ve `169.254.169.254`
 
     > [!WARNING]
     > Ön kapısının arka uç IP alanı daha sonra değişebilir, ancak [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)ile tümleştirilebilmemiz için bu işlem yapılmadan önce bu şekilde daha önce de olur. Herhangi bir değişiklik veya güncelleştirme için [Azure IP aralıklarına ve hizmet etiketlerine](https://www.microsoft.com/download/details.aspx?id=56519) abone olmanızı öneririz.
@@ -156,11 +156,15 @@ Azure ön kapısı (AFD), trafiği yönlendirmek için genel IP veya genel olara
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure ön kapısının çeşitli zaman aşımları ve limitleri nelerdir?
 
-[Azure ön kapısının tüm belgelenmiş zaman aşımları ve limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)hakkında bilgi edinin.
+[Azure ön kapısının tüm belgelenmiş zaman aşımları ve limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits)hakkında bilgi edinin.
 
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Kural, ön kapı kuralları altyapısına eklendikten sonra etkili olması için ne kadar sürer?
 
 Kural Altyapısı yapılandırması, bir güncelleştirmeyi tamamlamaya yaklaşık 10 ila 15 dakika sürer. Güncelleştirme tamamlandıktan hemen sonra kuralın etkin olmasını sağlayabilirsiniz. 
+
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-vice-versa"></a>Ön kapı Profilimin arkasındaki Azure CDN yapılandırabilir miyim veya bunun tersini yapabilir miyim?
+
+Azure ön kapısı ve Azure CDN, her iki hizmet de isteklere yanıt vermediğinde aynı Azure Edge sitelerini kullandığından birlikte yapılandırılamaz. 
 
 ## <a name="performance"></a>Performans
 
@@ -179,7 +183,7 @@ Eylül 2019 ' den sonra oluşturulan tüm ön kapılı profiller varsayılan en 
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure ön kapıda hangi sertifikalar destekleniyor?
 
 HTTPS protokolünü bir ön kapı özel etki alanında güvenli bir şekilde teslim etmek üzere etkinleştirmek için, Azure ön kapısının yönettiği veya kendi sertifikanızı kullanan bir sertifikayı kullanmayı seçebilirsiniz.
-Ön kapı yönetimli seçeneği, DigiCert aracılığıyla standart bir TLS/SSL sertifikası sağlar ve ön kapı Key Vault depolanır. Kendi sertifikanızı kullanmayı seçerseniz, desteklenen bir CA 'dan bir sertifika ekleyebilirsiniz ve standart bir TLS, genişletilmiş doğrulama sertifikası ya da bir joker karakter sertifikası olabilir. Otomatik olarak imzalanan sertifikalar desteklenmez. [Özel bir etki alanı IÇIN https 'yi etkinleştirmeyi](https://aka.ms/FrontDoorCustomDomainHTTPS)öğrenin.
+Ön kapı yönetimli seçeneği, DigiCert aracılığıyla standart bir TLS/SSL sertifikası sağlar ve ön kapı Key Vault depolanır. Kendi sertifikanızı kullanmayı seçerseniz, desteklenen bir CA 'dan bir sertifika ekleyebilirsiniz ve standart bir TLS, genişletilmiş doğrulama sertifikası ya da bir joker karakter sertifikası olabilir. Otomatik olarak imzalanan sertifikalar desteklenmez. [Özel bir etki alanı IÇIN https 'yi etkinleştirmeyi](./front-door-custom-domain-https.md)öğrenin.
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Ön kapı, sertifikaların oto döndürmesini destekliyor mu?
 
@@ -220,7 +224,7 @@ TLS 1.0/1.1 özellikli özel etki alanları kullanılırken aşağıdaki şifre 
 
 ### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>TLS protokolü sürümlerini denetlemek için TLS ilkesini yapılandırabilir miyim?
 
-Azure ön kapıdaki en düşük TLS sürümünü, Azure portal veya [azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)aracılığıyla özel etkı alanı https ayarlarında yapılandırabilirsiniz. Şu anda 1,0 ve 1,2 arasında seçim yapabilirsiniz.
+Azure ön kapıdaki en düşük TLS sürümünü, Azure portal veya [azure REST API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)aracılığıyla özel etkı alanı https ayarlarında yapılandırabilirsiniz. Şu anda 1,0 ve 1,2 arasında seçim yapabilirsiniz.
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Ön kapıyı yalnızca belirli şifre paketlerini destekleyecek şekilde yapılandırabilir miyim?
 
@@ -247,7 +251,7 @@ Arka ucunuza, sistem durumu araştırmalarının veya isteklerin iletilmesi içi
 
 1. **Sertifika konu adı uyumsuzluğu**: ön kapı, HTTPS bağlantıları için arka uç ana bilgisayar adı ile eşleşen GEÇERLI bir CA 'dan sertifika sunuyor. Örnek olarak, arka uç ana bilgisayar adı olarak ayarlanmışsa `myapp-centralus.contosonews.net` ve TLS el sıkışması sırasında arka ucunuzun temsil `myapp-centralus.contosonews.net` etmediği sertifika, ilgili ada sahip değilse `*myapp-centralus*.contosonews.net` , ön kapı bağlantıyı reddeder ve bir hatayla sonuçlanır. 
     1. **Çözüm**: bir uyumluluk açısından önerilmemekle karşı, ön kapılarınız için sertifika konu adı denetimini devre dışı bırakarak bu hatayı geçici olarak yapabilirsiniz. Bu, Azure portal ayarları altında ve API 'deki BackendPoolsSettings altında bulunur.
-2. **GEÇERSIZ CA 'Dan arka uç barındırma sertifikası**: yalnızca [geçerli CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca) 'Lardan sertifikalar, ön kapılı arka uçta kullanılabilir. İç CA 'Ların veya otomatik olarak imzalanan sertifikaların sertifikalara izin verilmez.
+2. **GEÇERSIZ CA 'Dan arka uç barındırma sertifikası**: yalnızca [geçerli CA](./front-door-troubleshoot-allowed-ca.md) 'Lardan sertifikalar, ön kapılı arka uçta kullanılabilir. İç CA 'Ların veya otomatik olarak imzalanan sertifikaların sertifikalara izin verilmez.
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Azure ön kapılı istemci/karşılıklı kimlik doğrulaması kullanabilir miyim?
 

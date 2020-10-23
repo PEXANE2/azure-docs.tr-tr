@@ -12,18 +12,18 @@ ms.date: 08/31/2020
 ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 47902b29da1dfe20fb54d633a0559e6a337fd771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89183696"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206678"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>ADAL.NET 'den MSAL.NET 'e aracı kullanan Android uygulamalarını geçirme
 
-Şu anda .NET için Azure Active Directory kimlik doğrulama kitaplığı 'nı (ADAL.NET) ve bir [kimlik doğrulama Aracısı](brokered-auth.md)'nı kullanarak bir Xamarin Android uygulamanız varsa, [.net Için Microsoft kimlik doğrulama kitaplığı ](msal-overview.md) 'na geçiş süresi (msal.net).
+Şu anda .NET için Azure Active Directory kimlik doğrulama kitaplığı 'nı (ADAL.NET) ve bir [kimlik doğrulama Aracısı](msal-android-single-sign-on.md)'nı kullanarak bir Xamarin Android uygulamanız varsa, [.net Için Microsoft kimlik doğrulama kitaplığı ](msal-overview.md) 'na geçiş süresi (msal.net).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir aracı ([Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) veya [Intune şirket portalı](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)) Ile tümleştirilmiş bir Xamarin Android uygulaması ve MSAL.NET 'e geçirmeniz gereken adal.net.
 

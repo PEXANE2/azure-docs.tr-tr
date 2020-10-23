@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9f42359cc843a934cf1258576d13eec8af2279cc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9afe34097d005daeedf46fbaf30b37e53a8e3658
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687663"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132049"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn maliyet yönetimi raporlarını anlama
 
@@ -205,5 +205,5 @@ Herhangi bir raporu görüntülerken **Eylemler**'e tıklayın ve ardından **T�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Cloudyn'deki raporlar hakkında bilgi edinmek için bkz. [Cloudyn raporlarını kullanma](../../cost-management/use-reports.md).
-- Raporları kullanarak [pano](../../cost-management/dashboards.md) oluşturmayı öğrenin.
+- Cloudyn'deki raporlar hakkında bilgi edinmek için bkz. [Cloudyn raporlarını kullanma](./use-reports.md).
+- Raporları kullanarak [pano](./dashboards.md) oluşturmayı öğrenin.

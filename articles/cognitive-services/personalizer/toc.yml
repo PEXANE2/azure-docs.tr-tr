@@ -109,6 +109,8 @@
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: Kaynaklar
   items:
+    - name: Destek ve yardım seçenekleri
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: Sorun giderme
       href: troubleshooting.md
     - name: Bölgesel kullanılabilirlik
@@ -121,7 +123,3 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: Fiyatlandırma
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/personalizer'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/921562-personalizer'

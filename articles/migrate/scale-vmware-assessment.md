@@ -3,12 +3,12 @@ title: Azure geçişi ile Azure 'a geçiş için çok sayıda VMware VM 'yi değ
 description: Azure geçişi hizmeti kullanılarak Azure 'a geçiş için çok sayıda VMware VM 'lerinin nasıl değerlendirileneceğini açıklar. e
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171919"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314109"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda VMware VM 'lerini değerlendirin
 
@@ -26,7 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 
 
 > [!NOTE]
-> Ölçeği değerlendirmek için birkaç VM 'yi değerlendirmek üzere kavram kanıtı denemek istiyorsanız, [öğretici serimizi](tutorial-prepare-vmware.md) izleyin
+> Ölçeği değerlendirmek için birkaç VM 'yi değerlendirmek üzere kavram kanıtı denemek istiyorsanız, [öğretici serimizi](./tutorial-discover-vmware.md) izleyin
 
 ## <a name="plan-for-assessment"></a>Değerlendirme planı
 
@@ -78,7 +78,7 @@ Sunucu değerlendirmesi için Azure ve VMware 'yi hazırlayın.
 2. Azure hesabınız için Azure geçişi ile etkileşime geçmek üzere izinleri ayarlayın.
 3. VMware 'i değerlendirme için hazırlayın.
 
-Bu ayarları yapılandırmak için [Bu öğreticideki](tutorial-prepare-vmware.md) yönergeleri izleyin.
+Bu ayarları yapılandırmak için [Bu öğreticideki](./tutorial-discover-vmware.md) yönergeleri izleyin.
 
 
 ## <a name="create-a-project"></a>Proje oluşturma
@@ -96,7 +96,7 @@ Planlama gereksinimlerinize uygun olarak şunları yapın:
 1. Geçiş planlaması hazırlığı sırasında değerlendirmeleri gözden geçirin.
 
 
-Bu ayarları yapılandırmak için [Bu öğreticideki](tutorial-assess-vmware.md) yönergeleri izleyin.
+Bu ayarları yapılandırmak için [Bu öğreticideki](./tutorial-assess-vmware-azure-vm.md) yönergeleri izleyin.
     
 
 ## <a name="next-steps"></a>Sonraki adımlar

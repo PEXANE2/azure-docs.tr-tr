@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86133705"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369429"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Çok katmanlı SAP NetWeaver uygulama dağıtımı için olağanüstü durum kurtarmayı ayarlama
 
@@ -24,7 +24,7 @@ Site Recovery, şunları yapabilirsiniz:
 
 [Azure Site Recovery](site-recovery-overview.md)kullanarak SAP NetWeaver uygulama dağıtımlarını koruyabilirsiniz. Bu makalede, Site Recovery kullanarak başka bir Azure veri merkezine çoğalttığınızda Azure 'da üç katmanlı SAP NetWeaver dağıtımını korumaya yönelik en iyi uygulamalar ele alınmaktadır. Makalesinde desteklenen senaryolar ve Konfigürasyonlar ve yük devretme testi (olağanüstü durum kurtarma detayları) ve gerçek yük devretme işlemleri açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki görevleri nasıl yapabileceğinizi öğrendiğinizden emin olun:
 
@@ -39,11 +39,11 @@ Başlamadan önce, aşağıdaki görevleri nasıl yapabileceğinizi öğrendiği
 
 Aşağıdaki senaryolarda bir olağanüstü durum kurtarma çözümü uygulamak için Site Recovery kullanabilirsiniz:
 * Bir Azure veri merkezinde çalışan SAP sistemleriniz var ve bunları başka bir Azure veri merkezine (Azure 'dan Azure 'a olağanüstü durum kurtarma) çoğaltıyoruz. 
-   Daha fazla bilgi için bkz. [Azure 'Dan Azure 'a çoğaltma mimarisi](https://aka.ms/asr-a2a-architecture).
+   Daha fazla bilgi için bkz. [Azure 'Dan Azure 'a çoğaltma mimarisi](./azure-to-azure-architecture.md).
 * Şirket içinde VMware (veya fiziksel) sunucularda çalışan SAP sistemleri vardır. Ayrıca SAP sistemlerini, bir Azure veri merkezinde (VMware 'den Azure 'a olağanüstü durum kurtarma) bir olağanüstü durum kurtarma sitesine çoğaltmakta olursunuz. 
-   Bu senaryo için bazı ek bileşenler gereklidir. Daha fazla bilgi için bkz. [VMware 'Den Azure 'a çoğaltma mimarisi](https://aka.ms/asr-v2a-architecture).
+   Bu senaryo için bazı ek bileşenler gereklidir. Daha fazla bilgi için bkz. [VMware 'Den Azure 'a çoğaltma mimarisi](./vmware-azure-architecture.md).
 * Şirket içi Hyper-V üzerinde çalışan SAP sistemlerine sahipsiniz. Ayrıca SAP sistemlerini, bir Azure veri merkezinde (Hyper-V-Azure olağanüstü durum kurtarma) bir olağanüstü durum kurtarma sitesine çoğaltmakta olursunuz.
-   Bu senaryo için bazı ek bileşenler gereklidir. Daha fazla bilgi için bkz. [Hyper-V-Azure çoğaltma mimarisi](https://aka.ms/asr-h2a-architecture).
+   Bu senaryo için bazı ek bileşenler gereklidir. Daha fazla bilgi için bkz. [Hyper-V-Azure çoğaltma mimarisi](./hyper-v-azure-architecture.md).
 
 Bu makalede, **Azure 'Dan Azure 'a** olağanüstü durum kurtarma senaryosu kullanıyoruz. Senaryo, Site Recovery SAP olağanüstü durum kurtarma özelliklerini gösterir. Site Recovery çoğaltma uygulamaya özgü olmadığından, açıklanan işlemin diğer senaryolar için de uygulanması beklenir.
 

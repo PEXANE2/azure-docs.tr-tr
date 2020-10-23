@@ -2,25 +2,22 @@
 title: Azure Otomasyonu’nda modülleri yönetme
 description: Bu makalede, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarında cmdlet 'leri etkinleştirmek için PowerShell modüllerinin nasıl kullanılacağı açıklanır.
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/31/2020
+ms.subservice: shared-capabilities
+ms.date: 10/22/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187379"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458158"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu’nda modülleri yönetme
 
 Azure Otomasyonu, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarında cmdlet 'leri etkinleştirmek için bir dizi PowerShell modülü kullanır. Desteklenen modüller şunlardır:
 
-* [Az. Automation Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
-* [Azurerd. Automation Azure PowerShell](/powershell/module/azurerm.automation/?view=azurermps-6.13.0).
+* [Az. Automation Azure PowerShell](/powershell/azure/new-azureps-module-az).
+* [Azurerd. Automation Azure PowerShell](/powershell/module/azurerm.automation/).
 * Diğer PowerShell modülleri.
 * İç `Orchestrator.AssetManagement.Cmdlets` modül.
 * Python 2 modülleri.
@@ -106,9 +103,9 @@ Azure Otomasyonu, cmdlet 'lerini kullanılabilir hale getirmek için özel bir m
 
 ## <a name="migrate-to-az-modules"></a>Az modüllere geçir
 
-Bu bölüm, otomasyondaki az modüllere nasıl geçiş yapılacağını anlatır. Daha fazla bilgi için bkz. [Azurerd 'Den az ' a geçiş Azure PowerShell](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0). 
+Bu bölüm, otomasyondaki az modüllere nasıl geçiş yapılacağını anlatır. Daha fazla bilgi için bkz. [Azurerd 'Den az ' a geçiş Azure PowerShell](/powershell/azure/migrate-from-azurerm-to-az).
 
-Aynı Otomasyon hesabında Azurermmodules ve az modules çalıştırılmasını önermiyoruz. Azurerd 'den az ' a geçiş yapmak istediğinizden emin olduğunuzda, tam bir geçişe tam olarak kaydedilmesi en iyisidir. Otomasyon, genellikle Otomasyon hesabı içindeki korumalı alanlar 'ı başlangıç zamanlarında kaydedilecek şekilde yeniden kullanır. Tam modül geçişi yapmazsanız, yalnızca Azurere modüllerini kullanan bir iş başlatabilir ve ardından yalnızca az modüller kullanan başka bir iş başlatabilirsiniz. Korumalı alan yakında çöker ve modüllerin uyumlu olmadığı belirten bir hata alırsınız. Bu durum, belirli bir runbook veya yapılandırma için rastgele oluşan kilitlenmelere neden olur. 
+Aynı Otomasyon hesabında Azurermmodules ve az modules çalıştırılmasını önermiyoruz. Azurerd 'den az ' a geçiş yapmak istediğinizden emin olduğunuzda, tam bir geçişe tam olarak kaydedilmesi en iyisidir. Otomasyon, genellikle Otomasyon hesabı içindeki korumalı alanlar 'ı başlangıç zamanlarında kaydedilecek şekilde yeniden kullanır. Tam modül geçişi yapmazsanız, yalnızca Azurere modüllerini kullanan bir iş başlatabilir ve ardından yalnızca az modüller kullanan başka bir iş başlatabilirsiniz. Korumalı alan yakında çöker ve modüllerin uyumlu olmadığı belirten bir hata alırsınız. Bu durum, belirli bir runbook veya yapılandırma için rastgele oluşan kilitlenmelere neden olur.
 
 >[!NOTE]
 >Yeni bir Otomasyon hesabı oluşturduğunuzda, az modüllere geçişten sonra bile Otomasyon, Azurermmodules modüllerini varsayılan olarak de yüklerse. Öğretici runbook 'ları Azurerd cmdlet 'leriyle yine de güncelleştirebilirsiniz. Ancak, bu runbook 'ları çalıştırmamanız gerekir.
@@ -119,27 +116,27 @@ Az modüllere geçirmeden önce, tüm runbook 'ları ve DSC yapılandırmaların
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Azurerd modülleri kullanan tüm runbook 'ları durdurma ve zamanlamayı kaldırma
 
-Azurerd modüllerini kullanan mevcut runbook 'ları veya DSC yapılandırmasını çalıştırmazsanız emin olmak için, etkilenen tüm runbook 'ları ve konfigürasyonları durdurmanız ve zamanlamanın zamanlamasını geri almanız gerekir. İlk olarak, gerekirse daha sonra öğeyi yeniden zamangelebilmeniz için her runbook veya DSC yapılandırmasını ve zamanlamalarını ayrı ayrı gözden geçirdiğinizden emin olun. 
+Azurerd modüllerini kullanan mevcut runbook 'ları veya DSC yapılandırmasını çalıştırmazsanız emin olmak için, etkilenen tüm runbook 'ları ve konfigürasyonları durdurmanız ve zamanlamanın zamanlamasını geri almanız gerekir. İlk olarak, gerekirse daha sonra öğeyi yeniden zamangelebilmeniz için her runbook veya DSC yapılandırmasını ve zamanlamalarını ayrı ayrı gözden geçirdiğinizden emin olun.
 
-Zamanlamalarınızı kaldırmaya hazırsanız, Azure portal ya da [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) cmdlet 'ini kullanabilirsiniz. Bkz. [zamanlamayı kaldırma](schedules.md#remove-a-schedule).
+Zamanlamalarınızı kaldırmaya hazırsanız, Azure portal ya da [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) cmdlet 'ini kullanabilirsiniz. Bkz. [zamanlamayı kaldırma](schedules.md#remove-a-schedule).
 
 ### <a name="remove-azurerm-modules"></a>Azurerd modüllerini kaldır
 
-Az modülleri içeri aktarmadan önce Azurere modüllerini kaldırmak mümkündür. Ancak, bunu yaparsanız, kaynak denetimi eşitlemesini kesintiye uğratabilir ve hala zamanlanan betiklerin başarısız olmasına neden olur. Modülleri kaldırmaya karar verirseniz, bkz. [Azurerd 'Yi kaldırma](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm).
+Az modülleri içeri aktarmadan önce Azurere modüllerini kaldırmak mümkündür. Ancak, bunu yaparsanız, kaynak denetimi eşitlemesini kesintiye uğratabilir ve hala zamanlanan betiklerin başarısız olmasına neden olur. Modülleri kaldırmaya karar verirseniz, bkz. [Azurerd 'Yi kaldırma](/powershell/azure/migrate-from-azurerm-to-az#uninstall-azurerm).
 
 ### <a name="import-az-modules"></a>İçeri Aktar az Modules
 
 Az modülünün Otomasyon hesabınıza aktarılması, modülün runbook 'ların kullandığı PowerShell oturumuna otomatik olarak aktarılmaz. Modüller aşağıdaki durumlarda PowerShell oturumuna aktarılır:
 
 * Bir runbook bir modülden bir cmdlet istediğinde.
-* Bir runbook, modülü [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 'i ile açıkça içeri aktardığında.
+* Bir runbook, modülü [Import-Module](/powershell/module/microsoft.powershell.core/import-module) cmdlet 'i ile açıkça içeri aktardığında.
 * Bir runbook başka bir bağımlı modülü içeri aktardığında.
 
 Azure portal az modülleri içeri aktarabilirsiniz. Tüm az. Automation modülünü değil, yalnızca ihtiyacınız olan az modülleri içe aktarmayı unutmayın. [Az. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) diğer az modüllerle ilgili bir bağımlılık olduğundan, bu modülü diğerlerinden önce içeri aktardığınızdan emin olun.
 
-1. Otomasyon hesabınızdan, **paylaşılan kaynaklar**altında **modüller**' i seçin. 
+1. Otomasyon hesabınızdan, **paylaşılan kaynaklar**altında **modüller**' i seçin.
 2. **Galeriye gözatamazsınız**' ı seçin.  
-3. Arama çubuğuna modül adını (örneğin, `Az.Accounts` ) girin. 
+3. Arama çubuğuna modül adını (örneğin, `Az.Accounts` ) girin.
 4. PowerShell modülü sayfasında, modülü Otomasyon hesabınıza aktarmak için **Içeri aktar** ' ı seçin.
 
     ![Otomasyon hesabınıza modülleri içeri aktarma ekran görüntüsü](../media/modules/import-module.png)
@@ -150,25 +147,36 @@ Ayrıca, içeri aktarılacak modül için arama yaparak bu [PowerShell Galerisi]
 
 ### <a name="test-your-runbooks"></a>Runbook 'larınızı test edin
 
-Az modülleri Otomasyon hesabına aktardıktan sonra, yeni modülleri kullanmak için Runbook 'larınızı ve DSC yapılandırmasını düzenleyebilirsiniz. Yeni cmdlet 'leri kullanmak için Runbook 'un değiştirilmesini sınamanın bir yolu, `Enable-AzureRmAlias -Scope Process` runbook 'un başlangıcında komutunu kullanmaktır. Bu komut, runbook 'a eklenerek, betik değişiklik yapılmadan çalıştırılabilir. 
+Az modülleri Otomasyon hesabına aktardıktan sonra, yeni modülleri kullanmak için Runbook 'larınızı ve DSC yapılandırmasını düzenleyebilirsiniz. Yeni cmdlet 'leri kullanmak için Runbook 'un değiştirilmesini sınamanın bir yolu, `Enable-AzureRmAlias -Scope Process` runbook 'un başlangıcında komutunu kullanmaktır. Bu komut, runbook 'a eklenerek, betik değişiklik yapılmadan çalıştırılabilir.
 
 ## <a name="author-modules"></a>Yazma modülleri
 
-Azure Otomasyonu 'nda kullanılmak üzere özel bir PowerShell modülü yazdığınızda bu bölümdeki hususları izlemeniz önerilir. Modülünüzü içeri aktarmaya hazırlamak için modül klasörüyle aynı ada sahip en az bir psd1, psm1 veya PowerShell Module **. dll** dosyası oluşturmanız gerekir. Daha sonra, Azure Otomasyonu 'nun dosyayı tek bir dosya olarak içe aktarabilmesi için modül klasörünü sıkıştırarak. **. Zip** paketi, içerilen modül klasörüyle aynı ada sahip olmalıdır. 
+Azure Otomasyonu 'nda kullanılmak üzere özel bir PowerShell modülü yazdığınızda bu bölümdeki hususları izlemeniz önerilir. Modülünüzü içeri aktarmaya hazırlamak için modül klasörüyle aynı ada sahip en az bir. psd1,. psm1 veya PowerShell Module **. dll** dosyası oluşturmanız gerekir. Daha sonra, Azure Otomasyonu 'nun dosyayı tek bir dosya olarak içe aktarabilmesi için modül klasörünü sıkıştırarak. **. Zip** paketi, içerilen modül klasörüyle aynı ada sahip olmalıdır.
 
-PowerShell modülü yazma hakkında daha fazla bilgi edinmek için bkz. [PowerShell betik modülü yazma](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7).
+PowerShell modülü yazma hakkında daha fazla bilgi edinmek için bkz. [PowerShell betik modülü yazma](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module).
 
 ### <a name="version-folder"></a>Sürüm klasörü
 
-Modülünüzün **. zip** paketine bir sürüm klasörü eklemeyin. Bu sorun runbook 'ların bir kaygısını azaltır, ancak durum yapılandırması (DSC) hizmetiyle ilgili bir soruna neden olur. Azure Otomasyonu, modül durum yapılandırması tarafından yönetilen düğümlere dağıtıldığında otomatik olarak sürüm klasörünü oluşturur. Bir sürüm klasörü varsa, iki örnek ile sonlandırın. DSC modülünün örnek klasör yapısı aşağıda verilmiştir:
+PowerShell yan yana Modül sürümü oluşturma, PowerShell 'de bir modülün birden fazla sürümünü kullanmanıza olanak sağlar. Bu, test edilmiş ve yalnızca belirli bir PowerShell modülünün bir sürümüne karşı çalışan, ancak diğer betikler aynı PowerShell modülünün daha yeni bir sürümünü gerektiren eski betikleriniz varsa yararlı olabilir.
+
+Birden çok sürüm içerecek şekilde PowerShell modülleri oluşturmak için, modül klasörünü oluşturun ve ardından, kullanılabilir olmasını istediğiniz modülün her sürümü için bu modül klasörü içinde bir klasör oluşturun. Aşağıdaki örnekte, *TestModule* adlı bir modül 1.0.0 ve 2.0.0 olmak üzere iki sürüm sağlar.
+
+```dos
+TestModule
+   1.0.0
+   2.0.0
+```
+
+Sürüm klasörlerinin her biri içinde, ilgili sürüm klasörüne bir modül oluşturan PowerShell. psm1,. psd1 veya PowerShell Module **. dll** dosyalarını kopyalayın. Azure Otomasyonu 'nun dosyayı tek bir. zip dosyası olarak içe aktarabilmesi için modül klasörünü ZIP. Automation yalnızca, içeri aktarılan modülün en yüksek sürümünü gösteriyorsa, modül paketi modülün yan yana sürümlerini içeriyorsa, runbook 'larınızda veya DSC yapılandırmalarında kullanıma sunulmuştur.  
+
+Otomasyon aynı paket içinde yan yana sürümler içeren modülleri destekleirken, modül paketi içeri aktarmaları arasında bir modülün birden çok sürümünün kullanılmasını desteklemez. Örneğin, 1 ve 2 sürümlerini Otomasyon hesabınıza içeren **A modülünü**içeri aktarırsınız. Daha sonra, **A modülünü** 3 ve 4 sürümlerini içerecek şekilde güncelleştirdiğinizde, Otomasyon hesabınıza aktardığınızda yalnızca 3 ve 4 sürümleri herhangi bir runbook 'TA veya DSC yapılandırmasında kullanılabilir. Tüm 1, 2, 3 ve 4 sürümlerinin kullanılabilir olmasını istiyorsanız, içeri aktardığınız. zip dosyası sürüm 1, 2, 3 ve 4 ' ü içermelidir.
+
+Runbook 'lar arasında aynı modülün farklı sürümlerini kullanacaksanız, cmdlet 'ini kullanarak runbook 'unuz üzerinde kullanmak istediğiniz sürümü her zaman bildirmeniz `Import-Module` ve parametresini eklemeniz gerekir `-RequiredVersion <version>` . Kullanmak istediğiniz sürüm en son sürümse bile. Bunun nedeni, runbook işlerinin aynı korumalı alanda çalıştırılabileceğinden kaynaklanır. Korumalı alan, belirli bir sürüm numarasına ait bir modülü zaten açık bir biçimde yüklemiştir, çünkü o korumalı alanda önceki bir iş bu şekilde olduğu gibi, bu korumalı alanda gelecekte yapılacak işler o modülün en son sürümünü otomatik olarak yüklemez. Bunun nedeni, onun bazı sürümünün korumalı alana zaten yüklenmiş olması olabilir.
+
+Bir DSC kaynağı için, belirli bir sürümü belirtmek üzere aşağıdaki komutu kullanın:
 
 ```powershell
-myModule
-  - DSCResources
-    - myResourceFolder
-      myResourceModule.psm1
-      myResourceSchema.mof
-  myModuleManifest.psd1
+Import-DscResource -ModuleName <ModuleName> -ModuleVersion <version>
 ```
 
 ### <a name="help-information"></a>Yardım bilgileri
@@ -219,7 +227,7 @@ Modülünüzün her cmdlet için bir özeti, açıklama ve yardım URI 'SI ekley
 
 ### <a name="connection-type"></a>Bağlantı türü
 
-Modül bir dış hizmete bağlanıyorsa [özel bir tümleştirme modülü](#custom-modules)kullanarak bir bağlantı türü tanımlayın. Modüldeki her cmdlet, bu bağlantı türünün bir örneğini (bağlantı nesnesi) bir parametre olarak kabul etmelidir. Kullanıcılar, bir cmdlet 'i her çağırışınızda bağlantı varlığının parametrelerini cmdlet 'inin karşılık gelen parametrelere eşler. 
+Modül bir dış hizmete bağlanıyorsa [özel bir tümleştirme modülü](#custom-modules)kullanarak bir bağlantı türü tanımlayın. Modüldeki her cmdlet, bu bağlantı türünün bir örneğini (bağlantı nesnesi) bir parametre olarak kabul etmelidir. Kullanıcılar, bir cmdlet 'i her çağırışınızda bağlantı varlığının parametrelerini cmdlet 'inin karşılık gelen parametrelere eşler.
 
 ![Azure portal özel bir bağlantı kullanın](../media/modules/connection-create-new.png)
 
@@ -289,11 +297,11 @@ Modülünüzün tüm cmdlet 'leri durum bilgisiz yapın. Birden çok runbook iş
 
 ### <a name="module-dependency"></a>Modül bağımlılığı
 
-Modülün XCOPY kullanılarak kopyalanabilen bir pakette tam olarak bulunduğundan emin olun. Automation modülleri, runbook 'lar yürütülürken Otomasyon korumalı alanlarına dağıtılır. Modüller, onları çalıştıran konaktan bağımsız olarak çalışmalıdır. 
+Modülün XCOPY kullanılarak kopyalanabilen bir pakette tam olarak bulunduğundan emin olun. Automation modülleri, runbook 'lar yürütülürken Otomasyon korumalı alanlarına dağıtılır. Modüller, onları çalıştıran konaktan bağımsız olarak çalışmalıdır.
 
-Bir modül paketini oluşturup taşıyabilmeniz ve başka bir konağın PowerShell ortamına aktarıldığında normal olarak çalışmasını sağlayabilirsiniz. Bunun gerçekleşmesi için, modülün, modül Otomasyonu 'na aktarıldığında sıkıştırılmış modül klasörü dışındaki dosyalara bağlı olmadığından emin olun. 
+Bir modül paketini oluşturup taşıyabilmeniz ve başka bir konağın PowerShell ortamına aktarıldığında normal olarak çalışmasını sağlayabilirsiniz. Bunun gerçekleşmesi için, modülün, modül Otomasyonu 'na aktarıldığında sıkıştırılmış modül klasörü dışındaki dosyalara bağlı olmadığından emin olun.
 
-Modülünüzün bir konaktaki benzersiz kayıt defteri ayarlarına bağlı olmaması gerekir. Örnekler, bir ürün yüklendiğinde yapılan ayarlardır. 
+Modülünüzün bir konaktaki benzersiz kayıt defteri ayarlarına bağlı olmaması gerekir. Örnekler, bir ürün yüklendiğinde yapılan ayarlardır.
 
 ### <a name="module-file-paths"></a>Modül dosyası yolları
 
@@ -301,7 +309,7 @@ Modüldeki tüm dosyaların 140 karakterden kısa olan yollara sahip olduğundan
 
 ## <a name="import-modules"></a>Modülleri içeri aktarma
 
-Bu bölümde, Otomasyon hesabınıza bir modül içeri aktarabileceğiniz çeşitli yollar tanımlanmaktadır. 
+Bu bölümde, Otomasyon hesabınıza bir modül içeri aktarabileceğiniz çeşitli yollar tanımlanmaktadır.
 
 ### <a name="import-modules-in-the-azure-portal"></a>Azure portal modülleri içeri aktar
 
@@ -309,13 +317,13 @@ Azure portal bir modül içeri aktarmak için:
 
 1. Otomasyon hesabınıza gidin.
 2. **Paylaşılan kaynaklar**altında **modüller**' i seçin.
-3. **Modül Ekle**' yi seçin. 
+3. **Modül Ekle**' yi seçin.
 4. Modülünüzü içeren **. zip** dosyasını seçin.
 5. İşlemi içeri aktarmaya başlamak için **Tamam ' ı** seçin.
 
 ### <a name="import-modules-by-using-powershell"></a>PowerShell kullanarak modülleri içeri aktarma
 
-[Yeni-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) cmdlet 'Ini kullanarak Otomasyon hesabınıza bir modül aktarabilirsiniz. Cmdlet 'i Module. zip paketi için bir URL alır.
+[Yeni-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule) cmdlet 'Ini kullanarak Otomasyon hesabınıza bir modül aktarabilirsiniz. Cmdlet 'i Module. zip paketi için bir URL alır.
 
 ```azurepowershell-interactive
 New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -358,8 +366,8 @@ Modülle ilgili sorunlarınız varsa veya bir modülün önceki bir sürümüne 
 
 Azure portal bir modülü kaldırmak için:
 
-1. Otomasyon hesabınıza gidin. **Paylaşılan kaynaklar**altında **modüller**' i seçin. 
-2. Kaldırmak istediğiniz modülü seçin. 
+1. Otomasyon hesabınıza gidin. **Paylaşılan kaynaklar**altında **modüller**' i seçin.
+2. Kaldırmak istediğiniz modülü seçin.
 3. Modül sayfasında **Sil**' i seçin. Bu modül [varsayılan modüllerden](#default-modules)biri Ise, Otomasyon hesabı oluşturulduğunda var olan sürüme geri döner.
 
 ### <a name="delete-modules-by-using-powershell"></a>PowerShell kullanarak modülleri silme
@@ -372,5 +380,6 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure PowerShell modüllerini kullanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlama](/powershell/azure/get-started-azureps?view=azps-3.7.0).
-* PowerShell modülleri oluşturma hakkında daha fazla bilgi için bkz. [Windows PowerShell modülü yazma](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7).
+* Azure PowerShell modüllerini kullanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlama](/powershell/azure/get-started-azureps).
+
+* PowerShell modülleri oluşturma hakkında daha fazla bilgi için bkz. [Windows PowerShell modülü yazma](/powershell/scripting/developer/module/writing-a-windows-powershell-module).

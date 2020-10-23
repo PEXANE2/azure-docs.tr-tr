@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyici aracı veri toplamayı yapılandırma | Microsoft Docs
 description: Bu makalede stdout/stderr ve ortam değişkenleri günlük toplamayı denetlemek için kapsayıcılar aracısının Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 675b9c9c109ee8bb3b0087523bf5af46ce2c5270
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 1644e541ee873a5bb058dd9bde2b82a907a400ff
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994613"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320403"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici'de aracı veri koleksiyonunu yapılandırma
 
@@ -29,7 +29,7 @@ Bunu sıfırdan oluşturmak zorunda kalmadan özelleştirmelerinizle kolayca dü
 
 ### <a name="data-collection-settings"></a>Veri toplama ayarları
 
-Aşağıda, veri toplamayı denetlemek için yapılandırılabilecek ayarlar verilmiştir.
+Aşağıdaki tabloda, veri toplamayı denetlemek için yapılandırabileceğiniz ayarlar açıklanmaktadır:
 
 | Anahtar | Veri türü | Değer | Açıklama |
 |--|--|--|--|
@@ -43,16 +43,24 @@ Aşağıda, veri toplamayı denetlemek için yapılandırılabilecek ayarlar ver
 | `[log_collection_settings.enrich_container_logs] enabled =` | Boole | true veya false | Bu ayar, ad ve görüntü özelliği değerlerini doldurmak için kapsayıcı günlüğü zenginleştirme özelliğini denetler<br> kümedeki tüm kapsayıcı günlükleri için ContainerLog tablosuna yazılan her günlük kaydı için.<br> `enabled = false`ConfigMap içinde belirtilmediğinde varsayılan değer olarak belirlenir. |
 | `[log_collection_settings.collect_all_kube_events]` | Boole | true veya false | Bu ayar tüm türlerin Kume olayları koleksiyonuna izin verir.<br> Varsayılan olarak, *normal* tür Kume olayları toplanmaz. Bu ayar olarak ayarlandığında `true` , *normal* olaylar artık filtrelenmez ve tüm olaylar toplanır.<br> Varsayılan olarak, bu olarak ayarlanır `false` . |
 
+### <a name="metric-collection-settings"></a>Ölçüm koleksiyonu ayarları
+
+Aşağıdaki tabloda, ölçüm koleksiyonunu denetlemek için yapılandırabileceğiniz ayarlar açıklanmaktadır:
+
+| Anahtar | Veri türü | Değer | Açıklama |
+|--|--|--|--|
+| `[metric_collection_settings.collect_kube_system_pv_metrics] enabled =` | Boole | true veya false | Bu ayar, KUIN-System ad alanında kalıcı birim (BD) kullanım ölçümlerinin toplanmasını sağlar. Varsayılan olarak, Kuto-System ad alanındaki kalıcı birim taleplerini içeren kalıcı birimler için kullanım ölçümleri toplanmaz. Bu ayar olarak ayarlandığında `true` , tüm ad alanları için BD kullanım ölçümleri toplanır. Varsayılan olarak, bu olarak ayarlanır `false` . |
+
 ConfigMaps genel bir liste ve aracıya yalnızca bir ConfigMap uygulanmış olabilir. Koleksiyonlar üzerine başka bir ConfigMaps olamaz.
 
 ## <a name="configure-and-deploy-configmaps"></a>ConfigMaps yapılandırma ve dağıtma
 
 ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak için aşağıdaki adımları gerçekleştirin.
 
-1. ConfigMap YAML dosyasını şablon olarak [indirin](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) ve kapsayıcı-AZM-MS-agentconfig. YAML olarak kaydedin. 
+1. [ConfigMap YAML dosyasını şablon](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-agentconfig.yaml) olarak indirin ve kapsayıcı-AZM-MS-agentconfig. YAML olarak kaydedin. 
 
-   >[!NOTE]
-   >ConfigMap şablonu kümede zaten mevcut olduğundan, bu adım Azure Red Hat OpenShift ile çalışırken gerekli değildir.
+   > [!NOTE]
+   > ConfigMap şablonu kümede zaten varolduğundan, Azure Red Hat OpenShift ile çalışırken bu adım gerekli değildir.
 
 2. Stdout, stderr ve/veya ortam değişkenlerini toplamak için, özelleştirmelerinizle ConfigMap YAML dosyasını düzenleyin. Azure Red Hat OpenShift için ConfigMap YAML dosyasını düzenliyorsanız, önce `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` dosyayı bir metin düzenleyicisinde açmak için komutunu çalıştırın.
 

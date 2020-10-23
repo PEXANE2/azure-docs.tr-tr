@@ -3,15 +3,15 @@ title: Hizmet bağlantısı Windows sanal masaüstü-Azure sorunlarını giderme
 description: Windows sanal masaüstü kiracı ortamında hizmet bağlantıları ayarlanırken sorunları çözme.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089913"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108958"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows sanal masaüstü hizmeti bağlantıları
 
@@ -45,6 +45,13 @@ Kullanıcı, uzak masaüstü istemcileri başlatabilir ve kimlik doğrulaması y
 Bu hata genellikle, bir Kullanıcı aboneliğini bir Azure AD kiracısından diğerine taşıdıktan sonra görüntülenir. Sonuç olarak, bunlar hala eski Azure AD kiracısına bağlı olduğundan hizmet Kullanıcı atamalarının izini kaybeder.
 
 Bunu çözmek için tüm yapmanız gereken, kullanıcıları uygulama gruplarına yeniden atayabilir.
+
+Bu durum, bir CSP sağlayıcısı aboneliği oluşturup müşteriye aktarıldığında de gerçekleşebilir. Bu sorunu çözmek için kaynak sağlayıcıyı yeniden kaydedin.
+
+1. Azure Portal’da oturum açın.
+2. **Aboneliğe**gidin ve aboneliğinizi seçin.
+3. Sayfanın sol tarafındaki menüde **kaynak sağlayıcısı**' nı seçin.
+4. **Microsoft. DesktopVirtualization**bulun ve seçin, sonra **yeniden kaydet**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

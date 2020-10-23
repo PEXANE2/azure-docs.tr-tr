@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd29bfafe2d37b6a34031e6962cc27bfff0006c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968394"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108023"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Izleyici Aracısı için veri toplamayı yapılandırma (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve nereye gönderileceğini belirtir. Bu makalede, Azure Izleyici Aracısı kullanılarak sanal makinelerden veri toplamak için bir veri toplama kuralının nasıl oluşturulacağı açıklanır.
@@ -64,8 +64,8 @@ Veri toplama kuralının ayrıntılarını ve VM kümesiyle ilişkilendirmeyi g�
 ## <a name="createusingrestapi"></a>REST API kullanarak oluşturma
 REST API kullanarak bir DCR ve ilişki oluşturmak için aşağıdaki adımları izleyin. 
 1. [Örnek DCR](data-collection-rule-overview.md#sample-data-collection-rule)' de gösterilen JSON BIÇIMINI kullanarak DCR dosyasını el ile oluşturun.
-2. [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples)kullanarak kural oluşturun.
-3. [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples)kullanarak, her bir sanal makine için veri toplama kuralına bir ilişki oluşturun.
+2. [REST API](/rest/api/monitor/datacollectionrules/create#examples)kullanarak kural oluşturun.
+3. [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples)kullanarak, her bir sanal makine için veri toplama kuralına bir ilişki oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

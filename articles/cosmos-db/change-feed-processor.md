@@ -6,15 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a802cc3d6178302445e0c31c52785d00207d0bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998552"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277032"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
 
@@ -68,9 +68,9 @@ Bir konak örneğinin normal yaşam döngüsü şu şekildedir:
 
 Değişiklik akışı işlemcisi, Kullanıcı kodu hatalarına karşı dayanıklı olur. Bu, temsilci uygulamanızın işlenmeyen bir özel durum (adım #4) varsa, belirli bir değişiklik kümesini işleyen iş parçacığının durdurulması ve yeni bir iş parçacığının oluşturulması anlamına gelir. Yeni iş parçacığı, kira deposunun Bu bölüm anahtarı değerleri aralığına sahip olduğu en son noktayı denetler ve bu durumda, temsilci üzerinde aynı toplu değişiklik kümesini etkin bir şekilde göndererek buradan yeniden başlatılır. Bu davranış, temsilci değişiklikleri doğru şekilde işleyene kadar devam eder ve değişiklik akışı işlemcisinin "en az bir kez" garantisi vardır çünkü temsilci kodu bir özel durum oluşturursa, bu toplu işi yeniden dener.
 
-Değişiklik akışı işlemcinizin "takılmış" olarak aynı değişiklik kümesini sürekli yeniden denemesini engellemek için, özel durum durumunda belgeleri, teslim edilemeyen bir ileti kuyruğuna yazmak üzere temsilci kodunuzda mantık eklemeniz gerekir. Bu tasarım, devam eden değişiklikleri işlemeye devam edebilirken işlenmemiş değişiklikleri izlemenize olanak sağlar. Atılacak mektup kuyruğu yalnızca başka bir Cosmos kapsayıcısı olabilir. Tam veri deposu, işlenmemiş değişikliklerin kalıcı hale gelen önemi yoktur.
+Değişiklik akışı işlemcinizin "takılmış" olarak aynı değişiklik kümesini sürekli yeniden denemesini engellemek için, özel durum durumunda belgeleri, teslim edilemeyen bir ileti kuyruğuna yazmak üzere temsilci kodunuzda mantık eklemeniz gerekir. Bu tasarım, devam eden değişiklikleri işlemeye devam edebilirken işlenmemiş değişiklikleri izlemenize olanak sağlar. Atılacak mektup kuyruğu başka bir Cosmos kapsayıcısı olabilir. Tam veri deposu, işlenmemiş değişikliklerin kalıcı hale gelen önemi yoktur.
 
-Ek olarak, değişiklik akışını okurken değişiklik akışı işlemci örneklerinizin ilerlemesini izlemek için [akış tahmin aracı](how-to-use-change-feed-estimator.md) ' ı da kullanabilirsiniz. Değişiklik akışı işlemcisinin "takılı" olarak aynı değişiklik kümesini sürekli yeniden denemesinin ne olduğunu izlemeye ek olarak, değişiklik akışı işlemcinizin CPU, bellek ve ağ bant genişliği gibi kullanılabilir kaynaklar nedeniyle gerisinde olup olmadığını da anlayabilirsiniz.
+Ek olarak, değişiklik akışını okurken değişiklik akışı işlemci örneklerinizin ilerlemesini izlemek için [akış tahmin aracı](how-to-use-change-feed-estimator.md) ' ı da kullanabilirsiniz. Bu tahmini, değişiklik akışı işlemcinizin CPU, bellek ve ağ bant genişliği gibi kullanılabilir kaynaklar nedeniyle "takılmış" veya geri atma olduğunu anlamak için kullanabilirsiniz.
 
 ## <a name="deployment-unit"></a>Dağıtım birimi
 
@@ -94,7 +94,32 @@ Bu üç koşul geçerliyse, değişiklik akışı işlemcisi, eşit bir dağıt�
 
 ## <a name="change-feed-and-provisioned-throughput"></a>Akışı ve sağlanan aktarım hızını değiştirme
 
-Cosmos kapsayıcılarının içindeki ve içindeki veri hareketleri her zaman RUs kullandığından, kullanılan ru için ücretlendirilirsiniz. Kira kapsayıcısı tarafından tüketilen RUs için ücretlendirilirsiniz.
+İzlenen kapsayıcıdaki akış okuma işlemlerinin değişiklik, RUs 'yi kullanır. 
+
+Kira kapsayıcısındaki işlemler RUs kullanır. Aynı kira kapsayıcısını kullanan örneklerin sayısı arttıkça, olası RU tüketiminin daha yüksek olması gerekir. Örnek sayısını ölçeklendirmeye ve arttırmaya karar verirseniz, kiralamalar kapsayıcısında RU tüketiminizi izlemeyi unutmayın.
+
+## <a name="starting-time"></a>Başlangıç zamanı
+
+Varsayılan olarak, bir değişiklik akışı işlemcisi ilk kez başladığında, kiralamalar kapsayıcısını başlatır ve [işlem yaşam döngüsünü](#processing-life-cycle)başlatır. Değişiklik akışı işlemcisi ilk kez başlatılmadan önce izlenen kapsayıcıda gerçekleşen tüm değişiklikler algılanmaz.
+
+### <a name="reading-from-a-previous-date-and-time"></a>Önceki bir tarih ve saatten okuma
+
+Değişiklik akışı işlemcisini, **belirli bir tarih ve saatte**başlayan değişiklikleri okumak için, bir a örneğini `DateTime` Oluşturucu uzantısına geçirerek başlatmak mümkündür `WithStartTime` :
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
+
+Değişiklik akışı işlemcisi, belirli bir tarih ve saat için başlatılır ve sonrasında gerçekleşen değişiklikleri okumaya başlar.
+
+### <a name="reading-from-the-beginning"></a>Baştan itibaren okunuyor
+
+Veri geçişleri veya bir kapsayıcının tüm geçmişinin çözümlenmesi gibi diğer senaryolarda, **Bu kapsayıcının yaşam süresinden itibaren**değişiklik akışını okuduk. Bunu yapmak için, Oluşturucu uzantısı üzerinde kullanabiliriz, ancak bu, `WithStartTime` `DateTime.MinValue.ToUniversalTime()` En düşük değerin UTC gösterimini oluşturan, `DateTime` şöyle olabilir:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
+
+Değişiklik akışı işlemcisi başlatılır ve kapsayıcının yaşam süresinden itibaren yapılan değişiklikleri okumaya başlar.
+
+> [!NOTE]
+> Bu özelleştirme seçenekleri yalnızca değişiklik akışı işlemcisinin başlangıç noktasını ayarlamak için çalışır. Kiralamalar kapsayıcısı ilk kez başlatıldıktan sonra, bunların değiştirilmesinin etkisi olmaz.
 
 ## <a name="where-to-host-the-change-feed-processor"></a>Değişiklik akışı işlemcisinin nerede barındırkaydedileceği
 
@@ -105,7 +130,7 @@ Değişiklik akışı işlemcisi, uzun süre çalışan işlemleri veya görevle
 * [Azure Kubernetes hizmetinde](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)bir arka plan işi.
 * Bir [ASP.NET barındırılan hizmeti](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
 
-Değişiklik akışı işlemcisi kısa süreli ortamlarda çalışabilir, ancak kira kapsayıcısı durumu koruduğundan, bu ortamların başlangıç ve durdurma döngüleri bildirimleri almaya yönelik gecikme ekler (ortamın her başlatılışında işlemciyi başlatma yükünden kaynaklanır).
+Değişiklik akışı işlemcisi kısa süreli ortamlarda çalışabilir, ancak kira kapsayıcısı durumu koruduğundan, bu ortamların başlangıç döngüleri bildirimleri almaya yönelik gecikme ekler (ortamın her başlatılışında işlemciyi başlatma yükünden kaynaklanır).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

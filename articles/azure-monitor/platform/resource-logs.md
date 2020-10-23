@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87800509"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143914"
 ---
 # <a name="azure-resource-logs"></a>Azure kaynak günlükleri
 Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.
@@ -27,7 +27,7 @@ Oluşturduğunuz her Azure kaynağı için otomatik olarak bir tanılama ayarı 
 - Günlük sorgularını kullanarak karmaşık analizler gerçekleştirin ve günlük verileri hakkında ayrıntılı Öngörüler elde edin.
 - Karmaşık uyarı mantığı ile günlük uyarılarını kullanın.
 
-Kaynak günlüklerini bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](diagnostic-settings.md) . Bu veriler, [Azure Izleyici günlüklerinin yapısı](../log-query/logs-structure.md)bölümünde açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın kullandığı koleksiyon türüne bağlıdır:
+Kaynak günlüklerini bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](diagnostic-settings.md) . Bu veriler, [Azure Izleyici günlüklerinin yapısı](./data-platform-logs.md)bölümünde açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın kullandığı koleksiyon türüne bağlıdır:
 
 - Azure tanılama-yazılan tüm veriler _AzureDiagnostics_ tablosuna gönderilir.
 - Kaynağa özgü veriler, kaynağın her kategorisi için ayrı ayrı tabloya yazılır.

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da021e3ba0fd93a182ea76a1ba4b7042b325aacc
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890600"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142378"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>New-AzIotHub cmdlet 'ini kullanarak IoT Hub 'ı oluşturma
 
@@ -41,15 +41,15 @@ Login-AzAccount
 
 IoT Hub 'ı dağıtmak için bir kaynak grubuna ihtiyacınız vardır. Var olan bir kaynak grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz.
 
-IoT Hub 'ınız için bir kaynak grubu oluşturmak için [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) komutunu kullanın. Bu örnek **Doğu ABD** bölgesinde **MyIoTRG1** adlı bir kaynak grubu oluşturur:
+IoT Hub 'ınız için bir kaynak grubu oluşturmak için [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) komutunu kullanın. Bu örnek **Doğu ABD** bölgesinde **MyIoTRG1** adlı bir kaynak grubu oluşturur:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
-Önceki adımda oluşturduğunuz kaynak grubunda bir IoT Hub 'ı oluşturmak için [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) komutunu kullanın. Bu örnek **Doğu ABD** bölgesinde **Mytesotub** adlı bir **S1** hub oluşturur:
+Önceki adımda oluşturduğunuz kaynak grubunda bir IoT Hub 'ı oluşturmak için [New-AzIotHub](/powershell/module/az.IotHub/New-azIotHub) komutunu kullanın. Bu örnek **Doğu ABD** bölgesinde **Mytesotub** adlı bir **S1** hub oluşturur:
 
 ```azurepowershell-interactive
 New-AzIotHub `
@@ -63,7 +63,7 @@ IoT Hub 'ının adı genel olarak benzersiz olmalıdır.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-Aboneliğinizdeki tüm IoT Hub 'larını [Get-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub) komutunu kullanarak listeleyebilirsiniz:
+Aboneliğinizdeki tüm IoT Hub 'larını [Get-AzIotHub](/powershell/module/az.IotHub/Get-azIotHub) komutunu kullanarak listeleyebilirsiniz:
 
 ```azurepowershell-interactive
 Get-AzIotHub
@@ -71,7 +71,7 @@ Get-AzIotHub
 
 Bu örnekte, önceki adımda oluşturduğunuz S1 standart IoT Hub gösterilmektedir.
 
-[Remove-AzIotHub](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub) komutunu kullanarak IoT Hub 'ını silebilirsiniz:
+[Remove-AzIotHub](/powershell/module/az.iothub/remove-aziothub) komutunu kullanarak IoT Hub 'ını silebilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzIotHub `
@@ -79,7 +79,7 @@ Remove-AzIotHub `
     -Name MyTestIoTHub
 ```
 
-Alternatif olarak, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) komutunu kullanarak bir kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
+Alternatif olarak, [Remove-AzResourceGroup](/powershell/module/az.Resources/Remove-azResourceGroup) komutunu kullanarak bir kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyIoTRG1
@@ -89,9 +89,9 @@ Remove-AzResourceGroup -Name MyIoTRG1
 
 Artık bir PowerShell cmdlet 'i kullanarak bir IoT Hub 'ı dağıttıysanız, daha fazla bilgi edinmek istiyorsanız aşağıdaki makalelere göz atın:
 
-* [IoT Hub 'ınız ile çalışmaya yönelik PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.iothub/).
+* [IoT Hub 'ınız ile çalışmaya yönelik PowerShell cmdlet 'leri](/powershell/module/az.iothub/).
 
-* [IoT Hub kaynak sağlayıcısı REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource).
+* [IoT Hub kaynak sağlayıcısı REST API](/rest/api/iothub/iothubresource).
 
 IoT Hub için geliştirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -101,4 +101,4 @@ IoT Hub için geliştirme hakkında daha fazla bilgi için aşağıdaki makalele
 
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/quickstart-linux.md)

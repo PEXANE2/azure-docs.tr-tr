@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396497"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92208252"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute özel eşlemesi için IPSec aktarım modunu yapılandırma
 
@@ -65,7 +65,7 @@ IPSec ilkesini yapılandırırken, aşağıdaki IPSec ilkesi terminolojisini anl
 
 Aşağıdaki önkoşulları karşıladığınızdan emin olun:
 
-* Grup ilkesi ayarlarını uygulamak için kullanabileceğiniz, çalışan bir Active Directory yapılandırmasına sahip olmanız gerekir. GPO 'Lar hakkında daha fazla bilgi için bkz. [Grup İlkesi Objects](https://msdn.microsoft.com/library/windows/desktop/aa374162(v=vs.85).aspx).
+* Grup ilkesi ayarlarını uygulamak için kullanabileceğiniz, çalışan bir Active Directory yapılandırmasına sahip olmanız gerekir. GPO 'Lar hakkında daha fazla bilgi için bkz. [Grup İlkesi Objects](/previous-versions/windows/desktop/Policy/group-policy-objects).
 
 * Etkin bir ExpressRoute bağlantı hattınızın olması gerekir.
   * ExpressRoute bağlantı hattı oluşturma hakkında daha fazla bilgi için bkz. [ExpressRoute devresi oluşturma](expressroute-howto-circuit-arm.md). 

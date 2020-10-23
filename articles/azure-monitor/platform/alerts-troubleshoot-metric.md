@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715330"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342136"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -77,14 +77,14 @@ Bir sanal makinenin Konuk işletim sisteminden veri toplama hakkında daha fazla
 > Konuk ölçümlerini bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdıysanız, ölçümler Log Analytics çalışma alanı kaynağı altında görünür ve **yalnızca** bunları izleyen bir uyarı kuralı oluşturduktan sonra verileri göstermeye başlayacaktır. Bunu yapmak için, [günlükler için ölçüm uyarısı yapılandırma](./alerts-metric-logs.md#configuring-metric-alert-for-logs) adımlarını izleyin.
 
 > [!NOTE] 
-> Tek bir uyarı kuralına sahip birden çok sanal makine için konuk ölçüsünü izlemek şu anda ölçüm uyarıları tarafından desteklenmez. Bunu bir [günlük uyarısı kuralıyla](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)elde edebilirsiniz. Bunu yapmak için, Konuk ölçümlerinin bir Log Analytics çalışma alanına toplanmış olduğundan emin olun ve çalışma alanında bir günlük uyarısı kuralı oluşturun.
+> Tek bir uyarı kuralına sahip birden çok sanal makine için konuk ölçüsünü izlemek şu anda ölçüm uyarıları tarafından desteklenmez. Bunu bir [günlük uyarısı kuralıyla](./alerts-unified-log.md)elde edebilirsiniz. Bunu yapmak için, Konuk ölçümlerinin bir Log Analytics çalışma alanına toplanmış olduğundan emin olun ve çalışma alanında bir günlük uyarısı kuralı oluşturun.
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Uyarı almak için ölçüm bulunamıyor
 
-Belirli bir ölçüm üzerinde uyarı almak istiyorsanız ancak bir uyarı kuralı oluştururken bunu göremiyorsanız, aşağıdakileri denetleyin:
-- Kaynak için herhangi bir ölçüm göremiyorsanız, [kaynak türünün ölçüm uyarıları için desteklenip desteklenmediğini denetleyin](./alerts-metric-near-real-time.md).
-- Kaynak için bazı ölçümler görülebiliyorsanız, ancak belirli bir ölçümü bulamıyorsanız, [Bu ölçümün kullanılabilir](./metrics-supported.md)olup olmadığını denetleyin ve varsa, yalnızca belirli sürümlerde veya kaynak sürümlerinde olup olmadığını denetlemek için ölçüm açıklamasına bakın.
-- Ölçüm kaynak için kullanılabilir durumda değilse, kaynak günlüklerinde kullanılabilir ve günlük uyarıları kullanılarak izlenebilir. [Kaynak günlüklerinin bir Azure kaynağından toplanması ve çözümlenmesi](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)hakkında daha fazla bilgi için buraya bakın.
+Uyarı kuralı oluştururken belirli bir ölçümle ilgili uyarıyı arıyorsanız ama göremiyorsanız, aşağıdakileri denetleyin:
+- Kaynağın ölçümlerini göremiyorsanız [kaynak türünün ölçüm uyarıları için desteklenip desteklenmediğini denetleyin](./alerts-metric-near-real-time.md).
+- Kaynağın bazı ölçümlerini görebiliyorsanız ama belirli bir ölçümü bulamıyorsanız [ölçümün kullanılabilir olup olmadığını denetleyin](./metrics-supported.md) ve kullanılabiliyorsa, ölçüm açıklamasına bakarak yalnızca kaynağın belirli sürüm veya yayınlarda kullanılabilir olup olmadığını gözden geçirin.
+- Kaynak için ölçüm kullanılabilir değilse, kaynak günlüklerinde bulunabilir ve günlük uyarıları kullanılarak izlenebilir. [Azure kaynağından kaynak günlüklerini toplama ve analiz etme](../learn/tutorial-resource-logs.md) hakkında daha fazla bilgi için buraya bakın.
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Uyarı almak için ölçüm boyutu bulunamıyor
 
@@ -228,7 +228,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 Ölçüm uyarısı kuralı oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 
 - Uyarı kuralının hedef kaynağında Oku izni
-- Uyarı kuralının oluşturulduğu kaynak grubu üzerinde yazma izni (Azure portal uyarı kuralı oluşturuyorsanız, uyarı kuralı hedef kaynağın bulunduğu aynı kaynak grubunda oluşturulur)
+- Uyarı kuralının oluşturulduğu kaynak grubu üzerinde yazma izni (Azure portal uyarı kuralı oluşturuyorsanız, uyarı kuralı hedef kaynağın bulunduğu aynı kaynak grubunda varsayılan olarak oluşturulur)
 - Uyarı kuralıyla ilişkili tüm eylem grupları üzerinde okuma izni (varsa)
 
 

@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin 
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506687"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174022"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -122,7 +122,7 @@ Kurtarma noktası `{name}` Yukarıdaki yanıttaki alanla tanımlanır.
 ***Yedekleme öğesindeki tüm geri yükleme işlemleri aynı *Post* API 'siyle gerçekleştirilir. Geri yükleme senaryolarıyla yalnızca istek gövdesi değişir.***
 
 > [!IMPORTANT]
-> Çeşitli geri yükleme seçenekleri ve bunların bağımlılıklarıyla ilgili tüm ayrıntılar [burada](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)belirtilmiştir. Lütfen bu işlemleri tetiklemeden önce gözden geçirin.
+> Çeşitli geri yükleme seçenekleri ve bunların bağımlılıklarıyla ilgili tüm ayrıntılar [burada](./backup-azure-arm-restore-vms.md#restore-options)belirtilmiştir. Lütfen bu işlemleri tetiklemeden önce gözden geçirin.
 
 Geri yükleme işlemlerinin tetiklenmesi bir *Post* isteğidir. API hakkında daha fazla bilgi edinmek için, ["geri yüklemeyi Tetikle" REST API](/rest/api/backup/restores/trigger)bakın.
 
@@ -246,7 +246,7 @@ Aşağıdaki istek gövdesi, disk geri yükleme tetiklenmesi için gereken özel
 
 ### <a name="restore-disks-selectively"></a>Diskleri seçmeli olarak geri yükle
 
-[Diskleri seçmeli olarak yedekliyorsanız](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), geçerli yedeklenen disk listesi, [Kurtarma noktası özetinde](#select-recovery-point) ve [ayrıntılı yanıtta](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)sağlanır. Ayrıca, diskleri seçmeli olarak geri yükleyebilir ve [burada](selective-disk-backup-restore.md#selective-disk-restore)daha fazla ayrıntı sağlanır. Yedeklenen disklerin listesi arasında bir diski seçmeli olarak geri yüklemek için, kurtarma noktası yanıtından diskin LUN 'unu bulun ve aşağıdaki şekilde [Yukarıdaki istek gövdesine](#example-request) **Restoredisklunlist** özelliğini ekleyin.
+[Diskleri seçmeli olarak yedekliyorsanız](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), geçerli yedeklenen disk listesi, [Kurtarma noktası özetinde](#select-recovery-point) ve [ayrıntılı yanıtta](/rest/api/backup/recoverypoints/get)sağlanır. Ayrıca, diskleri seçmeli olarak geri yükleyebilir ve [burada](selective-disk-backup-restore.md#selective-disk-restore)daha fazla ayrıntı sağlanır. Yedeklenen disklerin listesi arasında bir diski seçmeli olarak geri yüklemek için, kurtarma noktası yanıtından diskin LUN 'unu bulun ve aşağıdaki şekilde [Yukarıdaki istek gövdesine](#example-request) **Restoredisklunlist** özelliğini ekleyin.
 
 ```json
 {

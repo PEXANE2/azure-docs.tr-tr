@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 417a1dbc72c3b3c35c501351dcc8bda9dc95a78d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84431597"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281588"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra için Azure Cosmos DB API 'sindeki akışı değiştirme
 
-Cassandra için Azure Cosmos DB API 'sindeki [akış desteğini değiştirme](change-feed.md) , Cassandra sorgu dilindeki (CQL) sorgu koşulları aracılığıyla kullanılabilir. Bu koşul koşullarını kullanarak, değişiklik akışı API 'sini sorgulayabilirsiniz. Uygulamalar, birincil anahtarı (bölüm anahtarı olarak da bilinir) kullanarak, CQL 'de gerekli olduğu gibi, bir tabloda yapılan değişiklikleri alabilir. Daha sonra sonuçlara göre daha fazla eylem gerçekleştirebilirsiniz. Tablodaki satırlarda yapılan değişiklikler, değiştirilme zamanı sırasına göre yakalanır ve bölüm anahtarı başına sıralama düzeni garanti edilir.
+Cassandra için Azure Cosmos DB API 'sindeki [akış desteğini değiştirme](change-feed.md) , Cassandra sorgu dilindeki (CQL) sorgu koşulları aracılığıyla kullanılabilir. Bu koşul koşullarını kullanarak, değişiklik akışı API 'sini sorgulayabilirsiniz. Uygulamalar, birincil anahtarı (bölüm anahtarı olarak da bilinir) kullanarak, CQL 'de gerekli olduğu gibi, bir tabloda yapılan değişiklikleri alabilir. Daha sonra sonuçlara göre daha fazla eylem gerçekleştirebilirsiniz. Tablodaki satırlarda yapılan değişiklikler, değiştirilme zamanı sırasına ve bölüm anahtarı başına sıralama sırasına göre yakalanır.
 
 Aşağıdaki örnek .NET kullanarak bir Cassandra API keyspace tablosundaki tüm satırlarda nasıl değişiklik akışı alınacağını göstermektedir. COSMOS_CHANGEFEED_START_TIME () koşulu doğrudan CQL içinde, değişiklik akışındaki öğeleri belirli bir başlangıç zamanından (Bu durumda geçerli DateTime) sorgulamak için kullanılır. [Burada C# ve](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) [Java için](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)tam örneği indirebilirsiniz.
 

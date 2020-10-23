@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 71150ea5ba7d6f25b07a9afaa1f1dc60adcb3e24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72aaa1a19ef5a375ec1ee6c2938f64cb37aac139
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518797"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Öğretici: ufuk Masası e-postasıyla Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Azure AD ile ufuk Masası e-postasını tümleştirmek aşağıdaki avantajları
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, ufuk Masası e-postasıyla yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -126,32 +126,32 @@ Azure AD çoklu oturum açmayı, ufuk Masası e-postası ile yapılandırmak iç
 
 1. Üstteki menüde **Kurulum**' a tıklayın ve **org**' ı seçin.
 
-    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![Ekran görüntüsü Kurulum menüsünden Seçili kuruluş ' i gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
 1. Sol paneldeki **etki alanları** ' na tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![Ekran görüntüsü, Denetim Masası 'ndan seçilen etki alanlarını gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
 1. **Etki alanı Ekle**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![Ekran görüntüsü seçili etki alanı Ekle ' ye gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. Etki alanı adınızı girin ve etki alanını doğrulayın.
 
-    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![Ekran görüntüsü, etki alanınızı girebileceğiniz etki alanı Ekle sekmesini gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
 1. Sol panelde **SAML kimlik doğrulaması** ' na tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![Ekran görüntüsü, Denetim Masası 'ndan SAML kimlik doğrulamasının seçili olduğunu gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. **SAML kimlik doğrulaması** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML kimlik doğrulaması ayrıntıları iletişim kutusunu gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
     > SAML tabanlı kimlik doğrulaması kullanmak için etki alanı veya **Portal URL 'si** kurulumunu **doğrulamış** olmanız gerekir. Portal URL 'sini benzersiz adla ayarlayabilirsiniz.
 
-    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![Ekran görüntüsü, adı girdiğiniz b R L 'yi gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
@@ -222,7 +222,7 @@ Bu bölümde, ufuk Masası e-postasında Britta Simon adlı bir Kullanıcı olu�
 
 Ufuk Masası e-postasında sol panelden **Kullanıcı erişimi** ' ne tıklayın ve ardından Kullanıcı adınızı girin.
 
-![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![Ekran görüntüsü, Denetim Masası 'ndan seçilen kullanıcı erişimini gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > Toplu kullanıcılar oluşturmanız gerekiyorsa, [ufuk Masası e-posta istemcisi destek ekibine](https://www.skydesk.jp/apps/support/)başvurmanız gerekir.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae87771e8a557ad7cb58c9cad9231784606cdd74
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87479855"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426552"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
 
@@ -58,7 +58,7 @@ Bir abonelik için kullanıcıya atanan rolleri denetlemek için:
 
 3. Belirtilen bir kullanıcıya atanan tüm rolleri listelemek için  **Get-Azroleatama-Signınname [User email]-IncludeClassicAdministrators**komutunu kullanın. 
 
-Herhangi bir çıkış görmüyorsanız, komutları çalıştırmak için erişim sağlamak üzere ilgili abonelik yöneticisine başvurun. Daha ayrıntılı bilgi için bkz. [Azure PowerShell ile rol tabanlı erişim denetimini yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+Herhangi bir çıkış görmüyorsanız, komutları çalıştırmak için erişim sağlamak üzere ilgili abonelik yöneticisine başvurun. Daha ayrıntılı bilgi için bkz. [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Hangi Azure bölgeleri Trafik Analizi kullanılabilir?

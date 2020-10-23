@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 025b9b7e503f38a111bd158f17b7fbeec5b23579
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684992"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131097"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure maliyet ayırma kurallarını oluşturma ve yönetme (Önizleme)
 
@@ -58,16 +58,16 @@ Maliyetleri işlem, depolama veya ağ maliyeti olarak dağıtırken oran yüzdel
 
 Maliyetleri toplam maliyete orantılı bir şekilde dağıtırken orantı yüzdesi, geçerli fatura ayındaki seçili hedeflerin toplamı veya toplam maliyetine göre atanır.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Ayırma yüzdesini gösteren örnek" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Kural adı oluşturmayı gösteren örnek" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 Ayarlandıktan sonra, önceden doldurulmuş tanımlı yüzdeler sabit kalır. Bu yüzdeler, devam eden tüm ayırmalarda kullanılır. Yüzdeler yalnızca kural el ile güncelleştirildiğinde değişir.
 
 1. **Önceden doldurma yüzdesi** listesindeki şu seçeneklerden birini belirleyin.
     - **Eşit dağıt**: Hedeflerin her biri toplam maliyetin eşit bir bölümünü alır.
     - **Toplam maliyet**: Hedeflerin toplam maliyetine göre bir oran oluşturur. Bu oran, seçili kaynakların maliyetlerini dağıtmak için kullanılır.
-    - **İşlem maliyeti**: Hedeflerin Azure işlem maliyetlerine (kaynak türleri [Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions) ad alanında belirtilir) göre bir oran oluşturur. Bu oran, seçili kaynakların maliyetlerini dağıtmak için kullanılır.
-    - **Depolama maliyeti**: Hedeflerin Azure depolama maliyetlerine (kaynak türleri [Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) ad alanında belirtilir) göre bir oran oluşturur. Bu oran, seçili kaynakların maliyetlerini dağıtmak için kullanılır.
-    - **Ağ maliyeti**: Hedeflerin Azure ağ maliyetlerine (kaynak türleri [Microsoft.Network](https://docs.microsoft.com/azure/templates/microsoft.network/allversions) ad alanında belirtilir) göre bir oran oluşturur. Bu oran, seçili kaynakların maliyetlerini dağıtmak için kullanılır.
+    - **İşlem maliyeti**: Hedeflerin Azure işlem maliyetlerine (kaynak türleri [Microsoft.Compute](/azure/templates/microsoft.compute/allversions) ad alanında belirtilir) göre bir oran oluşturur. Bu oran, seçili kaynakların maliyetlerini dağıtmak için kullanılır.
+    - **Depolama maliyeti**: Hedeflerin Azure depolama maliyetlerine (kaynak türleri [Microsoft.Compute](/azure/templates/microsoft.storage/allversions) ad alanında belirtilir) göre bir oran oluşturur. Bu oran, seçili kaynakların maliyetlerini dağıtmak için kullanılır.
+    - **Ağ maliyeti**: Hedeflerin Azure ağ maliyetlerine (kaynak türleri [Microsoft.Network](/azure/templates/microsoft.network/allversions) ad alanında belirtilir) göre bir oran oluşturur. Bu oran, seçili kaynakların maliyetlerini dağıtmak için kullanılır.
     - **Özel**: Bir tam sayı yüzdesinin el ile belirtilmesine olanak verir. Belirtilen toplam %100’e eşit olmalıdır.
 1. Kural yapılandırıldığında **Oluştur**’u seçin.
 
@@ -84,7 +84,7 @@ Maliyet ayırma kuralı etkinleştiğinde, seçili kaynaklardaki maliyetler beli
 
 Ayırma kuralının etkisini maliyet analizinde görebilirsiniz. Azure portalında [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) sayfasına gidin. Etkin bir maliyet ayırma kuralı tarafından hedeflenen listedeki bir aboneliği seçin. Daha sonra, menüdeki **Maliyet analizi**’ni seçin. Maliyet analizi bölümünde **Gruplandırma ölçütü**’nü ve sonra **Maliyet ayırma**’yı seçin. Elde edilen görünümde, abonelik tarafından oluşturulan hızlı bir maliyet dökümü yer alır. Aboneliğe ayrılan maliyetler de aşağıdaki resimdeki gibi gösterilir.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Maliyet dökümünü gösteren örnek" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Kural adı oluşturmayı gösteren örnek" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Bir kaynak grubunun maliyet ayırmasını görüntüleme
 
@@ -94,7 +94,7 @@ Bir kaynak grubunun maliyet ayırma kuralının etkisi için benzer bir işlemde
 
 Azure portalda **Maliyet Yönetimi + Faturalama** > **Maliyet Yönetimi** > **Maliyet analizi**’ne gidin. Maliyet analizinde **Filtre ekle**’yi seçin. **Etiket**’i seçin, etiket anahtarını ve maliyet ayrılmış olan etiket değerlerini seçin.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Etiketli öğelerin maliyetlerini gösteren örnek" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Kural adı oluşturmayı gösteren örnek" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Mevcut maliyet ayırma kuralını düzenleme
 
@@ -112,10 +112,10 @@ Aşağıdaki bölümlerde insanların maliyet ayırması hakkında sıkça sordu
 Aşağıdakiler şu anda maliyet ayırma genel önizlemesi tarafından desteklenmemektedir:
 
 - Zamanlanan [Dışarı Aktarmalar](tutorial-export-acm-data.md)
-- [Kullanım Ayrıntıları](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API’si tarafından sunulan veriler
+- [Kullanım Ayrıntıları](/rest/api/consumption/usagedetails/list) API’si tarafından sunulan veriler
 - Faturalama abonelikleri alanı
 - [Maliyet Yönetimi Power BI Uygulaması](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
-- [Power BI Desktop bağlayıcısı](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
+- [Power BI Desktop bağlayıcısı](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
 ### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>Maliyetler, bütçelerde ve tahmin görünümlerinde hesaba katılır mı?
 <a name="budgets-forecast"></a>
@@ -144,5 +144,5 @@ Bu sınır, iyi bir maliyet ayırma performansı ve ölçeklenebilirlik elde etm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Maliyet ayırma REST API](https://go.microsoft.com/fwlink/?linkid=2135004)’sini kullanarak ayırma kuralları oluşturma veya bunları güncelleştirme
+- [Maliyet ayırma REST API](/rest/api/cost-management/costallocationrules)’sini kullanarak ayırma kuralları oluşturma veya bunları güncelleştirme
 - [Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme](cost-mgt-best-practices.md) hakkında daha fazla bilgi edinin

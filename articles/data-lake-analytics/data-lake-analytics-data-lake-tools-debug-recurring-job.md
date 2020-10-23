@@ -1,22 +1,20 @@
 ---
 title: Azure Data Lake Analytics yinelenen işleri hata ayıkla
 description: Olağan dışı yinelenen bir işin hatalarını ayıklamak için Visual Studio için Azure Data Lake Araçları nasıl kullanacağınızı öğrenin.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
-ms.openlocfilehash: 86d5134e257d2dae642eceb933a78047773b25a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95d4b0a082e8eac191d610c9516e5ce72180b4c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129959"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219182"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Olağan dışı bir şekilde yinelenen iş sorunlarını giderme
 
-Bu makalede yinelenen işlerle ilgili sorunları gidermek için [Visual Studio için Azure Data Lake araçları](https://aka.ms/adltoolsvs) nasıl kullanılacağı gösterilmektedir. [Azure Data Lake ve Azure HDInsight blogundan](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)ardışık düzen ve yinelenen işler hakkında daha fazla bilgi edinin.
+Bu makalede yinelenen işlerle ilgili sorunları gidermek için [Visual Studio için Azure Data Lake araçları](https://aka.ms/adltoolsvs) nasıl kullanılacağı gösterilmektedir. [Azure Data Lake ve Azure HDInsight blogundan](/archive/blogs/azuredatalake/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy)ardışık düzen ve yinelenen işler hakkında daha fazla bilgi edinin.
 
 Yinelenen işler genellikle aynı sorgu mantığını ve benzer giriş verilerini paylaşır. Örneğin, her Pazartesi sabah saat 8 ' de çalışan bir yinelenen işiniz olduğunu düşünün. Son haftanın haftalık etkin kullanıcısını saymak için. Bu işlerin betikleri, sorgu mantığını içeren bir betik şablonunu paylaşır. Bu işlerin girişleri, geçen haftaki kullanım verişlerdir. Aynı sorgu mantığının ve benzer girişin paylaşılması genellikle bu işlerin performansının benzer ve kararlı olduğu anlamına gelir. Yinelenen işlerinizin biri aniden olağan dışı, başarısız olur veya çok az yavaşlar, şunları yapmak isteyebilirsiniz:
 

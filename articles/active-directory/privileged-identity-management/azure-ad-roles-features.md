@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88784020"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371520"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri için yönetim özellikleri
 
@@ -69,4 +69,4 @@ Azure AD rolleri için Privileged Identity Management PowerShell modülünü kul
 - [Azure AD özel rolü atama](azure-ad-custom-roles-assign.md)
 - [Azure AD özel rol atamasını kaldırma veya güncelleştirme](azure-ad-custom-roles-update-remove.md)
 - [Azure AD özel rol ataması yapılandırma](azure-ad-custom-roles-configure.md)
-- [Azure AD 'de rol tanımları](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 'de rol tanımları](../roles/permissions-reference.md)

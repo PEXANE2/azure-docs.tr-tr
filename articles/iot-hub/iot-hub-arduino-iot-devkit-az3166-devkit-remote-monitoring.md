@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5a69c35e5c7e33443c3810cad9ab4e21b048328
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337968"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148817"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Mxyongaıot DevKit 'i Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlama
 
@@ -24,7 +24,7 @@ Bu öğreticide, Azure IoT uzaktan Izleme çözüm hızlandırıcısına algıla
 
 ## <a name="what-you-need"></a>Gerekenler
 
-[Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) şu şekilde sona erdirin:
+[Başlarken Kılavuzunu](./iot-hub-arduino-iot-devkit-az3166-get-started.md) şu şekilde sona erdirin:
 
 * DevKit 'in Wi-Fi bağlı olmasını sağlama
 * Geliştirme ortamını hazırlama
@@ -133,6 +133,6 @@ Sorunlarla karşılaşırsanız [IoT Geliştirici seti SSS](https://microsoft.gi
 
 Artık bir DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlamayı ve algılayıcı verilerini görselleştirmeyi öğrendiğinize göre, önerilen sonraki adımlar aşağıda verilmiştir:
 
-* [Azure IoT çözüm hızlandırıcılarına genel bakış](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT çözüm hızlandırıcılarına genel bakış](/azure/iot-suite/)
 
-* [IoT Geliştirici seti](https://microsoft.github.io/azure-iot-developer-kit/) 
+* [IoT Geliştirici seti](https://microsoft.github.io/azure-iot-developer-kit/)

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053462"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124688"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy ilgili sorunları giderin
 
@@ -56,7 +56,7 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Geçerli adların örnekleri: `my-folder-1` , `my-really-extra-long-folder-111`
     - Geçerli olmayan adların örnekleri: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` , `myfolder!`
 
-    Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
+    Daha fazla bilgi için bkz. [kapsayıcı adları](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
@@ -75,7 +75,7 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Geçerli adların örnekleri: `my-folder-1` , `my-really-extra-long-folder-111`
     - Geçerli olmayan adların örnekleri: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` , `myfolder!`
 
-    Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
+    Daha fazla bilgi için bkz. [kapsayıcı adları](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
 
 ### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
@@ -93,7 +93,7 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Geçerli adların örnekleri: `my-folder-1` , `my-really-extra-long-folder-111`
     - Geçerli olmayan adların örnekleri: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` , `myfolder!`
 
-    Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
+    Daha fazla bilgi için bkz. [kapsayıcı adları](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
     
 ### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
 
@@ -104,7 +104,7 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
 - Yerel Web Kullanıcı arabiriminin Bağlan ve Kopyala sayfasında, sorun ile klasör adlarını belirlemek için hata dosyalarını indirin ve gözden geçirin. 
 - Azure adlandırma kurallarıyla uyumlu olduklarından emin olmak için dizini veya kapsayıcıları yeniden adlandırın.
 
-Daha fazla bilgi için bkz. [dizinler](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   ve [kapsayıcılar](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)için Azure adlandırma kuralları.
+Daha fazla bilgi için bkz. [dizinler](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   ve [kapsayıcılar](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)için Azure adlandırma kuralları.
 
 ## <a name="container-or-share-size-limit-errors"></a>Kapsayıcı veya paylaşma boyut sınırı hataları
 
@@ -190,7 +190,7 @@ Veri kopyalama sırasında görülen blob, dosya veya kapsayıcıların adlarıy
 Yerel Web Kullanıcı arabiriminin **Bağlan ve Kopyala** sayfasında hata dosyalarını indirin ve gözden geçirin.
 Desteklenmeyen karakterleri kaldırmak için dosyaları kaldırın veya yeniden adlandırın.
 
-Daha fazla bilgi için bkz. [BLOB adları](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)için Azure adlandırma kuralları.
+Daha fazla bilgi için bkz. [BLOB adları](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adları](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)için Azure adlandırma kuralları.
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
@@ -201,7 +201,7 @@ Daha fazla bilgi için bkz. [BLOB adları](https://docs.microsoft.com/rest/api/s
 Yerel Web Kullanıcı arabiriminin **Bağlan ve Kopyala** sayfasında hata dosyalarını indirin ve gözden geçirin.
 Desteklenmeyen karakterleri kaldırmak için dosyaları kaldırın veya yeniden adlandırın.
 
-Daha fazla bilgi için bkz. [BLOB adları](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)için Azure adlandırma kuralları.
+Daha fazla bilgi için bkz. [BLOB adları](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adları](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)için Azure adlandırma kuralları.
 
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
@@ -213,7 +213,7 @@ Daha fazla bilgi için bkz. [BLOB adları](https://docs.microsoft.com/rest/api/s
 Yerel Web Kullanıcı arabiriminin **Bağlan ve Kopyala** sayfasında hata dosyalarını indirin ve gözden geçirin.
 Desteklenmeyen karakterleri kaldırmak için dosyaları kaldırın veya yeniden adlandırın.
 
-Daha fazla bilgi için bkz. [BLOB adları](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)için Azure adlandırma kuralları.
+Daha fazla bilgi için bkz. [BLOB adları](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adları](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)için Azure adlandırma kuralları.
 
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
@@ -223,7 +223,7 @@ Daha fazla bilgi için bkz. [BLOB adları](https://docs.microsoft.com/rest/api/s
 **Önerilen çözüm:** Kopyaladığınız Bloblar veya dosyalar, yol kesimlerinin maksimum sayısını aşıyor. Yol kesimi, ardışık sınırlayıcı karakterler arasındaki dizedir, örneğin eğik çizgi/.
 
 - Yerel Web Kullanıcı arabiriminin **Bağlan ve Kopyala** sayfasında hata dosyalarını indirin ve gözden geçirin.
-- [BLOB adlarının](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adlarının](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) Azure adlandırma kurallarına uyduğundan emin olun.
+- [BLOB adlarının](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adlarının](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) Azure adlandırma kurallarına uyduğundan emin olun.
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
@@ -244,7 +244,7 @@ Daha fazla bilgi için bkz. blob adları ve dosya adları için Azure adlandırm
 **Önerilen çözüm:** Blob veya dosya adındaki yol parçalarından biri maksimum karakter sayısını aşıyor. Yol kesimi, ardışık sınırlayıcı karakterler arasındaki dizedir, örneğin eğik çizgi/.
 
 - Yerel Web Kullanıcı arabiriminin **Bağlan ve Kopyala** sayfasında hata dosyalarını indirin ve gözden geçirin.
-- [BLOB adlarının](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adlarının](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) Azure adlandırma kurallarına uyduğundan emin olun.
+- [BLOB adlarının](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) ve [dosya adlarının](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) Azure adlandırma kurallarına uyduğundan emin olun.
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE

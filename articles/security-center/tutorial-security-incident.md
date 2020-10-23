@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614171"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359008"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Öğretici: güvenlik uyarılarını önceliklendirme, araştırın ve yanıtlayın
-Güvenlik Merkezi, kötü amaçlı etkinlikler konusunda sizi uyarmak için gelişmiş analiz ve tehdit zekasından yararlanarak hibrit bulut iş yüklerinizi sürekli olarak analiz eder. Ayrıca, diğer güvenlik ürünleri ve hizmetlerinden gelen uyarıları Güvenlik Merkezi 'ne tümleştirebilir ve kendi göstergelerinizi veya zeka kaynaklarınıza göre özel uyarılar oluşturabilirsiniz. Bir uyarı oluşturulduktan sonra sorunun incelenip düzeltilmesi için hemen harekete geçilmesi gerekir. 
+Güvenlik Merkezi, bulut kaynaklarınızda potansiyel olabilecek kötü amaçlı etkinlikler hakkında sizi uyarmak için gelişmiş analiz ve tehdit bilgilerini kullanarak hibrit bulut iş yüklerinizi sürekli çözümler. Ayrıca, uyarıları diğer güvenlik ürünleri ve hizmetlerinden Güvenlik Merkezi 'ne tümleştirebilirsiniz. Bir uyarı oluşturulduktan sonra olası güvenlik sorununu araştırmak ve düzeltmek için Swift eylemi gerekir. 
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide ele alınan özellikler arasında ilerlemek için Azure Defender 'ın etkinleştirilmiş olması gerekir. Azure Defender 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Güvenlik Merkezi](security-center-get-started.md) 'ni kullanmaya başlama hızlı başlangıç, nasıl yükselteceğiniz konusunda size yol gösterir.
 
 
@@ -93,8 +93,8 @@ Bir uyarıyı araştırdıktan ve kapsamını belirledikten sonra, Azure Güvenl
 
     Bu, uyarıyı ana uyarılar listesinden kaldırır. **Kapatılan** durum ile tüm uyarıları görüntülemek için uyarılar listesi sayfasından filtreyi kullanabilirsiniz.
 
-1.  İsteğe bağlı olarak, Microsoft 'a bir uyarı ile ilgili geri bildirim sağlayın:
-    1. Uyarı **yararlı** veya **faydalı** olarak işaretleniyor ve şunları sağlar
+1.  Microsoft 'a uyarı hakkında geri bildirim sağlamanızı öneriyoruz:
+    1. Uyarı **yararlı** veya **faydalı**olarak işaretleniyor.
     1. Bir neden seçin ve açıklama ekleyin.
 
         :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Güvenlik uyarıları listesi sayfası":::
@@ -122,5 +122,5 @@ Devam etmeyi planlamıyorsanız veya bu özelliklerden birini devre dışı bır
 Bu öğreticide, bir güvenlik uyarısını yanıtlarken kullanılacak güvenlik merkezi özellikleri hakkında bilgi edindiniz. İlgili malzemeler için bkz:
 
 - [Key Vault için Azure Defender uyarılarına yanıt verme](defender-for-key-vault-usage.md)
-- [Güvenlik uyarıları-bir başvuru kılavuzu](alerts-reference.md)
+- [Güvenlik uyarıları - başvuru kılavuzu](alerts-reference.md)
 - [Azure Defender 'a giriş](azure-defender.md)

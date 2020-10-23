@@ -1,18 +1,17 @@
 ---
 title: Python, R ve C# ' de U-SQL işlerini çalıştırma-Azure Data Lake Analytics
 description: Azure Data Lake içinde iş göndermek Için Python, R ve C# ile arkasındaki kodu nasıl kullanacağınızı öğrenin.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
-ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876215"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219981"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code Azure Data Lake Analytics Için Python, R ve C# ile U-SQL geliştirme
 U-SQL ile arka planda Python, R ve C# kodu yazmak ve Azure Data Lake hizmetine iş göndermek için Visual Studio Code (VSCode) kullanmayı öğrenin. VSCode için Azure Data Lake araçları hakkında daha fazla bilgi için bkz. [Visual Studio için Azure Data Lake araçları kodunu kullanma](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -183,4 +182,4 @@ Arka plan kod dosyası, tek bir U-SQL betiği ile ilişkili bir C# dosyasıdır.
 * [PowerShell kullanarak Data Lake Analytics kullanmaya başlama](data-lake-analytics-get-started-powershell.md)
 * [Azure portal kullanarak Data Lake Analytics kullanmaya başlama](data-lake-analytics-get-started-portal.md)
 * [Visual Studio için Data Lake araçları 'nı kullanarak U-SQL uygulamaları geliştirme](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake Analytics (U-SQL) kataloğunu kullanma](data-lake-analytics-use-u-sql-catalog.md)
+* [Data Lake Analytics (U-SQL) kataloğunu kullanma](./data-lake-analytics-u-sql-get-started.md)

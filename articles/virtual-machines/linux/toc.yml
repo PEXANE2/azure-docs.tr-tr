@@ -354,8 +354,6 @@
           href: ../security-controls-policy.md
         - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
           href: security-baseline.md
-        - name: Yerleşik güvenlik denetimleri
-          href: virtual-machines-linux-security-controls.md
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Durumlar ve yaşam döngüsü

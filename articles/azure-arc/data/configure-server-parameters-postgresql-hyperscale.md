@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbddfc84b3f71576cfd0299f2babec859b4ef1f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941595"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311057"
 ---
 # <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc özellikli PostgreSQL Hiper Ölçek için veritabanı altyapısı ayarlarını belirleme
 
@@ -45,9 +45,9 @@ Veritabanı altyapısı ayarlarını yapılandırmak için komutun genel biçimi
 azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-engine-settings, --re}] {'<parameter name>=<parameter value>, ...'}
 ```
 
-## <a name="show-the-current-custom-values-of-the-parameters-settings"></a>Parametre ayarlarının geçerli özel değerlerini göster
+## <a name="show-current-custom-values"></a>Geçerli özel değerleri göster
 
-## <a name="with-azdata-cli-command"></a>Azdata CLı komutuyla
+### <a name="with-azure-data-cli-azdata-command"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]Komutuyla
 
 ```console
 azdata arc postgres server show -n <server group name>
@@ -74,77 +74,77 @@ engine": {
 ...
 ```
 
-## <a name="with-kubectl-command"></a>Kubectl komutuyla
+### <a name="with-kubectl-command"></a>Kubectl komutuyla
 
 Aşağıdaki adımları izleyin.
 
-### <a name="1-retrieve-the-kind-of-custom-resource-definition-for-your-server-group"></a>1. sunucu grubunuz için özel kaynak tanımı türünü alın
+1. Sunucu grubunuz için özel kaynak tanımı türünü alın
 
-Çalıştır:
+   Çalıştır:
 
-```console
-azdata arc postgres server show -n <server group name>
-```
+   ```console
+   azdata arc postgres server show -n <server group name>
+   ```
 
-Örneğin:
+   Örneğin:
 
-```console
-azdata arc postgres server show -n postgres01
-```
+   ```console
+   azdata arc postgres server show -n postgres01
+   ```
 
-Bu komut, ayarladığınız parametreleri görebileceğiniz sunucu grubunun belirtimini döndürür. Engine\settings bölümü yoksa, tüm parametrelerin varsayılan değer üzerinde çalıştığı anlamına gelir:
+   Bu komut, ayarladığınız parametreleri görebileceğiniz sunucu grubunun belirtimini döndürür. Engine\settings bölümü yoksa, tüm parametrelerin varsayılan değer üzerinde çalıştığı anlamına gelir:
 
-```
-> {
-  >"apiVersion": "arcdata.microsoft.com/v1alpha1",
-  >"**kind**": "**postgresql-12**",
-  >"metadata": {
-    >"creationTimestamp": "2020-08-25T14:32:23Z",
-    >"generation": 1,
-    >"name": "postgres01",
-    >"namespace": "arc",
-```
+   ```output
+   > {
+     >"apiVersion": "arcdata.microsoft.com/v1alpha1",
+     >"**kind**": "**postgresql-12**",
+     >"metadata": {
+       >"creationTimestamp": "2020-08-25T14:32:23Z",
+       >"generation": 1,
+       >"name": "postgres01",
+       >"namespace": "arc",  
+   ```
 
-Burada "tür" alanını bulup değeri ayırın, örneğin: `postgresql-12` .
+   Çıktı sonuçlarında alanı bulun `kind` ve değeri ayırın, örneğin: `postgresql-12` .
 
-### <a name="2-describe-the-kubernetes-custom-resource-corresponding-to-your-server-group"></a>2. sunucu grubunuza karşılık gelen Kubernetes özel kaynağını açıkla 
+2. Sunucu grubunuza karşılık gelen Kubernetes özel kaynağını açıkla 
 
-Komutun genel biçimi:
+   Komutun genel biçimi:
 
-```console
-kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
-```
+   ```console
+   kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
+   ```
 
-Örneğin:
+   Örneğin:
 
-```console
-kubectl describe postgresql-12 postgres01
-```
+   ```console
+   kubectl describe postgresql-12 postgres01
+   ```
 
-Altyapı ayarları için ayarlanmış özel değerler varsa, bu ayarlar döndürülür. Örneğin:
+   Altyapı ayarları için ayarlanmış özel değerler varsa, bunları döndürür. Örneğin:
 
-```console
-Engine:
-...
+   ```output
+   Engine:
+   ...
     Settings:
       Default:
         autovacuum_vacuum_threshold:  65
-```
+   ```
 
-Motor ayarlarından herhangi biri için özel değerler ayarlanmamışsa, sonuç kümesi 'nin motor ayarları bölümü şu şekilde boş olur:
+   Motor ayarlarından herhangi biri için özel değerler ayarlandıysanız, öğesinin altyapı ayarları bölümü `resultset` Şu şekilde boştur:
 
-```console
-Engine:
-...
-    Settings:
-      Default:
-```
+   ```output
+   Engine:
+   ...
+       Settings:
+         Default:
+   ```
 
-## <a name="set-custom-values-for-the-engine-settings"></a>Altyapı ayarları için özel değerler ayarla
+## <a name="set-custom-values-for-engine-settings"></a>Altyapı ayarları için özel değerler ayarla
 
 Aşağıdaki komutlar, düzenleyici düğümünün ve PostgreSQL hiper ölçeklendirmenin çalışan düğümlerinin parametrelerini aynı değerlere ayarlar. Sunucu grubunuzda rol başına parametre ayarlamak henüz mümkün değildir. Diğer bir deyişle, belirli bir parametreyi düzenleyici düğümüne ve çalışan düğümleri için başka bir değere yapılandırmak henüz mümkün değildir.
 
-## <a name="set-a-single-parameter"></a>Tek bir parametre ayarla
+### <a name="set-a-single-parameter"></a>Tek bir parametre ayarla
 
 ```console
 azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
@@ -156,7 +156,7 @@ azdata arc server edit -n <server group name> -e <parameter name>=<parameter val
 azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
 ```
 
-## <a name="set-multiple-parameters-with-a-single-command"></a>Birden çok parametreyi tek bir komutla ayarlama
+### <a name="set-multiple-parameters-with-a-single-command"></a>Birden çok parametreyi tek bir komutla ayarlama
 
 ```console
 azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
@@ -168,7 +168,7 @@ azdata arc postgres server edit -n <server group name> -e '<parameter name>=<par
 azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
 ```
 
-## <a name="reset-a-parameter-to-its-default-value"></a>Bir parametreyi varsayılan değerine sıfırlayın
+### <a name="reset-a-parameter-to-its-default-value"></a>Bir parametreyi varsayılan değerine sıfırlayın
 
 Bir parametreyi varsayılan değerine sıfırlamak için değeri bir değer belirtmeden ayarlayın. 
 
@@ -178,7 +178,7 @@ Bir parametreyi varsayılan değerine sıfırlamak için değeri bir değer beli
 azdata arc postgres server edit -n postgres01 -e shared_buffers=
 ```
 
-## <a name="reset-all-parameters-to-their-default-values"></a>Tüm parametreleri varsayılan değerlerine sıfırlayın
+### <a name="reset-all-parameters-to-their-default-values"></a>Tüm parametreleri varsayılan değerlerine sıfırlayın
 
 ```console
 azdata arc postgres server edit -n <server group name> -e '' -re
@@ -213,8 +213,6 @@ Ortam değişkeni, ayarlamadan önce çözümlenmemesi için "' '" içine sarmal
 ```console
 azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'
 ```
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Ölçek Genişletme [(çalışan düğümleri ekleme)](scale-out-postgresql-hyperscale-server-group.md) hakkında bilgi edinmek için sunucu grubunuz

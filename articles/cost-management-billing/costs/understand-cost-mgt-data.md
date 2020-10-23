@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683190"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132321"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -110,7 +110,7 @@ Azure Maliyet Yönetimi, ayrı hizmetler tarafından gönderilen kullanım kayı
 
 - Etiketlerin doğrudan kaynaklara uygulanması gerekir ve üst kaynak grubundaki etiketler devralınmaz.
 - Kaynak etiketleri yalnızca kaynak gruplarına dağıtılmış olan kaynaklar için desteklenir.
-- Dağıtılan kaynakların bazıları etiket desteği sunmayabilir veya kullanım verilerine etiket eklemeyebilir. Bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/tag-support.md).
+- Dağıtılan kaynakların bazıları etiket desteği sunmayabilir veya kullanım verilerine etiket eklemeyebilir. Bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/management/tag-support.md).
 - Kaynak etiketleri yalnızca etiketin uygulanmış olduğu kullanım verilerine dahil edilir. Etiketler, verilere geçmişe dönük olarak uygulanmaz.
 - Kaynak etiketleri, yalnızca veriler yenilendikten sonra Maliyet Yönetimi’nde kullanılabilir. Bkz. [Maliyet ile kullanım verilerinin güncelleştirilmesi ve saklama](#cost-and-usage-data-updates-and-retention).
 - Kaynak etiketleri Maliyet Yönetimi'nde yalnızca kaynak etkin/çalışır durumda olduğunda ve kullanım kaydı oluşturduğunda kullanılabilir (örneğin, VM'nin serbest bırakılmış olduğu durumlarda kullanılamaz).
@@ -121,7 +121,7 @@ Maliyet Yönetimi'nde belirli bir etiketi göremiyorsanız şu durumları değer
 
 - Etiket doğrudan kaynağa mı uygulandı?
 - Etiketin uygulanmasının üzerinden 24 saat geçti mi? Bkz. [Maliyet ile kullanım verilerinin güncelleştirilmesi ve saklama](#cost-and-usage-data-updates-and-retention)
-- Kaynak türü etiketleri destekliyor mu? Aşağıdaki kaynak türleri 1 Aralık 2019 tarihinden itibaren kullanım verilerinde etiketleri desteklememektedir. Desteklenen türlerin tam listesi için bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/tag-support.md).
+- Kaynak türü etiketleri destekliyor mu? Aşağıdaki kaynak türleri 1 Aralık 2019 tarihinden itibaren kullanım verilerinde etiketleri desteklememektedir. Desteklenen türlerin tam listesi için bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/management/tag-support.md).
     - Azure Active Directory B2C Dizinleri
     - Azure Bastion
     - Azure Güvenlik Duvarları
@@ -185,4 +185,4 @@ Kredi tabanlı ve önceden öde teklifleri için geçmişe dönük veriler fatur
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- Maliyet Yönetimi için ilk hızlı başlangıcı önceden tamamlamadıysanız, [Maliyetleri analiz etmeye başlama](../../cost-management/quick-acm-cost-analysis.md) bölümünden bilgi edinin.
+- Maliyet Yönetimi için ilk hızlı başlangıcı önceden tamamlamadıysanız, [Maliyetleri analiz etmeye başlama](./quick-acm-cost-analysis.md) bölümünden bilgi edinin.

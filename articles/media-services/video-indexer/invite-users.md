@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4023f8584e7b901a19906235d98982abbbfbaaf8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79499751"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364158"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Hızlı başlangıç: kullanıcıları Video Indexer davet etme
 
@@ -27,10 +27,9 @@ ms.locfileid: "79499751"
 ## <a name="invite-new-users"></a>Yeni Kullanıcı davet et
 
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın. Yönetici hesabıyla bağlı olduğunuzdan emin olun.
-1. Üstteki menüdeki **başkalarını davet et** düğmesine tıklayın:
+1. Yönetici kullanıyorsanız, sağ üst köşedeki **hesabı paylaşma** düğmesini görürsünüz. Düğmeye tıklayın ve kullanıcıları davet edebilirsiniz. 
 
-   ![Yeni Kullanıcı davet et](./media/invite-users/invite-users.png)
-
+   ![Yeni Kullanıcı davet et](./media/invite-users/share-account.png)
 1. Video Indexer hesabınıza eklemek istediğiniz kişilerin e-posta adreslerini ekleyin:
 
     ![Kullanıcıları bu hesaba davet et](./media/invite-users/invite-to-account.png)

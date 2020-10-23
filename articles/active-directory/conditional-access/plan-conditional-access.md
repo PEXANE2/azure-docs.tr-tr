@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992854"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366335"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) koşullu erişim (CA), kararları otomatik hal
 
 Microsoft, temel düzeyde güvenlik sağlayan [güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md) adlı standart koşullu ilkeler sağlar. Bununla birlikte, kuruluşunuzun güvenlik varsayılanlarını önerenden daha fazla esneklik ihtiyacı olabilir. Koşullu erişimi, güvenlik varsayılanlarını daha fazla ayrıntı ile özelleştirmek ve gereksinimlerinizi karşılayan yeni ilkeleri yapılandırmak için kullanabilirsiniz.
 
-## <a name="learn"></a>Öğrenin
+## <a name="learn"></a>Learn
 
 Başlamadan önce, [Koşullu erişimin](overview.md) nasıl çalıştığını ve ne zaman kullanılacağını anladığınızdan emin olun.
 
@@ -52,7 +52,7 @@ Bkz. [koşullu erişim lisans gereksinimleri](overview.md).
 
 Ek özellikler gerekliyse, ilgili lisanslara de ihtiyacınız olabilir. Daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure AD Premium veya deneme lisansı etkin çalışan bir Azure AD kiracısı. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -220,7 +220,7 @@ Her uygulama için bir ilke oluşturulması verimli değildir ve zor yönetime y
 
 ### <a name="set-up-emergency-access-accounts"></a>Acil durum erişim hesapları ayarlama
 
-Bir ilkeyi yanlış yapılandırırsanız, kuruluşları Azure portal dışına kilitleyebilir. Kuruluşunuzda iki veya daha fazla [acil durum erişim hesabı](../users-groups-roles/directory-emergency-access.md) oluşturarak yanlışlıkla yöneticinin kilitlenmesinden kaynaklanan etkileri azaltabilirsiniz.
+Bir ilkeyi yanlış yapılandırırsanız, kuruluşları Azure portal dışına kilitleyebilir. Kuruluşunuzda iki veya daha fazla [acil durum erişim hesabı](../roles/security-emergency-access.md) oluşturarak yanlışlıkla yöneticinin kilitlenmesinden kaynaklanan etkileri azaltabilirsiniz.
 
 * İlke yönetimine adanmış ve tüm ilkelerinizden çıkarılan bir kullanıcı hesabı oluşturun.
 
@@ -291,11 +291,7 @@ Azure Active Directory, [adlandırılmış konumlar](location-condition.md)oluş
 
 ### <a name="plan-your-policy-deployment"></a>İlke dağıtımınızı planlayın
 
-Ortamınız için yeni ilkeler hazırlanıyor, istenmeyen sonuçlara engel olmak için her bir ilkeyi serbest bırakmadan önce gözden geçirdiğinizden emin olun. İlkelerin uygulanma ve sorunlardan kaçının hakkında önemli bilgileri anlamak için aşağıdaki belgelere bakın
-
-* [Bilmeniz gerekenler](best-practices.md)
-
-* [Yapmanız gerekenler](best-practices.md)
+Ortamınız için yeni ilkeler hazırlanıyor, istenmeyen sonuçlara engel olmak için her bir ilkeyi serbest bırakmadan önce gözden geçirdiğinizden emin olun.
 
 ## <a name="common-policies"></a>Ortak ilkeler
 
@@ -462,10 +458,6 @@ CA ilkesinin konum koşulu, erişim denetimleri ayarlarını kullanıcılarını
 ### <a name="terms-of-use"></a>Kullanım koşulları
 
 Ortamınızdaki belirli bulut uygulamalarına erişmeden önce, Kullanım koşulları (ToU) kabul ederek kullanıcılardan izin alabilirsiniz. [Kullanım koşulları oluşturmak için bu hızlı](require-tou.md)başlangıcı izleyin.
-
-### <a name="classic-policies"></a>Klasik ilkeler
-
-[Azure Portal](https://portal.azure.com/)CA Ilkelerinizi, koşullu erişim > güvenlik > Azure Active Directory altında bulabilirsiniz. Kuruluşunuz Ayrıca bu sayfa kullanılarak oluşturulmuş eski CA ilkelerine sahip olabilir. Bu ilkeler klasik ilkeler olarak bilinir. [Bu klasik ilkeleri Azure Portal geçirmeyi düşünmeniz](best-practices.md)önerilir.
 
 ## <a name="troubleshoot-conditional-access"></a>Koşullu erişim sorunlarını giderme
 

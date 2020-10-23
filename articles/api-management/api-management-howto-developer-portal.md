@@ -1,7 +1,7 @@
 ---
 title: Azure API Management geliştirici portalına genel bakış
 titleSuffix: Azure API Management
-description: API Management 'de geliştirici portalı hakkında bilgi edinin. Geliştirici portalı, tüketicilerin API 'lerinizi bulabilecekleri yerdir.
+description: API tüketicilerinin API 'lerinizi keşfedebileceği, API Management-özelleştirilebilir bir Web sitesindeki geliştirici portalı hakkında bilgi edinin.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -11,61 +11,46 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a6a73768db7b073258487435ddbe6c0daccf16
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715462"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317815"
 ---
-# <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
+# <a name="overview-of-the-developer-portal"></a>Geliştirici portalına genel bakış
 
 Geliştirici portalı, API 'lerinizin belgelerinde otomatik olarak oluşturulan ve tamamen özelleştirilebilir bir Web sitesidir. API tüketicilerinin API 'lerinizi bulabileceği, bunları nasıl kullanacağınızı, erişim isteyeceğini ve bunları nasıl deneyebileceği de vardır.
 
-Bu makalede, API Management 'de geliştirici portalının şirket içinde barındırılan ve yönetilen sürümleri arasındaki farklar açıklanmaktadır. Ayrıca, mimarisini açıklar ve sık sorulan soruların yanıtlarını sağlar.
+Bu makalede, API Management 'de geliştirici portalının şirket içinde barındırılan ve yönetilen sürümleri arasındaki farklar açıklanmaktadır. Ayrıca, sık sorulan soruların yanıtlarını da sağlar.
 
 ![API Management geliştirici portalı](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-> [!NOTE]
-> <a name="migrate-from-legacy"></a> Yeni geliştirici portalı, eski geliştirici portalı ile uyumsuzdur ve otomatik geçiş mümkün değildir. İçeriği (sayfalar, metin, medya dosyaları) el ile yeniden oluşturmanız ve yeni portalın görünümünü özelleştirmeniz gerekir. Rehberlik için [Geliştirici Portalı öğreticisine](api-management-howto-developer-portal-customize.md) bakın.
+## <a name="migration-from-the-legacy-portal"></a>Eski portaldan geçiş
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> Yönetilen ve şirket içinde barındırılan sürümler
+> [!IMPORTANT]
+> Eski geliştirici portalı artık kullanım dışıdır ve yalnızca güvenlik güncelleştirmelerini alacaktır. Bu hizmeti, her zamanki gibi kullanmaya devam edebilirsiniz, bu, tüm API Management hizmetlerinden kaldırılacak olan 2023 Ekim 'de devre dışı kalır.
 
-Geliştirici portalınızı iki şekilde oluşturabilirsiniz:
+Yeni geliştirici portalına geçiş, [adanmış belgeler makalesinde](developer-portal-deprecated-migration.md)açıklanmaktadır.
 
-- **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve URL aracılığıyla erişilebilen portalı düzenleyerek ve özelleştirerek `<your-api-management-instance-name>.developer.azure-api.net` . Yönetilen portala erişme ve bunları özelleştirme hakkında bilgi edinmek için [Bu belge makalesine](api-management-howto-developer-portal-customize.md) başvurun.
-- **Şirket içinde barındırılan sürüm** -portalınızın bir API Management örneği dışında dağıtıp barındırılmasına göre. Bu yaklaşım, portalın kod temelini düzenlemenizi ve sunulan temel işlevselliği genişletmenizi sağlar; örneğin, üçüncü taraf sistemlerle Tümleştirmeler için özel pencere öğeleri uygulayın. Bu senaryoda, portalın bakımını ve portalı en son sürüme yükseltmekten siz sorumlusunuz. Ayrıntılar ve yönergeler için, [portalın kaynak koduyla GitHub deposuna][1] ve [pencere öğesi uygulama hakkında öğreticiye][3]bakın. [Yönetilen sürüme yönelik öğretici](api-management-howto-developer-portal-customize.md) , portalın yönetim panelinde, yönetilen ve şirket içinde barındırılan sürümler için ortak bir adım adım yol gösterir.
+## <a name="customization-and-styling"></a>Özelleştirme ve stil oluşturma
 
-## <a name="portal-architectural-concepts"></a>Portal mimari kavramları
+Geliştirici portalı, yerleşik, sürükle ve bırak görsel Düzenleyicisi aracılığıyla özelleştirilebilir ve Stillenebilir. Daha fazla bilgi için [Bu öğreticiye](api-management-howto-developer-portal-customize.md) bakın.
 
-Portal bileşenleri, mantıksal olarak iki kategoriye ayrılabilir: *kod* ve *içerik*.
+## <a name="extensibility"></a><a name="managed-vs-self-hosted"></a> Genişletilebilirlik
 
-*Kod* [GitHub deposunda][1] tutulur ve şunları içerir:
+API Management hizmetiniz yerleşik, her zaman güncel ve **yönetilen** bir geliştirici portalı içerir. Azure portal arabiriminden erişebilirsiniz.
 
-- Pencere öğeleri-görsel öğeleri temsil eder ve HTML, JavaScript, stil oluşturma özelliği, ayarlar ve içerik eşlemeyi birleştirir. Örnekler, bir resim, metin paragrafı, form, API 'lerin listesi vb.
-- Pencere öğelerinin nasıl Stillenebilir olduğunu belirten stil tanımları
-- Altyapı-Portal içeriğinden statik Web sayfaları oluşturur ve JavaScript 'te yazılmıştır
-- Tarayıcı içi özelleştirme ve yazma deneyimine izin veren görsel düzenleyici
+Kullanıma hazır olmayan, özel mantık ile genişletmeniz gerekiyorsa, kod temelini değiştirebilirsiniz. Portalın kod temeli [bir GitHub deposunda mevcuttur][1]. Örneğin, bir üçüncü taraf destek sistemiyle tümleşen yeni bir pencere öğesi uygulayabilirsiniz. Yeni işlevsellik uyguladığınızda, aşağıdaki seçeneklerden birini seçebilirsiniz:
 
-*İçerik* iki alt kategorilere ayrılmıştır: *portal içeriği* ve *API Management içeriği*.
+- Elde edilen portalı API Management hizmetinizin dışında **kendi kendine barındırın** . Portalı kendinden barındırdığınızda, bakımcı olur ve yükseltmelerinden sorumlu olursunuz. Azure desteğinin yardımı, [deponun wiki bölümünde][2]belgelendiği gibi yalnızca şirket içinde barındırılan portalların temel kurulumuyla sınırlıdır.
+- Yeni işlevselliği **yönetilen** portalın kod tabanına birleştirmek için API Management ekibine yönelik bir çekme isteği açın.
 
-*Portal içeriği* portala özeldir ve şunları içerir:
-
-- Sayfalar-örneğin, giriş sayfası, API öğreticileri, blog gönderileri
-- Medya-görüntüler, animasyonlar ve diğer dosya tabanlı içerikler
-- Düzenler-bir URL ile eşleşen ve sayfaların nasıl görüntülendiğini tanımlayan şablonlar
-- Stiller-stil tanımlarının değerleri, örn. yazı tipleri, renkler, kenarlıklar
-- Ayarlar-yapılandırma, örneğin, ayrıcalıklı simge, Web sitesi meta verileri
-
-Medya dışında *Portal içeriği*, JSON belgeleri olarak ifade edilir.
-
-*API Management içerik* , API 'Ler, Işlemler, ürünler, abonelikler gibi varlıkları içerir.
-
-Portal, [Paperbits çerçevesinin](https://paperbits.io/)uyarbir çatalını temel alır. Özgün Paperbits işlevselliği, API Management özgü pencere öğeleri sağlamak üzere genişletilmiştir (örneğin, API 'lerin listesi, ürünlerin listesi) ve içeriği kaydetmek ve almak için bir bağlayıcı API Management.
+Genişletilebilirlik ayrıntıları ve yönergeleri için [GitHub deposuna][1] ve [pencere öğesi uygulama öğreticilerine][3]bakın. [Yönetilen portalı özelleştirme öğreticisi](api-management-howto-developer-portal-customize.md) , portalın yönetim panelinde, **yönetilen** ve **Şirket içinde barındırılan** sürümler için ortak olan bir adım adım yol gösterir.
 
 ## <a name="frequently-asked-questions"></a><a name="faq"></a> Sık sorulan sorular
 
@@ -77,7 +62,7 @@ Geliştirici portalının önizleme sürümünü ilk kez başlattığınızda, A
 
 Portalınızı içeriğin önizleme sürümüne göre büyük ölçüde özelleştirdiyseniz, bunu olduğu gibi kullanmaya devam edebilir ve yeni pencere öğelerini portalın sayfalarına el ile yerleştirebilirsiniz. Aksi takdirde, portalınızın içeriğini yeni varsayılan içerikle değiştirmeniz önerilir.
 
-Yönetilen bir portaldaki içeriği sıfırlamak için, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' ya tıklayın. Bu işlem portalın tüm içeriğini kaldıracak ve yeni varsayılan içerik sağlayacak. Tüm geliştirici portalı özelleştirmelerini ve değişikliklerini kaybedersiniz. **Bu eylemi geri alamazsınız**.
+Yönetilen bir portaldaki içeriği sıfırlamak için, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' yı seçin. Bu işlem portalın tüm içeriğini kaldıracak ve yeni varsayılan içerik sağlayacak. Tüm geliştirici portalı özelleştirmelerini ve değişikliklerini kaybedersiniz. **Bu eylemi geri alamazsınız**.
 
 ![Portal içeriğini sıfırlama](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -85,21 +70,11 @@ Yönetilen bir portaldaki içeriği sıfırlamak için, **işlemler** menüsü b
 
 İlk olarak, Kasım 2019 ' de genel kullanılabilirlik duyurusu sonrasında portala eriştiyseniz, yeni varsayılan içeriği zaten kullanıma hazır hale, başka bir eylem gerekli değildir.
 
-### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Portal eski portalın tüm özelliklerine sahip mi?
-
-Geliştirici portalı artık *uygulamaları*, *sorunları*ve Facebook, Microsoft, Twitter ve Google as kimlik sağlayıcıları ile doğrudan tümleştirmeyi desteklememektedir (Bunun yerine Azure AD B2C kullanabilirsiniz).
-
-### <a name="has-the-legacy-portal-been-deprecated"></a>Eski portalın kullanım dışı bırakılmış mi?
-
-Eski geliştirici ve yayımcı portalları artık *eski* özelliklerdir; yalnızca güvenlik güncelleştirmelerini alacak. Yeni özellikler yalnızca yeni geliştirici portalında uygulanır.
-
-Eski portalların kullanımdan kaldırılması, ayrı olarak duyurulacak. Sorularınız, endişeleriniz veya açıklamalarınız varsa, bunları [özel bir GitHub sorunuyla](https://github.com/Azure/api-management-developer-portal/issues/121)yükseltin.
-
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Gerekli işlevsellik portalda desteklenmiyor
 
-Bir [özellik isteği](https://aka.ms/apimwish) açabilir veya [eksik işlevselliği kendiniz uygulayabilirsiniz][3]. İşlevselliği kendiniz uygularsanız, geliştirici portalını Self olarak barındırabilir veya değişiklikleri yönetilen sürüme dahil etmek için GitHub üzerinde bir çekme isteği açabilirsiniz.
+[GitHub deposunda][1] bir özellik isteği açabilir veya [eksik işlevselliği kendiniz uygulayabilirsiniz][3]. Daha fazla ayrıntı için yukarıdaki **genişletilebilirlik** bölümüne bakın.
 
-### <a name="how-can-i-automate-portal-deployments"></a>Portal dağıtımlarını nasıl otomatikleştirebilirim?
+### <a name="how-can-i-automate-portal-deployments"></a><a id="automate"></a> Portal dağıtımlarını nasıl otomatikleştirebilirim?
 
 Yönetilen veya şirket içinde barındırılan bir sürümü kullanıyor olmanız fark etmeksizin, geliştirici portalının içeriğine REST API aracılığıyla programlı bir şekilde erişebilir ve yönetebilirsiniz.
 
@@ -127,7 +102,7 @@ Hayır.
 
 API Management hizmetiniz bir iç VNet içindeyse, geliştirici portalınızın yalnızca ağ içinden erişilebilir olması gerekir. Yönetim uç noktasının ana bilgisayar adı, portalın yönetim arabirimine erişmek için kullandığınız makineden hizmetin iç VIP 'sine çözümlenmelidir. Yönetim uç noktasının DNS 'de kayıtlı olduğundan emin olun. Yanlış yapılandırma durumunda bir hata görürsünüz: `Unable to start the portal. See if settings are specified correctly in the configuration (...)` .
 
-API Management hizmetiniz bir iç sanal ağda ise ve bu ağa Internet 'ten Application Gateway üzerinden erişiyorsanız, geliştirici portalına ve API Management yönetim uç noktalarına bağlantıyı etkinleştirdiğinizden emin olun.
+API Management hizmetiniz bir iç sanal ağda ise ve bu ağa Internet 'ten Application Gateway üzerinden erişiyorsanız, geliştirici portalına ve API Management yönetim uç noktalarına bağlantıyı etkinleştirdiğinizden emin olun. Web uygulaması güvenlik duvarı kurallarını devre dışı bırakmanız gerekebilir. Daha fazla bilgi için [Bu belge makalesine](api-management-howto-integrate-internal-vnet-appgateway.md) bakın.
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>Özel bir API Management etki alanı atadım ve yayımlanan Portal çalışmıyor
 
@@ -135,7 +110,7 @@ Etki alanını güncelleştirdikten sonra değişikliklerin etkili olması için
 
 ### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>Bir kimlik sağlayıcısı ekledim ve Portal 'da göremiyorum
 
-Bir kimlik sağlayıcısı yapılandırdıktan sonra (örneğin, AAD, AAD B2C), değişikliklerin etkili olması için [portalı yeniden yayımlamanız](api-management-howto-developer-portal-customize.md#publish) gerekir.
+Bir kimlik sağlayıcısını yapılandırdıktan sonra (örneğin, Azure AD, Azure AD B2C), değişikliklerin etkili olması için [portalı yeniden yayımlamanız](api-management-howto-developer-portal-customize.md#publish) gerekir. Geliştirici portalı sayfalarınızın OAuth düğmeleri pencere öğesini içerdiğinden emin olun.
 
 ### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>Temsilciyi ayarladım ve Portal bunu kullanmıyor
 
@@ -143,7 +118,7 @@ Temsilciyi ayarladıktan sonra değişikliklerin etkili olması için portalı y
 
 ### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>Diğer API Management yapılandırma Değişikliklerim Geliştirici Portalında yayılmadı
 
-Çoğu yapılandırma değişikliği (örneğin, VNet, oturum açma ve ürün koşulları) [portalın yeniden yayımmesini](api-management-howto-developer-portal-customize.md#publish)gerektirir.
+Çoğu yapılandırma değişikliği (örneğin, VNet, oturum açma, ürün koşulları) [portalın yeniden yayımmesini](api-management-howto-developer-portal-customize.md#publish)gerektirir.
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> Etkileşimli konsolu kullanırken CORS hatası alıyorum
 
@@ -157,9 +132,9 @@ CORS ilkesini **Etkinleştir** düğmesine tıklayarak OTOMATIK olarak CORS ilke
 
 CORS 'yi el ile de etkinleştirebilirsiniz.
 
-1. Oluşturulan ilke kodunu görmek için **genel düzey bağlantısına el ile Uygula** ' ya tıklayın.
+1. Oluşturulan ilke kodunu görmek için **bunu genel düzey bağlantı üzerinde el ile Uygula '** yı seçin.
 2. Azure portal API Management hizmetinizin **API 'leri** bölümünde **tüm API** 'lere gidin.
-3. **</>** **Gelen işleme** bölümündeki simgeye tıklayın.
+3. **</>** **Gelen işleme** bölümünde simgesini seçin.
 4. İlkeyi **<inbound>** XML dosyasının bölümüne ekleyin. **<origin>** Değerin geliştirici portalının etki alanı ile eşleştiğinden emin olun.
 
 > [!NOTE]
@@ -169,6 +144,10 @@ CORS 'yi el ile de etkinleştirebilirsiniz.
 > Tarayıcı, abonelik anahtarı içeren bir üst bilgi içermeyen bir seçenekler HTTP isteği otomatik olarak yayımlar. Eksik abonelik anahtarı nedeniyle API Management, bu seçenek çağrısını bir ürünle ilişkilendiremez, bu nedenle CORS ilkesini uygulayamaz.
 >
 > Geçici bir çözüm olarak, abonelik anahtarını bir sorgu parametresine geçirebilirsiniz.
+
+> [!NOTE]
+> 
+> Yalnızca bir CORS ilkesi yürütülür. Birden çok CORS ilkesi belirttiyseniz (örneğin, API düzeyinde ve tümü-API düzeyinde), etkileşimli konsolunuz beklendiği gibi çalışmayabilir.
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Geliştirici portalını düzenlemek için hangi izinlere ihtiyacım var?
 

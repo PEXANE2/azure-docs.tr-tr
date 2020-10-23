@@ -6,42 +6,43 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: 7a471868bac8f5e0623942c0cc1dc4af4e3881e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185358"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220814"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Öğretici: Azure FXT Edge Filer kümesi oluşturma
 
-Önbelleğiniz için Azure FXT Edge Filer donanım düğümlerini yükleyip başlattıktan sonra, önbellek kümesini oluşturmak için FXT küme yazılımını kullanın. 
+Önbelleğiniz için Azure FXT Edge Filer donanım düğümlerini yükleyip başlattıktan sonra, önbellek kümesini oluşturmak için FXT küme yazılımını kullanın.
 
-Bu öğretici, donanım düğümlerinizi bir küme olarak yapılandırma adımlarında size yol gösterir. 
+Bu öğretici, donanım düğümlerinizi bir küme olarak yapılandırma adımlarında size yol gösterir.
 
-Bu öğreticide şunları öğreneceksiniz: 
+Bu öğreticide şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Kümeyi oluşturmaya başlamadan önce hangi bilgileri gerekir
 > * Kümenin yönetim ağı, küme ağı ve istemciye yönelik ağ arasındaki fark
-> * Bir küme düğümüne bağlanma 
+> * Bir küme düğümüne bağlanma
 > * Bir Azure FXT Edge Filer düğümünü kullanarak bir başlangıç kümesi oluşturma
 > * Küme ayarlarını yapılandırmak için küme Denetim Masası 'nda oturum açma
 
 Bu yordam, IP adreslerini ve ağ kaynaklarını belirlemek için yapmanız gereken araştırma miktarına bağlı olarak 15 ila 45 dakika arasında sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce bu önkoşulları doldurun:
 
-* Veri merkezinize Azure FXT Edge Filer donanım sistemlerinizi kurma 
+* Veri merkezinize Azure FXT Edge Filer donanım sistemlerinizi kurma
 
-  Kümeyi oluşturmak için yalnızca bir düğümünüz olması gerekir, ancak kümeyi yapılandırmadan ve kullanıma hazırlamak için önce [en az iki düğüm eklemeniz](fxt-add-nodes.md) gerekir. 
+  Kümeyi oluşturmak için yalnızca bir düğümünüz olması gerekir, ancak kümeyi yapılandırmadan ve kullanıma hazırlamak için önce [en az iki düğüm eklemeniz](fxt-add-nodes.md) gerekir.
 
 * Uygun güç ve ağ kablolarını sisteme bağlama  
 * En az bir Azure FXT Edge Filer düğümünü açma ve [kök parolasını ayarlama](fxt-node-password.md)
 
-## <a name="gather-information-for-the-cluster"></a>Küme için bilgi toplama 
+## <a name="gather-information-for-the-cluster"></a>Küme için bilgi toplama
 
 Azure FXT Edge Filer kümesini oluşturmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
@@ -52,18 +53,18 @@ Azure FXT Edge Filer kümesini oluşturmak için aşağıdaki bilgilere ihtiyac�
 * IP adresleri:
 
   * Küme yönetimi için tek bir IP adresi ve yönetim ağı için kullanılacak ağ maskesi ve yönlendirici
-  * Küme (düğümden düğüme) iletişim için bitişik bir IP adresleri aralığındaki ilk ve son IP adresleri. Ayrıntılar için aşağıdaki [IP adresi dağıtımına](#ip-address-distribution)bakın. 
+  * Küme (düğümden düğüme) iletişim için bitişik bir IP adresleri aralığındaki ilk ve son IP adresleri. Ayrıntılar için aşağıdaki [IP adresi dağıtımına](#ip-address-distribution)bakın.
   * (İstemciye yönelik IP adresleri küme oluşturulduktan sonra ayarlanır.)
 
 * Ağ altyapısı bilgileri:
 
   * Küme için bir DNS sunucusunun IP adresi
   * Kümenin DNS etki alanının adı
-  * Küme NTP sunucuları için ad veya IP adresi (bir sunucu ya da üç veya daha fazla) 
+  * Küme NTP sunucuları için ad veya IP adresi (bir sunucu ya da üç veya daha fazla)
   * Kümenin arabirimlerinde IEEE 802.1 AX-2008 bağlantı toplamasını etkinleştirmek isteyip istemediğiniz
   * Bağlantı toplamayı etkinleştirirseniz IEEE 802.3 ad (LACP) dinamik toplama kullanılıp kullanılmayacağını belirtir
 
-Kümeyi oluşturduktan sonra bu ağ altyapısı öğelerini yapılandırabilirsiniz, ancak bunu oluşturma sırasında yapmak daha iyidir. 
+Kümeyi oluşturduktan sonra bu ağ altyapısı öğelerini yapılandırabilirsiniz, ancak bunu oluşturma sırasında yapmak daha iyidir.
 
 ### <a name="ip-address-distribution"></a>IP adresi dağıtımı
 
@@ -117,11 +118,11 @@ Oturum açtıktan sonra, düğümün IP adresini belirlemeniz gerekir.
 
 Örneğin, komut, `ifconfig | grep -B5 inet` İnternet adresleriyle bağlantı noktalarını arar ve bağlantı noktası tanımlayıcısını göstermek için beş bağlam satırı sağlar.
 
-İfconfig raporunda gösterilen tüm IP adreslerini yazın. E0A veya e0b gibi bağlantı noktası adlarıyla listelenen adresler iyi seçeneklerdir. Bu adlar yalnızca Idrac/ıPMı hizmeti bağlantı noktalarında kullanıldığından, E7 * adlarıyla listelenen herhangi bir IP adresini kullanmayın.  
+İfconfig raporunda gösterilen tüm IP adreslerini yazın. E0A veya e0b gibi bağlantı noktası adlarıyla listelenen adresler iyi seçeneklerdir. Bu adlar yalnızca Idrac/ıPMı hizmeti bağlantı noktalarında kullanıldığından, E7 * adlarıyla listelenen herhangi bir IP adresini kullanmayın.
 
 ## <a name="load-the-cluster-configuration-wizard"></a>Küme yapılandırma Sihirbazı 'nı yükleme
 
-Kümeyi oluşturmak için tarayıcı tabanlı küme yapılandırma aracını kullanın. 
+Kümeyi oluşturmak için tarayıcı tabanlı küme yapılandırma aracını kullanın.
 
 Düğümün IP adresini bir Web tarayıcısına girin. Tarayıcı güvenilmeyen siteyle ilgili bir ileti veriyorsa yine de siteye devam edin. (Tekil Azure FXT Edge Filer düğümlerinde CA tarafından sağlanmış güvenlik sertifikaları yoktur.)
 
@@ -133,19 +134,19 @@ Düğümün IP adresini bir Web tarayıcısına girin. Tarayıcı güvenilmeyen 
 
 ## <a name="create-the-cluster"></a>Kümeyi oluşturma
 
-Küme yapılandırma aracı, Azure FXT Edge Filer kümesini oluşturmaya yönelik bir ekran kümesi boyunca size rehberlik eder. Başlamadan önce [gerekli bilgilerin](#gather-information-for-the-cluster) bulunduğundan emin olun. 
+Küme yapılandırma aracı, Azure FXT Edge Filer kümesini oluşturmaya yönelik bir ekran kümesi boyunca size rehberlik eder. Başlamadan önce [gerekli bilgilerin](#gather-information-for-the-cluster) bulunduğundan emin olun.
 
 ### <a name="creation-options"></a>Oluşturma seçenekleri
 
 İlk ekran üç seçenek sunar. Destek personeline ait özel yönergelerden bazıları yoksa el ile yapılandırma seçeneğini kullanın.
 
-Yeni küme yapılandırma seçenekleri ekranını yüklemek için **kümeyi el ile yapılandıracağım** ' ı tıklatın. 
+Yeni küme yapılandırma seçenekleri ekranını yüklemek için **kümeyi el ile yapılandıracağım** ' ı tıklatın.
 
 Diğer seçenekler nadiren kullanılır:
 
-* "Sistem görüntüsünü güncelleştirme", kümeyi oluşturmadan önce yeni işletim sistemi yazılımı yüklemenizi ister. (Yüklü olan yazılım sürümü ekranın en üstünde listelenir.) Yazılım paketi dosyasını bir URL ve Kullanıcı adı/parola sağlamanız gerekir ya da bilgisayarınızdan bir dosya karşıya yükleyin. 
+* "Sistem görüntüsünü güncelleştirme", kümeyi oluşturmadan önce yeni işletim sistemi yazılımı yüklemenizi ister. (Yüklü olan yazılım sürümü ekranın en üstünde listelenir.) Yazılım paketi dosyasını bir URL ve Kullanıcı adı/parola sağlamanız gerekir ya da bilgisayarınızdan bir dosya karşıya yükleyin.
 
-* Küme kurulum dosyası seçeneği bazen Microsoft Müşteri Hizmetleri ve desteği tarafından kullanılır. 
+* Küme kurulum dosyası seçeneği bazen Microsoft Müşteri Hizmetleri ve desteği tarafından kullanılır.
 
 ## <a name="cluster-options"></a>Küme seçenekleri
 
@@ -157,36 +158,36 @@ Sayfa, **temel yapılandırma** ve **ağ yapılandırması**olmak üzere iki ana
 
 Üstteki bölümde, yeni küme için temel bilgileri girin.
 
-![Tarayıcı GUI sayfasındaki "temel yapılandırma" bölümünün ayrıntısı. Üç alanı gösterir (küme adı, yönetici parolası, parolayı onaylayın)](media/fxt-cluster-create/basic-configuration.png) 
+![Tarayıcı GUI sayfasındaki "temel yapılandırma" bölümünün ayrıntısı. Üç alanı gösterir (küme adı, yönetici parolası, parolayı onaylayın)](media/fxt-cluster-create/basic-configuration.png)
 
 * **Küme adı** -küme için benzersiz bir ad girin.
 
   Küme adı şu ölçütlere uymalıdır:
   
   * 1 ile 16 karakter arasında uzunluk
-  * Harfler, rakamlar ve çizgi (-) ve alt çizgi (_) karakterlerini içerebilir 
+  * Harfler, rakamlar ve çizgi (-) ve alt çizgi (_) karakterlerini içerebilir
   * Diğer noktalama işaretleri veya özel karakterler içermemelidir
   
   Bu adı daha sonra **küme**  >  **genel kurulum** yapılandırma sayfasında değiştirebilirsiniz. (Küme ayarları hakkında daha fazla bilgi için, bu belge kümesinin bir parçası olmayan [küme yapılandırma kılavuzunu](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)okuyun.)
 
-  > [!NOTE] 
+  > [!NOTE]
   > Küme adınız, izleme veya sorun giderme için desteğe yüklenen sistem bilgilerini belirlemek için kullanılır, bu nedenle şirketinizin adını eklemek yararlı olur.
 
 * **Yönetici parolası** -varsayılan yönetici kullanıcı parolasını ayarlayın `admin` .
   
   Kümeyi yöneten her kişi için bireysel kullanıcı hesapları ayarlamanız gerekir, ancak kullanıcıyı kaldıramazsınız `admin` . `admin`Ek kullanıcı oluşturmanız gerekiyorsa oturum açın.
- 
+
   İçin parolasını, `admin` **Administration**  >  küme Denetim Masası 'ndaki Yönetim**kullanıcıları** ayarları sayfasında değiştirebilirsiniz. Ayrıntılar için, [küme yapılandırma kılavuzundaki](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html) **Kullanıcılar** belgelerini okuyun.
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
 ### <a name="network-configuration"></a>Ağ yapılandırması
 
-**Ağ** bölümü, kümenin kullanacağı ağ altyapısını belirtmenizi ister. 
+**Ağ** bölümü, kümenin kullanacağı ağ altyapısını belirtmenizi ister.
 
 Yapılandırılacak iki ayrı ağ vardır:
 
-* *Yönetim ağı* , yapılandırma ve izleme için kümeye yönetici erişimi sağlar. Burada belirtilen IP adresi, Denetim Masası 'na veya SSH erişimine bağlanırken kullanılır. 
+* *Yönetim ağı* , yapılandırma ve izleme için kümeye yönetici erişimi sağlar. Burada belirtilen IP adresi, Denetim Masası 'na veya SSH erişimine bağlanırken kullanılır.
 
   Çoğu küme yalnızca tek bir yönetim IP adresi kullanır, ancak arabirim eklemek istiyorsanız Kümeyi oluşturduktan sonra bunu yapabilirsiniz.
 
@@ -216,9 +217,9 @@ Bu bölüm ayrıca her iki ağ tarafından kullanılan DNS ve NTP sunucuları i�
 
 * **MTU** -gerekirse, kümenizin yönetim ağı için en yüksek iletim BIRIMINI (MTU) ayarlayın.
 
-* **1 GB MGMT ağ kullanın** -FXT düğümlerinizin Iki 1GbE ağ bağlantı noktasını yalnızca yönetim ağına atamak istiyorsanız bu kutuyu işaretleyin. (Diğer tüm trafik için kullanılabilir 25 GbE/10GbE bağlantı noktası olması gerekir.) Bu kutuyu görmüyorsanız, yönetim ağı kullanılabilir en yüksek hız bağlantı noktasını kullanır. 
+* **1 GB MGMT ağ kullanın** -FXT düğümlerinizin Iki 1GbE ağ bağlantı noktasını yalnızca yönetim ağına atamak istiyorsanız bu kutuyu işaretleyin. (Diğer tüm trafik için kullanılabilir 25 GbE/10GbE bağlantı noktası olması gerekir.) Bu kutuyu görmüyorsanız, yönetim ağı kullanılabilir en yüksek hız bağlantı noktasını kullanır.
 
-### <a name="configure-the-cluster-network"></a>Küme ağını yapılandırma 
+### <a name="configure-the-cluster-network"></a>Küme ağını yapılandırma
 
 Küme ağ ayarları, küme düğümleri arasındaki trafik için ve küme düğümleri ile çekirdek filers arasında geçerlidir.
 
@@ -230,11 +231,11 @@ Küme ağ ayarları, küme düğümleri arasındaki trafik için ve küme düğ�
 
   **Aralıktaki IP sayısı** değeri hesaplanır ve otomatik olarak gösterilir.
 
-* **MGMT dışı ağ maskesi (isteğe bağlı)** -küme ağı için ağ maskesini belirtin. 
+* **MGMT dışı ağ maskesi (isteğe bağlı)** -küme ağı için ağ maskesini belirtin.
 
   Sistem otomatik olarak yönetim ağı için girdiğiniz ağ maskesi değerini önerir; gerekirse değiştirin.
 
-* **Küme yönlendiricisi (isteğe bağlı)** -küme ağı tarafından kullanılan varsayılan ağ geçidi adresini belirtin. 
+* **Küme yönlendiricisi (isteğe bağlı)** -küme ağı tarafından kullanılan varsayılan ağ geçidi adresini belirtin.
 
   Sistem otomatik olarak yönetim ağı için sağladığınız ağ geçidi adresini önerir.
 
@@ -242,7 +243,7 @@ Küme ağ ayarları, küme düğümleri arasındaki trafik için ve küme düğ�
 
 * **MGMT olmayan MTU (isteğe bağlı)** -gerekirse, küme ağınız için en yüksek iletim BIRIMINI (MTU) ayarlayın.
 
-### <a name="configure-cluster-dns-and-ntp"></a>Küme DNS ve NTP yapılandırma 
+### <a name="configure-cluster-dns-and-ntp"></a>Küme DNS ve NTP yapılandırma
 
 **Küme** bölümünün altında, DNS ve NTP sunucularını belirtmek ve bağlantı toplamayı etkinleştirmek için alanlar vardır. Bu ayarlar, kümenin kullandığı tüm ağlar için geçerlidir.
 
@@ -250,7 +251,7 @@ Küme ağ ayarları, küme düğümleri arasındaki trafik için ve küme düğ�
 
 * **DNS sunucuları** -bir veya daha fazla etki alanı adı SISTEMI (DNS) sunucusunun IP adresini girin.
 
-  DNS, tüm kümeler için önerilir ve SMB, AD veya Kerberos kullanmak istiyorsanız gereklidir. 
+  DNS, tüm kümeler için önerilir ve SMB, AD veya Kerberos kullanmak istiyorsanız gereklidir.
   
   En iyi performansı elde etmek için, kümenin DNS sunucusunu [Azure FXT Edge Filer kümesi IÇIN DNS yapılandırma](fxt-configure-network.md#configure-dns-for-load-balancing)başlığı altında açıklandığı şekilde, hepsini bir kez deneme yük dengelemesi için yapılandırın.
 
@@ -272,13 +273,13 @@ Sistem, kümeyi oluştururken bir ileti görüntüler.
 
 ![tarayıcıda küme yapılandırması durum iletisi: "FXT düğümü artık kümeyi oluşturuyor. Bu işlem birkaç dakika sürer. Küme oluşturulduğunda, yapılandırmayı gerçekleştirmek için bu bağlantıyı ziyaret edin. " "Bu bağlantıyı ziyaret et" adresindeki köprü](media/fxt-cluster-create/creating-message.png)
 
-Birkaç dakika sonra, küme Denetim Masası 'na gitmek için iletideki bağlantıya tıklayabilirsiniz. (Bu bağlantı sizi **Yönetim IP 'si**IÇINDE belirttiğiniz IP adresine yönlendirir.) Oluştur düğmesine tıkladıktan sonra bağlantı etkin hale gelmesi için 15 saniye boyunca bir dakika sürer. Web arabirimi yüklenmezse birkaç saniye bekleyip bağlantıyı yeniden tıklatın. 
+Birkaç dakika sonra, küme Denetim Masası 'na gitmek için iletideki bağlantıya tıklayabilirsiniz. (Bu bağlantı sizi **Yönetim IP 'si**IÇINDE belirttiğiniz IP adresine yönlendirir.) Oluştur düğmesine tıkladıktan sonra bağlantı etkin hale gelmesi için 15 saniye boyunca bir dakika sürer. Web arabirimi yüklenmezse birkaç saniye bekleyip bağlantıyı yeniden tıklatın.
 
-Küme oluşturma bir dakika veya daha fazla zaman alır, ancak işlem devam ederken Denetim Masası 'nda oturum açabilirsiniz. Denetim Masası Pano sayfasının, küme oluşturma işlemi bitene kadar uyarıları göstermesi normaldir. 
+Küme oluşturma bir dakika veya daha fazla zaman alır, ancak işlem devam ederken Denetim Masası 'nda oturum açabilirsiniz. Denetim Masası Pano sayfasının, küme oluşturma işlemi bitene kadar uyarıları göstermesi normaldir.
 
-## <a name="open-the-settings-pages"></a>Ayarlar sayfalarını açın 
+## <a name="open-the-settings-pages"></a>Ayarlar sayfalarını açın
 
-Kümeyi oluşturduktan sonra, ağınızın ve iş akışınızın yapılandırmasını özelleştirmeniz gerekir. 
+Kümeyi oluşturduktan sonra, ağınızın ve iş akışınızın yapılandırmasını özelleştirmeniz gerekir.
 
 Yeni kümenizi ayarlamak için Denetim Masası web arabirimini kullanın. Küme oluşturma durumu ekranınızdan bağlantıyı izleyin veya kümede ayarladığınız yönetim IP adresine gidin.
 
@@ -300,9 +301,9 @@ Kümeyi yapılandırmak için **Ayarlar** sekmesine tıklayın.
 
 ### <a name="required-configuration"></a>Gerekli yapılandırma
 
-Bu adımlar çoğu veya tüm kümeler için gereklidir. 
+Bu adımlar çoğu veya tüm kümeler için gereklidir.
 
-* Kümeye düğüm ekleme 
+* Kümeye düğüm ekleme
 
   Üç düğüm standarttır, ancak birçok üretim kümesi en fazla 24 düğüme sahiptir.
 
@@ -312,24 +313,24 @@ Bu adımlar çoğu veya tüm kümeler için gereklidir.
 
   Kümenin kullanacağı her bir arka uç depolama sistemi için *çekirdek dosyalayıcı* tanımları ekleyin. Daha fazla bilgi edinmek için [arka uç depolama ekleme ve sanal ad alanını yapılandırma](fxt-add-storage.md#about-back-end-storage) makalesini okuyun.
 
-* İstemci erişimini ve sanal ad alanını ayarlama 
+* İstemci erişimini ve sanal ad alanını ayarlama
 
   En az bir sanal sunucu (vServer) oluşturun ve istemci makinelerin kullanması için bir IP adresi aralığı atayın. Ayrıca, arka uç depolama dışarı aktarmaları sanal yollara eşlemenizi sağlayan bir sanal dosya sistemi özelliği olan küme ad alanını (bazen genel ad alanı veya GNS olarak adlandırılır) yapılandırmanız gerekir. Küme ad alanı, arka uç depolama medyasını değiştirseniz bile istemcilere tutarlı ve erişilebilir bir dosya sistemi yapısı sağlar. Ad alanı Ayrıca, Azure Blob kapsayıcıları veya desteklenen diğer bulut nesne depolama alanı için Kullanıcı dostu bir sanal depolama hiyerarşisi sağlayabilir.
 
   Ayrıntılar için [ad alanını yapılandırma](fxt-add-storage.md#configure-the-namespace) makalesini okuyun. Bu adım şunları içerir:
   * Vservers oluşturma
-  * İstemci ağ görünümü ve arka uç depolama arasında junler ayarlama 
+  * İstemci ağ görünümü ve arka uç depolama arasında junler ayarlama
   * Her vServer tarafından hangi istemci IP adreslerinin sunulduğunu tanımlama
 
-  > [!Note] 
+  > [!Note]
   > Kümenin GNS 'i ayarlamaya başlamadan önce önemli planlama yapmanız önerilir. Yardım için, [genel ad alanı kullanma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html) ve küme yapılandırma kılavuzundaki [Vservers ile çalışma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#creating-and-working-with-vservers) başlıklı bölümleri okuyun.
 
 * [Ağ ayarlarını ayarla](fxt-configure-network.md)
 
   Yeni bir küme için doğrulanması veya özelleştirilmesi gereken ağla ilgili birkaç ayar vardır. Şu öğeler hakkındaki ayrıntılar için [ağ ayarlarını ayarla](fxt-configure-network.md) bölümünü okuyun:
 
-  * DNS ve NTP yapılandırması doğrulanıyor 
-  * Gerekirse dizin hizmetlerini yapılandırma 
+  * DNS ve NTP yapılandırması doğrulanıyor
+  * Gerekirse dizin hizmetlerini yapılandırma
   * VLAN 'Ları ayarlama
   * Proxy sunucularını yapılandırma
   * Küme ağına IP adresleri ekleme
@@ -343,14 +344,14 @@ Bu adımlar çoğu veya tüm kümeler için gereklidir.
 
 ### <a name="optional-configuration"></a>İsteğe bağlı yapılandırma
 
-Bu adımlar tüm kümeler için gerekli değildir. Bazı iş akışı türleri veya belirli küme yönetimi stilleri için bunlar gereklidir. 
+Bu adımlar tüm kümeler için gerekli değildir. Bazı iş akışı türleri veya belirli küme yönetimi stilleri için bunlar gereklidir.
 
 * Düğüm ayarlarını özelleştirme
 
   Küme genelinde düğüm adlarını ayarlayabilir ve düğüm ıPMı bağlantı noktalarını yapılandırabilir veya tek tek oluşturabilirsiniz. Kümeye düğüm eklemeden önce bu ayarları yapılandırırsanız, yeni düğümler, katılırsanız ayarları otomatik olarak alabilir. Seçenekler, eski küme oluşturma belgesinde [düğüm ayarlarını özelleştirme](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_node.html)bölümünde açıklanmıştır.
 
   > [!TIP]
-  > Bu ürün için bazı belgeler Microsoft Azure belge sitesinde henüz kullanılamamaktadır. Küme [yapılandırma kılavuzunun](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) ve [küme oluşturma kılavuzunun](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) eski sürümünün bağlantıları sizi, GitHub 'da barındırılan ayrı bir Web sitesine götürür. 
+  > Bu ürün için bazı belgeler Microsoft Azure belge sitesinde henüz kullanılamamaktadır. Küme [yapılandırma kılavuzunun](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) ve [küme oluşturma kılavuzunun](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) eski sürümünün bağlantıları sizi, GitHub 'da barındırılan ayrı bir Web sitesine götürür.
 
 * SMB 'yi yapılandırma
 
@@ -364,14 +365,13 @@ Bu adımlar tüm kümeler için gerekli değildir. Bazı iş akışı türleri v
 
   Azure Blob dışında bir bulut depolama alanı kullanmak istiyorsanız, ek bir özellik lisansı yüklemelisiniz. Bir FlashCloud<sup>TM</sup> lisansı satın alma hakkındaki ayrıntılar için Microsoft temsilcinize başvurun. Ayrıntılar [arka uç depolama ekleme ve sanal ad alanı yapılandırma](fxt-add-storage.md#about-back-end-storage)bölümünde açıklanmaktadır.
 
-
 ### <a name="enable-support"></a>Desteği etkinleştir
 
 Azure FXT Edge Filer kümesi, kümeniz hakkında Destek verilerini otomatik olarak karşıya yükleyebilir. Bu karşıya yüklemeler, personelin olası en iyi müşteri hizmetini sağlamasına imkan tanır.
 
 Destek karşıya yüklemelerini ayarlamak için bu adımları izleyin.
 
-1. **Küme**  >  **desteği** ayarları sayfasına gidin. Gizlilik ilkesini kabul edin. 
+1. **Küme**  >  **desteği** ayarları sayfasına gidin. Gizlilik ilkesini kabul edin.
 
    ![Gizlilik ilkesini kabul etmek için denetim masasını ve onay düğmesini içeren açılır pencereyi gösteren ekran görüntüsü](media/fxt-cluster-create/fxt-privacy-policy.png)
 
@@ -391,7 +391,7 @@ Destek karşıya yüklemelerini ayarlamak için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Temel Kümeyi oluşturduktan ve gizlilik ilkesini kabul ettikten sonra, küme düğümlerinin geri kalanını ekleyin. 
+Temel Kümeyi oluşturduktan ve gizlilik ilkesini kabul ettikten sonra, küme düğümlerinin geri kalanını ekleyin.
 
 > [!div class="nextstepaction"]
 > [Küme düğümleri ekleme](fxt-add-nodes.md)

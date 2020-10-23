@@ -95,6 +95,10 @@
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Ağlar arası bağlantı
       href: cross-network-connectivity.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Güvenlik öznitelikleri
       href: expressroute-security-controls.md
     - name: ExpressRoute üzerinden BFD
@@ -166,7 +170,7 @@
     - name: En İyi Uygulamalar
       items:
         - name: Ağ güvenliği ve bulut hizmetlerine yönelik en iyi uygulamalar
-          href: ../best-practices-network-security.md
+          href: /azure/cloud-adoption-framework/reference/networking-vdc
         - name: Yönlendirmeyi iyileştirme
           href: expressroute-optimize-routing.md
         - name: Asimetrik yönlendirme
@@ -192,9 +196,9 @@
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST
-      href: 'https://msdn.microsoft.com/library/azure/mt586720'
+      href: /rest/api/expressroute/
     - name: REST (Klasik)
-      href: 'https://msdn.microsoft.com/library/azure/dn606310'
+      href: /previous-versions/azure/reference/dn606310(v=azure.100)
     - name: Resource Manager şablonu
       displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits
@@ -269,5 +273,3 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: Genel eşlemeyi oluşturma ve değiştirme
           href: about-public-peering.md
-    - name: Güvenlik temeli
-      href: security-baseline.md

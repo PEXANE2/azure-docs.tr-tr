@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 517344e0bae0a48dbee04da33d28c8777d7c142d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91440243"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124971"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümleri oluşturma
 
@@ -185,4 +185,4 @@ Bir perakende çözümü oluşturmaya başlamak için:
 * [Bir akıllı envanter yönetimi uygulama şablonunu dağıtın ve gözden geçir](./tutorial-iot-central-smart-inventory-management.md).
 * [Mikro Karşılama Merkezi uygulama şablonunu dağıtın ve adım adım](./tutorial-micro-fulfillment-center.md)inceleyin.
 * [Video analizi uygulama şablonunu dağıtın ve gözden geçir](./tutorial-video-analytics-deploy.md).
-* [IoT Central genel bakışta](../preview/overview-iot-central.md)IoT Central hakkında daha fazla bilgi edinin.
+* [IoT Central genel bakışta](../core/overview-iot-central.md)IoT Central hakkında daha fazla bilgi edinin.

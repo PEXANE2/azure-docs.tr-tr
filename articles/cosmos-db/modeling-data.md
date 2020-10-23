@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0bf6836fd08e20d97f1cfd85627b25e31bf380
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136048"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278415"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB veri modellemesi
 
@@ -440,6 +440,6 @@ Bir ekrandaki verilerin bir parçasını göstermenin tek bir yolu olmadığı g
 
 Azure Cosmos DB hakkında daha fazla bilgi edinmek için hizmetin [Belgeler](https://azure.microsoft.com/documentation/services/cosmos-db/) sayfasına bakın.
 
-Verilerinizin birden çok bölüme nasıl atıfta olduğunu anlamak için [Azure Cosmos DB bölümünde bölümlendirme verilerine](sql-api-partition-data.md)bakın.
+Verilerinizin birden çok bölüme nasıl atıfta olduğunu anlamak için [Azure Cosmos DB bölümünde bölümlendirme verilerine](partitioning-overview.md)bakın.
 
 Gerçek dünyada bir örnek kullanarak Azure Cosmos DB veri modellemeyi ve Bölümlendirmeyi öğrenmek için, [ Real-World bir örnek Için veri modelleme ve bölümleme](how-to-model-partition-example.md)bölümüne bakın.

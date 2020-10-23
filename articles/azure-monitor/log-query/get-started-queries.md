@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43a72db385d282ee189c179254cfc270929dbbf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87874070"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207198"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure İzleyici’de günlük sorgularını kullanmaya başlama
 
@@ -171,7 +171,7 @@ Yukarıdaki örnek bu çıktıyı oluşturur:
 Ayrıca, sütunları yeniden adlandırmak ve yenilerini tanımlamak için **projeyi** de kullanabilirsiniz. Aşağıdaki örnek, aşağıdakileri yapmak için projesini kullanır:
 
 * Yalnızca *bilgisayar* ve *TimeGenerated* orijinal sütunları seçin.
-* *Etkinlik* sütununu *eventdetails*olarak yeniden adlandırın.
+* *Etkinlik* sütununu *eventdetails*olarak görüntüler.
 * *EventCode*adlı yeni bir sütun oluşturun. Alt **dize ()** Işlevi, etkinlik alanından yalnızca ilk dört karakteri almak için kullanılır.
 
 

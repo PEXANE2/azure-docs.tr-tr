@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274053"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441853"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
 
@@ -51,7 +51,7 @@ Bu özellik şu anda desteklenmiyor. Kuruluşunuzun kaynaklarına erişim çok f
 Kuruluş, B2B işbirliği kullanıcıları eklemek, bunları gerektiği gibi uygulamalara sağlamak ve ardından davetiye göndermek isteyebilir. Ekleme iş akışını özelleştirmek için B2B işbirliği davetiyesi API 'sini kullanabilirsiniz.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Konuk kullanıcıları Exchange genel adres listesinde görünür yapabilir miyim?
-Evet. Konuk nesneler, kuruluşunuzun genel adres listesinde (GAL) varsayılan olarak görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Bkz [. genel adres listesinde Konuk nesneleri görünür yapabilir miyim?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+Evet. Konuk nesneler, kuruluşunuzun genel adres listesinde (GAL) varsayılan olarak görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Bkz [. genel adres listesinde Konuk nesneleri görünür yapabilir miyim?](/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Konuk kullanıcıyı sınırlı bir yönetici yapabilir miyim?
 Elbette. Daha fazla bilgi için bkz. [bir role Konuk kullanıcılar ekleme](add-guest-to-role.md).
@@ -80,16 +80,16 @@ Evet! Tüm konuk ve dış kullanıcıların Azure portal erişimini engelleyen b
 Evet. Multi-Factor Authentication ve tüketici e-posta hesaplarının her ikisi de Azure AD B2B işbirliği için desteklenir.
 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Azure AD B2B işbirliği kullanıcıları için parola sıfırlamayı destekliyor musunuz?
-Azure AD kiracınız bir kullanıcının giriş dizinidir ve [Kullanıcı parolasını Azure Portal sıfırlayabilirsiniz](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) . Ancak, başka bir Azure AD dizini veya dış kimlik sağlayıcısı tarafından yönetilen bir hesapla oturum açan bir Konuk kullanıcının parolasını doğrudan sıfırlayamazsınız. Yalnızca kullanıcının giriş dizinindeki Konuk Kullanıcı veya yönetici parolayı sıfırlayabilir. Aşağıda, parola sıfırlamanın Konuk kullanıcılar için nasıl çalıştığı hakkında bazı örnekler verilmiştir:
+Azure AD kiracınız bir kullanıcının giriş dizinidir ve [Kullanıcı parolasını Azure Portal sıfırlayabilirsiniz](../fundamentals/active-directory-users-reset-password-azure-portal.md) . Ancak, başka bir Azure AD dizini veya dış kimlik sağlayıcısı tarafından yönetilen bir hesapla oturum açan bir Konuk kullanıcının parolasını doğrudan sıfırlayamazsınız. Yalnızca kullanıcının giriş dizinindeki Konuk Kullanıcı veya yönetici parolayı sıfırlayabilir. Aşağıda, parola sıfırlamanın Konuk kullanıcılar için nasıl çalıştığı hakkında bazı örnekler verilmiştir:
  
 * Bir Microsoft hesabı (örneğin) ile oturum açan Konuk kullanıcılar, guestuser@live.com Microsoft hesabı self servis parola sıfırlama (SSPR) kullanarak kendi parolalarını sıfırlayabilir. [Microsoft hesabı parolanızı sıfırlama](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)bölümüne bakın.
 * Bir Google hesabı veya başka bir dış kimlik sağlayıcısı ile oturum açan Konuk kullanıcılar, kimlik sağlayıcısının SSPR metodunu kullanarak kendi parolalarını sıfırlayabilir. Örneğin, Google hesabı olan bir Konuk Kullanıcı parolanızı guestuser@gmail.com [değiştirme veya sıfırlama](https://support.google.com/accounts/answer/41078)bölümündeki yönergeleri izleyerek parolalarını sıfırlayabilir.
-* Kimlik kiracısı tam zamanında (JıT) veya "viral" kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.
+* Kimlik kiracısı tam zamanında (JıT) veya "viral" kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](../users-groups-roles/domains-admin-takeover.md) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.
 
 * Konuk kullanıcının ana dizini Azure AD kiracınız ise, kullanıcının parolasını sıfırlayabilirsiniz. Örneğin, bir Kullanıcı oluşturmuş veya şirket içi Active Directory bir kullanıcıyı eşitledi ve Kullanıcıtürünü Konuk olarak ayarlamış olabilirsiniz. Bu Kullanıcı dizininizde bulunduğundan, Azure portal parolalarını sıfırlayabilirsiniz.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics 365, Azure AD B2B işbirliği için çevrimiçi destek sağlar mi?
-Evet, Dynamics 365 (çevrimiçi) Azure AD B2B işbirliğini destekler. Daha fazla bilgi için bkz. Dynamics 365 makalesine [kullanıcıları Azure AD B2B işbirliği Ile davet etme](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+Evet, Dynamics 365 (çevrimiçi) Azure AD B2B işbirliğini destekler. Daha fazla bilgi için bkz. Dynamics 365 makalesine [kullanıcıları Azure AD B2B işbirliği Ile davet etme](/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Yeni oluşturulan B2B işbirliği kullanıcısı için başlangıç parolasının yaşam süresi nedir?
 Azure AD 'nin, tüm Azure AD bulut Kullanıcı hesaplarına eşit olarak uygulanan sabit bir karakter, parola gücü ve hesap kilitleme gereksinimleri kümesi vardır. Bulut Kullanıcı hesapları, başka bir kimlik sağlayıcısı ile federasyon olmayan, örneğin 
@@ -135,4 +135,3 @@ Kuruluşunuzun Azure AD B2B kullanması gereken lisanslar hakkında daha fazla b
 ### <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
-

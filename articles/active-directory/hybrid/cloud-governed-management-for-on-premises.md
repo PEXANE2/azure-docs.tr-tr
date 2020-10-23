@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662519"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369803"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD, şirket Içi Iş yükleri için bulut tarafından yönetilen yönetim sağlar
 
@@ -107,7 +107,7 @@ Kuruluşların ölçeklenebilir erişimi yönetmesi için bir işlem gerekir. Ku
 
 Genellikle, iş karar mekanizmalarının onay kararlarını devreder. Ayrıca, kullanıcıların kendilerini de içerebilir. Örneğin, Avrupa 'daki bir şirketin pazarlama uygulamasındaki gizli müşteri verilerine erişen kullanıcıların şirket ilkelerini bilmeleri gerekir. Konuk kullanıcılar ayrıca, davet edildikleri bir kuruluştaki veriler için işleme gereksinimlerinin farkında olabilir.
 
-Kuruluşlar [,](../users-groups-roles/groups-dynamic-membership.md) [SaaS uygulamalarına](../saas-apps/tutorial-list.md)Kullanıcı hazırlama veya [etki alanları arası kimlik yönetimi (SCIM) standardı kullanılarak tümleştirilmiş uygulamalar](../app-provisioning/use-scim-to-provision-users-and-groups.md)gibi teknolojiler aracılığıyla erişim yaşam döngüsü sürecini otomatik hale getirebilir. Kuruluşlar, hangi [Konuk kullanıcıların şirket içi uygulamalara erişebileceğini](../external-identities/hybrid-cloud-to-on-premises.md)de denetleyebilir. Bu erişim hakları daha sonra yinelenen [Azure AD erişim İncelemeleri](../governance/access-reviews-overview.md)kullanılarak düzenli olarak gözden geçirilebilir.
+Kuruluşlar [,](../enterprise-users/groups-dynamic-membership.md) [SaaS uygulamalarına](../saas-apps/tutorial-list.md)Kullanıcı hazırlama veya [etki alanları arası kimlik yönetimi (SCIM) standardı kullanılarak tümleştirilmiş uygulamalar](../app-provisioning/use-scim-to-provision-users-and-groups.md)gibi teknolojiler aracılığıyla erişim yaşam döngüsü sürecini otomatik hale getirebilir. Kuruluşlar, hangi [Konuk kullanıcıların şirket içi uygulamalara erişebileceğini](../external-identities/hybrid-cloud-to-on-premises.md)de denetleyebilir. Bu erişim hakları daha sonra yinelenen [Azure AD erişim İncelemeleri](../governance/access-reviews-overview.md)kullanılarak düzenli olarak gözden geçirilebilir.
 
 ## <a name="future-directions"></a>Gelecekteki yönergeler
 

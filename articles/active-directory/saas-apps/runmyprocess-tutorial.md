@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: db47849575c097cf56824b623dddbb6e0835d1b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5c641ce9b224aecc3d199427bf27b804f7dd2dd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543627"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102094"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Öğretici: RunMyProcess 'i Azure Active Directory tümleştirin
 
@@ -96,11 +96,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Sol gezinti panelinde **Hesap** ' a tıklayın ve **yapılandırma**' yı seçin.
 
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
+    ![Ekran görüntüsü, hesaptan seçilen yapılandırmayı gösterir.](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
 1. **Kimlik doğrulama yöntemi** bölümüne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama yöntemi sekmesini gösterir.](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
     a. As **yöntemi**olarak **Samlv2 ile SSO**'yu seçin.
 

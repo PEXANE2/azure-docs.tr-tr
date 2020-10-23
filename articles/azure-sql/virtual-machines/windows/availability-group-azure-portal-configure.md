@@ -13,25 +13,26 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482809"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164577"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırma (Azure portal-Önizleme)
+# <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu (Önizleme) yapılandırmak üzere Azure portal kullanma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu makalede, Azure VM 'lerinde SQL Server için bir kullanılabilirlik grubu yapılandırmak üzere [Azure Portal](https://portal.azure.com) nasıl kullanılacağı açıklanır. 
 
 Yeni bir küme oluşturmak veya var olan bir kümeyi eklemek için Azure portal kullanın ve ardından kullanılabilirlik grubunu, dinleyiciyi ve iç yük dengeleyiciyi oluşturun. 
 
-   > [!NOTE]
-   > Bu özellik şu anda önizleme aşamasındadır ve dağıtılmakta olduğundan, istediğiniz bölge kullanılamıyorsa yakında tekrar kontrol edin. 
+Bu özellik şu anda önizleme sürümündedir. 
+
+Bu makalede kullanılabilirlik grubu ortamını yapılandırmak için Azure portal kullanılırken, [PowerShell veya Azure CLI](availability-group-az-commandline-configure.md), [Azure hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)veya [el ile](availability-group-manually-configure-tutorial.md) de yapılabilir. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure portal kullanarak her zaman açık kullanılabilirlik grubu yapılandırmak için aşağıdaki önkoşullara sahip olmanız gerekir: 
 
@@ -80,7 +81,7 @@ Zaten mevcut bir kümeniz yoksa, aşağıdaki adımlarla Azure portal kullanarak
 
 SQL Server VM ortamınızda yapılandırılmış bir kümeniz zaten varsa, bunu Azure portal ekleyebilirsiniz.
 
-Bunu yapmak için şu adımları uygulayın:
+Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
@@ -97,7 +98,7 @@ Bunu yapmak için şu adımları uygulayın:
 
 ## <a name="create-availability-group"></a>Kullanılabilirlik grubu oluştur
 
-Kümeniz oluşturulduktan veya eklendi olduktan sonra, Azure portal kullanarak kullanılabilirlik grubunu oluşturun. Bunu yapmak için şu adımları uygulayın:
+Kümeniz oluşturulduktan veya eklendi olduktan sonra, Azure portal kullanarak kullanılabilirlik grubunu oluşturun. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
@@ -163,7 +164,7 @@ Kümeye daha fazla SQL Server VM eklemek için şu adımları izleyin:
 
 1. **Windows Server yük devretme kümesi kimlik bilgilerini** genişletin ve SQL Server hizmeti, küme operatörü ve küme önyükleme hesapları için kullanılan hesaplara girin. 
 1. Kümeye eklemek istediğiniz SQL Server VM 'Leri seçin. 
-1. **Uygula**’yı seçin. 
+1. **Apply** (Uygula) seçeneğini belirleyin. 
 
 Üst gezinti çubuğundaki zil simgesinden erişilebilen **etkinlik günlüğünde** dağıtımınızın durumunu kontrol edebilirsiniz. 
 
@@ -177,7 +178,7 @@ Kullanılabilirlik grubuna **daha fazla çoğaltma ekleyebilir** , **dinleyiciyi
 
 ## <a name="remove-cluster"></a>Kümeyi kaldır
 
-SQL Server VM 'Leri kümeden kaldırın ve ardından SQL VM kaynak sağlayıcısından küme meta verilerini kaldırın. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) veya PowerShell 'in en son sürümünü kullanarak bunu yapabilirsiniz. 
+SQL Server VM 'Leri kümeden kaldırın ve ardından SQL VM kaynak sağlayıcısından küme meta verilerini kaldırın. [Azure CLI](/cli/azure/install-azure-cli) veya PowerShell 'in en son sürümünü kullanarak bunu yapabilirsiniz. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

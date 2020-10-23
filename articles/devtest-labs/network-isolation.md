@@ -3,12 +3,12 @@ title: Azure DevTest Labs ağ yalıtımı
 description: Azure DevTest Labs 'de ağ yalıtımı hakkında bilgi edinin.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88875968"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149158"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>DevTest Labs 'de ağ yalıtımı
 
@@ -57,7 +57,7 @@ Ayrıca aşağıdaki makaleleri gözden geçirin:
  
    > [!div class="mx-imgBorder"]
    > ![Contoso testi](./media/network-isolation/contoso-test.png)
-1. Depolama hesabında güvenlik duvarları ve sanal ağlar ' a gidin ve ' güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver ' onay kutusunun işaretli olduğundan emin olun. [DevTest Labs güvenilir bir Microsoft hizmeti olduğu](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)için bu seçenek, laboratuvarın bir ağ yalıtılmış modunda çalışmasını sağlayacaktır. 
+1. Depolama hesabında güvenlik duvarları ve sanal ağlar ' a gidin ve ' güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver ' onay kutusunun işaretli olduğundan emin olun. [DevTest Labs güvenilir bir Microsoft hizmeti olduğu](../storage/common/storage-network-security.md#trusted-microsoft-services)için bu seçenek, laboratuvarın bir ağ yalıtılmış modunda çalışmasını sağlayacaktır. 
 
    > [!div class="mx-imgBorder"]
    > ![Contoso laboratuvar güvenlik duvarları](./media/network-isolation/contoso-lab-firewalls-vnets.png)
@@ -74,7 +74,7 @@ Bu şekilde, Azure depolama, eklenen sanal ağdan gelen bağlantılara izin veri
 
 Bu ayarı birden çok laboratuvarda yapılandırmak için bu adımları otomatik hale getirmeyi seçebilirsiniz. 
 
-[PowerShell ve CLı kullanarak Azure depolama için varsayılan ağ erişim kurallarını yönetme hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=/azure/virtual-network/toc.json#powershell)
+[PowerShell ve CLı kullanarak Azure depolama için varsayılan ağ erişim kurallarını yönetme hakkında daha fazla bilgi edinin](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Ağ yalıtımlı modda laboratuvar kullanırken hatırlamaları gerekenler
 
@@ -82,7 +82,7 @@ Bu ayarı birden çok laboratuvarda yapılandırmak için bu adımları otomatik
 
 Ağ yalıtımlı laboratuvarda, ' den özel görüntü oluşturmak için bir VHD 'yi laboratuvarın depolama hesabına yükleme gibi eylemler için, laboratuvar sahibinin, depolama hesabına izin verilen bir uç noktadan erişimi açıkça etkinleştirmeleri gerekir. Bunu, bir sanal makine oluşturarak ve bu sanal makineden laboratuvar depolama hesabına güvenli bir şekilde erişerek yapabilirsiniz. 
 
-[Bir sanal makineden özel olarak bir depolama hesabına erişme hakkında daha fazla bilgi edinin](../private-link/create-private-endpoint-storage-portal.md)
+[Bir sanal makineden özel olarak bir depolama hesabına erişme hakkında daha fazla bilgi edinin](../private-link/tutorial-private-endpoint-storage-portal.md)
 
 ### <a name="exporting-usage-data-from-the-lab"></a>Laboratuvar 'ten kullanım verilerini dışarı aktarma 
 

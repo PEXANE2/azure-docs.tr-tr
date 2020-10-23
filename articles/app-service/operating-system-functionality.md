@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080207"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150160"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service işletim sistemi işlevselliği
-Bu makalede, [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)üzerinde çalışan tüm Windows uygulamaları için kullanılabilen ortak temel işletim sistemi işlevleri açıklanmaktadır. Bu işlevsellik dosya, ağ ve kayıt defteri erişimini ve tanılama günlüklerini ve olaylarını içerir. 
+Bu makalede, [Azure App Service](./overview.md)üzerinde çalışan tüm Windows uygulamaları için kullanılabilen ortak temel işletim sistemi işlevleri açıklanmaktadır. Bu işlevsellik dosya, ağ ve kayıt defteri erişimini ve tanılama günlüklerini ve olaylarını içerir. 
 
 > [!NOTE] 
 > App Service [Linux uygulamaları](overview.md#app-service-on-linux) kendi kapsayıcılarında çalışır. Konak işletim sistemine erişime izin verilmiyor, kapsayıcıya kök erişiminiz var. Benzer şekilde, [Windows kapsayıcılarında çalışan uygulamalar](quickstart-custom-container.md?pivots=container-windows)için, kapsayıcıya yönetici erişimi vardır ancak ana bilgisayar işletim sistemine erişemez. 
@@ -51,7 +51,7 @@ App Service, Azure PaaS (hizmet olarak platform) altyapısının üstünde çal�
 - Yalnızca App Service (ve müşterilerle erişilemeyen) tarafından kullanılan Azure paketi cspkg dosyalarını içeren bir uygulama sürücüsü
 - "Kullanıcı" sürücüsü (C:\ sürücü), boyutu VM 'nin boyutuna bağlı olarak değişir. 
 
-Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kotasına ulaşıldığında, uygulamanız olumsuz etkileri olabilir. Örneğin: 
+Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kotasına ulaşıldığında, uygulamanız olumsuz etkileri olabilir. Örnek: 
 
 - Uygulama, diskte yeterli alan olmadığını belirten bir hata oluşturabilir.
 - Kudu konsoluna gözatarken disk hataları görebilirsiniz.
@@ -126,4 +126,3 @@ App Service, sanal makine örneklerine uzak masaüstü erişimi sağlamaz.
 ## <a name="more-information"></a>Daha fazla bilgi
 
 [Azure App Service sandbox](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) -App Service yürütme ortamı hakkında en güncel bilgiler. Bu sayfa doğrudan App Service geliştirme ekibi tarafından korunur.
-

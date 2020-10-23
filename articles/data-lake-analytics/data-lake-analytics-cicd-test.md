@@ -1,21 +1,18 @@
 ---
 title: Azure Data Lake Analytics kodunuzu test etme
 description: U-SQL ve genişletilmiş C# kodu için Azure Data Lake Analytics için test çalışmalarını nasıl ekleyeceğinizi öğrenin.
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 08/30/2019
-ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129925"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219216"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics kodunuzu test etme
 
@@ -112,7 +109,7 @@ Projeyi derledikten sonra, **Test**  >  **Windows**  >  **Test Gezgini**' ni se�
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Azure Pipelines 'de test çalışmalarını çalıştırma<a name="run-test-cases-in-azure-devops"></a>
 
-Hem **U-SQL betik testi projeleri** hem de **c# Udo test projeleri** , c# birim testi projelerini devralınır. Azure Pipelines içindeki [Visual Studio test görevi](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) bu test çalışmalarını çalıştırabilir.
+Hem **U-SQL betik testi projeleri** hem de **c# Udo test projeleri** , c# birim testi projelerini devralınır. Azure Pipelines içindeki [Visual Studio test görevi](/azure/devops/pipelines/test/getting-started-with-continuous-testing) bu test çalışmalarını çalıştırabilir.
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Azure Pipelines 'de U-SQL test çalışmalarını çalıştırma
 

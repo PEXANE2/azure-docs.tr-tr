@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317185"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164831"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 İşlevinize geçirilen bağlam, `executionContext` aşağıdaki özelliklere sahip bir nesne olan bir özelliği gösterir:
 
-| Özellik adı  | Tür  | Açıklama |
+| Özellik adı  | Tür  | Description |
 |---------|---------|---------|
 | `invocationId` | Dize | Belirli işlev çağrısı için benzersiz bir tanımlayıcı sağlar. |
 | `functionName` | Dize | Çalışan işlevin adını sağlar |
@@ -290,49 +290,17 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-Akış işlev günlüklerine varsayılan izleme düzeyinde yazmanızı sağlar. Üzerinde `context.log` , diğer izleme düzeylerinde işlev günlükleri yazmanıza olanak sağlayan ek günlüğe kaydetme yöntemleri mevcuttur:
+Akış işlev günlüklerine, diğer günlük düzeyleri kullanılabilir olan varsayılan izleme düzeyinde yazmanızı sağlar. İzleme günlüğü, sonraki bölümde ayrıntılı olarak açıklanmıştır. 
 
+## <a name="write-trace-output-to-logs"></a>İzleme çıkışını günlüklere yaz
 
-| Yöntem                 | Açıklama                                |
-| ---------------------- | ------------------------------------------ |
-| **hata (_ileti_)**   | Hata düzeyi günlüğe kaydetme veya alçaltmak için yazar.   |
-| **uyar (_ileti_)**    | Uyarı düzeyinde günlüğe kaydetmeye veya daha düşük bir şekilde yazar. |
-| **bilgi (_ileti_)**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
-| **ayrıntılı (_ileti_)** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
+Işlevlerde, `context.log` günlüklere ve konsola izleme çıktısı yazmak için yöntemlerini kullanırsınız. `context.log()`' İ çağırdığınızda, iletiniz, _bilgi_ izleme düzeyi olan varsayılan izleme düzeyinde günlüklere yazılır. İşlevler, işlev uygulama günlüklerinizi daha iyi yakalamak için Azure Application Insights ile tümleşir. Azure Izleyici 'nin bir parçası olan Application Insights, hem uygulama telemetrinin hem de izleme çıktılarınızın toplanması, görsel işleme ve analizine yönelik tesisler sağlar. Daha fazla bilgi için bkz. [Azure işlevlerini izleme](functions-monitoring.md).
 
-Aşağıdaki örnek, uyarı izleme düzeyinde bir günlük Yazar:
+Aşağıdaki örnek, çağrı KIMLIĞI de dahil olmak üzere bilgi izleme düzeyinde bir günlük Yazar:
 
 ```javascript
-context.log.warn("Something has happened."); 
+context.log("Something has happened. " + context.invocationId); 
 ```
-
-Dosyadaki host.js[günlük kaydı için izleme düzeyi eşiğini yapılandırabilirsiniz](#configure-the-trace-level-for-console-logging) . Günlükleri yazma hakkında daha fazla bilgi için bkz. [izleme çıkışları yazma](#writing-trace-output-to-the-console) .
-
-İşlev günlüklerini görüntüleme ve sorgulama hakkında daha fazla bilgi edinmek için [Azure işlevlerini izleme](functions-monitoring.md) makalesini okuyun.
-
-## <a name="writing-trace-output-to-the-console"></a>İzleme çıkışını konsola yazma 
-
-Işlevlerde, `context.log` izleme çıkışını konsola yazmak için yöntemlerini kullanırsınız. V2. x Işlevlerinde izleme çıkışları, `console.log` işlev uygulaması düzeyinde yakalanır. Bu, öğesinden çıkışı `console.log` belirli bir işlev çağrısına bağlı olmadığı ve belirli bir işlevin günlüklerinde görüntülenmediği anlamına gelir. Ancak, Application Insights yayırlar. V1. x Işlevlerinde, `console.log` konsola yazmak için kullanamazsınız.
-
-`context.log()`' İ çağırdığınızda iletiniz, _bilgi_ izleme düzeyi olan varsayılan izleme düzeyinde konsola yazılır. Aşağıdaki kod, bilgi izleme düzeyinde konsola yazar:
-
-```javascript
-context.log({hello: 'world'});  
-```
-
-Bu kod yukarıdaki koda eşdeğerdir:
-
-```javascript
-context.log.info({hello: 'world'});  
-```
-
-Bu kod konsola hata düzeyinde Yazar:
-
-```javascript
-context.log.error("An error has occurred.");  
-```
-
-_Hata_ en yüksek izleme düzeyi olduğundan, bu izleme, günlük kaydı etkin olduğu sürece tüm izleme düzeylerinde çıktıya yazılır.
 
 Tüm `context.log` yöntemler Node.js [util. Format yöntemi](https://nodejs.org/api/util.html#util_util_format_format)tarafından desteklenen aynı parametre biçimini destekler. Varsayılan izleme düzeyini kullanarak işlev günlüklerini yazan aşağıdaki kodu göz önünde bulundurun:
 
@@ -348,9 +316,39 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', 
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>Konsol günlüğü için izleme düzeyini yapılandırma
+> [!NOTE]  
+> `console.log`İzleme çıktıları yazmak için kullanmayın. Çıkış from `console.log` işlevi uygulama düzeyinde yakalandığından, belirli bir işlev çağrısına bağlı değildir ve belirli bir işlevin günlüklerinde gösterilmez. Ayrıca, Işlevler çalışma zamanının sürüm 1. x, `console.log` konsola yazmak için kullanmayı desteklemez.
 
-1. x işlevleri, konsola yazma için eşik izleme düzeyini tanımlamanızı sağlar. Bu, İzlemelerden konsola nasıl yazıldığını denetlemenizi kolaylaştırır. Konsola yazılan tüm izlemelerin eşiğini ayarlamak için `tracing.consoleLevel` dosyadaki host.jsözelliğini kullanın. Bu ayar, işlev uygulamanızdaki tüm işlevler için geçerlidir. Aşağıdaki örnek, ayrıntılı günlük kaydını etkinleştirmek için izleme eşiğini ayarlar:
+### <a name="trace-levels"></a>İzleme düzeyleri
+
+Varsayılan düzeyin yanı sıra, belirli izleme düzeylerinde işlev günlükleri yazmanıza olanak sağlayan aşağıdaki günlük yöntemleri kullanılabilir.
+
+| Yöntem                 | Açıklama                                |
+| ---------------------- | ------------------------------------------ |
+| **hata (_ileti_)**   | Günlüklere hata düzeyi bir olay yazar.   |
+| **uyar (_ileti_)**    | Günlüklere uyarı düzeyi bir olay yazar. |
+| **bilgi (_ileti_)**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
+| **ayrıntılı (_ileti_)** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
+
+Aşağıdaki örnek, bilgi düzeyi yerine uyarı izleme düzeyinde aynı günlüğü Yazar:
+
+```javascript
+context.log.warn("Something has happened. " + context.invocationId); 
+```
+
+_Hata_ en yüksek izleme düzeyi olduğundan, bu izleme, günlük kaydı etkin olduğu sürece tüm izleme düzeylerinde çıktıya yazılır.
+
+### <a name="configure-the-trace-level-for-logging"></a>Günlük kaydı için izleme düzeyini yapılandırma
+
+İşlevler, günlüklere veya konsola yazmak için eşik izleme düzeyini tanımlamanızı sağlar. Belirli eşik ayarları, Işlevler çalışma zamanının sürümüne bağlıdır.
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+Günlüklere yazılan izlemelerin eşiğini ayarlamak için `logging.logLevel` dosyadaki host.jsözelliğini kullanın. Bu JSON nesnesi, işlev uygulamanızdaki tüm işlevler için varsayılan bir eşik tanımlamanızı sağlar ve ayrıca ayrı işlevler için özel eşikler tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Azure işlevleri için izlemeyi yapılandırma](configure-monitoring.md).
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+Günlüklere ve konsola yazılan tüm izlemelerin eşiğini ayarlamak için `tracing.consoleLevel` dosyadaki host.jsözelliğini kullanın. Bu ayar, işlev uygulamanızdaki tüm işlevler için geçerlidir. Aşağıdaki örnek, ayrıntılı günlük kaydını etkinleştirmek için izleme eşiğini ayarlar:
 
 ```json
 {
@@ -360,7 +358,65 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 }  
 ```
 
-**Consolelevel** değerleri, yöntemlerin adlarına karşılık gelir `context.log` . Konsola tüm izleme günlüğünü devre dışı bırakmak için **Consolelevel** ' ı _off_olarak ayarlayın. Daha fazla bilgi için bkz. [host.jsbaşvurusu](functions-host-json-v1.md).
+**Consolelevel** değerleri, yöntemlerin adlarına karşılık gelir `context.log` . Konsola tüm izleme günlüğünü devre dışı bırakmak için **Consolelevel** ' ı _off_olarak ayarlayın. Daha fazla bilgi için, bkz [ . v1. x başvurusuhost.js](functions-host-json-v1.md).
+
+---
+
+### <a name="log-custom-telemetry"></a>Özel telemetri günlüğe kaydet
+
+Varsayılan olarak, Işlevler çıktıyı izleme olarak Application Insights yazar. Daha fazla denetim için, Application Insights örneğinize özel telemetri verileri göndermek için [Application Insights Node.js SDK 'sını](https://github.com/microsoft/applicationinsights-node.js) kullanabilirsiniz. 
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+# <a name="v1x"></a>[v1. x](#tab/v1)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.operationId};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+---
+
+`tagOverrides`Parametresi, öğesini `operation_Id` IŞLEVIN çağırma kimliğine ayarlar. Bu ayar, belirli bir işlev çağrısı için otomatik olarak oluşturulan ve özel telemetrinin tümünü ilişkilendirmenizi sağlar.
 
 ## <a name="http-triggers-and-bindings"></a>HTTP Tetikleyicileri ve bağlamaları
 

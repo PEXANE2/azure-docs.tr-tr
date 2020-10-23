@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 46686818f9a5b7a0ef287843887440331f5ac24e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6b752b2c562944748d21aa1a28a177163a95aee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548132"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455298"
 ---
 # <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Öğretici: süreksizlik denetimini Azure Active Directory ile tümleştirin
 
@@ -26,9 +26,9 @@ Bu öğreticide, devamlılığı denetimini (denetim) Azure Active Directory (Az
 * Kullanıcılarınızın Azure AD hesaplarıyla denetlemek için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -128,16 +128,16 @@ Bu bölümde, denetim erişimi vererek Azure çoklu oturum açma özelliğini ku
 
 ### <a name="create-control-test-user"></a>Denetim testi kullanıcısı oluştur
 
-Bu bölümde, denetimde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Denetim platformunda kullanıcıları eklemek için [Denetim desteği ekibi](mailto:help@continuity.net) ile çalışın. Denetimdeki **kimlik sağlayıcısı Kullanıcı kimliğini** doldurmak Için Britta Simon 'ıN Azure AD **Kullanıcı adını** kullanın. Kullanıcıların çoklu oturum açmayı kullanabilmesi için önce denetimde ve **kimlik sağlayıcısı Kullanıcı kimliği** kümesi oluşturulması gerekir.
+Bu bölümde, denetimde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Denetim platformunda kullanıcıları eklemek için [Denetim desteği ekibi](mailto:help@continuity.net) ile çalışın. Denetimdeki **kimlik sağlayıcısı Kullanıcı kimliğini** doldurmak Için Britta Simon 'ıN Azure AD **Kullanıcı adını** kullanın. Kullanıcıların çoklu oturum açmayı kullanabilmesi için önce denetimde ve **kimlik sağlayıcısı Kullanıcı kimliği** kümesi oluşturulması gerekir.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde Denetim kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız denetimde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Denetim kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız denetimde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

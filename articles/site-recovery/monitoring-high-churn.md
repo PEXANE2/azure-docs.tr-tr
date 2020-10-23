@@ -6,12 +6,12 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
-ms.openlocfilehash: 51f45b5c0b8a2729f64eb376e06875719474cbfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89664685"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359875"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>Sanal makinelerde dalgalanma desenlerini izleme
 
@@ -21,7 +21,7 @@ Bu makalede, bir sanal makinede dalgalanma desenlerini izlemek için kullanılab
 
 Makineniz Azure 'da barındırılıyorsa ve depolama için yönetilen veya yönetilmeyen bir disk kullanıyorsa, disk ölçümlerini izleyerek performansı kolayca izleyebilirsiniz. Bu, doğru disk seçimini, uygulama kullanım örüntüize uyacak şekilde izlemenizi ve yapmanızı sağlar. Uyarı, tanı ve derleme otomasyonu oluşturmak için de kullanabilirsiniz. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-Makinelerinizi Azure Site Recovery ile koruduktan sonra, Azure Izleyici günlüklerini ve Log Analytics kullanarak makinelerinizi izleyebilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics).
+Makinelerinizi Azure Site Recovery ile koruduktan sonra, Azure Izleyici günlüklerini ve Log Analytics kullanarak makinelerinizi izleyebilirsiniz. [Daha fazla bilgi edinin](./monitor-log-analytics.md).
 
 Ayrıca kullanabileceğiniz bazı işletim sistemine özgü araçlar da vardır.
 
@@ -62,7 +62,7 @@ Makinenizde yüksek karmaşıklığa neden olan uygulamaları tanımladıktan so
 
     ![Performans Izleyicisi Step3](./media/monitoring-high-churn/perfmon-step3.png)
 
-Performans Izleyicisi hakkında [buradan](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data)daha fazla bilgi edinin.
+Performans Izleyicisi hakkında [buradan](/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data)daha fazla bilgi edinin.
 
 ## <a name="for-linux-machines"></a>Linux makineleri için
 

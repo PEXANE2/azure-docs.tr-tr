@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8735bf721ec85dcd556582f7fd887dd82b55a35d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258306"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369990"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 
@@ -38,18 +38,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 * **Bağlantı modu: doğrudan modu kullan**
 <a id="direct-connection"></a>
     
-    İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. Bağlantı modu, istemcisini yapılandırmak için kullanılabilen bir anahtar yapılandırma ayarıdır. Java SDK 'Sı v4 Azure Cosmos DB için kullanılabilen iki bağlantı modu şunlardır:  
-
-    * Doğrudan mod (varsayılan)      
-    * Ağ geçidi modu
-
-    Bu bağlantı modları temelde, veri düzleminin istek gösteren yolu-belge okuma ve yazma işlemlerini, istemci makinenizden Azure Cosmos DB arka uçta bölümlere alma. Genellikle doğrudan modu, en iyi performans için tercih edilen seçenektir. istemcinin TCP bağlantılarını Azure Cosmos DB arka uçtaki bölümlerle doğrudan açmasına olanak sağlar ve istekleri doğrudan bir aracı olmadan *doğrudan*gönderebilirsiniz. Buna karşılık, ağ geçidi modunda, istemciniz tarafından yapılan istekler, Azure Cosmos DB Ön uçtaki "ağ geçidi" sunucusuna yönlendirilir ve bu da isteklerinizi Azure Cosmos DB arka uçta uygun bölümlere (ler) gönderir. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun Azure Cosmos DB, verilerin her okunışında veya her yazıldığında ek bir ağ atlaması (bölüm için istemci ağ geçidine ve ağ geçidine) içerir. Bu nedenle, daha az ağ atlaması nedeniyle doğrudan mod daha iyi performans sunar.
-
-    Veri düzlemi istekleri için bağlantı modu, aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemleri kullanılarak Azure Cosmos db istemci Oluşturucusu 'nda yapılandırılır. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için*directconnectionconfig* , *gatewaymode ()* için *gatewayconnectionconfig* .)
+    Java SDK varsayılan bağlantı modu doğrudan ' dir. İstemci oluşturucusunda bağlantı modunu aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemlerini kullanarak yapılandırabilirsiniz. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için*directconnectionconfig* , gatewaymode için *gatewayconnectionconfig* *()*.). Farklı bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı modları](sql-sdk-connection-modes.md) makalesine bakın.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -67,7 +60,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -135,7 +128,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -155,49 +148,49 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Java SDK 'Sı v4 Azure Cosmos DB, doğrudan modu, en iyi iş yükleriyle veritabanı performansını geliştirmek için en iyi seçenektir. 
 
-    * ***Doğrudan moda genel bakış***
+    * ***Doğrudan moda genel bakış**_
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB bağlantı ilkesinin çizimi" border="false":::
 
-        Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 **Kanal** ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası**tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
+        Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _*Kanal** ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası**tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
 
-    * ***Doğrudan mod için yapılandırma seçenekleri***
+    * ***Doğrudan mod _ Için yapılandırma seçenekleri**
 
-        Varsayılan olmayan doğrudan mod davranışı isteniyorsa, bir *Directconnectionconfig* örneği oluşturun ve özelliklerini özelleştirin, ardından özelleştirilmiş özellik örneğini Azure Cosmos DB Istemci oluşturucusunun *directmode ()* metoduna geçirin.
+        Varsayılan olmayan doğrudan mod davranışı isteniyorsa, bir _DirectConnectionConfig * örneği oluşturun ve özelliklerini özelleştirin, ardından özelleştirilmiş özellik örneğini Azure Cosmos DB istemci oluşturucusunda *Directmode ()* metoduna geçirin.
 
         Bu yapılandırma ayarları yukarıda ele alınan temeldeki doğrudan mod mimarisinin davranışını denetler.
 
         İlk adım olarak aşağıdaki önerilen yapılandırma ayarlarını kullanın. Bu *Directconnectionconfig* SEÇENEKLERI, SDK performansını beklenmeyen yollarla etkileyebilecek gelişmiş yapılandırma ayarlarıdır; avantajları anlamak çok rahat ve kesinlikle gerekli olmadığı müddetçe, kullanıcıların bunları değiştirmelerini öneririz. Bu konuda sorun yaşıyorsanız lütfen [Azure Cosmos DB ekibine](mailto:CosmosDBPerformanceSupport@service.microsoft.com) başvurun.
 
-        | Yapılandırma seçeneği       | Varsayılan    |
-        | :------------------:       | :-----:    |
-        | ıdboşta ConnectionTimeout      | "PT1M"     |
-        | maxConnectionsPerEndpoint  | "PT0S"     |
-        | connectTimeout             | "PT1M10S"  |
-        | ıdtımeendpointtimeout        | 8388608    |
-        | maxRequestsPerConnection   | 10         |
+        | Yapılandırma seçeneği       | Varsayılan   |
+        | :------------------:       | :-----:   |
+        | ıdboşta ConnectionTimeout      | "PT0"     |
+        | maxConnectionsPerEndpoint  | "130"     |
+        | connectTimeout             | "PT5S"    |
+        | ıdtımeendpointtimeout        | PT1H    |
+        | maxRequestsPerConnection   | ila      |
 
 * **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
     Azure Cosmos DB Java SDK v4 Paralel sorguları destekler ve bu, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlar. Daha fazla bilgi için bkz. Azure Cosmos DB Java SDK 'Sı v4 ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır.
 
-    * ***Setmaxdegreeofparalellik ayarlama\:***
+    * ***Setmaxdegreeofparalellik \: ayarlama** _
     
         Paralel sorgular birden çok bölümü paralel olarak sorgulayarak çalışır. Ancak, tek bir bölümlenmiş koleksiyondaki veriler, sorguya göre işlem içine alınır. Bu nedenle, en iyi performansı elde etmek için en yüksek performansa sahip bölüm sayısını ayarlamak için Setmaxdegreeofparalellik kullanın, diğer tüm sistem koşulları aynı kalır. Bölüm sayısını bilmiyorsanız, yüksek bir sayı ayarlamak için Setmaxdegreeofparalellik kullanabilirsiniz ve sistem en az paralellik derecesi olarak en düşük (bölüm sayısı, Kullanıcı tarafından girilen giriş) değerini seçer.
 
         Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorguların en iyi avantajları ürettiğine dikkat edin. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğunluğunun birkaç bölümde (en kötü durumda bir bölüm) yoğunlaşarak bir şekilde bölümlenmişse, sorgunun performansı bu bölümler tarafından bottlenecked olacaktır.
 
-    * ***SetMaxBufferedItemCount ayarlama\:***
+    _ ***Ayarlama setMaxBufferedItemCount \: **_
     
-        Paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. setMaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlar. SetMaxBufferedItemCount değeri döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlandığında sorgunun ön alma işleminden en fazla avantaj almasına olanak sağlar.
+        Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
-        Önceden getirme, Maxdegreeofparalelliği ne olursa olsun aynı şekilde çalışıyor ve tüm bölümlerdeki veriler için tek bir arabellek vardır.
+        Pre-fetching works the same way irrespective of the MaxDegreeOfParallelism, and there is a single buffer for the data from all partitions.
 
-* **İstemcinizi genişletme-iş yükü**
+_ **Istemcinizi genişleme-iş yükü**
 
-    Yüksek aktarım hızı düzeylerinde test ediyorsanız, makine CPU veya ağ kullanımında kullanıma hazır hale geldiği için istemci uygulama performans sorunlarına neden olabilir. Bu noktaya ulaştığınızda, istemci uygulamalarınızı birden çok sunucu arasında ölçeklendirerek Azure Cosmos DB hesabını daha fazla göndermeye devam edebilirsiniz.
+    If you are testing at high throughput levels, the client application may become the bottleneck due to the machine capping out on CPU or network utilization. If you reach this point, you can continue to push the Azure Cosmos DB account further by scaling out your client applications across multiple servers.
 
-    Thumb 'in iyi bir kuralı, belirli bir sunucuda %50 CPU kullanımını aşmamak, gecikme süresini düşük tutmak için >.
+    A good rule of thumb is not to exceed >50% CPU utilization on any given server, to keep latency low.
 
    <a id="tune-page-size"></a>
 
@@ -238,19 +231,19 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Çeşitli nedenlerle, yüksek istek aktarım hızı üreten bir iş parçacığında günlük kaydı eklemeniz gerekebilir. Amacınız, bu iş parçacığı tarafından oluşturulan isteklerle bir kapsayıcının sağlanmış iş verimini tamamen kısaltmak isterse, günlüğe kaydetme iyileştirmeleri performansı büyük ölçüde iyileştirebilir.
 
-    * ***Zaman uyumsuz günlükçü yapılandırma***
+    * ***Zaman uyumsuz günlükçü yapılandırma**_
 
         Zaman uyumlu bir günlükçü gecikmesi, istek oluşturma iş parçacığınız için genel gecikme süresi hesaplamasına yönelik bir etken olması halinde. Yüksek performanslı uygulama iş parçacıklarından günlüğe kaydetme ek yükünü ayırmak için [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) gibi bir zaman uyumsuz günlükçü önerilir.
 
-    * ***Netty 'ın günlüğünü devre dışı bırak***
+    _ ***Netty 'nin günlüğünü devre dışı bırak**_
 
-        Netty kitaplığı günlüğü geveze ve ek CPU maliyetlerinden kaçınmak için kapalı olması gerekir (yapılandırmada oturum açmayı gizleme yeterli olmayabilir). Hata ayıklama modunda değilseniz, netty 'ın günlüğünü tamamen devre dışı bırakın. Bu nedenle, netty 'den kaynaklanan ek CPU maliyetlerini kaldırmak için Log4J kullanıyorsanız ``org.apache.log4j.Category.callAppenders()`` , kod tabanınıza aşağıdaki satırı ekleyin:
+        Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 
         ```java
         org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
         ```
 
- * **İşletim sistemi açık dosyaları kaynak sınırı**
+ _ **Işletim sistemi açık dosyalar kaynak sınırı**
  
     Bazı Linux sistemleri (Red hat gibi), açık dosya sayısı için üst sınıra ve bu nedenle toplam bağlantı sayısına sahiptir. Geçerli sınırları görüntülemek için aşağıdakileri çalıştırın:
 
@@ -276,7 +269,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Nokta yazma performansını geliştirmek için, aşağıda gösterildiği gibi, nokta yazma API çağrısındaki öğe bölüm anahtarını belirtin:
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -292,7 +285,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     yalnızca öğe örneğini sağlamak yerine aşağıda gösterildiği gibi:
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -333,7 +326,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
     Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, bu işlemler tarafından tüketilen istek birimi sayısını ölçmek üzere [x-MS-Request-şarj](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini inceleyin. Ayrıca, Resourceres, FeedResponse içindeki eşdeğer Requestücretözelliğine de bakabilirsiniz \<T> \<T> .
 
-    # <a name="async"></a>[Eş](#tab/api-async)
+    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -372,4 +365,4 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamanızı ölçek ve yüksek performans için tasarlama hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](partition-data.md).
+Uygulamanızı ölçek ve yüksek performans için tasarlama hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](partitioning-overview.md).

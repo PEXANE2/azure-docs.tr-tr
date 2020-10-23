@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c93f8e50b0437f9ac1569b8abe19bd0b5174ea8d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783731"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363972"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ağ hizmeti
 
@@ -43,7 +43,7 @@ Azure Hızlandırılmış Ağ, sanal makineye tek kökte G/Ç sanallaştırması
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure Load Balancer ile Azure sanal makine ölçek kümeleri
-Senaryonuza bağlı olarak sanal makine ölçek kümeleri ile Standart Load Balancer yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Azure Load Balancer ve sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) .
+Senaryonuza bağlı olarak sanal makine ölçek kümeleri ile Standart Load Balancer yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Azure Load Balancer ve sanal makine ölçek kümeleri](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) .
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Bir Application Gateway’e başvuran bir ölçek kümesi oluşturma
 Bir uygulama ağ geçidi kullanan bir ölçek kümesi oluşturmak için, bu ARM şablonu yapılandırmasında olduğu gibi ölçek kümenizin ipConfigurations bölümündeki uygulama ağ geçidinin arka uç adres havuzuna başvurun:
@@ -299,7 +299,7 @@ Aşağıdaki örnek, sanal makine başına birden çok NIC girdisi ve birden ço
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>Ölçek kümesi başına NSG ve ASG'ler
-[Ağ Güvenlik Grupları](../virtual-network/security-overview.md), bir Azure sanal ağındaki Azure kaynaklarının gelen ve giden trafiğini güvenlik kurallarıyla filtrelemenize izin verir. [Uygulama Güvenlik Grupları](../virtual-network/security-overview.md#application-security-groups), Azure kaynaklarınızın ağ güvenliğini işlemenizi ve bunları uygulamanızın yapısının bir uzantısı olarak gruplamanızı sağlar.
+[Ağ Güvenlik Grupları](../virtual-network/network-security-groups-overview.md), bir Azure sanal ağındaki Azure kaynaklarının gelen ve giden trafiğini güvenlik kurallarıyla filtrelemenize izin verir. [Uygulama Güvenlik Grupları](../virtual-network/network-security-groups-overview.md#application-security-groups), Azure kaynaklarınızın ağ güvenliğini işlemenizi ve bunları uygulamanızın yapısının bir uzantısı olarak gruplamanızı sağlar.
 
 Ağ Güvenlik Grupları, ölçek kümesi sanal makine özelliklerinin ağ arabirimi yapılandırması bölümüne bir başvuru eklemek yoluyla doğrudan ölçek kümesine uygulanabilir.
 

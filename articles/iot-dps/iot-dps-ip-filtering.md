@@ -1,6 +1,6 @@
 ---
-title: Azure IoT DPS IP bağlantısı filtreleri | Microsoft Docs
-description: Belirli IP adreslerinden Azure IoT DPS örneğinize bağlantıları engellemek için IP filtrelemeyi kullanma. Tek tek veya IP adresi aralıklarından bağlantıları engelleyebilirsiniz.
+title: Azure IoT DPS IP bağlantı filtreleri | Microsoft Docs
+description: Belirli IP adreslerinden Azure IoT DPS örneğinize gelen bağlantıları engellemek için IP filtrelemeyi kullanma. Tek tek IP adreslerinden veya IP adresi aralıklarından gelen bağlantıları engelleyebilirsiniz.
 author: wesmc7777
 ms.author: wesmc
 ms.service: iot-dps
@@ -8,79 +8,79 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511951"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS IP bağlantı filtrelerini kullanma
 
-Güvenlik, tüm IoT çözümlerinin önemli bir yönüdür. Bazen, güvenlik yapılandırmanızın bir parçası olarak cihazların bağlanabileceği IP adreslerini açıkça belirtmeniz gerekir. Azure IoT Hub cihaz sağlama hizmeti 'nin (DPS) *IP filtresi* özelliği, belirli IPv4 adreslerinden gelen trafiği reddetme veya kabul etme kurallarını yapılandırmanızı sağlar.
+Güvenlik tüm IoT çözümlerinde önemli bir konudur. Bazen güvenlik yapılandırmanız kapsamında cihazların hangi IP adreslerinden bağlanabileceğini açıkça belirtmeniz gerekir. Azure IoT Hub Cihazı Sağlama Hizmeti'nin (DPS) *IP filtresi* özelliği, belirli IPv4 adreslerinden gelen trafiği reddetmek veya kabul etmek için kurallar yapılandırmanıza olanak tanır.
 
 ## <a name="when-to-use"></a>Kullanılması gereken durumlar
 
-Belirli IP adreslerinden bir DPS uç noktasına bağlantıları engellemek için yararlı olan iki özel kullanım durumu vardır:
+Belirli IP adreslerinden DPS uç noktasına bağlantıları engellemenin yararlı olduğu iki belirgin kullanım örneği vardır:
 
-* DPS, yalnızca belirli bir IP adresi aralığından trafik almalıdır ve diğer her şeyi reddedebilir. Örneğin, DPS ile cihazlarınız arasında özel bağlantılar oluşturmak için [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) ile DPS 'yı kullanıyorsunuz.
+* DPS'niz yalnızca belirtilen IP adresi aralığından gelen trafiği almalı ve diğer her şeyi reddetmelidir. Örneğin DPS ile cihazlarınız arasında özel bağlantılar oluşturmak üzere DPS'nizi [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) ile kullanıyor olabilirsiniz.
 
-* DPS Yöneticisi tarafından şüpheli olarak tanımlanmış IP adreslerinden gelen trafiği reddetmeniz gerekir.
+* DPS yöneticisinin şüpheli olarak tanımladığı IP adreslerinden gelen trafiği reddetmeniz gerekir.
 
-## <a name="how-filter-rules-are-applied"></a>Filtre kuralları nasıl uygulanır
+## <a name="how-filter-rules-are-applied"></a>Filtre kuralları nasıl uygulanır?
 
-IP filtresi kuralları, DPS örnek düzeyinde uygulanır. Bu nedenle, IP filtresi kuralları, desteklenen herhangi bir protokolü kullanarak cihazlarından ve arka uç uygulamalardan tüm bağlantılara uygulanır.
+IP filtresi kuralları DPS örneği düzeyinde uygulanır. Bu nedenle IP filtresi kuralları desteklenen bir protokol kullanılarak cihazlardan ve arka uç uygulamalarından gelen tüm bağlantılara uygulanır.
 
-DPS örneğiniz için bir IP adresinden reddetme IP kuralıyla eşleşen herhangi bir bağlantı girişimi, yetkisiz 401 durum kodu ve açıklaması alır. Yanıt iletisi, IP kuralından bahsetmiyor.
+DPS örneğinizde IP reddetme kuralıyla eşleşen bir IP adresinden gelen tüm bağlantı girişimleri bir yetkisiz 401 durum kodu ve açıklaması alır. Yanıt iletisinde IP kuralı belirtilmez.
 
 ## <a name="default-setting"></a>Varsayılan ayar
 
-Varsayılan olarak, DPS portalındaki **IP filtresi** Kılavuzu boştur. Bu varsayılan ayar, DPS 'in herhangi bir IP adresinden gelen bağlantıları kabul ettiği anlamına gelir. Bu varsayılan ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir.
+Varsayılan olarak DPS için portaldaki **IP Filtresi** kılavuzu boştur. Bu varsayılan ayar, DPS'nizin tüm IP adreslerinden gelen bağlantıları kabul ettiği anlamına gelir. Bu varsayılan ayar 0.0.0.0/0 IP adres aralığını kabul eden kuralla eşdeğerdir.
 
 ![IoT DPS varsayılan IP filtresi ayarları](./media/iot-dps-ip-filtering/ip-filter-default.png)
 
-## <a name="add-or-edit-an-ip-filter-rule"></a>IP filtresi kuralı ekleme veya düzenleme
+## <a name="add-or-edit-an-ip-filter-rule"></a>IP filtresi kuralını ekleme veya düzenleme
 
-Bir IP filtre kuralı eklemek için **+ IP filtre kuralı ekle**' yi seçin.
+IP filtresi kuralı eklemek için **+ IP Filtresi Kuralı Ekle**'yi seçin.
 
-![IoT DPS 'e bir IP filtre kuralı ekleme](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
+![IoT DPS'ye IP filtresi kuralı ekleme](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
 
-**IP filtre kuralı ekle**' yi seçtikten sonra alanları girin.
+**IP Filtresi Kuralı Ekle**'yi seçtikten sonra alanları doldurun.
 
-![IP filtre kuralı ekle seçeneğini belirledikten sonra](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
+![IP Filtresi Kuralı Ekle'yi seçtikten sonra](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* IP filtresi kuralı için bir **ad** girin. Bu, 128 karakter uzunluğunda benzersiz, büyük/küçük harfe duyarsız, alfasayısal bir dize olmalıdır. Yalnızca ASCII 7 bit alfasayısal karakterler ve kabul edilir `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
+* IP Filtresi kuralı için bir **ad** girin. Benzersiz, büyük-küçük harfe duyarlı olmayan alfasayısal bir dize olmalı ve en fazla 128 karakterden oluşmalıdır. Yalnızca ASCII 7-bit alfasayısal karakterler ile `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` karakterleri kabul edilir.
 
-* CıDR gösteriminde tek bir IPv4 adresi veya IP adresi bloğu sağlayın. Örneğin, CıDR gösteriminde 192.168.100.0/22, 192.168.100.0 'den 192.168.103.255 'e 1024 IPv4 adresini temsil eder.
+* Tek IPv4 adresi veya CIDR gösteriminde bir IP adresleri bloğu belirtin. Örneğin CIDR gösteriminde 192.168.100.0/22, 192.168.100.0 ile 192.168.103.255 arasındaki 1024 IPv4 adresini temsil eder.
 
-* IP filtresi kuralı için **eylem** olarak **Izin ver** veya **Engelle** ' yi seçin.
+* IP filtresi kuralının **eylemi** olarak **İzin Ver** veya **Engelle**'yi seçin.
 
-Alanları doldurduktan sonra, kuralı kaydetmek için **Kaydet** ' i seçin. Güncelleştirmenin devam ettiğini bildiren bir uyarı görürsünüz.
+Alanları doldurduktan sonra **Kaydet**'i seçerek kuralı kaydedin. Güncelleştirmenin devam ettiğini bildiren bir uyarı görürsünüz.
 
 ![IP filtresi kuralını kaydetme bildirimi](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-En fazla 10 IP filtresi kuralına ulaştığınızda **Ekle** seçeneği devre dışıdır.
+IP filtresi kurallarının üst sınırı olan 10 kurala ulaştığınızda **Ekle** seçeneği devre dışı bırakılır.
 
-Mevcut bir kuralı düzenlemek için, değiştirmek istediğiniz verileri seçin, değişikliği yapın ve ardından **Kaydet** ' i seçerek düzenleme bilgilerinizi kaydedin.
+Mevcut kuralı düzenlemek için, değiştirmek istediğiniz verileri seçin, değişikliği yapın ve sonra da **Kaydet**'i seçerek düzenlemenizi kaydedin.
 
 > [!NOTE]
-> IP adreslerini reddetme, diğer Azure hizmetlerinin DPS örneğiyle etkileşimini engelleyebilir.
+> IP adreslerinin reddedilmesi diğer Azure Hizmetlerinin DPS örneğiyle etkileşim kurmasını engelleyebilir.
 
-## <a name="delete-an-ip-filter-rule"></a>IP filtre kuralını Sil
+## <a name="delete-an-ip-filter-rule"></a>IP filtresi kuralını silme
 
-Bir IP filtre kuralını silmek için söz konusu satırdaki çöp kutusu simgesini seçin ve ardından **Kaydet**' i seçin. Kural kaldırılır ve değişiklik kaydedilir.
+IP filtresi kuralını silmek için, söz konusu satırdaki çöp kutusu simgesini seçin ve sonra da **Kaydet**'i seçin. Kural kaldırılır ve değişiklik kaydedilir.
 
-![IoT DPS IP filtre kuralını silme](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
+![IoT DPS IP filtresi kuralını silme](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
 
 
-## <a name="update-ip-filter-rules-in-code"></a>Koddaki IP filtresi kurallarını Güncelleştir
+## <a name="update-ip-filter-rules-in-code"></a>Kodda IP filtresi kurallarını güncelleştirme
 
-Azure Kaynak sağlayıcısı 'nın REST uç noktasını kullanarak DPS IP filtrenizi alabilir ve değiştirebilirsiniz. Bkz `properties.ipFilterRules` . [CreateOrUpdate yöntemi](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
+Azure kaynak sağlayıcısının REST uç noktasını kullanarak DPS IP filtrenizi alabilir ve değiştirebilirsiniz. [createorupdate yöntemi](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate) altında `properties.ipFilterRules` bölümüne bakın.
 
-DPS IP filtresi kurallarının güncelleştirilmesi Şu anda Azure CLı veya Azure PowerShell desteklenmez, ancak Azure Resource Manager şablonlarıyla gerçekleştirilebilir. Kaynak Yöneticisi şablonlarının kullanımı hakkında rehberlik için bkz. [Azure Resource Manager şablonları](../azure-resource-manager/templates/overview.md) . Aşağıdaki şablon örnekleri, DPS IP filtresi kuralları oluşturma, düzenleme ve silme işlemlerinin nasıl yapılacağını göstermektedir.
+Şu anda DPS IP filtresi kurallarını Azure CLI veya Azure PowerShell ile güncelleştirme desteği yoktur ama Azure Resource Manager şablonlarıyla güncelleştirilebilir. Resource Manager şablonlarını kullanma yönergeleri için bkz. [Azure Resource Manager şablonları](../azure-resource-manager/templates/overview.md). Aşağıda verilen şablon örneklerinde DPS IP filtresi kurallarını oluşturma, düzenleme ve silme işlemleri gösterilir.
 
-### <a name="add-an-ip-filter-rule"></a>IP filtresi kuralı ekle
+### <a name="add-an-ip-filter-rule"></a>IP filtresi kuralı ekleme
 
-Aşağıdaki şablon örneği, tüm trafiği kabul eden "AllowAll" adlı yeni bir IP filtre kuralı oluşturur.
+Aşağıdaki şablon örneği tüm trafiği kabul eden "AllowAll" adlı yeni bir IP filtresi kuralı oluşturur.
 
 ```json
 {
@@ -135,14 +135,14 @@ Aşağıdaki şablon örneği, tüm trafiği kabul eden "AllowAll" adlı yeni bi
 
 | Öznitelik                | Açıklama |
 | ------------------------ | ----------- |
-| **Süzgeç**           | IP filtresi kuralı için bir ad girin. Bu, 128 karakter uzunluğunda benzersiz, büyük/küçük harfe duyarsız, alfasayısal bir dize olmalıdır. Yalnızca ASCII 7 bit alfasayısal karakterleri ve {'-', ': ', '/', ' \' , '. ', ' + ', '% ', ' _ ', ' # ', ' * ', '? ', '! ', ' (', ') ', ', ', ' = ', ' @ ', '; ', ' ' '} kabul edilir. |
-| **Eylem**               | Kabul edilen değerler **Accept**,    **Reject**   IP filtre kuralı için eylem olarak kabul veya Red. |
-| **ipMask**               | CıDR gösteriminde tek bir IPv4 adresi veya IP adresi bloğu sağlayın. Örneğin, CıDR gösteriminde 192.168.100.0/22, 192.168.100.0 'den 192.168.103.255 'e 1024 IPv4 adresini temsil eder. |
+| **FilterName**           | IP Filtresi kuralı için bir ad girin. Benzersiz, büyük-küçük harfe duyarlı olmayan alfasayısal bir dize olmalı ve en fazla 128 karakterden oluşmalıdır. Yalnızca ASCII 7-bit alfasayısal karakterler ile {'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''} karakterleri kabul edilir. |
+| **Eylem**               | IP filtresi kuralının eylemi olarak kabul edilen değerler **Accept** veya **Reject** 'tir. |
+| **ipMask**               | Tek IPv4 adresi veya CIDR gösteriminde bir IP adresleri bloğu belirtin. Örneğin CIDR gösteriminde 192.168.100.0/22, 192.168.100.0 ile 192.168.103.255 arasındaki 1024 IPv4 adresini temsil eder. |
 
 
-### <a name="update-an-ip-filter-rule"></a>IP filtre kuralını güncelleştirme
+### <a name="update-an-ip-filter-rule"></a>IP filtresi kuralını güncelleştirme
 
-Aşağıdaki şablon örneği, daha önce gösterilen "AllowAll" adlı IP filtre kuralını tüm trafiği reddedecek şekilde güncelleştirir.
+Aşağıdaki şablon örneği daha önce gösterilen "AllowAll" adlı IP filtresi kuralını tüm trafiği reddedecek şekilde güncelleştirir.
 
 ```json
 { 
@@ -193,9 +193,9 @@ Aşağıdaki şablon örneği, daha önce gösterilen "AllowAll" adlı IP filtre
 }
 ```
 
-### <a name="delete-an-ip-filter-rule"></a>IP filtre kuralını Sil
+### <a name="delete-an-ip-filter-rule"></a>IP filtresi kuralını silme
 
-Aşağıdaki şablon örneği, DPS örneği için tüm IP filtresi kurallarını siler.
+Aşağıdaki şablon örneği DPS örneği için tüm IP filtresi kurallarını siler.
 
 ```json
 { 
@@ -243,20 +243,20 @@ Aşağıdaki şablon örneği, DPS örneği için tüm IP filtresi kurallarını
 
 ## <a name="ip-filter-rule-evaluation"></a>IP filtresi kuralı değerlendirmesi
 
-IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
+IP filtresi kuralları sırayla uygulanır ve kabul etme veya reddetme eylemini IP adresiyle eşleşen ilk kural belirler.
 
-Örneğin, 192.168.100.0/22 aralığındaki adresleri kabul etmek ve diğer her şeyi reddetmek istiyorsanız kılavuzdaki ilk kural 192.168.100.0/22 adres aralığını kabul etmelidir. Sonraki kural 0.0.0.0/0 aralığını kullanarak tüm adresleri reddetmelidir.
+Örneğin 192.168.100.0/22 aralığındaki adresleri kabul etmek ve diğer her şeyi reddetmek istiyorsanız, kılavuzdaki ilk kural 192.168.100.0/22 adres aralığını kabul etmelidir. Sonraki kural 0.0.0.0/0 aralığını kullanarak tüm adresleri reddetmelidir.
 
-Kılavuzdaki IP filtre kurallarınızın sırasını, bir satırın başlangıcında bulunan üç dikey noktaya tıklayıp sürükle ve bırak seçeneğini kullanarak değiştirebilirsiniz.
+Kılavuzda satırın başındaki üç dikey noktaya tıklayarak ve sürükleyip bırakmayı kullanarak IP filtresi kurallarınızın sırasını değiştirebilirsiniz.
 
-Yeni IP filtresi kuralı siparişinizi kaydetmek için **Kaydet**' e tıklayın.
+IP filtresi kurallarınızın yeni sırasını kaydetmek için **Kaydet**'e tıklayın.
 
 ![DPS IP filtresi kurallarınızın sırasını değiştirme](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-DPS yönetimi hakkında daha fazla bilgi için bkz.:
+DPS yönetimini daha fazla incelemek için bkz:
 
 * [IoT DPS IP adreslerini anlama](iot-dps-understand-ip-address.md)
-* [Azure CLı kullanarak DPS 'yi yapılandırma](how-to-manage-dps-with-cli.md)
-* [DPS 'e erişimi denetleme](how-to-control-access.md)
+* [Azure CLI’yı kullanarak DPS'yi yapılandırma](how-to-manage-dps-with-cli.md)
+* [DPS'ye erişimi denetleme](how-to-control-access.md)

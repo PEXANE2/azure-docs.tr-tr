@@ -3,12 +3,12 @@ title: Hizmet sağlayıcılarını görüntüleme ve yönetme
 description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcısı teklifleri ve Temsilcili kaynaklar hakkındaki bilgileri görüntülemek için Azure portal hizmet sağlayıcıları sayfasını kullanabilir.
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: ecbeb7f5b6fccb7b66043cf57aa5f48674c6fe8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974405"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371112"
 ---
 # <a name="view-and-manage-service-providers"></a>Hizmet sağlayıcılarını görüntüleme ve yönetme
 
@@ -78,7 +78,7 @@ Müşteriler, Azure ışıklı kullanım için temsilci seçilmiş abonelikler v
 
 [Bir yönetim kiracısına kapsamları temsilciliğini denetlemek](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)Için bir [Azure ilkesi yerleşik ilke tanımı](../../governance/policy/samples/built-in-policies.md#lighthouse) sağlıyoruz. Bu ilkeyi, denetlemek istediğiniz tüm abonelikleri içeren bir yönetim grubuna atayabilirsiniz. Bu ilkeyle uyumluluğu denetlediğinizde, tüm temsilci olan abonelikler ve/veya kaynak grupları (ilkenin atandığı yönetim grubu içinde) uyumlu olmayan bir durumda gösterilir. Daha sonra sonuçları gözden geçirebilir ve beklenmeyen temsilci yok olduğunu doğrulayabilirsiniz.
 
-Başka bir [yerleşik ilke tanımı](../../governance/policy/samples/built-in-policies.md#lighthouse) , [temsilcileri yönetim kiracılarına göre kısıtlamanızı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json)sağlar. Bu ilke benzer şekilde, temsilcilerini sınırlamak istediğiniz abonelikleri içeren bir yönetim grubuna da uygulanabilir. İlke dağıtıldıktan sonra, belirttiğiniz bir kiracıya bir aboneliği devretmek için herhangi bir girişim reddedilir.
+Başka bir [yerleşik ilke tanımı](../../governance/policy/samples/built-in-policies.md#lighthouse) , [temsilcileri yönetim kiracılarına göre kısıtlamanızı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json)sağlar. Bu ilke benzer şekilde, temsilcilerini sınırlamak istediğiniz abonelikleri içeren bir yönetim grubuna da uygulanabilir. İlke dağıtıldıktan sonra, belirttiğiniz bir kiracıya bir aboneliği devretmek için herhangi bir girişim reddedilir.
 
 İlke atama ve uyumluluk durumu sonuçlarını görüntüleme hakkında daha fazla bilgi için bkz. [hızlı başlangıç: ilke ataması oluşturma](../../governance/policy/assign-policy-portal.md).
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924521"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122798"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Azure’a verileri içeri aktarmak için Azure Data Box kullanmaya başlama
 
@@ -40,7 +40,7 @@ Başlamadan önce:
 
 - Data Box hizmeti için kullandığınız aboneliğin aşağıdaki türlerden birinde olduğundan emin olun:
     - Microsoft Kurumsal Anlaşma (EA). [EA abonelikleri](https://azure.microsoft.com/pricing/enterprise-agreement/) hakkındaki yazıları okuyun.
-    - Bulut Çözümü Sağlayıcısı (CSP). [Azure CSP programı](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) hakkında daha fazla bilgi edinin.
+    - Bulut Çözümü Sağlayıcısı (CSP). [Azure CSP programı](/azure/cloud-solution-provider/overview/azure-csp-overview) hakkında daha fazla bilgi edinin.
     - Microsoft Azure Sponsorluğu. [Azure sponsorluğu programı](https://azure.microsoft.com/offers/ms-azr-0036p/) hakkında daha fazla bilgi edinin. 
 
 - Data Box siparişi oluşturmak için, abonelik üzerinde sahip veya katkıda bulunan erişimine sahip olduğunuzdan emin olun.
@@ -131,7 +131,7 @@ Bu adımın tamamlanması yaklaşık 5-7 dakika sürer.
 
 Bu işlemi tamamlamak için gereken süre verilerinizin boyutuna ve ağın hızına göre değişir.
  
-1. Bir Windows konağı kullanıyorsanız, Robocopy gibi SMB uyumlu bir dosya kopyalama aracı kullanın. NFS konağı için, `cp` veya `rsync` komutunu kullanarak verileri kopyalayın. Aracı cihazınıza bağlayın ve verileri paylaşımlara kopyalamaya başlayın. Robocopy kullanarak veri kopyalama hakkında daha fazla bilgi için [Robocopy](https://technet.microsoft.com/library/ee851678.aspx) adresine gidin.
+1. Bir Windows konağı kullanıyorsanız, Robocopy gibi SMB uyumlu bir dosya kopyalama aracı kullanın. NFS konağı için, `cp` veya `rsync` komutunu kullanarak verileri kopyalayın. Aracı cihazınıza bağlayın ve verileri paylaşımlara kopyalamaya başlayın. Robocopy kullanarak veri kopyalama hakkında daha fazla bilgi için [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)) adresine gidin.
 2. Paylaşımlara bağlanmak için şu yolu kullanın: `\\<IP address of your device>\ShareName`. Paylaşım erişimi kimlik bilgilerini almak için Data Box'ın yerel web kullanıcı arabiriminde **Bağlan ve kopyala** sayfasına gidin.
 3. Paylaşım ve klasör adlarıyla verilerin, [Azure Depolama ve Data Box hizmet sınırları](data-box-limits.md) altında açıklanan yönergelere uyduğundan emin olun.
 
@@ -170,5 +170,3 @@ Bu hızlı başlangıçta Azure'a veri aktarımı konusunda yardım almak için 
 > [Azure portalını kullanarak Data Box'ı yönetme](data-box-portal-admin.md)
 
 ::: zone-end
-
-

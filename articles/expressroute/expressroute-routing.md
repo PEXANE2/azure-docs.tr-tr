@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569620"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204682"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -138,7 +138,7 @@ Varsayılan yollar yalnızca Azure özel eşleme oturumlarında kullanılabilir.
 * İnternet bağlantısı gerektiren her alt ağ için İnternet bağlantısına izin vermek üzere kullanıcı tanımlı yönlendirmeyi kullanırsınız.
 
 > [!NOTE]
-> Varsayılan yolların tanıtılması, Windows ve diğer VM lisans etkinleştirmelerini bozar. Bu sorunu çözmek için [buradaki](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) yönergeleri izleyin.
+> Varsayılan yolların tanıtılması, Windows ve diğer VM lisans etkinleştirmelerini bozar. Bu sorunu çözmek için [buradaki](/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) yönergeleri izleyin.
 > 
 > 
 
@@ -201,8 +201,8 @@ Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsin
 | Güney Kore - Güney | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 | 12076:55028 |
 | Güney Kore - Orta | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 | 12076:55029 |
 | **Güney Afrika**| |
-| Güney Afrika Kuzey | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 | 12076:55034 |
-| Güney Afrika Batı | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 | 12076:55035 |
+| Güney Afrika - Kuzey | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 | 12076:55034 |
+| Güney Afrika - Batı | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 | 12076:55035 |
 | **BAE**| |
 | BAE Kuzey | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 | 12076:55036 |
 | BAE Orta | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 | 12076:55037 |
@@ -258,6 +258,7 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype Kurumsal Çevrimiçi Sürüm |12076:5130 |
+| Azure Active Directory |12076:5160 |
 | Diğer Office 365 Çevrimiçi hizmetleri |12076:5200 |
 
 ## <a name="next-steps"></a>Sonraki adımlar

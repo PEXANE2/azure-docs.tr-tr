@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708960"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329381"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -19,7 +19,7 @@ Bu makale, Azure Cosmos DB’deki farklı kaynaklara sunulan varsayılan kotalar
 
 ## <a name="storage-and-database-operations"></a>Depolama ve veritabanı işlemleri
 
-Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritabanları, kapsayıcılar ve öğeler oluşturarak](databases-containers-items.md)hesabınızdaki verileri yönetebilirsiniz.
+Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritabanları, kapsayıcılar ve öğeler oluşturarak](account-databases-containers-items.md)hesabınızdaki verileri yönetebilirsiniz.
 
 ### <a name="provisioned-throughput"></a>Sağlanan aktarım hızı
 
@@ -27,15 +27,15 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz |
-| Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz |
+| Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](account-databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz |
+| Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](account-databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz |
 | Maksimum ru/(mantıksal) Bölüm | 10,000 |
 | Tüm öğelerin tamamında (mantıksal) bölüm başına maksimum depolama alanı | 20 GB |
 | En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
 | Kapsayıcı başına en fazla depolama alanı | Sınırsız |
 | Veritabanı başına en fazla depolama alanı | Sınırsız |
 | Hesap başına en büyük ek boyutu (ek özelliği kullanım dışı) | 2 GB |
-| 1 GB başına gereken minimum ru | 10 RU/sn |
+| 1 GB başına gereken en az RU/s | 10 RU/sn<br>**Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program) uygun olabilir |
 
 > [!NOTE]
 > Depolama veya işleme için daha fazla sınır gerektiren bölüm anahtarlarına sahip iş yüklerini yönetmeye yönelik en iyi yöntemler hakkında bilgi edinmek için bkz. [yapay bir bölüm anahtarı oluşturma](synthetic-partition-keys.md).
@@ -55,8 +55,8 @@ Kapsayıcının veya bir veritabanının geçerli ve en düşük aktarım hızı
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Kapsayıcı başına en az ru ([özel üretilen iş işleme modu](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Veritabanı başına en az ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Kapsayıcı başına en az ru ([özel üretilen iş işleme modu](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Veritabanı başına en az ru ([paylaşılan verimlilik sağlanmış mod](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Paylaşılan bir üretilen iş veritabanı içinde kapsayıcı başına en az ru | 100 |
 
 Cosmos DB, SDK veya Portal aracılığıyla kapsayıcı veya veritabanı başına esnek işleme (ru) boyutunu destekler. Her kapsayıcı, en düşük ve en yüksek değerler arasında zaman uyumlu olarak ve 10 ila 100 kez bir ölçek aralığı içinde ölçeklendirebilir. İstenen üretilen iş değeri aralığın dışındaysa, ölçekleme zaman uyumsuz olarak gerçekleştirilir. Zaman uyumsuz ölçeklendirmenin, kapsayıcıda istenen işleme ve veri depolama boyutuna bağlı olarak tamamlanması dakika sürebilir.  

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: cf73b15e42afd95f6e7dd09db630957be02ea257
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28dec1681d2849c6dbcf4b0b1b5ac7767bd77e42
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88517430"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457223"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Öğretici: BGS Online ile tümleştirme Azure Active Directory
 
@@ -27,7 +27,7 @@ Azure AD ile BGS 'yi çevrimiçi tümleştirme, aşağıdaki avantajları sağla
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak çevrimiçi (çoklu oturum açma) oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -187,19 +187,18 @@ Bu bölümde, BGS online 'a erişim vererek Azure çoklu oturum açma özelliği
 
 ### <a name="create-bgs-online-test-user"></a>BGS çevrimiçi test kullanıcısı oluştur
 
-Bu bölümde, BGS online 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. BGS çevrimiçi platformunda kullanıcıları eklemek için [BGS çevrimiçi destek ekibi](mailto:bgsdashboardteam@millwardbrown.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, BGS online 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. BGS çevrimiçi platformunda kullanıcıları eklemek için [BGS çevrimiçi destek ekibi](mailto:bgsdashboardteam@millwardbrown.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde BGS çevrimiçi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız BGS online 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde BGS çevrimiçi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız BGS online 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

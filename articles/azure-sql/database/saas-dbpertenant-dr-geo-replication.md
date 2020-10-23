@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2047832f8cfbf31c04c84eb7a70fee6631fa4b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619161"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330130"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Veritabanı coğrafi çoğaltma kullanarak çok kiracılı SaaS uygulaması için olağanüstü durum kurtarma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Bu görevde, sunucuların, elastik havuzların ve veritabanlarının yapılandı
     * **$DemoScenario = 1**, kiracı sunucusunu eşitlenen bir arka plan işi başlatın ve yapılandırma bilgilerini katalogla havuzlayın
 
 3. Eşitleme betiğini çalıştırmak için **F5** tuşuna basın. Kiracı kaynaklarının yapılandırmasını eşitlemek için yeni bir PowerShell oturumu açılır.
-![Eşitleme işlemi](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+![Kiracı kaynaklarının yapılandırmasını eşitlemek için açılan yeni PowerShell oturumunu gösteren ekran görüntüsü.](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 PowerShell penceresini arka planda çalışır durumda bırakın ve öğreticinin geri kalanı ile devam edin. 
 

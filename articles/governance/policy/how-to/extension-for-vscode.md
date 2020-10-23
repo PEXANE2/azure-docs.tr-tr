@@ -1,27 +1,27 @@
 ---
 title: Visual Studio Code için Azure Ilke uzantısı
 description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Azure Resource Manager diğer adları arama hakkında bilgi edinin.
-ms.date: 10/14/2020
+ms.date: 10/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077941"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317626"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
-> Azure Ilke uzantısı sürüm **0.0.21** ve üzeri için geçerlidir
+> Azure Ilke uzantısı sürüm **0.1.0** ve üzeri için geçerlidir
 
-[Diğer adları](../concepts/definition-structure.md#aliases) aramak ve kaynakları ve ilkeleri gözden geçirmek için Visual Studio Code Için Azure ilke uzantısı 'nı nasıl kullanacağınızı öğrenin. İlk olarak, Visual Studio Code Azure Ilke uzantısının nasıl yükleneceğini açıklayacağız. Daha sonra diğer adların nasıl arandığını adım adım inceleyeceğiz.
+[Diğer adları](../concepts/definition-structure.md#aliases)aramak, kaynakları ve ilkeleri gözden geçirmek, nesneleri dışarı aktarmak ve ilke tanımlarını değerlendirmek için Visual Studio Code Için Azure ilke uzantısı 'nı kullanmayı öğrenin. İlk olarak, Visual Studio Code Azure Ilke uzantısının nasıl yükleneceğini açıklayacağız. Daha sonra diğer adların nasıl arandığını adım adım inceleyeceğiz.
 
 Visual Studio Code için Azure Ilke uzantısı, Visual Studio Code tarafından desteklenen tüm platformlara yüklenebilir. Bu destek, Windows, Linux ve macOS içerir.
 
 > [!NOTE]
 > Visual Studio Code için Azure Ilke uzantısında görüntülenen ilkelerde yerel olarak yapılan değişiklikler Azure ile eşitlenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
@@ -32,7 +32,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 Önkoşulları karşıladıktan sonra, aşağıdaki adımları izleyerek Visual Studio Code için Azure Ilke uzantısı 'nı yükleyebilirsiniz:
 
-1. Visual Studio Code’u açın.
+1. Visual Studio Code'u açın.
 
 1. Menü çubuğunda, uzantıları **görüntüle**' ye gidin  >  **Extensions**.
 
@@ -151,6 +151,51 @@ Azure Ilke uzantısı ilke türlerini ve ilke atamalarını, **ilkeler** bölmes
 1. Hangi ilkenin veya görüntülenecek ilkeyi seçmek için filtreyi kullanın. Filtre, ilke tanımı veya ilke ataması için _DisplayName_ için geçerlidir.
 
 Bir ilke veya atamayı seçerken, arama arabiriminden veya TreeView 'da seçerek Azure Ilke uzantısı, ilkeyi veya atamayı ve tüm Kaynak Yöneticisi özellik değerlerini temsil eden JSON 'ı açar. Uzantı, açılan Azure Ilkesi JSON şemasını doğrulayabilir.
+
+## <a name="export-objects"></a>Nesneleri dışarı aktar
+
+Aboneliklerinizden nesneler, yerel bir JSON dosyasına aktarılabilir. **Kaynaklar** veya **ilkeler** bölmesinde, üzerine gelin veya dışarı aktarılabilir bir nesne seçin. Vurgulanan satırın sonunda, Kaydet simgesini seçin ve bu kaynakları JSON olarak kaydetmek için bir klasör seçin.
+
+Aşağıdaki nesneler yerel olarak verilebilirler:
+
+- Kaynaklar bölmesi
+  - Kaynak grupları
+  - Tek kaynaklar (bir kaynak grubunda veya bir kaynak sağlayıcısı altında)
+- İlkeler bölmesi
+  - İlke atamaları
+  - Yerleşik ilke tanımları
+  - Özel ilke tanımları
+  - Girişimler
+
+## <a name="on-demand-evaluation-scan"></a>İsteğe bağlı değerlendirme taraması
+
+Değerlendirme taraması, Visual Studio Code için Azure Ilkesi uzantısıyla başlatılabilir. Bir değerlendirmeyi başlatmak için aşağıdaki nesnelerin her birini seçin ve sabitleyin: bir kaynak, ilke tanımı ve bir ilke ataması.
+
+1. Her nesneyi sabitlemek için, **kaynakları** bölmesinde veya **ilkeler** bölmesinde bulun ve bir düzenleme sekmesi simgesine sabitle simgesini seçin. Bir nesne sabitlenmesi, uzantıyı uzantısının **değerlendirme** bölmesine ekler.
+1. **Değerlendirme** bölmesinde her bir nesneden birini seçin ve değerlendirmeye dahil olarak işaretlemek için değerlendirme için Seç simgesini kullanın.
+1. **Değerlendirme** bölmesinin en üstünde değerlendirme Çalıştır simgesini seçin. Visual Studio Code yeni bir bölme, JSON biçiminde elde edilen değerlendirme ayrıntıları ile açılır.
+
+> [!NOTE]
+> Seçilen ilke tanımı bir [Auditınotexists](../concepts/effects.md#auditifnotexists) veya [Deployifnotexists](../concepts/effects.md#deployifnotexists)ise, **değerlendirme** bölmesinde, varlık denetimi için _ilgili_ bir kaynağı seçtiğiniz artı simgesini kullanın.
+
+Değerlendirme sonuçları, ilke tanımı ve ilke atama hakkında **Poliyevaluations. evaluationResult** özelliği ile birlikte bilgi sağlar. Çıktı aşağıdaki örneğe benzer şekilde görünür:
+
+```json
+{
+    "policyEvaluations": [
+        {
+            "policyInfo": {
+                ...
+            },
+            "evaluationResult": "Compliant",
+            "effectDetails": {
+                "policyEffect": "Audit",
+                "existenceScope": "None"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="sign-out"></a>Oturumu kapat
 

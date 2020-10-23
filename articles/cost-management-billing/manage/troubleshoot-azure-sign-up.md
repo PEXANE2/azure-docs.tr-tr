@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326615"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131080"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portalında veya Azure hesap merkezinde yeni bir hesap için kaydolduğunuzda oluşan sorunları giderme
 
 Microsoft Azure portalında veya Azure hesap merkezinde yeni bir hesaba kaydolmaya çalıştığınızda bir sorunla karşılaşabilirsiniz. Bu kısa kılavuz size, kaydolma aşaması ve her adımdaki yaygın sorunlar ile ilgili izlenecek yolu gösterir.
 
 > [!NOTE]
-> Zaten bir hesabınız varsa ve oturum açma sorunlarını gidermeye yönelik rehberlik arıyorsanız bkz. [Azure aboneliği oturum açma sorunlarını giderme](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
+> Zaten bir hesabınız varsa ve oturum açma sorunlarını gidermeye yönelik rehberlik arıyorsanız bkz. [Azure aboneliği oturum açma sorunlarını giderme](./troubleshoot-sign-in-issue.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -76,8 +76,8 @@ Bu sorunu çözmek için, aşağıdaki öğelerin doğru olup olmadığını iki
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>“Geçerli hesap türünüz desteklenmiyor” iletisini görürsünüz
 
-Hesap bir [yönetilmeyen Azure AD dizininde](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup) kayıtlıysa ve kuruluşunuzun Azure AD dizininde değilse bu sorun oluşabilir.
-Bu sorunu çözmek için, başka bir hesap kullanarak Azure hesabına kaydolun veya yönetilmeyen AD dizinini devralın. Daha fazla bilgi için bkz. [Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover).
+Hesap bir [yönetilmeyen Azure AD dizininde](../../active-directory/users-groups-roles/directory-self-service-signup.md) kayıtlıysa ve kuruluşunuzun Azure AD dizininde değilse bu sorun oluşabilir.
+Bu sorunu çözmek için, başka bir hesap kullanarak Azure hesabına kaydolun veya yönetilmeyen AD dizinini devralın. Daha fazla bilgi için bkz. [Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma](../../active-directory/users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="identity-verification-by-phone"></a>Telefonla kimlik doğrulama
 
@@ -107,7 +107,7 @@ Burada birkaç ek ipucu bulabilirsiniz:
 
 #### <a name="credit-card-declined-or-not-accepted"></a>Kredi kartı reddedildi veya kabul edilmedi
 
-Azure abonelikleri için sanal veya ön ödemeli kredi kartı ya da ATM kartı desteklenmez. Kartınızın reddedilmesine başka nelerin neden olabileceğini görmek için bkz. [Azure kaydı sırasında reddedilen bir kartın sorunlarını giderme](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card).
+Azure abonelikleri için sanal veya ön ödemeli kredi kartı ya da ATM kartı desteklenmez. Kartınızın reddedilmesine başka nelerin neden olabileceğini görmek için bkz. [Azure kaydı sırasında reddedilen bir kartın sorunlarını giderme](./troubleshoot-declined-card.md).
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Kredi kartı formu, fatura adresimi desteklemiyor
 
@@ -144,7 +144,7 @@ Sözleşmeyi tamamlayın.
 Doğru oturum açma kimlik bilgilerini kullanıp kullanmadığınızı kontrol edin. Ardından, uygun olduğunuzu doğrulamak için avantaj programını kontrol edin.
 - MSDN
   - [MSDN hesabı sayfanızda](https://msdn.microsoft.com/subscriptions/manage/default.aspx) uygunluk durumunuzu doğrulayın.
-  - Durumunuzu doğrulayamıyorsanız [MSDN Abonelikleri Müşteri Hizmetleri Merkezleri](https://msdn.microsoft.com/library/aa493452.aspx) ile iletişim kurun.
+  - Durumunuzu doğrulayamıyorsanız [MSDN Abonelikleri Müşteri Hizmetleri Merkezleri](/previous-versions/mappoint/aa493452(v=msdn.10)) ile iletişim kurun.
 - Startup’lar için Microsoft
   - Startup’lar için Microsoft’a ilişkin uygunluk durumunuzu doğrulamak için [Startup’lar için Microsoft portalına](https://startups.microsoft.com/#start-two) kaydolun.
   - Durumunuzu doğrulayamazsanız, [Startup’lar için Microsoft forumlarından](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups) yardım alabilirsiniz.
@@ -161,10 +161,10 @@ Open ile Azure aboneliği oluşturmak için, kendisiyle ilişkilendirilmiş en a
 
 Azure Faturalama ve Abonelikler için diğer sorun giderme makaleleri
 
-- [Reddedilen kart](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Abonelik oturum açma sorunları](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Abonelik bulunamadı](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Kurumsal maliyet görünümü devre dışı](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Reddedilen kart](./troubleshoot-declined-card.md)
+- [Abonelik oturum açma sorunları](./troubleshoot-sign-in-issue.md)
+- [Abonelik bulunamadı](./no-subscriptions-found.md)
+- [Kurumsal maliyet görünümü devre dışı](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>Yardım için bizimle iletişim kurun
 
@@ -172,4 +172,4 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="find-out-more-about-azure-cost-management"></a>Azure Maliyet Yönetimi hakkında daha fazla bilgi edinin
 
-- [Azure Maliyet Yönetimi ve Faturalandırma belgeleri](https://docs.microsoft.com/azure/cost-management-billing)
+- [Azure Maliyet Yönetimi ve Faturalandırma belgeleri](../index.yml)

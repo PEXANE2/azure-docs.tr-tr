@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB .NET değişiklik akışı Işlemcisi API 'SI, SDK sürüm notları
-description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve .NET değişiklik akışı Işlemci SDK 'sının her sürümü arasında yapılan değişiklikler dahil olmak üzere değişiklik akışı Işlemcisi API 'SI ve SDK 'Sı hakkında bilgi edinin.
+title: Azure Cosmos DB .NET değişiklik akışı İşlemci API'si ve SDK’sı sürüm notları
+description: Değişiklik Akışı İşlemci API'si ve SDK'sı hakkında sürüm tarihleri, kullanımdan kaldırma tarihleri ve .NET Değişiklik Akışı İşlemci SDK'sının sürümleri arasındaki değişiklikler de dahil olmak üzere her şeyi öğrenin.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,189 +9,189 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.openlocfilehash: e4c2969db560ff20cae2ed7b9ffbe0cea206c7a1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611580"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET değişiklik akışı Işlemcisi SDK 'Sı: Indirme ve sürüm notları
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Değişiklik Akışı İşlemci SDK'sı: İndirme ve sürüm notları
 
 > [!div class="op_single_selector"]
 >
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET Değişiklik Akışı SDK'sı v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
-> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Verileri v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Verileri v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark Bağlayıcısı](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
-> * KALANı (/REST/API
-> * [REST kaynak sağlayıcısı] (/REST/API
+> * [REST](/rest/api
+> * [REST Kaynak Sağlayıcısı](/rest/api
 > * [SQL](sql-api-query-reference.md)
-> * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
+> * [Toplu yürütücü - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Toplu yürütücü - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
 |**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**API belgeleri**|[Akış Işlemcisi kitaplık API 'SI başvuru belgelerini değiştirme](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet&preserve-view=true)|
-|**Kullanmaya başlama**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
-|**Desteklenen geçerli çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET çekirdek](https://www.microsoft.com/net/download/core) |
+|**API belgeleri**|[Değişiklik Akışı İşlemcisi kitaplığı API başvurusu belgeleri](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet&preserve-view=true)|
+|**Kullanmaya başlama**|[Değişiklik Akışı İşlemcisi .NET SDK'sını kullanmaya başlama](change-feed.md)|
+|**Şu anda desteklenen çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
-> Değişiklik akışı işlemcisini kullanıyorsanız, lütfen SDK 'da yerleşik olarak bulunan değişiklik akışını içeren [.NET SDK 'sının](change-feed-processor.md)en son sürümü olan 3. x sürümünü inceleyin. 
+> Değişiklik akışı işlemcisini kullanıyorsanız, değişiklik akışının SDK'da yerleşik olarak bulunduğu [.NET SDK'sının](change-feed-processor.md) en yeni sürümü 3.x'e bakın. 
 
 ## <a name="release-notes"></a>Sürüm notları
 
 ### <a name="v2-builds"></a>v2 derlemeleri
 
 ### <a name="232"></a><a id="2.3.2"></a>2.3.2
-* [V3 SDK ile dinamik geçiş yollarını sağlayan kira deposu uyumluluğu eklendi. Bir uygulama v3 SDK 'ya geçiş yapabilir ve herhangi bir durumu kaybetmeden değişiklik akışı işlemci kitaplığına geri geçirebilir.
+* [V3 SDK'sına dinamik geçiş yollarını etkinleştiren kira deposu uyumluluğu eklendi. Uygulama V3 SDK'sına geçirilebilir ve hiçbir durum kaybı olmadan Değişiklik Akışı işlem kitaplığına geri döndürülebilir.
 
 ### <a name="231"></a><a id="2.3.1"></a>2.3.1
-* `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` `FeedProcessing.IChangeFeedObserver.CloseAsync` Bölüm bulunamazsa veya hedef çoğaltma okuma oturumuyla güncel değilse, ' a bir kapatma nedeni gönderildiğinde bir durum düzeltildi. Bu durumlarda `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ve `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` kapatma nedenleri artık kullanılıyor.
-* `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable`Hedef çoğaltma, okuma oturumuna göre güncel olmadığında değişiklik akışı gözlemcisini kapatmak için gönderilen yeni bir kapatma nedeni eklendi.
+* Bölüm bulunamadığında veya hedef çoğaltmanın, okuma oturumu kadar güncel olmaması durumunda `FeedProcessing.IChangeFeedObserver.CloseAsync` hedefine `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` kapatma nedeninin gönderilmesi durumu düzeltildi. Artık bu durumlarda `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ve `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` kapatma nedenleri kullanılıyor.
+* Hedef çoğaltmanın okuma oturumu kadar güncel olmadığı durumlarda değişiklik akışı gözlemcisini kapatmak için gönderilen yeni `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` kapatma nedeni eklendi.
 
 ### <a name="230"></a><a id="2.3.0"></a>2.3.0
-* Yeni bir yöntem `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` ve karşılık gelen ortak arabirim eklendi `ICheckpointPartitionProcessorFactory` . Bu, arabiriminin bir uygulamasının `IPartitionProcessor` yerleşik checkişaretleme mekanizması kullanmasına izin verir. Yeni fabrika, `IPartitionProcessorFactory` `Create` yöntemi için de aynı zamanda parametresini de alır `ILeaseCheckpointer` .
-* `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory`Aynı örnek için ya da iki yöntemden yalnızca biri `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` kullanılabilir `ChangeFeedProcessorBuilder` .
+* Yeni `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` metodu ve buna karşılık gelen `ICheckpointPartitionProcessorFactory` genel arabirimi eklendi. Bu, yerleşik denetim noktası mekanizmasını kullanmak için `IPartitionProcessor` arabiriminin uygulanmasına olanak tanır. Yeni fabrika, mevcut `IPartitionProcessorFactory` ile benzerdir; tek farkı `Create` metodunun aynı zamanda `ILeaseCheckpointer` parametresini almasıdır.
+* Aynı `ChangeFeedProcessorBuilder` örneği için iki metottan yalnızca biri (`ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` veya `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`) kullanılabilir.
 
 ### <a name="228"></a><a id="2.2.8"></a>2.2.8
 * Kararlılık ve tanılama geliştirmeleri:
-  * Okuma değişikliği akışını algılamaya kadar uzun süren destek eklendi. Özelliği tarafından belirtilen değerden daha uzun sürerse `ChangeFeedProcessorOptions.ChangeFeedTimeout` , aşağıdaki adımlar alınır:
-    * Sorunlu bölümdeki değişiklik akışını okuma işlemi iptal edildi.
-    * Değişiklik akışı işlemcisi örneği, sorunlu kiralamanın sahipliğini bırakır. Bırakılan kira, aynı veya farklı değişiklik akışı işlemcisi örneği tarafından yapılacak bir sonraki kira alma adımı sırasında alınacaktır. Bu şekilde, değişiklik akışını okuma baştan başlayacaktır.
-    * Durum izleyicisine bir sorun bildirilir. Varsayılan Hemi izleyici, bildirilen tüm sorunları izleme günlüğüne gönderir.
-  * Yeni bir ortak özellik eklendi: `ChangeFeedProcessorOptions.ChangeFeedTimeout` . Bu özelliğin varsayılan değeri 10 dakikadır.
-  * Yeni bir genel Enum değeri eklendi: `Monitoring.MonitoredOperation.ReadChangeFeed` . Değeri `HealthMonitoringRecord.Operation` olarak ayarlandığında `Monitoring.MonitoredOperation.ReadChangeFeed` , sistem durumu sorununun değişiklik akışını okumayla ilgili olduğunu gösterir.
+  * Uzun süren değişiklik akışı okumasının algılanması için destek eklendi. `ChangeFeedProcessorOptions.ChangeFeedTimeout` özelliği tarafından belirtilen değerden uzun sürdüğünde aşağıdaki adımlar uygulanır:
+    * Sorunlu bölümde değişiklik akışını okuma işlemi durdurulur.
+    * Değişiklik akışı işlemci örneği sorunlu kiralamanın sahipliğini bırakır. Bırakılan kiralama, aynı veya farklı değişiklik akışı işlemci örneği tarafından yapılacak bir sonraki kiralama alma adımı sırasında seçilir. Bu şekilde değişiklik akışını okuma işlemi baştan başlar.
+    * Durum izleyicisine bir sorun bildirilir. Varsayılan durum izleyicisi bildirilen tüm sorunları izleme günlüğüne gönderir.
+  * Yeni bir ortak özellik eklendi: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Bu özelliğin varsayılan değeri 10 dakikadır.
+  * Yeni bir genel sabit listesi değeri eklendi: `Monitoring.MonitoredOperation.ReadChangeFeed`. `HealthMonitoringRecord.Operation` değerinin `Monitoring.MonitoredOperation.ReadChangeFeed` olarak ayarlanması, sistem durumu sorununun değişiklik akışını okuma işlemiyle ilgili olduğunu gösterir.
 
 ### <a name="227"></a><a id="2.2.7"></a>2.2.7
-* Tüm kiraların alınması, örneğin ağ sorunlarından dolayı kira sona erme aralığından daha uzun sürmesine neden olan senaryo için Yük Dengeleme stratejisi geliştirildi:
-  * Bu senaryoda, kiraları süresi dolduğunda kullanım dengeleme algoritması, etkin sahiplerin kira çalmasını sağlar. Bu, çok sayıda kiralamaların gereksiz yeniden dengelenmesini tetikleyebilir.
-  * Bu sorun, bu sürümde, sahibin değiştiği süre dolmadan ve bir sonraki yük dengeleme yinelemesine süresinin dolma süresini erteleyerek, bu yayında giderilir.
+* Tüm kiralamaları alma işleminin kira süre sonu aralığından daha uzun sürdüğü senaryolarda (örneğin ağ sorunlarından dolayı), yük dengeleme stratejisi geliştirildi:
+  * Bu senaryoda yük dengeleme algoritması hatalı olarak kira sürelerinin dolduğunu varsayıyordu ve bu da etkin kullanıcılardan kiraların alınmasına neden oluyordu. Bu durum birçok kiralamada gereksiz bir yeniden dengeleme işlemi tetikleyebiliyordu.
+  * Bu sürümde bu sorun, sahibin değiştirmediği süresi dolmuş kirayı alırken oluşan çakışmada yeniden deneme önlenerek ve süresi dolan kiranın alınması bir sonraki yük dengeleme yinelemesine ertelenerek düzeltildi.
 
 ### <a name="226"></a><a id="2.2.6"></a>2.2.6
 * Gözlemci özel durumlarının işlenmesi geliştirildi.
-* Gözlemci hatalarıyla ilgili daha zengin bilgi:
-  * Gözlemcinin ProcessChangesAsync tarafından oluşturulan bir özel durum nedeniyle gözlemci kapatıldığında, CloseAsync artık ChangeFeedObserverCloseReason. ObserverError olarak ayarlanan Reason parametresini alacaktır.
-  * Bir gözlemci içindeki Kullanıcı kodundaki hataları belirlemek için izlemeler eklendi.
+* Gözlemci hatalarıyla ilgili daha zengin bilgi sağlanıyor:
+  * Gözlemci, Gözlemcinin ProcessChangesAsync öğesi tarafından oluşturulan bir özel durum nedeniyle kapatılırsa,CloseAsync artık ChangeFeedObserverCloseReason.ObserverError olarak ayarlanmış neden parametresini alıyor.
+  * Gözlemcide kullanıcı kodu içindeki hataları tanımlamak için izlemeler eklendi.
 
 ### <a name="225"></a><a id="2.2.5"></a>2.2.5
-* Paylaşılan veritabanı işleme kullanan koleksiyonlarda bölünmüş işleme desteği eklendi.
-  * Bu sürüm, iki yerine yalnızca bir alt bölüm anahtar aralığı oluşturulurken bölüm yeniden dengelemeye neden olduğunda, paylaşılan veritabanı üretimi kullanılarak koleksiyonlara bölme sırasında oluşabilecek bir sorunu düzeltir. Bu durumda, akış Işlemcisini Değiştir, eski bölüm anahtarı aralığı için kirayı silmeyi ve yeni kiralamalar oluşturmamak için kalmış olabilir. Bu sürümde sorun düzeltildi.
+* Paylaşılan veritabanı aktarım hızını kullanan koleksiyonlarda bölme işlemini işleme desteği eklendi.
+  * Bu sürümde, paylaşılan veritabanı aktarım hızı kullanılarak koleksiyonlarda bölme işlemi yapıldığı sırada, bölme işlemi sonucunda iki yerine yalnızca bir alt bölüm anahtarı aralığı oluşturularak bölüm yeniden dengelemesi yapıldığında oluşabilen bir sorun düzeltildi. Bu durum oluştuğunda Değişiklik Akışı İşlemcisi, eski bölüm anahtarı aralığına yönelik kiralama silinirken kilitlenebilir ve yeni kiralamalar oluşturmayabilir. Sorun bu sürümde düzeltildi.
 
 ### <a name="224"></a><a id="2.2.4"></a>2.2.4
-* Değişiklik akışını istek devamlılık belirtecinden başlatmayı desteklemek için yeni ChangeFeedProcessorOptions. Startdevamlılık özelliği eklendi. Bu yalnızca kira koleksiyonu boş olduğunda veya bir kiralamanın Devamııtoken kümesine sahip olmadığı durumlarda kullanılır. Devamlılık belirteci ayarlanmış kira koleksiyonundaki kiralamalar için, ContinuationToken kullanılır ve ChangeFeedProcessorOptions. Startcontinuyoksayıldı.
+* Değişiklik akışının istek devamlılık belirtecinden başlatılmasını desteklemek için yeni ChangeFeedProcessorOptions.StartContinuation özelliği eklendi. Bu özellik yalnızca kira koleksiyonu boş olduğunda veya kiranın ContinuationToken öğesi ayarlanmadığında kullanılır. ContinuationToken öğesinin ayarlandığı kira koleksiyonundaki kiralar için ContinuationToken kullanılır ve ChangeFeedProcessorOptions.StartContinuation yoksayılır.
 
 ### <a name="223"></a><a id="2.2.3"></a>2.2.3
-* Bölüm başına devamlılık belirteçlerini sürdürmek için özel depo kullanma desteği eklendi.
-  * Örneğin, özel bir kiralama deposu herhangi bir özel şekilde bölümlenmiş Azure Cosmos DB kira koleksiyonu olabilir.
-  * Özel Kiralama depoları, yeni genişletilebilirlik noktası ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) ve ILeaseStoreManager ortak arabirimini kullanabilir.
-  * ILeaseManager arabirimini birden çok rol arabirimine yeniden düzenlenmiş.
-* Küçük bir değişiklik: ChangeFeedProcessorBuilder. WithLeaseManager (ILeaseManager) genişletilebilirlik noktası kaldırıldı, bunun yerine ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) kullanın.
+* Bölüm başına devamlılık belirtecini kalıcı hale getirmek üzere özel depo kullanma desteği eklendi.
+  * Örneğin özel kiralama deposu, özel bir yolla bölümlenmiş Azure Cosmos DB kira koleksiyonu olabilir.
+  * Özel kira depoları yeni ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) genişletilebilirlik noktasını ve ILeaseStoreManager genel arabirimini kullanabilir.
+  * ILeaseManager arabirimi, birden çok rol arabirimi halinde yeniden düzenlendi.
+* Hataya neden olan küçük değişiklik: ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) genişletilebilirlik noktası kaldırıldı; bunun yerine ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) kullanın.
 
 ### <a name="222"></a><a id="2.2.2"></a>2.2.2
-* Bu sürüm, izlenen bir koleksiyonu işleme ve bölümlenmiş bir kira koleksiyonu kullanma sırasında oluşan bir sorunu düzeltir. Bölünmüş bölüm için bir kira işlenirken, bu bölüme karşılık gelen kira silinmeyebilir. Bu sürümde sorun düzeltildi.
+* Bu sürümde, izlenen koleksiyonda bir bölme işlenirken ve bölümlenmiş kira koleksiyonu kullanılırken oluşan bir sorun düzeltildi. Bölünmüş bölümün kiralaması işlenirken, bölüme karşılık gelen kiralama silinemeyebiliyor. Sorun bu sürümde düzeltildi.
 
 ### <a name="221"></a><a id="2.2.1"></a>2.2.1
-* Birden çok yazma bölgesi ve yeni oturum belirteci biçimi olan hesaplar için sabit tahmin hesabı.
+* Birden çok yazma bölgesi olan ve yeni Oturum Belirteci biçimine sahip hesaplar için Tahmin Aracı hesaplaması düzeltildi.
 
 ### <a name="220"></a><a id="2.2.0"></a>2.2.0
-* Bölümlenmiş kira koleksiyonları için destek eklendi. Bölüm anahtarının/ıdolarak tanımlanması gerekir.
-* Küçük değişiklik: ıchanneldocumentclient arabiriminin ve ChangeFeedDocumentClient sınıfının yöntemleri, RequestOptions ve CancellationToken parametrelerini içerecek şekilde değiştirilmiştir. Ichanneldocumentclient, belge Istemcisinin değişiklik akışı Işlemcisi ile birlikte kullanmak üzere özel bir uygulaması sağlamanıza olanak tanıyan gelişmiş bir genişletilebilirlik noktasıdır. Örneğin, resmi bir DocumentClient ve ek izleme, hata işleme, vb. için tüm çağrıları ele alır. Bu güncelleştirmeyle, ıchanneldocumentclient uygulayan kodun, uygulamadaki yeni parametreleri içerecek şekilde değiştirilmesi gerekir.
+* Bölümlenmiş kira koleksiyonları için destek eklendi. Bölüm anahtarı /id olarak tanımlanmalıdır.
+* Hataya neden olan küçük değişiklik: IChangeFeedDocumentClient arabiriminin ve ChangeFeedDocumentClient sınıfının yöntemleri RequestOptions ve CancellationToken parametrelerini içerecek şekilde değiştirildi. IChangeFeedDocumentClient gelişmiş bir genişletilebilirlik noktasıdır. Değişiklik Akışı İşlemcisiyle kullanmak üzere (örneğin DocumentClient'ı dekore etmek ve fazladan izleme, hata işleme vb. işlemler yapmak üzere ona yönelik tüm çağrıları kesmek için) Belge İstemcisinin özel uygulamasını sağlar. Bu güncelleştirmeyle IChangeFeedDocumentClient'ı uygulayan kodun uygulamada yeni parametreleri içerecek şekilde değiştirilmesi gerekir.
 * Küçük tanılama geliştirmeleri.
 
 ### <a name="210"></a><a id="2.1.0"></a>2.1.0
-* Yeni API eklendi, görev &lt; IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Bu, her bölüm için tahmini çalışma almak üzere kullanılabilir.
-* Microsoft.Azure.DocumentDB SDK 2,0 ' i destekler. Microsoft.Azure.DocumentDB 2,0 veya üstünü gerektirir.
+* Yeni Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync() API'si eklendi. Bu, her bölümün tahmini çalışmasını almak için kullanılabilir.
+* Microsoft.Azure.DocumentDB SDK 2.0'ı destekler. Microsoft.Azure.DocumentDB 2.0 veya üzerini gerektirir.
 
 ### <a name="206"></a><a id="2.0.6"></a>2.0.6
-* V1 uyumluluğu için ChangeFeedEventHost. HostName ortak özelliği eklendi.
+* v1 ile uyumluluk için ChangeFeedEventHost.HostName ortak özelliği eklendi.
 
 ### <a name="205"></a><a id="2.0.5"></a>2.0.5
-* Bölüm ayırma sırasında oluşan bir yarış durumu düzeltildi. Yarış durumu kira elde edebilir ve bölüm bölme sırasında hemen kaybı ve çekişmeye neden olabilir. Yarış durumu sorunu bu sürümle düzeltilmiştir.
+* Bölümü bölme işlemi sırasında oluşan yarış durumu düzeltildi. Yarış durumu kiranın alınmasına ve bölümü bölme işlemi sırasında hemen kaybedilmesine yol açarak çekişmeye neden olabiliyor. Yarış durumu sorunu bu sürümde düzeltildi.
 
 ### <a name="204"></a><a id="2.0.4"></a>2.0.4
 * GA SDK
 
-### <a name="203-prerelease"></a><a id="2.0.3-prerelease"></a>2.0.3-ön sürüm
+### <a name="203-prerelease"></a><a id="2.0.3-prerelease"></a>2.0.3 ön sürümü
 * Aşağıdaki sorunlar çözülmüştür:
-  * Bölüm bölünmesi gerçekleştiğinde, bölme öncesinde değiştirilen belgelerin yinelenen işlenmesi olabilir.
-  * GetEstimatedRemainingWork API 'SI, kira koleksiyonunda hiçbir kira sunulmadan 0 döndürdü.
+  * Bölümü bölme işlemi gerçekleştiğinde, bölme işlemi öncesinde değiştirilen belgelerde yinelenen işleme ortaya çıkabiliyordu.
+  * Kira koleksiyonunda hiç kira olmadığında GetEstimatedRemainingWork API'si 0 döndürüyordu.
 
-* Aşağıdaki özel durumlar ortak hale getirilir. Ipartitionprocessor uygulayan uzantılar bu özel durumları oluşturabilir.
-  * Microsoft.Azure.Documlar. ChangeFeedProcessor. Exceptions. LeaseLostException. 
-  * Microsoft.Azure.Documlar. ChangeFeedProcessor. Exceptions. PartitionException. 
-  * Microsoft.Azure.Documlar. ChangeFeedProcessor. Exceptions. PartitionNotFoundException.
-  * Microsoft.Azure.Documlar. ChangeFeedProcessor. Exceptions. Partitionsptexception. 
+* Aşağıdaki özel durumlar genel kullanıma sunuldu. IPartitionProcessor gerçekleştirilen uzantılar bu özel durumları oluşturabilir.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
-### <a name="202-prerelease"></a><a id="2.0.2-prerelease"></a>2.0.2-ön sürüm
+### <a name="202-prerelease"></a><a id="2.0.2-prerelease"></a>2.0.2 ön sürümü
 * Küçük API değişiklikleri:
-  * Eski olarak işaretlenen ChangeFeedProcessorOptions. ısoto Checkpointenabled kaldırıldı.
+  * Kullanımdan kaldırıldı olarak işaretlenmiş olan ChangeFeedProcessorOptions.IsAutoCheckpointEnabled kaldırıldı.
 
-### <a name="201-prerelease"></a><a id="2.0.1-prerelease"></a>2.0.1-ön sürüm
+### <a name="201-prerelease"></a><a id="2.0.1-prerelease"></a>2.0.1 ön sürümü
 * Kararlılık geliştirmeleri:
-  * Kira deposunun başlatılmasının daha iyi işlenmesi. Kira deposu boş olduğunda, işlemcinin yalnızca bir örneği başlatabilir, diğerleri bekleyecektir.
-  * Daha kararlı/verimli kira yenileme/yayınlama. Bir kiralamanın yenilenmesi ve serbest bırakılması, diğerlerinin yenilenmesinin bağımsız olduğu bir bölümdür. Tüm bölümler için sırayla yapılan v1 'de.
-* Yeni v2 API 'SI:
-  * İşlemcinin esnek olarak oluşturulması için Oluşturucu deseninin: ChangeFeedProcessorBuilder sınıfı.
-    * , Parametrelerin herhangi bir birleşimini alabilir.
-    * , İzleme ve/veya kira koleksiyonu (v1 'de kullanılamaz) için DocumentClient örneği alabilir.
-  * Ichangefeedobserver. ProcessChangesAsync artık CancellationToken 'ı alıyor.
-  * IRemainingWorkEstimator-kalan iş tahmin aracı, işlemciden ayrı olarak kullanılabilir.
+  * Kira deposu başlatma işlemi daha iyi işleniyor. Kira deposu boş olduğunda işlemcinin tek bir örneği depoyu başlatabilir ve diğerleri bekler.
+  * Daha kararlı/verimli kira yenileme/yayınlama. Bir bölümde kirayı yenileme ve yayınlama, diğerlerini yenilemekten bağımsızdır. v1'de bu işlem tüm bölümler için sıralı olarak yapılıyordu.
+* v2 API'sindeki yenilikler:
+  * İşlemcinin esnek yapısı için oluşturucu deseni: ChangeFeedProcessorBuilder sınıfı.
+    * Parametrelerin herhangi bir bileşimini alabilir.
+    * İzleme ve/veya kira koleksiyonu için DocumentClient örneğini alabilir (v1'de kullanılamaz).
+  * IChangeFeedObserver.ProcessChangesAsync şimdi CancellationToken alıyor.
+  * IRemainingWorkEstimator - Kalan iş tahmin aracı işlemciden ayrı olarak kullanılabilir.
   * Yeni genişletilebilirlik noktaları:
-    * IPartitionLoadBalancingStrategy-işlemci örnekleri arasında bölümlerin özel yük dengelemesi için.
-    * Ileao, ILeaseManager-Özel Kiralama Yönetimi için.
-    * Ipartitionprocessor-bir bölümdeki özel işleme değişiklikleri için.
-* Günlüğe kaydetme- [Liblog](https://github.com/damianh/LibLog) kitaplığını kullanır.
-* %100 v1 API 'siyle geriye dönük olarak uyumludur.
+    * IPartitionLoadBalancingStrategy - işlemcinin örnekleri arasında bölümlerin özel yük dengelemesi için.
+    * ILease, ILeaseManager - özel kira yönetimi için.
+    * IPartitionProcessor - bölümdeki özel işleme değişiklikleri için.
+* Logging - [LibLog](https://github.com/damianh/LibLog) kitaplığını kullanır.
+* Geriye dönük olarak v1 API ile %100 uyumludur.
 * Yeni kod tabanı.
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1 ve üzeri sürümleriyle uyumludur.
 
-### <a name="v1-builds"></a>V1 derlemeleri
+### <a name="v1-builds"></a>v1 derlemeleri
 
 ### <a name="133"></a><a id="1.3.3"></a>1.3.3
-* Daha fazla günlüğe kaydetme eklendi.
-* Bekleyen iş tahmini birden çok kez çağrılırken bir DocumentClient sızıntısı düzeltildi.
+* Daha fazla günlük eklendi.
+* Bekleyen iş tahmini birden çok kez çağrıldığında oluşan DocumentClient sızıntısı düzeltildi.
 
 ### <a name="132"></a><a id="1.3.2"></a>1.3.2
-* Bekleyen iş tahmininizdeki düzeltmeler.
+* Bekleyen iş tahminindeki düzeltmeler.
 
 ### <a name="131"></a><a id="1.3.1"></a>1.3.1
 * Kararlılık geliştirmeleri.
-  * Bazı bölümlerde durdurulmuş gözlemcilerin 'a neden olabilecek iptal edilen görevleri işleme sorununu giderme.
-* El ile checkişaretleyici desteği.
-* [SQL .NET SDK](sql-api-sdk-dotnet.md) 1,21 ve üzeri sürümleriyle uyumludur.
+  * Bazı bölümlerde gözlemcilerin durmasına yol açan iptal edilmiş görevleri işleme sorunu düzeltildi.
+* El ile denetim noktası oluşturma desteği.
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 ve üzeri sürümleriyle uyumludur.
 
 ### <a name="120"></a><a id="1.2.0"></a>1.2.0
-* 2,0 .NET Standard için destek ekler. Paket artık `netstandard2.0` ve `net451` framework takma adlarını destekler.
+* .NET Standard 2.0 için destek eklendi. Paket artık `netstandard2.0` ve `net451` çerçevesi bilinen adlarını destekliyor.
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.17.0 ve üzeri sürümleriyle uyumludur.
-* 1.5.1 ve üzeri [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) sürümleriyle uyumludur.
+* [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1 ve üzeri sürümleriyle uyumludur.
 
 ### <a name="111"></a><a id="1.1.1"></a>1.1.1
-* Değişiklik akışı boş olduğunda veya hiçbir iş beklenmediği zaman, kalan çalışmanın tahmini hesaplamasına ilişkin bir sorunu düzeltir.
+* Değişiklik Akışı boş olduğunda veya bekleyen iş olmadığında, kalan iş tahmini hesaplamasındaki sorun düzeltildi.
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 ve üzeri sürümleriyle uyumludur.
 
 ### <a name="110"></a><a id="1.1.0"></a>1.1.0
-* Değişiklik akışında işlenecek kalan çalışmanın tahminini elde etmek için bir yöntem eklenmiştir.
+* Değişiklik Akışında işlenecek kalan iş tahminini alma yöntemi eklendi.
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 ve üzeri sürümleriyle uyumludur.
 
 ### <a name="100"></a><a id="1.0.0"></a>1.0.0
 * GA SDK
-* [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 ve altı sürümleriyle uyumludur.
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 ve öncesi sürümleriyle uyumludur.
 
-## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
+## <a name="release--retirement-dates"></a>Yayın ve Kullanımdan Kaldırma tarihleri
 
-Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir.
+Microsoft daha yeni/desteklenen bir sürüme geçişi kolaylaştırmak için bir SDK'yı kullanımdan kaldırmadan en az **12 ay** önce bildirim sağlar. Yeni özellikler, işlevler ve iyileştirmeler yalnızca geçerli SDK'ya eklendiğinden, her zaman mümkün olan en kısa zamanda, en son SDK sürümüne yükseltmeniz önerilir.
 
 > [!WARNING]
-> 31 Ağustos 2022 ' den sonra Azure Cosmos DB artık hata düzeltmeleri yapamayacak, yeni özellikler ekleyecek ve SQL API 'SI için Azure Cosmos DB .NET veya .NET Core SDK sürümleri için destek sağlamalıdır. Yükseltmemeyi tercih ediyorsanız, SDK 'nın 1. x sürümünden gönderilen istekler Azure Cosmos DB hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
+> 31 Ağustos 2022'den sonra Azure Cosmos DB artık Azure Cosmos DB .NET veya SQL API'si için .NET Core SDK'sının 1.x sürümlerinde hata düzeltmeleri yapmayacak, yeni özellikler eklemeyecek ve destek sağlamayacaktır. Yükseltmemeyi tercih ederseniz, SDK'nın 1.x sürümünden gönderilen isteklere Azure Cosmos DB hizmeti tarafından yanıt verilmeye devam edilecektir.
 
 <br/>
 
@@ -222,4 +222,4 @@ Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası.
+Cosmos DB hakkında daha fazla bilgi edinmek için [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfasına bakın.

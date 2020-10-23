@@ -37,6 +37,8 @@
       href: create-certificate.md
     - name: Sertifika imzalama isteği oluşturma
       href: create-certificate-signing-request.md
+    - name: Sertifika erişimi denetimi
+      href: certificate-access-control.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Key Vault’u DigiCert CA ile tümleştirme

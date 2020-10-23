@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658351"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458000"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory Sorunsuz Çoklu Oturum Açma
 
@@ -63,19 +63,21 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Evet\*|Evet|Evet|Evet\*\*\*|Yok
-|Windows 8.1|Evet\*|Yok|Evet|Evet\*\*\*|Yok
-|Windows 8|Evet\*|Yok|Evet|Evet\*\*\*|Yok
-|Windows 7|Evet\*|Yok|Evet|Evet\*\*\*|Yok
-|Windows Server 2012 R2 veya üzeri|Yes\*\*|Yok|Evet|Evet\*\*\*|Yok
+|Windows 10|Evet\*|Yes|Yes|Evet\*\*\*|Yok
+|Windows 8.1|Yes\*|Yes\*\*\*|Yes|Evet\*\*\*|Yok
+|Windows 8|Yes\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows 7|Evet\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows Server 2012 R2 veya üzeri|Yes\*\*|Yok|Yes|Evet\*\*\*|Yok
 |Mac OS X|Yok|Yok|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
 
 
-\*Internet Explorer sürümleri 10 veya üzerini gerektirir
+\*Internet Explorer sürüm 10 veya üstünü gerektirir.
 
-\*\*Internet Explorer sürümleri 10 veya üstünü gerektirir. Gelişmiş korumalı modu devre dışı bırak
+\*\*Internet Explorer sürüm 10 veya üstünü gerektirir. Gelişmiş korumalı modu devre dışı bırakın.
 
-\*\*\*[Ek yapılandırma](how-to-connect-sso-quick-start.md#browser-considerations) gerektirir
+\*\*\*[Ek yapılandırma](how-to-connect-sso-quick-start.md#browser-considerations)gerektirir.
+
+\*\*\*\*Microsoft Edge sürüm 77 veya üstünü gerektirir.
 
 >[!NOTE]
 >Windows 10 ' da, Azure AD 'ye yönelik en iyi çoklu oturum açma deneyimi için [Azure AD JOIN](../devices/concept-azure-ad-join.md) 'in kullanılması önerilir.

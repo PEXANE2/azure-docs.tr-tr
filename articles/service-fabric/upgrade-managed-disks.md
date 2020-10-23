@@ -3,12 +3,12 @@ title: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 description: Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717532"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316154"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 
@@ -25,7 +25,7 @@ Yönetilen diskleri kullanmak için bir Service Fabric küme düğümünü yüks
 Bu makale, yönetilen diskleri kullanmak için örnek bir kümenin birincil düğüm türünü yükseltme adımlarında size yol gösterir, ancak herhangi bir küme kapalı kalma süresini önleyerek (aşağıdaki nota bakın). Örnek test kümesinin ilk durumu, beş düğümlü tek bir ölçek kümesi tarafından desteklenen [gümüş dayanıklılığa](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)sahip bir düğüm türünden oluşur.
 
 > [!NOTE]
-> Temel SKU yük dengeleyicinin sınırlamaları, ek ölçek kümesinin eklenmesini engeller. Bunun yerine standart SKU yük dengeleyiciyi kullanmanızı öneririz. Daha fazla bilgi için bkz. [Iki SKU 'nun karşılaştırması](/azure/load-balancer/skus).
+> Temel SKU yük dengeleyicinin sınırlamaları, ek ölçek kümesinin eklenmesini engeller. Bunun yerine standart SKU yük dengeleyiciyi kullanmanızı öneririz. Daha fazla bilgi için bkz. [Iki SKU 'nun karşılaştırması](../load-balancer/skus.md).
 
 > [!CAUTION]
 > Bu yordamı yalnızca küme DNS ( [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)erişimi gibi) üzerinde bağımlılıklara sahipseniz bir kesinti yaşanacaktır. [Ön uç hizmetleri için mimari en iyi uygulaması](/azure/architecture/microservices/design/gateway) , düğüm değiştirmeyi kesinti olmadan mümkün hale getirmek için düğüm türlerinizin önünde bazı tür [yük dengeleyiciler](/azure/architecture/guide/technology-choices/load-balancing-overview) içermelidir.

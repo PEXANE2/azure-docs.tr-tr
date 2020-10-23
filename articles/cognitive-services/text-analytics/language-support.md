@@ -10,17 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: ed2a5b4688965f790567018bc11051b77c494e7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b13d82780a01771c6bb8e87091a7808ea22ca111
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977740"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371194"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
-> [!IMPORTANT]
-> Metin Analizi API'si sürüm 3. x şu bölgelerde kullanılamıyor: Orta Hindistan, BAE Kuzey, Çin Kuzey 2, Çin Doğu.
+[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 
 #### <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment-analysis)
@@ -87,7 +86,7 @@ ms.locfileid: "91977740"
 | İsveççe               |     `sv`      |     ✓      |            |                                 |                    |
 | Türkçe               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Anahtar ifade ayıklama](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > 2020-07-01 ' den önceki Anahtar İfade Ayıklama model sürümlerinin 64 karakter sınırı vardır. Bu sınır sonraki model sürümlerinde yok.
@@ -119,13 +118,108 @@ ms.locfileid: "91977740"
 
 #### <a name="language-detection"></a>[Dil Algılama](#tab/language-detection)
 
-Metin Analizi API'si, çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerini algılayabilir.  Dil Algılama, bir dilin "betiğini" döndürür. Örneğin, "bir köpek var" ifadesi için  `en` yerine döndürülür  `en-US` . Tek özel durum, dil algılama yeteneğinin döndürdüğü `zh_CHS` veya bir `zh_CHT` komut dosyasını verilen metin olarak belirleyebileceği yalnızca Çince 'dir. Belirli bir betiğin bir Çince belge için belirlenemediği durumlarda, yalnızca döndürülür `zh` .
-
-Bu özellik için dillerin tam listesini yayımlamadık, ancak çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerini algılayabilir. 
+Metin Analizi API'si, çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerini algılayabilir ve algılanan dilleri ad ve kodla döndürebilir. Metin Analizi Dil Algılama dil kodu parametreleri [ISO-639-1](https://www.iso.org/iso-639-language-codes.html) tanımlayıcılarıyla uyumlu olan [bcp-47](https://tools.ietf.org/html/bcp47) standardına uygundur. 
 
 Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa, bir kodu döndürüp döndürdüğünü görmek için Dil Algılama deneyebilirsiniz. Tespit edilemez dillerin yanıtı `unknown` .
 
+| Dil | Dil Kodu |  v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|
+|Afrikaner|`af`|✓|    |
+|Arnavutça|`sq`|✓|    |
+|Arapça|`ar`|✓|    |
+|Ermenice|`hy`|✓|    |
+|Baskça|`eu`|✓|    |
+|Beyaz Rusça|`be`|✓|    |
+|Bengali|`bn`|✓|    |
+|Boşnakça|`bs`|✓|2020-09-01|
+|Bulgarca|`bg`|✓|    |
+|Birman dili|`my`|✓|    |
+|Katalanca, Alcian|`ca`|✓|    |
+|Orta Khmer Dili|`km`|✓|    |
+|Çince|`zh`|✓|    |
+|Basitleştirilmiş Çince|`zh_chs`|✓|    |
+|Geleneksel Çince|`zh_cht`|✓|    |
+|Hırvatça|`hr`|✓|    |
+|Çekçe|`cs`|✓|    |
+|Danca|`da`|✓|    |
+|Dili|`prs`|✓|2020-09-01|
+|Divehi, Dhivehi, Maldivian|`dv`|✓|    |
+|Felemenkçe, Flemish|`nl`|✓|    |
+|İngilizce|`en`|✓|    |
+|Esperanto|`eo`|✓|    |
+|Estonya Dili|`et`|✓|    |
+|Fiji Adaları dili|`fj`|✓|2020-09-01|
+|Fince|`fi`|✓|    |
+|Fransızca|`fr`|✓|    |
+|Galiçya Dili|`gl`|✓|    |
+|Gürcüce|`ka`|✓|    |
+|Almanca|`de`|✓|    |
+|Yunanca|`el`|✓|    |
+|Gucerat dili|`gu`|✓|    |
+|Haitia, Haian Creole|`ht`|✓|    |
+|İbranice|`he`|✓|    |
+|Hintçe|`hi`|✓|    |
+|Hmong DAW|`mww`|✓|2020-09-01|
+|Macarca|`hu`|✓|    |
+|İzlandaca|`is`|✓|    |
+|Endonezce|`id`|✓|    |
+|Dili|`iu`|✓|    |
+|İrlandaca|`ga`|✓|    |
+|İtalyanca|`it`|✓|    |
+|Japonca|`ja`|✓|    |
+|Kannada dili|`kn`|✓|    |
+|Kazakça|`kk`|✓|2020-09-01|
+|Korece|`ko`|✓|    |
+|Kürtçe|`ku`|✓|    |
+|Laos|`lo`|✓|    |
+|Tin|`la`|✓|    |
+|Letonca|`lv`|✓|    |
+|Litvanca|`lt`|✓|    |
+|CA|`mk`|✓|    |
+|Malgaşça|`mg`|✓|2020-09-01|
+|Malayca|`ms`|✓|    |
+|Malayalam dili|`ml`|✓|    |
+|Maltaca|`mt`|✓|    |
+|Maori dili|`mi`|✓|2020-09-01|
+|Marathi|`mr`|✓|2020-09-01|
+|Norveççe|`no`|✓|    |
+|Norveççe Nynorsk|`nn`|✓|    |
+|Oriya|`or`|✓|    |
+|Pashto, Pushto|`ps`|✓|    |
+|Farsça|`fa`|✓|    |
+|Lehçe|`pl`|✓|    |
+|Portekizce|`pt`|✓|    |
+|Pencap dili, Panjabi|`pa`|✓|    |
+|Queretaro Otomi|`otq`|✓|2020-09-01|
+|Rumence, Moldavian, Moldovan|`ro`|✓|    |
+|Rusça|`ru`|✓|    |
+|Samoan|`sm`|✓|2020-09-01|
+|Sırpça|`sr`|✓|    |
+|Sinhali dili, Sinhalet|`si`|✓|    |
+|Slovakça|`sk`|✓|    |
+|Slovence|`sl`|✓|    |
+|Dili|`so`|✓|    |
+|İspanyolca, CAStilian|`es`|✓|    |
+|Svahili dili|`sw`|✓|    |
+|İsveççe|`sv`|✓|    |
+|Tagalog|`tl`|✓|    |
+|Tahiti dili|`ty`|✓|2020-09-01|
+|Tamil dili|`ta`|✓|    |
+|Telugu dili|`te`|✓|    |
+|Tayca|`th`|✓|    |
+|Tonga dili|`to`|✓|2020-09-01|
+|Türkçe|`tr`|✓|    |
+|Ukraynaca|`uk`|✓|    |
+|Urduca|`ur`|✓|    |
+|Özbekçe|`uz`|✓|    |
+|Vietnamca|`vi`|✓|    |
+|Galce|`cy`|✓|    |
+|Yidiş|`yi`|✓|    |
+|Yucatec Maya|`yua`|✓|    |
+
+
 ---
+
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

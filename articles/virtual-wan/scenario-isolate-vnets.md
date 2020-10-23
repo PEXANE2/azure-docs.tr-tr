@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f725932b30fad062123d6c752f2d563b84f98b2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267644"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424736"
 ---
 # <a name="scenario-isolating-vnets"></a>Senaryo: VNET 'leri yalıtma
 
@@ -26,10 +26,10 @@ Bu senaryoda, belirli bir sanal ağ içindeki iş yükü yalıtılmış kalır v
 
 | Kaynak |   Amaç |  *Sanal ağlar* | *Dallar* |
 | -------------- | -------- | ---------- | ---|
-| Sanal ağlar     | &#8594;|           |     X    |
-| Dallar   | &#8594;|    X     |     X    |
+| Sanal ağlar     | &#8594;| Direct |   Direct    |
+| Dallar   | &#8594;|  Direct  |   Direct    |
 
-Önceki tabloda bulunan hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "to" tarafında, italik olarak sütun üst bilgileri) öğrenip ("X" bağlantısının sanal WAN tarafından sağlandığı anlamına geldiğini açıklar.
+Önceki tablodaki hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) bir hedef önekiyle (akışın "to" tarafı, italik olan sütun başlıkları) iletişim kuracağını açıklar. Bu senaryoda, güvenlik duvarı veya ağ sanal gereçleri yoktur, bu nedenle iletişimler doğrudan sanal WAN üzerinden akar (Bu nedenle tablodaki "doğrudan" sözcüğü).
 
 Bu bağlantı matrisi, iki yol tablosuna çeviren iki farklı satır deseni sunar. Sanal WAN zaten varsayılan bir yol tablosuna sahiptir, bu nedenle başka bir yol tablosu gerekecektir. Bu örnekte, yol tablosu **RT_VNET**olarak adı vereceğiz.
 

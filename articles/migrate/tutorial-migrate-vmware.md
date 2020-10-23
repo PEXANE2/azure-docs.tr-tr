@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl 
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530531"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310627"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -32,12 +32,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
-1. Geçiş için Azure ve VMware 'yi hazırlamak üzere [ilk öğreticiyi doldurun](tutorial-prepare-vmware.md) .
-2. [VMware VM](tutorial-assess-vmware.md) 'lerini Azure 'a geçirmeden önce değerlendirmek için ikinci öğreticiyi tamamlamanızı öneririz, ancak şunları yapmanız gerekmez. 
+1. Geçiş için Azure ve VMware 'yi hazırlamak üzere [ilk öğreticiyi doldurun](./tutorial-discover-vmware.md) .
+2. [VMware VM](./tutorial-assess-vmware-azure-vm.md) 'lerini Azure 'a geçirmeden önce değerlendirmek için ikinci öğreticiyi tamamlamanızı öneririz, ancak şunları yapmanız gerekmez. 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure geçiş sunucusu geçiş aracını ekleme
@@ -59,7 +59,7 @@ Henüz bir Azure geçişi projesi ayarlamadıysanız, aracı eklemeden önce [bu
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure geçişi gereç 'yi ayarlama
 
-Azure geçişi sunucu geçişi, VMware VM 'lerinin bulunması, değerlendirmesi ve aracısız geçirilmesi için kullanılan basit bir VMware VM gereci çalıştırır. [Değerlendirme öğreticisini](tutorial-assess-vmware.md)izlerseniz, zaten gereci ayarlamış olursunuz. Yapmadıysanız, şu yöntemlerden birini kullanarak şimdi ayarlayın:
+Azure geçişi sunucu geçişi, VMware VM 'lerinin bulunması, değerlendirmesi ve aracısız geçirilmesi için kullanılan basit bir VMware VM gereci çalıştırır. [Değerlendirme öğreticisini](./tutorial-assess-vmware-azure-vm.md)izlerseniz, zaten gereci ayarlamış olursunuz. Yapmadıysanız, şu yöntemlerden birini kullanarak şimdi ayarlayın:
 
 - **Ova şablonu**: indirilen bir ova şablonu kullanarak BIR VMware VM üzerinde [ayarlanır](how-to-set-up-appliance-vmware.md) .
 - **Betik**: BIR VMware VM 'de veya fiziksel makinede bir PowerShell yükleyici betiği kullanılarak [ayarlanır](deploy-appliance-script.md) . Bu yöntem, bir OVA şablonu kullanarak bir VM ayarlayamıyorum veya Azure Kamu kullanıyorsanız kullanılmalıdır.
@@ -210,7 +210,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
     - Site Recovery ile Azure sanal makinelerini ikincil bölgeye çoğaltarak iş yüklerinin çalışmaya devam etmesini ve sürekli kullanılabilir olmasını sağlayın. [Daha fazla bilgi edinin](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Daha fazla güvenlik için:
     - Azure Güvenlik Merkezi ile gelen trafik erişimini kilitleme ve sınırlayın [-tam zamanında yönetim](../security-center/security-center-just-in-time.md).
-    - [Ağ Güvenlik Grupları](../virtual-network/security-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
+    - [Ağ Güvenlik Grupları](../virtual-network/network-security-groups-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
     - [Azure Disk Şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)’ni dağıtarak disklerin güvenliğinin sağlanmasına yardımcı olun ve verileri hırsızlık ve yetkisiz erişime karşı koruyun.
     - [IaaS kaynaklarının güvenliğini sağlama](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) hakkında daha fazla bilgi edinin ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)’ni ziyaret edin.
 - İzleme ve yönetim için:

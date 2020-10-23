@@ -74,16 +74,8 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: Kaynaklar
   items:
-    - name: Destek
-      items:
-        - name: Destek alın
-          href: 'https://aka.ms/adsupport'
-        - name: Stack Overflow
-          href: 'https://aka.ms/adso'
-        - name: MSDN
-          href: 'https://aka.ms/admsdn'
-        - name: User Voice
-          href: 'https://aka.ms/aduservoice'
+    - name: Destek ve yardım seçenekleri
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: Fiyatlandırma
       href: 'https://aka.ms/adpricing'
     - name: Bölgesel kullanılabilirlik

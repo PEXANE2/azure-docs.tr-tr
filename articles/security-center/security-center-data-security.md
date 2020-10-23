@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 49533947ff01aea07eaacd9d761b6414fb672a1c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018279"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339484"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Güvenlik Merkezi veri güvenliği
 
@@ -51,7 +51,7 @@ Microsoft, önleme ve algılama olanaklarımızı geliştirmek için birden çok
 ## <a name="manage-data-collection-from-machines"></a>Makinelerden veri toplamayı yönetme
 Azure'da Güvenlik Merkezi'ni etkinleştirdiğinizde her Azure aboneliğiniz için veri toplama etkinleştirilir. Ayrıca, güvenlik merkezi 'nde abonelikleriniz için veri toplamayı etkinleştirebilirsiniz. Veri toplama etkinleştirildiğinde, Güvenlik Merkezi, desteklenen tüm Azure sanal makinelerinde ve oluşturulan tüm yeni makinelerde Log Analytics aracısını sağlar.
 
-Log Analytics Aracısı, güvenlikle ilgili çeşitli yapılandırma ve olayları [Windows Için olay izleme](https://docs.microsoft.com/windows/win32/etw/event-tracing-portal) (ETW) izlemeleri halinde tarar. Ayrıca, işletim sistemi, makinenin çalışması sırasında olay günlüğü olaylarını ortaya koyar. Bu tür verilerin örnekleri şunlardır: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan işlemler, makine adı, IP adresleri, oturum açmış kullanıcı ve kiracı kimliği. Log Analytics Aracısı olay günlüğü girişlerini ve ETW izlemelerini okur ve bunları analiz için çalışma alanınıza kopyalar. Log Analytics Aracısı Ayrıca işlem oluşturma olaylarını ve komut satırı denetimini de sunar.
+Log Analytics Aracısı, güvenlikle ilgili çeşitli yapılandırma ve olayları [Windows Için olay izleme](/windows/win32/etw/event-tracing-portal) (ETW) izlemeleri halinde tarar. Ayrıca, işletim sistemi, makinenin çalışması sırasında olay günlüğü olaylarını ortaya koyar. Bu tür verilerin örnekleri şunlardır: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan işlemler, makine adı, IP adresleri, oturum açmış kullanıcı ve kiracı kimliği. Log Analytics Aracısı olay günlüğü girişlerini ve ETW izlemelerini okur ve bunları analiz için çalışma alanınıza kopyalar. Log Analytics Aracısı Ayrıca işlem oluşturma olaylarını ve komut satırı denetimini de sunar.
 
 Azure Defender kullanmıyorsanız, ayrıca güvenlik Ilkesindeki sanal makinelerden veri toplamayı devre dışı bırakabilirsiniz. Azure Defender tarafından korunan abonelikler için veri toplama işlemi gereklidir. Veri toplama devre dışı bırakılsa bile, VM diski anlık görüntüleri ve yapıt toplama işlemi etkin olmaya devam eder.
 
@@ -83,9 +83,9 @@ Müşteriler aşağıdaki veri akışlarından Güvenlik Merkezi ile ilgili veri
 | Akış                                                                                | Veri türleri                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md)                       | Tüm güvenlik uyarıları, onaylanan Güvenlik Merkezi [tam zamanında](security-center-just-in-time.md) erişim istekleri ve [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)tarafından oluşturulan tüm uyarılar.|
-| [Azure Izleyici günlükleri](../azure-monitor/platform/data-platform.md)                      | Tüm güvenlik uyarıları.                                                                                                                                                                                                |
+| [Azure İzleyici günlükleri](../azure-monitor/platform/data-platform.md)                      | Tüm güvenlik uyarıları.                                                                                                                                                                                                |
 | [Azure Kaynak Grafiği](../governance/resource-graph/overview.md)                      | Güvenlik uyarıları, güvenlik önerileri, güvenlik açığı değerlendirmesi sonuçları, güvenli puan bilgileri, uyumluluk denetimlerinin durumu ve daha fazlası.                                                                       |
-| [Azure Güvenlik Merkezi REST API](https://docs.microsoft.com/rest/api/securitycenter/) | Güvenlik uyarıları, güvenlik önerileri ve daha fazlası.                                                                                                                                                                |
+| [Azure Güvenlik Merkezi REST API](/rest/api/securitycenter/) | Güvenlik uyarıları, güvenlik önerileri ve daha fazlası.                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>Sonraki adımlar

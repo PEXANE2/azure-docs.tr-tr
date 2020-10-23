@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146632"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372489"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory uygulamalarımın dağıtımını planlayın
 
@@ -72,7 +72,7 @@ Bu projeye başlamadan önce aşağıdaki önkoşulları doldurun:
 
 Aşağıdaki tabloda, uygulamalar dağıtımı için anahtar kullanım durumları özetlenmektedir:
 
-| Alan| Açıklama |
+| Alan| Description |
 | - | - |
 | Access| Şirket ağı içindeki şirket ve kişisel cihazlardan uygulama portalından erişilebilir. |
 |Access | Uygulama portalından şirket ağı dışındaki şirket aygıtlarından erişilebilir. |
@@ -97,7 +97,7 @@ Uygulamalarımın işlevselliği, yavaş şekilde etkinleştirilebilir. Aşağı
 1. Uygulamalarım
    * Uygulama başlatıcısı
    * Self Servis uygulama yönetimi
-   * Microsoft 365 tümleştirme
+   * Microsoft 365 tümleştirmesi
 
 1. Self Servis uygulama bulma
    * Self servis parola sıfırlama
@@ -122,11 +122,11 @@ Aşağıdaki tabloda birçok önemli uygulama yapılandırması ve kullanabilece
 | Pilot gruplarını belirleme| Kullanılacak Azure AD güvenlik grubunu ve tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Üretime etkinleştirilecek grup veya grupları belirleme.| Kullanılacak Azure AD güvenlik gruplarını veya Azure AD ile eşitlenen Active Directory gruplarını belirler. Tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Kullanıcıların SSO 'yu belirli türlerde uygulamalara kullanmasına izin ver| Federasyon SSO, OAuth, parola SSO, uygulama proxy 'Si |
-| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Evet |
-| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Evet |
+| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Yes |
+| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Yes |
 | Kullanıcıların belirli Grup türleri için Self Servis Grup yönetimini kullanmasına izin ver| Güvenlik grupları, Microsoft 365 grupları |
-| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Evet |
-| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Evet |
+| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Yes |
+| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Yes |
 
 ### <a name="plan-consent-strategy"></a>Onay stratejisini planlayın
 
@@ -225,7 +225,7 @@ Onay iş akışları, uygulamalara erişim için açık onay için kullanılabil
 
 Kullanıcıların Azure AD 'de kendi güvenlik gruplarını veya Microsoft 365 gruplarını oluşturmasını ve yönetmesini sağlayabilirsiniz. Grubun sahibi, üyelik isteklerini onaylayabilir veya reddedebilir ve grup üyeliği denetimini devredebilir. Self Servis Grup yönetimi özellikleri posta etkin güvenlik grupları veya dağıtım listeleri için kullanılamaz.
 
-Self Servis Grup üyeliğini planlamak için, kuruluşunuzdaki tüm kullanıcıların grup oluşturma ve yönetme izni mi yoksa yalnızca bir kullanıcı alt kümesi mi olacağını saptayın. Kullanıcıların bir alt kümesine izin verirseniz, bu kişilerin eklendiği bir grup ayarlamanız gerekir. Bu senaryoları etkinleştirme hakkında daha fazla bilgi için, bkz. [Azure Active Directory self servis grup yönetimini ayarlama](../users-groups-roles/groups-self-service-management.md) .
+Self Servis Grup üyeliğini planlamak için, kuruluşunuzdaki tüm kullanıcıların grup oluşturma ve yönetme izni mi yoksa yalnızca bir kullanıcı alt kümesi mi olacağını saptayın. Kullanıcıların bir alt kümesine izin verirseniz, bu kişilerin eklendiği bir grup ayarlamanız gerekir. Bu senaryoları etkinleştirme hakkında daha fazla bilgi için, bkz. [Azure Active Directory self servis grup yönetimini ayarlama](../enterprise-users/groups-self-service-management.md) .
 
 ## <a name="plan-reporting-and-auditing"></a>Raporlama ve denetim planlaması
 
@@ -299,7 +299,7 @@ Dağıtımınız planlanmazsa ne yapılacağını planlamanız önemlidir. Dağ�
 
 ## <a name="manage-your-implementation"></a>Uygulamanızı yönetme
 
-Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az ayrıcalıklı rolü kullanın. [Kullanılabilir farklı rolleri gözden geçirin](../users-groups-roles/directory-assign-admin-roles.md) ve bu uygulamaya yönelik her kişi için ihtiyaçlarınızı çözümlemek üzere doğru olanı seçin. Dağıtım tamamlandıktan sonra bazı rollerin geçici olarak uygulanması ve kaldırılması gerekebilir.
+Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az ayrıcalıklı rolü kullanın. [Kullanılabilir farklı rolleri gözden geçirin](../roles/permissions-reference.md) ve bu uygulamaya yönelik her kişi için ihtiyaçlarınızı çözümlemek üzere doğru olanı seçin. Dağıtım tamamlandıktan sonra bazı rollerin geçici olarak uygulanması ve kaldırılması gerekebilir.
 
 | Kişilikler| Roller| Azure AD rolü  |
 | - | -| -|

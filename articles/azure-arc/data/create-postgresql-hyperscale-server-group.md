@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317353"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364431"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubu oluşturma
 
@@ -130,7 +130,7 @@ azdata arc postgres endpoint list -n <server group name>
 ]
 ```
 
-PostgreSQL örnek uç noktasını, en sevdiğiniz araçtan PostgreSQL hiper ölçek sunucu grubuna bağlanmak için kullanabilirsiniz:  [Azure Data Studio](https://aka.ms/getazuredatastudio), [pgclı](https://www.pgcli.com/) psql, pgAdmin, vb.
+PostgreSQL örnek uç noktasını, en sevdiğiniz araçtan PostgreSQL hiper ölçek sunucu grubuna bağlanmak için kullanabilirsiniz:  [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), [pgclı](https://www.pgcli.com/) psql, pgAdmin, vb.
 
 Test etmek için bir Azure VM kullanıyorsanız, aşağıdaki yönergeleri izleyin:
 
@@ -138,7 +138,7 @@ Test etmek için bir Azure VM kullanıyorsanız, aşağıdaki yönergeleri izley
 
 Bir Azure sanal makinesi kullanırken, uç nokta IP adresi _genel_ IP adresini göstermez. Genel IP adresini bulmak için aşağıdaki komutu kullanın:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -148,7 +148,7 @@ Ayrıca, PostgreSQL hiper ölçek sunucu grubunun bağlantı noktasını ağ gü
 
 Bir kural ayarlamak için NSG 'nizin adını bilmeniz gerekir. Aşağıdaki komutu kullanarak NSG 'yi belirlersiniz:
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -156,7 +156,7 @@ NSG 'nin adını aldıktan sonra, aşağıdaki komutu kullanarak bir güvenlik d
 
 Aşağıdaki--Destination-Port-Ranges parametresinin değerini yukarıdaki ' azdata Arc Postgres Server List ' komutundan aldığınız bağlantı noktası numarasıyla değiştirin.
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
@@ -169,7 +169,7 @@ Azure Data Studio açın ve yukarıdaki dış uç nokta IP adresini ve bağlant�
 
 Azure VM kullanıyorsanız, şu komutla erişilebilen _genel_ IP adresine ihtiyacınız olacağını unutmayın:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 

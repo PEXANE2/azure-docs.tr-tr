@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81732611"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149144"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C için Azure IoT cihaz SDK 'Sı – IoTHubClient hakkında daha fazla bilgi
 
@@ -28,7 +28,7 @@ Makale, cihaz kimlik bilgileri hakkında daha fazla konu ve yapılandırma seçe
 
 Bu konuları açıklamak için **Iothubclient** SDK örnekleri kullanacağız. Birlikte izlemek isterseniz, C için Azure IoT cihaz SDK 'sına dahil edilen **ıothub \_ istemci \_ örnek \_ http** ve **ıothub \_ Client \_ Sample \_ AMQP** uygulamalarına bakın. aşağıdaki bölümlerde açıklanan her şey bu örneklerde gösterilmiştir.
 
-C GitHub deposu [**Için Azure IoT CIHAZ SDK**](https://github.com/Azure/azure-iot-sdk-c) 'sını bulabilir ve [c API başvurusunda](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)API 'nin ayrıntılarını görüntüleyebilirsiniz.
+C GitHub deposu [**Için Azure IoT CIHAZ SDK**](https://github.com/Azure/azure-iot-sdk-c) 'sını bulabilir ve [c API başvurusunda](/azure/iot-hub/iot-c-sdk-ref/)API 'nin ayrıntılarını görüntüleyebilirsiniz.
 
 ## <a name="the-lower-level-apis"></a>Alt düzey API 'Ler
 
@@ -157,7 +157,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 **Iothubmessage \_ özelliklerini** çağırarak ve İletimizin tanıtıcısını geçirerek başladık. Geri aldığımız özellikler ekleme işlemi başlatmamızı sağlayan bir **harita \_ tanıtıcı** başvurusu. İkincisi, harita tanıtıcısı, özellik adı ve özellik değeri için bir başvuru alan **Map \_ AddOrUpdate**çağırarak gerçekleştirilir \_ . Bu API ile, beğendiğimiz kadar çok özellik ekleyebiliriz.
 
-Olay **Event Hubs**okunabilirse alıcı, özellikleri numaralandıralıp bunlara karşılık gelen değerleri alabilir. Örneğin, .NET ' te [EventData nesnesindeki özellikler koleksiyonuna](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx)erişerek bu durum gerçekleştirilir.
+Olay **Event Hubs**okunabilirse alıcı, özellikleri numaralandıralıp bunlara karşılık gelen değerleri alabilir. Örneğin, .NET ' te [EventData nesnesindeki özellikler koleksiyonuna](/dotnet/api/microsoft.servicebus.messaging.eventdata)erişerek bu durum gerçekleştirilir.
 
 Önceki örnekte, IoT Hub gönderdiğimiz bir olaya özellikler ekledik. Özellikler, IoT Hub alınan iletilere de eklenebilir. Bir iletiden Özellikler almak istiyoruz, ileti geri arama işlevimizde aşağıdakiler gibi bir kod kullanabiliriz:
 
@@ -277,4 +277,4 @@ Bu makalede, **C Için Azure IoT cihaz SDK 'sında**bulunan **Iothubclient** kit
 
 IoT Hub için geliştirme hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 
-IoT Hub yeteneklerini daha fazla incelemek için bkz. [Azure IoT Edge ile uç CIHAZLARA AI dağıtma](../iot-edge/tutorial-simulate-device-linux.md).
+IoT Hub yeteneklerini daha fazla incelemek için bkz. [Azure IoT Edge ile uç CIHAZLARA AI dağıtma](../iot-edge/quickstart-linux.md).

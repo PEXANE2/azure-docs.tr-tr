@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946238"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371078"
 ---
 # <a name="monitor-identity-and-access"></a>Kimlik ve erişimi izleme
 
@@ -30,7 +30,7 @@ Kimlik ile ilgili etkinlikleri ve yapılandırma ayarlarını izleyerek, bir ola
 
 Azure Güvenlik Merkezi, kuruluşunuzun kimlik ve güvenlik gereksinimlerini karşıladığınızı sağlamaya yönelik iki adanmış güvenlik denetimine sahiptir: 
 
- - **Erişimi ve Izinleri yönetme** - [en az ayrıcalık erişim modelini](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) benimsemenizi ve kullanıcılarınıza yalnızca onların işlerini yapması için gereken erişimi vermenizi öneririz. Bu denetim Ayrıca kaynaklarınıza erişimi denetlemek için [rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md) uygulamaya yönelik öneriler içerir.
+ - **Erişimi ve Izinleri yönetme** - [en az ayrıcalık erişim modelini](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) benimsemenizi ve kullanıcılarınıza yalnızca onların işlerini yapması için gereken erişimi vermenizi öneririz. Bu denetim Ayrıca kaynaklarınıza erişimi denetlemek için [rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md) uygulamaya yönelik öneriler içerir.
  
  - **MFA 'Yı etkinleştirme** - [MFA](https://www.microsoft.com/security/business/identity/mfa) etkinken hesaplarınız daha güvenlidir ve kullanıcılar, tek oturum açma ile neredeyse her uygulama için kimlik doğrulaması yapabilir.
 
@@ -56,7 +56,7 @@ Güvenlik Merkezi 'nin kimlik ve erişim korumalarının bazı sınırlamaları 
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-Factor Authentication (MFA) ve Azure Active Directory 
 
-MFA 'nın etkinleştirilmesi [Azure Active Directory (ad) kiracı izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)gerektirir.
+MFA 'nın etkinleştirilmesi [Azure Active Directory (ad) kiracı izinleri](../active-directory/roles/permissions-reference.md)gerektirir.
 
 - AD 'nin Premium bir sürümüne sahipseniz, [koşullu erişim](../active-directory/conditional-access/concept-conditional-access-policy-common.md)kullanarak MFA 'yı etkinleştirin.
 - AD ücretsiz sürüm kullanıyorsanız, [Azure Active Directory belgelerinde](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)açıklandığı şekilde **güvenlik varsayılanlarını** etkinleştirin.
@@ -84,7 +84,7 @@ Hangi hesapların MFA 'nın etkin olduğunu görmek için aşağıdaki Azure Kay
     > Hesaplar hesap sahiplerinin gizliliğini korumak için hesap adları yerine nesne kimlikleri olarak gösterilir.
 
 > [!TIP]
-> Alternatif olarak, güvenlik merkezi 'nin REST API yöntemi [değerlendirmesi-al](https://docs.microsoft.com/rest/api/securitycenter/assessments/get)kullanabilirsiniz.
+> Alternatif olarak, güvenlik merkezi 'nin REST API yöntemi [değerlendirmesi-al](/rest/api/securitycenter/assessments/get)kullanabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

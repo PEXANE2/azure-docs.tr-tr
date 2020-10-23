@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563356"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173677"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesinde özel etki alanı ayarlama
 
@@ -29,11 +29,11 @@ Etki alanı adlarını yapılandırırken, "A" kayıtları, kök etki alanların
 
 Bir uygulama için kullanılabilir birkaç farklı DNS yapılandırması türü vardır.
 
-| İsterseniz                                 | Ardından                                                |
-| -----------------------------------------------| --------------------------------------------------- |
-| Destek `www.example.com` veya `blog.example.net`| [CNAME kaydını eşleme](#map-a-cname-record)           |
-| Support `example.com`                          | [Kök etki alanı yapılandırma](#configure-a-root-domain) |
-| Tüm alt etki alanlarını işaret edin `www.example.com`      | [Joker karakterle eşleme](#map-a-wildcard-domain)            |
+| İsterseniz | Ardından |
+|--|--|
+| Destek `www.example.com` veya `blog.example.net` | [CNAME kaydını eşleme](#map-a-cname-record) |
+| Support `example.com` | [Kök etki alanı yapılandırma](#configure-a-root-domain) |
+| Tüm alt etki alanlarını işaret edin `www.example.com` | [Joker karakterle eşleme](#map-a-wildcard-domain) |
 
 ## <a name="map-a-cname-record"></a>CNAME kaydını eşleme
 
@@ -46,6 +46,8 @@ Bir CNAME kaydı bir etki alanını diğerine eşler. CNAME kaydını, `www.exam
 1. _Statik Web Apps_ sayfasında uygulamanızın adını seçin.
 
 1. Menüdeki **özel etki alanları** ' na tıklayın.
+
+1. **Ekle** düğmesine tıklayın
 
 1. _Özel etki alanları_ penceresinde, **değer** alanına URL 'yi kopyalayın.
 

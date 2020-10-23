@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893365"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203203"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
@@ -28,12 +28,12 @@ Azure App Service kapsayıcı iş akışı için, dosyanın üç bölümü vard�
 |**Derleme** | 1. ortamı oluşturun. <br /> 2. kapsayıcı görüntüsünü oluşturun. |
 |**Dağıtma** | 1. kapsayıcı görüntüsünü dağıtın. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
 - Kapsayıcılar için çalışan bir kapsayıcı kayıt defteri ve Azure App Service uygulaması. Bu örnek Azure Container Registry kullanır. 
-    - [Docker kullanarak Kapsayıcılı Node.js bir uygulama oluşturmayı, kapsayıcı görüntüsünü bir kayıt defterine göndermeyi ve sonra da görüntüyü dağıtmayı öğrenin Azure App Service](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)
+    - [Docker kullanarak Kapsayıcılı Node.js bir uygulama oluşturmayı, kapsayıcı görüntüsünü bir kayıt defterine göndermeyi ve sonra da görüntüyü dağıtmayı öğrenin Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
 
 ## <a name="generate-deployment-credentials"></a>Dağıtım kimlik bilgileri oluştur
 
@@ -190,15 +190,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>App Service kapsayıcısına dağıtma
 
-Görüntünüzü App Service özel bir kapsayıcıya dağıtmak için `azure/webapps-deploy@v2` eylemini kullanın. Bu eylem beş parametreye sahiptir:
+Görüntünüzü App Service özel bir kapsayıcıya dağıtmak için `azure/webapps-deploy@v2` eylemini kullanın. Bu eylem yedi parametreye sahiptir:
 
 | **Parametre**  | **Açıklama**  |
 |---------|---------|
 | **uygulama adı** | Istenir App Service uygulamasının adı | 
-| **Yayımlama profili** | Seçim Web Dağıtımı gizli dizileri ile profil dosyası içeriğini yayımlama |
-| **yansımasını** | Tam kapsayıcı görüntüsü adı. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok Kapsayıcılı senaryo için birden çok kapsayıcı görüntüsü adı sağlanıyor (çok satırlı ayrılmış) |
+| **Yayımlama profili** | Seçim Web Apps (Windows ve Linux) ve Web uygulaması kapsayıcıları (Linux) için geçerlidir. Çoklu kapsayıcı senaryosu desteklenmiyor. \*Web dağıtımı gizli dizileri ile profil (. publishsettings) dosya içeriğini yayımlama | 
 | **yuva adı** | Seçim Üretim yuvası dışında mevcut bir yuva girin |
-| **yapılandırma-dosya** | Seçim Docker-Compose dosyasının yolu |
+| **leyebilir** | Seçim Yalnızca Web uygulaması için geçerlidir: paket veya klasör yolu. \*. zip, \* . war, \* . jar veya dağıtılacak bir klasör |
+| **yansımasını** | Istenir Yalnızca Web uygulaması kapsayıcıları için geçerlidir: tamamen nitelenmiş kapsayıcı görüntüsü adını belirtin. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok kapsayıcılı bir uygulama için birden çok kapsayıcı görüntüsü adı sağlanmış olabilir (çok satırlı ayrılmış) |
+| **yapılandırma-dosya** | Seçim Yalnızca Web uygulaması kapsayıcıları için geçerlidir: Docker-Compose dosyanın yolu. Tam olarak nitelenmiş bir yol olmalıdır veya varsayılan çalışma dizinine göre değişir. Çok Kapsayıcılı uygulamalar için gereklidir. |
+| **başlangıç-komut** | Seçim Başlangıç komutunu girin. For ex. DotNet Run veya DotNet filename.dll |
 
 # <a name="publish-profile"></a>[Profili Yayımla](#tab/publish-profile)
 

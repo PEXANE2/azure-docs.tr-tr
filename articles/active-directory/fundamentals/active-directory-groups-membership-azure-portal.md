@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565473"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371809"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Azure Active Directory kullanarak başka bir gruptan grup ekleme veya kaldırma
 Bu makale, Azure Active Directory kullanarak bir grubu başka bir gruptan eklemenize ve kaldırmanıza yardımcı olur.
@@ -78,6 +78,6 @@ Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
 
 - [Grup ayarlarınızı düzenleme](active-directory-groups-settings-azure-portal.md)
 
-- [SaaS uygulamalarına erişimi yönetmek için grup kullanma](../users-groups-roles/groups-saasapps.md)
+- [SaaS uygulamalarına erişimi yönetmek için grup kullanma](../enterprise-users/groups-saasapps.md)
 
-- [Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)
+- [Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar](../enterprise-users/licensing-group-advanced.md#limitations-and-known-issues)

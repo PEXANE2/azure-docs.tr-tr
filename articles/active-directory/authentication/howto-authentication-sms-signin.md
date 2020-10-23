@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849057ab1ccde2e0771f0c1cd52ea399ffe4cea7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cdc0dea825cb32275a2ada3a49d7d622180aa468
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964698"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166649"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory kullanarak SMS tabanlı kimlik doğrulaması için kullanıcıları yapılandırma ve etkinleştirme (Önizleme)
 
@@ -96,13 +96,17 @@ SMS-Sign için bir telefon numarası ayarlandığında ayrıca [Azure Multi-Fact
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. Azure Active Directory penceresinin sol tarafındaki gezinti menüsünde **Kullanıcılar**' ı seçin.
 1. Önceki bölümde bulunan *contoso kullanıcısı*gibi SMS tabanlı kimlik doğrulaması için etkinleştirdiğiniz kullanıcıyı seçin ve ardından **kimlik doğrulama yöntemleri**' ni seçin.
-1. Ülke kodu da dahil olmak üzere kullanıcının telefon numarasını girin ( *+ 1 xxxxxxxxx*gibi). Azure portal telefon numarasının doğru biçimde olduğunu doğrular.
+1. **+ Kimlik doğrulama yöntemi ekle**' yi seçin ve ardından *Yöntem Seç* açılan menüsünde **telefon numarası**' nı seçin.
 
-    ![SMS tabanlı kimlik doğrulamasıyla kullanmak üzere Azure portal Kullanıcı için telefon numarası ayarlama](./media/howto-authentication-sms-signin/set-user-phone-number.png)
+    Ülke kodu da dahil olmak üzere kullanıcının telefon numarasını girin ( *+ 1 xxxxxxxxx*gibi). Azure portal telefon numarasının doğru biçimde olduğunu doğrular.
+
+    Ardından, *Telefon türü* açılan menüsünde, gereken şekilde *Mobil*, *alternatif mobil*veya *diğer diğer* ' i seçin.
+
+    :::image type="content" source="media/howto-authentication-sms-signin/set-user-phone-number.png" alt-text="SMS tabanlı kimlik doğrulamasıyla kullanmak üzere Azure portal Kullanıcı için telefon numarası ayarlama":::
 
     Telefon numarası kiracınızda benzersiz olmalıdır. Birden çok kullanıcı için aynı telefon numarasını kullanmayı denerseniz, bir hata iletisi gösterilir.
 
-1. Telefon numarasını bir kullanıcının hesabına uygulamak için **Kaydet**' i seçin.
+1. Telefon numarasını bir kullanıcının hesabına uygulamak için, **Ekle**' yi seçin.
 
 Başarılı bir şekilde sağlandığında, *SMS oturum açma özelliğinin etkin olduğu*bir onay işareti görünür.
 

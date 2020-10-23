@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f2046614f3665a699d02c76210676fb32f99fc73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288928"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279077"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>SYNAPSE SQL 'de saklı yordamları kullanma
 
-Çözümleri geliştirmek için SYNAPSE SQL havuzunda (veri ambarı) saklı yordamları uygulamaya yönelik ipuçları.
+Çözüm geliştirmek için SYNAPSE SQL havuzunda saklı yordamları uygulamaya yönelik ipuçları.
 
 ## <a name="what-to-expect"></a>Beklentiler
 
@@ -181,7 +181,7 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-SYNAPSE SQL, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Kullanabileceğiniz alternatif bir yaklaşım vardır. Bir örnek için [geçici tablolardaki](develop-tables-temporary.md)makaleye bakın.
+SYNAPSE SQL, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Kullanabileceğiniz alternatif bir yaklaşım vardır. Örnek için, sağlanan SYNAPSE SQL havuzu için [geçici tablolarda](develop-tables-temporary.md) bulunan makaleye bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
 

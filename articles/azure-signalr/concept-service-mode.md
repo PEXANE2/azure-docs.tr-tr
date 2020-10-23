@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
-ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514908"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143253"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Azure SignalR hizmetinde hizmet modu
 
@@ -51,11 +51,11 @@ Ayrıca, bu modda sunucu bağlantısı yoktur (sunucu bağlantısı kurmak için
 > [!NOTE]
 > SignalR hizmeti [Yönetim SDK 'sında](https://github.com/Azure/azure-signalr/blob/dev/docs/management-sdk-guide.md)hem REST API hem de WebSocket yöntemi desteklenir. .NET dışında bir dil kullanıyorsanız, bu [belirtimi](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)takıp eden REST API 'leri el ile de çağırabilirsiniz.
 >
-> Azure Işlevleri 'ni kullanıyorsanız, iletileri çıkış bağlaması olarak göndermek için [Azure işlevleri Için SignalR hizmeti bağlamalarını](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service) (Bu işlev bağlamayı çağırdı) kullanabilirsiniz.
+> Azure Işlevleri 'ni kullanıyorsanız, iletileri çıkış bağlaması olarak göndermek için [Azure işlevleri Için SignalR hizmeti bağlamalarını](../azure-functions/functions-bindings-signalr-service.md) (Bu işlev bağlamayı çağırdı) kullanabilirsiniz.
 
 Sunucu uygulamanızın istemcilerden ileti ve bağlantı olayları alması de mümkündür. Hizmet, Web kancaları kullanılarak önceden yapılandırılmış uç noktalara iletiler ve bağlantı olayları (yukarı akış olarak adlandırılır) sağlar. Varsayılan moda kıyasla, düşme garantisi yoktur ve HTTP istekleri WebSocket bağlantılarından daha az verimli olabilir.
 
-Yukarı akışı yapılandırma hakkında daha fazla bilgi için bu [belgeye](https://docs.microsoft.com/azure/azure-signalr/concept-upstream)bakın.
+Yukarı akışı yapılandırma hakkında daha fazla bilgi için bu [belgeye](./concept-upstream.md)bakın.
 
 Sunucusuz modunun nasıl çalıştığını gösteren bir diyagram aşağıda verilmiştir:
 

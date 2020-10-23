@@ -4,24 +4,24 @@ titleSuffix: Azure App Configuration
 description: Azure Resource Manager şablonu (ARM şablonu) kullanarak bir Azure uygulama yapılandırma deposu oluşturmayı öğrenin.
 author: ZhijunZhao
 ms.author: zhijzhao
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824181"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148997"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure uygulama yapılandırma deposu oluşturma
 
 Bu hızlı başlangıçta nasıl yapılacağı açıklanmaktadır:
 
-- ARM şablonunu kullanarak bir uygulama yapılandırma deposu dağıtma
-- ARM şablonunu kullanarak uygulama yapılandırma deposunda anahtar değerleri oluşturma
-- ARM şablonundan uygulama yapılandırma deposundaki anahtar değerlerini okuma
+- Azure Resource Manager şablonu kullanarak bir uygulama yapılandırma deposu dağıtın (ARM şablonu).
+- ARM şablonunu kullanarak bir uygulama yapılandırma deposunda anahtar değerleri oluşturma.
+- ARM şablonundan uygulama yapılandırma deposundaki anahtar değerlerini okuyun.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,14 +35,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/) alınmıştır. İçinde iki anahtar değeri olan yeni bir uygulama yapılandırma deposu oluşturur. Ardından, `reference` iki anahtar-değer kaynağı değerlerini çıkarmak için işlevini kullanır. Anahtarın değerini bu şekilde okumak, şablonun şablondaki diğer yerlerde kullanılmasına izin verir.
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/) alınmıştır. İçinde iki anahtar değeri olan yeni bir uygulama yapılandırma deposu oluşturur. Ardından, `reference` iki anahtar-değer kaynağı değerlerini çıkarmak için işlevini kullanır. Anahtarın değerini bu şekilde okumak, şablonun şablondaki diğer yerlerde kullanılmasına izin verir.
 
 Hızlı başlangıç, `copy` anahtar-değer kaynağının birden çok örneğini oluşturmak için öğesini kullanır. Öğesi hakkında daha fazla bilgi edinmek için `copy` bkz. [ARM şablonlarındaki kaynak yinelemesi](../azure-resource-manager/templates/copy-resources.md).
 
 > [!IMPORTANT]
 > Bu şablon, uygulama yapılandırma kaynak sağlayıcısı sürümü `2020-07-01-preview` veya üzerini gerektirir. Bu sürüm, `reference` anahtar değerlerini okumak için işlevini kullanır. `listKeyValue`Önceki sürümdeki anahtar değerlerini okumak için kullanılan işlev sürümden itibaren kullanılamıyor `2020-07-01-preview` .
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
@@ -83,10 +83,10 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure portalda](https://portal.azure.com) oturum açma
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure portal arama kutusuna **uygulama yapılandırması**yazın. Listeden **uygulama yapılandırması** ' nı seçin.
 1. Yeni oluşturulan uygulama yapılandırma kaynağını seçin.
-1. **İşlemler**altında **yapılandırma Gezgini** ' ne tıklayın.
+1. **İşlemler**altında **yapılandırma Gezgini**' ne tıklayın.
 1. İki anahtar değerinin mevcut olduğunu doğrulayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

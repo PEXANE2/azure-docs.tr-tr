@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e87331cb2bbfb11a9d49888462b8be3b55e18118
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531199"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460878"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -23,7 +23,37 @@ Bu adımlardan hiçbiri sizin için çalışmazsa, aşağıdaki destek kanallar�
 * Azure destek sözleşmeleri olan müşteriler [Azure Portal](https://manage.windowsazure.com/?getsupport=true)bir destek talebi açabilir.
 * OMI sorunlarını, [OMI sorun giderme kılavuzuyla](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)tanılayın.
 * Bir [GitHub sorunu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)dosyası.
-* Gönderilen fikirleri ve hataları gözden geçirmek [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) veya yeni bir dosya göndermek için Log Analytics geri bildirim sayfasını ziyaret edin.  
+* Gönderilen fikirleri ve hataları gözden geçirmek [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) veya yeni bir dosya göndermek için Log Analytics geri bildirim sayfasını ziyaret edin. 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics sorun giderme aracı
+
+Log Analytics Agent Linux sorun giderme aracı, Log Analytics aracısındaki sorunları bulmaya ve tanılamaya yardımcı olmak için tasarlanmış bir betiktir. Yükleme sonrasında aracıya otomatik olarak eklenir. Aracın çalıştırılması, bir sorunu tanılamada ilk adım olmalıdır.
+
+### <a name="how-to-use"></a>Nasıl kullanılır
+Sorun giderme aracı, aşağıdaki komutu Log Analytics aracısına sahip bir makinedeki bir Terminal penceresine yapıştırarak çalıştırılabilir: `sudo /opt/microsoft/omsagent/bin/troubleshooter`
+
+### <a name="manual-installation"></a>El ile Yükleme
+Sorun giderme aracı, Log Analytics aracısının yüklenmesi üzerine otomatik olarak eklenir. Ancak, yükleme herhangi bir şekilde başarısız olursa, aşağıdaki adımları izleyerek el ile de yüklenebilirler.
+
+1. Sorun giderici paketini makinenize kopyalayın: `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+2. Paketin paketini açın: `tar -xzvf omsagent_tst.tar.gz`
+3. El ile yüklemeyi çalıştırın: `sudo ./install_tst`
+
+### <a name="scenarios-covered"></a>Kapsanan senaryolar
+Sorun giderme aracı tarafından denetlenen senaryoların listesi aşağıda verilmiştir:
+
+1. Aracı sağlıksız, sinyal düzgün çalışmıyor
+2. Aracı başlamıyor, log analitik hizmetlerine bağlanılamıyor
+3. Aracı Syslog çalışmıyor
+4. Aracıda yüksek CPU/bellek kullanımı vardır
+5. Yükleme sorunları olan aracı
+6. Aracı özel günlükleri çalışmıyor
+7. Aracı günlüklerini topla
+
+Daha fazla ayrıntı için lütfen [GitHub belgelerimize](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)göz atın.
+
+ >[!NOTE]
+ >Lütfen bir sorunla karşılaştığınızda günlük Toplayıcı aracını çalıştırın. Günlüklerin başlangıçta bulunması, destek ekibimizin sorununuzu daha hızlı gidermelerine büyük ölçüde yardımcı olur.
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Önemli günlük konumları ve günlük Toplayıcı aracı
 

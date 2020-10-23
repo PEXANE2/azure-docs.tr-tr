@@ -24,26 +24,14 @@
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: Azure Bot Hizmeti ile SSS Botu oluşturma
       href: Tutorials/create-faq-bot-with-azure-bot-service.md
-    - name: Toplu iş dosyasıyla test etme
-      href: Quickstarts/batch-testing.md
 - name: Kavramlar
   items:
     - name: Bilgi bankanızı planlama
       href: Concepts/plan.md
     - name: Soru-Cevap Oluşturma kaynaklarını planlama
       href: Concepts/azure-resources.md
-    - name: Bilgi bankası tasarlama
-      items:
-        - name: Diller için
-          href: Concepts/design-language-culture.md
-        - name: İstemci uygulamaları için
-          href: Concepts/integration-with-other-applications.md
     - name: Veri kaynakları ve içerik
-      items:
-        - name: Veri kaynaklarından içeri aktarma
-          href: Concepts/knowledge-base.md
-        - name: İçerik türlerini içeri aktarma
-          href: Concepts/content-types.md
+      href: Concepts/data-sources-and-content.md
     - name: Derecelendirici İşlemi
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -58,22 +46,14 @@
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure kaynaklarını yönetme
-      items:
-        - name: Kaynakları yönetme
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: İşbirliği yapma
-          href: How-To/collaborate-knowledge-base.md
-        - name: Etkin öğrenmeyi açma
-          href: How-To/use-active-learning.md
-        - name: Varsayılan yanıtı değiştirme
-          href: How-To/change-default-answer.md
+      href: How-To/set-up-qnamaker-service-azure.md
+      displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Soru-Cevap Oluşturma Uygulamasını yönetme
+      href: How-To/manage-qna-maker-app.md
     - name: Bilgi bankasını yönetme
       items:
         - name: Bilgi bankası oluşturma
           href: How-To/manage-knowledge-bases.md
-        - name: Dil seçimi
-          href: How-To/language-knowledge-base.md
         - name: Sohbet ekleme
           href: How-to/chit-chat-knowledge-base.md
         - name: Yeni bilgi bankasına geçiş
@@ -102,7 +82,7 @@
       href: Overview/language-support.md
     - name: Sınırlar
       href: limits.md
-    - name: Rol tabanlı erişim denetimi (RBAC)
+    - name: Azure rol tabanlı erişim denetimi (Azure RBAC)
       href: Concepts/role-based-access-control.md
     - name: Etkin öğrenme
       href: Concepts/active-learning-suggestions.md
@@ -115,6 +95,8 @@
     - name: Güvenli SharePoint dosyaları ekleme
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: Varsayılan yanıtı değiştirme
+      href: How-To/change-default-answer.md
     - name: Hizmet yapılandırması
       href: reference-app-service.md
     - name: İçerik ve veri biçimleri
@@ -181,6 +163,8 @@
               href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
 - name: Kaynaklar
   items:
+    - name: Destek ve yardım seçenekleri
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Bölgesel Kullanılabilirlik
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Uyumluluk
@@ -189,10 +173,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fiyatlandırma ve limitler
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
     - name: Arama
       href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
     - name: Blog

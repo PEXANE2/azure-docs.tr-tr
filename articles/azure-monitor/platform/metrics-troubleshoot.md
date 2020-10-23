@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a9286ff15834fafe4a69907836ce1abd17abca6
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440686"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168078"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Ölçüm grafikleriyle ilgili sorunları giderme
 
@@ -79,16 +79,16 @@ Panonuz daha sonra kullanım dışı bırakılan ve Azure'dan kaldırılan bir �
 ## <a name="chart-shows-dashed-line"></a>Grafik kesikli çizgiyi gösterir
 
 Azure ölçüm grafikleri, iki bilinen zaman çizgisi veri noktası arasında eksik bir değer ("null değer" olarak da bilinir) olduğunu göstermek için kesikli çizgi stilini kullanır. Örneğin, "1 dakikalık" zaman ayrıntı düzeyi olarak seçtiğiniz zaman seçici, ancak ölçüm 07:26, 07:27, 07:29 ve 07:30 (ikinci ve üçüncü veri noktaları arasında bir dakika boşluğu) ile bildirilmişse, kesikli bir çizgi, 07:27 ve 07:29 bağlanır ve düz bir çizgi diğer tüm veri noktalarını birbirine bağlayacaktır. Ölçüm **sayı** ve **Toplam** toplama kullandığında kesikli çizgi sıfıra düşer. **Ortalama**, **En düşük** veya **en büyük** toplamalar için, kesikli çizgi en yakın bilinen iki veri noktasını bağlar. Ayrıca grafiğin en sağ veya en sol ucunda veri eksik olduğunda, kesikli çizgi eksik veri noktasının yönünde genişletilir.
-  ![ölçüm resmi](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+  ![Grafiğin sağ veya sol tarafında verilerin eksik olduğunu gösteren ekran görüntüsü, kesikli çizgi, eksik veri noktasının yönüne genişletilir.](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
 
-**Çözüm:** Bu davranış tasarıma göre yapılır. Eksik veri noktalarını belirlemek için kullanışlıdır. Çizgi grafik, yüksek yoğunluklu ölçümlerin eğilimlerini görselleştirmeye yönelik bir üst seçimdir, ancak özellikle de zaman dilimi ile birlikte bulunan değerler önemli olduğunda, seyrek değerlerle ölçümleri yorumlamak zor olabilir. Kesikli çizgi bu grafiklerin okunmasını kolaylaştırabilir ama grafiğiniz yine de belirsiz görünüyorsa ölçümlerinizi farklı bir grafik türünde görüntülemeyi göz önünde bulundurun. Örneğin, aynı ölçüm için dağınık bir çizim grafiği, yalnızca bir değer olduğunda bir noktayı görselleştirerek ve değer eksik olduğunda veri noktasını tamamen atlayarak her zaman Grey gösterir: ![ ölçüm resmi](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Çözüm:** Bu davranış tasarıma göre yapılır. Eksik veri noktalarını belirlemek için kullanışlıdır. Çizgi grafik, yüksek yoğunluklu ölçümlerin eğilimlerini görselleştirmeye yönelik bir üst seçimdir, ancak özellikle de zaman dilimi ile birlikte bulunan değerler önemli olduğunda, seyrek değerlerle ölçümleri yorumlamak zor olabilir. Kesikli çizgi bu grafiklerin okunmasını kolaylaştırabilir ama grafiğiniz yine de belirsiz görünüyorsa ölçümlerinizi farklı bir grafik türünde görüntülemeyi göz önünde bulundurun. Örneğin, aynı ölçüm için dağınık bir çizim grafiği, yalnızca bir değer olduğunda bir noktayı görselleştirerek ve değer eksik olduğunda veri noktasını tamamen atlayarak her seferinde her zaman Grey gösterir: ![ dağılım grafiği menü seçeneğini vurgulayan ekran görüntüsü.](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
 
    > [!NOTE]
    > Ölçümünüz için yine de çizgi grafiği tercih ediyorsanız, fareyi grafiğin üzerinde hareket ettirmek zaman dilimini değerlendirmenize yardımcı olabilir çünkü fare işaretçisinin bulunduğu konumdaki veri noktası vurgulanır.
 
 ## <a name="chart-shows-unexpected-drop-in-values"></a>Grafik, beklenmeyen değerleri gösterir
 
-Çoğu durumda ölçüm değerlerinde algılanan düşüş grafikte gösterilen verilerin yanlış anlaşılmasından kaynaklanır. Son ölçüm verileri Azure tarafından henüz alınmadığı veya işlenmediği için grafikte en yakın dakikalar gösterildiğinde toplamlardaki veya sayılardaki bir düşüş sizi yanıltabilir. Hizmete bağlı olarak ölçümlerin işlenmesindeki gecikme süresi birkaç dakikalık bir süre olabilir. 1 veya 5 dakikalık ayrıntı düzeyi içeren son zaman aralığını gösteren grafiklerde, son birkaç dakika içinde değerin bir tanesi daha belirgin hale gelir: ![ ölçüm resmi](./media/metrics-troubleshoot/drop-in-values.png)
+Çoğu durumda ölçüm değerlerinde algılanan düşüş grafikte gösterilen verilerin yanlış anlaşılmasından kaynaklanır. Son ölçüm verileri Azure tarafından henüz alınmadığı veya işlenmediği için grafikte en yakın dakikalar gösterildiğinde toplamlardaki veya sayılardaki bir düşüş sizi yanıltabilir. Hizmete bağlı olarak ölçümlerin işlenmesindeki gecikme süresi birkaç dakikalık bir süre olabilir. 1 veya 5 dakikalık ayrıntı düzeyi içeren son zaman aralığını gösteren grafiklerde, son birkaç dakika içinde değerin bir tanesi daha belirgin hale gelir: ![ son birkaç dakika içinde değerin bir bölümünü gösteren ekran görüntüsü.](./media/metrics-troubleshoot/drop-in-values.png)
 
 **Çözüm:** Bu davranış tasarıma göre yapılır. Veriler *kısmi* veya *eksik* bile olsa, verileri aldığımız anda göstermenin yararlı olduğuna inanıyoruz. Bu sayede önemli sonuçlara daha çabuk varabilir ve araştırmayı hemen başlatabilirsiniz. Örneğin, hata sayısını gösteren bir ölçüm için kısmı X değerinin gösterilmesi, belirli bir dakikada en az X hata olduğunu anlamanızı sağlar. Söz konusu dakikada gerçekleşen tam hata sayısını (üstelik bu sayı o kadar da önemli olmayabilir) görmek için beklemek yerine sorunu araştırmaya hemen başlayabilirsiniz. Veri kümesinin tamamını aldığımızda grafik güncelleştirilir ama o zaman da daha yakın dakikalarda elde edilen yeni eksik veri noktaları gösterilebilir.
 

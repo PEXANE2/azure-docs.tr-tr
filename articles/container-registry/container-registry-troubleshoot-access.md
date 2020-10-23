@@ -3,12 +3,12 @@ title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743378"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148463"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -103,7 +103,7 @@ Ağda Azure Güvenlik Duvarı veya benzer bir çözüm yapılandırılmışsa, b
 
 ### <a name="configure-service-access"></a>Hizmet erişimini yapılandırma
 
-Şu anda Azure Güvenlik Merkezi, Özel uç noktalara, seçili alt ağlara veya IP adreslerine erişimi kısıtlayan bir kayıt defterinde [görüntü güvenlik açığı taraması](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) gerçekleştiremez. Ayrıca, aşağıdaki hizmetlerin kaynakları ağ kısıtlamalarına sahip bir kapsayıcı kayıt defterine erişemez:
+Şu anda Azure Güvenlik Merkezi, Özel uç noktalara, seçili alt ağlara veya IP adreslerine erişimi kısıtlayan bir kayıt defterinde [görüntü güvenlik açığı taraması](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) gerçekleştiremez. Ayrıca, aşağıdaki hizmetlerin kaynakları ağ kısıtlamalarına sahip bir kapsayıcı kayıt defterine erişemez:
 
 * Azure DevOps Services 
 * Azure Container Instances
@@ -113,7 +113,7 @@ Bu Azure hizmetlerinin kapsayıcı kayıt defteriyle erişimi veya tümleştiril
 
 İlgili bağlantılar:
 
-* [Azure Container Registry resim taramasını Güvenlik Merkezi 'Ne göre](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry resim taramasını Güvenlik Merkezi 'Ne göre](../security-center/defender-for-container-registries-introduction.md)
 * [Geri bildirim](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are) sağlayın
 * [Genel IP ağ kurallarını yapılandırma](container-registry-access-selected-networks.md)
 * [Azure özel bağlantısını kullanarak bir Azure Container Registry 'ye özel olarak bağlanma](container-registry-private-link.md)
@@ -138,7 +138,5 @@ Sorununuzu burada çözemezseniz, aşağıdaki seçeneklere bakın.
   * [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md) 
   * [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
 * [Topluluk desteği](https://azure.microsoft.com/support/community/) seçenekleri
-* [Microsoft Soru-Cevap](https://docs.microsoft.com/answers/products/)
+* [Microsoft Soru-Cevap](/answers/products/)
 * [Destek bileti açma](https://azure.microsoft.com/support/create-ticket/)
-
-

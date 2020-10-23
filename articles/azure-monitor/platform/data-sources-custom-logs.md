@@ -1,21 +1,24 @@
 ---
-title: Azure Izleyici 'de özel Günlükler toplayın | Microsoft Docs
+title: Azure Izleyici 'de Log Analytics Aracısı ile özel Günlükler toplama
 description: Azure Izleyici, hem Windows hem de Linux bilgisayarlardaki metin dosyalarından olayları toplayabilir.  Bu makalede, Azure Izleyici 'de oluşturdukları kayıtların yeni bir özel günlüğü ve ayrıntılarının nasıl tanımlanacağı açıklanmaktadır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/26/2019
-ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269497"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461575"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Azure İzleyici'deki özel günlükler
+# <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics Aracısı ile özel Günlükler toplama
 
-Azure Izleyici 'deki özel Günlükler veri kaynağı, hem Windows hem de Linux bilgisayarlarındaki metin dosyalarından olayları toplamanıza olanak tanır. Birçok uygulama, Windows olay günlüğü veya Syslog gibi standart günlüğe kaydetme hizmetleri yerine metin dosyalarına bilgi kaydeder. Toplandıktan sonra, sorgulardaki tek tek alanlara verileri ayrıştırıp verileri toplama sırasında tek tek alanlara ayıklayabilirsiniz.
+Azure Izleyici 'de Log Analytics aracısına yönelik özel günlük veri kaynağı, hem Windows hem de Linux bilgisayarlarındaki metin dosyalarından olayları toplamanıza olanak tanır. Birçok uygulama, Windows olay günlüğü veya Syslog gibi standart günlüğe kaydetme hizmetleri yerine metin dosyalarına bilgi kaydeder. Toplandıktan sonra, sorgulardaki tek tek alanlara verileri ayrıştırıp verileri toplama sırasında tek tek alanlara ayıklayabilirsiniz.
+
+> [!IMPORTANT]
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](log-analytics-agent.md) özel günlüklerin toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
 
 ![Özel günlük koleksiyonu](media/data-sources-custom-logs/overview.png)
 
@@ -74,7 +77,7 @@ Aracıda özel günlüğü bulabilecekleri bir veya daha fazla yol tanımlamalı
 
 Aşağıdaki tabloda farklı günlük dosyaları belirtmek için geçerli desenlerin örnekleri verilmiştir.
 
-| Açıklama | Yol |
+| Description | Yol |
 |:--- |:--- |
 | *C:\logs* içindeki tüm dosyalar Windows aracısında. txt uzantısıyla |C:\Logs \\ \* . txt |
 | *C:\logs* içindeki tüm dosyalar, Windows aracısında log ve. txt uzantısıyla başlayan bir ada sahip. |C:\Logs\log \* . txt |

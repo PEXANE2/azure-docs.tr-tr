@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932456"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329585"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights ile olay Analizi ve görselleştirme
 
@@ -32,7 +32,7 @@ Application Insights, Service Fabric kullanılırken kullanıma hazır bir deney
 
 Yukarıdaki görüntüde sağ panelde, listede iki ana giriş türü vardır: istekler ve olaylar. İstekler bu durumda HTTP istekleri aracılığıyla uygulamanın API 'sine yapılan çağrılardır ve olaylar, kodunuzda herhangi bir yere ekleyebileceğiniz telemetri olarak davranan özel olaylardır. [Özel olaylar ve ölçümler için APPLICATION INSIGHTS API](../azure-monitor/app/api-custom-events-metrics.md)'de uygulamalarınızın gözden geçirebilirliğini inceleyebilirsiniz. Bir isteğe tıkladığınızda, Application Insights Service Fabric NuGet paketinde toplanan Service Fabric özgü veriler de dahil olmak üzere aşağıdaki görüntüde gösterildiği gibi daha fazla ayrıntı görüntülenir. Bu bilgi, sorun gidermede ve uygulamanızın durumunun ne olduğunu bilmekte yararlıdır ve bu bilgilerin tümü Application Insights içinde aranabilir.
 
-![Application Insights Isteği ayrıntıları](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![Application Insights Service Fabric NuGet paketinde toplanan Service Fabric özgü veriler de dahil olmak üzere diğer ayrıntıları gösteren ekran görüntüsü.](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
 Application Insights, içinde gelen tüm verilere yönelik sorgulama için belirlenmiş bir görünüme sahiptir. Application Insights portalına gitmek için genel bakış sayfasının üst kısmında "Ölçüm Gezgini" seçeneğini belirleyin. Burada, kusto sorgu dilini kullanarak, istekler, özel durumlar, performans sayaçları ve diğer ölçümler için önce bahsedilen özel olaylara karşı sorgular çalıştırabilirsiniz. Aşağıdaki örnek, son 1 saat içindeki tüm istekleri gösterir.
 
@@ -48,7 +48,7 @@ Olayları toplamak için EventFlow kullanıyorsanız, NuGet paketini içeri akta
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
     }
 ]
 ```
@@ -65,7 +65,7 @@ Tanılama ve izlemeye yönelik daha modüler bir yaklaşıma izin verdiklerinden
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Azure portal Application Insights kaynakta gezinme
 
-Olaylarınız ve günlüklerinizin çıktısı olarak Application Insights yapılandırdıktan sonra, bilgilerin Application Insights kaynağında birkaç dakika içinde gösterilmesi gerekir. Sizi Application Insights kaynak panosuna götürebileceğiniz Application Insights kaynağına gidin. Application Insights görev çubuğunda **Ara** ' yı seçerek alınan en son izlemeleri ve bunlara göre filtreleyebilmesini görüntüleyin.
+Olaylarınız ve günlüklerinizin çıktısı olarak Application Insights yapılandırdıktan sonra, bilgilerin Application Insights kaynağında birkaç dakika içinde gösterilmesi gerekir. Sizi Application Insights kaynak panosuna götürebileceğiniz Application Insights kaynağına gidin. Application Insights görev çubuğunda _*Search** ' yi seçerek aldığı en son izlemeleri görüntüleyin ve bunlara filtre uygulayabilir.
 
 *Ölçüm Gezgini* , uygulamalarınızın, hizmetlerinizin ve kümenizin rapor olabileceği ölçümlere dayalı özel panolar oluşturmaya yönelik yararlı bir araçtır. Topladığınız verileri temel alarak kendinize birkaç grafik ayarlamak için [Application Insights ölçümleri keşfetme](../azure-monitor/platform/metrics-charts.md) konusuna bakın.
 

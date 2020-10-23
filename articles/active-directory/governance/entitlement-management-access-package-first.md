@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597506"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362816"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
 
@@ -42,9 +42,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-Ayrıca, Microsoft Graph kullanarak programlı bir şekilde erişim paketi oluşturabilirsiniz. Programlı olarak bir erişim paketi oluşturmayı gösteren bir öğretici için bkz. [Yetkilendirme yönetim API 'si](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
+Ayrıca, Microsoft Graph kullanarak programlı bir şekilde erişim paketi oluşturabilirsiniz. Programlı olarak bir erişim paketi oluşturmayı gösteren bir öğretici için bkz. [Yetkilendirme yönetim API 'si](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD Yetkilendirme Yönetimi 'ni kullanmak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
@@ -118,10 +118,10 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
     ![Yeni erişim paketi-kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles.png)
     >[!IMPORTANT]
-    >Bir erişim paketine eklenen rol atanabilir gruplar, **rollere atanabilir**alt tür kullanılarak belirtilir. Azure AD rollerine atanabilir gruplar hakkında daha fazla ayrıntı için Azure Active Directory [rol atanabilir Grup oluşturma](../users-groups-roles/roles-groups-create-eligible.md) bölümüne bakın. Eklemek istediğiniz rol atanabilir bir grup görmüyorsanız veya bu işlemi ekleyemezseniz, bu işlemi gerçekleştirmek için gerekli Azure AD rolüne ve Yetkilendirme Yönetimi rolüne sahip olduğunuzdan emin olun. Gerekli rolleri, kaynağı kataloğunuza eklemek isteyip istemebilmeniz gerekebilir. Daha fazla bilgi için bkz. [bir kataloğa kaynak eklemek Için gerekli roller](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+    >Bir erişim paketine eklenen rol atanabilir gruplar, **rollere atanabilir**alt tür kullanılarak belirtilir. Azure AD rollerine atanabilir gruplar hakkında daha fazla ayrıntı için Azure Active Directory [rol atanabilir Grup oluşturma](../roles/groups-create-eligible.md) bölümüne bakın. Eklemek istediğiniz rol atanabilir bir grup görmüyorsanız veya bu işlemi ekleyemezseniz, bu işlemi gerçekleştirmek için gerekli Azure AD rolüne ve Yetkilendirme Yönetimi rolüne sahip olduğunuzdan emin olun. Gerekli rolleri, kaynağı kataloğunuza eklemek isteyip istemebilmeniz gerekebilir. Daha fazla bilgi için bkz. [bir kataloğa kaynak eklemek Için gerekli roller](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
-    > [Dinamik grupları](../users-groups-roles/groups-create-rule.md) kullanırken, sahibin yanı sıra başka bir rol de görmezsiniz. Bu tasarım gereğidir.
+    > [Dinamik grupları](../enterprise-users/groups-create-rule.md) kullanırken, sahibin yanı sıra başka bir rol de görmezsiniz. Bu tasarım gereğidir.
     > ![Senaryoya genel bakış](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
     
 
@@ -270,4 +270,4 @@ Bu adımda, yaptığınız değişiklikleri kaldırır ve **pazarlama kampanyas�
 
 Yetkilendirme Yönetimi 'ndeki yaygın senaryo adımları hakkında bilgi edinmek için sonraki makaleye ilerleyin.
 > [!div class="nextstepaction"]
-> [Genel senaryolar](entitlement-management-scenarios.md)
+> [Yaygın senaryolar](entitlement-management-scenarios.md)

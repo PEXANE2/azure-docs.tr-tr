@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e7d966aa5aa4b5a498c80cab26686411dd586185
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f0d28a71e2bd6fc2006bda81fba7d7e6336c5b1c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044607"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460844"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -48,7 +48,7 @@ Senaryo aracılığıyla çalışmak için daha önce indirdiğiniz önceden yaz
 
 Yapı senaryosu *AdtSampleApp* örnek uygulaması tarafından uygulanan bileşenler şunlardır:
 * Cihaz kimlik doğrulaması 
-* [.Net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) kullanım örnekleri ( *CommandLoop.cs*içinde bulunur)
+* [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) kullanım örnekleri ( *CommandLoop.cs*içinde bulunur)
 * Azure dijital TWINS API 'sini çağırmak için konsol arabirimi
 * *Sampleclientapp* -örnek bir Azure dijital TWINS çözümü
 * *Samplefunctionsapp* -Azure dijital TWINS grafınızı IoT Hub ve Azure dijital TWINS etkinliklerindeki telemetri sonucu olarak güncelleştiren bir Azure işlevleri uygulaması
@@ -87,7 +87,7 @@ Query
 ```
 
 >[!TIP]
-> Bu basitleştirilmiş Yöntem _**AdtE2ESample**_ projesinin bir parçası olarak sağlanır. Bu örnek kod bağlamı dışında, [sorgu API 'lerini](how-to-use-apis-sdks.md) veya [CLI komutlarını](how-to-use-cli.md)kullanarak, örneğiniz Içindeki tüm TWINS 'leri istediğiniz zaman sorgulayabilirsiniz.
+> Bu basitleştirilmiş Yöntem _**AdtE2ESample**_ projesinin bir parçası olarak sağlanır. Bu örnek kod bağlamı dışında, [sorgu API 'lerini](/rest/api/digital-twins/dataplane/query) veya [CLI komutlarını](how-to-use-cli.md)kullanarak, örneğiniz Içindeki tüm TWINS 'leri istediğiniz zaman sorgulayabilirsiniz.
 >
 > Örneğiniz için tüm dijital TWINS 'i almak için tam sorgu gövdesi aşağıda verilmiştir:
 > 
@@ -445,12 +445,6 @@ Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları sil
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azure AD uygulama kaydını silin:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 Son olarak, indirdiğiniz proje örnek klasörünü yerel makinenize silin.

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 377c68cd2f0b0c132fc690cb03d7c3c5694bb52e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b93db314701d281f3f4fff195671f43cdb9dbc
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438907"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340895"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde ek tehdit korumaları
 Azure Güvenlik Merkezi, yerleşik [Azure Defender korumalarının](azure-defender.md)yanı sıra aşağıdaki tehdit koruması yeteneklerini de sunmaktadır.
@@ -90,7 +90,7 @@ Dağıtılmış hizmet reddi (DDoS) saldırılarına kolayca çalıştırılabil
 
 DDoS saldırısı, uygulamanın kaynaklarını tüketmeye çalışır ve uygulamayı meşru kullanıcılar için kullanılamaz hale getirir. DDoS saldırıları Internet üzerinden erişilebilecek tüm uç noktaları hedefleyebilir.
 
-DDoS saldırılarına karşı savunmak için, Azure DDoS koruması için bir lisans satın alın ve en iyi uygulama tasarımı uygulamalarından olduğunuzdan emin olun. DDoS koruması farklı hizmet katmanları sağlar. Daha fazla bilgi için bkz. [Azure DDoS korumasına genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+DDoS saldırılarına karşı savunmak için, Azure DDoS koruması için bir lisans satın alın ve en iyi uygulama tasarımı uygulamalarından olduğunuzdan emin olun. DDoS koruması farklı hizmet katmanları sağlar. Daha fazla bilgi için bkz. [Azure DDoS korumasına genel bakış](../virtual-network/ddos-protection-overview.md).
 
 Azure DDoS koruması uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azureddos)bakın.
 

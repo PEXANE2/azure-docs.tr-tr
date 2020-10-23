@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması (Önizleme) için Gilar 'ı kullanma
 keywords: Giüstler, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714181"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371265"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Yay etkin Kubernetes kümesinde Gilar kullanarak yapılandırma dağıtma (Önizleme)
 
@@ -96,19 +96,18 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 --Repository-URL parametresi değeri için desteklenen senaryolar aşağıda verilmiştir.
 
-| Senaryo | Biçimlendir | Açıklama |
+| Senaryo | Biçimlendir | Description |
 | ------------- | ------------- | ------------- |
-| Özel GitHub deposu-SSH | git@github.com:username/repo | Flox tarafından oluşturulan SSH anahtar çifti.  Kullanıcının GitHub hesabına ortak anahtarı dağıt anahtarı olarak eklemesi gerekir. |
-| Genel GitHub deposu | `http://github.com/username/repo` or git://github.com/username/repo   | Genel git deposu  |
+| Genel git deposu | http [s]:/sunucu/repo.exe git veya git://server/repo.git   | Genel git deposu  |
+| Özel Git deposu – SSH – Flox tarafından oluşturulan anahtarlar | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Flox tarafından üretilen ortak anahtar, git hizmeti sağlayıcınızdaki Kullanıcı hesabına veya depoya eklenmelidir. Daha fazla bilgiyi [burada](#apply-configuration-from-a-private-git-repository) bulabilirsiniz |
 
-Bu senaryolar, akıcı x tarafından desteklenir, ancak sourceControlConfiguration tarafından desteklenmez. 
+Bu senaryolar Flox tarafından desteklenir, ancak henüz sourceControlConfiguration tarafından desteklenmez.
 
-| Senaryo | Biçimlendir | Açıklama |
+| Senaryo | Biçimlendir | Description |
 | ------------- | ------------- | ------------- |
-| Özel GitHub deposu-HTTPS | `https://github.com/username/repo` | Flox SSH anahtar çifti oluşturmaz.  [Yönergeler](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
-| Özel Git Konağı | user@githost:path/to/repo | [Yönergeler](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
-| Özel GitHub deposu-SSH (kendi anahtarını getir) | git@github.com:username/repo | [Kendi SSH KeyPair kullanın](https://docs.fluxcd.io/en/1.17.0/guides/provide-own-ssh-key.html) |
-
+| Özel Git deposu-HTTPS | https://server/repo.git | Yakında (Kullanıcı adı/parola, Kullanıcı adı/belirteç, sertifika desteklenir) |
+| Özel Git deposu-SSH – kullanıcı tarafından sunulan anahtarlar | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Çok yakında |
+| Özel Git Konağı – SSH – özel known_hosts | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Çok yakında |
 
 #### <a name="additional-parameters"></a>Ek parametreler
 
@@ -225,7 +224,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 **Ortak anahtarı git deposuna bir dağıtım anahtarı olarak ekleyin**
 
-1. GitHub ' ı açın, Çatalınıza gidin, **Ayarlar**' a gidin ve **anahtarları dağıtın**
+1. GitHub ' ı açın, depoya, **Ayarlar**' a gidin ve **anahtarları dağıtın**
 2. **Dağıtım anahtarı Ekle** 'ye tıklayın
 3. Bir başlık sağlayın
 4. **Yazma erişimine Izin ver** 'i denetle

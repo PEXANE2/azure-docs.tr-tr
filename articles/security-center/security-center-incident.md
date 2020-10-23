@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: c31d3136ec4bcdf6da7680d41de078f8bd03d256
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447109"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341355"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik olaylarını yönetme
 
 Güvenlik uyarılarını önceliklendirme ve araştırmak, en nitelikli Güvenlik analistlerinin bile zaman alıcı olabilir. Çoğu için nereden başlayabileceğinizi bilirsiniz. 
 
-Güvenlik Merkezi, farklı [güvenlik uyarıları](security-center-managing-and-responding-alerts.md)arasındaki bilgileri bağlamak için [Analytics](security-center-detection-capabilities.md) 'i kullanır. Güvenlik Merkezi bu bağlantıları kullanarak, saldırganın eylemlerini ve etkilenen kaynakları anlamanıza yardımcı olmak için bir saldırı kampanyasının ve ilgili uyarıların tek bir görünümünü sağlayabilir.
+Güvenlik Merkezi, farklı [güvenlik uyarıları](security-center-managing-and-responding-alerts.md)arasındaki bilgileri bağlamak için [Analytics](./security-center-alerts-overview.md) 'i kullanır. Güvenlik Merkezi bu bağlantıları kullanarak, saldırganın eylemlerini ve etkilenen kaynakları anlamanıza yardımcı olmak için bir saldırı kampanyasının ve ilgili uyarıların tek bir görünümünü sağlayabilir.
 
 Bu sayfa güvenlik merkezi 'ndeki olaylara genel bir bakış sağlar.
 

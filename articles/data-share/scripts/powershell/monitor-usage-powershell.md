@@ -1,20 +1,17 @@
 ---
-title: 'PowerShell betiği: Azure veri paylaşımının kullanımını Izleme | Microsoft Docs'
+title: 'PowerShell betiği: Azure veri paylaşımının kullanımını Izleme'
 description: Bu PowerShell betiği, gönderilen bir veri paylaşımının kullanım ölçümlerini alır.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 0a4084d309dd0160970f1c03540705b310eb8e75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9ff7a29cba9b8e9ca058bfe742f484c5b495cd7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307200"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221324"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Gönderilen veri paylaşımının kullanımını izlemek için PowerShell 'i kullanma
 
@@ -44,12 +41,12 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Get-Azdatasharesynleştirme](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | Bir paylaşımdaki eşitlemeleri listeleyin. |
-| [Get-Azdatasharesynitizationdetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | Bir paylaşma eşitlemesinin eşitleme ayrıntılarını alır. |
+| [Get-Azdatasharesynleştirme](/powershell/module/az.datashare/get-azdatasharesynchronization) | Bir paylaşımdaki eşitlemeleri listeleyin. |
+| [Get-Azdatasharesynitizationdetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail) | Bir paylaşma eşitlemesinin eşitleme ayrıntılarını alır. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).
 
 Ek Azure veri paylaşımının PowerShell betiği örnekleri, [Azure veri paylaşımında PowerShell örnekleri](../../samples-powershell.md)bölümünde bulunabilir.

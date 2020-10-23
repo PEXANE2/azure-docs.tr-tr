@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 771635baa3c49c07d0d796cf6ef3be7b870de3e1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078383"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425447"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure’daki Bölgeler ve Kullanılabilirlik Alanları
 
@@ -79,7 +79,7 @@ Belirli bir bölgede bir hizmet teklifi yoksa, Microsoft satış temsilcinizle i
 | Bölge türü | Bölgesel olmayan | Temel | Temel | Özelleştirilmiş | Kullanılabilirlik Alanları | Veri yerleşimi |
 | --- | --- | --- | --- | --- | --- | --- |
 | Önerilen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | :heavy_check_mark: | :heavy_check_mark: |
-| Diğer | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | Talep odaklı | YOK | :heavy_check_mark: |
+| Diğer | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | Talep odaklı | Yok | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Kategoriye göre hizmetler
 
@@ -97,7 +97,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Azure Cosmos DB | Otomasyon | Azure Blueprints |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | MariaDB için Azure Veritabanı |
 > | Azure ExpressRoute | Azure Bastion | Azure Ayrılmış HSM |
-> | Azure SQL Veritabanı | Redis için Azure Cache | Azure Dev Spaces |
+> | Azure SQL Veritabanı | Redis için Azure Önbelleği | Azure Dev Spaces |
 > | Cloud Services | Azure Bilişsel Arama | Azure Digital Twins |
 > | Cloud Services: Av2-Series | Azure Veri Gezgini | Azure Lab Services |
 > | Cloud Services: Dv2-Series | Azure Veri Paylaşımı | Azure NetApp Files |
@@ -112,7 +112,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Service Bus | Azure İşlevleri | Data Box Heavy |
 > | Service Fabric | Azure HPC Önbelleği | Veri Kataloğu |
 > | Sanal Makine Ölçek Kümeleri | Azure IoT Hub | Data Factory: Data Factory v1 |
-> | Sanal Makineler | Azure Kubernetes Hizmeti (AKS) | Data Lake Analytics |
+> | Sanal Makineler | Azure Kubernetes Service (AKS) | Data Lake Analytics |
 > | Sanal makineler: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klasik)|
 > | Sanal makineler: Bs-Series | Azure Özel Bağlantı | Microsoft Genomiks |
 > | Sanal makineler: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
@@ -170,10 +170,10 @@ Bir kullanılabilirlik bölgesinde dağıtılan sanal makineler için ek ücret 
 - [Sanal makine oluşturma](../virtual-machines/windows/create-portal-availability-zone.md)
 - [PowerShell kullanarak yönetilen disk ekleme](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Bölge yedekli sanal makine ölçek kümesi oluşturma](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Bölgesel olarak yedekli bir ön uç ile bir Standart Load Balancer kullanarak VM 'lerde Yük Dengeleme](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Bir bölge içindeki VM 'leri, bölgesel ön ucu ile standart Load Balancer kullanarak yük dengeleme](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Alanlar arası yedekli depolama](../storage/common/storage-redundancy.md)
-- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
+- [Bölgesel olarak yedekli bir ön uç ile bir Standart Load Balancer kullanarak VM 'lerde Yük Dengeleme](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Bir bölge içindeki VM 'leri, bölgesel ön ucu ile standart Load Balancer kullanarak yük dengeleme](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Alanlar arası yedekli depolama](../storage/common/storage-redundancy-zrs.md)
+- [SQL veritabanı genel amaçlı katmanı](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [Event Hubs coğrafi olağanüstü durum kurtarma](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus coğrafi olağanüstü durum kurtarma](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Alanlar arası yedekli sanal ağ geçidi oluşturma](../vpn-gateway/create-zone-redundant-vnet-gateway.md)

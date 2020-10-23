@@ -1,6 +1,6 @@
 ---
-title: Microsoft Defender Gelişmiş tehdit koruması-Azure Güvenlik Merkezi
-description: Bu belge, Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması arasındaki tümleştirmeyi tanıtır.
+title: Azure Güvenlik Merkezi 'ne dahil edilen Endpoint License için Microsoft Defender 'ı kullanma
+description: Uç nokta için Microsoft Defender ve Azure Güvenlik Merkezi 'nden dağıtma hakkında bilgi edinin.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,125 +10,129 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 92feb159fe4c893a55d37fa90c34acf4c4c93631
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826176"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368103"
 ---
-# <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
+# <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
-Azure Güvenlik Merkezi, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlamak için [Microsoft Defender Gelişmiş tehdit koruması (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) ile tümleşir.
+Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir uç nokta güvenlik çözümüdür. Ana özellikleri şunlardır:
+
+- Risk tabanlı güvenlik açığı yönetimi ve değerlendirmesi 
+- Saldırı yüzeyini azaltma
+- Davranış tabanlı ve bulut destekli koruma
+- Uç nokta algılama ve yanıt (EDR)
+- Otomatik araştırma ve düzeltme
+- Yönetilen arama hizmetleri
+
+> [!TIP]
+> Başlangıçta **Windows Defender ATP**olarak başlatılan bu uç nokta algılama ve yanıt (EDR) ürünü, **Microsoft Defender ATP**olarak 2019 ' de yeniden adlandırıldı.
+>
+> Ignite 2020, [Microsoft Defender XDR paketini](https://www.microsoft.com/security/business/threat-protection) başlattık ve bu EDR bileşeni **uç nokta için Microsoft Defender**olarak yeniden adlandırıldı.
 
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-|Görünüş|Ayrıntılar|
-|----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir (GA)|
-|Fiyat|[Azure Defender](security-center-pricing.md) gerektirir|
-|Desteklenen makineler:|![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
-|Gerekli roller ve izinler:|Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi**veya **abonelik katılımcısı**|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar.<br>![Hayır](./media/icons/no-icon.png) Ortak Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
-|||
+| Görünüş                          | Ayrıntılar                                                                                                                                                                                                                                                                                                       |
+|---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Yayın durumu:                  | Genel olarak kullanılabilir (GA)                                                                                                                                                                                                                                                                                      |
+| Fiyat                        | [Sunucular Için Azure Defender](security-center-pricing.md) gerekir                                                                                                                                                                                                                                             |
+| Desteklenen platformlar:            | ![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
+| Desteklenen Windows sürümleri:  | Uç nokta için Defender, Windows 10 1703 (ve üzeri) ve Windows Server 2019 ' de yerleşik olarak bulunur.<br>Güvenlik Merkezi, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler.<br>Bu tümleştirme kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı. |
+| Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi**veya **abonelik katılımcısı**                         |
+| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar.<br>![No](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
+|                                 |                                                                                                                                                                                                                                                                                                               |
 
 
-## <a name="microsoft-defender-atp-features-in-security-center"></a>Güvenlik Merkezi 'ndeki Microsoft Defender ATP özellikleri
+## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Güvenlik Merkezi 'nde uç nokta özellikleri için Microsoft Defender
 
-Microsoft Defender ATP şunları sağlar:
+Uç nokta için Microsoft Defender şunları sağlar:
 
-- **Gelişmiş ihlal sonrası algılama algılayıcı**: Windows Server Için MICROSOFT Defender ATP sensörleri çok sayıda davranış sinyali toplar.
+- **Gelişmiş ihlal sonrası algılama sensörleri**. Windows makineler için uç noktanın algılayıcılar için Defender, çok sayıda davranış sinyali toplar.
 
-- **Analitik tabanlı, bulut destekli gönderi ihlali algılama**: MICROSOFT Defender ATP, değişen tehditlere hızlı bir şekilde uyum sağlar. Gelişmiş analiz ve büyük veri kullanır. Microsoft Defender ATP, bilinmeyen tehditleri algılamak için Windows, Azure ve Office 'teki sinyallerle Intelligent Security Graph güçlerinin korunmasını sağlar. İşlem yapılabilir uyarılar sağlar ve hızla yanıt vermenize olanak tanır.
+- **Analitik tabanlı, bulut destekli, ihlal sonrası algılama**. Endpoint için Defender, değişen tehditlere hızlı bir şekilde uyum sağlar. Gelişmiş analiz ve büyük veri kullanır. Bilinmeyen tehditleri algılamak için Windows, Azure ve Office 'teki sinyallerle Intelligent Security Graph güçlü olarak dağıtılır. İşlem yapılabilir uyarılar sağlar ve hızla yanıt vermenize olanak tanır.
 
-- **Tehdit bilgileri**: MICROSOFT Defender ATP, saldırgan araçlarını, tekniklerini ve yordamlarını belirlediğinde uyarı oluşturur. Microsoft tehdit arayıcılar ve güvenlik ekipleri tarafından oluşturulan ve iş ortakları tarafından sunulan zeka tarafından düzenlenen verileri kullanır.
+- **Tehdit bilgisi**. For Endpoint için Defender, saldırgan araçlarını, tekniklerini ve yordamlarını belirlediğinde uyarılar oluşturur. Microsoft tehdit arayıcılar ve güvenlik ekipleri tarafından oluşturulan ve iş ortakları tarafından sunulan zeka tarafından düzenlenen verileri kullanır.
 
+Defender for Endpoint for Security Center ile tümleştirerek aşağıdaki ek yetenekler de avantajdan yararlanabilirsiniz:
 
-Defender ATP 'yi Azure Güvenlik Merkezi ile tümleştirerek aşağıdaki ek yetenekler de yararlı olabilir:
+- **Otomatik ekleme**. Güvenlik Merkezi, Güvenlik Merkezi tarafından izlenen tüm Windows sunucuları için Microsoft Defender for Endpoint sensöri otomatik olarak (Windows Server 2019 çalıştırmadıkları takdirde) otomatik olarak etkinleştirilir.
 
-- **Otomatik ekleme**: Tümleştirme, Azure Güvenlik Merkezi tarafından izlenen Windows sunucuları Için MICROSOFT Defender ATP algılayıcısı 'nı otomatik olarak (windows Server 2019 çalıştırmadıkları müddetçe) otomatik olarak sunar.
+- **Tek bir cam bölmesi**. Güvenlik Merkezi Konsolu, uç nokta uyarıları için Microsoft Defender 'ı görüntüler. Daha fazla araştırmak için, uyarı işlem ağacı ve olay grafiği gibi ek bilgileri görebileceğiniz uç noktanın kendi portal sayfaları için Microsoft Defender 'ı kullanın. Ayrıca, altı aya kadar geçmiş bir dönem için her davranışı gösteren ayrıntılı bir makine zaman çizelgesi görebilirsiniz.
 
-- **Tek bir cam bölmesi**: Azure Güvenlik Merkezi konsolunda MICROSOFT Defender ATP uyarıları görüntülenir. Daha fazla araştırmak için Microsoft Defender ATP 'yi kullanın. Microsoft Defender ATP, uyarı işlem ağacı ve olay grafiği gibi ek bilgiler sağlar. Ayrıca, altı aya kadar geçmiş bir dönem için her davranışı gösteren ayrıntılı bir makine zaman çizelgesi görebilirsiniz.
+    :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Uç noktanın kendi güvenlik merkezi için Microsoft Defender" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
-    ![Uyarı hakkında ayrıntılı bilgi içeren Microsoft Defender ATP sayfası](media/security-center-wdatp/image3.png)
+## <a name="microsoft-defender-for-endpoint-tenant-location"></a>Uç nokta kiracı konumu için Microsoft Defender
 
-## <a name="platform-support"></a>Platform desteği
+Sunucularınızı izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, bir uç nokta kiracısı için Microsoft Defender otomatik olarak oluşturulur. Endpoint için Defender tarafından toplanan veriler, sağlama sırasında tanımlandığı şekilde kiracının coğrafi konumunda depolanır. Müşteri verileri-sahte bir biçimde, Birleşik Devletler merkezi depolama ve işleme sistemlerinde de depolanabilir. 
 
-Güvenlik Merkezi 'ndeki Microsoft Defender ATP, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 üzerinde algılamayı destekler. Azure sanal makineleri için aboneliğinizde Azure Defender 'ı etkinleştirmek ve Azure dışı VM 'Ler için, Azure Defender 'ın yalnızca çalışma alanı düzeyinde etkinleştirilmesi gerekir.
-
-Bu tümleştirme kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı.
-
-## <a name="data-storage-location"></a>Veri depolama konumu
-
-Sunucuları izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, bir Microsoft Defender ATP kiracısı otomatik olarak oluşturulur. Microsoft Defender ATP tarafından toplanan veriler, sağlama sırasında tanımlandığı şekilde kiracının coğrafi konumunda depolanır. Sahte bir biçimde bulunan müşteri verileri, Birleşik Devletler merkezi depolama ve işleme sistemlerine de depolanabilir. 
-
-Yapılandırıldıktan sonra, verilerinizin depolandığı konumu değiştiremezsiniz. Verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
+Konumu yapılandırdıktan sonra değiştiremezsiniz. Verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
 
 
-## <a name="onboard-servers-to-security-center"></a>Sunucuları güvenlik merkezi 'ne ekleme 
+## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Endpoint Integration için Microsoft Defender 'ı etkinleştirme
 
-Sunucuları güvenlik merkezi 'ne eklemek için **Azure Güvenlik Merkezi 'Ne git** ' e tıklayarak sunucuları MICROSOFT Defender ATP sunucu ekleme işleminden ekleyin.
+1. **Sunucular Için Azure Defender 'ı**etkinleştirin. Bkz. [Azure Güvenlik Merkezi fiyatlandırması](security-center-pricing.md#enable-azure-defender).
 
-1. **Ekleme** alanında, verileri depolamak için bir çalışma alanı seçin veya oluşturun.
+    > [!NOTE]
+    > Azure Arc etkin makinelerinizi korumak için [hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)' daki yönergeleri kullanın.
 
-2. Tüm çalışma alanlarınızı göremiyorsanız, bunun nedeni izin olmaması olabilir, çalışma alanınızın Azure Defender tarafından korunduğundan emin olun.
-    
-3. Log Analytics aracısının nasıl yükleneceğine ilişkin yönergeleri görüntülemek için **Sunucu Ekle** ' yi seçin. 
+1. Sunucularınızdaki uç noktalar için Microsoft Defender 'ı zaten lisanslandırdıysanız ve dağıttıysanız, yerleşik [Windows sunucularında](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)açıklanan yordamı kullanarak kaldırın.
+1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
+1. Değiştirmek istediğiniz aboneliği seçin.
+1. **Tehdit algılamayı**seçin.
+1. **Endpoint Için Microsoft Defender 'ın verilerinize erişmesine Izin ver**' i seçin ve **Kaydet**' i seçin.
 
-4. Ekleme işleminden sonra makineleri [varlık envanterinde](asset-inventory.md)izleyebilirsiniz.
+    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Uç noktanın kendi güvenlik merkezi için Microsoft Defender":::
 
-   ![Yerleşik bilgisayarlar](media/security-center-wdatp/onboard-computers.png)
+    Azure Güvenlik Merkezi, uç nokta için sunucularınızı otomatik olarak Microsoft Defender 'a eklenecektir. Ekleme, 24 saate kadar sürebilir.
 
-## <a name="enable-microsoft-defender-atp-integration"></a>Microsoft Defender ATP tümleştirmesini etkinleştir
 
-Microsoft Defender ATP tümleştirmesi 'nin etkin olup olmadığını görmek için **Güvenlik Merkezi**  >  **fiyatlandırma & ayarlar** ' ı seçin > aboneliğinizi seçin.
+## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Endpoint Portal için Microsoft Defender 'a erişme
 
-Burada, şu anda etkin olan entegrasyona bakabilirsiniz.
+1. Kullanıcı hesabının gerekli izinlere sahip olduğundan emin olun. [Daha fazla bilgi edinin](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
-  ![Microsoft Defender ATP tümleştirmesi etkin olan Azure Güvenlik Merkezi tehdit algılama ayarları sayfası](media/security-center-wdatp/enable-integrations.png)
+1. Anonim trafiği engelleyen bir ara sunucuya veya güvenlik duvarına sahip olup olmadığınızı denetleyin. Endpoint algılayıcı için Defender, sistem bağlamından bağlanır, bu nedenle anonim trafiğe izin verilmelidir. Endpoint Portal için Defender 'a yönelik kaldırma erişimini sağlamak için [proxy sunucusundaki hizmet URL 'lerine erişimi etkinleştirme](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)konusundaki yönergeleri izleyin.
 
-- Azure Defender 'ı zaten etkinleştirdiyseniz, başka bir eylem gerekmez. Azure Güvenlik Merkezi, sunucuları otomatik olarak Microsoft Defender ATP 'ye eklenecektir. Ekleme, 24 saate kadar sürebilir.
+1. [Microsoft Defender Güvenlik Merkezi portalını](https://securitycenter.windows.com/)açın. Portalın Özellikler ve simgeler hakkında daha fazla bilgi için bkz. [Microsoft Defender Güvenlik Merkezi portalına genel bakış](/windows/security/threat-protection/microsoft-defender-atp/portal-overview). 
 
-- Sunucuları hiçbir zaman Azure Güvenlik Merkezi 'ne eklendi, Azure Güvenlik Merkezi 'ne ekleyin ve her zamanki gibi Azure Defender 'ı etkinleştirin.
+## <a name="send-a-test-alert"></a>Test uyarısı gönder
 
-- Sunucuları Microsoft Defender ATP aracılığıyla eklendi:
-  - [Sunucu makinelerini nasıl boşaltıkılabileceğine](https://go.microsoft.com/fwlink/p/?linkid=852906)ilişkin yönergeler için belgelere bakın.
-  - Bu sunucuları Azure Güvenlik Merkezi 'ne ekleyin.
-
-## <a name="access-to-the-microsoft-defender-atp-portal"></a>Microsoft Defender ATP portalına erişim
-
-1. [Portala kullanıcı erişimi atama](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)' daki yönergeleri izleyin.
-
-1. Anonim trafiği engelleyen bir ara sunucuya veya güvenlik duvarına sahip olup olmadığınızı denetleyin. Defender ATP algılayıcısı sistem bağlamından bağlanır, bu nedenle anonim trafiğe izin verilmelidir. Microsoft Defender ATP portalına bir daha fazla erişim sağlamak için [proxy sunucusundaki Microsoft Defender ATP hizmeti URL 'lerine erişimi etkinleştirme](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)' deki yönergeleri izleyin.
-
-## <a name="test-the-feature"></a>Özelliği test etme
-
-Bir zararsız Microsoft Defender ATP test uyarısı oluşturmak için:
+Uç nokta sınama uyarısı için bir zararsız Microsoft Defender oluşturmak için:
 
 1. ' C:\Test-mbatp-test ' klasörünü oluşturun.
-
-1. Uzak Masaüstü 'Nü kullanarak bir Windows Server 2012 R2 VM 'sine veya Windows Server 2016 sanal makinesine erişin. Komut satırı penceresi açın.
-
+1. Uzak Masaüstü 'Nü kullanarak bir Windows Server 2012 R2 VM 'sine veya Windows Server 2016 sanal makinesine erişin.
+1. Komut satırı penceresi açın.
 1. Komut isteminde aşağıdaki komutu kopyalayın ve çalıştırın. Komut Istemi penceresi otomatik olarak kapatılacak.
 
-    ```
+    ```powershell
     powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
+    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Uç noktanın kendi güvenlik merkezi için Microsoft Defender":::
 
-   ![Yukarıdaki komutla bir komut Istemi penceresi](media/security-center-wdatp/image4.jpeg)
-
-1. Komut başarılı olursa, Azure Güvenlik Merkezi panosunda ve Microsoft Defender ATP portalında yeni bir uyarı görürsünüz. Bu uyarının görünmesi birkaç dakika sürebilir.
-
+1. Komut başarılı olursa, Azure Güvenlik Merkezi panosunda ve Endpoint Portal için Microsoft Defender 'da yeni bir uyarı görürsünüz. Bu uyarının görünmesi birkaç dakika sürebilir.
 1. Güvenlik Merkezi 'nde uyarıyı gözden geçirmek için **güvenlik uyarıları**  >  **şüpheli PowerShell komut satırı**bölümüne gidin.
+1. Araştırma penceresinde, uç nokta portalı için Microsoft Defender 'a gitmek üzere bağlantıyı seçin.
 
-1. Araştırma penceresinde, Microsoft Defender ATP portalına gitmek için bağlantıyı seçin.
+
+## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin uç nokta için tümleşik Microsoft Defender hakkında SSS
+
+### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Uç nokta için Microsoft Defender lisans gereksinimleri nelerdir?
+
+Uç nokta için Defender, **sunucular Için Azure Defender**ile ek bir ücret ödemeden dahil edilmiştir. Alternatif olarak, 50 makineler veya daha fazlası için ayrı olarak satın alınabilir.
+
+
+### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Üçüncü taraf bir EDR aracından geçiş Nasıl yaparım? misiniz?
+
+Microsoft 'a ait olmayan bir uç nokta çözümüyle geçiş için tam yönergeler, uç nokta için Microsoft Defender belgelerinde bulunabilir: [geçişe genel bakış](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).
+  
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Güvenlik Merkezi tarafından desteklenen platformlar ve özellikler](security-center-os-coverage.md)
-- [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md): Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
 - [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md): önerilerin Azure kaynaklarınızı korumanıza nasıl yardımcı olduğunu öğrenin.
-- [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md): Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.

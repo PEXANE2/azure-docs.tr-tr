@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87486519"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277682"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API bir hesabı ölçeklendirin
 
@@ -38,7 +38,7 @@ Gecikme süresini en aza indirmek isterseniz, Cassandra API ölçek ve sağlama 
 
 Aşağıdaki bölümlerde her yaklaşımın avantajları ve dezavantajları açıklanmaktadır. Daha sonra, çözümünüzün ölçeklendirme ihtiyaçlarını, genel maliyet ve gereksinimlerinize yönelik verimlilik ihtiyaçlarını dengelemek için en iyi stratejiye karar verebilirsiniz.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portal kullanın
 
 Azure Cosmos DB Cassandra API hesabındaki kaynakları Azure portal kullanarak ölçeklendirebilirsiniz. Daha fazla bilgi edinmek için [kapsayıcılar ve veritabanlarında üretilen Iş sağlama](set-throughput.md)başlıklı makaleye bakın. Bu makalede, Azure portal [veritabanı](set-throughput.md#set-throughput-on-a-database) ya da [kapsayıcı](set-throughput.md#set-throughput-on-a-container) düzeyinde üretilen işi ayarlamanın göreli avantajları açıklanmaktadır. Bu makalelerde bahsedilen "veritabanı" ve "kapsayıcı" terimleri, Cassandra API için sırasıyla "keyspace" ve "Table" ile eşlenir.
 
@@ -62,7 +62,7 @@ Bu yaklaşımın avantajı, ölçek ihtiyaçlarına dinamik olarak ve uygulaman�
 
 Standart (el ile) veya üretilen iş sağlamaya yönelik programlama yöntemine ek olarak, Azure Cosmos kapsayıcılarını de otomatik ölçeklendirme sağlanan aktarım hızına yapılandırabilirsiniz. Otomatik ölçeklendirme, SLA 'Lara ödün vermeden belirtilen RU aralıklarında tüketim gereksinimlerinize otomatik olarak ve anında ölçeklenecektir. Daha fazla bilgi edinmek için [Otomatik ölçeklendirme makalesinde Azure Cosmos kapsayıcıları ve veritabanları oluşturma](provision-throughput-autoscale.md) makalesine bakın.
 
-Bu yaklaşımın avantajı, sisteminizdeki ölçekleme ihtiyaçlarını yönetmenin en kolay yoludur. **YAPıLANDıRıLAN ru aralıkları içinde**hız sınırlaması uygulamamaya garanti vermez. Dezavantajı, sisteminizdeki ölçekleme ihtiyaçları tahmin edilebilir ise, otomatik ölçeklendirme, yukarıda bahsedilen beslenme denetim düzlemi veya SDK düzeyi yaklaşımlarını kullanmaktan daha az uygun maliyetli bir yol olabilir.
+Bu yaklaşımın avantajı, sisteminizdeki ölçekleme ihtiyaçlarını yönetmenin en kolay yoludur. **YAPıLANDıRıLAN ru aralıkları içinde**hız sınırlaması uygulamaz. Dezavantajı, sisteminizdeki ölçekleme ihtiyaçları tahmin edilebilir ise, otomatik ölçeklendirme, yukarıda bahsedilen beslenme denetim düzlemi veya SDK düzeyi yaklaşımlarını kullanmaktan daha az uygun maliyetli bir yol olabilir.
 
 CQL kullanarak otomatik ölçeklendirme için maksimum üretilen iş (ru) ayarlamak veya değiştirmek için aşağıdakileri kullanın (anahtar alanı/tablo adını uygun şekilde değiştirin):
 

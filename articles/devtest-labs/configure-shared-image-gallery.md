@@ -3,12 +3,12 @@ title: Azure DevTest Labs paylaşılan görüntü galerisini yapılandırma | Mi
 description: Azure DevTest Labs, kullanıcıların laboratuvar kaynaklarını oluştururken paylaşılan bir konumdan görüntülere erişmelerini sağlayan bir paylaşılan görüntü galerisini nasıl yapılandıracağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271048"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328003"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs’de paylaşılan resim galerisi yapılandırma
 DevTest Labs artık [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md) özelliğini desteklemektedir. Laboratuvar kullanıcılarının laboratuvar kaynaklarını oluştururken paylaşılan bir konumdan görüntülere erişmelerini sağlar. Ayrıca, özel yönetilen VM görüntüleriniz etrafında yapı ve kuruluş oluşturmanıza de yardımcı olur. Paylaşılan görüntü Galerisi özelliği şunları destekler:
@@ -16,7 +16,7 @@ DevTest Labs artık [paylaşılan görüntü Galerisi](../virtual-machines/windo
 - Görüntülerin yönetilen genel çoğaltması
 - Daha kolay yönetim için görüntülerin sürümü oluşturma ve gruplama
 - Kullanılabilirlik alanlarını destekleyen bölgelerde, görüntülerinizi bölge yedekli depolama (ZRS) hesaplarıyla yüksek oranda kullanılabilir hale getirin. ZRS, ZGen hatalarıyla karşı daha iyi esnekliği sunar.
-- Rol tabanlı erişim denetimi (RBAC) kullanarak, abonelikler arasında ve hatta kiracılar arasında paylaşım.
+- Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak, abonelikler arasında ve hatta kiracılar arasında paylaşım.
 
 Daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi belgeleri](../virtual-machines/windows/shared-image-galleries.md). 
  

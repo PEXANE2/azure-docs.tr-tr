@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071787"
+ms.locfileid: "92116656"
 ---
 Paylaşılan görüntü Galerisi, yansımalarınızın etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -52,14 +52,15 @@ Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**
 |---|---|---|---|
 |myImage1|Contoso|Finance|Arka uç|
 |myImage2|Contoso|Finance|Ön uç|
-|myImage3|Test Etme|Finance|Ön uç|
+|myImage3|Sınama|Finance|Ön uç|
 
 Bunların üçü de benzersiz değer kümelerine sahiptir. Bu biçim, bir market görüntüsünün en son sürümünü almak için Azure PowerShell ' de [Azure Market görüntüleri](../articles/virtual-machines/windows/cli-ps-findimage.md) için yayımcı, TEKLIF ve SKU 'yu nasıl belirteceğinize benzer. Her görüntü tanımının bu değerlerin benzersiz bir kümesine sahip olması gerekir.
 
-Görüntü tanımları, hangi görüntü sürümü türlerinin içerebileceğini belirleyen aşağıdaki parametreleri tanımlamalıdır:
--   İşletim sistemi durumu-işletim sistemi durumunu [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images)olarak ayarlayabilirsiniz.
-- İşletim sistemi-Windows veya Linux olabilir.
+Aşağıdaki parametreler hangi görüntü sürümü türlerini içerebilecekleri belirlenir:
 
+- İşletim sistemi durumu-işletim sistemi durumunu [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images)olarak ayarlayabilirsiniz. Bu alan gereklidir.
+- İşletim sistemi-Windows veya Linux olabilir. Bu alan gereklidir.
+-   Hyper-V oluşturma-görüntünün 1. kuşak veya [2. nesil](../articles/virtual-machines/generation-2.md) Hyper-V VHD 'sinden oluşturulup oluşturulmayacağını belirtin. Varsayılan 1. kuşak.
 
 
 Aşağıda, kaynaklarınızı daha kolay izleyebilmek için görüntü tanımınızda ayarlanabilme diğer parametreler verilmiştir:
@@ -71,7 +72,6 @@ Aşağıda, kaynaklarınızı daha kolay izleyebilmek için görüntü tanımın
 - Etiket-görüntü tanımınızı oluştururken Etiketler ekleyebilirsiniz. Etiketler hakkında daha fazla bilgi için bkz. [kaynakları düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md)
 - En düşük ve en yüksek vCPU ve bellek önerileri-görüntünüz vCPU ve bellek önerileri içeriyorsa, bu bilgileri görüntü tanımınıza ekleyebilirsiniz.
 - İzin verilmeyen disk türleri-sanal makinenizin depolama gereksinimleriyle ilgili bilgiler sağlayabilirsiniz. Örneğin, görüntü standart HDD disklerine uygun değilse, bunları izin vermeme listesine eklersiniz.
--   Hyper-V oluşturma-görüntünün 1. kuşak veya [2. nesil](../articles/virtual-machines/generation-2.md) Hyper-V VHD 'sinden oluşturulup oluşturulmayacağını belirtin. Varsayılan 1. kuşak.
 - Market görüntüleri için satın alma planı bilgileri- `-PurchasePlanPublisher` , `-PurchasePlanName` , ve `-PurchasePlanProduct` . Satın alma planı bilgileri hakkında daha fazla bilgi için bkz. [Azure Marketi 'nde görüntüleri bulma](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) ve [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](../articles/virtual-machines/marketplace-images.md).
 
 
@@ -146,14 +146,14 @@ Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü t�
 
 | Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
-| Paylaşılan Görüntü Galerisi | Yes                  | Yes          | Yes                  |
-| Görüntü Tanımı     | Hayır                   | Yes          | Yes                  |
+| Paylaşılan Görüntü Galerisi | Evet                  | Evet          | Evet                  |
+| Görüntü Tanımı     | Hayır                   | Evet          | Evet                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
 
 Görüntüler aynı zamanda çok kiracılı bir uygulama kaydı kullanan kiracılar arasında bile ölçeklenebilir şekilde paylaşılabilir. Kiracılar arasında görüntü paylaşma hakkında daha fazla bilgi için bkz. [Azure kiracılar genelinde galerı VM görüntülerini paylaşma](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alınmaz. Aşağıdaki kaynaklar için ücretlendirilirsiniz:
 - Paylaşılan görüntü sürümlerini depolamanın depolama maliyeti. Maliyet, görüntü sürümünün yineleme sayısına ve sürümün çoğaltılacağı bölge sayısına bağlıdır. Örneğin, 2 görüntünüz varsa ve her ikisi de 3 bölgeye çoğaltılırsa, boyutlarına göre 6 yönetilen disk üzerinden ücretlendirilirsiniz. Daha fazla bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Kaynak bölgeden çoğaltılan bölgelere ilk görüntü sürümünün çoğaltılmasıyla ilgili ağ çıkış ücretleri. Sonraki çoğaltmalar bölge içinde işlenir, bu nedenle ek ücret alınmaz. 

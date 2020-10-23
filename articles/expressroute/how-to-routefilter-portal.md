@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 5d5f46c4f078038b91881000cf8a6b67000683e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078638"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109145"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Microsoft eşlemesi için yol filtrelerini yapılandırma
 
@@ -51,7 +51,7 @@ Yönlendirme filtrelerini Microsoft 365 hizmetleriyle birlikte eklemek için, Ex
 > 1 Ağustos 2017 ' den önce yapılandırılmış ExpressRoute bağlantı hattı Microsoft eşlemesi, yol filtreleri tanımlanmasa bile Microsoft eşlemesi aracılığıyla tanıtılan tüm hizmet öneklerini alacak. 1 Ağustos 2017 ' de veya sonrasında yapılandırılan ExpressRoute devrelerinin Microsoft eşlemesi, bir yol filtresi devresine iliştirilene kadar tanıtılan öneklere sahip olmayacaktır.
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md) ve [iş akışlarını](expressroute-workflows.md) gözden geçirin.
 
@@ -126,7 +126,7 @@ Bir devreyi yol filtresinden ayırmak için, devreye sağ tıklayıp **Ilişkiyi
 :::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
 
 
-## <a name="clean-up-resources"></a><a name="delete"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir rota filtresini **Sil düğmesini seçerek silebilirsiniz.** Yol filtresinin, bunu yapmadan önce herhangi bir devreden ilişkilendirilmediğinden emin olun.
 

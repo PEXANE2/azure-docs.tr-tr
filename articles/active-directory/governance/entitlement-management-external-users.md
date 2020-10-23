@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dd1234e13f77f1ea95327a0a489e9a97cdc0ffd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447088"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362510"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
@@ -109,7 +109,7 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 
 - Dış kullanıcıların SharePoint Online sitesine ve bir Microsoft 365 grubuyla ilişkili kaynaklara erişmesini istiyorsanız SharePoint Online dış paylaşımını etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- PowerShell 'de dizin düzeyinde Microsoft 365 Gruplar için konuk ilkesinin nasıl ayarlanacağı hakkında bilgi için bkz. [örnek: gruplar Için Konuk ilkesini dizin düzeyinde yapılandırma](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- PowerShell 'de dizin düzeyinde Microsoft 365 Gruplar için konuk ilkesinin nasıl ayarlanacağı hakkında bilgi için bkz. [örnek: gruplar Için Konuk ilkesini dizin düzeyinde yapılandırma](../enterprise-users/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>Takımlarınızın paylaşım ayarlarını gözden geçirin
 

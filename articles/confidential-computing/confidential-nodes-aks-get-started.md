@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: c8c64dadebb092d7f376fd2b6590b26f4dde0ee0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91001083"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341915"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı (Önizleme) kullanarak gizli bilgi işlem düğümleri ile bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -27,11 +27,11 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (A
 ### <a name="deployment-pre-requisites"></a>Dağıtım ön gereksinimleri
 
 1. Etkin bir Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-1. Azure CLı sürüm 2.0.64 veya sonraki bir sürümü, dağıtım makinenizde yüklü ve yapılandırılmış olmalıdır (  `az --version` sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)
+1. Azure CLı sürüm 2.0.64 veya sonraki bir sürümü, dağıtım makinenizde yüklü ve yapılandırılmış olmalıdır ( `az --version` sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)
 1. [aks-önizleme uzantısı](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) en düşük sürüm 0.4.62 
-1. Aboneliğinizde kullanılmak üzere en az altı DCSv2 çekirdeği mevcuttur. Varsayılan olarak, Azure abonelik 8 çekirdekleri başına gizli bilgi işlem için VM çekirdeklerinin kotası. 8 ' den fazla çekirdek gerektiren bir küme sağlamayı planlıyorsanız, kota artışı bileti yükseltmek için [Bu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) yönergeleri izleyin
+1. Aboneliğinizde kullanılmak üzere en az altı **DC <x> s-v2** çekirdeği kullanılabilir. Varsayılan olarak, Azure abonelik 8 çekirdekleri başına gizli bilgi işlem için VM çekirdeklerinin kotası. 8 ' den fazla çekirdek gerektiren bir küme sağlamayı planlıyorsanız, kota artışı bileti yükseltmek için [Bu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) yönergeleri izleyin
 
-### <a name="confidential-computing-node-features"></a>Gizli bilgi işlem düğümü özellikleri
+### <a name="confidential-computing-node-features-dcxs-v2"></a>Gizli bilgi işlem düğümü özellikleri (DC <x> s-v2)
 
 1. Yalnızca Linux kapsayıcılarını destekleyen Linux çalışan düğümleri
 1. Ubuntu Generation 2 18,04 sanal makineleri
@@ -94,14 +94,14 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-Yukarıdaki komutun, DCSv2 node havuzlarıyla yeni bir aks kümesi sağlaması ve iki Daemon kümesini otomatik olarak yüklemesi gerekir-([SGX cihaz eklentisi](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX quote Yardımcısı](confidential-nodes-aks-overview.md#sgx-quote))
+Yukarıdaki komutun **DC <x> s-v2** düğüm havuzlarıyla yeni bir aks kümesi sağlaması ve iki Daemon kümesini otomatik olarak yüklemesi gerekir-([SGX cihaz eklentisi](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX quote Yardımcısı](confidential-nodes-aks-overview.md#sgx-quote))
 
 Az aks Get-Credentials komutunu kullanarak AKS kümeniz için kimlik bilgilerini alın:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-Düğümlerin düzgün şekilde oluşturulduğunu ve SGX ile ilgili Daemon kümelerinin, aşağıda gösterildiği gibi kubectl Get Pod & Nodes komutunu kullanarak DCSv2 düğüm havuzlarında çalıştığını doğrulayın:
+Düğümlerin düzgün bir şekilde oluşturulduğunu ve SGX ile ilgili Daemon kümelerinin, kubectl Get Pod & Nodes komutunu kullanarak aşağıda gösterildiği gibi **DC <x> s-v2** düğüm havuzlarında çalıştığını doğrulayın:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -119,6 +119,8 @@ Bir uygulamayı bir kuşta test etmek için [Enclave](#hello-world) dağıtım b
 az aks update --enable-addons confcom --resource-group myResourceGroup --name myAKSCluster
 ```
 
+![DCSv2 AKS kümesi oluşturma](./media/confidential-nodes-aks-overview/CLIAKSProvisioning.gif)
+
 ## <a name="adding-confidential-computing-node-to-existing-aks-cluster"></a>Mevcut AKS kümesine gizli bilgi işlem düğümü ekleme<a id="existing-cluster"></a>
 
 Bu bölüm, önceden koşul bölümünde listelenen ölçütlere uyan bir AKS kümeniz olduğunu varsayar.
@@ -128,9 +130,12 @@ Bu bölüm, önceden koşul bölümünde listelenen ölçütlere uyan bir AKS k�
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-Şimdi kümeye bir DCSv2 node havuzu ekleyin
-
-```azurecli-interactive
+Şimdi kümeye bir **DC <x> s-v2** düğüm havuzu ekleyin
+    
+> [!NOTE]
+> Gizli bilgi işlem özelliğini kullanmak için mevcut AKS kümenizin en az bir **DC <x> s-v2** VM SKU 'su tabanlı düğüm havuzu olması gerekir. Gizli bilgi işlem DCsv2 VM SKU 'sunun [kullanılabilir SKU 'ları ve desteklenen bölgeleri](virtual-machine-solutions.md)hakkında daha fazla bilgi edinin.
+    
+  ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2 --aks-custom-headers usegen2vm=true
 
 output node pool added

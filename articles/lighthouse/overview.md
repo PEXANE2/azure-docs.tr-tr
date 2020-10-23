@@ -1,28 +1,30 @@
 ---
 title: Azure Lighthouse nedir?
 description: Azure Athouse, hizmet sağlayıcılarının daha yüksek otomasyon ve verimlilik özelliklerine sahip müşterileri için yönetilen hizmetler sunmasına olanak tanır.
-ms.date: 08/19/2020
+ms.date: 10/19/2020
 ms.topic: overview
-ms.openlocfilehash: 41fa836321da7cdb42b9a3419bc0bb32963a5849
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a76606ff48a09c0c31584882e3d2aa164ec97325
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017872"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203798"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse nedir?
 
-Azure Lighthouse, kiracılar arası ve çok kiracılı yönetime olanak tanır. Bu sayede kaynaklar ve kiracılar daha yüksek otomasyon, ölçeklenebilirlik ve gelişmiş idare elde edilir. Azure açık, hizmet sağlayıcıları, Azure platformunda yerleşik kapsamlı ve güçlü yönetim araçlarını kullanarak yönetilen Hizmetleri sunabilir. Bu teklif, birden fazla kiracıda kaynakları yöneten kurumsal BT kuruluşları için de avantaj sağlayabilir.
+Azure Lighthouse, kiracılar arası ve çok kiracılı yönetime olanak tanır. Bu sayede kaynaklar ve kiracılar daha yüksek otomasyon, ölçeklenebilirlik ve gelişmiş idare elde edilir.
+
+Azure açık, hizmet sağlayıcıları, Azure platformunda yerleşik kapsamlı ve güçlü yönetim araçlarını kullanarak yönetilen Hizmetleri sunabilir. Müşteriler, kiracılarına kimlerin erişebileceklerini, erişebilecek kaynakları ve hangi eylemlerin alınacağını denetler. Bu teklif, birden fazla kiracıda kaynakları yöneten [Kurumsal BT kuruluşları](concepts/enterprise.md) için de avantaj sağlayabilir.
 
 ![Azure açık kullanım için genel bakış Diyagramı](media/azure-lighthouse-overview.jpg)
 
 ## <a name="benefits"></a>Yararları
 
-Azure Kathouse, yönetilen Hizmetleri öngörülebilir ve verimli bir şekilde oluşturup sunmanıza yardımcı olur. Avantajlara şunlar dahildir:
+Azure Kathouse, hizmet sağlayıcılarının yönetilen Hizmetleri verimli bir şekilde oluşturmasına ve sunmaya yardımcı olur. Faydaları şunlardır:
 
-- **Ölçekteki yönetim**: müşteri kaynaklarını yönetmeye yönelik müşteri katılımı ve yaşam döngüsü işlemleri daha kolay ve ölçeklenebilir. Mevcut API 'Ler, yönetim araçları ve iş akışları, bulundukları bölgeler ne olursa olsun, temsilcili kaynaklarla kullanılabilir.
-- **Müşteriler Için daha fazla görünürlük ve duyarlık**: MÜŞTERILER, IP 'niz korunurken, erişimi tamamen kaldırma özelliği de dahil olmak üzere, eylemleriniz üzerinde daha fazla görünürlük ve yönetim için temsilci seçtikleri kapsam üzerinde tam denetim sahibi olacaktır.
-- **Kapsamlı ve Birleşik platform araçları**: alet oluşturma DENEYIMIMIZ, EA, CSP ve kullandıkça öde gibi birden fazla lisanslama modeli de dahil olmak üzere temel hizmet sağlayıcısı senaryolarına yöneliktir. Yeni yetenekler, mevcut araçlar ve API 'Ler, lisanslama modelleri ve [bulut çözümü sağlayıcısı programı (CSP)](/partner-center/csp-overview)gibi iş ortağı programlarıyla çalışır. Azure ışıklı kullanımı, mevcut iş akışlarınızla ve uygulamalarınızla tümleştirilebilir ve [iş ortağı kimliğinizi bağlayarak](./how-to/partner-earned-credit.md)müşteri görevlendirmelerinizi takip edebilirsiniz.
+- **Ölçekteki yönetim**: müşteri kaynaklarını yönetmeye yönelik müşteri katılımı ve yaşam döngüsü işlemleri daha kolay ve ölçeklenebilir. Mevcut API 'Ler, yönetim araçları ve iş akışları, bulundukları bölgeler ne olursa olsun, Azure dışında barındırılan makineler dahil olmak üzere Temsilcili kaynaklarla birlikte kullanılabilir.
+- **Müşteriler Için daha fazla görünürlük ve denetim**: müşteriler, yönetim için temsilcdikleri kapsamlar ve izin verilen izinler üzerinde tam denetime sahiptir. Hizmet sağlayıcı eylemlerini denetleyebilir ve isterseniz erişimi tamamen kaldırabilir.
+- **Kapsamlı ve Birleşik platform araçları**: alet oluşturma DENEYIMIMIZ, EA, CSP ve kullandıkça öde gibi birden fazla lisanslama modeli de dahil olmak üzere temel hizmet sağlayıcısı senaryolarına yöneliktir. Azure ışıklı kullanımı, mevcut araçlar ve API 'Ler, lisanslama modelleri, [Azure yönetilen uygulamalar](concepts/managed-applications.md)ve [bulut çözümü sağlayıcısı programı (CSP)](/partner-center/csp-overview)gibi iş ortağı programlarıyla birlikte kullanılabilir. Azure açık Thouse 'ı mevcut iş akışlarınızla ve uygulamalarınızda tümleştirebilir ve [iş ortağı kimliğinizi bağlayarak](./how-to/partner-earned-credit.md)müşteri görevlendirmelerinizi takip edebilirsiniz.
 
 Azure kaynaklarını yönetmek için Azure açık Thouse kullanımıyla ilişkili ek maliyet yoktur. Tüm Azure müşterileri veya iş ortakları, Azure Use 'ı kullanabilir.
 
@@ -30,10 +32,10 @@ Azure kaynaklarını yönetmek için Azure açık Thouse kullanımıyla ilişkil
 
 Azure ışıklı kullanımı, katılım ve yönetimin kolaylaştırılmasına yardımcı olmak için birden çok yol içerir:
 
-- **Azure Temsilcili kaynak yönetimi**: içerik ve denetim düzlemleri arasında geçiş yapmak zorunda kalmadan müşterilerinizin Azure kaynaklarını kendi kiracınızın içinden güvenli bir şekilde yönetin. Abonelikler ve kaynak grupları, yönetim kiracısındaki belirtilen kullanıcılar ve roller için, gerektiğinde erişimi kaldırabilme olanağı temsil edebilir. Daha fazla bilgi için bkz. [Azure temsilcisi kaynak yönetimi](concepts/azure-delegated-resource-management.md).
-- **Yeni Azure Portal deneyimler**: Azure Portal içindeki [ **müşteriler** sayfasında](./how-to/view-manage-customers.md) , platformlar arası bilgileri görüntüleyin. Karşılık gelen bir [ **hizmet** sağlayıcı sayfası](how-to/view-manage-service-providers.md) , müşterilerin hizmet sağlayıcı erişimini görüntülemesine ve yönetmesine olanak tanır.
-- **Azure Resource Manager şablonlar**: şablonlarımız, çapraz kiracı yönetim görevleri gerçekleştirmenize ve Temsilcili müşteri kaynakları eklemenize yardımcı olur. Daha fazla bilgi için bkz. [örnek](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) depomız ve [bir müşteriyi Azure ışıklı kullanmaya ekleme](how-to/onboard-customer.md).
-- **Azure Market 'Te yönetilen hizmet teklifleri**: hizmetlerinizi müşterilere özel veya genel tekliflerle sunun ve Azure 'un açık bir şekilde eklendi otomatik olarak kullanmasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Marketi 'Nde yönetilen hizmet teklifleri](concepts/managed-services-offers.md).
+- **Azure Temsilcili kaynak yönetimi**: içerik ve denetim düzlemleri arasında geçiş yapmak zorunda kalmadan [müşterilerinizin Azure kaynaklarını kendi kiracınızın içinden güvenli bir şekilde yönetin](concepts/azure-delegated-resource-management.md). Müşteri abonelikleri ve kaynak grupları, yönetim kiracısındaki belirtilen kullanıcılar ve roller için, gerektiğinde erişimi kaldırabilme özelliği ile atanabilir.
+- **Yeni Azure Portal deneyimler**: Azure Portal içindeki [ **müşteriler** sayfasında](how-to/view-manage-customers.md) , platformlar arası bilgileri görüntüleyin. Karşılık gelen bir [ **hizmet** sağlayıcı sayfası](how-to/view-manage-service-providers.md) , müşterilerin hizmet sağlayıcı erişimini görüntülemesine ve yönetmesine olanak tanır.
+- **Azure Resource Manager şablonları**: [temsilci atanmış müşteri kaynakları](how-to/onboard-customer.md) eklemek ve [platformlar arası yönetim görevlerini gerçekleştirmek](samples/index.md)için ARM şablonlarını kullanın.
+- **Azure Marketi 'Nde yönetilen hizmet teklifleri**: [hizmetlerinizi müşterilere](concepts/managed-services-offers.md) özel veya genel tekliflerle sunun ve bunları otomatik olarak Azure açık thouse 'a ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

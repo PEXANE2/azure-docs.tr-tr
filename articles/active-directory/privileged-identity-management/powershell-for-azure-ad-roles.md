@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8d9740e05bf4236f1b2b722c9a91b3644533fce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707909"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365519"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri için PowerShell
 
@@ -54,7 +54,7 @@ Bu makale, Azure AD rollerini Privileged Identity Management (PıM) içinde yön
     ![Azure AD kuruluşunun özelliklerinde kuruluş KIMLIĞINI bulma](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> Aşağıdaki bölümler, çalışmaya başlamanıza yardımcı olabilecek basit örneklerdir. Aşağıdaki cmdlet 'lerle ilgili daha ayrıntılı belgeler bulabilirsiniz [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . Ancak, ProviderID parametresindeki "azureResources" öğesini "aadRoles" ile değiştirmelisiniz. Ayrıca, Azure AD kuruluşunuz için RESOURCEID parametresi olarak kiracı KIMLIĞINI de kullanmayı unutmayın.
+> Aşağıdaki bölümler, çalışmaya başlamanıza yardımcı olabilecek basit örneklerdir. Aşağıdaki cmdlet 'lerle ilgili daha ayrıntılı belgeler bulabilirsiniz [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . Ancak, ProviderID parametresindeki "azureResources" öğesini "aadRoles" ile değiştirmelisiniz. Ayrıca, Azure AD kuruluşunuz için RESOURCEID parametresi olarak kiracı KIMLIĞINI de kullanmayı unutmayın.
 
 ## <a name="retrieving-role-definitions"></a>Rol tanımları alınıyor
 
@@ -162,4 +162,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 - [Azure AD özel rolü atama](azure-ad-custom-roles-assign.md)
 - [Azure AD özel rol atamasını kaldırma veya güncelleştirme](azure-ad-custom-roles-update-remove.md)
 - [Azure AD özel rol ataması yapılandırma](azure-ad-custom-roles-configure.md)
-- [Azure AD 'de rol tanımları](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 'de rol tanımları](../roles/permissions-reference.md)

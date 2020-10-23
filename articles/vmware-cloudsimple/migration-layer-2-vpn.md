@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f524bf6af66d44bc13b7c0957de7977968cbef28
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83651015"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427260"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
 
@@ -57,8 +57,8 @@ Aşağıdaki tabloda desteklenen vSphere sürümleri ve ağ bağdaştırıcısı
 
 | vSphere sürümü | Kaynak vSwitch türü | Sanal NIC sürücüsü | Hedef vSwitch türü | Destekleniyor mu? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Evet |
-| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Evet |
+| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Yes |
+| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Yes |
 | vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | E1000 | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
 | vSphere 6.7 UI veya 6.5 P03, NSX-V veya NSX-T 2.2, 6.5 P03 veya üzeri sürümlerindeki sürümler | Tümü | Tümü | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
 
@@ -118,7 +118,7 @@ Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yö
 
 3. Uç VM 'nin Yönetim IP adresine bir SSH oturumu açın. ```get logical-router```Komutu Kullanıcı adı **yönetici** ve parola **cloudsimple 123!** ile çalıştırın.
 
-    ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch03.png)
+    ![Açık bir SSH oturumu gösteren ekran görüntüsü.](media/l2vpn-fetch03.png)
 
 4. ' DR-Provider-LR ' girişi görmüyorsanız aşağıdaki adımları izleyin.
 
@@ -132,7 +132,7 @@ Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yö
 
 7. `get logical-router`Uç VM 'nın SSH oturumunda komutu yeniden çalıştırın. ' DR-Provider-LR ' mantıksal yönlendiricisinin UUID 'SI görüntülenir. L2VPN yapılandırılırken gereken UUID 'yi bir yere unutmayın.
 
-    ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch06.png)
+    ![Mantıksal yönlendirici için UUID 'yi gösteren ekran görüntüsü.](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal anahtar KIMLIĞINI getir
 
@@ -430,7 +430,7 @@ Dağıtım öncesinde, şirket içi güvenlik duvarı kurallarınızın gelen ve
 
 2. Tüm ayıklanan dosyaların bulunduğu klasöre gidin. Büyük gereç boyutu veya NSX-l2t-Client-xlarge. MF ve NSX-l2t-client-Xlarge. ovf için tüm VMDK (NSX-l2t-Client-Large. MF ve NSX-l2t-client-large. ovf 'yi seçerek daha büyük boyutlu gereç boyutu için. **İleri**’ye tıklayın.
 
-    ![Şablon seç ](media/l2vpn-deploy-client02.png) ![ şablon seçin](media/l2vpn-deploy-client03.png)
+    ![](media/l2vpn-deploy-client02.png) ![ Seçili vmdk dosyalarını gösteren şablon ekran görüntüsünü seçin.](media/l2vpn-deploy-client03.png)
 
 3. NSX-T bağımsız istemcisi için bir ad girin ve **İleri**' ye tıklayın.
 

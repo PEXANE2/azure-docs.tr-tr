@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6a7784d052a03971fad84c90cdd70cd16b4a872
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88534226"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Öğretici: Sprınklr ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Sprınklr 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Sprınklr ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -136,11 +136,11 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
 
 1. **+ Çoklu oturum açma Ekle**seçeneğine tıklayın.
 
-    ![Çoklu oturum açma bileşenleri](./media/sprinklr-tutorial/ic782909.png "Tek Sign-Ons")
+    ![Ekran görüntüsünde çoklu oturum açma Ekle düğmesi gösterilir.](./media/sprinklr-tutorial/ic782909.png "Tek Sign-Ons")
 
 1. **Çoklu oturum açma** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açma bileşenleri](./media/sprinklr-tutorial/ic782910.png "Tek Sign-Ons")
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz çoklu oturum açma sayfasını gösterir.](./media/sprinklr-tutorial/ic782910.png "Tek Sign-Ons")
 
     a. **Ad** metin kutusuna yapılandırmanız için bir ad yazın (örneğin: *Waadssotest*).
 
@@ -225,11 +225,11 @@ Bu bölümde, Sprınklr 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. Sol bölmeden **istemci \> kullanıcılarını yönet** ' e gidin.
 
-    ![Ayarlar](./media/sprinklr-tutorial/ic782914.png "Ayarlar")
+    ![Ekran görüntüsü ayarlar/kullanıcılar ' da Kullanıcı Ekle düğmesini gösterir.](./media/sprinklr-tutorial/ic782914.png "Ayarlar")
 
 1. **Kullanıcı Ekle**'ye tıklayın.
 
-    ![Ayarlar](./media/sprinklr-tutorial/ic782915.png "Ayarlar")
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz Kullanıcı Düzenle iletişim kutusunu gösterir.](./media/sprinklr-tutorial/ic782915.png "Ayarlar")
 
 1. **Kullanıcı Düzenle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 

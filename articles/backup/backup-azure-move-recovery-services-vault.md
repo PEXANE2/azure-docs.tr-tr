@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056438"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171617"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -52,7 +52,7 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 
 Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubuna taşımak için:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Kurtarma Hizmetleri kasalarının** listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
    ![Kurtarma Hizmetleri kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -81,7 +81,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubun
 
 Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğe taşıyabilirsiniz
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Kurtarma Hizmetleri kasalarının listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
     ![Kurtarma Hizmetleri kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -178,7 +178,7 @@ Güncel korunan verileri eski kasada tutmanız ve yeni bir kasada korumaya devam
   - Yalnızca eski kasadaki süre dolmamış kurtarma noktaları için yedeklenmiş verileri geri yükleyebileceksiniz.
   - Yeni kasada verilerin yeni bir ilk kopyasının oluşturulması gerekir.
 
-- Bir Azure VM için, eski kasadaki VM için verileri koruma, VM 'yi başka bir kaynak grubuna taşıma ve ardından yeni kasadaki VM 'yi koruma [ile korumayı durdurabilirsiniz](backup-azure-manage-vms.md#stop-protecting-a-vm) . Bir VM 'yi başka bir kaynak grubuna taşımak için [rehberlik ve sınırlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) bölümüne bakın.
+- Bir Azure VM için, eski kasadaki VM için verileri koruma, VM 'yi başka bir kaynak grubuna taşıma ve ardından yeni kasadaki VM 'yi koruma [ile korumayı durdurabilirsiniz](backup-azure-manage-vms.md#stop-protecting-a-vm) . Bir VM 'yi başka bir kaynak grubuna taşımak için [rehberlik ve sınırlamalar](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) bölümüne bakın.
 
   Bir VM tek seferde yalnızca bir kasada korunabilir. Ancak, yeni kaynak grubundaki VM, farklı bir VM olarak kabul edildiği için yeni kasada korunabilir.
 

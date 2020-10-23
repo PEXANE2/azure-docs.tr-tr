@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 1a75c083015d1f10a3ed3dba15480430747756eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c13c5d4bea8bfdb0f70e67ce8f264a1929b8a2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90525025"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150892"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Öğretici: Blazor Server sohbet uygulaması oluşturma
 
@@ -361,7 +361,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
 
 ## <a name="publish-to-azure"></a>Azure’da Yayımlama
 
-   Şimdiye kadar, Blazor uygulaması yerel bir SignalR üzerinde çalışıyor ve Azure App Service 'e dağıtırken, bir Blazor Server uygulamasını çok sayıda eşzamanlı SignalR bağlantısına ölçeklendirmeye olanak tanıyan [Azure SignalR hizmetini](https://docs.microsoft.com/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service) kullanmanız önerilir. Ayrıca, SignalR hizmetinin küresel erişim ve yüksek performanslı veri merkezleri Coğrafya nedeniyle gecikme süresini azaltmaya önemli ölçüde yardımcı olur.
+   Şimdiye kadar, Blazor uygulaması yerel bir SignalR üzerinde çalışıyor ve Azure App Service 'e dağıtırken, bir Blazor Server uygulamasını çok sayıda eşzamanlı SignalR bağlantısına ölçeklendirmeye olanak tanıyan [Azure SignalR hizmetini](/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service) kullanmanız önerilir. Ayrıca, SignalR hizmetinin küresel erişim ve yüksek performanslı veri merkezleri Coğrafya nedeniyle gecikme süresini azaltmaya önemli ölçüde yardımcı olur.
 
 > [!IMPORTANT]
 > Blazor Server uygulamasında, Kullanıcı arabirimi durumları sunucu tarafında tutulur ve bu durumda sunucu yapışkan 'nin gerekli olduğu anlamına gelir. Tek bir App Server varsa, Server Sticky, tasarım tarafından yapılır. Ancak, birden çok uygulama sunucusu varsa, istemci anlaşması ve bağlantısının farklı sunuculara gidebilme ve Blazor uygulamasındaki UI hatalarına neden olabileceği bir şansınız vardır. Bu nedenle, aşağıdaki gibi sunucu Sticky Server 'ı etkinleştirmeniz gerekir `appsettings.json` :
@@ -385,7 +385,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
 
    Azure 'da, uygulamanızı otomatik olarak Azure SignalR hizmetine geçiş yapmak için hizmet bağımlılığı aşağıdaki işlemleri yapar.
 
-   * [`HostingStartupAssembly`](https://docs.microsoft.com/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1)Azure SignalR hizmetini kullanmak için güncelleştirin.
+   * [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1)Azure SignalR hizmetini kullanmak için güncelleştirin.
    * Azure SignalR hizmeti NuGet paketi başvurusunu ekleyin.
    * Bağımlılık ayarlarını kaydetmek için profil özelliklerini güncelleştirin.
    * Gizli dizileri Yapılandır deposu, seçtiğiniz seçeneğe bağlıdır.
@@ -423,10 +423,10 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
    }
    ```
 
-1. Azure SignalR hizmetini `ConnectionString` `appsetting.json` [gizli yönetici](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=visual-studio#secret-manager) aracında veya içinde yapılandırma
+1. Azure SignalR hizmetini `ConnectionString` `appsetting.json` [gizli yönetici](/aspnet/core/security/app-secrets?tabs=visual-studio&view=aspnetcore-3.1#secret-manager) aracında veya içinde yapılandırma
 
 > [!NOTE]
-> 2. adım, [`HostingStartupAssembly`](https://docs.microsoft.com/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) SignalR SDK için kullanılarak değiştirilebilir.
+> 2. adım, [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) SignalR SDK için kullanılarak değiştirilebilir.
 > 
 > 1. İçinde Azure SignalR hizmetini açmak için yapılandırma Ekle `appsetting.json`
 >    ```js
@@ -470,4 +470,4 @@ Yüksek kullanılabilirlik hakkında daha fazla bilgi edinin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [ASP.NET Core Blazor](https://docs.microsoft.com/aspnet/core/blazor)
+* [ASP.NET Core Blazor](/aspnet/core/blazor)

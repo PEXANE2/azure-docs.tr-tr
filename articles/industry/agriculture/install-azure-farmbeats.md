@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79479568"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330487"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats'i yükleme
 
@@ -71,7 +71,7 @@ Azure Farmtts 'nin maliyeti, temel alınan Azure hizmetlerinin maliyetinin topla
 
 Hazırlama ve yükleme dahil olmak üzere tüm Azure Farmtts kurulumu bir saatten kısa sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Farmtts 'nin gerçek yüklemesine başlamadan önce aşağıdaki adımları gerçekleştirmeniz gerekir:
 
@@ -87,7 +87,7 @@ Azure Farmtts 'yi yüklemek için Azure kiracısında aşağıdaki izinlere sahi
 
 Market 'ten yüklenen Farmtts 'leri çalıştıran kişinin, Farmtts 'nin yüklenmekte olduğu kaynak grubunun sahibi olması gerekir. Abonelik sahipleri için, kaynak grubu oluşturulduğunda bu otomatik olarak gerçekleşir. Diğerleri için lütfen kaynak grubunu önceden oluşturun ve abonelik sahibinden kaynak grubunun sahibini yapmasını isteyin.
 
-[Rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/check-access)yönergelerini izleyerek Azure Portal erişim izinlerinizi doğrulayabilirsiniz.
+[Azure rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/check-access)yönergelerini izleyerek Azure Portal erişim izinlerinizi doğrulayabilirsiniz.
 
 ### <a name="decide-subscription-and-region"></a>Aboneliğe ve bölgeye karar verme
 
@@ -172,7 +172,7 @@ Yükleme tamamlandıktan sonra, yükleme sırasında verdiğiniz web sitesi adı
 
 **Datahub** , https:// \<FarmBeats-website-name> -api.azurewebsites.net/Swagger adresinde bulunabilir. Burada, farklı Farmtts API nesneleri ve API 'lerde REST işlemleri gerçekleştirmeniz gerekir.
 
-## <a name="upgrade"></a>Yükseltme
+## <a name="upgrade"></a>Upgrade
 
 Farmtts 'leri en son sürüme yükseltmek için aşağıdaki adımları PowerShell ortamını kullanarak bir Cloud Shell örneğinde çalıştırın. Kullanıcının, Farmtts 'nin yüklü olduğu aboneliğin sahibi olması gerekir.
 
@@ -198,7 +198,7 @@ Kullanıcılardan önce bir abonelik seçmesi ve bir depolama hesabı oluşturma
 
 Dosyadaki input.jsyolu isteğe bağlıdır. Belirtilmezse, betik tüm gerekli girişleri ister. Yükseltmenin yaklaşık 30 dakika içinde tamamlanmalıdır.
 
-## <a name="uninstall"></a>Kaldır
+## <a name="uninstall"></a>Kaldırma
 
 Azure Farmrets veri hub 'ını veya hızlandırıcıyı kaldırmak için aşağıdaki adımları izleyin:
 

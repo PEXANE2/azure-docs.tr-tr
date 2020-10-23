@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89014923"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173904"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Şifrelenmiş Azure sanal makinelerini yedekleme ve geri yükleme
 
@@ -16,13 +16,13 @@ Bu makalede, [Azure Backup](backup-overview.md) hizmetini kullanarak Windows vey
 
 ## <a name="encryption-using-platform-managed-keys"></a>Platform tarafından yönetilen anahtarları kullanarak şifreleme
 
-Varsayılan olarak, sanal makinelerinizdeki tüm diskler, [depolama hizmeti şifrelemesini](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)kullanan platform tarafından yönetilen anahtarlar (PMK) kullanılarak otomatik olarak şifrelenir. Bu VM 'Leri, sonunda şifrelemeyi desteklemek için gerekli herhangi bir eylem olmadan Azure Backup kullanarak yedekleyebilirsiniz. Platform tarafından yönetilen anahtarlarla şifreleme hakkında daha fazla bilgi için [Bu makaleye bakın](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).
+Varsayılan olarak, sanal makinelerinizdeki tüm diskler, [depolama hizmeti şifrelemesini](../storage/common/storage-service-encryption.md)kullanan platform tarafından yönetilen anahtarlar (PMK) kullanılarak otomatik olarak şifrelenir. Bu VM 'Leri, sonunda şifrelemeyi desteklemek için gerekli herhangi bir eylem olmadan Azure Backup kullanarak yedekleyebilirsiniz. Platform tarafından yönetilen anahtarlarla şifreleme hakkında daha fazla bilgi için [Bu makaleye bakın](../virtual-machines/windows/disk-encryption.md#platform-managed-keys).
 
 ![Şifrelenmiş diskler](./media/backup-encryption/encrypted-disks.png)
 
 ## <a name="encryption-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak şifreleme
 
-Özel yönetilen anahtarlarla (CMK) disk şifrelerken, diskleri şifrelemek için kullanılan anahtar Azure Key Vault depolanır ve sizin tarafınızdan yönetilir. CMK kullanan Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE) şifrelemesi ile farklıdır. ADE, işletim sisteminin şifreleme araçlarını kullanır. SSE, depolama hizmetindeki verileri şifreler ve sanal makinelerinize yönelik herhangi bir işletim sistemini veya görüntüyü kullanmanıza olanak sağlar. Yönetilen disklerin müşteri tarafından yönetilen anahtarlarla şifrelenmesi hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)bakın.
+Özel yönetilen anahtarlarla (CMK) disk şifrelerken, diskleri şifrelemek için kullanılan anahtar Azure Key Vault depolanır ve sizin tarafınızdan yönetilir. CMK kullanan Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE) şifrelemesi ile farklıdır. ADE, işletim sisteminin şifreleme araçlarını kullanır. SSE, depolama hizmetindeki verileri şifreler ve sanal makinelerinize yönelik herhangi bir işletim sistemini veya görüntüyü kullanmanıza olanak sağlar. Yönetilen disklerin müşteri tarafından yönetilen anahtarlarla şifrelenmesi hakkında daha fazla bilgi için [Bu makaleye](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)bakın.
 
 ## <a name="encryption-support-using-ade"></a>ADE kullanarak şifreleme desteği
 
@@ -32,8 +32,8 @@ Azure Backup, aşağıdaki tabloda özetlenen Azure AD uygulaması olmadan ve il
 
 **VM disk türü** | **ADE (BEK/dm-crypt)** | **ADE ve KEK**
 --- | --- | ---
-**Yönetilmeyen** | Evet | Evet
-**Yönetilen**  | Evet | Evet
+**Yönetilmeyen** | Yes | Yes
+**Yönetilen**  | Yes | Yes
 
 - [Ade](../security/fundamentals/azure-disk-encryption-vms-vmss.md), [Key Vault](../key-vault/general/overview.md)ve [Keks](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)hakkında daha fazla bilgi edinin.
 - Azure VM disk şifrelemesi [hakkında SSS](../security/fundamentals/azure-disk-encryption-vms-vmss.md) makalesini okuyun.

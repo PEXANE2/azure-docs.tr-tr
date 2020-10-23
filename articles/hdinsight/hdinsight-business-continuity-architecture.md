@@ -8,12 +8,12 @@ keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856441"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207589"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight iş sürekliliği mimarileri
 
@@ -57,6 +57,8 @@ Hive olay tabanlı çoğaltma, birincil ve ikincil kümeler arasında yapıland�
 Etkin bir *birincil durumda, bekleme ikincili olan*uygulamalar etkin birincil bölgeye yazılır, ancak bekleyen bir ikincil küme, normal işlemler sırasında salt okunurdur. Normal işlemler sırasında, bölgeye özgü okuma işlemlerinin ikinciye yük devretme işlemini seçebilirsiniz.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+
+Hive çoğaltma ve kod örnekleri hakkında daha fazla bilgi için [Azure HDInsight kümelerinde Apache Hive çoğaltmaya](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication) başvurabilirsiniz
 
 ## <a name="apache-spark"></a>Apache Spark
 

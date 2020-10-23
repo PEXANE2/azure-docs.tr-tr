@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "88526644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Öğretici: Iş noktası denetimiyle tümleştirme Azure Active Directory
@@ -103,20 +103,20 @@ Azure AD çoklu oturum açmayı Iş noktası denetimiyle yapılandırmak için a
     ![Çalışma noktası denetimi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
     1. **Tanımlayıcı** metin kutusunda, aşağıdaki düzende bir URL girin:<br/>
-    ***https://<<i></i> ınstancename>-SAML.workspot.com/SAML/Metadata***
+    **_https://<<i></i> INSTANCENAME>-saml.workspot.com/saml/metadata_*_
 
-    1. **Yanıt URL** 'si metin kutusuna aşağıdaki düzende bir URL girin:<br/>
-    ***https://<<i></i> ınstancename>-SAML.workspot.com/SAML/assertion***
+    1. _ *Yanıt URL 'si** metin kutusuna şu düzende bir URL girin: <br/> 
+    * *_https://<<i></i> InstanceName>-SAML.workspot.com/SAML/assertion_*_
 
-5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla**' yı seçin.
+5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız _ * ek URL 'Leri ayarla * * seçeneğini belirleyin.
 
     ![Çalışma noktası denetimi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki düzende bir URL girin:<br/>
-    ***https://<<i></i> ınstancename>-SAML.workspot.com/***
+    **_https://<<i></i> INSTANCENAME>-saml.workspot.com/_*_
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile değiştirin. Bu değerleri almak için [Iş noktası denetimi istemci destek ekibine](mailto:support@workspot.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümündeki desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile değiştirin. Bu değerleri almak için [Iş noktası denetimi istemci destek ekibine](mailto:support@workspot.com) başvurun. Ayrıca, Azure portal _*temel SAML yapılandırması** bölümünde bulunan desenlere de başvurabilirsiniz.
 
 6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksinimlerinize göre kullanılabilir seçeneklerden **sertifika (base64)** indirmek için **İndir** ' i seçin. Bu dosyayı bilgisayarınıza kaydedin.
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665404"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320710"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
 
@@ -40,13 +40,20 @@ Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir
 
 İletişim Hizmetleri, [doğrudan gönderme](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 'sini kullanarak platforma özgü çeşitli anında iletme bildirimi hizmetleriyle iletişim kurmak Için Azure Notification Hub 'ını doğrudan bir geçiş hizmeti olarak kullanır. Bu, uygulamalarınıza düşük gecikme süresi ve güvenilir çağrı bildirimleri sunmak için mevcut Azure Notification Hub kaynaklarınızı ve yapılandırmanızı yeniden kullanmanıza olanak tanır.
 
+> [!NOTE]
+> Şu anda yalnızca çağırma anında iletme bildirimleri destekleniyor.
+
 ### <a name="notification-hub-provisioning"></a>Notification Hub 'ı sağlama 
 
-İstemci cihazlarına Notification Hubs kullanarak anında iletme bildirimleri göndermek için, Iletişim Hizmetleri kaynağınız ile aynı abonelikte [bir Bildirim Hub 'ı oluşturun](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) . Kullanmak istediğiniz platform bildirimleri hizmeti için Azure Notification Hubs yapılandırılmalıdır. İstemci uygulamanızda Notification Hubs anında iletme bildirimleri alma hakkında bilgi edinmek için bkz. [Notification Hubs kullanmaya](https://docs.microsoft.com/azure/notification-hubs/ios-sdk-get-started) başlama ve sayfanın üst kısmındaki açılan listeden hedef istemci platformunuzu seçme.
+İstemci cihazlarına Notification Hubs kullanarak anında iletme bildirimleri göndermek için, Iletişim Hizmetleri kaynağınız ile aynı abonelikte [bir Bildirim Hub 'ı oluşturun](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) . Kullanmak istediğiniz platform bildirimleri hizmeti için Azure Notification Hubs yapılandırılmalıdır. İstemci uygulamanızda Notification Hubs anında iletme bildirimleri alma hakkında bilgi edinmek için bkz. [Notification Hubs kullanmaya](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) başlama ve sayfanın üst kısmındaki açılan listeden hedef istemci platformunuzu seçme.
 
-Bildirim Hub 'ınız yapılandırıldıktan sonra, Azure Resource Manager Istemcisini veya Azure portal aracılığıyla Hub için bir bağlantı dizesi sağlayarak Iletişim Hizmetleri kaynağıyla ilişkilendirilebilmeniz gerekir. Bağlantı dizesi "Gönder" izinleri içermelidir. Yalnızca hub 'ınız için özel olarak "Gönder" izinlerine sahip başka bir erişim ilkesi oluşturmanızı öneririz. [Notification Hubs güvenlik ve erişim ilkeleri](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security) hakkında daha fazla bilgi edinin
+> [!NOTE]
+> APNs ve FCM platformları şu anda desteklenmektedir.
 
-> NOTE: Apple Anında İletilen Bildirim Servisi VOıP bildirimlerini etkinleştirmek için, Bildirim Hub 'ınızın adını sonek ile uygulama paketi KIMLIĞINIZ olacak şekilde ayarlamanız gerekir `.voip` . Bkz. [Notification Hubs aracılığıyla APNs VoIP kullanma](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
+Bildirim Hub 'ı yapılandırıldıktan sonra, Azure Resource Manager Istemcisini kullanarak hub için bağlantı dizesi sağlayarak Iletişim Hizmetleri kaynağıyla ilişkilendirebilirsiniz ve Azure portal aracılığıyla ilişkilendirebilirsiniz. Bağlantı dizesi "Gönder" izinleri içermelidir. Yalnızca hub 'ınız için özel olarak "Gönder" izinlerine sahip başka bir erişim ilkesi oluşturmanızı öneririz. [Notification Hubs güvenlik ve erişim ilkeleri](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security) hakkında daha fazla bilgi edinin
+
+> [!IMPORTANT]
+> Apple Anında İletilen Bildirim Servisi VOıP bildirimlerini etkinleştirmek için, Bildirim Hub 'ınızın adını sonek ile uygulama paketi KIMLIĞINIZ olacak şekilde ayarlamanız gerekir `.voip` . Bkz. [Notification Hubs aracılığıyla APNs VoIP kullanma](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Bildirim Hub 'ını yapılandırmak için Azure Resource Manager istemcisini kullanma
 
@@ -67,6 +74,9 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 Portalda Azure Communication Services kaynağınız ' ne gidin. Iletişim Hizmetleri kaynağı içinde Iletişim Hizmetleri sayfasının sol menüsünde anında Iletme bildirimleri ' ni seçin ve daha önce sağladığınız Bildirim Hub 'ını bağlayın. Bağlantı dizenizi ve kaynak KIMLIĞINIZI buradan sağlamanız gerekir:
 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Iletişim hizmetlerinin Event Grid ile nasıl tümleştirildiğini gösteren diyagram.":::
+
+> [!NOTE]
+> Azure Bildirim Hub 'ı bağlantı dizesi güncelleştirilirse, Iletişim Hizmetleri kaynağının de güncellenmesi gerekiyor.
 
 #### <a name="device-registration"></a>Cihaz kaydı 
 

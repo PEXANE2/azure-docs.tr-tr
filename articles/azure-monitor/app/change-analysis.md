@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992871"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168282"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -187,7 +187,9 @@ Uygulama değişikliği analizi ile tümleştirmesinden sonra değişiklik geçm
 - **Bu, beklenenden uzun sürüyor**. Bu ileti, kaydın 2 dakikadan uzun sürmesi anlamına gelir. Bu olağan dışı bir şeydir, ancak yanlış bir sorun olduğu anlamına gelmez. Abonelikler 'e gidebilirsiniz **| ** **Microsoft. changeanalysis** kaynak sağlayıcısı kayıt durumunu denetlemek için kaynak sağlayıcısı. Kullanıcı arabirimini kullanarak, yardımcı olup olmadığını görmek için kaydını silip yeniden kaydedin veya yenileyin. Sorun devam ederse destek 'e başvurun changeanalysishelp@microsoft.com .
     ![RP kaydı çok uzun sürüyor sorunlarını giderme](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
 
+![Sorun giderme araçları seçiliyken bir sanal makine için sorunları Tanıla ve çöz aracının ekran görüntüsü.](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
+![Bir sanal makine için son değişiklikleri çözümle sorun giderme aracının kutucuğunun ekran görüntüsü.](./media/change-analysis/analyze-recent-changes.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

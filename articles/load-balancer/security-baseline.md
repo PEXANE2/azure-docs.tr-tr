@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6d03f0057e657933f4b0f38c48f2a2cdbe1ba2a4
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 2786a45ef779b9c66edda4c765a1cf2140f1bf9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940336"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425291"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure Load Balancer için Azure Güvenlik temeli
 
@@ -104,7 +104,7 @@ Bağlantı noktalarını ve kaynak IP 'Leri gerçek trafik ve tehdit zeka göre 
 
 - [Azure Güvenlik Merkezi’nde tehdit koruması](https://docs.microsoft.com/azure/security-center/threat-protection)
 
-- [Tam zamanında erişimli yönetim bağlantı noktalarınızı güvenli hale getirin](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [Tam zamanında erişim ile yönetim bağlantı noktalarınızın güvenliğini sağlama](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 
 - [Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
 
@@ -402,7 +402,7 @@ Azure CLı, Azure PowerShell veya Azure portal gibi araçlarla belirli kaynaklar
 
 **Rehberlik**: Load Balancer kaynaklarınıza erişimi denetlemek IÇIN Azure RBAC kullanın.
 
-- [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -544,7 +544,7 @@ Azure kaynaklarınız için güvenli bir yapılandırma temeli olarak güvenlik 
 
 - [Azure portal bir şablona tek ve çoklu kaynak verme](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
 
-- [Güvenlik önerileri-bir başvuru kılavuzu](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Güvenlik önerileri - başvuru kılavuzu](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

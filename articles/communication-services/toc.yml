@@ -34,6 +34,8 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: Arama istemci kitaplığını kullanma
           href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: Arama uygulamanızla bir Teams toplantısına katılma
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
 - name: Öğreticiler
   expanded: false
   items:
@@ -62,6 +64,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Ses ve görüntü kavramları
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Teams ile birlikte çalışabilirlik
+          href: concepts/voice-video-calling/teams-interop.md
     - name: İstemci ve sunucu mimarisi
       href: concepts/client-and-server-architecture.md
     - name: Arama akışları
@@ -76,6 +80,10 @@
       href: concepts/event-handling.md
     - name: Bildirimler
       href: concepts/notifications.md
+    - name: Günlüğe kaydetme ve tanılama
+      href: concepts/logging-and-diagnostics.md
+    - name: Ölçümler
+      href: concepts/metrics.md
 - name: Örnekler
   items:
     - name: Grup araması hero örneği
@@ -85,7 +93,7 @@
 - name: Başvurular
   items:
     - name: REST API belgeleri
-      href: 'https://docs.microsoft.com/rest/api/azure/'
+      href: 'https://docs.microsoft.com/rest/api/communication/'
     - name: Arama kitaplığı (Android/Java)
       href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
     - name: Arama kitaplığı (JS)

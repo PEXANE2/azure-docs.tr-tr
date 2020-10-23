@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5918adfb6724c984f4a59fda802e2f4c5cde7c1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964694"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221205"
 ---
 # <a name="unsupported-language-deployments"></a>Desteklenmeyen dil dağıtımları
 
@@ -35,11 +35,11 @@ Modellerinizin dağıtıma aday olması için aşağıdaki ölçütleri karşıl
 ## <a name="process"></a>İşleme
 Dağıtım için aday olan hub 'dan modelleri geçirdikten sonra, çalışma alanınızın **Ayarlar** sayfasına gidip, **Desteklenmeyen bir çevirici hub 'ı** ile ilgili bir bölümü görebileceğiniz sayfanın sonuna kadar kaydırma yaparak bunları bulabilirsiniz.  Bu bölüm yalnızca yukarıda bahsedilen önkoşulları karşılayan projeleriniz varsa görüntülenir.
 
-![Hub 'dan geçiş yapma](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Desteklenmeyen çevirici hub 'ı ile ilgili bölüm bölümünü vurgulayan ekran görüntüsü.](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 **Desteklenmeyen çevirici hub 'ı** seçim sayfasında, **istenmeyen traçler** sekmesi dağıtım için uygun olan modelleri içerir.  Dağıtmak istediğiniz modelleri seçin ve bir istek gönderebilirsiniz.   30 Nisan dağıtım son tarihinden önce, dağıtım için istediğiniz kadar model seçebilirsiniz.
  
-![Hub 'dan geçiş yapma](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Istenmeyen çekim sekmesini gösteren ekran görüntüsü.](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 Gönderildikten sonra, model artık **istenmeyen insanlar** sekmesinde kullanılabilir olmayacaktır ve bunun yerine **istenen seyahat** sekmesinde görüntülenir.  İstediğiniz zaman istediğiniz zaman izleyebilirsiniz.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6732857e278285071c9d36c629920ad9e67368f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef8a93ebdc5eb389608ef3340b9707bfd040a295
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528574"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Öğretici: RFıO ile tümleştirme Azure Active Directory
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açmayı RFıO ile yapılandırmak için aşağıdaki ad�
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    ![RFıO etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-identifier.png)
+    ![Ekran görüntüsü, bir tanımlayıcı girebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-identifier.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.rfpio.com`
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı RFıO ile yapılandırmak için aşağıdaki ad�
 
     c. **Geçiş durumu** metin kutusuna bir dize değeri girin. Bu değeri almak için [Rfıo destek ekibine](https://www.rfpio.com/contact/) başvurun.
 
-    ![RFıO etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-preintegrated-relay.png)
+    ![Ekran görüntüsünde ek U R ls gösterilmektedir.](common/idp-preintegrated-relay.png)
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -138,23 +138,23 @@ Azure AD çoklu oturum açmayı RFıO ile yapılandırmak için aşağıdaki ad�
 
 1. Sol alt köşedeki aşağı açılan listeye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app1.png)
+    ![Ekran görüntüsü bölmenin alt kısmındaki aşağı oku gösterir.](./media/rfpio-tutorial/app1.png)
 
 1. **Kuruluş ayarları**' na tıklayın. 
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app2.png)
+    ![Ekran görüntüsü kuruluş ayarlarının seçili olduğunu gösterir.](./media/rfpio-tutorial/app2.png)
 
 1. **Tümleştirme & Özellikler**' e tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app4.png)
+    ![Ekran görüntüsünde, ayarlardan seçilen özellikler ve tümleştirme gösterilmektedir.](./media/rfpio-tutorial/app4.png)
 
 1. **SAML SSO yapılandırması** ' nda **Düzenle**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app3.png)
+    ![Ekran görüntüsü, Düzenle düğmesi olarak adlandırılan SAML S S O yapılandırmasını gösterir.](./media/rfpio-tutorial/app3.png)
 
 1. Bu bölümde aşağıdaki eylemleri gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app5.png)
+    ![CEkran görüntüsü SAML 'nin etkinleştirildiği SAML S S O yapılandırmasını gösterir.](./media/rfpio-tutorial/app5.png)
     
     a. **Indirilen meta VERI XML** içeriğini kopyalayın ve **kimlik yapılandırma** alanına yapıştırın.
 
@@ -223,23 +223,23 @@ Bu bölümde, RFıO 'a erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. Sol alt köşedeki aşağı açılan listeye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app1.png)
+    ![Ekran görüntüsü bölmenin alt kısmındaki aşağı oku gösterir.](./media/rfpio-tutorial/app1.png)
 
 1. **Kuruluş ayarları**' na tıklayın. 
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app2.png)
+    ![Ekran görüntüsü kuruluş ayarlarının seçili olduğunu gösterir.](./media/rfpio-tutorial/app2.png)
 
 1. **Takım üyeleri**' ne tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app6.png)
+    ![Ekran görüntüsü, ayarlardan seçilen takım üyelerini gösterir.](./media/rfpio-tutorial/app6.png)
 
 1. **Üye Ekle**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app7.png)
+    ![Ekran görüntüsü üye Ekle düğmesini gösterir.](./media/rfpio-tutorial/app7.png)
 
 1. **Yeni Üyeler Ekle** bölümünde. Aşağıdaki eylemleri gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app8.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz yeni üye Ekle ' nin gösterir.](./media/rfpio-tutorial/app8.png)
 
     a. **Her satıra bir e-posta girin** alanına e-posta **adresini** girin.
 

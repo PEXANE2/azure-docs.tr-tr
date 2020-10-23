@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447463"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370619"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Çözüm hızlandırıcıyı dağıtmak için azureiotsolutions.com sitesini kullanın
 
@@ -38,7 +38,7 @@ Bir çözüm Hızlandırıcısını dağıtabilmeniz için önce, bir Azure abon
 
 Çözüm hızlandırıcılarını dağıtma, kullanıcıları yönetme ve Azure hizmetlerini yönetme izinleriniz, seçili dizindeki rolünüze bağlıdır. Çözüm hızlandırıcılarına ilişkin ortak Azure AD rolleri şunlardır:
 
-* **Genel yönetici**: Azure AD kiracısı başına çok sayıda [genel yönetici](../active-directory/users-groups-roles/directory-assign-admin-roles.md) olabilir:
+* **Genel yönetici**: Azure AD kiracısı başına çok sayıda [genel yönetici](../active-directory/roles/permissions-reference.md) olabilir:
 
   * Bir Azure AD kiracısı oluşturduğunuzda varsayılan olarak bu kiracının genel yöneticisi olursunuz.
   * Genel yönetici, temel ve standart çözüm hızlandırıcılarını dağıtabilir.

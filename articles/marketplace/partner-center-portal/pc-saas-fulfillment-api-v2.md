@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6c890e9fbda316bfa7f5f3a42572f35ca73811ea
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c74535b8cf11ec4beb413654bdddedb5ba847eea
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931810"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275539"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS API sürüm 2
 
@@ -178,7 +178,7 @@ Bir müşteri ortağın giriş sayfası URL 'sine yeniden yönlendirildiğinde, 
 
 API 'YI çağırmak, desteklenen tüm durumlarda SaaS aboneliklerinin abonelik ayrıntılarını ve durumunu döndürür.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Gönderi`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Yayınla`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -256,7 +256,7 @@ Kod: 500 Iç sunucu hatası.  API çağrısını yeniden deneyin.  Hata devam ed
 
 SaaS hesabı bir son müşteri için yapılandırıldıktan sonra yayımcının, Microsoft tarafında abonelik etkinleştirme API 'sini çağırması gerekir.  Bu API çağrısı başarılı olmazsa müşteri faturalandırılmaz.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Gönderi`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Yayınla`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -953,21 +953,20 @@ Yayımcının, SaaS aboneliği durumunun Microsoft tarafı ile tutarlı kalması
 
 Geliştirme sürecini başlatmak için Yayımcı tarafında kukla API yanıtları oluşturmanızı öneririz.  Bu yanıtlar, bu belgede belirtilen örnek yanıtlara bağlı olabilir.
 
-Yayımcı uçtan uca teste hazırsanız: 
+Yayımcı uçtan uca teste hazırsanız:
 
 * Bir SaaS teklifini sınırlı bir önizleme izleyicisine yayımlayın ve önizleme aşamasında saklayın.
-* Bu teklifin 0 fiyatına sahip bir planı olması gerekir, bu nedenle test sırasında gerçek faturalandırma masrafını tetiklemez.  Başka bir seçenek de sıfır olmayan bir fiyat ayarlamak ve 24 saat içindeki tüm test satın alımlarını iptal etmenizi sağlar. 
-* Müşterinin teklifi satın alması gibi tüm akışların uçtan uca çağrıldığından emin olun. 
+* Bu teklifin 0 fiyatına sahip bir planı olması gerekir, bu nedenle test sırasında gerçek faturalandırma masrafını tetiklemez.  Başka bir seçenek de sıfır olmayan bir fiyat ayarlamak ve 24 saat içindeki tüm test satın alımlarını iptal etmenizi sağlar.
+* Müşterinin teklifi satın alması gibi tüm akışların uçtan uca çağrıldığından emin olun.
 * İş ortağı tam satın alma ve faturalandırma akışını test etmek isterse, $0 üzerinde fiyatlandırıldıkları teklifle bunu yapın.  Satın alma, faturalandırılacak ve bir fatura oluşturulacaktır.
 
 Teklifin nerede yayımlandığına bağlı olarak, Azure portal veya Microsoft AppSource sitelerinden bir satın alma akışı tetiklenebilir.
 
 *Değişiklik planı*, *değişiklik miktarı*ve *abonelik kaldırma* eylemleri Yayımcı tarafında test edilir.  Microsoft yan bilgisayardan *abonelik kaldırma* , hem Azure Portal hem de yönetim merkezinden (Microsoft AppSource satın alımlarınızın yönetildiği portal) tetiklenebilir.  *Değişiklik miktarı ve plan* yalnızca yönetim merkezinden tetiklenebilir.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
-Yayımcı desteği seçenekleri için [Iş Ortağı Merkezi ' nde ticari Market programına yönelik desteğe](support.md) bakın.
-
+Yayımcı desteği seçenekleri için [Iş Ortağı Merkezi ' nde ticari Market programına yönelik desteğe](../support.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

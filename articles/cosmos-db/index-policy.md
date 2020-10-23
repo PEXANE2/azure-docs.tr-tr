@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b525f3299420f81670c0aea9872ac5fdef00be97
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089522"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277807"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 
@@ -101,7 +101,7 @@ Yolların dahil edilmesi ve dışlanması için ilke örneklerinin dizinini olu�
 
 Dahil edilen yollarınızın ve dışlanan yolların bir çakışması varsa, daha kesin yol daha önceliklidir.
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 **Dahil edilen yol**: `/food/ingredients/nutrition/*`
 
@@ -271,7 +271,7 @@ Herhangi bir dizin dönüştürmesi sırasında kullanılabilirliği yazmanın b
 
 Yeni Dizin eklenirken kullanılabilirliği okuma etkisi yoktur. Sorgular, Dizin dönüştürme işlemi tamamlandıktan sonra yalnızca yeni dizinleri kullanacaktır. Dizin dönüştürmesi sırasında, sorgu altyapısı var olan dizinleri kullanmaya devam eder, bu nedenle dizinleme değişikliğini başlatmadan önce gözlemlediğiniz şekilde, dizin oluşturma dönüştürmesi sırasında benzer okuma performansını gözlemleyeceksiniz. Yeni dizinler eklenirken tamamlanmamış veya tutarsız sorgu sonuçlarının de riski yoktur.
 
-Dizinler kaldırılırken ve bırakılan dizinlerde filtre uygulayan sorguları hemen çalıştırdığınızda, tutarlı veya tamamlanmış sorgu sonuçlarının garantisi yoktur. Birden çok dizini kaldırır ve tek bir dizin oluşturma İlkesi değişikliğini yaparsanız sorgu altyapısı, Dizin dönüştürmesi boyunca tutarlı ve tamamlanmış sonuçları garanti eder. Ancak, birden çok dizin oluşturma ilkesi değişikliği aracılığıyla dizinleri kaldırırsanız, sorgu altyapısı tüm dizin dönüştürmeleri tamamlanana kadar tutarlı veya tamamlanmamış sonuçları garanti etmez. Çoğu geliştirici dizinleri çalıştırmaz ve bu dizinleri kullanan sorguları hemen çalıştırmayı dener. bu durum, uygulamada düşüktür.
+Dizinler kaldırılırken ve bırakılan dizinlerde filtre uygulayan sorguları hemen çalıştırdığınızda, tutarlı veya tamamlanmış sorgu sonuçlarının garantisi yoktur. Birden çok dizini kaldırır ve tek bir dizin oluşturma İlkesi değişikliğini yaparsanız sorgu altyapısı, Dizin dönüştürmesi boyunca tutarlı ve tamamlanmış sonuçlar sağlar. Ancak, birden çok dizin oluşturma ilkesi değişikliği aracılığıyla dizinleri kaldırırsanız, tüm dizin dönüştürmeleri tamamlanana kadar sorgu altyapısı tutarlı veya tamamlanmamış sonuçlar vermez. Çoğu geliştirici dizinleri çalıştırmaz ve bu dizinleri kullanan sorguları hemen çalıştırmayı dener. bu durum, uygulamada düşüktür.
 
 > [!NOTE]
 > Mümkün olduğunda, her zaman birden çok dizin oluşturma değişikliğini tek bir dizin oluşturma ilkesi değişikliğine göre gruplemeye çalışırsınız

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f116139d68f2382085dbbab5e862d0c621ad2e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409689"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282456"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek için MongoDB uzantı komutlarını kullanma 
 
-Aşağıdaki belge, MongoDB için Azure Cosmos DB API 'sine özgü özel eylem komutlarını içerir. Bu komutlar [Azure Cosmos DB kapasite modeline](databases-containers-items.md)özgü veritabanı kaynaklarını oluşturmak ve almak için kullanılabilir.
+Aşağıdaki belge, MongoDB için Azure Cosmos DB API 'sine özgü özel eylem komutlarını içerir. Bu komutlar [Azure Cosmos DB kapasite modeline](account-databases-containers-items.md)özgü veritabanı kaynaklarını oluşturmak ve almak için kullanılabilir.
 
 MongoDB için Azure Cosmos DB API 'sini kullanarak, MongoDB uygulamanızda yatırımlarınızı korurken küresel dağıtım, otomatik parçalama, yüksek kullanılabilirlik, gecikme süreleri, otomatik, bekleyen şifreleme, yedeklemeler ve çok daha fazlası gibi avantajların Cosmos DB avantajlarından yararlanabilirsiniz. Açık kaynaklı [MongoDB istemci sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak MongoDB için Azure Cosmos DB API 'si ile iletişim kurabilirsiniz. Azure Cosmos DB MongoDB API 'SI, mevcut istemci sürücülerinin [MongoDB kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)bağlanarak kullanımını sağlar.
 

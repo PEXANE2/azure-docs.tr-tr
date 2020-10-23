@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570006"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320224"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL hiper ölçek sunucu grupları sorunlarını giderme
 Bu makalede, sunucu grubunuzun sorunlarını gidermek için kullanabileceğiniz bazı teknikler açıklanmaktadır. Bu makaleye ek olarak, sunucu grubunuz hakkında ölçümleri görselleştirmek için [kibana](monitor-grafana-kibana.md) kullanarak günlükleri nasıl arayacağını veya [Grafana](monitor-grafana-kibana.md) kullanacağınızı okumak isteyebilirsiniz. 
@@ -51,13 +51,13 @@ Not defterleri, ne yapılacağını/nasıl yapılacağını açıklamaya yöneli
 
 ### <a name="install-tools"></a>Araçları yükleme
 
-`kubectl` `azdata` Azure Data Studio ' de not defterini çalıştırmak için kullandığınız istemci makineye Azure Data Studio ve ' yi yükleyebilirsiniz. Bunu yapmak için lütfen [istemci araçları 'Nı yüklemek](install-client-tools.md) üzere yönergeleri izleyin
+`kubectl` [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio ' de not defterini çalıştırmak için kullandığınız istemci makineye Azure Data Studio ve ' yi yükleyebilirsiniz. Bunu yapmak için lütfen [istemci araçları 'Nı yüklemek](install-client-tools.md) üzere yönergeleri izleyin
 
 ### <a name="update-the-path-environment-variable"></a>PATH ortam değişkenini güncelleştirme
 
 Bu araçların bu istemci makinede herhangi bir yerden çağrılabileceğini doğrulayın. Örneğin, bir Windows istemci makinesinde, yol sistemi ortam değişkenini güncelleştirin ve kubectl 'yi yüklediğiniz klasörü ekleyin.
 
-### <a name="sign-in-with-azdata"></a>İle oturum açın `azdata`
+### <a name="sign-in-with-azure-data-cli-azdata"></a>İle oturum açın [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 Arc veri denetleyicinizde bu istemci makinesinden ve Azure Data Studio başlamadan önce oturum açın. Bunu yapmak için aşağıdaki gibi bir komut çalıştırın:
 

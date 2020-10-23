@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4e8623ecb351fa99a437de70a9b74a70fb6228cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091670"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151146"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için şifreleme ve Azure Key Vault Client-Side
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -53,7 +53,7 @@ Zarf tekniği aracılığıyla şifre çözme aşağıdaki şekilde çalışmakt
 Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kullanır. Özellikle, AES ile [Şifre blok zincirleme (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) modu. Her bir hizmet biraz farklı çalışır, bu nedenle bunlardan her birini burada ele alınacaktır.
 
 ### <a name="blobs"></a>Bloblar
-İstemci kitaplığı şu anda yalnızca tüm Blobların şifrelenmesini destekliyor. Özellikle, kullanıcılar **Uploadfrom** yöntemlerini veya **OpenWrite** metodunu kullanırken şifreleme desteklenir. İndirmeler için hem tamamlanma hem de Aralık İndirmeleri desteklenir.
+İstemci kitaplığı şu anda yalnızca tüm Blobların şifrelenmesini destekliyor. İndirmeler için hem tamamlanma hem de Aralık İndirmeleri desteklenir.
 
 Şifreleme sırasında, istemci kitaplığı, 16 baytlık rastgele bir başlatma vektörü (IV), 32 baytlık bir rastgele içerik şifreleme anahtarı (CEK) ile birlikte oluşturulur ve bu bilgileri kullanarak blob verilerinin zarf şifrelemesini gerçekleştirir. Sarmalanan CEK ve bazı ek şifreleme meta verileri, hizmet üzerindeki şifreli blob ile birlikte blob meta verileri olarak depolanır.
 
@@ -62,9 +62,9 @@ Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](ht
 > 
 > 
 
-Şifrelenmiş bir blob 'u indirmek, **DownloadTo** / **bloenine akış** kolaylığı yöntemlerine downloadto kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
+Tüm bir blob 'u indirirken sarmalanmış CEK sarmalanmış ve bu durumda, veri şifresi çözülen verileri kullanıcılara döndürmek için IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
 
-Şifrelenmiş Blobun rastgele bir aralığın (**downloadrange** yöntemleri) indirilmesi, istenen aralığın şifresini başarıyla çözmek için kullanılabilecek az miktarda ek veri alabilmek için kullanıcılar tarafından sunulan aralığı ayarlamayı içerir.
+Şifrelenmiş bloba rastgele bir aralığın indirilmesi, istenen aralığın şifresini başarıyla çözmek için kullanılabilecek daha az miktarda ek veri alabilmek için kullanıcılar tarafından sunulan aralığın ayarlanmasını içerir.
 
 Tüm blob türleri (blok Blobları, sayfa Blobları ve ekleme Blobları) Bu şema kullanılarak şifrelenebilir/şifresi çözülür.
 
@@ -77,9 +77,14 @@ Sıra iletileri herhangi bir biçimde olduğundan, istemci kitaplığı, ileti m
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 ```
 
-Şifre çözme sırasında, Sarmalanan anahtar kuyruk iletisinden ayıklanır ve sarmalanmamış. IV Ayrıca kuyruk iletisinden çıkarılır ve sıra ileti verilerinin şifresini çözmek için sarmalanmamış anahtarla birlikte kullanılır. Şifreleme meta verilerinin küçük olduğunu unutmayın (500 bayt altında), bu nedenle bir kuyruk iletisi için 64 KB sınırına doğru sayılır, etki alanı yönetilebilir olmalıdır.
+Şifre çözme sırasında, Sarmalanan anahtar kuyruk iletisinden ayıklanır ve sarmalanmamış. IV Ayrıca kuyruk iletisinden çıkarılır ve sıra ileti verilerinin şifresini çözmek için sarmalanmamış anahtarla birlikte kullanılır. Şifreleme meta verilerinin küçük olduğunu unutmayın (500 bayt altında), bu nedenle bir kuyruk iletisi için 64 KB sınırına doğru sayılır, etki alanı yönetilebilir olmalıdır. Şifrelenmiş iletinin, yukarıdaki kod parçacığında gösterildiği gibi Base64 kodlamalı olacağını unutmayın. Bu, gönderilen iletinin boyutunu da genişletecektir.
 
 ### <a name="tables"></a>Tablolar
+> [!NOTE]
+> Tablo hizmeti, Azure depolama istemci kitaplığı 'nda yalnızca 9. x üzerinden desteklenir.
+> 
+> 
+
 İstemci kitaplığı, ekleme ve değiştirme işlemleri için varlık özelliklerinin şifrelenmesini destekler.
 
 > [!NOTE]
@@ -111,22 +116,34 @@ Batch işlemlerinde, bu toplu işlemdeki tüm satırlarda aynı KEK kullanılaca
 ## <a name="azure-key-vault"></a>Azure Key Vault
 Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Kullanıcılar, Azure Key Vault kullanarak anahtarları ve gizli dizileri (kimlik doğrulama anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları,) şifreleyebilir. PFX dosyaları ve parolalar), donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak. Daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/general/overview.md)
 
-Depolama istemci kitaplığı, anahtarları yönetmek için Azure genelinde ortak bir çerçeve sağlamak üzere Key Vault çekirdek kitaplığını kullanır. Kullanıcılar ayrıca Key Vault uzantıları kitaplığını kullanmanın ek avantajını de alır. Uzantılar kitaplığı basit ve sorunsuz simetrik/RSA yerel ve bulut anahtar sağlayıcılarının yanı sıra toplama ve önbelleğe alma ile ilgili yararlı işlevler sağlar.
+Depolama istemci kitaplığı, anahtarları yönetmek için Azure genelinde ortak bir çerçeve sağlamak üzere çekirdek kitaplığındaki Key Vault arabirimlerini kullanır. Kullanıcılar, sağladığı tüm ek avantajlar için Key Vault kitaplıklarından yararlanabilir (basit ve sorunsuz simetrik/RSA yerel ve bulut anahtar sağlayıcılarının yanı sıra toplama ve önbelleğe alma konusunda yardımcı olur.
 
 ### <a name="interface-and-dependencies"></a>Arabirim ve bağımlılıklar
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Key Vault tümleştirme için gereken iki paket vardır:
+
+* Azure. Core, `IKeyEncryptionKey` ve `IKeyEncryptionKeyResolver` arabirimlerini içerir. .NET için depolama istemci kitaplığı zaten bir bağımlılık olarak tanımlıyor.
+* Azure. Security. Keykasası. Keys (v4. x) Key Vault REST istemcisinin yanı sıra istemci tarafı şifrelemesiyle kullanılan şifreleme istemcilerini içerir.
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 Üç Key Vault paketi vardır:
 
 * Microsoft. Azure. Keykasası. Core, Ikey ve ıkeyresolver içerir. Bağımlılıkları olmayan küçük bir pakettir. .NET için depolama istemci kitaplığı, bunu bir bağımlılık olarak tanımlar.
-* Microsoft. Azure. Keykasasında Key Vault REST istemcisi bulunur.
-* Microsoft. Azure. Keykasası. Extensions, şifreleme algoritmalarının ve bir RSAKey ve bir SymmetricKey uygulamalarının bulunduğu uzantı kodunu içerir. Çekirdek ve Anahtar Kasası ad alanlarına bağlıdır ve bir toplama Çözümleyicisi (kullanıcılar birden çok anahtar sağlayıcı kullanmak istediğinizde) ve bir önbelleğe alma anahtar çözümleyici tanımlamak için işlevsellik sağlar. Depolama istemci kitaplığı bu pakete doğrudan bağlı olmasa da, kullanıcılar anahtarlarını depolamak için Azure Key Vault kullanmak veya yerel ve bulut şifreleme sağlayıcılarını kullanmak için Key Vault uzantıları kullanmak istediklerinde, bu pakete ihtiyacı vardır.
+* Microsoft. Azure. Keykasası (v3. x) Key Vault REST istemcisini içerir.
+* Microsoft. Azure. Keykasası. Extensions (v3. x), şifreleme algoritmalarının ve bir RSAKey ve bir SymmetricKey uygulamalarının bulunduğu uzantı kodunu içerir. Çekirdek ve Anahtar Kasası ad alanlarına bağlıdır ve bir toplama Çözümleyicisi (kullanıcılar birden çok anahtar sağlayıcı kullanmak istediğinizde) ve bir önbelleğe alma anahtar çözümleyici tanımlamak için işlevsellik sağlar. Depolama istemci kitaplığı bu pakete doğrudan bağlı olmasa da, kullanıcılar anahtarlarını depolamak için Azure Key Vault kullanmak veya yerel ve bulut şifreleme sağlayıcılarını kullanmak için Key Vault uzantıları kullanmak istediklerinde, bu pakete ihtiyacı vardır.
+
+V11 ' de Key Vault kullanımı ile ilgili daha fazla bilgi [v11 şifreleme kodu örneklerinde](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)bulunabilir.
+
+---
 
 Key Vault, yüksek değerli ana anahtarlar için tasarlanmıştır ve Key Vault başına azaltma limitleri bu şekilde göz önünde bulundurularak tasarlanır. Key Vault ile istemci tarafı şifreleme gerçekleştirirken tercih edilen model, Key Vault gizli dizi olarak depolanan ve yerel olarak önbelleğe alınan simetrik ana anahtarları kullanmaktır. Kullanıcıların aşağıdakileri yapması gerekir:
 
 1. Çevrimdışı bir gizli dizi oluşturun ve Key Vault yükleyin.
 2. Şifreleme için geçerli gizli sürümü çözümlemek ve bu bilgileri yerel olarak önbelleğe almak için bir parametre olarak gizli dizi temel tanımlayıcısını kullanın. Önbelleğe alma için CachingKeyResolver kullanın; Kullanıcıların kendi önbelleğe alma mantığını uygulaması beklenmez.
 3. Şifreleme ilkesi oluştururken bir giriş olarak önbelleğe alma Çözümleyicisi 'ni kullanın.
-
-Key Vault kullanımı ile ilgili daha fazla bilgiyi [şifreleme kodu örneklerinde](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)bulabilirsiniz.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 Şifreleme desteği yalnızca .NET için depolama istemci kitaplığı 'nda kullanılabilir. Windows Phone ve Windows Çalışma Zamanı Şu anda şifrelemeyi desteklemiyor.
@@ -138,45 +155,175 @@ Key Vault kullanımı ile ilgili daha fazla bilgiyi [şifreleme kodu örneklerin
 > * Tablolar için, benzer bir kısıtlama vardır. Şifrelenmiş özellikleri, şifreleme meta verilerini güncelleştirmeden güncelleştirmemeye dikkat edin.
 > * Şifrelenmiş blob üzerinde meta verileri ayarlarsanız, verilerin ayarlanmamasından dolayı, şifre çözme için gereken şifrelemeyle ilgili meta verilerin üzerine yazabilirsiniz. Bu, anlık görüntüler için de geçerlidir; şifrelenmiş bir Blobun anlık görüntüsünü oluştururken meta verileri belirtmekten kaçının. Meta verilerin ayarlanması gerekiyorsa, geçerli şifreleme meta verilerini almak için önce **Fetchattributes** yöntemini çağırdığınızdan emin olun ve meta veriler ayarlanırken eş zamanlı yazmaları önleyin.
 > * Yalnızca şifrelenmiş verilerle çalışması gereken kullanıcılar için varsayılan istek seçeneklerinde **Requireencryptıon** özelliğini etkinleştirin. Daha fazla bilgi için aşağıya bakın.
-> 
-> 
+>
+>
 
 ## <a name="client-api--interface"></a>İstemci API 'SI/arabirimi
-Bir EncryptionPolicy nesnesi oluştururken, kullanıcılar yalnızca bir anahtar (Ikey uygulayan), yalnızca bir çözümleyici (ıkeyresolver uygulayan) veya her ikisini de sağlayabilir. Ikey, anahtar tanımlayıcısı kullanılarak tanımlanan ve sarmalama/sarmalama mantığını sağlayan temel anahtar türüdür. Ikeyresolver, şifre çözme işlemi sırasında bir anahtarı çözümlemek için kullanılır. Anahtar tanımlayıcı verilen bir Ikey döndüren bir ResolveKey yöntemi tanımlar. Bu, kullanıcılara birden çok konumda yönetilen birden çok anahtar arasında seçim yapma olanağı sağlar.
+Kullanıcılar yalnızca bir anahtar, yalnızca çözümleyici veya her ikisini birden sağlayabilir. Anahtarlar, anahtar tanımlayıcısı kullanılarak tanımlanır ve sarmalama/sarmalama için mantığı sağlar. Çözümleyiciler, şifre çözme işlemi sırasında bir anahtarı çözümlemek için kullanılır. Anahtar tanımlayıcı verilen bir anahtar döndüren bir Resolve yöntemi tanımlar. Bu, kullanıcılara birden çok konumda yönetilen birden çok anahtar arasında seçim yapma olanağı sağlar.
 
 * Şifreleme için, anahtar her zaman kullanılır ve bir anahtarın yokluğu bir hataya neden olur.
 * Şifre çözme için:
+  * Anahtar belirtilmişse ve tanıtıcısı gerekli anahtar tanımlayıcısıyla eşleşiyorsa, bu anahtar şifre çözme için kullanılır. Aksi takdirde, çözümleyici denenir. Bu denemede hiçbir çözümleyici yoksa bir hata oluşur.
   * Anahtarı almak için belirtilmişse anahtar çözümleyici çağrılır. Çözümleyici belirtilmişse ancak anahtar tanımlayıcısı için bir eşleme yoksa bir hata oluşur.
-  * Çözümleyici belirtilmemişse ancak anahtar belirtilmişse, tanımlayıcı gerekli anahtar tanımlayıcısıyla eşleşiyorsa anahtar kullanılır. Tanımlayıcı eşleşmiyorsa bir hata oluşur.
 
-Bu makaledeki kod örnekleri, bir şifreleme ilkesi ayarlamayı ve şifreli verilerle çalışmayı gösterir, ancak Azure Key Vault çalışmayı gösterir. GitHub 'daki [şifreleme örnekleri](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) , Key Vault tümleştirmeyle birlikte Bloblar, kuyruklar ve tablolar için daha ayrıntılı bir uçtan uca senaryo gösterir.
-
-### <a name="requireencryption-mode"></a>RequireEncryption modu
+### <a name="requireencryption-mode-v11-only"></a>RequireEncryption modu (yalnızca v11)
 Kullanıcılar isteğe bağlı olarak, tüm karşıya yüklemeler ve indirmelerin şifrelenmesi gereken bir işlem modunu etkinleştirebilir. Bu modda, şifreleme ilkesi olmadan veya hizmette şifrelenmeyen verileri karşıdan yükleme girişimleri istemcide başarısız olur. İstek seçenekleri nesnesinin **RequireEncryption** özelliği bu davranışı denetler. Uygulamanız Azure depolama alanında depolanan tüm nesneleri şifreleyeceğini, hizmet istemci nesnesi için varsayılan istek seçeneklerinde **RequireEncryption** özelliğini ayarlayabilirsiniz. Örneğin, istemci nesnesi aracılığıyla gerçekleştirilen tüm blob işlemleri için şifrelemeyi zorunlu kılmak üzere **Cloudblobclient. DefaultRequestOptions. RequireEncryption** öğesini **true** olarak ayarlayın.
 
 
 ### <a name="blob-service-encryption"></a>Blob hizmeti şifrelemesi
+
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+Bir **Clientsideencryptionoptions** nesnesi oluşturun ve bunu, **Specializedblobclientoptions**ile istemci oluşturma üzerinde ayarlayın. Şifreleme seçeneklerini API başına temelinde ayarlayamazsınız. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+
+```csharp
+// Your key and key resolver instances, either through KeyVault SDK or an external implementation
+IKeyEncryptionKey key;
+IKeyEncryptionKeyResolver keyResolver;
+
+// Create the encryption options to be used for upload and download.
+ClientSideEncryptionOptions encryptionOptions = new ClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Set the encryption options on the client options
+BlobClientOptions options = new SpecializedBlobClientOptions() { ClientSideEncryption = encryptionOptions };
+
+// Get your blob client with client-side encryption enabled.
+// Client-side encryption options are passed from service to container clients, and container to blob clients.
+// Attempting to construct a BlockBlobClient, PageBlobClient, or AppendBlobClient from a BlobContainerClient
+// with client-side encryption options present will throw, as this functionality is only supported with BlobClient.
+BlobClient blob = new BlobServiceClient(connectionString, options).GetBlobContainerClient("myContainer").GetBlobClient("myBlob");
+
+// Upload the encrypted contents to the blob.
+blob.Upload(stream);
+
+// Download and decrypt the encrypted contents from the blob.
+MemoryStream outputStream = new MemoryStream();
+blob.DownloadTo(outputStream);
+```
+
+Şifreleme seçenekleri uygulamak için bir **BlobServiceClient** gerekli değildir. Ayrıca, **BlobContainerClient** / **blobclientoptions** nesnelerini kabul eden blobcontainerclient**blobclient** oluşturuculara de geçirilebilir.
+
+İstenen bir **Blobclient** nesnesi zaten varsa ancak istemci tarafı şifreleme seçenekleri olmadan, bu nesnenin bir kopyasını verilen **clientsideencryptionoptions**ile oluşturmak için bir genişletme yöntemi vardır. Bu genişletme yöntemi, sıfırdan yeni bir **Blobclient** nesnesi oluşturma yükünden kaçınır.
+
+```csharp
+using Azure.Storage.Blobs.Specialized;
+
+// Your existing BlobClient instance and encryption options
+BlobClient plaintextBlob;
+ClientSideEncryptionOptions encryptionOptions;
+
+// Get a copy of plaintextBlob that uses client-side encryption
+BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOptions(encryptionOptions);
+```
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 **Blobencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions**kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
 
 ```csharp
 // Create the IKey used for encryption.
- RsaKey key = new RsaKey("private:key1" /* key identifier */);
+RsaKey key = new RsaKey("private:key1" /* key identifier */);
 
- // Create the encryption policy to be used for upload and download.
- BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
+// Create the encryption policy to be used for upload and download.
+BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
 
- // Set the encryption policy on the request options.
- BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
+// Set the encryption policy on the request options.
+BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
 
- // Upload the encrypted contents to the blob.
- blob.UploadFromStream(stream, size, null, options, null);
+// Upload the encrypted contents to the blob.
+blob.UploadFromStream(stream, size, null, options, null);
 
- // Download and decrypt the encrypted contents from the blob.
- MemoryStream outputStream = new MemoryStream();
- blob.DownloadToStream(outputStream, null, options, null);
+// Download and decrypt the encrypted contents from the blob.
+MemoryStream outputStream = new MemoryStream();
+blob.DownloadToStream(outputStream, null, options, null);
 ```
 
+---
+
 ### <a name="queue-service-encryption"></a>Kuyruk hizmeti şifreleme
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+Bir **Clientsideencryptionoptions** nesnesi oluşturun ve **SpecializedQueueClientOptions**ile istemci oluşturma üzerinde ayarlayın. Şifreleme seçeneklerini API başına temelinde ayarlayamazsınız. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+
+```csharp
+// Your key and key resolver instances, either through KeyVault SDK or an external implementation
+IKeyEncryptionKey key;
+IKeyEncryptionKeyResolver keyResolver;
+
+// Create the encryption options to be used for upload and download.
+ClientSideEncryptionOptions encryptionOptions = new ClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Set the encryption options on the client options
+QueueClientOptions options = new SpecializedQueueClientOptions() { ClientSideEncryption = encryptionOptions };
+
+// Get your queue client with client-side encryption enabled.
+// Client-side encryption options are passed from service to queue clients.
+QueueClient queue = new QueueServiceClient(connectionString, options).GetQueueClient("myQueue");
+
+// Send an encrypted queue message.
+queue.SendMessage("Hello, World!");
+
+// Download queue messages, decrypting ones that are detected to be encrypted
+QueueMessage[] queue.ReceiveMessages(); 
+```
+
+Şifreleme seçenekleri uygulamak için bir **QueueServiceClient** gerekli değildir. Ayrıca, **QueueClientOptions** nesnelerini kabul eden **queueclient** oluşturuculara de geçirilebilir.
+
+İstenen bir **Queueclient** nesnesi zaten varsa ancak istemci tarafı şifreleme seçenekleri olmadan, bu nesnenin bir kopyasını verilen **clientsideencryptionoptions**ile oluşturmak için bir genişletme yöntemi vardır. Bu genişletme yöntemi, sıfırdan yeni bir **Queueclient** nesnesi oluşturma yükünü önler.
+
+```csharp
+using Azure.Storage.Queues.Specialized;
+
+// Your existing QueueClient instance and encryption options
+QueueClient plaintextQueue;
+ClientSideEncryptionOptions encryptionOptions;
+
+// Get a copy of plaintextQueue that uses client-side encryption
+QueueClient clientSideEncryptionQueue = plaintextQueue.WithClientSideEncryptionOptions(encryptionOptions);
+```
+
+Bazı kullanıcılar, alınan tüm iletilerin başarıyla çözülebileceği ve anahtarın veya Çözümleyicisinin oluşturması gereken sıralara sahip olabilir. Yukarıdaki örneğin son satırı Bu durumda oluşturulur ve alınan iletilerden hiçbiri erişilebilir olmayacaktır. Bu senaryolarda, **QueueClientSideEncryptionOptions** alt sınıfı istemcilere şifreleme seçenekleri sağlamak için kullanılabilir. Bir kuyruk iletisi şifresi çözülemezse tetiklenecek ve olay için en az bir çağrı eklendiği sürece tetiklenecek bir olay **Decryptionfailed** sunar. Tek tek başarısız iletiler bu şekilde işlenebilir ve bu, **Receivemessages**tarafından döndürülen son **queuemessage []** öğesinden filtrelenirler.
+
+```csharp
+// Create your encryption options using the sub-class.
+QueueClientSideEncryptionOptions encryptionOptions = new QueueClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Add a handler to the DecryptionFailed event.
+encryptionOptions.DecryptionFailed += (source, args) => {
+   QueueMessage failedMessage = (QueueMessage)source;
+   Exception exceptionThrown = args.Exception;
+   // do something
+};
+
+// Use these options with your client objects.
+QueueClient queue = new QueueClient(connectionString, queueName, new SpecializedQueueClientOptions()
+{
+   ClientSideEncryption = encryptionOptions
+});
+
+// Retrieve 5 messages from the queue.
+// Assume 5 messages come back and one throws during decryption.
+QueueMessage[] messages = queue.ReceiveMessages(maxMessages: 5).Value;
+Debug.Assert(messages.Length == 4)
+```
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 Bir **Queueencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions**kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
 
 ```csharp
@@ -194,7 +341,9 @@ Bir **Queueencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (
  CloudQueueMessage retrMessage = queue.GetMessage(null, options, null);
 ```
 
-### <a name="table-service-encryption"></a>Tablo hizmeti şifrelemesi
+---
+
+### <a name="table-service-encryption-v11-only"></a>Tablo hizmeti şifrelemesi (yalnızca v11)
 Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **Tablerequestoptions**Içinde bir **encryptionresolver** belirtmeniz veya varlıkta [encryptproperty] özniteliğini ayarlamanız gerekir.
 
 #### <a name="using-the-resolver"></a>Çözümleyici 'yi kullanma

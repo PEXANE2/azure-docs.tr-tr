@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 31031462d9904e3554c19f47bc82f87746443693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371773"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116725"
 ---
 Aşağıdaki tablolarda [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a özgü kotalar ve sınırlamalar sağlanmaktadır. Event Hubs fiyatlandırması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -50,7 +50,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 | Özellik | Sınırlar |
 | --- | ---|
 | Bant genişliği |  20 cu düzeyinde kapsanır |
-| Ad Alanları | CU başına 50 |
+| Ad alanları | CU başına 50 |
 | Event Hubs |  ad alanı başına 1000 |
 | İleti boyutu | 1 MB |
 | Bölümler | CU başına 2000 |
@@ -71,7 +71,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 | Şema başına bayt cinsinden boyut | 1 MB |   
 | Şema grubu başına özellik sayısı | 1024 |
 | Grup Özellik anahtarı başına bayt cinsinden boyut | 256 | 
-| Grup Özellik anahtarı başına bayt cinsinden boyut | 1024 | 
+| Grup Özellik değeri başına bayt cinsinden boyut | 1024 | 
 
 
 #### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>**Standart** ve **adanmış** katmanlar için farklı sınırlar 

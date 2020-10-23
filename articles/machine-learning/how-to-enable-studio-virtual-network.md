@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df45068ff14d8ac08a17719e4e0338308b504cac
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776094"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92426099"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -89,7 +89,7 @@ Azure Machine Learning, depolama hesaplarına bağlanmak için [veri depoların�
 1. Veri deposu ayarları ' nda, __çalışma alanı tarafından yönetilen kimliği kullanarak Azure Machine Learning hizmetin depolamaya erişmesine Izin ver__için __Evet__ ' i seçin.
 
 
-Bu adımlar, Azure Kaynak tabanlı erişim denetimi (RBAC) kullanarak, çalışma alanı tarafından yönetilen kimliği depolama hizmetine __okuyucu__ olarak ekler. __Okuyucu__ erişimi, çalışma alanının güvenlik duvarı ayarlarını almasına ve verilerin sanal ağdan çıkmadığınızdan emin olmanızı sağlar.
+Bu adımlar, Azure Kaynak tabanlı erişim denetimi (Azure RBAC) kullanarak, çalışma alanı tarafından yönetilen kimliği depolama hizmetine __okuyucu__ olarak ekler. __Okuyucu__ erişimi, çalışma alanının güvenlik duvarı ayarlarını almasına ve verilerin sanal ağdan çıkmadığınızdan emin olmanızı sağlar.
 
 > [!NOTE]
 > Bu değişikliklerin etkili olması 10 dakika kadar sürebilir.
@@ -104,9 +104,9 @@ __Azure Blob depolama__için çalışma alanı tarafından yönetilen kimlik, bl
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage 2. Access Control
 
-Bir sanal ağ içindeki veri erişimini denetlemek için RBAC ve POSIX stili erişim denetim listelerini (ACL 'Ler) kullanabilirsiniz.
+Bir sanal ağ içindeki veri erişimini denetlemek için hem Azure RBAC hem de POSIX stili erişim denetim listelerini (ACL 'Ler) kullanabilirsiniz.
 
-RBAC 'yi kullanmak için, [BLOB veri okuyucusu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) rolüne çalışma alanı tarafından yönetilen kimliği ekleyin. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control).
+Azure RBAC kullanmak için, [BLOB veri okuyucusu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) rolüne çalışma alanı tarafından yönetilen kimliği ekleyin. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
 ACL 'Leri kullanmak için, çalışma alanı tarafından yönetilen kimliğe, tıpkı diğer güvenlik ilkelerine benzer şekilde erişim atanabilir. Daha fazla bilgi için bkz. [dosya ve dizinlerdeki erişim denetim listeleri](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

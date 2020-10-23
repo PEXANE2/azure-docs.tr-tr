@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650485"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207538"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -188,11 +188,11 @@ Yerel uygulamadan kaldırmak için, daha önce bir "parola", AccountKey. Bu, Azu
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory (Azure AD) kimlik doğrulaması
 
-AAD kimlik doğrulaması, ARR 'yi daha denetimli bir şekilde hangi bireylerin veya grupların kullandığını belirlemenizi sağlar. ARR, hesap anahtarı kullanmak yerine [erişim belirteçlerini](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) kabul etmek için yerleşik desteğe sahiptir. Erişim belirteçlerini, zaman sınırlı, kullanıcıya özgü bir anahtar olarak düşünebilirsiniz. Bu, yalnızca istediği belirli kaynakların belirli bölümlerinin kilidini açabilir.
+AAD kimlik doğrulaması, ARR 'yi daha denetimli bir şekilde hangi bireylerin veya grupların kullandığını belirlemenizi sağlar. ARR, hesap anahtarı kullanmak yerine [erişim belirteçlerini](../../../../active-directory/develop/access-tokens.md) kabul etmek için yerleşik desteğe sahiptir. Erişim belirteçlerini, zaman sınırlı, kullanıcıya özgü bir anahtar olarak düşünebilirsiniz. Bu, yalnızca istediği belirli kaynakların belirli bölümlerinin kilidini açabilir.
 
 **Remoterenderingcoordinator** betiği, uzak oturum yönetimini yapılandırmak için kullanılan bir **Azurefrontendaccountınfo** nesnesi döndüren bir yöntemi tutan **ARRCredentialGetter**adlı bir temsilciye sahiptir. **ARRCredentialGetter**'e farklı bir yöntem atayabiliriz. Azure erişim belirteci Içeren bir **Azurefrontendaccountınfo** nesnesi oluşturarak Azure oturum açma akışı kullanmamızı sağlar. Bu erişim belirteci, oturum açan kullanıcıya özgü olur.
 
-1. [Nasıl yapılır: dağıtılan uygulamalar için kimlik doğrulama-kimlik doğrulamasını yapılandırma](../../../how-tos/authentication.md#authentication-for-deployed-applications), özellikle Azure uzamsal bağlayıcılarında listelenen YÖNERGELERI [Azure AD Kullanıcı kimlik doğrulaması](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)' nda takip edersiniz. Bu, yeni bir Azure Active Directory uygulamasının kaydolmasını ve ARR örneğinizin erişimini yapılandırmayı içerir.
+1. [Nasıl yapılır: dağıtılan uygulamalar için kimlik doğrulama-kimlik doğrulamasını yapılandırma](../../../how-tos/authentication.md#authentication-for-deployed-applications), özellikle Azure uzamsal bağlayıcılarında listelenen YÖNERGELERI [Azure AD Kullanıcı kimlik doğrulaması](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)' nda takip edersiniz. Bu, yeni bir Azure Active Directory uygulamasının kaydolmasını ve ARR örneğinizin erişimini yapılandırmayı içerir.
 1. Yeni AAD uygulamasını yapılandırdıktan sonra AAD uygulamanızın aşağıdaki görüntüler gibi göründüğünü denetleyin:
 
     **AAD uygulama-> kimlik doğrulaması** ![ Uygulama kimlik doğrulaması](./media/app-authentication-public.png)
@@ -361,7 +361,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
 
 Kod önce **AquireTokenSilent**kullanarak belirteci sessizce almaya çalışır. Bu, Kullanıcı daha önce bu uygulamayı doğrulamışsa bu başarılı olur. Başarılı olmazsa, daha fazla kullanıcı ile ilgili stratejiye geçin.
 
-Bu kod için, bir erişim belirteci almak üzere [cihaz kod akışını](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code) kullanıyoruz. Bu akış, kullanıcının bir bilgisayar veya mobil cihazda Azure hesabında oturum açmasını ve elde edilen belirtecin HoloLens uygulamasına geri gönderilmesini sağlar.
+Bu kod için, bir erişim belirteci almak üzere [cihaz kod akışını](../../../../active-directory/develop/v2-oauth2-device-code.md) kullanıyoruz. Bu akış, kullanıcının bir bilgisayar veya mobil cihazda Azure hesabında oturum açmasını ve elde edilen belirtecin HoloLens uygulamasına geri gönderilmesini sağlar.
 
 Bu sınıfın bir ARR perspektifinden en önemli bölümü bu satırdır:
 

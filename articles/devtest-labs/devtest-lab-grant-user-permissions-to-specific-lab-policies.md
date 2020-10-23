@@ -3,25 +3,25 @@ title: Belirli laboratuvar ilkelerine Kullanıcı izinleri verme | Microsoft Doc
 description: Her kullanıcının ihtiyaçlarına bağlı olarak DevTest Labs 'deki belirli laboratuvar ilkelerine Kullanıcı izinleri verme hakkında bilgi edinin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8e910a5d4499d104e4b09076ec7862ae96272ef4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 976862476d25e4e9a4933d8a5319eec9d77ca39b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835689"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328479"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Belirli laboratuvar ilkelerine Kullanıcı izinleri verme
 ## <a name="overview"></a>Genel Bakış
 Bu makalede, PowerShell kullanarak kullanıcılara belirli bir laboratuvar ilkesi için izinler verme konusu gösterilmektedir. Bu şekilde, izinler her kullanıcının ihtiyaçlarına göre uygulanabilir. Örneğin, belirli bir kullanıcıya VM ilkesi ayarlarını değiştirme yeteneği vermek isteyebilirsiniz, ancak maliyet ilkelerini etkilemez.
 
 ## <a name="policies-as-resources"></a>Kaynaklar olarak ilkeler
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) makalesinde ele alındığı gibi RBAC, Azure için kaynakların ayrıntılı erişim yönetimine izin verebilir. RBAC kullanarak, DevOps ekibinizdeki görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz.
+Azure RBAC, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) makalesinde anlatıldığı gibi, Azure için kaynakların ayrıntılı erişim yönetimine izin verebilir. Azure RBAC kullanarak, DevOps ekibinizdeki görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmesi için gereken kullanıcılara erişim miktarını verebilirsiniz.
 
-DevTest Labs 'de, ilke **Microsoft. DevTestLab/Labs/policySets/policies/** RBAC eylemini sağlayan bir kaynak türüdür. Her laboratuvar ilkesi, Ilke kaynak türündeki bir kaynaktır ve bir Azure rolüne kapsam olarak atanabilir.
+DevTest Labs 'de, ilke **Microsoft. DevTestLab/Labs/policySets/policies/** Azure RBAC eylemini sağlayan bir kaynak türüdür. Her laboratuvar ilkesi, Ilke kaynak türündeki bir kaynaktır ve bir Azure rolüne kapsam olarak atanabilir.
 
 Örneğin, **Izin VERILEN VM boyutları** ilkesine kullanıcılara okuma/yazma izni vermek Için, **Microsoft. devtestlab/Labs/policysets/policies/** Action ile çalışan özel bir rol oluşturursunuz ve ardından **Microsoft. Devtestlab/Labs/Policysets/policies/AllowedVmSizesInLab**kapsamındaki bu özel role uygun kullanıcıları atamalısınız.
 
-RBAC 'deki özel roller hakkında daha fazla bilgi edinmek için bkz. [özel roller erişim denetimi](../role-based-access-control/custom-roles.md).
+Azure RBAC içindeki özel roller hakkında daha fazla bilgi edinmek için bkz. [Azure özel rolleri](../role-based-access-control/custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>PowerShell kullanarak laboratuvar özel rolü oluşturma
 Başlamak için [Azure PowerShell yüklemeniz](/powershell/azure/install-az-ps)gerekir. 

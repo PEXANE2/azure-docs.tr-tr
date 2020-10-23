@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448289"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275254"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Sunucular için Azure Defender 'a giriş
 
@@ -27,11 +27,18 @@ Linux için Azure Defender, en yaygın Linux denetim çerçevelerinden biri olan
 
 Sunucular için Azure Defender ile birlikte sunulan tehdit algılama ve koruma özellikleri şunlardır:
 
+- **Uç nokta Için Microsoft Defender Için tümleşik lisans (yalnızca Windows)** -sunucular Için Azure Defender,  [uç nokta için Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)içerir. Birlikte, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlar. [Daha fazla bilgi edinin](security-center-wdatp.md).
+
+    Endpoint için Defender bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi 'nde gösterilir. Güvenlik Merkezi 'nden Ayrıca, uç nokta konsolu için Defender ' ı Özet olarak da kullanabilirsiniz ve saldırının kapsamını açığa çıkarmak için ayrıntılı bir araştırma gerçekleştirebilirsiniz. Uç nokta için Microsoft Defender hakkında daha fazla bilgi edinin.
+
+    > [!IMPORTANT]
+    > **Endpoint algılayıcı Için Microsoft Defender** , güvenlik merkezi 'Ni kullanan Windows sunucularında otomatik olarak etkinleştirilir.
+
 - **VM 'ler Için güvenlik açığı değerlendirmesi taraması** -Azure Güvenlik Merkezi 'ne dahil edilen güvenlik açığı tarayıcısı Qualys tarafından desteklenmektedir. 
 
     Qualys ' tarayıcısı, Azure sanal makinelerinizdeki güvenlik açıklarının gerçek zamanlı olarak tanımlanması için önde gelen araçlardan biridir. Bir Qualys lisansına veya hatta bir Qualys hesabına ihtiyacınız yoktur. her şey güvenlik merkezi 'nin içinde sorunsuz bir şekilde işlenir. [Daha fazla bilgi edinin](deploy-vulnerability-assessment-vm.md).
 
-- **Tam zamanında (JIT) VM erişimi**  -tehdit aktörleri, RDP veya SSH gibi açık yönetim bağlantı noktalarına sahip erişilebilir makineleri etkin bir şekilde arayuyor. Tüm sanal makineleriniz bir saldırı için olası hedeflerdir. Bir VM başarıyla tehlikede olduğunda, ortamınızda daha fazla kaynağa saldırmak için giriş noktası olarak kullanılır.
+- **Tam zamanında (JIT) sanal makine (VM) erişimi** -tehdit AKTÖRLERI, RDP veya SSH gibi açık yönetim bağlantı noktalarına sahip erişilebilir makineleri etkin bir şekilde araytırabilirler. Tüm sanal makineleriniz bir saldırı için olası hedeflerdir. Bir VM başarıyla tehlikede olduğunda, ortamınızda daha fazla kaynağa saldırmak için giriş noktası olarak kullanılır.
 
     Sunucular için Azure Defender 'ı etkinleştirdiğinizde, sanal makinelerinize gelen trafiği kilitlemek için tam zamanında VM erişimi 'ni kullanabilir ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltabilirsiniz. [Daha fazla bilgi edinin](just-in-time-explained.md).
 
@@ -46,13 +53,6 @@ Sunucular için Azure Defender ile birlikte sunulan tehdit algılama ve koruma �
 - **Uyarlamalı ağ sağlamlaştırma (ANH)** -kaynaklara ve kaynaklardan gelen trafiği filtrelemek için ağ güvenlik grupları (NSG) uygulanıyor, ağ güvenliği durgunuzu geliştirir. Ancak, NSG üzerinden akan gerçek trafiğin, tanımlanan NSG kurallarının bir alt kümesi olduğu bazı durumlar da olabilir. Bu durumlarda, güvenlik duruşunu artırmak, gerçek trafik desenlerine bağlı olarak NSG kurallarını sağlamlaştırma yoluyla elde edilebilir.
 
     Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak için öneriler sağlar. Gerçek trafik, bilinen güvenilen yapılandırma, tehdit bilgileri ve diğer güvenlik açığı göstergelerini gösteren bir makine öğrenimi algoritması kullanır ve yalnızca belirli IP/bağlantı noktası tanımlama bilgilerine giden trafiğe izin vermek için öneriler sağlar. [Daha fazla bilgi edinin](security-center-adaptive-network-hardening.md).
-
-- **Microsoft Defender Gelişmiş tehdit koruması (ATP) Ile Tümleştirme (yalnızca Windows)** -Azure Defender, Microsoft Defender Gelişmiş tehdit KORUMASı (ATP) ile tümleşir. Birlikte, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlar. [Daha fazla bilgi edinin](security-center-wdatp.md).
-
-    > [!IMPORTANT]
-    > Microsoft Defender ATP algılayıcısı, güvenlik merkezi kullanan Windows sunucularında otomatik olarak etkinleştirilir.
-
-    Microsoft Defender ATP bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi 'nde gösterilir. Güvenlik Merkezi 'nden, Microsoft Defender ATP konsoluna da Özet ve saldırının kapsamını ortaya çıkarmak için ayrıntılı bir araştırma gerçekleştirebilirsiniz. Microsoft Defender ATP hakkında daha fazla bilgi için bkz. [Microsoft Defender ATP hizmetine sunucu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)ekleme.
 
 - **Docker ana bilgisayar sağlamlaştırma** -Azure Güvenlik Merkezi, IaaS Linux VM 'lerinde barındırılan yönetilmeyen kapsayıcıları veya Docker Kapsayıcıları çalıştıran diğer Linux makinelerini belirler. Güvenlik Merkezi, bu kapsayıcıların yapılandırmalarının sürekli değerlendirir. Daha sonra bunları Internet güvenliği (CIS) Docker kıyaslaması için merkezi ile karşılaştırır. Güvenlik Merkezi, CIS Docker kıyaslaması 'nın kural kümesinin tamamını içerir ve kapsayıcılarınız denetimlerden herhangi birini karşılamadığı takdirde sizi uyarır. [Daha fazla bilgi edinin](harden-docker-hosts.md).
 

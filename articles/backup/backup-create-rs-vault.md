@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981494"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171621"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
@@ -35,7 +35,7 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
    - Azure 'u birincil yedek depolama uç noktası olarak kullanıyorsanız, varsayılan **coğrafi olarak yedekli** ayarını kullanmaya devam edebilirsiniz.
    - Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin.
    - [Coğrafi](../storage/common/storage-redundancy.md#geo-redundant-storage) ve [Yerel](../storage/common/storage-redundancy.md#locally-redundant-storage) artıklık hakkında daha fazla bilgi edinin.
-   - Bir bölgede kesinti olmadan veri kullanılabilirliğine ihtiyaç duyuyorsanız, veri fazlalığını garanti edin, sonra [bölge yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage)' yı seçin.
+   - Bir bölgede kesinti olmadan veri kullanılabilirliğine ihtiyaç duyuyorsanız, veri fazlalığını garanti edin, sonra [bölge yedekli depolama](../storage/common/storage-redundancy.md#zone-redundant-storage)' yı seçin.
 
 >[!NOTE]
 >Kasa için depolama çoğaltma ayarları, geçerli çözüm bağlı olduğu için Azure dosya paylaşma yedeğine uygun değildir ve kasaya hiçbir veri aktarılmaz. Anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır.

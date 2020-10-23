@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048500"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460793"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Öğretici: örnek bir istemci uygulamasıyla Azure dijital TWINS 'i araştırma
 
@@ -234,7 +234,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
     :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir":::
 
     >[!NOTE]
-    >Örnek projede, `Query` ek bağımsız değişken içermeyen komutu ' nin eşdeğeridir `Query SELECT * FROM DIGITALTWINS` . [Sorgu API 'lerini](how-to-use-apis-sdks.md) veya [CLI komutlarını](how-to-use-cli.md)kullanarak örneğinizdeki tüm TWINS 'leri sorgulamak için, daha uzun (tamamlanmış) sorguyu kullanın.
+    >Örnek projede, `Query` ek bağımsız değişken içermeyen komutu ' nin eşdeğeridir `Query SELECT * FROM DIGITALTWINS` . [Sorgu API 'lerini](/rest/api/digital-twins/dataplane/query) veya [CLI komutlarını](how-to-use-cli.md)kullanarak örneğinizdeki tüm TWINS 'leri sorgulamak için, daha uzun (tamamlanmış) sorguyu kullanın.
 
 * **Ortammdaki tüm odalar nelerdir?** (modele göre sorgu)
 

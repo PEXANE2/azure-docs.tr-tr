@@ -1,17 +1,17 @@
 ---
-title: Çoğaltmaları oku-MySQL için Azure veritabanı.
+title: Çoğaltmaları oku-MySQL için Azure veritabanı
 description: "MySQL için Azure veritabanı 'nda çoğaltmaları okuma hakkında bilgi edinin: bölge seçme, çoğaltmalar oluşturma, çoğaltmalara bağlanma, çoğaltmayı izleme ve çoğaltmayı durdurma."
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/1/2020
-ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 10/15/2020
+ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876558"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151178"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -38,7 +38,7 @@ Yaygın bir senaryo, bı ve analitik iş yüklerinin raporlama için veri kayna�
 Okuma çoğaltması özelliği MySQL zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Kaynak ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda, ana sunucudaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
 
 > [!IMPORTANT]
-> MySQL için Azure veritabanı, **satır** tabanlı ikili günlüğe kaydetme kullanır. Tablonuzda birincil anahtar eksikse, tablodaki tüm satırlar DML işlemleri için taranır. Bu, daha fazla çoğaltma gecikmesi oluşmasına neden olur. Çoğaltmanın kaynak üzerinde değişikliklere devam edebilmesini sağlamak için, genellikle çoğaltma sunucusunu oluşturmadan önce kaynak sunucudaki tablolara birincil anahtar eklemeniz veya zaten varsa çoğaltma sunucusunu yeniden oluşturmanız önerilir.
+> MySQL için Azure Veritabanı **SATIR** tabanlı ikili günlüğü destekler. Tablonuzda birincil anahtar eksikse, DML işlemleri için tablodaki tüm satırlar taranır. Bu da çoğaltma gecikmesinin artmasına neden olur. Çoğaltmanın kaynaktaki değişikliklere ayak uydurabileceğinden emin olmak için, genellikle çoğaltma sunucusunu oluşturmadan veya önceden varsa yeniden oluşturmadan önce kaynak sunucudaki tablolara birincil anahtar eklenmesini öneririz.
 
 ## <a name="cross-region-replication"></a>Bölgeler arası çoğaltma
 Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
@@ -50,7 +50,7 @@ Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilir
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
 Kaynak sunucunuzun bulunduğu yere bakılmaksızın, aşağıdaki bölgelerin herhangi birinde bir okuma çoğaltması oluşturabilirsiniz. Desteklenen evrensel çoğaltma bölgeleri şunları içerir:
 
-Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2, Orta Batı ABD.
+Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2, Orta Batı ABD.
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
 Evrensel çoğaltma bölgelerine ek olarak, kaynak sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.
@@ -128,6 +128,26 @@ Bir çoğaltmaya yük devretmek istediğinizde,
     
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
+## <a name="global-transaction-identifier-gtid"></a>Genel işlem tanımlayıcısı (GTıD)
+
+Genel işlem tanımlayıcısı (GTıD), bir kaynak sunucuda yürütülen her işlemle oluşturulmuş benzersiz bir tanımlayıcıdır ve MySQL için Azure veritabanı 'nda varsayılan olarak KAPALıDıR. GTıD, 5,7 ve 8,0 sürümlerinde ve yalnızca 16 TB 'a kadar depolamayı destekleyen sunucularda desteklenir. GTıD hakkında daha fazla bilgi edinmek ve nasıl kullanılacağı hakkında daha fazla bilgi edinmek için, MySQL 'in [gtıd belgeleriyle çoğaltma](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) bölümüne bakın.
+
+MySQL iki tür işlemi destekler: GTıD işlemleri (GTıD ile tanımlanır) ve anonim işlemler (ayrılmış bir GTıD 'ye sahip değil)
+
+Aşağıdaki sunucu parametreleri GTıD 'yi yapılandırmak için kullanılabilir: 
+
+|**Sunucu parametresi**|**Açıklama**|**Varsayılan değer**|**Değerler**|
+|--|--|--|--|
+|`gtid_mode`|İşlemleri tanımlamak için Gtıds 'nin kullanıldığını gösterir. Modlar arasındaki değişiklikler, her seferinde artan düzende (örn. bir adım yapılabilir) gerçekleştirilebilir. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Hem yeni hem de çoğaltma işlemleri anonim olmalıdır <br> `OFF_PERMISSIVE`: Yeni işlemler anonimdir. Çoğaltılan işlemler anonim ya da GTıD işlemleri olabilir. <br> `ON_PERMISSIVE`: Yeni işlemler GTıD işlemlerdir. Çoğaltılan işlemler anonim ya da GTıD işlemleri olabilir. <br> `ON`: Hem yeni hem de çoğaltılan işlemler GTıD işlemleri olmalıdır.|
+|`enforce_gtid_consistency`|Yalnızca işlemsel olarak güvenli bir şekilde oturum açılabilen deyimlerin yürütülmesine izin vererek GTıD tutarlılığını zorlar. Bu değer, `ON` gtıd çoğaltmasını etkinleştirmeden önce olarak ayarlanmalıdır. |`OFF`|`OFF`: Tüm işlemlerin GTıD tutarlılığını ihlal edebileceği şekilde izin verilir.  <br> `ON`: Hiçbir işlemin GTıD tutarlılığını ihlal etme izni yok. <br> `WARN`: Tüm işlemlere GTıD tutarlılığı ihlal etmek için izin verilir, ancak bir uyarı oluşturulur. | 
+
+> [!NOTE]
+> GTıD etkinleştirildikten sonra, yeniden kapatamaz. GTıD 'yi kapatmanız gerekiyorsa lütfen desteğe başvurun. 
+
+GTıD 'yi etkinleştirmek ve tutarlılık davranışını yapılandırmak için `gtid_mode` `enforce_gtid_consistency` [Azure Portal](howto-server-parameters.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)veya [PowerShell](howto-configure-server-parameters-using-powershell.md)'i kullanarak ve sunucu parametrelerini güncelleştirin.
+
+Bir kaynak sunucuda (= on) GTıD etkinse `gtid_mode` , yeni oluşturulan çoğaltmalarda de gtıd etkinleştirilir ve gtıd çoğaltmasını kullanılır. Çoğaltmanın tutarlı kalmasını sağlamak için `gtid_mode` kaynak veya çoğaltma sunucuları üzerinde güncelleştirme yapılamaz.
+
 ## <a name="considerations-and-limitations"></a>Önemli noktalar ve sınırlamalar
 
 ### <a name="pricing-tiers"></a>Fiyatlandırma katmanları
@@ -178,9 +198,18 @@ Aşağıdaki sunucu parametreleri hem kaynak hem de çoğaltma sunucularında ki
 
 Kaynak sunucuda yukarıdaki parametrelerden birini güncelleştirmek için lütfen çoğaltma sunucularını silin, ana bilgisayardaki parametre değerini güncelleştirin ve çoğaltmaları yeniden oluşturun.
 
+### <a name="gtid"></a>GTıD
+
+GTıD desteklenir:
+- MySQL sürümleri 5,7 ve 8,0 
+- 16 TB 'a kadar depolamayı destekleyen sunucular. 16 TB depolamayı destekleyen bölgelerin tam listesi için [fiyatlandırma katmanı](concepts-pricing-tiers.md#storage) makalesine başvurun. 
+
+GTıD varsayılan olarak KAPALıDıR. GTıD etkinleştirildikten sonra, yeniden kapatamaz. GTıD 'yi kapatmanız gerekiyorsa lütfen desteğe başvurun. 
+
+Bir kaynak sunucuda GTıD etkinse, yeni oluşturulan çoğaltmalarda de GTıD etkinleştirilir ve GTıD çoğaltmasını kullanacaktır. Çoğaltmanın tutarlı kalmasını sağlamak için `gtid_mode` kaynak veya çoğaltma sunucuları üzerinde güncelleştirme yapılamaz.
+
 ### <a name="other"></a>Diğer
 
-- Genel işlem tanımlayıcıları (GTıD) desteklenmez.
 - Bir çoğaltmanın çoğaltmasını oluşturma desteklenmiyor.
 - Bellek içi tablolar çoğaltmaların eşitlenmemiş hale gelmesine neden olabilir. Bu, MySQL Çoğaltma teknolojisinin bir sınırlamasıdır. Daha fazla bilgi için [MySQL Reference belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) daha fazla bilgi edinin.
 - Kaynak sunucu tablolarının birincil anahtarlara sahip olduğundan emin olun. Birincil anahtarların olmaması, kaynak ve çoğaltmalar arasında çoğaltma gecikmesine neden olabilir.

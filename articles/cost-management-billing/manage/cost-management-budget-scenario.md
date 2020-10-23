@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446458"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131471"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets ile maliyetleri yönetme
 
-Maliyet denetimi, buluttaki yatırımınızın değerini en üst düzeye çıkarmak için kritik bir bileşendir. Maliyet görünürlüğü, raporlama ve maliyet tabanlı düzenlemenin devam eden işletme operasyonları için kritik öneme sahip olduğu çeşitli senaryolar vardır. [Azure Maliyet Yönetimi API’leri](https://docs.microsoft.com/rest/api/consumption/), bu senaryoların her birini desteklemek için bir dizi API sağlar. API’ler kullanım ayrıntılarını sağlayarak örnek düzeyinde maliyetlerinizi ayrıntılı olarak görüntülemenize olanak tanır.
+Maliyet denetimi, buluttaki yatırımınızın değerini en üst düzeye çıkarmak için kritik bir bileşendir. Maliyet görünürlüğü, raporlama ve maliyet tabanlı düzenlemenin devam eden işletme operasyonları için kritik öneme sahip olduğu çeşitli senaryolar vardır. [Azure Maliyet Yönetimi API’leri](/rest/api/consumption/), bu senaryoların her birini desteklemek için bir dizi API sağlar. API’ler kullanım ayrıntılarını sağlayarak örnek düzeyinde maliyetlerinizi ayrıntılı olarak görüntülemenize olanak tanır.
 
-Bütçeler genellikle maliyet denetiminin bir parçası olarak kullanılır. Bütçelerin kapsamı Azure’da belirlenebilir. Örneğin, bütçe görünümünüzü abonelik, kaynak grupları veya kaynak koleksiyonu temelinde daraltabilirsiniz. Bütçe eşiğine ulaşıldığında e-posta yoluyla bildirim almak için bütçeler API'sinin yanı sıra, bir bütçe olayının sonucu olarak, düzenlenmiş bir dizi eylemi tetiklemek için [Azure İzleyici eylem gruplarını](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) kullanabilirsiniz.
+Bütçeler genellikle maliyet denetiminin bir parçası olarak kullanılır. Bütçelerin kapsamı Azure’da belirlenebilir. Örneğin, bütçe görünümünüzü abonelik, kaynak grupları veya kaynak koleksiyonu temelinde daraltabilirsiniz. Bütçe eşiğine ulaşıldığında e-posta yoluyla bildirim almak için bütçeler API'sinin yanı sıra, bir bütçe olayının sonucu olarak, düzenlenmiş bir dizi eylemi tetiklemek için [Azure İzleyici eylem gruplarını](../../azure-monitor/platform/action-groups.md) kullanabilirsiniz.
 
 Kritik olmayan iş yükü çalıştıran bir müşteriye yönelik yaygın bir bütçe senaryosu, müşteri, iş yükünü bütçeye göre yönetmek ve aynı zamanda aylık faturaya bakarken öngörülebilir bir maliyete ulaşmak istediğinde gerçekleşebilir. Bu senaryo, Azure ortamının bir parçası olan kaynakların maliyet tabanlı düzenlemesini gerektirir. Bu senaryoda, abonelik için 1000 ABD doları aylık bütçe ayarlanır. Ayrıca, bildirim eşikleri birkaç düzenlemeyi tetikleyecek şekilde ayarlanır. Bu senaryo, **İsteğe Bağlı** kaynak grubundaki tüm VM’leri durduracak olan %80’lik maliyet eşiği ile başlar. Ardından, %100 maliyet eşiğine ulaşıldığında tüm VM örnekleri durdurulur.
 
@@ -35,7 +35,7 @@ Bu öğreticide yer alan eylemler şunları yapmanıza olanak sağlar:
 
 ## <a name="create-an-azure-automation-runbook"></a>Azure Otomasyonu Runbook’u oluşturma
 
-[Azure Otomasyonu](https://docs.microsoft.com/azure/automation/automation-intro), kaynak yönetimi görevlerinizin çoğu için betik oluşturmanıza ve bu görevleri zamanlanmış ya da isteğe bağlı olarak çalıştırmanıza olanak tanıyan bir hizmettir. Bu senaryonun bir parçası olarak, VM’leri durdurmak için kullanılacak bir [Azure Otomasyonu runbook'u](https://docs.microsoft.com/azure/automation/automation-runbook-types) oluşturacaksınız. Bu senaryoyu oluşturmak için [galerideki](https://docs.microsoft.com/azure/automation/automation-runbook-gallery) [Azure V2 VM’lerini Durdur](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafik runbook’unu kullanacaksınız. Bu runbook’u Azure hesabınıza aktarıp yayımlayarak, bir bütçe eşiğine ulaşıldığında VM’leri durdurabilirsiniz.
+[Azure Otomasyonu](../../automation/automation-intro.md), kaynak yönetimi görevlerinizin çoğu için betik oluşturmanıza ve bu görevleri zamanlanmış ya da isteğe bağlı olarak çalıştırmanıza olanak tanıyan bir hizmettir. Bu senaryonun bir parçası olarak, VM’leri durdurmak için kullanılacak bir [Azure Otomasyonu runbook'u](../../automation/automation-runbook-types.md) oluşturacaksınız. Bu senaryoyu oluşturmak için [galerideki](../../automation/automation-runbook-gallery.md) [Azure V2 VM’lerini Durdur](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafik runbook’unu kullanacaksınız. Bu runbook’u Azure hesabınıza aktarıp yayımlayarak, bir bütçe eşiğine ulaşıldığında VM’leri durdurabilirsiniz.
 
 ### <a name="create-an-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
 
@@ -49,7 +49,7 @@ Bu öğreticide yer alan eylemler şunları yapmanıza olanak sağlar:
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>Azure V2 VM’lerini Durdur runbook’unu içeri aktarma
 
-[Azure Otomasyonu runbook’unu](https://docs.microsoft.com/azure/automation/automation-runbook-types) kullanarak, galeriden [Azure V2 VM’lerini Durdur](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafik runbook’unu içeri aktarın.
+[Azure Otomasyonu runbook’unu](../../automation/automation-runbook-types.md) kullanarak, galeriden [Azure V2 VM’lerini Durdur](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafik runbook’unu içeri aktarın.
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com/) oturum açın.
 1. **Tüm hizmetler** > **Otomasyon Hesapları**’nı seçerek Otomasyon hesabınızı açın. Ardından Otomasyon Hesabınızı seçin.
@@ -60,7 +60,7 @@ Bu öğreticide yer alan eylemler şunları yapmanıza olanak sağlar:
 1. Runbook, içeri aktarma işlemini tamamladıktan sonra **Düzenle**’yi seçerek grafik runbook düzenleyicisini ve yayımlama seçeneğini görüntüleyin.  
     ![Azure - Grafik runbook’u düzenleme](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. Runbook’u yayımlamak için **Yayımla**’yı seçin ve sorulduğunda **Evet**’i seçin. Runbook yayımladığınızda, yayımlanmış herhangi bir sürümü taslak sürümle geçersiz kılarsınız. Örneğimizde, runbook’u siz oluşturduğunuz için yayımlanmış sürümünüz yoktur.
-    Runbook yayımlama hakkında daha fazla bilgi için bkz. [Grafik runbook oluşturma](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical).
+    Runbook yayımlama hakkında daha fazla bilgi için bkz. [Grafik runbook oluşturma](../../automation/learn/automation-tutorial-runbook-graphical.md).
 
 ## <a name="create-webhooks-for-the-runbook"></a>Runbook için web kancaları oluşturma
 
@@ -91,7 +91,7 @@ Azure Otomasyonu kurulumunu tamamladınız. Web kancalarının çalıştığın�
 
 ## <a name="create-an-azure-logic-app-for-orchestration"></a>Düzenleme için bir Azure mantıksal uygulaması oluşturma
 
-Logic Apps, farklı kurum veya kuruluşlardaki uygulamaları, verileri, sistemleri ve hizmetleri tümleştirebilmeniz için süreçleri iş akışları olarak oluşturmanıza, zamanlamanıza ve otomatikleştirmenize yardımcı olur. Bu senaryoda, oluşturduğunuz [mantıksal uygulama](https://docs.microsoft.com/azure/logic-apps/) yalnızca oluşturduğunuz otomasyon web kancasını çağırmaktan biraz daha fazlasını yapacaktır.
+Logic Apps, farklı kurum veya kuruluşlardaki uygulamaları, verileri, sistemleri ve hizmetleri tümleştirebilmeniz için süreçleri iş akışları olarak oluşturmanıza, zamanlamanıza ve otomatikleştirmenize yardımcı olur. Bu senaryoda, oluşturduğunuz [mantıksal uygulama](../../logic-apps/index.yml) yalnızca oluşturduğunuz otomasyon web kancasını çağırmaktan biraz daha fazlasını yapacaktır.
 
 Bütçeler, belirtilen bir eşiğe ulaşıldığında bildirim tetikleyecek şekilde ayarlanabilir. Bildirim almak için birden fazla eşik belirtebilirsiniz. Mantıksal uygulama, ulaşılan eşiğe göre farklı eylemler gerçekleştirmenize olanak tanır. Bu örnekte, iki bildirim alacağınız bir senaryo ayarlayacaksınız. İlk bildirim bütçenin %80’ine ulaşıldığında, ikinci bildirim ise bütçenin %100’üne ulaşıldığında gönderilir. Mantıksal uygulama, kaynak grubundaki tüm VM’leri kapatmak için kullanılacaktır. İlk olarak, %80’de **İsteğe Bağlı** eşiğine, daha sonra ise abonelikteki tüm VM’lerin kapatılacağı ikinci eşiğe ulaşılır.
 
@@ -122,11 +122,11 @@ Mantıksal uygulamanız Azure tarafından dağıtıldıktan sonra **Logic Apps T
 Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her etkinleştirildiğinde Logic Apps altyapısı iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur. Eylemler, tetikleyiciden sonra gerçekleşen tüm adımlardır.
 
 1. **Logic Apps Tasarımcısı** alanının **Şablonlar** bölümünün altında **Boş Mantıksal Uygulama**’yı seçin.
-1. Bir [tetikleyici](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) eklemek için, **Logic Apps Tasarımcısı** arama kutusuna "http isteği" yazarak **İstek – Bir HTTP isteği alındığında** adlı tetikleyiciyi bulup seçin.  
+1. Bir [tetikleyici](../../logic-apps/logic-apps-overview.md#logic-app-concepts) eklemek için, **Logic Apps Tasarımcısı** arama kutusuna "http isteği" yazarak **İstek – Bir HTTP isteği alındığında** adlı tetikleyiciyi bulup seçin.  
     ![Azure - Mantıksal uygulama - Http tetikleyicisi](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
 1. **Yeni adım** > **Eylem ekle**’yi seçin.  
     ![Azure - Yeni adım - Eylem ekle](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-1. **Logic Apps Tasarımcısı** arama kutusuna "JSON ayrıştırma" yazarak **Veri İşlemleri - JSON Ayrıştırma** [eylemini](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) bulup seçin.  
+1. **Logic Apps Tasarımcısı** arama kutusuna "JSON ayrıştırma" yazarak **Veri İşlemleri - JSON Ayrıştırma** [eylemini](../../logic-apps/logic-apps-overview.md#logic-app-concepts) bulup seçin.  
     ![Azure - Mantıksal uygulama - JSON ayrıştırma eylemi ekleme](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 1. JSON Ayrıştırma yükü için **İçerik** adı olarak "Yük" yazın veya dinamik içerikten "Gövde" etiketini kullanın.
 1. **JSON Ayrıştırma** kutusunda **Şema oluşturmak için örnek yük kullan** seçeneğini belirleyin.  
@@ -311,7 +311,7 @@ Ardından, Azure Tüketim REST API’lerini çağırarak bütçe oluşturmak iç
     ```
 1. İsteği göndermek için **Gönder**’e basın.
 
-Artık [Bütçeler API](https://docs.microsoft.com/rest/api/consumption/budgets)'sini çağırmak için ihtiyacınız olan tüm öğelere sahipsiniz. Bütçeler API başvurusu, aşağıdakiler de dahil olmak üzere belirli istekler hakkında ek ayrıntılar içerir:
+Artık [Bütçeler API](/rest/api/consumption/budgets)'sini çağırmak için ihtiyacınız olan tüm öğelere sahipsiniz. Bütçeler API başvurusu, aşağıdakiler de dahil olmak üzere belirli istekler hakkında ek ayrıntılar içerir:
 
 - **budgetName**: Birden çok bütçe desteklenir.  Bütçe adları benzersiz olmalıdır.
 - **category**: **Maliyet** veya **Kullanım** olmalıdır. API hem maliyet hem de kullanım bütçelerini destekler.

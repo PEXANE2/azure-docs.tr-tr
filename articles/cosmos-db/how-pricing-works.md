@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb47dde8813f31f4a6acceb696a8b7c7eb0095be
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605252"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281541"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB’de modeli fiyatlandırma
 
@@ -19,7 +19,7 @@ Azure Cosmos DB’nin fiyatlandırma modeli, maliyet yönetimini ve planlamasın
 
 - **Veritabanı işlemleri**: veritabanı işlemlerinizin ücretlendirildiği yol, kullanmakta olduğunuz Azure Cosmos hesabının türüne bağlıdır.
 
-  - **Sağlanan aktarım hızı**: [sağlanan aktarım hızı](set-throughput.md) (Ayrıca, ayrılmış aktarım hızı olarak da anılır), herhangi bir ölçekte yüksek Saniye başına [Istek birimi](request-units.md) (ru/s) cinsinden ihtiyacınız olan aktarım hızını ve yapılandırılan aktarım hızını güvence altına almak için gereken kaynakları ayıran Azure Cosmos DB belirlersiniz. [Bir veritabanı ya da kapsayıcı üzerinde üretilen iş](set-throughput.md)sağlayabilirsiniz. İş yükünüzün gereksinimlerine bağlı olarak, herhangi bir zamanda aktarım hızını yukarı/aşağı ölçeklendirebilir veya [Otomatik ölçeklendirme](provision-throughput-autoscale.md) kullanabilirsiniz (ancak, bir veritabanında veya SLA 'ların garantisi için bir kapsayıcıda gereken en düşük bir aktarım olmasına rağmen). Verilen bir saat için sağlanan maksimum üretilen iş hacmi için saatlik olarak faturalandırılırsınız.
+  - **Sağlanan aktarım hızı**: [sağlanan aktarım](set-throughput.md) hızı (Ayrıca, ayrılmış aktarım hızı olarak da anılır) her ölçekte yüksek performans sağlar Saniye başına [Istek birimi](request-units.md) (ru/s) cinsinden ihtiyacınız olan aktarım hızını ve yapılandırılan üretilen işi sağlamak için gereken kaynakları ayıran Azure Cosmos DB belirlersiniz. [Bir veritabanı ya da kapsayıcı üzerinde üretilen iş](set-throughput.md)sağlayabilirsiniz. İş yükünüzün gereksinimlerine bağlı olarak, herhangi bir zamanda aktarım hızını yukarı/aşağı ölçeklendirebilir veya [Otomatik ölçeklendirme](provision-throughput-autoscale.md) kullanabilirsiniz (ancak, bir veritabanında veya SLA 'ların garantisi için bir kapsayıcıda gereken en düşük bir aktarım olmasına rağmen). Verilen bir saat için sağlanan maksimum üretilen iş hacmi için saatlik olarak faturalandırılırsınız.
 
    > [!NOTE]
    > Sağlanan aktarım hızı modeli, kaynakları kapsayıcınıza veya veritabanınıza ayırır, ancak herhangi bir iş yükü çalıştırmazsanız bile sağladığınız aktarım hızı için ücretlendirilirsiniz.

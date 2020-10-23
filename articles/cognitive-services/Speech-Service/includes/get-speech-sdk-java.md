@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: d7d41a875d8e0c30085bafd346e316672359de26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039bea98090edcc5966be3cea54b31c61c18dc10
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87375598"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92157884"
 ---
 :::row:::
     :::column span="3":::
@@ -25,7 +25,7 @@ ms.locfileid: "87375598"
 
 Android Studio projenizden paketi kullanmak için aşağıdaki değişiklikleri yapın:
 
-1. Proje düzeyi *Build. Gradle* dosyasında aşağıdakileri `repository` bölümüne ekleyin:
+1. Proje düzeyi *Build. Gradle* dosyasında aşağıdakileri `repositories` bölümüne ekleyin:
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```

@@ -3,16 +3,16 @@ title: Yedekleme merkezi 'ni kullanarak Öngörüler edinin
 description: Geçmiş eğilimleri çözümlemeyi ve yedekleme merkezi ile yedeklemeleriniz hakkında daha derin Öngörüler elde etmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 5964f285089feea721a0b452efed884e905b89cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90996055"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173753"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Yedekleme merkezi 'ni kullanarak Öngörüler edinin
 
-Yedekleme merkezi, geçmiş eğilimlerini analiz etmek ve yedeklemelerinize daha derin Öngörüler elde etmek için [Azure Izleyici günlüklerini](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) ve [Azure çalışma kitaplarını](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)kullanan [yedekleme raporları](configure-reports.md)için bir arabirim sağlar. Yedekleme raporları aşağıdaki özellikleri sunar:
+Yedekleme merkezi, geçmiş eğilimlerini analiz etmek ve yedeklemelerinize daha derin Öngörüler elde etmek için [Azure Izleyici günlüklerini](../azure-monitor/platform/data-platform-logs.md) ve [Azure çalışma kitaplarını](../azure-monitor/platform/workbooks-overview.md)kullanan [yedekleme raporları](configure-reports.md)için bir arabirim sağlar. Yedekleme raporları aşağıdaki özellikleri sunar:
 
 - Tüketilen bulut depolamasını ayırma ve tahmin etme.
 
@@ -32,7 +32,7 @@ Yedekleme merkezi, geçmiş eğilimlerini analiz etmek ve yedeklemelerinize daha
 
 ### <a name="configure-your-vaults-to-send-data-to-a-log-analytics-workspace"></a>Log Analytics çalışma alanına veri göndermek için vakalarınızı yapılandırma
 
-[Kasalarınız için ölçekte tanılama ayarlarını yapılandırma hakkında bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports#get-started)
+[Kasalarınız için ölçekte tanılama ayarlarını yapılandırma hakkında bilgi edinin](./configure-reports.md#get-started)
 
 ### <a name="view-backup-reports-in-the-backup-center-portal"></a>Yedekleme merkezi portalında yedekleme raporlarını görüntüleme
 
@@ -42,17 +42,17 @@ Yedekleme merkezi 'nde **yedekleme raporları** menü öğesini seçme raporlar�
 
 Kullanılabilen görünümler şunlardır:
 
-1. **Özet** -bu sekmeyi, yedeklemeinize ilişkin üst düzey bir genel bakış almak için kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports#summary)
+1. **Özet** -bu sekmeyi, yedeklemeinize ilişkin üst düzey bir genel bakış almak için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#summary)
 
-1. **Yedekleme öğeleri** -bu sekmeyi, bir yedekleme öğesi düzeyinde tüketilen Bulut depolamada bilgi ve eğilimleri görmek için kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports#backup-items)
+1. **Yedekleme öğeleri** -bu sekmeyi, bir yedekleme öğesi düzeyinde tüketilen Bulut depolamada bilgi ve eğilimleri görmek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#backup-items)
 
-1. **Kullanım** -yedeklemelerinizin anahtar faturalandırma parametrelerini görüntülemek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports#usage)
+1. **Kullanım** -yedeklemelerinizin anahtar faturalandırma parametrelerini görüntülemek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](./configure-reports.md#usage)
 
-1. **İşler** -bu sekmeyi, işlerinizde gerçekleşen başarısız iş sayısı ve iş hatasının en üst nedenleri gibi, işlere ilişkin uzun süre çalışan eğilimleri görüntülemek için kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports#jobs)
+1. **İşler** -bu sekmeyi, işlerinizde gerçekleşen başarısız iş sayısı ve iş hatasının en üst nedenleri gibi, işlere ilişkin uzun süre çalışan eğilimleri görüntülemek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#jobs)
 
-1. **İlkeler** -bu sekmeyi, ilişkili öğe sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolama alanı gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemek için kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports#policies)
+1. **İlkeler** -bu sekmeyi, ilişkili öğe sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolama alanı gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#policies)
 
-1. **En Iyi duruma** getirme-yedeklemelerinize yönelik potansiyel maliyet iyileştirme fırsatlarıyla ilgili görünürlük elde etmek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports#optimize)
+1. **En Iyi duruma** getirme-yedeklemelerinize yönelik potansiyel maliyet iyileştirme fırsatlarıyla ilgili görünürlük elde etmek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](./configure-reports.md#optimize)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

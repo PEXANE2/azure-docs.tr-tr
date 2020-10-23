@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f65a43cf5730f56b43d79388a0e73ea93e3225b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 658d18ed3c9eefeedffd82bbccedbde0621fe748
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801996"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145516"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -122,7 +122,6 @@ Yöneticiler, Microsoft uygulamalarına ek olarak, koşullu erişim ilkelerine h
 
 > [!NOTE]
 > Koşullu erişim ilkesi bir hizmete erişim gereksinimlerini ayarladığından, bir istemci (genel/yerel) uygulamasına uygulayamazsınız. Diğer bir deyişle, ilke doğrudan istemci (ortak/yerel) uygulama üzerinde ayarlanmamış ancak istemci bir hizmet çağırdığında uygulanır. Örneğin, SharePoint hizmetinde ayarlanan bir ilke, SharePoint 'i çağıran istemciler için geçerlidir. Exchange üzerinde ayarlanan bir ilke, e-postaya Outlook istemcisi kullanılarak erişme girişimi için geçerlidir. İstemci (genel/yerel) uygulamalarının bulut uygulamaları seçicisinden seçilemediği ve koşullu erişim seçeneğinin, kiracınızda kayıtlı olan istemci (genel/yerel) uygulamanın uygulama ayarlarında kullanılamaz olması bu budur. 
-
 
 ## <a name="user-actions"></a>Kullanıcı eylemleri
 

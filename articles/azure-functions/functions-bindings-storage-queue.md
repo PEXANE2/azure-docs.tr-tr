@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d8f3985bc9a726735ebc0af0a3d3422f4fca54a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87055805"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108873"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Işlevlerine genel bakış için Azure kuyruk depolama tetikleyicisi ve bağlamaları
 
@@ -37,7 +37,7 @@ Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Di�
 [core tools]: ./functions-run-local.md
 [Uzantı paketi]: ./functions-bindings-register.md#extension-bundles
 [NuGet paketi]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
-[Uzantılarınızı güncelleştirme]: ./install-update-binding-extensions-manual.md
+[Uzantılarınızı güncelleştirme]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>İşlevler 1.x

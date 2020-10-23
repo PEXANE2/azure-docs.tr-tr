@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681745"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149358"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure kullanımı ve ücretleri dosyasındaki terimleri anlama
 
@@ -90,8 +90,8 @@ PublisherType | Tümü | Yayımcı türü (Değerler: **Azure**, **AWS**, **Mark
 Miktar | Tümü | Satın alınan veya tüketilen birim sayısı.
 ReservationId | EA, MCA | Satın alınan rezervasyon örneğinin benzersiz tanımlayıcısı.
 ReservationName | EA, MCA | Satın alınan rezervasyon örneğinin adı.
-adlı yönetilen örnek, | Tümü | Kaynağın içinde bulunduğu [kaynak grubunun](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) adı. Tüm ücretler, kaynak gruplarına dağıtılmış olan kaynaklar ait değildir. Kaynak grubu bulunmayan ücretler null/boş, **Diğerleri** veya **Geçerli değil** olarak gösterilir.
-ResourceId<sup>1</sup> | Tümü | [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) kaynağının benzersiz tanımlayıcısı.
+adlı yönetilen örnek, | Tümü | Kaynağın içinde bulunduğu [kaynak grubunun](../../azure-resource-manager/management/overview.md) adı. Tüm ücretler, kaynak gruplarına dağıtılmış olan kaynaklar ait değildir. Kaynak grubu bulunmayan ücretler null/boş, **Diğerleri** veya **Geçerli değil** olarak gösterilir.
+ResourceId<sup>1</sup> | Tümü | [Azure Resource Manager](/rest/api/resources/resources) kaynağının benzersiz tanımlayıcısı.
 ResourceLocation | Tümü | Kaynağın çalıştırıldığı veri merkezi konumu. Bkz. Location.
 ResourceName | EA, PAYG | Kaynağın adı. Tüm ücretler, dağıtılan kaynaklara ait değildir. Kaynak türü bulunmayan ücretler null/boş, **Diğerleri** veya **Geçerli değil** olarak gösterilir.
 ResourceType | MCA | Kaynak örneğinin türü. Tüm ücretler, dağıtılan kaynaklara ait değildir. Kaynak türü bulunmayan ücretler null/boş, **Diğerleri** veya **Geçerli değil** olarak gösterilir.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b74f3ecdc048b6468906fb46a848d27cd1f23b9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329763"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275416"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market desteği
 
@@ -45,6 +45,6 @@ Ekleme ve Başlarken sorunları için Microsoft [Marketplace Publisher desteğiy
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ticari Market yayımcı Kılavuzu sayfasını](index.yml)ziyaret edin.
-* [Iş Ortağı Merkezi 'nde ticari Market programı desteği](partner-center-portal/support.md)hakkında daha fazla bilgi edinin.
+* [Iş Ortağı Merkezi 'nde ticari Market programı desteği](support.md)hakkında daha fazla bilgi edinin.
 
 ---

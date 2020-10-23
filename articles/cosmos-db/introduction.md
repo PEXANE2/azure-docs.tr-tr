@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569858"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278431"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 
@@ -60,7 +60,7 @@ Cosmos DB, Azure'ın temel aldığı hizmetlerden biridir. Neredeyse bir yıllı
 
 ### <a name="ubiquitous-regional-presence"></a>Ubititous bölgesel varlık
 
-Cosmos DB, genel bulutta 54 + bölgeleri, [Azure Çin 21Vianet](https://www.azure.cn/en-us/), Azure Almanya, Azure Kamu ve Savunma Bakanlığı (DOD) Için Azure Kamu dahil olmak üzere tüm dünyada Azure bölgelerinde kullanılabilir. [Cosmos DB bölgesel varlığına](regional-presence.md)bakın.
+Cosmos DB, genel bulutta 54 + bölgeleri, [Azure Çin 21Vianet](https://www.azure.cn/en-us/), Azure Almanya, Azure Kamu ve Savunma Bakanlığı (DOD) Için Azure Kamu dahil olmak üzere tüm dünyada Azure bölgelerinde kullanılabilir. [Azure Cosmos DB Ile yüksek kullanılabilirliğe](high-availability.md)bakın.
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Varsayılan ve kurumsal hazır ile güvenli
 

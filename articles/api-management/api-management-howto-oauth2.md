@@ -11,21 +11,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 08/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f2673bd181bc24d821b41ae1466c05a9593f154
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87902267"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315726"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management 'de OAuth 2,0 kullanarak Geliştirici hesaplarını yetkilendirme
 
 Birçok API, API 'YI güvenli hale getirmek ve yalnızca geçerli kullanıcıların erişimi olduğundan emin olmak için [OAuth 2,0](https://oauth.net/2/) ' i destekler ve yalnızca hak kazanabilecekleri kaynaklara erişebilir. Azure API Management 'in etkileşimli geliştirici konsolunu bu tür API 'lerle kullanabilmek için, hizmet örneğinizi OAuth 2,0 özellikli API 'niz ile çalışacak şekilde yapılandırmanıza olanak tanır.
-
-> [!IMPORTANT]
-> OAuth 2,0 yetkilendirmesi, yeni geliştirici portalının etkileşimli konsolunda henüz kullanılamamaktadır.
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>Ön koşullar
 

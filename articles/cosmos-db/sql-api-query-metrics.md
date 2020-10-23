@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008701"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280513"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB ile sorgu performansını ayarlama
 
@@ -26,7 +26,7 @@ Azure Cosmos DB, şema veya ikincil dizinler gerekmeden [verileri sorgulamak iç
 
 ## <a name="about-sql-query-execution"></a>SQL sorgu yürütmesi hakkında
 
-Azure Cosmos DB, verileri kapsayıcılarda depoladığınızda, bu, herhangi bir [depolama boyutuna veya istek aktarım](partition-data.md)hızına genişleyebilirler. Azure Cosmos DB, verilerin büyümesini veya sağlanan aktarım hızını artırmak için, kapakların altındaki fiziksel bölümlerdeki verileri sorunsuzca ölçeklendirir. REST API veya desteklenen [SQL SDK 'lardan](sql-api-sdk-dotnet.md)birini kullanarak herhangi BIR kapsayıcıya SQL sorguları verebilirsiniz.
+Azure Cosmos DB, verileri kapsayıcılarda depoladığınızda, bu, herhangi bir [depolama boyutuna veya istek aktarım](partitioning-overview.md)hızına genişleyebilirler. Azure Cosmos DB, verilerin büyümesini veya sağlanan aktarım hızını artırmak için, kapakların altındaki fiziksel bölümlerdeki verileri sorunsuzca ölçeklendirir. REST API veya desteklenen [SQL SDK 'lardan](sql-api-sdk-dotnet.md)birini kullanarak herhangi BIR kapsayıcıya SQL sorguları verebilirsiniz.
 
 Bölümlendirme hakkında kısa bir genel bakış: "şehir" gibi bir bölüm anahtarı tanımlayarak verilerin fiziksel bölümler arasında nasıl bölüneceği belirlenir. Tek bir bölüm anahtarına ait veriler (örneğin, "City" = = "Seattle") fiziksel bir bölüm içinde depolanır, ancak genellikle tek bir fiziksel bölümde birden çok bölüm anahtarı bulunur. Bir bölüm, depolama boyutuna ulaştığında, bu bölümü iki yeni bölüme sorunsuz bir şekilde ayırır ve bölüm anahtarını bu bölümlere eşit olarak böler. Bölümler geçici olduğundan, API 'Ler bölüm anahtarı karmalarının aralıklarını gösteren bir "bölüm anahtar aralığı" soyutlamasını kullanır. 
 
@@ -163,7 +163,7 @@ Azure Cosmos DB, genellikle sorguları en hızlı/en verimli ve daha düşük ve
 
 Tüm bölümlere ilgilenilmesi gereken sorgular daha fazla gecikme süresine gerek duyar ve daha yüksek bir RUs tüketebilir. Her bölümde tüm özelliklere karşı otomatik dizin oluşturma olduğundan, bu durumda sorgu etkin şekilde bu durumda sunulabilir. Paralellik seçeneklerini kullanarak bölümleri kapsayan sorguları daha hızlı hale getirebilirsiniz.
 
-Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB bölümlendirme](partition-data.md).
+Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB bölümlendirme](partitioning-overview.md).
 
 ### <a name="sdk-and-query-options"></a>SDK ve sorgu seçenekleri
 Azure Cosmos DB en iyi istemci tarafı performansını alma hakkında bilgi için bkz. [Performans ipuçları](performance-tips.md) ve [performans testi](performance-testing.md) . Bu, en son SDK 'Ları kullanarak varsayılan bağlantı sayısı, çöp toplama sıklığı ve doğrudan/TCP gibi hafif bağlantı seçeneklerini kullanma gibi platforma özgü yapılandırmaların yapılandırılmasını içerir. 

@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Bkz. ayrı ayrı TWINS ve ilişkileri alma, güncelleştirme ve silme.
 author: baanders
 ms.author: baanders
-ms.date: 4/10/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282383"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461336"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
-Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sını](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
+Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](/rest/api/digital-twins/dataplane/twins), [.net (C#) SDK 'Sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
 
 Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](concepts-twins-graph.md) bir bütün olarak çalışmak için bkz. [*nasıl yapılır: ilişkiler Ile ikizi grafiğini yönetme*](how-to-manage-graph.md).
 
@@ -25,54 +25,43 @@ Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](conc
 
 ## <a name="create-a-digital-twin"></a>Dijital ikizi oluşturma
 
-Bir ikizi oluşturmak için, `CreateDigitalTwin` hizmet istemcisinde aşağıdaki gibi yöntemi kullanın:
+Bir ikizi oluşturmak için, `CreateDigitalTwin()` hizmet istemcisinde aşağıdaki gibi yöntemi kullanın:
 
 ```csharp
-await client.CreateDigitalTwinAsync("myNewTwinID", initData);
+await client.CreateDigitalTwinAsync("myTwinId", initData);
 ```
 
 Dijital bir ikizi oluşturmak için şunları sağlamanız gerekir:
 * Dijital ikizi için istenen KIMLIK
-* Kullanmak istediğiniz [model](concepts-models.md) 
+* Kullanmak istediğiniz [model](concepts-models.md)
 
 İsteğe bağlı olarak, dijital ikizi tüm özellikleri için başlangıç değerleri sağlayabilirsiniz. 
 
 Model ve ilk özellik değerleri `initData` , ilgili verileri içeren BIR JSON dizesi olan parametresi aracılığıyla sağlanır. Bu nesneyi yapılandırma hakkında daha fazla bilgi için sonraki bölüme geçin.
 
 > [!TIP]
-> Bir ikizi oluşturduktan veya güncelleştirdikten sonra değişiklikler [sorgularda](how-to-query-graph.md)yansıtılmadan önce 10 saniyeye kadar gecikme olabilir. `GetDigitalTwin`API ( [Bu makalede daha sonra](#get-data-for-a-digital-twin)açıklanan) Bu gecikmeyle karşılaşmaz, bu nedenle anlık bir yanıt gerekirse yeni oluşturduğunuz TWINS 'nizi görmek IÇIN sorgulamak yerine API çağrısını kullanın. 
+> Bir ikizi oluşturduktan veya güncelleştirdikten sonra değişiklikler [sorgularda](how-to-query-graph.md)yansıtılmadan önce 10 saniyeye kadar gecikme olabilir. `GetDigitalTwin`API ( [Bu makalede daha sonra](#get-data-for-a-digital-twin)açıklanan) Bu gecikmeyle karşılaşmaz, bu nedenle anlık bir yanıt gerekiyorsa, yeni oluşturduğunuz TWINS 'nizi görmek IÇIN sorgulamak yerine API çağrısını kullanın. 
 
 ### <a name="initialize-model-and-properties"></a>Modeli ve özellikleri Başlat
 
 İkizi oluşturma API 'SI, ikizi özelliklerinin geçerli bir JSON açıklamasına serileştirilmiş bir nesne kabul eder. Bir ikizi için JSON biçiminin açıklaması için bkz. [*Kavramlar: dijital TWINS ve ikizi Graph*](concepts-twins-graph.md) . 
 
-İlk olarak, ikizi ve özellik verilerini temsil eden bir veri nesnesi oluşturacaksınız. Daha sonra, `JsonSerializer` bunun serileştirilmiş bir sürümünü parametresi IÇIN API çağrısına geçirmek için kullanabilirsiniz `initdata` .
+İlk olarak, ikizi ve özellik verilerini temsil eden bir veri nesnesi oluşturabilirsiniz. Daha sonra, bu `JsonSerializer` nesnenin serileştirilmiş bir sürümünü parametresi IÇIN API çağrısına geçirmek için kullanabilirsiniz `initdata` , örneğin:
 
+```csharp
+await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+```
 Bir parametre nesnesini el ile ya da bir belirtilen yardımcı sınıfı kullanarak oluşturabilirsiniz. Her birine bir örnek aşağıda verilmiştir.
 
 #### <a name="create-twins-using-manually-created-data"></a>El ile oluşturulan verileri kullanarak TWINS oluşturma
 
 Herhangi bir özel yardımcı sınıf kullanmadan, bir ikizi özelliklerini temsil edebilirsiniz `Dictionary<string, object>` ; burada, `string` özelliğin adı, `object` özelliği ve değerini temsil eden bir nesnedir.
 
-```csharp
-// Define the model type for the twin to be created
-Dictionary<string, object> meta = new Dictionary<string, object>()
-{
-    { "$model", "dtmi:com:contoso:Room;1" }
-};
-// Initialize the twin properties
-Dictionary<string, object> twin = new Dictionary<string, object>()
-{
-    { "$metadata", meta },
-    { "Temperature", temperature},
-    { "Humidity", humidity},
-};
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<string, object>>(twin));
-```
+[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
 #### <a name="create-twins-with-the-helper-class"></a>Yardımcı sınıfla TWINS oluşturma
 
-Yardımcı sınıfı, `BasicDigitalTwin` Özellik alanlarını bir "ikizi" nesnesinde daha doğrudan depolamanıza olanak tanır. `Dictionary<string, object>`Daha sonra doğrudan ikizi nesnesine eklenebilen bir kullanarak özellik listesini oluşturmak isteyebilirsiniz `CustomProperties` .
+Yardımcı sınıfı, `BasicDigitalTwin` Özellik alanlarını doğrudan bir "ikizi" nesnesinde depolamanıza olanak tanır. `Dictionary<string, object>`Daha sonra doğrudan ikizi nesnesine eklenebilen bir kullanarak özellik listesini oluşturmak isteyebilirsiniz `CustomProperties` .
 
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
@@ -84,27 +73,37 @@ props.Add("Temperature", 25.0);
 props.Add("Humidity", 50.0);
 twin.CustomProperties = props;
 
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+client.CreateDigitalTwinAsync("myRoomId", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateDigitalTwin` . Yukarıdaki örnekte bu şöyle görünür:
+> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateDigitalTwin()` . Örneğin:
 >
 >```csharp
->twin.Id = "myNewRoomID";
+>twin.Id = "myRoomId";
 >```
 
 ## <a name="get-data-for-a-digital-twin"></a>Dijital ikizi için veri al
 
-Herhangi bir dijital ikizi tam verilerine şunu çağırarak erişebilirsiniz:
+Aşağıdaki gibi bir yöntemi çağırarak herhangi bir dijital ikizi ayrıntılarına erişebilirsiniz `GetDigitalTwin()` :
 
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
+Bu çağrı, ikizi verilerini JSON dizesi olarak döndürür. Bu, ikizi ayrıntılarını görüntülemek için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
-Bu çağrı, ikizi verilerini JSON dizesi olarak döndürür. 
-
-İle ikizi aldığınızda yalnızca en az bir kez ayarlanmış olan özellikler döndürülür `GetDigitalTwin` .
+```csharp
+Response<string> res = client.GetDigitalTwin("myRoomId");
+twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+foreach (string prop in twin.CustomProperties.Keys)
+{
+  if (twin.CustomProperties.TryGetValue(prop, out object value))
+  Console.WriteLine($"Property '{prop}': {value}");
+}
+```
+Yöntemi ile bir ikizi aldığınızda, yalnızca en az bir kez ayarlanmış olan özellikler döndürülür `GetDigitalTwin()` .
 
 >[!TIP]
 >`displayName`Bir ikizi için, model meta verilerinin bir parçası olduğundan, ikizi örneği için veri alınırken gösterilmez. Bu değeri görmek için [modelden geri](how-to-manage-model.md#retrieve-models)alabilirsiniz.
@@ -115,7 +114,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
 
 ```json
 {
-    "@id": " dtmi:com:contoso:Moon;1",
+    "@id": "dtmi:example:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2",
     "contents": [
@@ -134,8 +133,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
     ]
 }
 ```
-
-`object result = await client.DigitalTwins.GetByIdAsync("my-moon");`Bir *ay*türü ikizi çağırma sonucu şöyle görünebilir:
+`object result = await client.GetDigitalTwinAsync("my-moon");`Bir *ay*türü ikizi çağırma sonucu şöyle görünebilir:
 
 ```json
 {
@@ -144,7 +142,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
-    "$model": "dtmi:com:contoso:Moon;1",
+    "$model": "dtmi:example:Moon;1",
     "radius": {
       "desiredValue": 1737.1,
       "desiredVersion": 5,
@@ -165,7 +163,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
 
 Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri şunları içerir:
 * Bu Azure dijital TWINS örneğindeki dijital ikizi KIMLIĞI (as) `$dtId` .
-* `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı
+* `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı.
 * Bir bölümdeki diğer özellikler `$metadata` . Bu modüller şunlardır:
     - Dijital ikizi modelinin DTMı 'ı.
     - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
@@ -176,7 +174,7 @@ Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey öz
 Ayrıca, SDK 'da bulunan serileştirme Yardımcısı sınıfını da kullanabilirsiniz `BasicDigitalTwin` ; Bu, önceden ayrıştırılmış form içindeki Core ikizi meta verilerini ve özelliklerini döndürür. Aşağıda bir örnek verilmiştir:
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
+Response<string> res = client.GetDigitalTwin(twin_Id);
 BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
 foreach (string prop in twin.CustomProperties.Keys)
@@ -190,7 +188,7 @@ Serileştirme yardımcı sınıfları hakkında daha fazla bilgi [*Için bkz. na
 
 ## <a name="update-a-digital-twin"></a>Dijital ikizi güncelleştirme
 
-Bir Digital ikizi özelliklerini güncelleştirmek için, değiştirmek istediğiniz bilgileri [JSON yama](http://jsonpatch.com/) biçiminde yazarsınız. Bu şekilde, birden çok özelliği aynı anda değiştirebilirsiniz. Ardından JSON Patch belgesini bir `Update` yönteme geçirirsiniz:
+Dijital bir ikizi özelliklerini güncelleştirmek için, değiştirmek istediğiniz bilgileri [JSON yama](http://jsonpatch.com/) biçiminde yazarsınız. Bu şekilde, birden çok özelliği aynı anda değiştirebilirsiniz. Ardından JSON Patch belgesini bir `UpdateDigitalTwin()` yönteme geçirirsiniz:
 
 ```csharp
 await client.UpdateDigitalTwin(id, patch);
@@ -217,7 +215,6 @@ JSON yama kodu örneği aşağıda verilmiştir. Bu belge, uygulandığı dijita
   }
 ]
 ```
-
 Düzeltme eklerini el ile veya [SDK](how-to-use-apis-sdks.md)'daki bir serileştirme Yardımcısı sınıfını kullanarak oluşturabilirsiniz. Her birine bir örnek aşağıda verilmiştir.
 
 #### <a name="create-patches-manually"></a>Düzeltme eklerini el ile oluşturma
@@ -230,7 +227,10 @@ twinData.Add(new Dictionary<string, object>() {
     { "value", 25.0}
 });
 
-await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData));
+await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+Console.WriteLine("Updated twin properties");
+FetchAndPrintTwin(twin_Id, client);
+}
 ```
 
 #### <a name="create-patches-using-the-helper-class"></a>Yardımcı sınıfını kullanarak yama oluşturma
@@ -238,14 +238,14 @@ await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData
 ```csharp
 UpdateOperationsUtility uou = new UpdateOperationsUtility();
 uou.AppendAddOp("/Temperature", 25.0);
-await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
+await client.UpdateDigitalTwinAsync(twin_Id, uou.Serialize());
 ```
 
 ### <a name="update-properties-in-digital-twin-components"></a>Dijital ikizi bileşenlerinde güncelleştirme özellikleri
 
 Bir modelin bileşen içerebileceğini ve diğer modellerden sonra yapılmasına izin vermesini geri çekin. 
 
-Bir Digital ikizi bileşenlerindeki özellikleri yama yapmak için JSON yaması içinde yol söz dizimini kullanacaksınız:
+Bir Digital ikizi bileşenlerindeki özellikler için düzeltme eki uygulamak üzere, JSON yaması içinde yol söz dizimini kullanabilirsiniz:
 
 ```json
 [
@@ -259,7 +259,7 @@ Bir Digital ikizi bileşenlerindeki özellikleri yama yapmak için JSON yaması 
 
 ### <a name="update-a-digital-twins-model"></a>Digital ikizi 'in modelini güncelleştirme
 
-`Update`İşlevi, dijital bir ikizi farklı bir modele geçirmek için de kullanılabilir. 
+`UpdateDigitalTwin()`İşlevi, dijital bir ikizi farklı bir modele geçirmek için de kullanılabilir. 
 
 Örneğin, Digital ikizi 'ın meta veri alanının yerini alan aşağıdaki JSON Patch belgesini göz önünde bulundurun `$model` :
 
@@ -268,7 +268,7 @@ Bir Digital ikizi bileşenlerindeki özellikleri yama yapmak için JSON yaması 
   {
     "op": "replace",
     "path": "/$metadata/$model",
-    "value": "dtmi:com:contoso:foo;1"
+    "value": "dtmi:example:foo;1"
   }
 ]
 ```
@@ -287,7 +287,7 @@ Bu durumun düzeltme ekinin hem model hem de ikizi 'ın sıcaklık özelliğini 
   {
     "op": "replace",
     "path": "$metadata.$model",
-    "value": "dtmi:com:contoso:foo_new"
+    "value": "dtmi:example:foo_new"
   },
   {
     "op": "add",
@@ -312,9 +312,9 @@ Bu davranış, ikizi esasına göre yapılır.
 
 ## <a name="delete-a-digital-twin"></a>Dijital ikizi silme
 
-Kullanarak TWINS 'yi silebilirsiniz `DeleteDigitalTwin(ID)` . Ancak, daha fazla ilişki olmadığında yalnızca bir ikizi silebilirsiniz. Önce tüm ilişkileri silmeniz gerekir. 
+Yöntemi kullanarak ikizlerini 'yi silebilirsiniz `DeleteDigitalTwin()` . Ancak, daha fazla ilişki olmadığında yalnızca bir ikizi silebilirsiniz. Bu nedenle, önce ikizi 'in gelen ve giden ilişkilerini silin.
 
-Bunun için kodun bir örneği aşağıda verilmiştir:
+Aşağıda, TWINS ve bunların ilişkilerini silmenin bir kodu örneği verilmiştir:
 
 ```csharp
 static async Task DeleteTwin(string id)
@@ -348,7 +348,7 @@ public async Task FindAndDeleteOutgoingRelationshipsAsync(string dtId)
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+        Log.Error($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
     }
 }
 
@@ -358,7 +358,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
     try
     {
-        // GetRelationshipssAsync will throw an error if a problem occurs
+        // GetRelationshipsAsync will throw an error if a problem occurs
         AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
 
         await foreach (IncomingRelationship incomingRel in incomingRels)
@@ -369,24 +369,198 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+        Log.Error($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
     }
 }
 ```
-
 ### <a name="delete-all-digital-twins"></a>Tüm dijital TWINS 'i Sil
 
-Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [*: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllTwins` işlevde yapar.
+Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için, _Tutorial kullanılan örnek uygulamayı indirin [: örnek bir istemci uygulamasıyla ilgili temel bilgileri keşfet *](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllTwins()` işlevde yapar.
+
+## <a name="manage-twins-using-runnable-code-sample"></a>Runzorla kod örneğini kullanarak TWINS 'i yönetme
+
+Bir ikizi oluşturmak, ayrıntılarını güncelleştirmek ve ikizi silmek için aşağıdaki çalıştırılabilir kod örneğini kullanabilirsiniz. 
+
+Kod parçacığı öğreticiden model tanımındaki [Room.js](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) kullanır [*: örnek bir Istemci uygulamasıyla Azure dijital TWINS 'i araştırma*](tutorial-command-line-app.md). Bu bağlantıyı doğrudan dosyaya gitmek veya tam uçtan uca [örnek projenin bir](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)parçası olarak indirmek için kullanabilirsiniz.
+
+Örneği çalıştırmadan önce aşağıdakileri yapın:
+1. Model dosyasını indirin, projenize yerleştirin ve `<path-to>` aşağıdaki koddaki yer tutucuyu değiştirip, programınıza onu nerede bulacağınızı söyleyin.
+2. Yer tutucusunu `<your-instance-hostname>` Azure dijital TWINS örneğinizin ana bilgisayar adı ile değiştirin.
+3. Bu paketleri projenize ekleyin:
+    ```cmd/sh
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
+    dotnet add package Azure.identity
+    ```
+
+Ardından, örneği çalıştırın.
+
+```csharp
+using System;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections.Generic;
+using Azure;
+using Azure.DigitalTwins.Core.Serialization;
+using System.Text.Json;
+
+namespace minimal
+{
+    class Program
+    {
+
+        public static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+
+            //Create the Azure Digital Twins client for API calls
+            string adtInstanceUrl = "https://<your-instance-hostname>";
+            var credentials = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            Console.WriteLine($"Service client created – ready to go");
+            Console.WriteLine();
+
+            //Upload models
+            Console.WriteLine($"Upload a model");
+            Console.WriteLine();
+            string dtdl = File.ReadAllText("<path-to>/Room.json");
+            var typeList = new List<string>();
+            typeList.Add(dtdl);
+            // Upload the model to the service
+            await client.CreateModelsAsync(typeList);
+
+            //Create new digital twin
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            string twin_Id = "myRoomId";
+            twin.Metadata = new DigitalTwinMetadata();
+            twin.Metadata.ModelId = "dtmi:example:Room;1";
+            // Initialize properties
+            Dictionary<string, object> props = new Dictionary<string, object>();
+            props.Add("Temperature", 35.0);
+            props.Add("Humidity", 55.0);
+            twin.CustomProperties = props;
+            await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            Console.WriteLine("Twin created successfully");
+            Console.WriteLine();
+
+            //Print twin
+            Console.WriteLine("--- Printing twin details:");
+            twin = FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Update twin data
+            List<object> twinData = new List<object>();
+            twinData.Add(new Dictionary<string, object>() 
+            {
+                { "op", "add"},
+                { "path", "/Temperature"},
+                { "value", 25.0}
+            });
+            await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+            Console.WriteLine("Twin properties updated");
+            Console.WriteLine();
+
+            //Print twin again
+            Console.WriteLine("--- Printing twin details (after update):");
+            FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Delete twin
+            await DeleteTwin(client, twin_Id);
+        }
+
+        private static BasicDigitalTwin FetchAndPrintTwin(string twin_Id, DigitalTwinsClient client)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+            foreach (string prop in twin.CustomProperties.Keys)
+            {
+                if (twin.CustomProperties.TryGetValue(prop, out object value))
+                    Console.WriteLine($"Property '{prop}': {value}");
+            }
+
+            return twin;
+        }
+        private static async Task DeleteTwin(DigitalTwinsClient client, string id)
+        {
+            await FindAndDeleteOutgoingRelationshipsAsync(client, id);
+            await FindAndDeleteIncomingRelationshipsAsync(client, id);
+            try
+            {
+                await client.DeleteDigitalTwinAsync(id);
+                Console.WriteLine("Twin deleted successfully");
+            }
+            catch (RequestFailedException exc)
+            {
+                Console.WriteLine($"*** Error:{exc.Message}");
+            }
+        }
+
+        private static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted relationship {rel.Id} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+       private static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    await client.DeleteRelationshipAsync(incomingRel.SourceId, incomingRel.RelationshipId).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted incoming relationship {incomingRel.RelationshipId} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+    }
+}
+
+```
+Yukarıdaki programın konsol çıktısı aşağıda verilmiştir: 
+
+:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="İkizi oluşturulduğunu, güncelleştirildiğini ve silindiğini gösteren konsol çıkışı" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
 ## <a name="manage-twins-with-cli"></a>CLı ile TWINS 'i yönetme
 
-TWINS, Azure Digital TWINS CLı kullanılarak da yönetilebilir. Komutları [*nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma*](how-to-use-cli.md)bölümünde bulabilirsiniz.
+TWINS, Azure Digital TWINS CLı kullanılarak da yönetilebilir. Komutların [_How-to: Azure Digital TWINS CLI * kullanma](how-to-use-cli.md)bölümünde bulabilirsiniz.
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="view-all-digital-twins"></a>Tüm dijital TWINS 'i görüntüle
 
-Örneğinizdeki dijital TWINS 'in tamamını görüntülemek için bir [sorgu](how-to-query-graph.md)kullanın. Sorgu [API 'leri](how-to-use-apis-sdks.md) veya [CLI komutlarıyla](how-to-use-cli.md)bir sorgu çalıştırabilirsiniz.
+Örneğinizdeki dijital TWINS 'in tamamını görüntülemek için bir [sorgu](how-to-query-graph.md)kullanın. Sorgu [API 'leri](/rest/api/digital-twins/dataplane/query) veya [CLI komutlarıyla](how-to-use-cli.md)bir sorgu çalıştırabilirsiniz.
 
 Örnekteki tüm dijital TWINS listesini döndürecek temel sorgunun gövdesi aşağıda verilmiştir:
 

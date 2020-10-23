@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3693c30a34601512770f5d9071f5d786410fb00e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941758"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360386"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Kibana ve Grafana kullanarak günlükleri ve ölçümleri görüntüleme
 
@@ -30,7 +30,7 @@ Panolara erişmek için, kümenizin IP adresini almanız gerekir. Doğru IP adre
 
 Genel IP adresini almak için aşağıdaki komutu kullanın:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -66,7 +66,7 @@ Aşağıdaki adımlarda, kibana ve Grafana uç noktaları için NSG kuralının 
 
 ### <a name="find-the-name-of-the-nsg"></a>NSG'nin adını bulma
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -74,7 +74,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 NSG adına sahip olduktan sonra aşağıdaki komutu kullanarak bir kural ekleyebilirsiniz:
 
-```console
+```azurecli
 az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 600 -g azurearcvm-rg --access Allow --description 'Allow Kibana and Grafana ports' --destination-address-prefixes '*' --destination-port-ranges 30777 --direction Inbound --protocol Tcp --source-address-prefixes '*' --source-port-ranges '*'
 ```
 

@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331208"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362408"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory raporlama ve izleme dağıtımını planlayın
 
@@ -73,7 +73,7 @@ Bu projede, raporları tüketmek ve izlemek için izleyicileri tanımlayacaksın
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, [doğru paydaşları ilgi çekici olduğunuzdan emin olun](https://aka.ms/deploymentplans). Ayrıca, proje katılımcıları ve bunların proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, [doğru paydaşları ilgi çekici olduğunuzdan emin olun](../fundamentals/active-directory-deployment-plans.md). Ayrıca, proje katılımcıları ve bunların proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
 
 ### <a name="plan-communications"></a>İletişimi planlama
 
@@ -99,7 +99,7 @@ Raporlama ve izleme, iş gereksinimlerinizi karşılamak, kullanım desenleriyle
 * İş ihtiyaçlarını karşılamak için iyi
 * Uygulanamaz
 
-|Alan |Açıklama |
+|Alan |Description |
 |-|-|
 |Bekletme| **30 günden uzun süre bekletmesi günlüğe kaydedilir**. Yasal veya iş gereksinimleri nedeniyle, Denetim günlüklerini depolamak ve Azure AD 'de oturum açmak 30 günden daha uzun bir süre için gereklidir. |
 |Analiz| **Günlüklerin aranabilir olması gerekir**. Depolanan günlüklerin Analitik araçlarla aranabilir olması gerekir. |
@@ -133,7 +133,7 @@ Ayrıca, oturum açma ve denetim olaylarına ilişkin yaygın senaryoları izlem
 
 Azure Olay Hub 'ına yönlendirme günlükleri, üçüncü taraf SıEM araçlarıyla tümleştirmeyi sağlar. Bu tümleştirme, ortamınızda daha zengin Öngörüler sağlamak için Azure AD etkinlik günlüğü verilerini SıEM 'niz tarafından yönetilen diğer verilerle birleştirmenizi sağlar. 
 
-[Olay hub'ına günlük akışı yapmayı](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub) öğrenin.
+[Olay hub'ına günlük akışı yapmayı](./tutorial-azure-monitor-stream-logs-to-event-hub.md) öğrenin.
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD raporlama ve izleme için Işlem ve güvenlik planlayın
 
@@ -151,7 +151,7 @@ Aşağıdaki roller Azure AD raporlarını okuyabilir:
 
 * Rapor Okuyucusu
 
-[Azure AD Yönetim rolleri](../users-groups-roles/directory-assign-admin-roles.md)hakkında daha fazla bilgi edinin.
+[Azure AD Yönetim rolleri](../roles/permissions-reference.md)hakkında daha fazla bilgi edinin.
 
 *Hesap güvenliğinin tehlikeye düşmesi riskini azaltmak Için her zaman en az ayrıcalık kavramını uygulayın*. Kuruluşunuzun güvenliğini sağlamak için [Privileged Identity Management](../privileged-identity-management/pim-configure.md) uygulamayı düşünün.
 

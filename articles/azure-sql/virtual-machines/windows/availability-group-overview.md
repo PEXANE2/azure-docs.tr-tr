@@ -11,71 +11,95 @@ ms.service: virtual-machines-sql
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/13/2017
+ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 34d76d7c85a478b5e31a692e653752aa1653884c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293671"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166548"
 ---
-# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grupları ile tanışın
-
+# <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server her zaman kullanılabilirlik grubu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, Azure sanal makinelerinde SQL Server kullanılabilirlik grupları tanıtılmaktadır. 
+Bu makalede, Azure sanal makinelerinde (VM) SQL Server için her zaman açık kullanılabilirlik grupları tanıtılmaktadır. 
 
-Azure sanal makinelerinde her zaman açık kullanılabilirlik grupları, şirket içinde her zaman açık kullanılabilirlik gruplarına benzerdir. Daha fazla bilgi için bkz. [Always on kullanılabilirlik grupları (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
+## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki diyagramda, Azure sanal makineler 'de tüm SQL Server kullanılabilirlik grubunun bölümleri gösterilmektedir.
+Azure sanal makinelerinde her zaman açık kullanılabilirlik grupları, [Şirket içi kullanılabilirlik gruplarına](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)benzerdir. Ancak, sanal makineler Azure 'da barındırıldığından, VM artıklığı ve Azure ağı üzerinde yönlendirme trafiği gibi bazı ek hususlar de vardır. 
+
+Aşağıdaki diyagramda Azure VM 'lerinde SQL Server için bir kullanılabilirlik grubu gösterilmektedir:
 
 ![Kullanılabilirlik Grubu](./media/availability-group-overview/00-EndstateSampleNoELB.png)
 
-Azure sanal makinelerinde bir kullanılabilirlik grubunun temel farkı, bu sanal makinelerin (VM 'Ler) bir [yük dengeleyici](../../../load-balancer/load-balancer-overview.md)gerektiridir. Yük dengeleyici, kullanılabilirlik grubu dinleyicisinin IP adreslerini tutar. Birden fazla kullanılabilirlik grubunuz varsa, her grup için bir dinleyici gerekir. Bir yük dengeleyici birden çok dinleyicisi destekleyebilir.
 
-Ayrıca, bir Azure IaaS VM konuk yük devretme kümesinde, sunucu başına (küme düğümü) ve tek bir alt ağ için tek bir NIC önerilir. Azure ağ iletişimi, Azure IaaS VM Konuk kümesinde ek NIC 'Lerin ve alt ağların gereksiz olmasını sağlayan fiziksel yedekliliğe sahiptir. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağ üzerinde erişilebilir durumda olduğuna dair bir uyarı gösterse de bu uyarı Azure IaaS VM konuk yük devretme kümelerinde güvenli bir şekilde yoksayılabilir. 
+## <a name="vm-redundancy"></a>VM artıklığı 
 
-Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin aynı [kullanılabilirlik kümesinde](availability-group-manually-configure-prerequisites-tutorial.md#create-availability-sets)veya farklı [kullanılabilirlik bölgelerinde](/azure/availability-zones/az-overview)olması gerekir. 
+Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin aynı [kullanılabilirlik kümesinde](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)veya farklı [kullanılabilirlik bölgelerinde](/azure/availability-zones/az-overview)olması gerekir.
 
-|  | Windows Server sürümü | SQL Server sürümü | SQL Server sürümü | WSFC çekirdek yapılandırması | Çok bölgeli DR | Çoklu alt ağ desteği | Mevcut bir AD için destek | Birden çok bölgeye sahip DR aynı bölge | AD etki alanı olmadan Dist-AG desteği | Küme olmadan Dist-AG desteği |  
-| :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[Azure portal](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Görünmeyen | Bulut tanığı | Hayır | Evet | Evet | Evet | Hayır | Hayır |
-| **[Azure CLı/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Görünmeyen | Bulut tanığı | Hayır | Evet | Evet | Evet | Hayır | Hayır |
-| **[Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | Görünmeyen | Bulut tanığı | Hayır | Evet | Evet | Evet | Hayır | Hayır |
-| **[El ile](availability-group-manually-configure-prerequisites-tutorial.md)** | Tümü | Tümü | Tümü | Tümü | Evet | Evet | Evet | Evet | Evet | Evet |
-
-**SQL Server AlwaysOn kümesi (Önizleme)** şablonu Azure Marketi 'nden kaldırılmıştır ve artık kullanılamaz. 
-
-Azure sanal makinelerinde SQL Server kullanılabilirlik grubu oluşturmaya hazır olduğunuzda, Bu öğreticilere bakın.
-
-## <a name="manually-with-azure-cli"></a>Azure CLı ile el ile
-
-Dağıtım en basit ve en hızlı olduğundan, bir kullanılabilirlik grubunu yapılandırmak ve dağıtmak için Azure CLı kullanılması önerilir. Azure CLı ile Windows Yük devretme kümesi oluşturma, SQL Server VM 'Leri kümeye katma ve dinleyicinin oluşturulması ve Iç Load Balancer tüm 30 dakika içinde elde edilebilir. Bu seçenek hala kullanılabilirlik grubunun el ile oluşturulmasını gerektirir, ancak diğer tüm gerekli yapılandırma adımlarını otomatik hale getirir. 
-
-Daha fazla bilgi için bkz. Azure [SQL VM CLI kullanarak Azure VM 'de SQL Server Için Always on kullanılabilirlik grubunu yapılandırma](availability-group-az-cli-configure.md). 
-
-## <a name="automatically-with-azure-quickstart-templates"></a>Azure hızlı başlangıç şablonlarıyla otomatik olarak
-
-Azure hızlı başlangıç şablonları, Windows Yük devretme kümesini dağıtmak, VM SQL Server birleştirmek, dinleyiciyi oluşturmak ve Iç Load Balancer yapılandırmak için SQL VM kaynak sağlayıcısını kullanır. Bu seçenek hala kullanılabilirlik grubunun ve Iç Load Balancer (ıLB) el ile oluşturulmasını gerektirir. Ancak, ıLB 'nin yapılandırması da dahil olmak üzere tüm diğer gerekli yapılandırma adımlarını otomatikleştirir ve basitleştirir. 
-
-Daha fazla bilgi için bkz. Azure [hızlı başlangıç şablonunu kullanarak Azure VM 'de SQL Server Için Always on kullanılabilirlik grubunu yapılandırma](availability-group-quickstart-template-configure.md).
+Kullanılabilirlik kümesi, aynı Kullanılabilirlik alanında iki Arasız olarak yapılandırılan kaynakların gruplandırmasıdır. Bu, dağıtım toplaması sırasında gruptaki birden fazla kaynağın etkilenmelerini engeller. 
 
 
-## <a name="automatically-with-an-azure-portal-template"></a>Azure portal şablonuyla otomatik olarak
+## <a name="connectivity"></a>Bağlantı 
 
-[Azure VM 'de Always on kullanılabilirlik grubunu otomatik olarak yapılandırma-Kaynak Yöneticisi](availability-group-azure-marketplace-template-configure.md)
+Geleneksel bir şirket içi dağıtımda istemciler, sanal ağ adını (VNN) kullanarak kullanılabilirlik grubu dinleyicisine bağlanır ve dinleyici, trafiği kullanılabilirlik grubundaki uygun SQL Server çoğaltmaya yönlendirir. Ancak, trafiği Azure ağında yönlendirmek için ek bir gereksinim vardır. 
+
+Azure VM 'lerinde SQL Server, trafiği kullanılabilirlik grubu dinleyicinize yönlendirmek için bir [yük dengeleyici](availability-group-vnn-azure-load-balancer-configure.md) yapılandırın veya SQL Server 2019 CU8 ve sonraki bir sürümü kullanıyorsanız, geleneksel vnn kullanılabilirlik grubu dinleyicisinin yerini alacak bir [dağıtılmış ağ adı (DNN) dinleyicisi](availability-group-distributed-network-name-dnn-listener-configure.md) yapılandırabilirsiniz. 
 
 
-## <a name="manually-in-the-azure-portal"></a>Azure portal el ile
+### <a name="vnn-listener"></a>VNN dinleyicisi 
 
-Ayrıca, şablon olmadan sanal makineleri kendiniz de oluşturabilirsiniz. İlk olarak, önkoşulları tamamlayıp kullanılabilirlik grubunu oluşturun. Aşağıdaki konulara bakın: 
+İstemciden gelen trafiği Azure ağındaki geleneksel kullanılabilirlik grubu sanal ağ adı (VNN) dinleyicisine yönlendirmek için bir [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) kullanın. 
 
-- [Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grupları için önkoşulları yapılandırma](availability-group-manually-configure-prerequisites-tutorial.md)
+Yük dengeleyici, VNN dinleyicisi için IP adreslerini barındırır. Birden fazla kullanılabilirlik grubunuz varsa, her grup bir VNN dinleyicisi gerektirir. Bir yük dengeleyici birden çok dinleyicisi destekleyebilir.
 
-- [Kullanılabilirliği ve olağanüstü durum kurtarmayı geliştirmek için Always on kullanılabilirlik grubu oluşturma](availability-group-manually-configure-tutorial.md)
+Başlamak için bkz. [Yük dengeleyiciyi yapılandırma](availability-group-vnn-azure-load-balancer-configure.md). 
+
+### <a name="dnn-listener"></a>DNN dinleyicisi
+
+SQL Server 2019 CU8, dağıtılmış ağ adı (DNN) dinleyicisi için destek sunar. DNN dinleyicisi, Azure ağındaki trafiği yönlendirmek için bir Azure yüksek dengeleyici gereksinimini ortadan kaldıran geleneksel kullanılabilirlik grubu dinleyicisinin yerini alır. 
+
+DNN dinleyicisi, dağıtımı basitleşerek Azure 'da önerilen HADR bağlantı çözümüdür, bakım ve maliyeti azaltır ve hata durumunda yük devretme süresini azaltır. 
+
+Mevcut bir VNN dinleyicisini değiştirmek için DNN dinleyicisini kullanın veya alternatif olarak, mevcut bir VNN dinleyicisi ile birlikte kullanın, böylece kullanılabilirlik grubunuzun iki ayrı bağlantı noktası olması gerekir. bu sayede, bir tane, VNN dinleyicisi adını (ve varsayılan olmayan bağlantı noktasını) ve bir tane DNN dinleyici adını ve bağlantı noktasını kullanarak bir tane. Bu, yük dengeleyici yük devretme gecikmesini önlemek isteyen, ancak dağıtılmış kullanılabilirlik grupları, hizmet Aracısı veya FILESTREAM gibi VNN dinleyicisine bağlı SQL Server özelliklerden faydalanan müşteriler için yararlı olabilir. Daha fazla bilgi edinmek için bkz. [DNN dinleyicisi ve SQL Server özelliği birlikte çalışabilirliği](availability-group-dnn-interoperability.md)
+
+Başlamak için bkz. [DNN dinleyicisini yapılandırma](availability-group-distributed-network-name-dnn-listener-configure.md).
+
+
+## <a name="deployment"></a>Dağıtım 
+
+Azure VM 'lerinde SQL Server için bir kullanılabilirlik grubu dağıtmaya yönelik birden çok seçenek mevcuttur, bazıları diğerlerinden daha fazla otomasyon sağlar. 
+
+Aşağıdaki tabloda kullanılabilir seçeneklerin karşılaştırması verilmiştir: 
+
+| |**[Azure portal](availability-group-azure-portal-configure.md)**|**[Azure CLı/PowerShell](availability-group-az-cli-configure.md)**|**[Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)**|**[El ile](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+|---------|---------|---------|--------- |---------|
+|**SQL Server sürümü** |2016 + |2016 +|2016 +|2012 +|
+|**SQL Server yayını** |Kurumsal |Kurumsal |Kurumsal |Kurumsal, standart|
+|**Windows Server sürümü**| 2016 + | 2016 + | 2016 + | Tümü| 
+|**Sizin için kümeyi oluşturur**|Yes|Yes | Yes |Hayır|
+|**Sizin için kullanılabilirlik grubunu oluşturur** |Yes |Hayır|Hayır|Hayır|
+|**Bağımsız olarak dinleyici ve yük dengeleyici oluşturur** |Hayır|Hayır|Hayır|Yes|
+|**Bu yöntem kullanılarak DNN dinleyicisi oluşturulabilir mi?**|Hayır|Hayır|Hayır|Yes|
+|**Wsfc çekirdek yapılandırması**|Bulut tanığı|Bulut tanığı|Bulut tanığı|Tümü|
+|**Birden çok bölgeye sahip DR** |Hayır|Hayır|Hayır|Yes|
+|**Multisubnet desteği** |Yes|Yes|Yes|Yes|
+|**Mevcut bir AD için destek**|Yes|Yes|Yes|Yes|
+|**Aynı bölgede multizone ile DR**|Yes|Yes|Yes|Yes|
+|**AD olmadan dağıtılmış AG**|Hayır|Hayır|Hayır|Yes|
+|**Küme olmadan dağıtılmış AG** |Hayır|Hayır|Hayır|Yes|
+||||||
+
+
+
+## <a name="considerations"></a>Dikkat edilmesi gerekenler 
+
+Azure IaaS VM konuk yük devretme kümesinde sunucu başına (küme düğümü) tek bir NIC ve tek bir alt ağ kullanılması önerilir. Azure ağ iletişimi, Azure IaaS VM Konuk kümesinde ek NIC 'Lerin ve alt ağların gereksiz olmasını sağlayan fiziksel yedekliliğe sahiptir. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağ üzerinde erişilebilir durumda olduğuna dair bir uyarı gösterse de bu uyarı Azure IaaS VM konuk yük devretme kümelerinde güvenli bir şekilde yoksayılabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Farklı bölgelerde Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu yapılandırma](availability-group-manually-configure-multiple-regions.md)
+[HADR en iyi yöntemlerini](hadr-cluster-best-practices.md) gözden geçirin ve [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](availability-group-az-cli-configure.md), [hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md) veya [el ile](availability-group-manually-configure-prerequisites-tutorial.md)kullanılabilirlik grubunuzu dağıtmaya başlayın.
+
+Alternatif olarak, bir [kümesiz kullanılabilirlik grubunu](availability-group-clusterless-workgroup-configure.md) veya bir kullanılabilirlik grubunu [birden çok bölgeye](availability-group-manually-configure-multiple-regions.md)dağıtabilirsiniz. 

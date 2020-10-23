@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119802"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442261"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Azure AD B2C ile çalışmak için JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
 
@@ -56,16 +56,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>3. Adım: kimlik doğrulamasını yapılandırma
 
-1. `config.js`Örnekteki dosyayı açın.
+1. `config.json`Örnekteki dosyayı açın.
 
-2. Uygulamanızı kaydederken daha önce edindiğiniz uygulama kimlik bilgileriyle örneği yapılandırın. Değerleri ClientID, Host, Tenantıd ve ilke adı adlarıyla değiştirerek aşağıdaki kod satırlarını değiştirin.
+2. Uygulamanızı kaydederken daha önce edindiğiniz uygulama kimlik bilgileriyle örneği yapılandırın. Değerleri kiracı adınız, istemci KIMLIĞINIZ ve ilke adınızla değiştirerek aşağıdaki kod satırlarını değiştirin.
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 Daha fazla bilgi için bu [Node.js B2C Web API örneğine](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)göz atın.
 

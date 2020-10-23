@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c277da54e56fcd0ce68444d499b17e84f706ad03
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442505"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132593"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Kurumsal REST API'leri
 
@@ -25,15 +25,15 @@ Microsoft Kurumsal Azure müşterileri REST API'ler aracılığıyla kullanım v
 
 ### <a name="available-apis"></a>Kullanılabilir API’ler
 
-**Bakiye ve Özet -** [Bakiye ve Özet API'si](../../billing/billing-enterprise-api-balance-summary.md) bakiyeler, yeni satın almalar, Azure Market hizmeti ücretleri, düzeltmeler ve fazla kullanım ücretleri hakkındaki bilgilerin aylık özetini sağlar. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Bakiye ve Özet](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary).
+**Bakiye ve Özet -** [Bakiye ve Özet API'si](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) bakiyeler, yeni satın almalar, Azure Market hizmeti ücretleri, düzeltmeler ve fazla kullanım ücretleri hakkındaki bilgilerin aylık özetini sağlar. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Bakiye ve Özet](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary).
 
-**Kullanım Ayrıntıları -** [Kullanım Ayrıntıları API'si](../../billing/billing-enterprise-api-usage-detail.md) bir kayıt tarafından tüketilen miktarların ve bunların tahmini ücretlerinin günlük dökümünü sağlar. Sonuçlarda örnekler, ölçümler ve departmanlar hakkında bilgiler de yer alır. Faturalama dönemine veya belirtilen başlangıç ve bitiş tarihine göre API'yi sorgulayabilirsiniz. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Kullanım Ayrıntıları](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+**Kullanım Ayrıntıları -** [Kullanım Ayrıntıları API'si](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) bir kayıt tarafından tüketilen miktarların ve bunların tahmini ücretlerinin günlük dökümünü sağlar. Sonuçlarda örnekler, ölçümler ve departmanlar hakkında bilgiler de yer alır. Faturalama dönemine veya belirtilen başlangıç ve bitiş tarihine göre API'yi sorgulayabilirsiniz. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Kullanım Ayrıntıları](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-**Market Mağaza Ücreti -** [Market Mağaza Ücreti API'si](../../billing/billing-enterprise-api-marketplace-storecharge.md) kullanıma bağlı market ücretlerinin belirtilen faturalama dönemi veya başlangıç ve bitiş tarihleri için günlük dökümünü döndürür. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Market Mağaza Ücreti](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
+**Market Mağaza Ücreti -** [Market Mağaza Ücreti API'si](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) kullanıma bağlı market ücretlerinin belirtilen faturalama dönemi veya başlangıç ve bitiş tarihleri için günlük dökümünü döndürür. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Market Mağaza Ücreti](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
 
 **Fiyat Listesi -** The [Fiyat Listesi API'si](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) kayıt ve faturalama dönemi için her ölçümün geçerli fiyatını sağlar. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Fiyat Listesi](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
 
-**Faturalama Dönemleri -** [Faturalama Dönemleri API'si](../../billing/billing-enterprise-api-billing-periods.md) bir kayıt için ters kronolojik sırada tüketim bilgilerini içeren bir faturalama dönemleri listesi döndürür. Her dönemin dört veri kümesi (BalanceSummary, UsageDetails, MarketplaceCharges ve PriceSheet) için API yoluna işaret eden bir özelliği vardır. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Faturalama Dönemleri](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
+**Faturalama Dönemleri -** [Faturalama Dönemleri API'si](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) bir kayıt için ters kronolojik sırada tüketim bilgilerini içeren bir faturalama dönemleri listesi döndürür. Her dönemin dört veri kümesi (BalanceSummary, UsageDetails, MarketplaceCharges ve PriceSheet) için API yoluna işaret eden bir özelliği vardır. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Faturalama Dönemleri](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
 ### <a name="enable-api-data-access"></a>API veri erişimini etkinleştirme
 

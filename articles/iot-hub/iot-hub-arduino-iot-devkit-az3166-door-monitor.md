@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: d4f77cec793e13ff943c173d88948eb5b5de0957
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356256"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148799"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Kapı Izleyicisi--Azure Işlevleri ve SendGrid kullanarak bir kapı açıldığında e-posta gönderin           
 
@@ -197,4 +197,4 @@ Sorunlarla karşılaşırsanız [IoT DevKit SSS](https://microsoft.github.io/azu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlamayı ve SendGrid hizmetini bir e-posta göndermek için nasıl kullanacağınızı öğrendiniz. Önerilen sonraki adım aşağıda verilmiştir:[Azure IoT uzaktan izleme çözüm hızlandırıcısının genel bakış](https://docs.microsoft.com/azure/iot-suite/)
+Bir DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlamayı ve SendGrid hizmetini bir e-posta göndermek için nasıl kullanacağınızı öğrendiniz. Önerilen sonraki adım aşağıda verilmiştir:[Azure IoT uzaktan izleme çözüm hızlandırıcısının genel bakış](/azure/iot-suite/)

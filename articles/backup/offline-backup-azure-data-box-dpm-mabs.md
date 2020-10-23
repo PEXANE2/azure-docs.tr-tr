@@ -3,12 +3,12 @@ title: DPM ve MABS için Azure Data Box çevrimdışı yedekleme
 description: DPM 'den ve MABS 'den çevrimdışı olarak ilk yedekleme verilerini temel almak için Azure Data Box kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271503"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172220"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM ve MABS için Azure Data Box kullanarak çevrimdışı dengeli dağıtım (Önizleme)
 
@@ -18,7 +18,7 @@ ms.locfileid: "91271503"
 
 Bu makalede, DPM ve MABS 'den bir Azure kurtarma hizmetleri kasasına çevrimdışı olarak ilk yedekleme verilerini tohum için Azure Data Box nasıl kullanabileceğiniz açıklanmaktadır.
 
-Büyük ilk DPM/MABS yedeklerinizi bir kurtarma hizmetleri kasasına çevrimdışı olarak (ağ kullanmadan) temel almak için [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) kullanabilirsiniz. Bu işlem, büyük miktarlarda yedekleme verilerinin yüksek gecikmeli bir ağ üzerinden çevrimiçi olarak harcanmasına neden olacak zaman ve ağ bant genişliğini kaydeder. Bu özellik şu anda önizleme sürümündedir.
+Büyük ilk DPM/MABS yedeklerinizi bir kurtarma hizmetleri kasasına çevrimdışı olarak (ağ kullanmadan) temel almak için [Azure Data Box](../databox/data-box-overview.md) kullanabilirsiniz. Bu işlem, büyük miktarlarda yedekleme verilerinin yüksek gecikmeli bir ağ üzerinden çevrimiçi olarak harcanmasına neden olacak zaman ve ağ bant genişliğini kaydeder. Bu özellik şu anda önizleme sürümündedir.
 
 Azure Data Box tabanlı çevrimdışı yedekleme [, Azure içeri/dışarı aktarma hizmeti 'ni temel alan çevrimdışı yedekleme](backup-azure-backup-server-import-export.md)üzerinde iki ayrı avantaj sağlar:
 
@@ -39,8 +39,8 @@ Aşağıdaki Data Box SKU 'Lar desteklenir:
 
 | Sunucu başına yedekleme veri boyutu (MARS tarafından sıkıştırmadan sonra) \* | Desteklenen Azure Data Box SKU 'SU |
 | --- | --- |
-| \<= 7,2 TB | [Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| > 7,2 TB ve <= 80 TB\*\* | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| \<= 7,2 TB | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
+| > 7,2 TB ve <= 80 TB\*\* | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 \*Tipik sıkıştırma ücretleri% 10-20 arasında farklılık gösterir <br>
 \*\*[SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com)Tek bir veri kaynağı için 80 TB 'den fazla ilk yedekleme verisi olmasını bekleseniz, öğesine ulaşın.
@@ -64,7 +64,7 @@ Aşağıdakilerden emin olun:
 
 ### <a name="order-and-receive-the-data-box-device"></a>Data Box cihazı sıralama ve alma
 
-Çevrimdışı yedeklemeyi tetiklemeden önce gerekli Data Box cihazların *teslim edilmiş* durumda olduğundan emin olun. Gereksiniminize uygun SKU 'YU sıralamak için bkz. [yedekleme verileri boyutu ve desteklenen Data Box SKU 'ları](#backup-data-size-and-supported-data-box-skus) . Data Box cihazlarınızı sıralamak ve almak için [Bu makaledeki](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) adımları izleyin.
+Çevrimdışı yedeklemeyi tetiklemeden önce gerekli Data Box cihazların *teslim edilmiş* durumda olduğundan emin olun. Gereksiniminize uygun SKU 'YU sıralamak için bkz. [yedekleme verileri boyutu ve desteklenen Data Box SKU 'ları](#backup-data-size-and-supported-data-box-skus) . Data Box cihazlarınızı sıralamak ve almak için [Bu makaledeki](../databox/data-box-disk-deploy-ordered.md) adımları izleyin.
 
 > [!IMPORTANT]
 > **Hesap türü**Için *blobstorage* ' ı seçmeyin. DPM/MABS sunucusu, *Blobstorage* seçildiğinde desteklenmeyen sayfa bloblarını destekleyen bir hesap gerektirir. Azure Data Box işiniz için hedef depolama hesabı oluştururken, **Hesap türü** olarak **Storage v2 'yi (genel amaçlı v2)** seçin.
@@ -77,14 +77,14 @@ Azure Data Box cihazı aldıktan sonra, sipariş ettiğiniz Azure Data Box SKU '
 
 ### <a name="setup-azure-data-box-disk"></a>Azure Data Box disk ayarlama
 
-Bir veya daha fazla Azure Data Box disk sipariş ederseniz (her biri 8 TB 'a kadar), Data Box diskinizin paketini açmak, bağlanmak ve kilidini açmak için [burada](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up) bahsedilen adımları izleyin.
+Bir veya daha fazla Azure Data Box disk sipariş ederseniz (her biri 8 TB 'a kadar), Data Box diskinizin paketini açmak, bağlanmak ve kilidini açmak için [burada](../databox/data-box-disk-deploy-set-up.md) bahsedilen adımları izleyin.
 
 > [!NOTE]
 > DPM/MABS sunucusunda bir USB bağlantı noktası yok olabilir. Böyle bir senaryoda, Azure Data Box diskinizi başka bir sunucuya/istemciye bağlayabilirsiniz ve cihazın kökünü bir ağ paylaşma olarak kullanıma sunabilirsiniz.
 
 ## <a name="setup-azure-data-box"></a>Kurulum Azure Data Box
 
-Bir Azure Data Box sipariş ederseniz (100 TB 'a kadar), Data Box ayarlamak için [burada](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) bahsedilen adımları izleyin.
+Bir Azure Data Box sipariş ederseniz (100 TB 'a kadar), Data Box ayarlamak için [burada](../databox/data-box-deploy-set-up.md) bahsedilen adımları izleyin.
 
 ### <a name="mount-your-azure-data-box-as-local-system"></a>Azure Data Box yerel sistem olarak bağlama
 
@@ -100,7 +100,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
    ```
 
 4. Yukarıdaki komutun sonucu olarak açılan komut penceresi yerel sistem bağlamında olur. Azure Sayfa Blobu paylaşımından bir ağ sürücüsü olarak Windows Server 'a bağlama adımlarını yürütmek için bu komut penceresini kullanın.
-5. DPM/MABS sunucunuzu NFS aracılığıyla Data Box cihazına bağlamak ve Azure sayfa Bloblarını paylaşmak için yerel sistem komut isteminde aşağıdaki komutu yürütmek için [buradaki](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) adımları izleyin:
+5. DPM/MABS sunucunuzu NFS aracılığıyla Data Box cihazına bağlamak ve Azure sayfa Bloblarını paylaşmak için yerel sistem komut isteminde aşağıdaki komutu yürütmek için [buradaki](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) adımları izleyin:
 
     ```cmd
     mount -o nolock \\<DeviceIPAddres>\<StorageAccountName_PageBlob X:
@@ -110,7 +110,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>İlk yedekleme verilerini Azure Data Box cihazlara aktarma
 
-1. DPM/MABS sunucunuzda, [Yeni bir koruma grubu oluşturmak](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)için aşağıdaki adımları izleyin. Var olan koruma grubuna bir çevrimiçi koruma ekliyorsanız, mevcut koruma grubuna sağ tıklayın ve **çevrimiçi koruma ekle** ' yi seçin ve **8. adımdan**başlayın.
+1. DPM/MABS sunucunuzda, [Yeni bir koruma grubu oluşturmak](/system-center/dpm/create-dpm-protection-groups)için aşağıdaki adımları izleyin. Var olan koruma grubuna bir çevrimiçi koruma ekliyorsanız, mevcut koruma grubuna sağ tıklayın ve **çevrimiçi koruma ekle** ' yi seçin ve **8. adımdan**başlayın.
 2. **Grup üyelerini seçin** sayfasında, yedeklemek istediğiniz bilgisayarları ve kaynakları belirtin.
 3. **Veri koruma yöntemini seçin** sayfasında, kısa ve uzun süreli yedeklemeyi nasıl işlemek istediğinizi belirtin. **Çevrimiçi koruma** istiyorum ' u seçtiğinizden emin olun.
 
@@ -163,7 +163,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
     > ![USB sürücü](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
     > Örneğin, diskin yolu `\\mydomain\myserver\disk1\` ve *Disk1* , *pageblob*ADLı bir dizin içeriyorsa, DPM/mabs sunucu Sihirbazı 'nda sağlanacak yol olur `\\mydomain\myserver\disk1\` .
-    > [Azure Data Box 100 TB 'lik bir cihaz](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)ayarlarsanız, cihazın ağ yolu olarak aşağıdakileri sağlayın `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
+    > [Azure Data Box 100 TB 'lik bir cihaz](./offline-backup-azure-data-box.md#set-up-azure-data-box)ayarlarsanız, cihazın ağ yolu olarak aşağıdakileri sağlayın `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
 15. **İleri**’yi seçin. **Özet** sayfasında, ayarlarınızı gözden geçirin ve **Grup Oluştur**' u seçin.
 
@@ -193,8 +193,8 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
 
 Azure Data Box Disk veri yedeklemesi başarılı olduktan sonra bu adımları izleyin.
 
-- Azure Data Box diskini Azure 'a göndermek için [Bu makaledeki](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up) adımları izleyin. Azure Data Box 100-TB bir cihaz kullandıysanız, Azure Data Box Azure 'a göndermek için [aşağıdaki adımları](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) izleyin.
-- Azure portal [Data Box Işini izleyin](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) . Azure Data Box işi *tamamlandıktan*sonra DPM/mabs sunucusu, bir sonraki zamanlanmış yedekleme sırasında verileri depolama hesabından kurtarma hizmetleri kasasına otomatik olarak taşıdır. Ardından, bir kurtarma noktası başarıyla oluşturulduysa yedekleme işini *Iş tamamlandı* olarak işaretler.
+- Azure Data Box diskini Azure 'a göndermek için [Bu makaledeki](../databox/data-box-disk-deploy-picked-up.md) adımları izleyin. Azure Data Box 100-TB bir cihaz kullandıysanız, Azure Data Box Azure 'a göndermek için [aşağıdaki adımları](../databox/data-box-deploy-picked-up.md) izleyin.
+- Azure portal [Data Box Işini izleyin](../databox/data-box-disk-deploy-upload-verify.md) . Azure Data Box işi *tamamlandıktan*sonra DPM/mabs sunucusu, bir sonraki zamanlanmış yedekleme sırasında verileri depolama hesabından kurtarma hizmetleri kasasına otomatik olarak taşıdır. Ardından, bir kurtarma noktası başarıyla oluşturulduysa yedekleme işini *Iş tamamlandı* olarak işaretler.
 
   > [!NOTE]
   > DPM/MABS sunucusu, koruma grubu oluşturma sırasında zamanlandığı zamanlarda yedeklemeleri tetikler. Ancak, bu işler, iş tamamlanana kadar *Azure Data Box işin tamamlanmasını beklemek* için bayrak uygulanır.

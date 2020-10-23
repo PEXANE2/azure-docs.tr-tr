@@ -13,19 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: d5699c1d08df8364f33371f911ea3be892b4b285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528137"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365924"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS cihazlar için paylaşılan cihaz modu
 
 > [!NOTE]
 > Bu özellik genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Retail Associates, uçuş ekibi üyeleri ve alan hizmeti çalışanları gibi Firstline çalışanları, işlerini gerçekleştirmek için genellikle paylaşılan bir mobil cihaz kullanır. Bu paylaşılan cihazlar, kullanıcılarınızın parolalarını veya PIN 'lerini paylaşılan cihazdaki müşteri ve iş verilerine erişmek üzere kasıtlı veya olmayan bir şekilde paylaşıyorsa güvenlik riskleri sunabilir.
 
@@ -43,7 +43,7 @@ Bir paylaşılan cihaz modu uygulaması oluşturmak için, geliştiriciler ve bu
 
 1. **Cihaz yöneticileri** , kuruluşlarındaki cihazları yönetmek için Microsoft Intune gibi bir mobil cihaz YÖNETIMI (MDM) sağlayıcısı kullanarak cihazı paylaştırmaya hazırlar. MDM, Microsoft Authenticator uygulamayı cihazlara gönderir ve cihaza bir profil güncelleştirmesi aracılığıyla her bir cihaz için "paylaşılan mod" öğesini açar. Bu paylaşılan mod ayarı, cihazdaki desteklenen uygulamaların davranışının değiştiği şeydir. MDM sağlayıcısından bu yapılandırma, cihazın paylaşılan cihaz modunu ayarlar ve paylaşılan cihaz modu için gerekli olan [Apple cihazları Için Microsoft ENTERPRISE SSO eklentisini](apple-sso-plugin.md) etkinleştirilir.
 
-1. [**Yalnızca genel önizleme sırasında gereklidir**] [Bulut Cihaz Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) rolüne sahip bir kullanıcının [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) başlatması ve cihazını kuruluşa katılması gerekir.
+1. [**Yalnızca genel önizleme sırasında gereklidir**] [Bulut Cihaz Yöneticisi](../roles/permissions-reference.md#cloud-device-administrator) rolüne sahip bir kullanıcının [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) başlatması ve cihazını kuruluşa katılması gerekir.
 
     Azure Portal kurumsal rollerinizin üyeliğini yapılandırmak için: **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **bulut Cihaz Yöneticisi**
 

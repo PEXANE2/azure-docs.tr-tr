@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079562"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168571"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure Ölçüm Gezgini’nin gelişmiş özellikleri
 
@@ -77,15 +77,15 @@ Boyutlara sahip ölçümleri gösteren grafiklere filtre uygulayabilirsiniz. Ör
 
 2. Filtrelemek istediğiniz boyutu (özelliği) seçin
 
-   ![ölçüm resmi](./media/metrics-charts/00006.png)
+   ![Filtreleyebileceğiniz boyutları (özellikleri) gösteren ekran görüntüsü.](./media/metrics-charts/00006.png)
 
 3. Grafiği çizdirme sırasında dahil etmek istediğiniz boyut değerlerini seçin (Bu örnek, başarılı depolama işlemlerinin filtrelenmesini gösterir):
 
-   ![ölçüm resmi](./media/metrics-charts/00007.png)
+   ![Başarılı depolama işlemlerinin dışına filtrelemenin filtrelenmesini gösteren ekran görüntüsü.](./media/metrics-charts/00007.png)
 
 4. Filtre değerlerini seçtikten sonra, kapatmak için filtre seçicideki dışarıda ' ı tıklatın. Artık grafik, kaç depolama işlemi başarısız olduğunu gösterir:
 
-   ![ölçüm resmi](./media/metrics-charts/00008.png)
+   ![Kaç depolama hareketinin başarısız olduğunu gösteren ekran görüntüsü](./media/metrics-charts/00008.png)
 
 5. Aynı grafiklere birden çok filtre uygulamak için 1-4 adımlarını tekrarlayabilirsiniz.
 
@@ -104,11 +104,11 @@ Boyutlara sahip ölçümleri gösteren grafiklere filtre uygulayabilirsiniz. Ör
 
 2. Grafiğinizi segmentlere ayırmak istediğiniz bir boyut seçin:
 
-   ![ölçüm resmi](./media/metrics-charts/00010.png)
+   ![Grafiğinizi segmentlerinizi seçtiğiniz Seçili boyutu gösteren ekran görüntüsü.](./media/metrics-charts/00010.png)
 
    Artık grafik artık bir boyut segmenti için bir tane olmak üzere birden çok satır gösteriyor:
 
-   ![ölçüm resmi](./media/metrics-charts/00012.png)
+   ![Her boyutun segmenti için bir tane olmak üzere birden çok satırı gösteren ekran görüntüsü.](./media/metrics-charts/00012.png)
 
 3. Bunu kapatmak için **Gruplandırma seçicisindeki** uzakta ' ye tıklayın.
 
@@ -125,7 +125,7 @@ Diğer bir örnek ise, değerin teknik açıdan hiçbir şekilde hiçbir şekild
 
 Y ekseni aralığını denetlemek için "..." öğesini kullanın Grafik menüsü ve gelişmiş grafik ayarlarına erişmek için **grafiği Düzenle** ' yi seçin. Y ekseni Aralık bölümündeki değerleri değiştirin veya varsayılanlara dönmek için **Otomatik** düğmesini kullanın.
 
-![ölçüm resmi](./media/metrics-charts/00014-manually-set-granularity.png)
+![Grafik Düzenle seçeneğini vurgulayan ekran görüntüsü.](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > Belirli bir süre içinde çeşitli sayıları veya toplamları izleyen grafikler için y ekseninin sınırlarını kilitlemek (ve bu nedenle Count, Sum, minimum veya Maximum toplamaların kullanılması) genellikle otomatik varsayılanlara güvenmek yerine sabit bir zaman ayrıntı düzeyi belirtilmesini gerektirir. Bu gereklidir çünkü, zaman ayrıntı düzeyi Kullanıcı tarayıcı penceresi yeniden boyutlandırılırken veya bir ekran çözünürlüğünden diğerine geçiş yaparken, grafiklerde değerler değişir. Zaman ayrıntı düzeyinde ortaya çıkan değişiklik, grafik görünümünü etkiler ve geçerli y ekseni aralığının geçersiz kılınmasının sonucunu vermez.
@@ -138,7 +138,7 @@ Bir grafik çizgisinin rengini değiştirmek için, göstergede grafiğe karşı
 
 Grafik renkleri yapılandırıldıktan sonra, grafiği bir panoya sabitledikten bu şekilde devam eder. Aşağıdaki bölümde bir grafiği nasıl sabitlenebilmeniz gösterilmektedir.
 
-![ölçüm resmi](./media/metrics-charts/018.png)
+![Grafiğin nasıl sabitlenediğinin gösterildiği ekran görüntüsü.](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>Grafikleri panolara sabitleme
 

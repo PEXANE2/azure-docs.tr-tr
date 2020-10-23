@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de98e25cf5703a43282e551a0eda20d7767c6ce8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85985798"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103637"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Azure CLı kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 
@@ -26,19 +26,19 @@ ms.locfileid: "85985798"
 
 Azure Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri dosyalarını karşıya yükleme ve indirme, hesabınızı silme gibi temel işlemleri gerçekleştirmek için Azure CLı 'nın nasıl kullanılacağını öğrenin. Data Lake Storage 1. hakkında daha fazla bilgi için bkz. [Data Lake Storage 1. genel bakış](data-lake-store-overview.md).
 
-Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. MacOS, Linux ve Windows’da kullanılabilir. Daha fazla bilgi için bkz. [Azure CLI 'Ya genel bakış](https://docs.microsoft.com/cli/azure). Komutların ve sözdiziminin tüm listesi için [Azure Data Lake Storage 1. CLI başvurusuna](https://docs.microsoft.com/cli/azure/dls) da bakabilirsiniz.
+Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. MacOS, Linux ve Windows’da kullanılabilir. Daha fazla bilgi için bkz. [Azure CLI 'Ya genel bakış](/cli/azure). Komutların ve sözdiziminin tüm listesi için [Azure Data Lake Storage 1. CLI başvurusuna](/cli/azure/dls) da bakabilirsiniz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki işlemleri yapmış olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure CLI** -yönergeler için bkz. [Azure CLI 'yı yüklemeye](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* **Azure CLI** -yönergeler için bkz. [Azure CLI 'yı yüklemeye](/cli/azure/install-azure-cli) .
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Bu makalede, Son Kullanıcı kullanıcısı olarak oturum açtığınızda Data Lake Storage 1. daha basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake Storage 1. hesabının ve dosya sisteminin erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, **Son Kullanıcı kimlik doğrulaması** veya **hizmetten hizmete kimlik doğrulama**olan Data Lake Storage 1. kimlik doğrulaması için başka yaklaşımlar de vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md) bölümlerine göz atın.
+Bu makalede, Son Kullanıcı kullanıcısı olarak oturum açtığınızda Data Lake Storage 1. daha basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake Storage 1. hesabının ve dosya sisteminin erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, **Son Kullanıcı kimlik doğrulaması** veya **hizmetten hizmete kimlik doğrulama**olan Data Lake Storage 1. kimlik doğrulaması için başka yaklaşımlar de vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](./data-lake-store-service-to-service-authenticate-using-active-directory.md) bölümlerine göz atın.
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın

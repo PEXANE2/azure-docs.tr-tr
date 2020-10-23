@@ -1,5 +1,5 @@
 ---
-title: Azure alt DNS bölgeleri oluşturma
+title: 'Öğretici: Azure alt DNS bölgeleri oluşturma'
 titleSuffix: Azure DNS
 description: Azure portal 'de alt DNS bölgeleri oluşturma hakkında öğretici.
 author: jonbeck
@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c763f761d77ac05d9f6b45e5656436faa5697e88
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89088366"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310077"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Öğretici: yeni bir alt DNS bölgesi oluşturma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı.  Hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Mevcut üst Azure DNS bölgesi.  

@@ -1,18 +1,18 @@
 ---
 title: Azure Defender 'ı kapsayıcı kayıt defterleri için kullanma
-description: Kayıt defterlerinde görüntüleri taramak için Azure Defender 'ı kapsayıcı kayıt defterleri ile kullanma hakkında bilgi edinin
+description: Linux ile barındırılan kayıt defterlerinde Linux görüntülerini taramak için Azure Defender 'ı kapsayıcı kayıt defterleri ile kullanma hakkında bilgi edinin
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532610"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370551"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender 'ı kapsayıcı kayıt defterleri için kullanarak görüntülerinizi güvenlik açıklarına karşı tarayın
 
@@ -28,22 +28,21 @@ Tarayıcı güvenlik merkezi 'ne güvenlik açıkları bildirdiğinde Güvenlik 
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**Kapsayıcı kayıt defterleri Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Desteklenen kayıt defterleri ve görüntüler:|![](./media/icons/yes-icon.png)Genel İnternet 'ten erişilebilen Linux ile barındırılan ACR kayıt defterleri ve kabuk erişimi sağlar.<br>![](./media/icons/no-icon.png)Windows tarafından barındırılan BIR ACR kayıt defterleri yoktur.<br>![](./media/icons/no-icon.png)' Özel ' kayıt defterleri yok-Güvenlik Merkezi, kayıt defterlerinden genel İnternet 'ten erişilebilmesini gerektirir. Güvenlik Merkezi şu anda bir güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlı erişimli kayıt defterlerine bağlanamaz veya bunları tarayamaz.<br>![](./media/icons/no-icon.png) [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "distrodaha az" görüntüler.|
-|Gerekli roller ve izinler:|**Güvenlik okuyucu** ve [Azure Container Registry okuyucu rolü](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Desteklenen kayıt defterleri ve görüntüler:|ACR kayıt defterlerine Linux görüntüleri, Shell erişimiyle genel İnternet 'ten erişilebilir|
+|Desteklenmeyen kayıt defterleri ve görüntüler:|Windows görüntüleri<br>' Özel ' kayıt defterleri<br>Erişime sahip kayıt defterleri, güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlıdır<br>[Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüler veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "Distrodaha az" görüntüler|
+|Gerekli roller ve izinler:|**Güvenlik okuyucu** ve [Azure Container Registry okuyucu rolü](../container-registry/container-registry-roles.md)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Azure Container Registry 'deki görüntülerde güvenlik açıklarını tanımla 
 
-1. Azure Resource Manager tabanlı Azure Container Registry depolanan görüntülerin güvenlik açığı taramasını etkinleştirmek için:
+Azure Resource Manager tabanlı Azure Container Registry depolanan görüntülerin güvenlik açığı taramasını etkinleştirmek için:
 
-    1. Aboneliğiniz için **Azure Defender 'ı kapsayıcı kayıt defterleri için** etkinleştirin.
+1. Aboneliğiniz için **Azure Defender 'ı kapsayıcı kayıt defterleri için** etkinleştirin. Güvenlik Merkezi artık kayıt defterlerinden görüntüleri taramaya hazırdır.
 
-        Güvenlik Merkezi artık kayıt defterlerinden görüntüleri taramaya hazırdır.
-
-        >[!NOTE]
-        > Bu özellik görüntü başına ücretlendirilir.
+    >[!NOTE]
+    > Bu özellik görüntü başına ücretlendirilir.
 
 1. Görüntü taramaları her gönderim veya içeri aktarma üzerinde tetiklenir ve görüntü son 30 gün içinde çekiliyorsa. 
 

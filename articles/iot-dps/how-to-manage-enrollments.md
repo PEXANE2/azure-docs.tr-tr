@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbcacd7f2094f9b0b9dcea3fea4d804fd96923e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74974947"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165324"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure Portal ile cihaz kayıtlarını yönetme
 
@@ -24,7 +24,7 @@ Bir *cihaz kaydı* , bazı noktaları Azure IoT Hub cihaz sağlama hizmeti 'ne k
 
 Cihazları sağlama hizmeti ile kaydedebilmeniz için iki yol vardır:
 
-* **Kayıt grubu** , fiziksel cihazda cihaz sertifikası oluşturmak için kullanılan, [kök sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) veya [Ara Sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)olabilen aynı imza sertifikası tarafından imzalanan, X. 509.440 sertifikalarının ortak kanıtlama mekanizmasını paylaşan bir grup cihaz için giriştir. İstenen ilk yapılandırmayı paylaşan çok sayıda cihaz için veya hepsi aynı kiracıya giden cihazlar için bir kayıt grubu kullanmanızı öneririz. Yalnızca X. 509.440 kanıtlama mekanizmasını kullanan cihazları *kayıt grupları*olarak kaydedebileceğinizi unutmayın. 
+* **Kayıt grubu** , fiziksel cihazda cihaz sertifikası oluşturmak için kullanılan, [kök sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) veya [Ara Sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)olabilen aynı imza sertifikası tarafından imzalanan, X. 509.440 sertifikalarının ortak kanıtlama mekanizmasını paylaşan bir grup cihaz için giriştir. İstenen ilk yapılandırmayı paylaşan çok sayıda cihaz için veya hepsi aynı kiracıya giden cihazlar için bir kayıt grubu kullanmanızı öneririz. 
 
     Aşağıdaki adımları kullanarak bir cihaz grubu için portalda bir kayıt grubu oluşturabilirsiniz:
 

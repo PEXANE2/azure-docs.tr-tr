@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79246116"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424702"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Şirket içi iş istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi için DNS yapılandırma
 
@@ -58,19 +58,19 @@ zone "az.cloudsimple.io"
 
 1. DNS sunucusuna sağ tıklayın ve **Yeni bölge**' yi seçin. 
   
-    ![Yeni bölge](media/DNS01.png)
+    ![Yeni bölge menü seçeneğini vurgulayan ekran görüntüsü.](media/DNS01.png)
 2. **Saplama bölgesi** ' ni seçin ve **İleri**' ye tıklayın.
 
-    ![Yeni bölge](media/DNS02.png)
+    ![Saplama bölgesi seçeneğini vurgulayan ekran görüntüsü.](media/DNS02.png)
 3. Ortamınıza bağlı olarak uygun seçeneği belirleyin ve **İleri**' ye tıklayın.
 
-    ![Yeni bölge](media/DNS03.png)
+    ![Bölge verileri çoğaltma seçeneklerini gösteren ekran görüntüsü.](media/DNS03.png)
 4. **İleri arama bölgesi** ' ni seçin ve **İleri**' ye tıklayın.
 
-    ![Yeni bölge](media/DNS01.png)
+    ![Ileriye doğru arama bölgesi seçeneğini vurgulayan ekran görüntüsü.](media/DNS01.png)
 5. Bölge adını girin ve **İleri**' ye tıklayın.
 
-    ![Yeni bölge](media/DNS05.png)
+    ![Bölge adının nereye girdiğinin gösterildiği ekran görüntüsü.](media/DNS05.png)
 6. CloudSimple portalından edindiğiniz özel bulutunuz için DNS sunucularının IP adreslerini girin.
 
     ![Yeni bölge](media/DNS06.png)

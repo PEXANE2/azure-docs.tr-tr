@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 9946abc89a924b1577743b64de234805e411793d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0650e77b2207c71e9ef8d91b659aba570a6bc702
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88520122"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455859"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Clever ile tümleştirme
 
@@ -26,7 +26,7 @@ Bu öğreticide, Clever ile Azure Active Directory (Azure AD) ile nasıl tümle�
 * Kullanıcılarınızın Azure AD hesaplarıyla daha da akıllı bir şekilde oturum açabilmesi için otomatik olarak oturum açmaya izin ver.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -80,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     | Ortam | URL kalıbı |
     | - | - |
-    | Test | `https://test.elephantsdontforget.com/plato`|
+    | Test etme | `https://test.elephantsdontforget.com/plato`|
     | Üretim | `https://secure.elephantsdontforget.com/plato` |
     | | |
 
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     | Ortam | URL kalıbı |
     | - | - |
-    | Test | `https://test.elephantsdontforget.com/plato/callback?client_name=SAML2Client`|
+    | Test etme | `https://test.elephantsdontforget.com/plato/callback?client_name=SAML2Client`|
     | Üretim | `https://secure.elephantsdontforget.com/plato/callback?client_name=SAML2Client` |
     | | |
 
@@ -98,7 +98,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     | Ortam | URL kalıbı |
     | - | - |
-    | Test | `https://test.elephantsdontforget.com/plato/sso/microsoft/index.xhtml`|
+    | Test etme | `https://test.elephantsdontforget.com/plato/sso/microsoft/index.xhtml`|
     | Üretim | `https://secure.elephantsdontforget.com/plato/sso/microsoft/index.xhtml` |
     | | |
 
@@ -145,18 +145,18 @@ Bu bölümde, Clever 'e erişim izni vererek Azure çoklu oturum açma özelliğ
 
 ### <a name="create-clever-nelly-test-user"></a>Akıllı sınama kullanıcısı oluşturma
 
-Bu bölümde, Clemi Nelon 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Clever Nelli platformda kullanıcıları eklemek için [Clever, destek ekibi](mailto:support@elephantsdontforget.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Clemi Nelon 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Clever Nelli platformda kullanıcıları eklemek için [Clever, destek ekibi](mailto:support@elephantsdontforget.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Akıllı Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız Clever 'e otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Akıllı Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız Clever 'e otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)

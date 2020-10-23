@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564af59c473d5c3f55bef059905500496adf060c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86224069"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165919"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web uygulaması güvenlik duvarı ve Azure Ilkesi
 
@@ -44,7 +44,7 @@ WAF kaynaklarını yönetmek için birkaç yerleşik Azure Ilkesi vardır. İlke
 3.  Atamalar sayfasında, üst kısımdaki **Ilke ata** simgesini seçin.
 
 [!div class="mx-imgBorder"]
-![Azure Web uygulaması güvenlik duvarı](../media/waf-azure-policy/assign-policy.png)
+![İlke ata sayfasında temel bilgiler sekmesini gösteren ekran görüntüsü.](../media/waf-azure-policy/assign-policy.png)
 
 4.  Ilke atama sayfası temelleri sekmesinde aşağıdaki alanları güncelleştirin:
     1.  **Kapsam**: Azure ilkesi tarafından hangi Azure aboneliklerinin ve kaynak gruplarının etkilenmelidir ' ı seçin.
@@ -52,7 +52,7 @@ WAF kaynaklarını yönetmek için birkaç yerleşik Azure Ilkesi vardır. İlke
     3.  **Ilke tanımı**: dışlamalarla kapsama uygulanacak Azure ilkesini seçin. İlgili Web uygulaması güvenlik duvarı Azure Ilkesini seçmek için arama çubuğuna "Web uygulaması güvenlik duvarı" yazın.
 
 [!div class="mx-imgBorder"]
-![Azure Web uygulaması güvenlik duvarı](../media/waf-azure-policy/policy-listing.png)
+![Kullanılabilir ilke tanımlarını gösteren ekran görüntüsü.](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  **Parametreler** sekmesini seçin ve ilke parametrelerini güncelleştirin. Parametrenin ne yaptığını netleştirmek için, daha fazla açıklama için parametre adının yanındaki bilgi simgesinin üzerine gelin.

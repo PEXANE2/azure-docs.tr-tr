@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bdbb68e8d8748bc8851720588f8748d788e0cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8539f3f2a5882f12f131c95b0c17efd3acba3cf
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542590"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105184"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile halka merkezi tümleştirme
 
@@ -151,19 +151,19 @@ Bu bölümde, halka merkezine erişim izni vererek Azure çoklu oturum açma öz
 
 1. Üstteki **Araçlar**' a tıklayın.
 
-    ![image](./media/ringcentral-tutorial/ringcentral1.png)
+    ![Ekran görüntüsü, halka Merkezi şirket sitesinden seçilen araçları gösterir.](./media/ringcentral-tutorial/ringcentral1.png)
 
 1. **Çoklu oturum açma '** ya gidin.
 
-    ![image](./media/ringcentral-tutorial/ringcentral2.png)
+    ![Ekran görüntüsü Araçlar menüsünden tek Sign-On seçili olduğunu gösterir.](./media/ringcentral-tutorial/ringcentral2.png)
 
 1. **Çoklu oturum açma** sayfasında, **SSO yapılandırma** bölümünde, **1. adım** ' da **Düzenle** ' ye tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-    ![image](./media/ringcentral-tutorial/ringcentral3.png)
+    ![Ekran görüntüsü, Düzenle ' yi seçebileceğiniz S S O yapılandırma sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral3.png)
 
 1. **Çoklu oturum açma ayarlama** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![image](./media/ringcentral-tutorial/ringcentral4.png)
+    ![Ekran görüntüsü, ı D P meta verilerini karşıya yükleyebileceğiniz tek Sign-On ayarlama sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral4.png)
 
     a. Azure portal indirdiğiniz meta veri dosyasını karşıya yüklemek için, **Araştır** ' a tıklayın.
 
@@ -175,11 +175,11 @@ Bu bölümde, halka merkezine erişim izni vererek Azure çoklu oturum açma öz
 
     e. **2. adımda** , **hizmet sağlayıcısı meta veri dosyasını** indirmek için **indir** ' e tıklayın ve Azure Portal **tanımlayıcı** ve **yanıt URL 'si** değerlerini otomatik olarak doldurmak için **temel SAML yapılandırması** bölümüne yükleyin.
 
-    ![image](./media/ringcentral-tutorial/ringcentral6.png) 
+    ![Ekran görüntüsü, Indir ' i seçebileceğiniz S S O yapılandırma sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral6.png) 
 
     f. Aynı sayfada, **SSO 'Yu etkinleştir** bölümüne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![image](./media/ringcentral-tutorial/ringcentral5.png)
+    ![Ekran görüntüsü, yapılandırmayı bitirebileceğiniz S S O bölümünü etkinleştirir.](./media/ringcentral-tutorial/ringcentral5.png)
 
     * **SSO hizmetini etkinleştir**' i seçin.
 

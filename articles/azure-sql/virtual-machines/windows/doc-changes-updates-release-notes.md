@@ -10,18 +10,24 @@ ms.service: virtual-machines-sql
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/21/2020
-ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: d05b603d3f854d919df43e633449e37301a5e77d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758651"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168333"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için belge değişiklikleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıtmanıza olanak tanır. Bu makalede, [Azure sanal makinelerinde son SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)sürümlerindeki yeni özellikler ve geliştirmelerle ilişkili belge değişiklikleri özetlenmektedir. 
+
+## <a name="october-2020"></a>Ekim 2020
+
+| Değişiklikler | Ayrıntılar |
+| --- | --- |
+| **AG için DNN** | Artık SQL Server 2019 CU8 ve üzeri bir [dağıtılmış ağ adı (DNN) dinleyicisi](availability-group-distributed-network-name-dnn-listener-configure.md) yapılandırarak geleneksel [vnn dinleyicisinin](availability-group-overview.md#connectivity)yerini alarak Azure Load Balancer gereksinimini ortadan kaldırabilirsiniz.   | 
 
 ## <a name="september-2020"></a>Eylül 2020
 

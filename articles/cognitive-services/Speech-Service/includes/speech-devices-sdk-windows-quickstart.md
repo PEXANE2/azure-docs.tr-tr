@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ce0006c493228d99131ca564a34600800f0ab5e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226561"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169072"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Windows Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Konuşma için yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) desteklenir. Diğer konuşma için, bir Microphone dizi geometrisi sağlayan doğrusal mik dizileri kullanın.
 
@@ -44,7 +44,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. **Çakışan Küreler IDE başlatıcısı**' nda, **çalışma alanı** alanına yeni bir çalışma alanı dizininin adını girin. Ardından **Başlat**’ı seçin.
 
-   ![Eclipse Başlatıcısı ekran görüntüsü](../media/speech-devices-sdk/eclipse-launcher.png)
+   ![Çalışma alanı dizininin adını girdiğiniz tutulma başlatıcısı 'nı gösteren ekran görüntüsü.](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. Çok geçmeden Eclipse IDE ana penceresi görüntülenir. Varsa, Hoş Geldiniz ekranını kapatın.
 
@@ -52,7 +52,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**’u seçin.
 
-   ![Yeni Java Projesi sihirbazının ekran görüntüsü](../media/speech-devices-sdk/eclipse-new-java-project.png)
+   ![Yeni Java proje Sihirbazı 'nı gösteren ekran görüntüsü.](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
 1. **Paket Gezgini**' nde projenize sağ tıklayın. **Configure**  >  Bağlam menüsünden**Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**’u seçin.
 
@@ -127,11 +127,11 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. Konuşma cihazları SDK örnek uygulaması başlatılır ve aşağıdaki seçenekleri görüntüler:
 
-   ![Örnek konuşma cihazları SDK örnek uygulama ve Seçenekler](../media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Örnek bir konuşma cihazları SDK uygulaması ve seçeneklerinin ekran görüntüsü.](../media/speech-devices-sdk/java-sample-app-windows.png)
 
 1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum**başlatma ile bir başlangıç yapın  >  **Start**. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa `participants.properties` Proje klasörü **hedefi/sınıflarında**bir dosyaya yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription-service.md)konusuna bakın.
 
-   ![Demo konuşma dökümü uygulaması](../media/speech-devices-sdk/cts-sample-app-windows.png)
+   ![Tanıtım konuşması dökümü uygulamasının ekran görüntüsü.](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>Tek başına uygulama oluşturma ve çalıştırma
 
@@ -139,11 +139,11 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. **Dışarı aktarma** penceresi görüntülenir. **Java** ' yı genişletin ve **Runiçin jar dosyasını** seçin ve ardından **İleri**' yi seçin.
 
-   ![Dışarı aktarma penceresinin ekran görüntüsü](../media/speech-devices-sdk/eclipse-export-windows.png)
+   ![Çalıştırılabilir JAR dosyasını seçtiğiniz dışa aktarma penceresini gösteren ekran görüntüsü.](../media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. **ÇALıŞTıRıLABILIR jar dosya dışarı aktarma** penceresi görüntülenir. Uygulama için bir **dışarı aktarma hedefi** seçin ve ardından **son**' u seçin.
 
-   ![Runfor JAR dosya dışarı aktarma ekran görüntüsü](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
+   ![Dışarı aktarma hedefini seçtiğiniz, çalıştırılabilir JAR dosyası dışarı aktarma penceresini gösteren ekran görüntüsü.](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. Lütfen `kws.table` `participants.properties` `unimic_runtime.dll` uygulama için bu dosyalar gerektiğinden,,, `pma.dll` ve `Microsoft.CognitiveServices.Speech.extension.pma.dll` yukarıda seçilen hedef klasöre yerleştirin.
 

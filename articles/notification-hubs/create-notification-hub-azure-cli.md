@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e7e140e26da79475bea032c8190ee64740370d04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875045"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312882"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Notification Hub 'ı oluşturma
 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Notification Hubs, tüm Azure kaynakları gibi bir kaynak grubuna dağıtılmalıdır.  Kaynak grupları, ilgili Azure kaynaklarını düzenlemenizi ve yönetmenizi sağlar.  Kaynak grupları hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager nedir?](/azure/azure-resource-manager/management/overview) .
+Azure Notification Hubs, tüm Azure kaynakları gibi bir kaynak grubuna dağıtılmalıdır.  Kaynak grupları, ilgili Azure kaynaklarını düzenlemenizi ve yönetmenizi sağlar.  Kaynak grupları hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager nedir?](../azure-resource-manager/management/overview.md) .
 
 Bu hızlı başlangıç için, **spnhubrg** adlı bir kaynak grubunu aşağıdaki [az Group Create](/cli/azure/group#az-group-create) komutuyla **eastus** konumunda oluşturun.
 

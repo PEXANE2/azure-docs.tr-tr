@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 03bc41a0159253359b4f87fd35d4de055b294cc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa65508c4f8df2c11bab74cd34f3311b21c63d9c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961797"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164610"
 ---
 # <a name="create-an-external-app-service-environment"></a>Dış App Service ortamı oluşturma
 
@@ -61,7 +61,7 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
 1. [Azure Portal](https://portal.azure.com/), **Create a resource**  >  **Web + Mobile**  >  **Web uygulaması**Web ve mobil kaynak oluştur ' u seçin.
 
-    ![Web uygulaması oluşturma][1]
+    ![Azure Marketi 'nde seçilen Web ve Mobil gösteren Azure portal ekran görüntüsü ve sağ tarafta açık yeni bir Web uygulaması oluşturma ekranı.][1]
 
 2. Aboneliğinizi seçin. Uygulama ve Ao, aynı aboneliklerde oluşturulur.
 
@@ -71,7 +71,7 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
 5. App Service planını seçin ve ardından **Yeni oluştur**' u seçin. Linux Web Apps ve Windows Web Apps aynı App Service planında olamaz, ancak aynı App Service Ortamı olabilir. 
 
-    ![Yeni App Service planı][2]
+    ![Web uygulaması bölmesini, App Service planı bölmesini ve yeni App Service planı bölmesini gösteren Azure portal ekran görüntüsü.][2]
 
 6. **Konum** açılır listesinde, atıcı 'yi oluşturmak istediğiniz bölgeyi seçin. Var olan bir AO dili seçerseniz, yeni bir ATıCı oluşturulmaz. App Service planı, seçtiğiniz as 'de oluşturulur. 
 
@@ -99,7 +99,7 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
 1. [Azure Portal](https://portal.azure.com/) **bir kaynak**  >  **Web + Mobile**  >  **kapsayıcılar için Web App** Web ve mobil oluşturun. 
 
-    ![Web uygulaması oluşturma][7]
+    ![Azure Marketi 'nde seçilen Web ve Mobil gösteren Azure portal ekran görüntüsü ve sağ tarafta Kapsayıcılar için Web App bölmesi.][7]
 
 1. Aboneliğinizi seçin. Uygulama ve Ao, aynı aboneliklerde oluşturulur.
 
@@ -107,7 +107,7 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
 1. App Service planını seçin ve ardından **Yeni oluştur**' u seçin. Linux Web Apps ve Windows Web Apps aynı App Service planında olamaz, ancak aynı App Service Ortamı olabilir. 
 
-    ![Yeni App Service planı][8]
+    ![Kapsayıcılar için Web App bölmesini, App Service planı bölmesini ve yeni App Service plan bölmesini gösteren Azure portal ekran görüntüsü.][8]
 
 1. **Konum** açılır listesinde, atıcı 'yi oluşturmak istediğiniz bölgeyi seçin. Var olan bir AO dili seçerseniz, yeni bir ATıCı oluşturulmaz. App Service planı, seçtiğiniz as 'de oluşturulur. 
 
@@ -192,7 +192,7 @@ ASEv1 hakkında daha fazla bilgi edinmek için bkz. [App Service ortamı v1 'ye 
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md

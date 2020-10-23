@@ -3,12 +3,12 @@ title: Düzenli aralıklarla yedekleme yapılandırmasını anlama
 description: Güvenilir durum bilgisi olan hizmetlerin veya Reliable Actors düzenli olarak yedeklenmesini yapılandırmak için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
 ms.topic: article
 ms.date: 2/01/2019
-ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633b13104ecc1697685f49a42b2a9c76b43b81d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538628"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205702"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama
 
@@ -23,6 +23,9 @@ Güvenilir durum bilgisi olan hizmetlerin veya Reliable Actors düzenli olarak y
 Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
 
 * **Veri kaybına otomatik geri yükleme**: Bölüm bir veri kaybı olayı yaşıyorsa, geri yüklemenin en son kullanılabilir yedekleme kullanılarak otomatik olarak tetikleneceğini belirtir.
+> [!NOTE]
+> Üretim kümelerinde otomatik geri yükleme ayarlaması önerilmez
+>
 
 * **En yüksek artımlı yedeklemeler**: iki tam yedekleme arasında alınacak en yüksek artımlı yedekleme sayısını tanımlar. En yüksek artımlı yedeklemeler üst sınırı belirtir. Aşağıdaki koşullardan birinde, belirtilen sayıda artımlı yedekleme işlemi tamamlanmadan tam yedekleme yapılabilir
 
@@ -86,6 +89,9 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
             "ContainerName": "BackupContainer"
         }
         ```
+> [!NOTE]
+> Yedekleme geri yükleme hizmeti v1 Azure depolama ile çalışmıyor
+>
 
     2. **Dosya paylaşma**: Bu depolama türü, şirket içinde veri yedeklemenin depolanması gerektiğinde _tek başına_ kümeler için seçilmelidir. Bu depolama türünün açıklaması, yedeklemelerin yüklenmesi gereken dosya paylaşma yolunu gerektirir. Dosya paylaşımının erişimi, aşağıdaki seçeneklerden biri kullanılarak yapılandırılabilir
         1. Dosya paylaşımının erişiminin Service Fabric kümesine ait tüm bilgisayarlara sağlandığı _Tümleşik Windows kimlik doğrulaması_. Bu durumda, _dosya paylaşma_ tabanlı yedekleme depolamasını yapılandırmak için aşağıdaki alanları ayarlayın.
@@ -129,6 +135,10 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
 
 ## <a name="enable-periodic-backup"></a>Düzenli yedeklemeyi etkinleştir
 Veri yedekleme gereksinimlerini karşılamak için yedekleme ilkesi tanımladıktan sonra, yedekleme ilkesi bir _uygulama_veya _hizmet_ya da bir _bölümle_uygun şekilde ilişkilendirilmelidir.
+
+> [!NOTE]
+> Yedeklemeyi etkinleştirmeden önce devam eden bir uygulama yükseltme olmadığından emin olun
+>
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>Yedekleme ilkesinin hiyerarşik yayılımı
 Service Fabric, uygulama, hizmet ve bölümler arasındaki ilişki, [uygulama modelinde](./service-fabric-application-model.md)açıklanacak şekilde hiyerarşiktir. Yedekleme ilkesi, hiyerarşideki bir _uygulama_, _hizmet_ya da bir _bölümle_ ilişkilendirilebilir. Yedekleme ilkesi hiyerarşik olarak bir sonraki düzeye yayar. Yalnızca bir uygulamayla oluşturulmuş ve bir _uygulama_ile ilişkili olan tek bir yedekleme ilkesi olduğu varsayıldığında, tüm _güvenilir durum bilgisi olan hizmetlere_ ve _uygulamanın_ _Reliable Actors_ ait olan tüm durum bilgisi olmayan bölümlerin yedekleme ilkesi kullanılarak yedeklenirsiniz. Ya da yedekleme ilkesi _güvenilir bir durum bilgisi olmayan hizmetle_ilişkiliyse, tüm bölümleri yedekleme ilkesi kullanılarak yedeklenir.
@@ -186,6 +196,9 @@ Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bı
         "CleanBackup": true 
     }
     ```
+> [!NOTE]
+> Yedeklemeyi devre dışı bırakmadan önce devam eden bir uygulama yükseltme olmadığından emin olun
+>
 
 ## <a name="suspend--resume-backup"></a>Askıya al & yedeklemeyi sürdürür
 Belirli durumlar, verilerin düzenli olarak yedeklenme için geçici olarak askıya alma talebinde bulunabilir. Bu tür durumlarda, gereksinime bağlı olarak, yedekleme API 'sini bir _uygulama_, _hizmet_veya _bölümde_kullanabilirsiniz. Düzenli yedekleme askıya alma, uygulama hiyerarşisinin uygulandığı noktadan sonra alt ağacı üzerinde geçişlidir. 
@@ -213,6 +226,10 @@ Disable Özelliği, yalnızca yedekleme için daha önce etkinleştirilen bir d�
 Hizmet bölümü, beklenmeyen hatalardan dolayı verileri kaybedebilir. Örneğin, bir bölüm (birincil çoğaltma dahil) için üç çoğaltma için olan disk bozulur veya silinir.
 
 Service Fabric, bölümün veri kaybına neden olduğunu algıladığında, `OnDataLossAsync` bölüm üzerinde arabirim yöntemini çağırır ve veri kaybını sağlamak için bölümün gerekli eylemi yerine gelmesini bekler. Bu durumda, bölümdeki etkin yedekleme ilkesinde `AutoRestoreOnDataLoss` bayrak ayarlandıysa, `true` geri yükleme Bu bölüm için kullanılabilir en son yedekleme kullanılarak otomatik olarak tetiklenir.
+
+> [!NOTE]
+> Üretim kümelerinde otomatik geri yükleme ayarlaması önerilmez
+>
 
 ## <a name="get-backup-configuration"></a>Yedekleme yapılandırmasını al
 Ayrı API 'Ler, bir _uygulama_, _hizmet_ve _bölüm_ kapsamında yedekleme yapılandırma bilgilerini almak için kullanılabilir hale getirilir. [Uygulama yedekleme yapılandırma bilgilerini alın](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [hizmet yedekleme yapılandırma bilgilerini alın](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)ve [bölüm yedekleme yapılandırma bilgilerini al](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) , bu API 'ler sırasıyla bu API 'lerdir. Genellikle, bu API 'Ler, yedekleme ilkesinin uygulandığı kapsam ve yedekleme askıya alma ayrıntıları için geçerli yedekleme ilkesini döndürür. Aşağıda, bu API 'lerin döndürülen sonuçları hakkında kısa bir açıklama verilmiştir.

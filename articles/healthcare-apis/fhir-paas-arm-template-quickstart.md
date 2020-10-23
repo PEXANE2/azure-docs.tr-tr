@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/06/2020
-ms.openlocfilehash: e9b2ec017ca985c1de739ee74c4d0732f39bdc1d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 8e259dffe95b992003c2d8edb5d2a9eb3486631f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772745"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339348"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Hızlı başlangıç: FHıR için Azure API 'yi dağıtmak üzere ARM şablonu kullanma
 
@@ -83,7 +83,7 @@ Azure portal 'de ARM şablonunu kullanarak FHıR için Azure API 'sini dağıtma
 
     :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Azure portal bir ARM şablonu kullanarak FHıR hizmeti için Azure API 'sine dağıtım yapın.":::
 
-5. **Gözden geçir ve oluştur**’u seçin.
+5. **Gözden geçir + oluştur**’u seçin.
 
 6. Hüküm ve koşulları okuyun ve ardından **Oluştur**' u seçin.
 
@@ -224,9 +224,14 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+ARM şablonu oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, [Ilk ARM şablonunuzu oluşturma ve dağıtma öğreticisine](../azure-resource-manager/templates/template-tutorial-create-first-template.md) bakın
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-ARM şablonu oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
+Bu hızlı başlangıç kılavuzunda, FHıR için Azure API 'sini aboneliğinize dağıttınız. FHıR için Azure API 'niz üzerinde ek ayarlar ayarlamak için, ek ayarlar nasıl yapılır Kılavuzu ' na ilerleyin. FHıR için Azure API 'yi kullanmaya başlamaya hazırsanız, uygulamaları kaydetme hakkında daha fazla bilgi edinin.
 
-> [!div class="nextstepaction"]
-> [ Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+>[!div class="nextstepaction"]
+>[FHıR için Azure API 'de ek ayarlar](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[Uygulamaları kaydetme genel bakış](fhir-app-registration.md)

@@ -1,18 +1,16 @@
 ---
 title: Azure Data Lake için U-SQL programlamasına yönelik yönergeler
 description: Azure Data Lake Analytics ' de bulut tabanlı büyük veri platformu oluşturmanızı sağlayan hizmet kümesi hakkında bilgi edinin.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0e914b5f36d58ec3aab24099c8b3787f0cf648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288947"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215459"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programlama kılavuzu
 
@@ -121,7 +119,7 @@ Aşağıdaki kod, bir derlemeye nasıl başvurululacağını gösterir:
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-Bu konuyu daha ayrıntılı olarak ele alan [derleme kayıt yönergelerine](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) başvurun.
+Bu konuyu daha ayrıntılı olarak ele alan [derleme kayıt yönergelerine](/archive/blogs/azuredatalake/how-to-register-u-sql-assemblies-in-your-u-sql-catalog) başvurun.
 
 
 ### <a name="use-assembly-versioning"></a>Derleme sürümü oluşturma kullan
@@ -941,7 +939,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 * T2: biriktirmek için Ikinci parametre
 * TResult: sonlandırma türü döndürme
 
-Örneğin:
+Örnek:
 
 ```csharp
 public class GuidAggregate : IAggregate<string, int, int>

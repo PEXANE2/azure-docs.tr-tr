@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993601"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340878"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
@@ -86,7 +86,7 @@ Azure Stack VM 'Leri eklemek için, **aracılar yönetim** sayfasındaki bilgile
 1. **Azure Stack** portalınızda oturum açın ve **sanal makineler** sayfasını açın.
 1. Güvenlik Merkezi ile korumak istediğiniz sanal makineyi seçin.
     >[!TIP]
-    > Azure Stack sanal makine oluşturma hakkında daha fazla bilgi için, [Windows sanal makineler için bu hızlı başlangıç](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) veya [Linux sanal makineleri için bu hızlı başlangıç](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)bölümüne bakın.
+    > Azure Stack sanal makine oluşturma hakkında daha fazla bilgi için, [Windows sanal makineler için bu hızlı başlangıç](/azure-stack/user/azure-stack-quick-windows-portal) veya [Linux sanal makineleri için bu hızlı başlangıç](/azure-stack/user/azure-stack-quick-linux-portal)bölümüne bakın.
 1. **Uzantılar**'ı seçin. Bu sanal makinede yüklü olan sanal makine uzantılarının listesi gösteriliyor.
 1. **Ekle** sekmesini seçin. **Yeni kaynak** menüsünde, kullanılabilir sanal makine uzantılarının listesi gösterilir.
 1. **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısı ' nı seçin ve **Oluştur**' u seçin. **Uzantı yapılandırmasını yükler** sayfası açılır.

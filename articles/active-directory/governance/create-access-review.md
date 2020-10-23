@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602940"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362782"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
@@ -164,6 +164,7 @@ Konukları gözden geçirenler olarak atadıysanız ve daveti kabul etmediyse, b
 |Otomatik Gözden geçirme | Gözden geçirilmemiş tüm kullanıcılar için sistem tarafından kararlar kaydedilir. İnceleme, otomatik uygulama etkinse **uygulamaya** devam etmek için hazırlayın. |
 |Uygulamayı | Onaylanan kullanıcılar için erişim değişikliği olmayacaktır. |
 |Uygulandı | Varsa, reddedilen kullanıcılar kaynak veya dizinden kaldırılmıştır. |
+|Başarısız | İnceleme ilerleme durumunu gerçekleştiremedi. Bu hata, kiracının silinme, lisanslarda değişiklik veya diğer iç kiracı değişiklikleri ile ilgili olabilir. |
 
 ## <a name="create-reviews-via-apis"></a>API 'Ler aracılığıyla incelemeler oluşturma
 

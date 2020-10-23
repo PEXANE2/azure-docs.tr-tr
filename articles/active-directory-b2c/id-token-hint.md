@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564907"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132083"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir KIMLIK belirteci ipucu teknik profili tanımlama
 
@@ -34,7 +34,7 @@ Bu çözümü, tek bir JWT belirtecinde kapsüllenmiş Azure AD B2C veri gönder
 
 İd_token_hint geçerli bir JWT belirteci olmalıdır. Aşağıdaki tabloda zorunlu olan talepler listelenmektedir. Ek talepler isteğe bağlıdır.
 
-| Adı | İste | Örnek değer | Açıklama |
+| Name | İste | Örnek değer | Description |
 | ---- | ----- | ------------- | ----------- |
 | Hedef kitle | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Belirtecin amaçlanan alıcısını tanımlar. Bu, belirteç veren tarafından tanımlanan rastgele bir dizedir. Azure AD B2C, bu değeri doğrular ve eşleşmezse belirteci reddeder.  |
 | Veren | `iss` |`https://localhost` | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Bu, belirteç veren tarafından tanımlanan rastgele bir URI 'dir. Azure AD B2C, bu değeri doğrular ve eşleşmezse belirteci reddeder.  |
@@ -78,22 +78,22 @@ Teknik profil, türü olan bir düzenleme adımından çağırılır `GetClaims`
 
 **Outputclaim** Öğesı, JWT belirtecinden Ayıklanacak taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını JWT belirtecinde tanımlanan adla eşlemeniz gerekebilir. Özniteliği ayarladığınız sürece JWT belirteci tarafından döndürülmeyen talepleri de ekleyebilirsiniz `DefaultValue` .
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 Simetrik anahtar kullanılırken aşağıdaki meta veriler geçerlidir. 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| yayınlayan | Evet | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Bu değer `iss` , JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. | 
-| Idtokenaudience | Evet | Belirtecin amaçlanan alıcısını tanımlar. `aud`JWT belirteci talebinin talebiyle aynı olmalıdır. | 
+| yayınlayan | Yes | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Bu değer `iss` , JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. | 
+| Idtokenaudience | Yes | Belirtecin amaçlanan alıcısını tanımlar. `aud`JWT belirteci talebinin talebiyle aynı olmalıdır. | 
 
-Aşağıdaki meta veriler simetrik anahtar kullanılırken ilgilidir. 
+Asimetrik anahtar kullanılırken aşağıdaki meta veriler geçerlidir. 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| VERIYI| Evet | Bir OpenID iyi bilinen yapılandırma uç noktası olarak da bilinen, belirteç verenin yapılandırma belgesine işaret eden bir URL.   |
-| yayınlayan | Hayır | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Bu değer, meta verilerde yapılandırılan değerin üzerine yazmak için kullanılabilir ve `iss` JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. |  
-| Idtokenaudience | Hayır | Belirtecin amaçlanan alıcısını tanımlar. Bu değer, meta verilerde yapılandırılan değerin üzerine yazmak için kullanılabilir ve `aud` JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. |  
+| VERIYI| Yes | Bir OpenID iyi bilinen yapılandırma uç noktası olarak da bilinen, belirteç verenin yapılandırma belgesine işaret eden bir URL.   |
+| yayınlayan | No | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Bu değer, meta verilerde yapılandırılan değerin üzerine yazmak için kullanılabilir ve `iss` JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. |  
+| Idtokenaudience | No | Belirtecin amaçlanan alıcısını tanımlar. `aud`JWT belirteci talebinin talebiyle aynı olmalıdır. |  
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -101,7 +101,7 @@ Simetrik anahtar kullanırken, **Cryptographickeys** öğesi aşağıdaki öznit
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_secret | Evet | JWT belirteci imzasını doğrulamak için kullanılan şifreleme anahtarı.|
+| client_secret | Yes | JWT belirteci imzasını doğrulamak için kullanılan şifreleme anahtarı.|
 
 
 ## <a name="how-to-guide"></a>Nasıl yapılır kılavuzu
@@ -219,7 +219,7 @@ Aşağıdaki teknik profil belirteci doğrular ve talepleri ayıklar. Meta veri 
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <!-- <Item Key="IdTokenAudience">your_optional_audience_override</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>
@@ -249,7 +249,7 @@ Hem simetrik hem de asimetrik yaklaşımlar için `id_token_hint` Teknik profil,
     ```xml
     <OrchestrationStep Order="1" Type="GetClaims" CpimIssuerTechnicalProfileReferenceId="IdTokenHint_ExtractClaims" />
     ``` 
-1. Bağlı olan taraf ilkenizde, IdTokenHint_ExtractClaims teknik profilinde yapılandırdığınız giriş taleplerini yineleyin. Örneğin:
+1. Bağlı olan taraf ilkenizde, IdTokenHint_ExtractClaims teknik profilinde yapılandırdığınız giriş taleplerini yineleyin. Örnek:
     ```xml
    <RelyingParty>
      <DefaultUserJourney ReferenceId="SignUp" />

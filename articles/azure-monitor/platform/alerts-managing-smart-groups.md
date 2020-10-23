@@ -4,16 +4,16 @@ description: Uyarı örneklerinizin üzerinden oluşturulan akıllı grupları y
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: a84e1ed514bce0f4dda496a5304cbfa0665c7c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763bfefcf71b0be43722b99f31641015a5991607
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983067"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105847"
 ---
 # <a name="manage-smart-groups"></a>Akıllı grupları yönetme
 
-[Akıllı gruplar](https://aka.ms/smart-groups) , Kullanıcı tarafından her uyarıyı ayrı ayrı yönetmek yerine akıllı grupları yönetebilmek için makine öğrenimi algoritmalarının yanı sıra ortak oluşma veya benzerliği temel alınarak uyarıları gruplamak için kullanılır. Bu makale, Azure Izleyici 'de akıllı gruplara erişme ve bunları kullanma konusunda size yol gösterecektir.
+[Akıllı gruplar](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) , Kullanıcı tarafından her uyarıyı ayrı ayrı yönetmek yerine akıllı grupları yönetebilmek için makine öğrenimi algoritmalarının yanı sıra ortak oluşma veya benzerliği temel alınarak uyarıları gruplamak için kullanılır. Bu makale, Azure Izleyici 'de akıllı gruplara erişme ve bunları kullanma konusunda size yol gösterecektir.
 
 1. Uyarı örneklerinizin oluşturduğu akıllı grupları görmek için şunlardan birini yapabilirsiniz:
 

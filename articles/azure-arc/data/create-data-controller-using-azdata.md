@@ -1,6 +1,6 @@
 ---
-title: Azure Data CLı (azdata) kullanarak veri denetleyicisi oluşturma
-description: Azure Data CLı (azdata) kullanarak zaten oluşturduğunuz tipik bir çok düğümlü Kubernetes kümesinde Azure Arc veri denetleyicisi oluşturun.
+title: Kullanarak veri denetleyicisi oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
+description: Kullanarak zaten oluşturduğunuz tipik bir çok düğümlü Kubernetes kümesinde Azure Arc veri denetleyicisi oluşturun [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb5fac5987a36c425b9e130df17412e5ad902345
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761694"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310931"
 ---
-# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure Data CLı (azdata) kullanarak Azure Arc veri denetleyicisi oluşturma
+# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure Arc veri denetleyicisi 'ni kullanarak oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "91761694"
 
 Genel bakış bilgileri için [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md) konusunu gözden geçirin.
 
-Azure Data CLı kullanarak Azure Arc veri denetleyicisi oluşturmak için Azure Data CLI 'nin yüklü olması gerekir.
+Azure Arc veri denetleyicisi 'ni kullanarak oluşturmak için, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] yüklü olmalıdır.
 
-   [Azure Data CLı 'yı yükler](install-client-tools.md)
+   [Uygulamasını [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](install-client-tools.md)
 
 Seçtiğiniz hedef platformdan bağımsız olarak, veri denetleyicisi Yönetici kullanıcısı için oluşturmadan önce aşağıdaki ortam değişkenlerini ayarlamanız gerekir. Bu kimlik bilgilerini, gerektiğinde veri denetleyicisine yönetici erişiminin olması gereken diğer kişilere sağlayabilirsiniz.
 
