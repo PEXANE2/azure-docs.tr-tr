@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: dd9077c647d7f9f0a9272b71654767acc2e2d117
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3badd14a6a5c0c991618023ba7cfb7b17228f66
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556054"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>Öğretici: kara tahta öğrenimi Azure Active Directory tümleştirme-Shibbotath
 
@@ -27,10 +27,10 @@ BlackICE-Bboleth 'ın Azure AD ile tümleştirilmesi, aşağıdaki avantajları 
 * Kullanıcılarınızın Azure AD hesaplarıyla BlackICE-Shibboteth (çoklu oturum açma) öğrenimi için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini BlackICE-Shibbotath öğrenimi ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -181,18 +181,18 @@ Bu bölümde, BlackICE 'ın öğrenme-Shibboyeth 'a erişim vererek Azure çoklu
 
 ### <a name="create-blackboard-learn---shibboleth-test-user"></a>Kara pano oluşturma öğrenme-Shibbotath test kullanıcısı
 
-Bu bölümde, BlackICE-Shibboteth 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. BlackICE- [shibbotath destek ekibi](https://www.blackboard.com/forms/contact-us_form.aspx) sayesinde kullanıcıları kara bilgi edinin-shibboseth platformunda ekleme. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, BlackICE-Shibboteth 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. BlackICE- [shibbotath destek ekibi](https://www.blackboard.com/forms/contact-us_form.aspx) sayesinde kullanıcıları kara bilgi edinin-shibboseth platformunda ekleme. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access panel 'de BlackICE-Shibboteth kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız BlackICE-Shibboyeth 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access panel 'de BlackICE-Shibboteth kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız BlackICE-Shibboyeth 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

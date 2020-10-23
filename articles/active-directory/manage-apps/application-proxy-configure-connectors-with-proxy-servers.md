@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: contperfq2
+ms.openlocfilehash: fcf06c280a93489b2e958b9baff2e132da37c005
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208014"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426457"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -121,7 +122,7 @@ Güvenlik duvarınız veya proxy 'niz DNS izin verilenler listelerini yapıland�
 FQDN ile bağlantıya izin veremiyorum ve bunun yerine IP aralıklarını belirtmeniz gerekiyorsa, şu seçenekleri kullanın:
 
 * Bağlayıcının tüm hedeflere giden erişimine izin verin.
-* Bağlayıcının tüm Azure veri merkezi IP aralıklarına giden erişimine izin verin. Azure veri merkezi IP aralıkları listesini kullanmayla ilgili zorluk, haftalık olarak güncelleştirilir. Erişim kurallarınızın uygun şekilde güncelleştirildiğinden emin olmak için bir işlem yerine getirmeniz gerekir. Yalnızca IP adreslerinin bir alt kümesini kullanmak yapılandırmanızın kesintiye neden olabilir. En son Azure veri merkezi IP aralıklarını indirmek için şuraya gidin [https://download.microsoft.com](https://download.microsoft.com) ve "Azure IP aralıkları ve hizmet etiketleri" için arama yapın. İlgili bulutu seçtiğinizden emin olun. Örneğin, genel bulut IP aralıkları, "Azure IP aralıkları ve hizmet etiketleri – genel bulut" ile bulunabilir. ABD hükümeti bulutu, "Azure IP aralıkları ve hizmet etiketleri – US hükümeti bulutu" aranarak bulunabilir.
+* Bağlayıcının tüm Azure veri merkezi IP aralıklarına giden erişimine izin verin. Azure veri merkezi IP aralıkları listesini kullanmayla ilgili zorluk, haftalık olarak güncelleştirilir. Erişim kurallarınızın uygun şekilde güncelleştirildiğinden emin olmak için bir işlem yerine getirmeniz gerekir. Yalnızca IP adreslerinin bir alt kümesini kullanmak yapılandırmanızın kesintiye neden olabilir. En son Azure veri merkezi IP aralıklarını indirmek için şuraya gidin [https://download.microsoft.com](https://download.microsoft.com) ve "Azure IP aralıkları ve hizmet etiketleri" için arama yapın. İlgili bulutu seçtiğinizden emin olun. Örneğin, genel bulut IP aralıkları, "Azure IP aralıkları ve hizmet etiketleri – genel bulut" ile bulunabilir. ABD kamu bulutu, "Azure IP aralıkları ve hizmet etiketleri – ABD kamu bulutu" aranarak bulunabilir.
 
 #### <a name="proxy-authentication"></a>Proxy kimlik doğrulaması
 

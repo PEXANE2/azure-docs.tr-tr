@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0aa0dab7b512c85fbbdf374c962e6ee8e1c7d616
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760742"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Öğretici: Cezanne HR yazılımıyla tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Cezanne HR yazılımını Azure AD ile tümleştirmek aşağıdaki avantajları 
 * Kullanıcılarınızın Azure AD hesaplarıyla Cezanne ık Software (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Cezanne HR yazılımıyla yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -247,7 +247,7 @@ Azure AD kullanıcılarının Cezanne HR yazılımında oturum açmasını sağl
 
     c. **Güvenlik rolü**olarak **İK Professional** ' ı seçin.
 
-    d. **Tamam**'a tıklayın.
+    d. **Tamam**’a tıklayın.
 
 5. **Çoklu oturum açma** sekmesine gidin ve **SAML 2,0 tanımlayıcıları** alanında **Yeni Ekle** ' yi seçin.
 
@@ -265,12 +265,12 @@ Azure AD kullanıcılarının Cezanne HR yazılımında oturum açmasını sağl
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Cezanne HR yazılım kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Cezanne HR yazılımında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Cezanne HR yazılım kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Cezanne HR yazılımında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

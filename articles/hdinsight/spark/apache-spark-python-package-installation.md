@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b29e4411a104bbcd1d6d5b3320df47a742e2ca84
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978080"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461252"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -46,8 +46,8 @@ HDInsight Spark kümesi, Anaconda yüklemesiyle oluşturulur. Kümede, Anaconda 
 |Ayar |Python 2,7|Python 3,5|
 |----|----|----|
 |Yol|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark sürümü|Varsayılan olarak 2,7 ayarlanır|YOK|
-|Livy sürümü|Varsayılan olarak 2,7 ayarlanır|YOK|
+|Spark sürümü|Varsayılan olarak 2,7 ayarlanır|Yapılandırmayı 3,5 olarak değiştirebilir|
+|Livy sürümü|Varsayılan olarak 2,7 ayarlanır|Yapılandırmayı 3,5 olarak değiştirebilir|
 |Jupyter|PySpark çekirdeği|PySpark3 çekirdeği|
 
 ## <a name="safely-install-external-python-packages"></a>Dış Python paketlerini güvenle yükler

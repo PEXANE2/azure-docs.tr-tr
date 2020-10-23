@@ -81,6 +81,8 @@
           href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
+    - name: Planlı bakım
+      href: concepts-planned-maintenance-notification.md
     - name: İş sürekliliği
       items:
         - name: İş sürekliliğine giriş
@@ -260,7 +262,7 @@
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
+      href: /answers/topics/azure-database-mariadb.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: Özellik isteme

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 775b2da1b3f07897a566b6e82fa3f6b0de10bd22
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: bd6c504970d4991ee7d5c44b091a5d91c9d0a166
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428259"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461405"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92428259"
 
 Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine veya bağlı işlem kaynaklarına yönlendirebilirsiniz. Bu, önce olayları alabilen **uç noktalar** ayarlanarak yapılır. Daha sonra, Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten  [**olay yolları**](concepts-route-events.md) oluşturabilirsiniz.
 
-Uç noktalar ve rotalar [Eventroutes API 'leri](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sı](https://www.nuget.org/packages/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile yönetilebilir. Bu makalede, bu mekanizmalarda uç noktalar ve rotalar oluşturma işlemi adım adım açıklanmaktadır.
+Uç noktalar ve rotalar [olay rotaları API 'leri](/rest/api/digital-twins/dataplane/eventroutes), [.net (C#) SDK 'Sı](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile yönetilebilir. Bu makalede, bu mekanizmalarda uç noktalar ve rotalar oluşturma işlemi adım adım açıklanmaktadır.
 
 Ayrıca, [Azure Portal](https://portal.azure.com)aracılığıyla da yönetilebilecek. Bunun yerine portalı kullanan Bu makalenin bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (portal)*](how-to-manage-routes-portal.md).
 
@@ -154,7 +154,7 @@ Aşağıda, bir [ikizi Create bildirimi](how-to-interpret-event-data.md#digital-
 
 Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **olay yolu**tanımlamanız gerekir. Azure dijital TWINS **Eventroutes API 'leri** , geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını bir şekilde yönetmesine olanak tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [*: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md).
 
-Bu bölümdeki örnekler [.net (C#) SDK 'sını](https://www.nuget.org/packages/Azure.DigitalTwins.Core)kullanır.
+Bu bölümdeki örnekler [.net (C#) SDK 'sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)kullanır.
 
 **Önkoşul**: bir yol oluşturmak için geçiş yapabilmeniz için önce Bu makalenin önceki kısımlarında açıklandığı gibi uç noktalar oluşturmanız gerekir. Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
 

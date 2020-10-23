@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) kümesini yükseltme
 description: En son özellikleri ve güvenlik güncelleştirmelerini almak için bir Azure Kubernetes hizmeti (AKS) kümesini nasıl yükselteceğinizi öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: da46c44dc9cc16dfa44aacb15b35b652c0c912a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 046c010cdd811b53ef8ef35624ed41a673af43d3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050617"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461456"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesini yükseltme
 
@@ -107,7 +107,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS kümesini yükseltme
 
-AKS kümeniz için kullanılabilir sürümlerin bir listesi ile yükseltmek için [az aks Upgrade][az-aks-upgrade] komutunu kullanın. Yükseltme işlemi sırasında, AKS, belirtilen Kubernetes sürümünü çalıştıran kümeye yeni bir düğüm ekler, ardından çalışan uygulamaların kesintiye uğramasını azaltmak için eski düğümlerden birini dikkatle indirin [ve][kubernetes-drain] kapatın. Yeni düğüm çalışan uygulama yığınlarını onayladığı zaman, eski düğüm silinir. Bu işlem, kümedeki tüm düğümler yükseltilene kadar yinelenir.
+AKS kümeniz için kullanılabilir sürümlerin bir listesi ile yükseltmek için [az aks Upgrade][az-aks-upgrade] komutunu kullanın. Yükseltme işlemi sırasında AKS, belirtilen Kubernetes sürümünü çalıştıran kümeye yeni bir arabellek düğümü (veya [en fazla aşırı gerilim](#customize-node-surge-upgrade-preview)olarak yapılandırılan sayıda düğüm) ekler. Böylece, çalışan uygulamaların kesintiye uğramasını en aza indirmek için eski [düğümlerden birini eşit][kubernetes-drain] hale gelir (en fazla gerilim kullanıyorsanız, belirtilen arabellek düğümlerinin sayısıyla aynı anda çok sayıda düğüm [olarak çalışır)][kubernetes-drain] . Eski düğüm tamamen boşaltılırsa, yeni sürümü alacak şekilde yeniden görüntülenir ve aşağıdaki düğümün yükseltilmesi için arabellek düğümü olur. Bu işlem, kümedeki tüm düğümler yükseltilene kadar yinelenir. İşlemin sonunda, son drenaj düğümü silinecek ve var olan aracı düğüm sayısı korunacaktır.
 
 ```azurecli-interactive
 az aks upgrade \

@@ -215,7 +215,7 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 'Sayfa, filtre, düzen varlıkları'
           href: entities-overview.md
-        - name: RBAC
+        - name: Azure RBAC
           href: rbac-overview.md
         - name: Hata kodları
           items:

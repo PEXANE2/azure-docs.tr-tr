@@ -267,7 +267,7 @@
         - name: Depolama Gezgini erişilebilirliği
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Microsoft Q&A üzerinde kuyruk depolama
-      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
+      href: /answers/topics/azure-queue-storage.html
     - name: Stack Overflow’da kuyruk depolama
       href: 'https://stackoverflow.com/questions/tagged/azure-queues'
     - name: Sorgu depolama fiyatlandırması
@@ -309,7 +309,7 @@
             - name: Azure Depolama istemci kitaplığı sürüm 12.x
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: 'Bloblar, Kuyruklar ve Dosyalar (sürüm 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+              href: /java/api/overview/azure/storage?view=azure-java-legacy
             - name: Azure Depolama istemci kitaplığı sürüm 8.x ve öncesi
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

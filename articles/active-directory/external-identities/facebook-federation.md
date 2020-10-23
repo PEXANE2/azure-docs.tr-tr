@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 547b455dc776b7304e413b3b6f1330e7cedcf2a2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87910152"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442006"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook 'ı dış kimlikler için kimlik sağlayıcısı olarak ekleyin
 
@@ -78,7 +78,7 @@ Artık Facebook istemci KIMLIĞINI ve istemci gizli anahtarını Azure AD portal
    `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Facebook Geliştirici konsolunda, yukarıda oluşturduğunuz uygulamadan istemci KIMLIĞINI ve istemci gizli anahtarını kullanın. Daha fazla bilgi için bkz. [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) makalesi. 
+   > Facebook Geliştirici konsolunda, yukarıda oluşturduğunuz uygulamadan istemci KIMLIĞINI ve istemci gizli anahtarını kullanın. Daha fazla bilgi için bkz. [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) makalesi. 
 
 ## <a name="how-do-i-remove-facebook-federation"></a>Facebook Federasyonu Nasıl yaparım? kaldırılsın mı?
 Facebook Federasyonu kurulumunu silebilirsiniz. Bunu yaparsanız, Facebook hesaplarıyla Kullanıcı akışları üzerinden kaydolan kullanıcılar artık oturum açamaz. 
@@ -92,14 +92,14 @@ Facebook Federasyonu kurulumunu silebilirsiniz. Bunu yaparsanız, Facebook hesap
 
 ### <a name="to-delete-facebook-federation-by-using-powershell"></a>PowerShell kullanarak Facebook Federasyonu silmek için: 
 1. Graph modülü için Azure AD PowerShell 'in en son sürümünü ([Azureadpreview](https://www.powershellgallery.com/packages/AzureADPreview)) yükler.
-2. `Connect-AzureAD` komutunu çalıştırın.  
+2. Şu komutu çalıştırın: `Connect-AzureAD`.  
 4. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın.  
 5. Aşağıdaki komutu girin:
 
     `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
 
    > [!NOTE]
-   > Daha fazla bilgi için bkz. [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > Daha fazla bilgi için bkz. [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
