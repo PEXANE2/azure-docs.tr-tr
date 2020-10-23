@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135755"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424835"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Depolama Alanları Doğrudan çalıştıran Azure VM 'lerini başka bir bölgeye çoğaltma
 
@@ -49,12 +49,12 @@ Aşağıdaki diyagramda, depolama alanları doğrudan kullanan iki düğümlü b
 1. Uygulama tutarlılığı olmadan çoğaltma ilkesi seçin * (yalnızca kilitlenme tutarlılığı desteği kullanılabilir)
 1. Çoğaltmayı etkinleştirme
 
-   ![storagespacesdirect koruması](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![Çoğaltma ayarlarının nerede yapılandırılacağını gösteren ekran görüntüsü.](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
 2. Çoğaltılan öğelere gidin ve sanal makine durumunu da görebilirsiniz.
 3. Her iki sanal makine de korunur ve çoklu VM tutarlılık grubunun bir parçası olarak gösterilir.
 
-   ![storagespacesdirect koruması](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![Sanal makinelerin korunduğunu ve çoklu VM tutarlılık grubunun bir parçasını gösteren ekran görüntüsü.](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>Kurtarma planı oluşturma
 Kurtarma planı, yük devretme sırasında çok katmanlı bir uygulamadaki çeşitli katmanların sıralamasını destekler. Sıralama, uygulama tutarlılığını sürdürmenize yardımcı olur. Çok katmanlı bir Web uygulaması için bir kurtarma planı oluşturduğunuzda [Site Recovery kullanarak kurtarma planı oluşturma](site-recovery-create-recovery-plans.md)bölümünde açıklanan adımları uygulayın.

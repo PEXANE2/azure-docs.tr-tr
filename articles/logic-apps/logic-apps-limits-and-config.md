@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 8669330a8cfccea0dcc10c318c2be4acbcb7788c
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 16dab7897fc41a97a8607df5a03281582377e1e4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169362"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424072"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -41,32 +41,31 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 <a name="run-duration-retention-limits"></a>
 
-## <a name="run-duration-and-retention-limits"></a>Çalışma süresi ve bekletme limitleri
+## <a name="run-duration-and-retention-history-limits"></a>Çalıştırma süresi ve bekletme geçmişi sınırları
 
 Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 | Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
-| Çalıştırma süresi | 90 gün | 366 gün | Çalıştırma [**süresi, bir**](#change-duration)çalıştırmanın başlangıç zamanı ve *Başlangıç zamanında* belirtilen sınır iş akışı ayarı kullanılarak hesaplanır. <p><p>90 gün olan varsayılan sınırı değiştirmek için bkz. [çalışma süresini değiştirme](#change-duration). |
-| Depolama alanında bekletme Çalıştır | 90 gün | 366 gün | Çalışma [**bekletme, bir**](#change-retention)çalıştırmanın başlangıç saati ve *geçerli zamanda* belirtilen sınır iş akışı ayarı kullanılarak hesaplanır. Bir çalıştırmanın tamamlanmasının veya zaman aşımına uğrayıp, bekletme hesaplamasının her zaman çalıştırmanın başlangıç saatini kullanır. Bir çalıştırmanın süresi *geçerli* saklama sınırını aştığında, çalıştırma işlemi çalışma geçmişinden kaldırılır. <p><p>Bu ayarı değiştirirseniz, önceki sınır ne olursa olsun, geçerli sınır her zaman bekletme hesaplaması için kullanılır. Örneğin, 90 günden 30 güne kadar olan bekletme sınırını azaldıysanız, çalışma geçmişinden önceki 60 gün sonra bir çalıştırma kaldırılır. Bekletme süresini 30 günden 60 güne kadar artırırsanız, 20 gün öncesine ait bir çalıştırma, çalışma geçmişinde başka bir 40 gün boyunca kalır. <p><p>90 gün olan varsayılan sınırı değiştirmek için bkz. [depolamada çalışma bekletmesini değiştirme](#change-retention). |
+| Çalıştırma süresi | 90 gün | 366 gün | Çalıştırma süresi, bir çalıştırmanın başlangıç saati kullanılarak hesaplanır. |
+| Depolama alanında çalışma geçmişi tutma | 90 gün | 366 gün | Bir çalıştırma tamamlandığında veya zaman aşımına uğrarsa, çalışma geçmişi saklama işlemi her zaman iş akışı ayarı tarafından *geçerli zamanda* belirtilen çalışma başlangıç zamanı ve sınırı kullanılarak hesaplanır, [**geçmiş tutma Işlemini gün olarak çalıştırın**](#change-retention). Bu ayarı değiştirirseniz, önceki sınır ne olursa olsun, *geçerli* sınır her zaman bekletme hesaplaması için kullanılır. Bir çalıştırmanın süresi geçerli sınırı aştığında, çalıştırma çalışma geçmişinden kaldırılır. <p><p>Örneğin, 90 günden 30 güne kadar olan bekletme limitini azaltdığınızı varsayalım. Bir 60 günlük eski çalıştırma, çalışma geçmişinden kaldırılır. Bekletme süresini 30 günden 60 güne kadar artırırsanız, 20 günlük eski bir çalıştırma, çalışma geçmişinde başka bir 40 gün boyunca kalır. <p><p>90 gün olan varsayılan sınırı değiştirmek için bkz. [depolamada çalışma geçmişi bekletmesini değiştirme](#change-retention). |
 | En az yinelenme aralığı | 1 saniye | 1 saniye ||
 | En fazla yinelenme aralığı | 500 gün | 500 gün ||
 |||||
 
-<a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-run-retention-in-storage"></a>Çalışma süresini değiştirme ve depolamada bekletme çalıştırma
+### <a name="change-run-history-retention-in-storage"></a>Depolama alanında çalışma geçmişi bekletmesini değiştirme
 
-Çalıştırma süresi için varsayılan sınırı değiştirmek ve depolamada bekletme çalıştırmak için aşağıdaki adımları izleyin. Maksimum limiti artırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
+Depolama alanında çalışma geçmişi saklama için varsayılan sınırı değiştirmek üzere aşağıdaki adımları izleyin. Maksimum limiti artırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
 
 > [!NOTE]
 > Çok kiracılı Azure 'da mantıksal uygulamalar için, 90 günlük varsayılan sınır, üst limitle aynıdır. Bu değeri yalnızca azaltabilirsiniz.
 > Bir tümleştirme hizmeti ortamındaki Logic Apps için 90 günlük varsayılan sınırı azaltabilir veya artırabilirsiniz.
 
-1. [Azure portalına](https://portal.azure.com) gidin. Portal arama kutusunda **Logic Apps**' i bulun ve seçin.
+1. [Azure Portal](https://portal.azure.com) arama kutusunda **Logic Apps**' i bulun ve seçin.
 
-1. Mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı seçin ve açın.
+1. Mantıksal uygulamanızı bulun ve seçin. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
 1. Mantıksal uygulamanın menüsünde, **Iş akışı ayarları**' nı seçin.
 
@@ -338,7 +337,7 @@ Bu bölüm yalnızca Azure Logic Apps hizmeti için gelen IP adreslerini listele
 | Çok kiracılı bölge | IP |
 |---------------------|----|
 | Doğu Avustralya | 13.75.153.66, 104.210.89.222, 104.210.89.244, 52.187.231.161 |
-| Güneydoğu Avustralya | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
+| Avustralya Güneydoğu | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
 | Brezilya Güney | 191.235.86.199, 191.235.95.229, 191.235.94.220, 191.234.166.198 |
 | Orta Kanada | 13.88.249.209, 52.233.30.218, 52.233.29.79, 40.85.241.105 |
 | Doğu Kanada | 52.232.129.143, 52.229.125.57, 52.232.133.109, 40.86.202.42 |
@@ -402,7 +401,7 @@ Bu bölümde Azure Logic Apps hizmeti ve yönetilen bağlayıcılar için giden 
 | Çok kiracılı bölge | Logic Apps IP | Yönetilen bağlayıcılar IP 'si |
 |---------------------|---------------|-----------------------|
 | Doğu Avustralya | 13.75.149.4, 104.210.91.55, 104.210.90.241, 52.187.227.245, 52.187.226.96, 52.187.231.184, 52.187.229.130, 52.187.226.139 | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213, 52.237.214.72, 13.70.78.224 - 13.70.78.255 |
-| Güneydoğu Avustralya | 13.73.114.207, 13.77.3.139, 13.70.159.205, 52.189.222.77, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75 | 13.70.136.174, 13.77.50.240 - 13.77.50.255, 40.127.80.34, 52.255.48.202, 13.77.55.160 - 13.77.55.191 |
+| Avustralya Güneydoğu | 13.73.114.207, 13.77.3.139, 13.70.159.205, 52.189.222.77, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75 | 13.70.136.174, 13.77.50.240 - 13.77.50.255, 40.127.80.34, 52.255.48.202, 13.77.55.160 - 13.77.55.191 |
 | Brezilya Güney | 191.235.82.221, 191.235.91.7, 191.234.182.26, 191.237.255.116, 191.234.161.168, 191.234.162.178, 191.234.161.28, 191.234.162.131 | 104.41.59.51, 191.232.38.129, 191.233.203.192 - 191.233.203.207, 191.232.191.157, 191.233.207.160 - 191.233.207.191 |
 | Orta Kanada | 52.233.29.92, 52.228.39.244, 40.85.250.135, 40.85.250.212, 13.71.186.1, 40.85.252.47, 13.71.184.150 | 13.71.170.208 - 13.71.170.223, 52.228.33.76, 52.228.34.13, 52.228.42.205, 52.233.31.197, 52.237.24.126, 52.237.32.212, 13.71.175.160 - 13.71.175.191, 13.71.170.224 - 13.71.170.239 |
 | Doğu Kanada | 52.232.128.155, 52.229.120.45, 52.229.126.25, 40.86.203.228, 40.86.228.93, 40.86.216.241, 40.86.226.149, 40.86.217.241 | 40.69.106.240 - 40.69.106.255, 52.229.120.52, 52.229.120.178, 52.229.123.98, 52.229.126.202, 52.242.35.152, 52.242.30.112, 40.69.111.0 - 40.69.111.31 |

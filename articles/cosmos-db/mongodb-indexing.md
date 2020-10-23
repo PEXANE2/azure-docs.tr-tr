@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282378"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425039"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
@@ -22,7 +22,7 @@ MongoDB için Azure Cosmos DB API 'SI, Azure Cosmos DB temel dizin yönetimi ola
 
 ## <a name="indexing-for-mongodb-server-version-36"></a>MongoDB sunucu sürümü 3,6 için dizin oluşturma
 
-Azure Cosmos DB MongoDB Server sürüm 3,6 için API 'SI `_id` , alanı otomatik olarak dizinlenebilir ve bu bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . MongoDB için Azure Cosmos DB API 'sinde, parçalama ve dizin oluşturma ayrı kavramlardır. Parça anahtarınızı dizinlemek zorunda değilsiniz. Bununla birlikte, belgenizdeki diğer tüm özellikler gibi, bu özellik sorgularda ortak bir filtre ise, parça anahtarını dizinlemeniz önerilir.
+Azure Cosmos DB MongoDB Server sürüm 3,6 için API 'SI `_id` , alanı otomatik olarak dizinlenebilir ve bu bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . MongoDB için Azure Cosmos DB API 'sinde, parçalama ve dizin oluşturma ayrı kavramlardır. Parça anahtarınızı dizinlemek zorunda değilsiniz. Bununla birlikte, belgenizdeki diğer tüm özellikler gibi, bu özellik sorgularda ortak bir filtre ise parça anahtarının dizinlenmesini öneririz.
 
 Ek alanları dizinlemek için MongoDB dizin yönetimi komutlarını uygularsınız. MongoDB 'de olduğu gibi, MongoDB için Azure Cosmos DB API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu varsayılan dizinleme ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API’sinden farklıdır.
 
@@ -40,7 +40,10 @@ Bir sorgu, kullanılabilir yerlerde birden çok tek alan dizini kullanır. Kapsa
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Bileşik dizinler (MongoDB sunucusu sürüm 3,6)
 
-Azure Cosmos DB, MongoDB için API, sürüm 3,6 kablo protokolünü kullanan hesaplara yönelik bileşik dizinleri destekler. Bileşik dizine en fazla sekiz alan ekleyebilirsiniz. **MongoDB 'nin aksine, yalnızca sorgunuzun aynı anda birden çok alanda etkili bir şekilde sıralanması gerekiyorsa bileşik bir dizin oluşturmanız gerekir.** Sıralama gerektirmeyen birden çok filtreye sahip sorgularda tek bir bileşik dizin yerine birden çok tek alan dizini oluşturun.
+Azure Cosmos DB, MongoDB için API, sürüm 3,6 kablo protokolünü kullanan hesaplara yönelik bileşik dizinleri destekler. Bileşik dizine en fazla sekiz alan ekleyebilirsiniz. MongoDB 'nin aksine, yalnızca sorgunuzun aynı anda birden çok alanda etkili bir şekilde sıralanması gerekiyorsa bileşik bir dizin oluşturmanız gerekir. Sıralama gerektirmeyen birden çok filtreye sahip sorgularda tek bir bileşik dizin yerine birden çok tek alan dizini oluşturun. 
+
+> [!NOTE]
+> İç içe özellikler veya diziler üzerinde Bileşik dizinler oluşturamazsınız.
 
 Aşağıdaki komut, alanlarda bir bileşik dizin oluşturur `name` ve `age` :
 
@@ -59,7 +62,7 @@ Ancak, Birleşik dizindeki yolların sırası sorguyla tam olarak eşleşmelidir
 `db.coll.find().sort({age:1,name:1})`
 
 > [!NOTE]
-> İç içe özellikler veya diziler üzerinde Bileşik dizinler oluşturamazsınız.
+> Bileşik dizinler yalnızca sonuçları sıralayan sorgularda kullanılır. Sıralanması gerekmeyen birden çok filtresi olan sorgularda, tek alan dizinleri oluşturun.
 
 ### <a name="multikey-indexes"></a>Çok tuşlu dizinler
 
@@ -75,7 +78,7 @@ Alanda Jeo-uzamsal dizin oluşturma örneği aşağıda verilmiştir `location` 
 
 ### <a name="text-indexes"></a>Metin dizinleri
 
-MongoDB için Azure Cosmos DB API 'SI Şu anda metin dizinlerini desteklememektedir. Dizelerde metin arama sorguları için, Azure Cosmos DB ile [Azure bilişsel arama](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) tümleştirmesini kullanmanız gerekir.
+MongoDB için Azure Cosmos DB API 'SI Şu anda metin dizinlerini desteklememektedir. Dizelerde metin arama sorguları için, Azure Cosmos DB ile [Azure bilişsel arama](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) tümleştirmesini kullanmanız gerekir. 
 
 ## <a name="wildcard-indexes"></a>Joker karakter dizinleri
 
@@ -131,7 +134,10 @@ Tüm alanlarda joker karakter oluşturmak için aşağıdaki adımları uygulay�
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
-Geliştirmeye Başlarken, tüm alanlarda bir joker karakter dizini oluşturmak yararlı olabilir. Bir belgede daha fazla özellik dizinlendiğinden, belgeyi yazma ve güncelleştirme için Istek birimi (RU) ücreti artar. Bu nedenle, yazma ağır bir iş yükünüz varsa, joker dizinleri kullanmanın aksine yolları tek tek dizine almalısınız.
+> [!NOTE]
+> Geliştirmeye yeni başladıysanız, tüm alanlarda bir joker karakter dizini ile başlamasını **kesinlikle** öneririz. Bu, geliştirmeyi kolaylaştırabilir ve sorguları iyileştirmeyi kolaylaştırabilir.
+
+Birçok alan içeren belgeler, yazma ve güncelleştirme işlemleri için yüksek bir Istek birimi (RU) ücretine sahip olabilir. Bu nedenle, yazma ağır bir iş yükünüz varsa, joker dizinleri kullanmanın aksine yolları tek tek dizine almalısınız.
 
 ### <a name="limitations"></a>Sınırlamalar
 
@@ -335,7 +341,7 @@ Dizinler kaldırılırken ve hemen çalışan sorgular, bırakılan dizinlerde f
 
 ## <a name="indexing-for-mongodb-version-32"></a>MongoDB sürüm 3,2 için dizin oluşturma
 
-Kullanılabilir dizin oluşturma özellikleri ve varsayılanlar, MongoDB kablo protokolünün 3,2 sürümü ile uyumlu olan Azure Cosmos hesapları için farklıdır. [Hesabınızın sürümüne](mongodb-feature-support-36.md#protocol-support)bakabilirsiniz. Bir [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltebilirsiniz.
+Kullanılabilir dizin oluşturma özellikleri ve varsayılanlar, MongoDB kablo protokolünün 3,2 sürümü ile uyumlu olan Azure Cosmos hesapları için farklıdır. [Hesabınızın sürümünü denetleyebilir](mongodb-feature-support-36.md#protocol-support) ve [sürüm 3,6 ' e yükseltebilirsiniz](mongodb-version-upgrade.md).
 
 Sürüm 3,2 kullanıyorsanız, bu bölümde sürüm 3,6 ile ilgili önemli farklılıklar özetlenmektedir.
 
@@ -352,11 +358,11 @@ Varsayılan dizinleri bırakırken, sürüm 3,6 ' de olduğu gibi daha fazla diz
 
 ### <a name="compound-indexes-version-32"></a>Bileşik dizinler (sürüm 3,2)
 
-Bileşik dizinler bir belgenin birden çok alanına başvurular içerir. Bileşik dizin oluşturmak isterseniz, [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltin.
+Bileşik dizinler bir belgenin birden çok alanına başvurular içerir. Bileşik dizin oluşturmak istiyorsanız [sürüm 3,6 ' e yükseltin](mongodb-version-upgrade.md).
 
 ### <a name="wildcard-indexes-version-32"></a>Joker karakter dizinleri (sürüm 3,2)
 
-Bir joker karakter dizini oluşturmak istiyorsanız, bir [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltin.
+Joker karakter dizini oluşturmak istiyorsanız [3,6 sürümüne yükseltin](mongodb-version-upgrade.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

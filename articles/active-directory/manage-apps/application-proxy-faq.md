@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: contperfq2
+ms.openlocfilehash: 38bff38ebe44d9018299444b89d7743c4cc92b72
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104572"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424192"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -48,7 +49,7 @@ Hayır, bu senaryo desteklenmiyor. Varsayılan ayarlar şunlardır:
 
 Hayır, şu anda mümkün değildir. Kayıt denemesi her zaman kullanıcının giriş kiracısında yapılır.
 
-### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Arka uç Uygulamam birden çok Web sunucusunda barındırılır ve Kullanıcı oturumu kalıcılığı (süreklilik) gerektirir. Oturum kalıcılığını nasıl sağlayabilirim? 
+### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Arka uç Uygulamam birden çok Web sunucusunda barındırılır ve Kullanıcı oturumu kalıcılığı (süreklilik) gerektirir. Oturum kalıcılığını nasıl sağlayabilirim? 
 
 Öneriler için bkz. [uygulama proxy bağlayıcılarınızın ve uygulamalarınızın yüksek kullanılabilirliği ve yük dengelemesi](application-proxy-high-availability-load-balancing.md).
 

@@ -13,12 +13,12 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7a5157c955a51215a9e62711ebb7838b61fda496
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951596"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424267"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -86,7 +86,7 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
    :::column-end:::
    :::column span="":::
       Kuzey Avrupa  
-      Güney Afrika Kuzey  
+      Güney Afrika - Kuzey  
       Orta Güney ABD  
       Güney Hindistan  
       Güneydoğu Asya  
@@ -135,7 +135,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
       Güney Kore - Orta  
       Orta Kuzey ABD  
       Kuzey Avrupa  
-      Güney Afrika Kuzey  
+      Güney Afrika - Kuzey  
       Orta Güney ABD  
    :::column-end:::
    :::column span="":::
@@ -164,7 +164,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 
 ### <a name="user-access-requirements"></a>Kullanıcı erişimi gereksinimleri
 
-Hesabınız aşağıdaki Azure [yerleşik rollerinin](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)birine üye olmalıdır:
+Hesabınız aşağıdaki [Azure yerleşik rollerinin](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)birine üye olmalıdır:
 
 |Dağıtım modeli   | Rol                   |
 |---------          |---------               |
@@ -237,7 +237,7 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 > [!NOTE]
 >Trafik Analizi çözümünü barındıran Log Analytics çalışma alanının ve NSG 'lerin aynı bölgede olması gerekmez. Örneğin, Batı Avrupa bölgesindeki bir çalışma alanında trafik analizlerinin olması, Doğu ABD ve Batı ABD NSG 'lerinizin olması olabilir. Aynı çalışma alanında birden çok NSG yapılandırılabilir.
 
-8. **Kaydet**'i seçin.
+8. **Kaydet**’i seçin.
 
     ![Depolama hesabı, Log Analytics çalışma alanı ve Trafik Analizi etkinleştirme seçimi](./media/traffic-analytics/ta-customprocessinginterval.png)
 

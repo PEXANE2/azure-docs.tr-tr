@@ -1,0 +1,630 @@
+---
+title: Azure Resource Manager şablonu kullanarak VM uzantısını etkinleştirme
+description: Bu makalede, karma bulut ortamlarında çalışan Azure Arc etkin sunucularına bir Azure Resource Manager şablonu kullanılarak sanal makine uzantılarının nasıl dağıtılacağı açıklanır.
+ms.date: 10/15/2020
+ms.topic: conceptual
+ms.openlocfilehash: 23cb1e85b9560b7033dc5bdce672ee8718ed326b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92462991"
+---
+# <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM şablonunu kullanarak Azure VM uzantılarını etkinleştirme
+
+Bu makalede, Azure Arc özellikli sunucular tarafından desteklenen Azure VM uzantıları 'nı dağıtmak için bir Azure Resource Manager şablonu (ARM şablonu) nasıl kullanacağınız gösterilmektedir.
+
+VM uzantıları, bir Azure Resource Manager şablonuna eklenebilir ve şablonun dağıtımıyla birlikte yürütülür. Yay etkin sunucular tarafından desteklenen VM uzantıları ile, desteklenen VM uzantısını Azure PowerShell kullanarak Linux veya Windows makinelerde dağıtabilirsiniz. Aşağıdaki her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
+
+>[!NOTE]
+>Birden çok uzantı birlikte toplanmış ve işlenebilir olsa da, bunlar hizmet temelli olarak yüklenir. İlk uzantı yüklemesi tamamlandıktan sonra, sonraki uzantının yüklenmesi denenir.
+
+## <a name="deploy-the-log-analytics-vm-extension"></a>Log Analytics VM uzantısını dağıtma
+
+Log Analytics aracısını kolayca dağıtmak için, aracıyı Windows veya Linux 'a yüklemek üzere aşağıdaki örnek verilmiştir.
+
+### <a name="template-file-for-linux"></a>Linux için şablon dosyası
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "workspaceId": {
+            "type": "string"
+        },
+        "workspaceKey": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('vmName'),'/OMSAgentForLinux')]",
+            "type": "Microsoft.HybridCompute/machines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2019-08-02-preview",
+            "properties": {
+                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                "type": "OmsAgentForLinux",
+                "settings": {
+                    "workspaceId": "[parameters('workspaceId')]"
+                },
+                "protectedSettings": {
+                    "workspaceKey": "[parameters('workspaceKey')]"
+                }
+            }
+        }
+    ]
+}
+```
+
+### <a name="template-file-for-windows"></a>Windows için şablon dosyası
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "workspaceId": {
+            "type": "string"
+        },
+        "workspaceKey": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('vmName'),'/MicrosoftMonitoringAgent')]",
+            "type": "Microsoft.HybridCompute/machines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2019-08-02-preview",
+            "properties": {
+                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                "type": "MicrosoftMonitoringAgent",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "workspaceId": "[parameters('workspaceId')]"
+                },
+                "protectedSettings": {
+                    "workspaceKey": "[parameters('workspaceKey')]"
+                }
+            }
+        }
+    ]
+}
+```
+
+### <a name="parameter-file"></a>Parametre dosyası
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "value": "<vmName>"
+        },
+        "location": {
+            "value": "<region>"
+        },
+        "workspaceId": {
+            "value": "<MyWorkspaceID>"
+        },
+        "workspaceKey": {
+            "value": "<MyWorkspaceKey>"
+        }
+    }
+}
+```
+
+Şablon ve parametre dosyalarını diske kaydedin ve parametre dosyasını dağıtımınız için uygun değerlerle düzenleyin. Daha sonra uzantıyı aşağıdaki komutla bir kaynak grubu içindeki tüm bağlı makinelere yükleyebilirsiniz. Komut, parametreleri ve parametre değerlerini içeren bir dosyayı belirtmek için Template ve *Templateparameterfile* parametresini belirtmek üzere *TemplateFile* parametresini kullanır.
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\LogAnalyticsAgentWin.json" -TemplateParameterFile "D:\Azure\Templates\LogAnalyticsAgentWinParms.json"
+```
+
+## <a name="deploy-the-custom-script-extension"></a>Özel Betik uzantısını dağıtma
+
+Özel Betik uzantısını kullanmak için aşağıdaki örnek Windows ve Linux 'ta çalışacak şekilde sunulmaktadır. Özel Betik uzantısı hakkında bilginiz yoksa, bkz. [Windows Için özel Betik uzantısı](../../virtual-machines/extensions/custom-script-windows.md) veya [Linux Için özel Betik uzantısı](../../virtual-machines/extensions/custom-script-linux.md). Bu uzantıyı karma makinelerle kullanırken anlamanız gereken farklı özellikler vardır:
+
+* Azure sanal makine özel Betik uzantısı ile desteklenen işletim sistemlerinin listesi, Azure Arc özellikli sunucular için geçerli değildir. Yay etkin sunucular için desteklenen OSs listesi [burada](agent-overview.md#supported-operating-systems)bulunabilir.
+
+* Azure sanal makine ölçek kümeleri veya klasik VM 'Lerle ilgili yapılandırma ayrıntıları geçerli değildir.
+
+* Makinelerinizin dışarıdan bir betiği indirmesi ve yalnızca bir ara sunucu üzerinden iletişim kurabilmesi gerekiyorsa, proxy sunucusu çevresel değişkenini ayarlamak için [bağlı makine aracısını yapılandırmanız](manage-agent.md#update-or-remove-proxy-settings) gerekir.
+
+Özel Betik uzantısı yapılandırması, betik konumu ve çalıştırılacak komut gibi şeyleri belirtir. Bu yapılandırma, hem Linux hem de Windows karma makineleri için aşağıda sağlanmış olan bir Azure Resource Manager şablonunda belirtilmiştir.
+
+### <a name="template-file-for-linux"></a>Linux için şablon dosyası
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "fileUris": {
+      "type": "array"
+    },
+    "commandToExecute": {
+      "type": "securestring"
+    }
+  },
+  "resources": [
+    {
+      "name": "[concat(parameters('vmName'),'/CustomScript')]",
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "location": "[parameters('location')]",
+      "apiVersion": "2019-08-02-preview",
+      "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "autoUpgradeMinorVersion": true,
+        "settings": {},
+        "protectedSettings": {
+          "commandToExecute": "[parameters('commandToExecute')]",
+          "fileUris": "[parameters('fileUris')]"
+        }
+      }
+    }
+  ]
+}
+```
+
+### <a name="template-file-for-windows"></a>Windows için şablon dosyası
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "fileUris": {
+            "type": "string"
+        },
+        "arguments": {
+            "type": "securestring",
+            "defaultValue": " "
+        }
+    },
+    "variables": {
+        "UriFileNamePieces": "[split(parameters('fileUris'), '/')]",
+        "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
+        "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
+        "firstFileName": "[variables('firstFileNameBreakString')[0]]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('vmName'),'/CustomScriptExtension')]",
+            "type": "Microsoft.HybridCompute/machines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2019-08-02-preview",
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": "[split(parameters('fileUris'), ' ')]"
+                },
+                "protectedSettings": {
+                    "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', parameters('arguments'))]"
+                }
+            }
+        }
+    ]
+}
+```
+
+### <a name="parameter-file"></a>Parametre dosyası
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "0.1.2-preview",
+  "parameters": {
+    "basics": [
+      {}
+    ],
+    "steps": [
+      {
+        "name": "customScriptExt",
+        "label": "Add Custom Script Extension",
+        "elements": [
+          {
+            "name": "fileUris",
+            "type": "Microsoft.Common.FileUpload",
+            "label": "Script files",
+            "toolTip": "The script files that will be downloaded to the virtual machine.",
+            "constraints": {
+              "required": false
+            },
+            "options": {
+              "multiple": true,
+              "uploadMode": "url"
+            },
+            "visible": true
+          },
+          {
+            "name": "commandToExecute",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Command",
+            "defaultValue": "sh script.sh",
+            "toolTip": "The command to execute, for example: sh script.sh",
+            "constraints": {
+              "required": true
+            },
+            "visible": true
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "vmName": "[vmName()]",
+      "location": "[location()]",
+      "fileUris": "[steps('customScriptExt').fileUris]",
+      "commandToExecute": "[steps('customScriptExt').commandToExecute]"
+    }
+  }
+}
+```
+
+## <a name="deploy-the-powershell-dsc-extension"></a>PowerShell DSC uzantısını dağıtma
+
+PowerShell DSC uzantısını kullanmak için, Windows ve Linux 'ta çalışmak üzere aşağıdaki örnek verilmiştir. PowerShell DSC Uzantısı hakkında bilginiz yoksa bkz. [DSC uzantı işleyicisine genel bakış](../../virtual-machines/extensions/dsc-overview.md). Bu uzantıyı karma makinelerle kullanırken anlamanız gereken farklı özellikler vardır:
+
+* Azure VM PowerShell DSC Uzantısı ile desteklenen işletim sistemlerinin listesi, Azure Arc özellikli sunucular için geçerli değildir. Yay etkin sunucular için desteklenen OSs listesi [burada](agent-overview.md#supported-operating-systems)bulunabilir.
+
+* Makinelerinizin dışarıdan bir betiği indirmesi ve yalnızca bir ara sunucu üzerinden iletişim kurabilmesi gerekiyorsa, proxy sunucusu çevresel değişkenini ayarlamak için [bağlı makine aracısını yapılandırmanız](manage-agent.md#update-or-remove-proxy-settings) gerekir.
+
+### <a name="template-file-for-linux"></a>Linux için şablon dosyası
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the vm, will be used as DNS Name for the Public IP used to access the Virtual Machine."
+            }
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        },
+        "mode": {
+            "type": "string",
+            "defaultValue": "Push",
+            "metadata": {
+                "description": "The functional mode, push MOF configuration (Push), distribute MOF configuration (Pull), install custom DSC module (Install)"
+            },
+            "allowedValues": [
+                "Push",
+                "Pull",
+                "Install",
+                "Register"
+            ]
+        },
+        "fileUri": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The uri of the MOF file/Meta MOF file/resource ZIP file"
+            }
+        },
+        "registrationUrl": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The URL of the Azure Automation account"
+            }
+        },
+        "registrationKey": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The access key of the Azure Automation account"
+            }
+        }
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('vmName'),'/DSCForLinux')]",
+            "type": "Microsoft.HybridCompute/machines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2019-08-02-preview",
+            "properties": {
+                "publisher": "Microsoft.OSTCExtensions",
+                "type": "DSCForLinux",
+                "settings": {
+                    "Mode": "[parameters('mode')]",
+                    "FileUri": "[parameters('fileUri')]"
+                },
+                "protectedSettings": {
+                    "RegistrationUrl": "[parameters('registrationUrl')]",
+                    "RegistrationKey": "[parameters('registrationKey')]"
+                }
+            }
+        }
+    ]
+}
+```
+
+### <a name="template-file-for-windows"></a>Windows için şablon dosyası
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "modulesUrl": {
+            "type": "string"
+        },
+        "configurationFunction": {
+            "type": "string"
+        },
+        "properties": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "dataBlobUri": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "wmfVersion": {
+            "type": "string",
+            "defaultValue": "latest",
+            "allowedValues": [
+                "4.0",
+                "5.0",
+                "5.1",
+                "latest"
+            ]
+        },
+        "privacy": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "autoUpdate": {
+            "type": "bool",
+            "defaultValue": false
+        }
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('vmName'),'/Microsoft.Powershell.DSC')]",
+            "type": "Microsoft.HybridCompute/machines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2019-08-02-preview",
+            "properties": {
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "autoUpgradeMinorVersion": "[parameters('autoUpdate')]",
+                "settings": {
+                    "ModulesUrl": "[parameters('modulesUrl')]",
+                    "ConfigurationFunction": "[parameters('configurationFunction')]",
+                    "Properties": "[parameters('properties')]",
+                    "WmfVersion": "[parameters('wmfVersion')]",
+                    "Privacy": {
+                        "DataCollection": "[parameters('privacy')]"
+                    }
+                },
+                "protectedSettings": {
+                    "DataBlobUri": "[parameters('dataBlobUri')]"
+                }
+            }
+        }
+    ]
+}
+```
+
+### <a name="parameter-file"></a>Parametre dosyası
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "0.1.2-preview",
+  "parameters": {
+    "basics": [
+      {}
+    ],
+    "steps": [
+      {
+        "name": "dscExtension",
+        "label": "Add DSC Extension",
+        "elements": [
+          {
+            "name": "Mode",
+            "type": "Microsoft.Common.OptionsGroup",
+            "label": "Mode",
+            "defaultValue": 0,
+            "toolTip": "The functional mode, push MOF configuration (Push), distribute MOF configuration (Pull), install custom DSC module (Install)",
+            "constraints": {
+              "allowedValues": [
+                {
+                  "label": "Push",
+                  "value": "Push"
+                },
+                {
+                  "label": "Pull",
+                  "value": "Pull"
+                },
+                {
+                  "label": "Install",
+                  "value": "Install"
+                },
+                {
+                  "label": "Register",
+                  "value": "Register"
+                }
+              ]
+            },
+            "visible": true
+          },
+          {
+            "name": "FileUri",
+            "type": "Microsoft.Common.FileUpload",
+            "label": "File URI",
+            "toolTip": "The uri of the MOF file/Meta MOF file/resource ZIP file",
+            "constraints": {
+              "required": false,
+              "accept": ".psd1"
+            },
+            "options": {
+              "multiple": false,
+              "uploadMode": "url",
+              "openMode": "binary",
+              "encoding": "UTF-8"
+            }
+          },
+          {
+            "name": "RegistrationUrl",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Registration URL",
+            "toolTip": "The URL of the Azure Automation account",
+            "constraints": {
+              "required": false
+            }
+          },
+          {
+            "name": "RegistrationKey",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Registration key",
+            "toolTip": "The access key of the Azure Automation account",
+            "constraints": {
+              "required": false
+            }
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "vmName": "[vmName()]",
+      "location": "[location()]",
+      "mode": "[steps('dscExtension').Mode]",
+      "fileUri": "[steps('dscExtension').FileUri]",
+      "registrationUrl": "[steps('dscExtension').RegistrationUrl]",
+      "registrationKey": "[steps('dscExtension').RegistrationKey]"
+    }
+  }
+}
+```
+
+## <a name="deploy-the-dependency-agent"></a>Bağımlılık aracısını dağıtma
+
+Azure Izleyici bağımlılık Aracısı uzantısını kullanmak için, Windows ve Linux 'ta çalışmak üzere aşağıdaki örnek verilmiştir. Bağımlılık aracısına alışkın değilseniz bkz. [Azure izleyici aracılarına genel bakış](../../azure-monitor/platform/agents-overview.md#dependency-agent).
+
+### <a name="template-file-for-linux"></a>Linux için şablon dosyası
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of existing Linux machine."
+      }
+    }
+  },
+  "variables": {
+    "vmExtensionsApiVersion": "2017-03-30"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "name": "[concat(parameters('vmName'),'/DAExtension')]",
+      "apiVersion": "[variables('vmExtensionsApiVersion')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+      ],
+      "properties": {
+        "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
+        "type": "DependencyAgentLinux",
+        "typeHandlerVersion": "9.5",
+        "autoUpgradeMinorVersion": true
+      }
+    }
+  ],
+    "outputs": {
+    }
+}
+```
+
+### <a name="template-file-for-windows"></a>Windows için şablon dosyası
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of existing Windows machine."
+      }
+    }
+  },
+  "variables": {
+    "vmExtensionsApiVersion": "2017-03-30"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "name": "[concat(parameters('vmName'),'/DAExtension')]",
+      "apiVersion": "[variables('vmExtensionsApiVersion')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+      ],
+      "properties": {
+        "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
+        "type": "DependencyAgentWindows",
+        "typeHandlerVersion": "9.5",
+        "autoUpgradeMinorVersion": true
+      }
+    }
+  ],
+    "outputs": {
+    }
+}
+```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* Azure CLı veya PowerShell kullanarak bir uzantı dağıtabilir ve kaldırabilirsiniz.
+
+* Sorun giderme bilgileri, [VM genişletmeleri sorunlarını gider kılavuzunda](troubleshoot-vm-extensions.md)bulunabilir.

@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: bdc0bdb5966445fe98b2f65bce552fe6dca493ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 816f64f9987abbdcd49de93b3bc218ec1606d9f3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368987"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461660"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -65,10 +65,10 @@ Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yön
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition mevcuttur ve bu durumda ne kadar maliyetlidir?
 
-VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlevdir/hizmettir ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Ayrıca, hizmeti kapatma/devre dışı bırakma seçeneğiniz de vardır.
+VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti kapatabilir veya hizmetten vazgeçebilirsiniz.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware Çözüm VM 'Leri VMRC tarafından yönetiliyor mu?
-Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve genel DNS (ESXi ana bilgisayar adlarını çözümleyebilmesi için) kullanıyor olabilir.
+Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve genel DNS kullanıyor (yani ESXi ana bilgisayar adlarını çözümleyebilmesi için).
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri ile VMRC 'yi yüklemek ve kullanmak için özel yönergeler var mı?
 Hayır, [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) kullanın ve bu YÖNERGELERDE belirtilen VM önkoşullarını yerine uygulayın. 
@@ -116,7 +116,7 @@ Evet, tüm vSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak var
 
 Bu yedekleme çözümleri müşteriler tarafından yüklenip yönetildiğinden, destek için ilgili ISV 'ye ulaşabilirler. 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Yinelenenleri kaldırma ayarı için doğru depolama ilkesi nedir?
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-setup"></a>Yinelenenleri kaldırma kurulumu için doğru depolama ilkesi nedir?
 
 VM şablonunuz için *thin_provision* depolama ilkesini kullanın.  Varsayılan değer *thick_provision*.
 
@@ -239,7 +239,7 @@ Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 * Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
 * Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
-Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
+Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. İsteğinizi doğrulamak ve düğümlerinizi ayırmak için beş adede kadar iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
 
 
 1. Azure portal, **Yardım + Destek**altında, **[Yeni bir destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:

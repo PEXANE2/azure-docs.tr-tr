@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729041"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424979"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 
@@ -28,7 +28,7 @@ Genel olarak, Azure Machine Learning ile kullanabileceğiniz iki tür kimlik do�
 * __Etkileşimli__: hesabınızı doğrudan kimlik doğrulamak veya kimlik doğrulama için kullanılan bir belirteç almak üzere Azure Active Directory ' de kullanırsınız. Etkileşimli kimlik doğrulaması deneme ve yinelemeli geliştirme sırasında kullanılır. Ya da kaynaklara erişimi (bir Web hizmeti gibi) Kullanıcı başına temelinde denetlemek istediğiniz yerdir.
 * __Hizmet sorumlusu__: Azure Active Directory ' de bir hizmet sorumlusu hesabı oluşturur ve bir belirteç almak veya bir belirteci almak için kullanın. Hizmet sorumlusu, Kullanıcı etkileşimi gerektirmeden hizmette kimlik doğrulaması yapmak için otomatik bir işlem gerektiğinde kullanılır. Örneğin, eğitim kodu her değiştiğinde bir modeli gösteren ve test eden bir sürekli tümleştirme ve dağıtım betiği. Hizmetin kimliğini doğrulamak için son kullanıcının gerekli olmasını istemiyorsanız bir Web hizmetinde kimlik doğrulaması yapmak için bir belirteç almak üzere bir hizmet sorumlusu de kullanabilirsiniz. Ya da son kullanıcı kimlik doğrulamasının Azure Active Directory kullanarak doğrudan gerçekleştirilmediğini.
 
-Kullanılan kimlik doğrulama türünden bağımsız olarak, kaynaklara izin verilen erişim düzeyini kapsam için rol tabanlı erişim denetimi (RBAC) kullanılır. Örneğin, dağıtılan bir modelin erişim belirtecini almak için kullanılan bir hesabın yalnızca çalışma alanına okuma erişimi olması gerekir. RBAC hakkında daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).
+Kullanılan kimlik doğrulama türü ne olursa olsun, kaynaklara izin verilen erişim düzeyini kapsam altına almak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılır. Örneğin, dağıtılan bir modelin erişim belirtecini almak için kullanılan bir hesabın yalnızca çalışma alanına okuma erişimi olması gerekir. Azure RBAC hakkında daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 

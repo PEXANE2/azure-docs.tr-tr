@@ -11,49 +11,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 24e10dad6a4b9a6232ce74b5365d9a9df7860079
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339943"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425357"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
 ## <a name="introduction-to-secure-score"></a>Güvenli puana giriş
 
-Azure Güvenlik Merkezi 'nin iki ana hedefi vardır: geçerli güvenlik durumunuzu anlamanıza ve güvenliği verimli ve etkili bir şekilde iyileştirmenize yardımcı olmak için. Güvenlik Merkezi 'nin bu hedeflere ulaşmanızı sağlayan merkezi bir yönü güvenli puanı.
+Azure Güvenlik Merkezi 'nin iki ana hedefi vardır: 
+
+- Geçerli güvenlik durumunuzu anlamanıza yardımcı olması için
+- güvenliği verimli ve etkili bir şekilde iyileştirmenize yardımcı olmak için
+
+Güvenlik Merkezi 'nde, bu hedeflere ulaşmanızı sağlayan merkezi özellik **güvenli puanı**.
 
 Güvenlik Merkezi, güvenlik sorunları için kaynaklarınızı, aboneliklerinizi ve kuruluşunuzu sürekli olarak değerlendirir. Daha sonra her türlü bulguları tek bir puanın içinde toplar, böylece bir bakışta geçerli güvenlik durumunuza göre daha yüksek puan, belirtilen risk düzeyini azaltır.
 
-Güvenlik Merkezi 'nin güvenli skor sayfasında şunları içerir:
+Güvenli puan, Azure portal sayfalarında yüzde değeri olarak gösterilir, ancak temel alınan değerler de açıkça sunulur:
 
-- **Puan** -güvenli puan bir yüzde değeri olarak gösterilir, ancak temel alınan değerler de net bir şekilde görünür:
+:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="Portalda gösterildiği gibi genel güvenli puan":::
 
-    [![Temel alınan sayılarla yüzde değeri olarak gösterilen güvenli puan, çok açık](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
+Güvenliğinizi artırmak için, puanınızı yükseltmek için gereken bekleyen eylemler için Güvenlik Merkezi 'nin öneriler sayfasını gözden geçirin. Her öneri, belirli bir sorunu düzeltmenizi sağlayacak yönergeler içerir.
 
-- **Güvenlik denetimleri** -her denetim bir mantıksal ilgili güvenlik önerisi grubudur ve güvenlik açığı bulunan saldırı yüzeylerinizi yansıtır. Denetim, bu önerileri uygulamanıza yardımcı olan yönergelerden oluşan bir güvenlik önerileri kümesidir. Puanınız yalnızca bir denetim içindeki tek bir kaynağın *Tüm* önerilerini düzeltdiğinde geliştirilir.
+Öneriler, **güvenlik denetimleri**halinde gruplandırılır. Her denetim, ilgili güvenlik önerilerinin mantıksal grubudur ve güvenlik açığı bulunan saldırı yüzeylerinizi yansıtır. Puanınız yalnızca bir denetim içindeki tek bir kaynağın *Tüm* önerilerini düzeltdiğinde geliştirilir. Kuruluşunuzun her bir saldırı yüzeyi için ne kadar iyi güvenlik altına alınacağını öğrenmek için her bir güvenlik denetiminin puanlarını gözden geçirin.
 
-    Kuruluşunuzun her bir saldırı yüzeyini ne kadar iyi güvenlik altına almak için her güvenlik denetiminin puanlarını gözden geçirin.
-
-    Daha fazla bilgi için bkz. [güvenli puanınızın aşağıda nasıl hesaplandığı](secure-score-security-controls.md#how-your-secure-score-is-calculated) . 
-
-
->[!TIP]
-> Güvenlik Merkezi 'nin önceki sürümleri, öneri düzeyinde puan elde eder: tek bir kaynak için bir öneri belirlediğinizde, güvenli puanınız geliştirilmiştir. Bugün, skor yalnızca bir denetim içindeki tek bir kaynak için *Tüm* önerileri düzeltmenizi artırdıysanız gelişir. Bu nedenle, puanınız yalnızca bir kaynağın güvenliğini artırdığınızda geliştirilir.
+Daha fazla bilgi için bkz. [güvenli puanınızın aşağıda nasıl hesaplandığı](secure-score-security-controls.md#how-your-secure-score-is-calculated) . 
 
 
 ## <a name="access-your-secure-score"></a>Güvenli puanınızı erişin
 
-Azure Güvenlik Merkezi REST API ile Azure portal veya program aracılığıyla aracılığıyla genel güvenli puanınızın yanı sıra abonelik başına puanınızı bulabilirsiniz.
+Aşağıdaki bölümlerde açıklandığı gibi, genel olarak güvenli puanınızı ve abonelik başına puanınızı Azure portal veya program aracılığıyla aracılığıyla bulabilirsiniz:
+
+- [Portaldan güvenli puanınızı alın](#get-your-secure-score-from-the-portal)
+- [REST API güvenli puanınızı alın](#get-your-secure-score-from-the-rest-api)
+- [Azure Kaynak Grafınızdan (ARG) güvenli puanınızı alın](#get-your-secure-score-from-azure-resource-graph-arg)
 
 ### <a name="get-your-secure-score-from-the-portal"></a>Portaldan güvenli puanınızı alın
 
-Güvenlik Merkezi, puanınızı portalda göze çarpacak şekilde görüntüler: Genel Bakış sayfasında gösterilen ilk şey. Adanmış güvenli puan sayfasına tıkladığınızda, puanı aboneliğe göre aşağı doğru görürsünüz. Önceliklendirilmiş önerilerin ayrıntılı listesini görmek için tek bir aboneliğe tıklayın ve bu bilgilerin, aboneliğin puanına ait olduğunu belirten olası etkileri görebilirsiniz.
+Güvenlik Merkezi, puanınızı portalda göze çarpacak şekilde görüntüler: Güvenlik Merkezi 'ne genel bakış sayfası ilk ana kutucuğudur. Bu kutucuğu seçtiğinizde, puanı abonelik tarafından kesilen puanı görebileceğiniz adanmış güvenli puan sayfasına götürür. Önceliklendirilmiş önerilerin ayrıntılı listesini görmek için tek bir abonelik seçin ve aboneliğin puanına sahip olacağını belirten olası etkileri görebilirsiniz.
 
-![Portalda gösterildiği gibi genel güvenli puan](media/secure-score-security-controls/single-secure-score-via-ui.png)
+Daha sonra, güvenli puanınız Güvenlik Merkezi 'nin Portal sayfalarında aşağıdaki konumlarda gösterilmiştir.
+
+- Güvenlik Merkezi 'nin **genel bakış** (ana pano) kutucuğunda:
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Portalda gösterildiği gibi genel güvenli puan":::
+
+- Adanmış **güvenli Puanlama** sayfasında:
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Portalda gösterildiği gibi genel güvenli puan":::
+
+- **Öneriler** sayfasının en üstünde:
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Portalda gösterildiği gibi genel güvenli puan":::
+
+
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>REST API güvenli puanınızı alın
 
@@ -62,6 +79,40 @@ Puanınızı güvenli Puanlama API 'SI (Şu anda önizleme aşamasında) aracıl
 ![API aracılığıyla tek bir güvenli puan alma](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 Güvenli Puanlama API 'sinin üzerine inşa eden araçların örnekleri için bkz. [GitHub topluluğumuz güvenli Puanlama alanı](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
+
+
+
+### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Azure Kaynak Grafınızdan (ARG) güvenli puanınızı alın
+
+Azure Kaynak Grafiği, güçlü filtreleme, gruplama ve sıralama özelliklerine sahip bulut ortamlarınızdaki kaynak bilgilerine anında erişim sağlar. Azure aboneliklerindeki bilgileri programlı olarak veya Azure portal içinden sorgulamak için hızlı ve verimli bir yoldur. [Azure Kaynak Grafiği hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/governance/resource-graph/).
+
+Bağımsız değişken ile birden çok aboneliğin güvenli puanına erişmek için:
+
+1. Azure portal **Azure Kaynak Grafiği Gezgini**' ni açın.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Portalda gösterildiği gibi genel güvenli puan" :::
+
+1. Kusto sorgunuzu girin (kılavuz için aşağıdaki örnekleri kullanarak).
+
+    - Bu sorgu, abonelik KIMLIĞINI, geçerli puanı punto ve yüzde olarak ve abonelik için en fazla puanı döndürür. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores' 
+        | extend current = properties.score.current, max = todouble(properties.score.max)
+        | project subscriptionId, current, max, percentage = ((current / max)*100)
+        ```
+
+    - Bu sorgu tüm güvenlik denetimlerinin durumunu döndürür. Her denetim için, sağlıksız kaynak sayısını, geçerli puanı ve en fazla puanı elde edersiniz. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores/securescorecontrols'
+        | extend SecureControl = properties.displayName, unhealthy = properties.unhealthyResourceCount, currentscore = properties.score.current, maxscore = properties.score.max
+        | project SecureControl , unhealthy, currentscore, maxscore
+        ```
+
+1. **Sorguyu Çalıştır**' ı seçin.
 
 ## <a name="how-your-secure-score-is-calculated"></a>Güvenli puanınızın hesaplanması 
 
@@ -99,7 +150,7 @@ Yalnızca yerleşik önerilerin güvenli puanı üzerinde etkisi vardır.
 
 Önizleme önerisi örneği:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Önizleme bayrağıyla ilgili öneri":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Portalda gösterildiği gibi genel güvenli puan":::
 
 ## <a name="improve-your-secure-score"></a>Secure score’unuzu iyileştirme
 

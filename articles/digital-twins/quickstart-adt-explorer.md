@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 09d5ece0afdd5abe3da5ebdeb6a7ae290e1ccf3d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bec4e831b3f7af0ef551617ba8a8253925226e05
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372336"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461847"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -37,9 +37,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip ol
 
 Ayrıca makinenizde **Node.js** gerekir. Bu bağlantıdaki en son sürümü edinebilirsiniz: [Node.js](https://nodejs.org/).
 
-Son olarak, hızlı başlangıç sırasında kullanmak üzere iki örnek de indirmeniz gerekir:
-* **ADT Explorer** örnek uygulaması. Bu örnek, hızlı başlangıçta bir Azure dijital TWINS senaryosu yüklemek ve araştırmak için kullandığınız ana uygulamayı içerir. Uygulamayı almak için şuraya gidin: [Azure Digital TWINS (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). İndirmek için *posta indirme* düğmesine basın *. * Makinenize Bu örnek kodun ZIP dosyası. Bu, bir yükler. ZIP klasörünü makinenize _**Azure_Digital_Twins__ADT__explorer.zip**_. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
-* **Örnek Azure dijital TWINS senaryosu**. Bu, ile çalışmak üzere ADT Gezgini 'ne yüklediğiniz önceden oluşturulmuş bir Azure dijital TWINS grafiğini içerir. Senaryoya ulaşmak için şuraya gidin: [Azure Digital TWINS uçtan uca örnekler](/samples/azure-samples/digital-twins-samples/digital-twins-samples). İndirmek için *posta indirme* düğmesine basın *. * Makinenize Bu örnek kodun ZIP dosyası. Bu, bir yükler. ZIP klasörünü makinenize _**Azure_Digital_Twins_end_to_end_samples.zip**_. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
+Son olarak, hızlı başlangıç: **ADT Explorer** örnek uygulaması sırasında kullanmak üzere örneği de indirmeniz gerekir. Bu örnek, hızlı başlangıçta bir Azure dijital TWINS senaryosu ve örnek senaryo dosyalarını yüklemek ve araştırmak için kullandığınız uygulamayı içerir. Örneği almak için şuraya gidin: [Azure Digital TWINS (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). İndirmek için *posta indirme* düğmesine basın *. * Makinenize Bu örnek kodun ZIP dosyası. Bu, bir yükler. ZIP klasörünü makinenize _**Azure_Digital_Twins__ADT__explorer.zip**_. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure dijital TWINS ve ADT Gezginini ayarlama
 
@@ -115,9 +113,7 @@ Microsoft 'tan bir *izin* iste açılan pencere görürseniz, bu uygulamaya izin
 
 ## <a name="add-the-sample-data"></a>Örnek verileri ekleme
 
-Ardından, örnek senaryoyu ve grafiği ADT Explorer 'a içeri aktaracaksınız.
-
-Örnek senaryo, indirdiğiniz ve daraltılmış  _**Azure_Digital_Twins_end_to_end_samples**_ klasörünüzde bulunur, bu nedenle şimdi klasöre gitmeniz gerekir.
+Ardından, örnek senaryoyu ve grafiği ADT Explorer 'a içeri aktaracaksınız. Örnek senaryo, daha önce indirdiğiniz **Azure_Digital_Twins__ADT__explorer** klasöründe de bulunur.
 
 ### <a name="models"></a>Modeller
 
@@ -140,8 +136,8 @@ Bu hızlı başlangıçta, model dosyaları sizin için zaten yazılmıştır ve
 
 :::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. Görüntülenen dosya Seçicisi kutusunda, indirilen depodaki *Azure_Digital_Twins_end_to_end_samples/adtsampleapp/sampleclientapp/models* klasörüne gidin.
-2. *ÜzerindeRoom.js* seçin ve *üzerindeFloor.js*ve Tamam 'a tıklayın. (İsterseniz diğer modelleri karşıya yükleyebilirsiniz, ancak bu hızlı başlangıçta kullanılmaz.)
+1. Görüntülenen dosya Seçicisi kutusunda, indirilen depodaki *Azure_Digital_Twins__ADT__explorer/Client/examples* klasörüne gidin.
+2. *ÜzerindeRoom.js* seçin ve *üzerindeFloor.js*ve Tamam 'a tıklayın. (İsterseniz ek modeller yükleyebilirsiniz, ancak bu hızlı başlangıçta kullanılmaz.)
 3. Azure hesabınızda oturum açmanızı isteyen açılan menü iletişim kutusunu izleyin.
 
 >[!NOTE]
@@ -178,7 +174,7 @@ Bu bölümde, önceden oluşturulmuş bir grafiğe bağlı olan önceden oluştu
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-Dosya Seçicisi kutusunda *Azure_Digital_Twins_end_to_end_samples/adtsampleapp/sampleclientapp* klasörüne gidin ve _**buildingScenario.xlsx**_ elektronik tablo dosyasını seçin. Bu dosya, örnek grafiğin bir açıklamasını içerir. Tamam 'a basın.
+Dosya Seçicisi kutusunda,*Azure_Digital_Twins__ADT__explorer/Client/examples* klasörüne gidin ve _**buildingScenario.xlsx**_ elektronik tablo dosyasını seçin. Bu dosya, örnek grafiğin bir açıklamasını içerir. Tamam 'a basın.
 
 Birkaç saniye sonra, ADT Gezgini yüklenecek Grafiğin önizlemesini görüntüleyen bir *Içeri aktarma* görünümü açar.
 
@@ -326,7 +322,7 @@ Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azur
 az ad app delete --id <your-application-ID>
 ```
 
-Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize silin (_**Azure_Digital_Twins__ADT__explorer**_ ve _**Azure_Digital_Twins_end_to_end_samples**_). Hem daraltılmış hem de daraltılmış sürümleri silmeniz gerekebilir.
+Son olarak, indirdiğiniz proje örnek klasörünü yerel makinenize (_**Azure_Digital_Twins__ADT__explorer**_) silin. Hem daraltılmış hem de daraltılmış sürümleri silmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

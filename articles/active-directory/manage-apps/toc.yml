@@ -220,6 +220,8 @@
           href: troubleshoot-password-based-sso.md
         - name: SAML tabanlı çoklu oturum açma sorunlarını giderme
           href: troubleshoot-saml-based-sso.md
+        - name: SAML tabanlı çoklu oturum açma hatalarını ayıklama
+          href: debug-saml-sso-issues.md
         - name: Kullanıcı oturum açma sorunlarını giderme
           items:
             - name: Beklenmeyen izin alma istemi

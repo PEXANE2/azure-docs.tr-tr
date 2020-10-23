@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: df7c27fb0aca6a9b903d29ea4414832fb677b3eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 086f680a0674d5d79d9d039d9ad47e542856ac5d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705271"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92420076"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturma
 
@@ -24,10 +24,10 @@ Bu hızlı başlangıçta, beş dakikada bir PostgreSQL için Azure veritabanı 
 > [!TIP]
 > Şu anda önizleme aşamasında olan daha basit [az Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI komutunu kullanmayı deneyin. [Hızlı](./quickstart-create-server-up-azure-cli.md)başlangıcı deneyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makale, Azure CLı sürüm 2,0 veya üstünü yerel olarak çalıştırmanızı gerektirir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-[Az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın. 
+[Az Login](/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın. 
 
 ```azurecli-interactive
 az login
@@ -39,11 +39,11 @@ az login
 az account set --subscription <subscription id>
 ```
 
-Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. Tüm aboneliklerinizi almak için [az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)kullanın.
+Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. Tüm aboneliklerinizi almak için [az Account List](/cli/azure/account#az-account-list)kullanın.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure Veritabanı sunucusu oluşturma
 
-[Az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun ve ardından bu kaynak grubunun Içinde PostgreSQL sunucunuzu oluşturun. Benzersiz bir ad sağlamanız gerekir. Aşağıdaki örnek `westus` konumunda `myresourcegroup` adlı bir kaynak grubu oluşturur.
+[Az Group Create](/cli/azure/group#az-group-create) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun ve ardından bu kaynak grubunun Içinde PostgreSQL sunucunuzu oluşturun. Benzersiz bir ad sağlamanız gerekir. Aşağıdaki örnek `westus` konumunda `myresourcegroup` adlı bir kaynak grubu oluşturur.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -58,7 +58,7 @@ Yukarıdaki bağımsız değişkenlerin ayrıntıları aşağıda verilmiştir:
 
 **Ayar** | **Örnek değer** | **Açıklama**
 ---|---|---
-name | mydemoserver | PostgreSQL için Azure veritabanı sunucunuzu tanımlayan benzersiz ad. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.
+name | mydemoserver | PostgreSQL için Azure veritabanı sunucunuzu tanımlayan benzersiz ad. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı adlandırma kuralları](/azure/azure-resource-manager/management/resource-name-rules#microsoftdbforpostgresql).
 resource-group | myresourcegroup | Azure Kaynak grubunun adı.
 location | westus | Sunucu için Azure konumu.
 admin-user | myadmin | Yönetici oturumu için Kullanıcı adı. **Azure_superuser** **, yönetici**, **yönetici**, **kök**, **Konuk**veya **ortak**olamaz.
@@ -67,7 +67,7 @@ sku-name|GP_Gen5_2| Fiyatlandırma katmanının adı ve işlem yapılandırması
 
 >[!IMPORTANT] 
 >- Sunucunuzdaki varsayılan PostgreSQL sürümü 9,6 ' dir. Desteklenen tüm sürümleri görmek için bkz. [desteklenen PostgreSQL ana sürümleri](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
->- **Az Postgres Server Create** komutuyla ilgili tüm bağımsız değişkenleri görüntülemek için, [Bu başvuru belgesine](https://docs.microsoft.com/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create)bakın.
+>- **Az Postgres Server Create** komutuyla ilgili tüm bağımsız değişkenleri görüntülemek için, [Bu başvuru belgesine](/cli/azure/postgres/server#az-postgres-server-create)bakın.
 >- SSL, sunucunuzda varsayılan olarak etkinleştirilmiştir. SSL hakkında daha fazla bilgi için bkz. [SSL bağlantısını yapılandırma](./concepts-ssl-connection-security.md).
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Sunucu düzeyinde güvenlik duvarı kuralı oluşturma 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135766"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424792"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure sanal makinelerini başka bir Azure bölgesine çoğaltma
 
@@ -36,10 +36,10 @@ Bu makalede, [Azure 'Dan Azure 'a olağanüstü durum kurtarma öğreticisinde](
    - **Kaynak aboneliği**: kaynak sanal makinelerinizin ait olduğu abonelik. Bu abonelik, kurtarma hizmetleri kasanızın bulunduğu Azure Active Directory kiracısında bulunan aboneliklerden biri olabilir.
    - **Kaynak grubu**: kaynak sanal makinelerinizin ait olduğu kaynak grubu. Seçilen kaynak grubundaki tüm VM 'Ler, bir sonraki adımda koruma için listelenir.
 
-     ![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
+     ![Çoğaltmayı yapılandırmak için gereken alanları vurgulayan ekran görüntüsü.](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
 3. Sanal **makineler > sanal makineler**' i seçin ve çoğaltmak ISTEDIĞINIZ her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Daha sonra, **Tamam**'a tıklayın.
-    ![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
+    ![Sanal makineleri seçtiğiniz yerde vurgulayan ekran görüntüsü.](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. **Ayarlar**' da, hedef site ayarlarını isteğe bağlı olarak yapılandırabilirsiniz:
 
@@ -101,7 +101,7 @@ Site Recovery tarafından kullanılan varsayılan hedef ayarlarını değiştire
     - **Kullanılabilirlik**kümesi ' nde, kaynak bölgedeki bir kullanılabilirlik KÜMESININ parçasıysa VM 'ye kullanılabilirlik kümesi ayarları ekleyebilirsiniz.
     - **Hedef depolama hesapları**' nda, kullanmak istediğiniz hesabı seçin.
 
-        ![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
+        ![Hedef abonelik ayarlarının nasıl özelleştirileceğini gösteren ekran görüntüsü.](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. **Yapılandır** ' a tıklayarak çoğaltma ayarlarını değiştirin.
 4. **Çoklu VM tutarlılığı**' nda, birlikte çoğaltmak Istediğiniz VM 'leri seçin.
     - Bir çoğaltma grubundaki tüm makineler, yük devredildiğinde paylaşılan kilitlenmeyle tutarlı ve uygulamayla tutarlı kurtarma noktalarına sahip olur.
@@ -111,7 +111,7 @@ Site Recovery tarafından kullanılan varsayılan hedef ayarlarını değiştire
     - Çoklu VM tutarlılığını etkinleştirirseniz çoğaltma grubundaki makineler birbiriyle 20004 numaralı bağlantı noktası üzerinden iletişim kurar.
     - 20004 numaralı bağlantı noktası üzerinden VM 'Ler arasındaki iç iletişimi engelleyen bir güvenlik duvarı gereci bulunmadığından emin olun.
     - Linux VM 'lerinin bir çoğaltma grubunun parçası olmasını istiyorsanız, bağlantı noktası 20004 ' deki giden trafiğin, belirli bir Linux sürümüne yönelik kılavuza göre el ile açıldığından emin olun.
-![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+![Çoklu VM tutarlılığı ayarlarını gösteren ekran görüntüsü.](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
 5. **Hedef kaynak oluştur**  >  **çoğaltmasını etkinleştir**' e tıklayın.
 6. VM 'Ler çoğaltma için etkinleştirildikten sonra, **çoğaltılan öğeler** altında VM sistem durumunun durumunu kontrol edebilirsiniz

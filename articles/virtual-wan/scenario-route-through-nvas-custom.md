@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 031cbb48a7e0c572866dc591d26fb1e6b6b12dba
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267508"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424727"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Senaryo: trafiği NVA 'lar aracılığıyla yönlendirme-özel (Önizleme)
 
@@ -24,25 +24,24 @@ Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek olduk
 
 Bu senaryoda adlandırma kuralını kullanacağız:
 
-* Internet olmayan trafiği incelemek için kullanıcıların bir NVA ( **Şekil 1**' de VNET) dağıttığının sanal ağları için "hizmet VNET".
+* Sanal hub 'a ( **Şekil 1**' de VNET 1, VNET 2 ve VNET 3) bağlı sanal ağlar için "bağlı bileşen".
+* Internet olmayan trafiği incelemek için bir NVA ( **2. Şekil 1**' de) ve büyük olasılıkla bağlı bileşenler tarafından erişilen ortak hizmetlere sahip sanal ağlar için "hizmet VNET".
 * "DMZ VNet", kullanıcıların Internet 'e ait trafiği ( **Şekil 1**' de VNET 5) denetlemek için kullanılacak bir NVA dağıtmakta olduğu sanal ağlar için.
-* Bir NVA VNet (VNet 1, VNet 2 ve **Şekil 1**' de VNET 3) bağlı sanal ağlar IÇIN "NVA ışınsal 'ler".
 * Microsoft tarafından yönetilen sanal WAN hub 'Ları için "hub 'lar".
 
 Aşağıdaki bağlantı matrisi, bu senaryoda desteklenen akışları özetler:
 
 **Bağlantı matrisi**
 
-| Kaynak          | Hedef:|*NVA tekerlek*|*Hizmet VNet*|*DMZ VNet*|*Dallar statik*|
-|---|---|---|---|---|---|
-| **NVA tekerlek**| &#8594;|      X |            X |   Eşleme |    Statik    |
-| **Hizmet VNet**| &#8594;|    X |            X |      X    |      X       |
-| **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
-| **Dallar** | &#8594;|  Statik |            X |      X    |      X       |
+| Kaynak          | Hedef:|*Bileşenler*|*Hizmet VNet*|*Dallar*|*İnternet*|
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **Bileşenler**| &#8594;| Doğrudan |Doğrudan | Hizmet VNet üzerinden |DMZ VNet üzerinden |
+| **Hizmet VNet**| &#8594;| Doğrudan |yok| Doğrudan | |
+| **Dallar** | &#8594;| Hizmet VNet üzerinden |Doğrudan| Doğrudan |  |
 
-Bağlantı matrisindeki hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, italik olan sütun üst bilgileri) öğrenip öğrenmediğini tanımlar. "X", bağlantının sanal WAN tarafından yerel olarak sağlandığı ve "static" anlamına gelir, bu da bağlantının statik yollar kullanılarak sanal WAN tarafından sağlandığı anlamına gelir. Farklı satırlarda ayrıntıya bakalım:
+Bağlantı matrisindeki her bir hücre, bağlantı akışının doğrudan sanal WAN veya bir NVA ile VNET 'lerin üstünden akacağını belirtir. Farklı satırlarda ayrıntıya bakalım:
 
-* NVA ışınsal 'ler:
+* Bileşen
   * Bağlı bileşen doğrudan sanal WAN hub 'ları üzerinde diğer bağlı ışınsal Lara ulaşacaktır.
   * Bağlı dallar, hizmet VNet 'e işaret eden statik bir yol aracılığıyla dallara bağlantı sağlar. Dallardan belirli önekleri öğrenmemelidir (Aksi halde bunlar daha belirgin olur ve Özeti geçersiz kılar).
   * Bağlı bileşen doğrudan VNet eşlemesi aracılığıyla DMZ VNet 'e Internet trafiği gönderecek.
@@ -51,12 +50,12 @@ Bağlantı matrisindeki hücrelerden her biri, bir sanal WAN bağlantısının (
 * Hizmet sanal ağı, her VNet 'ten ve her dalda erişilebilir olması gereken bir paylaşılan hizmetler VNet 'ine benzer olacaktır.
 * Yalnızca destekleyeceği trafik doğrudan VNet eşayarları üzerinden geldiği için DMZ VNet 'in sanal WAN üzerinden bağlantısı olması gerekmez. Ancak, yapılandırmayı basitleştirmek için DMZ VNet ile aynı bağlantı modelini kullanacağız.
 
-Bu nedenle, bağlantı matrisi üç farklı bağlantı deseni sunar ve bu üç yol tablosuna çevrilir. Farklı VNET 'lere olan ilişkilendirmeler aşağıdaki gibi olacaktır:
+Bağlantı matrisi, üç yol tablosuna çeviren üç farklı bağlantı deseni sunar. Farklı VNET 'lere olan ilişkilendirmeler aşağıdaki gibi olacaktır:
 
-* NVA ışınsal 'ler:
+* Bileşen
   * İlişkili yol tablosu: **RT_V2B**
   * Yol tablolarına yayma: **RT_V2B** ve **RT_SHARED**
-* NVA sanal ağları (iç ve Internet):
+* NVA sanal ağları (hizmet VNet ve DMZ VNet):
   * İlişkili yol tablosu: **RT_SHARED**
   * Yol tablolarına yayma: **RT_SHARED**
 * Dallar
@@ -65,14 +64,14 @@ Bu nedenle, bağlantı matrisi üç farklı bağlantı deseni sunar ve bu üç y
 
 Sanal ağlar arası ve daldan VNet trafiğinin hizmet VNet 'teki NVA 'dan (VNet 4) geldiğinden emin olmak için bu statik yollara ihtiyacımız vardır:
 
-| Açıklama | Yol tablosu | Statik yol              |
+| Description | Yol tablosu | Statik yol              |
 | ----------- | ----------- | ------------------------- |
 | Dallar    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA tekerlek  | Varsayılan     | 10.1.0.0/16-> vnet4conn  |
 
 Artık sanal WAN, paketlerin gönderileceği bağlantıyı bilir, ancak bağlantının bu paketleri alırken ne yapılacağını bilmesi gerekir: bağlantı yolu tablolarının kullanıldığı yer.
 
-| Açıklama | Bağlantı | Statik yol            |
+| Description | Bağlantı | Statik yol            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0.5 |
