@@ -1,0 +1,128 @@
+- name: Azure AD rolleriyle ilgili belgeler
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure AD rolleri
+      href: custom-overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Sınırsız uygulama kaydı oluşturma
+      href: quickstart-app-registration-limits.md
+- name: Öğreticiler
+  items:
+    - name: Dinamik grup oluşturma
+      href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: Kavramlar
+  expanded: true
+  items:
+    - name: Azure AD yönetici rollerini devretme
+      href: concept-delegation.md
+    - name: Varsayılan kullanıcı izinlerini karşılaştırma
+      href: /azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Azure ile Azure AD rollerini karşılaştırma
+      href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Azure AD’deki yönetim birimlerini anlama
+      href: administrative-units.md
+- name: Nasıl yapılır kılavuzları
+  expanded: true
+  items:
+    - name: Kullanıcılar ve roller
+      items:
+        - name: Kullanıcıları yönetici rollerine atama
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Kullanıcının erişimini iptal etme
+          href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Konuk kullanıcıya rol atama
+          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/roles/context/ugr-context
+        - name: Konuk kullanıcının erişimini kısıtlama
+          href: /azure/active-directory/enterprise-users/users-restrict-guest-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Dinamik gruplar ve konuklar
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/roles/context/ugr-context
+    - name: Roller ve izinler
+      expanded: true
+      items:
+        - name: Roller ve izinler
+          href: permissions-reference.md
+        - name: Rolleri görüntüleme ve atama
+          href: manage-roles-portal.md
+        - name: Personelim temsilcisi
+          href: my-staff-configure.md
+    - name: Özel roller
+      expanded: true
+      items:
+        - name: Özel rollere genel bakış
+          href: custom-overview.md
+        - name: Özel rol oluşturma
+          href: custom-create.md
+        - name: Özel rol atamalarını görüntüleme
+          href: custom-view-assignments.md
+        - name: Azure portalda özel roller atama
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: PowerShell'de özel roller atama
+          href: custom-assign-powershell.md
+        - name: Kurumsal uygulamalar için özel roller atama
+          href: custom-enterprise-apps.md
+        - name: Özel rol izinleri
+          items:
+            - name: Uygulama kaydı izinleri
+              href: custom-available-permissions.md
+            - name: Enterprise uygulama izinleri
+              href: custom-enterprise-app-permissions.md
+            - name: Uygulama onay izinleri
+              href: custom-consent-permissions.md
+        - name: Uygulama yöneticisi rolüne temsilci seçme
+          href: delegate-app-roles.md
+    - name: Gruplara roller atama
+      items:
+        - name: Grup tabanlı rol ataması önizlemesi
+          href: groups-concept.md
+        - name: Rol atanabilir grup oluşturma
+          href: groups-create-eligible.md
+        - name: Gruba rol atama
+          href: groups-assign-role.md
+        - name: Gruptan rol atamalarını kaldırma
+          href: groups-remove-assignment.md
+        - name: Grubun rol atamalarını görüntüleme
+          href: groups-view-assignments.md
+        - name: PIM'de grubun role uygun olmasını sağlama
+          href: groups-pim-eligible.md
+        - name: SSS ve sorun giderme
+          href: groups-faq-troubleshooting.md
+    - name: Rollerinizin güvenliğini sağlama
+      items:
+        - name: Rol güvenliği planlaması
+          href: security-planning.md
+        - name: Acil durum hesabı oluşturma
+          href: security-emergency-access.md
+    - name: Yönetim birimleri
+      items:
+        - name: Yönetim birimlerine genel bakış
+          href: administrative-units.md
+        - name: Ekleme ve yönetme
+          href: admin-units-manage.md
+        - name: Kullanıcı ekleme ve yönetme
+          href: admin-units-add-manage-users.md
+        - name: Grup ekleme ve yönetme
+          href: admin-units-add-manage-groups.md
+        - name: Kapsam ile rol atama
+          href: admin-units-assign-roles.md
+        - name: SSS ve sorun giderme
+          href: admin-units-faq-troubleshoot.md
+    - name: Sorun giderme
+      items:
+        - name: Azure AD için destek alma
+          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: Başvuru
+  items:
+    - name: Göreve göre en az ayrıcalıklı roller
+      href: delegate-by-task.md
+    - name: Microsoft 365 rol belgeleri
+      href: m365-workload-docs.md
+    - name: Graph API
+      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+    - name: Azure AD CLI
+      href: /cli/azure/ad
+    - name: Graph için Azure AD PowerShell
+      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
+    - name: Azure AD hizmet sınırlamaları
+      href: /azure/active-directory/fundamentals/directory-service-limits-restrictions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context

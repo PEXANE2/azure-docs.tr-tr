@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Kurumsal kullanıcı yönetimi belgeleri - Azure AD
+summary: Azure AD grup ve lisans gibi kullanıcı yönetim hizmetleri sunar ve en önemli kullanıcı yönetme görevlerinizi hızla yapmanıza yardımcı olur. Lisans atayın, gruplara veya kullanıcılara uygulama erişimi atayın ve etki alanlarını ekleyin ya da yönetin.
+metadata:
+  title: Azure Active Directory kullanıcıları, grupları, lisansları ve etki alanlarıyla ilgili belgeler
+  description: Azure AD kuruluşunuzda kullanıcı kimlik doğrulamasını yönetmek için grupları, etki alanı adlarını ve lisansları nasıl kullanacağınızı öğrenin.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: enterprise-users
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 3918c28d9657b077eefd5226be656ab6ad5a7dbf
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372798"
+landingContent:
+- title: Kurumsal kullanıcı yönetimi hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Kullanıcılar, gruplar, etki alanları ve lisanslar
+      url: directory-overview-user-model.md
+    - text: Özel rollere genel bakış
+      url: ../roles/custom-overview.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+  - linkListType: concept
+    links:
+    - text: Azure AD kuruluş bağımsızlığı
+      url: licensing-directory-independence.md
+    - text: Grupları kullanarak erişimi yönetme
+      url: ../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Kullanıcı ekleme
+      url: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Gruplar için sona erme ilkesini ayarlama
+      url: groups-quickstart-expiration.md
+    - text: Kullanıcılara lisans atama
+      url: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: Azure AD etki alanı adlarını yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Özel etki alanı adınızı ekleme
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Özel etki alanı adlarını yönetme
+      url: domains-manage.md
+- title: Grupları yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dinamik grup oluşturma
+      url: groups-create-rule.md
+    - text: PowerShell’de grup ayarları
+      url: groups-settings-v2-cmdlets.md
+    - text: Gruplar için bir adlandırma ilkesi ayarlama
+      url: groups-naming-policy.md
+- title: Etki alanı ekleme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Özel bir etki alanı adı ekleme
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: Özel etki alanı adlarını yönetme
+      url: domains-manage.md

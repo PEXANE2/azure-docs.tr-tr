@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Azure AD rolleriyle ilgili belgeler - Azure AD
+summary: Azure AD rol tabanlı erişim denetimi, Azure AD kaynaklarına erişimi yönetir. Özel roller oluşturun, denetim kapsamını kısıtlamak için yönetim birimlerini kullanan roller atayın, gruplara veya kullanıcılara uygulama erişimi atayın, Privileged Identity Management (PIM) ile uygunluk durumunu yönetin veya kimlik yönetim görevlerini dağıtmak için izinlere temsilci seçin.
+metadata:
+  title: Azure Active Directory rolleriyle ilgili belgeler
+  description: Kuruluşunuzda erişimi yönetmek için Azure AD rollerini nasıl kullanacağınızı öğrenin.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: roles
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 16a64fd66ab391436f991b5f92f306f7ecf2eb58
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372834"
+landingContent:
+- title: Azure AD rolleri hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Özel rollere genel bakış
+      url: custom-overview.md
+  - linkListType: concept
+    links:
+    - text: Temsilci yönetimi
+      url: concept-delegation.md
+    - text: Azure AD’deki yönetim birimlerini anlama
+      url: administrative-units.md
+    - text: Rol atamalarını yönetmek için bulut gruplarını kullanma
+      url: groups-concept.md
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Sınırsız uygulama kaydı oluşturmak için izin verme
+      url: quickstart-app-registration-limits.md
+- title: Rollere temsilci seçme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rollere, göreve göre temsilci seçme
+      url: delegate-by-task.md
+    - text: Uygulama yönetimi için temsilci seçme
+      url: delegate-app-roles.md
+- title: Kullanıcılara rol atama
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Özel roller oluşturma
+      url: custom-create.md
+    - text: Graph API kullanarak rol atama
+      url: custom-assign-graph.md
+    - text: PowerShell kullanarak atama
+      url: custom-assign-powershell.md
+    - text: Graph API kullanarak rol atama
+      url: custom-assign-graph.md
+- title: Gruplara roller atama
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rol atanabilir gruplar oluşturma
+      url: groups-create-eligible.md
+    - text: Bulut grubuna rol atama
+      url: groups-assign-role.md
+    - text: Grubu PIM için uygun hale getirme
+      url: groups-pim-eligible.md
+    - text: Grubun atamalarını görüntüleme
+      url: groups-view-assignments.md
+- title: Yönetim birimleriyle kapsamı yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Yönetim birimlerini ekleme ve kaldırma
+      url: admin-units-manage.md
+    - text: Birimlere kullanıcı atama
+      url: admin-units-add-manage-users.md
+    - text: Birimlere grup atama
+      url: admin-units-add-manage-groups.md
+    - text: Kapsam içeren grupları atama
+      url: admin-units-assign-roles.md

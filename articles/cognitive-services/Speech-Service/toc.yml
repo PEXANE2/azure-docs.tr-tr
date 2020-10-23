@@ -401,6 +401,8 @@
                       href: how-to-custom-commands-send-activity-to-client.md
                     - name: Web uç noktalarını ayarlama
                       href: how-to-custom-commands-setup-web-endpoints.md
+                    - name: Özel Komutlar uygulamanızı beceri olarak dışarı aktarma
+                      href: how-to-custom-commands-integrate-remote-skills.md
                 - name: Dağıtma
                   items:
                     - name: Azure DevOps ile Sürekli Dağıtım

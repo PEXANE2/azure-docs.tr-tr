@@ -33,6 +33,10 @@
       href: tutorial-private-endpoint-cosmosdb-portal.md
     - name: Web uygulamasına bağlanma
       href: tutorial-private-endpoint-webapp-portal.md
+    - name: SQL
+      items:
+        - name: SQL Server’a bağlanma - Portal
+          href: tutorial-private-endpoint-sql-portal.md
 - name: Kavramlar
   items:
     - name: Özel Uç Nokta
@@ -47,8 +51,92 @@
           href: security-baseline.md
 - name: Nasıl yapılır
   items:
-    - name: Bir web uygulamasına özel olarak bağlanma
-      href: create-private-endpoint-webapp-portal.md
+    - name: Yapay Zeka ve Makine Öğrenmesi
+      items:
+        - name: Machine Learning
+          href: ../machine-learning/how-to-configure-private-link.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Analiz
+      items:
+        - name: Analysis Services
+          href: ../azure-sql/database/private-endpoint-overview.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Data Factory
+          href: ../data-factory/data-factory-private-link.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Event Hubs
+          href: ../event-hubs/private-link-service.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: HDInsight
+          href: ../hdinsight/hdinsight-private-link.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Power BI
+          href: /power-bi/admin/service-security-private-links
+    - name: İşlem
+      items:
+        - name: Batch
+          href: ../batch/private-connectivity.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Özel Bağlantılarla yönetilen diskler
+          href: ../virtual-machines/disks-enable-private-links-for-import-export-portal.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Kapsayıcılar
+      items:
+        - name: Container Registry
+          href: ../container-registry/container-registry-private-link.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Kubernetes Hizmeti
+          href: ../aks/private-clusters.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Veritabanları
+      items:
+        - name: Redis için Cache
+          href: ../azure-cache-for-redis/cache-private-link.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Cosmos DB
+          href: ../cosmos-db/how-to-configure-private-endpoints.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: MariaDB için Veritabanı
+          href: ../mariadb/concepts-data-access-security-private-link.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: MySQL için Veritabanı
+          href: ../mysql/concepts-data-access-security-private-link.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: PostgreSQL için Veritabanı
+          href: ../postgresql/concepts-data-access-and-security-private-link.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: SQL
+          href: tutorial-private-endpoint-sql-portal.md
+    - name: Geliştirici Araçları
+      items:
+        - name: Uygulama Yapılandırması
+          href: ../azure-app-configuration/concept-private-endpoint.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Geçiş
+          href: ../azure-relay/private-link-service.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Tümleştirme
+      items:
+        - name: Event Grid
+          href: ../event-grid/network-security.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Service Bus
+          href: ../service-bus-messaging/private-link-service.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Nesnelerin İnterneti
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/virtual-network-support.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Yönetim ve İdare
+      items:
+        - name: Otomasyon
+          href: ../automation/how-to/private-link-security.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Backup
+          href: ../backup/private-endpoints.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: İzleme
+          href: ../azure-monitor/platform/private-link-security.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Güvenlik
+      items:
+        - name: Key Vault
+          href: ../key-vault/general/private-link-service.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Depolama
+      items:
+        - name: Dosyalar
+          href: ../storage/files/storage-files-networking-endpoints.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Dosya Eşitleme
+          href: ../storage/files/storage-sync-files-networking-endpoints.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Depolama
+          href: ../storage/common/storage-private-endpoints.md?toc=%2fazure%2fprivate-link%2ftoc.json
+    - name: Web
+      items:
+        - name: Bilişsel Arama
+          href: ../search/service-create-private-endpoint.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: SignalR
+          href: ../azure-signalr/howto-private-endpoints.md?toc=%2fazure%2fprivate-link%2ftoc.json
+        - name: Web App
+          href: tutorial-private-endpoint-webapp-portal.md
     - name: Özel bir uç nokta için ağ ilkelerini devre dışı bırakma
       href: disable-private-endpoint-network-policy.md
     - name: Özel Bağlantı Hizmeti için ağ ilkelerini devre dışı bırakma
@@ -65,7 +153,7 @@
           href: troubleshoot-private-link-connectivity.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

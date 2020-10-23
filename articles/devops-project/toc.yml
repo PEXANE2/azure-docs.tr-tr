@@ -1,53 +1,63 @@
-- name: Azure DevOps Starter Belgeleri
+- name: DevOps Starter Belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure DevOps Starter nedir?
+    - name: DevOps Starter nedir?
       href: overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: .NET
-      href: ./azure-devops-project-aspnet-core.md
-      maintainContext: true
-    - name: Node.js
-      href: ./azure-devops-project-nodejs.md
-      maintainContext: true
-    - name: Java
-      href: ./azure-devops-project-java.md
-      maintainContext: true
-    - name: Python
-      href: ./azure-devops-project-python.md
-      maintainContext: true
-    - name: PHP
-      href: ./azure-devops-project-php.md
-      maintainContext: true
-    - name: Ruby
-      href: ./azure-devops-project-ruby.md
-      maintainContext: true
-    - name: Başlayın
-      href: ./azure-devops-project-go.md
-      maintainContext: true
+    - name: GitHub Actions
+      items:
+        - name: Node.js
+          href: ./devops-starter-gh-nodejs.md
+          maintainContext: true
+    - name: Azure DevOps
+      items:
+        - name: .NET
+          href: ./azure-devops-project-aspnet-core.md
+          maintainContext: true
+        - name: Node.js
+          href: ./azure-devops-project-nodejs.md
+          maintainContext: true
+        - name: Java
+          href: ./azure-devops-project-java.md
+          maintainContext: true
+        - name: Python
+          href: ./azure-devops-project-python.md
+          maintainContext: true
+        - name: PHP
+          href: ./azure-devops-project-php.md
+          maintainContext: true
+        - name: Ruby
+          href: ./azure-devops-project-ruby.md
+          maintainContext: true
+        - name: Başlayın
+          href: ./azure-devops-project-go.md
+          maintainContext: true
 - name: Öğreticiler
   items:
-    - name: 1 - GitHub ve DevOps Starter
+    - name: GitHub Actions ile Azure Web App’e dağıtma
+      href: devops-starter-gh-web-app.md
+      maintainContext: true
+    - name: GitHub ile KSG
       href: azure-devops-project-github.md
       maintainContext: true
-    - name: 2 - VM’lere dağıtma
+    - name: Azure DevOps ile VM’lere dağıtma
       href: azure-devops-project-vms.md
       maintainContext: true
-    - name: 3 - Azure SQL Veritabanı’na dağıtma
+    - name: Azure DevOps ile Azure SQL Veritabanı’na dağıtma
       href: azure-devops-project-sql-database.md
       maintainContext: true
-    - name: 4 - AKS’ye dağıtma
+    - name: Azure DevOps ile AKS’ye dağıtma
       href: azure-devops-project-aks.md
       maintainContext: true
-    - name: 5 - Azure Service Fabric’e dağıtma
+    - name: Azure DevOps ile Azure Service Fabric’e dağıtma
       href: azure-devops-project-service-fabric.md
       maintainContext: true
-    - name: 6- Azure Cosmos DB’ye dağıtma
+    - name: Azure DevOps ile Azure Cosmos DB’ye dağıtma
       href: azure-devops-project-cosmos-db.md
       maintainContext: true
-    - name: 7- Azure İşlevleri’ne dağıtma
+    - name: Azure DevOps ile Azure İşlevleri’ne dağıtma
       href: azure-devops-project-functions.md
       maintainContext: true

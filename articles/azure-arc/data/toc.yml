@@ -66,8 +66,16 @@
       items:
         - name: Grafana ve Kibana ile izleme
           href: monitor-grafana-kibana.md
-        - name: Ölçümleri ve günlükleri karşıya yükleme
-          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Azure İzleyici’ye yükleme
+          items:
+            - name: Önkoşulları karşıya yükleme
+              href: upload-metrics-and-logs-to-azure-monitor.md
+            - name: Günlükleri karşıya yükleme
+              href: upload-logs.md
+            - name: Ölçümleri karşıya yükleme
+              href: upload-metrics.md
+            - name: Kullanım verilerini karşıya yükleme
+              href: upload-usage-data.md
         - name: Stok veritabanı örnekleri
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: Veri denetleyicisi kullanıcı adı ve parolası alma

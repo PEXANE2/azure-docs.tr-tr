@@ -141,7 +141,7 @@
           href: app/data-retention-privacy.md
     - name: Uyarılar
       items:
-        - name: Genel bakış
+        - name: Genel Bakış
           href: platform/alerts-overview.md
         - name: Ölçüm uyarıları
           href: platform/alerts-metric-overview.md
@@ -204,7 +204,7 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: Genel bakış
+        - name: Genel Bakış
           displayname: 'Log Analytics, log query, log queries, query, queries'
           href: log-query/log-query-overview.md
         - name: Öğretici
@@ -404,7 +404,7 @@
               href: insights/solution-agenthealth.md
         - name: Azure Tanılama uzantısı
           items:
-            - name: Genel bakış
+            - name: Genel Bakış
               href: platform/diagnostics-extension-overview.md
             - name: Windows
               displayname: diagnostics extension
@@ -1022,6 +1022,8 @@
           href: insights/container-insights-analyze.md
         - name: GPU performansını izleme
           href: insights/container-insights-gpu-monitoring.md
+        - name: Ağ yapılandırmasını izleme
+          href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
         - name: Dağıtımları ve HPA’ları izleme
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: Canlı verileri görüntüleme

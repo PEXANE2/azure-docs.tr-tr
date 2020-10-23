@@ -139,9 +139,9 @@
           href: data-factory-hadoop-streaming-activity.md
         - name: HDInsight Spark Etkinliği
           href: data-factory-spark.md
-        - name: Machine Learning Batch Yürütme Etkinliği
+        - name: Azure Machine Learning Studio (klasik) Batch Yürütme Etkinliği
           href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Machine Learning Kaynak Güncelleştirme Etkinliği
+        - name: Azure Machine Learning Studio (klasik) Kaynak Güncelleştirme Etkinliği
           href: data-factory-azure-ml-update-resource-activity.md
         - name: Saklı Yordam Etkinliği
           href: data-factory-stored-proc-activity.md
