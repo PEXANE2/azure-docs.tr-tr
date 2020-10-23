@@ -61,8 +61,10 @@
           href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Veritabanı
           items:
-            - name: SQL Veritabanı ile kullanılabilirlik alanları
-              href: ../azure-sql/database/high-availability-sla.md#zone-redundant-configuration
+            - name: SQL Veritabanı genel amaçlı katman ile kullanılabilirlik alanları
+              href: ../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview
+            - name: SQL Veritabanı premium ve iş açısından kritik katmanları ile kullanılabilirlik alanları
+              href: ../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability
         - name: Depolama
           items:
             - name: Alanlar arası yedekli depolama

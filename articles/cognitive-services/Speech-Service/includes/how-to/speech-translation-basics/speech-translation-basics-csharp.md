@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27beefc16987361d63aa7b26f6f666cbb6c3ab23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1302b3e959530b0ff738e4fb5c3898355088591d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377606"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470649"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı algılayabilir ve diğer dillere çevirebilir. Bu hızlı başlangıçta, uygulama ve ürünlarınızdaki konuşma SDK 'sını kullanarak yüksek kaliteli konuşma çevirisi gerçekleştirme hakkında bilgi edinebilirsiniz. Bu hızlı başlangıçta aşağıdakiler dahil konular ele alınmaktadır:
 
@@ -22,7 +22,7 @@ Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı algılay
 
 Örnek koda doğrudan atlamak istiyorsanız GitHub 'daki [C# hızlı başlangıç örneklerine](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
@@ -76,7 +76,7 @@ Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluştu
 * Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bir [`SpeechTranslationConfig`][config] anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
+Bir [`SpeechTranslationConfig`][config] anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın.
 
 ```csharp
 public class Program

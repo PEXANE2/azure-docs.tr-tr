@@ -45,7 +45,7 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: Ağ güvenlik grubu görünümü
       href: network-watcher-security-group-view-overview.md
-    - name: Rol tabanlı erişim denetimi izinleri
+    - name: Azure rol tabanlı erişim denetimi izinleri
       href: required-rbac-permissions.md
     - name: Güvenlik
       items:

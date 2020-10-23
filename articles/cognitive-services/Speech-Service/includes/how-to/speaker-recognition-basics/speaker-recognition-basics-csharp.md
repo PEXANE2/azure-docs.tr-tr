@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: cd2bb595df91597059131b1dd7274e1a7ba36066
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 5be99ba09032020abf777c80307e347658a6e037
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875490"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470837"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak konuşmacı tanıma için temel tasarım düzenlerini öğrenirsiniz; örneğin:
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak konuşmacı tanıma i
 
 Konuşma tanıma kavramlarının üst düzey bir görünümü için bkz. [genel bakış](../../../speaker-recognition-overview.md) makalesi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
@@ -51,7 +51,7 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) . Bu örnekte, bir [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) abonelik anahtarı ve bölgesi kullanarak bir oluşturun. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) . Bu örnekte, bir [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) abonelik anahtarı ve bölgesi kullanarak bir oluşturun. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
 
 `westus`Hizmet için desteklenen tek bölge olduğu için bölgenin olarak ayarlandığını unutmayın.
 

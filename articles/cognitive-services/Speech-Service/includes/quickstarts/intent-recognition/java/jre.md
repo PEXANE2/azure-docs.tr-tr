@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 26b3b3bd061d3ec7c3efd5c613c5beec33867022
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8bcc3e41f87570822f48a111fe98d1fdaf72679f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87298890"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470983"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -48,7 +48,7 @@ Bu kodu içindeki try/catch bloğuna ekleyin `main()` . Bu değerleri güncelle�
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=27)]
 
-Bu örnek `FromSubscription()` , oluşturmak için yöntemini kullanır `SpeechConfig` . Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+Bu örnek `FromSubscription()` , oluşturmak için yöntemini kullanır `SpeechConfig` . Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true).
 
 Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 

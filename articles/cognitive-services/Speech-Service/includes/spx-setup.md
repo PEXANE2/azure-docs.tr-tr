@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 203ba2988d817e3e396fd8aec3db00eba9832041
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92323863"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92471027"
 ---
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
@@ -107,7 +107,8 @@ Linux veya Mac üzerinde, komutlarınız şuna benzer şekilde başlayacaktır:
 
 ## <a name="create-subscription-config"></a>Abonelik yapılandırması oluştur
 
-Konuşma CLı 'yı kullanmaya başlamak için önce konuşma aboneliği anahtarınızı ve bölge bilgilerinizi girmeniz gerekir. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın. Abonelik anahtarınızı ve bölge tanımlayıcıyı (örn. `eastus`, `westus` ), aşağıdaki komutları çalıştırın.
+Konuşma CLı 'yı kullanmaya başlamak için konuşma abonelik anahtarınızı ve bölge tanımlayıcıyı girmeniz gerekir. [Konuşma hizmetini ücretsiz deneyin](../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın.
+Abonelik anahtarınızı ve bölge tanımlayıcıyı (örn. `eastus`, `westus` ), aşağıdaki komutları çalıştırın.
 
 ```shell
 spx config @key --set SUBSCRIPTION-KEY

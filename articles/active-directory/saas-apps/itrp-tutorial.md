@@ -31,7 +31,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini IRP ile yapılandırmak için şunları yapmanız gerekir:
 

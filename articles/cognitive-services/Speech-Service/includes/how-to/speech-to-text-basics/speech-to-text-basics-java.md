@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 3e4d1b090f1c639f41a54de11d9380a07db62e84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc1e506036df7a571f6f9f523540680e8ce347fe
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377170"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470639"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -31,19 +31,19 @@ Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gere
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable&preserve-view=true) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
 
 > [!NOTE]
 > Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
 
-Şunları başlatabilmeniz için birkaç yol vardır [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) :
+Şunları başlatabilmeniz için birkaç yol vardır [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable&preserve-view=true) :
 
 * Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
 * Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bir [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
+Bir [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable&preserve-view=true) anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın.
 
 ```java
 SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -51,7 +51,7 @@ SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "Your
 
 ## <a name="initialize-a-recognizer"></a>Tanıyıcı başlatma
 
-Bir oluşturduktan sonra [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) , bir sonraki adım bir ' ı başlatmaktır [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) . Bir başlattığınızda [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) , sizi geçitirsiniz `SpeechConfig` . Bu, konuşma hizmetinin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
+Bir oluşturduktan sonra [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable&preserve-view=true) , bir sonraki adım bir ' ı başlatmaktır [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) . Bir başlattığınızda [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) , sizi geçitirsiniz `SpeechConfig` . Bu, konuşma hizmetinin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
 
 ```java
 SpeechRecognizer recognizer = new SpeechRecognizer(config);
@@ -59,7 +59,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config);
 
 ## <a name="recognize-from-microphone-or-file"></a>Mikrofondan veya dosyadan tanı
 
-Ses giriş cihazını belirtmek istiyorsanız, bir oluşturmanız [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) ve bunu başlatırken parametre olarak geçirmeniz gerekir [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) .
+Ses giriş cihazını belirtmek istiyorsanız, bir oluşturmanız [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable&preserve-view=true) ve bunu başlatırken parametre olarak geçirmeniz gerekir [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) .
 
 Cihaz mikrofonunuzu kullanarak konuşmayı tanımak için, bir using oluşturun `AudioConfig` `fromDefaultMicrophoneInput()` ve sonra nesneniz oluştururken ses yapılandırmasını geçirin `SpeechRecognizer` .
 
@@ -74,7 +74,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 > [!TIP]
 > [Ses giriş cihazınız için CIHAZ kimliğini nasıl alabileceğinizi öğrenin](../../../how-to-select-audio-input-devices.md).
 
-Konuşmayı kullanmak yerine bir ses dosyasından konuşmayı tanımak istiyorsanız, yine de oluşturmanız gerekir `AudioConfig` . Ancak, [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) öğesini çağırmak yerine, `fromDefaultMicrophoneInput()` `fromWavFileInput()` parametresini çağırır ve geçireceğiz `filename` .
+Konuşmayı kullanmak yerine bir ses dosyasından konuşmayı tanımak istiyorsanız, yine de oluşturmanız gerekir `AudioConfig` . Ancak, [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable&preserve-view=true) öğesini çağırmak yerine, `fromDefaultMicrophoneInput()` `fromWavFileInput()` parametresini çağırır ve geçireceğiz `filename` .
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -83,7 +83,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 
 ## <a name="recognize-speech"></a>Konuşma tanıma
 
-Java için konuşma SDK 'Sı için [tanıyıcı sınıfı](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) , konuşma tanıma için kullanabileceğiniz birkaç yöntem sunar.
+Java için konuşma SDK 'Sı için [tanıyıcı sınıfı](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) , konuşma tanıma için kullanabileceğiniz birkaç yöntem sunar.
 
 * Tek atışı tanıma (Async)-engelleyici olmayan (zaman uyumsuz) modda tanıma gerçekleştirir. Bu, tek bir utterance algılar. Tek bir utterüance 'in sonunda, sonda sessizlik dinlemesi veya en fazla 15 saniyelik ses işlenene kadar belirlenir.
 * Sürekli tanıma (Async)-zaman uyumsuz olarak sürekli tanıma işlemini başlatır. Mikrofon kullanmak yerine bir ses dosyası sağlamak istiyorsanız, yine de sağlamanız gerekir `audioConfig` . Zaman uyumsuz sürekli tanımayı durdurmak için [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)çağırın.
@@ -93,14 +93,14 @@ Java için konuşma SDK 'Sı için [tanıyıcı sınıfı](https://docs.microsof
 
 ### <a name="single-shot-recognition"></a>Tek atışı tanıma
 
-Şu kullanılarak zaman uyumsuz tek kararlı tanıma örneği aşağıda verilmiştir [`recognizeOnceAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-java-stable) :
+Şu kullanılarak zaman uyumsuz tek kararlı tanıma örneği aşağıda verilmiştir [`recognizeOnceAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-java-stable&preserve-view=true) :
 
 ```java
 Future<SpeechRecognitionResult> task = recognizer.recognizeOnceAsync();
 SpeechRecognitionResult result = task.get();
 ```
 
-Sonucu işlemek için bazı kodlar yazmanız gerekir. Bu örnek şunları değerlendirir [`result.getReason()`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.resultreason?view=azure-java-stable) :
+Sonucu işlemek için bazı kodlar yazmanız gerekir. Bu örnek şunları değerlendirir [`result.getReason()`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.resultreason?view=azure-java-stable&preserve-view=true) :
 
 * Tanınma sonucunu yazdırır: `ResultReason.RecognizedSpeech`
 * Bir tanıma eşleşmesi yoksa, kullanıcıyı bilgilendirin: `ResultReason.NoMatch`
@@ -133,7 +133,7 @@ switch (result.getReason()) {
 
 Sürekli tanıma, tek kararlı tanıma göre biraz daha karmaşıktır. `recognizing` `recognized` Tanıma sonuçlarını almak için,, ve olaylarına abone olmanızı gerektirir `canceled` . Tanımayı durdurmak için çağrısı yapmanız gerekir [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) . İşte, bir ses giriş dosyasında sürekli tanımanın nasıl gerçekleştirilebileceğini gösteren bir örnek.
 
-Girişi tanımlayarak ve şunu başlatarak başlayalım [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) :
+Girişi tanımlayarak ve şunu başlatarak başlayalım [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) :
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -146,12 +146,12 @@ Sonra, konuşma tanımanın durumunu yönetmek için bir değişken oluşturalı
 private static Semaphore stopTranslationWithFileSemaphore;
 ```
 
-Kaynağından gönderilen olaylara abone edeceğiz [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) .
+Kaynağından gönderilen olaylara abone edeceğiz [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) .
 
-* [`recognizing`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-java-stable): Ara tanıma sonuçları içeren olaylar için sinyal.
-* [`recognized`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-java-stable): Son tanıma sonuçlarını içeren olaylar için sinyal (başarılı bir tanıma denemesi olduğunu gösterir).
-* [`sessionStopped`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-java-stable): Bir tanıma oturumunun (işlem) sonunu gösteren olaylar için sinyal.
-* [`canceled`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-java-stable): İptal edilen tanıma sonuçlarını içeren olaylar için sinyal (sonuç veya doğrudan iptal isteği olarak iptal edilen bir tanıma girişimi veya ya da bir aktarım ya da protokol arızası).
+* [`recognizing`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-java-stable&preserve-view=true): Ara tanıma sonuçları içeren olaylar için sinyal.
+* [`recognized`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-java-stable&preserve-view=true): Son tanıma sonuçlarını içeren olaylar için sinyal (başarılı bir tanıma denemesi olduğunu gösterir).
+* [`sessionStopped`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-java-stable&preserve-view=true): Bir tanıma oturumunun (işlem) sonunu gösteren olaylar için sinyal.
+* [`canceled`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-java-stable&preserve-view=true): İptal edilen tanıma sonuçlarını içeren olaylar için sinyal (sonuç veya doğrudan iptal isteği olarak iptal edilen bir tanıma girişimi veya ya da bir aktarım ya da protokol arızası).
 
 ```java
 // First initialize the semaphore.
@@ -205,7 +205,7 @@ recognizer.stopContinuousRecognitionAsync().get();
 
 Sürekli tanıma kullanırken, ilgili "dikte etmeyi etkinleştir" işlevini kullanarak dikte işlemini etkinleştirebilirsiniz. Bu mod, konuşma yapılandırma örneğinin noktalama gibi tümce yapılarının sözcük açıklamalarını yorumlamasını sağlar. Örneğin, "kasadaki gerçek zamanlı olarak", "kasadaki canlı mısınız?" metni olarak yorumlanabilir.
 
-Dikte modunu etkinleştirmek için, içindeki [`enableDictation`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-java-stable) yöntemi kullanın [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) .
+Dikte modunu etkinleştirmek için, içindeki [`enableDictation`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-java-stable&preserve-view=true) yöntemi kullanın [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable&preserve-view=true) .
 
 ```java
 config.enableDictation();
@@ -213,13 +213,13 @@ config.enableDictation();
 
 ## <a name="change-source-language"></a>Kaynak dilini değiştir
 
-Konuşma tanıma için ortak bir görev, giriş (veya kaynak) dilini belirtmektir. Giriş dilini Fransızca 'ya nasıl değiştirebilirim bölümüne göz atalım. Kodunuzda, [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) daha sonra bu satırı hemen altına ekleyin.
+Konuşma tanıma için ortak bir görev, giriş (veya kaynak) dilini belirtmektir. Giriş dilini Fransızca 'ya nasıl değiştirebilirim bölümüne göz atalım. Kodunuzda, [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable&preserve-view=true) daha sonra bu satırı hemen altına ekleyin.
 
 ```java
 config.setSpeechRecognitionLanguage("fr-FR");
 ```
 
-[`setSpeechRecognitionLanguage`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable) bağımsız değişken olarak bir dize alan parametredir. Desteklenen [yerel ayarlar/diller](../../../language-support.md)listesinde herhangi bir değer sağlayabilirsiniz.
+[`setSpeechRecognitionLanguage`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable&preserve-view=true) bağımsız değişken olarak bir dize alan parametredir. Desteklenen [yerel ayarlar/diller](../../../language-support.md)listesinde herhangi bir değer sağlayabilirsiniz.
 
 ## <a name="improve-recognition-accuracy"></a>Tanıma doğruluğunu geliştirme
 
@@ -228,9 +228,9 @@ Konuşma SDK 'Sı ile tanıma doğruluğunu geliştirmenin birkaç yolu vardır.
 > [!IMPORTANT]
 > Tümcecik listesi özelliği yalnızca Ingilizce olarak kullanılabilir.
 
-Bir tümcecik listesi kullanmak için, önce bir [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable) nesne oluşturun, ardından ile belirli sözcükler ve deyimler ekleyin [`AddPhrase`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-java-stable#com_microsoft_cognitiveservices_speech_PhraseListGrammar_addPhrase_String_) .
+Bir tümcecik listesi kullanmak için, önce bir [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable&preserve-view=true) nesne oluşturun, ardından ile belirli sözcükler ve deyimler ekleyin [`AddPhrase`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-java-stable#com_microsoft_cognitiveservices_speech_PhraseListGrammar_addPhrase_String_) .
 
-Herhangi bir değişiklik [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable) , bir sonraki tanıma göre veya konuşma hizmetine yeniden bağlanmaya sonra devreye girer.
+Herhangi bir değişiklik [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable&preserve-view=true) , bir sonraki tanıma göre veya konuşma hizmetine yeniden bağlanmaya sonra devreye girer.
 
 ```java
 PhraseListGrammar phraseList = PhraseListGrammar.fromRecognizer(recognizer);

@@ -28,7 +28,7 @@ Bu öğreticide, ContractSafe SAML2 SSO 'yu Azure Active Directory (Azure AD) il
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için gerekli olanlar:
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. Varsayılan özniteliklerin yanı sıra, ContractSafe SAML2 SSO uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Bu öznitelikler önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz. Aşağıdaki listede ek öznitelikler gösterilmektedir.
 
-    | Name | Kaynak özniteliği|
+    | Ad | Kaynak özniteliği|
     | ---------------| --------------- |
     | EmailName | User. UserPrincipalName |
     | e-posta | User. onpremisesuserprincipalname |

@@ -14,6 +14,8 @@
   items:
     - name: Sanal ağınızın güvenliğini sağlama - portal
       href: secure-cloud-network.md
+    - name: Sanal ağınızın güvenliğini sağlama - PowerShell
+      href: secure-cloud-network-powershell.md
     - name: Merkez sanal ağınızın güvenliğini sağlama - portal
       href: secure-hybrid-network.md
 - name: Kavramlar

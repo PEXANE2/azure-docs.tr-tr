@@ -28,7 +28,7 @@ Bu öğreticide, Concur seyahat ve masrafın Azure Active Directory (Azure AD) i
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

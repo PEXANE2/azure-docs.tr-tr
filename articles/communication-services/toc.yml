@@ -90,6 +90,8 @@
       href: samples/calling-hero-sample.md
     - name: Grup sohbeti hero örneği
       href: samples/chat-hero-sample.md
+    - name: Web çağrısı örneği
+      href: samples/web-calling-sample.md
 - name: Başvurular
   items:
     - name: REST API belgeleri

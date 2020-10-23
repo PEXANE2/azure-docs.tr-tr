@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 65340bfcab76bd35901d1b3a9f3b4a8736205706
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 420a8ab9a36cdabc3a4565d18f4dbee1d84ec39e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376608"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470925"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -43,7 +43,7 @@ Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluştu
 * Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bir [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
+Bir [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın.
 
 ```cpp
 auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");

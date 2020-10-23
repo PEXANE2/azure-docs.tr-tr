@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 92fb6bb470c6ab9c1a8f1f0542c26a8fef07e6b3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d3caeea88bcbcc1f7db111158d6900d02dd3ade7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377248"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470759"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -45,19 +45,19 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
 
 > [!NOTE]
 > Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
 
-Şunları başlatabilmeniz için birkaç yol vardır [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) :
+Şunları başlatabilmeniz için birkaç yol vardır [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) :
 
 * Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
 * Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bir [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
+Bir [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın.
 
 ```Python
 speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
@@ -66,7 +66,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 
 ## <a name="initialize-a-recognizer"></a>Tanıyıcı başlatma
 
-Bir oluşturduktan sonra [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) , bir sonraki adım bir ' ı başlatmaktır [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) . Bir başlattığınızda [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) , sizi geçitirsiniz `speech_config` . Bu, konuşma hizmetinin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
+Bir oluşturduktan sonra [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) , bir sonraki adım bir ' ı başlatmaktır [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python&preserve-view=true) . Bir başlattığınızda [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python&preserve-view=true) , sizi geçitirsiniz `speech_config` . Bu, konuşma hizmetinin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
@@ -74,7 +74,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
 ## <a name="recognize-from-microphone-or-file"></a>Mikrofondan veya dosyadan tanı
 
-Ses giriş cihazını belirtmek istiyorsanız, bir oluşturmanız [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) ve bunu başlatırken parametre olarak geçirmeniz gerekir [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) .
+Ses giriş cihazını belirtmek istiyorsanız, bir oluşturmanız [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python&preserve-view=true) ve bunu başlatırken parametre olarak geçirmeniz gerekir [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python&preserve-view=true) .
 
 Cihaz mikrofonunuzu kullanarak konuşmayı tanımak için, şunu `SpeechRecognizer` geçirmeden oluştur `AudioConfig`
 
@@ -86,7 +86,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 > Bir cihaza kimliğe göre başvurmak istiyorsanız, bir `AudioConfig` kullanarak, `AudioConfig(device_name="<device id>")` 
 >  [ses giriş cihazınız için cihaz kimliğini nasıl alabileceğinizi öğrenin](../../../how-to-select-audio-input-devices.md).
 
-Mikrofon kullanmak yerine bir ses dosyasından konuşmayı tanımak istiyorsanız, oluşturun [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) ve `filename` parametresini kullanın.
+Mikrofon kullanmak yerine bir ses dosyasından konuşmayı tanımak istiyorsanız, oluşturun [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python&preserve-view=true) ve `filename` parametresini kullanın.
 
 ```Python
 audio_input = speechsdk.AudioConfig(filename="your_file_name.wav")
@@ -95,7 +95,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audi
 
 ## <a name="recognize-speech"></a>Konuşma tanıma
 
-Python için konuşma SDK 'Sı için [tanıyıcı sınıfı](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python) , konuşma tanıma için kullanabileceğiniz birkaç yöntem sunar.
+Python için konuşma SDK 'Sı için [tanıyıcı sınıfı](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python&preserve-view=true) , konuşma tanıma için kullanabileceğiniz birkaç yöntem sunar.
 
 * Tek atışı tanıma (eşitleme)-bir engelleme (zaman uyumlu) modunda tanıma gerçekleştirir. Tek bir söylenişi tanındıktan sonra döndürür. Tek bir utterüance 'in sonunda, sonda sessizlik dinlemesi veya en fazla 15 saniyelik ses işlenene kadar belirlenir. Görev, tanıma metnini sonuç olarak döndürür.
 * Tek atışı tanıma (Async)-engelleyici olmayan (zaman uyumsuz) modda tanıma gerçekleştirir. Bu, tek bir utterance algılar. Tek bir utterüance 'in sonunda, sonda sessizlik dinlemesi veya en fazla 15 saniyelik ses işlenene kadar belirlenir.
@@ -119,7 +119,7 @@ result = speech_recognizer.recognize_once()
 result = speech_recognizer.recognize_once_async()
 ```
 
-Zaman uyumlu veya zaman uyumsuz yöntemi kullanlemenizden bağımsız olarak, sonuç boyunca yinelemek için bazı kodlar yazmanız gerekir. Bu örnek şunları değerlendirir [`result.reason`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python) :
+Zaman uyumlu veya zaman uyumsuz yöntemi kullanlemenizden bağımsız olarak, sonuç boyunca yinelemek için bazı kodlar yazmanız gerekir. Bu örnek şunları değerlendirir [`result.reason`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python&preserve-view=true) :
 
 * Tanınma sonucunu yazdırır: `speechsdk.ResultReason.RecognizedSpeech`
 * Bir tanıma eşleşmesi yoksa, kullanıcıyı bilgilendirin: `speechsdk.ResultReason.NoMatch `
@@ -141,7 +141,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 Sürekli tanıma, tek kararlı tanıma göre biraz daha karmaşıktır. `EventSignal`Tanıma sonuçlarını almak için ' a bağlanmanızı gerektirir ve ' de, tanımayı durdurmak için [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) veya [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--)çağırmanız gerekir. İşte, bir ses giriş dosyasında sürekli tanımanın nasıl gerçekleştirilebileceğini gösteren bir örnek.
 
-Girişi tanımlayarak ve şunu başlatarak başlayalım [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) :
+Girişi tanımlayarak ve şunu başlatarak başlayalım [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python&preserve-view=true) :
 
 ```Python
 audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
@@ -199,7 +199,7 @@ while not done:
 
 Sürekli tanıma kullanırken, ilgili "dikte etmeyi etkinleştir" işlevini kullanarak dikte işlemini etkinleştirebilirsiniz. Bu mod, konuşma yapılandırma örneğinin noktalama gibi tümce yapılarının sözcük açıklamalarını yorumlamasını sağlar. Örneğin, "kasadaki gerçek zamanlı olarak", "kasadaki canlı mısınız?" metni olarak yorumlanabilir.
 
-Dikte modunu etkinleştirmek için, içindeki [`enable_dictation()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--) yöntemi kullanın [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) .
+Dikte modunu etkinleştirmek için, içindeki [`enable_dictation()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--) yöntemi kullanın [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) .
 
 ```Python 
 SpeechConfig.enable_dictation()
@@ -222,9 +222,9 @@ Konuşma SDK 'Sı ile tanıma doğruluğunu geliştirmenin birkaç yolu vardır.
 > [!IMPORTANT]
 > Tümcecik listesi özelliği yalnızca Ingilizce olarak kullanılabilir.
 
-Bir tümcecik listesi kullanmak için, önce bir [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) nesne oluşturun, ardından ile belirli sözcükler ve deyimler ekleyin [`addPhrase`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python#addphrase-phrase--str-) .
+Bir tümcecik listesi kullanmak için, önce bir [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python&preserve-view=true) nesne oluşturun, ardından ile belirli sözcükler ve deyimler ekleyin [`addPhrase`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python#addphrase-phrase--str-) .
 
-Herhangi bir değişiklik [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) , bir sonraki tanıma göre veya konuşma hizmetine yeniden bağlanmaya sonra devreye girer.
+Herhangi bir değişiklik [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python&preserve-view=true) , bir sonraki tanıma göre veya konuşma hizmetine yeniden bağlanmaya sonra devreye girer.
 
 ```Python
 phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)

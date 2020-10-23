@@ -69,6 +69,8 @@
               href: auth-remote-desktop-gateway.md
             - name: SAML kimlik doğrulaması
               href: auth-saml.md
+            - name: SSH kimlik doğrulaması
+              href: auth-ssh.md
             - name: Windows kimlik doğrulaması - KCD
               href: auth-kcd.md
             - name: Dizin eşitlemesi
