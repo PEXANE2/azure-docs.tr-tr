@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad03942a2200c57475cf8a81d0fb08d475ec6964
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306404"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458041"
 ---
 # <a name="risky-ip-report-public-preview"></a>Riskli IP raporu (Genel Önizleme)
 AD FS müşteriler, son kullanıcıların Microsoft 365 gibi SaaS uygulamalarına erişmesi için kimlik doğrulama hizmetleri sağlamak üzere internet 'e parola kimlik doğrulama uç noktaları sunabilir. Bu durumda kötü bir aktör, bir son kullanıcı parolasını tahmin etmek ve uygulama kaynaklarına erişmek amacıyla AD FS sisteminize karşı oturum açma girişimlerinde bulunabilir. AD FS, Windows Server 2012 R2'de AD FS’den itibaren bu tür saldırıları önlemek için extranet hesap kilitleme işlevselliği sağlamaktadır. Daha düşük bir sürüm kullanıyorsanız, AD FS sisteminizi Windows Server 2016’ya yükseltmeniz kesinlikle önerilir. <br />
@@ -35,13 +35,13 @@ Ayrıca, tek bir IP adresinin birden fazla kullanıcıya karşı birden çok otu
 
 > [!NOTE]
 > Bu raporu kullanmak için AD FS denetiminin etkin olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [AD FS için Denetimi Etkinleştirme](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Erişmek için önizleme, Genel Yönetici veya [Güvenlik Okuyucusu](../../role-based-access-control/built-in-roles.md#security-reader) izni gereklidir.  
+> Erişmek için önizleme, Genel Yönetici veya [Güvenlik Okuyucusu](../../role-based-access-control/built-in-roles.md#security-reader) izni gereklidir.  
 > 
 
 ## <a name="what-is-in-the-report"></a>Raporda ne var?
 Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara sunucuları aracılığıyla toplanır. Riskli IP raporundaki her bir öğe, belirlenmiş eşiği aşan başarısız AD FS oturum açma etkinlikleri hakkında toplu bilgiler gösterir. Aşağıdaki bilgileri sağlar: ![ sütun başlıkları vurgulanmış riskli BIR IP raporu gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/report4a.png)
 
-| Rapor Öğesi | Açıklama |
+| Rapor Öğesi | Description |
 | ------- | ----------- |
 | Zaman Damgası | Algılama zaman penceresi başladığında Azure portalı yerel saatini temel alan zaman damgasını gösterir.<br /> Tüm günlük olaylar UTC saat diliminde gece yarısı oluşturulur. <br />Saatlik olayların zaman damgası saat başına yuvarlanır. Birinci etkinlik başlangıç saatini dışarı aktarılan dosyadaki "firstAuditTimestamp" içinde bulabilirsiniz. |
 | Tetikleyici Türü | Algılama zaman penceresinin türünü gösterir. Toplama tetikleyici türleri saat veya gün başınadır. Bu türler, yüksek sıklıktaki bir deneme yanılma saldırısı ile deneme sayısının gün geneline dağıtıldığı yavaş bir saldırı arasında karşılaştırmalı algılamaya yardımcı olur. |
@@ -68,7 +68,7 @@ Yük dengeleyici, başarısız oturum açma etkinliklerini topladı ve uyarı e�
 ## <a name="download-risky-ip-report"></a>Riskli IP raporu indir 
 **İndirme** işlevi kullanılarak, son 30 gün içindeki tüm riskli IP adresi listesi Connect Health Portalından dışarı aktarılabilir. Dışarı aktarma sonucu, her bir algılama zaman penceresindeki tüm başarısız AD FS oturum açma girişimlerini içerir, böylece dışarı aktarma sonrasında filtrelemeyi özelleştirebilirsiniz. Dışarı aktarma sonucunda, portalda vurgulanan toplamaların yanı sıra her bir IP adresi için başarısız oturum açma etkinliklerine ilişkin daha fazla ayrıntı gösterilmektedir:
 
-|  Rapor Öğesi  |  Açıklama  | 
+|  Rapor Öğesi  |  Description  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | Algılama zaman penceresi sırasında başarısız etkinlikler başlatıldığında ilk zaman damgasını gösterir.  | 
 | lastAuditTimestamp | Algılama zaman penceresi sırasında başarısız etkinlikler sonlandırıldığında son zaman damgasını gösterir.  | 
@@ -79,16 +79,16 @@ Yük dengeleyici, başarısız oturum açma etkinliklerini topladı ve uyarı e�
 Raporun yönetim kişileri **Bildirim Ayarları** üzerinden güncelleştirilebilir. Varsayılan olarak, riskli IP uyarısı e-posta bildirimi kapalı durumdadır. “Başarısız etkinlik eşiği raporunu aşan IP adresleri için e-posta bildirimleri alın” altındaki düğmeyi açarak bildirimi etkinleştirebilir. Connect Health uygulamasındaki genel uyarı bildirimi ayarları gibi bu seçenek de riskli IP raporu hakkında belirlenmiş bildirim alıcısını özelleştirmenize olanak tanır. Ayrıca, değişikliği yaparken tüm genel yöneticilere bildirebilirsiniz. 
 
 ## <a name="configure-threshold-settings"></a>Eşik ayarlarını yapılandırma
-Uyarı eşiği, Eşik Ayarları üzerinden güncelleştirilebilir. Başlangıç için, sistemin varsayılan olarak ayarlanmış bir eşiği vardır. Riskli IP raporu eşik ayarları dört kategoriye ayrılır:
+Uyarı eşiği, Eşik Ayarları üzerinden güncelleştirilebilir. Başlangıç için, sistemin varsayılan olarak ayarlanmış bir eşiği vardır. Varsayılan değerler aşağıda verilmiştir. Riskli IP raporu eşik ayarları dört kategoriye ayrılır:
 
 ![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report4d.png)
 
-| Eşik Öğesi | Açıklama |
+| Eşik Öğesi | Description |
 | --- | --- |
-| (Hatalı U/P + Extranet Kilitleme) / Gün  | Hatalı Parola sayısı ile Extranet Kilitleme sayısının **gün** başına toplamı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. |
-| (Hatalı U/P + Extranet Kilitleme) / Saat | Hatalı Parola sayısı ile Extranet Kilitleme sayısının **saat** başına toplamı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. |
-| Extranet Kilitleme / Gün | **Gün** başına Extranet Kilitleme sayısı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. |
-| Extranet Kilitleme / Saat| **Saat** başına Extranet Kilitleme sayısı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. |
+| (Hatalı U/P + Extranet Kilitleme) / Gün  | Hatalı Parola sayısı ile Extranet Kilitleme sayısının **gün** başına toplamı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. Varsayılan değer 100 ' dir.|
+| (Hatalı U/P + Extranet Kilitleme) / Saat | Hatalı Parola sayısı ile Extranet Kilitleme sayısının **saat** başına toplamı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. Varsayılan değer 50 ' dir.|
+| Extranet Kilitleme / Gün | **Gün** başına Extranet Kilitleme sayısı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. Varsayılan değer 50’dir.|
+| Extranet Kilitleme / Saat| **Saat** başına Extranet Kilitleme sayısı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. Varsayılan değer 25 ' tir|
 
 > [!NOTE]
 > - Rapor eşiği değişikliği, ayar değişikliğinden bir saat sonra uygulanır. 
