@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 1ef4cd8830cec4eb8d72855f8308035e47bf3d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3f1982e72fb572f75789f6005b32de557c0b37d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555627"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454499"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>Öğretici: EAB gezinmek ıMPL ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide EAB gezinin ıMPL 'yi Azure Active Directory (Azure AD) ile tüm
 * Kullanıcılarınızın Azure AD hesaplarıyla birlikte oturum açmaya yönelik bir EAB 'ye otomatik olarak kaydolmalarına imkan tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -128,20 +128,20 @@ Bu bölümde, B. Simon 'ı, EAB kayıt ıMPL 'ye erişim vererek Azure çoklu ot
 
 ### <a name="create-eab-navigate-impl-test-user"></a>EAB gezin ıMPL test kullanıcısı oluşturma
 
-Bu bölümde, EAB 'ye gitmek ıMPL 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. EAB 'ye gitme Impl [destek ekibi](mailto:EABTechSupport@eab.com) ile çalışarak EAB gezme Impl platformuna kullanıcı ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, EAB 'ye gitmek ıMPL 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. EAB 'ye gitme Impl [destek ekibi](mailto:EABTechSupport@eab.com) ile çalışarak EAB gezme Impl platformuna kullanıcı ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde EAB git ıMPL kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız EAB gezme ıMPL ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde EAB git ıMPL kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız EAB gezme ıMPL ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile EAB 'de gezinin ıMPL 'yi deneyin](https://aad.portal.azure.com/)

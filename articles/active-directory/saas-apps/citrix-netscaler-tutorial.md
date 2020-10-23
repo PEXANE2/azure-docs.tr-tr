@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8557c830aec2dd30de0a99a19d7950928d36e894
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544613"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456029"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Öğretici: Citrix NetScaler ile çoklu oturum açma tümleştirmesi Azure Active Directory (Kerberos tabanlı kimlik doğrulaması)
 
@@ -26,7 +26,7 @@ Bu öğreticide, Citrix NetScaler 'ı Azure Active Directory (Azure AD) ile tüm
 * Kullanıcılarınızın Azure AD hesaplarıyla Citrix NetScaler 'da otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -47,7 +47,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * [Citrix NetScaler için üst bilgi tabanlı kimlik doğrulama](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-* Citrix NetScaler 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve korunmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Citrix NetScaler 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve korunmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>Galeriden Citrix NetScaler ekleyin
 
@@ -171,13 +171,13 @@ Bir sanal sunucu oluşturmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **Hizmetleri**' ni seçin.
     
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     ![Citrix NetScaler yapılandırma-hizmetler bölmesi](./media/citrix-netscaler-tutorial/web01.png)
 
 1. Uygulamaları çalıştıran Web sunucusu için aşağıdaki değerleri ayarlayın:
 
-   * **Hizmet Adı**
+   * **Hizmet adı**
    * **Sunucu IP/varolan sunucu**
    * **Protokol**
    * **Bağlantı noktası**
@@ -188,7 +188,7 @@ Yük dengeleyiciyi yapılandırmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına**gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. Aşağıdaki değerleri aşağıdaki ekran görüntüsünde açıklandığı gibi ayarlayın:
 
@@ -235,7 +235,7 @@ Kimlik doğrulama ilkesi oluşturmak için:
 
 1. **Güvenlik**  >  **aaa – uygulama trafik**  >  **ilkeleri**  >  **kimlik**doğrulama  >  **ilkeleri**' ne gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. **Kimlik doğrulama Ilkesi oluştur** bölmesinde, aşağıdaki değerleri girin veya seçin:
 
@@ -372,7 +372,7 @@ Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
 
 1.  **Trafik profillerini**seçin.
 
-1.  **Add (Ekle)** seçeneğini belirleyin.
+1.  **Ekle**’yi seçin.
 
 1.  Bir trafik profilini yapılandırmak için aşağıdaki değerleri girin veya seçin.
 
@@ -388,7 +388,7 @@ Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
  
 1.  **Trafik ilkesi**seçin.
 
-1.  **Add (Ekle)** seçeneğini belirleyin.
+1.  **Ekle**’yi seçin.
 
 1.  Bir trafik ilkesi yapılandırmak için aşağıdaki değerleri girin veya seçin:
 
@@ -447,20 +447,20 @@ Bu bölümde, Citrix NetScaler 'da B. Simon adlı bir Kullanıcı oluşturulur. 
 
 Bu bölümde, erişim panelini kullanarak Azure AD SSO yapılandırmanızı test edersiniz.
 
-Erişim panelinde Citrix NetScaler kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Citrix NetScaler 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Citrix NetScaler kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Citrix NetScaler 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile Citrix NetScaler 'ı deneyin](https://aad.portal.azure.com/)
 
 - [Üst bilgi tabanlı kimlik doğrulaması için Citrix NetScaler çoklu oturum açmayı yapılandırma](header-citrix-netscaler-tutorial.md)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve denetimlerle Citrix NetScaler 'ı koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle Citrix NetScaler 'ı koruma](/cloud-app-security/proxy-intro-aad)

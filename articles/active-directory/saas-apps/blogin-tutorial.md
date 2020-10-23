@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 2a50d7b037cec2c10f83fdbbd875f80513c00a6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a47a3ae27fd1a18b7e9acd7d8b25748f6274c3e9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88517100"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457002"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Öğretici: BlogIn ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Blogın 'i tümleştirmey
 * Kullanıcılarınızın Azure AD hesaplarıyla BlogIn için otomatik olarak oturum açmasını sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -41,7 +41,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * BlogIn **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * BlogIn **, tam zamanında** Kullanıcı sağlamasını destekler
-* BlogIn 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* BlogIn 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-blogin-from-the-gallery"></a>Galeriden BlogIn ekleme
 
@@ -97,7 +97,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, BlogIn uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     | ------ | --------- |
     | başlık |User. JobTitle |
     
@@ -143,7 +143,7 @@ Blogin **hesabınızda Blogin yan oturum** açmada çoklu oturum açmayı yapıl
 1. **Ayarlar**  >  **Kullanıcı kimlik doğrulaması**' na gidin  >  **SSO 'yu & Kullanıcı sağlamayı yapılandırın**.
 2. Sonraki ekranda, tek Sign-On durumunu **Açık** olarak değiştirin ve oturum açma EKRANıNDA görüntülenen SSO oturumu açma düğmesi için özel bir ad seçin.
 
-3. **Uygulamanın Federasyon meta veri URL 'sini** önceki bölümün son adımında kaydettiyseniz, yapılandırma yöntemi **meta veri URL 'Sini** seçin ve **uygulama Federasyon meta verileri URL** 'sini meta veri URL 'si alanına yapıştırın. Aksi takdirde, yapılandırma **yöntemini el ile olarak değiştirin,** **kimlik sağlayıcısı SSO URL 'Sini (oturum açma URL 'Si)** ve **kimlik sağlayıcısı veren 'i (varlık kimliği)** el ile doldurun ve Azure AD 'den aldığınız **sertifikayı (base64)** karşıya yükleyin   .
+3. **Uygulamanın Federasyon meta veri URL 'sini** önceki bölümün son adımında kaydettiyseniz, yapılandırma yöntemi **meta veri URL 'Sini** seçin ve **uygulama Federasyon meta verileri URL** 'sini meta veri URL 'si alanına yapıştırın. Aksi takdirde, yapılandırma **yöntemini el ile olarak değiştirin,** **kimlik sağlayıcısı SSO URL 'Sini (oturum açma URL 'Si)** ve **kimlik sağlayıcısı veren 'i (varlık kimliği)** el ile doldurun ve Azure AD 'den aldığınız **sertifikayı (base64)** karşıya yükleyin.
 
 4. SSO kullanarak BlogIn 'e katılan yeni kullanıcılar için varsayılan kullanıcı rolünü seçin.
 
@@ -159,18 +159,18 @@ Bu bölümde, BlogIn içinde B. Simon adlı bir Kullanıcı oluşturulur. BlogIn
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde BlogIn kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız BlogIn öğesinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde BlogIn kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız BlogIn öğesinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile BlogIn 'i deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve denetimlerle BlogIn 'i koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle BlogIn 'i koruma](/cloud-app-security/proxy-intro-aad)

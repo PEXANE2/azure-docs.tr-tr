@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047701"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461768"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure dijital TWINS müşteri verileri istek özellikleri
 
@@ -25,7 +25,7 @@ Azure dijital TWINS 'de *dijital TWINS* adlı dijital gösterimler, gerçek dün
 
 Azure dijital TWINS 'deki dijital TWINS 'in birçoğu, kişisel varlıkları doğrudan temsil etmez. temsil edilen tipik nesneler bir Office toplantı odası veya bir fabrika tabanı olabilir. Ancak, kullanıcılar bazı varlıkları kişisel olarak tanımlanabilir olarak düşünebiliyor ve bu süre sonunda, dijital TWINS 'i bireylere bağlayan kendi varlıklarını veya envanter izleme yöntemlerini koruyabiliyor. Azure dijital TWINS, dijital TWINS ile ilişkili tüm verileri kişisel veriler gibi yönetir ve depolar.
 
-Bir veri konusu isteğinde başvurulabilen kişisel verileri görüntülemek, dışarı aktarmak ve silmek için Azure dijital TWINS Yöneticisi, kullanıcılar ve roller için [**Azure Portal**](https://portal.azure.com/) veya dijital TWINS Için [**Azure DIJITAL TWINS REST API 'leri**](how-to-use-apis-sdks.md) kullanabilir. Azure portal ve REST API 'Leri, kullanıcıların bu tür veri konusu isteklere hizmet vermesi için farklı yöntemler sağlar.
+Bir veri konusu isteğinde başvurulabilen kişisel verileri görüntülemek, dışarı aktarmak ve silmek için Azure dijital TWINS Yöneticisi, kullanıcılar ve roller için [**Azure Portal**](https://portal.azure.com/) veya dijital TWINS Için [**Azure DIJITAL TWINS REST API 'leri**](/rest/api/azure-digitaltwins/) kullanabilir. Azure portal ve REST API 'Leri, kullanıcıların bu tür veri konusu isteklere hizmet vermesi için farklı yöntemler sağlar.
 
 ## <a name="identifying-customer-data"></a>Müşteri verilerini tanımlama
 

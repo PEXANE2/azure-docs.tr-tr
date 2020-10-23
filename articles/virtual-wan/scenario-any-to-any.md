@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6115ca375c3e5bf2be3335fe2231628ec7bf309f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267746"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440493"
 ---
 # <a name="scenario-any-to-any"></a>Senaryo: any-any
 
@@ -22,14 +22,14 @@ Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek olduk
 
 ## <a name="design"></a><a name="design"></a>Tasarım
 
-Bir sanal WAN senaryosunda kaç yol tablosunun gerekli olacağını anlamak için, her hücrenin bir kaynağın (satır) bir hedefle (sütun) iletişim kurup kuramayacağını temsil ettiği bir bağlantı matrisi oluşturabilirsiniz. Bu senaryodaki bağlantı matrisi önemsiz, ancak diğer senaryolarla tutarlı olması için bu senaryoyu sunuyoruz.
+Bir sanal WAN senaryosunda kaç yol tablosunun gerekli olacağını anlamak için, her hücrenin bir kaynağın (satır) bir hedefle (sütun) iletişim kurup kuramayacağını temsil ettiği bir bağlantı matrisi oluşturabilirsiniz.
 
 | Kaynak |   Amaç |  *Sanal ağlar* | *Dallar* |
 | -------------- | -------- | ---------- | ---|
-| Sanal ağlar     | &#8594;|      X     |     X    |
-| Dallar   | &#8594;|    X     |     X    |
+| Sanal ağlar     | &#8594;| Direct | Direct |
+| Dallar   | &#8594;| Direct  | Direct |
 
-Önceki tablodaki hücrelerin her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, tablodaki sütun üst bilgileri) öğrenip bir "X" bağlantısının sanal WAN tarafından sağlandığı anlamına gelir.
+Önceki tablodaki hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) bir hedef önekiyle (akışın "to" tarafı, italik olan sütun başlıkları) iletişim kuracağını açıklar. Bu senaryoda, güvenlik duvarı veya ağ sanal gereçleri yoktur, bu nedenle iletişim doğrudan sanal WAN üzerinden akar (Bu nedenle tablodaki "doğrudan" sözcüğü).
 
 Sanal ağların ve dalların (VPN, ExpressRoute ve kullanıcı VPN) tüm bağlantıları aynı bağlantı gereksinimlerine sahip olduğundan, tek bir yol tablosu gereklidir. Sonuç olarak, tüm bağlantılar ilişkilendirilir ve varsayılan yol tablosuna aynı rota tablosuna yayılır:
 

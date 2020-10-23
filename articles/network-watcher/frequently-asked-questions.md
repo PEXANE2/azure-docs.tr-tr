@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 4ba35d91d286cb43a763887d104e21ae0d537c8e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123536"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424129"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure ağ Izleyicisi hakkında sık sorulan sorular (SSS)
 [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) hizmeti, bir Azure sanal ağındaki kaynaklara yönelik günlükleri izlemeye, tanılamaya, görüntülemeye ve etkinleştirmeye ve devre dışı bırakacak bir araç paketi sağlar. Bu makalede hizmetle ilgili yaygın soruların yanıtları vardır.
@@ -40,7 +40,7 @@ Ağ Izleyicisi üç önemli özellik kümesi sağlar
   * [Bağlantı sorunlarını giderme](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) , bir VM ile başka bir ağ kaynağı arasında tek seferlik bir bağlantı ve gecikme denetimi sunar.
   * [Paket yakalama](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) , sanal AĞıNıZDAKI bir VM 'deki tüm trafiği yakalamanızı sağlar.
   * [VPN sorun giderme](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) , VPN ağ geçitleriniz ve bağlantılarında hata ayıklamanıza yardımcı olan birden çok tanılama denetimi çalıştırır.
-* Günlüğe Kaydetme
+* Günlüğe kaydetme
   * [NSG akış günlükleri](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) , [ağ güvenlik gruplarındaki (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) tüm trafiği günlüğe kaydetmenize olanak tanır
   * [Trafik Analizi](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) NSG akış günlüğü verilerinizi işleyerek ağ trafiğinizi görselleştirmenizi, sorgulamanızı, çözümlemenize ve anlamanıza olanak tanır.
 
@@ -55,7 +55,7 @@ Ağ Izleyicisi bileşenleri için [fiyatlandırma sayfasını](https://azure.mic
 [Azure hizmet kullanılabilirliği sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) en son bölgesel kullanılabilirliği görüntüleyebilirsiniz
 
 ### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Ağ Izleyicisi 'ni kullanmak için hangi izinler gereklidir?
-[Ağ İzleyicisi 'ni kullanmak için gereken RBAC izinlerinin](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)listesine bakın. Kaynakları dağıtmak için, NetworkWatcherRG için katkıda bulunan izinlerine sahip olmanız gerekir (aşağıya bakın).
+[Ağ İzleyicisi 'ni kullanmak için gereken Azure RBAC izinlerinin](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)listesine bakın. Kaynakları dağıtmak için, NetworkWatcherRG için katkıda bulunan izinlerine sahip olmanız gerekir (aşağıya bakın).
 
 ### <a name="how-do-i-enable-network-watcher"></a>Ağ İzleyicisi'ni nasıl etkinleştirebilirim?
 Ağ Izleyicisi hizmeti her abonelik için [otomatik olarak etkinleştirilir](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) .

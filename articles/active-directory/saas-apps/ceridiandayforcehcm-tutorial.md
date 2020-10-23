@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bfc370dbe1f44f353df4140de7a6136de9360423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd7213f31eb737bedd64d627141c2576fdadb79a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760225"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Öğretici: Ceriyen Dayzorlamalı HCM ile tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Ceriyen Dayzorlamalı HCM 'yi Azure AD ile tümleştirmek aşağıdaki avantajla
 * Kullanıcılarınızın Azure AD hesaplarıyla Ceriyen Dayzorlamalı HCM (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Ceriyen Dayzorlamalı HCM ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -224,19 +224,18 @@ Bu bölümde, Ceriyen Dayzorla HCM 'ye erişim vererek Azure çoklu oturum açma
 
 ### <a name="create-ceridian-dayforce-hcm-test-user"></a>Ceriyen Dayzorlamalı HCM test kullanıcısı oluşturma
 
-Bu bölümde, Ceriyen Dayon HCM 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Ceriyen dayzorlamalı HCM platformunda Kullanıcı eklemek için [Ceriyen DAYZORLAMALı HCM ' i destek ekibi](https://www.ceridian.com/support) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Ceriyen Dayon HCM 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Ceriyen dayzorlamalı HCM platformunda Kullanıcı eklemek için [Ceriyen DAYZORLAMALı HCM ' i destek ekibi](https://www.ceridian.com/support) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelindeki Ceriyen Dayzorla HCM kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Ceriyen Dayzorla HCM ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelindeki Ceriyen Dayzorla HCM kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Ceriyen Dayzorla HCM ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

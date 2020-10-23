@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba9a227956e7879a7c0f49e0534146fa01a49759
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87910305"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442227"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Kuruluşunuzdaki kullanıcıların bir uygulamaya Konuk kullanıcıları davet edebilir
 
@@ -28,7 +28,7 @@ Bir Konuk Kullanıcı Azure AD 'de dizine eklendikten sonra, bir uygulama sahibi
  - Uygulamayı self servis için yapılandırma ve grubu uygulamaya atama
 
 > [!NOTE]
-> Bu makalede, Azure AD kiracınıza eklediğiniz Galeri ve SAML tabanlı uygulamalar için self servis yönetiminin nasıl ayarlanacağı açıklanır. Ayrıca, kullanıcılarınızın kendi Microsoft 365 gruplarına erişimi yönetebilmeleri için [self servis Microsoft 365 gruplarını da ayarlayabilirsiniz](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) . Kullanıcıların Office dosyalarını ve uygulamalarını Konuk kullanıcılarla paylaşmasına yönelik daha fazla bilgi için bkz. [Microsoft 365 gruplardaki konuk erişimi](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ve [SharePoint dosyalarını veya klasörlerini paylaşma](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> Bu makalede, Azure AD kiracınıza eklediğiniz Galeri ve SAML tabanlı uygulamalar için self servis yönetiminin nasıl ayarlanacağı açıklanır. Ayrıca, kullanıcılarınızın kendi Microsoft 365 gruplarına erişimi yönetebilmeleri için [self servis Microsoft 365 gruplarını da ayarlayabilirsiniz](../users-groups-roles/groups-self-service-management.md) . Kullanıcıların Office dosyalarını ve uygulamalarını Konuk kullanıcılarla paylaşmasına yönelik daha fazla bilgi için bkz. [Microsoft 365 gruplardaki konuk erişimi](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ve [SharePoint dosyalarını veya klasörlerini paylaşma](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Erişim panelinden bir uygulamaya Konuk Kullanıcı davet etme
 
@@ -75,7 +75,7 @@ Bir uygulama self servis için yapılandırıldıktan sonra, uygulama sahipleri 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Self Servis uygulama yönetimi, bir genel yönetici ve bir Azure AD yöneticisi tarafından bazı ilk kurulum gerektirir. Bu kurulumun bir parçası olarak, uygulamayı self servis için yapılandıracaksınız ve uygulama sahibinin yönetebileceği uygulamaya bir grup atamalısınız. Ayrıca grubu, herkesin üyelik istemesine izin verecek ancak Grup sahibinin onayını gerektirme amacıyla de yapılandırabilirsiniz. ( [Self servis grup yönetimi](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)hakkında daha fazla bilgi edinin.) 
+Self Servis uygulama yönetimi, bir genel yönetici ve bir Azure AD yöneticisi tarafından bazı ilk kurulum gerektirir. Bu kurulumun bir parçası olarak, uygulamayı self servis için yapılandıracaksınız ve uygulama sahibinin yönetebileceği uygulamaya bir grup atamalısınız. Ayrıca grubu, herkesin üyelik istemesine izin verecek ancak Grup sahibinin onayını gerektirme amacıyla de yapılandırabilirsiniz. ( [Self servis grup yönetimi](../users-groups-roles/groups-self-service-management.md)hakkında daha fazla bilgi edinin.) 
 
 > [!NOTE]
 > Konuk kullanıcıları dinamik bir gruba veya şirket içi Active Directory eşitlenen bir gruba ekleyemezsiniz.
@@ -105,8 +105,8 @@ Self Servis uygulama yönetimi, bir genel yönetici ve bir Azure AD yöneticisi 
 2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 3. **Yönet**altında **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 4. Uygulama listesinde, uygulamayı bulun ve açın.
-5. **Yönet**altında **Çoklu oturum açma**' yı seçin ve uygulamayı çoklu oturum açma için yapılandırın. (Ayrıntılar için bkz. [Kurumsal uygulamalar için çoklu oturum açmayı yönetme](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).)
-6. **Yönet**altında **self servis**' i seçin ve self servis uygulama erişimini ayarlayın. (Ayrıntılar için bkz. [self servis uygulama erişimini kullanma](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
+5. **Yönet**altında **Çoklu oturum açma**' yı seçin ve uygulamayı çoklu oturum açma için yapılandırın. (Ayrıntılar için bkz. [Kurumsal uygulamalar için çoklu oturum açmayı yönetme](../manage-apps/view-applications-portal.md).)
+6. **Yönet**altında **self servis**' i seçin ve self servis uygulama erişimini ayarlayın. (Ayrıntılar için bkz. [self servis uygulama erişimini kullanma](../manage-apps/access-panel-manage-self-service-access.md).) 
 
     > [!NOTE]
     > **Kullanıcıların hangi gruba atanması gerektiğine** ilişkin ayar için, önceki bölümde oluşturduğunuz grubu seçin.
